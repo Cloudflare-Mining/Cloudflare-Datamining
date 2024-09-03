@@ -1,14 +1,24 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4txmXffFF2jBzvYnD8WrEd/bc791e7d13488a25026c4eb4352963c7/our-waf-is-keeping-wordpress-jetpack-on-track.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>As we've said <a href="https://blog.cloudflare.com/wordpress-pingback-attacks-and-our-waf">before</a>, lots of our users run WordPress on their websites and its popularity makes it a big target. So when a new vulnerability is discovered, acting quickly is prudent.</p>
-	<p><img alt="Jetpack" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-10_at_18.11.59_1.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CQjKqntHcWuyaaEA33OyG/5a9ec01cce58c69c4df7c9452e64a798/Screen_Shot_2014-04-10_at_18.11.59_1.png" alt="Jetpack" class="kg-image" width="480" height="390" loading="lazy">
+
+	</figure>
 	<p><a href="http://jetpack.me">Jetpack</a> is an extremely popular plugin to provide self-hosted blogs with all of the <a href="http://jetpack.me/about">additional functionality</a> that WordPress provide to sites hosted with their own hosted platform at WordPress.com.</p>
 	<p>Very recently, a serious security flaw in Jetpack was discovered. It has the potential to allow an attacker to complete actions on a blog without having to log in, such as posting. The WordPress team has written about the the problem <a href="http://jetpack.me/2014/04/10/jetpack-security-update">here</a>.</p>
 	<p>This problem was assigned the CVE number <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0173">CVE-2014-0173</a> and is fixed in Jetpack 2.9.3 released today. Everyone using Jetpack on their WordPress site should update immediately.</p>
-	<p><img alt="Upgrade process" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-10_at_18.45.40.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zziU8EltOqoW9poVrYqP0/8171bf374a1fd41faeb1bec8e1f5c580/Screen_Shot_2014-04-10_at_18.45.40.png" alt="Upgrade process" class="kg-image" width="1278" height="738" loading="lazy">
+
+	</figure>
 	<p>All CloudFlare customers who use WordPress are automatically protected against this bug. We rolled out a <a href="https://www.cloudflare.com/waf">Web Application Firewall</a> (WAF) rule that is automatically enabled for all customers (free or paid) to protect against this problem.</p>
-	<p><img alt="Jetpack 2.9.3" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-10_at_18.15.25.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VnZTWe4kyFTOTyLA3CkY5/2aea4c90416caa158ac1048c80304771/Screen_Shot_2014-04-10_at_18.15.25.png" alt="Jetpack 2.9.3" class="kg-image" width="1828" height="136" loading="lazy">
+
+	</figure>
 	<p>Customers using Jetpack should still upgrade immediately, but the WAF rule gives a little breathing space.</p>
-	<p></p>
-	<!--kg-card-end: markdown-->
 </div>

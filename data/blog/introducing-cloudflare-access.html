@@ -1,28 +1,48 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-access">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-cloudflare-access">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/introducing-cloudflare-access">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-cloudflare-access">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zeSvY2J0xl0Lk0TYSZyD2/ecbd250cc4e4616919664e92dc6aa865/introducing-cloudflare-access.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Tell me if this sounds familiar: any connection from inside the corporate network is trusted and any connection from the outside is not. This is the security strategy used by most enterprises today. The problem is that once the firewall, or gateway, or VPN server creating this perimeter is breached, the attacker gets immediate, easy and trusted access to everything.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/01/4859761438_0778df5e52_o.jpg" alt="CC BY-SA 2.0 image by William Warby" loading="lazy"> <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> image by <a href="https://www.flickr.com/photos/wwarby">William Warby</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IsJrQb7zEktUTKCXlyhRC/d29dbd32b8c6e65779f7b21aa3a1647e/4859761438_0778df5e52_o.jpg" alt="CC BY-SA 2.0 image by William Warby" class="kg-image" width="3648" height="2736" loading="lazy">
+
+	</figure>
+	<p> <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> image by <a href="https://www.flickr.com/photos/wwarby">William Warby</a></p>
 	<p>There’s a second problem with the traditional <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">security perimeter model</a>. It either requires employees to be on the corporate network (i.e. physically in the office) or using a VPN, which slows down work because every page load makes extra round trips to the VPN server. After all this hassle, users on the VPN are still highly susceptible to phishing, on-path and SQL injection attacks.</p>
 	<p>A few years ago, Google pioneered a solution for their own employees called BeyondCorp. Instead of keeping their internal applications on the intranet, they made them accessible on the internet. There became no concept of in or outside the network. The network wasn’t some fortified citadel, everything was on the internet, and no connections were trusted. Everyone had to prove they are who they say they are.</p>
 	<p>Cloudflare’s mission has always been to democratize the tools of the internet giants. Today we are launching <a href="https://www.cloudflare.com/products/cloudflare-access/?utm_medium=website&amp;utm_source=blog&amp;utm_campaign=access-launch">Cloudflare Access</a>: a perimeter-less access control solution for cloud and on-premise applications. It’s like BeyondCorp, but you don’t have to be a Google employee to use it.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/01/Access-blog-post-diagramv2.png" alt="Access-blog-post-diagramv2" loading="lazy"></p>
-	<h3 id="howdoescloudflareaccesswork">How does Cloudflare Access work ?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/XLMNQA8Z6Namjrt7hZ4Xn/5c9aca8b35d4a6758c31527241dbc7ad/Access-blog-post-diagramv2.png" alt="Access-blog-post-diagramv2" class="kg-image" width="2480" height="1000" loading="lazy">
+
+	</figure>
+	<h3>How does Cloudflare Access work ?</h3>
 	<p>Access acts as an unified reverse proxy to enforce access control by making sure every request is:</p>
-	<p><strong>Authenticated:</strong> Access integrates out of the box with most of the major identity providers like Google, Azure Active Directory and Okta meaning you can quickly connect your existing identity provider to Cloudflare and use the groups and users already created to gate access to your web applications. You can additionally use <a href="https://blog.cloudflare.com/introducing-tls-client-auth">TLS with Client Authentication</a> and limit connections only to devices with a unique client certificate. Cloudflare will ensure the connecting device has a valid client certificate signed by the corporate CA, then Cloudflare will authenticate user credentials to grant access to an internal application.</p>
-	<p><strong>Authorized:</strong> The solution lets you easily <a href="https://www.cloudflare.com/application-services/solutions">protect application resources</a> by configuring access policies for groups and individual users that you already created with your identity providers. For example, you could ensure with Access that only your company employees can get to your internal kanban board, or <a href="https://www.cloudflare.com/learning/security/how-to-improve-wordpress-security">lock down</a> the wp-admin of your wordpress site.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/01/access-policy.png" alt="access-policy" loading="lazy"><br>
-		<strong>Encrypted:</strong> As Cloudflare makes all connections secure with HTTPS there is no need for a VPN.
-	</p>
+	<p><b>Authenticated:</b> Access integrates out of the box with most of the major identity providers like Google, Azure Active Directory and Okta meaning you can quickly connect your existing identity provider to Cloudflare and use the groups and users already created to gate access to your web applications. You can additionally use <a href="https://blog.cloudflare.com/introducing-tls-client-auth">TLS with Client Authentication</a> and limit connections only to devices with a unique client certificate. Cloudflare will ensure the connecting device has a valid client certificate signed by the corporate CA, then Cloudflare will authenticate user credentials to grant access to an internal application.</p>
+	<p><b>Authorized:</b> The solution lets you easily <a href="https://www.cloudflare.com/application-services/solutions">protect application resources</a> by configuring access policies for groups and individual users that you already created with your identity providers. For example, you could ensure with Access that only your company employees can get to your internal kanban board, or <a href="https://www.cloudflare.com/learning/security/how-to-improve-wordpress-security">lock down</a> the wp-admin of your wordpress site.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YkWbPMW9g32FDBjfC5T63/2899344fd4d019df904a3977bfeff2a0/access-policy.png" alt="access-policy" class="kg-image" width="4080" height="2296" loading="lazy">
+
+	</figure>
+	<p><b>Encrypted:</b> As Cloudflare makes all connections secure with HTTPS there is no need for a VPN.</p>
 	<p>To all the IT administrators who’ve been chastised by a globetrotting executive about how slow the VPN makes the Internet, Access is the perfect solution. It enables you to control and monitor access to applications by providing the following features via the dashboard and APIs:</p>
 	<ul>
-		<li>Easily change access policies</li>
-		<li>Modify session durations</li>
-		<li>Revoke existing user sessions</li>
-		<li>Centralized logging for audit and change logs</li>
+		<li>
+			<p>Easily change access policies</p>
+		</li>
+		<li>
+			<p>Modify session durations</p>
+		</li>
+		<li>
+			<p>Revoke existing user sessions</p>
+		</li>
+		<li>
+			<p>Centralized logging for audit and change logs</p>
+		</li>
 	</ul>
 	<p>Want an even faster connection to replace your VPN? Try pairing Access with <a href="https://www.cloudflare.com/argo">Argo</a>. If you want to use Access in front of an internal application but don’t want to open up that application to the whole internet, you can combine Access with <a href="https://www.cloudflare.com/products/cloudflare-warp">Argo Tunnel</a>. Argo Tunnel will make Cloudflare your application’s internet connection so you don’t even need a public IP. If you want to use Access in front of a legacy application and protect that application from unpatched vulnerabilities in legacy software, you can just click to enable the <a href="https://www.cloudflare.com/waf">Web Application Firewall</a> and Cloudflare will inspect packets and block those with exploits.</p>
 	<p>Cloudflare Access allows employees to connect to corporate applications from any device, any place and on any kind of network. Access is powered by Cloudflare’s global network of 120+ data centers offering adequate redundancy and <a href="https://www.cloudflare.com/ddos">DDoS protection</a> and proximity to wherever your employees or corporate office might be.</p>
-	<h3 id="getstarted">Get Started:</h3>
+	<h3>Get Started:</h3>
 	<p>Access takes 5-10 minutes to setup and is free to try for up to one user (beyond that it’s $3 per seat per month, and you can <a href="https://www.cloudflare.com/plans/enterprise/contact/?utm_medium=website&amp;utm_source=product&amp;utm_campaign=access">contact sales</a> for bulk discounts). Cloudflare Access is fully available for our enterprise customers today and in open beta for our Free, Pro and Business plan customers. To get started, <a href="https://cloudflare.com/a/access">go to the Access tab of the Cloudflare dashboard</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

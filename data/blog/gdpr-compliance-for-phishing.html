@@ -1,50 +1,57 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>This blog originally appeared in September 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FWCmJKl5HpaIiM9n3fBsN/2316e5cf67e027fdc751a869dc9e2c0a/gdpr-compliance-for-phishing.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This blog originally appeared in September 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>A new campaign is attempting to harvest credentials from several businesses across industry verticals using the European Union’s General Data Protection Regulation (GDPR) compliance as a lure. This phishing message, first caught by Area 1 Security on August 31st, leverages misconceptions regarding <a href="https://gdpr.eu/compliance">GDPR compliance</a> in an effort to steal email login credentials from unsuspecting targets.</p>
 	<p>The phish uses a classic tactic of creating a false sense of urgency to fool recipients into complying with the request. The attacker lures targets under the pretense that their email security is not GDPR-compliant and requires immediate action. For many who are not versed in GDPR regulations, this phish could be merely taken as more red tape to contend with rather than being identified as a malicious message.</p>
 	<p>As shown below, the attacker makes use of graphics and clever formatting to give the message a more credible, authoritative appearance. To maintain the illusion that the email originated from a legitimate source, the sender email address is spoofed to appear as an automated message from the security department of the targeted company. In order to stay relevant, the attacker also regularly updates to comply - or “Action required” - date included in the body of the message.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Based on Area 1 Security’s analysis, this campaign is predominantly launched at public-facing emails of the targeted companies, e.g. &lt;info&gt;@&lt;target company domain&gt;.com. However, to a lesser extent, there are instances when individuals are targeted, typically executives and upper management. These individuals often work in the sales department, demonstrating the attacker is purposefully choosing targets who are likely to have access to client data and need to comply with GDPR regulations.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jQRzCRvQWcSvRurLPVSL1/40c4badbec6fb393dedebc4e4e161b72/image3-6.png" alt="" class="kg-image" width="1228" height="1694" loading="lazy">
+
+	</figure>
+	<p>Based on Area 1 Security’s analysis, this campaign is predominantly launched at public-facing emails of the targeted companies, e.g. @.com. However, to a lesser extent, there are instances when individuals are targeted, typically executives and upper management. These individuals often work in the sales department, demonstrating the attacker is purposefully choosing targets who are likely to have access to client data and need to comply with GDPR regulations.</p>
 	<p>In the initial wave of the campaign, the attacker sent phishing messages from a Virtual Private Server (VPS) IP address belonging to ReadyIDC, 103[.]22[.]183[.]95. Using a VPS allows the attacker a greater degree of anonymity when conducting phishing campaigns since it is extremely difficult to pinpoint their physical location. They are able to leverage all the benefits of using a cloud-based service, as well as the ability to easily spin up new servers in the event that their IP address gets blocked or otherwise identified as phishing infrastructure.</p>
-	<p>A careful inspection of the headers in one of the first instances of this phish reveals a misstep by the threat actor when launching their campaign. As detailed below, despite successfully spoofing the visible FROM header, the envelope MAIL FROM address divulges that the attacker sent their malicious messages via a Gmail account.</p><!--kg-card-begin: markdown-->
-	<pre><code>MAIL FROM:&lt;redacted&gt;@gmail.com&gt;
-From: noreplysecurityservices@&lt;targeted company’s domain&gt;
-To: &lt;public-facing targeted company’s email account&gt;
+	<p>A careful inspection of the headers in one of the first instances of this phish reveals a misstep by the threat actor when launching their campaign. As detailed below, despite successfully spoofing the visible FROM header, the envelope MAIL FROM address divulges that the attacker sent their malicious messages via a Gmail account.</p>
+	<pre class="language-bash"><code class="language-bash">MAIL FROM:<redacted>@gmail.com&gt;
+From: noreplysecurityservices@<targeted company’s="" domain="">
+To: <public-facing targeted="" company’s="" email="" account="">
 Subject: User account security alert
-Date: 31 Aug 2020 22:17:43 +0700
-</code></pre>
-	<!--kg-card-end: markdown-->
+Date: 31 Aug 2020 22:17:43 +0700</public-facing></targeted></redacted></code></pre>
 	<p>This mistake is quickly rectified in subsequent phishing messages, where the attacker successfully spoofs not only the visible From address but also the envelope MAIL FROM domain of the targeted companies. However, these “stealthier” messages expose yet another blunder, as evidenced by the presence of a “Disposition-Notification-To” header. &nbsp;This header indicates that read-receipts are enabled, meaning the attacker will be notified when a target opens the malicious email. &nbsp;This once again discloses the sender account, which happens to be the same Gmail address as identified in the first wave of the campaign.</p>
-	<p>On the second day of the campaign (September 1st) the attacker began inserting SMTP HELO commands to tell receiving email servers that the phishing message originated from the target company’s domain, when in fact it came from an entirely different origin. This is a common tactic used by malicious actors to spoof legitimate domains and easily bypass legacy email security solutions. Shown in the following headers, the true origin of the email is the IP address 196[.]53[.]250[.]243:</p><!--kg-card-begin: markdown-->
-	<pre><code>smtp.pra=noreplysecurityservices@&lt;targeted company’s domain&gt;; spf=None
-smtp.mailfrom=noreplysecurityservices@&lt;targeted company’s domain&gt;; spf=None
-smtp.helo=postmaster@&lt;targeted company’s domain&gt;
-Received: from unknown (HELO &lt;targeted company’s domain&gt;) ([196[.]53[.]250[.]243])
-  by &lt;redacted&gt;.com with ESMTP; 01 Sep 2020 05:19:33 -0400
-From: noreplysecurityservices@&lt;targeted company’s domain&gt;
-To: &lt;email of employee at targeted company&gt;
+	<p>On the second day of the campaign (September 1st) the attacker began inserting SMTP HELO commands to tell receiving email servers that the phishing message originated from the target company’s domain, when in fact it came from an entirely different origin. This is a common tactic used by malicious actors to spoof legitimate domains and easily bypass legacy email security solutions. Shown in the following headers, the true origin of the email is the IP address 196[.]53[.]250[.]243:</p>
+	<pre class="language-bash"><code class="language-bash">smtp.pra=noreplysecurityservices@<targeted company’s="" domain="">; spf=None
+smtp.mailfrom=noreplysecurityservices@<targeted company’s="" domain="">; spf=None
+smtp.helo=postmaster@<targeted company’s="" domain="">
+Received: from unknown (HELO <targeted company’s="" domain="">) ([196[.]53[.]250[.]243])
+  by <redacted>.com with ESMTP; 01 Sep 2020 05:19:33 -0400
+From: noreplysecurityservices@<targeted company’s="" domain="">
+To: <email of="" employee="" at="" targeted="" company="">
 Subject: Email User security alert
-Date: 1 Sep 2020 16:19:07 +0700
-</code></pre>
-	<!--kg-card-end: markdown-->
+Date: 1 Sep 2020 16:19:07 +0700</email></targeted></redacted></targeted></targeted></targeted></targeted></code></pre>
 	<p>The attacker switched to this IP address to launch the second wave of the campaign. Depicted below is a screenshot of a vulnerable and shoddy gaming site, Ran Smok, which is directly accessible via this IP (i.e., hxxp://196[.]53[.]250[.]243). The site links to various web pages that result in “Access denied,” and the IP address has been associated with numerous suspicious websites over the years. An analysis of available services running on the IP address reveals that port 25 (used by the Simple Mail Transfer Protocol, or SMTP) is running in a filtered state, and is most likely how the attacker is sending the phishing messages. A closer look at the list of open ports on the IP address reveals a number of additional services that should never be open to the internet, thus leaving the host at this IP exceedingly vulnerable, and all-the-more enticing to an attacker.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-8.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="analysis-of-link">Analysis of Link</h3>
-	<p>The malicious payload in this phish is a link to a credential harvester, located at hxxps://www[.]techgaia[.]com/wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/?email=&lt;redacted&gt;. The value of the “email” parameter in the URL will vary depending on the recipient, wherein the threat actor tailors each phishing message by setting this parameter equal to the target’s email address. The link opens up to a simple web page, hosted on a <a href="https://kinsta.com/blog/wordpress-security">compromised WordPress site</a>, as shown below.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VXVpm0mmjzWeIqtFFcNvb/3f5825e0f792c732913d869616bdcf40/image1-8.png" alt="" class="kg-image" width="1999" height="1498" loading="lazy">
+
+	</figure>
+	<h3>Analysis of Link</h3>
+	<p>The malicious payload in this phish is a link to a credential harvester, located at hxxps://www[.]techgaia[.]com/wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/?email=. The value of the “email” parameter in the URL will vary depending on the recipient, wherein the threat actor tailors each phishing message by setting this parameter equal to the target’s email address. The link opens up to a simple web page, hosted on a <a href="https://kinsta.com/blog/wordpress-security">compromised WordPress site</a>, as shown below.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Lgr0NrLe8W6kDAAqGH9us/dfa1545c24c5fa9a5e03b317f20b97a1/image2-10.png" alt="" class="kg-image" width="1999" height="788" loading="lazy">
+
+	</figure>
 	<p>The HTML form on the malicious webpage autopopulates the username field based on the email address found in the URL’s “email” parameter. After clicking “Next,” the page will prompt the user to enter a password. Based on Area 1 Security’s analysis, the page appears to return an error regardless of whether the victim enters a correct password. Stolen credentials are then sent to the attacker via a script located at, hxxps://www[.]techgaia[.]com//wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin[.]php.</p>
 	<p>Area 1 Security’s analysis revealed that www[.]techgaia[.]com is the older, now-defunct site for a revamped IT consulting services company. The site was running an outdated version of WordPress (version 4.9.7), making it susceptible to a number of <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-2337/product_id-4096/version_id-257818/Wordpress-Wordpress-4.9.7.html">vulnerabilities</a>. Its content has since been removed, and navigating to the domain now results in an HTTP 301 redirect. The vulnerable nature of this site made it easy prey, providing the perfect opportunity for an attacker to insert themselves into the fray and leverage the historic legitimacy of the site to bypass detections. With the ease of compromising unmaintained, vulnerable WordPress sites, it will only take the attacker a matter of days (at most) to resume operations with a new, otherwise legitimate site. As a result, legacy vendors that rely on deny lists to block suspect messages will be one step behind the attacker.</p>
-	<h3 id="recommendations">Recommendations</h3>
+	<h3>Recommendations</h3>
 	<p>For companies that deal with sensitive customer data, it is important to be knowledgeable in the latest data security and privacy regulations for the respective industry and region. New data privacy laws, such as the California Consumer Protection Act, are requiring businesses to ensure that consumers residing in California are able to opt out of data collection. All the while, GDPR currently remains the most stringent regulation in consumer data privacy. It is vital to communicate with all employees any updates regarding new protocols for handling Personally Identifiable Information (PII) to help ensure those in your organization do not fall victim to phishing attacks that rely on confusion from unclear or nonexistent communication regarding these regulations.</p>
 	<p>Additionally, it is imperative that employees understand the risks of clicking on unsolicited links and entering sensitive data into unauthorized login portals. However, current technology allows an attacker to easily create a phish that is a pixel-perfect forgery of a legitimate login page. Therefore, the safer, more secure option is to utilize a <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">dedicated security solution</a>; one that uses bleeding-edge technology to verify emails before they arrive in a user’s inbox, removing the risk of accidentally clicking a malicious link or file.</p>
 	<p>Area 1 Security’s advanced detection techniques, such as blind URL inspection, help stop phishing messages like those seen in this GDPR campaign from reaching customers’ inboxes. Our comprehensive <a href="https://www.cloudflare.com/zero-trust/products/email-security">anti-phishing solution</a> includes sophisticated pattern-matching algorithms that allow us to uncover new tactics malicious actors are using to bypass legacy vendors and cloud email providers in real time versus waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time. This has many advantages over post-delivery retraction in that the user is never exposed to the attack.</p>
-	<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
-	<p><strong>Credential Harvesters:</strong></p>
-	<p><a href="about:blank">https://www[.]techgaia[.]com/wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/?email=</a>&lt;redacted&gt;</p>
-	<p>https://www[.]techgaia[.]com//wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin[.]php</p>
-	<p><strong>Sender IP Addresses:</strong></p>
+	<h3>Indicators of Compromise</h3>
+	<p><b>Credential Harvesters:</b></p>
+	<p><a href="about:blank">https://www[.]techgaia[.]com/wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/?email=</a></p>
+	<p><a href="https://www/[./]techgaia/[./]com//wp-content/email/ID/sign/_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin/[./]php">https://www\[.\]techgaia\[.\]com//wp-content/email/ID/sign\_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin\[.\]php</a></p>
+	<p><b>Sender IP Addresses:</b></p>
 	<p>196[.]53[.]250[.]243</p>
 	<p>103[.]22.183[.]95</p>
 </div>

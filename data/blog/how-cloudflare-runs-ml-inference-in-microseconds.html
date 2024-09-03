@@ -1,52 +1,46 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image1-6.png" class="kg-image" alt="How Cloudflare runs machine learning inference in microseconds" loading="lazy" width="1201" height="675"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UoqmzJtaQyx1irJ1dQCJN/d969960729f7e0d20dfd8a0865fb144c/image1-6.png" alt="How Cloudflare runs machine learning inference in microseconds" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>Cloudflare executes an array of security checks on servers spread across our global network. These checks are designed to block attacks and prevent malicious or unwanted traffic from reaching our customers’ servers. But every check carries a cost - some amount of computation, and therefore some amount of time must be spent evaluating every request we process. As we deploy new protections, the amount of time spent executing security checks increases.</p>
 	<p>Latency is a key metric on which <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> are evaluated. Just as we optimize network latency by provisioning servers in close proximity to end users, we also optimize processing latency - which is the time spent processing a request before serving a response from cache or passing the request forward to the customers’ servers. Due to the scale of our network and the diversity of use-cases we serve, our edge software is subject to demanding specifications, both in terms of throughput and latency.</p>
 	<p>Cloudflare's <a href="https://www.cloudflare.com/learning/bots/what-is-bot-management">bot management</a> module is one suite of security checks which executes during the hot path of request processing. This module calculates a variety of bot signals and integrates directly with our front line servers, allowing us to customize behavior based on those signals. This module evaluates every request for heuristics and behaviors indicative of bot traffic, and scores every request with several <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning models</a>.</p>
 	<p>To reduce processing latency, we've undertaken a project to rewrite our bot management technology, porting it from Lua to Rust, and applying a number of performance optimizations. This post focuses on optimizations applied to the machine-learning detections within the bot management module, which account for approximately 15% of the latency added by bot detection. By switching away from a garbage collected language, removing memory allocations, and optimizing our parsers, we reduce the P50 latency of the bot management module by 79μs - a 20% reduction.</p>
-	<h2 id="engineering-for-zero-allocations">Engineering for zero allocations</h2>
+	<h2>Engineering for zero allocations</h2>
 	<p>Writing software without memory allocation poses several challenges. Indeed, high-level programming languages often trade memory management for productivity, abstracting away the details of memory management. But, in those details, are a number of algorithms to find contiguous regions of free memory, handle fragmentation, and call into the kernel to request new memory pages. Garbage collected languages incur additional costs throughout program execution to track when memory can be freed, plus pauses in program execution while the garbage collector executes. But, when performance is a critical requirement, languages should be evaluated for their ability to meet performance constraints.</p>
-	<h3 id="stack-allocation">Stack allocation</h3>
+	<h3>Stack allocation</h3>
 	<p>One of the simplest ways to reduce memory allocations is to work with fixed-size buffers. Fixed-sized buffers can be placed on the stack, which eliminates the need to invoke heap allocation logic; the compiler simply reserves space in the current stack frame to hold local variables. Alternatively, the buffers can be heap-allocated outside the hot path (for example, at application startup), incurring a one-time cost.</p>
-	<p>Arrays can be stack allocated:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">let mut buf = [0u8; BUFFER_SIZE];
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Vectors can be created outside the hot path:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">let mut buf = Vec::with_capacity(BUFFER_SIZE);
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>Arrays can be stack allocated:</p>
+	<pre class="language-rust"><code class="language-rust">let mut buf = [0u8; BUFFER_SIZE];</code></pre>
+	<p>Vectors can be created outside the hot path:</p>
+	<pre class="language-rust"><code class="language-rust">let mut buf = Vec::with_capacity(BUFFER_SIZE);</code></pre>
 	<p>To demonstrate the performance difference, let's compare two implementations of a case-insensitive string equality check. The first will allocate a buffer for each invocation to store the lower-case version of the string. The second will use a buffer that has already been allocated for this purpose.</p>
-	<p>Allocate a new buffer for each iteration:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">fn case_insensitive_equality_buffer_with_capacity(s: &amp;str, pat: &amp;str) -&gt; bool {
+	<p>Allocate a new buffer for each iteration:</p>
+	<pre class="language-rust"><code class="language-rust">fn case_insensitive_equality_buffer_with_capacity(s: &amp;str, pat: &amp;str) -&gt; bool {
 	let mut buf = String::with_capacity(s.len());
 	buf.extend(s.chars().map(|c| c.to_ascii_lowercase()));
 	buf == pat
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Re-use a buffer for each iteration, avoiding allocations:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">fn case_insensitive_equality_buffer_with_capacity(s: &amp;str, pat: &amp;str, buf: &amp;mut String) -&gt; bool {
+}</code></pre>
+	<p>Re-use a buffer for each iteration, avoiding allocations:</p>
+	<pre class="language-rust"><code class="language-rust">fn case_insensitive_equality_buffer_with_capacity(s: &amp;str, pat: &amp;str, buf: &amp;mut String) -&gt; bool {
 	buf.clear();
 	buf.extend(s.chars().map(|c| c.to_ascii_lowercase()));
 	buf == pat
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Benchmarking the two code snippets, the first executes in ~40ns per iteration, the second in ~25ns. Changing only the memory allocation behavior, the second implementation is ~38% faster.</p>
-	<h3 id="choice-of-algorithms">Choice of algorithms</h3>
+	<h3>Choice of algorithms</h3>
 	<p>Another strategy to reduce the number of memory allocations is to choose algorithms that operate on the data in-place and store any necessary state on the stack.</p>
-	<p>Returning to our string comparison function from above, let's rewrite it operate completely on the stack, and without copying data into a separate buffer:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">fn case_insensitive_equality_buffer_iter(s: &amp;str, pat: &amp;str) -&gt; bool {
+	<p>Returning to our string comparison function from above, let's rewrite it operate completely on the stack, and without copying data into a separate buffer:</p>
+	<pre class="language-rust"><code class="language-rust">fn case_insensitive_equality_buffer_iter(s: &amp;str, pat: &amp;str) -&gt; bool {
 	s.chars().map(|c| c.to_ascii_lowercase()).eq(pat.chars())
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>In addition to being the shortest, this function is also the fastest. This function benchmarks at ~13ns/iter, which is just slightly slower than the 11ns used to execute <code>eq_ignore_ascii_case</code> from the standard library. And the standard library implementation similarly avoids buffer allocation through use of iterators.</p>
-	<h3 id="testing-allocations">Testing allocations</h3>
-	<p>Automated testing of memory allocation on the critical path prevents accidental use of functions or libraries which allocate memory. <code>dhat</code> is a crate in the Rust ecosystem that supports such testing. By setting a new global allocator, <code>dhat</code> is able to count the number of allocations, as well as the number of bytes allocated on a given code path.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">/// Assert that the hot path logic performs zero allocations.
+	<h3>Testing allocations</h3>
+	<p>Automated testing of memory allocation on the critical path prevents accidental use of functions or libraries which allocate memory. <code>dhat</code> is a crate in the Rust ecosystem that supports such testing. By setting a new global allocator, <code>dhat</code> is able to count the number of allocations, as well as the number of bytes allocated on a given code path.</p>
+	<pre class="language-rust"><code class="language-rust">/// Assert that the hot path logic performs zero allocations.
 #[test]
 fn zero_allocations() {
 	let _profiler = dhat::Profiler::builder().testing().build();
@@ -56,71 +50,55 @@ fn zero_allocations() {
 	// Assert that no allocations occurred.
 	dhat::assert_eq!(stats.total_blocks, 0);
 	dhat::assert_eq!(stats.total_bytes, 0);
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>It is important to note, <code>dhat</code> does have the limitation that it only detects allocations in Rust code. External libraries can still allocate memory without using the Rust allocator. FFI calls, such as those made to C, are one such place where memory allocations may slip past <code>dhat</code>'s measurements.</p>
-	<h2 id="zero-allocation-decision-trees">Zero allocation decision trees</h2>
+	<h2>Zero allocation decision trees</h2>
 	<p>CatBoost is an open-source machine learning library used within the bot management module. The core logic of CatBoost is implemented in C++, and the library exposes bindings to a number of other languages - such as C and Rust. The Lua-based implementation of the bot management module relied on FFI calls to the C API to execute our models.</p>
 	<p>By removing memory allocations and implementing buffer re-use, we optimize the execution duration of the sample model included in the CatBoost repository by 10%. Our production models see gains up to 15%.</p>
-	<h3 id="optimize-for-single-document-evaluation">Optimize for single-document evaluation</h3>
-	<p>By optimizing CatBoost to evaluate a single set of features at a time, we reduce memory allocations and reduce latency. The CatBoost API has several functions which are optimized for evaluating multiple documents at a time, but this API does not benefit our application where requests are evaluated in the order they are received, and delaying processing to coalesce batches is undesirable. To support evaluation of a variable number of documents, the CatBoost implementation allocates vectors and iterates over the input documents, writing them into the vectors.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">TVector&lt;TConstArrayRef&lt;float&gt;&gt; floatFeaturesVec(docCount);
-TVector&lt;TConstArrayRef&lt;int&gt;&gt; catFeaturesVec(docCount);
+	<h3>Optimize for single-document evaluation</h3>
+	<p>By optimizing CatBoost to evaluate a single set of features at a time, we reduce memory allocations and reduce latency. The CatBoost API has several functions which are optimized for evaluating multiple documents at a time, but this API does not benefit our application where requests are evaluated in the order they are received, and delaying processing to coalesce batches is undesirable. To support evaluation of a variable number of documents, the CatBoost implementation allocates vectors and iterates over the input documents, writing them into the vectors.</p>
+	<pre class="language-cpp"><code class="language-cpp">TVector<tconstarrayref<float>&gt; floatFeaturesVec(docCount);
+TVector<tconstarrayref<int>&gt; catFeaturesVec(docCount);
 for (size_t i = 0; i &lt; docCount; ++i) {
     if (floatFeaturesSize &gt; 0) {
-        floatFeaturesVec[i] = TConstArrayRef&lt;float&gt;(floatFeatures[i], floatFeaturesSize);
+        floatFeaturesVec[i] = TConstArrayRef<float>(floatFeatures[i], floatFeaturesSize);
     }
     if (catFeaturesSize &gt; 0) {
-        catFeaturesVec[i] = TConstArrayRef&lt;int&gt;(catFeatures[i], catFeaturesSize);
+        catFeaturesVec[i] = TConstArrayRef<int>(catFeatures[i], catFeaturesSize);
     }
 }
-FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesVec, catFeaturesVec, TArrayRef&lt;double&gt;(result, resultSize));
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>To evaluate a single document, however, CatBoost only needs access to a reference to contiguous memory holding feature values. The above code can be replaced with the following:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">TConstArrayRef&lt;float&gt; floatFeaturesArray = TConstArrayRef&lt;float&gt;(floatFeatures, floatFeaturesSize);
-TConstArrayRef&lt;int&gt; catFeaturesArray = TConstArrayRef&lt;int&gt;(catFeatures, catFeaturesSize);
-FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesArray, catFeaturesArray, TArrayRef&lt;double&gt;(result, resultSize));
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Similar to the C++ implementation, the CatBoost Rust bindings also allocate vectors to support multi-document evaluation. For example, the bindings iterate over a vector of vectors, mapping it to a newly allocated vector of pointers:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">let mut float_features_ptr = float_features
+FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesVec, catFeaturesVec, TArrayRef<double>(result, resultSize));</double></int></float></tconstarrayref<int></tconstarrayref<float></code></pre>
+	<p>To evaluate a single document, however, CatBoost only needs access to a reference to contiguous memory holding feature values. The above code can be replaced with the following:</p>
+	<pre class="language-cpp"><code class="language-cpp">TConstArrayRef<float> floatFeaturesArray = TConstArrayRef<float>(floatFeatures, floatFeaturesSize);
+TConstArrayRef<int> catFeaturesArray = TConstArrayRef<int>(catFeatures, catFeaturesSize);
+FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesArray, catFeaturesArray, TArrayRef<double>(result, resultSize));</double></int></int></float></float></code></pre>
+	<p>Similar to the C++ implementation, the CatBoost Rust bindings also allocate vectors to support multi-document evaluation. For example, the bindings iterate over a vector of vectors, mapping it to a newly allocated vector of pointers:</p>
+	<pre class="language-rust"><code class="language-rust">let mut float_features_ptr = float_features
    .iter()
    .map(|x| x.as_ptr())
-   .collect::&lt;Vec&lt;_&gt;&gt;();
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>But in the single-document case, we don't need the outer vector at all. We can simply pass the inner pointer value directly:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">let float_features_ptr = float_features.as_ptr();
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="reusing-buffers">Reusing buffers</h3>
-	<p>The previous API in the Rust bindings accepted owned <code>Vec</code>s as input. By taking ownership of a heap-allocated data structure, the function also takes responsibility for freeing the memory at the conclusion of its execution. This is undesirable as it forecloses the possibility of buffer reuse. Additionally, categorical features are passed as owned <code>String</code>s, which prevents us from passing references to bytes in the original request. Instead, we must allocate a temporary <code>String</code> on the heap and copy bytes into it.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">pub fn calc_model_prediction(
+   .collect::<vec<_>&gt;();</vec<_></code></pre>
+	<p>But in the single-document case, we don't need the outer vector at all. We can simply pass the inner pointer value directly:</p>
+	<pre class="language-rust"><code class="language-rust">let float_features_ptr = float_features.as_ptr();</code></pre>
+	<h3>Reusing buffers</h3>
+	<p>The previous API in the Rust bindings accepted owned <code>Vec</code>s as input. By taking ownership of a heap-allocated data structure, the function also takes responsibility for freeing the memory at the conclusion of its execution. This is undesirable as it forecloses the possibility of buffer reuse. Additionally, categorical features are passed as owned <code>String</code>s, which prevents us from passing references to bytes in the original request. Instead, we must allocate a temporary <code>String</code> on the heap and copy bytes into it.</p>
+	<pre class="language-rust"><code class="language-rust">pub fn calc_model_prediction(
 	&amp;self,
-	float_features: Vec&lt;Vec&lt;f32&gt;&gt;,
-	cat_features: Vec&lt;Vec&lt;String&gt;&gt;,
-) -&gt; CatBoostResult&lt;Vec&lt;f64&gt;&gt; { ... }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Let's rewrite this function to take <code>&amp;[f32]</code> and <code>&amp;[&amp;str]</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">pub fn calc_model_prediction_single(
+	float_features: Vec<vec<f32>&gt;,
+	cat_features: Vec<vec<string>&gt;,
+) -&gt; CatBoostResult<vec<f64>&gt; { ... }</vec<f64></vec<string></vec<f32></code></pre>
+	<p>Let's rewrite this function to take <code>&amp;[f32]</code> and <code>&amp;[&amp;str]</code>:</p>
+	<pre class="language-rust"><code class="language-rust">pub fn calc_model_prediction_single(
 	&amp;self,
 	float_features: &amp;[f32],
 	cat_features: &amp;[&amp;str],
-) -&gt; CatBoostResult&lt;f64&gt; { ... }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>But, we also execute several models per request, and those models may use the same categorical features. Instead of calculating the hash for each separate model we execute, let's compute the hashes first and then pass them to each model that requires them:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">pub fn calc_model_prediction_single_with_hashed_cat_features(
+) -&gt; CatBoostResult<f64> { ... }</f64></code></pre>
+	<p>But, we also execute several models per request, and those models may use the same categorical features. Instead of calculating the hash for each separate model we execute, let's compute the hashes first and then pass them to each model that requires them:</p>
+	<pre class="language-rust"><code class="language-rust">pub fn calc_model_prediction_single_with_hashed_cat_features(
 	&amp;self,
 	float_features: &amp;[f32],
 	hashed_cat_features: &amp;[i32],
-) -&gt; CatBoostResult&lt;f64&gt; { ... }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="summary">Summary</h2>
+) -&gt; CatBoostResult<f64> { ... }</f64></code></pre>
+	<h2>Summary</h2>
 	<p>By optimizing away unnecessary memory allocations in the bot management module, we reduced P50 latency from 388us to 309us (20%), and reduced P99 latency from 940us to 813us (14%). And, in many cases, the optimized code is shorter and easier to read than the unoptimized implementation.</p>
 	<p>These optimizations were targeted at model execution in the bot management module. To learn more about how we are porting bot management from Lua to Rust, check out <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">this blog post</a>.</p>
 </div>

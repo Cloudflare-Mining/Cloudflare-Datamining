@@ -1,20 +1,27 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ssh-command-logging-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/ssh-command-logging-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/wquTgdlhBHsbaIK8TN2eUkzbK0rpMy9ooj1-26Cym2ONr8zkDq-nIza4tToroP29dbAx6fgXjEvvNzffboF_HJwp4rou7uqv8gsivOQz1sO7N3p6tUMGjSslfm29IsSex8hhZZhB" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ssh-command-logging">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/ssh-command-logging">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XRACdiQPkFV0MKk9xyFbT/382c3487a5128dd2d29cec8e1730885c/wquTgdlhBHsbaIK8TN2eUkzbK0rpMy9ooj1-26Cym2ONr8zkDq-nIza4tToroP29dbAx6fgXjEvvNzffboF_HJwp4rou7uqv8gsivOQz1sO7N3p6tUMGjSslfm29.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH (Secure Shell Protocol)</a> is an important protocol for managing remote machines. It provides a way for infrastructure teams to remotely and securely manage their fleet of machines. SSH was a step-up in security from other protocols like telnet. It ensures encrypted traffic and enforces per user controls over access to a particular machine. However, it can still introduce a significant security risk. SSH, especially root access, is destructive in the wrong hands (think <code>rm -r *</code>) and can be difficult to track. Logging and securing user actions via SSH typically requires custom development or restrictive software deployments. We’re excited to announce SSH command logging as part of Cloudflare Zero Trust.</p>
-	<h3 id="securing-ssh-access">Securing SSH access</h3>
+	<h3>Securing SSH access</h3>
 	<p>Security teams put significant effort into securing SSH across their organization because of the negative impact it can have in the wrong hands. Traditional SSH security consists of strong authentication, like certificate based authentication, and tight controls on who has “root” access. Additionally, VPNs and IP allow lists are used to further protect a machine from being publicly accessible to the Internet. The security challenges that remain are visibility and <a href="https://www.cloudflare.com/learning/security/glossary/what-is-lateral-movement">potential for lateral movement</a>.</p>
 	<p>SSH commands to a remote machine are end-to-end encrypted, which means that it is impossible to see what is being run by a particular user on a specific machine. Typically, logs can only be captured on the machine itself in log files, and a malicious user can delete log files as easily as any other command they’re running to cover their tracks. Solutions exist to send these logs to an external logging service, but this requires installing additional software on every machine that can be accessed using SSH. <a href="https://man.openbsd.org/ssh_config#ProxyJump">ProxyJump</a>, a common way to deploy a JumpHost model, further compounds this problem because a user can easily traverse a local network of machines once they gain access to a machine in the network.</p>
-	<h3 id="introducing-ssh-command-logging">Introducing SSH command logging</h3>
+	<h3>Introducing SSH command logging</h3>
 	<p>We built SSH command logging into Cloudflare Zero Trust to provide SSH visibility at a network layer instead of relying on software on individual machines. Our first customer for this capability is the Cloudflare security team. SSH command logging provides a full replay of all commands run during an SSH session, including across multiple jump-hosts or bastions. This allows for a clear picture of what happened in the event of an accident, suspected breach, or attack.</p>
-	<p>SSH command logging was built as an extension of Cloudflare’s Secure Web Gateway. The <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> already performs secure TLS inspection of all traffic from a user device. Now, it also supports SSH inspection by bootstrapping a proxy server upon new connections. Administrators are able to configure <em>network policies</em> to allow SSH access and audit the specific commands run.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-75.png" class="kg-image" alt="Command logging configuration" loading="lazy"></figure>
+	<p>SSH command logging was built as an extension of Cloudflare’s Secure Web Gateway. The <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> already performs secure TLS inspection of all traffic from a user device. Now, it also supports SSH inspection by bootstrapping a proxy server upon new connections. Administrators are able to configure <i>network policies</i> to allow SSH access and audit the specific commands run.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hBeFNbgv24vOQOOGmHBoG/c785e6d1f3c8c19218a7ddd5337c3be0/image1-75.png" alt="Command logging configuration" class="kg-image" width="840" height="550" loading="lazy">
+
+	</figure>
 	<p>This then exposes that machine for SSH access and proxies all SSH commands via Cloudflare’s global edge network. All commands are automatically captured without complex logging software installed on the machine and across all hosts. TTY traffic can also be recorded for a later full session replay.</p>
 	<p>As an added measure of security, all logs captured by Cloudflare are immediately encrypted via a public key provided by each customer, to ensure that only authorized security users can inspect SSH commands. Furthermore, we are launching this feature with an opt-in FIPS 140-2 mode to support FedRAMP compliant users.</p>
 	<p>All user authentication is performed via <a href="https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates">Cloudflare Short-Lived Certificates</a>. Once the client certificate is loaded onto a user machine, their SSH setup is complete and secure. This eliminates the need for tedious and tricky SSH key-pair management. This means no more key management on end user devices, all the need is the Cloudflare root CA, and they can access any machine they are entitled to, including using ProxyJump.</p>
-	<h3 id="what-s-next">What’s next</h3>
+	<h3>What’s next</h3>
 	<p>This is only the beginning for SSH security in Cloudflare Zero Trust. In the future, we will integrate with popular <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a> tools and provide alerting for specific commands and risky behavior.</p>
 	<p>SSH command logging is in closed beta, and we will be opening this feature up to users in the coming weeks. Stay tuned for more updates when we announce general availability!</p>
 </div>

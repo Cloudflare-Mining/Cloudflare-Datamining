@@ -1,7 +1,12 @@
 <div class="mb2 gray5">8 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/argo-and-the-cloudflare-global-private-backbone">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/argo-and-the-cloudflare-global-private-backbone">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/argo-and-the-cloudflare-global-private-backbone">日本語</a>, <a href="https://blog.cloudflare.com/es-es/argo-and-the-cloudflare-global-private-backbone">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/argo-and-the-cloudflare-global-private-backbone">Français</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image1-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Welcome to Speed Week! Each day this week, we’re going to talk about something Cloudflare is doing to make the Internet meaningfully faster for everyone. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ebjOOoNNxpYnYtsUGLSNc/87912095e1a39bc82683842f8f01de7d/image1-3.png" alt="" class="kg-image" width="1999" height="1164" loading="lazy">
+
+	</figure>
+	<p>Welcome to Speed Week! Each day this week, we’re going to talk about something Cloudflare is doing to make the Internet meaningfully faster for everyone.</p>
 	<p>Cloudflare has built a massive network of data centers in 180 cities in 75 countries. One way to think of Cloudflare is a global system to transport bits securely, quickly, and reliably from any point A to any other point B on the planet.</p>
 	<p>To make that a reality, we built Argo. Argo uses real-time global network information to route around brownouts, cable cuts, packet loss, and other problems on the Internet. Argo makes the network that Cloudflare relies on—the Internet—faster, more reliable, and more secure on every hop around the world.</p>
 	<p>We launched Argo two years ago, and it now carries over 22% of Cloudflare’s traffic. On an average day, Argo cuts the amount of time Internet users spend waiting for content by 112 years!</p>
@@ -9,52 +14,74 @@
 	<p>Today, we’re introducing the Cloudflare Global Private Backbone. It’s been in operation for a while now and links Cloudflare locations with private fiber connections.</p>
 	<p>This private backbone benefits all Cloudflare customers, and it shines in combination with Argo. Argo can select the best available link across the Internet on a per data center-basis, and takes full advantage of the Cloudflare Global Private Backbone automatically.</p>
 	<p>Let’s open the hood on Argo and explain how our backbone network further improves performance for our customers.</p>
-	<h3 id="what-s-argo">What’s Argo?</h3>
+	<h3>What’s Argo?</h3>
 	<p>Argo is like Waze for the Internet. Every day, Cloudflare carries hundreds of billions of requests across our network and the Internet. Because our network, our customers, and their end-users are well distributed globally, all of these requests flowing across our infrastructure paint a great picture of how different parts of the Internet are performing at any given time.</p>
 	<p>Just like Waze examines real data from real drivers to give you accurate, uncongested (and sometimes unorthodox) routes across town, Argo Smart Routing uses the timing data Cloudflare collects from each request to pick faster, more efficient routes across the Internet.</p>
 	<p>In practical terms, Cloudflare’s network is expansive in its reach. Some of the Internet links in a given region may be congested and cause poor performance (a literal traffic jam). By understanding this is happening and using alternative network locations and providers, Argo can put traffic on a less direct, but faster, route from its origin to its destination.</p>
-	<p>These benefits are not theoretical: <strong>enabling Argo Smart Routing shaves an average of 33% </strong>off HTTP time to first byte (TTFB).</p>
-	<p>One other thing we’re proud of: we’ve stayed super focused on making it easy to use. One click in the dashboard enables better, smarter routing, bringing the full weight of Cloudflare’s network, data, and engineering expertise to bear on making your traffic faster. Advanced analytics allow you to understand exactly how Argo is performing for you around the world. </p>
-	<p>You can read a lot more about how Argo works in our original <a href="https://blog.cloudflare.com/argo">launch blog post</a>. </p>
+	<p>These benefits are not theoretical: <b>enabling Argo Smart Routing shaves an average of 33%</b> off HTTP time to first byte (TTFB).</p>
+	<p>One other thing we’re proud of: we’ve stayed super focused on making it easy to use. One click in the dashboard enables better, smarter routing, bringing the full weight of Cloudflare’s network, data, and engineering expertise to bear on making your traffic faster. Advanced analytics allow you to understand exactly how Argo is performing for you around the world.</p>
+	<p>You can read a lot more about how Argo works in our original <a href="https://blog.cloudflare.com/argo">launch blog post</a>.</p>
 	<p>So far, we’ve been talking about Argo at a functional level: you turn it on and it makes requests that traverse the Internet to your origin faster. How does it actually work? Argo is dependent on a few things to make its magic happen: Cloudflare’s network, up-to-the-second performance data on how traffic is moving on the Internet, and machine learning routing algorithms.</p>
-	<h3 id="cloudflare-s-global-network">Cloudflare’s Global Network</h3>
+	<h3>Cloudflare’s Global Network</h3>
 	<p>Cloudflare maintains a network of data centers around the world, and our network continues to grow significantly. Today, we have <a href="https://www.cloudflare.com/network">more than 180</a> data centers in 75 countries. That’s an additional 69 data centers since we launched Argo in May 2017.</p>
-	<p>In addition to adding new locations, Cloudflare is constantly working with network partners to add connectivity options to our network locations. A single Cloudflare data center may be peered with a dozen networks, connected to multiple Internet eXchanges (IXs), connected to multiple transit providers (e.g. Telia, GTT, etc), and now, connected to our own physical backbone. A given destination may be reachable over multiple different links from the same location; each of these links will have different performance and reliability characteristics. </p>
+	<p>In addition to adding new locations, Cloudflare is constantly working with network partners to add connectivity options to our network locations. A single Cloudflare data center may be peered with a dozen networks, connected to multiple Internet eXchanges (IXs), connected to multiple transit providers (e.g. Telia, GTT, etc), and now, connected to our own physical backbone. A given destination may be reachable over multiple different links from the same location; each of these links will have different performance and reliability characteristics.</p>
 	<p>This increased network footprint is important in making Argo faster. Additional network locations and providers mean Argo has more options at its disposal to route around network disruptions and congestion. Every time we add a new network location, we exponentially grow the number of routing options available to any given request.</p>
-	<h3 id="better-routing-for-improved-performance">Better routing for improved performance</h3>
+	<h3>Better routing for improved performance</h3>
 	<p>Argo requires the huge global network we’ve built to do its thing. But it wouldn’t do much of anything if it didn’t have the smarts to actually take advantage of all our data centers and cables between them to move traffic faster.</p>
 	<p>Argo combines multiple <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning techniques</a> to build routes, test them, and disqualify routes that are not performing as we expect.</p>
 	<p>The generation of routes is performed on data using “offline” optimization techniques: Argo’s route construction algorithms take an input data set (timing data) and fixed optimization target (“minimize TTFB”), outputting routes that it believes satisfy this constraint.</p>
 	<p>Route disqualification is performed by a separate pipeline that has no knowledge of the route construction algorithms. These two systems are intentionally designed to be adversarial, allowing Argo to be both aggressive in finding better routes across the Internet but also adaptive to rapidly changing network conditions.</p>
 	<p>One specific example of Argo’s smarts is its ability to distinguish between multiple potential connectivity options as it leaves a given data center. We call this “transit selection”.</p>
-	<p>As we discussed above, some of our data centers may have a dozen different, viable options for reaching a given destination IP address. It’s as if you subscribed to every available ISP at your house, and you could choose to use any one of them for each website you tried to access. Transit selection enables Cloudflare to pick the fastest available path in real-time at every hop to reach the destination. </p>
+	<p>As we discussed above, some of our data centers may have a dozen different, viable options for reaching a given destination IP address. It’s as if you subscribed to every available ISP at your house, and you could choose to use any one of them for each website you tried to access. Transit selection enables Cloudflare to pick the fastest available path in real-time at every hop to reach the destination.</p>
 	<p>With transit selection, Argo is able to specify both:</p>
-	<p>1) Network location waypoints on the way to the origin.<br>2)<em> </em>The<em> specific transit provider or link</em> at each waypoint in the journey of the packet all the way from the source to the destination.</p>
-	<p>To analogize this to Waze, Argo giving directions <em>without</em> transit selection is like telling someone to drive to a waypoint (go to New York from San Francisco, passing through Salt Lake City), without specifying the roads to actually take <em>to</em> Salt Lake City or New York. <em>With</em> transit selection, we’re able to give full turn-by-turn directions — take I-80 out of San Francisco, take a left here, enter the Salt Lake City area using SR-201 (because I-80 is congested around SLC), etc. This allows us to route around issues on the Internet with much greater precision.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Argo-Map@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Transit selection requires logic in our inter-data center data plane (the components that actually move data across our network) to allow for differentiation between different providers and links available in each location. Some interesting network automation and advertisement techniques allow us to be much more discerning about which link actually gets picked to move traffic. </p>
+	<ol>
+		<li>
+			<p>Network location waypoints on the way to the origin.</p>
+		</li>
+		<li>
+			<p>The <i>specific transit provider or link</i> at each waypoint in the journey of the packet all the way from the source to the destination.</p>
+		</li>
+	</ol>
+	<p>To analogize this to Waze, Argo giving directions <i>without</i> transit selection is like telling someone to drive to a waypoint (go to New York from San Francisco, passing through Salt Lake City), without specifying the roads to actually take <i>to</i> Salt Lake City or New York. <i>With</i> transit selection, we’re able to give full turn-by-turn directions — take I-80 out of San Francisco, take a left here, enter the Salt Lake City area using SR-201 (because I-80 is congested around SLC), etc. This allows us to route around issues on the Internet with much greater precision.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x806c835ECNPmNDRr5fRT/cc94c8169341494419dc0b622e3b052b/Argo-Map_2x.png" alt="" class="kg-image" width="1600" height="929" loading="lazy">
+
+	</figure>
+	<p>Transit selection requires logic in our inter-data center data plane (the components that actually move data across our network) to allow for differentiation between different providers and links available in each location. Some interesting network automation and advertisement techniques allow us to be much more discerning about which link actually gets picked to move traffic.</p>
 	<p>Without modifications to the Argo data plane, those options would be abstracted away by our edge routers, with the choice of transit left to BGP. We plan to talk more publicly about the routing techniques used in the future.</p>
-	<p>We are able to directly measure the impact transit selection has on Argo customer traffic. Looking at global average improvement, <strong>transit selection gets customers an additional 16% TTFB latency benefit </strong>over taking standard BGP-derived routes. That’s huge!</p>
+	<p>We are able to directly measure the impact transit selection has on Argo customer traffic. Looking at global average improvement, <b>transit selection gets customers an additional 16% TTFB latency benefit</b> over taking standard BGP-derived routes. That’s huge!</p>
 	<p>One thing we think about: Argo can itself change network conditions when moving traffic from one location or provider to another by <a href="https://www.citylab.com/transportation/2018/09/citylab-university-induced-demand/569455">inducing demand</a> (adding additional data volume because of improved performance) and changing traffic profiles. With great power comes great intricacy.</p>
-	<h3 id="adding-the-cloudflare-global-private-backbone">Adding the Cloudflare Global Private Backbone</h3>
+	<h3>Adding the Cloudflare Global Private Backbone</h3>
 	<p>Given our diversity of transit and connectivity options in each of our data centers, and the smarts that allow us to pick between them, why did we go through the time and trouble of building a backbone for ourselves? The short answer: operating our own private backbone allows us much more control over end-to-end performance and capacity management.</p>
 	<p>When we buy transit or use a partner for connectivity, we’re relying on that provider to manage the link’s health and ensure that it stays uncongested and available. Some networks are better than others, and conditions change all the time.</p>
 	<p>As an example, here’s a measurement of jitter (variance in round trip time) between two of our data centers, Chicago and Newark, over a transit provider’s network:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image4-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5j3Wu37eyBkXzcOEiaV1tH/ea0f2f17ceb1ff1db03dd4dcdecdd2ac/image4-1.png" alt="" class="kg-image" width="1999" height="478" loading="lazy">
+
+	</figure>
 	<p>Average jitter over the pictured 6 hours is 4ms, with average round trip latency of 27ms. Some amount of latency is something we just need to learn to live with; the speed of light is a tough physical constant to do battle with, and network protocols are built to function over links with high or low latency.</p>
 	<p>Jitter, on the other hand, is “bad” because it is unpredictable and network protocols and applications built on them often degrade quickly when jitter rises. Jitter on a link is usually caused by more buffering, queuing, and general competition for resources in the routing hardware on either side of a connection. As an illustration, having a VoIP conversation over a network with high latency is annoying but manageable. Each party on a call will notice “lag”, but voice quality will not suffer. Jitter causes the conversation to garble, with packets arriving on top of each other and unpredictable glitches making the conversation unintelligible.</p>
 	<p>Here’s the same jitter chart between Chicago and Newark, except this time, transiting the Cloudflare Global Private Backbone:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aHclF30Av4bIGTOkHFLg4/040aa071effe3303dd288036fcbec6c2/image3.png" alt="" class="kg-image" width="1999" height="477" loading="lazy">
+
+	</figure>
 	<p>Much better! Here we see a jitter measurement of 536μs (microseconds), almost eight times better than the measurement over a transit provider between the same two sites.</p>
 	<p>The combination of fiber we control end-to-end and Argo Smart Routing allows us to unlock the full potential of Cloudflare’s backbone network. Argo’s routing system knows exactly how much capacity the backbone has available, and can manage how much additional data it tries to push through it. By controlling both ends of the pipe, and the pipe itself, we can guarantee certain performance characteristics and build those expectations into our routing models. The same principles do not apply to transit providers and networks we don’t control.</p>
-	<h3 id="latency-be-gone-">Latency, be gone!</h3>
+	<h3>Latency, be gone!</h3>
 	<p>Our private backbone is another tool available to us to improve performance on the Internet. Combining Argo’s cutting-edge machine learning and direct fiber connectivity between points on our large network allows us to route customer traffic with predictable, excellent performance.</p>
 	<p>We’re excited to see the backbone and its impact continue to expand.</p>
 	<p>Speaking personally as a product manager, Argo is really fun to work on. We make customers happier by making their websites, APIs, and networks faster. Enabling Argo allows customers to do that with one click, and see immediate benefit. Under the covers, huge investments in physical and virtual infrastructure begin working to accelerate traffic as it flows from its source to destination. &nbsp;</p>
 	<p>From an engineering perspective, our weekly goals and objectives are directly measurable — did we make our customers faster by doing additional engineering work? When we ship a new optimization to Argo and immediately see our charts move up and to the right, we know we’ve done our job.</p>
 	<p>Building our physical private backbone is the latest thing we’ve done in our need for speed.</p>
 	<p>Welcome to Speed Week!</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image1-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DjjNeUjd2lQWKw6rPgbXR/dec86d281cedf76439687f27a2756d47/image1-2.png" alt="" class="kg-image" width="1500" height="708" loading="lazy">
+
+	</figure>
 	<p><a href="https://dash.cloudflare.com/traffic">Activate Argo</a> now, or <a href="mailto:enterprise@cloudflare.com">contact sales</a> to learn more!</p>
 </div>

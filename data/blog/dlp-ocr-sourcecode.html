@@ -1,32 +1,56 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/dlp-ocr-sourcecode-ja-jp">日本語</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image3-3.png" class="kg-image" alt="Announcing two highly requested DLP enhancements: Optical Character Recognition (OCR) and Source Code Detections" loading="lazy" width="1800" height="1013"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/dlp-ocr-sourcecode">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4o83pdK9B9Xo9dC7G8y3H6/80d1ae733dcea5fa9de8fec3005229a0/image3-3.png" alt="Announcing two highly requested DLP enhancements: Optical Character Recognition (OCR) and Source Code Detections" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>We are excited to announce two enhancements to Cloudflare’s Data Loss Prevention (DLP) service: support for Optical Character Recognition (OCR) and predefined source code detections. These two highly requested DLP features make it easier for organizations to protect their sensitive data with granularity and reduce the risks of breaches, regulatory non-compliance, and reputational damage:</p>
 	<ul>
-		<li>With OCR, customers can efficiently identify and classify sensitive information contained within images or scanned documents.</li>
-		<li>With predefined source code detections, organizations can scan inline traffic for common code languages and block those HTTP requests to prevent data leaks, as well as detecting the storage of code in repositories such as Google Drive.</li>
+		<li>
+			<p>With OCR, customers can efficiently identify and classify sensitive information contained within images or scanned documents.</p>
+		</li>
+		<li>
+			<p>With predefined source code detections, organizations can scan inline traffic for common code languages and block those HTTP requests to prevent data leaks, as well as detecting the storage of code in repositories such as Google Drive.</p>
+		</li>
 	</ul>
 	<p>These capabilities are available now within our DLP engine, which is just one of several Cloudflare services, including <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">cloud access security broker (CASB)</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust network access (ZTNA)</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway (SWG)</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">remote browser isolation (RBI)</a>, and <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security">cloud email security</a>, that help organizations protect data everywhere across web, SaaS, and private applications.</p>
-	<h3 id="about-optical-character-recognition-ocr">About Optical Character Recognition (OCR)</h3>
+	<h3>About Optical Character Recognition (OCR)</h3>
 	<p>OCR enables the extraction of text from images. It converts the text within those images into readable text data that can be easily edited, searched, or analyzed, unlike images.</p>
 	<p>Sensitive data regularly appears in image files. For example, employees are often asked to provide images of identification cards, passports, or documents as proof of identity or work status. Those images can contain a plethora of sensitive and regulated classes of data, including <a href="https://www.cloudflare.com/learning/privacy/what-is-pii">Personally Identifiable Information (PII)</a> — for example, passport numbers, driver's license numbers, birthdates, tax identification numbers, and much more.</p>
 	<p>OCR can be leveraged within DLP policies to prevent the unauthorized sharing or leakage of sensitive information contained within images. Policies can detect when sensitive text content is being uploaded to cloud storage or shared through other communication channels, and block the transaction to prevent data loss. This assists in enforcing compliance with regulatory requirements related to data protection and <a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy">privacy</a>.</p>
-	<h3 id="about-source-code-detection">About source code detection</h3>
+	<h3>About source code detection</h3>
 	<p>Source code fuels digital business and contains high-value intellectual property, including proprietary algorithms and encrypted secrets about a company’s infrastructure. Source code has been and will continue to be a target for theft by external attackers, but customers are also increasingly concerned about the inadvertent exposure of this information by internal users. For example, developers may accidentally upload source code to a publicly available GitHub repository or to <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai">generative AI</a> tools like ChatGPT. While these tools have their place (like using AI to help with debugging), security teams want greater visibility and more precise control over what data flows to and from these tools.</p>
 	<p>To help customers, Cloudflare now offers <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles/#source-code">predefined DLP profiles for common code languages</a> — specifically C, C++, C#, Go, Haskell, Java, Javascript, Lua, Python, R, Rust, and Swift. These machine learning-based detections train on public repositories for algorithm development, ensuring they remain up to date. Cloudflare’s DLP inspects the HTTP body of requests for these DLP profiles, and security teams can block traffic accordingly to prevent data leaks.</p>
-	<h3 id="how-to-use-these-capabilities">How to use these capabilities</h3>
+	<h3>How to use these capabilities</h3>
 	<p>Cloudflare offers you flexibility to determine what data you are interested in detecting via DLP policies. You can use predefined profiles created by Cloudflare for common types of sensitive or regulated data (e.g. credentials, financial data, health data, identifiers), or you can <a href="https://blog.cloudflare.com/custom-dlp-profiles">create your own custom detections</a>.</p>
 	<p>To implement inline blocking of source code, simply select the DLP profiles for the languages you want to detect. For example, if my organization uses Rust, Go, and JavaScript, I would turn on those detections:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image4-6.png" class="kg-image" alt="" loading="lazy" width="1999" height="799"></figure>
-	<p>I would then create a blocking policy via our secure web gateway to prevent traffic containing source code<strong>. </strong>Here, we block source code from being uploaded to ChatGPT:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image2-3.png" class="kg-image" alt="" loading="lazy" width="1382" height="810"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V2WLxpyTJ1MBCVs9hDZo6/e7a35a10e600632be5a0e1ac36403006/image4-6.png" alt="" class="kg-image" width="1999" height="799" loading="lazy">
+
+	</figure>
+	<p>I would then create a blocking policy via our secure web gateway to prevent traffic containing source code**.** Here, we block source code from being uploaded to ChatGPT:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xnJNBdZUZl6H13PW0VlhI/ce28eb4b6ebef43fd6814ed65b9c2798/image2-3.png" alt="" class="kg-image" width="1382" height="810" loading="lazy">
+
+	</figure>
 	<p>Adding OCR to any detection is similarly easy. Below is a profile looking for sensitive data that could be stored in scanned documents.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="363"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HLCEY3pPWi3hpeN6OVKhd/7585bb3f748e67e57b0f4b7a71017f29/image5.png" alt="" class="kg-image" width="1999" height="363" loading="lazy">
+
+	</figure>
 	<p>With the detections selected, simply enable the OCR toggle, and wherever you are applying DLP inspections, images in your content will be scanned for sensitive data. The detections work the same in images as they do in the text, including Match Counts and Context Analysis, so no additional logic or settings are needed.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image1-3.png" class="kg-image" alt="" loading="lazy" width="1494" height="663"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AzZy9wouLp9pIgkb15IIF/00fb8205e3a966e6902c5c657507aa39/image1-3.png" alt="" class="kg-image" width="1494" height="663" loading="lazy">
+
+	</figure>
 	<p>Consistency across use cases is a core principle of our DLP solution, so as always, this feature is available for both data at rest, <a href="https://blog.cloudflare.com/casb-dlp">available via CASB</a>, and data in transit, <a href="https://blog.cloudflare.com/inline-dlp-ga">available via Gateway</a>.</p>
-	<h3 id="how-do-i-get-started">How do I get started?</h3>
+	<h3>How do I get started?</h3>
 	<p>DLP is available with other data protection services as part of <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One,</a> our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">Secure Access Service Edge (SASE)</a> platform that converges <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> security and network connectivity services. To get started protecting your sensitive data, <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise">reach out for a Zero Trust consultation</a>, or contact your account manager.</p>
 </div>

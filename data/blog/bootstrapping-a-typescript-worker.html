@@ -1,25 +1,32 @@
-<div class="mb2 gray5">14 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FXneXWxAlSjkmdEfZwK8V/22f0cc286eb7b0cfb7a7d244aa095989/bootstrapping-a-typescript-worker.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm">Webstorm</a> and npm run upload your code straight to the edge.</p>
-	<h3 id="prerequisites">Pre Requisites</h3>
+	<h3>Pre Requisites</h3>
 	<p>My environment looks like this:</p>
 	<ul>
-		<li>macOS High Sierra</li>
-		<li>node v8.11.3</li>
-		<li>npm v5.6.0</li>
-		<li>Webstorm v2018.1.3</li>
+		<li>
+			<p>macOS High Sierra</p>
+		</li>
+		<li>
+			<p>node v8.11.3</p>
+		</li>
+		<li>
+			<p>npm v5.6.0</p>
+		</li>
+		<li>
+			<p>Webstorm v2018.1.3</p>
+		</li>
 	</ul>
 	<p>You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers">activate Workers</a> on it.</p>
 	<p>I'll be using cryptoserviceworker.com</p>
 	<p>I'll also use Yeoman to build our initial scaffolding. Install it with <code>npm install yo -g</code></p>
-	<h2 id="gettingstarted">Getting Started</h2>
+	<h2>Getting Started</h2>
 	<p>Let's start with a minimal node app with a "hello world" class and a test.</p>
-	<pre><code>mkdir cryptoserviceworker &amp;&amp; cd cryptoserviceworker
+	<pre class="language-bash"><code class="language-bash">mkdir cryptoserviceworker &amp;&amp; cd cryptoserviceworker
 npm install generator-node-typescript -g
-yo node-typescript
-</code></pre>
+yo node-typescript</code></pre>
 	<p>That generator creates the following directory structure:</p>
-	<pre><code>drwxr-xr-x   16 steve  staff     512 Jun 18 20:40 .
+	<pre class="language-bash"><code class="language-bash">drwxr-xr-x   16 steve  staff     512 Jun 18 20:40 .
 drwxr-xr-x   10 steve  staff     320 Jun 18 20:35 ..
 -rw-r--r--    1 steve  staff     197 Jun 18 20:40 .editorconfig
 -rw-r--r--    1 steve  staff      96 Jun 18 20:40 .gitignore
@@ -34,12 +41,11 @@ drwxr-xr-x  479 steve  staff   15328 Jun 18 20:40 node_modules
 -rw-r--r--    1 steve  staff    1506 Jun 18 20:40 package.json
 drwxr-xr-x    4 steve  staff     128 Jun 18 20:40 src
 -rw-r--r--    1 steve  staff     454 Jun 18 20:40 tsconfig.json
--rw-r--r--    1 steve  staff      73 Jun 18 20:40 tslint.json
-</code></pre>
+-rw-r--r--    1 steve  staff      73 Jun 18 20:40 tslint.json</code></pre>
 	<p>It includes default settings, a task runner, an initial Typescript config and more. We won't use all of it, but it's a good starting point.</p>
-	<h2 id="firsttest">First Test</h2>
+	<h2>First Test</h2>
 	<p>If we take a look at the contents of <code>src/greeter.ts</code>, we'll see it's a very Typescript implementation of hello world.</p>
-	<pre><code>$ cat greeter.ts 
+	<pre class="language-bash"><code class="language-bash">$ cat greeter.ts 
 export class Greeter {
   private greeting: string;
 
@@ -50,18 +56,16 @@ export class Greeter {
   public greet(): string {
     return `Bonjour, ${this.greeting}!`;
   }
-}
-</code></pre>
+}</code></pre>
 	<p>Because Yeoman has set up our test infrastructure, we should be able exercise the code using the greeter test in <code>__tests__/greeter-spec.ts</code></p>
-	<pre><code>import { Greeter } from '../src/greeter';
+	<pre class="language-bash"><code class="language-bash">import { Greeter } from '../src/greeter';
 
 test('Should greet with message', () =&gt; {
   const greeter = new Greeter('friend');
   expect(greeter.greet()).toBe('Bonjour, friend!');
-});
-</code></pre>
+});</code></pre>
 	<p>This generator uses jest. It's installed locally, but let's install it globally for convenience and run it!</p>
-	<pre><code>npm install jest -g
+	<pre class="language-bash"><code class="language-bash">npm install jest -g
 jest
  PASS  __tests__/greeter-spec.ts
  PASS  __tests__/index-spec.ts
@@ -71,20 +75,26 @@ Tests:       2 passed, 2 total
 Snapshots:   0 total
 Time:        1.867s
 Ran all test suites.
-
 </code></pre>
 	<p>OK, so we have a testable Typescript template. Let's fire up Webstorm and write some code!</p>
-	<h3 id="helloworldwithworkers">Hello, World with Workers</h3>
+	<h3>Hello, World with Workers</h3>
 	<p>A hello world implementation in Typescript might look something like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/typescript-hello-world.png" alt="Hello world first attempt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iZzB5lable4vXw45e7HjV/865f6f333a2dcd512ddd1919ce525ca8/typescript-hello-world.png" alt="Hello world first attempt" class="kg-image" width="383" height="139" loading="lazy">
+
+	</figure>
 	<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch">node-fetch</a> provides an implementation for node, so let’s install that.</p>
-	<pre><code class="language-bash">npm install node-fetch
-npm install @types/node-fetch
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">npm install node-fetch
+npm install @types/node-fetch</code></pre>
 	<p>That made Webstorm happier. It’s been able to locate the type definitions.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/typescript-hello-world2.png" alt="Hello world with type defs" loading="lazy"></p>
-	<p>Now let's write a test. Create a new file <strong>tests</strong>/worker-spec.ts:</p>
-	<pre><code class="language-typescript">import { Request } from "node-fetch";
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79lrvSbwWcbZMWH2Q93vJk/9e0a753fe06d2628a9e97d8965982231/typescript-hello-world2.png" alt="Hello world with type defs" class="kg-image" width="444" height="149" loading="lazy">
+
+	</figure>
+	<p>Now let's write a test. Create a new file <b>tests</b>/worker-spec.ts:</p>
+	<pre class="language-typescript"><code class="language-typescript">import { Request } from "node-fetch";
 import { Worker } from "../src/worker";
 
 test('Should say hello', () =&gt; {
@@ -94,24 +104,20 @@ test('Should say hello', () =&gt; {
   const response = worker.handle(request);
   expect(response.status).toEqual(200);
   expect(response.body).toEqual("Hello, world!");
-});
-</code></pre>
+});</code></pre>
 	<p>And delete the other files and tests so we're just working worker.ts and worker-spect.ts</p>
 	<p>Run <code>jest</code></p>
-	<pre><code> PASS  __tests__/worker-spec.ts
+	<pre class="language-bash"><code class="language-bash"> PASS  __tests__/worker-spec.ts
  PASS  __tests__/worker-spec.js
 
 Test Suites: 2 passed, 2 total
 Tests:       2 passed, 2 total
 Snapshots:   0 total
-Time:        1.213s, estimated 2s
-</code></pre>
+Time:        1.213s, estimated 2s</code></pre>
 	<p>OK, so our test passed, but notice it ran both the Typescript and the Javascript? Let's restrict to just Typescript. Go into package.json, locate jest and change</p>
-	<p><code>"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",</code> to<br>
-		<code>"testRegex": "(/__tests__/.*)\\-spec.ts$"</code>
-	</p>
+	<p><code>"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",</code> to<code>"testRegex": "(/__tests__/.*)\\-spec.ts$"</code></p>
 	<p>Run it again:</p>
-	<pre><code class="language-bash">jest
+	<pre class="language-bash"><code class="language-bash">jest
  PASS  __tests__/worker-spec.ts
   ✓ Should say hello (8ms)
 
@@ -120,12 +126,11 @@ Tests:       1 passed, 1 total
 Snapshots:   0 total
 Time:        1.123s, estimated 2s
 Ran all test suites.
-
 </code></pre>
 	<p>Better. OK, ship it!</p>
-	<h3 id="fromlocaltypescripttoworkercompatiblejavascript">From Local Typescript to Worker Compatible Javascript.</h3>
+	<h3>From Local Typescript to Worker Compatible Javascript.</h3>
 	<p>Let's take a look at <code>src/worker.js</code> to see how our Typescript transpiled.</p>
-	<pre><code class="language-javascript">"use strict";
+	<pre class="language-javascript"><code class="language-javascript">"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_fetch_1 = require("node-fetch");
 class Worker {
@@ -133,42 +138,61 @@ class Worker {
         return new node_fetch_1.Response('Hello, world!');
     }
 }
-exports.Worker = Worker;
-</code></pre>
+exports.Worker = Worker;</code></pre>
 	<p>Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-dashboard.png" alt="Workers Dashboard" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6H2ZEwr9QfXdCxE7Ai7kOs/273801a5ceb5eba3b05b4024f9dc66e0/workers-dashboard.png" alt="Workers Dashboard" class="kg-image" width="988" height="557" loading="lazy">
+
+	</figure>
 	<p>First things first, check the canonical Hello World implementation works.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/hello-world-ide.png" alt="Hello world in IDE" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YHeN0MBVI3oGNznabkxvl/5a840b8ef2d908a41172c95c14207ec5/hello-world-ide.png" alt="Hello world in IDE" class="kg-image" width="1033" height="210" loading="lazy">
+
+	</figure>
 	<p>Awesome, now let's replace it with our "transpiled from Typescript" version:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/fail1.png" alt="Fail 1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lIHef0I92E8ZoIlza2hdT/ed3226687a0834e73255341efccf3d6a/fail1.png" alt="Fail 1" class="kg-image" width="452" height="370" loading="lazy">
+
+	</figure>
 	<p>Fail. OK, so the out of the box "transpiled from typescript" is not going to work. Let's make the changes necessary to get it run manually, then incorporate that into the build process.</p>
-	<p><strong>Error #1: Uncaught ReferenceError: exports is not defined at line 2</strong><br>
-		That's easy enough, let's add <code>var exports = {}</code>. Update Preview.</p>
-	<p><strong>Error #2: Uncaught ReferenceError: require is not defined at line 4</strong></p>
+	<p><b>Error #1: Uncaught ReferenceError: exports is not defined at line 2</b>That's easy enough, let's add <code>var exports = {}</code>. Update Preview.</p>
+	<p><b>Error #2: Uncaught ReferenceError: require is not defined at line 4</b></p>
 	<p>True, we're running in V8 on the Cloudflare Edge and the only code is what we uploaded. There are no "node_modules" to include. Plus, that line was only for dev anyway. Remove it. Update Preview.</p>
-	<p><strong>Error #3: No event handlers were registered. This script does nothing.</strong></p>
+	<p><b>Error #3: No event handlers were registered. This script does nothing.</b></p>
 	<p>Right, we need to invoke the code. Let's add a snippet to the top of the file to actually invoke our worker.</p>
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   let worker = new exports.Worker();
   event.respondWith(worker.handle(event.request));
-})
-</code></pre>
-	<p><strong>Error #4: Uncaught ReferenceError: <code>node_fetch_1</code> is not defined</strong></p>
+})</code></pre>
+	<p><b>Error #4: Uncaught ReferenceError: </b><code><b>node_fetch_1</b></code><b> is not defined</b></p>
 	<p>Right, we removed that because <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Response</a> is a native object when it runs in the context of a worker. So remove the <code>node_fetch_1</code> prefix.</p>
-	<p><strong>Error #5: exports.__esModule = true does nothing</strong></p>
+	<p><b>Error #5: exports.__esModule = true does nothing</b></p>
 	<p>So let's remove that.</p>
 	<p>Success!!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/hello-world-success.png" alt="Success" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HVd2qR7Uhmbrfnd1doTZN/11a84a0e484c82caddde9352efd22293/hello-world-success.png" alt="Success" class="kg-image" width="752" height="381" loading="lazy">
+
+	</figure>
 	<p>OK, so with some massaging, we got a Worker transpiled from Typescript to execute. We:</p>
 	<ul>
-		<li>Added a line to create an exports object</li>
-		<li>Removed the dev dependency on "node_fetch"</li>
-		<li>Removed the exports.__esModule = true line</li>
+		<li>
+			<p>Added a line to create an exports object</p>
+		</li>
+		<li>
+			<p>Removed the dev dependency on "node_fetch"</p>
+		</li>
+		<li>
+			<p>Removed the exports.__esModule = true line</p>
+		</li>
 	</ul>
 	<p>Let's add that to our build process so we can have "Worker-ready" Javascript every time we make a change to our Typescript.</p>
-	<h3 id="grunt">Grunt</h3>
+	<h3>Grunt</h3>
 	<p>I'm going to use Grunt to automate that. Here's my new <code>worker.ts</code></p>
-	<pre><code class="language-typescript">// --BEGIN PREAMBLE--
+	<pre class="language-typescript"><code class="language-typescript">// --BEGIN PREAMBLE--
 /// //Invoke worker
 /// var exports = {};
 /// addEventListener('fetch', event =&gt; {
@@ -189,16 +213,14 @@ export class Worker {
   public handle(request: Request) {
     return new Response("Hello, world!")
   }
-}
-</code></pre>
+}</code></pre>
 	<p>I want to uncomment the preamble to invoke our script, comment out the dev dependencies and remove the __esmodule line. Let's install Grunt, a text-replace module and create a <code>Gruntfile.js</code></p>
-	<pre><code class="language-bash">npm install grunt-cli -g
+	<pre class="language-bash"><code class="language-bash">npm install grunt-cli -g
 npm install grunt --save-dev
 npm install grunt-replace --save-dev
-touch Gruntfile.js
-</code></pre>
+touch Gruntfile.js</code></pre>
 	<p>My <code>Gruntfile.js</code> looks like this</p>
-	<pre><code class="language-json">module.exports = function (grunt) {
+	<pre class="language-json"><code class="language-json">module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-replace');
   grunt.initConfig({
@@ -243,18 +265,16 @@ touch Gruntfile.js
   grunt.registerTask('prepare-typescript', 'replace:comments');
   grunt.registerTask('fix-export', 'replace:exports');
 };
-
 </code></pre>
 	<p>There are two tasks. The first is the comment/uncomment step that we want before our Typescript is transpiled.</p>
 	<p>The second is to remove the <code>exports.__esmodule = true</code> line</p>
-	<pre><code class="language-bash">$ grunt prepare-typescript
+	<pre class="language-bash"><code class="language-bash">$ grunt prepare-typescript
 Running "replace:comments" (replace) task
 &gt;&gt; 11 replacements in 1 file.
 
-Done.
-</code></pre>
+Done.</code></pre>
 	<p>If we open <code>build/worker.ts</code>, we see this:</p>
-	<pre><code class="language-typescript">// --BEGIN PREAMBLE--
+	<pre class="language-typescript"><code class="language-typescript">// --BEGIN PREAMBLE--
  //Invoke worker
  var exports = {};
  addEventListener('fetch', event =&gt; {
@@ -272,10 +292,9 @@ export class Worker {
   public handle(request: Request) {
     return new Response("Hello, world!")
   }
-}
-</code></pre>
+}</code></pre>
 	<p>Opening <code>build/worker.js</code> you'll see a whole lot of code generated for handling async functions. That's because we're using the <code>async</code> keyword in the preamble.</p>
-	<pre><code>"use strict";
+	<pre class="language-bash"><code class="language-bash">"use strict";
 var __awaiter = (this &amp;&amp; this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -337,17 +356,16 @@ var Worker = /** @class */ (function () {
     };
     return Worker;
 }());
-exports.Worker = Worker;
-</code></pre>
+exports.Worker = Worker;</code></pre>
 	<p>Now let's remove that <code>exports.__esModule = true</code> line.</p>
 	<p><code>grunt fix-export</code></p>
 	<p>and now we'll see instead in the worker.js <code>// exports line commented by build</code>.</p>
-	<h3 id="putittogether">Put it together</h3>
+	<h3>Put it together</h3>
 	<p>I just want to run <code>npm run build</code> and get Worker-friendly Javascript. Let's modify <code>package.json</code> to do just that. Change</p>
 	<p><code>"build": "tsc --pretty"</code> to <code>"build": "grunt prepare-typescript &amp;&amp; tsc build/*.ts --pretty --skipLibCheck; grunt fix-export",</code></p>
 	<p>And run it.</p>
 	<p><code>npm run build</code> will result in</p>
-	<pre><code>"use strict";
+	<pre class="language-bash"><code class="language-bash">"use strict";
 var __awaiter = (this &amp;&amp; this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -409,30 +427,42 @@ var Worker = /** @class */ (function () {
     };
     return Worker;
 }());
-exports.Worker = Worker;
-</code></pre>
+exports.Worker = Worker;</code></pre>
 	<p>Paste that into the Workers IDE... works first time.</p>
-	<h3 id="automatedupload">Automated upload</h3>
+	<h3>Automated upload</h3>
 	<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
 	<p><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
 	<p>OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv">dotenv</a> package to load config from a .env file or environment variables.</p>
 	<p>Create a <code>.env</code> file that looks like this:</p>
-	<pre><code>CF_WORKER_ZONE_ID=xxxxxxxxxxxxxxxxxxx
+	<pre class="language-bash"><code class="language-bash">CF_WORKER_ZONE_ID=xxxxxxxxxxxxxxxxxxx
 CF_WORKER_EMAIL=steve@example.com
 CF_WORKER_AUTH_KEY=xxxxxxxxxxxxxxxxxx
-CF_WORKER_PATH=build/worker.js
-</code></pre>
+CF_WORKER_PATH=build/worker.js</code></pre>
 	<p>To locate your zone ID and auth key, go to the dashboard, select your zone and click the "Overview" icon.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/overview.png" alt="Overview" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39GyjeFWomLYOQ1LUjNg5E/a0eccb0bae567103c5866af35d0c110b/overview.png" alt="Overview" class="kg-image" width="484" height="219" loading="lazy">
+
+	</figure>
 	<p>The zone ID is right there, then click "Get API key" and choose the "Global API Key" to get the Auth Key.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/api-key.png" alt="API key" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o5LTjxiyp74BEDsmNLt4p/97b7431136417fd08948c54043dc3f30/api-key.png" alt="API key" class="kg-image" width="936" height="191" loading="lazy">
+
+	</figure>
 	<p>Fill out your .env with those values and then add the following to your Gruntfile which will:</p>
 	<ul>
-		<li>Read your config</li>
-		<li>Upload to Cloudflare</li>
-		<li>Parse any success or error messages.</li>
+		<li>
+			<p>Read your config</p>
+		</li>
+		<li>
+			<p>Upload to Cloudflare</p>
+		</li>
+		<li>
+			<p>Parse any success or error messages.</p>
+		</li>
 	</ul>
-	<pre><code>grunt.registerTask('upload-worker', 'Uploads workers to Cloudflare', function(path) {
+	<pre class="language-bash"><code class="language-bash">grunt.registerTask('upload-worker', 'Uploads workers to Cloudflare', function(path) {
 
     require('dotenv').config();
     const fs = require('fs');
@@ -533,11 +563,10 @@ CF_WORKER_PATH=build/worker.js
 
   function fail(message) {
     grunt.fail.fatal(message, TASK_FAILED);
-  }
-</code></pre>
+  }</code></pre>
 	<p>Finally, let's add a new task to <code>package.json</code> so we can just <code>npm run upload</code> any time we update our Worker.</p>
 	<p><code>"upload": "grunt upload-worker"</code></p>
-	<pre><code class="language-bash">npm run upload-worker
+	<pre class="language-bash"><code class="language-bash">npm run upload-worker
 
 Running "upload-worker" task
 zoneID: **************
@@ -550,26 +579,39 @@ Status: Success
  Result
  {
   "script"...
- }
-</code></pre>
+ }</code></pre>
 	<p>Voila! Script uploaded. OK, so if it's uploaded, we can call call it remotely:</p>
 	<p><code>$ curl https://cryptoserviceworker.com/hello</code></p>
 	<p>Hmmm... nothing. Ah, we haven't actually configured Workers to route any requests to our Worker. You can do this via the API, but since it's a one off, I'll do it in the web IDE.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/routes.png" alt="Add routes" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cOmAOF6ivdau7cpgr8VEF/354f046fed41c07cc4c44c1b5162468b/routes.png" alt="Add routes" class="kg-image" width="776" height="446" loading="lazy">
+
+	</figure>
 	<p>And try again:</p>
-	<pre><code>$ curl https://cryptoserviceworker.com/hello
-Hello, world!
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ curl https://cryptoserviceworker.com/hello
+Hello, world!</code></pre>
 	<p>Success! OK, so to recap:</p>
 	<ul>
-		<li>We've bootstrapped a Typescript project using NodeJS and Webstorm</li>
-		<li>Written a "Hello, World" worker in Typescript</li>
-		<li>Setup build tasks to modify the code for Workers</li>
-		<li>Automatically uploading to the Cloudflare edge with <code>npm run upload</code></li>
-		<li>...</li>
-		<li>Profit</li>
+		<li>
+			<p>We've bootstrapped a Typescript project using NodeJS and Webstorm</p>
+		</li>
+		<li>
+			<p>Written a "Hello, World" worker in Typescript</p>
+		</li>
+		<li>
+			<p>Setup build tasks to modify the code for Workers</p>
+		</li>
+		<li>
+			<p>Automatically uploading to the Cloudflare edge with <code>npm run upload</code></p>
+		</li>
+		<li>
+			<p>...</p>
+		</li>
+		<li>
+			<p>Profit</p>
+		</li>
 	</ul>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

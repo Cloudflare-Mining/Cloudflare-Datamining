@@ -1,77 +1,135 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/id-id/heartbleed-revisited-id-id">Bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/heartbleed-revisited-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-48.png" class="kg-image" alt="Preventable hack #6: TLS private key compromises" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/id-id/heartbleed-revisited">Indonesia</a> and <a href="https://blog.cloudflare.com/th-th/heartbleed-revisited">ไทย</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cy9wQeZ4nZNu6gjukc5jh/cb8b40aaecadc2fb3add8b2e21baa27c/image4-48.png" alt="Preventable hack #6: TLS private key compromises" class="kg-image" width="1513" height="708" loading="lazy">
+
+	</figure>
 	<p>In 2014, a bug was found in OpenSSL, a popular encryption library used to secure the majority of servers on the Internet. This bug allowed attackers to abuse an obscure feature called TLS heartbeats to read memory from affected servers. Heartbleed was big news because it allowed attackers to extract the most important secret on a server: its TLS/SSL certificate private key. After confirming that the bug was <a href="https://blog.cloudflare.com/the-results-of-the-cloudflare-challenge">easy to exploit</a>, we revoked and reissued over <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">100,000 certificates</a>, which highlighted some major issues with how the Internet is secured.</p>
 	<p>As much as Heartbleed and <a href="https://www.bankinfosecurity.com/private-keys-for-23000-digital-certificates-leaked-a-10689">other key compromise events</a> were painful for security and operations teams around the world, they also provided a learning opportunity for the industry. Over the past seven years, Cloudflare has taken the lessons of Heartbleed and applied them to improve the design of our systems and the resiliency of the Internet overall. Read on to learn how using Cloudflare reduces the risk of key compromise and reduces the cost of recovery if it happens.</p>
-	<h3 id="keeping-keys-safe">Keeping keys safe</h3>
+	<h3>Keeping keys safe</h3>
 	<p>An important tenet of security system design is defense-in-depth. Important things should be protected with multiple layers of defense. This is why security-conscious people keep spare house keys in a secure lockbox rather than under the mat. For cryptographic systems that face the Internet, defense-in-depth means designing your systems so that keys are not one exploit away from being stolen. This wasn’t the case for OpenSSL and Heartbleed. Private keys were loaded into memory into a memory-unsafe Internet-facing process, so only a single memory disclosure bug was needed to exfiltrate them.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-22.png" class="kg-image" alt="Keyless SSL: keeping the server separate from the key" loading="lazy">
-		<figcaption>Keyless SSL: keeping the server separate from the key</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4utbSsV9R3VODJsjcgNPGb/14bff71e00d4a38beb9d54b63402e57e/image6-22.png" alt="Keyless SSL: keeping the server separate from the key" class="kg-image" width="840" height="348" loading="lazy">
+
 	</figure>
+	<p>Keyless SSL: keeping the server separate from the key</p>
 	<p>An effective defense-in-depth strategy for protecting TLS/SSL private keys is splitting the process into two parts: the private key/authentication part, and the encryption/decryption part. This is exactly why we developed Keyless SSL, to allow customers to keep full control over their private keys while allowing Cloudflare to handle the rest of the connection details. <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> provides physical separation between where a key is being used and where it is stored. We support Keyless SSL for both software and hardware security modules (HSMs), and today we’re announcing that we now support <a href="https://blog.cloudflare.com/keyless-ssl-supports-fips-140-2-l3-hsm">multiple cloud-based HSMs</a>.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-1.gif" class="kg-image" alt="Geo Key Manager: configurable key management by geography" loading="lazy">
-		<figcaption>Geo Key Manager: configurable key management by geography</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Bndw9miSZSb1LZhH9bPoT/ecc965a61d27a291ce547e20af9118d0/image1-1.gif" alt="Geo Key Manager: configurable key management by geography" class="kg-image" width="1999" height="997" loading="lazy">
+
 	</figure>
+	<p>Geo Key Manager: configurable key management by geography</p>
 	<p>Heartbleed showed us that this strategy could also be useful to add an extra layer of security for private keys that we manage for our customers. In 2017, we launched <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">Geo Key Manager</a>, a feature that allows customers to select which locations in the world they want their keys to be stored. Geo Key Manager protects keys against physical compromise of servers in different geographies. In 2019, we took this even further by implementing a strategy called <a href="https://blog.cloudflare.com/going-keyless-everywhere">Keyless Everywhere</a>, moving all managed keys onto a system that provides logical separation between the Internet and the private keys.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-1.jpg" class="kg-image" alt="Delegated Credentials: key separation with no latency" loading="lazy">
-		<figcaption>Delegated Credentials: key separation with no latency</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qPpBQgpHNVn59GIVqCD0h/b2eff6118ee6c26438da23f536111a59/image2-1.jpg" alt="Delegated Credentials: key separation with no latency" class="kg-image" width="512" height="292" loading="lazy">
+
 	</figure>
+	<p>Delegated Credentials: key separation with no latency</p>
 	<p>Keyless SSL is a great security solution, but depending on where keys are stored it can introduce some latency. Because of this, we worked with the IETF to develop a new standard called <a href="https://blog.cloudflare.com/keyless-delegation">Delegated Credentials</a>, which allows connections to use short-lived keys that are signed by the certificate instead of the certificate itself in TLS. This eliminates the additional latency introduced by Keyless SSL. We support Delegated Credentials for all Keyless SSL and Geo Key Manager customers; and Firefox 89 (May 2021) will enable Delegated Credential support by default.</p>
-	<h3 id="making-revocation-work">Making revocation work</h3>
+	<h3>Making revocation work</h3>
 	<p>When Heartbleed happened and hundreds of thousands of certificates were deemed potentially compromised, the logical thing to do was to revoke and reissue these certificates. Doing so caused some unexpected consequences.</p>
-	<p>The first consequence of revocation was a massive surge of network traffic related to the revocation information. In 2014, there were three main mechanisms for certificate revocation:</p><!--kg-card-begin: markdown-->
+	<p>The first consequence of revocation was a massive surge of network traffic related to the revocation information. In 2014, there were three main mechanisms for certificate revocation:</p>
 	<ul>
-		<li>Certificate Revocation Lists (CRLs)
+		<li>
+			<p>Certificate Revocation Lists (CRLs)</p>
 			<ul>
-				<li>A list of revoked serial numbers for a given certificate authority<br>
-					<img src="https://blog.cloudflare.com/content/images/2021/03/image3.jpg" alt="image3" loading="lazy">
+				<li>
+					<p>A list of revoked serial numbers for a given certificate authority</p>
+					<figure class="kg-card kg-image-card ">
+
+						<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k5nVuOjuLVYHHODuRVunR/4a3197b0f28d680d4ae28f26acaee809/image3.jpg" alt="image3" class="kg-image" width="1862" height="1304" loading="lazy">
+
+					</figure>
 				</li>
 			</ul>
 		</li>
-		<li>Online Certificate Status Protocol (OCSP)
+		<li>
+			<p>Online Certificate Status Protocol (OCSP)</p>
 			<ul>
-				<li>A protocol to query a certificate authority about the revocation status of a certificate<br>
-					<img src="https://blog.cloudflare.com/content/images/2021/03/image5.jpg" alt="image5" loading="lazy">
+				<li>
+					<p>A protocol to query a certificate authority about the revocation status of a certificate</p>
+					<figure class="kg-card kg-image-card ">
+
+						<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QEflfTvpxn0peLcEXrC9R/e07e68e8554e26be729bda7e91f184e0/image5.jpg" alt="image5" class="kg-image" width="1999" height="966" loading="lazy">
+
+					</figure>
 				</li>
-				<li>OCSP can be queried by the browser or responses can be included by the server at connection time “OCSP stapling”</li>
+				<li>
+					<p>OCSP can be queried by the browser or responses can be included by the server at connection time “OCSP stapling”</p>
+				</li>
 			</ul>
 		</li>
-		<li>CRLSets — Chrome’s custom revocation system
+		<li>
+			<p>CRLSets — Chrome’s custom revocation system</p>
 			<ul>
-				<li>A meta-list of revoked serial numbers, limited to high-value certificates</li>
+				<li>
+					<p>A meta-list of revoked serial numbers, limited to high-value certificates</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 	<p>Tens of thousands of certificates were revoked at once due to potential compromise from Heartbleed. After this, the CRL for a prominent CA, GlobalSign, increased from <a href="https://blog.cloudflare.com/the-hard-costs-of-heartbleed">22KB to 4.7MB in a day</a>. This caused major disruptions in Cloudflare’s internal caching infrastructure and bandwidth spikes that affected the Internet at large as all clients that relied on CRLs to check for certificate validation (mostly Microsoft Windows) downloaded the file.</p>
-	<p>After this revocation event, it became clear that there were other reasons why revocation wasn’t a functional system. In Firefox, if a user makes a connection to a site and a stapled OCSP response is not provided, Firefox queries the OCSP server for a response. However, Firefox implements a fail-open strategy: if the OCSP response takes too long, the revocation check is bypassed and the page is rendered. An attacker with a privileged network position could use a compromised <em>and revoked</em> certificate to attack users by simply blocking the OCSP request and letting the browser skip the revocation check. OCSP stapling is a way for a server to get the OCSP response to the browser in a reliable way, but since stapling is not a requirement for clients, an attacker could just not include the staple and the browser would fail open, leaving the user vulnerable to attack. OCSP also doesn’t provide strong protection against key compromise in fail-open mode (plus, OCSP is a <a href="https://www.eff.org/deeplinks/2020/11/macos-leaks-application-usage-forces-apple-make-hard-decisions">privacy leak</a>, but that’s another issue).</p>
+	<p>After this revocation event, it became clear that there were other reasons why revocation wasn’t a functional system. In Firefox, if a user makes a connection to a site and a stapled OCSP response is not provided, Firefox queries the OCSP server for a response. However, Firefox implements a fail-open strategy: if the OCSP response takes too long, the revocation check is bypassed and the page is rendered. An attacker with a privileged network position could use a compromised <i>and revoked</i> certificate to attack users by simply blocking the OCSP request and letting the browser skip the revocation check. OCSP stapling is a way for a server to get the OCSP response to the browser in a reliable way, but since stapling is not a requirement for clients, an attacker could just not include the staple and the browser would fail open, leaving the user vulnerable to attack. OCSP also doesn’t provide strong protection against key compromise in fail-open mode (plus, OCSP is a <a href="https://www.eff.org/deeplinks/2020/11/macos-leaks-application-usage-forces-apple-make-hard-decisions">privacy leak</a>, but that’s another issue).</p>
 	<p>The situation in Chrome is even worse from a security perspective. Since neither OCSP nor CRLs are checked for the majority of certificates (CRLSets only contain revoked “Extended Validation” certificates), most certificates are trusted without checking revocation status. The solution to revoking the set of Cloudflare-managed certificates in Chrome for Heartbleed was actually a short patch to the Chromium codebase. Clearly not a scalable solution!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XZmNGWOhzhZBL19rynmUH/922e5712819642c81397d32287bec80b/image7-11.png" alt="" class="kg-image" width="1999" height="637" loading="lazy">
+
+	</figure>
 	<p>Mass revocation of certificates back in 2014 plainly didn’t work. Some of the certificates at the time were valid for up to five years, so a compromised key was a problem for a long time.</p>
 	<p>In 2015, a new standard emerged that seemed to provide a reasonable solution to this problem: <a href="https://scotthelme.co.uk/ocsp-must-staple">OCSP Must-staple</a>. Certificates issued with the must-staple feature are only trusted if accompanied by a valid OCSP staple. If a must-staple certificate is compromised and revoked, then it can only be used to attack users for the lifetime of the last issued OCSP (usually 10 days or less). This is a big improvement and allows certificate owners to limit their overall risk.</p>
 	<p>Cloudflare has supported best-effort OCSP stapling <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">since 2012</a>. In 2017, we set out to improve the reliability of our OCSP stapling so that we could support OCSP must-staple certificates. The result of this work was <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">High-reliability OCSP</a> stapling and a research study published <a href="https://dl.acm.org/doi/10.1145/3278532.3278543">in IMC</a> that demonstrated the feasibility of OCSP must-staple more broadly on the Internet. Cloudflare now supports OCSP must-staple certificates, providing an additional safety net in case of a future key compromise.</p>
-	<h3 id="2014-vs-now">2014 vs. now</h3>
+	<h3>2014 vs. now</h3>
 	<p>We’ve come a long way in seven years. Cloudflare is constantly innovating in the TLS/SSL key protection and security space. Here’s what changed over the past few years:</p>
 	<p>2014</p>
 	<ul>
-		<li>Five year certificates</li>
-		<li>Opportunistic OCSP stapling</li>
-		<li>No OCSP must-staple</li>
-		<li>Keys in Internet-facing process</li>
-		<li>No Keyless SSL</li>
-		<li>No Delegated Credentials</li>
+		<li>
+			<p>Five year certificates</p>
+		</li>
+		<li>
+			<p>Opportunistic OCSP stapling</p>
+		</li>
+		<li>
+			<p>No OCSP must-staple</p>
+		</li>
+		<li>
+			<p>Keys in Internet-facing process</p>
+		</li>
+		<li>
+			<p>No Keyless SSL</p>
+		</li>
+		<li>
+			<p>No Delegated Credentials</p>
+		</li>
 	</ul>
 	<p>2021</p>
 	<ul>
-		<li>Configurable lifetime certificates (from one year down to two weeks with <a href="https://blog.cloudflare.com/advanced-certificate-manager">ACM</a>)</li>
-		<li>100% OCSP stapling support</li>
-		<li>OCSP Must-staple support</li>
-		<li>Keyless Everywhere</li>
-		<li>Keyless SSL + Cloud HSM support! (new)</li>
-		<li>Geo Key Manager</li>
-		<li>Delegated Credential Support</li>
+		<li>
+			<p>Configurable lifetime certificates (from one year down to two weeks with <a href="https://blog.cloudflare.com/advanced-certificate-manager">ACM</a>)</p>
+		</li>
+		<li>
+			<p>100% OCSP stapling support</p>
+		</li>
+		<li>
+			<p>OCSP Must-staple support</p>
+		</li>
+		<li>
+			<p>Keyless Everywhere</p>
+		</li>
+		<li>
+			<p>Keyless SSL + Cloud HSM support! (new)</p>
+		</li>
+		<li>
+			<p>Geo Key Manager</p>
+		</li>
+		<li>
+			<p>Delegated Credential Support</p>
+		</li>
 	</ul>
 	<p>These improvements and more are big reasons why Cloudflare is a leader in the security space and why the next Heartbleed won’t be as bad as the last.</p>
 </div>

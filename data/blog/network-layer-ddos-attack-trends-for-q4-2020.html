@@ -1,92 +1,188 @@
 <div class="mb2 gray5">10 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/network-layer-ddos-attack-trends-for-q4-2020">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/network-layer-ddos-attack-trends-for-q4-2020">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/network-layer-ddos-attack-trends-for-q4-2020">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/network-layer-ddos-attack-trends-for-q4-2020">繁體中文</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image21-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7s9ko2O5p5cLQZgufvnI5S/f47c80166e82336e9bd3846e7c3a4a51/image21-1.png" alt="" class="kg-image" width="1999" height="1033" loading="lazy">
+
+	</figure>
 	<p>DDoS attack trends in the final quarter of 2020 defied norms in many ways. For the first time in 2020, Cloudflare observed an increase in the number of large DDoS attacks. Specifically, the number of attacks over 500Mbps and 50K pps saw a massive uptick.</p>
 	<p>In addition, attack vectors continued to evolve, with protocol-based attacks seeing a 3-10x increase compared to the prior quarter. Attackers were also more persistent than ever — nearly 9% of all attacks observed between October and December lasted more than 24 hours.</p>
 	<p>Below are additional noteworthy observations from the fourth quarter of 2020, which the rest of this blog explores in greater detail.</p>
 	<ul>
-		<li><strong>Number of attacks: </strong>For the first time in 2020, the total number of attacks observed in Q4 decreased compared to the prior quarter.</li>
-		<li><strong>Attack duration: </strong>73% of all attacks observed lasted under an hour, a decrease from 88% in Q3.</li>
-		<li><strong>Attack vectors: </strong>While SYN, ACK, and RST floods continued to be the dominant attack vectors deployed, attacks over NetBIOS saw a whopping 5400% increase, followed by those over ISAKMP and SPSS.</li>
-		<li><strong>Global DDoS activity: </strong>Our data centers in Mauritius, Romania, and Brunei recorded the highest percentages of DDoS activity relative to non-attack traffic.</li>
-		<li><strong>Additional attack tactics:</strong> <a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company">Ransom DDoS (RDDoS)</a> attacks continue to target organizations around the world as criminal groups attempt to extort a ransom in the form of Bitcoin under a threat of a DDoS attack.</li>
+		<li>
+			<p><b>Number of attacks:</b> For the first time in 2020, the total number of attacks observed in Q4 decreased compared to the prior quarter.</p>
+		</li>
+		<li>
+			<p><b>Attack duration:</b> 73% of all attacks observed lasted under an hour, a decrease from 88% in Q3.</p>
+		</li>
+		<li>
+			<p><b>Attack vectors:</b> While SYN, ACK, and RST floods continued to be the dominant attack vectors deployed, attacks over NetBIOS saw a whopping 5400% increase, followed by those over ISAKMP and SPSS.</p>
+		</li>
+		<li>
+			<p><b>Global DDoS activity:</b> Our data centers in Mauritius, Romania, and Brunei recorded the highest percentages of DDoS activity relative to non-attack traffic.</p>
+		</li>
+		<li>
+			<p><b>Additional attack tactics:</b> <a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company">Ransom DDoS (RDDoS)</a> attacks continue to target organizations around the world as criminal groups attempt to extort a ransom in the form of Bitcoin under a threat of a DDoS attack.</p>
+		</li>
 	</ul>
-	<h2 id="number-of-attacks">Number of attacks</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Number of attacks</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HM7RUrs09sv3IbtaQvXGv/1dd2756741a0f1b4cc5d078e41648eeb/image13.png" alt="" class="kg-image" width="1567" height="795" loading="lazy">
+
+	</figure>
 	<p>For the first time in 2020, the total number of network layer DDoS attacks we observed decreased compared to the previous quarter. Q4 constituted 15% of all attacks observed in 2020, compared to Q3’s 48%. In fact, the total number of attacks in Q4 was less than that seen in the month of September alone by a whopping 60%. On a monthly basis, December was Q4’s busiest month for attackers.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image15.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="attack-rates">Attack rates</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Ip14T10pJRkDIw9fvTfQ0/c9f76a7895a4262efae5586ad1d43571/image15.png" alt="" class="kg-image" width="1567" height="793" loading="lazy">
+
+	</figure>
+	<h2>Attack rates</h2>
 	<p>There are different ways of measuring an L3/4 DDoS attack’s size. One is the volume of traffic it delivers, or its ‘bit rate’ (measured in gigabits-per-second). Another is the number of packets it delivers, or its ‘packet rate’ (measured in packets-per-second). Attacks with high bit rates attempt to saturate last-mile network links of the target, and attacks with high packet rates attempt to overwhelm routers or other in-line hardware <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020/#blog-1-ddos">devices</a>.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image8-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RcquZz3afZORkFCgX36I9/52bdbfad0a24d696ce92a1dc956fa14e/image8-4.png" alt="" class="kg-image" width="1567" height="793" loading="lazy">
+
+	</figure>
 	<p>In Q4, as in previous quarters, the majority of attacks were quite small — &nbsp;under 1 Gbps and 1M pps, specifically. This trend is not surprising, since most attacks are launched by amateur attackers using tools that are easy to use and cost a few dollars at most. Small attacks may also serve as a smokescreen to distract security teams from other kinds of cyberattacks, or to test a network’s existing defense mechanisms.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1E4MxtMUrD6jJyaE3fRs4r/4e631e96ab86236993b8697d63168c98/image16.png" alt="" class="kg-image" width="1567" height="792" loading="lazy">
+
+	</figure>
 	<p>However, the overall popularity of small attacks didn’t tell the whole story in Q4. Attacks over 500Mbps and 50K pps constituted a larger percentage of total attacks than they did in previous quarters. In fact, the number of attacks over 100 Gbps increased by 10x from Q3, and those over 10M pps increased by 3.6x.</p>
 	<p>One unique large attack Cloudflare observed was an ACK flood DoS attack that was automatically detected and mitigated by Cloudflare’s systems. What was unique about this attack was not the max packet rate, but the attack method that appears to have been borrowed from the world of acoustics.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35buUEe8hOv4zBOQOA9iP8/77ecc054e3109bcf9015c1b359a16459/image18.png" alt="" class="kg-image" width="1568" height="792" loading="lazy">
+
+	</figure>
 	<p>As can be seen in the graph above, the attack’s packet rate followed a wave-shaped pattern for over 19 hours. It seems as though the attacker was inspired by an acoustics concept called <a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29">beat</a>. For this reason, we codenamed this attack “Beat”. In acoustics, a beat is a term that is used to describe an interference of two different wave frequencies. You can read more about the Beat attack in our blog post: <a href="https://blog.cloudflare.com/beat-an-acoustics-inspired-ddos-attack">Beat - An Acoustics Inspired DDoS Attack</a></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PEt7dDxV5LREn7Q6iIdth/034e0c052611175df9d2f8c5ee277cdc/image14.png" alt="" class="kg-image" width="1568" height="796" loading="lazy">
+
+	</figure>
 	<p>Whether packet intensive or bit intensive, the increase in large DDoS attacks is a disturbing trend. It indicates that attackers are getting more brazen, and are using tools that allow them to launch larger attacks. What’s worse, often larger attacks have implications to not just target the network, but also intermediary service providers that serve the target network downstream.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="attack-duration">Attack Duration</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wdXb2mmtdoiXsN7xcyPDM/1903dfdf695d6b135ab7b93fbc9dce98/image10.png" alt="" class="kg-image" width="1568" height="794" loading="lazy">
+
+	</figure>
+	<h2>Attack Duration</h2>
 	<p>73% of attacks in Q4 ‘20 lasted for under an hour. On the other end of the spectrum, nearly 9% of attacks lasted over 24 hrs (compared to a mere 1.5% in Q3 '20). This increase reinforces the need for a real-time, always-on defense system to protect against attacks of every size and duration.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image2-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="attack-vectors">Attack vectors</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17UQiWvWFYIaUiolqdKt5Q/d8ec766e4aa57869b4595f997aacef7a/image2-6.png" alt="" class="kg-image" width="1567" height="793" loading="lazy">
+
+	</figure>
+	<h2>Attack vectors</h2>
 	<p>An ‘attack vector’ is a term used to describe the attack method. The most popular method, SYN floods, constituted nearly 42% of all attacks observed in Q3, followed by ACK, RST, and UDP-based DDoS attacks. This is relatively consistent with observations from previous quarters. However, ACK attacks jumped from ninth place in Q3 to second place — a 13x increase quarter-over-quarter— dethroning RST attacks from second place.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="top-emerging-threats">Top emerging threats</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zC3yC4BbV7Lj4xWjHJSvB/6b98a0f3626e197f5d130b2d28b6f634/image3-9.png" alt="" class="kg-image" width="1567" height="796" loading="lazy">
+
+	</figure>
+	<h2>Top emerging threats</h2>
 	<p>While TCP based attacks like SYN and RST floods remain popular, UDP-protocol specific attacks such as NetBIOS and ISAKMP-based DDoS attacks are seeing an explosion compared to the prior quarter.</p>
 	<p>NetBIOS is a protocol that allows applications on separate machines to communicate and access shared resources over a local area network, and ISAKMP is a protocol used to establish Security Associations (SAs) and cryptographic keys when setting up an <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec">IPsec</a> VPN connection (IPsec uses the Internet Key Exchange (IKE) protocol to ensure secure connections and will authenticate and encrypt packets of data sent over an Internet Protocol (IP) network.)</p>
 	<p>Cloudflare continues to see protocol based attacks — and indeed, multi-vector attacks — deployed to attempt to bring networks down. As the complexity of attacks elevates, adequate <a href="https://www.cloudflare.com/ddos">DDoS protection</a> needs to be put in place to keep organizations secure and online at all times.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image20.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="global-ddos-activity">Global DDoS activity</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1alYse6gRa3CRb7XWg6X1E/868ba67d6fa22abc25947e494ac3e9d7/image20.png" alt="" class="kg-image" width="1567" height="794" loading="lazy">
+
+	</figure>
+	<h2>Global DDoS activity</h2>
 	<p>To understand where these attacks come from, we look at the Cloudflare edge network data centers where the traffic was ingested, rather than the location of the source IP. The reason? When attackers launch L3/4 attacks, they can spoof the source IP address in order to obfuscate their attack’s source.</p>
 	<p>In this report, we also measure the attack traffic observed at a Cloudflare data center relative to the non-attack traffic observed at the same data center for geo-based distribution. This gives us more accuracy in our endeavor to pinpoint geographic locations that are observing more threats than others. We’re able to achieve geographical accuracy in our report because we have data centers in over 200 cities, in more than 100 countries around the world.</p>
 	<p>Looking at Q4 metrics, we observed interesting insights — our data centers in Mauritius, Romania, and Brunei recorded the highest percentages of attack traffic relative to non-attack traffic. Specifically, between 4.4% and 4.9% of all traffic in those countries came from DDoS attacks. Another way of saying this is that almost 5 out of every 100 bytes was part of attack traffic. These observations indicate increased botnet activities in those countries.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image17.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>What might explain the comparatively high incidence of DDoS attacks in these countries? While it’s impossible to say for sure, here are some possibilities for the top two countries on the list:</p>
-	<p><a href="https://en.wikipedia.org/wiki/Mauritius"><strong>Mauritius</strong></a> - In August 2020, a state of environmental emergency was declared in Mauritius after a <a href="https://news.sky.com/story/mauritius-declares-environmental-emergency-after-mass-oil-spill-from-grounded-tanker-12044845">ship carrying nearly 4,000 tons of fuel cracked its hull</a>. The oil spill ignited <a href="https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill#Anti-government_protests">anti-government protests</a> calling for the resignation of the prime minister. Since then, the government has suspended the parliament twice, and has also been accused of suppressing local media and independent reporting covering the incident. Even five months after, following a series of human-rights scandals, the <a href="https://www.forbes.com/sites/nishandegnarain/2021/12/30/protests-continue-in-mauritius-five-months-after-oil-spill">protests continue</a>. The events in Mauritius may be linked to the increased DDoS activity.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image19.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Source: wikipedia</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vEdVCnJ29d4xYl4OO4ewm/9d0e699e01e378ab88defc5bf9554822/image17.png" alt="" class="kg-image" width="1999" height="688" loading="lazy">
+
 	</figure>
-	<p><a href="https://en.wikipedia.org/wiki/Romania"><strong>Romania</strong></a> - Two events may be behind the increased DDoS activity in Romania. Romania recently held parliamentary elections which ended on December 6, 2020. In addition, the EU announced on December 9th that <a href="https://www.zdnet.com/article/romania-to-host-the-eus-new-cybersecurity-research-hub">Romania will host their new cyber security research hub</a>, the European Cybersecurity Industrial, Technology and Research Competence Centre (ECCC). Another possible explanation is that Romania is the country <a href="https://www.romania-insider.com/romania-cheapest-fast-internet-december-2019#:~:text=The%20price%20of%20super%2Dfast,and%20discounts%20platform%20Picodi.com.">with the cheapest super-fast broadband Internet in the world</a> — making it easier for anyone to launch volumetric attacks from within Romania.</p><!--kg-card-begin: html-->
+	<p>What might explain the comparatively high incidence of DDoS attacks in these countries? While it’s impossible to say for sure, here are some possibilities for the top two countries on the list:</p>
+	<p><a href="https://en.wikipedia.org/wiki/Mauritius"><b>Mauritius</b></a> - In August 2020, a state of environmental emergency was declared in Mauritius after a <a href="https://news.sky.com/story/mauritius-declares-environmental-emergency-after-mass-oil-spill-from-grounded-tanker-12044845">ship carrying nearly 4,000 tons of fuel cracked its hull</a>. The oil spill ignited <a href="https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill#Anti-government_protests">anti-government protests</a> calling for the resignation of the prime minister. Since then, the government has suspended the parliament twice, and has also been accused of suppressing local media and independent reporting covering the incident. Even five months after, following a series of human-rights scandals, the <a href="https://www.forbes.com/sites/nishandegnarain/2021/12/30/protests-continue-in-mauritius-five-months-after-oil-spill">protests continue</a>. The events in Mauritius may be linked to the increased DDoS activity.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XhinXF9uOitM4v87nMXAU/55557510dac37dce553f780e8541326a/image19.png" alt="" class="kg-image" width="1280" height="853" loading="lazy">
+
+	</figure>
+	<p>Source: wikipedia</p>
+	<p><a href="https://en.wikipedia.org/wiki/Romania"><b>Romania</b></a> - Two events may be behind the increased DDoS activity in Romania. Romania recently held parliamentary elections which ended on December 6, 2020. In addition, the EU announced on December 9th that <a href="https://www.zdnet.com/article/romania-to-host-the-eus-new-cybersecurity-research-hub">Romania will host their new cyber security research hub</a>, the European Cybersecurity Industrial, Technology and Research Competence Centre (ECCC). Another possible explanation is that Romania is the country <a href="https://www.romania-insider.com/romania-cheapest-fast-internet-december-2019#:~:text=The%20price%20of%20super%2Dfast,and%20discounts%20platform%20Picodi.com.">with the cheapest super-fast broadband Internet in the world</a> — making it easier for anyone to launch volumetric attacks from within Romania.</p><!--kg-card-begin: html-->
 	<center>
 		<blockquote class="twitter-tweet">
 			<p lang="en" dir="ltr">?<a href="https://twitter.com/hashtag/Bucharest?src=hash&amp;ref_src=twsrc%5Etfw">#Bucharest</a> to be the host of the future EU <a href="https://twitter.com/hashtag/Cyber?src=hash&amp;ref_src=twsrc%5Etfw">#Cyber</a> Centre?Hub for high tech and innovation, featuring a thriving digital ecosystem, dynamic and young, Romania’s capital will take this task in a responsible and dedicated manner, to the benefit of the entire European Union???</p>— Romania in the EU ?? (@romaniaineu) <a href="https://twitter.com/romaniaineu/status/1336801063865880577?ref_src=twsrc%5Etfw">December 9, 2020</a>
 		</blockquote>
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</center><!--kg-card-end: html-->
-	<h2 id="ddos-activity-by-region">DDoS activity by region</h2>
-	<h3 id="africa">Africa</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image1-8.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="asia-pacific-and-oceania">Asia Pacific and Oceania</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image7-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="europe">Europe</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="middle-east">Middle East</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="north-america">North America</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image6-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="south-america">South America</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="united-states">United States</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image9-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="ransom-based-attacks-continue-to-plague-organizations">Ransom-based attacks continue to plague organizations</h2>
+	<h2>DDoS activity by region</h2>
+	<h3>Africa</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aSVgyvlzwLkSjZgJ822q6/ddb6542c14cadcb5fbf9b9949d726285/image1-8.png" alt="" class="kg-image" width="1999" height="688" loading="lazy">
+
+	</figure>
+	<h3>Asia Pacific and Oceania</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rY41nNbrh7XbMHwYvnuod/b4c4325e9c34d886f664af82d5bfc7bf/image7-2.png" alt="" class="kg-image" width="1999" height="689" loading="lazy">
+
+	</figure>
+	<h3>Europe</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1biS8O0qMJlUx6w8UHlBk8/6d2053e052e3358d16b3d5ae76ed3ab5/image5-4.png" alt="" class="kg-image" width="1999" height="687" loading="lazy">
+
+	</figure>
+	<h3>Middle East</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EWOB1PIiaEJlm9ckwiZfB/0659facebd8b82cf5e48ba62941b5d82/image12.png" alt="" class="kg-image" width="1999" height="691" loading="lazy">
+
+	</figure>
+	<h3>North America</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SzOJ762wAnsnEVcd1EFMi/817bfffc5c22257e72637c44e9c19871/image6-2.png" alt="" class="kg-image" width="1999" height="687" loading="lazy">
+
+	</figure>
+	<h3>South America</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42E9QJzkD2jBaAyC5lWQym/78899f791e65305e9e67958bb7b387d4/image11.png" alt="" class="kg-image" width="1999" height="692" loading="lazy">
+
+	</figure>
+	<h3>United States</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sg1e4R6PEPFjK6Yul5t7N/1aef4af2207918ee26385d21593af2e7/image9-1.png" alt="" class="kg-image" width="1999" height="689" loading="lazy">
+
+	</figure>
+	<h2>Ransom-based attacks continue to plague organizations</h2>
 	<p>In <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020">our previous quarterly DDoS report</a>, we noted a rise in extortion and ransom-based DDoS (RDDoS) attacks around the world. In a RDDoS attack, a malicious party threatens a person or organization with a cyberattack that could knock their networks, websites, or applications offline for a period of time, unless the person or organization pays a ransom. You can read more about RDDoS attacks <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack">here</a>.</p>
 	<p>In Q4 ‘20, this disturbing trend continued. Organizations large and small came to Cloudflare asking for help in keeping their network infrastructure online while they figured out how to respond to ransom notes. <a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company">Read this story</a> of what a Fortune Global 500 company did when they received a ransom note, and about their recommendations for organizations.</p>
 	<p>Cloudflare continues to closely monitor this trend. If you receive a threat:</p>
 	<ol>
-		<li><strong>Do not panic — we recommend you to not pay the ransom</strong>: Paying the ransom only encourages bad actors and finances illegal activities — and there’s no guarantee attackers won’t attack your network anyway.</li>
-		<li><strong>Notify local law enforcement</strong>: They will also likely request a copy of the ransom letter that you received.</li>
-		<li><strong>Contact Cloudflare</strong>: We can help ensure your website and network infrastructure are safeguarded from these ransom attacks.</li>
+		<li>
+			<p><b>Do not panic — we recommend you to not pay the ransom</b>: Paying the ransom only encourages bad actors and finances illegal activities — and there’s no guarantee attackers won’t attack your network anyway.</p>
+		</li>
+		<li>
+			<p><b>Notify local law enforcement</b>: They will also likely request a copy of the ransom letter that you received.</p>
+		</li>
+		<li>
+			<p><b>Contact Cloudflare</b>: We can help ensure your website and network infrastructure are safeguarded from these ransom attacks.</p>
+		</li>
 	</ol>
-	<h2 id="cloudflare-ddos-protection">Cloudflare DDoS Protection</h2>
+	<h2>Cloudflare DDoS Protection</h2>
 	<p>Cloudflare provides comprehensive L3-L7 DDoS protection. In 2017, we pioneered the elimination of the industry standard surge pricing for DDoS attacks, providing customers with unmetered and unlimited DDoS protection. Since then, we’ve onboarded thousands of customers of all sizes — including <a href="https://www.cloudflare.com/case-studies/wikimedia-foundation">Wikimedia</a>, <a href="https://www.cloudflare.com/case-studies/panasonic">Panasonic</a>, and <a href="https://www.cloudflare.com/case-studies/discord">Discord</a> — that use Cloudflare to &nbsp;protect and accelerate their Internet properties. Why do they choose Cloudflare? Three main reasons:</p>
-	<p><strong>1. No scrubs</strong><br>Cloudflare doesn't operate scrubbing centers as we believe that <a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation">the scrubbing center model is a flawed approach to DDoS protection</a>. Scrubbing centers cause delays and cost too much to build and run. What’s more, DDoS attacks are asymmetric — attackers have more available bandwidth than a single scrubbing center will ever be able to handle.</p>
+	<p><b>1. No scrubs</b>Cloudflare doesn't operate scrubbing centers as we believe that <a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation">the scrubbing center model is a flawed approach to DDoS protection</a>. Scrubbing centers cause delays and cost too much to build and run. What’s more, DDoS attacks are asymmetric — attackers have more available bandwidth than a single scrubbing center will ever be able to handle.</p>
 	<p>Cloudflare’s network is architected so that every machine in every data center performs DDoS mitigation. Doing this at the edge is the only way to mitigate at scale without impacting performance. Our Anycast-based architecture makes our capacity equivalent to our DDoS scrubbing capacity, the largest in the market at 51 Tbps. This means Cloudflare detects and mitigates DDoS attacks close to the source of attack. Better yet, Cloudflare’s global threat intelligence acts like an immune system for the Internet — employing our <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning models</a> to learn from and mitigate attacks against any customer to protect them all.</p>
-	<p><strong>2. It’s about time</strong><br>Most organizations are in some stage of their journey from on-prem to the cloud. The threat landscape, functional requirements, and scale of business applications are evolving faster than ever before, and the volume and sophistication of network attacks are already straining the defensive capabilities of even the most advanced enterprises. One concern many enterprises have when adopting the cloud is added latency for applications. Most cloud-based DDoS protection services rely on specialized data centers aka “scrubbing centers'' for DDoS mitigation. Backhauling traffic to those data centers can add significant latency depending on its location relative to the destination server.</p>
+	<p><b>2. It’s about time</b>Most organizations are in some stage of their journey from on-prem to the cloud. The threat landscape, functional requirements, and scale of business applications are evolving faster than ever before, and the volume and sophistication of network attacks are already straining the defensive capabilities of even the most advanced enterprises. One concern many enterprises have when adopting the cloud is added latency for applications. Most cloud-based DDoS protection services rely on specialized data centers aka “scrubbing centers'' for DDoS mitigation. Backhauling traffic to those data centers can add significant latency depending on its location relative to the destination server.</p>
 	<p>This problem compounds when an organization uses different providers for different networking functions. When traffic must hop from provider to provider, latency can be measured in hundreds of milliseconds.</p>
 	<p>Cloudflare’s <a href="https://www.cloudflare.com/network">distributed geographical presence</a> ensures that attacks are globally detected and mitigated in under 3 seconds on average — making it one of the fastest in the industry.</p>
-	<p><strong>3. It’s not just about DDoS</strong><br>DDoS attacks constitute just one facet of the many cyber threats organizations are facing today. As businesses shift to a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> approach, network and security buyers will face larger threats related to network access, and a continued surge in the frequency and sophistication of bot-related attacks.</p>
+	<p><b>3. It’s not just about DDoS</b>DDoS attacks constitute just one facet of the many cyber threats organizations are facing today. As businesses shift to a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> approach, network and security buyers will face larger threats related to network access, and a continued surge in the frequency and sophistication of bot-related attacks.</p>
 	<p>A key design tenet while building products at Cloudflare is integration. <a href="https://blog.cloudflare.com/introducing-cloudflare-one">Cloudflare One</a> is a solution that uses a Zero Trust security model to provide companies a better way to protect devices, data, and applications — and is deeply integrated with our existing platform of security and DDoS solutions.</p>
 	<p>To learn more about Cloudflare’s DDoS solution <a href="https://www.cloudflare.com/plans/enterprise">contact us</a> or <a href="https://dash.cloudflare.com">get started</a> today by signing up on our dashboard.</p>
 </div>

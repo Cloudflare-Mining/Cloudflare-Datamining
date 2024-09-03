@@ -1,16 +1,24 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/page-shield-positive-blocking-policies-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/page-shield-positive-blocking-policies-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/page-shield-positive-blocking-policies-es-es">Español</a>, <a href="https://blog.cloudflare.com/zh-cn/page-shield-positive-blocking-policies-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/page-shield-positive-blocking-policies-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/page-shield-positive-blocking-policies-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/page-shield-positive-blocking-policies-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-10.png" class="kg-image" alt="Locking down your JavaScript: positive blocking with Page Shield policies" loading="lazy"></figure>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/page-shield-positive-blocking-policies">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/page-shield-positive-blocking-policies">Français</a>, <a href="https://blog.cloudflare.com/de-de/page-shield-positive-blocking-policies">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/page-shield-positive-blocking-policies">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/page-shield-positive-blocking-policies">한국어</a>, <a href="https://blog.cloudflare.com/es-es/page-shield-positive-blocking-policies">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/page-shield-positive-blocking-policies">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72U4mGkIMlR2xtRGMJpNhN/d015807376c4cbb15cd341e5babdaadb/image3-10.png" alt="Locking down your JavaScript: positive blocking with Page Shield policies" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>Web development teams are tasked with delivering feature-rich applications at lightning speeds. To help them, there are thousands of pre-built JavaScript libraries that they can integrate with little effort.</p>
 	<p>Not always, however, are these libraries backed with hardened security measures to ensure the code they provide is not tampered with by malicious actors. This ultimately leads to an increased risk of an application being compromised.</p>
 	<p>Starting today, tackling the risk of external JavaScript libraries just got easier. We are adding a new feature to our client side security solution: <a href="https://www.cloudflare.com/page-shield">Page Shield</a> policies. Using policies you can now ensure only allowed and vetted libraries are executed by your application by simply reviewing a checklist.</p>
-	<h2 id="client-side-libraries">Client side libraries</h2>
+	<h2>Client side libraries</h2>
 	<p>There are more than 4,373 libraries available on <a href="https://cdnjs.com">cdnjs</a>, a popular JavaScript repository, at the time of writing. These libraries provide access to pre-built functionality to build web applications. The screenshot below shows the most popular on the platform such as <a href="https://reactjs.org">React</a>, <a href="https://vuejs.org">Vue.js</a> and <a href="https://getbootstrap.com">Bootstrap</a>. Bootstrap alone, according to W3Techs, is used <a href="https://w3techs.com/technologies/overview/javascript_library">on more than 20% of all websites</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-14.png" class="kg-image" alt="A list of the most popular libraries on cdnjs" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5czifSwe8ugZHJ9pjNlLTw/d19c40c421370cae6cb2679601be503e/image1-14.png" alt="A list of the most popular libraries on cdnjs" class="kg-image" width="1810" height="1250" loading="lazy">
+
+	</figure>
 	<p>In addition to library repositories like cdnjs, there are thousands of plugins provided directly by SaaS platforms including from names such as Google, Meta, Microsoft, and more.</p>
-	<p>According to our Page Shield data, any large enterprise application is loading <strong>AND</strong> connecting to tens if not hundreds of different destinations for analytics, payments, real user monitoring, conversion tracking, customer relationship management, and many other features that internal teams “must have”.</p><!--kg-card-begin: html-->
+	<p>According to our Page Shield data, any large enterprise application is loading <b>AND</b> connecting to tens if not hundreds of different destinations for analytics, payments, real user monitoring, conversion tracking, customer relationship management, and many other features that internal teams “must have”.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -107,26 +115,36 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Ultimately, it is hard for most organizations to not rely on external JavaScript libraries.</p>
-	<h2 id="yet-another-vector-for-attackers">Yet another vector for attackers</h2>
+	<h2>Yet another vector for attackers</h2>
 	<p>Although there are good reasons to embed external JavaScript in an application, the proliferation of client side libraries, especially from SaaS providers, has increased scrutiny from malicious actors seeking new ways to exploit web applications. A single compromised SaaS provider that offers a client side library can provide direct access to thousands of applications drastically increasing return on “hacker” investment.</p>
 	<p>Client side security issues are not new. Attacks such as “<a href="https://en.wikipedia.org/wiki/Web_skimming">web skimming</a>”, also referred to as “Magecart-style” when in the context of payment pages, have been around for a long time. Yet, core <a href="https://www.cloudflare.com/application-services/solutions">application security products</a> often focus on protecting the underlying web application rather than the end user data resulting in a <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">large attack surface</a> that most security teams simply have no visibility on. This gap in visibility, caused by “<a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack">supply chains</a>”, led us to build <a href="https://blog.cloudflare.com/introducing-page-shield">Page Shield</a>, Cloudflare’s native client-side security solution.</p>
 	<p>Although the risk of supply chain attacks is becoming widely known, they are still very much an active threat. New research is being published monthly from vendors in this space highlighting ongoing attack campaigns. The Payment Card Industry Security Standards Council has also introduced new requirements in <a href="https://blog.pcisecuritystandards.org/pci-dss-v4-0-resource-hub">PCI DSS 4.0</a>* that enforce companies to have <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">systems and processes</a> in place to tackle client side security threats.</p>
 	<p>Page Shield itself has already been effective at warning customers of ongoing attacks on their applications, such as the screenshot below highlighting an active malicious outbound connection from a Magecart-style attack on a customer e-commerce application.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image5-2.png" class="kg-image" alt="Page Shield detecting an active exploit on a customer website" loading="lazy"></figure>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-4.png" class="kg-image" alt="Connection details indicating the active exploit on a customer website" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<p><small><sup>*</sup> PCI DSS 4.0 requirements 6.4.3 and 11.6.1 are just two examples focusing on client side security.</small></p>
-	<!--kg-card-end: markdown-->
-	<h2 id="reducing-the-attack-surface">Reducing the attack surface</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SG4JmBvsppxxCQv3O67L2/7c6747e4809805ef56fd7b641cb9d32a/image5-2.png" alt="Page Shield detecting an active exploit on a customer website" class="kg-image" width="1999" height="393" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xgWKk4Vh8USmts82AWUCH/819c261595379dd35fcecf36759d242f/image6-4.png" alt="Connection details indicating the active exploit on a customer website" class="kg-image" width="1700" height="1006" loading="lazy">
+
+	</figure>
+	<p>* PCI DSS 4.0 requirements 6.4.3 and 11.6.1 are just two examples focusing on client side security.</p>
+	<h2>Reducing the attack surface</h2>
 	<p>Page Shield aims to detect and alert whenever malicious activity is found within the client environment. That’s still a core focus as we improve detection capabilities further.</p>
 	<p>We are now also looking at expanding capabilities to also reduce the opportunity for an attacker to compromise an application in the first place. In other words, prevent attacks happening by reducing the attack surface available.</p>
 	<p>Today we are announcing our first major feature in this space: Page Shield policies. Here’s what it looks like:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image7-1.png" class="kg-image" alt="Page Shield’s new policies feature" loading="lazy"></figure>
-	<h3 id="positive-blocking-policies">Positive blocking policies</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tfGiisqgDNNi4fMVnMezY/445281b014f239973b457fd3db241eb4/image7-1.png" alt="Page Shield’s new policies feature" class="kg-image" width="1999" height="1092" loading="lazy">
+
+	</figure>
+	<h3>Positive blocking policies</h3>
 	<p>By leveraging our position in the network stack as a reverse proxy, and by using Page Shield policies, you can now enforce client browsers to load and execute JavaScript libraries only from your pre-approved list of allowed sources implementing a positive security model.</p>
 	<p>This ensures that an attacker that is able to inject a script in a page, won’t be successful in compromising users, as browsers will refuse to load it. At the same time, vetted tools will run without issues.</p>
 	<p>Policies will also soon allow you to specify data destinations (connection endpoints) also enforcing not only where JavaScript files are being loaded from, but also where the browser can send data to drastically reduce the risk of “Magecart-style” attacks.</p>
-	<h3 id="csps-as-the-core-mechanism">CSPs as the core mechanism</h3>
+	<h3>CSPs as the core mechanism</h3>
 	<p>Page Shield policies are currently implemented with <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policies</a> (CSPs), a feature natively supported by all major browsers.</p>
 	<p>CSPs are specially formatted HTTP response headers that are added to HTML page loads. These headers may contain one or more directives that instruct the browser how to and what to execute in the context of the given page.</p>
 	<p>From today Page Shield policies support the <code>script-src</code> directive. This directive lets application owners specify “where” JavaScript files are allowed to be loaded from. Support for the <code>connect-src</code> directive is also being finalized which behaves similarly to <code>script-src</code>, but specifies where the browser is allowed to send data “to”.</p>
@@ -137,18 +155,26 @@
 	<p>If rather than <code>Content-Security-Policy</code> we had received a <code>Content-Security-Policy-Report-Only</code> header, the policy would not be enforced, but browsers would only send violation reports letting you know what is outside of policy.</p>
 	<p>This is useful when testing and when investigating new scripts that have been added to your application.</p>
 	<p>Additional statements are also available and supported by Page Shield within the <code>script-src</code> directive to block inline JavaScript (<code>unsafe-inline</code>) or normally unsafe function calls (<code>unsafe-eval</code>). These directives help prevent other attack types such as <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">cross site scripting attacks (XSS)</a>.</p>
-	<h3 id="making-policy-management-easy">Making policy management easy</h3>
+	<h3>Making policy management easy</h3>
 	<p>CSPs, the underlying system used by Page Shield policies, are great but hard to manage. The larger the application, the more complex CSPs become while also causing a bottleneck for application development teams. This leads to CSPs becoming ineffective as security teams broaden the list of allowed hosts to the point that their purpose becomes debatable.</p>
 	<p>Making policy management easy, and ensuring they are effective, was a core goal of our design process. This led us to build a suggestions feature.</p>
 	<p>When deploying a policy, the first step is deciding “where” will the policy be applied to. Typical examples may include only your checkout flow or admin pages. This is done using <a href="https://developers.cloudflare.com/ruleset-engine/rules-language">wirefilter syntax</a>, the same syntax that powers <a href="https://www.cloudflare.com/waf">Cloudflare’s WAF</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-9.png" class="kg-image" alt="Defining the policy scope" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5grJjTZkxtafDfDnKd1t8R/1e09afe9052335c3834f8a59579017be/image4-9.png" alt="Defining the policy scope" class="kg-image" width="1380" height="562" loading="lazy">
+
+	</figure>
 	<p>Once the filter is specified, using the data already collected by Page Shield, the interface will provide a list of suggested directive values, making it very easy to build the simplest and most effective policy for your application. No need to worry about syntax, the policy preview will be shown before committing.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-8.png" class="kg-image" alt="Page Shield’s policy suggestions interface" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Hc6rVyXxcDfEtIIayEHTF/40e81f185e4336d630135cd26d4667f4/image2-8.png" alt="Page Shield’s policy suggestions interface" class="kg-image" width="1390" height="1020" loading="lazy">
+
+	</figure>
 	<p>Finally, policies can be deployed both in “report only/log” and “enforce/allow”, letting you control and test as required.</p>
 	<p>We are currently finishing work on our alerting backend to warn you whenever we notice a spike in violation reports. This lets you easily return to the policy builder and update it with any newly seen script that may have been added by your development team.</p>
-	<h3 id="positive-blocking-policies-are-not-enough">Positive blocking policies are not enough</h3>
+	<h3>Positive blocking policies are not enough</h3>
 	<p>It is important not to forget that CSPs provide no security or malicious activity detection within the list of allowed endpoints. They are meant to reduce the likelihood of an attack happening by reducing the attack surface available. For this reason, Page Shield’s automated malicious activity detection will continue to function in the background regardless of any policy being deployed.</p>
-	<h2 id="secure-your-end-user-data-today">Secure your end user data today</h2>
-	<p>All Cloudflare paid customers have access to a subset of <a href="https://www.cloudflare.com/page-shield">Page Shield</a> features today. Turning on Page Shield is as simple as clicking a button. Head over to <strong>Security</strong> &gt; <strong>Page Shield</strong> and give it a go!</p>
+	<h2>Secure your end user data today</h2>
+	<p>All Cloudflare paid customers have access to a subset of <a href="https://www.cloudflare.com/page-shield">Page Shield</a> features today. Turning on Page Shield is as simple as clicking a button. Head over to <b>Security</b> &gt; <b>Page Shield</b> and give it a go!</p>
 	<p>If you are an enterprise customer and are interested in Page Shield policies, reach out to your account team to get access to the full feature set.</p>
 </div>

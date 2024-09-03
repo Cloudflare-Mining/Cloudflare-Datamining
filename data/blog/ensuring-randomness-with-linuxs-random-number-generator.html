@@ -1,8 +1,11 @@
-<div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/image00.jpg"><br>
-		<small>Flickr/mark van de wouw</small>
-	</p>
+<div class="mb2 gray5">9 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20oTuia7NFEhvYsIErWBR4/04400f1e4665dcfaf741cba4b48ea815/image00.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p>Flickr/mark van de wouw</p>
 	<p>When building secure systems, having a source of random numbers is essential. Without them, most cryptographic systems break down and the privacy and authenticity of communications between two parties can be subverted. For example, if you’re reading this using a link to&nbsp;<a href="https://blog.cloudflare.com">https://blog.cloudflare.com</a>&nbsp;then the SSL connection you are using will have required random numbers to ensure its security (they were used as part of the establishment of the secure connection).</p>
 	<p>We’ve covered <a href="https://blog.cloudflare.com/why-randomness-matters">why secure systems require random numbers</a> in a previous blog post, but getting random numbers from a computer is very hard. This blog post looks at Linux’s internal random number generator and how it overcomes the problem of generating random numbers on a machine that’s anything but random.</p>
 	<p>CloudFlare’s servers require a good source of random numbers for authentication and to assure&nbsp;<a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">perfect forward secrecy</a>&nbsp;in SSL. But, internally, the computers we all use are deterministic machines that follow instructions and are required to do so in a predictable manner. Uncertainty and unpredictability are not built in: there is no easy way to tell a computer to go flip a coin or roll some dice. To get randomness in a computer it has to be looked for in the outside world.</p>
@@ -10,57 +13,66 @@
 	<p>Most of these sensors are not available on servers where random numbers are needed most. This is especially true for servers that run in virtualized environments that might not have access to a precise system clock. For CloudFlare’s servers, we currently rely on the random number generator built into the Linux operating system.</p>
 	<p>Linux is one of the most popular operating systems in the world. It serves as the operating system for everything from the web servers and data centers of many the largest sites in the world (Google, Facebook, Amazon, Apple, etc.), to desktop computers (Ubuntu, Chrome OS, etc.) to embedded devices (smart TVs, Android, etc.). CloudFlare’s software is built on the solid foundation of the Linux operating system kernel.</p>
 	<p>Linux itself provides a random number service so that any program has access to random numbers at any time. Luckily for us, Linux is open source software and we can learn how it works by reading the code. And verify that it provides a suitable source of random numbers for our cryptographic purposes.</p>
-	<h4 id="entropyandrandomness">Entropy and Randomness</h4>
+	<h4>Entropy and Randomness</h4>
 	<p>Not all randomness is created equally. There are two sorts of randomness to think about: uniformity and unpredictability. A random number generator provides ‘uniform’ output if all numbers will come up equally often if run long enough. That’s useful for modeling random processes, but not good enough for security.</p>
 	<p>For computer security, random numbers need to be hard to guess: they need to be unpredictable. The predictability of numbers is quantified in a measure called entropy.</p>
 	<p>If a fair coin is tossed it provides one bit of entropy: the coin lands with equal probability on heads or tails (which can be thought of as 0 and 1). Because the probability is equal there’s no predictability in the coin’s ‘output’. We say it provides one bit of entropy.</p>
 	<p>An unfair coin toss provides less than one bit, since it’s much easier to guess when you know the bias. Flipping a coin with heads on both sides provides no entropy, since the result of a coin toss can be guessed with absolute certainty.</p>
 	<p>Entropy is distinct from statistical randomness. Looking at the statistical properties of a stream of numbers does not guarantee that the stream contains any entropy. For example, the digits of pi look random by almost any statistical measure, but contain no entropy since there is a well known formula to calculate them and perfectly predict the next value. (As an aside, pi is an example of a&nbsp;<a href="https://en.wikipedia.org/wiki/Normal_number">normal number</a>: one where all the digits will appear in equal quantities).</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/image02.jpg"><br>
-		<small>Flickr/foxtongue License: CC Attribution 2.0 Generic</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b7vLFi4E7629OD9FcOzR9/3b2dd0aa4aaf301d8934d0f990e99925/image02.jpg" alt="" class="kg-image" width="576" height="502" loading="lazy">
+
+	</figure>
+	<p>Flickr/foxtongue License: CC Attribution 2.0 Generic</p>
 	<p>Also, large numbers do not always have high entropy. You can take a small random number and turn it into a large random number and the entropy remains the same. For example, take a random number from 1 to 16 and compute its cryptographic hash with an algorithm like SHA-1. The resulting 160 bit number looks very random, but it is only one of only 16 possible such numbers. Guessing the number is just as easy as guessing a random number from 1 to 16. It’s the size of the pool from which random numbers are drawn that matters.</p>
 	<p>For cryptographic keys, the amount of entropy used to create them is tied to how hard they are to guess. A 128 bit key created from a source with 20 bits of entropy is no more secure than a 20 bit key. A good source of entropy is necessary to create secure keys.</p>
-	<h4 id="takeadipinthepool">Take a dip in the pool</h4>
+	<h4>Take a dip in the pool</h4>
 	<p>On Linux, the root of all randomness is something called the kernel entropy pool. This is a large (4,096 bit) number kept privately in the kernel’s memory. There are 2<sup>4096</sup> possibilities for this number so it can contain up to 4,096 bits of entropy. There is one caveat - the kernel needs to be able to fill that memory from a source with 4,096 bits of entropy. And that’s the hard part: finding that much randomness.</p>
 	<p>The entropy pool is used in two ways: random numbers are generated from it and it is replenished with entropy by the kernel. When random numbers are generated from the pool the entropy of the pool is diminished (because the person receiving the random number has some information about the pool itself). So as the pool’s entropy diminishes as random numbers are handed out, the pool must be replenished.</p>
 	<p>Replenishing the pool is called stirring: new sources of entropy are stirred into the mix of bits in the pool.</p>
 	<p>This is the key to how random number generation works on Linux. If randomness is needed, it’s derived from the entropy pool. When available, other sources of randomness are used to stir the entropy pool and make it less predictable. The details are a little mathematical, but it’s interesting to understand how the Linux random number generator works as the principles and techniques apply to random number generation in other software and systems.</p>
 	<p>The kernel keeps a rough estimate of the number of bits of entropy in the pool. You can check the value of this estimate through the following command:</p>
-	<pre>cat /proc/sys/kernel/random/entropy_avail
-</pre>
+	<p>cat /proc/sys/kernel/random/entropy_avail</p>
 	<p>A healthy Linux system with a lot of entropy available will have return close to the full 4,096 bits of entropy. If the value returned is less than 200, the system is running low on entropy.</p>
-	<h4 id="thekerneliswatchingyou">The kernel is watching you</h4>
+	<h4>The kernel is watching you</h4>
 	<p>I mentioned that the system takes other sources of randomness and uses this to stir the entropy pool. This is achieved using something called a timestamp.</p>
 	<p>Most systems have precise internal clocks. Every time that a user interacts with a system, the value of the clock at that time is recorded as a timestamp. Even though the year, month, day and hour are generally guessable, the millisecond and microsecond are not and therefore the timestamp contains some entropy. Timestamps obtained from the user’s mouse and keyboard along with timing information from the network and disk each have different amount of entropy.</p>
 	<p>How does the entropy found in a timestamp get transferred to the entropy pool? Simple, use math to mix it in. Well, simple if you like math.</p>
-	<h4 id="justmixitin">Just mix it in</h4>
+	<h4>Just mix it in</h4>
 	<p>A fundamental property of entropy is that it mixes well. If you take two unrelated random streams and combine them, the new stream cannot have less entropy. Taking a number of low entropy sources and combining them results in a high entropy source.</p>
 	<p>All that’s needed is the right combination function: a function that can be used to combine two sources of entropy. One of the simplest such functions is the logical exclusive or (XOR). This truth table shows how bits x and y coming from different random streams are combined by the XOR function.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/image03.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/21eHCWkYIi7WYIUkY08u1G/5e379e306130bb57d04039047ea8167f/image03.png" alt="" class="kg-image" width="299" height="348" loading="lazy">
+
+	</figure>
 	<p>Even if one source of bits does not have much entropy, there is no harm in XORing it into another source. Entropy always increases. In the Linux kernel, a combination of XORs is used to mix timestamps into the main entropy pool.</p>
-	<h4 id="generatingrandomnumbers">Generating random numbers</h4>
+	<h4>Generating random numbers</h4>
 	<p>Cryptographic applications require very high entropy. If a 128 bit key is generated with only 64 bits of entropy then it can be guessed in 2<sup>64</sup> attempts instead of 2<sup>128</sup> attempts. That is the difference between needing a thousand computers running for a few years to brute force the key versus needing all the computers ever created running for longer than the history of the universe to do so.</p>
 	<p>Cryptographic applications require close to one bit of entropy per bit. If the system’s pool has fewer than 4,096 bits of entropy, how does the system return a fully random number? One way to do this is to use a cryptographic hash function.</p>
 	<p>A cryptographic hash function takes an input of any size and outputs a fixed size number. Changing one bit of the input will change the output completely. Hash functions are good at mixing things together. This mixing property spreads the entropy from the input evenly through the output. If the input has more bits of entropy than the size of the output, the output will be highly random. This is how highly entropic random numbers are derived from the entropy pool.</p>
 	<p>The hash function used by the Linux kernel is the standard SHA-1 cryptographic hash. By hashing the entire pool and and some additional arithmetic, 160 random bits are created for use by the system. When this happens, the system lowers its estimate of the entropy in the pool accordingly.</p>
 	<p>Above I said that applying a hash like SHA-1 could be dangerous if there wasn’t enough entropy in the pool. That’s why it’s critical to keep an eye on the available system entropy: if it drops too low the output of the random number generator could have less entropy that it appears to have.</p>
-	<h4 id="runningoutofentropy">Running out of entropy</h4>
+	<h4>Running out of entropy</h4>
 	<p>One of the dangers of a system is running out of entropy. When the system’s entropy estimate drops to around the 160 bit level, the length of a SHA-1 hash, things get tricky, and how they effect programs and performance depends on which of two Linux random number generators are used.</p>
 	<p>Linux exposes two interfaces for random data that behave differently when the entropy level is low. They are /dev/random and /dev/urandom. When the entropy pool becomes predictable, both interfaces for requesting random numbers become problematic.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/image01.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kINVbY4jlPxrSntHYa2wY/8e6a92a33efab35ace57fcf417fd7f88/image01.png" alt="" class="kg-image" width="1200" height="429" loading="lazy">
+
+	</figure>
 	<p>When the entropy level is too low, /dev/random blocks and does not return until the level of entropy in the system is high enough. This guarantees high entropy random numbers. If /dev/random is used in a time-critical service and the system has not incorporated a minimum amount of entropy, the delays could be detrimental to the quality of service.</p>
 	<p>On the other hand, /dev/urandom does not block. It continues to return the hashed value of its entropy pool even though there is little to no entropy in it. This data is not necessarily low-entropy. As long as the entropy pool has incorporated enough entropy, it's likely not to be catastrophic to use. However, if the entropy pool has not been seeded, this data is not suited for cryptographic use.</p>
 	<p>The solution to the problem is to simply add more entropy into the system.</p>
-	<h4 id="hardwarerandomnumbergenerationtotherescue">Hardware random number generation to the rescue?</h4>
+	<h4>Hardware random number generation to the rescue?</h4>
 	<p>Intel’s Ivy Bridge family of processors have an interesting feature called “<a href="http://software.intel.com/en-us/blogs/2012/05/14/what-is-intelr-secure-key-technology">secure key</a>." These processors contain a special piece of hardware inside that generates random numbers. The single assembly instruction RDRAND returns allegedly high entropy random data derived on the chip.</p>
 	<p>It has been suggested that Intel’s hardware number generator&nbsp;<a href="http://www.afr.com/p/technology/intel_chips_could_be_nsa_key_to_ymrhS1HS1633gCWKt5tFtI">may not be fully random</a>. Since it is baked into the silicon, that assertion is hard to audit and verify. As it turns out, even if the numbers generated have some bias, it can still help as long as this is not the only source of randomness in the system. Even if the random number generator itself had a back door, the mixing property of randomness means that it cannot lower the amount of entropy in the pool.</p>
 	<p>On Linux, if a hardware random number generator is present, the Linux kernel will use the XOR function to mix the output of RDRAND into the hash of the entropy pool. This happens&nbsp;<a href="http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/drivers/char/random.c#n946">here in the Linux source code</a>&nbsp;(the XOR operator is ^ in C).</p>
-	<h4 id="thirdpartyentropygenerators">Third party entropy generators</h4>
+	<h4>Third party entropy generators</h4>
 	<p>Hardware number generation is not available everywhere, and the sources of randomness polled by the Linux kernel itself are somewhat limited. For this situation, a number of third party random number generation tools exist. Examples of these are <a href="http://www.issihosts.com/haveged">haveged</a>, which relies on processor cache timing, <a href="http://www.vanheusden.com/aed">audio-entropyd</a> and <a href="http://www.vanheusden.com/ved">video-entropyd</a>&nbsp;which work by sampling the noise from an external audio or video input device. By mixing these additional sources of locally collected entropy into the Linux entropy pool, the entropy can only go up.</p>
-	<h4 id="adiversityofsources">A diversity of sources</h4>
+	<h4>A diversity of sources</h4>
 	<p>The main thing to understand is that better randomness comes through diversity. Taking a variety of sources of random data and mixing them together results in better random numbers. For servers, this should include data local to the machine (hardware random number generator, network timing) along with sources derived externally in a safe location.&nbsp;</p>
-	<h4 id="lookingahead">Looking ahead</h4>
-	<p>In addition to the sources described above, there are many sources of random numbers to be harvested. These include lava lamps, space noise and the quantum properties of light. CloudFlare is working on a system to ensure high quality random numbers to all of our servers by adding new sources into the system Linux currently provides. As these systems come online over the coming months, we will share the details with the community.&nbsp;</p>
-	<!--kg-card-end: markdown-->
+	<h4>Looking ahead</h4>
+	<p>In addition to the sources described above, there are many sources of random numbers to be harvested. These include lava lamps, space noise and the quantum properties of light. CloudFlare is working on a system to ensure high quality random numbers to all of our servers by adding new sources into the system Linux currently provides. As these systems come online over the coming months, we will share the details with the community.</p>
 </div>

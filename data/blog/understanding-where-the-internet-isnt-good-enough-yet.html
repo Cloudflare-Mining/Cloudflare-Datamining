@@ -1,1209 +1,725 @@
-<div class="mb2 gray5">17 min read</div>
+<div class="mb2 gray5">16 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/understanding-where-the-internet-isnt-good-enough-yet">日本語</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/Better-Internet-for-Everyone-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KFgGyepd4GD62ezvImDSH/da2402c9b127dbd2f02dcbe0339ca15b/Better-Internet-for-Everyone-2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>Since March 2020, the Internet has been the trusty sidekick that’s helped us through the pandemic. Or so it seems to those of us lucky enough to have fast, reliable (and often cheap) Internet access.</p>
 	<p>With a good connection you could keep working (if you were fortunate enough to have a job that could be done online), go to school or university, enjoy online entertainment like streaming movies and TV, games, keep up with the latest news, find out vital healthcare information, schedule a vaccination and stay in contact with loved ones and friends with whom you’d normally be spending time in person.</p>
 	<p>Without a good connection though, all those things were hard or impossible.</p>
 	<p>Sadly, access to the Internet is not uniformly distributed. Some have cheap, fast, low latency, reliable connections, others have some combination of expensive, slow, high latency and unreliable connections, still others have no connection at all. Close to 60% of the world have Internet access leaving a huge 40% without it at all.</p>
 	<p>This inequality of access to the Internet has real-world consequences. Without good access it is so much harder to communicate, to get vital information, to work and to study. Inequality of access isn’t a technical problem, it’s a societal problem.</p>
 	<p>This week, Cloudflare is announcing <a href="https://www.cloudflare.com/pangea">Project Pangea</a> with the goal of helping reduce this inequality. We’re helping community networks get onto the Internet cheaply, securely and with good bandwidth and latency. We can't solve all the challenges of bringing fast, cheap broadband access to everyone (yet) but we can give fast, reliable transit to ISPs in underserved communities to help move in that direction. Please refer to our <a href="https://blog.cloudflare.com/pangea">Pangea announcement</a> for more details.</p>
-	<h2 id="the-tyranny-of-averages">The Tyranny of Averages</h2>
+	<h2>The Tyranny of Averages</h2>
 	<p>To understand why Project Pangea is important, you need to understand how different the experience of accessing the Internet is around the world. From a distance, the world looks blue and green. But we all know that our planet varies wildly from place to place: deserts and rainforests, urban jungles and placid rural landscapes, mountains, valleys and canyons, volcanos, salt flats, tundra, and verdant, rolling hills.</p>
 	<p>Cloudflare is in a unique position to measure the performance and reach of the Internet over this vast landscape. We have servers in more than 200 cities in over 100 countries, we process 10s of trillions of Internet requests every month. Our network and customers and their users span the globe, every country in every network.</p>
 	<p>Zoom out to the level of a city, county, state, or country, and average Internet performance can look good — or, at least, acceptable. Zoom in, however, and the inequalities start to show. Perhaps part of a county has great performance, and another limps along at barely dial-up speeds — or worse. Or perhaps a city has some neighborhoods with fantastic fiber service, and others that are underserved and struggling with spotty access.</p>
 	<p>Inequality of Internet access isn’t a distant problem, it’s not limited to developing countries, it exists in the richest countries in the world as well as the poorest. There are still many parts of the world &nbsp;where a Zoom call is hard or impossible to make. And if you’re reading this on a good Internet connection, you may be surprised to learn that places with poor or no Internet are not far from you at all.</p>
-	<h2 id="bandwidth-and-latency-in-eight-countries">Bandwidth and Latency in Eight Countries</h2>
+	<h2>Bandwidth and Latency in Eight Countries</h2>
 	<p>For Impact Week, we’ve analyzed Internet data in the United States, Brazil, United Kingdom, Germany, France, South Africa, Japan, and Australia to build a picture of Internet performance.</p>
 	<p>Below, you’ll find detailed maps of where the Internet is fast and slow (focusing on available bandwidth) and far away from the end user (at least in terms of the latency between the client and server). We’d have loved to have used a single metric, however, it’s hard for a single number to capture the distribution of good, bad, and non-existent Internet traffic in a region. It’s for that reason that we’ve used two metrics to represent performance: latency and bandwidth (otherwise known as throughput). The maps below are colored to show the differences in bandwidth and latency and answer part of the question: “How good is the Internet in different places around the world?”</p>
 	<p>As we like to say, we’re just getting started with this — we intend to make more of this data and analysis available in the near future. In the meantime, if you’re a local official who wants to better understand their community’s relative performance, please reach out — we’d love to connect with you. Or, if you’re interested in your own Internet performance, you can visit <a href="https://speed.cloudflare.com">speed.cloudflare.com</a> to run a personalized test on your connection.</p>
-	<h3 id="a-quick-refresher-on-latency-and-bandwidth">A Quick Refresher on Latency and Bandwidth</h3>
-	<p>Before we begin, a quick reminder: <em>latency</em> (usually measured in milliseconds or ms) is the time it takes for communications to go to an Internet destination from your device and back, whereas <em>bandwidth</em> is the amount of data that can be transferred in a second (it’s usually measured in megabits per second or Mbps).</p>
+	<h3>A Quick Refresher on Latency and Bandwidth</h3>
+	<p>Before we begin, a quick reminder: <i>latency</i> (usually measured in milliseconds or ms) is the time it takes for communications to go to an Internet destination from your device and back, whereas <i>bandwidth</i> is the amount of data that can be transferred in a second (it’s usually measured in megabits per second or Mbps).</p>
 	<p>Both latency and bandwidth affect the performance of an Internet connection. High latency particularly affects things like online gaming where quick responses from servers are needed, but also shows up by slowing down the loading of complex web pages, and even interrupting some streaming video. Low bandwidth makes downloading anything slow: be it images on a webpage, the new app you want to try out on your phone, or the latest movie.</p>
 	<p>Blinking your eyes takes about 100ms; but you’ll begin to notice performance changes around 60ms of latency and below 30ms is gold class performance, seeing <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">little to no delay in video streaming</a> or gaming.</p>
-	<p><br><strong>United States</strong><br><em>United States median throughput: 50.27Mbps</em><br><em>US median latency: 46.69ms</em></p>
+	<p><b>United States</b><i>United States median throughput: 50.27Mbps</i><i>US median latency: 46.69ms</i></p>
 	<p>The US government has long recognized the importance of improving the Internet for underserved communities, but the Federal Communications Commission (FCC), the US agency responsible for determining where investment is most needed, has <a href="https://www.cnet.com/features/millions-of-americans-cant-get-broadband-because-of-a-faulty-fcc-map-theres-a-fix">struggled</a> to accurately map Internet access across the country. &nbsp;Although the FCC has embarked on a <a href="https://www.fcc.gov/BroadbandData">new data collection effort</a> to improve the accuracy of existing maps, the US government still lacks a comprehensive understanding of the areas that would most benefit from broadband investment.</p>
 	<p>Cloudflare’s data confirms the overall concerns with inconsistent access to the Internet and helps fill in some of the current gaps. &nbsp;A glance at the two maps of the US below will show that, even zoomed out to county level, there is inequality across the country. High latency and low bandwidth stand out as red areas.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-25.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>US locations with the lowest latency (best) and highest latency (worst) are as follows.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">La Habra, California</td>
-				<td style="text-align:center">Parrottsville, Tennessee</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Midlothian, Texas</td>
-				<td style="text-align:center">Loganville, Wisconsin</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Los Alamitos, California</td>
-				<td style="text-align:center">Mackinaw City, Michigan</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">St Louis, Missouri</td>
-				<td style="text-align:center">Reno, Nevada</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Fort Worth, Texas</td>
-				<td style="text-align:center">Eva, Tennessee</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Sugar Grove, North Carolina</td>
-				<td style="text-align:center">Milwaukee, Wisconsin</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Rockwall, Texas</td>
-				<td style="text-align:center">Grove City, Minnesota</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Justin, Texas</td>
-				<td style="text-align:center">Sacred Heart, Minnesota</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Denton, Texas</td>
-				<td style="text-align:center">Scottsboro, Alabama</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Hampton, Georgia</td>
-				<td style="text-align:center">Vesta, Minnesota</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LfKflBAPlQyytk3h6B8Rg/454a136bef465c8d15415189bdfdfd6e/image2-25.png" alt="" class="kg-image" width="1999" height="943" loading="lazy">
+
+	</figure>
+	<p>US locations with the lowest latency (best) and highest latency (worst) are as follows.</p>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>La Habra, California</p>
+	<p>Parrottsville, Tennessee</p>
+	<p>Midlothian, Texas</p>
+	<p>Loganville, Wisconsin</p>
+	<p>Los Alamitos, California</p>
+	<p>Mackinaw City, Michigan</p>
+	<p>St Louis, Missouri</p>
+	<p>Reno, Nevada</p>
+	<p>Fort Worth, Texas</p>
+	<p>Eva, Tennessee</p>
+	<p>Sugar Grove, North Carolina</p>
+	<p>Milwaukee, Wisconsin</p>
+	<p>Rockwall, Texas</p>
+	<p>Grove City, Minnesota</p>
+	<p>Justin, Texas</p>
+	<p>Sacred Heart, Minnesota</p>
+	<p>Denton, Texas</p>
+	<p>Scottsboro, Alabama</p>
+	<p>Hampton, Georgia</p>
+	<p>Vesta, Minnesota</p>
 	<p>When thinking about bandwidth, 5 to 10Mbps are generally good enough for video conferencing, but ultra-HD TV watching might consume up to 20Mbps easily. For context, the Federal Communications Commission (FCC) defines the minimum bandwidth for “Advanced Service” at <a href="https://www.fcc.gov/consumers/guides/household-broadband-guide">25 Mbps</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image17-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The best performing (i.e., the highest bandwidth) in the US tells an interesting story. New York City comes out on top, but if you were to zoom in on the city you’d find pockets of inequality. You can read more about our partnership with <a href="https://www.nycmesh.net">NYC Mesh</a> in the <a href="https://blog.cloudflare.com/pangea">Project Pangea post</a> and how they are helping bring better Internet to underserved parts of the Big Apple. Notice how the tyranny of averages can disguise a problem.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">New York, New York</td>
-				<td style="text-align:center">Ozark, Missouri</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Hartford, Connecticut</td>
-				<td style="text-align:center">Stanly, North Carolina</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Avery, North Carolina</td>
-				<td style="text-align:center">Ellis, Kansas</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Red Willow, Nebraska</td>
-				<td style="text-align:center">Marion, West Virginia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">McLean, Kentucky</td>
-				<td style="text-align:center">Sedgwick, Kansas</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Franklin, Alabama</td>
-				<td style="text-align:center">Calhoun, West Virginia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Montgomery, Pennsylvania</td>
-				<td style="text-align:center">Jasper, Georgia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Cook, Illinois</td>
-				<td style="text-align:center">Buchanan, Missouri</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Montgomery, Maryland</td>
-				<td style="text-align:center">Wetzel, West Virginia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Monroe, Pennsylvania</td>
-				<td style="text-align:center">North Slope, Alaska</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74dz6d8YvAt8ZqpqHqtVyO/6492ed3edc388447d8bb9c8be299a420/image17-4.png" alt="" class="kg-image" width="1999" height="920" loading="lazy">
+
+	</figure>
+	<p>The best performing (i.e., the highest bandwidth) in the US tells an interesting story. New York City comes out on top, but if you were to zoom in on the city you’d find pockets of inequality. You can read more about our partnership with <a href="https://www.nycmesh.net">NYC Mesh</a> in the <a href="https://blog.cloudflare.com/pangea">Project Pangea post</a> and how they are helping bring better Internet to underserved parts of the Big Apple. Notice how the tyranny of averages can disguise a problem.</p>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>New York, New York</p>
+	<p>Ozark, Missouri</p>
+	<p>Hartford, Connecticut</p>
+	<p>Stanly, North Carolina</p>
+	<p>Avery, North Carolina</p>
+	<p>Ellis, Kansas</p>
+	<p>Red Willow, Nebraska</p>
+	<p>Marion, West Virginia</p>
+	<p>McLean, Kentucky</p>
+	<p>Sedgwick, Kansas</p>
+	<p>Franklin, Alabama</p>
+	<p>Calhoun, West Virginia</p>
+	<p>Montgomery, Pennsylvania</p>
+	<p>Jasper, Georgia</p>
+	<p>Cook, Illinois</p>
+	<p>Buchanan, Missouri</p>
+	<p>Montgomery, Maryland</p>
+	<p>Wetzel, West Virginia</p>
+	<p>Monroe, Pennsylvania</p>
+	<p>North Slope, Alaska</p>
 	<p>Contrary to popular discourse about access to the Internet as a product of the rural-urban divide, we found that poor performance was not unique to rural areas. Los Angeles, Milwaukee, Florida’s Orange County, Fairfax, San Bernardino, Knox County, and even San Francisco have pockets of uniformly poor performance, often while adjoining ZIP codes have stronger performance.</p>
-	<p>Even in areas with excellent Internet connectivity, the same connectivity to the same resources can cost wildly different amounts. Internet prices for end-users correlates with the number of ISPs in an area, i.e. the greater the consumer choice, the better the price. President Biden's recent competition Executive Order, <a href="https://www.whitehouse.gov/briefing-room/statements-releases/2021/07/09/fact-sheet-executive-order-on-promoting-competition-in-the-american-economy">called out</a> the lack of choice for broadband, noting <em>“More than 200 million U.S. residents live in an area with only one or two reliable high-speed internet providers, leading to prices as much as five times higher in these markets than in markets with more options.”</em><br><br>The following cities have the greatest choice of Internet providers:</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Geography</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">New York, New York</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Los Angeles, California</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Chicago, Illinois</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Dallas, Texas</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Washington, District of Columbia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Jersey City, New Jersey</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Newark, New Jersey</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Secaucus, New Jersey</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Columbus, Ohio</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<p>Even in areas with excellent Internet connectivity, the same connectivity to the same resources can cost wildly different amounts. Internet prices for end-users correlates with the number of ISPs in an area, i.e. the greater the consumer choice, the better the price. President Biden's recent competition Executive Order, <a href="https://www.whitehouse.gov/briefing-room/statements-releases/2021/07/09/fact-sheet-executive-order-on-promoting-competition-in-the-american-economy">called out</a> the lack of choice for broadband, noting <i>“More than 200 million U.S. residents live in an area with only one or two reliable high-speed internet providers, leading to prices as much as five times higher in these markets than in markets with more options.”</i></p>
+	<p>The following cities have the greatest choice of Internet providers:</p>
+	<p>Geography</p>
+	<p>New York, New York</p>
+	<p>Los Angeles, California</p>
+	<p>Chicago, Illinois</p>
+	<p>Dallas, Texas</p>
+	<p>Washington, District of Columbia</p>
+	<p>Jersey City, New Jersey</p>
+	<p>Newark, New Jersey</p>
+	<p>Secaucus, New Jersey</p>
+	<p>Columbus, Ohio</p>
 	<p>One might expect less populated areas to have uniformly slower performance. There are, however, pockets of poor performance even in densely populated areas such as Los Angeles (California), Milwaukee (Wisconsin), Orange County (Florida), Fairfax (Virginia), &nbsp;San Bernardino (California), Knox County (Tennessee), and even San Francisco (California).</p>
 	<p>In as many as 9% of ZIP codes, average latency exceeds 150ms, the acceptable threshold of performance to run a videoconferencing service such as Zoom.</p>
-	<p><strong>Australia</strong><br><em>Australia median throughput: 33.34Mbps</em><br><em>Australia median latency: 42.04ms</em></p>
+	<p><b>Australia</b><i>Australia median throughput: 33.34Mbps</i><i>Australia median latency: 42.04ms</i></p>
 	<p>In general, Australia seems to suffer very poor broadband speeds, with speeds that are not capable of sustaining households watching video streaming, and possibly struggling with multiple video calls. The problem isn’t just a rural one either, while the inner cities showed good broadband speed, often with fiber-to-the-building Internet access, suburban areas suffered. Larger suburban areas like the Illawarra had similar speeds to more rural centers like Wagga Wagga, showing this is more than just an urban divide.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image5-11.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Inner West Sydney, New South Wales</td>
-				<td style="text-align:center">West Tamar, Tasmania</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Port Phillip, Victoria</td>
-				<td style="text-align:center">Bassendean, Western Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Woollahra, New South Wales</td>
-				<td style="text-align:center">Alexandrina, South Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Brimbank, Victoria</td>
-				<td style="text-align:center">Bayswater, Western Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lake Macquarie, New South Wales</td>
-				<td style="text-align:center">Augusta-Margaret River, Western Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Hawkesbury, New South Wales</td>
-				<td style="text-align:center">Goulburn Mulwaree, New South Wales</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Sydney, New South Wales</td>
-				<td style="text-align:center">Goyder, South Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Wentworth, New South Wales</td>
-				<td style="text-align:center">Kingborough, Tasmania</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Hunters Hill, New South Wales</td>
-				<td style="text-align:center">Cottesloe, Western Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Blacktown, New South Wales</td>
-				<td style="text-align:center">Lithgow, New South Wales</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7283atm713DjjNEVKGob4b/ed72c6e3ce9343d928d871861136afc1/image5-11.png" alt="" class="kg-image" width="1642" height="1260" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>Inner West Sydney, New South Wales</p>
+	<p>West Tamar, Tasmania</p>
+	<p>Port Phillip, Victoria</p>
+	<p>Bassendean, Western Australia</p>
+	<p>Woollahra, New South Wales</p>
+	<p>Alexandrina, South Australia</p>
+	<p>Brimbank, Victoria</p>
+	<p>Bayswater, Western Australia</p>
+	<p>Lake Macquarie, New South Wales</p>
+	<p>Augusta-Margaret River, Western Australia</p>
+	<p>Hawkesbury, New South Wales</p>
+	<p>Goulburn Mulwaree, New South Wales</p>
+	<p>Sydney, New South Wales</p>
+	<p>Goyder, South Australia</p>
+	<p>Wentworth, New South Wales</p>
+	<p>Kingborough, Tasmania</p>
+	<p>Hunters Hill, New South Wales</p>
+	<p>Cottesloe, Western Australia</p>
+	<p>Blacktown, New South Wales</p>
+	<p>Lithgow, New South Wales</p>
 	<p>The irony is that, from a latency perspective, Australia actually performs quite well.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image1-23.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Port Phillip, Victoria</td>
-				<td style="text-align:center">Narromine, New South Wales</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Mornington Peninsula, Victoria</td>
-				<td style="text-align:center">North Sydney, New South Wales</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Whittlesea, Victoria</td>
-				<td style="text-align:center">Northern Midlands, Tasmania</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Penrith, New South Wales</td>
-				<td style="text-align:center">Swan, Western Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Mid-Coast, New South Wales</td>
-				<td style="text-align:center">Wanneroo, Western Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Campbelltown, New South Wales</td>
-				<td style="text-align:center">Snowy Valleys, New South Wales</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Northern Beaches, New South Wales</td>
-				<td style="text-align:center">Parkes, New South Wales</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Strathfield, New South Wales</td>
-				<td style="text-align:center">Broome, Western Australia</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Latrobe, Victoria</td>
-				<td style="text-align:center">Griffith, New South Wales</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Surf Coast, Victoria</td>
-				<td style="text-align:center">Busselton, Western Australia</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><strong>Japan</strong><br><em>Japan median throughput: 61.4Mbps</em><br><em>Japan median latency: 31.89ms</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Bmyhn5UWmMgIK7eSLXTWB/7485267612940a5cbe97da67ceaa585f/image1-23.png" alt="" class="kg-image" width="1526" height="1026" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>Port Phillip, Victoria</p>
+	<p>Narromine, New South Wales</p>
+	<p>Mornington Peninsula, Victoria</p>
+	<p>North Sydney, New South Wales</p>
+	<p>Whittlesea, Victoria</p>
+	<p>Northern Midlands, Tasmania</p>
+	<p>Penrith, New South Wales</p>
+	<p>Swan, Western Australia</p>
+	<p>Mid-Coast, New South Wales</p>
+	<p>Wanneroo, Western Australia</p>
+	<p>Campbelltown, New South Wales</p>
+	<p>Snowy Valleys, New South Wales</p>
+	<p>Northern Beaches, New South Wales</p>
+	<p>Parkes, New South Wales</p>
+	<p>Strathfield, New South Wales</p>
+	<p>Broome, Western Australia</p>
+	<p>Latrobe, Victoria</p>
+	<p>Griffith, New South Wales</p>
+	<p>Surf Coast, Victoria</p>
+	<p>Busselton, Western Australia</p>
+	<p><b>Japan</b><i>Japan median throughput: 61.4Mbps</i><i>Japan median latency: 31.89ms</i></p>
 	<p>Japan’s Internet has consistently low latency, including in distant areas such as Okinawa prefecture, 1,000 miles away from Tokyo.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image7-6.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Nara</td>
-				<td style="text-align:center">Yamagata</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Osaka</td>
-				<td style="text-align:center">Okinawa</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Shiga</td>
-				<td style="text-align:center">Miyazaki</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kōchi</td>
-				<td style="text-align:center">Nagasaki</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kyoto</td>
-				<td style="text-align:center">Ōita</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Tochigi</td>
-				<td style="text-align:center">Kagoshima</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Tokushima</td>
-				<td style="text-align:center">Yamaguchi</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Wakayama</td>
-				<td style="text-align:center">Tottori</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kanagawa</td>
-				<td style="text-align:center">Saga</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Aichi</td>
-				<td style="text-align:center">Ehime</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z7XmnLiK51p7gK40qrjTo/62338fb854c82e4116e95394f9307201/image7-6.png" alt="" class="kg-image" width="1448" height="1232" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>Nara</p>
+	<p>Yamagata</p>
+	<p>Osaka</p>
+	<p>Okinawa</p>
+	<p>Shiga</p>
+	<p>Miyazaki</p>
+	<p>Kōchi</p>
+	<p>Nagasaki</p>
+	<p>Kyoto</p>
+	<p>Ōita</p>
+	<p>Tochigi</p>
+	<p>Kagoshima</p>
+	<p>Tokushima</p>
+	<p>Yamaguchi</p>
+	<p>Wakayama</p>
+	<p>Tottori</p>
+	<p>Kanagawa</p>
+	<p>Saga</p>
+	<p>Aichi</p>
+	<p>Ehime</p>
 	<p>However, it's a different story when it comes to bandwidth. Several prefectures in Kyushu Island, Okinawa Prefecture, and Western Honshu have performance falling behind the rest of the country. Unsurprisingly, the best Internet performance is seen in Tokyo, with the highest concentration of people and data centers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image19-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Osaka</td>
-				<td style="text-align:center">Tottori</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Tokyo</td>
-				<td style="text-align:center">Shimane</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kanagawa</td>
-				<td style="text-align:center">Yamaguchi</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Nara</td>
-				<td style="text-align:center">Okinawa</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Chiba</td>
-				<td style="text-align:center">Saga</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Aomori</td>
-				<td style="text-align:center">Miyazaki</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Hyōgo</td>
-				<td style="text-align:center">Kagoshima</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kyoto</td>
-				<td style="text-align:center">Yamagata</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Tokushima</td>
-				<td style="text-align:center">Nagasaki</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kōchi</td>
-				<td style="text-align:center">Fukui</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><strong>United Kingdom</strong><br><em>United Kingdom median throughput: 53.8Mbps</em><br><em>United Kingdom median latency: 34.12ms</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zHLRam6XtF3balIS1AC9m/bf2363a5fe9b6f5c8dafd400fd47cbf4/image19-1.png" alt="" class="kg-image" width="1999" height="1168" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>Osaka</p>
+	<p>Tottori</p>
+	<p>Tokyo</p>
+	<p>Shimane</p>
+	<p>Kanagawa</p>
+	<p>Yamaguchi</p>
+	<p>Nara</p>
+	<p>Okinawa</p>
+	<p>Chiba</p>
+	<p>Saga</p>
+	<p>Aomori</p>
+	<p>Miyazaki</p>
+	<p>Hyōgo</p>
+	<p>Kagoshima</p>
+	<p>Kyoto</p>
+	<p>Yamagata</p>
+	<p>Tokushima</p>
+	<p>Nagasaki</p>
+	<p>Kōchi</p>
+	<p>Fukui</p>
+	<p><b>United Kingdom</b><i>United Kingdom median throughput: 53.8Mbps</i><i>United Kingdom median latency: 34.12ms</i></p>
 	<p>The United Kingdom has good latency throughout most of the country, however bandwidth is a different story. The best performance is seen in inner London as well as some other larger cities like Manchester. London and Manchester are also the homes of the UK's largest Internet <a href="https://www.linx.net">exchange</a> <a href="https://www.lonap.net">points</a>. More effort to localize data into other cities, like <a href="https://blog.cloudflare.com/edinburgh">Edinburgh</a>, would be an important step to improving performance for those regions.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image14-4.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Sutton</td>
-				<td style="text-align:center">Brent</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Milton Keynes</td>
-				<td style="text-align:center">Ceredigion</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lambeth</td>
-				<td style="text-align:center">Westminster</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Cardiff</td>
-				<td style="text-align:center">Scottish Borders</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Harrow</td>
-				<td style="text-align:center">Shetland Islands</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Hackney</td>
-				<td style="text-align:center">Middlesbrough</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Islington</td>
-				<td style="text-align:center">Fermanagh and Omagh</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kensington and Chelsea</td>
-				<td style="text-align:center">Slough</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Thurrock</td>
-				<td style="text-align:center">Highland</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kingston upon Thames</td>
-				<td style="text-align:center">Denbighshire</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image6-10.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">City of London</td>
-				<td style="text-align:center">Orkney Islands</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Slough</td>
-				<td style="text-align:center">Shetland Islands</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lambeth</td>
-				<td style="text-align:center">Blaenau Gwent</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Surrey</td>
-				<td style="text-align:center">Ceredigion</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Tower Hamlets</td>
-				<td style="text-align:center">Isle of Anglesey</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Coventry</td>
-				<td style="text-align:center">Fermanagh and Omagh</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Wrexham</td>
-				<td style="text-align:center">Scottish Borders</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Islington</td>
-				<td style="text-align:center">Denbighshire</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Vale of Glamorgan</td>
-				<td style="text-align:center">Midlothian</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Leicester</td>
-				<td style="text-align:center">Rutland</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><strong>Germany</strong><br><em>Germany median throughput: 48.79Mbps</em><br><em>Germany median latency: 42.1ms</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3z3juqpamT6YHDfr5KbzbF/bbccdcbd1b7d02510fbf19a0fc38c576/image14-4.png" alt="" class="kg-image" width="1222" height="1162" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>Sutton</p>
+	<p>Brent</p>
+	<p>Milton Keynes</p>
+	<p>Ceredigion</p>
+	<p>Lambeth</p>
+	<p>Westminster</p>
+	<p>Cardiff</p>
+	<p>Scottish Borders</p>
+	<p>Harrow</p>
+	<p>Shetland Islands</p>
+	<p>Hackney</p>
+	<p>Middlesbrough</p>
+	<p>Islington</p>
+	<p>Fermanagh and Omagh</p>
+	<p>Kensington and Chelsea</p>
+	<p>Slough</p>
+	<p>Thurrock</p>
+	<p>Highland</p>
+	<p>Kingston upon Thames</p>
+	<p>Denbighshire</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YXgwS2O0IYRhkaBN1msl6/7794e4bbbef7584a73ab91fc357bab8f/image6-10.png" alt="" class="kg-image" width="1480" height="1268" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>City of London</p>
+	<p>Orkney Islands</p>
+	<p>Slough</p>
+	<p>Shetland Islands</p>
+	<p>Lambeth</p>
+	<p>Blaenau Gwent</p>
+	<p>Surrey</p>
+	<p>Ceredigion</p>
+	<p>Tower Hamlets</p>
+	<p>Isle of Anglesey</p>
+	<p>Coventry</p>
+	<p>Fermanagh and Omagh</p>
+	<p>Wrexham</p>
+	<p>Scottish Borders</p>
+	<p>Islington</p>
+	<p>Denbighshire</p>
+	<p>Vale of Glamorgan</p>
+	<p>Midlothian</p>
+	<p>Leicester</p>
+	<p>Rutland</p>
+	<p><b>Germany</b><i>Germany median throughput: 48.79Mbps</i><i>Germany median latency: 42.1ms</i></p>
 	<p>Germany has some of the best performance centered on Frankfurt am Main, which is one of the major Internet hubs of the world, however what was formerly East Germany, has higher latency, and slower speeds, leaning to a poorer Internet performance.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image8-7.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Erlangen</td>
-				<td style="text-align:center">Harz</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Coesfeld</td>
-				<td style="text-align:center">Nordwestmecklenburg</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Weißenburg-Gunzenhausen</td>
-				<td style="text-align:center">Saale-Holzland-Kreis</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Heinsberg</td>
-				<td style="text-align:center">Elbe-Elster</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Main-Taunus-Kreis</td>
-				<td style="text-align:center">Vorpommern-Greifswald</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Main-Kinzig-Kreis</td>
-				<td style="text-align:center">Vorpommern-Rügen</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Darmstadt</td>
-				<td style="text-align:center">Kyffhäuserkreis</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Peine</td>
-				<td style="text-align:center">Barnim</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Herzogtum Lauenburg</td>
-				<td style="text-align:center">Rostock</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Segeberg</td>
-				<td style="text-align:center">Meißen</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image11-6.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Weißenburg-Gunzenhausen</td>
-				<td style="text-align:center">Saale-Holzland-Kreis</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Frankfurt am Main</td>
-				<td style="text-align:center">Weimarer Land</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kassel</td>
-				<td style="text-align:center">Vulkaneifel</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Cochem-Zell</td>
-				<td style="text-align:center">Kusel</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Dingolfing-Landau</td>
-				<td style="text-align:center">Spree-Neiße</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Bodenseekreis</td>
-				<td style="text-align:center">Eisenach</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Sankt Wendel</td>
-				<td style="text-align:center">Unstrut-Hainich-Kreis</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Landshut</td>
-				<td style="text-align:center">Saale-Orla-Kreis</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Ludwigsburg</td>
-				<td style="text-align:center">Weimar</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Speyer</td>
-				<td style="text-align:center">Südliche Weinstraße</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><strong>France</strong><br><em>France median throughput: 48.51Mbps</em><br><em>France median latency: 54.2ms</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KASebfsQLY3N98Mew0ldy/7c0515221b76d3e88166266c59243ec9/image8-7.png" alt="" class="kg-image" width="1352" height="1176" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>Erlangen</p>
+	<p>Harz</p>
+	<p>Coesfeld</p>
+	<p>Nordwestmecklenburg</p>
+	<p>Weißenburg-Gunzenhausen</p>
+	<p>Saale-Holzland-Kreis</p>
+	<p>Heinsberg</p>
+	<p>Elbe-Elster</p>
+	<p>Main-Taunus-Kreis</p>
+	<p>Vorpommern-Greifswald</p>
+	<p>Main-Kinzig-Kreis</p>
+	<p>Vorpommern-Rügen</p>
+	<p>Darmstadt</p>
+	<p>Kyffhäuserkreis</p>
+	<p>Peine</p>
+	<p>Barnim</p>
+	<p>Herzogtum Lauenburg</p>
+	<p>Rostock</p>
+	<p>Segeberg</p>
+	<p>Meißen</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NrSjxC2NZJ4EPC1R8NDYC/76ac27a7cdca658688343a40cdd4d2b4/image11-6.png" alt="" class="kg-image" width="1170" height="1194" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>Weißenburg-Gunzenhausen</p>
+	<p>Saale-Holzland-Kreis</p>
+	<p>Frankfurt am Main</p>
+	<p>Weimarer Land</p>
+	<p>Kassel</p>
+	<p>Vulkaneifel</p>
+	<p>Cochem-Zell</p>
+	<p>Kusel</p>
+	<p>Dingolfing-Landau</p>
+	<p>Spree-Neiße</p>
+	<p>Bodenseekreis</p>
+	<p>Eisenach</p>
+	<p>Sankt Wendel</p>
+	<p>Unstrut-Hainich-Kreis</p>
+	<p>Landshut</p>
+	<p>Saale-Orla-Kreis</p>
+	<p>Ludwigsburg</p>
+	<p>Weimar</p>
+	<p>Speyer</p>
+	<p>Südliche Weinstraße</p>
+	<p><b>France</b><i>France median throughput: 48.51Mbps</i><i>France median latency: 54.2ms</i></p>
 	<p>Paris has long been the Internet hub in France. <a href="https://blog.cloudflare.com/marseille">Marseille</a> has started to grow as a hub, especially with the large number of submarine cables landing. Other interconnection hubs in Lyon and Bordeaux are where we’ll start to see growth as Internet hubs. These four cities are where we also see the best performance, with the highest speeds and lowest latencies, giving the best Internet performance.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image9-8.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Antony</td>
-				<td style="text-align:center">Clamecy</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Boulogne-Billancourt</td>
-				<td style="text-align:center">Beaune</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lyon</td>
-				<td style="text-align:center">Ambert</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lille</td>
-				<td style="text-align:center">Commercy</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Versailles</td>
-				<td style="text-align:center">Vitry-le-François</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Nogent-sur-Marne</td>
-				<td style="text-align:center">Villefranche-de-Rouergue</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Bobigny</td>
-				<td style="text-align:center">Lure</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Marseille</td>
-				<td style="text-align:center">Avranches</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Saint-Germain-en-Laye</td>
-				<td style="text-align:center">Oloron-Sainte-Marie</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Créteil</td>
-				<td style="text-align:center">Privas</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3-13.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Boulogne-Billancourt</td>
-				<td style="text-align:center">Clamecy</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Antony</td>
-				<td style="text-align:center">Bellac</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Marseille</td>
-				<td style="text-align:center">Issoudun</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lille</td>
-				<td style="text-align:center">Vitry-le-François</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Nanterre</td>
-				<td style="text-align:center">Sarlat-la-Canéda</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Paris</td>
-				<td style="text-align:center">Segré</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lyon</td>
-				<td style="text-align:center">Rethel</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Bobigny</td>
-				<td style="text-align:center">Avallon</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Versailles</td>
-				<td style="text-align:center">Privas</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Saverne</td>
-				<td style="text-align:center">Sartène</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><strong>Brazil</strong><br><em>Brazil median throughput: 26.28Mbps</em><br><em>Brazil median latency: 49.25ms</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LAgyDUnnSO3pkZfdqlfhC/92605d15531a22e6ad666df3a4f679c2/image9-8.png" alt="" class="kg-image" width="1568" height="1120" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>Antony</p>
+	<p>Clamecy</p>
+	<p>Boulogne-Billancourt</p>
+	<p>Beaune</p>
+	<p>Lyon</p>
+	<p>Ambert</p>
+	<p>Lille</p>
+	<p>Commercy</p>
+	<p>Versailles</p>
+	<p>Vitry-le-François</p>
+	<p>Nogent-sur-Marne</p>
+	<p>Villefranche-de-Rouergue</p>
+	<p>Bobigny</p>
+	<p>Lure</p>
+	<p>Marseille</p>
+	<p>Avranches</p>
+	<p>Saint-Germain-en-Laye</p>
+	<p>Oloron-Sainte-Marie</p>
+	<p>Créteil</p>
+	<p>Privas</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ITQ0vuvnwEHtX0RnUougA/2e713fc6625503e25ec50b1a427bf1bc/image3-13.png" alt="" class="kg-image" width="1618" height="1206" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>Boulogne-Billancourt</p>
+	<p>Clamecy</p>
+	<p>Antony</p>
+	<p>Bellac</p>
+	<p>Marseille</p>
+	<p>Issoudun</p>
+	<p>Lille</p>
+	<p>Vitry-le-François</p>
+	<p>Nanterre</p>
+	<p>Sarlat-la-Canéda</p>
+	<p>Paris</p>
+	<p>Segré</p>
+	<p>Lyon</p>
+	<p>Rethel</p>
+	<p>Bobigny</p>
+	<p>Avallon</p>
+	<p>Versailles</p>
+	<p>Privas</p>
+	<p>Saverne</p>
+	<p>Sartène</p>
+	<p><b>Brazil</b><i>Brazil median throughput: 26.28Mbps</i><i>Brazil median latency: 49.25ms</i></p>
 	<p>Much of Brazil has good, low latency Internet performance, given geographic proximity to the major Internet hubs in São Paulo and Rio de Janeiro. Much of the Amazon has low speeds and high latency, for those parts that are actually connected to the Internet.</p>
-	<p>Campinas is one stand out, with some of the best performing Internet across Brazil, and is also the site of a recent <a href="https://blog.cloudflare.com/ten-new-cities-four-new-countries">Cloudflare data center launch</a><strong>.</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image15-4.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Vale do Paraiba Paulista</td>
-				<td style="text-align:center">Vale do Acre</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Assis</td>
-				<td style="text-align:center">Sul Amazonense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Sudoeste Amazonense</td>
-				<td style="text-align:center">Marajo</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Litoral Sul Paulista</td>
-				<td style="text-align:center">Vale do Jurua</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Baixadas</td>
-				<td style="text-align:center">Sul de Roraima</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Centro Fluminense</td>
-				<td style="text-align:center">Centro Amazonense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Sul Catarinense</td>
-				<td style="text-align:center">Madeira-Guapore</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Vale do Paraiba Paulista</td>
-				<td style="text-align:center">Sul do Amapa</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Noroeste Fluminense</td>
-				<td style="text-align:center">Metropolitana de Belem</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Bauru</td>
-				<td style="text-align:center">Baixo Amazonas</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-14.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Metropolitana do Rio de Janeiro</td>
-				<td style="text-align:center">Sudoeste Amazonense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Campinas</td>
-				<td style="text-align:center">Marajo</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Metropolitana de São Paulo</td>
-				<td style="text-align:center">Norte Amazonense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Oeste Catarinense</td>
-				<td style="text-align:center">Baixo Amazonas</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Marilia</td>
-				<td style="text-align:center">Sudeste Rio-Grandense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Vale do Itajaí</td>
-				<td style="text-align:center">Sul Amazonense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Sul Catarinense</td>
-				<td style="text-align:center">Centro-Sul Cearense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Sudoeste Paranaense</td>
-				<td style="text-align:center">Sudoeste Paraense</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Grande Florianópolis</td>
-				<td style="text-align:center">Sertão Sergipano</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Norte Catarinense</td>
-				<td style="text-align:center">Sertoes Cearenses</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><strong>South Africa</strong><br><em>South Africa median throughput: 6.4Mbps</em><br><em>South Africa median latency: 59.78ms</em></p>
+	<p>Campinas is one stand out, with some of the best performing Internet across Brazil, and is also the site of a recent <a href="https://blog.cloudflare.com/ten-new-cities-four-new-countries">Cloudflare data center launch</a><b>.</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ti9rluhvrW0YU0gkxKVBd/715ed4c46fe000c6495b0a3bbaf84726/image15-4.png" alt="" class="kg-image" width="1272" height="972" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>Vale do Paraiba Paulista</p>
+	<p>Vale do Acre</p>
+	<p>Assis</p>
+	<p>Sul Amazonense</p>
+	<p>Sudoeste Amazonense</p>
+	<p>Marajo</p>
+	<p>Litoral Sul Paulista</p>
+	<p>Vale do Jurua</p>
+	<p>Baixadas</p>
+	<p>Sul de Roraima</p>
+	<p>Centro Fluminense</p>
+	<p>Centro Amazonense</p>
+	<p>Sul Catarinense</p>
+	<p>Madeira-Guapore</p>
+	<p>Vale do Paraiba Paulista</p>
+	<p>Sul do Amapa</p>
+	<p>Noroeste Fluminense</p>
+	<p>Metropolitana de Belem</p>
+	<p>Bauru</p>
+	<p>Baixo Amazonas</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MvJOcyDlPeMUs1eUWA9nq/28232775f9ab549523e4a7d86d94a807/image4-14.png" alt="" class="kg-image" width="1999" height="1274" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>Metropolitana do Rio de Janeiro</p>
+	<p>Sudoeste Amazonense</p>
+	<p>Campinas</p>
+	<p>Marajo</p>
+	<p>Metropolitana de São Paulo</p>
+	<p>Norte Amazonense</p>
+	<p>Oeste Catarinense</p>
+	<p>Baixo Amazonas</p>
+	<p>Marilia</p>
+	<p>Sudeste Rio-Grandense</p>
+	<p>Vale do Itajaí</p>
+	<p>Sul Amazonense</p>
+	<p>Sul Catarinense</p>
+	<p>Centro-Sul Cearense</p>
+	<p>Sudoeste Paranaense</p>
+	<p>Sudoeste Paraense</p>
+	<p>Grande Florianópolis</p>
+	<p>Sertão Sergipano</p>
+	<p>Norte Catarinense</p>
+	<p>Sertoes Cearenses</p>
+	<p><b>South Africa</b><i>South Africa median throughput: 6.4Mbps</i><i>South Africa median latency: 59.78ms</i></p>
 	<p>Johannesburg has been the historical hub for South Africa’s Internet. This is where many Internet giants have built data centers, and it shows in latency as distance from Johannesburg. South Africa has grown to have two more Internet hubs in <a href="https://blog.cloudflare.com/cape-town-south-africa">Cape Town</a> and <a href="https://blog.cloudflare.com/durban-and-port-louis">Durban</a>. Internet performance also follows these three cities. However, much of South Africa’s Internet performance lacks the ability for video streaming and video conferencing in high definition.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image16-4.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by latency</th>
-				<th style="text-align:center">Worst performing geographies by latency</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Siyancuma</td>
-				<td style="text-align:center">Dr Beyers Naude</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">uMshwathi</td>
-				<td style="text-align:center">Mogalakwena</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">City of Tshwane</td>
-				<td style="text-align:center">Ulundi</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Breede Valley</td>
-				<td style="text-align:center">Modimolle/Mookgophong</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">City of Cape Town</td>
-				<td style="text-align:center">Maluti a Phofung</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Overstrand</td>
-				<td style="text-align:center">Moqhaka</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Local Municipality of Madibeng</td>
-				<td style="text-align:center">Thulamela</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Metsimaholo</td>
-				<td style="text-align:center">Walter Sisulu</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Stellenbosch</td>
-				<td style="text-align:center">Dawid Kruiper</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Ekurhuleni</td>
-				<td style="text-align:center">Ga-Segonyana</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image18-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Best performing geographies by throughput</th>
-				<th style="text-align:center">Worst performing geographies by throughput</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Siyancuma</td>
-				<td style="text-align:center">Dr Beyers Naude</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">City of Cape Town</td>
-				<td style="text-align:center">Walter Sisulu</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">City of Johannesburg</td>
-				<td style="text-align:center">Lekwa-Teemane</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Ekurhuleni</td>
-				<td style="text-align:center">Dr Nkosazana Dlamini Zuma</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Drakenstein</td>
-				<td style="text-align:center">Emthanjeni</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">eThekwini</td>
-				<td style="text-align:center">Dawid Kruiper</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Buffalo City</td>
-				<td style="text-align:center">Swellendam</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">uMhlathuze</td>
-				<td style="text-align:center">Merafong City</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">City of Tshwane</td>
-				<td style="text-align:center">Blue Crane Route</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">City of Matlosana</td>
-				<td style="text-align:center">Modimolle/Mookgophong</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<h2 id="case-study-on-isp-concentration-s-impact-on-performance-alabama-usa">Case Study on ISP Concentration’s Impact on Performance: Alabama, USA</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6b3JPXC1oh6NbCuyuCIK6v/0810df4e2a0821df35881ad40e60cf7c/image16-4.png" alt="" class="kg-image" width="1626" height="860" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by latency</p>
+	<p>Worst performing geographies by latency</p>
+	<p>Siyancuma</p>
+	<p>Dr Beyers Naude</p>
+	<p>uMshwathi</p>
+	<p>Mogalakwena</p>
+	<p>City of Tshwane</p>
+	<p>Ulundi</p>
+	<p>Breede Valley</p>
+	<p>Modimolle/Mookgophong</p>
+	<p>City of Cape Town</p>
+	<p>Maluti a Phofung</p>
+	<p>Overstrand</p>
+	<p>Moqhaka</p>
+	<p>Local Municipality of Madibeng</p>
+	<p>Thulamela</p>
+	<p>Metsimaholo</p>
+	<p>Walter Sisulu</p>
+	<p>Stellenbosch</p>
+	<p>Dawid Kruiper</p>
+	<p>Ekurhuleni</p>
+	<p>Ga-Segonyana</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AmaUxgiQQFqE4Us6xvdJo/23990add44d406ca1417528ae5604e13/image18-1.png" alt="" class="kg-image" width="1830" height="1236" loading="lazy">
+
+	</figure>
+	<p>Best performing geographies by throughput</p>
+	<p>Worst performing geographies by throughput</p>
+	<p>Siyancuma</p>
+	<p>Dr Beyers Naude</p>
+	<p>City of Cape Town</p>
+	<p>Walter Sisulu</p>
+	<p>City of Johannesburg</p>
+	<p>Lekwa-Teemane</p>
+	<p>Ekurhuleni</p>
+	<p>Dr Nkosazana Dlamini Zuma</p>
+	<p>Drakenstein</p>
+	<p>Emthanjeni</p>
+	<p>eThekwini</p>
+	<p>Dawid Kruiper</p>
+	<p>Buffalo City</p>
+	<p>Swellendam</p>
+	<p>uMhlathuze</p>
+	<p>Merafong City</p>
+	<p>City of Tshwane</p>
+	<p>Blue Crane Route</p>
+	<p>City of Matlosana</p>
+	<p>Modimolle/Mookgophong</p>
+	<h2>Case Study on ISP Concentration’s Impact on Performance: Alabama, USA</h2>
 	<p>One question we had as we went through a lot of this data: does ISP concentration impact Internet performance?</p>
 	<p>On one hand, there’s a case to be made that more ISP competition results in no one vendor being able to invest sufficient resources to build out a fast network. On the other hand, well, classical economics would suggest that monopolies are bad, right?</p>
 	<p>To investigate the question further, we did a deep dive into Alabama in the United States, the 24th most populous state in the US. We tracked two key metrics across 65 counties: Internet performance as defined by average download speed, and ISP concentration, as measured by the largest ISP’s traffic share.</p>
-	<p>Here is the raw data:</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th>County</th>
-				<th style="text-align:right">Avg. Download Speed</th>
-				<th style="text-align:right">Largest ISP's Traffic Share</th>
-				<th>County</th>
-				<th style="text-align:right">Avg. Download Speed</th>
-				<th style="text-align:right">Largest ISP's Traffic Share</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Marion</td>
-				<td style="text-align:right">53.77</td>
-				<td style="text-align:right">41%</td>
-				<td>Franklin</td>
-				<td style="text-align:right">32.01</td>
-				<td style="text-align:right">83%</td>
-			</tr>
-			<tr>
-				<td>Escambia</td>
-				<td style="text-align:right">29.14</td>
-				<td style="text-align:right">43%</td>
-				<td>Coosa</td>
-				<td style="text-align:right">82.15</td>
-				<td style="text-align:right">83%</td>
-			</tr>
-			<tr>
-				<td>Etowah</td>
-				<td style="text-align:right">56.07</td>
-				<td style="text-align:right">49%</td>
-				<td>Crenshaw</td>
-				<td style="text-align:right">44.49</td>
-				<td style="text-align:right">84%</td>
-			</tr>
-			<tr>
-				<td>Jackson</td>
-				<td style="text-align:right">37.77</td>
-				<td style="text-align:right">52%</td>
-				<td>Randolph</td>
-				<td style="text-align:right">21.4</td>
-				<td style="text-align:right">86%</td>
-			</tr>
-			<tr>
-				<td>Winston</td>
-				<td style="text-align:right">59.25</td>
-				<td style="text-align:right">56%</td>
-				<td>Lamar</td>
-				<td style="text-align:right">33.94</td>
-				<td style="text-align:right">86%</td>
-			</tr>
-			<tr>
-				<td>Montgomery</td>
-				<td style="text-align:right">79.5</td>
-				<td style="text-align:right">58%</td>
-				<td>Autuaga</td>
-				<td style="text-align:right">65.55</td>
-				<td style="text-align:right">86%</td>
-			</tr>
-			<tr>
-				<td>Baldwin</td>
-				<td style="text-align:right">49.06</td>
-				<td style="text-align:right">58%</td>
-				<td>Choctaw</td>
-				<td style="text-align:right">23.97</td>
-				<td style="text-align:right">87%</td>
-			</tr>
-			<tr>
-				<td>Houston</td>
-				<td style="text-align:right">73.73</td>
-				<td style="text-align:right">61%</td>
-				<td>Butler</td>
-				<td style="text-align:right">29.86</td>
-				<td style="text-align:right">90%</td>
-			</tr>
-			<tr>
-				<td>Dallas</td>
-				<td style="text-align:right">86.92</td>
-				<td style="text-align:right">62%</td>
-				<td>Pike</td>
-				<td style="text-align:right">50.54</td>
-				<td style="text-align:right">92%</td>
-			</tr>
-			<tr>
-				<td>Marshall</td>
-				<td style="text-align:right">59.93</td>
-				<td style="text-align:right">62%</td>
-				<td>Sumter</td>
-				<td style="text-align:right">38.52</td>
-				<td style="text-align:right">91%</td>
-			</tr>
-			<tr>
-				<td>Chambers</td>
-				<td style="text-align:right">72.05</td>
-				<td style="text-align:right">63%</td>
-				<td>Pickens</td>
-				<td style="text-align:right">43.76</td>
-				<td style="text-align:right">92%</td>
-			</tr>
-			<tr>
-				<td>Jefferson</td>
-				<td style="text-align:right">99.84</td>
-				<td style="text-align:right">64%</td>
-				<td>Marengo</td>
-				<td style="text-align:right">42.89</td>
-				<td style="text-align:right">92%</td>
-			</tr>
-			<tr>
-				<td>Elmore</td>
-				<td style="text-align:right">71.05</td>
-				<td style="text-align:right">66%</td>
-				<td>Macon</td>
-				<td style="text-align:right">12.69</td>
-				<td style="text-align:right">92%</td>
-			</tr>
-			<tr>
-				<td>Fayette</td>
-				<td style="text-align:right">41.7</td>
-				<td style="text-align:right">68%</td>
-				<td>Lawrence</td>
-				<td style="text-align:right">62.87</td>
-				<td style="text-align:right">92%</td>
-			</tr>
-			<tr>
-				<td>Lauderdale</td>
-				<td style="text-align:right">62.87</td>
-				<td style="text-align:right">69%</td>
-				<td>Bullock</td>
-				<td style="text-align:right">23.89</td>
-				<td style="text-align:right">92%</td>
-			</tr>
-			<tr>
-				<td>Colbert</td>
-				<td style="text-align:right">47.91</td>
-				<td style="text-align:right">70%</td>
-				<td>Chilton</td>
-				<td style="text-align:right">17.13</td>
-				<td style="text-align:right">95%</td>
-			</tr>
-			<tr>
-				<td>DeKalb</td>
-				<td style="text-align:right">58.55</td>
-				<td style="text-align:right">70%</td>
-				<td>Wilcox</td>
-				<td style="text-align:right">62.12</td>
-				<td style="text-align:right">93%</td>
-			</tr>
-			<tr>
-				<td>Morgan</td>
-				<td style="text-align:right">61.78</td>
-				<td style="text-align:right">71%</td>
-				<td>Monroe</td>
-				<td style="text-align:right">20.74</td>
-				<td style="text-align:right">96%</td>
-			</tr>
-			<tr>
-				<td>Washington</td>
-				<td style="text-align:right">5.14</td>
-				<td style="text-align:right">72%</td>
-				<td>Dale</td>
-				<td style="text-align:right">55.46</td>
-				<td style="text-align:right">97%</td>
-			</tr>
-			<tr>
-				<td>Geneva</td>
-				<td style="text-align:right">32.01</td>
-				<td style="text-align:right">73%</td>
-				<td>Coffee</td>
-				<td style="text-align:right">58.18</td>
-				<td style="text-align:right">97%</td>
-			</tr>
-			<tr>
-				<td>Lee</td>
-				<td style="text-align:right">78.1</td>
-				<td style="text-align:right">73%</td>
-				<td>Conecuh</td>
-				<td style="text-align:right">34.94</td>
-				<td style="text-align:right">97%</td>
-			</tr>
-			<tr>
-				<td>Tuscaloosa</td>
-				<td style="text-align:right">58.85</td>
-				<td style="text-align:right">76%</td>
-				<td>Cleburne</td>
-				<td style="text-align:right">38.25</td>
-				<td style="text-align:right">97%</td>
-			</tr>
-			<tr>
-				<td>Cullman</td>
-				<td style="text-align:right">61.03</td>
-				<td style="text-align:right">77%</td>
-				<td>Clarke</td>
-				<td style="text-align:right">38.14</td>
-				<td style="text-align:right">97%</td>
-			</tr>
-			<tr>
-				<td>Covington</td>
-				<td style="text-align:right">35.48</td>
-				<td style="text-align:right">78%</td>
-				<td>Calhoun</td>
-				<td style="text-align:right">64.19</td>
-				<td style="text-align:right">97%</td>
-			</tr>
-			<tr>
-				<td>Shelby</td>
-				<td style="text-align:right">69.66</td>
-				<td style="text-align:right">79%</td>
-				<td>Lowndes</td>
-				<td style="text-align:right">9.91</td>
-				<td style="text-align:right">98%</td>
-			</tr>
-			<tr>
-				<td>St. Clair</td>
-				<td style="text-align:right">33.05</td>
-				<td style="text-align:right">79%</td>
-				<td>Russell</td>
-				<td style="text-align:right">49.48</td>
-				<td style="text-align:right">98%</td>
-			</tr>
-			<tr>
-				<td>Blount</td>
-				<td style="text-align:right">40.58</td>
-				<td style="text-align:right">80%</td>
-				<td>Henry</td>
-				<td style="text-align:right">4.69</td>
-				<td style="text-align:right">98%</td>
-			</tr>
-			<tr>
-				<td>Mobile</td>
-				<td style="text-align:right">68.77</td>
-				<td style="text-align:right">80%</td>
-				<td>Limestone</td>
-				<td style="text-align:right">71.6</td>
-				<td style="text-align:right">98%</td>
-			</tr>
-			<tr>
-				<td>Walker</td>
-				<td style="text-align:right">39.36</td>
-				<td style="text-align:right">81%</td>
-				<td>Bibb</td>
-				<td style="text-align:right">70.14</td>
-				<td style="text-align:right">98%</td>
-			</tr>
-			<tr>
-				<td>Barbour</td>
-				<td style="text-align:right">51.48</td>
-				<td style="text-align:right">82%</td>
-				<td>Cherokee</td>
-				<td style="text-align:right">17.13</td>
-				<td style="text-align:right">99%</td>
-			</tr>
-			<tr>
-				<td>Tallapoosa</td>
-				<td style="text-align:right">60</td>
-				<td style="text-align:right">82%</td>
-				<td>Greene</td>
-				<td style="text-align:right">4.76</td>
-				<td style="text-align:right">99%</td>
-			</tr>
-			<tr>
-				<td>Madison</td>
-				<td style="text-align:right">99</td>
-				<td style="text-align:right">83%</td>
-				<td>Clay</td>
-				<td style="text-align:right">3.42</td>
-				<td style="text-align:right">100%</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<p>Here is the raw data:</p>
+	<p>County</p>
+	<p>Avg. Download Speed</p>
+	<p>Largest ISP's Traffic Share</p>
+	<p>County</p>
+	<p>Avg. Download Speed</p>
+	<p>Largest ISP's Traffic Share</p>
+	<p>Marion</p>
+	<p>53.77</p>
+	<p>41%</p>
+	<p>Franklin</p>
+	<p>32.01</p>
+	<p>83%</p>
+	<p>Escambia</p>
+	<p>29.14</p>
+	<p>43%</p>
+	<p>Coosa</p>
+	<p>82.15</p>
+	<p>83%</p>
+	<p>Etowah</p>
+	<p>56.07</p>
+	<p>49%</p>
+	<p>Crenshaw</p>
+	<p>44.49</p>
+	<p>84%</p>
+	<p>Jackson</p>
+	<p>37.77</p>
+	<p>52%</p>
+	<p>Randolph</p>
+	<p>21.4</p>
+	<p>86%</p>
+	<p>Winston</p>
+	<p>59.25</p>
+	<p>56%</p>
+	<p>Lamar</p>
+	<p>33.94</p>
+	<p>86%</p>
+	<p>Montgomery</p>
+	<p>79.5</p>
+	<p>58%</p>
+	<p>Autuaga</p>
+	<p>65.55</p>
+	<p>86%</p>
+	<p>Baldwin</p>
+	<p>49.06</p>
+	<p>58%</p>
+	<p>Choctaw</p>
+	<p>23.97</p>
+	<p>87%</p>
+	<p>Houston</p>
+	<p>73.73</p>
+	<p>61%</p>
+	<p>Butler</p>
+	<p>29.86</p>
+	<p>90%</p>
+	<p>Dallas</p>
+	<p>86.92</p>
+	<p>62%</p>
+	<p>Pike</p>
+	<p>50.54</p>
+	<p>92%</p>
+	<p>Marshall</p>
+	<p>59.93</p>
+	<p>62%</p>
+	<p>Sumter</p>
+	<p>38.52</p>
+	<p>91%</p>
+	<p>Chambers</p>
+	<p>72.05</p>
+	<p>63%</p>
+	<p>Pickens</p>
+	<p>43.76</p>
+	<p>92%</p>
+	<p>Jefferson</p>
+	<p>99.84</p>
+	<p>64%</p>
+	<p>Marengo</p>
+	<p>42.89</p>
+	<p>92%</p>
+	<p>Elmore</p>
+	<p>71.05</p>
+	<p>66%</p>
+	<p>Macon</p>
+	<p>12.69</p>
+	<p>92%</p>
+	<p>Fayette</p>
+	<p>41.7</p>
+	<p>68%</p>
+	<p>Lawrence</p>
+	<p>62.87</p>
+	<p>92%</p>
+	<p>Lauderdale</p>
+	<p>62.87</p>
+	<p>69%</p>
+	<p>Bullock</p>
+	<p>23.89</p>
+	<p>92%</p>
+	<p>Colbert</p>
+	<p>47.91</p>
+	<p>70%</p>
+	<p>Chilton</p>
+	<p>17.13</p>
+	<p>95%</p>
+	<p>DeKalb</p>
+	<p>58.55</p>
+	<p>70%</p>
+	<p>Wilcox</p>
+	<p>62.12</p>
+	<p>93%</p>
+	<p>Morgan</p>
+	<p>61.78</p>
+	<p>71%</p>
+	<p>Monroe</p>
+	<p>20.74</p>
+	<p>96%</p>
+	<p>Washington</p>
+	<p>5.14</p>
+	<p>72%</p>
+	<p>Dale</p>
+	<p>55.46</p>
+	<p>97%</p>
+	<p>Geneva</p>
+	<p>32.01</p>
+	<p>73%</p>
+	<p>Coffee</p>
+	<p>58.18</p>
+	<p>97%</p>
+	<p>Lee</p>
+	<p>78.1</p>
+	<p>73%</p>
+	<p>Conecuh</p>
+	<p>34.94</p>
+	<p>97%</p>
+	<p>Tuscaloosa</p>
+	<p>58.85</p>
+	<p>76%</p>
+	<p>Cleburne</p>
+	<p>38.25</p>
+	<p>97%</p>
+	<p>Cullman</p>
+	<p>61.03</p>
+	<p>77%</p>
+	<p>Clarke</p>
+	<p>38.14</p>
+	<p>97%</p>
+	<p>Covington</p>
+	<p>35.48</p>
+	<p>78%</p>
+	<p>Calhoun</p>
+	<p>64.19</p>
+	<p>97%</p>
+	<p>Shelby</p>
+	<p>69.66</p>
+	<p>79%</p>
+	<p>Lowndes</p>
+	<p>9.91</p>
+	<p>98%</p>
+	<p>St. Clair</p>
+	<p>33.05</p>
+	<p>79%</p>
+	<p>Russell</p>
+	<p>49.48</p>
+	<p>98%</p>
+	<p>Blount</p>
+	<p>40.58</p>
+	<p>80%</p>
+	<p>Henry</p>
+	<p>4.69</p>
+	<p>98%</p>
+	<p>Mobile</p>
+	<p>68.77</p>
+	<p>80%</p>
+	<p>Limestone</p>
+	<p>71.6</p>
+	<p>98%</p>
+	<p>Walker</p>
+	<p>39.36</p>
+	<p>81%</p>
+	<p>Bibb</p>
+	<p>70.14</p>
+	<p>98%</p>
+	<p>Barbour</p>
+	<p>51.48</p>
+	<p>82%</p>
+	<p>Cherokee</p>
+	<p>17.13</p>
+	<p>99%</p>
+	<p>Tallapoosa</p>
+	<p>60</p>
+	<p>82%</p>
+	<p>Greene</p>
+	<p>4.76</p>
+	<p>99%</p>
+	<p>Madison</p>
+	<p>99</p>
+	<p>83%</p>
+	<p>Clay</p>
+	<p>3.42</p>
+	<p>100%</p>
 	<p>Across most of Alabama, we see very high ISP concentration. For the majority of counties, the largest ISP has 80% (or higher) share of traffic, while all the other ISPs combined operate at considerably smaller scale. In only three counties (Marion, Escambia and Etowah) does each ISP carry less than 50% of user traffic. Interestingly, Etowah is one of the best performing in the state, while Henry, a county where 98% of Internet traffic is concentrated behind a single ISP is the worst performing.</p>
 	<p>Where it gets interesting is when you plot the data, tracking the non-dominant ISP by traffic share (which is simply 100% less the traffic share of the dominant ISP) against the performance (as measured by download speed) and then use a linear line of best fit to find the relationship. Here’s what you get:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image12-5.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2e29pMHBg4GcN3zqiPHNT9/08eda1103904442f1f2bb5ac6d31f2ee/image12-5.png" alt="" class="kg-image" width="1330" height="824" loading="lazy">
+
+	</figure>
 	<p>As you can see, there is a strong positive relationship between the non-dominant ISP’s traffic share and the average download speed. As the non-dominant ISP increases its traffic share, Internet speeds tend to improve. The conclusion is clear: if you want to improve Internet performance in a region, foster more competition between multiple Internet service providers.</p>
-	<h2 id="the-other-performance-challenge-limited-isp-exchanges-and-tromboning">The Other Performance Challenge: Limited ISP Exchanges, and Tromboning</h2>
-	<p>There is more to the story, however, than just concentration. Alabama, like a lot of other regions that aren’t served well by ISPs, faces another performance challenge: poor routing, also sometimes known as “tromboning”.<br><br>Consider Tuskegee in Alabama, home to a local university.</p>
+	<h2>The Other Performance Challenge: Limited ISP Exchanges, and Tromboning</h2>
+	<p>There is more to the story, however, than just concentration. Alabama, like a lot of other regions that aren’t served well by ISPs, faces another performance challenge: poor routing, also sometimes known as “tromboning”.</p>
+	<p>Consider Tuskegee in Alabama, home to a local university.</p>
 	<p>In Tuskegee, choice is limited. Consumers only have a single choice for high-speed broadband. But even once an off-campus student has local access to the Internet, it isn’t truly local: Tuskegee students on a different ISP than their university will likely see their traffic detour all the way through Atlanta (two hours northeast by car!) before making its way back to school.</p>
-	<p>This doesn’t happen in isolation: today, the largest ISPs only exchange traffic with other networks in a handful of cities, notably Seattle, San Jose, Los Angeles, Dallas, Chicago, Atlanta, Miami, Ashburn, and New York City. <br><br>If you’re in one of these big cities, you’re unlikely to suffer from tromboning. But if you’re not? Your Internet traffic can often have to travel further away before looping back, similar to the shape of a trombone, reducing your Internet performance. Tromboning contributes to inefficiency and drives up the cost of Internet access. An increasing amount of traffic is wastefully carried to cities far away, instead of keeping the data local.</p>
+	<p>This doesn’t happen in isolation: today, the largest ISPs only exchange traffic with other networks in a handful of cities, notably Seattle, San Jose, Los Angeles, Dallas, Chicago, Atlanta, Miami, Ashburn, and New York City.</p>
+	<p>If you’re in one of these big cities, you’re unlikely to suffer from tromboning. But if you’re not? Your Internet traffic can often have to travel further away before looping back, similar to the shape of a trombone, reducing your Internet performance. Tromboning contributes to inefficiency and drives up the cost of Internet access. An increasing amount of traffic is wastefully carried to cities far away, instead of keeping the data local.</p>
 	<p>You can visualize how your Internet traffic is flowing, by using tools like <a href="https://support.cloudflare.com/hc/en-us/articles/203118044-Gathering-information-for-troubleshooting-sites#h_b8cebafd-9243-40e9-9c44-d4b94ccd3a87">traceroute</a>.</p>
 	<p>As an example, we ran tests using <a href="http://atlas.ripe.net">RIPE Atlas</a> probes to Facebook from Alabama, and unfortunately found extremes where traffic can sometimes take a highly circuitous route — traffic going to Atlanta, then Ashburn, Paris, Amsterdam, before making its way back to Alabama. The path begins on AT&amp;T's network and goes to Atlanta where it enters the network for Telia (an IP transit provider), crosses the Atlantic, meets Facebook, and then comes back.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image13-5.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<pre><code>Traceroute to 157.240.201.35 (157.240.201.35), 48 byte packets
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3P0mnw0iZvAJYN7OuOAL5A/9c026baf23bf335734644563f3955a16/image13-5.png" alt="" class="kg-image" width="1999" height="518" loading="lazy">
+
+	</figure>
+	<pre class="language-bash"><code class="language-bash">Traceroute to 157.240.201.35 (157.240.201.35), 48 byte packets
 1- 192.168.6.1 1.435ms 0.912ms 0.636ms
 2-  99.22.36.1 99-22-36-1.lightspeed.dctral.sbcglobal.net AS7018 1.26ms 1.134ms 1.107ms
 3-  99.173.216.214 AS7018 3.185ms 3.173ms 3.099ms
@@ -1218,12 +734,10 @@
 12- 129.134.51.84 po151.asw02.ams2.tfbnw.net AS32934 113.27ms 113.078ms 113.149ms
 13-  129.134.48.101 po226.psw04.ams4.tfbnw.net AS32934 114.529ms 114.439ms 117.257ms
 14-  157.240.38.227 AS32934 113.281ms 113.365ms 113.448ms
-15- 157.240.201.35 edge-star-mini-shv-01-ams4.facebook.com AS32934 115.013ms 115.223ms 115.112ms
-</code></pre>
-	<!--kg-card-end: markdown-->
+15- 157.240.201.35 edge-star-mini-shv-01-ams4.facebook.com AS32934 115.013ms 115.223ms 115.112ms</code></pre>
 	<p>The intent here isn’t to shame AT&amp;T, Telia, or Facebook — nor is this challenge unique to them. Facebook's content is undoubtedly cached in Atlanta and the request from Alabama should go no further than that. While many possible conditions within and between these three networks could have caused this tromboning, in the end, the consumer suffers.</p>
 	<p>The solution? Have more major ISPs exchange in more cities and with more networks. Of course, there’d be an upfront cost involved in doing so, even if it would reduce cost more over the long run.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>As William Gibson famously observed: the future is here, but it’s just not evenly distributed.</p>
 	<p>One of the clearest takeaways from the data and analysis presented here is that Internet access varies tremendously across geographies. But it’s not just a case of the developed world vs the developing, or even rural vs urban. There are underserved urban communities and regions of the developed world that do not score as highly as you might expect.</p>
 	<p>Furthermore, our case study of Alabama shows that the structure of the ISP market is incredibly important to promoting performance. We found a strong positive correlation between more competition and faster performance. Similarly, there’s a lot of opportunity for more networks to interconnect in more places, to avoid bad routing.</p>

@@ -1,18 +1,29 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Introducing: I'm Under Attack Mode" src="https://blog.cloudflare.com/content/images/im_under_attack.jpg.scaled500.jpg" title="Introducing: I'm Under Attack Mode"></p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/376iOexYwuNT6AXIuCu9Wf/40d7fae9a3949d8bb373e41608a27a92/im_under_attack.jpg.scaled500.jpg" alt="Introducing: I'm Under Attack Mode" class="kg-image" width="500" height="213" loading="lazy">
+
+	</figure>
 	<p>CloudFlare provides a broad level of protection from a wide range of attacks. We do this while minimizing false positives or annoyances to legitimate customers. CloudFlare didn't begin as a DDoS mitigation service, but we've rapidly found that we are good at protecting sites from these attacks. Today we're offering a new security mode to make our DDoS protection even better.</p>
-	<h3 id="abriefhistoryofddos">A Brief History of DDoS</h3>
+	<h3>A Brief History of DDoS</h3>
 	<p>In the <a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a>, traditional DDoS attacks targeted the Layer 4. The so called "transport" layer of the network stack specifies the protocol (e.g., TCP or UDP). These attacks flood an interface with garbage traffic in order to overwhelm it's resources in one way or another. Usually, the attack fills up the capacity of a network switch or overwhelms a server's network card or CPU's ability to handle the traffic.</p>
 	<p>CloudFlare has largely mitigated these attacks by building out significant capacity across our network. We have fat pipes and lots of machines to absorb floods of traffic. We also make broad use of the <a href="https://blog.cloudflare.com/a-brief-anycast-primer">Anycast protocol</a> which has the effect of scattering the load of a distributed attack across multiple data centers, reducing the exposure of potential single point of failure. The result is that no packets from a traditional Layer 4 attack will ever reach a site behind CloudFlare.</p>
-	<h3 id="httpbasedattacks">HTTP-Based Attacks</h3>
+	<h3>HTTP-Based Attacks</h3>
 	<p>A new breed of attacks targets Layer 7, the "application" layer. These attacks focus on specific characteristics of web applications that present bottlenecks. For example, the so-called Slow Read attack sends packets very slowly across multiple connections. Since Apache opens a new thread for each connection, and since connections are maintained as long as there is some traffic being sent, you can overwhelm a web server by exhaust its thread pool relatively easily.</p>
 	<p>CloudFlare has protections in place against many of these attacks, and in real world experiences we generally reduce the HTTP attack traffic by about 90%. For most attacks and most of our customers, this has been enough to keep them online. However, the 10% of traffic that gets through our traditional protections can still be overwhelming to either customers with limited resources or in the face of very large attacks. We wanted to help in these cases too, so today we're announcing something new.</p>
-	<h3 id="imunderattackmode">I'm Under Attack Mode</h3>
+	<h3>I'm Under Attack Mode</h3>
 	<p>Introducing "I'm Under Attack Mode." The name is pretty self-explanatory: it's a new security level you can set for your site when you're <a href="https://www.cloudflare.com/ddos/under-attack">under attack</a>. The effect is that we will add an additional set of protections to stop potentially malicious HTTP traffic from being passed to your server. While we perform a number of additional checks, the only thing noticeable to legitimate visitors to your site is that when they first arrive they'll see an interstitial page for about 5 seconds while checks are complete. Think of it as a challenge where the tests are automatic and visitors never need to fill in a CAPTCHA.</p>
-	<p><img alt="Introducing: I'm Under Attack Mode" src="https://blog.cloudflare.com/content/images/im_under_attack_page.png.scaled500.png" title="Introducing: I'm Under Attack Mode"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19dMBKmrJ17nace7uKwPHC/7e99e44fbaa0d69527601c4a8e7085dd/im_under_attack_page.png.scaled500.png" alt="Introducing: I'm Under Attack Mode" class="kg-image" width="500" height="207" loading="lazy">
+
+	</figure>
 	<p>After verified as legitimate by the automated tests, visitors are able to browse your site unencumbered and won't see typically the test page again. Javascript and cookies are required for the tests and recording the fact that the tests were correctly passed. We've also designed the new checks to not block search engine crawlers, your existing allowlists, and other pre-vetted traffic. As a result, enabling I'm Under Attack Mode will not negatively impact your SEO or known legitimate visitors. What's also cool is that data on attack traffic that doesn't pass the automatic checks is fed back into CloudFlare's system to further enhance our traditional protections.</p>
-	<p><img alt="Introducing: I'm Under Attack Mode" src="https://blog.cloudflare.com/content/images/shields_up.jpg.scaled500.jpg" title="Introducing: I'm Under Attack Mode"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HpZszjoK2t8prZfiwatkK/8de3e3332d87e87cc4af88bc58be1dfb/shields_up.jpg.scaled500.jpg" alt="Introducing: I'm Under Attack Mode" class="kg-image" width="500" height="196" loading="lazy">
+
+	</figure>
 	<p>While CloudFlare did not start as a DDoS mitigation service we have realized this is an area where we can provide a lot of benefit in an easy and affordable way. I'm Under Attack Mode is the first of several new features we'll be releasing over the coming month to offer a full gauntlet of DDoS protection. Stay tuned.</p>
-	<!--kg-card-end: markdown-->
 </div>

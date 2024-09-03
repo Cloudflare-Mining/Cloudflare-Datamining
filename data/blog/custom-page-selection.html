@@ -1,29 +1,41 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fCOJzttLz1aElj7xFQ97i/1f4a3011c4f42e2fd708349529b2893f/custom-page-selection.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In July 2016, Cloudflare <a href="https://blog.cloudflare.com/cloudflare-acquires-eager">integrated with Eager</a> - an apps platform. During this integration, several decisions were made to ensure an optimal experience installing apps. We wanted to make sure site owners on Cloudflare could customize and install an app with the minimal number of clicks possible. Customizability often adds complexity and clicks for the user. We’ve been tinkering to find the right balance of user control and simplicity since.</p>
-	<p>When installing an app, a site owner must select <em>where</em> - what URLs on their site - they want <em>what</em> apps installed. Our original plan for selecting the URLs an app would be installed on took a few twists and turns. Our end decision was to utilize our <a href="https://support.cloudflare.com/hc/en-us/articles/200168006-How-does-Always-Online-work-">Always Online</a> crawler to pre-populate a tree of the user’s site. Always Online is a feature that crawls Cloudflare sites and serves pages from our cache if the site goes down.</p>
-	<p>The benefits to this original setup are:<br>
-		<strong>1. Only valid pages appear</strong><br>
-		An app only allows installations on html pages. For example, since injecting Javascript into a JPEG image isn’t possible, we would prevent the installer from trying it by not showing that path. Preventing the user from that type of phony installation prevents the user from being confused later when it doesn’t work.<br>
-		<strong>2. The user was not required to know any URL of their site</strong><br>
-		The URLs are available right there in the UI. With the click of a check mark, the user would not have to type a thing.
-	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-16-at-3.10.53-PM.png" alt="Screen-Shot-2018-04-16-at-3.10.53-PM" loading="lazy"></p>
+	<p>When installing an app, a site owner must select <i>where</i> - what URLs on their site - they want <i>what</i> apps installed. Our original plan for selecting the URLs an app would be installed on took a few twists and turns. Our end decision was to utilize our <a href="https://support.cloudflare.com/hc/en-us/articles/200168006-How-does-Always-Online-work-">Always Online</a> crawler to pre-populate a tree of the user’s site. Always Online is a feature that crawls Cloudflare sites and serves pages from our cache if the site goes down.</p>
+	<p>The benefits to this original setup are:<b>1. Only valid pages appear</b>An app only allows installations on html pages. For example, since injecting Javascript into a JPEG image isn’t possible, we would prevent the installer from trying it by not showing that path. Preventing the user from that type of phony installation prevents the user from being confused later when it doesn’t work.<b>2. The user was not required to know any URL of their site</b>The URLs are available right there in the UI. With the click of a check mark, the user would not have to type a thing.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wzvhWE2cwXANxwwAc6mzs/a8740b306ceea5c17d61489678477ecc/Screen-Shot-2018-04-16-at-3.10.53-PM.png" alt="Screen-Shot-2018-04-16-at-3.10.53-PM" class="kg-image" width="1622" height="1432" loading="lazy">
+
+	</figure>
 	<p>The disadvantage of this setup is the dependency of the Always Online crawler.</p>
 	<p>First off, some users do not wish to have Always Online turned on. Without the consent of the site owner to crawl the site via Always Online, the page loader tree will not load and the user had no options of pages to install an app on.</p>
 	<p>When a user does have Always Online enabled properly, the crawler might not crawl every page the site owner wishes to install an app on.</p>
 	<p>The duty of Always Online is to make sure in the most catastrophic event for a site owner - their site being down - users can still see a version of the site via cached static HTML. Once upon a time before <a href="https://blog.cloudflare.com/always-online-v2">Always Online v2</a>, we actually used the Google bot and other search engine crawlers’ activity to decide what to cache for the Always Online feature. We found that implementing our own crawler made more sense. Our goal is to make sure the most vital pages of a site are crawled and stored on our cache, contrasting with search engine crawler’s priority of get the most information possible from the site, thus going “deep” into the depths of a site map.</p>
 	<p>The duty of an app install on Cloudflare’s Apps platform is to seamlessly enable users to select pages in which to inject Javascript, HTML, CSS, and in the near future, <a href="https://developers.cloudflare.com/workers/about">Cloudflare Service Workers</a> into. Since the objectives of the Always Online crawler differ from that of the Cloudflare Apps platform, there were inevitable consequences. Here are some examples where a page would not be crawled:</p>
 	<ul>
-		<li>The page’s subdomain was not "<a href="https://support.cloudflare.com/hc/en-us/articles/200169626">orange-clouded</a>".</li>
-		<li>The page was not be accessible from the site's homepage via links.</li>
-		<li>The site’s homepage had too many links for us to follow.</li>
-		<li>The page was password-protected, preventing us from accessing it and adding it to your site map.</li>
-		<li>The page was added before we had a chance to crawl the site.</li>
+		<li>
+			<p>The page’s subdomain was not "<a href="https://support.cloudflare.com/hc/en-us/articles/200169626">orange-clouded</a>".</p>
+		</li>
+		<li>
+			<p>The page was not be accessible from the site's homepage via links.</p>
+		</li>
+		<li>
+			<p>The site’s homepage had too many links for us to follow.</p>
+		</li>
+		<li>
+			<p>The page was password-protected, preventing us from accessing it and adding it to your site map.</p>
+		</li>
+		<li>
+			<p>The page was added before we had a chance to crawl the site.</p>
+		</li>
 	</ul>
-	<p>Although our custom crawler works well for the Always Online feature, this limited control for our customers who are installing apps. We decided to do something about it. Combining the advantages of the crawler data we already had implemented <em>with</em> the ability to enter any URL in an install, we created the best of both worlds.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-04-16-at-3.08.24-PM.png" alt="Screen-Shot-2018-04-16-at-3.08.24-PM" loading="lazy"></p>
+	<p>Although our custom crawler works well for the Always Online feature, this limited control for our customers who are installing apps. We decided to do something about it. Combining the advantages of the crawler data we already had implemented <i>with</i> the ability to enter any URL in an install, we created the best of both worlds.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2COMbJNiEM9kdDsOxNAlgI/96782e4041656165e241a445a2c25725/Screen-Shot-2018-04-16-at-3.08.24-PM.png" alt="Screen-Shot-2018-04-16-at-3.08.24-PM" class="kg-image" width="1930" height="1426" loading="lazy">
+
+	</figure>
 	<p>Now, site owners can type in whatever URL they wish to install an app. There is also an option for selecting an entire directory or strictly that page. For simplicity, no regex patterns are supported.</p>
 	<p>As the apps on the Cloudflare Apps platform advance, it is vital that the platform itself advance. In the near future, the App’s platform will have the power of Cloudflare Workers, local testing, and much more to come.</p>
-	<!--kg-card-end: markdown-->
 </div>

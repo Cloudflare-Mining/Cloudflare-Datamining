@@ -1,777 +1,69 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/04/Image_20240408_140523_866-x.jpeg" class="kg-image" alt="" loading="lazy" width="2144" height="1232">
-		<figcaption>A photo of the eclipse taken by Bryton Herdes, a member of Cloudflare's Network team, in Southern Illinois.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IGdoPIKqlmZT68BBDySCv/e25d6352e6f81be3bade968fe35ea3d3/Image_20240408_140523_866-x.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1149" loading="lazy">
+
 	</figure>
+	<p>A photo of the eclipse taken by Bryton Herdes, a member of Cloudflare's Network team, in Southern Illinois.</p>
 	<p>There are events that unite people, like a total solar eclipse, reminding us, humans living on planet Earth, of our shared dependence on the sun. Excitement was obvious in Mexico, several US states, and Canada during the total solar <a href="https://en.wikipedia.org/wiki/Solar_eclipse_of_April_8,_2024">eclipse</a> that occurred on April 8, 2024. Dubbed the Great North American Eclipse, millions gathered outdoors to witness the Moon pass between Earth and the Sun, casting darkness over fortunate states. Amidst the typical gesture of putting the eclipse glasses on and taking them off, depending on if people were looking at the sky during the total eclipse, or before or after, what happened to Internet traffic?</p>
 	<p>Cloudflare’s data shows a clear impact on Internet traffic from Mexico to Canada, following the path of totality. The eclipse occurred between 15:42 UTC and 20:52 UTC, moving from south to north, as seen in this <a href="https://science.nasa.gov/eclipses/future-eclipses/eclipse-2024">NASA image</a> of the path and percentage of darkness of the eclipse.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/04/nasaimage.png" class="kg-image" alt="" loading="lazy" width="1600" height="1299"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tzar2qmLQDJuSkHwoiSXx/4970ad423e0febdb40167e63f8c3eab6/nasaimage.png" alt="" class="kg-image" width="1600" height="1299" loading="lazy">
+
+	</figure>
 	<p>Looking at the <a href="https://radar.cloudflare.com/us">United States</a> in aggregate terms, bytes delivered traffic dropped by 8%, and request traffic by 12% as compared to the previous week at 19:00 UTC (14:00 Eastern, 12:00 Pacific).</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/04/cloudflare-radar-traffic-trends-xy-20240408-20240408--1--2.png" class="kg-image" alt="" loading="lazy" width="2048" height="1152">
-		<figcaption>Bytes delivered percentage change (-8% at 19:00 UTC)</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/196em3XubDvHwfmDaS25vE/68f2b34b691cb63b3d9569a7d7613afd/cloudflare-radar-traffic-trends-xy-20240408-20240408--1--2.png" alt="" class="kg-image" width="2048" height="1152" loading="lazy">
+
 	</figure>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/04/percchange-eclipse-2024-04-08-at-22.27.27.png" class="kg-image" alt="" loading="lazy" width="2106" height="648">
-		<figcaption>HTTP requests percentage change (-12% at 19:00 UTC)</figcaption>
+	<p>Bytes delivered percentage change (-8% at 19:00 UTC)</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Exf2S1na5BrogeT6Gbg7w/de1a82dd6367914f027cb5eca637d547/percchange-eclipse-2024-04-08-at-22.27.27.png" alt="" class="kg-image" width="2106" height="648" loading="lazy">
+
 	</figure>
+	<p>HTTP requests percentage change (-12% at 19:00 UTC)</p>
 	<p>The state-level perspective in terms of traffic drop at the time of the eclipse, as compared to the previous week, is much more revealing. Here’s a summary of the US states' traffic changes. We can almost trace the path of the eclipse, as shown in the previous NASA image.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/Eclipse-US-2024-04-08-at-23.45.02-1.jpg" class="kg-image" alt="" loading="lazy" width="2244" height="1546"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xRr0KSBMzYW3ifIZb9iyt/d5ef77a9bb52c8dc56f3aada1e2f38be/Eclipse-US-2024-04-08-at-23.45.02-1.jpg" alt="" class="kg-image" width="2000" height="1378" loading="lazy">
+
+	</figure>
 	<p>From our data, Vermont, Arkansas, Indiana, Maine, New Hampshire, and Ohio experienced traffic drops of 40% or more around the time of the eclipse. These states were all in the path of totality, which was not the case for several others.</p>
-	<p>In the next table, we provide a detailed breakdown of the same perspective shown on the US map ordered by drop in traffic. In all of these charts, we're using UTC as the time. We include the time of the biggest traffic drop compared to the previous week, at a 5-minute granularity, and also the percentage of drop compared to the previous week. States where it was possible to see at least part of the total eclipse are highlighted in <strong>bold</strong>. At the bottom are those with no clear difference.</p><!--kg-card-begin: html-->
-	<table style="border:none;border-collapse:collapse;">
-		<colgroup>
-			<col width="117">
-			<col width="83">
-			<col width="101">
-			<col width="104">
-		</colgroup>
-		<tbody>
-			<tr style="height:15.75pt">
-				<td colspan="4" style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;background-color:#d9d9d9;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The US: traffic change at time of the eclipse</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;background-color:#d9d9d9;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">State</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;background-color:#d9d9d9;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Time of drop (UTC)</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;background-color:#d9d9d9;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Local time</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;background-color:#d9d9d9;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">% of drop</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Vermont</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-60%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Arkansas</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:50</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13:50</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-54%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Indiana</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-50%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Maine</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:30</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:30</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-48%</span></p>
-				</td>
-			</tr>
-			<tr style="height:16.5pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">New Hampshire</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-40%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ohio</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:10</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:10</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-40%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Kentucky</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">14:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-33%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Massachusetts</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-33%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Michigan</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-32%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Kansas</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:50</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13:50</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-31%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Missouri</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:55</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13:55</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-31%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Connecticut</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-29%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Maryland</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-29%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">New York</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-29%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Oklahoma</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:45</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13:45</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-29%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Rhode Island</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-29%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">New Jersey</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-28%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Arizona</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-27%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Illinois</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">14:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-26%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pennsylvania</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-26%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">West Virginia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-24%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Wisconsin</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">14:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-22%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Wyoming</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">12:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-19%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Alaska</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">20:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">12:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-18%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Delaware</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-18%</span></p>
-				</td>
-			</tr>
-			<tr style="height:23.447753906249996pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">District of Columbia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-16%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">New Mexico</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">12:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-16%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Oregon</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-16%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Nebraska</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:50</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13:50/12:50</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-15%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Texas</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:45</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13:45</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-15%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Colorado</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">12:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-14%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Virginia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">14:20</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-14%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Alabama</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">14:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-13%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Tennessee</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:00/14:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-13%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Iowa</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-12%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Nevada</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:10</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11:10</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-12%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Georgia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:05</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-11%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">North Carolina</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:10</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:10</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-10%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">California</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-9%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Florida</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">14:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-7%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Utah</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">12:15</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-5%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Montana</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">18:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">12:25</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-4%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">South Carolina</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">15:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-4%</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Hawaii</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Louisiana</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Minnesota</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Mississippi</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">North Dakota</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Idaho</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">South Dakota</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Washington</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">—</span></p>
-				</td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: html-->
+	<p>In the next table, we provide a detailed breakdown of the same perspective shown on the US map ordered by drop in traffic. In all of these charts, we're using UTC as the time. We include the time of the biggest traffic drop compared to the previous week, at a 5-minute granularity, and also the percentage of drop compared to the previous week. States where it was possible to see at least part of the total eclipse are highlighted in <b>bold</b>. At the bottom are those with no clear difference.</p>
+	<p></p>
 	<p>Visualized, here's what Vermont’s 60% drop looks like:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/vermont.png" class="kg-image" alt="" loading="lazy" width="1600" height="483"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/657g1SagE2gGp7PvICoLlx/ae80eb2aaa9a962af8510395cc3555f8/vermont.png" alt="" class="kg-image" width="1600" height="483" loading="lazy">
+
+	</figure>
 	<p>And here's what the traffic drops in Arkansas, Maine, and Indiana look like:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/arkansas.png" class="kg-image" alt="" loading="lazy" width="1600" height="480"></figure>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/maine.png" class="kg-image" alt="" loading="lazy" width="1600" height="509"></figure>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/indiana.png" class="kg-image" alt="" loading="lazy" width="1600" height="488"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r0n9ilPikU0pV1zX0f2PG/aaa6d909dc8ba19d19cf9235814f0a3b/arkansas.png" alt="" class="kg-image" width="1600" height="480" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22ihGkifOW89VKgupVBLbJ/a189757089d48de72c41f4dfe10d9066/maine.png" alt="" class="kg-image" width="1600" height="509" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yQF8SdAy65LretHTirWhz/3f11a8b5a7a2b50ba691f5962e4c1e0b/indiana.png" alt="" class="kg-image" width="1600" height="488" loading="lazy">
+
+	</figure>
 	<p>In terms of states with larger populations, New York took the lead:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/newyork.png" class="kg-image" alt="" loading="lazy" width="1600" height="482"></figure>
-	<h2 id="mexico-got-the-eclipse-first">Mexico got the eclipse first</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hmg7YhRIXC8FmYUYHUt2u/a1a0bdd3fdaf457337f80d0c585d7a50/newyork.png" alt="" class="kg-image" width="1600" height="482" loading="lazy">
+
+	</figure>
+	<h2>Mexico got the eclipse first</h2>
 	<p>Before the eclipse became visible in the US, Mexico experienced it first. States within the eclipse zone, such as Coahuila, Durango, and Sinaloa, experienced noticeable drops in traffic. Even Mexico City, located further south, was affected.</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
@@ -859,10 +151,17 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Here’s the Durango and Coahuila state perspectives:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/durango.png" class="kg-image" alt="" loading="lazy" width="1600" height="476"></figure>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/cohal.png" class="kg-image" alt="" loading="lazy" width="1600" height="480"></figure>
-	<h2 id="canada-at-last-an-island-stopped-to-see-the-eclipse">Canada at last: an island stopped to see the eclipse</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JnSDKMc1uPuG3aW8p2Uxb/c39badd06fd92c87b3baf1f30a69e3cd/durango.png" alt="" class="kg-image" width="1600" height="476" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fSh92Qo3bipfvQ0LcmJyS/73586647b819a44bc06c779ecd3f355a/cohal.png" alt="" class="kg-image" width="1600" height="480" loading="lazy">
+
+	</figure>
+	<h2>Canada at last: an island stopped to see the eclipse</h2>
 	<p>After Mexico and the US, Canada was next in the path of the eclipse. Prince Edward Island experienced the most significant impact in Canada. This region, with a population of less than 200,000, is one of eastern Canada's maritime provinces, situated off New Brunswick and Nova Scotia in the Gulf of St. Lawrence. Next came New Brunswick and Newfoundland and Labrador.</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
@@ -977,8 +276,8 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h2 id="conclusion-internet-is-a-human%E2%80%99s-game">Conclusion: Internet is a human’s game</h2>
-	<p>As we've observed during previous occasions, human and nature-related events significantly impact Internet traffic. This includes <a href="https://blog.cloudflare.com/cyber-week-analyzing-internet-traffic-and-e-commerce-trends">Black Friday/Cyber Week</a>, <a href="https://blog.cloudflare.com/easter-passover-ramadan-internet-trends-2023">Easter, Ramadan</a> celebrations, the <a href="https://blog.cloudflare.com/how-the-coronation-of-king-charles-iii-affected-internet-traffic">coronation of King Charles III</a>, the recent <a href="https://blog.cloudflare.com/undersea-cable-failures-cause-internet-disruptions-across-africa-march-14-2024">undersea cable failure in Africa</a>, which affected 13 countries, and now, this total eclipse. </p>
+	<h2>Conclusion: Internet is a human’s game</h2>
+	<p>As we've observed during previous occasions, human and nature-related events significantly impact Internet traffic. This includes <a href="https://blog.cloudflare.com/cyber-week-analyzing-internet-traffic-and-e-commerce-trends">Black Friday/Cyber Week</a>, <a href="https://blog.cloudflare.com/easter-passover-ramadan-internet-trends-2023">Easter, Ramadan</a> celebrations, the <a href="https://blog.cloudflare.com/how-the-coronation-of-king-charles-iii-affected-internet-traffic">coronation of King Charles III</a>, the recent <a href="https://blog.cloudflare.com/undersea-cable-failures-cause-internet-disruptions-across-africa-march-14-2024">undersea cable failure in Africa</a>, which affected 13 countries, and now, this total eclipse.</p>
 	<p>This was the last total solar eclipse visible in the contiguous United States until August 23, 2044, with the next eclipse of similar breadth projected for August 12, 2045.</p>
-	<p>For this and other trends, visit <a href="https://radar.cloudflare.com">Cloudflare Radar</a> and follow us on social media at <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> (X), <a href="https://noc.social/@cloudflareradar">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky).<br></p>
+	<p>For this and other trends, visit <a href="https://radar.cloudflare.com">Cloudflare Radar</a> and follow us on social media at <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> (X), <a href="https://noc.social/@cloudflareradar">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky).</p>
 </div>

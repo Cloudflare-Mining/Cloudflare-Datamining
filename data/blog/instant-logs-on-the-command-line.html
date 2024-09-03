@@ -1,34 +1,48 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image3-10-2.png" class="kg-image" alt="Slicing and Dicing Instant Logs: Real-time Insights on the Command Line" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5x3aLlINzMShJK4anPOXaS/3a313daf86379c6647d8c1e5be42a34d/image3-10-2.png" alt="Slicing and Dicing Instant Logs: Real-time Insights on the Command Line" class="kg-image" width="1235" height="639" loading="lazy">
+
+	</figure>
 	<p>During Speed Week 2021 we announced a new offering for Enterprise customers, <a href="https://blog.cloudflare.com/how-we-built-instant-logs">Instant Logs</a>. Since then, the team has not slowed down and has been working on new ways to enable our customers to consume their logs and gain powerful insights into their HTTP traffic in real time.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image1-6.png" class="kg-image" alt="Screenshot showing the Instant Logs dashboard with an expanded row showing details about a request" loading="lazy" title="Instant Logs Dashboard"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vhooHoc2Xv3yigrIOQBkW/c418fa253354e3ee57195d80a02e15f8/image1-6.png" alt="Screenshot showing the Instant Logs dashboard with an expanded row showing details about a request" class="kg-image" width="1999" height="1459" loading="lazy">
+
+	</figure>
 	<p>We recognize that as developers, UIs are useful but sometimes there is the need for a more powerful alternative. Today, I am going to introduce you to Instant Logs in your terminal! In order to get started we need to install a few open-source tools to help us:</p>
 	<ul>
-		<li><a href="https://github.com/vi/websocat">Websocat</a> - to connect to WebSockets.</li>
-		<li><a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</li>
+		<li>
+			<p><a href="https://github.com/vi/websocat">Websocat</a> - to connect to WebSockets.</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</p>
+		</li>
 	</ul>
-	<h2 id="creating-an-instant-log-s-session">Creating an Instant Log’s Session</h2>
+	<h2>Creating an Instant Log’s Session</h2>
 	<p>For enterprise zones with access to Instant Logs, you can create a new session by sending a POST request to our jobs' endpoint. You will need:</p>
 	<ul>
-		<li>Your Zone Tag / ID</li>
-		<li>An Authentication Key or an API Token with at least the Zone Logs Read permission</li>
-	</ul><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
--H 'X-Auth-Key: &lt;KEY&gt;' \
--H 'X-Auth-Email: &lt;EMAIL&gt;' \
+		<li>
+			<p>Your Zone Tag / ID</p>
+		</li>
+		<li>
+			<p>An Authentication Key or an API Token with at least the Zone Logs Read permission</p>
+		</li>
+	</ul>
+	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
+-H 'X-Auth-Key: <key>' \
+-H 'X-Auth-Email: <email>' \
 -H 'Content-Type: application/json' \
 --data-raw '{
     "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
     "sample": 1,
     "filter": "",
     "kind": "instant-logs"
-}'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="response">Response</h3>
-	<p>The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+}'</email></key></code></pre>
+	<h3>Response</h3>
+	<p>The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p>
+	<pre class="language-json"><code class="language-json">{
     "errors": [],
     "messages": [],
     "result": {
@@ -40,65 +54,53 @@
         "kind": "instant-logs"
     },
     "success": true
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="connect-to-websocket">Connect to WebSocket</h2>
-	<p>Using a CLI utility like <a href="https://github.com/vi/websocat">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2
+}</code></pre>
+	<h2>Connect to WebSocket</h2>
+	<p>Using a CLI utility like <a href="https://github.com/vi/websocat">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
+	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2
 {"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:05Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:05Z","RayID":"6d332ff74fa45fbe","sampleInterval":1}
-{"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:06Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:06Z","RayID":"6d332fffe9c4fc81","sampleInterval":1}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="the-scenario">The Scenario</h2>
+{"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:06Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:06Z","RayID":"6d332fffe9c4fc81","sampleInterval":1}</code></pre>
+	<h2>The Scenario</h2>
 	<p>Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
-	<h3 id="specifying-fields">Specifying Fields</h3>
+	<h3>Specifying Fields</h3>
 	<p>In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
 	<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests">on our developer docs</a>.</p>
-	<h3 id="choosing-a-sample-rate">Choosing a Sample Rate</h3>
+	<h3>Choosing a Sample Rate</h3>
 	<p>Instant Logs users also have the ability to choose a sample rate. The <code>sample</code> parameter is the inverse probability of selecting a log. This means that <code>"sample": 1</code> is 100% of records, <code>"sample": 10</code> is 10% and so on.</p>
 	<p>Going back to our example of validating that our newly deployed firewall rule is working as expected, in this case, we are choosing not to sample the data by setting <code>"sample": 1</code>.</p>
 	<p>Please note that Instant Logs has a maximum data rate supported. For high volume domains, we sample server side as indicated in the "sampleInterval" parameter returned in the logs. For example, "sampleInterval": 10 indicates this log message is just one out of 10 logs received.</p>
-	<h3 id="defining-the-filters">Defining the Filters</h3>
+	<h3>Defining the Filters</h3>
 	<p>Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs">Instant Logs documentation</a>.</p>
-	<p>To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<p>To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p>
+	<pre class="language-json"><code class="language-json">{
   "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="creating-an-instant-logs-session-canadians-only">Creating an Instant Logs Session: Canadians Only</h2>
-	<p>Using the information above, we can now craft the request for our custom Instant Logs session.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
--H 'X-Auth-Key: &lt;KEY&gt;' \
--H 'X-Auth-Email: &lt;EMAIL&gt;' \
+}</code></pre>
+	<h2>Creating an Instant Logs Session: Canadians Only</h2>
+	<p>Using the information above, we can now craft the request for our custom Instant Logs session.</p>
+	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
+-H 'X-Auth-Key: <key>' \
+-H 'X-Auth-Email: <email>' \
 -H 'Content-Type: application/json' \
 --data-raw '{
   "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,ClientCountry,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID,FirewallMatchesActions,FirewallMatchesRuleIDs",
   "sample": 1,
   "kind": "instant-logs",
   "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"
-}'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="angle-grinder">Angle Grinder</h3>
-	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 | agrind '* | json | sum(sampleInterval) by ClientCountry'
+}'</email></key></code></pre>
+	<h3>Angle Grinder</h3>
+	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
+	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 | agrind '* | json | sum(sampleInterval) by ClientCountry'
 ClientCountry    	_sum
 ---------------------------------
 pt               	4
 fr               	3
-us               	3
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Using Angle Grinder, we can create a query to count the firewall actions by each country.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 |  agrind '* | json | sum(sampleInterval) by ClientCountry,FirewallMatchesActions'
+us               	3</code></pre>
+	<p>Using Angle Grinder, we can create a query to count the firewall actions by each country.</p>
+	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 |  agrind '* | json | sum(sampleInterval) by ClientCountry,FirewallMatchesActions'
 ClientCountry        FirewallMatchesActions        _sum
 ---------------------------------------------------------------
 ca                   []                            5
-us                   [block]                       1
-</code></pre>
-	<!--kg-card-end: markdown-->
+us                   [block]                       1</code></pre>
 	<p>Looks like our newly deployed firewall rule is working :)</p>
 	<p>Happy Logging!</p>
 </div>

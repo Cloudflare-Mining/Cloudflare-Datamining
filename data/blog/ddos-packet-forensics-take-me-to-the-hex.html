@@ -1,12 +1,15 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UuClwPcGt9HcYTbPdiAAO/0f777b1f9d1543d5eda8a7c6683f55a2/ddos-packet-forensics-take-me-to-the-hex.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>A few days ago, my colleague Marek sent an email about a DDoS attack against one of our DNS servers that we'd been blocking with our <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF rules</a>. He noticed that there seemed to be a strange correlation between the TTL field in the IP header and the IPv4 source address.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/01/30957385_bfb4b7fb79_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/adactio/30957385">image</a> by <a href="https://www.flickr.com/photos/adactio">Jeremy Keith</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6g3lAZht4S4HBqWLjL3y33/2a8fb70ebe6e1037b9cb2c8ff20d8848/30957385_bfb4b7fb79_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/adactio/30957385">image</a> by <a href="https://www.flickr.com/photos/adactio">Jeremy Keith</a></p>
 	<p>The source address was being spoofed, as usual, and apparently chosen randomly, but something else was going on. He offered a bottle of Scotch to the first person to come up with a satisfactory solution.</p>
 	<p>Here's what some of the packets looked like:</p>
-	<pre><code>$ tcpdump -ni eth0 -c 10 "ip[8]=40 and udp and port 53"
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -ni eth0 -c 10 "ip[8]=40 and udp and port 53"
 1.181.207.7.46337 &gt; x.x.x.x.53: 65098+
 1.178.97.141.45569 &gt; x.x.x.x.53: 65101+
 1.248.136.142.63489 &gt; x.x.x.x.53: 65031+
@@ -22,15 +25,14 @@ $ tcpdump -ni eth0 -c 10 "ip[8]=42 and udp and port 53"
 4.72.42.184.18436 &gt; x.x.x.x.53: 64439+
 4.240.78.0.61444 &gt; x.x.x.x.53: 64271+
 5.73.44.84.18693 &gt; x.x.x.x.53: 64182+
-4.69.99.10.17668 &gt; x.x.x.x.53: 64442+
-</code></pre>
+4.69.99.10.17668 &gt; x.x.x.x.53: 64442+</code></pre>
 	<p>I've removed the destination IP address, but left in the DNS ID number (the number with the plus after it), the spoofed source IP, and port. There are three different TTLs represented (40, 41, and 42) by filtering on ip[8].</p>
 	<p>Stop reading here if you want to go figure this out for yourself.</p>
-	<h3 id="intothehex">Into the hex</h3>
+	<h3>Into the hex</h3>
 	<p>I couldn't resist Marek's challenge, so I did what I always do with anything involving packets: I went straight for the hex. Since Marek hadn't given me a pcap, I manually converted the first few to hex.</p>
 	<p>The reason hex is useful is that bytes, words, dwords, and qwords are the real stuff of computing and looking at decimal obscures data.</p>
 	<p>Taking the first three (one for each TTL), I saw this pattern:</p>
-	<pre><code>1.181.207.7.46337
+	<pre class="language-bash"><code class="language-bash">1.181.207.7.46337
 2.10.30.2.2562
 4.72.42.184.18436
 
@@ -38,27 +40,24 @@ Converted to hex they are
 
 01.b5.cf.07.b501
 02.0a.1e.02.0a02
-04.48.2a.b8.4804
-</code></pre>
+04.48.2a.b8.4804</code></pre>
 	<p>It's immediately obvious that the 'random' source port is the first two bytes of the random IP source address reversed: <code>01.b5.cf.07</code> has source port <code>b501</code>.</p>
 	<p>A little bit of tinkering revealed a relationship between the TTL and the first byte of the IP address.</p>
-	<pre><code>TTL = first byte &gt;&gt; 1 + 40
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">TTL = first byte &gt;&gt; 1 + 40</code></pre>
 	<p>This relationship was confirmed by a later packet that had a TTL of 150 and a source IP of 220.255.141.181. The shift right also explained why the same TTL was used when the first byte differed by one (see the third group above for an example: 4.x.x.x and 5.x.x.x have the same TTL).</p>
 	<p>I then spotted that the DNS ID field was also related to the IP address.</p>
-	<pre><code>1.181.207.7.46337 &gt; x.x.x.x.53: 65098+
+	<pre class="language-bash"><code class="language-bash">1.181.207.7.46337 &gt; x.x.x.x.53: 65098+
 
 Converted to hex:
 
-01.b5.cf.07.b501 &gt; x.x.x.x.35: fe4a+
-</code></pre>
+01.b5.cf.07.b501 &gt; x.x.x.x.35: fe4a+</code></pre>
 	<p>It's probably not obvious at first glance (unless you're a hex-level hacker), but fe4a is the one's complement of 01b5. So the DNS ID field was simply the one's complement of the first two bytes of the source IP.</p>
 	<p>Finally, Marek gave me a pcap, and I had one more relationship to find. The ID value in the IPv4 header was also related to the random source IP address—in fact, it was just the first two bytes of the IP address.</p>
-	<h3 id="mystery">Mystery</h3>
+	<h3>Mystery</h3>
 	<p>One mystery remains (and there's a CloudFlare T-shirt for person with the most convincing explanation): How are the random source IPs being generated?</p>
 	<p>The answer might be boring (i.e. it might just be reading bytes from /dev/random), but given the author's love of relationships between fields, perhaps there's something else going on. We've seen IP addresses get reused which leads us to think that there's something to discover here.</p>
 	<p>Here's a sequence of actual source IPs seen:</p>
-	<pre><code>218.254.187.151
+	<pre class="language-bash"><code class="language-bash">218.254.187.151
 8.187.160.236
 123.73.134.186
 68.133.199.20
@@ -69,9 +68,7 @@ Converted to hex:
 205.26.91.155
 140.206.27.92
 70.62.151.0
-161.98.197.249
-</code></pre>
+161.98.197.249</code></pre>
 	<p>We have no real guarantee that the attacker generated them in this order, but perhaps there's an interesting way these are being generated.</p>
 	<p>Answers in comments if you manage to figure it out!</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,18 +1,17 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>If you're old enough (or interested enough) to have spent a lot of time messing around with the ASCII table then you might have run into a strange fact: it's possible to uppercase ASCII text using just bitwise AND.</p>
 	<p>And it turns out that in some situations this isn't just a curiosity, but actually useful. Here are the ASCII characters 0x20 (space) to 0x7E (tilde).</p>
-	<pre><code>     0123456789ABCDEF0123456789ABCDEF
+	<pre class="language-bash"><code class="language-bash">     0123456789ABCDEF0123456789ABCDEF
     +--------------------------------
 0x20| !"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?
 0x40|@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_
-0x60|`abcdefghijklmnopqrstuvwxyz{|}~
-</code></pre>
+0x60|`abcdefghijklmnopqrstuvwxyz{|}~</code></pre>
 	<p>It's immediately obvious that each lowercase letter has an ASCII code 0x20 more than the corresponding uppercase letter. For example, lowercase m is 0x6D and uppercase M is 0x4D. And since 0x20 is a single bit then it's possible to uppercase an ASCII letter by taking its code and applying <code>AND 0xDF</code> (masking out the 0x20 bit).</p>
 	<p>Performing <code>AND 0xDF</code> has no effect on the first two rows above: they, including the uppercase letters, are unchanged. Only the third row is affected. There the lowercase letters get uppercased but there's some collateral damage: `` { | } ~<code>change to</code>@ [ \ ] ^`.</p>
 	<p>But if you know that a string has a limited character set then this trick can come in handy. Lots of old protocols (SMTP, POP3, ...) use USASCII characters for their commands. DNS names are typically restricted to letters, numbers and -. Even HTTP recommends that use of USASCII for the HTTP header.</p>
 	<p>So, if you know that your string is <code>AND 0xDF</code>-safe then the following C code makes a very fast case-insensitive comparison:</p>
-	<pre><code>// Returns 1 if x == y (case insensitive)
+	<pre class="language-bash"><code class="language-bash">// Returns 1 if x == y (case insensitive)
 int cmp(const char *x, const char* y) {
   while (*x &amp;&amp; *y) {
     if ((*x++ &amp; 0xdf) != (*y++ &amp; 0xdf)) {
@@ -20,8 +19,6 @@ int cmp(const char *x, const char* y) {
     }
   }
   return (*x == 0) &amp;&amp; (*y == 0);
-}
-</code></pre>
+}</code></pre>
 	<p>And that sort of low-level trickery turns out to matter when you are being hit by millions of DNS packets per second and need to make very, very fast filtering decisions.</p>
-	<!--kg-card-end: markdown-->
 </div>

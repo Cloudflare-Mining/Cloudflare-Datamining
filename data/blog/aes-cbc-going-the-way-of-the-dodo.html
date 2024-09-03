@@ -1,22 +1,36 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ffOdpvrWFOm0KAFMjihfO/046e04a4760d3f88c619f4cda337030b/aes-cbc-going-the-way-of-the-dodo.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>A little over a year ago, Nick Sullivan <a href="https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites">talked about</a> the beginning of the end for AES-CBC cipher suites, following a plethora of attacks on this cipher mode.</p>
 	<p>Today we can safely confirm that this prediction is coming true, as for the first time ever the share of AES-CBC cipher suites on Cloudflare’s edge network dropped below that of <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20-Poly1305</a> suites, and is fast approaching the 10% mark.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/04/153059715_fad3b8be43_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/andreweason/153059715/in/photolist-ewtjB-4DuF2q-7nWzyC-54VpEC-piTG3-e9gFka-47jfK-47jfh-47jfC-47jfq-47jf5-54VpFf-gTEbKu-54VpDJ-KvpMZH-47iKQ-7527ue-49Y6Z6-7dcwjq-6kGs2K-kmBTE-8vEFRq-4NfTAs-5AXLyv-qCxMrX-6Th9Ds-7oN3Zc-59wsSQ-5vyf5e-qHrCWQ-JWpMjc-4BqcyP-qFe6ky-aH51WB-7zxqQ-dsFacY-7uv9Qi-4PMzMv-9WUNfe-7yZJHo-9xVWK-sfqKtc-eHEhYe-qpiFHG-apXNix-9tnNDQ-7jdmAj-8Bwgp7-8UsZhm-55ke5e">image</a> by <a href="https://www.flickr.com/photos/andreweason">aesop</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Nlmap0WYRSOk7Y2UdI8ww/42a741c24d6be304cc310c89fec823c9/153059715_fad3b8be43_z.jpg" alt="" class="kg-image" width="637" height="640" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/andreweason/153059715/in/photolist-ewtjB-4DuF2q-7nWzyC-54VpEC-piTG3-e9gFka-47jfK-47jfh-47jfC-47jfq-47jf5-54VpFf-gTEbKu-54VpDJ-KvpMZH-47iKQ-7527ue-49Y6Z6-7dcwjq-6kGs2K-kmBTE-8vEFRq-4NfTAs-5AXLyv-qCxMrX-6Th9Ds-7oN3Zc-59wsSQ-5vyf5e-qHrCWQ-JWpMjc-4BqcyP-qFe6ky-aH51WB-7zxqQ-dsFacY-7uv9Qi-4PMzMv-9WUNfe-7yZJHo-9xVWK-sfqKtc-eHEhYe-qpiFHG-apXNix-9tnNDQ-7jdmAj-8Bwgp7-8UsZhm-55ke5e">image</a> by <a href="https://www.flickr.com/photos/andreweason">aesop</a></p>
 	<p>Over the course of the last six months, AES-CBC shed more than 33% of its “market” share, dropping from 20% to just 13.4%.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/04/cipher-ms.png" alt="Ciphers" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gz1nglJIcaJvAFH5DHWJs/561649ee32ec453d1d86152e9d8698a6/cipher-ms.png" alt="Ciphers" class="kg-image" width="1762" height="940" loading="lazy">
+
+	</figure>
 	<p>All of that share, went to AES-GCM, that currently encrypts over 71.2% of all connections. <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20-Poly1305</a> is stable, with 15.3% of all connections opting for that cipher. Surprisingly 3DES is still around, with 0.1% of the connections.</p>
 	<p>The internal AES-CBC cipher suite breakdown as follows:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/04/CBC.png" alt="CBC" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yeTAZ34KUHiQXPku20xEF/ceaccf9b7d9b190e16c7275b9031963e/CBC.png" alt="CBC" class="kg-image" width="1602" height="1149" loading="lazy">
+
+	</figure>
 	<p>The majority of AES-CBC connections use ECDHE-RSA or RSA key exchange, and not ECDHE-ECDSA, which implies that we mostly deal with older clients.</p>
-	<h3 id="rsaisalsodying">RSA is also dying</h3>
+	<h3>RSA is also dying</h3>
 	<p>In other good new, the use of <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA</a> surpassed that of RSA at the beginning of the year. Currently more than 60% of all connections use the ECDSA signature.</p>
 	<p>Although 2048-bit RSA is not broken, it is generally considered less secure than 256-bit ECDSA, and is significantly slower to boot.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/04/signature.png" alt="signatures" loading="lazy"></p>
-	<h3 id="pfsisking">PFS is king</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tro9KjStX75FiUaOngQZ/97b8822e40abe2ea0ff54f44f714a9c9/signature.png" alt="signatures" class="kg-image" width="1762" height="940" loading="lazy">
+
+	</figure>
+	<h3>PFS is king</h3>
 	<p>Last, but not least, 98.4% of all connections are PFS, using ECDHE for key exchange. That's up from 97.6% six months ago.</p>
 	<p>All in all we see the continuation of the positive trend on the web towards safer and faster cryptography. We believe this trend will continue with the finalization of <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> later this year.</p>
-	<!--kg-card-end: markdown-->
 </div>

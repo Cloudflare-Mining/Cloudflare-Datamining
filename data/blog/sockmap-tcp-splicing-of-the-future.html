@@ -1,42 +1,31 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/b5eaPg3ZE1e4cmf0JeDVX/f9c64c4ed933d91e94535a26b7da34fc/sockmap-tcp-splicing-of-the-future.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Recently we stumbled upon the holy grail for reverse proxies - a TCP socket splicing API. This caught our attention because, as you may know, we run a global network of reverse proxy services. Proper TCP socket splicing reduces the load on userspace processes and enables more efficient data forwarding. We realized that Linux Kernel's SOCKMAP infrastructure can be reused for this purpose. SOCKMAP is a very promising API and is likely to cause a tectonic shift in the architecture of data-heavy applications like software proxies.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/02/31958194737_e06ecd6fcc_o.jpg" alt="31958194737_e06ecd6fcc_o" loading="lazy"></p>
-	<center><small><a href="https://www.flickr.com/photos/mustadmarine/31958194737">Image</a> by <a href="https://www.flickr.com/photos/mustadmarine">Mustad Marine</a> public domain</small></center>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69XVqZWzoAEEazmpmVeARy/0f98512abb656a205086f08bf248f153/31958194737_e06ecd6fcc_o.jpg" alt="31958194737_e06ecd6fcc_o" class="kg-image" width="500" height="281" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.flickr.com/photos/mustadmarine/31958194737">Image</a> by <a href="https://www.flickr.com/photos/mustadmarine">Mustad Marine</a> public domain</p>
 	<p>But let’s rewind a bit.</p>
-	<h3 id="birthingpainsofl7proxies">Birthing pains of L7 proxies</h3>
+	<h3>Birthing pains of L7 proxies</h3>
 	<p>Transmitting large amounts of data from userspace is inefficient. Linux provides a couple of specialized syscalls that aim to address this problem. For example, the <code>sendfile(2)</code> syscall (<a href="https://yarchive.net/comp/linux/splice.html">which Linus doesn't like</a>) can be used to speed up transferring large files from disk to a socket. Then there is <code>splice(2)</code> which traditional proxies use to forward data between two TCP sockets. Finally, <code>vmsplice</code> can be used to stick memory buffer into a pipe without copying, but is very hard to use correctly.</p>
 	<p>Sadly, <code>sendfile</code>, <code>splice</code> and <code>vmsplice</code> are very specialized, synchronous and solve only one part of the problem - they avoid copying the data to userspace. They leave other efficiency issues unaddressed.</p>
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>between</th>
-				<th>avoid user-space memory</th>
-				<th>zerocopy</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>sendfile</td>
-				<td>disk file --&gt; socket</td>
-				<td>yes</td>
-				<td>no</td>
-			</tr>
-			<tr>
-				<td>splice</td>
-				<td>pipe &lt;--&gt; socket</td>
-				<td>yes</td>
-				<td>yes?</td>
-			</tr>
-			<tr>
-				<td>vmsplice</td>
-				<td>memory region --&gt; pipe</td>
-				<td>no</td>
-				<td>yes</td>
-			</tr>
-		</tbody>
-	</table>
+	<p>between</p>
+	<p>avoid user-space memory</p>
+	<p>zerocopy</p>
+	<p>sendfile</p>
+	<p>disk file --&gt; socket</p>
+	<p>yes</p>
+	<p>no</p>
+	<p>splice</p>
+	<p>pipe &lt;--&gt; socket</p>
+	<p>yes</p>
+	<p>yes?</p>
+	<p>vmsplice</p>
+	<p>memory region --&gt; pipe</p>
+	<p>no</p>
+	<p>yes</p>
 	<p>Processes that forward large amounts of data face three problems:</p>
 	<ol>
 		<li>
@@ -49,61 +38,71 @@
 			<p>Copying cost: copying data from kernel to userspace and then immediately back to the kernel is not free and adds up to a measurable cost.</p>
 		</li>
 	</ol>
-	<h3 id="manytried">Many tried</h3>
+	<h3>Many tried</h3>
 	<p>Forwarding data between TCP sockets is a common practice. It's needed for:</p>
 	<ul>
-		<li>Transparent forward HTTP proxies, like Squid.</li>
-		<li>Reverse caching HTTP proxies, like Varnish or NGINX.</li>
-		<li>Load balancers, like HAProxy, Pen or Relayd.</li>
+		<li>
+			<p>Transparent forward HTTP proxies, like Squid.</p>
+		</li>
+		<li>
+			<p>Reverse caching HTTP proxies, like Varnish or NGINX.</p>
+		</li>
+		<li>
+			<p>Load balancers, like HAProxy, Pen or Relayd.</p>
+		</li>
 	</ul>
 	<p>Over the years there <a href="https://www.haproxy.org/download/1.3/doc/tcp-splicing.txt">have</a> been <a href="http://wwwconference.org/proceedings/www2002/refereed/627/index.html">many</a> <a href="https://lwn.net/Articles/200902">attempts</a> to reduce the cost of dumb data forwarding between TCP sockets on Linux. This issue is generally called “TCP splicing”, “L7 splicing”, or “Socket splicing”.</p>
 	<p>Let’s compare the usual ways of doing TCP splicing. To simplify the problem, instead of writing a rich Layer 7 TCP proxy, we'll write a trivial TCP echo server.</p>
 	<p>It's not a joke. An echo server can illustrate TCP socket splicing well. You know - "echo" basically splices the socket… with itself!</p>
-	<h3 id="naivereadwriteloop">Naive: read write loop</h3>
+	<h3>Naive: read write loop</h3>
 	<p>The naive TCP echo server would look like:</p>
-	<pre><code>while data:
+	<pre class="language-bash"><code class="language-bash">while data:
     data = read(sd, 4096)
-    writeall(sd, data)
-</code></pre>
+    writeall(sd, data)</code></pre>
 	<p>Nothing simpler. On a blocking socket this is a totally valid program, and will work just fine. For completeness <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-naive.c#L57-L78">I prepared full code here</a>.</p>
-	<h3 id="splicespecializedsyscall">Splice: specialized syscall</h3>
+	<h3>Splice: specialized syscall</h3>
 	<p>Linux has an amazing <a href="http://man7.org/linux/man-pages/man2/splice.2.html">splice(2) syscall</a>. It can tell the kernel to move data between a TCP buffer on a socket and a buffer on a pipe. The data remains in the buffers, on the kernel side. This solves the problem of needlessly having to copy the data between userspace and kernel-space. With the <code>SPLICE_F_MOVE</code> flag the kernel may be able to avoid copying the data at all!</p>
 	<p>Our program using <code>splice()</code> looks like:</p>
-	<pre><code>pipe_rd, pipe_wr = pipe()
+	<pre class="language-bash"><code class="language-bash">pipe_rd, pipe_wr = pipe()
 fcntl(pipe_rd, F_SETPIPE_SZ, 4096);
 
 while n:
     n = splice(sd, pipe_wr, 4096)
-    splice(pipe_rd, sd, n)
-</code></pre>
+    splice(pipe_rd, sd, n)</code></pre>
 	<p>We still need wake up the userspace program and make two syscalls to forward any piece of data, but at least we avoid all the copying. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-splice.c#L76-L98">Full source</a>.</p>
-	<h3 id="io_submitusinglinuxaioapi">io_submit: Using Linux AIO API</h3>
+	<h3>io_submit: Using Linux AIO API</h3>
 	<p><a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">In a previous blog post about io_submit()</a> we proposed using the AIO interface with network sockets. Read the blog post for details, but <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-iosubmit.c#L81-L107">here is the prepared program</a> that has the echo server loop implemented with only a single syscall.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/02/452423494_31aa5caca5_z-1.jpg" alt="452423494_31aa5caca5_z-1" loading="lazy"></p>
-	<center><small><a href="https://www.flickr.com/photos/jrsnchzhrs/452423494">Image</a> by <a href="https://www.flickr.com/photos/jrsnchzhrs">jrsnchzhrs</a> By-Nd 2.0 </small></center>
-	<h3 id="sockmaptheultimateweapon">SOCKMAP: The ultimate weapon</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qk4EejV30qMZoVZ2RcMFW/f2b1ef43277ba89ac35a7c1256333447/452423494_31aa5caca5_z-1.jpg" alt="452423494_31aa5caca5_z-1" class="kg-image" width="500" height="375" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.flickr.com/photos/jrsnchzhrs/452423494">Image</a> by <a href="https://www.flickr.com/photos/jrsnchzhrs">jrsnchzhrs</a> By-Nd 2.0</p>
+	<h3>SOCKMAP: The ultimate weapon</h3>
 	<p>In recent years Linux Kernel introduced an <a href="https://lwn.net/Articles/740157">eBPF virtual machine</a>. With it, user-space programs can run specialized, non-turing-complete bytecode in the kernel context. Nowadays it's possible to <a href="https://blog.cloudflare.com/tag/ebpf">select eBPF programs</a> for dozens of use cases, ranging from packet filtering, to policy enforcement.</p>
 	<p>From Kernel 4.14 Linux got new eBPF machinery that can be used for socket splicing - SOCKMAP. It was created by John Fastabend at <a href="https://cilium.io/blog/2018/04/24/cilium-security-for-age-of-microservices">Cilium.io</a>, exposing the <a href="https://www.kernel.org/doc/Documentation/networking/strparser.txt">Strparser</a> interface to eBPF programs. Cilium uses SOCKMAP for Layer 7 policy enforcement, and all the logic it uses is embedded in an eBPF program. The API is not well documented, requires root and, from our experience, is <a href="https://lore.kernel.org/netdev/20190211090949.18560-1-jakub@cloudflare.com">slightly</a> <a href="https://lore.kernel.org/netdev/20190128091335.20908-1-jakub@cloudflare.com">buggy</a>. But it's very promising. Read more:</p>
 	<ul>
-		<li>LPC2018 - Combining kTLS and BPF for Introspection and Policy Enforcement <a href="http://vger.kernel.org/lpc_net2018_talks/ktls_bpf_paper.pdf">Paper</a> <a href="https://www.youtube.com/watch?v=NnibidVRtWY">Video</a> <a href="http://vger.kernel.org/lpc_net2018_talks/ktls_bpf.pdf">Slides</a></li>
-		<li><a href="https://lwn.net/Articles/731133">Original SOCKMAP commit</a></li>
+		<li>
+			<p>LPC2018 - Combining kTLS and BPF for Introspection and Policy Enforcement <a href="http://vger.kernel.org/lpc_net2018_talks/ktls_bpf_paper.pdf">Paper</a> <a href="https://www.youtube.com/watch?v=NnibidVRtWY">Video</a> <a href="http://vger.kernel.org/lpc_net2018_talks/ktls_bpf.pdf">Slides</a></p>
+		</li>
+		<li>
+			<p><a href="https://lwn.net/Articles/731133">Original SOCKMAP commit</a></p>
+		</li>
 	</ul>
 	<p>This is how to use SOCKMAP: SOCKMAP or specifically "BPF_MAP_TYPE_SOCKMAP", is a type of an eBPF map. This map is an "array" - indices are integers. All this is pretty standard. The magic is in the map values - they must be TCP socket descriptors.</p>
-	<p>This map is very special - it has two eBPF programs attached to it. You read it right: the eBPF programs live <em>attached to a map</em>, not attached to a socket, cgroup or network interface as usual. This is how you would set up <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap.c#L36-L80">SOCKMAP in user program</a>:</p>
-	<pre><code>sock_map = bpf_create_map(BPF_MAP_TYPE_SOCKMAP, sizeof(int), sizeof(int), 2, 0)
+	<p>This map is very special - it has two eBPF programs attached to it. You read it right: the eBPF programs live <i>attached to a map</i>, not attached to a socket, cgroup or network interface as usual. This is how you would set up <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap.c#L36-L80">SOCKMAP in user program</a>:</p>
+	<pre class="language-bash"><code class="language-bash">sock_map = bpf_create_map(BPF_MAP_TYPE_SOCKMAP, sizeof(int), sizeof(int), 2, 0)
 
 prog_parser = bpf_load_program(BPF_PROG_TYPE_SK_SKB, ...)
 prog_verdict = bpf_load_program(BPF_PROG_TYPE_SK_SKB, ...)
 bpf_prog_attach(prog_parser, sock_map, BPF_SK_SKB_STREAM_PARSER)
-bpf_prog_attach(prog_verdict, sock_map, BPF_SK_SKB_STREAM_VERDICT)
-</code></pre>
+bpf_prog_attach(prog_verdict, sock_map, BPF_SK_SKB_STREAM_VERDICT)</code></pre>
 	<p>Ta-da! At this point we have an established <code>sock_map</code> eBPF map, with two eBPF programs attached: parser and verdict. The next step is to add a TCP socket descriptor to this map. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap.c#L130-L142">Nothing simpler</a>:</p>
-	<pre><code>int idx = 0;
+	<pre class="language-bash"><code class="language-bash">int idx = 0;
 int val = sd;
-bpf_map_update_elem(sock_map, &amp;idx, &amp;val, BPF_ANY);
-</code></pre>
-	<p>At this point <em>the magic happens</em>. From now on, each time our socket <code>sd</code> receives a packet, prog_parser and prog_verdict are called. Their semantics are described in the <a href="https://www.kernel.org/doc/Documentation/networking/strparser.txt">strparser.txt</a> and the <a href="https://lwn.net/Articles/731133">introductory SOCKMAP commit</a>. For simplicity, our trivial echo server only needs the minimal stubs. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap-kern.c#L32-L43">This is the eBPF code</a>:</p>
-	<pre><code class="language-.c">SEC("prog_parser")
+bpf_map_update_elem(sock_map, &amp;idx, &amp;val, BPF_ANY);</code></pre>
+	<p>At this point <i>the magic happens</i>. From now on, each time our socket <code>sd</code> receives a packet, prog_parser and prog_verdict are called. Their semantics are described in the <a href="https://www.kernel.org/doc/Documentation/networking/strparser.txt">strparser.txt</a> and the <a href="https://lwn.net/Articles/731133">introductory SOCKMAP commit</a>. For simplicity, our trivial echo server only needs the minimal stubs. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap-kern.c#L32-L43">This is the eBPF code</a>:</p>
+	<pre class="language-.c"><code class="language-.c">SEC("prog_parser")
 int _prog_parser(struct __sk_buff *skb)
 {
 	return skb-&gt;len;
@@ -114,85 +113,94 @@ int _prog_verdict(struct __sk_buff *skb)
 {
 	uint32_t idx = 0;
 	return bpf_sk_redirect_map(skb, &amp;sock_map, idx, 0);
-}
-</code></pre>
+}</code></pre>
 	<p>Side note: for the purposes of this test program, I wrote a minimal eBPF loader. It has no dependencies (neither bcc, libelf, or libbpf) and can do basic relocations (like resolving the <code>sock_map</code> symbol mentioned above). <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/tbpf.c">See the code</a>.</p>
-	<p>The call to <code>bpf_sk_redirect_map</code> is doing all the work. It tells the kernel: for the received packet, please oh please <em>redirect</em> it from a receive queue of some socket, to a transmit queue of the socket living in sock_map under index 0. In our case, these are the same sockets! Here we achieved exactly what the echo server is supposed to do, but purely in eBPF.</p>
+	<p>The call to <code>bpf_sk_redirect_map</code> is doing all the work. It tells the kernel: for the received packet, please oh please <i>redirect</i> it from a receive queue of some socket, to a transmit queue of the socket living in sock_map under index 0. In our case, these are the same sockets! Here we achieved exactly what the echo server is supposed to do, but purely in eBPF.</p>
 	<p>This technology has multiple benefits. First, the data is never copied to userspace. Secondly, we never need to wake up the userspace program. All the action is done in the kernel. Quite cool, isn't it?</p>
 	<p>We need one more piece of code, to hang the userspace program until the socket is closed. This is best done with good old <code>poll(2)</code>:</p>
-	<pre><code class="language-.c">/* Wait for the socket to close. Let SOCKMAP do the magic. */
+	<pre class="language-.c"><code class="language-.c">/* Wait for the socket to close. Let SOCKMAP do the magic. */
 struct pollfd fds[1] = {
     {.fd = sd, .events = POLLRDHUP},
 };
-poll(fds, 1, -1);
-</code></pre>
+poll(fds, 1, -1);</code></pre>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap.c#L144-L148">Full code.</a></p>
-	<h3 id="thebenchmarks">The benchmarks</h3>
+	<h3>The benchmarks</h3>
 	<p>At this stage we have presented four simple TCP echo servers:</p>
 	<ul>
-		<li>naive read-write loop</li>
-		<li>splice</li>
-		<li>io_submit</li>
-		<li>SOCKMAP</li>
+		<li>
+			<p>naive read-write loop</p>
+		</li>
+		<li>
+			<p>splice</p>
+		</li>
+		<li>
+			<p>io_submit</p>
+		</li>
+		<li>
+			<p>SOCKMAP</p>
+		</li>
 	</ul>
 	<p>To recap, we are measuring the cost of three things:</p>
 	<ol>
-		<li>Syscall cost</li>
-		<li>Wakeup latency, mostly visible as tail latency</li>
-		<li>The cost of copying data</li>
+		<li>
+			<p>Syscall cost</p>
+		</li>
+		<li>
+			<p>Wakeup latency, mostly visible as tail latency</p>
+		</li>
+		<li>
+			<p>The cost of copying data</p>
+		</li>
 	</ol>
 	<p>Theoretically, SOCKMAP should beat all the others:</p>
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>syscall cost</th>
-				<th>waking up userspace</th>
-				<th>copying cost</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>read write loop</td>
-				<td>2 syscalls</td>
-				<td>yes</td>
-				<td>2 copies</td>
-			</tr>
-			<tr>
-				<td>splice</td>
-				<td>2 syscalls</td>
-				<td>yes</td>
-				<td>0 copy (?)</td>
-			</tr>
-			<tr>
-				<td>io_submit</td>
-				<td>1 syscall</td>
-				<td>yes</td>
-				<td>2 copies</td>
-			</tr>
-			<tr>
-				<td>SOCKMAP</td>
-				<td>none</td>
-				<td>no</td>
-				<td>0 copies</td>
-			</tr>
-		</tbody>
-	</table>
-	<h3 id="showmethenumbers">Show me the numbers</h3>
+	<p>syscall cost</p>
+	<p>waking up userspace</p>
+	<p>copying cost</p>
+	<p>read write loop</p>
+	<p>2 syscalls</p>
+	<p>yes</p>
+	<p>2 copies</p>
+	<p>splice</p>
+	<p>2 syscalls</p>
+	<p>yes</p>
+	<p>0 copy (?)</p>
+	<p>io_submit</p>
+	<p>1 syscall</p>
+	<p>yes</p>
+	<p>2 copies</p>
+	<p>SOCKMAP</p>
+	<p>none</p>
+	<p>no</p>
+	<p>0 copies</p>
+	<h3>Show me the numbers</h3>
 	<p>This is the part of the post where I'm showing you the breathtaking numbers, clearly showing the different approaches. Sadly, benchmarking is hard, and well... SOCKMAP turned out to be the slowest. It's <a href="https://cyber.wtf/2017/07/28/negative-result-reading-kernel-memory-from-user-mode">important to publish negative results</a> so here they are.</p>
 	<p>Our test rig was as follows:</p>
 	<ul>
-		<li>Two bare-metal Xeon servers connected with a 25Gbps network.</li>
-		<li>Both have turbo-boost disabled, and the testing programs are CPU-pinned.</li>
-		<li>For better locality we localized RX and TX queues to one IRQ/CPU each.</li>
-		<li>The testing server runs a script that sends 10k batches of fixed-sized blocks of data. The script measures how long it takes for the echo server to return the traffic.</li>
-		<li>We do 10 separate runs for each measured echo-server program.</li>
-		<li>TCP: "cubic" and NONAGLE=1.</li>
-		<li>Both servers run the 4.14 kernel.</li>
+		<li>
+			<p>Two bare-metal Xeon servers connected with a 25Gbps network.</p>
+		</li>
+		<li>
+			<p>Both have turbo-boost disabled, and the testing programs are CPU-pinned.</p>
+		</li>
+		<li>
+			<p>For better locality we localized RX and TX queues to one IRQ/CPU each.</p>
+		</li>
+		<li>
+			<p>The testing server runs a script that sends 10k batches of fixed-sized blocks of data. The script measures how long it takes for the echo server to return the traffic.</p>
+		</li>
+		<li>
+			<p>We do 10 separate runs for each measured echo-server program.</p>
+		</li>
+		<li>
+			<p>TCP: "cubic" and NONAGLE=1.</p>
+		</li>
+		<li>
+			<p>Both servers run the 4.14 kernel.</p>
+		</li>
 	</ul>
 	<p>Our analysis of the experimental data identified some outliers. We think some of the worst times, manifested as long echo replies, were caused by unrelated factors such as network packet loss. In the charts presented we, perhaps controversially, skip the bottom 1% of outliers in order to focus on what we think is the important data.</p>
 	<p>Furthermore, we spotted a bug in SOCKMAP. Some of the runs were delayed by up to whopping 64ms. Here is one of the tests:</p>
-	<pre><code>Values min:236.00 avg:669.28 med=390.00 max:78039.00 dev:3267.75 count:2000000
+	<pre class="language-bash"><code class="language-bash">Values min:236.00 avg:669.28 med=390.00 max:78039.00 dev:3267.75 count:2000000
 Values:
  value |-------------------------------------------------- count
      1 |                                                   0
@@ -212,26 +220,32 @@ Values:
  16384 |                                                   1
  32768 |                                                   0
  65536 |                                                   11585
-131072 |                                                   1
-</code></pre>
+131072 |                                                   1</code></pre>
 	<p>The great majority of the echo runs (of 128KiB in this case) were finished in the 512us band, while a small fraction stalled for 65ms. This is pretty bad and makes comparison of SOCKMAP to other implementations pretty meaningless. This is a second reason why we are skipping 1% of worst results from all the runs - it makes SOCKMAP numbers way more usable. Sorry.</p>
-	<h3 id="2mibblocksthroughput">2MiB blocks - throughput</h3>
+	<h3>2MiB blocks - throughput</h3>
 	<p>The fastest of our programs was doing ~15Gbps over one flow, which seems to be a hardware limit. This is very visible in the first iteration, which shows the throughput of our echo programs.</p>
 	<p>This test shows: Time to transmit and receive 2MiB blocks of data, via our tested echo server. We repeat this 10k times, and run the test 10 times. After stripping the worst 1% numbers we get the following latency distribution:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/02/numbers-2mib-2.png" alt="numbers-2mib-2" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yxe0fOUjkJpcsD1uoCIm6/a0a9e3facd210a85c9869c9e07fb9a63/numbers-2mib-2.png" alt="numbers-2mib-2" class="kg-image" width="1000" height="600" loading="lazy">
+
+	</figure>
 	<p>This charts shows that both naive read+write and io_submit programs were able to achieve 1500us mean round trip time for TCP echo server of 2MiB blocks.</p>
 	<p>Here we clearly see that splice and SOCKMAP are slower than others. They were CPU-bound and unable to reach the line rate. We have raised the <a href="https://www.spinics.net/lists/netdev/msg539609.html">unusual splice performance problems</a> in the past, but perhaps we should debug it one more time.</p>
 	<p>For each server we run the tests twice: without and with SO_BUSYPOLL setting. This setting should remove the "wakeup latency" and greatly reduce the jitter. The results show that naive and io_submit tests are almost identical. This is perfect! BUSYPOLL does indeed reduce the deviation and latency, at a cost of more CPU usage. Notice that neither splice nor SOCKMAP are affected by this setting.</p>
-	<h3 id="16kibblockswakeuptime">16KiB blocks - wakeup time</h3>
+	<h3>16KiB blocks - wakeup time</h3>
 	<p>Our second run of tests was with much smaller data sizes, sending tiny 16KiB blocks at a time. This test should illustrate the "wakeup time" of the tested programs.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/02/numbers-16kib-1.png" alt="numbers-16kib-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WxbvoQBvU00WzJldYpSED/38594e9e10b3068f3e1b2a46cb6ece00/numbers-16kib-1.png" alt="numbers-16kib-1" class="kg-image" width="1000" height="600" loading="lazy">
+
+	</figure>
 	<p>In this test the non-BUSYPOLL runs of all the programs look quite similar (min and max values), with SOCKMAP being the exception. This is great - we can speculate the wakeup time is comparable. Surprisingly, the splice has slightly better median time from others. Perhaps this can be explained by CPU artifacts, like having better CPU cache locality due to less data copying. SOCKMAP is again, slowest with worst max and median times. Boo.</p>
 	<p>Remember we truncated the worst 1% of the data - we artificially shortened the "max" values.</p>
-	<h3 id="tldr">TL;DR</h3>
+	<h3>TL;DR</h3>
 	<p>In this blog post we discussed the theoretical benefits of SOCKMAP. Sadly, we noticed it's not ready for prime time yet. We compared it against splice, which we noticed didn't benefit from BUSYPOLL and had disappointing performance. We noticed that the naive read/write loop and iosubmit approaches have exactly the same performance characteristics and do benefit from BUSYPOLL to reduce jitter (wakeup time).</p>
 	<p>If you are piping data between TCP sockets, you should definitely take a look at SOCKMAP. While our benchmarks show it's not ready for prime time yet, with poor performance, high jitter and a couple of bugs, it's very promising. We are very excited about it. It's the first technology on Linux that truly allows the user-space process to offload TCP splicing to the kernel. It also has potential for much better performance than other approaches, ticking all the boxes of being async, kernel-only and totally avoiding needless copying of data.</p>
 	<p>This is not everything. SOCKMAP is able to pipe data across multiple sockets - you can imagine a full mesh of connections being able to send data to each other. Furthermore it exposes the <code>strparser</code> API, which can be used to offload basic application framing. Combined with <a href="https://github.com/torvalds/linux/blob/master/Documentation/networking/tls.txt">kTLS</a> you can combine it with transparent encryption. Furthermore, there are rumors of adding UDP support. The possibilities are endless.</p>
 	<p>Recently the kernel has been exploding with eBPF innovations. It seems like we've only just scratched the surface of the possibilities exposed by the modern eBPF interfaces.</p>
 	<p>Many thanks to <a href="https://twitter.com/jkbs0">Jakub Sitnicki</a> for suggesting SOCKMAP in the first place, writing the proof of concept and now actually fixing the bugs we found. Go strong Warsaw office!</p>
-	<!--kg-card-end: markdown-->
 </div>

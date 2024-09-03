@@ -1,35 +1,57 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-89-1.png" class="kg-image" alt="Measuring the Internet's pulse: trending domains now on Cloudflare Radar" loading="lazy" width="1801" height="1013"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3evWGv7I9u0kn2RhdyopSb/6074be12354d9186ec7c605db9c2cd5e/image1-89-1.png" alt="Measuring the Internet's pulse: trending domains now on Cloudflare Radar" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>In 2022, we <a href="https://blog.cloudflare.com/radar-domain-rankings">launched</a> the Radar Domain Rankings, with top lists of the most popular domains based on how people use the Internet globally. The lists are calculated using a machine learning model that uses aggregated <a href="https://1.1.1.1">1.1.1.1</a> resolver data that is anonymized in accordance with our <a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver">privacy commitments</a>. While the <a href="https://radar.cloudflare.com/domains">top 100</a> list is updated daily for each location, typically the first results of that list are stable over time, with the big names such as Google, Facebook, Apple, Microsoft and TikTok leading. Additionally, these global big names appear for the majority of locations.</p>
 	<p>Today, we are improving our <a href="https://radar.cloudflare.com/domains">Domain Rankings</a> page and adding Trending Domains lists. The new data shows which domains are currently experiencing an increase in popularity. Hence, while with the top popular domains we aim to show domains of broad appeal and of interest to many Internet users, with the trending domains we want to show domains that are generating a surge in interest.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image4-4.png" class="kg-image" alt="" loading="lazy" width="1999" height="1462"></figure>
-	<h3 id="how-we-generate-the-trending-domains">How we generate the Trending Domains</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DGYSP79QBrRnCHw7xsLFz/4a54f74dbf3a7a06a79546656c8387ba/image4-4.png" alt="" class="kg-image" width="1999" height="1462" loading="lazy">
+
+	</figure>
+	<h3>How we generate the Trending Domains</h3>
 	<p>When we started looking at the best way to generate a list of trending domains, we needed to answer the following questions:</p>
 	<ul>
-		<li>What type of popularity changes do we want to capture?</li>
-		<li>What should we use as a baseline to calculate the change?</li>
-		<li>And how do we quantify it?</li>
+		<li>
+			<p>What type of popularity changes do we want to capture?</p>
+		</li>
+		<li>
+			<p>What should we use as a baseline to calculate the change?</p>
+		</li>
+		<li>
+			<p>And how do we quantify it?</p>
+		</li>
 	</ul>
 	<p>We soon realized that we needed two lists. One reflecting sudden increased interest related to a particular event or a topic, showing spikes in popularity in domains that jump in the ranking from one day to the next, and another one reflecting steady growth in popularity, showing domains that are increasing their user base over a longer period.</p>
 	<p>For this reason, we are launching both the Trending Today and Trending This Week top 10 lists to capture the two different types of popularity increase.</p>
-	<p>To select the baseline for calculating the increase in popularity, we analyzed the volatility of the <a href="https://blog.cloudflare.com/radar-domain-rankings">Radar Domain Ranking</a> list for different top list sizes. The advantage of starting with the Radar Ranking lists is that they <strong>already incorporate a good popularity metric that quantifies the estimated relative size of the user population that accesses a domain over some period of time</strong>. You can read more about how we define popularity in our “Goodbye, Alexa. Hello, Cloudflare Radar Domain Rankings” <a href="https://blog.cloudflare.com/radar-domain-rankings">blog</a>.</p>
+	<p>To select the baseline for calculating the increase in popularity, we analyzed the volatility of the <a href="https://blog.cloudflare.com/radar-domain-rankings">Radar Domain Ranking</a> list for different top list sizes. The advantage of starting with the Radar Ranking lists is that they <b>already incorporate a good popularity metric that quantifies the estimated relative size of the user population that accesses a domain over some period of time</b>. You can read more about how we define popularity in our “Goodbye, Alexa. Hello, Cloudflare Radar Domain Rankings” <a href="https://blog.cloudflare.com/radar-domain-rankings">blog</a>.</p>
 	<p>As expected, smaller list sizes were more stable, meaning the percentage of domains in the top 100 that changed the ranking from one day to the next was much lower than the percentage of domains that changed in the top 10,000. Hence, to have a dynamic daily list of trending domains, we had to look beyond the top 100 most popular domains.</p>
 	<p>However, we did not want to go all the way to the long tail of the list, as we already know that the ranks there are based on “significantly smaller and hence less reliable numbers” (see the paper "<a href="https://arxiv.org/abs/1805.11506">A Long Way to the Top: Significance, Structure, and Stability of Internet Top Lists</a>"). Hence, we selected an appropriate list size for each location, based on the distribution of the number of DNS queries per domain. For example, for the Worldwide trending list we analyzed the top 20,000 most popular domains, for Brazil we looked at the top 10,000, Angola 5,000 and for the Faroe Islands top 500.</p>
-	<h3 id="trending-today">Trending Today</h3>
+	<h3>Trending Today</h3>
 	<p>We then evaluated how much the domains change rank from one day to the next.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-13.png" class="kg-image" alt="" loading="lazy" width="1999" height="592"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JbwD8sP5PhNY6dLkxPXIA/d879ff1a46e0a13ceb95e776256b4804/image2-13.png" alt="" class="kg-image" width="1999" height="592" loading="lazy">
+
+	</figure>
 	<p>We saw that on average, the biggest changes in the top lists, from one day to the next, happen from Fridays to Saturdays and from Sundays to Mondays, and hence on Saturdays and Mondays the lists have the least overlap with the lists of the previous day. We also compared the rank changes from one day to the next corresponding weekday, say from one Monday to the next and saw that on average, rankings on Mondays typically have more overlap with the rankings of the previous Mondays, than with the rankings of Sunday. From this we decided that in order to capture which domains are trending due to the weekend effect, we needed to compare the domain's daily rank to the rank of the previous day(s), and not of the corresponding weekday.</p>
 	<p>However, we also did not want to show as trending those domains that highly oscillate in the rankings, jumping up and down from one day to the next, showing up as trending every few days. Hence, we could not simply compare the daily rank with the rank from the day before. Instead, as a compromise between capturing the most recent trends, including the weekend trends, but still filtering out the domains whose ranking oscillates over a short period of time, we decided to compare the domain's daily rank with its best rank of the previous four days.</p>
 	<p>Then, to calculate the increase in popularity, we simply calculate the percentage change in the current rank compared to the best rank of the previous four days.</p>
-	<h3 id="trending-this-week">Trending This Week</h3>
+	<h3>Trending This Week</h3>
 	<p>For calculating the domains steadily growing over the week, we used a slightly different approach.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-3.png" class="kg-image" alt="" loading="lazy" width="752" height="303"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7arHPbJLnmUh0gwrLY3L6v/c44af553ec6ab0fa9e9513cfdc395d0f/image3-3.png" alt="" class="kg-image" width="752" height="303" loading="lazy">
+
+	</figure>
 	<p>We want to highlight domains that keep improving their rank day by day and especially those that have been really trending in the most recent days. Therefore, we decided not to directly compare the current rank with the best rank during the previous week. Instead, we looked at the weighted average per day rank improvement and compared it with the best rank of the previous six days, with more recent days being given more weight.</p>
-	<h3 id="example-trending-domains">Example trending domains</h3>
+	<h3>Example trending domains</h3>
 	<p>What do these lists look like at the end? We compiled the lists for the eventful days of June 21 to 24.</p>
 	<p>On June 22, nba.com was trending in 28 locations, shown in the table below, the United States, as expected, but also Austria, Australia and Japan, to name a few, reflecting the interest in the events of <a href="https://en.wikipedia.org/wiki/2023_NBA_draft">NBA Draft 2023</a>.</p>
-	<p><strong>Trending Today</strong> data from Friday, June 23, 2023:</p><!--kg-card-begin: html-->
+	<p><b>Trending Today</b> data from Friday, June 23, 2023:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -226,7 +248,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Two domains trending in multiple locations on Saturday, June 24, were: rt.com, a Russian news site in English, and liveuamap.com, a site with interactive map of <a href="https://radar.cloudflare.com/ua">Ukraine</a>. These are probably the effects of the events related to the Wagner group on June 23 and 24. Related to the same events, domain jetphotos.com was trending on the same day in Russia, Norway and Albania.</p>
-	<p><strong>Trending Today</strong> data from Saturday, June 24, 2023:</p><!--kg-card-begin: html-->
+	<p><b>Trending Today</b> data from Saturday, June 24, 2023:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -380,7 +402,7 @@
 	</table><!--kg-card-end: html-->
 	<p>Other domains trending in various locations on Friday and Saturday were different Gaming and Video Streaming domains such as roblox.com, twitch.tv and callofduty.com, showing an increased interest in gaming activities as the weekend approaches.</p>
 	<p>Yet another interesting effect of the weekend was the presence of five weather forecast sites on the top 10 trending sites on Friday, in <a href="https://www.thedubrovniktimes.com/lifestyle/opinion/item/15049-from-guaranteed-sunshine-to-unexpected-showers-dubrovnik-s-changing-summer-weather-raises-questions-and-points-to-global-warming">Croatia</a>, showing preoccupation with the summer weekend plans.</p>
-	<p><strong>Trending Today in Croatia</strong> (data from Friday, June 23, 2023)</p><!--kg-card-begin: html-->
+	<p><b>Trending Today in Croatia</b> (data from Friday, June 23, 2023)</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -487,9 +509,9 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>These were all examples of <strong>daily trending domains</strong>, but what domains have steadily grown in popularity that week?</p>
+	<p>These were all examples of <b>daily trending domains</b>, but what domains have steadily grown in popularity that week?</p>
 	<p>In multiple countries we had travel sites trending that week, sites such as booking.com, rentcars.com and amadeus.com, as many people were making their summer vacation plans. Weather forecast, specifically windy.com domain, was also trending the whole week in locations such as the Dominican Republic, Saint Lucia and Reunion, which was not surprising as the hurricane season began.</p>
-	<p><strong>Trending This Week</strong> (Week June 17 -23, 2023)</p><!--kg-card-begin: html-->
+	<p><b>Trending This Week</b> (Week June 17 -23, 2023)</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -579,10 +601,13 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p><br></p>
-	<h3 id="final-words">Final words</h3>
-	<p>Both <strong>Trending Today</strong> and <strong>Trending This Week</strong> top 10 lists are now available on Radar starting today and on <a href="https://developers.cloudflare.com/api/operations/radar-get-ranking-top-domains">Radar API</a>. Feel free to explore them and see what is trending on the Internet.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-10.png" class="kg-image" alt="" loading="lazy" width="1999" height="1346"></figure>
+	<h3>Final words</h3>
+	<p>Both <b>Trending Today</b> and <b>Trending This Week</b> top 10 lists are now available on Radar starting today and on <a href="https://developers.cloudflare.com/api/operations/radar-get-ranking-top-domains">Radar API</a>. Feel free to explore them and see what is trending on the Internet.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Le8JQl3OIy2ut6ynfnl4P/af891b373c7a1707bd14341045b53971/image1-10.png" alt="" class="kg-image" width="1999" height="1346" loading="lazy">
+
+	</figure>
 	<p>Visit <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for additional insights around (Internet disruptions, routing issues, Internet traffic trends, attacks, Internet quality, etc.). Follow us on social media at <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> (Twitter), <a href="https://noc.social/@cloudflareradar">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky), or contact us via e-mail.</p>
 	<p>Popular domains are domains of broad appeal based on how people use the Internet. Trending domains are domains that are generating a surge in interest.</p>
 </div>

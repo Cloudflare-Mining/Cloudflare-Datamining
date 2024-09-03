@@ -1,39 +1,48 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/workers-social@2x.png" alt="workers-social@2x" loading="lazy"></p>
-	<p><em>Last week, we wrote about <a href="https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers">implementing ESI with Cloudflare Workers</a>. This is a guest post by <a href="https://twitter.com/Overbryd">Lukas Reider</a> on how to use ESI not only for better performance, but to optimize availability while migrating backends.</em></p>
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63C7TZojytpw8cYJallYrq/086bc60713182fedf5a9aadc221e0fe1/workers-social_2x.png" alt="workers-social@2x" class="kg-image" width="1758" height="879" loading="lazy">
+
+	</figure>
+	<p><i>Last week, we wrote about </i><a href="https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers"><i>implementing ESI with Cloudflare Workers</i></a><i>. This is a guest post by </i><a href="https://twitter.com/Overbryd"><i>Lukas Reider</i></a><i> on how to use ESI not only for better performance, but to optimize availability while migrating backends.</i></p>
 	<p>In this post, you will learn about how my client Titel Media was able to use Cloudflare Workers to implement simple edge side includes.</p>
 	<p>The idea is to partially replace the parts of the online magazine <a href="https://www.highsnobiety.com">highsnobiety.com</a> with a new, and much more refined frontend implementation. In this article, you will get to know the use case, and how I found a powerful application for Cloudflare Workers.</p>
-	<h3 id="backstory">Backstory</h3>
+	<h3>Backstory</h3>
 	<p>My current project, <a href="https://www.highsnobiety.com">highsnobiety.com</a> is in the process of replacing Wordpress with a dedicated content pipeline and a custom frontend. It is a huge magazine, with tons of contents, hundreds of daily updates and an international team of more than 60 editors, researching and writing exciting stories.</p>
 	<p>The company behind it, Titel Media GmbH, a publishing house with offices in Berlin, and New York, surely has grown out of Wordpress for hosting their content.</p>
-	<h3 id="theshowmustgoon">The show must go on</h3>
+	<h3>The show must go on</h3>
 	<p>One does not simply rewrite a sophisticated web publishing pipeline like WordPress. Nor does one, simply rewrite a complete frontend in any manageable timeframe and then deploy it safely without causing any interruptions.</p>
 	<p>There is an inherent risk in such “big rewrites”. They can fail in many spectacular ways. Not getting it done being one of them, very popular. Failing to live up to high expectations (the ones that also caused the rewrite), is also well known to shatter the dreams of every project manager. Or how to manage changing requirements for a transition period of 1+ years?</p>
 	<p>Our working group, that should solve the transition, layed out a plan to sustainably grow the development team, while making level for safe path for the future.</p>
 	<ul>
-		<li>We absolutely did not want to wait 1-2 years, until everything had been rewritten.</li>
-		<li>We also, did not want to continue working with Wordpress for the next 5+ years</li>
-		<li>And we did not want to interrupt the current publishing pipeline for our editors</li>
+		<li>
+			<p>We absolutely did not want to wait 1-2 years, until everything had been rewritten.</p>
+		</li>
+		<li>
+			<p>We also, did not want to continue working with Wordpress for the next 5+ years</p>
+		</li>
+		<li>
+			<p>And we did not want to interrupt the current publishing pipeline for our editors</p>
+		</li>
 	</ul>
-	<h3 id="theideapartiallyrewritingthepage">The idea: Partially rewriting the page</h3>
+	<h3>The idea: Partially rewriting the page</h3>
 	<p>Wordpress is, and was running just fine. Years of dealing with the intricate details of such an installation, have lead to a pretty mature setup.</p>
 	<p>Fortunately, there is no pressure from the underlying technology to finish the transition in a hurry. Time, about 1+ years, is actually on our side. The team is able to contribute changes step by step. This is when we are incorporating some of the great ideas out there: Edge Side Includes.</p>
 	<p>I first heard about it, in some office kitchen talks, about how Amazon is apparently never failing, because so many of their services are backed up by fallbacks. For example, if some part of the page does not render in time, this part is able to fallback to other fitting content gracefully.</p>
 	<p>I could never verify these claims, but the idea sure stuck to me. When requiring high availability, this idea is very appealing. During the transition period, the idea is to rewrite parts of the website, step by step, and steadily grow the new frontend while everything is running.</p>
 	<p>We need two particular features from the ESI toolbox:</p>
 	<ul>
-		<li>Includes: Our new frontend, should be able to render components of the current page. We want to include them, and overwrite parts of the page with the new frontend.</li>
-		<li>Fallbacks: Wordpress will remain running during the live transition period. Any fragment, that fails, can still be taken from Wordpress.</li>
+		<li>
+			<p>Includes: Our new frontend, should be able to render components of the current page. We want to include them, and overwrite parts of the page with the new frontend.</p>
+		</li>
+		<li>
+			<p>Fallbacks: Wordpress will remain running during the live transition period. Any fragment, that fails, can still be taken from Wordpress.</p>
+		</li>
 	</ul>
-	<p>
-		<stream src="cd70cb29ff02800b09f30b1ed5dbcaee" controls="" preload="" autoplay=""></stream>
-	</p>
-	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.cloudflarestream.com/embed/r4xu.fla9.latest.js?video=cd70cb29ff02800b09f30b1ed5dbcaee"></script>
-	<p><br><br></p>
-	<h3 id="originhtmldocument">Origin HTML document</h3>
+	<h3>Origin HTML document</h3>
 	<p>Lets look at a simplified example. The origin responds with the following HTML document, and the corresponding X-Fragment headers:</p>
-	<pre><code class="language-html">&lt; HTTP/2 200
+	<pre class="language-html"><code class="language-html">&lt; HTTP/2 200
 &lt; server: wordpress
 &lt; x-fragment: title https://site.com/title.html, heading https://site.com/heading.html
 &lt; ...
@@ -52,15 +61,20 @@
 &lt;!-- fragment:heading --&gt;
 &lt;p&gt;Some content&lt;/p&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<ul>
-		<li>The <code>title.html</code> response is just one line Hello from fragment title</li>
-		<li>heading.html contains some more HTML</li>
-		<li><code>&lt;h1&gt;This renders a headline&lt;/h1&gt;</code></li>
+		<li>
+			<p>The <code>title.html</code> response is just one line Hello from fragment title</p>
+		</li>
+		<li>
+			<p>heading.html contains some more HTML</p>
+		</li>
+		<li>
+			<p><code>&lt;h1&gt;This renders a headline&lt;/h1&gt;</code></p>
+		</li>
 	</ul>
 	<p>The final response should have the fragments resolved and replace with the content from the different prefetches.</p>
-	<pre><code class="language-html">&lt;!DOCTYPE HTML&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE HTML&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;
@@ -71,35 +85,28 @@
 &lt;h1&gt;This renders a headline&lt;/h1&gt;
 &lt;p&gt;Some content&lt;/p&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<p>In case, one fragment does not respond timely, is down or could not be found, The fragments resolve to their fallback. That is just the content of the HTML-comment.</p>
-	<h3 id="cloudflareworkers">Cloudflare Workers</h3>
+	<h3>Cloudflare Workers</h3>
 	<p>This is the forefront (pun intended) of amazing cloud services. Their latest feature: Cloudflare Workers, really spiked my interest. We were in the process of examining the ESI space for potential solutions. And there are not many. So we were already planning to build our own caching layer, that would be capable of handling includes and fallbacks. But now, with the power of running a Service Worker API on the edge, we might have just found the perfect solution for our limited ESI-needs.</p>
-	<h4 id="workercode">Worker code</h4>
+	<h4>Worker code</h4>
 	<p>Here is what I wrote for Titel Media (<a href="https://gist.github.com/Overbryd/c070bb1fa769609d404f648cd506340f">available on GitHub</a>):</p>
 	<p>Let me break it down for you here.</p>
 	<p>A client request comes in, the Cloudflare worker is picking it up, and passing it to the origin.</p>
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(main(event.request))
 })
 
 async function main(request) {
   // forward the request to the origin (Wordpress)
   const response = await fetch(request)
-  // ...
-</code></pre>
-	<br>
-	We awaited the response, and we can now check its headers
-	<br><br>
-	<pre><code class="language-javascript">// ...
+  // ...</code></pre>
+	<p>We awaited the response, and we can now check its headers</p>
+	<pre class="language-javascript"><code class="language-javascript">// ...
   const fragments = prefetchFragments(response.headers)
-  // ...
-</code></pre>
-	<br>
-	The origin response headers are examined for any values of ```X-Fragments```
-	<br><br>
-	<pre><code class="language-javascript">function prefetchFragments(headers) {
+  // ...</code></pre>
+	<p>The origin response headers are examined for any values of ```X-Fragments```</p>
+	<pre class="language-javascript"><code class="language-javascript">function prefetchFragments(headers) {
   const header = headers.get('X-Fragments')
   if (header === null) return {}
 
@@ -124,23 +131,22 @@ async function main(request) {
   })
 
   return fragments
-}
-</code></pre>
-	<br>
+}</code></pre>
 	<ul>
-		<li>If there are fragments to prefetch, those requests are started and stored in a dictionary to their respective labels.</li>
-		<li>Each request shares a portion of the global timeout of 10 seconds. A request is later considered to have failed, if it did not respond timely.</li>
+		<li>
+			<p>If there are fragments to prefetch, those requests are started and stored in a dictionary to their respective labels.</p>
+		</li>
+		<li>
+			<p>Each request shares a portion of the global timeout of 10 seconds. A request is later considered to have failed, if it did not respond timely.</p>
+		</li>
 	</ul>
-	<p>After a few checks on content type and so on, this part is a crucial performance benefit: Streaming the response.<br>
-		<br>
-	</p>
-	<pre><code class="language-javascript">// ...
+	<p>After a few checks on content type and so on, this part is a crucial performance benefit: Streaming the response.</p>
+	<pre class="language-javascript"><code class="language-javascript">// ...
     const { readable, writable } = new TransformStream()
     transformBody(response.body, writable, fragments)
-    // ...
-</code></pre>
+    // ...</code></pre>
 	<p><code>transformBody</code> reads the origin response line by line, and searches for fragments.</p>
-	<pre><code class="language-javascript">// ...
+	<pre class="language-javascript"><code class="language-javascript">// ...
   // initialise the parser state
   let state = {writer: writer, fragments: fragments}
   let fun = parse
@@ -150,16 +156,25 @@ async function main(request) {
     const { done, value } = await reader.read()
     if (done) break
     const buffer = encoding.decode(value, {stream: !done})
-    const lines = (lastLine + buffer).split("\n")
-</code></pre>
+    const lines = (lastLine + buffer).split("\n")</code></pre>
 	<ul>
-		<li>This loop is basically a parse-tree keeping state between each line.</li>
-		<li>But most important, is to not include the last line.</li>
-		<li>The response chunks, might be cut-off just in the middle of a line,</li>
-		<li>and thus not representing a full line that can be reasoned about.</li>
-		<li>Therefore we keep the last line, and concatenate it with the next lines.</li>
+		<li>
+			<p>This loop is basically a parse-tree keeping state between each line.</p>
+		</li>
+		<li>
+			<p>But most important, is to not include the last line.</p>
+		</li>
+		<li>
+			<p>The response chunks, might be cut-off just in the middle of a line,</p>
+		</li>
+		<li>
+			<p>and thus not representing a full line that can be reasoned about.</p>
+		</li>
+		<li>
+			<p>Therefore we keep the last line, and concatenate it with the next lines.</p>
+		</li>
 	</ul>
-	<pre><code class="language-javascript">    let i = 0;
+	<pre class="language-javascript"><code class="language-javascript">    let i = 0;
     const length = lines.length - 1;
     for (; i &lt; length; i++) {
       const line = lines[i]
@@ -171,15 +186,17 @@ async function main(request) {
     lastLine = lines[length] || ""
   }
 
-  // ...
-</code></pre>
+  // ...</code></pre>
 	<ul>
-		<li>If a fragment is found, the worker tries to replace it with the contents of the respective prefetched request.</li>
-		<li>If not, either the fragments fallback-content is returned, or it is simply removed from the output.</li>
+		<li>
+			<p>If a fragment is found, the worker tries to replace it with the contents of the respective prefetched request.</p>
+		</li>
+		<li>
+			<p>If not, either the fragments fallback-content is returned, or it is simply removed from the output.</p>
+		</li>
 	</ul>
-	<h3 id="recap">Recap</h3>
+	<h3>Recap</h3>
 	<p>The article shows the power of running code on the http-edge. With the power of V8 at your fingertips, you can really build great services right in front of your content delivery. Edge side includes, if narrowed down to a small feature set, are simple to implement and can even be safely controlled with timeouts.</p>
 	<p>My client, Titel Media, financed the work on this worker. Stop by at <a href="https://www.highsnobiety.com">highsnobiety.com</a>. Also, I want to thank the folk from Cloudflare, Harris Hancock and Matthew Prince for their outstanding support, while developing this worker.</p>
 	<p>Always Remember: “Web development is the art of finding the most complex way to concatenate strings.” Leave a message, or subscribe if you liked this post. I am curious what you think about this solution.</p>
-	<!--kg-card-end: markdown-->
 </div>

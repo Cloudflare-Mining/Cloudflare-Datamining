@@ -1,103 +1,15 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="CloudFlare Guest Blog Post: Steven Nims of Streamline
-Consulting" src="https://blog.cloudflare.com/content/images/Stephen_Nims_Blog_Image.png.scaled.500.jpg" title="CloudFlare Guest Blog Post: Steven Nims of Streamline Consulting"></p>
-	<p>Hi there! My name is Steve Nims and I'm a recent graduate of Rochester
-		Institute of Technology's <a href="http://saunders.rit.edu">E. Philip Saunders College of
-			Business</a> located in Rochester, NY. While I
-		received my B.S. from RIT in Accounting, I've always had a passion for
-		technology. So after graduating, when two of my fraternity brothers
-		asked me if I wanted to help with their start-up that builds and hosts
-		websites for small and medium sized businesses/NPOs, I jumped at the
-		opportunity.<img alt="" src="http://www.stephenjnims.com/wp-includes/js/tinymce/plugins/wordpress/img/trans.gif" title="More..."></p>
-	<p>The best part of our service is we're helping our clients save money by
-		using free and open source solutions like
-		<a href="http://www.joomla.org">Joomla!</a> and <a href="http://wordpress.org">WordPress</a>
-		to run their websites. We also cut costs by outsourcing design work to
-		pre-made templating firms like <a href="http://yootheme.com">YOOtheme</a> and
-		<a href="http://www.rockettheme.com">RocketTheme</a> when we're not creating our
-		own designs using <a href="http://www.artisteer.com">Artisteer</a>...none of us
-		are graphic designers by any stretch of imagination!
-	</p>
-	<p>As the resident techie with our start-up, I'm responsible for everything
-		to do with our server including all-things security and performance
-		related. Before CloudFlare, this required me to be constantly monitoring
-		server logs, adding suspected bad IP addresses to our firewall, and
-		tuning the PHP bytecode cacher xcache on a constant basis, taking my
-		attention away from delivering a truly unique customer experience to our
-		clients.</p>
-	<p>I was invited to use <a href="https://cloudflare.com">CloudFlare</a> earlier this
-		year as a beta tester for my donating a MX entry to <a href="http://projecthoneypot.org">Project Honey
-			Pot</a> and installing a honey pot of my own
-		to help collect bad IP addresses. I'm kind of embarrassed to say, but I
-		was using Project Honey Pot to find the suspected bad IP addresses I was
-		adding to our server's firewall, searching on one IP address at a time
-		from our server's logs..not exactly the most efficient! That's why when
-		I received the invite to CloudFlare and read what features the service
-		provided, especially in my case the blocking of bad internet traffic, I
-		was very excited!</p>
-	<p>Since adding all of our websites to CloudFlare back in August, close to
-		9,000 bad requests have been blocked from over 1600 unique threats. In
-		addition, CloudFlare has accelerated our client's websites considerably:
-		<strong><em>10.3DAYS</em></strong> of visitor's browsing time has been <strong><em>SAVED</em></strong>, <strong><em>29.9
-				GB</em></strong> worth of bandwidth was <strong><em>NOT USED</em></strong> because of CloudFlare, and
-		the average page load time has <strong>DROPPED</strong> from <strong><em>2.03</em></strong> seconds to
-		<strong><em>1.2</em></strong> seconds, meaning our websites load about <strong><em>40% FASTER</em></strong> with
-		CloudFlare! Did I mention we get all of this using CloudFlare's
-		<strong><em>FREE</em></strong> service?!?!
-	</p>
-	<p>That said, to help protect our clients from unwelcome visitors, <a href="https://support.cloudflare.com/entries/22050782-Will-CloudFlare-hurt-my-SEO-">speed
-			up their
-			websites</a>,
-		and allow us to focus more on the service we provide to them, we now
-		enable CloudFlare for <strong><em>ALL</em></strong> of our sites that we host - by my count,
-		that's <strong><em>22 websites!</em></strong> It was really easy to get our client's
-		websites running through CloudFlare. There isn't any software to
-		install, no messy configuration files to play with - no fuss! All I had
-		to do was change the DNS entries for our client's domain names so they
-		pointed to CloudFlare's DNS servers and wait for the changes to
-		propagate throughout the web. The only hard work was compiling the
-		Apache server module
-		<a href="https://support.cloudflare.com/forums/21318827-How-do-I-restore-original-visitor-IP-to-my-server-logs-">mod_cloudflare</a> so our
-		server's logs report the correct IP address of visiting users instead of
-		CloudFlare's proxy IP. However, I've done the hard work for you...read
-		the 5 easy steps I've posted to my blog
-		<a href="http://www.stephenjnims.com/2010/10/27/use-mod_cloudflare-on-your-ubuntu-10-04-lts-lamp-server/?utm_source=cloudflare_blog&amp;utm_medium=link&amp;utm_content=mod_cloudflare_post&amp;utm_campaign=guest_blog">here</a>
-		for a walk-through on how to download, compile and enable the module on
-		your own server. Using mod_cloudflare isn't required, but any systems
-		admin worth their weight will want to enable it.
-	</p>
-	<p>Beyond making the part of my job where I'm managing the security and
-		optimization of our server super easy, my favorite feature of CloudFlare
-		is the development mode. I'm known to tinker with a new CMS package that
-		I've read about on the web, or play around with variations on our
-		current websites' designs for the fun of it, or sometimes load a demo
-		just to see if a particular new idea works for a client. So I want to be
-		able to see any updates or work I've done immediately! The development
-		mode temporarily disables CloudFlare's accelerated cache for 3 hours,
-		allowing you to see changes in cachable content like CSS, JavaScript or
-		images as you change them. I don't have to tinker with page headers to
-		tell CloudFlare not to cache certain content or set it's expiration time
-		either. Also, without any intervention on my part, after the 3 hours are
-		up, CloudFlare automatically reverts back to caching static content.</p>
-	<p>If you're new to CloudFlare, I hope you enjoy the service as much as I
-		have! If you plan on running any sort of e-commerce website, or need an
-		extra layer of security for your own purposes, check out the
-		<a href="https://www.cloudflare.com/plans.html">Pro</a> service plan (only
-		$20/month for your first website, $5/month thereafter) which enables
-		you to easily add
-		<a href="https://support.cloudflare.com/entries/22077247-How-do-I-add-SSL-to-my-site-">SSL</a>
-		security to your website for only $1/month per site. With the Pro plan
-		you also get advanced security protection, even <a href="https://support.cloudflare.com/entries/22263581-What-does-the-Website-Preloader-do-">faster page
-			loads</a>, and virtually real
-		time statistics!
-	</p>
-	<p>To see the portfolio of websites we've worked on, check out
-		<a href="http://streamlineyourself.com/?utm_source=cloudflare_blog&amp;utm_medium=link&amp;utm_campaign=guest_blog">http://streamlineyourself.com</a>.
-		Also, read up on some super nerdy stuff at my blog,
-		<a href="http://www.stephenjnims.com/?utm_source=cloudflare_blog&amp;utm_medium=link&amp;utm_content=frontpage&amp;utm_campaign=guest_blog">http://www.stephenjnims.com</a>
-		or find me on Twitter, username:
-		<a href="https://twitter.com/#%21/sjnims">sjnims</a>
-	</p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cNYzh6jeD6EQ6EvCAnabE/ac7155468812df7d064818a15f8b2609/Stephen_Nims_Blog_Image.png.scaled.500.jpg" alt="" class="kg-image" width="500" height="84" loading="lazy">
+	</figure>
+	<p>Hi there! My name is Steve Nims and I'm a recent graduate of Rochester Institute of Technology's <a href="http://saunders.rit.edu">E. Philip Saunders College of Business</a> located in Rochester, NY. While I received my B.S. from RIT in Accounting, I've always had a passion for technology. So after graduating, when two of my fraternity brothers asked me if I wanted to help with their start-up that builds and hosts websites for small and medium sized businesses/NPOs, I jumped at the opportunity.</p>
+	<p>The best part of our service is we're helping our clients save money by using free and open source solutions like <a href="http://www.joomla.org">Joomla!</a> and <a href="http://wordpress.org">WordPress</a> to run their websites. We also cut costs by outsourcing design work to pre-made templating firms like <a href="http://yootheme.com">YOOtheme</a> and <a href="http://www.rockettheme.com">RocketTheme</a> when we're not creating our own designs using <a href="http://www.artisteer.com">Artisteer</a>...none of us are graphic designers by any stretch of imagination!</p>
+	<p>As the resident techie with our start-up, I'm responsible for everything to do with our server including all-things security and performance related. Before CloudFlare, this required me to be constantly monitoring server logs, adding suspected bad IP addresses to our firewall, and tuning the PHP bytecode cacher xcache on a constant basis, taking my attention away from delivering a truly unique customer experience to our clients.</p>
+	<p>I was invited to use <a href="https://cloudflare.com">CloudFlare</a> earlier this year as a beta tester for my donating a MX entry to <a href="http://projecthoneypot.org">Project Honey Pot</a> and installing a honey pot of my own to help collect bad IP addresses. I'm kind of embarrassed to say, but I was using Project Honey Pot to find the suspected bad IP addresses I was adding to our server's firewall, searching on one IP address at a time from our server's logs..not exactly the most efficient! That's why when I received the invite to CloudFlare and read what features the service provided, especially in my case the blocking of bad internet traffic, I was very excited!</p>
+	<p>Since adding all of our websites to CloudFlare back in August, close to 9,000 bad requests have been blocked from over 1600 unique threats. In addition, CloudFlare has accelerated our client's websites considerably: <b><i>10.3DAYS</i></b> of visitor's browsing time has been <b><i>SAVED</i></b>, <b><i>29.9 GB</i></b> worth of bandwidth was <b><i>NOT USED</i></b> because of CloudFlare, and the average page load time has <b>DROPPED</b> from <b><i>2.03</i></b> seconds to <b><i>1.2</i></b> seconds, meaning our websites load about <b><i>40% FASTER</i></b> with CloudFlare! Did I mention we get all of this using CloudFlare's <b><i>FREE</i></b> service?!?!</p>
+	<p>That said, to help protect our clients from unwelcome visitors, <a href="https://support.cloudflare.com/entries/22050782-Will-CloudFlare-hurt-my-SEO-">speed up their websites</a>, and allow us to focus more on the service we provide to them, we now enable CloudFlare for <b><i>ALL</i></b> of our sites that we host - by my count, that's <b><i>22 websites!</i></b> It was really easy to get our client's websites running through CloudFlare. There isn't any software to install, no messy configuration files to play with - no fuss! All I had to do was change the DNS entries for our client's domain names so they pointed to CloudFlare's DNS servers and wait for the changes to propagate throughout the web. The only hard work was compiling the Apache server module <a href="https://support.cloudflare.com/forums/21318827-How-do-I-restore-original-visitor-IP-to-my-server-logs-">mod_cloudflare</a> so our server's logs report the correct IP address of visiting users instead of CloudFlare's proxy IP. However, I've done the hard work for you...read the 5 easy steps I've posted to my blog <a href="http://www.stephenjnims.com/2010/10/27/use-mod_cloudflare-on-your-ubuntu-10-04-lts-lamp-server/?utm_source=cloudflare_blog&amp;utm_medium=link&amp;utm_content=mod_cloudflare_post&amp;utm_campaign=guest_blog">here</a> for a walk-through on how to download, compile and enable the module on your own server. Using mod_cloudflare isn't required, but any systems admin worth their weight will want to enable it.</p>
+	<p>Beyond making the part of my job where I'm managing the security and optimization of our server super easy, my favorite feature of CloudFlare is the development mode. I'm known to tinker with a new CMS package that I've read about on the web, or play around with variations on our current websites' designs for the fun of it, or sometimes load a demo just to see if a particular new idea works for a client. So I want to be able to see any updates or work I've done immediately! The development mode temporarily disables CloudFlare's accelerated cache for 3 hours, allowing you to see changes in cachable content like CSS, JavaScript or images as you change them. I don't have to tinker with page headers to tell CloudFlare not to cache certain content or set it's expiration time either. Also, without any intervention on my part, after the 3 hours are up, CloudFlare automatically reverts back to caching static content.</p>
+	<p>If you're new to CloudFlare, I hope you enjoy the service as much as I have! If you plan on running any sort of e-commerce website, or need an extra layer of security for your own purposes, check out the <a href="https://www.cloudflare.com/plans.html">Pro</a> service plan (only $20/ for your first website, $5/ month thereafter) which enables you to easily add <a href="https://support.cloudflare.com/entries/22077247-How-do-I-add-SSL-to-my-site-">SSL</a> security to your website for only $1/month per site. With the Pro plan you also get advanced security protection, even <a href="https://support.cloudflare.com/entries/22263581-What-does-the-Website-Preloader-do-">faster page loads</a>, and virtually real time statistics!</p>
+	<p>To see the portfolio of websites we've worked on, check out <a href="http://streamlineyourself.com/?utm_source=cloudflare_blog&amp;utm_medium=link&amp;utm_campaign=guest_blog">http://streamlineyourself.com</a>. Also, read up on some super nerdy stuff at my blog, <a href="http://www.stephenjnims.com/?utm_source=cloudflare_blog&amp;utm_medium=link&amp;utm_content=frontpage&amp;utm_campaign=guest_blog">http://www.stephenjnims.com</a> or find me on Twitter, username: <a href="https://twitter.com/#%21/sjnims">sjnims</a></p>
 </div>

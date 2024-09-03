@@ -1,25 +1,36 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ie6Lc5EI9GALb3KPdrZrg/86704d1abfd2a9dfa0830efc40d9306b/optimizing-tls-over-tcp-to-reduce-latency.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>The layered nature of the Internet (HTTP on top of some reliable transport (e.g. TCP), TCP on top of some datagram layer (e.g. IP), IP on top of some link (e.g. Ethernet)) has been very important in its development. Different link layers have come and gone over time (any readers still using 802.5?) and this flexibility also means that a connection from your web browser might traverse your home network over WiFi, then down a DSL line, across fiber and finally be delivered over Ethernet to the web server. Each layer is blissfully unaware of the implementation of the layer below it.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/640px-EISA_TokenRing_NIC.jpeg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NXh661kZVo5dom0ouMvxC/92e268ec4212cd3ccd856b02ca894a8a/640px-EISA_TokenRing_NIC.jpeg.jpeg" alt="" class="kg-image" width="640" height="270" loading="lazy">
+
+	</figure>
 	<p>But there are some disadvantages to this model. In the case of TLS (the most common standard used for sending encrypted data across in the Internet and the protocol your browser uses with visiting an https:// web site) the layering of TLS on top of TCP can cause delays to the delivery of a web page.</p>
 	<p>That’s because TLS divides the data being transmitted into records of a fixed (maximum) size and then hands those records to TCP for transmission. TCP promptly divides those records up into segments which are then transmitted. Ultimately, those segments are sent inside IP packets which traverse the Internet.</p>
 	<p>In order to prevent congestion on the Internet and to ensure reliable delivery, TCP will only send a limited number of segments before waiting for the receiver to acknowledge that the segments have been received. In addition, TCP guarantees that segments are delivered in order to the application. Thus if a packet is dropped somewhere between sender and receiver it’s possible for a whole bunch of segments to be held in a buffer waiting for the missing segment to be retransmitted before the buffer can be released to the application.</p>
-	<h3 id="tlsandtcp">TLS and TCP</h3>
-	<p>What this means for TLS is that a large record that is split across multiple TCP segments can encounter unexpected delays. TLS can only handle <em>complete</em> records and so a missing TCP segment delays the whole TLS record.</p>
+	<h3>TLS and TCP</h3>
+	<p>What this means for TLS is that a large record that is split across multiple TCP segments can encounter unexpected delays. TLS can only handle <i>complete</i> records and so a missing TCP segment delays the whole TLS record.</p>
 	<p>At the start of a TCP connection as the TCP slow start occurs the record could be split across multiple segments that are delivered relatively slowly. During a TCP connection one of the segments that a TLS record has been split into may get lost causing the record to be delayed until the missing segment is retransmitted.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/Screen-Shot-2016-06-10-at-10-57-21.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F7nfcHkR6p8ECHSkpKBtx/0c1ec42a1f176b8f4c4a3d9cf5561101/Screen-Shot-2016-06-10-at-10-57-21.png" alt="" class="kg-image" width="2172" height="1548" loading="lazy">
+
+	</figure>
 	<p>Thus it’s preferable to not use a fixed TLS record size but <a href="http://chimera.labs.oreilly.com/books/1230000000545/ch04.html#TLS_RECORD_SIZE">adjust the record size</a> as the underlying TCP connection spins up (and down in the case of congestion). Starting with a small record size helps match the record size to the segments that TCP is sending at the start of a connection. Once the connection is running the record size can be increased.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/Screen-Shot-2016-06-10-at-11-37-25.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12L5mXigeSmG8mAExKMVe5/fa1c36be0f80cf80ca4696b545b49a52/Screen-Shot-2016-06-10-at-11-37-25.png" alt="" class="kg-image" width="2174" height="1133" loading="lazy">
+
+	</figure>
 	<p>CloudFlare uses NGINX to handle web requests. By default NGINX does not support dynamic TLS record sizes. NGINX has a fixed TLS record size with a default of 16KB that can be adjusted with the <a href="http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_buffer_size"><code>ssl_buffer_size</code></a> parameter.</p>
-	<h3 id="dynamictlsrecordsinnginx">Dynamic TLS Records in NGINX</h3>
+	<h3>Dynamic TLS Records in NGINX</h3>
 	<p>We modified NGINX to add support for dynamic TLS record sizes and are open sourcing our patch. You can find it <a href="https://github.com/cloudflare/sslconfig/blob/master/patches/nginx__dynamic_tls_records.patch">here</a>. The patch adds parameters to the NGINX <a href="http://nginx.org/en/docs/http/ngx_http_ssl_module.html">ssl</a> module.</p>
 	<p><code>ssl_dyn_rec_size_lo</code>: the TLS record size to start with. Defaults to 1369 bytes (designed to fit the entire record in a single TCP segment: 1369 = 1500 - 40 (IPv6) - 20 (TCP) - 10 (Time) - 61 (Max TLS overhead))</p>
 	<p><code>ssl_dyn_rec_size_hi</code>: the TLS record size to grow to. Defaults to 4229 bytes (designed to fit the entire record in 3 TCP segments)</p>
 	<p><code>ssl_dyn_rec_threshold</code>: the number of records to send before changing the record size.</p>
 	<p>Each connection starts with records of the size <code>ssl_dyn_rec_size_lo</code>. After sending <code>ssl_dyn_rec_threshold</code> records the record size is increased to <code>ssl_dyn_rec_size_hi</code>. After sending an additional <code>ssl_dyn_rec_threshold</code> records with size <code>ssl_dyn_rec_size_hi</code> the record size is increased to <code>ssl_buffer_size</code>.</p>
 	<p><code>ssl_dyn_rec_timeout</code>: if the connection idles for longer than this time (in seconds) that the TLS record size is reduced to <code>ssl_dyn_rec_size_lo</code> and the logic above is repeated. If this value is set to 0 then dynamic TLS record sizes are disabled and the fixed <code>ssl_buffer_size</code> will be used instead.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>We hope people find our NGINX patch useful and would be very happy to hear from people who use it and/or improve it.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,28 +1,35 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/our-docs-as-code-approach-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/our-docs-as-code-approach-zh-tw">繁體中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-11.png" class="kg-image" alt="Working in public — our docs-as-code approach" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/our-docs-as-code-approach">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/our-docs-as-code-approach">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TwjJUXzkKHfmcF3s6w9Jz/61ce6559f4bf6a34ab14d611ae58e79f/image2-11.png" alt="Working in public — our docs-as-code approach" class="kg-image" width="1615" height="869" loading="lazy">
+
+	</figure>
 	<p><a href="https://www.writethedocs.org/guide/docs-as-code">Docs-as-code</a> is an approach to writing and publishing documentation with the same tools and processes developers use to create code. This philosophy has become more popular in recent years, especially in tech companies. Automatic link checking is part of this process, which ensures that writer's changes are sound and safe to deploy. By setting the stage with a docs-as-code approach, technical writers can focus on what they do best: ensure that our readers get useful and accurate information that is easy to find, and our documentation speaks a single language.</p>
 	<p>Besides following a docs-as-code approach, at Cloudflare we handle our documentation changes in public, in our <a href="https://github.com/cloudflare/cloudflare-docs"><code>cloudflare-docs</code> GitHub repository</a>. Having our documentation open to external contributions has helped us improve our documentation over time — our community is great at finding issues! While we need to review these contributions and ensure that they fit our style guide and content strategy, the contributions provided by the Cloudflare community have been instrumental in making our documentation better every day. While Cloudflare helps build a better Internet, our community helps build better documentation.</p>
-	<h2 id="docs-as-code-at-cloudflare">Docs-as-code at Cloudflare</h2>
+	<h2>Docs-as-code at Cloudflare</h2>
 	<p>At Cloudflare, we follow a docs-as-code approach to create and publish product documentation in <a href="https://developers.cloudflare.com">Developer Docs</a>.</p>
 	<p>Such an approach involves different components. We use Git with a <a href="https://github.com/cloudflare/cloudflare-docs">public GitHub repository</a> to keep track of changes and to handle branching and merging. We rely on GitHub Actions and Cloudflare Pages for continuous integration and delivery (CI/CD). Our continuous integration pipeline checks if the documentation builds successfully and if there are any broken links. Users, both internal and external, can preview the changes in each pull request, which means that collaborators don't have to set up local environments to preview the changes they're proposing. However, if they wish to do so, users can set up a local environment using open-source tools and create local builds of the documentation.</p>
 	<p>Following this docs-as-code strategy has a few advantages. We use well-known workflows that technical folks use on a daily basis. This makes it easier to get feedback from engineers, while still being simple enough to get contributions from less tech-inclined people in the company and from the general Cloudflare community. After reviewing and approving a contribution to the documentation, we can deploy those changes to the live documentation site with the click of a button. Thanks to <a href="https://blog.cloudflare.com/new-dev-docs">recent changes in our documentation engine</a>, both deployments and local builds are fast, which helps increase our team's velocity. Additionally, it's safe to restructure parts of the documentation without being afraid of breaking stuff — our CI/CD pipeline ensures we don't have broken links.</p>
-	<h2 id="our-open-source-approach">Our open source approach</h2>
+	<h2>Our open source approach</h2>
 	<p>It's possible to use a docs-as-code approach internally, using private repositories. However, we would not be extending some benefits of this approach to contributions provided by the larger Cloudflare community.</p>
 	<p>As a technical writer at Cloudflare, the great part about documentation-related work is that it’s done in our public GitHub repository. I can push changes to the <code>cloudflare-docs</code> GitHub repository with new or updated documentation that is then reviewed by my Cloudflare stakeholders, such as product managers and engineers.</p>
 	<p>Besides this work done together with other Cloudflare employees, I can also address issues and review pull requests from external stakeholders, since our documentation is open source. For example, pull request #4601 from an external contributor fixed an expression that was incorrect in the documentation:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-6.png" class="kg-image" alt="A GitHub pull request from an external contributor fixing an example in the documentation." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45JKRTKTgim1bHwWpStP4Z/df05186cde9fd8c30d72c379f7a2751b/image1-6.png" alt="A GitHub pull request from an external contributor fixing an example in the documentation." class="kg-image" width="1407" height="910" loading="lazy">
+
+	</figure>
 	<p>Thanks to these contributions, we have been able to identify many issues, not just in the documentation but also in our products!</p>
 	<p>We handle these contributions as part of maintaining our own <a href="https://blog.cloudflare.com/content-as-a-product">documentation product</a>, with its own bugs and feature requests. Issues and pull requests get assigned, prioritized, handled, and reviewed just like internal tickets – even though they're not all in the same backlog.</p>
 	<p>Our work is similar both for internal and external contributions. We review the proposed changes, making sure that the new or updated content follows our style guide and our content strategy. When required, we ask for technical validation of the content. Finally, we merge the changes when they're approved.</p>
 	<p>For issues that are not related to the documentation, we have a feedback mechanism in every documentation page that allows readers to provide feedback about the product itself. This information is then reviewed internally and addressed by the correct team.</p>
 	<p>For more information on how you can contribute to the documentation by creating an issue or a pull request, refer to the <a href="https://github.com/cloudflare/cloudflare-docs/blob/production/CONTRIBUTING.md">Contributing to Cloudflare's Documentation</a> page in our public GitHub repository.</p>
-	<h3 id="keeping-some-secrets">Keeping some secrets</h3>
+	<h3>Keeping some secrets</h3>
 	<p>For content that we cannot disclose just yet, we currently have several approaches, depending on the exact technical writer and on the involved stakeholders.</p>
 	<p>In some situations, we work on a shared document where we receive and address direct feedback. Close to the feature release date, we create the corresponding Markdown version that we push to the public GitHub repository at the right time.</p>
 	<p>In other cases, we work in a private Git repository, getting early feedback using the same processes we have in place for our public repository. This method of handling non-public content is easy to implement because we're already following a docs-as-code approach. In this case, pushing the content to GitHub is a straightforward operation when the time comes — it's just a matter of pushing the branch to a different remote and creating a public pull request.</p>
-	<h2 id="what-s-next">What's next</h2>
+	<h2>What's next</h2>
 	<p>Much of our work is already done in public, but we can still improve. While we do provide <a href="https://github.com/cloudflare/cloudflare-docs/issues/new/choose">issue creation templates</a> and pull request guidelines, we'll eventually make our style guide and content strategy public. This will allow users to know in advance what we will check for (and enforce) for every contribution to the public documentation, making our review process more transparent.</p>
 </div>

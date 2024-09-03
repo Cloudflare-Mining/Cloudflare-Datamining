@@ -1,14 +1,20 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/Send-email-from-Workers.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65S91YeHZCBNKSbQEFz7uz/88d94b783e381cf83c556d258f887fc5/Send-email-from-Workers.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Here at Cloudflare we often talk about HTTP and related protocols as we work to help build a better Internet. However, the Simple Mail Transfer Protocol (SMTP) — used to send emails — is still a massive part of the Internet too.</p>
 	<p>Even though SMTP is turning 40 years old this year, most businesses still rely on email to validate user accounts, send notifications, announce new features, and more.</p>
 	<p>Sending an email is simple from a technical standpoint, but getting an email actually delivered to an inbox can be extremely tricky. Because of the enormous amount of spam that is sent every single day, all major email providers are very wary of things like new domains and IP addresses that start sending emails.</p>
-	<p>That is why we are delighted to announce a partnership with <a href="https://mailchannels.com">MailChannels</a>. MailChannels has created an email sending service specifically for Cloudflare Workers that removes all the friction associated with sending emails. To use their service, you do not need to validate a domain or create a separate account. MailChannels filters spam <strong>before</strong> sending out an email, so you can feel safe putting user-submitted content in an email and be confident that it won’t ruin your domain reputation with email providers. But the absolute best part? Thanks to our friends at MailChannels, it is completely free to send email.</p>
-	<blockquote>In the words of their CEO Ken Simpson: <em>“Cloudflare Workers and Pages are changing the game when it comes to ease of use and removing friction to get started. So when we sat down to see what friction we could remove from sending out emails, it turns out that with our incredible anti-spam and anti-phishing, the answer is “everything". We can’t wait to see what applications the community is going to build on top of this.”</em></blockquote>
+	<p>That is why we are delighted to announce a partnership with <a href="https://mailchannels.com">MailChannels</a>. MailChannels has created an email sending service specifically for Cloudflare Workers that removes all the friction associated with sending emails. To use their service, you do not need to validate a domain or create a separate account. MailChannels filters spam <b>before</b> sending out an email, so you can feel safe putting user-submitted content in an email and be confident that it won’t ruin your domain reputation with email providers. But the absolute best part? Thanks to our friends at MailChannels, it is completely free to send email.</p>
+	<blockquote>
+		<p>In the words of their CEO Ken Simpson: <i>“Cloudflare Workers and Pages are changing the game when it comes to ease of use and removing friction to get started. So when we sat down to see what friction we could remove from sending out emails, it turns out that with our incredible anti-spam and anti-phishing, the answer is “everything". We can’t wait to see what applications the community is going to build on top of this.”</i></p>
+	</blockquote>
 	<p>The only constraint currently is that the integration only works when the request comes from a Cloudflare IP address. So it won’t work yet when you are developing on your local machine or running a test on your build server.</p>
 	<p>First let’s walk you through how to send out your first email using a Worker.</p>
-	<pre><code class="language-js">export default {
+	<pre class="language-js"><code class="language-js">export default {
   async fetch(request) {
     send_request = new Request('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
@@ -35,13 +41,12 @@
       }),
     })
   },
-}
-</code></pre>
+}</code></pre>
 	<p>That is all there is to it. You can modify the example to make it send whatever email you want.</p>
 	<p>The MailChannels integration makes it easy to send emails to and from anywhere with Workers. However, we also wanted to make it easier to send emails to yourself from a form on your website. This is perfect for quickly and painlessly setting up pages such as “Contact Us” forms, landing pages, and sales inquiries.</p>
-	<p>The <a href="https://blog.cloudflare.com/cloudflare-pages-plugins">Pages Plugin Framework</a> that we announced earlier this week allows other people to email you without exposing your email address. </p>
-	<p>The only thing you need to do is copy and paste the following code snippet in your <code>/functions/_middleware.ts</code> file. Now, every form that has the <code>data-static-form-name</code> attribute will automatically be emailed to you. </p>
-	<pre><code class="language-typescript">import mailchannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
+	<p>The <a href="https://blog.cloudflare.com/cloudflare-pages-plugins">Pages Plugin Framework</a> that we announced earlier this week allows other people to email you without exposing your email address.</p>
+	<p>The only thing you need to do is copy and paste the following code snippet in your <code>/functions/_middleware.ts</code> file. Now, every form that has the <code>data-static-form-name</code> attribute will automatically be emailed to you.</p>
+	<pre class="language-typescript"><code class="language-typescript">import mailchannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 
 export const onRequest = mailchannelsPlugin({
   personalizations: [
@@ -55,10 +60,9 @@ export const onRequest = mailchannelsPlugin({
       status: 302,
       headers: { Location: "/thank-you" },
     }),
-});
-</code></pre>
+});</code></pre>
 	<p>Here is an example of what such a form would look like. You can make the form as complex as you like, the only thing it needs is the <code>data-static-form-name</code> attribute. You can give it any name you like to be able to distinguish between different forms.</p>
-	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;Contact&lt;/h1&gt;
@@ -75,8 +79,7 @@ export const onRequest = mailchannelsPlugin({
       &lt;button type="submit"&gt;Send!&lt;/button&gt;
     &lt;/form&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<p>So as you can see there is no barrier left when it comes to sending out emails. You can copy and paste the above Worker or Pages code into your projects and immediately start to send email for free.</p>
 	<p>If you have any questions about using MailChannels in your Workers, or want to learn more about Workers in general, please join our <a href="https://discord.gg/cloudflaredev">Cloudflare Developer Discord server</a>.</p>
 </div>

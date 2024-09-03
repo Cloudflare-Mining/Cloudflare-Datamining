@@ -1,26 +1,28 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Z6CYr5tWm3LdyzL8kINfc/ad82d495d36afc4bf0649fa356cd1d14/railgun-v5-has-landed.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Three years ago we launched <a href="https://www.cloudflare.com/railgun">Railgun</a>, CloudFlare's origin network optimizer. Railgun allows us to <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">cache the uncacheable</a> to accelerate the connection between CloudFlare and our customers' origin servers. That brings the benefit of a CDN to even dynamic content with no need for 'fast purging' or other tricks. With Railgun even dynamic, ever-changing pages benefit from caching.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/2300190277_360853ae0d_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/thatguyfromcchs08/2300190277/in/photolist-4vg5r4-at4qz-oMjmcq-wnQ3p-dTxa4e-5otM4s-4dqdHU-9saDQZ-cu6Fc-4Pmroo-sBSNuJ-9dehck-ngDfDT-nUu6YR-5UgoU2-6jneZb-3a4fyp-7YsAXD-bZtZaN-a8M5vq-bEKeA8-GhFjt-roySGp-i14jSw-cAPypE-87LoH-5Uy3NF-6M6Pse-rVtN9-cfdeos-bfMtZP-u3Zw2b-8N97Uu-jamkM-7x2csx-7RyBfo-ibekvp-ibepqt-a6B8Ss-je9ZR9-toS7kJ-9tNfaF-5gt9Wg-6UbNjh-aCPkJ1-RvxwP-8qkQfq-9ndbXy-7HqKEz-4me8vi">image</a> by <a href="https://www.flickr.com/photos/thatguyfromcchs08">Nathan E Photography</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tGSSOyLcACP5qioD3Ssol/0fac8e71be173fc31bd79d4426afc373/2300190277_360853ae0d_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/thatguyfromcchs08/2300190277/in/photolist-4vg5r4-at4qz-oMjmcq-wnQ3p-dTxa4e-5otM4s-4dqdHU-9saDQZ-cu6Fc-4Pmroo-sBSNuJ-9dehck-ngDfDT-nUu6YR-5UgoU2-6jneZb-3a4fyp-7YsAXD-bZtZaN-a8M5vq-bEKeA8-GhFjt-roySGp-i14jSw-cAPypE-87LoH-5Uy3NF-6M6Pse-rVtN9-cfdeos-bfMtZP-u3Zw2b-8N97Uu-jamkM-7x2csx-7RyBfo-ibekvp-ibepqt-a6B8Ss-je9ZR9-toS7kJ-9tNfaF-5gt9Wg-6UbNjh-aCPkJ1-RvxwP-8qkQfq-9ndbXy-7HqKEz-4me8vi">image</a> by <a href="https://www.flickr.com/photos/thatguyfromcchs08">Nathan E Photography</a></p>
 	<p>Over those three years Railgun has been deployed widely by our customers to accelerate the delivery of their web sites and <a href="https://blog.cloudflare.com/railgun-gives-our-ecommerce-sites-the-edge">lower</a> their bandwidth costs.</p>
 	<p>Today we're announcing the availability of Railgun v5 with a number of significant improvements:</p>
-	<h4 id="wevesubstantiallyreducedmemoryutilizationandcpurequirements">We've substantially reduced memory utilization and CPU requirements</h4>
+	<h4>We've substantially reduced memory utilization and CPU requirements</h4>
 	<p>Railgun performs delta compression on every request/response requiring CPU (to perform the compression) and memory (to keep a cache of pages to delta against). Version 5 has undergone extensive optimization based on the performance of Railgun on large web sites and at hosting providers. Version 5 requires much less memory and lower CPU.</p>
-	<h4 id="anewlighterweightfasterwireprotocol">A new, lighter weight, faster wire protocol</h4>
+	<h4>A new, lighter weight, faster wire protocol</h4>
 	<p>The original Railgun wire protocol that transfer requests and compressed responses between the customer server and CloudFlare's infrastructure has been completely replaced with a new, lighter-weight completely binary protocol that is faster and uses less bandwidth.</p>
-	<h4 id="anextralayerofcompression">An extra layer of compression</h4>
+	<h4>An extra layer of compression</h4>
 	<p>We noticed in real-world tests that although delta compression provided <a href="https://blog.cloudflare.com/railgun-in-the-real-world">incredible compression</a> and faster page load times that it was possible to squeeze out even greater compression by performing traditional non-delta compression in addition to the delta compression. This is now standard and all content is compressed yielding an extra 10-15% compression.</p>
-	<h4 id="streamingmodeforlargedownloads">Streaming mode for large downloads</h4>
+	<h4>Streaming mode for large downloads</h4>
 	<p>Large downloads are not delta compressed for performance reasons (the benefits of the delta compression are outweighed by the cost of compressing very large pages). To ensure that large pages are downloaded as quickly as possible, Railgun v5 provides an automatic streaming mode where the page is streamed from the origin server across the Internet to CloudFlare and on to the end web browser. This substantially reduces the time to download very large pages through Railgun.</p>
-	<h4 id="betterutilizationoforiginwebserverconnections">Better utilization of origin web server connections</h4>
+	<h4>Better utilization of origin web server connections</h4>
 	<p>Railgun's management of the connection between Railgun and the customer origin server has been improved to pool connections and make best use of HTTP keep-alives. This reduces the load on the origin server and improves performance as connections are efficiently reused resulting in lower latency.</p>
-	<h4 id="improvedcryptographicinfrastructure">Improved cryptographic infrastructure</h4>
+	<h4>Improved cryptographic infrastructure</h4>
 	<p>CloudFlare has been moving all communication between servers to encrypted connections. Railgun has always used a TLS connection between CloudFlare and the customer server even if the requests being passed were HTTP and not HTTPS. With version 5 we've switched Railgun to use our new CA for greater security. The connection between CloudFlare and the customer's Railgun is <a href="https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure">secured with certificates in both directions</a> that are verified against the CloudFlare CA.</p>
-	<h4 id="optimizedpartners">Optimized partners</h4>
+	<h4>Optimized partners</h4>
 	<p>CloudFlare Optimized Partners in particular can benefit from the lower resource usage of Railgun version 5. A2 Hosting, an Optimized Partner and Railgun Beta participant, reported increased compression rates using version 5. Also new for partners is the ability to assign subdomains to a Railgun. Upgrading to the latest version, or installing Railgun for the first time, only takes a few minutes (<a href="https://www.cloudflare.com/static/media/downloads/optimized-partner-rg-quick.pdf">Railgun Quick Start Guide</a> for Optimized Partners). Railgun is perfect for ecommerce sites as well as news sites and popular blogs.</p>
-	<h4 id="installorupgradetoday">Install or upgrade today</h4>
+	<h4>Install or upgrade today</h4>
 	<p>Railgun is available as part of CloudFlare's Business and Enterprise plans or from an Optimized Partner. <a href="https://www.cloudflare.com/resources-downloads#railgun">Installation instructions for Railgun</a> are available on CloudFlare's resources and downloads page. We recommend installing from <a href="https://pkg.cloudflare.com">CloudFlare's package repository</a>, which makes it easy to keep Railgun up-to-date. This release also sees Railgun available on Red Hat Enterprise Linux (RHEL) and CentOS 7. Railgun v5's configuration is completely compatible with version 4 and customers can simply replace the Railgun binary and restart to use version 5 and immediately see the benefits.</p>
-	<!--kg-card-end: markdown-->
 </div>

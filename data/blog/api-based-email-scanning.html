@@ -1,28 +1,46 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/api-based-email-scanning-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/api-based-email-scanning-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/de-de/api-based-email-scanning-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/api-based-email-scanning-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/fr-fr/api-based-email-scanning-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/api-based-email-scanning-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-32.png" class="kg-image" alt="API-based email scanning" loading="lazy"></figure>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/api-based-email-scanning">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/api-based-email-scanning">Français</a>, <a href="https://blog.cloudflare.com/de-de/api-based-email-scanning">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/api-based-email-scanning">日本語</a>, <a href="https://blog.cloudflare.com/es-es/api-based-email-scanning">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/api-based-email-scanning">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p><i></i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fRadJRFI9bBWzFvq9Q7q0/6c559361d6ad17357c1a96e280fa3d42/image1-32.png" alt="API-based email scanning" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>The landscape of <a href="https://www.cloudflare.com/zero-trust/products/email-security">email security</a> is constantly changing. One aspect that remains consistent is the reliance of email as the beginning for the majority of threat campaigns. Attackers often start with a phishing campaign to gather employee credentials which, if successful, are used to exfiltrate data, siphon money, or perform other malicious activities. This threat remains ever present even as companies transition to moving their email to the cloud using providers like Microsoft 365 or Google Workspace.</p>
 	<p>In our pursuit to help build a better Internet and tackle online threats, Cloudflare offers email security via our Area 1 product to protect all types of email inboxes - from cloud to on premise. The Area 1 product analyzes every email an organization receives and uses our threat models to assess if the message poses risk to the customer. For messages that are deemed malicious, the Area 1 platform will even prevent the email from landing in the recipient's inbox, ensuring that there is no chance for the attempted attack to be successful.</p>
 	<p>We try to provide customers with the flexibility to deploy our <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">solution</a> in whatever way they find easiest. Continuing in this pursuit to make our solution as turnkey as possible, we are excited to announce our open beta for Microsoft 365 domain onboarding via the Microsoft Graph API. We know that domains onboarded via <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> offer quicker deployment times and more flexibility. This onboarding method is one of many, so customers can now deploy domains how they see fit without losing Area 1 protection.</p>
-	<h3 id="onboarding-microsoft-365-domains-via-api">Onboarding Microsoft 365 Domains via API</h3>
+	<h3>Onboarding Microsoft 365 Domains via API</h3>
 	<p>Cloudflare Area 1 provides customers with many <a href="https://developers.cloudflare.com/email-security/deployment">deployment options</a>. Whether it is Journaling + BCC (where customers send a copy of each email to Area 1), Inline/MX records (where another hop is added via MX records), or Secure Email Gateway Connectors (where Area 1 directly interacts with a SEG), Area 1 provides customers with flexibility with how they want to deploy our solution. However, we have always recommended customers to deploy using MX records.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-21.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27WhZHBE17nRxuXOdNVFYD/def1a06c7284c9ab708ed024778a25cc/image2-21.png" alt="" class="kg-image" width="1999" height="557" loading="lazy">
+
+	</figure>
 	<p>Adding this extra hop and having domains be pointed to Area 1 allows the service to provide protection with sinkholing, making sure that malicious emails don't reach the destination email inbox. However, we recognized that configuring Area 1 as the first hop (i.e. changing the MX records) may require sign-offs from other teams inside organizations and can lead to additional cycles. Organizations are also caught in waiting for this inline change to reflect in DNS (known as DNS propagation time). We know our customers want to be protected ASAP while they make these necessary adjustments.</p>
 	<p>With Microsoft 365 onboarding, the process of adding protection requires less configuration steps and waiting time. We now use the Microsoft Graph API to evaluate all messages associated with a domain. This allows for greater flexibility for operation teams to deploy Area 1.</p>
 	<p>For example, a customer of Area 1 who is heavily involved in M&amp;A transactions due to the nature of their industry benefit from being able to deploy Area 1 quickly using the Microsoft API. Before API onboarding, IT teams spent time juggling the handover of various acquisition assets. Assigning new access rights, handing over ownership, and other tasks took time to execute leaving mailboxes unsecured. However, now when the customer acquires a new entity, they can use the API onboarding to quickly add protection for the domains they just acquired. This allows them to have protection on the email addresses associated with the new domain while they work on completing the other tasks on hand. How our API onboarding process works can be seen below.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aDQVkfjyA7XhTEREVsQdl/ca5949ac4b8514cfb0c2ab8dfcf3d3ff/image4-16.png" alt="" class="kg-image" width="577" height="386" loading="lazy">
+
+	</figure>
 	<p>Once we are authorized to read incoming messages from Microsoft 365, we will start processing emails and firing detections on suspected emails. This new onboarding process is significantly faster and only requires a few clicks to get started.</p>
 	<p>To start the process, choose which domain you would like to onboard via API. Then within the UI, you can navigate to “Domains &amp; Routing” within the settings. After adding a new domain and choosing API scan, you can follow our setup wizard to authorize Area 1 to start reading messages.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-12.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>API scan</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hQK1E7Ixpq6aFUyVYxNCQ/2e57cc46e52c6f208e788ad202b31c1f/image5-12.png" alt="" class="kg-image" width="1188" height="1954" loading="lazy">
+
 	</figure>
+	<p>API scan</p>
 	<p>Within a few minutes of authorization, your organization will now be protected by Area 1.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-20.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Ready to scan <span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yOicmQz0n4vvNTy58MIPD/3e48bc0ec51a77560618ea2b69fe9f70/image3-20.png" alt="" class="kg-image" width="1204" height="1946" loading="lazy">
+
 	</figure>
-	<h3 id="looking-ahead">Looking Ahead</h3>
+	<p>Ready to scan ‌‌</p>
+	<h3>Looking Ahead</h3>
 	<p>This onboarding process is part of our continual efforts to provide customers with best of class email protection. With our API onboarding we provide customers with increased flexibility to deploy our solution. As we look forward, our Microsoft 365 API onboarding opens the door for other capabilities.</p>
 	<p>Our team is now looking to add the ability to retroactively scan emails that were sent before Area 1 was installed. This provides the opportunity for new customers to clean up any old emails that could still pose a risk for the organization. We are also looking to provide more levers for organizations who want to have more control on which mailboxes are scanned with Area 1. Soon customers will be able to designate within the UI which mailboxes will have their incoming email scanned by Area 1.</p>
 	<p>We also currently limit the deployment type of each domain to one type (i.e. a domain can either be onboarded using MX records or API). However, we are now looking at providing customers with the ability to do hybrid deployments, using both API + MX records. This combinatorial approach not only provides the greatest flexibility but also provides the maximum coverage.</p>

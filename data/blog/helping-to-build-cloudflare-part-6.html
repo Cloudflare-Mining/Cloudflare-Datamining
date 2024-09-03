@@ -1,33 +1,45 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This is the final part of a six part series based on a talk I gave in Trento, Italy. To start from the beginning go <a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-1">here</a>.</p>
 	<p>If you are still awake there’s really one final question that you might want to know the answer to: What does the CTO do? The reality is that it means different things in different companies. But I can tell you a little about what I do.</p>
-	<h3 id="the-longest-temporary-job">The longest temporary job</h3>
+	<h3>The longest temporary job</h3>
 	<p>I didn’t join Cloudflare as CTO. My original job title was Programmer and for the first couple of years I did just that. I wrote a piece of technology called Railgun (a differential compression program used to speed up the connection between Cloudflare and origin web servers) and then I went on to write our WAF. After that I worked on our Go-based DNS server and other parts of the stack.</p>
-	<p>At some point Lee Holloway decided he didn’t want to manage Cloudflare’s growing staff and Michelle Zatlyn (one of Cloudflare’s founders) asked me if I would ‘temporarily’ manage engineering. <em>This is now the longest temporary job I’ve ever had!</em></p>
+	<p>At some point Lee Holloway decided he didn’t want to manage Cloudflare’s growing staff and Michelle Zatlyn (one of Cloudflare’s founders) asked me if I would ‘temporarily’ manage engineering. <i>This is now the longest temporary job I’ve ever had!</i></p>
 	<p>Initially a lot of what I did was manage the team and help interview people. But I was still writing code. But more and more what I did was encourage others to do stuff. One day a bright engineer I’d been working with on DNS told me that he thought he could ‘solve DDoS’ if he could be left alone to work on an idea he had.</p>
 	<p>This was one of those situations where the engineer had shown they were very capable, and it was worth taking a risk. So, I said “OK” go do that, I’ll write the code you were meant to write, assign all your bugs to me. That turned out to be a good decision because he built our entire DDoS mitigation system (known internally as gatebot) which has fended off some of the largest DDoS attacks out there.</p>
 	<p>Of course, like everything else Cloudflare does, things outgrow an individual and need a team. Today gatebot and DDoS in general is managed by a team of engineers in London and Austin and the original engineer has moved onto other things. So, encouraging people is an important part of the job.</p>
 	<p>Slowly my temporary job got more and more things added to it. I was running Cloudflare’s IT department, SRE and technical operations, the network, infosec and engineering. Some temporary job. Slowly I got rid of some of those things. IT is now its own department as is infosec. Those things are far better run by other people than me!</p>
 	<p>The challenge of managing a team split around the entire globe (I had staff in San Francisco, London and Singapore) meant that new leadership was needed and so I recruited a head of engineering and SRE/ops had its own leader. Today more than 250 people sit in my overall team.</p>
 	<p>Along the way I stopped writing code and I did less and less day to day management as the leaders were able to do that. But something else became more important: things like this talk and sales.</p>
-	<h3 id="it-s-not-enough-to-build-you-have-to-sell">It's not enough to build, you have to sell</h3>
+	<h3>It's not enough to build, you have to sell</h3>
 	<p>Robert Metcalfe, who invented Ethernet while at Xerox PARC, said “I didn’t get rich by inventing Ethernet, I got rich by selling it”. This is an important point. It’s not enough to have good technology, you have to get people to hear about it and you have to sell it.</p>
 	<p>One way Cloudflare markets is through our blog. You may not realize it, but we have a very, very strong brand because we write those super technical blog posts. They don’t look like marketing, but they are. And another way we market is by doing this sort of thing: going places and talking.</p>
 	<p>But frequently, what I do is talk directly to customers. On Monday afternoon and evening, I was on two long video conferences with big potential customers in the US. &nbsp;Yesterday, I was on a call about our partnership with IBM. This morning I did a call with a potential client in Germany before flying to Verona. So… one thing the CTO does is a lot of sales!</p>
-	<h3 id="nudge">Nudge</h3>
-	<p>One thing I am not is the source of all technical wisdom in the company. I was once introduced by a law school friend of Matthew Prince’s as “the brain behind Cloudflare”. That’s so far from the truth. There are many jobs in engineering at Cloudflare that I am incapable of doing today without an enormous amount of learning.<em> And teams are much stronger than individuals.</em></p>
+	<h3>Nudge</h3>
+	<p>One thing I am not is the source of all technical wisdom in the company. I was once introduced by a law school friend of Matthew Prince’s as “the brain behind Cloudflare”. That’s so far from the truth. There are many jobs in engineering at Cloudflare that I am incapable of doing today without an enormous amount of learning. <i>And teams are much stronger than individuals.</i></p>
 	<p>I do, on occasion, use experience to push the company in a certain direction. Or simply encourage something that I think is the right technology (I did this with our adoption of Clickhouse as a column-oriented database, with Go and recently with Rust). With Rust I decided to learn the language myself and make a little project and put it on GitHub. That’s enough in my position to make people realize it’s OK to use Rust.</p>
-	<h3 id="finally">Finally</h3>
+	<h3>Finally</h3>
 	<p>So, in concluding here are some things to learn from my experience and the creation of Cloudflare. Be audacious, share widely, be open, work hard, spend a lot of time finding the right people and helping them, create teams, rewrite code, panic early! And above all, while doing this remain humble. Life comes at you fast, problems will arise, the wheel of karma spins around, you’ll need the help of others. Build something great and be humble about your creation.</p>
 	<hr>
-	<h4 id="helping-to-build-cloudflare">Helping to Build Cloudflare</h4>
+	<h4>Helping to Build Cloudflare</h4>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-1">Part 1: How I came to work here</a></li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-2">Part 2: The Most Difficult Fortnight</a></li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-3">Part 3: Audacity, Diversity and Change</a></li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-4">Part 4: Public Engagement</a></li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-5">Part 5: People: Finding, Nurturing and Learning to Let Go</a></li>
-		<li>Part 6: What does Cloudflare's CTO do? (you are here)</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-1">Part 1: How I came to work here</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-2">Part 2: The Most Difficult Fortnight</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-3">Part 3: Audacity, Diversity and Change</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-4">Part 4: Public Engagement</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-5">Part 5: People: Finding, Nurturing and Learning to Let Go</a></p>
+		</li>
+		<li>
+			<p>Part 6: What does Cloudflare's CTO do? (you are here)</p>
+		</li>
 	</ul>
 </div>

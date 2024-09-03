@@ -1,20 +1,20 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BpFPSKdmOmWlyE8MGevrg/5d2e70c902e1a78103956b725f65eca1/end-of-the-road-for-cloudflare-nginx.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Six years ago when I joined Cloudflare the company had a capital F, about 20 employees, and a software stack that was mostly NGINX, PHP and PowerDNS (there was even a little Apache). Today, things are quite different.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/3733477729_fa27bde743_b.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/zoramite/3733477729/in/photolist-6FV3RF-CqdQpX-4roTxQ-qzv62p-9uUbhA-rE2Mda-2fBsw1-k1XGt-9NHJGZ-jXtiMZ-bLV5QH-oMQho4-2xxq76-dYNEZq-kzq28Y-jqrziP-qmeRsG-boVvyx-eubDfn-dML8WR-7GhV1v-qNf6aL-avp1Tz-eeRo4Z-qNJH1n-b2BN1r-T8fJ2a-dLe1uE-dPmYEQ-gDk2pQ-89woTE-nakE9N-6E6snR-hw8v4e-hdq5No-Yzai76-5URDVP-9rTNQD-agYaM2-d7TVdd-ayKcf5-6noHQy-eg545m-9Wmvpo-iKLTMQ-kymTqW-WMcZJd-dFuhFJ-6E3wLd-gWHXxH">image</a> by <a href="https://www.flickr.com/photos/zoramite">Randy Merrill</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UEWCugiE60sJmoWgMYpBv/5bdf734021de94ffeef5180676cd6381/3733477729_fa27bde743_b.jpg" alt="" class="kg-image" width="1024" height="682" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/zoramite/3733477729/in/photolist-6FV3RF-CqdQpX-4roTxQ-qzv62p-9uUbhA-rE2Mda-2fBsw1-k1XGt-9NHJGZ-jXtiMZ-bLV5QH-oMQho4-2xxq76-dYNEZq-kzq28Y-jqrziP-qmeRsG-boVvyx-eubDfn-dML8WR-7GhV1v-qNf6aL-avp1Tz-eeRo4Z-qNJH1n-b2BN1r-T8fJ2a-dLe1uE-dPmYEQ-gDk2pQ-89woTE-nakE9N-6E6snR-hw8v4e-hdq5No-Yzai76-5URDVP-9rTNQD-agYaM2-d7TVdd-ayKcf5-6noHQy-eg545m-9Wmvpo-iKLTMQ-kymTqW-WMcZJd-dFuhFJ-6E3wLd-gWHXxH">image</a> by <a href="https://www.flickr.com/photos/zoramite">Randy Merrill</a></p>
 	<p>The F got lowercased, there are now more than 500 people and the software stack has changed radically. PowerDNS is gone and has been replaced with our own DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, written in Go. The PHP code that used to handle the business logic of dealing with our customers’ HTTP requests is now Lua code, Apache is long gone and new technologies like <a href="https://www.cloudflare.com/website-optimization/railgun">Railgun</a>, <a href="https://www.cloudflare.com/products/cloudflare-warp">Warp</a>, <a href="https://www.cloudflare.com/argo">Argo</a> and Tiered Cache have been added to our ‘edge’ stack.</p>
 	<p>And yet our servers still identify themselves in HTTP responses with</p>
-	<pre><code>Server: cloudflare-nginx
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">Server: cloudflare-nginx</code></pre>
 	<p>Of course, NGINX is still a part of our stack, but the code that handles HTTP requests goes well beyond the capabilities of NGINX alone. It’s also not hard to imagine a time where the role of NGINX diminishes further. We currently run four instances of NGINX on each edge machine (one for SSL, one for non-SSL, one for caching and one for connections between data centers). We used to have a fifth but it’s been deprecated and are planning for the merging of the SSL and non-SSL instances.</p>
 	<p>As we have done with other bits of software (such as the <a href="http://fallabs.com/kyototycoon">KyotoTycoon</a> distributed key-value store or PowerDNS) we’re quite likely to write our own caching or web serving code at some point. The time may come when we no longer use NGINX for caching, for example. And so, now is a good time to switch away from <code>Server: cloudflare-nginx</code>.</p>
 	<p>We like to write our own when the cost of customizing or configuring existing open source software becomes too high. For example, we switched away from PowerDNS because it was becoming too complicated to implement all the logic we need for the services we provide.</p>
 	<p>Over the next month we will be transitioning to simply:</p>
-	<pre><code>Server: cloudflare
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">Server: cloudflare</code></pre>
 	<p>If you have software that looks for <code>cloudflare-nginx</code> in the <code>Server</code> header it’s time to update it.</p>
 	<p>We’ve worked closely with companies that rely on the <code>Server</code> header to determine whether a website, application or API uses Cloudflare, so that their software or service is updated and we’ll be rolling out this change in stages between December 18, 2017 and January 15, 2018. Between those dates Cloudflare-powered HTTP responses may contain either <code>Server: cloudflare-nginx</code> or <code>Server: cloudflare</code>.</p>
-	<!--kg-card-end: markdown-->
 </div>

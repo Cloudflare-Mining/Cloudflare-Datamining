@@ -1,34 +1,55 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ddos-attacks-on-australian-universities-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-attacks-on-australian-universities-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-attacks-on-australian-universities-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-attacks-on-australian-universities-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/ddos-attacks-on-australian-universities-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-attacks-on-australian-universities-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/ddos-attacks-on-australian-universities-es-es">Español</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-55.png" class="kg-image" alt="Killnet and AnonymousSudan DDoS attack Australian university websites, and threaten more attacks — here’s what to do about it" loading="lazy"></figure>
+<div class="mb2 gray5">3 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ddos-attacks-on-australian-universities">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-attacks-on-australian-universities">Français</a>, <a href="https://blog.cloudflare.com/de-de/ddos-attacks-on-australian-universities">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-attacks-on-australian-universities">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-attacks-on-australian-universities">한국어</a>, <a href="https://blog.cloudflare.com/es-es/ddos-attacks-on-australian-universities">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/ddos-attacks-on-australian-universities">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71imYZhzjgJ0CBHCdm80a8/c2f9bb707fa35ab3c8e3d8c287e2ffc7/image1-55.png" alt="Killnet and AnonymousSudan DDoS attack Australian university websites, and threaten more attacks — here’s what to do about it" class="kg-image" width="1200" height="676" loading="lazy">
+
+	</figure>
 	<p>Over the past 24 hours, Cloudflare has observed HTTP DDoS attacks targeting university websites in Australia. Universities were the first of several groups publicly targeted by the pro-Russian hacker group Killnet and their affiliate <a href="https://www.cloudflare.com/learning/ddos/glossary/anonymous-sudan">AnonymousSudan</a>, as revealed in a recent <a href="https://twitter.com/FalconFeedsio/status/1639574349131677697?s=20">Telegram</a> post. The threat actors called for additional attacks against 8 universities, 10 airports, and 8 hospital websites in Australia beginning on Tuesday, March 28.</p>
 	<p>Killnet is a loosely formed group of individuals who collaborate via Telegram. Their Telegram channels provide a space for pro-Russian sympathizers to volunteer their expertise by participating in cyberattacks against western interests.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-4.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Figure: % of traffic constituting DDoS attacks for organizations in Australia</em></figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5n5WXHdc7GOAQWJKRjD8t6/a21b2110bd9682624d5f774148e6c066/image2-4.jpg" alt="" class="kg-image" width="1118" height="360" loading="lazy">
+
 	</figure>
+	<p><i>Figure: % of traffic constituting DDoS attacks for organizations in Australia</i></p>
 	<p>This is not the first time Cloudflare has reported on Killnet activity. On February 2, &nbsp;2023 we noted in a <a href="https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks">blog</a> that a pro-Russian hacktivist group — claiming to be part of Killnet — was targeting multiple healthcare organizations in the US. In October 2022, Killnet called to attack US airport websites, and attacked the US Treasury the following month.</p>
 	<p>As seen with past attacks from this group, these most recent attacks do not seem to be originating from a single botnet, and the attack methods and sources seem to vary, suggesting the involvement of multiple individual threat actors with varying degrees of skill.</p>
 	<p>DDoS (Distributed Denial of Service) attacks often make headlines due to their ability to disrupt critical services. Cloudflare recently <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">announced</a> that it had blocked the largest attack to date, which peaked at 71 million requests per second (rps) and was 54% higher than the previous record attack from June 2022.</p>
 	<p>DDoS attacks are designed to overwhelm networks with massive amounts of malicious traffic, and when executed correctly, can disrupt service or take networks offline. The size, sophistication, and frequency of attacks have been increasing over the past months.</p>
-	<h3 id="what-is-killnet-and-anonymoussudan">What is Killnet and AnonymousSudan?</h3>
+	<h3>What is Killnet and AnonymousSudan?</h3>
 	<p><a href="https://en.wikipedia.org/wiki/Killnet">Killnet</a> is not a traditional hacking group: it does not have membership, it does not have tools or infrastructure, and it does not operate for financial gain. Instead, Killnet is a space for pro-Russian "hacktivist" sympathizers to volunteer their expertise by participating in cyberattacks against western interests. This collaboration happens entirely in the open via Telegram, where anyone is welcome to join.</p>
 	<p>Killnet was formed shortly after (and likely in response to) the IT Army of Ukraine, and it emulates their tactics. Most days, administrators of the Killnet telegram channel will put out a call for volunteers to attack some particular target. Participants share many different tools and techniques for launching successful attacks, and inexperienced individuals are often coached on how to launch cyber attacks by those who are more experienced.</p>
 	<p>AnonymousSudan is another nontraditional hacking group similar to Killnet who is ostensibly composed of Sudanese "hacktivists". The two groups have recently begun collaborating to attack various western interests.</p>
 	<p>Attackers, including from these groups, are becoming more audacious in &nbsp;the size and scale of the organizations they are targeting. What this means for businesses, especially those with limited cyber resources, is an increasing threat level against vulnerable networks.</p>
 	<p>Organizations of all sizes need to be prepared for the eventuality of a significant DDoS attack against their networks. Detection and mitigation of attacks should ideally be automated as much as possible, because relying solely on humans to mitigate in real time puts attackers in the driver’s seat.</p>
-	<h3 id="how-should-i-protect-my-organization-against-ddos">How should I protect my organization against DDoS?</h3>
+	<h3>How should I protect my organization against DDoS?</h3>
 	<p>Cloudflare customers are protected against DDoS attacks; our systems have been automatically detecting and mitigating the attack. Our team continues to monitor the situation and will deploy countermeasures as needed.</p>
 	<p>As an additional step of precaution, customers in the Education, Travel, and Healthcare industries are advised to follow the below recommendations.</p>
 	<ol>
-		<li>Ensure all other <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets">DDoS Managed Rules</a> are set to default settings (High sensitivity level and mitigation actions).</li>
-		<li>Enterprise customers with Advanced DDoS should consider enabling <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection">Adaptive DDoS Protection</a>.</li>
-		<li>Deploy <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules">firewall rules</a> and <a href="https://developers.cloudflare.com/waf/rate-limiting-rules">rate-limiting rules</a> to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.</li>
-		<li>Turn on<a href="https://developers.cloudflare.com/bots/get-started/free"> Bot Fight Mode</a> or the equivalent level (SBFM, Enterprise Bot Management) available to you.</li>
-		<li>Ensure your origin is not exposed to the public Internet, i.e., only enable access to Cloudflare IP addresses.</li>
-		<li>Enable <a href="https://developers.cloudflare.com/cache">caching</a> as much as possible to reduce the strain on your origin servers, and when using <a href="https://workers.cloudflare.com">Workers</a>, avoid overwhelming your origin server with more subrequests than necessary</li>
-		<li>Enable <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts">DDoS alerting</a>.</li>
+		<li>
+			<p>Ensure all other <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets">DDoS Managed Rules</a> are set to default settings (High sensitivity level and mitigation actions).</p>
+		</li>
+		<li>
+			<p>Enterprise customers with Advanced DDoS should consider enabling <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection">Adaptive DDoS Protection</a>.</p>
+		</li>
+		<li>
+			<p>Deploy <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules">firewall rules</a> and <a href="https://developers.cloudflare.com/waf/rate-limiting-rules">rate-limiting rules</a> to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.</p>
+		</li>
+		<li>
+			<p>Turn on <a href="https://developers.cloudflare.com/bots/get-started/free">Bot Fight Mode</a> or the equivalent level (SBFM, Enterprise Bot Management) available to you.</p>
+		</li>
+		<li>
+			<p>Ensure your origin is not exposed to the public Internet, i.e., only enable access to Cloudflare IP addresses.</p>
+		</li>
+		<li>
+			<p>Enable <a href="https://developers.cloudflare.com/cache">caching</a> as much as possible to reduce the strain on your origin servers, and when using <a href="https://workers.cloudflare.com">Workers</a>, avoid overwhelming your origin server with more subrequests than necessary</p>
+		</li>
+		<li>
+			<p>Enable <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts">DDoS alerting</a>.</p>
+		</li>
 	</ol>
 	<p>As easy as it has become for the attackers to launch DDoS attacks, we want to make sure that it is even easier - and free - for defenders of organizations of all sizes to protect themselves against DDoS attacks of all types. We've been providing unmetered and unlimited DDoS protection for free to all of our customers since 2017. Cloudflare's mission is to help build a better Internet. A better Internet is one that is more secure, faster, and reliable for everyone - even in the face of DDoS attacks.</p>
 	<p>If you’d like to learn more about key DDoS trends, download the <a href="https://www.cloudflare.com/lp/ddos-trends-report">Cloudflare DDoS Threat Report</a> for quarterly insights.</p>

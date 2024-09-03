@@ -1,55 +1,86 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ko-kr">한국어</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77ABDy8rMMYNVSAW4ZjJIr/fa3a31ad77b7b803a4c5854a64a6a977/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This post is also available in </i><a href="https://blog.cloudflare.com/fr-fr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-fr-fr"><i>Français</i></a><i>, </i><a href="https://blog.cloudflare.com/de-de/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-de-de"><i>Deutsch</i></a><i>, </i><a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn"><i>简体中文</i></a><i>, </i><a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-tw"><i>繁體中文</i></a><i>, </i><a href="https://blog.cloudflare.com/ja-jp/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ja-jp"><i>日本語</i></a><i>, </i><a href="https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ko-kr"><i>한국어</i></a><i>.</i></p>
 	<p>Earlier this summer, Cloudflare’s <a href="https://www.cloudflare.com/ddos">autonomous edge DDoS protection systems</a> automatically detected and mitigated a 17.2 million request-per-second (rps) <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attack</a>, an attack almost three times larger than any previous one that we're aware of. For perspective on how large this attack was: Cloudflare serves over 25 million HTTP requests per second on average. This refers to the average rate of legitimate traffic in 2021 Q2. So peaking at 17.2 million rps, this attack reached 68% of our Q2 average rps rate of legitimate HTTP traffic.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image5-18.png" class="kg-image" alt="Comparison graph of Cloudflare’s average request per second rate versus the DDoS attack" loading="lazy" title="Points scored">
-		<figcaption>Comparison graph of Cloudflare’s average request per second rate versus the DDoS attack</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MGeCblBfbMi9xV2fNGQJ7/2e52f15419c7380224a318bf2bd4f44e/image5-18.png" alt="Comparison graph of Cloudflare’s average request per second rate versus the DDoS attack" class="kg-image" width="1200" height="742" loading="lazy">
+
 	</figure>
-	<h3 id="automated-ddos-mitigation-with-cloudflare-s-autonomous-edge">Automated DDoS mitigation with Cloudflare’s autonomous edge</h3>
+	<p>Comparison graph of Cloudflare’s average request per second rate versus the DDoS attack</p>
+	<h3>Automated DDoS mitigation with Cloudflare’s autonomous edge</h3>
 	<p>This attack, along with the additional attacks provided in the next sections, were automatically detected and mitigated by our <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">autonomous edge DDoS protection systems</a>. The system is powered by our very own denial of service daemon (dosd). Dosd is a home-grown software-defined daemon. A unique dosd instance runs in every server in each one of our data centers around the world. Each dosd instance independently analyzes traffic samples out-of-path. Analyzing traffic out-of-path allows us to scan asynchronously for DDoS attacks without causing latency and impacting performance. DDoS findings are also shared between the various dosd instances within a data center, as a form of proactive threat intelligence sharing.</p>
 	<p>Once an attack is detected, our systems generate a mitigation rule with a real-time signature that matches the attack patterns. The rule is propagated to the most optimal location in the tech stack. As an example, a <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack">volumetric HTTP DDoS attack</a> may be blocked at L4 inside the Linux iptables firewall instead of at L7 inside the L7 reverse proxy which runs in the user space. Mitigating lower in the stack, e.g. dropping the packets at L4 instead of responding with a 403 error page in L7, is more cost-efficient. It reduces our edge CPU consumption and intra-data center bandwidth utilization — thus helping us mitigate large attacks at scale without impacting performance.</p>
 	<p>This autonomous approach, along with our network’s global scale and reliability, allow us to mitigate attacks that reach 68% of our average per-second-rate, and higher, without requiring any manual mitigation by Cloudflare personnel, nor causing any performance degradation.</p>
-	<h3 id="the-resurgence-of-mirai-and-new-powerful-botnets">The resurgence of Mirai and new powerful botnets</h3>
+	<h3>The resurgence of Mirai and new powerful botnets</h3>
 	<p>This attack was launched by a powerful <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnet</a>, targeting a Cloudflare customer in the financial industry. Within seconds, the botnet bombarded the Cloudflare edge with over 330 million attack requests.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image10-1.png" class="kg-image" alt="Graph of 17.2M rps attack" loading="lazy">
-		<figcaption>Graph of 17.2M rps attack</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gY7BQTsPoARDp6hOSjG9e/48febe9218111876c2cdbaf9adc7ab08/image10-1.png" alt="Graph of 17.2M rps attack" class="kg-image" width="1350" height="678" loading="lazy">
+
 	</figure>
+	<p>Graph of 17.2M rps attack</p>
 	<p>The attack traffic originated from more than 20,000 bots in 125 countries around the world. Based on the bots’ source IP addresses, almost 15% of the attack originated from Indonesia and another 17% from India and Brazil combined. Indicating that there may be many malware infected devices in those countries.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image14.png" class="kg-image" alt="Distribution of the attack sources by top countries" loading="lazy">
-		<figcaption>Distribution of the attack sources by top countries</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5T6eNguCNTubMdWMB3YRxO/1e52c128cb8213e214ed328d81b41b66/image14.png" alt="Distribution of the attack sources by top countries" class="kg-image" width="1999" height="689" loading="lazy">
+
 	</figure>
-	<h3 id="volumetric-attacks-increase">Volumetric attacks increase</h3>
+	<p>Distribution of the attack sources by top countries</p>
+	<h3>Volumetric attacks increase</h3>
 	<p>This 17.2 million rps attack is the largest HTTP DDoS attack that Cloudflare has ever seen to date and almost three times the size of any other reported HTTP DDoS attack. This specific botnet, however, has been seen at least twice over the past few weeks. Just last week it also targeted a different Cloudflare customer, a hosting provider, with an HTTP DDoS attack that peaked just below 8 million rps.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image13-1.png" class="kg-image" alt="Graph of 8M rps attack" loading="lazy">
-		<figcaption>Graph of 8M rps attack</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50oxuA0Pte28QnkKG2ND9a/2d23c5ca574583bee9c0ef188ca6d4a0/image13-1.png" alt="Graph of 8M rps attack" class="kg-image" width="1778" height="728" loading="lazy">
+
 	</figure>
+	<p>Graph of 8M rps attack</p>
 	<p>Two weeks before, a <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet">Mirai-variant botnet</a> launched over a dozen UDP and TCP based DDoS attacks that peaked multiple times above 1 Tbps, with a max peak of approximately 1.2 Tbps. And while the first HTTP attacks targeted Cloudflare customers on the <a href="https://www.cloudflare.com/waf">WAF/CDN service</a>, the 1+ Tbps network-layer attacks targeted Cloudflare customers on the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> services. One of these targets was a major APAC-based Internet services, telecommunications and hosting provider. The other was a gaming company. In all cases, the attacks were automatically detected and mitigated without human intervention.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image17.png" class="kg-image" alt="Graph of Mirai botnet attack peaking at 1.2 Tbps" loading="lazy">
-		<figcaption>Graph of Mirai botnet attack peaking at 1.2 Tbps</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ry1DG1IpHihc6q2aU3V83/d2bcedb1f60a6734367923f0d3b83869/image17.png" alt="Graph of Mirai botnet attack peaking at 1.2 Tbps" class="kg-image" width="1999" height="566" loading="lazy">
+
 	</figure>
+	<p>Graph of Mirai botnet attack peaking at 1.2 Tbps</p>
 	<p>The Mirai botnet started with roughly 30K bots and slowly shrinked to approximately 28K. However, despite losing bots from its fleet, the botnet was still able to generate impressive volumes of attack traffic for short periods. In some cases, each burst lasted only a few seconds.</p>
 	<p>These attacks join the increase in Mirai-based DDoS attacks that we’ve observed on our network over the past weeks. In July alone, L3/4 Mirai attacks increased by 88% and L7 attacks by 9%. Additionally, based on the current August per-day average of the Mirai attacks, we can expect L7 Mirai DDoS attacks and other similar botnet attacks to increase by 185% and L3/4 attacks by 71% by the end of the month.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image11-1.png" class="kg-image" alt="Graph of change in Mirai based DDoS attacks by month" loading="lazy" title="Chart">
-		<figcaption>Graph of change in Mirai based DDoS attacks by month</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4feZMCRVWgTJh3LTGKQVl8/773168714eac8624aa814355f6d89fe5/image11-1.png" alt="Graph of change in Mirai based DDoS attacks by month" class="kg-image" width="1200" height="742" loading="lazy">
+
 	</figure>
-	<h3 id="back-to-the-mirai">Back to the Mirai</h3>
+	<p>Graph of change in Mirai based DDoS attacks by month</p>
+	<h3>Back to the Mirai</h3>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet">Mirai</a>, which means ‘future’ in Japanese, is a codename for malware that was first discovered in 2016 by <a href="https://en.wikipedia.org/wiki/MalwareMustDie">MalwareMustDie</a>, a non-profit security research workgroup. The malware spreads by infecting Linux-operated devices such as security cameras and routers. It then self-propagates by searching for open Telnet ports 23 and 2323. Once found, it then attempts to gain access to vulnerable devices by <a href="https://www.cloudflare.com/learning/bots/brute-force-attack">brute forcing</a> known credentials such as factory default usernames and passwords. Later variants of Mirai also took advantage of zero-day exploits in routers and other devices. Once infected, the devices will monitor a Command &amp; Control (C2) server for instructions on which target to attack.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image8-3.png" class="kg-image" alt="Diagram of Botnet operator controlling the botnet to attack websites" loading="lazy">
-		<figcaption>Diagram of Botnet operator controlling the botnet to attack websites</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fNe0WjM3f10tIZWNBTm8C/85eda8e0d05815f18e5435b457872928/image8-3.png" alt="Diagram of Botnet operator controlling the botnet to attack websites" class="kg-image" width="1256" height="670" loading="lazy">
+
 	</figure>
-	<h3 id="how-to-protect-your-home-and-business">How to protect your home and business</h3>
+	<p>Diagram of Botnet operator controlling the botnet to attack websites</p>
+	<h3>How to protect your home and business</h3>
 	<p>While the majority of attacks are small and short, we continue to see these types of volumetric attacks emerging more often. It’s important to note that these volumetric short burst attacks can be especially dangerous for legacy DDoS protection systems or organizations without active, always-on cloud-based protection.</p>
 	<p>Furthermore, while the short duration may say something about the botnet’s capability to deliver sustained levels of traffic over time, it can be challenging or impossible for humans to react to it in time. In such cases, the attack is over before a security engineer even has time to analyze the traffic or activate their stand-by DDoS protection system. These types of attacks highlight the need for automated, always-on protection.</p>
-	<h3 id="how-to-protect-your-business-and-internet-properties">How to protect your business and Internet properties</h3>
+	<h3>How to protect your business and Internet properties</h3>
 	<ol>
-		<li><a href="https://dash.cloudflare.com/sign-up">Onboard to Cloudflare</a> to protect your Internet properties.</li>
-		<li>DDoS is enabled out of the box, and you can also <a href="https://support.cloudflare.com/hc/en-us/articles/200172676-Understanding-Cloudflare-DDoS-protection">customize the protection settings</a>.</li>
-		<li>Follow our <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">preventive best practices</a>, to ensure that both your Cloudflare settings and your origin server settings are optimized. As an example, make sure that you allow only traffic from <a href="https://www.cloudflare.com/ips">Cloudflare’s IP range</a>. Ideally, ask your upstream Internet Service Provider (ISP) to apply an access control list (ACL), otherwise, attackers may target your servers’ IP addresses directly and bypass your protection.</li>
+		<li>
+			<p><a href="https://dash.cloudflare.com/sign-up">Onboard to Cloudflare</a> to protect your Internet properties.</p>
+		</li>
+		<li>
+			<p>DDoS is enabled out of the box, and you can also <a href="https://support.cloudflare.com/hc/en-us/articles/200172676-Understanding-Cloudflare-DDoS-protection">customize the protection settings</a>.</p>
+		</li>
+		<li>
+			<p>Follow our <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">preventive best practices</a>, to ensure that both your Cloudflare settings and your origin server settings are optimized. As an example, make sure that you allow only traffic from <a href="https://www.cloudflare.com/ips">Cloudflare’s IP range</a>. Ideally, ask your upstream Internet Service Provider (ISP) to apply an access control list (ACL), otherwise, attackers may target your servers’ IP addresses directly and bypass your protection.</p>
+		</li>
 	</ol>
-	<h3 id="recommendations-on-how-to-protect-your-home-and-iot-appliances">Recommendations on how to protect your home and IoT appliances</h3>
+	<h3>Recommendations on how to protect your home and IoT appliances</h3>
 	<ol>
-		<li>Change the default username and password of any device that is connected to the Internet such as smart cameras and routers. This will reduce the risk that malware such as Mirai can gain access to your router and IoT devices.</li>
-		<li>Protect your home against malware with <a href="https://developers.cloudflare.com/1.1.1.1/1.1.1.1-for-families">Cloudflare for Families</a>. Cloudflare for Families is a free service that automatically blocks traffic from your home to malicious websites and malware communication.</li>
+		<li>
+			<p>Change the default username and password of any device that is connected to the Internet such as smart cameras and routers. This will reduce the risk that malware such as Mirai can gain access to your router and IoT devices.</p>
+		</li>
+		<li>
+			<p>Protect your home against malware with <a href="https://developers.cloudflare.com/1.1.1.1/1.1.1.1-for-families">Cloudflare for Families</a>. Cloudflare for Families is a free service that automatically blocks traffic from your home to malicious websites and malware communication.</p>
+		</li>
 	</ol>
 </div>

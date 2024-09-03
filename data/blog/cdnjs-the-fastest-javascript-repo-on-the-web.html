@@ -1,20 +1,31 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="CDNJS: The Fastest Javascript Repo on the
-Web" src="https://blog.cloudflare.com/content/images/cdnjs_faster_than_google_microsoft_javascript_cdns.jpg.scaled500.jpg" title="CDNJS: The Fastest Javascript Repo on the Web"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ahr8PGG8Ia6Gn42XwDJpr/50267397d9dcefdd2f0806d75793e85b/cdnjs_faster_than_google_microsoft_javascript_cdns.jpg.scaled500.jpg" alt="CDNJS: The Fastest Javascript Repo on the
+Web" class="kg-image" width="500" height="275" loading="lazy">
+
+	</figure>
 	<p>More than a year ago, Ryan Kirkman and Thomas Davis approached us about a project they were working on. Dubbed <a href="https://www.cdnjs.com">CDNJS</a>, the project had a noble goal: make the world's Javascript resources load as fast as possible. They had been hosting the service on Amazon's CloudFront CDN, but as it got more popular the costs started to be significant. They approached us about whether we'd mind them using CloudFlare. We thought it was a great idea and we've been working together ever since. Today they just sent us data that shows CDNJS is the fastest Javascript repository on the Internet. More on that in a second, but first a bit about why CDNJS is so cool.</p>
-	<h3 id="whydoyouneedacdnforjavascript">Why Do You Need a CDN for Javascript</h3>
+	<h3>Why Do You Need a CDN for Javascript</h3>
 	<p>The there are a core set of Javascript resources that are used across the web. Packages such as jQuery, Bootstrap, Backbone.js, and YUI underpin many of the web's pages. In order for these pages to load, the Javascript resources need to be downloaded. As a result, it makes sense for the resources to be on the fastest connections possible. However, that's only half the story.</p>
 	<p>The other benefit involves browser caching. If two sites use jQuery, ideally your browser only needs to download it once and then use the same code across both sites. In order to take advantage of this browser caching, both sites need to reference the same code via the same URL. As a result, it not only makes sense to reference a CDN for your Javascript code, but for you to use the same CDN as other sites are also using.</p>
-	<h3 id="thebigboys">The Big Boys</h3>
+	<h3>The Big Boys</h3>
 	<p>Google and Microsoft have understood the benefits of having a central repository of Javascript resources and both provide their own public repositories. The challenge is that they only have a limited number of the most popular resources. Moreover, since running the repos isn't their primary job, they are slow to update as new versions of code comes out.</p>
-	<p><img alt="CDNJS: The Fastest Javascript Repo on the
-Web" src="https://blog.cloudflare.com/content/images/cdnjs_library.png.scaled500.png" title="CDNJS: The Fastest Javascript Repo on the Web"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uFH4PdDIZcCafMQXaM1BJ/c454e94ff287dbf66061ba28ad3514ec/cdnjs_library.png.scaled500.png" alt="CDNJS: The Fastest Javascript Repo on the
+Web" class="kg-image" width="500" height="251" loading="lazy">
+
+	</figure>
 	<p>Everything so far is what Ryan and Thomas from CDNJS explained to us. They wanted to build a central repository for Javascript that was fast and reliable. They wanted to make sure it contained a wide range of the web's Javascript resources. They wanted to ensure that the latest versions would always be available. And they wanted to provide it to the web for free. We thought that sounded great, so we took over the job of serving the CDNJS resources from CloudFlare's <a href="https://www.cloudflare.com/network-map">global network</a>.</p>
-	<h3 id="fastwins">Fast Wins</h3>
+	<h3>Fast Wins</h3>
 	<p>Today Ryan and Thomas sent us the latest data on the performance of CDNJS versus the Google and Microsoft Javascript CDNs. The results are terrific. Graphs are at the top of this post, but the here's the data: on average, CDNJS is 50% faster than the Google's Javascript CDN (100ms vs. 157ms), and more than four times as fast as Microsoft's CDN (100ms vs. 432ms). That's based on data gathered using Pingdom to download the same Javascript resource (jQuery 1.8.3 minified) from the three CDNs from multiple points around the globe over the last week.</p>
-	<p><img alt="CDNJS: The Fastest Javascript Repo on the
-Web" src="https://blog.cloudflare.com/content/images/bootstrap_full_package.png.scaled500.png" title="CDNJS: The Fastest Javascript Repo on the Web"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jE7ME98gsICNjRLUEtpea/e246a692ab8390ea72b76052e9f6769c/bootstrap_full_package.png.scaled500.png" alt="CDNJS: The Fastest Javascript Repo on the
+Web" class="kg-image" width="500" height="174" loading="lazy">
+
+	</figure>
 	<p>CDNJS is also expanding beyond just Javascript. They've recently added CSS and Images for popular packages like Bootstrap. In other words, you can load the entire Bootstrap package directly from CDNJS, saving you bandwidth and ensuring it is delivered as quickly as possible. What's also great is that since CloudFlare's network supports SSL, SPDY, and IPv6 by default, these benefits also extend to CDNJS. In other words, if you're using any Javascript resources on your websites it's a no-brainer that you should be loading them from the <a href="https://www.cdnjs.com">CDNJS network</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,31 +1,52 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-r2-super-slurper-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-r2-super-slurper-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-r2-super-slurper-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-22.png" class="kg-image" alt="The R2 Super Slurper will enable anyone to bring any amount of data into R2 with minimal effort and risk" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-r2-super-slurper">简体中文</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-r2-super-slurper">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/cloudflare-r2-super-slurper">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gyo067ydALepBJsuyYs6Q/cc126e0b64c30bf0ebc0e9c625692a10/image3-22.png" alt="The R2 Super Slurper will enable anyone to bring any amount of data into R2 with minimal effort and risk" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>R2 is an S3-compatible, globally distributed <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a>, allowing developers to store large amounts of unstructured data without the costly <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress bandwidth fees</a> you commonly find with other providers.</p>
 	<p>To enjoy this egress freedom, you’ll have to start planning to send all that data you have somewhere else into R2. You might want to do it all at once, moving as much data as quickly as possible while ensuring data consistency. Or do you prefer moving the data to R2 slowly and gradually shifting your reads from your old provider to R2? And only then decide whether to cut off your old storage or keep it as a backup for new objects in R2?</p>
 	<p>There are multiple options for architecture and implementations for this movement, but taking terabytes of data from one cloud storage provider to another is always problematic, always involves planning, and likely requires staffing.</p>
 	<p>And that was hard. But not anymore.</p>
 	<p>Today we're announcing the R2 Super Slurper, the feature that will enable you to move all your data to R2 in one giant slurp or sip by sip — all in a friendly, intuitive UI and API.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-29.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="the-first-step-r2-super-slurper-private-beta">The first step: R2 Super Slurper Private Beta</h2>
-	<h3 id="one-giant-slurp">One giant slurp</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ndFgYCd0mbAXlnMc5LRQ2/da2d6bd4191a882c18136dc9589fb25e/image2-29.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<h2>The first step: R2 Super Slurper Private Beta</h2>
+	<h3>One giant slurp</h3>
 	<p>The very first iteration of the R2 Super Slurper allows you to target an S3 bucket and import the objects you have stored there into your R2 bucket. It's a simple, one-time import that covers the most common scenarios. Point to your existing S3 source, grant the R2 Super Slurper permissions to read the objects you want to migrate, and an asynchronous job will take care of the rest.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-34.png" class="kg-image" alt="an active migration implies a big-bang of data movement from your old buckets to R2" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WkVFWS2GIAuc9TnpHuAsT/9fba01ef206ba66de310786b0b78a275/image1-34.png" alt="an active migration implies a big-bang of data movement from your old buckets to R2" class="kg-image" width="1680" height="1350" loading="lazy">
+
+	</figure>
 	<p>You'll also be able to save the definitions and credentials to access your source bucket, so you can migrate different folders from within the bucket, in new operations, without having to define URLs and credentials all over again. This operation alone will save you from scripting your way through buckets with many paths you’d like to validate for consistency. &nbsp;During the beta stages — with your feedback — we will evolve the R2 Super Slurper to the point where anyone can achieve an entirely consistent, super slurp, all with the click of just a few buttons.</p>
-	<h3 id="automatic-sip-by-sip-migration">Automatic sip by sip migration</h3>
+	<h3>Automatic sip by sip migration</h3>
 	<p>Other future development includes automatic sip by sip migration, which provides a way to incrementally copy objects to R2 as they get requested from an end-user. It allows you to start serving objects from R2 as they migrate, saving you money immediately.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-16.png" class="kg-image" alt="a passive migration strategy involves always serving through Cloudflare, but getting the file from an external repository on the first time it’s requested" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36YMN6Y7USY0TMwG8VQuob/386ffb0096988c926eb13a730fd537fb/image4-16.png" alt="a passive migration strategy involves always serving through Cloudflare, but getting the file from an external repository on the first time it’s requested" class="kg-image" width="1999" height="1216" loading="lazy">
+
+	</figure>
 	<p>The flow of the requests and object migration will look like this:</p>
 	<ul>
-		<li><strong>Check for Object</strong> — A request arrives at Cloudflare <strong>(1)</strong>, and we check the R2 bucket for the requested object <strong>(2)</strong>. If the object exists, R2 serves it <strong>(3)</strong>.</li>
-		<li><strong>Copy the Object </strong>— If the object does <em>not</em> exist in R2, a request for the object flows to the origin bucket <strong>(2a)</strong>. Once there's an answer with an object, we serve it and copy it into R2 <strong>(2b)</strong>.</li>
-		<li><strong>Serve the Object — </strong>R2 serves all future requests for the object <strong>(3)</strong>.</li>
+		<li>
+			<p><b>Check for Object</b> — A request arrives at Cloudflare <b>(1)</b>, and we check the R2 bucket for the requested object <b>(2)</b>. If the object exists, R2 serves it <b>(3)</b>.</p>
+		</li>
+		<li>
+			<p><b>Copy the Object</b> — If the object does <i>not</i> exist in R2, a request for the object flows to the origin bucket <b>(2a)</b>. Once there's an answer with an object, we serve it and copy it into R2 <b>(2b)</b>.</p>
+		</li>
+		<li>
+			<p><b>Serve the Object —</b> R2 serves all future requests for the object <b>(3)</b>.</p>
+		</li>
 	</ul>
 	<p>With this capability you can copy your objects, previously scattered through one or even multiple buckets from other vendors, while ensuring that everything requested from the end-user side gets served from R2. And because you will only need to use the R2 Super Slurper to sip the object from elsewhere on the first request, you will start saving on those egress fees for any subsequent ones.</p>
 	<p>We are currently targeting S3-compatible buckets for now, but you can expect other sources to become available during 2023.</p>
-	<h2 id="join-the-waitlist-for-the-r2-super-slurper-private-beta">Join the waitlist for the R2 Super Slurper private beta</h2>
+	<h2>Join the waitlist for the R2 Super Slurper private beta</h2>
 	<p>To access the R2 Super Slurper, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Fplans">you must be an R2 user first</a> and sign up for the R2 Super Slurper waitlist <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Fslurper">here</a>.</p>
 	<p>We will collaborate closely with many early users in the private beta stage to refine and test the service . Soon, we'll announce an open beta where users can sign up for the service.</p>
 	<p>Make sure to join our <a href="https://discord.gg/cloudflaredev">Discord server</a> and get in touch with a fantastic community of users and Cloudflare staff for all R2-related topics!</p>

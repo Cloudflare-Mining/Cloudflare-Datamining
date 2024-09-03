@@ -1,112 +1,212 @@
-<div class="mb2 gray5">17 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-one-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-cloudflare-one-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-cloudflare-one-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/introducing-cloudflare-one-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-cloudflare-one-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/introducing-cloudflare-one-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-8.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mb2 gray5">16 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-one">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-cloudflare-one">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-cloudflare-one">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-cloudflare-one">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-cloudflare-one">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-cloudflare-one">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MG3GAtxuc1XegEfnB0hvj/5b6fdbeeaaf7b98ad3ccb4f05e5d3a1f/image2-8.png" alt="" class="kg-image" width="1561" height="759" loading="lazy">
+
+	</figure>
 	<p>Today we’re announcing Cloudflare One™. It is the culmination of engineering and technical development guided by conversations with thousands of customers about the future of the corporate network. It provides secure, fast, reliable, cost-effective network services, integrated with leading identity management and endpoint security providers.</p>
 	<p>Over the course of this week, we'll be rolling out the components that enable Cloudflare One, including our WARP Gateway Clients for desktop and mobile, our Access for SaaS solution, our <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">browser isolation</a> product, and our next generation network firewall and intrusion detection system.</p>
 	<p>The old model of the corporate network has been made obsolete by mobile, SaaS, and the public cloud. The events of 2020 have only accelerated the need for a new model. <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust networking</a> is the future and we are proud to be enabling that future. Having worked on the components of what is Cloudflare One for the last two years, we’re excited to unveil today how they’ve come together into a robust <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> solution and share how customers are already using it to deliver the more <a href="https://www.cloudflare.com/learning/network-layer/network-security">secure</a> and productive future of the corporate network.</p>
-	<h2 id="what-is-cloudflare-one-secure-optimized-global-networking">What Is Cloudflare One? Secure, Optimized Global Networking</h2>
+	<h2>What Is Cloudflare One? Secure, Optimized Global Networking</h2>
 	<p>Cloudflare One is a comprehensive, cloud-based <a href="https://www.cloudflare.com/learning/network-layer/network-as-a-service-naas">network-as-a-service solution</a> that is designed to be secure, fast, reliable and define the future of the corporate network. It replaces a patchwork of appliances and <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">WAN technologies</a> with a single network that provides cloud-based security, performance, and control through one user interface.</p>
 	<p>Cloudflare One brings together how users connect, on-ramps for branch offices, secure connectivity for applications, and controlled access to SaaS, into a single platform.</p>
 	<p>Cloudflare One reflects the complex nature of corporate networking today: mobile and remote users, SaaS applications, a mix of applications hosted in private data centers and public cloud, as well the challenge of <a href="https://www.cloudflare.com/learning/access-management/what-is-remote-access-security">employees using the broader Internet securely</a> from their corporate and personal devices.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image8-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xDgHgtq6qV4En2Caxsg2w/c3adcb5d71b9bb53517b18d622321335/image8-1.png" alt="" class="kg-image" width="1239" height="545" loading="lazy">
+
+	</figure>
 	<p>Whether you call this <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> or simply the new reality, today’s enterprise needs flexibility at every layer of the network and application stack. <a href="https://www.cloudflare.com/network-services/solutions/enterprise-network-security">Secure and authenticated access</a> is needed for users wherever they are: at the office, on a mobile device or working from home. Corporate network architectures need to reflect the state of modern computing that requires secure, filtered Internet access to get to SaaS or public cloud, secure application connectivity to protect against hackers and DDoS, and fast, reliable branch and home office access.</p>
 	<p>And the new corporate network needs to be global. No matter where applications are hosted, or employees reside, connectivity needs to be secure and fast. With Cloudflare’s massive global presence, traffic is secured, routed, and filtered over an optimized backbone that uses real time Internet intelligence to <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protect against the latest threats</a> and route traffic around bad Internet weather and outages.</p>
 	<p>However, you’re only as strong as your weakest link. It doesn’t matter how secure your network is if you allow the wrong people access, or your end user’s devices are compromised. That is why we’re incredibly excited to announce that Cloudflare One takes the power of Cloudflare’s network and combines it with best-of-breed identity management and device integrity to create a complete solution that encompasses the entire corporate network of today and tomorrow.</p>
-	<h2 id="partner-ecosystem-identity-management">Partner ecosystem: Identity Management</h2>
+	<h2>Partner ecosystem: Identity Management</h2>
 	<p>Most organizations already have one or more identity management systems. Rather than requiring them to change, we are integrating with all the major providers. This week we're announcing partnerships with Okta, Ping Identity, and OneLogin. We support nearly all the other leading identity providers including Microsoft Active Directory and Google Workspace, as well as broadly adopted consumer and developer identity platforms like Github, LinkedIn, and Facebook.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image11-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3SqxgehqYREHeIKfXA5FDc/63c48017a87f5ffa9b9e5e22a071a66c/image11-1.png" alt="" class="kg-image" width="1161" height="638" loading="lazy">
+
+	</figure>
 	<p>Powerfully, Cloudflare One does not require you to standardize on just one identity provider. We see multiple companies that may have one identity provider for full-time employees and another for contractors. Or one they chose themselves and another they inherited from an acquisition. Cloudflare One will integrate with one or more identity providers and allow you to then set consistent policies across all your applications.</p>
 	<p>The metaphor that makes sense to me is that the identity provider issues passports and Cloudflare One is the border agent that checks that they're valid. At any particular moment, different passports from different providers may be allowed or forbidden to enter just by updating the instructions the border agent follows.</p>
-	<h2 id="partner-ecosystem-device-integrity">Partner ecosystem: Device Integrity</h2>
-	<p>In addition to identity, device integrity and endpoint security are an important part of a<a href="https://www.cloudflare.com/zero-trust/solutions"> zero trust solution</a>. This week we're announcing partnerships with CrowdStrike, VMware Carbon Black, SentinelOne, and Tanium. These providers run on devices and ensure that they haven't been compromised. Again, organizations can centralize around a single vendor for device integrity or can mix and match with Cloudflare One providing a consistent control plane.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image18-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Partner ecosystem: Device Integrity</h2>
+	<p>In addition to identity, device integrity and endpoint security are an important part of a <a href="https://www.cloudflare.com/zero-trust/solutions">zero trust solution</a>. This week we're announcing partnerships with CrowdStrike, VMware Carbon Black, SentinelOne, and Tanium. These providers run on devices and ensure that they haven't been compromised. Again, organizations can centralize around a single vendor for device integrity or can mix and match with Cloudflare One providing a consistent control plane.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/T8r27mZ3o7VyVGCpjWZtZ/f009c0c3325c607e07f4a6fbdee97051/image18-1.png" alt="" class="kg-image" width="1999" height="1094" loading="lazy">
+
+	</figure>
 	<p>Extending the border control analogy, it's like having a temperature screening and COVID-19 test when you enter a country. Even if you have a valid passport, if you're not healthy then you will be turned away. By partnering with the leading identity and device integrity providers, Cloudflare One provides a robust <a href="https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management">identity and access management</a> solution that fully delivers on the promise of Zero Trust.</p>
 	<p>We’re thrilled to partner with these leading identity management and endpoint security companies to make Cloudflare One flexible and robust.</p>
 	<p>With this as an introduction to Cloudflare One, I wanted to provide some context on why the existing paradigm doesn’t work, what the future of the <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise network</a> looks like, and where we go from here. In order to understand the power of Cloudflare One, you first have to understand the way we used to build and secure corporate networks and how the transition to mobile, cloud, and remote work have all forced this fundamental change in the paradigm.</p>
-	<h2 id="the-middle-box-ages-how-corporate-security-used-to-work">The Middle(box) Ages: How Corporate Security Used to Work</h2>
+	<h2>The Middle(box) Ages: How Corporate Security Used to Work</h2>
 	<p>The Internet was designed to be a massive, decentralized network. Any computer could connect to that network and route data from one location to another. The model provided resiliency, but did not guarantee fast or available connections. The early Internet also lacked a framework for security.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image16-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TaVWyqvGVg1fYhJYrc2FS/5f4c03b25189031f515970dfe09491b1/image16-1.png" alt="" class="kg-image" width="1999" height="975" loading="lazy">
+
+	</figure>
 	<p>As a result, enterprises did not trust the Internet as a platform for their businesses. To keep employees productive, network connections had to be fast and available. Those connections also had to be secure. So, businesses built their own shadow versions of the Internet:</p>
 	<ul>
-		<li>Companies purchased dedicated, private connections between offices and across their data centers in the form of expensive <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS</a> links.</li>
-		<li>IT teams managed complex routing across offices, VPN hardware, and clients.</li>
-		<li>Security teams deployed physical firewall boxes and DDoS appliances to keep the private network safe.</li>
-		<li>When employees had to use the Internet, security teams backhauled traffic through a central location to filter outbound connections with yet more hardware: Internet gateways.</li>
+		<li>
+			<p>Companies purchased dedicated, private connections between offices and across their data centers in the form of expensive <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS</a> links.</p>
+		</li>
+		<li>
+			<p>IT teams managed complex routing across offices, VPN hardware, and clients.</p>
+		</li>
+		<li>
+			<p>Security teams deployed physical firewall boxes and DDoS appliances to keep the private network safe.</p>
+		</li>
+		<li>
+			<p>When employees had to use the Internet, security teams backhauled traffic through a central location to filter outbound connections with yet more hardware: Internet gateways.</p>
+		</li>
 	</ul>
 	<p>Legacy corporate security followed a castle and moat approach. You put all your sensitive applications and data in the castle, you required all your employees to come to work in the castle every day, and then you built a metaphorical moat around the castle using firewalls, DDoS appliances, gateways and more: an unmanageable mess of devices and vendors.</p>
-	<h2 id="the-middle-box-ages-are-long-gone">The Middle(box) Ages Are Long Gone</h2>
+	<h2>The Middle(box) Ages Are Long Gone</h2>
 	<p>While smarter attackers finding ways to breach moats were always a concern for the castle and moat approach, ultimately they weren’t what caused the approach to fail. Instead the change came from transformation of the technical landscape. Smartphones made workers increasingly mobile, letting them venture outside the moat. SaaS and the public cloud moved data and corporate applications out of the metaphorical castle.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image15-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cepTm9u7zz0smF6frCAM/7a26e092a417ce418628c89902c8ad61/image15-1.png" alt="" class="kg-image" width="1999" height="665" loading="lazy">
+
+	</figure>
 	<p>And, in 2020, COVID-19 changed everything by forcing everyone who could to work remotely. If the employees weren't coming to work in the castle anymore, the whole paradigm completely breaks down. This transition was happening already, but this year poured gasoline on the already smoldering fire. Increasingly companies are realizing that the only way forward is to embrace the fact that employees, servers and applications are now “on the Internet” and not “in the castle.” This new paradigm is known as “Zero Trust.”</p>
 	<p>Google's seminal paper, "BeyondCorp: A New Approach to Enterprise Security," published in 2014, brought the idea of Zero Trust security into the mainstream. Google's insight in 2014 was that you could solve the challenges of every employee and application being on the Internet by ensuring that every application would inherently distrust every connection. If there was zero trust inherent to what network you were on, then every user of every application would be continuously authenticated. Powerfully, that would simultaneously <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">enhance security</a> while enabling more use of cloud applications as well as mobile and remote work.</p>
-	<h2 id="the-future-lan-a-secure-wan">The Future LAN: A Secure WAN</h2>
+	<h2>The Future LAN: A Secure WAN</h2>
 	<p>What we realized talking to customers was that even the analyst and competitor framing of the future corporate network didn't fully recognize some challenges that come with a Zero Trust model. One of the benefits of embracing a Zero Trust model is that it makes enabling branch and home offices easier and less expensive. Rather than having to lease expensive MPLS circuits to connect branch offices — something that is literally impossible as people work from home — you instead require every use of every application to be authenticated.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This lines up with something else we’ve heard from our customers over the last six months: “maybe the Internet is <em>almost</em> good enough.” Like physical offices, many MPLS or <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan">SD-WAN</a> deployments are currently sitting idle. And yet, employees continue to be productive. If users could move to a model that runs on the Internet, and one that improves the Internet, teams can stop spending money on legacy routing. Rather than trying to build more private networks, the corporate network of the future leverages the Internet but with heightened security, performance, and reliability.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5a5pWM0vxnknSSWD0BHsvQ/1c30251c7127969aaa360d3c48f9c00d/image7-1.png" alt="" class="kg-image" width="1114" height="450" loading="lazy">
+
+	</figure>
+	<p>This lines up with something else we’ve heard from our customers over the last six months: “maybe the Internet is <i>almost</i> good enough.” Like physical offices, many MPLS or <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan">SD-WAN</a> deployments are currently sitting idle. And yet, employees continue to be productive. If users could move to a model that runs on the Internet, and one that improves the Internet, teams can stop spending money on legacy routing. Rather than trying to build more private networks, the corporate network of the future leverages the Internet but with heightened security, performance, and reliability.</p>
 	<p>That sounds great, but it opens a whole new can of worms. Inherently to do this you need to expose more of your applications to the Internet. While they may be safe from unauthorized use if you've properly <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">implemented Zero Trust</a>, that opens them to many less sophisticated, but highly disruptive challenges.</p>
 	<p>At the end of 2019 we saw a disturbing new trend begin to emerge. DDoS attackers shifted their focus from embarrassing companies by knocking their websites offline to increasingly targeting internal applications and networks. Unfortunately, we've seen more of these attacks launched throughout the pandemic.</p>
 	<p>It’s not a coincidence. It's the direct result of companies being forced to expose more of their internal applications to the Internet in order to support remote work. To our surprise, it has turned out that while we anticipated Access and Gateway being the natural pairing of products, equally often customers looking to move to a Zero Trust model are bundling Cloudflare's DDoS and WAF products.</p>
 	<p>It makes sense. If you are exposing more of your applications to the Internet, then the problems that Internet-facing applications have had to deal with in the past now become the problems of your internal applications as well. It's become clear to us that the future of a SASE or Zero Trust network needs to also include DDoS mitigation and <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> as well.</p>
-	<h2 id="making-the-internet-secure-and-reliable-enough-for-the-enterprise">Making the Internet Secure and Reliable Enough for the Enterprise</h2>
-	<p>We agree with the customers we’ve talked to who say that the Internet is <em>almost</em> good enough to replace a corporate network. We’ve been building products to fill in the gaps where it needs to be better. Virtual appliances in regional public cloud providers are not sufficient. Enterprises need a global, distributed network that accelerates traffic in any location.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Making the Internet Secure and Reliable Enough for the Enterprise</h2>
+	<p>We agree with the customers we’ve talked to who say that the Internet is <i>almost</i> good enough to replace a corporate network. We’ve been building products to fill in the gaps where it needs to be better. Virtual appliances in regional public cloud providers are not sufficient. Enterprises need a global, distributed network that accelerates traffic in any location.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65TrtCdJe1MET3GMberOrJ/20a00436912c6a4fe98b7d2f36d9b665/image19.png" alt="" class="kg-image" width="1100" height="701" loading="lazy">
+
+	</figure>
 	<p>We’ve spent the last decade building Cloudflare’s network; bringing the Internet closer to users around the world and supporting incredible scale. According to W3Techs, <a href="https://w3techs.com/technologies/history_overview/proxy/all/q">more than 14% of the web</a> already relies on our network. We can also use that to constantly measure the Internet at scale and find faster routes. That scale allows us to deliver Cloudflare One to any organization, no matter where they are located or how global their workforce, and ensure their network and applications are secure, fast, and reliable.</p>
-	<h2 id="foreshadowing-cloudflare-one">Foreshadowing Cloudflare One</h2>
+	<h2>Foreshadowing Cloudflare One</h2>
 	<p>The same lessons we’ve learned handling traffic for the websites on our network can be applied to how enterprises connect to everything else. We started that journey last year when we <a href="https://blog.cloudflare.com/1111-warp-better-vpn">launched Cloudflare WARP</a>, a consumer product that routes all connections leaving a personal device through Cloudflare’s network, where we can encrypt and accelerate it. This week, we’ll show how the WARP Client is now one of the on-ramps to get employee traffic onto Cloudflare One.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image9-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kmUrcgrqVym5s1SpRLKvF/22ac5a159b3ea4002b9825a80b04b809/image9-1.png" alt="" class="kg-image" width="1114" height="436" loading="lazy">
+
+	</figure>
 	<p>We launched WARP on mobile devices because we knew they would prove to be the most difficult to get right. Traditionally, VPN clients are clunky battery sucks designed for desktops and, if they have mobile versions at all, they’ve been clumsily ported over. We set out to build WARP to work great on mobile, not burning battery life or slowing connections down, because we knew if we could pull that off then it would be easy to port it to the less limited constraints of the desktop.</p>
 	<p>We also launched it for consumers first because they are the best QA team you could ever assemble. More than 10 million consumers have been putting WARP through its paces for the last year. We’ve seen edge cases from every corner of the Internet and used them to iron the bugs out. We knew that if we could make the WARP Client something that consumers loved to use then it would be a stark contrast to every other enterprise solution in the market.</p>
 	<p>Meanwhile, we built products to deliver the same improvements to data centers and offices. We <a href="https://blog.cloudflare.com/magic-transit">announced</a> Magic Transit last year to provide secure, performant, and reliable IP connectivity to the Internet. Earlier this year, we expanded that model when we <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">launched</a> Cloudflare Network Interconnect (CNI) to allow our customers to interconnect branch offices and data centers directly with Cloudflare.</p>
 	<p>Cloudflare Access starts by introducing identity into Cloudflare’s network. We apply filters based on identity and context to both inbound and outbound connections. Every login, request, and response proxies through Cloudflare’s network regardless of the location of the server or user.</p>
 	<p>Cloudflare Gateway keeps connections to the rest of the Internet safe. By routing all traffic through Cloudflare’s network first, customers can deprecrate on-premise firewalls eliminating Internet backhaul requirements that slow down users.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image10-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="pulling-the-pieces-together">Pulling the Pieces Together</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4baHUD8lNsiPGkRFSZh3rZ/202d9e3b2292b2e7227eb183a74110f5/image10-1.png" alt="" class="kg-image" width="1113" height="439" loading="lazy">
+
+	</figure>
+	<h2>Pulling the Pieces Together</h2>
 	<p>We think about the products in Cloudflare One in two categories:</p>
 	<ul>
-		<li><strong>On-ramps</strong>: the products that connect a user, device, or location to Cloudflare’s edge. WARP for endpoints, Magic Transit and CNI for networks, Argo Smart Routing to accelerate traffic.</li>
-		<li><strong>Filters</strong>: the products that shield networks from attacks, inspect traffic for threats, and apply least privilege rules to data and applications. Access for Zero Trust rules, Gateway for traffic filtering, Magic Firewall for network filtering.</li>
+		<li>
+			<p><b>On-ramps</b>: the products that connect a user, device, or location to Cloudflare’s edge. WARP for endpoints, Magic Transit and CNI for networks, Argo Smart Routing to accelerate traffic.</p>
+		</li>
+		<li>
+			<p><b>Filters</b>: the products that shield networks from attacks, inspect traffic for threats, and apply least privilege rules to data and applications. Access for Zero Trust rules, Gateway for traffic filtering, Magic Firewall for network filtering.</p>
+		</li>
 	</ul>
 	<p>Most competitors in this space focus on one area, which loses out on the efficiencies of combining them in a single solution. Cloudflare One brings those together on our network. By integrating both sides of the challenge, we can give administrators a single place to manage and secure their network.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="what-differentiates-cloudflare-one">What Differentiates Cloudflare One</h2>
-	<h3 id="easy-to-deploy-manage-and-use"><em>Easy to Deploy, Manage, and Use</em></h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/idBIYe5bAbwkrEnmbOG8D/12d4dd94953d4e05f17be4ce5d836602/image3-9.png" alt="" class="kg-image" width="1459" height="548" loading="lazy">
+
+	</figure>
+	<h2>What Differentiates Cloudflare One</h2>
+	<h3><i>Easy to Deploy, Manage, and Use</i></h3>
 	<p>We’ve always offered free and pay-as-you-go plans that teams of any size could sign up for with a credit card. Those customers lack the systems integrators or IT departments of large enterprises. To serve those teams, we had to build a control plane and dashboard that was accessible and easy to use.</p>
 	<p>The products in Cloudflare One follow that same approach; comprehensive enough for enterprises but easy to use to make these products accessible to any team. We’ve also extended that to end users; the client application that powers Gateway is built on what we learned creating Cloudflare WARP for consumer users.</p>
-	<h3 id="unified-solution"><em>Unified Solution</em></h3>
+	<h3><i>Unified Solution</i></h3>
 	<p>Cloudflare One puts the entire corporate network behind a single pane of glass. By integrating with leading identity providers and endpoint security solutions, Cloudflare One enables companies to enforce a consistent set of policies across all their applications. Since the network is the common denominator of all applications, by building control into the network Cloudflare One ensures consistent policies whether an application is new or legacy, run on-premise or in the cloud, and delivered from your own infrastructure or a multi-tenant SaaS provider.</p>
 	<p>Cloudflare One also helps rationalize complicated deployments. While it would be great if every app and every employee and contractor used the same identity provider, for example, that isn’t always possible. Acquisitions, skunkworks projects, and internal disagreements can cause multiple different solutions to be present inside one company. Cloudflare One allows you to plug different providers into one unified network control plane to ensure consistent policies.</p>
-	<h3 id="significant-roi"><em>Significant ROI</em></h3>
+	<h3><i>Significant ROI</i></h3>
 	<p>Our core tenet of serving the entire Internet has always forced us to obsess over costs. Efficiency is in the DNA of Cloudflare and we use our efficiency to pass along customer-friendly, fixed-rate pricing. Cloudflare One builds on that experience to deliver a platform that is more cost-effective than combining point solution vendors. The differences are especially apparent versus other providers who have tried to build on top of public cloud platforms and inherit their cost and inconsistent network performance.</p>
 	<p>To achieve the level of efficiency needed to compete with hardware appliances required us to invent a new type of platform. That platform needed to be built on our own network where we could drive costs down and ensure the highest level of performance. It needed to be architected so any server in any city that made up Cloudflare’s network could run every one of our services. That means that Cloudflare One runs across Cloudflare’s global network spanning more than 200 cities worldwide. Even your farthest flung branch offices and remote workers are likely within milliseconds of servers powering Cloudflare One, ensuring our service works well wherever your team works.</p>
-	<h3 id="leverages-cloudflare-s-scale"><em>Leverages Cloudflare’s Scale</em></h3>
+	<h3><i>Leverages Cloudflare’s Scale</i></h3>
 	<p>Cloudflare already sits in front of a huge portion of the Internet. That allows us to see and respond to new security threats continuously. It also means that Cloudflare One customers’ traffic can be more efficiently routed, even when going to applications that would appear to be on the public Internet.</p>
 	<p>For instance, an employee behind Cloudflare One who is catching up on holiday shopping during their lunch break can have their traffic routed from a corporate branch office, across Cloudflare’s Magic Transit, over Cloudflare’s global backbone, across Cloudflare’s Network Interconnect, and to the ecommerce provider. Because Cloudflare handles the packets end-to-end, we can ensure they are encrypted, optimally routed, and efficiently delivered. As more of the Internet uses Cloudflare, the experience of surfing the Internet for Cloudflare One customers will grow even more exceptional.</p>
-	<h2 id="what-does-cloudflare-one-replace">What Does Cloudflare One Replace?</h2>
+	<h2>What Does Cloudflare One Replace?</h2>
 	<p>Instead of expensive MPLS links or complex SD-WAN deployments, Cloudflare One provides two on-ramps to your applications and the entire Internet: WARP and Magic Transit. WARP connects employees from any device, and any location, to Cloudflare’s network. Magic Transit allows broad deployments across whole offices or data centers.</p>
 	<p>Cloudflare Access replaces private-networks-as-security with Zero Trust controls. Later this week, we’ll announce how you can extend Access to any application, including SaaS applications.</p>
 	<p>Finally, Cloudflare One eliminates traditional network firewalls and web gateways. Cloudflare Gateway inspects traffic leaving any device in your organization to block threats on the Internet and prevent data from leaving. Magic Firewall will give your networks the same security, filtering traffic at the transport layer to replace the top-of-rack firewalls that block data exfiltration or attacks from unsecure network protocols.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="what-comes-next">What Comes Next?</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fL7PK2uyftpXxyxXoT0SD/8036dd7a0617d74dccf8e43c552d1099/image1-9.png" alt="" class="kg-image" width="2000" height="1186" loading="lazy">
+
+	</figure>
+	<h2>What Comes Next?</h2>
 	<p>Your team can start using Cloudflare One today. Add Zero Trust control to your applications with Cloudflare Access and secure DNS queries with Cloudflare Gateway. <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">Keep networks safe</a> from DDoS attacks with Magic Transit and connect your applications through Cloudflare with Argo Tunnel.</p>
 	<p>Over the course of the week, we’ll be launching new features and products to start to complete this vision. On Tuesday, we’ll extend the Zero Trust security of Cloudflare Access to all of your applications. Starting Wednesday, teams will be able to use Cloudflare WARP to proxy all employee traffic to Cloudflare where Gateway will now secure more than just DNS queries. You’ll be invited to sign up for Cloudflare’s browser isolation beta on Thursday and we’ll wrap the week with new APIs to control how Magic Transit secures your network.</p>
 	<p>It’s going to be a busy week, but we’re just getting started. Replacing a corporate network should not also mean you lose control over how that network operates. <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a> is our solution to complex SD-WAN deployments.</p>
 	<p>Security for that entire network should also work in both directions. Magic Firewall is our alternative to the clunky “<a href="https://www.cloudflare.com/learning/security/what-is-next-generation-firewall-ngfw">next-generation firewall</a>” appliances that secure outbound traffic. Data loss prevention (DLP) is another space that has lacked innovation and where we plan to extend Cloudflare One.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pCJEcBjgakRPzXUCPSXJK/59d2b649b19293849f83f569899a109d/image6-3.png" alt="" class="kg-image" width="1999" height="1184" loading="lazy">
+
+	</figure>
 	<p>Finally, you should have visibility into that network. We’ll be launching new tools to detect and mitigate intrusion attempts that happen anywhere on your network, including unauthorized access to any SaaS applications you use. Now that we’ve built the on-ramps onto Cloudflare One, we’re excited to continue to innovate to provide more functionality and control to solve our customers biggest <a href="https://www.cloudflare.com/network-security">network security</a>, performance, and reliability challenges.</p>
-	<h2 id="delivering-the-network-customers-need-today">Delivering the Network Customers Need Today</h2>
+	<h2>Delivering the Network Customers Need Today</h2>
 	<p>Over the last 10 years, Cloudflare has built one of the fastest, most reliable, most secure networks in the world. We’ve seen the power of using that network internally to enable our own teams to innovate quickly and securely. With the launch of Cloudflare One, we’re extending the power of Cloudflare’s network to meet the challenges of any company. The move to Zero Trust is a paradigm shift but the changes to how we work we believe has made it inevitable for every company. We’re proud of how we’ve been able to help some of Cloudflare One’s first customers reinvent their corporate networks. It makes sense to close with their own words.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/logo_jetblue-travel-products_color.png" class="kg-image" alt="" loading="lazy"></figure>
-	<blockquote>“JetBlue Travel Products needed a way to give crew-members secure and simple access to internally-managed benefit apps. Cloudflare gave us all that and more — a much more efficient way to connect business partners and crew-members to critical internal tools." — <strong>Vitaliy Faida</strong>, General Manager, Data/DevSecOps at JetBlue Travel Products.</blockquote>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/logo_onetrust_color-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<blockquote>“OneTrust relies on Cloudflare to maintain our network perimeter, so we can focus on delivering technology that helps our customers be more trusted. “With Cloudflare, we can easily build context-aware Zero Trust policies for secure access to our developer tools. Employees can connect to the tools they need so simply teams don’t even know Cloudflare is powering the backend. It just works.” — <strong>Blake Brannon</strong>, CTO of OneTrust.</blockquote>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/logo_discord_color-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<blockquote>"Discord is where the world builds relationships. Cloudflare helps us deliver on that mission, connecting our internal engineering team to the tools they need. With Cloudflare, we can rest easy knowing every request to our critical apps is evaluated for identity and context — a true Zero Trust approach." — <strong>Mark Smith</strong>, Director of Infrastructure at Discord.</blockquote>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/logo_area_1_color-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<blockquote>"When you're a fast-growing, security-focused company like Area 1, anything that slows development down is the enemy. With Cloudflare, we've found a simpler, more secure way to connect our employees to the tools they need to keep us growing - and the experience is lightning-fast." — <strong>Blake Darché</strong>, CSO at Area 1 Security.</blockquote>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/logo_oak-national-academy_color-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<blockquote>"We launched quickly in April 2020 to bring remote learning to children throughout the UK during the coronavirus pandemic, Cloudflare Access made it fast and simple to authenticate a huge network of teachers and developers into our production sites and we set it up in literally less than an hour. Cloudflare's WAF helped ensure the security and resilience of our public-facing website from day one." — <strong>John Roberts</strong>, Technology Director at Oak National Academy.</blockquote>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/M_png-roundel-RGB-green-1-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<blockquote>“With Cloudflare, we’ve been able to reduce our dependence on VPNs and IP allow-listing for development environments. Our developers and testers aren't required to login from specific locations, and we’ve been able to deploy an SSO solution to simplify the login process. Access is easier to manage than VPNs and other remote access solutions, which has removed pressure from our IT teams. They can focus on internal projects instead of spending time managing remote access.” — <strong>Alexandre Papadopoulos</strong>, Director of Cyber Security, INSEAD.</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hhP2Apcan9HLEe99ZBlCd/de9b80f2bd19c0081d26f9a94a2ad44b/logo_jetblue-travel-products_color.png" alt="" class="kg-image" width="300" height="50" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>“JetBlue Travel Products needed a way to give crew-members secure and simple access to internally-managed benefit apps. Cloudflare gave us all that and more — a much more efficient way to connect business partners and crew-members to critical internal tools." — <b>Vitaliy Faida</b>, General Manager, Data/DevSecOps at JetBlue Travel Products.</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YTPbgsZnN73cqeGSzfF0k/e7919ba30b1f692b18758e0752eaf70f/logo_onetrust_color-1.png" alt="" class="kg-image" width="300" height="53" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>“OneTrust relies on Cloudflare to maintain our network perimeter, so we can focus on delivering technology that helps our customers be more trusted. “With Cloudflare, we can easily build context-aware Zero Trust policies for secure access to our developer tools. Employees can connect to the tools they need so simply teams don’t even know Cloudflare is powering the backend. It just works.” — <b>Blake Brannon</b>, CTO of OneTrust.</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jQWPThQVV7V7ZURZrXKsp/42d35abd37a6626ad69057e19866cfcb/logo_discord_color-1.png" alt="" class="kg-image" width="300" height="72" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>"Discord is where the world builds relationships. Cloudflare helps us deliver on that mission, connecting our internal engineering team to the tools they need. With Cloudflare, we can rest easy knowing every request to our critical apps is evaluated for identity and context — a true Zero Trust approach." — <b>Mark Smith</b>, Director of Infrastructure at Discord.</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61BROPHAAeADyOlttVSkNT/0c2f8279a25ca08f270b476153a9cca7/logo_area_1_color-1.png" alt="" class="kg-image" width="300" height="80" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>"When you're a fast-growing, security-focused company like Area 1, anything that slows development down is the enemy. With Cloudflare, we've found a simpler, more secure way to connect our employees to the tools they need to keep us growing - and the experience is lightning-fast." — <b>Blake Darché</b>, CSO at Area 1 Security.</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0cm5iz0SmtQyhTPCO3DT7/22c02e380444a9db4f941b834bd33dcb/logo_oak-national-academy_color-1.png" alt="" class="kg-image" width="300" height="163" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>"We launched quickly in April 2020 to bring remote learning to children throughout the UK during the coronavirus pandemic, Cloudflare Access made it fast and simple to authenticate a huge network of teachers and developers into our production sites and we set it up in literally less than an hour. Cloudflare's WAF helped ensure the security and resilience of our public-facing website from day one." — <b>John Roberts</b>, Technology Director at Oak National Academy.</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10hCWxDhmPBI6XgIsKQHjN/c464fe7da7496d8ef1fe65a6ea6d52c8/M_png-roundel-RGB-green-1-3.png" alt="" class="kg-image" width="300" height="300" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>“With Cloudflare, we’ve been able to reduce our dependence on VPNs and IP allow-listing for development environments. Our developers and testers aren't required to login from specific locations, and we’ve been able to deploy an SSO solution to simplify the login process. Access is easier to manage than VPNs and other remote access solutions, which has removed pressure from our IT teams. They can focus on internal projects instead of spending time managing remote access.” — <b>Alexandre Papadopoulos</b>, Director of Cyber Security, INSEAD.</p>
+	</blockquote>
+	<p></p>
 </div>

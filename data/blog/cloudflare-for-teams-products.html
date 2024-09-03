@@ -1,8 +1,11 @@
-<div class="mb2 gray5">12 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/ko-kr/cloudflare-for-teams-products-ko-kr">한국어</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image4-1.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mb2 gray5">11 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-teams-products">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-for-teams-products">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-for-teams-products">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-for-teams-products">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-for-teams-products">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-for-teams-products">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5I2YslZ4sEynCQF2N51hlk/fcaca90dd9a046e99e03a9a5697712e9/image4-1.png" alt="" class="kg-image" width="656" height="102" loading="lazy">
+
+	</figure>
 	<p>Your experience using the Internet has continued to improve over time. It’s gotten faster, safer, and more reliable. However, you probably have to use a different, worse, equivalent of it when you do your work. While the Internet kept getting better, businesses and their employees were stuck using their own private networks.</p>
 	<p>In those networks, teams hosted their own applications, stored their own data, and protected all of it by building a castle and moat around that private world. This model hid internally managed resources behind VPN appliances and on-premise firewall hardware. The experience was awful, for users and administrators alike. While the rest of the Internet became more performant and more reliable, business users were stuck in an alternate universe.</p>
 	<p>That legacy approach was less secure and slower than teams wanted, but the corporate perimeter mostly worked for a time. However, that began to fall apart with the rise of cloud-delivered applications. Businesses migrated to SaaS versions of software that previously lived in that castle and behind that moat. Users needed to connect to the public Internet to do their jobs, and attackers made the Internet unsafe in sophisticated, unpredictable ways - which opened up every business to &nbsp;a new world of never-ending risks.</p>
@@ -10,87 +13,112 @@
 	<p>Teams then watched as their bandwidth bills increased. More traffic to the Internet from branch offices forced more traffic over expensive, dedicated links. Administrators now had to manage a private network and the connections to the entire Internet for their users, all with the same hardware. More traffic required more hardware and the cycle became unsustainable.</p>
 	<p>Cloudflare’s first wave of products secured and improved the speed of those sites by letting customers, from free users to some of the largest properties on the Internet, replace that hardware stack with <a href="https://www.cloudflare.com/network">Cloudflare’s network</a>. We could deliver capacity at a scale that would be impossible for nearly any company to build themselves. We deployed data centers in over 200 cities around the world that help us reach users wherever they are.</p>
 	<p>We built a unique network to let sites scale how they secured infrastructure on the Internet with their own growth. But internally, businesses and their employees were stuck using their own private networks.</p>
-	<p>Just as we helped organizations secure their infrastructure by replacing boxes, we can do the same for their teams and their data. Today, we’re announcing a new platform that applies our network, and everything we’ve learned, to make the Internet faster and safer for teams.<br><a href="https://teams.cloudflare.com">Cloudflare for Teams</a> protects enterprises, devices, and data by securing every connection without compromising user performance. The speed, reliability and protection we brought to securing infrastructure is extended to everything your team does on the Internet.</p>
-	<h2 id="the-legacy-world-of-corporate-security">The legacy world of corporate security</h2>
-	<p>Organizations all share three problems they need to solve at the network level:</p><!--kg-card-begin: markdown-->
+	<p>Just as we helped organizations secure their infrastructure by replacing boxes, we can do the same for their teams and their data. Today, we’re announcing a new platform that applies our network, and everything we’ve learned, to make the Internet faster and safer for teams.<a href="https://teams.cloudflare.com">Cloudflare for Teams</a> protects enterprises, devices, and data by securing every connection without compromising user performance. The speed, reliability and protection we brought to securing infrastructure is extended to everything your team does on the Internet.</p>
+	<h2>The legacy world of corporate security</h2>
+	<p>Organizations all share three problems they need to solve at the network level:</p>
 	<ol>
-		<li>Secure team member access to <strong>internally managed applications</strong></li>
-		<li>Secure team members from <strong>threats on the Internet</strong></li>
-		<li><strong>Secure the corporate data</strong> that lives in both environments</li>
+		<li>
+			<p>Secure team member access to <b>internally managed applications</b></p>
+		</li>
+		<li>
+			<p>Secure team members from <b>threats on the Internet</b></p>
+		</li>
+		<li>
+			<p><b>Secure the corporate data</b> that lives in both environments</p>
+		</li>
 	</ol>
-	<!--kg-card-end: markdown-->
 	<p>Each of these challenges pose a real risk to any team. If any component is compromised, the entire business becomes vulnerable.</p>
-	<h3 id="internally-managed-applications">Internally managed applications</h3>
+	<h3>Internally managed applications</h3>
 	<p>Solving the first bucket, internally managed applications, started by building a <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter</a> around those internal resources. Administrators deployed applications on a private network and users outside of the office connected to them with client VPN agents through VPN appliances that lived back on-site.</p>
 	<p>Users hated it, and they still do, because it made it harder to get their jobs done. A sales team member traveling to a customer visit in the back of a taxi had to start a VPN client on their phone just to review details about the meeting. An engineer working remotely had to sit and wait as every connection they made to developer tools was backhauled &nbsp;through a central VPN appliance.</p>
 	<p>Administrators and security teams also had issues with this model. Once a user connects to the private network, they’re typically able to reach multiple resources without having to prove they’re authorized to do so . Just because I’m able to enter the front door of an apartment building, doesn’t mean I should be able to walk into any individual apartment. However, on private networks, enforcing additional security within the bounds of the private network required complicated microsegmentation, if it was done at all.</p>
-	<h3 id="threats-on-the-internet">Threats on the Internet</h3>
+	<h3>Threats on the Internet</h3>
 	<p>The second challenge, securing users connecting to SaaS tools on the public Internet and applications in the public cloud, required security teams to protect against known threats and potential zero-day attacks as their users left the castle and moat.</p>
 	<p>How did most companies respond? By forcing all traffic leaving branch offices or remote users back through headquarters and using the same hardware that secured their private network to try and build a perimeter around the Internet, at least the Internet their users accessed. All of the Internet-bound traffic leaving a branch office in Asia, for example, would be sent back through a central location in Europe, even if the destination was just down the street.</p>
 	<p>Organizations needed those connections to be stable, and to prioritize certain functions like voice and video, so they paid carriers to support dedicated <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">multi-protocol label switching (MPLS)</a> links. MPLS delivered improved performance by applying label switching to traffic which downstream routers can forward without needing to perform an IP lookup, but was eye-wateringly expensive.</p>
-	<h3 id="securing-data">Securing data</h3>
+	<h3>Securing data</h3>
 	<p>The third challenge, keeping data safe, became a moving target. Organizations had to keep data secure in a consistent way as it lived and moved between private tools on corporate networks and SaaS applications like Salesforce or Office 365.</p>
 	<p>The answer? More of the same. Teams backhauled traffic over MPLS links to a place where data could be inspected, adding more latency and introducing more hardware that had to be maintained.</p>
-	<h2 id="what-changed">What changed?</h2>
+	<h2>What changed?</h2>
 	<p>The balance of internal versus external traffic began to shift as SaaS applications became the new default for small businesses and Fortune 500s alike. Users now do most of their work on the Internet, with tools like Office 365 continuing to gain adoption. As those tools become more popular, more data leaves the moat and lives on the public Internet.</p>
 	<p>User behavior also changed. Users left the office and worked from multiple devices, both managed and unmanaged. Teams became more distributed and the perimeter was stretched to its limit.</p>
-	<h2 id="this-caused-legacy-approaches-to-fail">This caused legacy approaches to fail</h2>
+	<h2>This caused legacy approaches to fail</h2>
 	<p>Legacy approaches to corporate security pushed the &nbsp;castle and moat model further out. However, that model simply cannot scale with how users do work on the Internet today.</p>
-	<h3 id="internally-managed-applications-1">Internally managed applications</h3>
+	<h3>Internally managed applications</h3>
 	<p>Private networks give users headaches, but they’re also a constant and complex chore to maintain. VPNs require expensive equipment that must be upgraded or expanded and, as more users leave the office, that equipment must try and scale up.</p>
 	<p>The result is a backlog of IT help desk tickets as users struggle with their VPN and, on the other side of the house, administrators and security teams try to put band-aids on the approach.</p>
-	<h3 id="threats-on-the-internet-1">Threats on the Internet</h3>
+	<h3>Threats on the Internet</h3>
 	<p>Organizations initially saved money by moving to SaaS tools, but wound up spending more money over time as their traffic increased and bandwidth bills climbed.</p>
 	<p>Additionally, threats evolve. The traffic sent back to headquarters was secured with static models of scanning and filtering using hardware gateways. Users were still vulnerable to new types of threats that these on-premise boxes did not block yet.</p>
-	<h3 id="securing-data-1">Securing data</h3>
+	<h3>Securing data</h3>
 	<p>The cost of keeping data secure in both environments also grew. Security teams attempted to inspect Internet-bound traffic for threats and data loss by backhauling branch office traffic through on-premise hardware, degrading speed and increasing bandwidth fees.</p>
 	<p>Even more dangerous, data now lived permanently outside of that castle and moat model. Organizations were now vulnerable to attacks that bypassed their perimeter and targeted SaaS applications directly.</p>
-	<h2 id="how-will-cloudflare-solve-these-problems">How will Cloudflare solve these problems?</h2>
+	<h2>How will Cloudflare solve these problems?</h2>
 	<p>Cloudflare for Teams consists of two products, Cloudflare Access and Cloudflare Gateway.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eNlsW2HYDTCUXdUUFxDtb/ae09638aec794228d8d81dfbd9913bb6/image5.png" alt="" class="kg-image" width="1999" height="620" loading="lazy">
+
+	</figure>
 	<p>We <a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn">launched</a> Access last year and are excited to bring it into Cloudflare for Teams. We built Cloudflare Access to solve the first challenge that corporate security teams face: <a href="https://www.cloudflare.com/application-services/solutions">protecting internally managed applications</a>.</p>
 	<p>Cloudflare Access replaces corporate VPNs with Cloudflare’s network. Instead of placing internal tools on a private network, teams deploy them in any environment, including hybrid or multi-cloud models, and secure them consistently with Cloudflare’s network.</p>
 	<p>Deploying Access does not require exposing new holes in corporate firewalls. Teams connect their resources through a secure outbound connection, Argo Tunnel, which runs in your infrastructure to connect the applications and machines to Cloudflare. That tunnel makes outbound-only calls to the Cloudflare network and organizations can replace complex firewall rules with just one: disable all inbound connections.</p>
 	<p>Administrators then build rules to decide who should authenticate to and reach the tools protected by Access. Whether those resources are virtual machines powering business operations or internal web applications, like Jira or iManage, when a user needs to connect, they pass through Cloudflare first.</p>
 	<p>When users need to connect to the tools behind Access, they are prompted to authenticate with their team’s SSO and, if valid, are instantly connected to the application without being slowed down. Internally-managed apps suddenly feel like SaaS products, and the login experience is seamless and familiar</p>
 	<p>Behind the scenes, every request made to those internal tools hits Cloudflare first where we enforce identity-based policies. Access evaluates and logs every request to those apps for identity, to give administrators more visibility and to offer more security than a traditional VPN.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image2-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37lHBEqEvwR1ghFgqUkJnS/bfd4e0afbe9cd0f2cebbe84a9b5b8c56/image2-2.png" alt="" class="kg-image" width="1781" height="957" loading="lazy">
+
+	</figure>
 	<p>Every Cloudflare data center, in 200 cities around the world, performs the entire authentication check. Users connect faster, wherever they are working, versus having to backhaul traffic to a home office.</p>
 	<p>Access also saves time for administrators. Instead of configuring complex and error-prone network policies, IT teams build policies that enforce authentication using their identity provider. Security leaders can control who can reach internal applications in a single pane of glass and audit comprehensive logs from one source.</p>
 	<p>In the last year, we’ve released features that expand how teams can use Access so they can fully eliminate their VPN. We’ve added support for <a href="https://blog.cloudflare.com/cloudflare-access-now-supports-rdp">RDP</a>, <a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage">SSH</a>, and <a href="https://blog.cloudflare.com/public-keys-are-not-enough-for-ssh-security">released</a> support for short-lived certificates that replace static keys. However, teams also use applications that do not run in infrastructure they control, such as SaaS applications like Box and Office 365. To solve that challenge, we’re releasing a new product, Cloudflare Gateway.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hKYIDZPVgG29lufMVb060/85228eeb40dad164885782ad63c671d0/image3.png" alt="" class="kg-image" width="1999" height="492" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Gateway secures teams by making the first destination a Cloudflare data center located near them, for all outbound traffic. The product places Cloudflare’s global network between users and the Internet, rather than forcing the Internet through legacy hardware on-site.</p>
 	<p>Cloudflare Gateway’s first feature begins by preventing users from running into phishing scams or malware sites by combining the world’s fastest DNS resolver with Cloudflare’s threat intelligence. Gateway resolver can be deployed to office networks and user devices in a matter of minutes. Once configured, Gateway actively blocks potential malware and phishing sites while also applying content filtering based on policies administrators configure.</p>
 	<p>However, threats can be hidden in otherwise healthy hostnames. To <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protect users from more advanced threats</a>, Gateway will audit URLs and, if enabled, inspect &nbsp;packets to find potential attacks before they compromise a device or office network. That same deep packet inspection can then be applied to prevent the accidental or malicious export of data.</p>
 	<p>Organizations can add Gateway’s advanced threat prevention in two models:</p>
 	<ol>
-		<li>by connecting office networks to the Cloudflare security fabric through GRE tunnels and</li>
-		<li>by distributing forward proxy clients to mobile devices.</li>
+		<li>
+			<p>by connecting office networks to the Cloudflare security fabric through GRE tunnels and</p>
+		</li>
+		<li>
+			<p>by distributing forward proxy clients to mobile devices.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PyAY4mfXgOIFrJub2mJ3b/ff4b1bb04a022685766dec505fe04a43/image1.png" alt="" class="kg-image" width="1920" height="1369" loading="lazy">
+
+	</figure>
 	<p>The first model, delivered through Cloudflare Magic Transit, will give enterprises a way to migrate to Gateway without disrupting their current workflow. Instead of backhauling office traffic to centralized on-premise hardware, teams will point traffic to Cloudflare over GRE tunnels. Once the outbound traffic arrives at Cloudflare, Gateway can apply file type controls, in-line inspection, and data loss protection without impacting connection performance. Simultaneously, Magic Transit <a href="https://www.cloudflare.com/network-services/solutions/enterprise-network-security">protects</a> a corporate IP network from inbound attacks.</p>
 	<p>When users leave the office, Gateway’s client application will deliver the same level of Internet security. Every connection from the device will pass through Cloudflare first, where Gateway can apply threat prevention policies. Cloudflare can also deliver that security without compromising user experience, building on new technologies like the <a href="https://www.wireguard.com">WireGuard protocol</a> and integrating features from Cloudflare Warp, our popular individual forward proxy.</p>
 	<p>In both environments, one of the most common vectors for attacks is still the browser. Zero-day threats can compromise devices by using the browser as a vehicle to execute code.</p>
 	<p>Existing <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">browser isolation</a> solutions attempt to solve this challenge in one of two approaches: 1) pixel pushing and 2) DOM reconstruction. Both approaches lead to tradeoffs in performance and security. Pixel pushing degrades speed while also driving up the cost to stream sessions to users. DOM reconstruction attempts to strip potentially harmful content before sending it to the user. That tactic relies on known vulnerabilities and is still exposed to the zero day threats that isolation tools were meant to solve.</p>
 	<p>Cloudflare Gateway will feature always-on browser isolation that not only protects users from zero day threats, but can also make browsing the Internet faster. The solution will apply a patented approach to send vector commands that a browser can render without the need for an agent on the device. A user’s browser session will instead run in a Cloudflare data center where Gateway destroys the instance at the end of each session, keeping malware away from user devices without compromising performance.</p>
 	<p>When deployed, remote browser sessions will run in one of Cloudflare’s 200 data centers, connecting users to a faster, safer model of navigating the Internet without the compromises of legacy approaches. If you would like to learn more about this approach to browser isolation, I'd encourage you to read Darren Remington's <a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation">blog post on the topic</a>.</p>
-	<h2 id="why-cloudflare">Why Cloudflare?</h2>
+	<h2>Why Cloudflare?</h2>
 	<p>To make infrastructure safer, and web properties faster, Cloudflare built out one of the world’s largest and most sophisticated networks. Cloudflare for Teams builds on that same platform, and all of its unique advantages.</p>
-	<h3 id="fast">Fast</h3>
+	<h3>Fast</h3>
 	<p>Security should always be bundled with performance. Cloudflare’s infrastructure products delivered better protection while also improving speed. That’s possible because of the network we’ve built, both its distribution and how the data we have about the network allows Cloudflare to optimize requests and connections.</p>
 	<p>Cloudflare for Teams brings that same speed to end users by using that same network and route optimization. Additionally, Cloudflare has built industry-leading components that will become features of this new platform. All of these components leverage Cloudflare’s network and scale to improve user performance.</p>
 	<p>Gateway’s DNS-filtering features build on Cloudflare’s <a href="https://one.one.one.one">1.1.1.1</a> public DNS resolver, the world’s fastest resolver according to <a href="https://www.dnsperf.com/#!dns-resolvers">DNSPerf</a>. To protect entire connections, Cloudflare for Teams will deploy the same technology that underpins <a href="https://blog.cloudflare.com/announcing-warp-plus">Warp</a>, a new type of VPN with consistently better reviews than competitors.</p>
-	<h3 id="massive-scalability">Massive scalability</h3>
+	<h3>Massive scalability</h3>
 	<p>Cloudflare’s 30 TBps of network capacity can scale to meet the needs of nearly any enterprise. Customers can stop worrying about buying enough hardware to meet their organization’s needs and, instead, replace it with Cloudflare.</p>
-	<h3 id="near-users-wherever-they-are-literally">Near users, wherever they are — literally</h3>
+	<h3>Near users, wherever they are — literally</h3>
 	<p>Cloudflare’s network operates in 200 cities and more than 90 countries around the world, putting Cloudflare’s security and performance close to users, wherever they work.</p>
 	<p>That network includes presence in global headquarters, like London and New York, but also in traditionally underserved regions around the world.</p>
 	<p>Cloudflare data centers operate within 100 milliseconds of 99% of Internet-connected population in the developed world, and within 100 milliseconds of 94% of the Internet-connected population globally. All of your end users should feel like they have the performance traditionally only available to those in headquarters.</p>
-	<h3 id="easier-for-administrators">Easier for administrators</h3>
+	<h3>Easier for administrators</h3>
 	<p>When security products are confusing, teams make mistakes that become incidents. Cloudflare’s solution is straightforward and easy to deploy. Most security providers in this market built features first and never considered usability or implementation.</p>
 	<p>Cloudflare Access can be deployed in less than an hour; Gateway features will build on top of that dashboard and workflow. Cloudflare for Teams brings the same ease-of-use of our tools that protect infrastructure to the products that new secure users, devices, and data.</p>
-	<h3 id="better-threat-intelligence">Better threat intelligence</h3>
+	<h3>Better threat intelligence</h3>
 	<p>Cloudflare’s network already secures more than 20 million Internet properties and blocks 72 billion cyber threats each day. We build products using the threat data we gather from protecting 11 million HTTP requests per second on average.</p>
-	<h2 id="what-s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>Cloudflare Access is available right now. You can <a href="https://www.cloudflare.com/teams/access">start replacing</a> your team’s VPN with Cloudflare’s network today. Certain features of Cloudflare Gateway are available in beta now, and others will be added in beta over time. You can <a href="https://www.cloudflare.com/teams/gateway">sign up</a> to be notified about Gateway now.</p>
 </div>

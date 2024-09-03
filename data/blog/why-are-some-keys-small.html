@@ -1,66 +1,72 @@
-<div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Tk0IsOdyW1PzT3xtzzxxw/b9bf175baf7e229bc70f546ead5a492b/why-are-some-keys-small.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>If you connect to <a href="https://www.cloudflare.com">CloudFlare's web site</a> using HTTPS the connection will be secured using one of the many encryption schemes supported by SSL/TLS. When I connect using Chrome I get an RC4_128 connection (with a 128-bit key) which used the ECDHE_RSA key exchange mechanism (with a 2,048-bit key) to set the connection up.</p>
-	<p><img alt="CloudFlare TLS Connection" src="https://blog.cloudflare.com/content/images/cloudflare-tls.png" title="CloudFlare TLS Connection"></p>
-	<p>If you're not familiar with the cryptographic protocols involved you might be wondering why one part uses a 128-bit key and another a 2,048-bit key. And you'd be forgiven for wondering why a large key wasn't used throughout and whether a 128-bit key is weaker than a 2,048-bit key. This blog post will explain why a 128-bit <em>symmetric</em> key is, in fact, a bit more secure than a 2,048-bit <em>asymmetric</em> key; you have to look at both the type of encryption being used (symmetric or asymmetric) and the key length to understand the strength of the encryption.</p>
-	<p>My connection above used a symmetric cipher (RC4_128) with a 128-bit<br>
-		key and an asymmetric cipher (ECDHE_RSA) with a 2,048-bit key.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G4da35qbg9auSgeT2YClg/0e67c6ccd5c676aaf3e4c3601d00ec9f/cloudflare-tls.png" alt="CloudFlare TLS Connection" class="kg-image" width="306" height="433" loading="lazy">
+
+	</figure>
+	<p>If you're not familiar with the cryptographic protocols involved you might be wondering why one part uses a 128-bit key and another a 2,048-bit key. And you'd be forgiven for wondering why a large key wasn't used throughout and whether a 128-bit key is weaker than a 2,048-bit key. This blog post will explain why a 128-bit <i>symmetric</i> key is, in fact, a bit more secure than a 2,048-bit <i>asymmetric</i> key; you have to look at both the type of encryption being used (symmetric or asymmetric) and the key length to understand the strength of the encryption.</p>
+	<p>My connection above used a symmetric cipher (RC4_128) with a 128-bitkey and an asymmetric cipher (ECDHE_RSA) with a 2,048-bit key.</p>
 	<p>You might also have seen other key lengths in use. For example, when I connect to the British Government portal <a href="https://www.gov.uk">gov.uk</a> I get a TLS connection that uses AES_256_CBC (with a 256-bit key) set up using RSA with a 2,048-bit key. It's not uncommon to see RSA with a 1,024-bit key as well.</p>
 	<p>To understand these key lengths it's necessary to understand a little about the actual encryption schemes they are used with.</p>
-	<h3 id="symmetriccryptography">Symmetric Cryptography</h3>
+	<h3>Symmetric Cryptography</h3>
 	<p>The RC4_128 and AES_256_CBC schemes mentioned above are <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">symmetric cryptographic schemes</a>. Symmetric simply means that the same key is used to encipher and decipher the encrypted web traffic. In one case, a 128-bit key is used, in another a 256-bit key.</p>
 	<p>Symmetric cryptography is the oldest form there is. When children use a <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Cipher</a> (shifting each letter in the alphabet some fixed number of places) they are performing symmetric cryptography. In that case, the key is the number of places to shift letters and there are 26 possible keys (which is roughly like saying the Caesar Cipher has a roughly 5-bit key).</p>
 	<p>Here's a Caesar Shift with a key of 7 (each letter is moved up in the alphabet 7 places):</p>
-	<pre>ISTHE BESTT HATCO RPORA LBOBB YSHAF TOECA NDOON SHORT NOTIC E
-PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L
-</pre>
-	<p><img alt="Caesar Cipher" src="https://blog.cloudflare.com/content/images/caesar-cipher.png" title="Caesar Cipher"></p>
+	<p>ISTHE BESTT HATCO RPORA LBOBB YSHAF TOECA NDOON SHORT NOTIC E
+		PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QAkwOHHM2r0OUPElBkBpv/665a9b1f12bb90676b0f50f7f6165df0/caesar-cipher.png" alt="Caesar Cipher" class="kg-image" width="500" height="211" loading="lazy">
+
+	</figure>
 	<p>There are lots of ways to break the Caesar Cipher, but one way is to try out all 26 possible keys. That's really not that hard since there are only 26 possible solutions:</p>
-	<pre>    PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L
-    ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -
- 0: PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L
- 1: OYZNK HKYZZ NGZIU XVUXG RHUHH EYNGL ZUKIG TJUUT YNUXZ TUZOI K
- 2: NXYMJ GJXYY MFYHT WUTWF QGTGG DXMFK YTJHF SITTS XMTWY STYNH J
- 3: MWXLI FIWXX LEXGS VTSVE PFSFF CWLEJ XSIGE RHSSR WLSVX RSXMG I
- 4: LVWKH EHVWW KDWFR USRUD OEREE BVKDI WRHFD QGRRQ VKRUW QRWLF H
- 5: KUVJG DGUVV JCVEQ TRQTC NDQDD AUJCH VQGEC PFQQP UJQTV PQVKE G
- 6: JTUIF CFTUU IBUDP SQPSB MCPCC ZTIBG UPFDB OEPPO TIPSU OPUJD F
- 7: ISTHE BESTT HATCO RPORA LBOBB YSHAF TOECA NDOON SHORT NOTIC E
- 8: HRSGD ADRSS GZSBN QONQZ KANAA XRGZE SNDBZ MCNNM RGNQS MNSHB D
- 9: GQRFC ZCQRR FYRAM PNMPY JZMZZ WQFYD RMCAY LBMML QFMPR LMRGA C
-10: FPQEB YBPQQ EXQZL OMLOX IYLYY VPEXC QLBZX KALLK PELOQ KLQFZ B
-11: EOPDA XAOPP DWPYK NLKNW HXKXX UODWB PKAYW JZKKJ ODKNP JKPEY A
-12: DNOCZ WZNOO CVOXJ MKJMV GWJWW TNCVA OJZXV IYJJI NCJMO IJODX Z
-13: CMNBY VYMNN BUNWI LJILU FVIVV SMBUZ NIYWU HXIIH MBILN HINCW Y
-14: BLMAX UXLMM ATMVH KIHKT EUHUU RLATY MHXVT GWHHG LAHKM GHMBV X
-15: AKLZW TWKLL ZSLUG JHGJS DTGTT QKZSX LGWUS FVGGF KZGJL FGLAU W
-16: ZJKYV SVJKK YRKTF IGFIR CSFSS PJYRW KFVTR EUFFE JYFIK EFKZT V
-17: YIJXU RUIJJ XQJSE HFEHQ BRERR OIXQV JEUSQ DTEED IXEHJ DEJYS U
-18: XHIWT QTHII WPIRD GEDGP AQDQQ NHWPU IDTRP CSDDC HWDGI CDIXR T
-19: WGHVS PSGHH VOHQC FDCFO ZPCPP MGVOT HCSQO BRCCB GVCFH BCHWQ S
-20: VFGUR ORFGG UNGPB ECBEN YOBOO LFUNS GBRPN AQBBA FUBEG ABGVP R
-21: UEFTQ NQEFF TMFOA DBADM XNANN KETMR FAQOM ZPAAZ ETADF ZAFUO Q
-22: TDESP MPDEE SLENZ CAZCL WMZMM JDSLQ EZPNL YOZZY DSZCE YZETN P
-23: SCDRO LOCDD RKDMY BZYBK VLYLL ICRKP DYOMK XNYYX CRYBD XYDSM O
-24: RBCQN KNBCC QJCLX AYXAJ UKXKK HBQJO CXNLJ WMXXW BQXAC WXCRL N
-25: QABPM JMABB PIBKW ZXWZI TJWJJ GAPIN BWMKI VLWWV APWZB VWBQK M
-</pre>
-	<h3 id="howlong">How long?</h3>
-	<p>The goal of modern symmetric cryptography is to make this sort of<br>
-		'trying out all the possible keys' the only approach to breaking a symmetric cipher. Algorithms like <a href="https://en.wikipedia.org/wiki/RC4">RC4</a> and <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> scramble data based on a key. The key itself is, ideally, randomly chosen from the set of all possible keys.</p>
+	<pre class="language-bash"><code class="language-bash">PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L
+----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -</code></pre>
+	<p>0: PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L
+		1: OYZNK HKYZZ NGZIU XVUXG RHUHH EYNGL ZUKIG TJUUT YNUXZ TUZOI K
+		2: NXYMJ GJXYY MFYHT WUTWF QGTGG DXMFK YTJHF SITTS XMTWY STYNH J
+		3: MWXLI FIWXX LEXGS VTSVE PFSFF CWLEJ XSIGE RHSSR WLSVX RSXMG I
+		4: LVWKH EHVWW KDWFR USRUD OEREE BVKDI WRHFD QGRRQ VKRUW QRWLF H
+		5: KUVJG DGUVV JCVEQ TRQTC NDQDD AUJCH VQGEC PFQQP UJQTV PQVKE G
+		6: JTUIF CFTUU IBUDP SQPSB MCPCC ZTIBG UPFDB OEPPO TIPSU OPUJD F
+		7: ISTHE BESTT HATCO RPORA LBOBB YSHAF TOECA NDOON SHORT NOTIC E
+		8: HRSGD ADRSS GZSBN QONQZ KANAA XRGZE SNDBZ MCNNM RGNQS MNSHB D
+		9: GQRFC ZCQRR FYRAM PNMPY JZMZZ WQFYD RMCAY LBMML QFMPR LMRGA C
+		10: FPQEB YBPQQ EXQZL OMLOX IYLYY VPEXC QLBZX KALLK PELOQ KLQFZ B
+		11: EOPDA XAOPP DWPYK NLKNW HXKXX UODWB PKAYW JZKKJ ODKNP JKPEY A
+		12: DNOCZ WZNOO CVOXJ MKJMV GWJWW TNCVA OJZXV IYJJI NCJMO IJODX Z
+		13: CMNBY VYMNN BUNWI LJILU FVIVV SMBUZ NIYWU HXIIH MBILN HINCW Y
+		14: BLMAX UXLMM ATMVH KIHKT EUHUU RLATY MHXVT GWHHG LAHKM GHMBV X
+		15: AKLZW TWKLL ZSLUG JHGJS DTGTT QKZSX LGWUS FVGGF KZGJL FGLAU W
+		16: ZJKYV SVJKK YRKTF IGFIR CSFSS PJYRW KFVTR EUFFE JYFIK EFKZT V
+		17: YIJXU RUIJJ XQJSE HFEHQ BRERR OIXQV JEUSQ DTEED IXEHJ DEJYS U
+		18: XHIWT QTHII WPIRD GEDGP AQDQQ NHWPU IDTRP CSDDC HWDGI CDIXR T
+		19: WGHVS PSGHH VOHQC FDCFO ZPCPP MGVOT HCSQO BRCCB GVCFH BCHWQ S
+		20: VFGUR ORFGG UNGPB ECBEN YOBOO LFUNS GBRPN AQBBA FUBEG ABGVP R
+		21: UEFTQ NQEFF TMFOA DBADM XNANN KETMR FAQOM ZPAAZ ETADF ZAFUO Q
+		22: TDESP MPDEE SLENZ CAZCL WMZMM JDSLQ EZPNL YOZZY DSZCE YZETN P
+		23: SCDRO LOCDD RKDMY BZYBK VLYLL ICRKP DYOMK XNYYX CRYBD XYDSM O
+		24: RBCQN KNBCC QJCLX AYXAJ UKXKK HBQJO CXNLJ WMXXW BQXAC WXCRL N
+		25: QABPM JMABB PIBKW ZXWZI TJWJJ GAPIN BWMKI VLWWV APWZB VWBQK M</p>
+	<h3>How long?</h3>
+	<p>The goal of modern symmetric cryptography is to make this sort of'trying out all the possible keys' the only approach to breaking a symmetric cipher. Algorithms like <a href="https://en.wikipedia.org/wiki/RC4">RC4</a> and <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> scramble data based on a key. The key itself is, ideally, randomly chosen from the set of all possible keys.</p>
 	<p>On a side note, there are now <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">serious problems with RC4</a> and as better replacements come along (such as ciphersuites based on AES) CloudFlare will update the ciphersuites it uses to provide the best level of protection.</p>
 	<p>That said the basic idea is that the only way to break into a connection secured with a symmetric cipher is to try out all the keys. Which brings us to 128-bit and 256-bit keys.</p>
-	<p>A 128-bit key means there are 340,282,366,920,938,463,463,374,607,431,768,211,456 possible keys to try. A 256-bit key has the square of that many keys to try: a huge<br>
-		number.</p>
+	<p>A 128-bit key means there are 340,282,366,920,938,463,463,374,607,431,768,211,456 possible keys to try. A 256-bit key has the square of that many keys to try: a hugenumber.</p>
 	<p>To put that in context imagine trying to test all the keys for a 128-bit AES encryption using the <a href="https://en.wikipedia.org/wiki/AES_instruction_set">special AES instructions</a> added to the latest Intel microprocessors. These instructions are designed to be very fast and according to Intel's own data decrypting a block of AES encrypted data would take 5.6 cycles on <a href="http://ark.intel.com/products/47932">Intel i7 Processor</a> with 4 cores.</p>
-	<p>Put another way, that processor could try out one key on one block of data in about 1.7 nanoseconds. At that speed it would take it about <strong>1.3 * 10^12 * the age of the universe</strong> to check all the keys (you'd probably only have to check half before finding the right one so divide that incredibly long time by two).</p>
-	<p>Since personal computers became available roughly 1 billion of them have been sold. Imagine that they all had the same top-of-the-line processor and were used to attack a 128-bit key. You'd manage to get the time down to <strong>660 * the age of the universe</strong>.</p>
-	<p><img alt="Milliways" src="https://blog.cloudflare.com/content/images/milliways.png" title="Milliways"><br>
-		<small>Image (c) BBC TV</small>
-	</p>
+	<p>Put another way, that processor could try out one key on one block of data in about 1.7 nanoseconds. At that speed it would take it about <b>1.3 * 10^12 * the age of the universe</b> to check all the keys (you'd probably only have to check half before finding the right one so divide that incredibly long time by two).</p>
+	<p>Since personal computers became available roughly 1 billion of them have been sold. Imagine that they all had the same top-of-the-line processor and were used to attack a 128-bit key. You'd manage to get the time down to <b>660 * the age of the universe</b>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1w5RgPJRr4Gnxk4E2rWqFu/0deece63787871506b1db1909c6d3d6a/milliways.png" alt="Milliways" class="kg-image" width="500" height="370" loading="lazy">
+
+	</figure>
+	<p>Image (c) BBC TV</p>
 	<p>So, breaking 128-bit keys by brute force just isn't practical. And breaking 256-bit is even less possible. So, for symmetric ciphers, keys of these lengths make sense.</p>
 	<p>But that's not the case for asymmetric cryptography.</p>
-	<h3 id="asymmetrickeylengths">Asymmetric Key Lengths</h3>
+	<h3>Asymmetric Key Lengths</h3>
 	<p><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Asymmetric cryptography</a> works by having two different keys, one for encryption and one for decryption. It's also often called 'public key cryptography' because it's possible to make one key public (allowing someone to encrypt a message) while keeping the other private (only the holder of the private key can decrypt the message encrypted with its related public key).</p>
 	<p>In order to have these special properties the public and private keys are related by some mathematical process. Aside: in the symmetric examples there's only one key and it's just any value of the right number of bits. This randomness of a symmetric key means it can be relatively short as we saw.</p>
 	<p>For example, in the popular RSA scheme used with SSL/TLS the public and private keys consist in part of the product of two large prime numbers. Making an RSA key starts with picking two random prime numbers. The security of RSA relies (in part) on the fact that it's easy to choose two random prime numbers, but it's very hard to discover what they are when just given the product of them.</p>
@@ -69,40 +75,42 @@ PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L
 	<p>But we still haven't answered the question of why these key sizes are so large. Just as in the symmetric key case, attacks on say 2,048-bit RSA are based on trying out all keys of a certain size, but unlike the symmetric key scheme not every 2,048-bit number is an RSA key (because it has to be the product of two primes).</p>
 	<p>So, although the key size is larger there are actually fewer possible RSA keys for any given number of bits that there are for the same symmetric key size. That's because there are only so many prime numbers of that size and below. The RSA scheme can only use pairs of prime numbers, whereas the symmetric schemes can use any number at all of the same size.</p>
 	<p>This diagram (called an <a href="https://en.wikipedia.org/wiki/Ulam_spiral">Ulam Spiral</a>) shows the numbers from 1 to 40,000 as black or white dots. The black dots are the primes</p>
-	<p><img alt="Ulam Spiral" src="https://blog.cloudflare.com/content/images/ulam-spiral.png" title="Ulam Spiral"><br>
-		<small>Image from <a href="https://en.wikipedia.org/wiki/File:Ulam_1.png">Wikipedia</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VIXrzzZVLON430lnHxCPO/42c12d991870edb77ba9a0fb3e97deaa/ulam-spiral.png" alt="Ulam Spiral" class="kg-image" width="400" height="400" loading="lazy">
+
+	</figure>
+	<p>Image from <a href="https://en.wikipedia.org/wiki/File:Ulam_1.png">Wikipedia</a></p>
 	<p>If you used a 256-bit RSA key (roughly consisting of two 128-bit prime numbers multiplied together) you'd quickly find that your encryption had been broken by someone using a fast home PC. There are only so many 128-bit prime numbers and there are fast ways of attacking the factorization problem (such as the <a href="https://en.wikipedia.org/wiki/General_number_field_sieve">General Number Field Sieve</a> that actually make breaking RSA keys a little easier than trying out every single key).</p>
 	<p>Any time there's a pattern in a cryptographic key it represents a chink in the crytography's armor. For example, in a perfect world, people would pick completely random passwords. Because they don't there are patterns in the passwords and they can be guessed or broken without trying out every possible password.</p>
 	<p>RSA keys have a distinctive pattern: they are the product of two prime numbers. That provides the chink; today that chink is best exploited by the General Number Field Sieve. In the symmetric key case there are no such patterns: the keys are just large randomly-chosen numbers. (Of course, if you don't pick your symmetric key randomly you might actually be helping an attacker find a way to break your encrypted messages.)</p>
-	<p>A few years ago the 512-bit RSA key used to sign software for TI<br>
-		calculators was broken by <a href="https://en.wikipedia.org/wiki/Texas_Instruments_signing_key_controversy">an individual</a> using a PC that ran for 73 days using the open source <a href="http://www.boo.net/~jasonp/qs.html">msieve and ggnfs</a> prorgrams.</p>
+	<p>A few years ago the 512-bit RSA key used to sign software for TIcalculators was broken by <a href="https://en.wikipedia.org/wiki/Texas_Instruments_signing_key_controversy">an individual</a> using a PC that ran for 73 days using the open source <a href="http://www.boo.net/~jasonp/qs.html">msieve and ggnfs</a> prorgrams.</p>
 	<p>So, asymmetric keys have to be much larger than symmetric keys because there are less of them for a given number of bits, and because there are patterns within the keys themselves.</p>
-	<h3 id="recommendations">Recommendations</h3>
+	<h3>Recommendations</h3>
 	<p>The <a href="https://www.keylength.com/en/3">ECRYPT II recommendations</a> on key length say that a 128-bit symmetric key provides the same strength of protection as a 3,248-bit asymmetric key. And that those key lengths provide long term protection of data encrypted with them.</p>
 	<p>The length of time a key is good for is also important. Over time computers get faster and techniques for breaking encryption schemes (particuarly techniques for breaking asymmetric encryption) get better. That 512-bit key used for TI calculators probably looked pretty safe when it was first chosen. And in 1999 a key of that length took a <a href="https://en.wikipedia.org/wiki/Cray_C90">supercomputer</a> to break.</p>
-	<p><img alt="Sneakers" src="https://blog.cloudflare.com/content/images/sneakers.png" title="Sneakers"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43FhANStq4MmuxKjgUXS6Y/968b16d0c5745431b72012dd63ed3cec/sneakers.png" alt="Sneakers" class="kg-image" width="500" height="268" loading="lazy">
+
+	</figure>
 	<p>We keep an eye on these reports when choosing ciphers and key lengths to secure our and our customers' communications.</p>
 	<p>Because of the importance of protecting our customers' communications CloudFlare has also opted to roll out <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a> for our SSL/TLS connections. That means that the public/private keys used for connections are generated freshly each time. That prevents bulk attacks where a single public/private key (such as the one used in simple RSA-based certificates) is broken revealing all of the symmetric keys used to secure HTTPS for a web site.</p>
-	<h3 id="forwardsecrecyandellipticcurves">Forward Secrecy and Elliptic Curves</h3>
-	<p>Returning to the HTTPS connection I made to CloudFlare at the start, the key negotiation was done using ECDHE_RSA. That's the ephemeral version of the Diffie-Hellman key exchange mechanism that uses elliptic curves and RSA for authentication. That's quite a<br>
-		mouthful. It breaks down like this:</p>
+	<h3>Forward Secrecy and Elliptic Curves</h3>
+	<p>Returning to the HTTPS connection I made to CloudFlare at the start, the key negotiation was done using ECDHE_RSA. That's the ephemeral version of the Diffie-Hellman key exchange mechanism that uses elliptic curves and RSA for authentication. That's quite amouthful. It breaks down like this:</p>
 	<ol>
 		<li>
-			The public/private key pair used to this connection was ephemeral: it was only created for this connection. That's what gives 'forward secrecy'.
+			<p>The public/private key pair used to this connection was ephemeral: it was only created for this connection. That's what gives 'forward secrecy'.</p>
 		</li>
 		<li>
-			The actual public-key encryption scheme used was <a href="https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman">Elliptic Curve Diffie-Hellman</a>. Elliptic Curve Cryptography uses a different branch of mathematics than RSA. Looking at the ECRYPT II report shows that a 128-bit symmetric key is as strong as a 3,248-bit asymmetric key; to get the equivalent strength from an Elliptic Curve Cryptographic scheme requires a key
-			with 256-bits.
+			<p>The actual public-key encryption scheme used was <a href="https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman">Elliptic Curve Diffie-Hellman</a>. Elliptic Curve Cryptography uses a different branch of mathematics than RSA. Looking at the ECRYPT II report shows that a 128-bit symmetric key is as strong as a 3,248-bit asymmetric key; to get the equivalent strength from an Elliptic Curve Cryptographic scheme requires a key with 256-bits.</p>
 		</li>
 		<li>
-			So, Google Chrome set up an ephemeral <a href="https://www.imperialviolet.org/2011/11/22/forwardsecret.html">256-bit</a> Elliptic Curve Diffie Hellman public/private key pair and used it to agree on a 128-bit symmetric key for the rest of the communication.
+			<p>So, Google Chrome set up an ephemeral <a href="https://www.imperialviolet.org/2011/11/22/forwardsecret.html">256-bit</a> Elliptic Curve Diffie Hellman public/private key pair and used it to agree on a 128-bit symmetric key for the rest of the communication.</p>
 		</li>
 		<li>
-			To prove that the web site really was www.cloudflare.com the
-			2,048-bit RSA key was used along with the web site's certificate.
+			<p>To prove that the web site really was <a href="https://www.cloudflare.com">www.cloudflare.com</a> the 2,048-bit RSA key was used along with the web site's certificate.</p>
 		</li>
 	</ol>
 	<p>So, three different key lengths were used: 128-bit (with RC4), 256-bit (with ECDHE) and 2,048-bit (with RSA). All three key lengths provide similar levels of security.</p>
-	<!--kg-card-end: markdown-->
 </div>

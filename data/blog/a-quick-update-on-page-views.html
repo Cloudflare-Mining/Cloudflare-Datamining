@@ -1,9 +1,12 @@
 <div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="A Quick Update on Page Views" src="https://blog.cloudflare.com/content/images/ajax_logo.jpg.scaled500.jpg" title="A Quick Update on Page Views"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6a1tTTaNTAJ3T273e4pAAr/fd5002617109d12b99239953266e21b2/ajax_logo.jpg.scaled500.jpg" alt="A Quick Update on Page Views" class="kg-image" width="285" height="300" loading="lazy">
+
+	</figure>
 	<p>About a month ago I wrote a blog post titled: <a href="https://blog.cloudflare.com/understanding-analytics-when-is-a-page-view-n">When Is a Page View Not a Page View.</a></p>
 	<p>It explained how CloudFlare counted page views differently than beacon-based analytics systems like Google Analytics. While we were following the industry-standard method of counting page views based on raw logs, we weren't entirely happy with the results in some cases. Specifically, websites with a lot of AJAX-driven requests were seeing extremely high page view counts that simply didn't jive with what they expected.</p>
 	<p>On Friday (26 Aug 2011), we pushed a change to our logging system to help get page views more in line with expectations. We no longer treat AJAX (XHR) calls as page views. These calls will continue to be represented in the overall "Hits" number, which counts all resource requests. Overall, this has resulted in about a 17% drop in page views reported system wide. For individual sites, the impact is either nothing (in most cases) or substantial (for sites that rely heavily on AJAX). For sites in the latter category, you're likely to see a significant drops in page view counts with the new number being more in line with what you'd expect.</p>
 	<p>The update required us to change the way we were counting logs at the edge of our network. This means it's not possible for us to go back and revert historical page view counts. Going forward, we're confident that this will provide a more accurate representation of what people expect for page views.</p>
-	<!--kg-card-end: markdown-->
 </div>

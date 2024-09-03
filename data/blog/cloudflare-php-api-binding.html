@@ -1,38 +1,48 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/A80E511F-98BF-422F-B39A-22D51DA0A3BA-2.JPG" alt="" loading="lazy"></p>
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WUIqB40RMOZZrX73E0TTI/b5e359338df87dfb310a9b53f1cf069a/A80E511F-98BF-422F-B39A-22D51DA0A3BA-2.JPG.jpeg" alt="" class="kg-image" width="1000" height="750" loading="lazy">
+
+	</figure>
 	<p>Back in May last year, one of my colleagues blogged about the introduction of our <a href="https://blog.cloudflare.com/python-cloudflare">Python binding for the Cloudflare API</a> and drew reference to our other bindings in <a href="https://github.com/cloudflare/cloudflare-go">Go</a> and <a href="https://github.com/cloudflare/node-cloudflare">Node</a>. Today we are complimenting this range by introducing a new official binding, this time in <a href="https://github.com/cloudflare/cloudflare-php">PHP</a>.</p>
 	<p>This binding is available via Packagist as <a href="https://packagist.org/packages/cloudflare/sdk">cloudflare/sdk</a>, you can install it using Composer simply by running <code>composer require cloudflare/sdk</code>. We have documented various use-cases in our <a href="https://support.cloudflare.com/hc/en-us/articles/115001661191">"Cloudflare PHP API Binding" KB article</a> to help you get started.</p>
 	<p>Alternatively should you wish to help contribute, or just give us a star on GitHub, feel free to browse to the <a href="https://github.com/cloudflare/cloudflare-php">cloudflare-php source code</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/installing-cloudflare-php.png" alt="Installing cloudflare/sdk" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cb8c0aCRK1QxtwReVtMDc/f28c155c63e23395fd81b74982471ac5/installing-cloudflare-php.png" alt="Installing cloudflare/sdk" class="kg-image" width="1940" height="888" loading="lazy">
+
+	</figure>
 	<p>PHP is a controversial language, and there is no doubt there are elements of bad design within the language (as is the case with many other languages). However, love it or hate it, PHP is a language of high adoption; as of September 2017 <a href="https://w3techs.com/technologies/overview/programming_language/all">W3Techs</a> report that PHP is used by 82.8% of all the websites whose server-side programming language is known. In creating this binding the question clearly wasn't on the merits of PHP, but whether we wanted to help drive improvements to the developer experience for the sizeable number of developers integrating with us whilst using PHP.</p>
 	<p>In order to help those looking to contribute or build upon this library, I write this blog post to explain some of the design decisions made in putting this together.</p>
-	<h3 id="exclusivelyforphp7">Exclusively for PHP 7</h3>
+	<h3>Exclusively for PHP 7</h3>
 	<p>PHP 5 initially introduced the ability for type hinting on the basis of classes and interfaces, this opened up (albeit seldom used) parametric polymorphic behaviour in PHP. Type hinting on the basis of interfaces made it easier for those developing in PHP to follow the Gang of Four's famous guidance: "Program to an 'interface', not an 'implementation'."</p>
 	<p>Type hinting has slowly developed in PHP, in PHP 7.0 the ability for Scalar Type Hinting was released after a few rounds of RFCs. Additionally PHP 7.0 introduced Return Type Declarations, allowing return values to be type hinted in a similar way to argument type hinting. In this library we extensively use Scalar Type Hinting and Return Type Declarations thereby restricting the backward compatibility that's available with PHP 5.</p>
 	<p>In order for backward compatibility to be available, these improvements to type hinting simply would not be implementable and the associated benefits would be lost. With Active Support <a href="http://php.net/supported-versions.php">no longer being offered to PHP 5.6</a> and Security Support little over a year away from disappearing for the entirety of PHP 5.x, we decided the additional coverage wasn't worth the cost.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/php-support.png" alt="PHP version history" loading="lazy"></p>
-	<h3 id="objectcomposition">Object Composition</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RJX9jaiMJuc3J7e8OBCor/f9e00ec43acab7ccd54a210706d09303/php-support.png" alt="PHP version history" class="kg-image" width="1890" height="462" loading="lazy">
+
+	</figure>
+	<h3>Object Composition</h3>
 	<blockquote>
-		<p>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <cite><a href="https://www.martinfowler.com/articles/designDead.html">Martin Fowler</a></cite></p>
+		<p>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <a href="https://www.martinfowler.com/articles/designDead.html">Martin Fowler</a></p>
 	</blockquote>
 	<p>When getting started with this package, you'll notice there are 3 classes you'll need to instantiate:</p>
-	<pre><code class="language-php">$key     = new \Cloudflare\API\Auth\APIKey('user@example.com', 'apiKey');
+	<pre class="language-php"><code class="language-php">$key     = new \Cloudflare\API\Auth\APIKey('user@example.com', 'apiKey');
 $adapter = new Cloudflare\API\Adapter\Guzzle($key);
 $user    = new \Cloudflare\API\Endpoints\User($adapter);
     
-echo $user-&gt;getUserID();
-</code></pre>
+echo $user-&gt;getUserID();</code></pre>
 	<p>The first class being instantiated is called <code>APIKey</code> (a few other classes for authentication are available). We then proceed to instantiate the <code>Guzzle</code> class and the <code>APIKey</code> object is then injected into the constructor of the <code>Guzzle</code> class. The <code>Auth</code> interface that the <code>APIKey</code> class implements is fairly simple:</p>
-	<pre><code class="language-php">namespace Cloudflare\API\Auth;
+	<pre class="language-php"><code class="language-php">namespace Cloudflare\API\Auth;
 
 interface Auth
 {
     public function getHeaders(): array;
-}
-</code></pre>
+}</code></pre>
 	<p>The <code>Adapter</code> interface (which the <code>Guzzle</code> class implements) makes explicit that an object built on the <code>Auth</code> interface is expected to be injected into the constructor:</p>
-	<pre><code>namespace Cloudflare\API\Adapter;
+	<pre class="language-bash"><code class="language-bash">namespace Cloudflare\API\Adapter;
 
 use Cloudflare\API\Auth\Auth;
 use Psr\Http\Message\ResponseInterface;
@@ -42,12 +52,11 @@ interface Adapter
 ...
     public function __construct(Auth $auth, string $baseURI);
 ...
-}
-</code></pre>
+}</code></pre>
 	<p>In doing so; we define that classes which implement the <code>Adapter</code> interface are to be composed using objects made from classes which implement the <code>Auth</code> interface.</p>
 	<p>So why am I explaining basic Dependency Injection here? It is critical to understand as the design of our API changes, the mechanisms for Authentication may vary independently of the HTTP Client or indeed API Endpoints themselves. Similarly the HTTP Client or the API Endpoints may vary independently of the other elements involved. Indeed, this package already contains three classes for the purpose of authentication (<code>APIKey</code>, <code>UserServiceKey</code> and <code>None</code>) which need to be interchangeably used. This package therefore considers the possibility for changes to different components in the API and seeks to allow these components to vary independently.</p>
 	<p>Dependency Injection is also used where the parameters for an API Endpoint become more complicated then what is permitted by simpler variables types; for example, this is done for defining the Target or Configuration when configuring a Page Rule:</p>
-	<pre><code class="language-php">require_once('vendor/autoload.php');
+	<pre class="language-php"><code class="language-php">require_once('vendor/autoload.php');
 
 $key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'apiKey');
 $adapter = new Cloudflare\API\Adapter\Guzzle($key);
@@ -61,18 +70,21 @@ $pageRulesConfig = new \Cloudflare\API\Configurations\PageRulesActions();
 $pageRulesConfig-&gt;setCacheLevel('bypass');
 
 $pageRules = new \Cloudflare\API\Endpoints\PageRules($adapter);
-$pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true, 6);
-</code></pre>
+$pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true, 6);</code></pre>
 	<p>The structure of this project is overall based on simple object composition; this provides a far more simple object model for the long-term and a design that provides higher flexibility. For example; should we later want to create an Endpoint class which is a <a href="https://en.wikipedia.org/wiki/Composite_pattern">composite</a> of other Endpoints, it becomes fairly trivial for us to build this by implementing the same interface as the other Endpoint classes. As more code is added, we are able to keep the design of the software relatively thinly layered.</p>
-	<h3 id="testingmockinghttprequests">Testing/Mocking HTTP Requests</h3>
+	<h3>Testing/Mocking HTTP Requests</h3>
 	<p>If you're interesting in helping contribute to this repository; there are two key ways you can help:</p>
 	<ol>
-		<li>Building out coverage of endpoints on our API</li>
-		<li>Building out test coverage of those endpoint classes</li>
+		<li>
+			<p>Building out coverage of endpoints on our API</p>
+		</li>
+		<li>
+			<p>Building out test coverage of those endpoint classes</p>
+		</li>
 	</ol>
 	<p>The PHP-FIG (PHP Framework Interop Group) put together a standard on how HTTP responses can be represented in an interface, this is described in the <a href="http://www.php-fig.org/psr/psr-7">PSR-7 standard</a>. This response interface is utilised by our HTTP <code>Adapter</code> interface in which responses to API requests are type hinted to this interface (<code>Psr\Http\Message\ResponseInterface</code>).</p>
 	<p>By using this standard, it's easier to add further abstractions for additional HTTP clients and mock HTTP responses for unit testing. Let's assume the JSON response is stored in the <code>$response</code> variable and we want to test the <code>listIPs</code> method in the <code>IPs</code> Endpoint class:</p>
-	<pre><code class="language-php">public function testListIPs() {
+	<pre class="language-php"><code class="language-php">public function testListIPs() {
   $stream = GuzzleHttp\Psr7\stream_for($response);
   $response = new GuzzleHttp\Psr7\Response(200, ['Content-Type' =&gt; 'application/json'], $stream);
   $mock = $this-&gt;getMockBuilder(\Cloudflare\API\Adapter\Adapter::class)-&gt;getMock();
@@ -87,12 +99,10 @@ $pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true,
    $ips = $ips-&gt;listIPs();
    $this-&gt;assertObjectHasAttribute("ipv4_cidrs", $ips);
    $this-&gt;assertObjectHasAttribute("ipv6_cidrs", $ips);
-}
-</code></pre>
+}</code></pre>
 	<p>We are able to build a simple mock of our <code>Adapter</code> interface by using the standardised PSR-7 response format, when we do so we are able to define what parameters PHPUnit expects to be passed to this mock. With a mock <code>Adapter</code> class in place we are able to test the <code>IPs</code> Endpoint class as any if it was using a real HTTP client.</p>
-	<h3 id="conclusions">Conclusions</h3>
+	<h3>Conclusions</h3>
 	<p>Through building on modern versions of PHP, using good Object-Oriented Programming theory and allowing for effective testing we hope our PHP API binding provides a developer experience that is pleasant to build upon.</p>
 	<p>If you're interesting in helping improve the design of this codebase, I'd encourage you to take a look at the <a href="https://github.com/cloudflare/cloudflare-php">PHP API binding source code</a> on GitHub (and optionally give us a star).</p>
 	<p>If you work with Go or PHP and you're interested in helping Cloudflare turn our high-traffic customer-facing API into an ever more modern service-oriented environment; we're hiring for Web Engineers in <a href="https://boards.greenhouse.io/cloudflare/jobs/745994#.WcWKLtOGPys">San Francisco</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/682927#.WcWKPdOGPys">Austin</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/574636#.WcWKQdOGPys">London</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

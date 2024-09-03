@@ -1,16 +1,20 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LJDgPp6sQymIMqjRDBuKZ/db8915c2b839436c306496b66d19923e/weird-bug-of-the-day-twitter-in-app-browser-cant-visit-site.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>We keep a close eye on tweets that mention CloudFlare because sometimes we get early warning about odd errors that we are not seeing ourselves through our monitoring systems.</p>
 	<p>Towards the end of August we saw a small number of tweets like this one:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/Screen-Shot-2015-09-07-at-14-18-42.png" alt="" loading="lazy"></p>
-	<p>indicating that trying to browse to a CloudFlare customer web site using the Twitter in-app browser was resulting in an error page. Which was <em>very odd</em> because it was clearly only happening occasionally: <em>very</em> occasionally.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3N70nN3la2z027RKH74AMt/d7e2ba7b21b29b1e1ac54e3fec15708f/Screen-Shot-2015-09-07-at-14-18-42.png" alt="" class="kg-image" width="1188" height="648" loading="lazy">
+
+	</figure>
+	<p>indicating that trying to browse to a CloudFlare customer web site using the Twitter in-app browser was resulting in an error page. Which was <i>very odd</i> because it was clearly only happening occasionally: <i>very</i> occasionally.</p>
 	<p>Luckily, the person who tweeted that was in the same timezone as me and able to help debug together (thanks <a href="https://twitter.com/jamesrwhite">James White</a>!); we discovered that the following sequence of events was necessary to reproduce the bug:</p>
 	<ol>
 		<li>
-			<p>Click on a link in a tweet to a web site that is using an <em>https</em> URL and open in the Twitter in-app browser (not mobile Safari). This site may or may not be a CloudFlare customer.</p>
+			<p>Click on a link in a tweet to a web site that is using an <i>https</i> URL and open in the Twitter in-app browser (not mobile Safari). This site may or may not be a CloudFlare customer.</p>
 		</li>
 		<li>
-			<p>Then click on a link on that page to a site over an <em>http</em> URL. This site must be on CloudFlare.</p>
+			<p>Then click on a link on that page to a site over an <i>http</i> URL. This site must be on CloudFlare.</p>
 		</li>
 		<li>
 			<p>BOOM</p>
@@ -19,7 +23,7 @@
 	<p>That explained why this happened very rarely, but the question became... why did it happen at all? After some debugging it appeared to happen in recent versions of both iOS and the Twitter app (including the iOS 9 beta).</p>
 	<p>To figure out what was going on I turned to <a href="http://www.charlesproxy.com">Charles Proxy</a> and used it to intercept the communication between my iPhone and CloudFlare. Happily, Charles Proxy can <a href="http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications">intercept SSL connections</a> by installing a custom certificate on a phone. I ran Charles Proxy on my laptop, pointed my iPhone it at (to use it as a proxy) and clicked on a tweet to a site that I had set up specially for testing.</p>
 	<p>Charles Proxy showed that the request that generated an error looked like this:</p>
-	<pre><code>GET /test HTTP/1.1\r\n
+	<pre class="language-bash"><code class="language-bash">GET /test HTTP/1.1\r\n
 Host: www.example.com\r\n
 Referer: \r\n
 Accept-Encoding: gzip, deflate\r\n
@@ -27,32 +31,22 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n
 Accept-Language: en-us\r\n
 Connection: keep-alive\r\n
 User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H321 Twitter for iPhone\r\n
-\r\n
-</code></pre>
+\r\n</code></pre>
 	<p>At first glance this looked pretty normal but on a second look something really stuck out:</p>
-	<pre><code>Referer: \r\n
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">Referer: \r\n</code></pre>
 	<p><a href="https://tools.ietf.org/html/rfc7231#section-5.5.2">RFC7231</a> clearly states that if the Referer header is present it must contain a URI:</p>
-	<blockquote>
-		<p>The "Referer" [sic] header field allows the user agent to specify a<br>
-			URI reference for the resource from which the target URI was obtained<br>
-			(i.e., the "referrer", though the field name is misspelled). A user<br>
-			agent MUST NOT include the fragment and userinfo components of the<br>
-			URI reference [RFC3986], if any, when generating the Referer field<br>
-			value.</p>
-		<pre><code>Referer = absolute-URI / partial-URI
-</code></pre>
-	</blockquote>
+	<pre class="language-bash"><code class="language-bash">Referer = absolute-URI / partial-URI</code></pre>
 	<p>The RFC also gives a clue is to why the header is in this state when jumping from HTTPS to HTTP:</p>
 	<blockquote>
-		<p>A user agent MUST NOT send a Referer header field in an<br>
-			unsecured HTTP request if the referring page was received with a<br>
-			secure protocol.</p>
+		<p>A user agent MUST NOT send a Referer header field in anunsecured HTTP request if the referring page was received with asecure protocol.</p>
 	</blockquote>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/Screen-Shot-2015-09-07-at-14-48-07.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mtfnt5DXeYMJ6SXR7GOgg/28076255925671062b94ba2d3215d1ec/Screen-Shot-2015-09-07-at-14-48-07.png" alt="" class="kg-image" width="1904" height="327" loading="lazy">
+
+	</figure>
 	<p>CloudFlare's <a href="https://support.cloudflare.com/hc/en-us/articles/200170086-What-does-the-Browser-Integrity-Check-do-">Browser Integrity Check</a> was verifying that the Referer header was well formed and generating the error (since there's a Referer, but it's empty) and it looks like the Twitter app in-app browser (and, we later discovered, the Facebook app in-app browser) are, instead of removing the header, blanking it out.</p>
 	<p>This is a good example of how it's not always easy to be "strictly" RFC-compliant. <a href="https://en.wikipedia.org/wiki/Robustness_principle">Postel's Law</a> tells us that in this case CloudFlare needs to relax its check.</p>
 	<p>We reported this problem to both Twitter and Facebook and rolled out a fix that allows this behavior on the part of these clients and will turn the strict checking back on when it makes sense.</p>
 	<p>But watch your software if you validate the Referer header. You might be running into this oddness.</p>
-	<!--kg-card-end: markdown-->
 </div>

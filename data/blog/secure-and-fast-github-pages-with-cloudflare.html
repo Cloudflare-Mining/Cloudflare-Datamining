@@ -1,97 +1,125 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QVZHcE0PosXx7IOACYe5R/abf16f55dad2ce03f423a4ad53d1bc2d/secure-and-fast-github-pages-with-cloudflare.JPG" alt="">
+<div class="post-content lh-copy gray1">
 	<p>GitHub offers a web hosting service whereby you can serve a static website from a GitHub repository. This platform, GitHub Pages, can be used with CloudFlare whilst using a custom domain name.</p>
 	<p>In this tutorial, I will show you how to use CloudFlare and GitHub together. By taking advantage of CloudFlare’s global network, you can utilise our CDN service to improve your site's performance and security.</p>
 	<p>Whilst GitHub Pages doesn't ordinarily support SSL on custom domains, CloudFlare's Universal SSL allows your users to access your site over SSL, thus opening up the performance advantages of HTTP/2.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/IMG_0651.JPG" alt="GitHub mascot in the CloudFlare London office" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70mtZVLv2Dj2kkNjmWj1q7/2a8c11fd9e9989c55e1a51a629b91abc/IMG_0651.JPG.jpeg" alt="GitHub mascot in the CloudFlare London office" class="kg-image" width="4032" height="3024" loading="lazy">
+
+	</figure>
 	<p>GitHub Pages is designed to host sites that only serve static HTML. The ability to only host static content isn’t as big of a restriction as you might think.</p>
 	<p>Static site generators avoid repetitive update tasks of updating “latest posts” feeds, pagination or sitemaps; whilst generating static HTML that can be uploaded to any web hosting service without a scripting engine. Unlike ancient desktop tools like FrontPage and Dreamweaver which lacked a content model, modern static site generators have the design decisively separate from content.</p>
 	<p>Typically, CMS-based sites must query a database for content, then render the HTML to be served to the end user; all this to serve the same content for request after request. Even with caching this combination is hardly elegant for sites where only the administrator changes the content.</p>
 	<p>With static sites the web server merely needs to serve static HTML to an end user. This has profound performance benefits; static sites walk whilst dynamic sites crawl. Above this, the ability to track all site changes in a Git repository adds better control when it comes to collaborative editing.</p>
 	<p>With static sites there is no CMS, no database; just HTML. No need to worry about <a href="https://bugs.php.net/bug.php?id=71105">patching PHP</a> or plugins with <a href="https://blog.cloudflare.com/the-sleepy-user-agent">insecure database queries</a>.</p>
 	<p>Clearly static sites can’t do everything, namely anything that’s dynamic; though you can utilise JavaScript APIs to add some dynamic functionality if that's a route you want to pursue.</p>
-	<h3 id="step0preparingyoursite">Step 0: Preparing your site</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/1280px-Dr_Jekyll_and_Mr_Hyde_poster_edit2-1.jpg" alt="Dr. Jekyll and Mr. Hyde" loading="lazy"><br>
-		<em><a href="https://en.wikipedia.org/wiki/Strange_Case_of_Dr_Jekyll_and_Mr_Hyde#/media/File:Dr_Jekyll_and_Mr_Hyde_poster_edit2.jpg">Chicago: National Prtg. &amp; Engr. Co.</a></em>
-	</p>
+	<h3>Step 0: Preparing your site</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50nf0J19SYvwLHgvCTNE3T/197df6a206d82d060d946f128ec55cee/1280px-Dr_Jekyll_and_Mr_Hyde_poster_edit2-1.jpg" alt="Dr. Jekyll and Mr. Hyde" class="kg-image" width="1280" height="890" loading="lazy">
+
+	</figure>
+	<p><a href="https://en.wikipedia.org/wiki/Strange_Case_of_Dr_Jekyll_and_Mr_Hyde#/media/File:Dr_Jekyll_and_Mr_Hyde_poster_edit2.jpg"><i>Chicago: National Prtg. &amp; Engr. Co.</i></a></p>
 	<p>For this tutorial, I will be using Jekyll as a static static site generator. Jekyll works by taking a bunch of markdown files and outputting the HTML necessary for a static blog.</p>
 	<p>There is a great list of generators on a site called <a href="http://www.staticgen.com">StaticGen</a>, including a static site generator written in Go called <a href="https://gohugo.io">Hugo</a>. I’m using Jekyll here due to the <a href="https://jekyllrb.com/docs/github-pages">integration with GitHub Pages</a>.</p>
 	<p>If you want to host a JavaScript app or a simple static site, just skip this step.</p>
 	<p>Assuming you have a Ruby version greater than 2.0.0, then you can just <a href="https://jekyllrb.com/docs/installation">install Jekyll</a> by running:</p>
-	<pre><code>gem install jekyll
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">gem install jekyll</code></pre>
 	<p>For this example I’m going to be creating a blog about about plants using Jekyll. To create the blog simply run:</p>
-	<pre><code>jekyll new plants
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">jekyll new plants</code></pre>
 	<p>which will output something like:</p>
-	<pre><code>New jekyll site installed in /Users/junade/plants.
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">New jekyll site installed in /Users/junade/plants.</code></pre>
 	<p>From here I can <code>cd</code> into the <code>plants</code> directory and serve the blog on my local computer as follows:</p>
-	<pre><code>cd plants
-jekyll serve
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cd plants
+jekyll serve</code></pre>
 	<p>A web server will spin up and you’ll find some useful information in your terminal prompt. You should be able to access the site from localhost at port 4000 in your browser: <a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p>
 	<p>Whilst this server is running you can update your site; you will find some useful variables to edit in <code>_config.yml</code>. To add a new post or edit the existing demo, simply add a new markdown file in the <code>_posts</code> directory.</p>
 	<p>Whilst ordinarily you would need to generate your site’s HTML using <code>jekyll build</code> then upload it to the web server of your choice, GitHub allows for raw Jekyll projects to be uploaded to its service; it will handle the building and serving of the HTML itself from the Jekyll project.</p>
 	<p>There is a <a href="https://github.com/github/pages-gem">Ruby Gem for Jekyll sites</a> that ensures they are rendered the same way locally as they do when they are hosted on GitHub Pages if you’re interested.</p>
-	<h3 id="step1settingupourrepository">Step 1: Setting up our repository</h3>
-	<p>Create a GitHub repository which contains the files of the site we want to serve (such as our Jekyll source or our HTML). As my GitHub username is IcyApril, I can create a repository called <code>icyapril.github.io</code>. Be sure that the repository name is all lowercase.<br>
-		<img src="https://blog.cloudflare.com/content/images/2016/06/create_repo_github_pages.png" alt="Creating a GitHub Pages repository" loading="lazy">
-	</p>
+	<h3>Step 1: Setting up our repository</h3>
+	<p>Create a GitHub repository which contains the files of the site we want to serve (such as our Jekyll source or our HTML). As my GitHub username is IcyApril, I can create a repository called <code>icyapril.github.io</code>. Be sure that the repository name is all lowercase.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Xfs9k0OfZU8tVFrtlgWip/9d42d5865d99a85f3958e2e14a38b021/create_repo_github_pages.png" alt="Creating a GitHub Pages repository" class="kg-image" width="975" height="765" loading="lazy">
+
+	</figure>
 	<p>In this repository, whatever is in the main branch ends up published on <code>icyapril.github.io</code>.</p>
 	<p>If you haven’t already, let’s initiate a repository where our site files are:</p>
-	<pre><code>git init
+	<pre class="language-bash"><code class="language-bash">git init
 git add -A
-git commit -m “Initial commit.”
-</code></pre>
+git commit -m “Initial commit.”</code></pre>
 	<p>We can now push files to our host by adding the origin as GitHub; make sure the URL of the origin is customised to be your own repository:</p>
-	<pre><code>git remote add origin git@github.com:IcyApril/icyapril.github.io.git
-git push -u origin master
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">git remote add origin git@github.com:IcyApril/icyapril.github.io.git
+git push -u origin master</code></pre>
 	<p>You should now see your site when you visit <code>[username].github.io</code>.</p>
-	<h3 id="step2settingupourdns">Step 2: Setting up our DNS</h3>
-	<p>I’ll assume you have registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-CloudFlare-account-and-add-a-website">added it to your CloudFlare account</a>.<br>
-		In order to for GitHub to accept traffic from this domain, we need to create a CNAME file in our repository which contains the hostname to accept traffic for.</p>
+	<h3>Step 2: Setting up our DNS</h3>
+	<p>I’ll assume you have registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-CloudFlare-account-and-add-a-website">added it to your CloudFlare account</a>.In order to for GitHub to accept traffic from this domain, we need to create a CNAME file in our repository which contains the hostname to accept traffic for.</p>
 	<p>The following rules apply:</p>
 	<ul>
-		<li>If the CNAME file contains example.com, then www.example.com will redirect to example.com.</li>
-		<li>If the CNAME file contains www.example.com, then example.com will redirect to www.example.com.</li>
+		<li>
+			<p>If the CNAME file contains example.com, then <a href="http://www.example.com">www.example.com</a> will redirect to example.com.</p>
+		</li>
+		<li>
+			<p>If the CNAME file contains <a href="http://www.example.com">www.example.com</a>, then example.com will redirect to <a href="http://www.example.com">www.example.com</a>.</p>
+		</li>
 	</ul>
 	<p>In the Git repository we created in the previous section, let’s add a CNAME file to that repository and commit our changes:</p>
-	<pre><code>echo "www.ju.je" &gt; CNAME
+	<pre class="language-bash"><code class="language-bash">echo "www.ju.je" &gt; CNAME
 git add -A
 git commit -m “Added CNAME file.”
-git push origin master
-</code></pre>
-	<p>We can add the records to point our DNS records to our GitHub Pages account (we can use a CNAME at the root thanks to <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME Flattening</a>:<br>
-		<img src="https://blog.cloudflare.com/content/images/2016/06/Yn1pLtu.png" alt="GitHub Pages DNS CloudFlare" loading="lazy">
-	</p>
+git push origin master</code></pre>
+	<p>We can add the records to point our DNS records to our GitHub Pages account (we can use a CNAME at the root thanks to <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME Flattening</a>:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jZjeTCFx2D8hokGjAD2m4/c14fd31bb96f8320b50cd1d870305492/Yn1pLtu.png" alt="GitHub Pages DNS CloudFlare" class="kg-image" width="964" height="152" loading="lazy">
+
+	</figure>
 	<p>You can find <a href="https://help.github.com/articles/setting-up-an-apex-domain">the most up-to-date IP Addresses</a> from the GitHub Pages documentation.</p>
-	<h3 id="step3timeforssl">Step 3: Time for SSL</h3>
+	<h3>Step 3: Time for SSL</h3>
 	<p>Unfortunately GitHub Pages doesn’t yet support SSL on GitHub Pages for custom domains which would ordinarily rule out using HTTP/2. Whilst the HTTP/2 specification (<a href="https://tools.ietf.org/html/rfc7540">RFC 7540</a>) allows for HTTP/2 over plain-text HTTP/2, all popular browsers require HTTP/2 to run on top of Transport Layer Security; meaning HTTP/2 only being able to run over HTTPS is the de-facto standard.</p>
 	<p>Fortunately, CloudFlare’s Universal SSL option allows us provide a signed SSL certificate to site visitors. This allows us to gain the performance benefits of HTTP/2 and <a href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html">potentially improve search engine rankings</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/cloudflare_ssl_modes.png" alt="CloudFlare's SSL Modes" loading="lazy"></p>
-	<p>In the Crypto tab of your CloudFlare site you should ensure your SSL mode is set to <code>Full</code> but not <code>Full (Strict)</code>:<br>
-		<img src="https://blog.cloudflare.com/content/images/2016/06/T08btVu.png" alt="CloudFlare SSL configuration" loading="lazy">
-	</p>
-	<p>We can now add a Page Rule to enforce HTTPS, as you add other Page Rules make sure this is the primary Page Rule:<br>
-		<img src="https://blog.cloudflare.com/content/images/2016/06/always_use_https_page_rule.png" alt="Always Use HTTPS" loading="lazy">
-	</p>
-	<p>We can also create a Page Rule to ensure that non-www is redirected to www securely when using HTTPS:<br>
-		<img src="https://blog.cloudflare.com/content/images/2016/06/redirect_page_rule_to_www.png" alt="Enforced HTTPS redirect" loading="lazy">
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hHyZ2zWyyRhhA1f7QQ48o/16ef345da65a2d0f367d8a6ef99129fd/cloudflare_ssl_modes.png" alt="CloudFlare's SSL Modes" class="kg-image" width="975" height="627" loading="lazy">
+
+	</figure>
+	<p>In the Crypto tab of your CloudFlare site you should ensure your SSL mode is set to <code>Full</code> but not <code>Full (Strict)</code>:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WdxoW5g3b6hG8DkPD1Kka/419d6bc0e45c4954d27ce2dd98545f32/T08btVu.png" alt="CloudFlare SSL configuration" class="kg-image" width="970" height="199" loading="lazy">
+
+	</figure>
+	<p>We can now add a Page Rule to enforce HTTPS, as you add other Page Rules make sure this is the primary Page Rule:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rNJrxsVAjbZCmrxNXtqHG/243652b80a4c5dd5b7e205367d8e6410/always_use_https_page_rule.png" alt="Always Use HTTPS" class="kg-image" width="975" height="748" loading="lazy">
+
+	</figure>
+	<p>We can also create a Page Rule to ensure that non-www is redirected to www securely when using HTTPS:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60sT5nSCAcf9S1akGJ0YPd/ba7aec6f72fe7b8c8769c0bfe466ad85/redirect_page_rule_to_www.png" alt="Enforced HTTPS redirect" class="kg-image" width="975" height="800" loading="lazy">
+
+	</figure>
 	<p>Enabling HTTP Strict Transport Security (HSTS) will help ensure that your visitors have to communicate to your site over HTTPS, by telling browsers that they should always communicate over encrypted HTTPS. Be careful if you choose to set this though, it may render your site inaccessible if you wish to choose to ever turn HTTPS off.</p>
-	<h3 id="step4cacheallthethings">Step 4: Cache all the things</h3>
+	<h3>Step 4: Cache all the things</h3>
 	<p>CloudFlare has a “Cache Everything” option in Page Rules. For static sites, it allows your HTML to be cached and served directly from CloudFlare's CDN.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/PtBIQyF.png" alt="Cache Everything Page Rule" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vl8huJzTmWXTyQvaEjt1L/bf9579ab2ba1dc57876616dd95553c22/PtBIQyF.png" alt="Cache Everything Page Rule" class="kg-image" width="811" height="621" loading="lazy">
+
+	</figure>
 	<p>When deploying your site you can use the Purge Cache option in the Cache tab on CloudFlare to remove the cached version of the static pages. If you’re using a Continuous Integration system to deploy your site, you can use our <a href="https://api.cloudflare.com">API</a> to clear the cache programmatically.</p>
-	<h3 id="shortcomings">Shortcomings</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/mind_the_gap.png" alt="Mind the Gap" loading="lazy"><br>
-		<em><a href="https://commons.wikimedia.org/wiki/File:MindTheGapVictoria.jpg">WillMcC on WikiMedia</a></em>
-	</p>
+	<h3>Shortcomings</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uyeqKi4p6FkFGOw2WiyaO/fef40298d75b07cb44c86a1b0925aa65/mind_the_gap.png" alt="Mind the Gap" class="kg-image" width="975" height="815" loading="lazy">
+
+	</figure>
+	<p><a href="https://commons.wikimedia.org/wiki/File:MindTheGapVictoria.jpg"><i>WillMcC on WikiMedia</i></a></p>
 	<p>Firstly a word on security. If you are deploying a JavaScript app which communicates with remote APIs, be sure not to use this for sensitive data submissions. As <a href="https://help.github.com/articles/what-are-github-pages">GitHub themselves put it</a>: “GitHub Pages sites shouldn't be used for sensitive transactions like sending passwords or credit card numbers.” Also bear in mind your website source files are publicly accessible in a Git repository, so be extra careful about what you put there.</p>
 	<p>There are some things we can’t do; GitHub Pages doesn’t let us set custom headers, which unfortunately means we can’t do HTTP/2 Server Push right now.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>GitHub Pages, CloudFlare and a static site generator combine to create fast, secure, free hosting for static sites.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,80 +1,93 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AVvV9qBG6RMEdYW4muhoF/3cad7635abf1afa8af9f02f9fa41d224/image1-9.png" alt="" class="kg-image" width="1600" height="740" loading="lazy">
+
+	</figure>
 	<p>In December, <a href="https://blog.cloudflare.com/cloudflare-pages">we announced</a> the beta of <a href="https://pages.cloudflare.com">Cloudflare Pages</a>: a fast, secure, and free way for frontend developers to build, host, and collaborate on Jamstack sites.</p>
 	<p>It’s been incredible to see what happens when you put a powerful tool in developers’ hands. In just a few months of beta, thousands of developers have deployed over ten thousand projects, reaching millions of people around the world.</p>
 	<p>Today, we’re excited to announce that Cloudflare Pages is now available for anyone and ready for your production needs. We’re also excited to show off some of the new features we’ve been working on over the course of the beta, including: web analytics, built in redirects, protected previews, live previews, and optimized images (oh, my!). Lastly, we’ll give you a sneak peek into what we'll be working on next to make Cloudflare Pages your go-to platform for deploying not just static sites, but full-stack applications.</p>
-	<h2 id="what-is-cloudflare-pages">What is Cloudflare Pages?</h2>
+	<h2>What is Cloudflare Pages?</h2>
 	<p>Cloudflare Pages radically simplifies the process of developing and deploying sites by taking care of all the tedious parts of web development. Now, developers can focus on the fun and creative parts instead.</p>
-	<h3 id="seamless-builds-for-developers">Seamless builds for developers</h3>
+	<h3>Seamless builds for developers</h3>
 	<p>Getting started with Cloudflare Pages is as easy as connecting your repository and selecting your framework and build commands.</p>
 	<p>Once you’re set up, the only magic words you’ll need are `git commit` and `git push`. We’ll take care of building and deploying your sites for you, so you won’t ever have to leave your current workflow.</p>
-	<h3 id="instant-feedback-for-teams">Instant feedback for teams</h3>
+	<h3>Instant feedback for teams</h3>
 	<p>With every change, Cloudflare Pages generates a new preview link and posts it to the associated pull request. The preview link makes sharing your work with others easy, whether they’re reviewing the code or the content for each change.</p>
-	<h3 id="bullet-proof-security-and-scale-for-enterprises">Bullet-proof security and scale for enterprises</h3>
+	<h3>Bullet-proof security and scale for enterprises</h3>
 	<p>Every site developed with Cloudflare Pages is deployed to Cloudflare’s network of data centers in over 100 countries — the same network we’ve been building out for the past 10 years with the best performance and security for our customers in mind.</p>
-	<h2 id="but-wait-that-s-not-all">But wait, that’s not all</h2>
+	<h2>But wait, that’s not all</h2>
 	<p>Over the past few months, our developers have been busy too, hardening our offering from beta to general availability, fixing bugs, and working on new features to make building powerful websites even easier.</p>
 	<p>Here are some of the new and improved features you may have missed.</p>
-	<h3 id="integrated-experience-every-step-of-the-way">Integrated experience, every step of the way</h3>
+	<h3>Integrated experience, every step of the way</h3>
 	<p>With Cloudflare Pages, we set out to make developing and deploying sites easy at every step, and that doesn’t stop at production. Launch day is usually when the real work begins.</p>
-	<p><strong>Built-in, free web analytics</strong><br>Speaking of launch days, if there’s one question that’s on my mind on a launch day, it’s: how are things going?</p>
+	<p><b>Built-in, free web analytics</b>Speaking of launch days, if there’s one question that’s on my mind on a launch day, it’s: how are things going?</p>
 	<p>As soon as the go-live button is pressed, I want to know: how many views are we getting? Was the effort worth it? Are users running into errors?</p>
 	<p>The weeks, or months after the launch, I still want to know: is our growth steady? Where is the traffic coming from? Is there anything we can do to improve the user’s experience?</p>
-	<p>With Pages, Cloudflare’s privacy-first <a href="https://www.cloudflare.com/web-analytics">Web Analytics</a> are available to answer all of these essential questions for successfully running your website at scale. Later this week, you will be able to enable analytics with a single click and start tracking your site’s progress <em>and </em>performance, including metrics about your traffic and web core vitals.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><strong>_redirects file support</strong><br>Websites are living projects. As you make updates to your product names, blog post titles, and site layouts, your URLs are bound to change as well. The challenge is not letting those changes leave dead URLs behind for your users to stumble over.</p>
+	<p>With Pages, Cloudflare’s privacy-first <a href="https://www.cloudflare.com/web-analytics">Web Analytics</a> are available to answer all of these essential questions for successfully running your website at scale. Later this week, you will be able to enable analytics with a single click and start tracking your site’s progress <i>and</i> performance, including metrics about your traffic and web core vitals.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pYTpiov3ECJoBsQ5yPdR4/6bd652b8de4dd9d693e8f4f0933f46c8/image2-6.png" alt="" class="kg-image" width="1999" height="1165" loading="lazy">
+
+	</figure>
+	<p><b>_redirects file support</b>Websites are living projects. As you make updates to your product names, blog post titles, and site layouts, your URLs are bound to change as well. The challenge is not letting those changes leave dead URLs behind for your users to stumble over.</p>
 	<p>To avoid leaving behind a trail of dead URLs, you should create redirects that automatically lead the user to your content’s new home. The challenge with creating redirects is coordinating the code change that changes the URL in tandem with the creation of the redirect.</p>
 	<p>You can now do both with one swift commit.</p>
-	<p>By adding a <code>_redirects</code> file to the <a href="https://developers.cloudflare.com/pages/platform/build-configuration">build output directory</a> for your project, you can easily redirect users to the right URL. Just add the redirects into the file in the following format:</p><!--kg-card-begin: markdown-->
+	<p>By adding a <code>_redirects</code> file to the <a href="https://developers.cloudflare.com/pages/platform/build-configuration">build output directory</a> for your project, you can easily redirect users to the right URL. Just add the redirects into the file in the following format:</p>
 	<p><code>[source] [destination] [http code]</code></p>
-	<!--kg-card-end: markdown-->
-	<p>Example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-filename:_redirects">/home / 301
+	<p>Example:</p>
+	<pre class="language-filename:_redirects"><code class="language-filename:_redirects">/home / 301
 /contact-me /contact 301
-/blog https://www.ghost.org 301
-</code></pre>
-	<!--kg-card-end: markdown-->
+/blog https://www.ghost.org 301</code></pre>
 	<p>Cloudflare Pages makes it easy to create new redirects and import existing redirects using our new support for <code>_redirects</code> files.</p>
-	<h3 id="jam-harder">Jam harder</h3>
+	<h3>Jam harder</h3>
 	<p>When we started Cloudflare, people believed performance and security were at odds with each other, and tradeoffs had to be made between the two. We set out to show that that was wrong.</p>
 	<p>Today, we similarly believe that working collaboratively and moving fast are at odds with each other. As the saying goes, “If you want to go fast, go alone. If you want to go far, go together.”</p>
 	<p>We previously discussed the ways in which Cloudflare Pages allows developers and their stakeholders to move fast together, and we’ve built two additional improvements to make it even easier!</p>
-	<p><strong>Protected previews with Cloudflare Access integration</strong><br>One of the ways Cloudflare Pages simplifies collaboration is by generating unique preview URLs for each commit. The preview URLs make it easy for anyone on your team to check out your work in progress, take it for a spin, and provide feedback before the changes go live.</p>
-	<p>While it’s great to shop ideas with your coworkers and stakeholders ahead of the big day, the surprise element is what makes the big day, <strong>The Big Day</strong>.</p>
+	<p><b>Protected previews with Cloudflare Access integration</b>One of the ways Cloudflare Pages simplifies collaboration is by generating unique preview URLs for each commit. The preview URLs make it easy for anyone on your team to check out your work in progress, take it for a spin, and provide feedback before the changes go live.</p>
+	<p>While it’s great to shop ideas with your coworkers and stakeholders ahead of the big day, the surprise element is what makes the big day, <b>The Big Day</b>.</p>
 	<p>With our new Cloudflare Access integration, restricting access to your preview deployments is as easy as clicking a button.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3-1.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qNwNxvMTTteDgZfbUurnL/b1a094b857509d064ea22c5b95a6221d/image3-1.gif" alt="" class="kg-image" width="1066" height="724" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Access is a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust solution</a> — think of it like a bouncer checking each request to your site at the door. By default, we add the members of your Cloudflare organization, so when you send them a new preview link, they’re prompted with a one-time PIN that is sent to their email for authentication. However, you can modify the policy to integrate with your preferred SSO provider.</p>
 	<p>Cloudflare Access comes with 50 seats included in the free tier — enough to make sure no one leaks your new “dark mode” feature before you want them to.</p>
-	<p><strong>Live previews with Cloudflare Tunnel</strong><br>While preview deployments make it easy to share progress when you’re working asynchronously, sometimes a live collaboration session is the best way to crank out those finishing touches and last minute copy changes.</p>
+	<p><b>Live previews with Cloudflare Tunnel</b>While preview deployments make it easy to share progress when you’re working asynchronously, sometimes a live collaboration session is the best way to crank out those finishing touches and last minute copy changes.</p>
 	<p>With Cloudflare Tunnel, you can expose your localhost through a secure tunnel to an easily shareable URL, so you can get live feedback from your teammates before you commit (pun intended).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-1.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="speed-security-scalability-no-really-we-got-you">Speed, security &amp; scalability — no really, we got you</h3>
-	<p><strong>Assets, optimized</strong></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MEgCUB5cLsiFlT4yZKvE6/ec11a37cfa45db72f7a83f9184e2ed56/image4-1.gif" alt="" class="kg-image" width="800" height="500" loading="lazy">
+
+	</figure>
+	<h3>Speed, security &amp; scalability — no really, we got you</h3>
+	<p><b>Assets, optimized</b></p>
 	<p>It’s easy to get excited about all the new features you can play with, one of the real killer features of Pages is the performance and reliability.</p>
 	<p>We got a bit of a head start on performance because we built Pages on the same network we’ve been optimizing for performance for the past ten years. As a result, we learned a thing or two about accelerating web performance along the way.</p>
 	<p>One of the best tools for improving your site performance is by serving smaller content, which takes less time to transfer. One way to make your content smaller is via compression. We’ve recently introduced two types of compression to Pages:</p>
-	<p><strong>Image compression:</strong> Since images represent some of the largest types of content we serve, <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression">serving them efficiently</a> can have great impact on performance. To improve efficiency, we now use <a href="https://support.cloudflare.com/hc/en-us/articles/360000607372-Using-Cloudflare-Polish-to-compress-images">Polish</a> to <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression">compress your images</a>, and serve fewer bytes over the wire. When possible, we’ll also serve a WebP version of your image (and AVIF too, coming soon).</p>
-	<p><strong>Gzip and Brotli:</strong> Even smaller assets, such as HTML or JavaScript can benefit from compression. Pages will now serve content compressed with gzip or Brotli, based on the type of compression the client can support.</p>
+	<p><b>Image compression:</b> Since images represent some of the largest types of content we serve, <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression">serving them efficiently</a> can have great impact on performance. To improve efficiency, we now use <a href="https://support.cloudflare.com/hc/en-us/articles/360000607372-Using-Cloudflare-Polish-to-compress-images">Polish</a> to compress your images, and serve fewer bytes over the wire. When possible, we’ll also serve a WebP version of your image (and AVIF too, coming soon).</p>
+	<p><b>Gzip and Brotli:</b> Even smaller assets, such as HTML or JavaScript can benefit from compression. Pages will now serve content compressed with gzip or Brotli, based on the type of compression the client can support.</p>
 	<p>While we’ve been offering compression for a long time now (dating all the way back to 2012), this is the first time we’re able to pre-process the assets, at the time of the build step, rather than on the fly, resulting in even better compression.</p>
 	<p>Another way to make content smaller is by literally shrinking it.</p>
-	<p><strong>Device-based resizing:</strong> To make users’ experiences even smoother, especially on less reliable mobile devices, we want to make sure we’re not sending large images that will only get previewed on a small screen. Our new optimization will appropriately resize the image based on whether the device is mobile or desktop.</p>
+	<p><b>Device-based resizing:</b> To make users’ experiences even smoother, especially on less reliable mobile devices, we want to make sure we’re not sending large images that will only get previewed on a small screen. Our new optimization will appropriately resize the image based on whether the device is mobile or desktop.</p>
 	<p>If you’re interested in more image optimization features, we have some announcements planned for later in the week, so stay tuned.</p>
-	<h2 id="what-s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>While today’s milestone marks Cloudflare Pages as a production-ready product, like I said, that’s where our true work begins, not ends.</p>
 	<p>There are so many features we’re excited to support in the future, and we wanted to give you a small glimpse into what it holds:</p>
-	<p><strong>GitLab / Bitbucket support</strong><br>We started out by offering direct integration with GitHub to reach as many developers as we possibly could, but we want to continuously grow out the ecosystem we interact with.</p>
-	<p><strong>Webhooks</strong><br>If you’re managing all of your code and content through source control, it’s sufficient to rely on committing your code as a way to trigger a new preview. However, if you’re managing your code in one place, but the content in another, such as a CMS, you may still want to preview your content changes before they go live.</p>
+	<p><b>GitLab / Bitbucket support</b>We started out by offering direct integration with GitHub to reach as many developers as we possibly could, but we want to continuously grow out the ecosystem we interact with.</p>
+	<p><b>Webhooks</b>If you’re managing all of your code and content through source control, it’s sufficient to rely on committing your code as a way to trigger a new preview. However, if you’re managing your code in one place, but the content in another, such as a CMS, you may still want to preview your content changes before they go live.</p>
 	<p>To enable you to do so, we’ll be providing an endpoint you’ll be able to call in order to trigger a brand new deployment via a webhook.</p>
-	<p><strong>A/B testing</strong><br>No matter how much local testing you’ve done, or how many co-workers you’ve received feedback from, some unexpected behavior (whether a bug or a typo) is eventually bound to slip, only to get caught in production. Your reviewers are human too, after all.</p>
+	<p><b>A/B testing</b>No matter how much local testing you’ve done, or how many co-workers you’ve received feedback from, some unexpected behavior (whether a bug or a typo) is eventually bound to slip, only to get caught in production. Your reviewers are human too, after all.</p>
 	<p>When the inevitable happens, however, you don’t want it impacting all of your users at once.</p>
 	<p>To give you better control of rolling out changes into production, we’re looking forward to offering you the ability to roll out your changes to a percentage of your traffic to gain confidence in your changes before you go to 100%.</p>
-	<h2 id="the-future-full-stack-applications-with-cloudflare-workers-and-durable-objects">The future: full stack applications with Cloudflare Workers and Durable Objects</h2>
+	<h2>The future: full stack applications with Cloudflare Workers and Durable Objects</h2>
 	<p>Supporting static sites is just the beginning of the journey for Cloudflare Pages. With redirects support, we’re starting to introduce the first bit of dynamic functionality to Pages, but our ambitions extend far beyond.</p>
 	<p>Our long term goal with Pages is to make full-stack application development as breezy an experience as static site development is today. We want to make Pages the deployment target for your static assets, and the APIs that make them dynamic. With Workers and Durable Objects, we believe we have just the toolset to build upon.</p>
 	<p>We’ll be starting by allowing you to deploy a Worker function by including it in your /api or /functions directory. Over time, we’ll be introducing new ways for you to deploy Durable Objects or utilize the KV namespaces in the same way.</p>
 	<p>Imagine, your entire application — &nbsp;frontend, APIs, storage, data — all deployed with a single commit, easily testable in staging, and a single merge to deploy to production.</p>
-	<h2 id="get-started">Get started</h2>
+	<h2>Get started</h2>
 	<p><a href="https://dash.cloudflare.com/sign-up/pages">Sign up</a> or check out <a href="https://developers.cloudflare.com/pages">our docs</a> to get started.</p>
 	<p>The best part about this is getting to see what you build, so if you’re building something cool, make sure to pop into <a href="https://discord.com/invite/cloudflaredev">our Discord</a> and tell us all about it.</p>
 </div>

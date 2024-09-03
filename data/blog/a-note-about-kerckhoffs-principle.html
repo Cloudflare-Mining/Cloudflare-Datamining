@@ -1,8 +1,11 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="A note about Kerckhoff's Principle" src="https://blog.cloudflare.com/content/images/5418878050_64ef7e914a.jpeg.scaled500.jpg" title="A note about Kerckhoff's Principle"><br>
-		<small>Image credit: <a href="http://www.flickr.com/photos/psicologiaclinica">psicologiaclinica</a></small>
-	</p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lmzVJpwXUOQtKVi5d42fB/8a2657a859ccd169c985851898bba32f/5418878050_64ef7e914a.jpeg.scaled500.jpg" alt="A note about Kerckhoff's Principle" class="kg-image" width="481" height="236" loading="lazy">
+
+	</figure>
+	<p>Image credit: <a href="http://www.flickr.com/photos/psicologiaclinica">psicologiaclinica</a></p>
 	<p>The other day I wrote a long post describing in detail <a href="https://blog.cloudflare.com/keeping-passwords-safe-by-staying-up-to-date">how we used to and how we now store customer passwords</a>. Some people were surprised that we were open about this, and others wanted to understand exactly what part of a security system needs to be kept secret.</p>
 	<p>The simple answer is: a security system is only secure if its details can be safely shared with the world. This is known as <a href="https://en.wikipedia.org/wiki/Kerckhoffs's_principle">Kerckhoff's Principle</a>.</p>
 	<p>The principle is sometimes stated as "a cryptosystem should be secure even if everything about the system, except the key, is public knowledge" or using Claude Shannon's simpler version: "the enemy knows the system".</p>
@@ -13,12 +16,14 @@
 	<p>Engima's security relied not on its secrecy, but on its complexity (and on keeping the daily key a secret). Engima was broken by attacking the mathematics behind its encryption and building special machines to exploit mathematical flaws in the encryption.</p>
 	<p>That's just as true today. The security of HTTPS, SSL and ciphers like AES or RSA rely on the complexity of the algorithm, not on keeping them secret. In fact, they are all published, detailed standards. The only secret is the key that's chosen when you connect to a secure web site (that's done automatically and randomly by your browser and the server) or when you encrypt a document using a program like GPG.</p>
 	<p>Another example is home security. Imagine if you bought a lock that stated that it must be hidden from view so that no one knew what type of lock you had installed. That wouldn't provide much reassurance that the lock was any good. The security of the lock should depend on its mechanism and you keeping the key safe not on you keeping the lock a secret!</p>
-	<p><img alt="A note about Kerckhoff's
-Principle" src="https://blog.cloudflare.com/content/images/7190315846_1a651daaf7.jpeg.scaled500.jpg" title="A note about Kerckhoff's Principle"><br>
-		<small>Image credit: <a href="http://www.flickr.com/photos/paulorear">paul.orear</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2a7e3lQQwJd4EQe1cvSE3A/5f2494f1055970b10e59c84e3438544f/7190315846_1a651daaf7.jpeg.scaled500.jpg" alt="A note about Kerckhoff's
+Principle" class="kg-image" width="400" height="70" loading="lazy">
+
+	</figure>
+	<p>Image credit: <a href="http://www.flickr.com/photos/paulorear">paul.orear</a></p>
 	<p>When storing passwords securely we rely on the complexity of the bcrypt algorithm. Everything about our storage mechanism is assumed to be something that can be made public. So it's safe to say that we choose a random salt, and that we use bcrypt. The salt is not a key, and it does not need to be kept secret.</p>
 	<p>But even more we assume that in the horrible case that our password database were accessed it will still be secure even though the hashed passwords and salts would be available to a hacker. The security of the system relies on the security of bcrypt and nothing else.</p>
 	<p>Of course, as a practical matter we don't leave the database lying around for anyone to access. It's kept behind firewalls and securely stored. But when thinking about security it's important to think about the worst case situation, a full disclosure of the secured information, and rely on the algorithm's strength and nothing else.</p>
-	<!--kg-card-end: markdown-->
 </div>

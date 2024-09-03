@@ -1,17 +1,22 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/announcing-stripe-support-in-workers-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/zh-cn/announcing-stripe-support-in-workers-zh-cn">简体中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-50.png" class="kg-image" alt="Announcing native support for Stripe’s JavaScript SDK in Cloudflare Workers" loading="lazy"></figure>
+<div class="mb2 gray5">3 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-stripe-support-in-workers">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/announcing-stripe-support-in-workers">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Pnl0vB1GT7f3KcKLZCipU/8e9a6c8f345b42c07310c709981b25a6/image1-50.png" alt="Announcing native support for Stripe’s JavaScript SDK in Cloudflare Workers" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>Handling payments inside your apps is crucial to building a business online. For many developers, the leading choice for handling payments is <a href="https://stripe.com">Stripe</a>. Since my first encounter with Stripe about seven years ago, the service has evolved far beyond simple payment processing. In the <a href="https://blog.cloudflare.com/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers">e-commerce example application I shared last year</a>, Stripe managed a complete seller marketplace, using the <a href="https://stripe.com/connect">Connect</a> product. Stripe's product suite is great for developers looking to go beyond accepting payments.</p>
 	<p>Earlier versions of Stripe's SDK had core Node.js dependencies, like many popular JavaScript packages. In Stripe’s case, it interacted directly with core Node.js libraries like <code>net/http</code>, to handle HTTP interactions. For Cloudflare Workers, a V8-based runtime, this meant that the official Stripe JS library didn’t work; you had to fall back to using Stripe’s (very well-documented) REST API. By doing so, you’d lose the benefits of using Stripe’s native JS library — things like automatic type-checking in your editor, and the simplicity of function calls like <code>stripe.customers.create()</code>, instead of manually constructed HTTP requests, to interact with Stripe’s various pieces of functionality.</p>
 	<p>In April, we wrote that we were <a href="https://blog.cloudflare.com/node-js-support-cloudflare-workers">focused on increasing</a> the number of JavaScript packages that are <a href="https://workers.cloudflare.com/works">compatible with Workers</a>:</p>
-	<blockquote>We won’t stop until our users can import popular Node.js libraries seamlessly. This effort will be large-scale and ongoing for us, but we think it’s well worth it.</blockquote>
+	<blockquote>
+		<p>We won’t stop until our users can import popular Node.js libraries seamlessly. This effort will be large-scale and ongoing for us, but we think it’s well worth it.</p>
+	</blockquote>
 	<p>I’m excited to announce general availability for the <a href="https://github.com/stripe/stripe-node"><code>stripe</code></a> JS package for Cloudflare Workers. You can now use the native Stripe SDK directly in your projects! To get started, install <code>stripe</code> in your project: <code>npm i stripe</code>.</p>
 	<p>This also opens up a great opportunity for developers who have deployed sites to Cloudflare Pages to begin using Stripe right alongside their applications. With this week’s announcement of serverless function support in Cloudflare Pages, you can accept payments for your digital product, or handle subscriptions for your membership site, with a few lines of JavaScript added to your Pages project. There’s no additional configuration, and it scales automatically, just like your Pages site.</p>
 	<p>To showcase this, we’ve prepared an example open-source repository, showing how you can integrate <a href="https://stripe.com/payments/checkout">Stripe Checkout</a> into your Pages application. There’s no additional configuration needed — as we announced yesterday, Pages’ new Workers Functions features allows you to deploy infinitely-scalable functions just by adding a new <code>functions</code> folder to your project. See it in action at <a href="https://stripe.pages.dev">stripe.pages.dev</a>, or <a href="https://github.com/cloudflare/stripe.pages.dev">check out the open-source repository on GitHub</a>.</p>
-	<p>With the SDK installed, you can begin accepting payments directly in your applications. The below example shows <a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout">how to initiate a new Checkout session</a> and redirect to Stripe’s hosted checkout page:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">import Stripe from 'stripe/lib/stripe.js';
+	<p>With the SDK installed, you can begin accepting payments directly in your applications. The below example shows <a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout">how to initiate a new Checkout session</a> and redirect to Stripe’s hosted checkout page:</p>
+	<pre class="language-js"><code class="language-js">import Stripe from 'stripe/lib/stripe.js';
 
 // use web crypto 
 export const webCrypto = Stripe.createSubtleCryptoProvider();
@@ -52,12 +57,10 @@ export default {
 
     return Response.redirect(session.url)
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>With support for the Stripe SDK natively in Cloudflare Workers, you aren’t just limited to payment processing either. Any JavaScript example that's currently in <a href="https://stripe.com/docs/api?lang=node">Stripe’s extensive documentation</a> works directly in Workers, without needing to make any changes.</p>
-	<p>In particular, using Workers to handle the multitude of available Stripe webhooks means that you can get better visibility into how your existing projects are working, without needing to spin up any new infrastructure. The below example shows how you can securely validate incoming webhook requests to a Workers function, and perform business logic by parsing the data inside that webhook:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">import Stripe from 'stripe/lib/stripe.js';
+	<p>In particular, using Workers to handle the multitude of available Stripe webhooks means that you can get better visibility into how your existing projects are working, without needing to spin up any new infrastructure. The below example shows how you can securely validate incoming webhook requests to a Workers function, and perform business logic by parsing the data inside that webhook:</p>
+	<pre class="language-js"><code class="language-js">import Stripe from 'stripe/lib/stripe.js';
 
 // use web crypto 
 export const webCrypto = Stripe.createSubtleCryptoProvider();
@@ -110,11 +113,11 @@ const event = await stripe.webhooks.constructEventAsync(
     })
   }
 }
-
 </code></pre>
-	<!--kg-card-end: markdown-->
 	<p>We’re also announcing <a href="https://github.com/stripe-samples/stripe-node-cloudflare-worker-template">a new Workers template</a> in partnership with Stripe. The template will help you get up and running with Stripe and Workers, using our best practices.</p>
 	<p>In less than five minutes, you can begin accepting payments for your next digital product or membership business. You can also handle and validate incoming webhooks at the edge, from a single codebase. This comes with no upfront cost, server provisioning, or any of the standard scaling headaches. Take your serverless functions, deploy them to Cloudflare’s edge, and start making money!</p>
-	<blockquote>“We're big fans of Cloudflare Workers over here at Stripe. Between the wild performance at the edge and fantastic serverless development experience, we're excited to see what novel ways you all use Stripe to make amazing apps.”<br>— <strong>Brian Holt, Stripe</strong></blockquote>
+	<blockquote>
+		<p>“We're big fans of Cloudflare Workers over here at Stripe. Between the wild performance at the edge and fantastic serverless development experience, we're excited to see what novel ways you all use Stripe to make amazing apps.”— <b>Brian Holt, Stripe</b></p>
+	</blockquote>
 	<p>We’re thrilled with this incredible update to Stripe’s JavaScript SDK. We’re also excited to see what you’ll build with native Stripe support in Workers. Join our Discord server and share what you’ve built in the #what-i-built channel — <a href="https://cloudflare.community">get your invite here</a>.</p>
 </div>

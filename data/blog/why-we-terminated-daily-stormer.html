@@ -1,54 +1,89 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Earlier today, Cloudflare terminated the account of the Daily Stormer. We've stopped proxying their traffic and stopped answering DNS requests for their sites. We've taken measures to ensure that they cannot sign up for Cloudflare's services ever again.</p>
 	<p>Our terms of service reserve the right for us to terminate users of our network at our sole discretion. The tipping point for us making this decision was that the team behind Daily Stormer made the claim that we were secretly supporters of their ideology.</p>
 	<p>Our team has been thorough and have had thoughtful discussions for years about what the right policy was on censoring. Like a lot of people, we’ve felt angry at these hateful people for a long time but we have followed the law and remained content neutral as a network. We could not remain neutral after these claims of secret support by Cloudflare.</p>
 	<p>Now, having made that decision, let me explain why it's so dangerous.</p>
-	<h3 id="wheredoyouregulatecontentontheinternet">Where Do You Regulate Content on the Internet?</h3>
+	<h3>Where Do You Regulate Content on the Internet?</h3>
 	<p>There are a number of different organizations that work in concert to bring you the Internet. They include:</p>
 	<ul>
-		<li>Content creators, who author the actual content online.</li>
-		<li>Platforms (e.g., Facebook, Wordpress, etc.), where the content is published.</li>
-		<li>Hosts (e.g., Amazon Web Services, Dreamhost, etc.), that provide infrastructure on which the platforms live.</li>
-		<li>Transit Providers (e.g., Level(3), NTT, etc.), that connect the hosts to the rest of the Internet.</li>
-		<li>Reverse Proxies/CDNs (e.g., Akamai, Cloudflare, etc.), that provide networks to ensure content loads fast and is protected from attack.</li>
-		<li>Authoritative DNS Providers (e.g., Dyn, Cloudflare, etc.), that resolve the domains of sites.</li>
-		<li><a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">Registrars</a> (e.g., GoDaddy, Tucows, etc.), that register the domains of sites.</li>
-		<li>Registries (e.g., Verisign, Afilias, etc.), that run the top level domains like .com, .org, etc.</li>
-		<li>Internet Service Providers (ISPs) (e.g., Comcast, AT&amp;T, etc.), that connect content consumers to the Internet.</li>
-		<li>Recursive DNS Providers (e.g., OpenDNS, Google, etc.), that resolve content consumers' DNS queries.</li>
-		<li>Browsers (e.g., Firefox, Chrome, etc.), that parse and organize Internet content into a consumable form.</li>
+		<li>
+			<p>Content creators, who author the actual content online.</p>
+		</li>
+		<li>
+			<p>Platforms (e.g., Facebook, Wordpress, etc.), where the content is published.</p>
+		</li>
+		<li>
+			<p>Hosts (e.g., Amazon Web Services, Dreamhost, etc.), that provide infrastructure on which the platforms live.</p>
+		</li>
+		<li>
+			<p>Transit Providers (e.g., Level(3), NTT, etc.), that connect the hosts to the rest of the Internet.</p>
+		</li>
+		<li>
+			<p>Reverse Proxies/CDNs (e.g., Akamai, Cloudflare, etc.), that provide networks to ensure content loads fast and is protected from attack.</p>
+		</li>
+		<li>
+			<p>Authoritative DNS Providers (e.g., Dyn, Cloudflare, etc.), that resolve the domains of sites.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">Registrars</a> (e.g., GoDaddy, Tucows, etc.), that register the domains of sites.</p>
+		</li>
+		<li>
+			<p>Registries (e.g., Verisign, Afilias, etc.), that run the top level domains like .com, .org, etc.</p>
+		</li>
+		<li>
+			<p>Internet Service Providers (ISPs) (e.g., Comcast, AT&amp;T, etc.), that connect content consumers to the Internet.</p>
+		</li>
+		<li>
+			<p>Recursive DNS Providers (e.g., OpenDNS, Google, etc.), that resolve content consumers' DNS queries.</p>
+		</li>
+		<li>
+			<p>Browsers (e.g., Firefox, Chrome, etc.), that parse and organize Internet content into a consumable form.</p>
+		</li>
 	</ul>
 	<p>There are other players in the ecosystem, including:</p>
 	<ul>
-		<li>Search engines (e.g., Google, Bing, etc.), that help you discover content.</li>
-		<li>ICANN, the organization that sets the rules for the Registrars and Registries.</li>
-		<li>RIRs (e.g., ARIN, RIPE, APNIC, etc.), which provide the IP addresses used by Internet infrastructure.</li>
+		<li>
+			<p>Search engines (e.g., Google, Bing, etc.), that help you discover content.</p>
+		</li>
+		<li>
+			<p>ICANN, the organization that sets the rules for the Registrars and Registries.</p>
+		</li>
+		<li>
+			<p>RIRs (e.g., ARIN, RIPE, APNIC, etc.), which provide the IP addresses used by Internet infrastructure.</p>
+		</li>
 	</ul>
 	<p>Any of the above could regulate content online. The question is: which of them should?</p>
-	<h3 id="vigilantejustice">Vigilante Justice</h3>
+	<h3>Vigilante Justice</h3>
 	<p>The rules and responsibilities for each of the organizations above in regulating content are and should be different. We've argued that it doesn't make sense to regulate content at the proxy, where Cloudflare provides service, since if we terminate a user the content won't go away it will just be slower and more vulnerable to attack.</p>
 	<p>That's true, and made sense for a long time, but increasingly may not be relevant. The size and scale of the attacks that can now easily be launched online make it such that if you don't have a network like Cloudflare in front of your content, and you upset anyone, you will be knocked offline. In fact, in the case of the Daily Stormer, the initial requests we received to terminate their service came from hackers who literally said: "Get out of the way so we can DDoS this site off the Internet."</p>
 	<p>You, like me, may believe that the Daily Stormer's site is vile. You may believe it should be restricted. You may think the authors of the site should be prosecuted. Reasonable people can and do believe all those things. But having the mechanism of content control be vigilante hackers launching DDoS attacks subverts any rational concept of justice.</p>
-	<h3 id="increasingdependenceonafewgiantnetworks">Increasing Dependence On A Few Giant Networks</h3>
+	<h3>Increasing Dependence On A Few Giant Networks</h3>
 	<p>In a not-so-distant future, if we're not there already, it may be that if you're going to put content on the Internet you'll need to use a company with a giant network like Cloudflare, Google, Microsoft, Facebook, Amazon, or Alibaba.</p>
 	<p>For context, Cloudflare currently handles around 10% of Internet requests.</p>
 	<p>Without a clear framework as a guide for content regulation, a small number of companies will largely determine what can and cannot be online.</p>
-	<h3 id="freedomofspeechdueprocess">Freedom of Speech &lt; Due Process</h3>
+	<h3>Freedom of Speech &lt; Due Process</h3>
 	<p>The issue of who can and cannot be online has often been associated with Freedom of Speech. We think the more important principle is Due Process. I, personally, believe in strong Freedom of Speech protections, but I also acknowledge that it is a very American idea that is not shared globally. On the other hand, the concept of Due Process is close to universal. At its most basic, Due Process means that you should be able to know the rules a system will follow if you participate in that system.</p>
 	<p>Due Process requires that decisions be public and not arbitrary. It's why we've always said that our policy is to follow the guidance of the law in the jurisdictions in which we operate. Law enforcement, legislators, and courts have the political legitimacy and predictability to make decisions on what content should be restricted. Companies should not.</p>
-	<h3 id="whatwewouldnotdo">What We Would Not Do</h3>
+	<h3>What We Would Not Do</h3>
 	<p>Beginning in 2013, Cloudflare began publishing our semi-annual Transparency Report. At the time we choose to include four statements of things that we had never done. They included:</p>
 	<ul>
-		<li>Cloudflare has never turned over our SSL keys or our customers' SSL keys to anyone.</li>
-		<li>Cloudflare has never installed any law enforcement software or equipment anywhere on our network.</li>
-		<li>Cloudflare has never terminated a customer or taken down content due to political pressure.</li>
-		<li>Cloudflare has never provided any law enforcement organization a feed of our customers' content transiting our network.</li>
+		<li>
+			<p>Cloudflare has never turned over our SSL keys or our customers' SSL keys to anyone.</p>
+		</li>
+		<li>
+			<p>Cloudflare has never installed any law enforcement software or equipment anywhere on our network.</p>
+		</li>
+		<li>
+			<p>Cloudflare has never terminated a customer or taken down content due to political pressure.</p>
+		</li>
+		<li>
+			<p>Cloudflare has never provided any law enforcement organization a feed of our customers' content transiting our network.</p>
+		</li>
 	</ul>
 	<p>We included them as "warrant canaries" because we thought they could help us push back against the request that governments may try to force us to make. That’s worked and all four of the warrant canaries have survived in every transparency report since 2013.</p>
 	<p>We're going to have a long debate internally about whether we need to remove the bullet about not terminating a customer due to political pressure. It's powerful to be able to say you've never done something. And, after today, make no mistake, it will be a little bit harder for us to argue against a government somewhere pressuring us into taking down a site they don't like.</p>
-	<h3 id="establishingaframework">Establishing a Framework</h3>
+	<h3>Establishing a Framework</h3>
 	<p>Someone on our team asked after I announced we were going to terminate the Daily Stormer: "Is this the day the Internet dies?" He was half joking, but only half. He's no fan of the Daily Stormer or sites like it. But he does realize the risks of a company like Cloudflare getting into content policing.</p>
 	<p>There's a saying in legal circles that hard cases make bad law. We need to be careful of that here. What I do hope is it will allow us all to discuss what the framework for all of the organizations listed above should be when it comes to content restrictions. I don't know the right answer, but I do know that as we work it out it's critical we be clear, transparent, consistent and respectful of Due Process.</p>
-	<!--kg-card-end: markdown-->
 </div>

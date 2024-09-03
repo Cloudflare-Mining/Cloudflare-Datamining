@@ -1,72 +1,145 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/http-ddos-managed-rules">한국어</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/customize-your-HTTP-DDoS-protection-settings-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We’re excited to announce the availability of the <strong>HTTP DDoS Managed Ruleset</strong>. This new feature allows Cloudflare customers to independently tailor their HTTP DDoS protection settings. Whether you’re on the <a href="https://www.cloudflare.com/plans/free">Free plan</a> or the Enterprise plan, you can now tweak and optimize the settings directly from within the Cloudflare dashboard or via API.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7o7W9D8M4TVhHLooN2QqJV/ab7ceecf78657979e62fba5864a1c208/customize-your-HTTP-DDoS-protection-settings-1.png" alt="" class="kg-image" width="1826" height="913" loading="lazy">
+
+	</figure>
+	<p>We’re excited to announce the availability of the <b>HTTP DDoS Managed Ruleset</b>. This new feature allows Cloudflare customers to independently tailor their HTTP DDoS protection settings. Whether you’re on the <a href="https://www.cloudflare.com/plans/free">Free plan</a> or the Enterprise plan, you can now tweak and optimize the settings directly from within the Cloudflare dashboard or via API.</p>
 	<p>We expect that in most cases, Cloudflare customers won't need to customize any settings. Our mission is to make DDoS disruptions a thing of the past, with no customer overhead. To achieve this mission we’re constantly investing in our automated detection and mitigation systems. In some rare cases, there is a need to make some configuration changes, and so now, Cloudflare customers can customize those protection mechanisms independently. The next evolutionary step is to make those settings learn and auto-tune themselves for our customers, based on their unique traffic patterns. Zero-touch <a href="https://www.cloudflare.com/ddos">DDoS protection</a> at scale.</p>
-	<h2 id="unmetered-ddos-protection">Unmetered DDoS Protection</h2>
+	<h2>Unmetered DDoS Protection</h2>
 	<p>Back in 2017, we <a href="https://blog.cloudflare.com/unmetered-mitigation">announced</a> that we will never kick a customer off of our network because they face large attacks, even if they are not paying us at all (i.e., using the Free plan). Furthermore, we committed to never charge a customer for DDoS attack traffic — no matter the size and duration of the attack. Just this summer, our systems automatically detected and mitigated one of the <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">largest DDoS attacks of all time</a>. As opposed to other vendors, Cloudflare customers don’t need to request a service credit for the attack traffic: we simply exclude DDoS traffic from our billing systems. This is done automatically, just like our attack detection and mitigation mechanisms.</p>
-	<h2 id="autonomous-ddos-protection">Autonomous DDoS Protection</h2>
+	<h2>Autonomous DDoS Protection</h2>
 	<p>Our unmetered DDoS protection commitment is possible due to our <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">ongoing investment in our network and technology stack</a>. The global coverage and capacity of <a href="https://www.cloudflare.com/network">our network</a> allows us to absorb the largest attacks ever recorded, without manual intervention. Using <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">BGP Anycast</a>, traffic is routed to the closest Cloudflare edge data center as a form of global inter-data center load balancing. Traffic is then load balanced efficiently inside the data center between servers with the help of <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a>, our home-grown L4 load balancer, to ensure that traffic arrives at the least loaded server. Then, each server scans for malicious traffic and, if detected, applies mitigations in the most optimal location in the tech stack. Each server detects and mitigates attacks completely autonomously without requiring any centralized consensus, and shares details with each other using multicast. This is done using our proprietary <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">autonomous edge detection and mitigation system</a>, and this is how we’re able to continue offering unmetered DDoS protection for free at the scale we operate at.</p>
-	<h2 id="configurable-ddos-protection">Configurable DDoS Protection</h2>
+	<h2>Configurable DDoS Protection</h2>
 	<p>Our autonomous systems use a set of dynamic rules that scan for attack patterns, known attack tools, suspicious patterns, protocol violations, requests causing large amounts of origin errors, excessive traffic hitting the origin/cache, and additional attack vectors. Each rule has a predefined sensitivity level and default action that varies based on the rule’s confidence that the traffic is indeed part of an attack.</p>
-	<p>But how do we determine those confidence levels? The answer to that depends on each specific rule and what that rule is looking for. Some rules look for the patterns in HTTP attributes that are generated by known attack tools and botnets, known protocol violations and other general suspicious patterns and<strong> </strong>traffic abnormalities. If a given rule is searching for the HTTP patterns of known attack tools, then once found, the likelihood (i.e., confidence) that this traffic is part of an attack is high, and we can therefore safely block all the traffic that matches that rule. However, in other cases, the detected patterns or abnormal activity might resemble an attack but can actually be caused by faulty applications that generate abnormal HTTP calls, misbehaving API clients that flood their origin server, and even legitimate traffic that naively violates protocol standards. In those cases, we might want to rate-limit the traffic that matches the rule or serve a challenge action to verify and allow legitimate users in while blocking bad bots and attackers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-26.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="configuring-the-ddos-protection-settings">Configuring the DDoS Protection Settings</h3>
+	<p>But how do we determine those confidence levels? The answer to that depends on each specific rule and what that rule is looking for. Some rules look for the patterns in HTTP attributes that are generated by known attack tools and botnets, known protocol violations and other general suspicious patterns and traffic abnormalities. If a given rule is searching for the HTTP patterns of known attack tools, then once found, the likelihood (i.e., confidence) that this traffic is part of an attack is high, and we can therefore safely block all the traffic that matches that rule. However, in other cases, the detected patterns or abnormal activity might resemble an attack but can actually be caused by faulty applications that generate abnormal HTTP calls, misbehaving API clients that flood their origin server, and even legitimate traffic that naively violates protocol standards. In those cases, we might want to rate-limit the traffic that matches the rule or serve a challenge action to verify and allow legitimate users in while blocking bad bots and attackers.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30T2iIuSDEIH80XF4pJfF4/0abc95256c9f38ad889a1cc7fd8ed85c/image1-26.png" alt="" class="kg-image" width="746" height="452" loading="lazy">
+
+	</figure>
+	<h3>Configuring the DDoS Protection Settings</h3>
 	<p>In the past, you’d have to go through our support channels to customize any of the default actions and sensitivity levels. In some cases, this may have taken longer to resolve than desired. With today’s release, you can tailor and fine-tune the settings of our autonomous edge system by yourself to quickly improve the accuracy of the protection for your specific application needs.</p>
 	<p>If you previously contacted Cloudflare Support to apply customizations, the DDoS Ruleset has been set to Essentially off or Low for your zone, based on your existing customization. You can visit the dashboard to view the settings and change them if you need.</p>
 	<p>If you’ve requested to exclude or bypass the mitigations for specific HTTP attributes or IPs, or if you’ve requested a significantly high threshold that requires Cloudflare approval, then those customizations are still active but may not yet be visible in the dashboard.</p>
 	<p>If you haven't experienced this issue previously, there is no action required on your end. However, if you would like to customize your DDoS protection settings, go directly to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Ffirewall%2Fddos">DDoS tab</a> or follow these steps:</p>
 	<ol>
-		<li>Log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a>, and select your account and website.</li>
-		<li>Go to <strong>Firewall</strong> &gt; <strong>DDoS</strong>.</li>
-		<li>Next to <strong>HTTP DDoS attack protection</strong>, click <strong>Configure</strong>.</li>
-		<li>In <strong>Ruleset configuration</strong>, select the <strong>action</strong> and <strong>sensitivity</strong> values for all the rules in the HTTP DDoS Managed Ruleset.</li>
+		<li>
+			<p>Log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a>, and select your account and website.</p>
+		</li>
+		<li>
+			<p>Go to <b>Firewall</b> &gt; <b>DDoS</b>.</p>
+		</li>
+		<li>
+			<p>Next to <b>HTTP DDoS attack protection</b>, click <b>Configure</b>.</p>
+		</li>
+		<li>
+			<p>In <b>Ruleset configuration</b>, select the <b>action</b> and <b>sensitivity</b> values for all the rules in the HTTP DDoS Managed Ruleset.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pehLd2xjlPRmw1CwrwTGr/e9e1b6f83e685712893c5394c2e8816e/image6-19.png" alt="" class="kg-image" width="1882" height="1024" loading="lazy">
+
+	</figure>
 	<p>Alternatively, follow the <a href="https://developers.cloudflare.com/waf/ddos-l7-mitigation">API documentation</a> to programmatically configure the DDoS protection settings.</p>
-	<p>In the configuration page, you can select a different <strong>Action </strong>and<strong> Sensitivity Level</strong> to override all the DDoS protection rules as a group of rules (i.e., the “ruleset”).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image9-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Alternatively, you can click <strong>Browse Rules</strong> to override specific rules, rather than all of them as a set of rules.</p>
-	<h3 id="mitigation-action">Mitigation Action</h3>
-	<p>The mitigation action defines what action to take when the mitigation rule is applied. Our systems constantly analyze traffic and track potentially malicious activity. When certain request-per-second thresholds exceed the configured sensitivity level, a mitigation rule with a dynamically generated signature will be applied to mitigate the attack. The default mitigation action can vary according to the specific rule. A rule with less confidence may apply a <strong>Challenge</strong> action as a form of soft mitigation, and a rule with a <strong>Block</strong> action is applied when there is higher confidence that the traffic is part of an attack — as a form of a stricter mitigation action.</p>
+	<p>In the configuration page, you can select a different <b>Action</b> and <b>Sensitivity Level</b> to override all the DDoS protection rules as a group of rules (i.e., the “ruleset”).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44KWtruDG6g87b9QXwi3AW/622af39fd3cd16485361e275f9485986/image9-4.png" alt="" class="kg-image" width="1604" height="1422" loading="lazy">
+
+	</figure>
+	<p>Alternatively, you can click <b>Browse Rules</b> to override specific rules, rather than all of them as a set of rules.</p>
+	<h3>Mitigation Action</h3>
+	<p>The mitigation action defines what action to take when the mitigation rule is applied. Our systems constantly analyze traffic and track potentially malicious activity. When certain request-per-second thresholds exceed the configured sensitivity level, a mitigation rule with a dynamically generated signature will be applied to mitigate the attack. The default mitigation action can vary according to the specific rule. A rule with less confidence may apply a <b>Challenge</b> action as a form of soft mitigation, and a rule with a <b>Block</b> action is applied when there is higher confidence that the traffic is part of an attack — as a form of a stricter mitigation action.</p>
 	<p>The available values for the action are:</p>
 	<ul>
-		<li>Block</li>
-		<li>Challenge (CAPTCHA)</li>
-		<li>Log</li>
-		<li>Use Rule Defaults</li>
+		<li>
+			<p>Block</p>
+		</li>
+		<li>
+			<p>Challenge (CAPTCHA)</p>
+		</li>
+		<li>
+			<p>Log</p>
+		</li>
+		<li>
+			<p>Use Rule Defaults</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-29.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/729xHGkm51RcvOr23QP0WQ/d1f8a67a497776cacca2f0275d73cc9a/image3-29.png" alt="" class="kg-image" width="1594" height="1416" loading="lazy">
+
+	</figure>
 	<p>Some examples of when you may want to change the mitigation action include:</p>
 	<ul>
-		<li><strong>Safer onboarding</strong>: You’re onboarding a new HTTP application which has odd traffic patterns, naively violates protocol standards or causes spiky behavior. In this case, you can set the action to <strong>Log</strong> and see what traffic our systems flag. Afterwards, you can make the necessary changes to the sensitivity levels as required and switch the mitigation action back to the default.</li>
-		<li><strong>Stricter mitigation</strong>: A DDoS attack has been detected but a Rate-limit or Challenge action have been applied due to the rule’s default logic. However, in this specific case, you’re sure that this is malicious traffic, so you can change the action to <strong>Block</strong> for a more complete mitigation.</li>
+		<li>
+			<p><b>Safer onboarding</b>: You’re onboarding a new HTTP application which has odd traffic patterns, naively violates protocol standards or causes spiky behavior. In this case, you can set the action to <b>Log</b> and see what traffic our systems flag. Afterwards, you can make the necessary changes to the sensitivity levels as required and switch the mitigation action back to the default.</p>
+		</li>
+		<li>
+			<p><b>Stricter mitigation</b>: A DDoS attack has been detected but a Rate-limit or Challenge action have been applied due to the rule’s default logic. However, in this specific case, you’re sure that this is malicious traffic, so you can change the action to <b>Block</b> for a more complete mitigation.</p>
+		</li>
 	</ul>
-	<h3 id="mitigation-sensitivity">Mitigation Sensitivity</h3>
-	<p>The sensitivity level defines when the mitigation rule is applied. Our systems constantly analyze traffic and track potentially malicious activity. When certain request-per-second thresholds are crossed, a mitigation rule with a dynamically generated signature will be applied to mitigate the attack. Toggling the sensitivity levels allows you to define <em>when</em> the mitigation is applied. The higher the sensitivity, the faster the mitigation is applied. The available values for sensitivity are:</p>
+	<h3>Mitigation Sensitivity</h3>
+	<p>The sensitivity level defines when the mitigation rule is applied. Our systems constantly analyze traffic and track potentially malicious activity. When certain request-per-second thresholds are crossed, a mitigation rule with a dynamically generated signature will be applied to mitigate the attack. Toggling the sensitivity levels allows you to define <i>when</i> the mitigation is applied. The higher the sensitivity, the faster the mitigation is applied. The available values for sensitivity are:</p>
 	<ol>
-		<li>High (default)</li>
-		<li>Medium</li>
-		<li>Low</li>
-		<li>Essentially Off</li>
+		<li>
+			<p>High (default)</p>
+		</li>
+		<li>
+			<p>Medium</p>
+		</li>
+		<li>
+			<p>Low</p>
+		</li>
+		<li>
+			<p>Essentially Off</p>
+		</li>
 	</ol>
-	<p><strong>Essentially Off</strong> means that we’ve set an exceptionally low sensitivity level so in most cases traffic won't be mitigated for you. However, attack traffic will be mitigated at exceptional levels to ensure the safety and stability of the Cloudflare network.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image10-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><b>Essentially Off</b> means that we’ve set an exceptionally low sensitivity level so in most cases traffic won't be mitigated for you. However, attack traffic will be mitigated at exceptional levels to ensure the safety and stability of the Cloudflare network.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7i68eRgtZYSsj2VO3SKSS3/e27e276baf279c9b02b0d6fa7ba8f42c/image10-4.png" alt="" class="kg-image" width="1586" height="1418" loading="lazy">
+
+	</figure>
 	<p>Some examples of when you may want to change the sensitivity action include:</p>
 	<ul>
-		<li><strong>Avoid impact to legitimate traffic</strong>: One of the rules has applied mitigation to your legitimate traffic due to a suspicious pattern. In this case, you may want to reduce the rule sensitivity to avoid recurrence of the issue and negative impact to your traffic.</li>
-		<li><strong>Legacy applications</strong>: One of your legacy HTTP applications is violating protocol standards, or you may have mistakenly introduced a bug into your mobile application/API client. These cases may result in abnormal traffic activity that may be flagged by our systems. In such a case, you can select the <strong>Essentially Off </strong>sensitivity level until you’ve resolved the issue on your end, to avoid false positives.</li>
+		<li>
+			<p><b>Avoid impact to legitimate traffic</b>: One of the rules has applied mitigation to your legitimate traffic due to a suspicious pattern. In this case, you may want to reduce the rule sensitivity to avoid recurrence of the issue and negative impact to your traffic.</p>
+		</li>
+		<li>
+			<p><b>Legacy applications</b>: One of your legacy HTTP applications is violating protocol standards, or you may have mistakenly introduced a bug into your mobile application/API client. These cases may result in abnormal traffic activity that may be flagged by our systems. In such a case, you can select the <b>Essentially Off</b> sensitivity level until you’ve resolved the issue on your end, to avoid false positives.</p>
+		</li>
 	</ul>
-	<h3 id="overriding-specific-rules">Overriding Specific Rules</h3>
+	<h3>Overriding Specific Rules</h3>
 	<p>As mentioned above, you can also select a specific rule to override its action and sensitivity levels. The per-rule override takes priority over the ruleset override.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-31.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>When configuring per-rule overrides, you’ll see that some rules have a <strong>DDoS Dynamic</strong> action. This means that the mitigation is multi-staged and will apply different mitigation actions depending on various factors including attack type, request characteristics, and various other factors. This dynamic action can also be overridden if you choose to do so.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image7-7.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="ddos-attack-analytics">DDoS Attack Analytics</h2>
-	<p>When a DDoS attack is detected and mitigated, you’ll receive a <a href="https://support.cloudflare.com/hc/en-us/articles/360053216191-Understanding-Cloudflare-DDoS-alerts">real-time DDoS alert</a> (if you’ve configured one) and you’ll be able to view the attack in the <a href="https://support.cloudflare.com/hc/en-us/articles/360024520152-Understanding-Cloudflare-Firewall-Analytics">Firewall analytics dashboard</a>. The attack details and the rule ID that was triggered will also be displayed in the <strong>Activity log</strong> as part of each HTTP request log that was mitigated.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-22.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image8-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="helping-build-a-better-internet">Helping Build a Better Internet</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eiS4lfKkJ4abPHsdl79uv/1b776f58242000051711e1bb8556d422/image2-31.png" alt="" class="kg-image" width="1580" height="1416" loading="lazy">
+
+	</figure>
+	<p>When configuring per-rule overrides, you’ll see that some rules have a <b>DDoS Dynamic</b> action. This means that the mitigation is multi-staged and will apply different mitigation actions depending on various factors including attack type, request characteristics, and various other factors. This dynamic action can also be overridden if you choose to do so.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/160CcAEAJIkDbCmp9GrkSU/9c507a90e64a540790ea4e89ea762e4e/image7-7.png" alt="" class="kg-image" width="1012" height="412" loading="lazy">
+
+	</figure>
+	<h2>DDoS Attack Analytics</h2>
+	<p>When a DDoS attack is detected and mitigated, you’ll receive a <a href="https://support.cloudflare.com/hc/en-us/articles/360053216191-Understanding-Cloudflare-DDoS-alerts">real-time DDoS alert</a> (if you’ve configured one) and you’ll be able to view the attack in the <a href="https://support.cloudflare.com/hc/en-us/articles/360024520152-Understanding-Cloudflare-Firewall-Analytics">Firewall analytics dashboard</a>. The attack details and the rule ID that was triggered will also be displayed in the <b>Activity log</b> as part of each HTTP request log that was mitigated.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/H9paxP96ijGeNRLtDOu7f/b4b9cf57ae911f8401a39863c494ff9f/image5-22.png" alt="" class="kg-image" width="1392" height="1384" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DadNnh4a187v3duXNbhbe/0f022ff9d14f1c6ca43eee5f4663d801/image8-6.png" alt="" class="kg-image" width="1676" height="1028" loading="lazy">
+
+	</figure>
+	<h2>Helping Build a Better Internet</h2>
 	<p>At Cloudflare, everything we do is guided by our mission to help build a better Internet. A significant part of that mission is to make DDoS downtime and service disruptions a thing of the past. By giving our users the visibility and tools they need in order to understand and improve their DDoS protection, we’re hoping to make another step towards a better Internet.</p>
 	<p>Do you have feedback about the user interface or anything else? In the new DDoS tab, we’ve added a link to provide feedback, so you too can help shape the future of Cloudflare’s DDoS protection Managed Rules.</p>
 	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Start now</a>.</p>

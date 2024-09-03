@@ -1,15 +1,19 @@
 <div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tGhbR9Dn9B8Z8vqQqZkuw/c26a19b05c915952b8a4da130a40fdcc/image1-2.png" alt="" class="kg-image" width="1280" height="640" loading="lazy">
+
+	</figure>
 	<p>You can now write Cloudflare Workers in 100% Rust, no JavaScript required. Try it out: <a href="https://github.com/cloudflare/workers-rs">https://github.com/cloudflare/workers-rs</a></p>
-	<p>Cloudflare Workers has long supported the building blocks to run many languages using &nbsp;WebAssembly. However, there has always been a challenging “trampoline” step required to allow languages like Rust to talk to JavaScript APIs such as <em><code>fetch()</code></em>.</p>
+	<p>Cloudflare Workers has long supported the building blocks to run many languages using &nbsp;WebAssembly. However, there has always been a challenging “trampoline” step required to allow languages like Rust to talk to JavaScript APIs such as <code><i>fetch()</i></code>.</p>
 	<p>In addition to the sizable amount of boilerplate needed, lots of “off the shelf” bindings between languages don’t include support for Cloudflare APIs such as KV and Durable Objects. What we wanted was a way to write a Worker in idiomatic Rust, quickly, and without needing knowledge of the host JavaScript environment. While we had a nice “starter” template that made it easy enough to pull in some Rust libraries and use them from JavaScript, the barrier was still too high if your goal was to write a full program in Rust and ship it to our edge.</p>
 	<p>Not anymore!</p>
-	<p>Introducing the <code><strong>worker</strong></code> crate, available on <a href="https://github.com/cloudflare/workers-rs">GitHub</a> and <a href="https://crates.io/crates/worker">crates.io</a>, which makes Rust developers feel right at home on the Workers platform by running code inside the V8 WebAssembly engine. In the snippet below, you can see how the worker crate does all the heavy lifting by providing Rustacean-friendly Workers APIs.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">use worker::*;
+	<p>Introducing the <code>**worker**</code> crate, available on <a href="https://github.com/cloudflare/workers-rs">GitHub</a> and <a href="https://crates.io/crates/worker">crates.io</a>, which makes Rust developers feel right at home on the Workers platform by running code inside the V8 WebAssembly engine. In the snippet below, you can see how the worker crate does all the heavy lifting by providing Rustacean-friendly Workers APIs.</p>
+	<pre class="language-rust"><code class="language-rust">use worker::*;
 
 #[event(fetch)]
-pub async fn main(req: Request, env: Env) -&gt; Result&lt;Response&gt; {
+pub async fn main(req: Request, env: Env) -&gt; Result<response> {
     console_log!(
         "{} {}, located at: {:?}, within: {}",
         req.method().to_string(),
@@ -32,17 +36,13 @@ pub async fn main(req: Request, env: Env) -&gt; Result&lt;Response&gt; {
     }
 
     Response::error("Bad Request", 400)
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Get your own Worker in Rust started with a single command:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash"># see installation instructions for our `wrangler` CLI at https://github.com/cloudflare/wrangler
+}</response></code></pre>
+	<p>Get your own Worker in Rust started with a single command:</p>
+	<pre class="language-bash"><code class="language-bash"># see installation instructions for our `wrangler` CLI at https://github.com/cloudflare/wrangler
 # (requires v1.19.2 or higher)
-$ wrangler generate --type=rust my-project
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We’ve &nbsp;stripped away all the glue code, provided an ergonomic HTTP framework, and baked in what you need to build small scripts or full-fledged Workers apps in Rust. You’ll find <em>fetch</em>, a router, easy-to-use HTTP functionality, Workers <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">KV stores</a> and <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>, secrets, and environment variables too. It’s all <a href="https://github.com/cloudflare/workers-rs">open source</a>, and we’d love <a href="https://github.com/cloudflare/workers-rs/issues">your feedback</a>!</p>
-	<h3 id="why-are-we-doing-this">Why are we doing this? </h3>
-	<p>Cloudflare Workers is on a mission to simplify the developer experience. When we took a hard look at the previous experience writing non-JavaScript Workers, we knew we could do better. Rust happens to be a great language for us to kick-start our mission: it has first-class support for WebAssembly, and a wonderful, growing ecosystem. Tools like <a href="https://github.com/rustwasm/wasm-bindgen"><em><code>wasm-bindgen</code></em></a>, libraries like <a href="https://crates.io/crates/web-sys"><em><code>web-sys</code></em></a>, and Rust’s powerful macro system gave us a significant starting-off point. Plus, Rust’s popularity is growing rapidly, and if our own <a href="https://github.com/orgs/cloudflare/repositories?q=&amp;type=source&amp;language=rust&amp;sort=">use of Rust at Cloudflare</a> is any indication, there is no question that Rust is staking its claim as a must-have in the developer toolbox.</p>
+$ wrangler generate --type=rust my-project</code></pre>
+	<p>We’ve &nbsp;stripped away all the glue code, provided an ergonomic HTTP framework, and baked in what you need to build small scripts or full-fledged Workers apps in Rust. You’ll find <i>fetch</i>, a router, easy-to-use HTTP functionality, Workers <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">KV stores</a> and <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>, secrets, and environment variables too. It’s all <a href="https://github.com/cloudflare/workers-rs">open source</a>, and we’d love <a href="https://github.com/cloudflare/workers-rs/issues">your feedback</a>!</p>
+	<h3>Why are we doing this?</h3>
+	<p>Cloudflare Workers is on a mission to simplify the developer experience. When we took a hard look at the previous experience writing non-JavaScript Workers, we knew we could do better. Rust happens to be a great language for us to kick-start our mission: it has first-class support for WebAssembly, and a wonderful, growing ecosystem. Tools like <a href="https://github.com/rustwasm/wasm-bindgen"><code><i>wasm-bindgen</i></code></a>, libraries like <a href="https://crates.io/crates/web-sys"><code><i>web-sys</i></code></a>, and Rust’s powerful macro system gave us a significant starting-off point. Plus, Rust’s popularity is growing rapidly, and if our own <a href="https://github.com/orgs/cloudflare/repositories?q=&amp;type=source&amp;language=rust&amp;sort=">use of Rust at Cloudflare</a> is any indication, there is no question that Rust is staking its claim as a must-have in the developer toolbox.</p>
 	<p>So give it a try, leave some feedback, even <a href="https://github.com/cloudflare/workers-rs">open a PR</a>! By the way, we’re always on the lookout for great people to join us, and we are hiring for many open roles (including Rust engineers!) — <a href="https://www.cloudflare.com/careers">take a look</a>.</p>
 </div>

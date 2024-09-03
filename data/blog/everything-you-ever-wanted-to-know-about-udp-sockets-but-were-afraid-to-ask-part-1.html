@@ -1,112 +1,118 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/Spectrum-Data-Plane-Internals-1.png" class="kg-image" alt="Snippet from internal presentation about UDP inner workings in Spectrum. Who said UDP is simple!" loading="lazy">
-		<figcaption>Snippet from internal presentation about UDP inner workings in Spectrum. Who said UDP is simple!</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WOLE3yKPbPvRX9rQLYZEA/5f3b01621024d44b81230784d6e301d2/Spectrum-Data-Plane-Internals-1.png" alt="Snippet from internal presentation about UDP inner workings in Spectrum. Who said UDP is simple!" class="kg-image" width="960" height="540" loading="lazy">
+
 	</figure>
+	<p>Snippet from internal presentation about UDP inner workings in Spectrum. Who said UDP is simple!</p>
 	<p>Historically Cloudflare's core competency was operating an <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy">HTTP reverse proxy</a>. We've spent significant effort optimizing traditional HTTP/1.1 and HTTP/2 servers running on top of TCP. Recently though, we started operating big scale stateful <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a> services.</p>
 	<p>Stateful UDP gains popularity for a number of reasons:</p>
 	<p>— <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare">QUIC</a> is a new transport protocol based on UDP, it powers HTTP/3. We see the adoption accelerating.</p>
 	<p>— <a href="https://blog.cloudflare.com/1111-warp-better-vpn">We operate WARP</a> — our Wireguard protocol based tunneling service — which uses UDP under the hood.</p>
 	<p>— We have a lot of generic UDP traffic going through <a href="https://www.cloudflare.com/products/cloudflare-spectrum">our Spectrum service</a>.</p>
 	<p>Although UDP is simple in principle, there is a lot of domain knowledge needed to run things at scale. In this blog post we'll cover the basics: all you need to know about UDP servers to get started.</p>
-	<h3 id="connected-vs-unconnected">Connected vs unconnected</h3>
+	<h3>Connected vs unconnected</h3>
 	<p>How do you "accept" connections on a UDP server? If you are using unconnected sockets, you generally don't.</p>
 	<p>But let's start with the basics. UDP sockets can be "connected" (or "established") or "unconnected". Connected sockets have a full 4-tuple associated {source ip, source port, destination ip, destination port}, unconnected sockets have 2-tuple {bind ip, bind port}.</p>
 	<p>Traditionally the connected sockets were mostly used for outgoing flows, while unconnected for inbound "server" side connections.</p>
-	<h3 id="udp-client">UDP client</h3>
+	<h3>UDP client</h3>
 	<p>As we'll learn today, these can be mixed. It is possible to use connected sockets for ingress handling, and unconnected for egress. To illustrate the latter, consider these two snippets. They do the same thing — send a packet to the DNS resolver. First snippet is using a connected socket:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-20.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nLimg1UkSX4TIIYTaxASJ/6975d6f47ce56c0b361dfc00389cee35/image4-20.png" alt="" class="kg-image" width="925" height="125" loading="lazy">
+
+	</figure>
 	<p>Second, using unconnected one:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image7-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Iq69Z2Nrk00zNeTvJyrVU/6255d2675d66adc6f9c93e3ab05924f8/image7-14.png" alt="" class="kg-image" width="929" height="126" loading="lazy">
+
+	</figure>
 	<p>Which one is better? In the second case, when receiving, the programmer should verify the source IP of the packet. Otherwise, the program can get confused by some random inbound internet junk — like port scanning. It is tempting to reuse the socket descriptor and query another DNS server afterwards, but this would be a bad idea, particularly when dealing with DNS. For security, DNS assumes the client source port is unpredictable and short-lived.</p>
 	<p>Generally speaking for outbound traffic it's preferable to use connected UDP sockets.</p>
 	<p>Connected sockets can save route lookup on each packet by employing a clever optimization — Linux can save a route lookup result on <a href="https://elixir.bootlin.com/linux/v5.15.4/source/include/net/sock.h#L434">a connection struct</a>. Depending on the specifics of the setup this might save some CPU cycles.</p>
 	<p>For completeness, it is possible to roll a new source port and reuse a socket descriptor with an obscure trick called "dissolving of the socket association". It can be done with <code>connect(AF_UNSPEC)</code>, but this is rather advanced Linux magic.</p>
-	<h3 id="udp-server">UDP server</h3>
+	<h3>UDP server</h3>
 	<p>Traditionally on the server side UDP requires unconnected sockets. Using them requires a bit of finesse. To illustrate this, let's write an UDP echo server. In practice, you probably shouldn't write such a server, due to a risk of becoming a DoS reflection vector. <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">Among other protections</a>, like rate limiting, UDP services should always respond with a strictly smaller amount of data than was sent in the initial packet. But let's not digress, the naive UDP echo server might look like:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image6-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/se9nCWduF9hcK8K1XwiWW/a8c7052acb56fad92c9eeda17c54a204/image6-14.png" alt="" class="kg-image" width="936" height="208" loading="lazy">
+
+	</figure>
 	<p>This code begs questions:</p>
 	<p>— Received packets can be longer than 2048 bytes. This can happen over loop back, when using jumbo frames or with help of IP fragmentation.</p>
 	<p>— It's totally possible for the received packet to have an empty payload.</p>
 	<p>— What about inbound ICMP errors?</p>
 	<p>These problems are specific to UDP, they don't happen in the TCP world. TCP can transparently deal with MTU / fragmentation and ICMP errors. Depending on the specific protocol, a UDP service might need to be more complex and pay extra care to such corner cases.</p>
-	<h3 id="sourcing-packets-from-a-wildcard-socket">Sourcing packets from a wildcard socket</h3>
-	<p>There is a bigger problem with this code. It only works correctly when binding to a specific IP address, like <code>::1</code> or <code>127.0.0.1</code>. It won't always work when we bind to a wildcard. The issue lies in the <code>sendto()</code> line — we didn't explicitly set the outbound IP address! Linux doesn't know where we'd like to source the packet from, and it will choose a default egress IP address. It might not be the IP the client communicated to. For example, let's say we added <code>::2</code> address to loop back interface and sent a packet to it, with src IP set to a valid <code>::1</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code>marek@mrprec:~$ sudo tcpdump -ni lo port 1234 -t
+	<h3>Sourcing packets from a wildcard socket</h3>
+	<p>There is a bigger problem with this code. It only works correctly when binding to a specific IP address, like <code>::1</code> or <code>127.0.0.1</code>. It won't always work when we bind to a wildcard. The issue lies in the <code>sendto()</code> line — we didn't explicitly set the outbound IP address! Linux doesn't know where we'd like to source the packet from, and it will choose a default egress IP address. It might not be the IP the client communicated to. For example, let's say we added <code>::2</code> address to loop back interface and sent a packet to it, with src IP set to a valid <code>::1</code>:</p>
+	<pre class="language-bash"><code class="language-bash">marek@mrprec:~$ sudo tcpdump -ni lo port 1234 -t
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on lo, link-type EN10MB (Ethernet), capture size 262144 bytes
 IP6 ::1.41879 &gt; ::2.1234: UDP, length 2
-IP6 ::1.1234 &gt; ::1.41879: UDP, length 2
-</code></pre>
-	<!--kg-card-end: markdown-->
+IP6 ::1.1234 &gt; ::1.41879: UDP, length 2</code></pre>
 	<p>Here we can see the packet correctly flying from <code>::1</code> to <code>::2</code>, to our server. But then when the server responds, it sources the response from <code>::1</code> IP which in this case is wrong.</p>
 	<p>On the server side, when binding to a wildcard:</p>
 	<p>— we might receive packets destined to a number of IP addresses</p>
 	<p>— we must be very careful when responding and use appropriate source IP address</p>
 	<p>BSD Sockets API doesn't make it easy to understand where the received packet was destined to. On Linux and <a href="https://www.freebsd.org/cgi/man.cgi?query=ip6&amp;sektion=4">BSD</a> it is possible to request useful CMSG metadata with IP_RECVPKTINO and IPV6_RECVPKTINFO.</p>
 	<p>An improved server loop might look like:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-30.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52toeTH5ZY1aD3bOSry6Do/5e7417957ebc6ae708419bea4f1f864e/image2-30.png" alt="" class="kg-image" width="930" height="191" loading="lazy">
+
+	</figure>
 	<p>The <code>recvmsg</code> and <code>sendmsg</code> syscalls, as opposed to <code>recvfrom</code> / <code>sendto</code> allow the programmer to request and set extra CMSG metadata, which is very handy when dealing with UDP.</p>
 	<p>The IPV6_PKTINFO CMSG contains this data structure:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-71.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JvR29xOL5YVQj4GvhudPL/3b823052ef7d73df593182865c402d50/image1-71.png" alt="" class="kg-image" width="924" height="131" loading="lazy">
+
+	</figure>
 	<p>We can find here the IP address and interface number of the packet target. Notice, there's no place for a port number.</p>
-	<h3 id="graceful-server-restart">Graceful server restart</h3>
+	<h3>Graceful server restart</h3>
 	<p>Many traditional UDP protocols, like DNS, are request-response based. Since there is no state associated with a higher level "connection", the server can restart, to upgrade or change configuration, without any problems. Ideally, sockets should be managed with the usual <a href="http://0pointer.de/blog/projects/socket-activation.html">systemd socket activation</a> to avoid the short time window where the socket is down.</p>
 	<p>Modern protocols are often connection-based. For such servers, on restart, it's beneficial to keep the old connections directed to the old server process, while the new server instance is available for handling the new connections. The old connections will eventually die off, and the old server process will be able to terminate. This is a common and easy practice in the TCP world where each connection has its own file descriptor. The old server process stops accept()-ing new connections and just waits for the old connections to gradually go away. <a href="http://nginx.org/en/docs/control.html#upgrade">NGINX has a good documentation</a> on the subject.</p>
 	<p>Sadly, in UDP you can't <code>accept()</code> new connections. Doing graceful server restarts for UDP is surprisingly hard.</p>
-	<h3 id="established-over-unconnected-technique">Established-over-unconnected technique</h3>
+	<h3>Established-over-unconnected technique</h3>
 	<p>For some services we are using a technique which we call "established-over-unconnected". This comes from a realization that on Linux it's possible to create a connected socket *over* an unconnected one. Consider this code:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-37.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78wXvRtNNnQFwlqfS7EYd5/51cbbabcc7d4c857f19e53b1eda3ece0/image3-37.png" alt="" class="kg-image" width="928" height="271" loading="lazy">
+
+	</figure>
 	<p>Does this look hacky? Well, it should. What we do here is:</p>
 	<p>— We start a UDP unconnected socket.</p>
 	<p>— We wait for a client to come in.</p>
 	<p>— As soon as we receive the first packet from the client, we immediately create a new fully connected socket, *over* the unconnected socket! It shares the same local port and local IP.</p>
-	<p>This is how it might look in ss:</p><!--kg-card-begin: markdown-->
-	<pre><code>marek@mrprec:~$ ss -panu sport = :1234 or dport = :1234 | cat
+	<p>This is how it might look in ss:</p>
+	<pre class="language-bash"><code class="language-bash">marek@mrprec:~$ ss -panu sport = :1234 or dport = :1234 | cat
 State     Recv-Q    Send-Q       Local Address:Port        Peer Address:Port    Process                                                                         
 ESTAB     0         0                    [::1]:1234               [::1]:44592    python3
 UNCONN    0         0                        *:1234                   *:*        python3
-ESTAB     0         0                    [::1]:44592              [::1]:1234     nc
-</code></pre>
-	<!--kg-card-end: markdown-->
+ESTAB     0         0                    [::1]:44592              [::1]:1234     nc</code></pre>
 	<p>Here you can see the two sockets managed in our python test server. Notice the established socket is sharing the unconnected socket port.</p>
 	<p>This trick is basically reproducing the 'accept()` behaviour in UDP, where each ingress connection gets its own dedicated socket descriptor.</p>
 	<p>While this trick is nice, it's not without drawbacks — it's racy in two places. First, it's possible that the client will send more than one packet to the unconnected socket before the connected socket is created. The application code should work around it — if a packet received from the server socket belongs to an already existing connected flow, it shall be handed over to the right place. Then, during the creation of the connected socket, in the short window after <code>bind()</code> before <code>connect()</code> we might receive unexpected packets belonging to the unconnected socket! We don't want these packets here. It is necessary to filter the source IP/port when receiving early packets on the connected socket.</p>
 	<p>Is this approach worth the extra complexity? It depends on the use case. For a relatively small number of long-lived flows, it might be ok. For a high number of short-lived flows (especially DNS or NTP) it's an overkill.</p>
 	<p>Keeping old flows stable during service restarts is particularly hard in UDP. The established-over-unconnected technique is just one of the simpler ways of handling it. We'll leave another technique, based on SO_REUSEPORT ebpf, for a future blog post.</p>
-	<h3 id="summary">Summary</h3>
-	<p>In this blog post we started by highlighting connected and unconnected UDP sockets. Then we discussed why binding UDP servers to a wildcard is hard, and how IP_PKTINFO CMSG can help to solve it. We discussed the UDP graceful restart problem, and hinted on an established-over-unconnected technique. </p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th>Socket type</th>
-				<th>Created with</th>
-				<th>Appropriate syscalls</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>established</td>
-				<td>connect()</td>
-				<td>recv()/send()</td>
-			</tr>
-			<tr>
-				<td>established</td>
-				<td>bind() + connect()</td>
-				<td>recvfrom()/send(), watch out for the race after bind(), verify source of the packet</td>
-			</tr>
-			<tr>
-				<td>unconnected</td>
-				<td>bind(specific IP)</td>
-				<td>recvfrom()/sendto()</td>
-			</tr>
-			<tr>
-				<td>unconnected</td>
-				<td>bind(wildcard)</td>
-				<td>recvmsg()/sendmsg() with IP_PKTINFO CMSG</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<h3>Summary</h3>
+	<p>In this blog post we started by highlighting connected and unconnected UDP sockets. Then we discussed why binding UDP servers to a wildcard is hard, and how IP_PKTINFO CMSG can help to solve it. We discussed the UDP graceful restart problem, and hinted on an established-over-unconnected technique.</p>
+	<p>Socket type</p>
+	<p>Created with</p>
+	<p>Appropriate syscalls</p>
+	<p>established</p>
+	<p>connect()</p>
+	<p>recv()/send()</p>
+	<p>established</p>
+	<p>bind() + connect()</p>
+	<p>recvfrom()/send(), watch out for the race after bind(), verify source of the packet</p>
+	<p>unconnected</p>
+	<p>bind(specific IP)</p>
+	<p>recvfrom()/sendto()</p>
+	<p>unconnected</p>
+	<p>bind(wildcard)</p>
+	<p>recvmsg()/sendmsg() with IP_PKTINFO CMSG</p>
 	<p>Stay tuned, in future blog posts we might go even deeper into the curious world of production UDP servers.</p>
 </div>

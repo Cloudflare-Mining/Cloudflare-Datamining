@@ -1,32 +1,48 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68PjZCIcE81b67peknf4n4/d8e2f3333b80a856688949f35aed12e5/the-sad-state-of-linux-socket-balancing.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Scaling up TCP servers is usually straightforward. Most deployments start by using a single process setup. When the need arises more worker processes are added. This is a scalability model for many applications, including HTTP servers like Apache, NGINX or Lighttpd.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/37470469351_49281d8b66_b.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/brizzlebornandbred/37470469351/in/photolist-WWESK-arHswn-YCzFLW-Z68X62-Ys7F95-5PkLkJ-7WevtH-reYKNA-bHdogM-PQtEbn-PrTv2Q-PQtEG2-P39C9u-P39CCL-X1waW-ynbVS2-27aa3n-7qy2iy-47YUTQ-u6Su9-Py1w8y-Py4WNE-PzgZY7-PnSq1A-PquMda-P39D4f-NnLGfG-Pssk7K-9qPn21">image</a> by <a href="https://www.flickr.com/photos/brizzlebornandbred">Paul Townsend</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nJQZt9rw38jtA65oSJL2M/e344a6c8b5887183bc4fd407d058e9cf/37470469351_49281d8b66_b.jpg" alt="" class="kg-image" width="1024" height="740" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/brizzlebornandbred/37470469351/in/photolist-WWESK-arHswn-YCzFLW-Z68X62-Ys7F95-5PkLkJ-7WevtH-reYKNA-bHdogM-PQtEbn-PrTv2Q-PQtEG2-P39C9u-P39CCL-X1waW-ynbVS2-27aa3n-7qy2iy-47YUTQ-u6Su9-Py1w8y-Py4WNE-PzgZY7-PnSq1A-PquMda-P39D4f-NnLGfG-Pssk7K-9qPn21">image</a> by <a href="https://www.flickr.com/photos/brizzlebornandbred">Paul Townsend</a></p>
 	<p>Increasing the number of worker processes is a great way to overcome a single CPU core bottleneck, but opens a whole new set of problems.</p>
 	<p>There are generally three ways of designing a TCP server with regard to performance:</p>
 	<p>(a) Single listen socket, single worker process.</p>
 	<p>(b) Single listen socket, multiple worker processes.</p>
 	<p>(c) Multiple worker processes, each with separate listen socket.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/worker1.png" alt="" loading="lazy"></p>
-	<p>(a) <strong>Single listen socket, single worker process</strong> This is the simplest model, where processing is limited to a single CPU. A single worker process is doing both accept() calls to receive the new connections and processing of the requests themselves. This model is the preferred Lighttpd setup.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/worker2.png" alt="" loading="lazy"></p>
-	<p>(b) <strong>Single listen socket, multiple worker process</strong> The new connections sit in a single kernel data structure (the listen socket). Multiple worker processes are doing both the accept() calls and processing of the requests. This model enables some spreading of the inbound connections across multiple CPUs. This is the standard model for NGINX.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/worker3.png" alt="" loading="lazy"></p>
-	<p>(c) <strong>Separate listen socket for each worker process</strong> By using <a href="https://lwn.net/Articles/542629">the SO_REUSEPORT socket option</a> it's possible to create a dedicated kernel data structure (the listen socket) for each worker process. This can avoid listen socket contention, which isn't really an issue unless you run at Google scale. It can also help in better balancing the load. More on that later.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3V8kyqCxWxtkfmGRx8crj1/ec33d93cab0a8676ba848df627aa8668/worker1.png" alt="" class="kg-image" width="640" height="102" loading="lazy">
+
+	</figure>
+	<p>(a) <b>Single listen socket, single worker process</b> This is the simplest model, where processing is limited to a single CPU. A single worker process is doing both accept() calls to receive the new connections and processing of the requests themselves. This model is the preferred Lighttpd setup.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AyXvT4YAP3TExZCEHVIs2/ffe2dae07fdf1180ddf5bd1e77d0083c/worker2.png" alt="" class="kg-image" width="640" height="250" loading="lazy">
+
+	</figure>
+	<p>(b) <b>Single listen socket, multiple worker process</b> The new connections sit in a single kernel data structure (the listen socket). Multiple worker processes are doing both the accept() calls and processing of the requests. This model enables some spreading of the inbound connections across multiple CPUs. This is the standard model for NGINX.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7g6h7dlOAQpesnC2hmTotP/1f90d85f6d7b68aee54cb1bbc36d396e/worker3.png" alt="" class="kg-image" width="640" height="250" loading="lazy">
+
+	</figure>
+	<p>(c) <b>Separate listen socket for each worker process</b> By using <a href="https://lwn.net/Articles/542629">the SO_REUSEPORT socket option</a> it's possible to create a dedicated kernel data structure (the listen socket) for each worker process. This can avoid listen socket contention, which isn't really an issue unless you run at Google scale. It can also help in better balancing the load. More on that later.</p>
 	<p>At Cloudflare we run NGINX, and we are most familiar with the (b) model. In this blog post we'll describe a specific problem with this model, but let's start from the beginning.</p>
-	<h3 id="spreadingtheacceptload">Spreading the accept() load</h3>
-	<p>Not many people realize that there are two different ways of spreading the accept() new connection load across multiple processes. Consider these two code snippets. Let's call the first one <em>blocking-accept</em>. It's best described with this pseudo code:</p>
-	<pre><code class="language-.py">sd = bind(('127.0.0.1', 1024))
+	<h3>Spreading the accept() load</h3>
+	<p>Not many people realize that there are two different ways of spreading the accept() new connection load across multiple processes. Consider these two code snippets. Let's call the first one <i>blocking-accept</i>. It's best described with this pseudo code:</p>
+	<pre class="language-.py"><code class="language-.py">sd = bind(('127.0.0.1', 1024))
 for i in range(3):
     if os.fork () == 0:
         while True:
             cd, _ = sd.accept()
             cd.close()
-            print 'worker %d' % (i,)
-</code></pre>
+            print 'worker %d' % (i,)</code></pre>
 	<p>The idea is to share an accept queue across processes, by calling blocking accept() from multiple workers concurrently.</p>
-	<p>The second model should be called <em>epoll-and-accept</em>:</p>
-	<pre><code class="language-.py">sd = bind(('127.0.0.1', 1024))
+	<p>The second model should be called <i>epoll-and-accept</i>:</p>
+	<pre class="language-.py"><code class="language-.py">sd = bind(('127.0.0.1', 1024))
 sd.setblocking(False)
 for i in range(3):
     if os.fork () == 0:
@@ -36,12 +52,11 @@ for i in range(3):
             ed.poll()
             cd, _ = sd.accept()
             cd.close()
-            print 'worker %d' % (i,)
-</code></pre>
+            print 'worker %d' % (i,)</code></pre>
 	<p>The intention is to have a dedicated epoll in each worker process. The worker will call non-blocking accept() only when epoll reports new connections. We can avoid <a href="https://idea.popcount.org/2017-02-20-epoll-is-fundamentally-broken-12">the usual thundering-herd issue</a> by using the EPOLLEXCLUSIVE flag.</p>
 	<p>(<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-10-accept-balancing">Full code is available here</a>)</p>
-	<p>While these programs look similar, their behavior differs subtly<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup> <sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup>. Let's see what happens when we establish a couple of connections to each:</p>
-	<pre><code class="language-.sh">$ ./blocking-accept.py &amp;
+	<p>While these programs look similar, their behavior differs subtly<a href="https://blog.cloudflare.com/#fn1">[1]</a> <a href="https://blog.cloudflare.com/#fn2">[2]</a>. Let's see what happens when we establish a couple of connections to each:</p>
+	<pre class="language-.sh"><code class="language-.sh">$ ./blocking-accept.py &amp;
 $ for i in `seq 6`; do nc localhost 1024; done
 worker 2
 worker 1
@@ -57,27 +72,31 @@ worker 0
 worker 0
 worker 0
 worker 0
-worker 0
-</code></pre>
-	<p>The <em>blocking-accept</em> model distributed connections across all workers - each got exactly 2 connections. The <em>epoll-and-accept</em> model on the other hand forwarded all the connections to the first worker. The remaining workers got no traffic whatsoever.</p>
+worker 0</code></pre>
+	<p>The <i>blocking-accept</i> model distributed connections across all workers - each got exactly 2 connections. The <i>epoll-and-accept</i> model on the other hand forwarded all the connections to the first worker. The remaining workers got no traffic whatsoever.</p>
 	<p>It might catch you by surprise, but Linux does different load balancing in both cases.</p>
 	<p>In the first one Linux will do proper FIFO-like <a href="https://www.cloudflare.com/learning/dns/glossary/round-robin-dns">round robin load balancing</a>. Each process waiting on accept() is added to a queue and they will be served connections in order.</p>
-	<p>In the <em>epoll-and-accept</em> the load balancing algorithm differs: Linux seems to choose the last added process, a LIFO-like behavior. The process added to the waiting queue most recently will get the new connection. This behavior causes the busiest process, the one that only just went back to event loop, to receive the majority of the new connections. Therefore, the busiest worker is likely to get most of the load.</p>
+	<p>In the <i>epoll-and-accept</i> the load balancing algorithm differs: Linux seems to choose the last added process, a LIFO-like behavior. The process added to the waiting queue most recently will get the new connection. This behavior causes the busiest process, the one that only just went back to event loop, to receive the majority of the new connections. Therefore, the busiest worker is likely to get most of the load.</p>
 	<p>In fact, this is what we see in NGINX. Here's a dump of one of our synthetic tests where one worker is taking most of the load, while others are relatively underutilized:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/sharedqueue.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48ZLQMh607BBPPkosXK1fL/19a48775269adce1d9e090e458aeee1c/sharedqueue.png" alt="" class="kg-image" width="640" height="207" loading="lazy">
+
+	</figure>
 	<p>Notice the last worker got almost no load, while the busiest is using 30% of CPU.</p>
-	<h3 id="so_reuseporttotherescue">SO_REUSEPORT to the rescue</h3>
+	<h3>SO_REUSEPORT to the rescue</h3>
 	<p>Linux supports a feature to work around this balancing problem - the SO_REUSEPORT socket option. We explained this in the (c) model, where the incoming connections are split into multiple separate accept queues. Usually it's one dedicated queue for each worker process.</p>
 	<p>Since the accept queues are not shared, and Linux spreads the load by a simple hashing logic, each worker will get statistically the same number of incoming connections. This results in much better <a href="https://www.cloudflare.com/application-services/products/load-balancing">balancing of the load</a>. Each worker gets roughly a similar amount of traffic to handle:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/reuseport.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qhELjLr86d9VIXg7LoFge/dc71b942316fa64c313fc68a6982b32a/reuseport.png" alt="" class="kg-image" width="640" height="207" loading="lazy">
+
+	</figure>
 	<p>Here all the workers are handling the work, with the busiest at 13.2% CPU while the least busy uses 9.3%. Much better load distribution than before.</p>
 	<p>This is better, however the balancing of the load is not the end of the story. Splitting the accept queue worsens the latency distribution in some circumstances! It's best explained by The Engineer guy:</p>
-	<div>
-		<iframe width="640" height="356" src="https://www.youtube.com/embed/F5Ri_HhziI0?start=118" frameborder="0" allowfullscreen=""></iframe>
-	</div>
 	<p>I call this problem - the Waitrose vs Tesco Superstore cashiers. The Waitrose "combined queue model" is better at reducing the maximum <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a>. A single clogged cashier will not significantly affect the latency of whole system. The remainder of the load will be spread across the other less busy cashiers. The shared queue will be drained relatively promptly. On the other hand the Tesco Superstore model - of separate queues to each cashier - will suffer from the large latency issue. If a single cashier gets blocked,  all the traffic waiting in its queue will stall. The maximum latency will grow if any single queue gets stuck.</p>
 	<p>In a case of increased load the (b) single accept queue model, while is not balancing the load evenly, is better for latency. We can show this by running another synthetic benchmark. Here is the latency distribution for 100k relatively CPU-intensive <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP requests</a>, with HTTP keepalives disabled, concurrency set to 200 and running against a single-queue (b) NGINX:</p>
-	<pre><code class="language-.sh">$ ./benchhttp -n 100000 -c 200 -r target:8181 http://a.a/
+	<pre class="language-.sh"><code class="language-.sh">$ ./benchhttp -n 100000 -c 200 -r target:8181 http://a.a/
         | cut -d " " -f 1
         | ./mmhistogram -t "Duration in ms (single queue)"
 min:3.61 avg:30.39 med=30.28 max:72.65 dev:1.58 count:100000
@@ -90,11 +109,10 @@ Duration in ms (single queue):
      8 |                                                   67
     16 |************************************************** 91760
     32 |                                              **** 8155
-    64 |                                                   1
-</code></pre>
+    64 |                                                   1</code></pre>
 	<p>As you can see the latency is very predictable. The median is almost equal to the average and standard deviation is small.</p>
 	<p>Here is the same test run against the SO_REUSEPORT multi-queue NGINX setup (c):</p>
-	<pre><code class="language-.sh">$ ./benchhttp -n 100000 -c 200 -r target:8181 http://a.a/
+	<pre class="language-.sh"><code class="language-.sh">$ ./benchhttp -n 100000 -c 200 -r target:8181 http://a.a/
         | cut -d " " -f 1
         | ./mmhistogram -t "Duration in ms (multiple queues)"
 min:1.49 avg:31.37 med=24.67 max:144.55 dev:25.27 count:100000
@@ -108,32 +126,28 @@ Duration in ms (multiple queues):
     16 |    ********************************************** 25852
     32 |************************************************** 27949
     64 |                              ******************** 11368
-   128 |                                                   58
-</code></pre>
+   128 |                                                   58</code></pre>
 	<p>The average is comparable, the median dropped, the max value significantly increased, and most importantly the deviation is now gigantic!</p>
 	<p>The latency distribution is all over the place - it's not something you want to have on a production server.</p>
 	<p>(<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-10-accept-balancing">Instructions to reproduce the test</a>)</p>
-	<p>Take this benchmark with a grain of salt though. We try to generate substantial load in order to prove the point. Depending on your setup it might be possible to shield your server from excessive traffic and prevent it from entering this degraded-latency state<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn3" id="fnref3">[3]</a></sup>.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<p>Take this benchmark with a grain of salt though. We try to generate substantial load in order to prove the point. Depending on your setup it might be possible to shield your server from excessive traffic and prevent it from entering this degraded-latency state<a href="https://blog.cloudflare.com/#fn3">[3]</a>.</p>
+	<h3>Conclusion</h3>
 	<p>Balancing the incoming connections across multiple application workers is far from a solved problem. The single queue approach (b) scales well and keeps the max latency in check, but due to the epoll LIFO behavior the worker processes won't be evenly load balanced.</p>
 	<p>For workloads that require even balancing it might be beneficial to use the SO_REUSEPORT pattern (c). Unfortunately in high load situations the latency distribution might degrade.</p>
 	<p>The best generic solution seem to be to change the standard epoll behavior from LIFO to FIFO. There have been attempts to address this in the past by Jason Baron from Akamai (<a href="https://patchwork.kernel.org/patch/5803291">1</a>, <a href="https://patchwork.kernel.org/patch/5841231">2</a>, <a href="https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg831609.html">3</a>), but none had landed in mainline so far.</p>
 	<hr>
-	<p><em>Dealing with the internals of Linux and NGINX sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572">world famous team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland</em>.</p>
+	<p><i>Dealing with the internals of Linux and NGINX sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco and our elite office in Warsaw, Poland</i>.</p>
 	<hr>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>Of course comparing blocking accept() with a full featured epoll() event loop is not fair. Epoll is more powerful and allows us to create rich event driven programs. Using blocking accept is rather cumbersome or just not useful at all. To make any sense, blocking accept programs would require careful multi-threading programming, with a dedicated thread per request. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn2" class="footnote-item">
-				<p>Another surprise lurking in the corner - using blocking accept() on Linux is technically incorrect! Alan Burlison pointed out that calling <a href="https://www.mail-archive.com/netdev@vger.kernel.org/msg83683.html">close() on listen socket that has blocking accepts() will not interrupt them</a>. This can result in a buggy behavior - you may get <a href="https://bugzilla.kernel.org/show_bug.cgi?id=106241">a successful accept() on a listen socket that no longer exists</a>. When in doubt - avoid using blocking accept() in multithreaded programs. The workaround is to call shutdown() first, but this is not POSIX compliant. It's a mess. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn3" class="footnote-item">
-				<p>There are a couple of things you need to take into account when using NGINX reuseport implementation. First make sure you run 1.13.6+ or have <a href="https://github.com/nginx/nginx/commit/da165aae88601628cef8db1646cd0ce3f0ee661f">this patch applied</a>. Then, remember that due to a <a href="https://lwn.net/Articles/542629">defect in Linux TCP REUSEPORT implementation</a> reducing number of REUSEPORT queues will cause some waiting TCP connections to be dropped. <a href="https://blog.cloudflare.com/#fnref3" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>Of course comparing blocking accept() with a full featured epoll() event loop is not fair. Epoll is more powerful and allows us to create rich event driven programs. Using blocking accept is rather cumbersome or just not useful at all. To make any sense, blocking accept programs would require careful multi-threading programming, with a dedicated thread per request. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+		<li>
+			<p>Another surprise lurking in the corner - using blocking accept() on Linux is technically incorrect! Alan Burlison pointed out that calling <a href="https://www.mail-archive.com/netdev@vger.kernel.org/msg83683.html">close() on listen socket that has blocking accepts() will not interrupt them</a>. This can result in a buggy behavior - you may get <a href="https://bugzilla.kernel.org/show_bug.cgi?id=106241">a successful accept() on a listen socket that no longer exists</a>. When in doubt - avoid using blocking accept() in multithreaded programs. The workaround is to call shutdown() first, but this is not POSIX compliant. It's a mess. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
+		</li>
+		<li>
+			<p>There are a couple of things you need to take into account when using NGINX reuseport implementation. First make sure you run 1.13.6+ or have <a href="https://github.com/nginx/nginx/commit/da165aae88601628cef8db1646cd0ce3f0ee661f">this patch applied</a>. Then, remember that due to a <a href="https://lwn.net/Articles/542629">defect in Linux TCP REUSEPORT implementation</a> reducing number of REUSEPORT queues will cause some waiting TCP connections to be dropped. <a href="https://blog.cloudflare.com/#fnref3">↩︎</a></p>
+		</li>
+	</ol>
 </div>

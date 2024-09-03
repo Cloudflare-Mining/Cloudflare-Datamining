@@ -1,13 +1,25 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1uWdGvpqnmzqW0k3rJpvae/3737f00d46c71981389adf5f2ee0afb8/internet-outage-in-yemen-amid-airstrikes.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The early hours of Friday, January 21, 2022, started in Yemen with a country-wide Internet outage. According to <a href="https://twitter.com/TheYemenMirror/status/1484295876453580800">local</a> and <a href="https://www.theguardian.com/world/2022/jan/18/saudis-hit-back-with-deadly-airstrikes-in-yemen-after-houthis-uae-drone-attack">global</a> news reports airstrikes are happening in the country and the outage is likely related, as there are reports that a telecommunications building in <a href="https://en.wikipedia.org/wiki/Al_Hudaydah">Al-Hudaydah</a> where the <a href="https://www.submarinenetworks.com/en/systems/asia-europe-africa/falcon">FALCON</a> undersea cable lands was hit.</p>
 	<p><a href="https://radar.cloudflare.com/ye">Cloudflare Radar</a> shows that Internet traffic <a href="https://twitter.com/dbelson/status/1484320129190035458">dropped close to zero</a> between 21:30 UTC (January 20, 2022) and by 22:00 UTC (01:00 in local time).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-22.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xkOUfzSr4Xe6aZfmzcdLK/61039494884a0abeae2a57bc810d07da/image2-22.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
 	<p>The outage affected the main state-owned ISP, <a href="https://en.wikipedia.org/wiki/Telecommunications_in_Yemen">Public Telecommunication Corporation</a> (<a href="https://www.ripe.net/membership/indices/data/ye.ptc.html">AS30873</a> in blue in the next chart), which represents almost all the Internet traffic in the country.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ewCjvWAqIh8zkaCheOYsd/ec08db1fad26377fd639cfc2ab9cbf01/image1-16.png" alt="" class="kg-image" width="1999" height="613" loading="lazy">
+
+	</figure>
 	<p>Looking at <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> (Border Gateway Protocol) updates from Yemen’s ASNs around the time of the outage, we see a clear spike at the same time the main ASN was affected ~21:55 UTC, January 20, 2022. These update messages are BGP signalling that Yemen’s main ASN was no longer routable, something similar to what we saw happening in <a href="https://blog.cloudflare.com/the-gambia-without-internet">The Gambia</a> and <a href="https://blog.cloudflare.com/internet-shut-down-in-kazakhstan-amid-unrest">Kazakhstan</a> but for very different reasons.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image3-25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qgRMCKZub9pzIXy7qUn6W/5ca11b02f723ec9216d8f380aa82b794/image3-25.png" alt="" class="kg-image" width="1999" height="684" loading="lazy">
+
+	</figure>
 	<p>So far, 2022 has started with a few significant Internet disruptions for different reasons:</p>
-	<p>1. An Internet outage in <a href="https://blog.cloudflare.com/the-gambia-without-internet">The Gambia</a> because of a cable problem.<br>2. An Internet shutdown in <a href="https://blog.cloudflare.com/internet-shut-down-in-kazakhstan-amid-unrest">Kazakhstan</a> because of unrest.<br>3. A <a href="https://afriksoir.net/actualite/burkina-faso-internet-encore-coupe-au-lendemain-sommet-cedeao">mobile </a>Internet shutdown in <a href="https://radar.cloudflare.com/bf?date_filter=last_30_days">Burkina Faso</a> because of a coup plot.<br>4. An <a href="https://blog.cloudflare.com/tonga-internet-outage">Internet outage</a> in <a href="https://radar.cloudflare.com/to">Tonga</a> because of a volcanic eruption (still ongoing).</p>
+	<p>1. An Internet outage in <a href="https://blog.cloudflare.com/the-gambia-without-internet">The Gambia</a> because of a cable problem.2. An Internet shutdown in <a href="https://blog.cloudflare.com/internet-shut-down-in-kazakhstan-amid-unrest">Kazakhstan</a> because of unrest.3. A <a href="https://afriksoir.net/actualite/burkina-faso-internet-encore-coupe-au-lendemain-sommet-cedeao">mobile</a> Internet shutdown in <a href="https://radar.cloudflare.com/bf?date_filter=last_30_days">Burkina Faso</a> because of a coup plot.4. An <a href="https://blog.cloudflare.com/tonga-internet-outage">Internet outage</a> in <a href="https://radar.cloudflare.com/to">Tonga</a> because of a volcanic eruption (still ongoing).</p>
 	<p>You can keep an eye on <a href="https://radar.cloudflare.com/ye">Cloudflare Radar</a> to monitor this situation as it unfolds.</p>
 </div>

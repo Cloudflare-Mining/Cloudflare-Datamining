@@ -1,34 +1,74 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49NSNbVLKyTHBtfUjU40tK/ad878381b0378967ae9a1abf7e07f8ea/image10.png" alt="" class="kg-image" width="1439" height="714" loading="lazy">
+
+	</figure>
 	<p>Today we’re excited to announce Origin Error Rate notifications: a new, sophisticated way to detect and notify you when Cloudflare sees elevated levels of 5xx errors from your origin.</p>
-	<p>In 2019, we announced <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">Passive Origin Monitoring alerts</a> to notify you when your origin goes down. Passive Origin Monitoring is great — it tells you if every request to your origin is returning a 521 error (web server down) for a full five minutes. But sometimes that’s not enough. You don’t want to wait for <em>all</em> of your users to have issues; you want to be notified when <em>more users than normal </em>are having issues before it becomes a big problem.</p>
-	<h3 id="calculating-anomalies">Calculating Anomalies</h3>
-	<p>No service is perfect — we know that a very small percentage of your origin responses are likely to be 5xx errors. Most of the time, these issues are one-offs and nothing actually needs to be done. However, for Internet properties with very high traffic, even a very small percentage could potentially be a large number. If we alerted you for every one of these errors, you would never stop getting useless notifications. When it comes to notifying, the question isn’t whether there are <em>any</em> errors, but <em>how many</em> errors need to exist before it’s a problem.</p>
-	<p>So how do we actually tell if something is a problem? As humans, it’s relatively easy for us to look at a graph, identify a spike, and think “hmm, that’s not supposed to be there.” For a computer it gets a little more complicated. Unlike humans, who have intuition and can exercise judgement in grey areas, a computer needs an exact set of criteria to tell whether something is out of the ordinary. </p>
+	<p>In 2019, we announced <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">Passive Origin Monitoring alerts</a> to notify you when your origin goes down. Passive Origin Monitoring is great — it tells you if every request to your origin is returning a 521 error (web server down) for a full five minutes. But sometimes that’s not enough. You don’t want to wait for <i>all</i> of your users to have issues; you want to be notified when <i>more users than normal</i> are having issues before it becomes a big problem.</p>
+	<h3>Calculating Anomalies</h3>
+	<p>No service is perfect — we know that a very small percentage of your origin responses are likely to be 5xx errors. Most of the time, these issues are one-offs and nothing actually needs to be done. However, for Internet properties with very high traffic, even a very small percentage could potentially be a large number. If we alerted you for every one of these errors, you would never stop getting useless notifications. When it comes to notifying, the question isn’t whether there are <i>any</i> errors, but <i>how many</i> errors need to exist before it’s a problem.</p>
+	<p>So how do we actually tell if something is a problem? As humans, it’s relatively easy for us to look at a graph, identify a spike, and think “hmm, that’s not supposed to be there.” For a computer it gets a little more complicated. Unlike humans, who have intuition and can exercise judgement in grey areas, a computer needs an exact set of criteria to tell whether something is out of the ordinary.</p>
 	<p>The simplest way to detect abnormalities in a time series dataset is to set a single threshold — for example, “notify me whenever more than 5% of the requests to my Internet properties result in errors.” Unfortunately, it’s really hard to pick an effective threshold. Too high and you never actually get notified; too low, and you’re drowning in notifications:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image5-2.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image6-2.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ShPGzlgkyWnQQQFMJnpe2/af3ce931fff9c7d138a5a3b14c3a7b9e/image5-2.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74X7tzqt2EUnsPmaoYrkC0/85e6e876b441dfc70f12680dac6fb6e6/image6-2.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>Even when we find that happy medium, we can still miss issues that burn “low and slow”. This is where there’s no obvious, dramatic spike, but something has been going a little wrong for a long time:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image8.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
-	<p>We can try layering on multiple thresholds. For example: notify you if the error rate is ever over 10%, <strong>or</strong> if it’s over 5% for more than five minutes, <strong>or </strong>if it’s over 2% for more than 10 minutes. Not only does this quickly become complicated, but it also doesn’t account for periodic issues, such as kubernetes pods restarting or deployments going out at a regular interval. What if the error rate is over 5% for only four minutes, but it happens every five minutes? We know that a lot of your end users are being affected, but even the long set of rules listed above wouldn’t catch it.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image1-4.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ACE4r6XiZowbgWiHExatx/f99715aca48834bbd4b8753f0d54f996/image8.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
+	<p>We can try layering on multiple thresholds. For example: notify you if the error rate is ever over 10%, <b>or</b> if it’s over 5% for more than five minutes, <b>or</b> if it’s over 2% for more than 10 minutes. Not only does this quickly become complicated, but it also doesn’t account for periodic issues, such as kubernetes pods restarting or deployments going out at a regular interval. What if the error rate is over 5% for only four minutes, but it happens every five minutes? We know that a lot of your end users are being affected, but even the long set of rules listed above wouldn’t catch it.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YCFFMiETN3Ed9Wg3Nnu7r/8222e2782ea90f5bc173aa025dc7a62c/image1-4.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>So thresholds probably aren’t sophisticated enough to detect origin issues. Instead, we turn to the <a href="https://sre.google/workbook/alerting-on-slos">Google SRE Handbook</a> for alerting based on Service Level Objectives (SLOs). An SLO is a part of an agreement between a customer and a service provider. It’s a defined metric and value that both parties agree on. One of the most common types of SLOs is availability, or “the service will be available for a certain percentage of the time”. In this case, the service is your origin and the agreement is between you and your end users. Your end users expect your origin to be available a certain percent of the time.</p>
 	<p>If we revisit our original concept, we know that you’re comfortable with your origin returning a certain number of errors. We define that number as your SLO. An SLO of 99.9 means that you’re OK with 0.01% of all of your requests over a month being errors. Therefore, 0.01% of all the requests that reach your origin is your total error budget — you can have this many errors in a month and never be notified, because you’ve defined that as acceptable.</p>
 	<p>What you really want to know is when you’re burning through that error budget too quickly — this probably means that something is actually going wrong (instead of a one-time occurrence). We can measure a burn rate to gauge how quickly you’re burning through your error budget, given the rate of errors that we’re currently seeing. A burn rate of one means that the entirety of the error budget will be used up exactly within the set time period — an ideal scenario. A burn rate of zero is even better since we’re not seeing any errors at all, but ultimately is pretty unrealistic. A burn rate of 10 is most likely a problem — if that rate keeps up for the full month, you’ll have had 10x the number of errors than you originally said was acceptable.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-1.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/X82KrLewyzlgRdirVRuiD/1f5611a5487b25493ab98589385e911c/image2-1.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>Even when using burn rates instead of thresholds, we still want to have multiple criteria. We want to measure a short time period with a high burn rate (a short indicator). This covers your need to “alert me quickly when something dramatic is happening.” But we also want to have a longer time period with a lower burn rate (a long indicator), in order to cover your need to “don’t alert me on issues that are over quickly.” This way we can ensure that we alert quickly without sending too many false positives.</p>
 	<p>Let’s take a look at the life of an incident using this methodology. In our first measurement, the short indicator tells us it looks like something is starting to go wrong. However, the long indicator is still within reasonable bounds. We’re not going to sound the alarm yet.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-1.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZfXwFdIg3Xnxgwherit2g/e145c0f1979edabef838c1398bf12a85/image4-1.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>When we measure next, we see that the problem is worse. Now we’re at the point where there are enough errors that not only is the short indicator telling us there’s something wrong, but the long indicator has been impacted too. We feel confident that there’s a problem, and it’s time to notify you.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image7.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F1J2XiFoLzHYAePUpyynH/d774337073d0e49919e7e58a3cc3dc3a/image7.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>A couple cycles later, the incident is over. The long indicator is still telling us that something is wrong, because the incident is still within the long time period. However, the short indicator shows that nothing is currently concerning. Since we don’t have both indicators telling us that something is wrong, we won’t notify you. This keeps us from sending notifications for incidents that are already over.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3-1.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5z5B3oZ46km4yzhMiZXqdp/395ef5ec979f4314a67232665432c11d/image3-1.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>This methodology is cool because of how well it responds to different incidents. If the original spike had been more dramatic, it would have triggered both the long and short indicators immediately. The more errors we’re seeing, the more confident we are that there’s an issue and the sooner we can notify you.</p>
 	<p>Even with this methodology, we know that different services behave differently. So for this notification, you can choose the Service Level Objective (SLO) you want to use to monitor your Internet property: 99.9% (high sensitivity), 99.8% (medium sensitivity), or 99.7% (low sensitivity). You can also choose which Internet properties you want to monitor — no need to be notified for test properties or lower priority domains.</p>
-	<h3 id="getting-started-today">Getting started today</h3>
-	<p>HTTP Origin Error Rate notifications can be configured in the Notifications tab of the dashboard. Select <strong>Origin Error Rate Alert</strong> as your alert type. As with all Cloudflare notifications, you’re able to name and describe your notification, and choose how you want to be notified. From there, you can select which domains you want to monitor, and at what SLO.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image9.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Getting started today</h3>
+	<p>HTTP Origin Error Rate notifications can be configured in the Notifications tab of the dashboard. Select <b>Origin Error Rate Alert</b> as your alert type. As with all Cloudflare notifications, you’re able to name and describe your notification, and choose how you want to be notified. From there, you can select which domains you want to monitor, and at what SLO.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/XIuKjsl3jwbOkUF5CLfpq/9c86cf2786395617f606d4e4cde8635a/image9.gif" alt="" class="kg-image" width="1458" height="870" loading="lazy">
+
+	</figure>
 	<p>This notification is available to all Enterprise customers. If you’re interested in monitoring your origin, we encourage you to give it a try.</p>
 	<p>Our team is hiring in <a href="https://boards.greenhouse.io/cloudflare/jobs/3129759?gh_jid=3129759">Austin</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/3231716?gh_jid=3231716">Lisbon</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/3231718?gh_jid=3231718">London</a>.</p>
 </div>

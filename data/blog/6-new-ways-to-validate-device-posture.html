@@ -1,41 +1,81 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image1-25.png" class="kg-image" alt="6 New Ways to Validate Device Posture" loading="lazy"></figure>
-	<p>Cloudflare for Teams gives your organization the ability to build rules that determine who can reach specified resources. When we first <a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn">launched</a>, those rules primarily relied on identity. This helped our customers replace their private networks with a model that evaluated every request for <em>who</em> was connecting, but this lacked consideration for <em>how</em> they were connecting.</p>
-	<p>In March, we began to change that. We <a href="https://blog.cloudflare.com/endpoint-partnerships">announced new integrations</a> that give you the ability to create rules that consider the device as well. Starting today, we’re excited to share that you can now build additional rules that consider <em>several different factors about the device,</em> like its OS, patch status, and domain join or disk encryption status. This has become increasingly important over the last year as more and more people began connecting from home. Powered by the Cloudflare WARP agent, your team now has control over more health factors about the devices that connect to your applications.</p>
-	<h3 id="zero-trust-is-more-than-just-identity">Zero Trust is more than just identity</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZA158O8L7tj3GYRMM1II8/38449b9cc8beaa11ec21c2f1d0c7858d/image1-25.png" alt="6 New Ways to Validate Device Posture" class="kg-image" width="1801" height="905" loading="lazy">
+
+	</figure>
+	<p>Cloudflare for Teams gives your organization the ability to build rules that determine who can reach specified resources. When we first <a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn">launched</a>, those rules primarily relied on identity. This helped our customers replace their private networks with a model that evaluated every request for <i>who</i> was connecting, but this lacked consideration for <i>how</i> they were connecting.</p>
+	<p>In March, we began to change that. We <a href="https://blog.cloudflare.com/endpoint-partnerships">announced new integrations</a> that give you the ability to create rules that consider the device as well. Starting today, we’re excited to share that you can now build additional rules that consider <i>several different factors about the device,</i> like its OS, patch status, and domain join or disk encryption status. This has become increasingly important over the last year as more and more people began connecting from home. Powered by the Cloudflare WARP agent, your team now has control over more health factors about the devices that connect to your applications.</p>
+	<h3>Zero Trust is more than just identity</h3>
 	<p>With Cloudflare for Teams, administrators can replace their Virtual Private Networks (VPNs), where users on the network were trusted, with an alternative that does not trust any connection by default—also known as a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> model.</p>
 	<p>Customers start by connecting the resources they previously hosted on a private network to Cloudflare’s network using <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/create-tunnel">Cloudflare Tunnel</a>. Cloudflare Tunnel uses a lightweight connector that creates an outbound-only connection to Cloudflare’s edge, removing the need to poke holes in your existing firewall.</p>
 	<p>Once connected, administrators can build rules that apply to each and every resource and application, or even a part of an application. Cloudflare’s Zero Trust network evaluates every request and connection against the rules that an administrator created before the user is ever allowed to reach that resource.</p>
 	<p>For example, an administrator can create a rule that limits who can reach an internal reporting tool to users in a specific Okta group, connecting from an approved country, and only when they log in with a hardkey as their second factor. Cloudflare’s global network enforces those rules close to the user, in over 200 cities around the world, to make a comprehensive rule like the outlined above feel seamless to the end-user.</p>
 	<p>Today’s launch adds new types of signals your team can use to define these rules. By definition, a Zero Trust model considers every request or connection to be “untrusted.” Only the rules that you create determine what is considered trusted and allowed. Now, we’re excited to let users take this a step further and create rules that not only focus on trusting the user, but also the security posture of the device they are connecting from.</p>
-	<h3 id="more-and-different-factors-are-better">More (and different) factors are better</h3>
+	<h3>More (and different) factors are better</h3>
 	<p>Building rules based on device posture covers a blind spot for your applications and data. If I’m allowed to reach a particular resource, without any consideration for the device I’m using, then I could log in with my corporate credentials from a personal device running an unpatched or vulnerable version of an operating system. I might do that because it is convenient, but I am creating a much bigger problem for my team if I then download data that could be compromised because of that device.</p>
 	<p>That posture can also change based on the destination. For example, maybe you are comfortable if a team member uses any device to review a new splash page for your marketing campaign. However, if a user is connecting to an administrative tool that manages customer accounts, you want to make sure that device complies with your security policies for customer data that include factors like disk encryption status. With Cloudflare for Teams, you can apply rules that contain multiple and different factors with that level of per-resource granularity.</p>
 	<p>Today, we are thrilled to announce six additional posture types on top of the ones you can already set:</p>
 	<ol>
-		<li><a href="https://blog.cloudflare.com/endpoint-partnerships">Endpoint Protection Partners</a> — Verify that your users are running one of our Endpoint Protection Platform providers (Carbon Black, CrowdStrike, SentinelOne, Tanium)</li>
-		<li><a href="https://blog.cloudflare.com/zero-trust-with-managed-devices">Serial Number</a> — Allow devices only from your known inventory pool</li>
-		<li><a href="https://blog.cloudflare.com/integrating-cloudflare-gateway-and-access">Cloudflare WARP’s proxy</a> — Determine if your users are connected via our encrypted WARP tunnel (Free, Paid or any Teams account)</li>
-		<li><a href="https://blog.cloudflare.com/integrating-cloudflare-gateway-and-access">Cloudflare’s secure web gateway</a> — Determine if your users are connecting from a device managed by your HTTP FIltering policies</li>
-		<li><strong>(NEW) Application Check</strong> — Verify any program of your choice is running on the device</li>
-		<li><strong>(NEW) File Check</strong> — Ensure a particular file is present on the device (such as an updated signature, OS patch, etc.)</li>
-		<li><strong>(NEW) Disk Encryption</strong> — Ensure all physical disks on the device are encrypted</li>
-		<li><strong>(NEW) OS Version</strong> — Confirm users have upgraded to a specific operating system version</li>
-		<li><strong>(NEW) Firewall </strong>— Check that a firewall is configured on the device</li>
-		<li><strong>(NEW) Domain Joined</strong> — Verify that your Windows devices must be joined to the corporate directory</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/endpoint-partnerships">Endpoint Protection Partners</a> — Verify that your users are running one of our Endpoint Protection Platform providers (Carbon Black, CrowdStrike, SentinelOne, Tanium)</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/zero-trust-with-managed-devices">Serial Number</a> — Allow devices only from your known inventory pool</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/integrating-cloudflare-gateway-and-access">Cloudflare WARP’s proxy</a> — Determine if your users are connected via our encrypted WARP tunnel (Free, Paid or any Teams account)</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/integrating-cloudflare-gateway-and-access">Cloudflare’s secure web gateway</a> — Determine if your users are connecting from a device managed by your HTTP FIltering policies</p>
+		</li>
+		<li>
+			<p><b>(NEW) Application Check</b> — Verify any program of your choice is running on the device</p>
+		</li>
+		<li>
+			<p><b>(NEW) File Check</b> — Ensure a particular file is present on the device (such as an updated signature, OS patch, etc.)</p>
+		</li>
+		<li>
+			<p><b>(NEW) Disk Encryption</b> — Ensure all physical disks on the device are encrypted</p>
+		</li>
+		<li>
+			<p><b>(NEW) OS Version</b> — Confirm users have upgraded to a specific operating system version</p>
+		</li>
+		<li>
+			<p><b>(NEW) Firewall</b> — Check that a firewall is configured on the device</p>
+		</li>
+		<li>
+			<p><b>(NEW) Domain Joined</b> — Verify that your Windows devices must be joined to the corporate directory</p>
+		</li>
 	</ol>
-	<h3 id="device-rules-should-be-as-simple-as-identity-rules">Device rules should be as simple as identity rules</h3>
+	<h3>Device rules should be as simple as identity rules</h3>
 	<p>Cloudflare for Teams device rules can be configured in the same place that you control identity-based rules. Let’s use the Disk Encryption posture check as an example. You may want to create a rule that enforces the Disk Encryption check when your users need to download and store files on their devices locally.</p>
 	<p>To build that rule, first visit the <a href="https://dash.teams.cloudflare.com/team/devices">Cloudflare for Teams dashboard</a> and navigate to the Devices section of the “My Team” page. Then, choose “Disk Encryption” as a new attribute to add.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image5-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ghCYtgEEGFtfErqQjJddQ/a10ff4f77c7454af05ecd90d2447096c/image5-14.png" alt="" class="kg-image" width="1516" height="1392" loading="lazy">
+
+	</figure>
 	<p>You can enter a descriptive name for this attribute. For example, this rule should require Windows disk encryption, while others might require encryption on other platforms.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image2-17.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7njkspD0ailjBgC2tAcowC/5cf6666c974743dc6408f0b8f91cacab/image2-17.png" alt="" class="kg-image" width="1999" height="1097" loading="lazy">
+
+	</figure>
 	<p>To save time, you can also create reusable rules, called <a href="https://developers.cloudflare.com/cloudflare-one/identity/users/groups#create-a-group">Groups</a>, to include multiple types of device posture check for reference in new policies later on.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image3-16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4A0ZbehejwlwjgZg0nOz4W/6a96c8eed7297112c7e653256c4fb499/image3-16.png" alt="" class="kg-image" width="1992" height="1614" loading="lazy">
+
+	</figure>
 	<p>Now that you’ve created your group, you can create a Zero Trust Require rule to apply your Disk Encryption checks. To do that, navigate to Access &gt; Applications and create a new application. If you already have your application in place, simply edit your application to add a new rule. In the Assign a group section you will see the group you just created—select it and choose a Require rule type. And finally, save the rule to begin enforcing granular, zero trust device posture checks on every request in your environment.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image4-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-s-next">What’s next</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Wa9IEM5FiiM6iikUs4TPo/e5a32a9b0316b5424c4b9d77757468b6/image4-11.png" alt="" class="kg-image" width="1999" height="1031" loading="lazy">
+
+	</figure>
+	<h3>What’s next</h3>
 	<p>Get started with exploring all <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices">device posture attributes</a> in our developer docs. Note that not all posture types are currently available on operating systems and some operating systems don’t support them.</p>
 	<p>Is there a posture type we’re missing that you’d love to have? We’d love to hear from you in the <a href="https://community.cloudflare.com">Community</a>.</p>
 </div>

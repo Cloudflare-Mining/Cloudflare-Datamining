@@ -1,22 +1,21 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Ymii5BHRmuLMXJORrTYTp/173505cfec8ad55655bcdc3edfcfe30c/go-at-cloudflare.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>The other day I blogged here about our new <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun software</a> that speeds up the back haul between CloudFlare data centers and our clients' servers. At CloudFlare we're using a number of different languages depending on the task: C or C++ for all core services, PHP for the main web site, Lua for customization of nginx and an extensive amount of JavaScript. Railgun is slightly different as it's about 4,000 lines of <a href="https://golang.org">Go</a> of which about 3,000 are code (not comments).</p>
-	<p><img alt="Go at CloudFlare" src="https://blog.cloudflare.com/content/images/1320968710.jpeg.scaled500.jpg" title="Go at CloudFlare"><br>
-		<small>Image source: <a href="http://stanleylieber.com">stanleylieber.com</a>; created by <a href="http://reneefrench.blogspot.co.uk">Renée French</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GFj8nrjVz8J9lK5nLKq8L/b5dc9361dd4030bf4b9ac5b3ac74a968/1320968710.jpeg.scaled500.jpg" alt="Go at CloudFlare" class="kg-image" width="500" height="376" loading="lazy">
+
+	</figure>
+	<p>Image source: <a href="http://stanleylieber.com">stanleylieber.com</a>; created by <a href="http://reneefrench.blogspot.co.uk">Renée French</a></p>
 	<p>We chose to use Go for Railgun because Railgun is inherently highly concurrent. A single instance of the Railgun client should be able to handle large numbers of requests from the CloudFlare data center for content and then multiplex them across an Internet connection to be handled. Go's concurrency makes writing software that must scale up and down very easy.</p>
 	<p>Railgun makes extensive use of goroutines and channels. Goroutines handle both the multiplexed Internet connections (of which there could be many between a single CloudFlare data center and our clients) and the connections needed to get content from origin web servers and provide the content back to the nginx server that sends it on to the web browser.</p>
 	<p>Probably the nicest thing about goroutines and channels is that they make it easy to create 'fire and forget until needed' systems. You create a channel, create a goroutine that communicates on that channel and then read from the channel when needed (perhaps using a <a href="https://golang.org/ref/spec#Select_statements">select</a> statement).</p>
 	<p>(Aside: for those who studied computer science, Go owes a lot to Hoare's <a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes">CSP</a> and Dijkstra's <a href="https://en.wikipedia.org/wiki/Guarded_commands">Guarded Commands</a>.</p>
 	<p>A small example of a goroutine inside Railgun is this unique ID generator. It generates a sequence of IDs that are used to identify streams (a stream contains a single HTTP request) being sent between the CloudFlare data center and a client site.</p>
-	<script src="https://gist.github.com/3039800.js"></script>
 	<p>It works by adding data to a SHA1 hash and each time a read is made on the channel id a new string ID is created by hashing the data. The whole thing is running as an independent goroutine that only does work when needed. (You can play with this code live <a href="https://play.golang.org/p/srlnFu9Idn">here</a>).</p>
 	<p>Another powerful aspect of Go is the way in which it handles object orientation. Go has a notion of an interface which is used to identify a capability of an object and where it can be used. One common interface is <a href="https://golang.org/pkg/io/#Writer">io.Writer</a>. To be an io.Writer an object has to implement the Write function which has the signature Write(p []byte) (n int, err error). Any object that implements that can be used wherever an io.Writer is needed.</p>
 	<p>In Railgun there's a simple object called a Counter that is an io.Writer. It turns an ordinary io.Writer into one that writes, but also counts how much it's written. When its Write is called it keeps track of the number of bytes and calls the underlying io.Writer. It looks like this:</p>
-	<script src="https://gist.github.com/3039892.js"></script>
 	<p>As an example of its use, here's how the unique ID generator above can be altered to count the number of bytes of data that have been written to the SHA1 hash. Since h implements io.Writer it can be passed to counter.New and it can be used to write data to the hash and keep a count. Reading from the count channel would retrieve how many bytes had been written. (See the <a href="https://play.golang.org/p/yZ8C0Tmpsf">live version</a> for an example).</p>
-	<script src="https://gist.github.com/3039932.js"></script>
 	<p>Part of the reason Railgun is so small is that Go's library is extensive and easy to work with. Go has libraries for <a href="https://golang.org/pkg/net/http">HTTP</a>, <a href="https://golang.org/pkg/net">raw network connections</a>, <a href="https://golang.org/pkg/net/url">URL manipulation</a>, <a href="https://golang.org/pkg/crypto/tls">TLS</a>, many different types of <a href="https://golang.org/pkg/encoding">serialization</a> systems, <a href="https://golang.org/pkg/crypto">cryptographic hashing</a>, <a href="https://golang.org/pkg/compress">compression</a>, and the more mundane <a href="https://golang.org/pkg/strings">string manipulation</a>, <a href="https://golang.org/pkg/time">date/time</a>, and <a href="https://golang.org/pkg/log">logging</a>.</p>
 	<p>Another reason Go has been helpful is that is generates a single executable that can be distributed to our clients. There's no complex dependency chain or layout of shared libraries to worry about.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,25 +1,35 @@
-<div class="mb2 gray5">11 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/traffic-anomalies-notifications-radar-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/traffic-anomalies-notifications-radar-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/traffic-anomalies-notifications-radar-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/traffic-anomalies-notifications-radar-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image13-3.png" class="kg-image" alt="Traffic anomalies and notifications with Cloudflare Radar" loading="lazy" width="1999" height="1125"></figure>
+<div class="mb2 gray5">10 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/traffic-anomalies-notifications-radar">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/traffic-anomalies-notifications-radar">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/traffic-anomalies-notifications-radar">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/traffic-anomalies-notifications-radar">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64RU7fXZM4tF0ZKhlNAqcY/9874decce3f1e9511b9253beabae963b/image13-3.png" alt="Traffic anomalies and notifications with Cloudflare Radar" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>We launched the <a href="https://radar.cloudflare.com/outage-center">Cloudflare Radar Outage Center (CROC)</a> during Birthday Week 2022 as a way of keeping the community up to date on Internet disruptions, including outages and shutdowns, visible in Cloudflare’s traffic data. While some of the entries have their genesis in information from social media posts made by local telecommunications providers or civil society organizations, others are based on an internal traffic anomaly detection and alerting tool. Today, we’re adding this alerting feed to Cloudflare Radar, showing country and network-level traffic anomalies on the CROC as they are detected, as well as making the feed available via <a href="https://developers.cloudflare.com/api/operations/radar-get-traffic-anomalies">API</a>.</p>
 	<p>Building on this new functionality, as well as the <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar">route leaks</a> and <a href="https://blog.cloudflare.com/bgp-hijack-detection">route hijacks insights</a> that we recently launched <a href="https://radar.cloudflare.com/routing">on Cloudflare Radar</a>, we are also launching new Radar notification functionality, enabling you to subscribe to notifications about traffic anomalies, confirmed Internet outages, route leaks, or route hijacks. Using the <a href="https://dash.cloudflare.com">Cloudflare dashboard’s</a> existing notification functionality, users can set up notifications for one or more countries or autonomous systems, and receive notifications when a relevant event occurs. Notifications may be sent via e-mail or webhooks — the available delivery methods <a href="https://developers.cloudflare.com/notifications">vary according to plan level</a>.</p>
-	<h3 id="traffic-anomalies">Traffic anomalies</h3>
+	<h3>Traffic anomalies</h3>
 	<p>Internet traffic generally follows a fairly regular pattern, with daily peaks and troughs at roughly the same volumes of traffic. However, while weekend traffic patterns may look similar to weekday ones, their traffic volumes are generally different. Similarly, holidays or national events can also cause traffic patterns and volumes to differ significantly from “normal”, as people shift their activities and spend more time offline, or as people turn to online sources for information about, or coverage of, the event. These traffic shifts can be newsworthy, and we have covered some of them in past Cloudflare blog posts (<a href="https://blog.cloudflare.com/how-the-coronation-of-king-charles-iii-affected-internet-traffic">King Charles III coronation</a>, <a href="https://blog.cloudflare.com/easter-passover-ramadan-internet-trends-2023">Easter/Passover/Ramadan</a>, <a href="https://blog.cloudflare.com/how-the-brazilian-presidential-elections-affected-internet-traffic">Brazilian presidential elections</a>).</p>
 	<p>However, as you also know from reading our <a href="https://blog.cloudflare.com/tag/outage">blog posts</a> and following <a href="https://twitter.com/CloudflareRadar">Cloudflare Radar</a> on social media, it is the more drastic drops in traffic that are a cause for concern. Some are the result of infrastructure damage from severe weather or a natural disaster like an earthquake and are effectively unavoidable, but getting timely insights into the impact of these events on Internet connectivity is valuable from a communications perspective. Other traffic drops have occurred when an authoritarian government orders mobile Internet connectivity to be shut down, or shuts down all Internet connectivity nationwide. Timely insights into these types of anomalous traffic drops are often critical from a human rights perspective, as Internet shutdowns are often used as a means of controlling communication with the outside world.</p>
-	<p>Over the last several months, the Cloudflare Radar team has been using an internal tool to identify traffic anomalies and post alerts for followup to a dedicated chat space. The companion blog post <a href="https://blog.cloudflare.com/detecting-internet-outages"><em>Gone Offline: Detecting Internet Outages</em></a> goes into deeper technical detail about our traffic analysis and anomaly detection methodologies that power this internal tool.</p>
-	<p>Many of these internal traffic anomaly alerts ultimately result in Outage Center entries and Cloudflare Radar social media posts. Today, we’re extending the <a href="https://radar.cloudflare.com/outage-center">Cloudflare Radar Outage Center</a> and publishing information about these anomalies as we identify them. As shown in the figure below, the new <strong>Traffic anomalies</strong> table includes the type of anomaly (location or ASN), the entity where the anomaly was detected (country/region name or autonomous system), the start time, duration, verification status, and an “Actions” link, where the user can view the anomaly on the relevant entity traffic page or subscribe to a notification. (If manual review of a detected anomaly finds that it is present in multiple Cloudflare traffic datasets and/or is visible in third-party datasets, such as Georgia Tech’s <a href="https://ioda.live">IODA</a> platform, we will mark it as verified. Unverified anomalies may be false positives, or related to Netflows collection issues, though we endeavor to minimize both.)</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0-6.png" class="kg-image" alt="" loading="lazy" width="1165" height="492"></figure>
+	<p>Over the last several months, the Cloudflare Radar team has been using an internal tool to identify traffic anomalies and post alerts for followup to a dedicated chat space. The companion blog post <a href="https://blog.cloudflare.com/detecting-internet-outages"><i>Gone Offline: Detecting Internet Outages</i></a> goes into deeper technical detail about our traffic analysis and anomaly detection methodologies that power this internal tool.</p>
+	<p>Many of these internal traffic anomaly alerts ultimately result in Outage Center entries and Cloudflare Radar social media posts. Today, we’re extending the <a href="https://radar.cloudflare.com/outage-center">Cloudflare Radar Outage Center</a> and publishing information about these anomalies as we identify them. As shown in the figure below, the new <b>Traffic anomalies</b> table includes the type of anomaly (location or ASN), the entity where the anomaly was detected (country/region name or autonomous system), the start time, duration, verification status, and an “Actions” link, where the user can view the anomaly on the relevant entity traffic page or subscribe to a notification. (If manual review of a detected anomaly finds that it is present in multiple Cloudflare traffic datasets and/or is visible in third-party datasets, such as Georgia Tech’s <a href="https://ioda.live">IODA</a> platform, we will mark it as verified. Unverified anomalies may be false positives, or related to Netflows collection issues, though we endeavor to minimize both.)</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4avPigfW9GjhqKlH4U9XI2/78d5499573528cc13ba60eb5b688d444/pasted-image-0-6.png" alt="" class="kg-image" width="1165" height="492" loading="lazy">
+
+	</figure>
 	<p>In addition to this new table, we have updated the <a href="https://radar.cloudflare.com/outage-center">Cloudflare Radar Outage Center</a> map to highlight where we have detected anomalies, as well as placing them into a broader temporal context in a new timeline immediately below the map. Anomalies are represented as orange circles on the map, and can be hidden with the toggle in the upper right corner. Double-bordered circles represent an aggregation across multiple countries, and zooming in to that area will ultimately show the number of anomalies associated with each country that was included in the aggregation. Hovering over a specific dot in the timeline displays information about the outage or anomaly with which it is associated.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--1--6.png" class="kg-image" alt="" loading="lazy" width="1164" height="817"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fqllfaS5B100bVx1f58w0/8bc6b8ce20e3ca17ed8e5f541406507d/pasted-image-0--1--6.png" alt="" class="kg-image" width="1164" height="817" loading="lazy">
+
+	</figure>
 	<p>Internet outage information has been available via the <a href="https://developers.cloudflare.com/api/operations/radar-get-annotations-outages">Radar API</a> since we launched the Outage Center and API in September 2022, and traffic anomalies are now available through a <a href="https://developers.cloudflare.com/api/operations/radar-get-traffic-anomalies">Radar API endpoint</a> as well. An example traffic anomaly API request and response are shown below.</p>
-	<p><strong>Example request:</strong></p><!--kg-card-begin: markdown-->
-	<pre><code>curl --request GET \ --url https://api.cloudflare.com/client/v4/radar/traffic_anomalies \ --header 'Content-Type: application/json' \ --header 'X-Auth-Email: '
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><strong>Example response:</strong></p><!--kg-card-begin: markdown-->
-	<pre><code>{
+	<p><b>Example request:</b></p>
+	<pre class="language-bash"><code class="language-bash">curl --request GET \ --url https://api.cloudflare.com/client/v4/radar/traffic_anomalies \ --header 'Content-Type: application/json' \ --header 'X-Auth-Email: '</code></pre>
+	<p><b>Example response:</b></p>
+	<pre class="language-bash"><code class="language-bash">{
   "result": {
     "trafficAnomalies": [
       {
@@ -47,64 +57,129 @@
     ]
   },
   "success": true
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="notifications-overview">Notifications overview</h3>
+}</code></pre>
+	<h3>Notifications overview</h3>
 	<p>Timely knowledge about Internet “events”, such as drops in traffic or routing issues, are potentially of interest to multiple audiences. Customer service or help desk agents can use the information to help diagnose customer/user complaints about application performance or availability. Similarly, network administrators can use the information to better understand the state of the Internet outside their network. And civil society organizations can use the information to inform action plans aimed at maintaining communications and protecting human rights in areas of conflict or instability. With the new notifications functionality also being launched today, you can subscribe to be notified about observed traffic anomalies, confirmed Internet outages, route leaks, or route hijacks, at a country or autonomous system level. In the following sections, we discuss how to subscribe to and configure notifications, as well as the information contained within the various types of notifications.</p>
-	<h4 id="subscribing-to-notifications">Subscribing to notifications</h4>
+	<h4>Subscribing to notifications</h4>
 	<p>Note that you need to log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> to subscribe to and configure notifications. No purchase of Cloudflare services is necessary — just a verified email address is required to set up an account. While we would have preferred to not require a login, it enables us to take advantage of Cloudflare’s existing notifications engine, allowing us to avoid having to dedicate time and resources to building a separate one just for Radar. If you don’t already have a Cloudflare account, visit <a href="https://dash.cloudflare.com/sign-up">https://dash.cloudflare.com/sign-up</a> to create one. Enter your username and a unique strong password, click “Sign Up”, and follow the instructions in the verification email to activate your account. (Once you’ve activated your account, we also suggest activating <a href="https://www.cloudflare.com/learning/access-management/what-is-two-factor-authentication">two-factor authentication (2FA)</a> as an additional security measure.)</p>
 	<p>Once you have set up and activated your account, you are ready to start creating and configuring notifications. The first step is to look for the Notifications (bullhorn) icon – the presence of this icon means that notifications are available for that metric — in the Traffic, Routing, and Outage Center sections on Cloudflare Radar. If you are on a country or ASN-scoped traffic or routing page, the notification subscription will be scoped to that entity.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-23.png" class="kg-image" alt="" loading="lazy" width="1999" height="367">
-		<figcaption><em>Look for this icon in the Traffic, Routing, and Outage Center sections of Cloudflare Radar to start setting up notifications.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pthIoKtBxP566BiMTmIo7/dfca339fda312130bd5d896a8a8a8f59/image3-23.png" alt="" class="kg-image" width="1999" height="367" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--2--4.png" class="kg-image" alt="" loading="lazy" width="1154" height="264">
-		<figcaption><em>In the Outage Center, click the icon in the “Actions” column of an Internet outages table entry to subscribe to notifications for the related location and/or ASN(s). Click the icon alongside the table description to subscribe to notifications for all confirmed Internet outages.</em></figcaption>
+	<p><i>Look for this icon in the Traffic, Routing, and Outage Center sections of Cloudflare Radar to start setting up notifications.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BzESdUYejnGYbyOELT3xb/255f8ba904d1ee8ada64b7e56c102cd6/pasted-image-0--2--4.png" alt="" class="kg-image" width="1154" height="264" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--3--6.png" class="kg-image" alt="" loading="lazy" width="1153" height="201">
-		<figcaption><em>In the Outage Center, click the icon in the “Actions” column of a Traffic anomalies table entry to subscribe to notifications for the related entity. Click the icon alongside the table description to subscribe to notifications for all traffic anomalies.</em></figcaption>
+	<p><i>In the Outage Center, click the icon in the “Actions” column of an Internet outages table entry to subscribe to notifications for the related location and/or ASN(s). Click the icon alongside the table description to subscribe to notifications for all confirmed Internet outages.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JzDVk3W9GXmFs1EEMpI1y/f56ed040c2ff1aef50b9b42e1ceedae5/pasted-image-0--3--6.png" alt="" class="kg-image" width="1153" height="201" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--4--2.png" class="kg-image" alt="" loading="lazy" width="567" height="93">
-		<figcaption><em>On country or ASN traffic pages, click the icon alongside the description of the traffic trends graph to subscribe to notifications for traffic anomalies or Internet outages impacting the selected country or ASN.</em></figcaption>
+	<p><i>In the Outage Center, click the icon in the “Actions” column of a Traffic anomalies table entry to subscribe to notifications for the related entity. Click the icon alongside the table description to subscribe to notifications for all traffic anomalies.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/USbTwPiy87LABK9yzvdAD/beade16cc3d843dbb880abdf3688ec73/pasted-image-0--4--2.png" alt="" class="kg-image" width="567" height="93" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--5--2.png" class="kg-image" alt="" loading="lazy" width="744" height="92"></figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--6--1.png" class="kg-image" alt="" loading="lazy" width="652" height="82">
-		<figcaption><em>On country or ASN routing pages, click the icon alongside the description to subscribe to notifications for route leaks or origin hijacks related to the selected country or ASN.</em></figcaption>
+	<p><i>On country or ASN traffic pages, click the icon alongside the description of the traffic trends graph to subscribe to notifications for traffic anomalies or Internet outages impacting the selected country or ASN.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uXs607M5vob0cRMFuyPrG/3f2404f110068a32f38937f68b45f019/pasted-image-0--5--2.png" alt="" class="kg-image" width="744" height="92" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--7--1.png" class="kg-image" alt="" loading="lazy" width="1198" height="134"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--8--1.png" class="kg-image" alt="" loading="lazy" width="1197" height="187">
-		<figcaption><em>Within the Route Leaks or Origin Hijacks tables on the routing pages, click the icon in a table entry to subscribe to notifications for route leaks or origin hijacks for referenced countries and/or ASNs.&nbsp;</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/266gINGnVLwOGMcogtGoql/77269e7a1cbaf90bcc94c811cff88511/pasted-image-0--6--1.png" alt="" class="kg-image" width="652" height="82" loading="lazy">
+
 	</figure>
+	<p><i>On country or ASN routing pages, click the icon alongside the description to subscribe to notifications for route leaks or origin hijacks related to the selected country or ASN.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LXt4HacyxqtpJbgj6sQ6T/62e9ed9f8d45d35fd85b57deceeaa122/pasted-image-0--7--1.png" alt="" class="kg-image" width="1198" height="134" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SWPlKRV9xUQxyXsfqbDBj/e15ea79d38104183526f82f550a3905a/pasted-image-0--8--1.png" alt="" class="kg-image" width="1197" height="187" loading="lazy">
+
+	</figure>
+	<p><i>Within the Route Leaks or Origin Hijacks tables on the routing pages, click the icon in a table entry to subscribe to notifications for route leaks or origin hijacks for referenced countries and/or ASNs.</i>&nbsp;</p>
 	<p>After clicking a notification icon, you’ll be taken to the Cloudflare login screen. Enter your username and password (and 2FA code if required), and once logged in, you’ll see the Add Notification page, pre-filled with the key information passed through from the referring page on Radar, including relevant locations and/or ASNs. (If you are already logged in to Cloudflare, then you’ll be taken directly to the Add Notification page after clicking a notification icon on Radar.) On this page, you can name the notification, add an optional description, and adjust the location and ASN filters as necessary. Enter an email address for notifications to be sent to, or select an established webhook destination (if you have webhooks enabled on your account).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--9--1.png" class="kg-image" alt="" loading="lazy" width="1384" height="1546"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WoiB73UcjTrzvt3KMeOgm/78cb64e727512aecfc45552092fd2f04/pasted-image-0--9--1.png" alt="" class="kg-image" width="1384" height="1546" loading="lazy">
+
+	</figure>
 	<p>Click “Save”, and the notification is added to the Notifications Overview page for the account.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--10--1.png" class="kg-image" alt="" loading="lazy" width="1384" height="1008"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g3sIazFDddiBRi12oMzYr/7ffd14908f496bfd671b215acb8a061f/pasted-image-0--10--1.png" alt="" class="kg-image" width="1384" height="1008" loading="lazy">
+
+	</figure>
 	<p>You can also create and configure notifications directly within Cloudflare, without starting from a link on a Radar page. To do so, log in to Cloudflare, and choose “Notifications” from the left side navigation bar. That will take you to the Notifications page shown below. Click the “Add” button to add a new notification.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--11--1.png" class="kg-image" alt="" loading="lazy" width="1384" height="1005"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mw4IUl2YxYOXQdM3pfcrU/38740ddc875ac0c86fc4ebbf424e28fd/pasted-image-0--11--1.png" alt="" class="kg-image" width="1384" height="1005" loading="lazy">
+
+	</figure>
 	<p>On the next page, search for and select “Radar” from the list of Cloudflare products for which notifications are available.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--12--1.png" class="kg-image" alt="" loading="lazy" width="1384" height="1005"></figure>
-	<p>On the subsequent “Add Notification” page, you can create and configure a notification from scratch. Event types can be selected in the “Notify me for:” field, and both locations and ASNs can be searched for and selected within the respective “Filtered by (optional)” fields. Note that if no filters are selected, then notifications will be sent for <strong>all</strong> events of the selected type(s). Add one or more emails to send notifications to, or select a webhook target if available, and click “Save” to add it to the list of notifications configured for your account.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy" width="1384" height="1431"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dq1Kt2F5XIJlV3X1r6Jyw/310678574b08910b4e5ff4882f740ee1/pasted-image-0--12--1.png" alt="" class="kg-image" width="1384" height="1005" loading="lazy">
+
+	</figure>
+	<p>On the subsequent “Add Notification” page, you can create and configure a notification from scratch. Event types can be selected in the “Notify me for:” field, and both locations and ASNs can be searched for and selected within the respective “Filtered by (optional)” fields. Note that if no filters are selected, then notifications will be sent for <b>all</b> events of the selected type(s). Add one or more emails to send notifications to, or select a webhook target if available, and click “Save” to add it to the list of notifications configured for your account.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bbIKwireM6CKWHJS92IvU/68617a453aef603e5d08221ec2019674/pasted-image-0--13-.png" alt="" class="kg-image" width="1384" height="1431" loading="lazy">
+
+	</figure>
 	<p>It is worth mentioning that advanced users can also create and configure notifications through the <a href="https://developers.cloudflare.com/api/operations/notification-policies-create-a-notification-policy">Cloudflare API Notification policies endpoint</a>, but we will not review that process within this blog post.</p>
-	<h4 id="notification-messages">Notification messages</h4>
+	<h4>Notification messages</h4>
 	<p>Example notification email messages are shown below for the various types of events. Each contains key information like the type of event, affected entities, and start time — additional relevant information is included depending on the event type. Each email includes both plaintext and HTML versions to accommodate multiple types of email clients. (Final production emails may vary slightly from those shown below.)</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--14-.png" class="kg-image" alt="" loading="lazy" width="1600" height="999">
-		<figcaption><em>Internet outage notification emails include information about the affected entities, a description of the cause of the outage, start time, scope (if available), and the type of outage (Nationwide, Network, Regional, or Platform), as well as a link to view the outage in a Radar traffic graph.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4m9llI9iUghxk9WNmeXs5c/d823a4139dcea33d414165ff9f0969b7/pasted-image-0--14-.png" alt="" class="kg-image" width="1600" height="999" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--15-.png" class="kg-image" alt="" loading="lazy" width="1600" height="754">
-		<figcaption><em>Traffic anomaly notification emails simply include information about the affected entity and a start time, as well as a link to view the anomaly in a Radar traffic graph.</em></figcaption>
+	<p><i>Internet outage notification emails include information about the affected entities, a description of the cause of the outage, start time, scope (if available), and the type of outage (Nationwide, Network, Regional, or Platform), as well as a link to view the outage in a Radar traffic graph.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ojcoXp3rsEhPY5QvrzmLu/3a0f562064b9ca55d2ab292fd1639ca5/pasted-image-0--15-.png" alt="" class="kg-image" width="1600" height="754" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--16-.png" class="kg-image" alt="" loading="lazy" width="1600" height="1185">
-		<figcaption><em>BGP hijack notification emails include information about the hijacking and victim ASNs, affected IP address prefixes, the number of BGP messages (announcements) containing leaked routes, the number of peers announcing the hijack, detection timing, a confidence level on the event being a true hijack, and relevant tags, as well as a link to view details of the hijack event on Radar.</em></figcaption>
+	<p><i>Traffic anomaly notification emails simply include information about the affected entity and a start time, as well as a link to view the anomaly in a Radar traffic graph.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4odkGwBAyUklNM3EpEYjlD/6837ef7a06605087406943f4a475d8aa/pasted-image-0--16-.png" alt="" class="kg-image" width="1600" height="1185" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--17-.png" class="kg-image" alt="" loading="lazy" width="1600" height="1002">
-		<figcaption><em>BGP route leak notification emails include information about the AS that the leaked routes were learned from, the AS that leaked the routes, the AS that received and propagated the leaked routes, the number of affected prefixes, the number of affected origin ASes, the number of BGP route collector peers that saw the route leak, and detection timing, as well as a link to view details of the route leak event on Radar.</em></figcaption>
+	<p><i>BGP hijack notification emails include information about the hijacking and victim ASNs, affected IP address prefixes, the number of BGP messages (announcements) containing leaked routes, the number of peers announcing the hijack, detection timing, a confidence level on the event being a true hijack, and relevant tags, as well as a link to view details of the hijack event on Radar.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xjHBbXtCiOKWEhgS4bfpU/4fb4a2da43c62fb8cc98367a8aeb3dd9/pasted-image-0--17-.png" alt="" class="kg-image" width="1600" height="1002" loading="lazy">
+
 	</figure>
+	<p><i>BGP route leak notification emails include information about the AS that the leaked routes were learned from, the AS that leaked the routes, the AS that received and propagated the leaked routes, the number of affected prefixes, the number of affected origin ASes, the number of BGP route collector peers that saw the route leak, and detection timing, as well as a link to view details of the route leak event on Radar.</i></p>
 	<p>If you are sending notifications to webhooks, you can integrate those notifications into tools like Slack. For example, by following the directions in <a href="https://api.slack.com/messaging/webhooks">Slack’s API documentation</a>, creating a simple integration took just a few minutes and results in messages like the one shown below.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--18-.png" class="kg-image" alt="" loading="lazy" width="640" height="196"></figure>
-	<h3 id="conclusion">Conclusion</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uMXY1xUfZdoyX2u1J5xWO/41e079cd28561e446234493c287f829d/pasted-image-0--18-.png" alt="" class="kg-image" width="640" height="196" loading="lazy">
+
+	</figure>
+	<h3>Conclusion</h3>
 	<p>Cloudflare’s unique perspective on the Internet provides us with near-real-time insight into unexpected drops in traffic, as well as potentially problematic routing events. While we’ve been sharing these insights with you over the past year, you had to visit Cloudflare Radar to figure out if there were any new “events”. With the launch of notifications, we’ll now automatically send you information about the latest events that you are interested in.</p>
 	<p>We encourage you to visit Cloudflare Radar to familiarize yourself with the information we publish about <a href="https://radar.cloudflare.com/outage-center">traffic anomalies</a>, <a href="https://radar.cloudflare.com/outage-center">confirmed Internet outages</a>, <a href="https://radar.cloudflare.com/routing">BGP route leaks</a>, and <a href="https://radar.cloudflare.com/routing">BGP origin hijacks</a>. Look for the notification icon on the relevant graphs and tables on Radar, and go through the workflow to set up and subscribe to notifications. (And don’t forget to sign up for a <a href="https://dash.cloudflare.com">Cloudflare</a> account if you don’t have one already.) Please <a href="mailto:radar-notifications-feedback@cloudflare.com">send us feedback</a> about the notifications, as we are constantly working to improve them, and let us know how and where you’ve integrated Radar notifications into your own tools/workflows/organization.</p>
 	<p>Follow Cloudflare Radar on social media at <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> (Twitter), <a href="https://noc.social/@cloudflareradar">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/Announcement.png" class="kg-image" alt="" loading="lazy" width="1600" height="467"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bnvOiFBE4NEjULFappDQN/5aea8edd6e587fdf09a9f33018d59fba/Announcement.png" alt="" class="kg-image" width="1600" height="467" loading="lazy">
+
+	</figure>
+	<p></p>
 </div>

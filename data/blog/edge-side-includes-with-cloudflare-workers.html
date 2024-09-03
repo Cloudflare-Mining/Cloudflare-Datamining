@@ -1,30 +1,43 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gNQvxZ6I9cTwFSRjR5MUY/684b62f3d694c4d0380693d89cf3f0c1/edge-side-includes-with-cloudflare-workers.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>At Cloudflare we’re accelerating web assets in a number of different ways. Part of this is <a href="https://www.cloudflare.com/cdn">caching</a>, by storing the response given by the origin server directly within our <a href="https://www.cloudflare.com/network">151+ global data centers</a>. This will dramatically improve the delivery of the resources as the visitor will directly get them from the data center closest to them, instead of waiting for us to fetch the request from the origin web server.</p>
-	<h3 id="theissuewithdynamicbutnotalotpages">The issue with dynamic (but not a lot) pages</h3>
+	<h3>The issue with dynamic (but not a lot) pages</h3>
 	<p>The subject we’re gonna cover today is the concept of Edge-Side-Includes. And what’s better than a real use-case to introduce what it is used for? Let’s take a website where all pages are including advertisements at the head and bottom. Could we consider these pages static? We couldn’t as at least part of this page is dynamic. Could we consider caching it? That’s a no again as it would mean the first dynamic part rendered will be cached and served for the other visitors trying to get the page. It would be a catastrophe if the advertisements are user-specific.</p>
 	<p>So the issue here is that we can’t cache the page. That’s quite a shame as it means that we’ll fetch the page again, and over again for every new request just to get this 1% portion of dynamic content.</p>
-	<h3 id="countermeasurewithdeltacompression">Counter-measure with delta-compression?</h3>
+	<h3>Counter-measure with delta-compression?</h3>
 	<p>Back in time, we’ve released <a href="https://www.cloudflare.com/website-optimization/railgun">Railgun</a>, which consist in doing delta-compression of the requests received by a web server so Railgun listener could just send the delta bytes since the last request. We’re also working on the inclusion of this delta-compression in our <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a> listener, which is a small agent opening tunnels to us so you don’t even have to have your applications public on the internet, a simple outbound HTTPS access is enough to publish, secure and accelerate applications on Internet.</p>
 	<p>In both cases, we’ll need to fetch the complete webpage in order to calculate the difference from the last request, right? This is where Edge-Side-Includes takes place.</p>
 	<p>The Edge-Side-Includes standard has been submitted to the W3C (<a href="https://www.w3.org/TR/esi-lang">https://www.w3.org/TR/esi-lang</a>) in August 2001 and defines an XML markup language that can be inserted in HTML or other text based contents which defines how interstitial proxies/CDNs need to combine static and dynamic portion and were to get them. The result is that it’s possible to keep those 99% in cache and for the remaining 1%, the interstitial cache proxy will fetch directly from the destination defined in the Edge-Side-Include block for finally combining both static and dynamic parts and sending the final webpage to the visitor.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/static-and-dynamic-content-diagram-blog-post-edge-side-workers@2x-1.png" alt="static-and-dynamic-content-diagram-blog-post-edge-side-workers@2x-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31aYZUXaOHwqH6Aw2OQVqn/eae0f89120c79b5486c6fb0557263598/static-and-dynamic-content-diagram-blog-post-edge-side-workers_2x-1.png" alt="static-and-dynamic-content-diagram-blog-post-edge-side-workers@2x-1" class="kg-image" width="1474" height="480" loading="lazy">
+
+	</figure>
 	<p>ESI block example:</p>
-	<pre><code class="language-html">&lt;esi:include src="http://example.com/1.html" alt="http://bak.example.com/2.html" onerror="continue"/&gt;
+	<pre class="language-html"><code class="language-html">&lt;esi:include src="http://example.com/1.html" alt="http://bak.example.com/2.html" onerror="continue"/&gt;
 </code></pre>
-	<h3 id="implementingitinaworker">Implementing it in a Worker</h3>
-	<p>We released months ago <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>, our serverless framework which helps to implement custom logics directly within the Edge. The Workers are triggering in the path of the requests and the responses and can manipulate almost everything and spin subrequests on-the-fly.<br>
-		This could dramatically improve the time to action for the implementation of new logics on your applications since you won’t have to modify them anymore as this can directly be done in the Edge, even if your applications are hosted on a bunch of different locations (Cloud and on-premise).</p>
+	<h3>Implementing it in a Worker</h3>
+	<p>We released months ago <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>, our serverless framework which helps to implement custom logics directly within the Edge. The Workers are triggering in the path of the requests and the responses and can manipulate almost everything and spin subrequests on-the-fly.This could dramatically improve the time to action for the implementation of new logics on your applications since you won’t have to modify them anymore as this can directly be done in the Edge, even if your applications are hosted on a bunch of different locations (Cloud and on-premise).</p>
 	<p>This scenario sounds then quite compatible with what we can achieve with Cloudflare Workers. For memories, here are the actions the EDGE needs to do for implementing the ESIs:</p>
 	<ul>
-		<li>Fetching the static content</li>
-		<li>Searching in the payload for any <code>&lt;esi:include/&gt;</code> blocks</li>
-		<li>Fetching separately every ESI blocks found</li>
-		<li>Merging the static and dynamic contents</li>
-		<li>Sending the whole new payload to visitors</li>
+		<li>
+			<p>Fetching the static content</p>
+		</li>
+		<li>
+			<p>Searching in the payload for any <code>&lt;esi:include/&gt;</code> blocks</p>
+		</li>
+		<li>
+			<p>Fetching separately every ESI blocks found</p>
+		</li>
+		<li>
+			<p>Merging the static and dynamic contents</p>
+		</li>
+		<li>
+			<p>Sending the whole new payload to visitors</p>
+		</li>
 	</ul>
 	<p>For this purpose, I created a small page on my test web server, with the following content:</p>
-	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
 &lt;meta charset="UTF-8"&gt;
@@ -39,11 +52,10 @@
 &lt;p&gt;Dynamic portion coming from https://httpbin.org/headers:&lt;/p&gt;
 &lt;esi:include src="https://httpbin.org/headers" onerror="continue" /&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<p>So in this page we can see that most of the content will be static and we can find just before the end of the <code>&lt;body&gt;</code> an ESI pointing to <a href="https://httpbin.org/headers">https://httpbin.org/headers</a> that the Edge will need to combine with the static content, in place of the ESI block.</p>
-	<h2 id="theworkerexplained">The worker explained</h2>
-	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+	<h2>The worker explained</h2>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
   event.respondWith(fetchAndStream(event.request))
   event.passThroughOnException()
 })
@@ -60,12 +72,11 @@ async function fetchAndStream(request) {
   newResponse.headers.set('cache-control', 'max-age=0')
   streamTransformBody(response.body, writable)
   return newResponse
-}
-</code></pre>
+}</code></pre>
 	<p>This is the main portion of the script, testing first if the response is text-based and return the content directly to the visitor if not. Then instanciating a stream pipeline to send to the visitor using a specific function called <code>streamTransformBody()</code> in charge of the payload chunking.</p>
 	<p>You'll notice that I'm setting a <code>max-age=0</code> cache-control header in the response as I don't want browsers to cache this response in case of a bad configuration on the Origin side.</p>
 	<p>I’m also declaring this script as fail-safe so that the request will go through normally if raising an Exception. More debugging information can be found <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips">on our developer HUB</a>. Feel free to adapt for your use-cases and for example sending the Exception to a specific header, or even fancier <a href="https://blog.cloudflare.com/dogfooding-edge-workers">sending the event to a logging tool</a>.</p>
-	<pre><code class="language-javascript">async function handleTemplate(encoder, templateKey) {
+	<pre class="language-javascript"><code class="language-javascript">async function handleTemplate(encoder, templateKey) {
   const linkRegex = /(esi:include.*src="(.*?)".*\/)/gm
   let result = linkRegex.exec(templateKey);
   let esi
@@ -78,10 +89,9 @@ async function fetchAndStream(request) {
   return encoder.encode(
     `${esi}`
   );
-}
-</code></pre>
+}</code></pre>
 	<p>In this portion, we’re receiving the chunks and searching for ESI blocks and if found, getting the dynamic parts. You can see that when the regex is matching, we’re calling a <code>subRequest()</code> function. This function will fetch the content of the ESI destination and return + encode the received payload.</p>
-	<pre><code class="language-javascript">async function subRequests(target){
+	<pre class="language-javascript"><code class="language-javascript">async function subRequests(target){
   const init = {
             method: 'GET',
             headers: {
@@ -92,10 +102,9 @@ async function fetchAndStream(request) {
   let text = await response.text()
   
   return text
-}
-</code></pre>
+}</code></pre>
 	<p>This portion is quite simple as it defines the function that does the subrequest to the ESI destination, pay attention to what the Origin server is serving as cache-control response header for those dynamic parts as we want to keep them dynamic and not cached by Cloudflare. It’s also possible to override the TTL via Cloudflare directly if you don’t want to modify your application. The documentation about how to manipulate Cloudflare features is available <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features">on the developers HUB</a></p>
-	<pre><code class="language-javascript">async function streamTransformBody(readable, writable) {
+	<pre class="language-javascript"><code class="language-javascript">async function streamTransformBody(readable, writable) {
   const startTag = "&lt;".charCodeAt(0);
   const endTag = "&gt;".charCodeAt(0);
   let reader = readable.getReader();
@@ -130,10 +139,9 @@ async function fetchAndStream(request) {
     }
   }
   await writer.close();
-}
-</code></pre>
+}</code></pre>
 	<p>In the <code>streamTransformBody()</code> function, I’m chunking the payload received in the readable object with specific boundaries in order to avoid chunks to terminate in the middle of a line or worse, in the middle of an ESI block.</p>
-	<pre><code class="language-javascript">async function translate(chunks) {
+	<pre class="language-javascript"><code class="language-javascript">async function translate(chunks) {
   const decoder = new TextDecoder();
 
   let templateKey = chunks.reduce(
@@ -144,11 +152,10 @@ async function fetchAndStream(request) {
   templateKey += decoder.decode();
 
   return handleTemplate(new TextEncoder(), templateKey);
-}
-</code></pre>
+}</code></pre>
 	<p>The <code>translate()</code> function decode the chunks and send the stringified payload to the <code>handleTemplate()</code> function, which is for memories intended to properly replace the ESI by the dynamic pieces.</p>
 	<p>The complete worker script</p>
-	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
   event.respondWith(fetchAndStream(event.request))
   event.passThroughOnException()
 })
@@ -243,34 +250,39 @@ async function translate(chunks) {
   templateKey += decoder.decode();
 
   return handleTemplate(new TextEncoder(), templateKey);
-}
-</code></pre>
-	<h3 id="testingthescript">Testing the script</h3>
+}</code></pre>
+	<h3>Testing the script</h3>
 	<p>Testing is easy, we’re going to cURL over the URL having my small HTML code presented earlier in the article, and see what looks like the answer.</p>
 	<p>cURL command:</p>
-	<pre><code class="language-bash">curl https://www.justalittlebyte.ovh/esi.html -sv 2&gt;&amp;1 | grep -E "Cf-Ray|cf-cache-status|cf-ray"
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">curl https://www.justalittlebyte.ovh/esi.html -sv 2&gt;&amp;1 | grep -E "Cf-Ray|cf-cache-status|cf-ray"</code></pre>
 	<p>The grep is trying to catch few things:</p>
 	<ul>
-		<li>First CF-Ray is for the request itself</li>
-		<li>CF-Cache-Status is the header Cloudflare is using indicating if the requests has been fetched from the cache</li>
-		<li>Second CF-Ray is the CF-Ray coming from the call made to <a href="https://httpbin.org/headers">https://httpbin.org/headers</a>, this will change as the CF-Ray is unique for any new requests made through our Edge</li>
+		<li>
+			<p>First CF-Ray is for the request itself</p>
+		</li>
+		<li>
+			<p>CF-Cache-Status is the header Cloudflare is using indicating if the requests has been fetched from the cache</p>
+		</li>
+		<li>
+			<p>Second CF-Ray is the CF-Ray coming from the call made to <a href="https://httpbin.org/headers">https://httpbin.org/headers</a>, this will change as the CF-Ray is unique for any new requests made through our Edge</p>
+		</li>
 	</ul>
 	<p>The answer is that one</p>
-	<pre><code class="language-bash">&lt; cf-cache-status: HIT 
+	<pre class="language-bash"><code class="language-bash">&lt; cf-cache-status: HIT 
 &lt; cf-ray: 447b3a379ce8bc3e-LHR
-    "Cf-Ray": "447b3a37d217bc3e-IAD",
-</code></pre>
+    "Cf-Ray": "447b3a37d217bc3e-IAD",</code></pre>
 	<p>Doing it again</p>
-	<pre><code class="language-bash">&lt; cf-cache-status: HIT
+	<pre class="language-bash"><code class="language-bash">&lt; cf-cache-status: HIT
 &lt; cf-ray: 447b3a3c4b5fbc44-LHR
-    "Cf-Ray": "447b3a3c61f5bc44-IAD",
-</code></pre>
+    "Cf-Ray": "447b3a3c61f5bc44-IAD",</code></pre>
 	<p>and the page looks like this</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/ESI_Demonstration.jpg" alt="ESI_Demonstration" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tCYMjbCNgA3iSj8ys9n2x/896c3857eaa97048225d090e1ca23259/ESI_Demonstration.jpg" alt="ESI_Demonstration" class="kg-image" width="768" height="576" loading="lazy">
+
+	</figure>
 	<p>The most interesting comes from the cf-cache-status where we can see that the page is actually coming from our cache but the worker modified the payload as he detected an ESI block.</p>
-	<h3 id="shareyourworkerrecipes">Share your worker recipes</h3>
+	<h3>Share your worker recipes</h3>
 	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/recipes">official documentation</a></p>
 	<p>Have you written a worker that you'd like to share? <a href="mailto:community@cloudflare.com">Send it to us</a> and you might get featured on our blog or added to our Cloudflare worker recipe collection with a credit.</p>
-	<!--kg-card-end: markdown-->
 </div>

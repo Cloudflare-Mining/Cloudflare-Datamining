@@ -1,22 +1,36 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Making Edge Side Includes (ESI) Automatic and Easy" src="https://blog.cloudflare.com/content/images/futurama.png.scaled500.png" title="Making Edge Side Includes (ESI) Automatic and Easy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16AKLqaGA35mQzXEnqBeu5/d1192b8619ba91128fb3c16a2b26630d/futurama.png.scaled500.png" alt="Making Edge Side Includes (ESI) Automatic and Easy" class="kg-image" width="500" height="212" loading="lazy">
+
+	</figure>
 	<p>On HTTP, caching is done at the file level. A browser will cache the JPEG, CSS, and Javascript files on a page. However, the HTML of most pages is dynamically generated. As a result, the pages cannot be cached. This is unfortunate because the HTML of even highly dynamic pages rarely changes more than 10%. The 90% of the HTML that is the same from one request to the next is transmitted needlessly.</p>
 	<p>On the web, compression equals performance. If you can compress a response by 50% you will, roughly, double network performance. Given that 90%+ of HTML doesn't need to be transmitted over the network, if you could only transmit the actually dynamic parts of the content then you'd get a massive performance increase.</p>
-	<h3 id="lastgensolutionedgesideincludes">Last Gen Solution: Edge Side Includes</h3>
+	<h3>Last Gen Solution: Edge Side Includes</h3>
 	<p>Recognizing this opportunity, traditional content delivery network (CDN) vendors created the Edge Side Include (ESI) protocol. The protocol was submitted as an official standard to the World Wide Web Consortium (W3C) but it was never accepted. A handful of other old school CDNs today support ESI, although it's adoption has been slow.</p>
-	<p><img alt="Making Edge Side Includes (ESI) Automatic and Easy" src="https://blog.cloudflare.com/content/images/dinosaur.jpg.scaled500.jpg" title="Making Edge Side Includes (ESI) Automatic and Easy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3l2jP3EYcRPTt2EdspvjC0/3e7bc856987d7501d86fe4bb10013436/dinosaur.jpg.scaled500.jpg" alt="Making Edge Side Includes (ESI) Automatic and Easy" class="kg-image" width="500" height="354" loading="lazy">
+
+	</figure>
 	<p>Here's how ESI works: when you create a web page you determine what parts are static and dynamic. You implement the static portions as a file that you upload to your CDN. Within that file you include tags that reference the dynamic portions of the content, with URL of where to fetch the dynamic portions from. The CDN fetches each of these dynamic resources and combines them with the static portion in order to render the HTML of the page before it sent across the network back to the browser.</p>
 	<p>If that sounds easy to implement then you likely haven't done much web development. To get a sense of the complexity, check out this 106 page <a href="http://www.akamai.com/dl/technical_publications/akamai_esi_developers_guide.pdf">ESI developer's guide</a>. While ESI can theoretically deliver significant performance benefits, the pain of actually developing for it is significant. And, once you've developed for it, there's significant process lock-in: good luck ever leaving. We think you shouldn't have to learn a new programming language or change a single line of your code just to make your site fast.</p>
 	<p>And if you're spending your time bending your HTML so that a CDN can serve it up better then you're not spending it on developing your actual web site.</p>
-	<h3 id="nextgenfastereasierbetter">Next Gen: Faster, Easier, Better</h3>
+	<h3>Next Gen: Faster, Easier, Better</h3>
 	<p>Yesterday, we <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">posted about Railgun</a> and how it lets you cache what was previously uncacheable content. One way of thinking about Railgun is that it is like automatic ESI support without the work. Rather than you having to tag your own content to mark what is static and what is dynamic, Railgun automatically determines the static portions of HTML and caches that at the edge. Dynamic portions of HTML are always fetched from the origin without you needing to change a single line of code.</p>
-	<p><img alt="Making Edge Side Includes (ESI) Automatic and Easy" src="https://blog.cloudflare.com/content/images/fast_dolphins.jpg.scaled500.jpg" title="Making Edge Side Includes (ESI) Automatic and Easy"></p>
-	<p>Moreover, the caching logic is responsive to what is actually happening on the page. If different elements on the page change at different rates then Railgun's cache will deliver them optimally, never wasting a byte that doesn't otherwise need to be transmitted. And, since you don't need to change how you write code in order to support Railgun, there's no process lock-in if you ever decide to turn the service off. While you<br>
-		won't get the benefits of Railgun without CloudFlare, you won't need to completely rewrite your code. In fact, you won't need to change a thing.</p>
-	<h3 id="cloudflarewefightforthepublishers">CloudFlare: We Fight for the Publishers</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CseZc6Qxj4aclITqFLskC/d6fcd77714a3c9ed09ca81b34f72804b/fast_dolphins.jpg.scaled500.jpg" alt="Making Edge Side Includes (ESI) Automatic and Easy" class="kg-image" width="500" height="231" loading="lazy">
+
+	</figure>
+	<p>Moreover, the caching logic is responsive to what is actually happening on the page. If different elements on the page change at different rates then Railgun's cache will deliver them optimally, never wasting a byte that doesn't otherwise need to be transmitted. And, since you don't need to change how you write code in order to support Railgun, there's no process lock-in if you ever decide to turn the service off. While youwon't get the benefits of Railgun without CloudFlare, you won't need to completely rewrite your code. In fact, you won't need to change a thing.</p>
+	<h3>CloudFlare: We Fight for the Publishers</h3>
 	<p>We talk to a lot of web publishers and the constant refrain we hear is that the performance and security tools that are available to them are too expensive and too complicated. We've had nearly half a million websites sign up for CloudFlare largely because we focused on these two issues. Railgun takes ESI, another technology that was previously reserved for only those sites with huge budgets and dedicated CDN management teams, and makes it available in a way that is affordable and easy to implement.</p>
-	<p><img alt="Making Edge Side Includes (ESI) Automatic and Easy" src="https://blog.cloudflare.com/content/images/railgun.png.scaled500.png" title="Making Edge Side Includes (ESI) Automatic and Easy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/485V0B71f7h1XG4YGv0EzU/155503173d10031af91aa7e7da7f323e/railgun.png.scaled500.png" alt="Making Edge Side Includes (ESI) Automatic and Easy" class="kg-image" width="500" height="225" loading="lazy">
+
+	</figure>
 	<p>Because Railgun requires software to be installed on the origin server, we have limited its availability to our Business and Enterprise customers. However, our plan is to roll it out to CloudFlare's Free- and Pro-level customers if they are hosted on a CloudFlare Optimized Hosting Partner. If you're interested in Railgun, you can <a href="https://www.cloudflare.com/plans">upgrade to CloudFlare Business or Enterprise</a>. Alternatively, ping your hosting provider to know they should become a <a href="https://www.cloudflare.com/hosting-partners">CloudFlare Optimized Host</a>. It's free for hosts and, if they tell us you're the person who convinced them to sign up, we'll send you a T-shirt and make sure you're one of the first of the host's customers to get access to Railgun.</p>
-	<!--kg-card-end: markdown-->
 </div>

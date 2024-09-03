@@ -1,66 +1,128 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/log-explorer-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/log-explorer-es-es">Español</a>, <a href="https://blog.cloudflare.com/zh-cn/log-explorer-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/log-explorer-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/log-explorer-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/log-explorer-ko-kr">한국어</a> and <a href="https://blog.cloudflare.com/de-de/log-explorer-de-de">Deutsch</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image6-6.png" class="kg-image" alt="Log Explorer: monitor security events without third-party storage" loading="lazy" width="1999" height="1125"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/log-explorer">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/log-explorer">Français</a>, <a href="https://blog.cloudflare.com/de-de/log-explorer">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/log-explorer">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/log-explorer">한국어</a>, <a href="https://blog.cloudflare.com/es-es/log-explorer">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/log-explorer">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GhVBYNZAsGZtOfgo8C3VY/eff8587ef503170a85216be66f88aad6/image6-6.png" alt="Log Explorer: monitor security events without third-party storage" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Today, we are excited to announce beta availability of <a href="https://developers.cloudflare.com/logs/log-explorer">Log Explorer</a>, which allows you to investigate your HTTP and Security Event logs directly from the Cloudflare Dashboard. Log Explorer is an extension of <a href="https://blog.cloudflare.com/security-analytics">Security Analytics</a>, giving you the ability to review related raw logs. You can analyze, investigate, and monitor for security attacks natively within the Cloudflare Dashboard, reducing time to resolution and overall cost of ownership by eliminating the need to forward logs to third party security analysis tools.</p>
-	<h3 id="background">Background</h3>
+	<h3>Background</h3>
 	<p>Security Analytics enables you to analyze all of your HTTP traffic in one place, giving you the security lens you need to identify and act upon what matters most: potentially malicious traffic that has not been mitigated. Security Analytics includes built-in views such as top statistics and in-context quick filters on an intuitive page layout that enables rapid exploration and validation.</p>
 	<p>In order to power our rich analytics dashboards with fast query performance, we implemented <a href="https://developers.cloudflare.com/analytics/graphql-api/sampling">data sampling</a> using <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">Adaptive Bit Rate</a> (ABR) analytics. This is a great fit for providing high level aggregate views of the data. However, we received feedback from many Security Analytics power users that sometimes they need access to a more granular view of the data — they need logs.</p>
 	<p>Logs provide critical visibility into the operations of today's computer systems. Engineers and SOC analysts rely on logs every day to troubleshoot issues, identify and investigate security incidents, and tune the performance, reliability, and <a href="https://www.cloudflare.com/application-services/solutions">security</a> of their applications and infrastructure. Traditional metrics or monitoring solutions provide aggregated or statistical data that can be used to identify trends. Metrics are wonderful at identifying THAT an issue happened, but lack the detailed events to help engineers uncover WHY it happened. Engineers and SOC Analysts rely on raw log data to answer questions such as:</p>
 	<ul>
-		<li>What is causing this increase in 403 errors?</li>
-		<li>What data was accessed by this IP address?</li>
-		<li>What was the user experience of this particular user’s session?</li>
+		<li>
+			<p>What is causing this increase in 403 errors?</p>
+		</li>
+		<li>
+			<p>What data was accessed by this IP address?</p>
+		</li>
+		<li>
+			<p>What was the user experience of this particular user’s session?</p>
+		</li>
 	</ul>
 	<p>Traditionally, these engineers and analysts would stand up a collection of various monitoring tools in order to capture logs and get this visibility. With more organizations using multiple clouds, or a hybrid environment with both cloud and on-premise tools and architecture, it is crucial to have a unified platform to regain visibility into this increasingly complex environment. &nbsp;As more and more companies are moving towards a cloud native architecture, we see Cloudflare’s <a href="https://www.cloudflare.com/en-gb/learning/cloud/what-is-a-connectivity-cloud">connectivity cloud</a> as an integral part of their performance and security strategy.</p>
 	<p>Log Explorer provides a lower cost option for storing and exploring log data within Cloudflare. Until today, we have offered the ability to export logs to expensive third party tools, and now with Log Explorer, you can quickly and easily explore your log data without leaving the Cloudflare Dashboard.</p>
-	<h3 id="log-explorer-features">Log Explorer Features</h3>
+	<h3>Log Explorer Features</h3>
 	<p>Whether you're a SOC Engineer investigating potential incidents, or a Compliance Officer with specific log retention requirements, Log Explorer has you covered. It stores your Cloudflare logs for an uncapped and customizable period of time, making them accessible natively within the Cloudflare Dashboard. The supported features include:</p>
 	<ul>
-		<li>Searching through your HTTP Request or Security Event logs</li>
-		<li>Filtering based on any field and a number of standard operators</li>
-		<li>Switching between basic filter mode or SQL query interface</li>
-		<li>Selecting fields to display</li>
-		<li>Viewing log events in tabular format</li>
-		<li>Finding the HTTP request records associated with a Ray ID</li>
+		<li>
+			<p>Searching through your HTTP Request or Security Event logs</p>
+		</li>
+		<li>
+			<p>Filtering based on any field and a number of standard operators</p>
+		</li>
+		<li>
+			<p>Switching between basic filter mode or SQL query interface</p>
+		</li>
+		<li>
+			<p>Selecting fields to display</p>
+		</li>
+		<li>
+			<p>Viewing log events in tabular format</p>
+		</li>
+		<li>
+			<p>Finding the HTTP request records associated with a Ray ID</p>
+		</li>
 	</ul>
-	<h3 id="narrow-in-on-unmitigated-traffic">Narrow in on unmitigated traffic</h3>
+	<h3>Narrow in on unmitigated traffic</h3>
 	<p>As a SOC analyst, your job is to monitor and respond to threats and incidents within your organization’s network. Using Security Analytics, and now with Log Explorer, you can identify anomalies and conduct a forensic investigation all in one place.</p>
 	<p>Let’s walk through an example to see this in action:</p>
 	<p>On the Security Analytics dashboard, you can see in the Insights panel that there is some traffic that has been tagged as a likely attack, but not mitigated.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Screenshot-2024-03-07-at-20.20.41.png" class="kg-image" alt="" loading="lazy" width="2116" height="342"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Oq3oqY8JXMigK8OJKPFZ4/6a98a93616091edbc3fbd507a47d3ef4/Screenshot-2024-03-07-at-20.20.41.png" alt="" class="kg-image" width="2000" height="323" loading="lazy">
+
+	</figure>
 	<p>Clicking the filter button narrows in on these requests for further investigation.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image11.jpg" class="kg-image" alt="" loading="lazy" width="1844" height="1018"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sWkjUYz1J0So4nphy4FSs/830bf440c6ae6b5060de92431f25f2df/image11.jpg" alt="" class="kg-image" width="1844" height="1018" loading="lazy">
+
+	</figure>
 	<p>In the sampled logs view, you can see that most of these requests are coming from a common client IP address.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Sampled-logs.png" class="kg-image" alt="" loading="lazy" width="1600" height="510"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gtrP14GKbnB0YeV0ySgL1/dcea22a5780640e0c8ebaf4d9ed66d37/Sampled-logs.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
+
+	</figure>
 	<p>You can also see that Cloudflare has flagged all of these requests as bot traffic. With this information, you can craft a WAF rule to either block all traffic from this IP address, or block all traffic with a bot score lower than 10.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Screenshot-2024-03-07-at-20.22.04.png" class="kg-image" alt="" loading="lazy" width="2114" height="430"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YgFTRD7u3KYh0bbInLylK/0cf798f3360db60ebe937e782aad2feb/Screenshot-2024-03-07-at-20.22.04.png" alt="" class="kg-image" width="2000" height="407" loading="lazy">
+
+	</figure>
 	<p>Let’s say that the Compliance Team would like to gather documentation on the scope and impact of this attack. We can dig further into the logs during this time period to see everything that this attacker attempted to access.</p>
 	<p>First, we can use Log Explorer to query HTTP requests from the suspect IP address during the time range of the spike seen in Security Analytics.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Log-Explorer.png" class="kg-image" alt="" loading="lazy" width="1600" height="510"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Query-results.png" class="kg-image" alt="" loading="lazy" width="1600" height="852"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qsi7UnxjtygCQHnMCIx02/f132552253a376764c93caccc3fcef54/Log-Explorer.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YyewPADkPzjofXHXSihyi/1dabeb1cb38e37b50817d7939cbb797b/Query-results.png" alt="" class="kg-image" width="1600" height="852" loading="lazy">
+
+	</figure>
 	<p>We can also review whether the attacker was able to exfiltrate data by adding the OriginResponseBytes field and updating the query to show requests with OriginResponseBytes &gt; 0. The results show that no data was exfiltrated.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/No-logs-found.png" class="kg-image" alt="" loading="lazy" width="1600" height="698"></figure>
-	<h3 id="find-and-investigate-false-positives">Find and investigate false positives</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TgN2aPwWTDo5niA95TGQx/26d0cb0b90f2c00359629c25c49e907f/No-logs-found.png" alt="" class="kg-image" width="1600" height="698" loading="lazy">
+
+	</figure>
+	<h3>Find and investigate false positives</h3>
 	<p>With access to the full logs via Log Explorer, you can now perform a search to find specific requests.</p>
 	<p>A 403 error occurs when a user’s request to a particular site is blocked. Cloudflare’s security products use things like <a href="https://blog.cloudflare.com/introducing-ip-lists">IP reputation</a> and <a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">WAF attack scores</a> based on ML technologies in order to assess whether a given HTTP request is malicious. This is extremely effective, but sometimes requests are mistakenly flagged as malicious and blocked.</p>
 	<p>In these situations, we can now use Log Explorer to identify these requests and why they were blocked, and then adjust the relevant WAF rules accordingly.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Log-Explorer-2.png" class="kg-image" alt="" loading="lazy" width="1600" height="859"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ecKfF4lRDQSyLCoOgDjTw/09ff87f2430548dbc155ce1cc2af56f5/Log-Explorer-2.png" alt="" class="kg-image" width="1600" height="859" loading="lazy">
+
+	</figure>
 	<p>Or, if you are interested in tracking down a specific request by Ray ID, an identifier given to every request that goes through Cloudflare, you can do that via Log Explorer with one query.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Log-Explorer-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="750"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NCDOP0axFC3wZ4qs03Jei/59c7ecb04449aa69ee1b1c07748d1d56/Log-Explorer-3.png" alt="" class="kg-image" width="1600" height="750" loading="lazy">
+
+	</figure>
 	<p>Note that the LIMIT clause is included in the query by default, but has no impact on RayID queries as RayID is unique and only one record would be returned when using the RayID filter field.</p>
-	<h3 id="how-we-built-log-explorer">How we built Log Explorer</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/How-we-built-Log-Explorer.png" class="kg-image" alt="" loading="lazy" width="1600" height="1191"></figure>
+	<h3>How we built Log Explorer</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pNBd5iSyVW7aqfJ0JfYDP/ae7f50f08b87f719f0073845764db67f/How-we-built-Log-Explorer.png" alt="" class="kg-image" width="1600" height="1191" loading="lazy">
+
+	</figure>
 	<p>With Log Explorer, we have built a long-term, append-only log storage platform on top of <a href="https://www.cloudflare.com/developer-platform/r2">Cloudflare R2</a>. Log Explorer leverages the <a href="https://databricks.com/wp-content/uploads/2020/08/p975-armbrust.pdf">Delta Lake</a> protocol, an open-source storage framework for building highly performant, <a href="https://en.wikipedia.org/wiki/ACID">ACID</a>-compliant databases atop a cloud object store. In other words, Log Explorer combines a large and cost-effective storage system – <a href="https://blog.cloudflare.com/www.cloudflare.com/developer-platform/r2">Cloudflare R2</a> – with the benefits of strong consistency and high performance. Additionally, Log Explorer gives you a SQL interface to your Cloudflare logs.</p>
 	<p>Each Log Explorer dataset is stored on a per-customer level, just like Cloudflare D1, so that your data isn't placed with that of other customers. In the future, this single-tenant storage model will give you the flexibility to create your own retention policies and decide in which regions you want to store your data.</p>
-	<p>Under the hood, the datasets for each customer are stored as Delta tables in R2 buckets. A <em>Delta table</em> is a storage format that organizes Apache Parquet objects into directories using Hive's partitioning naming convention. Crucially, Delta tables pair these storage objects with an append-only, checkpointed transaction log. This design allows Log Explorer to support multiple writers with optimistic concurrency.</p>
+	<p>Under the hood, the datasets for each customer are stored as Delta tables in R2 buckets. A <i>Delta table</i> is a storage format that organizes Apache Parquet objects into directories using Hive's partitioning naming convention. Crucially, Delta tables pair these storage objects with an append-only, checkpointed transaction log. This design allows Log Explorer to support multiple writers with optimistic concurrency.</p>
 	<p>Many of the products Cloudflare builds are a direct result of the challenges our own team is looking to address. Log Explorer is a perfect example of this <a href="https://blog.cloudflare.com/tag/dogfooding">culture of dogfooding</a>. Optimistic concurrent writes require atomic updates in the underlying object store, and as a result of our needs, R2 added a PutIfAbsent operation with strong consistency. Thanks, R2! The atomic operation sets Log Explorer apart from Delta Lake solutions based on Amazon Web Services’ S3, which incur the operational burden of using an <a href="https://delta.io/blog/2022-05-18-multi-cluster-writes-to-delta-lake-storage-in-s3">external store</a> for synchronizing writes.</p>
 	<p>Log Explorer is written in the Rust programming language using open-source libraries, such as <a href="https://github.com/delta-io/delta-rs">delta-rs</a>, a native Rust implementation of the Delta Lake protocol, and <a href="https://arrow.apache.org/datafusion">Apache Arrow DataFusion</a>, a very fast, extensible query engine. At Cloudflare, Rust has emerged as a popular choice for new product development due to its safety and performance benefits.</p>
-	<h3 id="what%E2%80%99s-next">What’s next</h3>
+	<h3>What’s next</h3>
 	<p>We know that application security logs are only part of the puzzle in understanding what’s going on in your environment. Stay tuned for future developments including tighter, more seamless integration between Analytics and Log Explorer, the addition of more datasets including Zero Trust logs, the ability to define custom retention periods, and integrated custom alerting.</p>
 	<p>Please use the <a href="https://forms.gle/tvKQDdXmCk98zyV9A">feedback link</a> to let us know how Log Explorer is working for you and what else would help make your job easier.</p>
-	<h3 id="how-to-get-it">How to get it</h3>
+	<h3>How to get it</h3>
 	<p>We’d love to hear from you! Let us know if you are interested in joining our Beta program by completing <a href="https://cloudflare.com/lp/log-explorer">this form</a> and a member of our team will contact you.</p>
 	<p>Pricing will be finalized prior to a General Availability (GA) launch.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;">

@@ -1,7 +1,12 @@
-<div class="mb2 gray5">11 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MSNlDVCEGcZt827pPmqor/2a31c207fb99abb3eaaeeb25712d9dbd/ip-fragmentation-is-broken.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>As opposed to the <a href="https://en.wikipedia.org/wiki/Public_switched_telephone_network">public telephone network</a>, the internet has a <a href="https://en.wikipedia.org/wiki/Packet_switching">Packet Switched</a> design. But just how big can these packets be?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/8093997590_02d7ec3713_z.jpg" alt="" loading="lazy"><small> CC BY 2.0 <a href="https://www.flickr.com/photos/ajmexico/8093997590">image</a> by <a href="https://www.flickr.com/photos/ajmexico">ajmexico</a>, <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">inspired by</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73Q2p7jy3NbOeARKhzz5Zm/43525246d159df685d8bd9b6d8d8c5bb/8093997590_02d7ec3713_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+
+	</figure>
+	<p> CC BY 2.0 <a href="https://www.flickr.com/photos/ajmexico/8093997590">image</a> by <a href="https://www.flickr.com/photos/ajmexico">ajmexico</a>, <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">inspired by</a></p>
 	<p>This is an old question and the IPv4 RFCs answer it pretty clearly. The idea was to split the problem into two separate concerns:</p>
 	<ul>
 		<li>
@@ -11,22 +16,26 @@
 			<p>What is the maximum permitted datagram size that can be safely pushed through the physical connections between the hosts?</p>
 		</li>
 	</ul>
-	<p>When a packet is too big for a physical link, an intermediate router might chop it into multiple smaller datagrams in order to make it fit. This process is called "forward" IP fragmentation and the smaller datagrams are called IP fragments<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/fragments.jpg" alt="" loading="lazy"><small>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Geoff Huston</a>, reproduced with permission</small></p>
+	<p>When a packet is too big for a physical link, an intermediate router might chop it into multiple smaller datagrams in order to make it fit. This process is called "forward" IP fragmentation and the smaller datagrams are called IP fragments<a href="https://blog.cloudflare.com/#fn1">[1]</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yOVFEXv5xc8DvPBehp1Zn/5f73c0c95459f3b26ec92ececcc33cca/fragments.jpg" alt="" class="kg-image" width="830" height="578" loading="lazy">
+
+	</figure>
+	<p>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Geoff Huston</a>, reproduced with permission</p>
 	<p>The IPv4 specification defines the minimal requirements. From <a href="https://tools.ietf.org/html/rfc791">the RFC791</a>:</p>
-	<pre><code>Every internet destination must be able to receive a datagram
+	<pre class="language-bash"><code class="language-bash">Every internet destination must be able to receive a datagram
 of 576 octets either in one piece or in fragments to
 be reassembled. [...]
 
 Every internet module must be able to forward a datagram of 68
-octets without further fragmentation. [...]
-</code></pre>
+octets without further fragmentation. [...]</code></pre>
 	<p>The first value - permitted reassembled packet size - is typically not problematic. IPv4 defines the minimum as 576 bytes, but popular operating systems can cope with very big packets, typically up to 65KiB.</p>
 	<p>The second one is more troublesome. All physical connections have inherent datagram size limits, depending on the specific medium they use. For example Frame Relay can send datagrams between 46 and 4,470 bytes. ATM uses fixed 53 bytes, classical Ethernet can do between 64 and 1500 bytes.</p>
 	<p>The spec defines the minimal requirement - each physical link must be able to transmit datagrams of at least 68 bytes. For IPv6 that minimal value has been bumped up to 1,280 bytes (see <a href="https://tools.ietf.org/html/rfc2460#section-5">RFC2460</a>).</p>
-	<p>On the other hand, the maximum datagram size that can be transmitted without fragmentation is not defined by any specification and varies by link type. This value is called the MTU (<a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit">Maximum Transmission Unit</a>)<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup>.</p>
+	<p>On the other hand, the maximum datagram size that can be transmitted without fragmentation is not defined by any specification and varies by link type. This value is called the MTU (<a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit">Maximum Transmission Unit</a>)<a href="https://blog.cloudflare.com/#fn2">[2]</a>.</p>
 	<p>The MTU defines a maximum datagram size on a local physical link. The internet is created from non-homogeneous networks, and on the path between two hosts there might be links with shorter MTU values. The maximum packet size that can be transmitted without fragmentation between two remote hosts is called <a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery">a Path MTU</a>, and can potentially be different for every connection.</p>
-	<h3 id="avoidfragmentation">Avoid fragmentation</h3>
+	<h3>Avoid fragmentation</h3>
 	<p>One might think that it's fine to build applications that transmit very big packets and rely on routers to perform the IP fragmentation. This is not a good idea. The problems with this approach were first discussed by <a href="http://www.hpl.hp.com/techreports/Compaq-DEC/WRL-87-3.pdf">Kent and Mogul</a> in 1987. Here are a couple of highlights:</p>
 	<ul>
 		<li>
@@ -44,123 +53,165 @@ octets without further fragmentation. [...]
 	</ul>
 	<p>A more elaborate description of IP fragmentation problems can be found in these articles by Geoff Huston:</p>
 	<ul>
-		<li><a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Evaluating IPv4 and IPv6 packet fragmentation</a></li>
-		<li><a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">Fragmenting IPv6</a></li>
+		<li>
+			<p><a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Evaluating IPv4 and IPv6 packet fragmentation</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">Fragmenting IPv6</a></p>
+		</li>
 	</ul>
-	<h3 id="dontfragmenticmppackettoobig">Don't fragment - ICMP Packet too big</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/df.jpg" alt="" loading="lazy"><br>
-		<small>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Geoff Huston</a>, reproduced with permission</small>
-	</p>
+	<h3>Don't fragment - ICMP Packet too big</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fsgW6ELxQUUQUY7fkrloE/00b80f738c612b2967107f132b08b683/df.jpg" alt="" class="kg-image" width="487" height="297" loading="lazy">
+
+	</figure>
+	<p>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Geoff Huston</a>, reproduced with permission</p>
 	<p>A solution to these problems was included in the IPv4 protocol. A sender can set the DF (Don't Fragment) flag in the IP header, asking intermediate routers never to perform fragmentation of a packet. Instead a router with a link having a smaller MTU will send an ICMP message "backward" and inform the sender to reduce the MTU for this connection.</p>
-	<p>The TCP protocol always sets the DF flag. The network stack looks carefully for incoming "Packet too big"<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn3" id="fnref3">[3]</a></sup> ICMP messages and keeps track of the "path MTU" characteristic for every connection<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn4" id="fnref4">[4]</a></sup>. This technique is called "path MTU discovery", and it is mostly commonly used for TCP, although it can also be applied to other IP-based protocols. Being able to deliver the ICMP "Packet too big" messages is critical in keeping the TCP stack working optimally.</p>
-	<h3 id="howtheinternetactuallyworks">How the internet actually works</h3>
+	<p>The TCP protocol always sets the DF flag. The network stack looks carefully for incoming "Packet too big"<a href="https://blog.cloudflare.com/#fn3">[3]</a> ICMP messages and keeps track of the "path MTU" characteristic for every connection<a href="https://blog.cloudflare.com/#fn4">[4]</a>. This technique is called "path MTU discovery", and it is mostly commonly used for TCP, although it can also be applied to other IP-based protocols. Being able to deliver the ICMP "Packet too big" messages is critical in keeping the TCP stack working optimally.</p>
+	<h3>How the internet actually works</h3>
 	<p>In a perfect world, internet connected devices would cooperate and correctly handle fragment datagrams and the associated ICMP packets. In reality though, IP fragments and ICMP packets are very often filtered out.</p>
 	<p>This is because the modern internet is much more complex than anticipated 36 years ago. Today, basically nobody is plugged directly into the public internet.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/thecloud2.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pgqc0JOIId0GpmtbKoTc7/c819e60729a58ad496d013bd46e6e35e/thecloud2.png" alt="" class="kg-image" width="757" height="300" loading="lazy">
+
+	</figure>
 	<p>Customer devices connect through home routers which do NAT (<a href="https://en.wikipedia.org/wiki/Network_address_translation">Network Address Translation</a>) and usually enforce firewall rules. Increasingly often there is more than one NAT installation on the packet path (e.g. <a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT">carrier-grade NAT</a>). Then, the packets hit the ISP infrastructure where there are ISP "middle boxes". They perform all manner of weird things on the traffic: enforce plan caps, throttle connections, perform logging, <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">hijack DNS requests</a>, implement government-mandated web site bans, force transparent caching or arguably "optimize" the traffic in some other magical way. The middle boxes are used especially by mobile telcos.</p>
 	<p>Similarly, there are often multiple layers between a server and the public internet. Service providers sometimes use <a href="https://en.wikipedia.org/wiki/Anycast#Internet_Protocol_Version_4">Anycast BGP routing</a>. That is: they handle the same IP ranges from multiple physical locations around the world. Within a datacenter on the other hand it's increasingly popular to use ECMP <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing">Equal Cost Multi Path</a> for load balancing.</p>
 	<p>Each of these layers between a client and server can cause a Path MTU problem. Allow me to illustrate this with four scenarios.</p>
-	<h4 id="1clientserverdficmp">1. Client -&gt; Server DF+ / ICMP</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/client-dfp.png" alt="" loading="lazy"></p>
+	<h4>1. Client -&gt; Server DF+ / ICMP</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Cz9EAKTmEqN1aqJzKXJSF/3af99e43a81a24510dca6dc27915f33e/client-dfp.png" alt="" class="kg-image" width="600" height="149" loading="lazy">
+
+	</figure>
 	<p>In the first scenario, a client uploads some data to the server using TCP so the DF flag is set on all of the packets. If the client fails to predict an appropriate MTU, an intermediate router will drop the big packets and send an ICMP “Packet too big” notification back to the client. These ICMP packets might get dropped by misconfigured customer NAT devices or ISP middle boxes.</p>
 	<p>According to the <a href="https://www.nlnetlabs.nl/downloads/publications/pmtu-black-holes-msc-thesis.pdf">paper by Maikel de Boer and Jeffrey Bosma</a> from 2012 around 5% of IPv4 and 1% of IPv6 hosts block inbound ICMP packets.</p>
 	<p>My experience confirms this. ICMP messages are indeed often dropped for perceived security advantages, but this is relatively easy to fix. A bigger issue is with certain mobile ISPs with weird middle boxes. These often completely ignore ICMP and perform very aggressive connection rewriting. For example Orange Polska not only ignores inbound "Packet too big" ICMP messages, but also rewrites the connection state and <a href="http://lartc.org/howto/lartc.cookbook.mtu-mss.html">clamps the MSS</a> to a non-negotiable 1344 bytes.</p>
-	<h4 id="2clientserverdffragmentation">2. Client -&gt; Server DF- / fragmentation</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/client-dfm.png" alt="" loading="lazy"></p>
+	<h4>2. Client -&gt; Server DF- / fragmentation</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4cc7LrXd6JM9lt0KWGe0m1/4bd8dff5fe30055064c9bbde5a627149/client-dfm.png" alt="" class="kg-image" width="581" height="137" loading="lazy">
+
+	</figure>
 	<p>In next scenario, a client uploads some data with a protocol other than TCP, which has the DF flag cleared. For example, this might be a user playing a game using UDP, or having a voice call. The big outbound packets might get fragmented at some point in the path.</p>
 	<p>We can emulate this by launching <code>ping</code> with a large payload size:</p>
-	<pre><code class="language-.bash">$ ping -s 2048 facebook.com
-</code></pre>
+	<pre class="language-.bash"><code class="language-.bash">$ ping -s 2048 facebook.com</code></pre>
 	<p>This particular <code>ping</code> will fail with payloads bigger than 1472 bytes. Any larger size will get fragmented and won’t get delivered properly. There are multiple reasons why servers might mishandle fragments, but one of a popular problems is the use of ECMP load balancing. Due to the ECMP hashing, the first datagram containing a protocol header is likely to be load-balanced to a different server than the rest of the fragments, preventing the reassembly.</p>
 	<p>For a more detailed discussion of this issue, see:</p>
 	<ul>
-		<li>Our <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">previous write up on ECMP</a>.</li>
-		<li>How Google attempts to solve ECMP fragmentation issues with <a href="https://research.google.com/pubs/archive/44824.pdf">Maglev L4 Load balancer</a>.</li>
+		<li>
+			<p>Our <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">previous write up on ECMP</a>.</p>
+		</li>
+		<li>
+			<p>How Google attempts to solve ECMP fragmentation issues with <a href="https://research.google.com/pubs/archive/44824.pdf">Maglev L4 Load balancer</a>.</p>
+		</li>
 	</ul>
 	<p>Furthermore, server and router misconfiguration is a significant issue. According to <a href="https://tools.ietf.org/html/rfc7872">RFC7852</a> between 30% and 55% of servers drop IPv6 datagrams containing fragmentation header.</p>
-	<h4 id="3serverclientdficmp">3. Server -&gt; Client DF+ / ICMP</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/server-dfp.png" alt="" loading="lazy"></p>
+	<h4>3. Server -&gt; Client DF+ / ICMP</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UtBkyENFMejLCiBYfwpNI/4a955ba9686ed47d5556d20633fdde2a/server-dfp.png" alt="" class="kg-image" width="590" height="139" loading="lazy">
+
+	</figure>
 	<p>The next scenario is about a client downloading some data over TCP. When the server fails to predict the correct MTU, it should receive an ICMP “Packet too big” message. Easy, right?</p>
 	<p>Sadly, it's not, again due to ECMP routing. The ICMP message will most likely get delivered to the wrong server - the 5-tuple hash of ICMP packet will not match the 5-tuple hash of the problematic connection. We <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">wrote about this in the past</a>, and developed a simple userspace daemon to solve it. It works by broadcasting the inbound ICMP “Packet too big” notification to all the ECMP servers, hoping that the one with the problematic connection will see it.</p>
 	<p>Additionally due to Anycast routing, the ICMP might be delivered to the wrong datacenter altogether! Internet routing is often asymmetric and the best path from an intermediate router might direct the ICMP packets to the wrong place.</p>
 	<p>Missing ICMP “Packet too big” notifications can result in connections stalling and timing out. This is often called a <a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery#Problems_with_PMTUD">PMTU blackhole</a>. To aid this pessimistic case Linux implements a workaround - MTU Probing <a href="http://www.ietf.org/rfc/rfc4821.txt">RFC4821</a>. MTU Probing tries to automatically identify packets dropped due to the wrong MTU, and uses heuristics to tune it. This feature is controlled via a sysctl:</p>
-	<pre><code class="language-.bash">$ echo 1 &gt; /proc/sys/net/ipv4/tcp_mtu_probing
-</code></pre>
+	<pre class="language-.bash"><code class="language-.bash">$ echo 1 &gt; /proc/sys/net/ipv4/tcp_mtu_probing</code></pre>
 	<p>But MTU probing is not without its own issues. First, it tends to miscategorize congestion-related packet loss as MTU issues. Long running connections tend to end up with a reduced MTU. Secondly, Linux does not implement MTU Probing for IPv6.</p>
-	<h4 id="4serverclientdffragmentation">4. Server -&gt; Client DF- / fragmentation</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/server-dfm.png" alt="" loading="lazy"></p>
+	<h4>4. Server -&gt; Client DF- / fragmentation</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FLqYyctRkLrYYTyDGXcbP/f2609eea60694bd2d4592da117dc7230/server-dfm.png" alt="" class="kg-image" width="604" height="126" loading="lazy">
+
+	</figure>
 	<p>Finally, there is a situation where the server sends big packets using a non-TCP protocol with the DF bit clear. In this scenario, the big packets will get fragmented on the path to the client. This situation is best illustrated with big DNS responses. Here are two DNS requests that will generate large responses and be delivered to the client as multiple IP fragments:</p>
-	<pre><code class="language-.bash">$ dig +notcp +dnssec DNSKEY org @199.19.56.1
-$ dig +notcp +dnssec DNSKEY org @2001:500:f::1
-</code></pre>
+	<pre class="language-.bash"><code class="language-.bash">$ dig +notcp +dnssec DNSKEY org @199.19.56.1
+$ dig +notcp +dnssec DNSKEY org @2001:500:f::1</code></pre>
 	<p>These requests might fail due to already mentioned the misconfigured <a href="https://en.wikipedia.org/wiki/Customer-premises_equipment">home router</a>, broken NAT, broken ISP installations, or too restrictive firewall settings.</p>
 	<p>According to <a href="https://www.nlnetlabs.nl/downloads/publications/pmtu-black-holes-msc-thesis.pdf">Boer and Bosma</a> around 6% of IPv4 and 10% of IPv6 hosts block inbound fragment datagrams.</p>
 	<p>Here are some links with more information about the specific fragmentation issues affecting <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>:</p>
 	<ul>
-		<li><a href="https://www.dns-oarc.net/oarc/services/replysizetest">DNS-OARC Reply Size Test</a></li>
-		<li><a href="http://www.potaroo.net/ispcol/2017-08/xtn-hdrs.html">IPv6, Large UDP Packets and the DNS</a></li>
+		<li>
+			<p><a href="https://www.dns-oarc.net/oarc/services/replysizetest">DNS-OARC Reply Size Test</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.potaroo.net/ispcol/2017-08/xtn-hdrs.html">IPv6, Large UDP Packets and the DNS</a></p>
+		</li>
 	</ul>
-	<h4 id="yettheinternetstillworks">Yet the internet still works!</h4>
+	<h4>Yet the internet still works!</h4>
 	<p>With all these things going wrong, how does the internet still manage to work?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/nic.jpg" alt="" loading="lazy"><small>CC BY-SA 3.0, <a href="https://commons.wikimedia.org/w/index.php?curid=122201">source: Wikipedia</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cXkQdo8Tuq03pgrmUGLoZ/f23ac387a3179bbcabb71b29aa0406ce/nic.jpg" alt="" class="kg-image" width="1280" height="949" loading="lazy">
+
+	</figure>
+	<p>CC BY-SA 3.0, <a href="https://commons.wikimedia.org/w/index.php?curid=122201">source: Wikipedia</a></p>
 	<p>This mainly due to the success of <a href="https://en.wikipedia.org/wiki/Ethernet_frame">Ethernet</a>. The great majority of the links in the public internet are Ethernet (or derived from it) and support the MTU of 1500 bytes.</p>
-	<p>If you blindly assume the MTU of 1500<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn5" id="fnref5">[5]</a></sup>, you will be surprised how often it will work just fine. The internet keeps on working mostly because we are all using an MTU of 1500 and rarely need to do IP fragmentation and send ICMP messages.</p>
+	<p>If you blindly assume the MTU of 1500<a href="https://blog.cloudflare.com/#fn5">[5]</a>, you will be surprised how often it will work just fine. The internet keeps on working mostly because we are all using an MTU of 1500 and rarely need to do IP fragmentation and send ICMP messages.</p>
 	<p>This stops working on an unusual setup with links having a non-standard MTU. VPNs and other network tunnel software must be careful to ensure that the fragments and ICMP messages are working fine.</p>
 	<p>This is especially visible in the IPv6 world, where many users connect through tunnels. Having a healthy passage of ICMP in both ways is very important, especially since fragmentation in IPv6 basically doesn't work (we cited two sources claiming between 10% and 50% of IPv6 hosts block IPv6 Fragment header).</p>
 	<p>Since the Path MTU issues in IPv6 are so common, many IPv6 servers clamp down Path MTU to the protocol mandated minimum of 1280 bytes. This approach trades a bit of performance for best reliability.</p>
-	<h3 id="onlineicmpblackholechecker">Online ICMP blackhole checker</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Screen-Shot-2017-08-16-at-2.11.05-AM-1.png" alt="" loading="lazy"></p>
+	<h3>Online ICMP blackhole checker</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6C5lYgpMbYOFtDd96gWWra/bfec8936cd05d380f63bcc90e56f8736/Screen-Shot-2017-08-16-at-2.11.05-AM-1.png" alt="" class="kg-image" width="727" height="354" loading="lazy">
+
+	</figure>
 	<p>To help explore and debug these issues, we built an online checker. You can find two versions of the test:</p>
 	<ul>
-		<li>IPv4 version: <a href="http://icmpcheck.popcount.org">http://icmpcheck.popcount.org</a></li>
-		<li>IPv6 version: <a href="http://icmpcheckv6.popcount.org">http://icmpcheckv6.popcount.org</a></li>
+		<li>
+			<p>IPv4 version: <a href="http://icmpcheck.popcount.org">http://icmpcheck.popcount.org</a></p>
+		</li>
+		<li>
+			<p>IPv6 version: <a href="http://icmpcheckv6.popcount.org">http://icmpcheckv6.popcount.org</a></p>
+		</li>
 	</ul>
 	<p>These sites launch two tests:</p>
 	<ul>
-		<li>The first test will deliver ICMP messages to your computer, with the intention of reducing the Path MTU to a laughingly small value.</li>
-		<li>The second test will send fragment datagrams back to you.</li>
+		<li>
+			<p>The first test will deliver ICMP messages to your computer, with the intention of reducing the Path MTU to a laughingly small value.</p>
+		</li>
+		<li>
+			<p>The second test will send fragment datagrams back to you.</p>
+		</li>
 	</ul>
 	<p>Receiving a "pass" in both these tests should give you a reasonable assurance that the internet on your side of the cable is behaving well.</p>
 	<p>It's also easy to run the tests from command line, in case you want to run it on the server:</p>
-	<pre><code class="language-.bash">perl -e "print 'packettoolongyaithuji6reeNab4XahChaeRah1diej4' x 180" &gt; payload.bin
+	<pre class="language-.bash"><code class="language-.bash">perl -e "print 'packettoolongyaithuji6reeNab4XahChaeRah1diej4' x 180" &gt; payload.bin
 curl -v -s http://icmpcheck.popcount.org/icmp --data @payload.bin
-curl -v -s http://icmpcheckv6.popcount.org/icmp --data @payload.bin
-</code></pre>
+curl -v -s http://icmpcheckv6.popcount.org/icmp --data @payload.bin</code></pre>
 	<p>This should reduce the path MTU to our server to 905 bytes. You can to verify this by looking into the routing cache table. On Linux you do this with:</p>
-	<pre><code class="language-.bash">ip route get `dig +short icmpcheck.popcount.org`
-</code></pre>
+	<pre class="language-.bash"><code class="language-.bash">ip route get `dig +short icmpcheck.popcount.org`</code></pre>
 	<p>It's possible to clear the routing cache on Linux:</p>
-	<pre><code class="language-.bash">ip route flush cache to `dig +short icmpcheck.popcount.org`
-</code></pre>
+	<pre class="language-.bash"><code class="language-.bash">ip route flush cache to `dig +short icmpcheck.popcount.org`</code></pre>
 	<p>The second test verifies if fragments are properly delivered to the client:</p>
-	<pre><code class="language-.bash">curl -v -s http://icmpcheck.popcount.org/frag -o /dev/null
-curl -v -s http://icmpcheckv6.popcount.org/frag -o /dev/null
-</code></pre>
-	<h3 id="summary">Summary</h3>
+	<pre class="language-.bash"><code class="language-.bash">curl -v -s http://icmpcheck.popcount.org/frag -o /dev/null
+curl -v -s http://icmpcheckv6.popcount.org/frag -o /dev/null</code></pre>
+	<h3>Summary</h3>
 	<p>In this blog post we described the problems with detecting Path MTU values in the internet. ICMP and fragment datagrams are often blocked on both sides of the connections. Clients can encounter misconfigured firewalls, NAT devices or use ISPs which aggressively intercept connections. Clients also often use VPN's or IPv6 tunnels which, misconfigured, can cause path MTU issues.</p>
 	<p>Servers on the other hand increasingly often rely on Anycast or ECMP. Both of these things, as well as router and firewall misconfiguration are often a cause for ICMP and fragment datagrams being dropped.</p>
 	<p>Finally, we hope the online test is useful and can give you more insight into the inner workings of your networks. The test has useful examples of tcpdump syntax, useful to gain more insight. Happy network debugging!</p>
-	<p><em>Is fixing fragmentation issues for 10% of the internet exciting? We are hiring system engineers of all stripes, Golang programmers, C wranglers, and interns in multiple locations! <a href="https://www.cloudflare.com/careers">Join us</a> in San Francisco, London, Austin, Champaign and Warsaw.</em></p>
+	<p><i>Is fixing fragmentation issues for 10% of the internet exciting? We are hiring system engineers of all stripes, Golang programmers, C wranglers, and interns in multiple locations! </i><a href="https://www.cloudflare.com/careers"><i>Join us</i></a><i> in San Francisco, London, Austin, Champaign and Warsaw.</i></p>
 	<hr>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>In IPv6 the "forward" fragmentation works slightly differently than in IPv4. The intermediate routers are prohibited from fragmenting the packets, but the source can still do it. This is often confusing - a host might be asked to fragment a packet that it transmitted in the past. This makes little sense for stateless protocols like DNS. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn2" class="footnote-item">
-				<p>On a side note, there also exists a "minimum transmission unit"! In commonly used Ethernet framing, each transmitted datagram must have at least 64 bytes on Layer 2. This translates to 22 bytes on UDP and 10 bytes on TCP layer. Multiple implementations used to leak uninitialized memory on shorter packets! <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn3" class="footnote-item">
-				<p>Strictly speaking in IPv4 the ICMP packet is named "Destination Unreachable, Fragmentation Needed and Don't Fragment was Set". But I find the IPv6 ICMP error description "Packet too big" much clearer. <a href="https://blog.cloudflare.com/#fnref3" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn4" class="footnote-item">
-				<p>As a hint, TCP stack also include a maximum allowed "MSS" value in SYN packets (MSS is basically an MTU value reduced by size of IP and TCP headers). This allows the hosts to know what is the MTU on <em>their</em> links. Notice: this doesn't say what is the MTU on the dozens internet links between the two hosts! <a href="https://blog.cloudflare.com/#fnref4" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn5" class="footnote-item">
-				<p>Let's err on the safe side. A better MTU is 1492, to accommodate for DSL and PPPoE connections. <a href="https://blog.cloudflare.com/#fnref5" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>In IPv6 the "forward" fragmentation works slightly differently than in IPv4. The intermediate routers are prohibited from fragmenting the packets, but the source can still do it. This is often confusing - a host might be asked to fragment a packet that it transmitted in the past. This makes little sense for stateless protocols like DNS. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+		<li>
+			<p>On a side note, there also exists a "minimum transmission unit"! In commonly used Ethernet framing, each transmitted datagram must have at least 64 bytes on Layer 2. This translates to 22 bytes on UDP and 10 bytes on TCP layer. Multiple implementations used to leak uninitialized memory on shorter packets! <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
+		</li>
+		<li>
+			<p>Strictly speaking in IPv4 the ICMP packet is named "Destination Unreachable, Fragmentation Needed and Don't Fragment was Set". But I find the IPv6 ICMP error description "Packet too big" much clearer. <a href="https://blog.cloudflare.com/#fnref3">↩︎</a></p>
+		</li>
+		<li>
+			<p>As a hint, TCP stack also include a maximum allowed "MSS" value in SYN packets (MSS is basically an MTU value reduced by size of IP and TCP headers). This allows the hosts to know what is the MTU on <i>their</i> links. Notice: this doesn't say what is the MTU on the dozens internet links between the two hosts! <a href="https://blog.cloudflare.com/#fnref4">↩︎</a></p>
+		</li>
+		<li>
+			<p>Let's err on the safe side. A better MTU is 1492, to accommodate for DSL and PPPoE connections. <a href="https://blog.cloudflare.com/#fnref5">↩︎</a></p>
+		</li>
+	</ol>
 </div>

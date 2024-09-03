@@ -1,46 +1,41 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>In <a href="https://blog.cloudflare.com/single-rx-queue-kernel-bypass-with-netmap">a previous post</a> we described our work on a new netmap mode called <em>single-rx-queue</em>.</p>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
+	<p>In <a href="https://blog.cloudflare.com/single-rx-queue-kernel-bypass-with-netmap">a previous post</a> we described our work on a new netmap mode called <i>single-rx-queue</i>.</p>
 	<p>After submitting the pull request, the netmap maintainers told us that the patch was interesting, but they would prefer something more configurable instead of a tailored custom mode.</p>
 	<p>After an exchange of ideas and some more work, our patch just got merged to mainline netmap.</p>
-	<h4 id="meetthenewnetmap">Meet the new netmap</h4>
+	<h4>Meet the new netmap</h4>
 	<p>Before our patch netmap used to be an all-or-nothing deal. That is: there was no way to put a network adapter partially in netmap mode. All of the queues would have to be detached from the host network stack. Even a netmap mode called “single ring pair” didn't help.</p>
 	<p>Our final patch is extended and more generic, while still supporting the simple functionality of our original single-rx-queue mode.</p>
 	<p>First we modified netmap to leave queues that are not explicitly requested to be in netmap mode attached to the host stack. In this way, if a user requests a pair of rings (for example using <code>nm_open(“netmap:eth0-4”)</code>) it will actually get a reference to both the number 4 RX and TX rings, while keeping the other rings attached to the kernel stack.</p>
 	<p>But since the NIC is still partially connected to the host stack, a new problem arises: what should we do with packets that are going to be transmitted by the operating system to a TX ring which is in netmap mode? The solution is simple: just move them to the RX host ring. In this way we can access these packets from netmap simply by opening the interface again in netmap mode and asking for its software ring pair.</p>
 	<p>Last, for simpler use cases we needed a way to ask for only the RX rings, without the TX counterpart - we do not need TX rings for our specific use case. To achieve this we introduced a couple of flags, <code>NR_TX_RINGS_ONLY</code> and <code>NR_RX_RINGS_ONLY</code> (which translate to <code>/T</code> and <code>/R</code> when we are using <code>nm_open()</code>) to request only TX or RX rings.</p>
 	<p>With these changes, the only line we needed to edit in our code was the netmap interface name passed to <code>nm_open()</code>. This:</p>
-	<pre><code class="language-c">snprintf(nm_if, sizeof(nm_if) “netmap:%s~%d”, if_name, ring_nr);
-</code></pre>
+	<pre class="language-c"><code class="language-c">snprintf(nm_if, sizeof(nm_if) “netmap:%s~%d”, if_name, ring_nr);</code></pre>
 	<p>becomes this:</p>
-	<pre><code class="language-c">snprintf(nm_if, sizeof(nm_if), “netmap:%s-%d/R”, iface_name, ring_nr);
-</code></pre>
+	<pre class="language-c"><code class="language-c">snprintf(nm_if, sizeof(nm_if), “netmap:%s-%d/R”, iface_name, ring_nr);</code></pre>
 	<p>and everything kept working as expected!</p>
-	<h4 id="tryitout">Try it out</h4>
+	<h4>Try it out</h4>
 	<p>You can follow these instructions to build a test program under Linux. In this example we are using the ixgbe driver.</p>
 	<p>The test program source code is available on github:</p>
 	<ul>
-		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2015-12-nm-single-rx-queue/main.c">2015-12-nm-single-rx-queue/main.c</a></li>
+		<li>
+			<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2015-12-nm-single-rx-queue/main.c">2015-12-nm-single-rx-queue/main.c</a></p>
+		</li>
 	</ul>
 	<p>First clone the test application and the netmap repository:</p>
-	<pre><code class="language-sh">$ git clone https://github.com/cloudflare/cloudflare-blog
+	<pre class="language-sh"><code class="language-sh">$ git clone https://github.com/cloudflare/cloudflare-blog
 $ cd cloudflare-blog/2015-12-nm-single-rx-queue
-$ git clone https://github.com/luigirizzo/netmap deps
-</code></pre>
+$ git clone https://github.com/luigirizzo/netmap deps</code></pre>
 	<p>build it:</p>
-	<pre><code class="language-sh">$ make
-</code></pre>
+	<pre class="language-sh"><code class="language-sh">$ make</code></pre>
 	<p>build and load netmap:</p>
-	<pre><code class="language-sh">$ cd deps/netmap/LINUX
+	<pre class="language-sh"><code class="language-sh">$ cd deps/netmap/LINUX
 $ ./configure --kernel-sources=/path/to/kernel/sources --driver=ixgbe
 $ make
 $ sudo insmod netmap.ko
-$ sudo insmod ixgbe/ixgbe.ko
-</code></pre>
+$ sudo insmod ixgbe/ixgbe.ko</code></pre>
 	<p>and launch the application:</p>
-	<pre><code class="language-sh">$ sudo ./nm-single-rx-queue eth0 1
-</code></pre>
-	<h4 id="thanks">Thanks</h4>
+	<pre class="language-sh"><code class="language-sh">$ sudo ./nm-single-rx-queue eth0 1</code></pre>
+	<h4>Thanks</h4>
 	<p>We would like to thanks Luigi and Giuseppe for their great help shaping the final patch and their work on netmap.</p>
-	<!--kg-card-end: markdown-->
 </div>

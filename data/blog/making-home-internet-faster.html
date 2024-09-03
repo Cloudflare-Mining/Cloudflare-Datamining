@@ -1,14 +1,24 @@
 <div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-home-internet-faster-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/making-home-internet-faster-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/making-home-internet-faster-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/making-home-internet-faster-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/fr-fr/making-home-internet-faster-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/de-de/making-home-internet-faster-de-de">Deutsch</a> and <a href="https://blog.cloudflare.com/es-es/making-home-internet-faster-es-es">Español</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-17.png" class="kg-image" alt="Making home Internet faster has little to do with “speed”" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-home-internet-faster">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/making-home-internet-faster">Français</a>, <a href="https://blog.cloudflare.com/de-de/making-home-internet-faster">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/making-home-internet-faster">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/making-home-internet-faster">한국어</a>, <a href="https://blog.cloudflare.com/es-es/making-home-internet-faster">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/making-home-internet-faster">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lEfazasknt17nyfB1EKGP/7f1be4b10f4e2020fa002b188a14c699/image4-17.png" alt="Making home Internet faster has little to do with “speed”" class="kg-image" width="1200" height="676" loading="lazy">
+
+	</figure>
 	<p>More than ten years ago, researchers at Google <a href="https://docs.google.com/a/chromium.org/viewer?a=v&amp;pid=sites&amp;srcid=Y2hyb21pdW0ub3JnfGRldnxneDoxMzcyOWI1N2I4YzI3NzE2">published</a> a paper with the seemingly heretical title “More Bandwidth Doesn’t Matter (much)”. We <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">published</a> our own blog showing it is faster to fly 1TB of data from San Francisco to London than it is to upload it on a 100 Mbps connection. Unfortunately, things haven’t changed much. When you make purchasing decisions about home Internet plans, you probably consider the bandwidth of the connection when evaluating Internet performance. More bandwidth is faster speed, or so the marketing goes. In this post, we’ll use real-world data to show both bandwidth and – spoiler alert! – latency impact the speed of an Internet connection. By the end, we think you’ll understand why Cloudflare is so laser <a href="https://blog.cloudflare.com/network-performance-update-developer-week">focused</a> on <a href="https://blog.cloudflare.com/last-mile-insights">reducing</a> <a href="https://blog.cloudflare.com/new-cities-april-2022-edition">latency</a> <a href="https://blog.cloudflare.com/network-performance-update-cloudflare-one-week-june-2022">everywhere</a> we can find it.</p>
 	<p>The grand summary of the blog that follows is this:</p>
 	<ul>
-		<li>There are many ways to evaluate network performance.</li>
-		<li>Performance “goodness” depends on the application -- a good number for one application can be of zero benefit to a different application.</li>
-		<li>“Speed” numbers can be misleading, not least because any single metric cannot accurately describe how all applications will perform.</li>
+		<li>
+			<p>There are many ways to evaluate network performance.</p>
+		</li>
+		<li>
+			<p>Performance “goodness” depends on the application -- a good number for one application can be of zero benefit to a different application.</p>
+		</li>
+		<li>
+			<p>“Speed” numbers can be misleading, not least because any single metric cannot accurately describe how all applications will perform.</p>
+		</li>
 	</ul>
 	<p>To better understand these ideas, we should define bandwidth and latency. Bandwidth is the amount of data that can be transmitted at any single time. It’s the maximum throughput, or capacity, of the communications link between two servers that want to exchange data. The “bottleneck” is the place in the network where the connection is constrained by the amount of bandwidth available. Usually this is in the “last mile”, either the wire that connects a home, or the modem or router in the home itself.</p>
 	<p>If the Internet is an information superhighway, bandwidth is the number of lanes on the road. The wider the road, the more traffic can fit on the highway at any time. Bandwidth is useful for downloading large files like operating system updates and big game updates. We use bandwidth when streaming video, though probably less than you think. Netflix <a href="https://help.netflix.com/en/node/306">recommends</a> 15 Mbps of bandwidth to watch a stream in 4K/Ultra HD. A 1 Gbps connection could stream more than 60 Netflix shows in 4K at the same time!</p>
@@ -19,25 +29,55 @@
 	<p>In the 2010 <a href="https://docs.google.com/a/chromium.org/viewer?a=v&amp;pid=sites&amp;srcid=Y2hyb21pdW0ub3JnfGRldnxneDoxMzcyOWI1N2I4YzI3NzE2">paper</a> from Google, the author simulated loading web pages while varying the throughput and latency of the connection. The finding was that above about 5 Mbps, the page doesn’t load much faster. Increasing bandwidth from 1 Mbps to 2 Mbps is almost a 40 percent improvement in page load time. From 5 Mbps to 6 Mbps is less than a 5 percent improvement.</p>
 	<p>However, something interesting happened when varying the latency (the Round Trip Time, or RTT): there was a linear and proportional improvement on page load times. For every 20 milliseconds of reduced latency, the page load time improved by about 10%.</p>
 	<p>Let’s see what this looks like in real life with empirical data. Below is a chart from an excellent recent <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4178804">paper</a> by two researchers from MIT. Using data from the FCC’s <a href="https://www.fcc.gov/general/measuring-broadband-america">Measuring Broadband America</a> program, these researchers produced a chart showing similar results to the 2010 simulation. Those results are summarized in the chart below. Though the point of diminishing returns to more bandwidth has moved higher – to about 20 Mbps – the overall trend was exactly the same.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/download--5-.png" class="kg-image" alt="" loading="lazy" width="1294" height="468"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wcZyRWYVXlEd04AvuO820/a1a12f64ec3a495fc52d5c71676debf9/download--5-.png" alt="" class="kg-image" width="1294" height="468" loading="lazy">
+
+	</figure>
 	<p>We repeated this analysis with a focus on latency using our own Cloudflare data. The results are summarized in the next chart, showing &nbsp;a familiar pattern. For every 200 milliseconds of latency we can save, we cut the page load time by over 1 second. That relationship applies when the latency is 950 milliseconds. And it applies when the latency is 50 milliseconds.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/download-1.png" class="kg-image" alt="" loading="lazy" width="1090" height="656"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UyB3HCO8RA5EWTWF8jFTt/18230e8ee0300190f9fda63b0cb4883e/download-1.png" alt="" class="kg-image" width="1090" height="656" loading="lazy">
+
+	</figure>
 	<p>There are a few reasons latency matters in the set of transactions needed to load pages. When you connect to a website, the first thing that your browser does is establish a secure connection, to authenticate the website and ensure your data is encrypted. The protocols to do this are TCP and TLS, or <a href="https://blog.cloudflare.com/the-road-to-quic">QUIC</a> (that is encrypted by default). The number of message exchanges each needs to establish a secure connection varies, but one aspect of the establishment phase is common to all of them: Latency matters most.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/download--1--1.png" class="kg-image" alt="" loading="lazy" width="650" height="430"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5A4Y3IJhLCfCqYMwjAjhst/4e97e36cb00c1853fd65cff89bab1050/download--1--1.png" alt="" class="kg-image" width="650" height="430" loading="lazy">
+
+	</figure>
 	<p>On top of that, when we load a webpage after we establish encryption and verify website authority, we might be asking the browser to <a href="https://www.webpagetest.org/result/221107_BiDcB1_ERZ/2/details/#waterfall_view_step1">load</a> hundreds of different files across dozens of different domains. Some of these files can be loaded in parallel, but others need to be loaded sequentially. As the browser races to compile all these different files, it’s the speed at which it can get to the server and back that determines how fast it can put the page together. The files are often quite small, but there’s a lot of them.</p>
 	<p>The chart below shows the beginning of what the browser does when it loads cnn.com. First is the connection handshake phase, followed by 301 redirect to <a href="http://www.cnn.com">www.cnn.com,</a> which requires a completely new &nbsp;connection handshake before the browser can load the main HTML page in step two. Only then, more than 1 second into the load, does it learn about all the JavaScript files it requires in order to render the page. Files 3-19 are requested mostly on the same connection but are not served until after the HTML file has been delivered in full. Files 8, 9, and 10 are requested over separate connections (all costing handshakes). Files 20-27 are all blocked on earlier files and similarly need new connections. They can’t start until the browser has the previous file back from the server and executes it. There are 650 assets in this page load, and the blocking happens all the way through the page load. Here’s why this matters: better latency makes every file load faster, which in turn unblocks other files faster, and so on.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/download--2--1.png" class="kg-image" alt="" loading="lazy" width="1192" height="1324"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VkNcalwdnqthmWSvdepwK/eacb35acc013576c162f1e9a23379c17/download--2--1.png" alt="" class="kg-image" width="1192" height="1324" loading="lazy">
+
+	</figure>
 	<p>The protocols will use all the bandwidth available, but often complete a transfer before all the available bandwidth is consumed. It’s no wonder then that adding more bandwidth doesn’t speed up the page load, but better latency does. While developments like <a href="https://blog.cloudflare.com/early-hints">Early Hints</a> help this by informing browsers of dependencies earlier, allowing them to pre-connect to servers or pre-fetch resources that don’t need to be strictly ordered, this is still a problem for many websites on the Internet today.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/download--3--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="278"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59WkhTSfM4ThiaTl2GKYg5/1fd27bd1ebb0a5e68708b7fc89be8aa9/download--3--1.png" alt="" class="kg-image" width="1600" height="278" loading="lazy">
+
+	</figure>
 	<p>Recently, Internet researchers have turned their attention to using our understanding of the relationship between throughput and latency to improve Internet Quality of Experience (QoE). A <a href="https://www.bitag.org/latency-explained.php">paper</a> from the Broadband Internet Technical Advisory Group (BITAG) summarizes:</p>
-	<blockquote>But we now recognize that it is not just greater throughput that matters, but also consistently low latency. Unfortunately, the way that we’ve historically understood and characterized latency was flawed, and our latency measurements and metrics were not aligned with end-user QoE.</blockquote>
+	<blockquote>
+		<p>But we now recognize that it is not just greater throughput that matters, but also consistently low latency. Unfortunately, the way that we’ve historically understood and characterized latency was flawed, and our latency measurements and metrics were not aligned with end-user QoE.</p>
+	</blockquote>
 	<p>Confusing matters further, there is a difference between latency on an idle Internet connection and latency measured in working conditions when many connections share the network resources, which we call “working latency” or “<a href="https://www.ietf.org/archive/id/draft-cpaasch-ippm-responsiveness-00.html">responsiveness</a>”. Since responsiveness is what the user experiences as the speed of their Internet connection, it’s important to understand and measure this particular latency.</p>
 	<p>An Internet connection can suffer from poor responsiveness (even if it has good idle latency) when data is delayed in buffers. If you download a large file, for example an operating system update, the server sending the file might send the file with higher throughput than the Internet connection can accept. That’s ok. Extra bits of the file will sit in a buffer until it’s their turn to go through the funnel. Adding extra lanes to the highway allows more cars to pass through, and is a good strategy if we aren’t particularly concerned with the speed of the traffic.</p>
 	<p>Say for example, Christabel is watching a stream of the news while on a video meeting. When Christabel starts watching the video, her browser fetches a bunch of content and stores it in various buffers on the way from the content host to the browser. Those same buffers also contain data packets pertaining to the video meeting Christabel is currently in. If the data generated as part of a video conference sits in the same buffer as the video files, the video files will fill up the buffer and cause delay for the video meeting packets as well. The larger the buffers, the longer the wait for video conference packets.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/download--4--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="600"></figure>
-	<h3 id="cloudflare-is-helping-to-make-speed-meaningful">Cloudflare is helping to make “speed” meaningful</h3>
-	<p>To help users understand the strengths and weaknesses of their connection, we recently added <a href="https://developers.cloudflare.com/fundamentals/speed/aim">Aggregated Internet Measurement (AIM) </a>scores to our own <a href="https://speed.cloudflare.com">“Speed” Test</a>. These scores remove the technical metrics and give users a real-world, plain-English understanding of what their connection will be good at, and where it might struggle. We’d also like to collect more data from our speed test to help track Page Load Times (PLT) and see how they are correlated with the reduction of lower working latency. You’ll start seeing those numbers on our speed test soon!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/download--6-.png" class="kg-image" alt="" loading="lazy" width="1560" height="212"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZyNLHmYFSZ3TK5ggfORHe/f69f4b9c7f91a346fca25168b23bdd19/download--4--1.png" alt="" class="kg-image" width="1600" height="600" loading="lazy">
+
+	</figure>
+	<h3>Cloudflare is helping to make “speed” meaningful</h3>
+	<p>To help users understand the strengths and weaknesses of their connection, we recently added <a href="https://developers.cloudflare.com/fundamentals/speed/aim">Aggregated Internet Measurement (AIM)</a> scores to our own <a href="https://speed.cloudflare.com">“Speed” Test</a>. These scores remove the technical metrics and give users a real-world, plain-English understanding of what their connection will be good at, and where it might struggle. We’d also like to collect more data from our speed test to help track Page Load Times (PLT) and see how they are correlated with the reduction of lower working latency. You’ll start seeing those numbers on our speed test soon!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/439M08KpRs8HFYWbYuRAqf/d0ffaaa7e6f75a2f585a0757c8ddee40/download--6-.png" alt="" class="kg-image" width="1560" height="212" loading="lazy">
+
+	</figure>
 	<p>We all use our Internet connections in slightly different ways, but we share the desire for our connections to be as fast as possible. As more and more services move into the cloud – word documents, music, websites, communications, etc – the speed at which we can access those services becomes critical. While bandwidth plays a part, the latency of the connection – the real Internet “speed” – is more important.</p>
 	<p>At Cloudflare, we’re working every day to help build a more performant Internet. Want to help? Apply for one of our open engineering roles <a href="https://www.cloudflare.com/careers">here</a>.</p>
 </div>

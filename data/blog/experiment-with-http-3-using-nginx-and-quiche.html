@@ -1,24 +1,31 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/experiment-with-http-3-using-nginx-and-quiche">한국어</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/HTTP3-portal@3x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GewSku8hqAHAyubNYEXl4/ad7f89386217eaa316e38cd50f4f8103/HTTP3-portal_3x.png" alt="" class="kg-image" width="1600" height="1361" loading="lazy">
+
+	</figure>
 	<p>Just a few weeks ago <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">we announced</a> the availability on our edge network of <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a>, the new revision of HTTP intended to improve security and performance on the Internet. Everyone can now enable HTTP/3 on their Cloudflare zone and experiment with it using <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a> as well as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a>, among other clients.</p>
 	<p>We have previously made available <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-server.rs">an example HTTP/3 server as part of the quiche project</a> to allow people to experiment with the protocol, but it’s quite limited in the functionality that it offers, and was never intended to replace other general-purpose web servers.</p>
 	<p>We are now happy to announce that <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">our implementation of HTTP/3 and QUIC</a> can be integrated into your own installation of NGINX as well. This is made available <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx">as a patch</a> to NGINX, that can be applied and built directly with the upstream NGINX codebase.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/quiche-banner-copy@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>It’s important to note that <strong>this is not officially supported or endorsed by the NGINX project</strong>, it is just something that we, Cloudflare, want to make available to the wider community to help push adoption of QUIC and HTTP/3.</p>
-	<h3 id="building">Building<br></h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RGn7FpVUT1wQ1v5yu74c3/5c9d49ae0c9ab55e8b2ffb2c25335c44/quiche-banner-copy_2x.png" alt="" class="kg-image" width="1600" height="804" loading="lazy">
+
+	</figure>
+	<p>It’s important to note that <b>this is not officially supported or endorsed by the NGINX project</b>, it is just something that we, Cloudflare, want to make available to the wider community to help push adoption of QUIC and HTTP/3.</p>
+	<h3>Building</h3>
 	<p>The first step is to <a href="https://nginx.org/en/download.html">download and unpack the NGINX source code</a>. Note that the HTTP/3 and QUIC patch only works with the 1.16.x release branch (the latest stable release being 1.16.1).</p>
-	<pre><code> % curl -O https://nginx.org/download/nginx-1.16.1.tar.gz
- % tar xvzf nginx-1.16.1.tar.gz
-</code></pre>
+	<pre class="language-bash"><code class="language-bash"> % curl -O https://nginx.org/download/nginx-1.16.1.tar.gz
+ % tar xvzf nginx-1.16.1.tar.gz</code></pre>
 	<p>As well as quiche, the underlying implementation of HTTP/3 and QUIC:</p>
-	<pre><code> % git clone --recursive https://github.com/cloudflare/quiche</code></pre>
+	<pre class="language-bash"><code class="language-bash"> % git clone --recursive https://github.com/cloudflare/quiche</code></pre>
 	<p>Next you’ll need to apply the patch to NGINX:</p>
-	<pre><code> % cd nginx-1.16.1
- % patch -p01 &lt; ../quiche/extras/nginx/nginx-1.16.patch
-</code></pre>
+	<pre class="language-bash"><code class="language-bash"> % cd nginx-1.16.1
+ % patch -p01 &lt; ../quiche/extras/nginx/nginx-1.16.patch</code></pre>
 	<p>And finally build NGINX with HTTP/3 support enabled:</p>
-	<pre><code> % ./configure                          	\
+	<pre class="language-bash"><code class="language-bash"> % ./configure                          	\
    	--prefix=$PWD                       	\
    	--with-http_ssl_module              	\
    	--with-http_v2_module               	\
@@ -28,10 +35,10 @@
  % make</code></pre>
 	<p>The above command instructs the NGINX build system to enable the HTTP/3 support ( <code>--with-http_v3_module</code>) by using the quiche library found in the path it was previously downloaded into ( <code>--with-quiche=../quiche</code>), as well as TLS and HTTP/2. Additional build options can be added as needed.</p>
 	<p>You can check out the full instructions <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx#readme">here</a>.</p>
-	<h3 id="running">Running</h3>
+	<h3>Running</h3>
 	<p>Once built, NGINX can be configured to accept incoming HTTP/3 connections by adding the <code>quic</code> and <code>reuseport</code> options to the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen">listen</a> configuration directive.</p>
 	<p>Here is a minimal configuration example that you can start from:</p>
-	<pre><code>events {
+	<pre class="language-bash"><code class="language-bash">events {
     worker_connections  1024;
 }
 
@@ -52,9 +59,8 @@ http {
         # Add Alt-Svc header to negotiate HTTP/3.
         add_header alt-svc 'h3-23=":443"; ma=86400';
     }
-}
-</code></pre>
+}</code></pre>
 	<p>This will enable both HTTP/2 and HTTP/3 on the TCP/443 and UDP/443 ports respectively.</p>
 	<p>You can then use one of the available HTTP/3 clients (such as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a>, <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a> or even the <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-quiche-s-http3-client">example HTTP/3 client provided as part of quiche</a>) to connect to your NGINX instance using HTTP/3.</p>
-	<p>We are excited to make this available for everyone to experiment and play with HTTP/3, but it’s important to note that <strong>the implementation is still experimental</strong> and it’s likely to have bugs as well as limitations in functionality. Feel free to submit a ticket to the <a href="https://github.com/cloudflare/quiche">quiche project</a> if you run into problems or find any bug.</p>
+	<p>We are excited to make this available for everyone to experiment and play with HTTP/3, but it’s important to note that <b>the implementation is still experimental</b> and it’s likely to have bugs as well as limitations in functionality. Feel free to submit a ticket to the <a href="https://github.com/cloudflare/quiche">quiche project</a> if you run into problems or find any bug.</p>
 </div>

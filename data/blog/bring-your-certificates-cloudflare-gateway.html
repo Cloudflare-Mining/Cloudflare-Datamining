@@ -1,28 +1,30 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-9.png" class="kg-image" alt="Bring you own certificates to Cloudflare Gateway" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3q3G4KekI9Qh2pYtEObT1g/8e01490937bf743ed0b9a655de36a254/image1-9.png" alt="Bring you own certificates to Cloudflare Gateway" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Today, we’re announcing support for customer provided certificates to give flexibility and ease of deployment options when using <a href="https://www.cloudflare.com/products/zero-trust">Cloudflare’s Zero Trust platform</a>. Using custom certificates, IT and Security administrators can now “bring-their-own” certificates instead of being required to use a Cloudflare-provided certificate to apply HTTP, DNS, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">CASB</a>, DLP, RBI and other filtering policies.</p>
 	<p>The new custom certificate approach will exist alongside the method Cloudflare Zero Trust administrators are already used to: installing Cloudflare’s own certificate to enable traffic inspection and forward proxy controls. Both approaches have advantages, but providing them both enables organizations to find the path to security modernization that makes the most sense for them.</p>
-	<h2 id="custom-user-side-certificates">Custom user side certificates</h2>
+	<h2>Custom user side certificates</h2>
 	<p>When deploying new security services, organizations may prefer to use their own custom certificates for a few common reasons. Some value the privacy of controlling which certificates are deployed. Others have already deployed custom certificates to their device fleet because they may bind user attributes to these certificates or use them for internal-only domains.</p>
 	<p>So, it can be easier and faster to apply additional security controls around what administrators have deployed already–versus installing additional certificates.</p>
-	<p>To get started using your own certificate first upload your root certificates via API to Cloudflare.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-curl">curl -X POST "https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/mtls_certificates"\
-    -H "X-Auth-Email: &lt;EMAIL&gt;" \
-    -H "X-Auth-Key: &lt;API_KEY&gt;" \
+	<p>To get started using your own certificate first upload your root certificates via API to Cloudflare.</p>
+	<pre class="language-curl"><code class="language-curl">curl -X POST "https://api.cloudflare.com/client/v4/accounts/<account_id>/mtls_certificates"\
+    -H "X-Auth-Email: <email>" \
+    -H "X-Auth-Key: <api_key>" \
     -H "Content-Type: application/json" \
     --data '{
         "name":"example_ca_cert",
-        "certificates":"&lt;ROOT_CERTIFICATE&gt;",
-        "private_key":"&lt;PRIVATE_KEY&gt;",
+        "certificates":"<root_certificate>",
+        "private_key":"<private_key>",
         "ca":true
-        }'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The root certificate will be stored across all of Cloudflare’s secure servers, designed to protect against unauthorized access. Once uploaded each certificate will receive an identifier in the form of a UUID (e.g. <code>2458ce5a-0c35-4c7f-82c7-8e9487d3ff60</code>) . This UUID can then be used with your Zero Trust account ID to associate and enable it for your account.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-curl">curl -X PUT "https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/gateway/configuration"\
-    -H "X-Auth-Email: &lt;EMAIL&gt;" \
-    -H "X-Auth-Key: &lt;API_KEY&gt;" \
+        }'</private_key></root_certificate></api_key></email></account_id></code></pre>
+	<p>The root certificate will be stored across all of Cloudflare’s secure servers, designed to protect against unauthorized access. Once uploaded each certificate will receive an identifier in the form of a UUID (e.g. <code>2458ce5a-0c35-4c7f-82c7-8e9487d3ff60</code>) . This UUID can then be used with your Zero Trust account ID to associate and enable it for your account.</p>
+	<pre class="language-curl"><code class="language-curl">curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<account_id>/gateway/configuration"\
+    -H "X-Auth-Email: <email>" \
+    -H "X-Auth-Key: <api_key>" \
     -H "Content-Type: application/json" \
     --data '{
         "settings":
@@ -39,16 +41,14 @@
             "browser_isolation": {...},
             "fips": {...},
         }
-    }'
-</code></pre>
-	<!--kg-card-end: markdown-->
+    }'</api_key></email></account_id></code></pre>
 	<p>From there it takes approximately one minute and all new HTTPS connections for your organization's users will be secured using your custom certificate. For even more details check out our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/custom-certificate">developer documentation</a>.</p>
 	<p>An additional benefit of this fast propagation time is zero maintenance downtimes. If you’re transitioning from the Cloudflare provided certificate or a custom certificate, all new HTTPS connections will use the new certificate without impacting any current connections.</p>
-	<h2 id="or-install-cloudflare-s-own-certificates">Or, install Cloudflare’s own certificates</h2>
+	<h2>Or, install Cloudflare’s own certificates</h2>
 	<p>In addition to the above API-based method for custom certificates, Cloudflare also makes it easy for organizations to install Cloudflare’s own root certificate on devices to support HTTP filtering policies. Many organizations prefer offloading certificate management to Cloudflare to reduce administrative overhead. Plus, root certificate installation can be easily automated during managed deployments of <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp">Cloudflare’s device client</a>, which is critical to forward proxy traffic.</p>
 	<p>Installing Cloudflare’s root certificate on devices takes only a few steps, and administrators can choose which file type they want to use–either a .pem or .crt file–depending on their use cases. Take a look at our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/install-cloudflare-cert">developer documentation</a> for further details on the process across operating systems and applications.</p>
-	<h2 id="what-s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>Whether an organization uses a custom certificate or the Cloudflare maintained certificate, the goal is the same. To apply traffic inspection to help protect against malicious activity and provide robust data protection controls to keep users safe. Cloudflare’s priority is equipping those organizations with the flexibility to achieve their risk reduction goal as swiftly as possible.</p>
 	<p>In the coming quarters we will be focused on delivering a new UI to upload and manage user side certificates as well as refreshing the HTTP policy builder to let admins determine what happens when accessing origins not signed with a public certificate.</p>
-	<p>If you want to know where <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">SWG</a>, RBI, DLP, and other threat and data protection services can fit into your overall security modernization initiatives, explore Cloudflare’s <a href="https://zerotrustroadmap.org">prescriptive roadmap to Zero Trust.</a><br>If you and your enterprise are ready to get started protecting your users, devices, and data with HTTP inspection, then <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us">reach out to Cloudflare to learn more</a>.</p>
+	<p>If you want to know where <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">SWG</a>, RBI, DLP, and other threat and data protection services can fit into your overall security modernization initiatives, explore Cloudflare’s <a href="https://zerotrustroadmap.org">prescriptive roadmap to Zero Trust.</a>If you and your enterprise are ready to get started protecting your users, devices, and data with HTTP inspection, then <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us">reach out to Cloudflare to learn more</a>.</p>
 </div>

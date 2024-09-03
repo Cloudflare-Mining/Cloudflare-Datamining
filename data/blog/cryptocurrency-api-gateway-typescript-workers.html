@@ -1,43 +1,27 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>If you followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part one</a>, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with <code>npm run upload</code>. For this post, I want to take one of the <a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests">Worker Recipes</a> further.</p>
 	<p>I'm going to build a mini HTTP request routing and handling framework, then use it to build a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">gateway</a> to multiple cryptocurrency API providers. My point here is that in a single file, with no dependencies, you can quickly build pretty sophisticated logic and deploy fast and easily to the Edge. Furthermore, using modern Typescript with async/await and the rich type structure, you also write clean, async code.</p>
 	<p>OK, here we go...</p>
 	<p>My API will look like this:</p>
-	<table>
-		<thead>
-			<tr>
-				<th>Verb</th>
-				<th>Path</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>GET</td>
-				<td><code>/api/ping</code></td>
-				<td>Check the Worker is up</td>
-			</tr>
-			<tr>
-				<td>GET</td>
-				<td><code>/api/all/spot/:symbol</code></td>
-				<td>Aggregate the responses from all our configured gateways</td>
-			</tr>
-			<tr>
-				<td>GET</td>
-				<td><code>/api/race/spot/:symbol</code></td>
-				<td>Return the response of the provider who responds fastest</td>
-			</tr>
-			<tr>
-				<td>GET</td>
-				<td><code>/api/direct/:exchange/spot/:symbol</code></td>
-				<td>Pass through the request to the gateway. E.g. gdax or bitfinex</td>
-			</tr>
-		</tbody>
-	</table>
-	<h3 id="theframework">The Framework</h3>
+	<p>Verb</p>
+	<p>Path</p>
+	<p>Description</p>
+	<p>GET</p>
+	<p><code>/api/ping</code></p>
+	<p>Check the Worker is up</p>
+	<p>GET</p>
+	<p><code>/api/all/spot/:symbol</code></p>
+	<p>Aggregate the responses from all our configured gateways</p>
+	<p>GET</p>
+	<p><code>/api/race/spot/:symbol</code></p>
+	<p>Return the response of the provider who responds fastest</p>
+	<p>GET</p>
+	<p><code>/api/direct/:exchange/spot/:symbol</code></p>
+	<p>Pass through the request to the gateway. E.g. gdax or bitfinex</p>
+	<h3>The Framework</h3>
 	<p>OK, this is Typescript, I get interfaces and I'm going to use them. Here's my ultra-mini-http-routing framework definition:</p>
-	<pre><code class="language-Typescript">export interface IRouter {
+	<pre class="language-typescript"><code class="language-typescript">export interface IRouter {
   route(req: RequestContextBase): IRouteHandler;
 }
 
@@ -52,7 +36,7 @@ export interface IRoute {
  * Handles a request.
  */
 export interface IRouteHandler {
-  handle(req: RequestContextBase): Promise&lt;Response&gt;;
+  handle(req: RequestContextBase): Promise<response>;
 }
 
 /**
@@ -67,11 +51,10 @@ export class RequestContextBase {
   constructor(public request: Request) {
     this.url = new URL(request.url);
   }
-}
-</code></pre>
+}</response></code></pre>
 	<p>So basically all requests will go to <code>IRouter</code>. If it finds an <code>IRoute</code> that returns an <code>IRouterHandler</code>, then it will call that and pass in <code>RequestContextBase</code>, which is just the request with a parsed URL for convenience.</p>
 	<p>I stopped short of dependency injection, so here's the router implementation with 4 routes we've implemented (Ping, Race, All and Direct). Each route corresponds to one of the four operations I defined in the API above and returns the corresponding <code>IRouteHandler</code>.</p>
-	<pre><code class="language-Typescript">export class Router implements IRouter {
+	<pre class="language-typescript"><code class="language-typescript">export class Router implements IRouter {
   public routes: IRoute[];
 
   constructor() {
@@ -83,7 +66,7 @@ export class RequestContextBase {
     ];
   }
 
-  public async handle(request: Request): Promise&lt;Response&gt; {
+  public async handle(request: Request): Promise<response> {
     try {
       const req = new RequestContextBase(request);
       const handler = this.route(req);
@@ -114,23 +97,21 @@ export class RequestContextBase {
     }
     return null;
   }
-}
-</code></pre>
+}</response></code></pre>
 	<p>You can see above I return a NotFoundHandler if we can't find a matching route. Its implementation is below. It's easy to see how 401, 405, 500 and all the common handlers could be implemented.</p>
-	<pre><code class="language-Typescript">/**
+	<pre class="language-typescript"><code class="language-typescript">/**
  * 404 Not Found
  */
 export class NotFoundHandler implements IRouteHandler {
-  public async handle(req: RequestContextBase): Promise&lt;Response&gt; {
+  public async handle(req: RequestContextBase): Promise<response> {
     return new Response(undefined, {
       status: 404,
       statusText: 'Unknown route',
     });
   }
-}
-</code></pre>
+}</response></code></pre>
 	<p>Now let's start with Ping. The framework separates matching a route and handling the request. Firstly the route:</p>
-	<pre><code class="language-Typescript">export class PingRoute implements IRoute {
+	<pre class="language-typescript"><code class="language-typescript">export class PingRoute implements IRoute {
   public match(req: RequestContextBase): IRouteHandler | null {
     if (req.request.method !== 'GET') {
       return new MethodNotAllowedHandler();
@@ -140,35 +121,31 @@ export class NotFoundHandler implements IRouteHandler {
     }
     return null;
   }
-}
-</code></pre>
+}</code></pre>
 	<p>Simple enough, if the URL starts with <code>/api/ping</code>, handle the request with a <code>PingRouteHandler</code></p>
-	<pre><code class="language-Typescript">export class PingRouteHandler implements IRouteHandler {
-  public async handle(req: RequestContextBase): Promise&lt;Response&gt; {
+	<pre class="language-typescript"><code class="language-typescript">export class PingRouteHandler implements IRouteHandler {
+  public async handle(req: RequestContextBase): Promise<response> {
     const pong = 'pong;';
     const res = new Response(pong);
     logger.info(`Responding with ${pong} and ${res.status}`);
     return new Response(pong);
   }
-}
-</code></pre>
-	<p>So at this point, if you followed along with <a href="https://blog.cloudflare.com">Part 1</a>, you can do:</p>
-	<pre><code class="language-bash">$ npm run upload
+}</response></code></pre>
+	<p>So at this point, if you followed along with Part 1, you can do:</p>
+	<pre class="language-bash"><code class="language-bash">$ npm run upload
 $ curl https://cryptoserviceworker.com/api/ping
-pong
-</code></pre>
+pong</code></pre>
 	<p>OK, next the <code>AllHandler</code>, this aggregates the responses. Firstly the route matcher:</p>
-	<pre><code class="language-Typescript">export class AllRoute implements IRoute {
+	<pre class="language-typescript"><code class="language-typescript">export class AllRoute implements IRoute {
   public match(req: RequestContextBase): IRouteHandler | null {
     if (req.url.pathname.startsWith('/api/all/')) {
       return new AllHandler();
     }
     return null;
   }
-}
-</code></pre>
+}</code></pre>
 	<p>And if the route matches, we'll handle it by farming off the requests to our downstream handlers:</p>
-	<pre><code class="language-Typescript">export class AllHandler implements IRouteHandler {
+	<pre class="language-typescript"><code class="language-typescript">export class AllHandler implements IRouteHandler {
   constructor(private readonly handlers: IRouteHandler[] = []) {
     if (handlers.length === 0) {
       const factory = new HandlerFactory();
@@ -177,19 +154,18 @@ pong
     }
   }
 
-  public async handle(req: RequestContextBase): Promise&lt;Response&gt; {
+  public async handle(req: RequestContextBase): Promise<response> {
     const responses = await Promise.all(
       this.handlers.map(async h =&gt; h.handle(req))
     );
     const jsonArr = await Promise.all(responses.map(async r =&gt; r.json()));
     return new Response(JSON.stringify(jsonArr));
   }
-}
-</code></pre>
+}</response></code></pre>
 	<p>I'm cheating a bit here because I haven't shown you the code for <code>HandlerFactory</code> or the implementation of <code>handle</code> for each one. You can look up the full source <a href="https://github.com/stevenpack/cryptoserviceworker/blob/master/src/service-worker.ts">here</a>.</p>
-	<p>Take a moment here to appreciate just what's happening. You're writing very expressive async code that in a few lines, is able to multiplex a request to multiple endpoints and aggregate the results. Furthermore, it's running in a sandboxed environment in a data center very close to your end user. <strong>Edge-side code is a game changer.</strong></p>
+	<p>Take a moment here to appreciate just what's happening. You're writing very expressive async code that in a few lines, is able to multiplex a request to multiple endpoints and aggregate the results. Furthermore, it's running in a sandboxed environment in a data center very close to your end user. <b>Edge-side code is a game changer.</b></p>
 	<p>Let's see it in action.</p>
-	<pre><code>$ curl https://cryptoserviceworker.com/api/all/spot/btc-usd
+	<pre class="language-bash"><code class="language-bash">$ curl https://cryptoserviceworker.com/api/all/spot/btc-usd
 [  
    {  
       "symbol":"btc-usd",
@@ -203,57 +179,60 @@ pong
       "utcTime":"2018-06-20T05:26:22.284Z",
       "provider":"bitfinex"
    }
-]
-</code></pre>
+]</code></pre>
 	<p>Cool, OK, who's fastest? First, the route handler:</p>
-	<pre><code class="language-Typescript">export class RaceRoute implements IRoute {
+	<pre class="language-typescript"><code class="language-typescript">export class RaceRoute implements IRoute {
   public match(req: RequestContextBase): IRouteHandler | null {
     if (req.url.pathname.startsWith('/api/race/')) {
       return new RaceHandler();
     }
     return null;
   }
-}
-</code></pre>
+}</code></pre>
 	<p>And the handler. Basically just using <code>Promise.race</code> to pick the winner</p>
-	<pre><code class="language-Typescript">export class RaceHandler implements IRouteHandler {
+	<pre class="language-typescript"><code class="language-typescript">export class RaceHandler implements IRouteHandler {
   constructor(private readonly handlers: IRouteHandler[] = []) {
     const factory = new HandlerFactory();
     this.handlers = factory.getProviderHandlers();
   }
 
-  public handle(req: RequestContextBase): Promise&lt;Response&gt; {
+  public handle(req: RequestContextBase): Promise<response> {
     return this.race(req, this.handlers);
   }
 
   public async race(
     req: RequestContextBase,
     responders: IRouteHandler[]
-  ): Promise&lt;Response&gt; {
+  ): Promise<response> {
     const arr = responders.map(r =&gt; r.handle(req));
     return Promise.race(arr);
   }
-}
-</code></pre>
+}</response></response></code></pre>
 	<p>So who's fastest? Tonight it's gdax.</p>
-	<pre><code class="language-bash">curl https://cryptoserviceworker.com/api/race/spot/btc-usd
+	<pre class="language-bash"><code class="language-bash">curl https://cryptoserviceworker.com/api/race/spot/btc-usd
 {  
    "symbol":"btc-usd",
    "price":"6607.15000000",
    "utcTime":"2018-06-20T05:33:16.074000Z",
    "provider":"gdax"
-}
-</code></pre>
-	<h3 id="summary">Summary</h3>
+}</code></pre>
+	<h3>Summary</h3>
 	<p>Using Typescript+Workers, in &lt; 500 lines of code, we were able to</p>
 	<ul>
-		<li>Define an interface for a mini HTTP routing and handling framework</li>
-		<li>Implement a basic implementation of that framework</li>
-		<li>Build Routes and Handlers to provide Ping, All, Race and Direct handlers</li>
-		<li>Deploy it to 160+ data centers with <code>npm run upload</code></li>
+		<li>
+			<p>Define an interface for a mini HTTP routing and handling framework</p>
+		</li>
+		<li>
+			<p>Implement a basic implementation of that framework</p>
+		</li>
+		<li>
+			<p>Build Routes and Handlers to provide Ping, All, Race and Direct handlers</p>
+		</li>
+		<li>
+			<p>Deploy it to 160+ data centers with <code>npm run upload</code></p>
+		</li>
 	</ul>
 	<p>Stay tuned for more, and PRs welcome, particularly for more providers.</p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

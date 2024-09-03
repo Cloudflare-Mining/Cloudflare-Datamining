@@ -1,35 +1,56 @@
 <div class="mb2 gray5">11 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/application-security-report-q2-2023-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/application-security-report-q2-2023-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/zh-cn/application-security-report-q2-2023-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/application-security-report-q2-2023-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/application-security-report-q2-2023-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/application-security-report-q2-2023-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/Application-Security-Trends-report.png" class="kg-image" alt="" loading="lazy" width="1201" height="676"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/application-security-report-q2-2023">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/application-security-report-q2-2023">Français</a>, <a href="https://blog.cloudflare.com/de-de/application-security-report-q2-2023">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/application-security-report-q2-2023">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/application-security-report-q2-2023">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/application-security-report-q2-2023">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QrNN5PqgSYLMfSnYsQRrt/e145c3ae754f0ec436c66a4c2523a2a9/Application-Security-Trends-report.png" alt="" class="kg-image" width="1201" height="676" loading="lazy">
+
+	</figure>
 	<p>Cloudflare has a unique vantage point on the Internet. From this position, we are able to see, explore, and identify trends that would otherwise go unnoticed. In this report we are doing just that and sharing our insights into Internet-wide application security trends.</p>
 	<p>This report is the third edition of our Application Security Report. The first one was <a href="https://blog.cloudflare.com/application-security">published in March 2022</a>, with the second <a href="https://blog.cloudflare.com/application-security-2023">published earlier this year in March</a>, and this is the first to be published on a &nbsp;quarterly basis.</p>
 	<p>Since the last report, our network is bigger and faster: we are now processing an average of 46 million HTTP requests/second and 63 million at peak. We consistently handle approximately 25 million DNS queries per second. That's around 2.1 trillion DNS queries per day, and 65 trillion queries a month. This is the sum of authoritative and resolver requests served by our infrastructure. Summing up both HTTP and DNS requests, we get to see a lot of malicious traffic. Focusing on HTTP requests only, in Q2 2023 Cloudflare blocked an average of 112 billion cyber threats each day, and this is the data that powers this report.</p>
 	<p>But as usual, before we dive in, we need to define our terms.</p>
-	<h2 id="definitions">Definitions</h2>
+	<h2>Definitions</h2>
 	<p>Throughout this report, we will refer to the following terms:</p>
 	<ul>
-		<li><strong>Mitigated traffic</strong>: any eyeball HTTP* request that had a “terminating” action applied to it by the Cloudflare platform. These include the following actions: <code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge"><code>JS_CHALLENGE</code></a> and <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended"><code>MANAGED_CHALLENGE</code></a>. This does not include requests that had the following actions applied: <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code>. In contrast to last year, we now exclude requests that had <code>CONNECTION_CLOSE</code> and <code>FORCE_CONNECTION_CLOSE</code> actions applied by our DDoS mitigation system, as these technically only slow down connection initiation. They also accounted for a relatively small percentage of requests. Additionally, we improved our calculation regarding the <code>CHALLENGE</code> type actions to ensure that only unsolved challenges are counted as mitigated. A detailed <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions">description of actions</a> can be found in our developer documentation.</li>
-		<li><strong>Bot traffic/automated traffic</strong>: any HTTP* request identified by Cloudflare’s <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> system as being generated by a bot. This includes requests with a <a href="https://developers.cloudflare.com/bots/concepts/bot-score">bot score</a> between <a href="https://developers.cloudflare.com/bots/concepts/bot-score">1 and 29</a> inclusive. This has not changed from last year’s report.</li>
-		<li><strong>API traffic</strong>: any HTTP* request with a response content type of <code>XML</code> or <code>JSON</code>. Where the response content type is not available, such as for mitigated requests, the equivalent <code>Accept</code> content type (specified by the user agent) is used instead. In this latter case, API traffic won’t be fully accounted for, but it still provides a good representation for the purposes of gaining insights.</li>
+		<li>
+			<p><b>Mitigated traffic</b>: any eyeball HTTP* request that had a “terminating” action applied to it by the Cloudflare platform. These include the following actions: <code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge"><code>JS_CHALLENGE</code></a> and <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended"><code>MANAGED_CHALLENGE</code></a>. This does not include requests that had the following actions applied: <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code>. In contrast to last year, we now exclude requests that had <code>CONNECTION_CLOSE</code> and <code>FORCE_CONNECTION_CLOSE</code> actions applied by our DDoS mitigation system, as these technically only slow down connection initiation. They also accounted for a relatively small percentage of requests. Additionally, we improved our calculation regarding the <code>CHALLENGE</code> type actions to ensure that only unsolved challenges are counted as mitigated. A detailed <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions">description of actions</a> can be found in our developer documentation.</p>
+		</li>
+		<li>
+			<p><b>Bot traffic/automated traffic</b>: any HTTP* request identified by Cloudflare’s <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> system as being generated by a bot. This includes requests with a <a href="https://developers.cloudflare.com/bots/concepts/bot-score">bot score</a> between <a href="https://developers.cloudflare.com/bots/concepts/bot-score">1 and 29</a> inclusive. This has not changed from last year’s report.</p>
+		</li>
+		<li>
+			<p><b>API traffic</b>: any HTTP* request with a response content type of <code>XML</code> or <code>JSON</code>. Where the response content type is not available, such as for mitigated requests, the equivalent <code>Accept</code> content type (specified by the user agent) is used instead. In this latter case, API traffic won’t be fully accounted for, but it still provides a good representation for the purposes of gaining insights.</p>
+		</li>
 	</ul>
 	<p>Unless otherwise stated, the time frame evaluated in this post is the 3 month period from April 2023 through June 2023 inclusive.</p>
-	<p>Finally, please note that the data is calculated based only on traffic observed across the Cloudflare network and does not necessarily represent overall HTTP traffic patterns across the Internet.</p><!--kg-card-begin: markdown-->
-	<p><small>* <em>When referring to HTTP traffic we mean both HTTP and HTTPS.</em></small></p>
-	<!--kg-card-end: markdown-->
-	<h2 id="global-traffic-insights"> &nbsp; Global traffic insights</h2>
-	<h3 id="mitigated-daily-traffic-stable-at-6-spikes-reach-8">Mitigated daily traffic stable at 6%, spikes reach 8%</h3>
+	<p>Finally, please note that the data is calculated based only on traffic observed across the Cloudflare network and does not necessarily represent overall HTTP traffic patterns across the Internet.</p>
+	<p>* <i>When referring to HTTP traffic we mean both HTTP and HTTPS.</i></p>
+	<h2>&nbsp; Global traffic insights</h2>
+	<h3>Mitigated daily traffic stable at 6%, spikes reach 8%</h3>
 	<p>Although daily mitigated HTTP requests decreased by 2 percentage points to 6% on average from 2021 to 2022, days with larger than usual malicious activity can be clearly seen across the network. One clear example is shown in the graph below: towards the end of May 2023, a spike reaching nearly 8% can be seen. This is attributable to large DDoS events and other activity that does not follow standard daily or weekly cycles and is a constant reminder that large malicious events can still have a visible impact at a global level, even at Cloudflare scale.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-22.png" class="kg-image" alt="Percentage of mitigated HTTP requests from April 2023 to end of June 2023" loading="lazy" width="1544" height="974"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KbxMm5vOJD0fNB3FUqMFI/afe80d08a04bc422a54b00fcd56bac9d/image1-22.png" alt="Percentage of mitigated HTTP requests from April 2023 to end of June 2023" class="kg-image" width="1544" height="974" loading="lazy">
+
+	</figure>
 	<p>75% of mitigated HTTP requests were outright BLOCKed. This is a 6 percentage point decrease compared to the previous report. The majority of other requests are mitigated with the various CHALLENGE type actions, with managed challenges leading with ~20% of this subset.</p>
-	<h3 id="shields-up-customer-configured-rules-now-biggest-contributor-to-mitigated-traffic">Shields up: customer configured rules now biggest contributor to mitigated traffic</h3>
+	<h3>Shields up: customer configured rules now biggest contributor to mitigated traffic</h3>
 	<p>In our previous report, our automated DDoS mitigation system accounted for, on average, more than 50% of mitigated traffic. Over the past two quarters, due to both increased WAF adoption, but most likely organizations better configuring and locking down their applications from unwanted traffic, we’ve seen a new trend emerge, with WAF mitigated traffic surpassing DDoS mitigation. Most of the increase has been driven by WAF Custom Rule BLOCKs rather than our WAF Managed Rules, indicating that these mitigations are generated by customer configured rules for business logic or related purposes. This can be clearly seen in the chart below.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image5-8.png" class="kg-image" alt="Daily mitigated HTTP requests from DDoS and WAF systems separating WAF Managed Rules from WAF Custom Rules. Date range from April 2023 to end of June 2023" loading="lazy" width="1999" height="877"></figure>
-	<p>Note that our WAF Managed Rules mitigations (yellow line) are negligible compared to overall WAF mitigated traffic also indicating that customers are adopting positive security models by allowing known good traffic as opposed to blocking only known bad traffic. Having said that, WAF Managed Rules mitigations reached as much as 1.5 billion/day during the quarter. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/tTe2Lvb0twlgtTDUvI39y/2f64f994229472df3a055da9f5e7f971/image5-8.png" alt="Daily mitigated HTTP requests from DDoS and WAF systems separating WAF Managed Rules from WAF Custom Rules. Date range from April 2023 to end of June 2023" class="kg-image" width="1999" height="877" loading="lazy">
+
+	</figure>
+	<p>Note that our WAF Managed Rules mitigations (yellow line) are negligible compared to overall WAF mitigated traffic also indicating that customers are adopting positive security models by allowing known good traffic as opposed to blocking only known bad traffic. Having said that, WAF Managed Rules mitigations reached as much as 1.5 billion/day during the quarter.</p>
 	<p>Our DDoS mitigation is, of course, volumetric and the amount of traffic matching our DDoS layer 7 rules should not be underestimated, especially given that we are observing a number of novel attacks and botnets being spun up across the web. You can read a deep dive on DDoS attack trends in our <a href="https://blog.cloudflare.com/ddos-threat-report-2023-q2">Q2 DDoS threat report</a>.</p>
 	<p>Aggregating the source of mitigated traffic, the WAF now accounts for approximately 57% of all mitigations. Tabular format below with other sources for reference.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image6-1.png" class="kg-image" alt="" loading="lazy" width="1164" height="1192"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bzDwbhkhvnHM6c2chSYmK/ccfaf874b8ee33f7a2273de7346bb98a/image6-1.png" alt="" class="kg-image" width="1164" height="1192" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
 			<col width="333">
@@ -86,7 +107,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="application-owners-are-increasingly-relying-on-geo-location-blocks">Application owners are increasingly relying on geo location blocks</h3>
+	<h3>Application owners are increasingly relying on geo location blocks</h3>
 	<p>Given the increase in mitigated traffic from customer defined WAF rules, we thought it would be interesting to dive one level deeper and better understand what customers are blocking and how they are doing it. We can do this by reviewing rule field usage across our WAF Custom Rules to identify common themes. Of course, the data needs to be interpreted correctly, as not all customers have access to all fields as that varies by contract and plan level, but we can still make some inferences based on field “categories”. By reviewing all ~7M WAF Custom Rules deployed across the network and focusing on main groupings only, we get the following field usage distribution:</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
@@ -154,10 +175,14 @@
 	</table><!--kg-card-end: html-->
 	<p>Notably, 40% of all deployed WAF Custom Rules use geolocation-related fields to make decisions on how to treat traffic. This is a common technique used to implement business logic or to exclude geographies from which no traffic is expected and helps reduce <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface areas</a>. While these are coarse controls which are unlikely to stop a sophisticated attacker, they are still efficient at reducing the attack surface.</p>
 	<p>Another notable observation is the usage of Bot Management related fields in 11% of WAF Custom Rules. This number has been steadily increasing over time as more customers adopt machine learning-based classification strategies to protect their applications.</p>
-	<h3 id="old-cves-are-still-exploited-en-masse">Old CVEs are still exploited en masse</h3>
+	<h3>Old CVEs are still exploited en masse</h3>
 	<p>Contributing ~32% of WAF Managed Rules mitigated traffic overall, HTTP Anomaly is still the most common attack category blocked by the WAF Managed Rules. SQLi moved up to second position, surpassing Directory Traversal with 12.7% and 9.9% respectively.</p>
 	<p>If we look at the start of April 2023, we notice the DoS category far exceeding the HTTP Anomaly category. Rules in the DoS category are WAF layer 7 HTTP signatures that are sufficiently specific to match (and block) single requests without looking at cross request behavior and that can be attributed to either specific botnets or payloads that cause denial of service (DoS). Normally, as is the case here, these requests are not part of “distributed” attacks, hence the lack of the first “D” for “distributed” in the category name.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image10.png" class="kg-image" alt="WAF Managed Rule category matching HTTP requests from April 2023 to end of June 2023" loading="lazy" width="1840" height="964"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lfQTGyIuNJv3KSBoOM2Kt/f319a895583d7b88e33be2777f6330eb/image10.png" alt="WAF Managed Rule category matching HTTP requests from April 2023 to end of June 2023" class="kg-image" width="1840" height="964" loading="lazy">
+
+	</figure>
 	<p>Tabular format for reference (top 10 categories):</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
@@ -255,23 +280,42 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>Zooming in, and filtering on the DoS category only, we find that most of the mitigated traffic is attributable to one rule: 100031 / ce02fd… (old WAF and new WAF rule ID respectively). This rule, with a description of “<em>Microsoft IIS - DoS, Anomaly:Header:Range - CVE:CVE-2015-1635</em>” pertains to a <a href="https://nvd.nist.gov/vuln/detail/CVE-2015-1635">CVE dating back to 2015</a> that affected a number of Microsoft Windows components resulting in remote code execution<strong>*</strong>. This is a good reminder that old CVEs, even those dating back more than 8 years, are still actively exploited to compromise machines that may be unpatched and still running vulnerable software.</p><!--kg-card-begin: markdown-->
-	<p><small>* <em>Due to rule categorisation, some CVE specific rules are still assigned to a broader category such as DoS in this example. Rules are assigned to a CVE category only when the attack payload does not clearly overlap with another more generic category.</em></small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image2-13.png" class="kg-image" alt="WAF Managed Rule DoS category deep dive from April 2023 to end of June 2023" loading="lazy" width="1999" height="914"></figure>
-	<p>Another interesting observation is the increase in Broken Authentication rule matches starting in June. This increase is also attributable to a single rule deployed across all our customers, including our FREE users: “<em>Wordpress - Broken Access Control, File Inclusion</em>”. This rule is blocking attempts to access wp-config.php - the WordPress default configuration file which is normally found in the web server document root directory, but of course should never be accessed directly via HTTP.</p>
+	<p>Zooming in, and filtering on the DoS category only, we find that most of the mitigated traffic is attributable to one rule: 100031 / ce02fd… (old WAF and new WAF rule ID respectively). This rule, with a description of “<i>Microsoft IIS - DoS, Anomaly:Header:Range - CVE:CVE-2015-1635</i>” pertains to a <a href="https://nvd.nist.gov/vuln/detail/CVE-2015-1635">CVE dating back to 2015</a> that affected a number of Microsoft Windows components resulting in remote code execution*****. This is a good reminder that old CVEs, even those dating back more than 8 years, are still actively exploited to compromise machines that may be unpatched and still running vulnerable software.</p>
+	<p>* <i>Due to rule categorisation, some CVE specific rules are still assigned to a broader category such as DoS in this example. Rules are assigned to a CVE category only when the attack payload does not clearly overlap with another more generic category.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mSqUk3g9mRcgetHJ4oQOI/3aedb0e65b1884c635ae31a9f014f85c/image2-13.png" alt="WAF Managed Rule DoS category deep dive from April 2023 to end of June 2023" class="kg-image" width="1999" height="914" loading="lazy">
+
+	</figure>
+	<p>Another interesting observation is the increase in Broken Authentication rule matches starting in June. This increase is also attributable to a single rule deployed across all our customers, including our FREE users: “<i>Wordpress - Broken Access Control, File Inclusion</i>”. This rule is blocking attempts to access wp-config.php - the WordPress default configuration file which is normally found in the web server document root directory, but of course should never be accessed directly via HTTP.</p>
 	<p>On a similar note, CISA/CSA recently published a report highlighting the <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-215a?cf_target_id=DC7FD2F218498816EEC88041CD1F9A74">2022 Top Routinely Exploited Vulnerabilities</a>. We took this opportunity to explore <a href="https://blog.cloudflare.com/unmasking-the-top-exploited-vulnerabilities-of-2022">how each CVE mentioned in CISA’s report was reflected in Cloudflare’s own data</a>. The CISA/CSA discuss 12 vulnerabilities that malicious cyber actors routinely exploited in 2022. However, based on our analysis, two CVEs mentioned in the CISA report are responsible for the vast majority of attack traffic we have seen in the wild: Log4J and Atlassian Confluence Code Injection. Our data clearly suggests a major difference in exploit volume between the top two and the rest of the list. The following chart compares the attack volume (in logarithmic scale) of the top 6 vulnerabilities of the CISA list according to our logs.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image8.png" class="kg-image" alt="Number of requests blocked across the Cloudflare network for each CVE. The blocks are triggered by managed rules created to protect Cloudflare users." loading="lazy" width="1600" height="849"></figure>
-	<h2 id="bot-traffic-insights">Bot traffic insights</h2>
-	<p>Cloudflare’s <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> continues to see significant investment as the addition of JavaScript Verified URLs for greater protection against browser-based bots, Detection IDs are now available in Custom Rules for additional configurability, and an improved UI for easier onboarding. For self-serve customers, we’ve added the ability to “Skip” Super Bot Fight Mode rules and support for Wordpress Loopback requests, to better integrate with our customers’ applications and give them the protection they need. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uwZCjKV69ScnhTPgvZ82e/8dec723f62f153b6af5ba185d10565e0/image8.png" alt="Number of requests blocked across the Cloudflare network for each CVE. The blocks are triggered by managed rules created to protect Cloudflare users." class="kg-image" width="1600" height="849" loading="lazy">
+
+	</figure>
+	<h2>Bot traffic insights</h2>
+	<p>Cloudflare’s <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> continues to see significant investment as the addition of JavaScript Verified URLs for greater protection against browser-based bots, Detection IDs are now available in Custom Rules for additional configurability, and an improved UI for easier onboarding. For self-serve customers, we’ve added the ability to “Skip” Super Bot Fight Mode rules and support for Wordpress Loopback requests, to better integrate with our customers’ applications and give them the protection they need.</p>
 	<p>Our confidence in the Bot Management classification output remains very high. If we plot the bot scores across the analyzed time frame, we find a very clear distribution, with most requests either being classified as definitely bot (score below 30) or definitely human (score greater than 80), with most requests actually scoring less than 2 or greater than 95. This equates, over the same time period, to 33% of traffic being classified as automated (generated by a bot). Over longer time periods we do see the overall bot traffic percentage stable at 29%, and this reflects the data shown on <a href="https://radar.cloudflare.com/traffic?dateStart=2023-04-01&amp;dateEnd=2023-07-01">Cloudflare Radar</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image3-7.png" class="kg-image" alt="Bot score distribution of eyeball traffic from April 2023 to end of June 2023" loading="lazy" width="1648" height="954"></figure>
-	<h3 id="on-average-more-than-10-of-non-verified-bot-traffic-is-mitigated">On average, more than 10% of non-verified bot traffic is mitigated</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IWinRPtNWXlGyYBWJ1d63/e79845cb5c15da35e9ccf9f22105004b/image3-7.png" alt="Bot score distribution of eyeball traffic from April 2023 to end of June 2023" class="kg-image" width="1648" height="954" loading="lazy">
+
+	</figure>
+	<h3>On average, more than 10% of non-verified bot traffic is mitigated</h3>
 	<p>Compared to the last report, non-verified bot HTTP traffic mitigation is currently on a downward trend (down 6 percentage points). However, the Bot Management field usage within WAF Custom Rules is non negligible, standing at 11%. This means that there are more than 700k WAF Custom Rules deployed on Cloudflare that are relying on bot signals to perform some action. The most common field used is cf.client.bot, an alias to cf.bot_management.verified_bot which is powered by our <a href="https://radar.cloudflare.com/traffic/verified-bots">list of verified bots</a> and allows customers to make a distinction between “good” bots and potentially “malicious” &nbsp;non-verified ones.</p>
 	<p>Enterprise customers have access to the more powerful cf.bot_management.score which provides direct access to the score computed on each request, the same score used to generate the bot score distribution graph in the prior section.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image7-1.png" class="kg-image" alt="Mitigated HTTP Traffic percentage of non verified bot traffic from April 2023 to end of June 2023" loading="lazy" width="1876" height="984"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2H2kx5ONOEAzChOHlKHSuK/1c23407150cc36a355fc849a5a4020c7/image7-1.png" alt="Mitigated HTTP Traffic percentage of non verified bot traffic from April 2023 to end of June 2023" class="kg-image" width="1876" height="984" loading="lazy">
+
+	</figure>
 	<p>The above data is also validated by looking at what Cloudflare service is mitigating unverified bot traffic. Although our DDoS mitigation system is automatically blocking HTTP traffic across all customers, this only accounts for 13% of non-verified bot mitigations. On the other hand, WAF, and mostly customer defined rules, account for 77% of such mitigations, much higher than mitigations across all traffic (57%) discussed at the start of the report. Note that Bot Management is specifically called out but refers to our “default” one-click rules, which are counted separately from the bot fields used in WAF Custom Rules.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image4-9.png" class="kg-image" alt="" loading="lazy" width="1480" height="1210"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2C1qfqHZVrqjJBa1upHkz2/6eb5d7b40a97351002f4b90746bfa066/image4-9.png" alt="" class="kg-image" width="1480" height="1210" loading="lazy">
+
+	</figure>
 	<p>Tabular format for reference:</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
@@ -329,20 +373,32 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h2 id="api-traffic-insights">API traffic insights</h2>
-	<h3 id="58-of-dynamic-non-cacheable-traffic-is-api-related">58% of dynamic (non cacheable) traffic is API related</h3>
+	<h2>API traffic insights</h2>
+	<h3>58% of dynamic (non cacheable) traffic is API related</h3>
 	<p>The growth of overall API traffic observed by Cloudflare is not slowing down. Compared to last quarter, we are now seeing 58% of total dynamic traffic be classified as API related. This is a 3 percentage point increase as compared to Q1.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image11.png" class="kg-image" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" loading="lazy" width="1968" height="1002"></figure>
-	<p>Our investment in API Gateway is also following a similar growth trend. Over the last quarter we have released several new API security features. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Gd7TYNHlXEzUr0YaGyXww/81eb7800315e3bf6f7768b98ebef3db1/image11.png" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" class="kg-image" width="1968" height="1002" loading="lazy">
+
+	</figure>
+	<p>Our investment in API Gateway is also following a similar growth trend. Over the last quarter we have released several new API security features.</p>
 	<p>First, we’ve made API Discovery easier to use with a <a href="https://developers.cloudflare.com/api-shield/security/api-discovery/#inbox-view">new inbox view</a>. API Discovery inventories your APIs to prevent shadow IT and zombie APIs, and now customers can easily filter to show only new endpoints found by API Discovery. Saving endpoints from API Discovery places them into our <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring">Endpoint Management</a> system.</p>
 	<p>Next, we’ve added a brand new API security feature offered only at Cloudflare: the ability to control API access by client behavior. We call it <a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation">Sequence Mitigation</a>. Customers can now create positive or negative security models based on the order of API paths accessed by clients. You can now ensure that your application’s users are the only ones accessing your API instead of brute-force attempts that ignore normal application functionality. For example, in a banking application you can now enforce that access to the funds transfer endpoint can only be accessed after a user has also accessed the account balance check endpoint.</p>
 	<p>We’re excited to continue releasing <a href="https://www.cloudflare.com/application-services/solutions/api-security">API security</a> and <a href="https://www.cloudflare.com/application-services/products/api-gateway">API management</a> features for the remainder of 2023 and beyond.</p>
-	<h3 id="65-of-global-api-traffic-is-generated-by-browsers">65% of global API traffic is generated by browsers</h3>
+	<h3>65% of global API traffic is generated by browsers</h3>
 	<p>The percentage of API traffic generated by browsers has remained very stable over the past quarter. With this statistic, we are referring to HTTP requests that are not serving HTML based content that will be directly rendered by the browser without some preprocessing, such as those more commonly known as AJAX calls which would normally serve JSON based responses.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image12.png" class="kg-image" alt="Bot score distribution of API traffic" loading="lazy" width="1662" height="960"></figure>
-	<h3 id="http-anomalies-are-the-most-common-attack-vector-on-api-endpoints">HTTP Anomalies are the most common attack vector on API endpoints</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EAog7mZWAttnTLNti5zPD/6214fa0860003fa8fc91bd119d4b48b7/image12.png" alt="Bot score distribution of API traffic" class="kg-image" width="1662" height="960" loading="lazy">
+
+	</figure>
+	<h3>HTTP Anomalies are the most common attack vector on API endpoints</h3>
 	<p>Just like last quarter, HTTP Anomalies remain the most common mitigated attack vector on API traffic. SQLi injection attacks, however, are non negligible, contributing approximately 11% towards the total mitigated traffic, closely followed by XSS attacks, at around 9%.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image9.png" class="kg-image" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last quarter" loading="lazy" width="1900" height="976"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14c68gj0NmXbfog0jJuEhV/9c333ced18e95a1ebbf4b452825d6362/image9.png" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last quarter" class="kg-image" width="1900" height="976" loading="lazy">
+
+	</figure>
 	<p>Tabular format for reference (top 5):</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
@@ -400,7 +456,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="looking-forward">Looking forward</h3>
+	<h3>Looking forward</h3>
 	<p>As we move our application security report to a quarterly cadence, we plan to deepen some of the insights and to provide additional data from some of our newer products such as Page Shield, allowing us to look beyond HTTP traffic, and explore the state of third party dependencies online.</p>
-	<p>Stay tuned and keep an eye on <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for more frequent application security reports and insights. </p>
+	<p>Stay tuned and keep an eye on <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for more frequent application security reports and insights.</p>
 </div>

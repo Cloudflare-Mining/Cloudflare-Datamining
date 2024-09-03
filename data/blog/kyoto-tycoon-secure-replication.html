@@ -1,23 +1,33 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PfRxJnPC0YmB5XsdwKB1p/c507d65d467420193c9b6b53c44f038a/kyoto-tycoon-secure-replication.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Kyoto Tycoon is a distributed key-value store written by <a href="http://fallabs.com">FAL Labs</a>, and it is used extensively at CloudFlare. Like many popular key-value stores, Kyoto Tycoon uses timestamp-based replication to ensure eventual consistency and guarantee ordering. Kyoto Tycoon is an open source project, and in the spirit of the holidays, we’re contributing our internal changes back to the open source project.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/12/image00.jpg" alt="CC BY-ND 2.0 image by Moyan Brenn" loading="lazy"><sub><a href="https://creativecommons.org/licenses/by-nd/2.0">CC BY-ND 2.0</a> <a href="https://www.flickr.com/photos/aigle_dore/16040166131">image</a> by <a href="https://www.flickr.com/photos/aigle_dore">Moyan Brenn</a></sub></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jRyWlOE1SmCistizq5P2h/7334b8afc0f4900301ac6c9151173309/image00.jpg" alt="CC BY-ND 2.0 image by Moyan Brenn" class="kg-image" width="640" height="404" loading="lazy">
+
+	</figure>
+	<p><sub></sub><a href="https://creativecommons.org/licenses/by-nd/2.0"><sub>CC BY-ND 2.0</sub></a><sub> </sub><a href="https://www.flickr.com/photos/aigle_dore/16040166131"><sub>image</sub></a><sub> by </sub><a href="https://www.flickr.com/photos/aigle_dore"><sub>Moyan Brenn</sub></a></p>
 	<p>CloudFlare uses Kyoto Tycoon to replicate data from a <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">Postgres Database</a> to our 30 data centers around the world. In practice, it takes around 3 seconds for full propagation in normal conditions. This is our pipeline for distributing sensitive data like our <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">session ticket keys</a> and DNS data to the CloudFlare edge.</p>
-	<h3 id="protectingdataintransit">Protecting data in transit</h3>
+	<h3>Protecting data in transit</h3>
 	<p>If the Internet is not a dangerous place, it at least has dangerous neighborhoods. To move from one datacenter to another, data has to pass through the public Internet. Data could end up going though some network with a <a href="https://www.theguardian.com/uk/2013/jun/21/gchq-cables-secret-world-communications-nsa">wire-tap in place</a>, or through a network with an unscrupulous network operator.</p>
 	<p>Datacenter-to-datacenter encryption has been brought into the international spotlight since the surveillance revelations. One of the leaked slides contained the expression “SSL added and removed here”, and described how data could be read while in transit between Google’s data centers. As a reaction, Google and other Internet giants have started <a href="http://techcrunch.com/2014/03/20/gmail-traffic-between-google-servers-now-encrypted-to-thwart-nsa-snooping">using strong cryptography for communication between datacenters</a>. CloudFlare also encrypts cross-datacenter traffic, with Kyoto Tycoon playing a big part.</p>
 	<p>With Kyoto Tycoon’s original design, data was replicated across the Internet in plaintext. Now, data replication happens over a mutually-authenticated encryption tunnel. Any parties with the ability to read or modify network traffic will not be able to read or modify the data. We thought this change would be useful for others using Kyoto Tycoon, so <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">as promised</a> we’re releasing the source code for our changes back to the community.</p>
-	<h3 id="tlsmutualauthentication">TLS Mutual Authentication</h3>
+	<h3>TLS Mutual Authentication</h3>
 	<p>In the standard HTTPS used by browsers, authentication is one-way: browsers validate the identity of the server but servers don’t validate the identity of the browser. The mechanism for this is an algorithm we’ve talked a lot about on this blog called Transport Layer Security (TLS). A website can be accessed securely using TLS and a certificate signed by a trusted Certificate Authority. When a browser loads a site, it checks to see if the certificate is valid and was issued to the proper domain name. If everything is valid, a lock icon is show to indicate encryption. Any failure to validate the certificate in the browser shows a warning that the site is not trusted.</p>
 	<p>The following diagram shows how a TLS connection is established.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/12/image02.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fB6HM9UJytKexrPLVG6fv/1c426b881cc83d4cfd71c40000ee4510/image02.jpg" alt="" class="kg-image" width="1600" height="1110" loading="lazy">
+
+	</figure>
 	<p>There are different requirements for server-to-server communication. For one, both sides need to trust each other. This mutual trust prevents malicious computers from accessing the network of CloudFlare machines. In TLS, the feature that enables both sides to authenticate each other is called client authentication. Just as in the example above, the server has a certificate and validates its side of the connection, but in addition, the client also has a certificate. At the end of the handshake, the client signs the conversation with its certificate key. This signature proves that the client owns the certificate and that the handshake hasn’t been tampered with.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/12/image01.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40xGfGTzaMoYXxae9jQ3Tc/4f8470ee4591a61d3bc4d82bfbc3d604/image01.png" alt="" class="kg-image" width="1260" height="1063" loading="lazy">
+
+	</figure>
 	<p>Client authentication is a simple way for servers to limit incoming connections to trusted clients. It’s sometimes used with browsers in corporate environments, and we use it in <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> to authenticate connections to the key server.</p>
 	<p>We added support for mutually authenticated replication to Kyoto Tycoon using OpenSSL. We use an internal CA to sign and validate the certificates. The code for our version of Kyoto Tycoon (and the related project Kyoto Cabinet) is available here on Github:</p>
-	<p><a href="https://github.com/cloudflare/kyototycoon">https://github.com/cloudflare/kyototycoon</a><br>
-		<a href="https://github.com/cloudflare/kyotocabinet">https://github.com/cloudflare/kyotocabinet</a>
-	</p>
+	<p><a href="https://github.com/cloudflare/kyototycoon">https://github.com/cloudflare/kyototycoon</a><a href="https://github.com/cloudflare/kyotocabinet">https://github.com/cloudflare/kyotocabinet</a></p>
 	<p>Happy Holidays and stay safe.</p>
-	<!--kg-card-end: markdown-->
 </div>

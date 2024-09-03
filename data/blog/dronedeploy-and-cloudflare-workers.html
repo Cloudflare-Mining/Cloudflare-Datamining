@@ -1,34 +1,61 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image4.jpg" alt="image4" loading="lazy"><small>Images courtesty of <a href="https://www.dronedeploy.com">DroneDeploy</a></small></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rVzYEjl6TGHXvo02uraiA/9842b6558f9702a96a8e4dfa3737dfb9/image4.jpg" alt="image4" class="kg-image" width="1999" height="1336" loading="lazy">
+
+	</figure>
+	<p>Images courtesty of <a href="https://www.dronedeploy.com">DroneDeploy</a></p>
 	<p>When we launched <a href="https://blog.cloudflare.com/cloudflare-workers-is-now-on-open-beta">Workers</a> a few months ago, much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site, introduce a raft of personalization capabilities, A/B test changes or even aggregate a set of API responses around a range of services. In short by layering in Cloudflare Workers we can take origin websites and do transformational things.</p>
 	<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com">DroneDeploy</a></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image3.png" alt="image3" loading="lazy"><br>
-		DroneDeploy is a cloud platform that makes it easy to collect and analyze drone imagery and data. Simply install DroneDeploy on your mobile device and connect to a DJI drone. DroneDeploy flies the drone, collects the imagery, then stitches the photos into maps.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OM3J7Ic30OYj2Ha59eYAI/7452584d7dabc8f5cd9f943cde4f448d/image3.png" alt="image3" class="kg-image" width="1586" height="506" loading="lazy">
+
+	</figure>
+	<p>DroneDeploy is a cloud platform that makes it easy to collect and analyze drone imagery and data. Simply install DroneDeploy on your mobile device and connect to a DJI drone. DroneDeploy flies the drone, collects the imagery, then stitches the photos into maps.</p>
 	<p>The maps can show things like crop conditions &amp; stress, construction project progress, or even thermal temperature ranges across vast solar farms or for search and rescue situations.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image6.png" alt="image6" loading="lazy"><br>
-		<small>Using plant health algorithms applied to drone-generated maps, growers can pinpoint crop stress in their fields and stomp out pests, disease, or irrigation issues.</small>
-	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image1.png" alt="image1" loading="lazy"><small>With Thermal Live Map, it’s possible to inspect solar farms from the sky in minutes to detect broken photocells in solar panels that are in need of repair.</small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rcQSI5FDuk6f07bzDruMt/faefecb250282d2a87f69850206f6ce5/image6.png" alt="image6" class="kg-image" width="584" height="637" loading="lazy">
+
+	</figure>
+	<p>Using plant health algorithms applied to drone-generated maps, growers can pinpoint crop stress in their fields and stomp out pests, disease, or irrigation issues.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gv9ODUNXk7i4USJpQ7uWq/c8979a22f047d3eab4bca8ffba988189/image1.png" alt="image1" class="kg-image" width="800" height="480" loading="lazy">
+
+	</figure>
+	<p>With Thermal Live Map, it’s possible to inspect solar farms from the sky in minutes to detect broken photocells in solar panels that are in need of repair.</p>
 	<p>You can then upload the images to the cloud and make high res maps and 3D models. With these you can perform deeper analysis (such as volumes, distances, plant health, etc), share and collaborate with coworkers, or move the maps and models into applications like CAD or Agriculture Management Platforms.</p>
 	<p>Check out how we were able to draw a flight path over Cloudflare’s HQ. The drone flew around the building and captured imagery that we turned into a map and 3D model.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-21-at-10.08.50-AM.png" alt="Screen-Shot-2018-06-21-at-10.08.50-AM" loading="lazy"></p>
-	<h4 id="sohowisdronedeployusingworkersandwhyisitimportanttodronedeploy">So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xRPCYci9Oe5uZ7Pc5iIeF/98eae6714625f10a095cc09df1775b34/Screen-Shot-2018-06-21-at-10.08.50-AM.png" alt="Screen-Shot-2018-06-21-at-10.08.50-AM" class="kg-image" width="1026" height="982" loading="lazy">
+
+	</figure>
+	<h4>So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
 	<p>It’s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
 	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
 	<p>Commenting on this Eric Hauser, VP Engineering of DroneDeploy detailed the upside of Cloudflare Workers for his team:</p>
 	<blockquote>
-		<p><em>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</em></p>
+		<p><i>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</i></p>
 	</blockquote>
 	<p>Let's peel back the layers and understand how they use Workers.</p>
 	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io">here</a>. So the general flow requires the Worker to:</p>
 	<ol>
-		<li>Intercept requests for images from the DroneDeploy mobile app or website. These requests can number in the hundreds or thousands of image tiles all of which are needed to render a typical map or 3D model and are stored on either S3 or Google Cloud Storage.</li>
-		<li>Ensure the correct JSON Web Token (JWT) is present.</li>
-		<li>Assuming the token is valid, HMAC sign the URL, set cache headers, and return the appropriate file.</li>
+		<li>
+			<p>Intercept requests for images from the DroneDeploy mobile app or website. These requests can number in the hundreds or thousands of image tiles all of which are needed to render a typical map or 3D model and are stored on either S3 or Google Cloud Storage.</p>
+		</li>
+		<li>
+			<p>Ensure the correct JSON Web Token (JWT) is present.</p>
+		</li>
+		<li>
+			<p>Assuming the token is valid, HMAC sign the URL, set cache headers, and return the appropriate file.</p>
+		</li>
 	</ol>
 	<p>Let's look at each step - note we filtered out some components of the code for security reasons.</p>
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleFetch(event.request))
 });
 
@@ -52,12 +79,9 @@ function handleFetch(request) {
   const signature =  await hmacSignature(gsBaseUrl, gsHeaders);
   gsHeaders.set('Authorization', 'AWS ' + HMAC_KEY + ':' + signature);
   return fetch(new Request(gsBaseUrl, {headers: gsHeaders}))
-}
-</code></pre>
-	<br>
-	Now check for the JWT Token
-	<br>
-	<pre><code class="language-javascript">/**
+}</code></pre>
+	<p>Now check for the JWT Token</p>
+	<pre class="language-javascript"><code class="language-javascript">/**
  * Parse the JWT and validate it.
  *
  * We are just checking that the signature is valid, but you can do more that. 
@@ -83,12 +107,9 @@ function getJwt(request) {
     return null
   }
   return authHeader.substring(6).trim()
-}
-</code></pre>
-	<br>
-	Now decode the JWT Token
-	<br>
-	<pre><code class="language-javascript">/**
+}</code></pre>
+	<p>Now decode the JWT Token</p>
+	<pre class="language-javascript"><code class="language-javascript">/**
  * Parse and decode a JWT.
  * A JWT is three, base64 encoded, strings concatenated with ‘.’:
  *   a header, a payload, and the signature.
@@ -134,12 +155,9 @@ async function isValidJwtSignature(token) {
   };
   const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
   return crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, signature, data)
-}
-</code></pre>
-	<br>
-	Now HMAC sign the URL, and return the file.
-	<br>
-	<pre><code class="language-javascript">/**
+}</code></pre>
+	<p>Now HMAC sign the URL, and return the file.</p>
+	<pre class="language-javascript"><code class="language-javascript">/**
  * Rewrite the URL from the original request to Google Storage API and bucket.
  */
 function createGoogleStorageUrl(request) {
@@ -173,12 +191,10 @@ function createMessage(url, headers) {
     headers.get(‘Date’),
     url.pathname
   ].join('\n')
-}
-</code></pre>
+}</code></pre>
 	<p>So the upside is clear - Authentication at the Edge provides flexibility, and scale but also means that DroneDeploy is not locked into an architecture that would prevent their ability to choose the best-in-class capabilities they need from GCP, AWS and more.</p>
-	<h4 id="sowheretofromhere">So where to from here?</h4>
+	<h4>So where to from here?</h4>
 	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em><br></p>
-	<!--kg-card-end: markdown-->
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

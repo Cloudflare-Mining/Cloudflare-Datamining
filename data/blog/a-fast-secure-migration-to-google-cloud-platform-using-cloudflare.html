@@ -1,165 +1,208 @@
-<div class="mb2 gray5">18 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<h3 id="onairvideopresentation">OnAir Video Presentation</h3>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/XN2P3riZkdU?" frameborder="0" allowfullscreen=""></iframe>
-	<h3 id="abstract">Abstract</h3>
+<div class="mb2 gray5">17 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aLxutFLs0hOHHBwBykcum/219af4b5945c14a19e496d911db0111f/a-fast-secure-migration-to-google-cloud-platform-using-cloudflare.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<h3>OnAir Video Presentation</h3>
+	<h3>Abstract</h3>
 	<p>Looking to host your website, application, or API in the cloud, or migrate to a new cloud provider while keeping your data secure? In this webinar, Trey Guinn, Head of Solutions Engineering at Cloudflare, will discuss how companies should approach security, during and after migration. We'll highlight the migration story of LUSH, one of the largest global e-Commerce cosmetic retailers, and how they took the right steps to migrate from their previous cloud provider to Google Cloud Platform, in less than 3 weeks. Trey will be performing a live demo on setting up Cloudflare load balancing across cloud providers, as well as optimizing security through web application firewall (WAF), SSL / TLS Encryption, and Rate Limiting.</p>
-	<h3 id="speakers">Speakers</h3>
-	<p><strong>Asad Baheri</strong><br>
-		Security &amp; Networking Partner Manager<br>
-		Google Cloud Platform</p>
-	<p><strong>Trey Guinn</strong><br>
-		Head of Solutions Engineering<br>
-		Cloudflare</p>
-	<h3 id="webinartranscriptionandloadbalancingdemo">Webinar Transcription and Load Balancing Demo</h3>
-	<p><strong>Asad Baheri</strong><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Agenda-5.jpg" alt="" loading="lazy"><br>
-		Today we're going to talk about LUSH's migration to Google Cloud and how Cloudflare, one of our top security and performance partners, can help you with your own cloud migration. Throughout our presentation, we'll be talking about security best practices, how CDNs and the CDN Interconnect program works, and we're also going to also give you a demo of Cloudflare's load balancing to start your migration.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Timeline-1.jpg" alt="" loading="lazy">
-	</p>
-	<p>One of the main things that many people don't realize is the amount of effort that Google has put into security. You may be familiar with safe browsing, which protects over three billion devices every day. That's something Google has done not for profit, but just out of our own commitment to security.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Defense-1.jpg" alt="" loading="lazy">
-	</p>
+	<h3>Speakers</h3>
+	<p><b>Asad Baheri</b>Security &amp; Networking Partner ManagerGoogle Cloud Platform</p>
+	<p><b>Trey Guinn</b>Head of Solutions EngineeringCloudflare</p>
+	<h3>Webinar Transcription and Load Balancing Demo</h3>
+	<p><b>Asad Baheri</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PdSuOw9OvGXvtWwixUGB8/51c8ebc80ad6e690c145586583ec822e/Agenda-5.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
+	<p>Today we're going to talk about LUSH's migration to Google Cloud and how Cloudflare, one of our top security and performance partners, can help you with your own cloud migration. Throughout our presentation, we'll be talking about security best practices, how CDNs and the CDN Interconnect program works, and we're also going to also give you a demo of Cloudflare's load balancing to start your migration.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SOpK9zOoZoLdcweZ8fmkh/74aacc733c409044b10c14f0e98045d0/Timeline-1.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
+	<p>One of the main things that many people don't realize is the amount of effort that Google has put into security. You may be familiar with safe browsing, which protects over three billion devices every day. That's something Google has done not for profit, but just out of our own commitment to security.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j4ssiXrg86euDFy3J50mg/57964c97a198f054eeeda99494c9b97a/Defense-1.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
 	<p>If you actually look at what Google does, they have over 600 engineers dedicated to security and privacy with Google, which is more than a lot of other pure-play security companies. And the result of that is we're trying to make the Internet a more secure place for our users. We believe that raising the security awareness level makes it easier for our customers. So we'll talk about how that philosophy actually translates into Google cloud. If you look at some of the open source projects out there, even if you look at iOS, you'll see Google was one of the top reporters of bugs and security vulnerabilities. Again, we are trying to make the Internet more secure for everyone using our products.</p>
-	<p>When we talk about Google Cloud, it really starts from the bottom up, at the hardware level. From the second device boots up, the OS, the application, the network, the storage, etc. So if you look more in depth, you get a pretty good idea of all the different areas that we have security.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Titan-1.jpg" alt="" loading="lazy">
-	</p>
-	<p>As you probably are aware, Google has many different data centers which are maintained by us, but we're also in a lot of third party data centers. When a hardware device boots up, we want to make sure that it is one of our devices. We know what it is, what it's supposed to do, and then we have actual Google written security codes to monitor that. And that works hand-in-hand with the Titan chip to actually make sure we have that secure level of trust from the second the device is powered-on, to when users can use it when network traffic is going across. <br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/GCP-Map-2.jpg" alt="" loading="lazy">
-	</p>
+	<p>When we talk about Google Cloud, it really starts from the bottom up, at the hardware level. From the second device boots up, the OS, the application, the network, the storage, etc. So if you look more in depth, you get a pretty good idea of all the different areas that we have security.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oUq1pceefNskh2pqT9gzV/6c2f3ba318db80bd621ce7efcad34f4c/Titan-1.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
+	<p>As you probably are aware, Google has many different data centers which are maintained by us, but we're also in a lot of third party data centers. When a hardware device boots up, we want to make sure that it is one of our devices. We know what it is, what it's supposed to do, and then we have actual Google written security codes to monitor that. And that works hand-in-hand with the Titan chip to actually make sure we have that secure level of trust from the second the device is powered-on, to when users can use it when network traffic is going across.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cKCQCZD5qyswonLfnsGqC/63d10f5b9d997937c74cad899e50bc62/GCP-Map-2.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
 	<p>When we look at that, network plays a big part. As you can see here, there are a lot of data center locations; you'll see all of the lease and owned fiber that Google has. What that really translates to for our users is: No matter where you are in the world, you're going to be close to a Google data center or Google location that can handle your traffic.</p>
-	<p><strong>Trey Guinn</strong><br>
-		Cloudflare also has one of the world's largest networks, although we are focused less on compute and infrastructure as a service, we're focused on providing a smart network which sits in-between the web visitor or API consumer and the origin infrastructure — which could be GCP. Cloudflare is something you may not have heard of, but you've definitely used us if you use the Internet. Cloudflare proxies around 10% of all HTTP requests today. With over six million domains on Cloudflare, we're a fairly large presence. Our job is to make sure that we stop threats, and try to improve performance as as traffic is flowing through our network.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/CF-Map-2.jpg" alt="" loading="lazy">
-	</p>
-	<p><strong>Asad Baheri</strong><br>
-		When you say 6 million domains, you mean you're actually managing the DNS records? Whether it's A records, CNAMEs, AAA zones, all of that?</p>
-	<p><strong>Trey Guinn</strong><br>
-		Correct. One of the services at Cloudflare is to be an authoritative DNS provider; we're the world's <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">largest and fastest authoritative DNS provider</a>. Customers can also CNAME specific subdomains over to us, and we're handling not only DNS for a lot of these customers, but we're also handling proxying of HTTP and HTTPS traffic.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/GCP-Interconnect-1.jpg" alt="" loading="lazy">
-	</p>
+	<p><b>Trey Guinn</b>Cloudflare also has one of the world's largest networks, although we are focused less on compute and infrastructure as a service, we're focused on providing a smart network which sits in-between the web visitor or API consumer and the origin infrastructure — which could be GCP. Cloudflare is something you may not have heard of, but you've definitely used us if you use the Internet. Cloudflare proxies around 10% of all HTTP requests today. With over six million domains on Cloudflare, we're a fairly large presence. Our job is to make sure that we stop threats, and try to improve performance as as traffic is flowing through our network.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YZlbdqxnaGGuY9pgA7ul2/c88d9119ae2f606af48782f820f919f3/CF-Map-2.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
+	<p><b>Asad Baheri</b>When you say 6 million domains, you mean you're actually managing the DNS records? Whether it's A records, CNAMEs, AAA zones, all of that?</p>
+	<p><b>Trey Guinn</b>Correct. One of the services at Cloudflare is to be an authoritative DNS provider; we're the world's <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">largest and fastest authoritative DNS provider</a>. Customers can also CNAME specific subdomains over to us, and we're handling not only DNS for a lot of these customers, but we're also handling proxying of HTTP and HTTPS traffic.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bBjkW8UILFbTMIBVExbPP/1da71a82132c619ef1add3f0002c4e84/GCP-Interconnect-1.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
 	<p>Through the Cloudflare CDN Interconnect program, you can see we sit in-between the visitor and the Google Cloud Platform. We try to remove all of the online threats, while at the same time speeding up the communication which goes from the visitor to GCP. The best thing is the direct interconnections between our services; it's essentially wire between the Cloudflare datacenter and the Google Cloud platform data centers at 53 locations (which is nearly half of the locations). This interconnection has all kinds of advantages because it's higher performance and you're not having to worry about congestion or fighting the public Internet. But on top of that, as GCP customer, you pay significantly discounted egress pricing when you're using CDN interconnect.</p>
 	<p>One of our many joint customers is our customer LUSH. They had a big migration over to GCP, and they had to do it really quickly. Interestingly enough, they were already a Cloudflare customer before they moved to GCP. Tell me a little bit about their migration to GCP.</p>
-	<p><strong>Asad Baheri</strong><br>
-		This is something LUSH decided on a Friday, and they had to get started on Monday. They had 22 days to move everything. They had a very short period of time. Part of the reason for their migration was around general availability and scale during the holiday season traffic spikes. The other part of it was that they wanted to have their online presence match their corporate philosophy. A very large percentage of our network electrical costs come from renewable sources, and that was something that was important to them. From technology to philosophy, it was just very well aligned and made sense to make that move quickly. LUSH here had a great amount of savings, correct?</p>
-	<p><strong>Trey Guinn</strong><br>
-		LUSH as a customer sees about a 75% bandwidth savings, but also a 95% reduction in the number of requests to their origin server. That reduces the amount of infrastructure that they need on the origin, because we're either filtering out bad traffic or caching content. Part of that, of course, is that we stop about 60,000 threats a month for LUSH. And that's something to be expected with Cloudflare's infrastructure and network. We run one of the largest security networks in the world, and are versed in stopping these threats.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Lush-Migration-1-1.jpg" alt="" loading="lazy">
-	</p>
-	<p><strong>Asad Baheri</strong><br>
-		The hit rate seems dependent on the website or API using Cloudflare's services, correct? If you have a lot of cat pictures versus a super dynamic API, it's going to be a difference experience.</p>
-	<p><strong>Trey Guinn</strong><br>
-		Exactly. If you're serving a bunch of GIFs, you can get your cache hit rate up into the high 90s, maybe over 99%. If you are a weather application, and someone's checking the weather, your cache hit rate might be a little bit lower because if you're delivering whether by zip code there's not that many people per zip code or checking for weather.</p>
-	<p><strong>Asad Baheri</strong><br>
-		Can I actually set my cache rates by different regions and say "Hey for this geography, I want this cached versus another geography I want to have something else cached?"</p>
-	<p><strong>Trey Guinn</strong><br>
-		It's possible to go into deeper levels of customization, but generally the caching is going to be around per URL; you can customize it based on certain headers, cookies etc. And the flip-side of that is you can get fine-grained control around rate limiting, in addition our web application firewall (WAF) and IP reputation database allow you to add security and performance at the same time.</p>
-	<p><strong>Asad Baheri</strong><br>
-		One of the most important things is actually making sure you have a SSL certificate, that's following best practices; not all SSL certificates are created equally.</p>
-	<p><strong>Trey Guinn</strong><br>
-		Independent of whatever origin network or security network that you run, we want to share some security best practices and, as you mentioned, everything should be on SSL. If you didn't know that, this is your last warning, and everything should be over SSL. Chrome as of next month is going to start positively identifying websites which are not encrypted with an "insecure" flag. If you want to be able to retain the trust of your customers, it's required. And a key thing is that not all SSL is created equal: some SSL is more secure than others, some SSL is faster than others, etc. We shared a link on on these slides for you to go look at the SSL labs best practices; they're a third party, but we want to do things like support session resumption and HTTP/2, etc.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Security-Checklist-1.jpg" alt="" loading="lazy">
-	</p>
-	<p><strong>Asad Baheri</strong><br>
-		Google also has a series of <a href="https://support.google.com/webmasters/answer/6073543?hl=en">SSL best practices</a> for anyone who's using SSL; it'll walk you through how to create the right type of key requests, where you want to load it, etc. And when using Cloudflare, where does the SSL session terminate?</p>
-	<p><strong>Trey Guinn</strong><br>
-		Cloudflare will terminate the SSL session at the Cloudflare network edge, and we'll make sure that you have the best SSL. If you check your SSL grade, you'll get an A or an A+ with our SSL. We decrypt because we need to be able to protect against layer 7 attacks and look within the application layer. Then we re-encrypt we go back to the origin, so it sits and it's encrypted as it goes across the network.</p>
-	<p><strong>Asad Baheri</strong><br>
-		And then also, you can provide protection for DNS services, because that's another vector of attack where someone can just knock out your DNS or try to inject a bad DNS record.</p>
-	<p><strong>Trey Guinn</strong><br>
-		Exactly. A lot of things people look at DDoS prevention and security but they forget about the fact that DNS infrastructure is one of the key things that you need to protect. It's the Internet's phonebook and if you can find someone's phone number, you can't call them and you're knocked offline. We all number the Dyn attack in October of last year... it took around a third of the internet offline.</p>
+	<p><b>Asad Baheri</b>This is something LUSH decided on a Friday, and they had to get started on Monday. They had 22 days to move everything. They had a very short period of time. Part of the reason for their migration was around general availability and scale during the holiday season traffic spikes. The other part of it was that they wanted to have their online presence match their corporate philosophy. A very large percentage of our network electrical costs come from renewable sources, and that was something that was important to them. From technology to philosophy, it was just very well aligned and made sense to make that move quickly. LUSH here had a great amount of savings, correct?</p>
+	<p><b>Trey Guinn</b>LUSH as a customer sees about a 75% bandwidth savings, but also a 95% reduction in the number of requests to their origin server. That reduces the amount of infrastructure that they need on the origin, because we're either filtering out bad traffic or caching content. Part of that, of course, is that we stop about 60,000 threats a month for LUSH. And that's something to be expected with Cloudflare's infrastructure and network. We run one of the largest security networks in the world, and are versed in stopping these threats.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fsetuzUWZ3zvy2VRx6DmJ/a305990f78b325703dbef723f2b9299c/Lush-Migration-1-1.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
+	<p><b>Asad Baheri</b>The hit rate seems dependent on the website or API using Cloudflare's services, correct? If you have a lot of cat pictures versus a super dynamic API, it's going to be a difference experience.</p>
+	<p><b>Trey Guinn</b>Exactly. If you're serving a bunch of GIFs, you can get your cache hit rate up into the high 90s, maybe over 99%. If you are a weather application, and someone's checking the weather, your cache hit rate might be a little bit lower because if you're delivering whether by zip code there's not that many people per zip code or checking for weather.</p>
+	<p><b>Asad Baheri</b>Can I actually set my cache rates by different regions and say "Hey for this geography, I want this cached versus another geography I want to have something else cached?"</p>
+	<p><b>Trey Guinn</b>It's possible to go into deeper levels of customization, but generally the caching is going to be around per URL; you can customize it based on certain headers, cookies etc. And the flip-side of that is you can get fine-grained control around rate limiting, in addition our web application firewall (WAF) and IP reputation database allow you to add security and performance at the same time.</p>
+	<p><b>Asad Baheri</b>One of the most important things is actually making sure you have a SSL certificate, that's following best practices; not all SSL certificates are created equally.</p>
+	<p><b>Trey Guinn</b>Independent of whatever origin network or security network that you run, we want to share some security best practices and, as you mentioned, everything should be on SSL. If you didn't know that, this is your last warning, and everything should be over SSL. Chrome as of next month is going to start positively identifying websites which are not encrypted with an "insecure" flag. If you want to be able to retain the trust of your customers, it's required. And a key thing is that not all SSL is created equal: some SSL is more secure than others, some SSL is faster than others, etc. We shared a link on on these slides for you to go look at the SSL labs best practices; they're a third party, but we want to do things like support session resumption and HTTP/2, etc.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/284t5fTk16zm338uyrmdEv/56fa045e49bba5c632d6019a692eaa5a/Security-Checklist-1.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
+	<p><b>Asad Baheri</b>Google also has a series of <a href="https://support.google.com/webmasters/answer/6073543?hl=en">SSL best practices</a> for anyone who's using SSL; it'll walk you through how to create the right type of key requests, where you want to load it, etc. And when using Cloudflare, where does the SSL session terminate?</p>
+	<p><b>Trey Guinn</b>Cloudflare will terminate the SSL session at the Cloudflare network edge, and we'll make sure that you have the best SSL. If you check your SSL grade, you'll get an A or an A+ with our SSL. We decrypt because we need to be able to protect against layer 7 attacks and look within the application layer. Then we re-encrypt we go back to the origin, so it sits and it's encrypted as it goes across the network.</p>
+	<p><b>Asad Baheri</b>And then also, you can provide protection for DNS services, because that's another vector of attack where someone can just knock out your DNS or try to inject a bad DNS record.</p>
+	<p><b>Trey Guinn</b>Exactly. A lot of things people look at DDoS prevention and security but they forget about the fact that DNS infrastructure is one of the key things that you need to protect. It's the Internet's phonebook and if you can find someone's phone number, you can't call them and you're knocked offline. We all number the Dyn attack in October of last year... it took around a third of the internet offline.</p>
 	<p>Beyond DNS and SSL, other things to be prepared for are large layer 3 and layer 4 floods, this is sort of like UDP floods from DNS amplification — that's sort of a “caveman with a club”, not very sophisticated, but it fills up your pipes. Luckily, if you're on GCP, you have very very big pipes. Beyond that though, you also have to worry about layer 7 attacks. Less sophisticated is: What if someone goes in and searches or scrapes the product pages on your ecommerce site, but they just decide to search your product pages 10,000 times a second? Can your application infrastructure handle that? And even if it can scale up to that, do you want to pay to scale up to that? And then beyond that, while those attacks are occurring, you should also be aware of application vulnerabilities. This is where attacks are going to try to extract data using SQL injection, cross-site scripting, etc. So these are the layers that we want to make sure that you're taking care of.</p>
-	<p><strong>Asad Baheri</strong><br>
-		So those are the basics of it, but today we're going to actually show people a demo on how they can set up some of these service and protections on Cloudflare.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Demo-1.jpg" alt="" loading="lazy">
-	</p>
-	<p><strong>Trey Guinn</strong><br>
-		We're going to jump into the Cloudflare demo, and see how it is that Cloudflare can be configured to sort of meet some of those requirements that we just talked about. This is going to be a live demo, so feel free to play along from home if you'd like. We have a web application; let's assume we grew from a US-only audience. We had lots of folks in North America, but my business has taken off and it's doing great, and it's now distributed out to Australia and the UK.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/distributed-out-to-Australia-and-the-UK.png" alt="" loading="lazy">
-	</p>
-	<p><strong>Trey Guinn</strong><br>
-		Previously, let's say I had a single origin on AWS. In order to support a geographically distributed origin, I needed the google Spanner database and I'm moving over to GCP. Now I can have an origin within GCP in Australia, U.S. West, and Europe, all at the same time.</p>
-	<p><strong>Asad Baheri</strong><br>
-		And for those not familiar with BigQuery or Google Spanner, this is really where some of Google's technologies shine, where you have these globally distributed databases.</p>
-	<p><strong>Trey Guinn</strong><br>
-		But you know once I've added a globally distributed database, I need to be able to access it from everywhere.</p>
+	<p><b>Asad Baheri</b>So those are the basics of it, but today we're going to actually show people a demo on how they can set up some of these service and protections on Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cFxP6tWdyoyQAkRcTDeUC/ae6fad476eb3cc6ba28ebfabd009afa7/Demo-1.jpg" alt="" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
+	<p><b>Trey Guinn</b>We're going to jump into the Cloudflare demo, and see how it is that Cloudflare can be configured to sort of meet some of those requirements that we just talked about. This is going to be a live demo, so feel free to play along from home if you'd like. We have a web application; let's assume we grew from a US-only audience. We had lots of folks in North America, but my business has taken off and it's doing great, and it's now distributed out to Australia and the UK.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mkSfCwl4P0svAAZ9PHipc/e4f74b3b52dbc10654235e50a575e451/distributed-out-to-Australia-and-the-UK.png" alt="" class="kg-image" width="3840" height="2092" loading="lazy">
+
+	</figure>
+	<p><b>Trey Guinn</b>Previously, let's say I had a single origin on AWS. In order to support a geographically distributed origin, I needed the google Spanner database and I'm moving over to GCP. Now I can have an origin within GCP in Australia, U.S. West, and Europe, all at the same time.</p>
+	<p><b>Asad Baheri</b>And for those not familiar with BigQuery or Google Spanner, this is really where some of Google's technologies shine, where you have these globally distributed databases.</p>
+	<p><b>Trey Guinn</b>But you know once I've added a globally distributed database, I need to be able to access it from everywhere.</p>
 	<p>So we're going to set up a geographic load balancing that'll migrate our traffic over to GCP. We're also going to look at those layer 7 protections; we'll set up a rate limiting rule and see that come into effect. We'll also make sure that Cloudflare's SSL is working. We'll turn on our WAF and block SQL injections. And then, a little special thing, like any migration project there's always that extra person who wasn't reading their email or didn't check in at the meetings, and we’re going see how to handle that.</p>
-	<p>So I've already added a domain <strong>multicloud.tech</strong> to Cloudflare. The signup process takes about five minutes, and most of that is part of the DNS change. And really what you're doing is making Cloudflare your authoritative DNS provider or you can CNAME specific subdomains. In our DNS infrastructure, we've four records but we can see the WWW record is going to the domain apex, the domain apex is going to this IP address, and that's our AWS origin to start with. In our DNS servers listed, we'll see the orange cloud and grey cloud. And what is the difference there?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/And-what-is-the-difference-there.png" alt="" loading="lazy"></p>
-	<p>If we do a dig on <strong>www.multicloud.tech</strong>, we will see that these are a bunch of Cloudflare IPs. And so we see those are the orange clouded record, the WWW. But what I also had created here, just for usability, is this origin. Warning here: You shouldn't really have things pointing to your origin that are gray clouded, because it allows people to hit your origin directly. Just for demonstration purposes, I've this record is grey clouded. If I do a DNS lookup on <strong>origin.multicloud.tech</strong>, then we'll see that it's returning back the origin IP address.</p>
+	<p>So I've already added a domain <b>multicloud.tech</b> to Cloudflare. The signup process takes about five minutes, and most of that is part of the DNS change. And really what you're doing is making Cloudflare your authoritative DNS provider or you can CNAME specific subdomains. In our DNS infrastructure, we've four records but we can see the WWW record is going to the domain apex, the domain apex is going to this IP address, and that's our AWS origin to start with. In our DNS servers listed, we'll see the orange cloud and grey cloud. And what is the difference there?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78nMYexB9dFmggHPfrFCQU/6d3c32dd9eb4415340a7b0c0c639d1cb/And-what-is-the-difference-there.png" alt="" class="kg-image" width="2504" height="1454" loading="lazy">
+
+	</figure>
+	<p>If we do a dig on <a href="http://www.multicloud.tech"><b>www.multicloud.tech</b></a>, we will see that these are a bunch of Cloudflare IPs. And so we see those are the orange clouded record, the <a href="http://www">WWW</a>. But what I also had created here, just for usability, is this origin. Warning here: You shouldn't really have things pointing to your origin that are gray clouded, because it allows people to hit your origin directly. Just for demonstration purposes, I've this record is grey clouded. If I do a DNS lookup on <b>origin.multicloud.tech</b>, then we'll see that it's returning back the origin IP address.</p>
 	<p>What this is doing is when you orange cloud a record in Cloudflare, it's routing all of your customers through the Cloudflare network. And if you gray cloud the record, then all traffic is just going to go straight to your origin server. So it's just a simple sort of "on / off" switch for the Cloudflare network.</p>
-	<p>So we're now sending traffic through Cloudflare. So if you went to <strong>www.multicloud.tech</strong>, wherever you are, you'd be going through the Cloudflare network to hit this website. So if I want to look at <strong>multicloud.tech</strong>, I'm going through the website and we're hitting our AWS infrastructure. <br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/we-re-hitting-our-AWS-infrastructure.png" alt="" loading="lazy">
-	</p>
-	<p>So let's go ahead and set up a load balancer. We've got folks in Australia and UK, and we want to make sure it's fast for everybody. I'm going to create a load balancer here called <strong>lb1.multicloud.tech</strong>. So when you create a load balancer, it just creates another DNS record that can be used to accept traffic. Now I'm going to create a few origin pools because the idea is that we could have 10 origins in Australia, 30 in North America, and 15 in Europe.</p>
-	<p><strong>Asad Baheri</strong><br>
-		Am I going to that one DNS record, and then that's getting sent out to different locations, or am I going to come to multiple DNS records that are just going to do round robin?.</p>
-	<p><strong>Trey Guinn</strong><br>
-		That’s a great question; so what's happening is you're just seeing the Cloudflare IP on the outside. It's an Anycast network, so it's the same IP all over the world; you connect to Cloudflare and then this is all happening behind the scenes.</p>
-	<p><strong>Asad Baheri</strong><br>
-		So, I don't need to worry about maintaining the DNS records, what I want to do for load balancing, etc... you've taken care of all that?</p>
-	<p><strong>Trey Guinn</strong><br>
-		Exactly. Now we're going to set up our first origin pool. This origin pool only to have one origin in it, because this is a demo. But we'll start with the first one in US West; we're going to go with our GCP origin in US West. And we're going to do an active health check of just the root page.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/you-ve-taken-care-of-all-that.png" alt="" loading="lazy">
-	</p>
-	<p><strong>Asad Baheri</strong><br>
-		And I can customize that obviously, if I want something more specific?</p>
-	<p><strong>Trey Guinn</strong><br>
-		Exactly. In that health check, that's where you can set the number of times it has to fail before it's unhealthy, and does it check specifically URL, does a check for certain status codes, etc.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/does-a-check-for-certain-status-codes--etc.png" alt="" loading="lazy"></p>
+	<p>So we're now sending traffic through Cloudflare. So if you went to <a href="http://www.multicloud.tech"><b>www.multicloud.tech</b></a>, wherever you are, you'd be going through the Cloudflare network to hit this website. So if I want to look at <b>multicloud.tech</b>, I'm going through the website and we're hitting our AWS infrastructure.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mLPXn37N7o8heaUGkormb/2a67a61dfd385597f0457f2b15b0db95/we-re-hitting-our-AWS-infrastructure.png" alt="" class="kg-image" width="1600" height="1460" loading="lazy">
+
+	</figure>
+	<p>So let's go ahead and set up a load balancer. We've got folks in Australia and UK, and we want to make sure it's fast for everybody. I'm going to create a load balancer here called <b>lb1.multicloud.tech</b>. So when you create a load balancer, it just creates another DNS record that can be used to accept traffic. Now I'm going to create a few origin pools because the idea is that we could have 10 origins in Australia, 30 in North America, and 15 in Europe.</p>
+	<p><b>Asad Baheri</b>Am I going to that one DNS record, and then that's getting sent out to different locations, or am I going to come to multiple DNS records that are just going to do round robin?.</p>
+	<p><b>Trey Guinn</b>That’s a great question; so what's happening is you're just seeing the Cloudflare IP on the outside. It's an Anycast network, so it's the same IP all over the world; you connect to Cloudflare and then this is all happening behind the scenes.</p>
+	<p><b>Asad Baheri</b>So, I don't need to worry about maintaining the DNS records, what I want to do for load balancing, etc... you've taken care of all that?</p>
+	<p><b>Trey Guinn</b>Exactly. Now we're going to set up our first origin pool. This origin pool only to have one origin in it, because this is a demo. But we'll start with the first one in US West; we're going to go with our GCP origin in US West. And we're going to do an active health check of just the root page.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q8S79oVMXJc6QW4PjAipm/87ac4967a1cfcabffbaeac214971e34c/you-ve-taken-care-of-all-that.png" alt="" class="kg-image" width="1596" height="2194" loading="lazy">
+
+	</figure>
+	<p><b>Asad Baheri</b>And I can customize that obviously, if I want something more specific?</p>
+	<p><b>Trey Guinn</b>Exactly. In that health check, that's where you can set the number of times it has to fail before it's unhealthy, and does it check specifically URL, does a check for certain status codes, etc.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nGExesep2A5JwXAUtmPOp/b4ef45da7fa4fd9044fa6e89d2a17247/does-a-check-for-certain-status-codes--etc.png" alt="" class="kg-image" width="1596" height="2174" loading="lazy">
+
+	</figure>
 	<p>So we've got our U.S. West set up, so let's also set up Australia. We're going to go ahead and set the same monitor, and we're going to save that.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/and-we-re-going-to-save-that.png" alt="" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/and-we-re-going-to-save-that-2.png" alt="" loading="lazy">
-	</p>
-	<p>And then we still need to do our our European origin. Same health check monitor and we'll hit save. We've created three origin pools and, as I was saying, those origin pools could hold more than one origin each.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/origin-pools-could-hold-more-than-one-origin-each.png" alt="" loading="lazy">
-	</p>
-	<p>And if you add multiple origins in a pool, it would round robin between those. Now we have three pools and we can do a clever migration between them. If you had an active / passive data center setup, you could use two pools and put them in the right order so you'd say origin pool #1 / origin pool #2 and then active / passive. In this instance, we're going to say if, say Europe fails, we want to fail back over the U.S., we'll make US our primary, Europe secondary globally, and then Australia third.<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/secondary-globally--and-then-Australia-third.png" alt="" loading="lazy">
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PwYbf6Fd7STG0uUF3uH09/6397393f01030bbcbe6c5b171b1d4850/and-we-re-going-to-save-that.png" alt="" class="kg-image" width="1590" height="2198" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vmTkwbobukXt04j3nhtff/46ad68cda138e62c2068df442fc02ea4/and-we-re-going-to-save-that-2.png" alt="" class="kg-image" width="1592" height="1554" loading="lazy">
+
+	</figure>
+	<p>And then we still need to do our our European origin. Same health check monitor and we'll hit save. We've created three origin pools and, as I was saying, those origin pools could hold more than one origin each.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3vtXitCA6gkLoy9J0wIvNV/2ca9b017fed2c82bc9d319420e6453f6/origin-pools-could-hold-more-than-one-origin-each.png" alt="" class="kg-image" width="1594" height="1448" loading="lazy">
+
+	</figure>
+	<p>And if you add multiple origins in a pool, it would round robin between those. Now we have three pools and we can do a clever migration between them. If you had an active / passive data center setup, you could use two pools and put them in the right order so you'd say origin pool #1 / origin pool #2 and then active / passive. In this instance, we're going to say if, say Europe fails, we want to fail back over the U.S., we'll make US our primary, Europe secondary globally, and then Australia third.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3i2jp0KkbwqRrplQUgwBHh/e1d2685bc1bcef645011ef2f1abfb70e/secondary-globally--and-then-Australia-third.png" alt="" class="kg-image" width="1598" height="656" loading="lazy">
+
+	</figure>
 	<p>But we also want to do some geo-routing, so let's choose which regions we're going to do some geo-routing.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/regions-we-re-going-to-do-some-geo-routing.png" alt="" loading="lazy"></p>
-	<p>So we're going to get Europe, Oceania, The Middle East, Africa, Southern Africa, India, and Asia. So we're going to take Europe, and we're going to send that to the European origin. Eastern Europe to European origin. Oceana will go to Australia. Middle East we'll send to Europe. North Africa we'll send that to Europe. South Africa let's send that to Europe. India let's send to Australia. Northeast Asia we'll also send that to Australia. <br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/Northeast-Asia-we-ll-also-send-that-to-Australia.png" alt="" loading="lazy">
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01fB15IoRtWNGW5eggi96U/d344b4c52ca2e2f9f6423411eb56db25/regions-we-re-going-to-do-some-geo-routing.png" alt="" class="kg-image" width="1594" height="1968" loading="lazy">
+
+	</figure>
+	<p>So we're going to get Europe, Oceania, The Middle East, Africa, Southern Africa, India, and Asia. So we're going to take Europe, and we're going to send that to the European origin. Eastern Europe to European origin. Oceana will go to Australia. Middle East we'll send to Europe. North Africa we'll send that to Europe. South Africa let's send that to Europe. India let's send to Australia. Northeast Asia we'll also send that to Australia.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5p9sUDK03e1g4my5TiosR1/dd63a15d26159d9f3a94a8ecbba54733/Northeast-Asia-we-ll-also-send-that-to-Australia.png" alt="" class="kg-image" width="1958" height="1502" loading="lazy">
+
+	</figure>
 	<p>Now we’re going to hit next; and we're ready to save and deploy.</p>
-	<p><strong>Asad Baheri</strong><br>
-		That was less than 10 minutes; we actually set up an infrastructure, set up our pools, and set up our geo-routing.</p>
-	<p><strong>Trey Guinn</strong><br>
-		So we're doing active health checks and probes to each of these data centers. Now we're going to say that WWW, which was going to the apex record and went to AWS, will be sent to the load balancer. The other thing I want to do is take the zone apex, <strong>multicloud.tech</strong>, and I want to send that to the load balancer, as well. This is something else that is special with Cloudflare; if you've ever had to CNAME your apex record, it’s a real bugger; we allow you to do that on our infrastructure, because we do a thing called CNAME flattening. So now all the traffic now is going to the load balancer. We're also going to set up a WAF and setup Rate Limiting rules and we can make all that work together.</p>
-	<p><strong>Asad Baheri</strong><br>
-		So now we're just getting into protection; we've setup the infrastructure, the routing, and now we're going to protect it.</p>
-	<p><strong>Trey Guinn</strong><br>
-		Exactly. I'm running out of time already on my demo, so how hard is it to set up a WAF?</p>
-	<p><strong>Asad Baheri</strong><br>
-		It's pretty much an all day process setting up rules, I think?<br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/setting-up-rules--I-think.png" alt="" loading="lazy">
-	</p>
-	<p><strong>Trey Guinn</strong><br>
-		So now our WAF is setup; it's pretty easy. We made this product easy to use. We'll also turn on the OWASP top 10 ruleset and put that into block mode.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/10-ruleset-and-put-that-into-block-mode.png" alt="" loading="lazy"></p>
+	<p><b>Asad Baheri</b>That was less than 10 minutes; we actually set up an infrastructure, set up our pools, and set up our geo-routing.</p>
+	<p><b>Trey Guinn</b>So we're doing active health checks and probes to each of these data centers. Now we're going to say that WWW, which was going to the apex record and went to AWS, will be sent to the load balancer. The other thing I want to do is take the zone apex, <b>multicloud.tech</b>, and I want to send that to the load balancer, as well. This is something else that is special with Cloudflare; if you've ever had to CNAME your apex record, it’s a real bugger; we allow you to do that on our infrastructure, because we do a thing called CNAME flattening. So now all the traffic now is going to the load balancer. We're also going to set up a WAF and setup Rate Limiting rules and we can make all that work together.</p>
+	<p><b>Asad Baheri</b>So now we're just getting into protection; we've setup the infrastructure, the routing, and now we're going to protect it.</p>
+	<p><b>Trey Guinn</b>Exactly. I'm running out of time already on my demo, so how hard is it to set up a WAF?</p>
+	<p><b>Asad Baheri</b>It's pretty much an all day process setting up rules, I think?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TfvzdXPhdP8AsXWc62Izj/9788da2a10067227121ebb12eaf2a063/setting-up-rules--I-think.png" alt="" class="kg-image" width="2038" height="1944" loading="lazy">
+
+	</figure>
+	<p><b>Trey Guinn</b>So now our WAF is setup; it's pretty easy. We made this product easy to use. We'll also turn on the OWASP top 10 ruleset and put that into block mode.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/318JlARHAO09ruyJd2t7Qr/8c35fc1475597f23616cbb9a82ed83d9/10-ruleset-and-put-that-into-block-mode.png" alt="" class="kg-image" width="1196" height="1310" loading="lazy">
+
+	</figure>
 	<p>Now that our WAF is fully engaged, let's set up a rate limiting rule, because you want to be able to stop someone from hammering away at your website. So we'll just call this rate limiting rule “Global” on http &amp; https * it'll just say any URL that you're checking.</p>
-	<p><strong>Asad Baheri</strong><br>
-		It's great to have different rulesets on different parts of my website; if I'm managing multiple customers or there's different regions, I can say "hey I want this part of my site or this subdomain to have one type or protection vs. another part."</p>
-	<p><strong>Trey Guinn</strong><br>
-		One of the common use cases is to protect your login page, and we can look at the response code and say if you're getting 200's that's fine, but if you're getting 401s or 403s, then clearly you're logging in with the wrong password, so we're going to really restrict you. So if you make more than 10 requests in 30 seconds, we're going to block you for 30 seconds.</p>
-	<p><strong>Asad Baheri</strong><br>
-		And that's really going to stop those automated bot attacks, where people are trying credential stuffing and they're just trying to see how fast can I hammer on a login page, through these credential dumps that I've gotten from somewhere, and see which ones work.</p>
-	<p><strong>Trey Guinn</strong><br>
-		Exactly. Before we reload this webpage, it came from AWS. Now, if I do a refresh, it says "Google Cloud Platform". And I'm coming from US West; if you happen to be watching this from Australia, you'll see that you're coming from the Australian data center, if you're watching this from Europe and hit this website you'd see Europe.</p>
+	<p><b>Asad Baheri</b>It's great to have different rulesets on different parts of my website; if I'm managing multiple customers or there's different regions, I can say "hey I want this part of my site or this subdomain to have one type or protection vs. another part."</p>
+	<p><b>Trey Guinn</b>One of the common use cases is to protect your login page, and we can look at the response code and say if you're getting 200's that's fine, but if you're getting 401s or 403s, then clearly you're logging in with the wrong password, so we're going to really restrict you. So if you make more than 10 requests in 30 seconds, we're going to block you for 30 seconds.</p>
+	<p><b>Asad Baheri</b>And that's really going to stop those automated bot attacks, where people are trying credential stuffing and they're just trying to see how fast can I hammer on a login page, through these credential dumps that I've gotten from somewhere, and see which ones work.</p>
+	<p><b>Trey Guinn</b>Exactly. Before we reload this webpage, it came from AWS. Now, if I do a refresh, it says "Google Cloud Platform". And I'm coming from US West; if you happen to be watching this from Australia, you'll see that you're coming from the Australian data center, if you're watching this from Europe and hit this website you'd see Europe.</p>
 	<p>Now let's check our web application firewall (WAF); I snuck a little trick in here in one of my notes, because I wanted to remember a SQL injection command. So maybe with this command I was trying to dump the customer recordbase, and we'll see I've been blocked by Cloudflare. The WAF is in place and working; that command never even made it to GCP, it never hit your infrastructure.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/it-never-hit-your-infrastructure.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iAE5jipHOaNOyEREKCHNV/f8b7bf7fef1b2b76dddea5509d446cec/it-never-hit-your-infrastructure.png" alt="" class="kg-image" width="1602" height="1704" loading="lazy">
+
+	</figure>
 	<p>And in our Cloudflare dashboard is the bad request that came through, and it was just blocked.</p>
-	<p>And the last thing we need to do test out rate limiting. I've setup rate limiting already, so I'm going to do 200 requests against our website. I've just curled <strong>multicloud.tech</strong> and I'm grepping for the HTTP status code that comes back. And it’s blocked.</p>
+	<p>And the last thing we need to do test out rate limiting. I've setup rate limiting already, so I'm going to do 200 requests against our website. I've just curled <b>multicloud.tech</b> and I'm grepping for the HTTP status code that comes back. And it’s blocked.</p>
 	<p>Like all migrations, there's always something that comes up; Jerry came to us, and said: "Hey my website stopped working, and I can't find it anymore; what's going on?" And if we look, he's got this awesome old marketing website.</p>
-	<p>And you know what: We're not going to migrate it to GCP, because it's getting killed off in about six months from now. But how can you create a path and route it over to AWS? <br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/create-a-path-and-route-it-over-to-AWS.png" alt="" loading="lazy">
-	</p>
-	<p>I have the legacy AWS origin defined here as “legacyorigin”, and what I'll do in Cloudflare is create a thing called a "Page Rule". <br><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/10/create-a-thing-called-a--22Page-Rule-22.png" alt="" loading="lazy">
-	</p>
-	<p>And this way, we can take the website <strong>www.multicloud.tech/legacy/</strong>*, so it takes anything under the legacy path and override the resolution of the origin and resolve it to <strong>legacyorigin.multicloud.tech</strong>. Now this has actually replicate out globally to a bunch of data centers after hitting it here.</p>
-	<p><strong>Asad Baheri</strong><br>
-		So in this 10 minutes: We've set up pools, we've set up rules, we've actually kept some of our legacy stuff back where it was, we've shown protection against script kiddies and credential stuffing. And all in 15 minutes, which is pretty amazing. Especially for something which can easily take a month.</p>
-	<!--kg-card-end: markdown-->
+	<p>And you know what: We're not going to migrate it to GCP, because it's getting killed off in about six months from now. But how can you create a path and route it over to AWS?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GH3pWGFmLoCrwdDtVHSBQ/e55854dffbee0fa907c2f29be52d64b4/create-a-path-and-route-it-over-to-AWS.png" alt="" class="kg-image" width="2014" height="1656" loading="lazy">
+
+	</figure>
+	<p>I have the legacy AWS origin defined here as “legacyorigin”, and what I'll do in Cloudflare is create a thing called a "Page Rule".</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fhn1SZUL1a91emejbefOo/b0f32cf2f4fa19b23f8bec1e9d75a9ab/create-a-thing-called-a--22Page-Rule-22.png" alt="" class="kg-image" width="1594" height="918" loading="lazy">
+
+	</figure>
+	<p>And this way, we can take the website **<a href="http://www.multicloud.tech/legacy/**">www.multicloud.tech/legacy/**\</a>*, so it takes anything under the legacy path and override the resolution of the origin and resolve it to <b>legacyorigin.multicloud.tech</b>. Now this has actually replicate out globally to a bunch of data centers after hitting it here.</p>
+	<p><b>Asad Baheri</b>So in this 10 minutes: We've set up pools, we've set up rules, we've actually kept some of our legacy stuff back where it was, we've shown protection against script kiddies and credential stuffing. And all in 15 minutes, which is pretty amazing. Especially for something which can easily take a month.</p>
 </div>

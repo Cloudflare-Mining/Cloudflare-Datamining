@@ -1,11 +1,14 @@
 <div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/dnssec-badge-nobg.png" alt="DNSSEC logo" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FiL7MSYbOsr6b3vJD86Yq/b94f99bfa0bb948fe26b297c5d5481d2/dnssec-badge-nobg.png" alt="DNSSEC logo" class="kg-image" width="300" height="300" loading="lazy">
+
+	</figure>
 	<p>Since January, Cloudflare has been running a small, <a href="https://blog.cloudflare.com/help-us-test-our-dnssec-implementation">private beta</a> for DNSSEC. Starting today, the DNSSEC beta is open for everyone. To request access, email <a href="mailto:dnssec-beta@cloudflare.com">dnssec-beta@cloudflare.com</a>.</p>
-	<h3 id="abackgroundondnsanddnssec">A Background on DNS and DNSSEC</h3>
+	<h3>A Background on DNS and DNSSEC</h3>
 	<p>DNS is the system that lets your browser know which web server to connect to when you request to visit a website. It’s the underlying backbone of the usable internet, and yet, is vulnerable to on-path attacker attacks.</p>
 	<p>In DNS, an attacker sitting in the middle of your connection to the internet can tell your browser to connect to any web server they’d like. Browsers trust any DNS records they receive as a response to a DNS query, because DNS, invented in 1983 before the public consumption of the Internet, does not perform any authentication.</p>
 	<p>There is a solution. It’s called DNSSEC and it adds cryptographic hashes and signatures for authenticating DNS records. You can read more about DNSSEC and how it works in a <a href="https://blog.cloudflare.com/dnssec-an-introduction">previous blog post</a>.</p>
 	<p>The DNSSEC beta is open to all websites that use CloudFlare for DNS. If you want to be a part of our beta and be one of the first CloudFlare websites with DNSSEC, email us for beta access: <a href="mailto:dnssec-beta@cloudflare.com">dnssec-beta@cloudflare.com</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

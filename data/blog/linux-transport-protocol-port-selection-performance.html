@@ -1,52 +1,88 @@
 <div class="mb2 gray5">12 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image4-3.png" class="kg-image" alt="Cloudflare does not usually put pressure on an origin server as this article picture may imply." loading="lazy" width="1200" height="676"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66XqWhNhXtlHJl2NLTFfc6/530c6aa05ba4cc2d194d89d896b467e7/image4-3.png" alt="Cloudflare does not usually put pressure on an origin server as this article picture may imply." class="kg-image" width="1200" height="676" loading="lazy">
+
+	</figure>
 	<p>It is no secret that Cloudflare is encouraging companies to deprecate their use of IPv4 addresses and move to IPv6 addresses. We have a couple articles on the subject from this year:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying">Amazon’s $2bn IPv4 tax – and how you can avoid paying it</a></li>
-		<li><a href="https://blog.cloudflare.com/ipv6-from-dns-pov">Using DNS to estimate worldwide state of IPv6 adoption</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying">Amazon’s $2bn IPv4 tax – and how you can avoid paying it</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/ipv6-from-dns-pov">Using DNS to estimate worldwide state of IPv6 adoption</a></p>
+		</li>
 	</ul>
 	<p>And many more in our <a href="https://blog.cloudflare.com/searchresults#q=IPv6&amp;sort=date%20descending&amp;f:@customer_facing_source=[Blog]&amp;f:@language=[English]">catalog</a>. To help with this, we spent time this last year investigating and implementing infrastructure to reduce our internal and egress use of IPv4 addresses. We prefer to re-allocate our addresses than to purchase more due to increasing costs. And in this effort we discovered that our cache service is one of our bigger consumers of IPv4 addresses. Before we remove IPv4 addresses for our cache services, we first need to understand how cache works at Cloudflare.</p>
-	<h2 id="how-does-cache-work-at-cloudflare">How does cache work at Cloudflare?</h2>
+	<h2>How does cache work at Cloudflare?</h2>
 	<p>Describing the full scope of the <a href="https://developers.cloudflare.com/reference-architecture/cdn-reference-architecture/#cloudflare-cdn-architecture-and-design">architecture</a> is out of scope of this article, however, we can provide a basic outline:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/02/image1-2.png" class="kg-image" alt="Figure 1: Diagram representing requests coming from an Internet User, protected by Cloudflare products including WAF and DDoS protection, and traveling through the Anycast Network to reach the origin server using Smart Tiered Cache." loading="lazy" width="1999" height="859"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70ULgxsqU4zuyWYVrNn6et/f80bedc31733a7d09e120bb797c055ca/image1-2.png" alt="Figure 1: Diagram representing requests coming from an Internet User, protected by Cloudflare products including WAF and DDoS protection, and traveling through the Anycast Network to reach the origin server using Smart Tiered Cache." class="kg-image" width="1999" height="859" loading="lazy">
+
+	</figure>
 	<ol>
-		<li>Internet User makes a request to pull an asset</li>
-		<li>Cloudflare infrastructure routes that request to a handler</li>
-		<li>Handler machine returns cached asset, or if miss</li>
-		<li>Handler machine reaches to origin server (owned by a customer) to pull the requested asset</li>
+		<li>
+			<p>Internet User makes a request to pull an asset</p>
+		</li>
+		<li>
+			<p>Cloudflare infrastructure routes that request to a handler</p>
+		</li>
+		<li>
+			<p>Handler machine returns cached asset, or if miss</p>
+		</li>
+		<li>
+			<p>Handler machine reaches to origin server (owned by a customer) to pull the requested asset</p>
+		</li>
 	</ol>
-	<p>The particularly interesting part is the cache miss case. When a website suddenly becomes very popular, many uncached assets may need to be fetched all at once. Hence we may make an upwards of: 50k TCP unicast connections to a single destination<em>.</em></p>
+	<p>The particularly interesting part is the cache miss case. When a website suddenly becomes very popular, many uncached assets may need to be fetched all at once. Hence we may make an upwards of: 50k TCP unicast connections to a single destination_._</p>
 	<p>That is a lot of connections! We have strategies in place to limit the impact of this or avoid this problem altogether. But in these rare cases when it occurs, we will then balance these connections over two source IPv4 addresses.</p>
 	<p>Our goal is to remove the load balancing and prefer one IPv4 address. To do that, we need to understand the performance impact of two IPv4 addresses vs one.</p>
-	<h2 id="tcp-connect-performance-of-two-source-ipv4-addresses-vs-one-ipv4-address">TCP connect() performance of two source IPv4 addresses vs one IPv4 address</h2>
+	<h2>TCP connect() performance of two source IPv4 addresses vs one IPv4 address</h2>
 	<p>We leveraged a tool called <a href="https://github.com/wg/wrk">wrk</a>, and modified it to distribute connections over multiple source IP addresses. Then we ran a workload of 70k connections over 48 threads for a period of time.</p>
 	<p>During the test we measured the function <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/tcp_ipv4.c#L201">tcp_v4_connect()</a> with the BPF BCC libbpf-tool <a href="https://github.com/iovisor/bcc/blob/master/libbpf-tools/funclatency.c">funclatency</a> tool to gather latency metrics as time progresses.</p>
 	<p>Note that throughout the rest of this article, all the numbers are specific to a single machine with no production traffic. We are making the assumption that if we can improve a worse case scenario in an algorithm with a best case machine, that the results could be extrapolated to production. Lock contention was specifically taken out of the equation, but will have production implications.</p>
-	<h3 id="two-ipv4-addresses">Two IPv4 addresses</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image6.png" class="kg-image" alt="Figure 2: A bimodal chart, given two IPv4 source addresses, depicting 20 thousand connections that were slow to find a port, and more than roughly 50 thousand connections that were fast to find a port." loading="lazy" title="Chart" width="1626" height="742"></figure>
+	<h3>Two IPv4 addresses</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1q7v3WNgI5X3JQg5ua0B8g/de08b85579b9871bcbe49ba89e6caba6/image6.png" alt="Figure 2: A bimodal chart, given two IPv4 source addresses, depicting 20 thousand connections that were slow to find a port, and more than roughly 50 thousand connections that were fast to find a port." class="kg-image" width="1626" height="742" loading="lazy">
+
+	</figure>
 	<p>The y-axis are buckets of nanoseconds in powers of ten. The x-axis represents the number of connections made per bucket. Therefore, more connections in a lower power of ten buckets is better.</p>
 	<p>We can see that the majority of the connections occur in the fast case with roughly ~20k in the slow case. We should expect this bimodal to increase over time due to wrk continuously closing and establishing connections.</p>
 	<p>Now let us look at the performance of one IPv4 address under the same conditions.</p>
-	<h3 id="one-ipv4-address">One IPv4 address</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image8.png" class="kg-image" alt="Figure 3: A bimodal chart, given one IPv4 source address, depicting a split of roughly 25 thousand connections in the fast case, and over 40 thousand connections in the slow case." loading="lazy" title="Chart" width="1710" height="892"></figure>
+	<h3>One IPv4 address</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kpueuXS3SbBTIig306IDN/0b1cddbb69f71152ac106a3b76228e3e/image8.png" alt="Figure 3: A bimodal chart, given one IPv4 source address, depicting a split of roughly 25 thousand connections in the fast case, and over 40 thousand connections in the slow case." class="kg-image" width="1710" height="892" loading="lazy">
+
+	</figure>
 	<p>In this case, the bimodal distribution is even more pronounced. Over half of the total connections are in the slow case than in the fast! We may conclude that simply switching to one IPv4 address for cache egress is going to introduce significant latency on our connect() syscalls.</p>
 	<p>The next logical step is to figure out where this bottleneck is happening.</p>
-	<h2 id="port-selection-is-not-what-you-think-it-is">Port selection is not what you think it is</h2>
+	<h2>Port selection is not what you think it is</h2>
 	<p>To investigate this, we first took a flame graph of a production machine:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/02/image7.png" class="kg-image" alt="Figure 4: This is a flame graph of the connect syscall in Linux." loading="lazy" width="1360" height="365"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tFwadYDdC5UVK78j4yKsv/c060c4a5072125d437042ddeb486ae1a/image7.png" alt="Figure 4: This is a flame graph of the connect syscall in Linux." class="kg-image" width="1360" height="365" loading="lazy">
+
+	</figure>
 	<p>Flame graphs depict a run-time function call stack of a system. Y-axis depicts call-stack depth, and x-axis depicts a function name in a horizontal bar that represents the amount of times the function was sampled. Checkout this in-depth <a href="https://www.brendangregg.com/flamegraphs.html">guide</a> about flame graphs for more details.</p>
 	<p>Most of the samples are taken in the function <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L1000"><code>__inet_hash_connect()</code></a>. We can see that there are also many samples for <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L544"><code>__inet_check_established()</code></a> with some lock contention sampled between. We have a better picture of a potential bottleneck, but we do not have a consistent test to compare against.</p>
 	<p>Wrk introduces a bit more variability than we would like to see. Still focusing on the function <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/tcp_ipv4.c#L201"><code>tcp_v4_connect()</code></a>, we performed another synthetic test with a homegrown benchmark tool to test one IPv4 address. A tool such as <a href="https://github.com/ColinIanKing/stress-ng">stress-ng</a> may also be used, but some modification is necessary to implement the socket option <a href="https://man7.org/linux/man-pages/man7/ip.7.html"><code>IP_LOCAL_PORT_RANGE</code></a>. There is more about that socket option later.</p>
 	<p>We are now going to ensure a deterministic amount of connections, and remove lock contention from the problem. The result is something like this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/02/Screenshot-2024-02-07-at-15.54.29.png" class="kg-image" alt="Figure 5: A detailed chart representing the bimodal distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.025 milliseconds while we see 4.59 milliseconds on average for odd ports." loading="lazy" width="1622" height="908"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d6tJum5BBe3jsLRqhXtFN/255b2c1146035224efa1ab063464e6a4/Screenshot-2024-02-07-at-15.54.29.png" alt="Figure 5: A detailed chart representing the bimodal distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.025 milliseconds while we see 4.59 milliseconds on average for odd ports." class="kg-image" width="1622" height="908" loading="lazy">
+
+	</figure>
 	<p>On the y-axis we measured the latency between the start and end of a connect() syscall. The x-axis denotes when a connect() was called. Green dots are even numbered ports, and red dots are odd numbered ports. The orange line is a linear-regression on the data.</p>
 	<p>The disparity between the average time for port allocation between even and odd ports provides us with a major clue. Connections with odd ports are found significantly slower than the even. Further, odd ports are not interleaved with earlier connections. This implies we exhaust our even ports before attempting the odd. The chart also confirms our bimodal distribution.</p>
-	<h3 id="inethashconnect">__inet_hash_connect()</h3>
+	<h3>__inet_hash_connect()</h3>
 	<p>At this point we wanted to understand this split a bit better. We know from the flame graph and the function <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L1000"><code>__inet_hash_connect()</code></a> that this holds the algorithm for port selection. For context, this function is responsible for associating the socket to a source port in a late bind. If a port was previously provided with bind(), the algorithm just tests for a unique TCP 4-tuple (src ip, src port, dest ip, dest port) and ignores port selection.</p>
 	<p>Before we dive in, there is a little bit of setup work that happens first. Linux first generates a time-based hash that is used as the basis for the starting port, then adds randomization, and then puts that information into an offset variable. This is always set to an even integer.</p>
-	<p><a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L1043">net/ipv4/inet_hashtables.c</a></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">   offset &amp;= ~1U;
+	<p><a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L1043">net/ipv4/inet_hashtables.c</a></p>
+	<pre class="language-c"><code class="language-c">   offset &amp;= ~1U;
     
 other_parity_scan:
     port = low + offset;
@@ -65,30 +101,31 @@ other_parity_scan:
 
     offset++;
     if ((offset &amp; 1) &amp;&amp; remaining &gt; 1)
-        goto other_parity_scan;
-</code></pre>
-	<!--kg-card-end: markdown-->
+        goto other_parity_scan;</code></pre>
 	<p>Then in a nutshell: loop through one half of ports in our range (all even or all odd ports) before looping through the other half of ports (all odd or all even ports respectively) for each connection. Specifically, this is a variation of the <a href="https://datatracker.ietf.org/doc/html/rfc6056#section-3.3.4">Double-Hash Port Selection Algorithm</a>. We will ignore the bind bucket functionality since that is not our main concern.</p>
 	<p>Depending on your port range, you either start with an even port or an odd port. In our case, our low port, 9024, is even. Then the port is picked by adding the offset to the low port:</p>
-	<p><a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L1045">net/ipv4/inet_hashtables.c</a></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">port = low + offset;
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p><a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L1045">net/ipv4/inet_hashtables.c</a></p>
+	<pre class="language-c"><code class="language-c">port = low + offset;</code></pre>
 	<p>If low was odd, we will have an odd starting port because odd + even = odd.</p>
 	<p>There is a bit too much going on in the loop to explain in text. I have an example instead:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image5.png" class="kg-image" alt="Figure 6: A step-by-step diagram showing how the function __inet_has_connect() finds a port for connections preferring late port-binding." loading="lazy" width="825" height="471"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uVqtAUR07epRRKqQbHWkp/0e204a4f19b381ae1dce5c5ac4094891/image5.png" alt="Figure 6: A step-by-step diagram showing how the function __inet_has_connect() finds a port for connections preferring late port-binding." class="kg-image" width="825" height="471" loading="lazy">
+
+	</figure>
 	<p>This example is bound by 8 ports and 8 possible connections. All ports start unused. As a port is used up, the port is grayed out. Green boxes represent the next chosen port. All other colors represent open ports. Blue arrows are even port iterations of offset, and red are the odd port iterations of offset. Note that the offset is randomly picked, and once we cross over to the odd range, the offset is incremented by one.</p>
-	<p>For each selection of a port, the algorithm then makes a call to the function <code>check_established()</code> which dereferences <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L544"><code>__inet_check_established()</code></a>. This function loops over sockets to verify that the TCP 4-tuple is unique. The takeaway is that the socket list in the function is usually smaller than not. This grows as more unique TCP 4-tuples are introduced to the system. Longer socket lists may slow down port selection eventually. We have a blog post on <a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">ephemeral port exhausting</a> that dives into the socket list and port uniqueness criteria.<br><br>At this point, we can summarize that the odd/even port split is what is causing our performance bottleneck. And during the investigation, it was not obvious to me (or even maybe you) why the offset was initially calculated the way it was, and why the odd/even port split was introduced. After some git-archaeology the decisions become more clear.</p>
-	<h3 id="security-considerations">Security considerations</h3>
+	<p>For each selection of a port, the algorithm then makes a call to the function <code>check_established()</code> which dereferences <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/inet_hashtables.c#L544"><code>__inet_check_established()</code></a>. This function loops over sockets to verify that the TCP 4-tuple is unique. The takeaway is that the socket list in the function is usually smaller than not. This grows as more unique TCP 4-tuples are introduced to the system. Longer socket lists may slow down port selection eventually. We have a blog post on <a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">ephemeral port exhausting</a> that dives into the socket list and port uniqueness criteria.</p>
+	<p>At this point, we can summarize that the odd/even port split is what is causing our performance bottleneck. And during the investigation, it was not obvious to me (or even maybe you) why the offset was initially calculated the way it was, and why the odd/even port split was introduced. After some git-archaeology the decisions become more clear.</p>
+	<h3>Security considerations</h3>
 	<p>Port selection has been shown to be used in device <a href="https://lwn.net/Articles/910435">fingerprinting</a> in the past. This led the authors to introduce more randomization into the initial port selection. Prior, ports were predictably picked solely based on their initial hash and a salt value which does not change often. This helps with explaining the offset, but does not explain the split.</p>
-	<h3 id="why-the-evenodd-split">Why the even/odd split?</h3>
+	<h3>Why the even/odd split?</h3>
 	<p>Prior to this <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=07f4c90062f8fc7c8c26f8f95324cbe8fa3145a5">patch</a> and that <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1580ab63fc9a03593072cc5656167a75c4f1d173">patch</a>, services may have conflicts between the connect() and bind() heavy workloads. Thus, to avoid those conflicts, the split was added. An even offset was chosen for the connect() workloads, and an odd offset for the bind() workloads. However, we can see that the split works great for connect() workloads that do not exceed one half of the allotted port range.</p>
 	<p>Now we have an explanation for the flame graph and charts. So what can we do about this?</p>
-	<h2 id="user-space-solution-kernel-68">User space solution (kernel &lt; 6.8)</h2>
+	<h2>User space solution (kernel &lt; 6.8)</h2>
 	<p>We have a couple of strategies that would work best for us. Infrastructure or architectural strategies are not considered due to significant development effort. Instead, we prefer to tackle the problem where it occurs.</p><!--kg-card-begin: html-->
 	<h3 id="selecttestrepeat">Select, test, repeat</h3><!--kg-card-end: html-->
-	<p>For the “select, test, repeat” approach, you may have code that ends up looking like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">sys = get_ip_local_port_range()
+	<p>For the “select, test, repeat” approach, you may have code that ends up looking like this:</p>
+	<pre class="language-python"><code class="language-python">sys = get_ip_local_port_range()
 estab = 0
 i = sys.hi
 while i &gt;= 0:
@@ -102,17 +139,19 @@ while i &gt;= 0:
         continue
 
     i -= 1
-    estab += 1
-</code></pre>
-	<!--kg-card-end: markdown-->
+    estab += 1</code></pre>
 	<p>The algorithm simply loops through the system port range, and randomly picks a port each iteration. Then test that the connect() worked. If not, rinse and repeat until range exhaustion.</p>
 	<p>This approach is good for up to ~70-80% port range utilization. And this may take roughly eight to twelve attempts per connection as we approach exhaustion. The major downside to this approach is the extra syscall overhead on conflict. In order to reduce this overhead, we can consider another approach that allows the kernel to still select the port for us.</p><!--kg-card-begin: html-->
 	<h3 id="random">Select port by random shifting range</h3><!--kg-card-end: html-->
 	<p>This approach leverages the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177f3e42a4d8738af8ac19c3a90d002"><code>IP_LOCAL_PORT_RANGE</code></a> socket option. And we were able to achieve performance like this:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/Screenshot-2024-02-07-at-16.00.22.png" class="kg-image" alt="Figure 7: A detailed chart representing a flatter-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.03 milliseconds while we see 0.031 milliseconds on average for odd ports. There are 868 connections that resulted in an error." loading="lazy" width="1614" height="906"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Uz8whp12VuvqvKTDnE1u9/18f6621de34ae00e57aee7ffe5dff7fb/Screenshot-2024-02-07-at-16.00.22.png" alt="Figure 7: A detailed chart representing a flatter-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.03 milliseconds while we see 0.031 milliseconds on average for odd ports. There are 868 connections that resulted in an error." class="kg-image" width="1614" height="906" loading="lazy">
+
+	</figure>
 	<p>That is much better! The chart also introduces black dots that represent errored connections. However, they have a tendency to clump at the very end of our port range as we approach exhaustion. This is not dissimilar to what we may see in “<a href="https://blog.cloudflare.com/#selecttestrepeat">select, test, repeat</a>”.</p>
-	<p>The way this solution works is something like:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">IP_BIND_ADDRESS_NO_PORT = 24
+	<p>The way this solution works is something like:</p>
+	<pre class="language-python"><code class="language-python">IP_BIND_ADDRESS_NO_PORT = 24
 IP_LOCAL_PORT_RANGE = 51
 sys = get_local_port_range()
 window.lo = 0
@@ -127,9 +166,7 @@ sk.setsockopt(IPPROTO_IP, IP_BIND_ADDRESS_NO_PORT, 1)
 range = pack("@I", window.lo | (window.hi &lt;&lt; 16))
 sk.setsockopt(IPPROTO_IP, IP_LOCAL_PORT_RANGE, range)
 sk.bind((src_ip, 0))
-sk.connect((dest_ip, dest_port))
-</code></pre>
-	<!--kg-card-end: markdown-->
+sk.connect((dest_ip, dest_port))</code></pre>
 	<p>We first fetch the system's local port range, define a custom port range, and then randomly shift the custom range within the system range. Introducing this randomization helps the kernel to start port selection randomly at an odd or even port. Then reduces the loop search space down to the range of the custom window.</p>
 	<p>We tested with a few different window sizes, and determined that a five hundred or one thousand size works fairly well for our port range:</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -216,8 +253,9 @@ sk.connect((dest_ip, dest_port))
 	<p>As the window size increases, the error rate increases. That is because a larger window provides less random offset opportunity. A max window size of 56,512 is no different from using the kernels default behavior. Therefore, a smaller window size works better. But you do not want it to be too small either. A window size of one is no different from “<a href="https://blog.cloudflare.com/#selecttestrepeat">select, test, repeat</a>”.</p>
 	<p>In kernels &gt;= 6.8, we can do even better.</p><!--kg-card-begin: html-->
 	<h2 id="kernel">Kernel solution (kernel &gt;= 6.8)</h2><!--kg-card-end: html-->
-	<p>A new <a href="https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=207184853dbd">patch</a> was introduced that eliminates the need for the window shifting. This solution is going to be available in the 6.8 kernel.<br><br>Instead of picking a random window offset for <code>setsockopt(IPPROTO_IP, IP_LOCAL_PORT_RANGE</code>, …), like in the previous solution, we instead just pass the full system port range to activate the solution. The code may look something like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">IP_BIND_ADDRESS_NO_PORT = 24
+	<p>A new <a href="https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=207184853dbd">patch</a> was introduced that eliminates the need for the window shifting. This solution is going to be available in the 6.8 kernel.</p>
+	<p>Instead of picking a random window offset for <code>setsockopt(IPPROTO_IP, IP_LOCAL_PORT_RANGE</code>, …), like in the previous solution, we instead just pass the full system port range to activate the solution. The code may look something like this:</p>
+	<pre class="language-python"><code class="language-python">IP_BIND_ADDRESS_NO_PORT = 24
 IP_LOCAL_PORT_RANGE = 51
 sys = get_local_port_range()
 sk = socket(AF_INET, SOCK_STREAM)
@@ -225,30 +263,34 @@ sk.setsockopt(IPPROTO_IP, IP_BIND_ADDRESS_NO_PORT, 1)
 range = pack("@I", sys.lo | (sys.hi &lt;&lt; 16))
 sk.setsockopt(IPPROTO_IP, IP_LOCAL_PORT_RANGE, range)
 sk.bind((src_ip, 0))
-sk.connect((dest_ip, dest_port))
-</code></pre>
-	<!--kg-card-end: markdown-->
+sk.connect((dest_ip, dest_port))</code></pre>
 	<p>Setting <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177f3e42a4d8738af8ac19c3a90d002"><code>IP_LOCAL_PORT_RANGE</code></a> option is what tells the kernel to use a similar approach to “<a href="https://blog.cloudflare.com/#random">select port by random shifting range</a>” such that the start offset is randomized to be even or odd, but then loops incrementally rather than skipping every other port. We end up with results like this:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/Screenshot-2024-02-07-at-16.04.24.png" class="kg-image" alt="Figure 8: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.029 milliseconds while we see 0.029 milliseconds on average for odd ports. There are no errors." loading="lazy" width="1618" height="888"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ttWStZgNYfwftr71r8Vrt/99c2bfe9615e05d8af0de06c78ae26d0/Screenshot-2024-02-07-at-16.04.24.png" alt="Figure 8: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.029 milliseconds while we see 0.029 milliseconds on average for odd ports. There are no errors." class="kg-image" width="1618" height="888" loading="lazy">
+
+	</figure>
 	<p>The performance of this approach is quite comparable to our user space implementation. Albeit, a little faster. Due in part to general improvements, and that the algorithm can always find a port given the full search space of the range. Then there are no cycles wasted on a potentially filled sub-range.</p>
 	<p>These results are great for TCP, but what about other protocols?</p>
-	<h2 id="other-protocols-connect">Other protocols &amp; connect()</h2>
-	<p>It is worth mentioning at this point that the algorithms used for the protocols are <em>mostly</em> the same for IPv4 &amp; IPv6. Typically, the key difference is how the sockets are compared to determine uniqueness and where the port search happens. We did not compare performance for all protocols. But it is worth mentioning some similarities and differences with TCP and a couple of others.</p>
-	<h3 id="dccp">DCCP</h3>
+	<h2>Other protocols &amp; connect()</h2>
+	<p>It is worth mentioning at this point that the algorithms used for the protocols are <i>mostly</i> the same for IPv4 &amp; IPv6. Typically, the key difference is how the sockets are compared to determine uniqueness and where the port search happens. We did not compare performance for all protocols. But it is worth mentioning some similarities and differences with TCP and a couple of others.</p>
+	<h3>DCCP</h3>
 	<p>The DCCP protocol leverages the same port selection <a href="https://elixir.bootlin.com/linux/v6.6/source/net/dccp/ipv4.c#L115">algorithm</a> as TCP. Therefore, this protocol benefits from the recent kernel changes. It is also possible the protocol could benefit from our user space solution, but that is untested. We will let the reader exercise DCCP use-cases.</p>
-	<h3 id="udp-udp-lite">UDP &amp; UDP-Lite</h3>
-	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a> leverages a different algorithm found in the function <code><a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/udp.c#L239">udp_lib_get_port()</a></code>. Similar to TCP, the algorithm will loop over the whole port range space incrementally. This is only the case if the port is not already supplied in the bind() call. The key difference between UDP and TCP is that a random number is generated as a step variable. Then, once a first port is identified, the algorithm loops on that port with the random number. This relies on an uint16_t overflow to eventually loop back to the chosen port. If all ports are used, increment the port by one and repeat. There is no port splitting between even and odd ports.</p>
-	<p>The best comparison to the TCP measurements is a UDP setup similar to:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">sk = socket(AF_INET, SOCK_DGRAM)
+	<h3>UDP &amp; UDP-Lite</h3>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a> leverages a different algorithm found in the function <code>[udp_lib_get_port()](https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/udp.c#L239)</code>. Similar to TCP, the algorithm will loop over the whole port range space incrementally. This is only the case if the port is not already supplied in the bind() call. The key difference between UDP and TCP is that a random number is generated as a step variable. Then, once a first port is identified, the algorithm loops on that port with the random number. This relies on an uint16_t overflow to eventually loop back to the chosen port. If all ports are used, increment the port by one and repeat. There is no port splitting between even and odd ports.</p>
+	<p>The best comparison to the TCP measurements is a UDP setup similar to:</p>
+	<pre class="language-python"><code class="language-python">sk = socket(AF_INET, SOCK_DGRAM)
 sk.bind((src_ip, 0))
-sk.connect((dest_ip, dest_port))
-</code></pre>
-	<!--kg-card-end: markdown-->
+sk.connect((dest_ip, dest_port))</code></pre>
 	<p>And the results should be unsurprising with one IPv4 source address:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/Screenshot-2024-02-07-at-16.06.27.png" class="kg-image" alt="Figure 9: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.001 milliseconds while we see 0.001 milliseconds on average for odd ports. There are no errors." loading="lazy" width="1614" height="902"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UM5d0RBTgqADgVLbbqMlQ/235ac3ee5183efdefb42f9bd17dee9a3/Screenshot-2024-02-07-at-16.06.27.png" alt="Figure 9: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.001 milliseconds while we see 0.001 milliseconds on average for odd ports. There are no errors." class="kg-image" width="1614" height="902" loading="lazy">
+
+	</figure>
 	<p>UDP fundamentally behaves differently from TCP. And there is less work overall for port lookups. The outliers in the chart represent a worst-case scenario when we reach a fairly bad random number collision. In that case, we need to more-completely loop over the ephemeral range to find a port.</p>
 	<p>UDP has another problem. Given the socket option <code>SO_REUSEADDR</code>, the port you get back may conflict with another UDP socket. This is in part due to the function <a href="https://elixir.bootlin.com/linux/v6.6/source/net/ipv4/udp.c#L141"><code>udp_lib_lport_inuse()</code></a> ignoring the UDP 2-tuple (src ip, src port) check given the socket option. When this happens you may have a new socket that overwrites a previous. Extra care is needed in that case. We wrote more in depth about these cases in a previous <a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">blog post</a>.</p>
-	<h2 id="in-summary">In summary</h2>
+	<h2>In summary</h2>
 	<p>Cloudflare can make a lot of unicast egress connections to origin servers with popular uncached assets. To avoid port-resource exhaustion, we balance the load over a couple of IPv4 source addresses during those peak times. Then we asked: “what is the performance impact of one IPv4 source address for our connect()-heavy workloads?”. Port selection is not only difficult to get right, but is also a performance bottleneck. This is evidenced by measuring connect() latency with a flame graph and synthetic workloads. That then led us to discovering TCP’s quirky port selection process that loops over half your ephemeral ports before the other for each connect().</p>
 	<p>We then proposed three solutions to solve the problem outside of adding more IP addresses or other architectural changes: “<a href="https://blog.cloudflare.com/#selecttestrepeat">select, test, repeat</a>”, “<a href="https://blog.cloudflare.com/#random">select port by random shifting range</a>”, and an <a href="https://man7.org/linux/man-pages/man7/ip.7.html"><code>IP_LOCAL_PORT_RANGE</code></a> socket option <a href="https://blog.cloudflare.com/#kernel">solution</a> in newer kernels. And finally closed out with other protocol honorable mentions and their quirks.</p>
 	<p>Do not take our numbers! Please explore and measure your own systems. With a better understanding of your workloads, you can make a good decision on which strategy works best for your needs. Even better if you come up with your own strategy!</p>

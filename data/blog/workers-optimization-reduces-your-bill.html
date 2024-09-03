@@ -1,22 +1,30 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-20.png" class="kg-image" alt="A Workers optimization that reduces your bill" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73dygAhS9763wLeQh24KQb/4e9b6bbaf2a12eea7e6d948ba047ccee/image2-20.png" alt="A Workers optimization that reduces your bill" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>Recently, we made an optimization to the Cloudflare Workers runtime which reduces the amount of time Workers need to spend in memory. We're passing the savings on to you for all your Unbound Workers.</p>
-	<h3 id="background">Background</h3>
+	<h3>Background</h3>
 	<p>Workers are often used to implement HTTP proxies, where JavaScript is used to rewrite an HTTP request before sending it on to an origin server, and then to rewrite the response before sending it back to the client. You can implement any kind of rewrite in a Worker, including both rewriting headers and bodies.</p>
 	<p>Many Workers, though, do not actually modify the response body, but instead simply allow the bytes to pass through from the origin to the client. In this case, the Worker's application code has finished executing as soon as the response headers are sent, before the body bytes have passed through. Historically, the Worker was nevertheless considered to be "in use" until the response body had fully finished streaming.</p>
 	<p>For billing purposes, under the Workers Unbound pricing model, we charge duration-memory (gigabyte-seconds) for the time in which the Worker is in use.</p>
-	<h3 id="the-change">The change</h3>
+	<h3>The change</h3>
 	<p>On December 15-16, we made a change to the way we handle requests that are streaming through the response without modifying the content. This change means that we can mark application code as “idle” as soon as the response headers are returned.</p>
 	<p>Since no further application code will execute on behalf of the request, the system does not need to keep the request state in memory – it only needs to track the low-level native sockets and pump the bytes through. So now, during this time, the Worker will be considered idle, and could even be evicted before the stream completes (though this would be unlikely unless the stream lasts for a very long time).</p>
 	<p>Visualized it looks something like this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/DES-4045-Diagram.png" class="kg-image" alt="A sequence diagram with before and after that shows that after the change, Workers are considered “idle” as soon as the response headers have been forwarded from the origin to the client." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7djse9b1v1MjBGgpym4A5F/f3ba353f24ffad280a3d9e109ff7b4aa/DES-4045-Diagram.png" alt="A sequence diagram with before and after that shows that after the change, Workers are considered “idle” as soon as the response headers have been forwarded from the origin to the client." class="kg-image" width="1200" height="732" loading="lazy">
+
+	</figure>
 	<p>As a result of this change, we've seen that the time a Worker is considered "in use" by any particular request has dropped by an average of 70%. Of course, this number varies a lot depending on the details of each Worker. Some may see no benefit, others may see an even larger benefit.</p>
 	<p>This change is totally invisible to the application. To any external observer, everything behaves as it did before. But, since the system now considers a Worker to be idle during response streaming, the response streaming time will no longer be billed. So, if you saw a drop in your bill, this is why!</p>
-	<h3 id="but-it-doesn-t-stop-there-">But it doesn’t stop there!</h3>
+	<h3>But it doesn’t stop there!</h3>
 	<p>The change also applies to a few other frequently used scenarios, namely Websocket proxying, reading from the cache and streaming from KV.</p>
-	<p><strong>WebSockets</strong>: once a Worker has arranged to proxy through a WebSocket, as long as it isn't handling individual messages in your Worker code, the Worker does not remain in use during the proxying. The change applies to regular stateless Workers, but not to Durable Objects, which are not usually used for proxying.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">export default {
+	<p><b>WebSockets</b>: once a Worker has arranged to proxy through a WebSocket, as long as it isn't handling individual messages in your Worker code, the Worker does not remain in use during the proxying. The change applies to regular stateless Workers, but not to Durable Objects, which are not usually used for proxying.</p>
+	<pre class="language-typescript"><code class="language-typescript">export default {
   async fetch(request: Request) {
     //Do anything before
     const upgradeHeader = request.headers.get('Upgrade')
@@ -25,11 +33,9 @@
     }
     //Or with other requests
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><strong>Reading from Cache</strong>: If you return the response from a <code>cache.match</code> call, the Worker is considered idle as soon as the response headers are returned.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">export default {
+}</code></pre>
+	<p><b>Reading from Cache</b>: If you return the response from a <code>cache.match</code> call, the Worker is considered idle as soon as the response headers are returned.</p>
+	<pre class="language-typescript"><code class="language-typescript">export default {
   async fetch(request: Request) {
     let response = await caches.default.match('https://example.com')
     if (response) {
@@ -37,11 +43,9 @@
     }
     // get/create response and put into cache
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><strong>Streaming from KV</strong>: And lastly, when you stream from KV. This one is a bit trickier to get right, because often people retrieve the value from KV as a string, or JSON object and then create a response with that value. But if you fetch the value as a stream, as done in the example below, you can create a Response with the ReadableStream.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">interface Env {
+}</code></pre>
+	<p><b>Streaming from KV</b>: And lastly, when you stream from KV. This one is a bit trickier to get right, because often people retrieve the value from KV as a string, or JSON object and then create a response with that value. But if you fetch the value as a stream, as done in the example below, you can create a Response with the ReadableStream.</p>
+	<pre class="language-typescript"><code class="language-typescript">interface Env {
   MY_KV_NAME: KVNamespace
 }
 
@@ -52,10 +56,8 @@ export default {
       return new Response(readableStream, { headers: { 'content-type': 'application/pdf' } })
     }
   },
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="interested-in-workers-unbound">Interested in Workers Unbound?</h3>
+}</code></pre>
+	<h3>Interested in Workers Unbound?</h3>
 	<p>If you are already using Unbound, your bill will have automatically dropped already.</p>
 	<p>Now is a great time to check out Unbound if you haven’t already, especially since recently, we’ve also <a href="https://blog.cloudflare.com/workers-now-even-more-unbound">removed the egress fees</a>. Unbound allows you to build more complex workloads on our platform and only pay for what you use.</p>
 	<p>We are always looking for opportunities to make Workers better. Often that improvement takes the form of powerful new features such as the soon-to-be released <a href="https://blog.cloudflare.com/introducing-worker-services">Service Bindings</a> and, of course, <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">performance enhancements</a>. This time, we are delighted to make Cloudflare Workers even cheaper than they already were.</p>

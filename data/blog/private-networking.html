@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OONKfWmk4yFIWvi9jeOQs/76968cd13cf7ed6fbe5c22638c6a7a04/private-networking.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Starting today, you can build identity-aware, Zero Trust network policies using Cloudflare for Teams. You can apply these rules to connections bound for the public Internet or for traffic inside a private network running on Cloudflare. These rules are enforced in Cloudflare’s network of data centers in over 200 cities around the world, giving your team comprehensive network filtering and logging, wherever your users work, without slowing them down.</p>
 	<p>Last week, my teammate Pete’s <a href="https://blog.cloudflare.com/network-based-policies-in-cloudflare-gateway">blog post</a> described the release of network-based policies in Cloudflare for Teams. Your team can now keep users safe from threats by limiting the ports and IPs that devices in your fleet can reach. With that release, security teams can now replace even more security appliances with Cloudflare’s network.</p>
@@ -6,46 +6,75 @@
 	<p>To learn how, keep reading or watch the <a href="https://www.cloudflare.com/products/zero-trust/interactive-demo">demo</a> below.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 54.58333333333333%;"><iframe src="https://iframe.videodelivery.net/62017d584784e245f73bf980d67cbf99?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h3 id="deprecating-the-castle-and-moat-model">Deprecating the castle-and-moat model</h3>
+	<h3>Deprecating the castle-and-moat model</h3>
 	<p>Private networks provided security by assuming that the network should trust you by virtue of you being in a place where you could physically connect. If you could enter an office and connect to the network, the network assumed that you should be trusted and allowed to reach any other destination on that network. When work happened inside the closed walls of offices, with security based on the physical door to the building, that model at least offered some basic protections.</p>
 	<p>That model fell apart when users left the offices. Even before the pandemic sent employees home, roaming users or branch offices relied on virtual private networks (VPNs) to punch holes back into the private network. Users had to authenticate to the VPN but, once connected, still had the freedom to reach almost any resource. With more holes in the firewall, and full lateral movement, this model became a risk to any security organization.</p>
 	<p>However, the alternative was painful or unavailable to most teams. Building network segmentation rules required complex configuration and still relied on source IPs instead of identity. Even with that level of investment in network segmentation, organizations still had to trust the IP of the user rather than the user’s identity.</p>
 	<p>These types of IP-based rules served as band-aids while the rest of the use cases in an organization moved into the future. Resources like web applications migrated to models that used identity, multi-factor authentication, and continuous enforcement while networking security went unchanged.</p>
-	<h3 id="but-private-networks-can-be-great-">But private networks can be great!</h3>
+	<h3>But private networks can be great!</h3>
 	<p>There are still great reasons to use private networks for applications and resources. It can be easier and faster to create and share something on a private network instead of waiting to create a public DNS and IP record.</p>
 	<p>Also, IPs are more easily discarded and reused across internal networks. You do not need to give every team member permission to edit public DNS records. And in some cases, regulatory and security requirements flat out prohibit tools being exposed publicly on the Internet.</p>
 	<p>Private networks should not disappear, but the usability and security compromises they require should stay in the past. Two months ago, we announced the ability to <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare">build a private network</a> on Cloudflare. This feature allows your team to <a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement">replace VPN appliances</a> and clients with a network that has a point of presence in over 200 cities around the world.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/image1-5.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Zero Trust rules are enforced on the Cloudflare edge</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2u1ykC70SvXg8lbeACtzAe/fbd58f194b3590e0cccada17acaff1b4/image1-5.png" alt="" class="kg-image" width="1999" height="951" loading="lazy">
+
 	</figure>
+	<p>Zero Trust rules are enforced on the Cloudflare edge</p>
 	<p>While that release helped us address the usability compromises of a traditional VPN, today’s announcement handles the security compromises. You can now build identity-based, Zero Trust policies inside that private network. This means that you can lock down specific CIDR ranges or IP addresses based on a user’s identity, group, device or network. You can also control and log every connection without additional hardware or services.</p>
-	<h3 id="how-it-works">How it works</h3>
+	<h3>How it works</h3>
 	<p>Cloudflare’s daemon, cloudflared, is used to create a secure TCP tunnel from your network to Cloudflare’s edge. This tunnel is private and can only be accessed by connections that you authorize. On their side, users can deploy Cloudflare WARP on their machines to forward their network traffic to Cloudflare’s edge — this allows them to hit specific private IP addresses. Since Cloudflare has 200+ data centers across the globe, all of this occurs without any traffic backhauls or performance penalties.</p>
 	<p>With today’s release, we now enforce in-line network firewall policies as well. All traffic arriving to Cloudflare’s edge will be evaluated by the Layer 4 firewall. So while you can choose to enable or disable the Layer 7 firewall or bypass HTTP inspection for a given domain, all TCP traffic arriving to Cloudflare will traverse the Layer 4 firewall. Network-level policies will allow you to match traffic that arrives from (or is destined to) data centers, branch offices, and remote users based on the following traffic criteria:</p>
 	<ul>
-		<li>Source IP address or CIDR in the header</li>
-		<li>Destination IP address or CIDR in the header</li>
-		<li>Source port or port range in the header</li>
-		<li>Destination port or port range in the header</li>
+		<li>
+			<p>Source IP address or CIDR in the header</p>
+		</li>
+		<li>
+			<p>Destination IP address or CIDR in the header</p>
+		</li>
+		<li>
+			<p>Source port or port range in the header</p>
+		</li>
+		<li>
+			<p>Destination port or port range in the header</p>
+		</li>
 	</ul>
 	<p>With these criteria in place, you can enforce identity-aware policies down to a specific port across your entire network plane.</p>
-	<h3 id="get-started-with-zero-trust-networking">Get started with Zero Trust networking</h3>
+	<h3>Get started with Zero Trust networking</h3>
 	<p>There are a few things you’ll want to have configured before building your Zero Trust private network policies (we cover these in detail in our previous <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare/#how-to-get-started">private networking post</a>):</p>
 	<ul>
-		<li>Install cloudflared on your private network</li>
-		<li>Route your private IP addresses to Cloudflare’s edge</li>
-		<li>Deploy the WARP client to your users’ machines</li>
+		<li>
+			<p>Install cloudflared on your private network</p>
+		</li>
+		<li>
+			<p>Route your private IP addresses to Cloudflare’s edge</p>
+		</li>
+		<li>
+			<p>Deploy the WARP client to your users’ machines</p>
+		</li>
 	</ul>
 	<p>Once the initial setup is complete, this is how you can configure your Zero Trust network policies on the Teams Dashboard:</p>
 	<p>1. Create a new network policy in Gateway.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image3-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72txwhfZ8EUPThVTm588pX/e9354f9c834586c0f9fe833b159f9b84/image3-5.png" alt="" class="kg-image" width="1612" height="896" loading="lazy">
+
+	</figure>
 	<p>2. Specify the IP and Port combination you want to allow access to. In this example, we are exposing an RDP port on a specific private IP address.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image4-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40OGmXllWIdymdmnkVdyBJ/321a7863d7b569f052259ab299f28f5a/image4-6.png" alt="" class="kg-image" width="1480" height="1332" loading="lazy">
+
+	</figure>
 	<p>3. Add any desired identity policies to your network policy. In this example, we have limited access to users in a “Developers” group specified in the identity provider.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image2-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xGBgBlmAy4v2saPOfE421/d6a9c98d69f516d38b2419a7137d8a05/image2-7.png" alt="" class="kg-image" width="1040" height="500" loading="lazy">
+
+	</figure>
 	<p>Once this policy is configured, only users in the specific identity group running the WARP client will be able to access applications on the specified IP and port combination.</p>
 	<p>And that’s it. Without any additional software or configuration, we have created an identity-aware network policy for all of my users that will work on any machine or network across the world while maintaining Zero Trust. Existing infrastructure can be securely exposed in minutes not hours or days.</p>
-	<h3 id="what-s-next">What’s Next</h3>
+	<h3>What’s Next</h3>
 	<p>We want to make this even easier to use and more secure. In the coming months, we are planning to add support for Private DNS resolution, Private IP conflict management and granular session control for private network policies. Additionally, for now this flow only works for client-to-server (WARP to cloudflared) connections. Coming soon, we’ll introduce support for east-west connections that will allow teams to connect cloudflared and other parts of Cloudflare One routing.</p>
 	<p>Getting started is easy — open your <a href="https://dash.teams.cloudflare.com">Teams Dashboard</a> and follow our <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/network-policies">documentation</a>.</p>
 </div>

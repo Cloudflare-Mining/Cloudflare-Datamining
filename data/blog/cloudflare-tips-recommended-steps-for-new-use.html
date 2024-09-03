@@ -1,56 +1,66 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><a href="http://www.flickr.com/photos/damonbillian/5799082357" title="Mother Temple of Besakih in Bali, indonesia by dbillian, on Flickr"><img alt="Mother Temple of Besakih in Bali, indonesia" src="http://farm6.staticflickr.com/5305/5799082357_f8dd3067b3.jpg"></a></p>
-	<p><em>Editor's Note: Since the post has the word "steps" in it, I thought I would include a picture of some steps from a visit to <a href="https://en.wikipedia.org/wiki/Mother_Temple_of_Besakih">Mother Temple of Besakih</a> in Bali, Indonesia. I had the good fortune of visiting Bali in 2011, and the most amazing thing about the temple is that it is built on the slopes of an active volcano.</em></p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Kmz2d4mjIyQgRt8IXxZYX/414aeade1ae581a8309d35e6e6aa1cbe/5799082357_f8dd3067b3.jpg" alt="Mother Temple of Besakih in Bali, indonesia" class="kg-image" width="333" height="500" loading="lazy">
+
+	</figure>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/5799082357">http://www.flickr.com/photos/damonbillian/5799082357/</a> "Mother Temple of Besakih in Bali, indonesia by dbillian, on Flickr")</p>
+	<p><i>Editor's Note: Since the post has the word "steps" in it, I thought I would include a picture of some steps from a visit to </i><a href="https://en.wikipedia.org/wiki/Mother_Temple_of_Besakih"><i>Mother Temple of Besakih</i></a><i> in Bali, Indonesia. I had the good fortune of visiting Bali in 2011, and the most amazing thing about the temple is that it is built on the slopes of an active volcano.</i></p>
 	<p>CloudFlare's core value is that we speed up and protect any website. For new and current users, we wanted to pull together a handy guide that helps you get the most out of CloudFlare.</p>
-	<h3 id="recommendedsteps">Recommended Steps</h3>
-	<p><em>1. Best way to Resolve an Issue - 'Pause'</em><br>
-		When you sign up for CloudFlare, the service should just work. However, if you notice a problem after activating CloudFlare, do not change nameservers away from CloudFlare. Instead, temporarily deactivate CloudFlare by choosing the 'pause' or 'deactivate' option on your CloudFlare My Websites Page:</p>
+	<h3>Recommended Steps</h3>
+	<p><i>1. Best way to Resolve an Issue - 'Pause'</i>When you sign up for CloudFlare, the service should just work. However, if you notice a problem after activating CloudFlare, do not change nameservers away from CloudFlare. Instead, temporarily deactivate CloudFlare by choosing the 'pause' or 'deactivate' option on your CloudFlare My Websites Page:</p>
 	<p>Settings-&gt;Pause/Deactivate CloudFlare</p>
 	<p>Changing name servers away from CloudFlare makes it difficult to troubleshoot. If you 'pause' the service, the issue will likely be immediately resolved. Then, contact our technical support team so we can work with you to resolve the root cause.</p>
 	<p>Also see: <a href="https://blog.cloudflare.com/cloudflare-tips-troubleshooting-common-proble">Troubleshooting CloudFlare Problems</a></p>
-	<p><em>2. Preserving IP information --&gt; Install modcloudflare (or equivalent)</em><br>
-		Since CloudFlare acts as a reverse proxy for websites, CloudFlare's IPs are going to show in your server logs. There is an easy fix to <a href="https://support.cloudflare.com/forums/21318827-how-do-i-restore-original-visitor-ip-to-my-server-logs">restore original visitor IP</a> for any web server.</p>
+	<p><i>2. Preserving IP information --&gt; Install modcloudflare (or equivalent)</i>Since CloudFlare acts as a reverse proxy for websites, CloudFlare's IPs are going to show in your server logs. There is an easy fix to <a href="https://support.cloudflare.com/forums/21318827-how-do-i-restore-original-visitor-ip-to-my-server-logs">restore original visitor IP</a> for any web server.</p>
 	<p>If you have issues with things like GeoIP or .htaccess blocks not working properly on your site, installing <a href="https://www.cloudflare.com/resources-downloads">mod_cloudflare</a> will resolve the problem immediately.</p>
 	<p>You should also allowlist all of <a href="https://www.cloudflare.com/ips">CloudFlare's IP addresses</a> with your hosting provider and on your server.</p>
-	<p>Note: This is not required if you have activated CloudFlare through a <a href="https://www.cloudflare.com/hosting-partners">CloudFlare Certified<br>
-			Partner</a>.</p>
-	<p><em>3. Create PageRules</em><br>
-		PageRules gives you more performance and configuration options, including:</p>
+	<p>Note: This is not required if you have activated CloudFlare through a <a href="https://www.cloudflare.com/hosting-partners">CloudFlare CertifiedPartner</a>.</p>
+	<p><i>3. Create PageRules</i>PageRules gives you more performance and configuration options, including:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache HTML</a> (our default configuration only <a href="https://support.cloudflare.com/entries/22037282-what-file-extensions-does-cloudflare-cache-for-static-content">caches these static content files</a>)</li>
-		<li><a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Exclude certain URLs from CloudFlare features and caching</a></li>
-		<li><a href="https://blog.cloudflare.com/introducing-pagerules-url-forwarding">302 redirects</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache HTML</a> (our default configuration only <a href="https://support.cloudflare.com/entries/22037282-what-file-extensions-does-cloudflare-cache-for-static-content">caches these static content files</a>)</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Exclude certain URLs from CloudFlare features and caching</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-pagerules-url-forwarding">302 redirects</a></p>
+		</li>
 	</ul>
-	<p>We recommend that you use PageRules to exclude the admin section of your<br>
-		website from CloudFlare's services. This will ensure you don't see any error messages or have issues updating plugins. The PageRule you will need to create has the following structure for WordPress:</p>
+	<p>We recommend that you use PageRules to exclude the admin section of yourwebsite from CloudFlare's services. This will ensure you don't see any error messages or have issues updating plugins. The PageRule you will need to create has the following structure for WordPress:</p>
 	<p>*mydomain.com/wp-admin</p>
-	<p><em>4. Familiarize yourself with the CloudFlare settings</em><br>
-		CloudFlare offers a number of optional security and performance options that can be turned on or off on your "Settings" page:</p>
+	<p><i>4. Familiarize yourself with the CloudFlare settings</i>CloudFlare offers a number of optional security and performance options that can be turned on or off on your "Settings" page:</p>
 	<p>My Websites-&gt;Settings-&gt;CloudFlare settings</p>
 	<p>Some of the key features that we'd like to highlight:</p>
-	<h3 id="ipv6gateway">IPv6 Gateway</h3>
+	<h3>IPv6 Gateway</h3>
 	<p>Make your website <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">IPv6 compatible</a> without having to purchase expensive hardware. CloudFlare's IPv6 Gateway is available to all customers free of charge.</p>
-	<h3 id="webcontentoptimizationfeatures">Web Content Optimization Features</h3>
+	<h3>Web Content Optimization Features</h3>
 	<p><a href="https://blog.cloudflare.com/56590463">Rocket Loader</a> and <a href="https://blog.cloudflare.com/an-all-new-and-improved-autominify">Auto Minify</a> are free beta features that will help speed up your website. What they do:</p>
-	<p><strong>Rocket Loader:</strong>If you have ads, widgets or plugins on your website, Rocket Loader will speed up the delivery of your pages by automatically asynchronously loading your JavaScript resources.</p>
-	<p><strong>Auto Minify:</strong> Removes unnecessary characters from HTML, <a href="https://www.cloudflare.com/learning/performance/how-to-minify-css">CSS</a>, and JavaScript to save on file size.</p>
+	<p>**Rocket Loader:**If you have ads, widgets or plugins on your website, Rocket Loader will speed up the delivery of your pages by automatically asynchronously loading your JavaScript resources.</p>
+	<p><b>Auto Minify:</b> Removes unnecessary characters from HTML, <a href="https://www.cloudflare.com/learning/performance/how-to-minify-css">CSS</a>, and JavaScript to save on file size.</p>
 	<p>Note: These features are still in beta. We encourage you to try them but if you see an issue, then just turn them off. Please <a href="https://www.cloudflare.com/wco-bug-report.html">report the bugs to CloudFlare</a> so our magical engineers can work on fixes.</p>
-	<h3 id="ssl">SSL</h3>
+	<h3>SSL</h3>
 	<p><a href="https://blog.cloudflare.com/easiest-ssl-ever-now-included-automatically-w">SSL support</a> can be added to any website on CloudFlare on a <a href="https://www.cloudflare.com/plans">paid account</a>.</p>
 	<p>Paid plans offer additional security and performance features than free accounts. You can see the differences in our <a href="https://www.cloudflare.com/plans">comparison chart</a>.</p>
-	<p><em>5. Check out the CloudFlare App Store</em><br>
-		CloudFlare has partnered with a number of <a href="https://www.cloudflare.com/apps">popular web applications</a> to make adding these apps easy. You can get access to any of these services without touching your code or worrying about if they will interfere with another service on your site. The most popular services include:</p>
+	<p><i>5. Check out the CloudFlare App Store</i>CloudFlare has partnered with a number of <a href="https://www.cloudflare.com/apps">popular web applications</a> to make adding these apps easy. You can get access to any of these services without touching your code or worrying about if they will interfere with another service on your site. The most popular services include:</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/apps/google_analytics">Google Analytics</a> : Install Google Analytics on all of your pages</li>
-		<li><a href="https://www.cloudflare.com/apps/viglink">VigLink</a>: Make money from the content on your website or blog</li>
-		<li><a href="https://www.cloudflare.com/apps/codeguard">CodeGuard</a>: Back up your website content</li>
-		<li><a href="https://www.cloudflare.com/apps/highlight">Highlight</a>: Add contextual search with one click to your site (developed by CloudFlare)</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/apps/google_analytics">Google Analytics</a> : Install Google Analytics on all of your pages</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/apps/viglink">VigLink</a>: Make money from the content on your website or blog</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/apps/codeguard">CodeGuard</a>: Back up your website content</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/apps/highlight">Highlight</a>: Add contextual search with one click to your site (developed by CloudFlare)</p>
+		</li>
 	</ul>
-	<p><em>6. Search our Knowledge Base for FAQs</em><br>
-		While we love answering questions from our customers as quickly as possible, many questions can be answered by doing a quick search through <a href="https://support.cloudflare.com">CloudFlare's help content</a>.</p>
-	<p><em>7. Follow us on Facebook and Twitter</em><br>
-		We use <a href="https://www.facebook.com/CloudFlare">Facebook</a> and <a href="https://twitter.com/cloudflare">Twitter</a> as our primary communication channels for announcing new product releases, known system issues and to give users early access to beta features. If you want to know as much as you can about CloudFlare, or if you only have a really quick question to ask, Facebook and Twitter are the best places to go. We also recently launched a <a href="https://plus.google.com/100611700350554803650">Google+</a> page.</p>
+	<p><i>6. Search our Knowledge Base for FAQs</i>While we love answering questions from our customers as quickly as possible, many questions can be answered by doing a quick search through <a href="https://support.cloudflare.com">CloudFlare's help content</a>.</p>
+	<p><i>7. Follow us on Facebook and Twitter</i>We use <a href="https://www.facebook.com/CloudFlare">Facebook</a> and <a href="https://twitter.com/cloudflare">Twitter</a> as our primary communication channels for announcing new product releases, known system issues and to give users early access to beta features. If you want to know as much as you can about CloudFlare, or if you only have a really quick question to ask, Facebook and Twitter are the best places to go. We also recently launched a <a href="https://plus.google.com/100611700350554803650">Google+</a> page.</p>
 	<p>If you ever have a question, please <a href="mailto:support@cloudflare.com">contact us</a>. We read every email that we get and love to hear from our users.</p>
-	<!--kg-card-end: markdown-->
 </div>

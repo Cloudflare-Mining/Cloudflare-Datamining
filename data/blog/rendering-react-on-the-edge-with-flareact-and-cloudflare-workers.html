@@ -1,120 +1,160 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>The following is a guest post from <a href="https://twitter.com/jplhomer">Josh Larson</a>, Engineer at <a href="https://www.voxmedia.com">Vox Media</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63hex9WTW2ymlDaeng2lyg/c4b65284ce625d95a71685098fbac5fd/rendering-react-on-the-edge-with-flareact-and-cloudflare-workers.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>The following is a guest post from </i><a href="https://twitter.com/jplhomer"><i>Josh Larson</i></a><i>, Engineer at </i><a href="https://www.voxmedia.com"><i>Vox Media</i></a><i>.</i></p>
 	<p>Imagine you’re the maintainer of a high-traffic media website, and your DNS is already hosted on Cloudflare.</p>
 	<p>Page speed is critical. You need to get content to your audience as quickly as possible on every device. You also need to render ads in a speedy way to maintain a good user experience and make money to support your journalism.</p>
-	<p>One solution would be to <strong>render your site statically</strong> and cache it at the edge. This would help ensure you have top-notch delivery speed because you don’t need a server to return a response. However, your site has decades worth of content. If you wanted to make even a small change to the site design, you would need to regenerate <em>every single page </em>during your next deploy. This would take ages.</p>
+	<p>One solution would be to <b>render your site statically</b> and cache it at the edge. This would help ensure you have top-notch delivery speed because you don’t need a server to return a response. However, your site has decades worth of content. If you wanted to make even a small change to the site design, you would need to regenerate <i>every single page</i> during your next deploy. This would take ages.</p>
 	<p>Another issue is that your site would be static — and future updates to content or new articles would not be available until you deploy again.</p>
 	<p>That’s not going to work.</p>
-	<p>Another solution would be to <strong>render each page dynamically</strong> on your server. This ensures you can return a dynamic response for new or updated articles.</p>
+	<p>Another solution would be to <b>render each page dynamically</b> on your server. This ensures you can return a dynamic response for new or updated articles.</p>
 	<p>However, you’re going to need to pay for some beefy servers to be able to handle spikes in traffic and respond to requests in a timely manner. You’ll also probably need to implement a system of internal caches to optimize the performance of your app, which could lead to a more complicated development experience. That also means you’ll be at risk of a thundering herd problem if, for any reason, your cache becomes invalidated.</p>
-	<p>Neither of these solutions are great, and you’re forced to <strong>make a tradeoff</strong> between one of these two approaches.</p>
-	<p>Thankfully, you’ve recently come across a project like <a href="https://nextjs.org">Next.js</a> which offers a hybrid approach: static-site generation along with incremental regeneration. You’re in love with the patterns and developer experience in Next.js, but you’d also love to take advantage of the Cloudflare Workers platform to host your site. </p>
+	<p>Neither of these solutions are great, and you’re forced to <b>make a tradeoff</b> between one of these two approaches.</p>
+	<p>Thankfully, you’ve recently come across a project like <a href="https://nextjs.org">Next.js</a> which offers a hybrid approach: static-site generation along with incremental regeneration. You’re in love with the patterns and developer experience in Next.js, but you’d also love to take advantage of the Cloudflare Workers platform to host your site.</p>
 	<p><a href="https://workers.cloudflare.com">Cloudflare Workers</a> allow you to run your code on the edge quickly, efficiently and at scale. Instead of paying for a server to host your code, you can host it directly inside the datacenter — reducing the number of network trips required to load your application. In a perfect world, we wouldn’t need to find hosting for a Next.js site, because Cloudflare offers the same JavaScript hosting functionality with the Workers platform. With their dynamic runtime and edge caching capabilities, we wouldn’t need to worry about making a tradeoff between static and dynamic for our site.</p>
 	<p>Unfortunately, frameworks like Next.js and Cloudflare Workers don’t mesh together particularly well due to technical constraints. Until now:</p>
-	<h4 id="i-m-excited-to-announce-flareact-a-new-open-source-react-framework-built-for-cloudflare-workers-">I’m excited to announce <a href="https://flareact.com">Flareact</a>, a new open-source React framework built for Cloudflare Workers.</h4>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/09/Flareact@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h4>I’m excited to announce <a href="https://flareact.com">Flareact</a>, a new open-source React framework built for Cloudflare Workers.</h4>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iZAEv0uTQCFMSWABs8KLe/71eb6d743b47bdc1521a9b2095f76ec5/Flareact_2x.png" alt="" class="kg-image" width="916" height="214" loading="lazy">
+
+	</figure>
 	<p>With Flareact, you don’t need to make the tradeoff between a static site and a dynamic application.</p>
-	<p>Flareact allows you to <strong>render your React apps at the edge</strong> rather than on the server. It is modeled after Next.js, which means it supports file-based page routing, dynamic page paths and edge-side data fetching APIs. </p>
+	<p>Flareact allows you to <b>render your React apps at the edge</b> rather than on the server. It is modeled after Next.js, which means it supports file-based page routing, dynamic page paths and edge-side data fetching APIs.</p>
 	<p>Not only are Flareact pages rendered at the edge — they’re also cached at the edge using the <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a>. This allows you to provide a dynamic content source for your app without worrying about traffic spikes or response times.</p>
-	<p>With no servers or origins to deal with, your site is <em>instantly available</em> to your audience. <a href="https://workers.cloudflare.com">Cloudflare Workers</a> gives you a 0ms cold start and responses from the edge within milliseconds.</p>
-	<p>You can <a href="https://flareact.com">check out the docs</a> and get started now by clicking the button below:</p><!--kg-card-begin: markdown-->
-	<p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fflareact%2Fflareact-template&amp;paid=true"><img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers" loading="lazy"></a></p>
-	<!--kg-card-end: markdown-->
+	<p>With no servers or origins to deal with, your site is <i>instantly available</i> to your audience. <a href="https://workers.cloudflare.com">Cloudflare Workers</a> gives you a 0ms cold start and responses from the edge within milliseconds.</p>
+	<p>You can <a href="https://flareact.com">check out the docs</a> and get started now by clicking the button below:</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fflareact%2Fflareact-template&amp;paid=true">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DQKtrrjIPNSa9vCdzGlEo/8769c26e3255fa53b17f141188066b95/button" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
+		</a>
+	</figure>
 	<p>To get started manually, install the latest wrangler, and use the handy <code>wrangler generate</code> command below to create your first project:</p>
-	<pre><code>npm i @cloudflare/wrangler -g
+	<pre class="language-bash"><code class="language-bash">npm i @cloudflare/wrangler -g
 wrangler generate my-project https://github.com/flareact/flareact-template</code></pre>
-	<h2 id="what-s-the-big-deal">What’s the big deal?</h2>
-	<p>Hosting React apps on Cloudflare Workers Sites is <em>not a new concept</em>. In fact, you’ve always been able to <a href="https://developers.cloudflare.com/workers/tutorials/deploy-a-react-app-with-create-react-app">deploy a create-react-app project to Workers Sites</a> in addition to static versions of other frameworks like <a href="https://www.gatsbyjs.com/docs/deploying-to-cloudflare-workers">Gatsby</a> and Next.js.</p>
+	<h2>What’s the big deal?</h2>
+	<p>Hosting React apps on Cloudflare Workers Sites is <i>not a new concept</i>. In fact, you’ve always been able to <a href="https://developers.cloudflare.com/workers/tutorials/deploy-a-react-app-with-create-react-app">deploy a create-react-app project to Workers Sites</a> in addition to static versions of other frameworks like <a href="https://www.gatsbyjs.com/docs/deploying-to-cloudflare-workers">Gatsby</a> and Next.js.</p>
 	<p>However, Flareact renders your React application at the edge. This allows you to provide an initial server response with HTML markup — which can be helpful for search engine crawlers. You can also cache the response at the edge and optionally invalidate that cache on a timed basis — meaning your static markup will be regenerated if you need it to be fresh.</p>
 	<p>This isn’t a new pattern: Next.js has done the hard work in defining the shape of this API with <a href="https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support">SSG support</a> and <a href="https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration">Incremental Static Regeneration</a>. While there are nuanced differences in the implementation between Flareact and Next.js, they serve a similar purpose: to get your application to your end-user in the quickest and most-scalable way possible.</p>
-	<h2 id="a-focus-on-developer-experience">A focus on developer experience</h2>
+	<h2>A focus on developer experience</h2>
 	<p>A <a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless">magical developer experience</a> is a crucial ingredient to any successful product.</p>
 	<p>As a longtime fan and user of Next.js, I wanted to experiment with running the framework on Cloudflare Workers. However, Next.js and its APIs are framed around the <a href="https://nodejs.org/api/http.html">Node.js HTTP Server API</a>, while Cloudflare Workers use <a href="https://developers.cloudflare.com/workers/learning/how-workers-works">V8 isolates</a> and are modeled after the <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event">FetchEvent type</a>.</p>
 	<p>Since we don’t have typical access to a filesystem inside V8 isolates, it’s tough to mimic the environment required to run a dynamic Next.js server at the edge. Though projects like <a href="https://fab.dev">Fab</a> have come up with workarounds, I decided to approach the project with a clean slate and use existing patterns established in Next.js in a brand-new framework.</p>
 	<p>As a developer, I absolutely love the simplicity of exporting an asynchronous function from my page to have it supply props to the component. Flareact implements this pattern by allowing you to export a <code>getEdgeProps</code> function. This is similar to <code>getStaticProps</code> in Next.js, and it matches the expected return shape of that function in Next.js — including a <code>revalidate</code> parameter. <a href="https://flareact.com/docs/data-fetching">Learn more about data fetching in Flareact</a>.</p>
 	<p>I was also inspired by the <a href="https://nextjs.org/docs/api-routes/introduction">API Routes feature of Next.js</a> when I implemented the <a href="https://flareact.com/docs/api-routes">API Routes feature of Flareact</a> — enabling you to write standard Cloudflare Worker scripts directly within your React app.</p>
 	<p>I hope porting over an existing Next.js project to Flareact is a breeze!</p>
-	<h2 id="how-it-works">How it works</h2>
+	<h2>How it works</h2>
 	<p>When a <code>FetchEvent</code> request comes in, Flareact inspects the URL pathname to decide how to handle it:</p>
-	<p>If the request is for a <strong>page </strong>or for <strong>page props</strong>, it checks the cache for that request and returns it if there’s a hit. If there is a cache miss, it generates the page request or props function, stores the result in the cache, and returns the response.</p>
-	<p>If the request is for an <strong>API route</strong>, it sends the entire <code>FetchEvent</code> along to the user-defined API function, allowing the user to respond as they see fit.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Flareact-diagram-2@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>If the request is for a <b>page</b> or for <b>page props</b>, it checks the cache for that request and returns it if there’s a hit. If there is a cache miss, it generates the page request or props function, stores the result in the cache, and returns the response.</p>
+	<p>If the request is for an <b>API route</b>, it sends the entire <code>FetchEvent</code> along to the user-defined API function, allowing the user to respond as they see fit.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13wlNGHLGEn1TNpLkV2bDU/d394cb8a54bec2a5bc0ca4f56be1b024/Flareact-diagram-2_2x.png" alt="" class="kg-image" width="1479" height="896" loading="lazy">
+
+	</figure>
 	<p>If you want your cached page to be revalidated after a certain amount of time, you can return an additional <code>revalidate</code> property from <code>getEdgeProps()</code>. This instructs Flareact to cache the endpoint for that number of seconds before generating a new response.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Flareact-diagram-1@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wlcQVsaVBpMW4bbggCwbM/9033a3c76de3c9cb01317b7d06869f8a/Flareact-diagram-1_2x.png" alt="" class="kg-image" width="1435" height="943" loading="lazy">
+
+	</figure>
 	<p>Finally, if the request is for a static asset, it returns it directly from the <a href="https://developers.cloudflare.com/workers/runtime-apis/kv#background">Workers KV</a>.</p>
-	<h3 id="the-worker">The Worker</h3>
-	<p>The core responsibilities of the <strong>Worker</strong> — or in a traditional SSR framework, the <em>server</em> —<strong> </strong>are to: </p>
+	<h3>The Worker</h3>
+	<p>The core responsibilities of the <b>Worker</b> — or in a traditional SSR framework, the <i>server</i> — are to:</p>
 	<ol>
-		<li>Render the initial React page component into static HTML markup.</li>
-		<li>Provide the initial page props as a JSON object, embedded into the static markup in a script tag.</li>
-		<li>Load the client-side JavaScript bundles and stylesheets necessary to render the interactive page.</li>
+		<li>
+			<p>Render the initial React page component into static HTML markup.</p>
+		</li>
+		<li>
+			<p>Provide the initial page props as a JSON object, embedded into the static markup in a script tag.</p>
+		</li>
+		<li>
+			<p>Load the client-side JavaScript bundles and stylesheets necessary to render the interactive page.</p>
+		</li>
 	</ol>
 	<p>One challenge with building Flareact is that the Webpack targets the <code>webworker</code> output rather than the <code>node</code> output. This makes it difficult to inform the worker which pages exist in the filesystem, since there is no access to the filesystem.</p>
 	<p>To get around this, Flareact leverages <a href="https://webpack.js.org/guides/dependency-management/#requirecontext"><code>require.context</code></a>, a Webpack-specific API, to inspect the project and build a manifest of pages on the client and the worker. I’d love to replace this with a smarter bundling strategy on the client-side eventually.</p>
-	<h3 id="the-client">The Client</h3>
+	<h3>The Client</h3>
 	<p>In addition to handling incoming Worker requests, Flareact compiles a client bundle containing the code necessary for routing, data fetching and more from the browser.</p>
-	<p>The core responsibilities of the <strong>client</strong> are to:</p>
+	<p>The core responsibilities of the <b>client</b> are to:</p>
 	<ol>
-		<li>Listen for routing events</li>
-		<li>Fetch the necessary page component and its props from the worker over AJAX</li>
+		<li>
+			<p>Listen for routing events</p>
+		</li>
+		<li>
+			<p>Fetch the necessary page component and its props from the worker over AJAX</p>
+		</li>
 	</ol>
 	<p>Building a client router from scratch has been a challenge. It listens for changes to the internal route state, updates the URL pathname with <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState">pushState</a>, makes an AJAX request to the worker for the page props, and then updates the current component in the render tree with the requested page.</p>
 	<p>It was fun building a <a href="https://flareact.com/docs/flareact-link">flareact/link</a> component similar to next/link:</p>
-	<pre><code>import Link from "flareact/link";
+	<pre class="language-bash"><code class="language-bash">import Link from "flareact/link";
 
 export default function Index() {
   return (
-    &lt;div&gt;
-      &lt;Link href="/about"&gt;
-        &lt;a&gt;Go to About&lt;/a&gt;
-      &lt;/Link&gt;
-    &lt;/div&gt;
+    <div>
+      <link href="/about">
+        <a>Go to About</a>
+      
+    </div>
   );
-}
-</code></pre>
+}</code></pre>
 	<p>I also set out to build a custom version of <a href="https://nextjs.org/docs/api-reference/next/head">next/head</a> for Flareact. As it turns out, this was non-trivial! With lots of interesting stuff going on behind the scenes to support SSR and client-side routing events, I decided to make <a href="https://flareact.com/docs/flareact-head">flareact/head</a> a simple wrapper around <a href="https://github.com/nfl/react-helmet">react-helmet</a> instead:</p>
-	<pre><code>import Head from "flareact/head";
+	<pre class="language-bash"><code class="language-bash">import Head from "flareact/head";
 
 export default function Index() {
   return (
-    &lt;div&gt;
-      &lt;Head&gt;
-        &lt;title&gt;My page title&lt;/title&gt;
-      &lt;/Head&gt;
-      &lt;h1&gt;Hello, world.&lt;/h1&gt;
-    &lt;/div&gt;
+    <div>
+      
+        <title>My page title</title>
+      <script nonce="">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
+      <h1>Hello, world.</h1>
+    </div>
   );
-}
-</code></pre>
-	<h3 id="local-development">Local Development</h3>
-	<p>The local developer experience of Flareact leverages the new <code>wrangler dev</code> command, sending server requests through a local tunnel to the Cloudflare edge and back to your machine. </p><!--kg-card-begin: html-->
+}</code></pre>
+	<h3>Local Development</h3>
+	<p>The local developer experience of Flareact leverages the new <code>wrangler dev</code> command, sending server requests through a local tunnel to the Cloudflare edge and back to your machine.</p><!--kg-card-begin: html-->
 	<stream src="f93e42e0ffd5e4cd7c17f08f2ab0226b" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=f93e42e0ffd5e4cd7c17f08f2ab0226b"></script><!--kg-card-end: html-->
 	<p>This is a huge win for productivity, since you don’t need to manually build and deploy your application to see how it will perform in a production environment.</p>
-	<p>It’s also a really exciting update to the serverless toolchain. Running a robust development environment in a serverless world has always been a challenge, since your code is executing in a non-traditional context. Tunneling local code to the edge and back is <em>such a great addition</em> to Cloudflare’s developer experience.</p>
-	<h2 id="use-cases">Use cases</h2>
+	<p>It’s also a really exciting update to the serverless toolchain. Running a robust development environment in a serverless world has always been a challenge, since your code is executing in a non-traditional context. Tunneling local code to the edge and back is <i>such a great addition</i> to Cloudflare’s developer experience.</p>
+	<h2>Use cases</h2>
 	<p>Flareact is a great candidate for a lot of <a href="https://jamstack.org">Jamstack</a>-adjacent applications, like blogs or static marketing sites.</p>
 	<p>It could also be used for more dynamic applications, with robust API functions and authentication mechanisms — all implemented using Cloudflare Workers.</p>
 	<p>Imagine building a high-traffic e-commerce site with Flareact, where both site reliability and dynamic rendering for things like price changes and stock availability are crucial.</p>
 	<p>There are also untold possibilities for integrating the Workers KV into your edge props or API functions as a first-class database solution. No need to reach for an externally-hosted database!</p>
 	<p>While the project is still in its early days, here are a couple real-world examples:</p>
 	<ul>
-		<li><a href="https://github.com/flareact/flareact-site">The Flareact docs site</a>, powered by Markdown files</li>
-		<li><a href="https://github.com/flareact/flareact/tree/master/examples/with-cms-wordpress">A blog site</a>, powered by a headless WordPress API</li>
+		<li>
+			<p><a href="https://github.com/flareact/flareact-site">The Flareact docs site</a>, powered by Markdown files</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/flareact/flareact/tree/master/examples/with-cms-wordpress">A blog site</a>, powered by a headless WordPress API</p>
+		</li>
 	</ul>
-	<h2 id="the-road-ahead">The road ahead</h2>
+	<h2>The road ahead</h2>
 	<p>I have to be honest: creating a server-side rendered React framework with little prior knowledge was very difficult. There’s still a ton to learn, and Flareact has a long way to go to reach parity with Next.js in the areas of optimization and production-readiness.</p>
 	<p>Here’s what I’m hoping to add to Flareact in the near future:</p>
 	<ul>
-		<li>Smarter client bundling and Webpack chunks to reduce individual page weight</li>
-		<li>A more feature-complete client-side router</li>
-		<li>The ability to extend and customize the root document of the app</li>
-		<li>Support for more style frameworks (CSS-in-JS, Sass, CSS modules, etc)</li>
-		<li>A more stable development environment</li>
-		<li>Documentation and support for environment variables, secrets and KV namespaces</li>
-		<li>A guide for deploying from GitHub Actions and other CI tools</li>
+		<li>
+			<p>Smarter client bundling and Webpack chunks to reduce individual page weight</p>
+		</li>
+		<li>
+			<p>A more feature-complete client-side router</p>
+		</li>
+		<li>
+			<p>The ability to extend and customize the root document of the app</p>
+		</li>
+		<li>
+			<p>Support for more style frameworks (CSS-in-JS, Sass, CSS modules, etc)</p>
+		</li>
+		<li>
+			<p>A more stable development environment</p>
+		</li>
+		<li>
+			<p>Documentation and support for environment variables, secrets and KV namespaces</p>
+		</li>
+		<li>
+			<p>A guide for deploying from GitHub Actions and other CI tools</p>
+		</li>
 	</ul>
 	<p>If the project sounds interesting to you, be sure to <a href="https://github.com/flareact/flareact">check out the source code on GitHub</a>. Contributors are welcome!</p>
 </div>

@@ -1,36 +1,62 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image5-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-is-secondary-dns-and-why-is-it-important">What is secondary DNS, and why is it important?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Z7sgjsNqckT7LKWGOlrj/1f9c753cdbfebb428d4bbf074481fc9c/image5-3.png" alt="" class="kg-image" width="822" height="708" loading="lazy">
+
+	</figure>
+	<h3>What is secondary DNS, and why is it important?</h3>
 	<p>In DNS, nameservers are responsible for serving DNS records for a zone. How the DNS records populate into the nameservers differs based on the type of nameserver.</p>
 	<p>A primary server is a nameserver that manages a zone’s DNS records. This is where the zone file is maintained and where DNS records are added, removed, and modified. However, relying on one DNS server can be risky. What if that server goes down, or your DNS provider has an outage? If you run a storefront, then your customers would have to wait until your DNS server is back up to access your site. If your website were a brick and mortar store, this would be effectively like boarding up the door while customers are trying to get in.This type of outage can be very costly.</p>
 	<p>Now imagine you have another DNS server that has a replica of your DNS records. Wouldn’t it be great to have it as a back-up if your primary nameserver went down? Or better yet, what if both served your DNS records at all times— this could help decrease the latency of DNS requests, distribute the load between DNS servers, and add resiliency to your infrastructure! And that’s precisely what Secondary DNS nameservers were built for.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image3-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eKpwiNc5lpg1AOMrydWd2/e0895a596916fab7665e4a1cfeb455e4/image3-7.png" alt="" class="kg-image" width="1999" height="1262" loading="lazy">
+
+	</figure>
 	<p>As businesses grow, they often scale their DNS infrastructure. We’re seeing more customers move away from two or three on-premise DNS servers to using a managed DNS provider to having multiple DNS vendors—all to increase redundancy against the possibility of a DDoS attack taking down one of their providers. Cloudflare has data centers in over 200 cities, all of which run our DNS software allowing our authoritative DNS customers to benefit from DNS lookups averaging around 11ms globally. So we decided to expand this functionality to customers who want to use more than one DNS provider, or for those that find it too complicated to move away from their on-premise DNS server.</p>
-	<h3 id="customer-challenges">Customer Challenges</h3>
+	<h3>Customer Challenges</h3>
 	<p>When we first built our secondary DNS product, our MVP was focused on functionality and not ease of use. We did this because we thought that this feature would be used by a small portion of our Enterprise customers and that they would be comfortable using the API. But the demand for secondary DNS was far greater than we initially imagined. Many customers are interested in the service, including those who aren't comfortable managing DNS &nbsp;through the API.</p>
 	<p>Previously, setting up secondary DNS on a zone required a series of API calls: one for creating the zone, one for defining the IP address and settings of the primary server, one for linking the primary server(s) to the zone, and one for initiating a zone transfer.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image1-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zQ3JsrrG9pB51AVdAyRyS/41e8a5ed477da664a1ec438864b1ad13/image1-7.png" alt="" class="kg-image" width="802" height="602" loading="lazy">
+
+	</figure>
 	<p>We heard from customers that this experience was frustrating. There were also a lot of places where the setup could go wrong: some customers would forget to link a primary server to their zone, others would forget a step when adding subsequent zones, and still others would have to spend hours debugging a typo in their API call. We believe secondary DNS customers should have as seamless an experience as our authoritative DNS customers, and shouldn’t be treated as secondary (pun intended) class citizens. When creating the onboarding UI, we asked ourselves, how can we simplify the experience to just a few input fields? How do we prevent customers from making easy, potentially messy mistakes, like forgetting to attach a primary server?</p>
-	<h3 id="enter-the-new-secondary-dns-onboarding-experience">Enter: The new Secondary DNS Onboarding Experience</h3>
+	<h3>Enter: The new Secondary DNS Onboarding Experience</h3>
 	<p>Starting today, enterprise customers who are entitled to secondary DNS will be able to configure their zone in the Cloudflare Dashboard. The time from when they type in their domain name to when they see their records in the dashboard is less than two minutes. We’ve added error prevention to stop customers from adding their zone until they’ve configured at least one primary server. Customers will also be able to review their transferred records before finishing the onboarding process, allowing them to see what was transferred, without juggling API calls and and switching back and forth between the dashboard and a support article.</p>
-	<h3 id="how-it-looks">How It Looks</h3>
-	<p>The “Add Site” flow in the Cloudflare Dashboard gives customers two options: Authoritative or Secondary DNS. Next, they will need to fill out the IP address of their primary server, attach a TSIG (Transactional Signature) to authenticate zone transfers, and voila! In just a few clicks, records populate to your DNS table. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image4-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="the-intricacies-of-secondary-dns">The Intricacies of Secondary DNS</h3>
+	<h3>How It Looks</h3>
+	<p>The “Add Site” flow in the Cloudflare Dashboard gives customers two options: Authoritative or Secondary DNS. Next, they will need to fill out the IP address of their primary server, attach a TSIG (Transactional Signature) to authenticate zone transfers, and voila! In just a few clicks, records populate to your DNS table.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5w4vL0T1NJMvuTHTNx7Ffq/0ba24c8d2e6ffec58233d0d2d782e562/image4-4.png" alt="" class="kg-image" width="1772" height="1560" loading="lazy">
+
+	</figure>
+	<h3>The Intricacies of Secondary DNS</h3>
 	<p>As mentioned above, primary nameservers are where DNS records are managed, and secondary nameservers are responsible for holding the read-only replica of those records. But how do they get there? The communication between a primary server and a secondary nameserver is known as a zone transfer.</p>
 	<p>Primary servers use SOA (Start of Authority) records to keep track of zone updates. Every time a zone file changes (say you add or remove a DNS record), the serial number of the SOA record is incremented as a way to signal secondary nameservers that the zone updated, and it’s time to fetch a fresh copy.</p>
-	<p>Primary servers can send a NOTIFY message to a secondary server to signal a zone file change. Once the secondary receives the NOTIFY, it will do an SOA smoke test against the primary server and perform a zone transfer if it sees that the SOA value has increased. An AXFR or IXFR query can initiate the zone transfer. An AXFR query initiates a full zone transfer and is usually requested the very first time a zone is transferred. But AXFR transfers are not always necessary as most zone file changes are minute. This is why IXFR (incremental zone transfer) requests were created — they tell a primary server which version of the zone a secondary currently holds and the primary server sends the difference between the new version and the one the secondary has — this way only the new changes are transferred. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image2-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Primary servers can send a NOTIFY message to a secondary server to signal a zone file change. Once the secondary receives the NOTIFY, it will do an SOA smoke test against the primary server and perform a zone transfer if it sees that the SOA value has increased. An AXFR or IXFR query can initiate the zone transfer. An AXFR query initiates a full zone transfer and is usually requested the very first time a zone is transferred. But AXFR transfers are not always necessary as most zone file changes are minute. This is why IXFR (incremental zone transfer) requests were created — they tell a primary server which version of the zone a secondary currently holds and the primary server sends the difference between the new version and the one the secondary has — this way only the new changes are transferred.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6i8vtY3IURtM2Dm8jomHFr/424393ef4bd84805a2e9be0ebf4a714f/image2-7.png" alt="" class="kg-image" width="946" height="1088" loading="lazy">
+
+	</figure>
 	<p>Some primary servers, unfortunately, do not support NOTIFY queries. This means that instead of the primary notifying the secondary of zone updates, the secondary needs to periodically check the SOA of the primary server to see if the value has changed.</p>
-	<h3 id="securing-zone-transfers">Securing Zone Transfers</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image6-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Securing Zone Transfers</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wCCMxuY3jWAKlXGG5qATY/0e883d2d0f8f76fcaa69a1b35d5d98a3/image6-3.png" alt="" class="kg-image" width="1999" height="1209" loading="lazy">
+
+	</figure>
 	<p>Zone transfers between a primary and secondary server are unauthenticated on their own. TSIGs (Transactional Signatures) were developed as a means to add authentication to the DNS protocol, and have mostly been used for zone transfers. They provide mutual authentication between a client and a server by using a shared secret between the two parties and a one-way keyed hash function, which is attached as a TSIG record to a DNS message. The TSIG record guarantees that only secondary nameservers with the TSIG can pull zone transfers from a primary server. And vice versa, secondary servers will only accept zone transfers from primary servers that have the proper TSIG attached. Additionally, TSIGs provide data integrity and ensure that the DNS message was not modified en route.</p>
-	<p>We support TSIGs and <strong>highly recommend </strong>that you add it when configuring your primary server.</p>
-	<h3 id="extending-dns-analytics-to-secondary-dns">Extending DNS Analytics to Secondary DNS</h3>
+	<p>We support TSIGs and <b>highly recommend</b> that you add it when configuring your primary server.</p>
+	<h3>Extending DNS Analytics to Secondary DNS</h3>
 	<p>Setting up a secondary zone on Cloudflare is a simple process with the new onboarding UI. In just a few clicks, Cloudflare’s nameservers in all 200+ cities will begin responding to DNS queries. In addition to serving DNS records, secondary DNS customers will also be able to see the same DNS analytics that we provide to our authoritative DNS customers. The analytics show a breakdown of DNS traffic by record type, response code, and even geographical regions.</p>
 	<p>One of our customers, Big Cartel, runs an <a href="https://www.cloudflare.com/ecommerce">E-commerce platform</a> that has helped people all over the world sell <a href="https://www.bigcartel.com/about">$2.5 billion of their work since 2005</a>. As they grow, Cloudflare’s secondary DNS product helps keep their site fast and reliable:</p>
-	<blockquote>“At Big Cartel, we provide an online storefront for our customers. We need to be always available and avoid any chances of downtime — eliminating all single points of failure is critical for us. With Cloudflare's Secondary DNS, we can do just that! It keeps our DNS infrastructure more resilient while allowing our customers to benefit from fast query times. Additionally, using Cloudflare's Secondary DNS analytics provides granular insights into how our traffic is balanced between our DNS providers” - Lee Jensen, Technical Director<br></blockquote>
-	<h3 id="getting-started">Getting Started</h3>
-	<p>Secondary DNS is currently available on the Enterprise plan, if you’d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS, please refer to our<a href="https://support.cloudflare.com/hc/en-us/articles/360001356152-How-do-I-setup-and-manage-Secondary-DNS-"> support article. </a><br></p>
+	<blockquote>
+		<p>“At Big Cartel, we provide an online storefront for our customers. We need to be always available and avoid any chances of downtime — eliminating all single points of failure is critical for us. With Cloudflare's Secondary DNS, we can do just that! It keeps our DNS infrastructure more resilient while allowing our customers to benefit from fast query times. Additionally, using Cloudflare's Secondary DNS analytics provides granular insights into how our traffic is balanced between our DNS providers” - Lee Jensen, Technical Director</p>
+	</blockquote>
+	<h3>Getting Started</h3>
+	<p>Secondary DNS is currently available on the Enterprise plan, if you’d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS, please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/360001356152-How-do-I-setup-and-manage-Secondary-DNS-">support article.</a></p>
 </div>

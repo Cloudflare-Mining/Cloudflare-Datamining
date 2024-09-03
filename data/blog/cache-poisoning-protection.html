@@ -1,58 +1,103 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dbuzfY837nCckWOlkTfxM/790ab33cdd191307d4afbdc78db173e1/cache-poisoning-protection.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>A few days ago, Cloudflare — along with the rest of the world — learned of a <a href="https://portswigger.net/blog/practical-web-cache-poisoning">"practical" cache poisoning attack</a>. In this post I’ll walk through the attack and explain how Cloudflare mitigated it for our customers. While any web cache is vulnerable to this attack, Cloudflare is uniquely able to take proactive steps to defend millions of customers.</p>
 	<p>In addition to the steps we’ve taken, we strongly recommend that customers update their origin web servers to mitigate vulnerabilities. Some popular vendors have applied patches that can be installed right away, including <a href="https://www.drupal.org/SA-CORE-2018-005">Drupal</a>, <a href="https://symfony.com/blog/cve-2018-14773-remove-support-for-legacy-and-risky-http-headers">Symfony</a>, and <a href="https://framework.zend.com/security/advisory/ZF2018-01">Zend</a>.</p>
-	<h3 id="howasharedwebcacheworks">How a shared web cache works</h3>
+	<h3>How a shared web cache works</h3>
 	<p>Say a user requests a cacheable file, <code>index.html</code>. We first check if it’s in cache, and if it’s not, we fetch it from the origin and store it. Subsequent users can request that file from our cache until it expires or gets evicted.</p>
 	<p>Although contents of a response can vary slightly between requests, customers may want to cache a single version of the file to improve performance:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/cache-ok.png" alt="How cache normally works" loading="lazy"></p>
-	<p><em>(See <a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-">this support page</a> for more info about how to cache HTML with Cloudflare.)</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jMHNvdj7hDJAiEb7ureAq/09988fb308eb182d6c722d81b51960fe/cache-ok.png" alt="How cache normally works" class="kg-image" width="1478" height="586" loading="lazy">
+
+	</figure>
+	<p><i>(See </i><a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-"><i>this support page</i></a><i> for more info about how to cache HTML with Cloudflare.)</i></p>
 	<p>How do we know it’s the same file? We create something called a “cache key” which contains several fields, for example:</p>
 	<ul>
-		<li>HTTP Scheme</li>
-		<li>HTTP Host</li>
-		<li>Path</li>
-		<li>Query string</li>
-		<li>…</li>
+		<li>
+			<p>HTTP Scheme</p>
+		</li>
+		<li>
+			<p>HTTP Host</p>
+		</li>
+		<li>
+			<p>Path</p>
+		</li>
+		<li>
+			<p>Query string</p>
+		</li>
+		<li>
+			<p>…</p>
+		</li>
 	</ul>
 	<p>In general, if the URL matches, and our customer has told us that a file is cacheable, we will serve the cached file to subsequent users.</p>
-	<h3 id="howacachepoisoningattackworks">How a cache poisoning attack works</h3>
+	<h3>How a cache poisoning attack works</h3>
 	<p>In a cache poisoning attack, a malicious user crafts an HTTP request that tricks the origin into producing a “poisoned” version of <code>index.html</code> with the same cache key as an innocuous request. This file may get cached and served to other users:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/cache-poison.png" alt="How a cache poisoning attack works" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xi374PMzX5VRkQrVBQ8bp/ef6fbf1f28d5c362fdc9eefa01406a54/cache-poison.png" alt="How a cache poisoning attack works" class="kg-image" width="1522" height="594" loading="lazy">
+
+	</figure>
 	<p>We take this vulnerability very seriously, because an attacker with no privileges may be able to inject arbitrary data or resources into customer websites.</p>
 	<p>So how do you trick an origin into producing unexpected output? It turns out that some origins send back data back from HTTP headers that are not part of the cache key.</p>
 	<p>To give one example, we might observe origin behavior like:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/example-req-resp.png" alt="An HTTP response that reflects back data in an HTTP request header" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cPNW6DoaAdUjbIhc28SQD/8c002fcf1de54a4e97292e7579bb5d3a/example-req-resp.png" alt="An HTTP response that reflects back data in an HTTP request header" class="kg-image" width="1230" height="820" loading="lazy">
+
+	</figure>
 	<p>Because this data is returned, unescaped, from the origin, it can be used in scary ways:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/js-req-resp.png" alt="An HTTP response that reflects back malicious JavaScript from an HTTP request header" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1595GWWVTWBjLUvCBhL6VH/ff1af379aa8afaf1eff0fc334194b5f7/js-req-resp.png" alt="An HTTP response that reflects back malicious JavaScript from an HTTP request header" class="kg-image" width="1262" height="852" loading="lazy">
+
+	</figure>
 	<p>Game over — the attacker can now get arbitrary JavaScript to execute on this webpage.</p>
-	<h3 id="notifyingcustomerswhoareatrisk">Notifying customers who are at risk</h3>
+	<h3>Notifying customers who are at risk</h3>
 	<p>As soon as we learned about this new vulnerability, we wanted to see if any of our customers were vulnerable. We scanned all of our enterprise customer websites and checked if they echoed risky data. We immediately notified these customers about the vulnerability and advised them to update their origin.</p>
-	<h3 id="blockingtheworstoffenders">Blocking the worst offenders</h3>
+	<h3>Blocking the worst offenders</h3>
 	<p>The next step was to block all requests that contain obviously malicious content — like JavaScript — in an HTTP header. Examples of this include a header with suspicious characters like <code>&lt;</code> or <code>&gt;</code>.</p>
 	<p>We were able to deploy these changes immediately for all customers who use our WAF. But we weren’t done yet.</p>
-	<h3 id="amoresubtleattack">A more subtle attack</h3>
+	<h3>A more subtle attack</h3>
 	<p>There are other versions of the attack that could trick a client into downloading an unwanted but innocuous-looking resource, with harmful consequences.</p>
 	<p>Many requests that have traveled through another proxy before reaching Cloudflare contain the X-Forwarded-Host header. Some origins may rely on this value to serve web pages. For example:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/subtle-req-resp.png" alt="An HTTP request may look innocuous, but contain malicious data that gets reflected by an origin" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AteTgCdKken1Iu6c7a3Dx/e9b60d8003f6785a32d61535f7aa5af6/subtle-req-resp.png" alt="An HTTP request may look innocuous, but contain malicious data that gets reflected by an origin" class="kg-image" width="1256" height="844" loading="lazy">
+
+	</figure>
 	<p>In this case, there’s no way to just block requests with this X-Forwarded-Host header, because it may have a valid purpose. However, we need to ensure that we don’t return this content to any users who didn’t request it!</p>
 	<p>There are a few ways we could defend against this type of attack. An obvious first answer is to just disable cache. This isn’t a great solution, though, as disabling cache would result in a tremendous amount of traffic on customer origin servers, which defeats the purpose of using Cloudflare.</p>
 	<p>Another option is to always include every HTTP header and its value in the cache key. However, there are many headers, and many different innocuous values (e.g. <code>User-Agent</code>). If we always included them in our default cache key, performance would degrade, because different users asking for the same content would get different copies, when they could all be effectively served with one.</p>
-	<h3 id="solutionincludeinterestingheadervaluesinthecachekey">Solution: include “interesting” header values in the cache key</h3>
+	<h3>Solution: include “interesting” header values in the cache key</h3>
 	<p>Instead, we decided to change our cache keys for a request only if we think it may influence the origin response. Our default cache key got a bunch of new values:</p>
 	<ul>
-		<li>HTTP Scheme</li>
-		<li>HTTP Host</li>
-		<li>Path</li>
-		<li>Query string</li>
-		<li><strong>X-Forwarded-Host header</strong></li>
-		<li><strong>X-Host header</strong></li>
-		<li><strong>X-Forwarded-Scheme header</strong></li>
-		<li>…</li>
+		<li>
+			<p>HTTP Scheme</p>
+		</li>
+		<li>
+			<p>HTTP Host</p>
+		</li>
+		<li>
+			<p>Path</p>
+		</li>
+		<li>
+			<p>Query string</p>
+		</li>
+		<li>
+			<p><b>X-Forwarded-Host header</b></p>
+		</li>
+		<li>
+			<p><b>X-Host header</b></p>
+		</li>
+		<li>
+			<p><b>X-Forwarded-Scheme header</b></p>
+		</li>
+		<li>
+			<p>…</p>
+		</li>
 	</ul>
 	<p>In order to prevent unnecessary cache sharding, we only include these header values when they differ from what’s in the URL or Host header. For example, if the HTTP Host is <code>www.example.com</code>, and X-Forwarded-Host is also <code>www.example.com</code>, we will not add the X-Forwarded-Host header to the cache key. Of course, it’s still crucial that applications do not send back data from any other headers!</p>
 	<p>One side effect of this change is that customers who use these headers, and also rely on Purge by URL, may need to specify more headers in their Purge API calls. You can read more detail in <a href="https://support.cloudflare.com/hc/en-us/articles/200169246">this support page</a>.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>Cloudflare is committed to protecting our customers. If you notice anything unusual with your account, or have more questions, please contact <a href="mailto:support@cloudflare.com">Cloudflare Support</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

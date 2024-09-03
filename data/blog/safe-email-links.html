@@ -1,53 +1,81 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-48.png" class="kg-image" alt="Illustration of links going through emails and staying protected" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bWIRGfMFbFafhTD8VcpPf/ea06bb8a07298793b8faacdc241b6e5c/image3-48.png" alt="Illustration of links going through emails and staying protected" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>We're often told not to click on 'odd' links in email, but what choice do we really have? With the volume of emails and the myriad of SaaS products that companies use, it's inevitable that employees find it almost impossible to distinguish a good link before clicking on it. And that's before attackers go about making links harder to inspect and hiding their URLs behind tempting "Confirm" and "Unsubscribe" buttons.</p>
 	<p>We need to let end users click on links and have a safety net for when they unwittingly click on something malicious — let’s be honest, it’s bound to happen even if you do it by mistake. That safety net is Cloudflare's Email Link Isolation.</p>
-	<h2 id="email-link-isolation">Email Link Isolation</h2>
+	<h2>Email Link Isolation</h2>
 	<p>With Email Link Isolation, when a user clicks on a suspicious link — one that email security hasn’t identified as ‘bad’, but is still not 100% sure it’s ‘good’ — they won’t immediately be taken to that website. Instead, the user first sees an interstitial page recommending extra caution with the website they’ll visit, especially if asked for passwords or personal details.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-78.png" class="kg-image" alt="Interstitial page informs the user that the website they’ll visit is potentially dangerous and provides a button to open with Cloudflare Browser Isolation" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/176fAKaEbWz4ESe4erOMOc/144ea624b3a69006230a88e81b97e925/image1-78.png" alt="Interstitial page informs the user that the website they’ll visit is potentially dangerous and provides a button to open with Cloudflare Browser Isolation" class="kg-image" width="1999" height="1004" loading="lazy">
+
+	</figure>
 	<p>From there, one may choose to not visit the webpage or to proceed and open it in a remote isolated browser that runs on Cloudflare’s global network and not on the user’s local machine. This helps protect the user and the company.</p>
 	<p>The user experience in our isolated browser is virtually indistinguishable from using one’s local browser (we’ll talk about why below), but untrusted and potentially malicious payloads will execute away from the user’s computer and your corporate network.</p>
 	<p>In summary, this solution:</p>
 	<ul>
-		<li>Keeps users alert to prevent credential theft and <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">account takeover</a></li>
-		<li>Automatically blocks dangerous downloads</li>
-		<li>Prevents malicious scripts from executing on the user’s device</li>
-		<li>Protects against zero-day exploits on the browser</li>
+		<li>
+			<p>Keeps users alert to prevent credential theft and <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">account takeover</a></p>
+		</li>
+		<li>
+			<p>Automatically blocks dangerous downloads</p>
+		</li>
+		<li>
+			<p>Prevents malicious scripts from executing on the user’s device</p>
+		</li>
+		<li>
+			<p>Protects against zero-day exploits on the browser</p>
+		</li>
 	</ul>
-	<h2 id="how-can-i-try-it">How can I try it</h2>
+	<h2>How can I try it</h2>
 	<p><a href="https://www.cloudflare.com/products/zero-trust/email-security">Area 1</a> is Cloudflare’s <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">email security solution</a>. It protects organizations from the full range of email attack types (URLs, payloads, BEC), vectors (email, web, network), and attack channels (external, internal, trusted partners) by enforcing multiple layers of protection before, during, and after the email hits the inbox. Today it adds Email Link Isolation to the protections it offers.</p>
 	<p>If you are a Cloudflare Area 1 customer you can <a href="https://www.cloudflare.com/zero-trust/lp/email-link-isolation">request access to the Email Link Isolation beta</a> today. We have had Email Link Isolation deployed to all Cloudflare employees for the last four weeks and are ready to start onboarding customers.</p>
 	<p>During the beta it will be available for free on <a href="https://www.cloudflare.com/plans">all plans</a>. After the beta it will still be included at no extra cost with our <a href="https://www.cloudflare.com/press-releases/2020/announcing-area-1-phishguard">PhishGuard plan</a>.</p>
-	<h2 id="under-the-hood">Under the hood</h2>
+	<h2>Under the hood</h2>
 	<p>To create Email Link Isolation we used a few ingredients that are quite special to Cloudflare. It may seem complicated and, in a sense, the protection is complex, but we designed this so that the user experience is fast, safe, and with clear options on how to proceed.</p>
-	<h3 id="1-find-potentially-unsafe-domains">1. Find potentially unsafe domains</h3>
+	<h3>1. Find potentially unsafe domains</h3>
 	<p>First, we have created a constantly updating list of domains that the <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1">Cloudflare’s DNS resolver</a> recently saw for the first time, or that are somehow potentially unsafe (leveraging classifiers from the <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a> and other products). These are domains that would be too disruptive for the organization to block outright, but that should still be navigated with extra caution.</p>
 	<p>For example, people acquire domains and create new businesses every day. There’s nothing wrong with that - quite the opposite. However, attackers often set up or acquire websites serving legitimate content and, days or weeks later, send a link to intended targets. The emails flow through as benign and the attacker weaponizes the website when emails are already sitting on people’s inboxes. Blocking all emails with links to new websites would cause users to surely miss important communications, and delivering the emails while making links safe to click on is a much better suited approach.</p>
 	<p>There is also hosting infrastructure from large cloud providers, such as Microsoft or Google, that prevent crawling and scanning. These are used on our day-to-day business, but attackers may deploy malicious content there. You wouldn’t want to fully block emails with links to Microsoft SharePoint, for example, but it’s certainly safer to use Email Link Isolation on them if they link to outside your organization.</p>
 	<p>Attackers are constantly experimenting with new ways of looking legitimate to their targets, and that’s why relying on the early signals that Cloudflare sees makes such a big difference.</p>
-	<h3 id="2-rewrite-links-in-emails">2. Rewrite links in emails</h3>
-	<p>The second ingredient we want to highlight is that, as Cloudflare Area 1 processes and inspects emails for security concerns, it also checks the domain of every link against the suspicious list. If an email contains a link to a suspicious domain, Cloudflare Area 1 automatically changes it (<em>rewrites</em>) so that the interstitial page is shown, and the link opens with <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation">Cloudflare Browser Isolation</a> by default.</p>
-	<p><em>Note: Rewriting email links is only possible when emails are processed inline, which is one of the options for deploying Area 1. One of the big disadvantages of any email security solution deployed as API-only is that closing this last mile gap through link rewriting isn’t a possibility.</em></p>
-	<h3 id="3-opens-remotely-but-feels-local">3. Opens remotely but feels local</h3>
+	<h3>2. Rewrite links in emails</h3>
+	<p>The second ingredient we want to highlight is that, as Cloudflare Area 1 processes and inspects emails for security concerns, it also checks the domain of every link against the suspicious list. If an email contains a link to a suspicious domain, Cloudflare Area 1 automatically changes it (<i>rewrites</i>) so that the interstitial page is shown, and the link opens with <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation">Cloudflare Browser Isolation</a> by default.</p>
+	<p><i>Note: Rewriting email links is only possible when emails are processed inline, which is one of the options for deploying Area 1. One of the big disadvantages of any email security solution deployed as API-only is that closing this last mile gap through link rewriting isn’t a possibility.</i></p>
+	<h3>3. Opens remotely but feels local</h3>
 	<p>When a user clicks on one of these rewritten links, instead of directly accessing a potential threat, our systems will first check their current classification (benign, suspicious, malicious). Then, if it’s malicious, the user will be blocked from continuing to the website and see an interstitial page informing them why. No further action is required.</p>
 	<p>If the link is suspicious, the user is offered the option to open it in an isolated browser. What happens next? The link is opened with Cloudflare Browser Isolation in a nearby <a href="https://www.cloudflare.com/network">Cloudflare data center</a> (globally within 50 milliseconds of 95% of the Internet-connect population). To ensure website compatibility and security, the target website is entirely executed in a sandboxed Chromium-based browser. Finally, the website is instantly streamed back to the user as vector instructions consumed by a lightweight HTML5-compatible remoting client in the user’s preferred web browser. These safety precautions happen with no perceivable latency to the end user.</p>
 	<p>Cloudflare Browser Isolation is an extremely secure remote browsing experience that feels just like local browsing. And delivering this is only possible by serving isolated browsers on a low latency, global network with our <a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation">unique vector based streaming</a> technology. This architecture is different from legacy <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">remote browser isolation</a> solutions that rely on fragile and insecure DOM-scrubbing, or are bandwidth intensive and high latency pixel pushing techniques hosted in a few high latency data centers.</p>
-	<h3 id="4-reassess-always-learning-">4. Reassess (always learning)</h3>
+	<h3>4. Reassess (always learning)</h3>
 	<p>Last but not least, another ingredient that makes Email Link Isolation particularly effective is that behind the scenes our services are constantly reevaluating domains and updating their reputation in Cloudflare’s systems.</p>
 	<p>When a domain on our suspicious list is confirmed to be benign, all links to it can automatically start opening with the user’s local browser instead of with Cloudflare Browser Isolation.</p>
 	<p>Similarly, if a domain on the suspicious list is identified as malign, all links to that domain can be immediately blocked from opening. So, our services are constantly learning and acting accordingly.</p>
-	<h2 id="email-link-isolation-at-cloudflare">Email Link Isolation at Cloudflare</h2>
+	<h2>Email Link Isolation at Cloudflare</h2>
 	<p>It’s been four weeks since we deployed Email Link Isolation to all our 3,000+ Cloudflare employees, here’s what we saw:</p>
 	<ul>
-		<li>100,000 link rewrites per week on Spam and Malicious emails. Such emails were already blocked server side by Area 1 and users never see them. It’s still safer to rewrite these as they may be released from quarantine on user request.</li>
-		<li>2,500 link rewrites per week on Bulk emails. Mostly <a href="https://en.wikipedia.org/wiki/Graymail_(email)">graymail</a>, which are commercial/bulk communications the user opted into. They may end up in the users’ spam folder.</li>
-		<li>1,000 link rewrites per week on emails that do not fit any of the categories above — these are the ones that normally reach the user’s inboxes. These are almost certainly benign, but there’s still enough doubt to warrant a link rewrite.</li>
-		<li><strong>25 clicks on rewritten links per week</strong> (up to six per day).</li>
+		<li>
+			<p>100,000 link rewrites per week on Spam and Malicious emails. Such emails were already blocked server side by Area 1 and users never see them. It’s still safer to rewrite these as they may be released from quarantine on user request.</p>
+		</li>
+		<li>
+			<p>2,500 link rewrites per week on Bulk emails. Mostly <a href="https://en.wikipedia.org/wiki/Graymail_(email)">graymail</a>, which are commercial/bulk communications the user opted into. They may end up in the users’ spam folder.</p>
+		</li>
+		<li>
+			<p>1,000 link rewrites per week on emails that do not fit any of the categories above — these are the ones that normally reach the user’s inboxes. These are almost certainly benign, but there’s still enough doubt to warrant a link rewrite.</p>
+		</li>
+		<li>
+			<p><b>25 clicks on rewritten links per week</b> (up to six per day).</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-64.png" class="kg-image" alt="bar chart showing that from over 100000 links rewritten only 25 get clicked, and they are successful at preventing phishing campaigns" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1J3g2dQOVL9ZKOnxr0YEiv/4aa993dc7165b2b152d26c77c9282ab2/image2-64.png" alt="bar chart showing that from over 100000 links rewritten only 25 get clicked, and they are successful at preventing phishing campaigns" class="kg-image" width="1388" height="610" loading="lazy">
+
+	</figure>
 	<p>As a testament to the efficacy of Cloudflare Area 1, 25 suspicious link clicks per week for a universe of over 3,000 employees is a very low number. Thanks to Email Link Isolation, users were protected against exploits.</p>
-	<h2 id="better-together-with-cloudflare-zero-trust">Better together with Cloudflare Zero Trust</h2>
+	<h2>Better together with Cloudflare Zero Trust</h2>
 	<p>In future iterations, administrators will be able to connect Cloudflare Area 1 to their Cloudflare Zero Trust account and apply isolation policies, <a href="https://blog.cloudflare.com/inline-dlp-ga">DLP</a> (Data Loss Protection) controls and in-line <a href="https://blog.cloudflare.com/managing-clouds-cloudflare-casb">CASB</a> (a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">cloud access security broker</a>) to email link isolated traffic.</p>
 	<p>We are starting our beta today. If you’re interested in trying Email Link Isolation and start to feel safer with your email experience, you should sign up <a href="https://www.cloudflare.com/zero-trust/lp/email-link-isolation">here</a>.</p>
 </div>

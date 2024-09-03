@@ -1,30 +1,35 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stream-player-customizations-to-boost-your-video-experience-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/stream-player-customizations-to-boost-your-video-experience-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/eUeYHbxXdZj5_thKnPnPGJeOLruLMPGsPtda3N-pyScCsZOpOkhcngSovbDbvYIvzTsWmFoou8f0jv2jDBojmq_7VGqDvWThMeLyVFG-yVi46S0jwu2DOtjw3BRBehVvJMNuTt05" class="kg-image" alt="New Stream Player customizations to boost your video experience" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stream-player-customizations-to-boost-your-video-experience">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/stream-player-customizations-to-boost-your-video-experience">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KvDPKuVqnFaQtVMv0pidQ/0f6dd4d25a4d264d5fa2e59cb5fe4b92/eUeYHbxXdZj5_thKnPnPGJeOLruLMPGsPtda3N-pyScCsZOpOkhcngSovbDbvYIvzTsWmFoou8f0jv2jDBojmq_7VGqDvWThMeLyVFG-yVi46S0jwu2DOtjw3BRB.png" alt="New Stream Player customizations to boost your video experience" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>When we launched Stream, one of our goals was to provide the most performant video player. We focused on building a player that loads fast, works across different browsers and frameworks, and intelligently switches video quality levels depending on your end user’s connectivity.</p>
 	<p>We are expanding the Stream Player vision, so you can control the look and feel of the viewing experience. Today, we are announcing a series of new customization options to help you deliver the best video playback experience.</p>
-	<h3 id="add-your-own-color">Add Your Own Color</h3>
+	<h3>Add Your Own Color</h3>
 	<p>One thing we kept hearing from customers is that they would like to be able to customize the Stream Player to better reflect their brand. Stream Player now supports setting a primary color to match your company’s color. Here is an example of us using the primaryColor property to set the primary color to the Cloudflare Orange.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>To use the primaryColor property, simply add it to the iframe URL. In this example, the hex code is #F48120 and the uri-encoded value is %23F48120.</p><!--kg-card-begin: markdown-->
-	<pre><code>https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23F48120
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>To use the primaryColor property, simply add it to the iframe URL. In this example, the hex code is #F48120 and the uri-encoded value is %23F48120.</p>
+	<pre class="language-bash"><code class="language-bash">https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23F48120</code></pre>
 	<p>If you are using the React or Angular wrapper, you can use the primaryColor prop to customize the player color.</p>
 	<p>Currently, setting the primary color property will change the colors of the play button and the seekbar to the primary color you specify. We plan to offer more ways to brand the Stream Player in the future.</p>
-	<h3 id="deep-link-within-videos">Deep link within videos</h3>
+	<h3>Deep link within videos</h3>
 	<p>Previously, if you wanted the video to start at a certain point in time, you would need to write custom code that uses the Stream Player SDK to fast-forward the viewer to the precise start time. Stream Player now supports a startTime property, which eliminates the need to load the SDK and write custom code if you simply want to deep link the view to a point-in-time in the video.</p>
 	<p>Let’s say you run an e-learning platform and would like the instructors to be able to answer questions by deep linking to a specific part of an hour-long video. If you set the new startTime querystring parameter or prop, video playback in the Stream Player will begin at the specified timestamp.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<h3 id="enable-localized-captions-by-default">Enable localized captions by default</h3>
-	<p>Cloudflare Stream has long supported video captions for multiple languages. But we heard from customers that they would like to be able to turn on captions by default <em>and</em> specify the default language. This is now natively supported and makes it significantly easier to make your video accessible for a global audience.</p>
+	<h3>Enable localized captions by default</h3>
+	<p>Cloudflare Stream has long supported video captions for multiple languages. But we heard from customers that they would like to be able to turn on captions by default <i>and</i> specify the default language. This is now natively supported and makes it significantly easier to make your video accessible for a global audience.</p>
 	<p>If you have a website with localization support, you likely want captions to be turned on with a preset language. Auto-enabling captions can also improve the viewer experience in instances where the video is auto-played while also muted. This is a growing trend and, in fact, Facebook reports that over 85% of videos watched on the platform are played with sound off.</p>
 	<p>Auto-enabling captions with the Stream Player is now as simple as specifying a language code in the iframe URL.</p>
-	<h3 id="revamped-embed-tab">Revamped Embed Tab</h3>
+	<h3>Revamped Embed Tab</h3>
 	<p>Finally, we’ve revamped the Embed tab, so you can experiment with all the player customization options without writing a single line of code. You can easily configure properties like the poster image and primary color from the Embed tab. The Embed tab lets you see an instant preview of the customized player and provides the embed code that you can paste in your app or website.</p>
-	<p>Stream users often struggled with setting the perfect poster image for individual videos. The process would involve watching the video, finding the right timestamp to use as a cover image, reading the API docs and finally, modifying the query parameters manually until you land on the right cover image. With the new enhancements, you can play the video to the right point in the video and click <strong>Copy from player</strong> to set the poster image timestamp.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-55.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Stream users often struggled with setting the perfect poster image for individual videos. The process would involve watching the video, finding the right timestamp to use as a cover image, reading the API docs and finally, modifying the query parameters manually until you land on the right cover image. With the new enhancements, you can play the video to the right point in the video and click <b>Copy from player</b> to set the poster image timestamp.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5D1vyYVZgTafO82CRJKICx/4ebae336c0b412b6d5dac113ddb9e7d4/image1-55.png" alt="" class="kg-image" width="629" height="674" loading="lazy">
+
+	</figure>
 	<p>We are just starting our journey of making the Stream Player super customizable. If you have a particular customization that you’d like to see supported, <a href="https://forms.gle/cquHEXK8St6sVZnx5">we’d love to hear from you.</a></p>
 </div>

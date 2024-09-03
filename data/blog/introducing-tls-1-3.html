@@ -1,61 +1,106 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><strong>CloudFlare is turbocharging the encrypted internet</strong></em></p>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NkV2keoVVLzTUxmoFl6NS/7882660ed4d98f176ec925fa4f07fa17/introducing-tls-1-3.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p><b><i>CloudFlare is turbocharging the encrypted internet</i></b></p>
 	<p>The encrypted Internet is about to become a whole lot snappier. When it comes to browsing, we’ve been driving around in a beat-up car from the 90s for a while. Little does anyone know, we’re all about to trade in our station wagons for a smoking new sports car. The reason for this speed boost is TLS 1.3, a new encryption protocol that improves both speed and security for Internet users everywhere. As of today, TLS 1.3 is available to all CloudFlare customers.</p>
-	<h3 id="theencryptedinternet">The Encrypted Internet</h3>
+	<h3>The Encrypted Internet</h3>
 	<p>Many of the major web properties you visit are encrypted, which is indicated by the padlock icon and the presence of “https” instead of “http” in the address bar. The “s” stands for secure. When you connect to an HTTPS site, the communication between you and the website is encrypted, which makes browsing the web dramatically more secure, protecting your communication from prying eyes and the <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos">injection of malicious code</a>. HTTPS is not only used by websites, it also secures the majority of APIs and mobile application backends.</p>
 	<p>The underlying technology that enables secure communication on the Internet is a protocol called Transport Layer Security (TLS). TLS is an evolution of Secure Sockets Layer (SSL), a protocol developed by Netscape in the 1990s. The Internet Engineering Task Force (IETF), a standards body, has been in charge of defining the protocol, which has gone through several iterations. The last version, TLS 1.2, was standardized in 2008 and is currently supported by the majority of browsers and HTTPS-enabled web services.</p>
 	<p>TLS 1.2 can be secure when configured correctly, but its age has begun to show. In the last few years, several high-profile attacks have been published that revealed flaws in the protocol. Eight years is a long time in computer security, so the IETF have been working on a new version of the protocol, TLS 1.3, which should be finalized by the end of 2016.</p>
 	<p>TLS 1.3 is a major overhaul and has two main advantages over previous versions:</p>
 	<ul>
-		<li>Enhanced security</li>
-		<li>Improved speed</li>
+		<li>
+			<p>Enhanced security</p>
+		</li>
+		<li>
+			<p>Improved speed</p>
+		</li>
 	</ul>
-	<h3 id="enhancedsecurity">Enhanced Security</h3>
+	<h3>Enhanced Security</h3>
 	<p>Most of the attacks on TLS from the last few years targeted vestigial pieces of the protocol left around from the 90s. TLS 1.2 is highly configurable, and vulnerable sites simply failed to disable the older features in hopes of being compatible with old browsers.</p>
 	<p>TLS 1.3 embraces the “less is more” philosophy, removing support for older broken forms of cryptography. That means you can’t turn on the potentially vulnerable stuff, even if you try. The list of TLS 1.2 features that have been removed is extensive, and most of the exiled features have been associated with high profile attacks. These include:</p>
 	<ul>
-		<li>RSA key transport — <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">Doesn’t provide forward secrecy</a></li>
-		<li>CBC mode ciphers — Responsible for <a href="https://blog.cloudflare.com/taming-beast-better-ssl-now-available-across">BEAST</a>, and <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack">Lucky 13</a></li>
-		<li>RC4 stream cipher — <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">Not secure for use in HTTPS</a></li>
-		<li>SHA-1 hash function — <a href="https://blog.cloudflare.com/why-its-harder-to-forge-a-sha-1-certificate-than-it-is-to-find-a-sha-1-collision">Deprecated in favor of SHA-2</a></li>
-		<li>Arbitrary Diffie-Hellman groups — <a href="http://blog.intothesymmetry.com/2016/01/openssl-key-recovery-attack-on-dh-small.html">CVE-2016-0701</a></li>
-		<li>Export ciphers — Responsible for <a href="https://freakattack.com">FREAK</a> and <a href="https://blog.cloudflare.com/logjam-the-latest-tls-vulnerability-explained">LogJam</a></li>
+		<li>
+			<p>RSA key transport — <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">Doesn’t provide forward secrecy</a></p>
+		</li>
+		<li>
+			<p>CBC mode ciphers — Responsible for <a href="https://blog.cloudflare.com/taming-beast-better-ssl-now-available-across">BEAST</a>, and <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack">Lucky 13</a></p>
+		</li>
+		<li>
+			<p>RC4 stream cipher — <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">Not secure for use in HTTPS</a></p>
+		</li>
+		<li>
+			<p>SHA-1 hash function — <a href="https://blog.cloudflare.com/why-its-harder-to-forge-a-sha-1-certificate-than-it-is-to-find-a-sha-1-collision">Deprecated in favor of SHA-2</a></p>
+		</li>
+		<li>
+			<p>Arbitrary Diffie-Hellman groups — <a href="http://blog.intothesymmetry.com/2016/01/openssl-key-recovery-attack-on-dh-small.html">CVE-2016-0701</a></p>
+		</li>
+		<li>
+			<p>Export ciphers — Responsible for <a href="https://freakattack.com">FREAK</a> and <a href="https://blog.cloudflare.com/logjam-the-latest-tls-vulnerability-explained">LogJam</a></p>
+		</li>
 	</ul>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/image02.jpg" alt="" loading="lazy"></p>
-	<p><small>CC 2.0 Generic <a href="https://www.flickr.com/photos/aquamech-utah/24445365953">Aqua Mechanical</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49hiXpSgZTn0owXevua6P6/cf023c5ba6b4ddea2584442e76ff5899/image02.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+
+	</figure>
+	<p>CC 2.0 Generic <a href="https://www.flickr.com/photos/aquamech-utah/24445365953">Aqua Mechanical</a></p>
 	<p>TLS 1.3 removes the “bad crypto smell” of these legacy features, making it less likely that attacks on previous versions of the protocol will affect TLS 1.3. This streamlining also makes TLS 1.3 much simpler to configure for server operators. A secondary side effect of the update is that the protocol can be made much faster, resulting in a better web browsing experience.</p>
-	<h3 id="improvedspeed">Improved Speed</h3>
+	<h3>Improved Speed</h3>
 	<p>Fast page load times are critical to the success of web services. Amazon famously <a href="https://www.gigaspaces.com/blog/amazon-found-every-100ms-of-latency-cost-them-1-in-sales">found that every additional 100ms of page load time decreases sales by 1%</a>. A major component of page load time is latency: the time it takes to send data between the browser and the web server.</p>
-	<p>The impact of latency is especially noticeable for:<br>
-		a) users on mobile devices<br>
-		b) users that geographically far away from the server</p>
+	<p>The impact of latency is especially noticeable for:a) users on mobile devicesb) users that geographically far away from the server</p>
 	<p>A message from Sydney to New York and back can take over 200ms, enough for <a href="https://hpbn.co/primer-on-web-performance/#speed-performance-and-human-perception">humans to notice</a>. Mobile browsing can also increase latency for a connection. Sending a message over a modern 4G mobile network routinely adds over 100ms of latency to requests. On 3G networks, which are still common in Europe, <a href="https://opensignal.com/blog/2014/03/10/lte-latency-how-does-it-compare-to-other-technologies">add over 200ms of additional latency</a>. Even home WiFi connections and ISPs add dozens of milliseconds to requests. This additional latency can make mobile browsing feel slow. Unfortunately, encryption can make these slow connections seem slower. TLS 1.3 helps improve this situation.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/handshake-1443446541etN.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vhUThCtQG95GVCJoweEzN/a1f05435581293c6ff7dba55acaa40aa/handshake-1443446541etN.jpg" alt="" class="kg-image" width="1920" height="755" loading="lazy">
+
+	</figure>
 	<p>To send a message to an encrypted site, you must first establish shared cryptographic keys. This process is called a cryptographic handshake. It requires special messages to be sent back and forth between the browser and the website. The TLS handshake happens behind the scenes whenever you connect to an encrypted site with your browser.</p>
 	<p>With TLS 1.2, two <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trips</a> are needed to complete the handshake before the request can be sent. Accessing a site over a mobile network can add more than half a second to its load time. With TLS 1.3, the initial handshake is cut in half, requiring only one round-trip. That’s like going from a fast station wagon (0-60mph in 10 seconds) to a Tesla Model S (5 seconds).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/image01.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9Dw3e5yPlJrQ54CaR7UE1/d289f28fd95fd479558c97b62c25d5f0/image01.jpg" alt="" class="kg-image" width="1999" height="1076" loading="lazy">
+
+	</figure>
 	<p>If the round-trip time for a connection is around 100ms, the speed boost from TLS 1.3 is enough to take sites that seem <a href="https://hpbn.co/primer-on-latency-and-bandwidth/#speed-of-light-and-propagation-latency">“sluggish”</a> (over 300ms), and turn them into sites that load comfortably fast (under 300ms).</p>
 	<p>The more efficient handshake is only possible because some of the legacy features present in TLS 1.2 were removed from the protocol. TLS 1.3 also has the additional advantage that for sites you’ve visited recently, you can send data on the first message to the server. This is called “zero round trip” mode (0-RTT) and will result in even faster load times. CloudFlare is planning to support TLS 1.3 0-RTT in the coming weeks.</p>
-	<h3 id="liveforall">Live for all</h3>
+	<h3>Live for all</h3>
 	<p>TLS 1.3 is huge step forward for web security and performance. It’s available to all CloudFlare customers, and enabled by default for all Free and Pro customers. You will find the toggle to enable/disable TLS 1.3 in the Crypto tab of the CloudFlare dashboard.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/image00.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gBklXLwNX8MsBrkyjoqup/520582dee330e87042640505b94f1476/image00.png" alt="" class="kg-image" width="1922" height="320" loading="lazy">
+
+	</figure>
 	<p>The TLS 1.3 specification is still being polished, but the IETF is very close to settling on a final version of the protocol. Major browser vendors Firefox and Chrome have implemented preliminary versions of TLS 1.3 in their developer releases (<a href="https://nightly.mozilla.org">Firefox Nightly</a> and <a href="https://www.google.com/chrome/browser/canary.html">Chrome Canary</a>), and we’re updating our implementation to match the current version in these browsers until the specification is final. Expect a faster, safer web browsing experience as more browsers enable TLS 1.3 by default in the coming months.</p>
 	<hr>
-	<p><strong>How to enable TLS 1.3 in your browser</strong></p>
+	<p><b>How to enable TLS 1.3 in your browser</b></p>
 	<p>Firefox Nightly</p>
 	<ul>
-		<li>Install and run Firefox nightly: <a href="https://nightly.mozilla.org">https://nightly.mozilla.org/</a></li>
-		<li>Enter "about:config" in the address bar</li>
-		<li>Set security.tls.version.max from 3 to 4</li>
-		<li>Restart the browser</li>
+		<li>
+			<p>Install and run Firefox nightly: <a href="https://nightly.mozilla.org">https://nightly.mozilla.org/</a></p>
+		</li>
+		<li>
+			<p>Enter "about:config" in the address bar</p>
+		</li>
+		<li>
+			<p>Set security.tls.version.max from 3 to 4</p>
+		</li>
+		<li>
+			<p>Restart the browser</p>
+		</li>
 	</ul>
 	<p>Chrome Canary</p>
 	<ul>
-		<li>Install and run Chrome Canary: <a href="https://www.google.com/chrome/browser/canary.html">https://www.google.com/chrome/browser/canary.html</a></li>
-		<li>Enter "chrome://flags/" in the address bar</li>
-		<li>Go to "Maximum TLS version enabled." and select "TLS 1.3"</li>
-		<li>Restart the browser</li>
+		<li>
+			<p>Install and run Chrome Canary: <a href="https://www.google.com/chrome/browser/canary.html">https://www.google.com/chrome/browser/canary.html</a></p>
+		</li>
+		<li>
+			<p>Enter "chrome://flags/" in the address bar</p>
+		</li>
+		<li>
+			<p>Go to "Maximum TLS version enabled." and select "TLS 1.3"</p>
+		</li>
+		<li>
+			<p>Restart the browser</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 </div>

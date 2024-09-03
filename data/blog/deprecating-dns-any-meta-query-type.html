@@ -1,25 +1,35 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71fyueXLClcenxxAGgB9BV/3f7072e9064535d6510b11cde6035aed/deprecating-dns-any-meta-query-type.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>DNS, one of the oldest technologies running the Internet, keeps evolving. There is a constant stream of new developments, <a href="https://blog.cloudflare.com/help-us-test-our-dnssec-implementation">from DNSSEC</a>, through <a href="http://www.isi.edu/ant/tdns">DNS-over-TLS</a>, to a plentiful supply of <a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11">fresh EDNS extensions</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/03/5220534077_8d417f3bac_z.jpg" alt="penguins" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-nd/2.0">CC BY-ND 2.0</a> <a href="https://www.flickr.com/photos/antarcticabound">image</a> by <a href="https://www.flickr.com/photos/antarcticabound">Antarctica Bound</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cyA2HOLAYyTdbqLf4LKeP/50cf0f7047dce194fcff74e3e4dcfa28/5220534077_8d417f3bac_z.jpg" alt="penguins" class="kg-image" width="640" height="361" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-nd/2.0">CC BY-ND 2.0</a> <a href="https://www.flickr.com/photos/antarcticabound">image</a> by <a href="https://www.flickr.com/photos/antarcticabound">Antarctica Bound</a></p>
 	<p>New <a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4">DNS Resource Records types</a> are being added all the time. As the Internet evolves, new RR’s gain traction while the usage of some old record types decreases. Did you know you can use DNS to express <a href="https://blog.cloudflare.com/the-weird-and-wonderful-world-of-dns-loc-records">the location of your server on the planet's surface</a>?</p>
 	<p>Today, we are announcing that we are deprecating the DNS ANY meta-query. In a few weeks we'll be responding to those queries with rcode <a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">4 / Not Implemented</a>.</p>
 	<p>“ANY” is one of <a href="http://tools.ietf.org/html/rfc1035#page-12">the special “magic” types in DNS</a>. Instead of being a query for a single type like A , AAAA or MX, ANY retrieves all the available types for a given name. Over the years there have been many arguments over the semantics of ANY with some people arguing it really means ALL. Answers to ANY queries are among the biggest that DNS servers give out. The original reason for adding the ANY to DNS was to aid in debugging and testing and there is no real reason why a normal application would ever issue a ANY query.</p>
 	<p>ANY is not the only operation that lists records in DNS. The AXFR operation could be used to transfer all data for a DNS zone between two servers. A frequently recommended option is to restrict the scope of IP addresses that can perform this action and return REFUSED or drop the query for all others. The reason for this is security: people can easily learn the entire DNS zone with one command. In many case it is not okay for anyone to list all entries in your DNS zone. We believe the same holds for ANY and that an authoritative server should be allowed to refuse to answer it.</p>
 	<p>ANY queries are not widely used by any real world software. We aware of only two programs that issue ANY queries:</p>
 	<ul>
-		<li><a href="http://fanf.livejournal.com/122220.html">Un-patched versions qmaild</a></li>
-		<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1093983">Firefox version 36.0 to 36.0.1</a></li>
+		<li>
+			<p><a href="http://fanf.livejournal.com/122220.html">Un-patched versions qmaild</a></p>
+		</li>
+		<li>
+			<p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1093983">Firefox version 36.0 to 36.0.1</a></p>
+		</li>
 	</ul>
 	<p>We strongly believe using ANY query type in both those cases was a mistake and should not be endorsed.</p>
 	<p>The usage of ANY by a Firefox caught us by surprise and increased the ANY queries load 8 fold:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/03/any.png" alt="ANY usage" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LQBvUa35G7JxXCkSQ3Rgb/c928be152ae9a58c6cbb472b5a094537/any.png" alt="ANY usage" class="kg-image" width="1029" height="503" loading="lazy">
+
+	</figure>
 	<p>Since Firefox reverted the use of ANY we expect this load to drop back to the level of a background noise. Unfortunately the most common users of ANY queries in practice are people trying to perform <a href="https://www.us-cert.gov/ncas/alerts/TA13-088A">DNS reflection attacks</a>, exploiting the unusual length of the ANY responses.</p>
 	<p>Disabling or throttling ANY is not unprecedented. <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2013-January/009501.html">UltraDNS disabled them</a> briefly in 2013 with little impact visible to Internet users. A number of operators have refused to answer ANY queries over UDP, forcing the traffic to TCP, with the side effect that forged ANY queries are not amplified. Similarly a number of DNS operators use QoS techniques to limit how many ANY questions they will answer per second.</p>
 	<p>Attempting to handle ANY queries creates enormous complexity in our DNS server code base. It's almost impossible to generate a proper response, anyway. Consider load-balancing, geoip, CNAME flattening features, and on-the-fly answer generation.</p>
 	<p>Due to the lack of justified uses and to avoid code complexity, we have decided to completely phase out attempting to answer meaningfully the ANY qtype. In the near future we plan on returning NOTIMP return code in response to all ANY queries to our authoritative servers. This is the most truthful answer we can give as the code to process ANY type will be removed.</p>
 	<p>If you are aware of any software that relies solely on ANY queries, now is the time to fix it.</p>
-	<!--kg-card-end: markdown-->
 </div>

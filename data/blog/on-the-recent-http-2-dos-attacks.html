@@ -1,16 +1,34 @@
 <div class="mb2 gray5">1 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/h2-dos.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Today, multiple Denial of Service (DoS) vulnerabilities were disclosed for a number of HTTP/2 server implementations. Cloudflare uses NGINX for HTTP/2. <strong>Customers using Cloudflare are already protected against these attacks.</strong></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pMqd0U7WapM9T1AgiTDXv/46a976f9cbe75e3194c0e2ab6b682bfa/h2-dos.png" alt="" class="kg-image" width="600" height="600" loading="lazy">
+
+	</figure>
+	<p>Today, multiple Denial of Service (DoS) vulnerabilities were disclosed for a number of HTTP/2 server implementations. Cloudflare uses NGINX for HTTP/2. <b>Customers using Cloudflare are already protected against these attacks.</b></p>
 	<p>The individual vulnerabilities, originally discovered by Netflix and are included in <a href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md">this</a> announcement are:</p>
 	<ul>
-		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9511">CVE-2019-9511</a> HTTP/2 Data Dribble</li>
-		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">CVE-2019-9512</a> HTTP/2 Ping Flood</li>
-		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9513">CVE-2019-9513</a> HTTP/2 Resource Loop</li>
-		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">CVE-2019-9514</a> HTTP/2 Reset Flood</li>
-		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9515">CVE-2019-9515</a> HTTP/2 Settings Flood</li>
-		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9516">CVE-2019-9516</a> HTTP/2 0-Length Headers Leak</li>
-		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9518">CVE-2019-9518</a> HTTP/2 Request Data/Header Flood</li>
+		<li>
+			<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9511">CVE-2019-9511</a> HTTP/2 Data Dribble</p>
+		</li>
+		<li>
+			<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">CVE-2019-9512</a> HTTP/2 Ping Flood</p>
+		</li>
+		<li>
+			<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9513">CVE-2019-9513</a> HTTP/2 Resource Loop</p>
+		</li>
+		<li>
+			<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">CVE-2019-9514</a> HTTP/2 Reset Flood</p>
+		</li>
+		<li>
+			<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9515">CVE-2019-9515</a> HTTP/2 Settings Flood</p>
+		</li>
+		<li>
+			<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9516">CVE-2019-9516</a> HTTP/2 0-Length Headers Leak</p>
+		</li>
+		<li>
+			<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9518">CVE-2019-9518</a> HTTP/2 Request Data/Header Flood</p>
+		</li>
 	</ul>
 	<p>As soon as we became aware of these vulnerabilities, Cloudflare’s Protocols team started working on fixing them. We first pushed a patch to detect any attack attempts and to see if any normal traffic would be affected by our mitigations. This was followed up with work to mitigate these vulnerabilities; we pushed the changes out few weeks ago and continue to monitor similar attacks on our stack.</p>
 	<p>If any of our customers host web services over HTTP/2 on an alternative, publicly accessible path that is not behind Cloudflare, we recommend you apply the latest security updates to your origin servers in order to protect yourselves from these HTTP/2 vulnerabilities.</p>

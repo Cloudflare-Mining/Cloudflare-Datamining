@@ -1,61 +1,68 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Top Tips for new CloudFlare
-Users" src="https://blog.cloudflare.com/content/images/welcome_mat.gif" title="Top Tips for new CloudFlare Users"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S1GWVwRZjozG3dPCS3V2X/aeeadf07b74c2df41d003d4f47d449e1/welcome_mat.gif" alt="Top Tips for new CloudFlare
+Users" class="kg-image" width="449" height="275" loading="lazy">
+
+	</figure>
 	<p>CloudFlare is a service that has powerful underlying technology. We run 10 (with more coming) data centers around the world and do <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>, caching, bot filtering and more for all of our users. Despite all of this technology, our goal is to make the service simple for our users to use. Here is a "pocket guide" for use after signing up with CloudFlare.</p>
-	<h4 id="1checktomakesurethatyourdnsrecordsarecorrectonthednssettingspage">1. Check to make sure that your DNS records are correct on the DNS settings page.</h4>
-	<p>If you need to add or edit entries to your DNS records, you can do<br>
-		so by going to:</p>
+	<h4>1. Check to make sure that your DNS records are correct on the DNS settings page.</h4>
+	<p>If you need to add or edit entries to your DNS records, you can doso by going to:</p>
 	<p>Your Websites-&gt;Settings-&gt;DNS settings</p>
 	<p>While CloudFlare can resolve DNS for all of your subdomains, CloudFlare can only proxy domains that would be considered web traffic (www, blog, etc.). Subdomains like ftp, mail should be marked with a gray cloud. You can find the entire list of what should be marked with a <a href="https://support.cloudflare.com/entries/22280786-What-subdomains-are-appropriate-for-orange-gray-clouds-">gray cloud here</a>.</p>
-	<p>If you have a wildcard (*) subdomain, CloudFlare does not proxy<br>
-		wildcard domains. You have to explicitly list the subdomains that you want to be accelerated and protected CloudFlare in your DNS zone file.</p>
-	<h4 id="2familiarizeyourselfwiththecloudflaresettingspage">2. Familiarize yourself with the CloudFlare Settings page</h4>
+	<p>If you have a wildcard (*) subdomain, CloudFlare does not proxywildcard domains. You have to explicitly list the subdomains that you want to be accelerated and protected CloudFlare in your DNS zone file.</p>
+	<h4>2. Familiarize yourself with the CloudFlare Settings page</h4>
 	<p>The CloudFlare Settings page is where you will find all of the optional features that can be turned on or off. Some key features on this page include:</p>
-	<p><em>CloudFlare Rocket Loader</em><br>
-		This is a new beta service that we are really excited about. For websites that have any third-party apps like ads or widgets, Rocket Loader helps make the apps load faster by loading the JavaScript asynchronously. The result are pages that feel much snappier! This service is still in beta, so while we encourage you to try it on your site, if you notice any issues with your apps afterwards, turn it off and then file a <a href="https://www.cloudflare.com/wco-bug-report.html">bug report here</a>.</p>
-	<p><em>Basic Security Level Settings</em><br>
-		You can set the security level for your website to high, medium, low or essentially off. It defaults to Medium.</p>
-	<p><em>Development Mode</em><br>
-		Turn this option on when you're making changes to static files<br>
-		(javascript, CSS, images, etc.) on your site that you want to appear<br>
-		immediately.</p>
-	<p><em>Purge Cache</em><br>
-		If you want to clear the CloudFlare cache of all the static files for a domain, you can use Purge Cache.</p>
-	<p>To get to CloudFlare Settings:<br>
-		CloudFlare --&gt; Websites --&gt; Settings (pull down menu) --&gt; CloudFlare Settings</p>
-	<h4 id="3installmod_cloudflaretogettheoriginalvisitorip">3. Install mod_cloudflare to get the original visitor IP</h4>
+	<p><i>CloudFlare Rocket Loader</i>This is a new beta service that we are really excited about. For websites that have any third-party apps like ads or widgets, Rocket Loader helps make the apps load faster by loading the JavaScript asynchronously. The result are pages that feel much snappier! This service is still in beta, so while we encourage you to try it on your site, if you notice any issues with your apps afterwards, turn it off and then file a <a href="https://www.cloudflare.com/wco-bug-report.html">bug report here</a>.</p>
+	<p><i>Basic Security Level Settings</i>You can set the security level for your website to high, medium, low or essentially off. It defaults to Medium.</p>
+	<p><i>Development Mode</i>Turn this option on when you're making changes to static files(javascript, CSS, images, etc.) on your site that you want to appearimmediately.</p>
+	<p><i>Purge Cache</i>If you want to clear the CloudFlare cache of all the static files for a domain, you can use Purge Cache.</p>
+	<p>To get to CloudFlare Settings:CloudFlare --&gt; Websites --&gt; Settings (pull down menu) --&gt; CloudFlare Settings</p>
+	<h4>3. Install mod_cloudflare to get the original visitor IP</h4>
 	<p>Since CloudFlare acts as a reverse proxy for you site, your visitor logs will show our IP addresses unless you make a modification to your server. We have a group of resources available here, including for Apache servers.</p>
-	<p>Note: WordPress users have the option of installing the <a href="http://wordpress.org/extend/plugins/cloudflare">WordPress<br>
-			plugin</a><a href="http://wordpress.org/extend/plugins/cloudflare"></a> Joomla users have the option of installing the <a href="https://www.cloudflare.com/resources-downloads">Joomla<br>
-			plugin</a>.</p>
-	<h4 id="4whitelistcloudflaresipaddressesrecommended">4. Whitelist CloudFlare's IP addresses (recommended)</h4>
+	<p>Note: WordPress users have the option of installing the <a href="http://wordpress.org/extend/plugins/cloudflare">WordPressplugin</a><a href="http://wordpress.org/extend/plugins/cloudflare"></a> Joomla users have the option of installing the <a href="https://www.cloudflare.com/resources-downloads">Joomlaplugin</a>.</p>
+	<h4>4. Whitelist CloudFlare's IP addresses (recommended)</h4>
 	<p>Whitelisting our IP ranges with your hosting provider or in your IP tables ensures all of your website's requests are served properly.</p>
-	<p>Note: CloudFlare customers that are activated through our hosting<br>
-		partners (<a href="https://www.cloudflare.com/hosting-partners.html">full list can be found here</a>), including<br>
-		HostGator, VEXXHost, CoolHandle, A2 Hosting are not required to take<br>
-		this step.</p>
-	<h4 id="5bookmarkourstatuspage">5. Bookmark our Status Page</h4>
+	<p>Note: CloudFlare customers that are activated through our hostingpartners (<a href="https://www.cloudflare.com/hosting-partners.html">full list can be found here</a>), includingHostGator, VEXXHost, CoolHandle, A2 Hosting are not required to takethis step.</p>
+	<h4>5. Bookmark our Status Page</h4>
 	<p>We run 10 data centers on three continents and we are constantly monitoring our systems. To get the most current updates, you can follow our:</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/system-status.html">System status page</a></li>
-		<li><a href="https://twitter.com/#!/cloudflaresys">Twitter System Status account</a></li>
+		<li>
+			<p><a href="https://www.cloudflare.com/system-status.html">System status page</a></p>
+		</li>
+		<li>
+			<p><a href="https://twitter.com/#!/cloudflaresys">Twitter System Status account</a></p>
+		</li>
 	</ul>
-	<h4 id="6differencebetweentheproandfreeservice">6. Difference between the Pro and Free service</h4>
+	<h4>6. Difference between the Pro and Free service</h4>
 	<p>With the Pro service, you receive four main additional benefits:</p>
 	<ol>
-		<li>Faster subsequent page loads (so the second, third and fourth page loads are much quicker)</li>
-		<li><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall</a> to protect from comment spam, <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">SQL injection</a> and XSS attacks</li>
-		<li>SSL compatibility</li>
-		<li>Stats updates every 15 minutes (vs 24 hours)</li>
+		<li>
+			<p>Faster subsequent page loads (so the second, third and fourth page loads are much quicker)</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall</a> to protect from comment spam, <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">SQL injection</a> and XSS attacks</p>
+		</li>
+		<li>
+			<p>SSL compatibility</p>
+		</li>
+		<li>
+			<p>Stats updates every 15 minutes (vs 24 hours)</p>
+		</li>
 	</ol>
 	<p>The Pro service is done on a month by month basis so you can easily try it for a month by choosing "Upgrade to Pro" in your CloudFlare account.</p>
 	<p>Also see:</p>
 	<ul>
-		<li><a href="https://cloudflare.tenderapp.com/kb/troubleshooting/why-cant-i-access-my-cpanel">CloudFlare and accessing cpanel</a></li>
-		<li><a href="https://cloudflare.tenderapp.com/kb/troubleshooting/will-re-routing-through-cloudflare-affect-my-use-of-ftp-uploading">CloudFlare and how to ftp or ssh</a></li>
-		<li><a href="https://blog.cloudflare.com/cloudflare-tips-frequently-used-cloudflare-se">Frequently used CloudFlare Settings</a></li>
+		<li>
+			<p><a href="https://cloudflare.tenderapp.com/kb/troubleshooting/why-cant-i-access-my-cpanel">CloudFlare and accessing cpanel</a></p>
+		</li>
+		<li>
+			<p><a href="https://cloudflare.tenderapp.com/kb/troubleshooting/will-re-routing-through-cloudflare-affect-my-use-of-ftp-uploading">CloudFlare and how to ftp or ssh</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/cloudflare-tips-frequently-used-cloudflare-se">Frequently used CloudFlare Settings</a></p>
+		</li>
 	</ul>
 	<p>If you ever have a question, please <a href="mailto:support@cloudflare.com">contact us</a>. We read every email that we get and love to hear from our users.</p>
-	<!--kg-card-end: markdown-->
 </div>

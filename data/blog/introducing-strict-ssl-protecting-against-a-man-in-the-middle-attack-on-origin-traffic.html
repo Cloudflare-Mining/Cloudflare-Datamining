@@ -1,52 +1,94 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Certificate" src="https://blog.cloudflare.com/content/images/illustration-ssl-certificate.png"></p>
-	<p><strong>Update:</strong> Cloudflare now issues <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">free certificates for the origin</a>.</p>
+<div class="mb2 gray5">6 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BkjeVJuqxZCICjC8odCCV/1a9817803fec8767a62d64d1f61f6c4b/illustration-ssl-certificate.png" alt="Certificate" class="kg-image" width="645" height="200" loading="lazy">
+
+	</figure>
+	<p><b>Update:</b> Cloudflare now issues <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">free certificates for the origin</a>.</p>
 	<hr>
 	<p>At CloudFlare, we are always looking for ways to improve the security of our customers’ websites. One of the features we provide is the ability to serve their website encrypted over SSL/TLS. Today we are announcing a new feature to help make encryption on the web safer and more secure: Full SSL (Strict). With strict mode, CloudFlare does additional validation of the identity of the origin server in order to prevent active snooping and modification of your traffic on the Internet backbone. This feature is available today for all paying customers so current and new customers can take advantage of the added security immediately.</p>
-	<h3 id="webencryption">Web encryption</h3>
-	<p><img alt="We love SSL" src="https://blog.cloudflare.com/content/images/image00_2.png"></p>
+	<h3>Web encryption</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ygkzm4KrzUlKGAMywOLFh/1ba9a86152bc4a5a57d2b68aa97b4711/image00_2.png" alt="We love SSL" class="kg-image" width="500" height="132" loading="lazy">
+
+	</figure>
 	<p>Transport Layer Security (TLS) is a protocol for encrypting data that is sent over the Internet. TLS grew out of Secure Sockets Layer (SSL), the first widely-adopted web encryption protocol, in order to fix most of the earlier protocol’s security flaws. The industry still uses the terms somewhat interchangeably for historical reasons. Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.</p>
 	<p>TLS on the web provides these features:</p>
 	<ul>
-		<li>Encryption of data </li>
-		<li>Proof of identity of the server </li>
+		<li>
+			<p>Encryption of data</p>
+		</li>
+		<li>
+			<p>Proof of identity of the server</p>
+		</li>
 	</ul>
 	<p>To enable TLS, a site needs a certificate and a corresponding key. Certificates are files containing information about the owner of a site, and the public half of an asymmetric key pair (usually <a href="https://blog.cloudflare.com/why-are-some-keys-small">RSA</a>). A certificate authority (CA) digitally signs the certificate to verify that the information in the certificate is correct. By trusting the certificate, you are trusting that the certificate authority has done its due diligence.</p>
-	<p><img alt="Not Trusted" src="https://blog.cloudflare.com/content/images/image01_2.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3tkicH7mdMhFShk0MpNH9J/df8eec9797056dc0642c0198e4c4bdc1/image01_2.png" alt="Not Trusted" class="kg-image" width="873" height="441" loading="lazy">
+
+	</figure>
 	<p>Operating systems and browsers typically have a list of certificate authorities that they implicitly trust. If a web site presents a certificate that is signed by an untrusted certificate authority, the browser warns the visitor that something could be afoot.</p>
-	<h3 id="onpathattack">On Path Attack</h3>
-	<p><img alt="MitM" src="https://blog.cloudflare.com/content/images/image02_1.jpg"><br>
-		One type of attack that could trigger a browser warning is a on-path attack. In this attack, an attacker places himself in between a visitor and a web site, impersonating both. With this attack, the browser thinks it is talking to the server on an encrypted channel, and the server thinks it is talking to the browser, but they are both talking to the attacker who is sitting in the middle. All traffic passes through this attacker, who is able to read and modify any of the data.</p>
+	<h3>On Path Attack</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wL3XrgDCzvh9vFMbGOa2u/c4e70bbbe82f6ad7e65e57c5260c85f9/image02_1.jpg" alt="MitM" class="kg-image" width="259" height="194" loading="lazy">
+
+	</figure>
+	<p>One type of attack that could trigger a browser warning is a on-path attack. In this attack, an attacker places himself in between a visitor and a web site, impersonating both. With this attack, the browser thinks it is talking to the server on an encrypted channel, and the server thinks it is talking to the browser, but they are both talking to the attacker who is sitting in the middle. All traffic passes through this attacker, who is able to read and modify any of the data.</p>
 	<p>The certificate authority system is designed to stop the on-path attacks. In TLS, the server uses the private key associated with their certificate to establish a valid connection. The server keeps the key secret, so the attacker can’t use the site’s real certificate; they have to use one of their own. The attacker has to either convince a certificate authority to sign their certificate, or just use it, as is. An attacker trying to use a certificate that is not validated by a known trusted CA will be caught immediately by modern browsers. However, not all internet connected services are as <a href="http://www2.dcsec.uni-hannover.de/files/android/p50-fahl.pdf">diligent about checking certificates</a>.</p>
-	<h3 id="twosegmentsoftheinternet">Two Segments of the Internet</h3>
+	<h3>Two Segments of the Internet</h3>
 	<p>The data for visitors of sites that use CloudFlare travels over the Internet through two segments. The front-end, from the user to CloudFlare, and the back-end from CloudFlare to the host’s web server. Ideally, both segments of this communication would be secure.</p>
 	<p>The front-end is a dangerous place for data that is sent unencrypted and unauthenticated. Messages have to go from the browser, through the local wired or wireless network to the modem and the Internet service provider, before reaching the Internet and CloudFlare’s servers. Malicious parties can read or modify the messages anywhere in this chain. For example, using an unencrypted site at a coffee shop could expose your private data for all to see.</p>
-	<p><img alt="Internet" src="https://blog.cloudflare.com/content/images/illustration-no-ssl.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79aEj1Yu8IqIJgz7s1eewW/2efd6d79b8a3fcbcadca971b439b3182/illustration-no-ssl.png" alt="Internet" class="kg-image" width="645" height="340" loading="lazy">
+
+	</figure>
 	<p>The communication on the back-end is harder to spy on, since most server-to-server data flows through the Internet backbone. The coffee shop snooper can’t read or modify the information flowing through transatlantic pipelines, but large telecommunications and nation-state level attackers can still potentially intercept this data. This is what <a href="https://www.techdirt.com/articles/20130910/10470024468/flying-pig-nsa-is-running-man-middle-attacks-imitating-googles-servers.shtml">Operation FLYING PIG</a> is said to be doing.</p>
-	<p><img alt="FLYING PIG" src="https://blog.cloudflare.com/content/images/image08_1.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/suz0TAvIimakV95KT3FMj/12a8fe044d18a4db16a60606ca833207/image08_1.png" alt="FLYING PIG" class="kg-image" width="368" height="323" loading="lazy">
+
+	</figure>
 	<p>The traceroute command shows the network hops to get from your computer to any given website:</p>
-	<p><img alt="traceroute" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-02-14_at_12.55.02_PM.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26UxPlpp6M8A54RLztEUEu/8fc9567fb51582b75a536a23b4bee867/Screen_Shot_2014-02-14_at_12.55.02_PM.png" alt="traceroute" class="kg-image" width="749" height="478" loading="lazy">
+
+	</figure>
 	<p>Sending your Internet traffic through so many computers unencrypted certainly seems like a risky move.</p>
-	<h3 id="cloudflaresssloptions">CloudFlare’s SSL options</h3>
+	<h3>CloudFlare’s SSL options</h3>
 	<p>Until today, CloudFlare offered three options for SSL/TLS for site operators: <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-Off-Flexible-Full-Full-Strict-mean-">Off, Flexible and Full</a>. They are available in the site’s control panel under “CloudFlare Settings” and in the Page Rules section for a given zone.</p>
 	<p>We are now introducing a new option: Full SSL (Strict). There are now three different modes for enabling SSL: Flexible SSL, Full SSL, and Full SSL (Strict). Below is a description of what the different options mean.</p>
-	<h4 id="flexiblesslfrontendovertlsbackendunencrypted">Flexible SSL - front-end over TLS, back-end unencrypted</h4>
+	<h4>Flexible SSL - front-end over TLS, back-end unencrypted</h4>
 	<p>Flexible SSL encrypts all data between your site’s visitors and CloudFlare using TLS configured with best practices such as <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a> and <a href="https://blog.cloudflare.com/killing-rc4">more</a>. This is where most threats to web traffic happen: in your coffee shop, by your ISP, and others in the local network. The browser’s certificate validation prevents attackers in these locations. This option is very useful for customers who don’t have TLS configured on their host or can’t enable it because of how they are set up with their hosting provider.</p>
-	<p><img alt="Flexible" src="https://blog.cloudflare.com/content/images/illustration-flexible-ssl.png"><br>
-		<small>Above: Flexible SSL - front-end over TLS, back-end unencrypted</small>
-	</p>
-	<h4 id="fullsslfrontendovertlsbackendovertls">Full SSL - front-end over TLS, back-end over TLS</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zByqnQWFbJJ687Zjeow4P/47bb83faf851d23ed0d6ca8a3e0af5c6/illustration-flexible-ssl.png" alt="Flexible" class="kg-image" width="645" height="340" loading="lazy">
+
+	</figure>
+	<p>Above: Flexible SSL - front-end over TLS, back-end unencrypted</p>
+	<h4>Full SSL - front-end over TLS, back-end over TLS</h4>
 	<p>In Full SSL, the front-end is protected with TLS, and the back-end is encrypted with TLS but the certificate itself is not validated by CloudFlare. This means that a passive attacker listening to the data does not have the ability to read the communication, but an active on-path attacker could potentially intercept the data. This option makes sense for customers who don’t have the ability or the desire to pay for a certificate from a certificate authority but who still want their data to be protected from <a href="https://blog.cloudflare.com/cloudflare-prism-secure-ciphers">mass collection of data</a>.</p>
 	<p>On-path attempts between CloudFlare and the web server are difficult to pull off, but still possible, and we wanted our customers to have the option of protecting their customers against such attackers. Full SSL (Strict) makes sure that CloudFlare validates the certificate chain presented by the web server.</p>
-	<p><img alt="Full SSL" src="https://blog.cloudflare.com/content/images/illustration-full-ssl.png"></p>
-	<p><small>Above: Full SSL - front-end over TLS, back-end over TLS</small></p>
-	<h4 id="fullsslstrictfrontendovertlsbackendovertlsvalidated">Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7juOCKC9VJb8Lf0CrfWNpm/d6389df63bb26fa009a344492fb2af92/illustration-full-ssl.png" alt="Full SSL" class="kg-image" width="645" height="340" loading="lazy">
+
+	</figure>
+	<p>Above: Full SSL - front-end over TLS, back-end over TLS</p>
+	<h4>Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</h4>
 	<p>In strict mode, CloudFlare validates the certificate chain on the back-end using its own list of trusted certificate authorities. Customers can enable this globally for their site, or they can have different settings for different subdomains, using Page Rules. CloudFlare’s list is more exclusive than the ones used by the popular browsers. By trusting a smaller and more exclusive list of certificate authorities, we protect our customers against MitM attacks using certificates signed by <a href="http://arstechnica.com/security/2011/09/comodo-hacker-i-hacked-diginotar-too-other-cas-breached">rogue or compromised certificate authorities</a>. We are automatically upgrading customers from Full SSL to Full SSL (Strict) if we determine that their origin server has a valid certificate installed.</p>
-	<p><img alt="Full SSL (Strict)" src="https://blog.cloudflare.com/content/images/illustration-strict-ssl.png"></p>
-	<p><small>Above: Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</small></p>
-	<h3 id="givingback">Giving Back</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X9sJZmVW7ThiJXLOMlK2k/37ec24fc239ec8dba9bb7b0322ad3009/illustration-strict-ssl.png" alt="Full SSL (Strict)" class="kg-image" width="645" height="440" loading="lazy">
+
+	</figure>
+	<p>Above: Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</p>
+	<h3>Giving Back</h3>
 	<p>One of the core technologies CloudFlare uses for TLS connections is the open source web server/reverse proxy called <a href="http://nginx.org">nginx</a>. The current public version of nginx does not have the ability to validate a certificate when talking to an origin server. In the spirit of open source and making the web a safer place, we have upstreamed our changes to nginx that <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004967.html">enable origin certificate validation</a>. We also added support for SNI (Server Name Identification) to allow nginx to speak to <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004966.html">multiple domains behind the same IP over TLS</a>.</p>
 	<p>Threats on the Internet are changing and evolving constantly. We hope this option lets web site operators and web site visitors sleep easier knowing that their data is protected in transit, even against highly motivated and capable attackers.</p>
-	<!--kg-card-end: markdown-->
 </div>

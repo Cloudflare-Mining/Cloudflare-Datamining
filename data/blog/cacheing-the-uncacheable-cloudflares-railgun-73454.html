@@ -1,29 +1,43 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Caching the uncacheable: CloudFlare's Railgun" src="https://blog.cloudflare.com/content/images/railgun.png.scaled500.png" title="Caching the uncacheable: CloudFlare's Railgun"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BQoBlohMYMmfFeDFeXZoN/7b36eee5cbc906768563db9a65d3868b/railgun.png.scaled500.png" alt="Caching the uncacheable: CloudFlare's Railgun" class="kg-image" width="500" height="225" loading="lazy">
+
+	</figure>
 	<p>CloudFlare recently rolled out a premium service called <a href="https://www.cloudflare.com/railgun">Railgun</a> that's available to <a href="https://blog.cloudflare.com/introducing-cloudflare-business-and-cloudflar">CloudFlare Business and Enterprise</a> customers. Railgun is web optimization software that's designed to speed up the delivery of content that cannot be cached.</p>
 	<p>One of the major advantages of using CloudFlare is that cacheable content (such as images, JavaScript, CSS and HTML) is both cached by CloudFlare and delivered from our data centers around the world. Because CloudFlare has data centers covering the entire globe, cached content gets delivered quickly to web surfers wherever they are (and overcomes <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">latency problems</a>).</p>
 	<p>But only about 66% of content is cacheable. The other 34% must be obtained from the real origin web server. Railgun overcomes this problem by using a scheme that is able to cache dynamically generated or personalized web pages dramatically reducing bandwidth used and improving download times.</p>
-	<p><img alt="Caching the uncacheable: CloudFlare's Railgun" src="https://blog.cloudflare.com/content/images/4638156870_e37df220f3_n.jpeg.scaled500.jpg" title="Caching the uncacheable: CloudFlare's Railgun"><br>
-		<small>Image credit: <a href="http://www.flickr.com/photos/davefayram">Dave Fayram</a></small>
-	</p>
-	<h3 id="cachingtheuncachable">Caching the Uncachable</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58sIn1lD2nycY0EbLOzWZS/3f1f71fdd3434540a54dc97743ee6b18/4638156870_e37df220f3_n.jpeg.scaled500.jpg" alt="Caching the uncacheable: CloudFlare's Railgun" class="kg-image" width="320" height="320" loading="lazy">
+
+	</figure>
+	<p>Image credit: <a href="http://www.flickr.com/photos/davefayram">Dave Fayram</a></p>
+	<h3>Caching the Uncachable</h3>
 	<p>Railgun works by recognizing that uncacheable web pages do not change very rapidly. For example, I captured the CNN homepage HTML once, and then again after 5 minutes and then again after one hour. The page sizes were 92,516, five minutes still 92,516 and one hour later 93,727.</p>
 	<p>CNN sets the caching on this page to 60 seconds. After one minute it's necessary to download the entire page again. But looking inside the page itself not much has changed. In fact, the change between versions is on order of 100s of bytes out of almost 100k. Here's a screenshot of one of the small binary differences between the CNN home page at five minute intervals. The yellow bytes have changed, the rest have not:</p>
-	<p><img alt="Caching the uncacheable: CloudFlare's Railgun" src="https://blog.cloudflare.com/content/images/Screen_Shot_2012-06-28_at_3.20.30_PM.png.scaled500.png" title="Caching the uncacheable: CloudFlare's Railgun"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Lsm1qwj1y3tuAPILBitDW/c28aa233c53ac65002f68334846ee2d3/Screen_Shot_2012-06-28_at_3.20.30_PM.png.scaled500.png" alt="Caching the uncacheable: CloudFlare's Railgun" class="kg-image" width="500" height="327" loading="lazy">
+
+	</figure>
 	<p>Experiments at CloudFlare has revealed similar change values across the web. For example, reddit.com changes by about 2.15% over five minutes and 3.16% over an hour. The New York Times home page changes by about 0.6% over five minutes and 3% over an hour. BBC News changes by about 0.4% over five minutes and 2% over an hour.</p>
 	<p>Although the dynamic web is not cacheable, it's also not changing quickly. That means that from moment to moment there's only a small change between versions of a page. Railgun uses this fact to achieve very high rates of compression. This is very similar to how video compression looks for changes from frame to frame; Railgun looks for changes on a page from download to download.</p>
-	<h3 id="thetechnicaldetails">The Technical Details</h3>
+	<h3>The Technical Details</h3>
 	<p>Railgun consists of two components: the sender and the listener. The sender is installed at every CloudFlare data center around the world. The listener is a software component that premium customers install on their network.</p>
 	<p>The sender and listener establish a permanent TCP connection that's secured by TLS. This TCP connection is used for the Railgun protocol. It's an all binary multiplexing protocol that allows multiple HTTP requests to be run simultaneously and asynchronously across the link.</p>
 	<p>To a web client the Railgun system looks like a proxy server, but instead of being a server it's a wide-area link with special properties. One of those properties is that it performs compression on non-cacheable content by synchronizing page versions.</p>
 	<p>Each end of the Railgun link keeps track of the last version of a web page that's been requested. When a new request comes in for a page that Railgun has already seen, only the changes are sent across the link. The listener component make an HTTP request to the real, origin web server for the uncacheable page, makes a comparison with the stored version and sends across the differences.</p>
 	<p>The sender then reconstructs the page from its cache and the difference sent by the other side.</p>
-	<p><img alt="Caching the uncacheable: CloudFlare's Railgun" src="https://blog.cloudflare.com/content/images/railgun-wan-details.png.scaled500.png" title="Caching the uncacheable: CloudFlare's Railgun"></p>
-	<h3 id="blowingthedoorsoffstandardgzip">Blowing the Doors Off Standard Gzip</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11IonFLTllYtdoA6jfSDfB/eedc415e0de98a948beed9cdbc04f669/railgun-wan-details.png.scaled500.png" alt="Caching the uncacheable: CloudFlare's Railgun" class="kg-image" width="500" height="286" loading="lazy">
+
+	</figure>
+	<h3>Blowing the Doors Off Standard Gzip</h3>
 	<p>Of course, compression is used on web pages today. The most common technique is to gzip the page itself. CNN actually does this and sends 23,529 bytes of gzipped data which when decompressed become 92,516 bytes of page (so the page is compressed to 25.25% of its original size). And Google has proposed a somewhat complex dictionary based scheme called <a href="https://en.wikipedia.org/wiki/Shared_Dictionary_Compression_Over_HTTP">SDCH</a> which is not widely deployed.</p>
 	<p>But the Railgun compression technique goes much further. The compression between versions 1 and 2 of the page above (at five minute intervals) results in just 266 bytes of difference data being sent (a compression to 0.29% of the original page size). The one hour difference (versions 2 to 3 above) is 2,885 bytes (a compression to 3% of the original page size). Clearly, Railgun compression outpeforms gzip enormously.</p>
 	<p>For pages that are frequently accessed the deltas are often so small that they fit inside a single TCP packet, and because the connection between the two parts of Railgun is kept active problems with <a href="https://blog.cloudflare.com/what-makes-spdy-speedy">TCP connection time and slow start</a> are eliminated.</p>
 	<p>Railgun means that for premium CloudFlare customers the entire web becomes (almost completely) cacheable. <a href="https://www.cloudflare.com/railgun">Learn more about Railgun</a> or <a href="https://www.cloudflare.com/plans">upgrade to a CloudFlare Business or Enterprise account</a> to enable it for you site.</p>
-	<!--kg-card-end: markdown-->
 </div>

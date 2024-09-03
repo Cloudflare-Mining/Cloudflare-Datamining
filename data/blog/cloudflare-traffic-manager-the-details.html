@@ -1,35 +1,56 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gzMqolg0wFM6KiOqBXS9x/617e68af3c2fa80c64480491cf7b74de/cloudflare-traffic-manager-the-details.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Cloudflare's investment into building a large global network protects our customers from DDoS attacks, secures them with our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall</a> and Universal SSL, as well as improving performance through our CDN and the many network-level optimizations we're constantly iterating on.</p>
 	<p>Building on these products, we just introduced <a href="https://blog.cloudflare.com/cloudflare-traffic">Cloudflare Traffic</a>. To explain the benefits, we'll dive into the nitty-gritty details of how the monitoring and load-balancing features of Traffic Manager can be configured, and how we use it within our own website to reduce visitor latency, and improve redundancy across continents. We'll do a similar post on Traffic Control soon.</p>
 	<p>We're also kicking off the Early Access program for Traffic Manager, with details at the end of this post.</p>
-	<h3 id="thedetails">The Details</h3>
+	<h3>The Details</h3>
 	<p>One of our primary goals when building Traffic Manager was to make it available to everyone: from those with just two servers in a single region, to those with 400 scattered across the globe (and everything in between). We also wanted to solve some of the key limitations of existing products: slow failover times (measured in minutes), and a lack of granular decision making when failing over.</p>
 	<ul>
-		<li>We can failover within seconds for proxied ("orange clouded") records. Connecting clients don't need to wait for recursive DNS caches to expire, or trust that they respect sub-60s TTLs, and we can therefore respond to changes in the availability of your origin servers as quickly as needed.</li>
-		<li>At <a href="https://blog.cloudflare.com/amsterdam-to-zhuzhou-cloudflare-global-network">100 data centers</a> (and growing!) we can assess the availability of your origins and make fine-grained failover decisions at a per-data center level. A network path failure to your origin in London should not impact how we route traffic in New York!</li>
-		<li>Traffic Manager is built on Cloudflare's existing Anycast DNS infrastructure, benefiting from our resilient DDoS protection and our experience in making DNS fast. DNS failures can deeply impact the availability of your infrastructure: by leveraging Cloudflare's highly available network, you can relax.</li>
+		<li>
+			<p>We can failover within seconds for proxied ("orange clouded") records. Connecting clients don't need to wait for recursive DNS caches to expire, or trust that they respect sub-60s TTLs, and we can therefore respond to changes in the availability of your origin servers as quickly as needed.</p>
+		</li>
+		<li>
+			<p>At <a href="https://blog.cloudflare.com/amsterdam-to-zhuzhou-cloudflare-global-network">100 data centers</a> (and growing!) we can assess the availability of your origins and make fine-grained failover decisions at a per-data center level. A network path failure to your origin in London should not impact how we route traffic in New York!</p>
+		</li>
+		<li>
+			<p>Traffic Manager is built on Cloudflare's existing Anycast DNS infrastructure, benefiting from our resilient DDoS protection and our experience in making DNS fast. DNS failures can deeply impact the availability of your infrastructure: by leveraging Cloudflare's highly available network, you can relax.</p>
+		</li>
 	</ul>
 	<p>Existing solutions are often challenged with these requirements. On-premise load balancers are vulnerable to local network conditions, hard to scale out as you grow regionally, and at risk of expensive hardware failure. Existing cloud-based solutions have smaller network footprints (increasing latency) and a lack of effective DDoS mitigation, which we see as critical to running high-availability infrastructure.</p>
-	<h3 id="flexibleconfiguration">Flexible Configuration</h3>
+	<h3>Flexible Configuration</h3>
 	<p>Traffic Manager is designed to be flexible, and we want to share some of the many supported use cases.</p>
 	<p>We had three primary scenarios in mind: load balancing, failover, and geo-steering. Underpinning these choices is our health checking functionality, which allows you to define what a healthy origin means to you. We can probe your origin web servers from every Cloudflare data center (or selected regions) over HTTP(S), check for status codes you define as healthy, parse the response body for specific text, and timeout as you see fit. We'll also send you email notifications as we detect availability changes, so you're able to pin down exactly when we saw that server fail.</p>
 	<p>Round robin configuration (“active-active”) load balancing, where load is distributed across all healthy servers. When a server is identified as unavailable through health checks, we'll seamlessly avoid routing traffic to it until it's available again.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/load-balancing.png" alt="Load Balancing" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WnwBeEToUrmFSfhX4dkkF/59cef36bce91c032752cd77032ed8bdf/load-balancing.png" alt="Load Balancing" class="kg-image" width="1591" height="467" loading="lazy">
+
+	</figure>
 	<p>Failover configuration ("primary-secondary"), where we route traffic to a specific server or pool of servers, and failover completely to a secondary server or pool when the primary is identified as unavailable. Being able to failover between your own datacenter, AWS regions, or even across major cloud providers are all supported (and easy to configure).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/failover.png" alt="Failover" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/uhZ3ZaZGNhERaHK3qKHmc/e7f133858e53dbd1a69613347c949626/failover.png" alt="Failover" class="kg-image" width="1591" height="511" loading="lazy">
+
+	</figure>
 	<p>Geo-steering configuration, which directs traffic to the nearest origin based on region. For example: European clients to your Berlin datacenter, East Coast US clients to your New York datacenter, and Oceanic clients to your Singaporean datacenter (as a simple example!).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/geo-steering.png" alt="Geo-steering" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QY8KaiGiibuxHqBm1hE3J/db29b53a9bcf795ff28ccfa29f2068c9/geo-steering.png" alt="Geo-steering" class="kg-image" width="1700" height="886" loading="lazy">
+
+	</figure>
 	<p>Of course, all of these approaches can be combined: you can load-balance across multiple locations in a specific region, failing over to the next-nearest datacenter should the first (or second) fail. You can also fine-tune what you consider to be a failure mode: given a pool of five servers, you might be able to sustain two unhealthy ones, but a third failure might be the trigger to steer traffic to your next data center.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/overview-map.png" alt="Combining approaches" loading="lazy"></p>
-	<h3 id="howwereusingit">How We're Using It</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71KUuY2XVsVN1MmyPkRgoe/867d34316e5afda7f6fa884e99333156/overview-map.png" alt="Combining approaches" class="kg-image" width="1620" height="806" loading="lazy">
+
+	</figure>
+	<h3>How We're Using It</h3>
 	<p>In fact, we're currently combining the above ourselves: the new Cloudflare website combines both failover and geo-steering configurations so we can serve one half of the world from Europe, and the other half from the US.</p>
 	<p>We've associated each origin web server with their respective regions, and Traffic Manager then automatically directs neighboring regions to those origins without further configuration - e.g. users in Africa are steered to our EU origin, and similarly, users in Asia Pacific and South America are automatically geo-steered to our US origin.</p>
 	<p>When we add more origins globally, it will be a minor configuration change—with no interruption to traffic—to make that happen.</p>
 	<p>When our EU origin is taken out of production for maintenance or marked unhealthy, users on that side of the world are automatically steered to the healthy US origin, without us having to interfere manually.</p>
 	<p>Our own website is critical to our business, and we know our customers feel the same way about their own web properties. We trust Traffic Manager to keep our website available despite what the Internet might throw at us!</p>
-	<h3 id="earlyaccess">Early Access</h3>
+	<h3>Early Access</h3>
 	<p>Starting right now, we are accepting participants in our Early Access program, before we bring this service to all Cloudflare customers. Early Access requires some additional technical savvy, at first, and a willingness to share your feedback with us. For the duration of the Early Access program, Traffic Manager is free to use, with no charges. When introduced generally later this year, Traffic Manager will be available to all customers on all plans, with usage-based charges.</p>
 	<p>Fit the criteria? Fill out the <a href="https://www.cloudflare.com/traffic-manager">Early Access form</a> and we'll reach out with the details. We're keen to show off what Traffic Manager can do.</p>
-	<!--kg-card-end: markdown-->
 </div>

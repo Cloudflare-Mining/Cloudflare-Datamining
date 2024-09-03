@@ -1,24 +1,38 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="CloudFlare Keeps TheBayLights.org Running
-Bright" src="https://blog.cloudflare.com/content/images/bridge1.jpeg.scaled500.jpg" title="CloudFlare Keeps TheBayLights.org Running Bright"></p>
-	<h3 id="theart">The Art</h3>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3usSn2DM0c9zxqjPoEXdKC/56fdffde6e4ca8b0dc48c0d0317cd895/bridge1.jpeg.scaled500.jpg" alt="CloudFlare Keeps TheBayLights.org Running
+Bright" class="kg-image" width="500" height="251" loading="lazy">
+
+	</figure>
+	<h3>The Art</h3>
 	<p>When you think of San Francisco, undoubtedly one bridge in particular comes to mind - The Golden Gate Bridge. This year, however, the Bay Bridge is getting its moment in the spotlight thanks to <a href="http://wordspicturesideas.com">Words Pictures Ideas</a>, a CloudFlare customer.</p>
 	<p>Words Pictures Ideas services brands and organizations in need of smarter communications. While thinking of ways to commemorate the 75th anniversary of the Bay Bridge, WPI founder Ben Davis came up with the <a href="http://wordspicturesideas.com/projects/illuminating-the-bay">idea to turn the West Span of the bridge into a canvas for light art</a>.</p>
 	<p>Partnering with internationally renowned light artist Leo Villareal, Ben and the WPI team began working on what would become the world's largest LED light sculpture: <a href="http://thebaylights.org">The Bay Lights</a>.</p>
-	<h4 id="theplan">The Plan</h4>
+	<h4>The Plan</h4>
 	<p>The Bay Lights were officially unveiled on March 5, 2013. Brian VanderZanden, Lead Developer at WPI, knew there would be a surge in traffic to TheBayLights.org leading up to that day, and most likely a huge surge in traffic on the day of the unveiling. WPI has many sites on CloudFlare, including TheBayLights.org. He reached out to CloudFlare to make sure the site was ready to handle the increase in traffic.</p>
 	<p>CloudFlare suggested a few small optimizations (minification, an image that wasn't proxied because on a "grey cloud" DNS record), one useful reminder (<a href="https://support.cloudflare.com/entries/22055137-why-do-my-server-logs-show-cloudflare-s-ips-using-cloudflare">allowlist</a> the <a href="https://www.cloudflare.com/ips">CloudFlare IPs</a>), and a powerful recommendation: <a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache Everything</a>.</p>
 	<p>By default, CloudFlare will cache <a href="https://support.cloudflare.com/entries/22037282-what-file-extensions-does-cloudflare-cache-for-static-content">obviously static assets</a>, but pass dynamic HTML through to the customer's webserver. For heavy load, on content that is not changing rapidly, full HTML pages -- or the entire site -- can be delivered from CloudFlare's global network, preserving the customer's webserver, database and other infrastructure. (Note: combined with <a href="https://blog.cloudflare.com/introducing-single-file-purge">single file purge</a>, CloudFlare can serve as the global network for delivering a static site even with rapid changes, much as the <a href="http://kylerush.net/blog/meet-the-obama-campaigns-250-million-fundraising-platform">Obama 2012 web team did</a>.)</p>
-	<h4 id="theresults">The Results</h4>
-	<p>On the day of the unveiling, with Cache Everything turned on,<br>
-		TheBayLights.org saw traffic increase with a decrease on their system's resource utilization.</p>
-	<p><img alt="CloudFlare Keeps TheBayLights.org Running Bright" src="https://blog.cloudflare.com/content/images/BayLights1.jpeg.scaled500.jpg" title="CloudFlare Keeps TheBayLights.org Running Bright"></p>
+	<h4>The Results</h4>
+	<p>On the day of the unveiling, with Cache Everything turned on,TheBayLights.org saw traffic increase with a decrease on their system's resource utilization.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yysdt1lqoRN7r3ZCymLfw/367eed71ef9df5917a8e1e5143c78e2b/BayLights1.jpeg.scaled500.jpg" alt="CloudFlare Keeps TheBayLights.org Running Bright" class="kg-image" width="500" height="341" loading="lazy">
+
+	</figure>
 	<p>By mid-day, a rush in traffic caused more load than the event's peak at 8:00 pm. The graph below shows an interesting resource demand for the site pre/post cache everything:</p>
-	<p><img alt="CloudFlare Keeps TheBayLights.org Running Bright" src="https://blog.cloudflare.com/content/images/cpu_vs_event.png.scaled500.png" title="CloudFlare Keeps TheBayLights.org Running Bright"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IruKlhxGysrtOBvalKuf2/c2ecb87700f12827a7fc85b7c9b833e7/cpu_vs_event.png.scaled500.png" alt="CloudFlare Keeps TheBayLights.org Running Bright" class="kg-image" width="500" height="177" loading="lazy">
+
+	</figure>
 	<p>The site saw the largest influx of traffic between 8:00-9:00 pm, but the average I/O during that hour was under 2Mb/s. By midnight traffic was back down to only 2X of baseline traffic levels.</p>
-	<p><img alt="CloudFlare Keeps TheBayLights.org Running Bright" src="https://blog.cloudflare.com/content/images/GoD_analytics_visits_by_hour.png.scaled500.png" title="CloudFlare Keeps TheBayLights.org Running Bright"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mO7rQaVzmMO1fA2cw5WcQ/079893c679ffc6849a8b768948f7fad3/GoD_analytics_visits_by_hour.png.scaled500.png" alt="CloudFlare Keeps TheBayLights.org Running Bright" class="kg-image" width="500" height="190" loading="lazy">
+
+	</figure>
 	<p>"We began to celebrate at 9:15 pm as we were confident that the peak in site traffic had been reached and there were no issues," said Brian. "We are thrilled with the guidance and help CloudFlare offered in keeping us online during our biggest moment of the year, as well as the day to day performance and security they provide for all of our sites."</p>
 	<p>The Bay Lights will continue to shine for the next two years, creating yet another tourist stop in San Francisco. At CloudFlare, we are excited to be a part of the experience and look forward to helping keep TheBayLights.org shining online.</p>
-	<!--kg-card-end: markdown-->
 </div>

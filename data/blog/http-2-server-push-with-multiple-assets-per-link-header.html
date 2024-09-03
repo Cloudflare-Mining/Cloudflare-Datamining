@@ -1,44 +1,48 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27f2UeR3mk3J5Knub7KBL0/dc66ecbfc20020262d33557618a4771d/http-2-server-push-with-multiple-assets-per-link-header.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In April we <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">announced</a> that we had added experimental support for <a href="https://www.cloudflare.com/http2/server-push">HTTP/2 Server Push</a> to all CloudFlare web sites. We did this so that our customers could iterate on this new functionality.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/1673801831_a93ecfc3c4_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/mryipyop/1673801831/in/photolist-3xUEYg-nMS6rx-jvSsLx-9oBV3s-8KH2YK-o54g8R-8h4bmw-eapSfS-cj4No3-nMSXLP-nMRZQJ-iNpH9k-hcr3m3-nMS6ui-5RDVrK-fAaYES-nMXwba-cNFT3N-iZDTWg-k5VzKt-jeJE8T-7bM32E-d3rznG-89jZ9e-aVLkBT-4y2kdD-qtKzjY-62Yv2h-5WcKeC-87jJdA-5Es3vn-bQ8W5a-7DhbKd-hE5oza-6NutL7-5WLwFt-hcnrny-5WAoU1-5mSoVV-8RSQ7A-gXiVcG-5Wp6pS-8GFkMr-hcoeN9-bC1zH5-ePG8BQ-hcokfv-hcpgme-hcqQ59-qUkfTa">image</a> by <a href="https://blog.cloudflare.com/Mike">https://www.flickr.com/photos/mryipyop/</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Sxm8MH00rIckiWtjvxz71/f668430014f6cd608f24046ad5b1d76b/1673801831_a93ecfc3c4_z.jpg" alt="" class="kg-image" width="640" height="495" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/mryipyop/1673801831/in/photolist-3xUEYg-nMS6rx-jvSsLx-9oBV3s-8KH2YK-o54g8R-8h4bmw-eapSfS-cj4No3-nMSXLP-nMRZQJ-iNpH9k-hcr3m3-nMS6ui-5RDVrK-fAaYES-nMXwba-cNFT3N-iZDTWg-k5VzKt-jeJE8T-7bM32E-d3rznG-89jZ9e-aVLkBT-4y2kdD-qtKzjY-62Yv2h-5WcKeC-87jJdA-5Es3vn-bQ8W5a-7DhbKd-hE5oza-6NutL7-5WLwFt-hcnrny-5WAoU1-5mSoVV-8RSQ7A-gXiVcG-5Wp6pS-8GFkMr-hcoeN9-bC1zH5-ePG8BQ-hcokfv-hcpgme-hcqQ59-qUkfTa">image</a> by <a href="https://blog.cloudflare.com/Mike">https://www.flickr.com/photos/mryipyop/</a></p>
 	<p>Our implementation of Server Push made use of the <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2/#fnref:1">HTTP <code>Link</code></a> header as detailed in W3C <a href="https://www.w3.org/TR/preload">Preload</a> Working Draft.</p>
 	<p>We also showed how to make Server Push work from within <a href="https://blog.cloudflare.com/using-http-2-server-push-with-php">PHP code</a> and many people started testing and using this feature.</p>
 	<p>However, there was a serious restriction in our initial version: it was not possible to specify more than one asset per <code>Link</code> header for Server Push and many CMS and web development platforms would not allow multiple <code>Link</code> headers.</p>
 	<p>We have now addressed that problem and it is possible to request that multiple assets be pushed in a single <code>Link</code> header. This change is live and was used to push assets in this blog post to your browser if your browser supports HTTP/2.</p>
 	<p>When CloudFlare reads a <code>Link</code> header sent by an origin web server it will remove assets that it pushes from the <code>Link</code> header passed on to the web browser. That made it a little difficult to debug problems with <code>Link</code> and Server Push so we have added a header called <code>Cf-H2-Pushed</code> which contains the assets that were pushed.</p>
 	<p>For example, browsing to this <a href="https://blog.cloudflare.com/the-complete-guide-to-golang-net-http-timeouts">recent</a> blog post results in the origin web server sending the following headers:</p>
-	<pre><code>Cache-Control: public, max-age=0
+	<pre class="language-bash"><code class="language-bash">Cache-Control: public, max-age=0
 Content-Encoding: gzip
 Content-Length: 33640
 Content-Type: text/html; charset=utf-8
 Date: Wed, 29 Jun 2016 16:09:37 GMT
 Expires: Wed, 29 Jun 2016 16:10:07 GMT
-Link: &lt;/assets/css/screen.css?v=5fc240c512&gt;; rel=preload; as=style,&lt;//cdn.bizible.com/scripts/bizible.js&gt;; rel=preload; as=script,&lt;/content/images/2016/06/Timeouts-001.png&gt;; rel=preload; as=image,&lt;/content/images/2016/06/Timeouts-002.png&gt;; rel=preload; as=image,&lt;//platform.linkedin.com/in.js&gt;; rel=preload; as=script,&lt;https://code.jquery.com/jquery-1.11.3.min.js&gt;; rel=preload; as=script,&lt;/assets/js/jquery.fitvids.js?v=5fc240c512&gt;; rel=preload; as=script
+Link: ; rel=preload; as=style,<!--/cdn.bizible.com/scripts/bizible.js-->; rel=preload; as=script,; rel=preload; as=image,; rel=preload; as=image,<!--/platform.linkedin.com/in.js-->; rel=preload; as=script,<https: code.jquery.com="" jquery-1.11.3.min.js="">; rel=preload; as=script,; rel=preload; as=script
 Vary: Accept-Encoding
 X-Ghost-Cache-Status:From Cache
-X-Powered-By: Express 
-</code></pre>
+X-Powered-By: Express </https:></code></pre>
 	<p>CloudFlare decides to HTTP/2 Server Push the assets <code>/assets/css/screen.css?v=5fc240c512</code>, <code>/content/images/2016/06/Timeouts-001.png</code>, <code>/content/images/2016/06/Timeouts-002.png</code> and <code>/assets/js/jquery.fitvids.js?v=5fc240c512</code>. As the response passes through CloudFlare those assets are removed from the <code>Link</code> header, pushed and added to the <code>Cf-H2-Pushed</code> header:</p>
-	<pre><code>cache-control:public, max-age=30
+	<pre class="language-bash"><code class="language-bash">cache-control:public, max-age=30
 cf-cache-status:EXPIRED
-cf-h2-pushed:&lt;/assets/css/screen.css?v=5fc240c512&gt;,&lt;/content/images/2016/06/Timeouts-001.png&gt;,&lt;/content/images/2016/06/Timeouts-002.png&gt;,&lt;/assets/js/jquery.fitvids.js?v=5fc240c512&gt;
+cf-h2-pushed:,,,
 content-encoding:gzip
 content-type:text/html; charset=utf-8
 date:Wed, 29 Jun 2016 16:09:37 GMT
 expires:Wed, 29 Jun 2016 16:10:07 GMT
-link:&lt;//cdn.bizible.com/scripts/bizible.js&gt;; rel=preload; as=script,&lt;//platform.linkedin.com/in.js&gt;; rel=preload; as=script,&lt;https://code.jquery.com/jquery-1.11.3.min.js&gt;; rel=preload; as=script
+link:<!--/cdn.bizible.com/scripts/bizible.js-->; rel=preload; as=script,<!--/platform.linkedin.com/in.js-->; rel=preload; as=script,<https: code.jquery.com="" jquery-1.11.3.min.js="">; rel=preload; as=script
 server:cloudflare-nginx
 status:200 OK
 vary:Accept-Encoding
 x-ghost-cache-status:From Cache
-x-powered-by:Express
-</code></pre>
+x-powered-by:Express</https:></code></pre>
 	<p>In Google Chrome Canary's Developer view the pushed assets can be clearly seen.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/Screen-Shot-2016-06-30-at-11-15-02.png" alt="" loading="lazy"></p>
-	<h3 id="conclusion">Conclusion</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jgGCv0Nr84rpBYTGKMQ5l/51b3325a8a9bf6f41d9edae44bfc32db/Screen-Shot-2016-06-30-at-11-15-02.png" alt="" class="kg-image" width="737" height="170" loading="lazy">
+
+	</figure>
+	<h3>Conclusion</h3>
 	<p>Please let us know how you use Server Push. We're particularly interested in experiences with pushing different types of resources (images vs. styles vs. scripts) and working out the optimal number of items to push (we currently allow up to 50 resources per page).</p>
-	<!--kg-card-end: markdown-->
 </div>

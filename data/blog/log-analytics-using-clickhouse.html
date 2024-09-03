@@ -1,89 +1,160 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/433yQuPGUcTt4XK0Bz9NOZ/8eaa862c82552548acc51bb9c6d9d617/log-analytics-using-clickhouse.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This is an adapted transcript of a talk we gave at Monitorama 2022. You can find the slides with presenter’s notes <a href="https://docs.google.com/presentation/d/1HLnxh-56LMKZGvrc85qxYUt8-tl4M4izdPbxKj4mdL8/edit?usp=sharing">here</a> and video <a href="https://vimeo.com/730379928?embedded=false&amp;source=vimeo_logo&amp;owner=6548926">here</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.37.21-AM.png" class="kg-image" alt="" loading="lazy" title="Log analytics using ClickHouse"></figure>
 	<p>When a request at Cloudflare throws an error, information gets logged in our requests_error pipeline. The error logs are used to help troubleshoot customer-specific or network-wide issues.</p>
 	<p>We, Site Reliability Engineers (SREs), manage the logging platform. We have been running Elasticsearch clusters for many years and during these years, the log volume has increased drastically. With the log volume increase, we started facing a few issues. Slow query performance and high resource consumption to list a few. We aimed to improve the log consumer's experience by improving query performance and providing cost-effective solutions for storing logs. This blog post discusses challenges with logging pipelines and how we designed the new architecture to make it faster and cost-efficient.</p>
 	<p>Before we dive into challenges in maintaining the logging pipelines, let us look at the characteristics of logs.</p>
-	<h3 id="characteristics-of-logs">Characteristics of logs</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.37.31-AM.png" class="kg-image" alt="Unpredictable log volume" loading="lazy" title="Unpredictable log volume"></figure>
-	<p><strong>Unpredictable</strong> - In today's world, where there are tons of microservices, the amount of logs a centralized logging system will receive is very unpredictable. There are various reasons why capacity estimation of log volume is so difficult. Primarily because new applications get deployed to production continuously, existing applications are automatically scaled up or down to handle business demands or sometimes application owners enable debug log levels and forget to turn it off.</p>
-	<p><strong>Semi-structured</strong> - Every application adopts a different logging format. Some are represented in plain-text and others use JSON. The timestamp field within these log lines also varies. Multi-line exceptions and stack traces make them even more unstructured. Such logs add extra resource overhead, requiring additional data parsing and mangling.</p>
-	<p><strong>Contextual</strong> - For debugging issues, often contextual information is required, that is, logs before and after an event happened. A single logline hardly helps, generally, it's the group of loglines that helps in building the context. Also, we often need to correlate the logs from multiple applications to draw the full picture. Hence it's essential to preserve the order in which logs get populated at the source.</p>
-	<p><strong>Write-heavy</strong> - Any centralized logging system is write-intensive. More than 99% of logs that are written, are never read. They occupy space for some time and eventually get purged by the retention policies. The remaining less than 1% of the logs that are read are very important and we can't afford to miss them.</p>
-	<h2 id="logging-pipeline">Logging pipeline</h2>
+	<h3>Characteristics of logs</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YYAmUK5Biaezs3ktFTxZU/8e01a66310964446eb1658b7289f34b3/Screen-Shot-2022-09-02-at-9.37.31-AM.png" alt="Unpredictable log volume" class="kg-image" width="557" height="261" loading="lazy">
+
+	</figure>
+	<p><b>Unpredictable</b> - In today's world, where there are tons of microservices, the amount of logs a centralized logging system will receive is very unpredictable. There are various reasons why capacity estimation of log volume is so difficult. Primarily because new applications get deployed to production continuously, existing applications are automatically scaled up or down to handle business demands or sometimes application owners enable debug log levels and forget to turn it off.</p>
+	<p><b>Semi-structured</b> - Every application adopts a different logging format. Some are represented in plain-text and others use JSON. The timestamp field within these log lines also varies. Multi-line exceptions and stack traces make them even more unstructured. Such logs add extra resource overhead, requiring additional data parsing and mangling.</p>
+	<p><b>Contextual</b> - For debugging issues, often contextual information is required, that is, logs before and after an event happened. A single logline hardly helps, generally, it's the group of loglines that helps in building the context. Also, we often need to correlate the logs from multiple applications to draw the full picture. Hence it's essential to preserve the order in which logs get populated at the source.</p>
+	<p><b>Write-heavy</b> - Any centralized logging system is write-intensive. More than 99% of logs that are written, are never read. They occupy space for some time and eventually get purged by the retention policies. The remaining less than 1% of the logs that are read are very important and we can't afford to miss them.</p>
+	<h2>Logging pipeline</h2>
 	<p>Like most other companies, our logging pipeline consists of a producer, shipper, a queue, a consumer and a datastore.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.37.42-AM.png" class="kg-image" alt="Logging pipeline" loading="lazy" title="Logging pipeline"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yhRMSCSZGYqQtwaA86MmQ/6645a383e96b5b15d983019d7982b7bd/Screen-Shot-2022-09-02-at-9.37.42-AM.png" alt="Logging pipeline" class="kg-image" width="554" height="196" loading="lazy">
+
+	</figure>
 	<p>Applications (Producers) running on the Cloudflare global network generate the logs. These logs are written locally in Cap'n Proto serialized format. The Shipper (in-house solution) pushes the Cap'n Proto serialized logs through streams for processing to Kafka (queue). We run Logstash (consumer), which consumes from Kafka and writes the logs into ElasticSearch (datastore).The data is then visualized by using Kibana or Grafana. We have multiple dashboards built in both Kibana and Grafana to visualize the data.</p>
-	<h2 id="elasticsearch-bottlenecks-at-cloudflare">Elasticsearch bottlenecks at Cloudflare</h2>
+	<h2>Elasticsearch bottlenecks at Cloudflare</h2>
 	<p>At Cloudflare, we have been running Elasticsearch clusters for many years. Over the years, log volume increased dramatically and while optimizing our Elasticsearch clusters to handle such volume, we found a few limitations.</p>
-	<h3 id="mapping-explosion">Mapping Explosion</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.37.50-AM.png" class="kg-image" alt="Elasticsearch Mapping explosion" loading="lazy" title="Mapping explosion"></figure>
+	<h3>Mapping Explosion</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ijCCs3R3Gx9FQTG7IfYGE/7f222f318b5f1da29a803488cb5f8ba0/Screen-Shot-2022-09-02-at-9.37.50-AM.png" alt="Elasticsearch Mapping explosion" class="kg-image" width="553" height="209" loading="lazy">
+
+	</figure>
 	<p>Mapping Explosion is one of the very well-known limitations of Elasticsearch. Elasticsearch maintains a mapping that decides how a new document and its fields are stored and indexed. When there are too many keys in this mapping, it can take a significant amount of memory resulting in frequent garbage collection. One way to prevent this is to make the schema strict, which means any log line not following this strict schema will end up getting dropped. Another way is to make it semi-strict, which means any field not part of this mapping will not be searchable.</p>
-	<h3 id="multi-tenancy-support">Multi-tenancy support</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.38.00-AM.png" class="kg-image" alt="Bad resource isolation in Elasticsearch" loading="lazy" title="Bad resource isolation in Elasticsearch"></figure>
+	<h3>Multi-tenancy support</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22v1YQNdcJKCuJOo3E1P0D/ebe7f7fbb345907e9926d1494f7ac853/Screen-Shot-2022-09-02-at-9.38.00-AM.png" alt="Bad resource isolation in Elasticsearch" class="kg-image" width="571" height="245" loading="lazy">
+
+	</figure>
 	<p>Elasticsearch doesn't have very good multi-tenancy support. One bad user can easily impact cluster performance. There is no way to limit the maximum number of documents or indexes a query can read or the amount of memory an Elasticsearch query can take. A bad query can easily degrade cluster performance and even after the query finishes, it can still leave its impact.</p>
-	<h3 id="cluster-operational-tasks">Cluster operational tasks</h3>
+	<h3>Cluster operational tasks</h3>
 	<p>It is not easy to manage Elasticsearch clusters, especially multi-tenant ones. Once a cluster degrades, it takes significant time to get the cluster back to a fully healthy state. In Elasticsearch, updating the index template means reindexing the data, which is quite an overhead. We use hot and cold tiered storage, i.e., recent data in SSD and older data in magnetic drives. While Elasticsearch moves the data from hot to cold storage every day, it affects the read and write performance of the cluster.</p>
-	<h3 id="garbage-collection">Garbage collection</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.38.10-AM.png" class="kg-image" alt="Garbage collection in Elasticsearch" loading="lazy" title="Garbage collection in Elasticsearch"></figure>
+	<h3>Garbage collection</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7h1V8hxPtmpCiGecyBckoo/3417a6820a5a5716a628eb24040f4eae/Screen-Shot-2022-09-02-at-9.38.10-AM.png" alt="Garbage collection in Elasticsearch" class="kg-image" width="569" height="225" loading="lazy">
+
+	</figure>
 	<p>Elasticsearch is developed in Java and runs on a Java Virtual Machine (JVM). It performs garbage collection to reclaim memory that was allocated by the program but is no longer referenced. Elasticsearch requires garbage collection tuning. The default garbage collection in the latest JVM is G1GC. We tried other GC like ZGC, which helped in lowering the GC pause but didn't give us much performance benefit in terms of read and write throughput.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.38.21-AM.png" class="kg-image" alt="Cloudflare HTTP RPS vs error rate" loading="lazy" title="Cloudflare HTTP RPS vs error rate"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x7lpQZh4QM9cGZs1L5d76/e8e850b225e98bba63b13d7c3c80d21a/Screen-Shot-2022-09-02-at-9.38.21-AM.png" alt="Cloudflare HTTP RPS vs error rate" class="kg-image" width="600" height="313" loading="lazy">
+
+	</figure>
 	<p>Elasticsearch is a good tool for full-text search and these limitations are not significant with small clusters, but in Cloudflare, we handle over 35 to 45 million HTTP requests per second, out of which over 500K-800K requests fail per second. These failures can be due to an improper request, origin server errors, misconfigurations by users, network issues and various other reasons.</p>
 	<p>Our customer support team uses these error logs as the starting point to triage customer issues. The error logs have a number of fields metadata about various Cloudflare products that HTTP requests have been through. We were storing these error logs in Elasticsearch. We were heavily sampling them since storing everything was taking a few hundreds of terabytes crossing our resource allocation budget. Also, dashboards built over it were quite slow since they required heavy aggregation over various fields. We need to retain these logs for a few weeks per the debugging requirements.</p>
-	<h2 id="proposed-solution">Proposed solution</h2>
+	<h2>Proposed solution</h2>
 	<p>We wanted to remove sampling completely, that is, store every log line for the retention period, to provide fast query support over this huge amount of data and to achieve all this without increasing the cost.</p>
 	<p>To solve all these problems, we decided to do a proof of concept and see if we could accomplish our requirements using ClickHouse.</p>
 	<p>Cloudflare was <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second">an early adopter of ClickHouse</a> and we have been managing ClickHouse clusters for years. We already had a lot of in-house tooling and libraries for inserting data into ClickHouse, which made it easy for us to do the proof of concept. Let us look at some of the ClickHouse features that make it the perfect fit for storing logs and which enabled us to build our new logging pipeline.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.38.31-AM.png" class="kg-image" alt="Proposed logging pipeline" loading="lazy" title="Proposed pipeline"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59HOlTZfiSM8YZEn8CCphe/3b2af483e73d47492d823b08c0ee01e4/Screen-Shot-2022-09-02-at-9.38.31-AM.png" alt="Proposed logging pipeline" class="kg-image" width="556" height="192" loading="lazy">
+
+	</figure>
 	<p>ClickHouse is a column-oriented database which means all data related to a particular column is physically stored next to each other. Such data layout helps in fast sequential scan even on commodity hardware. This enabled us to extract maximum performance out of older generation hardware.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.38.40-AM.png" class="kg-image" alt="column-oriented database" loading="lazy" title=" column-oriented database"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52v0cmxfG25pokFcyrhuVh/7cd3e72a4475ee1ecf4a94a21d912663/Screen-Shot-2022-09-02-at-9.38.40-AM.png" alt="column-oriented database" class="kg-image" width="548" height="254" loading="lazy">
+
+	</figure>
 	<p>ClickHouse is designed for analytical workloads where the data has a large number of fields that get represented as ClickHouse columns. We were able to design our new ClickHouse tables with a large number of columns without sacrificing performance.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.38.55-AM.png" class="kg-image" alt="ClickHouse designed for analytical workloads" loading="lazy" title="ClickHouse designed for analytical workloads"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CQjgzSLKSgTxvOiTAUHMJ/4146b3fe7544631e4fc4025372865202/Screen-Shot-2022-09-02-at-9.38.55-AM.png" alt="ClickHouse designed for analytical workloads" class="kg-image" width="556" height="311" loading="lazy">
+
+	</figure>
 	<p>ClickHouse indexes work differently than those in relational databases. In relational databases, the primary indexes are dense and contain one entry per table row. So if you have 1 million rows in the table, the primary index will also have 1 million entries. While In ClickHouse, indexes are sparse, which means there will be only one index entry per a few thousand table rows. ClickHouse indexes enabled us to add new indexes on the fly.</p>
 	<p>ClickHouse compresses everything with LZ4 by default. An efficient compression not only helps in minimizing the storage needs but also lets ClickHouse use page cache efficiently.</p>
 	<p>One of the cool features of ClickHouse is that the compression codecs can be configured on a per-column basis. We decided to keep default LZ4 compression for all columns. We used special encodings like Double-Delta for the DateTime columns, Gorilla for Float columns and LowCardinality for fixed-size String columns.</p>
 	<p>ClickHouse is linearly scalable; that is, the writes can be scaled by adding new shards and the reads can be scaled by adding new replicas. Every node in a ClickHouse cluster is identical. Not having any special nodes helps in scaling the cluster easily.</p>
 	<p>Let's look at some optimizations we leveraged to provide faster read/write throughput and better compression on log data.</p>
-	<h3 id="inserter">Inserter</h3>
+	<h3>Inserter</h3>
 	<p>Having an efficient inserter is as important as having an efficient data store. At Cloudflare, we have been operating quite a few analytics pipelines from where we borrowed most of the concepts while writing our new inserter. We use Cap'n Proto messages as the transport data format since it provides fast data encoding and decoding. Scaling inserters is easy and can be done by adding more Kafka partitions and spawning new inserter pods.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.39.10-AM.png" class="kg-image" alt="Scaling ClickHouse inserter" loading="lazy" title="Scaling ClickHouse inserter"></figure>
-	<h4 id="batch-size">Batch Size</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Npjdfc4dgWo2JcaWbcMHz/953272eed3503b933a32bfe306c6f1be/Screen-Shot-2022-09-02-at-9.39.10-AM.png" alt="Scaling ClickHouse inserter" class="kg-image" width="567" height="290" loading="lazy">
+
+	</figure>
+	<h4>Batch Size</h4>
 	<p>One of the key performance factors while inserting data into ClickHouse is the batch size. When batches are small, ClickHouse creates many small partitions, which it then merges into bigger ones. Thus smaller batch size creates extra work for ClickHouse to do in the background, thereby reducing ClickHouse's performance. Hence it is crucial to set it big enough that ClickHouse can accept the data batch happily without hitting memory limits.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.40.04-AM.png" class="kg-image" alt="ClickHouse inserter batch size" loading="lazy" title="ClickHouse inserter batch size"></figure>
-	<h3 id="data-modeling-in-clickhouse-">Data modeling in ClickHouse.</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dQ25MgZDgiVXq2p5vKFwd/a4d3a54c3f90b59f05c2ae3c5c3bd779/Screen-Shot-2022-09-02-at-9.40.04-AM.png" alt="ClickHouse inserter batch size" class="kg-image" width="548" height="196" loading="lazy">
+
+	</figure>
+	<h3>Data modeling in ClickHouse.</h3>
 	<p>ClickHouse provides in-built sharding and replication without any external dependency. Earlier versions of ClickHouse depended on ZooKeeper for storing replication information, but the recent version removed the ZooKeeper dependency by adding clickhouse-keeper.</p>
 	<p>To read data across multiple shards, we use distributed tables, a special kind of table. These tables don't store any data themselves but act as a proxy over multiple underlying tables storing the actual data.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.40.15-AM.png" class="kg-image" alt="Data modeling in ClickHouse" loading="lazy" title="Data modeling in ClickHouse"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50nJ3pN0dqv5818cn7P75M/81aedd4e8b20d40f2bd0e511a3c75c46/Screen-Shot-2022-09-02-at-9.40.15-AM.png" alt="Data modeling in ClickHouse" class="kg-image" width="562" height="310" loading="lazy">
+
+	</figure>
 	<p>Like any other database, choosing the right table schema is very important since it will directly impact the performance and storage utilization. We would like to discuss three ways you can store log data into ClickHouse.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.40.32-AM.png" class="kg-image" alt="Schema modeling in ClickHouse" loading="lazy" title="Schema modeling in ClickHouse"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MR16SkgqVmj6QXDhfXbvL/0cf350245f10ccb00c1ed5b72c74207b/Screen-Shot-2022-09-02-at-9.40.32-AM.png" alt="Schema modeling in ClickHouse" class="kg-image" width="567" height="221" loading="lazy">
+
+	</figure>
 	<p>The first is the simplest and the most strict table schema where you specify every column name and data type. Any logline having a field outside this predefined schema will get dropped. From our experience, this schema will give you the fastest query capabilities. If you already know the list of all possible fields ahead, we would recommend using it. You can always add or remove columns by running ALTER TABLE queries.</p>
 	<p>The second schema uses a very new feature of ClickHouse, where it does most of the heavy lifting. You can insert logs as JSON objects and behind the scenes, ClickHouse will understand your log schema and dynamically add new columns with appropriate data type and compression. This schema should only be used if you have good control over the log schema and the number of total fields is less than 1,000. On the one hand it provides flexibility to add new columns as new log fields automatically, but at the same time, one lousy application can easily bring down the ClickHouse cluster.</p>
 	<p>The third schema stores all fields of the same data type in one array and then uses ClickHouse inbuilt array functions to query those fields. This schema scales pretty well even when there are more than 1,000 fields, as the number of columns depends on the data types used in the logs. If an array element is accessed frequently, it can be taken out as a dedicated column using the materialized column feature of ClickHouse. We recommend adopting this schema since it provides safeguards against applications logging too many fields.</p>
-	<h4 id="data-partitioning">Data partitioning</h4>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.40.47-AM.png" class="kg-image" alt="Data partitioning" loading="lazy" title="Data partitioning"></figure>
+	<h4>Data partitioning</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HTOQKJBTv3ZtmowLtA8Yj/0d8662ffda01ae83aad155ec5baebe5a/Screen-Shot-2022-09-02-at-9.40.47-AM.png" alt="Data partitioning" class="kg-image" width="358" height="324" loading="lazy">
+
+	</figure>
 	<p>A partition is a unit of ClickHouse data. One common mistake ClickHouse users make is overly granular partitioning keys, resulting in too many partitions. Since our logging pipeline generates TBs of data daily, we created the table partitioned with `toStartOfHour(dateTime).` With this partitioning logic, when a query comes with the timestamp in the WHERE clause, ClickHouse knows the partition and retrieves it quickly. It also helps design efficient data purging rules according to the data retention policies.</p>
-	<h4 id="primary-key-selection">Primary key selection</h4>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.40.57-AM.png" class="kg-image" alt="Primary key selection" loading="lazy" title="Primary key selection"></figure>
+	<h4>Primary key selection</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UJdJsq0ULZtNHe9HeIyWq/5eced357d6e0c7b9e9af8f68ce75b97b/Screen-Shot-2022-09-02-at-9.40.57-AM.png" alt="Primary key selection" class="kg-image" width="374" height="368" loading="lazy">
+
+	</figure>
 	<p>ClickHouse stores the data on disk sorted by primary key. Thus, selecting the primary key impacts the query performance and helps in better data compression. Unlike relational databases, ClickHouse doesn't require a unique primary key per row and we can insert multiple rows with identical primary keys. Having multiple primary keys will negatively impact the insertion performance. One of the significant ClickHouse limitations is that once a table is created the primary key can not be updated.</p>
-	<h4 id="data-skipping-indexes">Data skipping indexes</h4>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.41.18-AM.png" class="kg-image" alt="Data skipping indexes" loading="lazy" title="Data skipping indexes"></figure>
+	<h4>Data skipping indexes</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ACrIaqoi3DI4sPOCwF32y/cc4a019474b748f5fa688c1fb3afee08/Screen-Shot-2022-09-02-at-9.41.18-AM.png" alt="Data skipping indexes" class="kg-image" width="426" height="281" loading="lazy">
+
+	</figure>
 	<p>ClickHouse query performance is directly proportional to whether it can use the primary key when evaluating the WHERE clause. We have many columns and all these columns can not be part of the primary key. Thus queries on these columns will have to do a full scan resulting in slower queries. In traditional databases, secondary indexes can be added to handle such situations. In ClickHouse, we can add another class of indexes called data skipping indexes, which uses bloom filters and skip reading significant chunks of data that are guaranteed to have no match.</p>
-	<h2 id="abr">ABR</h2>
+	<h2>ABR</h2>
 	<p>We have multiple dashboards built over the requests_error logs. Loading these dashboards were often hitting the memory limits set for the individual query/user in ClickHouse.</p>
 	<p>The dashboards built over these logs were mainly used to identify anomalies. To visually identify an anomaly in a metric, the exact numbers are not required, but an approximate number would do. For instance, to understand that errors have increased in a data center, we don’t need the exact number of errors. So we decided to use an in-house library and tool built around a concept called <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">ABR</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.41.26-AM.png" class="kg-image" alt="Adaptive Bitrate" loading="lazy" title="Adaptive Bitrate"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sB6fQSh4L14ZTUb9O0jGp/96d360a95d9cada7593afa645d081b8b/Screen-Shot-2022-09-02-at-9.41.26-AM.png" alt="Adaptive Bitrate" class="kg-image" width="418" height="315" loading="lazy">
+
+	</figure>
 	<p>ABR stands for "<a href="https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming">Adaptive Bit Rate</a>" - the term ABR is mainly used in video streaming services where servers select the best resolution for a video stream to match the client and network connection. It is described in great detail in the blog post - <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">Explaining Cloudflare's ABR Analytics</a></p>
 	<p>In other words, the data is stored at multiple resolutions or sample intervals and the best solution is picked for each query.</p>
 	<p>The way ABR works is at the time of writing requests to ClickHouse, it writes the data in a number of tables with different sample intervals. For instance table_1 stores 100% of data, table_10 stores 10% of data, table_100 stores 1% of data and table_1000 stores 0.1% data so on and so forth. The data is duplicated between the tables. Table_10 would be a subset of table_1.</p>
-	<h2 id="demo">Demo</h2>
+	<h2>Demo</h2>
 	<p>In Cloudflare, we use in-house libraries and tools to insert data into ClickHouse, but this can be achieved by using an open source tool - vector.dev</p>
 	<p>If you would like to test how log ingestion into ClickHouse works, you can refer or use the demo <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2022-08-log-analytics">here</a>.</p>
 	<p>Make sure you have docker installed and run `docker compose up` to get started.</p>
 	<p>This would bring up three containers, Vector.dev for generating vector demo logs, writing it into ClickHouse, ClickHouse container to store the logs and Grafana instance to visualize the logs.</p>
 	<p>When the containers are up, visit <a href="http://localhost:3000/dashboards">http://localhost:3000/dashboards</a> to play with the prebuilt demo dashboard.</p>
-	<h2 id="conclusion">Conclusion</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-02-at-9.41.35-AM.png" class="kg-image" alt="Elasticsearch vs ClickHouse" loading="lazy" title="Elasticsearch vs ClickHouse"></figure>
+	<h2>Conclusion</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aZmMq2bbYnLDYeLsv6lWO/d4c5cd9388c5486f668a260fc61e17eb/Screen-Shot-2022-09-02-at-9.41.35-AM.png" alt="Elasticsearch vs ClickHouse" class="kg-image" width="443" height="226" loading="lazy">
+
+	</figure>
 	<p>Logs are supposed to be immutable by nature and ClickHouse works best with immutable data. We were able to migrate one of the critical and significant log-producing applications from Elasticsearch to a much smaller ClickHouse cluster.</p>
 	<p>CPU and memory consumption on the inserter side were reduced by eight times. Each Elasticsearch document which used 600 bytes, came down to 60 bytes per row in ClickHouse. This storage gain allowed us to store 100% of the events in a newer setup. On the query side, the 99th percentile of the query latency also improved drastically.</p>
 	<p>Elasticsearch is great for full-text search and ClickHouse is great for analytics.</p>

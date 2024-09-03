@@ -1,70 +1,112 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SIRTFNMWOid8LIr5BlARl/3a72d32a18b509a2d91002fa3d3d189a/cyber-security-advice-for-your-parents.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today, December 25th, Cloudflare offices around the world are taking a break. From San Francisco to London and Singapore; engineers have retreated home for the holidays (albeit with those engineers on-call closely monitoring their mobile phones).</p>
-	<blockquote class="twitter-tweet" data-lang="en">
-		<p lang="en" dir="ltr">Software engineering pro-tip:<br><br>Do not, I repeat, do not deploy this week. That is how you end up debugging a critical issue from your parent's wifi in your old bedroom while your spouse hates you for abandoning them with your racist uncle.</p>— Chris Albon (@chrisalbon) <a href="https://twitter.com/chrisalbon/status/943342608742604801?ref_src=twsrc%5Etfw">December 20, 2017</a>
+	<blockquote>
+		<p>Software engineering pro-tip:</p>
+		<p>Do not, I repeat, do not deploy this week. That is how you end up debugging a critical issue from your parent's wifi in your old bedroom while your spouse hates you for abandoning them with your racist uncle.</p>
+		<p>— Chris Albon (@chrisalbon) <a href="https://twitter.com/chrisalbon/status/943342608742604801?ref_src=twsrc%5Etfw">December 20, 2017</a></p>
 	</blockquote>
-	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	<p>Whilst our Support and SRE teams operated on a schedule to ensure fingers were on keyboards; on Saturday, I headed out of the London bound for the Warwickshire countryside. Away from the barracks of the London tech scene, it didn't take long for the following conversation to happen:</p>
 	<ul>
-		<li>Family member: "So what do you do nowadays?"</li>
-		<li>Me: "I work in Cyber Security."</li>
-		<li>Family member: "There seems to be a new cyber attack every day on the news! What can I possibly do to keep myself safe?"</li>
+		<li>
+			<p>Family member: "So what do you do nowadays?"</p>
+		</li>
+		<li>
+			<p>Me: "I work in Cyber Security."</p>
+		</li>
+		<li>
+			<p>Family member: "There seems to be a new cyber attack every day on the news! What can I possibly do to keep myself safe?"</p>
+		</li>
 	</ul>
 	<p>If you work in the tech industry, you may find a family member asking you for advice on <a href="https://www.cloudflare.com/learning/security/what-is-cyber-security">cybersecurity</a>. This blog post will hopefully save you from stuttering whilst trying to formulate advice (like I did).</p>
-	<h3 id="thebasics">The Basics</h3>
+	<h3>The Basics</h3>
 	<p>The WannaCry Ransomware Attack was one of the most high-profile cyberattacks of 2017. In essence, ransomware works by infecting a computer, then encrypting files - preventing users from being able to access them. Users then see a window on their screen demanding payment with the promise of decrypting files. Multiple copycat viruses also sprung up, using the same exploit as WannaCry.</p>
 	<p>It is worth noting that even after paying, you're unlikely to see your files back (don't expect an honest transaction from criminals).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Wana_Decrypt0r_screenshot.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lRcjVSkC9AzNgSL3acz7W/3eeff2e0a9c12eeac5553f1c5e205530/Wana_Decrypt0r_screenshot.png" alt="" class="kg-image" width="600" height="453" loading="lazy">
+
+	</figure>
 	<p>WannaCry was estimated to have infected over 300 000 computers around the world; this included high-profile government agencies and corporations, the UK's National Health Service was one notable instance of this.</p>
 	<p>Despite the wide-ranging impact of this attack, a lot of victims could have protected themselves fairly easily. Security patches had already been available to fix the bug that allowed this attack to happen and installing anti-virus software could have contained the spread of this ransomware.</p>
 	<p>For consumers; it is generally a good idea to install updates, particularly security updates. Platforms like Windows XP no longer receive security updates, and therefore shouldn't be used - regardless of how up-to-date they are on security patches.</p>
 	<p>Of course, it is also essential to back-up your most indispensable files, not just because of the damage security vulnerabilities.</p>
-	<h3 id="dontputyoureggsinonebasket">Don't put your eggs in one Basket</h3>
+	<h3>Don't put your eggs in one Basket</h3>
 	<p>It may not be Easter, but you certainly should not be putting all your eggs in one basket. For this reason; it is often not a good idea to use the same password across multiple sites.</p>
 	<p>Passwords have been around since 1961, however, no alternative has been found which keeps all their benefits; users continue to set passwords weakly, and website developers continue to store them insecurely.</p>
 	<p>When developers store computer passwords, they should do so in a way that they can check a computer password is correct but they can never know what the original password is. Unfortunately many websites (including some popular ones) implement internet security poorly. When they get hacked, a password dump can be leaked with everyone's emails/usernames alongside their passwords.</p>
 	<p>If the same email/username and password combination are used on multiple sites, hackers can automatically use the breached user data from one site to attempt logins against other websites you use online.</p>
 	<p>For this reason, it's absolutely critical to use a unique password across multiple sites. Password manager apps like <a href="https://www.lastpass.com">LastPass</a> or <a href="https://1password.com">1Password</a> allow you to use unique randomly-generated passwords for each site but manage them from one encrypted wallet using a master password.</p>
-	<p>Simple passwords, based on personal information or using individual words in the dictionary, are far from safe too. Computers can repeatedly go through common passwords in order to crack them. Similarly, adding numbers and symbols (i.e. changing <em>password</em> to <em>p4$$w0rd</em>) will do little to help also.</p>
-	<p>When you have to choose a password you need to remember, you can create strong passwords from sentences. For example: <em>"At Christmas my dog stole 2 pairs of Doc Martens shoes!"</em> can become <em>ACmds2poDMs!</em> Passwords based on simple sentences can be long, but still easy to remember.</p>
-	<p>Another approach is to simply select four random dictionary words, for example: <em>WindySoapLongBoulevard</em>. (For obvious reasons, don't actually use that as your password.) Although this password uses solely letters, it is more secure than a shorter password that would also use numbers and symbols.</p>
-	<h3 id="layeringsecurity">Layering Security</h3>
+	<p>Simple passwords, based on personal information or using individual words in the dictionary, are far from safe too. Computers can repeatedly go through common passwords in order to crack them. Similarly, adding numbers and symbols (i.e. changing <i>password</i> to <i>p4$$w0rd</i>) will do little to help also.</p>
+	<p>When you have to choose a password you need to remember, you can create strong passwords from sentences. For example: <i>"At Christmas my dog stole 2 pairs of Doc Martens shoes!"</i> can become <i>ACmds2poDMs!</i> Passwords based on simple sentences can be long, but still easy to remember.</p>
+	<p>Another approach is to simply select four random dictionary words, for example: <i>WindySoapLongBoulevard</i>. (For obvious reasons, don't actually use that as your password.) Although this password uses solely letters, it is more secure than a shorter password that would also use numbers and symbols.</p>
+	<h3>Layering Security</h3>
 	<p>Authentication is how computers confirm you are who you say you are. Fundamentally, is done using either:</p>
 	<ul>
-		<li>Something you know</li>
-		<li>Something you have</li>
-		<li>Something you are</li>
+		<li>
+			<p>Something you know</p>
+		</li>
+		<li>
+			<p>Something you have</p>
+		</li>
+		<li>
+			<p>Something you are</p>
+		</li>
 	</ul>
-	<p>A password is an example of how you can log-in using "something you <em>know</em>"; if someone is able to gain access to that password, it's game-over for that online account.</p>
-	<p>Instead, it is possible to use "something you <em>have</em>" as well. This means, should your password be intercepted or disclosed, you still have another safeguard to protect your account.</p>
+	<p>A password is an example of how you can log-in using "something you <i>know</i>"; if someone is able to gain access to that password, it's game-over for that online account.</p>
+	<p>Instead, it is possible to use "something you <i>have</i>" as well. This means, should your password be intercepted or disclosed, you still have another safeguard to protect your account.</p>
 	<p>In practice, this means that after entering your password onto a website, you may also be prompted for another code that you need to read off an app on your phone. This is known as Two-Factor Authentication.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-25-at-14.00.33.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fn1UkBgYFczT7NTNiKRZO/4c1920677531344b9c557a0aa98a5c50/Screen-Shot-2017-12-25-at-14.00.33.png" alt="" class="kg-image" width="780" height="640" loading="lazy">
+
+	</figure>
 	<p><a href="https://support.cloudflare.com/hc/en-us/articles/200167906-Securing-user-access-with-two-factor-authentication-2FA-">Two-Factor Authentication</a> is supported on many of the worlds most popular social media, banking and shopping sites.</p>
-	<h3 id="knowwhoyoutalkto">Know who you talk to</h3>
+	<h3>Know who you talk to</h3>
 	<p>When you browse to a website online, you may notice a lock symbol light up in your address bar. This indicates encryption is enabled when talking to the website, this is important in order to prevent interception.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/green_lock.png" alt="" loading="lazy"></p>
-	<p>When inputting personal information into websites, it is important you check this green lock appears and that the website address starts with "<em>http<strong>s</strong>://</em>".</p>
-	<p>It is, however, important to double check the address bar you're putting your personal information into. Is it <em>cloudflare.com</em> or have you been redirected away to a dodgy website at <em>cloudflair.com</em> or <em>cloudflare.net</em>?</p>
-	<p>Despite how common encrypted web traffic has become, on many sites, it still remains relatively easy to strip away this encryption - by pointing internet traffic to a different address. I describe how this can be done in:<br>
-		<a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer">Performing &amp; Preventing SSL Stripping: A Plain-English Primer</a>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6euuW53rJuMZCoDqiMMpFs/dfb6c60898e059c3adcf2be5f8ce9bf5/green_lock.png" alt="" class="kg-image" width="272" height="64" loading="lazy">
+
+	</figure>
+	<p>When inputting personal information into websites, it is important you check this green lock appears and that the website address starts with "<i>http</i><b><i>s</i></b><i>://</i>".</p>
+	<p>It is, however, important to double check the address bar you're putting your personal information into. Is it <i>cloudflare.com</i> or have you been redirected away to a dodgy website at <i>cloudflair.com</i> or <i>cloudflare.net</i>?</p>
+	<p>Despite how common encrypted web traffic has become, on many sites, it still remains relatively easy to strip away this encryption - by pointing internet traffic to a different address. I describe how this can be done in:<a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer">Performing &amp; Preventing SSL Stripping: A Plain-English Primer</a></p>
 	<p>It is also often good guidance to be careful about the links you see in emails; they legitimate emails from your bank, or just someone trying to capture your personal information from their fake "phishing" website that looks just like your bank? Just because someone has a little bit of information about you, doesn't mean they are who they say they are. When in doubt; void following links directly in emails, and check the validity of the email independently (such as by directly going to your banking website). A correct looking "to" address isn't enough to prove an email is coming from who it says it's from.</p>
-	<h3 id="conclusions">Conclusions</h3>
+	<h3>Conclusions</h3>
 	<p>We always hear of new and innovative security vulnerabilities, but for most users, remembering a handful of simple security tips is enough to protect against the majority of security threats.</p>
-	<h4 id="insummary">In Summary:</h4>
+	<h4>In Summary:</h4>
 	<ul>
-		<li>As a rule-of-thumb, install the latest security patches</li>
-		<li>Don't use obsolete software which doesn't provide security patches</li>
-		<li>Use well-trusted anti-virus</li>
-		<li>Back-up the files and folders you can't expect to lose</li>
-		<li>Use a Password Manager to set random, unique passwords for every site</li>
-		<li>Don't use common keywords or personal information as passwords</li>
-		<li>Adding numbers and symbols to passwords often doesn't add security but impacts how easy they are to remember</li>
-		<li>Enable Two-Factor Authentication on sites which support it</li>
-		<li>Check the address bar when inputting personal information, make sure the connection is encrypted and the site address is correct</li>
-		<li>Don't believe everything you see in your email inbox or trust every link sent through email; even if the sender has some information about you.</li>
+		<li>
+			<p>As a rule-of-thumb, install the latest security patches</p>
+		</li>
+		<li>
+			<p>Don't use obsolete software which doesn't provide security patches</p>
+		</li>
+		<li>
+			<p>Use well-trusted anti-virus</p>
+		</li>
+		<li>
+			<p>Back-up the files and folders you can't expect to lose</p>
+		</li>
+		<li>
+			<p>Use a Password Manager to set random, unique passwords for every site</p>
+		</li>
+		<li>
+			<p>Don't use common keywords or personal information as passwords</p>
+		</li>
+		<li>
+			<p>Adding numbers and symbols to passwords often doesn't add security but impacts how easy they are to remember</p>
+		</li>
+		<li>
+			<p>Enable Two-Factor Authentication on sites which support it</p>
+		</li>
+		<li>
+			<p>Check the address bar when inputting personal information, make sure the connection is encrypted and the site address is correct</p>
+		</li>
+		<li>
+			<p>Don't believe everything you see in your email inbox or trust every link sent through email; even if the sender has some information about you.</p>
+		</li>
 	</ul>
 	<p>Finally, from everyone at Cloudflare, we wish you a wonderful and safe holiday season. For further reading, check out the <a href="https://blog.cloudflare.com/imdb-2017">Internet Mince Pie Database</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

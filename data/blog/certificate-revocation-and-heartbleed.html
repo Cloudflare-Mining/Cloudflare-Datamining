@@ -1,30 +1,47 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x47weAwn6WxE9ihl1EmSf/65506ebe669aa2352d6d89f5bbfed1ec/certificate-revocation-and-heartbleed.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>As you may have noticed, the <a href="https://www.cloudflarechallenge.com/heartbleed">CloudFlare Heartbleed Challenge</a> has been solved. The private key for the site cloudflarechallenge.com has been obtained by several authorized attackers via the Heartbleed exploit.</p>
-	<p>Any person who obtained the private key will be able to impersonate <a href="https://www.cloudflarechallenge.com/heartbleed">cloudflarechallenge.com</a>, as Fedor Indutny demonstrated when proving he had the private key.<br>
-		<img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-12_at_12.22.21_PM.png">
-	</p>
+	<p>Any person who obtained the private key will be able to impersonate <a href="https://www.cloudflarechallenge.com/heartbleed">cloudflarechallenge.com</a>, as Fedor Indutny demonstrated when proving he had the private key.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/733pJUQX5QFZF39ibkjy3A/14ff6290ae1ff9e9d45ab1b80250de45/Screen_Shot_2014-04-12_at_12.22.21_PM.png" alt="" class="kg-image" width="724" height="390" loading="lazy">
+
+	</figure>
 	<p>We have decided to revoke the certificate, but leave the site active so people can test their browsers. As we mentioned in a <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">previous blog post</a>, revocation is not a foolproof process. Each browser behaves differently when it encounters an expired certificate. If you are still able to visit the challenge site, you might have to change your browser settings.</p>
-	<h3 id="browserbehavior">Browser Behavior</h3>
+	<h3>Browser Behavior</h3>
 	<p>Internet Explorer and Safari give warnings, but allow the user to bypass them.</p>
-	<p><img alt="Safari warning" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-12_at_11.23.45_AM.png"><br>
-		<em>Safari's warning</em>
-	</p>
-	<p><img alt="IE warning" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-12_at_11.36.09_AM.png"><br>
-		<em>IE's warning</em>
-	</p>
-	<p>Firefox fully denies access to sites using a revoked certificate.<br>
-		<img alt="Firefox warning" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-12_at_11.24.50_AM.png"><br>
-		<em>Firefox's warning</em>
-	</p>
-	<p>Chrome allows the site to load with no warning. This is because online revocation checking is disabled by default. Instead, Chrome uses a proprietary method called <a href="https://www.imperialviolet.org/2012/02/05/crlsets.html">CRLSets</a> which relies on a pre-compiled list of revoked certificates. <a href="https://scotthelme.co.uk/certificate-revocation-google-chrome">Scott Helme</a> describes how to enable online verification in the Chrome advanced settings:<br>
-		<img alt="Chrome revocation setting" src="https://blog.cloudflare.com/content/images/chrome-revocation.png">
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/u5HVEOVfI6gmega5uByVl/3b580cdc9c70f371d149a54902f1a100/Screen_Shot_2014-04-12_at_11.23.45_AM.png" alt="Safari warning" class="kg-image" width="1046" height="778" loading="lazy">
+
+	</figure>
+	<p><i>Safari's warning</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aKJpJDH8AiQ77MEuxb6Jc/e31b54f3b968fb208887c047a738a10a/Screen_Shot_2014-04-12_at_11.36.09_AM.png" alt="IE warning" class="kg-image" width="670" height="254" loading="lazy">
+
+	</figure>
+	<p><i>IE's warning</i></p>
+	<p>Firefox fully denies access to sites using a revoked certificate.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vzRzJ4Rp3P81hZa48X4KD/16227f8e93b40d12d95c68ab6b777d62/Screen_Shot_2014-04-12_at_11.24.50_AM.png" alt="Firefox warning" class="kg-image" width="1314" height="768" loading="lazy">
+
+	</figure>
+	<p><i>Firefox's warning</i></p>
+	<p>Chrome allows the site to load with no warning. This is because online revocation checking is disabled by default. Instead, Chrome uses a proprietary method called <a href="https://www.imperialviolet.org/2012/02/05/crlsets.html">CRLSets</a> which relies on a pre-compiled list of revoked certificates. <a href="https://scotthelme.co.uk/certificate-revocation-google-chrome">Scott Helme</a> describes how to enable online verification in the Chrome advanced settings:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yTLTKz0V5giR1r6TTCpCh/7af3944def4968bb5b976306c09fc70e/chrome-revocation.png" alt="Chrome revocation setting" class="kg-image" width="265" height="94" loading="lazy">
+
+	</figure>
 	<p>It is more important than ever to check certificates to see if they have been revoked. According to <a href="http://news.netcraft.com/archives/2014/04/11/heartbleed-certificate-revocation-tsunami-yet-to-arrive.html">Netcraft</a> that certificate revocation has gone up sharply since the Heartbleed vulnerability was announced.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/reissues1_1.png"><br>
-		<em>Netcraft statistics</em>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QupuQhPHXqXYyrJQ2d8mr/353ce983f042c12d3de5cbaf0343341a/reissues1_1.png" alt="" class="kg-image" width="725" height="473" loading="lazy">
+
+	</figure>
+	<p><i>Netcraft statistics</i></p>
 	<p>We expect this trend to continue as more websites evaluate the risk that their private keys were stolen though Heartbleed. If your site was vulnerable to Heartbleed, we encourage you to talk to your CA to revoke your certificate an rekey.</p>
 	<p>I will be giving a webinar about this topic next week with updates. You can register for that <a href="https://cc.readytalk.com/r/it1914v5pbc0&amp;eom">here</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

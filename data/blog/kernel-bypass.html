@@ -1,96 +1,122 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3666RYL023B0bIu5BtI21o/70bc25b05691ed6c82bbb6b3355a3183/kernel-bypass.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In two previous posts we've discussed <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">how to receive 1M UDP packets per second</a> and <a href="https://blog.cloudflare.com/how-to-achieve-low-latency">how to reduce the round trip time</a>. We did the experiments on Linux and the performance was very good considering it's a general purpose operating system.</p>
 	<p>Unfortunately the speed of vanilla Linux kernel networking is not sufficient for more specialized workloads. For example, here at CloudFlare, we are constantly dealing with large packet floods. Vanilla Linux can do only about 1M pps. This is not enough in our environment, especially since the network cards are capable of handling a much higher throughput. Modern 10Gbps NIC's can usually process at least 10M pps.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/hispeed.jpg" alt="hispeed.jpg" loading="lazy"><small>CC BY 2.0 <a href="https://www.flickr.com/photos/diversey/4573842992">image</a> by Tony Webster</small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L7VhSXQeBPMTZxGz2hayc/13f48fc18c4cb80ce0d439cacc715a08/hispeed.jpg" alt="hispeed.jpg" class="kg-image" width="640" height="427" loading="lazy">
+
+	</figure>
+	<p>CC BY 2.0 <a href="https://www.flickr.com/photos/diversey/4573842992">image</a> by Tony Webster</p>
 	<p>It's apparent that the only way to squeeze more packets from our hardware is by working around the Linux kernel networking stack. This is called a "kernel bypass" and in this article we'll dig into various ways of achieving it.</p>
-	<h3 id="thekernelisinsufficient">The kernel is insufficient</h3>
+	<h3>The kernel is insufficient</h3>
 	<p>Let's prepare a small experiment to convince you that working around Linux is indeed necessary. Let's see how many packets can be handled by the kernel under perfect conditions. Passing packets to userspace is costly, so instead let's try to drop them as soon as they leave the network driver code. To my knowledge the fastest way to drop packets in Linux, without hacking the kernel sources, is by placing a DROP rule in the <code>PREROUTING</code> iptables chain:</p>
-	<pre><code class="language-.bash">$ sudo iptables -t raw -I PREROUTING -p udp --dport 4321 --dst 192.168.254.1 -j DROP
+	<pre class="language-.bash"><code class="language-.bash">$ sudo iptables -t raw -I PREROUTING -p udp --dport 4321 --dst 192.168.254.1 -j DROP
 $ sudo ethtool -X eth2 weight 1
 $ watch 'ethtool -S eth2|grep rx'
      rx_packets:       12.2m/s
      rx-0.rx_packets:   1.4m/s
      rx-1.rx_packets:   0/s
-     ...
-</code></pre>
+     ...</code></pre>
 	<p>Ethtool statistics above show that the network card receives a line rate of 12M packets per second. By manipulating an indirection table on a NIC with <code>ethtool -X</code>, we direct all the packets to RX queue #0. As we can see the kernel is able to process 1.4M pps on that queue with a single CPU.</p>
 	<p>Processing 1.4M pps on a single core is certainly a very good result, but unfortunately the stack doesn't scale. When the packets hit many cores the numbers drop sharply. Let's see the numbers when we direct packets to four RX queues:</p>
-	<pre><code class="language-.bash">$ sudo ethtool -X eth2 weight 1 1 1 1
+	<pre class="language-.bash"><code class="language-.bash">$ sudo ethtool -X eth2 weight 1 1 1 1
 $ watch 'ethtool -S eth2|grep rx'
      rx_packets:     12.1m/s
      rx-0.rx_packets: 477.8k/s
      rx-1.rx_packets: 447.5k/s
      rx-2.rx_packets: 482.6k/s
-     rx-3.rx_packets: 455.9k/s
-</code></pre>
+     rx-3.rx_packets: 455.9k/s</code></pre>
 	<p>Now we process only 480k pps per core. This is bad news. Even optimistically assuming the performance won't drop further when adding more cores, we would still need more than 20 CPU's to handle packets at line rate. So the kernel is not going to work.</p>
-	<h3 id="kernelbypasstotherescue">Kernel bypass to the rescue</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/bypass-1.jpg" alt="bypass.jpg" loading="lazy"><br>
-		<small>CC BY 2.0 <a href="https://www.flickr.com/photos/londonmatt/11421393074">image</a> by Matt Brown</small>
-	</p>
-	<p>The performance limitations of the Linux kernel network <a href="https://lwn.net/Articles/629155">are nothing new</a>. Over the years there had been <em>many</em> attempts to address them. The most common techniques involve creating specialized API's to aid with receiving packets from the hardware at very high speed. Unfortunately these techniques are in total flux and a single widely adopted approach hasn't emerged yet.</p>
+	<h3>Kernel bypass to the rescue</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CEpRDnaP9vzj6kZ2ZYpwT/2820bfcad45616f8dfe901378d2c4e32/bypass-1.jpg" alt="bypass.jpg" class="kg-image" width="640" height="480" loading="lazy">
+
+	</figure>
+	<p>CC BY 2.0 <a href="https://www.flickr.com/photos/londonmatt/11421393074">image</a> by Matt Brown</p>
+	<p>The performance limitations of the Linux kernel network <a href="https://lwn.net/Articles/629155">are nothing new</a>. Over the years there had been <i>many</i> attempts to address them. The most common techniques involve creating specialized API's to aid with receiving packets from the hardware at very high speed. Unfortunately these techniques are in total flux and a single widely adopted approach hasn't emerged yet.</p>
 	<p>Here is a list of the most widely known kernel bypass techniques.</p>
-	<h4 id="packet_mmap">PACKET_MMAP</h4>
+	<h4>PACKET_MMAP</h4>
 	<p><a href="https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt">Packet_mmap</a> is a Linux API for fast packet sniffing. While it's not strictly a kernel bypass technique, it requires a special place on the list - it's already available in vanilla kernels.</p>
-	<h4 id="pf_ring">PF_RING</h4>
+	<h4>PF_RING</h4>
 	<p><a href="http://www.ntop.org/products/packet-capture/pf_ring"><code>PF_RING</code></a> is another known technique that intends to speed up packet capture. Unlike <code>packet_mmap</code>, <code>PF_RING</code> is not in the mainline kernel and requires special modules. With <a href="https://github.com/xtao/PF_RING/tree/master/drivers/ZC/intel">ZC drivers</a> and <a href="http://www.ntop.org/pf_ring/pf_ring-and-transparent-mode"><code>transparent_mode=2</code></a> the packets will only be delivered to the PF_RING client, and not the kernel network stack. Since the kernel is the slow part this ensures the fastest operation.</p>
-	<h4 id="snabbswitch">Snabbswitch</h4>
+	<h4>Snabbswitch</h4>
 	<p><a href="https://github.com/SnabbCo/snabbswitch"><code>Snabbswitch</code></a> is a networking framework in Lua mostly geared towards writing L2 applications. It works by completely taking over a network card, and implements a hardware driver in userspace. It's done on a PCI device level with a form of <a href="https://lwn.net/Articles/232575">userspace IO (UIO)</a>, by mmaping the device registers with sysfs. This allows for very fast operation, but it means the packets completely skip the kernel network stack.</p>
-	<h4 id="dpdk">DPDK</h4>
+	<h4>DPDK</h4>
 	<p><a href="https://core.dpdk.org/doc"><code>DPDK</code></a> is a networking framework written in C, created especially for Intel chips. It's similar to <code>snabbswitch</code> in spirit, since it's a full framework and <a href="http://www.slideshare.net/garyachy/dpdk-44585840">relies on UIO</a>.</p>
-	<h4 id="netmap">Netmap</h4>
+	<h4>Netmap</h4>
 	<p><a href="http://info.iet.unipi.it/~luigi/netmap"><code>Netmap</code></a> is also a rich framework, but as opposed to UIO techniques it is implemented as a couple of kernel modules. To integrate with networking hardware it requires users to patch the kernel network drivers. The main benefit of the added complexity is a nicely documented, <a href="https://www.freebsd.org/cgi/man.cgi?query=netmap&amp;sektion=4">vendor-agnostic and clean API</a>.</p>
 	<p>Since the goal of kernel bypass is to spare the kernel from processing packets, we can rule out <code>packet_mmap</code>. It doesn't take over the packets - it's just a fast interface for packet sniffing. Similarly, plain <code>PF_RING</code> without ZC modules is unattractive since its main goal is to speed up libpcap.</p>
 	<p>We've already ruled out two techniques, but unfortunately for our workloads none of <a href="http://www.slideshare.net/shemminger/uio-final">the remaining solutions</a> is acceptable either!</p>
-	<p>Let me show why. In order to achieve a kernel bypass all of the remaining techniques: <code>Snabbswitch</code>, <code>DPDK</code> and <code>netmap</code> take over the whole network card, not allowing <em>any</em> traffic on that NIC to reach the kernel. At CloudFlare, we simply can't afford to dedicate the whole NIC to a single offloaded application.</p>
+	<p>Let me show why. In order to achieve a kernel bypass all of the remaining techniques: <code>Snabbswitch</code>, <code>DPDK</code> and <code>netmap</code> take over the whole network card, not allowing <i>any</i> traffic on that NIC to reach the kernel. At CloudFlare, we simply can't afford to dedicate the whole NIC to a single offloaded application.</p>
 	<p>Having said that, many people use the techniques above. In other circumstances dedicating a NIC to bypass would be acceptable.</p>
-	<h3 id="solarflaresef_vi">Solarflare's EF_VI</h3>
+	<h3>Solarflare's EF_VI</h3>
 	<p>While the techniques listed above require taking over a whole NIC, there are alternatives.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/efvi-model.png" alt="efvi" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gB3CqgOE8Md1XBMjAPW5s/3c1010d65d6ad45953a01719c62fc20d/efvi-model.png" alt="efvi" class="kg-image" width="600" height="289" loading="lazy">
+
+	</figure>
 	<p>Solarflare network cards support <a href="http://www.openonload.org">OpenOnload</a>, a magical network accelerator. It achieves a kernel bypass by implementing the network stack in userspace and using an <code>LD_PRELOAD</code> to overwrite network syscalls of the target program. For low level access to the network card OpenOnload relies on an "EF_VI" library. This library can be used directly and <a href="https://support.solarflare.com/index.php?option=com_cognidox&amp;file=SF-114063-CD-1_ef_vi_User_Guide.pdf&amp;task=download&amp;format=raw&amp;Itemid=11">is well documented</a>.</p>
 	<p>EF_VI, being a proprietary library, can be only used on Solarflare NIC's, but you may wonder how it actually works behind the scenes. It turns out EF_VI reuses the usual NIC features in a very smart way.</p>
 	<p>Under the hood each EF_VI program is granted access to a dedicated RX queue, hidden from the kernel. By default the queue receives no packets, until you create an EF_VI "filter". This filter is nothing more than a hidden flow steering rule. You won't see it in <code>ethtool -n</code>, but the rule does in fact exist on the network card. Having allocated an RX queue and managed flow steering rules, the only remaining task for EF_VI is to provide a userspace API for accessing the queue.</p>
-	<h3 id="bifurcateddriver">Bifurcated driver</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/dpdk-model.png" alt="dpdk" loading="lazy"></p>
+	<h3>Bifurcated driver</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43gbb8giqS3qGsKT5fp67R/e2a784bf7a5d2db243022895490d7dfe/dpdk-model.png" alt="dpdk" class="kg-image" width="600" height="248" loading="lazy">
+
+	</figure>
 	<p>While EF_VI is specific to Solarflare, it's possible to replicate its techniques with other NIC's. To start off we need a multi-queue network card that supports flow steering and indirection table manipulation.</p>
 	<p>Having these features we can:</p>
 	<ul>
-		<li>Start the network card as usual, everything managed by the kernel.</li>
-		<li>Modify an indirection table to ensure that no packets will flow to one of the RX queues. Let's say we selected an RX queue #16.</li>
-		<li>Direct a specific network flow to our RX queue #16 with a flow steering rule.</li>
+		<li>
+			<p>Start the network card as usual, everything managed by the kernel.</p>
+		</li>
+		<li>
+			<p>Modify an indirection table to ensure that no packets will flow to one of the RX queues. Let's say we selected an RX queue #16.</p>
+		</li>
+		<li>
+			<p>Direct a specific network flow to our RX queue #16 with a flow steering rule.</p>
+		</li>
 	</ul>
 	<p>Having done that, the only remaining step is to provide an userspace API to receive packets from RX queue #16 without affecting any other RX queues.</p>
 	<p>This idea is referred to as a "bifurcated driver" in the DPDK community. There was an attempt to <a href="http://events.linuxfoundation.org/sites/events/files/slides/LinuxConEurope_DPDK-2014.pdf">create a bifurcated driver in 2014</a>, unfortunately <a href="https://patchwork.ozlabs.org/patch/396713">the patch didn't make it</a> to the mainline kernel yet.</p>
-	<h3 id="virtualizationapproach">Virtualization approach</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/virt-model.png" alt="virt" loading="lazy"></p>
+	<h3>Virtualization approach</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XbgZy5GdiIt1QT3lEdKav/0ea2cdb0bfe44de2649f693a813f0d60/virt-model.png" alt="virt" class="kg-image" width="600" height="308" loading="lazy">
+
+	</figure>
 	<p>There is an alternative strategy for the Intel 82599 chips. Instead of having a bifurcated driver we could use the virtualization features of the NIC to do a kernel bypass.</p>
 	<p>First, I owe a bit of context. It turns out that in the virtualization world passing packets from the host to the guest virtual machine is often a bottleneck. As the demands for virtualization performance grew over the the years, the usual technique of software emulating the networking hardware became a major performance hog.</p>
 	<p>Network card vendors came to the rescue and cooked features to speed up the virtualized guests. In one of the virtualization techniques the network card is asked to present itself as many PCI devices. Those fake virtual interfaces can then be used inside the virtualized guests without requiring any cooperation from the host operating system. Let me show how it looks in practice. For example, this is my native 82599 network card. This "real" device is referred to as a PF (physical function) interface:</p>
-	<pre><code class="language-.bash">$ lspci
+	<pre class="language-.bash"><code class="language-.bash">$ lspci
 04:00.1 Ethernet controller: Intel Corporation 82599EB 10-Gigabit SFI/SFP+ Network Connection (rev 01)
-
 </code></pre>
 	<p>We ask the device to create one VF (virtual function) device:</p>
-	<pre><code class="language-.bash">$ echo 1 &gt; /sys/class/net/eth3/device/sriov_numvfs
+	<pre class="language-.bash"><code class="language-.bash">$ echo 1 &gt; /sys/class/net/eth3/device/sriov_numvfs
 $ lspci
 04:00.1 Ethernet controller: Intel Corporation 82599EB 10-Gigabit SFI/SFP+ Network Connection (rev 01)
-04:10.1 Ethernet controller: Intel Corporation 82599 Ethernet Controller Virtual Function (rev 01)
-</code></pre>
+04:10.1 Ethernet controller: Intel Corporation 82599 Ethernet Controller Virtual Function (rev 01)</code></pre>
 	<p>This fake PCI device can be easily given to, say, a KVM guest. On the other hand, nothing stops us from using it the host environment. To do that just load the "ixgbevf" kernel module and another "ethX" interface will pop up.</p>
 	<p>You may wonder how that helps with kernel bypass. Since the "ixgbevf" device is not used by the kernel to do normal networking, we could dedicate it to the bypass. It seems possible <a href="http://dpdk.readthedocs.org/en/latest/nics/intel_vf.html">to run DPDK on "ixgbevf" devices</a>.</p>
 	<p>To recap: the idea is to keep the PF device around to handle normal kernel work and run a VF interface dedicated to the kernel bypass. Since the VF is dedicated we can run the "take over the whole NIC" techniques.</p>
 	<p>While it sounds good on the paper, it's not all that simple. First, only DPDK supports "ixgbevf" interfaces, netmap, snabbswitch and PF_RING don't. Secondly, by default the VF interface won't receive any packets. To send some flows from PF to VF you need <a href="https://patchwork.ozlabs.org/patch/470164">this obscure patch to ixgbe</a>. With it you can address the VF by encoding it in the high bits of "action" queue number in <code>ethtool</code>, for example:</p>
-	<pre><code class="language-.bash">$ ethtool -N eth3 flow-type tcp4 dst-ip 192.168.254.30 dst-port 80 action 4294967296
-</code></pre>
+	<pre class="language-.bash"><code class="language-.bash">$ ethtool -N eth3 flow-type tcp4 dst-ip 192.168.254.30 dst-port 80 action 4294967296</code></pre>
 	<p>Finally, a last roadblock occurs. By enabling a VF features on 82599 chip, the maximum size of an RSS group is reduced. Without virtualization 82599 can do RSS over 16 CPU cores. With VF enabled this number falls down to just 4. If you have low traffic on a PF, then spreading it across only 4 cores may be okay. Unfortunately at CloudFlare we need large RSS group sizes.</p>
-	<h3 id="finalwords">Final words</h3>
+	<h3>Final words</h3>
 	<p>Achieving a kernel bypass is not that simple. While many open source techniques exist, all of them seem to require a dedicated network card. We've shown three possible alternative architectures:</p>
 	<ul>
-		<li>EF_VI-style hidden RX queues</li>
-		<li>DPDK bifurcated driver</li>
-		<li>The VF hack</li>
+		<li>
+			<p>EF_VI-style hidden RX queues</p>
+		</li>
+		<li>
+			<p>DPDK bifurcated driver</p>
+		</li>
+		<li>
+			<p>The VF hack</p>
+		</li>
 	</ul>
 	<p>Unfortunately out of the many techniques we've researched only EF_VI seem to be a practical in our circumstances. I do hope an open source kernel bypass API will emerge soon, one that doesn't require a dedicated NIC.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,62 +1,66 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image2-16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k7RbDIXDozYJ51p30tAKo/b0db22b1966b6334d69961cb2c6c7c8f/image2-16.png" alt="" class="kg-image" width="1999" height="949" loading="lazy">
+
+	</figure>
 	<p>Today, we are excited to launch Cron Triggers to the Cloudflare Workers serverless compute platform. We’ve heard the developer feedback, and we want to give our users the ability to run a given Worker on a scheduled basis. In case you’re not familiar with Unix systems, the cron pattern allows developers to schedule jobs to run at fixed intervals. This pattern is ideal for running any types of periodic jobs like maintenance or calling third party APIs to get up-to-date data. Cron Triggers has been a highly requested feature even inside Cloudflare and we hope that you will find this feature as useful as we have!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image3-2.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="where-are-cron-triggers-going-to-be-run">Where are Cron Triggers going to be run?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NiPyQci9FTy0Xh3cM0sIu/2a35eb3e2496af741ea390fc9838809f/image3-2.gif" alt="" class="kg-image" width="1254" height="738" loading="lazy">
+
+	</figure>
+	<h3>Where are Cron Triggers going to be run?</h3>
 	<p>Cron Triggers are executed from the edge. At Cloudflare, we believe strongly in edge computing and wanted our new feature to get all of the performance and reliability benefits of running on our edge. Thus, we wrote a service in core that is responsible for distributing schedules to a new edge service through Quicksilver which will then trigger the Workers themselves.</p>
-	<h3 id="what-s-happening-under-the-hood">What’s happening under the hood?</h3>
+	<h3>What’s happening under the hood?</h3>
 	<p>At a high level, schedules created through our API create records in our database with the information necessary to execute the Worker and the given cron schedule. These records are then picked up by another service which continuously evaluates the state of our edge and distributes the schedules between cities.</p>
 	<p>Once the schedules have been distributed to the edge, a service running in the edge node polls for changes to the schedules and makes sure they get sent to our runtime at the appropriate time.</p>
-	<h3 id="new-event-type">New Event Type</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image1-23.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>New Event Type</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZdWbGDdAZ3FHVSNlmHNWT/70d757a84af990c63cf9e3086d3eb31c/image1-23.png" alt="" class="kg-image" width="1999" height="717" loading="lazy">
+
+	</figure>
 	<p>Cron Triggers gave us the opportunity to finally recognize a new Worker 'type' in our API. While Workers currently only run on web requests, we have lots of ideas for the future of edge computing that aren’t strictly tied to HTTP requests and responses. Expect to see even more new handlers in the future for other non-HTTP events like log information from your Worker (think custom wrangler tail!) or even TCP Workers.</p>
-	<p>Here’s an example of the new Javascript API:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">addEventListener('scheduled', event =&gt; {
+	<p>Here’s an example of the new Javascript API:</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('scheduled', event =&gt; {
   event.waitUntil(someAsyncFunction(event))
-})
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Where <code>event</code> has the following interface in Typescript:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">interface ScheduledEvent {
+})</code></pre>
+	<p>Where <code>event</code> has the following interface in Typescript:</p>
+	<pre class="language-javascript"><code class="language-javascript">interface ScheduledEvent {
   type: 'scheduled';
   scheduledTime: int; // milliseconds since the Unix epoch
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>As long as your Worker has a handler for this new event type, you’ll be able to give it a schedule.</p>
-	<h3 id="new-apis">New APIs</h3>
-	<h5 id="put-client-v4-accounts-account_identifier-workers-scripts-name"><strong>PUT </strong>/client/v4<strong>/accounts/:account_identifier/workers/scripts/:name</strong></h5>
+	<h3>New APIs</h3>
+	<h5><b>PUT</b> /client/v4**/accounts/:account_identifier/workers/scripts/:name**</h5>
 	<p>The script upload API remains the same, but during script validation we now detect and return the registered event handlers.</p>
-	<h5 id="put-client-v4-accounts-account_identifier-workers-scripts-name-schedules"><strong>PUT </strong>/client/v4<strong>/accounts/:account_identifier/workers/scripts/:name/schedules</strong></h5>
-	<h6 id="body"><strong>Body</strong></h6><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">[
+	<h5><b>PUT</b> /client/v4**/accounts/:account_identifier/workers/scripts/:name/schedules**</h5>
+	<h6><b>Body</b></h6>
+	<pre class="language-javascript"><code class="language-javascript">[
  {"cron": "* * * * *"},
  ...
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
+]</code></pre>
 	<p>This will create or modify all schedules for a script, removing all schedules not in the list. For now, there’s a limit of 3 distinct cron schedules. Schedules can be set to run as often as one minute and don’t accept schedules with years in them (sorry, you’ll have to run your Y3K migration script another way).</p>
-	<h5 id="get-client-v4-accounts-account_identifier-workers-scripts-name-schedules"><strong>GET </strong>/client/v4<strong>/accounts/:account_identifier/workers/scripts/:name/schedules</strong></h5>
-	<h6 id="response"><strong>Response</strong></h6><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">{
+	<h5><b>GET</b> /client/v4**/accounts/:account_identifier/workers/scripts/:name/schedules**</h5>
+	<h6><b>Response</b></h6>
+	<pre class="language-javascript"><code class="language-javascript">{
  "schedules": [
    {
      "cron": "* * * * *",
-      "created_on": &lt;time&gt;,
-      "modified_on": &lt;time&gt;
+      "created_on": <time>,
+      "modified_on": <time>
    },
    ...
  ]
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</time></time></code></pre>
 	<p>The Scheduler service is responsible for reading the schedules from Postgres and generating per-node schedules to place into Quicksilver. For now, the service simply avoids trying to execute your Worker on an edge node that may be disabled for some reason, but such an approach also gives us a lot of flexibility in deciding where your Worker executes.</p>
 	<p>In addition to edge node availability, we could optimize for compute cost, bandwidth, or even latency in the future!</p>
-	<h3 id="what-s-actually-executing-these-schedules">What’s actually executing these schedules?</h3>
+	<h3>What’s actually executing these schedules?</h3>
 	<p>To consume the schedules and actually trigger the Worker, we built a new service in Rust and deployed to our edge using HashiCorp <a href="https://blog.cloudflare.com/how-we-use-hashicorp-nomad">Nomad</a>. Nomad ensures that the schedule runner remains running in the edge node and can move it between machines as necessary. Rust was the best choice for this service since it needed to be fast with high availability and Cap’n Proto RPC support for calling into the runtime. With Tokio, Anyhow, Clap, and Serde, it was easy to quickly get the service up and running without having to really worry about async, error handling, or configuration.</p>
 	<p>On top of that, due to our specific needs for cron parsing, we built a specialized cron parser using nom that allowed us to quickly parse and compile expressions into values that check against a given time to determine if we should run a schedule.</p>
 	<p>Once the schedule runner has the schedules, it checks the time and selects the Workers that need to be run. To let the runtime know it’s time to run, we send a <a href="https://capnproto.org">Cap'n Proto</a> RPC message. The runtime then does its thing, calling the new ‘scheduled’ event handler instead of ‘fetch’.</p>
-	<h3 id="how-can-i-try-this">How can I try this?</h3>
+	<h3>How can I try this?</h3>
 	<p>As of today, the Cron Triggers feature is live! Please try it out by creating a Worker and finding the Triggers tab - we’re excited to see what you build with it!</p>
 </div>

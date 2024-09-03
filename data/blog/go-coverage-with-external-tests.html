@@ -1,11 +1,11 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>The Go test coverage implementation is <a href="https://blog.golang.org/cover">quite ingenious</a>: when asked to, the Go compiler will preprocess the source so that when each code portion is executed a bit is set in a coverage bitmap. This is integrated in the <code>go test</code> tool: <code>go test -cover</code> enables it and <code>-coverprofile=</code> allows you to write a profile to then inspect with <code>go tool cover</code>.</p>
-	<p>This makes it very easy to get unit test coverage, but <strong>there's no simple way to get coverage data for tests that you run against the main version of your program, like end-to-end tests</strong>.</p>
+	<p>This makes it very easy to get unit test coverage, but <b>there's no simple way to get coverage data for tests that you run against the main version of your program, like end-to-end tests</b>.</p>
 	<p>The proper fix would involve adding <code>-cover</code> preprocessing support to <code>go build</code>, and exposing the coverage profile maybe as a <code>runtime/pprof.Profile</code>, but as of Go 1.6 there’s no such support. Here instead is a hack we've been using for a while in the test suite of <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, our custom Go DNS server.</p>
-	<p>We create a <strong>dummy test</strong> that executes <code>main()</code>, we put it behind a build tag, compile a binary with <code>go test -c -cover</code> and then run only that test instead of running the regular binary.</p>
+	<p>We create a <b>dummy test</b> that executes <code>main()</code>, we put it behind a build tag, compile a binary with <code>go test -c -cover</code> and then run only that test instead of running the regular binary.</p>
 	<p>Here's what the <code>rrdns_test.go</code> file looks like:</p>
-	<pre><code class="language-go">// +build testrunmain
+	<pre class="language-go"><code class="language-go">// +build testrunmain
 
 package main
 
@@ -13,20 +13,15 @@ import "testing"
 
 func TestRunMain(t *testing.T) {
 	main()
-}
-</code></pre>
+}</code></pre>
 	<p>We compile the binary like this</p>
-	<pre><code class="language-no-highlight">$ go test -coverpkg="rrdns/..." -c -tags testrunmain rrdns
-</code></pre>
+	<pre class="language-no-highlight"><code class="language-no-highlight">$ go test -coverpkg="rrdns/..." -c -tags testrunmain rrdns</code></pre>
 	<p>And then when we want to collect coverage information, we execute this instead of <code>./rrdns</code> (and run our test battery as usual):</p>
-	<pre><code class="language-no-highlight">$ ./rrdns.test -test.run "^TestRunMain$" -test.coverprofile=system.out
-</code></pre>
+	<pre class="language-no-highlight"><code class="language-no-highlight">$ ./rrdns.test -test.run "^TestRunMain$" -test.coverprofile=system.out</code></pre>
 	<p>You must return from <code>main()</code> cleanly for the profile to be written to disk; in RRDNS we do that by catching SIGINT. You can still use command line arguments and standard input normally, just note that you will get two lines of extra output from the test framework.</p>
 	<p>Finally, since you probably also run unit tests, you might want to merge the coverage profiles with <a href="https://github.com/wadey/gocovmerge">gocovmerge</a> (from <a href="https://github.com/golang/go/issues/6909#issuecomment-124185553">issue #6909</a>):</p>
-	<pre><code class="language-no-highlight">$ go get github.com/wadey/gocovmerge
+	<pre class="language-no-highlight"><code class="language-no-highlight">$ go get github.com/wadey/gocovmerge
 $ gocovmerge unit.out system.out &gt; all.out
-$ go tool cover -html all.out
-</code></pre>
+$ go tool cover -html all.out</code></pre>
 	<p>If finding creative ways to test big-scale network services sounds fun, know that <a href="https://www.cloudflare.com/join-our-team">we are hiring in London, San Francisco and Singapore</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

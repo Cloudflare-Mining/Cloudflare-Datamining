@@ -1,35 +1,67 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FsTSHx8TyxGNmerNIBLJf/308a842cc146e66beb6b8132972b52d3/meet-gatebot-a-bot-that-allows-us-to-sleep.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In the past, we’ve spoken about how <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">Cloudflare is architected to sustain the largest DDoS attacks</a>. During traffic surges we spread the traffic across a very large number of edge servers. This architecture allows us to avoid having a single choke point because the traffic gets distributed externally across multiple datacenters and internally across multiple servers. We do that by employing Anycast and ECMP.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/gatebot-3.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52cb3pH0qnYZoAFRwCILPu/6af822cad70e8f89ff73e13280aa7e18/gatebot-3.jpg" alt="" class="kg-image" width="450" height="378" loading="lazy">
+
+	</figure>
 	<p>We don't use separate scrubbing boxes or specialized hardware - every one of our edge servers can perform advanced traffic filtering if the need arises. This allows us to scale up our DDoS capacity as we grow. Each of the new servers we add to our datacenters increases our maximum theoretical DDoS “scrubbing” power. It also scales down nicely - in smaller datacenters we don't have to overinvest in expensive dedicated hardware.</p>
 	<p>During normal operations our attitude to attacks is rather pragmatic. Since the inbound traffic is distributed across hundreds of servers we can survive periodic spikes and small attacks without doing anything. Vanilla Linux is remarkably resilient against unexpected network events. This is especially true since kernel 4.4 when <a href="https://lwn.net/Articles/659199">the performance of SYN cookies was greatly improved</a>.</p>
 	<p>But at some point, malicious traffic volume can become so large that we must take the load off the networking stack. We have to minimize the amount of CPU spent on dealing with attack packets. Cloudflare operates a multi-tenant service and we must always have enough processing power to serve valid traffic. We can't afford to starve our HTTP proxy (nginx) or custom DNS server (named RRDNS, written in Go) of CPU. When the attack size crosses a predefined threshold (which varies greatly depending on specific attack type), we must intervene.</p>
-	<h3 id="mitigations">Mitigations</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/Screen-Shot-2017-09-25-at-11.21.11-AM.png" alt="" loading="lazy"></p>
+	<h3>Mitigations</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WIjf8ScvlEu9XR2E1qS4a/dbaec05d3eed9f148c349a82f96b4f91/Screen-Shot-2017-09-25-at-11.21.11-AM.png" alt="" class="kg-image" width="1014" height="312" loading="lazy">
+
+	</figure>
 	<p>During large attacks we deploy mitigations to reduce the CPU consumed by malicious traffic. We have multiple layers of defense, each tuned to specific attack vector.</p>
 	<p>First, there is “scattering”. Since we control DNS resolution we are able to move the domains we serve between IP addresses (we call this "scattering"). This is an effective technique as long as the attacks don’t follow the updated DNS resolutions. This often happens for L3 attacks where the attacker has hardcoded the IP address of the target.</p>
 	<p>Next, there is a wide range of mitigation techniques that leverage iptables, the firewall built in to the Linux kernel. But we don't use it like a conventional firewall, with a static set of rules. We continuously add, tweak and remove rules, based on specific attack characteristics. Over the years we have mastered the most effective iptables extensions:</p>
 	<ul>
-		<li>xt_bpf</li>
-		<li>ipsets</li>
-		<li>hashlimits</li>
-		<li>connlimit</li>
+		<li>
+			<p>xt_bpf</p>
+		</li>
+		<li>
+			<p>ipsets</p>
+		</li>
+		<li>
+			<p>hashlimits</p>
+		</li>
+		<li>
+			<p>connlimit</p>
+		</li>
 	</ul>
 	<p>To make the most of iptables, we built a system to manage the iptables configuration across our entire fleet, allowing us to rapidly deploy rules everywhere. This fits our architecture nicely: due to Anycast, an attack against a single IP will be delivered to multiple locations. Running iptables rules for that IP on all servers makes sense.</p>
 	<p>Using stock iptables gives us plenty of confidence. When possible we prefer to use off-the-shelf tools to deal with attacks.</p>
 	<p>Sometimes though, even this is not sufficient. Iptables is fast in the general case, but has its limits. During very large attacks, exceeding 1M packets per second per server, we shift the attack traffic from kernel iptables to a kernel bypass user space program (which we call floodgate). We use a <a href="https://blog.cloudflare.com/kernel-bypass">partial kernel bypass</a> solution using Solarflare EF_VI interface. With this on each server we can process more than 5M attack packets per second while consuming only a single CPU core. With floodgate we have comfortable amount of CPU left for our applications, even during the largest network events.</p>
 	<p>Finally, there are a number of tweaks we can make on at the HTTP layer. For specific attacks we disable HTTP Keep-Alives forcing attackers to re-establish TCP sessions for each request. This sacrifices a bit of performance for valid traffic as well, but is a surprisingly powerful tool throttling many attacks. For other attack patterns we turn the “I’m under attack” mode on, forcing the attack to hit our JavaScript challenge page.</p>
-	<h3 id="manualattackhandling">Manual attack handling</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/cloudflare_outage.png.scaled500.png" alt="" loading="lazy"></p>
+	<h3>Manual attack handling</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JkPhtefpkMJhVoCdOB6Qu/1a35dd90f4c5c5c8dcbc3425428e2b7b/cloudflare_outage.png.scaled500.png" alt="" class="kg-image" width="500" height="151" loading="lazy">
+
+	</figure>
 	<p>Early on these mitigations were applied manually by our tireless System Reliability Engineers (SRE's). Unfortunately, it turns out that humans under stress... well, make mistakes. We learned it the hard way - one of the most famous incidents happened in <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">March 2013 when a simple typo</a> brought our whole network down.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/Screen-Shot-2017-09-25-at-11.19.11-AM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OtDHft56O7PHCALmswJoY/98f65f8d8a7c13d032ad175b64162eab/Screen-Shot-2017-09-25-at-11.19.11-AM.png" alt="" class="kg-image" width="906" height="272" loading="lazy">
+
+	</figure>
 	<p>Humans are also not great at applying precise rules. As our systems grew and mitigations became more complex, having many specific toggles, our SREs got overwhelmed by the details. It was challenging to present all the specific information about the attack to the operator. We often applied overly-broad mitigations, which were unnecessarily affecting legitimate traffic. All that changed with the introduction of Gatebot.</p>
-	<h3 id="meetgatebot">Meet Gatebot</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/Screen-Shot-2017-09-25-at-11.19.31-AM.png" alt="" loading="lazy"></p>
-	<p>To aid our SREs we developed a fully automatic mitigation system. We call it Gatebot<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>.</p>
+	<h3>Meet Gatebot</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nri9vLoPsgtq19T6dHxf/5361373f2143b1ab2dbb957b6cf0ef09/Screen-Shot-2017-09-25-at-11.19.31-AM.png" alt="" class="kg-image" width="910" height="238" loading="lazy">
+
+	</figure>
+	<p>To aid our SREs we developed a fully automatic mitigation system. We call it Gatebot<a href="https://blog.cloudflare.com/#fn1">[1]</a>.</p>
 	<p>The main goal of Gatebot was to automate as much of the mitigation workflow as possible. That means: to observe the network and note the anomalies, understand the targets of attacks and their metadata (such as the type of customer involved), and perform appropriate mitigation action.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/Screen-Shot-2017-09-25-at-11.20.22-AM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53NqKtsdEEISOc07d2wRZL/4342950c7b27b058ddc11e5911e97c77/Screen-Shot-2017-09-25-at-11.20.22-AM.png" alt="" class="kg-image" width="1018" height="522" loading="lazy">
+
+	</figure>
 	<p>Nowadays we have multiple Gatebot instances - we call them “mitigation pipelines”. Each pipeline has three parts:</p>
 	<ol>
 		<li>
@@ -42,28 +74,29 @@
 			<p>“mitigation”. The previous step feeds specific mitigation instructions into the centralized mitigation management systems. The mitigations are deployed across the world to our servers, applications, customer settings and, in some cases, to the network hardware.</p>
 		</li>
 	</ol>
-	<h3 id="sleepingatnight">Sleeping at night</h3>
+	<h3>Sleeping at night</h3>
 	<p>Gatebot operates constantly, without breaks for lunch. For the iptables mitigations pipelines alone, Gatebot got engaged between 30 and 1500 times a day. Here is a chart of mitigations per day over last 6 months:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/attacks-iptables.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gb8UBopCCuM9zdrBlVeic/bf64067ed388f045f6bf73eff384bd4d/attacks-iptables.png" alt="" class="kg-image" width="1000" height="400" loading="lazy">
+
+	</figure>
 	<p>Gatebot is much faster and much more precise than even our most experienced SREs. Without Gatebot we wouldn’t be able to operate our service with the appropriate level of confidence. Furthermore, Gatebot has proved to be remarkably adaptable - we started by automating handling of Layer 3 attacks, but soon we proved that the general model works well for automating other things. Today we have more than 10 separate Gatebot instances doing everything from mitigating Layer 7 attacks to informing our Customer Support team of misbehaving customer origin servers.</p>
-	<p>Since Gatebot’s inception we learned greatly from the "detection / logic / mitigation" workflow. We reused this model in our <a href="https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network">Automatic Network System</a> which is used to relieve network congestion<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup>.</p>
-	<p>Gatebot allows us to protect our users no matter of the plan. Whether you are a on a Free, Pro, Business or Enterprise plan, Gatebot is working for you. This is why we can afford to provide the same level of DDoS protection for all our customers<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn3" id="fnref3">[3]</a></sup>.</p>
+	<p>Since Gatebot’s inception we learned greatly from the "detection / logic / mitigation" workflow. We reused this model in our <a href="https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network">Automatic Network System</a> which is used to relieve network congestion<a href="https://blog.cloudflare.com/#fn2">[2]</a>.</p>
+	<p>Gatebot allows us to protect our users no matter of the plan. Whether you are a on a Free, Pro, Business or Enterprise plan, Gatebot is working for you. This is why we can afford to provide the same level of DDoS protection for all our customers<a href="https://blog.cloudflare.com/#fn3">[3]</a>.</p>
 	<hr>
-	<p><em>Dealing with attacks sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572">world famous DDoS team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland</em>.</p>
+	<p><i>Dealing with attacks sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous DDoS team</i></a><i> in London, Austin, San Francisco and our elite office in Warsaw, Poland</i>.</p>
 	<hr>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>Fun fact: all our components in this area are called “gate-something”, like: gatekeeper, gatesetter, floodgate, gatewatcher, gateman... Who said that naming things must be hard? <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn2" class="footnote-item">
-				<p>Some of us have argued that this system should be called Netbot. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn3" class="footnote-item">
-				<p>Note: there are caveats. Ask your Success Engineer for specifics! <a href="https://blog.cloudflare.com/#fnref3" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>Fun fact: all our components in this area are called “gate-something”, like: gatekeeper, gatesetter, floodgate, gatewatcher, gateman... Who said that naming things must be hard? <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+		<li>
+			<p>Some of us have argued that this system should be called Netbot. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
+		</li>
+		<li>
+			<p>Note: there are caveats. Ask your Success Engineer for specifics! <a href="https://blog.cloudflare.com/#fnref3">↩︎</a></p>
+		</li>
+	</ol>
 </div>

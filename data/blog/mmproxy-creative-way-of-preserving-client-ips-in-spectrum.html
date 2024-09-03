@@ -1,15 +1,22 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xvVSKXCSW6aiPLS4IJYcR/5d0a5c91ea94c7060de56ac5203e797e/mmproxy-creative-way-of-preserving-client-ips-in-spectrum.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In previous blog post we discussed <a href="https://blog.cloudflare.com/how-we-built-spectrum">how we use the <code>TPROXY</code> iptables module</a> to power <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Cloudflare Spectrum</a>. With <code>TPROXY</code> we solved a major technical issue on the server side, and we thought we might find another use for it on the client side of our product.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Address-machine-1_-ru-tech-enc-.png" alt="Address-machine-1_-ru-tech-enc-" loading="lazy"><br>
-		<small>This is <a href="https://en.wikipedia.org/wiki/Addressograph">Addressograph</a>. Source <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/Address-machine-1_%28ru-tech-enc%29.png">Wikipedia</a></small>
-	</p>
-	<p>When building an application level proxy, the first consideration is always about retaining real client source IP addresses. Some protocols make it easy, e.g. HTTP has a defined <code>X-Forwarded-For</code> header<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>, but there isn't a similar thing for generic TCP tunnels.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bo1gYWkQihp0vs8Nk10Xr/a5a1594aeac2d4f92f98504d4758797d/Address-machine-1_-ru-tech-enc-.png" alt="Address-machine-1_-ru-tech-enc-" class="kg-image" width="1049" height="648" loading="lazy">
+
+	</figure>
+	<p>This is <a href="https://en.wikipedia.org/wiki/Addressograph">Addressograph</a>. Source <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/Address-machine-1_%28ru-tech-enc%29.png">Wikipedia</a></p>
+	<p>When building an application level proxy, the first consideration is always about retaining real client source IP addresses. Some protocols make it easy, e.g. HTTP has a defined <code>X-Forwarded-For</code> header<a href="https://blog.cloudflare.com/#fn1">[1]</a>, but there isn't a similar thing for generic TCP tunnels.</p>
 	<p>Others have faced this problem before us, and have devised three general solutions:</p>
-	<h4 id="1ignoretheclientip">(1) Ignore the client IP</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-12.26.16-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.16-PM" loading="lazy"></p>
+	<h4>(1) Ignore the client IP</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zazUmVWQqBmngOT2c0nro/4c6f767143b3af0c84521f4fd8796fef/Screen-Shot-2018-04-15-at-12.26.16-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.16-PM" class="kg-image" width="1522" height="456" loading="lazy">
+
+	</figure>
 	<p>For certain applications it may be okay to ignore the real client IP address. For example, sometimes the client needs to identify itself with a username and password anyway, so the source IP doesn't really matter. In general, it's not a good practice because...</p>
-	<h4 id="2nonstandardtcpheader">(2) Nonstandard TCP header</h4>
+	<h4>(2) Nonstandard TCP header</h4>
 	<p>A second method was developed by Akamai: the client IP is saved inside a custom option in the TCP header in the SYN packet. Early implementations of this method weren't conforming to any standards, e.g. using <a href="https://support.radware.com/app/answers/answer_view/a_id/16143/~/client-ip-visibility-from-akamai-servers-appshape%2B%2B-script-sample">option field 28</a>, but recently <a href="https://tools.ietf.org/html/rfc7974">RFC7974</a> was ratified for this option. We don't support this method for a number of reasons:</p>
 	<ul>
 		<li>
@@ -22,56 +29,73 @@
 			<p>It's surprisingly hard to add support for RFC7947 in real world applications. One option is to patch the operating system and overwrite <code>getpeername(2)</code> and <code>accept4(2)</code> syscalls, another is to use <code>getsockopt(TCP_SAVED_SYN)</code> to extract the client IP from a SYN packet in the userspace application. Neither technique is simple.</p>
 		</li>
 	</ul>
-	<h4 id="3usetheproxyprotocol">(3) Use the PROXY protocol</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-12.26.04-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.04-PM" loading="lazy"></p>
+	<h4>(3) Use the PROXY protocol</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1o8aOHx1OoHCBYvExEoE7S/276707a6712f0d0da5690476dc7473a6/Screen-Shot-2018-04-15-at-12.26.04-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.04-PM" class="kg-image" width="1524" height="462" loading="lazy">
+
+	</figure>
 	<p>Finally, there is the last method. HAProxy developers, faced with this problem developed <a href="http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt">the "PROXY protocol"</a>. The premise of this protocol is to prepend client metadata in front of the original data stream. For example, this string could be sent to the origin server in front of proxied data:</p>
-	<pre><code>PROXY TCP4 192.0.2.123 104.16.112.25 19235 80\r\n
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">PROXY TCP4 192.0.2.123 104.16.112.25 19235 80\r\n</code></pre>
 	<p>As you can see, the PROXY protocol is rather trivial to implement, and is generally sufficient for most use cases. However, it requires application support. The PROXY protocol (v1) is supported by Cloudflare Spectrum, and we highly encourage using it over other methods of keeping client source IP addresses.</p>
-	<h3 id="mmproxytotherescue">Mmproxy to the rescue</h3>
+	<h3>Mmproxy to the rescue</h3>
 	<p>But sometimes adding PROXY protocol support to the application isn't an option. This can be the case when the application isn’t open source, or when it's hard to edit. A good example is "sshd" - it doesn't support PROXY protocol and adding the support would be far from trivial. For such applications it may just be impossible to use any application level load balancer whatsoever. This is very unfortunate.</p>
 	<p>Fortunately we think we found a workaround.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-12.26.28-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.28-PM-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24geDq3Y5M6aq37IdIW5oA/fca7b514bc0e986a6e408a6dc6a83132/Screen-Shot-2018-04-15-at-12.26.28-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.28-PM-1" class="kg-image" width="1526" height="608" loading="lazy">
+
+	</figure>
 	<p>Allow me to present <code>mmproxy</code>, a PROXY protocol gateway. <code>mmproxy</code> listens for remote connections coming from an application level load balancer, like Spectrum. It then reads a PROXY protocol header, opens a localhost connection to the target application, and duly proxies data in and out.</p>
 	<p>Such a proxy wouldn't be too useful if not for one feature—the localhost connection from <code>mmproxy</code> to the target application is sent with a real client source IP.</p>
 	<p>That's right, <code>mmproxy</code> spoofs the client IP address. From the application’s point of view, this spoofed connection, coming through Spectrum and <code>mmproxy</code>, is indistinguishable from a real one, connecting directly to the application.</p>
 	<p>This technique requires some Linux routing trickery. The <code>mmproxy</code> daemon will walk you through the necessary details, but there are the important bits:</p>
 	<ul>
-		<li><code>mmproxy</code> works only on Linux.</li>
-		<li>Since it forwards traffic over the loopback interface, it must be run on the same machine as the target application.</li>
-		<li>It requires kernel 2.6.28 or newer.</li>
-		<li>It guides the user to add four <code>iptables</code> firewall rules, and four <code>iproute2</code> routing rules, covering both IPv4 and IPv6.</li>
-		<li>For IPv4, <code>mmproxy</code> requires the <code>route_localnet</code> sysctl to be set.</li>
-		<li>For IPv6, it needs a working IPv6 configuration. A working <code>ping6 cloudflare.com</code> is a prerequisite.</li>
-		<li><code>mmproxy</code> needs root or <code>CAP_NET_RAW</code> permissions to set the <code>IP_TRANSPARENT</code> socket option. Once started, it jails itself with <code>seccomp-bpf</code> for a bit of added security.</li>
+		<li>
+			<p><code>mmproxy</code> works only on Linux.</p>
+		</li>
+		<li>
+			<p>Since it forwards traffic over the loopback interface, it must be run on the same machine as the target application.</p>
+		</li>
+		<li>
+			<p>It requires kernel 2.6.28 or newer.</p>
+		</li>
+		<li>
+			<p>It guides the user to add four <code>iptables</code> firewall rules, and four <code>iproute2</code> routing rules, covering both IPv4 and IPv6.</p>
+		</li>
+		<li>
+			<p>For IPv4, <code>mmproxy</code> requires the <code>route_localnet</code> sysctl to be set.</p>
+		</li>
+		<li>
+			<p>For IPv6, it needs a working IPv6 configuration. A working <code>ping6 cloudflare.com</code> is a prerequisite.</p>
+		</li>
+		<li>
+			<p><code>mmproxy</code> needs root or <code>CAP_NET_RAW</code> permissions to set the <code>IP_TRANSPARENT</code> socket option. Once started, it jails itself with <code>seccomp-bpf</code> for a bit of added security.</p>
+		</li>
 	</ul>
-	<h3 id="howtorunmmproxy">How to run mmproxy</h3>
+	<h3>How to run mmproxy</h3>
 	<p>To run <code>mmproxy</code>, first download the <a href="https://github.com/cloudflare/mmproxy">source</a> and compile it:</p>
-	<pre><code>git clone https://github.com/cloudflare/mmproxy.git --recursive
+	<pre class="language-bash"><code class="language-bash">git clone https://github.com/cloudflare/mmproxy.git --recursive
 cd mmproxy
-make
-</code></pre>
+make</code></pre>
 	<p><a href="https://github.com/cloudflare/mmproxy/issues">Please report any issues on GitHub</a>.</p>
 	<p>Then set up the needed configuration:</p>
-	<pre><code>sudo iptables -t mangle -I PREROUTING -m mark --mark 123 -j CONNMARK --save-mark
+	<pre class="language-bash"><code class="language-bash">sudo iptables -t mangle -I PREROUTING -m mark --mark 123 -j CONNMARK --save-mark
 sudo iptables -t mangle -I OUTPUT -m connmark --mark 123 -j CONNMARK --restore-mark
 sudo ip rule add fwmark 123 lookup 100
 sudo ip route add local 0.0.0.0/0 dev lo table 100
 sudo ip6tables -t mangle -I PREROUTING -m mark --mark 123 -j CONNMARK --save-mark
 sudo ip6tables -t mangle -I OUTPUT -m connmark --mark 123 -j CONNMARK --restore-mark
 sudo ip -6 rule add fwmark 123 lookup 100
-sudo ip -6 route add local ::/0 dev lo table 100
-</code></pre>
+sudo ip -6 route add local ::/0 dev lo table 100</code></pre>
 	<p>You will also need <code>route_localnet</code> to be set on your default outbound interface, for example for <code>eth0</code>:</p>
-	<pre><code>echo 1 | sudo tee /proc/sys/net/ipv4/conf/eth0/route_localnet
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">echo 1 | sudo tee /proc/sys/net/ipv4/conf/eth0/route_localnet</code></pre>
 	<p>Finally, verify your IPv6 connectivity:</p>
-	<pre><code>$ ping6 cloudflare.com
+	<pre class="language-bash"><code class="language-bash">$ ping6 cloudflare.com
 PING cloudflare.com(2400:cb00:2048:1::c629:d6a2) 56 data bytes
-64 bytes from 2400:cb00:2048:1::c629:d6a2: icmp_seq=1 ttl=61 time=0.650 ms
-</code></pre>
+64 bytes from 2400:cb00:2048:1::c629:d6a2: icmp_seq=1 ttl=61 time=0.650 ms</code></pre>
 	<p>Now, you are ready to run <code>mmproxy</code>. For example, forwarding localhost SSH would look like this:</p>
-	<pre><code>$ sudo ./mmproxy --allowed-subnets ./cloudflare-ip-ranges.txt \
+	<pre class="language-bash"><code class="language-bash">$ sudo ./mmproxy --allowed-subnets ./cloudflare-ip-ranges.txt \
       -l 0.0.0.0:2222 \
       -4 127.0.0.1:22 -6 '[::1]:22'
 root@ubuntu:~# ./mmproxy -a cloudflare-ip-ranges.txt -l 0.0.0.0:2222 -4 127.0.0.1:22 -6 [::1]:22[ ] Remember to set the reverse routing rules correctly:
@@ -89,52 +113,52 @@ ip -6 route add local ::/0 dev lo table 100     # [+] VERIFIED
 [+] OK. Routing to ::1 points to a local machine.
 [+] OK. Target server [::1]:22 is up and reachable using conventional connection.
 [+] OK. Target server [::1]:22 is up and reachable using spoofed connection.
-[+] Listening on 0.0.0.0:2222
-</code></pre>
+[+] Listening on 0.0.0.0:2222</code></pre>
 	<p>On startup, <code>mmproxy</code> performs a number of self checks. Since we prepared the necessary routing and firewall rules, its self check passes with a "VERIFIED" mark. It's important to confirm these pass.</p>
-	<p>We're almost ready to go! The last step is to create a Spectrum application that sends PROXY protocol traffic to <code>mmproxy</code>, port 2222. Here is an example configuration<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup>:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-4.06.17-PM.png" alt="Screen-Shot-2018-04-15-at-4.06.17-PM" loading="lazy"></p>
+	<p>We're almost ready to go! The last step is to create a Spectrum application that sends PROXY protocol traffic to <code>mmproxy</code>, port 2222. Here is an example configuration<a href="https://blog.cloudflare.com/#fn2">[2]</a>:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dCc5n5QPZDEHlGMDd5jL2/33d12818628ff192e05b68df3528fbe9/Screen-Shot-2018-04-15-at-4.06.17-PM.png" alt="Screen-Shot-2018-04-15-at-4.06.17-PM" class="kg-image" width="2598" height="1450" loading="lazy">
+
+	</figure>
 	<p>With Spectrum we are forwarding TCP/22 on domain "ssh.example.org", to our origin at 192.0.2.1, port 2222. We’ve enabled the PROXY protocol toggle.</p>
-	<h3 id="mmproxyinaction">mmproxy in action</h3>
+	<h3>mmproxy in action</h3>
 	<p>Now we can see if it works. My testing VPS has IP address 79.1.2.3. Let's see if the whole setup behaves:</p>
-	<pre><code>vps$ nc ssh.example.org 22
-SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.1
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">vps$ nc ssh.example.org 22
+SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.1</code></pre>
 	<p>Hurray, this worked! The "ssh.example.org" on port 22 is indeed tunneled over Spectrum. Let's see <code>mmproxy</code> logs:</p>
-	<pre><code>[+] 172.68.136.1:32654 connected, proxy protocol source 79.1.2.3:0,
-        local destination 127.0.0.1:22
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">[+] 172.68.136.1:32654 connected, proxy protocol source 79.1.2.3:0,
+        local destination 127.0.0.1:22</code></pre>
 	<p>The log confirmed what happened - Cloudflare IP 172.68.136.1 has connected, advertised client IP 79.1.2.3 over the PROXY protocol, and established a spoofed connection to 127.0.0.1:22. The ssh daemon logs show:</p>
-	<pre><code>$ tail /var/log/auth.log
+	<pre class="language-bash"><code class="language-bash">$ tail /var/log/auth.log
 Apr 15 14:39:09 ubuntu sshd[7703]: Did not receive identification
-        string from 79.1.2.3
-</code></pre>
+        string from 79.1.2.3</code></pre>
 	<p>Hurray! All works! sshd recorded the real client IP address, and with <code>mmproxy</code>’s help we never saw that it's actually traffic flowing through Cloudflare Spectrum.</p>
-	<h3 id="underthehood">Under the hood</h3>
+	<h3>Under the hood</h3>
 	<p>Under the hood <code>mmproxy</code> relies on two hacks.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-12.26.44-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.44-PM-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55C3wnXIZ6x95nvIFJZZcu/0880eefa1d69a9341caadc7f83170e33/Screen-Shot-2018-04-15-at-12.26.44-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.44-PM-1" class="kg-image" width="1530" height="606" loading="lazy">
+
+	</figure>
 	<p>The first hack is about setting source IP on outgoing connections. We are using the well known <a href="https://idea.popcount.org/2014-04-03-bind-before-connect">bind-before-connect</a> technique to do this.</p>
 	<p>Normally, it's only possible to set a valid source IP that is actually handled by a local machine. We can override this by using the <code>IP_TRANSPARENT</code> socket option. With it set, we can select arbitrary source IP addresses before establishing a legitimate connection handled by kernel. For example, we can have a localhost socket between, say 8.8.8.8 and 127.0.0.1, even though 8.8.8.8 may not be explicitly assigned to our server.</p>
 	<p>It's worth saying that <code>IP_TRANSPARENT</code> was not created for this use case. This socket option was specifically added as support <a href="https://blog.cloudflare.com/how-we-built-spectrum">for TPROXY module</a>.</p>
 	<p>The second hack is about routing. Normally, response packets coming from the application are routed to the Internet - via a default gateway. We must prevent that from happening, and instead direct these packets towards the loopback interface. To achieve this, we rely on <code>CONNMARK</code> and an additional routing table selected by <code>fwmark</code>. <code>mmproxy</code> sets a MARK value of 123 (by default) on packets it sends, which is preserved at the <code>CONNMARK</code> layer, and restored for the return packets. Then we route the packets with MARK == 123 to a specific routing table (number 100 by default), which force-routes everything back to the loopback interface. We do this by totally <a href="https://blog.cloudflare.com/how-we-built-spectrum">abusing the AnyIP trick</a> and assigning 0.0.0.0/0 to "local" - meaning that entire internet shall be treated as belonging to our machine.</p>
-	<h3 id="summary">Summary</h3>
+	<h3>Summary</h3>
 	<p><code>mmproxy</code> is not the only tool that uses this IP spoofing technique to preserve real client IP addresses. One example is <a href="https://man.openbsd.org/relayd.conf.5">OpenBSD's <code>relayd</code></a> "transparent" mode. Another is the <a href="https://github.com/UlricE/pen/wiki/Transparent-Reverse-Proxy"><code>pen</code> load balancer</a>. Compared to <code>mmproxy</code>, these tools look heavyweight and require more complex routing.</p>
 	<p><code>mmproxy</code> is the first daemon to do just one thing: unwrap the PROXY protocol and spoof the client IP address on locally running connections going to the application process. While it requires some firewall and routing setup, it's small enough to make an <code>mmproxy</code> deployment acceptable in many situations.</p>
 	<p>We hope that <code>mmproxy</code>, while a gigantic hack, could help some of our customers with onboarding onto Cloudflare Spectrum.</p>
-	<p>However, frankly speaking - we don't know. <em><code>mmproxy</code> should be treated as a great experiment</em>. If you find it useful, let us know! If you find a problem, <a href="https://github.com/cloudflare/mmproxy/issues">please report it</a>!<br>
-		We are looking for feedback. If our users will find the <code>mmproxy</code> approach useful, we will repackage it and release as an easier to use tool.</p>
+	<p>However, frankly speaking - we don't know. <code><i>mmproxy</i></code><i> should be treated as a great experiment</i>. If you find it useful, let us know! If you find a problem, <a href="https://github.com/cloudflare/mmproxy/issues">please report it</a>!We are looking for feedback. If our users will find the <code>mmproxy</code> approach useful, we will repackage it and release as an easier to use tool.</p>
 	<hr>
-	<p><em>Doing low level socket work sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572">world famous team</a> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</em>.</p>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>In addition to supporting standard <code>X-Forwarded-For</code> HTTP header, Cloudflare supports custom a <code>CF-Connecting-IP</code> header. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn2" class="footnote-item">
-				<p>Spectrum is available for Enterprise plan domains and can be enabled by your account manager. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<p><i>Doing low level socket work sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</i>.</p>
+	<hr>
+	<ol>
+		<li>
+			<p>In addition to supporting standard <code>X-Forwarded-For</code> HTTP header, Cloudflare supports custom a <code>CF-Connecting-IP</code> header. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+		<li>
+			<p>Spectrum is available for Enterprise plan domains and can be enabled by your account manager. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
+		</li>
+	</ol>
 </div>

@@ -1,43 +1,38 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52eWtOy0Q8BkS4fQzHVXJZ/f379e3aedb2bfeb592f4db4295696651/subdomains-vs-subdirectories-improved-seo-part-2.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<h4 id="recap">Recap</h4>
-	<p>In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">Part 1</a>, the merits and tradeoffs of <em>subdirectories</em> and <em>subdomains </em>were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <em>keyword</em> and <em>backlink dilution</em>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
-	<h4 id="subdirectory-strategy-without-the-nginx">Subdirectory Strategy without the NGINX</h4>
-	<p>In the <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">first part</a>, our friend Bob set up a hosted Ghost blog at <em>bobtopia.coolghosthost.com</em> that he connected to <em>blog.bobtopia.com </em>using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <em>bobtopia.com/blog</em> to gain the SEO advantages of subdirectories?</p>
+	<h4>Recap</h4>
+	<p>In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">Part 1</a>, the merits and tradeoffs of <i>subdirectories</i> and <i>subdomains</i> were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <i>keyword</i> and <i>backlink dilution</i>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
+	<h4>Subdirectory Strategy without the NGINX</h4>
+	<p>In the <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">first part</a>, our friend Bob set up a hosted Ghost blog at <i>bobtopia.coolghosthost.com</i> that he connected to <i>blog.bobtopia.com</i> using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <i>bobtopia.com/blog</i> to gain the SEO advantages of subdirectories?</p>
 	<p>A reverse proxy like NGINX is normally needed to route traffic from subdirectories to remotely hosted services. &nbsp;We'll demonstrate how to implement the subdirectory strategy with Cloudflare Workers and eliminate our dependency on NGINX. (Cloudflare Workers are <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">serverless</a> functions that run on the Cloudflare global network.)</p>
-	<h4 id="back-to-bobtopia">Back to Bobtopia</h4>
-	<p>Let's write a Worker that proxies traffic from a subdirectory – <em>bobtopia.com/blog – </em>to a remotely hosted platform – <em>bobtopia.coolghosthost.com</em>. &nbsp;This means that if I go to <em>bobtopia.com/blog</em>, I should see the content of <em>bobtopia.coolghosthost.com,</em> but my browser should still think it's on <em>bobtopia.com</em>.</p>
-	<h4 id="configuration-options">Configuration Options</h4>
+	<h4>Back to Bobtopia</h4>
+	<p>Let's write a Worker that proxies traffic from a subdirectory – <i>bobtopia.com/blog –</i> to a remotely hosted platform – <i>bobtopia.coolghosthost.com</i>. &nbsp;This means that if I go to <i>bobtopia.com/blog</i>, I should see the content of <i>bobtopia.coolghosthost.com,</i> but my browser should still think it's on <i>bobtopia.com</i>.</p>
+	<h4>Configuration Options</h4>
 	<p>In the <a href="https://dash.cloudflare.com/?zone=workers">Workers</a> editor, we'll start a new script with some basic configuration options.</p>
-	<p></p>
-	<pre><code>// keep track of all our blog endpoints here
+	<pre class="language-bash"><code class="language-bash">// keep track of all our blog endpoints here
 const myBlog = {
   hostname: "bobtopia.coolghosthost.com",
   targetSubdirectory: "/articles",
   assetsPathnames: ["/public/", "/assets/"]
 }</code></pre>
-	<p></p>
 	<p>The script will proxy traffic from <code>myBlog.targetSubdirectory</code> to Bob's hosted Ghost endpoint, <code>myBlog.hostname</code>. &nbsp;We'll talk about <code>myBlog.assetsPathnames</code> a little later.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/Screen-Shot-2019-01-27-at-2.47.39-PM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Requests are proxied from bobtopia.com/articles to bobtopia.coolghosthost.com (Uh oh... is because the hosted Ghost blog doesn't actually exist)</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4euHWaCm0YKJDnMpWIsFy9/b669d8d42d88e33b51bab3c38f52c2c9/Screen-Shot-2019-01-27-at-2.47.39-PM.png" alt="" class="kg-image" width="2000" height="645" loading="lazy">
+
 	</figure>
-	<p></p>
-	<h4 id="request-handlers">Request Handlers</h4>
+	<p>Requests are proxied from bobtopia.com/articles to bobtopia.coolghosthost.com (Uh oh... is because the hosted Ghost blog doesn't actually exist)</p>
+	<h4>Request Handlers</h4>
 	<p>Next, we'll add a request handler:</p>
-	<p></p>
-	<pre><code>async function handleRequest(request) {
+	<pre class="language-bash"><code class="language-bash">async function handleRequest(request) {
   return fetch(request)
 }
 
 addEventListener("fetch", event =&gt; {
   event.respondWith(handleRequest(event.request))
-})
-</code></pre>
-	<p></p>
+})</code></pre>
 	<p>So far we're just passing requests through <code>handleRequest</code> unmodified. &nbsp;Let's make it do something:</p>
-	<p></p>
-	<pre><code>
+	<pre class="language-bash"><code class="language-bash">
 async function handleRequest(request) { 
   ...
 
@@ -58,29 +53,25 @@ async function handleRequest(request) {
 
 addEventListener("fetch", event =&gt; {
   event.respondWith(handleRequest(event.request))
-})
-</code></pre>
-	<p></p>
+})</code></pre>
 	<p>In the above code, we added a conditional statement to handle traffic to <code>myBlog.targetSubdirectory</code>. &nbsp;Note that we've omitted our helper functions here. &nbsp;The relevant code lives inside the <code>if</code> block near the top of the function. The <code>requestMatches</code> helper checks if the incoming request contains <code>targetSubdirectory</code>. &nbsp;If it does, a request is made to <code>myBlog.hostname</code> to fetch the HTML document which is returned to the browser.</p>
 	<p>When the browser parses the HTML, it makes additional asset requests required by the document (think images, stylesheets, and scripts). &nbsp;We'll need another conditional statement to handle these kinds of requests.</p>
-	<p></p>
-	<pre><code>// if its blog assets, get them
+	<pre class="language-bash"><code class="language-bash">// if its blog assets, get them
 if ([myBlog.assetsPathnames].some(requestMatches)) {
     console.log("this is a request for blog assets", parsedUrl.pathname)
     const assetUrl = request.url.replace(parsedUrl.hostname, myBlog.hostname);
 
     return fetch(assetUrl)
   }</code></pre>
-	<p></p>
-	<p>This similarly shaped block checks if the request matches any pathnames enumerated in <code>myBlog.assetPathnames</code> and fetches the assets required to fully render the page. &nbsp;Assets happen to live in <em>/public</em> and <em>/assets</em> on a Ghost blog. &nbsp;You'll be able to identify your assets directories when you <code>fetch</code> the HTML and see logs for scripts, images, and stylesheets.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/Screen-Shot-2019-01-27-at-5.51.44-PM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Logs show the various scripts and stylesheets required by Ghost live in <em>/assets</em> and <em>/public</em></figcaption>
+	<p>This similarly shaped block checks if the request matches any pathnames enumerated in <code>myBlog.assetPathnames</code> and fetches the assets required to fully render the page. &nbsp;Assets happen to live in <i>/public</i> and <i>/assets</i> on a Ghost blog. &nbsp;You'll be able to identify your assets directories when you <code>fetch</code> the HTML and see logs for scripts, images, and stylesheets.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/333FXL8DTk3xbnNH3CDM2G/778a48d3d76fbda9e26ae712ab06b3f5/Screen-Shot-2019-01-27-at-5.51.44-PM.png" alt="" class="kg-image" width="2464" height="760" loading="lazy">
+
 	</figure>
-	<p></p>
+	<p>Logs show the various scripts and stylesheets required by Ghost live in <i>/assets</i> and <i>/public</i></p>
 	<p>The full script with helper functions included is:</p>
-	<p></p>
-	<pre><code>
+	<pre class="language-bash"><code class="language-bash">
 // keep track of all our blog endpoints here
 const myBlog = {
   hostname: "bobtopia.coolghosthost.com",
@@ -121,17 +112,14 @@ async function handleRequest(request) {
 
 addEventListener("fetch", event =&gt; {
   event.respondWith(handleRequest(event.request))
-})
-</code></pre>
-	<h4 id="caveat">Caveat</h4>
-	<p>There is one important caveat about the current implementation that bears mentioning. This script will not work if your hosted service assets are stored in a folder that shares a name with a route on your root domain. &nbsp;For example, if you're serving assets from the root directory of your hosted service, any request made to the <em>bobtopia.com</em> home page will be masked by these asset requests, and the home page won't load.</p>
+})</code></pre>
+	<h4>Caveat</h4>
+	<p>There is one important caveat about the current implementation that bears mentioning. This script will not work if your hosted service assets are stored in a folder that shares a name with a route on your root domain. &nbsp;For example, if you're serving assets from the root directory of your hosted service, any request made to the <i>bobtopia.com</i> home page will be masked by these asset requests, and the home page won't load.</p>
 	<p>The solution here involves modifying the blog assets block to handle asset requests without using paths. &nbsp;I'll leave it to the reader to solve this, but a more general solution might involve changing <code>myBlog.assetPathnames</code> to <code>myBlog.assetFileExtensions</code>, which is a list of all asset file extensions (like .png and .css). &nbsp;Then, the assets block would handle requests that contain <code>assetFileExtensions</code> instead of <code>assetPathnames</code>.</p>
-	<h4 id="conclusion">Conclusion</h4>
+	<h4>Conclusion</h4>
 	<p>Bob is now enjoying the same SEO advantages as Alice after converting his subdomains to subdirectories using Cloudflare Workers. &nbsp;Bobs of the world, rejoice!</p>
-	<hr><!--kg-card-begin: markdown-->
-	<p><small>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers" target="blank"><em>here</em></a>.</small></p>
-	<p align="center">
-		<a class="btn btn-warning" href="https://workers.dev" target="_blank">Reserve a workers.dev subdomain</a>
-	</p><!--kg-card-end: markdown-->
+	<hr>
+	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>
+	<p><a href="https://workers.dev">Reserve a workers.dev subdomain</a></p>
 	<hr>
 </div>

@@ -1,39 +1,66 @@
 <div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stream-live">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/stream-live">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/stream-live">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/stream-live">繁體中文</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed-4.png" class="kg-image" alt="Serverless Live Streaming with Cloudflare Stream" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2e5C0u3mos2GGo4CUZnrMu/fa4f0b99de0bfba1663b2b5432f0c406/unnamed-4.png" alt="Serverless Live Streaming with Cloudflare Stream" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>We’re excited to introduce the open beta of Stream Live, an end-to-end scalable <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">live-streaming platform</a> that allows you to focus on growing your live video apps, not your codebase.</p>
 	<p>With Stream Live, you can painlessly grow your streaming app to scale to millions of concurrent broadcasters and millions of concurrent users. Start sending live video from mobile or desktop using the industry standard RTMPS protocol to millions of viewers instantly. Stream Live works with the most popular live video broadcasting software you already use, including ffmpeg, <a href="https://obsproject.com">OBS</a> or Zoom. Your broadcasts are automatically recorded, optimized and delivered using the Stream player.</p>
 	<p>When you are building your live infrastructure from scratch, you have to answer a few critical questions:</p>
 	<ol>
-		<li>“<em>Which codec(s) are we going to use to encode the videos?”</em></li>
-		<li><em><em><em>“Which protocols are we going to use to ingest and deliver videos?”</em></em></em></li>
-		<li><em><em><em>“How are the different components going to impact latency?”</em></em></em></li>
+		<li>
+			<p>“<i>Which codec(s) are we going to use to encode the videos?”</i></p>
+		</li>
+		<li>
+			<p><b><i>“Which protocols are we going to use to ingest and deliver videos?”</i></b></p>
+		</li>
+		<li>
+			<p><b><i>“How are the different components going to impact latency?”</i></b></p>
+		</li>
 	</ol>
 	<p>We built Stream Live, so you don’t have to think about these questions and spend considerable engineering effort answering them. Stream Live abstracts these pesky yet important implementation details by automatically choosing the most compatible codec and streaming protocol for the client device. There is no limit to the number of live broadcasts you can start and viewers you can have on Stream Live. Whether you want to make the next viral video sharing app or securely broadcast all-hands meetings to your company, Stream will scale with you without having to spend months building and maintaining video infrastructure.</p>
-	<h3 id="built-in-player-and-access-control">Built-in Player and Access Control</h3>
+	<h3>Built-in Player and Access Control</h3>
 	<p>Every live video gets an embed code that can be placed inside your app, enabling your users to watch the live stream. You can also use your own player with included support for the two major HTTP streaming formats — HLS and DASH — for a granular control over the user experience.</p>
 	<p>You can limit who can view your live videos with self-expiring tokenized links for each viewer. When generating the tokenized links, you can define constraints <a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream">including time-based expiration, geo-fencing and IP restrictions</a>. When building an online learning site or a video sharing app, you can put videos behind authentication, so only logged-in users can view your videos. Or if you are building a live concert platform, you may have agreements to only allow viewers from specific countries or regions. Stream’s signed tokens help you comply with complex and custom rulesets.</p>
-	<h3 id="instant-recordings">Instant Recordings</h3>
+	<h3>Instant Recordings</h3>
 	<p>With Stream Live, you don’t have to wait for a recording to be available after the live broadcast ends. Live videos automatically get converted to recordings in less than a second. Viewers get access to the recording instantly, allowing them to catch up on what they missed.</p>
-	<h3 id="instant-scale">Instant Scale</h3>
+	<h3>Instant Scale</h3>
 	<p>Whether your platform has one active broadcaster or ten thousand, Stream Live scales with your use case. You don’t have to worry about adding new compute instances, setting up availability zones or negotiating additional software licenses.</p>
-	<p>Legacy live video pipelines built in-house typically ingest and encode the live stream continents away in a single location. Video that is ingested far away makes video streaming unreliable, especially for global audiences. All Cloudflare locations run the necessary software to ingest live video <em>in</em> and deliver video <em>out</em>. Once your video broadcast is in the Cloudflare network, Stream Live uses the <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">Cloudflare backbone</a> and <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo</a> to transmit your live video with increased reliability.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed--1--2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="broadcast-with-15-second-latency">Broadcast with 15 second latency</h3>
+	<p>Legacy live video pipelines built in-house typically ingest and encode the live stream continents away in a single location. Video that is ingested far away makes video streaming unreliable, especially for global audiences. All Cloudflare locations run the necessary software to ingest live video <i>in</i> and deliver video <i>out</i>. Once your video broadcast is in the Cloudflare network, Stream Live uses the <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">Cloudflare backbone</a> and <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo</a> to transmit your live video with increased reliability.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aUAddowRRZXNaqyepq9ey/8c60564060c9c69a8f0f64abea556e90/unnamed--1--2.png" alt="" class="kg-image" width="1586" height="504" loading="lazy">
+
+	</figure>
+	<h3>Broadcast with 15 second latency</h3>
 	<p>Depending on your video encoder settings, the time between you broadcasting and the video displaying on your viewer’s screens can be as low as fifteen seconds with Stream Live. Low latency allows you to build interactive features such as chat and Q&amp;A into your application. This latency is good for broadcasting meetings, sports, concerts, and worship, but we know it doesn’t cover all uses for live video.</p>
 	<p>We’re on a mission to reduce the latency Stream Live adds to near-zero. The Cloudflare network is now <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">within 50ms for 95% of the world’s population</a>. We believe we can significantly reduce the delay from the broadcaster to the viewer in the coming months. Finally, in the world of live-streaming, latency is only meaningful once you can assume reliability. By using the Cloudflare network spanning over 250 locations, you get unparalleled reliability that is critical for live events.</p>
-	<h3 id="simple-and-predictable-pricing">Simple and predictable pricing</h3>
+	<h3>Simple and predictable pricing</h3>
 	<p>Stream Live is available as a pay-as-you-go service based on the duration of videos recorded and duration of video viewed.</p>
 	<ul>
-		<li>It costs $5 per 1,000 minutes of video storage capacity per month. Live-streamed videos are automatically recorded. There is no additional cost for ingesting the live stream.</li>
-		<li>It costs $1 per 1,000 minutes of video viewed.</li>
-		<li>There are no surprises. You never have to pay hidden costs for video ingest, compute (encoding), egress or storage found in legacy video pipelines.</li>
-		<li>You can control how much you spend with Stream using billing alerts and restrict viewing by creating signed tokens that only work for authorized viewers.</li>
+		<li>
+			<p>It costs $5 per 1,000 minutes of video storage capacity per month. Live-streamed videos are automatically recorded. There is no additional cost for ingesting the live stream.</p>
+		</li>
+		<li>
+			<p>It costs $1 per 1,000 minutes of video viewed.</p>
+		</li>
+		<li>
+			<p>There are no surprises. You never have to pay hidden costs for video ingest, compute (encoding), egress or storage found in legacy video pipelines.</p>
+		</li>
+		<li>
+			<p>You can control how much you spend with Stream using billing alerts and restrict viewing by creating signed tokens that only work for authorized viewers.</p>
+		</li>
 	</ul>
 	<p>Cloudflare Stream encodes the live stream in multiple quality levels at no additional cost. This ensures smooth playback for your viewers with varying Internet speed. As your viewers move from Wi-Fi to mobile networks, videos continue playing without interruption. Other platforms that offer live-streaming infrastructure tend to add extra fees for adding quality levels that caters to a global audience.</p>
 	<p>If your use case consists of thousands of concurrent broadcasters or millions of concurrent viewers, <a href="https://www.cloudflare.com/plans/enterprise/contact">reach out</a> to us for volume pricing.</p>
-	<h3 id="go-live-with-stream">Go live with Stream</h3>
+	<h3>Go live with Stream</h3>
 	<p>Stream works independent of any domain on Cloudflare. If you already have a Cloudflare account with a Stream subscription, you can begin using Stream Live by clicking on the “Live Input” tab on the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream">Stream Dashboard</a> and creating a new input:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Stream-Screen.png" class="kg-image" alt="Get started with Stream Live" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iLtxKiyHyGsDb9zkLra2e/f136a97fe05e1d47f87b26ea2a4e2fba/Stream-Screen.png" alt="Get started with Stream Live" class="kg-image" width="1510" height="1320" loading="lazy">
+
+	</figure>
 	<p>If you are new to Cloudflare, <a href="https://dash.cloudflare.com/sign-up/stream">sign up for Cloudflare Stream.</a></p>
 </div>

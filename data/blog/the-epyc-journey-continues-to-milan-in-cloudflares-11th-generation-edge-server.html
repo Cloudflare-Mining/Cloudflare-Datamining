@@ -1,6 +1,10 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/Gen-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WzD9TtQQascJIQqGfIkxv/24ff4f95137294e4c46f23dcae4475a4/Gen-11.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>When I was interviewing to join Cloudflare in 2014 as a member of the SRE team, we had just introduced our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">generation 4 server</a>, and I was excited about the prospects. Since then, Cloudflare, the industry and I have all changed dramatically. The best thing about working for a rapidly growing company like Cloudflare is that as the company grows, new roles open up to enable career development. And so, having left the SRE team last year, I joined the recently formed hardware engineering team, a team that simply didn’t exist in 2014.</p>
 	<p>We aim to introduce a new server platform to our edge network every 12 to 18 months or so, to ensure that we keep up with the latest industry technologies and developments. We announced the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">generation 9 server</a> in October 2018 and we announced the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">generation 10 server</a> in February 2020. We consider this length of cycle optimal: short enough to stay nimble and take advantage of the latest technologies, but long enough to offset the time taken by our hardware engineers to test and validate the entire platform. When we are <a href="https://www.cloudflare.com/en-gb/network">shipping servers to over 200 cities</a> around the world with a variety of regulatory standards, it’s essential to get things right the first time.</p>
 	<p>We continually work with our silicon vendors to receive product roadmaps and stay on top of the latest technologies. Since mid-2020, the hardware engineering team at Cloudflare has been working on our generation 11 server.</p>
@@ -9,125 +13,147 @@
 	<p>We evaluated Intel’s latest generation of “Ice Lake” Xeon processors. Although Intel’s chips were able to compete with AMD in terms of raw performance, the power consumption was several hundred watts higher per server - that’s enormous. This meant that Intel’s Performance per Watt was unattractive.</p>
 	<p>We previously described how we had deployed AMD EPYC 7642’s processors in our generation 10 server. This has 48 cores and is based on AMD’s 2nd generation EPYC architecture, code named Rome. For our generation 11 server, we evaluated 48, 56 and 64 core samples based on AMD’s 3rd generation EPYC architecture, code named Milan. We were interested to find that comparing the two 48 core processors directly, we saw a performance boost of several percent in the <a href="https://www.amd.com/en/events/epyc">3rd generation EPYC</a> architecture. We therefore had high hopes for the 56 core and 64 core chips.</p>
 	<p>So, based on the samples we received from our vendors and our subsequent testing, hardware from AMD and Ampere made the shortlist for our generation 11 server. On this occasion, we decided that Intel did not meet our requirements. However, it’s healthy that Intel and AMD compete and innovate in the x86 space and we look forward to seeing how Intel’s next generation shapes up.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/IMG_4118.jpeg" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="testing-and-validation-process">Testing and validation process</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ajXt7adRxT5V2FVBVw7IJ/3b2c3a079d71fdbf770ca29ccc46744f/IMG_4118.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1682" loading="lazy">
+
+	</figure>
+	<h3>Testing and validation process</h3>
 	<p>Before we go on to talk about the hardware, I’d like to say a few words about the testing process we went through to test out generation 11 servers.</p>
 	<p>As we elected to proceed with AMD chips, we were able to use our generation 10 servers as our Engineering Validation Test platform, with the only changes being the new silicon and updated firmware. We were able to perform these upgrades ourselves in our hardware validation lab.</p>
 	<p>Cloudflare’s network is built with commodity hardware and we source the hardware from multiple vendors, known as ODMs (Original Design Manufacturer) who build the servers to our specifications.</p>
 	<p>When you are working with bleeding edge silicon and experimental firmware, not everything is plain sailing. We worked with one of our ODMs to eliminate an issue which was causing the Linux kernel to panic on boot. Once resolved, we used a variety of synthetic benchmarking tools to verify the performance including <a href="https://github.com/cloudflare/cf_benchmark">cf_benchmark</a>, as well as an internal tool which applies a synthetic load to our entire software stack.</p>
 	<p>Once we were satisfied, we ordered Design Validation Test samples, which were manufactured by our ODMs with the new silicon. We continued to test these and iron out the inevitable issues that arise when you are developing custom hardware. To ensure that performance matched our expectations, we used synthetic benchmarking to test the new silicon. We also began testing it in our production environment by gradually introducing customer traffic to them as confidence grew.</p>
 	<p>Once the issues were resolved, we ordered the Product Validation Test samples, which were again manufactured by our ODMs, taking into account the feedback obtained in the DVT phase. As these are intended to be production grade, we work with the broader Cloudflare teams to deploy these units like a mass production order.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/20210722_113627.jpeg" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="cpu">CPU</h3>
-	<p>Previously: AMD EPYC 7642 48-Core Processor<br>Now: AMD EPYC 7713 64-Core Processor</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/IMG_4203.jpeg" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th><a href="https://www.amd.com/en/products/cpu/amd-epyc-7642">AMD EPYC 7642</a></th>
-				<th><a href="https://www.amd.com/en/products/cpu/amd-epyc-7643">AMD EPYC 7643</a></th>
-				<th><a href="https://www.amd.com/en/products/cpu/amd-epyc-7663">AMD EPYC 7663</a></th>
-				<th><a href="https://www.amd.com/en/products/cpu/amd-epyc-7713">AMD EPYC 7713</a></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Status</td>
-				<td>Incumbent</td>
-				<td>Candidate</td>
-				<td>Candidate</td>
-				<td>Candidate</td>
-			</tr>
-			<tr>
-				<td>Core Count</td>
-				<td>48</td>
-				<td>48</td>
-				<td>56</td>
-				<td>64</td>
-			</tr>
-			<tr>
-				<td>Thread Count</td>
-				<td>96</td>
-				<td>96</td>
-				<td>112</td>
-				<td>128</td>
-			</tr>
-			<tr>
-				<td>Base Clock</td>
-				<td>2.3GHz</td>
-				<td>2.3GHz</td>
-				<td>2.0GHz</td>
-				<td>2.0GHz</td>
-			</tr>
-			<tr>
-				<td>Max Boost Clock</td>
-				<td>3.3GHz</td>
-				<td>3.6GHz</td>
-				<td>3.5GHz</td>
-				<td>3.675GHz</td>
-			</tr>
-			<tr>
-				<td>Total L3 Cache</td>
-				<td>256MB</td>
-				<td>256MB</td>
-				<td>256MB</td>
-				<td>256MB</td>
-			</tr>
-			<tr>
-				<td>Default TDP</td>
-				<td>225W</td>
-				<td>225W</td>
-				<td>240W</td>
-				<td>225W</td>
-			</tr>
-			<tr>
-				<td>Configurable TDP</td>
-				<td>240W</td>
-				<td>240W</td>
-				<td>240W</td>
-				<td>240W</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qZWpcqMs5De6LfHMCudjn/11da0a987e2d4b59def1763148f063c0/20210722_113627.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1616" loading="lazy">
+
+	</figure>
+	<h3>CPU</h3>
+	<p>Previously: AMD EPYC 7642 48-Core ProcessorNow: AMD EPYC 7713 64-Core Processor</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aIqXZIeXOANPykcbW8tJJ/2c66e23f1cd2e691d5ee042a3cc36ee3/IMG_4203.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1333" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.amd.com/en/products/cpu/amd-epyc-7642">AMD EPYC 7642</a></p>
+	<p><a href="https://www.amd.com/en/products/cpu/amd-epyc-7643">AMD EPYC 7643</a></p>
+	<p><a href="https://www.amd.com/en/products/cpu/amd-epyc-7663">AMD EPYC 7663</a></p>
+	<p><a href="https://www.amd.com/en/products/cpu/amd-epyc-7713">AMD EPYC 7713</a></p>
+	<p>Status</p>
+	<p>Incumbent</p>
+	<p>Candidate</p>
+	<p>Candidate</p>
+	<p>Candidate</p>
+	<p>Core Count</p>
+	<p>48</p>
+	<p>48</p>
+	<p>56</p>
+	<p>64</p>
+	<p>Thread Count</p>
+	<p>96</p>
+	<p>96</p>
+	<p>112</p>
+	<p>128</p>
+	<p>Base Clock</p>
+	<p>2.3GHz</p>
+	<p>2.3GHz</p>
+	<p>2.0GHz</p>
+	<p>2.0GHz</p>
+	<p>Max Boost Clock</p>
+	<p>3.3GHz</p>
+	<p>3.6GHz</p>
+	<p>3.5GHz</p>
+	<p>3.675GHz</p>
+	<p>Total L3 Cache</p>
+	<p>256MB</p>
+	<p>256MB</p>
+	<p>256MB</p>
+	<p>256MB</p>
+	<p>Default TDP</p>
+	<p>225W</p>
+	<p>225W</p>
+	<p>240W</p>
+	<p>225W</p>
+	<p>Configurable TDP</p>
+	<p>240W</p>
+	<p>240W</p>
+	<p>240W</p>
+	<p>240W</p>
 	<p>In the above chart, TDP refers to Thermal Design Power, a measure of the heat dissipated. All of the above processors have a configurable TDP - assuming the cooling solution is capable - giving more performance at the expense of increased power consumption. We tested all processors configured at their highest supported TDP.</p>
 	<p>The 64 core processors have 33% more cores than the 48 core processors so you might hypothesize that we would see a corresponding 33% increase in performance, although our benchmarks saw slightly more modest gains. This can be explained because the 64 core processors have lower base clock frequencies to fit within the same 225W power envelope.</p>
-	<p>In production testing, we found that the 64 core EPYC 7713 gave us around a 29% performance boost over the incumbent, whilst having similar power consumption and thermal properties. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/IMG_4196.jpeg" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="memory">Memory</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/_MG_4100.jpeg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Previously: 256GB DDR4-2933<br>Now: 384GB DDR4-3200</p>
+	<p>In production testing, we found that the 64 core EPYC 7713 gave us around a 29% performance boost over the incumbent, whilst having similar power consumption and thermal properties.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rYE9p57gOFlQ5xwL6D29t/eca5c019f1312eb1a94a72882047856d/IMG_4196.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1381" loading="lazy">
+
+	</figure>
+	<h2>Memory</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Z86awdPPL6Yt3G5GRZP41/5124ff6fef80d65c7d715b769d472d2c/_MG_4100.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1521" loading="lazy">
+
+	</figure>
+	<p>Previously: 256GB DDR4-2933Now: 384GB DDR4-3200</p>
 	<p>Having made a decision about the processor, the next step was to determine the optimal amount of memory for our workload. We ran a series of experiments with our chosen EPYC 7713 processor and 256GB, 384GB and 512GB memory configurations. We started off by running synthetic benchmarks with tools such as <a href="https://www.cs.virginia.edu/stream">STREAM</a> to ensure that none of the configurations performed unexpectedly poorly and to generate a baseline understanding of the performance.</p>
 	<p>After the synthetic benchmarks, we proceeded to test the various configurations with production workloads to empirically determine the optimal quantity. We use Prometheus and Grafana to gather and display a rich set of metrics from all of our servers so that we can monitor and spot trends, and we re-used the same infrastructure for our performance analysis.</p>
 	<p>As well as measuring available memory, previous experience has shown us that one of the best ways to ensure that we have enough memory is to observe request latency and disk IO performance. If there is insufficient memory, we expect to see request latency and disk IO volume and latency to increase. The reason for this is that our core HTTP server uses memory to cache web assets and if there is insufficient memory the assets will be ejected from memory prematurely and more assets will be fetched from disk instead of memory, degrading performance.</p>
 	<p>Like most things in life, it’s a balancing act. We want enough memory to take advantage of the fact that serving web assets directly from memory is much faster than even the best NVMe disks. We also want to future proof our platform to enable the new features such as the ones that we recently announced in <a href="https://blog.cloudflare.com/tag/security-week">security week</a> and <a href="https://blog.cloudflare.com/tag/developer-week">developer week</a>. However, we don’t want to spend unnecessarily on excess memory that will never be used. We found that the 512GB configuration did not provide a performance boost to justify the extra cost and settled on the 384GB configuration.</p>
 	<p>We also tested the performance impact of switching from DDR4-2933 to DDR4-3200 memory. We found that it provided a performance boost of several percent and the pricing has improved to the point where it is cost beneficial to make the change.</p>
-	<h2 id="disk">Disk</h2>
-	<p>Previously: 3x Samsung PM983 x 960GB<br>Now: 2x Samsung PM9A3 x 1.92TB</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/20210722_113829.jpeg" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Disk</h2>
+	<p>Previously: 3x Samsung PM983 x 960GBNow: 2x Samsung PM9A3 x 1.92TB</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bzxh2LTLqrPAHlIWynt9t/92a4195bfc1c41d2d2ad0e2fa868579c/20210722_113829.jpeg.jpeg" alt="" class="kg-image" width="2000" height="973" loading="lazy">
+
+	</figure>
 	<p>We validated samples by studying the manufacturer’s data sheets and <a href="https://fio.readthedocs.io/en/latest/fio_doc.html">testing using fio</a> to ensure that the results being obtained in our test environment were in line with the published specifications. We also developed an automation framework to help compare different drive models using fio. The framework helps us to restore the drives close to factory settings, precondition the drives, perform the sequential and random tests in our environment, and analyze the data results to evaluate the bandwidth and latency results. Since our SSD samples were arriving in our test center at different months, having an automated framework helped in dealing with speedy evaluations by reducing our time spent testing and doing analysis.</p>
-	<p>For Gen 11 we decided to move to a 2x 2TB configuration from the original 3x 1TB configuration giving us an extra 1 TB of storage. This also meant we could use the higher performance of a 2TB drive and save around 6W of power since there is one less SSD. </p>
+	<p>For Gen 11 we decided to move to a 2x 2TB configuration from the original 3x 1TB configuration giving us an extra 1 TB of storage. This also meant we could use the higher performance of a 2TB drive and save around 6W of power since there is one less SSD.</p>
 	<p>After analyzing the performances of various 2TB drives, their latencies and endurances, we chose Samsung’s PM9A3 SSDs as our Gen11 drives. The results we obtained below were consistent with the manufacturer's claims.</p>
 	<p>Sequential performance:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/pasted-image-0-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/pasted-image-0--1--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yOK70l1XM5JJij5aeUHTQ/cb0ebf2f3cf7ef25046032ea53461dc9/pasted-image-0-5.png" alt="" class="kg-image" width="936" height="500" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nifB3rxB1gHWX6JBxBhfY/f94b1e616c946bc36822dfc9acb22742/pasted-image-0--1--2.png" alt="" class="kg-image" width="936" height="500" loading="lazy">
+
+	</figure>
 	<p>Random Performance:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/A8p9s1IjM4UnmNmaMPx0T/eddb7284e46ce0121894f2ae464041fd/pasted-image-0--2-.png" alt="" class="kg-image" width="936" height="500" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61rhIo4w8sSIYbUiGfHRn9/c31d008e1aa94c9e63dc0526264fec9a/pasted-image-0--3-.png" alt="" class="kg-image" width="936" height="500" loading="lazy">
+
+	</figure>
 	<p>Compared to our previous generation drives, we could see a 1.5x - 2x improvement in read and write bandwidths. The higher values for the PM9A3 can be attributed to the fact that these are PCIe 4.0 drives, have more intelligent SSD controllers and an upgraded NAND architecture.</p>
-	<h3 id="network">Network</h3>
-	<p>Previously: Mellanox ConnectX-4 dual-port 25G<br>Now: Mellanox ConnectX-4 dual-port 25G</p>
+	<h3>Network</h3>
+	<p>Previously: Mellanox ConnectX-4 dual-port 25GNow: Mellanox ConnectX-4 dual-port 25G</p>
 	<p>There is no change on the network front; the Mellanox ConnectX-4 is a solid performer which continues to meet our needs. We investigated higher speed Ethernet, but we do not currently see this as beneficial. Cloudflare’s network is built on cheap commodity hardware and the highly distributed nature of Cloudflare’s network means we don’t have discrete DDoS scrubbing centres. All points of presence operate as scrubbing centres. This means that we distribute the load across our entire network and do not need to employ higher speed and more expensive Ethernet devices.</p>
-	<h3 id="open-source-firmware">Open source firmware</h3>
+	<h3>Open source firmware</h3>
 	<p>Transparency, security and integrity is absolutely critical to us at Cloudflare. Last year, we described how we had <a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story">deployed Platform Secure Boot</a> to create trust that we were running the software that we thought we were.</p>
 	<p>Now, we are pleased to announce that we are deploying open source firmware to our servers using OpenBMC. With access to the source code, we have been able to configure BMC features such as the fan PID controller, having BIOS POST codes recorded and accessible, and managing networking ports and devices. Prior to OpenBMC, requesting these features from our vendors led to varying results and misunderstandings of the scope and capabilities of the BMC. After working with the BMC source code much more directly, we have the flexibility to work on features ourselves to our liking, or understand why the BMC is incapable of running our desired software.</p>
 	<p>Whilst our current BMC is an industry standard, we feel that OpenBMC better suits our needs and gives us advantages such as allowing us to deal with upstream security issues without a dependency on our vendors. Some opportunities with security include integration of desired authentication modules, usage of specific software packages, staying up to date with the latest Linux kernel, and controlling a variety of attack vectors. Because we have a kernel lockdown implemented, flashing tooling is difficult to use in our environment. With access to source code of the flashing tools, we have an understanding of what the tools need access to, and assess whether or not this meets our standard of security.</p>
-	<h3 id="summary">Summary<br></h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/IMG_4195.jpeg" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Summary</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01wz0PNamn0NdOlkgxbgUs/36287fd4734c6e02a1e51c7bfd214461/IMG_4195.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1333" loading="lazy">
+
+	</figure>
 	<p>The jump between our generation 9 and generation 10 servers was enormous. To summarise, we changed from a dual-socket Intel platform to a single socket AMD platform. We upgraded the SATA SSDs to NVMe storage devices, and physically the multi-node chassis changed to a 1U form factor.</p>
 	<p>At the start of the generation 11 project we weren’t sure if we would be making such radical changes again. However, after a thorough testing of the latest chips and a review of how well the generation 10 server has performed in production for over a year, our generation 11 server built upon the solid foundations of generation 10 and ended up as a refinement rather than total revamp. Despite this, and bearing in mind that performance varies by time of day and geography, we are pleased that generation 11 is capable of serving approximately 29% more requests than generation 10 without an increase in power consumption.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/Screenshot-2021-06-22-at-15.27.27.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hWA14j4FrNG6KYDaHVFI4/decacd7173577c04326435ca6a26eddb/Screenshot-2021-06-22-at-15.27.27.png" alt="" class="kg-image" width="2048" height="422" loading="lazy">
+
+	</figure>
 	<p>Thanks to Denny Mathew and Ryan Chow’s work on benchmarking and OpenBMC, respectively.</p>
 	<p>If you are interested in working with bleeding edge hardware, open source server firmware, solving interesting problems, helping to improve our performance, and are interested in helping us work on our generation 12 server platform (amongst many other things!), <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Infrastructure&amp;location=default">we’re hiring</a>.</p>
 </div>

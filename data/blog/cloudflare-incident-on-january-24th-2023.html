@@ -1,48 +1,59 @@
 <div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-on-january-24th-2023-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-incident-on-january-24th-2023-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-incident-on-january-24th-2023-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-incident-on-january-24th-2023-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-incident-on-january-24th-2023-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-incident-on-january-24th-2023-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-incident-on-january-24th-2023-es-es">Español</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Disruption.png" class="kg-image" alt="Cloudflare incident on January 24, 2023" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-on-january-24th-2023">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-incident-on-january-24th-2023">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-incident-on-january-24th-2023">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-incident-on-january-24th-2023">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-incident-on-january-24th-2023">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-incident-on-january-24th-2023">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-incident-on-january-24th-2023">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JPzbkSERlYNUYIRem6tHA/16ef709ed2a77da132cc0796fda658d0/Disruption.png" alt="Cloudflare incident on January 24, 2023" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>Several Cloudflare services became unavailable for 121 minutes on January 24, 2023 due to an error releasing code that manages service tokens. The incident degraded a wide range of Cloudflare products including aspects of our Workers platform, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust solution</a>, and control plane functions in our content delivery network (CDN).</p>
 	<p>Cloudflare provides a <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-tokens">service token functionality</a> to allow automated services to authenticate to other services. Customers can use service tokens to secure the interaction between an application running in a data center and a resource in a public cloud provider, for example. As part of the release, we intended to introduce a feature that showed administrators the time that a token was last used, giving users the ability to safely clean up unused tokens. The change inadvertently overwrote other metadata about the service tokens and rendered the tokens of impacted accounts invalid for the duration of the incident.</p>
 	<p>The reason this release affected other services is due to the fact that Cloudflare runs on Cloudflare. Service tokens impact the ability for accounts to authenticate, and two of the impacted accounts power multiple Cloudflare services. When these accounts’ service tokens were overwritten, the services that run on these accounts began to experience failed requests and other unexpected errors.</p>
 	<p>Although a limited segment of customers and end users were directly affected by this incident and other customers may have experienced service degradation, the overall impact on Cloudflare’s network and services was not substantial. Nevertheless, we know the impact to the customers that were affected was painful. We’re documenting what went wrong so that you can understand why this happened and the steps we are taking to prevent this from occurring again.</p>
-	<h3 id="what-is-a-service-token">What is a service token?</h3>
+	<h3>What is a service token?</h3>
 	<p>When users log into an application or identity provider, they typically input a username and a password. The password allows that user to demonstrate that they are in control of the username and that the service should allow them to proceed. Layers of additional authentication can be added, like hard keys or device posture, but the workflow consists of a human proving they are who they say they are to a service.</p>
 	<p>However, humans are not the only users that need to authenticate to a service. Applications frequently need to talk to other applications. For example, imagine you build an application that shows a user information about their upcoming travel plans.</p>
 	<p>The airline holds details about the flight and its duration in their own system. They do not want to make the details of every individual trip public on the Internet, and they do not want to invite your application into their private network. Likewise, the hotel wants to make sure that they only send details of a room booking to a valid, approved third party service.</p>
 	<p>Your application needs a trusted way to authenticate with those external systems. Service tokens solve this problem by functioning as a kind of username and password for your service. Like usernames and passwords, service tokens come in two parts: a Client ID and a Client Secret. Both the ID and Secret must be sent with a request for authentication. Tokens are also assigned a duration, after which they become invalid and must be rotated. You can grant your application a service token and, if the upstream systems you need validate it, your service can grab airline and hotel information and present it to the end user in a joint report.</p>
 	<p>When administrators create Cloudflare service tokens, we generate the Client ID and the Client Secret pair. Customers can then configure their requesting services to send both values as HTTP headers when they need to reach a protected resource. The requesting service can run in any environment, including inside of Cloudflare’s network in the form of a <a href="https://workers.cloudflare.com">Worker</a> or in a separate location like a public cloud provider. Customers need to deploy the corresponding protected resource behind Cloudflare’s reverse proxy. Our network checks every request bound for a configured service for the HTTP headers. If present, Cloudflare validates their authenticity and either blocks the request or allows it to proceed. We also log the authentication event.</p>
-	<h3 id="incident-timeline">Incident Timeline</h3>
-	<p><em>All Timestamps are UTC</em></p>
+	<h3>Incident Timeline</h3>
+	<p><i>All Timestamps are UTC</i></p>
 	<p>At 2023-01-24 16:55 the Access engineering team initiated the release that inadvertently began to overwrite service token metadata, causing the incident.</p>
 	<p>At 2023-01-24 17:05 a member of the Access engineering team noticed an unrelated issue and rolled back the release which stopped any further overwrites of service token metadata.</p>
 	<p>Service token values are not updated across Cloudflare’s network until the service token itself is updated (more details below). This caused a staggered impact of the service token’s that had their metadata overwritten.</p>
-	<p>2023-01-24 17:50: The first invalid service token for Cloudflare WARP was synced to our global network. <strong>Impact began for WARP and Zero Trust users.</strong></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Group-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>WARP device posture uploads dropped to zero which raised an internal alert</figcaption>
+	<p>2023-01-24 17:50: The first invalid service token for Cloudflare WARP was synced to our global network. <b>Impact began for WARP and Zero Trust users.</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dyvv4PuLisXrl4fuvmj6A/078ccfaa06e63670c3a8e6aba5251825/Group-1.png" alt="" class="kg-image" width="903" height="339" loading="lazy">
+
 	</figure>
+	<p>WARP device posture uploads dropped to zero which raised an internal alert</p>
 	<p>At 2023-01-24 18:12 an incident was declared due to the large drop in successful WARP device posture uploads.</p>
-	<p>2023-01-24 18:19: The first invalid service token for the Cloudflare API was synced to our global network. <strong>Impact began for Cache Purge, Cache Reserve, Images and R2. </strong>Alerts were triggered for these products which identified a larger scope of the incident.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/2-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>2023-01-24 18:19: The first invalid service token for the Cloudflare API was synced to our global network. <b>Impact began for Cache Purge, Cache Reserve, Images and R2.</b> Alerts were triggered for these products which identified a larger scope of the incident.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yduPwUxIs2g3oO8ebjPxX/8d017973aeaeb735d440794947329e91/2-4.png" alt="" class="kg-image" width="1600" height="815" loading="lazy">
+
+	</figure>
 	<p>At 2023-01-24 18:21 the overwritten services tokens were discovered during the initial investigation.</p>
 	<p>At 2023-01-24 18:28 the incident was elevated to include all impacted products.</p>
-	<p>At 2023-01-24 18:51 An initial solution was identified and implemented to revert the service token to its original value for the Cloudflare WARP account, impacting WARP and Zero Trust. <strong>Impact ended for WARP and Zero Trust.</strong></p>
-	<p>At 2023-01-24 18:56 The same solution was implemented on the Cloudflare API account, impacting Cache Purge, Cache Reserve, Images and R2. <strong>Impact ended for Cache Purge, Cache Reserve, Images and R2.</strong></p>
-	<p>At 2023-01-24 19:00 An update was made to the Cloudflare API account which incorrectly overwrote the Cloudflare API account. <strong>Impact restarted for Cache Purge, Cache Reserve, Images and R2. </strong>All internal Cloudflare account changes were then locked until incident resolution.</p>
-	<p>At 2023-01-24 19:07 the Cloudflare API was updated to include the correct service token value. <strong>Impact ended for Cache Purge, Cache Reserve, Images and R2.</strong></p>
-	<p>At 2023-01-24 19:51 all affected accounts had their service tokens restored from a database backup. <strong>Incident Ends.</strong></p>
-	<h2 id="what-was-released-and-how-did-it-break">What was released and how did it break?</h2>
-	<p>The Access team was rolling out a new change to service tokens that added a “Last seen at” field. This was a popular feature request to help identify which service tokens were actively in use. </p>
-	<h3 id="what-went-wrong">What went wrong?</h3>
-	<p>The “last seen at” value was derived by scanning all new login events in an account’s login event Kafka queue. If a login event using a service token was detected, an update to the corresponding service token’s last seen value was initiated. </p>
+	<p>At 2023-01-24 18:51 An initial solution was identified and implemented to revert the service token to its original value for the Cloudflare WARP account, impacting WARP and Zero Trust. <b>Impact ended for WARP and Zero Trust.</b></p>
+	<p>At 2023-01-24 18:56 The same solution was implemented on the Cloudflare API account, impacting Cache Purge, Cache Reserve, Images and R2. <b>Impact ended for Cache Purge, Cache Reserve, Images and R2.</b></p>
+	<p>At 2023-01-24 19:00 An update was made to the Cloudflare API account which incorrectly overwrote the Cloudflare API account. <b>Impact restarted for Cache Purge, Cache Reserve, Images and R2.</b> All internal Cloudflare account changes were then locked until incident resolution.</p>
+	<p>At 2023-01-24 19:07 the Cloudflare API was updated to include the correct service token value. <b>Impact ended for Cache Purge, Cache Reserve, Images and R2.</b></p>
+	<p>At 2023-01-24 19:51 all affected accounts had their service tokens restored from a database backup. <b>Incident Ends.</b></p>
+	<h2>What was released and how did it break?</h2>
+	<p>The Access team was rolling out a new change to service tokens that added a “Last seen at” field. This was a popular feature request to help identify which service tokens were actively in use.</p>
+	<h3>What went wrong?</h3>
+	<p>The “last seen at” value was derived by scanning all new login events in an account’s login event Kafka queue. If a login event using a service token was detected, an update to the corresponding service token’s last seen value was initiated.</p>
 	<p>In order to update the service token’s “last seen at” value a read write transaction is made to collect the information about the corresponding service token. Service token read requests redact the “client secret” value by default for security reasons. The “last seen at” update to the service token then used that information from the read did not include the “client secret” and updated the service token with an empty “client secret” on the write.</p>
 	<p>An example of the correct and incorrect service token values shown below:</p>
-	<p><strong>Example Access Service Token values</strong></p>
-	<pre><code>{
+	<p><b>Example Access Service Token values</b></p>
+	<pre class="language-bash"><code class="language-bash">{
   "1a4ddc9e-a1234-4acc-a623-7e775e579c87": {
     "client_id": "6b12308372690a99277e970a3039343c.access",
-    "client_secret": "&lt;hashed-value&gt;", &lt;-- what you would expect
+    "client_secret": "<hashed-value>", &lt;-- what you would expect
     "expires_at": 1698331351
   },
   "23ade6c6-a123-4747-818a-cd7c20c83d15": {
@@ -50,42 +61,49 @@
     "client_secret": "", &lt;--- this is the problem
     "expires_at": 1670621577
   }
-}
-</code></pre>
-	<p>The service token “client secret” database did have a “not null” check however in this situation an empty text string did not trigger as a null value. </p>
+}</hashed-value></code></pre>
+	<p>The service token “client secret” database did have a “not null” check however in this situation an empty text string did not trigger as a null value.</p>
 	<p>As a result of the bug, any Cloudflare account that used a service token to authenticate during the 10 minutes “last seen at” release was out would have its “client secret” value set to an empty string. The service token then needed to be modified in order for the empty “client secret” to be used for authentication. There were a total of 4 accounts in this state, all of which are internal to Cloudflare.</p>
-	<h3 id="how-did-we-fix-the-issue">How did we fix the issue?</h3>
+	<h3>How did we fix the issue?</h3>
 	<p>As a temporary solution, we were able to manually restore the correct service token values for the accounts with overwritten service tokens. This stopped the immediate impact across the affected Cloudflare services.</p>
 	<p>The database team was then able to implement a solution to restore the service tokens of all impacted accounts from an older database copy. This concluded any impact from this incident.</p>
-	<h3 id="why-did-this-impact-other-cloudflare-services">Why did this impact other Cloudflare services?</h3>
+	<h3>Why did this impact other Cloudflare services?</h3>
 	<p>Service tokens impact the ability for accounts to authenticate. Two of the impacted accounts power multiple Cloudflare services. When these accounts’ services tokens were overwritten, the services that run on these accounts began to experience failed requests and other unexpected errors.</p>
-	<h3 id="cloudflare-warp-enrollment">Cloudflare WARP enrollment</h3>
+	<h3>Cloudflare WARP enrollment</h3>
 	<p>Cloudflare provides a mobile and desktop forward proxy, <a href="https://1.1.1.1">Cloudflare WARP</a> (our “1.1.1.1” app), that any user can install on a device to improve the privacy of their Internet traffic. Any individual can install this service without the need for a Cloudflare account and we do not retain logs that map activity to a user.</p>
 	<p>When a user connects using WARP, Cloudflare validates the enrollment of a device by relying on a service that receives and validates the keys on the device. In turn, that service communicates with another system that tells our network to provide the newly enrolled device with access to our network</p>
 	<p>During the incident, the enrollment service could no longer communicate with systems in our network that would validate the device. As a result, users could no longer register new devices and/or install the app on a new device, and may have experienced issues upgrading to a new version of the app (which also triggers re-registration).</p>
-	<h3 id="cloudflare-zero-trust-device-posture-and-re-auth-policies">Cloudflare Zero Trust device posture and re-auth policies</h3>
+	<h3>Cloudflare Zero Trust device posture and re-auth policies</h3>
 	<p>Cloudflare provides a comprehensive Zero Trust solution that customers can deploy with or without an agent living on the device. Some use cases are only available when using the Cloudflare agent on the device. The agent is an enterprise version of the same Cloudflare WARP solution and experienced similar degradation anytime the agent needed to send or receive device state. This impacted three use cases in Cloudflare Zero Trust.</p>
 	<p>First, similar to the consumer product, new devices could not be enrolled and existing devices could not be revoked. Administrators were also unable to modify settings of enrolled devices.. In all cases errors would have been presented to the user.</p>
 	<p>Second, many customers who replace their existing private network with Cloudflare’s Zero Trust solution may add rules that continually validate a user’s identity through the use of session duration policies. The goal of these rules is to enforce users to reauthenticate in order to prevent stale sessions from having ongoing access to internal systems. The agent on the device prompts the user to reauthenticate based on signals from Cloudflare’s control plane. During the incident, the signals were not sent and users could not successfully reauthenticate.</p>
-	<p>Finally, customers who rely on device posture rules also experienced impact. <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices">Device posture rules</a> allow customers who use Access or Gateway policies to rely on the WARP agent to continually enforce that a device meets corporate compliance rules. </p>
-	<p>The agent communicates these signals to a Cloudflare service responsible for maintaining the state of the device. Cloudflare’s Zero Trust access control product uses a service token to receive this signal and evaluate it along with other rules to determine if a user can access a given resource. During this incident those rules defaulted to a block action, meaning that traffic modified by these policies would appear broken to the user. In some cases this meant that all Internet bound traffic from a device was completely blocked leaving users unable to access anything. </p>
+	<p>Finally, customers who rely on device posture rules also experienced impact. <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices">Device posture rules</a> allow customers who use Access or Gateway policies to rely on the WARP agent to continually enforce that a device meets corporate compliance rules.</p>
+	<p>The agent communicates these signals to a Cloudflare service responsible for maintaining the state of the device. Cloudflare’s Zero Trust access control product uses a service token to receive this signal and evaluate it along with other rules to determine if a user can access a given resource. During this incident those rules defaulted to a block action, meaning that traffic modified by these policies would appear broken to the user. In some cases this meant that all Internet bound traffic from a device was completely blocked leaving users unable to access anything.</p>
 	<p>Cloudflare Gateway caches the device posture state for users every 5 minutes to apply Gateway policies. The device posture state is cached so Gateway can apply policies without having to verify device state on every request. Depending on which Gateway policy type was matched, the user would experience two different outcomes. If they matched a network policy the user would experience a dropped connection and for an HTTP policy they would see a 5XX error page. We peaked at over 50,000 5XX errors/minute over baseline and had over 10.5 million posture read errors until the incident was resolved.</p>
-	<p><strong>Gateway 5XX errors per minute</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/3-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><strong>Total count of Gateway Device posture errors</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/4-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="cloudflare-r2-storage-and-cache-reserve">Cloudflare R2 Storage and Cache Reserve</h3>
+	<p><b>Gateway 5XX errors per minute</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Fsk0lJWSO2YeGOlKIEEmZ/52c76fac744e825e5d561bbf1b6ca689/3-4.png" alt="" class="kg-image" width="1600" height="1336" loading="lazy">
+
+	</figure>
+	<p><b>Total count of Gateway Device posture errors</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71QxP96PCuCDObTVdJ5dde/5a3106a54ea4eb8f40cb0917d4206b9e/4-4.png" alt="" class="kg-image" width="1600" height="1202" loading="lazy">
+
+	</figure>
+	<h3>Cloudflare R2 Storage and Cache Reserve</h3>
 	<p><a href="https://blog.cloudflare.com/r2-ga">Cloudflare R2 Storage</a> allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services.</p>
 	<p>During the incident, the R2 service was unable to make outbound API requests to other parts of the Cloudflare infrastructure. As a result, R2 users saw elevated request failure rates when making requests to R2. &nbsp;</p>
 	<p>Many Cloudflare products also depend on R2 for data storage and were also affected. For example, Cache Reserve users were impacted during this window and saw increased origin load for any items not in the primary cache. The majority of read and write operations to the Cache Reserve service were impacted during this incident causing entries into and out of Cache Reserve to fail. However, when Cache Reserve sees an R2 error, it falls back to the customer origin, so user traffic was still serviced during this period.</p>
-	<h3 id="cloudflare-cache-purge">Cloudflare Cache Purge</h3>
+	<h3>Cloudflare Cache Purge</h3>
 	<p>Cloudflare’s content delivery network (CDN) caches the content of Internet properties on our network in our data centers around the world to reduce the distance that a user’s request needs to travel for a response. In some cases, customers want to purge what we cache and replace it with different data.</p>
-	<p>The Cloudflare control plane, the place where an administrator interacts with our network, uses a service token to authenticate and reach the cache purge service. During the incident, many purge requests failed while the service token was invalid. We saw an average impact of 20 purge requests/second failing and a maximum of 70 requests/second. </p>
-	<h3 id="what-are-we-doing-to-prevent-this-from-happening-again">What are we doing to prevent this from happening again?</h3>
+	<p>The Cloudflare control plane, the place where an administrator interacts with our network, uses a service token to authenticate and reach the cache purge service. During the incident, many purge requests failed while the service token was invalid. We saw an average impact of 20 purge requests/second failing and a maximum of 70 requests/second.</p>
+	<h3>What are we doing to prevent this from happening again?</h3>
 	<p>We take incidents like this seriously and recognize the impact it had. We have identified several steps we can take to address the risk of a similar problem occurring in the future. We are implementing the following remediation plan as a result of this incident:</p>
-	<p><strong>Test: </strong>The Access engineering team will add unit tests that would automatically catch any similar issues with service token overwrites before any new features are launched.</p>
-	<p><strong>Alert: </strong>The Access team will implement an automatic alert for any dramatic increase in failed service token authentication requests to catch issues before they are fully launched.</p>
-	<p><strong>Process: </strong>The Access team has identified process improvements to allow for faster rollbacks for specific database tables.</p>
-	<p><strong>Implementation: </strong>All relevant database fields will be updated to include checks for empty strings on top of existing “not null checks”</p>
+	<p><b>Test:</b> The Access engineering team will add unit tests that would automatically catch any similar issues with service token overwrites before any new features are launched.</p>
+	<p><b>Alert:</b> The Access team will implement an automatic alert for any dramatic increase in failed service token authentication requests to catch issues before they are fully launched.</p>
+	<p><b>Process:</b> The Access team has identified process improvements to allow for faster rollbacks for specific database tables.</p>
+	<p><b>Implementation:</b> All relevant database fields will be updated to include checks for empty strings on top of existing “not null checks”</p>
 	<p>We are sorry for the disruption this caused for our customers across a number of Cloudflare services. We are actively making these improvements to ensure improved stability moving forward and that this problem will not happen again.</p>
 </div>

@@ -1,31 +1,43 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/staging-tls-certificate-every-deployment-safe-deployment-OG.png" class="kg-image" alt="teams-home-intelligence-spot-illustration.svg" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2P8NWCvxkPapmr1ttenDuf/27e5f7efc91468a9e7cd10f8aaabc956/staging-tls-certificate-every-deployment-safe-deployment-OG.png" alt="teams-home-intelligence-spot-illustration.svg" class="kg-image" width="1200" height="628" loading="lazy">
+
+	</figure>
 	<p>We are excited to announce that Enterprise customers now have the ability to test custom uploaded certificates in a staging environment before pushing them to production.</p>
-	<h3 id="with-great-power-comes-great-responsibility">With great power comes great responsibility</h3>
+	<h3>With great power comes great responsibility</h3>
 	<p>If you’re running a website or the API that’s behind a popular app, you know your users have high expectations: it can't just be up and running; it also has to be fast and secure. One of the easiest and most standardized ways to secure connections is with the TLS protocol. To do that, you need to acquire a TLS certificate for your domain.</p>
 	<p>One way to get a certificate is by using a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN provider</a>, like Cloudflare. We make the process really easy by issuing certificates on your behalf. Not just that, but when your certificate is getting closer to its expiration date, we are responsible for re-issuing it. But, if you don’t want Cloudflare to issue the certificate on your behalf and want to obtain the certificate yourself, you can do so. You can either keep control of your private key, or generate a Certificate Signing Request (CSR) through Cloudflare, so we maintain the private key, but you can still use the certificate authority (CA) of your choice for the certificate. Once you get your certificate, you upload it to Cloudflare and voilà — your site is secure.</p>
 	<p>One of the downsides of obtaining your own certificate is that you’re in charge of its renewal, which comes with a great deal of responsibility. You have to ensure that any renewed certificate &nbsp;will not cause TLS errors, causing your property to be unreachable by your users.</p>
 	<p>Now, you’re probably wondering, why is this so risky? What could go wrong?</p>
 	<p>It’s possible that when you renew a certificate, you forget to include one of your subdomains in the certificate. Another reason why your clients might see failures when you upload the new certificate is that some of those clients are pinning the old certificate.</p>
-	<h3 id="the-problem-with-pinning-certificates">The problem with pinning certificates</h3>
+	<h3>The problem with pinning certificates</h3>
 	<p>Certificate pinning allows Internet application owners to say “trust this certificate and no other” by pinning the certificate or public key to their service, or even to client devices. While this was originally intended to tighten security, certificate pinning has created many problems. We have seen customers shoot themselves in the foot with certificate pinning numerous times. There are a lot of things that could go wrong: you could pin the wrong certificate, or configure the wrong settings, which will bring your service down. It’s possible that you rely on a CDN for your certificate renewal and forgot to update your pin — again, blocking access to your service in the process. Alternatively, you can pin certificates to clients so that they refuse connections from servers that don’t have the same certificate. But when it comes to renewing that certificate, you have to make sure that your clients have the updated certificate, or they won’t be able to access your server. Instead, you can use tools like Cloudflare’s Certificate Transparency Monitoring which notifies you when certificates are being issued for your domain.</p>
 	<p>But, some of our customers do rely on this behavior. So for them, switching to a new certificate is a big change — one that can bring down their whole application. For this reason, they need to be able to test the new certificate to identify any problems that may occur before their customers see it.</p>
-	<h3 id="a-staging-environment-for-certificate-deployments">A staging environment for certificate deployments</h3>
+	<h3>A staging environment for certificate deployments</h3>
 	<p>When it comes to your traffic, there are things you can’t predict. You can’t control if your customer’s browser is having a bad day, or if some ISP is having a network outage. When it comes to certificate deployment, the last thing you want is to be surprised. Imagine pushing out a new certificate, and realizing you’ve uploaded the wrong one only after customers complain they’ve lost access; or that you never updated your pin to your new certificate to begin with. Mistakes happen, but this type of outage can cause a lot of pain and lose you a lot of money and trust. The good news is that this is preventable.</p>
 	<p>We are giving customers the ability to find these problems before they’re encountered by real users. We’re doing this by giving customers the ability to test certificate deployment changes against a pair of staging IPs.</p>
 	<p>Imagine uploading a new certificate, finding any related problems, and fixing them in a way that doesn’t impact production traffic. That’s exactly what Staging Certificates allows you to do!</p>
 	<p>You can go to the Staging Certificates section under the SSL/TLS tab in the Cloudflare dashboard and upload a new certificate to our staging network. The staging network will replicate your production environment but will only be accessible through the Staging IPs.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-13.png" class="kg-image" alt="The staging certificates dashboard UI" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fNtIwuq25OxUuGOADltbV/038307f20df9f23e02e27a45b463bd3b/image1-13.png" alt="The staging certificates dashboard UI" class="kg-image" width="1552" height="1262" loading="lazy">
+
+	</figure>
 	<p>Once you upload your certificate, you can make `curl` requests against the staging IPs to verify that it’s being served and that it covers all the hostnames that you need it to. If you’ve decided to pin your previous certificate, the staging environment helps you verify that your pins have been updated correctly and that TLS termination is successful.</p>
 	<p>Once you’re confident in your tests, you can push the certificate out to production.</p>
-	<h3 id="oh-no-something-went-wrong">Oh no, something went wrong</h3>
+	<h3>Oh no, something went wrong</h3>
 	<p>Mistakes happen. It’s possible that you found one client device whose pin you forgot to update. In that case, you can disable the certificate to quickly mitigate the problem by rolling back to the certificate that you were last serving.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-10.png" class="kg-image" alt="Deactivating a certificate from the production environment after a bad rollout" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FgeBZJlVphPRrA6Fciaid/38a085969b4c716877c6b158dafb722e/image3-10.png" alt="Deactivating a certificate from the production environment after a bad rollout" class="kg-image" width="1946" height="1004" loading="lazy">
+
+	</figure>
 	<p>What if you realize that this is a bigger issue, and you need more time to test? You can push the disabled certificate back to the staging environment, and when you’ve verified everything works correctly, push it back to production.</p>
-	<h3 id="staging-changes-we-re-just-getting-started">Staging changes: We’re just getting started</h3>
+	<h3>Staging changes: We’re just getting started</h3>
 	<p>We want to de-risk every change you make. Staging your custom uploaded certificates is a start, but it doesn’t end there. In the future, we’ll allow you to stage certificate renewals for certificates issued through Cloudflare. We’re also planning to give customers the ability to test TLS configuration changes like minimum TLS or cipher suite settings.</p>
 	<p>If you’re interested in staying aware of these future developments, or you have some settings that you want to test in staging, reach out to your Account team and let them know!</p>
-	<h3 id="ready-to-test-your-next-certificate-deployment">Ready to test your next certificate deployment? </h3>
+	<h3>Ready to test your next certificate deployment?</h3>
 	<p>This feature is currently in Beta and available to Enterprise customers. If you want to use it, reach out to your Account team to get it enabled.</p>
 </div>

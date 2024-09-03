@@ -1,49 +1,72 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/security-center-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/security-center-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/security-center-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/it-it/security-center-id-id">bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/it-it/security-center-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-24.png" class="kg-image" alt="Introducing Cloudflare Security Center" loading="lazy"></figure>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/security-center">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/security-center">한국어</a>, <a href="https://blog.cloudflare.com/id-id/security-center">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/security-center">ไทย</a> and <a href="https://blog.cloudflare.com/ja-jp/security-center">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ns8jph9FOpjE3ykaKYSI6/3ff50013ce0e9172793a44c485763927/image2-24.png" alt="Introducing Cloudflare Security Center" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Today we are launching Cloudflare Security Center, which brings together our suite of security products, our security expertise, and unique Internet intelligence as a unified security intelligence solution.</p>
 	<p>Cloudflare was launched in 2009 to help build a better Internet and make Internet performance and security accessible to everyone. Over the last twelve years, we’ve disrupted the security industry and launched a broad range of products to address our customer’s pain points across <a href="https://www.cloudflare.com/application-services/solutions">Application Security</a>, <a href="https://www.cloudflare.com/learning/network-layer/network-security">Network Security</a>, and Enterprise Security.</p>
 	<p>While there are a plethora of solutions on the market to solve specific pain points, we’ve architected Cloudflare One as a unified platform to holistically address our customers’ most pressing security challenges. &nbsp;As part of this vision, we are extremely excited to launch the public beta of Security Center. Our goal is to help customers understand their <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a> and quickly take action to reduce their risk of an incident.</p>
 	<p>Starting today, all Cloudflare users can use Security Center (available in <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center">your Cloudflare dashboard</a>) to map their attack surface, review potential security risks and threats to their organizations, and mitigate these risks with a few clicks.</p>
-	<h3 id="the-changing-corporate-attack-surface">The changing corporate attack surface</h3>
+	<h3>The changing corporate attack surface</h3>
 	<p>A year ago, we <a href="https://blog.cloudflare.com/introducing-cloudflare-one">announced Cloudflare One</a> to address the complex nature of corporate networking today. The proliferation of public cloud, SaaS applications, mobile devices, and remote work has made the traditional model of the corporate network obsolete. The Internet is the new enterprise WAN, necessitating a novel approach to the way security teams <a href="https://www.cloudflare.com/application-services/products/securitycenter">manage their attack surface</a>.</p>
 	<p>Second, the way we build applications has changed. Web applications today heavily use open source code and third-party scripts. Earlier this year we <a href="https://blog.cloudflare.com/introducing-page-shield">announced Page Shield</a>, now GA, to help our customers track and monitor their third-party JavaScript dependencies.</p>
 	<p>These transformations in the IT landscape, coupled with the natural evolution that every organization goes through — such as growth, attrition, and M&amp;A activity — create significant complexity for IT and security teams to stay on top of their organization’s ever-changing attack surface.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-43.png" class="kg-image" alt="Today’s complex IT attack surface" loading="lazy"></figure>
-	<h3 id="the-importance-of-attack-surface-management">The importance of attack surface management</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HL9WvE5u4irCvhXhAHB3s/5cfed3bcb505e884a59f3fdc9a3cac01/image1-43.png" alt="Today’s complex IT attack surface" class="kg-image" width="1810" height="1022" loading="lazy">
+
+	</figure>
+	<h3>The importance of attack surface management</h3>
 	<p>An attack surface refers to the entire IT footprint of an organization that is susceptible to cyberattacks. Your attack surface consists of all the corporate servers, devices, SaaS, and cloud assets that are accessible from the Internet.</p>
 	<p>Over the last six months, something we’ve heard consistently from our customers is that they often don’t have a good grasp of their attack surface.</p>
 	<p>Because of the ease of creating new resources with the public cloud or SaaS, IT teams struggle to stay on top of shadow IT resources. Even when IT is aware of new infrastructure being spun up by dev teams, ensuring that these new resources are configured in line with corporate security standards is a constant battle.</p>
 	<p>It’s not only new resources that cause problems for IT teams — IT teams also want to quickly identify and decommission forgotten websites or applications that may have sensitive data or expose their organization to potential security risks.</p>
 	<p>These challenges are further complicated by the use of third-party software. Open source code, JavaScript libraries, SaaS applications, or self-hosted software introduce supply-chain risk into your attack surface. Security teams want to monitor potential vulnerabilities and malicious dependencies in third-party software.</p>
 	<p>Lastly, external threats add to your organization’s attack surface. Security teams want to quickly identify and take down rogue assets created by malicious actors. These rogue assets are often phishing sites or malware distribution points that attempt to trick the organization’s customers or employees into providing sensitive details or downloading a file.</p>
-	<h3 id="the-challenges-of-attack-surface-management">The challenges of attack surface management</h3>
+	<h3>The challenges of attack surface management</h3>
 	<p>With such an expansive list of potential risks and threats to an organization, it’s no surprise that organizations of all sizes are struggling to keep up with their attack surface. Many of our customers have built in-house solutions or use a range of security products to ascertain and monitor their attack surface.</p>
 	<p>But we’ve consistently heard from our customers that these solutions just don’t work. They are often too noisy and produce far too many alerts, making it difficult for security teams to triage and prioritize issues. Customers are also tired of security vendor sprawl and don’t want to add yet another tool to integrate with their existing security solutions. Security teams have limited resources — across staff and budget — and they want a solution that creates less, not more, work.</p>
-	<h3 id="introducing-cloudflare-security-center">Introducing Cloudflare Security Center</h3>
+	<h3>Introducing Cloudflare Security Center</h3>
 	<p>In order to make attack surface management accessible and actionable for all organizations, we are excited to launch Cloudflare Security Center. Security Center is a single place to map your attack surface, identify potential security risks, and mitigate risks with a few clicks.</p>
 	<p>Starting today, you’ll find “Security Center” in your Account Home page.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-17.png" class="kg-image" alt="Navigate to Security Center in the Cloudflare Account Home page" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HcUkeSyNwjpdjdquF0fgH/6236ffb8f733ee123df5d8353a2031f4/image3-17.png" alt="Navigate to Security Center in the Cloudflare Account Home page" class="kg-image" width="1999" height="980" loading="lazy">
+
+	</figure>
 	<p>Once you navigate to Security Center within the Cloudflare dashboard, you’ll find two new features:</p>
 	<ul>
-		<li><strong>Security Insights</strong>: Review and manage potential security risks and vulnerabilities associated with your IT infrastructure.</li>
-		<li><strong>Infrastructure</strong>: Review and manage your IT infrastructure</li>
+		<li>
+			<p><b>Security Insights</b>: Review and manage potential security risks and vulnerabilities associated with your IT infrastructure.</p>
+		</li>
+		<li>
+			<p><b>Infrastructure</b>: Review and manage your IT infrastructure</p>
+		</li>
 	</ul>
-	<p>In today’s release, if you navigate to <strong>Security Insights</strong>, you can view a log of potential security risks, vulnerabilities, and insecure configurations associated with your IT infrastructure on Cloudflare. Our security experts have helped curate our automated detections to help you quickly triage and address the most critical issues impacting your attack surface.</p>
-	<p>If this is your first time using Security Center, you will need to click <strong>Start scan</strong> to consent to Cloudflare scanning your infrastructure. Once you opt in to Security Center, we will scan your infrastructure on a regular schedule:</p>
+	<p>In today’s release, if you navigate to <b>Security Insights</b>, you can view a log of potential security risks, vulnerabilities, and insecure configurations associated with your IT infrastructure on Cloudflare. Our security experts have helped curate our automated detections to help you quickly triage and address the most critical issues impacting your attack surface.</p>
+	<p>If this is your first time using Security Center, you will need to click <b>Start scan</b> to consent to Cloudflare scanning your infrastructure. Once you opt in to Security Center, we will scan your infrastructure on a regular schedule:</p>
 	<ul>
-		<li>If you have any Pro or higher plan zones, or are using Teams Standard or higher, after opting in to Security Center, we will scan your infrastructure on a daily basis.</li>
-		<li>For all other Cloudflare plans, after opting in to Security Center, we will scan your infrastructure every three days.</li>
+		<li>
+			<p>If you have any Pro or higher plan zones, or are using Teams Standard or higher, after opting in to Security Center, we will scan your infrastructure on a daily basis.</p>
+		</li>
+		<li>
+			<p>For all other Cloudflare plans, after opting in to Security Center, we will scan your infrastructure every three days.</p>
+		</li>
 	</ul>
 	<p>After every scan, you can visit the Security Insights page to view a high level summary of your attack surface and dig into the specifics of any potential security risks we have identified.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 48.6411149825784%;"><iframe src="https://iframe.videodelivery.net/cff3c85465a90c4f03625b2e7822c134?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fcff3c85465a90c4f03625b2e7822c134%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Directly from Security Insights, you can resolve any insights by making the recommended changes to your Cloudflare configurations in just a few clicks.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 48.6411149825784%;"><iframe src="https://iframe.videodelivery.net/8438d399aaf9c7ca814da4ed1e69fa0d?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F8438d399aaf9c7ca814da4ed1e69fa0d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>With each scan, we inventory your IT assets on Cloudflare as part of the <strong>Infrastructure</strong> feature within <strong>Security Center</strong>. Here, you can view a summary of your domains on Cloudflare. At the top of the page, you can find a breakdown of your DNS records by Proxy Usage. Below this chart, you can review a list of all your domains on Cloudflare, as well as view other key details about your domains.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-20.png" class="kg-image" alt="Review your IT assets using Security Center’s Infrastructure feature" loading="lazy"></figure>
-	<h3 id="what-s-next">What’s next</h3>
+	<p>With each scan, we inventory your IT assets on Cloudflare as part of the <b>Infrastructure</b> feature within <b>Security Center</b>. Here, you can view a summary of your domains on Cloudflare. At the top of the page, you can find a breakdown of your DNS records by Proxy Usage. Below this chart, you can review a list of all your domains on Cloudflare, as well as view other key details about your domains.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FM8UVknVMfM3g0bXM3pvL/84d8e97478f19064ac98712e3fc2fe85/image4-20.png" alt="Review your IT assets using Security Center’s Infrastructure feature" class="kg-image" width="1999" height="981" loading="lazy">
+
+	</figure>
+	<h3>What’s next</h3>
 	<p>All features made available as part of today’s Security Center beta release are included in your existing Cloudflare plan. It’s our mission to help build a better Internet, and we believe that making attack surface management accessible and actionable is an important part of that mission. We want everyone, from an individual web developer to the <a href="https://www.cloudflare.com/cio">CIO of a Fortune 100 company</a>, to be able to easily secure their IT footprint.</p>
 	<p>You can get started today with Security Center’s beta release by <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center">visiting your Cloudflare dashboard</a>. With just a few clicks, you can ensure that your Cloudflare settings are optimized for your organization’s security.</p>
 	<p>We’d love your feedback on Security Center. If you have any comments, questions or concerns, you can contact us directly at <a href="mailto:securitycenter@cloudflare.com">securitycenter@cloudflare.com</a>, or on our <a href="https://community.cloudflare.com/c/security/security-center/65">Cloudflare Community forum</a>.</p>

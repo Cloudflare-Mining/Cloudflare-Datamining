@@ -1,52 +1,60 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/configurable-and-scalable-geo-key-manager-closed-beta-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/configurable-and-scalable-geo-key-manager-closed-beta-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/de-de/configurable-and-scalable-geo-key-manager-closed-beta-de-de">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/configurable-and-scalable-geo-key-manager-closed-beta-fr-fr">Français</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-35.png" class="kg-image" alt="A new, configurable and scalable version of Geo Key Manager, now available in Closed Beta" loading="lazy"></figure>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/configurable-and-scalable-geo-key-manager-closed-beta">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/configurable-and-scalable-geo-key-manager-closed-beta">Français</a>, <a href="https://blog.cloudflare.com/de-de/configurable-and-scalable-geo-key-manager-closed-beta">Deutsch</a> and <a href="https://blog.cloudflare.com/zh-tw/configurable-and-scalable-geo-key-manager-closed-beta">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p><i></i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MaRNMB7y16ivTdqoGenT8/505b5c5d741361adf0ce49d6a7e41eae/image2-35.png" alt="A new, configurable and scalable version of Geo Key Manager, now available in Closed Beta" class="kg-image" width="1000" height="564" loading="lazy">
+
+	</figure>
 	<p>Today, traffic on the Internet stays encrypted through the use of public and private keys that encrypt the data as it's being transmitted. Cloudflare helps secure millions of websites by managing the encryption keys that keep this data protected. To provide lightning fast services, Cloudflare stores these keys on our fleet of data centers that spans more than 150 countries. However, some compliance regulations require that private keys are only stored in specific geographic locations.</p>
 	<p>In 2017, we <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">introduced</a> Geo Key Manager, a product that allows customers to store and manage the encryption keys for their domains in different geographic locations so that compliance regulations are met and that data remains secure. We launched the product a few months before General Data Protection Regulation (GDPR) went into effect and built it to support three regions: the US, the European Union (EU), and a set of our top tier data centers that employ the highest security measures. Since then, GDPR-like laws have quickly expanded and now, more than 15 countries have comparable data protection laws or regulations that include restrictions on data transfer across and/or data localization within a certain boundary.</p>
 	<p>At Cloudflare, we like to be prepared for the future. We want to give our customers tools that allow them to maintain compliance in this ever-changing environment. That’s why we’re excited to announce a new version of Geo Key Manager — one that allows customers to define boundaries by country, ”only store my private keys in India”, by a region ”only store my private keys in the European Union”, or by a standard, such as “only store my private keys in FIPS compliant data centers” — now available in Closed Beta, sign up <a href="https://www.cloudflare.com/lp/geo-key-manager">here</a>!</p>
-	<h3 id="learnings-from-geo-key-manager-v1">Learnings from Geo Key Manager v1</h3>
+	<h3>Learnings from Geo Key Manager v1</h3>
 	<p>Geo Key Manager has been around for a few years now, and we’ve used this time to gather feedback from our customers. As the demand for a more flexible system grew, we decided to go back to the drawing board and create a new version of Geo Key Manager that would better meet our customers’ needs.</p>
 	<p>We initially launched Geo Key Manager with support for US, EU, and Highest Security Data centers. Those regions were sufficient at the time, but customers wrestling with data localization obligations in other jurisdictions need more flexibility when it comes to selecting countries and regions. Some customers want to be able to set restrictions to maintain their private keys in one country, some want the keys stored everywhere except in certain countries, and some may want to mix and match rules and say “store them in X and Y, but not in Z”. What we learned from our customers is that they need flexibility, something that will allow them to keep up with the ever-changing rules and policies — and that’s what we set out to build out.</p>
 	<p>The next issue we faced was scalability. &nbsp;When we built the initial regions, we included a hard-coded list of data centers that met our criteria for the US, EU, “high security” data center regions. &nbsp;However, this list was static because the underlying cryptography did not support dynamic changes to our list of data centers. In order to distribute private keys to new data centers that met our criteria, we would have had to completely overhaul the system. In addition to that, our network significantly expands every year, with more than 100 new data centers since the initial launch. That means that any new potential locations that could be used to store private keys are currently not in use, degrading the performance and reliability of customers using this feature.</p>
 	<p>With our current scale, automation and expansion is a must-have. Our new system needs to dynamically scale every time we onboard or remove a data center from our Network, without any human intervention or large overhaul.</p>
 	<p>Finally, one of our biggest learnings was that customers make mistakes, such as defining a region that’s so small that availability becomes a concern. Our job is to prevent our customers from making changes that we know will negatively impact them.</p>
-	<h3 id="define-your-own-geo-restrictions-with-the-new-version-of-geo-key-manager">Define your own geo-restrictions with the new version of Geo Key Manager</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-21.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Define your own geo-restrictions with the new version of Geo Key Manager</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32wIGpiYX9XBNE6IqIo4qW/566ed760cf1adc2a21937b74ce2eea73/image3-21.png" alt="" class="kg-image" width="1545" height="774" loading="lazy">
+
+	</figure>
 	<p>Cloudflare has significantly grown in the last few years and so has our international customer base. Customers need to keep their traffic regionalized. This region can be as broad as a continent — Asia, for example. Or, it can be a specific country, like Japan.</p>
 	<p>From our conversations with our customers, we’ve heard that they want to be able to define these regions themselves. This is why today we’re excited to announce that customers will be able to use Geo Key Manager to create what we call “policies”.</p>
 	<p>A policy can be a single country, defined by two-letter (ISO 3166) country code. It can be a region, such as “EU” for the European Union or Oceania. It can be a mix and match of the two, “country:US or region: EU”.</p>
 	<p>Our new policy based Geo Key Manager allows you to create allowlist or blocklists of countries and supported regions, giving you control over the boundary in which your private key will be stored. If you’d like to store your private keys globally and omit a few countries, you can do that.</p>
-	<p>If you would like to store your private keys in the EU and US, you would make the following <a href="https://api.cloudflare.com/#custom-ssl-for-a-zone-create-ssl-configuration">API</a> call:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JSON">curl -X POST "https://api.cloudflare.com/client/v4/zones/zone_id/custom_certificates" \
+	<p>If you would like to store your private keys in the EU and US, you would make the following <a href="https://api.cloudflare.com/#custom-ssl-for-a-zone-create-ssl-configuration">API</a> call:</p>
+	<pre class="language-json"><code class="language-json">curl -X POST "https://api.cloudflare.com/client/v4/zones/zone_id/custom_certificates" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: auth-key" \
      -H "Content-Type: application/json" \
-     --data '{"certificate":"certificate","private_key":"private_key","policy":"(country: US) or (region: EU)", "type": "sni_custom"}'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>If you would like to store your private keys in the EU, but not in France, here is how you can define that:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JSON">curl -X POST "https://api.cloudflare.com/client/v4/zones/zone_id/custom_certificates" \
+     --data '{"certificate":"certificate","private_key":"private_key","policy":"(country: US) or (region: EU)", "type": "sni_custom"}'</code></pre>
+	<p>If you would like to store your private keys in the EU, but not in France, here is how you can define that:</p>
+	<pre class="language-json"><code class="language-json">curl -X POST "https://api.cloudflare.com/client/v4/zones/zone_id/custom_certificates" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: auth-key" \
      -H "Content-Type: application/json" \
-     --data '{"certificate":"certificate","private_key":"private_key","policy": "region: EU and (not country: FR)", "type": "sni_custom"}'
-</code></pre>
-	<!--kg-card-end: markdown-->
+     --data '{"certificate":"certificate","private_key":"private_key","policy": "region: EU and (not country: FR)", "type": "sni_custom"}'</code></pre>
 	<p>Geo Key Manager can now support more than 30 countries and regions. But that’s not all! The superpower of our Geo Key Manager technology is that it doesn’t actually have to be “geo” based, but instead, it’s attribute based. In the future, we’ll have a policy that will allow our customers to define where their private keys are stored based on a compliance standard like FedRAMP or ISO 27001.</p>
-	<h3 id="reliability-resiliency-and-redundancy">Reliability, resiliency, and redundancy</h3>
-	<p>By giving our customers the remote control for Geo Key Manager, we want to make sure that customers understand the impact of their changes on both redundancy and latency. </p>
+	<h3>Reliability, resiliency, and redundancy</h3>
+	<p>By giving our customers the remote control for Geo Key Manager, we want to make sure that customers understand the impact of their changes on both redundancy and latency.</p>
 	<p>On the redundancy side, one of our biggest concerns is allowing customers to choose a region small enough that if a data center is removed for maintenance, for example, then availability is drastically impacted. To protect our customers, we’ve added redundancy restrictions. These prevent our customers from setting regions with too few data centers, ensuring that all the data centers within a policy can offer high availability and redundancy.</p>
 	<p>Not just that, but in the last few years, we’ve significantly improved the underlying networking that powers Geo Key Manager. For more information on how we did that, keep an eye out for a technical deep dive inside Geo Key Manager.</p>
-	<h3 id="performance-matters">Performance matters</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-39.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Performance matters</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77nOyNlNPEyaWkHPZ1xfpM/3dc9eb6b4aef390095278a742587f72b/image1-39.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>With the original regions (US, EU, and Highest Security Data Centers), we learned customers may overlook possible latency impacts that occur when defining the key manager to a certain region. Imagine your keys are stored in the US. For your Asia-based customers, there’s going to be some latency impact for the requests that go around the world. Now, with customers being able to define more granular regions, we want to make sure that before customers make that change, they see the impact of it.</p>
 	<p>If you’re an <a href="https://www.cloudflare.com/ecommerce">E-Commerce platform</a> then <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">performance</a> is always top-of-mind. One thing that we’re working on right now is performance metrics for Geo Key Manager policies both from a regional point of view — “what’s the latency impact for Asia based customers?” and from a global point of view — “for anyone in the world, what is the average impact of this policy?”.</p>
 	<p>By seeing the latency impact, if you see that the impact is unacceptable, you may want to create a separate domain for your service that’s specific to the region that it’s serving.</p>
-	<h3 id="closed-beta-now-available-">Closed Beta, now available!</h3>
+	<h3>Closed Beta, now available!</h3>
 	<p>Interested in trying out the latest version of Geo Key Manager? Fill out this <a href="https://www.cloudflare.com/lp/geo-key-manager">form</a>.</p>
-	<h3 id="coming-soon-">Coming soon!</h3>
+	<h3>Coming soon!</h3>
 	<p>Geo Key Manager is only available via API at the moment. But, we are working on creating an easy-to-use UI for it, so that customers can easily manage their policies and regions. In addition, we’ll surface performance measurements and warnings when we see any degraded impact in terms of performance or redundancy to ensure that customers are mindful when setting policies.</p>
 	<p>We’re also excited to extend our Geo Key Manager product beyond custom uploaded certificates. In the future, certificates issued through Advanced Certificate Manager or SSL for SaaS will be allowed to add policy based restrictions for the key storage.</p>
 	<p>Finally, we’re looking to add more default regions to make the selection process simple for our customers. If you have any regions that you’d like us to support, or just general feedback or feature requests related to Geo Key Manager, make a note of it on the <a href="https://www.cloudflare.com/lp/geo-key-manager">form</a>. We love hearing from our customers!</p>

@@ -1,50 +1,76 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/ZG9nZm9vZEAyeC5wbmc-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vmlIhRF33Wx5qO2z4kWeU/a372b305ca3251bfb0dc6a98dab15d15/ZG9nZm9vZEAyeC5wbmc-.png" alt="" class="kg-image" width="2000" height="1038" loading="lazy">
+
+	</figure>
 	<p>You’ve had a chance to build a <a href="https://developers.cloudflare.com/workers/about">Cloudflare Worker</a>. You’ve tried <a href="https://developers.cloudflare.com/workers/kv">KV Storage</a> and have a great use case for your Worker. You’ve even demonstrated the usefulness to your product or organization. Now you need to go from writing a single file in the Cloudflare Dashboard UI Editor to source controlled code with multiple environments deployed using your favorite CI tool.</p>
 	<p>Fortunately, we have a powerful and flexible <a href="https://developers.cloudflare.com/workers/api">API</a> for managing your workers. You can customize your deployment to your heart’s content. Our blog has already featured many things made possible by that API:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/introducing-wrangler-cli">The Wrangler CLI</a></li>
-		<li><a href="https://blog.cloudflare.com/a-ci">CI/CD Pipeline</a></li>
-		<li><a href="https://blog.cloudflare.com/deploying-workers-with-github-actions-serverless">Github Actions</a></li>
-		<li><a href="https://blog.cloudflare.com/create-cloudflare-worker-bootstrap-your-cloudflare-worker">Worker bootstrap template</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-wrangler-cli">The Wrangler CLI</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/a-ci">CI/CD Pipeline</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/deploying-workers-with-github-actions-serverless">Github Actions</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/create-cloudflare-worker-bootstrap-your-cloudflare-worker">Worker bootstrap template</a></p>
+		</li>
 	</ul>
 	<p>These tools make deployments easier to configure, but it still takes time to manage. The <a href="https://serverless.com">Serverless Framework</a> <a href="https://serverless.com/plugins/serverless-cloudflare-workers">Cloudflare Workers plugin</a> removes that deployment overhead so you can spend more time working on your application and less on your deployment.</p>
-	<h3 id="focus-on-your-application">Focus on your application</h3>
+	<h3>Focus on your application</h3>
 	<p>Here at Cloudflare, we’ve been working to rebuild our Access product to run entirely on Workers. The move will allow Access to take advantage of the resiliency, performance, and flexibility of Workers. We’ll publish a more detailed post about that migration once complete, but the experience required that we retool some of our process to match or existing development experience as much as possible.</p>
 	<p>To us this meant:</p>
 	<ul>
-		<li>Git</li>
-		<li>Easily deploy</li>
-		<li>Different environments</li>
-		<li>Unit Testing</li>
-		<li>CI Integration</li>
-		<li>Typescript/Multiple Files</li>
-		<li>Everything Must Be Automated</li>
+		<li>
+			<p>Git</p>
+		</li>
+		<li>
+			<p>Easily deploy</p>
+		</li>
+		<li>
+			<p>Different environments</p>
+		</li>
+		<li>
+			<p>Unit Testing</p>
+		</li>
+		<li>
+			<p>CI Integration</p>
+		</li>
+		<li>
+			<p>Typescript/Multiple Files</p>
+		</li>
+		<li>
+			<p>Everything Must Be Automated</p>
+		</li>
 	</ul>
 	<p>The Cloudflare Access team looked at three options for automating all of these tools in our pipeline. All of the options will work and could be right for you, but custom scripting can be a chore to maintain and Terraform lacked some extensibility.</p>
 	<ol>
-		<li>Custom Scripting</li>
-		<li><a href="https://www.terraform.io/docs/providers/cloudflare/index.html">Terraform</a></li>
-		<li>Serverless Framework</li>
+		<li>
+			<p>Custom Scripting</p>
+		</li>
+		<li>
+			<p><a href="https://www.terraform.io/docs/providers/cloudflare/index.html">Terraform</a></p>
+		</li>
+		<li>
+			<p>Serverless Framework</p>
+		</li>
 	</ol>
 	<p>We decided on the Serverless Framework. Serverless Framework provided a tool to mirror our existing process as closely as possible without too much DevOps overhead. Serverless is extremely simple and doesn’t interfere with the application code. You can get a project set up and deployed in seconds. It’s obviously less work than writing your own custom management scripts. But it also requires less boiler plate than Terraform because the Serverless Framework is designed for the “serverless” niche. However, if you are already using Terraform to manage other Cloudflare products, Terraform might be the best fit.</p>
-	<h3 id="walkthrough">Walkthrough</h3>
+	<h3>Walkthrough</h3>
 	<p>Everything for the project happens in a YAML file called serverless.yml. Let’s go through the features of the configuration file.</p>
 	<p>To get started, we need to install serverless from npm and generate a new project.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>npm install serverless -g
+	<pre class="language-bash"><code class="language-bash">npm install serverless -g
 serverless create --template cloudflare-workers --path myproject
 cd myproject
-npm install
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+npm install</code></pre>
 	<p>If you are an enterprise client, you want to use the cloudflare-workers-enterprise template as it will set up more than one worker (but don’t worry, you can add more to any template). Also, I’ll touch on this later, but if you want to write your workers in Rust, use the cloudflare-workers-rust template.</p>
 	<p>You should now have a project that feels familiar, ready to be added to your favorite source control. In the project should be a serverless.yml file like the following.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-YAML">service:
+	<pre class="language-yaml"><code class="language-yaml">service:
     name: hello-world
 
 provider:
@@ -66,27 +92,20 @@ functions:
           method: GET
           headers:
             foo: bar
-            x-client-data: value
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+            x-client-data: value</code></pre>
 	<p>The service block simply contains the name of your service. This will be used in your Worker script names if you do not overwrite them.</p>
 	<p>Under provider, name must be ‘cloudflare’ &nbsp;and you need to add your account and zone IDs. You can find them in the Cloudflare Dashboard.</p>
 	<p>The plugins section adds the Cloudflare specific code.</p>
-	<p>Now for the good part: functions. Each block under functions is a Worker script. </p>
-	<p><strong>name</strong>: (optional) If left blank it will be STAGE-service.name-script.identifier. If I removed name from this file and deployed in production stage, the script would be named production-hello-world-hello.</p>
-	<p><strong>script</strong>: the relative path to the javascript file with the worker script. I like to organize mine in a folder called handlers.</p>
-	<p><strong>events</strong>: Currently Workers only support http events. We call these routes. The example provided says that GET https://example.com/hello/&lt;anything here&gt; will &nbsp;cause this worker to execute. The headers block is for testing invocations.</p>
-	<p>At this point you can deploy your worker!<br></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-YAML">CLOUDFLARE_AUTH_EMAIL=you@yourdomain.com CLOUDFLARE_AUTH_KEY=XXXXXXXX serverless deploy
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<p>Now for the good part: functions. Each block under functions is a Worker script.</p>
+	<p><b>name</b>: (optional) If left blank it will be STAGE-service.name-script.identifier. If I removed name from this file and deployed in production stage, the script would be named production-hello-world-hello.</p>
+	<p><b>script</b>: the relative path to the javascript file with the worker script. I like to organize mine in a folder called handlers.</p>
+	<p><b>events</b>: Currently Workers only support http events. We call these routes. The example provided says that GET <a href="https://example.com/hello">https://example.com/hello/</a> will &nbsp;cause this worker to execute. The headers block is for testing invocations.</p>
+	<p>At this point you can deploy your worker!</p>
+	<pre class="language-yaml"><code class="language-yaml">CLOUDFLARE_AUTH_EMAIL=you@yourdomain.com CLOUDFLARE_AUTH_KEY=XXXXXXXX serverless deploy</code></pre>
 	<p>This is very easy to deploy, but it doesn’t address our requirements. Luckily, there’s just a few simple modifications to make.</p>
-	<h3 id="maturing-our-yaml-file">Maturing our YAML File</h3>
+	<h3>Maturing our YAML File</h3>
 	<p>Here’s a more complex YAML file.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-YAML">service:
+	<pre class="language-yaml"><code class="language-yaml">service:
   name: hello-world
 
 package:
@@ -128,47 +147,31 @@ functions:
           method: GET
       - http:
           url: "${self:custom.deployVars.SUBDOMAIN}.mydomain.com/alsohello*"
-          method: GET
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+          method: GET</code></pre>
 	<p>We can add a custom section where we can put custom variables to use later in the file.</p>
-	<p><strong>defaultStage</strong>: We set this to development so that forgetting to pass a stage doesn’t trigger a production deploy. Combined with the <strong>stage</strong> option under provider we can set the stage for deployment.</p>
-	<p><strong>deployVars</strong>: We use this custom variable to load another YAML file dependent on the stage. This lets us have different values for different stages. In development, this line loads the file <code>./config/deploy.development.yml</code>. Here’s an example file:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-YAML">env_var_value: true
+	<p><b>defaultStage</b>: We set this to development so that forgetting to pass a stage doesn’t trigger a production deploy. Combined with the <b>stage</b> option under provider we can set the stage for deployment.</p>
+	<p><b>deployVars</b>: We use this custom variable to load another YAML file dependent on the stage. This lets us have different values for different stages. In development, this line loads the file <code>./config/deploy.development.yml</code>. Here’s an example file:</p>
+	<pre class="language-yaml"><code class="language-yaml">env_var_value: true
 sentry_key: XXXXX
-SUBDOMAIN: dev
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<p><strong>kv</strong>:<strong> </strong>Here we are showing off a feature of YAML. If you assign a name to a block using the ‘&amp;’, you can use it later as a YAML variable. This is very handy in a multi script account. We could have named this variable anything, but we are naming it kv since it holds our Workers Key Value storage settings to be used in our function below.</p>
-	<p>Inside of the <strong>kv</strong> block we're creating a namespace and binding it to a variable available in your Worker. It will ensure that the namespace “users” exists and is bound to MYUSERS.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-YAML">kv: &amp;kv
+SUBDOMAIN: dev</code></pre>
+	<p><b>kv</b>: Here we are showing off a feature of YAML. If you assign a name to a block using the ‘&amp;’, you can use it later as a YAML variable. This is very handy in a multi script account. We could have named this variable anything, but we are naming it kv since it holds our Workers Key Value storage settings to be used in our function below.</p>
+	<p>Inside of the <b>kv</b> block we're creating a namespace and binding it to a variable available in your Worker. It will ensure that the namespace “users” exists and is bound to MYUSERS.</p>
+	<pre class="language-yaml"><code class="language-yaml">kv: &amp;kv
   - variable: MYUSERS
-    namespace: users
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<p><strong>provider</strong>: The only new part of the provider block is <strong>stage</strong>. </p><!--kg-card-begin: markdown-->
-	<pre><code class="language-YAML">stage: ${opt:stage, self:custom.defaultStage}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+    namespace: users</code></pre>
+	<p><b>provider</b>: The only new part of the provider block is <b>stage</b>.</p>
+	<pre class="language-yaml"><code class="language-yaml">stage: ${opt:stage, self:custom.defaultStage}</code></pre>
 	<p>This line sets stage to either the command line option or custom.defaultStage if opt:stage is blank. When we deploy, we pass —stage=production to serverless deploy.</p>
-	<p>Now under our function we have added webpack, resources, and environment. </p>
-	<p><strong>webpack</strong>: If set to true, will simply bundle each handler into a single file for deployment. It will also take a string representing a path to a webpack config file so you can customize it. This is how we add Typescript support to our projects.</p>
-	<p><strong>resources</strong>: This block is used to automate resource creation. In resources we're linking back to the kv block we created earlier.<br><br><em>Side note: If you would like to include WASM bindings in your project, it can be done in a very similar way to how we included Workers KV. For more information on WASM, see the <a href="https://serverless.com/plugins/serverless-cloudflare-workers">documentation</a>.</em></p>
-	<p><strong>environment</strong>: This is the butter for the bread that is managing configuration for different stages. Here we can specify values to bind to variables to use in worker scripts. Combined with YAML magic, we can store our values in the aforementioned config files so that we deploy different values in different stages. With environments, we can easily tie into our CI tool. The CI tool has our deploy.production.yml. We simply run the following command from within our CI.<br></p><!--kg-card-begin: markdown-->
-	<pre><code>sls deploy --stage=production
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<p>Now under our function we have added webpack, resources, and environment.</p>
+	<p><b>webpack</b>: If set to true, will simply bundle each handler into a single file for deployment. It will also take a string representing a path to a webpack config file so you can customize it. This is how we add Typescript support to our projects.</p>
+	<p><b>resources</b>: This block is used to automate resource creation. In resources we're linking back to the kv block we created earlier.</p>
+	<p><i>Side note: If you would like to include WASM bindings in your project, it can be done in a very similar way to how we included Workers KV. For more information on WASM, see the </i><a href="https://serverless.com/plugins/serverless-cloudflare-workers"><i>documentation</i></a><i>.</i></p>
+	<p><b>environment</b>: This is the butter for the bread that is managing configuration for different stages. Here we can specify values to bind to variables to use in worker scripts. Combined with YAML magic, we can store our values in the aforementioned config files so that we deploy different values in different stages. With environments, we can easily tie into our CI tool. The CI tool has our deploy.production.yml. We simply run the following command from within our CI.</p>
+	<pre class="language-bash"><code class="language-bash">sls deploy --stage=production</code></pre>
 	<p>Finally, I added a route to demonstrate that a script can be executed on multiple routes.</p>
 	<p>At this point I’ve covered (or hinted) at everything on our original list except Unit Testing. There are a few ways to do this.</p>
 	<p>We have a previous blog post about <a href="https://blog.cloudflare.com/unit-testing-worker-functions">Unit Testing</a> that covers using <a href="https://github.com/dollarshaveclub/cloudworker">cloud worker</a>, a great tool built by <a href="https://www.dollarshaveclub.com">Dollar Shave Club</a>.</p>
-	<p>My team opted to use the classic node frameworks mocha and sinon. Because we are using Typescript, we can build for node or build for v8. You can also make mocha work for non-typescript projects if you use an <a href="https://nodejs.org/api/esm.html">experimental feature that adds import/export support to node</a>.</p><!--kg-card-begin: markdown-->
-	<pre><code>--experimental-modules
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>My team opted to use the classic node frameworks mocha and sinon. Because we are using Typescript, we can build for node or build for v8. You can also make mocha work for non-typescript projects if you use an <a href="https://nodejs.org/api/esm.html">experimental feature that adds import/export support to node</a>.</p>
+	<pre class="language-bash"><code class="language-bash">--experimental-modules</code></pre>
 	<p>We’re excited about moving more and more of our services to Cloudflare Workers, and the Serverless Framework makes that easier to do. If you’d like to learn even more or get involved with the project, see us on <a href="https://github.com/cloudflare/serverless-cloudflare-workers">github.com</a>. For additional information on using Serverless Framework with Cloudflare Workers, check out our <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless">documentation on the Serverless Framework</a>.</p>
 </div>

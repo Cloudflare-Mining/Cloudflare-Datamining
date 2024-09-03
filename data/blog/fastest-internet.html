@@ -1,22 +1,26 @@
 <div class="mb2 gray5">12 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Waitless-Internet.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>No one likes to wait. Internet impatience is something we all suffer from. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AGkgDbyuNTz06KSUCZkp4/076b744b38fb88abc7f1fc3f715c0a6c/Waitless-Internet.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>No one likes to wait. Internet impatience is something we all suffer from.</p>
 	<p>Waiting for an app to update to show when your lunch is arriving; a website that loads slowly on your phone; a movie that hasn’t started to play… yet.</p>
 	<p>But building a waitless Internet is hard. And that’s where Cloudflare comes in. We’ve built the global network for Internet applications, be they websites, IoT devices or mobile apps. And we’ve optimized it to cut the wait.</p>
 	<p>If you believe ISP advertising then you’d think that bandwidth (100Mbps! 1Gbps! 2Gbps!) is the be all and end all of Internet speed. That’s a small component of what it takes to deliver the always on, instant experience we want and need.</p>
 	<p>The reality is you need three things: ample bandwidth, to have content and applications close to the end user, and to make the software as fast as possible. Simple really. Except not, because all three things require a lot of work at different layers.</p>
 	<p>In this blog post I’ll look at the factors that go into building our fast global network: bandwidth, latency, reliability, caching, cryptography, <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>, preloading, cold starts, and more; and how Cloudflare zeroes in on the most powerful number there is: zero.</p>
 	<p>I will focus on what happens when you visit a website but most of what I say below applies to the fitness tracker on your wrist sending information up to the cloud, your smart doorbell alerting you to a visitor, or an app getting you the weather forecast.</p>
-	<h3 id="faster-than-the-speed-of-sight">Faster than the speed of sight</h3>
+	<h3>Faster than the speed of sight</h3>
 	<p>Imagine for a moment you are about to type in the name of a website on your phone or computer. You’ve heard about an exciting new game “Silent Space Marine” and type in <a href="https://silentspacemarine.com">silentspacemarine.com</a>.</p>
 	<p>The very first thing your computer does is translate that name into an IP address. Since computers do absolutely everything with numbers under the hood this “DNS lookup” is the first necessary step.</p>
 	<p>It involves your computer asking a recursive DNS resolver for the IP address of silentspacemarine.com. That’s the first opportunity for slowness. If the lookup is slow everything else will be slowed down because nothing can start until the IP address is known.</p>
 	<p>The DNS resolver you use might be one provided by your ISP, or you might have changed it to one of the free public resolvers like Google’s 8.8.8.8. Cloudflare runs the <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">world’s fastest DNS resolver</a>, 1.1.1.1, and you can use it too. Instructions are <a href="https://developers.cloudflare.com/1.1.1.1/setup-1.1.1.1">here</a>.</p>
 	<p>With fast DNS name resolution set up your computer can move on to the next step in getting the web page you asked for.</p>
 	<p>Aside: how fast is fast? One way to think about that is to ask yourself how fast you are able to perceive something change. Research says that the eye can make sense of an <a href="https://www.researchgate.net/publication/259490307_Detecting_meaning_in_RSVP_at_13_ms_per_picture">image</a> in 13ms. High quality video shows at 60 frames per second (about 16ms per image). So the eye is fast!</p>
-	<p>What that means for the web is that we need to be working in tens of milliseconds not seconds otherwise users will start to see the slowness. </p>
-	<h3 id="slowly-desperately-slowly-it-seemed-to-us-as-we-watched">Slowly, desperately slowly it seemed to us as we watched</h3>
+	<p>What that means for the web is that we need to be working in tens of milliseconds not seconds otherwise users will start to see the slowness.</p>
+	<h3>Slowly, desperately slowly it seemed to us as we watched</h3>
 	<p>Why is Cloudflare’s 1.1.1.1 so fast? Not to downplay the work of the engineering team who wrote the DNS resolver software and made it fast, but two things help make it zoom: caching and closeness.</p>
 	<p>Caching means keeping a copy of data that hasn’t changed, so you don’t have to go ask for it. If lots of people are playing Silent Space Marine then a DNS resolver can keep its IP address in cache so that when a computer asks for the IP address the software can reply instantly. All good DNS resolvers cache information for speed.</p>
 	<p>But what happens if the IP address isn’t in the resolver’s cache. This happens the first time someone asks for it, or after a timeout period where the resolver needs to check that the IP address hasn’t changed. In order to get the IP address the resolver asks an authoritative DNS server for the information. That server is ‘authoritative’ for a specific domain (like silentspacemarine.com) and knows the correct IP address.</p>
@@ -24,71 +28,78 @@
 	<p>So much for caching, what about ‘closeness’. Here’s the problem: the speed of light is really slow. Yes, I know everyone tells you that the speed of light is really fast, but that’s because us sentient water-filled carbon lifeforms can’t move very fast.</p>
 	<p>But electrons shooting through wires, and lasers blasting data down fiber optic cables, send data at or close to light speed. And sadly light speed is slow. And this slowness shows up because in order to get anything on the Internet you need to go back and forth to a server (many, many times).</p>
 	<p>In the best case of asking for silentspacemarine.com and getting its IP address there’s one roundtrip:</p>
-	<blockquote>“Hello, can you tell me the address of silentspacemarine.com?”<br>“Yes, it's…”</blockquote>
+	<blockquote>
+		<p>“Hello, can you tell me the address of silentspacemarine.com?”“Yes, it's…”</p>
+	</blockquote>
 	<p>Even if you made the DNS resolver software instantaneous you’d pay the price of the speed of light. Sounds crazy, right? Here’s a quick calculation. Let’s imagine at home I have fiber optic Internet and the nearest DNS resolver to me is the city 100 km’s away. And somehow my ISP has laid the straightest fiber cable from me to the DNS resolver.</p>
 	<p>The speed of light in fiber is roughly 200,000,000 meters per second. Round trip would be 200,000 meters and so in the best possible case a whole one ms has been eaten up by the speed of light. Now imagine any worse case and the speed of light starts eating into the speed of sight.</p>
-	<p>The solution is quite simple: move the DNS resolver as close to the end user as possible. That’s partly why Cloudflare has built out (and continues to grow) our network. Today it stands at 250 cities worldwide. </p>
-	<p>Aside: actually it’s not “quite simple” because there’s another wrinkle. You can put servers all over the globe, but you also have to hook them up to the Internet. The beauty of the Internet is that it’s a network of networks. That also means that you don’t just plug into the Internet and get the lowest latency, you need to connect to multiple ISPs, transit networks and more so that end users, whatever network <em>they</em> use, get the best waitless experience they want.</p>
+	<p>The solution is quite simple: move the DNS resolver as close to the end user as possible. That’s partly why Cloudflare has built out (and continues to grow) our network. Today it stands at 250 cities worldwide.</p>
+	<p>Aside: actually it’s not “quite simple” because there’s another wrinkle. You can put servers all over the globe, but you also have to hook them up to the Internet. The beauty of the Internet is that it’s a network of networks. That also means that you don’t just plug into the Internet and get the lowest latency, you need to connect to multiple ISPs, transit networks and more so that end users, whatever network <i>they</i> use, get the best waitless experience they want.</p>
 	<p>That’s one reason why Cloudflare’s network isn’t simply all over the world, it’s also one of the <a href="https://www.peeringdb.com/net/4224">most interconnected networks</a>.</p>
 	<p>So far, in building the waitless Internet, we’ve identified fast DNS resolvers and fast authoritative DNS as two needs. What’s next?</p>
-	<h3 id="hello-hello-ok-">Hello. Hello. OK.</h3>
+	<h3>Hello. Hello. OK.</h3>
 	<p>So your web browser knows the IP address of Silent Space Marine and got it quickly. Great. Next step is for it to ask the web server at that IP address for the web page. Not so fast! The first step is to establish a connection to that server.</p>
-	<p>This is almost always done using a protocol called TCP that was invented in the 1970s. The very first step is for your computer and the server to agree they want to communicate. This is done with something called a three-way handshake. </p>
+	<p>This is almost always done using a protocol called TCP that was invented in the 1970s. The very first step is for your computer and the server to agree they want to communicate. This is done with something called a three-way handshake.</p>
 	<p>Your computer sends a message saying, essentially, “Hello”, the server replies “I heard you say Hello” (that’s one round trip) and then your computer replies “I heard you say you heard me say Hello, so now we can chat” (actually it’s SYN then SYN-ACK and then ACK).</p>
 	<p>So, at least one speed-of-light troubled round trip has occurred. How do we fight the speed of light? We bring the server (in this case, web server) close to the end user. Yet another reason for Cloudflare’s massive global network and high interconnectedness.</p>
 	<p>Now the web browser can ask the web server for the web page of Silent Space Marine, right? Actually, no. The problem is we don’t just need a fast Internet we also need one that’s secure and so pretty much everything on the Internet uses an encryption protocol called TLS (which some old-timers will call SSL) and so next a secure connection has to be established.</p>
 	<p>Aside: astute readers might be wondering why I didn’t mention security in the DNS section above. Yep, you’re right, that’s a whole other wrinkle. DNS also needs to be secure (and fast) and resolvers like 1.1.1.1 support the encrypted DNS standards <a href="https://blog.cloudflare.com/dns-encryption-explained">DoH and DoT</a>. Those are built on top of… TLS. So in order to have fast, secure DNS you need the same thing as fast, secure web, and that’s fast TLS.</p>
 	<p>Oh, and by the way, you don’t want to get into some silly trade off between security and speed. You need both, which is why it’s helpful to use a service provider, like Cloudflare, that does everything.</p>
-	<h3 id="is-this-line-secure">Is this line secure?</h3>
+	<h3>Is this line secure?</h3>
 	<p>TLS is quite a complicated protocol involving a web browser and a server establishing encryption keys and at least one of them (typically the web server) providing that they are who they purport to be (you wouldn’t want a secure connection to your bank’s website if you couldn’t be sure it was actually your bank).</p>
 	<p>The back and forth of establishing the secure connection incurs more hits on the speed of light. And so, once again, having servers close to end users is vital. And having really fast encryption software is vital too. Especially since encryption will need to happen on a variety of devices (think an old phone vs. a brand new laptop).</p>
 	<p>So, staying on top of the latest TLS standard is vital (we’re currently on <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">TLS 1.3</a>), and implementing all the tricks that speed TLS up is important (such as <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">session resumption</a> and <a href="https://blog.cloudflare.com/introducing-0-rtt">0-RTT resumption</a>), and making sure your software is <a href="https://blog.cloudflare.com/how-expensive-is-crypto-anyway">highly optimized</a>.</p>
 	<p>So far getting to a waitless Internet has involved fast DNS resolvers, fast authoritative DNS, being close to end users to fast TCP handshakes, optimized TLS using the latest protocols. And we haven’t even asked the web server for the page yet.</p>
 	<p>If you’ve been counting round trips we’re currently standing at four: one for DNS, one for TCP, two for TLS. Lots of opportunity for the speed of light to be a problem, but also lots of opportunity for wider Internet problems to cause a slow-down.</p>
-	<h3 id="skybird-this-is-dropkick-with-a-red-dash-alpha-message-in-two-parts">Skybird, this is Dropkick with a red dash alpha message in two parts</h3>
+	<h3>Skybird, this is Dropkick with a red dash alpha message in two parts</h3>
 	<p>Actually, before we let the web browser finally ask for the web page there are two things we need to worry about. And both are to do with when things go wrong. You may have noticed that sometimes the Internet doesn’t work right. Sometimes it’s slow.</p>
 	<p>The slowness is usually caused by two things: congestion and packet loss. Dealing with those is also vital to giving the end user the fastest experience possible.</p>
 	<p>In ancient times, long before the dawn of history, people used to use telephones that had physical wires connected to them. Those wires connected to exchanges and literal electrical connections were made between two phones over long distances. That scaled pretty well for a long time until a bunch of packet heads came along in the 1960s and said “you know you could create a giant shared network and break all communication up into packets and share the network”. The Internet.</p>
-	<p>But when you share something you can also get congestion and congestion control is a huge part of ensuring that the Internet is shared equitably amongst users. It’s one of the miracles of the Internet that theory done in the 1970s and implemented in the 1980s has allowed the network to support real time gaming and streaming video while allowing simultaneous chat and web browsing. </p>
+	<p>But when you share something you can also get congestion and congestion control is a huge part of ensuring that the Internet is shared equitably amongst users. It’s one of the miracles of the Internet that theory done in the 1970s and implemented in the 1980s has allowed the network to support real time gaming and streaming video while allowing simultaneous chat and web browsing.</p>
 	<p>The flip side of congestion control is that in order to prevent a user from overwhelming the network you have to slow them down. And we’re trying to be as fast as possible! Actually, we need to be as fast as possible while remaining fair.</p>
 	<p>And congestion control is closely related to packet loss because one way that servers and browsers and computers know that there’s congestion is when their packets get lost.</p>
 	<p>We stay on top of the latest congestion control algorithms (such as <a href="https://blog.cloudflare.com/http-3-vs-http-2">BBR</a>) so that users get the fastest, fairest possible experience. And we do something else: we actively try to work around packet loss.</p>
-	<p>Technologies like <a href="https://blog.cloudflare.com/argo">Argo</a> and our private fiber backbone help us route around bad Internet weather that’s causing packet loss and send connections over dedicated fiber optic links that span the globe. </p>
+	<p>Technologies like <a href="https://blog.cloudflare.com/argo">Argo</a> and our private fiber backbone help us route around bad Internet weather that’s causing packet loss and send connections over dedicated fiber optic links that span the globe.</p>
 	<p>More on that in the coming week.</p>
-	<h3 id="it-s-happening-">It’s happening!</h3>
+	<h3>It’s happening!</h3>
 	<p>And so, finally your web browser asks the web server for the web page with an innocent looking GET / command. And the web server responds with a big blob of HTML and just when you thought things were going to be simple, they are super complicated.</p>
 	<p>The complexity comes from two places: the HTTP protocol is now on its third major version, and the content of web pages is under the control of the designer.</p>
 	<p>First, protocols. HTTP/2 and <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare">HTTP/3</a> both provide significant speedups for web sites by introducing parallel request/response handling, better compression and ways to work around congestion and packet loss. Although HTTP/1.1 is still widely used, these newer protocols are the majority of traffic.</p>
 	<p><a href="https://radar.cloudflare.com">Cloudflare Radar</a> shows HTTP/1.1 has dropped into the 20% range globally.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Screenshot-2021-09-11-at-12.21.47.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xxyNZ95SqZx8iSOOEv3P4/bb61e389adb709f961af98351d3caa97/Screenshot-2021-09-11-at-12.21.47.png" alt="" class="kg-image" width="1166" height="404" loading="lazy">
+
+	</figure>
 	<p>As people upgrade to recent browsers on their computers and devices the new protocols become more and more important. Staying on top of these, and optimizing them is vital as part of the waitless Internet.</p>
 	<p>And then comes the content of web pages. Images are a vital part of the web and delivering optimized images right-sized and right-formatted for the end user device plays a big part in a fast web.</p>
 	<p>But before the web browser can start loading the images it has to get and understand the HTML of the web page. This is wasteful as the browser could be downloading images (and other assets like fonts of JavaScript) while still processing the HTML if it knew about them in advance. The solution to that is for the web server to send a hint about what’s needed along with the HTML.</p>
 	<p>More on that in the coming week.</p>
-	<h3 id="imagical">Imagical </h3>
+	<h3>Imagical</h3>
 	<p>One of the largest categories of content we deliver for our customers consists of static and animated images. And they are also a ripe target for optimization. Images tend to be large and take a while to download and there are a vast variety of end user devices. So getting the right size and format image to the end user really helps with performance.</p>
 	<p>Getting it there at the right time also means that images can be loaded lazily and only when the user scrolls them into visibility.</p>
 	<p>But, traditionally, handling different image formats (especially as new ones like WebP and AVIF get invented), different device types (think of all the different screen sizes out there), and different compression schemes has been a mess of services.</p>
 	<p>And chained services for different aspects of the image pipeline can be slow and expensive. What you really want is simple storage and an integrated way to deliver the right image to the end user tailored just for them.</p>
 	<p>More on that in the coming week.</p>
-	<h3 id="cache-me-if-you-can">Cache me if you can</h3>
+	<h3>Cache me if you can</h3>
 	<p>As I mentioned in the section about DNS, a few thousand words ago, caching is really powerful and caching content near the end user is super powerful. Cloudflare makes extensive use of caching (particularly of images but also things like GraphQL) on its servers. This makes our customers’ websites fast as images can be delivered quickly from servers near the end user.</p>
 	<p>But it introduces a problem. If you have a lot of servers around the world then the caches need to be filled with content in order for it to be ready for end users. And the more servers you add the harder it gets to keep them all filled. You want the ‘cache hit ratio’ (how often content is served from cache without having to go back to the customer’s server) to be as high as possible.</p>
 	<p>But if you’ve got the content cached in Casablanca, and a user visits your website in Chennai they won’t have the fastest content delivery. To solve this some service providers make a deliberate decision not to have lots of servers near end users.</p>
-	<p>Sounds a bit crazy but their logic is “it’s hard to keep all those caches filled in lots of cities, let’s have only a few cities”. Sad. We think smart software can solve that problem and allow you to have your cache and eat it. We’ve used smart software to solve <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">global load balancing</a> problems and are doing the same for global cache. That way we get high cache hit ratios, super low latency to end users and low load on customer web servers. </p>
+	<p>Sounds a bit crazy but their logic is “it’s hard to keep all those caches filled in lots of cities, let’s have only a few cities”. Sad. We think smart software can solve that problem and allow you to have your cache and eat it. We’ve used smart software to solve <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">global load balancing</a> problems and are doing the same for global cache. That way we get high cache hit ratios, super low latency to end users and low load on customer web servers.</p>
 	<p>More on that in the coming week.</p>
-	<h3 id="zero-cool">Zero Cool</h3>
-	<p>You know what’s cooler than a millisecond? Zero milliseconds. </p>
-	<p>Back in 2017 Cloudflare launched <a href="https://blog.cloudflare.com/code-everywhere-cloudflare-workers">Workers</a>, our serverless/edge computing platform. Four years on Workers is widely used and entire companies are being built on the technology. We added support for a variety of languages (such as <a href="https://blog.cloudflare.com/cloudflare-workers-now-support-cobol">COBOL</a> and <a href="https://blog.cloudflare.com/workers-rust-sdk">Rust</a>), a <a href="https://blog.cloudflare.com/workers-kv-is-ga">distributed key-value store</a>, <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>, <a href="https://blog.cloudflare.com/introducing-websockets-in-workers">WebSockets</a>, <a href="https://blog.cloudflare.com/introducing-cron-triggers-for-cloudflare-workers">Cron Triggers</a> and <a href="https://blog.cloudflare.com/tag/workers">more</a>. </p>
-	<p>But people were often concerned about cold start times because they were thinking about other serverless platforms that had significant spool up times for code that wasn’t ready to run. </p>
+	<h3>Zero Cool</h3>
+	<p>You know what’s cooler than a millisecond? Zero milliseconds.</p>
+	<p>Back in 2017 Cloudflare launched <a href="https://blog.cloudflare.com/code-everywhere-cloudflare-workers">Workers</a>, our serverless/edge computing platform. Four years on Workers is widely used and entire companies are being built on the technology. We added support for a variety of languages (such as <a href="https://blog.cloudflare.com/cloudflare-workers-now-support-cobol">COBOL</a> and <a href="https://blog.cloudflare.com/workers-rust-sdk">Rust</a>), a <a href="https://blog.cloudflare.com/workers-kv-is-ga">distributed key-value store</a>, <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>, <a href="https://blog.cloudflare.com/introducing-websockets-in-workers">WebSockets</a>, <a href="https://blog.cloudflare.com/introducing-cron-triggers-for-cloudflare-workers">Cron Triggers</a> and <a href="https://blog.cloudflare.com/tag/workers">more</a>.</p>
+	<p>But people were often concerned about cold start times because they were thinking about other serverless platforms that had significant spool up times for code that wasn’t ready to run.</p>
 	<p>Last year we announced that we <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers">eliminated cold starts</a> from Workers. You don’t have to worry. And we’ll go deeper into why Cloudflare Workers is the fastest serverless platform out there.</p>
 	<p>More on that in the coming week.</p>
-	<h3 id="and-finally-">And finally…</h3>
+	<h3>And finally…</h3>
 	<p>If you run a large global network and want to know if it’s really the fastest there is, and where you need to do work to keep it fast, the only way is to measure. Although there are third-party measurement tools available they can suffer from biases and their methodology is sometimes unclear.</p>
 	<p>We decided the only way we could understand our performance vs. other networks was to build our own like-for-like testing tool and measure performance across the Internet’s 70,000+ networks.</p>
 	<p>We’ll also talk about how we keep everything fast, from lightning quick configuration updates and code deploys to logs you don’t have to wait for to ludicrously fast cache purges to real time analytics.</p>
-	<p>More on that in the coming week. </p>
-	<p>Welcome to Speed Week*<br><br><em>*Can’t wait for tomorrow? Go play <a href="https://silentspacemarine.com">Silent Space Marine</a>. It uses the technologies mentioned above.</em></p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<p>More on that in the coming week.</p>
+	<p>Welcome to Speed Week*</p>
+	<p><i>*Can’t wait for tomorrow? Go play </i><a href="https://silentspacemarine.com"><i>Silent Space Marine</i></a><i>. It uses the technologies mentioned above.</i></p>
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/0b81cd1ffc5788ccc956a089375b19c3?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

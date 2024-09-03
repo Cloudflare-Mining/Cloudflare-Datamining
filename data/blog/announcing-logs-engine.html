@@ -1,23 +1,35 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-32.png" class="kg-image" alt="Store and process your Cloudflare Logs... with Cloudflare" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11il4y7Tq0Uyuzfc3SlYMl/2ba5ee521704c1cacd8b0f55c89405b5/image1-32.png" alt="Store and process your Cloudflare Logs... with Cloudflare" class="kg-image" width="1800" height="1012" loading="lazy">
+
+	</figure>
 	<p>Millions of customers trust Cloudflare to accelerate their website, protect their network, or as a platform to build their own applications. But, once you’re running in production, how do you know what’s going on with your application? You need <a href="https://developers.cloudflare.com/logs">logs from Cloudflare</a> – a record of what happened on our network when your customers interacted with your product that uses Cloudflare.</p>
 	<p>Cloudflare Logs are an indispensable tool for debugging applications, identifying security vulnerabilities, or just understanding how users are interacting with your product. However, our customers generate petabytes of logs, and store them for months or years at a time. Log data is tantalizing: all those answers, just waiting to be revealed with the right query! But until now, it’s been too hard for customers to actually store, search, and understand their logs without expensive and cumbersome third party tools.</p>
 	<p>Today we’re announcing Cloudflare Logs Engine: a new product to enable any kind of investigation with Cloudflare Logs — all within Cloudflare.</p>
 	<p>Starting today, Cloudflare customers who push their logs to R2 can retrieve them by time range and unique identifier. Over the coming months we want to enable customers to:</p>
 	<ul>
-		<li>Store logs for any Cloudflare dataset, for as long as you want, with a few clicks</li>
-		<li>Access logs no matter what plan you use, without relying on third party tools</li>
-		<li>Write queries that include multiple datasets</li>
-		<li>Quickly identify the logs you need and take action based on what you find</li>
+		<li>
+			<p>Store logs for any Cloudflare dataset, for as long as you want, with a few clicks</p>
+		</li>
+		<li>
+			<p>Access logs no matter what plan you use, without relying on third party tools</p>
+		</li>
+		<li>
+			<p>Write queries that include multiple datasets</p>
+		</li>
+		<li>
+			<p>Quickly identify the logs you need and take action based on what you find</p>
+		</li>
 	</ul>
-	<h3 id="why-cloudflare-logs">Why Cloudflare Logs?</h3>
-	<p>When it comes to visibility into your traffic, most customers start with <em>analytics</em>. Cloudflare dashboard is full of analytics about all of our products, which give a high-level overview of what’s happening: for example, number of requests served, the ratio of cache hits, or the amount of CPU time used.</p>
+	<h3>Why Cloudflare Logs?</h3>
+	<p>When it comes to visibility into your traffic, most customers start with <i>analytics</i>. Cloudflare dashboard is full of analytics about all of our products, which give a high-level overview of what’s happening: for example, number of requests served, the ratio of cache hits, or the amount of CPU time used.</p>
 	<p>But sometimes, more detail is needed. Developers especially need to be able to read individual log lines to debug applications. For example, suppose you notice a problem where your application throws an error in an unexpected way – you need to know the cause of that error and see every request with that pattern.</p>
 	<p>Cloudflare offers tools like <a href="https://developers.cloudflare.com/logs/instant-logs">Instant Logs</a> and <a href="https://developers.cloudflare.com/workers/wrangler/commands/#tail">wrangler tail</a> which excel at real-time debugging. These are incredibly helpful if you’re making changes on the fly, or if the problem occurs frequently enough that it will appear during your debugging session.</p>
-	<p>In other cases, you need to find that needle in a haystack — the one rare event that causes everything to go wrong. Or you might have identified a security issue and want to make sure you’ve identified <em>every</em> time that issue could have been exploited in your application’s history.</p>
-	<p>When this happens, you need logs. In particular, you need <em>forensics: </em>the ability to search the entire history of your logs.</p>
-	<h3 id="a-brief-overview-of-log-analysis">A brief overview of log analysis</h3>
+	<p>In other cases, you need to find that needle in a haystack — the one rare event that causes everything to go wrong. Or you might have identified a security issue and want to make sure you’ve identified <i>every</i> time that issue could have been exploited in your application’s history.</p>
+	<p>When this happens, you need logs. In particular, you need <i>forensics:</i> the ability to search the entire history of your logs.</p>
+	<h3>A brief overview of log analysis</h3>
 	<p>Before we take a look at Logs Engine itself, I want to briefly talk about alternatives – how have our customers been dealing with their logs so far?</p>
 	<p>Cloudflare has long offered <a href="https://developers.cloudflare.com/logs/logpull">Logpull</a> and <a href="https://developers.cloudflare.com/logs/about">Logpush</a>. Logpull enables enterprise customers to store their HTTP logs on Cloudflare for up to seven days, and retrieve them by either time or RayID. Logpush can send your Cloudflare logs just about anywhere on the Internet, quickly and reliably. While Logpush provides more flexibility, it’s been up to customers to actually store and analyze those logs.</p>
 	<p>Cloudflare has a number of <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations">partnerships</a> with SIEMs and data warehouses/data lakes. Many of these tools even have pre-built Cloudflare dashboards for easy visibility. And third party tools have a big advantage in that you can store and search across many log sources, not just Cloudflare.</p>
@@ -25,16 +37,16 @@
 	<p>First, third party log tooling can be expensive! Most tools require that you pay not just for storage, but for indexing all of that data when it’s ingested. While that enables powerful search functionality later on, Cloudflare (by its nature) is often one of the largest emitters of logs that a developer will have. If you were to store and index every log line we generate, it can cost more money to analyze the logs than to deliver the actual service.</p>
 	<p>Second, these tools can be hard to use. Logs are often used to track down an issue that customers discover via analytics in the Cloudflare dashboard. After finding what you need in logs, it can be hard to get back to the right part of the Cloudflare dashboard to make the appropriate configuration changes.</p>
 	<p>Finally, Logpush was previously limited to Enterprise plans. Soon, we will start offering these services to customers at any scale, regardless of plan type or how they choose to pay.</p>
-	<h3 id="why-logs-engine">Why Logs Engine?</h3>
+	<h3>Why Logs Engine?</h3>
 	<p>With Logs Engine, we wanted to solve these problems. We wanted to build something affordable, easy to use, and accessible to any Cloudflare customer. And we wanted it to work for any Cloudflare logs dataset, for any span of time.</p>
-	<p>Our first insight was that to make logs affordable, we need to separate storage and compute. The cost of Storage is actually quite low! Thanks to R2, there’s no reason many of our customers can’t store all of their logs for long periods of time. At the same time, we want to separate out the <em>analysis</em> of logs so that customers only pay for the compute of logs they analyze – not every line ingested. While we’re still developing our query pricing, our aim is to be predictable, transparent and upfront. You should never be surprised by the cost of a query (or land a huge bill by accident).</p>
+	<p>Our first insight was that to make logs affordable, we need to separate storage and compute. The cost of Storage is actually quite low! Thanks to R2, there’s no reason many of our customers can’t store all of their logs for long periods of time. At the same time, we want to separate out the <i>analysis</i> of logs so that customers only pay for the compute of logs they analyze – not every line ingested. While we’re still developing our query pricing, our aim is to be predictable, transparent and upfront. You should never be surprised by the cost of a query (or land a huge bill by accident).</p>
 	<p>It’s great to separate storage and compute. But, if you need to scan all of your logs anyway to answer the first question you have, you haven’t gained any benefits to this separation. In order to realize cost savings, it’s critical to narrow down your search before executing a query. That’s where our next big idea came in: a tight integration with analytics.</p>
 	<p>Most of the time, when analyzing logs, you don’t know what you’re looking for. For example, if you’re trying to find the cause of a specific origin status code, you may need to spend some time understanding which origins are impacted, which clients are sending them, and the time range in which these errors happened. Thanks to our <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">ABR analytics</a>, we can provide a good summary of the data very quickly – but not the exact details of what happened. By integrating with analytics, we can help customers narrow down their queries, then switch to Logs Engine once you know exactly what you’re looking for.</p>
 	<p>Finally, we wanted to make logs accessible to anyone. That means all plan types – not just Enterprise.</p>
 	<p>Additionally, we want to make it easy to both set up log storage and analysis, and also to take action on logs once you find problems. With Logs Engine, it will be possible to search logs right from the dashboard, and to immediately create <a href="https://developers.cloudflare.com/rules">rules</a> based on the patterns you find there.</p>
-	<h3 id="what-s-available-today-and-our-roadmap">What’s available today and our roadmap</h3>
+	<h3>What’s available today and our roadmap</h3>
 	<p>Today, Enterprise customers can store logs in R2 and <a href="https://developers.cloudflare.com/logs/r2-log-retrieval">retrieve them</a> via time range. Currently in beta, we also allow customers to retrieve logs by RayID (see our <a href="https://blog.cloudflare.com/r2-rayid-retrieval">companion blog post</a>) — to join the beta, please email <a href="mailto:logs-engine-beta@cloudflare.com">logs-engine-beta@cloudflare.com</a>.</p>
-	<p>Coming soon, we will enable customers on <em>all</em> plan types — not just Enterprise — to ingest logs into Logs Engine. Details on pricing will follow soon.</p>
+	<p>Coming soon, we will enable customers on <i>all</i> plan types — not just Enterprise — to ingest logs into Logs Engine. Details on pricing will follow soon.</p>
 	<p>We also plan to build more powerful querying capability, beyond time range and RayID lookup. For example, we plan to support arbitrary filtering on any column, plus more expressive queries that can look across datasets or aggregate data.</p>
-	<p>But why stop at logs? This foundation lays the groundwork to support other types of data sources and queries one day. We are just getting started. Over the long term, we’re also exploring the ability to ingest data sources <em>outside</em> of Cloudflare and query them. Paired with <a href="https://developers.cloudflare.com/analytics/analytics-engine">Analytics Engine</a> this is a formidable way to explore any data set in a cost-effective way!</p>
+	<p>But why stop at logs? This foundation lays the groundwork to support other types of data sources and queries one day. We are just getting started. Over the long term, we’re also exploring the ability to ingest data sources <i>outside</i> of Cloudflare and query them. Paired with <a href="https://developers.cloudflare.com/analytics/analytics-engine">Analytics Engine</a> this is a formidable way to explore any data set in a cost-effective way!</p>
 </div>

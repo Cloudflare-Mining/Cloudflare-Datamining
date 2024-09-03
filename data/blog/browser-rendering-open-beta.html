@@ -1,66 +1,65 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-56.png" class="kg-image" alt="Workers Browser Rendering API enters open beta" loading="lazy" width="1801" height="1013"></figure>
-	<p><em>(The waitlist link has been removed from this blog as browser rendering has been available to all customers with a Workers Paid Plan since April 2024.)</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48ITDIuGFsDkkeLlfW5wR6/f7d586db58614f703d8812a7b171d300/image1-56.png" alt="Workers Browser Rendering API enters open beta" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>The Workers Browser Rendering API allows developers to programmatically control and interact with a headless browser instance and create automation flows for their applications and products.</p>
-	<p>Since the <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">private beta announcement</a>, based on the feedback we've been receiving and our own roadmap, the team has been working on the developer experience and improving the platform architecture for the best possible performance and reliability. Today we enter the open beta and will start onboarding the customers on the wait list.</p>
-	<h3 id="developer-experience">Developer experience</h3>
+	<p>Since the <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">private beta announcement</a>, based on the feedback we've been receiving and our own roadmap, the team has been working on the developer experience and improving the platform architecture for the best possible performance and reliability. <b>Today we enter the open beta and will start onboarding the customers on the</b> <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api"><b>wait list</b></a><b>.</b></p>
+	<h3>Developer experience</h3>
 	<p>Starting today, <a href="https://developers.cloudflare.com/workers/wrangler">Wrangler</a>, our command-line tool for configuring, building, and deploying applications with Cloudflare developer products, has support for the Browser Rendering API bindings.</p>
-	<p>You can install Wrangler Beta using <a href="https://www.npmjs.com/package/npm">npm</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code>npm install wrangler --save-dev
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>You can install Wrangler Beta using <a href="https://www.npmjs.com/package/npm">npm</a>:</p>
+	<pre class="language-bash"><code class="language-bash">npm install wrangler --save-dev</code></pre>
 	<p>Bindings allow your Workers to interact with resources on the Cloudflare developer platform. In this case, they will provide your Worker script with an authenticated endpoint to interact with a dedicated Chromium browser instance.</p>
-	<p>This is all you need in your <code>wrangler.toml</code> once this service is enabled for your account:</p><!--kg-card-begin: markdown-->
-	<pre><code>browser = { binding = "MYBROWSER", type = "browser" }
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>This is all you need in your <code>wrangler.toml</code> once this service is enabled for your account:</p>
+	<pre class="language-bash"><code class="language-bash">browser = { binding = "MYBROWSER", type = "browser" }</code></pre>
 	<p>Now you can deploy any Worker script that requires Browser Rendering capabilities. You can spawn Chromium instances and interact with them programmatically in any way you typically do manually behind your browser.</p>
 	<p>Under the hood, the Browser Rendering API gives you access to a WebSocket endpoint that speaks the <a href="https://chromedevtools.github.io/devtools-protocol">DevTools Protocol</a>. DevTools is what allows us to instrument a Chromium instance running in our global network, and it's the same protocol that Chrome uses on your computer when you inspect a page.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-35.png" class="kg-image" alt="" loading="lazy" width="1726" height="938"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jPdmcv9Dtzd3yq8R3DFUR/d0e5fcc61904dca4ed7ac5ccb55b4574/image2-35.png" alt="" class="kg-image" width="1726" height="938" loading="lazy">
+
+	</figure>
 	<p>With enough dedication, you can, in fact, implement your own DevTools client and talk the protocol directly. But that'd be crazy; almost no one does that.</p>
 	<p>So…</p>
-	<h3 id="puppeteer">Puppeteer</h3>
+	<h3>Puppeteer</h3>
 	<p><a href="https://pptr.dev">Puppeteer</a> is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. It's widely used for things like creating screenshots, crawling pages, and testing web applications.</p>
 	<p>Puppeteer typically <a href="https://pptr.dev/api/puppeteer.puppeteer.connect">connects</a> to a local Chrome or Chromium browser using the DevTools port.</p>
 	<p>We forked a version of Puppeteer and patched it to connect to the Workers Browser Rendering API instead. The <a href="https://github.com/cloudflare/puppeteer/blob/main/src/puppeteer-core.ts">changes</a> are minimal; after connecting the developers can then use the full Puppeteer API as they would on a standard setup.</p>
-	<p>Our version is <a href="https://github.com/cloudflare/puppeteer">open sourced here</a>, and the npm can be installed from <a href="https://www.npmjs.com">npmjs</a> as <a href="https://www.npmjs.com/package/@cloudflare/puppeteer">@cloudflare/puppeteer</a>. Using it from a Worker is as easy as:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import puppeteer from "@cloudflare/puppeteer";
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>And then all it takes to launch a browser from your script is:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">const browser = await puppeteer.launch(env.MYBROWSER);
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>Our version is <a href="https://github.com/cloudflare/puppeteer">open sourced here</a>, and the npm can be installed from <a href="https://www.npmjs.com">npmjs</a> as <a href="https://www.npmjs.com/package/@cloudflare/puppeteer">@cloudflare/puppeteer</a>. Using it from a Worker is as easy as:</p>
+	<pre class="language-javascript"><code class="language-javascript">import puppeteer from "@cloudflare/puppeteer";</code></pre>
+	<p>And then all it takes to launch a browser from your script is:</p>
+	<pre class="language-javascript"><code class="language-javascript">const browser = await puppeteer.launch(env.MYBROWSER);</code></pre>
 	<p>In the long term, we will update Puppeteer to keep matching the version of our Chromium instances infrastructure running in our network.</p>
-	<h3 id="developer-documentation">Developer documentation</h3>
+	<h3>Developer documentation</h3>
 	<p>Following the tradition with other Developer products, we created a dedicated section for the Browser Rendering APIs in our <a href="https://developers.cloudflare.com/browser-rendering">Developer's Documentation site</a>.</p>
 	<p>You can access this page to learn more about how the service works, Wrangler support, APIs, and limits, and find examples of starter templates for common applications.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download-16.png" class="kg-image" alt="" loading="lazy" width="1600" height="777"></figure>
-	<h3 id="an-example-application-taking-screenshots">An example application: taking screenshots</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xCzHB3baMJCw7CRov6P1P/8ef73452876094584a4747aa93dd9463/download-16.png" alt="" class="kg-image" width="1600" height="777" loading="lazy">
+
+	</figure>
+	<h3>An example application: taking screenshots</h3>
 	<p>Taking screenshots from web pages is one of the typical cases for browser automation.</p>
 	<p>Let's create a Worker that uses the Browser Rendering API to do just that. This is a perfect example of how to set up everything and get an application running in minutes, it will give you a good overview of the steps involved and the basics of the Puppeteer API, and then you can move from here to other more sophisticated use-cases.</p>
-	<p>Step one, start a project, install Wrangler and Cloudflare’s fork of Puppeteer:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">npm init -f
+	<p>Step one, start a project, install Wrangler and Cloudflare’s fork of Puppeteer:</p>
+	<pre class="language-bash"><code class="language-bash">npm init -f
 npm install wrangler -save-dev
-npm install @cloudflare/puppeteer -save-dev
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Step two, let’s create the simplest possible wrangler.toml configuration file with the Browser Rendering API binding:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-yaml">name = "browser-worker"
+npm install @cloudflare/puppeteer -save-dev</code></pre>
+	<p>Step two, let’s create the simplest possible wrangler.toml configuration file with the Browser Rendering API binding:</p>
+	<pre class="language-yaml"><code class="language-yaml">name = "browser-worker"
 main = "src/index.ts"
 compatibility_date = "2023-03-14"
 node_compat = true
 workers_dev = true
 
-browser = { binding = "MYBROWSER", type = "browser" }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Step three, create src/index.ts with your Worker code:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import puppeteer from "@cloudflare/puppeteer";
+browser = { binding = "MYBROWSER", type = "browser" }</code></pre>
+	<p>Step three, create src/index.ts with your Worker code:</p>
+	<pre class="language-javascript"><code class="language-javascript">import puppeteer from "@cloudflare/puppeteer";
 
 export default {
-    async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
+    async fetch(request: Request, env: Env): Promise<response> {
         const { searchParams } = new URL(request.url);
         let url = searchParams.get("url");
         let img: Buffer;
@@ -81,28 +80,34 @@ export default {
             );
         }
     },
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</response></code></pre>
 	<p>That's it, no more steps. This Worker instantiates a browser using Puppeteer, opens a new page, navigates to whatever you put in the "url" parameter, takes a screenshot of the page, closes the browser, and responds with the JPEG image of the screenshot. It can't get any easier to get started with the Browser Rendering API.</p>
 	<p>Run <code>npx wrangler dev –remote</code> to test it and <code>npx wrangler publish</code> when you’re done.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image4-21.png" class="kg-image" alt="" loading="lazy" width="1999" height="1655"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SBhHt9GtxSXSEERkrnwSl/57d42137b79003879d2ea67b71579075/image4-21.png" alt="" class="kg-image" width="1999" height="1655" loading="lazy">
+
+	</figure>
 	<p>You can explore the <a href="https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md">entire Puppeteer API</a> and implement other functionality and logic from here. And, because it's Workers, you can add other <a href="https://developers.cloudflare.com">developer products</a> to your code. You might need a <a href="https://developers.cloudflare.com/d1">relational database</a>, or a <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/#kv">KV store</a> to cache your screenshots, or an <a href="https://developers.cloudflare.com/r2">R2 bucket</a> to archive your crawled pages and assets, or maybe use a <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/#durable-objects">Durable Object</a> to keep your browser instance alive and share it with multiple requests, or <a href="https://developers.cloudflare.com/queues">queues</a> to handle your jobs asynchronous, we have all of this and <a href="https://developers.cloudflare.com">more</a>.</p>
 	<p>You can also find this and other examples of how to use Browser Rendering in the <a href="https://developers.cloudflare.com/browser-rendering">Developer Documentation</a>.</p>
-	<h3 id="how-do-we-use-browser-rendering">How do we use Browser Rendering</h3>
+	<h3>How do we use Browser Rendering</h3>
 	<p>Dogfooding our products is one of the best ways to test and improve them, and in some cases, our internal needs dictate or influence our roadmap. Workers Browser Rendering is a good example of that; it was born out of our necessities before we realized it could be a product. We've been using it extensively for things like taking screenshots of pages for social sharing or dashboards, testing web software in CI, or gathering page load performance metrics of our applications.</p>
 	<p>But there's one product we've been using to stress test and push the limits of the Browser Rendering API and drive the engineering sprints that brought us to open the beta to our customers today: The <a href="https://radar.cloudflare.com/scan">Cloudflare Radar URL Scanner</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image3-22.png" class="kg-image" alt="" loading="lazy" width="1999" height="1310"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wv4BHcjI8iY4ZkhNJSGEK/55470bc57f09ee4dde6ccbdaf91f4f79/image3-22.png" alt="" class="kg-image" width="1999" height="1310" loading="lazy">
+
+	</figure>
 	<p>The URL Scanner scans any URL and compiles a full report containing technical, performance, privacy, and security details about that page. It's processing thousands of scans per day currently. It was built on top of Workers and uses a combination of the Browser Rendering APIs with Puppeteer to create enriched <a href="https://en.wikipedia.org/wiki/HAR_(file_format)">HAR archives</a> and page screenshots, Durable Objects to reuse browser instances, Queues to handle customers' load and execute jobs asynchronously, and <a href="https://www.cloudflare.com/developer-platform/r2">R2</a> to store the final reports.</p>
 	<p>This tool will soon have its own "how we built it" blog. Still, we wanted to let you know about it now because it is a good example of how you can build sophisticated applications using Browser Rendering APIs at scale starting today.</p>
-	<h3 id="future-plans">Future plans</h3>
+	<h3>Future plans</h3>
 	<p>The team will keep improving the Browser Rendering API, but a few things are worth mentioning today.</p>
 	<p>First, we are looking into upstreaming the changes in our Puppeteer fork to the main project so that using the official library with the Cloudflare Workers Browser Rendering API becomes as easy as a configuration option.</p>
 	<p>Second, one of the reasons why we decided to expose the <a href="https://chromedevtools.github.io/devtools-protocol">DevTools</a> protocol bare naked in the Worker binding is so that it can support other browser instrumentalization libraries in the future. <a href="https://playwright.dev/docs/api/class-playwright">Playwright</a> is a good example of another popular library that developers want to use.</p>
 	<p>And last, we are also keeping an eye on and testing <a href="https://w3c.github.io/webdriver-bidi">WebDriver BiDi</a>, a "new standard browser automation protocol that bridges the gap between the WebDriver Classic and CDP (DevTools) protocols." Click here to know more about the <a href="https://developer.chrome.com/blog/webdriver-bidi-2023">status of WebDriver BiDi.</a></p>
-	<h3 id="final-words">Final words</h3>
-	<p>The Workers Browser Rendering API enters open beta today. We will gradually be enabling the customers in the wait list in batches and sending them emails. We look forward to seeing what you will be building with it and want to hear from you.</p>
+	<h3>Final words</h3>
+	<p>The Workers Browser Rendering API enters open beta today. We will gradually be enabling the customers in the <a href="https://www.cloudflare.com/en-gb/lp/workers-browser-rendering-api">wait list</a> in batches and sending them emails. We look forward to seeing what you will be building with it and want to hear from you.</p>
 	<p>As usual, you can talk to us on our <a href="https://discord.cloudflare.com">Developers Discord</a> or the <a href="https://community.cloudflare.com">Community forum</a>; the team will be listening.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/56ddbbea460d0e736d45e6b4944c637d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F56ddbbea460d0e736d45e6b4944c637d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

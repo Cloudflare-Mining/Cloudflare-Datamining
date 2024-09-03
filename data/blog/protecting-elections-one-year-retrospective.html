@@ -1,33 +1,39 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-20-at-12.27.11-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vohpaQMkwooCVtCn2rhmF/b8ec6c7a760b5bb96946204077c352ff/Screen-Shot-2018-12-20-at-12.27.11-PM.png" alt="" class="kg-image" width="1465" height="764" loading="lazy">
+
+	</figure>
 	<p>One year ago, Cloudflare launched the <a href="https://cloudflare.com/athenian">Athenian Project</a> to provide free Enterprise-level service to election and voter registration websites run by state and local governments in the United States. Through this project, we have helped over 100 entities in 24 states protect their websites from denial of service attacks, SQL injection, and other malicious efforts aimed at undermining the integrity of their elections. With the end of the year approaching, and the November 6th US midterm elections behind us, we wanted to look back at the project and what we have learned as we move towards 2020.</p>
-	<h3 id="us-midterm-election-day">US Midterm Election Day</h3>
+	<h3>US Midterm Election Day</h3>
 	<p>The morning of November 6th was full of anticipation for the Athenian Project team with the policy, engineering and support teams ready as polls opened in the East. Early in the day, we were notified by our partner at the CDT that some elections websites were experiencing downtime. Mobilizing to help these groups, we reached out to the website administrators and, through the course of the day, on-boarded over 30 new county-level websites to the Athenian Project and helped them manage the unpredictably large amounts of legitimate traffic.</p>
 	<p>This last-minute effort would not have been possible without the help of the CDT and all of the other organizations working to maintain election integrity. Each organization brings their own strengths, and it took everyone working together, as well as preparation and diligence on the part of election officials, to make election day a success.</p>
-	<p> </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-18-at-4.18.01-PM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>I Voted Stickers— Creative Commons Attribution Element5 Digital on Pexels</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60TaVAeDXgSamWzRkGwrK/8bc65798a74ea997dae915075c7b63ba/Screen-Shot-2018-12-18-at-4.18.01-PM.png" alt="" class="kg-image" width="1124" height="410" loading="lazy">
+
 	</figure>
-	<p></p>
-	<h3 id="civic-engagement-online">Civic Engagement Online</h3>
-	<p>In looking at the aggregated election day data, the biggest story is one of engagement. In the month leading up to the November election, voter registration and election websites on the Athenian Project received nearly three times the number of requests as in September or any other month preceding it. Athenian Project websites received more requests in just the first seven days of November than in any other month except October. </p>
+	<p>I Voted Stickers— Creative Commons Attribution Element5 Digital on Pexels</p>
+	<h3>Civic Engagement Online</h3>
+	<p>In looking at the aggregated election day data, the biggest story is one of engagement. In the month leading up to the November election, voter registration and election websites on the Athenian Project received nearly three times the number of requests as in September or any other month preceding it. Athenian Project websites received more requests in just the first seven days of November than in any other month except October.</p>
 	<p>When we first started the Athenian Project, we expected denial of service and other attacks to be the driving concern. However, we soon found that many state and local election websites experience large fluctuations in legitimate traffic on election day, especially in the event of a contested election, and appreciated having a CDN to help manage these events. As can be seen below, traffic levels, already higher than usual on election day, at times suddenly spiked to four times above the day’s average for certain websites.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-18-at-4.18.15-PM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Requests to Athenian Project websites on 11/6/18</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Fa1XcUOuRXMlgM4ZQoYGf/9a0aebc85c56e9f278606b4f79376ae6/Screen-Shot-2018-12-18-at-4.18.15-PM.png" alt="" class="kg-image" width="1122" height="144" loading="lazy">
+
 	</figure>
-	<p></p>
-	<h3 id="keeping-a-lookout-for-bad-actors">Keeping a Lookout for Bad Actors</h3>
+	<p>Requests to Athenian Project websites on 11/6/18</p>
+	<h3>Keeping a Lookout for Bad Actors</h3>
 	<p>We are happy to report that we didn’t see any evidence of a coordinated set of attacks across the election websites on our service. There were, however, a variety of attacks stopped by rules within our Web Application Firewall (WAF). The prevented attacks included scans by malicious bots impersonating helpful bots. These scans enable malicious actors to check for vulnerabilities to exploit, and were stopped using fake user-agent rules which can identify the malicious bot’s attempt to spoof its identity. The WAF also stopped a variety of cross-site scripting attempts, forced login attempts, and SQL injection attacks aimed at gaining access to databases. The attacks appear to have been Internet-wide attacks targeting specific known vulnerabilities rather than election website specific attacks. This finding re-enforces our belief that improving cybersecurity is vital for everyone on the Internet every day, not just in response to large events.</p>
-	<h3 id="where-we-re-going-in-2019">Where We’re Going in 2019</h3>
+	<h3>Where We’re Going in 2019</h3>
 	<p>Moving forward, we are hoping to continue improving the reach of the project. One year is a relatively short time, especially when considering code freezes around both the primaries and general elections, and we hope to continue education efforts and on-boardings in advance of the 2020 elections. One item we noticed was that, despite making it easy to obtain SSL certificates and use TLS on Cloudflare, not all of the requests to Athenian Project websites are encrypted. This happens either as a result of misconfiguration, or because Universal SSL has been disabled for the site and no non-Cloudflare certificates have been uploaded. As a result, we will strive to do a better job of encouraging SSL adoption and educating website administrators about the importance of encryption.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-19-at-1.56.40-PM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>US Capital Building— Creative Commons Attribution on Pixabay</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IyPhFTMzv2CQhMAk6WGX6/846c64425df7b5a0f3ea63ffc6d49f02/Screen-Shot-2018-12-19-at-1.56.40-PM.png" alt="" class="kg-image" width="1118" height="626" loading="lazy">
+
 	</figure>
-	<p></p>
+	<p>US Capital Building— Creative Commons Attribution on Pixabay</p>
 	<p>We would like to thank election officials and administrators across the country for their hard work in maintaining the integrity of our midterm elections. Election cybersecurity was not a story, and that is a testament to the commitment of these individuals.</p>
-	<p>With the midterm elections over, the Cloudflare Athenian Project team is setting our sights on 2020 and any special elections which may come before then as well as looking at opportunities to expand the Athenian Project into new areas. If you run a state or local election website and are interested in the Athenian Project, feel free to reach out through our web form at <a href="https://cloudflare.com/athenian">cloudflare.com/athenian</a>.<br></p>
+	<p>With the midterm elections over, the Cloudflare Athenian Project team is setting our sights on 2020 and any special elections which may come before then as well as looking at opportunities to expand the Athenian Project into new areas. If you run a state or local election website and are interested in the Athenian Project, feel free to reach out through our web form at <a href="https://cloudflare.com/athenian">cloudflare.com/athenian</a>.</p>
 </div>

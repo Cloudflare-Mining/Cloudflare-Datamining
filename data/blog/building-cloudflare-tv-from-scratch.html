@@ -1,27 +1,49 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image5-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2P26pMsHXWO5TQPu4eA5Zc/a333eaabc0b72fc7fe48ab4292ac9c34/image5-1.png" alt="" class="kg-image" width="1999" height="1014" loading="lazy">
+
+	</figure>
 	<p>Cloudflare TV is inspired by television shows of the 90s that shared the newest, most exciting developments in computing and music videos. We had three basic requirements for Cloudflare TV:</p>
 	<ol>
-		<li>Guest participation should be as simple as joining a Zoom call</li>
-		<li>There should be 24x7 programming. Something interesting should be playing <em>all the time</em></li>
-		<li>Everything should happen in the cloud and we should never have to ask anyone “to leave their computer on” to have the stream running 24 hours a day</li>
+		<li>
+			<p>Guest participation should be as simple as joining a Zoom call</p>
+		</li>
+		<li>
+			<p>There should be 24x7 programming. Something interesting should be playing <i>all the time</i></p>
+		</li>
+		<li>
+			<p>Everything should happen in the cloud and we should never have to ask anyone “to leave their computer on” to have the stream running 24 hours a day</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="we-didn-t-set-out-to-build-cloudflare-tv-from-scratch">We didn’t set out to build Cloudflare TV from <em>scratch</em></h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/j8JPvjtPqbNC7OMfkqYhK/8b2fc4123004f7ecba2f215b742856ec/image1.png" alt="" class="kg-image" width="578" height="134" loading="lazy">
+
+	</figure>
+	<h3>We didn’t set out to build Cloudflare TV from <i>scratch</i></h3>
 	<p>Building a lot of the technology behind Cloudflare TV from scratch was not part of the plan, especially given our aggressive timeline. So why did we decide to pursue it? After evaluating multiple live streaming solutions, we reached the following conclusion:</p>
 	<ul>
-		<li>24x7 linear streaming is not something that is a priority for most video streaming platforms. This makes sense: the rise of <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand">video-on-demand </a>and event-based live streaming has come at the expense of linear streaming.</li>
-		<li>Most broadcasting platforms have their own guest apps which must be downloaded and set up in advance. This introduces unnecessary friction compared to clicking a link in the calendar invite to join a video call.</li>
+		<li>
+			<p>24x7 linear streaming is not something that is a priority for most video streaming platforms. This makes sense: the rise of <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand">video-on-demand</a> and event-based live streaming has come at the expense of linear streaming.</p>
+		</li>
+		<li>
+			<p>Most broadcasting platforms have their own guest apps which must be downloaded and set up in advance. This introduces unnecessary friction compared to clicking a link in the calendar invite to join a video call.</p>
+		</li>
 	</ul>
-	<h3 id="-wait-can-we-just-use-zoom-cloudflare-"><em>“Wait! Can we just use Zoom + Cloudflare?”</em></h3>
+	<h3><i>“Wait! Can we just use Zoom + Cloudflare?”</i></h3>
 	<p>One of the core goals of Cloudflare TV was to make it easy for presenters, and what’s easier than letting them use the tools they already know? Everyone on our team is familiar with Zoom, and so are many of the guests who will be appearing on Cloudflare TV. Better yet, Zoom almost always "just works".</p>
-	<p>So when we discovered that Zoom lets you push live video to any RTMP end point, we started experimenting with the feature. </p>
-	<p>“RTMP” stands for Real-Time Messaging Protocol and was originally developed to facilitate low-latency communication using TCP via Macromedia Flash. RTMP has outlived Flash and is widely used by platforms, including YouTube, to enable live video streaming. RTMP is a push protocol and platforms like YouTube provide RTMP endpoints which are simply URLs. Most video broadcast apps will let you configure multiple RTMP endpoints, which tells the app “<em>hey send my live video feed from my phone or computer to these services</em>.” If you find yourself watching a live video that is being broadcasted on multiple services, it is very likely made possible by RTMP.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Zoom lets you provide RTMP endpoints and instruct it to send the live video feed of Zoom calls to, in our case, Cloudflare TV’s RTMP. Before we could use this feature, we needed to be able to ingest RTMP video feeds. </p>
-	<p>First, we set up an NGINX server with the RTMP module:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-code">apt-get install build-essential libpcre3 libpcre3-dev libssl-dev git zlib1g-dev -y
+	<p>So when we discovered that Zoom lets you push live video to any RTMP end point, we started experimenting with the feature.</p>
+	<p>“RTMP” stands for Real-Time Messaging Protocol and was originally developed to facilitate low-latency communication using TCP via Macromedia Flash. RTMP has outlived Flash and is widely used by platforms, including YouTube, to enable live video streaming. RTMP is a push protocol and platforms like YouTube provide RTMP endpoints which are simply URLs. Most video broadcast apps will let you configure multiple RTMP endpoints, which tells the app “<i>hey send my live video feed from my phone or computer to these services</i>.” If you find yourself watching a live video that is being broadcasted on multiple services, it is very likely made possible by RTMP.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31W6iKPpSmg0aAB0PjhDGb/fe4d134fd525835a0e45352c09cfac30/image3.png" alt="" class="kg-image" width="578" height="396" loading="lazy">
+
+	</figure>
+	<p>Zoom lets you provide RTMP endpoints and instruct it to send the live video feed of Zoom calls to, in our case, Cloudflare TV’s RTMP. Before we could use this feature, we needed to be able to ingest RTMP video feeds.</p>
+	<p>First, we set up an NGINX server with the RTMP module:</p>
+	<pre class="language-code"><code class="language-code">apt-get install build-essential libpcre3 libpcre3-dev libssl-dev git zlib1g-dev -y
 mkdir ~/build &amp;&amp; cd ~/build
 git clone git://github.com/arut/nginx-rtmp-module.git
 wget http://nginx.org/download/nginx-1.14.1.tar.gz
@@ -29,12 +51,10 @@ tar xzf nginx-1.14.1.tar.gz
 cd nginx-1.14.1
 sudo ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module
 sudo make
-sudo make install
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Next, we configured<strong> </strong><code>nginx.conf</code> so NGINX can not only ingest the RTMP feed, but also make it streamable to the end user. A browser typically can’t stream from an RTMP source. We need NGINX to take the RTMP feed and create HLS/DASH segments.</p>
-	<p>We defined an application called <code>live</code> inside <code>nginx.conf.</code> Within the live application, we can add directives to ingest RTMP and output HLS:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">...
+sudo make install</code></pre>
+	<p>Next, we configured <code>nginx.conf</code> so NGINX can not only ingest the RTMP feed, but also make it streamable to the end user. A browser typically can’t stream from an RTMP source. We need NGINX to take the RTMP feed and create HLS/DASH segments.</p>
+	<p>We defined an application called <code>live</code> inside <code>nginx.conf.</code> Within the live application, we can add directives to ingest RTMP and output HLS:</p>
+	<pre class="language-json"><code class="language-json">...
 rtmp {
     server {
         ...
@@ -51,34 +71,48 @@ rtmp {
         }
     }
 }
-
 </code></pre>
-	<!--kg-card-end: markdown-->
 	<p>Once we had NGINX set up to ingest RTMP and HLS, we followed Zoom’s instructions on <a href="https://support.zoom.us/hc/en-us/articles/360028478292-Streaming-a-Meeting-or-Webinar-on-YouTube-Live">Custom Live Streaming</a>. And soon enough, we had a basic prototype of live streaming Zoom calls using the Cloudflare network!</p>
-	<h3 id="transitions-without-interruption">Transitions without interruption</h3>
+	<h3>Transitions without interruption</h3>
 	<p>So we met our number one requirement of making the guest experience as easy as joining a video call. But Cloudflare TV isn't going to be one never-ending call. We needed a way to smoothly transition between multiple calls over the course of the day, and to replay some of our favorite segments.</p>
-	<p>For example, we may have live programming from 1000 to 1100 followed by two hours of pre-recorded (or replayed) content. When the live programming ends at 1100, the video experience would break and the user would need to hit refresh to see the next show on the schedule. </p>
+	<p>For example, we may have live programming from 1000 to 1100 followed by two hours of pre-recorded (or replayed) content. When the live programming ends at 1100, the video experience would break and the user would need to hit refresh to see the next show on the schedule.</p>
 	<p>So how do we fix this? We determined we needed the following:</p>
 	<ol>
-		<li>Ability to set the programming (the <em>“what plays when?”) </em>many days in advance</li>
-		<li>Have “virtual rooms” ingesting video from different sources (live events, pre-recorded videos stored using our Cloudflare Stream product)</li>
+		<li>
+			<p>Ability to set the programming (the <i>“what plays when?”)</i> many days in advance</p>
+		</li>
+		<li>
+			<p>Have “virtual rooms” ingesting video from different sources (live events, pre-recorded videos stored using our Cloudflare Stream product)</p>
+		</li>
 	</ol>
-	<p>Once we have a schedule and “virtual rooms”, we can dynamically switch what is currently playing on-air to the appropriate “virtual room” streaming the content. </p>
+	<p>Once we have a schedule and “virtual rooms”, we can dynamically switch what is currently playing on-air to the appropriate “virtual room” streaming the content.</p>
 	<p>To implement this, we used Contentful, Workers, and Brave (an open-source video editor).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="brave">Brave</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><a href="https://github.com/bbc/brave">Brave</a> is an open-source project started by the BBC. Using Brave, we were able to set up multiple virtual rooms and smoothly make any virtual room go on-air. </p>
-	<p>Under the hood, Brave is doing two key things: </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XUFf7AdV7b8Wfh6ZG0hTg/1f03943ff8882524dae20cf0a18b714f/image2.png" alt="" class="kg-image" width="650" height="400" loading="lazy">
+
+	</figure>
+	<h3>Brave</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32SC1qaxTOiSGmirYSKsdD/6ddf54da36da852c27cbfd2a03d9c71f/image4.png" alt="" class="kg-image" width="608" height="329" loading="lazy">
+
+	</figure>
+	<p><a href="https://github.com/bbc/brave">Brave</a> is an open-source project started by the BBC. Using Brave, we were able to set up multiple virtual rooms and smoothly make any virtual room go on-air.</p>
+	<p>Under the hood, Brave is doing two key things:</p>
 	<ol>
-		<li>pulling multiple video feeds from various sources and placing them in virtual rooms</li>
-		<li>pushing the final (“on air feed”) to NGINX <em>every second of the day</em></li>
+		<li>
+			<p>pulling multiple video feeds from various sources and placing them in virtual rooms</p>
+		</li>
+		<li>
+			<p>pushing the final (“on air feed”) to NGINX <i>every second of the day</i></p>
+		</li>
 	</ol>
-	<h3 id="contentful">Contentful</h3>
-	<p><a href="http://contentful.com">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly. </p>
+	<h3>Contentful</h3>
+	<p><a href="http://contentful.com">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly.</p>
 	<p>Most of the necessary fields are pretty straightforward for a CMS: title, presenters, and, of course, the time slot. Each of these is automatically synced with the publicly-facing schedule at <a href="https://cloudflare.tv/schedule">cloudflare.tv/schedule</a>.</p>
-	<p>We are able to use Workers to fetch events from Contentful:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">export async function fetchEventRaw(id: string) {
+	<p>We are able to use Workers to fetch events from Contentful:</p>
+	<pre class="language-json"><code class="language-json">export async function fetchEventRaw(id: string) {
   let r = await fetch(`${CONTENTFUL_API}/entries/${id}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -86,12 +120,10 @@ rtmp {
     },
   })
   return unwrap(r, 'Failed to retrieve event')
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>The more complex piece was integrating this with Zoom. Each segment needs its own Zoom meeting, and it’d be pretty arduous to create these manually. So when we publish in Contentful, Contentful makes a call to a Worker endpoint. The Worker endpoint automatically generates a Zoom meeting — and provides the Programming Team with the customized invite to send to the guest.</p>
-	<p>For example, when a new event is added to Contentful, Contentful notifies our Worker endpoint which creates a new meeting and configures it so it is being pushed to Cloudflare TV:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">export async function createMeeting(ev: TVEvent) {
+	<p>For example, when a new event is added to Contentful, Contentful notifies our Worker endpoint which creates a new meeting and configures it so it is being pushed to Cloudflare TV:</p>
+	<pre class="language-json"><code class="language-json">export async function createMeeting(ev: TVEvent) {
   const headers = await zoomHeaders()
 
   const alternative_hosts = ev.altHosts ? ev.altHosts.join(',') : ''
@@ -146,17 +178,21 @@ rtmp {
   await unwrap(r, 'Failed to update LiveStream config')
 
   return ev
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>The other upside to using Contentful is that many members of our team already have familiarity with it, so it reduces the overhead of learning a new tool.</p>
-	<h3 id="workers">Workers</h3>
+	<h3>Workers</h3>
 	<p>So far, we’ve described the different pieces of the backend (NGINX, Brave, Contentful) that make Cloudflare TV possible. How do we bring them all together? Cloudflare Workers serves as the glue that brings these systems together. The <a href="https://cloudflare.tv">Cloudflare TV frontend</a> is built on Worker Sites. The frontend calls our Worker endpoints to fetch data, such as the programming calendar.</p>
-	<h3 id="thinking-ahead-">Thinking Ahead...</h3>
+	<h3>Thinking Ahead...</h3>
 	<p>We’re just getting started with Cloudflare TV. We have a long wish list of features we’d really like to see. Here are some of the features we can’t wait to work on:</p>
 	<ul>
-		<li>Improve the viewing experience by adding closed-caption support</li>
-		<li>Enable our viewers to call in and ask questions and contribute to the conversation</li>
-		<li>Bring Cloudflare TV to platforms like Apple TV and Roku</li>
+		<li>
+			<p>Improve the viewing experience by adding closed-caption support</p>
+		</li>
+		<li>
+			<p>Enable our viewers to call in and ask questions and contribute to the conversation</p>
+		</li>
+		<li>
+			<p>Bring Cloudflare TV to platforms like Apple TV and Roku</p>
+		</li>
 	</ul>
 </div>

@@ -1,50 +1,72 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/586i1nldE4rjsAQeNqfyEf/c2c6b04da085a25a1d53f5eb869e9667/lessons-learned-from-scaling-up-cloudflare-anomaly-detection-platform.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3 id="introduction-to-anomaly-detection-for-bot-management">Introduction to Anomaly Detection for Bot Management</h3>
+	<h3>Introduction to Anomaly Detection for Bot Management</h3>
 	<p>Cloudflare’s <a href="https://www.cloudflare.com/products/bot-management">Bot Management platform</a> follows a “defense in depth” model. Although each layer of Bot Management has its own strengths and weaknesses, the combination of many different detection systems — including Machine Learning, rule-based heuristics, JavaScript challenges, and more — makes for a robust platform in which different detection systems compensate for each other’s weaknesses.</p>
 	<p>One of these systems is Anomaly Detection, a platform motivated by a simple idea: because bots are made to accomplish specific goals, such as credential stuffing or content scraping, they interact with websites in distinct and difficult-to-disguise ways. Over time, the actions of a bot are likely to differ from those of a real user. Anomaly detection aims to model the characteristics of legitimate user traffic as a healthy baseline. Then, when automated bot traffic is set against this baseline, the bots appear as outlying anomalies that can be targeted for mitigation.</p>
 	<p>An anomaly detection approach is:</p>
 	<ul>
-		<li>Resilient against bots that try to circumvent protections by spoofing request metadata (e.g., user agents)</li>
-		<li>Able to catch previously unseen bots without being explicitly trained against them.</li>
+		<li>
+			<p>Resilient against bots that try to circumvent protections by spoofing request metadata (e.g., user agents)</p>
+		</li>
+		<li>
+			<p>Able to catch previously unseen bots without being explicitly trained against them.</p>
+		</li>
 	</ul>
-	<p>So, how well does this work? </p>
+	<p>So, how well does this work?</p>
 	<p>Today, Anomaly Detection processes more than 500K requests per second. This translates to over 200K CAPTCHAs issued per minute, not including traffic that’s already caught by other bot management systems or traffic that’s outright blocked. These suspected bots originate from over 140 different countries and 2,200 different ASNs. And all of this happens using automatically generated baselines and visitor models which are unique to every enrolled site — no cross-site analysis or manual intervention required.</p>
-	<h3 id="how-anomaly-detection-identifies-bots">How Anomaly Detection Identifies Bots</h3>
+	<h3>How Anomaly Detection Identifies Bots</h3>
 	<p>Anomaly Detection uses an algorithm called <a href="https://www.goldiges.de/publications/HBOS-KI-2012.pdf">Histogram-Based Outlier Scoring (HBOS)</a> to detect anomalous traffic in a scalable way. While HBOS is less precise than algorithms like kNN when it comes to local outliers, it is able to score global outliers quickly (in linear time).</p>
 	<p>There are two parts to every behavioral bot detection: the site-specific baseline and the visitor-specific behavior model. We make heavy use of <a href="https://clickhouse.tech">ClickHouse</a>, an open-source columnar database, for <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">storing and analyzing enormous amounts of data</a>. When a customer opts-in to Anomaly Detection, we begin aggregating traffic data in ClickHouse to form a unique baseline for their site.</p>
 	<p>To understand visitor behavior, we maintain a sliding window of ephemeral feature aggregates in-memory using <a href="https://redis.io">Redis</a>. <a href="https://en.wikipedia.org/wiki/HyperLogLog">HyperLogLog</a> data structures allow us to efficiently store and estimate unique counts of these high-cardinality features. Because these data are privacy-sensitive, they are retained only within a recent time window and are specific to each opted-in site. This makes efficient data representations due to the resulting high cardinality of the problem space.</p>
-	<p>The output of each detection run is an <em>outlier score</em>, representing how anomalous a visitor’s behavior is when viewed against the baseline for that particular site. This outlier score feeds into the final bot score calculation for use on the edge.</p>
-	<h3 id="the-anomaly-detection-platform">The Anomaly Detection Platform</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>The output of each detection run is an <i>outlier score</i>, representing how anomalous a visitor’s behavior is when viewed against the baseline for that particular site. This outlier score feeds into the final bot score calculation for use on the edge.</p>
+	<h3>The Anomaly Detection Platform</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17JKOorPN2YNRAHZAJxFd2/54d6832da620dcba3caec15a70a7a314/image1-13.png" alt="" class="kg-image" width="989" height="341" loading="lazy">
+
+	</figure>
 	<p>The Anomaly Detection platform consists of a series of microservices running on <a href="https://kubernetes.io">Kubernetes</a>. Request data come in through a dedicated Kafka topic and are inserted to both ClickHouse and Redis.</p>
 	<p>The Detector service lazily retrieves (and caches) baseline data from the Baseline service and calculates outlier scores for visitors compared to the baselines. These scores are then written to another Kafka topic to be persisted for later analysis.</p>
 	<p>Finally, the Publisher service collects batches of detections (visitors whose behavior is anomalous or bot-like) and sends them out to the edge to be applied as part of our bot score calculations.</p>
 	<p>Each microservice runs independently and tolerates downtime from its dependencies. They are also sized very differently: some services require dozens of replicas and gigabytes of memory, while others are much cheaper.</p>
 	<p>Today, the Anomaly Detection platform handles nearly 500k requests per second across ~310M unique visitors, representing 2x growth over the last six months. But once upon a time, we struggled to handle even 10K rps.</p>
 	<p>The story of our growth is also the story of how we adapted, redesigned, and improved our infrastructure in order to respond to the corresponding increases in resource demand, customer support requests, and maintenance challenges.</p>
-	<h3 id="launch-then-iterate">Launch, then Iterate</h3>
+	<h3>Launch, then Iterate</h3>
 	<p>In an earlier incarnation, most of the core Anomaly Detection logic was contained in a single (replicated) service running under Kubernetes.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nZtBtQAWGXjQBbez5abWH/055a7227b82e906c19c4062d30c3cbcc/image2-7.png" alt="" class="kg-image" width="523" height="310" loading="lazy">
+
+	</figure>
 	<p>Each service pod fulfilled multiple responsibilities: generating behavioral baselines from ClickHouse data, aggregating visitor profiles from Redis, and calculating outlier scores. These outlier detections were then forwarded to the edge by piggybacking on another bot management system’s existing integration with <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>, Cloudflare’s replicated key-value store.</p>
 	<p>This simple design was easy to understand and implement. It also reused existing infrastructure, making it perfect for a v1 deployment in keeping with Cloudflare’s culture of fast iteration. Of course, it also had some shortcomings:</p>
 	<ul>
-		<li>A monolithic service meant a single (logical) point of failure.</li>
-		<li>From a resource (CPU, memory) perspective, it was difficult to scale pieces of functionality independently.</li>
-		<li>The “reused” integration with Quicksilver was never meant to support something like Anomaly Detection, causing instability for both systems.</li>
+		<li>
+			<p>A monolithic service meant a single (logical) point of failure.</p>
+		</li>
+		<li>
+			<p>From a resource (CPU, memory) perspective, it was difficult to scale pieces of functionality independently.</p>
+		</li>
+		<li>
+			<p>The “reused” integration with Quicksilver was never meant to support something like Anomaly Detection, causing instability for both systems.</p>
+		</li>
 	</ul>
 	<p>It’s easy in hindsight to focus on the flaws of an existing system, but it’s important to keep in mind that priorities can and should evolve over time. A design that doesn’t meet today’s needs was likely suited to the needs of yesterday.</p>
 	<p>One key benefit of a launch-and-iterate approach is that you get a concrete, real-world understanding of where your system needs improvement. Having a real system to observe means that improvements are both targeted and measurable.</p>
-	<h3 id="tuning-redis">Tuning Redis</h3>
+	<h3>Tuning Redis</h3>
 	<p>As mentioned above, Redis is a key part of the Anomaly Detection platform, used to store and aggregate features about site visitors. Although we only keep these data in a sliding window, the cardinality of the set is very large (per visitor per site). For this reason, many of the early improvements to Anomaly Detection performance centered on Redis. In fact, the first launch of Anomaly Detection struggled to keep up with only 10k requests per second.</p>
 	<p>Profiling revealed that load was centered on our heavy use of the Redis PFMERGE command for merging HyperLogLog structures. Unlike most Redis commands, which are O(1), PFMERGE runs in linear time (proportional to the number of features * window size). As the demand for scoring increased, this proved to be a serious bottleneck.</p>
 	<p>To resolve this problem, we looked for ways to further optimize our use of Redis. One idea was lowering the threshold for promoting a sparse HyperLogLog representation to a dense one - trading memory for compute, as dense HyperLogLogs are generally faster to merge.</p>
 	<p>However, as is so often the case, a big win came from a simple idea: we introduced a “recency register,” essentially a cache that placed a time bound on how often we would run expensive detection logic on a given site-visitor pair. Since behavior patterns need to be established over a time window, the potential extra detection latency from the recency register was not a significant concern. This straightforward solution was enough to raise our throughput by an order of magnitude.</p>
 	<p>Working with Redis involves a lot of balancing between memory and compute resources. For example, our Redis shards’ memory sizes were empirically determined based on the observed CPU utilization when reaching memory bounds. A higher memory bound meant more visitors tracked per shard and thus more commands per second. The fact that Redis shards are single-threaded made reasoning about these situations easier as well.</p>
 	<p>As the number of features and visitors grew, we discovered that “standard” Redis recommendations didn’t always work for us in practice. Redis typically recommends using human-readable keys, even if they are longer.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/l8FHluRsIC5sNkJzVeELp/96e0fae9a46d015e49b1e0fb1aad5e78/image3-11.png" alt="" class="kg-image" width="898" height="692" loading="lazy">
+
+	</figure>
 	<p>However, by encoding our keys in a compact, binary-encoded format, we observed roughly 30% memory savings, as well as CPU savings — which again demonstrates the value of iterating on a real-world system.</p>
-	<h3 id="moving-to-microservices">Moving to Microservices</h3>
+	<h3>Moving to Microservices</h3>
 	<p>As Anomaly Detection continued to grow in adoption, it became clear that optimizing individual pieces of the pipeline was no longer sufficient: our platform needed to scale up as well. But, as it turns out, scaling isn’t as simple as requesting more resources and running more replicas of whatever service isn’t keeping up with demand. As we expanded, the amount of load we placed on external (shared!) dependencies like ClickHouse grew. The way we piggybacked on Quicksilver to send updates to the edge coupled two systems together in a bloated and unreliable way.</p>
 	<p>So we set out to do more with less - to build a more resilient system that would also be a better steward of Cloudflare’s shared resources.</p>
 	<p>The idea of a microservice-based architecture was not a new one; in fact, even early Anomaly Detection designs suggested the eventual need for such a migration. But real-world observations indicated that the redesign was now fully worth the time investment.</p>
@@ -53,7 +75,7 @@
 	<p>Secondly, we noticed that part of our use case (accept a stream of data from Kafka, apply simple transformations, and persist batches of this data to ClickHouse) was a pretty common one at Cloudflare. There already existed robust, battle-tested inserter code for launching microservices with exactly this pattern of operation. Adapting this code to suit our needs not only saved us development time, but brought us more in line with wider convention.</p>
 	<p>We also learned the importance of concrete details during design. When we initially began working on the redesign of the Anomaly Detection platform, we felt that Kafka might have a role to play in connecting some of our services. Still, we couldn’t fully justify the initial investment required to move away from the RESTful interfaces we already had.</p>
 	<p>The benefits of using Kafka only became clear and concrete once we committed to using ClickHouse as the storage solution for our outlier score data. ClickHouse performs best when data is inserted in larger, less frequent batches, rather than rapid, small operations, which create a lot of internal overhead. Transporting outlier scores via Kafka allowed us to batch updates while being resilient to data loss during transient downtime.</p>
-	<h3 id="the-future">The Future</h3>
+	<h3>The Future</h3>
 	<p>It’s been a journey getting to this point, but we’re far from done. Cloudflare’s mission is to help make the Internet better for everyone - from small websites to the largest enterprises. For Anomaly Detection, this means expanding into a problem space with huge cardinality: roughly the cross-product of the number of sites and the number of unique visitors. To do this, we’re continuing to improve the efficiency of our infrastructure through smarter traffic sampling, compressed baseline windows, and more memory-efficient data representations.</p>
 	<p>Additionally, we want to deliver even better detection accuracy on sites with multiple distinct traffic types. Traffic coming to a site from web browsers behaves quite differently than traffic coming from mobile apps — but both sources of traffic are legitimate. While the HBOS outlier detection algorithm is lightweight and efficient, there are alternatives which are more performant in the presence of multiple traffic profiles.</p>
 	<p>One of these alternatives is local outlier factor (LOF) detection. LOF automatically builds baselines that capture “local clusters” of behavior corresponding to multiple traffic streams, rather than a single site-wide baseline. These new baselines allow Anomaly Detection to better distinguish between human use of a web browser and automated abuse of an API on the same site. Of course, there are trade-offs here as well: generating, storing, and working with these larger and more sophisticated behavioral baselines requires careful and creative engineering. But the reward for doing so is enhanced protection for an even wider range of sites using Anomaly Detection.</p>

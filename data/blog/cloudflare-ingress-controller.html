@@ -1,18 +1,24 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>NOTE: Prior to launch, this product was renamed Argo Tunnel. Read more in the <a href="https://blog.cloudflare.com/argo-tunnel">launch announcement</a>.</em></p>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cZQdRfbtoz7HdUSxYE3C7/4e72d201ed9d4534450f03ebeb5d49d3/cloudflare-ingress-controller.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>NOTE: Prior to launch, this product was renamed Argo Tunnel. Read more in the </i><a href="https://blog.cloudflare.com/argo-tunnel"><i>launch announcement</i></a><i>.</i></p>
 	<p>It’s ironic that the one thing most programmers would really rather not have to spend time dealing with is... a computer. When you write code it’s written in your head, transferred to a screen with your fingers and then it has to be run. On. A. Computer. Ugh.</p>
 	<p>Of course, code has to be run and typed on a computer so programmers spend hours configuring and optimizing shells, window managers, editors, build systems, IDEs, compilation times and more so they can minimize the friction all those things introduce. Optimizing your editor’s macros, fonts or colors is a battle to find the most efficient path to go from idea to running code.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/4532962327_c5a219d992_b.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ivyfield/4532962327/in/photolist-7UyBLT-87ERdK-cCZVyC-8E715f-dbdKCZ-nGKair-cQay4s-ebwmMy-nAuTVv-jw9hxd-nqxc9h-nH1hJw-cp4c1Q-8B3PLE-PUxit-6gY6pQ-4P2q52-cCZVWL-6eRJAH-kNHY-nj1peY-nqxyHa-iNw9jP-5boJ6P-J3KVad-nj1hAZ-7yYuBu-8PCwt2-aJptFP-b4WLoM-nysiQJ-b8kxAV-BtcWbK-7yKiEj-cABXZ1-b8RR72-9LbLum-a6n7fX-X3SERX-br1nSQ-qdLBYQ-4XJsbd-5zXtUQ-dWePHa-qAi9Jt-awuoCM-cACicL-cA43Y1-nGQWPs-dotR4Y">image</a> by <a href="https://www.flickr.com/photos/ivyfield">Yutaka Tsutano</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/313EyDPITzKIECDYuj2qzq/1a9e57f529bf37fce3b586a472a51c3f/4532962327_c5a219d992_b.jpg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ivyfield/4532962327/in/photolist-7UyBLT-87ERdK-cCZVyC-8E715f-dbdKCZ-nGKair-cQay4s-ebwmMy-nAuTVv-jw9hxd-nqxc9h-nH1hJw-cp4c1Q-8B3PLE-PUxit-6gY6pQ-4P2q52-cCZVWL-6eRJAH-kNHY-nj1peY-nqxyHa-iNw9jP-5boJ6P-J3KVad-nj1hAZ-7yYuBu-8PCwt2-aJptFP-b4WLoM-nysiQJ-b8kxAV-BtcWbK-7yKiEj-cABXZ1-b8RR72-9LbLum-a6n7fX-X3SERX-br1nSQ-qdLBYQ-4XJsbd-5zXtUQ-dWePHa-qAi9Jt-awuoCM-cACicL-cA43Y1-nGQWPs-dotR4Y">image</a> by <a href="https://www.flickr.com/photos/ivyfield">Yutaka Tsutano</a></p>
 	<p>Once the developer is managing their own universe they can write code at the speed of their mind. But when it comes to putting their code into production (which necessarily requires running their programs on machines that they don’t control) things inevitably go wrong. Production machines are never the same as developer machines.</p>
 	<p>If you’re not a developer, here’s an analogy. Imagine carefully writing an essay on a subject dear to your heart and then publishing it only to be told “unfortunately, the word ‘the’ is not available in the version of English the publisher uses and so your essay is unreadable”. That’s the sort of problem developers face when putting their code into production.</p>
 	<p>Over time different technologies have tried to deal with this problem: dual booting, different sorts of isolation (e.g. virtualenv, chroot), totally static binaries, virtual machines running on a developer desktop, elastic computing resources in clouds, and more recently <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">containers</a>.</p>
 	<p>Ultimately, using containers is all about a developer being able to say “it ran on my machine” and be sure that it’ll run in production, because fighting incompatibilities between operating systems, libraries and runtimes that differ from development to production is a waste of time (in particular developer brain time).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/14403331148_bf25864944_k-1.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jumilla/14403331148/in/photolist-nWLQxE-3eHezK-a85qp6-iEoK39-iYjss-9at6Z7-iYjsr-9gYg6a-bW3NeL-6AMx91-6rJaN3-28rg3L-TvqJmB-GjMFdK-2UrVHv-fs2WCj-4LGK2-2UrYz4-2Us2tK-Eeqeo-85HX8j-rF6SGG-o9rBXe-fWrkwA-dcGZAo-aoHuTF-SGpPT3-boaQy8-u8Bei-62JAWa-s9fFGo-61fNWq-fJYrjR-axYxm-2h42pU-2h42w7-rRNyES-fKfUKQ-6YXYGU-VjiSN1-4Xcg61-7YmaKY-WyF1oq-bE83qB-dvQoQw-CRQx6-82fwLo-fvJhXq-gmkcM-U3mP5E">image</a> by <a href="https://www.flickr.com/photos/jumilla">Jumilla</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3w1Pjk0GrYgcVwz3LiliHI/7e2a2bf520f41c9307c4e1c618e84ee2/14403331148_bf25864944_k-1.jpg" alt="" class="kg-image" width="2048" height="1484" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jumilla/14403331148/in/photolist-nWLQxE-3eHezK-a85qp6-iEoK39-iYjss-9at6Z7-iYjsr-9gYg6a-bW3NeL-6AMx91-6rJaN3-28rg3L-TvqJmB-GjMFdK-2UrVHv-fs2WCj-4LGK2-2UrYz4-2Us2tK-Eeqeo-85HX8j-rF6SGG-o9rBXe-fWrkwA-dcGZAo-aoHuTF-SGpPT3-boaQy8-u8Bei-62JAWa-s9fFGo-61fNWq-fJYrjR-axYxm-2h42pU-2h42w7-rRNyES-fKfUKQ-6YXYGU-VjiSN1-4Xcg61-7YmaKY-WyF1oq-bE83qB-dvQoQw-CRQx6-82fwLo-fvJhXq-gmkcM-U3mP5E">image</a> by <a href="https://www.flickr.com/photos/jumilla">Jumilla</a></p>
 	<p>In parallel, the rise of microservices is also a push to optimize developer brain time. The reality is that we all have limited brain power and ability to comprehend the complex systems that we build in their entirety and so we break them down into small parts that we can understand and test: functions, modules and services.</p>
 	<p>A microservice with a well-defined API and related tests running in a container is the ultimate developer fantasy. An entire program, known to operate correctly, that runs on their machine and in production.</p>
 	<p>Of course, no silver lining is without its cloud and containers beget a coordination problem: how do all these little programs find each other, scale, handle failure, log messages, communicate and remain secure. The answer, of course, is a coordination system like <a href="https://kubernetes.io">Kubernetes</a>.</p>
@@ -20,12 +26,16 @@
 	<p>Sadly, these little programs have one last hurdle before they turn into useful Internet services: they have to be connected to the brutish outside world. Services must be safely and scalably exposed to the Internet.</p>
 	<p>Recently, Cloudflare introduced a new service that can be used to connect a web server to Cloudflare without needing to have a public IP address for it. That service, <a href="https://warp.cloudflare.com">Cloudflare Warp</a>, maintains a connection from the server into the Cloudflare network. The server is then only exposed to the Internet through Cloudflare with no way for attackers to reach the server directly.</p>
 	<p>That means that any connection to it is protected and accelerated by Cloudflare’s service.</p>
-	<h3 id="cloudflarewarpingresscontrollerandstackpointcloud">Cloudflare Warp Ingress Controller and StackPointCloud</h3>
+	<h3>Cloudflare Warp Ingress Controller and StackPointCloud</h3>
 	<p>Today, we are extending Warp’s reach by announcing the Cloudflare Warp <a href="https://kubernetes.io/docs/concepts/services-networking/ingress">Ingress Controller</a> for Kubernetes (it’s an open source project and can be found <a href="https://github.com/cloudflare/cloudflare-warp-ingress">here</a>). We worked closely with the team at <a href="https://stackpoint.io">StackPointCloud</a> to integrate Warp, Kubernetes and their universal control plane for Kubernetes.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-04-at-5.28.18-PM-2.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/P1ACOSWhcrBdZU7WlNcHi/6a4574ffb94805d68ad45f8273c25490/Screen-Shot-2017-12-04-at-5.28.18-PM-2.png" alt="" class="kg-image" width="942" height="453" loading="lazy">
+
+	</figure>
 	<p>Within Kubernetes creating an ingress with annotation <code>kubernetes.io/ingress.class: cloudflare-warp</code> will automatically create secure Warp tunnels to Cloudflare for any service using that ingress. The entire lifecycle of tunnels is transparently managed by the ingress controller making exposing Kubernetes-managed services securely via Cloudflare Warp trivially easy.</p>
 	<p>The Warp Ingress Controller is responsible for finding Warp-enabled services and registering them with Cloudflare using the hostname(s) specified in the Ingress resource. It is added to a Kubernetes cluster by creating a file called warp-controller.yaml with the content below:</p>
-	<pre><code>apiVersion: extensions/v1beta1
+	<pre class="language-bash"><code class="language-bash">apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
@@ -73,13 +83,11 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
-      terminationGracePeriodSeconds: 30
-</code></pre>
+      terminationGracePeriodSeconds: 30</code></pre>
 	<p>The full documentation is <a href="https://developers.cloudflare.com/argo-tunnel/reference/kubernetes">here</a> and shows how to get up and running with Kubernetes and Cloudflare Warp on StackPointCloud, Google GKE, Amazon EKS or even <a href="https://kubernetes.io/docs/getting-started-guides/minikube">minikube</a>.</p>
-	<h3 id="oneclickwithstackpointcloud">One Click with StackPointCloud</h3>
-	<p>Within StackPointCloud adding the Cloudflare Warp Ingress Controller requires just <em>a single click</em>. And one more click and you've deployed a Kubernetes cluster.</p>
+	<h3>One Click with StackPointCloud</h3>
+	<p>Within StackPointCloud adding the Cloudflare Warp Ingress Controller requires just <i>a single click</i>. And one more click and you've deployed a Kubernetes cluster.</p>
 	<p>The connection between the Kubernetes cluster and Cloudflare is made using a TLS tunnel ensuring that all communication between the cluster and the outside world is secure.</p>
 	<p>Once connected the cluster and its services then benefit from Cloudflare's DDoS protection, WAF, global load balancing and health checks and huge global network.</p>
 	<p>The combination of Kubernetes and Cloudflare makes managing, scaling, accelerating and protecting Internet facing services simple and fast.</p>
-	<!--kg-card-end: markdown-->
 </div>

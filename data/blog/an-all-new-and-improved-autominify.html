@@ -1,10 +1,13 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="An All New (and Improved) AutoMinify" src="https://blog.cloudflare.com/content/images/minify.jpg" title="An All New (and Improved) AutoMinify"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/478Bro4rDXgJjJ2h8bppRg/e254793c063e52c5ffa09a260d8fb268/minify.jpg" alt="An All New (and Improved) AutoMinify" class="kg-image" width="285" height="71" loading="lazy">
+
+	</figure>
 	<p>We turned on AutoMinify as a beta feature a while ago, but we weren't particularly happy with it. Originally, we did it the same way everyone else does: we'd request the resource from the origin, serve it unminified on the first load, cache it, and then, if it was CSS or Javascript, run a process that minified it and replaced the cached version on the server. Seems sensible enough, but it's a bad approach.</p>
 	<p>To begin, this minification strategy doesn't work well for highly dynamic content, forcing website owners to have to go back and expire the cache whenever anything changed. For CSS and Javascript that can work, but it's a disaster for dynamic HTML. The second issue is less obvious: most minification resources don't work at our scale. We tried every minification library available, and a few non-public ones that were developed in-house by friends at some of the Internet giants, and none of them worked as efficiently as we wanted when we're minify many millions of files across twelve (and soon many more) data centers.</p>
 	<p>We were bummed because minification does provide some measurable benefit. Generally, for text based resources, our tests showed minification got about a 10% benefit when combined with our aggressive GZIP compression over just GZIP compression alone. All else being equal, if you can make a resource 10% as big it's as good as making the Internet connection 10% faster. It's not a huge win, since most bytes that make up the typical website aren't in text-based resources that can be minified. However, we believe every millisecond matters, so we looked for another way.</p>
 	<p>Unsatisfied with any of the existing minification resources, we decided to develop our own. Last week we quietly turned on a new minification process that was written to overcome the two challenges previous minification strategies had faced. First, it works in-line in the response stream, much like GZIP, which means it doesn't force you to cache content in order to get the benefit. Second, it's extremely fast. Written from the ground up to perform at line speed and is easily 100x as fast as the next closest competitor.</p>
 	<p>AutoMinify included free with any plan, and you can choose whether you want to <a href="https://www.cloudflare.com/learning/performance/how-to-minify-css">minify CSS</a>, Javascipt, HTML (even dynamic HTML), or any combination of the three. You can turn Auto Minify on or off via your CloudFlare Settings control panel with a single click and the settings take effect nearly instantly (because you don't have to wait for the flawed cache-and-store approach). Next up for the engineering wizards behind this: a radically better approach to image optimization.</p>
-	<!--kg-card-end: markdown-->
 </div>

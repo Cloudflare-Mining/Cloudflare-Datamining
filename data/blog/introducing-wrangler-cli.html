@@ -1,26 +1,29 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/wrangler_rust_wasm.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Wrangler is a CLI tool for building Rust WebAssembly Workers</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Iobv63iDeiVbJ4cXs9HZM/bbc97044861ad06b824e4c699d4ab8a2/wrangler_rust_wasm.png" alt="" class="kg-image" width="2000" height="367" loading="lazy">
+
 	</figure>
-	<p>Today, we're open sourcing and announcing <code>wrangler</code>, a CLI tool for building, previewing, and publishing Rust and WebAssembly Cloudflare Workers. </p>
+	<p>Wrangler is a CLI tool for building Rust WebAssembly Workers</p>
+	<p>Today, we're open sourcing and announcing <code>wrangler</code>, a CLI tool for building, previewing, and publishing Rust and WebAssembly Cloudflare Workers.</p>
 	<p>If that sounds like some word salad to you, that's a reasonable reaction. All three of the technologies involved are relatively new and upcoming: WebAssembly, Rust, and Cloudflare Workers.</p>
-	<h3 id="why-webassembly">Why WebAssembly?</h3>
+	<h3>Why WebAssembly?</h3>
 	<p>Cloudflare's mission is to help build a better Internet. We see Workers as an extension of the already incredibly powerful Web Platform, where JavaScript has allowed users to go from building small bits of interactivity, to building full applications. Node.js first extended this from the client to the server- unifying web application development around a single language – JavaScript. By choosing to use V8 isolates (the technology that powers both Node.js and the most popular browser, Chrome), we sought to make its Workers product a fully compatible, new platform for the Web, eliding the distinction between server and client. By leveraging its large global network of servers, Workers allows users to run code as close as possible to end users, eliminating the latency associated server-side logic or large client-side bundles.</p>
 	<p>But not everyone wants to write JavaScript, and JavaScript is not well suited to express every application. WebAssembly emerged in 2017 as a way to further extend the Web Platform to applications, such as games and other high resource intensive programs, that were previously excluded by the limitations of JavaScript.</p>
 	<p>V8 isolates give us both JavaScript and WebAssembly. This means that you can leverage the prototyping power and extensive ecosystem of JavaScript, alongside the power of WebAssembly, which in addition to fast, predictable, performance, also opens up the wealth of libraries written in languages that can target WebAssembly, like C, C++, and Rust.</p>
 	<p>WebAssembly on Workers eliminates trade-offs that were originally considered irresolvable: low-latency, high-performing, and Web Platform compatible- pick three.</p>
-	<h3 id="why-rust">Why Rust?</h3>
+	<h3>Why Rust?</h3>
 	<p>Rust is a relatively new programming language with the goal of "empowering everyone to build reliable and efficient software". It's a systems level language that offers its users a high amount of control, while still seeking to offer an ergonomic, friendly and modern development experience.</p>
 	<p>The Rust-WebAssembly Working Group made incredible efforts last year to build out a suite of developer tools for WebAssembly. At Cloudflare, we're excited to support those efforts with paid developer hours and leverage those efforts to empower our users to start harnessing the power of WebAssembly on Workers now.</p>
 	<p>There are several other toolchains including Emscripten (C, C++) and AssemblyScript (TypeScript) that we're eager to support in the future. Rust is just the beginning (but we think it's a pretty great place to start!).</p>
-	<h3 id="why-now">Why now?</h3>
+	<h3>Why now?</h3>
 	<p>When developing new, highly technical, products, it's easy to get caught up in the promise and vision- often to the detriment of getting the technology into the hands of the folks who will be using it every day in the future.</p>
 	<p>We want to broaden the community that has access at the early stages of this technology- who can bring their valuable perspectives and experience, and help us shape the future of these tools.</p>
-	<p> The first step to accomplishing that is building the tools that can <em>enable</em> folks to engage with the new platform. <code>wrangler</code> is a that enabling tool. It's just enough to unblock users who were previously unable to interact with the platform because there was no paved path.</p>
-	<p>We don't plan to stop here. Folks will rightly note that there are some critical developer workflow steps that are missing from <code>wrangler</code>: linting, testing, benchmarking, and size profiling are a few that come to mind. We've got some big plans and we're excited to build out more, but we're eager to release this now to enable <em>more</em> folks to participate in the process. The best way to know what developers need is to ask and listen- by creating and open sourcing <code>wrangler</code> in such an early phase we're hoping to shorten the feedback cycle between product and user- and build the <em>right</em> thing, <em>faster</em>.</p>
+	<p>The first step to accomplishing that is building the tools that can <i>enable</i> folks to engage with the new platform. <code>wrangler</code> is a that enabling tool. It's just enough to unblock users who were previously unable to interact with the platform because there was no paved path.</p>
+	<p>We don't plan to stop here. Folks will rightly note that there are some critical developer workflow steps that are missing from <code>wrangler</code>: linting, testing, benchmarking, and size profiling are a few that come to mind. We've got some big plans and we're excited to build out more, but we're eager to release this now to enable <i>more</i> folks to participate in the process. The best way to know what developers need is to ask and listen- by creating and open sourcing <code>wrangler</code> in such an early phase we're hoping to shorten the feedback cycle between product and user- and build the <i>right</i> thing, <i>faster</i>.</p>
 	<p>You can install <code>wrangler</code> using <code>cargo</code>:</p>
-	<pre><code>cargo install wrangler</code></pre>
+	<pre class="language-bash"><code class="language-bash">cargo install wrangler</code></pre>
 	<p>To get started, head on over to the <a href="https://developers.cloudflare.com/workers/cli-wrangler">Cloudflare docs</a> and follow the <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update">tutorial</a>. You'll build and preview a Cloudflare Worker that uses Rust compiled to WebAssembly to parse Markdown.</p>
 	<p>Don't stop there though. Please check out <a href="https://github.com/cloudflare/wrangler">the repo</a>, <a href="https://github.com/cloudflare/wrangler/issues">file some issues</a>, build project templates, and write about your experience- we want to hear from you.</p>
 	<p>We're really excited to see what y'all build!</p>

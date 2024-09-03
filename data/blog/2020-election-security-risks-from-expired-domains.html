@@ -1,7 +1,6 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>This blog originally appeared in October 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1acdbd8dxTYnDdOt3CsEbS/94dc191d11595be7dc3b15ad308935f2/2020-election-security-risks-from-expired-domains.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This blog originally appeared in October 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>In less than two weeks on 3 November 2020, the United States of America will hold its quadrennial Presidential election. Concerns over cybersecurity protections and processes implemented over the preceding four years remain high, as reports of foreign interference, infrastructure vulnerabilities, and failed preparedness continue to abound.</p>
 	<p>Area 1 Security outlined the risks posed by threat actors to election administrators and their email security controls in a <a href="https://www.cloudflare.com/static/45be4c3d55f238fdfaa0f8dc301f129f/BDES-3794_CloudflareArea1_Report_PhishingBurismaHoldings_REVSEPT2022.pdf">recent report</a>; and we continue to analyze the baseline security practices as the nation prepares for the elections.</p>
 	<p>Just this week on Monday, 19 October 2020, the website for Orange County, Florida’s Supervisor of Elections was <a href="https://www.orlandosentinel.com/politics/2020-election/os-ne-2020-florida-early-voting-kicks-off-20201019-4ptenafivjhanpkgz5x6sbag64-story.html">down</a>. Florida’s fifth-most populous county failed to properly re-register their domain, something that was luckily resolved without incident. Four more election sensitive domains are set to expire before Election Day on 3 November 2020:</p>
@@ -33,13 +32,23 @@
 	<p>An extensive list of election sensitive domain registrations is provided <a href="https://github.com/area1/exim-cve-2019-10149-data/blob/master/election-domains-by-expiration-date.txt">here</a>.</p>
 	<p>Failure for any organization to properly register their domains poses several key risks:</p>
 	<ol>
-		<li>Anyone who might register an election-sensitive domain would be able to assume the identity of elections officials and send phishing emails.</li>
-		<li>Critical voter information could be removed from the internet or changed.</li>
+		<li>
+			<p>Anyone who might register an election-sensitive domain would be able to assume the identity of elections officials and send phishing emails.</p>
+		</li>
+		<li>
+			<p>Critical voter information could be removed from the internet or changed.</p>
+		</li>
 	</ol>
-	<h3 id="recommendations-">Recommendations:</h3>
+	<h3>Recommendations:</h3>
 	<ul>
-		<li><strong>Vote!</strong></li>
-		<li>Domain owners should check the expiration dates of their domains and immediately make sure they are secured for the maximum ownership time available</li>
-		<li>Observe the recommendations for securing email in the prior “<a href="https://www.cloudflare.com/static/45be4c3d55f238fdfaa0f8dc301f129f/BDES-3794_CloudflareArea1_Report_PhishingBurismaHoldings_REVSEPT2022.pdf">Phishing Election Administrators</a>” report outlining the risks to election administrators and officials.</li>
+		<li>
+			<p><b>Vote!</b></p>
+		</li>
+		<li>
+			<p>Domain owners should check the expiration dates of their domains and immediately make sure they are secured for the maximum ownership time available</p>
+		</li>
+		<li>
+			<p>Observe the recommendations for securing email in the prior “<a href="https://www.cloudflare.com/static/45be4c3d55f238fdfaa0f8dc301f129f/BDES-3794_CloudflareArea1_Report_PhishingBurismaHoldings_REVSEPT2022.pdf">Phishing Election Administrators</a>” report outlining the risks to election administrators and officials.</p>
+		</li>
 	</ul>
 </div>

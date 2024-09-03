@@ -1,27 +1,25 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
-	<p><em>The following is a guest post by <a href="https://www.linkedin.com/in/jayaprabhakar">Jayaprabhakar Kadarkarai</a>, Developer of <a href="https://www.codiva.io">Codiva.io</a>, an Online IDE used by computer science students across the world. He works full stack to deliver low latency and scalable web applications. </em></p>
+	<p><i>The following is a guest post by </i><a href="https://www.linkedin.com/in/jayaprabhakar"><i>Jayaprabhakar Kadarkarai</i></a><i>, Developer of </i><a href="https://www.codiva.io"><i>Codiva.io</i></a><i>, an Online IDE used by computer science students across the world. He works full stack to deliver low latency and scalable web applications.</i></p>
 	<p>Have you launched your website? Getting a lot of traffic? And you are planning to add more servers? You’ll need load balancing to maintain the scalability and reliability of your website. Cloudflare offers powerful <a href="https://www.cloudflare.com/load-balancing">Load Balancing</a>, but there are situations where off-the-shelf options can’t satisfy your specific needs. For those situations, you can write your own Cloudflare Worker.</p>
 	<p>In this post, we’ll learn about load balancers and how to set them up at a low cost with Cloudflare Service Workers.</p>
 	<p>This post assumes you have a basic understanding of JavaScript, as that’s the language used to write a Cloudflare Worker.</p>
-	<h3 id="the-basic-pattern">The Basic Pattern</h3>
+	<h3>The Basic Pattern</h3>
 	<p>The basic pattern starts with adding ‘fetch’ event listener to intercept the requests. You can configure which requests to intercept on the Cloudflare dashboard or using the <a href="https://developers.cloudflare.com/workers/api/#create-a-route">Cloudflare API</a>.</p>
-	<p>Then, modify the hostname of the URL and send the request to the new host.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<p>Then, modify the hostname of the URL and send the request to the new host.</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   var url = new URL(event.request.url);
 
   // https://example.com/path/ to https://myorigin.example.com/path
   url.hostname = 'myorigin.' + url.hostname
   
   event.respondWith(fetch(url));
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
+});</code></pre>
 	<p>This doesn’t do anything useful yet, but this is the basic pattern that will be used in the rest of the examples.</p>
-	<h3 id="load-balancer-with-random-routing">Load Balancer with Random Routing</h3>
+	<h3>Load Balancer with Random Routing</h3>
 	<p>When you have a list of origin servers, pick a random host to route to.</p>
-	<p>This is a very basic load balancing technique to evenly distribute the traffic across all origin servers.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">var hostnames = [
+	<p>This is a very basic load balancing technique to evenly distribute the traffic across all origin servers.</p>
+	<pre class="language-javascript"><code class="language-javascript">var hostnames = [
   "0.example.com",
   "1.example.com",
   "2.example.com"
@@ -38,12 +36,10 @@ addEventListener('fetch', event =&gt; {
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="load-balancer-with-fallback">Load Balancer with Fallback</h3>
-	<p>What about when a host is down? A simple fallback strategy is to route the request to a different host. Use this only if you know the requests are idempotent. In general, this means GET requests are okay, but you might wish to handle POST requests another way.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+}</code></pre>
+	<h3>Load Balancer with Fallback</h3>
+	<p>What about when a host is down? A simple fallback strategy is to route the request to a different host. Use this only if you know the requests are idempotent. In general, this means GET requests are okay, but you might wish to handle POST requests another way.</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
 
   // Randomly pick the primary host
   var primary = getRandomInt(hostnames.length);
@@ -69,18 +65,14 @@ function getRandomInt(max) {
         clearTimeout(timeoutId);
         event.respondWith(response);
     });
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="geographic-routing">Geographic Routing</h3>
+});</code></pre>
+	<h3>Geographic Routing</h3>
 	<p>Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
-	<p>You can access it using:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">var countryCode = event.request.headers.get(‘CF-IPCountry’);
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We can use the countryCode to route requests from different locations to different servers in different regions. </p>
-	<p>For example, 80% of the traffic to Codiva.io is from the US and India. So, I have servers in two different regions (Oregon, USA; and Mumbai, India). Requests from India and &nbsp;other countries near it are routed to servers in India. All other requests are routed to the US data center.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">const US_HOST = "us.example.com"
+	<p>You can access it using:</p>
+	<pre class="language-javascript"><code class="language-javascript">var countryCode = event.request.headers.get(‘CF-IPCountry’);</code></pre>
+	<p>We can use the countryCode to route requests from different locations to different servers in different regions.</p>
+	<p>For example, 80% of the traffic to Codiva.io is from the US and India. So, I have servers in two different regions (Oregon, USA; and Mumbai, India). Requests from India and &nbsp;other countries near it are routed to servers in India. All other requests are routed to the US data center.</p>
+	<pre class="language-javascript"><code class="language-javascript">const US_HOST = "us.example.com"
 const IN_HOST = "in.example.com"
 
 var COUNTRIES_MAP = {
@@ -101,13 +93,10 @@ addEventListener('fetch', event =&gt; {
   }
   
   event.respondWith(fetch(url));
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="putting-it-all-together">Putting it all together</h3>
-	<p></p>
-	<p>Now, let us combine the geographic routing, random load balancing and fallback into a single worker:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">const US_HOSTS = [
+});</code></pre>
+	<h3>Putting it all together</h3>
+	<p>Now, let us combine the geographic routing, random load balancing and fallback into a single worker:</p>
+	<pre class="language-javascript"><code class="language-javascript">const US_HOSTS = [
   "0.us.example.com",
   "1.us.example.com",
   "2.us.example.com"
@@ -163,10 +152,8 @@ addEventListener('fetch', event =&gt; {
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="recap">Recap</h3>
+}</code></pre>
+	<h3>Recap</h3>
 	<p>In this article, you saw the power of Cloudflare workers and how simple it is to use it. Before implementing custom load balancer with workers, take a look at <a href="https://www.cloudflare.com/load-balancing">Cloudflare’s load balancer</a>.</p>
-	<p>For more examples, take a look at the <a href="https://developers.cloudflare.com/workers/recipes">recipes</a> on the developer docs page. </p>
+	<p>For more examples, take a look at the <a href="https://developers.cloudflare.com/workers/recipes">recipes</a> on the developer docs page.</p>
 </div>

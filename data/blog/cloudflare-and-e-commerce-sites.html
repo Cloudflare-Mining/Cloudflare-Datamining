@@ -1,31 +1,26 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Cloudflare and E-commerce sites" src="https://blog.cloudflare.com/content/images/ecommerce.jpg.scaled500.jpg" title="Cloudflare and E-commerce sites"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sxsC1zf2IaC91HMmyiRAQ/1ebafdb624ac0e8f1a472ae1e6da191e/ecommerce.jpg.scaled500.jpg" alt="Cloudflare and E-commerce sites" class="kg-image" width="400" height="359" loading="lazy">
+
+	</figure>
 	<p>We get a number of questions about using CloudFlare with e-commerce sites in customer service. CloudFlare works great at making e-commerce sites faster and protecting them against attacks. I thought I would try to address many of the key questions in a handy guide that you can use to reduce the probability of having issues with your e-commerce site.</p>
-	<h3 id="immediatestepsafterinstallingcloudflare">Immediate steps after installing CloudFlare</h3>
-	<h4 id="allowlistcloudflaresipaddresses">Allowlist Cloudflare's IP addresses</h4>
-	<p>You should make sure that you don't have any rules in your .htacess or iptables that are blocking CloudFlare's requests from our IPs. If you have other security solutions in place prior to joining CloudFlare, these may interfere with CloudFlare's ability to connect to your site. Allowlisting our IP ranges will help avoid "Site Offline" messages caused when we cannot reach your server from our network. You can find<br>
-		the <a href="https://support.cloudflare.com/kb/troubleshooting/what-ip-address-ranges-does-cloudflare-use">current list of CloudFlare's IPs in our FAQ</a>.</p>
-	<h4 id="restoringoriginalvisitorip">Restoring Original Visitor IP</h4>
+	<h3>Immediate steps after installing CloudFlare</h3>
+	<h4>Allowlist Cloudflare's IP addresses</h4>
+	<p>You should make sure that you don't have any rules in your .htacess or iptables that are blocking CloudFlare's requests from our IPs. If you have other security solutions in place prior to joining CloudFlare, these may interfere with CloudFlare's ability to connect to your site. Allowlisting our IP ranges will help avoid "Site Offline" messages caused when we cannot reach your server from our network. You can findthe <a href="https://support.cloudflare.com/kb/troubleshooting/what-ip-address-ranges-does-cloudflare-use">current list of CloudFlare's IPs in our FAQ</a>.</p>
+	<h4>Restoring Original Visitor IP</h4>
 	<p>CloudFlare works as a reverse proxy, which means traffic passes through our network where it is cleaned and accelerated before being passed on to your origin server. This means that, by default, your server will usually see a CloudFlare IP. Since e-commerce sites have a lot of reasons to see a visitor's original IP (e.g., preventing credit card fraud, customizing content based on a visitor's geo location, etc.), sites using CloudFlare can benefit from <a href="https://support.cloudflare.com/forums/21318827-How-do-I-restore-original-visitor-IP-to-my-server-logs-">using one of the quick and easy techniques</a> to show visitor IPs to server logs. All our <a href="https://www.cloudflare.com/hosting-partners">hosting provider partners</a> have already installed mod_cloudflare, or an equivalent, so if you're using one of them you should be set.</p>
-	<h4 id="sslandcloudflare">SSL and CloudFlare</h4>
-	<p>Since traffic passes through CloudFlare before going to your origin server, if you use SSL on your site you'll either need to set it up on a domain that isn't proxied through CloudFlare, or we'll need to install a<br>
-		SSL certificate for your domain on our network. We've worked with one of the <a href="http://www.globalsign.com">oldest certificate authority partners</a> to make SSL certs that work on our network easy and inexpensive. The full process for SSL and CloudFlare is outlined <a href="https://support.cloudflare.com/entries/22077247-How-do-I-add-SSL-to-my-site-">here</a>.</p>
-	<h4 id="subdomains">Subdomains</h4>
-	<p>While CloudFlare will generally get many common subdomain records during<br>
-		the process in which you add a domain, customized subdomains may not be picked up and you should make sure that these are correctly added in your <a href="https://www.cloudflare.com/dns-settings.html">CloudFlare DNS settings</a>. In other words, if you have some part of your site hosted at mrscruffypants.yoursite.com, just make sure you add it when you first set up your site.</p>
-	<h3 id="somefrequentlyaskedquestionsorconcernsfromecommercesiteowners">Some frequently asked questions or concerns from e-commerce site owners</h3>
-	<h4 id="1willdynamiccontentbeaffectedusingcloudflare">1. Will dynamic content be affected using CloudFlare?</h4>
-	<p>CloudFlare will not hurt dynamic content performance at all. Since CloudFlare only <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">caches static<br>
-			content</a>, such as images and CSS, we wouldn't cause any issues for HTML or PHP. In fact, our system was written to be able to optimize dynamic content with options like minification on the fly without slowing it down or<br>
-		requiring it to be cached. This means any changes you make to your content are reflected immediately on your site.</p>
-	<h4 id="2willipgeolocationworkwithcloudflare">2. Will IP geolocation work with CloudFlare?</h4>
+	<h4>SSL and CloudFlare</h4>
+	<p>Since traffic passes through CloudFlare before going to your origin server, if you use SSL on your site you'll either need to set it up on a domain that isn't proxied through CloudFlare, or we'll need to install aSSL certificate for your domain on our network. We've worked with one of the <a href="http://www.globalsign.com">oldest certificate authority partners</a> to make SSL certs that work on our network easy and inexpensive. The full process for SSL and CloudFlare is outlined <a href="https://support.cloudflare.com/entries/22077247-How-do-I-add-SSL-to-my-site-">here</a>.</p>
+	<h4>Subdomains</h4>
+	<p>While CloudFlare will generally get many common subdomain records duringthe process in which you add a domain, customized subdomains may not be picked up and you should make sure that these are correctly added in your <a href="https://www.cloudflare.com/dns-settings.html">CloudFlare DNS settings</a>. In other words, if you have some part of your site hosted at mrscruffypants.yoursite.com, just make sure you add it when you first set up your site.</p>
+	<h3>Some frequently asked questions or concerns from e-commerce site owners</h3>
+	<h4>1. Will dynamic content be affected using CloudFlare?</h4>
+	<p>CloudFlare will not hurt dynamic content performance at all. Since CloudFlare only <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">caches staticcontent</a>, such as images and CSS, we wouldn't cause any issues for HTML or PHP. In fact, our system was written to be able to optimize dynamic content with options like minification on the fly without slowing it down orrequiring it to be cached. This means any changes you make to your content are reflected immediately on your site.</p>
+	<h4>2. Will IP geolocation work with CloudFlare?</h4>
 	<p>CloudFlare includes the geo location of visitors in the header of every request so if you don't already run a geo location database you can extract this information and begin using it. If you already do geo location based on IPs, you can continue it exactly as before as long as you are on one of CloudFlare's <a href="https://www.cloudflare.com/hosting-partners">hosting provider partners</a> or you are using one of the <a href="https://support.cloudflare.com/forums/21318827-How-do-I-restore-original-visitor-IP-to-my-server-logs-">quick and easy techniques to retrieve your visitor's original IP address</a>.</p>
-	<h4 id="3howdoescloudflarecachecontent">3. How does CloudFlare cache content?</h4>
-	<p>CloudFlare <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">caches static<br>
-			content</a> based on the file extension of the content (for example, images and css on your site). So your company's logo will get cached, but if you update the pricing or an item's description on your site it will show up immediately. We quickly detect even changes to static files like images, but if you ever need to clear the cache you can do so with a single<br>
-		click of the "Purge Cache" button on the <a href="https://www.cloudflare.com/cloudflare-settings.html">CloudFlare<br>
-			Settings</a> page.</p>
+	<h4>3. How does CloudFlare cache content?</h4>
+	<p>CloudFlare <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">caches staticcontent</a> based on the file extension of the content (for example, images and css on your site). So your company's logo will get cached, but if you update the pricing or an item's description on your site it will show up immediately. We quickly detect even changes to static files like images, but if you ever need to clear the cache you can do so with a singleclick of the "Purge Cache" button on the <a href="https://www.cloudflare.com/cloudflare-settings.html">CloudFlareSettings</a> page.</p>
 	<p>Thousands of e-commerce sites use CloudFlare to better sell goods online. If you have any questions about your particular site, don't hesitate to <a href="https://www.cloudflare.com/contact">contact us</a> with any questions.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,16 +1,22 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yZwKjuBdqryo3rgFNCywb/8d9df292b1f9ddfce21eaa1e4b62a797/good-news-vulnerable-ntp-servers-closing-down.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>On Monday, February 10th, CloudFlare experienced a large DDoS attack, with nearly <a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">400Gbps of NTP attack traffic hitting our network</a>. We were not the only networks getting hit by massive NTP attacks. Around the same time, OVH reported a similarly sized attack. Since the attack we’ve heard from a number of other networks that have seen large NTP-based attacks over the last few weeks.</p>
-	<blockquote class="twitter-tweet" lang="en">We see today lot of new DDoS attacks from Internet to our network. Type: NTP AMP Size: &gt;350Gbps. No issue. VAC is great :) — Oles (@olesovhcom) <a href="https://twitter.com/olesovhcom/statuses/433631778620702721">February 12, 2014</a></blockquote>
+	<blockquote>
+		<p>We see today lot of new DDoS attacks from Internet to our network. Type: NTP AMP Size: &gt;350Gbps. No issue. VAC is great :) — Oles (@olesovhcom) <a href="https://twitter.com/olesovhcom/statuses/433631778620702721">February 12, 2014</a></p>
+	</blockquote>
 	<p>John-Graham Cumming on our team wrote a blog post before the attack describing how such an attack is possible by <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">using a combination of spoofed UDP packets and vulnerable NTP servers</a>.</p>
 	<p>During the 400Gbps attack we saw 4,259 IPv4 addresses of involved vulnerable servers that were sending attack traffic to our network. These networks were not controlled by the attacker directly but instead were running network time protocol (NTP) servers that responded to commands that would create very large responses, thus acting as a good amplification vector. Specifically, all of these servers were used by attackers to reply large packets in response to the "monlist" command.</p>
-	<h3 id="somegoodnews">Some Good News</h3>
+	<h3>Some Good News</h3>
 	<p>In the aftermath of this massive attack, we decided to publish the list of networks originating these attacks hoping to have them fix the problem. Since the blog post we’ve been monitoring the networks to see whether attention to this problem has helped close the vulnerable NTP servers. The results are encouraging:</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-02-23_at_3.23.56_PM.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZKy4WIyO90QOic4tInJcl/519ac9a1bac6d12c838a1132bcb76002/Screen_Shot_2014-02-23_at_3.23.56_PM.png" alt="" class="kg-image" width="404" height="302" loading="lazy">
+
+	</figure>
 	<p>After a week and a half, more than 75% of the vulnerable servers involved in the attack are now no longer vulnerable. While in some cases the servers might be temporarily unreachable, the trend is clear: network administrators have gotten the message and are closing vulnerable NTP servers.</p>
 	<p>The people behind the <a href="http://www.openntpproject.org">openntp.org</a> project also have noticed a massive improvement of the situation worlwide:</p>
-	<blockquote class="twitter-tweet" lang="en">NTP MONLIST Amplifiers down from 490k -&gt; 349k in the last week. <a href="http://t.co/35vLsj3DZJ">http://t.co/35vLsj3DZJ</a> to check your network. — jared mauch (@jaredmauch) <a href="https://twitter.com/jaredmauch/statuses/434353900670300161">February 14, 2014</a></blockquote>
+	<blockquote>
+		<p>NTP MONLIST Amplifiers down from 490k -&gt; 349k in the last week. <a href="http://t.co/35vLsj3DZJ">http://t.co/35vLsj3DZJ</a> to check your network. — jared mauch (@jaredmauch) <a href="https://twitter.com/jaredmauch/statuses/434353900670300161">February 14, 2014</a></p>
+	</blockquote>
 	<p>Notably, we’ve seen a huge decrease from OVH, who have taken significant <a href="http://travaux.ovh.net/?do=details&amp;id=10222">measures</a> to prevent NTP attacks coming from its large installed base of servers. This is an encouraging achievement from the community, deploying tremendous efforts to solve a real problem.</p>
-	<!--kg-card-end: markdown-->
 </div>

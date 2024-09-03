@@ -1,66 +1,54 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gxIk0IKMqWIgs9s76KPHA/6a0552c6b23a3293f9b30f076967d23e/preventing-malicious-request-loops.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>The web is an collaborative ecosystem. Web standards exist to ensure that participants of the network behave in a predictable way. If network participants deviate from the established standards then there can be unintended consequences. This blog post is about one of these unintended consequences.</p>
 	<p>A group of researchers recently published a paper <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">"Forwarding Loop Attacks in the Content Delivery Networks"</a> describing what can happen when web services interact in a non-compliant way. They describe an attack where a malicious user can force multiple service providers to send each other an unending stream of requests in a loop. This request loop can result in resource exhaustion and denial of service at the service provider. This paper also demonstrated that the attack is practical, and can be performed using a large list of service providers.</p>
 	<p>CloudFlare's service has been modified to be standards-compliant with respect to HTTP proxying. However, fixing the vulnerability that enables this attack requires all proxy services to conform to the same standards. If even one service provider is non-compliant, the attack can still be carried out against compliant services. In this post, we will describe the attack and explain how a proxy services can go from being part of the problem to part of the solution.</p>
-	<h3 id="reverseproxies">Reverse Proxies</h3>
+	<h3>Reverse Proxies</h3>
 	<p>CloudFlare works as a reverse proxy. When an HTTP(S) request comes into CloudFlare’s network, one of two things happen; either CloudFlare returns a cached response for the request or CloudFlare makes a request to the website’s origin server and returns that response. The fact that CloudFlare can inspect and modify requests going through its network enables powerful features like caching, WAF, RocketLoader and more.</p>
 	<p>It’s also not uncommon to put multiple reverse proxies in front of your site. This practice, called stacking proxies, is often used to enable multiple service providers that provide different features. For example, you could use another service for WAF and CloudFlare for caching. Although we would prefer that customers use CloudFlare's <a href="https://www.cloudflare.com/waf">state-of-the-art WAF</a> this is a reasonable configuration and one that several CloudFlare customers use. Proxies can be stacked in front of an origin server, but what happens if the last proxy in the stack points to the first? You get a proxy loop.</p>
 	<p>A proxy loop of two is easy to imagine. Configure a first reverse proxy service to use a second reverse proxy service as it’s origin, and then configure the second service to use the first as its origin.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/infinite-request-loop.png" alt="Infinite request loop" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LDVA6petTYczbNjxQhrfI/5e2493c0aae0a95e5979696368aef4be/infinite-request-loop.png" alt="Infinite request loop" class="kg-image" width="515" height="260" loading="lazy">
+
+	</figure>
 	<p>In theory, any request to this site would end up being sent back and forth between the two proxies. Each iteration of this loop will cause a request to be sent and use up resources. Luckily, most reverse proxy services have protections in place to avoid basic attacks like this.</p>
-	<h3 id="preventingnaveloops">Preventing Naïve Loops</h3>
+	<h3>Preventing Naïve Loops</h3>
 	<p>The authors of HTTP 1.1 were aware of the potential of request loops and built in protection as part of the standard. This loop prevention comes in the form of the "Via" header. From section 5.7.1 of [RFC 7230](<a href="https://tools.ietf.org/html/rfc7230#section-5.7.1">https://tools.ietf.org/html/rfc7230#section-5.7.1</a>](<a href="https://tools.ietf.org/html/rfc7230#section-5.7.1">https://tools.ietf.org/html/rfc7230#section-5.7.1</a>):</p>
 	<hr>
 	<blockquote>
-		<p>The "Via" header field indicates the presence of intermediate<br>
-			protocols and recipients between the user agent and the server (on<br>
-			requests) or between the origin server and the client (on responses),<br>
-			similar to the "Received" header field in email (Section 3.6.7 of<br>
-			[RFC5322]). Via can be used for tracking message forwards, avoiding<br>
-			request loops, and identifying the protocol capabilities of senders<br>
-			along the request/response chain.</p>
+		<p>The "Via" header field indicates the presence of intermediateprotocols and recipients between the user agent and the server (onrequests) or between the origin server and the client (on responses),similar to the "Received" header field in email (Section 3.6.7 of[RFC5322]). Via can be used for tracking message forwards, avoidingrequest loops, and identifying the protocol capabilities of sendersalong the request/response chain.</p>
 		<p>…</p>
-		<p>Multiple Via field values represent each proxy or gateway that has<br>
-			forwarded the message. Each intermediary appends its own information<br>
-			about how the message was received, such that the end result is<br>
-			ordered according to the sequence of forwarding recipients.<br>
-			A proxy <strong>MUST</strong> send an appropriate Via header field, as described<br>
-			below, in each message that it forwards. An HTTP-to-HTTP gateway<br>
-			MUST send an appropriate Via header field in each inbound request<br>
-			message and MAY send a Via header field in forwarded response<br>
-			messages.</p>
+		<p>Multiple Via field values represent each proxy or gateway that hasforwarded the message. Each intermediary appends its own informationabout how the message was received, such that the end result isordered according to the sequence of forwarding recipients.A proxy <b>MUST</b> send an appropriate Via header field, as describedbelow, in each message that it forwards. An HTTP-to-HTTP gatewayMUST send an appropriate Via header field in each inbound requestmessage and MAY send a Via header field in forwarded responsemessages.</p>
 		<p>…</p>
-		<p>For example, a request message could be sent from an HTTP/1.0 user<br>
-			agent to an internal proxy code-named "fred", which uses HTTP/1.1 to<br>
-			forward the request to a public proxy at p.example.net, which<br>
-			completes the request by forwarding it to the origin server at<br>
-			www.example.com. The request received by www.example.com would then<br>
-			have the following Via header field:</p>
+		<p>For example, a request message could be sent from an HTTP/1.0 useragent to an internal proxy code-named "fred", which uses HTTP/1.1 toforward the request to a public proxy at p.example.net, whichcompletes the request by forwarding it to the origin server at<a href="http://www.example.com">www.example.com</a>. The request received by <a href="http://www.example.com">www.example.com</a> would thenhave the following Via header field:</p>
 	</blockquote>
-	<pre><code>Via: 1.0 fred, 1.1 p.example.net
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">Via: 1.0 fred, 1.1 p.example.net</code></pre>
 	<blockquote>
-		<p>A sender SHOULD NOT combine multiple entries unless they are all<br>
-			under the same organizational control and the hosts have already been<br>
-			replaced by pseudonyms. A sender MUST NOT combine entries that have<br>
-			different received-protocol values.</p>
+		<p>A sender SHOULD NOT combine multiple entries unless they are allunder the same organizational control and the hosts have already beenreplaced by pseudonyms. A sender MUST NOT combine entries that havedifferent received-protocol values.</p>
 	</blockquote>
 	<hr>
 	<p>CloudFlare currently uses this mechanism to prevent request loops. When a request comes through the CloudFlare network that isn’t in cache, CloudFlare creates a new request for the origin server. Outgoing requests get a "Via" header containing the HTTP protocol version of the incoming request and a CloudFlare-specific pseudonym, e.g.:</p>
-	<pre><code>Via: 1.1 cloudflare
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">Via: 1.1 cloudflare</code></pre>
 	<p>If a request comes into the network with "cloudflare" in the Via header, an error is returned. This short circuits any request that loops through CloudFlare.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/preventing-infinite-request-loop.png" alt="Preventing Infinite request loops with Via header" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oOCqgilurlXdB2QrIExyW/efcc8c31b464c2e77271a42cf87823e7/preventing-infinite-request-loop.png" alt="Preventing Infinite request loops with Via header" class="kg-image" width="515" height="288" loading="lazy">
+
+	</figure>
 	<p>Implementing this protection means CloudFlare is safe from HTTP request loops, right? Not so soon.</p>
-	<h3 id="thebadnews">The Bad News</h3>
+	<h3>The Bad News</h3>
 	<p>Not all reverse proxy services are RFC 7230 compliant. Some services give customers the ability to strip or modify headers, including the Via header. This is expressly not allowed by the RFC: proxies are obligated to leave existing tags from other proxies as part of incoming Via headers. A proxy is only allowed to modify the parts of the header that were created by its own organization. Allowing proxies to change this header leads to bad things.</p>
 	<p>Let’s take the example above of a two proxy loop. Suppose both proxies are configured to add their tag to the Via header on outgoing requests, and to fail requests that contain their own Via tag. Suppose also that both proxies are set up to remove the "Via" header from incoming requests. When the request comes back from the second proxy, the first one is unable to identify that it has already proxied the request. This request is then treated like a regular request, causing the first proxy to make request to the second proxy, which strips the header and sends it back, and so on.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/missing-via-header.png" alt="Infinite request loop due to stripped Via header" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eIUnqXZZhhAdvQtqd2Zss/cad262d2867f103d72d021320e5ac9e2/missing-via-header.png" alt="Infinite request loop due to stripped Via header" class="kg-image" width="515" height="265" loading="lazy">
+
+	</figure>
 	<p>This attack can do a lot of damage, using up resources from both service providers. It can also cause unexpected behavior in automated attack prevention systems, resulting in one service provider being blocked by another. Needless to say, this is not ideal.</p>
-	<h3 id="forcloudflarecustomers">For CloudFlare Customers</h3>
+	<h3>For CloudFlare Customers</h3>
 	<p>By default, some web servers do not compress outgoing response if the Via header is present in the request. This can result in your origin using unnecessary bandwidth to send data to CloudFlare. Consult the CloudFlare <a href="https://support.cloudflare.com/hc/en-us/articles/215871448">Knowledge Base</a> to learn how to test if your server has this behavior and how to disable it. If you do not have the ability to modify your server's configuration, please <a href="https://support.cloudflare.com/hc/en-us">contact support</a>.</p>
-	<h3 id="acalltoaction">A Call to Action</h3>
+	<h3>A Call to Action</h3>
 	<p>The authors of the paper contacted the affected parties before publishing this paper, but not all of them may have taken action. If your organization provides reverse proxy services to the general public, we recommend you implement the following logic:</p>
 	<ul>
 		<li>
@@ -74,6 +62,5 @@
 		</li>
 	</ul>
 	<p>One non-compliant reverse proxy service can cause negative consequences for everyone, let’s work together to avoid request loops.</p>
-	<p><small>I would like to thank Tao Wan, Jianjun Chen, Jian Jiang, Jinjin Liang for working with us on a fix. I would also like to give a special thanks to Pasha Kravtsov for helping investigate this issue and Rajeev Sharma for our Via implementation.</small></p>
-	<!--kg-card-end: markdown-->
+	<p>I would like to thank Tao Wan, Jianjun Chen, Jian Jiang, Jinjin Liang for working with us on a fix. I would also like to give a special thanks to Pasha Kravtsov for helping investigate this issue and Rajeev Sharma for our Via implementation.</p>
 </div>

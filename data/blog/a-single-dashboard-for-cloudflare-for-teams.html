@@ -1,46 +1,74 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HYQb3rOdfwT4Xk3HkXzMo/03551ee706088d25016d87451fc327dd/a-single-dashboard-for-cloudflare-for-teams.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Starting today, Cloudflare Access can now be used in the Cloudflare for Teams dashboard. You can manage security policies for your people and devices in the same place that you build zero-trust rules to protect your applications and resources. Everything is now in one place in a single dashboard.</p>
 	<p>We are excited to launch a new UI that can be used across the entire Teams platform, but we didn’t build this dashboard just for the sake of a new look-and-feel. While migrating the Access dashboard, we focused on solving one of the largest sources of user confusion in the product.</p>
 	<p>This post breaks down why the original &nbsp;UI caused some headaches, how we think about objects in Cloudflare for Teams, and how we set out to fix the way we display that to our users.</p>
-	<h3 id="cloudflare-access">Cloudflare Access</h3>
+	<h3>Cloudflare Access</h3>
 	<p><a href="https://teams.cloudflare.com/access/index.html">Cloudflare Access</a> is one-half of <a href="https://teams.cloudflare.com">Cloudflare for Teams</a>, a security platform that runs on Cloudflare’s network. Teams protects users, devices and data &nbsp;without compromising experience or performance. We built Cloudflare Access to <a href="https://blog.cloudflare.com/dogfooding-from-home">solve our own headaches</a> with private networks as we grew from a team concentrated in a single office to a globally distributed organization.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/access-tunnel-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6reW00xK1uHks0ndOasP0D/ba13d166ff93234ddcf5d1d7914bb913/access-tunnel-1.png" alt="" class="kg-image" width="2296" height="1101" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Access replaces corporate VPNs with Cloudflare’s network in a zero-trust model. Instead of placing internal tools on a private network, teams deploy them in any environment, including hybrid or multi-cloud models, and secure them consistently with Cloudflare’s network.</p>
 	<p>When users connect to those tools, they are prompted to login with their team’s identity provider. Cloudflare Access checks their login against the list of allowed users and, if permitted, allows the request to proceed.</p>
 	<p>Deploying Access does not require exposing new holes in corporate firewalls. Teams connect their resources through a secure outbound connection, Argo Tunnel, which runs in your infrastructure to connect the applications and machines to Cloudflare. That tunnel makes outbound-only calls to the Cloudflare network and organizations can replace complex firewall rules with just one: disable all inbound connections.</p>
-	<h3 id="sites-vs-accounts">Sites vs. Accounts</h3>
+	<h3>Sites vs. Accounts</h3>
 	<p>When you use Cloudflare, you use the platform at two levels: account and site. You have one Cloudflare account, though you can be a member of multiple accounts. That one account captures details like your billing profile and notification settings.</p>
 	<p>Your account contains sites, the hostnames or zones that you add to Cloudflare. You configure features that apply to a site, like <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">web application firewall (WAF)</a> and caching rules.</p>
 	<p>When we launched Access nearly two years ago, you could use the product to add an identity check to a site you added to Cloudflare, either at the hostname, subdomain, or path. To do that, users select the site in their Cloudflare dashboard, toggle to the Access tab, and build a rule specific to that site.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/access-tab.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QbXmvGsCH4ezSxd4XqnMC/863c21421a2c4645c43e2bfb386a36c5/access-tab.png" alt="" class="kg-image" width="641" height="649" loading="lazy">
+
+	</figure>
 	<p>To add rules to a different site, a user steps back up a level. They need to select the new site from the dropdown and load the Access tab for that site. However, two components in the UI remained the same and shared configuration:</p>
 	<ul>
-		<li>SSO integration</li>
-		<li>Logs</li>
+		<li>
+			<p>SSO integration</p>
+		</li>
+		<li>
+			<p>Logs</p>
+		</li>
 	</ul>
 	<p>The SSO integration is where Access pulls information about identity. Users integrate their Okta, AzureAD, GSuite accounts, or other identity providers, in this card. We made a decision that the integration should apply across your entire account; you should not need to reconfigure your SSO connection on every site where you want to add an Access rule.</p>
 	<p>However, we displayed that information in the site-specific page. Cloudflare has account-level concepts, like billing or account users, but we wanted to keep everything related to Access in a single page so we made this compromise. Logs followed a similar pattern.</p>
 	<p>This decision caused confusion. For example, we add a log table to the bottom of the tab when users view “site{.}com”. However, that table actually presented logs from both “site{.}com” and any other hostname in the account.</p>
 	<p>As more features were added, this exception grew out of control. At this point, the majority of features you see when you open the Access tab for one of your sites are account-level features stuffed into the site view. The page below is the Access tab for a site in my account, widgetcorp{.}tech. Highlighted in green are the boxes that apply to the site I have selected. Highlighted in red are the boxes that apply to my Access account.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/Screen-Shot-2020-05-04-at-9.24.20-AM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7N0Vi02BpJipg2PX7u0Phy/eaeaa96e37f94d2dcb7e7f29d1a27cfe/Screen-Shot-2020-05-04-at-9.24.20-AM.png" alt="" class="kg-image" width="1163" height="354" loading="lazy">
+
+	</figure>
 	<p>This user experience is unnecessarily complex . Even worse, though, is that confusion in security products can lead to real incidents. Any time that a user asks “am I building something for my account or this site?” We needed to fix both.</p>
-	<h3 id="starting-with-a-new-design">Starting with a new design</h3>
+	<h3>Starting with a new design</h3>
 	<p>A few months ago, Cloudflare launched Cloudflare for Teams, which consists of two complementary products: Access and a new solution, <a href="https://teams.cloudflare.com/gateway/index.html">Cloudflare Gateway</a>. If Access is a bouncer standing in front of the door, checking identity, Gateway is a bodyguard, keeping your team safe as you navigate the Internet.</p>
 	<p>Gateway has no concept of sites, at least not sites that you host yourself. Rather than securing your Internet properties, like Cloudflare’s infrastructure products that rely on the reverse proxy, Gateway secures your team from the Internet, and the threats on it. For the first time, you could use a Cloudflare product without a site on Cloudflare.</p>
 	<p>Gateway introduced other new concepts which have no relation to a domain name in the traditional Cloudflare sense. You can add your office network and your home WiFi to your Gateway account. You can build rules to block any sites on the Internet. You can now use Gateway on mobile devices and <a href="https://blog.cloudflare.com/announcing-the-beta-for-warp-for-macos-and-windows">soon desktops</a> as well.</p>
 	<p>To capture that model, we started on a new UI from scratch, and earlier this year <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">we launched a new dashboard for Gateway</a>, dash.teams.cloudflare.com.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/new-dash-gateway.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="account-settings-now-have-a-home-of-their-own">Account settings now have a home of their own</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LoRFtNPOIbolv4eCKualU/6dbe31c5c13744540c5337f436a79158/new-dash-gateway.png" alt="" class="kg-image" width="1600" height="1207" loading="lazy">
+
+	</figure>
+	<h3>Account settings now have a home of their own</h3>
 	<p>The products in Cloudflare for Teams should live in one place; you shouldn’t need to hop back and forth between different dashboards to manage them. Bringing Access into the Teams dashboard puts everything under one roof.</p>
 	<p>That also gave us an opportunity to solve the confusion in the current Access UI. Since the Teams dashboard is not constrained by the site-specific model, we could break out the dashboard into components that made sense for how people use the Access product.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/new-dash-auth.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bmn2yFDQ5OxMk5u27PsbR/f14bed6b7d1c823535c18b62dfec8a1c/new-dash-auth.png" alt="" class="kg-image" width="1600" height="1207" loading="lazy">
+
+	</figure>
 	<p>The new dashboard untangles the tools in Access that apply to your entire account (the methods that you use to secure your resources) from the features that apply to a single site (the rules you build to protect a resource).</p>
-	<h3 id="one-dashboard-for-your-team">One dashboard for your team</h3>
+	<h3>One dashboard for your team</h3>
 	<p>Merging Access into the Cloudflare for Teams dashboard, and solving the problems of the original UI, is just the beginning. We’ll be using that foundation to release new features in both Access and Gateway, including more that apply across both products.</p>
 	<p>You will also be able to continue to extend some of the configuration made in Access to Gateway. For example, an integration with a provider like Okta to build zero-trust policies in Access can eventually be reused for adding group-based policies into Gateway. You’ll see the beginning of that in the new UI, as well, with categories like “My Teams” and “Logs” that apply or will apply to both products. As we continue, we’re going to try to avoid making the same mistake of conflating account, site, and now product objects.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/one-dash-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-s-next">What’s next?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JDlqoqhaurj5kidiMlkH8/6a6b8f87a7ccf68cbe1bf1b10479fe85/one-dash-1.png" alt="" class="kg-image" width="1246" height="1246" loading="lazy">
+
+	</figure>
+	<h3>What’s next?</h3>
 	<p>The new Access UI is available to all customers today in the Cloudflare for Teams dashboard. You can get started by visiting <a href="https://dash.teams.cloudflare.com">this link</a> and signing in with your Cloudflare account.</p>
 	<p>To use the Access UI, you will first need to enable Cloudflare Access and add a site to Cloudflare in the existing dashboard. Instructions are available <a href="https://developers.cloudflare.com/access/about/quick-start">here</a>. You can also watch a <a href="https://watch.cloudflarestream.com/16c1aae7bf7f50c648fec8afa6b7f6fa">guided tour of the new site</a>.</p>
 	<p>No new features have been added, though we’re busy working on them. This release focused entirely on improving how users approach the product based on the feedback we have received over 22 months. We’re still listening to new feedback. Run into an issue or notice an area of improvement? <a href="https://forms.gle/MTh2FJ5Q8Gmh31qr7">Please tell us</a>.</p>

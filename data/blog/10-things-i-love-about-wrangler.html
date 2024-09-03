@@ -1,58 +1,88 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-2.png" class="kg-image" alt="10 things I love about Wrangler v2.0" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2O7RRQpURXc7rdMSfAPUzo/b95996fddb83b2bd370a4194e840e9f8/image4-2.png" alt="10 things I love about Wrangler v2.0" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Last November, <a href="https://blog.cloudflare.com/wrangler-v2-beta">we announced</a> the beta release of a full rewrite of Wrangler, our CLI for building Cloudflare Workers. Since then, we’ve been working round the clock to make sure it's feature complete, bug-free, and easy to use. We are proud to announce that Wrangler goes public today for general usage, and can’t wait to see what people build with it!</p>
 	<p>Rewrites can be scary. Our goal for this version of Wrangler was backward compatibility with the original version, while significantly improving the developer experience. I'd like to take this opportunity to present 10 reasons why you should upgrade to the new Wrangler!</p>
-	<h3 id="1-it-s-simpler-to-install-">1. It's simpler to install:</h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image7-1.png" class="kg-image" alt="Previously, the command to install wrangler was “npm install @cloudflare/wrangler --global”. The newer, simpler way is “npm install wrangler”" loading="lazy">
-		<figcaption><em>A simpler way to get started.</em></figcaption>
+	<h3>1. It's simpler to install:</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iw5RCJVagbVV6ME253GWC/14616e533119fdb56d7da4003a9fc0b2/image7-1.png" alt="Previously, the command to install wrangler was “npm install @cloudflare/wrangler --global”. The newer, simpler way is “npm install wrangler”" class="kg-image" width="1596" height="732" loading="lazy">
+
 	</figure>
+	<p><i>A simpler way to get started.</i></p>
 	<p>Previously, folks would have to install <code>@cloudflare/wrangler</code> globally on a system. This made it hard to use different versions of Wrangler across projects. Further, it was hard to install on some CI systems because of lack of access to a user's root folder. &nbsp;Sometimes, folks would forget to add the <code>@cloudflare</code> scope when installing, confusing them when a completely unrelated package was installed and didn't work as expected.</p>
 	<p>Let's fix that. We've simplified this by now publishing to the <code>wrangler</code> package, so you can run <code>npm install wrangler</code> and it works as expected. You can also install it locally to a project's <code>package.json</code>, like any other regular npm package. It also works across a much broader range of CPU architectures and operating systems, so you can use it on more machines.</p>
 	<p>This makes it a lot more convenient when starting. But why stop there?</p>
-	<h3 id="2-zero-config-startup-">2. Zero config startup: </h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-13.png" class="kg-image" alt="A list of fields, about 10 or so, which have been crossed out, and overlaid with the title “No more mandatory configuration!”" loading="lazy">
-		<figcaption><em>Get started with zero configuration</em></figcaption>
+	<h3>2. Zero config startup:</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Ws2aTtoakQ32HRr61DSn1/355f9ca888345361b8167841f2cdcd9c/image1-13.png" alt="A list of fields, about 10 or so, which have been crossed out, and overlaid with the title “No more mandatory configuration!”" class="kg-image" width="1434" height="818" loading="lazy">
+
 	</figure>
+	<p><i>Get started with zero configuration</i></p>
 	<p>It's now much simpler to get started with a new project. Previously, you would have to create a <code>wrangler.toml</code> configuration file, and fill it in with details about your cloudflare account, how the project was structured, setting up a custom build process and so on. We heard feedback from many of you who would get frustrated during this step, and how it would take many minutes before you could get to developing a simple Worker.</p>
 	<p>Let's fix that. You no longer need to create a configuration file when starting, and none of the fields are mandatory. Wrangler infers details about your account and project as you start developing, and you can add configuration incrementally when you need to.</p>
 	<p>In fact, you don't even need to install Wrangler to start! You can create a Worker (say, as <code>index.js</code>) and use <code>npx</code> (a utility that comes installed with <code>node.js</code>) to fetch Wrangler from the npm registry and start developing immediately!</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 65.85365853658537%;"><iframe src="https://iframe.videodelivery.net/17180d41b7d1046f77076a661db97912?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F17180d41b7d1046f77076a661db97912%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D16s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 	<p>This is great for extremely simple Workers, but why stop there?</p>
-	<h3 id="3-wrangler-init-my-worker-y-one-liner-to-set-up-a-full-project-">3. <code>wrangler init my-worker -y</code>, one liner to set up a full project:</h3>
+	<h3>3. <code>wrangler init my-worker -y</code>, one liner to set up a full project:</h3>
 	<p>We noticed users would struggle to set up a project with Wrangler, even after they'd installed Wrangler and configured <code>wrangler.toml</code>. Most users want to set up a <code>package.json</code>, commonly use <code>typescript</code> to write code, and set up <code>git</code> to track changes in this project. So, we expanded the <code>wrangler init &lt;project name&gt;</code> command to set up a production grade project. You can optionally choose to use <code>typescript</code>, install the official type definitions for Workers, and use <code>git</code> to track changes.</p>
 	<p>My favorite trick here is to pass <code>-y</code> to accept all questions without asking. Try running <code>npx wrangler init my-worker -y</code> in your terminal today!</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-1.png" class="kg-image" alt="project, including a package.json with required dependencies, a typescript config, and a starter Hello World typescript file" loading="lazy">
-		<figcaption><em>One line to set up a full Workers project</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L7voFxn3ddNCdIoUgMqas/da2f8d8cc595d537e27dafa76e109b3c/image5-1.png" alt="project, including a package.json with required dependencies, a typescript config, and a starter Hello World typescript file" class="kg-image" width="1446" height="960" loading="lazy">
+
 	</figure>
-	<h3 id="4-local-mode-">4. <code>--local</code> mode:</h3>
+	<p><i>One line to set up a full Workers project</i></p>
+	<h3>4. <code>--local</code> mode:</h3>
 	<p>Wrangler typically runs a development server on our global network, setting up a local proxy when developing, so you can develop against a "real" environment in the cloud. This is great for making sure the code you develop will behave the same in development, and after you deploy it to production. The trade-off here is it's harder to develop code when you have a bad Internet connection, or if you're running tests on a CI machine. It's also marginally slower to iterate while coding. Users have asked us for a long time to be able to 'run' their code locally on their machines, so that they can iterate quickly and run tests in environments like CI.</p>
 	<p>Wrangler now lets you develop on your machine by simply calling <code>wrangler dev --local</code>, and no additional configuration. This is powered by <a href="https://miniflare.dev">Miniflare</a>, a fully featured simulator of the Cloudflare Workers runtime. You can even toggle across 'edge' and 'local' modes by tapping the 'L' hotkey when developing; however you prefer!</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-4.png" class="kg-image" alt="“wrangler dev --local”, powered by Miniflare!" loading="lazy">
-		<figcaption><em>Local mode, powered by Miniflare.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zC0yCCFhNhagjbOWfwITV/c06c54faacc2b8e5a916f01d127a446c/image2-4.png" alt="“wrangler dev --local”, powered by Miniflare!" class="kg-image" width="1562" height="780" loading="lazy">
+
 	</figure>
-	<h3 id="5-tail-any-worker-any-time-">5. Tail any Worker, any time: </h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-4.png" class="kg-image" alt="The text “npx wrangler tail my-worker”, in front of a background that suspiciously looks like the green code rain from the Matrix" loading="lazy">
-		<figcaption><em>Tail your logs anywhere, anytime.&nbsp;</em></figcaption>
+	<p><i>Local mode, powered by Miniflare.</i></p>
+	<h3>5. Tail any Worker, any time:</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zCLJukTN9Uc4DFpdUmm51/f44ee8a0731dc84a24016c841d39861e/image6-4.png" alt="The text “npx wrangler tail my-worker”, in front of a background that suspiciously looks like the green code rain from the Matrix" class="kg-image" width="1248" height="582" loading="lazy">
+
 	</figure>
+	<p><i>Tail your logs anywhere, anytime.</i>&nbsp;</p>
 	<p>It's useful to be able to "tail" a Worker's output to a terminal, and see what's going on in real time. While you can already view these logs in the Workers dashboard, some people are more comfortable seeing the logs in their terminal, and then slicing and dicing to debug any issues that may be occuring. Previously, you would have to checkout a Worker's repository locally, install dependencies, and then call <code>wrangler tail</code> in the project folder. This was clearly cumbersome, and relied on developer expertise to see something as simple as a Worker's logs.</p>
 	<p>Now you can simply call <code>npx wrangler tail &lt;worker name&gt;</code> in your terminal, without any configuration or setup, and immediately see the logs that you expect. We use this ourselves to quickly inspect our production Workers and see what's going on inside them!</p>
-	<h3 id="6-better-warnings-and-errors-everywhere-">6. Better warnings and errors, everywhere: </h3>
+	<h3>6. Better warnings and errors, everywhere:</h3>
 	<p>One of the worst feelings a developer can face is being presented with an error when writing code, and not knowing how to fix it and proceed. We heard feedback from many of you who were frustrated with the lack of error messages, and how you would spend hours trying to figure out what went wrong. We've now added new error and warning messages, so you can easily spot the problems in your code. When possible, we also include steps you can follow to fix your Worker, including things that you can simply copy and paste! This makes Wrangler much more friendly to use, and we promise the experience will only get better.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="7-on-demand-developer-tools-for-debugging-">7. On-demand developer tools for debugging:</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vKCpjFLpx71tU1eTJEMl5/9b17eebede47b904bd1b3992b1634ae9/image3-3.png" alt="" class="kg-image" width="1124" height="448" loading="lazy">
+
+	</figure>
+	<h3>7. On-demand developer tools for debugging:</h3>
 	<p>We introduced initial support for debugging Workers in Wrangler <a href="https://blog.cloudflare.com/profiling-your-workers-with-wrangler">in September</a> which enables debugging a Worker directly on our global network. However, getting started with debugging was still a bit cumbersome, because you would have to start Wrangler with an <code>--inspect</code> flag, then open a special page in your browser (<code>chrome://inspect</code>), configuring it to detect Wrangler running on a special port, and then launching the debugger. This would also mean you might have lost any debugging messages that were logged before you opened the Chrome developer tools.</p>
 	<p>We fixed this. Now you don't need to pass any special flags when starting up. You can simply hit the <code>D</code> hotkey when developing and a developer tools instance pops up in your browser. And by buffering the messages before you even start up the devtools, you don't lose any logs or errors! You can also use VS Code developer tools to directly hook into your Worker's debugging session!</p>
-	<h3 id="8-a-modern-module-system-">8. A modern module system:</h3>
+	<h3>8. A modern module system:</h3>
 	<p>Modern JavaScript isn't simply about the syntax that the language supports, but also writing code as modules, and leveraging the extremely broad ecosystem of community libraries and frameworks. Previously, Wrangler required that you set up <code>webpack</code> or a custom build with bundlers (like <code>rollup</code>, <code>vite</code>, or <code>esbuild</code>, to name a few) to consume libraries and modules. This introduces a lot of friction, especially when starting a new project and trying out new ideas.</p>
 	<p>Now, support for npm modules comes out of the box, with no extra configuration required! You can install any package from the <a href="http://npmjs.com">npm registry</a>, organize your own code with modules, and it all works as expected. We're also introducing an experimental <code>node.js</code> compatibility mode for using <code>node.js</code> modules that wouldn't previously work without setting up your own polyfills! This means you can use popular frameworks and libraries that you're already familiar with while focusing on delivering value to your users.</p>
-	<h3 id="9-closes-many-outstanding-issues-">9. Closes many outstanding issues:</h3>
+	<h3>9. Closes many outstanding issues:</h3>
 	<p>A rewrite should be judged not just by the new features that are implemented, but by how many existing issues are resolved. We went through hundreds of outstanding issues and bugs with Wrangler, and are happy to say that we solved almost all of them! Across the board, every command and feature got a facelift, bug fixes, and test coverage to make sure it doesn't break in the future. Developers on using Cloudflare Workers will be glad to hear that simply upgrading Wrangler will immediately fix previous concerns and problems. Which leads us to my absolute favorite feature...</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="10-a-commitment-to-improve-">10. A commitment to improve:</h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image8.png" class="kg-image" alt="A graph of commits on the public wrangler repo. It starts off slow, has an initial bump around November (marked “beta announcement”) and then there are mountains of code being committed between then and today. It’s a LOT." loading="lazy">
-		<figcaption><em>The effort into building wrangler v2.0, visualised.&nbsp;</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7o0yX40KcaE8j27F9bya4t/84067fab11fa8a1d9acb41cd56d2cf42/image9.png" alt="" class="kg-image" width="1999" height="1374" loading="lazy">
+
 	</figure>
+	<h3>10. A commitment to improve:</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RzDQhFclIpVBwnHQEoQ6l/02114339b156f5d4411e008a6cbc237b/image8.png" alt="A graph of commits on the public wrangler repo. It starts off slow, has an initial bump around November (marked “beta announcement”) and then there are mountains of code being committed between then and today. It’s a LOT." class="kg-image" width="1802" height="782" loading="lazy">
+
+	</figure>
+	<p><i>The effort into building wrangler v2.0, visualised.</i>&nbsp;</p>
 	<p>Wrangler has always been special software for us. It represents the primary interface that developers use to interact and use Cloudflare Workers, and we have major plans for the future. We have invested time, effort and resources to make sure Wrangler is the best tool for developers to use, and we're excited to see what the future holds. This is a commitment to our users and community that we will only keep improving on this foundation, and folks can expect their feedback and concerns to be heard loud and clear.</p>
 </div>

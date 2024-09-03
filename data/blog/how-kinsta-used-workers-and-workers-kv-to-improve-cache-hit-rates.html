@@ -1,41 +1,47 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This is a guest post by Kinsta about their use of our platform.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image2-18.png" class="kg-image" alt="How Kinsta used Workers and Workers KV to improve cache hit rates by 56%" loading="lazy" width="1801" height="1012"></figure>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QtEG4SPpBvhhQRrOHLmMt/65a4c0570a97e01edc59c82a8d051b15/how-kinsta-used-workers-and-workers-kv-to-improve-cache-hit-rates.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>This is a guest post by Kinsta about their use of our platform.</p>
 	<p>At <a href="https://kinsta.com">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
 	<p>While making that happen, we’ve learned a thing or two about using Cloudflare Workers and Workers KV to provide optimized caching rules for static and dynamic content.</p>
 	<p>In early 2023, we doubled down on Cloudflare cache wrangling, making caches more responsive to client-side configuration changes while also shifting the heavy lifting behind broadcasting feature updates away from our admins on the backend and into Cloudflare Workers. A key result was a dramatic increase in the share of customer data successfully cached, increasing 56.3% between October 2022 and March 2023.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image5-10.png" class="kg-image" alt="" loading="lazy" width="1053" height="160"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jl0A69n6LwaP2LfqmiFAh/134c220da27758e5af365dc68921f0e8/image5-10.png" alt="" class="kg-image" width="1053" height="160" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Workers and Workers KV allow us to programmatically customize every request and response with minimal effort and lower latency. We no longer need to deploy changes to hundreds of thousands of containers when we want to implement new features; we can replicate or implement the feature with Workers and deploy it everywhere with a few commands and clicks, saving us days of work and maintenance.</p>
-	<h3 id="request-routing-with-workers-kv-and-workers">Request routing with Workers KV and Workers</h3>
+	<h3>Request routing with Workers KV and Workers</h3>
 	<p>Every Kinsta-hosted domain is a key, and its value contains at least the core settings, like the origin's IP and port, and a unique random ID. With this data easily available in Workers KV, we can use Workers to analyze, manipulate, and route requests to their expected backend. We also use Workers KV to store customer optimization options like Polish, Image Resizing, and Auto Minify.</p>
-	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties">Request property</a>. Here's an example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// Assign KV values to variables
+	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties">Request property</a>. Here's an example:</p>
+	<pre class="language-javascript"><code class="language-javascript">// Assign KV values to variables
 const { customBackend } = kvdata.kinstaConf;
 
 // Override the backend
-cf.resolveOverride = customBackend;
-</code></pre>
-	<!--kg-card-end: markdown-->
+cf.resolveOverride = customBackend;</code></pre>
 	<p>However, while Workers KV worked well to route requests, we soon noticed inconsistent responses in our cache. Sometimes a customer activated Polish and, due to Workers KV's one-minute cache, new requests arrived before Workers KV fully propagated the change, causing us to cache non-optimized assets. When this happened, the client had to clear their cache again manually. Not the ideal scenario. Clients got frustrated, and we wasted API operations and GCP bandwidth, constantly purging caches.</p>
-	<h3 id="cache-key-is-the-key">Cache key is the key</h3>
+	<h3>Cache key is the key</h3>
 	<p>Since we always read the domain's Workers KV data, we realized we could route requests and customize the cache key, appending things like the domain's ID and features that could affect the asset, like Polish. Today, our cache key is heavily customized to quickly reflect every client's change in our panel or API. By modifying the cache key using Workers KV's data, nobody needs to worry about clearing the cache anymore. As soon as Workers KV propagates the changes, the cache key also changes and we request and cache a fresh asset.</p>
-	<p>The easiest way to customize the cache key is to append <code>query params</code> to it. For example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">let cacheKey = `${request.url}?custom-cache-param-polish=lossy`
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>The easiest way to customize the cache key is to append <code>query params</code> to it. For example:</p>
+	<pre class="language-javascript"><code class="language-javascript">let cacheKey = `${request.url}?custom-cache-param-polish=lossy`</code></pre>
 	<p>Of course, you need to check the URL for existing parameters to determine which connector to use — <code>?</code> or <code>&amp;</code> — and ensure you are using a unique identifier.</p>
 	<p>Then, you can use this new cache key to save the response with Cache API or Fetch — or both.</p>
-	<h3 id="workers-kv-cache">Workers KV Cache</h3>
+	<h3>Workers KV Cache</h3>
 	<p>Workers KV operations are affordable, but the numbers can pile up when you trigger billions of reading operations daily.</p>
-	<p>Thanks to our cache key customization, we realized we could cache the Workers KV data with Cache API, saving on reading operations and possibly lowering the latency by avoiding multiple Workers KV GET requests per visitor. Since the cached response is now based on the request's URL combined with KV data, we no longer need to worry about caching stale content.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image3-16.png" class="kg-image" alt="" loading="lazy" width="381" height="301"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image1-23.png" class="kg-image" alt="" loading="lazy" width="562" height="381"></figure>
+	<p>Thanks to our cache key customization, we realized we could cache the Workers KV data with Cache API, saving on reading operations and possibly lowering the latency by avoiding multiple Workers KV GET requests per visitor. Since the cached response is now based on the request's URL combined with KV data, we no longer need to worry about caching stale content.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rBZU50BbZo9KghOLn8061/0009bee56c4f4897735ab73d704d6733/image3-16.png" alt="" class="kg-image" width="381" height="301" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ep6zAMholFQw5kxOZuvxn/78d49c7ddea9bd826f0f3f4b0e4f6bd8/image1-23.png" alt="" class="kg-image" width="562" height="381" loading="lazy">
+
+	</figure>
 	<p>However, unlike many applications, we can't cache Workers KV for extended periods. Kinsta's customers are constantly trying new features, changing Polish and Auto Minify settings, sometimes excluding pages or extensions from being cached, and they want to see their changes in production as soon as possible.</p>
 	<p>That's when we decided to microcache our Workers KV data — caching dynamic or constantly-changed content for a very short period of time, usually less than 60 seconds.</p>
-	<p>It’s pretty simple to implement your own Workers KV caching logic. For example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">const handleKVCache = async (event, myCustomDomain) =&gt; {
+	<p>It’s pretty simple to implement your own Workers KV caching logic. For example:</p>
+	<pre class="language-javascript"><code class="language-javascript">const handleKVCache = async (event, myCustomDomain) =&gt; {
   // Try to get KV from cache first
   const cache = caches.default;
   let site_data = await cache.match( `https://${myCustomDomain}/some-string-ID-kv-data/` );
@@ -57,14 +63,15 @@ cf.resolveOverride = customBackend;
   }
   
   return site_data;
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>(Optionally, you could use<a href="https://flareutils.pages.dev/betterkv"> FlareUtils' BetterKV</a>.)</p>
+};</code></pre>
+	<p>(Optionally, you could use <a href="https://flareutils.pages.dev/betterkv">FlareUtils' BetterKV</a>.)</p>
 	<p>At Kinsta, we implemented a 30-second cache TTL for Workers KV data, decreasing read operations by about 80%.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/06/image4-14.png" class="kg-image" alt="" loading="lazy" width="875" height="363">
-		<figcaption>Read operations</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55WQ6ntmTVnTWEhzV8sRL1/cd489fa59c2821a93fc5abff9ec168b5/image4-14.png" alt="" class="kg-image" width="875" height="363" loading="lazy">
+
 	</figure>
-	<h3 id="learn-more">Learn more</h3>
+	<p>Read operations</p>
+	<h3>Learn more</h3>
 	<p>Want to learn more about Workers and Workers KV? Check out the Cloudflare Workers KV developer <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">documentation</a>, or read our dedicated <a href="https://www.cloudflare.com/products/workers-kv">homepage</a>.</p>
 </div>

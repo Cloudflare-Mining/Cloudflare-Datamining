@@ -1,20 +1,27 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>This is a guest blog post from Martin Reistadbakk, developer of Trumpet.</em></p>
-	<p><img alt="App: Trumpet Offers Simple, Consistent Notification to Site
-Visitors" src="https://blog.cloudflare.com/content/images/trumpet-logo.png.scaled500.png" title="App: Trumpet Offers Simple, Consistent Notification to Site Visitors"></p>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pyRtSrWtRCtnnpuhog2tY/7c26f73f3c2de93f24c7f26b97867715/app-trumpet-offers-simple-consistent-notifica.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This is a guest blog post from Martin Reistadbakk, developer of Trumpet.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Vju1tzis84QZwOEVNInXi/3ff9b7e51cb5f6f9fa23f9978d22877c/trumpet-logo.png.scaled500.png" alt="App: Trumpet Offers Simple, Consistent Notification to Site
+Visitors" class="kg-image" width="200" height="61" loading="lazy">
+
+	</figure>
 	<p>Say hello to Trumpet.</p>
 	<p>Trumpet is a simple CloudFlare App that lets you place a short message on top of every page on your site. You <a href="https://www.cloudflare.com/apps/trumpet">turn it on</a>, and when you want to tell your users something, you enter a message that will show up the next time the user loads your site. If the user dismisses the message by clicking on it, Trumpet will not show it again for 24 hours. It is that simple.</p>
-	<p><img alt="App: Trumpet Offers Simple, Consistent Notification to Site Visitors" src="https://blog.cloudflare.com/content/images/trumpet-in-action.png.scaled500.png" title="App: Trumpet Offers Simple, Consistent Notification to Site Visitors"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HBIOhKhmT1oEH2tbMU5ev/b3d76bcd913f9e4bb8987df8be28689c/trumpet-in-action.png.scaled500.png" alt="App: Trumpet Offers Simple, Consistent Notification to Site Visitors" class="kg-image" width="500" height="140" loading="lazy">
+
+	</figure>
 	<p>Trumpet was conceived to scratch a personal itch. My clients often wanted to notify users of planned maintenance and downtime. This was usually done with a news article that only showed up on the front page. I needed something that would show up on all pages, which led me to making the first version of Trumpet.</p>
 	<p>My design goal for Trumpet was to make it very reliable, small, lightweight and without any dependencies on JavaScript libraries. A lot of the inspiration and code for the initial version of Trumpet came from humane-js, an excellent library without any dependencies. This was important for me. I didn't want sites to have to include large JavaScript libraries just to be able to show a small message, especially when the overall codebase of Trumpet was so small. I didn't want convenience for me to make the product worse.</p>
 	<p>Trumpet was originally made as a Google app engine project where the site that wanted to display the message included a JavaScript. This JavaScript then checked with the server if there was a message to be displayed. This had to overcome the usual cross site execution restrictions.</p>
 	<p>Then late last year I contacted CloudFlare about making Trumpet available on their platform. CloudFlare was very welcoming and helpful. Using their platform also meant that I could eliminate the Google app engine server, as CloudFlare can let users enter the message in the app configuration screen and embed this message with the JavaScript. This makes for a much faster and more reliable experience for the user.</p>
 	<p>If you use CloudFlare today, please check it out. If you don't use CloudFlare, what are you waiting for?</p>
 	<p>Turn on <a href="https://www.cloudflare.com/apps/trumpet">Trumpet</a> whenever you need to make sure your visitors receive a notification.</p>
-	<h3 id="abouttheauthor">About The Author</h3>
+	<h3>About The Author</h3>
 	<p>Martin Reistadbakk spends his days building and supporting websites built on Plone, a leading open source CMS, in a small town outside Oslo Norway. His company <a href="http://blaastolen.no">Blåstolen Web Solutions</a> maintains and supports the websites and intranets of some of the leading brands in Scandinavia.</p>
-	<h3 id="developyourownapp">Develop Your Own App</h3>
+	<h3>Develop Your Own App</h3>
 	<p>If you'd like to develop your own CloudFlare App, check out the <a href="https://github.com/cloudflare/cfapp_sample">git repo of a sample app</a> and then <a href="https://www.cloudflare.com/app-signup">sign up</a> and get started. If you're looking for ideas, we have several customer suggestions, so just ask.</p>
-	<!--kg-card-end: markdown-->
 </div>

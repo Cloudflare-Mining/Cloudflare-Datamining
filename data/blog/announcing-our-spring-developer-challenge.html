@@ -1,26 +1,43 @@
 <div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-11.45.54-AM-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dOPrJDKikS53YM3l8PhQA/9754b66038d282f41530a5e8b857176e/Screen-Shot-2022-05-10-at-11.45.54-AM-1.png" alt="" class="kg-image" width="1378" height="730" loading="lazy">
+
+	</figure>
 	<p>After many announcements from Platform Week, we’re thrilled to make one more: our Spring Developer Challenge!</p>
 	<p>The theme for this challenge is building real-time, collaborative applications — one of the most exciting use-cases emerging in the Cloudflare ecosystem. This is an opportunity for developers to merge their ideas with our newly released features, earn recognition on our blog, and take home our best swag yet.</p>
 	<p>Here’s a list of our tools that will get you started:</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com/workers">Workers</a> can either be powerful middleware connecting your app to different APIs and an origin — or it can be the entire application itself. We recommend using <a href="https://github.com/lukeed/worktop">Worktop</a>, a popular framework for Workers, if you need TypeScript support, routing, and well-organized submodules. Worktop can also <a href="https://github.com/lukeed/worktop/issues/147">complement</a> your existing app even if it already uses a framework, &nbsp;such as Svelte.</li>
-		<li><a href="https://developers.cloudflare.com/pages">Cloudflare Pages</a> makes it incredibly easy to deploy sites, which you can make into truly dynamic apps by putting a Worker in front <em>or</em> using the <a href="https://developers.cloudflare.com/pages">Pages Functions (beta)</a>.</li>
-		<li><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a> are great for collaborative apps because you can use websockets while coordinating state at the edge, seen in this <a href="https://github.com/cloudflare/workers-chat-demo">chat demo</a>. To help scale any load, we also recommend <a href="https://github.com/cloudflare/dog">Durable Object Groups</a>.</li>
-		<li><a href="https://developers.cloudflare.com/workers/runtime-apis/kv">Workers KV</a> provides a global key-value data store that securely stores and quickly serves data across Cloudflare’s network. <a href="https://blog.cloudflare.com/r2-open-beta">R2</a> allows you to store enormous amounts of data without trapping you with costly egress services.</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers">Workers</a> can either be powerful middleware connecting your app to different APIs and an origin — or it can be the entire application itself. We recommend using <a href="https://github.com/lukeed/worktop">Worktop</a>, a popular framework for Workers, if you need TypeScript support, routing, and well-organized submodules. Worktop can also <a href="https://github.com/lukeed/worktop/issues/147">complement</a> your existing app even if it already uses a framework, &nbsp;such as Svelte.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages">Cloudflare Pages</a> makes it incredibly easy to deploy sites, which you can make into truly dynamic apps by putting a Worker in front <i>or</i> using the <a href="https://developers.cloudflare.com/pages">Pages Functions (beta)</a>.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a> are great for collaborative apps because you can use websockets while coordinating state at the edge, seen in this <a href="https://github.com/cloudflare/workers-chat-demo">chat demo</a>. To help scale any load, we also recommend <a href="https://github.com/cloudflare/dog">Durable Object Groups</a>.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/runtime-apis/kv">Workers KV</a> provides a global key-value data store that securely stores and quickly serves data across Cloudflare’s network. <a href="https://blog.cloudflare.com/r2-open-beta">R2</a> allows you to store enormous amounts of data without trapping you with costly egress services.</p>
+		</li>
 	</ul>
-	<p>Last year, our <a href="https://blog.cloudflare.com/tag/developer-spotlight">Developer Spotlight series</a> highlighted how developers around the world built entire applications on Cloudflare. Our Discord server maintained that momentum with users demonstrating that <a href="https://discord.com/channels/595317990191398933/783765338692386886/964521676941455411">any type</a> of application can be built. Need a way to organize thousands of lines of JSON? <a href="https://jsonhero.io">JSON Hero</a>, built with Remix and deployed with Workers, provides an incredibly readable UI for your JSON files. Trying to deploy a GraphQL server for your app that scales? <a href="https://github.com/launchport/helix-flare">helix-flare</a> deploys a GraphQL server easily through Workers and uses Durable Objects to coordinate data. </p>
+	<p>Last year, our <a href="https://blog.cloudflare.com/tag/developer-spotlight">Developer Spotlight series</a> highlighted how developers around the world built entire applications on Cloudflare. Our Discord server maintained that momentum with users demonstrating that <a href="https://discord.com/channels/595317990191398933/783765338692386886/964521676941455411">any type</a> of application can be built. Need a way to organize thousands of lines of JSON? <a href="https://jsonhero.io">JSON Hero</a>, built with Remix and deployed with Workers, provides an incredibly readable UI for your JSON files. Trying to deploy a GraphQL server for your app that scales? <a href="https://github.com/launchport/helix-flare">helix-flare</a> deploys a GraphQL server easily through Workers and uses Durable Objects to coordinate data.</p>
 	<p>We hope developers continue to explore the boundaries of what they can build on Cloudflare as our platform evolves. During our Summer Developer Challenge in 2021, we received over 1,200 submissions that revealed you can build almost any app imaginable with Workers, Pages, and the rest of the developer ecosystem. We sent out hundreds of swag boxes to participants, to show our appreciation. The ensuing unboxing videos on <a href="https://twitter.com/KukicAdo/status/1435356070067662849?s=20&amp;t=cPyF9ekfCyrL06Ucn5WO2w">Twitter</a> and <a href="https://www.youtube.com/watch?v=TuYRhrnMUiQ">YouTube</a> thrilled our team.</p>
-	<p>This year’s Spring Developer Challenge is all about making real-time, collaborative apps such as chat rooms, games, web-based editing tools, or anything else in your imagination! Here are the rules:</p><!--kg-card-begin: markdown-->
+	<p>This year’s Spring Developer Challenge is all about making real-time, collaborative apps such as chat rooms, games, web-based editing tools, or anything else in your imagination! Here are the rules:</p>
 	<p>This year’s Spring Developer Challenge is all about making real-time, collaborative apps such as chat rooms, games, web-based editing tools, or anything else in your imagination! Here are the rules:</p>
 	<ul>
-		<li>You must be at least 18 years old to participate</li>
-		<li>You can work in teams of up to 10 people per submission</li>
-		<li>The deadline to submit your repo is <s>May 24</s> June 7</li>
+		<li>
+			<p>You must be at least 18 years old to participate</p>
+		</li>
+		<li>
+			<p>You can work in teams of up to 10 people per submission</p>
+		</li>
+		<li>
+			<p>The deadline to submit your repo is May 24 June 7</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<p>Enter the challenge by going to <a href="https://challenge.developers.cloudflare.com"><strong>this site</strong></a>. </p>
-	<p>As you build your app, <a href="https://discord.gg/cloudflaredev">join our Discord</a> if you or your team need any help. We will be enthusiastically reviewing submissions, promoting them on Twitter, and sending out swag boxes. </p>
+	<p>Enter the challenge by going to <a href="https://challenge.developers.cloudflare.com"><b>this site</b></a>.</p>
+	<p>As you build your app, <a href="https://discord.gg/cloudflaredev">join our Discord</a> if you or your team need any help. We will be enthusiastically reviewing submissions, promoting them on Twitter, and sending out swag boxes.</p>
 	<p>If you’re new to Cloudflare or have an exciting idea as a developer, this is your opportunity to see how far our platform has evolved and get rewarded for it!</p>
 </div>

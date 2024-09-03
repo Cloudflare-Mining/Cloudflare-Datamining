@@ -1,114 +1,223 @@
-<div class="mb2 gray5">11 min read</div>
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/anchor2-2-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>As a security company, we pride ourselves on finding innovative ways to protect our platform to, in turn, protect the data of our customers. Part of this approach is implementing progressive methods in protecting our hardware at scale. While we have blogged about how we address security threats from <a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model">application</a> to <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">memory</a>, the attacks on hardware, as well as firmware, have increased substantially. The data cataloged in the <a href="https://nvd.nist.gov">National Vulnerability Database (NVD)</a> has shown the frequency of hardware and firmware-level vulnerabilities rising year after year. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15nAX8kXKg4gz7jDCecogD/337b7838d4dca712e7498f6e32c11d9e/anchor2-2-1.png" alt="" class="kg-image" width="1600" height="904" loading="lazy">
+
+	</figure>
+	<p>As a security company, we pride ourselves on finding innovative ways to protect our platform to, in turn, protect the data of our customers. Part of this approach is implementing progressive methods in protecting our hardware at scale. While we have blogged about how we address security threats from <a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model">application</a> to <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">memory</a>, the attacks on hardware, as well as firmware, have increased substantially. The data cataloged in the <a href="https://nvd.nist.gov">National Vulnerability Database (NVD)</a> has shown the frequency of hardware and firmware-level vulnerabilities rising year after year.</p>
 	<p>Technologies like <a href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-secure-boot">secure boot</a>, common in desktops and laptops, have been ported over to the server industry as a method to combat firmware-level attacks and protect a device’s boot integrity. These technologies require that you create a trust ‘anchor’, an authoritative entity for which trust is assumed and not derived. A common trust anchor is the system <a href="https://en.wikipedia.org/wiki/BIOS">Basic Input/Output System (BIOS)</a> or the <a href="https://www.uefi.org">Unified Extensible Firmware Interface (UEFI</a>) firmware.</p>
 	<p>While this ensures that the device boots only signed firmware and operating system bootloaders, does it protect the entire boot process? What protects the BIOS/UEFI firmware from attacks?</p>
-	<h2 id="the-boot-process">The Boot Process</h2>
+	<h2>The Boot Process</h2>
 	<p>Before we discuss how we secure our boot process, we will first go over how we boot our machines.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image1-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ubWFPurTNwYnbXL8EnVpl/01493656ce43feeb988c0a94b81dc9bd/image1-7.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+
+	</figure>
 	<p>The above image shows the following sequence of events:</p>
 	<ul>
-		<li>After powering on the system (through a <a href="https://www.gigabyte.com/Glossary/bmc">baseboard management controller (BMC)</a> or physically pushing a button on the system), the system unconditionally executes the UEFI firmware residing on a flash chip on the motherboard.</li>
-		<li>UEFI performs some hardware and peripheral initialization and executes the <a href="https://wiki.debian.org/PXEBootInstall">Preboot Execution Environment (PXE)</a> code, which is a small program that boots an image over the network and usually resides on a flash chip on the network card.</li>
-		<li>PXE sets up the network card, and downloads and executes a small program bootloader through an open source boot firmware called <a href="https://ipxe.org">iPXE</a>.</li>
-		<li>iPXE loads a script that automates a sequence of commands for the bootloader to know how to boot a specific operating system (sometimes several of them). In our case, it loads our Linux kernel, <code>initrd</code> (this contains device drivers which are not directly compiled into the kernel), and a standard Linux root filesystem. After loading these components, the bootloader executes and hands off the control to the kernel.</li>
-		<li>Finally, the Linux kernel loads any additional drivers it needs and starts applications and services.</li>
+		<li>
+			<p>After powering on the system (through a <a href="https://www.gigabyte.com/Glossary/bmc">baseboard management controller (BMC)</a> or physically pushing a button on the system), the system unconditionally executes the UEFI firmware residing on a flash chip on the motherboard.</p>
+		</li>
+		<li>
+			<p>UEFI performs some hardware and peripheral initialization and executes the <a href="https://wiki.debian.org/PXEBootInstall">Preboot Execution Environment (PXE)</a> code, which is a small program that boots an image over the network and usually resides on a flash chip on the network card.</p>
+		</li>
+		<li>
+			<p>PXE sets up the network card, and downloads and executes a small program bootloader through an open source boot firmware called <a href="https://ipxe.org">iPXE</a>.</p>
+		</li>
+		<li>
+			<p>iPXE loads a script that automates a sequence of commands for the bootloader to know how to boot a specific operating system (sometimes several of them). In our case, it loads our Linux kernel, <code>initrd</code> (this contains device drivers which are not directly compiled into the kernel), and a standard Linux root filesystem. After loading these components, the bootloader executes and hands off the control to the kernel.</p>
+		</li>
+		<li>
+			<p>Finally, the Linux kernel loads any additional drivers it needs and starts applications and services.</p>
+		</li>
 	</ul>
-	<h2 id="uefi-secure-boot">UEFI Secure Boot</h2>
+	<h2>UEFI Secure Boot</h2>
 	<p>Our UEFI secure boot process is fairly straightforward, albeit customized for our environments. After loading the UEFI firmware from the bootloader, an initialization script defines the following variables:</p>
-	<p><strong>Platform Key (PK):</strong> It serves as the cryptographic root of trust for secure boot, giving capabilities to manipulate and/or validate the other components of the <a href="https://blog.hansenpartnership.com/the-meaning-of-all-the-uefi-keys">secure boot framework</a>.</p>
-	<p><strong>Trusted Database (DB):</strong> Contains a signed (by platform key) list of hashes of all PCI option ROMs, as well as a public key, which is used to verify the signature of the bootloader and the kernel on boot.</p>
+	<p><b>Platform Key (PK):</b> It serves as the cryptographic root of trust for secure boot, giving capabilities to manipulate and/or validate the other components of the <a href="https://blog.hansenpartnership.com/the-meaning-of-all-the-uefi-keys">secure boot framework</a>.</p>
+	<p><b>Trusted Database (DB):</b> Contains a signed (by platform key) list of hashes of all PCI option ROMs, as well as a public key, which is used to verify the signature of the bootloader and the kernel on boot.</p>
 	<p>These variables are respectively the master platform public key, which is used to sign all other resources, and an allow list database, containing other certificates, binary file hashes, etc. In default secure boot scenarios, Microsoft keys are used by default. At Cloudflare we use our own, which makes us the root of trust for UEFI:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12zsC1QVrT8uIGMG0K6ss8/c542b4e961c9779f504acb881ae9432b/image7.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+
+	</figure>
 	<p>But, by setting our trust anchor in the UEFI firmware, what attack vectors still exist?</p>
-	<h2 id="uefi-attacks">UEFI Attacks</h2>
+	<h2>UEFI Attacks</h2>
 	<p>As stated previously, firmware and hardware attacks are on the rise. It is clear from the figure below that firmware-related vulnerabilities have increased significantly over the last 10 years, especially since 2017, when the hacker community started attacking the firmware on different platforms:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gyyxjhnApSBYfZEdqglcS/619200077d4cc54684d51c40d4e517f6/image14.png" alt="" class="kg-image" width="1610" height="1462" loading="lazy">
+
+	</figure>
 	<p>This upward trend, coupled with <a href="https://arstechnica.com/information-technology/2020/10/custom-made-uefi-bootkit-found-lurking-in-the-wild">recent malware findings in UEFI</a>, shows that trusting firmware is becoming increasingly problematic.</p>
 	<p>By tainting the UEFI firmware image, you poison the entire boot trust chain. The ability to trust firmware integrity is important beyond secure boot. For example, if you can't trust the firmware not to be compromised, you can't trust things like <a href="https://docs.microsoft.com/en-us/windows/security/information-protection/tpm/trusted-platform-module-overview">trusted platform module (TPM) measurements</a> to be accurate, because the firmware is itself responsible for doing these measurements (e.g a TPM is not an on-path security mechanism, but instead it requires firmware to interact and cooperate with). Firmware may be crafted to extend measurements that are accepted by a remote attestor, but that don't represent what's being locally loaded. This could cause firmware to have a questionable measured boot and remote attestation procedure.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hTmUFGH3CZwcPD6CXmASh/a3a1916cbae485bbf1938e54b7f457d7/image11.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+
+	</figure>
 	<p>If we can’t trust firmware, then hardware becomes our last line of defense.</p>
-	<h2 id="hardware-root-of-trust">Hardware Root of Trust</h2>
-	<p>Early this year, we made a series of blog posts on <a href="https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers">why we chose AMD EPYC processors</a> for our Gen X servers. With security in mind, we started <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">turning on</a> features that were available to us and set forth the plan of using AMD silicon as a Hardware Root of Trust (HRoT). </p>
+	<h2>Hardware Root of Trust</h2>
+	<p>Early this year, we made a series of blog posts on <a href="https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers">why we chose AMD EPYC processors</a> for our Gen X servers. With security in mind, we started <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">turning on</a> features that were available to us and set forth the plan of using AMD silicon as a Hardware Root of Trust (HRoT).</p>
 	<p><a href="https://www.amd.com/system/files/2017-06/Trusting-in-the-CPU.pdf">Platform Secure Boot</a> (PSB) is AMD’s implementation of hardware-rooted boot integrity. Why is it better than UEFI firmware-based root of trust? Because it is intended to assert, by a root of trust anchored in the hardware, the integrity and authenticity of the System ROM image before it can execute. It does so by performing the following actions:</p>
 	<ul>
-		<li>Authenticates the first block of BIOS/UEFI prior to releasing x86 CPUs from reset.</li>
-		<li>Authenticates the System Read-Only Memory (ROM) contents on each boot, not just during updates.</li>
-		<li>Moves the UEFI Secure Boot trust chain to immutable hardware.</li>
+		<li>
+			<p>Authenticates the first block of BIOS/UEFI prior to releasing x86 CPUs from reset.</p>
+		</li>
+		<li>
+			<p>Authenticates the System Read-Only Memory (ROM) contents on each boot, not just during updates.</p>
+		</li>
+		<li>
+			<p>Moves the UEFI Secure Boot trust chain to immutable hardware.</p>
+		</li>
 	</ul>
 	<p>This is accomplished by the AMD Platform Security Processor (PSP), an ARM Cortex-A5 microcontroller that is an immutable part of the system on chip (SoC). The PSB consists of two components:</p>
-	<p><strong><strong><strong>On-chip Boot ROM</strong></strong></strong></p>
+	<p><b><b><b>On-chip Boot ROM</b></b></b></p>
 	<ul>
-		<li>Embeds a SHA384 hash of an AMD root signing key</li>
-		<li>Verifies and then loads the off-chip PSP bootloader located in the boot flash</li>
+		<li>
+			<p>Embeds a SHA384 hash of an AMD root signing key</p>
+		</li>
+		<li>
+			<p>Verifies and then loads the off-chip PSP bootloader located in the boot flash</p>
+		</li>
 	</ul>
-	<p><strong><strong><strong>Off-chip Boot</strong></strong>l<strong><strong>oader</strong></strong></strong></p>
+	<p><b><b><b>Off-chip Boot</b></b></b><b><b>**l</b></b>oader******</p>
 	<ul>
-		<li>Locates the PSP directory table that allows the PSP to find and load various images</li>
-		<li>Authenticates first block of BIOS/UEFI code</li>
-		<li>Releases CPUs after successful authentication</li>
+		<li>
+			<p>Locates the PSP directory table that allows the PSP to find and load various images</p>
+		</li>
+		<li>
+			<p>Authenticates first block of BIOS/UEFI code</p>
+		</li>
+		<li>
+			<p>Releases CPUs after successful authentication</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ABw5l5aHps4VcM0wHACDq/8f28a204f81b8608d25a15ccd37e9e6c/image4.gif" alt="" class="kg-image" width="960" height="540" loading="lazy">
+
+	</figure>
 	<ol>
-		<li>The PSP secures the On-chip Boot ROM code, loads the off-chip PSP firmware into PSP static random access memory (SRAM) after authenticating the firmware, and passes control to it.</li>
-		<li>The Off-chip Bootloader (BL) loads and specifies applications in a specific order (whether or not the system goes into a debug state and then a secure EFI application binary interface to the BL)</li>
-		<li>The system continues initialization through each bootloader stage.</li>
-		<li>If each stage passes, then the UEFI image is loaded and the x86 cores are released.</li>
+		<li>
+			<p>The PSP secures the On-chip Boot ROM code, loads the off-chip PSP firmware into PSP static random access memory (SRAM) after authenticating the firmware, and passes control to it.</p>
+		</li>
+		<li>
+			<p>The Off-chip Bootloader (BL) loads and specifies applications in a specific order (whether or not the system goes into a debug state and then a secure EFI application binary interface to the BL)</p>
+		</li>
+		<li>
+			<p>The system continues initialization through each bootloader stage.</p>
+		</li>
+		<li>
+			<p>If each stage passes, then the UEFI image is loaded and the x86 cores are released.</p>
+		</li>
 	</ol>
 	<p>Now that we know the booting steps, let’s build an image.</p>
-	<h2 id="build-process">Build Process</h2>
-	<h3 id="public-key-infrastructure"><br>Public Key Infrastructure</h3>
+	<h2>Build Process</h2>
+	<h3></h3>
+	<p>Public Key Infrastructure</p>
 	<p>Before the image gets built, a public key infrastructure (PKI) is created to generate the key pairs involved for signing and validating signatures:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CGqAcYMPxBE9kv0ZcjGwL/76e0192eb62d0cc1becfff8efd32a9ee/image10.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+
+	</figure>
 	<p>Our original device manufacturer (ODM), as a trust extension, creates a key pair (public and private) that is used to sign the first segment of the BIOS (private key) and validates that segment on boot (public key).</p>
 	<p>On AMD’s side, they have a key pair that is used to sign (the AMD root signing private key) and certify the public key created by the ODM. This is validated by AMD’s root signing public key, which is stored as a hash value (<a href="https://tools.ietf.org/html/rfc5756">RSASSA-PSS</a>: SHA-384 with 4096-bit key is used as the hashing algorithm for both message and mask generation) in <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface">SPI-ROM</a>.</p>
 	<p>Private keys (both AMD and ODM) are stored in <a href="https://en.wikipedia.org/wiki/Hardware_security_module">hardware security modules</a>.</p>
 	<p>Because of the way the PKI mechanisms are built, the system cannot be compromised if only one of the keys is leaked. This is an important piece of the trust hierarchy that is used for image signing.</p>
-	<h3 id="certificate-signing-request">Certificate Signing Request</h3>
-	<p>Once the PKI infrastructure is established, a BIOS signing key pair is created, together with a certificate signing request (CSR). Creating the CSR uses known common name (CN) fields that many are familiar with: </p>
+	<h3>Certificate Signing Request</h3>
+	<p>Once the PKI infrastructure is established, a BIOS signing key pair is created, together with a certificate signing request (CSR). Creating the CSR uses known common name (CN) fields that many are familiar with:</p>
 	<ul>
-		<li><code>countryName</code></li>
-		<li><code>stateOrProvinceName</code></li>
-		<li><code>localityName</code></li>
-		<li><code>organizationName</code></li>
+		<li>
+			<p><code>countryName</code></p>
+		</li>
+		<li>
+			<p><code>stateOrProvinceName</code></p>
+		</li>
+		<li>
+			<p><code>localityName</code></p>
+		</li>
+		<li>
+			<p><code>organizationName</code></p>
+		</li>
 	</ul>
 	<p>In addition to the fields above, the CSR will contain a <code>serialNumber</code> field, a 32-bit integer value represented in ASCII HEX format that encodes the following values:</p>
 	<ul>
-		<li><code>PLATFORM_VENDOR_ID</code>: An 8-bit integer value assigned by AMD for each ODM.</li>
-		<li><code>PLATFORM_MODEL_ID</code>: A 4-bit integer value assigned to a platform by the ODM.</li>
-		<li><code>BIOS_KEY_REVISION_ID</code>: is set by the ODM encoding a 4-bit key revision as unary counter value.</li>
-		<li><code>DISABLE_SECURE_DEBUG</code>: Fuse bit that controls whether secure debug unlock feature is disabled permanently.</li>
-		<li><code>DISABLE_AMD_BIOS_KEY_USE</code>: Fuse bit that controls if the BIOS, signed by an AMD key, (with <code>vendor ID == 0</code>) is permitted to boot on a CPU with non-zero Vendor ID.</li>
-		<li><code>DISABLE_BIOS_KEY_ANTI_ROLLBACK</code>: Fuse bit that controls whether BIOS key anti-rollback feature is enabled.</li>
+		<li>
+			<p><code>PLATFORM_VENDOR_ID</code>: An 8-bit integer value assigned by AMD for each ODM.</p>
+		</li>
+		<li>
+			<p><code>PLATFORM_MODEL_ID</code>: A 4-bit integer value assigned to a platform by the ODM.</p>
+		</li>
+		<li>
+			<p><code>BIOS_KEY_REVISION_ID</code>: is set by the ODM encoding a 4-bit key revision as unary counter value.</p>
+		</li>
+		<li>
+			<p><code>DISABLE_SECURE_DEBUG</code>: Fuse bit that controls whether secure debug unlock feature is disabled permanently.</p>
+		</li>
+		<li>
+			<p><code>DISABLE_AMD_BIOS_KEY_USE</code>: Fuse bit that controls if the BIOS, signed by an AMD key, (with <code>vendor ID == 0</code>) is permitted to boot on a CPU with non-zero Vendor ID.</p>
+		</li>
+		<li>
+			<p><code>DISABLE_BIOS_KEY_ANTI_ROLLBACK</code>: Fuse bit that controls whether BIOS key anti-rollback feature is enabled.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Remember these values, as we’ll show how we use them in a bit. Any of the <code>DISABLE</code> values are optional, but recommended based on your security posture/comfort level. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jqoVoEKDiRSoVt9MbdY0W/cc78823e08260658511296d9e82225c3/image3-3.png" alt="" class="kg-image" width="966" height="155" loading="lazy">
+
+	</figure>
+	<p>Remember these values, as we’ll show how we use them in a bit. Any of the <code>DISABLE</code> values are optional, but recommended based on your security posture/comfort level.</p>
 	<p>AMD, upon processing the CSR, provides the public part of the BIOS signing key signed and certified by the AMD signing root key as a RSA Public Key Token file (<code>.stkn</code>) format.</p>
-	<h2 id="putting-it-all-together">Putting It All Together</h2>
+	<h2>Putting It All Together</h2>
 	<p>The following is a step-by-step illustration of how signed UEFI firmware is built:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image8.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48teEpwD6WwiJEVvSql73e/caa650ab3ce2b393dee8c7417a25b073/image8.gif" alt="" class="kg-image" width="960" height="540" loading="lazy">
+
+	</figure>
 	<ol>
-		<li>The ODM submits their public key used for signing Cloudflare images to AMD.</li>
-		<li>AMD signs this key using their RSA private key and passes it back to ODM.</li>
-		<li>The AMD public key and the signed ODM public key are part of the final BIOS SPI image.</li>
-		<li>The BIOS source code is compiled and various BIOS components (PEI Volume, Driver eXecution Environment (DXE) volume, NVRAM storage, etc.) are <a href="https://edk2-docs.gitbook.io/edk-ii-build-specification/2_design_discussion/23_boot_sequence">built as usual.</a></li>
-		<li>The PSP directory and BIOS directory are built next. PSP directory and BIOS directory table points to the location of various firmware entities.</li>
-		<li>The ODM builds the signed BIOS Root of Trust Measurement (RTM) signature based on the blob of BIOS PEI volume concatenated with BIOS Directory header, and generates the digital signature of this using the private portion of ODM signing key. The SPI location for signed BIOS RTM code is finally updated with this signature blob.</li>
-		<li>Finally, the BIOS binaries, PSP directory, BIOS directory and various firmware binaries are combined to build the SPI BIOS image.</li>
+		<li>
+			<p>The ODM submits their public key used for signing Cloudflare images to AMD.</p>
+		</li>
+		<li>
+			<p>AMD signs this key using their RSA private key and passes it back to ODM.</p>
+		</li>
+		<li>
+			<p>The AMD public key and the signed ODM public key are part of the final BIOS SPI image.</p>
+		</li>
+		<li>
+			<p>The BIOS source code is compiled and various BIOS components (PEI Volume, Driver eXecution Environment (DXE) volume, NVRAM storage, etc.) are <a href="https://edk2-docs.gitbook.io/edk-ii-build-specification/2_design_discussion/23_boot_sequence">built as usual.</a></p>
+		</li>
+		<li>
+			<p>The PSP directory and BIOS directory are built next. PSP directory and BIOS directory table points to the location of various firmware entities.</p>
+		</li>
+		<li>
+			<p>The ODM builds the signed BIOS Root of Trust Measurement (RTM) signature based on the blob of BIOS PEI volume concatenated with BIOS Directory header, and generates the digital signature of this using the private portion of ODM signing key. The SPI location for signed BIOS RTM code is finally updated with this signature blob.</p>
+		</li>
+		<li>
+			<p>Finally, the BIOS binaries, PSP directory, BIOS directory and various firmware binaries are combined to build the SPI BIOS image.</p>
+		</li>
 	</ol>
-	<h2 id="enabling-platform-secure-boot">Enabling Platform Secure Boot</h2>
-	<p>Platform Secure Boot is enabled at boot time with a PSB-ready firmware image. PSB is configured using a region of one-time programmable (OTP) fuses, specified for the customer. OTP fuses are on-chip non-volatile memory (NVM) that permits data to be written to memory only once. There is <strong>NO</strong> way to roll the fused CPU back to an unfused one.</p>
-	<p>Enabling PSB in the field will go through two steps: fusing and validating. </p>
+	<h2>Enabling Platform Secure Boot</h2>
+	<p>Platform Secure Boot is enabled at boot time with a PSB-ready firmware image. PSB is configured using a region of one-time programmable (OTP) fuses, specified for the customer. OTP fuses are on-chip non-volatile memory (NVM) that permits data to be written to memory only once. There is <b>NO</b> way to roll the fused CPU back to an unfused one.</p>
+	<p>Enabling PSB in the field will go through two steps: fusing and validating.</p>
 	<ul>
-		<li>Fusing: Fuse the values assigned in the <code>serialNumber</code> field that was generated in the CSR</li>
-		<li>Validating: Validate the fused values and the status code registers</li>
+		<li>
+			<p>Fusing: Fuse the values assigned in the <code>serialNumber</code> field that was generated in the CSR</p>
+		</li>
+		<li>
+			<p>Validating: Validate the fused values and the status code registers</p>
+		</li>
 	</ul>
 	<p>If validation is successful, the BIOS RTM signature is validated using the ODM BIOS signing key, PSB-specific registers (<code>MP0_C2P_MSG_37</code> and <code>MP0_C2P_MSG_38</code>) are updated with the PSB status and fuse values, and the x86 cores are released</p>
 	<p>If validation fails, the registers above are updated with the PSB error status and fuse values, and the x86 cores stay in a locked state.</p>
-	<h2 id="let-s-boot-">Let’s Boot!</h2>
-	<p>With a signed image in hand, we are ready to enable PSB on a machine. We chose to deploy this on a few machines that had an updated, unsigned<a href="https://ami.com/en/support/bios-uefi-firmware-support"> AMI UEFI</a> firmware image, in this case version <code>2.16</code>. We use a couple of different firmware <a href="https://github.com/Zibri/afulnx/releases">update</a> <a href="https://downloadcenter.intel.com/download/29977?v=t">tools</a>, so, after a quick script, we ran an update to change the firmware version from <code>2.16</code> to <code>2.18C</code> (the signed image):</p>
-	<pre><code>. $sudo ./UpdateAll.sh
+	<h2>Let’s Boot!</h2>
+	<p>With a signed image in hand, we are ready to enable PSB on a machine. We chose to deploy this on a few machines that had an updated, unsigned <a href="https://ami.com/en/support/bios-uefi-firmware-support">AMI UEFI</a> firmware image, in this case version <code>2.16</code>. We use a couple of different firmware <a href="https://github.com/Zibri/afulnx/releases">update</a> <a href="https://downloadcenter.intel.com/download/29977?v=t">tools</a>, so, after a quick script, we ran an update to change the firmware version from <code>2.16</code> to <code>2.18C</code> (the signed image):</p>
+	<pre class="language-bash"><code class="language-bash">. $sudo ./UpdateAll.sh
 Bin file name is ****.218C
 
 BEGIN
@@ -134,28 +243,51 @@ Erasing NCB Block ........... done
 Updating NCB Block .......... done
 Verifying NCB Block ......... done
 
-Process completed.
-</code></pre>
+Process completed.</code></pre>
 	<p>After the update completed, we rebooted:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br>After a successful install, we validated that the image was correct via the <a href="https://man7.org/linux/man-pages/man5/sysfs.5.html">sysfs</a> information provided in the <a href="https://linux.die.net/man/8/dmidecode">dmidecode</a> output:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image12.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="testing">Testing</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZW4E36XqbrlpgvXyjR34t/8fe106d8d5c1054d89f014e40143be6e/image2-6.png" alt="" class="kg-image" width="1603" height="1205" loading="lazy">
+
+	</figure>
+	<p>After a successful install, we validated that the image was correct via the <a href="https://man7.org/linux/man-pages/man5/sysfs.5.html">sysfs</a> information provided in the <a href="https://linux.die.net/man/8/dmidecode">dmidecode</a> output:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gIi4xRxwq4PfpxAjc2nnA/41cd8a14cf8e706fa950f384afa18923/image12.gif" alt="" class="kg-image" width="463" height="233" loading="lazy">
+
+	</figure>
+	<h3>Testing</h3>
 	<p>With a signed image installed, we wanted to test that it worked, meaning: what if an unauthorized user installed their own firmware image? We did this by downgrading the image back to an unsigned image, <code>2.16</code>. In theory, the machine shouldn’t boot as the x86 cores should stay in a locked state. After downgrading, we rebooted and got the following:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image13-1.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HQqHnKOTSHg1YQOyZq35A/71d546123a3df594596bc6c7ba86ecee/image13-1.jpg" alt="" class="kg-image" width="292" height="452" loading="lazy">
+
+	</figure>
 	<p>This isn’t a powered down machine, but the result of booting with an unsigned image.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image9.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/y9RGO5UGzOEG1lxRyPJa2/8356466f68d677c4119a32675d2191e4/image9.jpg" alt="" class="kg-image" width="225" height="225" loading="lazy">
+
+	</figure>
 	<p>Flashing back to a signed image is done by running the same flashing utility through the BMC, so we weren’t bricked. Nonetheless, the results were successful.</p>
-	<h2 id="naming-convention">Naming Convention</h2>
+	<h2>Naming Convention</h2>
 	<p>Our standard UEFI firmware images are alphanumeric, making it difficult to distinguish (by name) the difference between a signed and unsigned image (<code>v2.16A</code> vs <code>v2.18C</code>), for example. There isn’t a remote attestation capability (yet) to probe the PSB status registers or to store these values by means of a signature (e.g. <a href="https://linux.die.net/man/8/tpm_quote_tools">TPM quote</a>). As we transitioned to PSB, we wanted to make this easier to determine by adding a specific suffix: <code>-sig</code> &nbsp;that we could query in userspace. This would allow us to query this information via <a href="https://prometheus.io">Prometheus</a>. Changing the file name alone wouldn’t do it, so we had to make the following changes to reflect a new naming convention for signed images:</p>
 	<ul>
-		<li>Update filename</li>
-		<li>Update BIOS version for setup menu</li>
-		<li>Update post message</li>
-		<li>Update <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_2.7.1.pdf">SMBIOS type 0</a> (BIOS version string identifier)</li>
+		<li>
+			<p>Update filename</p>
+		</li>
+		<li>
+			<p>Update BIOS version for setup menu</p>
+		</li>
+		<li>
+			<p>Update post message</p>
+		</li>
+		<li>
+			<p>Update <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_2.7.1.pdf">SMBIOS type 0</a> (BIOS version string identifier)</p>
+		</li>
 	</ul>
 	<p>Signed images now have a <code>-sig</code> suffix:</p>
-	<pre><code>~$ sudo dmidecode -t0
+	<pre class="language-bash"><code class="language-bash">~$ sudo dmidecode -t0
 # dmidecode 3.2
 Getting SMBIOS data from sysfs.
 SMBIOS 3.3.0 present.
@@ -170,8 +302,8 @@ BIOS Information
 	Address: 0xF0000
 	Runtime Size: 64 kB
 	ROM Size: 16 MB</code></pre>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>Finding weaknesses in firmware is a challenge that many attackers have taken on. Attacks that physically manipulate the firmware used for performing hardware initialization during the booting process can invalidate many of the common secure boot features that are considered industry standard. By implementing a hardware root of trust that is used for code signing critical boot entities, your hardware becomes a 'first line of defense' in ensuring that your server hardware and software integrity can derive trust through cryptographic means.</p>
-	<h2 id="what-s-next">What’s Next?</h2>
+	<h2>What’s Next?</h2>
 	<p>While this post discussed our current, AMD-based hardware platform, how will this affect our future hardware generations? One of the benefits of working with diverse vendors like AMD and <a href="https://amperecomputing.com">Ampere</a> (ARM) is that we can ensure they are baking in our desired platform security by default (which we’ll speak about in a future post), making our hardware security outlook that much brighter ?.</p>
 </div>

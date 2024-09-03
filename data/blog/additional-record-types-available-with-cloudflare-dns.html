@@ -1,25 +1,28 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=9ba8f8928607aabb17539f80eb4660ce" alt="An overhead shot of a vinyl record on a cabinet over a vinyl player" loading="lazy"><br>
-		<small>Photo by <a href="https://unsplash.com/@minkmingle?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Mink Mingle</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></small>
-	</p>
+<div class="mb2 gray5">6 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2eIiLGqxgU4kAF3zvdikfo/d62a641f58b4fc701d4d30061aaa839d/photo-1468164016595-6108e4c60c8b" alt="An overhead shot of a vinyl record on a cabinet over a vinyl player" class="kg-image" width="1080" height="720" loading="lazy">
+
+	</figure>
+	<p>Photo by <a href="https://unsplash.com/@minkmingle?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Mink Mingle</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
 	<p>Cloudflare recently updated the authoritative DNS service to support nine new record types. Since these records are less commonly used than what we previously supported, we thought it would be a good idea to do a brief explanation of each record type and how it is used.</p>
-	<h3 id="dnskeyandds">DNSKEY and DS</h3>
+	<h3>DNSKEY and DS</h3>
 	<p>DNSKEY and DS work together to allow you to enable DNSSEC on a child zone (subdomain) that you have delegated to another Nameserver. DS is useful if you are delegating DNS (through an NS record) for a child to a separate system and want to keep using DNSSEC for that child zone; without a DS entry in the parent, the child data will not be validated. We’ve blogged about the details of <a href="https://blog.cloudflare.com/introducing-universal-dnssec">Cloudflare’s DNSSEC</a> <a href="https://blog.cloudflare.com/tag/dnssec">implementation</a> and <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">why it is important</a> in the past, and this new feature allows for more flexible adoption for customers who need to delegate subdomains.</p>
-	<h3 id="certificaterelatedrecordtypes">Certificate Related Record Types</h3>
+	<h3>Certificate Related Record Types</h3>
 	<p>Today, there is no way to restrict which TLS (SSL) certificates are trusted to be served for a host. For example if an attacker were able to maliciously generate an SSL certificate for a host, they could use a on-path attacker attack to appear as the original site. With SSHFP, TLSA, SMIMEA, and CERT, a website owner can configure the exact certificate public key that is allowed to be used on the domain, stored inside the DNS and secured with DNSSEC, reducing the risk of these kinds of attacks working.</p>
-	<p><strong>It is critically important that if you rely on these types of records that you enable and configure DNSSEC for your domain.</strong></p>
-	<h4 id="sshfp"><a href="https://tools.ietf.org/html/rfc4255">SSHFP</a></h4>
+	<p><b>It is critically important that if you rely on these types of records that you enable and configure DNSSEC for your domain.</b></p>
+	<h4><a href="https://tools.ietf.org/html/rfc4255">SSHFP</a></h4>
 	<p>This type of record is an answer to the question “When I’m connecting via SSH to this remote machine, it’s authenticating me, but how do I authenticate it?” If you’re the only person connecting to this machine, your <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH client</a> will compare the fingerprint of the public host key to the one it kept in the known_hosts file during the first connection. However across multiple machines or multiple users from an organization, you need to verify this information against a common source of trust. In essence, you need the equivalent of the authentication that a certificate authority provides by signing an HTTPS certificate, but for SSH. Although it’s possible to set certificate authorities for SSH and to have them sign public host keys, another way is to publish the fingerprint of the keys in the domain via the SSHFP record type.</p>
-	<p><strong>Again, for these fingerprints to be trustworthy it is important to enable DNSSEC on your zone.</strong></p>
+	<p><b>Again, for these fingerprints to be trustworthy it is important to enable DNSSEC on your zone.</b></p>
 	<p>The SSHFP record type is similar to TLSA record. You are specifying the algorithm type, the signature type, and then the signature itself within the record for a given hostname.</p>
 	<p>If the domain and remote server have SSHFP set and you are running an SSH client (such as <a href="https://www.openbsd.org/openssh/txt/release-5.1">OpenSSH 5.1+</a>) that supports it, you can now verify the remote machine upon connection by adding the following parameters to your connection:</p>
 	<p><code>❯ ssh -o "VerifyHostKeyDNS=yes" -o "StrictHostKeyChecking=yes" [insertremoteserverhere]</code></p>
-	<h4 id="tlsaandsmimea">TLSA and SMIMEA</h4>
+	<h4>TLSA and SMIMEA</h4>
 	<p>TLSA records were designed to specify which keys are allowed to be used for a given domain when connecting via TLS. They were introduced in the <a href="https://tools.ietf.org/html/rfc6698">DANE</a> specification and allow domain owners to announce which certificate can and should be used for specific purposes for the domain. While most major browsers do not support TLSA, it may still be valuable for non browser specific applications and services.</p>
 	<p>For example, I’ve set a TLSA record for the domain hasvickygoneonholiday.com for TCP traffic over port 443. There are a number of ways to generate the record, but the easiest is likely through <a href="https://www.huque.com/bin/gen_tlsa">Shumon Huque’s tool</a>.</p>
-	<p><mark>For most of the examples in this post we will be using <a href="https://www.knot-dns.cz/docs/2.6/html/man_kdig.html">kdig</a> rather than the ubiquitous dig. Generally preinstalled dig versions can be old and may not handle newer record types well. If your queries do not quite match up, you should either upgrade your version of dig or install knot.</mark></p>
-	<pre><code class="language-❯">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY; status: NOERROR; id: 2218
+	<p>For most of the examples in this post we will be using <a href="https://www.knot-dns.cz/docs/2.6/html/man_kdig.html">kdig</a> rather than the ubiquitous dig. Generally preinstalled dig versions can be old and may not handle newer record types well. If your queries do not quite match up, you should either upgrade your version of dig or install knot.</p>
+	<pre class="language-❯"><code class="language-❯">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY; status: NOERROR; id: 2218
 ;; Flags: qr rd ra ad; QUERY: 1; ANSWER: 2; AUTHORITY: 0; ADDITIONAL: 1
 
 ;; QUESTION SECTION:
@@ -31,10 +34,9 @@ _443._tcp.hasvickygoneonholiday.com. 300	IN	RRSIG	TLSA 13 4 300 20180803233834 2
 
 ;; Received 232 B
 ;; Time 2018-08-02 15:38:34 PDT
-;; From 192.168.1.1@53(UDP) in 28.5 ms
-</code></pre>
-	<p>From the above request and response, we can see that a) the response for the zone is secured and signed with DNSSEC (Flag: <b><em>ad</em></b>) and that I should be verifying a certificate with the public key (3 <b><em>1</em></b> 1) SHA256 hash (3 1 <b><em>1</em></b>) of 4E48ED671DFCDF6CBF55E52DBC8B9C9CC21121BD149BC24849D1398DA56FB242. We can use openssl (v1.1.x or higher) to verify the results:</p>
-	<pre><code>❯ openssl s_client  -connect hasvickygoneonholiday.com:443 -dane_tlsa_domain "hasvickygoneonholiday.com" -dane_tlsa_rrdata "
+;; From 192.168.1.1@53(UDP) in 28.5 ms</code></pre>
+	<p>From the above request and response, we can see that a) the response for the zone is secured and signed with DNSSEC (Flag: <i><b>ad</b></i>) and that I should be verifying a certificate with the public key (3 <i><b>1</b></i> 1) SHA256 hash (3 1 <i><b>1</b></i>) of 4E48ED671DFCDF6CBF55E52DBC8B9C9CC21121BD149BC24849D1398DA56FB242. We can use openssl (v1.1.x or higher) to verify the results:</p>
+	<pre class="language-bash"><code class="language-bash">❯ openssl s_client  -connect hasvickygoneonholiday.com:443 -dane_tlsa_domain "hasvickygoneonholiday.com" -dane_tlsa_rrdata "
 3 1 1 4e48ed671dfcdf6cbf55e52dbc8b9c9cc21121bd149bc24849d1398da56fb242"
 CONNECTED(00000003)
 depth=0 C = US, ST = CA, L = San Francisco, O = "CloudFlare, Inc.", CN = hasvickygoneonholiday.com
@@ -54,21 +56,19 @@ MIIE7jCCBJSgAwIBAgIQB9z9WxnovNf/lt2Lkrfq+DAKBggqhkjOPQQDAjBvMQsw
 SSL handshake has read 2666 bytes and written 295 bytes
 Verification: OK
 Verified peername: hasvickygoneonholiday.com
-DANE TLSA 3 1 1 ...149bc24849d1398da56fb242 matched EE certificate at depth 0
-</code></pre>
+DANE TLSA 3 1 1 ...149bc24849d1398da56fb242 matched EE certificate at depth 0</code></pre>
 	<p><a href="https://tools.ietf.org/html/rfc8162">SMIMEA</a> records function similar to TLSA but are specific to email addresses. The domain for these records should be prefixed by “_smimecert.” and specific formatting is required to attach a SMIMEA record to an email address. The local-part (username) of the email address must be treated in a specific format and SHA-256 hashed as detailed in the RFC. From the RFC example: “ For example, to request an SMIMEA resource record for a user whose email address is "<a href="mailto:hugh@example.com">hugh@example.com</a>", an SMIMEA query would be placed for the following QNAME: <code>c93f1e400f26708f98cb19d936620da35eec8f72e57f9eec01c1afd6._smimecert.example.com</code></p>
-	<h4 id="cert"><a href="https://tools.ietf.org/html/rfc4398">CERT</a></h4>
+	<h4><a href="https://tools.ietf.org/html/rfc4398">CERT</a></h4>
 	<p>CERT records are used for generically storing certificates within DNS and are most commonly used by systems for email encryption. To create a CERT record, you must specify the certificate type, the key tag, the algorithm, and then the certificate, which is either the certificate itself, the CRL, a URL of the certificate, or fingerprint and a URL.</p>
-	<h3 id="othernewlysupportedrecordtypes">Other Newly Supported Record Types</h3>
-	<h4 id="ptr">PTR</h4>
+	<h3>Other Newly Supported Record Types</h3>
+	<h4>PTR</h4>
 	<p>PTR (Pointer) records are pointers to canonical names. They are similar to CNAME in structure, meaning they only contain one FQDN (fully qualified domain name) but the RFC dictates that subsequent lookups are not done for PTR records, the value should just be returned back to the requestor. This is different to a CNAME where a recursive resolver would follow the target of the canonical name. The most common use of a PTR record is in reverse DNS, where you can look up which domains are meant to exist at a given IP address. These are useful for outbound mailservers as well as authoritative DNS servers.</p>
 	<p>It is only possible to delegate the authority for IP addresses that you own from your Regional Internet Registry (RIR). Creating reverse zones and PTR records for IPs that you can not (or do not) delegate does not serve any practical purpose.</p>
 	<p>For example, looking up the A record for marek.ns.cloudflare.com gives us the IP of 173.245.59.202.</p>
-	<pre><code>❯ kdig a marek.ns.cloudflare.com +short
-173.245.59.202
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">❯ kdig a marek.ns.cloudflare.com +short
+173.245.59.202</code></pre>
 	<p>Now imagine we want to know if the owner of this IP ‘authorizes’ <code>marek.ns.cloudflare.com</code> to point to it. Reverse Zones are specifically crafted child zones within <code>in-addr.arpa.</code> (for IPv4) and <code>ip6.arpa.</code> (for IPv6) whom are delegated via the Regional Internet Registries to the owners of the IP address space. That is to say if you own a /24 from ARIN, ARIN will delegate the reverse zone space for your /24 to you to control. The IPv4 address is represented inverted as the subdomain in in-addr.arpa. Since Cloudflare owns the IP, we’ve delegated the reverse zone and created a PTR there.</p>
-	<pre><code>❯ kdig -x 173.245.59.202
+	<pre class="language-bash"><code class="language-bash">❯ kdig -x 173.245.59.202
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY; status: NOERROR; id: 18658
 ;; Flags: qr rd ra; QUERY: 1; ANSWER: 1; AUTHORITY: 0; ADDITIONAL: 0
 
@@ -76,10 +76,9 @@ DANE TLSA 3 1 1 ...149bc24849d1398da56fb242 matched EE certificate at depth 0
 ;; 202.59.245.173.in-addr.arpa.		IN	PTR
 
 ;; ANSWER SECTION:
-202.59.245.173.in-addr.arpa.	1222	IN	PTR	marek.ns.cloudflare.com.
-</code></pre>
+202.59.245.173.in-addr.arpa.	1222	IN	PTR	marek.ns.cloudflare.com.</code></pre>
 	<p>For completeness, here is the +trace for the 202.59.245.173.in-addr.arpa zone. We can see that the /24 59.245.173.in-addr.arpa has been delegated to Cloudflare from ARIN:</p>
-	<pre><code>❯ dig 202.59.245.173.in-addr.arpa +trace
+	<pre class="language-bash"><code class="language-bash">❯ dig 202.59.245.173.in-addr.arpa +trace
 
 ; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; 202.59.245.173.in-addr.arpa +trace
 ;; global options: +cmd
@@ -116,26 +115,24 @@ in-addr.arpa.		172800	IN	NS	a.in-addr-servers.arpa.
 
 59.245.173.in-addr.arpa. 86400	IN	NS	ns1.cloudflare.com.
 59.245.173.in-addr.arpa. 86400	IN	NS	ns2.cloudflare.com.
-;; Received 95 bytes from 2001:500:13::63#53(2001:500:13::63) in 188 ms
-</code></pre>
-	<h4 id="naptr"><a href="https://tools.ietf.org/html/rfc2915">NAPTR</a></h4>
+;; Received 95 bytes from 2001:500:13::63#53(2001:500:13::63) in 188 ms</code></pre>
+	<h4><a href="https://tools.ietf.org/html/rfc2915">NAPTR</a></h4>
 	<p>Naming Authority Pointer Records are used in conjunction with SRV records, generally as a part of the SIP protocol. NAPTR records point to domains to specific services, if available for that domain. <a href="https://twitter.com/anders94">Anders Brownworth</a> has an excellent description in detail on his <a href="https://anders.com/cms/264">blog</a>. The start of his example, with his permission:</p>
 	<blockquote>
 		<p>Let’s consider a call to <a href="mailto:2125551212@example.com">2125551212@example.com</a>. Given only this address though, we don't know what IP address, port or protocol to send this call to. We don't even know if example.com supports SIP or some other VoIP protocol like H.323 or IAX2. I'm implying that we're interested in placing a call to this URL but if no VoIP service is supported, we could just as easily fall back to emailing this user instead. To find out, we start with a NAPTR record lookup for the domain we were given:</p>
 	</blockquote>
-	<pre><code>#host -t NAPTR example.com
+	<pre class="language-bash"><code class="language-bash">#host -t NAPTR example.com
 example.com NAPTR 10 100 "S" "SIP+D2U" "" _sip._udp.example.com.
 example.com NAPTR 20 100 "S" "SIP+D2T" "" _sip._tcp.example.com.
-example.com NAPTR 30 100 "S" "E2U+email" "!^.*$!mailto:info@example.com!i" _sip._tcp.example.com.
-</code></pre>
+example.com NAPTR 30 100 "S" "E2U+email" "!^.*$!mailto:info@example.com!i" _sip._tcp.example.com.</code></pre>
 	<blockquote>
 		<p>Here we find that example.com gives us three ways to contact example.com, the first of which is "SIP+D2U" which would imply SIP over UDP at _sip._udp.example.com.</p>
 	</blockquote>
-	<h4 id="uri"><a href="https://tools.ietf.org/html/rfc7553">URI</a></h4>
+	<h4><a href="https://tools.ietf.org/html/rfc7553">URI</a></h4>
 	<p>Uniform Resource Identifier records are commonly used as a compliment to NAPTR records and per the RFC, can be used to replace SRV records. As such, they contain a Weight and Priority field as well as Target, similar to SRV.</p>
 	<p>One use case is proposed by this <a href="https://tools.ietf.org/html/draft-mccallum-kitten-krb-service-discovery-03">draft RFC</a> is to replace SRV records with URI records for discovering Kerberos key distribution centers (KDC). It minimizes the number of requests over SRV records and allows the domain owner to specify preference for TCP or UDP.</p>
 	<p>In the below example, it specifies that we should use a KDC on TCP at the default port and UDP on port 89 should the primary connection fail.</p>
-	<pre><code>❯ kdig URI _kerberos.hasvickygoneonholiday.com
+	<pre class="language-bash"><code class="language-bash">❯ kdig URI _kerberos.hasvickygoneonholiday.com
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY; status: NOERROR; id: 8450
 ;; Flags: qr rd ra; QUERY: 1; ANSWER: 2; AUTHORITY: 0; ADDITIONAL: 0
 
@@ -144,11 +141,9 @@ example.com NAPTR 30 100 "S" "E2U+email" "!^.*$!mailto:info@example.com!i" _sip.
 
 ;; ANSWER SECTION:
 _kerberos.hasvickygoneonholiday.com. 283	IN	URI	1 10 "krb5srv:m:tcp:kdc.hasbickygoneonholiday.com"
-_kerberos.hasvickygoneonholiday.com. 283	IN	URI	1 20 "krb5srv:m:udp:kdc.hasbickygoneonholiday.com:89"
-</code></pre>
-	<h3 id="summary">Summary</h3>
+_kerberos.hasvickygoneonholiday.com. 283	IN	URI	1 20 "krb5srv:m:udp:kdc.hasbickygoneonholiday.com:89"</code></pre>
+	<h3>Summary</h3>
 	<p>Cloudflare now supports CERT, DNSKEY, DS, NAPTR, PTR, SMIMEA, SSHFP, and TLSA in our authoritative DNS products. We would love to hear if you have any interesting example use cases for the new record types and what other record types we should support in the future.</p>
 	<p>Our DNS engineering teams in London and San Francisco are both hiring if you would like to contribute to the fastest authoritative and recursive DNS services in the world.</p>
 	<p><a href="https://boards.greenhouse.io/cloudflare/jobs/1213352?gh_jid=1213352">Software Engineer</a></p>
-	<!--kg-card-end: markdown-->
 </div>

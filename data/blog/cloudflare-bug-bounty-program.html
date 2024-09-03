@@ -1,91 +1,107 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image6.png" class="kg-image" alt="Announcing the public launch of Cloudflare's bug bounty program" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FDEGAYNHJakvgsnUJUCJa/3a03b6823bc8b8a0fa00305343cbfd89/image6.png" alt="Announcing the public launch of Cloudflare's bug bounty program" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Today we are launching Cloudflare’s paid public bug bounty program. We believe bug bounties are a vital part of every security team’s toolbox and have been working hard on improving and expanding our private bug bounty program over the last few years. The first iteration of our bug bounty was a pure vulnerability disclosure program without cash bounties. In 2018, we added a private bounty program and are now taking the next step to a public program.</p>
 	<p>Starting today, anyone can report vulnerabilities related to any Cloudflare product to our <a href="https://hackerone.com/cloudflare">public bug bounty program</a>, hosted on HackerOne’s platform.</p>
 	<p>Let's walk through our journey so far.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="step-1-starting-a-vulnerability-disclosure-program">Step 1: starting a vulnerability disclosure program</h3>
-	<p>In 2014, when the company had fewer than 100<em> </em>employees, we created a responsible disclosure policy to provide a safe place for security researchers to submit potential vulnerabilities to our security team, with some established rules of engagement. A vulnerability disclosure policy is an important first step for a company to take because it is an invitation to researchers to look at company assets without fear of repercussions, provided the researchers follow certain guidelines intended to protect everyone involved. We still stand by that policy and welcome reports related to all of our services through that <a href="https://hackerone.com/cloudflare?type=team">program</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IXWfOzxYVXqsvYi4r1VVe/c9e392cf45b4ca90149c84e14926021d/image5.png" alt="" class="kg-image" width="1801" height="376" loading="lazy">
+
+	</figure>
+	<h3>Step 1: starting a vulnerability disclosure program</h3>
+	<p>In 2014, when the company had fewer than 100 employees, we created a responsible disclosure policy to provide a safe place for security researchers to submit potential vulnerabilities to our security team, with some established rules of engagement. A vulnerability disclosure policy is an important first step for a company to take because it is an invitation to researchers to look at company assets without fear of repercussions, provided the researchers follow certain guidelines intended to protect everyone involved. We still stand by that policy and welcome reports related to all of our services through that <a href="https://hackerone.com/cloudflare?type=team">program</a>.</p>
 	<p>Over the years, we received many great reports through that program which led to improvements in our products. However, one early challenge we faced was that researchers struggled to understand our infrastructure and products. Unlike most of the public programs of that era when we launched, our services were not made up primarily of public facing web applications or even mobile applications; our products were primarily <a href="https://www.cloudflare.com/learning/network-layer/network-security">network security</a> and performance solutions that operated as a proxy layer in front of customer resources.</p>
 	<p>Understanding where Cloudflare fits into the HTTP request/response pipeline can get very challenging with multiple products enabled. And because we did not provide much supporting documentation about how our products worked, and had scoped the program to broadly encompass everything, we left researchers to figure out our complicated products on their own. As a result, most of the reports we received over those early years came from people who saw something that seemed atypical to them, but in our view was not actually a vulnerability in need of repair. We dedicated a tremendous amount of time to triaging false positive reports and helping the researchers understand their errors.</p>
 	<p>Lesson #1 from that experience: we needed to provide much more detail about our products, so researchers could understand how to dig into our products and identify true vulnerabilities. For example, when a zone is being onboarded to Cloudflare, even before ownership is determined, Cloudflare will display the DNS records for the zone. These DNS records are public information, but researchers have filed reports claiming that this is an information leakage issue. The same results can be obtained with open-source tools. This does not affect existing Cloudflare zones since Cloudflare protects the actual origin IPs from being leaked.</p>
 	<p>We see the same types of issues come up regularly with the platforms that some companies use to assess the security of their vendors. Off-the-shelf scanners will inaccurately detect vulnerabilities in our platforms because our services not only sit in front of our environment, but the environments of many thousands of customers of all shapes and sizes. We encourage researchers not to use those tools and instead learn more about how our services work.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Leaving researchers to their own devices, and failing to invest in helping them understand how our product worked, led to a poor signal-to-noise ratio. At the time of writing, 1,197 reports have been submitted to our vulnerability disclosure program. Of those, only 158 resulted in points going to the researcher for a valid report. With only 13% of reports being valid, we needed to invest in improving the signal-to-noise ratio by helping our researchers before we could expand our program.</p>
-	<h3 id="rewards-t-shirts">Rewards: T-shirts?</h3>
-	<p>Early on, we rewarded researchers with a unique “Cloudflare bug hunter” T-shirt after we validated a vulnerability report. We thought it was a nice gesture at a low cost for people who found security bugs. In practice, when we factored in shipping issues, passing through customs, and wrong sizes, it was a nightmare. Shipping turned out to be such a challenge that we sometimes resorted to hand delivering T-shirts to researchers when attending conferences. It was nice to meet the researchers in person, but not a scalable solution!</p>
-	<h3 id="step-2-private-bounty-program">Step 2: private bounty program</h3>
-	<p>We have always felt that rewarding good security research deserved more than a T-shirt. We also believed that financially supporting researchers would incentivize higher quality reports and deeper security research.</p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">Righhhhhhht. I think most of us would rather have the cash.</p>— Mrs. Y. (@MrsYisWhy) <a href="https://twitter.com/MrsYisWhy/status/835843779462639616?ref_src=twsrc%5Etfw">February 26, 2017</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WbpfWCedyyGZUIBsvEuDX/ee894f417af5a47758a6549552f6022f/image3.png" alt="" class="kg-image" width="1801" height="376" loading="lazy">
+
 	</figure>
+	<p>Leaving researchers to their own devices, and failing to invest in helping them understand how our product worked, led to a poor signal-to-noise ratio. At the time of writing, 1,197 reports have been submitted to our vulnerability disclosure program. Of those, only 158 resulted in points going to the researcher for a valid report. With only 13% of reports being valid, we needed to invest in improving the signal-to-noise ratio by helping our researchers before we could expand our program.</p>
+	<h3>Rewards: T-shirts?</h3>
+	<p>Early on, we rewarded researchers with a unique “Cloudflare bug hunter” T-shirt after we validated a vulnerability report. We thought it was a nice gesture at a low cost for people who found security bugs. In practice, when we factored in shipping issues, passing through customs, and wrong sizes, it was a nightmare. Shipping turned out to be such a challenge that we sometimes resorted to hand delivering T-shirts to researchers when attending conferences. It was nice to meet the researchers in person, but not a scalable solution!</p>
+	<h3>Step 2: private bounty program</h3>
+	<p>We have always felt that rewarding good security research deserved more than a T-shirt. We also believed that financially supporting researchers would incentivize higher quality reports and deeper security research.</p>
+	<blockquote>
+		<p>Righhhhhhht. I think most of us would rather have the cash.</p>
+		<p>— Mrs. Y. (@MrsYisWhy) <a href="https://twitter.com/MrsYisWhy/status/835843779462639616?ref_src=twsrc%5Etfw">February 26, 2017</a></p>
+	</blockquote>
 	<p>In order to learn the ropes of operating a paid bounty, in 2018 we opened a private bug bounty program and spent the past few years optimizing.</p>
-	<p>Our end goal has always been to reach a level of maturity that would allow us to operate a paid public program. To reach that goal we needed to learn how to best support the researchers and improve the signal-to-noise ratio of reports, while building our internal processes to track and remediate a stream of reported vulnerabilities with our engineering teams.</p><!--kg-card-begin: markdown-->
+	<p>Our end goal has always been to reach a level of maturity that would allow us to operate a paid public program. To reach that goal we needed to learn how to best support the researchers and improve the signal-to-noise ratio of reports, while building our internal processes to track and remediate a stream of reported vulnerabilities with our engineering teams.</p>
 	<p>When we launched the private bug bounty we included all Cloudflare products eligible for rewards, and by mid-January 2022 we had paid out \$211,512 in bounties. We started the program by inviting a few researchers and slowly added more overtime. This helped us fine tune our policies and documentation and create a more scalable vulnerability management process internally. Our most prolific participant has earned \$54,800 in bounty rewards, and the signal-to-noise ratio has improved to 68%, with 292 of our 430 total reports receiving a reward.</p>
-	<!--kg-card-end: markdown-->
 	<p>The success of our private program has largely been the result of consistent effort from the members of our Product Security team to improve our internal handling of issues, and through projects to improve the researcher experience. All bug bounty reports are triaged and validated by members of the security team along with some initial support from HackerOne. Once triaged, the security issues flow through our vulnerability management program, where unique issues are tracked in a single ticket that can be shared outside the security team. To support a scaling program and company, automation was baked into this process and integrations were implemented with our ticketing system.</p>
 	<p>In this example of a valid report, a ticket was filed containing all the information the reporter provided to HackerOne. Once a report is acknowledged and a VULN ticket is filed, we pay out the security researcher to ensure they receive the reward in a timely fashion.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/02/image4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EBzAyBVBpN4CDZ9TFiCE7/fe6f613c202a96b3f3249dad1bde7f76/image4.png" alt="" class="kg-image" width="1106" height="352" loading="lazy">
+
+	</figure>
 	<p>Each ticket is assigned to an Engineering Owner and Security Owner who share the responsibility for remediating the vulnerability. Early on in the process, a service-level agreement (SLA) and remediation timeline are determined by the severity of the issue. If the bug is determined to be of critical severity, it's all hands on deck to fix the issue.</p>
 	<p>After initial assignment and SLA determination, the open tickets are reviewed weekly by both Engineering and Security to ensure that problems are being addressed in line with the SLA.</p>
 	<p>We’ve been working hard to improve the researcher experience. We’ve seen that immediately paying researchers led to a huge improvement in satisfaction compared to waiting weeks or months for a T-shirt. Likewise, it was even more frustrating for security researchers to work hard on an issue and then find out it was out of scope. To address this we constantly update our scope section as we get more out-of-scope reports. Our policy page is now much clearer. We also have treasure maps for some products pointing at major risk areas, and even put together a test site where researchers can test theories.</p>
-	<p>Ultimately, the success of our private bug bounty came down to the researchers who put in the effort to look for issues. Cloudflare thanks all 419 researchers who have participated in our bug bounty program so far, with a special shout out to the top 10 researchers in the program:<br></p>
+	<p>Ultimately, the success of our private bug bounty came down to the researchers who put in the effort to look for issues. Cloudflare thanks all 419 researchers who have participated in our bug bounty program so far, with a special shout out to the top 10 researchers in the program:</p>
 	<ul>
-		<li>zeroxyele</li>
-		<li>esswhy</li>
-		<li>turla</li>
-		<li>ginkoid</li>
-		<li>albertspedersen</li>
-		<li>ryotak</li>
-		<li>base_64</li>
-		<li>dward84</li>
-		<li>ninetynine</li>
-		<li>albinowax<br></li>
+		<li>
+			<p>zeroxyele</p>
+		</li>
+		<li>
+			<p>esswhy</p>
+		</li>
+		<li>
+			<p>turla</p>
+		</li>
+		<li>
+			<p>ginkoid</p>
+		</li>
+		<li>
+			<p>albertspedersen</p>
+		</li>
+		<li>
+			<p>ryotak</p>
+		</li>
+		<li>
+			<p>base_64</p>
+		</li>
+		<li>
+			<p>dward84</p>
+		</li>
+		<li>
+			<p>ninetynine</p>
+		</li>
+		<li>
+			<p>albinowax</p>
+		</li>
 	</ul>
-	<p>Here’s how our total bounty amounts grew as we improved our program:</p><!--kg-card-begin: markdown-->
-	<p>2018 - \$4,500<br>
-		2019 - \$25,425<br>
-		2020 - \$78,877<br>
-		2021 - \$101,075</p>
-	<!--kg-card-end: markdown-->
-	<p>The current breakdown of bounty awards for primary targets based on issue severity is listed below. (All amounts in USD)</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Severity</th>
-				<th style="text-align:center">Bounty</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Critical</td>
-				<td style="text-align:center">$3,000</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">High</td>
-				<td style="text-align:center">$1,000</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Medium</td>
-				<td style="text-align:center">$500</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Low</td>
-				<td style="text-align:center">$250</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<h3 id="lesson-learned-making-it-easier-for-researchers-with-cloudflare-s-testing-sandbox">Lesson learned: making it easier for researchers with Cloudflare’s testing sandbox</h3>
+	<p>Here’s how our total bounty amounts grew as we improved our program:</p>
+	<p>2018 - \$4,5002019 - \$25,4252020 - \$78,8772021 - \$101,075</p>
+	<p>The current breakdown of bounty awards for primary targets based on issue severity is listed below. (All amounts in USD)</p>
+	<p>Severity</p>
+	<p>Bounty</p>
+	<p>Critical</p>
+	<p>$3,000</p>
+	<p>High</p>
+	<p>$1,000</p>
+	<p>Medium</p>
+	<p>$500</p>
+	<p>Low</p>
+	<p>$250</p>
+	<h3>Lesson learned: making it easier for researchers with Cloudflare’s testing sandbox</h3>
 	<p>Because of how our services work, you need to have our products deployed in a test environment in order to explore their capabilities and limitations. And many of those products offer features that are not free to use. So, to make vulnerability research more accessible, we created <a href="https://cumulusfire.net">CumulusFire</a> to showcase Cloudflare features that typically require a paid level of service. We created this site for two reasons: to provide a standardized playground where researchers can test their exploits, and to make it easier for our teams to reproduce them while triaging.</p>
 	<p>CumulusFire has already helped us address the constant trickle of reports in which researchers would configure their origin server in an obviously insecure way, beyond default or expected settings, and then report that Cloudflare’s WAF does not block an attack. By policy, we will now only consider WAF bypasses a vulnerability if it is reproducible on CumulusFire.</p>
 	<p>As we expand our public program we will add additional services to the testing playground. Since we love dogfooding our own products, the entire sandbox is built on Cloudflare Workers.</p>
-	<h3 id="next-steps">Next steps</h3>
+	<h3>Next steps</h3>
 	<p>Just as we grew our private program, we will continue to evolve our public bug bounty program to provide the best experience for researchers. We aim to add more documentation, testing platforms and a way to interact with our security teams so that researchers can be confident that their submissions represent valid security issues.</p>
 	<p>Look forward to us sharing more of our learnings as we grow the program.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OHiIcLro7I0Iq7eqLlYxc/d36c86394f1bd54b906555472eba24f9/image1.png" alt="" class="kg-image" width="1801" height="376" loading="lazy">
+
+	</figure>
 </div>

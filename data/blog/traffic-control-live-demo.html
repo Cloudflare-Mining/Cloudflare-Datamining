@@ -1,36 +1,37 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SgfPAzOzdb1uZmxYzidp4/e28e2e95ae4348fdcde12cd8b3c526ff/traffic-control-live-demo.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Cloudflare helps customers control their own traffic at the edge. One of two <a href="https://blog.cloudflare.com/cloudflare-traffic">products that we introduced</a> to empower customers to do so is <a href="https://www.cloudflare.com/traffic-control">Cloudflare Rate Limiting</a>*.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/speed-limit-10.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/brhefele/6553028503">image</a> by <a href="https://www.flickr.com/photos/brhefele">Brian Hefele</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NtFQrwczwJFS6c5ko0bUk/e1d1b5c0e360c0ccb228292f55538c26/speed-limit-10.jpg" alt="" class="kg-image" width="1024" height="819" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/brhefele/6553028503">image</a> by <a href="https://www.flickr.com/photos/brhefele">Brian Hefele</a></p>
 	<p>Rate Limiting allows a customer to rate limit, shape or block traffic based on the rate of requests per client IP address, cookie, authentication token, or other attributes of the request. Traffic can be controlled on a per-URI (with wildcards for greater flexibility) basis giving pinpoint control over a website, application, or API.</p>
 	<p>Cloudflare has been <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dogfooding</a> Rate Limiting to add more granular controls against Layer 7 DOS and brute-force attacks. For example, we've experienced attacks on cloudflare.com from more than 4,000 IP addresses sending 600,000+ requests in 5 minutes to the same URL but with random parameters. These types of attacks send large volumes of HTTP requests intended to bring down our site or to crack login passwords.</p>
 	<p>Rate Limiting protects websites and APIs from similar types of bad traffic. By leveraging our massive network, we are able to process and enforce rate limiting near the client, shielding the customer's application from unnecessary load.</p>
 	<p>To make this more concrete, let's look at a live demonstration rule for cloudflare.com. Multiple rules may be used and combined to great effect -- this is just a limited example.</p>
 	<p>Read on, and then test it yourself.</p>
-	<h3 id="creatingtherule">Creating the rule</h3>
+	<h3>Creating the rule</h3>
 	<p>Imagine an endpoint that is resource intensive. To maintain availability, we want to protect it from high-volume request rates - like those from an aggressive bot or attacker.</p>
-	<p><strong>URL</strong> <code>*.cloudflare.com/rate-limit-test</code></p>
+	<p><b>URL</b> <code>*.cloudflare.com/rate-limit-test</code></p>
 	<p>Rate Limiting allows for * wildcards to give more flexibility. An API with multiple endpoints might use a pattern of <code>api.example.com/v2/*</code></p>
 	<p>With that pattern, all resources under <code>/v2</code> would be protected by the same rule.</p>
-	<p><strong>Threshold</strong><br> We set this demonstration rule to 10 requests per minute, which is too sensitive for a real web application, but allows a curious user refreshing their browser ten times to see Rate Limiting in action.</p>
-	<p><strong>Action</strong><br> We set this value to <code>block</code> which means that once an IP addresses triggers a rule, all traffic from that IP address will be blocked at the edge and served with a default 429 HTTP error code.</p>
+	<p><b>Threshold</b>We set this demonstration rule to 10 requests per minute, which is too sensitive for a real web application, but allows a curious user refreshing their browser ten times to see Rate Limiting in action.</p>
+	<p><b>Action</b>We set this value to <code>block</code> which means that once an IP addresses triggers a rule, all traffic from that IP address will be blocked at the edge and served with a default 429 HTTP error code.</p>
 	<p>Other possible choices include <code>simulate</code> which means no action taken, but analytics would indicate which requests would have been mitigated to help customers evaluate the potential impact of a given rule.</p>
-	<p><strong>Timeout</strong><br>
-		<br>This is the duration of the mitigation once the rule has been triggered. In this example, an offending IP address will be blocked for 1 minute.
-	</p>
-	<p><strong>Response body type</strong><br>
-		<br>This type was set to <code>HTML</code> in the demo so that Rate Limiting returns a web page to mitigated requests. For an API endpoint, the response body type could return JSON.
-	</p>
-	<p><strong>Response body</strong><br>
-		<br>The response body can be anything you want. Refresh the link below 10 times very quickly to see our choice for this demonstration rule.
-	</p>
-	<p><strong><a href="https://www.cloudflare.com/rate-limit-test">https://www.cloudflare.com/rate-limit-test</a></strong></p>
-	<h3 id="otherpossibleconfigurations">Other possible configurations</h3>
-	<p>We could have specified a <strong>Method</strong>. If we only cared to rate limit POST requests, we could adjust the rule to do so. This rule could be used for a login page where high frequency of POSTs by the same IP is potentially suspicious.</p>
-	<p>We also could have specified a <strong>Response Code</strong>. If we only wanted to rate limit IPs which were consistently failing to authenticate, we could create the rule to trigger only after a certain threshold of 403’s have been served. Once an IP is flagged, perhaps because it was pounding a login endpoint with incorrect credentials, that client IP could be blocked from hitting either that endpoint or the whole site.</p>
+	<p><b>Timeout</b></p>
+	<p>This is the duration of the mitigation once the rule has been triggered. In this example, an offending IP address will be blocked for 1 minute.</p>
+	<p><b>Response body type</b></p>
+	<p>This type was set to <code>HTML</code> in the demo so that Rate Limiting returns a web page to mitigated requests. For an API endpoint, the response body type could return JSON.</p>
+	<p><b>Response body</b></p>
+	<p>The response body can be anything you want. Refresh the link below 10 times very quickly to see our choice for this demonstration rule.</p>
+	<p><a href="https://www.cloudflare.com/rate-limit-test"><b>https://www.cloudflare.com/rate-limit-test</b></a></p>
+	<h3>Other possible configurations</h3>
+	<p>We could have specified a <b>Method</b>. If we only cared to rate limit POST requests, we could adjust the rule to do so. This rule could be used for a login page where high frequency of POSTs by the same IP is potentially suspicious.</p>
+	<p>We also could have specified a <b>Response Code</b>. If we only wanted to rate limit IPs which were consistently failing to authenticate, we could create the rule to trigger only after a certain threshold of 403’s have been served. Once an IP is flagged, perhaps because it was pounding a login endpoint with incorrect credentials, that client IP could be blocked from hitting either that endpoint or the whole site.</p>
 	<p>We will expand the matching criteria, such as adding headers or cookies. We will also extend the mitigation options to include CAPTCHA or other challenges. This will give our users even more flexibility and power to protect their websites and API endpoints.</p>
-	<h3 id="earlyaccess">Early Access</h3>
+	<h3>Early Access</h3>
 	<p>We'd love to have you try Rate Limiting. Read more and <a href="https://www.cloudflare.com/traffic-control">sign up for Early Access</a>.</p>
-	<p><small>**Note: This post was updated 4/13/17 to reflect the current product name. All references to Traffic Control have been changed to Rate Limiting.*</small></p>
-	<!--kg-card-end: markdown-->
+	<p>**Note: This post was updated 4/13/17 to reflect the current product name. All references to Traffic Control have been changed to Rate Limiting.*</p>
 </div>

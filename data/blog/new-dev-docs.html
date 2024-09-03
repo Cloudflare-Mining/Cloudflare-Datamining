@@ -1,27 +1,35 @@
 <div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/unnamed-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/q0ADBxpjwz9BHKHkUOzSU/a2cd9c226e67e94fec20b4fcfdf3c988/unnamed-2.png" alt="" class="kg-image" width="1584" height="942" loading="lazy">
+
+	</figure>
 	<p>We recently updated <code>developers.cloudflare.com</code>, the Cloudflare Developers documentation website, to a new version of our custom documentation engine. This change consisted of a significant migration from Gatsby to Hugo and converged a collection of Workers Sites into a single Cloudflare Pages instance. Together, these updates brought developer experience, performance, and quality of life improvements for our engineers, technical writers, and product managers.</p>
 	<p>In this blog post, we’ll cover the history of Cloudflare’s developer docs, why we made this recent transition, and why we continue to <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dogfood</a> Cloudflare’s products as we develop applications internally.</p>
-	<h3 id="what-are-cloudflare-s-developer-docs">What are Cloudflare’s Developer Docs?</h3>
+	<h3>What are Cloudflare’s Developer Docs?</h3>
 	<p>Cloudflare’s Developer Docs, which are <a href="https://github.com/cloudflare/cloudflare-docs">open source on GitHub</a>, comprise documentation for all of Cloudflare’s products. The documentation is written by technical writers, product managers, and engineers at Cloudflare. Like many open source projects, contributions to the docs happen via Pull Requests (PRs). At time of writing, we have 1,600 documentation pages and have accepted almost 4,000 PRs, both from Cloudflare employees and external contributors in our community.</p>
 	<p>The underlying documentation engine we’ve used to build these docs has changed multiple times over the years. Documentation sites are often built with static site generators and, at Cloudflare, we’ve used tools like Hugo and Gatsby to convert thousands of Markdown pages into HTML, CSS, and JavaScript.</p>
 	<p>When we released the first version of our Docs Engine in mid-2020, we were excited about the facelift to our Developer Documentation site and the inclusion of dev-friendly features like dark mode and proper code syntax highlighting.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-60.png" class="kg-image" alt="Cloudflare’s Developer Documentation Engine using 1.0 with its updated design." loading="lazy"></figure>
-	<p>Most importantly, we also used this engine to transition <em>all</em> of Cloudflare’s products with documentation onto a single engine. This allowed all Cloudflare product documentation to be developed, built, and deployed using the same core foundation. But over the next eighteen months and thousands of PRs, we realized that many of the architecture decisions we had made were not scaling.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UuLEAsx9i6dC7g3ai0LA9/86e652d63aae58463c35d2fe88e7415a/image1-60.png" alt="Cloudflare’s Developer Documentation Engine using 1.0 with its updated design." class="kg-image" width="1999" height="1615" loading="lazy">
+
+	</figure>
+	<p>Most importantly, we also used this engine to transition <i>all</i> of Cloudflare’s products with documentation onto a single engine. This allowed all Cloudflare product documentation to be developed, built, and deployed using the same core foundation. But over the next eighteen months and thousands of PRs, we realized that many of the architecture decisions we had made were not scaling.</p>
 	<p>While the user interface that we had made for navigating the documentation continued to receive great feedback from our users and product teams, decisions like using client-side rendering for docs had performance implications, especially on resource-constrained devices.</p>
 	<p>At the time, our decision to dogfood Workers Sites — which served as a precursor to Cloudflare Pages — meant that we could rapidly deploy our documentation across all of Cloudflare’s network in a matter of minutes. We implemented this by creating a separate Cloudflare Workers deployment for each product’s staging and production instances. Effectively, this meant that more than a hundred Workers were regularly updated, which caused significant headaches when trying to understand the causes and downstream effects of any failed deployments.</p>
 	<p>Finally, we struggled with our choice of underlying static site generator, Gatsby. We still think Gatsby is a great tool of choice for certain websites and applications, but we quickly found it to be the wrong match for our content-heavy documentation experience. Gatsby inherits many dependency chains to provide its featureset, but running the dependency-heavy toolchain locally on contributors’ machines proved to be an incredibly difficult and slow task for many of our documentation contributors.</p>
 	<p>When we did get to the point of deploying new docs changes, we began to be at the mercy of Gatsby’s long build times – in the worst case, almost an entire hour – just to compile Markdown and images into HTML. This negatively impacted our team’s ability to work quickly and efficiently as they improved our documentation. Ultimately, we were unable to find solutions to many of these issues, as they were core assumptions and characteristics of the underlying tools that we had chosen to build on — it was time for something new.</p>
 	<p>Built using Go, <a href="https://gohugo.io">Hugo</a> is incredibly fast at building large sites, has an active community, and is easily installable on a variety of operating systems. In our early discovery work, we found that Hugo would build our docs content in mere seconds. Since performance was a core motive for pursuing a rewrite, this was a significant factor in our decision.</p>
-	<h3 id="how-we-migrated">How we migrated</h3>
-	<p>When comparing frameworks, the most significant difference between Hugo and Gatsby – <em>from a user’s standpoint</em> – is the allowable contents of the Markdown files themselves. For example, Gatsby makes heavy use of <a href="https://mdxjs.com">MDX</a>, allowing developers to author and import React components within their content pages. While this can be effective, MDX unfortunately is not CommonMark-compliant and, in turn, this means that its flavor of Markdown is <em>required</em> to be very flexible and permissive. This posed a problem when migrating to any other non-MDX-based solution, including Hugo, as these frameworks don’t grant the same flexibilities with Markdown syntax. Because of this, the largest technical challenge was converting the existing 1,600 markdown pages from MDX to a stricter, more standard Markdown variant that Hugo (or almost any framework) can interpret.</p>
-	<p>Not only did we have to convert 1,600 Markdown pages so that they’re rendered correctly by the new framework, we had to make these changes in a way that minimized the number of merge conflicts for when the migration itself was ready for deployment. There was a lot of work to be done as part of this migration – and work takes time! We could not stall or block the update cycles of the Developer Documentation repository, so we had to find a way to rename or modify <em>every single file</em> in the repository without gridlocking deployments for weeks.</p>
+	<h3>How we migrated</h3>
+	<p>When comparing frameworks, the most significant difference between Hugo and Gatsby – <i>from a user’s standpoint</i> – is the allowable contents of the Markdown files themselves. For example, Gatsby makes heavy use of <a href="https://mdxjs.com">MDX</a>, allowing developers to author and import React components within their content pages. While this can be effective, MDX unfortunately is not CommonMark-compliant and, in turn, this means that its flavor of Markdown is <i>required</i> to be very flexible and permissive. This posed a problem when migrating to any other non-MDX-based solution, including Hugo, as these frameworks don’t grant the same flexibilities with Markdown syntax. Because of this, the largest technical challenge was converting the existing 1,600 markdown pages from MDX to a stricter, more standard Markdown variant that Hugo (or almost any framework) can interpret.</p>
+	<p>Not only did we have to convert 1,600 Markdown pages so that they’re rendered correctly by the new framework, we had to make these changes in a way that minimized the number of merge conflicts for when the migration itself was ready for deployment. There was a lot of work to be done as part of this migration – and work takes time! We could not stall or block the update cycles of the Developer Documentation repository, so we had to find a way to rename or modify <i>every single file</i> in the repository without gridlocking deployments for weeks.</p>
 	<p>The only way to solve this was through automation. We created <a href="https://github.com/cloudflare/cloudflare-docs/pull/3609/commits/2b16cd220f79c7cfd64d80f4a4592b73abcf0753">a migration script</a> that would apply all the necessary changes on the morning of the migration release day. Of course, this meant that we had to identify and apply the changes manually and then record that in JavaScript or Bash commands to make sweeping changes for the entire project.</p>
-	<p>For example, when migrating Markdown content, the migrator needs to take the file contents and parse them into an abstract syntax tree (AST) so that other functions can access, traverse, and modify a collection of standardized objects <em>representing</em> the content instead of resorting to a sequence string manipulations… which is scary and error-prone.</p>
+	<p>For example, when migrating Markdown content, the migrator needs to take the file contents and parse them into an abstract syntax tree (AST) so that other functions can access, traverse, and modify a collection of standardized objects <i>representing</i> the content instead of resorting to a sequence string manipulations… which is scary and error-prone.</p>
 	<p>Since the project started with MDX, we needed a MDX-compatible parser which, in turn, produces its own AST with its own object standardizations. From there, one can “walk” – aka traverse – through the AST and add, remove, and/or edit objects and object properties. With the updated AST and a final traversal, a “stringifier” function can convert each object representation back to its string representation, producing updated file contents that differ from the original.</p>
-	<p>Below is an example snippet that utilizes <a href="https://www.npmjs.com/package/mdast-util-from-markdown"><code>mdast-util-from-markdown</code></a> and <a href="https://www.npmjs.com/package/mdast-util-to-markdown"><code>mdast-util-to-markdown</code></a> to create and stringify, respectively, the MDX AST and <a href="https://github.com/lukeed/astray"><code>astray</code></a> to traverse the AST with our custom modifications. For this example, we’re looking for <code>heading</code> and <code>anchor</code> nodes – both names are provided by the <code>mdast-*</code> utilities – so that we can read the primary header (&lt;h1&gt;) text and ensure that all internal Developer Documentation links are consistent:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">import * as fs from 'fs';
+	<p>Below is an example snippet that utilizes <a href="https://www.npmjs.com/package/mdast-util-from-markdown"><code>mdast-util-from-markdown</code></a> and <a href="https://www.npmjs.com/package/mdast-util-to-markdown"><code>mdast-util-to-markdown</code></a> to create and stringify, respectively, the MDX AST and <a href="https://github.com/lukeed/astray"><code>astray</code></a> to traverse the AST with our custom modifications. For this example, we’re looking for <code>heading</code> and <code>anchor</code> nodes – both names are provided by the <code>mdast-*</code> utilities – so that we can read the primary header () text and ensure that all internal Developer Documentation links are consistent:</p>
+	<pre class="language-js"><code class="language-js">import * as fs from 'fs';
 import * as astray from 'astray';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import { fromMarkdown } from 'mdast-util-from-markdown';
@@ -36,10 +44,10 @@ export async function modify(file) {
 
   astray.walk(AST, {
     /**
-     * Read the page's &lt;h1&gt; to determine page's title.
+     * Read the page's <h1> to determine page's title.
      */
     heading(node) {
-      // ignore if not &lt;h1&gt; header
+      // ignore if not </h1><h1> header
       if (node.depth !== 1) return;
 
       astray.walk(node, {
@@ -53,7 +61,7 @@ export async function modify(file) {
     },
     
     /**
-     * Update all anchor links (&lt;a&gt;) for consistent internal linking.
+     * Update all anchor links (<a>) for consistent internal linking.
      */
     link(node) {
       let value = node.url;
@@ -85,30 +93,43 @@ export async function modify(file) {
   
   // Write the updated markdown file
   await fs.promises.writeFile(file, updated);
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><a href="https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js">https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js</a></p>
+}</a></h1></code></pre><a>
+	</a>
+	<p><a></a><a href="https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js">https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js</a></p>
 	<p>The above is an abbreviated snippet of the modifications we needed to make during our migration. You may find all the AST traversals and manipulations we created as part of our migration <a href="https://github.com/cloudflare/cloudflare-docs/blob/2b16cd220f79c7cfd64d80f4a4592b73abcf0753/migrate/normalize.ts">on GitHub</a>.</p>
 	<p>We also took this opportunity to analyze the thousands and thousands of code snippets we have throughout the codebase. These serve an important role as they are crucial aides in reference documentation or are presented alongside tutorials as recipes or examples. So we added a <a href="https://github.com/cloudflare/cloudflare-docs/blob/ce64f4d28a6bff7de914d54623046384545e0048/bin/format.ts">code formatter script</a> that utilizes <a href="https://prettier.io">Prettier</a> to apply a consistent code style across all code snippets. As a bonus side effect, Prettier would throw errors if any snippets had invalid syntax for their given language. Any of these were fixed manually and the `format` script has been added as part of our own CI process to ensure that all JavaScript, TypeScript, Rust, JSON, and/or C++ code we publish is syntactically valid!</p>
 	<p>Finally, we <a href="https://github.com/cloudflare/cloudflare-docs/blob/2b16cd220f79c7cfd64d80f4a4592b73abcf0753/migrate/Makefile#L7">created a Makefile</a> that coordinated the series of Node scripts and <code>git</code> commands we needed to make. This orchestrated the entire migration, boiling down all our work into a single <code>make run</code> command.</p>
 	<p>In effect, the majority of the <a href="https://github.com/cloudflare/cloudflare-docs/pull/3609">migration Pull Request</a> was the result of automated commits – over one million changes were applied across nearly 5,000 files in less than two minutes. With the help of product owners, we reviewed the newly generated documentation site and applied any fine-tuning adjustments where necessary.</p>
 	<p>Previously, with the Gatsby-based Workers Sites architecture, each Cloudflare product needed to be built and deployed as its own individual documentation site. These sites would then be managed and proxied by an umbrella Worker, listening on <code>developers.cloudflare.com</code>, which ensured that all requests were handled by the appropriate product-specific Worker Site. This worked well for our production needs, but made it complicated for contributors to replicate a similar setup during local development. With the move to Hugo, we were able to merge everything into a single project – in other words, 48 moving pieces became 1 single piece! This made it extremely easy to build and develop the entire Developer Docs locally, which is a big confidence booster when working.</p>
 	<p>A unified Hugo project also means that there’s only one build command and one deployable unit… This allowed us to move the Developer Docs to Cloudflare Pages! With Pages attached and configured for the GitHub repository, we immediately began making use of <a href="https://developers.cloudflare.com/pages/platform/preview-deployments">preview deployments</a> as part of our PR review process and our <code>production</code> branch commits automatically queued new production deployments to the live site.</p>
-	<h3 id="why-we-re-excited">Why we’re excited</h3>
+	<h3>Why we’re excited</h3>
 	<p>After all the changes were in place, we ended up with a near-identical replica of the Developer Documentation site. However, upon closer inspection, a number of major improvements had been made:</p>
 	<ol>
-		<li>Our application now has fewer moving pieces for development <em>and</em> deployment, which makes it significantly easier to understand and onboard other contributors and team members.</li>
-		<li>Our development flow is a lot snappier and fully replicated the production behavior. This hugely increased our iteration speed and confidence.</li>
-		<li>Our application was now built as an HTML-first static site. Even though it was always a content site, we are now shipping 90% less JavaScript bytes, which means that our visitors’ browsers are doing less work to view the same content.</li>
+		<li>
+			<p>Our application now has fewer moving pieces for development <i>and</i> deployment, which makes it significantly easier to understand and onboard other contributors and team members.</p>
+		</li>
+		<li>
+			<p>Our development flow is a lot snappier and fully replicated the production behavior. This hugely increased our iteration speed and confidence.</p>
+		</li>
+		<li>
+			<p>Our application was now built as an HTML-first static site. Even though it was always a content site, we are now shipping 90% less JavaScript bytes, which means that our visitors’ browsers are doing less work to view the same content.</p>
+		</li>
 	</ol>
 	<p>The last point speaks to our web pages’ performance, which has real-world implications. These days, websites with faster page-load times are preferred over competitor sites with slower response times. This is true for human and bot users alike! In fact, this is so true that Google now <a href="https://developer.chrome.com/blog/search-ads-speed">takes page speed into consideration</a> when ranking search results and offers tools like WebMasters and Lighthouse to help site owners track and improve their scores. Below, you can see the before-after comparison of our previous JS-first site to our HTML-first replacement:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-55.png" class="kg-image" alt="The Lightouse result for the mobile Developer Documentation site while using Gatsby. The Performance score is a 55." loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-40.png" class="kg-image" alt="The Lighthouse result for the mobile Developer Documentation site after our updates. The Performance score is now a 99!" loading="lazy"></figure>
-	<p>Here you can see that our <code>Performance</code> grade has significantly improved! It’s this figure, which is a weighted score of the Metrics like First Contentful Paint, that is tied to Page Speed. While this <em>does</em> have SEO impact, the <code>SEO</code> score in a Lighthouse report has to do with Google Crawler’s ability to parse and understand the page’s metadata. This remains unchanged because the content (and its metadata) were not changed as part of the migration.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FaGWaH2XlN9riYuoufZAQ/42917bf1e4b2e3785824ddd6991b1f84/image2-55.png" alt="The Lightouse result for the mobile Developer Documentation site while using Gatsby. The Performance score is a 55." class="kg-image" width="1496" height="1296" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60vizdQG71GVdLRHE12TyQ/cf03ab8bf9081837ad58fb448ccf7ffe/image3-40.png" alt="The Lighthouse result for the mobile Developer Documentation site after our updates. The Performance score is now a 99!" class="kg-image" width="1456" height="1256" loading="lazy">
+
+	</figure>
+	<p>Here you can see that our <code>Performance</code> grade has significantly improved! It’s this figure, which is a weighted score of the Metrics like First Contentful Paint, that is tied to Page Speed. While this <i>does</i> have SEO impact, the <code>SEO</code> score in a Lighthouse report has to do with Google Crawler’s ability to parse and understand the page’s metadata. This remains unchanged because the content (and its metadata) were not changed as part of the migration.</p>
+	<h3>Conclusion</h3>
 	<p>Developer documentation is incredibly important to the success of any product. At Cloudflare, we believe that technical docs are a product – one that we can continue to iterate on, improve, and make more useful for our customers.</p>
-	<p>One of the most effective ways to improve documentation is to make it easier for our writers to contribute to them. With our new Documentation Engine, we’re giving our product content team the ability to validate content faster with instantaneous local builds. Preview links via Cloudflare Pages allows stakeholders like product managers and engineering teams the ability to quickly review what the docs will <em>actually</em> look like in production.</p>
+	<p>One of the most effective ways to improve documentation is to make it easier for our writers to contribute to them. With our new Documentation Engine, we’re giving our product content team the ability to validate content faster with instantaneous local builds. Preview links via Cloudflare Pages allows stakeholders like product managers and engineering teams the ability to quickly review what the docs will <i>actually</i> look like in production.</p>
 	<p>As we invest more into our build and deployment pipeline, we expect to further develop our ability to validate both the content and technical implementation of docs as part of review – tools like automatic spell checking, link validation, and visual diffs are all things we’d like to explore in the future.</p>
 	<p>Importantly, our documentation continues to be 100% open source. If you read Cloudflare’s developer documentation, and have feedback, feel free to <a href="https://github.com/cloudflare/cloudflare-docs">check out the project on GitHub</a> and submit suggestions!</p>
 </div>

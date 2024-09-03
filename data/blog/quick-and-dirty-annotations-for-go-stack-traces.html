@@ -1,13 +1,18 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v8eVN6UI2Be9Pd9X6dUms/2b0bebaf915b3e661c94a6055ccd6d96/quick-and-dirty-annotations-for-go-stack-traces.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>CloudFlare’s DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/6372385465_014a4e56af_z.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23">wiredforlego</a></small></p>
-	<p>When there are thousands of goroutines running, debug output quickly becomes difficult to interpret. For example, last week I was tracking down a problem with a file descriptor and wanted to know what its listening goroutine was doing. <em>With 40k stack traces, good luck figuring out which one is having trouble.</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2v4jReMMfDFsc62GnuXpFo/8d4cdd7ee98ae6ba62436bbdecd80371/6372385465_014a4e56af_z.jpg" alt="" class="kg-image" width="640" height="513" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23">wiredforlego</a></p>
+	<p>When there are thousands of goroutines running, debug output quickly becomes difficult to interpret. For example, last week I was tracking down a problem with a file descriptor and wanted to know what its listening goroutine was doing. <i>With 40k stack traces, good luck figuring out which one is having trouble.</i></p>
 	<p>Go stack traces include parameter values, but most Go types are (or are implemented as) pointers, so what you will see passed to the goroutine function is just a meaningless memory address.</p>
 	<p>We have a couple options to make sense of the addresses: get a heap dump at the same time as the stack trace and cross-reference the pointers, or have a debug endpoint that prints a goroutine/pointer -&gt; IP map. Neither are seamless.</p>
-	<h3 id="underscoretotherescue">Underscore to the rescue</h3>
-	<p>However, we know that <em>integers are shown in traces</em>, so what we did is first <em>convert IPv4 addresses to their uint32 representation</em>:</p>
-	<pre><code class="language-go">// addrToUint32 takes a TCPAddr or UDPAddr and converts its IP to a uint32.
+	<h3>Underscore to the rescue</h3>
+	<p>However, we know that <i>integers are shown in traces</i>, so what we did is first <i>convert IPv4 addresses to their uint32 representation</i>:</p>
+	<pre class="language-go"><code class="language-go">// addrToUint32 takes a TCPAddr or UDPAddr and converts its IP to a uint32.
 // If the IP is v6, 0xffffffff is returned.
 func addrToUint32(addr net.Addr) uint32 {
        var ip net.IP
@@ -27,28 +32,24 @@ func addrToUint32(addr net.Addr) uint32 {
                return math.MaxUint32
        }
        return uint32(ipv4[0])&lt;&lt;24 | uint32(ipv4[1])&lt;&lt;16 | uint32(ipv4[2])&lt;&lt;8 | uint32(ipv4[3])
-}
-</code></pre>
-	<p>And then <em>pass the IPv4-as-uint32 to the listening goroutine as an <code>_</code> parameter</em>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier">blank identifier</a> in Go.</p>
-	<pre><code class="language-go">// PacketUDPRead is a goroutine that listens on a specific UDP socket and reads
+}</code></pre>
+	<p>And then <i>pass the IPv4-as-uint32 to the listening goroutine as an </i><code><i>_</i></code><i> parameter</i>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier">blank identifier</a> in Go.</p>
+	<pre class="language-go"><code class="language-go">// PacketUDPRead is a goroutine that listens on a specific UDP socket and reads
 // in new requests
 // The first parameter is the int representation of the listening IP address,
 // and it's passed just so it will appear in stack traces
 func PacketUDPRead(_ uint32, conn *net.UDPConn, ...) { ... }
 
-go PacketUDPRead(addrToUint32(conn.LocalAddr()), conn, ...)
-</code></pre>
+go PacketUDPRead(addrToUint32(conn.LocalAddr()), conn, ...)</code></pre>
 	<p>Now when we get a stack trace, we can just look at the first bytes, convert them back to dotted notation, and know on what IP the goroutine was listening.</p>
-	<pre><code>goroutine 42 [IO wait]:
+	<pre class="language-bash"><code class="language-bash">goroutine 42 [IO wait]:
 	[...]
 	/.../request.go:195 +0x5d
 rrdns/core.PacketUDPRead(0xc27f000001, 0x2b6328113ad8, 0xc20801ecc0, 0xc208044308, 0xc208e99280, 0xc208ad8180, 0x12a05f200)
 	/.../server.go:119 +0x35a
 created by rrdns/core.PacketIO
-	/.../server.go:230 +0x8be
-</code></pre>
+	/.../server.go:230 +0x8be</code></pre>
 	<p><code>0xc27f000001</code> -&gt; remove alignment byte -&gt; <code>0x7f000001</code> -&gt; <code>127.0.0.1</code></p>
 	<p>Obviously you can do the same with any piece of information you can represent as an <code>int</code>.</p>
-	<p><em>Are you interested in taming the goroutines that run the web? We're <a href="https://www.cloudflare.com/join-our-team">hiring</a> in London, San Francisco and Singapore!</em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>Are you interested in taming the goroutines that run the web? We're </i><a href="https://www.cloudflare.com/join-our-team"><i>hiring</i></a><i> in London, San Francisco and Singapore!</i></p>
 </div>

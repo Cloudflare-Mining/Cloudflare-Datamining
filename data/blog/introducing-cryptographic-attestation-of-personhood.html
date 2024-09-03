@@ -1,151 +1,169 @@
 <div class="mb2 gray5">12 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/introducing-cryptographic-attestation-of-personhood-de-de">Deutsch</a>, and <a href="https://blog.cloudflare.com/fr-fr/introducing-cryptographic-attestation-of-personhood-fr-fr">Français</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-36.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-cryptographic-attestation-of-personhood">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-cryptographic-attestation-of-personhood">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HOCl1YQQdhbTVCJC9VVBA/f5e2b55ed5477c0a66586751644f3b1e/image2-36.png" alt="" class="kg-image" width="1999" height="963" loading="lazy">
+
+	</figure>
 	<p>Select all the buses. Click on bikes. Does this photo have traffic lights? As ridiculous as these questions are, you’re almost guaranteed to have seen one recently. They are a way for online services to separate humans from bots, and they’re called <a href="https://en.wikipedia.org/wiki/CAPTCHA">CAPTCHAs</a>. CAPTCHAs strengthen the security of online services. But while they do that, there’s a very real cost associated with them.</p>
 	<p>Based on our data, it takes a user on average 32 seconds to complete a CAPTCHA challenge. There are 4.6 billion global Internet users. We assume a typical Internet user sees approximately one CAPTCHA every 10 days.</p>
 	<p>This very simple back of the envelope math equates to somewhere in the order of 500 human years wasted every single day — just for us to prove our humanity.</p>
 	<p>Today, we are launching an experiment to end this madness. We want to get rid of CAPTCHAs completely. The idea is rather simple: a real human should be able to touch or look at their device to prove they are human, without revealing their identity. We want you to be able to prove that you are human without revealing which human you are! You may ask if this is even possible? And the answer is: Yes! We’re starting with trusted USB keys (like <a href="https://www.yubico.com">YubiKey</a>) that have been around for a while, but increasingly phones and computers come equipped with this ability by default.</p>
 	<p>Today marks the beginning of the end for fire hydrants, crosswalks, and traffic lights on the Internet.</p>
-	<h2 id="why-captchas">Why CAPTCHAs?</h2>
-	<p>In many instances, businesses need a way to tell whether an online user is human or not. Typically those reasons relate to security, or abuse of an online service. Back at the turn of the century, CAPTCHAs were created to do just that. The first one<a href="https://en.wikipedia.org/wiki/CAPTCHA#:~:text=The%20term%20was%20coined%20in,two%20groups%20working%20in%20parallel."> was developed back in 1997</a>, and the term ("Completely Automated Public Turing test to tell Computers and Humans Apart") was coined in 2003 by Luis von Ahn, Manuel Blum, Nicholas J. Hopper, and John Langford.</p>
+	<h2>Why CAPTCHAs?</h2>
+	<p>In many instances, businesses need a way to tell whether an online user is human or not. Typically those reasons relate to security, or abuse of an online service. Back at the turn of the century, CAPTCHAs were created to do just that. The first one <a href="https://en.wikipedia.org/wiki/CAPTCHA#:~:text=The%20term%20was%20coined%20in,two%20groups%20working%20in%20parallel.">was developed back in 1997</a>, and the term ("Completely Automated Public Turing test to tell Computers and Humans Apart") was coined in 2003 by Luis von Ahn, Manuel Blum, Nicholas J. Hopper, and John Langford.</p>
 	<p>By their very nature, the challenge-response nature of CAPTCHAs have to be automated: so they can scale across both humans and the bots they need to catch.</p>
-	<h2 id="why-get-rid-of-captchas">Why get rid of CAPTCHAs?</h2>
+	<h2>Why get rid of CAPTCHAs?</h2>
 	<p>Put simply: we all hate them.</p>
 	<p>The best we’ve been able to do to date has been to minimize them. For example, at Cloudflare, we’ve continuously <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">improved our Bot management solution</a> to get as smart as possible about when to serve a CAPTCHA to the user. However, over the years the web moved from simple CAPTCHAs based on text recognition against backgrounds to OCRing old books to identifying objects from pictures as <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a> has improved (see <a href="https://arxiv.org/abs/1312.6082">Google paper on Street Numbers</a>). This creates some real problems for the human users of the Internet:</p>
 	<ol>
-		<li>Productivity: Time is lost — as is focus on the task at hand — and often in exchange for some frustration.</li>
-		<li>Accessibility: Users are assumed to have the physical and cognitive capabilities required to solve the tests, which may not be the case. A visual disability, for example, may make it impossible to perform a CAPTCHA-solving task.</li>
-		<li>Cultural Knowledge: The people on the planet who have seen a US fire hydrant are in the minority, as are the number who speak English. Cabs are yellow in New York City, and black in London — heck, ‘cabs’ are only cabs in a few places, and ‘taxis’ everywhere else!</li>
-		<li>Interactions on Mobile Devices: Phones and mobile devices are the primary — and most often only — means of Internet access for a large part of the world. CAPTCHAs put a strain on their data plans and battery usage, in addition to being more difficult on small screens.</li>
+		<li>
+			<p>Productivity: Time is lost — as is focus on the task at hand — and often in exchange for some frustration.</p>
+		</li>
+		<li>
+			<p>Accessibility: Users are assumed to have the physical and cognitive capabilities required to solve the tests, which may not be the case. A visual disability, for example, may make it impossible to perform a CAPTCHA-solving task.</p>
+		</li>
+		<li>
+			<p>Cultural Knowledge: The people on the planet who have seen a US fire hydrant are in the minority, as are the number who speak English. Cabs are yellow in New York City, and black in London — heck, ‘cabs’ are only cabs in a few places, and ‘taxis’ everywhere else!</p>
+		</li>
+		<li>
+			<p>Interactions on Mobile Devices: Phones and mobile devices are the primary — and most often only — means of Internet access for a large part of the world. CAPTCHAs put a strain on their data plans and battery usage, in addition to being more difficult on small screens.</p>
+		</li>
 	</ol>
 	<p>In fact, the World Wide Web Consortium (W3C) worked on multiple drafts — as early as 2003 — pointing out the <a href="https://www.w3.org/TR/turingtest">inaccessibility of CAPTCHAs</a>.</p>
-	<p><em>And this is just from the user side</em>. Inflicting all these costs on users has very real costs for businesses, too. There’s a reason why businesses spend so much time &nbsp;optimizing the performance and layout of their websites and applications. That work stops users from bouncing when you want them to register. It stops shopping carts getting abandoned when you want them to end in the checkout. In general, you want to stop customers from getting frustrated and simply not come back.</p>
+	<p><i>And this is just from the user side</i>. Inflicting all these costs on users has very real costs for businesses, too. There’s a reason why businesses spend so much time &nbsp;optimizing the performance and layout of their websites and applications. That work stops users from bouncing when you want them to register. It stops shopping carts getting abandoned when you want them to end in the checkout. In general, you want to stop customers from getting frustrated and simply not come back.</p>
 	<p>CAPTCHAs are effectively businesses putting friction in front of their users, and as anyone who has managed a high performing online business will tell you, it’s not something you want to do unless you have no choice.</p>
 	<p>We started tackling these issues when we <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">moved from Google reCAPTCHA to hCAPTCHA</a>. Today, we are going further.</p>
-	<h2 id="captcha-without-picture-cryptographic-attestation-of-personhood">CAPTCHA without Picture: Cryptographic Attestation of Personhood</h2>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-4.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Hardware security keys are devices with an embedded secret that can connect to your computer or your phone</figcaption>
+	<h2>CAPTCHA without Picture: Cryptographic Attestation of Personhood</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WeboSgc6BWaS2HxVOGRcb/030fce4dead22f8e1ac732495a4a47df/image4-4.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+
 	</figure>
+	<p>Hardware security keys are devices with an embedded secret that can connect to your computer or your phone</p>
 	<p>From a user perspective, a Cryptographic Attestation of Personhood works as follows:</p>
 	<ol>
-		<li>The user accesses a website protected by Cryptographic Attestation of Personhood, such as <a href="http://cloudflarechallenge.com">cloudflarechallenge.com</a>.</li>
-		<li>Cloudflare serves a challenge.</li>
-		<li>The user clicks I am human (beta) and gets prompted for a security device.</li>
-		<li>User decides to use a Hardware Security Key.</li>
-		<li>The user plugs the device into their computer or taps it to their phone for wireless signature (using NFC).</li>
-		<li>A cryptographic attestation is sent to Cloudflare, which allows the user in upon verification of the <a href="https://w3c.github.io/webauthn/#test-of-user-presence">user presence test</a>.</li>
+		<li>
+			<p>The user accesses a website protected by Cryptographic Attestation of Personhood, such as <a href="http://cloudflarechallenge.com">cloudflarechallenge.com</a>.</p>
+		</li>
+		<li>
+			<p>Cloudflare serves a challenge.</p>
+		</li>
+		<li>
+			<p>The user clicks I am human (beta) and gets prompted for a security device.</p>
+		</li>
+		<li>
+			<p>User decides to use a Hardware Security Key.</p>
+		</li>
+		<li>
+			<p>The user plugs the device into their computer or taps it to their phone for wireless signature (using NFC).</p>
+		</li>
+		<li>
+			<p>A cryptographic attestation is sent to Cloudflare, which allows the user in upon verification of the <a href="https://w3c.github.io/webauthn/#test-of-user-presence">user presence test</a>.</p>
+		</li>
 	</ol>
 	<p>Completing this flow takes five seconds. More importantly, this challenge protects users' privacy since the attestation is not uniquely linked to the user device. All device manufacturers trusted by Cloudflare are part of the FIDO Alliance. As such, each hardware key shares its identifier with other keys manufactured in the same batch (see <a href="https://fidoalliance.org/specs/fido-u2f-overview-ps-20150514.pdf">Universal 2nd Factor Overview, Section 8</a>). From Cloudflare’s perspective, your key looks like all other keys in the batch.</p>
 	<p>There are at most three clicks required to complete a Cryptographic Attestation of Personhood. There is no looping, where a user is asked to click on buses 10 times in a row.</p>
 	<p>While there is a variety of hardware security keys, our initial rollout is limited to a set of USB and NFC keys that are both certified by the FIDO alliance and have no known security issues according to the FIDO metadata service (MDS). Our demo only includes support for YubiKeys, which we had the chance to use and test; HyperFIDO keys; and Thetis FIDO U2F keys.</p>
-	<blockquote>“Driving open authentication standards like WebAuthn has long been at the heart of Yubico’s mission to deliver powerful security with a delightful user experience,” said Christopher Harrell, Chief Technology Officer at Yubico. “By offering a CAPTCHA alternative via a single touch backed by YubiKey hardware and public key cryptography, Cloudflare’s Cryptographic Attestation of Personhood experiment could help further reduce the cognitive load placed on users as they interact with sites under strain or attack. I hope this experiment will enable people to accomplish their goals with minimal friction and strong privacy, and that the results will show it is worthwhile for other sites to consider using hardware security for more than just authentication.”</blockquote>
-	<h2 id="how-does-it-work">How does it work?</h2>
+	<blockquote>
+		<p>“Driving open authentication standards like WebAuthn has long been at the heart of Yubico’s mission to deliver powerful security with a delightful user experience,” said Christopher Harrell, Chief Technology Officer at Yubico. “By offering a CAPTCHA alternative via a single touch backed by YubiKey hardware and public key cryptography, Cloudflare’s Cryptographic Attestation of Personhood experiment could help further reduce the cognitive load placed on users as they interact with sites under strain or attack. I hope this experiment will enable people to accomplish their goals with minimal friction and strong privacy, and that the results will show it is worthwhile for other sites to consider using hardware security for more than just authentication.”</p>
+	</blockquote>
+	<h2>How does it work?</h2>
 	<p>The Cryptographic Attestation of Personhood relies on <a href="https://www.w3.org/TR/webauthn-2/#sctn-attestation">Web Authentication (WebAuthn) Attestation</a>. This is an API that has been standardized at the W3C and is already implemented in most modern web browsers and operating systems. It aims to provide a standard interface to authenticate users on the web and use the cryptography capability of their devices.</p>
-	<p>As the need for stronger security with improved usability increases, we envision the deployment instances of WebAuthn to rise.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Platform</th>
-				<th style="text-align:center">Compatible Browsers</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">iOS 14.5</td>
-				<td style="text-align:center">All browsers</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Android 10 and later</td>
-				<td style="text-align:center">Chrome</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Windows</td>
-				<td style="text-align:center">All browsers</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">macOS</td>
-				<td style="text-align:center">All browsers</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Ubuntu</td>
-				<td style="text-align:center">All browsers</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<p>As the need for stronger security with improved usability increases, we envision the deployment instances of WebAuthn to rise.</p>
+	<p>Platform</p>
+	<p>Compatible Browsers</p>
+	<p>iOS 14.5</p>
+	<p>All browsers</p>
+	<p>Android 10 and later</p>
+	<p>Chrome</p>
+	<p>Windows</p>
+	<p>All browsers</p>
+	<p>macOS</p>
+	<p>All browsers</p>
+	<p>Ubuntu</p>
+	<p>All browsers</p>
 	<p>Assuming you are using a hardware device with a compatible configuration, you might be wondering what is happening behind the scenes.</p>
-	<h3 id="the-elevator-pitch">The elevator pitch</h3>
+	<h3>The elevator pitch</h3>
 	<p>The short version is that your device has an embedded secure module containing a unique secret sealed by your manufacturer. The security module is capable of proving it owns such a secret without revealing it. Cloudflare asks you for proof and checks that your manufacturer is legitimate.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image7.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="the-technical-explanation">The technical explanation</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5msss4WaXkkCMEgBwldIwi/a42b2863a35d76a12e806eb91d88bd85/image7.png" alt="" class="kg-image" width="1230" height="482" loading="lazy">
+
+	</figure>
+	<h3>The technical explanation</h3>
 	<p>The longer version is that this verification involves public-key cryptography and digital certificates.</p>
 	<p>Public-key cryptography provides a way to produce unforgeable digital signatures. A user generates a signing key that can sign messages and a verification key that can be used by anyone to verify a message is authentic. This is akin to a <a href="https://en.wikipedia.org/wiki/Seal_(emblem)#Signet_rings">signet ring</a>, where the imprint of the ring is the signature and the ring itself the signing key.</p>
-	<p>Signature schemes are used widely to prove authenticity. Right now, your browser has verified that the server claiming to be “blog.cloudflare.com” is legitimate by verifying a signature made by someone who has a signing key associated with “blog.cloudflare.com”. To show the verification key is legitimate, the server provides a certificate that links the verification key to “blog.cloudflare.com”, itself signed by another verification key in another certificate. This chain goes all the way up to a root certificate from a <em>Certificate Authority </em>built into your browser.</p>
+	<p>Signature schemes are used widely to prove authenticity. Right now, your browser has verified that the server claiming to be “blog.cloudflare.com” is legitimate by verifying a signature made by someone who has a signing key associated with “blog.cloudflare.com”. To show the verification key is legitimate, the server provides a certificate that links the verification key to “blog.cloudflare.com”, itself signed by another verification key in another certificate. This chain goes all the way up to a root certificate from a <i>Certificate Authority</i> built into your browser.</p>
 	<p>Let's take another example. Alice owns a laptop with a secure module embedded. This module holds a signing key, sk_a. Alice says she sent a love letter to Bob yesterday. However, Bob is suspicious. Despite the letter stating "Hi Bob, it's Alice", Bob would like to be sure this letter comes from Alice. To do so, Bob asks Alice to provide her signature for the following message "musical-laboratory-ground". Since Bob chooses the message, if Alice can provide a signature associated with her verification key (pk_a), Bob would be convinced the love letter is from Alice. Alice does provide the signature, sk_a(“musical-laboratory-ground”). Bob confirms sk_a(“musical-laboratory-ground”) is associated with pk_a. He can now securely engage in their cryptographer relationship.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image1-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2az1pFbAuzJIcBMppOa1YC/95fbc949ab0acfb8e419cadaa9ab42ab/image1-4.png" alt="" class="kg-image" width="1216" height="1632" loading="lazy">
+
+	</figure>
 	<p>Thinking back to the Cryptographic Attestation of Personhood, you now know that your hardware key embeds a signing key. However, Cloudflare does not and cannot know the signing keys of all users of the Internet. To alleviate this problem, Cloudflare requests a different kind of proof. When asked if you are a human, we ask you to prove you are in control of a public key signed by a trusted manufacturer. When shipping devices with a secure module, <a href="https://fidoalliance.org/specs/fido-security-requirements/fido-authenticator-security-requirements-v1.4-fd-20201102.html">manufacturers sign</a> the associated attestation public key with a digital certificate.</p>
 	<p>Digital certificates usually contain a public key, information about the organization they are provisioned for, a validity period, the allowed usage, and a signature from a Certificate Authority making sure the certificate is legitimate. They allow metadata to be associated with a public key and therefore provide information about the issuer of a signature.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image6-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zLUNHHDgaWpnCniSwkThu/45729e2c686fc07a75a204266a7316e7/image6-1.png" alt="" class="kg-image" width="1170" height="594" loading="lazy">
+
+	</figure>
 	<p>So when Cloudflare asks you to provide a signature, it verifies your public key has been signed by the public key of a manufacturer. Since manufacturers have multiple levels of certificates, your device provides a chain of certificates that Cloudflare is able to verify. Each link in the chain is signed by its predecessor and signs its successor. Cloudflare trusts the root certificate of manufacturers. Because their numbers are limited, we have the capacity to verify them manually.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image5-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="privacy-first">Privacy first</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/O9TXLinQvwKA19xqCzcGb/d2957a21054b9a7091cc6305aa60c139/image5-3.png" alt="" class="kg-image" width="1030" height="534" loading="lazy">
+
+	</figure>
+	<h2>Privacy first</h2>
 	<p>Designing a challenge asking users to prove they are in control of a key from a certain manufacturer comes with a privacy and security challenge.</p>
-	<p>The privacy properties of the Cryptographic Attestation of Personhood are summarized in the following table.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th>Property</th>
-				<th>Cloudflare Could</th>
-				<th>Cloudflare Does</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Get your fingerprints or face</td>
-				<td>NO</td>
-				<td>N/A</td>
-			</tr>
-			<tr>
-				<td>Know the manufacturer of your key</td>
-				<td>YES - limited to the number of keys in your batch*</td>
-				<td>YES</td>
-			</tr>
-			<tr>
-				<td>Associate a unique ID to your key</td>
-				<td>YES**</td>
-				<td>NO</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><em>* There must be 100,000 or more keys per batch (</em><a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation"><em>FIDO UAF Protocol Specification #4.1.2.1.1</em></a><em>). However, self-signed keys and keys from certain manufacturers have been found to </em><a href="https://www.chromium.org/security-keys"><em>not meet this requirement</em></a><em>.</em></p>
-	<p><em>**This would require that we set a separate and distinct cookie to track your key. This is antithetical to privacy on the Internet, and to the goals of this project. You can learn more about how we are removing cookies like </em><a href="https://blog.cloudflare.com/deprecating-cfduid-cookie"><em>__cfduid here</em></a><em>.</em></p>
-	<h3 id="attestation-without-collecting-biometrics">Attestation without collecting biometrics</h3>
-	<p>The aim of this project: we want to know <em>that</em> you’re human. But we’re not interested in <em>which</em> human you are.</p>
+	<p>The privacy properties of the Cryptographic Attestation of Personhood are summarized in the following table.</p>
+	<p>Property</p>
+	<p>Cloudflare Could</p>
+	<p>Cloudflare Does</p>
+	<p>Get your fingerprints or face</p>
+	<p>NO</p>
+	<p>N/A</p>
+	<p>Know the manufacturer of your key</p>
+	<p>YES - limited to the number of keys in your batch*</p>
+	<p>YES</p>
+	<p>Associate a unique ID to your key</p>
+	<p>YES**</p>
+	<p>NO</p>
+	<p><i>* There must be 100,000 or more keys per batch (</i><a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation"><i>FIDO UAF Protocol Specification #4.1.2.1.1</i></a><i>). However, self-signed keys and keys from certain manufacturers have been found to</i> <a href="https://www.chromium.org/security-keys"><i>not meet this requirement</i></a><i>.</i></p>
+	<p><i>**This would require that we set a separate and distinct cookie to track your key. This is antithetical to privacy on the Internet, and to the goals of this project. You can learn more about how we are removing cookies like</i> <a href="https://blog.cloudflare.com/deprecating-cfduid-cookie"><i>__cfduid here</i></a><i>.</i></p>
+	<h3>Attestation without collecting biometrics</h3>
+	<p>The aim of this project: we want to know <i>that</i> you’re human. But we’re not interested in <i>which</i> human you are.</p>
 	<p>Happily, the WebAuthn API goes a long way to take care of this for us. Not that we want it, but the WebAuthn API prevents the collection of biometrics, such as a fingerprint. When your device asks for a biometric authentication — such as via a fingerprint sensor — it all happens locally. The verification is meant to unlock the secure module of your device, which provides a signature associated with your platform.</p>
 	<p>For our challenge, we leverage the <a href="https://w3c.github.io/webauthn/#sctn-sample-registration">WebAuthn registration</a> process. It has been designed to perform multiple authentications, which we do not have a use for. Therefore, we do assign the same constant value to the required username field. It protects users from deanonymization.</p>
-	<h3 id="no-hidden-work">No hidden work</h3>
+	<h3>No hidden work</h3>
 	<p>A common use of CAPTCHA is to label datasets that AI has difficulty identifying. This could be for books, street numbers, or fire hydrants. While this is useful for science, it has also been used as a way for companies to leverage human recognition ability for commercial gain without their users’ knowledge.</p>
 	<p>With the Cryptographic Attestation of Personhood, this does not happen. We have more flexibility designing the user flow, as we are not constrained by the CAPTCHA challenge model anymore.</p>
-	<h3 id="what-cloudflare-is-doing-to-push-privacy-even-further">What Cloudflare is doing to push privacy even further</h3>
+	<h3>What Cloudflare is doing to push privacy even further</h3>
 	<p>While the Cryptographic Attestation of Personhood has a lot of upside in terms of privacy, it is not perfect. Cloudflare still needs to know your manufacturer to let you in. As WebAuthn works with any certificate, we need to make sure Cloudflare receives certificates from untampered hardware keys. We would prefer to not have that information, further preserving your privacy.</p>
 	<p>We have worked on privacy standards in the past, leading the efforts with Privacy Pass for instance. <a href="https://privacypass.cloudflare.com">Privacy Pass</a> allows you to solve a challenge once and provide a proof you passed it, meaning you don’t have to solve multiple CAPTCHAs. It greatly improved the user experience of VPN users, who face more challenges than other Internet users.</p>
 	<p>For the Cryptographic Attestation of Personhood, we dig into an emerging field in cryptography called <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">Zero Knowledge proofs</a> (ZK proof). It allows our users to prove their manufacturer is part of a set of manufacturers trusted by Cloudflare. Using a &nbsp;ZK proof, the devices from a single manufacturer become indistinguishable from each other, as well as from devices from other manufacturers. This new system requires more technical details and deserves a dedicated blog post. Stay tuned.</p>
-	<h2 id="a-never-ending-quest">A never-ending quest</h2>
+	<h2>A never-ending quest</h2>
 	<p>Designing a challenge aimed at protecting millions of Internet properties is no easy task. In the current setup, we believe Cryptographic Attestation of Personhood offers strong security and usability guarantees compared to traditional CAPTCHA challenges. During a preliminary user study, users indicated a strong preference for touching their hardware key over clicking on pictures. Nevertheless, we know that this is a new system with room for improvements.</p>
 	<p>This experiment will be available on a limited basis in English-speaking regions. This allows us to have diversity in the pool of users and test this process in various locations. However, we recognize this is insufficient coverage and we intend to test further. If you have specific needs, feel free to reach out.</p>
 	<p>Another issue that we keep a close eye on is security. The security of this challenge depends on the underlying hardware provided by trusted manufacturers. We have confidence they are secured. If any breach were to occur, we would be able to quickly deauthorize manufacturers’ public keys at various levels of granularity.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hbowSpXCTcXvLzs9vgpGV/8eebfb4e2d22dd1235851efabfcc94b4/image3-3.png" alt="" class="kg-image" width="1999" height="572" loading="lazy">
+
+	</figure>
 	<p>We also have to consider the possibility of facing automated button-pressing systems. A <a href="https://en.wikipedia.org/wiki/Drinking_bird">drinking bird</a> able to press the capacitive touch sensor could pass the Cryptographic Attestation of Personhood. At best, the bird solving rate matches the time it takes for the hardware to generate an attestation. With our current set of trusted manufacturers, this would be slower than the solving rate of professional CAPTCHA-solving services, while allowing legitimate users to pass through with certainty. In addition, existing Cloudflare mitigations would remain in place, efficiently protecting Internet properties.</p>
-	<h2 id="final-words">Final words</h2>
+	<h2>Final words</h2>
 	<p>For Cloudflare, it always comes back to: helping build a better Internet. The very idea that we’re all wasting 500 years per day on the Internet — that nobody had revisited the fundamental assumptions of CAPTCHAs since the turn of the century — seemed absurd to us.</p>
 	<p>We’re very proud of the work we’ve done here to release the Cryptographic Attestation of Personhood. This challenge has been built with a user-first approach while maintaining a high level of security for accessing Internet properties sitting behind Cloudflare’s global network. We’re now in the process of augmenting our existing humanity challenge with the Cryptographic Attestation of Personhood. You should expect to see it more frequently as time passes. You can try it out today at <a href="https://cloudflarechallenge.com">cloudflarechallenge.com</a>.</p>
 	<p>We want to acknowledge the work of other teams at Cloudflare. While this work is led by the Research team, we have been extremely privileged to get support from all across the company. If you want to help us build a better Internet, <a href="https://www.cloudflare.com/careers/jobs/?department=Technology+Research&amp;location=default">we are hiring</a>.</p>
 	<p>Finally: we’re excited to bring about the demise of the fire hydrant on the Internet. It’s no longer needed.</p>
-	<h2 id="feedback-and-common-errors">Feedback and Common errors</h2>
+	<h2>Feedback and Common errors</h2>
 	<p>As this is currently an experimental project from the Cloudflare Research Team only USB or NFC security keys work today. We’re happy for the feedback and will look into adding other authenticators as soon as possible. If you use a non-supported device then you’re likely to get a somewhat difficult to understand error message from your browser. On Google Chrome you would see:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/Chrome-WebAuth-Fail-Screenshot.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>If you would like to give us feedback on the Cryptographic Attestation of Personhood please fill out our <a href="https://forms.gle/HQxJtXgryg4oRL3e8">Google Form</a>. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DhXRbBd40SKy0GhKMfMXT/ead3f3bfe259916d00ea028c1d1b5291/Chrome-WebAuth-Fail-Screenshot.png" alt="" class="kg-image" width="896" height="508" loading="lazy">
+
+	</figure>
+	<p>If you would like to give us feedback on the Cryptographic Attestation of Personhood please fill out our <a href="https://forms.gle/HQxJtXgryg4oRL3e8">Google Form</a>.</p>
 </div>

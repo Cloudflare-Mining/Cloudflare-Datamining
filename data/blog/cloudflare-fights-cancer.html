@@ -1,13 +1,16 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SjgrgEtoCnwCsLvpnRlsA/06cb1f8107601a429890e40f601adf1b/cloudflare-fights-cancer.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Recently I was contacted by Dr. Igor Kozin from <a href="http://www.icr.ac.uk">The Institute of Cancer Research</a> in London. He asked about the optimal way to compile CloudFlare's open source fork of <a href="https://github.com/cloudflare/zlib">zlib</a>. It turns out that zlib is widely used to compress the <a href="https://en.wikipedia.org/wiki/SAMtools">SAM/BAM</a> files that are used for DNA sequencing. And it turns out our zlib fork is the best open source solution for that file <a href="http://www.htslib.org/benchmarks/zlib.html">format</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/2653833040_644faff824_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/shaury/2653833040/in/photolist-53vA75-53rmFB-7hFuix-bpRbbf-hY8WDp-o3PyM-7KZrSc-a8Yj5r-66zTgT-6H5EcX-83C9AP-4i7Wsj-4i3QFK-bvHJVB-4i3QLV-i49oXB-8xqd9g-buojvP-hy8GiB-5dopRY-2xdo6Y-nGM3PK-nEJrfL-nqhpNL-4gxWpM-6aV2Yg-bgKpqv-b8T29n-5iijjc-pwvN8L-aA67rU-aA3r6R-aA67qW-aA3r7c-nEJpZE-63xBT-uKbHEa-oqrPhv-hWkGhN-4i3QQt-yRRDS-sgiRUL-sxJ9os-sxJ8Ky-sgj7j9-4i3QPa-svAPTm-4i7WBY-4i3QRD-4i7Wtm">image</a> by <a href="https://www.flickr.com/photos/shaury">Shaury Nash</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Vz94lbV5IqYHgXdHKNWW7/f3ad3febffd99e42bc59b5118b807399/2653833040_644faff824_z.jpg" alt="" class="kg-image" width="640" height="361" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/shaury/2653833040/in/photolist-53vA75-53rmFB-7hFuix-bpRbbf-hY8WDp-o3PyM-7KZrSc-a8Yj5r-66zTgT-6H5EcX-83C9AP-4i7Wsj-4i3QFK-bvHJVB-4i3QLV-i49oXB-8xqd9g-buojvP-hy8GiB-5dopRY-2xdo6Y-nGM3PK-nEJrfL-nqhpNL-4gxWpM-6aV2Yg-bgKpqv-b8T29n-5iijjc-pwvN8L-aA67rU-aA3r6R-aA67qW-aA3r7c-nEJpZE-63xBT-uKbHEa-oqrPhv-hWkGhN-4i3QQt-yRRDS-sgiRUL-sxJ9os-sxJ8Ky-sgj7j9-4i3QPa-svAPTm-4i7WBY-4i3QRD-4i7Wtm">image</a> by <a href="https://www.flickr.com/photos/shaury">Shaury Nash</a></p>
 	<p>The files used for this kind of research reach hundreds of gigabytes and every time they are compressed and decompressed with our library many important seconds are saved, bringing the cure for cancer that much closer. At least that's what I am going to tell myself when I go to bed.</p>
 	<p>This made me realize that the benefits of open source go much farther than one can imagine, and you never know where a piece of code may end up. Open sourcing makes sophisticated algorithms and software accessible to individuals and organizations that would not have the resources to develop them on their own, or the money pay for a proprietary solution.</p>
 	<p>It also made me wonder exactly what we did to zlib that makes it stand out from other zlib forks.</p>
-	<h3 id="recap">Recap</h3>
+	<h3>Recap</h3>
 	<p>Zlib is a compression library that supports two formats: deflate and gzip. Both formats use the same algorithm also called <a href="https://en.wikipedia.org/wiki/DEFLATE">DEFLATE</a>, but with different headers and checksum functions. The deflate algorithm is described <a href="https://blog.cloudflare.com/improving-compression-with-preset-deflate-dictionary">here</a>.</p>
 	<p>Both formats are supported by the absolute majority of web browsers, and we at CloudFlare compress all text content on the fly using the gzip format. Moreover DEFLATE is also used by the PNG file format, and our fork of zlib also accelerates our image optimization engine <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a>. You can find the optimized fork of pngcrush <a href="https://github.com/cloudflare/pngcrush">here</a>.</p>
 	<p>Given the amount of traffic we must handle, compression optimization really makes sense for us. Therefore we included several improvements over the default implementation.</p>
@@ -15,50 +18,89 @@
 	<p>Still it represents one of the best pieces of code ever written, and even modernizing it gives only modest performance boost. Which shows the great skill of its authors and the long way compilers have come since 1995.</p>
 	<p>Below is a list of some of the improvements in our fork of zlib. This work was done by me, my colleague Shuxin Yang, and also includes improvements from other sources.</p>
 	<ul>
-		<li><code>uint64_t</code> as the standard type - the default fork used 16-bit types.</li>
-		<li>Using an improved hash function - we use the <a href="https://tools.ietf.org/html/rfc3385">iSCSI CRC32</a> function as the hash function in our zlib. This specific function is implemented as a hardware instruction on Intel processors. It has very fast performance and better collision properties.</li>
-		<li>Search for matches of at least 4 bytes, instead the 3 bytes the format suggests. This leads to fewer hash collisions, and less effort wasted on insignificant matches. It also improves the compression rate a little bit for the majority of cases (but not all).</li>
-		<li>Using SIMD instructions for window rolling.</li>
-		<li>Using the hardware carry-less multiplication instruction <code>PLCMULQDQ</code> for the CRC32 checksum.</li>
-		<li>Optimized longest-match function. This is the most performance demanding function in the library. It is responsible for finding the (length, distance) matches in the current window.</li>
+		<li>
+			<p><code>uint64_t</code> as the standard type - the default fork used 16-bit types.</p>
+		</li>
+		<li>
+			<p>Using an improved hash function - we use the <a href="https://tools.ietf.org/html/rfc3385">iSCSI CRC32</a> function as the hash function in our zlib. This specific function is implemented as a hardware instruction on Intel processors. It has very fast performance and better collision properties.</p>
+		</li>
+		<li>
+			<p>Search for matches of at least 4 bytes, instead the 3 bytes the format suggests. This leads to fewer hash collisions, and less effort wasted on insignificant matches. It also improves the compression rate a little bit for the majority of cases (but not all).</p>
+		</li>
+		<li>
+			<p>Using SIMD instructions for window rolling.</p>
+		</li>
+		<li>
+			<p>Using the hardware carry-less multiplication instruction <code>PLCMULQDQ</code> for the CRC32 checksum.</p>
+		</li>
+		<li>
+			<p>Optimized longest-match function. This is the most performance demanding function in the library. It is responsible for finding the (length, distance) matches in the current window.</p>
+		</li>
 	</ul>
 	<p>In addition, we have an experimental branch that implements an improved version of the linked list used in zlib. It has much better performance for compression levels 6 to 9, while retaining the same compression ratio. You can find the experimental branch <a href="https://github.com/cloudflare/zlib/tree/experimental">here</a>.</p>
-	<h3 id="benchmarking">Benchmarking</h3>
+	<h3>Benchmarking</h3>
 	<p>You can find independent benchmarks of our library <a href="https://www.snellman.net/blog/archive/2015-06-05-updated-zlib-benchmarks">here</a> and <a href="http://www.htslib.org/benchmarks/zlib.html">here</a>. In addition, I performed some in-house benchmarking, and put the results here for your convenience.</p>
 	<p>All the benchmarks were performed on an i5-4278U CPU. The compression was performed from and to a ramdisk. All libraries were compiled with gcc version 4.8.4 with the compilation flags: "-O3 -march=native".</p>
 	<p>I tested the performance of the <a href="https://github.com/madler/zlib">main zlib fork</a>, optimized implementation by <a href="https://github.com/jtkukunas/zlib">Intel</a>, our own <a href="https://github.com/cloudflare/zlib">main branch</a>, and our <a href="https://github.com/cloudflare/zlib/tree/experimental">experimental branch</a>.</p>
 	<p>Four data sets were used for the benchmarks. The <a href="http://corpus.canterbury.ac.nz/resources/calgary.tar.gz">Calgary corpus</a>, the <a href="http://corpus.canterbury.ac.nz/resources/cantrbry.tar.gz">Canterbury corpus</a>, the <a href="http://corpus.canterbury.ac.nz/resources/large.tar.gz">Large Canterbury corpus</a> and the <a href="http://sun.aei.polsl.pl/~sdeor/corpus/silesia.zip">Silesia corpus</a>.</p>
-	<p><strong>Calgary corpus</strong></p>
-	<p>Performance:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/calgary-1.png" alt="" loading="lazy"><br>
-		Compression rates:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/calgary_c-1.png" alt="" loading="lazy"><br>
-		For this benchmark, Intel only outperforms our implementation for level 1, but at the cost of 1.39X larger files. This difference is far greater than even the difference between levels 1 and 9, and should probably be regarded as a different compression level. CloudFlare is faster on all other levels, and outperforms significantly for levels 6 to 9. The experimental implementation is even faster for those levels.
-	</p>
-	<p><strong>Canterbury corpus</strong></p>
-	<p>Performance:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/canterbry.png" alt="" loading="lazy"><br>
-		Compression rates:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/canterbry_c.png" alt="" loading="lazy"><br>
-		Here we see a similar situation. Intel at level 1 gets 1.44X larger files. CloudFlare is faster for levels 2 to 9. On level 9, the experimental branch outperforms the reference implementation by 2X.
-	</p>
-	<p><strong>Large corpus</strong></p>
-	<p>Performance:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/large.png" alt="" loading="lazy"><br>
-		Compression rates:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/large_c.png" alt="" loading="lazy"><br>
-		This time Intel is slightly faster for levels 5 and 6 than the CloudFlare implementation. The experimental CloudFlare implementation is faster still on level 6. The compression rate for Intel level 1 is 1.58 lower than CloudFlare. On level 9, the experimental fork is 7.5X(!) faster than reference.
-	</p>
-	<p><strong>Silesia corpus</strong></p>
-	<p>Performance:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/seli.png" alt="" loading="lazy"><br>
-		Compression rates:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/07/seli_c-1.png" alt="" loading="lazy"><br>
-		Here again, CloudFlare is the fastest on levels 2 to 9. On level 9 the difference in speed between the experimental fork and the reference fork is 2.44X.
-	</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<p><b>Calgary corpus</b></p>
+	<p>Performance:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1swjNfobp1N11Oj2GBmdA3/6255cf6ac70b56dc64c490b22836b809/calgary-1.png" alt="" class="kg-image" width="947" height="482" loading="lazy">
+
+	</figure>
+	<p>Compression rates:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZIne0q7jXVMUHZZUpW5hx/e4264dfeb38b097af9942eb2e51eb41e/calgary_c-1.png" alt="" class="kg-image" width="946" height="485" loading="lazy">
+
+	</figure>
+	<p>For this benchmark, Intel only outperforms our implementation for level 1, but at the cost of 1.39X larger files. This difference is far greater than even the difference between levels 1 and 9, and should probably be regarded as a different compression level. CloudFlare is faster on all other levels, and outperforms significantly for levels 6 to 9. The experimental implementation is even faster for those levels.</p>
+	<p><b>Canterbury corpus</b></p>
+	<p>Performance:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Sj9CVjFYbS2CGZDJYoNhA/a672497a316b765d36591e238efea9f8/canterbry.png" alt="" class="kg-image" width="947" height="485" loading="lazy">
+
+	</figure>
+	<p>Compression rates:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lVTEFn90wmzkWC05IZbq4/369518dee8eecc00b967e8963433ae3f/canterbry_c.png" alt="" class="kg-image" width="946" height="485" loading="lazy">
+
+	</figure>
+	<p>Here we see a similar situation. Intel at level 1 gets 1.44X larger files. CloudFlare is faster for levels 2 to 9. On level 9, the experimental branch outperforms the reference implementation by 2X.</p>
+	<p><b>Large corpus</b></p>
+	<p>Performance:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZRBEXqOI6FpT900xL3qrC/d98ec8a27d9f4aa2797a23348084ecfe/large.png" alt="" class="kg-image" width="946" height="485" loading="lazy">
+
+	</figure>
+	<p>Compression rates:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PqDEMmdGUstoT8b5jFy9h/9ec2e8ce85a94ea6df8df9fd3553e16d/large_c.png" alt="" class="kg-image" width="947" height="485" loading="lazy">
+
+	</figure>
+	<p>This time Intel is slightly faster for levels 5 and 6 than the CloudFlare implementation. The experimental CloudFlare implementation is faster still on level 6. The compression rate for Intel level 1 is 1.58 lower than CloudFlare. On level 9, the experimental fork is 7.5X(!) faster than reference.</p>
+	<p><b>Silesia corpus</b></p>
+	<p>Performance:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mzcc6T1U4rNNsQF9tPBzK/23ed6b61c926ebf2d0cf32dc5cc21f48/seli.png" alt="" class="kg-image" width="946" height="485" loading="lazy">
+
+	</figure>
+	<p>Compression rates:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/359sqp7ZUTycFlJVDoebdc/ac24107cabf40e6874faf7857083665c/seli_c-1.png" alt="" class="kg-image" width="947" height="485" loading="lazy">
+
+	</figure>
+	<p>Here again, CloudFlare is the fastest on levels 2 to 9. On level 9 the difference in speed between the experimental fork and the reference fork is 2.44X.</p>
+	<h3>Conclusion</h3>
 	<p>As evident from the benchmarks, the CloudFlare implementation outperforms the competition in the vast majority of settings. We put great effort in making it as fast as possible on our servers.</p>
 	<p>If you intend to use our library, you should check for yourself if it delivers the best balance of performance and compression for your dataset. As between different file format and sizes performance can vary.</p>
 	<p>And if you like open source software, don't forget to give back to the community, by contributing your own code!</p>
-	<!--kg-card-end: markdown-->
 </div>

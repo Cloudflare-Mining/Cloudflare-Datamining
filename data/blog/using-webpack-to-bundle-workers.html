@@ -1,28 +1,29 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>A brief introduction to bundling your Service Worker scripts.</em></p>
-	<p><img src="https://images.unsplash.com/photo-1523212727988-82c430c79c8e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=3559691819466e795dc97c7afd29aeb8" alt="" loading="lazy"><br>
-		<small>Photo by <a href="https://unsplash.com/@joyceromero?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Joyce Romero</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></small>
-	</p>
-	<pre><code class="language-javascript">// The simplest Service Worker: A passthrough script
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fjJVEAUPyTxUALPA8laM1/7d4b3c01909eb4b4a955da94dae9aa76/using-webpack-to-bundle-workers.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>A brief introduction to bundling your Service Worker scripts.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NwkPVtyHfmAOZMPI2Z4as/68c626e7db9f3785e0e0697582dadf46/photo-1523212727988-82c430c79c8e" alt="" class="kg-image" width="1080" height="720" loading="lazy">
+
+	</figure>
+	<p>Photo by <a href="https://unsplash.com/@joyceromero?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Joyce Romero</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
+	<pre class="language-javascript"><code class="language-javascript">// The simplest Service Worker: A passthrough script
 addEventListener('fetch', event =&gt; {
   event.respondWith(fetch(event.request))
-})
-</code></pre>
-	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <em>absolutely no need</em> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
+})</code></pre>
+	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <i>absolutely no need</i> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
 	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org">Webpack</a>.</p>
-	<h3 id="webpack">Webpack</h3>
+	<h3>Webpack</h3>
 	<p>Let’s just say Webpack is a module bundler. That is, if you have code in multiple files, and you tie them together like this:</p>
-	<h4 id="appjs">app.js</h4>
-	<pre><code class="language-javascript">// Import the CoolSocks class from dresser.js
+	<h4>app.js</h4>
+	<pre class="language-javascript"><code class="language-javascript">// Import the CoolSocks class from dresser.js
 import { CoolSocks } from './dresser'
-import { FancyShoes } from './closet'
-</code></pre>
+import { FancyShoes } from './closet'</code></pre>
 	<p>Then you can tell webpack to follow all of those import statements to produce a single file. This is useful because Service Workers running on Cloudflare need to be a single file as well.</p>
-	<h3 id="showmethecode">Show me the code</h3>
+	<h3>Show me the code</h3>
 	<p>Remember when I said something about predicting weather? Let’s build a worker with TypeScript that responds with the current weather.</p>
 	<p>Make sure to have <a href="https://nodejs.org">NodeJS</a> installed.</p>
-	<pre><code class="language-bash"># Make a new project directory
+	<pre class="language-bash"><code class="language-bash"># Make a new project directory
 mkdir weather-worker
 cd weather-worker
 mkdir src dist
@@ -34,18 +35,16 @@ npm install --save-dev \
   webpack \
   webpack-cli \
   workers-preview
-touch src/index.ts src/fetch-weather.ts webpack.config.js tsconfig.json
-</code></pre>
+touch src/index.ts src/fetch-weather.ts webpack.config.js tsconfig.json</code></pre>
 	<p>You should now have a file in your project called <code>package.json</code>. Add the following code to that file:</p>
-	<pre><code class="language-javascript">  "scripts": {
+	<pre class="language-javascript"><code class="language-javascript">  "scripts": {
     "build": "webpack",
     "build:watch": "webpack --watch",
     "preview": "workers-preview &lt; dist/bundle.js"
-  }
-</code></pre>
+  }</code></pre>
 	<p>Now edit the following files to match what is shown:</p>
-	<h4 id="tsconfigjson">tsconfig.json</h4>
-	<pre><code class="language-javascript">{
+	<h4>tsconfig.json</h4>
+	<pre class="language-javascript"><code class="language-javascript">{
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
@@ -57,10 +56,9 @@ touch src/index.ts src/fetch-weather.ts webpack.config.js tsconfig.json
     "moduleResolution": "node"
   },
   "include": ["src/*.ts", "src/**/*.ts", "src/*.tsx", "src/**/*.tsx"]
-}
-</code></pre>
-	<h4 id="webpackconfigjs">webpack.config.js</h4>
-	<pre><code class="language-javascript">const path = require('path')
+}</code></pre>
+	<h4>webpack.config.js</h4>
+	<pre class="language-javascript"><code class="language-javascript">const path = require('path')
 
 module.exports = {
   entry: {
@@ -93,17 +91,24 @@ module.exports = {
       },
     ],
   },
-}
-</code></pre>
+}</code></pre>
 	<p>For newcomers, this file will seem incredibly cryptic. All I can say is just to accept it as magic for now. You’ll eventually understand what’s going on.</p>
 	<blockquote>
 		<p>A note about <code>devtool: 'cheap-module-eval-source-map'</code>. Specifying this type of sourcemap is fast, lightweight, and results in stacktraces much more representative of your source code. They’re not exact (yet!), but we’re getting there.</p>
 	</blockquote>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.46.48-PM.png" alt="Fiddle Error" loading="lazy"></p>
-	<p><em>Cloudflare fiddle devtools uses source maps to point you to the correct source file. Click through to see the problematic line.</em></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.47.52-PM.png" alt="Fiddle error source" loading="lazy"></p>
-	<h4 id="srcindexts">src/index.ts</h4>
-	<pre><code class="language-typescript">import { fetchWeather } from './fetch-weather'
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18EkSrkR6zwUeYdaw5raii/8b6fa39e0a1c206b99ad9e01864518ec/Screen-Shot-2018-06-20-at-5.46.48-PM.png" alt="Fiddle Error" class="kg-image" width="1212" height="148" loading="lazy">
+
+	</figure>
+	<p><i>Cloudflare fiddle devtools uses source maps to point you to the correct source file. Click through to see the problematic line.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/246fUhbfWAx68lusG2fhKb/59ec91fcec408507df7c48cd1216ae31/Screen-Shot-2018-06-20-at-5.47.52-PM.png" alt="Fiddle error source" class="kg-image" width="2934" height="936" loading="lazy">
+
+	</figure>
+	<h4>src/index.ts</h4>
+	<pre class="language-typescript"><code class="language-typescript">import { fetchWeather } from './fetch-weather'
 
 addEventListener('fetch', (event: FetchEvent) =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -112,17 +117,16 @@ addEventListener('fetch', (event: FetchEvent) =&gt; {
 async function handleRequest(request: Request) {
   const weather = await fetchWeather('austin')
   const body = `
-    ${weather.location.city}, ${weather.location.region}&lt;br&gt;
+    ${weather.location.city}, ${weather.location.region}<br>
     ${weather.item.condition.temp} ${weather.item.condition.text}
   `.trim()
 
   return new Response(body, {
     headers: { 'Content-Type': 'text/html' },
   })
-}
-</code></pre>
-	<h4 id="srcfetchweatherts">src/fetch-weather.ts</h4>
-	<pre><code class="language-typescript">/**
+}</code></pre>
+	<h4>src/fetch-weather.ts</h4>
+	<pre class="language-typescript"><code class="language-typescript">/**
  * Fetch the current weather conditions and forecast for a particular location
  * @param location location string to fetch
  * @param unit temperature units (c or f)
@@ -149,28 +153,28 @@ export async function fetchWeather(location: string, unit = 'f') {
   const result = await res.json()
 
   return result.query.results &amp;&amp; result.query.results.channel
-}
-</code></pre>
+}</code></pre>
 	<p>Now simply run:</p>
-	<pre><code class="language-bash">npm run build &amp;&amp; npm run preview
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">npm run build &amp;&amp; npm run preview</code></pre>
 	<p>This ought to build your script and open a page very similar to:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.51.19-PM.png" alt="Workers Fiddle Screenshot" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hNT2U1yxvTRfm5Cpa5cxR/dd10438dab69a34c14d432716ec790fd/Screen-Shot-2018-06-20-at-5.51.19-PM.png" alt="Workers Fiddle Screenshot" class="kg-image" width="2522" height="1852" loading="lazy">
+
+	</figure>
 	<p>This is great, but instead of returning the weather for every single resource request, maybe we should only return the weather on pathnames that match a particular pattern. Something like:</p>
-	<pre><code>GET /weather/:city
+	<pre class="language-bash"><code class="language-bash">GET /weather/:city
 GET /weather/austin
-GET /weather/toronto
-</code></pre>
+GET /weather/toronto</code></pre>
 	<p>In that pattern, <code>city</code> is a variable. Anything that starts with <code>/weather/</code> will match, and everything after will be our city. This shouldn’t match a path like <code>/weather/austin/tatious</code>. Luckily there are off-the-shelf solutions on npm to handle exactly this sort of logic.</p>
-	<h3 id="loadingnodemodules">Loading node modules</h3>
+	<h3>Loading node modules</h3>
 	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a> module.</p>
 	<p>Install and save the module:</p>
-	<pre><code class="language-bash">npm install -S path-to-regexp
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">npm install -S path-to-regexp</code></pre>
 	<p>The path-to-regexp module converts the url path pattern <code>/weather/:city</code> to a regular expression. Using that regular expression, we can extract the variable <code>city</code> out of a pathname string. For instance, in the string ‘/weather/toronto’, the city variable is ‘toronto’. However, for the string ‘/users/123’, there is no match at all.</p>
 	<p>Let’s modify our <code>src/index.ts</code> file to include this new routing logic.</p>
-	<h4 id="srcindexts">src/index.ts</h4>
-	<pre><code class="language-typescript">import * as pathToRegExp from 'path-to-regexp'
+	<h4>src/index.ts</h4>
+	<pre class="language-typescript"><code class="language-typescript">import * as pathToRegExp from 'path-to-regexp'
 import { fetchWeather } from './fetch-weather'
 
 type TWeatherRequestParams = { city: string }
@@ -201,25 +205,22 @@ addEventListener('fetch', (event: FetchEvent) =&gt; {
 async function handleWeatherRequest(params: TWeatherRequestParams) {
   const weather = await fetchWeather(params.city)
   const body = `
-    ${weather.location.city}, ${weather.location.region}&lt;br&gt;
+    ${weather.location.city}, ${weather.location.region}<br>
     ${weather.item.condition.temp} ${weather.item.condition.text}
   `.trim()
 
   return new Response(body, {
     headers: { 'Content-Type': 'text/html' },
   })
-}
-</code></pre>
+}</code></pre>
 	<p>Notice that after installing the module, all we have to do is import by its name on npm. This is because webpack knows to look inside of your node_modules directory to resolve import statement paths.</p>
 	<p>Run:</p>
-	<pre><code class="language-bash">npm run build &amp;&amp; npm run preview -- \
-  --preview-url https://foo.bar.com/weather/austin
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">npm run build &amp;&amp; npm run preview -- \
+  --preview-url https://foo.bar.com/weather/austin</code></pre>
 	<p>You should see the weather for Austin, TX displayed. Congrats!</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>Webpack is an incredibly robust and configurable piece of technology. It’s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, it’s a perfect fit for bundling Cloudflare Service Workers.</p>
 	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers">github.com/jrf0110/weather-workers</a></p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

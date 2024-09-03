@@ -1,23 +1,20 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Never Deal With DNS Propagation Again" src="https://blog.cloudflare.com/content/images/dns.png.scaled500.png" title="Never Deal With DNS Propagation Again"></p>
+<div class="mb2 gray5">1 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45PSD6X9EzEDltVE9DzfSN/f4d03fef3e32c8080fa66bd2696790eb/dns.png.scaled500.png" alt="Never Deal With DNS Propagation Again" class="kg-image" width="300" height="124" loading="lazy">
+
+	</figure>
 	<p>At CloudFlare, we think a lot about the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name Service</a> -- better known as DNS, the Internet's address book. CloudFlare uses DNS to bring performance and security to our customers. But, we don't spend a lot of time talking about our DNS service, behind the scenes.</p>
-	<h3 id="thecloudflarebenefit">The "CloudFlare benefit"</h3>
-	<p>One recent customer comment reminded us of an unsung advantage:<br>
-		<br>
-	</p>
+	<h3>The "CloudFlare benefit"</h3>
+	<p>One recent customer comment reminded us of an unsung advantage:</p>
 	<blockquote>
-		<em>
-			"The thing is, we had this new design running on a QA server for the past week, doing final testing and updating. Yesterday we changed the IP to point the domain to the new QA server, away from the "old" prod server.
-			<br><br>
-			BUT unlike every other time when we change a site's IP - the change was instantaneous‚ since the only IP the world has for our sites is CloudFlare, so when we change servers, IPs, etc.
-			<br><br>
-			So with CloudFlare, instant server move, web host move, IP change -- never deal with DNS propagation again. That is awesome."</em>
+		<p>_"The thing is, we had this new design running on a QA server for the past week, doing final testing and updating. Yesterday we changed the IP to point the domain to the new QA server, away from the "old" prod server.</p>
+		<p>BUT unlike every other time when we change a site's IP - the change was instantaneous‚ since the only IP the world has for our sites is CloudFlare, so when we change servers, IPs, etc.</p>
+		<p>So with CloudFlare, instant server move, web host move, IP change -- never deal with DNS propagation again. That is awesome."_</p>
 	</blockquote>
-	<br>
-	<h3 id="nomorewaiting">No More Waiting</h3>
+	<h3>No More Waiting</h3>
 	<p>Because the public IP addresses don't change, using CloudFlare removes the wait for TTL (Time To Live) record expiration and DNS propagation when you make a change to one of your site's DNS records. This waiting period is often an excruciating part of development and deployment changes, because it's completely out of your control. Yes, you can lower your TTLs ahead of time, but it's still a seemingly endless wait for the world's recursive DNS servers to come get the new record.</p>
 	<p>If DNS isn't something you spend a lot of time thinking about, that's fine. Just know that once you're on CloudFlare, your changes are live faster, and you can get back to everything else on your plate. Making running a website easier...that's part of CloudFlare's goal, even in the small things.</p>
 	<p>P.S. - We recently made <a href="https://blog.cloudflare.com/managing-dns-records">major improvements</a> to our DNS management interface. You can also manage DNS via <a href="https://www.cloudflare.com/docs/client-api.html">API</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

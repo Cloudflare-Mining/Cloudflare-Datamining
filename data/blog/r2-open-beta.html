@@ -1,32 +1,41 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/r2-open-beta-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/r2-open-beta-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/r2-open-beta-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/r2-open-beta-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/r2-open-beta-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta" loading="lazy"></figure>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/r2-open-beta">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/r2-open-beta">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/r2-open-beta">日本語</a>, <a href="https://blog.cloudflare.com/es-es/r2-open-beta">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/r2-open-beta">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6woXbq5EB6yKKAtaRkbghr/73001479ded8fdcf8c98229df9eec309/image1-20.png" alt="A New Hope for Object Storage: R2 enters open beta" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>In September, we <a href="https://blog.cloudflare.com/introducing-r2-object-storage">announced</a> that we were building our own <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> solution: <a href="https://www.cloudflare.com/products/r2">Cloudflare R2</a>. R2 is our answer to egregious <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">egress charges</a> from incumbent cloud providers, letting developers store as much data as they want without worrying about the cost of accessing that data.</p>
 	<p>The response has been overwhelming.</p>
 	<ul>
-		<li><strong>Independent developers</strong> had bills too small for cloud providers to negotiate fair egress rates with them. Egress charges were the largest line-item on their cloud bills, strangling side projects and the new businesses they were building.</li>
-		<li><strong>Large corporations </strong>had written off multi-cloud storage - and thus multi-cloud itself - as a pipe dream. They came to us with excitement, pitching new products that integrated data with partner companies.</li>
-		<li><strong>Non-profit research organizations</strong> were paying massive egress fees just to share experiment data with one another. Egress fees were having a real impact on their ability to collaborate, driving silos between organizations and restricting the experiments and analyses they could run.</li>
+		<li>
+			<p><b>Independent developers</b> had bills too small for cloud providers to negotiate fair egress rates with them. Egress charges were the largest line-item on their cloud bills, strangling side projects and the new businesses they were building.</p>
+		</li>
+		<li>
+			<p><b>Large corporations</b> had written off multi-cloud storage - and thus multi-cloud itself - as a pipe dream. They came to us with excitement, pitching new products that integrated data with partner companies.</p>
+		</li>
+		<li>
+			<p><b>Non-profit research organizations</b> were paying massive egress fees just to share experiment data with one another. Egress fees were having a real impact on their ability to collaborate, driving silos between organizations and restricting the experiments and analyses they could run.</p>
+		</li>
 	</ul>
 	<p>Cloudflare exists to help build a better Internet. Today, the Internet gets what it deserves: R2 is now in <a href="https://developers.cloudflare.com/r2/get-started">open beta</a>.</p>
 	<p>Self-serve customers can <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Fplans">enable R2</a> in the Cloudflare dashboard. Enterprise accounts can reach out to their CSM for onboarding.</p>
-	<h2 id="internal-and-external-apis">Internal and external APIs</h2>
+	<h2>Internal and external APIs</h2>
 	<p>R2 has two APIs: an API accessible only from within Workers, which we call the In-Worker API, and an S3-compatible API, which exposes your bucket on a URL of the form <a href="http://account.r2.cloudflarestorage.com/bucket">bucket.account.r2storage.com</a>. Before you can make requests to R2, you’ll need to be authenticated — R2 buckets are private by default.</p>
-	<h3 id="in-worker-api">In-Worker API</h3>
+	<h3>In-Worker API</h3>
 	<p>With the in-Worker API, a bucket is “bound” to a specific Worker, which can then perform PUT, GET, DELETE and LIST operations against the bucket.</p>
-	<h3 id="s3-compatible-api">S3-compatible API</h3>
+	<h3>S3-compatible API</h3>
 	<p>For the S3-compatible API, authentication is done the same way as on S3: SigV4 against an R2 URL. SigV4 signs requests using a secret key to authenticate them to R2. This means public access to R2 over the Internet is only possible today by hosting a Worker, connecting it to R2, and routing requests through it.</p>
 	<p>The easiest way to test the S3-compatible API is to use an S3 client. One of the most popular S3 clients is the <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html">boto3</a> SDK.</p>
-	<p>In Python, copy the following script and fill in the <code>account_id</code>, <code>access_key</code>, and <code>secret_access_key</code> fields with your R2 account credentials.</p><!--kg-card-begin: markdown-->
-	<pre><code>main.py
+	<p>In Python, copy the following script and fill in the <code>account_id</code>, <code>access_key</code>, and <code>secret_access_key</code> fields with your R2 account credentials.</p>
+	<pre class="language-bash"><code class="language-bash">main.py
 import boto3
 
 s3 = boto3.resource('s3',
-  endpoint_url = 'https://&lt;accountid&gt;.r2.cloudflarestorage.com',
-  aws_access_key_id = '&lt;access_key_id&gt;',
-  aws_secret_access_key = '&lt;access_key_secret&gt;'
+  endpoint_url = 'https://<accountid>.r2.cloudflarestorage.com',
+  aws_access_key_id = '<access_key_id>',
+  aws_secret_access_key = '<access_key_secret>'
 )
 
 print('Buckets:')
@@ -38,44 +47,62 @@ bucket = s3.Bucket('my-bucket-name')
 print('Objects:')
 for item in bucket.objects.all():
   print(' - ', item.key)
-
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="features">Features</h3>
+</access_key_secret></access_key_id></accountid></code></pre>
+	<h3>Features</h3>
 	<p>R2 comes with support for all basic create/read/update/delete S3 features through both of its APIs.</p>
 	<p>During the open beta period, we’re targeting R2 to sustain 1,000 GET operations per second and 100 PUT operations per second, per bucket. R2 supports objects up to approximately 5 TB in size, with individual parts limited to 5 GB of data.</p>
 	<p>R2 provides strongly consistent access to data. Once a PUT is confirmed by R2, future GET operations will always reflect the new key/value pair. The only exception to this is when deleting a bucket. For a short period of time following deletion, the bucket may still exist and continue to allow reads/writes.</p>
-	<h2 id="pricing">Pricing</h2>
+	<h2>Pricing</h2>
 	<p>When we initially announced R2, we included preliminary pricing numbers. One of our main goals with R2 has been to serve the developers who can’t negotiate large discounts with cloud vendors. To that end, we’re also announcing a forever-free tier that lets developers start building on R2 with no charges at all.</p>
 	<p>R2 charges depend on the total volume of data stored and the type of operation performed on the data:</p>
 	<ul>
-		<li>Storage is priced at \$0.015 / GB, per month.</li>
-		<li>Class A operations (including writes and lists) cost \$4.50 / million.</li>
-		<li>Class B operations cost \$0.36 / million.</li>
+		<li>
+			<p>Storage is priced at \$0.015 / GB, per month.</p>
+		</li>
+		<li>
+			<p>Class A operations (including writes and lists) cost \$4.50 / million.</p>
+		</li>
+		<li>
+			<p>Class B operations cost \$0.36 / million.</p>
+		</li>
 	</ul>
 	<p>Class A operations tend to mutate state, such as creating a bucket, listing objects in a bucket, or writing an object. Class B operations tend to read existing state, for example reading an object from a bucket. You can find more information on pricing and a full list of operation types in the <a href="https://developers.cloudflare.com/r2/platform/pricing">docs</a>.</p>
 	<p>Of course, there is no charge for egress bandwidth from R2. You can access your bucket to your heart’s content.</p>
 	<p>R2’s forever-free tier includes:</p>
 	<ul>
-		<li>10 GB-months of stored data</li>
-		<li>1,000,000 Class A operations, per month</li>
-		<li>10,000,000 Class B operations, per month</li>
+		<li>
+			<p>10 GB-months of stored data</p>
+		</li>
+		<li>
+			<p>1,000,000 Class A operations, per month</p>
+		</li>
+		<li>
+			<p>10,000,000 Class B operations, per month</p>
+		</li>
 	</ul>
 	<p>Free usage resets each month. While in the open beta phase, R2 usage over the free tier will be billed.</p>
-	<h2 id="future-plans">Future plans</h2>
+	<h2>Future plans</h2>
 	<p>We’ve spent the past six months in closed beta with a number of design partners, building out our storage solution. Backed by Durable Objects, R2’s novel architecture delivers both high availability and consistent performance.</p>
 	<p>While we’ve made great progress on R2, we still have plenty left to build in the coming months.</p>
-	<h3 id="improving-performance">Improving performance</h3>
-	<p>Our first priority is to <strong>improve performance and reliability</strong>. While we’ve thrown internal usage and our design partner’s demands at R2, there’s no substitute for live production traffic.</p>
+	<h3>Improving performance</h3>
+	<p>Our first priority is to <b>improve performance and reliability</b>. While we’ve thrown internal usage and our design partner’s demands at R2, there’s no substitute for live production traffic.</p>
 	<p>During the open beta period, R2 can sustain a maximum of 1,000 GET operations per second and 100 PUT operations per second, per bucket. We’ll look to raise these limits as we get comfortable operating the system. If you have higher needs, reach out to us!</p>
 	<p>When you create a bucket, you won’t see a region selector. Our vision for R2 includes automatically globally distributed storage, where R2 seamlessly places each object into the storage region closest to where the request comes from. Today, R2 primarily stores data in North America, which can lead to higher latencies when accessing content from other regions. We’ll first look to address this by adding additional regions where objects can be created, before adding automatic migration of existing objects across regions. Similar to what we’ve built with <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects">jurisdictional restrictions for Durable Objects</a>, we’ll also enable restricting where an R2 bucket places data to comply with privacy regulations.</p>
-	<h3 id="expanding-r2-s-feature-set">Expanding R2’s feature set</h3>
+	<h3>Expanding R2’s feature set</h3>
 	<p>We’ll then focus on expanding R2 capabilities beyond the basic S3 API. In the near term, we’re focused on delivering:</p>
 	<ul>
-		<li>Support for TTLs, so data can automatically be deleted from buckets over time.</li>
-		<li>Public buckets, so a bucket can be exposed to the internet without writing a Worker</li>
-		<li>Pre-signed URL support, which delegates read and write access for a specific key to a token.</li>
-		<li>Integration with <a href="https://www.cloudflare.com/cdn">Cloudflare’s cache</a>, to scale read requests and provide global distribution of data.</li>
+		<li>
+			<p>Support for TTLs, so data can automatically be deleted from buckets over time.</p>
+		</li>
+		<li>
+			<p>Public buckets, so a bucket can be exposed to the internet without writing a Worker</p>
+		</li>
+		<li>
+			<p>Pre-signed URL support, which delegates read and write access for a specific key to a token.</p>
+		</li>
+		<li>
+			<p>Integration with <a href="https://www.cloudflare.com/cdn">Cloudflare’s cache</a>, to scale read requests and provide global distribution of data.</p>
+		</li>
 	</ul>
 	<p>If you have additional feature requests that aren’t listed above, we want to hear from you! Join our <a href="https://discord.gg/cloudflaredev">Discord</a> and share what you need to make R2 your new, zero-cost egress object store in the r2-open-beta channel.</p>
 </div>

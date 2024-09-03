@@ -1,130 +1,146 @@
-<div class="mb2 gray5">13 min read</div>
+<div class="mb2 gray5">12 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/tubular-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qt80mUTCxJp6nLkenADAL/1a71ede9014fa70f15b4ae03465017f9/tubular-1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>As we develop new products, we often push our operating system - Linux - beyond what is commonly possible. A common theme has been relying on <a href="https://ebpf.io/what-is-ebpf">eBPF</a> to build technology that would otherwise have required modifying the kernel. For example, we’ve built <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">DDoS mitigation</a> and a <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">load balancer</a> and use it to <a href="https://blog.cloudflare.com/introducing-ebpf_exporter">monitor our fleet of servers</a>.</p>
 	<p>This software usually consists of a small-ish eBPF program written in C, executed in the context of the kernel, and a larger user space component that loads the eBPF into the kernel and manages its lifecycle. We’ve found that the ratio of eBPF code to userspace code differs by an order of magnitude or more. We want to shed some light on the issues that a developer has to tackle when dealing with eBPF and present our solutions for building rock-solid production ready applications which contain eBPF.</p>
-	<p>For this purpose we are open sourcing the production tooling we’ve built for the <a href="https://www.kernel.org/doc/html/latest/bpf/prog_sk_lookup.html">sk_lookup hook</a> we contributed to the Linux kernel, called <strong>tubular</strong>. It exists because <a href="https://blog.cloudflare.com/its-crowded-in-here">we’ve outgrown the BSD sockets API</a>. To deliver some products we need features that are just not possible using the standard API.</p>
+	<p>For this purpose we are open sourcing the production tooling we’ve built for the <a href="https://www.kernel.org/doc/html/latest/bpf/prog_sk_lookup.html">sk_lookup hook</a> we contributed to the Linux kernel, called <b>tubular</b>. It exists because <a href="https://blog.cloudflare.com/its-crowded-in-here">we’ve outgrown the BSD sockets API</a>. To deliver some products we need features that are just not possible using the standard API.</p>
 	<ul>
-		<li>Our services are available on millions of IPs.</li>
-		<li>Multiple services using the same port on different addresses have to coexist, e.g. <a href="https://1.1.1.1">1.1.1.1</a> resolver and our authoritative DNS.</li>
-		<li>Our Spectrum product <a href="https://blog.cloudflare.com/how-we-built-spectrum">needs to listen on all 2^16 ports</a>.</li>
+		<li>
+			<p>Our services are available on millions of IPs.</p>
+		</li>
+		<li>
+			<p>Multiple services using the same port on different addresses have to coexist, e.g. <a href="https://1.1.1.1">1.1.1.1</a> resolver and our authoritative DNS.</p>
+		</li>
+		<li>
+			<p>Our Spectrum product <a href="https://blog.cloudflare.com/how-we-built-spectrum">needs to listen on all 2^16 ports</a>.</p>
+		</li>
 	</ul>
 	<p>The source code for tubular is at <a href="https://github.com/cloudflare/tubular">https://github.com/cloudflare/tubular</a>, and it allows you to do all the things mentioned above. Maybe the most interesting feature is that you can change the addresses of a service on the fly:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60%;"><iframe src="https://iframe.videodelivery.net/0c8aa9ba9144bbbb313fb9c865376e4e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F0c8aa9ba9144bbbb313fb9c865376e4e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D48s%26height%3D600&amp;primaryColor=%23f7b018" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h2 id="how-tubular-works">How tubular works</h2>
+	<h2>How tubular works</h2>
 	<p><code>tubular</code> sits at a critical point in the Cloudflare stack, since it has to inspect every connection terminated by a server and decide which application should receive it.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/unnamed.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZFfhU9ui5dR4KpbOcofqr/acf812730af46f7a7a12fed2c1b984ce/unnamed.png" alt="" class="kg-image" width="1600" height="382" loading="lazy">
+
+	</figure>
 	<p>Failure to do so will drop or misdirect connections hundreds of times per second. So it has to be incredibly robust during day to day operations. We had the following goals for tubular:</p>
 	<ul>
-		<li><strong>Releases must be unattended and happen online. </strong>tubular runs on thousands of machines, so we can’t babysit the process or take servers out of production.</li>
-		<li><strong>Releases must fail safely.</strong> A failure in the process must leave the previous version of tubular running, otherwise we may drop connections.</li>
-		<li><strong>Reduce the impact of (userspace) crashes.</strong> When the inevitable bug comes along we want to minimise the blast radius.</li>
+		<li>
+			<p><b>Releases must be unattended and happen online.</b> tubular runs on thousands of machines, so we can’t babysit the process or take servers out of production.</p>
+		</li>
+		<li>
+			<p><b>Releases must fail safely.</b> A failure in the process must leave the previous version of tubular running, otherwise we may drop connections.</p>
+		</li>
+		<li>
+			<p><b>Reduce the impact of (userspace) crashes.</b> When the inevitable bug comes along we want to minimise the blast radius.</p>
+		</li>
 	</ul>
 	<p>In the past we had built a proof-of-concept control plane for sk_lookup called <a href="https://github.com/majek/inet-tool">inet-tool</a>, which proved that we could get away without a persistent service managing the eBPF. Similarly, tubular has <code>tubectl</code>: short-lived invocations make the necessary changes and persisting state is handled by the kernel in the form of <a href="https://www.kernel.org/doc/html/latest/bpf/maps.html">eBPF maps</a>. Following this design gave us crash resiliency by default, but left us with the task of mapping the user interface we wanted to the tools available in the eBPF ecosystem.</p>
-	<h2 id="the-tubular-user-interface">The tubular user interface</h2>
+	<h2>The tubular user interface</h2>
 	<p>tubular consists of a BPF program that attaches to the sk_lookup hook in the kernel and userspace Go code which manages the BPF program. The <code>tubectl</code> command wraps both in a way that is easy to distribute.</p>
 	<p><code>tubectl</code> manages two kinds of objects: bindings and sockets. A binding encodes a rule against which an incoming packet is matched. A socket is a reference to a TCP or UDP socket that can accept new connections or packets.</p>
 	<p>Bindings and sockets are "glued" together via arbitrary strings called labels. Conceptually, a binding assigns a label to some traffic. The label is then used to find the correct socket.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/unnamed--2-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="adding-bindings">Adding bindings</h3>
-	<p>To create a binding that steers port 80 (aka HTTP) traffic destined for 127.0.0.1 to the label “foo” we use <code>tubectl bind</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo tubectl bind "foo" tcp 127.0.0.1 80
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Due to the power of sk_lookup we can have much more powerful constructs than the BSD API. For example, we can redirect connections to all IPs in 127.0.0.0/24 to a single socket:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo tubectl bind "bar" tcp 127.0.0.0/24 80
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>A side effect of this power is that it's possible to create bindings that "overlap":</p><!--kg-card-begin: markdown-->
-	<pre><code>1: tcp 127.0.0.1/32 80 -&gt; "foo"
-2: tcp 127.0.0.0/24 80 -&gt; "bar"
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3G1ZM7iKvkGurKMBYqonW5/366a80886304676336f4473fbae866db/unnamed--2-.png" alt="" class="kg-image" width="1130" height="185" loading="lazy">
+
+	</figure>
+	<h3>Adding bindings</h3>
+	<p>To create a binding that steers port 80 (aka HTTP) traffic destined for 127.0.0.1 to the label “foo” we use <code>tubectl bind</code>:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo tubectl bind "foo" tcp 127.0.0.1 80</code></pre>
+	<p>Due to the power of sk_lookup we can have much more powerful constructs than the BSD API. For example, we can redirect connections to all IPs in 127.0.0.0/24 to a single socket:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo tubectl bind "bar" tcp 127.0.0.0/24 80</code></pre>
+	<p>A side effect of this power is that it's possible to create bindings that "overlap":</p>
+	<pre class="language-bash"><code class="language-bash">1: tcp 127.0.0.1/32 80 -&gt; "foo"
+2: tcp 127.0.0.0/24 80 -&gt; "bar"</code></pre>
 	<p>The first binding says that HTTP traffic to localhost should go to “foo”, while the second asserts that HTTP traffic in the localhost subnet should go to “bar”. This creates a contradiction, which binding should we choose? tubular resolves this by defining precedence rules for bindings:</p>
 	<ol>
-		<li>A prefix with a longer mask is more specific, e.g. 127.0.0.1/32 wins over 127.0.0.0/24.</li>
-		<li>A port is more specific than the port wildcard, e.g. port 80 wins over "all ports" (0).</li>
+		<li>
+			<p>A prefix with a longer mask is more specific, e.g. 127.0.0.1/32 wins over 127.0.0.0/24.</p>
+		</li>
+		<li>
+			<p>A port is more specific than the port wildcard, e.g. port 80 wins over "all ports" (0).</p>
+		</li>
 	</ol>
 	<p>Applying this to our example, HTTP traffic to all IPs in 127.0.0.0/24 will be directed to bar, except for 127.0.0.1 which goes to foo.</p>
-	<h3 id="getting-ahold-of-sockets">Getting ahold of sockets</h3>
+	<h3>Getting ahold of sockets</h3>
 	<p><code>sk_lookup</code> needs a reference to a TCP or a UDP socket to redirect traffic to it. However, a socket is usually accessible only by the process which created it with the socket syscall. For example, an HTTP server creates a TCP listening socket bound to port 80. How can we gain access to the listening socket?</p>
-	<p>A fairly well known solution is to make processes cooperate by passing socket file descriptors via<a href="https://blog.cloudflare.com/know-your-scm_rights"> SCM_RIGHTS</a> messages to a tubular daemon. That daemon can then take the necessary steps to hook up the socket with <code>sk_lookup</code>. This approach has several drawbacks:</p>
+	<p>A fairly well known solution is to make processes cooperate by passing socket file descriptors via <a href="https://blog.cloudflare.com/know-your-scm_rights">SCM_RIGHTS</a> messages to a tubular daemon. That daemon can then take the necessary steps to hook up the socket with <code>sk_lookup</code>. This approach has several drawbacks:</p>
 	<ol>
-		<li>Requires modifying processes to send SCM_RIGHTS</li>
-		<li>Requires a tubular daemon, which may crash</li>
+		<li>
+			<p>Requires modifying processes to send SCM_RIGHTS</p>
+		</li>
+		<li>
+			<p>Requires a tubular daemon, which may crash</p>
+		</li>
 	</ol>
-	<p>There is another way of getting at sockets by using systemd, provided<a href="https://www.freedesktop.org/software/systemd/man/systemd.socket.html"> socket activation</a> is used. It works by creating an additional service unit with the correct<a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#Sockets="> Sockets</a> setting. In other words: we can leverage systemd oneshot action executed on creation of a systemd socket service, registering the socket into tubular. For example:</p><!--kg-card-begin: markdown-->
-	<pre><code>[Unit]
+	<p>There is another way of getting at sockets by using systemd, provided <a href="https://www.freedesktop.org/software/systemd/man/systemd.socket.html">socket activation</a> is used. It works by creating an additional service unit with the correct <a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#Sockets=">Sockets</a> setting. In other words: we can leverage systemd oneshot action executed on creation of a systemd socket service, registering the socket into tubular. For example:</p>
+	<pre class="language-bash"><code class="language-bash">[Unit]
 Requisite=foo.socket
 
 [Service]
 Type=oneshot
 Sockets=foo.socket
-ExecStart=tubectl register "foo"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Since we can rely on systemd to execute <code>tubectl</code> at the correct times we don't need a daemon of any kind. However, the reality is that a lot of popular software doesn't use systemd socket activation. Dealing with systemd sockets is complicated and doesn't invite experimentation. Which brings us to the final trick:<a href="https://www.man7.org/linux/man-pages/man2/pidfd_getfd.2.html"> pidfd_getfd</a>:</p>
-	<blockquote>The <code>pidfd_getfd()</code> system call allocates a new file descriptor in the calling process. This new file descriptor is a duplicate of an existing file descriptor, targetfd, in the process referred to by the PID file descriptor pidfd.</blockquote>
-	<p>We can use it to iterate all file descriptors of a foreign process, and pick the socket we are interested in. To return to our example, we can use the following command to find the TCP socket bound to 127.0.0.1 port 8080 in the httpd process and register it under the "foo" label:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo tubectl register-pid "foo" $(pidof httpd) tcp 127.0.0.1 8080
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>It's easy to wire this up using systemd's<a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#ExecStartPre="> ExecStartPost</a> if the need arises.</p><!--kg-card-begin: markdown-->
-	<pre><code>[Service]
+ExecStart=tubectl register "foo"</code></pre>
+	<p>Since we can rely on systemd to execute <code>tubectl</code> at the correct times we don't need a daemon of any kind. However, the reality is that a lot of popular software doesn't use systemd socket activation. Dealing with systemd sockets is complicated and doesn't invite experimentation. Which brings us to the final trick: <a href="https://www.man7.org/linux/man-pages/man2/pidfd_getfd.2.html">pidfd_getfd</a>:</p>
+	<blockquote>
+		<p>The <code>pidfd_getfd()</code> system call allocates a new file descriptor in the calling process. This new file descriptor is a duplicate of an existing file descriptor, targetfd, in the process referred to by the PID file descriptor pidfd.</p>
+	</blockquote>
+	<p>We can use it to iterate all file descriptors of a foreign process, and pick the socket we are interested in. To return to our example, we can use the following command to find the TCP socket bound to 127.0.0.1 port 8080 in the httpd process and register it under the "foo" label:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo tubectl register-pid "foo" $(pidof httpd) tcp 127.0.0.1 8080</code></pre>
+	<p>It's easy to wire this up using systemd's <a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#ExecStartPre=">ExecStartPost</a> if the need arises.</p>
+	<pre class="language-bash"><code class="language-bash">[Service]
 Type=forking # or notify
 ExecStart=/path/to/some/command
-ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="storing-state-in-ebpf-maps">Storing state in eBPF maps</h2>
-	<p>As mentioned previously, tubular relies on the kernel to store state, using<a href="https://prototype-kernel.readthedocs.io/en/latest/bpf/ebpf_maps.html"> BPF key / value data structures also known as maps</a>. Using the <a href="https://www.kernel.org/doc/html/latest/userspace-api/ebpf/syscall.html">BPF_OBJ_PIN syscall</a> we can persist them in /sys/fs/bpf:</p><!--kg-card-begin: markdown-->
-	<pre><code>/sys/fs/bpf/4026532024_dispatcher
+ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080</code></pre>
+	<h2>Storing state in eBPF maps</h2>
+	<p>As mentioned previously, tubular relies on the kernel to store state, using <a href="https://prototype-kernel.readthedocs.io/en/latest/bpf/ebpf_maps.html">BPF key / value data structures also known as maps</a>. Using the <a href="https://www.kernel.org/doc/html/latest/userspace-api/ebpf/syscall.html">BPF_OBJ_PIN syscall</a> we can persist them in /sys/fs/bpf:</p>
+	<pre class="language-bash"><code class="language-bash">/sys/fs/bpf/4026532024_dispatcher
 ├── bindings
 ├── destination_metrics
 ├── destinations
 ├── sockets
-└── ...
-</code></pre>
-	<!--kg-card-end: markdown-->
+└── ...</code></pre>
 	<p>The way the state is structured differs from how the command line interface presents it to users. Labels like “foo” are convenient for humans, but they are of variable length. Dealing with variable length data in BPF is cumbersome and slow, so the BPF program never references labels at all. Instead, the user space code allocates numeric IDs, which are then used in the BPF. Each ID represents a (<code>label</code>, <code>domain</code>, <code>protocol</code>) tuple, internally called <code>destination</code>.</p>
 	<p>For example, adding a binding for "foo" <code>tcp 127.0.0.1</code> ... allocates an ID for ("<code>foo</code>", <code>AF_INET</code>, <code>TCP</code>). Including domain and protocol in the destination allows simpler data structures in the BPF. Each allocation also tracks how many bindings reference a destination so that we can recycle unused IDs. This data is persisted into the destinations hash table, which is keyed by (Label, Domain, Protocol) and contains (ID, Count). Metrics for each destination are tracked in destination_metrics in the form of per-CPU counters.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/unnamed--1--5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><code>bindings</code> is a<a href="https://en.wikipedia.org/wiki/Trie"> longest prefix match (LPM) trie</a> which stores a mapping from (<code>protocol</code>, <code>port</code>, <code>prefix</code>) to (<code>ID</code>, <code>prefix length</code>). The ID is used as a key to the sockets map which contains pointers to kernel socket structures. IDs are allocated in a way that makes them suitable as an array index, which allows using the simpler BPF sockmap (an array) instead of a socket hash table. The prefix length is duplicated in the value to work around shortcomings in the BPF API.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/unnamed--3-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="encoding-the-precedence-of-bindings">Encoding the precedence of bindings</h2>
-	<p>As discussed, bindings have a precedence associated with them. To repeat the earlier example:</p><!--kg-card-begin: markdown-->
-	<pre><code>1: tcp 127.0.0.1/32 80 -&gt; "foo"
-2: tcp 127.0.0.0/24 80 -&gt; "bar"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The first binding should be matched before the second one. We need to encode this in the BPF somehow. One idea is to generate some code that executes the bindings in order of specificity, a technique we’ve used to great effect in <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">l4drop</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code>1: if (mask(ip, 32) == 127.0.0.1) return "foo"
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JI7BzZmFdOS5DO6n2cpjh/c89eed998b8a79b5cac441527e97b3e1/unnamed--1--5.png" alt="" class="kg-image" width="892" height="297" loading="lazy">
+
+	</figure>
+	<p><code>bindings</code> is a <a href="https://en.wikipedia.org/wiki/Trie">longest prefix match (LPM) trie</a> which stores a mapping from (<code>protocol</code>, <code>port</code>, <code>prefix</code>) to (<code>ID</code>, <code>prefix length</code>). The ID is used as a key to the sockets map which contains pointers to kernel socket structures. IDs are allocated in a way that makes them suitable as an array index, which allows using the simpler BPF sockmap (an array) instead of a socket hash table. The prefix length is duplicated in the value to work around shortcomings in the BPF API.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FJXwiooeaLRbRriCrETia/941a8987d9d36bcdeb5d414696ba5928/unnamed--3-.png" alt="" class="kg-image" width="1119" height="662" loading="lazy">
+
+	</figure>
+	<h2>Encoding the precedence of bindings</h2>
+	<p>As discussed, bindings have a precedence associated with them. To repeat the earlier example:</p>
+	<pre class="language-bash"><code class="language-bash">1: tcp 127.0.0.1/32 80 -&gt; "foo"
+2: tcp 127.0.0.0/24 80 -&gt; "bar"</code></pre>
+	<p>The first binding should be matched before the second one. We need to encode this in the BPF somehow. One idea is to generate some code that executes the bindings in order of specificity, a technique we’ve used to great effect in <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">l4drop</a>:</p>
+	<pre class="language-bash"><code class="language-bash">1: if (mask(ip, 32) == 127.0.0.1) return "foo"
 2: if (mask(ip, 24) == 127.0.0.0) return "bar"
-...
-</code></pre>
-	<!--kg-card-end: markdown-->
+...</code></pre>
 	<p>This has the downside that the program gets longer the more bindings are added, which slows down execution. It's also difficult to introspect and debug such long programs. Instead, we use a specialised BPF longest prefix match (LPM) map to do the hard work. This allows inspecting the contents from user space to figure out which bindings are active, which is very difficult if we had compiled bindings into BPF. The LPM map uses a trie behind the scenes, so <a href="https://en.wikipedia.org/wiki/Trie#Searching">lookup has complexity proportional to the length of the key</a> instead of linear complexity for the “naive” solution.</p>
-	<p>However, using a map requires a trick for encoding the precedence of bindings into a key that we can look up. Here is a simplified version of this encoding, which ignores IPv6 and uses labels instead of IDs. To insert the binding <code>tcp 127.0.0.0/24 80</code> into a trie we first convert the IP address into a number.</p><!--kg-card-begin: markdown-->
-	<pre><code>127.0.0.0    = 0x7f 00 00 00
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Since we're only interested in the first 24 bits of the address we, can write the whole prefix as</p><!--kg-card-begin: markdown-->
-	<pre><code>127.0.0.0/24 = 0x7f 00 00 ??
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>where “?” means that the value is not specified. We choose the number 0x01 to represent TCP and prepend it and the port number (80 decimal is 0x50 hex) to create the full key:</p><!--kg-card-begin: markdown-->
-	<pre><code>tcp 127.0.0.0/24 80 = 0x01 50 7f 00 00 ??
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Converting <code>tcp 127.0.0.1/32 80</code> happens in exactly the same way. Once the converted values are inserted into the trie, the LPM trie conceptually contains the following keys and values.</p><!--kg-card-begin: markdown-->
-	<pre><code>LPM trie:
+	<p>However, using a map requires a trick for encoding the precedence of bindings into a key that we can look up. Here is a simplified version of this encoding, which ignores IPv6 and uses labels instead of IDs. To insert the binding <code>tcp 127.0.0.0/24 80</code> into a trie we first convert the IP address into a number.</p>
+	<pre class="language-bash"><code class="language-bash">127.0.0.0    = 0x7f 00 00 00</code></pre>
+	<p>Since we're only interested in the first 24 bits of the address we, can write the whole prefix as</p>
+	<pre class="language-bash"><code class="language-bash">127.0.0.0/24 = 0x7f 00 00 ??</code></pre>
+	<p>where “?” means that the value is not specified. We choose the number 0x01 to represent TCP and prepend it and the port number (80 decimal is 0x50 hex) to create the full key:</p>
+	<pre class="language-bash"><code class="language-bash">tcp 127.0.0.0/24 80 = 0x01 50 7f 00 00 ??</code></pre>
+	<p>Converting <code>tcp 127.0.0.1/32 80</code> happens in exactly the same way. Once the converted values are inserted into the trie, the LPM trie conceptually contains the following keys and values.</p>
+	<pre class="language-bash"><code class="language-bash">LPM trie:
         0x01 50 7f 00 00 ?? = "bar"
-        0x01 50 7f 00 00 01 = "foo"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>To find the binding for a TCP packet destined for 127.0.0.1:80, we again encode a key and perform a lookup.</p><!--kg-card-begin: markdown-->
-	<pre><code>input:  0x01 50 7f 00 00 01   TCP packet to 127.0.0.1:80
+        0x01 50 7f 00 00 01 = "foo"</code></pre>
+	<p>To find the binding for a TCP packet destined for 127.0.0.1:80, we again encode a key and perform a lookup.</p>
+	<pre class="language-bash"><code class="language-bash">input:  0x01 50 7f 00 00 01   TCP packet to 127.0.0.1:80
 ---------------------------
 LPM trie:
         0x01 50 7f 00 00 ?? = "bar"
@@ -134,11 +150,9 @@ LPM trie:
 ---------------------------
 result: "foo"
 
-y = byte matches
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The trie returns “foo” since its key shares the longest prefix with the input. Note that we stop comparing keys once we reach unspecified “?” bytes, but conceptually “bar” is still a valid result. The distinction becomes clear when looking up the binding for a TCP packet to 127.0.0.255:80.</p><!--kg-card-begin: markdown-->
-	<pre><code>input:  0x01 50 7f 00 00 ff   TCP packet to 127.0.0.255:80
+y = byte matches</code></pre>
+	<p>The trie returns “foo” since its key shares the longest prefix with the input. Note that we stop comparing keys once we reach unspecified “?” bytes, but conceptually “bar” is still a valid result. The distinction becomes clear when looking up the binding for a TCP packet to 127.0.0.255:80.</p>
+	<pre class="language-bash"><code class="language-bash">input:  0x01 50 7f 00 00 ff   TCP packet to 127.0.0.255:80
 ---------------------------
 LPM trie:
         0x01 50 7f 00 00 ?? = "bar"
@@ -148,105 +162,77 @@ LPM trie:
 ---------------------------
 result: "bar"
 
-n = byte doesn't match
-</code></pre>
-	<!--kg-card-end: markdown-->
+n = byte doesn't match</code></pre>
 	<p>In this case "foo" is discarded since the last byte doesn't match the input. However, "bar" is returned since its last byte is unspecified and therefore considered to be a valid match.</p>
-	<h2 id="observability-with-minimal-privileges">Observability with minimal privileges</h2>
-	<p>Linux has the powerful ss tool (part of iproute2) available to inspect socket state:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ss -tl src 127.0.0.1
+	<h2>Observability with minimal privileges</h2>
+	<p>Linux has the powerful ss tool (part of iproute2) available to inspect socket state:</p>
+	<pre class="language-bash"><code class="language-bash">$ ss -tl src 127.0.0.1
 State      Recv-Q      Send-Q           Local Address:Port           Peer Address:Port
-LISTEN     0           128                  127.0.0.1:ipp                 0.0.0.0:*
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>With tubular in the picture this output is not accurate anymore. <code>tubectl</code> bindings makes up for this shortcoming:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo tubectl bindings tcp 127.0.0.1
+LISTEN     0           128                  127.0.0.1:ipp                 0.0.0.0:*</code></pre>
+	<p>With tubular in the picture this output is not accurate anymore. <code>tubectl</code> bindings makes up for this shortcoming:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo tubectl bindings tcp 127.0.0.1
 Bindings:
  protocol       prefix port label
-      tcp 127.0.0.1/32   80   foo
-</code></pre>
-	<!--kg-card-end: markdown-->
+      tcp 127.0.0.1/32   80   foo</code></pre>
 	<p>Running this command requires super-user privileges, despite in theory being safe for any user to run. While this is acceptable for casual inspection by a human operator, it's a dealbreaker for observability via pull-based monitoring systems like Prometheus. The usual approach is to expose metrics via an HTTP server, which would have to run with elevated privileges and be accessible to the Prometheus server somehow. Instead, BPF gives us the tools to enable read-only access to tubular state with minimal privileges.</p>
-	<p>The key is to carefully set file ownership and mode for state in /sys/fs/bpf. Creating and opening files in /sys/fs/bpf uses<a href="https://www.kernel.org/doc/html/latest/userspace-api/ebpf/syscall.html#bpf-subcommand-reference"> BPF_OBJ_PIN and BPF_OBJ_GET</a>. Calling BPF_OBJ_GET with BPF_F_RDONLY is roughly equivalent to open(O_RDONLY) and allows accessing state in a read-only fashion, provided the file permissions are correct. tubular gives the owner full access but restricts read-only access to the group:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo ls -l /sys/fs/bpf/4026532024_dispatcher | head -n 3
+	<p>The key is to carefully set file ownership and mode for state in /sys/fs/bpf. Creating and opening files in /sys/fs/bpf uses <a href="https://www.kernel.org/doc/html/latest/userspace-api/ebpf/syscall.html#bpf-subcommand-reference">BPF_OBJ_PIN and BPF_OBJ_GET</a>. Calling BPF_OBJ_GET with BPF_F_RDONLY is roughly equivalent to open(O_RDONLY) and allows accessing state in a read-only fashion, provided the file permissions are correct. tubular gives the owner full access but restricts read-only access to the group:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo ls -l /sys/fs/bpf/4026532024_dispatcher | head -n 3
 total 0
 -rw-r----- 1 root root 0 Feb  2 13:19 bindings
--rw-r----- 1 root root 0 Feb  2 13:19 destination_metrics
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>It's easy to choose which user and group should own state when loading tubular:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo -u root -g tubular tubectl load
+-rw-r----- 1 root root 0 Feb  2 13:19 destination_metrics</code></pre>
+	<p>It's easy to choose which user and group should own state when loading tubular:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo -u root -g tubular tubectl load
 created dispatcher in /sys/fs/bpf/4026532024_dispatcher
 loaded dispatcher into /proc/self/ns/net
 $ sudo ls -l /sys/fs/bpf/4026532024_dispatcher | head -n 3
 total 0
 -rw-r----- 1 root tubular 0 Feb  2 13:42 bindings
--rw-r----- 1 root tubular 0 Feb  2 13:42 destination_metrics
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>There is one more obstacle,<a href="https://github.com/systemd/systemd/blob/b049b48c4b6e60c3cbec9d2884f90fd4e7013219/src/shared/mount-setup.c#L111-L112"> systemd mounts /sys/fs/bpf</a> in a way that makes it inaccessible to anyone but root. Adding the executable bit to the directory fixes this.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo chmod -v o+x /sys/fs/bpf
-mode of '/sys/fs/bpf' changed from 0700 (rwx------) to 0701 (rwx-----x)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Finally, we can export metrics without privileges:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo -u nobody -g tubular tubectl metrics 127.0.0.1 8080
+-rw-r----- 1 root tubular 0 Feb  2 13:42 destination_metrics</code></pre>
+	<p>There is one more obstacle, <a href="https://github.com/systemd/systemd/blob/b049b48c4b6e60c3cbec9d2884f90fd4e7013219/src/shared/mount-setup.c#L111-L112">systemd mounts /sys/fs/bpf</a> in a way that makes it inaccessible to anyone but root. Adding the executable bit to the directory fixes this.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo chmod -v o+x /sys/fs/bpf
+mode of '/sys/fs/bpf' changed from 0700 (rwx------) to 0701 (rwx-----x)</code></pre>
+	<p>Finally, we can export metrics without privileges:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo -u nobody -g tubular tubectl metrics 127.0.0.1 8080
 Listening on 127.0.0.1:8080
-^C
-</code></pre>
-	<!--kg-card-end: markdown-->
+^C</code></pre>
 	<p>There is a caveat, unfortunately: truly unprivileged access requires unprivileged BPF to be enabled. Many distros have taken to disabling it via the unprivileged_bpf_disabled sysctl, in which case scraping metrics does require CAP_BPF.</p>
-	<h2 id="safe-releases">Safe releases</h2>
-	<p>tubular is distributed as a single binary, but really consists of two pieces of code with widely differing lifetimes. The BPF program is loaded into the kernel once and then may be active for weeks or months, until it is explicitly replaced. In fact, a reference to the program (and link, see below) is persisted into /sys/fs/bpf:</p><!--kg-card-begin: markdown-->
-	<pre><code>/sys/fs/bpf/4026532024_dispatcher
+	<h2>Safe releases</h2>
+	<p>tubular is distributed as a single binary, but really consists of two pieces of code with widely differing lifetimes. The BPF program is loaded into the kernel once and then may be active for weeks or months, until it is explicitly replaced. In fact, a reference to the program (and link, see below) is persisted into /sys/fs/bpf:</p>
+	<pre class="language-bash"><code class="language-bash">/sys/fs/bpf/4026532024_dispatcher
 ├── link
 ├── program
-└── ...
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The user space code is executed for seconds at a time and is replaced whenever the binary on disk changes. This means that user space has to be able to deal with an "old" BPF program in the kernel somehow. The simplest way to achieve this is to compare what is loaded into the kernel with the BPF shipped as part of tubectl. If the two don't match we return an error:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo tubectl bind foo tcp 127.0.0.1 80
-Error: bind: can't open dispatcher: loaded program #158 has differing tag: "938c70b5a8956ff2" doesn't match "e007bfbbf37171f0"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><code>tag</code> is the truncated hash of the instructions making up a BPF program, which the kernel makes available for every loaded program:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftool prog list id 158
+└── ...</code></pre>
+	<p>The user space code is executed for seconds at a time and is replaced whenever the binary on disk changes. This means that user space has to be able to deal with an "old" BPF program in the kernel somehow. The simplest way to achieve this is to compare what is loaded into the kernel with the BPF shipped as part of tubectl. If the two don't match we return an error:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo tubectl bind foo tcp 127.0.0.1 80
+Error: bind: can't open dispatcher: loaded program #158 has differing tag: "938c70b5a8956ff2" doesn't match "e007bfbbf37171f0"</code></pre>
+	<p><code>tag</code> is the truncated hash of the instructions making up a BPF program, which the kernel makes available for every loaded program:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftool prog list id 158
 158: sk_lookup  name dispatcher  tag 938c70b5a8956ff2
-...
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>By comparing the tag tubular asserts that it is dealing with a supported version of the BPF program. Of course, just returning an error isn't enough. There needs to be a way to update the kernel program so that it's once again safe to make changes. This is where the persisted link in /sys/fs/bpf comes into play. <code>bpf_links</code> are used to attach programs to various BPF hooks. "Enabling" a BPF program is a two-step process: first, load the BPF program, next attach it to a hook using a bpf_link. Afterwards the program will execute the next time the hook is executed. By updating the link we can change the program on the fly, in an atomic manner.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo tubectl upgrade
+...</code></pre>
+	<p>By comparing the tag tubular asserts that it is dealing with a supported version of the BPF program. Of course, just returning an error isn't enough. There needs to be a way to update the kernel program so that it's once again safe to make changes. This is where the persisted link in /sys/fs/bpf comes into play. <code>bpf_links</code> are used to attach programs to various BPF hooks. "Enabling" a BPF program is a two-step process: first, load the BPF program, next attach it to a hook using a bpf_link. Afterwards the program will execute the next time the hook is executed. By updating the link we can change the program on the fly, in an atomic manner.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo tubectl upgrade
 Upgraded dispatcher to 2022.1.0-dev, program ID #159
 $ sudo bpftool prog list id 159
 159: sk_lookup  name dispatcher  tag e007bfbbf37171f0
 …
 $ sudo tubectl bind foo tcp 127.0.0.1 80
-bound foo#tcp:[127.0.0.1/32]:80
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Behind the scenes the upgrade procedure is slightly more complicated, since we have to update the pinned program reference in addition to the link. We pin the new program into /sys/fs/bpf:</p><!--kg-card-begin: markdown-->
-	<pre><code>/sys/fs/bpf/4026532024_dispatcher
+bound foo#tcp:[127.0.0.1/32]:80</code></pre>
+	<p>Behind the scenes the upgrade procedure is slightly more complicated, since we have to update the pinned program reference in addition to the link. We pin the new program into /sys/fs/bpf:</p>
+	<pre class="language-bash"><code class="language-bash">/sys/fs/bpf/4026532024_dispatcher
 ├── link
 ├── program
 ├── program-upgrade
-└── ...
-</code></pre>
-	<!--kg-card-end: markdown-->
+└── ...</code></pre>
 	<p>Once the link is updated we <a href="https://www.man7.org/linux/man-pages/man2/rename.2.html">atomically rename</a> program-upgrade to replace program. In the future we may be able to <a href="https://lkml.kernel.org/netdev/20211028094724.59043-5-lmb@cloudflare.com/t">use RENAME_EXCHANGE</a> to make upgrades even safer.</p>
-	<h2 id="preventing-state-corruption">Preventing state corruption</h2>
-	<p>So far we’ve completely neglected the fact that multiple invocations of <code>tubectl</code> could modify the state in /sys/fs/bpf at the same time. It’s very hard to reason about what would happen in this case, so in general it’s best to prevent this from ever occurring. A common solution to this is <a href="https://gavv.github.io/articles/file-locks/#differing-features">advisory file locks</a>. Unfortunately it seems like BPF maps don't support locking.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo flock /sys/fs/bpf/4026532024_dispatcher/bindings echo works!
-flock: cannot open lock file /sys/fs/bpf/4026532024_dispatcher/bindings: Input/output error
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>This led to a bit of head scratching on our part. Luckily it is possible to flock the directory instead of individual maps:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo flock --exclusive /sys/fs/bpf/foo echo works!
-works!
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<h2>Preventing state corruption</h2>
+	<p>So far we’ve completely neglected the fact that multiple invocations of <code>tubectl</code> could modify the state in /sys/fs/bpf at the same time. It’s very hard to reason about what would happen in this case, so in general it’s best to prevent this from ever occurring. A common solution to this is <a href="https://gavv.github.io/articles/file-locks/#differing-features">advisory file locks</a>. Unfortunately it seems like BPF maps don't support locking.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo flock /sys/fs/bpf/4026532024_dispatcher/bindings echo works!
+flock: cannot open lock file /sys/fs/bpf/4026532024_dispatcher/bindings: Input/output error</code></pre>
+	<p>This led to a bit of head scratching on our part. Luckily it is possible to flock the directory instead of individual maps:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo flock --exclusive /sys/fs/bpf/foo echo works!
+works!</code></pre>
 	<p>Each <code>tubectl</code> invocation likewise invokes <a href="https://www.man7.org/linux/man-pages//man2/flock.2.html"><code>flock()</code></a>, thereby guaranteeing that only ever a single process is making changes.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>tubular is in production at Cloudflare today and has simplified the deployment of <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> and our <a href="https://www.cloudflare.com/dns">authoritative DNS</a>. It allowed us to leave behind limitations of the BSD socket API. However, its most powerful feature is that <a href="https://research.cloudflare.com/publications/Fayed2021">the addresses a service is available on can be changed on the fly</a>. In fact, we have built tooling that automates this process across our global network. Need to listen on another million IPs on thousands of machines? No problem, it’s just an HTTP POST away.</p>
-	<p><em>Interested in working on tubular and our L4 load balancer </em><a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><em>unimog</em></a><em>? We are </em><a href="https://boards.greenhouse.io/cloudflare/jobs/3232234?gh_jid=3232234"><em>hiring in our European offices</em></a><em>.</em></p>
+	<p><i>Interested in working on tubular and our L4 load balancer</i> <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><i>unimog</i></a><i>? We are</i> <a href="https://boards.greenhouse.io/cloudflare/jobs/3232234?gh_jid=3232234"><i>hiring in our European offices</i></a><i>.</i></p>
 </div>

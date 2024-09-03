@@ -1,23 +1,31 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/february-2024-workersai-catalog-update-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/february-2024-workersai-catalog-update-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/february-2024-workersai-catalog-update-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/february-2024-workersai-catalog-update-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image2-1.png" class="kg-image" alt="Adding new LLMs, text classification and code generation models to the Workers AI catalog" loading="lazy" width="1800" height="1013"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/february-2024-workersai-catalog-update">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/february-2024-workersai-catalog-update">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/february-2024-workersai-catalog-update">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/february-2024-workersai-catalog-update">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bUPtXgJU5a797f2LMkI7k/ed58710b454d2520af088a857b38b246/image2-1.png" alt="Adding new LLMs, text classification and code generation models to the Workers AI catalog" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Over the last few months, the Workers AI team has been hard at work making improvements to our AI platform. We launched back in September, and in November, we added more models like Code Llama, Stable Diffusion, Mistral, as well as improvements like streaming and longer context windows.</p>
 	<p>Today, we’re excited to announce the release of eight new models.</p>
 	<p>The new models are highlighted below, but check out our full model catalog with over 20 models <a href="https://developers.cloudflare.com/workers-ai">in our developer docs.</a></p>
-	<p><strong>Text generation</strong><br>@hf/thebloke/llama-2-13b-chat-awq<br>@hf/thebloke/zephyr-7b-beta-awq<br>@hf/thebloke/mistral-7b-instruct-v0.1-awq<br>@hf/thebloke/openhermes-2.5-mistral-7b-awq<br>@hf/thebloke/neural-chat-7b-v3-1-awq<br>@hf/thebloke/llamaguard-7b-awq</p>
-	<p><strong>Code generation</strong><br>@hf/thebloke/deepseek-coder-6.7b-base-awq<br>@hf/thebloke/deepseek-coder-6.7b-instruct-awq</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/02/image1.png" class="kg-image" alt="" loading="lazy" width="1999" height="988"></figure>
-	<h3 id="bringing-you-the-best-of-open-source">Bringing you the best of open source</h3>
+	<p><b>Text generation</b>@hf/thebloke/llama-2-13b-chat-awq@hf/thebloke/zephyr-7b-beta-awq@hf/thebloke/mistral-7b-instruct-v0.1-awq@hf/thebloke/openhermes-2.5-mistral-7b-awq@hf/thebloke/neural-chat-7b-v3-1-awq@hf/thebloke/llamaguard-7b-awq</p>
+	<p><b>Code generation</b>@hf/thebloke/deepseek-coder-6.7b-base-awq@hf/thebloke/deepseek-coder-6.7b-instruct-awq</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/693UrRZZSZJo8omR5ex2Vk/db9d3332098c17aca74bcdef00af55fd/image1.png" alt="" class="kg-image" width="1999" height="988" loading="lazy">
+
+	</figure>
+	<h3>Bringing you the best of open source</h3>
 	<p>Our mission is to support a wide array of open source models and tasks. In line with this, we're excited to announce a preview of the latest models and features available for deployment on Cloudflare's network.</p>
-	<p>One of the standout models is <code>deep-seek-coder-6.7b</code>, which notably scores<a href="https://github.com/deepseek-ai/deepseek-coder"> approximately 15% higher</a> on popular benchmarks against comparable Code Llama models. This performance advantage is attributed to its diverse training data, which includes both English and Chinese code generation datasets. In addition, the <code>openhermes-2.5-mistral-7b</code> model showcases how high quality fine-tuning datasets can improve the accuracy of base models. This Mistral 7b fine-tune outperforms the base model by <a href="https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B#benchmark-results">approximately 10% on many LLM benchmarks</a>.</p>
+	<p>One of the standout models is <code>deep-seek-coder-6.7b</code>, which notably scores <a href="https://github.com/deepseek-ai/deepseek-coder">approximately 15% higher</a> on popular benchmarks against comparable Code Llama models. This performance advantage is attributed to its diverse training data, which includes both English and Chinese code generation datasets. In addition, the <code>openhermes-2.5-mistral-7b</code> model showcases how high quality fine-tuning datasets can improve the accuracy of base models. This Mistral 7b fine-tune outperforms the base model by <a href="https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B#benchmark-results">approximately 10% on many LLM benchmarks</a>.</p>
 	<p>We're also introducing innovative models that incorporate Activation-aware Weight Quantization (AWQ), such as the <code>llama-2-13b-awq</code>. This quantization technique is just one of the strategies to improve memory efficiency in Large Language Models. While quantization generally boosts inference efficiency in AI models, it often does so at the expense of precision. AWQ strikes a balance to mitigate this tradeoff.</p>
 	<p>The pace of progress in AI can be overwhelming, but Cloudflare's Workers AI simplifies getting started with the latest models. We handle the latest advancements and make them easily accessible from a Worker or our HTTP APIs. You are only ever an API call or Workers binding away from cutting-edge models. Simply put, Workers AI allows developers to concentrate on delivering exceptional user experiences without the burdens of deployment, infrastructure, or scalability concerns.</p>
-	<h3 id="using-ai-to-safeguard-your-applications">Using AI to safeguard your applications</h3>
+	<h3>Using AI to safeguard your applications</h3>
 	<p>A newer use case we support with this model catalog update is the ability to classify and check prompts and responses with <code>llamaguard-7b-awq</code>. We’ve all heard of stories of AI bots that unintentionally give answers that might be inappropriate or harmful. This <a href="https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations">new LlamaGuard mode</a>l allows developers to detect and categorize when a prompt or a response is potentially unsafe, allowing them to control the inputs and outputs of their applications with developer-defined categories.</p>
-	<p>Here’s an example of an application that takes a user input and compares that to an example set of defined unsafe categories to determine if the input is safe or not. You can customize the content categories depending on your use case. <em>The below example categories are provided for informational purposes only, and Cloudflare does not make any guarantees regarding the performance of Llama Guard or any outcomes or results.</em></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai';
+	<p>Here’s an example of an application that takes a user input and compares that to an example set of defined unsafe categories to determine if the input is safe or not. You can customize the content categories depending on your use case. <i>The below example categories are provided for informational purposes only, and Cloudflare does not make any guarantees regarding the performance of Llama Guard or any outcomes or results.</i></p>
+	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai';
 
 export default {
 	async fetch(request, env) {
@@ -75,13 +83,13 @@ Should
 		// Assemble the prompt
 		const prompt = `Task: Check if there is unsafe content in 'User' messages in conversations according to our safety policy with the below categories.
 
-		&lt;BEGIN UNSAFE CONTENT CATEGORIES&gt;
+		<begin unsafe="" content="" categories="">
 		${unsafeCategories}
-		&lt;END UNSAFE CONTENT CATEGORIES&gt;
+		<end unsafe="" content="" categories="">
 
-		&lt;BEGIN CONVERSATION&gt;
+		<begin conversation="">
 		User: ${payload.userContent}
-		&lt;END CONVERSATION&gt;
+		<end conversation="">
 	`;
 		const ai = new Ai(env.AI);
 		const response = await ai.run('@hf/thebloke/llamaguard-7b-awq', {
@@ -89,10 +97,8 @@ Should
 		});
 		return Response.json(response);
 	},
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="how-do-i-get-started">How do I get started?</h3>
+};</end></begin></end></begin></code></pre>
+	<h3>How do I get started?</h3>
 	<p>Try out our new models within the AI section of the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai">Cloudflare dashboard</a> or take a look at our <a href="https://developers.cloudflare.com/workers-ai/models">Developer Docs</a> to get started. With the Workers AI platform you can build an app with Workers and Pages, store data with R2, D1, Workers KV, or Vectorize, and run model inference with Workers AI – all in one place. Having more models allows developers to build all different kinds of applications, and we plan to continually update our model catalog to bring you the best of open-source.</p>
 	<p>We’re excited to see what you build! If you’re looking for inspiration, take a look at our <a href="https://workers.cloudflare.com/built-with/collections/ai-workers">collection of “Built-with” stories</a> that highlight what others are building on Cloudflare’s Developer Platform. Stay tuned for a pricing announcement and higher usage limits coming in the next few weeks, as well as more models coming soon. <a href="https://discord.cloudflare.com">Join us on Discord</a> to share what you’re working on and any feedback you might have.</p>
 </div>

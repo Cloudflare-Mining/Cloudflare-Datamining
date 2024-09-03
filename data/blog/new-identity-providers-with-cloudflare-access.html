@@ -1,47 +1,110 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1X5V2Fad9M4ZrIJU0Eluil/89b41cdd2895dcbee23361c0f605a86f/new-identity-providers-with-cloudflare-access.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>We use Cloudflare Access to secure our own internal tools instead of a VPN. As someone that does a lot of work on the train, I can attest this is awesome (though I might be biased). You can see it in action below. Instead of having to connect to a VPN to reach our internal jira, we just login with our Google account and we are good to go:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/CFAccess-JIRAv3.gif" alt="CFAccess-JIRAv3" loading="lazy"><br>
-		Before today, you could setup Access if you used GSuite, Okta or Azure AD to manage your employee accounts. Today we would like to announce support for two more Identity Providers with Cloudflare Access: <a href="https://www.centrify.com">Centrify</a> and <a href="https://www.onelogin.com">OneLogin</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66EeaOGaA29Ge4ilWvc8kg/42b7fd7f706c27ee169c42957a91ffbf/CFAccess-JIRAv3.gif" alt="CFAccess-JIRAv3" class="kg-image" width="969" height="719" loading="lazy">
+
+	</figure>
+	<p>Before today, you could setup Access if you used GSuite, Okta or Azure AD to manage your employee accounts. Today we would like to announce support for two more Identity Providers with Cloudflare Access: <a href="https://www.centrify.com">Centrify</a> and <a href="https://www.onelogin.com">OneLogin</a>.</p>
 	<p>We launched Cloudflare Access earlier this year and have been overwhelmed by the response from our customers and community. Customers tell us they love the simplicity of setting up Access to secure applications and integrate with their existing identity provider solution. Access helps customers implement a holistic solution for both corporate and remote employees without having to use a VPN.</p>
 	<p>If you are using Centrify or OneLogin as your identity provider you can now easily integrate them with Cloudflare Access and have your team members login with their accounts to securely reach your internal tools.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/CFAccess-ssov3.gif" alt="CFAccess-ssov3" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ja7n6yKRWlNqZg00CjWSN/f1fdb37a7966f74c0df42cdb31b91d5f/CFAccess-ssov3.gif" alt="CFAccess-ssov3" class="kg-image" width="969" height="719" loading="lazy">
+
+	</figure>
 	<p>Oh and one last thing, We have a new generic connector which allows you to integrate any OIDC based identity provider with Cloudflare Access. <a href="https://en.wikipedia.org/wiki/OpenID_Connect">OpenID Connect</a> (OIDC) is supported by many identity providers (some popular OIDC based Identity Providers are Ping Identity and Forgerock)</p>
 	<p>If you’re eager to get started, steps are below for configuring OneLogin, Centrify and a custom OIDC provider. Each take about 3-5 minutes. Hope you enjoy!</p>
-	<h3 id="stepsforsettingupcentrify">Steps for setting up Centrify</h3>
-	<p>Login to your Centrify admin portal and click on apps.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/cfy1.png" alt="cfy1" loading="lazy"><br>
-		Click on Add Web Apps and navigate to custom tab. Scroll down and click Add on OpenID Connect.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/cfy2.png" alt="cfy2" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/cfy3.png" alt="cfy3" loading="lazy"><br>
-		Click Yes on the Application modal to create an OpenID Connect app.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/cfy4.png" alt="cfy4" loading="lazy"><br>
-		Enter an Application ID and click save.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/cfy5.png" alt="cfy5" loading="lazy"><br>
-		Navigate to the trust tab and enter a strong application secret. Under the Service Provider configuration enter your application's <code>authentication domain</code> as the Resource application URL. Click Add on Authorized redirect URIs and put your <code>authentication domain/cdn-cgi/access/callback</code>. Click Save.
-	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/cfy6.png" alt="cfy6" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/cfy7.png" alt="cfy7" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/cfy8-1.png" alt="cfy8-1" loading="lazy"><br>
-		Now copy your Client ID, Client Secret, OpenID Connect Issuer URL without the forward slash and Application ID from Settings tab in the Centrify dashboard and then paste them into the Cloudflare dashboard.
-	</p>
-	<h3 id="stepsforsettinguponelogin">Steps for setting up OneLogin</h3>
-	<p>Login to your Onelogin admin portal and click on custom connectors.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/ol1.png" alt="ol1" loading="lazy"><br>
-		Click on New Connector<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/ol2.png" alt="ol2" loading="lazy"><br>
-		Name the connector and select OpenID Connect as the sign on method.<br>
-		In the redirect URI field, put your authentication domain/cdn-cgi/access/callback. Click Save.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/ol3.png" alt="ol3" loading="lazy"><br>
-		Click on More Actions and select Add App to Connector.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/ol4.png" alt="ol4" loading="lazy"><br>
-		Name the app and click save.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/ol5.png" alt="ol5" loading="lazy"><br>
-		Navigate to the SSO tab and click on show client secret.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/ol6-1.png" alt="ol6-1" loading="lazy"><br>
-		Now copy your Client ID and Client Secret from the Onelogin dashboard and then paste them into the Cloudflare dashboard.
-	</p>
-	<h3 id="settingupacustomidentityproviderusingoidc">Setting up a custom identity provider using OIDC</h3>
+	<h3>Steps for setting up Centrify</h3>
+	<p>Login to your Centrify admin portal and click on apps.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Mtdp3uJp4F4CpKZ6XJkBd/3de74c125e95eebff498efeaa0a64d4d/cfy1.png" alt="cfy1" class="kg-image" width="3324" height="1356" loading="lazy">
+
+	</figure>
+	<p>Click on Add Web Apps and navigate to custom tab. Scroll down and click Add on OpenID Connect.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72Mk8PuLt20Wc3YXpZyIR/53d15c7a04d4cac8228ee4d293f820b8/cfy2.png" alt="cfy2" class="kg-image" width="3302" height="366" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JZR2XBOpVN44zeSV8jXR5/812d8c43cdee10ec54c93ffbb6a50ff9/cfy3.png" alt="cfy3" class="kg-image" width="1660" height="1254" loading="lazy">
+
+	</figure>
+	<p>Click Yes on the Application modal to create an OpenID Connect app.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HbONg5UwY3Kiana5ZK6ZL/6a1c2552cc24edd79e436c82630b5eec/cfy4.png" alt="cfy4" class="kg-image" width="920" height="910" loading="lazy">
+
+	</figure>
+	<p>Enter an Application ID and click save.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lneON5LpL3GtMgRXvlKJB/9c990f9a6aebac75844804e0355ae19c/cfy5.png" alt="cfy5" class="kg-image" width="2052" height="1166" loading="lazy">
+
+	</figure>
+	<p>Navigate to the trust tab and enter a strong application secret. Under the Service Provider configuration enter your application's <code>authentication domain</code> as the Resource application URL. Click Add on Authorized redirect URIs and put your <code>authentication domain/cdn-cgi/access/callback</code>. Click Save.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37vnOWfySw7xPu41qHjcvf/3626bbc5ce9a237045d7fc826593aee3/cfy6.png" alt="cfy6" class="kg-image" width="1796" height="1424" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30bmxJ1A8zyCVuwy0VDMMi/54fd19d4b4533eb784bb972aca76d2ba/cfy7.png" alt="cfy7" class="kg-image" width="1042" height="390" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SDGGakLTEvDGkpaAIvJ3W/6e6906a086113855800b4dd3c694b82d/cfy8-1.png" alt="cfy8-1" class="kg-image" width="2084" height="1400" loading="lazy">
+
+	</figure>
+	<p>Now copy your Client ID, Client Secret, OpenID Connect Issuer URL without the forward slash and Application ID from Settings tab in the Centrify dashboard and then paste them into the Cloudflare dashboard.</p>
+	<h3>Steps for setting up OneLogin</h3>
+	<p>Login to your Onelogin admin portal and click on custom connectors.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CMNwom6XvxoXat3eRnqlY/d4d70fa637ac5f9bbe3bd57c717226d4/ol1.png" alt="ol1" class="kg-image" width="3328" height="1216" loading="lazy">
+
+	</figure>
+	<p>Click on New Connector</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xeqClwLeKJKo0OI021YOz/7a2ddbe01c94b7142cc14e6e81956a54/ol2.png" alt="ol2" class="kg-image" width="3292" height="862" loading="lazy">
+
+	</figure>
+	<p>Name the connector and select OpenID Connect as the sign on method.In the redirect URI field, put your authentication domain/cdn-cgi/access/callback. Click Save.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5TuzZH8UfZmR12BB9NiGxP/44984bf51893428e37ca5a4e5e663c49/ol3.png" alt="ol3" class="kg-image" width="3310" height="1354" loading="lazy">
+
+	</figure>
+	<p>Click on More Actions and select Add App to Connector.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XV8QlsxBvnZ22b2lVclSy/880b22c01e33f226c1644372571cc58c/ol4.png" alt="ol4" class="kg-image" width="3312" height="1382" loading="lazy">
+
+	</figure>
+	<p>Name the app and click save.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OC4RXHi0mhOjhurPEWxAc/d9f40de9811295a6dcaa3a512cd91e56/ol5.png" alt="ol5" class="kg-image" width="3320" height="1208" loading="lazy">
+
+	</figure>
+	<p>Navigate to the SSO tab and click on show client secret.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JxZ3UnckodE00g1AnWEKp/1fbe4be00f1d76bedebff3e696d4ee9b/ol6-1.png" alt="ol6-1" class="kg-image" width="3320" height="1446" loading="lazy">
+
+	</figure>
+	<p>Now copy your Client ID and Client Secret from the Onelogin dashboard and then paste them into the Cloudflare dashboard.</p>
+	<h3>Setting up a custom identity provider using OIDC</h3>
 	<p>The following are the information you would need from your identity provider into the Cloudflare Dashboard.</p>
 	<ul>
 		<li>
@@ -60,5 +123,4 @@
 	<p>All the above endpoint values can be obtained from your IdP's OIDC discovery endpoint which is also called as the well-known URL. For example if you use Ping as your identity the URL would be <code>&lt;hostname&gt;/.well-known/openid-configuration</code></p>
 	<p>Give your IdP connector a name of your choice by entering it in the Name field.</p>
 	<p>In your IdP's Authorized redirect URI field, put your <code>authentication domain/cdn-cgi/access/callback</code> URL.</p>
-	<!--kg-card-end: markdown-->
 </div>

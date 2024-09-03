@@ -1,26 +1,51 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/memcrashed-major-amplification-attacks-from-port-11211">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/memcrashed-major-amplification-attacks-from-port-11211">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/memcrashed-major-amplification-attacks-from-port-11211">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/memcrashed-major-amplification-attacks-from-port-11211">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EjZkyPaSccN7e2OwJkhT9/28fb73dce44a97391e76878f1ed8484c/memcrashed-major-amplification-attacks-from-port-11211.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Over last couple of days we've seen a big increase in an obscure amplification attack vector - using the <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt">memcached protocol</a>, coming from UDP port 11211.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/3829936641_f112ed1665_b.jpg" alt="3829936641_f112ed1665_b" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/trawin/3829936641">image</a> by <a href="https://www.flickr.com/photos/trawin">David Trawin</a></small><br>
-		In the past, we have talked a lot about amplification attacks happening on the internet. Our most recent two blog posts on this subject were:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Mh7uCbRBwKf3LjeioLBFy/8fe4b877ffc9cc5fda0bfb736d5a12c3/3829936641_f112ed1665_b.jpg" alt="3829936641_f112ed1665_b" class="kg-image" width="1024" height="680" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/trawin/3829936641">image</a> by <a href="https://www.flickr.com/photos/trawin">David Trawin</a>In the past, we have talked a lot about amplification attacks happening on the internet. Our most recent two blog posts on this subject were:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP amplifications crossing 100Gbps</a>. Funnily enough, since then we were a target of an 196Gbps SSDP attack.</li>
-		<li><a href="https://blog.cloudflare.com/reflections-on-reflections">General statistics about various amplification attacks we see</a>.</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP amplifications crossing 100Gbps</a>. Funnily enough, since then we were a target of an 196Gbps SSDP attack.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/reflections-on-reflections">General statistics about various amplification attacks we see</a>.</p>
+		</li>
 	</ul>
 	<p>The general idea behind all amplification attacks is the same. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing">An IP-spoofing capable attacker</a> sends forged requests to a vulnerable UDP server. The UDP server, not knowing the request is forged, politely prepares the response. The problem happens when thousands of responses are delivered to an unsuspecting target host, overwhelming its resources - most typically the network itself.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/spoofing-1.png" alt="spoofing-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16dgrwlKcAnFbOkNxSYolX/74526d9a5b0f755b1f88988c70952feb/spoofing-1.png" alt="spoofing-1" class="kg-image" width="640" height="411" loading="lazy">
+
+	</figure>
 	<p>Amplification attacks are effective, because often the response packets are much larger than the request packets. A carefully prepared technique allows an attacker with limited IP spoofing capacity (such as 1Gbps) to launch very large attacks (reaching 100s Gbps) "amplifying" the attacker's bandwidth.</p>
-	<h3 id="memcrashed">Memcrashed</h3>
+	<h3>Memcrashed</h3>
 	<p>Obscure amplification attacks happen all the time. We often see "chargen" or "call of duty" packets hitting our servers.</p>
 	<p>A discovery of a new amplification vector though, allowing very great amplification, happens rarely. This new memcached UDP DDoS is definitely in this category.</p>
 	<p>The <a href="https://ddosmon.net/insight">DDosMon from Qihoo 360</a> monitors amplification attack vectors and this chart shows recent memcached/11211 attacks:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-ddosmon.png" alt="memcached-ddosmon" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xImt2QRqij9hJLNe8uJm7/8ac0881ed8e0988ed8a323dddfbc0e82/memcached-ddosmon.png" alt="memcached-ddosmon" class="kg-image" width="1862" height="922" loading="lazy">
+
+	</figure>
 	<p>The number of memcached attacks was relatively flat, until it started spiking just a couple days ago. Our charts also confirm this, here are attacks in packets per second over the last four days:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-pps.png" alt="memcached-pps" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VD1Yd7gkKpd68RBfW2xYu/c57feffa17b5b2beedde9766ed639a0c/memcached-pps.png" alt="memcached-pps" class="kg-image" width="2328" height="488" loading="lazy">
+
+	</figure>
 	<p>While the packets per second count is not that impressive, the bandwidth generated is:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-gpb.png" alt="memcached-gpb" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1THC5a2xHEdnadw4AOEuoB/64938475517e0125cc910274230ce454/memcached-gpb.png" alt="memcached-gpb" class="kg-image" width="1713" height="497" loading="lazy">
+
+	</figure>
 	<p>At peak we've seen 260Gbps of inbound UDP memcached traffic. This is massive for a new amplification vector. But the numbers don't lie. It's possible because all the reflected packets are very large. This is how it looks in tcpdump:</p>
-	<pre><code>$ tcpdump -n -t -r memcrashed.pcap udp and port 11211 -c 10
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -n -t -r memcrashed.pcap udp and port 11211 -c 10
 IP 87.98.205.10.11211 &gt; 104.28.1.1.1635: UDP, length 13
 IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
 IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
@@ -30,25 +55,27 @@ IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
 IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
 IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
 IP 5.196.85.159.11211 &gt; 104.28.1.1.1635: UDP, length 1400
-IP 46.31.44.199.11211 &gt; 104.28.1.1.6358: UDP, length 13
-</code></pre>
+IP 46.31.44.199.11211 &gt; 104.28.1.1.6358: UDP, length 13</code></pre>
 	<p>The majority of packets are 1400 bytes in size. Doing the math 23Mpps x 1400 bytes gives 257Gbps of bandwidth, exactly what the chart shows.</p>
-	<h3 id="memcacheddoesudp">Memcached does UDP?</h3>
-	<p>I was surprised to learn that memcached does UDP, but there you go! The <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt">protocol specification</a> shows that it's one of <em>the best protocols to use for amplification ever</em>! There are absolutely zero checks, and the data <em>WILL</em> be delivered to the client, with blazing speed! Furthermore, the request can be tiny and the response huge (up to 1MB).</p>
+	<h3>Memcached does UDP?</h3>
+	<p>I was surprised to learn that memcached does UDP, but there you go! The <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt">protocol specification</a> shows that it's one of <i>the best protocols to use for amplification ever</i>! There are absolutely zero checks, and the data <i>WILL</i> be delivered to the client, with blazing speed! Furthermore, the request can be tiny and the response huge (up to 1MB).</p>
 	<p>Launching such an attack is easy. First the attacker implants a large payload on an exposed memcached server. Then, the attacker spoofs the "get" request message with target Source IP.</p>
 	<p>Synthetic run with Tcpdump shows the traffic:</p>
-	<pre><code>$ sudo tcpdump -ni eth0 port 11211 -t
+	<pre class="language-bash"><code class="language-bash">$ sudo tcpdump -ni eth0 port 11211 -t
 IP 172.16.170.135.39396 &gt; 192.168.2.1.11211: UDP, length 15
 IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
-...(repeated hundreds times)...
-</code></pre>
+...(repeated hundreds times)...</code></pre>
 	<p>15 bytes of request triggered 134KB of response. This is amplification factor of 10,000x! In practice we've seen a 15 byte request result in a 750kB response (that's a 51,200x amplification).</p>
-	<h3 id="sourceips">Source IPs</h3>
+	<h3>Source IPs</h3>
 	<p>The vulnerable memcached servers are all around the globe, with higher concentration in North America and Europe. Here is a map of the source IPs we've seen in each of our 120+ points of presence:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-map2.png" alt="memcached-map2" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70pC9m63FE7QI31oRMluQW/4079e920412a43611b9a096562e7689d/memcached-map2.png" alt="memcached-map2" class="kg-image" width="1026" height="495" loading="lazy">
+
+	</figure>
 	<p>Interestingly our datacenters in EWR, HAM and HKG see disproportionally large numbers of attacking IPs. This is because most of the vulnerable servers are located in major hosting providers. The AS numbers of the IPs that we've seen:</p>
-	<pre><code>┌─ips─┬─srcASN──┬─ASName───────────────────────────────────────┐
+	<pre class="language-bash"><code class="language-bash">┌─ips─┬─srcASN──┬─ASName───────────────────────────────────────┐
 │ 578 │ AS16276 │ OVH                                          │
 │ 468 │ AS14061 │ DIGITALOCEAN-ASN - DigitalOcean, LLC         │
 │ 231 │ AS7684  │ SAKURA-A SAKURA Internet Inc.                │
@@ -72,29 +99,33 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 │  31 │ AS8100  │ ASN-QUADRANET-GLOBAL - QuadraNet, Inc        │
 │  30 │ AS14618 │ AMAZON-AES - Amazon.com, Inc.                │
 │  30 │ AS31034 │ ARUBA-ASN                                    │
-└─────┴─────────┴──────────────────────────────────────────────┘
-</code></pre>
+└─────┴─────────┴──────────────────────────────────────────────┘</code></pre>
 	<p>Most of the memcached servers we've seen were coming from AS16276 - OVH, AS14061 - Digital Ocean and AS7684 - Sakura.</p>
 	<p>In total we've seen only 5,729 unique source IPs of memcached servers. We're expecting to see much larger attacks in future, as <a href="https://www.shodan.io">Shodan</a> reports 88,000 open memcached servers:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-shodan.png" alt="memcached-shodan" loading="lazy"></p>
-	<h3 id="letsfixitup">Let's fix it up</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3M4vOFeXyjG82X94Qb5OdW/d5f443470826d07922b3b220bd8fdf72/memcached-shodan.png" alt="memcached-shodan" class="kg-image" width="970" height="567" loading="lazy">
+
+	</figure>
+	<h3>Let's fix it up</h3>
 	<p>It's necessary to fix this and prevent further attacks. Here is a list of things that should be done.</p>
-	<h4 id="memcachedusers">Memcached Users</h4>
-	<p>If you are using memcached, please disable UDP support if you are not using it. On memcached startup you can specify <code>--listen 127.0.0.1</code> to listen only to localhost and <code>-U 0</code> to disable UDP completely. <em>By default memcached listens on INADDR_ANY and runs with UDP support ENABLED</em>. Documentation:</p>
+	<h4>Memcached Users</h4>
+	<p>If you are using memcached, please disable UDP support if you are not using it. On memcached startup you can specify <code>--listen 127.0.0.1</code> to listen only to localhost and <code>-U 0</code> to disable UDP completely. <i>By default memcached listens on INADDR_ANY and runs with UDP support ENABLED</i>. Documentation:</p>
 	<ul>
-		<li><a href="https://github.com/memcached/memcached/wiki/ConfiguringServer#udp">https://github.com/memcached/memcached/wiki/ConfiguringServer#udp</a></li>
+		<li>
+			<p><a href="https://github.com/memcached/memcached/wiki/ConfiguringServer#udp">https://github.com/memcached/memcached/wiki/ConfiguringServer#udp</a></p>
+		</li>
 	</ul>
 	<p>You can easily test if your server is vulnerable by running:</p>
-	<pre><code>$ echo -en "\x00\x00\x00\x00\x00\x01\x00\x00stats\r\n" | nc -q1 -u 127.0.0.1 11211
+	<pre class="language-bash"><code class="language-bash">$ echo -en "\x00\x00\x00\x00\x00\x01\x00\x00stats\r\n" | nc -q1 -u 127.0.0.1 11211
 STAT pid 21357
 STAT uptime 41557034
 STAT time 1519734962
-...
-</code></pre>
+...</code></pre>
 	<p>If you see non-empty response (like the one above), your server is vulnerable.</p>
-	<h4 id="systemadministrators">System administrators</h4>
+	<h4>System administrators</h4>
 	<p>Please ensure that your memcached servers are firewalled from the internet! To test whether they can be accessed using UDP I recommend the <code>nc</code> example above, to verify if TCP is closed run <code>nmap</code>:</p>
-	<pre><code>$ nmap TARGET -p 11211 -sU -sS --script memcached-info
+	<pre class="language-bash"><code class="language-bash">$ nmap TARGET -p 11211 -sU -sS --script memcached-info
 Starting Nmap 7.30 ( https://nmap.org ) at 2018-02-27 12:44 UTC
 Nmap scan report for xxxx
 Host is up (0.011s latency).
@@ -113,23 +144,24 @@ PORT      STATE         SERVICE
 |   TCP Port             11211
 |   UDP Port             11211
 |_  Authentication       no
-11211/udp open|filtered memcache
-</code></pre>
-	<h4 id="internetserviceproviders">Internet Service Providers</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-reflector.png" alt="memcached-reflector" loading="lazy"></p>
+11211/udp open|filtered memcache</code></pre>
+	<h4>Internet Service Providers</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Dmq5baGJDRlwdmxqz9hHg/2bbc71c422589c18683842a2c5c849b0/memcached-reflector.png" alt="memcached-reflector" class="kg-image" width="944" height="573" loading="lazy">
+
+	</figure>
 	<p>In order to defeat such attacks in future, we need to fix vulnerable protocols and also IP spoofing. As long as IP spoofing is permissible on the internet, we'll be in trouble.</p>
-	<p>Help us out by tracking who is behind these attacks. We must know not who has problematic memcached servers, but <em>who sent them queries in the first place</em>. We can't do this without your help!</p>
-	<h4 id="developers">Developers</h4>
+	<p>Help us out by tracking who is behind these attacks. We must know not who has problematic memcached servers, but <i>who sent them queries in the first place</i>. We can't do this without your help!</p>
+	<h4>Developers</h4>
 	<p>Please please please: Stop using UDP. If you must, please don't enable it by default. If you do not know what an amplification attack is I hereby forbid you from ever typing <code>SOCK_DGRAM</code> into your editor.</p>
-	<p>We've been down this road so many times. DNS, NTP, Chargen, SSDP and now memcached. If you use UDP, you must always respond with strictly a <em>smaller</em> packet size then the request. Otherwise your protocol will be abused. Also remember that people do forget to set up a firewall. Be a nice citizen. Don't invent a UDP-based protocol that lacks authentication of any kind.</p>
-	<h3 id="thatsall">That's all</h3>
+	<p>We've been down this road so many times. DNS, NTP, Chargen, SSDP and now memcached. If you use UDP, you must always respond with strictly a <i>smaller</i> packet size then the request. Otherwise your protocol will be abused. Also remember that people do forget to set up a firewall. Be a nice citizen. Don't invent a UDP-based protocol that lacks authentication of any kind.</p>
+	<h3>That's all</h3>
 	<p>It's anyone's guess how large the memcached attacks will become before we clean the vulnerable servers up. There were already rumors of 0.5Tbps amplifications in the last few days, and this is just a start.</p>
 	<p>Finally, you are OK if you are a Cloudflare customer. Cloudflare's Anycast architecture works well to distribute the load in case of large amplification attacks, and unless your origin IP is exposed, you are safe behind Cloudflare.</p>
-	<h3 id="prologue">Prologue</h3>
+	<h3>Prologue</h3>
 	<p>A comment (below) points out that the possibility of using memcached for DDoS was discussed in a <a href="http://powerofcommunity.net/poc2017/shengbao.pdf">2017 presentation</a>.</p>
-	<p><strong>Update</strong><br>
-		We received a word from Digital Ocean, OVH, Linode and Amazon that they tackled the memcached problem, their networks should not be a vector in future attacks. Hurray!</p>
+	<p><b>Update</b>We received a word from Digital Ocean, OVH, Linode and Amazon that they tackled the memcached problem, their networks should not be a vector in future attacks. Hurray!</p>
 	<hr>
-	<p><em>Dealing with DDoS attacks sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572">world famous team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland</em>.</p>
-	<!--kg-card-end: markdown-->
+	<p><i>Dealing with DDoS attacks sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco and our elite office in Warsaw, Poland</i>.</p>
 </div>

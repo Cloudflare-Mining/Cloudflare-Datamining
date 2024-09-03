@@ -1,51 +1,59 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Cloudflare Tips: Troubleshooting Common Problems" src="https://blog.cloudflare.com/content/images/Andy_Troubleshooting.jpg.scaled500.jpg" title="Cloudflare Tips: Troubleshooting Common Problems"><br>
-		Debugging technical issues online can be tricky. There are many moving pieces; it can be an isolated network connection with the ISP, an issue with your server or one of <a href="https://www.cloudflare.com/features-cdn">Cloudflare's data centers</a> could be temporarily having a problem. We wanted to share some tips on how to troubleshoot website issues and provide some good techniques to prevent site issues in the future.</p>
-	<h4 id="websiteisunavailable">Website is Unavailable</h4>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g0OOweMBr4KlJL9jJjg0L/4de4195f265de1ab7e8d9074a02bccd0/Andy_Troubleshooting.jpg.scaled500.jpg" alt="Cloudflare Tips: Troubleshooting Common Problems" class="kg-image" width="500" height="500" loading="lazy">
+
+	</figure>
+	<p>Debugging technical issues online can be tricky. There are many moving pieces; it can be an isolated network connection with the ISP, an issue with your server or one of <a href="https://www.cloudflare.com/features-cdn">Cloudflare's data centers</a> could be temporarily having a problem. We wanted to share some tips on how to troubleshoot website issues and provide some good techniques to prevent site issues in the future.</p>
+	<h4>Website is Unavailable</h4>
 	<p>If you can't get to your website and you see a cached copy of your website or a "<a href="https://support.cloudflare.com/entries/22036452-my-website-is-offline-or-unavailable">Your Website is Unavailable</a>" error page, the first thing to do is to check if your server is having issues.</p>
-	<h4 id="howtoquicklytestifyourserverishavingissues">How to quickly test if your server is having issues</h4>
-	<p><em>For Mac Users:</em><br>
-		Open the application called terminal on your Mac, and run the following curl command to see if your server is responding:</p>
+	<h4>How to quickly test if your server is having issues</h4>
+	<p><i>For Mac Users:</i>Open the application called terminal on your Mac, and run the following curl command to see if your server is responding:</p>
 	<p>curl -v -A firefox/4.0 -H 'Host: yourdomain.com' YourServerIP</p>
 	<p>--&gt; YourServerIP: You can get the IP for your server origin by checking your DNS Settings page on your Cloudflare account. It will look something like 192.73.146.94</p>
 	<ul>
-		<li><a href="http://curl.haxx.se">CURL for Windows</a></li>
-		<li><a href="https://help.ubuntu.com/community/UsingTheTerminal">CURL for Linux</a></li>
+		<li>
+			<p><a href="http://curl.haxx.se">CURL for Windows</a></p>
+		</li>
+		<li>
+			<p><a href="https://help.ubuntu.com/community/UsingTheTerminal">CURL for Linux</a></p>
+		</li>
 	</ul>
 	<p>When you press enter, you'll get an output message.</p>
 	<p>If you get an error message like "can't connect to host" or "500 internal server error", then this means that your server is not responding. You should contact your hosting provider and work with them to resolve the server issue.</p>
 	<p>If you get HTML returned, but you still get a site offline or unavailable message from Cloudflare, then this means that connections from<a href="https://www.cloudflare.com/ips">Cloudflare's IPs</a> are being restricted or blocked at either the hosting provider or server level. Please make sure that the CloudFlare IP addresses are allowlisted on your server and with your host.</p>
-	<h4 id="ifyoucantaccesscpaneloruseftp">If you can't access cPanel or useFTP</h4>
+	<h4>If you can't access cPanel or useFTP</h4>
 	<p>Cloudflare acts as a reverse proxy. As a result, you can still access cPanel or use FTP, but you will have to do so a little differently. To access cPanel or FTP:</p>
 	<ul>
-		<li><a href="https://support.cloudflare.com/entries/22047603-how-do-i-use-cpanel-with-cloudflare">Accessing cPanel with Cloudflare</a></li>
-		<li><a href="https://support.cloudflare.com/entries/22036662-will-re-routing-through-cloudflare-affect-my-use-of-ftp-uploading">Using FTP with Cloudflare</a></li>
-	</ul>
-	<h4 id="certainscriptsonmywebsitelikeadsorsocialpluginsarebreakingornotworking">Certain scripts on my website (like ads or social plugins) are breaking or not working</h4>
-	<p>Cloudflare has two beta features that speed up the loading of your web pages, but they can sometimes cause issues.</p>
-	<p><strong><em>Rocket Loader</em></strong><br>
-		<a href="https://blog.cloudflare.com/56590463">Rocket Loader</a> can potentially impact JavaScript calls on your site, including things that potentially use jQuery. For example, if you see an ad widget breaking, it is possible that Rocket Loader is breaking the JavaScript and you should turn this feature off by going to your Cloudflare Settings page.
-	</p>
-	<p>If you want to keep Rocket Loader turned on for the performance boosts, you can make some edits for the service to <a href="https://support.cloudflare.com/entries/22063443-how-can-i-have-rocket-loader-ignore-my-script-s-in-automatic-mode">ignore certain scripts</a> on your site.</p>
-	<p>Note: Rocket Loader is defaulted to off upon signup. Once you turn it on or off, the change takes less than 3 minutes to take effect.</p>
-	<p><strong><em>Auto Minify</em></strong><br>
-		<a href="https://blog.cloudflare.com/an-all-new-and-improved-autominify">Auto Minify</a> rarely impacts CSS and JavaScript. However, Auto Minify can sometimes cause issues if you already have another minification service turned on. We recommend that you only have one minify option turned on for your website.
-	</p>
-	<h4 id="thechangesimadetomywebsitearentappearing">The changes I made to my website aren't appearing:</h4>
-	<p>If you're making changes to the <a href="https://support.cloudflare.com/entries/22037282-what-file-extensions-does-cloudflare-cache-for-static-content">static content Cloudflare caches</a> on your site, including changes to JavaScript, CSS or images, it can be very easy to forget that you need to turn Cloudflare Development Mode on to bypass our cache so these changes appear immediately.If you forgot to turn on Development Mode when making the changes, you can always purge your Cloudflare cache to have these changes appear immediately. Just a reminder that by purging the cache for your website, there will be a performance impact for a couple of hours.</p>
-	<h4 id="preventingsiteissueswhileoncloudflare">Preventing site issues while on Cloudflare</h4>
-	<p>The most important step you can take is to make sure that your server or hosting provider has the Cloudflare IP ranges allowlisted. If any attempts to connect to your site are blocked or limited in any way, this could create connectivity issues to your site for some of your visitors.Another very important step you can take is to install <a href="https://www.cloudflare.com/resources-downloads">mod_cloudflare</a> (which is an Apache module) on your server. mod_cloudflare will restore the original visitor IP back to your server logs, and is also a good way to reduce the probability that your hosting provider will limit connections from CloudFlare's IPs. If you are not using Apache, we have a list of solutions for <a href="https://support.cloudflare.com/entries/22051973-does-cloudflare-have-an-ip-module-for-nginx">nginx</a>, <a href="https://support.cloudflare.com/entries/22054997-how-do-i-restore-original-visitor-ip-with-windows-iis">Windows</a> and others in the <a href="https://support.cloudflare.com/forums/21318827-how-do-i-restore-original-visitor-ip-to-my-server-logs">CloudFlare Support Forums</a>.</p>
-	<h4 id="cloudflareishavinganissue">Cloudflare is Having an Issue</h4>
-	<p>Cloudflare runs 14 data centers around the world. Sometimes issues arise at one of our data centers, and we deal with these quickly (on average, in less than 10 minutes). Only visitors in that geographic region are affected.</p>
-	<ul>
-		<li>We make all announcements on <a href="https://twitter.com/#!/CloudflareSys">CloudFlare's System Status</a> Twitter handle.</li>
-		<li>If you do not use Twitter, you can also follow updates on the
-			Cloudflare system status
-			<a href="https://www.cloudflare.com/system-status">page</a>.
+		<li>
+			<p><a href="https://support.cloudflare.com/entries/22047603-how-do-i-use-cpanel-with-cloudflare">Accessing cPanel with Cloudflare</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/entries/22036662-will-re-routing-through-cloudflare-affect-my-use-of-ftp-uploading">Using FTP with Cloudflare</a></p>
 		</li>
 	</ul>
-	<h4 id="ifyougetareportfromoneofyourvisitorsthattheycannotconnecttoyourwebsite">If you get a report from one of your visitors that they can not connect to your website:</h4>
+	<h4>Certain scripts on my website (like ads or social plugins) are breaking or not working</h4>
+	<p>Cloudflare has two beta features that speed up the loading of your web pages, but they can sometimes cause issues.</p>
+	<p><i><b>Rocket Loader</b></i><a href="https://blog.cloudflare.com/56590463">Rocket Loader</a> can potentially impact JavaScript calls on your site, including things that potentially use jQuery. For example, if you see an ad widget breaking, it is possible that Rocket Loader is breaking the JavaScript and you should turn this feature off by going to your Cloudflare Settings page.</p>
+	<p>If you want to keep Rocket Loader turned on for the performance boosts, you can make some edits for the service to <a href="https://support.cloudflare.com/entries/22063443-how-can-i-have-rocket-loader-ignore-my-script-s-in-automatic-mode">ignore certain scripts</a> on your site.</p>
+	<p>Note: Rocket Loader is defaulted to off upon signup. Once you turn it on or off, the change takes less than 3 minutes to take effect.</p>
+	<p><i><b>Auto Minify</b></i><a href="https://blog.cloudflare.com/an-all-new-and-improved-autominify">Auto Minify</a> rarely impacts CSS and JavaScript. However, Auto Minify can sometimes cause issues if you already have another minification service turned on. We recommend that you only have one minify option turned on for your website.</p>
+	<h4>The changes I made to my website aren't appearing:</h4>
+	<p>If you're making changes to the <a href="https://support.cloudflare.com/entries/22037282-what-file-extensions-does-cloudflare-cache-for-static-content">static content Cloudflare caches</a> on your site, including changes to JavaScript, CSS or images, it can be very easy to forget that you need to turn Cloudflare Development Mode on to bypass our cache so these changes appear immediately.If you forgot to turn on Development Mode when making the changes, you can always purge your Cloudflare cache to have these changes appear immediately. Just a reminder that by purging the cache for your website, there will be a performance impact for a couple of hours.</p>
+	<h4>Preventing site issues while on Cloudflare</h4>
+	<p>The most important step you can take is to make sure that your server or hosting provider has the Cloudflare IP ranges allowlisted. If any attempts to connect to your site are blocked or limited in any way, this could create connectivity issues to your site for some of your visitors.Another very important step you can take is to install <a href="https://www.cloudflare.com/resources-downloads">mod_cloudflare</a> (which is an Apache module) on your server. mod_cloudflare will restore the original visitor IP back to your server logs, and is also a good way to reduce the probability that your hosting provider will limit connections from CloudFlare's IPs. If you are not using Apache, we have a list of solutions for <a href="https://support.cloudflare.com/entries/22051973-does-cloudflare-have-an-ip-module-for-nginx">nginx</a>, <a href="https://support.cloudflare.com/entries/22054997-how-do-i-restore-original-visitor-ip-with-windows-iis">Windows</a> and others in the <a href="https://support.cloudflare.com/forums/21318827-how-do-i-restore-original-visitor-ip-to-my-server-logs">CloudFlare Support Forums</a>.</p>
+	<h4>Cloudflare is Having an Issue</h4>
+	<p>Cloudflare runs 14 data centers around the world. Sometimes issues arise at one of our data centers, and we deal with these quickly (on average, in less than 10 minutes). Only visitors in that geographic region are affected.</p>
+	<ul>
+		<li>
+			<p>We make all announcements on <a href="https://twitter.com/#!/CloudflareSys">CloudFlare's System Status</a> Twitter handle.</p>
+		</li>
+		<li>
+			<p>If you do not use Twitter, you can also follow updates on the Cloudflare system status <a href="https://www.cloudflare.com/system-status">page</a>.</p>
+		</li>
+	</ul>
+	<h4>If you get a report from one of your visitors that they can not connect to your website:</h4>
 	<ol>
 		<li>
 			<p>Check to make sure your server is online (see instructions on to do this above)</p>
@@ -54,17 +62,11 @@
 			<p>If your server is online, make sure Cloudflare's IPs are not being blocked</p>
 		</li>
 		<li>
-			<p>If your server is online and Cloudflare's IP are not being blocked, <a href="https://support.cloudflare.com">send us the report here</a>. In your email, include:<br>
-				i) Your website<br>
-				ii) Where the visitor is geographically located (Issues are almost always isolated to one of our data centers. By knowing where they are located, we can investigate much quicker)<br>
-				iii) A description of the error page they are seeing<br>
-				iv) The output of a traceroute (if possible)</p>
+			<p>If your server is online and Cloudflare's IP are not being blocked, <a href="https://support.cloudflare.com">send us the report here</a>. In your email, include:i) Your websiteii) Where the visitor is geographically located (Issues are almost always isolated to one of our data centers. By knowing where they are located, we can investigate much quicker)iii) A description of the error page they are seeingiv) The output of a traceroute (if possible)</p>
 		</li>
 		<li>
-			<p>Temporarily deactivate Cloudflare for your website by choosing<br>
-				‘Deactivate' from your Cloudlare control panel. Choosing deactivate means that CloudFlare will continue to resolve DNS for your website, but none of your traffic will pass through our performance and security network. If it is a CloudFlare issue, this will immediately resolve the problem and our team can investigate the report. Once we've identified what is wrong, you will easily be able to reactivate CloudFlare. Note: You do not need to change your name servers.</p>
+			<p>Temporarily deactivate Cloudflare for your website by choosing‘Deactivate' from your Cloudlare control panel. Choosing deactivate means that CloudFlare will continue to resolve DNS for your website, but none of your traffic will pass through our performance and security network. If it is a CloudFlare issue, this will immediately resolve the problem and our team can investigate the report. Once we've identified what is wrong, you will easily be able to reactivate CloudFlare. Note: You do not need to change your name servers.</p>
 		</li>
 	</ol>
 	<p>I hope these tips help you troubleshoot some of the common issues users have on Cloudlare. Please let us know if there are any other areas of confusion that we can address in either our <a href="https://support.cloudflare.com">help section</a> or in another Cloudflare blog post.</p>
-	<!--kg-card-end: markdown-->
 </div>

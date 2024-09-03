@@ -1,46 +1,43 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/live-patch-security-vulnerabilities-with-ebpf-lsm-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/live-patch-security-vulnerabilities-with-ebpf-lsm-zh-tw">繁體中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-57.png" class="kg-image" alt="Live-patching security vulnerabilities inside the Linux kernel with eBPF Linux Security Module" loading="lazy"></figure>
+<div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/live-patch-security-vulnerabilities-with-ebpf-lsm">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/live-patch-security-vulnerabilities-with-ebpf-lsm">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41kYAOy7BtoTL9KLr7sANN/be600b96587c747b9737fc1b0240113f/image1-57.png" alt="Live-patching security vulnerabilities inside the Linux kernel with eBPF Linux Security Module" class="kg-image" width="1894" height="947" loading="lazy">
+
+	</figure>
 	<p><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html">Linux Security Modules</a> (LSM) is a hook-based framework for implementing security policies and Mandatory Access Control in the Linux kernel. Until recently users looking to implement a security policy had just two options. Configure an existing LSM module such as AppArmor or SELinux, or write a custom kernel module.</p>
 	<p><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7">Linux 5.7</a> introduced a third way: <a href="https://docs.kernel.org/bpf/prog_lsm.html">LSM extended Berkeley Packet Filters (eBPF)</a> (LSM BPF for short). LSM BPF allows developers to write granular policies without configuration or loading a kernel module. LSM BPF programs are verified on load, and then executed when an LSM hook is reached in a call path.</p>
-	<h2 id="let-s-solve-a-real-world-problem">Let’s solve a real-world problem</h2>
+	<h2>Let’s solve a real-world problem</h2>
 	<p>Modern operating systems provide facilities allowing "partitioning" of kernel resources. For example FreeBSD has "jails", Solaris has "zones". Linux is different - it provides a set of seemingly independent facilities each allowing isolation of a specific resource. These are called "namespaces" and have been growing in the kernel for years. They are the base of popular tools like Docker, lxc or firejail. Many of the namespaces are uncontroversial, like the UTS namespace which allows the host system to hide its hostname and time. Others are complex but straightforward - NET and NS (mount) namespaces are known to be hard to wrap your head around. Finally, there is this very special very curious USER namespace.</p>
 	<p>USER namespace is special, since it allows the owner to operate as "root" inside it. How it works is beyond the scope of this blog post, however, suffice to say it's a foundation to having tools like Docker to not operate as true root, and things like rootless containers.</p>
 	<p>Due to its nature, allowing unpriviledged users access to USER namespace always carried a great security risk. &nbsp;One such risk is privilege escalation.</p>
-	<p>Privilege escalation is a <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">common attack surface</a> for operating systems. One way users may gain privilege is by mapping their namespace to the root namespace via the unshare <a href="https://en.wikipedia.org/wiki/System_call">syscall</a> and specifying the <em>CLONE_NEWUSER</em> flag. This tells unshare to create a new user namespace with full permissions, and maps the new user and group ID to the previous namespace. You can use the <a href="https://man7.org/linux/man-pages/man1/unshare.1.html">unshare(1)</a> program to map root to our original namespace:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh">$ id
+	<p>Privilege escalation is a <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">common attack surface</a> for operating systems. One way users may gain privilege is by mapping their namespace to the root namespace via the unshare <a href="https://en.wikipedia.org/wiki/System_call">syscall</a> and specifying the <i>CLONE_NEWUSER</i> flag. This tells unshare to create a new user namespace with full permissions, and maps the new user and group ID to the previous namespace. You can use the <a href="https://man7.org/linux/man-pages/man1/unshare.1.html">unshare(1)</a> program to map root to our original namespace:</p>
+	<pre class="language-sh"><code class="language-sh">$ id
 uid=1000(fred) gid=1000(fred) groups=1000(fred) …
 $ unshare -rU
 # id
 uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 # cat /proc/self/uid_map
-         0       1000          1
-</code></pre>
-	<!--kg-card-end: markdown-->
+         0       1000          1</code></pre>
 	<p>In most cases using unshare is harmless, and is intended to run with lower privileges. However, this syscall has been known to be used to <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492">escalate privileges</a>.</p>
-	<p>Syscalls<em> clone</em> and <em>clone3</em> are worth looking into as they also have the ability to <em>CLONE_NEWUSER</em>. However, for this post we’re going to focus on unshare.</p>
-	<p>Debian solved this problem with this <a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch"> "add sysctl to disallow unprivileged CLONE_NEWUSER by default"</a> patch, but it was not mainlined. Another similar patch <a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org">"sysctl: allow CLONE_NEWUSER to be disabled"</a> attempted to mainline, and was met with push back. A critique is the <a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org">inability to toggle this feature</a> for specific applications. In the article “<a href="https://lwn.net/Articles/673597">Controlling access to user namespaces</a>” the author wrote: “... the current patches do not appear to have an easy path into the mainline.” And as we can see, the patches were ultimately not included in the vanilla kernel.</p>
-	<h2 id="our-solution-lsm-bpf">Our solution - LSM BPF</h2>
+	<p>Syscalls <i>clone</i> and <i>clone3</i> are worth looking into as they also have the ability to <i>CLONE_NEWUSER</i>. However, for this post we’re going to focus on unshare.</p>
+	<p>Debian solved this problem with this <a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch">"add sysctl to disallow unprivileged CLONE_NEWUSER by default"</a> patch, but it was not mainlined. Another similar patch <a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org">"sysctl: allow CLONE_NEWUSER to be disabled"</a> attempted to mainline, and was met with push back. A critique is the <a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org">inability to toggle this feature</a> for specific applications. In the article “<a href="https://lwn.net/Articles/673597">Controlling access to user namespaces</a>” the author wrote: “... the current patches do not appear to have an easy path into the mainline.” And as we can see, the patches were ultimately not included in the vanilla kernel.</p>
+	<h2>Our solution - LSM BPF</h2>
 	<p>Since upstreaming code that restricts USER namespace seem to not be an option, we decided to use LSM BPF to circumvent these issues. This requires no modifications to the kernel and allows us to express complex rules guarding the access.</p>
-	<h3 id="track-down-an-appropriate-hook-candidate">Track down an appropriate hook candidate</h3>
-	<p>First, let us track down the syscall we’re targeting. We can find the prototype in the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608"><em>include/linux/syscalls.h</em></a> file. From there, it’s not as obvious to track down, but the line:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">/* kernel/fork.c */
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Gives us a clue of where to look next in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201"><em>kernel/fork.c</em></a>. There a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082"><em>ksys_unshare()</em></a> is made. Digging through that function, we find a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129"><em>unshare_userns()</em></a>. This looks promising.</p>
-	<p>Up to this point, we’ve identified the syscall implementation, but the next question to ask is what hooks are available for us to use? Because we know from the <a href="https://man7.org/linux/man-pages/man2/unshare.2.html">man-pages</a> that unshare is used to mutate tasks, we look at the task-based hooks in <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605"><em>include/linux/lsm_hooks.h</em></a>. Back in the function <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171"><em>unshare_userns()</em></a><em> </em>we saw a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252"><em>prepare_creds()</em></a>. This looks very familiar to the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624"><em>cred_prepare</em></a> hook. To verify we have our match via <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291"><em>prepare_creds()</em></a>, we see a call to the security hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706"><em>security_prepare_creds()</em></a><em> </em>which ultimately calls the hook:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">…
+	<h3>Track down an appropriate hook candidate</h3>
+	<p>First, let us track down the syscall we’re targeting. We can find the prototype in the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608"><i>include/linux/syscalls.h</i></a> file. From there, it’s not as obvious to track down, but the line:</p>
+	<pre class="language-c"><code class="language-c">/* kernel/fork.c */</code></pre>
+	<p>Gives us a clue of where to look next in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201"><i>kernel/fork.c</i></a>. There a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082"><i>ksys_unshare()</i></a> is made. Digging through that function, we find a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129"><i>unshare_userns()</i></a>. This looks promising.</p>
+	<p>Up to this point, we’ve identified the syscall implementation, but the next question to ask is what hooks are available for us to use? Because we know from the <a href="https://man7.org/linux/man-pages/man2/unshare.2.html">man-pages</a> that unshare is used to mutate tasks, we look at the task-based hooks in <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605"><i>include/linux/lsm_hooks.h</i></a>. Back in the function <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171"><i>unshare_userns()</i></a> we saw a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252"><i>prepare_creds()</i></a>. This looks very familiar to the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624"><i>cred_prepare</i></a> hook. To verify we have our match via <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291"><i>prepare_creds()</i></a>, we see a call to the security hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706"><i>security_prepare_creds()</i></a> which ultimately calls the hook:</p>
+	<pre class="language-c"><code class="language-c">…
 rc = call_int_hook(cred_prepare, 0, new, old, gfp);
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Without going much further down this rabbithole, we know this is a good hook to use because <em>prepare_creds()</em> is called right before <em>create_user_ns()</em> in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181"><em>unshare_userns()</em></a> which is the operation we’re trying to block.</p>
-	<h3 id="lsm-bpf-solution">LSM BPF solution</h3>
+…</code></pre>
+	<p>Without going much further down this rabbithole, we know this is a good hook to use because <i>prepare_creds()</i> is called right before <i>create_user_ns()</i> in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181"><i>unshare_userns()</i></a> which is the operation we’re trying to block.</p>
+	<h3>LSM BPF solution</h3>
 	<p>We’re going to compile with the <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions">eBPF compile once-run everywhere (CO-RE)</a> approach. This allows us to compile on one architecture and load on another. But we’re going to target x86_64 specifically. LSM BPF for ARM64 is still in development, and the following code will not run on that architecture. Watch the <a href="https://lore.kernel.org/bpf">BPF mailing list</a> to follow the progress.</p>
-	<p>This solution was tested on kernel versions &gt;= 5.15 configured with the following:</p><!--kg-card-begin: markdown-->
-	<pre><code>BPF_EVENTS
+	<p>This solution was tested on kernel versions &gt;= 5.15 configured with the following:</p>
+	<pre class="language-bash"><code class="language-bash">BPF_EVENTS
 BPF_JIT
 BPF_JIT_ALWAYS_ON
 BPF_LSM
@@ -50,29 +47,25 @@ DEBUG_INFO_BTF
 DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
 DYNAMIC_FTRACE
 FUNCTION_TRACER
-HAVE_DYNAMIC_FTRACE
-</code></pre>
-	<!--kg-card-end: markdown-->
+HAVE_DYNAMIC_FTRACE</code></pre>
 	<p>A boot option <code>lsm=bpf</code> may be necessary if <code>CONFIG_LSM</code> does not contain “bpf” in the list.</p>
 	<p>Let’s start with our preamble:</p>
-	<p><em>deny_unshare.bpf.c</em>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">#include &lt;linux/bpf.h&gt;
-#include &lt;linux/capability.h&gt;
-#include &lt;linux/errno.h&gt;
-#include &lt;linux/sched.h&gt;
-#include &lt;linux/types.h&gt;
+	<p><i>deny_unshare.bpf.c</i>:</p>
+	<pre class="language-c"><code class="language-c">#include <linux bpf.h="">
+#include <linux capability.h="">
+#include <linux errno.h="">
+#include <linux sched.h="">
+#include <linux types.h="">
 
-#include &lt;bpf/bpf_tracing.h&gt;
-#include &lt;bpf/bpf_helpers.h&gt;
-#include &lt;bpf/bpf_core_read.h&gt;
+#include <bpf bpf_tracing.h="">
+#include <bpf bpf_helpers.h="">
+#include <bpf bpf_core_read.h="">
 
 #define X86_64_UNSHARE_SYSCALL 272
-#define UNSHARE_SYSCALL X86_64_UNSHARE_SYSCALL
-</code></pre>
-	<!--kg-card-end: markdown-->
+#define UNSHARE_SYSCALL X86_64_UNSHARE_SYSCALL</bpf></bpf></bpf></linux></linux></linux></linux></linux></code></pre>
 	<p>Next we set up our necessary structures for CO-RE relocation in the following way:</p>
-	<p><em>deny_unshare.bpf.c</em>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">…
+	<p><i>deny_unshare.bpf.c</i>:</p>
+	<pre class="language-c"><code class="language-c">…
 
 typedef unsigned int gfp_t;
 
@@ -96,12 +89,10 @@ struct task_struct {
 
 char LICENSE[] SEC("license") = "GPL";
 
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
+…</code></pre>
 	<p>We don’t need to fully-flesh out the structs; we just need the absolute minimum information a program needs to function. CO-RE will do whatever is necessary to perform the relocations for your kernel. This makes writing the LSM BPF programs easy!</p>
-	<p><em>deny_unshare.bpf.c</em>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">SEC("lsm/cred_prepare")
+	<p><i>deny_unshare.bpf.c</i>:</p>
+	<pre class="language-c"><code class="language-c">SEC("lsm/cred_prepare")
 int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
              gfp_t gfp, int ret)
 {
@@ -141,13 +132,11 @@ int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
     }
 
     return -EPERM;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Creating the program is the first step, the second is loading and attaching the program to our desired hook. There are several ways to do this: <a href="https://github.com/cilium/ebpf">Cilium ebpf</a> project, <a href="https://github.com/libbpf/libbpf-rs">Rust bindings</a>, and several others on the <a href="https://ebpf.io/projects">ebpf.io</a> project landscape page. We’re going to use native libbpf.</p>
-	<p><em>deny_unshare.c</em>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">#include &lt;bpf/libbpf.h&gt;
-#include &lt;unistd.h&gt;
+	<p><i>deny_unshare.c</i>:</p>
+	<pre class="language-c"><code class="language-c">#include <bpf libbpf.h="">
+#include <unistd.h>
 #include "deny_unshare.skel.h"
 
 static int libbpf_print_fn(enum libbpf_print_level level, const char *format, va_list args)
@@ -188,12 +177,10 @@ int main(int argc, char *argv[])
 cleanup:
     deny_unshare_bpf__destroy(skel);
     return err;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</unistd.h></bpf></code></pre>
 	<p>Lastly, to compile, we use the following Makefile:</p>
-	<p><em>Makefile</em>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-makefile">CLANG ?= clang-13
+	<p><i>Makefile</i>:</p>
+	<pre class="language-makefile"><code class="language-makefile">CLANG ?= clang-13
 LLVM_STRIP ?= llvm-strip-13
 ARCH := x86
 INCLUDES := -I/usr/include -I/usr/include/x86_64-linux-gnu
@@ -228,62 +215,48 @@ deny_unshare: deny_unshare.c deny_unshare.skel.h
 	$(CC) -g -Wall -c $&lt; -o $@.o
 	$(CC) -g -o $@ $(LIBS_DIR) $@.o $(LIBS)
 
-.DELETE_ON_ERROR:
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="result">Result</h3>
-	<p>In a new terminal window run:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh">$ make run
+.DELETE_ON_ERROR:</code></pre>
+	<h3>Result</h3>
+	<p>In a new terminal window run:</p>
+	<pre class="language-sh"><code class="language-sh">$ make run
 …
-LSM loaded! ctrl+c to exit.
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>In another terminal window, we’re successfully blocked!</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh">$ unshare -rU
+LSM loaded! ctrl+c to exit.</code></pre>
+	<p>In another terminal window, we’re successfully blocked!</p>
+	<pre class="language-sh"><code class="language-sh">$ unshare -rU
 unshare: unshare failed: Cannot allocate memory
 $ id
-uid=1000(fred) gid=1000(fred) groups=1000(fred) …
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The policy has an additional feature to always allow privilege pass through:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh">$ sudo unshare -rU
+uid=1000(fred) gid=1000(fred) groups=1000(fred) …</code></pre>
+	<p>The policy has an additional feature to always allow privilege pass through:</p>
+	<pre class="language-sh"><code class="language-sh">$ sudo unshare -rU
 # id
-uid=0(root) gid=0(root) groups=0(root)
-</code></pre>
-	<!--kg-card-end: markdown-->
+uid=0(root) gid=0(root) groups=0(root)</code></pre>
 	<p>In the unprivileged case the syscall early aborts. What is the performance impact in the privileged case?</p>
-	<h3 id="measure-performance">Measure performance</h3>
-	<p>We’re going to use a one-line unshare that’ll map the user namespace, and execute a command within for the measurements:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh">$ unshare -frU --kill-child -- bash -c "exit 0"
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<h3>Measure performance</h3>
+	<p>We’re going to use a one-line unshare that’ll map the user namespace, and execute a command within for the measurements:</p>
+	<pre class="language-sh"><code class="language-sh">$ unshare -frU --kill-child -- bash -c "exit 0"</code></pre>
 	<p>With a resolution of CPU cycles for syscall unshare enter/exit, we’ll measure the following as root user:</p>
 	<ol>
-		<li>Command ran without the policy</li>
-		<li>Command run with the policy</li>
+		<li>
+			<p>Command ran without the policy</p>
+		</li>
+		<li>
+			<p>Command run with the policy</p>
+		</li>
 	</ol>
-	<p>We’ll record the measurements with <a href="https://docs.kernel.org/trace/ftrace.html">ftrace</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh">$ sudo su
+	<p>We’ll record the measurements with <a href="https://docs.kernel.org/trace/ftrace.html">ftrace</a>:</p>
+	<pre class="language-sh"><code class="language-sh">$ sudo su
 # cd /sys/kernel/debug/tracing
-# echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>At this point, we’re enabling tracing for the syscall enter and exit for unshare specifically. Now we set the time-resolution of our enter/exit calls to count CPU cycles:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh"># echo 'x86-tsc' &gt; trace_clock 
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Next we begin our measurements:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
-[1] 92014
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Run the policy in a new terminal window, and then run our next syscall:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
-[2] 92019
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Now we have our two calls for comparison:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh"># cat trace
+# echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable</code></pre>
+	<p>At this point, we’re enabling tracing for the syscall enter and exit for unshare specifically. Now we set the time-resolution of our enter/exit calls to count CPU cycles:</p>
+	<pre class="language-sh"><code class="language-sh"># echo 'x86-tsc' &gt; trace_clock </code></pre>
+	<p>Next we begin our measurements:</p>
+	<pre class="language-sh"><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
+[1] 92014</code></pre>
+	<p>Run the policy in a new terminal window, and then run our next syscall:</p>
+	<pre class="language-sh"><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
+[2] 92019</code></pre>
+	<p>Now we have our two calls for comparison:</p>
+	<pre class="language-sh"><code class="language-sh"># cat trace
 # tracer: nop
 #
 # entries-in-buffer/entries-written: 4/4   #P:8
@@ -300,13 +273,11 @@ uid=0(root) gid=0(root) groups=0(root)
          unshare-92014   [002] ..... 762950852622321: sys_unshare -&gt; 0x0
          unshare-92019   [007] ..... 762975980681895: sys_unshare(unshare_flags: 10000000)
          unshare-92019   [007] ..... 762975980752033: sys_unshare -&gt; 0x0
-
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<p>unshare-92014 used 63294 cycles.<br>unshare-92019 used 70138 cycles.</p>
+	<p>unshare-92014 used 63294 cycles.unshare-92019 used 70138 cycles.</p>
 	<p>We have a 6,844 (~10%) cycle penalty between the two measurements. Not bad!</p>
 	<p>These numbers are for a single syscall, and add up the more frequently the code is called. Unshare is typically called at task creation, and not repeatedly during normal execution of a program. Careful consideration and measurement is needed for your use case.</p>
-	<h2 id="outro">Outro</h2>
+	<h2>Outro</h2>
 	<p>We learned a bit about what LSM BPF is, how unshare is used to map a user to root, and how to solve a real-world problem by implementing a solution in eBPF. Tracking down the appropriate hook is not an easy task, and requires a bit of playing and a lot of kernel code. Fortunately, that’s the hard part. Because a policy is written in C, we can granularly tweak the policy to our problem. This means one may extend this policy with an allow-list to allow certain programs or users to continue to use an unprivileged unshare. Finally, we looked at the performance impact of this program, and saw the overhead is worth blocking the attack vector.</p>
-	<p>“Cannot allocate memory” is not a clear error message for denying permissions. We proposed a <a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com">patch</a> to propagate error codes from the <em>cred_prepare</em> hook up the call stack. Ultimately we came to the conclusion that a new hook is better suited to this problem. Stay tuned!</p>
+	<p>“Cannot allocate memory” is not a clear error message for denying permissions. We proposed a <a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com">patch</a> to propagate error codes from the <i>cred_prepare</i> hook up the call stack. Ultimately we came to the conclusion that a new hook is better suited to this problem. Stay tuned!</p>
 </div>

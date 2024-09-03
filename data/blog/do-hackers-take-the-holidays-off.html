@@ -1,17 +1,20 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jlKrWHVjPxelQAnJdRkbZ/372741a3fef72d83899c4609bc360283/do-hackers-take-the-holidays-off.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>I was talking last week with Shawn Graham, a reporter at Fast Company, and he asked a simple but interesting question: do hackers take the holidays off?</p>
 	<p>CloudFlare sees traffic for hundreds of thousands of websites so we were able to answer that question by looking at the average percentage of requests that constitute threats, graphing the deviation, and then overlaying any events happening on those days. The answer to whether hackers take holidays off: it depends on the holiday. Shawn <a href="http://www.fastcompany.com/1800282/do-cyber-attacks-take-the-holidays-off">wrote a great piece using our data for his publication</a>, but we wanted to highlight what we found here as well.</p>
-	<h3 id="whatsnormal">What's Normal?</h3>
+	<h3>What's Normal?</h3>
 	<p>Looking at the hundreds of billions of requests that CloudFlare has received over the last year, approximately 15% of them were some sort of threat. The percentage ranges depending on the size of the site, but the deviation is less than we would have guessed. The majority of these attacks are automated bots scraping for emails or scanning for vulnerabilities.</p>
-	<p><img alt="Do Hackers Take the Holidays Off?" src="https://blog.cloudflare.com/content/images/web_attacks_on_the_holidays.png.scaled500.png" title="Do Hackers Take the Holidays Off?"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dH6Nc6u0eN48wmHwoKLBd/e425064cdcdc32a27ff2a836ce029d6a/web_attacks_on_the_holidays.png.scaled500.png" alt="Do Hackers Take the Holidays Off?" class="kg-image" width="500" height="303" loading="lazy">
+
+	</figure>
 	<p>As the graph above shows, the percentage of requests that are attacks varies from a low of about 5 percent to a high of almost 25 percent. Some of the swings depend on the day of the week. For example, Saturday is a relatively low day for legitimate web traffic, but a relatively high day for attacks, so the percentage of threat traffic generally ticks up on Saturdays.</p>
-	<h3 id="hackerholidays">Hacker Holidays</h3>
+	<h3>Hacker Holidays</h3>
 	<p>After we plotted the percentage of threat traffic we mapped it to a calendar of major holidays around the world. Generally, the major holidays in the United States from May - November did not see a drop in traffic. In fact, holidays like Halloween, Veterans' Day, and Mother's Day saw spikes in threat traffic. The biggest drops in attack traffic occurred around the start of the summer holiday season (August 1) and during Golden Week, the national Chinese holiday.</p>
 	<p>Most of the major attacks that we see originate from China and Eastern Europe, so the holidays could indicate that the European attackers are taking time off for classic summer vacation or Chinese attackers are stepping away from the keyboard to celebrate China's nationhood. That seems like it would indicate the attackers themselves are European or Chinese, but I don't think that's necessarily a valid conclusion to draw.</p>
-	<h3 id="botstakevacations">Bots Take Vacations</h3>
+	<h3>Bots Take Vacations</h3>
 	<p>Most of the online attacks today use computers compromised by viruses to form a so-called botnet. Computers with unlicensed versions of Windows, or that don't have up-to-date anti-virus software, are particularly susceptible to infection. Eastern Europe, and to an even greater respect, China have a higher-than-average percentage of infected machines. The fact that the attacks originate from these regions don't necessarily mean the attackers are there, but rather that the botnets they are using to launch the attacks are.</p>
 	<p>So what's happening when there are big drops in traffic? It may be that a lot of the compromised computers in China are in office that are shut down for the Golden Week celebrations. In other words, it could be not that the attackers themselves take the holiday off, but rather that the resources they use to launch attacks aren't as available during certain holidays.</p>
 	<p>The graph above doesn't show Christmas or New Years. Last year we saw a run up in attacks prior to Christmas and then a significant drop off on Christmas itself, and an even larger drop on New Year's Day. We didn't have the scale last year to draw meaningful conclusions, but we'll be watching carefully this year and report back after we see what happened.</p>
-	<!--kg-card-end: markdown-->
 </div>

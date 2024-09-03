@@ -1,48 +1,69 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-21.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62sbPSMYX55HOvvJNa6TNf/22346483d9246238b625ed9650370497/image2-21.png" alt="" class="kg-image" width="1674" height="838" loading="lazy">
+
+	</figure>
 	<p>When web hosting services first emerged in the mid-1990s, you paid for everything on a separate meter: bandwidth, storage, CPU, and memory. Over time, customers grew to hate the nickel-and-dime nature of these fees. The market evolved to a fixed-fee model. Then came Amazon Web Services.</p>
 	<p>AWS was a huge step forward in terms of flexibility and scalability, but a massive step backward in terms of pricing. Nowhere is that more apparent than with their data transfer (bandwidth) pricing. If you look at the (ironically named) <a href="https://calculator.s3.amazonaws.com/index.html#key=files/calc-917de608a77af5087bde42a1caaa61ea1c0123e8&amp;v=ver20210710c7">AWS Simple Monthly Calculator</a> you can calculate the price they charge for bandwidth for their typical customer. The price varies by region, which shouldn't surprise you because the cost of transit is dramatically different in different parts of the world.</p>
-	<h3 id="charging-for-stocks-paying-for-flows">Charging for Stocks, Paying for Flows</h3>
+	<h3>Charging for Stocks, Paying for Flows</h3>
 	<p>AWS charges customers based on the amount of data delivered — 1 terabyte (TB) per month, for example. To visualize that, imagine data is water. AWS fills a bucket full of water and then charges you based on how much water is in the bucket. This is known as charging based on “stocks.”</p>
 	<p>On the other hand, AWS pays for bandwidth based on the capacity of their network. The base unit of wholesale bandwidth is priced as one Megabit per second per month (1 Mbps). Typically, a provider like AWS, will pay for bandwidth on a monthly fee based on the number of Mbps that their network uses at its peak capacity. So, extending the analogy, AWS doesn't pay for the amount of water that ends up in their customers' buckets, but rather the capacity based on the diameter of the “hose” that is used to fill them. This is known as paying for “flows.”</p>
-	<h3 id="translating-flows-to-stocks">Translating Flows to Stocks</h3><!--kg-card-begin: markdown-->
+	<h3>Translating Flows to Stocks</h3>
 	<p>You can translate between flow and stock pricing by knowing that a 1 Mbps connection (think of it as the "hose") can transfer 0.3285 TB (328GB) if utilized to its fullest capacity over the course of a month (think of it as running the "hose" at full capacity to fill the "bucket" for a month).<sup>1</sup> AWS obviously has more than 1 Mbps of capacity — they can certainly transfer more than 0.3285 TB per month — but you can use this as the base unit of their bandwidth costs, and compare it against what they charge a customer to deliver 1 Terabyte (1TB), in order to figure out the AWS bandwidth markup.</p>
-	<!--kg-card-end: markdown-->
 	<p>One more subtlety to be as accurate as possible. Wholesale bandwidth is also billed at the 95th percentile. That effectively cuts off the peak hour or so of use every day. That means a 1 Mbps connection running at 100% can actually likely transfer closer to 0.3458 TB (346GB) per month.</p>
 	<p>Two more factors are important: utilization and regional costs. AWS can't run all their connections at 100% utilization 24x7 for a month. Instead, they'll have some average utilization per transit connection in any month. It’s reasonable to estimate that they likely run at between 20% and 40% average utilization. That would be a typical average utilization range for the industry. The higher their utilization, the more efficient they are, the lower their costs, and the higher their effective customer markup will be.</p>
 	<p>To be conservative, we’ve assumed that AWS’s average utilization is the bottom of that range (20%), but you can <a href="https://docs.google.com/spreadsheets/d/11InPX3PDntyC1-F-tWeNwpoztYozf7JeC7OE6iZrc_0/edit?usp=sharing">download the raw data</a> and adjust the assumptions however you think makes sense.</p>
 	<p>We have a good sense of the wholesale prices of bandwidth in different regions around the world based on what Cloudflare sees in the market when we buy bandwidth ourselves. We’d imagine AWS gets at least as good of pricing as we do. We’ve included a rough estimate of these prices in the calculation, rounding up on the wholesale price wherever there was a question (which makes AWS look better).</p>
-	<h3 id="massive-markups">Massive Markups</h3>
+	<h3>Massive Markups</h3>
 	<p>Based on these assumptions, here's our best estimate of AWS’s effective markup for egress bandwidth on a per-region basis.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image1-19.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Don’t rest easy, South Korea with your <em>merely</em> 357% markup. The general rule of thumb appears to be that the older a market is, the more Amazon wrings from its customers in egregious <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress markups</a> — and the Seoul availability zone is only a bit over four years old. Winter, unfortunately, inevitably seems to come to AWS customers.</p>
-	<h3 id="aws-stands-alone-in-not-passing-on-savings-to-customers">AWS Stands Alone In Not Passing On Savings to Customers</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qM5lTL8RfJFVfqsECMu4V/7fbb57efe35f9ffdfb81bcaa70ebb610/image4-12.png" alt="" class="kg-image" width="1914" height="582" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rt8aZ0kxhYsucX3CbVUQg/014deeff0103451315e229c63c2647fd/image1-19.png" alt="" class="kg-image" width="1924" height="930" loading="lazy">
+
+	</figure>
+	<p>Don’t rest easy, South Korea with your <i>merely</i> 357% markup. The general rule of thumb appears to be that the older a market is, the more Amazon wrings from its customers in egregious <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress markups</a> — and the Seoul availability zone is only a bit over four years old. Winter, unfortunately, inevitably seems to come to AWS customers.</p>
+	<h3>AWS Stands Alone In Not Passing On Savings to Customers</h3>
 	<p>Remember, this is for the transit bandwidth that AWS is paying for. For the bandwidth that they exchange with a network like Cloudflare, where they are directly connected (settlement-free peered) over a private network interface (PNI), there are no meaningful incremental costs and their effective margins are nearly infinite. Add in the effect of rebates Amazon collects from colocation providers who charge cross connect fees to customers, and the effective markup is likely even higher.</p>
 	<p>Some other cloud providers take into account that their costs are lower when passing over peering connections. Both Microsoft Azure and Google Cloud will substantially discount egress charges for their mutual Cloudflare customers. Members of the <a href="https://www.cloudflare.com/bandwidth-alliance">Bandwidth Alliance</a> — Alibaba, Automattic, Backblaze, Cherry Servers, Dataspace, DNS Networks, DreamHost, HEFICED, Kingsoft Cloud, Liquid Web, Scaleway, Tencent, Vapor, Vultr, Wasabi, and Zenlayer — waive bandwidth charges for mutual Cloudflare customers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image6-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57Ans32VnbvStvYPES35y/aff31cb286e59cf2bbc532b19478240f/image6-9.png" alt="" class="kg-image" width="1229" height="683" loading="lazy">
+
+	</figure>
 	<p>At this point, the majority of hosting providers in the industry either substantially discount or entirely waive egress fees when sending traffic from their network to a peer like Cloudflare. AWS is the notable exception in the industry. It's worth noting that we invited AWS to be a part of the Bandwidth Alliance, and they politely declined.</p>
 	<p>It seems like a no-brainer that if we’re not paying for the bandwidth costs, and the hosting provider isn’t paying for the bandwidth costs, customers shouldn’t be charged for the bandwidth costs at the same rate as if the traffic was being sent over the public Internet. Unfortunately, Amazon’s supposed obsession over doing the right thing for customers doesn’t extend to egress charges.</p>
-	<h3 id="artificially-held-high">Artificially Held High</h3>
+	<h3>Artificially Held High</h3>
 	<p>Amazon’s mission statement is: “We strive to offer our customers the lowest possible prices, the best available selection, and the utmost convenience.” And yet, when it comes to egress, their prices are far from the lowest possible.</p>
 	<p>During the last ten years, industry wholesale transit prices have fallen an average of 23% annually. Compounded over that time, wholesale bandwidth is 93% less expensive than 10 years ago. However, AWS’s egress fees over that same period have fallen by only 25%.</p>
 	<p>And, since 2018, the egress fees AWS charges in North America and Europe have not dropped a penny even as wholesale prices in those markets over the same time period have fallen by more than half.</p>
-	<h3 id="aws-s-hotel-california-pricing">AWS’s Hotel California Pricing</h3>
+	<h3>AWS’s Hotel California Pricing</h3>
 	<p>Another oddity of AWS’s pricing is that they charge for data transferred out of their network but not for data transferred into their network. If the only time you’ve paid for bandwidth is with your residential Internet connection, then this may make some sense. Because of some technical limitations of the cable network, download bandwidth is typically higher than upload bandwidth on cable modem connections. But that’s not how wholesale bandwidth is bought or sold.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image5-10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Wholesale bandwidth isn’t like your home cable connection. Instead, it’s symmetrical. That means that if you purchase a 1 Mbps (1 Megabit per second) connection, then you have the capacity to send 1 Megabit out and receive another 1 Megabit in every second. If you receive 1 Mbps in <em>and simultaneously</em> 1 Mbps out, you pay the same price as if you receive 1 Mbps in and 0 Mbps out or 0 Mbps in and 1 Mbps out. In other words, ingress (data sent to AWS) doesn’t cost them any more or less than egress (data sent from AWS). And yet, they charge customers more to take data out than put it in. It’s a head scratcher.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6a6sRKh6RUWexw1melI1so/f688f08f03dfd807d756a8f9562dc0ea/image5-10.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
+
+	</figure>
+	<p>Wholesale bandwidth isn’t like your home cable connection. Instead, it’s symmetrical. That means that if you purchase a 1 Mbps (1 Megabit per second) connection, then you have the capacity to send 1 Megabit out and receive another 1 Megabit in every second. If you receive 1 Mbps in <i>and simultaneously</i> 1 Mbps out, you pay the same price as if you receive 1 Mbps in and 0 Mbps out or 0 Mbps in and 1 Mbps out. In other words, ingress (data sent to AWS) doesn’t cost them any more or less than egress (data sent from AWS). And yet, they charge customers more to take data out than put it in. It’s a head scratcher.</p>
 	<p>We’ve tried to be charitable in trying to understand why AWS would charge this way. Disappointingly, there just doesn't seem to be an innocent explanation. As we dug in, even things like writes versus reads and the wear they put on storage media, as well as the challenges of capacity planning for storage capacity, suggest that AWS should charge less for egress than ingress.</p>
 	<p>But they don’t.</p>
 	<p>The only rationale we can reasonably come up with for AWS’s egress pricing: locking customers into their cloud, and making it prohibitively expensive to get customer data back out. So much for being customer-first.</p>
-	<h3 id="but-but-but-">But… But… But…</h3>
+	<h3>But… But… But…</h3>
 	<p>AWS may object that this doesn't take into account the cost of things like metro dark fiber between data centers, amortized optical and other networking equipment, and cross connects. In our experience, those costs amount to a rounding error of less than one cent per Mbps when operating at AWS-like scale. And these prices have been falling at a similar rate to the decline in the price of bandwidth over the past 10 years. Yet AWS’s egress prices have barely budged.</p>
 	<p>All the data above is derived from what’s published on AWS’s simple pricing calculator. There’s no doubt that some large customers are able to negotiate lower prices. But these are the prices charged to small businesses and startups by default. And, when we’ve reviewed pricing even with large AWS customers, the egress fees remain egregious.</p>
-	<h3 id="it-s-not-too-late-">It’s Not Too Late!</h3>
+	<h3>It’s Not Too Late!</h3>
 	<p>We have a lot of mutual customers who use Cloudflare and AWS. They’re a great service, and we want to support our mutual customers and provide services in a way that meets their needs and is always as secure, fast, reliable, and efficient as possible. We remain hopeful that AWS will do the right thing, lower their egress fees, join the Bandwidth Alliance — following the lead of the majority of the rest of the hosting industry — and pass along savings from peering with Cloudflare and other networks to all their customers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3.gif" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<p>.......<br>
-		<sup>1</sup><small>Here’s the calculation to convert a 1 Mbps flow into TB stocks: 1 Mbps @ 100% for 1 month = (1 million bits per second) * (60 seconds / minute) * (60 minutes / hour) * (730 hours on average/month) divided by (eight bits / byte) divided by 10^12 (to convert bytes to Terabytes) = 0.3285 TB/month.</small>
-	</p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bTWj1lyCvJKiTwIQU7mqq/359f8cc12e3f707496dcfb1f9c0e1a1d/image3.gif" alt="" class="kg-image" width="720" height="404" loading="lazy">
+
+	</figure>
+	<p>.......</p>
+	<p><sup>1</sup>Here’s the calculation to convert a 1 Mbps flow into TB stocks: 1 Mbps @ 100% for 1 month = (1 million bits per second) * (60 seconds / minute) * (60 minutes / hour) * (730 hours on average/month) divided by (eight bits / byte) divided by 10^12 (to convert bytes to Terabytes) = 0.3285 TB/month.</p>
 </div>

@@ -1,15 +1,31 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-8.png" class="kg-image" alt="DNSSEC issues take Fiji domains offline" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CHJgqhARMfR8DyNqYodTs/fce29aef7ee1d4561b76b8c972c0ba0a/image2-8.png" alt="DNSSEC issues take Fiji domains offline" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>On the morning of March 8, a <a href="https://news.ycombinator.com/item?id=30596404">post to Hacker News</a> stated that “All .fj domains have gone offline”, listing several hostnames in domains within the Fiji top level domain (known as a ccTLD) that had become unreachable. Commenters in the associated discussion thread had mixed results in being able to reach .fj hostnames—some were successful, while others saw failures. The fijivillage news site also <a href="https://www.fijivillage.com/news/All-websites--apps-in-Fiji-with-dotcomfj-suffix-are-down-and-this-has-also-affected-M-PAiSA-services-x854fr">highlighted the problem</a>, noting that the issue also impacted Vodafone’s M-PAiSA app/service, preventing users from completing financial transactions.</p>
 	<p>The impact of this issue can be seen in traffic to Cloudflare customer zones in the .com.fj second-level domain. The graph below shows that HTTP traffic to these zones dropped by approximately 40% almost immediately starting around midnight UTC on March 8. Traffic volumes continued to decline throughout the rest of the morning.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MlEPEaiJ0hsxd5pPkBJKr/7f80adba4284a771914493fe23103798/image1-6.png" alt="" class="kg-image" width="1999" height="886" loading="lazy">
+
+	</figure>
 	<p>Looking at Cloudflare’s 1.1.1.1 resolver data for queries for .com.fj hostnames, we can also see that error volume associated with those queries climbs significantly starting just after midnight as well. This means that our resolvers encountered issues with the answers from .fj servers.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1j8wWMQ23FgK4nojhFGMr1/53d6fdd3ecdb3c4d888b60f509a551ea/image3-2-1.png" alt="" class="kg-image" width="1999" height="870" loading="lazy">
+
+	</figure>
 	<p>This observation suggests that the problem was strictly DNS related, rather than connectivity related—Cloudflare Radar does not show any indication of an Internet disruption in Fiji coincident with the start of this problem.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>It was suggested within the <a href="https://news.ycombinator.com/item?id=30597091">Hacker News comments</a> that the problem could be DNSSEC related. Upon further investigation, it appears that may be the cause. In verifying the DNSSEC record for the .fj ccTLD, shown in the <code>dig</code> output below, we see that it states <code>EDE: 9 (DNSKEY Missing): 'no SEP matching the DS found for fj.'</code></p><!--kg-card-begin: markdown-->
-	<pre><code>kdig fj. soa +dnssec @1.1.1.1 
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/doKQ7vFJj4JJTDumpq7Zq/0f7ccfd66de38bfe150726b83d01a574/image4.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>It was suggested within the <a href="https://news.ycombinator.com/item?id=30597091">Hacker News comments</a> that the problem could be DNSSEC related. Upon further investigation, it appears that may be the cause. In verifying the DNSSEC record for the .fj ccTLD, shown in the <code>dig</code> output below, we see that it states <code>EDE: 9 (DNSKEY Missing): 'no SEP matching the DS found for fj.'</code></p>
+	<pre class="language-bash"><code class="language-bash">kdig fj. soa +dnssec @1.1.1.1 
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY; status: SERVFAIL; id: 12710
 ;; Flags: qr rd ra; QUERY: 1; ANSWER: 0; AUTHORITY: 0; ADDITIONAL: 1
  
@@ -22,15 +38,14 @@
  
 ;; Received 73 B
 ;; Time 2022-03-08 08:57:41 EST
-;; From 1.1.1.1@53(UDP) in 17.2 ms
-</code></pre>
-	<!--kg-card-end: markdown-->
+;; From 1.1.1.1@53(UDP) in 17.2 ms</code></pre>
 	<p>Extended DNS Error 9 (EDE: 9) is <a href="https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-extended-error-16#section-4.10">defined</a> as “A DS record existed at a parent, but no supported matching DNSKEY record could be found for the child.” The Cloudflare Learning Center <a href="https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records">article on DNSKEY and DS records</a> explains this relationship:</p>
-	<blockquote><em>The DS record is used to verify the authenticity of child zones of DNSSEC zones. The DS key record on a parent zone contains a hash of the KSK in a child zone. A DNSSEC resolver can therefore verify the authenticity of the child zone by hashing its KSK record, and comparing that to what is in the parent zone's DS record.</em></blockquote>
+	<blockquote>
+		<p><i>The DS record is used to verify the authenticity of child zones of DNSSEC zones. The DS key record on a parent zone contains a hash of the KSK in a child zone. A DNSSEC resolver can therefore verify the authenticity of the child zone by hashing its KSK record, and comparing that to what is in the parent zone's DS record.</i></p>
+	</blockquote>
 	<p>Ultimately, it appears that around midnight UTC, the .fj zone started to be signed with a key that was not in the root zone DS, possibly as the result of a scheduled rollover that happened without checking that the root zone was updated first by IANA, which updates the root zone. (IANA owns contact with the TLD operators, and instructs the Root Zone Publisher on the changes to make in the next version of the root zone.)</p>
 	<p>DNSSEC problems as the root cause of the observed issue align with the observation in the Hacker News comments that some were able to access .fj websites, while others were not. Users behind resolvers doing strict DNSSEC validation would have seen an error in their browser, while users behind less strict resolvers would have been able to access the sites without a problem.</p>
-	<h3 id="conclusion">Conclusion</h3>
-	<p>Further analysis of Cloudflare resolver metrics indicates that the problem was resolved around 1400 UTC, when the DS was updated. When DNSSEC is improperly configured for a single domain name, it can cause problems accessing websites or applications in that zone. However, when the misconfiguration occurs at a ccTLD level, the impact is much more significant. Unfortunately, this seems to <a href="https://ianix.com/pub/dnssec-outages.html">occur</a> all too often.</p><!--kg-card-begin: markdown-->
-	<p><small>(Thank you to Ólafur Guðmundsson for his DNSSEC expertise.)</small></p>
-	<!--kg-card-end: markdown-->
+	<h3>Conclusion</h3>
+	<p>Further analysis of Cloudflare resolver metrics indicates that the problem was resolved around 1400 UTC, when the DS was updated. When DNSSEC is improperly configured for a single domain name, it can cause problems accessing websites or applications in that zone. However, when the misconfiguration occurs at a ccTLD level, the impact is much more significant. Unfortunately, this seems to <a href="https://ianix.com/pub/dnssec-outages.html">occur</a> all too often.</p>
+	<p>(Thank you to Ólafur Guðmundsson for his DNSSEC expertise.)</p>
 </div>

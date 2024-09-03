@@ -1,18 +1,20 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/circl-header@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6b0YmeXVekCfEaADp0Kcp3/49270099d3c333da6493d99395a2df0e/circl-header_2x-1.png" alt="" class="kg-image" width="2200" height="1237" loading="lazy">
+
+	</figure>
 	<p>As part of <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019">Crypto Week 2019</a>, today we are proud to release the source code of a cryptographic library we’ve been working on: a collection of cryptographic primitives written in Go, called <a href="https://github.com/cloudflare/circl">CIRCL</a>. This library includes a set of packages that target cryptographic algorithms for post-quantum (PQ), elliptic curve cryptography, and hash functions for prime groups. Our hope is that it’s useful for a broad audience. Get ready to discover how we made CIRCL unique.</p>
-	<h3 id="cryptography-in-go">Cryptography in Go</h3>
+	<h3>Cryptography in Go</h3>
 	<p>We use Go a lot at Cloudflare. It offers a good balance between ease of use and performance; the learning curve is very light, and after a short time, any programmer can get good at writing fast, lightweight backend services. And thanks to the possibility of implementing performance critical parts in <a href="https://golang.org/doc/asm">Go assembly</a>, we can try to ‘squeeze the machine’ and get every bit of performance.</p>
-	<p>Cloudflare’s cryptography team designs and maintains security-critical projects. It's not a secret that security is hard. That's why, we are introducing the Cloudflare Interoperable Reusable Cryptographic Library - CIRCL. There are multiple goals behind CIRCL. First, we want to concentrate our efforts to implement cryptographic primitives in a single place. This makes it easier to ensure that proper engineering processes are followed. Second, Cloudflare is an active member of the Internet community - we are trying to improve and propose standards to help make the Internet a better place. </p>
+	<p>Cloudflare’s cryptography team designs and maintains security-critical projects. It's not a secret that security is hard. That's why, we are introducing the Cloudflare Interoperable Reusable Cryptographic Library - CIRCL. There are multiple goals behind CIRCL. First, we want to concentrate our efforts to implement cryptographic primitives in a single place. This makes it easier to ensure that proper engineering processes are followed. Second, Cloudflare is an active member of the Internet community - we are trying to improve and propose standards to help make the Internet a better place.</p>
 	<p>Cloudflare's mission is to help build a better Internet. For this reason, we want CIRCL helps the cryptographic community to create proof of concepts, like the <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-TLS">post-quantum TLS experiments</a> we are doing. Over the years, lots of ideas have been put on the table by cryptographers (for example, homomorphic encryption, multi-party computation, and privacy preserving constructions). Recently, we’ve seen those concepts picked up and exercised in a variety of contexts. CIRCL’s implementations of cryptographic primitives creates a powerful toolbox for developers wishing to use them.</p>
-	<p>The Go language provides native packages for several well-known cryptographic algorithms, such as key agreement algorithms, hash functions, and digital signatures. There are also packages maintained by the community under <a href="https://golang.org/x/crypto"><em>golang.org/x/crypto</em></a> that provide a diverse set of algorithms for supporting <a href="https://en.wikipedia.org/wiki/Authenticated_encryption">authenticated encryption</a>, <a href="https://en.wikipedia.org/wiki/Stream_cipher">stream ciphers</a>, <a href="https://en.wikipedia.org/wiki/Key_derivation_function">key derivation functions</a>, and <a href="https://en.wikipedia.org/wiki/Pairing-based_cryptography">bilinear pairings</a>. CIRCL doesn’t try to compete with <a href="https://golang.org/x/crypto"><em>golang.org/x/crypto</em></a> in any sense. Our goal is to provide a complementary set of implementations that are more aggressively optimized, or may be less commonly used but have a good chance at being very useful in the future. </p>
-	<h3 id="unboxing-circl">Unboxing CIRCL</h3>
+	<p>The Go language provides native packages for several well-known cryptographic algorithms, such as key agreement algorithms, hash functions, and digital signatures. There are also packages maintained by the community under <a href="https://golang.org/x/crypto"><i>golang.org/x/crypto</i></a> that provide a diverse set of algorithms for supporting <a href="https://en.wikipedia.org/wiki/Authenticated_encryption">authenticated encryption</a>, <a href="https://en.wikipedia.org/wiki/Stream_cipher">stream ciphers</a>, <a href="https://en.wikipedia.org/wiki/Key_derivation_function">key derivation functions</a>, and <a href="https://en.wikipedia.org/wiki/Pairing-based_cryptography">bilinear pairings</a>. CIRCL doesn’t try to compete with <a href="https://golang.org/x/crypto"><i>golang.org/x/crypto</i></a> in any sense. Our goal is to provide a complementary set of implementations that are more aggressively optimized, or may be less commonly used but have a good chance at being very useful in the future.</p>
+	<h3>Unboxing CIRCL</h3>
 	<p>Our cryptography team worked on a fresh proposal to augment the capabilities of Go users with a new set of packages. &nbsp;You can get them by typing:</p>
-	<p></p>
 	<p><code>$ go get github.com/cloudflare/circl</code></p>
-	<p></p>
-	<p>The contents of CIRCL is split across different categories, summarized in this table:<br></p><!--kg-card-begin: html-->
+	<p>The contents of CIRCL is split across different categories, summarized in this table:</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -66,13 +68,11 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p></p>
-	<h3 id="sike-a-post-quantum-key-encapsulation-mechanism">SIKE, a Post-Quantum Key Encapsulation Mechanism</h3>
+	<h3>SIKE, a Post-Quantum Key Encapsulation Mechanism</h3>
 	<p>To better understand the post-quantum world, we started experimenting with post-quantum key exchange schemes and using them for key agreement in TLS 1.3. CIRCL contains the sidh <a href="https://github.com/cloudflare/circl/tree/master/dh/sidh">package</a>, an implementation of Supersingular Isogeny-based Diffie-Hellman (SIDH), as well as <a href="https://en.wikipedia.org/wiki/Ciphertext_indistinguishability">CCA2-secure</a> Supersingular Isogeny-based Key Encapsulation (SIKE), which is based on SIDH.</p>
 	<p>CIRCL makes playing with PQ key agreement very easy. Below is an example of the SIKE interface that can be used to establish a shared secret between two parties for use in symmetric encryption. The example uses a key encapsulation mechanism (KEM). For our example in this scheme, Alice generates a random secret key, and then uses Bob’s pre-generated public key to encrypt (encapsulate) it. The resulting ciphertext is sent to Bob. Then, Bob uses his private key to decrypt (decapsulate) the ciphertext and retrieve the secret key. See more details about SIKE in this Cloudflare <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-TLS">blog</a>.</p>
 	<p>Let's see how to do this with CIRCL:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-go">// Bob's key pair
+	<pre class="language-go"><code class="language-go">// Bob's key pair
 prvB := NewPrivateKey(Fp503, KeyVariantSike)
 pubB := NewPublicKey(Fp503, KeyVariantSike)
 
@@ -88,13 +88,9 @@ pubB.Export(publicKeyBytes)
 prvB.Export(privateKeyBytes)
 
 // Encode public key to JSON
-// Save privateKeyBytes on disk
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+// Save privateKeyBytes on disk</code></pre>
 	<p>Bob uploads the public key to a location accessible by anybody. When Alice wants to establish a shared secret with Bob, she performs encapsulation that results in two parts: a shared secret and the result of the encapsulation, the ciphertext.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-go">// Read JSON to bytes
+	<pre class="language-go"><code class="language-go">// Read JSON to bytes
 
 // Alice's key pair
 pubB := NewPublicKey(Fp503, KeyVariantSike)
@@ -103,61 +99,66 @@ pubB.Import(publicKeyBytes)
 var kem := sike.NewSike503(rand.Reader)
 kem.Encapsulate(ciphertext, sharedSecret, pubB)
 
-// send ciphertext to Bob
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+// send ciphertext to Bob</code></pre>
 	<p>Bob now receives ciphertext from Alice and decapsulates the shared secret:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-go">var kem := sike.NewSike503(rand.Reader)
-kem.Decapsulate(sharedSecret, prvB, pubA, ciphertext)  
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-go"><code class="language-go">var kem := sike.NewSike503(rand.Reader)
+kem.Decapsulate(sharedSecret, prvB, pubA, ciphertext)  </code></pre>
 	<p>At this point, both Alice and Bob can derive a symmetric encryption key from the secret generated.</p>
 	<p>SIKE implementation contains:</p>
 	<ul>
-		<li>Two different field sizes: Fp503 and Fp751. The choice of the field is a trade-off between performance and security.</li>
-		<li>Code optimized for AMD64 and ARM64 architectures, as well as generic Go code. For AMD64, we detect the micro-architecture and if it’s recent enough (e.g., it supports ADOX/ADCX and BMI2 instruction sets), we use different multiplication techniques to make an execution even faster.</li>
-		<li>Code implemented in constant time, that is, the execution time doesn’t depend on secret values.</li>
+		<li>
+			<p>Two different field sizes: Fp503 and Fp751. The choice of the field is a trade-off between performance and security.</p>
+		</li>
+		<li>
+			<p>Code optimized for AMD64 and ARM64 architectures, as well as generic Go code. For AMD64, we detect the micro-architecture and if it’s recent enough (e.g., it supports ADOX/ADCX and BMI2 instruction sets), we use different multiplication techniques to make an execution even faster.</p>
+		</li>
+		<li>
+			<p>Code implemented in constant time, that is, the execution time doesn’t depend on secret values.</p>
+		</li>
 	</ul>
-	<p>We also took care of low heap-memory footprint, so that the implementation uses a minimal amount of dynamically allocated memory. In the future, we plan to provide multiple implementations of post-quantum schemes. Currently, our focus is on algorithms useful for <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-TLS">key exchange in TLS</a>. </p>
+	<p>We also took care of low heap-memory footprint, so that the implementation uses a minimal amount of dynamically allocated memory. In the future, we plan to provide multiple implementations of post-quantum schemes. Currently, our focus is on algorithms useful for <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-TLS">key exchange in TLS</a>.</p>
 	<p>SIDH/SIKE are interesting because the key sizes produced by those algorithms are relatively small (comparing with other PQ schemes). Nevertheless, performance is not all that great yet, so we’ll continue looking. We plan to add lattice-based algorithms, such as <a href="https://ntru-hrss.org">NTRU-HRSS</a> and <a href="https://pq-crystals.org/kyber">Kyber</a>, to CIRCL. We will also add another more experimental algorithm called cSIDH, which we would like to try in other applications. CIRCL doesn’t currently contain any post-quantum signature algorithms, which is also on our to-do list. After our experiment with TLS key exchange completes, we’re going to look at post-quantum PKI. But that’s a topic for a future blog post, so stay tuned.</p>
 	<p>Last, we must admit that our code is largely based on the implementation from the <a href="https://csrc.nist.gov/CSRC/media/Projects/Post-Quantum-Cryptography/documents/round-1/submissions/SIKE.zip">NIST submission</a> along with the work of former intern <a href="https://blog.cloudflare.com/sidh-go">Henry De Valence</a>, and we would like to thank both Henry and the SIKE team for their great work.</p>
-	<h3 id="elliptic-curve-cryptography">Elliptic Curve Cryptography</h3>
-	<p>Elliptic curve cryptography brings short keys sizes and faster evaluation of operations when compared to algorithms based on RSA. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">Elliptic curves</a> were standardized during the early 2000s, and have recently gained popularity as they are a more efficient way for securing communications. </p>
+	<h3>Elliptic Curve Cryptography</h3>
+	<p>Elliptic curve cryptography brings short keys sizes and faster evaluation of operations when compared to algorithms based on RSA. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">Elliptic curves</a> were standardized during the early 2000s, and have recently gained popularity as they are a more efficient way for securing communications.</p>
 	<p>Elliptic curves are used in almost every project at Cloudflare, not only for establishing TLS connections, but also for certificate validation, certificate revocation (OCSP), <a href="https://blog.cloudflare.com/privacy-pass-the-math">Privacy Pass</a>, <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">certificate transparency</a>, and <a href="https://blog.cloudflare.com/real-urls-for-amp-cached-content-using-cloudflare-workers">AMP Real URL</a>.</p>
 	<p>The Go language provides native support for NIST-standardized curves, the most popular of which is <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf">P-256</a>. In a previous post, <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">Vlad Krasnov</a> described the relevance of optimizing several cryptographic algorithms, including P-256 curve. When working at Cloudflare scale, little issues around performance are significantly magnified. This is one reason why Cloudflare pushes the boundaries of efficiency.</p>
 	<p>A similar thing happened on the chained <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">validation</a> of certificates. For some certificates, we observed performance issues when validating a chain of certificates. Our team successfully diagnosed this issue: certificates which had signatures from the <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf">P-384</a> curve, which is the curve that corresponds to the 192-bit security level, were taking up 99% of CPU time! It is common for certificates closer to the root of the chain of trust to rely on stronger security assumptions, for example, using larger elliptic curves. Our first-aid reaction comes in the form of an optimized implementation written by <a href="https://github.com/bren2010/p384">Brendan McMillion</a> that reduced the time of performing elliptic curve operations by a factor of 10. The code for P-384 is also available in CIRCL.</p>
 	<p>The latest developments in elliptic curve cryptography have caused a shift to use elliptic curve models with faster arithmetic operations. The best example is undoubtedly <a href="https://cr.yp.to/ecdh.html">Curve25519</a>; other examples are the Goldilocks and FourQ curves. CIRCL supports all of these curves, allowing instantiation of Diffie-Hellman exchanges and Edwards digital signatures. Although it slightly overlaps the Go native libraries, CIRCL has architecture-dependent optimizations.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/imageLikeEmbed--3-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<h3 id="hashing-to-groups">Hashing to Groups</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01zfosDYyaqzR6Lqu0Tshi/b8bc449e85593ebf4a448ec836aea35e/imageLikeEmbed--3-.png" alt="" class="kg-image" width="1230" height="862" loading="lazy">
+
+	</figure>
+	<h3>Hashing to Groups</h3>
 	<p>Many cryptographic protocols rely on the hardness of solving the Discrete Logarithm Problem (DLP) in special groups, one of which is the integers reduced modulo a large integer. To guarantee that the DLP is hard to solve, the modulus must be a large prime number. Increasing its size boosts on security, but also makes operations more expensive. A better approach is using elliptic curve groups since they provide faster operations.</p>
-	<p>In some cryptographic protocols, it is common to use a function with the <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">properties</a> of a cryptographic hash function that maps bit strings into elements of the group. This is easy to accomplish when, for example, the group is the set of integers modulo a large prime. However, it is not so clear how to perform this function using elliptic curves. In cryptographic literature, several methods have been proposed using the terms <em>hashing to curves</em> or <em>hashing to point</em> indistinctly.</p>
-	<p>The main issue is that there is no general method for deterministically finding points on any elliptic curve, the closest available are methods that target special curves and parameters. This is a problem for implementers of cryptographic algorithms, who have a hard time figuring out on a suitable method for hashing to points of an elliptic curve. Compounding that, chances of doing this wrong are high. There are many different methods, elliptic curves, and security considerations to analyze. For example, a <a href="https://wpa3.mathyvanhoef.com">vulnerability</a> on WPA3 handshake protocol exploited a non-constant time hashing method resulting in a recovery of keys. Currently, an <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-hash-to-curve">IETF draft</a> is tracking work in-progress that provides hashing methods unifying requirements with curves and their parameters. </p>
+	<p>In some cryptographic protocols, it is common to use a function with the <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">properties</a> of a cryptographic hash function that maps bit strings into elements of the group. This is easy to accomplish when, for example, the group is the set of integers modulo a large prime. However, it is not so clear how to perform this function using elliptic curves. In cryptographic literature, several methods have been proposed using the terms <i>hashing to curves</i> or <i>hashing to point</i> indistinctly.</p>
+	<p>The main issue is that there is no general method for deterministically finding points on any elliptic curve, the closest available are methods that target special curves and parameters. This is a problem for implementers of cryptographic algorithms, who have a hard time figuring out on a suitable method for hashing to points of an elliptic curve. Compounding that, chances of doing this wrong are high. There are many different methods, elliptic curves, and security considerations to analyze. For example, a <a href="https://wpa3.mathyvanhoef.com">vulnerability</a> on WPA3 handshake protocol exploited a non-constant time hashing method resulting in a recovery of keys. Currently, an <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-hash-to-curve">IETF draft</a> is tracking work in-progress that provides hashing methods unifying requirements with curves and their parameters.</p>
 	<p>Corresponding to this problem, CIRCL will include implementations of hashing methods for elliptic curves. Our development is accompanying the evolution of the IEFT draft. Therefore, users of CIRCL will have this added value as the methods implement a ready-to-go functionality, covering the needs of some cryptographic protocols.</p>
-	<h3 id="update-on-bilinear-pairings">Update on Bilinear Pairings</h3>
+	<h3>Update on Bilinear Pairings</h3>
 	<p>Bilinear pairings are sometimes regarded as a tool for cryptanalysis, however pairings can also be used in a constructive way by allowing instantiation of advanced public-key algorithms, for example, identity-based encryption, attribute-based encryption, blind digital signatures, three-party key agreement, among others.</p>
-	<p>An efficient way to instantiate a bilinear pairing is to use elliptic curves. Note that only a special class of curves can be used, thus so-called <em>pairing-friendly </em>curves have specific properties that enable the efficient evaluation of a pairing.</p>
+	<p>An efficient way to instantiate a bilinear pairing is to use elliptic curves. Note that only a special class of curves can be used, thus so-called <i>pairing-friendly</i> curves have specific properties that enable the efficient evaluation of a pairing.</p>
 	<p>Some families of pairing-friendly curves were introduced by Barreto-Naehrig (<a href="https://doi.org/10.1007/11693383_22">BN</a>), Kachisa-Schaefer-Scott (<a href="https://doi.org/10.1007/978-3-540-85538-5_9">KSS</a>), and Barreto-Lynn-Scott (<a href="https://doi.org/10.1007/3-540-36413-7_19">BLS</a>). BN256 is a BN curve using a 256-bit prime and is one of the fastest options for implementing a bilinear pairing. The Go native library supports this curve in the package <a href="https://godoc.org/golang.org/x/crypto/bn256">golang.org/x/crypto/bn256</a>. In fact, the BN256 curve is used by Cloudflare’s <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">Geo Key Manager</a>, which allows distributing encrypted keys around the world. At Cloudflare, high-performance is a must and with this motivation, in 2017, we released an optimized implementation of the BN256 package that is <a href="https://github.com/cloudflare/bn256">8x faster</a> than the Go’s native package. The success of these optimizations reached several other projects such as the <a href="https://github.com/ethereum/go-ethereum/blob/master/core/vm/contracts.go">Ethereum protocol</a> and the <a href="https://blog.cloudflare.com/league-of-entropy">Randomness</a> <a href="https://blog.cloudflare.com/inside-the-entropy">Beacon</a> project.</p>
 	<p>Recent <a href="https://eprint.iacr.org/2015/1027">improvements</a> in solving the DLP over extension fields, GF(pᵐ) for p prime and m&gt;1, impacted the security of pairings, causing recalculation of the parameters used for pairing-friendly curves.</p>
 	<p>Before these discoveries, the BN256 curve provided a 128-bit security level, but now larger primes are needed to target the same security level. That does not mean that the BN256 curve has been broken, since BN256 gives a security of <a href="https://eprint.iacr.org/2017/334">100 bits</a>, that is, approximately 2¹⁰⁰ operations are required to cause a real danger, which is still unfeasible with current computing power.</p>
 	<p>With our CIRCL announcement, we want to announce our plans for research and development to obtain efficient curve(s) to become a stronger successor of BN256. According to the estimation by <a href="https://doi.org/10.1007/s00145-018-9280-5">Barbulescu-Duquesne</a>, a BN curve must use primes of at least 456 bits to match a 128-bit security level. However, the impact on the recalculation of parameters brings back to the main scene BLS and KSS curves as efficient alternatives. To this end a <a href="https://datatracker.ietf.org/doc/draft-yonezawa-pairing-friendly-curves">standardization effort</a> at IEFT is in progress with the aim of defining parameters and pairing-friendly curves that match different security levels.</p>
 	<p>Note that regardless of the curve(s) chosen, there is an unavoidable performance downgrade when moving from BN256 to a stronger curve. Actual timings were presented by <a href="https://ecc2017.cs.ru.nl/slides/ecc2017-aranha.pdf">Aranha</a>, who described the evolution of the race for high-performance pairing implementations. The purpose of our continuous development of CIRCL is to minimize this impact through fast implementations.</p>
-	<h3 id="optimizations">Optimizations</h3>
+	<h3>Optimizations</h3>
 	<p>Go itself is a very easy to learn and use for system programming and yet makes it possible to use assembly so that you can stay close “to the metal”. We have blogged about improving performance in Go few times in the past (see these posts about <a href="https://blog.cloudflare.com/how-expensive-is-crypto-anyway">encryption</a>, <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">ciphersuites</a>, and <a href="https://blog.cloudflare.com/neon-is-the-new-black">image encoding</a>).</p>
 	<p>When developing CIRCL, we crafted the code to get the best possible performance from the machine. We leverage the capabilities provided by the architecture and the architecture-specific instructions. This means that in some cases we need to get our hands dirty and rewrite parts of the software in Go assembly, which is not easy, but definitely worth the effort when it comes to performance. We focused on x86-64, as this is our main target, but we also think that it’s <a href="https://blog.cloudflare.com/arm-takes-wing">worth looking at ARM architecture</a>, and in some cases (like SIDH or P-384), CIRCL has optimized code for this platform.</p>
 	<p>We also try to ensure that code uses memory efficiently - crafting it in a way that fast allocations on the stack are preferred over expensive heap allocations. In cases where heap allocation is needed, we tried to design the APIs in a way that, they allow pre-allocating memory ahead of time and reuse it for multiple operations.</p>
-	<h3 id="security">Security</h3>
+	<h3>Security</h3>
 	<p>The CIRCL library is offered as-is, and without a guarantee. Therefore, it is expected that changes in the code, repository, and API occur in the future. We recommend to take caution before using this library in a production application since part of its content is experimental.</p>
 	<p>As new attacks and vulnerabilities arise over the time, security of software should be treated as a continuous process. In particular, the assessment of cryptographic software is critical, it requires the expertise of several fields, not only computer science. Cryptography engineers must be aware of the latest vulnerabilities and methods of attack in order to defend against them.</p>
 	<p>The development of CIRCL follows best practices on the secure development. For example, if time execution of the code depends on secret data, the attacker could leverage those irregularities and recover secret keys. In our code, we take care of writing constant-time code and hence prevent timing based attacks.</p>
 	<p>Developers of cryptographic software must also be aware of optimizations performed by the compiler and/or the <a href="https://meltdownattack.com">processor</a> since these optimizations can lead to insecure binary codes in some cases. All of these issues could be exploited in real attacks aimed at compromising systems and keys. Therefore, software changes must be tracked down through thorough code reviews. Also static analyzers and automated testing tools play an important role on the security of the software.</p>
-	<h3 id="summary">Summary</h3>
+	<h3>Summary</h3>
 	<p>CIRCL is envisioned as an effective tool for experimenting with modern cryptographic algorithms yet providing high-performance implementations. Today is marked as the starting point of a continuous machinery of innovation and retribution to the community in the form of a cryptographic library. There are still several other applications such as homomorphic encryption, multi-party computation, and privacy-preserving protocols that we would like to explore.</p>
-	<p>We are team of cryptography, security, and software engineers working to improve and augment Cloudflare products. Our team keeps the communication channels open for receiving comments, including improvements, and merging contributions. We welcome opinions and contributions! If you would like to get in contact, you should check out our github repository for CIRCL <a href="https://github.com/cloudflare/circl">github.com/cloudflare/circl</a>. We want to share our work and hope it makes someone else’s job easier as well. </p>
+	<p>We are team of cryptography, security, and software engineers working to improve and augment Cloudflare products. Our team keeps the communication channels open for receiving comments, including improvements, and merging contributions. We welcome opinions and contributions! If you would like to get in contact, you should check out our github repository for CIRCL <a href="https://github.com/cloudflare/circl">github.com/cloudflare/circl</a>. We want to share our work and hope it makes someone else’s job easier as well.</p>
 	<p>Finally, special thanks to all the contributors who has either directly or indirectly helped to implement the library - Ko Stoffelen, Brendan McMillion, Henry de Valence, Michael McLoughlin and all the people who invested their time in reviewing our code.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/crypto-week-2019-header-circle@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58PegOxcmXcRhZLgq36KqR/8532392b209f467bffa8f28af9dc4910/crypto-week-2019-header-circle_2x-1.png" alt="" class="kg-image" width="1600" height="1173" loading="lazy">
+
+	</figure>
 </div>

@@ -1,30 +1,40 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/remix-on-cloudflare-pages-zh-cn">简体中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/remix-1.png" class="kg-image" alt="Supporting Remix with full stack Cloudflare Pages" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/remix-on-cloudflare-pages">简体中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L8XNQXMAMjKwMWhI8FceZ/6a3c2bddb38fc5894257160d238b1605/remix-1.png" alt="Supporting Remix with full stack Cloudflare Pages" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>We announced the <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">open beta of full stack Cloudflare Pages</a> in November and have since seen widespread uptake from developers looking to add dynamic functionality to their applications. Today, we're excited to announce Pages' support for Remix applications, powered by our full stack platform.</p>
-	<h3 id="the-new-kid-on-the-block-remix">The new kid on the block: Remix</h3>
-	<p><a href="https://remix.run">Remix</a> is a new framework that is focused on fully utilizing the power of the web. Like Cloudflare Workers, it uses modern JavaScript APIs, and it places emphasis on web fundamentals such as meaningful HTTP status codes, caching and optimizing for both usability and performance. One of the biggest features of Remix is its transportability: Remix provides a platform-agnostic interface and adapters allowing it to be deployed to a growing number of providers. Cloudflare Workers was available at Remix's launch, but what makes Workers different in this case, is the native compatibility that Workers can offer. </p>
-	<blockquote><em>One of the main inspirations for Remix was the way Cloudflare Workers uses native web APIs for handling HTTP requests and responses. It's a brilliant decision because developers are able to reuse knowledge on the server that they gained building apps in the browser! Remix runs natively on Cloudflare Workers, and the results we've seen so far are fantastic. We are incredibly excited about the potential that Cloudflare Workers and Pages unlocks for building apps that run at the edge!</em><br>- <strong>Michael Jackson</strong>, CEO at <a href="https://remix.run">Remix</a></blockquote>
+	<h3>The new kid on the block: Remix</h3>
+	<p><a href="https://remix.run">Remix</a> is a new framework that is focused on fully utilizing the power of the web. Like Cloudflare Workers, it uses modern JavaScript APIs, and it places emphasis on web fundamentals such as meaningful HTTP status codes, caching and optimizing for both usability and performance. One of the biggest features of Remix is its transportability: Remix provides a platform-agnostic interface and adapters allowing it to be deployed to a growing number of providers. Cloudflare Workers was available at Remix's launch, but what makes Workers different in this case, is the native compatibility that Workers can offer.</p>
+	<blockquote>
+		<p><i>One of the main inspirations for Remix was the way Cloudflare Workers uses native web APIs for handling HTTP requests and responses. It's a brilliant decision because developers are able to reuse knowledge on the server that they gained building apps in the browser! Remix runs natively on Cloudflare Workers, and the results we've seen so far are fantastic. We are incredibly excited about the potential that Cloudflare Workers and Pages unlocks for building apps that run at the edge!</i>- <b>Michael Jackson</b>, CEO at <a href="https://remix.run">Remix</a></p>
+	</blockquote>
 	<p>This native compatibility means that as you learn how to write applications in Remix, you're also learning how to write Cloudflare Workers (and vice versa). But it also means better performance! Rather than having a Node.js process running on a server — which could be far away from your users, could be overwhelmed in the case of high traffic, and has to map between Node.js' runtime and the modern Fetch API — you can deploy to Cloudflare's network and requests will be routed to any one of our 250+ locations. This means better performance for your users, with <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">95% of the entire Internet-connected world lying within 50ms of a Cloudflare presence, and 80% of the Internet-connected world within 20ms</a>.</p>
-	<h3 id="integrating-with-cloudflare">Integrating with Cloudflare</h3>
+	<h3>Integrating with Cloudflare</h3>
 	<p>More often than not, full stack applications need some place to store data. Cloudflare offers three all-encompassing options here:</p>
 	<ul>
-		<li>KV, our high performance and globally replicated key-value datastore.</li>
-		<li>Durable Objects, our strongly consistent coordination primitive which can be restricted to a given jurisdiction.</li>
-		<li>R2 (coming soon!), our fast and reliable <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a>.</li>
+		<li>
+			<p>KV, our high performance and globally replicated key-value datastore.</p>
+		</li>
+		<li>
+			<p>Durable Objects, our strongly consistent coordination primitive which can be restricted to a given jurisdiction.</p>
+		</li>
+		<li>
+			<p>R2 (coming soon!), our fast and reliable <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a>.</p>
+		</li>
 	</ul>
 	<p>Remix already tightly integrates with <a href="https://remix.run/docs/en/v1/api/remix#createcloudflarekvsessionstorage-cloudflare-workers">KV for session storage</a>, and a Durable Objects integration is in progress. Additionally, Cloudflare's other features, such as <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties">geolocating incoming requests</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter">HTMLRewriter</a> and our <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a>, are all available from within your Remix application.</p>
-	<h3 id="deploying-to-cloudflare-pages">Deploying to Cloudflare Pages</h3>
+	<h3>Deploying to Cloudflare Pages</h3>
 	<p>Cloudflare Pages was already capable of serving static assets from the Cloudflare edge, but now with November's release of serverless functions powered by Cloudflare Workers, it has evolved into an entire platform perfectly suited for hosting full stack applications.</p>
 	<p>To get started with Remix and Cloudflare Pages today, run the following in your terminal, and select "Cloudflare Pages" when asked "Where do you want to deploy?":</p>
-	<pre><code class="language-sh">npx create-remix@latest
-</code></pre>
+	<pre class="language-sh"><code class="language-sh">npx create-remix@latest</code></pre>
 	<p>Then create a repository on <a href="https://developers.cloudflare.com/pages/platform/github-integration">GitHub</a> or <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab">GitLab</a>, <code>git commit</code>, and <code>git push</code> the newly created folder. Finally, navigate to Cloudflare Pages, select your repository, and select "Remix" from the dropdown of framework presets. Your new application will be available on your <code>pages.dev</code> subdomain, or you can <a href="https://developers.cloudflare.com/pages/get-started#adding-a-custom-domain">connect it to any of your custom domains</a>.</p>
 	<p>Your folder will have a <code>functions/[[path]].ts</code> file. This is <a href="https://developers.cloudflare.com/pages/platform/functions">the functions integration</a> where we serve your Remix application on all paths of your website. <a href="https://remix.run/docs/en/v1/api/conventions#file-name-conventions">The <code>app</code> folder</a> is where the bulk of your Remix application's logic is. With Pages' support for <a href="https://developers.cloudflare.com/pages/platform/rollbacks">rollbacks</a> and <a href="https://developers.cloudflare.com/pages/platform/preview-deployments">preview deployments</a>, you can safely test any changes to your application, and, with <a href="https://blog.cloudflare.com/wrangler-v2-beta">the wrangler 2.0 beta</a>, testing locally is just a simple case of <code>npm run dev</code>.</p>
-	<h3 id="the-future-of-frameworks-on-cloudflare-pages">The future of frameworks on Cloudflare Pages</h3>
+	<h3>The future of frameworks on Cloudflare Pages</h3>
 	<p>Remix is the second framework to integrate natively with full stack Cloudflare Pages, following <a href="https://kit.svelte.dev">SvelteKit</a>, which was available at launch. But this is just the beginning! We have a lot more in store for our integration with Remix and other frameworks. Stay tuned for improvements on &nbsp;Pages’ build times and other areas of the developer experience, as well as new features to the platform.</p>
-	<h3 id="join-our-community-">Join our community! </h3>
+	<h3>Join our community!</h3>
 	<p>If you are new to the Cloudflare Pages and Workers world, <a href="https://discord.com/invite/cloudflaredev">join our Discord server</a> and show us what you’re building. Whether it’s a new full stack application on Remix or even a simple static site, we’d love to hear from you.</p>
 </div>

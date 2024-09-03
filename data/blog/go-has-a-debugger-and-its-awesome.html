@@ -1,15 +1,18 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>Something that often, uh... <em>bugs</em><sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup> Go developers is the <strong>lack of a proper debugger</strong>. Sure, builds are ridiculously fast and easy, and <code>println(hex.Dump(b))</code> is your friend, but sometimes it would be nice to just set a breakpoint and step through that endless <code>if</code> chain or print a bunch of values without recompiling ten times.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/12294903084_3a3d128ae7_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/62766743@N07/12294903084/in/photolist-jJsAkE-hiHrhB-9TNjzG-9TMKnB-9TKuyt-9TKuQx-4rHRku-9TNj1L-dCD4Ay-bbk7in-ngEQwy-q577yv-qmsFPs-qXFbRy-dCMyqk-rmqu1H-tncWw9-fzkCLf-54MZxq-9ZCivM-fdC6b-5jvVQ7-q4YkxA-2vVkpu-aY6pnx-9TNiVC-j8TKCC-9TNji3-dKjVwD-eRrMtP-dVJA3D-bwjW2u-ohnZh9-iRdXBy-dWXXKe-fdT8VT-ePmAs-ecdQqy-ieu7sA-iFi5z-j6m1Qs-ncgQ2q-7W3hJi-r17FpD-ekipUs-jYbRdy-ckWNBh-gT4VL-9TNjvC-9TNjpL">image</a> by <a href="https://www.flickr.com/photos/62766743@N07">Carl Milner</a></small>
-	</p>
-	<p>You <em>could</em> try to use some dirty gdb hacks that will work if you built your binary with a certain linker and ran it on some architectures when the moon was in a waxing crescent phase, but let's be honest, it isn't an enjoyable experience.</p>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IjRAYM4k4adA7QPdZKb6s/69586c3e9374032b8058e6a07585222f/go-has-a-debugger-and-its-awesome.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Something that often, uh... <i>bugs</i><a href="https://blog.cloudflare.com/#fn1">[1]</a> Go developers is the <b>lack of a proper debugger</b>. Sure, builds are ridiculously fast and easy, and <code>println(hex.Dump(b))</code> is your friend, but sometimes it would be nice to just set a breakpoint and step through that endless <code>if</code> chain or print a bunch of values without recompiling ten times.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PlA0CeyPc2zJ6Ai6u9f9u/4c94e2efe1612261fe4aeb9c75ed8836/12294903084_3a3d128ae7_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/62766743@N07/12294903084/in/photolist-jJsAkE-hiHrhB-9TNjzG-9TMKnB-9TKuyt-9TKuQx-4rHRku-9TNj1L-dCD4Ay-bbk7in-ngEQwy-q577yv-qmsFPs-qXFbRy-dCMyqk-rmqu1H-tncWw9-fzkCLf-54MZxq-9ZCivM-fdC6b-5jvVQ7-q4YkxA-2vVkpu-aY6pnx-9TNiVC-j8TKCC-9TNji3-dKjVwD-eRrMtP-dVJA3D-bwjW2u-ohnZh9-iRdXBy-dWXXKe-fdT8VT-ePmAs-ecdQqy-ieu7sA-iFi5z-j6m1Qs-ncgQ2q-7W3hJi-r17FpD-ekipUs-jYbRdy-ckWNBh-gT4VL-9TNjvC-9TNjpL">image</a> by <a href="https://www.flickr.com/photos/62766743@N07">Carl Milner</a></p>
+	<p>You <i>could</i> try to use some dirty gdb hacks that will work if you built your binary with a certain linker and ran it on some architectures when the moon was in a waxing crescent phase, but let's be honest, it isn't an enjoyable experience.</p>
 	<p>Well, worry no more! <a href="https://github.com/mailgun/godebug">godebug</a> is here!</p>
-	<p><strong>godebug is an awesome cross-platform debugger</strong> created by the Mailgun team. You can read <a href="https://blog.mailgun.com/introducing-a-new-cross-platform-debugger-for-go">their introduction</a> for some under-the-hood details, but here's the cool bit: instead of wrestling with half a dozen different ptrace interfaces that would not be portable, <strong>godebug rewrites your source code</strong> and injects function calls like <code>godebug.Line</code> on every line, <code>godebug.Declare</code> at every variable declaration, and <code>godebug.SetTrace</code> for breakpoints (i.e. wherever you type <code>_ = "breakpoint"</code>).</p>
-	<p>I find this solution brilliant. What you get out of it is a (possibly cross-compiled) debug-enabled binary that you can drop on a staging server just like you would with a regular binary. When a breakpoint is reached, the program will stop inline and wait for you on stdin. <strong>It's the single-binary, zero-dependencies philosophy of Go that we love applied to debugging.</strong> Builds everywhere, runs everywhere, with no need for tools or permissions on the server. It even compiles to JavaScript with gopherjs (check out the Mailgun post above—show-offs ;) ).</p>
-	<p>You might ask, "But does it get a decent runtime speed or work with big applications?" Well, the other day I was seeing RRDNS—our in-house Go DNS server—hit a weird branch, so I placed a breakpoint a couple lines above the <em>if</em> in question, <strong>recompiled the whole of RRDNS with godebug instrumentation</strong>, dropped the binary on a staging server, and replayed some DNS traffic.</p>
-	<pre><code>filippo@staging:~$ ./rrdns -config config.json
+	<p><b>godebug is an awesome cross-platform debugger</b> created by the Mailgun team. You can read <a href="https://blog.mailgun.com/introducing-a-new-cross-platform-debugger-for-go">their introduction</a> for some under-the-hood details, but here's the cool bit: instead of wrestling with half a dozen different ptrace interfaces that would not be portable, <b>godebug rewrites your source code</b> and injects function calls like <code>godebug.Line</code> on every line, <code>godebug.Declare</code> at every variable declaration, and <code>godebug.SetTrace</code> for breakpoints (i.e. wherever you type <code>_ = "breakpoint"</code>).</p>
+	<p>I find this solution brilliant. What you get out of it is a (possibly cross-compiled) debug-enabled binary that you can drop on a staging server just like you would with a regular binary. When a breakpoint is reached, the program will stop inline and wait for you on stdin. <b>It's the single-binary, zero-dependencies philosophy of Go that we love applied to debugging.</b> Builds everywhere, runs everywhere, with no need for tools or permissions on the server. It even compiles to JavaScript with gopherjs (check out the Mailgun post above—show-offs ;) ).</p>
+	<p>You might ask, "But does it get a decent runtime speed or work with big applications?" Well, the other day I was seeing RRDNS—our in-house Go DNS server—hit a weird branch, so I placed a breakpoint a couple lines above the <i>if</i> in question, <b>recompiled the whole of RRDNS with godebug instrumentation</b>, dropped the binary on a staging server, and replayed some DNS traffic.</p>
+	<pre class="language-bash"><code class="language-bash">filippo@staging:~$ ./rrdns -config config.json
 -&gt; _ = "breakpoint"
 (godebug) l
 
@@ -23,12 +26,11 @@
 -&gt; if !isQtypeSupported(q.Qtype) {
 (godebug) q
 dns.Question{Name:"filippo.io.", Qtype:0x1, Qclass:0x1}
-(godebug) c
-</code></pre>
+(godebug) c</code></pre>
 	<p>Boom. The request and the debug log paused (make sure to terminate any timeout you have in your tools), waiting for me to step through the code.</p>
-	<p>Sold yet? Here's how you use it: simply run <code>godebug {build|run|test}</code> instead of <code>go {build|run|test}</code>. <a href="https://github.com/mailgun/godebug/pull/32/commits">We adapted godebug</a> to resemble the go tool as much as possible. Remember to use <code>-instrument</code> if you want to be able to step into packages that are not <em>main</em>.</p>
+	<p>Sold yet? Here's how you use it: simply run <code>godebug {build|run|test}</code> instead of <code>go {build|run|test}</code>. <a href="https://github.com/mailgun/godebug/pull/32/commits">We adapted godebug</a> to resemble the go tool as much as possible. Remember to use <code>-instrument</code> if you want to be able to step into packages that are not <i>main</i>.</p>
 	<p>For example, here is part of the RRDNS Makefile:</p>
-	<pre><code class="language-make">bin/rrdns:
+	<pre class="language-make"><code class="language-make">bin/rrdns:
 ifdef GODEBUG
 	GOPATH="${PWD}" go install github.com/mailgun/godebug
 	GOPATH="${PWD}" ./bin/godebug build -instrument "${GODEBUG}" -o bin/rrdns rrdns
@@ -42,29 +44,31 @@ ifdef GODEBUG
 	GOPATH="${PWD}" ./bin/godebug test -instrument "${GODEBUG}" rrdns/...
 else
 	GOPATH="${PWD}" go test rrdns/...
-endif
-</code></pre>
+endif</code></pre>
 	<p>Debugging is just a <code>make bin/rrdns GODEBUG=rrdns/...</code> away.</p>
 	<p>This tool is still young, but in my experience, perfectly functional. The UX could use some love if you can spare some time (as you can see above it's pretty spartan), but it should be easy to build on what's there already.</p>
-	<h2 id="aboutsourcerewriting">About source rewriting</h2>
+	<h2>About source rewriting</h2>
 	<p>Before closing, I'd like to say a few words about the technique of source rewriting in general. It powers many different Go tools, like <a href="https://blog.golang.org/cover">test coverage</a>, <a href="https://github.com/dvyukov/go-fuzz">fuzzing</a> and, indeed, debugging. It's made possible primarily by Go’s blazing-fast compiles, and it enables amazing cross-platform tools to be built easily.</p>
-	<p>However, since it's such a handy and powerful pattern, I feel like <strong>there should be a standard way to apply it in the context of the build process</strong>. After all, all the source rewriting tools need to implement a subset of the following features:</p>
+	<p>However, since it's such a handy and powerful pattern, I feel like <b>there should be a standard way to apply it in the context of the build process</b>. After all, all the source rewriting tools need to implement a subset of the following features:</p>
 	<ul>
-		<li>Wrap the main function</li>
-		<li>Conditionally rewrite source files</li>
-		<li>Keep global state</li>
+		<li>
+			<p>Wrap the main function</p>
+		</li>
+		<li>
+			<p>Conditionally rewrite source files</p>
+		</li>
+		<li>
+			<p>Keep global state</p>
+		</li>
 	</ul>
 	<p>Why should every tool have to reinvent all the boilerplate to copy the source files, rewrite the source, make sure stale objects are not used, build the right packages, run the right tests, and interpret the CLI..? Basically, all of <a href="https://github.com/mailgun/godebug/blob/f8742f647adb8ee17a1435de3b1929d36df590c8/cmd.go">godebug/cmd.go</a>. And what about <a href="http://getgb.io">gb</a>, for example?</p>
 	<p>I think we need a framework for Go source code rewriting tools. (Spoiler, spoiler, ...)</p>
-	<p><em>If you’re interested in working on Go servers at scale and developing tools to do it better, remember <a href="https://www.cloudflare.com/join-our-team">we’re hiring in London, San Francisco, and Singapore</a>!</em></p>
+	<p><i>If you’re interested in working on Go servers at scale and developing tools to do it better, remember </i><a href="https://www.cloudflare.com/join-our-team"><i>we’re hiring in London, San Francisco, and Singapore</i></a><i>!</i></p>
 	<hr>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>I'm sorry. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>I'm sorry. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+	</ol>
 </div>

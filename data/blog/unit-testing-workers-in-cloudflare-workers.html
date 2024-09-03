@@ -1,13 +1,17 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/terminal-worker-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/V9gw5j3U7OqRNSvpw10sX/2d7445eb6dba4a7b199cdc65979e29dd/terminal-worker-1.png" alt="" class="kg-image" width="1198" height="750" loading="lazy">
+
+	</figure>
 	<p>We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="https://blog.cloudflare.com/unit-testing-worker-functions">See Unit Testing Worker Functions.</a></p>
 	<p>Even though Cloudflare Workers deploy globally within seconds, software developers often choose to use local mock environments to have the fastest possible feedback loop while developing on their local machines. CloudWorker is perfect for this use case but as it is still a mock environment it does not guarantee an identical runtime or environment with all Cloudflare Worker APIs and features. This gap can make developers uneasy as they do not have 100% certainty that their tests will succeed in the production environment.</p>
 	<p>In this post, we're going to demonstrate how to generate a Cloudflare Worker compatible test harness which can execute mocha unit tests directly in the production Cloudflare environment.</p>
-	<h2 id="directory-setup">Directory Setup</h2>
+	<h2>Directory Setup</h2>
 	<p>Create a new folder for your project, change it to your working directory and run <code>npm init</code> to initialise the <code>package.json</code> file.</p>
 	<p>Run <code>mkdir -p src &amp;&amp; mkdir -p test/lib &amp;&amp; mkdir dist</code> to create folders used by the next steps. Your folder should look like this:</p>
-	<pre><code>.
+	<pre class="language-bash"><code class="language-bash">.
 ./dist
 ./src/worker.js
 ./test
@@ -17,9 +21,9 @@
 	<p>This will install Mocha (the unit testing framework), Webpack (a tool used to package the code into a single Worker script) and Exports Loader (a tool used by Webpack to import the Worker script into the Worker based Mocha environment.</p>
 	<p><code>npm install --save-dev git+https://github.com/obezuk/mocha-loader.git</code></p>
 	<p>This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
-	<h3 id="example-script"><strong>Example Script</strong></h3>
-	<p>Create your Worker script in <code>./src/worker.js</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<h3><b>Example Script</b></h3>
+	<p>Create your Worker script in <code>./src/worker.js</code>:</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))
 })
 
@@ -30,12 +34,10 @@ async function addition(a, b) {
 async function handleRequest(request) {
   const added = await addition(1,3)
   return new Response(`The Sum is ${added}!`)
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="add-tests">Add Tests</h3>
-	<p>Create your unit tests in <code>./test/test.test.js</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">const assert = require('assert')
+}</code></pre>
+	<h3>Add Tests</h3>
+	<p>Create your unit tests in <code>./test/test.test.js</code>:</p>
+	<pre class="language-javascript"><code class="language-javascript">const assert = require('assert')
 
 describe('Worker Test', function() {
 
@@ -52,13 +54,11 @@ describe('Worker Test', function() {
         assert.equal(res, 2)
     })
 
-})
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="mocha-in-worker-test-harness">Mocha in Worker Test Harness</h2>
+})</code></pre>
+	<h2>Mocha in Worker Test Harness</h2>
 	<p>In order to execute mocha and unit tests within Cloudflare Workers we are going to build a Test Harness. The Test Harness script looks a lot like a normal Worker script but integrates your <code>./src/worker.js</code> and <code>./test/test.test.js</code> into a script which is capable of executing the Mocha unit tests within the Cloudflare Worker runtime.</p>
-	<p>Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import 'mocha';
+	<p>Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p>
+	<pre class="language-javascript"><code class="language-javascript">import 'mocha';
 
 import 'mocha-loader!../test.test.js';
 
@@ -101,12 +101,10 @@ async function handleMochaRequest(request) {
 }
 
 Object.assign(global, require('exports-loader?handleRequest,addition!../../src/worker.js'));
-
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="mocha-webpack-configuration">Mocha Webpack Configuration</h3>
-	<p>Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">module.exports = {
+	<h3>Mocha Webpack Configuration</h3>
+	<p>Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p>
+	<pre class="language-javascript"><code class="language-javascript">module.exports = {
   target: 'webworker',
   entry: "./test/lib/serviceworker-mocha-harness.js",
   mode: "development",
@@ -128,44 +126,34 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
     filename: "worker-mocha-harness.js"
   }
 };
-
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Your file structure should look like (excluding node_modules):</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">.
+	<p>Your file structure should look like (excluding node_modules):</p>
+	<pre class="language-bash"><code class="language-bash">.
 ./dist
 ./src/worker.js
 ./test/test.test.js
 ./test/lib/serviceworker-mocha-harness.js
 ./package.json
 ./package-lock.json
-./webpack.mocha.config.js
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="customising-the-test-harness-"><strong>Customising the test harness.</strong></h3>
-	<p>If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import 'mocha-loader!/* TEST FILE NAME HERE */'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">Object.assign(global, require('exports-loader?/* COMMA SEPARATED FUNCTION NAMES HERE */!../../src/worker.js'));
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h1 id="running-the-test-harness"><strong>Running the test harness</strong></h1>
+./webpack.mocha.config.js</code></pre>
+	<h3><b>Customising the test harness.</b></h3>
+	<p>If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p>
+	<pre class="language-javascript"><code class="language-javascript">import 'mocha-loader!/* TEST FILE NAME HERE */'</code></pre>
+	<p>If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p>
+	<pre class="language-javascript"><code class="language-javascript">Object.assign(global, require('exports-loader?/* COMMA SEPARATED FUNCTION NAMES HERE */!../../src/worker.js'));</code></pre>
+	<h1><b>Running the test harness</b></h1>
 	<p>Deploying and running the test harness is identical to deploying any other Worker script with Webpack.</p>
-	<p>Modify the scripts section of package.json to include the build-harness command.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">"scripts": {
+	<p>Modify the scripts section of package.json to include the build-harness command.</p>
+	<pre class="language-javascript"><code class="language-javascript">"scripts": {
   "build-harness": "webpack --config webpack.mocha.config.js -p --progress --colors"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>In the project root directory run the command <code>npm run build-harness</code> to generate and bundle your Worker script, Mocha and your unit tests into <code>./dist/worker-mocha-harness.js</code>.</p>
 	<p>Upload this script to a test Cloudflare workers route and run <code>curl --fail https://test.example.org</code>. If the unit tests are successful it will return a <code>200</code> response, and if the unit tests fail a <code>500</code> response.</p>
-	<h2 id="integrating-into-an-existing-ci-cd-pipeline"><strong>Integrating into an existing CI/CD pipeline</strong></h2>
+	<h2><b>Integrating into an existing CI/CD pipeline</b></h2>
 	<p>You can integrate Cloudflare Workers and the test harness into your existing CI/CD pipeline by using our API: <a href="https://developers.cloudflare.com/workers/api">https://developers.cloudflare.com/workers/api/</a>.</p>
 	<p>The test harness returns detailed test reports in JSON format:</p>
-	<p><strong>Example Success Response</strong></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<p><b>Example Success Response</b></p>
+	<pre class="language-json"><code class="language-json">{
   "stats": {
     "suites": 1,
     "tests": 2,
@@ -211,11 +199,9 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
     }
   ]
 }
-
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<p><strong>Example Failure Response</strong></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<p><b>Example Failure Response</b></p>
+	<pre class="language-json"><code class="language-json">{
   "stats": {
     "suites": 1,
     "tests": 2,
@@ -239,7 +225,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
         "operator": "==",
         "message": "'The Sum is 5!' == 'The Sum is 4!'",
         "generatedMessage": true,
-        "stack": "AssertionError: 'The Sum is 5!' == 'The Sum is 4!'\n    at Context.&lt;anonymous&gt; (worker.js:19152:16)"
+        "stack": "AssertionError: 'The Sum is 5!' == 'The Sum is 4!'\n    at Context.<anonymous> (worker.js:19152:16)"
       }
     },
     {
@@ -254,7 +240,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
         "operator": "==",
         "message": "3 == 2",
         "generatedMessage": true,
-        "stack": "AssertionError: 3 == 2\n    at Context.&lt;anonymous&gt; (worker.js:19157:16)"
+        "stack": "AssertionError: 3 == 2\n    at Context.<anonymous> (worker.js:19157:16)"
       }
     }
   ],
@@ -272,7 +258,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
         "operator": "==",
         "message": "'The Sum is 5!' == 'The Sum is 4!'",
         "generatedMessage": true,
-        "stack": "AssertionError: 'The Sum is 5!' == 'The Sum is 4!'\n    at Context.&lt;anonymous&gt; (worker.js:19152:16)"
+        "stack": "AssertionError: 'The Sum is 5!' == 'The Sum is 4!'\n    at Context.<anonymous> (worker.js:19152:16)"
       }
     },
     {
@@ -287,14 +273,12 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
         "operator": "==",
         "message": "3 == 2",
         "generatedMessage": true,
-        "stack": "AssertionError: 3 == 2\n    at Context.&lt;anonymous&gt; (worker.js:19157:16)"
+        "stack": "AssertionError: 3 == 2\n    at Context.<anonymous> (worker.js:19157:16)"
       }
     }
   ],
   "passes": []
 }
-
-</code></pre>
-	<!--kg-card-end: markdown-->
+</anonymous></anonymous></anonymous></anonymous></code></pre>
 	<p>This is really powerful and can allow you to execute your unit tests directly in the Cloudflare runtime, giving you more confidence before releasing your code into production. We hope this was useful and welcome any feedback.</p>
 </div>

@@ -1,40 +1,69 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/inline-dlp-ga-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/inline-dlp-ga-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/inline-dlp-ga-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/inline-dlp-ga-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/inline-dlp-ga-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-17.png" class="kg-image" alt="Cloudflare Data Loss Prevention now Generally Available" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/inline-dlp-ga">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/inline-dlp-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/inline-dlp-ga">日本語</a>, <a href="https://blog.cloudflare.com/es-es/inline-dlp-ga">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/inline-dlp-ga">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59MnohfCDnlnjzNvfMt9rY/268bd8de1da5bab930f16d345528098d/image1-17.png" alt="Cloudflare Data Loss Prevention now Generally Available" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>In July 2022, we <a href="https://blog.cloudflare.com/inline-data-loss-prevention">announced</a> beta access to our newest Zero Trust product, Data Loss Prevention (DLP). Today, we are even more excited to announce that DLP is Generally Available to customers! Any customer can now get visibility and control of sensitive data moving into, out of, and around their corporate network. If you are interested, check out the bottom of this post.</p>
-	<h3 id="what-is-dlp">What is DLP?</h3>
+	<h3>What is DLP?</h3>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">Data Loss Prevention</a> helps you overcome one of their biggest challenges: identifying and protecting sensitive data. The migration to the cloud has made tracking and controlling sensitive information more difficult than ever. Employees are using an ever-growing list of tools to manipulate a vast amount of data. Meanwhile, IT and security managers struggle to identify who should have access to sensitive data, how that data is stored, and where that data is allowed to go.</p>
 	<p>Data Loss Prevention enables you to protect your data based on its characteristics, such as keywords or patterns. As traffic moves into and out of corporate infrastructure, the traffic is inspected for indicators of sensitive data. If the indicators are found, the traffic is allowed or blocked based on the customers’ rules.</p>
 	<p>The most common use for DLP is the protection of Personally Identifiable Information (PII), but many customers are interested in protecting intellectual property, source code, corporate financial information, or any other information vital to the business. Proper data usage can include who used the data, where the data was sent, and how the data is stored.</p>
-	<h3 id="how-does-dlp-see-my-corporate-traffic">How does DLP see my corporate traffic?</h3>
+	<h3>How does DLP see my corporate traffic?</h3>
 	<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> <a href="https://www.cloudflare.com/learning/network-layer/network-as-a-service-naas">network-as-a-service</a> platform that connects users to enterprise resources. Cloudflare One runs traffic from data centers, offices, and remote users, through the Cloudflare network. This offers a wide variety of opportunities to secure the traffic, including validating identity and device posture, filtering corporate traffic to protect from malware and phishing, checking the configurations on SaaS applications, and using Browser Isolation to make web surfing safer for employees. All of this is done with the performance of our global network and managed with one control plane.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="how-does-it-work">How does it work?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69LEhrzNB3qO19DcQSDxIC/e24c95ca2b8cc09b4902ae01c8e00e53/image5-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<h3>How does it work?</h3>
 	<p>DLP leverages the HTTP filtering abilities of Cloudflare One. As your traffic runs through our network, you can apply rules and route traffic based on information in the HTTP request. There are a wide variety of options for filtering, such as domain, URL, application, HTTP method, and many more. You can use these options to segment the traffic you wish to DLP inspect.</p>
 	<p>When DLP is applied, the relevant HTTP requests are decompressed, decoded, and scanned for regex matches. Numeric regex matches are then algorithmically validated when possible, such as with checksum calculations or <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn’s algorithm</a>. However, some numeric detections do not adhere to algorithmic validation, such as US Social Security numbers.</p>
 	<p>If sensitive data is identified by the detection, the data transfer can be allowed or blocked according to the customer’s ruleset.</p>
-	<h3 id="how-do-i-use-it">How do I use it?</h3>
+	<h3>How do I use it?</h3>
 	<p>Let’s dive further in to see how this all actually comes to life. To use DLP in the Zero Trust Dashboard, navigate to the DLP Profiles tab under Gateway:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EQnaB7V1Akwzwysxv4XyF/dfbe1d93ffc6a0dd907d8d61e03adfd4/image2-14.png" alt="" class="kg-image" width="1238" height="468" loading="lazy">
+
+	</figure>
 	<p>Decide on the type of data you want to protect. We currently detect credit card numbers and US Social Security numbers, but this is where we intend to grow a robust library of DLP detections. &nbsp;Our next steps are custom and additional predefined detections, including more international identifiers and financial record numbers, which will be arriving soon.</p>
 	<p>When you have decided, select Configure to enable detections:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ohWjYF6CSnHW9c3clXCg9/62eaf12a667a875ec827dab01c23b32d/image6-2.png" alt="" class="kg-image" width="1990" height="668" loading="lazy">
+
+	</figure>
 	<p>Enable the detections you want to use. As described above, these card number detections are made using regexes and validated with Luhn’s algorithm. You can make numeric detections for card numbers or detect strings matching card names, such as “American Express.”</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eUqmagXBJcZiQ6N8DASD6/3d920f583734e026c066fa6bb7566c51/image3-10.png" alt="" class="kg-image" width="1962" height="1392" loading="lazy">
+
+	</figure>
 	<p>Then apply the detections to a Gateway <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies">HTTP policy</a> on the traffic of your choosing. Here we applied DLP to Google Drive traffic. This policy will block uploads and downloads to Google Drive that contain US Social Security Numbers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="holistic-data-protection-with-cloudflare-zero-trust">Holistic data protection with Cloudflare Zero Trust</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5es1X7XImRbyrAgxm7jaOW/20601c0b4cff402a670b003acee46072/image4-6.png" alt="" class="kg-image" width="1770" height="1134" loading="lazy">
+
+	</figure>
+	<h3>Holistic data protection with Cloudflare Zero Trust</h3>
 	<p>Inspecting HTTP traffic for the presence of sensitive data with DLP is one critical way organizations can reduce the risk of data exfiltration, strengthen regulatory compliance, and improve overall data governance.</p>
 	<p>Implementing DLP is just one step towards a more holistic approach to securing data.</p>
 	<p>To that end, our <a href="https://www.cloudflare.com/products/zero-trust">Cloudflare Zero Trust</a> platform offers more comprehensive controls over how any user on any device accesses and interacts with data – all from a single management interface:</p>
 	<ul>
-		<li>To protect data in transit, administrators can enforce identity-aware, granular access policies with our <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust Network Access (ZTNA)</a> service or leverage our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">in-line Secure Web Gateway (SWG)</a> to apply corporate tenant controls per application.</li>
-		<li>Our <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote Browser Isolation (RBI)</a> service can control how users interact with data used within a browser – for example, restricting the downloading, the copy/pasting, and printing of data onto local devices.</li>
-		<li>For data at rest, our API-based <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">Cloud Access Security Broker (CASB)</a> – <a href="https://blog.cloudflare.com/casb-ga">announced as generally available today!</a> – detects if misconfigurations in SaaS applications can lead to data leakage.</li>
+		<li>
+			<p>To protect data in transit, administrators can enforce identity-aware, granular access policies with our <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust Network Access (ZTNA)</a> service or leverage our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">in-line Secure Web Gateway (SWG)</a> to apply corporate tenant controls per application.</p>
+		</li>
+		<li>
+			<p>Our <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote Browser Isolation (RBI)</a> service can control how users interact with data used within a browser – for example, restricting the downloading, the copy/pasting, and printing of data onto local devices.</p>
+		</li>
+		<li>
+			<p>For data at rest, our API-based <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">Cloud Access Security Broker (CASB)</a> – <a href="https://blog.cloudflare.com/casb-ga">announced as generally available today!</a> – detects if misconfigurations in SaaS applications can lead to data leakage.</p>
+		</li>
 	</ul>
 	<p>We have architected our DLP service to work seamlessly with these ZTNA, SWG, CASB, and other security services. As we continue to deepen our DLP capabilities, this platform approach uniquely equips us to address our customers’ needs with flexibility.</p>
-	<h3 id="get-access-to-data-loss-prevention">Get Access to Data Loss Prevention</h3>
+	<h3>Get Access to Data Loss Prevention</h3>
 	<p>To get access to DLP, reach out for a <a href="https://www.cloudflare.com/cloudflare-one">consultation</a>, or contact your account manager.</p>
 </div>

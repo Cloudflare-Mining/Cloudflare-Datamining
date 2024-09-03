@@ -1,6 +1,11 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">9 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-warp-plus">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/announcing-warp-plus">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-warp-plus">日本語</a>, <a href="https://blog.cloudflare.com/es-es/announcing-warp-plus">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/announcing-warp-plus">Français</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Warp-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RYD2a4COo4FNXY0ZEBsPv/108309bb44ba09379801dfe99f2454a5/Warp-_2x.png" alt="" class="kg-image" width="1306" height="1064" loading="lazy">
+
+	</figure>
 	<p>Today, after a longer than expected wait, we're opening <a href="https://1.1.1.1">WARP</a> and <a href="https://warp.plus">WARP+</a> (plus) to the general public. If you haven’t heard about it yet, WARP is a mobile app designed for everyone which uses our global network to secure all of your phone’s Internet traffic.</p>
 	<p>We <a href="https://blog.cloudflare.com/1111-warp-better-vpn">announced WARP on April 1 of this year</a> and expected to roll it out over the next few months at a fairly steady clip and get it released to everyone who wanted to use it by July. That didn’t happen. It turned out that building a next generation service to secure consumer mobile connections without slowing them down or burning battery was… harder than we originally thought.</p>
 	<p>Before today, there were approximately two million people on the waitlist to try WARP. That demand blew us away. It also embarrassed us. The common refrain is consumers don’t care about their security and privacy, but the attention WARP got proved to us how wrong that assumption actually is.</p>
@@ -88,11 +93,11 @@
 		</a>
 	</div><!--kg-card-end: html-->
 	<p>If you’ve already installed the 1.1.1.1 App on your device, you may need to update to the latest version in order to get the option to enable Warp.</p>
-	<h3 id="mea-culpa">Mea Culpa</h3>
+	<h3>Mea Culpa</h3>
 	<p>Let me start with the apology. We are sorry making WARP available took far longer than we ever intended. As a way of hopefully making amends, for everyone who was on the waitlist before today, we're giving 10 GB of WARP+— the even faster version of WARP that uses Cloudflare’s Argo network — to those of you who have been patiently waiting.</p>
-	<p>For people just signing up today, <strong>the basic WARP service is free without bandwidth caps or limitations</strong>. The unlimited version of WARP+ is available for a monthly subscription fee. WARP+ is the even faster version of WARP that you can optionally pay for. The fee for WARP+ varies by region and is designed to approximate what a <a href="https://en.wikipedia.org/wiki/Big_Mac_Index">McDonald’s Big Mac would cost in the region</a>. On iOS, the WARP+ pricing as of the publication of this post is still being adjusted on a regional basis, but that should settle out in the next couple days.</p>
+	<p>For people just signing up today, <b>the basic WARP service is free without bandwidth caps or limitations</b>. The unlimited version of WARP+ is available for a monthly subscription fee. WARP+ is the even faster version of WARP that you can optionally pay for. The fee for WARP+ varies by region and is designed to approximate what a <a href="https://en.wikipedia.org/wiki/Big_Mac_Index">McDonald’s Big Mac would cost in the region</a>. On iOS, the WARP+ pricing as of the publication of this post is still being adjusted on a regional basis, but that should settle out in the next couple days.</p>
 	<p>WARP+ uses Cloudflare’s virtual private backbone, <a href="https://www.cloudflare.com/products/argo-smart-routing">known as Argo</a>, to achieve higher speeds and ensure your connection is encrypted across the long haul of the Internet. We charge for it because it costs us more to provide. However, in order to help spread the word about WARP, you can earn 1GB of WARP+ for every friend you refer to sign up for WARP. And everyone you refer gets 1GB of WARP+ for free to get started as well.</p>
-	<h3 id="okay-thanks-that-s-nice-but-what-took-you-so-long">Okay, Thanks, That’s Nice, But What Took You So Long?</h3>
+	<h3>Okay, Thanks, That’s Nice, But What Took You So Long?</h3>
 	<p>So what took us so long?</p>
 	<p>WARP is an ambitious project. We set out to secure Internet connections from mobile devices to the edge of Cloudflare's network. In doing so, however, we didn't want to slow devices down or burn excess battery. We wanted it to just work. We also wanted to bet on the technology of the future, not the technology of the past. Specifically, we wanted to build not around legacy protocols like IPsec, but instead around the <a href="https://www.wireguard.com">hyper-efficient WireGuard protocol</a>.</p>
 	<p>At some level, we thought it would be easy. We already had the <a href="http://one.one.one.one">1.1.1.1 App</a> that was securing DNS requests running on millions of mobile devices. That worked great. How much harder could securing all the rest of the requests on a device be? Right??</p>
@@ -101,37 +106,57 @@
 	<p>Apple threw us a curveball by releasing iOS 12.2 just days before the April 1 planned roll out. The new version of iOS significantly changed the underlying network stack implementation in a way that made some of what we were doing to implement WARP unstable. Ultimately we had to find work-arounds in our networking code, costing us valuable time.</p>
 	<p>We had a version of the WARP app that (kind of) worked on April 1. But, when we started to invite people from outside of Cloudflare to use it, we quickly realized that the mobile Internet around the world was far more wild and varied than we'd anticipated. The Internet is made up of diverse network components which do not always play nicely, we knew that. What we didn’t expect was how much more pain is introduced by the diversity of mobile carriers, mobile operating systems, and mobile device models.</p>
 	<p>And, while phones in our testbed were relatively stationary, phones in the real world move around — a lot. When they do, their network settings can change wildly. While that doesn't matter much for stateless, simple DNS queries, for the rest of Internet traffic that makes things complex. Keeping WireGuard fast requires long-lived sessions between your phone and a server in our network, maintaining that for hours and days was very complex. Even beyond that, we use a technology called Anycast to route your traffic to our network. Anycast meant your traffic could move not just between machines, but between entire data centers. That made things very complex.</p>
-	<h3 id="overcoming-challenges">Overcoming Challenges</h3>
+	<h3>Overcoming Challenges</h3>
 	<p>But there is a huge difference between hard and impossible. From long before the announcement, the team has been hard at work and I’m deeply proud of what they’ve accomplished. We changed our roll out plan to focus on iOS and solidify the shared underpinnings of the app to ensure it would work even with future network stack upgrades. We invited beta users not in the order of when they signed up, but instead based on networks where we didn't yet have information to help us discover as many corner cases as possible. And we invented new technologies to keep session state even when the wild west of mobile networks and Anycast routing collide.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/warp-comet-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33PtY3QMdK01Mo6i8ihlsu/4d234341421569801fb343fb11938657/warp-comet-_2x.png" alt="" class="kg-image" width="1600" height="1166" loading="lazy">
+
+	</figure>
 	<p>I've been running WARP on my phone since April 1. The first few months were… rough. Really rough. But, today, WARP has blended into the background of my mobile. And I sleep better knowing that my Internet connections from my phone are secure. Using my phone is as fast, and in some cases faster, than without WARP. In other words, WARP today does what we set out to accomplish: securing your mobile Internet connection and otherwise getting out of the way.</p>
-	<h3 id="there-will-be-bugs">There Will Be Bugs</h3>
+	<h3>There Will Be Bugs</h3>
 	<p>While WARP is a lot better than it was when we first announced it, we know there are still bugs. The most common bug we’re seeing these days is when WARP is significantly slower than using the mobile Internet without WARP. This is usually due to traffic being misrouted. For instance, we discovered a network in Turkey earlier this week that was being routed to London rather than our local Turkish facility. Once we’re aware of these routing issues we can typically fix them quickly.</p>
 	<p>Other common bugs involved captive portals — the pages where you have to enter information, for instance, when connecting to a hotel WiFI. We’ve fixed a lot of them but we haven’t had WARP users connecting to every hotel WiFi yet, so there will inevitably still be some that are broken.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46fODmKGTnQMwXXRHqt7HD/9ab1c4a183f91b03fc55c4d4c3c15afe/pasted-image-0-2.png" alt="" class="kg-image" width="400" height="482" loading="lazy">
+
+	</figure>
 	<p>We’ve made it easy to report issues that you discover. From the 1.1.1.1 App you can click on the little bug icon near the top of the screen, or just shake your phone with the app open, and quickly send us a report. We expect, over the weeks ahead, we’ll be squashing many of the bugs that you report.</p>
-	<h3 id="even-faster-with-plus">Even Faster With "Plus"</h3>
+	<h3>Even Faster With "Plus"</h3>
 	<p>WARP is not just a product, it’s a testbed for all of the Internet-improving technology we have spent years developing. One dream was to use our <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo</a> routing technology to allow all of your Internet traffic to use faster, less-congested, routes through the Internet. When used by Cloudflare customers for the past several years Argo has improved the speed of their websites by an average of over 30%. Through some hard work of the team we are making that technology available to you as WARP+.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Warp-plus-@4x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AM9l5qZO8D7eUdtU8t2aa/b0e3de8e1fd4acab358d5b8247b621b4/Warp-plus-_4x.png" alt="" class="kg-image" width="846" height="266" loading="lazy">
+
+	</figure>
 	<p>The WARP+ technology is not without cost for us. Routing your traffic over our network often costs us more than if we release it directly to the Internet. To cover those costs we charge a monthly fee — $4.99/month or less — for WARP+. The fee depends on the region that you’re in and is intended to approximate what a Big Mac would cost in the same region.</p>
 	<p>Basic WARP is free. Our first priority is not to make money off of WARP however, we want to grow it to secure every single phone. To help make that happen, we wanted to give you an incentive to share WARP with your friends. You can earn 1GB of free WARP+ for every person you share WARP with. And everyone you refer also gets 1GB of WARP+ for free as well. There is no limit on how much WARP+ data you can earn by sharing.</p>
-	<h3 id="privacy-first">Privacy First</h3>
-	<p>The free consumer security space has traditionally not been the most reputable. Many other companies that have promised to keep consumers’ data safe but instead built businesses around selling it or using it help target you with advertising. We think that’s disgusting. That is not Cloudflare’s business model and it never will be. WARP continues all the <a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy">strong privacy protections that 1.1.1.1 launched with</a> including:<br></p>
+	<h3>Privacy First</h3>
+	<p>The free consumer security space has traditionally not been the most reputable. Many other companies that have promised to keep consumers’ data safe but instead built businesses around selling it or using it help target you with advertising. We think that’s disgusting. That is not Cloudflare’s business model and it never will be. WARP continues all the <a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy">strong privacy protections that 1.1.1.1 launched with</a> including:</p>
 	<ol>
-		<li>We don't write user-identifiable log data to disk;</li>
-		<li>We will never sell your browsing data or use it in any way to target you with advertising data;</li>
-		<li>Don’t need to provide any personal information — not your name, phone number, or email address — in order to use WARP or WARP+; and</li>
-		<li>We will regularly work with outside auditors to ensure we're living up to these promises.</li>
+		<li>
+			<p>We don't write user-identifiable log data to disk;</p>
+		</li>
+		<li>
+			<p>We will never sell your browsing data or use it in any way to target you with advertising data;</p>
+		</li>
+		<li>
+			<p>Don’t need to provide any personal information — not your name, phone number, or email address — in order to use WARP or WARP+; and</p>
+		</li>
+		<li>
+			<p>We will regularly work with outside auditors to ensure we're living up to these promises.</p>
+		</li>
 	</ol>
-	<h3 id="what-warp-is-not">What WARP Is Not</h3>
+	<h3>What WARP Is Not</h3>
 	<p>From a technical perspective, WARP is a VPN. But it is designed for a very different audience than a traditional VPN. WARP is not designed to allow you to access geo-restricted content when you’re traveling. It will not hide your IP address from the websites you visit. If you’re looking for that kind of high-security protection then a traditional VPN or a <a href="https://www.torproject.org">service like Tor</a> are likely better choices for you.</p>
 	<p>WARP, instead, is built for the average consumer. It’s built to ensure that your data is secured while it’s in transit. So the networks between you and the applications you’re using can’t spy on you. It will help protect you from people sniffing your data while you’re at a local coffee shop. It will also help ensure that your ISP isn’t hoovering up data on your browsing patterns to sell to advertisers.</p>
 	<p>WARP isn’t designed for the ultra-techie who wants to specify exactly what server their traffic will be routed through. There’s basically only one button in the WARP interface: ON or OFF. It’s simple on purpose. It’s designed for my mom and dad who ask me every holiday dinner what they can do to be a bit safer online. I’m excited this year to have something easy for them to do: install the <a href="http://one.one.one.one">1.1.1.1 App</a>, enable WARP, and rest a bit easier.</p>
-	<h3 id="how-fast-is-it">How Fast Is It?</h3>
+	<h3>How Fast Is It?</h3>
 	<p>Once we got WARP to a stable place, this was my first question. My initial inclination was to go to one of the many Speed Test sites and see the results. And the results were… weird. Sometimes much faster, sometimes much slower. Overall, they didn’t make a lot of sense. The reason why is that these sites are designed to measure the speed of your ISP. WARP is different, so these test sites don’t give particularly accurate readings.</p>
 	<p>The better test is to visit common sites around the Internet and see how they load, in real conditions, on WARP versus off. We’ve built a tool that does this. Generally, in our tests, WARP is around the same speed as non-WARP connections when you’re on a high performance network. As network conditions get worse, WARP will often improve performance more. But your experience will depend on the particular conditions of your network.</p>
 	<p>We plan, in the next few weeks, to expose the test tool within the 1.1.1.1 App so you can see how your device loads a set of popular sites without WARP, with WARP, and with WARP+. And, again, if you’re seeing particularly poor performance, please report it to us. Our goal is to provide security without slowing you down or burning excess battery. We can already do that for many networks and devices and we won’t rest until we can do it for everyone.</p>
-	<h3 id="here-s-to-a-more-secure-fast-internet">Here’s to a More Secure, Fast Internet</h3>
+	<h3>Here’s to a More Secure, Fast Internet</h3>
 	<p>Cloudflare’s mission is to help build a better Internet. We’ve done that by securing and making more performance millions of Internet properties since we launched almost exactly 9 years ago. WARP furthers Cloudflare’s mission by extending <a href="https://www.cloudflare.com/network">our network</a> to help make every consumer’s mobile device a bit more secure. Our team is proud of what we’ve built with WARP — albeit a bit embarrassed it took us so long to get into your hands. We hope you’ll forgive us for the delay, give WARP a try, and let us know what you think.</p><!--kg-card-begin: html-->
 	<div style="display:flex;flex-direction:row;margin-bottom:1em;max-width:100%;justify-content:center;margin-top:1em">
 		<a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone">
@@ -214,5 +239,9 @@
 			</svg>
 		</a>
 	</div><!--kg-card-end: html-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Birthday-week-2019-header@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tBEjwgKqPxexz89JeQj06/5783bbd83006b0d2e90130940b4e042a/Birthday-week-2019-header_2x-1.png" alt="" class="kg-image" width="1600" height="924" loading="lazy">
+
+	</figure>
 </div>

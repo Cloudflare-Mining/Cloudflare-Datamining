@@ -1,142 +1,292 @@
-<div class="mb2 gray5">14 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/http2-prioritization.png" alt="HTTP/2 Prioritization" loading="lazy"></p>
+<div class="mb2 gray5">13 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/better-http-2-prioritization-for-a-faster-web">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/better-http-2-prioritization-for-a-faster-web">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/better-http-2-prioritization-for-a-faster-web">日本語</a>, <a href="https://blog.cloudflare.com/es-es/better-http-2-prioritization-for-a-faster-web">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/better-http-2-prioritization-for-a-faster-web">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j4rvXLTKgqCZFp2iPVXbe/d6f49b678a341be94f5f9767bb88a1ca/http2-prioritization.png" alt="HTTP/2 Prioritization" class="kg-image" width="1600" height="1122" loading="lazy">
+
+	</figure>
 	<p>HTTP/2 promised a much faster web and Cloudflare rolled out HTTP/2 access for all our customers long, long ago. But one feature of HTTP/2, Prioritization, didn’t live up to the hype. Not because it was fundamentally broken but because of the way browsers implemented it.</p>
 	<p>Today Cloudflare is pushing out a change to HTTP/2 Prioritization that gives our servers control of prioritization decisions that truly make the web much faster.</p>
 	<p>Historically the browser has been in control of deciding how and when web content is loaded. Today we are introducing a radical change to that model for all paid plans that puts control into the hands of the site owner directly. Customers can enable “Enhanced HTTP/2 Prioritization” in the Speed tab of the Cloudflare dashboard: this overrides the browser defaults with an improved scheduling scheme that results in a significantly faster visitor experience (we have seen 50% faster on multiple occasions). With <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a>, site owners can take this a step further and fully customize the experience to their specific needs.</p>
-	<h3 id="background">Background</h3>
+	<h3>Background</h3>
 	<p>Web pages are made up of <a href="https://discuss.httparchive.org/t/whats-the-distribution-of-requests-per-page/21/10?u=patmeenan">dozens (sometimes hundreds)</a> of separate resources that are loaded and assembled by the browser into the final displayed content. This includes the visible content the user interacts with (HTML, CSS, images) as well as the application logic (JavaScript) for the site itself, ads, analytics for tracking site usage and marketing tracking beacons. The sequencing of how those resources are loaded can have a significant impact on how long it takes for the user to see the content and interact with the page.</p>
 	<p>A browser is basically an HTML processing engine that goes through the HTML document and follows the instructions in order from the start of the HTML to the end, building the page as it goes along. References to stylesheets (CSS) tell the browser how to style the page content and the browser will delay displaying content until it has loaded the stylesheet (so it knows how to style the content it is going to display). Scripts referenced in the document can have several different behaviors. If the script is tagged as “async” or “defer” the browser can keep processing the document and just run the script code whenever the scripts are available. If the scripts are not tagged as async or defer then the browser <a href="https://html.spec.whatwg.org">MUST</a> stop processing the document until the script has downloaded and executed before continuing. These are referred to as “blocking” scripts because they block the browser from continuing to process the document until they have been loaded and executed.</p>
 	<p>The HTML document is split into two parts. The <code>&lt;head&gt;</code> of the document is at the beginning and contains stylesheets, scripts and other instructions for the browser that are needed to display the content. The <code>&lt;body&gt;</code> of the document comes after the head and contains the actual page content that is displayed in the browser window (though scripts and stylesheets are allowed to be in the body as well). Until the browser gets to the body of the document there is nothing to display to the user and the page will remain blank so getting through the head of the document as quickly as possible is important. “HTML5 rocks” has a <a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork">great tutorial</a> on how browsers work if you want to dive deeper into the details.</p>
 	<p>The browser is generally in charge of determining the order of loading the different resources it needs to build the page and to continue processing the document. In the case of HTTP/1.x, the browser is limited in how many things it can request from any one server at a time (generally 6 connections and only one resource at a time per connection) so the ordering is strictly controlled by the browser by how things are requested. With HTTP/2 <a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1">things change pretty significantly</a>. The browser can request all of the resources at once (at least as soon as it knows about them) and it provides <a href="https://hpbn.co/http2/#stream-prioritization">detailed instructions</a> to the server for how the resources should be delivered.</p>
-	<h3 id="optimalresourceordering">Optimal Resource Ordering</h3>
+	<h3>Optimal Resource Ordering</h3>
 	<p>For most parts of the page loading cycle there is an optimal ordering of the resources that will result in the fastest user experience (and the difference between optimal and not can be significant - as much as a 50% improvement or more).</p>
 	<p>As described above, early in the page load cycle before the browser can render any content it is blocked on the CSS and blocking JavaScript in the <code>&lt;head&gt;</code> section of the HTML. During that part of the loading cycle it is best for 100% of the connection bandwidth to be used to download the blocking resources and for them to be downloaded one at a time in the order they are defined in the HTML. That lets the browser parse and execute each item while it is downloading the next blocking resource, allowing the download and execution to be pipelined.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/pipeline-1.png" alt="JavaScript Loading and Execution Pipelined" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/s20F4kV70i7sqhrMifCLU/4d974c5427c1427d3ec83bbb7f52c4ba/pipeline-1.png" alt="JavaScript Loading and Execution Pipelined" class="kg-image" width="800" height="555" loading="lazy">
+
+	</figure>
 	<p>The scripts take the same amount of time to download when downloaded in parallel or one after the other but by downloading them sequentially the first script can be processed and execute while the second script is downloading.</p>
 	<p>Once the render-blocking content has loaded things get a little more interesting and the optimal loading may depend on the specific site or even business priorities (user content vs ads vs analytics, etc). Fonts in particular can be difficult as the browser only discovers what fonts it needs after the stylesheets have been applied to the content that is about to be displayed so by the time the browser knows about a font, it is needed to display text that is already ready to be drawn to the screen. Any delays in getting the font loaded end up as periods with blank text on the screen (or text displayed using the wrong font).</p>
 	<p>Generally there are some tradeoffs that need to be considered:</p>
 	<ul>
-		<li>Custom fonts and visible images in the visible part of the page (viewport) should be loaded as quickly as possible. They directly impact the user’s visual experience of the page loading.</li>
-		<li>Non-blocking JavaScript should be downloaded serially relative to other JavaScript resources so the execution of each can be pipelined with the downloads. The JavaScript may include user-facing application logic as well as analytics tracking and marketing beacons and delaying them can cause a drop in the metrics that the business tracks.</li>
-		<li>Images benefit from downloading in parallel. The first few bytes of an image file contain the image dimensions which may be necessary for browser layout, and progressive images downloading in parallel can look visually complete with around 50% of the bytes transferred.</li>
+		<li>
+			<p>Custom fonts and visible images in the visible part of the page (viewport) should be loaded as quickly as possible. They directly impact the user’s visual experience of the page loading.</p>
+		</li>
+		<li>
+			<p>Non-blocking JavaScript should be downloaded serially relative to other JavaScript resources so the execution of each can be pipelined with the downloads. The JavaScript may include user-facing application logic as well as analytics tracking and marketing beacons and delaying them can cause a drop in the metrics that the business tracks.</p>
+		</li>
+		<li>
+			<p>Images benefit from downloading in parallel. The first few bytes of an image file contain the image dimensions which may be necessary for browser layout, and progressive images downloading in parallel can look visually complete with around 50% of the bytes transferred.</p>
+		</li>
 	</ul>
 	<p>Weighing the tradeoffs, one strategy that works well in most cases is:</p>
 	<ul>
-		<li>Custom fonts download sequentially and split the available bandwidth with visible images.</li>
-		<li>Visible images download in parallel, splitting the “images” share of the bandwidth among them.</li>
-		<li>When there are no more fonts or visible images pending:
+		<li>
+			<p>Custom fonts download sequentially and split the available bandwidth with visible images.</p>
+		</li>
+		<li>
+			<p>Visible images download in parallel, splitting the “images” share of the bandwidth among them.</p>
+		</li>
+		<li>
+			<p>When there are no more fonts or visible images pending:</p>
 			<ul>
-				<li>Non-blocking scripts download sequentially and split the available bandwidth with non-visible images</li>
-				<li>Non-visible images download in parallel, splitting the “images” share of the bandwidth among them.</li>
+				<li>
+					<p>Non-blocking scripts download sequentially and split the available bandwidth with non-visible images</p>
+				</li>
+				<li>
+					<p>Non-visible images download in parallel, splitting the “images” share of the bandwidth among them.</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
 	<p>That way the content visible to the user is loaded as quickly as possible, the application logic is delayed as little as possible and the non-visible images are loaded in such a way that layout can be completed as quickly as possible.</p>
-	<h3 id="example">Example</h3>
+	<h3>Example</h3>
 	<p>For illustrative purposes, we will use a simplified product category page from a typical <a href="https://www.cloudflare.com/ecommerce">e-commerce site</a>. In this example the page has:</p>
 	<ul>
-		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/html-1.png" alt=""> The HTML file for the page itself, represented by a blue box.</li>
-		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/css-1.png" alt=""> 1 external stylesheet (CSS file), represented by a green box.</li>
-		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/script-1.png" alt=""> 4 external scripts (JavaScript), represented by orange boxes. 2 of the scripts are blocking at the beginning of the page and 2 are asynchronous. The blocking script boxes use a darker shade of orange.</li>
-		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/font-1.png" alt=""> 1 custom web font, represented by a red box.</li>
-		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/image-1.png" alt=""> 13 images, represented by purple boxes. The page logo and 4 of the product images are visible in the viewport and 8 of the product images require scrolling to see. The 5 visible images use a darker shade of purple.</li>
+		<li>
+			<figure class="kg-card kg-image-card ">
+
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OIMMAGl8LZikj4It8RAYg/c48facfdf9f96d69aae5b50e67d01ae3/html-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+
+			</figure>
+			<p> The HTML file for the page itself, represented by a blue box.</p>
+		</li>
+		<li>
+			<figure class="kg-card kg-image-card ">
+
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BP5CWQGXtZ8sWj4SJlyVf/90b8ed7bf3e9b6863518f62676cb2495/css-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+
+			</figure>
+			<p> 1 external stylesheet (CSS file), represented by a green box.</p>
+		</li>
+		<li>
+			<figure class="kg-card kg-image-card ">
+
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3noRXnXFonNFph0rYzLvPv/b265f5c04746b2895f655557e56aab71/script-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+
+			</figure>
+			<p> 4 external scripts (JavaScript), represented by orange boxes. 2 of the scripts are blocking at the beginning of the page and 2 are asynchronous. The blocking script boxes use a darker shade of orange.</p>
+		</li>
+		<li>
+			<figure class="kg-card kg-image-card ">
+
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GtlFz84dSeXdWAUCu9ROy/5b83c865ac15203536c24ef8426b1aa4/font-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+
+			</figure>
+			<p> 1 custom web font, represented by a red box.</p>
+		</li>
+		<li>
+			<figure class="kg-card kg-image-card ">
+
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4iuJKYAeJY7Ls3eet2ugyn/5ae9327a000a3bced36f85029db2c8ad/image-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+
+			</figure>
+			<p> 13 images, represented by purple boxes. The page logo and 4 of the product images are visible in the viewport and 8 of the product images require scrolling to see. The 5 visible images use a darker shade of purple.</p>
+		</li>
 	</ul>
 	<p>For simplicity, we will assume that all of the resources are the same size and each takes 1 second to download on the visitor’s connection. Loading everything takes a total of 20 seconds, but HOW it is loaded can have a huge <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">impact</a> to the experience.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/optimal-1.png" alt="Optimal Scheduling" loading="lazy"></p>
-	<p>This is what the described optimal loading would look like in the browser as the resources load:<br>
-		<img src="https://blog.cloudflare.com/content/images/2019/05/Optimal_loading-1.gif" alt="Optimal Loading Animation" loading="lazy">
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZDzhZm88h13LKAQAlmJ3W/02a017af64d49c67dead21bfeded6109/optimal-1.png" alt="Optimal Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+
+	</figure>
+	<p>This is what the described optimal loading would look like in the browser as the resources load:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VglYMpZ814iSoMmiDEoLz/448bf3ea56d9c824266f04d2440a7992/Optimal_loading-1.gif" alt="Optimal Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
 	<ul>
-		<li>The page is blank for the first 4 seconds while the HTML, CSS and blocking scripts load, all using 100% of the connection.</li>
-		<li>At the 4-second mark the background and structure of the page is displayed with no text or images.</li>
-		<li>One second later, at 5 seconds, the text for the page is displayed.</li>
-		<li>From 5-10 seconds the images load, starting out as blurry but sharpening very quickly. By around the 7-second mark it is almost indistinguishable from the final version.</li>
-		<li>At the 10 second mark all of the visual content in the viewport has completed loading.</li>
-		<li>Over the next 2 seconds the asynchronous JavaScript is loaded and executed, running any non-critical logic (analytics, marketing tags, etc).</li>
-		<li>For the final 8 seconds the rest of the product images load so they are ready for when the user scrolls.</li>
+		<li>
+			<p>The page is blank for the first 4 seconds while the HTML, CSS and blocking scripts load, all using 100% of the connection.</p>
+		</li>
+		<li>
+			<p>At the 4-second mark the background and structure of the page is displayed with no text or images.</p>
+		</li>
+		<li>
+			<p>One second later, at 5 seconds, the text for the page is displayed.</p>
+		</li>
+		<li>
+			<p>From 5-10 seconds the images load, starting out as blurry but sharpening very quickly. By around the 7-second mark it is almost indistinguishable from the final version.</p>
+		</li>
+		<li>
+			<p>At the 10 second mark all of the visual content in the viewport has completed loading.</p>
+		</li>
+		<li>
+			<p>Over the next 2 seconds the asynchronous JavaScript is loaded and executed, running any non-critical logic (analytics, marketing tags, etc).</p>
+		</li>
+		<li>
+			<p>For the final 8 seconds the rest of the product images load so they are ready for when the user scrolls.</p>
+		</li>
 	</ul>
-	<h3 id="currentbrowserprioritization">Current Browser Prioritization</h3>
+	<h3>Current Browser Prioritization</h3>
 	<p>All of the current browser engines implement <a href="https://calendar.perfplanet.com/2018/http2-prioritization">different prioritization strategies</a>, none of which are optimal.</p>
-	<p><strong>Microsoft Edge and Internet Explorer</strong> <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#microsoft_edge_internet_explorer">do not support prioritization</a> so everything falls back to the HTTP/2 default which is to load everything in parallel, splitting the bandwidth evenly among everything. Microsoft Edge is moving to use the Chromium browser engine in future Windows releases which will help improve the situation. In our example page this means that the browser is stuck in the head for the majority of the loading time since the images are slowing down the transfer of the blocking scripts and stylesheets.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/edge-1.png" alt="Microsoft Edge Scheduling" loading="lazy"></p>
-	<p>Visually that results in a pretty painful experience of staring at a blank screen for 19 seconds before most of the content displays, followed by a 1-second delay for the text to display. Be patient when watching the animated progress because for the 19 seconds of blank screen it may feel like nothing is happening (even though it is):<br>
-		<img src="https://blog.cloudflare.com/content/images/2019/05/Edge_loading-1.gif" alt="Microsoft Edge Loading Animation" loading="lazy">
-	</p>
-	<p><strong>Safari</strong> <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#safari">loads all resources in parallel</a>, splitting the bandwidth between them based on how important Safari believes they are (with render-blocking resources like scripts and stylesheets being more important than images). Images load in parallel but also load at the same time as the render-blocking content.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/safari-1.png" alt="Safari Scheduling" loading="lazy"></p>
-	<p>While similar to Edge in that everything downloads at the same time, by allocating more bandwidth to the render-blocking resources Safari can display the content much sooner:<br>
-		<img src="https://blog.cloudflare.com/content/images/2019/05/Safari_loading-1.gif" alt="Safari Loading Animation" loading="lazy">
-	</p>
+	<p><b>Microsoft Edge and Internet Explorer</b> <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#microsoft_edge_internet_explorer">do not support prioritization</a> so everything falls back to the HTTP/2 default which is to load everything in parallel, splitting the bandwidth evenly among everything. Microsoft Edge is moving to use the Chromium browser engine in future Windows releases which will help improve the situation. In our example page this means that the browser is stuck in the head for the majority of the loading time since the images are slowing down the transfer of the blocking scripts and stylesheets.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ERv7hb1NYBHy60aJuy5jD/1f63f02b2853157cba059b6c561ba380/edge-1.png" alt="Microsoft Edge Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+
+	</figure>
+	<p>Visually that results in a pretty painful experience of staring at a blank screen for 19 seconds before most of the content displays, followed by a 1-second delay for the text to display. Be patient when watching the animated progress because for the 19 seconds of blank screen it may feel like nothing is happening (even though it is):</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UcgquIFWREMgbBsEJNQk2/ecd62101dd854795abe9aec774f759d3/Edge_loading-1.gif" alt="Microsoft Edge Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
+	<p><b>Safari</b> <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#safari">loads all resources in parallel</a>, splitting the bandwidth between them based on how important Safari believes they are (with render-blocking resources like scripts and stylesheets being more important than images). Images load in parallel but also load at the same time as the render-blocking content.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2L8xcpZEdYQJstyuI5ORRR/b273bbdc0df8146ec267f563bca72443/safari-1.png" alt="Safari Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+
+	</figure>
+	<p>While similar to Edge in that everything downloads at the same time, by allocating more bandwidth to the render-blocking resources Safari can display the content much sooner:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bN7ouLtrKcl2dWQ2fESJ5/51bd2d99a1a8ba5971b6007b63e21814/Safari_loading-1.gif" alt="Safari Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
 	<ul>
-		<li>At around 8 seconds the stylesheet and scripts have finished loading so the page can start to be displayed. Since the images were loading in parallel, they can also be rendered in their partial state (blurry for progressive images). This is still twice as slow as the optimal case but much better than what we saw with Edge.</li>
-		<li>At around 11 seconds the font has loaded so the text can be displayed and more image data has been downloaded so the images will be a little sharper. This is comparable to the experience around the 7-second mark for the optimal loading case.</li>
-		<li>For the remaining 9 seconds of the load the images get sharper as more data for them downloads until it is finally complete at 20 seconds.</li>
+		<li>
+			<p>At around 8 seconds the stylesheet and scripts have finished loading so the page can start to be displayed. Since the images were loading in parallel, they can also be rendered in their partial state (blurry for progressive images). This is still twice as slow as the optimal case but much better than what we saw with Edge.</p>
+		</li>
+		<li>
+			<p>At around 11 seconds the font has loaded so the text can be displayed and more image data has been downloaded so the images will be a little sharper. This is comparable to the experience around the 7-second mark for the optimal loading case.</p>
+		</li>
+		<li>
+			<p>For the remaining 9 seconds of the load the images get sharper as more data for them downloads until it is finally complete at 20 seconds.</p>
+		</li>
 	</ul>
-	<p><strong>Firefox</strong> builds a dependency tree that <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#firefox">groups resources</a> and then schedules the groups to either load one after another or to share bandwidth between the groups. Within a given group the resources share bandwidth and download concurrently. The images are scheduled to load after the render-blocking stylesheets and to load in parallel but the render-blocking scripts and stylesheets also load in parallel and do not get the benefits of pipelining.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/firefox-1.png" alt="Firefox Scheduling" loading="lazy"></p>
-	<p>In our example case this ends up being a slightly faster experience than with Safari since the images are delayed until after the stylesheets complete:<br>
-		<img src="https://blog.cloudflare.com/content/images/2019/05/Firefox_loading-1.gif" alt="Firefox Loading Animation" loading="lazy">
-	</p>
+	<p><b>Firefox</b> builds a dependency tree that <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#firefox">groups resources</a> and then schedules the groups to either load one after another or to share bandwidth between the groups. Within a given group the resources share bandwidth and download concurrently. The images are scheduled to load after the render-blocking stylesheets and to load in parallel but the render-blocking scripts and stylesheets also load in parallel and do not get the benefits of pipelining.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mnypoOho1hKfUiSl834Cf/02979dea36acf5834bf86f6dc0f90b34/firefox-1.png" alt="Firefox Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+
+	</figure>
+	<p>In our example case this ends up being a slightly faster experience than with Safari since the images are delayed until after the stylesheets complete:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yjKwptC34WE2GigxNdo0R/35af024762536eec81566c542b246cab/Firefox_loading-1.gif" alt="Firefox Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
 	<ul>
-		<li>At the 6 second mark the initial page content is rendered with the background and blurry versions of the product images (compared to 8 seconds for Safari and 4 seconds for the optimal case).</li>
-		<li>At 8 seconds the font has loaded and the text can be displayed along with slightly sharper versions of the product images (compared to 11 seconds for Safari and 7 seconds in the Optimal case).</li>
-		<li>For the remaining 12 seconds of the loading the product images get sharper as the remaining content loads.</li>
+		<li>
+			<p>At the 6 second mark the initial page content is rendered with the background and blurry versions of the product images (compared to 8 seconds for Safari and 4 seconds for the optimal case).</p>
+		</li>
+		<li>
+			<p>At 8 seconds the font has loaded and the text can be displayed along with slightly sharper versions of the product images (compared to 11 seconds for Safari and 7 seconds in the Optimal case).</p>
+		</li>
+		<li>
+			<p>For the remaining 12 seconds of the loading the product images get sharper as the remaining content loads.</p>
+		</li>
 	</ul>
-	<p><strong>Chrome</strong> (and all Chromium-based browsers) prioritizes resources into a <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#chrome">list</a>. This works really well for the render-blocking content that benefits from loading in order but works less well for images. Each image loads to 100% completion before starting the next image.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/chrome-1.png" alt="Chrome Scheduling" loading="lazy"></p>
-	<p>In practice this is almost as good as the optimal loading case with the only difference being that the images load one at a time instead of in parallel:<br>
-		<img src="https://blog.cloudflare.com/content/images/2019/05/Chrome_loading-1.gif" alt="Chrome Loading Animation" loading="lazy">
-	</p>
+	<p><b>Chrome</b> (and all Chromium-based browsers) prioritizes resources into a <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#chrome">list</a>. This works really well for the render-blocking content that benefits from loading in order but works less well for images. Each image loads to 100% completion before starting the next image.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VAHVWx6bngx7CK2px6qAe/85f53184dd5609912fa27037ee73dfd2/chrome-1.png" alt="Chrome Scheduling" class="kg-image" width="1080" height="171" loading="lazy">
+
+	</figure>
+	<p>In practice this is almost as good as the optimal loading case with the only difference being that the images load one at a time instead of in parallel:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WxB31Ov3jzmpNmPRjH0A5/5511074064fce26e86328904ffdefd9d/Chrome_loading-1.gif" alt="Chrome Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
 	<ul>
-		<li>Up until the 5 second mark the Chrome experience is identical to the optimal case, displaying the background at 4 seconds and the text content at 5.</li>
-		<li>For the next 5 seconds the visible images load one at a time until they are all complete at the 10 second mark (compared to the optimal case where they are just slightly blurry at 7 seconds and sharpen up for the remaining 3 seconds).</li>
-		<li>After the visual part of the page is complete at 10 seconds (identical to the optimal case), the remaining 10 seconds are spent running the async scripts and loading the hidden images (just like with the optimal loading case).</li>
+		<li>
+			<p>Up until the 5 second mark the Chrome experience is identical to the optimal case, displaying the background at 4 seconds and the text content at 5.</p>
+		</li>
+		<li>
+			<p>For the next 5 seconds the visible images load one at a time until they are all complete at the 10 second mark (compared to the optimal case where they are just slightly blurry at 7 seconds and sharpen up for the remaining 3 seconds).</p>
+		</li>
+		<li>
+			<p>After the visual part of the page is complete at 10 seconds (identical to the optimal case), the remaining 10 seconds are spent running the async scripts and loading the hidden images (just like with the optimal loading case).</p>
+		</li>
 	</ul>
-	<h3 id="visualcomparison">Visual Comparison</h3>
+	<h3>Visual Comparison</h3>
 	<p>Visually, the impact can be quite dramatic, even though they all take the same amount of time to technically load all of the content:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/compare.gif" alt="Visual Comparison" loading="lazy"></p>
-	<h3 id="serversideprioritization">Server-Side Prioritization</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67CSkIvoirmEfMIUAo4y07/5fbb6cb80d263106f157e27bdd53bd83/compare.gif" alt="Visual Comparison" class="kg-image" width="1000" height="600" loading="lazy">
+
+	</figure>
+	<h3>Server-Side Prioritization</h3>
 	<p>HTTP/2 prioritization is requested by the client (browser) and it is up to the server to decide what to do based on the request. A <a href="https://github.com/andydavies/http2-prioritization-issues">good number of servers don’t support doing anything at all with the prioritization</a> but for those that do, they all honor the client’s request. Another option would be to decide on the best prioritization to use on the server-side, taking into account the client’s request.</p>
 	<p>Per the <a href="https://httpwg.org/specs/rfc9113.html#StreamPriority">specification</a>, HTTP/2 prioritization is a dependency tree that requires full knowledge of all of the in-flight requests to be able to prioritize resources against each other. That allows for incredibly complex strategies but is difficult to implement well on either the browser or server side (as evidenced by the different browser strategies and varying levels of server support). To make prioritization easier to manage we have developed a simpler prioritization scheme that still has all of the flexibility needed for optimal scheduling.</p>
 	<p>The Cloudflare prioritization scheme consists of 64 priority “levels” and within each priority level there are groups of resources that determine how the connection is shared between them:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/priorities.png" alt="Prioritization Model" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/245bFqwfOBgQvwwRLWGNGE/aaaa1d5815f3519bd78f7ff804536dc9/priorities.png" alt="Prioritization Model" class="kg-image" width="700" height="589" loading="lazy">
+
+	</figure>
 	<p>All of the resources at a higher priority level are transferred before moving on to the next lower priority level.</p>
 	<p>Within a given priority level, there are 3 different “concurrency” groups:</p>
 	<ul>
-		<li><strong>0</strong> : All of the resources in the concurrency “0” group are sent sequentially in the order they were requested, using 100% of the bandwidth. Only after all of the concurrency “0” group resources have been downloaded are other groups at the same level considered.</li>
-		<li><strong>1</strong> : All of the resources in the concurrency “1” group are sent sequentially in the order they were requested. The available bandwidth is split evenly between the concurrency “1” group and the concurrency “n” group.</li>
-		<li><strong>n</strong> : The resources in the concurrency “n” group are sent in parallel, splitting the bandwidth available to the group between them.</li>
+		<li>
+			<p><b>0</b> : All of the resources in the concurrency “0” group are sent sequentially in the order they were requested, using 100% of the bandwidth. Only after all of the concurrency “0” group resources have been downloaded are other groups at the same level considered.</p>
+		</li>
+		<li>
+			<p><b>1</b> : All of the resources in the concurrency “1” group are sent sequentially in the order they were requested. The available bandwidth is split evenly between the concurrency “1” group and the concurrency “n” group.</p>
+		</li>
+		<li>
+			<p><b>n</b> : The resources in the concurrency “n” group are sent in parallel, splitting the bandwidth available to the group between them.</p>
+		</li>
 	</ul>
 	<p>Practically speaking, the concurrency “0” group is useful for critical content that needs to be processed sequentially (scripts, CSS, etc). The concurrency “1” group is useful for less-important content that can share bandwidth with other resources but where the resources themselves still benefit from processing sequentially (async scripts, non-progressive images, etc). The concurrency “n” group is useful for resources that benefit from processing in parallel (progressive images, video, audio, etc).</p>
-	<h3 id="cloudflaredefaultprioritization">Cloudflare Default Prioritization</h3>
+	<h3>Cloudflare Default Prioritization</h3>
 	<p>When enabled, the enhanced prioritization implements the “optimal” scheduling of resources described above. The specific prioritizations applied look like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/defaults.png" alt="Default Prioritization Scheme" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36JhpUvPcpYATKuUcb0HQm/54eb9c5f9e0fb30bd626ec7c3a7336d2/defaults.png" alt="Default Prioritization Scheme" class="kg-image" width="665" height="538" loading="lazy">
+
+	</figure>
 	<p>This prioritization scheme allows sending the render-blocking content serially, followed by the visible images in parallel and then the rest of the page content with some level of sharing to balance application and content loading. The “* If Detectable” caveat is that not all browsers differentiate between the different types of stylesheets and scripts but it will still be significantly faster in all cases. 50% faster by default, particularly for Edge and Safari visitors is not unusual:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/filmstrip2.png" alt="Filmstrip Comparison" loading="lazy"></p>
-	<h3 id="customizingprioritizationwithworkers">Customizing Prioritization with Workers</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3br9uRCejjByZGW4mVxQyp/d32952b72cbdea6a675acbf4a5a9e100/filmstrip2.png" alt="Filmstrip Comparison" class="kg-image" width="1462" height="316" loading="lazy">
+
+	</figure>
+	<h3>Customizing Prioritization with Workers</h3>
 	<p>Faster-by-default is great but where things get really interesting is that the ability to configure the prioritization is also exposed to Cloudflare Workers so sites can override the default prioritization for resources or implement their own complete prioritization schemes.</p>
 	<p>If a Worker adds a “cf-priority” header to the response, Cloudflare edge servers will use the specified priority and concurrency for that response. The format of the header is <code>&lt;priority&gt;/&lt;concurrency&gt;</code> so something like <code>response.headers.set('cf-priority', “30/0”);</code> would set the priority to 30 with a concurrency of 0 for the given response. Similarly, “30/1” would set concurrency to 1 and “30/n” would set concurrency to n.</p>
 	<p>With this level of flexibility a site can tweak resource prioritization to meet their needs. Boosting the priority of some critical async scripts for example or increasing the priority of hero images before the browser has identified that they are in the viewport.</p>
 	<p>To help inform any prioritization decisions, the Workers runtime also exposes the browser-requested prioritization information in the request object passed in to the Worker’s fetch event listener (request.cf.requestPriority). The incoming requested priority is a semicolon-delimited list of attributes that looks something like this: “weight=192;exclusive=0;group=3;group-weight=127”.</p>
 	<ul>
 		<li>
-			<p><strong>weight</strong>: The browser-requested weight for the HTTP/2 prioritization.</p>
+			<p><b>weight</b>: The browser-requested weight for the HTTP/2 prioritization.</p>
 		</li>
 		<li>
-			<p><strong>exclusive</strong>: The browser-requested HTTP/2 exclusive flag (1 for Chromium-based browsers, 0 for others).</p>
+			<p><b>exclusive</b>: The browser-requested HTTP/2 exclusive flag (1 for Chromium-based browsers, 0 for others).</p>
 		</li>
 		<li>
-			<p><strong>group</strong>: HTTP/2 stream ID for the request group (only non-zero for Firefox).</p>
+			<p><b>group</b>: HTTP/2 stream ID for the request group (only non-zero for Firefox).</p>
 		</li>
 		<li>
-			<p><strong>group-weight</strong>: HTTP/2 weight for the request group (only non-zero for Firefox).</p>
+			<p><b>group-weight</b>: HTTP/2 weight for the request group (only non-zero for Firefox).</p>
 		</li>
 	</ul>
-	<h3 id="thisisjustthebeginning">This is Just the Beginning</h3>
+	<h3>This is Just the Beginning</h3>
 	<p>The ability to tune and control the prioritization of responses is the basic building block that a lot of future work will benefit from. We will be implementing our own <a href="https://www.cloudflare.com/application-services/products/website-optimization">advanced optimizations</a> on top of it but by exposing it in Workers we have also opened it up to sites and researchers to experiment with different prioritization strategies. With the Apps Marketplace it is also possible for companies to build new optimization services on top of the Workers platform and make it available to other sites to use.</p>
 	<p>If you are on a <a href="https://www.cloudflare.com/plans/pro">Pro plan</a> or above, head over to the speed tab in the Cloudflare dashboard and turn on “Enhanced HTTP/2 Prioritization” to accelerate your site.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/05/speed-week-copy-2@2x.png" alt="Cloudflare Speed Week" loading="lazy"></p>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36yaMZfdrrrZlYjivB5xnY/0f7959c4a9ce4770e6c8a1dcb29be830/speed-week-copy-2_2x.png" alt="Cloudflare Speed Week" class="kg-image" width="1500" height="708" loading="lazy">
+
+	</figure>
 </div>

@@ -1,40 +1,61 @@
-<div class="mb2 gray5">15 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/technology-behind-radar2-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/technology-behind-radar2-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/technology-behind-radar2-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/technology-behind-radar2-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/technology-behind-radar2-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/technology-behind-radar2-pt-br">Português</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-1.png" class="kg-image" alt="How we built it: the technology behind Cloudflare Radar 2.0" loading="lazy"></figure>
+<div class="mb2 gray5">14 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/technology-behind-radar2">Français</a>, <a href="https://blog.cloudflare.com/de-de/technology-behind-radar2">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/technology-behind-radar2">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/technology-behind-radar2">Português</a>, <a href="https://blog.cloudflare.com/es-es/technology-behind-radar2">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/technology-behind-radar2">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tbyq3gfFHHRXwc4Uny8RH/ef7005d003854b813fb3bb3f62f34805/image11-1.png" alt="How we built it: the technology behind Cloudflare Radar 2.0" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p><a href="https://blog.cloudflare.com/radar2">Radar 2.0</a> was built on the learnings of Radar 1.0 and was launched last month during Cloudflare's Birthday Week as a complete product revamp. We wanted to make it easier for our users to find insights and navigate our data, and overall provide a better and faster user experience.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34b5YuwtsM5h8WwqSABuXw/001e13ad18ed602ff11a50424052b3e5/image16.png" alt="" class="kg-image" width="1999" height="1039" loading="lazy">
+
+	</figure>
 	<p>We're building a <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a>. Cloudflare's products now include hundreds of features in networking, security, access controls, computing, storage, and more.</p>
 	<p>This blog will explain how we built the new Radar from an engineering perspective. We wanted to do this to demonstrate that anyone could build a somewhat complex website that involves demanding requirements and multiple architectural layers, do it on top of our stack, and how easy it can be.</p>
 	<p>Hopefully, this will inspire other developers to switch from traditional software architectures and build their applications using modern, more efficient technologies.</p>
-	<h2 id="high-level-architecture">High level architecture</h2>
+	<h2>High level architecture</h2>
 	<p>The following diagram is a birds-eye view of the Radar 2.0 architecture. As you can see, it's divided into three main layers:</p>
 	<ul>
-		<li>The Core layer is where we keep our data lake, data exploration tools, and backend API.</li>
-		<li>The Cloudflare network layer is where we host and run Radar and serve the public APIs.</li>
-		<li>The Client layer is essentially everything else that runs in your browser. We call it the Radar Web app.</li>
+		<li>
+			<p>The Core layer is where we keep our data lake, data exploration tools, and backend API.</p>
+		</li>
+		<li>
+			<p>The Cloudflare network layer is where we host and run Radar and serve the public APIs.</p>
+		</li>
+		<li>
+			<p>The Client layer is essentially everything else that runs in your browser. We call it the Radar Web app.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-31.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>As you can see, there are Cloudflare products <em>everywhere</em>. They provide the foundational resources to host and securely run our code at scale, but also other building blocks necessary to run the application end to end.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eBe8tSbh0Uocpgw1abbZ8/4f4101534a1c5d205fb536e68c4895f0/image3-31.png" alt="" class="kg-image" width="1999" height="1337" loading="lazy">
+
+	</figure>
+	<p>As you can see, there are Cloudflare products <i>everywhere</i>. They provide the foundational resources to host and securely run our code at scale, but also other building blocks necessary to run the application end to end.</p>
 	<p>By having these features readily available and tightly integrated into our ecosystem and tools, at the distance of a click and a few lines of code, engineering teams don't have to reinvent the wheel constantly and can use their time on what is essential: their app logic.</p>
 	<p>Let's dig in.</p>
-	<h2 id="cloudflare-pages">Cloudflare Pages</h2>
+	<h2>Cloudflare Pages</h2>
 	<p>Radar 2.0 is deployed using <a href="https://pages.cloudflare.com">Cloudflare Pages</a>, our developer-focused website hosting platform. In the early days, you could only host static assets on Pages, which was helpful for many use cases, including integrating with static site generators like <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site">Hugo</a>, <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-jekyll-site">Jekyll</a>, or <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-gatsby-site">Gatsby</a>. Still, it wouldn't solve situations where your application needs some sort of server-side computing or advanced logic using a single deployment.</p>
 	<p>Luckily Pages recently added support to run custom Workers scripts. With <a href="https://developers.cloudflare.com/pages/platform/functions">Functions</a>, you can now run server-side code and enable any kind of dynamic functionality you'd typically implement using a separate Worker.</p>
 	<p>Cloudflare Pages Functions also allow you to use <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">KV</a>, <a href="https://developers.cloudflare.com/r2">R2</a>, or <a href="https://developers.cloudflare.com/d1">D1</a>, just like a regular Worker would. We provide <a href="https://developers.cloudflare.com/pages/platform/functions">excellent documentation</a> on how to do this and more in our Developer Documentation. Furthermore, the team wrote a blog on <a href="https://blog.cloudflare.com/building-full-stack-with-pages">how to build a full-stack application</a> that describes all the steps in detail.</p>
 	<p>Radar 2.0 needs server-side functions for two reasons:</p>
 	<ul>
-		<li>To render Radar and run the server side of Remix.</li>
-		<li>To implement and serve our frontend API.</li>
+		<li>
+			<p>To render Radar and run the server side of Remix.</p>
+		</li>
+		<li>
+			<p>To implement and serve our frontend API.</p>
+		</li>
 	</ul>
-	<h2 id="remix-and-server-side-rendering">Remix and Server-side Rendering</h2>
+	<h2>Remix and Server-side Rendering</h2>
 	<p>We use Remix with Cloudflare Pages on Radar 2.0.</p>
 	<p><a href="https://remix.run">Remix</a> follows a server/client model and works under the premise that you can't control the user's network, so web apps must reduce the amount of Javascript, CSS, and JSON they send through the wire. To do this, they move some of the logic to the server.</p>
 	<p>In this case, the client browser will get pre-rendered DOM components and the result of pre-fetched API calls with just the right amount of JSON, Javascript, and CSS code, rightfully adjusted to the UI needs. Here’s the <a href="https://remix.run/docs/en/v1/pages/technical-explanation">technical explanation</a> with more detail.</p>
 	<p>Typically, Remix would need a Node.js server to do all of this, but guess what: <a href="https://developers.cloudflare.com/pages/framework-guides/remix">It can also run</a> on Cloudflare Workers and Pages.</p>
-	<p>Here’s the code to get the Remix server running on Workers, using Cloudflare Pages:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import { createPagesFunctionHandler } from "@remix-run/cloudflare-pages";
+	<p>Here’s the code to get the Remix server running on Workers, using Cloudflare Pages:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { createPagesFunctionHandler } from "@remix-run/cloudflare-pages";
 import * as build from "@remix-run/dev/server-build";
 
 const handleRequest = createPagesFunctionHandler({
@@ -50,7 +71,7 @@ const handleRequest = createPagesFunctionHandler({
   }),
 });
 
-const handler: ExportedHandler&lt;Env&gt; = {
+const handler: ExportedHandler<env> = {
   fetch: async (req, env, ctx) =&gt; {
     const r = new Request(req);
     return handleRequest({
@@ -65,12 +86,11 @@ const handler: ExportedHandler&lt;Env&gt; = {
       data: undefined,
     });
   },
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>In Remix, <a href="https://remix.run/docs/en/v1/guides/api-routes">routes</a> handle changes when a user interacts with the app and changes it (clicking on a menu option, for example). A Remix route can have a <a href="https://remix.run/docs/en/v1/guides/data-loading"><em>loader</em></a>, an <a href="https://remix.run/docs/en/v1/guides/data-writes"><em>action</em></a> and a <a href="https://remix.run/docs/en/v1/api/conventions#root-layout-route"><em>default</em></a> export. The <em>loader</em> handles API calls for fetching data (GET method). The <em>action</em> handles submissions to the server (POST, PUT, PATCH, DELETE methods) and returns the response. The <em>default</em> export handles the UI code in React that’s returned for that route. A route without a <em>default</em> export returns only data.<br><br>Because Remix runs both on the server and the client, it can get smart and know what can be pre-fetched and computed server-side and what must go through the network connection, optimizing everything for performance and responsiveness.</p>
-	<p>Here’s an example of a Radar route, simplified for readability, for the <a href="https://radar.cloudflare.com/outage-center">Outage Center</a> page.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import type { MetaFunction } from "@remix-run/cloudflare";
+};</env></code></pre>
+	<p>In Remix, <a href="https://remix.run/docs/en/v1/guides/api-routes">routes</a> handle changes when a user interacts with the app and changes it (clicking on a menu option, for example). A Remix route can have a <a href="https://remix.run/docs/en/v1/guides/data-loading"><i>loader</i></a>, an <a href="https://remix.run/docs/en/v1/guides/data-writes"><i>action</i></a> and a <a href="https://remix.run/docs/en/v1/api/conventions#root-layout-route"><i>default</i></a> export. The <i>loader</i> handles API calls for fetching data (GET method). The <i>action</i> handles submissions to the server (POST, PUT, PATCH, DELETE methods) and returns the response. The <i>default</i> export handles the UI code in React that’s returned for that route. A route without a <i>default</i> export returns only data.</p>
+	<p>Because Remix runs both on the server and the client, it can get smart and know what can be pre-fetched and computed server-side and what must go through the network connection, optimizing everything for performance and responsiveness.</p>
+	<p>Here’s an example of a Radar route, simplified for readability, for the <a href="https://radar.cloudflare.com/outage-center">Outage Center</a> page.</p>
+	<pre class="language-javascript"><code class="language-javascript">import type { MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { type LoaderArgs } from "@remix-run/server-runtime";
 
@@ -80,137 +100,175 @@ export async function loader(args: LoaderArgs) {
 }
 
 export default function Outages() {
-  const { ssr } = useLoaderData&lt;typeof loader&gt;();
+  const { ssr } = useLoaderData<typeof loader="">();
 
   return (
-    &lt;Page
-      filters={["timerange"]}
-      title={
-        &lt;&gt;
-          &lt;Svg use="icon-outages" /&gt;
+    <page filters="{[&quot;timerange&quot;]}" title="{" <="">
+          <svg use="icon-outages"></svg>
           {t("nav.main.outage-center")}
-        &lt;/&gt;
+        
       }
     &gt;
-      &lt;Grid columns={[1, 1, 1, 1]}&gt;
-        &lt;Card.Article colspan={[1, 1, 1, 1]} rowspan={[1, 1, 1, 1]}&gt;
-          &lt;Card.Section&gt;
-            &lt;Components.InternetOutagesChoropleth ssr={ssr} /&gt;
-          &lt;/Card.Section&gt;
-          &lt;Divider /&gt;
-          &lt;Card.Section&gt;
-            &lt;Components.InternetOutagesTable ssr={ssr} /&gt;
-          &lt;/Card.Section&gt;
-        &lt;/Card.Article&gt;
-      &lt;/Grid&gt;
-    &lt;/Page&gt;
+      <grid columns="{[1," 1,="" 1]}="">
+        <card.article colspan="{[1," 1,="" 1]}="" rowspan="{[1,">
+          <card.section>
+            <components.internetoutageschoropleth ssr="{ssr}">
+          </components.internetoutageschoropleth></card.section>
+          <divider>
+          <card.section>
+            <components.internetoutagestable ssr="{ssr}">
+          </components.internetoutagestable></card.section>
+        </divider></card.article>
+      </grid>
+    </page>
   );
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</typeof></code></pre>
 	<p>And here’s what it produces:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wmqtv1VV0kSOU3UTlwXiz/d10ba2f0b55824bc52d4bad9ff1a0b30/image18.png" alt="" class="kg-image" width="1999" height="1316" loading="lazy">
+
+	</figure>
 	<p>Remix and SSR can also help you with your <a href="https://developer.chrome.com/docs/lighthouse/overview">Lighthouse</a> scores and SEO. It can drastically improve metrics like <a href="https://web.dev/cls">Cumulative Layout Shift</a>, <a href="https://web.dev/fcp">First Contentful Paint</a> and <a href="https://web.dev/lcp">Largest Contentful Paint</a> by reducing the number of fetches and information traveling from the server to the browser and pre-rendering the DOM.</p>
 	<p>Another project porting their app to Remix is <a href="https://cloudflare.tv">Cloudflare TV</a>. This is how their metrics looked before and after the changes.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oR1Rqf8Mp1fYJRpQMBrgE/50a2b4b957f18de62881f60903bbbe1f/image12.png" alt="" class="kg-image" width="1999" height="857" loading="lazy">
+
+	</figure>
 	<p>Radar’s Desktop Lighthouse score is now nearly 100% on Performance, Accessibility, Best Practices, and SEO.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fe4weO7U21a7ZNGW969su/27f140e2dd8c60a7b7075c228bbcc67c/image14.png" alt="" class="kg-image" width="782" height="264" loading="lazy">
+
+	</figure>
 	<p>Another Cloudflare product that we use extensively on Radar 2.0 is <a href="https://www.cloudflare.com/en-gb/website-optimization">Speed</a>. In particular, we want to mention the <a href="https://blog.cloudflare.com/early-hints">Early Hints</a> feature. Early Hints is a new web <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103">standard</a> that defines a new HTTP 103 header the server can use to inform the browser which assets will likely be needed to render the web page while it's still being requested, resulting in dramatic load times improvements.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-42.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OSrsfjFevZ4qx1TT4jYWb/d359725c62bd117296e75f0c1045cf9a/image2-42.png" alt="" class="kg-image" width="1999" height="545" loading="lazy">
+
+	</figure>
 	<p>You can use <a href="https://blog.cloudflare.com/early-hints-on-cloudflare-pages">Cloudflare Pages with Early Hints</a>.</p>
-	<h2 id="apis">APIs</h2>
+	<h2>APIs</h2>
 	<p>Radar has two APIs. The backend which has direct access to our data sources, and the frontend, which is available on the Internet.</p>
-	<h3 id="backend-api">Backend API</h3>
+	<h3>Backend API</h3>
 	<p>The backend API was written using <a href="https://www.python.org">Python</a>, <a href="https://pandas.pydata.org">Pandas</a> and <a href="https://fastapi.tiangolo.com">FastAPI</a> and is protected by <a href="https://developers.cloudflare.com/cloudflare-one/policies/access">Cloudflare Access</a>, <a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json">JWT tokens</a> and an <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up">authenticated origin pull</a> (AOP) configuration. Using Python allows anyone on the team, engineers or data scientists, to collaborate easily and contribute to improving and expanding the API, which is great. Our data science team uses <a href="https://jupyter.org/hub">JupyterHub</a> and <a href="https://docs.jupyter.org/en/latest/start/index.html">Jupyter Notebooks</a> as part of their data exploration workflows, which makes prototyping and reusing code, algorithms and models particularly easy and fast.</p>
 	<p>It then talks to the upstream frontend API via a <a href="https://strawberry.rocks">Strawberry</a> based GraphQL server. Using <a href="https://graphql.org">GraphQL</a> makes it easy to create complex queries, giving internal users and analysts the flexibility they need when building reports from our vast collection of data.</p>
-	<h3 id="frontend-api">Frontend API</h3>
+	<h3>Frontend API</h3>
 	<p>We built Radar's frontend API on top of Cloudflare <a href="https://developers.cloudflare.com/workers">Workers</a>. This worker has two main functions:</p>
 	<ul>
-		<li>It fetches data from the backend API using GraphQL, and then transforms it.</li>
-		<li>It provides a public <a href="https://developers.cloudflare.com/radar">REST API</a> that anyone can use, including Radar.</li>
+		<li>
+			<p>It fetches data from the backend API using GraphQL, and then transforms it.</p>
+		</li>
+		<li>
+			<p>It provides a public <a href="https://developers.cloudflare.com/radar">REST API</a> that anyone can use, including Radar.</p>
+		</li>
 	</ul>
 	<p>Using a worker in front of our core API allows us to easily add and separate microservices, and also adds notable features like:</p>
 	<ul>
-		<li>Cloudflare's <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a> allows finer control over what to cache and for how long and supports POST requests and customizable cache control headers, which we use.</li>
-		<li>Stale responses using <a href="https://developers.cloudflare.com/r2">R2</a>. When the backend API cannot serve a request for some reason, and there’s a stale response cached, it’ll be served directly from R2, giving end users a better experience.</li>
-		<li><a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> and <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> output formats. The CSV format is convenient and makes it easier for data scientists, analysts, and others to use the API and consume our API data directly from other tools.</li>
+		<li>
+			<p>Cloudflare's <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a> allows finer control over what to cache and for how long and supports POST requests and customizable cache control headers, which we use.</p>
+		</li>
+		<li>
+			<p>Stale responses using <a href="https://developers.cloudflare.com/r2">R2</a>. When the backend API cannot serve a request for some reason, and there’s a stale response cached, it’ll be served directly from R2, giving end users a better experience.</p>
+		</li>
+		<li>
+			<p><a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> and <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> output formats. The CSV format is convenient and makes it easier for data scientists, analysts, and others to use the API and consume our API data directly from other tools.</p>
+		</li>
 	</ul>
-	<h3 id="open-sourcing-our-openapi-3-schema-generator-and-validator">Open sourcing our OpenAPI 3 schema generator and validator</h3>
+	<h3>Open sourcing our OpenAPI 3 schema generator and validator</h3>
 	<p>One last feature on the frontend API is <a href="https://spec.openapis.org/oas/latest.html">OpenAPI 3</a> support. We automatically generate an OpenAPI schema and validate user input with it. This is done through a custom library that we built on top of <a href="https://github.com/kwhitley/itty-router">itty-router</a>, which we also use. Today we’re open sourcing this work.</p>
 	<p><a href="https://github.com/cloudflare/itty-router-openapi">itty-router-openapi</a> provides an easy and compact OpenAPI 3 schema generator and validator for Cloudflare Workers. Check our <a href="https://github.com/cloudflare/itty-router-openapi">GitHub repository</a> for more information and details on how to use it.</p>
-	<h3 id="developer-s-documentation">Developer’s Documentation</h3>
+	<h3>Developer’s Documentation</h3>
 	<p>Today we’re also launching our developer’s <a href="https://developers.cloudflare.com/radar">documentation pages for the Radar API</a> where you can find more information about our data license, basic concepts, how to get started and the available API methods. Cloudflare Radar's API is free, allowing academics, data sleuths and other web enthusiasts to investigate Internet usage across the globe, based on data from our global network.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-7.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>To facilitate using our API, we also put together a <a href="https://colab.research.google.com/github/cloudflare/radar-notebooks/blob/main/notebooks/example.ipynb">Colab Notebook template</a> that you can play with, copy and expand to your use case.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="the-radar-app">The Radar App</h2>
-	<p>The Radar App is the code that runs in your browser. We've talked about Remix, but what else do we use?</p>
-	<p>Radar relies on a lot of <strong>data visualizations</strong>. Things like charts and maps are essential to us. We decided to build our reusable library of visualization components on top of two other frameworks: <a href="https://airbnb.io/visx">visx</a>, a "collection of expressive, low-level visualization primitives for React," <a href="https://d3js.org">D3</a>, a powerful JavaScript library for manipulating the DOM based on data, and <a href="https://maplibre.org">MapLibre</a>, an open-source map visualization stack.</p>
-	<p>Here’s one of our visualization components in action. We call it the “PewPew map”.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>And here’s the Remix React code for it, whenever we need to use it in a page:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">&lt;Card.Section
-    title={t("card.attacks.title")}
-    description={t("card.attacks.description")}
-  &gt;
-    &lt;Flex gap={spacing.medium} align="center" justify="flex-end"&gt;
-      &lt;SegmentedControl
-        label="Sort order:"
-        name="attacksDirection"
-        value={attacksDirection}
-        options={[
-          { label: t("common.source"), value: "ORIGIN" },
-          { label: t("common.target"), value: "TARGET" },
-        ]}
-      onChange={({ target }: any) =&gt; setAttacksDirection(target.value)}
-      /&gt;
-    &lt;/Flex&gt;
+	<figure class="kg-card kg-image-card ">
 
-    &lt;Components.AttacksCombinedChart
-      ssr={ssr}
-      height={400}
-      direction={attacksDirection}
-    /&gt;
-  &lt;/Card.Section&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="svgs">SVGs</h3>
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GbwacvF3M7mVj6kovY0x3/dd254a2ab7084a083e7192f37e4f17bb/image6-7.png" alt="" class="kg-image" width="1999" height="868" loading="lazy">
+
+	</figure>
+	<p>To facilitate using our API, we also put together a <a href="https://colab.research.google.com/github/cloudflare/radar-notebooks/blob/main/notebooks/example.ipynb">Colab Notebook template</a> that you can play with, copy and expand to your use case.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IQocyWiVv1U9ecurP6AOg/634c5c6f904f2ec303591503cea15a74/image7-4.png" alt="" class="kg-image" width="1999" height="1260" loading="lazy">
+
+	</figure>
+	<h2>The Radar App</h2>
+	<p>The Radar App is the code that runs in your browser. We've talked about Remix, but what else do we use?</p>
+	<p>Radar relies on a lot of <b>data visualizations</b>. Things like charts and maps are essential to us. We decided to build our reusable library of visualization components on top of two other frameworks: <a href="https://airbnb.io/visx">visx</a>, a "collection of expressive, low-level visualization primitives for React," <a href="https://d3js.org">D3</a>, a powerful JavaScript library for manipulating the DOM based on data, and <a href="https://maplibre.org">MapLibre</a>, an open-source map visualization stack.</p>
+	<p>Here’s one of our visualization components in action. We call it the “PewPew map”.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ENMTCsc23Vq5Of80vVqBP/7dfd7546f884d5e07ac125578f4c30df/image5-12.png" alt="" class="kg-image" width="1999" height="1171" loading="lazy">
+
+	</figure>
+	<p>And here’s the Remix React code for it, whenever we need to use it in a page:</p>
+	<pre class="language-javascript"><code class="language-javascript"><card.section title="{t(&quot;card.attacks.title&quot;)}" description="{t(&quot;card.attacks.description&quot;)}">
+    <flex gap="{spacing.medium}" align="center" justify="flex-end">
+      <segmentedcontrol label="Sort order:" name="attacksDirection" value="{attacksDirection}" options="{[" {="" label:="" t("common.source"),="" value:="" "origin"="" },="" t("common.target"),="" "target"="" ]}="" onchange="{({" target="" }:="" any)=""> setAttacksDirection(target.value)}
+      /&gt;
+    </segmentedcontrol></flex>
+
+    <components.attackscombinedchart ssr="{ssr}" height="{400}" direction="{attacksDirection}">
+  </components.attackscombinedchart></card.section></code></pre>
+	<h3>SVGs</h3>
 	<p>Another change we made to Radar was switching our images and graphical assets to <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphics</a>. SVGs are great because they're essentially a declarative graphics language. They're XML text files with vectorial information. And so, they can be easily manipulated, transformed, stored, or indexed, and of course, they can be rendered at any size, producing beautiful, crisp results on any device and resolution.</p>
 	<p>SVGs are also extremely small and efficient in size compared to bitmap formats and support <a href="https://www.w3.org/TR/SVGTiny12/i18n.html">internationalization</a>, making them easier to translate to other languages (localization), thus providing better <a href="https://www.a11yproject.com">accessibility</a>.</p>
-	<p>Here’s an example of a Radar Bubble Chart, inspected, where you can see the SVG code and the &lt;text/&gt; strings embedded.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image17.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="cosmos">Cosmos</h3>
+	<p>Here’s an example of a Radar Bubble Chart, inspected, where you can see the SVG code and the strings embedded.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PJgCboffVUKXDjtRTPFov/12923814b48580a14770a1b532c83155/image17.png" alt="" class="kg-image" width="1878" height="478" loading="lazy">
+
+	</figure>
+	<h3>Cosmos</h3>
 	<p><a href="https://reactcosmos.org">React Cosmos</a> is a "sandbox for developing and testing UI components in isolation." We wanted to use Cosmos with Radar 2.0 because it's the perfect project for it:</p>
 	<ol>
-		<li>It has a lot of visual components; some are complex and have many configuration options and features.</li>
-		<li>The components are highly reusable across multiple pages in different contexts with different data.</li>
-		<li>We have a multidisciplinary team; everyone can send a pull request and add or change code in the frontend.</li>
+		<li>
+			<p>It has a lot of visual components; some are complex and have many configuration options and features.</p>
+		</li>
+		<li>
+			<p>The components are highly reusable across multiple pages in different contexts with different data.</p>
+		</li>
+		<li>
+			<p>We have a multidisciplinary team; everyone can send a pull request and add or change code in the frontend.</p>
+		</li>
 	</ol>
 	<p>Cosmos acts as a component library where you can see our palette of ready-to-use visualizations and widgets, from simple buttons to complex charts, and you play with their options in real-time and see what happens. Anyone can do it, not only designers or engineers but also other project stakeholders. This effectively improves team communications and makes contributing and iterating quickly.</p>
 	<p>Here’s a screenshot of our Cosmos in action:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-57.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="continuous-integration-and-development">Continuous integration and development</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LBKvrUOyalqcEkuie59dB/5d879161fc1e60a74f95d6fb158916b5/image1-57.png" alt="" class="kg-image" width="1999" height="957" loading="lazy">
+
+	</figure>
+	<h2>Continuous integration and development</h2>
 	<p>Continuous integration is important for any team doing modern software. Cloudflare Pages provides multiple options to work with CI tools using direct uploads, out of the box. The team has put up <a href="https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration">documentation and examples</a> on how to do that with GitHub Actions, CircleCI, and Travis, but you can use others.</p>
 	<p>In our case, we use BitBucket and TeamCity internally to build and deploy our releases. Our workflow automatically builds, tests, and deploys Radar 2.0 within minutes on an approved PR and follow-up merge.</p>
 	<p>Unit tests are done with <a href="https://vitest.dev">Vitest</a> and E2E tests with <a href="https://playwright.dev">Playwright</a>. Visual Regression testing is planned and <a href="https://playwright.dev/docs/test-snapshots">Playwright can also help with that</a>.</p>
 	<p>Furthermore, we have multiple environments to stage and test our releases before they go live to production. Our CI/CD setup makes it easy to switch from one environment to the other or quickly roll back any undesired deployment.</p>
 	<p>Again Cloudflare Pages makes it easy to do this using <a href="https://developers.cloudflare.com/pages/platform/preview-deployments">Preview deployments</a>, aliases, or <a href="https://developers.cloudflare.com/pages/platform/branch-build-controls">Branch build controls</a>. The same is true for regular Workers using <a href="https://developers.cloudflare.com/workers/platform/environments">Environments</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image19.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="fast-previews-and-notifications">Fast previews and notifications</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Q9hXo3Iz04CtXpmaALbzI/f14743b0a2f71797831a63d3cbd2ab4a/image19.png" alt="" class="kg-image" width="1694" height="516" loading="lazy">
+
+	</figure>
+	<h3>Fast previews and notifications</h3>
 	<p>Radar 1.0 wasn't particularly fast doing CI/CD, we confess. We had a few episodes when a quick fix could take some good 30 minutes from committing the code to deployment, and we felt frustrated about it.</p>
 	<p>So we invested a lot in ensuring that the new CI would be fast, efficient, and furious.</p>
 	<p>One cool thing we ended up doing was fast preview links on any commit pushed to the code repository. Using a combination of intelligent caching during builds and doing asynchronous tests when the commit is outside the normal release branches, we were able to shorten the deployment time to seconds.</p>
 	<p>This is the notification we get in our chat when anyone pushes code to any branch:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5moqSeGzEAlNHnEJVoxwbO/88c9e10dc273898f281350f1ef673db0/image8-2.png" alt="" class="kg-image" width="1194" height="1060" loading="lazy">
+
+	</figure>
 	<p>Anyone can follow a thread for a specific branch in the chat and get notified on new changes when they happen.</p>
 	<p>Blazing-fast builds, preview links and notifications are game-changers. An engineer can go from an idea or a quick fix to showing the result on a link to a product manager or another team member. Anyone can quickly click the link to see the changes on a fully working end-to-end version of Radar.</p>
-	<h2 id="accessibility-and-localization">Accessibility and localization</h2>
+	<h2>Accessibility and localization</h2>
 	<p>Cloudflare is committed to web accessibility. Recently we announced how we upgraded Cloudflare’s Dashboard to <a href="https://blog.cloudflare.com/project-a11y">adhere to industry accessibility standards</a>, but this premise is valid for all our properties. The same is true for localization. In 2020, we <a href="https://blog.cloudflare.com/internationalizing-the-cloudflare-dashboard">internationalized</a> our Dashboard and added support for new languages and locales.</p>
 	<p>Accessibility and localization go hand in hand and are both important, but they are also different. The <a href="https://www.w3.org/TR/WCAG21">Web Content Accessibility Guidelines</a> define many best practices around accessibility, including using <a href="https://color.cloudflare.design">color</a> and contrast, tags, SVGs, shortcuts, gestures, and many others. The <a href="https://www.a11yproject.com">A11Y project page</a> is an excellent resource for learning more.</p>
 	<p>Localization, though, also known as <a href="https://en.wikipedia.org/wiki/Internationalization_and_localization">L10n</a>, is more of a technical requirement when you start a new project. It's about making sure you choose the right set of libraries and frameworks that will make it easier to add new translations without engineering dependencies or code rewrites.</p>
 	<p>We wanted Radar to perform well on both fronts. Our design system takes Cloudflare's design and brand <a href="https://cloudflare.design">guidelines</a> seriously and adds as many A11Y good practices as possible, and the app is fully aware of localization strings across its pages and UI components.</p>
-	<p>Adding a new language is as easy as translating a single JSON file. Here's a snippet of the en-US.json file with the default American English strings:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JSON">{
+	<p>Adding a new language is as easy as translating a single JSON file. Here's a snippet of the en-US.json file with the default American English strings:</p>
+	<pre class="language-json"><code class="language-json">{
   "abbr.asn": "Autonomous System Number",
   "actions.chart.download.csv": "Download chart data in CSV",
   "actions.chart.download.png": "Download chart in PNG Format",
@@ -228,31 +286,49 @@ export default function Outages() {
   "card.about.cloudflare.p1": "Cloudflare, Inc. ({website} / {twitter}) is on a mission to help build a better Internet. Cloudflare's suite of products protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine's Top Company Cultures 2018 list and ranked among the World's Most Innovative Companies by Fast Company in 2019.",
   "card.about.cloudflare.p2": "Headquartered in San Francisco, CA, Cloudflare has offices in Austin, TX, Champaign, IL, New York, NY, San Jose, CA, Seattle, WA, Washington, D.C., Toronto, Dubai, Lisbon, London, Munich, Paris, Beijing, Singapore, Sydney, and Tokyo.",
   "card.about.cloudflare.title": "About Cloudflare",
-...
-</code></pre>
-	<!--kg-card-end: markdown-->
+...</code></pre>
 	<p>You can expect us to release Radar in other languages soon.</p>
-	<h2 id="radar-reports-and-jupyter-notebooks">Radar Reports and Jupyter notebooks</h2>
+	<h2>Radar Reports and Jupyter notebooks</h2>
 	<p><a href="https://radar.cloudflare.com/reports">Radar Reports</a> are documents that use data exploration and storytelling to analyze a particular theme in-depth. Some reports tend to get updates from time to time. Examples of Radar Reports are our quarterly <a href="https://radar.cloudflare.com/reports/ddos-2022-q3">DDoS Attack Trends</a>, or the <a href="https://radar.cloudflare.com/reports/ipv6">IPv6 adoption</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-23.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YdlIovSNvHy7YITYdxiCf/26a0adec1a26dc96b0be8e038dc7530e/image4-23.png" alt="" class="kg-image" width="1999" height="1072" loading="lazy">
+
+	</figure>
 	<p>The source of these Reports is <a href="https://jupyter.org">Jupyter Notebooks</a>. Our Data Science team works on some use-case or themes with other stakeholders using our internal Jupyter Hub tool. After all the iteration and exploration are done, and the work is signed off, a notebook is produced.</p>
 	<p>A Jupyter Notebook is a <a href="https://ipython.org/ipython-doc/3/notebook/nbformat.html">JSON document</a> containing text, source code, rich media such as images or charts, and other metadata. It is the de facto standard for presenting data science projects, and every data scientist uses it.</p>
 	<p>With Radar 1.0, converting a Jupyter Notebook to a Radar page was a lengthy and manual process implicating many engineering and design resources and causing much frustration to everyone involved. Even updating an already-published notebook would frequently cause trouble for us.</p>
 	<p>Radar 2.0 changed all of this. We now have a fully automated process that takes a Jupyter Notebook and, as long as it's designed using a list of simple rules and internal guidelines, converts it automatically, hosts the resulting HTML and assets in an R2 bucket, and publishes it on the <a href="https://radar.cloudflare.com/reports">Reports</a> page.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iS9T8mn23CDjg4nFfpqWT/e6ee81ac49ea22d5cad68848382ab67c/image9-2.png" alt="" class="kg-image" width="1832" height="466" loading="lazy">
+
+	</figure>
 	<p>The conversion to HTML takes into account our design system and UI components, and the result is a <a href="https://radar.cloudflare.com/reports/ddos-2022-q3">beautiful document</a>, usually long-form, perfectly matching Radar's look and feel.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oXmxPoDH1NDJqsBaIRKK4/4f139f27f20cee475660c72901eea4e9/image13.png" alt="" class="kg-image" width="1999" height="1297" loading="lazy">
+
+	</figure>
 	<p>We will eventually open-source this tool so that anyone can use it.</p>
-	<h2 id="more-cloudflare-less-to-worry-about">More Cloudflare, less to worry about</h2>
+	<h2>More Cloudflare, less to worry about</h2>
 	<p>We gave examples of using Cloudflare's products and features to build your next-gen app without worrying too much about things that aren't core to your business or logic. A few are missing, though.</p>
 	<p>Once the app is up and running, you must protect it from bad traffic and malicious actors. Cloudflare offers you <a href="https://www.cloudflare.com/en-gb/ddos">DDoS</a>, <a href="https://www.cloudflare.com/en-gb/waf">WAF</a>, and <a href="https://www.cloudflare.com/en-gb/products/bot-management">Bot Management</a> protection out of the box at a click's distance.</p>
 	<p>For example, here are some of our security rules. This is traffic we don't have to worry about in our app because Cloudflare detects it and acts on it according to our rules.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image10-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14D17IdfhuHOyzPeFPePyP/8f5f5db2cbb7fc8db0cdf1c78f2a91c0/image10-1.png" alt="" class="kg-image" width="1999" height="258" loading="lazy">
+
+	</figure>
 	<p>Another thing we don't need to worry about is redirects from the old site to the new one. Cloudflare has a feature called <a href="https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard">Bulk Redirects</a>, where you can easily create redirect lists directly on the dashboard.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image15.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ieVLmpoynt1H7lDWykfs8/7b77dad9f2aad7b500fda0a97d7c4758/image15.png" alt="" class="kg-image" width="1999" height="1220" loading="lazy">
+
+	</figure>
 	<p>It's also important to mention that every time we talk about what you can do using our Dashboard, we're, in fact, also saying you can do precisely the same using <a href="https://api.cloudflare.com">Cloudflare's APIs</a>. Our Dashboard is built entirely on top of them. And if you're the infrastructure as code kind of person, we have you covered, too; you can use the <a href="https://developers.cloudflare.com/terraform/tutorial">Cloudflare Terraform provider</a>.</p>
 	<p>Deploying and managing Workers, R2 buckets, or Pages sites is obviously scriptable too. <a href="https://github.com/cloudflare/wrangler">Wrangler</a> is the command-line tool to do this and more, and it goes the extra mile to allow you to run your full app <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev">locally</a>, emulating our stack, on your computer, before deploying.</p>
-	<h2 id="final-words">Final words</h2>
+	<h2>Final words</h2>
 	<p>We hope you enjoyed this Radar team write-up and were inspired to build your next app on top of our <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a>. We will continue improving and innovating on Radar 2.0 with new features, share our findings and open-sourcing our tools with you.</p>
 	<p>In the meantime, we opened a <a href="https://discord.gg/cloudflaredev">Radar room</a> on our Developers Discord Server. Feel free to <a href="https://discord.gg/cloudflaredev">join</a> it and ask us questions; the team is eager to receive feedback and discuss web technology with you.</p>
 	<p>You can also follow us <a href="https://twitter.com/cloudflareradar">on Twitter</a> for more Radar updates.</p>

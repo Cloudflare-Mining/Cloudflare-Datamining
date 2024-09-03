@@ -1,44 +1,76 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><a href="http://www.flickr.com/photos/damonbillian/7139602929" title="Screen Shot 2012-05-01 at 5.12.05 PM by dbillian, on Flickr"><img alt="Protecting CloudFlare sites from phishing" src="https://blog.cloudflare.com/content/images/Safari-2.jpg.scaled500.jpg" title="Protecting CloudFlare sites from phishing "></a></p>
-	<p><strong><em>Editor's Note:</em></strong> This post was co-authored with <a href="https://www.cloudflare.com/people">Ray Bejjani</a>, CloudFlare's engineer that was the lead for this project.</p>
-	<p>As the internet has grown, phishing attacks have continued to be a problem. While better awareness and focus on security has helped reduce their number, <a href="http://www.rsa.com/phishing_reports.aspx%20">the RSA</a> and other services tracking phishing still show that somewhere between <a href="http://www.rsa.com/phishing_reports.aspx%20">20-30,000 phishing attacks</a> generally occur <strong><em>every month</em></strong>. In the past, criminals used to launch most of these phishing attacks through email but they have now switched to hacking sites to better hide their tracks and dupe more unsuspecting consumers into divulging their personal information unknowingly to fraudsters. This can become a difficult problem for less technical users that wish to participate and contribute to the World Wide Web.</p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VH028wOfpfTboLi31AMt2/b291983365022a560cfe99f24b1a1cc1/Safari-2.jpg.scaled500.jpg" alt="Protecting CloudFlare sites from phishing" class="kg-image" width="500" height="415" loading="lazy">
+
+	</figure>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/7139602929">http://www.flickr.com/photos/damonbillian/7139602929/</a> "Screen Shot 2012-05-01 at 5.12.05 PM by dbillian, on Flickr")</p>
+	<p><i><b>Editor's Note:</b></i> This post was co-authored with <a href="https://www.cloudflare.com/people">Ray Bejjani</a>, CloudFlare's engineer that was the lead for this project.</p>
+	<p>As the internet has grown, phishing attacks have continued to be a problem. While better awareness and focus on security has helped reduce their number, <a href="http://www.rsa.com/phishing_reports.aspx%20">the RSA</a> and other services tracking phishing still show that somewhere between <a href="http://www.rsa.com/phishing_reports.aspx%20">20-30,000 phishing attacks</a> generally occur <i><b>every month</b></i>. In the past, criminals used to launch most of these phishing attacks through email but they have now switched to hacking sites to better hide their tracks and dupe more unsuspecting consumers into divulging their personal information unknowingly to fraudsters. This can become a difficult problem for less technical users that wish to participate and contribute to the World Wide Web.</p>
 	<p>Given our position in the internet ecosystem, we often receive phishing reports via our abuse channel. Previously, this meant a manual process to notify the appropriate parties especially the site owner. We felt we could serve our customers better, and their customers in turn, with a solution unique to CloudFlare. When we have identified a URL that is phishing we notify the owner and provide them summary information and notifications when they log in. We also begin serving a warning page in place of the bad URL. This page can be bypassed by the visitor at their preference.</p>
-	<h3 id="whydidcloudflarecreatethisnewantiphishingprocess">Why did CloudFlare create this new anti-phishing process?</h3>
+	<h3>Why did CloudFlare create this new anti-phishing process?</h3>
 	<ul>
-		<li>Our mission is to help make the web faster and safer. </li>
-		<li>We can block phishing pages as soon as they are reported to us. This provides the following benefits to sites using CloudFlare: <ul>
-				<li>Stops site visitors from potentially falling victim to identity theft</li>
-				<li>Stops site owners from being penalized for unknowingly hosting phishing content. Many search engines will blocklist your site if you're hosting malicious content, which only compounds the issue for site owners that don't know that they have been compromised</li>
-				<li>We can quickly notify site owners about the issue on their site quickly so they can clean up the malicious files.</li>
+		<li>
+			<p>Our mission is to help make the web faster and safer.</p>
+		</li>
+		<li>
+			<p>We can block phishing pages as soon as they are reported to us. This provides the following benefits to sites using CloudFlare:</p>
+			<ul>
+				<li>
+					<p>Stops site visitors from potentially falling victim to identity theft</p>
+				</li>
+				<li>
+					<p>Stops site owners from being penalized for unknowingly hosting phishing content. Many search engines will blocklist your site if you're hosting malicious content, which only compounds the issue for site owners that don't know that they have been compromised</p>
+				</li>
+				<li>
+					<p>We can quickly notify site owners about the issue on their site quickly so they can clean up the malicious files.</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
-	<h3 id="howdoiprotectmysitefromfuturehacksandphishingattempts">How do I protect my site from future hacks and phishing attempts?</h3>
+	<h3>How do I protect my site from future hacks and phishing attempts?</h3>
 	<p>If you're interested in protecting your site, whether you have been hacked or not, you can take the following steps that can secure your site:</p>
 	<ol>
-		<li>Use <a href="https://www.cloudflare.com/features-security">SSL</a> on your site to encrypt information between your site and your server.</li>
-		<li>In addition to providing a <a href="https://www.cloudflare.com/features-security">layer of security</a> to your site already, CloudFlare has partnered with a number of <a href="https://www.cloudflare.com/apps">app
-				providers</a> that can help further protect site owners from malicious intrusions and provide additonal site monitoring.</li>
-		<li>Always update your site's CMS platform, plugins and server software. If you have a notification from your provider that there is a
-			software update available, these updates were probably done to fix known exploits that have shown up since the last release to the plugin or platform. Since doing these updates often only takes a few minutes or so, you can save yourself from a potential world of hurt by doing it "now" instead of "later".</li>
+		<li>
+			<p>Use <a href="https://www.cloudflare.com/features-security">SSL</a> on your site to encrypt information between your site and your server.</p>
+		</li>
+		<li>
+			<p>In addition to providing a <a href="https://www.cloudflare.com/features-security">layer of security</a> to your site already, CloudFlare has partnered with a number of <a href="https://www.cloudflare.com/apps">app providers</a> that can help further protect site owners from malicious intrusions and provide additonal site monitoring.</p>
+		</li>
+		<li>
+			<p>Always update your site's CMS platform, plugins and server software. If you have a notification from your provider that there is a software update available, these updates were probably done to fix known exploits that have shown up since the last release to the plugin or platform. Since doing these updates often only takes a few minutes or so, you can save yourself from a potential world of hurt by doing it "now" instead of "later".</p>
+		</li>
 	</ol>
-	<h4 id="whatshouldidoifcloudflarehasnotifiedmeofphishingpagesonmysite">What should I do if CloudFlare has notified me of phishing pages on my site?</h4>
+	<h4>What should I do if CloudFlare has notified me of phishing pages on my site?</h4>
 	<p>CloudFlare will send you an email advising you as to what pages on your site are phishing content. You will also see a message on your 'My Websites' page when a domain has pages blocked for a phishing report, with a link to take you to more information about the report.</p>
-	<p><a href="http://www.flickr.com/photos/damonbillian/7133443373" title="Screen Shot 2012-05-01 at 2.41.45 PM by dbillian, on Flickr"><img alt="Protecting CloudFlare sites from phishing" src="https://blog.cloudflare.com/content/images/Unknown.jpeg.scaled500.jpg" title="Protecting CloudFlare sites from phishing "></a></p>
-	<h4 id="stepsyoushouldtakeifyoureceiveanemailfromusorseeamessageonyourdashboard">Steps you should take if you receive an email from us or see a message on your dashboard:</h4>
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NSKQEaIFoFW7KxZ17M4Vy/0bea69d52084700392c435937571e5c0/Unknown.jpeg.scaled500.jpg" alt="Protecting CloudFlare sites from phishing" class="kg-image" width="500" height="374" loading="lazy">
+
+	</figure>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/7133443373">http://www.flickr.com/photos/damonbillian/7133443373/</a> "Screen Shot 2012-05-01 at 2.41.45 PM by dbillian, on Flickr")</p>
+	<h4>Steps you should take if you receive an email from us or see a message on your dashboard:</h4>
 	<ol>
-		<li>If you are an experienced web administrator, chances are you already know how to remove the page(s) from your site. Remove the pages in question and then request a review that will be processed by the abuse team.</li>
-		<li>If you are not an experienced web administrator, we would recommend that you contact your hosting provider for assistance in removing the pages. You should then request the review so we can confirm the phishing pages have been removed.</li>
+		<li>
+			<p>If you are an experienced web administrator, chances are you already know how to remove the page(s) from your site. Remove the pages in question and then request a review that will be processed by the abuse team.</p>
+		</li>
+		<li>
+			<p>If you are not an experienced web administrator, we would recommend that you contact your hosting provider for assistance in removing the pages. You should then request the review so we can confirm the phishing pages have been removed.</p>
+		</li>
 	</ol>
-	<h3 id="whereshouldireportasiteoncloudflarethathasaphishingpage">Where should I report a site on CloudFlare that has a phishing page?</h3>
+	<h3>Where should I report a site on CloudFlare that has a phishing page?</h3>
 	<p>If you see a site on the CloudFlare network that has a phishing page, please report the site to us via our <a href="https://www.cloudflare.com/abuse">abuse form</a>.</p>
 	<p>Please be sure to include the following in the report:</p>
 	<ul>
-		<li>The domain in question</li>
-		<li>The actual page that the phishing link is located on.</li>
+		<li>
+			<p>The domain in question</p>
+		</li>
+		<li>
+			<p>The actual page that the phishing link is located on.</p>
+		</li>
 	</ul>
-	We have more exciting things on the way to help protect internet users
-	from phishing and malware. Please stay tuned to CloudFlare updates for
-	more developments.<!--kg-card-end: markdown-->
+	<p>We have more exciting things on the way to help protect internet users from phishing and malware. Please stay tuned to CloudFlare updates for more developments.</p>
 </div>

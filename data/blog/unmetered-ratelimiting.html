@@ -1,7 +1,10 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-26.png" class="kg-image" alt="Back in 2007 we gave you Unmetered DDoS Mitigation, here's a birthday gift: Unmetered Rate Limiting" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QVI2p7ey2f7doI3Ppm73X/73d27240ed0563c3aea936ec1bfddaab/image4-26.png" alt="Back in 2007 we gave you Unmetered DDoS Mitigation, here's a birthday gift: Unmetered Rate Limiting" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>In 2017, we made <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered DDoS protection</a> available to all our customers, regardless of their size or whether they were on a Free or paid plan. Today we are doing the same for Rate Limiting, one of the most successful products of the WAF family.</p>
 	<p>Rate Limiting is a very effective tool to manage targeted volumetric attacks, takeover attempts, bots scraping sensitive data, attempts to overload computationally expensive API endpoints and more. To manage these threats, customers deploy rules that limit the maximum rate of requests from individual visitors on specific paths or portions of their applications.</p>
 	<p>Until today, customers on a Free, Pro or Business plan were able to purchase Rate Limiting as an add-on with usage-based cost of $5 per million requests. However, we believe that an essential security tool like Rate Limiting should be available to all customers without restrictions.</p>
@@ -9,11 +12,14 @@
 	<p>Today, we are announcing that Free, Pro and Business plans include Rate Limiting rules without extra charges.</p>
 	<p>…and we are not just dropping any Rate Limiting extra charges, we are also releasing an updated version of the product which is built on the powerful ruleset engine and allows building rules like in Custom Rules. This is the same engine which powers the enterprise-grade <a href="https://blog.cloudflare.com/advanced-rate-limiting">Advanced Rate Limiting</a>. The new ‘Rate limiting rules’ will appear in your dashboard starting this week.</p>
 	<p>No more usage-based charges, just rate limiting when you need and how much you need it.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-63.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>New Rate Limiting is in everyone's dashboard under the WAF tab.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5H36mS0NDzLbE3sJfa8xnF/d83bd09ceb074518733cf4b3f1d9e8aa/image2-63.png" alt="" class="kg-image" width="1999" height="1113" loading="lazy">
+
 	</figure>
+	<p>New Rate Limiting is in everyone's dashboard under the WAF tab.</p>
 	<p>Note: starting today, September 29th, Pro and Business customers have the new product available in their dashboard. Free customers will get their rules enabled during the week starting on October 3rd 2022.</p>
-	<h3 id="end-of-usage-based-charges">End of usage-based charges</h3>
+	<h3>End of usage-based charges</h3>
 	<p>New customers get new Rate Limiting by default while existing customers will be able to run both products in parallel: new and previous version.</p>
 	<p>For new customers, new Rate Limiting rules will be included in each plan according to the following table:</p><!--kg-card-begin: html-->
 	<table width="100%">
@@ -36,8 +42,8 @@
 	</table><!--kg-card-end: html-->
 	<p>When using these rules, no additional charges will be added to your account. No matter how much traffic these rules handle.</p>
 	<p>Existing customers will be granted the same amount of rules in the new, unmetered, system as the rules they’re currently using in the previous version (as of September 20, 2022). For example, if you are a Business customer with nine active rules in the previous version, you will get nine rules in the new system as well.</p>
-	<p><em>The previous version of Rate Limiting will still be subject to charges when in use</em>. If you want to take advantage of the unmetered option, we recommend rewriting your rules in the new engine. As outlined below, new Rate Limiting offers all the capabilities of the previous version of Rate Limiting and more. In the future, the previous version of Rate Limiting will be deprecated, however we will give plenty of time to self-migrate rules.</p>
-	<h3 id="new-rate-limiting-engine-for-all">New rate limiting engine for all</h3>
+	<p><i>The previous version of Rate Limiting will still be subject to charges when in use</i>. If you want to take advantage of the unmetered option, we recommend rewriting your rules in the new engine. As outlined below, new Rate Limiting offers all the capabilities of the previous version of Rate Limiting and more. In the future, the previous version of Rate Limiting will be deprecated, however we will give plenty of time to self-migrate rules.</p>
+	<h3>New rate limiting engine for all</h3>
 	<p>A couple of weeks ago, <a href="https://blog.cloudflare.com/cloudflare-waap-named-leader-gartner-magic-quadrant-2022">we announced</a> that Cloudflare was named a Leader in the Gartner® Magic Quadrant™ for Web Application and API Protection (WAAP). One of the key services offered in our WAAP portfolio is Advanced Rate Limiting.</p>
 	<p>The recent <a href="https://blog.cloudflare.com/advanced-rate-limiting">Advanced Rate Limiting</a> has shown great success among our Enterprise customers. Advanced Rate Limiting allows an unprecedented level of control on how to manage incoming traffic rate. We decided to give the same rule-building experience to all of our customers as well as some of its new features.</p>
 	<p>A summary of the feature set is outlined in the following table:</p><!--kg-card-begin: html-->
@@ -149,30 +155,33 @@
 				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Included in contracted plan</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<p><sup>(1): Requires Bots Management add-on</sup><br>
-		<sup>(2): Requires specific plan</sup>
-	</p>
-	<!--kg-card-end: markdown-->
-	<p><strong>Leveraging the ruleset engine. </strong>Previous version of Rate Limiting allows customers to scope the rule based on a single path and method of the request. Thanks to the ruleset engine, customers can now write rules like they do in Custom Rules and combine multiple parameters of the HTTP request.</p>
+	</table><!--kg-card-end: html-->
+	<p>(1): Requires Bots Management add-on(2): Requires specific plan</p>
+	<p><b>Leveraging the ruleset engine.</b> Previous version of Rate Limiting allows customers to scope the rule based on a single path and method of the request. Thanks to the ruleset engine, customers can now write rules like they do in Custom Rules and combine multiple parameters of the HTTP request.</p>
 	<p>For example, Pro domains can combine multiple paths in the same rule using the OR or AND operators. Business domains can also write rules using Source IP or User Agent. This allows enforcing different rates for specific User Agents. Furthermore, Business customers can now scope Rate Limiting to specific IPs (using IP List, for example) or exclude IPs where no attack is expected.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-77.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Both Rate Limiting products can be found under WAF→ Rate Limiting rules. Previous version of Rate Limiting (left) allows filtering traffic for one URL. New Rate Limiting (right) allows you to combine fields like in Custom Rules.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vdGtCHgu4JHuWZsCiNU8u/bcd2e148a20c6d4e6b14ce104e288d39/image1-77.png" alt="" class="kg-image" width="1316" height="1003" loading="lazy">
+
 	</figure>
-	<p><strong>Counting and mitigation expressions are now separate. </strong>A feature request we often heard about was the ability to track the rate of requests on a specific path (such as ‘/login’) and, when an IP exceeds the threshold, block every request from the same IP hitting anywhere on your domain.<strong> </strong>Business and Enterprise customers can now achieve this by using the <em>counting</em> expression which is separate from the <em>mitigation</em>. The former defines what requests are used to compute the rate while the letter defines what requests are mitigated once the threshold has been reached.</p>
+	<p>Both Rate Limiting products can be found under WAF→ Rate Limiting rules. Previous version of Rate Limiting (left) allows filtering traffic for one URL. New Rate Limiting (right) allows you to combine fields like in Custom Rules.</p>
+	<p><b>Counting and mitigation expressions are now separate.</b> A feature request we often heard about was the ability to track the rate of requests on a specific path (such as ‘/login’) and, when an IP exceeds the threshold, block every request from the same IP hitting anywhere on your domain. Business and Enterprise customers can now achieve this by using the <i>counting</i> expression which is separate from the <i>mitigation</i>. The former defines what requests are used to compute the rate while the letter defines what requests are mitigated once the threshold has been reached.</p>
 	<p>Another use case for using the counting expression is when you need to use Origin Status Code or HTTP Response Headers. If you need to use these fields, we recommend creating a counting expression that includes response parameters and explicitly writing a filter that defines what the request parameters that will trigger a block action.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-46.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>You can now separate the expression used to compute the rate from the expression used for blocking traffic once the rate is exceeded. In this example, all traffic to example.com will be blocked (see mitigation expression at the top) if more than 3 POST requests to ‘/login’ in 1 minute have returned 429 (defined by the counting expression at the bottom).</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60pUzmYow1zkwkvkYJrTww/808b107d8ca8c74bfaa56e845f856512/image3-46.png" alt="" class="kg-image" width="1160" height="1810" loading="lazy">
+
 	</figure>
-	<p><strong>Counting dimensions. </strong>Similarly to the previous version, Free, Pro and Business customers will get the IP-based Rate Limiting. When we say IP-based we refer to the way we group (or count) requests. You can set a rule that enforces a maximum rate of request from the same IPs. If you set a rule to limit 10 requests over one minute, we will count requests from individual IPs until they reach the limit and then block for a period of time.</p>
+	<p>You can now separate the expression used to compute the rate from the expression used for blocking traffic once the rate is exceeded. In this example, all traffic to example.com will be blocked (see mitigation expression at the top) if more than 3 POST requests to ‘/login’ in 1 minute have returned 429 (defined by the counting expression at the bottom).</p>
+	<p><b>Counting dimensions.</b> Similarly to the previous version, Free, Pro and Business customers will get the IP-based Rate Limiting. When we say IP-based we refer to the way we group (or count) requests. You can set a rule that enforces a maximum rate of request from the same IPs. If you set a rule to limit 10 requests over one minute, we will count requests from individual IPs until they reach the limit and then block for a period of time.</p>
 	<p>Advanced Rate Limiting users are able to group requests based on additional characteristics, such as API keys, cookies, session headers, ASN, query parameters, a JSON body field (e.g. the username value of a login request) and more.</p>
-	<p><strong>What do Enterprise customers get?</strong> Enterprise customers do not get Rate Limiting as part of their contract by default. Rate Limiting is part of application security offering which needs to be contracted based on traffic volume. When WAF with Rate Limiting is included in their contract, they get access to 100 rules, a more comprehensive list of fields available in the rule builder, and they get to upgrade to <a href="https://blog.cloudflare.com/advanced-rate-limiting" rel="nofollow noopener">Advanced Rate Limiting</a>. Please reach out to your account team to learn more.</p>
+	<p><b>What do Enterprise customers get?</b> Enterprise customers do not get Rate Limiting as part of their contract by default. Rate Limiting is part of application security offering which needs to be contracted based on traffic volume. When WAF with Rate Limiting is included in their contract, they get access to 100 rules, a more comprehensive list of fields available in the rule builder, and they get to upgrade to <a href="https://blog.cloudflare.com/advanced-rate-limiting">Advanced Rate Limiting</a>. Please reach out to your account team to learn more.</p>
 	<p>More information on how to use new Rate Limiting can be found in the <a href="https://developers.cloudflare.com/waf/rate-limiting-rules">documentation</a>.</p>
-	<h3 id="additional-information-for-existing-customers">Additional information for existing customers</h3>
+	<h3>Additional information for existing customers</h3>
 	<p>If you are a Free, Pro or Business customer, you will automatically get the new product in the dashboard. We will entitle you with as many unmetered Rate Limiting rules as you are using in the previous version.</p>
 	<p>If you are an Enterprise customer using the previous version of Rate Limiting, please reach out to the account team to discuss the options to move to new Rate Limiting.</p>
 	<p>To take advantage of the unmetered functionality, you will need to migrate your rules to the new system. The previous version will keep working as usual, and you might be charged based on the traffic that its rules evaluate.</p>
 	<p>Long term, the previous version of Rate Limiting will be deprecated and when this happens all rules still running on the old system will cease to run.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>The WAF team has plans to further expand our Rate Limiting capabilities. Features we are considering include better analytics to support the rule creation. Furthermore, new Rate Limiting can now benefit from new fields made available in the WAF as soon as they are released. For example, Enterprise customers can combine Bot Score or the new <a href="https://blog.cloudflare.com/waf-ml">WAF Attack Score</a> to create a more fine grain security posture.</p>
 </div>

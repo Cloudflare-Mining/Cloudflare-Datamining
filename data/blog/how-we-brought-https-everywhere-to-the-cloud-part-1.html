@@ -1,68 +1,79 @@
-<div class="mb2 gray5">11 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZndL9mu3060Jr9kopp7G/b652fda80919aff270cf8e6d9cf44c86/how-we-brought-https-everywhere-to-the-cloud-part-1.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>CloudFlare's mission is to make HTTPS accessible for all our customers. It provides security for their websites, <a href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html">improved ranking on search engines</a>, <a href="https://blog.cloudflare.com/introducing-http2">better performance with HTTP/2</a>, and access to browser features such as geolocation that are being deprecated for plaintext HTTP. With <a href="https://www.cloudflare.com/ssl">Universal SSL</a> or similar features, a simple button click can now enable encryption for a website.</p>
 	<p>Unfortunately, as described in a <a href="https://blog.cloudflare.com/fixing-the-mixed-content-problem-with-automatic-https-rewrites">previous blog post</a>, this is only half of the problem. To make sure that a page is secure and can't be controlled or eavesdropped by third-parties, browsers must ensure that not only the page itself but also all its dependencies are loaded via secure channels. Page elements that don't fulfill this requirement are called mixed content and can either result in the entire page being reported as insecure or even completely blocked, thus breaking the page for the end user.</p>
-	<h2 id="whatcanwedoaboutit">What can we do about it?</h2>
+	<h2>What can we do about it?</h2>
 	<p>When we conceived the Automatic HTTPS Rewrites project, we aimed to automatically reduce the amount of mixed content on customers' web pages without breaking their websites and without any delay noticeable by end users while receiving a page that is being rewritten on the fly.</p>
 	<p>A naive way to do this would be to just rewrite <code>http://</code> links to <code>https://</code> or let browsers do that with <a href="https://www.w3.org/TR/upgrade-insecure-requests"><code>Upgrade-Insecure-Requests</code></a> directive.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/tumblr_inline_nyupi1faxM1qkjeen_500-1.gif" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YhZ5thm7SrTbeJ65wiYoT/b124ec33a7f21931127537d788e19c09/tumblr_inline_nyupi1faxM1qkjeen_500-1.gif" alt="" class="kg-image" width="500" height="269" loading="lazy">
+
+	</figure>
 	<p>Unfortunately, such approach is very fragile and unsafe unless you're sure that</p>
 	<ol>
-		<li>Each single HTTP sub-resource is also available via HTTPS.</li>
-		<li>It's available at the exact same domain and path after protocol upgrade (more often than you might think that's <em>not</em> the case).</li>
+		<li>
+			<p>Each single HTTP sub-resource is also available via HTTPS.</p>
+		</li>
+		<li>
+			<p>It's available at the exact same domain and path after protocol upgrade (more often than you might think that's <i>not</i> the case).</p>
+		</li>
 	</ol>
 	<p>If either of these conditions is unmet, you end up rewriting resources to non-existing URLs and breaking important page dependencies.</p>
 	<p>Thus we decided to take a look at the existing solutions.</p>
-	<h2 id="howaretheseproblemssolvedalready">How are these problems solved already?</h2>
+	<h2>How are these problems solved already?</h2>
 	<p>Many security aware people use the <a href="https://www.eff.org/https-everywhere">HTTPS Everywhere</a> browser extension to avoid those kinds of issues. HTTPS Everywhere contains a well-maintained database from the <a href="https://www.eff.org">Electronic Frontier Foundation</a> that contains all sorts of mappings for popular websites that safely rewrite HTTP versions of resources to HTTPS only when it can be done without breaking the page.</p>
 	<p>However, most users are either not aware of it or are not even able to use it, for example, on mobile browsers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/4542048705_25a394a2f3_b.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/generated/4542048705/in/photolist-7VnbQz-9sd2LW-4EEoZv-d2T6A7-5hKfKu-8UcLHh-pBjRDg-5gCYKG-8vS5Gw-8vP6yc-bj9pgX-qaSiZi-951EJW-75Xuvx-5pft8J-eyebR1-8dyjPV-r9csMz-991WwM-a3aW4T-3JAiSH-6fGqt7-cs2ud1-nEDWYQ-bLR6yz-4JKM5j-6KMths-4eWtLa-5iij6Z-bQSzaP-dKY18j-8SU3Vr-8nGQmE-bwPWoF-323VBR-FuKadJ-p8VD7-x9knmA-hJG7Bc-3KHP4m-8YmLDZ-6CmJme-ngT44v-7ThvBy-4m9A3n-7AGkE-ogJ97T-yCChfV-ok7E25-8Nkr9w">image</a> by <a href="https://www.flickr.com/photos/generated">Jared Tarbell</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nhcIelWSXtuEWz07ilh04/520a1af29c6914bc7ca754c4345c74bb/4542048705_25a394a2f3_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/generated/4542048705/in/photolist-7VnbQz-9sd2LW-4EEoZv-d2T6A7-5hKfKu-8UcLHh-pBjRDg-5gCYKG-8vS5Gw-8vP6yc-bj9pgX-qaSiZi-951EJW-75Xuvx-5pft8J-eyebR1-8dyjPV-r9csMz-991WwM-a3aW4T-3JAiSH-6fGqt7-cs2ud1-nEDWYQ-bLR6yz-4JKM5j-6KMths-4eWtLa-5iij6Z-bQSzaP-dKY18j-8SU3Vr-8nGQmE-bwPWoF-323VBR-FuKadJ-p8VD7-x9knmA-hJG7Bc-3KHP4m-8YmLDZ-6CmJme-ngT44v-7ThvBy-4m9A3n-7AGkE-ogJ97T-yCChfV-ok7E25-8Nkr9w">image</a> by <a href="https://www.flickr.com/photos/generated">Jared Tarbell</a></p>
 	<p>So we decided to flip the model around. Instead of re-writing URLs in the browser, we would re-write them inside the CloudFlare reverse proxy. By taking advantage of the existing database on the server-side, website owners could turn it on and all their users would instantly benefit from HTTPS rewriting. The fact that it’s automatic is especially useful for websites with user-generated content where it's not trivial to find and fix all the cases of inserted insecure third-party content.</p>
 	<p>At our scale, we obviously couldn't use the existing JavaScript rewriter. The performance challenges for a browser extension which can find, match and cache rules lazily as a user opens websites, are very different from those of a CDN server that handles millions of requests per second. We usually don't get a chance to rewrite them before they hit the cache either, as many pages are dynamically generated on the origin server and go straight through us to the client.</p>
 	<p>That means, to take advantage of the database, we needed to learn how the existing implementation works and create our own in the form of a native library that could work without delays under our load. Let's do the same here.</p>
-	<h2 id="howdoeshttpseverywhereknowwhattorewrite">How does HTTPS Everywhere know what to rewrite?</h2>
+	<h2>How does HTTPS Everywhere know what to rewrite?</h2>
 	<p>HTTPS Everywhere rulesets can be found in <a href="https://github.com/EFForg/https-everywhere/tree/master/src/chrome/content/rules"><code>src/chrome/content/rules</code></a> folder of the <a href="https://github.com/EFForg/https-everywhere">official repository</a>. They are organized as XML files, each for their own set of hosts (with few exclusions). This allows users with basic technical skills to write and contribute missing rules to the database on their own.</p>
 	<p>Each ruleset is an XML file of the following structure:</p>
-	<pre><code class="language-xml">&lt;ruleset name="example.org"&gt;
-  &lt;!-- Target domains --&gt;
-  &lt;target host="*.example.org" /&gt;
+	<pre class="language-xml"><code class="language-xml"><ruleset name="example.org">
+  <!-- Target domains -->
+  <target host="*.example.org">
  
-  &lt;!-- Exclusions --&gt;
-  &lt;exclusion pattern="^http://example\.org/i-am-http-only" /&gt;
+  <!-- Exclusions -->
+  <exclusion pattern="^http://example\.org/i-am-http-only">
  
-  &lt;!-- Rewrite rules --&gt;
-  &lt;rule from="^http://(www\.)?example\.org/" to="https://$1example.org/" /&gt;
-&lt;/ruleset&gt;
-</code></pre>
+  <!-- Rewrite rules -->
+  <rule from="^http://(www\.)?example\.org/" to="https://$1example.org/">
+</rule></exclusion></target></ruleset></code></pre>
 	<p>At the moment of writing, the HTTPS Everywhere database consists of ~22K such rulesets covering ~113K domain wildcards with ~32K rewrite rules and exclusions.</p>
 	<p>For performance reasons, we can't keep all those ruleset XMLs in memory, go through nodes, check each wildcard, perform replacements based on specific string format and so on. All that work would introduce significant delays in page processing and increase memory consumption on our servers. That's why we had to perform some compile-time tricks for each type of node to ensure that rewriting is smooth and fast for any user from the very first request.</p>
 	<p>Let's walk through those nodes and see what can be done in each specific case.</p>
-	<h3 id="targetdomains">Target domains</h3>
+	<h3>Target domains</h3>
 	<p>First of all, we get target elements which describe domain wildcards that current ruleset potentially covers.</p>
-	<pre><code class="language-xml">&lt;target host="*.example.org" /&gt;
-</code></pre>
+	<pre class="language-xml"><code class="language-xml"><target host="*.example.org"></target></code></pre>
 	<p>If a wildcard is used, it can be <a href="https://www.eff.org/https-everywhere/rulesets#wildcard-targets">either left-side or right-side</a>.</p>
 	<p>Left-side wildcard like <code>*.example.org</code> covers any hostname which has example.org as a suffix - no matter how many subdomain levels you have.</p>
 	<p>Right-side wildcard like <code>example.*</code> covers only one level instead so that subdomains with the same beginning but one unexpected domain level are not accidentally caught. For example, the Google ruleset, among others, uses the <code>google.*</code> wildcard and it should match <code>google.com</code>, <code>google.ru</code>, <code>google.es</code> etc. but not <code>google.mywebsite.com</code>.</p>
 	<p>Note that a single host can be covered by several different rulesets as wildcards can overlap, so the rewriter should be given entire database in order to find a correct replacement. Still, matching hostname allows to instantly reduce all ~22,000 rulesets to only 3-5 which we can deal with more easily.</p>
 	<p>Matching wildcards at runtime one-by-one is, of course, possible, but very inefficient with ~113K domain wildcards (and, as we noted above, one domain can match several rulesets, so we can't even bail out early). We need to find a better way.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/3901819627_c3908690a0_b.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/vige/3901819627/in/photolist-6WMR3c-qqw1zU-7Gsyt1-4mQ6Sr-7GxrjW-bZTMQs-6HAcEr-58J6-pJb9qT-55o5bP-4c2bxs-4MEcWm-6yf4xg-dkdJkY-crpQwG-br8o3Y-4tXRcD-a3DzL7-nAYdFT-729Vjb-d5qcf-a59ugi-AKFWW-d2g9e5-3LQJEe-fqMVts-762EoB-4Lreh9-57pKGy-wnqcdN-99jyGb-6oAMor-8U28ub-9bYp3-92DYLM-6x8aZg-4MEcLQ-7n2QqA-8pydBi-ocFj72-fAyhG7-7B9Qwt-xxknG-d3Tk63-axF8dU-o4ALKi-grY52F-9bXtY-8KRwXd-a2syrf">image</a> by <a href="https://www.flickr.com/photos/vige">vige</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/018PMe56SuXGqrCUnghAoJ/ca098c6434a81d4f5507f169ba1075e0/3901819627_c3908690a0_b.jpg" alt="" class="kg-image" width="1024" height="681" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/vige/3901819627/in/photolist-6WMR3c-qqw1zU-7Gsyt1-4mQ6Sr-7GxrjW-bZTMQs-6HAcEr-58J6-pJb9qT-55o5bP-4c2bxs-4MEcWm-6yf4xg-dkdJkY-crpQwG-br8o3Y-4tXRcD-a3DzL7-nAYdFT-729Vjb-d5qcf-a59ugi-AKFWW-d2g9e5-3LQJEe-fqMVts-762EoB-4Lreh9-57pKGy-wnqcdN-99jyGb-6oAMor-8U28ub-9bYp3-92DYLM-6x8aZg-4MEcLQ-7n2QqA-8pydBi-ocFj72-fAyhG7-7B9Qwt-xxknG-d3Tk63-axF8dU-o4ALKi-grY52F-9bXtY-8KRwXd-a2syrf">image</a> by <a href="https://www.flickr.com/photos/vige">vige</a></p>
 	<p>We use <a href="http://www.colm.net/open-source/ragel">Ragel</a> to build fast lexers in other pieces of our code. Ragel is a state machine compiler which takes grammars and actions described with its own syntax and generates source code in a given programming language as an output. We decided to use it here too and wrote a script that generates a Ragel grammar from our set of wildcards. In turn, Ragel converts it into C code of a state machine capable of going through characters of URLs, matching hosts and invoking custom handler on each found ruleset.</p>
 	<p>This leads us to another interesting problem. At the moment of writing among 113K domain wildcards we have 4.7K that have a left wildcard and less than 200 which have a right wildcard. Left wildcards are expensive in state machines (including regular expressions) as they cause <a href="https://en.wikipedia.org/wiki/Combinatorial_explosion">DFA space explosion</a> during compilation so Ragel got stuck for more than 10 minutes without giving any result - trying to analyze all the <code>*.</code> prefixes and merge all the possible states where they can go, resulting in a complex tree.</p>
 	<p>Instead, if we choose to look from the end of the host, we can significantly simplify the state tree (as only 200 wildcards need to be checked separately now instead of 4.7K), thus reducing compile time to less than 20 seconds.</p>
 	<p>Let's take an oversimplified example to understand the difference. Say, we have following target wildcards (3 left-wildcards against 1 right-wildcard and 1 simple host):</p>
-	<pre><code class="language-xml">&lt;target host="*.google.com" /&gt;
-&lt;target host="*.google.co.uk" /&gt;
-&lt;target host="*.google.es" /&gt;
-&lt;target host="google.*" /&gt;
-&lt;target host="google.com" /&gt;
-</code></pre>
+	<pre class="language-xml"><code class="language-xml"><target host="*.google.com">
+<target host="*.google.co.uk">
+<target host="*.google.es">
+<target host="google.*">
+<target host="google.com"></target></target></target></target></target></code></pre>
 	<p>If we build Ragel state machine directly from those:</p>
-	<pre><code>%%{
+	<pre class="language-bash"><code class="language-bash">%%{
     machine hosts;
  
     host_part = (alnum | [_\-])+;
@@ -74,13 +85,16 @@
         'google.' host_part |
         'google.com.ua'
     );
-}%%
-</code></pre>
+}%%</code></pre>
 	<p>We will get the following state graph:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/09/1.png"><img src="https://blog.cloudflare.com/content/images/2016/09/1.png" alt="" loading="lazy"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/09/1.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sykJ6ByovKV68tzpCF5zn/2b62e0fdda68a4165a8c8007b4da284f/1.png" alt="" class="kg-image" width="5427" height="2220" loading="lazy">
+		</a>
+	</figure>
 	<p>You can see that the graph is already pretty complex as each starting character, even <code>g</code> which is an explicit starting character of <code>'google.'</code> and <code>'google.com'</code> strings, still needs to simultaneously go also into <code>any+</code> matches. Even when you have already parsed the <code>google.</code> part of the host name, it can still correctly match any of the given wildcards whether as <code>google.google.com</code>, <code>google.google.co.uk</code>, <code>google.google.es</code>, <code>google.tech</code> or <code>google.com.ua</code>. This already blows up the complexity of the state machine, and we only took an oversimplified example with three left wildcards here.</p>
 	<p>However, if we simply reverse each rule in order to feed the string starting from the end:</p>
-	<pre><code>%%{
+	<pre class="language-bash"><code class="language-bash">%%{
     machine hosts;
  
     host_part = (alnum | [_\-])+;
@@ -92,55 +106,60 @@
         host_part '.elgoog' |
         'au.moc.elgoog'
     );
-}%%
-</code></pre>
+}%%</code></pre>
 	<p>we can get much simpler graph and, consequently, significantly reduced graph build and matching times:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/09/2.png"><img src="https://blog.cloudflare.com/content/images/2016/09/2.png" alt="" loading="lazy"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/09/2.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NfYuIYypMQPvlSOkk40so/8ef1d5a5d2b2d0c18db842235979ba24/2.png" alt="" class="kg-image" width="3215" height="1064" loading="lazy">
+		</a>
+	</figure>
 	<p>So now, all that we need is to do is to go through the host part in the URL, stop on <code>/</code> right after and start the machine backwards from this point. There is no need to waste time with in-memory string reversal as Ragel provides the <code>getkey</code> instruction for custom data access expressions which we can use for accessing characters in reverse order after we match the ending slash.</p>
 	<p>Here is animation of the full process:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/third.gif" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dcX7Zc8OH98Y9SDAIAu5E/7118249ec67efd29809196243b125256/third.gif" alt="" class="kg-image" width="756" height="192" loading="lazy">
+
+	</figure>
 	<p>After we've matched the host name and found potentially applicable rulesets, we need to ensure that we're not rewriting URLs which are not available via HTTPS.</p>
-	<h3 id="exclusions">Exclusions</h3>
+	<h3>Exclusions</h3>
 	<p>Exclusion elements serve exactly this goal.</p>
-	<pre><code class="language-xml">&lt;exclusion pattern="^http://(www\.)?google\.com/analytics/" /&gt;
-&lt;exclusion pattern="^http://(www\.)?google\.com/imgres/" /&gt;
-</code></pre>
+	<pre class="language-xml"><code class="language-xml"><exclusion pattern="^http://(www\.)?google\.com/analytics/">
+<exclusion pattern="^http://(www\.)?google\.com/imgres/"></exclusion></exclusion></code></pre>
 	<p>The rewriter needs to test against all the exclusion patterns before applying any actual rules. Otherwise, paths that have issues or can't be served over HTTPS will be incorrectly rewritten and will potentially break the website.</p>
 	<p>We don't care about matched groups nor do we care even which particular regular expression was matched, so as an extra optimization, instead of going through them one-by-one, we merge all the exclusion patterns in the ruleset into one regular expression that can be internally optimized by a regexp engine.</p>
 	<p>For example, for the exclusions above we can create the following regular expression, common parts of which can be merged internally by a regexp engine:</p>
-	<pre><code class="language-xml">(^http://(www\.)?google\.com/analytics/)|(^http://(www\.)?google\.com/imgres/)
-</code></pre>
+	<pre class="language-xml"><code class="language-xml">(^http://(www\.)?google\.com/analytics/)|(^http://(www\.)?google\.com/imgres/)</code></pre>
 	<p>After that, in our action we just need to call <code>pcre_exec</code> without a match data destination – we don't care about matched groups, but only about completion status. If a URL matches a regular expression, we bail out of this action as following rewrites shouldn't be applied. After this, Ragel will automatically call another matched action (another ruleset) on its own until one is found.</p>
 	<p>Finally, after we both matched the host name and ensured that our URL is not covered by any exclusion patterns, we can go to the actual rewrite rules.</p>
-	<h3 id="rewriterules">Rewrite rules</h3>
+	<h3>Rewrite rules</h3>
 	<p>These rules are presented as JavaScript regular expressions and replacement patterns. The rewriter matches the URL against each of those regular expressions as soon as a host matches and a URL is not an exclusion.</p>
-	<pre><code class="language-xml">&lt;rule from="^http://(\w{2})\.wikipedia\.org/wiki/" to="https://secure.wikimedia.org/wikipedia/$1/wiki/" /&gt;
-</code></pre>
+	<pre class="language-xml"><code class="language-xml"><rule from="^http://(\w{2})\.wikipedia\.org/wiki/" to="https://secure.wikimedia.org/wikipedia/$1/wiki/"></rule></code></pre>
 	<p>As soon as a match is found, the replacement is performed and the search can be stopped. Note: while exclusions cover dangerous replacements, it's totally possible and valid for the URL to not match any of actual rules - in that case it should be just left intact.</p>
 	<p>After the previous steps we are usually reduced only to couple of rules, so unlike in the case with exclusions, we don't apply any clever merging techniques for them. It turned out to be easier to go through them one-by-one rather than create a regexp engine specifically optimized for the case of multi-regexp replacements.</p>
 	<p>However, we don't want to waste time on regexp analysis and compilation on our edge server. This requires extra time during initialization and memory for carrying unnecessary text sources of regular expressions around. PCRE allows regular expressions to be precompiled into its own format using pcre_compile. Then, we gather all these compiled regular expressions into one binary file and link it using <code>ld --format=binary</code> - a neat option that tells linker to attach any given binary file as a named data resource available to the application.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/15748968831_9d97f7167f_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/sidelong/15748968831/in/photolist-pZFzKn-nCgsND-5kmFQB-bm5Ny4-3qR9NP-NfYDG-e7AwCH-eqqc2o-e3DgoN-6ZcGVn-pkmTXn-3oT9Nj-8y4HB7-H93FUT-6pSxvu-aukZ2w-2yo3n-2fTgn7-dXH6No-nBzysU-nsnMR1-dHoz6o-zXDcxE-9G5ydk-HJPTCt-qoQnCi-zmKYcs-4vwvyV-ygPe2Q-rUH8dy-dSbR9U-sc8NEN-htr2XH-uDEHXF-ehnr4K-xDLoGG-gMbuTr-bygmuu-r26oQx-bDJmuS-7WHeZ7-o5V5nL-bn3PNf-9Fr7nQ-dbbuB6-4sGsph-77HwTg-gbA7WS-27jJRy-7xGShs">image</a> by <a href="https://www.flickr.com/photos/sidelong">DaveBleasdale</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oBelLGyvi8KGq7mQmTvFK/e076c9ca201698a7a1f2f6df41066698/15748968831_9d97f7167f_z.jpg" alt="" class="kg-image" width="640" height="424" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/sidelong/15748968831/in/photolist-pZFzKn-nCgsND-5kmFQB-bm5Ny4-3qR9NP-NfYDG-e7AwCH-eqqc2o-e3DgoN-6ZcGVn-pkmTXn-3oT9Nj-8y4HB7-H93FUT-6pSxvu-aukZ2w-2yo3n-2fTgn7-dXH6No-nBzysU-nsnMR1-dHoz6o-zXDcxE-9G5ydk-HJPTCt-qoQnCi-zmKYcs-4vwvyV-ygPe2Q-rUH8dy-dSbR9U-sc8NEN-htr2XH-uDEHXF-ehnr4K-xDLoGG-gMbuTr-bygmuu-r26oQx-bDJmuS-7WHeZ7-o5V5nL-bn3PNf-9Fr7nQ-dbbuB6-4sGsph-77HwTg-gbA7WS-27jJRy-7xGShs">image</a> by <a href="https://www.flickr.com/photos/sidelong">DaveBleasdale</a></p>
 	<p>The second part of the rule is the replacement pattern which uses the simplest feature of JavaScript regex replacement - number-based groups and has the form of <code>https://www.google.com.$1/</code> which means that the resulting string should be concatenation of <code>"https://www.google.com."</code> with the matched group at position <code>1</code>, and a <code>"/"</code>.</p>
 	<p>Once again, we don't want to waste time performing repetitive analysis looking for dollar signs and converting string indexes to numeric representation at runtime. Instead, it's more efficient to split this pattern at compile-time into <code>{ "https://www.google.com.", "/" }</code> static substrings plus an array of indexes which need to be inserted in between - in our case just <code>{ 1 }</code>. Then, at runtime, we simply build a string going through both arrays one-by-one and concatenating strings with found matches.</p>
 	<p>Finally, after such string is built, it's inserted in place of the previous attribute value and sent to the client.</p>
-	<h3 id="waitbutwhatabouttesting">Wait, but what about testing?</h3>
+	<h3>Wait, but what about testing?</h3>
 	<p>Glad you asked.</p>
 	<p>The HTTPS Everywhere extension uses an automated checker that checks the validity of rewritten URLs on any change in ruleset. In order to do that, rulesets are required to contain special test elements that cover all the rewrite rules.</p>
-	<pre><code class="language-xml">&lt;test url="http://maps.google.com/" /&gt;
-</code></pre>
+	<pre class="language-xml"><code class="language-xml"><test url="http://maps.google.com/"></test></code></pre>
 	<p>What we need to do on our side is to collect those test URLs, combined with our own auto-generated tests from wildcards, and to invoke both the HTTPS Everywhere built-in JavaScript rewriter and our own side-by-side to ensure that we're getting same results — URLs that should be left intact, are left intact with our implementation and URLs that are rewritten, are rewritten identically.</p>
-	<h2 id="canwefixevenmoremixedcontent">Can we fix even more mixed content?</h2>
+	<h2>Can we fix even more mixed content?</h2>
 	<p>After all this was done and tested, we decided to look around for other potential sources of guaranteed rewrites to extend our database.</p>
 	<p>And one such is <a href="https://hstspreload.appspot.com">HSTS preload list</a> maintained by Google and used by all the major browsers. This list allows website owners who want to ensure that their website is never loaded via <code>http://</code>, to submit their hosts (optionally together with subdomains) and this way opt-in to auto-rewrite of any <code>http://</code> references to <code>https://</code> by a modern browser before even hitting the origin.</p>
 	<p>This means, the origin guarantees that the HTTPS version will be always available and will serve just the same content as HTTP - otherwise any resources referenced from it will simply break as the browser won't attempt to fallback to HTTP after domain is in the list. A perfect match for another ruleset!</p>
 	<p>As we already have a working solution and don't have any complexities around regular expressions in this list, we can download the JSON version of it <a href="https://chromium.googlesource.com/chromium/src/net/+/master/http/transport_security_state_static.json">directly from the Chromium source</a> and convert to the same XML ruleset with wildcards and exclusions that our system already understands and handles, as part of the build process.</p>
 	<p>This way, both databases are merged and work together, rewriting even more URLs on customer websites without any major changes to the code.</p>
-	<h2 id="thatwasquiteatrip">That was quite a trip</h2>
+	<h2>That was quite a trip</h2>
 	<p>It was... but it's not really the end of the story. You see, in order to provide safe and fast rewrites for everyone, and after analyzing the alternatives, we decided to write a new streaming HTML5 parser that became the core of this feature. We intend to use it for even more tasks in future to ensure that we can improve security and performance of our customers websites in even more ways.</p>
 	<p>However, it deserves a separate blog post, so stay tuned.</p>
 	<p>And remember - if you're into web performance, security or just excited about the possibility of working on features that do not break millions of pages every second - we're <a href="https://www.cloudflare.com/join-our-team">hiring</a>!</p>
 	<p>P.S. We are incredibly grateful to the folks at the EFF who created the HTTPS Everywhere extension and worked with us on this project.</p>
-	<!--kg-card-end: markdown-->
 </div>

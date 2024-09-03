@@ -1,43 +1,223 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/Hybrid-WAF-keys.png" class="kg-image" alt="Encrypting your WAF Payloads with Hybrid Public Key Encryption (HPKE)" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RlsdFM0TM6rsZcupfwTAL/3f682df16ad41ffe3abaee2e0e7167ce/Hybrid-WAF-keys.png" alt="Encrypting your WAF Payloads with Hybrid Public Key Encryption (HPKE)" class="kg-image" width="1600" height="800" loading="lazy">
+
+	</figure>
 	<p>The Cloudflare <a href="https://www.cloudflare.com/waf">Web Application Firewall</a> (WAF) blocks more than 72B malicious requests per day from reaching our customers’ applications. Typically, our users can easily confirm these requests were not legitimate by checking the URL, the query parameters, or other metadata that Cloudflare provides as part of the <a href="https://developers.cloudflare.com/logs/log-fields#firewall-events">security event log</a> in the dashboard.</p>
 	<p>Sometimes investigating a WAF event requires a bit more research and a trial and error approach, as the WAF may have matched against a field that is not logged by default.</p>
 	<p>Not logging all parts of a request is intentional: HTTP headers and payloads often contain sensitive data, including personally identifiable information, which <a href="https://blog.cloudflare.com/welcome-to-privacy-and-compliance-week">we consider a toxic asset</a>. Request headers may contain cookies and <code>POST</code> payloads may contain username and password pairs submitted during a login attempt among other sensitive data.</p>
 	<p>We recognize that providing clear visibility in any security event is a core feature of a firewall, as this allows users to better fine tune their rules. To accomplish this, while ensuring end-user privacy, we built encrypted WAF matched payload logging. This feature will log only the specific component of the request the WAF has deemed malicious — and it is encrypted using a customer-provided key to ensure that no Cloudflare employee can examine the data*. Additionally, the crypto uses an exciting new standard — developed in part by Cloudflare — called Hybrid Public Key Encryption (HPKE).</p>
-	<p><em>*All Cloudflare logs are encrypted at rest. This feature implements a second layer of encryption for the specific matched fields so that only the customer can decrypt it.</em></p>
-	<h3 id="encrypting-matched-payloads">Encrypting Matched Payloads</h3>
+	<p><i>*All Cloudflare logs are encrypted at rest. This feature implements a second layer of encryption for the specific matched fields so that only the customer can decrypt it.</i></p>
+	<h3>Encrypting Matched Payloads</h3>
 	<p>To turn on this feature, you need to provide a public key, or generate a private-public key pair directly from the dashboard. Your data will then be encrypted using <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-hpke">Hybrid Public Key Encryption (HPKE)</a>, which offers a great combination of both performance and security.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image2-36.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-52.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>To simplify this process, we have built an easy-to-use <a href="https://github.com/cloudflare/matched-data-cli">command line utility</a> to generate the key pair:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ matched-data-cli generate-key-pair
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3q8wP2xSa9UI1I8HApOT3O/eeee638e13bcab3007a7c7e233af6f80/image2-36.png" alt="" class="kg-image" width="965" height="410" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EaIQOvOrl19LBOYFbOFVn/f856fb054dd65828f34742e3440a9c2d/image1-52.png" alt="" class="kg-image" width="969" height="641" loading="lazy">
+
+	</figure>
+	<p>To simplify this process, we have built an easy-to-use <a href="https://github.com/cloudflare/matched-data-cli">command line utility</a> to generate the key pair:</p>
+	<pre class="language-bash"><code class="language-bash">$ matched-data-cli generate-key-pair
 {
   "private_key": "uBS5eBttHrqkdY41kbZPdvYnNz8Vj0TvKIUpjB1y/GA=",
   "public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Cloudflare does not store the private key and it is our customers’ responsibility to ensure it is stored safely. Lost keys, and the data encrypted with them, cannot be recovered but customers can rotate keys to be used with future payloads.</p>
-	<p>Once encrypted, payloads will be available in the logs as encrypted base64 blobs within the <code>metadata</code> field:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">"metadata": [
+	<p>Once encrypted, payloads will be available in the logs as encrypted base64 blobs within the <code>metadata</code> field:</p>
+	<pre class="language-json"><code class="language-json">"metadata": [
   {
     "key": "encrypted_matched_data",
     "Value": "AdfVn7odpamJGeFAGj0iW2oTtoXOjVnTFT2x4l+cHKJsEQAAAAAAAAB+zDygjV2aUI92FV4cHMkp+4u37JHnH4fUkRqasPYaCgk="
   }
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Decrypting payloads can be done via the dashboard from the Security Events log, or by using the command line utility, as shown below. If done via the dashboard, the browser will decrypt the payload locally (i.e., client side) and will not send the private key to Cloudflare.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ printf $PRIVATE_KEY | ./matched-data-cli decrypt -d AdfVn7odpamJGeFAGj0iW2oTtoXOjVnTFT2x4l+cHKJsEQAAAAAAAAB+zDygjV2aUI92FV4cHMkp+4u37JHnH4fUkRqasPYaCgk= --private-key-stdin
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The command above returns:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{"REQUEST_HEADERS:REFERER":"https:\/\/example.com\/testkey.txt?a=&lt;script&gt;alert('xss');&lt;\/script&gt;"}
-</code></pre>
-	<!--kg-card-end: markdown-->
+]</code></pre>
+	<p>Decrypting payloads can be done via the dashboard from the Security Events log, or by using the command line utility, as shown below. If done via the dashboard, the browser will decrypt the payload locally (i.e., client side) and will not send the private key to Cloudflare.</p>
+	<pre class="language-bash"><code class="language-bash">$ printf $PRIVATE_KEY | ./matched-data-cli decrypt -d AdfVn7odpamJGeFAGj0iW2oTtoXOjVnTFT2x4l+cHKJsEQAAAAAAAAB+zDygjV2aUI92FV4cHMkp+4u37JHnH4fUkRqasPYaCgk= --private-key-stdin</code></pre>
+	<p>The command above returns:</p>
+	<pre class="language-json"><code class="language-json">{"REQUEST_HEADERS:REFERER":"https:\/\/example.com\/testkey.txt?a=<script>alert('xss');<\/script>"}</pre></code>
 	<p>In the example above, the WAF matched against the <code>REQUEST_HEADERS:REFERER</code> field. Any other fields the WAF matched on would be similarly logged.</p>
-	<h3 id="better-logging-with-user-privacy-in-mind">Better Logging with User Privacy in Mind</h3>
+	<h3>Better Logging with User Privacy in Mind</h3>
 	<p>In the coming months, this feature will be available on our dashboard to our Enterprise customers. Enterprise customers who would like this feature enabled sooner should reach out to their account team. Only application owners who also have access to the Cloudflare dashboard as Super Administrators will be able to configure encrypted matched payload logging. Those who do not have access to the private key, including Cloudflare staff, are not able to decrypt the logs.</p>
 	<p>We are also excited for this feature to be one of our first to use Hybrid Public Key Encryption, and for Cloudflare to use this emerging standard developed by the Crypto Forum Research Group (CFRG), the research body that supports the development of Internet standards at the <a href="http://ietf.org">IETF</a>. And stay tuned, we will publish a deep dive post with the technical details soon!</p>
+</div>
+</section>
+<section class="post-full-content flex flex-row flex-wrap mw7 center mb4">
+	<div class="post-content lh-copy w-100 gray1 bt b--gray8 pt4">Cloudflare's connectivity cloud protects <a target='_blank' href='https://www.cloudflare.com/network-services/' rel='noreferrer'>entire corporate networks</a>, helps customers build <a target='_blank' href='https://workers.cloudflare.com/' rel='noreferrer'>Internet-scale applications efficiently</a>, accelerates any <a target='_blank' href='https://www.cloudflare.com/performance/accelerate-internet-applications/' rel='noreferrer'>website or Internet application</a>, <a target='_blank' href='https://www.cloudflare.com/ddos/' rel='noreferrer'>wards off DDoS attacks</a>, keeps <a target='_blank' href='https://www.cloudflare.com/application-security/' rel='noreferrer'>hackers at bay</a>, and can help you on <a target='_blank' href='https://www.cloudflare.com/products/zero-trust/' rel='noreferrer'>your journey to Zero Trust</a>.<br /><br />Visit <a target='_blank' href='https://one.one.one.one/' rel='noreferrer'>1.1.1.1</a> from any device to get started with our free app that makes your Internet faster and safer.<br /><br />To learn more about our mission to help build a better Internet, <a target='_blank' href='https://www.cloudflare.com/learning/what-is-cloudflare/' rel='noreferrer'>start here</a>. If you&apos;re looking for a new career direction, check out <a target='_blank' href='http://www.cloudflare.com/careers' rel='noreferrer'>our open positions</a>.</div>
+</section>
+<div class="pv2 ph0-l mw7 center" id="social-buttons">
+	<div class="mt5-l mt2 mb4 f2 flex flex-row-ns flex-column flex-wrap"><a id="social-button-hn" title="Discuss on Hacker News" href="https://news.ycombinator.com/submitlink?u=https://blog.cloudflare.com/encrypt-waf-payloads-hpke" target="_blank" rel="noreferrer" class="mr2-ns mb0-l white link b pv3 ph3 mb3 " style="background-color:#0055DC"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512" class="mr2">
+				<g>
+					<path d="M31,31v450h450V31H31z M270.1,287.6v94.9h-28.1v-94.9L165,143.5h31.9L256,254.3l59.1-110.8H347
+C347,143.5,270.1,287.6,270.1,287.6z"></path>
+				</g>
+			</svg><span class="v-mid">Discuss on Hacker News</span></a></div>
+</div><iframe sandbox="allow-scripts allow-popups" title="cloudflare-tv-live-link" id="cloudflare-tv-embed" src="https://cloudflare.tv/embed/live.html" loading="lazy"></iframe><a href="/tag/privacy-week" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2 mr1">Privacy Week</a><a href="/tag/waf" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2 mr1">WAF</a><a href="/tag/waf-rules" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2 mr1">WAF Rules</a><a href="/tag/security" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2 mr1">Security</a><a href="/tag/firewall" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2 mr1">Firewall</a></article>
+</main>
+<div class="ph3 pv3">
+	<div class=" flex flex-row flex-wrap mw7 center">
+		<div class="w-100 bt b--gray8">
+			<p class="black fw5 f4 mt4">Follow on X</p>
+		</div>
+		<div class="w-100 pb2"><span>Michael Tremante</span><span class="ph1">|</span><a href="https://twitter.com/@MichaelTremante" class="no-underline">@MichaelTremante</a></div>
+		<div class="w-100 pb2"><span>Cloudflare</span><span class="ph2">|</span><a href="https://twitter.com/@cloudflare" class="no-underline">@cloudflare</a></div>
+	</div>
+</div>
+<div data-testid="related-posts-section" class="pv4 ph3 ph0-l flex flex-row flex-wrap mw7 center">
+	<div class="w-100 bt b--gray8">
+		<p class="orange fw5 f4 mt4 ttu">Related posts</p>
+	</div>
+	<article data-testid="related-posts-article" class="w-100 w-100-m w-50-l ph3 mb4">
+		<p data-testid="related-posts-article-date" class="f3 fw5 gray5" data-iso-date="2024-08-12T14:00+00:00">August 12, 2024 2:00 PM</p><a data-testid="related-posts-article-title" href="/ja4-signals" class="no-underline gray1 f4 fw5">
+			<h2 class="gray1 f4 fw5 mt2">Advancing Threat Intelligence: JA4 fingerprints and inter-request signals</h2>
+		</a>
+		<p data-testid="related-posts-article-excerpt" class="gray1 lh-copy">Explore how Cloudflare&#x27;s JA4 fingerprinting and inter-request signals provide robust and scalable insights for advanced web security and threat detection.
+			<!-- -->...
+		</p>
+		<ul class="flex pl0 fw6 f2 mb3 flex flex-wrap"><span>By<!-- --> </span>
+			<li class="list flex items-center" style="white-space:nowrap">
+				<div class="author-name-tooltip"><a href="/author/alex-bocharov" class="fw5 f2 black no-underline">Alex Bocharov</a><span class="fw5 f2 black no-underline">, </span></div>
+			</li>
+			<li class="list flex items-center" style="white-space:nowrap">
+				<div class="author-name-tooltip"><a href="/author/adam-martinetti" class="fw5 f2 black no-underline">Adam Martinetti</a></div>
+			</li>
+		</ul>
+		<div data-testid="related-posts-article-tags" class="flex flex-row flex-wrap"><span><a href="/tag/bot-management" class="no-underline f1 fw2 blue3 underline-hover">Bot Management<!-- -->,</a> </span><span><a href="/tag/threat-intelligence" class="no-underline f1 fw2 blue3 underline-hover">Threat Intelligence<!-- -->,</a> </span><span><a href="/tag/waf" class="no-underline f1 fw2 blue3 underline-hover">WAF<!-- -->,</a> </span><span><a href="/tag/application-services" class="no-underline f1 fw2 blue3 underline-hover">Application Services</a> </span></div>
+	</article>
+	<article data-testid="related-posts-article" class="w-100 w-100-m w-50-l ph3 mb4">
+		<p data-testid="related-posts-article-date" class="f3 fw5 gray5" data-iso-date="2024-07-29T14:00:37.000+01:00">July 29, 2024 1:00 PM</p><a data-testid="related-posts-article-title" href="/why-certificate-pinning-is-outdated" class="no-underline gray1 f4 fw5">
+			<h2 class="gray1 f4 fw5 mt2">Avoiding downtime: modern alternatives to outdated certificate pinning practices</h2>
+		</a>
+		<p data-testid="related-posts-article-excerpt" class="gray1 lh-copy">The number of outages caused by certificate pinning is increasing. We’ll explore why certificate pinning hasn’t kept up with modern standards and recommend alternatives to improve security while reducing management overhead<!-- -->...</p>
+		<ul class="flex pl0 fw6 f2 mb3 flex flex-wrap"><span>By<!-- --> </span>
+			<li class="list flex items-center" style="white-space:nowrap">
+				<div class="author-name-tooltip"><a href="/author/dina" class="fw5 f2 black no-underline">Dina Kozlov</a></div>
+			</li>
+		</ul>
+		<div data-testid="related-posts-article-tags" class="flex flex-row flex-wrap"><span><a href="/tag/security" class="no-underline f1 fw2 blue3 underline-hover">Security<!-- -->,</a> </span><span><a href="/tag/network-services" class="no-underline f1 fw2 blue3 underline-hover">Network Services<!-- -->,</a> </span><span><a href="/tag/certificate-pinning" class="no-underline f1 fw2 blue3 underline-hover">Certificate Pinning<!-- -->,</a> </span><span><a href="/tag/tls" class="no-underline f1 fw2 blue3 underline-hover">TLS<!-- -->,</a> </span><span><a href="/tag/ssl" class="no-underline f1 fw2 blue3 underline-hover">SSL<!-- -->,</a> </span><span><a href="/tag/certificate-transparency" class="no-underline f1 fw2 blue3 underline-hover">Certificate Transparency</a> </span></div>
+	</article>
+	<article data-testid="related-posts-article" class="w-100 w-100-m w-50-l ph3 mb4">
+		<p data-testid="related-posts-article-date" class="f3 fw5 gray5" data-iso-date="2024-07-25T14:00:46.000+01:00">July 25, 2024 1:00 PM</p><a data-testid="related-posts-article-title" href="/making-waf-ai-models-go-brr" class="no-underline gray1 f4 fw5">
+			<h2 class="gray1 f4 fw5 mt2">Making WAF ML models go brrr: saving decades of processing time</h2>
+		</a>
+		<p data-testid="related-posts-article-excerpt" class="gray1 lh-copy">In this post, we discuss the performance optimizations we&#x27;ve implemented for our WAF ML product. We&#x27;ll guide you through specific code examples and benchmark numbers, and we&#x27;ll share the impressive latency reduction numbers observed after the rollout<!-- -->...</p>
+		<ul class="flex pl0 fw6 f2 mb3 flex flex-wrap"><span>By<!-- --> </span>
+			<li class="list flex items-center" style="white-space:nowrap">
+				<div class="author-name-tooltip"><a href="/author/alex-bocharov" class="fw5 f2 black no-underline">Alex Bocharov</a></div>
+			</li>
+		</ul>
+		<div data-testid="related-posts-article-tags" class="flex flex-row flex-wrap"><span><a href="/tag/machine-learning" class="no-underline f1 fw2 blue3 underline-hover">Machine Learning<!-- -->,</a> </span><span><a href="/tag/waf" class="no-underline f1 fw2 blue3 underline-hover">WAF<!-- -->,</a> </span><span><a href="/tag/performance" class="no-underline f1 fw2 blue3 underline-hover">Performance<!-- -->,</a> </span><span><a href="/tag/optimization" class="no-underline f1 fw2 blue3 underline-hover">Optimization<!-- -->,</a> </span><span><a href="/tag/rust" class="no-underline f1 fw2 blue3 underline-hover">Rust<!-- -->,</a> </span><span><a href="/tag/ai-waf" class="no-underline f1 fw2 blue3 underline-hover">AI WAF<!-- -->,</a> </span><span><a href="/tag/waf-attack-score" class="no-underline f1 fw2 blue3 underline-hover">WAF Attack Score</a> </span></div>
+	</article>
+	<article data-testid="related-posts-article" class="w-100 w-100-m w-50-l ph3 mb4">
+		<p data-testid="related-posts-article-date" class="f3 fw5 gray5" data-iso-date="2024-07-11T18:00:00.000+01:00">July 11, 2024 5:00 PM</p><a data-testid="related-posts-article-title" href="/application-security-report-2024-update" class="no-underline gray1 f4 fw5">
+			<h2 class="gray1 f4 fw5 mt2">Application Security report: 2024 update</h2>
+		</a>
+		<p data-testid="related-posts-article-excerpt" class="gray1 lh-copy">Cloudflare’s updated 2024 view on Internet cyber security trends spanning global traffic insights, bot traffic insights, API traffic insights, and client-side risks<!-- -->...</p>
+		<ul class="flex pl0 fw6 f2 mb3 flex flex-wrap"><span>By<!-- --> </span>
+			<li class="list flex items-center" style="white-space:nowrap">
+				<div class="author-name-tooltip"><a href="/author/michael-tremante" class="fw5 f2 black no-underline">Michael Tremante</a><span class="fw5 f2 black no-underline">, </span></div>
+			</li>
+			<li class="list flex items-center" style="white-space:nowrap">
+				<div class="author-name-tooltip"><a href="/author/sabina" class="fw5 f2 black no-underline">Sabina Zejnilovic</a><span class="fw5 f2 black no-underline">, </span></div>
+			</li>
+			<li class="list flex items-center" style="white-space:nowrap">
+				<div class="author-name-tooltip"><a href="/author/catherine" class="fw5 f2 black no-underline">Catherine Newcomb</a></div>
+			</li>
+		</ul>
+		<div data-testid="related-posts-article-tags" class="flex flex-row flex-wrap"><span><a href="/tag/application-security" class="no-underline f1 fw2 blue3 underline-hover">Application Security<!-- -->,</a> </span><span><a href="/tag/waf" class="no-underline f1 fw2 blue3 underline-hover">WAF<!-- -->,</a> </span><span><a href="/tag/bot-management" class="no-underline f1 fw2 blue3 underline-hover">Bot Management<!-- -->,</a> </span><span><a href="/tag/api" class="no-underline f1 fw2 blue3 underline-hover">API</a> </span></div>
+	</article>
+</div><!--astro:end--></astro-island>
+<footer class="pt4 pb4 pl1 pr1 main-footer">
+	<div class="mw8 center dn db-l ph3">
+		<div class="flex flex-row justify-between">
+			<div class="main-footer__menu-group">
+				<ul id="getting-started-menu" class="list pl0">
+					<li class="pt1 pb1 f1 main-footer__menu-group__header js-toggle-footer-group" data-submenu="getting-started-menu">Getting Started<i class="icon-caret-down"></i></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/plans/free/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="free-plans" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Free plans</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/enterprise/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="enterprise" class="f1 blue3 no-underline underline-hover" rel="noreferrer">For enterprises</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/plans/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="compare-plans" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Compare plans</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/about-your-website/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="get-a-recommendation" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Get a recommendation</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/plans/enterprise/demo/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="request-a-demo" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Request a demo</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="contact-sales" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Contact Sales</a></li>
+				</ul>
+			</div>
+			<div class="main-footer__menu-group">
+				<ul id="company-menu" class="list pl0">
+					<li class="pt1 pb1 f1" data-submenu="company-menu">Resources<i class="icon-caret-down"></i></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/learning/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="learning-center" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Learning Center</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/analysts/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="analysts-report" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Analyst reports</a></li>
+					<li class="pt1 pb1"><a href="https://radar.cloudflare.com/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="overview" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Cloudflare Radar</a></li>
+					<li class="pt1 pb1"><a href="https://cloudflare.tv/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="tv" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Cloudflare TV</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/case-studies/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="case-studies" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Case Studies</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/resource-hub/?resourcetype=Webinar" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="webinars" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Webinars</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/resource-hub/?resourcetype=Whitepaper" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="white-papers" class="f1 blue3 no-underline underline-hover" rel="noreferrer">White Papers</a></li>
+					<li class="pt1 pb1"><a href="https://developers.cloudflare.com" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="developer-docs" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Developer docs</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/the-net/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="theNet" class="f1 blue3 no-underline underline-hover" rel="noreferrer">theNet</a></li>
+				</ul>
+			</div>
+			<div class="main-footer__menu-group">
+				<ul id="sales-menu" class="list pl0">
+					<li class="pt1 pb1 f1 main-footer__menu-group__header js-toggle-footer-group" data-submenu="sales-menu">Solutions<i class="icon-caret-down"></i></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/connectivity-cloud/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="connectivity-cloud" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Connectivity cloud</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/zero-trust/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="zero-trust" class="f1 blue3 no-underline underline-hover" rel="noreferrer">SSE and SASE services</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/application-services/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="application-services" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Application services</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/network-services/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="network-services" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Network services</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/developer-platform/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="developer-services" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Developer services</a></li>
+				</ul>
+			</div>
+			<div class="main-footer__menu-group">
+				<ul id="community-menu" class="list pl0">
+					<li class="pt1 pb1 f1 main-footer__menu-group__header js-toggle-footer-group" data-submenu="community-menu">Community<i class="icon-caret-down"></i></li>
+					<li class="pt1 pb1"><a href="https://community.cloudflare.com" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="community_hub" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Community Hub</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/galileo/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="galileo" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Project Galileo</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/athenian/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="athenian" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Athenian Project</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/campaigns/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="cloudflare-for-campaigns" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Cloudflare for Campaigns</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/partners/technology-partners/cidp/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="critical-infrastructure-defense-project" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Critical Infrastructure Defense Project</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/connect2024/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="connect-2024" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Connect 2024</a></li>
+				</ul>
+			</div>
+			<div class="main-footer__menu-group">
+				<ul id="support-menu" class="list pl0">
+					<li class="pt1 pb1 f1 main-footer__menu-group__header js-toggle-footer-group" data-submenu="support-menu">Support<i class="icon-caret-down"></i></li>
+					<li class="pt1 pb1"><a href="https://support.cloudflare.com" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="help-center" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Help center</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflarestatus.com" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="status" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Cloudflare Status</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/compliance/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="compliance" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Compliance</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/gdpr/introduction/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="gdpr" class="f1 blue3 no-underline underline-hover" rel="noreferrer">GDPR</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/trust-hub/abuse-approach/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="trust-and-safety" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Trust &amp; Safety</a></li>
+				</ul>
+			</div>
+			<div class="main-footer__menu-group">
+				<ul id="company-menu" class="list pl0">
+					<li class="pt1 pb1 f1 main-footer__menu-group__header js-toggle-footer-group" data-submenu="company-menu">Company<i class="icon-caret-down"></i></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/about-overview/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="overview" class="f1 blue3 no-underline underline-hover" rel="noreferrer">About Cloudflare</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/people/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="our_team" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Our team</a></li>
+					<li class="pt1 pb1"><a href="https://cloudflare.net/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="investor-relations" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Investor relations</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/press/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="press" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Press</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/careers/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="careers" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Careers</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/diversity-equity-and-inclusion/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="diversity-equity-inclusion" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Diversity, equity &amp; inclusion</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/impact/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="impact-ESG" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Impact/ESG</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/network/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="network_map" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Network Map</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/press-kit/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="press-kit" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Logos &amp; press kit</a></li>
+					<li class="pt1 pb1"><a href="https://www.cloudflare.com/partners/" target="_blank" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="partners" class="f1 blue3 no-underline underline-hover" rel="noreferrer">Become a partner</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="mw8 center ph3">
+		<div class="flex flex-row flex-wrap justify-between items-center pt4">
+			<div class="flex flex-row items-start w-100 w-25-l pb4 pb0-l"><a target="_blank" rel="noreferrer" href="https://www.facebook.com/Cloudflare/" class="w-20"><img class="w-60" src="https://www.cloudflare.com/img/footer/facebook.svg" alt="facebook" /></a><a target=" _blank" rel="noreferrer" href="https://x.com/Cloudflare" class="w-20"><img class="w-60" src="https://www.cloudflare.com/img/footer/twitter.svg" alt="X" /></a><a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/cloudflare" class="w-20"><img class="w-60" src="https://www.cloudflare.com/img/footer/linkedin.svg" alt="linkedin" /></a><a target="_blank" rel="noreferrer" href="https://www.youtube.com/cloudflare" class="w-20"><img class="w-60" src="https://www.cloudflare.com/img/footer/youtube.svg" alt="youtube" /></a><a target="_blank" rel="noreferrer" href="https://www.instagram.com/cloudflare" class="w-20"><img class="w-60" src="https://www.cloudflare.com/img/footer/instagram.svg" alt="instagram" /></a></div>
+			<div class="w-100 w-70-l tr-l tl-ns">
+				<div><span class="main-footer__copyright f1">© <!-- -->2024<!-- --> Cloudflare, Inc.<!-- --> </span><span class="main-footer__copyright f1">|</span><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" class="main-footer__copyright f1 no-underline underline-hover" rel="noreferrer"> <!-- -->Privacy Policy<!-- --> </a><span class="main-footer__copyright f1">|</span><a href="https://www.cloudflare.com/website-terms/" target="_blank" class="main-footer__copyright f1 no-underline underline-hover" rel="noreferrer"> <!-- -->Terms of Use<!-- --> </a><span class="main-footer__copyright f1">|</span><a href="https://www.cloudflare.com/disclosure/" target="_blank" class="main-footer__copyright f1 no-underline underline-hover" rel="noreferrer"> <!-- -->Report Security Issues<!-- --> </a><span class="main-footer__copyright f1">|</span><img class="mw2 ph1" src="/images/privacy-options.svg" alt="Privacy Options" /><a href="#cookie-settings" id="ot-sdk-btn" class="ot-sdk-show-settings main-footer__copyright f1 no-underline underline-hover"><span class="brandGray5">Cookie Preferences</span> </a><span class="main-footer__copyright f1">|</span><a href="https://www.cloudflare.com/trademark/" target="_blank" class="main-footer__copyright f1 no-underline underline-hover" rel="noreferrer"> <!-- -->Trademark<!-- --> </a></div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+</html>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8bd47e55d9ef05f6","serverTiming":{"name":{"cfL4":true}},"version":"2024.8.0","token":"2bc156e5f250476cb274d269511ffb57"}' crossorigin="anonymous"></script>
+</code></pre>
 </div>

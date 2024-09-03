@@ -1,34 +1,45 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Y2cbwlsOkF1fkvNHmspE/b004f98d1549b580b3a2008c38812549/oauth-2-0-authentication-server.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
 	<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
 	<p>For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified">article</a>.</p>
 	<p>The steps of the OAuth 2.0 workflow are as follows:</p>
 	<ol>
-		<li>The consumer service redirects the user to a callback URL that was setup by the auth server. At this callback URL, the auth server asks the user to sign in and accept the consumer permissions requests.</li>
-		<li>The auth server redirects the user to the consumer service with a code.</li>
-		<li>The consumer service asks to exchange this code for an access token. The consumer service validates their identity by including their client secret in the callback URL.</li>
-		<li>The auth server gives the consumer the access token.</li>
-		<li>The consumer service can now use the access token to get resources on behalf of the user.</li>
+		<li>
+			<p>The consumer service redirects the user to a callback URL that was setup by the auth server. At this callback URL, the auth server asks the user to sign in and accept the consumer permissions requests.</p>
+		</li>
+		<li>
+			<p>The auth server redirects the user to the consumer service with a code.</p>
+		</li>
+		<li>
+			<p>The consumer service asks to exchange this code for an access token. The consumer service validates their identity by including their client secret in the callback URL.</p>
+		</li>
+		<li>
+			<p>The auth server gives the consumer the access token.</p>
+		</li>
+		<li>
+			<p>The consumer service can now use the access token to get resources on behalf of the user.</p>
+		</li>
 	</ol>
 	<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
-	<h3 id="setup">Setup</h3>
+	<h3>Setup</h3>
 	<p>We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
 	<p>On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VFGcOfkTKZXNuEHBDlReT/5206887028df2278ee441724b5ba9972/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" class="kg-image" width="510" height="518" loading="lazy">
+
+	</figure>
 	<p>To put and get items from storage using KV Storage syntax:</p>
-	<pre><code class="language-javascript">// @ts-ignore 
-CODES.get(“user@ex.com”) 
-</code></pre>
+	<pre class="language-javascript"><code class="language-javascript">// @ts-ignore 
+CODES.get(“user@ex.com”) </code></pre>
 	<p>We include <code>// @ts-ignore</code> preceding all KV storage commands. We do not have type definitions for these variables locally, so Typescript would throw an error at compile time otherwise.</p>
 	<p>To set up a project using Typescript and the Cloudflare Previewer, follow this <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">blog post</a>. Webpack will allow us to <code>import</code> which we will need to use the JWT library <code>jsonwebtoken</code>.</p>
-	<pre><code class="language-javascript">import * as jwt from "jsonwebtoken";
-</code></pre>
+	<pre class="language-javascript"><code class="language-javascript">import * as jwt from "jsonwebtoken";</code></pre>
 	<p>Remember to run:</p>
-	<pre><code class="language-javascript">npm install jsonwebtoken &amp;&amp; npm install @types/jsonwebtoken
-</code></pre>
+	<pre class="language-javascript"><code class="language-javascript">npm install jsonwebtoken &amp;&amp; npm install @types/jsonwebtoken</code></pre>
 	<p>Optionally, we can set up a file to specify endpoints and credentials.</p>
-	<pre><code class="language-javascript">import { hosts } from "./private";
+	<pre class="language-javascript"><code class="language-javascript">import { hosts } from "./private";
 
 export const credentials = {/* for demo purposes, ideally use KV to store secrets */
   clients: [{
@@ -51,11 +62,10 @@ export const paths = {
     resource: hosts.token + "/resource",
     token: hosts.token + "/authorize",
   }
-}
-</code></pre>
-	<h4 id="1acceptpageaftercallback">1. Accept page after callback</h4>
+}</code></pre>
+	<h4>1. Accept page after callback</h4>
 	<p>The consumer service generates some callback URL that redirects the user to our authentication server. The authentication server then presents the user with a login or accept page to generate a code. The authentication server thus must listen on the <code>authorize</code> url endpoint and return <code>giveLoginPageResponse</code>.</p>
-	<pre><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
  const url = new URL(event.request.url);
  if (url.pathname.includes("/authorize"))
   return event.respondWith(giveLoginPageResponse(event.request));
@@ -66,25 +76,24 @@ export async function giveLoginPageResponse(request: Request) {
  let token = getTokenFromRequest(request)
  if (token) { //user already signed in
   return new Response(giveAcceptPage(request)
- }
-</code></pre>
+ }</code></pre>
 	<p>Since the user already has a stored session, we can use a method <code>giveAcceptPage</code>. To display the accept page and return a redirect to generate the code.</p>
-	<pre><code class="language-javascript">export function giveAcceptPage(request: Request) {
+	<pre class="language-javascript"><code class="language-javascript">export function giveAcceptPage(request: Request) {
   let req_url = new URL(request.url);
   let params = req_url.search
   let fetchCodeURL = paths.auth.code + params
-  return `&lt;!DOCTYPE html&gt;
-  &lt;html&gt;
-    &lt;body&gt;
-      &lt;a href="${fetchCodeURL}"&gt; Accept&lt;/button&gt;
-    &lt;/body&gt;
-  &lt;/html&gt;
+  return `
+  
+    
+      <a href="https://blog.cloudflare.com/$%7BfetchCodeURL%7D"> Accept
+    
+
+  
     `;
-}
-</code></pre>
-	<h4 id="2redirectbacktoconsumer">2. Redirect back to consumer</h4>
-	<p>At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the user’s browser to the consumer’s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
-	<pre><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
+}</a></code></pre><a href="https://blog.cloudflare.com/$%7BfetchCodeURL%7D">
+		<h4>2. Redirect back to consumer</h4>
+		<p>At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the user’s browser to the consumer’s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
+		<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
  ...
  if (url.pathname.includes("/code"))
   return event.respondWith(redirectCodeToConsumer(event.request));
@@ -111,17 +120,15 @@ export async function redirectCodeToConsumer(request: Request) {
    JSON.stringify(factoryIError({ message: "error with the URL passed in" + e})),
   { status: 500 });
  }
-}
-</code></pre>
-	<h4 id="3codetotokenexchange">3. Code to Token Exchange</h4>
-	<p>Now the consumer has the code. They can use this code to request a token. On our token worker, configure the endpoint to exchange the code for the consumer service to grant a token.</p>
-	<pre><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
+}</code></pre>
+		<h4>3. Code to Token Exchange</h4>
+		<p>Now the consumer has the code. They can use this code to request a token. On our token worker, configure the endpoint to exchange the code for the consumer service to grant a token.</p>
+		<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
 ...
  if (url.pathname.includes("/token"))
-  return event.respondWith(giveToken(event.request));
-</code></pre>
-	<p>Grab the code from the request and validate this code matches the code that is stored for this client. Once the code is verified, deliver the token by grabbing the existing token from the KV storage or by signing the user information to generate a new token.</p>
-	<pre><code class="language-javascript">export async function giveToken(request: Request) {
+  return event.respondWith(giveToken(event.request));</code></pre>
+		<p>Grab the code from the request and validate this code matches the code that is stored for this client. Once the code is verified, deliver the token by grabbing the existing token from the KV storage or by signing the user information to generate a new token.</p>
+		<pre class="language-javascript"><code class="language-javascript">export async function giveToken(request: Request) {
  let req_url = new URL(request.url);
  let code = req_url.searchParams.get("code");
  let email = req_url.searchParams.get("email");
@@ -132,11 +139,10 @@ export async function redirectCodeToConsumer(request: Request) {
   if(code != storedCode) return new Response(give403Page(), { status:403})
 
   let tokenJWT = jwt.sign(email, credentials.client.secret);
-  ... return token
-</code></pre>
-	<h4 id="4givethetokentotheconsumer">4. Give the token to the consumer</h4>
-	<p>Continuing where step 3 left off from the <code>giveToken</code> method, respond to the consumer with this valid token.</p>
-	<pre><code class="language-javascript">  ...
+  ... return token</code></pre>
+		<h4>4. Give the token to the consumer</h4>
+		<p>Continuing where step 3 left off from the <code>giveToken</code> method, respond to the consumer with this valid token.</p>
+		<pre class="language-javascript"><code class="language-javascript">  ...
   headers.append("set-cookie", "token=Bearer " + tokenJWT);
   // @ts-ignore
   await TOKENS.put(email, tokenJWT)
@@ -151,16 +157,14 @@ export async function redirectCodeToConsumer(request: Request) {
   respBody.errors.push(factoryIError({ message: "there was no code sent to the authorize token url" }))
  }
  return new Response(JSON.stringify(respBody), { headers });
-}
-</code></pre>
-	<h4 id="5acceptingthetoken">5. Accepting the token</h4>
-	<p>At this point voila, your duty as an OAuth 2.0 Authentication server is complete! The consumer service that wishes to use your service has the token that you have not so magically generated.</p>
-	<p>The consumer server would send a request including the token:</p>
-	<pre><code class="language-javascript">GET /resource/some-goods
-Authorization: Bearer eyJhbGci..bGAqA
-</code></pre>
-	<p>Authentication server would validate the token and give the goods:</p>
-	<pre><code class="language-javascript">export async function giveResource(request: Request) {
+}</code></pre>
+		<h4>5. Accepting the token</h4>
+		<p>At this point voila, your duty as an OAuth 2.0 Authentication server is complete! The consumer service that wishes to use your service has the token that you have not so magically generated.</p>
+		<p>The consumer server would send a request including the token:</p>
+		<pre class="language-javascript"><code class="language-javascript">GET /resource/some-goods
+Authorization: Bearer eyJhbGci..bGAqA</code></pre>
+		<p>Authentication server would validate the token and give the goods:</p>
+		<pre class="language-javascript"><code class="language-javascript">export async function giveResource(request: Request) {
  var respBody: HookResponse = factoryHookResponse({})
  let token = ""
  let decodedJWT = factoryJWTPayload()
@@ -179,9 +183,8 @@ Authorization: Bearer eyJhbGci..bGAqA
  }
  respBody.body = getUsersPersonalBody(decodedJWT.sub)
  return new Response(JSON.stringify(respBody), init)
-}
-</code></pre>
-	<p>The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using <a href="https://www.cloudflare.com/products/cloudflare-access">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
+}</code></pre>
+	</a>
+	<p><a href="https://blog.cloudflare.com/$%7BfetchCodeURL%7D">The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using </a><a href="https://www.cloudflare.com/products/cloudflare-access">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
 	<p>Stay tuned for a follow-up blog post on an OAuth consumer implementation.</p>
-	<!--kg-card-end: markdown-->
 </div>

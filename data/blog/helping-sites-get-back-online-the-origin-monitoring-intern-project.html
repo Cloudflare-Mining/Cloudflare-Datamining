@@ -1,36 +1,51 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The most impactful internship experiences involve building something meaningful from scratch and learning along the way. Those can be tough goals to accomplish during a short summer internship, but our experience with Cloudflare’s 2019 intern program met both of them and more! Over the course of ten weeks, our team of three interns (two engineering, one product management) went from a problem statement to a new feature, which is still working in production for all Cloudflare customers.</p>
-	<h2 id="the-project">The project</h2>
-	<p>Cloudflare sits between customers’ origin servers and end users. This means that all traffic to the origin server runs through Cloudflare, so we know when something goes wrong with a server and sometimes reflect that status back to users. For example, if an origin is refusing connections and there’s no cached version of the site available, Cloudflare will display a <a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors#521error">521 error</a>. If customers don’t have monitoring systems configured to detect and notify them when failures like this occur, their websites may go down silently, and they may hear about the issue for the first time from angry users.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/image4-11.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>When a customer’s origin server is unreachable, Cloudflare sends a 5xx error back to the visitor.‌‌</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nbytApKa9KPwC7Wa12rVy/c40996e38c9a3cb7c0adf3a0f87fc160/image3-9.png" alt="" class="kg-image" width="1999" height="1000" loading="lazy">
+
 	</figure>
+	<p>The most impactful internship experiences involve building something meaningful from scratch and learning along the way. Those can be tough goals to accomplish during a short summer internship, but our experience with Cloudflare’s 2019 intern program met both of them and more! Over the course of ten weeks, our team of three interns (two engineering, one product management) went from a problem statement to a new feature, which is still working in production for all Cloudflare customers.</p>
+	<h2>The project</h2>
+	<p>Cloudflare sits between customers’ origin servers and end users. This means that all traffic to the origin server runs through Cloudflare, so we know when something goes wrong with a server and sometimes reflect that status back to users. For example, if an origin is refusing connections and there’s no cached version of the site available, Cloudflare will display a <a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors#521error">521 error</a>. If customers don’t have monitoring systems configured to detect and notify them when failures like this occur, their websites may go down silently, and they may hear about the issue for the first time from angry users.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kbCMvc5jyJkluEFbAIT3b/4a1b2d2a0f2c5902125fb62712e8fafd/image4-11.png" alt="" class="kg-image" width="1260" height="753" loading="lazy">
+
+	</figure>
+	<p>When a customer’s origin server is unreachable, Cloudflare sends a 5xx error back to the visitor.‌‌</p>
 	<p>This problem became the starting point for our summer internship project: since Cloudflare knows when customers' origins are down, let’s send them a notification when it happens so they can take action to get their sites back online and reduce the impact to their users! This work became Cloudflare’s <a href="https://support.cloudflare.com/hc/en-us/articles/360037465932-Preventing-site-downtime#5Y1o5Sk9v44PGWnjnfvgh">passive origin monitoring</a> feature, which is currently available on all Cloudflare plans.</p>
 	<p>Over the course of our internship, we ran into lots of interesting technical and product problems, like:</p>
-	<h3 id="making-big-data-small">Making big data small</h3>
+	<h3>Making big data small</h3>
 	<p>Working with data from all requests going through Cloudflare’s 26 million+ Internet properties to look for unreachable origins is unrealistic from a data volume and performance perspective. Figuring out what datasets were available to analyze for the errors we were looking for, and how to adapt our whiteboarded algorithm ideas to use this data, was a challenge in itself.</p>
-	<h3 id="ensuring-high-alert-quality">Ensuring high alert quality</h3>
+	<h3>Ensuring high alert quality</h3>
 	<p>Because only a fraction of requests show up in the sampled timing and error dataset we chose to use, false positives/negatives were disproportionately likely to occur for low-traffic sites. These are the sites that are least likely to have sophisticated monitoring systems in place (and therefore are most in need of this feature!). In order to make the notifications as accurate and actionable as possible, we analyzed patterns of failed requests throughout different types of Cloudflare Internet properties. We used this data to determine thresholds that would maximize the number of true positive notifications, while making sure they weren’t so sensitive that we end up spamming customers with emails about sporadic failures.</p>
-	<h3 id="designing-actionable-notifications">Designing actionable notifications</h3>
+	<h3>Designing actionable notifications</h3>
 	<p>Cloudflare has lots of different kinds of customers, from people running personal blogs with interest in DDoS mitigation to large enterprise companies with extremely sophisticated monitoring systems and global teams dedicated to incident response. We wanted to make sure that our notifications were understandable and actionable for people with varying technical backgrounds, so we enabled the feature for small samples of customers and tested many variations of the “origin monitoring email”. Customers responded right back to our notification emails, sent in support questions, and posted on our community forums. These were all great sources of feedback that helped us improve the message’s clarity and actionability.</p>
 	<p>We frontloaded our internship with lots of research (both digging into request data to understand patterns in origin unreachability problems and talking to customers/poring over support tickets about origin unreachability) and then spent the next few weeks iterating. We enabled passive origin monitoring for all customers with some time remaining before the end of our internships, so we could spend time improving the supportability of our product, documenting our design decisions, and working with the team that would be taking ownership of the project.</p>
 	<p>We were also able to develop some smaller internal capabilities that built on the work we’d done for the customer-facing feature, like notifications on origin outage events for larger sites to help our account teams provide proactive support to customers. It was super rewarding to see our work in production, helping Cloudflare users get their sites back online faster after receiving origin monitoring notifications.</p>
-	<h2 id="our-internship-experience">Our internship experience</h2>
+	<h2>Our internship experience</h2>
 	<p>The Cloudflare internship program was a whirlwind ten weeks, with each day presenting new challenges and learnings! Some factors that led to our productive and memorable summer included:</p>
-	<h3 id="a-well-scoped-project">A well-scoped project</h3>
+	<h3>A well-scoped project</h3>
 	<p>It can be tough to find a project that’s meaningful enough to make an impact but still doable within the short time period available for summer internships. We’re grateful to our managers and mentors for identifying an interesting problem that was the perfect size for us to work on, and for keeping us on the rails if the technical or product scope started to creep beyond what would be realistic for the time we had left.</p>
-	<h3 id="working-as-a-team-of-interns">Working as a team of interns</h3>
+	<h3>Working as a team of interns</h3>
 	<p>The immediate team working on the origin monitoring project consisted of three interns: Annika in product management and Ilya and Zhengyao in engineering. Having a dedicated team with similar goals and perspectives on the project helped us stay focused and work together naturally.</p>
-	<h3 id="quick-agile-cycles">Quick, agile cycles</h3>
+	<h3>Quick, agile cycles</h3>
 	<p>Since our project faced strict time constraints and our team was distributed across two offices (Champaign and San Francisco), it was critical for us to communicate frequently and work in short, iterative sprints. Daily standups, weekly planning meetings, and frequent feedback from customers and internal stakeholders helped us stay on track.</p>
-	<h3 id="great-mentorship-lots-of-freedom">Great mentorship &amp; lots of freedom</h3>
+	<h3>Great mentorship &amp; lots of freedom</h3>
 	<p>Our managers challenged us, but also gave us room to explore our ideas and develop our own work process. Their trust encouraged us to set ambitious goals for ourselves and enabled us to accomplish way more than we may have under strict process requirements.</p>
-	<h2 id="after-the-internship">After the internship</h2>
+	<h2>After the internship</h2>
 	<p>In the last week of our internships, the engineering interns, who were based in the Champaign, IL office, visited the San Francisco office to meet with the team that would be taking over the project when we left and present our work to the company at our all hands meeting. The most exciting aspect of the visit: our presentation was preempted by Cloudflare’s co-founders announcing public S-1 filing at the all hands! :)</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image5-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image1-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Fo3hKDoRLIKjjEmB6HHSf/ccd5b99619964688181bead1d801f78d/image5-5.png" alt="" class="kg-image" width="1541" height="864" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7q6XuSukWKdp5CmOEieU9/55394ec28d32f1ce8f73b57fc99bcb51/image1-11.png" alt="" class="kg-image" width="1541" height="863" loading="lazy">
+
+	</figure>
 	<p>Over the next few months, Cloudflare added a notifications page for easy configurability and <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">announced</a> the availability of passive origin monitoring along with some other tools to help customers monitor their servers and avoid downtime.</p>
 	<p>Ilya is working for Cloudflare part-time during the school semester and heading back for another internship this summer, and Annika is joining the team full-time after graduation this May. We’re excited to keep working on tools that help make the Internet a better place!</p>
 	<p>Also, Cloudflare is <a href="https://blog.cloudflare.com/cloudflare-doubling-size-of-2020-summer-intern-class">doubling the size of the 2020 intern class</a>—if you or someone you know is interested in an internship like this one, check out the <a href="https://boards.greenhouse.io/cloudflare/jobs/2156436?gh_jid=2156436&amp;gh_src=d193c1b71us">open positions</a> in software engineering, security engineering, and product management.</p>

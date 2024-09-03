@@ -1,30 +1,35 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/01/wordpress-tag-cloud-2.png" alt="" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sG0aXdBQiRmPEXigsV0v8/e0afe08ec2a86ff131dec1be6d8f330c/wordpress-tag-cloud-2.png" alt="" class="kg-image" width="1920" height="1080" loading="lazy">
+
+	</figure>
 	<p>As many are aware, CloudFlare launched <a href="https://support.google.com/webmasters/answer/6073543?utm_source=wmx_blog&amp;utm_medium=referral&amp;utm_campaign=tls_en_post">Universal SSL</a> several months ago. We saw lots of customers sign up and start using these new, <a href="https://www.cloudflare.com/application-services/products/ssl">free SSL certificates</a>. For many customers that didn’t already have an SSL certificate, they were able to use “Flexible SSL”.</p>
 	<p>Flexible SSL creates a secure (HTTPS) connection between the website visitor and CloudFlare and then an in-secure (HTTP) connection between CloudFlare and the origin server. For any site using absolute links to assets (i.e. javascript, css, and image files), this can lead to a “Mixed Content” error.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/01/Screen-Shot-2015-01-21-at-10-50-54-AM-5.png" alt="" loading="lazy"></p>
-	<h4 id="mixedcontentmixedprotocol">Mixed Content = Mixed Protocol</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fogaeQLTAc6tj2BAMzJ0g/d4e6e26cdea98d789130e7ba3f08062f/Screen-Shot-2015-01-21-at-10-50-54-AM-5.png" alt="" class="kg-image" width="542" height="163" loading="lazy">
+
+	</figure>
+	<h4>Mixed Content = Mixed Protocol</h4>
 	<p>What is “Mixed Content”? This can be understood as mixed protocol. When the webpage is loaded over SSL (HTTPS protocol), most browsers expect all of the assets to be loaded over the same protocol. Some browsers will display an error about loading “insecure content” while others will just block the insecure content outright.</p>
 	<p>This error only applies to pages loaded over SSL, since the browser is working to make sure that secure pages only load equally secure assets.</p>
-	<h4 id="wordpresspluginupdates">Wordpress Plugin Updates</h4>
+	<h4>Wordpress Plugin Updates</h4>
 	<p>The latest version of the CloudFlare plugin for Wordpress works to resolve a lot of these errors by altering the protocol within the links to assets. Where currently your Wordpress site may link to your stylesheet like this:</p>
-	<pre><code>http://www.example.com/wp/wp-content/themes/twentyfifteen/style.css?ver=4.1
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">http://www.example.com/wp/wp-content/themes/twentyfifteen/style.css?ver=4.1</code></pre>
 	<p>We’ll remove the “http:” part to make this into a relative protocol:</p>
-	<pre><code>//www.example.com/wp/wp-content/themes/twentyfifteen/style.css?ver=4.1
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">//www.example.com/wp/wp-content/themes/twentyfifteen/style.css?ver=4.1</code></pre>
 	<p>A further update to this rewriting doesn’t enable this rewriting for canonical URLs, since Google and other search engines expect this to be an absolute URL. Google also <a href="https://support.google.com/webmasters/answer/6073543?utm_source=wmx_blog&amp;utm_medium=referral&amp;utm_campaign=tls_en_post">recommends securing your site with SSL</a>, and being able to enable Flexible SSL is a great way to achieve this SEO boost!</p>
-	<h4 id="relativeprotocol">Relative Protocol</h4>
+	<h4>Relative Protocol</h4>
 	<p>A relative protocol <code>//www.example.com</code> tells your browser to load the asset over the same protocol as the main page. If your site loads over HTTPS, then the browser will try to load the asset over HTTPS as well. (In other words, NOT mixed. Everything is over HTTPS!)</p>
 	<p>This approach has no negative side effects for customers who don’t enable SSL (or who have traffic visit over HTTP as well as HTTPS), since if the page is loaded over HTTP, the assets will be loaded on the same protocol.</p>
-	<h4 id="bestpracticesusingwordpressandflexiblessl">Best Practices using Wordpress and Flexible SSL</h4>
+	<h4>Best Practices using Wordpress and Flexible SSL</h4>
 	<p>Protocol rewriting is on by default in our current version of the Wordpress plugin, so you should be able to enable Flexible SSL on your account and have traffic go to <a href="https://www.yourdomain.com">https://www.yourdomain.com</a>.</p>
 	<p>CloudFlare recommends also adding a page rule for <a href="http://www.yourdomain.com">http://www.yourdomain.com</a>* that redirects all traffic to HTTPS (assuming that Wordpress is set up for the WWW subdomain and isn’t within a directory on your domain).</p>
 	<p>With these two changes we can secure all traffic to your Wordpress site between the customer and CloudFlare’s server.</p>
-	<h4 id="limitationsofprotocolrewriting">Limitations of Protocol Rewriting</h4>
+	<h4>Limitations of Protocol Rewriting</h4>
 	<p>While this improvement should allow many Wordpress users to enable Flexible SSL without any other changes to their website, there are a few items to consider:</p>
 	<p>If after upgrading to the latest version of the Wordpress plugin, you still get “Mixed Content” errors, it’s likely that a plugin you are using adds assets to the site though javascript. The ways and methods to do this vary greatly, so it’s not currently possible to catch all of these instances. Plugin developers are encouraged to link to assets relatively or use Wordpress’s built-in methods for adding assets to the page.</p>
 	<p>It’s also important to note the limitation of Flexible SSL. For websites that collect credit cards and other secure information, it’s important to secure this information from the customer all the way to your server, so we recommend using Full SSL and having an SSL certificate on your server because this also secures the traffic between CloudFlare and your origin.</p>
-	<!--kg-card-end: markdown-->
 </div>

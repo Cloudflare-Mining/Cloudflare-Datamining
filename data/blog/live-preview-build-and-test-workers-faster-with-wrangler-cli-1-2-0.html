@@ -1,13 +1,17 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4brc5KSkr9sKKC1WN3u8TK/7179ecabe7fe18732782446e1e08719e/live-preview-build-and-test-workers-faster-with-wrangler-cli-1-2-0.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>As part of my internship on the Workers Developer Experience team, I set out to polish the <a href="https://github.com/cloudflare/wrangler">Wrangler CLI</a> for <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. If you're not familiar with Workers, the premise is quite simple: Write a bit of Javascript that takes in an HTTP request, does some processing, and spits out a response. The magic lies in where your Workers scripts run: on Cloudflare's edge network, which spans 193 cities in more than 90 countries. Workers can be used for nearly anything from configuring Cloudflare caching behavior to building entire serverless web applications. And, you don't have to worry about operations at <em>all.</em></p>
+	<p>As part of my internship on the Workers Developer Experience team, I set out to polish the <a href="https://github.com/cloudflare/wrangler">Wrangler CLI</a> for <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. If you're not familiar with Workers, the premise is quite simple: Write a bit of Javascript that takes in an HTTP request, does some processing, and spits out a response. The magic lies in where your Workers scripts run: on Cloudflare's edge network, which spans 193 cities in more than 90 countries. Workers can be used for nearly anything from configuring Cloudflare caching behavior to building entire serverless web applications. And, you don't have to worry about operations at <i>all.</i></p>
 	<p>I was excited to focus on Wrangler, because Wrangler aims to make developing and publishing Workers projects a pleasant experience for everyone, whether you're a solo dev working on the next big thing, or an engineer at a Fortune 100 enterprise. The whole point of serverless is about reducing friction, and Wrangler reflects that ethos.</p>
 	<p>However, when I started at Cloudflare in early June, some parts of the development experience still needed some love. While working on a new <a href="https://workers.cloudflare.com/docs/tutorials/build-a-rustwasm-function">WASM tutorial</a> for the Workers documentation, I noticed a storm brewing in my browser…</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image1.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1weM15yKROpJCcZVqofQXu/2dab9e674be22675c95c6278a76336e6/image1.gif" alt="" class="kg-image" width="1440" height="212" loading="lazy">
+
+	</figure>
 	<p>Wrangler lets you test your Workers project with a subcommand called <code>wrangler preview</code>, and every time I called it to test a new change it opened a new tab. Fast iteration is the most crucial part of a good developer experience, and while the preview was fast, things were getting messy. I was fighting my tooling, having to keep track of the latest preview tab every time I wanted to test a new change. I knew that if I was annoyed about this, others would be too.</p>
 	<p>So, I thought about what our customers wanted: similarity with tooling that they already used. I set out to create an experience inspired by `webpack-dev-server` and other similar watch-and-build tools, where you would have a single tab that would refresh live with your latest changes. However, I knew that getting changes into the Workers runtime to achieve this goal would be a tall order for week 2 of my internship, so I started thinking about solutions to send updates directly to the previewer.</p>
 	<p>Wrangler is written in <a href="https://www.rust-lang.org">Rust</a>, so I was able to utilize the <a href="https://crates.io">crates.io</a> ecosystem while developing this feature. I used the <a href="https://crates.io/crates/notify">notify</a> crate, which provides a cross-platform abstraction layer over the various file system event APIs provided by major OSes. However, there are some gotchas when implementing a file watcher that triggers a build and upload: you can’t simply trigger a build after every filesystem event, as a single file save can emit several events in quick succession depending on which editor you use! To prevent wasteful builds, I implemented a cooldown period, which only triggers the build process when no new file system events have been detected for at least 2 seconds. Rust’s rich standard library makes implementing concurrent behaviors like this very elegant:</p>
-	<pre><code class="language-rust">/* rx.recv_timeout returns Ok if there was an event on the rx channel
+	<pre class="language-rust"><code class="language-rust">/* rx.recv_timeout returns Ok if there was an event on the rx channel
  * or Err if the cooldown period has passed. The while let Ok(_) syntax
  * will end the loop if the cooldown period has ended, or restart the cooldown period if there was an event on the rx channel
  */
@@ -16,8 +20,12 @@ while let Ok(_) = rx.recv_timeout(cooldown) {
 }</code></pre>
 	<p>Another challenge was handling communication with the previewer. I settled on an unconventional application of WebSockets, creating one to localhost to allow for a browser application to communicate with the Wrangler CLI running on the local machine. I coordinated with the Workers UI team to get my WebSocket client added to the preview UI, and with the security team to pass a security review for the feature, to make sure script contents were properly protected from exposure.</p>
 	<p>This was the result:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/out_opt--1-.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This is what Developer Experience is all about. You should feel like ??‍♀️??‍♂️ when using Wrangler, not like ?. <em>If this isn't the case, <a href="https://github.com/cloudflare/wrangler/issues/new/choose">we want to hear about it</a>.</em></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BJCQTvxxCvz4yvGyc3IQs/f0950b9743ad730e5ed5f04bf24f8e42/out_opt--1-.gif" alt="" class="kg-image" width="720" height="598" loading="lazy">
+
+	</figure>
+	<p>This is what Developer Experience is all about. You should feel like ??‍♀️??‍♂️ when using Wrangler, not like ?. <i>If this isn't the case, </i><a href="https://github.com/cloudflare/wrangler/issues/new/choose"><i>we want to hear about it</i></a><i>.</i></p>
 	<p>Live Preview was shipped in the <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.2.0">1.2.0 release</a> of <a href="https://github.com/cloudflare/wrangler">Wrangler</a>, exposed under <code>wrangler preview --watch</code>. It works for all Wrangler projects, even ones that use WebAssembly.</p>
 	<p>And to the Workers Developer Experience team, Dubs, Ashley, Avery, Gabbi, Kristian, Sven, and Victoria: thank you. Y'all are motivated, talented, and I genuinely had fun every day this summer.</p>
 </div>

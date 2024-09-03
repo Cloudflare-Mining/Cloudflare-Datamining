@@ -1,44 +1,44 @@
-<div class="mb2 gray5">17 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UWUhTHQzbfQPMHv4CsfSb/ab16f3c4722f0bdc0b54f56540ebf3b4/neon-is-the-new-black.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>As engineers at Cloudflare quickly adapt our software stack to run on ARM, a few parts of our software stack have not been performing as well on ARM processors as they currently do on our Xeon® Silver 4116 CPUs. For the most part this is a matter of Intel specific optimizations some of which utilize SIMD or other special instructions.</p>
 	<p>One such example is the venerable jpegtran, one of the workhorses behind our Polish image optimization service.</p>
 	<p>A while ago I <a href="https://blog.cloudflare.com/doubling-the-speed-of-jpegtran">optimized</a> our version of jpegtran for Intel processors. So when I ran a comparison on my <a href="https://blog.cloudflare.com/content/images/2015/10/print_poster_0025.jpg">test image</a>, I was expecting that the Xeon would outperform ARM:</p>
-	<pre><code>vlad@xeon:~$ time  ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+	<pre class="language-bash"><code class="language-bash">vlad@xeon:~$ time  ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m2.305s
 user    0m2.059s
-sys     0m0.252s
-</code></pre>
-	<pre><code>vlad@arm:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+sys     0m0.252s</code></pre>
+
+	<pre class="language-bash"><code class="language-bash">vlad@arm:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m8.654s
 user    0m8.433s
-sys     0m0.225s
-</code></pre>
+sys     0m0.225s</code></pre>
 	<p>Ideally we want to have the ARM performing at or above 50% of the Xeon performance per core. This would make sure we have no performance regressions, and net performance gain, since the ARM CPUs have double the core count as our current 2 socket setup.</p>
 	<p>In this case, however, I was disappointed to discover an almost 4X slowdown.</p>
 	<p>Not one to despair, I figured out that applying the same optimizations I did for Intel would be trivial. Surely the NEON instructions map neatly to the SSE instructions I used before?</p>
-	<p><img src="https://farm4.staticflickr.com/3063/2535574361_30730d9a7b_o_d.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vizzzual-dot-com/2535574361/in/photolist-4S4tVk-8yutL-ge8Q-5fXXRQ-wJcRY-yrvgf-9vXGvq-hGx4N-4NZ4L-5cjA7-iJrnwJ-7VXhaz-866BCb-auGuG-68BjeT-92L4-9rXsu-3Pfaz-5GZs6n-oAKSY-LhdKa-7BLZ96-VRGZ2H-ofm5ZJ-8xC1bv-5DePNQ-ZouKg-afu4r-49ThBC-7VyeQT-qfr6P3-4zpUM8-hgPbs-naTubk-S7khvM-6hTftH-ByLAg-9sNftz-8G4os2-zsq8-oBEf6L-5y1nxR-7aTZfD-9fYMH-wJcnp-8yhgk-wJcDS-qsPXVn-kbW5A6-bPx3gX">image</a> by <a href="https://www.flickr.com/photos/vizzzual-dot-com">viZZZual.com</a></small>
-	</p>
-	<h3 id="whatisneon">What is NEON</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3P8ertRFNQ4EZJnWHFTahh/3a0453673075d8489380b193e4c733b1/2535574361_30730d9a7b_o_d.jpg" alt="" class="kg-image" width="600" height="800" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vizzzual-dot-com/2535574361/in/photolist-4S4tVk-8yutL-ge8Q-5fXXRQ-wJcRY-yrvgf-9vXGvq-hGx4N-4NZ4L-5cjA7-iJrnwJ-7VXhaz-866BCb-auGuG-68BjeT-92L4-9rXsu-3Pfaz-5GZs6n-oAKSY-LhdKa-7BLZ96-VRGZ2H-ofm5ZJ-8xC1bv-5DePNQ-ZouKg-afu4r-49ThBC-7VyeQT-qfr6P3-4zpUM8-hgPbs-naTubk-S7khvM-6hTftH-ByLAg-9sNftz-8G4os2-zsq8-oBEf6L-5y1nxR-7aTZfD-9fYMH-wJcnp-8yhgk-wJcDS-qsPXVn-kbW5A6-bPx3gX">image</a> by <a href="https://www.flickr.com/photos/vizzzual-dot-com">viZZZual.com</a></p>
+	<h3>What is NEON</h3>
 	<p>NEON is the ARMv8 version of SIMD, Single Instruction Multiple Data instruction set, where a single operation performs (generally) the same operation on several operands.</p>
 	<p>NEON operates on 32 dedicated 128-bit registers, similarly to Intel SSE. It can perform operations on 32-bit and 64-bit floating point numbers, or 8-bit, 16-bit, 32-bit and 64-bit signed or unsigned integers.</p>
 	<p>As with <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse">SSE</a> you can program either in the assembly language, or in C using intrinsics. The intrinsics are usually easier to use, and depending on the application and the compiler can provide better performance, however intrinsics based code tends to be quite verbose.</p>
 	<p>If you opt to use the NEON intrinsics you have to include <code>&lt;arm_neon.h&gt;</code>. While SSE intrinsic use __m128i for all SIMD integer operations, the intrinsics for NEON have distinct type for each integer and float width. For example operations on signed 16-bit integers use the int16x8_t type, which we are going to use. Similarly there is a uint16x8_t type for unsigned integer, as well as int8x16_t, int32x4_t and int64x2_t and their uint derivatives, that are self explanatory.</p>
-	<h3 id="gettingstarted">Getting started</h3>
+	<h3>Getting started</h3>
 	<p>Running perf tells me that the same two culprits are responsible for most of the CPU time spent:</p>
-	<pre><code>perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg
+	<pre class="language-bash"><code class="language-bash">perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg
 perf report
   71.24%  lt-jpegtran  libjpeg.so.9.1.0   [.] encode_mcu_AC_refine
-  15.24%  lt-jpegtran  libjpeg.so.9.1.0   [.] encode_mcu_AC_first
-</code></pre>
+  15.24%  lt-jpegtran  libjpeg.so.9.1.0   [.] encode_mcu_AC_first</code></pre>
 	<p>Aha, <code>encode_mcu_AC_refine</code> and <code>encode_mcu_AC_first</code>, my old nemeses!</p>
-	<h3 id="thestraightforwardapproach">The straightforward approach</h3>
-	<br>
-	<h4 id="encode_mcu_ac_refine">encode_mcu_AC_refine</h4>
+	<h3>The straightforward approach</h3>
+	<h4>encode_mcu_AC_refine</h4>
 	<p>Let's recoup the optimizations we applied to <code>encode_mcu_AC_refine</code> previously. The function has two loops, with the heavier loop performing the following operation:</p>
-	<pre><code class="language-c">for (k = cinfo-&gt;Ss; k &lt;= Se; k++) {
+	<pre class="language-c"><code class="language-c">for (k = cinfo-&gt;Ss; k &lt;= Se; k++) {
   temp = (*block)[natural_order[k]];
   if (temp &lt; 0)
     temp = -temp;      /* temp is abs value of input */
@@ -46,10 +46,9 @@ perf report
   absvalues[k] = temp; /* save abs value for main pass */
   if (temp == 1)
     EOB = k;           /* EOB = index of last newly-nonzero coef */
-}
-</code></pre>
+}</code></pre>
 	<p>And the SSE solution to this problem was:</p>
-	<pre><code class="language-c">__m128i x1 = _mm_setzero_si128(); // Load 8 16-bit values sequentially
+	<pre class="language-c"><code class="language-c">__m128i x1 = _mm_setzero_si128(); // Load 8 16-bit values sequentially
 x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+0]], 0);
 x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+1]], 1);
 x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+2]], 2);
@@ -66,8 +65,7 @@ _mm_storeu_si128((__m128i*)&amp;absvalues[k], x1);   // Store
 
 x1 = _mm_cmpeq_epi16(x1, _mm_set1_epi16(1));     // Compare to 1
 unsigned int idx = _mm_movemask_epi8(x1);        // Extract byte mask
-EOB = idx? k + 16 - __builtin_clz(idx)/2 : EOB;  // Compute index
-</code></pre>
+EOB = idx? k + 16 - __builtin_clz(idx)/2 : EOB;  // Compute index</code></pre>
 	<p>For the most part the transition to NEON is indeed straightforward.</p>
 	<p>To initialize a register to all zeros, we can use the <code>vdupq_n_s16</code> intrinsic, that duplicates a given value across all lanes of a register. The insertions are performed with the <code>vsetq_lane_s16</code> intrinsic. Use <code>vabsq_s16</code> to get the absolute values.</p>
 	<p>The shift right instruction made me pause for a while. I simply couldn't find an instruction that can shift right by a non constant integer value. It doesn't exist. However the solution is very simple, you shift left by a negative amount! The intrinsic for that is <code>vshlq_s16</code>.</p>
@@ -75,7 +73,7 @@ EOB = idx? k + 16 - __builtin_clz(idx)/2 : EOB;  // Compute index
 		<p>The absence of a right shift instruction is no coincidence. Unlike the x86 instruction set, that can theoretically support arbitrarily long instructions, and thus don't have to think twice before adding a new instruction, no matter how specialized or redundant it is, ARMv8 instruction set can only support 32-bit long instructions, and have a very limited opcode space. For this reason the instruction set is much more concise, and many instructions are in fact aliases to other instruction. Even the most basic MOV instruction is an alias for ORR (binary or). That means that programming for ARM and NEON sometimes requires greater creativity.</p>
 	</blockquote>
 	<p>The final step of the loop, is comparing each element to 1, then getting the mask. Comparing for equality is performed with <code>vceqq_s16</code>. But again there is no operation to extract the mask. That is a problem. However, instead of getting a bitmask, it is possible to extract a whole byte from every lane into a 64-bit value, by first applying <code>vuzp1q_u8</code> to the comparison result. <code>vuzp1q_u8</code> interleaves the even indexed bytes of two vectors (whereas <code>vuzp2q_u8</code> interleaves the odd indexes). So the solution would look something like that:</p>
-	<pre><code class="language-c">int16x8_t zero = vdupq_n_s16(0);
+	<pre class="language-c"><code class="language-c">int16x8_t zero = vdupq_n_s16(0);
 int16x8_t al_neon = vdupq_n_s16(-Al);
 int16x8_t x0 = zero;
 int16x8_t x1 = zero;
@@ -100,17 +98,15 @@ uint8x16_t is_one = vreinterpretq_u8_u16(vceqq_s16(x, one));  // Compare to 1
 is_one = vuzp1q_u8(is_one, is_one);  // Compact the compare result into 64 bits
 
 uint64_t idx = vgetq_lane_u64(vreinterpretq_u64_u8(is_one), 0); // Extract
-EOB = idx ? k + 8 - __builtin_clzl(idx)/8 : EOB;                // Get the index
-</code></pre>
+EOB = idx ? k + 8 - __builtin_clzl(idx)/8 : EOB;                // Get the index</code></pre>
 	<p>Note the intrinsics for explicit type casts. They don't actually emit any instructions, since regardless of the type the operands always occupy the same registers.</p>
 	<p>On to the second loop:</p>
-	<pre><code class="language-c">if ((temp = absvalues[k]) == 0) {
+	<pre class="language-c"><code class="language-c">if ((temp = absvalues[k]) == 0) {
   r++;
   continue;
-}
-</code></pre>
+}</code></pre>
 	<p>The SSE solution was:</p>
-	<pre><code class="language-c">__m128i t = _mm_loadu_si128((__m128i*)&amp;absvalues[k]);
+	<pre class="language-c"><code class="language-c">__m128i t = _mm_loadu_si128((__m128i*)&amp;absvalues[k]);
 t = _mm_cmpeq_epi16(t, _mm_setzero_si128()); // Compare to 0
 int idx = _mm_movemask_epi8(t);              // Extract byte mask
 if (idx == 0xffff) {                         // Skip all zeros
@@ -123,28 +119,25 @@ if (idx == 0xffff) {                         // Skip all zeros
   k += skip;
   if (k&gt;Se) break;      // Stop if gone too far
 }
-temp = absvalues[k];    // Load the next nonzero value
-</code></pre>
+temp = absvalues[k];    // Load the next nonzero value</code></pre>
 	<p>But we already know that there is no way to extract the byte mask. Instead of using NEON I chose to simply skip four zero values at a time, using 64-bit integers, like so:</p>
-	<pre><code class="language-c">uint64_t tt, *t = (uint64_t*)&amp;absvalues[k];
+	<pre class="language-c"><code class="language-c">uint64_t tt, *t = (uint64_t*)&amp;absvalues[k];
 if ( (tt = *t) == 0) while ( (tt = *++t) == 0); // Skip while all zeroes
 int skip = __builtin_ctzl(tt)/16 + ((int64_t)t - 
            (int64_t)&amp;absvalues[k])/2;           // Get index of next nonzero
 k += skip;
 r += skip;
-temp = absvalues[k];
-</code></pre>
+temp = absvalues[k];</code></pre>
 	<p>How fast are we now?</p>
-	<pre><code>vlad@arm:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+	<pre class="language-bash"><code class="language-bash">vlad@arm:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m4.008s
 user    0m3.770s
-sys     0m0.241s
-</code></pre>
+sys     0m0.241s</code></pre>
 	<p>Wow, that is incredible. Over 2X speedup!</p>
-	<h4 id="encode_mcu_ac_first">encode_mcu_AC_first</h4>
+	<h4>encode_mcu_AC_first</h4>
 	<p>The other function is quite similar, but the logic slightly differs on the first pass:</p>
-	<pre><code class="language-c">temp = (*block)[natural_order[k]];
+	<pre class="language-c"><code class="language-c">temp = (*block)[natural_order[k]];
 if (temp &lt; 0) {
   temp = -temp;             // Temp is abs value of input
   temp &gt;&gt;= Al;              // Apply the point transform
@@ -154,11 +147,10 @@ if (temp &lt; 0) {
   temp2 = temp;
 }
 t1[k] = temp;
-t2[k] = temp2;
-</code></pre>
+t2[k] = temp2;</code></pre>
 	<p>Here it is required to assign the absolute value of temp to <code>t1[k]</code>, and its inverse to <code>t2[k]</code> if temp is negative, otherwise <code>t2[k]</code> assigned the same value as <code>t1[k]</code>.</p>
 	<p>To get the inverse of a value, we use the <code>vmvnq_s16</code> intrinsic, to check if the values are negative we need to compare with zero using the <code>vcgezq_s16</code> and finally selecting based on the mask using <code>vbslq_s16</code>.</p>
-	<pre><code class="language-c">int16x8_t zero = vdupq_n_s16(0);
+	<pre class="language-c"><code class="language-c">int16x8_t zero = vdupq_n_s16(0);
 int16x8_t al_neon = vdupq_n_s16(-Al);
 
 int16x8_t x0 = zero;
@@ -184,21 +176,23 @@ int16x8_t n = vmvnq_s16(x);       // Binary inverse
 n = vbslq_s16(is_positive, x, n); // Select based on positive mask
 
 vst1q_s16(&amp;t1[k], x); // Store
-vst1q_s16(&amp;t2[k], n);
-</code></pre>
+vst1q_s16(&amp;t2[k], n);</code></pre>
 	<p>And the moment of truth:</p>
-	<pre><code>vlad@arm:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+	<pre class="language-bash"><code class="language-bash">vlad@arm:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m3.480s
 user    0m3.243s
-sys     0m0.241s
-</code></pre>
+sys     0m0.241s</code></pre>
 	<p>Overall 2.5X speedup from the original C implementation, but still 1.5X slower than Xeon.</p>
-	<h3 id="batchbenchmark">Batch benchmark</h3>
+	<h3>Batch benchmark</h3>
 	<p>While the improvement for the single image was impressive, it is not necessarily representative of all jpeg files. To understand the impact on overall performance I ran jpegtran over a set of 34,159 actual images from one of our caches. The total size of those images was 3,325,253KB. The total size after jpegtran was 3,067,753KB, or 8% improvement on average.</p>
 	<p>Using one thread, the Intel Xeon managed to process all those images in 14 minutes and 43 seconds. The original jpegtran on our ARM server took 29 minutes and 34 seconds. The improved jpegtran took only 13 minutes and 52 seconds, slightly outperforming even the Xeon processor, despite losing on the test image.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/jpegtran.png" alt="jpegtran" loading="lazy"></p>
-	<h3 id="goingdeeper">Going deeper</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/koIIgyZHWMqH2zFQlXE4Q/fd84f032a3743af2480c865e66a048fc/jpegtran.png" alt="jpegtran" class="kg-image" width="1628" height="1030" loading="lazy">
+
+	</figure>
+	<h3>Going deeper</h3>
 	<p>3.48 seconds, down from 8.654 represents a respectful 2.5X speedup.</p>
 	<p>It definitely meets the goal of being at least 50% as fast as Xeon, and it is faster in the batch benchmark, but it still feels like it is slower than it could be.</p>
 	<p>While going over the ARMv8 NEON instruction set, I found several unique instructions, that have no equivalent in SSE.</p>
@@ -206,7 +200,7 @@ sys     0m0.241s
 	<p>The intrinsic to use the 4 register variant is <code>vqtbl4q_u8</code>. Interestingly there is an instruction that can lookup 64 bytes in AVX-512, but we don't want to <a href="https://blog.cloudflare.com/on-the-dangers-of-intels-frequency-scaling">use that</a>.</p>
 	<p>The next interesting thing I found, are instructions that can load or store and de/interleave data at the same time. They can load or store up to four registers simultaneously, while de/interleaving two, three or even four elements, of any supported width. The specifics are well presented in <a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores">here</a>. The load intrinsics used are of the form: <code>vldNq_uW</code>, where N can be 1,2,3,4 to indicate the interleave factor and W can be 8, 16, 32 or 64. Similarly <code>vldNq_sW</code> is used for signed types.</p>
 	<p>Finally very interesting instructions are the shift left/right and insert <code>SLI</code> and <code>SRI</code>. What they do is they shift the elements left or right, like a regular shift would, however instead of shifting in zero bits, the zeros are replaced with the original bits of the destination register! An intrinsic for that would look like <code>vsliq_n_u16</code> or <code>vsriq_n_u32</code>.</p>
-	<h4 id="applyingthenewinstructions">Applying the new instructions</h4>
+	<h4>Applying the new instructions</h4>
 	<p>It might not be visible at first how those new instruction can help. Since I didn't have much time to dig into libjpeg or the jpeg spec, I had to resolve to heuristics.</p>
 	<p>From a quick look it became apparent that <code>*block</code> is defined as an array of 64 16-bit values. <code>natural_order</code> is an array of 32-bit integers that varies in length depending on the real block size, but is always padded with 16 entries. Also, despite the fact that it uses integers, the values are indexes in the range [0..63].</p>
 	<p>Another interesting observation is that blocks of size 64 are the most common by far for both <code>encode_mcu_AC_refine</code> and <code>encode_mcu_AC_first</code>. And it always makes sense to optimize for the most common case.</p>
@@ -214,7 +208,7 @@ sys     0m0.241s
 	<p>After the data loading step is done, the point transforms for both functions remain the same, but in the end, to get a single bitmask for all 64 values we can use <code>SLI</code> and <code>SRI</code> to intelligently align the bits such that only one bit of each comparison mask remains, using <code>TBL</code> again to combine them.</p>
 	<p>For whatever reason, the compiler in that case produces somewhat suboptimal code, so I had to revert to assembly language for this specific optimization.</p>
 	<p>The code for <code>encode_mcu_AC_refine</code>:</p>
-	<pre><code class="language-asm">    # Load and deintreleave the block
+	<pre class="language-asm"><code class="language-asm">    # Load and deintreleave the block
     ld2 {v0.16b - v1.16b}, [x0], 32
     ld2 {v16.16b - v17.16b}, [x0], 32
     ld2 {v18.16b - v19.16b}, [x0], 32
@@ -357,15 +351,13 @@ sys     0m0.241s
     sub x0, x2, x0
     # Not of zero mask (so 1 bits indecates non-zeroes)
     mvn x1, x1
-    ret
-</code></pre>
+    ret</code></pre>
 	<p>If you look carefully at the code, you will see, that I decided that while generating the mask to find EOB is useful, I can use the same method to generate the mask for zero values, and then I can find the next nonzero value, and zero runlength this way:</p>
-	<pre><code>uint64_t skip =__builtin_clzl(zero_mask &lt;&lt; k);
+	<pre class="language-bash"><code class="language-bash">uint64_t skip =__builtin_clzl(zero_mask &lt;&lt; k);
 r += skip;
-k += skip;
-</code></pre>
+k += skip;</code></pre>
 	<p>Similarly for <code>encode_mcu_AC_first</code>:</p>
-	<pre><code class="language-asm">    # Load the block
+	<pre class="language-asm"><code class="language-asm">    # Load the block
     ld2 {v0.16b - v1.16b}, [x0], 32
     ld2 {v16.16b - v17.16b}, [x0], 32
     ld2 {v18.16b - v19.16b}, [x0], 32
@@ -495,24 +487,38 @@ k += skip;
 
     mov x0, v6.d[0]
     mvn x0, x0
-    ret
-</code></pre>
-	<h2 id="finalresultsandpower">Final results and power</h2>
+    ret</code></pre>
+	<h2>Final results and power</h2>
 	<p>The final version of our jpegtran managed to reduce the test image in 2.756 seconds. Or an extra 1.26X speedup, that gets it incredibly close to the performance of the Xeon on that image. As a bonus batch performance also improved!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/jpegtran-asm-1.png" alt="jpegtran-asm-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kEvqeb1Ddf7x4WbeyjEx8/03dfbac6645ec11d0ea7193e88f93ffe/jpegtran-asm-1.png" alt="jpegtran-asm-1" class="kg-image" width="1622" height="1024" loading="lazy">
+
+	</figure>
 	<p>Another favorite part of mine, working with the Qualcomm Centriq CPU is the ability to take power readings, and be pleasantly surprised every time.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/jpegtran-power-1.png" alt="jpegtran-power-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j5DWevxhY9nVnAW2Z7g31/a6037010171022a89105114748381385/jpegtran-power-1.png" alt="jpegtran-power-1" class="kg-image" width="1688" height="1032" loading="lazy">
+
+	</figure>
 	<p>With the new implementation Centriq outperforms the Xeon at batch reduction for every number of workers. We usually run Polish with four workers, for which Centriq is now 1.3 times faster while also 6.5 times more power efficient.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>It is evident that the Qualcomm Centriq is a powerful processor, that definitely provides a good bang for a buck. However, years of Intel leadership in the server and desktop space mean that a lot of software is better optimized for Intel processors.</p>
 	<p>For the most part writing optimizations for ARMv8 is not difficult, and we will be adjusting our software as needed, and publishing our efforts as we go.</p>
 	<p>You can find the updated code on our <a href="https://github.com/cloudflare/jpegtran">Github</a> page.</p>
-	<h3 id="usefulresources">Useful resources</h3>
+	<h3>Useful resources</h3>
 	<ul>
-		<li><a href="https://developer.arm.com/docs/100069/latest">Arm Compiler armasm User Guide</a></li>
-		<li><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0055b/IHI0055B_aapcs64.pdf">Procedure Call Standard for the ARM 64-bit Architecture</a></li>
-		<li><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0073a/IHI0073A_arm_neon_intrinsics_ref.pdf">ARM NEON Intrinsics Reference</a></li>
-		<li><a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores">Coding for NEON</a></li>
+		<li>
+			<p><a href="https://developer.arm.com/docs/100069/latest">Arm Compiler armasm User Guide</a></p>
+		</li>
+		<li>
+			<p><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0055b/IHI0055B_aapcs64.pdf">Procedure Call Standard for the ARM 64-bit Architecture</a></p>
+		</li>
+		<li>
+			<p><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0073a/IHI0073A_arm_neon_intrinsics_ref.pdf">ARM NEON Intrinsics Reference</a></p>
+		</li>
+		<li>
+			<p><a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores">Coding for NEON</a></p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 </div>

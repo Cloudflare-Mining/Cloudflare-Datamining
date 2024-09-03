@@ -1,54 +1,96 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GiNWrePZHd1stRAAmHd0M/c4fb511920cc5ab8b976b0fbbbcf64d2/logpush-ui-update.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We are excited to announce a new look and new capabilities for <a href="https://developers.cloudflare.com/logs">Cloudflare Logs</a>! Customers on our Enterprise plan can now configure Logpush for Firewall Events and Network Error Logs Reports directly from the dashboard. Additionally, it’s easier to send Logs directly to our analytics partners Microsoft Azure Sentinel, Splunk, Sumo Logic, and Datadog. This blog post discusses how customers use Cloudflare Logs, how we’ve made it easier to consume logs, and tours the new user interface.</p>
-	<h3 id="new-data-sets-for-insight-into-more-products">New data sets for insight into more products</h3>
+	<h3>New data sets for insight into more products</h3>
 	<p>Cloudflare Logs are almost as old as Cloudflare itself, but we have a few big improvements: new datasets and new destinations.</p>
-	<p>Cloudflare has a large number of products, and nearly all of them can generate Logs in different <em>data sets</em>. We have “HTTP Request” Logs, or one log line for every L7 HTTP request that we handle (whether cached or not). We also provide connection Logs for Spectrum, our proxy for any TCP or UDP based application. Gateway, part of our Cloudflare for Teams suite, can provide Logs for <a href="https://blog.cloudflare.com/export-logs-from-cloudflare-gateway-with-logpush">HTTP and DNS</a> traffic.</p>
+	<p>Cloudflare has a large number of products, and nearly all of them can generate Logs in different <i>data sets</i>. We have “HTTP Request” Logs, or one log line for every L7 HTTP request that we handle (whether cached or not). We also provide connection Logs for Spectrum, our proxy for any TCP or UDP based application. Gateway, part of our Cloudflare for Teams suite, can provide Logs for <a href="https://blog.cloudflare.com/export-logs-from-cloudflare-gateway-with-logpush">HTTP and DNS</a> traffic.</p>
 	<p>Today, we are introducing two new data sets:</p>
-	<p><strong>Firewall Events</strong> gives insight into malicious traffic handled by Cloudflare. It provides detailed information about everything our WAF does. For example, Firewall Events shows whether a request was blocked outright or whether we issued a CAPTCHA challenge. &nbsp;<a href="https://blog.cloudflare.com/stream-firewall-events-directly-to-your-siem">About a year ago</a> we introduced the ability to send Firewall Events directly to your <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a>; starting today, I’m thrilled to share that you can enable this directly from the dashboard!</p>
-	<p><a href="https://support.cloudflare.com/hc/en-us/articles/360050691831-Understanding-Network-Error-Logging"><strong>Network Error Logging</strong></a> <strong>(NEL) Reports </strong>provides information about clients that can’t reach our network. To enable NEL Reports for your zone and start seeing where clients are having issues reaching our network, reach out to your account manager.</p>
-	<h3 id="take-your-logs-anywhere-with-an-s3-compatible-api">Take your Logs anywhere with an S3-compatible API</h3>
+	<p><b>Firewall Events</b> gives insight into malicious traffic handled by Cloudflare. It provides detailed information about everything our WAF does. For example, Firewall Events shows whether a request was blocked outright or whether we issued a CAPTCHA challenge. &nbsp;<a href="https://blog.cloudflare.com/stream-firewall-events-directly-to-your-siem">About a year ago</a> we introduced the ability to send Firewall Events directly to your <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a>; starting today, I’m thrilled to share that you can enable this directly from the dashboard!</p>
+	<p><a href="https://support.cloudflare.com/hc/en-us/articles/360050691831-Understanding-Network-Error-Logging"><b>Network Error Logging</b></a> <b>(NEL) Reports</b> provides information about clients that can’t reach our network. To enable NEL Reports for your zone and start seeing where clients are having issues reaching our network, reach out to your account manager.</p>
+	<h3>Take your Logs anywhere with an S3-compatible API</h3>
 	<p>To start using logs, you need to store them first. Cloudflare has long supported AWS, Azure, and Google Cloud as storage destinations. But we know that customers use a huge variety of storage infrastructure, which could be hosted on-premise or with one of our <a href="https://www.cloudflare.com/bandwidth-alliance">Bandwidth Alliance partners</a>.</p>
 	<p>Starting today, we support any storage destination with an <a href="https://developers.cloudflare.com/logs/logpush/s3-compatible-endpoints">S3-compatible API</a>. This includes:</p>
 	<ul>
-		<li><a href="https://www.digitalocean.com/docs/spaces">Digital Ocean Spaces</a></li>
-		<li><a href="https://www.backblaze.com/b2/docs/s3_compatible_api.html">Backblaze B2</a></li>
-		<li><a href="https://www.alibabacloud.com/help/doc-detail/64919.htm#title-37m-7gl-xy2">Alibaba Cloud OSS</a></li>
-		<li><a href="https://docs.jdcloud.com/en/object-storage-service/introduction-2">JD Cloud Object Storage Service</a></li>
-		<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm">Oracle Cloud Object Storage</a></li>
-		<li><a href="https://www.linode.com/products/object-storage">Linode Object Storage</a></li>
+		<li>
+			<p><a href="https://www.digitalocean.com/docs/spaces">Digital Ocean Spaces</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.backblaze.com/b2/docs/s3_compatible_api.html">Backblaze B2</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.alibabacloud.com/help/doc-detail/64919.htm#title-37m-7gl-xy2">Alibaba Cloud OSS</a></p>
+		</li>
+		<li>
+			<p><a href="https://docs.jdcloud.com/en/object-storage-service/introduction-2">JD Cloud Object Storage Service</a></p>
+		</li>
+		<li>
+			<p><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm">Oracle Cloud Object Storage</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.linode.com/products/object-storage">Linode Object Storage</a></p>
+		</li>
 	</ul>
 	<p>And best of all, it’s super easy to get data into these locations using our new UI!</p>
-	<blockquote><em>"As always, we love that our partnership with Cloudflare allows us to seamlessly offer customers our easy, plug and play storage solution, Backblaze B2 Cloud Storage. Even better is that, as founding members of the Bandwidth Alliance, we can do it all with free egress." </em><br><em>— <strong>Nilay Patel</strong>, Co-founder and VP of Solutions Engineering and Sales, Backblaze.</em></blockquote>
-	<h3 id="push-cloudflare-logs-directly-to-our-analytics-partners">Push Cloudflare Logs directly to our analytics partners</h3>
+	<blockquote>
+		<p><i>"As always, we love that our partnership with Cloudflare allows us to seamlessly offer customers our easy, plug and play storage solution, Backblaze B2 Cloud Storage. Even better is that, as founding members of the Bandwidth Alliance, we can do it all with free egress."</i><i>— </i><b><i>Nilay Patel</i></b><i>, Co-founder and VP of Solutions Engineering and Sales, Backblaze.</i></p>
+	</blockquote>
+	<h3>Push Cloudflare Logs directly to our analytics partners</h3>
 	<p>While many customers like to store Logs themselves, we’ve also heard that many customers want to get Logs into their analytics provider directly — without going through another layer. Getting high volume log data out of object storage and into an analytics provider can require building and maintaining a costly, time-consuming, and fragile integration.</p>
 	<p>Because of this, we now provide direct integrations with four analytics platforms: Microsoft Azure Sentinel, Sumo Logic, Splunk, and Datadog. And starting today, you can push Logs directly into Sumo Logic, Splunk and Datadog from the UI! Customers can add Cloudflare to Azure Sentinel using the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azuresentinel.azure-sentinel-solution-cloudflare?tab=Overview">Azure Marketplace</a>.</p>
-	<blockquote><em>“Organizations are in a state of digital transformation on a journey to the cloud. Most of our customers deploy services in multiple clouds and have legacy systems on premise. Splunk provides visibility across all of this, and more importantly, with SOAR we can automate remediation. We are excited about the Cloudflare partnership, and adding their data into Splunk drives the outcomes customers need to modernize their security operations.” </em><br><em>— <strong>Jane Wong</strong>, Vice President, Product Management, Security at Splunk</em></blockquote>
-	<blockquote><em>"Securing enterprise IT environments can be challenging - from devices, to users, to apps, to data centers on-premises or in the cloud. In today’s environment of increasingly sophisticated cyber-attacks, our mutual customers rely on Microsoft Azure Sentinel for a comprehensive view of their enterprise. &nbsp;Azure Sentinel enables SecOps teams to collect data at cloud scale and empowers them with AI and ML to find the real threats in those signals, reducing alert fatigue by as much as 90%. By integrating directly with Cloudflare Logs we are making it easier and faster for customers to get complete visibility across their entire stack.” </em><br><em>— <strong>Sarah Fender</strong>, Partner Group Program Manager, Azure Sentinel at Microsoft</em></blockquote>
-	<blockquote><em>"As a long time Cloudflare partner we've worked together to help joint customers analyze events and trends from their websites and applications to provide end-to-end visibility to improve digital experiences. We're excited to expand our partnership as part of the Cloudflare Analytics Ecosystem to provide comprehensive real-time insights for both observability and the security of mission-critical applications and services with our Cloud SIEM solution." </em><br><em>— <strong>John Coyle</strong>, Vice President of Business Development for Sumo Logic</em></blockquote>
-	<blockquote><em>"Knowing that applications perform as well in the real world as they do in the datacenter is critical to ensuring great digital experiences. Combining Cloudflare Logs with Datadog telemetry about application performance in a single pane of glass ensures teams will have a holistic view of their application delivery." </em><br><em>— <strong>Michael Gerstenhaber</strong>, Sr. Director of Product, Datadog</em></blockquote>
-	<h3 id="why-cloudflare-logs">Why Cloudflare Logs?</h3>
+	<blockquote>
+		<p><i>“Organizations are in a state of digital transformation on a journey to the cloud. Most of our customers deploy services in multiple clouds and have legacy systems on premise. Splunk provides visibility across all of this, and more importantly, with SOAR we can automate remediation. We are excited about the Cloudflare partnership, and adding their data into Splunk drives the outcomes customers need to modernize their security operations.”</i><i>— </i><b><i>Jane Wong</i></b><i>, Vice President, Product Management, Security at Splunk</i></p>
+	</blockquote>
+	<blockquote>
+		<p><i>"Securing enterprise IT environments can be challenging - from devices, to users, to apps, to data centers on-premises or in the cloud. In today’s environment of increasingly sophisticated cyber-attacks, our mutual customers rely on Microsoft Azure Sentinel for a comprehensive view of their enterprise. &nbsp;Azure Sentinel enables SecOps teams to collect data at cloud scale and empowers them with AI and ML to find the real threats in those signals, reducing alert fatigue by as much as 90%. By integrating directly with Cloudflare Logs we are making it easier and faster for customers to get complete visibility across their entire stack.”</i><i>— </i><b><i>Sarah Fender</i></b><i>, Partner Group Program Manager, Azure Sentinel at Microsoft</i></p>
+	</blockquote>
+	<blockquote>
+		<p><i>"As a long time Cloudflare partner we've worked together to help joint customers analyze events and trends from their websites and applications to provide end-to-end visibility to improve digital experiences. We're excited to expand our partnership as part of the Cloudflare Analytics Ecosystem to provide comprehensive real-time insights for both observability and the security of mission-critical applications and services with our Cloud SIEM solution."</i><i>— </i><b><i>John Coyle</i></b><i>, Vice President of Business Development for Sumo Logic</i></p>
+	</blockquote>
+	<blockquote>
+		<p><i>"Knowing that applications perform as well in the real world as they do in the datacenter is critical to ensuring great digital experiences. Combining Cloudflare Logs with Datadog telemetry about application performance in a single pane of glass ensures teams will have a holistic view of their application delivery."</i><i>— </i><b><i>Michael Gerstenhaber</i></b><i>, Sr. Director of Product, Datadog</i></p>
+	</blockquote>
+	<h3>Why Cloudflare Logs?</h3>
 	<p>Cloudflare’s mission is to help build a better Internet. We do that by providing a massive global network that protects and accelerates our customers’ infrastructure. Because traffic flows across our network before reaching our customers, it means we have a unique vantage point into that traffic. In many cases, we have visibility that our customers don’t have — whether we’re telling them about the performance of our cache, the malicious HTTP requests we drop at our edge, a spike in L3 data flows, the performance of their origin, or the CPU used by their serverless applications.</p>
 	<p>To provide this ability, we have analytics throughout our dashboard to help customers understand their network traffic, firewall, cache, load balancer, and much more. We also provide alerts that can tell customers when they see an <a href="https://support.cloudflare.com/hc/en-us/articles/360037465932-Preventing-site-downtime">increase in errors</a> or <a href="https://support.cloudflare.com/hc/en-us/articles/360053216191-Understanding-Cloudflare-DDoS-alerts">spike in DDoS activity</a>.</p>
 	<p>But some customers want more than what we currently provide with our analytics products. Many of our enterprise customers use SIEMs like Splunk and Sumo Logic or cloud monitoring tools like Datadog. These products can extend the capabilities of Cloudflare by showcasing Cloudflare data in the context of customers’ other infrastructure and providing advanced functionality on this data.</p>
 	<p>To understand how this works, consider a typical L7 DDoS attack against one of our customers. &nbsp;Very commonly, an attack like this might originate from a small number of IP addresses and a customer might choose to block the source IPs completely. After blocking the IP addresses, customers may want to:</p>
 	<ul>
-		<li>Search through their Logs to see all the past instances of activity from those IP addresses.</li>
-		<li>Search through Logs from all their <em>other </em>applications and infrastructure to see all activity from those IP addresses</li>
-		<li>Understand exactly<em> </em>what that attacker was trying to do by looking at the request payload <a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke">blocked in our WAF</a> (securely encrypted thanks to HPKE!)</li>
-		<li>Set an alert for similar activity, to be notified if something similar happens again</li>
+		<li>
+			<p>Search through their Logs to see all the past instances of activity from those IP addresses.</p>
+		</li>
+		<li>
+			<p>Search through Logs from all their <i>other</i> applications and infrastructure to see all activity from those IP addresses</p>
+		</li>
+		<li>
+			<p>Understand exactly what that attacker was trying to do by looking at the request payload <a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke">blocked in our WAF</a> (securely encrypted thanks to HPKE!)</p>
+		</li>
+		<li>
+			<p>Set an alert for similar activity, to be notified if something similar happens again</p>
+		</li>
 	</ul>
 	<p>All these are made possible using SIEMs and infrastructure monitoring tools. For example, our customer <a href="https://www.nov.com">NOV</a> uses Splunk to “monitor our network and applications by alerting us to various anomalies and high-fidelity incidents".</p>
 	<p>“One of the most valuable sources of data is Cloudflare,” said John McLeod, Chief Information Security Officer at NOV. “It provides visibility into network and application attacks. With this integration, it will be easier to get Cloudflare Logs into Splunk, saving my team time and money."</p>
-	<h3 id="a-new-ui-for-our-growing-product-base">A new UI for our growing product base</h3>
+	<h3>A new UI for our growing product base</h3>
 	<p>With so many new data sets and new destinations, we realized that our existing user interface was not good enough. We went back to the drawing board to design a more intuitive user experience to help you quickly and easily set up Logpush.</p>
 	<p>You can still set up Logpush in the same place in the dashboard, in the Analytics &gt; Logs tab:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AES3xPpjBsHstUB9GTNZ/5ae782da03accbdda7766bfb6d673087/pasted-image-0.png" alt="" class="kg-image" width="1600" height="608" loading="lazy">
+
+	</figure>
 	<p>The new UI first prompts users to select the data set to push. Here you’ll also notice that we’ve added support for Firewall Events and NEL Reports!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2K4h9OgfdEV2N2XZeNBlri/88f200f623d4f91aa3c9bd23f5df27b6/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="1043" loading="lazy">
+
+	</figure>
 	<p>After configuring details like which fields to push, customers can then select where the Logs are going. Here you can see our three new destinations, S3-compatible storage, Sumo Logic, Datadog and Splunk:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="coming-soon">Coming soon</h3>
-	<p>Of course, we’re not done yet! We have more Cloudflare products in the pipeline and more destinations planned where customers can send their Logs. Additionally, we’re working on adding more flexibility to our logging pipeline so that customers can configure to send Logs for the entire account, plus filter Logs to just send error codes, for example. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zIqKJNKCX5xvDPlTYvHCT/a923ae7b30597fd0d5fec1866b9fa5ab/pasted-image-0--2-.png" alt="" class="kg-image" width="1596" height="1600" loading="lazy">
+
+	</figure>
+	<h3>Coming soon</h3>
+	<p>Of course, we’re not done yet! We have more Cloudflare products in the pipeline and more destinations planned where customers can send their Logs. Additionally, we’re working on adding more flexibility to our logging pipeline so that customers can configure to send Logs for the entire account, plus filter Logs to just send error codes, for example.</p>
 	<p>Ultimately, we want to make working with Cloudflare Logs as useful as possible -- on Cloudflare itself! We’re working to help customers solve their performance and security challenges with data at massive scale. If that sounds interesting, please join us! We’re hiring <a href="https://boards.greenhouse.io/cloudflare/jobs/2103918?gh_jid=2103918">Systems Engineers</a> for the Data team.</p>
 </div>

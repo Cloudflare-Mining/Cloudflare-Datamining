@@ -1,36 +1,54 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached">Français</a> and <a href="https://blog.cloudflare.com/de-de/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached">Deutsch</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/caching@3x-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>At Cloudflare, we aim to make the Internet faster and safer for everyone. One way we do this is through <em>caching:</em> we keep a copy of our customer content in our 165 data centers around the world. This brings content &nbsp;closer to users and reduces traffic back to <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server">origin servers</a>.</p>
-	<p>Today, we’re excited to announce a huge change in our how cache works. <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> now integrates the <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API</a>, giving you programmatic control over our caches around the world. </p>
-	<h3 id="why-the-cache-api">Why the Cache API?</h3>
-	<p>Figuring out what to cache and how can get complicated. Consider an e-commerce site with a shopping cart, a Content Management System (CMS) with many templates and hundreds of articles, or a GraphQL API. Each contains a mix of elements that are dynamic for some users, but might stay unchanged for the vast majority of requests. </p>
-	<p>Over the last 8 years, we’ve added more features to give our customers flexibility and control over what goes in the cache. However, we’ve learned that we need to offer more than just adding settings in our dashboard. Our customers have told us clearly that they want to be able to express their ideas in <em>code</em>, to build things we could never have imagined.</p>
-	<h3 id="how-the-cache-api-works">How the Cache API works</h3>
-	<p>Fetching content is one of the most common Worker tasks. <code>fetch()</code> has always leveraged powerful Cloudflare features like Argo and Load Balancing. It also runs through our cache: we check for content locally before connecting to the Internet. Without the Cache API, content requested with <code>fetch()</code> goes in the cache as-is.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/workers-cache-api-1@2x.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>fetch() will always write back to cache after a miss.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6W1dWzwo1vg5QBBJ4zqr8s/85bfa6f09f0e7a0d577cfb910b083078/caching_3x-1.png" alt="" class="kg-image" width="3449" height="1562" loading="lazy">
+
 	</figure>
+	<p>At Cloudflare, we aim to make the Internet faster and safer for everyone. One way we do this is through <i>caching:</i> we keep a copy of our customer content in our 165 data centers around the world. This brings content &nbsp;closer to users and reduces traffic back to <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server">origin servers</a>.</p>
+	<p>Today, we’re excited to announce a huge change in our how cache works. <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> now integrates the <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API</a>, giving you programmatic control over our caches around the world.</p>
+	<h3>Why the Cache API?</h3>
+	<p>Figuring out what to cache and how can get complicated. Consider an e-commerce site with a shopping cart, a Content Management System (CMS) with many templates and hundreds of articles, or a GraphQL API. Each contains a mix of elements that are dynamic for some users, but might stay unchanged for the vast majority of requests.</p>
+	<p>Over the last 8 years, we’ve added more features to give our customers flexibility and control over what goes in the cache. However, we’ve learned that we need to offer more than just adding settings in our dashboard. Our customers have told us clearly that they want to be able to express their ideas in <i>code</i>, to build things we could never have imagined.</p>
+	<h3>How the Cache API works</h3>
+	<p>Fetching content is one of the most common Worker tasks. <code>fetch()</code> has always leveraged powerful Cloudflare features like Argo and Load Balancing. It also runs through our cache: we check for content locally before connecting to the Internet. Without the Cache API, content requested with <code>fetch()</code> goes in the cache as-is.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wLp8iD92YUPS5gbyUeCLo/01dbdb643e5fa98bbb673ff42ea6dbae/workers-cache-api-1_2x.png" alt="" class="kg-image" width="1582" height="392" loading="lazy">
+
+	</figure>
+	<p>fetch() will always write back to cache after a miss.</p>
 	<p>The Cache API changes all of that. It’s based on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Service Workers Cache API</a>, and at its core <a href="https://developers.cloudflare.com/workers/reference/cache-api">it offers three methods</a>:</p>
 	<ul>
-		<li><strong><strong>put(</strong></strong><em>request, response</em><strong><strong>)</strong> </strong>places a Response in the cache, keyed by a Request </li>
-		<li><strong>match(</strong><em>request</em><strong>) </strong>returns a given Response that was previously put()</li>
-		<li><strong>delete(</strong><em>request</em><strong>)</strong> deletes a Response that was previously put()</li>
+		<li>
+			<p><b><b>put(</b></b><i>request, response</i><b><b>)</b></b> places a Response in the cache, keyed by a Request</p>
+		</li>
+		<li>
+			<p><b>match(</b><i>request</i><b>)</b> returns a given Response that was previously put()</p>
+		</li>
+		<li>
+			<p><b>delete(</b><i>request</i><b>)</b> deletes a Response that was previously put()</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/workers-cache-api-2@2x.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>The Cache API enables you to modify content before writing it to cache.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rrey6Gut4tb3xJKiVfNfg/8121eb893f0ae9e61ece92f7dd7c7a79/workers-cache-api-2_2x.png" alt="" class="kg-image" width="1294" height="526" loading="lazy">
+
 	</figure>
-	<p>This API unleashes a huge amount of power. Because Workers give you the ability to <em>modify</em> Request and Response objects, you can control any caching behavior like TTL or cache tags. You can implement customer Vary logic or cache normally-uncacheable objects like POST requests.</p>
-	<p>The Cache API expects requests and responses, but they don't have to come from external servers. Your worker can generate arbitrary data that’s stored in our cache. That means you can use the Cache API as a general-purpose, ephemeral key-value store! </p>
-	<h3 id="case-study-using-the-cache-api-to-cache-post-requests">Case study: Using the Cache API to cache POST requests</h3>
+	<p>The Cache API enables you to modify content before writing it to cache.</p>
+	<p>This API unleashes a huge amount of power. Because Workers give you the ability to <i>modify</i> Request and Response objects, you can control any caching behavior like TTL or cache tags. You can implement customer Vary logic or cache normally-uncacheable objects like POST requests.</p>
+	<p>The Cache API expects requests and responses, but they don't have to come from external servers. Your worker can generate arbitrary data that’s stored in our cache. That means you can use the Cache API as a general-purpose, ephemeral key-value store!</p>
+	<h3>Case study: Using the Cache API to cache POST requests</h3>
 	<p>Since we <a href="https://blog.cloudflare.com/cache-api-for-cloudflare-workers-is-now-in-beta">announced the beta</a> in September, usage of the Cache API has grown to serve thousands of requests per second. One common use-case is to cache <a href="https://en.wikipedia.org/wiki/POST_(HTTP)">POST requests</a>.</p>
 	<p>Normally, Cloudflare does not consider POST requests to be cacheable because they are designed to be non-idempotent: that is, they change state on the server when a request is made. However, applications can also use POST requests to send large amounts of data to the server, or as a common HTTP method for API calls.</p>
 	<p>Here’s what one developer had to say about using the Cache API:</p>
-	<blockquote>We needed to migrate some complex server side code to the edge. We have an API endpoint that accepts POST requests with large bodies, but mostly returns the same data without changing anything on our origin server. With Workers and the Cache API, we were able to cache responses to POST requests that we knew were safe, and reduce significant load on our origin.</blockquote>
+	<blockquote>
+		<p>We needed to migrate some complex server side code to the edge. We have an API endpoint that accepts POST requests with large bodies, but mostly returns the same data without changing anything on our origin server. With Workers and the Cache API, we were able to cache responses to POST requests that we knew were safe, and reduce significant load on our origin.</p>
+	</blockquote>
 	<p>— Aaron Dearinger, Edge Architect, Garmin International</p>
 	<p>Caching POST requests with the Cache API is simple. Here’s some example code from our <a href="https://developers.cloudflare.com/workers/reference/cache-api">documentation</a>:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">async function handleRequest(event) {
+	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(event) {
   let request = event.request
   let response
 
@@ -77,10 +95,7 @@ async function sha256(message) {
   const hashHex =
     hashArray.map(b =&gt; ('00' + b.toString(16)).slice(-2)).join('')
   return hashHex
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<h3 id="try-it-yourself">Try it yourself</h3>
+}</code></pre>
+	<h3>Try it yourself</h3>
 	<p>Already in our beta, we’ve seen customers use the Cache API to dynamically cache parts of GraphQL queries and store customer data to improve performance. We’re excited to see what you build! Check out the <a href="https://developers.cloudflare.com/workers">Cloudflare Workers getting started guide</a> and the <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API docs</a>, and let us know what you’ve built in the <a href="https://community.cloudflare.com/c/developers/workers">Workers Community forum</a>.</p>
 </div>

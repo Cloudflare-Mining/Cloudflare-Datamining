@@ -1,18 +1,23 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>This blog originally appeared in January 2021 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26z4OmcCThlhCgxYtcUFU7/c3f88358d209a4e10a83ed38e697d5e6/cdc-vaccine-phishing.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This blog originally appeared in January 2021 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>As news reports began to break concerning COVID-19 vaccine distribution, and which groups the highly-coveted initial doses would go to first, malicious actors quickly mobilized phishing messages that exploited a variety of ongoing concerns regarding the vaccine. These <a href="https://www.computerweekly.com/news/252493523/Surge-in-Covid-19-vaccine-phishing-scams-reported">attacks</a> ranged from information stealing campaigns to Business Email Compromise (BEC) to operations that aimed to infect victim hosts with malware.</p>
 	<p>Area 1 Security discovered one such vaccine-themed phishing message in December, amongst a <a href="https://blog.knowbe4.com/theyre-here-covid-19-vaccine-phishes-finally-arrive">number of similar campaigns</a> making false claims regarding the recently announced vaccine. The attack, which was initially missed by Microsoft Office 365’s spam filters, leverages misinformation about COVID-19 vaccine distribution in an attempt to steal Personally Identifiable Information (PII) from targets, which can then be used for identity theft and other fraudulent activity.</p>
 	<p>Figure 1 shows the body of the CDC phishing message that the attacker sent to various targeted companies across multiple industries.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 1. Vaccine-Themed Phishing Message Impersonating the CDC</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TcZUaBFtr9OdM8dORVcuX/905756fbd34b26b46899ddd331aa6fb0/image1-1.png" alt="" class="kg-image" width="1999" height="1062" loading="lazy">
+
 	</figure>
+	<p>Figure 1. Vaccine-Themed Phishing Message Impersonating the CDC</p>
 	<p>The attacker attempts to solicit sensitive information from the target under the guise of ensuring vaccine availability via a Centers for Disease Control and Prevention (CDC) census-like form. The implication is that filling out the linked form is necessary to secure a spot on the vaccine distribution list.</p>
 	<p>Seen in Figure 2, the next wave of this campaign engages in brand spoofing with a new and improved graphic to imitate pharmaceutical and vaccine manufacturer Pfizer in addition to using the CDC logo. This comes as no surprise, as impersonation of Pfizer and the CDC is all too common amid the current nationwide roll-out of the COVID-19 vaccine.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 2. Vaccine-Themed Phishing Message with Pfizer Brand Spoof</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gheB5gvaX50eBdXgYceTG/d3d772b5b8dd3affd4bd0dc3161444c1/image4-1.png" alt="" class="kg-image" width="597" height="689" loading="lazy">
+
 	</figure>
+	<p>Figure 2. Vaccine-Themed Phishing Message with Pfizer Brand Spoof</p>
 	<p>To dupe targets into trusting this fraudulent email, the attacker used Display Name Spoofing to make the message appear as if it was sent from within the targeted company. More specifically, the visible FROM address is tailored to include the targeted organization’s domain name followed by the words “Secured Mail.”</p>
 	<p>An internal email of this nature is not so unordinary these days, especially given many companies have now established a COVID-19 designated information channel for their employees, including email accounts created specifically for communicating COVID-19 issues and updates. But this alone is hardly enough to bypass your typical anti-spoofing technology. To go the distance, the attacker utilized much more evasive techniques.</p>
 	<p>When inspecting the raw email headers, the SMTP Envelope 'MAIL From' address might have you believe the message originated from a legitimate domain, albeit one not related to the targeted company, Pfizer nor the CDC. To carry out this devious tactic, it appears the attacker inserted an SMTP HELO command telling the receiving email server that the message originated from this legitimate domain, when — in actuality, it originated from a completely unrelated IP address: 184[.]80[.]233[.]138.</p>
@@ -21,65 +26,98 @@
 	<p>In true cyber criminal fashion, the ruse does not end with this clever use of 184[.]80[.]233[.]138. The fraudsters sent from this particular IP address because it belongs to another legitimate business and therefore does not carry a bad reputation. Hence, no spam filters or blocklists of any kind will flag this otherwise benign IP.</p>
 	<p>It’s clear the attacker went the distance to evade phishing detection. In a very calculated manner they:</p>
 	<ul>
-		<li>Used Display Name Spoofing to fake the visible FROM header</li>
-		<li>Inserted an SMTP HELO command to spoof the Envelope From domain</li>
-		<li>Chose to spoof a domain that did not have email authentication protocols configured and that no longer resolved to an IP address</li>
-		<li>Compromised a legitimate host with a benign IP, and used it to launch their phishing attack</li>
+		<li>
+			<p>Used Display Name Spoofing to fake the visible FROM header</p>
+		</li>
+		<li>
+			<p>Inserted an SMTP HELO command to spoof the Envelope From domain</p>
+		</li>
+		<li>
+			<p>Chose to spoof a domain that did not have email authentication protocols configured and that no longer resolved to an IP address</p>
+		</li>
+		<li>
+			<p>Compromised a legitimate host with a benign IP, and used it to launch their phishing attack</p>
+		</li>
 	</ul>
 	<p>Traditional defenses will continually miss phish like this. In fact, the messages for this campaign successfully passed through Microsoft’s Office 365 native defenses before being identified and stopped by Area 1.</p>
-	<h3 id="cdc-vassine-count">CDC “Vassine” Count</h3>
+	<h3>CDC “Vassine” Count</h3>
 	<p>In order to complete the purported contact form for receiving the COVID-19 vaccine, the target is prompted to click on the “COVID19 CDC Count” or “Yes / No” button in the message body. Clicking this link will result in the target’s browser loading the malicious webpage <code>hxxps://mail10298[.]buzz/covid/index.php</code>.</p>
 	<p>This phishing website, shown below in Figure 3, lures the victim into entering sensitive information, such as their physical address and driver’s license number. Once provided, the attacker could easily steal the victim’s identity or use the information to enable a range of fraudulent schemes.</p>
 	<p>Interestingly enough, the attacker misspells vaccine as “vassine,” indicating English is likely not their native language.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 3. “CDC” Contact Phishing Form</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vHkFhmeNnmcF67qHaI9rL/f20113acf42effad695711003f2358cf/image5-2.png" alt="" class="kg-image" width="1464" height="1052" loading="lazy">
+
 	</figure>
+	<p>Figure 3. “CDC” Contact Phishing Form</p>
 	<p>The domain for the phishing website, mail10298[.]buzz, was registered within 24 hours of the phishing campaign’s debut. This quick turnaround is a common tactic employed by threat actors hoping to bait as many victims as possible before their newly registered domain (NRD) is identified as phishing infrastructure.</p>
 	<p>NRDs are consistently used by attackers to fool users into taking actions that jeopardize the security of their organization. Leveraging NRDs is also a common, and particularly effective, attacker technique to circumvent an email security gateway. New domains have very little history or presence, which allows them to bypass typical blocklists and reputation filters. In fact, a significant number of campaigns that Area 1 Security catches leverage new domains, which are often ephemeral (active only for about 48 hours or less).</p>
 	<p>After performing a DNS lookup on mail10298[.]buzz, and a WHOIS search on the resultant IP address (102[.]130[.]119[.]118), Area 1 found that the attacker used a Virtual Private Server (VPS) service based in Cape Town, South Africa. There were several dozen additional domains that resolved to the same IP address that may also potentially be in use by the attacker. These domains follow a similar pattern, each having a mail-themed second-level domain that contains a random 4-6 digit sequence. However, at the time of our research, these sites had either been parked or taken offline.</p>
 	<p>Further investigation of the domain for the phishing website resulted in identification of five subdomains, revealing the domain owner’s use of cPanel:</p>
 	<ul>
-		<li>cpanel[.]mail10298[.]buzz</li>
-		<li>cpcalendars[.]mail10298[.]buzz</li>
-		<li>cpcontacts[.]mail10298[.]buzz</li>
-		<li>webdisk[.]mail10298[.]buzz</li>
-		<li>webmail[.]mail10298[.]buzz</li>
+		<li>
+			<p>cpanel[.]mail10298[.]buzz</p>
+		</li>
+		<li>
+			<p>cpcalendars[.]mail10298[.]buzz</p>
+		</li>
+		<li>
+			<p>cpcontacts[.]mail10298[.]buzz</p>
+		</li>
+		<li>
+			<p>webdisk[.]mail10298[.]buzz</p>
+		</li>
+		<li>
+			<p>webmail[.]mail10298[.]buzz</p>
+		</li>
 	</ul>
 	<p>cPanel is a web hosting control panel that allows end users to easily manage their websites. All of the domains noted above are default service subdomains for mail10298[.]buzz and were automatically generated by cPanel. Given the creation date for the domains was less than a day before the phishing campaign was underway, it’s safe to assume that the attacker is likely the owner of mail10298[.]buzz.</p>
-	<p>However, <em>legitimate</em> sites using cPanel can also be leveraged in phishing attacks. These sites are often the target of various hacks, including compromise via <a href="https://www.tripwire.com/state-of-security/security-data-protection/phishers-send-out-fake-cpanel-security-vulnerabilities-advisory">cPanel-themed phishing attacks</a>. Compromised cPanel sites can then be used to further more elaborate social engineering scams.</p>
+	<p>However, <i>legitimate</i> sites using cPanel can also be leveraged in phishing attacks. These sites are often the target of various hacks, including compromise via <a href="https://www.tripwire.com/state-of-security/security-data-protection/phishers-send-out-fake-cpanel-security-vulnerabilities-advisory">cPanel-themed phishing attacks</a>. Compromised cPanel sites can then be used to further more elaborate social engineering scams.</p>
 	<p>Gaining unauthorized access to legitimate cPanel accounts provides a stealthy avenue for leveraging benign domains in email-borne attacks, helping to better evade phishing protection solutions.</p>
 	<p>Navigating directly to <code>hxxp://mail10298[.]buzz</code> exposed an OPSEC blunder by the attacker — an open directory of the phishing website, as shown in Figure 4.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 4. Index of “CDC” COVID-19 Website</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bqArmfZpLkCzoqVUrxmof/26aed53c17b3720585a57f39dbb121b6/image2-1.png" alt="" class="kg-image" width="328" height="269" loading="lazy">
+
 	</figure>
+	<p>Figure 4. Index of “CDC” COVID-19 Website</p>
 	<p>The main index for the site was publicly available and conveniently contained the archive “covid.zip”. Stored in this ZIP archive were files containing fairly basic HTML and PHP scripts.</p>
 	<p>One file in particular caught our interest: process.php. This script, a portion of which is shown below in Figure 5, was most likely taken from open source code for processing HTML forms &nbsp;using PHP. This is evident in the extensive commenting and default values that still remain in the script.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 5. Portion of process.php Script</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qcWaT9gqG3VTzQGxo7Bly/3413b028740b0a11d56553c88d4ed11e/image3-1.png" alt="" class="kg-image" width="1009" height="649" loading="lazy">
+
 	</figure>
+	<p>Figure 5. Portion of process.php Script</p>
 	<p>If a victim submits the information they entered on the form, process.php triggers an HTTP GET request to a generic PHP mailer, which then sends the victim’s information to the attacker, including the victim host’s IP address.</p>
 	<p>To thwart these devious vaccine-themed phish, Area 1 Security uses multiple <a href="https://www.cloudflare.com/zero-trust/products/email-security">advanced anti-phishing techniques</a> that:</p>
 	<ul>
-		<li>Leverage insight gained from early identification of attacker campaign infrastructure, enabling superior detection of emails from spoofed domains and accounts;</li>
-		<li>Analyze email for threat indicators, such as recently registered domains, domain name obfuscation, and look-a-like domains; and</li>
-		<li>Use real-time correlation with associated brand infrastructure to verify authenticity</li>
+		<li>
+			<p>Leverage insight gained from early identification of attacker campaign infrastructure, enabling superior detection of emails from spoofed domains and accounts;</p>
+		</li>
+		<li>
+			<p>Analyze email for threat indicators, such as recently registered domains, domain name obfuscation, and look-a-like domains; and</p>
+		</li>
+		<li>
+			<p>Use real-time correlation with associated brand infrastructure to verify authenticity</p>
+		</li>
 	</ul>
 	<p>Area 1 also uses lexical analysis of message body and subject to detect attacks aimed at stealing sensitive information. To find phish, our technology goes beyond validation of SPF, DKIM and DMARC records. Using preemptive threat hunting and a broad set of proprietary analysis techniques, Area 1 identifies phishing campaigns, including those with malicious newly registered domains, that other defenses miss.</p>
 	<p>Area 1 Security‘s advanced Machine Learning and Artificial Intelligence technology allow our algorithms to uncover the clever tactics seen in this campaign, enabling us to block the messages in real-time instead of waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time.</p>
-	<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
-	<p><strong>Phishing Link:</strong></p>
+	<h3>Indicators of Compromise</h3>
+	<p><b>Phishing Link:</b></p>
 	<p>hxxps://mail10298[.]buzz/covid/index.php</p>
-	<p><strong>Phishing Domain and Subdomains:</strong></p>
+	<p><b>Phishing Domain and Subdomains:</b></p>
 	<p>mail10298[.]buzz</p>
 	<p>cpanel[.]mail10298[.]buzz</p>
 	<p>cpcalendars[.]mail10298[.]buzz</p>
 	<p>cpcontacts[.]mail10298[.]buzz</p>
 	<p>webdisk[.]mail10298[.]buzz</p>
 	<p>webmail[.]mail10298[.]buzz</p>
-	<p><strong>Sender IP:</strong></p>
+	<p><b>Sender IP:</b></p>
 	<p>102[.]130[.]119[.]118</p>
-	<p><strong>PHP Script:</strong></p>
+	<p><b>PHP Script:</b></p>
 	<p>process.php (SHA256 hash: f2023582408358590d9e1576422b5c13addfa740d0d3c9afd46c0982e45d1149)</p>
-	<p><strong>Website Image Containing Misspelled Word “Vassine”:</strong></p>
+	<p><b>Website Image Containing Misspelled Word “Vassine”:</b></p>
 	<p>logo.png (SHA256 hash: 5fd24dca599cc5220e7ea7271a89ea660c9d769177e4f07a0cd7d0fa485f9ffa)</p>
 </div>

@@ -1,18 +1,20 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nhRI9mw08gJAY5MBIAY8k/f14d0038c5cda4974928dc6b120a9437/cloudflare-support-for-azure-customers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare seeks to help its end customers use whichever public and private clouds best suit their needs. &nbsp;Towards that goal, we have been working to make sure our solutions work well with various public cloud providers including Microsoft’s Azure platform.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/azure.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NaEObysNmgQqochBjoHtj/ed49da0a2eb0f5c5d3f129037cd8027c/azure.png" alt="" class="kg-image" width="480" height="240" loading="lazy">
+
+	</figure>
 	<p>If you are an Azure customer, or thinking about becoming one, here are three ways we have made Cloudflare’s performance and security services work well with Azure.</p>
-	<h4 id="1-the-development-of-an-azure-application-for-cloudflare-argo-tunnel-">1) The development of an Azure application for Cloudflare Argo Tunnel.</h4>
-	<p>We are proud to announce an application for Cloudflare Argo Tunnel within the Azure <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_azure?tab=Overview"><strong>marketplace</strong></a>. As a quick reminder, Argo Tunnel establishes an encrypted connection between the origin and the Cloudflare edge. The small tunnel daemon establishes outbound connections to the two nearest Cloudflare PoPs, &nbsp;and the origin is only accessible via the tunnel between Cloudflare and origin. </p>
-	<p>Because these are outbound connections, there is likely no need to modify firewall rules, configure DNS records, etc. &nbsp;You can even go so far as to block all IPs on the origin and allow traffic only to flow through the tunnel. You can learn more <a href="https://developers.cloudflare.com/argo-tunnel"><strong>here</strong></a><strong>. </strong>The only prerequisite for using Argo Tunnel is to have Argo enabled on your Cloudflare zone. You can sign up a new domain <a href="https://www.cloudflare.com"><strong>here</strong></a>.</p>
-	<p>You can find instructions on how to configure Argo Tunnel through the Azure interface <a href="https://support.cloudflare.com/hc/en-us/articles/360021621972"><strong>here</strong></a>.</p>
-	<h4 id="2-azure-is-promoting-a-serverless-solution-for-its-static-web-hosting-service-and-cloudflare-wants-to-help-you-secure-it-">2) Azure is promoting a <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website">serverless solution</a> for its Static Web Hosting service, and Cloudflare wants to help you secure it! </h4>
-	<p>Cloudflare makes SSL issuance and renewal remarkably easy, and it is included in every plan type. There are a few extra steps to getting this to work on Azure’s serverless platform, so we’ve created this <a href="https://support.cloudflare.com/hc/en-us/articles/360021902391"><strong>guide</strong></a> for you to get started. </p>
-	<h4 id="3-use-of-cloudflare-s-speedy-dns-resolver-1-1-1-1-with-azure">3) Use of Cloudflare’s speedy DNS resolver, 1.1.1.1, with Azure</h4>
+	<h4>1) The development of an Azure application for Cloudflare Argo Tunnel.</h4>
+	<p>We are proud to announce an application for Cloudflare Argo Tunnel within the Azure <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_azure?tab=Overview"><b>marketplace</b></a>. As a quick reminder, Argo Tunnel establishes an encrypted connection between the origin and the Cloudflare edge. The small tunnel daemon establishes outbound connections to the two nearest Cloudflare PoPs, &nbsp;and the origin is only accessible via the tunnel between Cloudflare and origin.</p>
+	<p>Because these are outbound connections, there is likely no need to modify firewall rules, configure DNS records, etc. &nbsp;You can even go so far as to block all IPs on the origin and allow traffic only to flow through the tunnel. You can learn more <a href="https://developers.cloudflare.com/argo-tunnel"><b>here</b></a><b>.</b> The only prerequisite for using Argo Tunnel is to have Argo enabled on your Cloudflare zone. You can sign up a new domain <a href="https://www.cloudflare.com"><b>here</b></a>.</p>
+	<p>You can find instructions on how to configure Argo Tunnel through the Azure interface <a href="https://support.cloudflare.com/hc/en-us/articles/360021621972"><b>here</b></a>.</p>
+	<h4>2) Azure is promoting a <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website">serverless solution</a> for its Static Web Hosting service, and Cloudflare wants to help you secure it!</h4>
+	<p>Cloudflare makes SSL issuance and renewal remarkably easy, and it is included in every plan type. There are a few extra steps to getting this to work on Azure’s serverless platform, so we’ve created this <a href="https://support.cloudflare.com/hc/en-us/articles/360021902391"><b>guide</b></a> for you to get started.</p>
+	<h4>3) Use of Cloudflare’s speedy DNS resolver, 1.1.1.1, with Azure</h4>
 	<p>Cloudflare has created a free DNS resolver to improve DNS response times. We <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">blogged about this</a> last year. &nbsp;A few important takeaways are: this resolver runs in all our data centers globally and thus is highly performant, is future proofed for emerging DNS protocols that enhance security (DNS over TLS/HTTPs), and minimizes DNS query information shared with intermediate resolvers.</p>
-	<p>Cloudflare does daily monitoring of this resolver to make sure it consistently performs well on the Azure platform. &nbsp;Here are a few steps to take to make use of <a href="https://developers.cloudflare.com/1.1.1.1/setting-up-1.1.1.1/azure"><strong>1.1.1.1</strong></a> if you are an Azure user.</p>
-	<p>Stay tuned on further Cloudflare support for Azure.<br><br><br><br></p>
+	<p>Cloudflare does daily monitoring of this resolver to make sure it consistently performs well on the Azure platform. &nbsp;Here are a few steps to take to make use of <a href="https://developers.cloudflare.com/1.1.1.1/setting-up-1.1.1.1/azure"><b>1.1.1.1</b></a> if you are an Azure user.</p>
+	<p>Stay tuned on further Cloudflare support for Azure.</p>
 </div>

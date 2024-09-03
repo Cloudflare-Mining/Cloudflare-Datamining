@@ -1,92 +1,139 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/geo-key-frame@4x.gif" alt="" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tz5d05Hn7eyeUdb0xCoNA/8a8931861f8add186c79357089980cb3/geo-key-frame_4x.gif" alt="" class="kg-image" width="2278" height="1136" loading="lazy">
+
+	</figure>
 	<p>Cloudflare’s customers recognize that they need to protect the confidentiality and integrity of communications with their web visitors. The widely accepted solution to this problem is to use the SSL/TLS protocol to establish an encrypted HTTPS session, over which secure requests can then be sent. Eavesdropping is protected against as only those who have access to the “private key” can legitimately identify themselves to browsers and decrypt encrypted requests.</p>
 	<p>Today, <a href="https://www.wired.com/2017/01/half-web-now-encrypted-makes-everyone-safer">more than half</a> of all traffic on the web uses HTTPS—but this was not always the case. In the early days of SSL, the protocol was viewed as slow as each encrypted request required two round trips between the user’s browser and web server. Companies like Cloudflare <a href="https://istlsfastyet.com/#cdn-paas">solved this problem</a> by putting web servers close to end users and utilizing <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">session resumption</a> to eliminate those round trips for all but the very first request.</p>
-	<h4 id="expandingfootprintmeetsgeopoliticalconcerns">Expanding footprint meets geopolitical concerns</h4>
+	<h4>Expanding footprint meets geopolitical concerns</h4>
 	<p>As Internet adoption grew around the world, with companies increasingly serving global and more remote audiences, providers like Cloudflare had to continue expanding their physical footprint to keep up with demand. As of the date this blog post was published, Cloudflare has data centers in over 55 countries, and we continue to accelerate the build out of <a href="https://www.cloudflare.com/network">our global network</a>.</p>
 	<p>While this expansion makes our customers’ sites faster and better protected against DDoS wherever visitors (or attackers) are connecting from, it presents a few related security challenges.</p>
 	<p>First, as we put equipment (and SSL private keys) in more and more countries around the world, it’s likely that local governments will possess differing—and often evolving—views on privacy and the sanctity of encrypted communications. In the past, there have been reports that certain governments have attempted to compel organizations to turn key material to them. (To be unambiguously clear, Cloudflare—as documented in our <a href="https://www.cloudflare.com/transparency">Transparency Report</a>—has never turned over our SSL keys or our customers’ SSL keys to anyone.)</p>
 	<p>Even if local governments are to be trusted, organizations may have strong geopolitical-based opinions on security or mandates to adhere to certain regulatory frameworks. That, or they simply may understand there are only so many data centers in the world that can meet our most stringent physical security requirements and controls. As Cloudflare’s network grows, it’s inevitable that we will exhaust these facilities. We recognize that our customers may want to control distribution of their private key material based on an assessment of physical controls.</p>
-	<h4 id="privatekeyrestrictionstomatchyoursecurityposture">Private key restrictions to match your security posture</h4>
+	<h4>Private key restrictions to match your security posture</h4>
 	<p>As Cloudflare serves larger, more multinational and geographically distributed customers, the frequency of requests we’ve heard to restrict private key distribution by physical location has increased.</p>
 	<p>We’ve listened carefully to those requests, and today we’re excited to introduce a new feature that hands this geography-based control over to you. We call it Geo Key Manager.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/Private_Key_Restriction.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CqhHsCbPxuspDKNr4oh4k/d9be636e29c565ce1262a7a74d5f06ad/Private_Key_Restriction.png" alt="" class="kg-image" width="1440" height="476" loading="lazy">
+
+	</figure>
 	<p>On upload of a new <a href="https://support.cloudflare.com/hc/en-us/articles/200170466-How-do-I-upload-a-custom-SSL-certificate-Business-or-Enterprise-only-">Custom Certificate</a>, you now have the ability to indicate which subset of our data centers should have local access to your private key for the purpose of establishing HTTPS sessions.</p>
 	<p>Connections to data centers that you’ve told us aren’t allowed to hold your key will still be fully encrypted and accessible via HTTPS, using identical encryption algorithms, but will be done so using our <a href="https://www.cloudflare.com/ssl/keyless-ssl">Keyless SSL</a> technology rather than locally accessing the key.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/Keyless-SSL.png" alt="" loading="lazy"></p>
-	<h4 id="initialoptionsavailableforuse">Initial options available for use</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4txZSIc7uT2bpG6kQM0gz/7d71795fd5c4f94cae74f6a3c4688005/Keyless-SSL.png" alt="" class="kg-image" width="4131" height="1617" loading="lazy">
+
+	</figure>
+	<h4>Initial options available for use</h4>
 	<p>When we thought about which options to include in the dropdown box pictured above, we reached out to human rights and civil liberties organizations, leading financial and banking institutions, and other groups that place a high premium on security. These discussions resulted in the options you see today, and over the coming weeks we’ll be having additional conversations. Our goal in these talks is identifying what other designations make sense for our customers, so we can provide easily usable defaults.</p>
-	<h4 id="everywhere">Everywhere</h4>
+	<h4>Everywhere</h4>
 	<p>By default, we won’t apply any restrictions; securely storing your keys in all of our data centers allows us to optimize performance for your visitors across the globe.</p>
-	<h4 id="usonlyoreuonly">U.S. Only or E.U. Only</h4>
+	<h4>U.S. Only or E.U. Only</h4>
 	<p>One common theme we heard from customers was the desire to restrict the distribution of private SSL keys to either the U.S. only—typically requested by U.S. government agencies or businesses that serve exclusively U.S. customers—or the E.U. only, for comparable reasons.</p>
 	<p>Selecting either of these options in the dropdown will ensure that your keys do not leave this geopolitical designation. As of the time this post was written, Cloudflare has 31 data centers in 25 U.S. cities and 30 data centers across 21 E.U. countries.</p>
-	<h4 id="highestsecuritydatacenters">Highest Security Data Centers</h4>
+	<h4>Highest Security Data Centers</h4>
 	<p>Cloudflare has a checklist of security requirements that we require before locating our equipment somewhere. With every installation we ensure that our deployment is in compliance with internationally recognized security standards, including <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/edit">PCI DSS</a> 3.2 and SSAE-18 SOC 2. This security review is re-evaluated quarterly by our internal security staff as well as annually by independent, third-party auditors.</p>
 	<p>As part of this assessment we group our data centers into security tiers, using this knowledge to help shape our deployment and operational decision making and strategies.</p>
-	<h4 id="baselinerequirements">Baseline Requirements</h4>
+	<h4>Baseline Requirements</h4>
 	<p>At minimum, all of our data centers offer the following physical controls:</p>
 	<p><b>External and Internal Security</b></p>
 	<ul>
-		<li>The datacenter must be physically secure with perimeter controls that meet industry accepted minimums (e.g., locked doors, high walls, man traps, alarm systems, etc.).</li>
+		<li>
+			<p>The datacenter must be physically secure with perimeter controls that meet industry accepted minimums (e.g., locked doors, high walls, man traps, alarm systems, etc.).</p>
+		</li>
 	</ul>
 	<p><b>Restricted Facility Access</b></p>
 	<ul>
-		<li>Access is restricted to Cloudflare employees and named authorized individuals only. Every access request must be authorized and the requester’s access confirmed with government issued ID.</li>
-		<li>All access requests are logged and those logs are reviewed on a regular basis.</li>
-		<li>Any attempts to physically access, modify or remove our equipment generates an alert to security and operational teams.</li>
+		<li>
+			<p>Access is restricted to Cloudflare employees and named authorized individuals only. Every access request must be authorized and the requester’s access confirmed with government issued ID.</p>
+		</li>
+		<li>
+			<p>All access requests are logged and those logs are reviewed on a regular basis.</p>
+		</li>
+		<li>
+			<p>Any attempts to physically access, modify or remove our equipment generates an alert to security and operational teams.</p>
+		</li>
 	</ul>
 	<p><b>24x7 Onsite Security</b></p>
 	<ul>
-		<li>Security guards are onsite and present 24 hours a day, 7 days a week.</li>
+		<li>
+			<p>Security guards are onsite and present 24 hours a day, 7 days a week.</p>
+		</li>
 	</ul>
 	<p><b>CCTV</b></p>
 	<ul>
-		<li>Facilities are monitored by closed-circuit television cameras.</li>
+		<li>
+			<p>Facilities are monitored by closed-circuit television cameras.</p>
+		</li>
 	</ul>
 	<p><b>Secured Server Cabinet</b></p>
 	<ul>
-		<li>Access to Cloudflare’s server cabinets are controlled through physical security locks and other mechanisms.</li>
-		<li>Physical tamper detection on all systems.</li>
-		<li>All hardware deployed within cabinets are equipped with physical tamper detection systems that have been enabled and configured to report any tampering attempts.</li>
+		<li>
+			<p>Access to Cloudflare’s server cabinets are controlled through physical security locks and other mechanisms.</p>
+		</li>
+		<li>
+			<p>Physical tamper detection on all systems.</p>
+		</li>
+		<li>
+			<p>All hardware deployed within cabinets are equipped with physical tamper detection systems that have been enabled and configured to report any tampering attempts.</p>
+		</li>
 	</ul>
-	<h4 id="additionalhighsecurityrequirements">Additional "High Security" Requirements</h4>
+	<h4>Additional "High Security" Requirements</h4>
 	<p>While we ensure that every Cloudflare data center meets minimum industry security standards, our top tier of data centers are held to a much higher standard.</p>
 	<p>These all have the baseline security requirements plus:</p>
 	<p><b>Pre-Scheduled, Biometric Controlled Facility Access</b></p>
 	<ul>
-		<li>Employees of Cloudflare permitted to access the facility must have previously scheduled a visit before access will be granted.</li>
-		<li>Access to the entrance of the facility is controlled through the use of a biometric hand reader combined with an assigned access code.</li>
+		<li>
+			<p>Employees of Cloudflare permitted to access the facility must have previously scheduled a visit before access will be granted.</p>
+		</li>
+		<li>
+			<p>Access to the entrance of the facility is controlled through the use of a biometric hand reader combined with an assigned access code.</p>
+		</li>
 	</ul>
 	<p><b>Private Cages with Biometric Readers</b></p>
 	<ul>
-		<li>All equipment is in private cages with physical access controlled via biometrics and recorded in audit logs.</li>
-		<li>Entrants have to pass through 5 separate readers before the cage can be accessed.</li>
+		<li>
+			<p>All equipment is in private cages with physical access controlled via biometrics and recorded in audit logs.</p>
+		</li>
+		<li>
+			<p>Entrants have to pass through 5 separate readers before the cage can be accessed.</p>
+		</li>
 	</ul>
 	<p><b>Exterior Security Controls and Monitoring</b></p>
 	<ul>
-		<li>All points of ingress/egress are monitored by an intrusion detection system (IDS), with authorized users and access events archived for historical review.</li>
+		<li>
+			<p>All points of ingress/egress are monitored by an intrusion detection system (IDS), with authorized users and access events archived for historical review.</p>
+		</li>
 	</ul>
 	<p><b>Interior Security Controls and Monitoring</b></p>
 	<ul>
-		<li>Interior points of ingress/egress are controlled by the access control subsystem, with entry routed through a mantrap. All areas are monitored and recorded with closed-circuit television, with data kept for a minimum of 30 days.</li>
-		<li>Exterior walls are airtight and may incorporate additional security measure such as reinforced concrete, Kevlar bullet board, vapor barriers, or bullet proof front doors.</li>
+		<li>
+			<p>Interior points of ingress/egress are controlled by the access control subsystem, with entry routed through a mantrap. All areas are monitored and recorded with closed-circuit television, with data kept for a minimum of 30 days.</p>
+		</li>
+		<li>
+			<p>Exterior walls are airtight and may incorporate additional security measure such as reinforced concrete, Kevlar bullet board, vapor barriers, or bullet proof front doors.</p>
+		</li>
 	</ul>
 	<p>We designate facilities that meet the above our "Highest Security" data centers.</p>
-	<h4 id="whatsthecatch">What's the catch?</h4>
+	<h4>What's the catch?</h4>
 	<p>As mentioned previously, the very first HTTPS request made to a data center that does not hold your private key requires a bit of overhead while a symmetric encryption key for the session is negotiated.</p>
 	<p>By “overhead” we mean that a bit of network latency is introduced while the remote facility is contacted for assistance establishing the secure channel. The further (physically) this key-holding data center is from where the HTTPS request is being established, the longer the wait.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/EU-heatmap.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19SvmML3d3vSNkQLkVaLPl/db1848ca57e457b668568bb1a74aa1e6/EU-heatmap.png" alt="" class="kg-image" width="4096" height="2296" loading="lazy">
+
+	</figure>
 	<p>For example, the first request to Moscow for a resource that's protected by a key held only in our “Highest Security” facilities takes an additional three one-hundredths of a second (30ms) to go to Stockholm and back. Or four one-hundredths of a second (40ms) to go from Moscow to Frankfurt and back.</p>
 	<p>Cloudflare will pick the fastest route to a nearby data center for this first request that requires an extra hop. However, all subsequent requests after the initial one will be just as fast as if the key were local thanks to SSL/TLS session resumption.</p>
-	<h4 id="thispagebroughttoyoubygeokeymanager">This page brought to you by Geo Key Manager</h4>
+	<h4>This page brought to you by Geo Key Manager</h4>
 	<p>To demonstrate the performance impact is minimal, we set <a href="https://blog.cloudflare.com">blog.cloudflare.com</a> to use only our Highest Security data centers. If you click around on the blog you can see that, while the pages are encrypted, there's no noticeable delay in surfing them.</p>
 	<p>We estimate that the average user, based on the geographic distribution of traffic to our blog, will see a ~65ms average increase in latency for their first request. After that, subsequent requests will be as fast as if keys were distributed to all our data centers.</p>
-	<h4 id="lookingforward">Looking forward</h4>
+	<h4>Looking forward</h4>
 	<p>Product-offering wise, we plan to extend Geo Key Manager to work with Dedicated Certificates. Once this is available, we will communicate the news on the blog or in a knowledge-base article.</p>
 	<p>Additionally, we plan to soon allow Enterprise users to specify a precise list of which of our data centers they do or do not want their keys held in; for example, customers who have concerns about specific countries or regions will be able to use this feature to gain fine-grained control over their private key distribution. If you’re on an Enterprise plan and would like early access to this feature today, please contact your Customer Success Manager.</p>
 	<p>Beyond granular controls, we aim to fundamentally change the dynamics of geo key selection by allowing you to outsource the decision making and, potentially, legal challenge process. Imagine, for instance, if you could specify that a civil society organization like the Electronic Frontier Foundation be the custodian of your keys. Different organizations that you trust could develop expertise on fighting overly broad legal requests that may someday come.</p>
 	<p>We’re just getting started having conversations with these types of organizations, so if you have one in mind, be sure to let us know in the comment section below!</p>
-	<!--kg-card-end: markdown-->
 </div>

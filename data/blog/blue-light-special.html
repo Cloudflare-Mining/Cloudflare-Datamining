@@ -1,23 +1,34 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29oxDL4fajmOTSUiDh1c8b/d967934c31b2a3764a1c532187a49aa3/blue-light-special.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>CloudFlare operates a huge global network of servers that proxy our customers' web sites, operate as caches, inspect requests to ensure they are not malicious, deflect DDoS attacks and handle one of the largest authoritative DNS systems in the world. And where there's software there's configuration information.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/rozzers-1.gif" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AtvZb7LpHv8Y5mInr2Zxi/0df3482145575c95c24282d3da22b1fb/rozzers-1.gif" alt="" class="kg-image" width="300" height="169" loading="lazy">
+
+	</figure>
 	<p>CloudFlare is highly customisable. Each customer has a unique configuration consisting of DNS records, all manner of settings (such as minification, image recompression, IP-based blocking, which individual WAF rules to execute) and per-URL rules. And the configuration changes constantly.</p>
-	<h3 id="warpspeedconfiguration">Warp speed configuration</h3>
+	<h3>Warp speed configuration</h3>
 	<p>We offer almost instant configuration changes. If a user adds a DNS record it should be globally resolvable in seconds. If a user enables a CloudFlare WAF rule it should happen very, very fast to protect a site. This presents a challenge because those configuration changes need to be pushed across the globe very quickly.</p>
 	<p>We've written in the past about the underlying technology we use: <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">Kyoto Tycoon</a> and how we secured it from eavesdroppers. We also monitor its performance.</p>
 	<p>DNS records are currently changing at a rate of around 40 per second, 24 hours a day. All those changes need to be propagated in seconds.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/fakeip.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67rzza7FcK2ny8M5NtDIbQ/38e8874641ff915360e6b56bc96e9105/fakeip.jpg" alt="" class="kg-image" width="600" height="200" loading="lazy">
+
+	</figure>
 	<p>So we take propagation times very seriously.</p>
-	<h3 id="keepacloseeyeonthislightofmine">Keep a close eye on this light of mine</h3>
+	<h3>Keep a close eye on this light of mine</h3>
 	<p>For this we need to keep a close eye on how long it takes a change to reach every one of our data centers. Whilst we have in-depth metrics for our operations team to look at it's sometimes useful (and fun) to have something more visceral.</p>
 	<p>We also want developers and operations people to equally be aware of some critical metrics, and developers are spending their time observing the metrics and alerts aimed at operations.</p>
 	<p>On some rare occasions, perhaps due to routing problems on the wider Internet, we may find that our ability to push changes at the required velocity becomes impractical. To ensure that we know about this as soon as possible and know when to take action we've built a custom alert system that everyone in the office can see.</p>
 	<p>From an external global collection of machines we monitor propagation time for DNS records and trigger an alert if propagation time exceeds a pre-set threshold. The alert comes in the form of a blue rotating 'police light'.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/IMG_6126.JPG" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5TuhyXE68uR226VQJyktNp/444c4501fe4072a3695bd0e3e6f421f2/IMG_6126.JPG.jpeg" alt="" class="kg-image" width="2889" height="2218" loading="lazy">
+
+	</figure>
 	<p>We had joked about having a "red alert" alarm when we fall behind on propagation and so I turned that joke into reality.</p>
-	<h3 id="hawaiipio">Hawaii Pi-O</h3>
+	<h3>Hawaii Pi-O</h3>
 	<p>A Raspberry Pi hidden in an old hard drive case connects to our global monitors and obtains the current propagation time (as measured from outside our network). The Pi is connected (via a transistor acting as a switch) to a cheap <a href="http://www.maplin.co.uk/p/mini-led-police-beacon-n74kf">mini police light</a> that's visible throughout the office.</p>
 	<p>PS: All the puns in this post were added by John Graham-Cumming. I disclaim all responsibility.</p>
-	<!--kg-card-end: markdown-->
 </div>

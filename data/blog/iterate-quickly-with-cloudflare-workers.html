@@ -1,21 +1,24 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://images.unsplash.com/photo-1526253038957-bce54e05968e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=9d7b88a36bbd544c26a37f356595fc67" alt="" loading="lazy"><br>
-		<small>Photo by <a href="https://unsplash.com/@nesabymakers?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">NESA by Makers</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></small>
-	</p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eVTK4lRjSqRvgjAat8lla/b76f4b843a19ec20563f0a2148bf03cc/photo-1526253038957-bce54e05968e" alt="" class="kg-image" width="1080" height="720" loading="lazy">
+
+	</figure>
+	<p>Photo by <a href="https://unsplash.com/@nesabymakers?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">NESA by Makers</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
 	<p>At Cloudflare, we believe that getting new products and features into the hands of customers as soon as possible is the best way to get great feedback. The thing about releasing products early and often is that sometimes they might not be initially ready for your entire user base. You might want to provide access to only particular sets of customers that may be: power users, those who have expressed interest participating in a beta, or customers in need of a new feature the most.</p>
 	<p>As I have been meeting with many of the users who were in our own Workers beta program, I’ve seen (somewhat unsurprisingly) that many of our users share the same belief that they should be getting feedback from their own users early and often.</p>
 	<p>However, I was surprised to learn about the difficulty that many beta program members had in creating the necessary controls to quickly and securely gate new or deprecated features when testing and releasing updates.</p>
 	<p>Below are some ideas and recipes I’ve seen implemented inside of <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> to ensure the appropriate customers have access to the correct features.</p>
-	<h3 id="howworkerswork">How Workers Work</h3>
+	<h3>How Workers Work</h3>
 	<p>First, a brief primer on how Workers work.</p>
 	<p>As soon as a Worker is deployed, it is available and ready to run at every one of Cloudflare’s 155+ data centers in response to a request made to your website, application or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a>. Workers are able to modify anything about both the request to and response from your origin server. They also have the ability to make subrequests to other endpoints in response to the initial request.</p>
 	<p>Workers are able to make their own subrequests using the available fetch method. We’ll be relying on this as well as the fact that requests made via fetch are also cacheable by Cloudflare to make sure that gating of features is not just secure but also quick.</p>
-	<h3 id="howtosecurelycacheuserpermissions">How to Securely Cache User Permissions</h3>
+	<h3>How to Securely Cache User Permissions</h3>
 	<p>Let’s say you have an endpoint on your origin that allows us to securely pull the permissions for a particular user.</p>
 	<p><code>https://api.yoursite.com/user/{uid}</code></p>
-	<p>From a Cloudflare Worker we can securely fetch this permission information using a token and have it returned either as JSON or as part of the headers.<br></p>
-	<pre><code class="language-javascript">// Create Request
+	<p>From a Cloudflare Worker we can securely fetch this permission information using a token and have it returned either as JSON or as part of the headers.</p>
+	<pre class="language-javascript"><code class="language-javascript">// Create Request
  var permissionRequest = new Request(permissionsURL, {
       method: 'GET', 
       headers: new Headers({
@@ -29,28 +32,20 @@ var permissionResponse = await fetch(permissionRequest, { cf: { cacheTtl: 14400 
 var newFeatureAvailable = permissionResponse.headers.get('X-YourSite-NewFeature');
 
 // Getting Permissions returned as JSON
-var jsonPermissions = await permissionResponse.json();
-</code></pre>
-	<br>
+var jsonPermissions = await permissionResponse.json();</code></pre>
 	<p>As I wrote earlier, the fetch request actually caches the responses generated when using it. So, subsequent Workers calls can grab user permissions without having to go back to the origin’s endpoint.</p>
-	<p>While the default cache TTL of 4 hours might work for many applications, fetch will also allow you to set an arbitrary TTL to ensure that your users are not granted permissions any longer than necessary. To set a TTL of 300 seconds (note: the free plan has a lower TTL limit of 2 hours or 7200 seconds) you would change the fetch above to be:<br>
-		<br>
-	</p>
-	<pre><code class="language-javascript">var permissionResponse = await fetch(permissionRequest, { cf: { cacheTtl: 300 } });
-</code></pre>
-	<br>
-	<h4 id="anoteaboutcachingsensitiveobjects">A Note about Caching Sensitive Objects</h4>
+	<p>While the default cache TTL of 4 hours might work for many applications, fetch will also allow you to set an arbitrary TTL to ensure that your users are not granted permissions any longer than necessary. To set a TTL of 300 seconds (note: the free plan has a lower TTL limit of 2 hours or 7200 seconds) you would change the fetch above to be:</p>
+	<pre class="language-javascript"><code class="language-javascript">var permissionResponse = await fetch(permissionRequest, { cf: { cacheTtl: 300 } });</code></pre>
+	<h4>A Note about Caching Sensitive Objects</h4>
 	<p>If you are storing sensitive information (like user permissions) in Cloudflare’s cache, it is always important to keep in mind that the url should never be publicly accessible, but rather only from within a Worker.</p>
 	<p>The Worker set to run in front of <code>api.yoursite.com/user/{uid}</code> should either block all requests to the path from outside of a Cloudflare Worker or check to ensure the request has a valid secret key.</p>
-	<h4 id="anoteaboutusingsupersecrettokens">A Note about Using “Super-Secret-Tokens”</h4>
+	<h4>A Note about Using “Super-Secret-Tokens”</h4>
 	<p>Tokens should be provided in your Worker when uploaded to Cloudflare and verified by your origin on each request. Extremely security conscious readers might be nervous about storing credentials in code, but note that Cloudflare strongly encourages 2FA as well as restricts Worker access to specific accounts. We are also exploring better ways of passing secrets to Workers.</p>
-	<h3 id="commonwaysofgatingnewfeatures">Common Ways of Gating New Features</h3>
+	<h3>Common Ways of Gating New Features</h3>
 	<p>Now that you have quickly fetched the user permissions from cache, it’s time to do something with them! There are endless things you could do, but for this post I will cover some of the more common ones including: restricting paths, A/B Testing, and custom routing between origins.</p>
-	<h4 id="restrictingpaths">Restricting Paths</h4>
-	<p>Let’s say you’re releasing v2 of your current API. You want all users to still be able to send GET and POST requests to v1, but since you’re still performance tuning some new v2 features, only authorized users should be able to POST while everyone can GET. Continuing from the example before, this can be done with Cloudflare using the following code:<br>
-		<br>
-	</p>
-	<pre><code class="language-javascript">const apiV2 = jsonPermissions['apiV2'];
+	<h4>Restricting Paths</h4>
+	<p>Let’s say you’re releasing v2 of your current API. You want all users to still be able to send GET and POST requests to v1, but since you’re still performance tuning some new v2 features, only authorized users should be able to POST while everyone can GET. Continuing from the example before, this can be done with Cloudflare using the following code:</p>
+	<pre class="language-javascript"><code class="language-javascript">const apiV2 = jsonPermissions['apiV2'];
 
 // Check to see if user in allowed to test the v2 API
 if (apiV2) {
@@ -64,16 +59,15 @@ if (apiV2) {
             { status: 403, statusText: 'Forbidden' });
     }
     return fetch(request);
-}
-</code></pre>
-	<br>
-	<h3 id="abtesting">A/B Testing</h3>
-	<br>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-ab-test.png" alt="workers-ab-test" loading="lazy"><br>
-		When releasing a new API version you might also want to update your documentation with a new design, but before rolling out anything it’s important to run a test to make sure it improves (or doesn’t harm) your relevant metrics. A/B testing different versions of the documentation amongst users who have access to V2 of the API can be easily done with Cloudflare Workers:<br>
-		<br>
-	</p>
-	<pre><code class="language-javascript">const apiV2 = jsonPermissions['apiV2'];
+}</code></pre>
+	<h3>A/B Testing</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/604uzrvjAD0DfjEMPpnnAK/d8e7adbf20d37e15419b5d4ae4c2cee9/workers-ab-test.png" alt="workers-ab-test" class="kg-image" width="1232" height="743" loading="lazy">
+
+	</figure>
+	<p>When releasing a new API version you might also want to update your documentation with a new design, but before rolling out anything it’s important to run a test to make sure it improves (or doesn’t harm) your relevant metrics. A/B testing different versions of the documentation amongst users who have access to V2 of the API can be easily done with Cloudflare Workers:</p>
+	<pre class="language-javascript"><code class="language-javascript">const apiV2 = jsonPermissions['apiV2'];
 const group = jsonPermissions['testingGroup'];
 
 // Here we'll use a variable set in the JSON returned from
@@ -100,14 +94,10 @@ if (apiV2) {
     // User shouldn't be allowed to see V2 docs
     return new Response('Sorry, this page is not yet available.',
         { status: 403, statusText: 'Forbidden' });
-}
-</code></pre>
-	<br>
-	<h4 id="customroutingbetweenorigins">Custom Routing Between Origins</h4>
-	<p>Spinning up a new version of an API or Application sometimes requires spinning up an entirely new origin server. Cloudflare Workers can easily route API calls to separate origins based on paths, headers, or anything else in the request. Here we’ll make sure the user has permission to access v2 of the API and then route the request to the dedicated origin:<br>
-		<br>
-	</p>
-	<pre><code class="language-javascript">const apiV2Allowed = jsonPermissions['apiV2Allowed'];
+}</code></pre>
+	<h4>Custom Routing Between Origins</h4>
+	<p>Spinning up a new version of an API or Application sometimes requires spinning up an entirely new origin server. Cloudflare Workers can easily route API calls to separate origins based on paths, headers, or anything else in the request. Here we’ll make sure the user has permission to access v2 of the API and then route the request to the dedicated origin:</p>
+	<pre class="language-javascript"><code class="language-javascript">const apiV2Allowed = jsonPermissions['apiV2Allowed'];
 
 const v1origin = 'https://prod-v1-api.yoursite.com';
 const v2origin = 'https://beta-v2-api.yoursite.com';
@@ -140,9 +130,6 @@ if (apiVersion === 'v2') {
         headers: request.headers
     });
     return fetch(modifiedRequest);
-}
-</code></pre>
-	<br>
+}</code></pre>
 	<p>Think I should have included another way of gating features? Make sure to share it on our <a href="https://community.cloudflare.com/tags/recipe-exchange">Cloudflare Community recipe exchange</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

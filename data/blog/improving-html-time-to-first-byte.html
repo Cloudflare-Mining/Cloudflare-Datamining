@@ -1,60 +1,98 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/improving-html-time-to-first-byte">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/improving-html-time-to-first-byte">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/improving-html-time-to-first-byte">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ceYP69KY1Ios4gGTdayyi/c7d45f9653dd94c3ad2847e720c9c2b5/improving-html-time-to-first-byte.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>The Time to First Byte (TTFB) of a site is the time from when the user starts navigating until the HTML for the page they requested starts to arrive. A slow TTFB has been the bane of my existence for more than the ten years I have been running <a href="https://www.webpagetest.org">WebPageTest</a>.</p>
-	<blockquote class="twitter-tweet" data-lang="en">
-		<p lang="en" dir="ltr">Looking at a recent test data set (~100k pages):<br><br>20% TTFB &gt; 3s<br>80% start render &gt; 5s (10% &gt; 10s)<br>500 pages were &gt; 15MB<br><br>So much slow to fix</p>— Patrick Meenan (@patmeenan) <a href="https://twitter.com/patmeenan/status/763372155052494852?ref_src=twsrc%5Etfw">August 10, 2016</a>
+	<blockquote>
+		<p>Looking at a recent test data set (~100k pages):</p>
+		<p>20% TTFB &gt; 3s80% start render &gt; 5s (10% &gt; 10s)500 pages were &gt; 15MB</p>
+		<p>So much slow to fix</p>
+		<p>— Patrick Meenan (@patmeenan) <a href="https://twitter.com/patmeenan/status/763372155052494852?ref_src=twsrc%5Etfw">August 10, 2016</a></p>
 	</blockquote>
-	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	<p>There is a reason why TTFB appears as one of the few “grades” that WebPageTest scores a site on and, specifically, why it is the first grade in the list.</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/grades.png" alt="WebPageTest optimization grades."></figure><br>
-	<p>If the first byte is slow, <strong>EVERY</strong> other metric will also be slow. Improving it is one of the few cases where you can predict what the impact will be on every other measurement. Every millisecond improvement in the TTFB translates directly into a millisecond of savings in every other measurement (i.e. first paint will be 500ms faster if TTFB improves by 500ms). That said, a fast ttfb doesn't guarantee a fast experience but a slow ttfb does guarantee a slow experience. I’d estimate that roughly 50% of all requests for help with WebPageTest results come from site owners struggling with a slow TTFB.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHQ0NllN5RpGlBfhbLVlf/601e0cc452e8906e2aedbb8ada12c96e/grades.png" alt="WebPageTest optimization grades." class="kg-image" width="421" height="109" loading="lazy">
+
+	</figure>
+	<p>If the first byte is slow, <b>EVERY</b> other metric will also be slow. Improving it is one of the few cases where you can predict what the impact will be on every other measurement. Every millisecond improvement in the TTFB translates directly into a millisecond of savings in every other measurement (i.e. first paint will be 500ms faster if TTFB improves by 500ms). That said, a fast ttfb doesn't guarantee a fast experience but a slow ttfb does guarantee a slow experience. I’d estimate that roughly 50% of all requests for help with WebPageTest results come from site owners struggling with a slow TTFB.</p>
 	<p>Many things can roll up into the TTFB, including redirects, DNS, connection setup, SSL negotiation and the actual server response time. Most of them can be fixed relatively easily by using a service like Cloudflare, but the server response time for the HTML itself is often the biggest problem and the hardest one to solve.</p>
 	<p>The waterfall diagram below shows the server response time as a light blue bar on the first request and it can be painfully obvious when it is slow. Under optimal conditions, the server response time would be no longer than the orange socket connect bar right before it.</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/waterfall.png" alt="Waterfall diagram showing a 3 second TTFB.">
-		<figcaption style="font-size:smaller;line-height:1em;">Over three seconds for the server to respond.</figcaption>
-	</figure><br>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d4Qf5SYp9fq9xwMqDz0X7/46950f7b35161bb54eab17db940301c7/waterfall.png" alt="Waterfall diagram showing a 3 second TTFB." class="kg-image" width="930" height="488" loading="lazy">
+
+	</figure>
+	<p>Over three seconds for the server to respond.</p>
 	<p>Slow origin response times can be caused by an enormous assortment of issues from the server configuration, system load, back-end databases and systems it talks to, to the application code itself. Getting to the root of the performance issues usually involves teams of <a href="https://en.wikipedia.org/wiki/DevOps">Dev Ops</a> engineers working with <a href="https://en.wikipedia.org/wiki/Application_performance_management">Application Performance Management</a> tools to track down the slowest parts of the application and improve them.</p>
 	<p>A huge portion of the site owners I have worked with don’t have the resources or expertise to handle that kind of an investigation. More often than not, they paid someone a one-time development fee to build their site or built it themselves on WordPress and are hosting it on the lowest-cost hosting they could find. The hosting is generally designed to run as many sites as possible, not necessarily for the highest performance.</p>
-	<h3 id="edgecachingofhtml">Edge Caching of HTML</h3>
+	<h3>Edge Caching of HTML</h3>
 	<p>The thing is, most HTML isn’t really dynamic. It needs to be able to change relatively quickly when the site is updated but for a huge portion of the web the content is static for months or years at a time.</p>
 	<p>There are special cases like when a user is logged-in (as the admin or otherwise) where the content needs to differ but the vast majority of visits are of anonymous users. If the HTML can be cached and served directly from the edge then the performance gains can be substantial (over 3 seconds faster on all metrics in this case).</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/waterfall-fast.png" alt="Waterfall diagram showing a fast TTFB.">
-		<figcaption style="font-size:smaller;line-height:1em;">Much faster server response time.</figcaption>
-	</figure><br>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/R2m58YwFuerJYN12M3hUB/30a6ba23c0c6e1fe5f128e10a2a90fca/waterfall-fast.png" alt="Waterfall diagram showing a fast TTFB." class="kg-image" width="930" height="471" loading="lazy">
+
+	</figure>
+	<p>Much faster server response time.</p>
 	<p>There are dozens of plugins for WordPress for caching content at the origin but they require configuration (where to cache the pages) and the performance still depends heavily on the performance of the hosting itself. Pushing the content cache further out to the edge reduces the complexity, eliminates the additional time to get back to the origin and completely removes the hosting performance from the equation. It can also significantly reduce the load on the hosting systems by offloading all of the anonymous traffic.</p>
 	<p>Cloudflare supports <a href="https://support.cloudflare.com/hc/en-us/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce">caching static HTML</a>, and business and enterprise customers can enable logged-in users to skip the cache by enabling “bypass cache on cookies”. It works in tandem with the <a href="https://wordpress.org/plugins/cloudflare">Cloudflare plugin for WordPress</a> so the cache can be cleared whenever content is updated. There are also several other caching plugins that integrate with various CDN’s but in all of the cases they need to be configured with API keys for the CDN and the implementations are specific for each <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a>.</p>
-	<h3 id="zeroconfigedgecachingofhtml">Zero-Config Edge Caching of HTML</h3>
+	<h3>Zero-Config Edge Caching of HTML</h3>
 	<p>For broad adoption, we need to make the caching of HTML happen automatically (or as close to automatically as possible). To that end, we need a way to communicate between an origin (like a WordPress site) and an edge cache (like Cloudflare’s edge nodes) for managing a remote cache that can be explicitly purged.</p>
 	<p>The Origin needs to be able to:</p>
 	<ul>
-		<li>Recognize when there is a supported edge cache in front of it.</li>
-		<li>Specify content that should be cached and for what visitors (i.e. visits without a login cookie).</li>
-		<li>Purge the cached content when it has changed (globally across all edges).</li>
+		<li>
+			<p>Recognize when there is a supported edge cache in front of it.</p>
+		</li>
+		<li>
+			<p>Specify content that should be cached and for what visitors (i.e. visits without a login cookie).</p>
+		</li>
+		<li>
+			<p>Purge the cached content when it has changed (globally across all edges).</p>
+		</li>
 	</ul>
 	<p>Instead of requiring the origin to integrate with an API for purging on changes and requiring manual configuration for what to cache an when we can accomplish everything using HTTP headers on the requests that travel back and forth between the edges and the origin:</p>
 	<p>1 - A HTTP header is added to requests going from the edge to the origin to advertise that there is an edge cache present and the capabilities it supports:</p>
-	<pre><code>x-HTML-Edge-Cache: supports=cache|purgeall|bypass-cookies
-</code></pre>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/get.png" alt="Fetch from origin."></figure><br>
+	<pre class="language-bash"><code class="language-bash">x-HTML-Edge-Cache: supports=cache|purgeall|bypass-cookies</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tfQw4SOOYyLEH9A5vh2r4/c3c613a9c8f9e2d447a6554250fd0dab/get.png" alt="Fetch from origin." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
 	<p>2 - When the origin responds with a cacheable page it adds a HTTP header on the response to indicate that it should be cached and any rules for when the cached version shouldn’t be used (to allow for bypassing the cache for logged-in users):</p>
-	<pre><code>x-HTML-Edge-Cache: cache,bypass-cookies=wp-|wordpress
-</code></pre>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/get-response.png" alt="Response with cache instructions."></figure><br>
+	<pre class="language-bash"><code class="language-bash">x-HTML-Edge-Cache: cache,bypass-cookies=wp-|wordpress</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HwyqHZHGiPJ2j0gWUfJ53/06c28d1af0ca87a9120267da1910f8ce/get-response.png" alt="Response with cache instructions." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
 	<p>In this case the HTML will be cached but any requests that have cookies that start with “wordpress” or “wp-” for the cookie name will bypass the cache and go to the origin.</p>
 	<p>3 - When a request modifies the site content (updating a post, changing a theme, adding a comment) the origin adds a HTTP response header indicating that the cache needs to be purged:</p>
-	<pre><code>x-HTML-Edge-Cache: purgeall
-</code></pre>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/update.png" alt="Content Update."></figure><br>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/update-response.png" alt="Response with purge command."></figure><br>
+	<pre class="language-bash"><code class="language-bash">x-HTML-Edge-Cache: purgeall</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NILAqCLxBNnIwqCTjsouk/74187b2d0a73e4ce0a4ebb440b6eb945/update.png" alt="Content Update." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50w7jP4OiHH0qUlhpDZ5cq/441f8208d28c94c1b45f25b999d19986/update-response.png" alt="Response with purge command." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
 	<p>The only tricky part to deal with is that the purge needs to clear the cache from ALL of the edges, not just the one edge that the request went through.</p>
 	<p>4 - When a new request comes in for HTML that is in the edge cache, the request cookies are checked against the rules for the cached response. If the cookies are not present then the cached version is served; otherwise, the request is passed through to the origin.</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/12/cached.png" alt="Served from edge cache."></figure><br>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bp0DE4i5Kk8CvfGirSeF/314e6626737d576b118c72ccdb60d242/cached.png" alt="Served from edge cache." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
 	<p>With this simple header-based command and control interface we can eliminate the need for an origin to talk to an API and for any explicit configuration. It also makes the logic on the origin significantly easier to implement as there is no configuration (or UI) and no need to make any outbound requests to a vendor-specific API. The <a href="https://github.com/cloudflare/worker-examples/blob/master/examples/edge-cache-html/WordPress%20Plugin/cloudflare-page-cache/cloudflare-page-cache.php">example WordPress plugin</a> is less than 50 lines of code and the vast majority of that is hooking up callbacks for all of the events that change content.</p>
-	<h3 id="startcachingtodaywithwordpressandworkers">Start Caching today with WordPress and Workers</h3>
+	<h3>Start Caching today with WordPress and Workers</h3>
 	<p>One of the things I love most about Workers is that it gives you a fully programmable edge to experiment with ideas and implement your own logic. I created a <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/edge-cache-html">Worker script</a> that implements the header-based protocol and edge caching on the Cloudflare edges and a <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/edge-cache-html/WordPress%20Plugin">WordPress plugin</a> that implements the origin logic for WordPress.</p>
 	<p>The only tricky part with the Worker was finding a way to purge items from the cache globally. The Worker caches are local to each edge and don’t provide an interface for doing any global operations. One way it does it is to use the Cloudflare API to purge the global cache but that is a bit of a heavy hammer (purging everything from the cache including scripts and images) and it requires some configuration. If you know the specific URLs that will be changed by a content change then doing a targeted purge through the API for just those URLs would probably be the best solution.</p>
 	<p>Using the new <a href="https://developers.cloudflare.com/workers/kv">Workers KV store</a> we can purge the cache a different way. The Worker script uses a versioning scheme for the cache where every URL gets a version number appended to it (i.e. <a href="http://www.example.com/?cf_edge_cache_ver=32">http://www.example.com/?cf_edge_cache_ver=32</a>). The modified URL is only ever used locally by the worker as a key for the cached responses and the current version number is stored in KV which is a global store. When the cache is purged, the version number is incremented which changes the URL for all of the resources. Old entries will age out of the cache normally since they will no longer be accessed. It requires a little configuration to set up KV for the worker but hopefully at some point in the future that can also be automatic.</p>
-	<h3 id="whatnext">What Next?</h3>
+	<h3>What Next?</h3>
 	<p>I think there is a huge value for the web in standardizing a way for edge caches and origins to communicate for caching of dynamic content. That would provide incentive for content management systems to build support directly into the platforms and provide a standard interface that could be used across different providers (and even for local edge caches in load balancers or other reverse proxies). After doing some more testing with different types of sites I’m planning to bring the concept to the <a href="https://httpwg.org">IETF HTTP Working Group</a> to see if we can come up with an official standard for the control headers (using different names). If you have opinions about how it should work or what features you’d need exposed I’d love to hear about it (like purging specific URLs, varying content for mobile/desktop or region, expanding it to cover all content types, etc).</p>
-	<!--kg-card-end: markdown-->
 </div>

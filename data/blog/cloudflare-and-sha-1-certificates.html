@@ -1,33 +1,48 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2014/11/ff-chrome.jpg" alt="" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KyxTyEipBXAiGVvzAZQRq/1732b81e846c7e572d58fa6d55ca0693/ff-chrome.jpg" alt="" class="kg-image" width="391" height="380" loading="lazy">
+
+	</figure>
 	<p>At CloudFlare, we’re dedicated to ensuring sites are not only secure, but also available to the widest audience. In the coming months, both Google’s Chrome browser and Mozilla’s Firefox browser are changing their policy with respect to certain web site certificates. We are aware of these changes, and we have modified our SSL offerings to ensure customer sites continue to be secure and available to all visitors.</p>
-	<h3 id="chromeandfirefoxandsha1">Chrome (and Firefox) and SHA-1</h3>
+	<h3>Chrome (and Firefox) and SHA-1</h3>
 	<p>Google will be making changes to its Chrome browser in upcoming versions to change the way they treat certain web site certificates based on their digital signature. These changes affect <a href="https://blog.digicert.com/ending-trust-sha-1">over 80% of websites</a>.</p>
 	<p>As described in our blog post on <a href="https://blog.cloudflare.com/introducing-cfssl">CFSSL</a>, web site certificates are organized using a chain of trust. <a href="https://en.wikipedia.org/wiki/Digital_signature">Digital signatures</a> are the glue that connects the certificates in the chain. Each certificate is digitally signed by its issuer using a digital signature algorithm defined by the type of key and a cryptographic hash function (such as MD5, SHA-1, SHA-256).</p>
 	<p>Starting in Chrome 39 (to be released this month, November 2014), certificates signed with a SHA-1 signature algorithm will be considered less trusted than those signed with a more modern SHA-2 algorithm. This change will be reflected in the UI presented to web visitors.</p>
 	<p>By Chrome 41 (early 2015), any web site with a certificate that expires in 2016 or later will be shown as untrusted if either:</p>
 	<ul>
-		<li>The certificate is signed with a SHA-1 algorithm</li>
-		<li>One of the certificates in its trust chain is signed with a SHA-1 algorithm (roots are exceptions)</li>
+		<li>
+			<p>The certificate is signed with a SHA-1 algorithm</p>
+		</li>
+		<li>
+			<p>One of the certificates in its trust chain is signed with a SHA-1 algorithm (roots are exceptions)</p>
+		</li>
 	</ul>
 	<p>This post on the <a href="http://blog.chromium.org/2014/09/gradually-sunsetting-sha-1.html">Chromium Blog</a> outlines the schedule of the rollout.</p>
 	<p>Web sites that want to remain trusted by Google Chrome need to either have a SHA-2 certificate or a SHA-1 certificate that expires before 2016. Otherwise, their site will appear to Chrome users with a warning like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/11/ChromeUI.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/572j0r9H5JhhGETwfcjXnj/51111ca3b7899664f4c1b63c07327cdf/ChromeUI.png" alt="" class="kg-image" width="272" height="72" loading="lazy">
+
+	</figure>
 	<p>Mozilla is also implementing a <a href="https://blog.mozilla.org/security/2014/09/23/phasing-out-certificates-with-sha-1-based-signature-algorithms">similar change in their Firefox browser</a> in early 2015, marking SHA-1 certificates as untrusted if they expire in 2016 or later.</p>
-	<h3 id="compatibilityfirst">Compatibility First</h3>
+	<h3>Compatibility First</h3>
 	<p>Chrome’s decision puts many website owners in a bind. Sites either have to re-issue their SHA-1 certificates with a shorter expiration period, or upgrade to SHA-2. The problem with upgrading is that not all web browsers support SHA-2 certificates. Notably, Windows XP SP2 does not support SHA-2 based certificates. Windows XP is still a popular operating system despite the fact that <a href="http://www.microsoft.com/en-us/windows/enterprise/end-of-support.aspx">Microsoft no longer supports it</a>. It is <a href="http://www.computerworld.com/article/2484761/microsoft-windows/china-has-a-massive-windows-xp-problem.html">especially popular in China</a>, the <a href="https://www.pewresearch.org/fact-tank/2013/12/02/china-has-more-internet-users-than-any-other-country">largest Internet market in the world</a>. Sites that use a SHA-2 certificate are inaccessible to these web users over https.</p>
 	<p>GlobalSign has put together a <a href="https://support.globalsign.com/customer/portal/articles/1499561">comprehensive list of SHA-2 client support</a>.</p>
 	<p>Sites that have tried to upgrade to SHA-2 have seen a backlash due to browser incompatibility. In July, mozilla.org upgraded their site to use a SHA-2 certificate. In doing so they lost around <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387">145,000 Firefox downloads per week</a> due to browser incompatibility. Even google.com (as of November 10, 2014) continues to use SHA-1 for compatibility reasons, despite the company’s push to deprecate SHA-1 in Chrome.</p>
 	<p>To support both Chrome and Windows XP SP2 it’s necessary to use a SHA-1 certificate that expires before 2016. This is the option we have chosen for CloudFlare-managed certificates.</p>
-	<h3 id="cloudflarecustomers">CloudFlare Customers</h3>
-	<p>Last week, we reissued all certificates for paid CloudFlare customers. The new certificates are signed with the SHA-1 signature algorithm and expire before 2016. This way all customers sites will be viewable by visitors on Windows XP SP2 <em>and</em> Chrome, just as they are today.</p>
+	<h3>CloudFlare Customers</h3>
+	<p>Last week, we reissued all certificates for paid CloudFlare customers. The new certificates are signed with the SHA-1 signature algorithm and expire before 2016. This way all customers sites will be viewable by visitors on Windows XP SP2 <i>and</i> Chrome, just as they are today.</p>
 	<ul>
-		<li>All paid customers now get a CloudFlare-managed SHA-1 certificate that expires in late 2015.</li>
-		<li>All free customers are given certificates through CloudFlare’s Universal SSL. They are SHA-2 by default.</li>
+		<li>
+			<p>All paid customers now get a CloudFlare-managed SHA-1 certificate that expires in late 2015.</p>
+		</li>
+		<li>
+			<p>All free customers are given certificates through CloudFlare’s Universal SSL. They are SHA-2 by default.</p>
+		</li>
 	</ul>
 	<p>For customers using CloudFlare’s certificates there is no action to be taken. Business and Enterprise customers with custom certificates who may be affected by the change have already been contacted with details and specific instructions.</p>
-	<h3 id="thefutureofhttpsatcloudflare">The Future of HTTPS at CloudFlare</h3>
+	<h3>The Future of HTTPS at CloudFlare</h3>
 	<p>In 2015, we will roll out state-of-the-art SNI certificates to all paid customers and retain the SHA-1 certificates as a fallback. This means that any browser that supports the modern security features we <a href="https://blog.cloudflare.com/universal-ssl-how-it-scales">introduced with Universal SSL</a> (ECDSA, SHA-256 and SNI) will be presented with the modern certificate and old browsers (such as IE on Windows XP) will be presented with the current SHA-1 certificate. This ensures that all sites on the paid CloudFlare service are reachable by the largest audience possible, while providing state-of-the-art security for any browser that supports it.</p>
-	<!--kg-card-end: markdown-->
 </div>

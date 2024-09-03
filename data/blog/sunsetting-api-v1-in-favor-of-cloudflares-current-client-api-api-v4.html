@@ -1,62 +1,112 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>Today we’re announcing the sunsetting of CloudFlare’s first client API, <a href="https://www.cloudflare.com/docs/client-api.html">API v1</a>. Starting <strong>November 9th, 2016</strong> at noon Pacific Time (20:00 UTC), CloudFlare will no longer be supporting API v1.</p>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Today we’re announcing the sunsetting of CloudFlare’s first client API, <a href="https://www.cloudflare.com/docs/client-api.html">API v1</a>. Starting <b>November 9th, 2016</b> at noon Pacific Time (20:00 UTC), CloudFlare will no longer be supporting API v1.</p>
 	<p>While it is bittersweet to let our first API <a href="https://blog.cloudflare.com/cloudflare-tips-frequently-used-cloudflare-ap">from CloudFlare’s early days</a> go, we are so excited to show you all of the great things about our latest API: <a href="https://api.cloudflare.com">API v4</a>. We’re confident that once you get started using it, you’ll see how easy API v4 makes managing your CloudFlare settings.</p>
 	<p>(For those of you who are curious where CloudFlare’s API v2 and v3 went, they ran away with IPv5 and PHP 6.)</p>
 	<p>If you are using API v1 and need to migrate to API v4, we’ve written extensive migration docs <a href="https://www.cloudflare.com/migrating-to-v4">here for you to follow</a>. They contain every API call from v1 and their equivalent in v4 side by side.</p>
-	<h3 id="whatwillhappenafterthesunset">What will happen after the sunset?</h3>
+	<h3>What will happen after the sunset?</h3>
 	<p>After CloudFlare discontinues support for API v1 in November 2016, any calls to API v1 will return the HTTP status code 410 Gone with the message: “This API has been deprecated in favor of API v4, available at <a href="https://api.cloudflare.com">https://api.cloudflare.com</a>.”</p>
-	<h3 id="whatcanyoudowithapiv4">What can you do with API v4?</h3>
+	<h3>What can you do with API v4?</h3>
 	<p>CloudFlare uses the v4 API to power our customer dashboard, so unlike API v1, it has support for every single feature on CloudFlare. The list of features API v4 has that weren’t previously available in v1 is extensive. Here's a list:</p>
 	<ul>
-		<li>Manage your zone's Page Rules.</li>
-		<li>Upload a new SSL certificate for a zone.</li>
-		<li>Manage Origin Certificates for your zones.</li>
-		<li>Manage your Railgun connections.</li>
-		<li>Manage custom error pages for your zone.</li>
-		<li>View analytics by status code and by data center (Enterprise only).</li>
-		<li>Set firewall access rules at a user level, allowing access rules to be set across all zones you control.</li>
-		<li>Added options for access rules including:
+		<li>
+			<p>Manage your zone's Page Rules.</p>
+		</li>
+		<li>
+			<p>Upload a new SSL certificate for a zone.</p>
+		</li>
+		<li>
+			<p>Manage Origin Certificates for your zones.</p>
+		</li>
+		<li>
+			<p>Manage your Railgun connections.</p>
+		</li>
+		<li>
+			<p>Manage custom error pages for your zone.</p>
+		</li>
+		<li>
+			<p>View analytics by status code and by data center (Enterprise only).</p>
+		</li>
+		<li>
+			<p>Set firewall access rules at a user level, allowing access rules to be set across all zones you control.</p>
+		</li>
+		<li>
+			<p>Added options for access rules including:</p>
 			<ul>
-				<li>IPv6 support</li>
-				<li>IPv4 and IPv6 CIDR support</li>
-				<li>ASN support</li>
-				<li>Country support</li>
-				<li>Additional CAPTCHA and JavaScript Challenge options</li>
+				<li>
+					<p>IPv6 support</p>
+				</li>
+				<li>
+					<p>IPv4 and IPv6 CIDR support</p>
+				</li>
+				<li>
+					<p>ASN support</p>
+				</li>
+				<li>
+					<p>Country support</p>
+				</li>
+				<li>
+					<p>Additional CAPTCHA and JavaScript Challenge options</p>
+				</li>
 			</ul>
 		</li>
-		<li>Pass through 502 and 504 error pages from your origin server instead of showing a CloudFlare error page (Enterprise only).</li>
-		<li>Create mobile redirects.</li>
-		<li>Toggle on/off response buffering vs. streaming (Enterprise only).</li>
-		<li>Turn on Query String Sorting in cache (Enterprise only).</li>
-		<li>Manage Polish.</li>
-		<li>Manage HSTS.</li>
-		<li>Change your TLS Client Auth setting.</li>
-		<li>Add/remove the True-Client-IP header (Enterprise only).</li>
-		<li>Force traffic to connect over TLS 1.2 only.</li>
-		<li>Purge by Tag (Enterprise only).</li>
-		<li>Add zones to your account or initiate another zone activation check.</li>
-		<li>Manage your user account.</li>
-		<li>View your billing profile or billing history</li>
-		<li>View subscriptions on an app and zone level.</li>
+		<li>
+			<p>Pass through 502 and 504 error pages from your origin server instead of showing a CloudFlare error page (Enterprise only).</p>
+		</li>
+		<li>
+			<p>Create mobile redirects.</p>
+		</li>
+		<li>
+			<p>Toggle on/off response buffering vs. streaming (Enterprise only).</p>
+		</li>
+		<li>
+			<p>Turn on Query String Sorting in cache (Enterprise only).</p>
+		</li>
+		<li>
+			<p>Manage Polish.</p>
+		</li>
+		<li>
+			<p>Manage HSTS.</p>
+		</li>
+		<li>
+			<p>Change your TLS Client Auth setting.</p>
+		</li>
+		<li>
+			<p>Add/remove the True-Client-IP header (Enterprise only).</p>
+		</li>
+		<li>
+			<p>Force traffic to connect over TLS 1.2 only.</p>
+		</li>
+		<li>
+			<p>Purge by Tag (Enterprise only).</p>
+		</li>
+		<li>
+			<p>Add zones to your account or initiate another zone activation check.</p>
+		</li>
+		<li>
+			<p>Manage your user account.</p>
+		</li>
+		<li>
+			<p>View your billing profile or billing history</p>
+		</li>
+		<li>
+			<p>View subscriptions on an app and zone level.</p>
+		</li>
 	</ul>
 	<p>Besides this extensive list, API v4 has support for Multi-User for Enterprise customers and for <a href="https://blog.cloudflare.com/new-for-virtual-dns-customers-self-service-dashboard-and-apis-and-two-new-features">Virtual DNS management</a> for Virtual DNS customers.</p>
-	<h3 id="jsoninjsonout">JSON in, JSON out</h3>
+	<h3>JSON in, JSON out</h3>
 	<p>As well as the added functionality, developers will like working with the v4 API because of the consistent use of JSON in both the request and response - no need to parse and transcode data in and out of JSON and form-encoded data.</p>
 	<p>While API v1 used form-encoded data in the request and JSON in the response, API v4 uses JSON throughout. This reduces any extra work on the client or server-side to translate the data between request and response.</p>
-	<h3 id="anamespaceforhumans">A namespace for humans</h3>
+	<h3>A namespace for humans</h3>
 	<p>You’ll also find the namespacing in API v4 more friendly to interact with. For example, the Always Online setting previously looked like this:</p>
-	<pre><code>"ob": 1
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">"ob": 1</code></pre>
 	<p>While v4 represents Always Online as:</p>
-	<pre><code>{
+	<pre class="language-bash"><code class="language-bash">{
     "id": "always_online",
     "value": "on",
     "editable": true,
     "modified_on": "2014-01-01T05:20:00.12345Z"
-}
-</code></pre>
-	<h3 id="howcanyougetstartedusingapiv4">How can you get started using API v4?</h3>
+}</code></pre>
+	<h3>How can you get started using API v4?</h3>
 	<p>We have plenty of resources for you to get started with. If you need to migrate from using API v1 to using API v4, we have thorough migration docs for you <a href="https://www.cloudflare.com/migrating-to-v4">written here</a>. If you want to jump right in, you can find the <a href="https://api.cloudflare.com">API v4 documentation here</a>. And if you’re a Go, Python or Node.js user, we have client libraries you can use to interact with the API available on our github here: (<a href="https://github.com/cloudflare/cloudflare-go">Go client</a>, <a href="https://blog.cloudflare.com/python-cloudflare">Python client</a> and <a href="https://github.com/cloudflare/node-cloudflare">Node.js client</a>).</p>
-	<!--kg-card-end: markdown-->
 </div>

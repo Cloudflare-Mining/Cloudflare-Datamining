@@ -1,96 +1,123 @@
-<div class="mb2 gray5">16 min read</div>
+<div class="mb2 gray5">13 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-33.png" class="kg-image" alt="Maximum redirects, minimum effort: Announcing Bulk Redirects" loading="lazy" title="Bulk URL Redirects logo"></figure>
-	<h3 id="404-not-found">404: Not Found</h3>
-	<p>The Internet is a dynamic place. Websites are constantly changing as technologies and business practices evolve. What was front-page news is quickly moved into a sub-directory. To ensure website visitors continue to see the correct webpage even if it has been moved, administrators often implement <em>URL redirects.</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/429Qzp84RNkyFJVB1EnLFv/e17ae7ca923db280673d09bd8284f917/image3-33.png" alt="Maximum redirects, minimum effort: Announcing Bulk Redirects" class="kg-image" width="921" height="445" loading="lazy">
+
+	</figure>
+	<h3>404: Not Found</h3>
+	<p>The Internet is a dynamic place. Websites are constantly changing as technologies and business practices evolve. What was front-page news is quickly moved into a sub-directory. To ensure website visitors continue to see the correct webpage even if it has been moved, administrators often implement <i>URL redirects.</i></p>
 	<p>A URL redirect is a mapping from one location on the Internet to another, effectively telling the visitor's browser that the location of the page has changed, and where they can now find it. This is achieved by providing a virtual ‘link’ between the content’s original and new location.</p>
 	<p>URL Redirects have typically been implemented as <a href="https://www.cloudflare.com/features-page-rules">Page Rules</a> within Cloudflare, up to a maximum of 125 URL redirects per zone. This limitation meant customers with a need for more URL redirects had to implement alternative solutions such <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to achieve their goals.</p>
-	<p>To simplify the management and implementation of URL redirects at scale we have created <strong>Bulk Redirects</strong><em>. </em>Bulk Redirects is a new product that allows an administrator to upload and enable hundreds of thousands of URL redirects within minutes, without having to write a single line of code.</p>
-	<h3 id="we-ve-moved-">We’ve moved!</h3>
+	<p>To simplify the management and implementation of URL redirects at scale we have created <b>Bulk Redirects</b><i>.</i> Bulk Redirects is a new product that allows an administrator to upload and enable hundreds of thousands of URL redirects within minutes, without having to write a single line of code.</p>
+	<h3>We’ve moved!</h3>
 	<p>Mail forwarding is a product offered by postal services such as <a href="https://www.usps.com/manage/forward.htm">USPS</a> and <a href="https://www.royalmail.com/d8/help/redirection">Royal Mail</a> that allows you to continue to receive letters and parcels even if they are sent to an address where you no longer reside.</p>
-	<p>The postal services achieve this by effectively maintaining a register of your new location and your old location. This allows the systems to detect ‘<em>this letter is for Sam Marsh at address A, but he now lives at address B, therefore send the mail there’</em>.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-41.png" class="kg-image" alt="" loading="lazy" title="Picture of letterbox">
-		<figcaption>Photo by <a href="https://unsplash.com/@christianlue?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Christian Lue</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
+	<p>The postal services achieve this by effectively maintaining a register of your new location and your old location. This allows the systems to detect ‘<i>this letter is for Sam Marsh at address A, but he now lives at address B, therefore send the mail there’</i>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44gSIkRcm0aLeOwYo9Kcs5/6029d326be84cf8e928decb128030a32/image1-41.png" alt="" class="kg-image" width="901" height="870" loading="lazy">
+
 	</figure>
+	<p>Photo by <a href="https://unsplash.com/@christianlue?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Christian Lue</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 	<p>This problem can be solved by manually updating my bank, online shops, etc. and having them send the parcels and letters directly to my new address. However, that assumes I know of every person and business who has my address. And it also relies on those people to remember I moved address and make updates on their side. For example, Grandma Marsh might have forgotten about my new address — I’ve moved a lot — and she may send my birthday card to my old address. Or all those Christmas cards from people who I don't speak with regularly. Those will go to my old address also. &nbsp;To solve this, I can use mail forwarding to ensure I still receive my cards and other mail, even though I no longer live at that address.</p>
 	<p>URL redirects are the Internet equivalent of mail forwarding.</p>
-	<p>URL redirects are effectively a table with two columns; what traffic am I looking<em> for, </em>and where should I send that traffic <em>to</em>? This mapping allows an administrator to define "<em>whenever visitors go to </em><code><em><a href="https://www.cloudflare.com/bots">https://www.cloudflare.com/bots</a></em></code><em> I want to redirect them to the new location </em><code><em><a href="https://www.cloudflare.com/pg-lp/bot-mitigation-fight-mode">https://www.cloudflare.com/pg-lp/bot-mitigation-fight-mode</a></em></code><em>"</em>.</p>
+	<p>URL redirects are effectively a table with two columns; what traffic am I looking <i>for,</i> and where should I send that traffic <i>to</i>? This mapping allows an administrator to define "<i>whenever visitors go to</i> <code>_[https://www.cloudflare.com/bots](https://www.cloudflare.com/bots)_</code> <i>I want to redirect them to the new location</i> <code>_[https://www.cloudflare.com/pg-lp/bot-mitigation-fight-mode](https://www.cloudflare.com/pg-lp/bot-mitigation-fight-mode)_</code><i>"</i>.</p>
 	<p>With this technology, our sales and marketing teams can use the vanity URL all across the Internet, safe in the knowledge that should the backend systems change they won’t need to go to all the places this URL has been posted and update it. Instead, the intermediary system that handles the URL redirects can be updated. One location. Not thousands.</p>
-	<h3 id="why-use-url-redirects">Why use URL redirects?</h3>
-	<p>URL redirects are used to solve a number of use cases. One such common use case is to use URL redirects to force all visitors to connect to the website over a secure HTTPS connection, instead of via plain HTTP, to improve <strong>security</strong>. It's such a common use case we created a <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https">toggle</a> in the Cloudflare dashboard, “Always use HTTPS”, which redirects all HTTP requests to HTTPS when enabled.</p>
-	<p>URL redirects are also used for <strong>vanity domains and hyperlinks.</strong> In these scenarios, URL redirects are deployed to provide a mapping of short, user-friendly URLs to long, server-friendly URLs. &nbsp;Not only are shorter URLs more memorable, but they are better scoring from an SEO perspective. According to <a href="https://backlinko.com/google-ranking-factors">Backlinko</a>, ‘<em>Excessively long URLs may hurt a page’s search engine visibility. In fact, several industry studies have found that short URLs tend to have a slight edge in Google’s search results.</em>’.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-17.png" class="kg-image" alt="" loading="lazy" title="Sketch of website in design">
-		<figcaption>Photo by <a href="https://unsplash.com/@halacious?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Hal Gatewood</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
+	<h3>Why use URL redirects?</h3>
+	<p>URL redirects are used to solve a number of use cases. One such common use case is to use URL redirects to force all visitors to connect to the website over a secure HTTPS connection, instead of via plain HTTP, to improve <b>security</b>. It's such a common use case we created a <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https">toggle</a> in the Cloudflare dashboard, “Always use HTTPS”, which redirects all HTTP requests to HTTPS when enabled.</p>
+	<p>URL redirects are also used for <b>vanity domains and hyperlinks.</b> In these scenarios, URL redirects are deployed to provide a mapping of short, user-friendly URLs to long, server-friendly URLs. &nbsp;Not only are shorter URLs more memorable, but they are better scoring from an SEO perspective. According to <a href="https://backlinko.com/google-ranking-factors">Backlinko</a>, ‘<i>Excessively long URLs may hurt a page’s search engine visibility. In fact, several industry studies have found that short URLs tend to have a slight edge in Google’s search results.</i>’.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QGzJwjtfAK6IVmMfY6nc5/93c081389f24b587dc3b1f0fc351ab4c/image5-17.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
+
 	</figure>
+	<p>Photo by <a href="https://unsplash.com/@halacious?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Hal Gatewood</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 	<p>Another use case is where a company may have a local domain for each of their markets, which they want to redirect back to the main website, e.g., redirect <code>www.example.fr</code> and <code>www.example.de</code> to <code>www.example.com/eu/fr</code> and <code>www.example.com/eu/de</code>, respectively.</p>
-	<p>This also covers <strong>company acquisition</strong>, where a company is acquired and the acquiring company wants to redirect hyperlinks to the relevant pages on their own website, e.g., redirect <code>www.example.com</code> to <code>www.companyB.com/portfolio/example</code>.</p>
-	<p>Finally, one of the most common use cases for URL redirects is to maintain uptime during a <strong>website migration. </strong>As companies migrate their websites from one platform to another, or one domain to another, URL redirects ensure visitors continue to see the correct content. Without these URL redirects, hyperlinks in emails, blogs, marketing brochures, etc. would fail to load, potentially costing the business revenue in lost sales and brand damage. For example, <code>www.example.com/products/golf/product-goes-here</code> would redirect to the new website at <code>products.example.com/golf/product-goes-here</code>.</p>
-	<h3 id="how-are-url-redirects-implemented-today">How are URL redirects implemented today?</h3>
+	<p>This also covers <b>company acquisition</b>, where a company is acquired and the acquiring company wants to redirect hyperlinks to the relevant pages on their own website, e.g., redirect <code>www.example.com</code> to <code>www.companyB.com/portfolio/example</code>.</p>
+	<p>Finally, one of the most common use cases for URL redirects is to maintain uptime during a <b>website migration.</b> As companies migrate their websites from one platform to another, or one domain to another, URL redirects ensure visitors continue to see the correct content. Without these URL redirects, hyperlinks in emails, blogs, marketing brochures, etc. would fail to load, potentially costing the business revenue in lost sales and brand damage. For example, <code>www.example.com/products/golf/product-goes-here</code> would redirect to the new website at <code>products.example.com/golf/product-goes-here</code>.</p>
+	<h3>How are URL redirects implemented today?</h3>
 	<p>Ensuring these URL redirects are executed correctly is often the job of the reverse proxy — a server which sits between the client and the origin whose job is, amongst many others, to re-route received traffic to the correct destination.</p>
-	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server">popular</a> web server, the administrator would have a line in the config similar to the one below to implement a URL redirect:</p><!--kg-card-begin: markdown-->
-	<pre><code>`rewrite ^/oldpage$ http://www.example.com/newpage permanent;`
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server">popular</a> web server, the administrator would have a line in the config similar to the one below to implement a URL redirect:</p>
+	<pre class="language-bash"><code class="language-bash">`rewrite ^/oldpage$ http://www.example.com/newpage permanent;`</code></pre>
 	<p>Historically, these web servers were located physically within a company's data center. Administrators then had full control over the URLs received, and could create the redirect rules as and when needed.</p>
 	<p>As the world rapidly migrates on-premise applications and solutions to the cloud, administrators can find themselves in a situation where they can no longer do what they previously could. Not being responsible for the origin has a number of benefits, but it also comes with drawbacks such as lack of ‘control’. Previously, an administrator could quickly add a few config lines to the web server in front of their ecommerce platform. Moving to an online hosted platform makes this much more difficult to do.</p>
 	<p>As such, administrators have moved to platforms like Cloudflare where functionality such as URL redirects can be implemented in the cloud without the need to have administrator access to the origin.</p>
-	<p>The first way to implement a URL Redirect in Cloudflare is via a <a href="https://support.cloudflare.com/hc/en-us/articles/200172286-Configuring-URL-forwarding-or-redirects-with-Cloudflare-Page-Rules">Forwarding URL</a><em> </em>Page Rule. Users can create a Page Rule which matches on a specific URL and redirects matching traffic to another specific URL, along with a status code — either a permanent redirect (301) or a temporary redirect (302):</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-10.png" class="kg-image" alt="" loading="lazy" title="Example of a Cloudflare Page Rule"></figure>
-	<p>Another method is to use Cloudflare Workers to implement URL redirects, either individually or as a map. For example, the code below is used to create a URL redirect map which runs when the Worker is invoked:</p><!--kg-card-begin: markdown-->
-	<pre><code>const redirectMap = new Map([
+	<p>The first way to implement a URL Redirect in Cloudflare is via a <a href="https://support.cloudflare.com/hc/en-us/articles/200172286-Configuring-URL-forwarding-or-redirects-with-Cloudflare-Page-Rules">Forwarding URL</a> Page Rule. Users can create a Page Rule which matches on a specific URL and redirects matching traffic to another specific URL, along with a status code — either a permanent redirect (301) or a temporary redirect (302):</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rj1gaWkXtETmH8rMMMHWN/db5915737e7f57b926608594bcd87174/image6-10.png" alt="" class="kg-image" width="702" height="440" loading="lazy">
+
+	</figure>
+	<p>Another method is to use Cloudflare Workers to implement URL redirects, either individually or as a map. For example, the code below is used to create a URL redirect map which runs when the Worker is invoked:</p>
+	<pre class="language-bash"><code class="language-bash">const redirectMap = new Map([
  ["/bulk1", "https://" + externalHostname + "/redirect2"],
  ["/bulk2", "https://" + externalHostname + "/redirect3"],
  ["/bulk3", "https://" + externalHostname + "/redirect4"],
  ["/bulk4", "https://google.com"],
-])
-</code></pre>
-	<!--kg-card-end: markdown-->
+])</code></pre>
 	<p>This <a href="https://developers.cloudflare.com/workers/examples/bulk-redirects">snippet</a> is taken from the Cloudflare Workers examples library and can be used to scale beyond the 125 URL redirect limit of Page Rules. However, it does require the administrator to be comfortable working with code and correctly configuring their Cloudflare Workers.</p>
-	<h3 id="introducing-bulk-redirects">Introducing: Bulk Redirects</h3>
-	<p>Speaking with Cloudflare users about URL redirects and their experience with our product offerings, “<em>Give me a product which lets me upload thousands of URL redirects to Cloudflare via a GUI”</em> was a very common request. Customers we interviewed typically wanted a simple way to upload a list of ‘from,to,response code’ without having to write a single line of code. And that's what we are announcing today.</p>
-	<p><strong>Bulk Redirects</strong> is now available for all Cloudflare plans. It is an account/organization-level product capable of supporting hundreds of thousands of URL redirects, all configured via the dashboard without having to write a single line of code.</p>
-	<p>The system is implemented in two parts. The first part is the Bulk Redirect <em>List</em>. This is effectively the redirect map, or ‘edge dictionary’, where users can upload their URL redirects:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-4.png" class="kg-image" alt="" loading="lazy" title="URL Redirects in a Bulk Redirect List."></figure>
-	<p>Each URL redirect within the list contains three main elements. The first two elements are <strong>Source URL</strong> (the URL we are looking for) and <strong>Target</strong> <strong>URL</strong> (the URL we are going to redirect matching traffic to).</p>
-	<p>There is also the <strong>Status code. </strong>This is the ‘type’ of redirect. In addition to 301 (Moved Permanently) and 302 (Moved Temporarily) redirects, we have added support for the newer <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307">307 (Temporary Redirect)</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/308">308 (Permanent Redirect) </a>redirect status codes.</p>
-	<p>We have added support for specifying destination ports within the <strong>Target URL</strong> field also, allowing URL redirects to non-standard ports, e.g., “<strong>Target URL</strong>: <code>www.example.com:8443</code>”.</p>
+	<h3>Introducing: Bulk Redirects</h3>
+	<p>Speaking with Cloudflare users about URL redirects and their experience with our product offerings, “<i>Give me a product which lets me upload thousands of URL redirects to Cloudflare via a GUI”</i> was a very common request. Customers we interviewed typically wanted a simple way to upload a list of ‘from,to,response code’ without having to write a single line of code. And that's what we are announcing today.</p>
+	<p><b>Bulk Redirects</b> is now available for all Cloudflare plans. It is an account/organization-level product capable of supporting hundreds of thousands of URL redirects, all configured via the dashboard without having to write a single line of code.</p>
+	<p>The system is implemented in two parts. The first part is the Bulk Redirect <i>List</i>. This is effectively the redirect map, or ‘edge dictionary’, where users can upload their URL redirects:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QhgGqiHUqVRe2VSia5EKD/1fdca33b06cbb839c71d06a20fb1a36c/image7-4.png" alt="" class="kg-image" width="1658" height="1194" loading="lazy">
+
+	</figure>
+	<p>Each URL redirect within the list contains three main elements. The first two elements are <b>Source URL</b> (the URL we are looking for) and <b>Target</b> <b>URL</b> (the URL we are going to redirect matching traffic to).</p>
+	<p>There is also the <b>Status code.</b> This is the ‘type’ of redirect. In addition to 301 (Moved Permanently) and 302 (Moved Temporarily) redirects, we have added support for the newer <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307">307 (Temporary Redirect)</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/308">308 (Permanent Redirect)</a> redirect status codes.</p>
+	<p>We have added support for specifying destination ports within the <b>Target URL</b> field also, allowing URL redirects to non-standard ports, e.g., “<b>Target URL</b>: <code>www.example.com:8443</code>”.</p>
 	<p>If you have many URL redirects, you can upload them via a CSV file.</p>
 	<p>There are also four additional parameters available for each individual URL redirect.</p>
 	<p>Firstly, we have added two options to replace the ambiguity and confusion caused by the use of asterisks as wildcards. Take this source URL as an example: <code>*.example.com/a/b</code>. Would you expect <code>www.example.com/a/b</code> to match? How about <code>example.com/a/b</code>, or <code>www.example.com/path*</code>? Asterisks used as wildcards cause confusion and misunderstanding, and also increase the cost of implementation and maintenance from an engineering perspective. Therefore, we are not implementing them in Bulk Redirects.</p>
-	<p>Instead, we have added two discrete options: <strong>Include subdomains </strong>and <strong>Subpath matching. </strong>The <strong>Include subdomains</strong> option, once enabled, will match all subdomains to the left of the domain portion of the URL as well as the domain specified. For example, if there is a URL redirect with a source URL of <code>example.com/a</code> then traffic to <code>b.example.com/a</code> and <code>c.b.example.com/a</code> will also be redirected.</p>
-	<p>The <strong>Subpath matching</strong> option focuses on the opposite end of the URL. If this option is enabled, the redirect applies to the URL as well as all its subpaths. For example, if we have a URL redirect on <code>www.example.com/foo</code> with subpath matching enabled, we will match on that specific URL as well as all subpaths, e.g., <code>www.example.com/foo/a</code>, <code>www.example.com/foo/a/</code>, ` www.example.com/foo/a/b/c`, etc., but not <code>www.example.com/foobar</code>.</p>
+	<p>Instead, we have added two discrete options: <b>Include subdomains</b> and <b>Subpath matching.</b> The <b>Include subdomains</b> option, once enabled, will match all subdomains to the left of the domain portion of the URL as well as the domain specified. For example, if there is a URL redirect with a source URL of <code>example.com/a</code> then traffic to <code>b.example.com/a</code> and <code>c.b.example.com/a</code> will also be redirected.</p>
+	<p>The <b>Subpath matching</b> option focuses on the opposite end of the URL. If this option is enabled, the redirect applies to the URL as well as all its subpaths. For example, if we have a URL redirect on <code>www.example.com/foo</code> with subpath matching enabled, we will match on that specific URL as well as all subpaths, e.g., <code>www.example.com/foo/a</code>, <code>www.example.com/foo/a/</code>, ` <a href="http://www.example.com/foo/a/b/c/%60">www.example.com/foo/a/b/c\`</a>, etc., but not <code>www.example.com/foobar</code>.</p>
 	<p>These options provide a tremendous amount of flexibility and granularity for each URL redirect. However, for most use cases only the source URL, target URL, and status code options will need to be set.</p>
-	<p>Secondly, we have added two options relating to retaining portions of the original HTTP request: <strong>Preserve path suffix</strong> and <strong>Preserve query string</strong>. If subpath matching is enabled, <strong>Preserve path suffix</strong> can be used to copy the URI path from the originally requested URL and add it to the destination URL. For example, if there is a URL redirect of <strong>Source URL</strong>: <code>example.co.uk</code>, <strong>Target URL</strong>: <code>www.example.com/a</code>, then requests to <code>example.co.uk/target</code> will be redirected to <code>www.example.com/a/target</code> with both options enabled. <strong>Preserve query string</strong> can be used independently of the other options, and carries forward the URI query from the originally requested URL to the new URL.</p>
-	<p>Lists by themselves do not provide any redirection, they are simply the ‘lookup table’. To enable them we need to reference them via a <strong>Bulk Redirect Rule</strong>.</p>
+	<p>Secondly, we have added two options relating to retaining portions of the original HTTP request: <b>Preserve path suffix</b> and <b>Preserve query string</b>. If subpath matching is enabled, <b>Preserve path suffix</b> can be used to copy the URI path from the originally requested URL and add it to the destination URL. For example, if there is a URL redirect of <b>Source URL</b>: <code>example.co.uk</code>, <b>Target URL</b>: <code>www.example.com/a</code>, then requests to <code>example.co.uk/target</code> will be redirected to <code>www.example.com/a/target</code> with both options enabled. <b>Preserve query string</b> can be used independently of the other options, and carries forward the URI query from the originally requested URL to the new URL.</p>
+	<p>Lists by themselves do not provide any redirection, they are simply the ‘lookup table’. To enable them we need to reference them via a <b>Bulk Redirect Rule</b>.</p>
 	<p>The rules themselves are very simple. By default, the user experience is to provide a name for the rule, a description, and select the Bulk Redirect List that should be invoked.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-23.png" class="kg-image" alt="" loading="lazy" title="Default Bulk Redirect Rule creation window."></figure>
-	<p>For users who require more granularity and control there are additional settings available under the <strong>Advanced options</strong> toggle. Within this section there are two editable sections: &nbsp;<strong>Expression</strong> and <strong>Key</strong>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-9.png" class="kg-image" alt="" loading="lazy" title="Advanced Bulk Redirect Rule creation window."></figure>
-	<p>The first field, <strong>Expression</strong>,<strong> </strong>specifies the conditions that must be met in order for the rule to run. By default, all URL redirects of the specified list will apply.</p>
-	<p>The second field, <strong>Key</strong>, is closely related to the expression. The key is used in combination with the specified list to select the URL redirect to apply. The field used for the key should <em>always </em>be the same as the field used in the expression, i.e., the key should be <code>http.request.full_uri</code> if the field in the expression is <code>http.request.full_uri</code>, or conversely, the key should be <code>raw.http.request.full_uri</code> if the field in the expression is <code>raw.http.request.full_uri</code>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ba3Bql0mmmXQJZuq0t7r1/a179c6e99284a2c48569cf4f1321519c/image2-23.png" alt="" class="kg-image" width="1962" height="1162" loading="lazy">
+
+	</figure>
+	<p>For users who require more granularity and control there are additional settings available under the <b>Advanced options</b> toggle. Within this section there are two editable sections: &nbsp;<b>Expression</b> and <b>Key</b>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PmH9DnTDGhYp5RHFwHRkZ/9946a6f1653395d29e72e85e341c0726/unnamed-9.png" alt="" class="kg-image" width="1018" height="700" loading="lazy">
+
+	</figure>
+	<p>The first field, <b>Expression</b>, specifies the conditions that must be met in order for the rule to run. By default, all URL redirects of the specified list will apply.</p>
+	<p>The second field, <b>Key</b>, is closely related to the expression. The key is used in combination with the specified list to select the URL redirect to apply. The field used for the key should <i>always</i> be the same as the field used in the expression, i.e., the key should be <code>http.request.full_uri</code> if the field in the expression is <code>http.request.full_uri</code>, or conversely, the key should be <code>raw.http.request.full_uri</code> if the field in the expression is <code>raw.http.request.full_uri</code>.</p>
 	<p>There are two main use cases for modifying these settings. Firstly, users can edit these options to increase specificity in the trigger, e.g., <code>ip.src.country == "GB" and http.request.full_uri in $redirect_list</code>. This is useful for ensuring Bulk Redirect Lists are only applied when a visitor comes from specific countries, subnets, or ASNs — or also only applying a URL redirect list if the visitor is a verified bot, or the bot score is &gt;35.</p>
-	<p>Secondly, users can edit these options to amend the URL being matched and used as a lookup in the given list, i.e., the user may choose to have URL redirects in their list(s) specifically for URLs that would be <a href="https://developers.cloudflare.com/rules/normalization">normalized</a>, e.g., URLs containing specific percent-encoding. &nbsp;To ensure these URL redirects still trigger, the settings in <strong>Advanced options</strong> should be used to edit the expression and key to use the <code>raw.http.request.full_uri</code> field instead.</p>
-	<h3 id="automating-via-the-api">Automating via the API</h3>
+	<p>Secondly, users can edit these options to amend the URL being matched and used as a lookup in the given list, i.e., the user may choose to have URL redirects in their list(s) specifically for URLs that would be <a href="https://developers.cloudflare.com/rules/normalization">normalized</a>, e.g., URLs containing specific percent-encoding. &nbsp;To ensure these URL redirects still trigger, the settings in <b>Advanced options</b> should be used to edit the expression and key to use the <code>raw.http.request.full_uri</code> field instead.</p>
+	<h3>Automating via the API</h3>
 	<p>Another way to manage bulk redirects is via our API. Customers wishing to automate the addition of bulk redirects can use the API to either simply add URL redirects to an existing list, or automate the entire workflow — creating a list, adding URL redirects to the list, and enabling the list via a new redirect rule.</p>
 	<p>There are three main calls when creating bulk redirects via the API:</p>
 	<ol>
-		<li>Create the redirect list</li>
-		<li>Load with URL redirects</li>
-		<li>Enable via a rule (You will also need to create the ruleset if doing this for the first time).</li>
+		<li>
+			<p>Create the redirect list</p>
+		</li>
+		<li>
+			<p>Load with URL redirects</p>
+		</li>
+		<li>
+			<p>Enable via a rule (You will also need to create the ruleset if doing this for the first time).</p>
+		</li>
 	</ol>
-	<p>For step 1, first create a mass redirect list via the API call:</p><!--kg-card-begin: markdown-->
-	<pre><code>curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rules/lists' \
---header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
+	<p>For step 1, first create a mass redirect list via the API call:</p>
+	<pre class="language-bash"><code class="language-bash">curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rules/lists' \
+--header 'X-Auth-Email: <email_address>' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: &lt;API_KEY&gt;' \
+--header 'X-Auth-Key: <api_key>' \
 --data-raw '{
  "name": "my_redirect_list_2",
  "description": "My redirect list 2",
  "kind": "redirect"
-}'
-</code></pre>
+}'</api_key></email_address></account_id></code></pre>
 	<p>The output will look similar to:</p>
-	<pre><code>{
+	<pre class="language-bash"><code class="language-bash">{
   "result": {
     "id": "499b94da726d4dbc9ce6bf6c96ef8b6a",
     "name": "my_redirect_list_2",
@@ -104,15 +131,13 @@
   "success": true,
   "errors": [],
   "messages": []
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Capture the value of “id”, as this is the list id we will then add URL redirects to.</p>
-	<p>Next, in step 2 we will add URL redirects to our newly created list by executing a POST call to the id we captured previously - with our URL redirects in the body:</p><!--kg-card-begin: markdown-->
-	<pre><code>curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rules/lists/&lt;LIST_ID&gt;/items' \
---header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
+	<p>Next, in step 2 we will add URL redirects to our newly created list by executing a POST call to the id we captured previously - with our URL redirects in the body:</p>
+	<pre class="language-bash"><code class="language-bash">curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rules/lists/<list_id>/items' \
+--header 'X-Auth-Email: <email_address>' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: &lt;API_KEY&gt;' \
+--header 'X-Auth-Key: <api_key>' \
 --data-raw '[
  {
    "redirect": {
@@ -136,30 +161,25 @@
      "include_subdomains": true
    }   
  }
-]'
-</code></pre>
+]'</api_key></email_address></list_id></account_id></code></pre>
 	<p>The output will look similar to:</p>
-	<pre><code>{
+	<pre class="language-bash"><code class="language-bash">{
   "result": {
     "operation_id": "491ab6411acf4a12a6c72df1385b095a"
   },
   "success": true,
   "errors": [],
   "messages": []
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>In step 3 we enable this list by creating a new mass redirect rule within the mass redirect account-level ruleset.</p>
-	<p><strong>Note</strong>, if this is the first time you are creating a redirect rule you will need to use a different API call to create the ruleset. See the documentation <a href="https://developers.cloudflare.com/rules/bulk-redirects/create-api">here</a> for more details. All subsequent updates to the rulesets are made by calls similar to below.</p>
-	<p>Firstly, we need to find our account-level rulesets id. To do this we need to get a list of all account-level rulesets and look for the ruleset with the phase <code>http_request_redirect</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code>curl --location --request GET 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rulesets \
---header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
+	<p><b>Note</b>, if this is the first time you are creating a redirect rule you will need to use a different API call to create the ruleset. See the documentation <a href="https://developers.cloudflare.com/rules/bulk-redirects/create-api">here</a> for more details. All subsequent updates to the rulesets are made by calls similar to below.</p>
+	<p>Firstly, we need to find our account-level rulesets id. To do this we need to get a list of all account-level rulesets and look for the ruleset with the phase <code>http_request_redirect</code>:</p>
+	<pre class="language-bash"><code class="language-bash">curl --location --request GET 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rulesets \
+--header 'X-Auth-Email: <email_address>' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: &lt;API_KEY&gt;'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The output will look similar to:</p><!--kg-card-begin: markdown-->
-	<pre><code>{
+--header 'X-Auth-Key: <api_key>'</api_key></email_address></account_id></code></pre>
+	<p>The output will look similar to:</p>
+	<pre class="language-bash"><code class="language-bash">{
    "result": [
        {
            "id": "efb7b8c949ac4650a09736fc376e9aee",
@@ -194,14 +214,12 @@
    "success": true,
    "errors": [],
    "messages": []
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Our redirect ruleset is at the bottom of the output. Next we will add our new bulk redirect rule to this ruleset:</p><!--kg-card-begin: markdown-->
-	<pre><code>curl --location --request PUT 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rulesets/&lt;RULESET_ID&gt; \
---header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
+}</code></pre>
+	<p>Our redirect ruleset is at the bottom of the output. Next we will add our new bulk redirect rule to this ruleset:</p>
+	<pre class="language-bash"><code class="language-bash">curl --location --request PUT 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rulesets/<ruleset_id> \
+--header 'X-Auth-Email: <email_address>' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: &lt;API_KEY&gt; \
+--header 'X-Auth-Key: <api_key> \
 --data-raw '{
      "rules": [
    {
@@ -216,11 +234,9 @@
      }
    }
  ]
-}'
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+}'</api_key></email_address></ruleset_id></account_id></code></pre>
 	<p>The output will look similar to:</p>
-	<pre><code>{
+	<pre class="language-bash"><code class="language-bash">{
   "result": {
     "id": "5ff4477e596448749d67da859230ac3d",
     "name": "My redirect ruleset",
@@ -251,59 +267,42 @@
   "success": true,
   "errors": [],
   "messages": []
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>With those API calls executed, our new list is created, loaded with URL redirects and enabled by the bulk redirect rule. Visitors to the URLs specified in our list will now be redirected appropriately.</p>
-	<h3 id="account-level-benefits">Account-level benefits</h3>
+	<h3>Account-level benefits</h3>
 	<p>One of the driving forces behind this product is the desire to make life easier for those customers with a large number of zones on Cloudflare. For these customers, URL redirects are a pain point when using Page Rules, as they need to navigate into each zone and configure URL redirects one at a time. This doesn't scale very well.</p>
 	<p>Bulk Redirects add real value for customers in this situation. Instead of having to navigate into 400 zones and create one or two Page Rules for each, an administrator can now create and upload a single Bulk Redirect List, which contains all the URL redirects for the zones under management.</p>
-	<p>This means that if the customer simply wants 399 of those 400 zones to redirect to the "primary zone", they can create a bulk redirect list with 399 entries, all pointing to <code>example.com</code>, and enable the <strong>Subpath matching</strong> and <strong>Include subdomains</strong> options on each. This vastly simplifies the management of the estate.</p>
+	<p>This means that if the customer simply wants 399 of those 400 zones to redirect to the "primary zone", they can create a bulk redirect list with 399 entries, all pointing to <code>example.com</code>, and enable the <b>Subpath matching</b> and <b>Include subdomains</b> options on each. This vastly simplifies the management of the estate.</p>
 	<p>The same premise also applies to <a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS</a> customers. For example, if <code>example.com</code> has 20 custom hostnames in their zone, customers can now create a Bulk Redirect List and Rule for each custom hostname, grouping each customer’s URL redirects into their own logical buckets.</p>
 	<p>Bulk Redirects is a game changer for companies with a large number of zones and customers under management.</p>
-	<h3 id="allowances">Allowances</h3>
-	<p>Bulk Redirects are available for all accounts. The packaging model for Bulk Redirects closely resembles that of “<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists#entitlements">IP Lists</a>”. Accounts are entitled to a set number of Edge Rules (from which “Bulk Redirect Rules” draws down), Bulk Redirect Lists, and URL Redirects depending on the <em>highest </em>Cloudflare plan within their account.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Feature</th>
-				<th style="text-align:center">Enterprise</th>
-				<th style="text-align:center">Business</th>
-				<th style="text-align:center">Pro</th>
-				<th style="text-align:center">Free</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">Edge Rules (for use of Bulk Redirect Rules)</td>
-				<td style="text-align:center">50+</td>
-				<td style="text-align:center">15</td>
-				<td style="text-align:center">15</td>
-				<td style="text-align:center">15</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Bulk Redirect Lists</td>
-				<td style="text-align:center">25+</td>
-				<td style="text-align:center">5</td>
-				<td style="text-align:center">5</td>
-				<td style="text-align:center">5</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">URL Redirects</td>
-				<td style="text-align:center">10,000+</td>
-				<td style="text-align:center">500</td>
-				<td style="text-align:center">500</td>
-				<td style="text-align:center">20</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<h3>Allowances</h3>
+	<p>Bulk Redirects are available for all accounts. The packaging model for Bulk Redirects closely resembles that of “<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists#entitlements">IP Lists</a>”. Accounts are entitled to a set number of Edge Rules (from which “Bulk Redirect Rules” draws down), Bulk Redirect Lists, and URL Redirects depending on the <i>highest</i> Cloudflare plan within their account.</p>
+	<p>Feature</p>
+	<p>Enterprise</p>
+	<p>Business</p>
+	<p>Pro</p>
+	<p>Free</p>
+	<p>Edge Rules (for use of Bulk Redirect Rules)</p>
+	<p>50+</p>
+	<p>15</p>
+	<p>15</p>
+	<p>15</p>
+	<p>Bulk Redirect Lists</p>
+	<p>25+</p>
+	<p>5</p>
+	<p>5</p>
+	<p>5</p>
+	<p>URL Redirects</p>
+	<p>10,000+</p>
+	<p>500</p>
+	<p>500</p>
+	<p>20</p>
 	<p>For example, an account with ten zones, all on the <a href="https://www.cloudflare.com/plans/free">Free plan</a>, would be entitled to 15 Edge Rules, 5 Bulk Redirect Lists, and 20 URL Redirects that can be stored within those lists.</p>
 	<p>An account with one Pro zone and 2 Free plan zones would be entitled to 15 Edge Rules, 5 Bulk Redirect Lists, and 500 URL Redirects that can be stored within those lists.</p>
 	<p>Enterprise customers have a default of 10,000 URL Redirects to be used across 25 lists. However, these numbers are negotiable on enquiry.</p>
-	<h3 id="planned-enhancements">Planned enhancements</h3>
+	<h3>Planned enhancements</h3>
 	<p>We intend to make a number of incremental improvements to the product in the coming months, specifically to the list experience to allow for the editing of URL redirects and also for searching within lists.</p>
 	<p>In the near future we intend to bring to market a product to fulfill the other common request for URL redirects, and deliver ‘Dynamic URL Redirects’. Whilst Bulk Redirects supports hundreds of thousands of URL redirects, those URL redirects are relatively prescriptive — from <code>a.com/b</code> to <code>b.com/a</code>, for example. &nbsp;There is still a requirement for supporting more complex, rich URL redirects, e.g., device-specific URL redirects, country-specific URL redirects, URL redirects that allow regular expressions in their target URL, and so forth. We aspire to offer a full range of functionality to support as many use cases as possible.</p>
-	<h3 id="try-it-now">Try it now</h3>
+	<h3>Try it now</h3>
 	<p>Bulk Redirects can be used to improve operations, simplify complex configurations, and ease website management, amongst many other use cases. &nbsp;Try out <a href="https://dash.cloudflare.com">Bulk Redirects</a> yourself today.</p>
 </div>

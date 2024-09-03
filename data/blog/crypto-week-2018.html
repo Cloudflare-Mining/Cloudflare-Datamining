@@ -1,101 +1,143 @@
-<div class="mb2 gray5">11 min read</div>
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/crypto-week_v02.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h8IBYJQOwAWgl8DPwAWdv/5530f355e5f81e5a27bc44b208dd95dc/crypto-week_v02.gif" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+
+	</figure>
 	<p>The Internet is an amazing invention. We marvel at how it connects people, connects ideas, and makes the world smaller. But the Internet isn’t perfect. It was put together piecemeal through publicly funded research, private investment, and organic growth that has left us with an imperfect tapestry. It’s also evolving. People are constantly developing creative applications and finding new uses for existing Internet technology. Issues like privacy and security that were afterthoughts in the early days of the Internet are now supremely important. People are being tracked and monetized, websites and web services are being attacked in interesting new ways, and the fundamental system of trust the Internet is built on is showing signs of age. The Internet needs an upgrade, and one of the tools that can make things better is cryptography.</p>
-	<p>Every day this week, Cloudflare will be announcing support for a new technology that uses cryptography to make the Internet better (hint: <a href="https://blog.cloudflare.com/subscribe">subscribe to the blog</a> to make sure you don't miss any of the news). Everything we are announcing this week is free to use and provides a meaningful step towards supporting a new capability or structural reinforcement. So why are we doing this? Because it’s good for the users and good for the Internet. Welcome to Crypto Week! </p>
-	<h3 id="day-1-distributed-web-gateway">Day 1: Distributed Web Gateway</h3>
+	<p>Every day this week, Cloudflare will be announcing support for a new technology that uses cryptography to make the Internet better (hint: <a href="https://blog.cloudflare.com/subscribe">subscribe to the blog</a> to make sure you don't miss any of the news). Everything we are announcing this week is free to use and provides a meaningful step towards supporting a new capability or structural reinforcement. So why are we doing this? Because it’s good for the users and good for the Internet. Welcome to Crypto Week!</p>
+	<h3>Day 1: Distributed Web Gateway</h3>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/distributed-web-gateway">Cloudflare goes InterPlanetary - Introducing Cloudflare’s IPFS Gateway</a> </li>
-		<li><a href="https://blog.cloudflare.com/e2e-integrity">End-to-End Integrity with IPFS</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/distributed-web-gateway">Cloudflare goes InterPlanetary - Introducing Cloudflare’s IPFS Gateway</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/e2e-integrity">End-to-End Integrity with IPFS</a></p>
+		</li>
 	</ul>
-	<h3 id="day-2-dnssec">Day 2: DNSSEC</h3>
+	<h3>Day 2: DNSSEC</h3>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec">Expanding DNSSEC Adoption</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec">Expanding DNSSEC Adoption</a></p>
+		</li>
 	</ul>
-	<h3 id="day-3-rpki">Day 3: RPKI</h3>
+	<h3>Day 3: RPKI</h3>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/rpki">RPKI - The required cryptographic upgrade to BGP routing</a></li>
-		<li><a href="https://blog.cloudflare.com/rpki-details">RPKI and BGP: our path to securing Internet Routing</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/rpki">RPKI - The required cryptographic upgrade to BGP routing</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/rpki-details">RPKI and BGP: our path to securing Internet Routing</a></p>
+		</li>
 	</ul>
-	<h3 id="day-4-onion-routing">Day 4: Onion Routing</h3>
+	<h3>Day 4: Onion Routing</h3>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/cloudflare-onion-service">Introducing the Cloudflare Onion Service</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/cloudflare-onion-service">Introducing the Cloudflare Onion Service</a></p>
+		</li>
 	</ul>
-	<h3 id="day-5-roughtime">Day 5: Roughtime</h3>
+	<h3>Day 5: Roughtime</h3>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/roughtime">Roughtime: Securing Time with Digital Signatures</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/roughtime">Roughtime: Securing Time with Digital Signatures</a></p>
+		</li>
 	</ul>
-	<h2 id="a-more-trustworthy-internet">A more trustworthy Internet</h2>
-	<p>Everything we do online depends on a relationship between users, services, and networks that is supported by some sort of trust mechanism. These relationships can be physical (I plug my router into yours), contractual (I paid a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> for this <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a>), or reliant on a trusted third party (I sent a message to my friend on iMessage via Apple). The simple act of visiting a website involves hundreds of trust relationships, some explicit and some implicit. The sheer size of the Internet and number of parties involved make trust online incredibly complex. Cryptography is a tool that can be used to encode and enforce, and most importantly scale these trust relationships.</p>
+	<h2>A more trustworthy Internet</h2>
+	<p>Everything we do online depends on a relationship between users, services, and networks that is supported by some sort of trust mechanism. These relationships can be physical (I plug my router into yours), contractual (I paid a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> for this domain name), or reliant on a trusted third party (I sent a message to my friend on iMessage via Apple). The simple act of visiting a website involves hundreds of trust relationships, some explicit and some implicit. The sheer size of the Internet and number of parties involved make trust online incredibly complex. Cryptography is a tool that can be used to encode and enforce, and most importantly scale these trust relationships.</p>
 	<p>To illustrate this, let’s break down what happens when you visit a website. But before we can do this, we need to know the jargon.</p>
 	<ul>
-		<li><strong>Autonomous Systems (100 thousand or so active)</strong>: An AS corresponds to a network provider connected to the Internet. Each has a unique Autonomous System Number (ASN).</li>
-		<li><strong>IP ranges (1 million or so)</strong>: Each AS is assigned a set of numbers called IP addresses. Each of these IP addresses can be used by the AS to identify a computer on its network when connecting to other networks on the Internet. These addresses are assigned by the Regional Internet Registries (RIR), of which there are 5. Data sent from one IP address to another hops from one AS to another based on a “route” that is determined by a protocol called BGP.</li>
-		<li><strong>Domain names (&gt;1 billion)</strong>: Domain names are the human-readable names that correspond to Internet services (like “cloudflare.com” or “mail.google.com”). These Internet services are accessed via the Internet by connecting to their IP address, which can be obtained from their domain name via the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>.</li>
-		<li><strong>Content (infinite)</strong>: The main use case of the Internet is to enable the transfer of specific pieces of data from one point on the network to another. This data can be of any form or type.</li>
+		<li>
+			<p><b>Autonomous Systems (100 thousand or so active)</b>: An AS corresponds to a network provider connected to the Internet. Each has a unique Autonomous System Number (ASN).</p>
+		</li>
+		<li>
+			<p><b>IP ranges (1 million or so)</b>: Each AS is assigned a set of numbers called IP addresses. Each of these IP addresses can be used by the AS to identify a computer on its network when connecting to other networks on the Internet. These addresses are assigned by the Regional Internet Registries (RIR), of which there are 5. Data sent from one IP address to another hops from one AS to another based on a “route” that is determined by a protocol called BGP.</p>
+		</li>
+		<li>
+			<p><b>Domain names (&gt;1 billion)</b>: Domain names are the human-readable names that correspond to Internet services (like “cloudflare.com” or “mail.google.com”). These Internet services are accessed via the Internet by connecting to their IP address, which can be obtained from their domain name via the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>.</p>
+		</li>
+		<li>
+			<p><b>Content (infinite)</b>: The main use case of the Internet is to enable the transfer of specific pieces of data from one point on the network to another. This data can be of any form or type.</p>
+		</li>
 	</ul>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/name-to-asn-@3.5x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wDRty2HT3gbpxOlTNAgm5/763e19f1aa0c9248e51c0ca37c1ff5a8/name-to-asn-_3.5x.png" alt="" class="kg-image" width="1600" height="460" loading="lazy">
+
+	</figure>
 	<p>When you type a website such as blog.cloudflare.com into your browser, a number of things happen. First, a (recursive) DNS service is contacted to get the IP address of the site. This DNS server configured by your ISP when you connect to the Internet, or it can be a public service such as 1.1.1.1 or 8.8.8.8. A query to the DNS service travels from network to network along a path determined by BGP announcements. If the recursive DNS server does not know the answer to the query, then it contacts the appropriate authoritative DNS services, starting with a root DNS server, down to a top level domain server (such as com or org), down to the DNS server that is authoritative for the domain. Once the DNS query has been answered, the browser sends an HTTP request to its IP address (traversing a sequence of networks), and in response, the server sends the content of the website.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/colorful-crypto-overview--copy-3@3.5x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JHDdXKcnw2lce7hUVVvjP/8ffb288a197ddf46622c6c3d68b95e5b/colorful-crypto-overview--copy-3_3.5x.png" alt="" class="kg-image" width="1600" height="764" loading="lazy">
+
+	</figure>
 	<p>So what’s the problem with this picture? For one, every DNS query and every network hop needs to be trusted in order to trust the content of the site. Any DNS query could be modified, a network could advertise an IP that belongs to another network, and any machine along the path could modify the content. When the Internet was small, there were mechanisms to combat this sort of subterfuge. Network operators had a personal relationship with each other and could punish bad behavior, but given the number of networks in existence <a href="https://www.cidr-report.org/as2.0/autnums.html">almost 400,000 as of this week</a> this is becoming difficult to scale.</p>
 	<p>Cryptography is a tool that can encode these trust relationships and make the whole system reliant on hard math rather than physical handshakes and hopes.</p>
-	<h3 id="building-a-taller-tower-of-turtles">Building a taller tower of turtles<br></h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/turtles.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/wwarby/2499825928">Attribution 2.0 Generic (CC BY 2.0)</a></figcaption>
+	<h3>Building a taller tower of turtles</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4thrwRrwuZ1ctzlstdLLqv/b71accd2b810eb47ae8ced9f2c264060/turtles.jpg" alt="" class="kg-image" width="768" height="1024" loading="lazy">
+
 	</figure>
+	<p><a href="https://www.flickr.com/photos/wwarby/2499825928">Attribution 2.0 Generic (CC BY 2.0)</a></p>
 	<p>The two main tools that cryptography provides to help solve this problem are cryptographic hashes and digital signatures.</p>
-	<p>A hash function is a way to take any piece of data and transform it into a fixed-length string of data, called a digest or hash. A hash function is considered cryptographically strong if it is computationally infeasible (read: very hard) to find two inputs that result in the same digest, and that changing even one bit of the input results in a completely different digest. The most popular hash function that is considered secure is SHA-256, which has 256-bit outputs. For example, the SHA-256 hash of the word “crypto” is</p><!--kg-card-begin: markdown-->
+	<p>A hash function is a way to take any piece of data and transform it into a fixed-length string of data, called a digest or hash. A hash function is considered cryptographically strong if it is computationally infeasible (read: very hard) to find two inputs that result in the same digest, and that changing even one bit of the input results in a completely different digest. The most popular hash function that is considered secure is SHA-256, which has 256-bit outputs. For example, the SHA-256 hash of the word “crypto” is</p>
 	<p><code>DA2F073E06F78938166F247273729DFE465BF7E46105C13CE7CC651047BF0CA4</code></p>
-	<!--kg-card-end: markdown-->
-	<p>And the SHA-256 hash of “crypt0” is</p><!--kg-card-begin: markdown-->
+	<p>And the SHA-256 hash of “crypt0” is</p>
 	<p><code>7BA359D3742595F38347A0409331FF3C8F3C91FF855CA277CB8F1A3A0C0829C4</code></p>
-	<!--kg-card-end: markdown-->
 	<p>The other main tool is digital signatures. A digital signature is a value that can only be computed by someone with a private key, but can be verified by anyone with the corresponding public key. Digital signatures are way for a private key holder to “sign,” or attest to the authenticity of a specific message in a way that anyone can validate it.</p>
 	<p>These two tools can be combined to solidify the trust relationships on the Internet. By giving private keys to the trusted parties who are responsible for defining the relationships between ASs, IPs, domain names and content, you can create chains of trust that can be publicly verified. Rather than hope and pray, these relationships can be validated in real time at scale.</p>
 	<p>Let’s take our webpage loading example and see where digital signatures can be applied.</p>
-	<p><strong>Routing</strong>. Time-bound delegation of trust is defined through a system called the RPKI. RPKI defines an object called a Resource Certificate, an attestation that states that a given IP range belongs to a specific ASN for this period of time, digitally signed by the RIR responsible for assigning the IP range. Networks share routes via BGP, and if a route is advertised for an IP that does not conform the the Resource Certificate, the network can choose not to accept it.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/roas@3x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br><strong>DNS.</strong> Adding cryptographic assurance to routing is powerful, but if a network adversary can change the content of the data (such as the DNS responses), then the system is still at risk. DNSSEC is a system built to provide a trusted link between names and IP addresses. The root of trust in DNSSEC is the DNS root key, which is managed with an <a href="https://www.iana.org/dnssec/ceremonies">elaborate signing ceremony</a>.</p>
-	<p><strong>HTTPS</strong>. When you connect to a site, not only do you want it to be coming from the right host, you also want the content to be private. The Web PKI is a system that issues certificates to sites, allowing you to bind the domain name to a time-bounded private key. Because there are many CAs, additional accountability systems like <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">certificate transparency</a> need to be involved to help keep the system in check.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/connection-to-asn@3.5x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br>This cryptographic scaffolding turns the Internet into an encoded system of trust. With these systems in place, Internet users no longer need to trust every network and party involved in this diagram, they only need to trust the RIRs, DNSSEC and the CAs (and know the correct time).</p>
-	<p>This week we’ll be making some announcements that help strengthen this system of accountability. </p>
-	<h2 id="privacy-and-integrity-with-friends">Privacy and integrity with friends</h2>
+	<p><b>Routing</b>. Time-bound delegation of trust is defined through a system called the RPKI. RPKI defines an object called a Resource Certificate, an attestation that states that a given IP range belongs to a specific ASN for this period of time, digitally signed by the RIR responsible for assigning the IP range. Networks share routes via BGP, and if a route is advertised for an IP that does not conform the the Resource Certificate, the network can choose not to accept it.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GgcQBjG2ecuqivy9h7SCe/475647468547e4706aba4c991141c04b/roas_3x.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
+
+	</figure>
+	<p><b>DNS.</b> Adding cryptographic assurance to routing is powerful, but if a network adversary can change the content of the data (such as the DNS responses), then the system is still at risk. DNSSEC is a system built to provide a trusted link between names and IP addresses. The root of trust in DNSSEC is the DNS root key, which is managed with an <a href="https://www.iana.org/dnssec/ceremonies">elaborate signing ceremony</a>.</p>
+	<p><b>HTTPS</b>. When you connect to a site, not only do you want it to be coming from the right host, you also want the content to be private. The Web PKI is a system that issues certificates to sites, allowing you to bind the domain name to a time-bounded private key. Because there are many CAs, additional accountability systems like <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">certificate transparency</a> need to be involved to help keep the system in check.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oSYpHOMRKf2EtzXWvcTbE/68806f192a3bcd56f4722c60315d9687/connection-to-asn_3.5x.png" alt="" class="kg-image" width="1600" height="358" loading="lazy">
+
+	</figure>
+	<p>This cryptographic scaffolding turns the Internet into an encoded system of trust. With these systems in place, Internet users no longer need to trust every network and party involved in this diagram, they only need to trust the RIRs, DNSSEC and the CAs (and know the correct time).</p>
+	<p>This week we’ll be making some announcements that help strengthen this system of accountability.</p>
+	<h2>Privacy and integrity with friends</h2>
 	<p>The Internet is great because it connects us to each other, but the details of how it connects us are important. The technical choices made when Internet was designed come with some interesting human implications.</p>
-	<p>One implication is <strong>trackability</strong>. Your IP address is contained on every packet you send over the Internet. This acts as a unique identifier for anyone (corporations, governments, etc.) to track what you do online. Furthermore, if you connect to a server, that server’s identity is sent in plaintext on the request <strong>even over HTTPS</strong>, revealing your browsing patterns to any intermediary who cares to look.</p>
-	<p>Another implication is <strong>malleability</strong>. Resources on the Internet are defined by <em>where</em> they are, not <em>what</em> they are. If you want to go to CNN or BBC, then you connect to the server for cnn.com or bbc.co.uk and validate the certificate to make sure it’s the right site. But once you’ve made the connection, there’s no good way to know that the actual content is what you expect it to be. If the server is hacked, it could send you anything, including dangerous malicious code. HTTPS is a secure pipe, but there’s no inherent way to make sure what gets sent through the pipe is what you expect.</p>
+	<p>One implication is <b>trackability</b>. Your IP address is contained on every packet you send over the Internet. This acts as a unique identifier for anyone (corporations, governments, etc.) to track what you do online. Furthermore, if you connect to a server, that server’s identity is sent in plaintext on the request <b>even over HTTPS</b>, revealing your browsing patterns to any intermediary who cares to look.</p>
+	<p>Another implication is <b>malleability</b>. Resources on the Internet are defined by <i>where</i> they are, not <i>what</i> they are. If you want to go to CNN or BBC, then you connect to the server for cnn.com or bbc.co.uk and validate the certificate to make sure it’s the right site. But once you’ve made the connection, there’s no good way to know that the actual content is what you expect it to be. If the server is hacked, it could send you anything, including dangerous malicious code. HTTPS is a secure pipe, but there’s no inherent way to make sure what gets sent through the pipe is what you expect.</p>
 	<p>Trackability and malleability are not inherent features of interconnectedness. It is possible to design networks that don’t have these downsides. It is also possible to build new networks with better characteristic on top of the existing Internet. The key ingredient is cryptography.</p>
-	<h3 id="tracking-resilient-networking">Tracking-resilient networking</h3>
+	<h3>Tracking-resilient networking</h3>
 	<p>One of the networks built on top of the Internet that provides good privacy properties is Tor. The Tor network is run by a group of users who allow their computers to be used to route traffic for other members of the network. Using cryptography, it is possible to route traffic from one place to another without points along the path knowing both the source and the destination at the same time. This is called <a href="https://en.wikipedia.org/wiki/Onion_routing">onion routing</a> because it involves multiple layers of encryption, like an onion. Traffic coming out of the Tor network is “anonymous” because it could have come from anyone connected to the network. Everyone just blends in, making it hard to track individuals.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Tor-Onion-Cloudflare.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68kxhYzrB1vuZ1FogJ2MgK/57295d1f0f5badc1b54962a3cbc0afdc/Tor-Onion-Cloudflare.png" alt="" class="kg-image" width="1600" height="1556" loading="lazy">
+
+	</figure>
 	<p>Similarly, web services can use onion routing to serve content inside the Tor network without revealing their location to visitors. Instead of using a hostname to identify their network location, so-called onion services use a cryptographic public key as their address. There are hundreds of onion services in use, including the one <a href="https://blog.cloudflare.com/welcome-hidden-resolver">we use for 1.1.1.1</a> or the one in <a href="https://en.wikipedia.org/wiki/Facebookcorewwwi.onion">use by Facebook</a>.</p>
 	<p>Troubles occur at the boundary between Tor network and the rest of the Internet. This is especially true for user is attempting to access services that rely on abuse prevention mechanisms based on reputation. Since Tor is used by both privacy-conscious users and malicious bots, connections from both get lumped together and as the expression goes, one bad apple ruins the bunch. This unfortunately exposes legitimate visitors to anti-abuse mechanisms like CAPTCHAs. Tools like <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">Privacy Pass</a> help reduce this burden but don’t eliminate it completely. This week we’ll be announcing a new way to improve this situation.</p>
-	<h3 id="bringing-integrity-to-content-delivery">Bringing integrity to content delivery</h3>
+	<h3>Bringing integrity to content delivery</h3>
 	<p>Let’s revisit the issue of malleability: the fact that you can’t always trust the other side of a connection to send you the content you expect. There are technologies that allow users to insure the integrity of content without trusting the server. One such technology is a feature of HTML called <a href="https://www.w3.org/TR/SRI">Subresource Integrity (SRI)</a>. SRI allows a webpage with sub-resources (like a script or stylesheet) to embed a unique cryptographic hash into the page so that when the sub-resource is loaded, it is checked to see that is matches the expected value. This protects the site from loading unexpected scripts from third parties, <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos">a known attack vector</a>.</p>
-	<p>Another idea is to flip this on its head: what if instead of fetching a piece of content from a specific location on the network, you asked the network to find piece of content that matches a given hash? By assigning resources based on their actual content rather than by location it’s possible to create a network in which you can fetch content from anywhere on the network and still know it’s authentic. This idea is called <em>content addressing</em> and there are networks built on top of the Internet that use it. These content addressed networks, based on protocols such <a href="https://ipfs.io">IPFS</a> and <a href="https://datproject.org">DAT</a>, are blazing a trail new trend in Internet applications called the Distributed Web. With the Distributed Web applications, malleability is no longer an issue, opening up a new set of possibilities.</p>
-	<h3 id="combining-strengths">Combining strengths</h3>
-	<p>Networks based on cryptographic principles, like Tor and IPFS, have one major downside compared to networks based on names: usability. Humans are exceptionally bad at remembering or distinguishing between cryptographically-relevant numbers. Take, for instance, the New York Times’ onion address:</p><!--kg-card-begin: markdown-->
+	<p>Another idea is to flip this on its head: what if instead of fetching a piece of content from a specific location on the network, you asked the network to find piece of content that matches a given hash? By assigning resources based on their actual content rather than by location it’s possible to create a network in which you can fetch content from anywhere on the network and still know it’s authentic. This idea is called <i>content addressing</i> and there are networks built on top of the Internet that use it. These content addressed networks, based on protocols such <a href="https://ipfs.io">IPFS</a> and <a href="https://datproject.org">DAT</a>, are blazing a trail new trend in Internet applications called the Distributed Web. With the Distributed Web applications, malleability is no longer an issue, opening up a new set of possibilities.</p>
+	<h3>Combining strengths</h3>
+	<p>Networks based on cryptographic principles, like Tor and IPFS, have one major downside compared to networks based on names: usability. Humans are exceptionally bad at remembering or distinguishing between cryptographically-relevant numbers. Take, for instance, the New York Times’ onion address:</p>
 	<p><code>https://www.nytimes3xbfgragh.onion/</code></p>
-	<!--kg-card-end: markdown-->
-	<p>This is would easily confused with similar-looking onion addresses, such as</p><!--kg-card-begin: markdown-->
+	<p>This is would easily confused with similar-looking onion addresses, such as</p>
 	<p><code>https://www.nytimes3xfkdbgfg.onion/</code></p>
-	<!--kg-card-end: markdown-->
 	<p>which may be controlled by a malicious actor.</p>
-	<p>Content addressed networks are even worse from the perspective of regular people. For example, there is a snapshot of the Turkish version of Wikipedia on IPFS with the hash:</p><!--kg-card-begin: markdown-->
+	<p>Content addressed networks are even worse from the perspective of regular people. For example, there is a snapshot of the Turkish version of Wikipedia on IPFS with the hash:</p>
 	<p><code>QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX</code></p>
-	<!--kg-card-end: markdown-->
 	<p>Try typing this hash into your browser without making a mistake.</p>
-	<p>These naming issues are things Cloudflare is perfectly positioned to help solve.<br>First, by putting the hash address of an IPFS site in the DNS (and adding DNSSEC for trust) you can give your site a traditional hostname while maintaining a chain of trust.</p>
-	<p>Second, by enabling browsers to use a traditional DNS name to access the web through onion services, you can provide safer access to your site for Tor user with the added benefit of being better able to distinguish between bots and humans.<br>With Cloudflare as the glue, is is possible to connect both standard internet and tor users to web sites and services on both the traditional web with the distributed web.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/bowtie-diagram-crypto-week-2018-v02_medium-1.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<p>These naming issues are things Cloudflare is perfectly positioned to help solve.First, by putting the hash address of an IPFS site in the DNS (and adding DNSSEC for trust) you can give your site a traditional hostname while maintaining a chain of trust.</p>
+	<p>Second, by enabling browsers to use a traditional DNS name to access the web through onion services, you can provide safer access to your site for Tor user with the added benefit of being better able to distinguish between bots and humans.With Cloudflare as the glue, is is possible to connect both standard internet and tor users to web sites and services on both the traditional web with the distributed web.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rzDTSMsIy1c5frGel8Eff/827e7f78401eef6a2ae2ed02f44c822b/bowtie-diagram-crypto-week-2018-v02_medium-1.gif" alt="" class="kg-image" width="1440" height="450" loading="lazy">
+
+	</figure>
 	<p>This is the promise of Crypto Week: using cryptographic guarantees to make a stronger, more trustworthy and more private internet without sacrificing usability.</p>
-	<h2 id="happy-crypto-week">Happy Crypto Week</h2>
-	<p>In conclusion, we’re working on many cutting-edge technologies based on cryptography and applying them to make the Internet better. The first announcement today is the launch of Cloudflare's <a href="https://blog.cloudflare.com/distributed-web-gateway">Distributed Web Gateway</a> and <a href="https://blog.cloudflare.com/e2e-integrity">browser extension</a>. Keep tabs on the Cloudflare blog for exciting updates as the week progresses. </p>
+	<h2>Happy Crypto Week</h2>
+	<p>In conclusion, we’re working on many cutting-edge technologies based on cryptography and applying them to make the Internet better. The first announcement today is the launch of Cloudflare's <a href="https://blog.cloudflare.com/distributed-web-gateway">Distributed Web Gateway</a> and <a href="https://blog.cloudflare.com/e2e-integrity">browser extension</a>. Keep tabs on the Cloudflare blog for exciting updates as the week progresses.</p>
 	<p>I’m very proud of the team’s work on Crypto Week, which was made possible by the work of a dedicated team, including several brilliant interns. If this type of work is interesting to you, Cloudflare is hiring for the <a href="https://boards.greenhouse.io/cloudflare/jobs/634967?gh_jid=634967">crypto team</a> and <a href="https://www.cloudflare.com/careers">others</a>!</p>
 </div>

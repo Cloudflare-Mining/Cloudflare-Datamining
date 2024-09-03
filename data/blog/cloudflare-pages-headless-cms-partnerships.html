@@ -1,33 +1,55 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-pages-headless-cms-partnerships-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-headless-cms-partnerships-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-25.png" class="kg-image" alt="Cloudflare Pages Partners Up Contentful, Sanity and Strapi" loading="lazy"></figure>
+<div class="mb2 gray5">3 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-pages-headless-cms-partnerships">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-headless-cms-partnerships">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PaTaGMwbmdT04pwW7y9sY/66299cf60aacce6c2ed544b8a907b2ca/image3-25.png" alt="Cloudflare Pages Partners Up Contentful, Sanity and Strapi" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Interest in headless CMSes has seen spectacular growth over the past few years with many businesses looking to adopt the tooling. As audiences consume content through new interfaces taking different forms — smartphones, wearables, personal devices — the idea of decoupling content with its backend begins to provide a better experience both for developing teams and end users. Because of this, we believe there are and will be more opportunities in the future to utilize headless CMSes which is why today, we’re thrilled to announce our partnerships with <a href="https://sanity.io">Sanity</a> and <a href="https://strapi.io">Strapi</a> and also share existing integrations with <a href="https://www.contentful.com">Contentful</a> and <a href="https://wordpress.org">WordPress</a> — all your favorite CMS providers.</p>
-	<h3 id="a-little-on-headless-cmses">A little on headless CMSes</h3>
+	<h3>A little on headless CMSes</h3>
 	<p>Headless CMSes are one of the most common API integrations we’ve seen so far among you and your teams — whether it’s for your marketing site, blog or <a href="https://www.cloudflare.com/ecommerce">e-commerce site</a>. It provides your teams the ability to input the contents of your site through a user-friendly interface and store them in a database, so that updates can easily be made to your site without touching the code base. As a Jamstack platform, a big part of our roadmap is understanding how we can build our own tools or provide integrations for tools that fit in with your development ecosystem and Pages, which is why in August this year we <a href="https://blog.cloudflare.com/introducing-deploy-hooks-for-cloudflare-pages">announced Pages support for Deploy Hooks</a>.</p>
-	<h3 id="what-s-a-hook-got-to-do-with-it">What’s a hook got to do with it?</h3>
-	<p>Deploy Hooks are the key to what allows you to connect and trigger deployments in Pages via updates made in your headless CMS. As developers, instead of getting pinged several times a day to make content updates to your site, your marketing team can update the site directly within the headless CMS’s interface by way of a Deploy Hook. This is a URL created on Pages that accepts an HTTP POST request to trigger new deployments outside the realm of your git commands. You can configure settings within your CMS to accept the Deploy Hook so that anytime content is updated within your CMS, a new deployment is started in the Pages dashboard automatically — it couldn’t be any easier!<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-18.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="how-can-i-create-a-deploy-hook">How can I create a Deploy Hook?</h3>
+	<h3>What’s a hook got to do with it?</h3>
+	<p>Deploy Hooks are the key to what allows you to connect and trigger deployments in Pages via updates made in your headless CMS. As developers, instead of getting pinged several times a day to make content updates to your site, your marketing team can update the site directly within the headless CMS’s interface by way of a Deploy Hook. This is a URL created on Pages that accepts an HTTP POST request to trigger new deployments outside the realm of your git commands. You can configure settings within your CMS to accept the Deploy Hook so that anytime content is updated within your CMS, a new deployment is started in the Pages dashboard automatically — it couldn’t be any easier!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Ga9mYZKafjYTaWyk9Pyof/c19bfb4095769d13661e852eb0d90f36/image2-18.png" alt="" class="kg-image" width="895" height="290" loading="lazy">
+
+	</figure>
+	<h3>How can I create a Deploy Hook?</h3>
 	<p>Within the Pages interface, there are two things you need to do to create your Deploy Hook:</p>
 	<ol>
-		<li><strong>Choose your Deploy Hook name:</strong> You can name your deploy hook anything you’d like</li>
-		<li><strong>Select the Branch to Build: </strong>You can specify which branch will be built and deployed when the URL is requested with the Deploy Hook. </li>
+		<li>
+			<p><b>Choose your Deploy Hook name:</b> You can name your deploy hook anything you’d like</p>
+		</li>
+		<li>
+			<p><b>Select the Branch to Build:</b> You can specify which branch will be built and deployed when the URL is requested with the Deploy Hook.</p>
+		</li>
 	</ol><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 75%;"><iframe src="https://iframe.videodelivery.net/a4fabda318990fa7b1bb8e9e2f5d3542?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Once you are given your Deploy Hook, you’re all set to set up a webhook within your chosen CMS where you will paste your Deploy Hook.</p>
 	<p>That’s it! Now leave it to your marketing team to update their rich content and watch the builds trigger automatically to update your site!</p>
-	<h3 id="our-partners">Our partners</h3>
+	<h3>Our partners</h3>
 	<p>Of course, Deploy Hooks is just a starting point of ways we can provide a better dev experience for your team when using the headless CMS of your choice with your Pages site. But our story of integrations does not stop here. Introducing our CMS partners and integrations: <a href="https://sanity.io">Sanity</a>, <a href="https://strapi.io">Strapi</a>, <a href="https://www.contentful.com">Contentful</a>, and <a href="https://wordpress.org">WordPress</a>!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-38.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4cHjlUzTb0cWXGCgL1rrbk/274b2709d0cbdf1f8e7ebfb680847576/image1-38.png" alt="" class="kg-image" width="1999" height="422" loading="lazy">
+
+	</figure>
 	<p>We continue to see the highest usage rates of these four CMSes on Pages among you and your teams, and in the months to come we’ll be working closely with our partners to build even more for you.</p>
-	<blockquote><em>We’re delighted to partner with Cloudflare and excited by this new release from Cloudflare Pages. At Sanity, we care deeply about people working with content on our platform. Cloudflare’s new deploy hooks allow developers to automate builds for static sites based on content changes, which is a huge improvement for content creators. Combining these with structured content and our GROQ-powered Webhooks, our customers can be strategic about when these builds should happen. We’re stoked to be part of this release and can’t wait to see what the community will build with Sanity and Cloudflare!</em><br>- <strong><strong><strong>Even Westvang, Co-founder, Sanity.io</strong></strong></strong></blockquote>
+	<blockquote>
+		<p><i>We’re delighted to partner with Cloudflare and excited by this new release from Cloudflare Pages. At Sanity, we care deeply about people working with content on our platform. Cloudflare’s new deploy hooks allow developers to automate builds for static sites based on content changes, which is a huge improvement for content creators. Combining these with structured content and our GROQ-powered Webhooks, our customers can be strategic about when these builds should happen. We’re stoked to be part of this release and can’t wait to see what the community will build with Sanity and Cloudflare!</i>- <b>Even Westvang, Co-founder, Sanity.io</b></p>
+	</blockquote>
 	<p>Check out <a href="https://www.sanity.io/blog/deploying-a-next-js-site-on-cloudflare-pages-with-webhooks">Sanity’s video tutorial</a> on how to build your site using Pages and Sanity!</p>
-	<blockquote><em>At Strapi, we’re excited about this partnership with Cloudflare because it enables developers to abstract away the complexity of deploying changes to production for content teams. By using the Deploy Hook for Strapi, everyone can push new content and updates quickly and autonomously.</em><br>- <strong><strong><strong>Pierre Burgy, CEO, Strapi.io</strong></strong></strong></blockquote>
-	<blockquote>With this integration, our customers can work more efficiently and cross-functionally with their teams. Marketing teams can update Contentful directly to automatically trigger deployments without relying on their developers to update any of their code base, which results in a better, more productive experience for all teams involved.<br>- <strong>Jeff Blattel, Director of Technical Partnerships at Contentful</strong></blockquote>
-	<h3 id="get-started">Get started</h3>
-	<p>For now, to learn more about how you can connect your Pages project to one of our partner CMSes, check out our<a href="https://developers.cloudflare.com/pages/platform/deploy-hooks"> Deploy Hooks documentation</a> to deploy your first project today!</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<blockquote>
+		<p><i>At Strapi, we’re excited about this partnership with Cloudflare because it enables developers to abstract away the complexity of deploying changes to production for content teams. By using the Deploy Hook for Strapi, everyone can push new content and updates quickly and autonomously.</i>- <b>Pierre Burgy, CEO, Strapi.io</b></p>
+	</blockquote>
+	<blockquote>
+		<p>With this integration, our customers can work more efficiently and cross-functionally with their teams. Marketing teams can update Contentful directly to automatically trigger deployments without relying on their developers to update any of their code base, which results in a better, more productive experience for all teams involved.- <b>Jeff Blattel, Director of Technical Partnerships at Contentful</b></p>
+	</blockquote>
+	<h3>Get started</h3>
+	<p>For now, to learn more about how you can connect your Pages project to one of our partner CMSes, check out our <a href="https://developers.cloudflare.com/pages/platform/deploy-hooks">Deploy Hooks documentation</a> to deploy your first project today!</p>
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

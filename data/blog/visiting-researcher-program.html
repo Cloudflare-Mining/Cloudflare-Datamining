@@ -1,26 +1,36 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-20.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>As part of Cloudflare’s effort to build collaborations with academia, we host research focused internships <a href="https://blog.cloudflare.com/internship-experience-research-engineer">all year long</a>. Interns collaborate cross-functionally in research projects and are encouraged to ship code and write a blog post and a peer-reviewed publication at the end of their internship. Post-internship, many of our interns have joined Cloudflare to continue their work and often connect back with their <em>alma mater</em> strengthening idea sharing and collaborative initiatives. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fa1vJK9QUqUJlHEfucyQe/9734468c1822e38b917485b6987253d3/image1-20.png" alt="" class="kg-image" width="946" height="546" loading="lazy">
+
+	</figure>
+	<p>As part of Cloudflare’s effort to build collaborations with academia, we host research focused internships <a href="https://blog.cloudflare.com/internship-experience-research-engineer">all year long</a>. Interns collaborate cross-functionally in research projects and are encouraged to ship code and write a blog post and a peer-reviewed publication at the end of their internship. Post-internship, many of our interns have joined Cloudflare to continue their work and often connect back with their <i>alma mater</i> strengthening idea sharing and collaborative initiatives.</p>
 	<p>Last year, we extended the intern experience by hosting Thomas Ristenpart, Associate Professor at Cornell Tech. Thomas collaborated for half a year on a project related to password breach alerting. Based on the success of this experience we are taking a further step in creating a structured Visiting Researcher program, to broaden our capabilities and invest further on a shared motivation with academics.</p>
-	<h3 id="foster-engagement-and-closer-partnerships">Foster engagement and closer partnerships</h3>
+	<h3>Foster engagement and closer partnerships</h3>
 	<p>Our current research focuses on applied cryptography, privacy, network protocols and architecture, measurement and performance evaluation, and, increasingly, distributed systems. With the Visiting Researcher program, Cloudflare aims to foster a shared motivation with academia and engage together in seeking innovative solutions to help build a better Internet in the mentioned domains.</p>
 	<p>We expect to support the operationalization of ideas that emerge in academia and put them to the test in deployable services that will be used worldwide, hence giving the opportunity to develop collaborative projects with real world applicability and also push industry forward.</p>
-	<h3 id="about-the-visiting-researcher-program">About the Visiting Researcher Program</h3>
+	<h3>About the Visiting Researcher Program</h3>
 	<p>The Visiting Researcher Program is available to both postdocs and full-time faculty members who aim to collaborate primarily with Cloudflare Research for periods of three to 12 months. There are a few eligibility criteria to meet before expressing interest in the program:</p>
 	<ul>
-		<li>Have a PhD and a well-established research track record demonstrated by peer-reviewed journal publications and conference papers.</li>
-		<li>Relevant research experience and interest in one of the research areas.</li>
-		<li>Ability to design and execute on a research agenda.</li>
+		<li>
+			<p>Have a PhD and a well-established research track record demonstrated by peer-reviewed journal publications and conference papers.</p>
+		</li>
+		<li>
+			<p>Relevant research experience and interest in one of the research areas.</p>
+		</li>
+		<li>
+			<p>Ability to design and execute on a research agenda.</p>
+		</li>
 	</ul>
 	<p>We know we will receive excellent proposals but we expect selected expressions of interest to have the potential to have a significant impact on one of the mentioned domains and reinforce the contribution to the Internet community at large. Proposals should aim at wide dissemination and have the potential to deliver value to both technical and academic communities.</p>
 	<p>You can explore more about the program on the Cloudflare Research <a href="https://research.cloudflare.com/outreach/researchers">website</a> and learn more about Thomas Ristenpart’s experience in the next section .</p>
-	<h3 id="the-visiting-researcher-experience-so-far">The Visiting Researcher experience so far</h3>
+	<h3>The Visiting Researcher experience so far</h3>
 	<p>There are a lot of potential reasons for a short-term visit in industry. For senior researchers it's an opportunity to refresh one's perspectives on problems observed in practice, and potentially transfer research ideas from "the lab" to products. Compared to some companies, Cloudflare's research organization is smaller, has clear connections with product teams, and has an outsized portfolio of exciting, high-impact research projects.</p>
 	<p>As mentioned above, I joined Cloudflare in the summer of 2020, during my academic sabbatical. I worked three days a week — remotely given the COVID-19 pandemic — and spent the rest of the work week advising my academic group at Cornell. A lot of my academic research over the past few years has focused on how to improve security for password-based authentication, including developing some of the first protocols for privacy-preserving password breach alerting. I knew Cloudflare well due to its ongoing engagement with the applied cryptography community, and it made sense to visit: Cloudflare's focus on security, privacy, and its position as a first-line of defense for millions of websites made it a unique opportunity for working on improving authentication security.</p>
 	<p>I worked directly with research engineers in the team to implement a new type of password breach alerting service, that we called Might I Get Pwned (MIGP). While it built off prior work done in academia, we encountered a number of fascinating challenges in architecting and implementing the system. We also found new opportunities for impact, realizing that the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall (WAF)</a> team was simultaneously interested in breach alerting and could utilize the infrastructure we were building. Ultimately, my work contributed directly to the <a href="https://blog.cloudflare.com/account-takeover-protection">WAF's breach alerting feature</a> that launched in Spring 2021.</p>
 	<p>At the same time, being embedded at Cloudflare surfaced fascinating new research questions. At one point, the CEO asked the team about how we could handle the potential threat of hoarding attacks against Privacy Pass, a deployed cryptographic protocol that Cloudflare customers rely on to help prevent bots from mounting attacks. This led to a foundational cryptographic protocol question: can we build partially oblivious pseudorandom function protocols that match the efficiency of standard oblivious pseudorandom functions? I won't unpack that jargon here, but for those who are curious you can check out the <a href="https://eprint.iacr.org/2021/864">preprint</a>. We ended up tackling this question as a collaboration between my academic research group, the University of Washington, and Cloudflare, culminating in a new protocol that is sure to get deployed quite widely in the years to come.</p>
 	<p>Overall, this was a hugely successful visit. I'm excited to see the Cloudflare visiting scholar program expand and develop, and would definitely recommend it to interested academics.</p>
-	<h3 id="express-your-interest">Express your interest</h3>
-	<p>We’re very excited to have this program going forward and diversifying our collaborations with academia! You can read more about the Visiting Researcher program and send us your expression of interest through Cloudflare Research <a href="https://research.cloudflare.com/outreach/researchers">website</a>. We are expecting to host you in early 2022!<br></p>
+	<h3>Express your interest</h3>
+	<p>We’re very excited to have this program going forward and diversifying our collaborations with academia! You can read more about the Visiting Researcher program and send us your expression of interest through Cloudflare Research <a href="https://research.cloudflare.com/outreach/researchers">website</a>. We are expecting to host you in early 2022!</p>
 </div>

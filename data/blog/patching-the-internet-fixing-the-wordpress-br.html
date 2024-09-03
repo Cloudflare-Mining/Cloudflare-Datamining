@@ -1,12 +1,19 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Patching the Internet in Realtime: Fixing the Current WordPress Brute Force Attack" src="https://blog.cloudflare.com/content/images/wp_bruteforce_opt1.png.scaled500.png" title="Patching the Internet in Realtime: Fixing the Current WordPress Brute Force Attack"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VetxDoUGRD1YV9igU5dgu/9740949e66156a43ae39cd7859bd02b9/wp_bruteforce_opt1.png.scaled500.png" alt="Patching the Internet in Realtime: Fixing the Current WordPress Brute Force Attack" class="kg-image" width="500" height="356" loading="lazy">
+
+	</figure>
 	<p>There is currently a significant attack being launched at a large number of WordPress blogs across the Internet. The attacker is brute force attacking the WordPress administrative portals, using the username "admin" and trying thousands of passwords. It appears a botnet is being used to launch the attack and more than tens of thousands of unique IP addresses have been recorded attempting to hack WordPress installs.</p>
 	<p>One of the concerns of an attack like this is that the attacker is using a relatively weak botnet of home PCs in order to build a much larger botnet of beefy servers in preparation for a future attack. These larger machines can cause much more damage in DDoS attacks because the servers have large network connections and are capable of generating significant amounts of traffic. This is a similar tactic that was used to <a href="http://www.informationweek.com/security/attacks/bank-attackers-used-php-websites-as-laun/240144413">build the so-called itsoknoproblembro/Brobot botnet</a> which, in the Fall of 2012, was behind the large attacks on US financial institutions.</p>
-	<h3 id="patchingtheinternet">Patching the Internet</h3>
+	<h3>Patching the Internet</h3>
 	<p>We just pushed a rule out through CloudFlare's WAF that detects the signature of the attack and stops it. Rather than limiting this to only paying customers, CloudFlare is rolling it out the fix to all our customers automatically, including customers on our free plan. If you are a WordPress user and you are using CloudFlare, you are now protected from this latest brute force attack.</p>
 	<p>Because CloudFlare sits in front of a significant portion of web requests we have the opportunity to, literally, patch Internet vulnerabilities in realtime. We will be providing information about the attack back to partners who are interested in hardening their internal defenses for customers who are not yet on CloudFlare.</p>
-	<p><img alt="Patching the Internet in Realtime: Fixing the Current WordPress Brute Force Attack" src="https://blog.cloudflare.com/content/images/internet_patch.png.scaled500.png" title="Patching the Internet in Realtime: Fixing the Current WordPress Brute Force Attack"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Qxf0zOlMIZlcmsHkeGr97/b408d4f8253ec641a6fa16cdf170ac4c/internet_patch.png.scaled500.png" alt="Patching the Internet in Realtime: Fixing the Current WordPress Brute Force Attack" class="kg-image" width="250" height="250" loading="lazy">
+
+	</figure>
 	<p>If you are running a WordPress blog and want to ensure you are protected from this attack, you can <a href="https://www.cloudflare.com/sign-up">sign up for CloudFlare's free plan</a> and the protection is automatic. We'll continue to monitor the details of the attack and publish details about what we learn.</p>
-	<!--kg-card-end: markdown-->
 </div>

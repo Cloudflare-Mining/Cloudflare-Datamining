@@ -1,65 +1,77 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-41.png" class="kg-image" alt="Twilio Segment Edge SDK Powered by Cloudflare Workers" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Icsnq0MfraKeAfhZuKsdH/e875e3c489466b5ac84ba087911d1220/image3-41.png" alt="Twilio Segment Edge SDK Powered by Cloudflare Workers" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>The Cloudflare team was so excited to hear how Twilio Segment solved problems they encountered with tracking first-party data and personalization using Cloudflare Workers. We are happy to have guest bloggers Pooya Jaferian and Tasha Alfano from Twilio Segment to share their story.</p>
-	<h2 id="introduction">Introduction</h2>
+	<h2>Introduction</h2>
 	<p>Twilio Segment is a customer data platform that collects, transforms, and activates first-party customer data. Segment helps developers collect user interactions within an application, form a unified customer record, and sync it to hundreds of different marketing, product, analytics, and data warehouse integrations.</p>
 	<p>There are two “unsolved” problem with app instrumentation today:</p>
-	<p><strong>Problem #1: </strong>Many important events that you want to track happen on the “wild-west” of the client, but collecting those events via the client can lead to <em>low data quality,</em> as events are dropped due to user configurations, browser limitations, and network connectivity issues.</p>
-	<p><strong>Problem #2: </strong>Applications need access to real-time (&lt;50ms) user state to personalize the application experience based on advanced computations and <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">segmentation logic</a> that <em>must</em> be executed on the cloud.</p>
+	<p><b>Problem #1:</b> Many important events that you want to track happen on the “wild-west” of the client, but collecting those events via the client can lead to <i>low data quality,</i> as events are dropped due to user configurations, browser limitations, and network connectivity issues.</p>
+	<p><b>Problem #2:</b> Applications need access to real-time (&lt;50ms) user state to personalize the application experience based on advanced computations and <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">segmentation logic</a> that <i>must</i> be executed on the cloud.</p>
 	<p>The Segment Edge SDK – built on Cloudflare Workers – solves for both. With Segment Edge SDK, developers can collect high-quality first-party data. Developers can also use Segment Edge SDK to access real-time user profiles and state, to deliver personalized app experiences without managing a ton of infrastructure.</p>
 	<p>This post goes deep on how and why we built the Segment Edge SDK. We chose the Cloudflare Workers platform as the runtime for our SDK for a few reasons. First, we needed a scalable platform to collect billions of events per day. Workers running with no cold-start made them the right choice. Second, our SDK needed a fast storage solution, and Workers KV fitted our needs perfectly. Third, we wanted our SDK to be easy to use and deploy, and Workers’ ease and speed of deployment was a great fit.</p>
 	<p>It is important to note that the Segment Edge SDK is in early development stages, and any features mentioned are subject to change.</p>
-	<h2 id="serving-a-javascript-library-700m-times-per-day">Serving a JavaScript library 700M+ times per day</h2>
+	<h2>Serving a JavaScript library 700M+ times per day</h2>
 	<p>analytics.js is our core JavaScript UI SDK that allows web developers to send data to any tool without having to learn, test, or use a new API every time.</p>
-	<p>Figure 1 illustrates how Segment can be used to collect data on a web application. Developers add Segment’s web SDK, <a href="https://segment.com/docs/connections/sources/catalog/libraries/website/javascript"><strong>analytics.js</strong></a>, to their websites by <a href="https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/#step-2-add-the-segment-snippet">including a JavaScript snippet</a> to the <code>HEAD</code> of their web pages. The snippet can immediately collect and buffer events while it also loads the full library asynchronously from the Segment CDN. Developers can then use analytics.js to identify the visitors, e.g., <code><strong>analytics</strong>.identify('john')</code>, and track user behavior, e.g., <code>analytics.track('<strong>Order</strong> <strong>Completed</strong>')</code>. Calling the `analytics.js methods such as <em>identify</em> or <em>track</em> will send data to Segment’s API (<code>api.segment.io</code>). Segment’s platform can then deliver the events to different tools, as well as create a profile for the user (e.g., build a profile for user “John”, associate “Order Completed”, as well as add all future activities of john to the profile).</p>
+	<p>Figure 1 illustrates how Segment can be used to collect data on a web application. Developers add Segment’s web SDK, <a href="https://segment.com/docs/connections/sources/catalog/libraries/website/javascript"><b>analytics.js</b></a>, to their websites by <a href="https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/#step-2-add-the-segment-snippet">including a JavaScript snippet</a> to the <code>HEAD</code> of their web pages. The snippet can immediately collect and buffer events while it also loads the full library asynchronously from the Segment CDN. Developers can then use analytics.js to identify the visitors, e.g., <code>**analytics**.identify('john')</code>, and track user behavior, e.g., <code>analytics.track('**Order** **Completed**')</code>. Calling the `analytics.js methods such as <i>identify</i> or <i>track</i> will send data to Segment’s API (<code>api.segment.io</code>). Segment’s platform can then deliver the events to different tools, as well as create a profile for the user (e.g., build a profile for user “John”, associate “Order Completed”, as well as add all future activities of john to the profile).</p>
 	<p>Analytics.js also stores state in the browser as first-party cookies (e.g., storing an <code>ajs_user_id</code> cookie with the value of john, with cookie scoped at the example.com domain) so that when the user visits the website again, the user identifier stored in the cookie can be used to recognize the user.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-49.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 1- How analytics.js loads on a website and tracks events</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cFwIwnC5QZKPZ0617hgDb/f995420d5d23c273bbfd677f174219c6/image2-49.png" alt="" class="kg-image" width="1840" height="870" loading="lazy">
+
 	</figure>
+	<p>Figure 1- How analytics.js loads on a website and tracks events</p>
 	<p>While analytics.js only tracks first-party data (i.e., the data is collected and used by the website that the user is visiting), certain browser controls incorrectly identify analytics.js as a third-party tracker, because the SDK is loaded from a third-party domain (cdn.segment.com) and the data is going to a third-party domain (api.segment.com). Furthermore, despite using first-party cookies to store user identity, some browsers such as Safari have limited the TTL for non-HTTPOnly cookies to 7-days, making it challenging to maintain state for long periods of time.</p>
 	<p>To overcome these limitations, we have built a Segment Edge SDK (currently in early development) that can automatically add Segment’s library to a web application, eliminate the use of third-party domains, and maintain user identity using HTTPOnly cookies. In the process of solving the first-party data problem, we realized that the Edge SDK is best positioned to act as a personalization library, given it has access to the user identity on every request (in the form of cookies), and it can resolve such identity to a full-user profile stored in Segment. The user profile information can be used to deliver personalized content to users directly from the Cloudflare Workers platform.</p>
 	<p>The remaining portions of this post will cover how we solved the above problems. We first explain how the Edge SDK helps with first-party collection. Then we cover how the Segment profiles database becomes available on the Cloudflare Workers platform, and how to use such data to drive personalization.</p>
-	<h2 id="segment-edge-sdk-and-first-party-data-collection">Segment Edge SDK and first-party data collection</h2>
-	<p>Developers can set up the Edge SDK by creating a Cloudflare Worker sitting in front of their web application (via <a href="https://developers.cloudflare.com/workers/platform/routing/routes">Routes</a>) and importing the Edge SDK via npm. The Edge SDK will handle requests and automatically injects analytics.js snippets into every webpage. It also configures first-party endpoints to download the SDK assets and send tracking data. The Edge SDK also captures user identity by looking at the Segment events and instructs the browser to store such identity as HTTPOnly cookies.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import { Segment } from "@segment/edge-sdk-cloudflare";
+	<h2>Segment Edge SDK and first-party data collection</h2>
+	<p>Developers can set up the Edge SDK by creating a Cloudflare Worker sitting in front of their web application (via <a href="https://developers.cloudflare.com/workers/platform/routing/routes">Routes</a>) and importing the Edge SDK via npm. The Edge SDK will handle requests and automatically injects analytics.js snippets into every webpage. It also configures first-party endpoints to download the SDK assets and send tracking data. The Edge SDK also captures user identity by looking at the Segment events and instructs the browser to store such identity as HTTPOnly cookies.</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Segment } from "@segment/edge-sdk-cloudflare";
 
 export default {
-   async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
+   async fetch(request: Request, env: Env): Promise<response> {
        const segment = new Segment(env.SEGMENT_WRITE_KEY); 
 
        const resp = await segment.handleEvent(request, env);
 
        return resp;
    }
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="how-the-edge-sdk-works-under-the-hood-to-enable-first-party-data-collection">How the Edge SDK works under the hood to enable first-party data collection</h2>
-	<p>The Edge SDK's internal router checks the inbound request URL against predefined patterns. If the URL matches a route, the router runs the route's chain of handlers to process the request, fetch the origin, or modify the response.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">export interface HandlerFunction {
+};</response></code></pre>
+	<h2>How the Edge SDK works under the hood to enable first-party data collection</h2>
+	<p>The Edge SDK's internal router checks the inbound request URL against predefined patterns. If the URL matches a route, the router runs the route's chain of handlers to process the request, fetch the origin, or modify the response.</p>
+	<pre class="language-javascript"><code class="language-javascript">export interface HandlerFunction {
  (
    request: Request,
    response: Response | undefined,
    context: RouterContext
  ): Promise&lt;[Request, Response | undefined, RouterContext]&gt;;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Figure 2 demonstrates the routing of incoming requests. The Worker calls &nbsp;<code>segment.handleEvent</code> method with the request object (step 1), then the router matches the <code>request.url</code> and <code>request.method</code> against a set of predefined routes:</p>
 	<ul>
-		<li>GET requests with <code>/seg/assets/*</code> path are proxied to Segment CDN (step 2a)</li>
-		<li>POST requests with <code>/seg/events/*</code> path are proxied to Segment tracking API (step 2b)</li>
-		<li>Other requests are proxied to the origin (step 2c) and the HTML responses are enriched with the analytics.js snippet (step 3)</li>
+		<li>
+			<p>GET requests with <code>/seg/assets/*</code> path are proxied to Segment CDN (step 2a)</p>
+		</li>
+		<li>
+			<p>POST requests with <code>/seg/events/*</code> path are proxied to Segment tracking API (step 2b)</p>
+		</li>
+		<li>
+			<p>Other requests are proxied to the origin (step 2c) and the HTML responses are enriched with the analytics.js snippet (step 3)</p>
+		</li>
 	</ul>
 	<p>Regardless of the route, the router eventually returns a response to the browser (step 4) containing data from the origin, the response from Segment tracking API, or analytics.js assets. When Edge SDK detects the user identity in an incoming request (more on that later), it sets an HTTPOnly cookie in the response headers to persist the user identity in the browser.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-65.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 2- Edge SDK router flow<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cKXch0aUGqaIrvETjhR3K/ee302362d172b7e8062e08a9fb871aec/image1-65.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
+
 	</figure>
+	<p>Figure 2- Edge SDK router flow‌‌</p>
 	<p>In the subsequent three sections, we explain how we inject analytics.js, proxy Segment endpoints, and set server-side cookies.</p>
-	<h3 id="injecting-segment-sdk-on-requests-to-origin">Injecting Segment SDK on requests to origin</h3>
-	<p>For all the incoming requests routed to the origin, the Edge SDK fetches the HTML page and then adds the analytics.js snippet to the <code>&lt;HEAD&gt;</code> tag, embeds the <a href="https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key">write key</a>, and configures the snippet to download the subsequent javascript bundles from the first-party domain <code>([first-party host]/seg/assets/*)</code> and sends data to the first-party domain as well <code>([first-party host]/seg/events/*)</code>. This is accomplished using the <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter">HTMLRewriter</a> API.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import snippet from "@segment/snippet"; // Existing Segment package that generates snippet
+	<h3>Injecting Segment SDK on requests to origin</h3>
+	<p>For all the incoming requests routed to the origin, the Edge SDK fetches the HTML page and then adds the analytics.js snippet to the <code>&lt;HEAD&gt;</code> tag, embeds the <a href="https://segment.com/docs/getting-started/02-simple-install/#find-your-write-key">write key</a>, and configures the snippet to download the subsequent javascript bundles from the first-party domain <code>([first-party host]/seg/assets/*)</code> and sends data to the first-party domain as well <code>([first-party host]/seg/events/*)</code>. This is accomplished using the <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter">HTMLRewriter</a> API.</p>
+	<pre class="language-javascript"><code class="language-javascript">import snippet from "@segment/snippet"; // Existing Segment package that generates snippet
 
 class ElementHandler {
    constructor(host: string, writeKey: string)
@@ -70,7 +82,7 @@ class ElementHandler {
          host: `${this.host}/seg`,
          apiKey: this.writeKey,
        })
-     element.append(`&lt;script&gt;${snip}&lt;/script&gt;`, { html: true });
+     element.append(`<script>${snip}</script>`, { html: true });
    }
  }
   
@@ -90,26 +102,20 @@ export const enrichWithAJS: HandlerFunction = async (
        .transform(response),
      context,
    ];
- };
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="proxy-sdk-bundles-and-segment-api">Proxy SDK bundles and Segment API</h3>
-	<p>The Edge SDK proxies the Segment CDN and API under the first-party domain. For example, when the browser loads a page with the injected analytics.js snippet, the snippet loads the full analytics.js bundle from <code>https://example.com/seg/assets/sdk.js</code>, and the Edge SDK will proxy that request to the Segment CDN:</p><!--kg-card-begin: markdown-->
-	<pre><code>https://cdn.segment.com/analytics.js/v1/&lt;WRITEKEY&gt;/analytics.min.js
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">export const proxyAnalyticsJS: HandlerFunction = async (request, response, ctx) =&gt; {
+ };</code></pre>
+	<h3>Proxy SDK bundles and Segment API</h3>
+	<p>The Edge SDK proxies the Segment CDN and API under the first-party domain. For example, when the browser loads a page with the injected analytics.js snippet, the snippet loads the full analytics.js bundle from <code>https://example.com/seg/assets/sdk.js</code>, and the Edge SDK will proxy that request to the Segment CDN:</p>
+	<pre class="language-bash"><code class="language-bash">https://cdn.segment.com/analytics.js/v1/<writekey>/analytics.min.js</writekey></code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">export const proxyAnalyticsJS: HandlerFunction = async (request, response, ctx) =&gt; {
  const url = `https://cdn.segment.com/analytics.js/v1/${ctx.params.writeKey}/analytics.min.js`;
  const resp = await fetch(url);
  return [request, resp, ctx];
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Similarly, analytics.js collects events and sends them via a POST request to <code>https://example.com/seg/events/[method]</code> and the Edge SDK will proxy such requests to the Segment tracking API:</p><!--kg-card-begin: markdown-->
-	<pre><code>https://api.segment.io/v1/[method]
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">export const handleAPI: HandlerFunction = async (request, response, context) =&gt; {
+};</code></pre>
+	<p>Similarly, analytics.js collects events and sends them via a POST request to <code>https://example.com/seg/events/[method]</code> and the Edge SDK will proxy such requests to the Segment tracking API:</p>
+	<pre class="language-bash"><code class="language-bash">https://api.segment.io/v1/[method]</code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">export const handleAPI: HandlerFunction = async (request, response, context) =&gt; {
  const url = new URL(request.url);
  const parts = url.pathname.split("/");
  const method = parts.pop();
@@ -124,12 +130,10 @@ export const enrichWithAJS: HandlerFunction = async (
  const resp = await fetch(`https://api.segment.io/v1/${method}`, init);
 
  return [request, resp, context];
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="first-party-server-side-cookies">First party server-side cookies</h3>
-	<p>The Edge SDK also re-writes existing client-side analytics.js cookies as HTTPOnly cookies. When Edge SDK intercepts an <code>identify</code> event e.g., <code><strong>analytics</strong>.identify('john')</code>, it extracts the user identity (“john”) and then sets a server-side cookie when sending a response back to the user. Therefore, any subsequent request to the Edge SDK can be associated with “john” using request cookies.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">export const enrichResponseWithIdCookies: HandlerFunction = async (
+};</code></pre>
+	<h3>First party server-side cookies</h3>
+	<p>The Edge SDK also re-writes existing client-side analytics.js cookies as HTTPOnly cookies. When Edge SDK intercepts an <code>identify</code> event e.g., <code>**analytics**.identify('john')</code>, it extracts the user identity (“john”) and then sets a server-side cookie when sending a response back to the user. Therefore, any subsequent request to the Edge SDK can be associated with “john” using request cookies.</p>
+	<pre class="language-javascript"><code class="language-javascript">export const enrichResponseWithIdCookies: HandlerFunction = async (
  request, response, context) =&gt; {
 
 
@@ -154,13 +158,11 @@ export const enrichWithAJS: HandlerFunction = async (
  });
 
  return [request, newResponse, newContext];
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</code></pre>
 	<p>Intercepting the <code>ajs_user_id</code> on the Workers, and using the cookie identifier to associate each request to a user, is quite powerful, and it opens the door for delivering personalized content to users. The next section covers how Edge SDK can drive personalization.</p>
-	<h2 id="personalization-on-the-supercloud">Personalization on the Supercloud</h2>
-	<p>The Edge SDK offers a <code>registerVariation</code> method that can customize how a request to a given route should be fetched from the origin. For example, let's assume we have three versions of a landing page in the origin: <code>/red</code>, <code>/green</code>, and &nbsp;<code>/</code> (default), and we want to deliver one of the three versions based on the visitor traits. We can use Edge SDK as follows:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">   const segment = new Segment(env.SEGMENT_WRITE_KEY); 
+	<h2>Personalization on the Supercloud</h2>
+	<p>The Edge SDK offers a <code>registerVariation</code> method that can customize how a request to a given route should be fetched from the origin. For example, let's assume we have three versions of a landing page in the origin: <code>/red</code>, <code>/green</code>, and &nbsp;<code>/</code> (default), and we want to deliver one of the three versions based on the visitor traits. We can use Edge SDK as follows:</p>
+	<pre class="language-javascript"><code class="language-javascript">   const segment = new Segment(env.SEGMENT_WRITE_KEY); 
    segment.registerVariation("/", (profile) =&gt; {
      if (profile.red_group) {
        return "/red"
@@ -171,21 +173,26 @@ export const enrichWithAJS: HandlerFunction = async (
 
    const resp = await segment.handleEvent(request, env);
 
-   return resp
-</code></pre>
-	<!--kg-card-end: markdown-->
+   return resp</code></pre>
 	<p>The <code>registerVariation</code> accepts two inputs: the path that displays the personalized content, and a decision function that should return the origin address for the personalized content. The decision function receives a profile object visitor in Segment. In the example, when users visit <code>example.com/(root path)</code>, personalized content is delivered by checking if the visitor has a <code>red_group</code> or <code>green_group</code> trait and subsequently requesting the content from either <code>/red</code> or <code>/green</code> path at the origin.</p>
 	<p>We already explained that Edge SDK knows the identity of the user via <code>ajs_user_id</code> cookie, but we haven’t covered how the Edge SDK has access to the full profile object. The next section explains how the full profile becomes available on the Cloudflare Workers platform.</p>
-	<h3 id="how-does-personalization-work-under-the-hood">How does personalization work under the hood?</h3>
+	<h3>How does personalization work under the hood?</h3>
 	<p>The Personalization feature of the Edge SDK requires storage of profiles on the Cloudflare Workers platform. A <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">Cloudflare KV</a> should be created for the Worker running the Edge SDK and passed to the Edge SDK during initialization. Edge SDK will store profiles in KV, where keys are the ajs_user_id, and values are the serialized profile object. To move <a href="https://segment.com/docs/profiles">Profiles</a> data from Segment to the KV, the SDK uses two methods:</p>
 	<ul>
-		<li><em>Profiles data push from Segment to the Cloudflare Workers platform: </em>The Segment product <a href="https://segment.com/docs/engage/using-engage-data">can sync user profiles database with different tools</a>, including pushing the data to a webhook. The Edge SDK automatically exposes a webhook endpoint under the first-party domain (e.g., <code>example.com/seg/profiles-webhook</code>) that Segment can call periodically to sync user profiles. The webhook handler receives incoming sync calls from Segment, and writes profiles to the KV.</li>
-		<li><em>Pulling data from Segment by the Edge SDK:</em> If the Edge SDK queries the KV for a user id, and doesn’t find the profile (i.e., data hasn’t synced yet), it requests the user profile from the <a href="https://segment.com/docs/profiles/profile-api">Segment API</a>, and stores it in the KV.</li>
+		<li>
+			<p><i>Profiles data push from Segment to the Cloudflare Workers platform:</i> The Segment product <a href="https://segment.com/docs/engage/using-engage-data">can sync user profiles database with different tools</a>, including pushing the data to a webhook. The Edge SDK automatically exposes a webhook endpoint under the first-party domain (e.g., <code>example.com/seg/profiles-webhook</code>) that Segment can call periodically to sync user profiles. The webhook handler receives incoming sync calls from Segment, and writes profiles to the KV.</p>
+		</li>
+		<li>
+			<p><i>Pulling data from Segment by the Edge SDK:</i> If the Edge SDK queries the KV for a user id, and doesn’t find the profile (i.e., data hasn’t synced yet), it requests the user profile from the <a href="https://segment.com/docs/profiles/profile-api">Segment API</a>, and stores it in the KV.</p>
+		</li>
 	</ul>
-	<p>Figure 3 demonstrates how the personalization flow works. In <em>step 1</em>, the user requests content for the root path ( / ), and the Worker sends the request to the Edge SDK <em>(step 2)</em>. The Edge SDK router determines that a variation is registered on the route, therefore, extracts the <code>ajs_user_id</code> from the request cookies, and goes through the full profile extraction <em>(step 3)</em>. The SDK first checks the KV for a record with the key of <code>ajs_user_id</code> value and if not found, queries Segment API to fetch the profile, and stores the profile in the KV. Eventually, the profile is extracted and passed into the decision function to decide which path should be served to the user<em> (step 4)</em>. The router eventually fetches the variation from the origin <em>(step 5)</em> and returns the response under the / path to the browser <em>(step 6).</em></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-28.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 3- Personalization flow</figcaption>
+	<p>Figure 3 demonstrates how the personalization flow works. In <i>step 1</i>, the user requests content for the root path ( / ), and the Worker sends the request to the Edge SDK <i>(step 2)</i>. The Edge SDK router determines that a variation is registered on the route, therefore, extracts the <code>ajs_user_id</code> from the request cookies, and goes through the full profile extraction <i>(step 3)</i>. The SDK first checks the KV for a record with the key of <code>ajs_user_id</code> value and if not found, queries Segment API to fetch the profile, and stores the profile in the KV. Eventually, the profile is extracted and passed into the decision function to decide which path should be served to the user <i>(step 4)</i>. The router eventually fetches the variation from the origin <i>(step 5)</i> and returns the response under the / path to the browser <i>(step 6).</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KzFSDxZVXQ1P7YN7IeyKC/3c7dba4b78dd268535381e96b329fe94/image4-28.png" alt="" class="kg-image" width="1999" height="1226" loading="lazy">
+
 	</figure>
-	<h2 id="summary">Summary</h2>
+	<p>Figure 3- Personalization flow</p>
+	<h2>Summary</h2>
 	<p>In this post we covered how the Cloudflare Workers platform can help with tracking first-party data and personalization. We also explained how we built a Segment Edge SDK to enable Segment customers to get those benefits out of the box, without having to create their own DIY solution. The Segment Edge SDK is currently in early development, and we are planning to launch a private pilot and open-source it in the near future.</p>
 </div>

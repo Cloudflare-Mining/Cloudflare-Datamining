@@ -1,23 +1,31 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://images.unsplash.com/photo-1529579134665-75dfc9c5ccef?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=faecb11a10fac556b1fc7ea6049454d9" alt="" loading="lazy"><br>
-		<small>Photo by <a href="https://unsplash.com/@chuttersnap?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">chuttersnap</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></small>
-	</p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OZWPxwQ7uktl1lwe4krIX/cc41e0d3061d4c47d49afb899bddf8e4/photo-1529579134665-75dfc9c5ccef" alt="" class="kg-image" width="1080" height="721" loading="lazy">
+
+	</figure>
+	<p>Photo by <a href="https://unsplash.com/@chuttersnap?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">chuttersnap</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
 	<p>At the end of 2017, Xinhua reported that there will be 200 Million IPv6 users inside Mainland China <a href="http://www.xinhuanet.com/english/2017-11/26/c_136780735.htm">by the end of this year</a>. Halfway into the year, we’re seeing a rapid growth in IPv6 users and traffic originating from Mainland China.</p>
-	<h3 id="whydoesthismatter">Why does this matter?</h3>
+	<h3>Why does this matter?</h3>
 	<p>IPv6 is often referred to the next generation of IP addressing. The reality is, IPv6 is what is needed for addressing today. Taking the largest mobile network in China today, China Mobile has over 900 Million mobile subscribers and over <a href="https://www.chinamobileltd.com/en/ir/operation_m.php">670 Million 4G/LTE subscribers</a>. To be able to provide service to their users, they need to provide an IP address to each subscriber’s device. This means close to a billion IP addresses would be required, which is far more than what is available in IPv4, especially as the available IP address pools have been <a href="https://en.wikipedia.org/wiki/IPv4_address_exhaustion">exhausted</a>.</p>
-	<h3 id="whatisthesolution">What is the solution?</h3>
+	<h3>What is the solution?</h3>
 	<p>To solve the addressability of clients, many networks, especially mobile networks, will use <a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT">Carrier Grade NAT (CGN)</a>. This allows thousands, possibly up to hundreds of thousands, of devices to be shared behind a single internet IP address. The CGN equipment can be very expensive to scale and further, given the scale of the networks, they might need to layer CGNs behind other CGNs. This increases costs per subscriber, can reduce performance and makes scaling very challenging. A further solution, <a href="https://en.wikipedia.org/wiki/NAT64">NAT64</a>, allows IPv6 addresses to be given to subscribers, but then translated to IPv4 addresses similar to other NATs. This allows networks and ISPs to begin deploying IPv6 to subscribers, a first step in transition to IPv6.</p>
-	<h3 id="ipv6ipv6ipv6">IPv6 IPv6 IPv6!</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/AS9808-BGP-Announcements.png" alt="AS9808-BGP-Announcements" loading="lazy"><br>
-		<small>Announcements IPv6 address blocks from China Mobile. Source: <a href="https://bgp.he.net/AS9808#_asinfo">Hurricane Electric</a></small>
-	</p>
+	<h3>IPv6 IPv6 IPv6!</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iY3FD5e6ymhDdlae7sTwV/4330214ecc32c7b341aaf32667f257e3/AS9808-BGP-Announcements.png" alt="AS9808-BGP-Announcements" class="kg-image" width="762" height="330" loading="lazy">
+
+	</figure>
+	<p>Announcements IPv6 address blocks from China Mobile. Source: <a href="https://bgp.he.net/AS9808#_asinfo">Hurricane Electric</a></p>
 	<p>On June 7, China Mobile started to announce IPv6 address blocks to the Internet at large. At the same time, Cloudflare started seeing traffic being exchanged with China Mobile users over IPv6 connections.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/AS9808-IPv6-Stats.png" alt="AS9808-IPv6-Stats" loading="lazy"><br>
-		<small>IPv4 to IPv6 percentage of traffic as seen from Cloudflare to AS9808 China Mobile’s Guangdong network.</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17A2wJdccc2D06GJEFPm2h/26acb46f432d9bc1caa65c9ea8ade564/AS9808-IPv6-Stats.png" alt="AS9808-IPv6-Stats" class="kg-image" width="1600" height="766" loading="lazy">
+
+	</figure>
+	<p>IPv4 to IPv6 percentage of traffic as seen from Cloudflare to AS9808 China Mobile’s Guangdong network.</p>
 	<p>Throughout the past 45 days, we’ve seen more and more IPv6 address blocks being announced to the internet, along with very aggressive usage. Interestingly this all started on-or-around June 8th 2018 (seven years to the day from <a href="https://en.wikipedia.org/wiki/World_IPv6_Day_and_World_IPv6_Launch_Day">World IPv6 Day</a>)</p>
 	<p>It’s natural to see traffic graphs like this go up; then down after a while. This could indicate there’s some testing still going on with the deployment. We fully expect that the traffic percentage will climb back up once this is fully rolled out.</p>
 	<p>It’s fantastic to see the IPv6 enablement! We congratulate China Mobile on their successful enablement going forward.</p>
-	<!--kg-card-end: markdown-->
 </div>

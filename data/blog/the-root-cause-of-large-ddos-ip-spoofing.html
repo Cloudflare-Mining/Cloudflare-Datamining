@@ -1,62 +1,113 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eit9rMZCFT8TJ1eXjggf6/86b03dfd0e799a4179b2d2895d073991/the-root-cause-of-large-ddos-ip-spoofing.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>A week ago we published a story about new amplification attacks using <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">memcached protocol on UDP port 11211</a>. A few things happened since then:</p>
 	<ul>
-		<li><a href="https://githubengineering.com/ddos-incident-report">Github announced it was a target of 1.3Tbps memcached attack</a>.</li>
-		<li><a href="https://twitter.com/olesovhcom/status/969328679410110466">OVH</a> and <a href="https://www.arbornetworks.com/blog/asert/netscout-arbor-confirms-1-7-tbps-ddos-attack-terabit-attack-era-upon-us">Arbor</a> reported similar large attacks with the peak reported at 1.7Tbps.</li>
+		<li>
+			<p><a href="https://githubengineering.com/ddos-incident-report">Github announced it was a target of 1.3Tbps memcached attack</a>.</p>
+		</li>
+		<li>
+			<p><a href="https://twitter.com/olesovhcom/status/969328679410110466">OVH</a> and <a href="https://www.arbornetworks.com/blog/asert/netscout-arbor-confirms-1-7-tbps-ddos-attack-terabit-attack-era-upon-us">Arbor</a> reported similar large attacks with the peak reported at 1.7Tbps.</p>
+		</li>
 	</ul>
 	<p>Let's take a deep breath and discuss why such large DDoS attacks are even possible on the modern internet.</p>
-	<h3 id="largeattacksuseipspoofing">Large attacks use IP spoofing</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/8426525097_cf3ed2db55_z.jpg" alt="8426525097_cf3ed2db55_z" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/dapuglet/8426525097">image</a> by <a href="https://www.flickr.com/photos/dapuglet">DaPuglet</a></small>
-	</p>
-	<p>All the gigantic headline-grabbing attacks are what we call "L3" (Layer 3 OSI<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>). This kind of attack has a common trait - the malicious software sends as many <em>packets</em> as possible onto the network. For greater speed these packets are hand crafted by attackers - they are not generated using high-level, well-behaved libraries. Packets are mashed together as a series of bytes and fired onto the network to inflict the greatest damage.</p>
+	<h3>Large attacks use IP spoofing</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3b8jURO2bONlcO2WGnhlMM/f375e70491260d88ea4cc95e2dd69c29/8426525097_cf3ed2db55_z.jpg" alt="8426525097_cf3ed2db55_z" class="kg-image" width="640" height="538" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/dapuglet/8426525097">image</a> by <a href="https://www.flickr.com/photos/dapuglet">DaPuglet</a></p>
+	<p>All the gigantic headline-grabbing attacks are what we call "L3" (Layer 3 OSI<a href="https://blog.cloudflare.com/#fn1">[1]</a>). This kind of attack has a common trait - the malicious software sends as many <i>packets</i> as possible onto the network. For greater speed these packets are hand crafted by attackers - they are not generated using high-level, well-behaved libraries. Packets are mashed together as a series of bytes and fired onto the network to inflict the greatest damage.</p>
 	<p>L3 attacks can be divided into two categories, depending on where the attacker directs their traffic:</p>
 	<ul>
 		<li>
-			<p><strong>Direct</strong>: where the traffic is sent directly against a victim IP. A SYN flood is a common attack of this type.</p>
+			<p><b>Direct</b>: where the traffic is sent directly against a victim IP. A SYN flood is a common attack of this type.</p>
 		</li>
 		<li>
-			<p><strong>Amplification</strong>: the traffic is sent to vulnerable UDP servers. They in turn reflect and amplify it by sending large responses to the unbeknown victim.</p>
+			<p><b>Amplification</b>: the traffic is sent to vulnerable UDP servers. They in turn reflect and amplify it by sending large responses to the unbeknown victim.</p>
 		</li>
 	</ul>
-	<p>Both of these types of attack require the attacker to do IP spoofing<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup>.</p>
-	<p><br><img alt="all" src="https://blog.cloudflare.com/content/images/2018/03/sp-spoofing.png" style="height:200px"></p>
+	<p>Both of these types of attack require the attacker to do IP spoofing<a href="https://blog.cloudflare.com/#fn2">[2]</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69j7sPB842FEqIYqTZarM1/5f354ba472dfb70817213a7fc79e6e03/sp-spoofing.png" alt="all" class="kg-image" width="1534" height="778" loading="lazy">
+
+	</figure>
 	<p>IP Spoofing happens when the attacker sends IP packets with a fake source IP address. It's like forging a return address on a letter and pretending to be someone else.</p>
-	<p><br><img alt="all" src="https://blog.cloudflare.com/content/images/2018/03/sp-impersonation.png" style="height:200px"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Zk2SmjPo99V5u14YGPg6A/96881feb64bde84c98cdd581d2e6de28/sp-impersonation.png" alt="all" class="kg-image" width="1514" height="734" loading="lazy">
+
+	</figure>
 	<p>Spoofing source IP addresses is not technically challenging. Every machine connected to the internet can transmit any bytes of their choosing - including setting arbitrary values in the source IP address field. It's just that such packets can do a great deal of damage when they are permitted onto the wide internet.</p>
-	<h3 id="directattacks">Direct attacks</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/sp-direct2.png" alt="sp-direct2" loading="lazy"></p>
+	<h3>Direct attacks</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RLRuWep9G88grfxQjIZQ/2920f2fd0fcba400d2b79c7394105abe/sp-direct2.png" alt="sp-direct2" class="kg-image" width="1498" height="410" loading="lazy">
+
+	</figure>
 	<p>In direct attacks the traffic is sent directly towards the victim. There is a bright side of this - the target can investigate the source IPs! Since Cloudflare is often a target of such attacks, occasionally we look at the data and have some fun.</p>
 	<p>To visualize the source IPs of the attacks, it's best to use <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert Curves</a>. Randall Munroe popularized this technique <a href="https://www.xkcd.com/195">in this famous XKCD</a>. The general idea is great - draw all 2**32 IPs on a two dimensional map by employing fancy math.</p>
-	<p><br><a href="https://www.xkcd.com/195"><img src="https://imgs.xkcd.com/comics/map_of_the_internet.jpg" style="height:500px" alt=""></a><br>
-		<small><a href="https://creativecommons.org/licenses/by-nc/2.5">CC BY-NC 2.5</a> <a href="https://www.xkcd.com/195">image</a> by Randall Munroe</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://www.xkcd.com/195">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nQ7gTMuhRfQSSaz9HrHMZ/9b5203ad9eb3c1c6323f812d5cd2e583/map_of_the_internet.jpg" alt="" class="kg-image" width="740" height="1076" loading="lazy">
+		</a>
+	</figure>
 	<p>Here are a couple of direct attacks doing IP spoofing that we saw in past.</p>
-	<p><br><a href="https://blog.cloudflare.com/content/images/2018/03/sp-all.png"><img alt="all" src="https://blog.cloudflare.com/content/images/2018/03/sp-all.png" style="width:250px; height:250px"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-all.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ejCnyqbR5n6vIVLbU991f/a53811878e10d5ee58a3d62bb271cb28/sp-all.png" alt="all" class="kg-image" width="768" height="768" loading="lazy">
+		</a>
+	</figure>
 	<p>In the first one, the attacker was spoofing indiscriminately all over the IP space, including multicast IP ranges, reserved blocks, and military prefixes.</p>
 	<p>What's even more funny, the attacker even spoofed the 127.0.0.0/8 range. Indeed, we can confirm the dreadful source of attacks - 127.0.0.1 - hits on regular basis.</p>
-	<p><br><a href="https://www.xkcd.com/742"><img src="https://imgs.xkcd.com/comics/campfire.png" style="height:500px" alt=""></a><br>
-		<small><a href="https://creativecommons.org/licenses/by-nc/2.5">CC BY-NC 2.5</a> <a href="https://www.xkcd.com/742">image</a> by Randall Munroe</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://www.xkcd.com/742">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CnFZIPisaECgB70GVPlSi/5727cfb1a22680463a78278c3feedc62/campfire.png" alt="" class="kg-image" width="273" height="276" loading="lazy">
+		</a>
+	</figure>
 	<p>Here is another example. During this one some IP ranges - reserved multicast and 127.0.0.0/8 - were not used:</p>
-	<p><br><a href="https://blog.cloudflare.com/content/images/2018/03/sp-almost-all.png"><img alt="Almost all" src="https://blog.cloudflare.com/content/images/2018/03/sp-almost-all.png" style="width:250px; height:250px"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-almost-all.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SnANgChNGXCkiPkCD9KRk/f6927a420ba36867b0d5c40b43c95dce/sp-almost-all.png" alt="Almost all" class="kg-image" width="768" height="768" loading="lazy">
+		</a>
+	</figure>
 	<p>Were attackers smart enough to skip the reserved source IPs? Unlikely. A plausible interpretation is that the traffic flows through a router that filters these obviously wrong sources.</p>
 	<p>We've also seen attackers that prefer left:</p>
-	<p><br><a href="https://blog.cloudflare.com/content/images/2018/03/sp-left.png"><img alt="Left" src="https://blog.cloudflare.com/content/images/2018/03/sp-left.png" style="width:250px; height:250px"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-left.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YF0qGWVqxGymlFeHnlTT9/68c3dd992945c30515d66c7618df77f5/sp-left.png" alt="Left" class="kg-image" width="1067" height="1067" loading="lazy">
+		</a>
+	</figure>
 	<p>Or right side of the internet:</p>
-	<p><br><a href="https://blog.cloudflare.com/content/images/2018/03/sp-right.png"><img alt="Right" src="https://blog.cloudflare.com/content/images/2018/03/sp-right.png" style="width:250px; height:250px"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-right.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77B2PZlTqFiIYfpYtiYmQj/72c0b6145858a59813e085afd4063548/sp-right.png" alt="Right" class="kg-image" width="768" height="768" loading="lazy">
+		</a>
+	</figure>
 	<p>We've seen many more exciting spoofed IP source patterns. The take away is: during direct attacks, you can't trust the source IPs! Attackers can set them to values of their choosing. Using source IPs in mitigations might not work, drawing them on geographical map makes no sense.</p>
-	<h3 id="amplificationattacks">Amplification attacks</h3>
-	<p><br><img alt="all" src="https://blog.cloudflare.com/content/images/2018/03/sp-amplification.png" style="height:300px"></p>
+	<h3>Amplification attacks</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77rMR7zOrvsFO2P0PudoH7/7997f1c154b10917f87400ee6d7cdb6b/sp-amplification.png" alt="all" class="kg-image" width="1508" height="870" loading="lazy">
+
+	</figure>
 	<p>In amplification attacks the traffic sent by the attacker has different characteristics .</p>
 	<ul>
-		<li>The source IP is spoofed and set to the <strong>victim's IP address</strong>.</li>
-		<li>Traffic is sent vulnerable amplification servers.</li>
+		<li>
+			<p>The source IP is spoofed and set to the <b>victim's IP address</b>.</p>
+		</li>
+		<li>
+			<p>Traffic is sent vulnerable amplification servers.</p>
+		</li>
 	</ul>
 	<p>The victim can only see the IPs of the vulnerable servers. Most common visualizations show them on a globe somehow. For example in the recent memcached-based attacks here is the map of abused servers:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/sp-ips-per-pop.png" alt="sp-ips-per-pop" loading="lazy"></p>
-	<h3 id="whyisipspoofingathing">Why is IP Spoofing a thing?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5V6l37ozbptHDZ9qin6CSB/3a06f419fa8d5c2cc91699e723cfa1ab/sp-ips-per-pop.png" alt="sp-ips-per-pop" class="kg-image" width="2056" height="1118" loading="lazy">
+
+	</figure>
+	<h3>Why is IP Spoofing a thing?</h3>
 	<p>The attacks discussed so far rely on IP spoofing. But why is IP spoofing even possible?</p>
 	<p>It's a side effect of the design of the internet.</p>
 	<p>There are three properties of the internet that make it impossible to verify if the packet is legitimate on the receiving side.</p>
@@ -72,61 +123,71 @@
 		</li>
 	</ul>
 	<p>Effective filtering preventing IP spoofing can only be done on the edge of the network - at the last-mile ISPs. Even doing this is hard. If I haven't convinced you yet, here's a more concrete example illustrating the problem.</p>
-	<h3 id="foocorpexample">FooCorp example</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/sp-foocorp-a.png" alt="sp-foocorp-a" loading="lazy"></p>
+	<h3>FooCorp example</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pbmNmF6McJmL1eSuqZzwd/fe8baab616a312c5023a153ed008ae4a/sp-foocorp-a.png" alt="sp-foocorp-a" class="kg-image" width="763" height="230" loading="lazy">
+
+	</figure>
 	<p>Let me introduce an example company, FooCorp which owns the IP ranges: 192.0.2.0/24 and 2001:db8::/48.</p>
 	<p>This company resides in a shiny office building in Snowville, Utah, and is connected to the internet by a single cable, operated by a carrier named UtahCom.</p>
 	<p>Say we, at Cloudflare, are very worried about these specific IP ranges, and want to ensure that nobody other than FooCorp can ever spoof them. And suppose we are also directly connected to the UtahCom carrier.</p>
-	<p>It's all nice and pretty! By looking at the picture we can know that all the traffic with source IPs in 192.0.2.0/24 and 2001:db8::/48 must surely be delivered <em>via</em> UtahCom. Fighting IP spoofing is trivial! We can easily block source IPss 192.0.2.0/24 and 2001:db8::/48 coming from any other provider, right?</p>
+	<p>It's all nice and pretty! By looking at the picture we can know that all the traffic with source IPs in 192.0.2.0/24 and 2001:db8::/48 must surely be delivered <i>via</i> UtahCom. Fighting IP spoofing is trivial! We can easily block source IPss 192.0.2.0/24 and 2001:db8::/48 coming from any other provider, right?</p>
 	<p>Unfortunately, this is not how the internet works.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/sp-foocorp-b-1.png" alt="sp-foocorp-b-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Wo6CKRNDb90Tu9T0Q8L82/d8cbfa9698b5e98d92c482fd22109d65/sp-foocorp-b-1.png" alt="sp-foocorp-b-1" class="kg-image" width="760" height="318" loading="lazy">
+
+	</figure>
 	<p>One day FooCorp decided to get a second internet connection, from say IdahoCom. Cloudflare is also connected to IdahoCom and...</p>
 	<p>... at this moment all our IP spoofing assumptions break. Traffic sourced from 192.0.2.0/24, 2001:db8::/48 can now be sent EITHER via UtahCom OR IdahoCom! From Cloudflare - the receiver - point of view, we pretty much can't do any source IP filtering now!</p>
 	<p>Moreover, even if we saw packets from FooCorp IPs, sent from, say IndonesiaCom, we still can't really filter them. It is very possible that FooCorp just got yet more internet connectivity ... with a satelite connection I guess ... from Indonesia. Unlikely as it sounds, this is totally plasuible.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/sp-foocorp-c.png" alt="sp-foocorp-c" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15ruqBn2p1MjUuHDRqqY3L/5af9673a889788838b3e0a7886a373f9/sp-foocorp-c.png" alt="sp-foocorp-c" class="kg-image" width="761" height="314" loading="lazy">
+
+	</figure>
 	<p>To add insult to injury, UtahCom's IP filtering logic is also not banal. While it definitely should not allow FooCorp to send traffic from arbitary source IPs, it can't really filter the packets from IPs 192.0.2.0/24, 2001:db8::/48 coming from other providers. For example, what if UtahCom and IdahoCom are interconnected, they could totally exchange 192.0.2.0/24, 2001:db8::/48 traffic between themselves!</p>
-	<h3 id="solvingtheproblem">Solving the problem</h3>
+	<h3>Solving the problem</h3>
 	<p>Solving IP spoofing is hard and must be done in the last mile (as close to the source of the traffic as possible). The internet community understood that years ago and wrote down the famous BCP38:</p>
 	<ul>
-		<li><a href="https://tools.ietf.org/html/bcp38">https://tools.ietf.org/html/bcp38</a></li>
+		<li>
+			<p><a href="https://tools.ietf.org/html/bcp38">https://tools.ietf.org/html/bcp38</a></p>
+		</li>
 	</ul>
 	<p>It digs deeper into what I explained above. Only the last mile ISPs can perform the source IP filtering and prevent IP spoofing. The internet carriers can't really do much about it.</p>
 	<p>Or can they?</p>
-	<h4 id="internetcarriers">Internet Carriers</h4>
+	<h4>Internet Carriers</h4>
 	<p>It turns out internet carriers can help. There are two things they can do.</p>
 	<p>First, they can clean up their networks, and set their filtering right. While it's impossible to ensure that nobody else spoofed FooCorp's 192.0.2.0/24, 2001:db8::/48 ranges, it is totally possible to make sure that FooCorp can't spoof others!</p>
 	<p>It's not trivial though. In principle, the IP ranges of FooCorp can change over time, but such events should require informing carriers, presenting <a href="http://www.ksfiber.net/wp-content/uploads/Sample-BGP-LetterOfAgency.pdf">Letter of Authorization</a> and validating <a href="https://www.apnic.net/manage-ip/apnic-services/routing-registry">IRR databases</a> (see also <a href="http://www.radb.net/features">RADb</a>).</p>
-	<p>Next, while large Tier 1 and Tier 2 providers can't do source IP filtering, they can help with investigations. Remember - during large amplification attacks, the attacker spoofs <em>the victim</em> IP ranges. During attacks large carriers should help with debugging and be able to identify which of their paying customers pretended to be the victim!</p>
+	<p>Next, while large Tier 1 and Tier 2 providers can't do source IP filtering, they can help with investigations. Remember - during large amplification attacks, the attacker spoofs <i>the victim</i> IP ranges. During attacks large carriers should help with debugging and be able to identify which of their paying customers pretended to be the victim!</p>
 	<p>To be able to do this some carriers maintain internal netflow/IPFIX infrastructure. The community should start asking the carriers tough questions - do you have visibility into who spoofed traffic? Do you do netflow internally and can you effectively use it?</p>
 	<p>I'm sure Github would like to know who faked their source IPs in order to generate 1.3Tbps amplification.</p>
-	<h4 id="internetexchanges">Internet Exchanges</h4>
+	<h4>Internet Exchanges</h4>
 	<p>Internet exchanges face the same attribution issue. When spoofing happens, it's often impossible to figure out which participant originated it. Internet exchanges should put together tools allowing participants to trace who originated the spoofed traffic.</p>
 	<p>Some internet exchanges do this already, but most don't.</p>
-	<h4 id="hardwarevendors">Hardware vendors</h4>
+	<h4>Hardware vendors</h4>
 	<p>A common technique to prohibit IP spoofing is called <a href="https://en.wikipedia.org/wiki/Reverse_path_forwarding#Unicast_RPF_confusion">Strict uRPF</a>. While it can't be used on the Tier 1 layer, since it assumes internet routing symmetry, uRPF definitely is useful in last-mile deployments.</p>
 	<p>Vendors should ship their hardware with secure defaults. Things like "DHCP Snooping" and "IP Source Verify" should be enabled by default on switches, and "Strict uRPF" on routers. Read more in this <a href="https://www.internetsociety.org/wp-content/uploads/2017/08/ISOC-AntiSpoofing-20150909-en-2.pdf">paper by Internet Society</a>.</p>
 	<p>On the same note, if you are using Linux for routing you can turn on strict uRPF with sysctl:</p>
-	<pre><code>for fname in /proc/sys/net/ipv4/conf/*/rp_filter; do\
+	<pre class="language-bash"><code class="language-bash">for fname in /proc/sys/net/ipv4/conf/*/rp_filter; do\
     echo 1 | sudo tee $fname; \
-done
-</code></pre>
-	<h4 id="you">You</h4>
+done</code></pre>
+	<h4>You</h4>
 	<p>Finally, everyone else can help the <a href="https://www.caida.org/projects/spoofer">"Spoofer" project</a> run by <a href="http://www.caida.org/home">caida.org</a>. "Spoofer" assesses networks by running an agent on your laptop, periodically probing the network.</p>
 	<p>Users, especially heavy travelers, might consider installing the agent software to help Caida to get greater coverage of end-user ISPs.</p>
-	<h3 id="finalthoughts">Final thoughts</h3>
+	<h3>Final thoughts</h3>
 	<p>In the past, the industry has struggled with DNS and NTP protocols being vulnerable to amplification attacks. These days we are fighting SSDP, CLDAP and Memcached amplifications. I'm certain in future there will be many more broken UDP protocols that could be used for amplification.</p>
 	<p>The lasting solution to the problem is to focus on fighting IP spoofing itself. Without IP spoofing, the internet would be a much calmer place.</p>
 	<p>As for now, attackers doing IP spoofing are invincible. Normal internet participants have no tools to track them. Without attribution it's hard to respond to malicious activity, for example with legal measures. The war is very much asymmetric in favor of the spoofers. To change that we must start actively fighting the spoofing problem.</p>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>I'm going to claim that all the large attacks require IP spoofing. A notable exception are the large <a href="https://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos">GRE Mirai attacks</a> that didn't employ spoofing of any kind. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn2" class="footnote-item">
-				<p>This is a simplification. Direct attacks don't strictly require IP spoofing, but very much benefit from it. Without IP spoofing the mitigation would be rather straightforward - just block the abusive source IPs. To avoid this and cover their tracks, the attackers usually do employ IP spoofing though. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>I'm going to claim that all the large attacks require IP spoofing. A notable exception are the large <a href="https://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos">GRE Mirai attacks</a> that didn't employ spoofing of any kind. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+		<li>
+			<p>This is a simplification. Direct attacks don't strictly require IP spoofing, but very much benefit from it. Without IP spoofing the mitigation would be rather straightforward - just block the abusive source IPs. To avoid this and cover their tracks, the attackers usually do employ IP spoofing though. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
+		</li>
+	</ol>
 </div>

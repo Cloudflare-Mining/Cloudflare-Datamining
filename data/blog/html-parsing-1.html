@@ -1,50 +1,58 @@
-<div class="mb2 gray5">17 min read</div>
+<div class="mb2 gray5">16 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/HTML-rewrriter_1@3x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30jkHPpVT3WDwbmxy2U4P4/df9992eae3981d75f32b8b9fedcc2737/HTML-rewrriter_1_3x.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
+
+	</figure>
 	<p>To coincide with the launch of streaming HTML rewriting functionality for <a href="https://workers.cloudflare.com">Cloudflare Workers</a> we are open sourcing the Rust HTML rewriter (<a href="https://github.com/cloudflare/lol-html">LOL HTML</a>) used to back the Workers <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter API</a>. We also thought it was about time to review the history of HTML rewriting at Cloudflare.</p>
 	<p>The first blog post will explain the basics of a streaming HTML rewriter and our particular requirements. We start around 8 years ago by describing the group of ‘ad-hoc’ parsers that were created with specific functionality such as to rewrite e-mail addresses or minify HTML. By 2016 the state machine defined in the HTML5 specification could be used to build a single spec-compliant HTML pluggable rewriter, to replace the existing collection of parsers. The source code for this rewriter is now public and available here: <a href="https://github.com/cloudflare/lazyhtml">https://github.com/cloudflare/lazyhtml</a>.</p>
 	<p>The second blog post will describe the next iteration of rewriter. With the launch of the edge compute platform <a href="https://workers.cloudflare.com">Cloudflare Workers</a> we came to realise that developers wanted the same HTML rewriting capabilities with a JavaScript API. The post describes the thoughts behind a low latency streaming HTML rewriter with a CSS-selector based API. We open-sourced the Rust library as it can also be used as a stand-alone HTML rewriting/parsing library.</p>
-	<h3 id="what-is-a-streaming-html-rewriter">What is a streaming HTML rewriter ?</h3>
+	<h3>What is a streaming HTML rewriter ?</h3>
 	<p>A streaming HTML rewriter takes either a HTML string or byte stream input, parses it into tokens or any other structured <a href="https://en.wikipedia.org/wiki/Intermediate_representation">intermediate representation</a> (IR) - such as an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> (AST). It then performs transformations on the tokens before converting back to HTML. This provides the ability to modify, extract or add to an existing HTML document as the bytes are being processed. Compare this with a standard HTML tree parser which needs to retrieve the entire file to generate a full DOM tree. The tree-based rewriter will both take longer to deliver the first processed bytes and require significantly more memory.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/image8.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>HTML rewriter</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/REe13uX61XBtlevdzEg50/98d8d3d0ac38689f9250cfdc7797f905/image8.png" alt="" class="kg-image" width="922" height="61" loading="lazy">
+
 	</figure>
+	<p>HTML rewriter</p>
 	<p>For example; consider you own a large site with a lot of historical content that you want to now serve over HTTPS. You will quickly run into the problem of resources (images, scripts, videos) being served over HTTP. This ‘mixed content’ opens a security hole and browsers will warn or block these resources. It can be difficult or even impossible to update every link on every page of a website. With a streaming HTML rewriter you can select the URI attribute of any HTML tag and change any HTTP links to HTTPS. We built this very feature <a href="https://blog.cloudflare.com/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Automatic HTTPS rewrites</a> back in 2016 to solve mixed content issues for our customers.</p>
 	<p>The reader may already be wondering: “Isn’t this a solved problem, aren’t there many widely used open-source browsers out there with HTML parsers that can be used for this purpose?”. The reality is that writing code to run in 190+ PoPs around the world with a strict low latency requirement turns even seemingly trivial problems into complex engineering challenges.</p>
 	<p>The following blog posts will detail the journey of how starting with a simple idea of finding email addresses within an HTML page led to building an almost spec compliant HTML parser and then on to a CSS selector matching Virtual Machine. We learned a lot on this journey. I hope you find some of this as interesting as we did.</p>
-	<h2 id="rewriting-at-the-edge">Rewriting at the edge</h2>
+	<h2>Rewriting at the edge</h2>
 	<p>When rewriting content through Cloudflare we do not want to impact site performance. The balance in designing a streaming HTML rewriter is to minimise the pause in response byte flow by holding onto as little information as possible whilst retaining the ability to rewrite matching tokens.</p>
 	<p>The difference in requirements compared to an HTML parser used in a browser include:</p>
-	<h4 id="output-latency">Output latency</h4>
+	<h4>Output latency</h4>
 	<p>For browsers, the Document Object Model (DOM) is the end product of the parsing process but in our case we have to parse, rewrite and serialize back to HTML. In the case of Cloudflare’s reverse proxy any content processing on the edge server results in latency between the server and an eyeball. It is desirable to minimize the latency impact of HTML handling, which involves parsing, rewriting and serializing back to HTML. In all of these stages we want to be as fast as possible to minimize latency.</p>
-	<h4 id="parser-throughput">Parser throughput</h4>
+	<h4>Parser throughput</h4>
 	<p>Let’s assume that usually browsers rarely need to deal with HTML pages bigger than 1Mb in size and an average page load time is somewhere around 3s at best. HTML parsing is not the main bottleneck of the page loading process as the browser will be blocked on running scripts and loading other render-critical resources. We can roughly estimate that ~3Mbps is an acceptable throughput for browser’s HTML parser. At Cloudflare we have hundreds of megabytes of traffic per CPU, so we need a parser that is faster by an order of magnitude.</p>
-	<h4 id="memory-limitations">Memory limitations</h4>
-	<p>As most users must realise, browsers have the luxury of being able to consume memory. For example, this simple HTML markup when opened in a browser will consume a significant chunk of your system memory before eventually halting a browser tab (and all this memory will be consumed by the parser) :</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">&lt;script&gt;
+	<h4>Memory limitations</h4>
+	<p>As most users must realise, browsers have the luxury of being able to consume memory. For example, this simple HTML markup when opened in a browser will consume a significant chunk of your system memory before eventually halting a browser tab (and all this memory will be consumed by the parser) :</p>
+	<pre class="language-javascript"><code class="language-javascript">&lt;script&gt;
    document.write('&lt;');
    while(true) {
       document.write('aaaaaaaaaaaaaaaaaaaaaaaa');
    }
-&lt;/script&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Unfortunately, buffering of some fraction of the input is inevitable even for streaming HTML rewriting. Consider these 2 HTML snippets:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-html">&lt;div foo="bar" qux="qux"&gt;</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-html">&lt;div foo="bar" qux="qux"</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><br>These seemingly similar fragments of HTML will be treated completely differently when encountered at the end of an HTML page. The first fragment will be parsed as a start tag and the second one will be ignored. By just seeing a `&lt;` character followed by a tag name, the parser can’t determine if it has found a start tag or not. It needs to traverse the input in the search of the closing `&gt;` to make a decision, buffering all content in between, so it can later be emitted to the consumer as a start tag token.</p>
+&lt;/script&gt;</code></pre>
+	<p>Unfortunately, buffering of some fraction of the input is inevitable even for streaming HTML rewriting. Consider these 2 HTML snippets:</p>
+	<pre class="language-html"><code class="language-html">&lt;div foo="bar" qux="qux"&gt;</code></pre>
+
+	<pre class="language-html"><code class="language-html">&lt;div foo="bar" qux="qux"</code></pre>
+	<p>These seemingly similar fragments of HTML will be treated completely differently when encountered at the end of an HTML page. The first fragment will be parsed as a start tag and the second one will be ignored. By just seeing a `&lt;` character followed by a tag name, the parser can’t determine if it has found a start tag or not. It needs to traverse the input in the search of the closing `&gt;` to make a decision, buffering all content in between, so it can later be emitted to the consumer as a start tag token.</p>
 	<p>This requirement forces browsers to indefinitely buffer content before eventually giving up with the out-of-memory error.</p>
 	<p>In our case, we can’t afford to spend hundreds of megabytes of memory parsing a single HTML file (actual constraints are even tighter - even using a dozen kilobytes for each request would be unacceptable). We need to be much more sophisticated than other implementations in terms of memory usage and gracefully handle all the situations where provided memory capacity is insufficient to accomplish parsing.</p>
-	<h2 id="v0-ad-hoc-parsers-">v0 : “Ad-hoc parsers”</h2>
+	<h2>v0 : “Ad-hoc parsers”</h2>
 	<p>As usual with big projects, it all started pretty innocently.</p>
-	<h4 id="find-and-obfuscate-an-email">Find and obfuscate an email</h4>
+	<h4>Find and obfuscate an email</h4>
 	<p>In 2010, Cloudflare decided to provide a feature that would stop popular email scrapers. The basic idea of this protection was to find and obfuscate emails on pages and later decode them back in the browser with injected JavaScript code. Sounds easy, right? You search for anything that looks like an email, encode it and then decode it with some JavaScript magic and present the result to the end-user.</p>
 	<p>However, even such a seemingly simple task already requires solving several issues. First of all, we need to define what an email is, and there is no simple answer. Even the infamous <a href="http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html">regex</a> supposedly covering the entire RFC is, in fact, outdated and incomplete as the new RFC added lots of valid email constructions, including Unicode support. Let’s not go down that rabbit hole for now and instead focus on a higher-level issue: transforming streaming content.</p>
 	<p>Content from the network comes in packets, which have to be buffered and parsed as HTTP by our servers. You can’t predict how the content will be split, which means you always need to buffer some of it because content that is going to be replaced can be present in multiple input chunks.</p>
 	<p>Let’s say we decided to go with a simple regex like `[\w.]+@[\w.]+`. If the content that comes through contains the email “<a href="mailto:test@example.org">test@example.org</a>”, it might be split in the following chunks:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SbMCSfBNwSI7ctqCY8ko0/a2b25e6faf357e57a64a38a3e09b6af8/image3.png" alt="" class="kg-image" width="422" height="507" loading="lazy">
+
+	</figure>
 	<p>In order to keep good Time To First Byte (TTFB) and consistent speed, we want to ensure that the preceding chunk is emitted as soon as we determine that it’s not interesting for replacement purposes.</p>
 	<p>The easiest way to do that is to transform our regex into a state machine, or a finite automata. While you could do that by hand, you will end up with hard-to-maintain and error-prone code. Instead, <a href="http://www.colm.net/open-source/ragel">Ragel</a> was chosen to transform regular expressions into efficient native state machine code. Ragel doesn’t try to take care of buffering or anything other than traversing the state machine. It provides a syntax that not only describes patterns, but can also associate custom actions (code in a host language) with any given state.</p>
 	<p>In our case we can pass through buffers until we match the beginning of an email. If we subsequently find out the pattern is not an email we can bail out from buffering as soon as the pattern stops matching. Otherwise, we can retrieve the matched email and replace it with new content.</p>
@@ -52,49 +60,57 @@
 	<p>Now that we have solved the problem of matching email patterns in text, we need to deal with the fact that they need to be obfuscated on pages. This is when the first hints of HTML “parsing” were introduced.</p>
 	<p>I’ve put “parsing” in quotes because, rather than implementing the whole parser, the email filter (as the module was called) didn’t attempt to replicate the whole HTML grammar, but rather added custom Ragel patterns just for skipping over comments and tags where emails should not be obfuscated.</p>
 	<p>This was a reasonable approach, especially back in 2010 - four years before the HTML5 specification, when all browsers had their own quirks handling of HTML. However, as you can imagine, this approach did not scale well. If you’re trying to work around quirks in other parsers, you start gaining more and more quirks in your own, and then work around these too. Simultaneously, new features started to be added, which also required modifying HTML on the fly (like automatic insertion of Google Analytics script), and an existing module seemed to be the best place for that. It grew to handle more and more tags, operations and syntactic edge cases.</p>
-	<h4 id="now-let-s-minify-">Now let’s minify..</h4>
+	<h4>Now let’s minify..</h4>
 	<p>In 2011, Cloudflare decided to also add minification to allow customers to speed up their websites even if they had not employed minification themselves. For that, we decided to use an existing streaming minifier - <a href="https://github.com/brianpane/jitify-core">jitify</a>. It already had NGINX bindings, which made it a great candidate for integration into the existing pipeline.</p>
-	<p>Unfortunately, just like most other parsers from that time as well as ours described above, it had its own processing rules for HTML, JavaScript and CSS, which weren’t precise but rather tried to parse content on a best-effort basis. This led to us having two independent streaming parsers that were incompatible and could produce bugs either individually or only in combination. </p>
-	<h2 id="v1-almost-html5-spec-compliant-parser">v1 : "(Almost) HTML5 Spec compliant parser"</h2>
+	<p>Unfortunately, just like most other parsers from that time as well as ours described above, it had its own processing rules for HTML, JavaScript and CSS, which weren’t precise but rather tried to parse content on a best-effort basis. This led to us having two independent streaming parsers that were incompatible and could produce bugs either individually or only in combination.</p>
+	<h2>v1 : "(Almost) HTML5 Spec compliant parser"</h2>
 	<p>Over the years engineers kept adding new features to the ever-growing state machines, while fixing new bugs arising from imprecise syntax implementations, conflicts between various parsers, and problems in features themselves.</p>
 	<p>By 2016, it was time to get out of the multiple ad hoc parsers business and do things ‘the right way’.</p>
 	<p>The next section(s) will describe how we built our HTML5 compliant parser starting from the specification state machine. Using only this state machine it should have been straight-forward to build a parser. You may be aware that historically the parsing of HTML had not been entirely strict which meant to not break existing implementations the building of an actual DOM was required for parsing. This is not possible for a streaming rewriter so a simulator of the parser feedback was developed. In terms of performance, it is always better not to do something. We then describe why the rewriter can be ‘lazy’ and not perform the expensive encoding and decoding of text when rewriting HTML. The surprisingly difficult problem of deciding if a response is HTML is then detailed.</p>
-	<h4 id="html5">HTML5</h4>
+	<h4>HTML5</h4>
 	<p>By 2016, HTML5 had defined precise syntax rules for parsing and compatibility with legacy content and custom browser implementations. It was already implemented by all browsers and many 3rd-party implementations.</p>
 	<p>The <a href="https://html.spec.whatwg.org/multipage/parsing.html">HTML5 parsing specification</a> defines basic HTML syntax in the form of a state machine. We already had experience with <a href="http://www.colm.net/open-source/ragel">Ragel</a> for similar use cases, so there was no question about what to use for the new streaming parser. Despite the complexity of the grammar, the translation of the specification to Ragel syntax was straightforward. The code looks simpler than the formal description of the state machine, thanks to the ability to mix regex syntax with explicit transitions.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/image6-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>A visualisation of a small fraction of the HTML state machine. Source: <a href="https://twitter.com/RReverser/status/715937136520916992">https://twitter.com/RReverser/status/715937136520916992</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lfOyfSPrShxKNNEw5OoF1/f9b0f4dc871597d09fadca0d4e0dc0f4/image6-1.png" alt="" class="kg-image" width="1200" height="872" loading="lazy">
+
 	</figure>
-	<h3 id="html5-parsing-requires-a-dom-">HTML5 parsing requires a ‘DOM’</h3>
+	<p>A visualisation of a small fraction of the HTML state machine. Source: <a href="https://twitter.com/RReverser/status/715937136520916992">https://twitter.com/RReverser/status/715937136520916992</a></p>
+	<h3>HTML5 parsing requires a ‘DOM’</h3>
 	<p>However, HTML has a history. To not break existing implementations HTML5 is specified with recovery procedures for incorrect tag nesting, ordering, unclosed tags, missing attributes and all the other possible quirks that used to work in older browsers. In order to resolve these issues, the specification expects a tree builder to drive the lexer, essentially meaning you can’t correctly tokenize HTML (split into separate tags) without a DOM.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/image2-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>HTML parsing flow as defined by the specification</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WiV28d2K2jxXL3TbpNJJk/d8ba784f3fa81fe74800e5c016c61b20/image2-2.png" alt="" class="kg-image" width="601" height="551" loading="lazy">
+
 	</figure>
+	<p>HTML parsing flow as defined by the specification</p>
 	<p>For this reason, most parsers don’t even try to perform streaming parsing and instead take the input as a whole and produce a document tree as an output. This is not something we could do for streaming transformation without adding significant delays to page loading.</p>
 	<p>An existing HTML5 JavaScript parser - <a href="https://github.com/inikulin/parse5">parse5</a> - had already implemented spec-compliant tree parsing using a streaming tokenizer and rewriter. To avoid having to create a full DOM the concept of a “parser feedback simulator” was introduced.</p>
-	<h4 id="tree-builder-feedback">Tree builder feedback</h4>
+	<h4>Tree builder feedback</h4>
 	<p>As you can guess from the name, this is a module that aims to simulate a full parser’s feedback to the tokenizer, without actually building the whole DOM, but instead preserving only the required information and context necessary for correctly driving the state machine.</p>
 	<p>After rigorous testing and upstreaming a test runner to parse5, we found this technique to be suitable for the majority of even poorly written pages on the Internet, and employed it in LazyHTML.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/image7-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>LazyHTML architecture</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7156cYXNTDlDNGfLV8YCrq/7db4d830d57efc9883b0b00c4c0f6755/image7-1.png" alt="" class="kg-image" width="762" height="321" loading="lazy">
+
 	</figure>
-	<h3 id="avoiding-decoding-everything-is-ascii">Avoiding decoding - everything is ASCII</h3>
+	<p>LazyHTML architecture</p>
+	<h3>Avoiding decoding - everything is ASCII</h3>
 	<p>Now that we had a streaming tokenizer working, we wanted to make sure that it was fast enough so that users didn’t notice any slowdowns to their pages as they go through the parser and transformations. Otherwise it would completely circumvent any optimisations we’d want to attempt on the fly.</p>
-	<p>It would not only cause a performance hit due to decoding and re-encoding any modified HTML content, but also significantly complicates our implementation due to multiple sources of potential encoding information required to <a href="https://html.spec.whatwg.org/multipage/parsing.html#determining-the-character-encoding">determine the character encoding</a>, including sniffing of the first 1 KB of the content. </p>
+	<p>It would not only cause a performance hit due to decoding and re-encoding any modified HTML content, but also significantly complicates our implementation due to multiple sources of potential encoding information required to <a href="https://html.spec.whatwg.org/multipage/parsing.html#determining-the-character-encoding">determine the character encoding</a>, including sniffing of the first 1 KB of the content.</p>
 	<p>The “living” HTML Standard specification permits only encodings defined in the <a href="https://encoding.spec.whatwg.org">Encoding Standard</a>. If we look carefully through those encodings, as well as a remark on Character encodings section of the HTML spec, we find that all of them are ASCII-compatible with the exception of UTF-16 and ISO-2022-JP.</p>
 	<p>This means that any ASCII text will be represented in such encodings exactly as it would be in ASCII, and any non-ASCII text will be represented by bytes outside of the ASCII range. This property allows us to safely tokenize, compare and even modify original HTML without decoding or even knowing which particular encoding it contains. It is possible as all the token boundaries in HTML grammar are represented by an ASCII character.</p>
 	<p>We need to detect UTF-16 by sniffing and either decode or skip such documents without modification. We chose the latter to avoid potential security-sensitive bugs which are common with UTF-16, and because the character encoding is seen in less than 0.1% of known character encodings luckily.</p>
 	<p>The only issue left with this approach is that in most places the <a href="https://html.spec.whatwg.org/multipage/parsing.html#tokenization">HTML tokenization</a> specification requires you to replace U+0000 (NUL) characters with U+FFFD (replacement character) during parsing. Presumably, this was added as a security precaution against bugs in C implementations of old engines which could treat NUL character, encoded in ASCII / UTF-8 / ... as a 0x00 byte, as the end of the string (yay, null-terminated strings…). It’s problematic for us because U+FFFD is outside of the ASCII range, and will be represented by different sequences of bytes in different encodings. We don’t know the encoding of the document, so this will lead to corruption of the output.</p>
-	<p>Luckily, we’re not in the same business as browser vendors, and don’t worry about NUL characters in strings as much - we use “fat pointer” string representation, in which the length of the string is determined not by the position of the NUL character, but stored along with the data pointer as an integer field:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">typedef struct {
+	<p>Luckily, we’re not in the same business as browser vendors, and don’t worry about NUL characters in strings as much - we use “fat pointer” string representation, in which the length of the string is determined not by the position of the NUL character, but stored along with the data pointer as an integer field:</p>
+	<pre class="language-c"><code class="language-c">typedef struct {
    const char *data;
    size_t length;
 } lhtml_string_t;</code></pre>
-	<!--kg-card-end: markdown-->
 	<p>Instead, we can quietly ignore these parts of the spec (sorry!), and keep U+0000 characters as-is and add them as such to tag, attribute names, and other strings, and later re-emit to the document. This is safe to do, because it doesn’t affect any state machine transitions, but merely preserves original 0x00 bytes and delegates their replacement to the parser in the end user’s browser.</p>
-	<h3 id="content-type-madness">Content type madness</h3>
-	<p>We want to be lazy and minimise false positives. We only want to spend time parsing, decoding and rewriting actual HTML rather than breaking images or JSON. So the question is how do you decide if something is a HTML document. Can you just use the Content-Type for example ? A comment left in the source code best describes the reality.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">/*
+	<h3>Content type madness</h3>
+	<p>We want to be lazy and minimise false positives. We only want to spend time parsing, decoding and rewriting actual HTML rather than breaking images or JSON. So the question is how do you decide if something is a HTML document. Can you just use the Content-Type for example ? A comment left in the source code best describes the reality.</p>
+	<pre class="language-rust"><code class="language-rust">/*
 Dear future generations. I didn't like this hack either and hoped
 we could do the right thing instead. Unfortunately, the Internet
 was a bad and scary place at the moment of writing. If this
@@ -117,19 +133,25 @@ is actually `&lt;` - which increases the chances that it's indeed HTML.
 That way we can potentially skip some responses that otherwise
 could be rendered by a browser as part of AJAX response, but this
 is still better than the opposite situation.
-*/
-</code></pre>
-	<!--kg-card-end: markdown-->
+*/</code></pre>
 	<p>The reader might think that it’s a rare edge case, however, our observations show that almost 25% of the traffic served through Cloudflare with the “text/html” content type is unlikely to be HTML.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image9-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/a7BORxQP4K6bUBa06Mr4z/3158b89e6ae1debbb3091041433d1b60/image9-1.png" alt="" class="kg-image" width="1516" height="534" loading="lazy">
+
+	</figure>
 	<p>The trouble doesn’t end there: it turns out that there is a considerable amount of XML content served with the “text/html” content type which can’t be always processed correctly when treated as HTML.</p>
 	<p>Over time bailouts for binary data, JSON, AMP and correctly identifying HTML fragments leads to the content sniffing logic which can be described by the following diagram:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image4-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aEUXB2iTqRDZIlMxwBZKQ/831127325aaebf8126827d66bbdbde05/image4-1.png" alt="" class="kg-image" width="1132" height="825" loading="lazy">
+
+	</figure>
 	<p>This is a good example of divergence between formal specifications and reality.</p>
-	<h3 id="tag-name-comparison-optimisation">Tag name comparison optimisation</h3>
+	<h3>Tag name comparison optimisation</h3>
 	<p>But just having fast parsing is not enough - we have functionality that consumes the output of the parser, rewrites it and feeds it back for the serialization. And all the memory and time constraints that we have for the parser are applicable for this code as well, as it is a part of the same content processing pipeline.</p>
-	<p>It’s a common requirement to compare parsed HTML tag names, e.g. to determine if the current tag should be rewritten or not. A naive implementation will use regular per-byte comparison which can require traversing the whole tag name. We were able to narrow this operation to a single integer comparison instruction in the majority of cases by using specially designed hashing algorithm. </p>
-	<p>The tag names of all <a href="https://html.spec.whatwg.org/multipage/semantics.html#semantics">standard HTML elements</a> contain only alphabetical ASCII characters and digits from 1 to 6 (in numbered header tags, i.e. &lt;h1&gt; - &lt;h6&gt;). Comparison of tag names is case-insensitive, so we only need 26 characters to represent alphabetical characters. Using the same basic idea as <a href="https://en.wikipedia.org/wiki/Arithmetic_coding">arithmetic coding</a>, we can represent each of the possible 32 characters of a tag name using just 5 bits and, thus, fit up to <em>floor(64 / 5) = 12</em> characters in a 64-bit integer which is enough for all the standard tag names and any other tag names that satisfy the same requirements! The great part is that we don’t even need to additionally traverse a tag name to hash it - we can do that as we parse the tag name consuming the input byte by byte.</p>
+	<p>It’s a common requirement to compare parsed HTML tag names, e.g. to determine if the current tag should be rewritten or not. A naive implementation will use regular per-byte comparison which can require traversing the whole tag name. We were able to narrow this operation to a single integer comparison instruction in the majority of cases by using specially designed hashing algorithm.</p>
+	<p>The tag names of all <a href="https://html.spec.whatwg.org/multipage/semantics.html#semantics">standard HTML elements</a> contain only alphabetical ASCII characters and digits from 1 to 6 (in numbered header tags, i.e. - ). Comparison of tag names is case-insensitive, so we only need 26 characters to represent alphabetical characters. Using the same basic idea as <a href="https://en.wikipedia.org/wiki/Arithmetic_coding">arithmetic coding</a>, we can represent each of the possible 32 characters of a tag name using just 5 bits and, thus, fit up to <i>floor(64 / 5) = 12</i> characters in a 64-bit integer which is enough for all the standard tag names and any other tag names that satisfy the same requirements! The great part is that we don’t even need to additionally traverse a tag name to hash it - we can do that as we parse the tag name consuming the input byte by byte.</p>
 	<p>However, there is one problem with this hashing algorithm and the culprit is not so obvious: to fit all 32 characters in 5 bits we need to use all possible bit combinations including 00000. This means that if the leading character of the tag name is represented with 00000 then we will not be able to differentiate between a varying number of consequent repetitions of this character.</p>
 	<p>For example, considering that ‘a’ is encoded as 00000 and ‘b’ as 00001 :</p><!--kg-card-begin: html-->
 	<table>
@@ -152,10 +174,10 @@ is still better than the opposite situation.
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Luckily, we know that HTML grammar <a href="https://html.spec.whatwg.org/multipage/parsing.html#tag-open-state">doesn’t allow</a> the first character of a tag name to be anything except an ASCII alphabetical character, so reserving numbers from 0 to 5 (00000b-00101b) for digits and numbers from 6 to 31 (00110b - 11111b) for ASCII alphabetical characters solves the problem.</p>
-	<h3 id="lazyhtml">LazyHTML</h3>
+	<h3>LazyHTML</h3>
 	<p>After taking everything mentioned above into consideration the LazyHTML (<a href="https://github.com/cloudflare/lazyhtml">https://github.com/cloudflare/lazyhtml</a>) library was created. It is a fast streaming HTML parser and serializer with a token based C-API derived from the HTML5 lexer written in Ragel. It provides a pluggable transformation pipeline to allow multiple transformation handlers to be chained together.</p>
-	<p>An example of a function that transforms `href` property of links:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c">// define static string to be used for replacements
+	<p>An example of a function that transforms `href` property of links:</p>
+	<pre class="language-c"><code class="language-c">// define static string to be used for replacements
 static const lhtml_string_t REPLACEMENT = {
    .data = "[REPLACED]",
    .length = sizeof("[REPLACED]") - 1
@@ -164,7 +186,7 @@ static const lhtml_string_t REPLACEMENT = {
 static void token_handler(lhtml_token_t *token, void *extra /* this can be your state */) {
   if (token-&gt;type == LHTML_TOKEN_START_TAG) { // we're interested only in start tags
     const lhtml_token_starttag_t *tag = &amp;token-&gt;start_tag;
-    if (tag-&gt;type == LHTML_TAG_A) { // check whether tag is of type &lt;a&gt;
+    if (tag-&gt;type == LHTML_TAG_A) { // check whether tag is of type <a>
       const size_t n_attrs = tag-&gt;attributes.count;
       const lhtml_attribute_t *attrs = tag-&gt;attributes.items;
       for (size_t i = 0; i &lt; n_attrs; i++) { // iterate over attributes
@@ -176,14 +198,17 @@ static void token_handler(lhtml_token_t *token, void *extra /* this can be your 
     }
   }
   lhtml_emit(token, extra); // pass transformed token(s) to next handler(s)
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="so-is-it-correct-and-how-fast-is-it">So, is it correct and how fast is it?</h3>
-	<p>It is HTML5 compliant as tested against the official test suites. As part of the work several contributions were sent to the specification itself for clarification / simplification of the spec language.</p>
-	<p>Unlike the previous parser(s), it didn't bail out on any of the 2,382,625 documents from HTTP Archive, although 0.2% of documents exceeded expected bufferization limits as they were in fact JavaScript or RSS or other types of content incorrectly served with Content-Type: text/html, and since anything is valid HTML5, the parser tried to parse e.g. a&lt;b; x=3; y=4 as incomplete tag with attributes. This is very rare (and goes to even lower amount of 0.03% when two error-prone advertisement networks are excluded from those results), but still needs to be accounted for and is a valid case for bailing out.</p>
-	<p>As for the benchmarks, In September 2016 using an example which transforms the HTML spec itself (7.9 MB HTML file) by replacing every &lt;a href&gt; (only that property only in those tags) to a static value. It was compared against the few existing and popular HTML parsers (only tokenization mode was used for the fair comparison, so that they don't need to build AST and so on), and timings in milliseconds for 100 iterations are the following (lazy mode means that we're using raw strings whenever possible, the other one serializes each token just for comparison):</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image5-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The results show that LazyHTML parser speeds are around an order of magnitude faster.</p>
-	<p>That concludes the first post in our series on HTML rewriters at Cloudflare. The next post describes how we built a new streaming rewriter on top of the ideas of LazyHTML. The major update was to provide an easier to use CSS selector API. It provides the back-end for the Cloudflare workers HTMLRewriter JavaScript API.</p>
+}</a></code></pre><a>
+		<h3>So, is it correct and how fast is it?</h3>
+		<p>It is HTML5 compliant as tested against the official test suites. As part of the work several contributions were sent to the specification itself for clarification / simplification of the spec language.</p>
+		<p>Unlike the previous parser(s), it didn't bail out on any of the 2,382,625 documents from HTTP Archive, although 0.2% of documents exceeded expected bufferization limits as they were in fact JavaScript or RSS or other types of content incorrectly served with Content-Type: text/html, and since anything is valid HTML5, the parser tried to parse e.g. a&lt;b; x=3; y=4 as incomplete tag with attributes. This is very rare (and goes to even lower amount of 0.03% when two error-prone advertisement networks are excluded from those results), but still needs to be accounted for and is a valid case for bailing out.</p>
+		<p>As for the benchmarks, In September 2016 using an example which transforms the HTML spec itself (7.9 MB HTML file) by replacing every (only that property only in those tags) to a static value. It was compared against the few existing and popular HTML parsers (only tokenization mode was used for the fair comparison, so that they don't need to build AST and so on), and timings in milliseconds for 100 iterations are the following (lazy mode means that we're using raw strings whenever possible, the other one serializes each token just for comparison):</p>
+		<figure class="kg-card kg-image-card ">
+
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BUi5lG0xlZjW0jjZuSL6S/b408bcefb30d6b2977056e6d14456611/image5-1.png" alt="" class="kg-image" width="1292" height="798" loading="lazy">
+
+		</figure>
+		<p>The results show that LazyHTML parser speeds are around an order of magnitude faster.</p>
+		<p>That concludes the first post in our series on HTML rewriters at Cloudflare. The next post describes how we built a new streaming rewriter on top of the ideas of LazyHTML. The major update was to provide an easier to use CSS selector API. It provides the back-end for the Cloudflare workers HTMLRewriter JavaScript API.</p>
+	</a>
 </div>

@@ -1,43 +1,76 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-35.png" class="kg-image" alt="How Cloudflare uses Terraform to manage Cloudflare" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RxLlGL9T3FygYK0GXDXoK/a063afa4892818e97c6ec04d1e41a99e/image3-35.png" alt="How Cloudflare uses Terraform to manage Cloudflare" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Configuration management is far from a solved problem. As organizations scale beyond a handful of administrators, having a secure, auditable, and self-service way of updating system settings becomes invaluable. Managing a Cloudflare account is no different. With <a href="https://www.cloudflare.com">dozens of products</a> and <a href="https://api.cloudflare.com">hundreds of API endpoints</a>, keeping track of current configuration and making bulk updates across multiple zones can be a challenge. While the Cloudflare Dashboard is great for analytics and feature exploration, any changes that could potentially impact users really should get a code review before being applied!</p>
 	<p>This is where <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs">Cloudflare's Terraform provider</a> can come in handy. Built as a layer on top of the <a href="https://github.com/cloudflare/cloudflare-go">cloudflare-go</a> library, the provider allows users to interface with the Cloudflare API using stateful <a href="https://developer.hashicorp.com/terraform">Terraform</a> resource declarations. Not only do we actively support this provider for customers, we make extensive use of it internally! In this post, we hope to provide some best practices we've learned about managing complex Cloudflare configurations in Terraform.</p>
-	<h2 id="why-terraform">Why Terraform</h2>
+	<h2>Why Terraform</h2>
 	<p>Unsurprisingly, we find Cloudflare's products to be pretty useful for securing and enhancing the performance of services we deploy internally. We use <a href="https://www.cloudflare.com/dns">DNS</a>, <a href="https://www.cloudflare.com/waf">WAF</a>, <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust</a>, <a href="https://www.cloudflare.com/products/zero-trust/email-security">Email Security</a>, <a href="https://www.cloudflare.com/developer-platform-hub">Workers</a>, and all manner of <a href="https://www.cloudflare.com/whats-new">experimental new features</a> throughout the company. This <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dog-fooding</a> allows us to battle-harden the services we provide to users and feed our desired features back to the product teams all while running the backend of Cloudflare. But, as Cloudflare grew, so did the complexity and importance of our configuration.</p>
 	<p>When we were a much smaller company, we only had a handful of accounts with designated administrators making changes on behalf of their colleagues. However, over time this handful of accounts grew into hundreds with each managed by separate teams. Independent accounts are useful in that they allow service-owners to make modifications that can't impact others, but it comes with overhead.</p>
 	<p>We faced the challenge of ensuring consistent security policies, up-to-date account memberships, and change visibility. While our &nbsp;accounts were still administered by kind human stewards, we had numerous instances of account members not being removed after they transferred to a different team. While this never became a security incident, it demonstrated the shortcomings of manually provisioning account memberships. In the case of a production service migration, the administrator executing the change would often hop on a video call and ask for others to triple-check an IP address, ruleset, or access policy update. It was an era of looking through the audit logs to see what broke a service.</p>
 	<p>We wanted to make it easier for developers and users to make the changes they wanted without having to reach out to an administrator. Defining our configuration in code using Terraform has allowed us to keep tabs on the complexity of configuration while improving visibility and change management practices. By dogfooding the Cloudflare Terraform provider, we've been able to ensure:</p>
 	<ul>
-		<li>Modifications to accounts are peer reviewed by the team that owns an account.</li>
-		<li>Each change is tied to a user, commit, and a ticket explaining the rationale for the change.</li>
-		<li>API Tokens are tied to service accounts rather than individual human users, meaning they survive team changes and offboarding. </li>
-		<li>Account configuration can be audited by anyone at the company for current state, accuracy, and security without needing to add everyone as a member of every account.</li>
-		<li>Large changes, such as <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">enforcing hard keys</a> can be done rapidly– even in a single pull request.</li>
-		<li>Configuration can be easily copied and reused across accounts to promote best practices and speed up development.</li>
-		<li>We can use and iterate on our awesome provider and provide a better experience to other users (shoutout in particular to <a href="https://github.com/jacobbednarz">Jacob</a>!).</li>
+		<li>
+			<p>Modifications to accounts are peer reviewed by the team that owns an account.</p>
+		</li>
+		<li>
+			<p>Each change is tied to a user, commit, and a ticket explaining the rationale for the change.</p>
+		</li>
+		<li>
+			<p>API Tokens are tied to service accounts rather than individual human users, meaning they survive team changes and offboarding.</p>
+		</li>
+		<li>
+			<p>Account configuration can be audited by anyone at the company for current state, accuracy, and security without needing to add everyone as a member of every account.</p>
+		</li>
+		<li>
+			<p>Large changes, such as <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">enforcing hard keys</a> can be done rapidly– even in a single pull request.</p>
+		</li>
+		<li>
+			<p>Configuration can be easily copied and reused across accounts to promote best practices and speed up development.</p>
+		</li>
+		<li>
+			<p>We can use and iterate on our awesome provider and provide a better experience to other users (shoutout in particular to <a href="https://github.com/jacobbednarz">Jacob</a>!).</p>
+		</li>
 	</ul>
-	<h2 id="terraform-in-ci-cd">Terraform in CI/CD</h2>
+	<h2>Terraform in CI/CD</h2>
 	<p><a href="https://github.com/hashicorp/terraform">Terraform</a> has a fairly mature open source ecosystem, built from years of running-in-production experience. Thus, there are a number of ways to make interacting with the system feel as comfortable to developers as git. One of these tools is <a href="https://www.runatlantis.io">Atlantis</a>.</p>
 	<p>Atlantis acts as <a href="https://en.wikipedia.org/wiki/CI/CD">continuous integration/continuous delivery (CI/CD)</a> for Terraform; fitting neatly into version control workflows, and giving visibility into the changes being deployed in each code change. We use Atlantis to display Terraform plans (effectively a diff in configuration) within pull requests and apply the changes after the pull request has been approved. Having all the output from the terraform provider in the comments of a pull request means there's no need to fiddle with the state locally or worry about where a state lock is coming from. Using Terraform CI/CD like this makes configuration management approachable to developers and non-technical folks alike.</p>
 	<p>In this example pull request, I'm adding a user to the cloudflare-cool-account (see the code in the next section). Once the PR is opened, Bitbucket posts a webhook to Atlantis, telling it to run a `terraform plan` using this branch. The resulting comment is placed in the pull request. Notice that this pull request can't be applied or merged yet as it doesn't have an approval! Once the pull request is approved, I would comment "atlantis apply", wait for Atlantis to post a comment containing the output of the command, and merge the pull request if that output looks correct.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OqbJjxYbT2Dw4qpvFltng/dc17fd68514938762a382d0fefb5e5a1/image4-25.png" alt="" class="kg-image" width="1999" height="1537" loading="lazy">
+
+	</figure>
 	<p>Our Terraforming Cloudflare architecture consists of a monorepo with one directory (and tfstate) for each internally-owned Cloudflare account. This keeps all of our Cloudflare configuration centralized for easier oversight while remaining neatly organized.</p>
 	<p>It will be possible in a future (<a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1646">as of this writing</a>) release to manage multiple Cloudflare accounts in the same tfstate, but we've found that accounts in our use generally map fairly neatly onto teams. Teams can be configured as <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">CODEOWNERS</a> for a given directory and be tagged on any pull requests to that account. With teams owning separate accounts and each account having a separate tfstate, it's rare for pull requests to get stuck waiting for a lock on the tfstate. Team-account-sized states remain relatively small, meaning that they also build quickly. Later on, we'll share some of the other optimizations we've made to keep the repo user-friendly.</p>
-	<p>Each of our terraform states, given that they <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration#credentials-and-sensitive-data">include secrets (including the API key!)</a>, is stored encrypted in an internal datastore. When a pull request is opened, Atlantis reaches out to a piece of middleware (that we may open source once it's cleaned up a bit) that retrieves and decrypts the state for processing. Once the pull request is applied, the state is encrypted and put away again.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-44.png" class="kg-image" alt="Atlantis Plan Workflow Diagram" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-14.png" class="kg-image" alt="Atlantis Apply Workflow Diagram" loading="lazy"></figure>
+	<p>Each of our terraform states, given that they <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration#credentials-and-sensitive-data">include secrets (including the API key!)</a>, is stored encrypted in an internal datastore. When a pull request is opened, Atlantis reaches out to a piece of middleware (that we may open source once it's cleaned up a bit) that retrieves and decrypts the state for processing. Once the pull request is applied, the state is encrypted and put away again.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WMBQIoo8yaKC6RLz75E1T/df07b1c980049bb61570d8a20c49cb72/image2-44.png" alt="Atlantis Plan Workflow Diagram" class="kg-image" width="1999" height="741" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76bxQk0hlFPFOHRyscuObV/7d68c71970ed1635d00abae26161dfab/image5-14.png" alt="Atlantis Apply Workflow Diagram" class="kg-image" width="1999" height="741" loading="lazy">
+
+	</figure>
 	<p>We execute a daily Terraform apply across all tfstates to capture any unintended config drift and rotate certificates when they approach expiration. This prevents unrelated changes from popping up in pull request diffs and causing confusion. While we could run more frequent state applies to ensure Terraform remains firmly up to date, once-a-day rectification strikes a balance between code enforcement and avoiding state locks while users are running Terraform plans in pull requests.</p>
 	<p>One of the problems that we encountered during our transition to Terraform is that folks were in the habit of making updates to configuration in the Dashboard and were still able to edit settings there. Thus, we didn't always have a single source of truth for our configuration in code. It also meant the change would get mysteriously (to them) reverted the next day! So that's why I'm excited to share a new Zero Trust Dashboard toggle that we've been turning on for our accounts internally: API/Terraform read-only mode.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-59.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Easily one of my favorite new features</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Ks2CZ0OxPwNbV5Kal95Tj/c30dee92d8207c0a917a11b6698f250d/image1-59.png" alt="" class="kg-image" width="1999" height="926" loading="lazy">
+
 	</figure>
+	<p>Easily one of my favorite new features</p>
 	<p>With this button, we're able to politely prevent manual changes to your Cloudflare account’s Zero Trust configuration without removing permissions from the set of users who can fix settings manually in a break-glass emergency scenario. <a href="https://api.cloudflare.com/#zero-trust-organization-update-your-zero-trust-organization">Check out how you can enable this setting in your Zero Trust organization</a>.</p>
-	<h2 id="slick-snippets-and-terraforming-recommendations">Slick Snippets and Terraforming Recommendations</h2>
+	<h2>Slick Snippets and Terraforming Recommendations</h2>
 	<p>As our Terraform repository has matured, we've refined how we define Cloudflare resources in code. By finding a sweet spot between code reuse and readability, we've been able to minimize operational overhead and generally let users get their work done. Here's a couple of useful snippets that have been particularly valuable to us.</p>
-	<h3 id="account-membership">Account Membership</h3>
-	<p>This allows for defining a fairly straightforward mapping of user emails to account privileges without code duplication or complex modules. We pull the list of human-friendly names of <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/account_roles">account roles</a> from the API to show <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member">user</a> permission assignments at a glance. Note: <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member#status">status</a> is a new argument that allows for accounts to be added without sending an email to the user; perfect for when an organization is using SSO. (Thanks <a href="https://github.com/patrobinson">patrobinson</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1654">feature request</a> and <a href="https://github.com/markblackman">mblackman</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1920">PR</a>!)</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-hcl">variables.tf
+	<h3>Account Membership</h3>
+	<p>This allows for defining a fairly straightforward mapping of user emails to account privileges without code duplication or complex modules. We pull the list of human-friendly names of <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/account_roles">account roles</a> from the API to show <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member">user</a> permission assignments at a glance. Note: <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member#status">status</a> is a new argument that allows for accounts to be added without sending an email to the user; perfect for when an organization is using SSO. (Thanks <a href="https://github.com/patrobinson">patrobinson</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1654">feature request</a> and <a href="https://github.com/markblackman">mblackman</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1920">PR</a>!)</p>
+	<pre class="language-hcl"><code class="language-hcl">variables.tf
 —-
 data "cloudflare_account_roles" "my_account" {
 	account_id = var.account_id
@@ -79,12 +112,10 @@ resource "cloudflare_account_member" "account_member" {
   email_address = "${each.key}@cloudflare.com"
   role_ids  	= each.value.roles
   status            = "accepted"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="defining-auto-refreshing-access-service-tokens">Defining Auto-Refreshing Access Service Tokens</h3>
-	<p>The <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1866">GitHub issue</a> and <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1872">provider change</a> that enabled automatic Access service token refreshes actually came from a need inside Cloudflare. Here's how we ended up implementing it. We begin by defining a set of services that need to connect to our hostnames that are protected by Access. Each of these <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_service_token">tokens</a> are created and stored in a secret key value store. Next, we reference those access tokens by ID in the target <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy">Access policies</a>. Once this has run, the service owner or the service itself can retrieve the credentials from the data store. (Note: we're using Vault here, but any storage provider could be used in its place).</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-hcl">tokens.tf
+}</code></pre>
+	<h3>Defining Auto-Refreshing Access Service Tokens</h3>
+	<p>The <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1866">GitHub issue</a> and <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1872">provider change</a> that enabled automatic Access service token refreshes actually came from a need inside Cloudflare. Here's how we ended up implementing it. We begin by defining a set of services that need to connect to our hostnames that are protected by Access. Each of these <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_service_token">tokens</a> are created and stored in a secret key value store. Next, we reference those access tokens by ID in the target <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy">Access policies</a>. Once this has run, the service owner or the service itself can retrieve the credentials from the data store. (Note: we're using Vault here, but any storage provider could be used in its place).</p>
+	<pre class="language-hcl"><code class="language-hcl">tokens.tf
 —
 locals {
   service_tokens = toset([
@@ -130,13 +161,11 @@ resource "cloudflare_access_policy" "super_cool_hostname_service_access" {
   include {
 	service_token = [cloudflare_access_service_token.token["room-service"].id]
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="mtls-authenticated-origin-pulls-certificate-creation-and-rotation">mTLS (Authenticated Origin Pulls) certificate creation and rotation</h3>
+}</code></pre>
+	<h3>mTLS (Authenticated Origin Pulls) certificate creation and rotation</h3>
 	<p>To further defense-in-depth objectives, we've been rolling out mTLS throughout our internal systems. One of the places where we can take advantage of our Terraform provider is in defining <a href="https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls">AOP (Authenticated Origin Pulls)</a> certificates to lock down the Cloudflare-edge-to-origin connection. Anyone who has managed certificates of any kind can speak to the headaches they can cause. Having certificate configurations in Terraform takes out the manual work of rotation and expiration.</p>
-	<p>In this example we're defining <a href="https://api.cloudflare.com/#per-hostname-authenticated-origin-pull-properties">hostname-level AOP</a> as opposed to <a href="https://api.cloudflare.com/#zone-level-authenticated-origin-pulls-properties">zone-level AOP</a>. We start by cutting a certificate for each hostname. Once again we're using Vault for certificate creation, but other backends could be used just as well. This certificate is created with a (not-shown) 30 day expiration, but set to renew automatically. This means once the time-to-expiration is equal to <a href="https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/pki_secret_backend_cert#min_seconds_remaining">min_seconds_remaining</a>, the resource will be automatically tainted and replaced on the next Terraform run. We like to give this automation plenty of room before expiration to take into account holiday seasons and avoid sending alerts to humans when the alerts hit seven days to expiration. For the rest of this snippet, the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/authenticated_origin_pulls_certificate">certificate is uploaded to Cloudflare</a> and the ID from that upload is then <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/authenticated_origin_pulls">placed in the AOP configuration</a> for the given hostname. The <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#create_before_destroy">create_before_destroy</a> meta-argument ensures that the replacement certificate is uploaded successfully before we remove the certificate that's currently in place.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-hcl">locals {
+	<p>In this example we're defining <a href="https://api.cloudflare.com/#per-hostname-authenticated-origin-pull-properties">hostname-level AOP</a> as opposed to <a href="https://api.cloudflare.com/#zone-level-authenticated-origin-pulls-properties">zone-level AOP</a>. We start by cutting a certificate for each hostname. Once again we're using Vault for certificate creation, but other backends could be used just as well. This certificate is created with a (not-shown) 30 day expiration, but set to renew automatically. This means once the time-to-expiration is equal to <a href="https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/pki_secret_backend_cert#min_seconds_remaining">min_seconds_remaining</a>, the resource will be automatically tainted and replaced on the next Terraform run. We like to give this automation plenty of room before expiration to take into account holiday seasons and avoid sending alerts to humans when the alerts hit seven days to expiration. For the rest of this snippet, the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/authenticated_origin_pulls_certificate">certificate is uploaded to Cloudflare</a> and the ID from that upload is then <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/authenticated_origin_pulls">placed in the AOP configuration</a> for the given hostname. The <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#create_before_destroy">create_before_destroy</a> meta-argument ensures that the replacement certificate is uploaded successfully before we remove the certificate that's currently in place.</p>
+	<pre class="language-hcl"><code class="language-hcl">locals {
   hostnames = toset([
 	"supercool.hostname.tld",
             "thatsafinelooking.hostname.tld"
@@ -171,23 +200,21 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
   authenticated_origin_pulls_certificate = cloudflare_authenticated_origin_pulls_certificate.aop_cert["${each.key}"].id
   hostname                           	= "${each.key}"
   enabled                            	= true
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="terraform-recommendations">Terraform recommendations</h3>
+}</code></pre>
+	<h3>Terraform recommendations</h3>
 	<p>The comfortable automation that we've achieved thus far did not come without some hair-pulling. Below are a few of the learnings that have allowed us to maintain the repository as a side project run by two engineers (shoutout <a href="https://github.com/dhaynespls">David</a>).</p>
-	<h4 id="store-your-state-somewhere-safe"><strong>Store your state somewhere safe</strong></h4>
-	<p>It feels worth repeating that the tfstate <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration#credentials-and-sensitive-data"><strong>contains secrets</strong></a><strong> including any API keys you're using with providers </strong>and <strong>the default location of the tfstate is in the current working directory. </strong>It's very easy to accidentally commit this to source control. By defining a <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration">backend</a>, the state can be stored with a cloud storage provider, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/local">in a secure location on a filesystem</a>, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/pg">in a database</a>, or even <a href="https://mirio.dev/2022/09/18/implementing-a-terraform-state-backend">Cloudflare Workers</a>! Wherever the state is stored, make sure it is encrypted.</p>
-	<h5 id="choose-simplicity-avoid-modules"><strong>Choose simplicity, avoid modules</strong></h5>
+	<h4><b>Store your state somewhere safe</b></h4>
+	<p>It feels worth repeating that the tfstate <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration#credentials-and-sensitive-data"><b>contains secrets</b></a> <b>including any API keys you're using with providers</b> and <b>the default location of the tfstate is in the current working directory.</b> It's very easy to accidentally commit this to source control. By defining a <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration">backend</a>, the state can be stored with a cloud storage provider, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/local">in a secure location on a filesystem</a>, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/pg">in a database</a>, or even <a href="https://mirio.dev/2022/09/18/implementing-a-terraform-state-backend">Cloudflare Workers</a>! Wherever the state is stored, make sure it is encrypted.</p>
+	<h5><b>Choose simplicity, avoid modules</b></h5>
 	<p><a href="https://developer.hashicorp.com/terraform/language/modules">Modules</a> are intended to reduce code repetition for well-defined chunks of systems such as "I want three clusters of whizz-bangs in locations A, C, and F." If cloud-computing was like <a href="https://wiki.factorio.com/Blueprint">Factorio</a>, this would be amazing. However, financial, technical, and physical constraints mean subtle differences in systems develop over time such as "I want fewer whizz-bangs in C and the whizz-bangs in F should get a different network topology." In Terraform, implementation logic of these requirements is moved to the module code. <a href="https://github.com/hashicorp/hcl">HCL</a> is absolutely not the place to write decipherable conditionals. While module versioning prevents having to make every change backwards-compatible, keeping module usage up-to-date becomes another chore for repository maintainers.</p>
 	<p>An understandable code base is a user-friendly codebase. It's rare that a deeply cryptic error will return from a misconfigured resource definition. Conversely, modules, especially custom ones, can lead users on a head-scratching adventure. This kind of system can't scale with confused users.</p>
 	<p>A few well-designed <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/for_each">for_each</a> loops (we're obviously fans) can achieve similar objectives as modules without the complexity. It's fine to use plain old resources too! Especially when there are more than a handful of varying arguments, it's more valuable for the configuration to be clear than to be eloquent. For example: an <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member">account_member</a> resource makes sense to be in a for_loop, but a <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/page_rule">page_rule</a> probably doesn't.</p>
-	<h5 id="keep-tfstates-small"><strong>Keep tfstates small</strong></h5>
+	<h5><b>Keep tfstates small</b></h5>
 	<p>Maintaining quick pull-request-to-plan turnaround keeps Terraform from feeling like a burden on users' time. Furthermore, if a plan is taking 30 minutes to run, a rollback in the case of an issue would also take 30 minutes! This post describes our single-account-to-tfstate model.</p>
 	<p>However, after noticing slow-downs coming from the large number of AOP certificate configurations in a big zone, we moved that code to a separate tfstate. We were able to make this change because AOP configuration is fairly self-contained. To ensure there would be no fighting between the states, we kept the API token permissions for each tfstate mutually exclusive of each other. Our Atlantis Terraform plans typically finish under five minutes. If it feels impossible to keep the size of a tfstate down to a reasonable amount of time, it may be worth considering a different tool for that bit of configuration management.</p>
-	<h5 id="know-when-to-use-a-different-tool"><strong>Know when to use a Different tool</strong></h5>
+	<h5><b>Know when to use a Different tool</b></h5>
 	<p>Terraform isn't a panacea. We generally don't use Terraform to manage DNS records, for example. We use <a href="https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone">OctoDNS</a> which integrates more neatly into our infrastructure automation. DNS records can quickly add up to long state-rendering times and are often dynamically generated from systems that Terraform doesn't know about. To avoid conflicts, there should only ever be one system publishing changes to DNS records.</p>
 	<p>We also haven't figured out a maintainable way of managing Workers scripts in Terraform. When a .js script in the Terraform directory changes, Terraform isn't aware of it. This means a change needs to occur somewhere else in a .tf file before the plan diff is generated. It likely isn't an unsolvable issue, but doesn't seem particularly worth cramming into Terraform when there are better options for Worker management like <a href="https://developers.cloudflare.com/workers/wrangler">Wrangler</a>.</p>
-	<h2 id="looking-forward">Looking forward</h2>
+	<h2>Looking forward</h2>
 	<p>We're continuing to invest in the Cloudflare Terraforming experience both for our own use and for the benefit of our users. With the provider, we hope to offer a comfortable and scalable method of interacting with Cloudflare products. Hopefully this post has presented some useful suggestions to anyone interested in adopting Cloudflare-configuration-as-code. Don't hesitate to reach out on the <a href="https://github.com/cloudflare/terraform-provider-cloudflare">GitHub project</a> for troubleshooting, bug reports, or feature requests. For more in depth documentation on using Terraform to manage your Cloudflare account, <a href="https://developers.cloudflare.com/terraform">read on here</a>. And if you don't have a Cloudflare account already, <a href="https://dash.cloudflare.com/sign-up/teams">click here</a> to get started.</p>
 </div>

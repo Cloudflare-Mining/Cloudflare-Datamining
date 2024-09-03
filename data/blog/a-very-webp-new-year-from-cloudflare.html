@@ -1,73 +1,83 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hRZtLH56wlEL4QIrbOBQd/a6179cc5ba7c2c094a41e37c3ddc7d40/a-very-webp-new-year-from-cloudflare.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Cloudflare has an automatic image optimization feature called <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a>, available to customers on paid plans. It recompresses images and removes unnecessary data so that they are delivered to browsers more quickly.</p>
 	<p>Up until now, Polish has not changed image types when optimizing (even if, for example, a PNG might sometimes have been smaller than the equivalent JPEG). But a new feature in Polish allows us to swap out an image for an equivalent image compressed using Google’s WebP format when the browser is capable of handling WebP and delivering that type of image would be quicker.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/holly.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a> <a href="https://www.flickr.com/photos/john47kent/5307525503">image</a> by <a href="https://www.flickr.com/photos/john47kent">John Stratford</a></small>
-	</p>
-	<h3 id="whatiswebp">What is WebP?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RCs2VzrEL7pYO3RNWBRYa/d8f4fb156d667490d2a850ad9008762c/holly.jpg" alt="" class="kg-image" width="640" height="425" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a> <a href="https://www.flickr.com/photos/john47kent/5307525503">image</a> by <a href="https://www.flickr.com/photos/john47kent">John Stratford</a></p>
+	<h3>What is WebP?</h3>
 	<p>The main image formats used on the web haven’t changed much since the early days (apart from the SVG vector format, PNG was the last one to establish itself, <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics#History_and_development">almost two decades ago</a>).</p>
 	<p><a href="https://en.wikipedia.org/wiki/WebP">WebP</a> is a newer image format for the web, proposed by Google. It takes advantage of progress in <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression">image compression techniques</a> since formats such as JPEG and PNG were designed. It is often able to compress the images into a significantly smaller amount of data than the older formats.</p>
 	<p>WebP is versatile and able to replace the three main raster image formats used on the web today:</p>
 	<ul>
-		<li>WebP can do lossy compression, so it can be used instead of JPEG for photographic and photo-like images.</li>
-		<li>WebP can do lossless compression, and supports an alpha channel meaning images can have transparent regions. So it can be used instead of PNG, such as for images with sharp transitions that should be reproduced exactly (e.g. line art and graphic design elements).</li>
-		<li>WebP images can be animated, so it can be used as a replacement for animated GIF images.</li>
+		<li>
+			<p>WebP can do lossy compression, so it can be used instead of JPEG for photographic and photo-like images.</p>
+		</li>
+		<li>
+			<p>WebP can do lossless compression, and supports an alpha channel meaning images can have transparent regions. So it can be used instead of PNG, such as for images with sharp transitions that should be reproduced exactly (e.g. line art and graphic design elements).</p>
+		</li>
+		<li>
+			<p>WebP images can be animated, so it can be used as a replacement for animated GIF images.</p>
+		</li>
 	</ul>
 	<p>Currently the main browser that supports WebP is Google’s Chrome (both on desktop and mobile devices). See <a href="http://caniuse.com/#feat=webp">the WebP page on caniuse.com</a> for more details.</p>
-	<h3 id="polishwebpconversion">Polish WebP conversion</h3>
+	<h3>Polish WebP conversion</h3>
 	<p>Customers on the Pro, Business, and Enterprise plans can enable the automatic creation of WebP images by checking the WebP box in the Polish settings for a zone (these are found on the “Speed” page of the dashboard):</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/polish-webp.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Beloplqsl1SNVyjFSOyl4/9899080491c33d61c34c42aabf7eb08e/polish-webp.png" alt="" class="kg-image" width="1579" height="418" loading="lazy">
+
+	</figure>
 	<p>When this is enabled, Polish will optimize images just as it always has. But it will also convert the image to WebP, if WebP can shrink the image data more than the original format. These WebP images are only returned to web browsers that indicate they support WebP (e.g. Google Chrome), so most websites using Polish should be able to benefit from WebP conversion.</p>
 	<p>(Although Polish can now produce WebP images by converting them from other formats, it can't consume WebP images to optimize them. If you put a WebP image on an origin site, Polish won't do anything with it. Until the WebP ecosystem grows and matures, it is uncertain that attempting to optimize WebP is worthwhile.)</p>
-	<p>Polish has two modes: <em>lossless</em> and <em>lossy</em>. In lossless mode, JPEG images are optimized to remove unnecessary data, but the image displayed is unchanged. In lossy mode, Polish reduces the quality of JPEG images in a way that should not have a significant visible effect, but allows it to further reduce the size of the image data.</p>
+	<p>Polish has two modes: <i>lossless</i> and <i>lossy</i>. In lossless mode, JPEG images are optimized to remove unnecessary data, but the image displayed is unchanged. In lossy mode, Polish reduces the quality of JPEG images in a way that should not have a significant visible effect, but allows it to further reduce the size of the image data.</p>
 	<p>These modes are respected when JPEG images are converted to WebP. In lossless mode, the conversion is done in a way that preserves the image as faithfully as possible (due to the nature of the conversion, the resulting WebP might not be exactly identical, but there are unlikely to be any visible differences). In lossy mode, the conversion sacrifices a little quality in order to shrink the image data further, but as before, there should not be a significant visible effect.</p>
 	<p>These modes do not affect PNGs and GIFs, as these are lossless formats and so Polish will preserve images in those formats exactly.</p>
 	<p>Note that WebP conversion does not change the URLs of images, even if the file extension in the URL implies a different format. For example, a JPEG image at <code>https://example.com/picture.jpg</code> that has been converted to WebP will still have that same URL. The “Content-Type” HTTP header tells the browser the true format of an image.</p>
-	<h3 id="bythenumbers">By the Numbers</h3>
+	<h3>By the Numbers</h3>
 	<p>A few studies have been published of how well WebP compresses images compared with established formats. These studies provide a useful picture of how WebP performs. But before we released our WebP support, we decided to do a survey based on the context on which we planned to use WebP:</p>
 	<ul>
-		<li>We evaluated WebP based on a collection of images gathered from the websites of our customers. The corpus consisted of 23,500 images (JPEG, PNG and GIFs).</li>
-		<li>Some studies compare WebP with JPEG by taking uncompressed images and compressing them to JPEG and WebP directly. But we wanted to know what happens when we convert an image that was has already been compressed as a JPEG. In a sense this is an unfair test, because a JPEG may contain artifacts due to compression that would not be present in the original raw image, and conversion to WebP may try to retain those artifacts. But it is such conversions matter for our use of WebP (this consideration does not apply to PNG and GIF conversions, because they are lossless).</li>
-		<li>We’re not just interested in whether WebP conversion can shrink images found on the web. We want to know how much WebP allows Polish to reduce the size further than it already does, thus providing a real end-user benefit. So our survey also includes the results of Polish without WebP.</li>
-		<li>In some cases, converting to WebP does not produce a result smaller than the optimized image in the original format. In such cases, we discard the WebP image. So the figures presented below do not penalize WebP for such cases.</li>
+		<li>
+			<p>We evaluated WebP based on a collection of images gathered from the websites of our customers. The corpus consisted of 23,500 images (JPEG, PNG and GIFs).</p>
+		</li>
+		<li>
+			<p>Some studies compare WebP with JPEG by taking uncompressed images and compressing them to JPEG and WebP directly. But we wanted to know what happens when we convert an image that was has already been compressed as a JPEG. In a sense this is an unfair test, because a JPEG may contain artifacts due to compression that would not be present in the original raw image, and conversion to WebP may try to retain those artifacts. But it is such conversions matter for our use of WebP (this consideration does not apply to PNG and GIF conversions, because they are lossless).</p>
+		</li>
+		<li>
+			<p>We’re not just interested in whether WebP conversion can shrink images found on the web. We want to know how much WebP allows Polish to reduce the size further than it already does, thus providing a real end-user benefit. So our survey also includes the results of Polish without WebP.</p>
+		</li>
+		<li>
+			<p>In some cases, converting to WebP does not produce a result smaller than the optimized image in the original format. In such cases, we discard the WebP image. So the figures presented below do not penalize WebP for such cases.</p>
+		</li>
 	</ul>
 	<p>Here is a chart showing the results of Polish, with and without WebP conversion. For each format, the average original image size is normalized to 100%, and the average sizes after Polishing are shown relative to that.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/webp-chart.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YazeQmjUBmLEir39hYrUh/da82738e7ad59a00e148aa64ff2e26f2/webp-chart.png" alt="" class="kg-image" width="970" height="598" loading="lazy">
+
+	</figure>
 	<p>Here are the average savings corresponding to the chart:</p>
-	<table>
-		<tbody>
-			<tr style="border-bottom: 1px solid black">
-				<th style="text-align:center;font-weight:bold;padding-right:1em">Original Format</th>
-				<th style="text-align:center;font-weight:bold;padding-right:1em">Polish without WebP</th>
-				<th style="text-align:center;font-weight:bold">Polish using WebP</th>
-			</tr>
-			<tr>
-				<td style="text-align:center">JPEG (with Polish lossless mode)</td>
-				<td style="text-align:center">9%</td>
-				<td style="text-align:center">19%</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">JPEG (with Polish lossy mode)</td>
-				<td style="text-align:center">34%</td>
-				<td style="text-align:center">47%</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">PNG</td>
-				<td style="text-align:center">16%</td>
-				<td style="text-align:center">38%</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">GIF</td>
-				<td style="text-align:center">3%</td>
-				<td style="text-align:center">16%</td>
-			</tr>
-		</tbody>
-	</table>
+	<p>Original Format</p>
+	<p>Polish without WebP</p>
+	<p>Polish using WebP</p>
+	<p>JPEG (with Polish lossless mode)</p>
+	<p>9%</p>
+	<p>19%</p>
+	<p>JPEG (with Polish lossy mode)</p>
+	<p>34%</p>
+	<p>47%</p>
+	<p>PNG</p>
+	<p>16%</p>
+	<p>38%</p>
+	<p>GIF</p>
+	<p>3%</p>
+	<p>16%</p>
 	<p>(The saving is calculated as 100% - (polished size) / (original size).)</p>
 	<p>As you can see, WebP conversion achieves significant size improvements not only for JPEG images, but also for PNG and GIF images. We believe supporting WebP will result in lower bandwidth and faster website delivery.</p>
-	<h3 id="andawebpnewyear">… and a WebP New Year</h3>
+	<h3>… and a WebP New Year</h3>
 	<p>WebP does not yet have the same level of browser support as JPEG, PNG and GIF, but we are excited about its potential to streamline web pages. Polish WebP conversion allows our customers to adopt WebP with a simple change to the settings in the Cloudflare dashboard. So, if you are on one of our <a href="https://www.cloudflare.com/plans">paid plans</a>, we encourage you to try it out today.</p>
 	<p>PS — Want to help optimize the web? We’re <a href="https://www.cloudflare.com/join-our-team">hiring</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

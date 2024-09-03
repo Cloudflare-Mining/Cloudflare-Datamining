@@ -1,23 +1,26 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>The following is a guest post by Scott Helme, a Security Researcher, international speaker, and <a href="https://scotthelme.co.uk">blogger</a>. He's also the founder of the popular <a href="https://securityheaders.com">securityheaders.com</a> and <a href="https://report-uri.com">report-uri.com</a>, free tools to help people deploy better security.</em></p>
-	<p>With the continued growth of Report URI we're seeing a larger and larger variety of sites use the service. With that diversity comes additional requirements that need to be met, some of them simple and some of them less so. Here's a quick look at those challenges and how they can be solved easily with a Cloudflare Worker.<!--more--></p>
-	<h4 id="sendingcspreports">Sending CSP Reports</h4>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nQrGvJfa2nCvJTVHuyCt7/5187a94355b404f5732434167e606763/proxying-traffic-to-report-uri-with-cloudflare-workers.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>The following is a guest post by Scott Helme, a Security Researcher, international speaker, and </i><a href="https://scotthelme.co.uk"><i>blogger</i></a><i>. He's also the founder of the popular </i><a href="https://securityheaders.com"><i>securityheaders.com</i></a><i> and </i><a href="https://report-uri.com"><i>report-uri.com</i></a><i>, free tools to help people deploy better security.</i></p>
+	<p>With the continued growth of Report URI we're seeing a larger and larger variety of sites use the service. With that diversity comes additional requirements that need to be met, some of them simple and some of them less so. Here's a quick look at those challenges and how they can be solved easily with a Cloudflare Worker.</p>
+	<h4>Sending CSP Reports</h4>
 	<p>When a browser sends a CSP report for us to collect at Report URI, we receive the JSON payload sent to us but we also have access to two other pieces of information, the client IP and the User Agent string. We never store, collect or analyse the client IP, we simply don't need or want to, and all we do with the UA string is extract the browser name like Chrome or Firefox. Most site operators are perfectly happy with our approach here and things work just fine. There are however some issues when the site operator simply doesn't want to have us to have this information and some cases have come up where they can't allow us to have access to that information because of restrictions placed on them by a regulator. The other common thing that comes up, which I honestly never anticipated, was simply the perception of the reporting endpoint being a 3rd party address. There are various different ways we can and do tackle these problems.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/logo-2.png" alt="logo-2" loading="lazy"></p>
-	<h4 id="cname">CNAME</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OgeJOCwWvsrbooIrPeE6x/b88ef2d52fd61c883e7e26d0b0bee0dc/logo-2.png" alt="logo-2" class="kg-image" width="718" height="163" loading="lazy">
+
+	</figure>
+	<h4>CNAME</h4>
 	<p>Up until now, if a client didn't want to report to a 3rd party address we would ask them to CNAME their subdomain to us and run a dedicated instance that would ingest reports using their subdomain. We take control of certificate issuance and renewal and the customer doesn't need to do anything further. This is a fairly common approach across many different technical requirements and it's something that has worked well for us. The problem is that it does come with some administrative overheads for both parties. From our side the technical requirements of managing separate infrastructure are an additional burden, we're responsible for a subdomain belonging to someone else and there are more moving parts in the system, increasing complexity. I was curious if there was another way.</p>
-	<h4 id="httpproxy">HTTP Proxy</h4>
+	<h4>HTTP Proxy</h4>
 	<p>One idea that we discussed with a customer a while back, but never deployed, was for them to run a proxy on premise. They could report to their own endpoint under their own control and simply forward reports to their Report URI reporting address. This means they could shield the client IP from us, mask the User Agent string if required and generally do any sanitisation they liked on the payload. The problem with this was that it just seemed like an awful lot of work, I'd much rather have discussed deploying Report URI on premise instead. The client is also still at risk of things like accidentally DDoSing their endpoint, which removes one of the good reasons to use Report URI.</p>
-	<h4 id="findinganotherway">Finding Another Way</h4>
+	<h4>Finding Another Way</h4>
 	<p>For the most part our current model was working really well but there were some customers who had a hard requirement to not send reports directly to us. Our on premise solution also isn't ready for prime time just yet so we needed something that we could offer, without it requiring too much of the overhead mentioned above. That's when I had an idea that might just cut it.</p>
-	<h4 id="javascriptonaplane">Javascript On A Plane</h4>
+	<h4>Javascript On A Plane</h4>
 	<p>I was sat on a flight just a few days ago and I never like to waste time. When I'm sat in the car on the way to the airport, sat in the airport or sat on my flight, I'm working. Those are precious hours that can't be wasted and during a recent flight between Manchester and Vienna I was playing around with Cloudflare Workers in their playground. I was tinkering with a worker to add Security Headers to websites, which has since <a href="https://scotthelme.co.uk/security-headers-cloudflare-worker">been launched</a>, and whilst inspecting the headers object and looking through the headers that were in the request I saw the User Agent string. "Oh hey, I could remove that if I wanted to" I thought to myself, and then the rapid fire series of events triggered in my brain when you're in the process of realising a great idea. I could remove the UA header... From the request... Then the worker can make any subrequests it likes... Requests to a different origin... THE WORKER CAN RECEIVE A REPORT AND FORWARD IT!!!</p>
 	<p>I realised that (of course) a Cloudflare Worker could be used to receive reports on a subdomain of your own site and then forward them to your reporting address at Report URI.</p>
-	<h4 id="usingcloudflareworkersasareportproxy">Using Cloudflare Workers As A Report Proxy</h4>
+	<h4>Using Cloudflare Workers As A Report Proxy</h4>
 	<p>One of the main benefits of using Report URI is just how simple everything is to do and all of the solutions mentioned at the start of this blog changed that. With a Cloudflare Worker we could keep the absolute simplicity of deploying Report URI but also easily allow you the option to shield your client's IP addresses, or any other information in the payload, from us.</p>
-	<br>
-	<pre><code class="javascript">
+	<pre class="language-bash"><code class="language-bash">
 let subdomain = 'scotthelme'
 
 addEventListener('fetch', event =&gt; {
@@ -42,43 +45,39 @@ async function forwardReport(req) {
     status: response.status,
     statusText: response.statusText
   })
-}
-</code></pre>
-	<br>
+}</code></pre>
 	<p>This simple worker, deployed on your own site, provides a solution to all of the above problems. All you need to do is configure your subdomain in the var on the first line and everything else will be taken care of for you. Deploy this worker onto the subdomain you want to send reports to, follow the same naming convention for the path when sending reports, and everything will Just Work(TM).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/pic2.png" alt="pic2" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qROepXu7FHMn3OmnuuHf5/23e020d4c7e4d80f778aba5418412df5/pic2.png" alt="pic2" class="kg-image" width="640" height="160" loading="lazy">
+
+	</figure>
 	<p>The script above is configured for my subdomain, so if I wanted to deploy this on any site, say <code>example.com</code>, I'd choose the subdomain on my site where I wanted to send reports <code>report-uri.example.com</code> and off we go.</p>
-	<br>
-	<pre><code>https://scotthelme.report-uri.com/r/d/csp/enforce
+	<pre class="language-bash"><code class="language-bash">https://scotthelme.report-uri.com/r/d/csp/enforce
 becomes
-https://report-uri.example.com/r/d/csp/enforce
-</code></pre>
-	<br>
+https://report-uri.example.com/r/d/csp/enforce</code></pre>
 	<p>The reports are now being sent to a subdomain under your own control, the worker will intercept the request and forward it to the destination at Report URI for you. In the process you will shield the client IP as we will only see the source IP as being the Cloudflare Worker and in the example above we are forwarding the UA string for browser identification.</p>
-	<h4 id="amazinglysimple">Amazingly Simple</h4>
+	<h4>Amazingly Simple</h4>
 	<p>With the worker above we don't need to worry about setting up a CNAME, certificate provisioning, separate infrastructure or anything else that goes with it. You also don't need to worry about setting up and managing a proxy to forward the reports to us and traffic or processing power required to do so. The worker will take care of all of that and what's best is that it will take care of it with minimal overhead, taking only a few minutes to setup and costing only $0.50 for every 1 million reports it processes.</p>
-	<h4 id="takingitonestepfurther">Taking It One Step Further</h4>
+	<h4>Taking It One Step Further</h4>
 	<p>The great thing about this is that once the worker is setup and processing reports, you can start to do some pretty awesome things beyond just proxying reports, workers are incredibly powerful.</p>
-	<h5 id="downsamplereportvolume">Downsample report volume</h5>
+	<h5>Downsample report volume</h5>
 	<p>If you want to save your quota on Report URI, maybe you're early in the process of deploying CSP and it's quite noisy, no problem. The worker can select a random downsample of reports to forward on so you can still receive reports but not eat your quota quite as quickly. Make the following change to the start of the <code>forwardReport()</code> function to randomly drop 50% of reports.</p>
-	<br>
-	<pre><code class="javascript">async function forwardReport(req) {
+	<pre class="language-bash"><code class="language-bash">async function forwardReport(req) {
   if(Math.floor((Math.random() * 100) + 1) &lt;= 50) {
     return new Response("discarded")
   }</code></pre>
-	<br>
-	<h5 id="hidetheuastring">Hide the UA string</h5>
+	<h5>Hide the UA string</h5>
 	<p>If you did want to hide the UA string from Report URI and not let us see that either, you simply need to remove the following line of code.</p>
-	<br>
-	<pre><code class="javascript">newHdrs.set('User-Agent', req.headers.get('User-Agent'))</code></pre>
-	<br>
-	<h5 id="advancedwork">Advanced work</h5>
+	<pre class="language-bash"><code class="language-bash">newHdrs.set('User-Agent', req.headers.get('User-Agent'))</code></pre>
+	<h5>Advanced work</h5>
 	<p>The worker can pretty much do anything you like. Maybe there are sections of your site that you don't want to send reports from. You could parse the JSON and check which page triggered the report and discard them. You could do a regex match on the JSON payload to make sure no sensitive tokens or information get sent too. The possibilities are basically endless and what we can say is that if you need to do it, it's easy and cheap enough to do in a Cloudflare Worker.</p>
-	<h4 id="pricing">Pricing</h4>
+	<h4>Pricing</h4>
 	<p>Talking about cheap enough, I thought I'd actually quantify that and quote the Cloudflare pricing for workers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/workers-pricing-text.png" alt="workers-pricing-text" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qJn1MqvluG0CTRlLxJ5K6/0a2929f1eaf4e40c8a4f3a9b6a832b06/workers-pricing-text.png" alt="workers-pricing-text" class="kg-image" width="605" height="308" loading="lazy">
+
+	</figure>
 	<p>Starting at $5 per month and covering your first 10 million requests is an amazingly cheap deal. Most websites that report through us wouldn't even come close to sending 10 million reports so you'd probably never pay any more than $5 for your Cloudflare Worker. That's it, $5 per month... By the time you've even thought about creating a CNAME or standing up your own proxy you've probably blown through more than Cloudflare Workers would ever cost you. What's best is that if you already use Cloudflare Workers then you can roll this into your existing usage and it might not even increase the cost if you have some of your initial 10 million requests spare. If you don't use Cloudflare on your site already then you could just as easily grab a new domain name exclusively for reporting, that'd cost just a few dollars, and stand that up behind Cloudflare too. One way or another this is insanely easy and insanely cheap.</p>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/themes/prism.min.css" integrity="sha256-DJJDQyzflMYiUb2jX3gilm9m3gAkHPC4WLv9BAk4rTE=" crossorigin="anonymous">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/prism.min.js" integrity="sha256-S5OX5nYh2U/F4bOf42lUh9oOr/eb7xNXWU6bWr+33B4=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-javascript.min.js" integrity="sha256-Z13YoGiGZzf9yTrtBc60CRm+utE6FAigKAHBVgVUSzw=" crossorigin="anonymous"></script><!--kg-card-end: markdown-->
 </div>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VeSXGVmH9D5ua1ucmOgcE/0fca7fc8d9f7aaeacb9bc64d83d2450a/about-the-march-8-9-2021-verkada-camera-hack.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare uses a vendor called Verkada for cameras in our offices in San Francisco, Austin, New York, London and Singapore. These cameras are used at the entrances, exits and main thoroughfares of our offices and have been part of maintaining the security of offices that have been closed for almost a year.</p>
 	<p>Yesterday, we were notified of a breach of Verkada that allowed a hacker to access Verkada’s internal support tools to manage those cameras remotely, as well as access them through a remote root shell. As soon as we were notified of the breach, we proceeded to shut down the cameras in all our office locations to prevent further access.</p>
@@ -6,20 +6,32 @@
 	<p>Our internal systems follow the same <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a> that we provide to our customers, and as such our <a href="https://www.cloudflare.com/learning/network-layer/network-security">corporate office networks</a> are not implicitly trusted by our other locations or data centers. From a security point of view connecting from one of our corporate locations is no different than connecting from a non-Cloudflare location.</p>
 	<p>While these camera devices were breached, it’s important to understand that inherently every employee has something like a root shell on a corporate network. It is simply not enough to rely on background checks, training on phishing and other threats or policies about not visiting questionable websites to keep malware off your network. This incident emphasizes the importance of the Zero Trust model that Cloudflare follows and provides to customers, which ensures that if any one system or vendor is compromised, it does not compromise the entire organization.</p>
 	<p>For example, a claim was made on Twitter that it might have been possible to access Cloudflare CEO Matthew Prince’s laptop.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zzivXRx7aGOJE9Ll3bE1u/1169aa4f13f4e3f8a88eb8756f7bbf9d/image5-8.png" alt="" class="kg-image" width="512" height="167" loading="lazy">
+
+	</figure>
 	<p>This claim is spurious for a few reasons. Firstly, Matthew isn’t in the San Francisco office because of COVID-19. None of us are. So being on the corporate San Francisco network doesn’t get you closer to his or my machine.</p>
 	<p>Secondly, even if, somehow, an attacker were to get into his laptop they’d still have to get past the per-application, hard-key protected access control through our Zero Trust product Cloudflare Access.</p>
 	<p>And another claim was that the attackers had a “root shell inside Cloudflare’s network”.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bLDmfIfNbgj9LVCSoGVjH/1cfc978416a10a837be909bc29a8de67/image3-9.png" alt="" class="kg-image" width="512" height="192" loading="lazy">
+
+	</figure>
 	<p>That sounds scary but we don’t trust our corporate network; we use our products, such as Cloudflare Access, to control access to resources. The fact that the attacker had access to a machine inside the corporate network is no better than the kind of access they’d have had if they’d connected to our corporate WiFi network. The network isn't important, it's the access control that matters.</p>
 	<p>Of course, if we had been using the old castle-and-moat style of corporate networking (where anything and anyone on the corporate network are inherently trusted) the outcome could have been different.</p>
 	<p>This is why Zero Trust is so powerful. It allowed us all to work from home because of COVID-19 and it means that an attacker who got into the office network doesn’t get any further.</p>
-	<h3 id="internal-monitoring">Internal Monitoring</h3>
+	<h3>Internal Monitoring</h3>
 	<p>Our monitoring and network intrusion detection system were able to capture the Verkada compromise and show exactly what network connections were made from the cameras. Additionally Verkada was able to provide us with a log of commands executed on our cameras.</p>
 	<p>Some press stories contain an image of the “root shell” on one of the cameras. It shows the attacker having executed commands like <code>whoami</code>, <code>ifconfig</code> and <code>curl ifconfig.me</code>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DYxQxv0VLgGpYqzic3ToS/d8087aaf720ba9425bc01d6cee5d06ec/image6.jpg" alt="" class="kg-image" width="1600" height="936" loading="lazy">
+
+	</figure>
 	<p>Here are the commands executed by the intruder on March 8 (we are waiting for Verkada to supply us with the commands executed on March 9 but our other monitoring and logging tools give us a good sense of what those commands will be):</p>
-	<pre><code>2358 Singapore       curl ifconfig.me
+	<pre class="language-bash"><code class="language-bash">2358 Singapore       curl ifconfig.me
 
 2357 New York        curl ifconfig.me
 
@@ -30,8 +42,8 @@
 1451 San Francisco   ifconfig
 1451 San Francisco   whoami</code></pre>
 	<p>Here’s a log of the traffic from the cameras. Let’s start with unusual DNS queries. This shows DNS lookups from two cameras in San Francisco, one in London and one in Singapore. Mostly the attacker was using ifconfig.me to find their external IP address.</p>
-	<p>In San Francisco they attempted to access Cloudflare’s main website, an admin panel that doesn’t exist (there is no admin.cloudflare.com) and a specific customer that I have replaced with example.com (the hacker also tried admin.example.com).</p><!--kg-card-begin: markdown-->
-	<pre><code>2021-03-09T00:01:15.373343Z	London	ifconfig.me
+	<p>In San Francisco they attempted to access Cloudflare’s main website, an admin panel that doesn’t exist (there is no admin.cloudflare.com) and a specific customer that I have replaced with example.com (the hacker also tried admin.example.com).</p>
+	<pre class="language-bash"><code class="language-bash">2021-03-09T00:01:15.373343Z	London	ifconfig.me
 2021-03-09T00:01:15.373343Z	London	ifconfig.me
 2021-03-09T00:01:15.372302Z	London	ifconfig.me
 2021-03-09T00:01:15.371451Z	London	ifconfig.me
@@ -51,10 +63,9 @@
 2021-03-08T23:58:30.274265Z	Singapore	ifconfig.me
 2021-03-08T23:58:30.274155Z	Singapore	ifconfig.me
 
-2021-03-08T23:52:23.145321Z	San Francisco	ifconfig.me
-</code></pre>
+2021-03-08T23:52:23.145321Z	San Francisco	ifconfig.me</code></pre>
 	<p>They made some of their requests using HTTP and we captured those requests</p>
-	<pre><code>2021-03-09T00:01:15.375176Z London
+	<pre class="language-bash"><code class="language-bash">2021-03-09T00:01:15.375176Z London
 ifconfig.me GET /
 curl/7.71.1
 200 OK
@@ -87,16 +98,26 @@ curl/7.64.0
 2021-03-08T23:52:23.183201Z San Francisco
 ifconfig.me GET /
 curl/7.64.0
-200 OK
-</code></pre>
-	<!--kg-card-end: markdown-->
+200 OK</code></pre>
 	<p>We also have complete connection logging but in the interests of space I won’t put it all here.</p>
-	<h3 id="the-downloaded-archived-video">The downloaded archived video</h3>
+	<h3>The downloaded archived video</h3>
 	<p>The attacker used the Verkada tools to download two archived recordings of our San Francisco office lobby. We only keep 30 days of video but when there’s a formal investigation we keep specific video for up to one year. The downloaded videos date back to July 13, 2020; we had kept them to support investigation into a theft. Here are some stills from each of those videos:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-8.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="timeline-utc-">Timeline (UTC)</h3>
-	<p><strong>March 8</strong><br><em>1451</em> - Unauthorized access to Verkada security cameras<br><em>2352</em> - Unauthorized access is used to run <code>curl ifconfig.me</code> from a Cloudflare camera in San Francisco</p>
-	<p><strong>March 9</strong><br><em>0029</em> - Unauthorized download of an archived video from our front door camera in San Francisco<br><em>0033</em> - Unauthorized download of an archived video from our elevator camera in San Francisco<br><em>0040</em> - A second unauthorized download of an archived video from our elevator camera<br><em>1750</em> - Contacted by a reporter about security incident involving cameras<br><em>2107</em> - First internal report of a Twitter user claiming to have accessed our cameras with confirmation one of our cameras had been compromised<br><em>2122</em> - Cloudflare disables all network connectivity of our security cameras<br><em>2126</em> - Internal review of our corporate network security controls is completed<br><em>2149</em> - Article is released about compromise of Verkada cameras<br></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VJFyH0AOlNOg8Hw4MTwQl/4b605938fd7c17709fb9e79996054a56/image1-11.png" alt="" class="kg-image" width="1999" height="1498" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Rhg8ytCnl6uiXk6Dw2JMN/0687dfac2e55bbff269d8720ce2e7740/image4-8.png" alt="" class="kg-image" width="1999" height="1501" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/t0F3n7KEVrmxhpU7raJTn/7fff5ed7f14af2274b7afa1cc4aa9c3b/image2-5.png" alt="" class="kg-image" width="1999" height="1497" loading="lazy">
+
+	</figure>
+	<h3>Timeline (UTC)</h3>
+	<p><b>March 8</b><i>1451</i> - Unauthorized access to Verkada security cameras<i>2352</i> - Unauthorized access is used to run <code>curl ifconfig.me</code> from a Cloudflare camera in San Francisco</p>
+	<p><b>March 9</b><i>0029</i> - Unauthorized download of an archived video from our front door camera in San Francisco<i>0033</i> - Unauthorized download of an archived video from our elevator camera in San Francisco<i>0040</i> - A second unauthorized download of an archived video from our elevator camera<i>1750</i> - Contacted by a reporter about security incident involving cameras<i>2107</i> - First internal report of a Twitter user claiming to have accessed our cameras with confirmation one of our cameras had been compromised<i>2122</i> - Cloudflare disables all network connectivity of our security cameras<i>2126</i> - Internal review of our corporate network security controls is completed<i>2149</i> - Article is released about compromise of Verkada cameras</p>
 </div>

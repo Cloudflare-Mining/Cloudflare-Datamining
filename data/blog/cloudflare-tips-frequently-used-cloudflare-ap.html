@@ -1,32 +1,30 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><a href="http://www.flickr.com/photos/damonbillian/3146028677" title="Sumatran Tiger: San Francisco Zoo by dbillian, on Flickr"><img alt="Sumatran Tiger: San Francisco Zoo" src="http://farm4.static.flickr.com/3101/3146028677_1203fc90da.jpg"></a><br>
-		<em>Editor's Note: Some of you may be asking why CloudFlare is using an image of a tiger for something related to the CloudFlare API. Since Ian Pye of CloudFlare is our API lead, I asked Ian what image he would like in the blog post about the API. His response to me: "A tiger. Our API is like a tiger. Oh, and everyone likes tigers." So, now you know the story of why a tiger is in the CloudFlare API post.</em>
-	</p>
-	<p>As many of our <a href="https://www.facebook.com">Facebook fans</a> and <a href="https://twitter.com/cloudflare">Twitter followers</a> may have noticed recently, CloudFlare has been spending a fair amount of time recently asking what we can do to improve the service. One of the most startling revelations<br>
-		to me was that many of our customers don't know we have a <a href="https://www.cloudflare.com/docs/client-api.html">CloudFlare API</a> that mimics many of the features found in your CloudFlare settings' page, even though we have the API fairly well documented in the <a href="https://support.cloudflare.com/forums">CloudFlare Forums</a>, so I thought I would put together a little "cheat sheet" for frequently used API features.</p>
-	<h3 id="thingsyouneedtoknoworgetbeforeusingtheapibr">Things you need to know or get before using the API:<br></h3>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4o3bBFutYT6tXE7doMBAYd/f540210b76ae78554eacb49a1afe251e/cloudflare-tips-frequently-used-cloudflare-ap.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p>[</p>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/3146028677">http://www.flickr.com/photos/damonbillian/3146028677/</a> "Sumatran Tiger: San Francisco Zoo by dbillian, on Flickr")<i>Editor's Note: Some of you may be asking why CloudFlare is using an image of a tiger for something related to the CloudFlare API. Since Ian Pye of CloudFlare is our API lead, I asked Ian what image he would like in the blog post about the API. His response to me: "A tiger. Our API is like a tiger. Oh, and everyone likes tigers." So, now you know the story of why a tiger is in the CloudFlare API post.</i></p>
+	<p>As many of our <a href="https://www.facebook.com">Facebook fans</a> and <a href="https://twitter.com/cloudflare">Twitter followers</a> may have noticed recently, CloudFlare has been spending a fair amount of time recently asking what we can do to improve the service. One of the most startling revelationsto me was that many of our customers don't know we have a <a href="https://www.cloudflare.com/docs/client-api.html">CloudFlare API</a> that mimics many of the features found in your CloudFlare settings' page, even though we have the API fairly well documented in the <a href="https://support.cloudflare.com/forums">CloudFlare Forums</a>, so I thought I would put together a little "cheat sheet" for frequently used API features.</p>
+	<h3>Things you need to know or get before using the API:</h3>
 	<ol>
-		<li>You will need to get your API key for your account first. You can locate the API key by going to your '<a href="https://www.cloudflare.com/my-account.html">My Account</a>' page.</li>
-		<li>Each zone (yourdomain.com) on CloudFlare has a unique number identifier. If you need to locate the zoneid for a domain, simply go to the "Reports and Stats' link for that domain (the zone id appears at the end with an equal sign, such as zid=xxxxxx).</li>
-		<li>Your account email address.</li>
-		<li>You may interface with the API via HTTPS POST or GET requests to
-			<a href="https://www.cloudflare.com/api_json.html">www.cloudflare.com/api_json.html</a>
+		<li>
+			<p>You will need to get your API key for your account first. You can locate the API key by going to your '<a href="https://www.cloudflare.com/my-account.html">My Account</a>' page.</p>
+		</li>
+		<li>
+			<p>Each zone (yourdomain.com) on CloudFlare has a unique number identifier. If you need to locate the zoneid for a domain, simply go to the "Reports and Stats' link for that domain (the zone id appears at the end with an equal sign, such as zid=xxxxxx).</p>
+		</li>
+		<li>
+			<p>Your account email address.</p>
+		</li>
+		<li>
+			<p>You may interface with the API via HTTPS POST or GET requests to <a href="https://www.cloudflare.com/api_json.html">www.cloudflare.com/api_json.html</a></p>
 		</li>
 	</ol>
-	<h3 id="commonlyusedapifeaturesbrbr">Commonly used API features<br><br></h3>
-	<p><strong><em>Development Mode</em></strong><br>
-		If you plan on making changes to the <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">static content</a> CloudFlare caches on your site, it is best for you go to Development Mode first to bypass the CloudFlare cache so these changes appear immediately.</p>
-	<p><strong><em>Purge CloudFlare cache</em></strong><br>
-		If you want to purge your CloudFlare cache, or if you forgot to go to Development Mode when making changes to your site, you may purge your CloudFlare cache so that these changes appear. You would only want to do this when you <em>really</em> want to purge all the <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">static content</a> CloudFlare has stored in the cache for that domain. Purging is not selectively done by file extension or file name.</p>
-	<p><strong><em>Pulling basic statistics for your site</em></strong><br>
-		One of the most common requests we get from our users is that they would like to share their statistics with clients without providing login details to the account. While we currently don't offer a way for people to access an account with a "read only" option, you can use the API to grab basic CloudFlare statistics from your account.</p>
-	<p><strong><em>Reporting spam back to CloudFlare</em></strong><br>
-		While the <a href="https://blog.cloudflare.com/using-the-cloudflare-api-to-report-spam-on-yo">reporting spam</a> back to CloudFlare API option has been fairly well documented on our blog already, you would use this option if <a href="https://support.cloudflare.com/entries/22268462-How-does-CloudFlare-know-which-IPs-to-challenge-">CloudFlare's data sources</a> don't catch some sources of spam that make it through to websites (we're always looking to improve).</p>
+	<h3>Commonly used API features</h3>
+	<p><i><b>Development Mode</b></i>If you plan on making changes to the <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">static content</a> CloudFlare caches on your site, it is best for you go to Development Mode first to bypass the CloudFlare cache so these changes appear immediately.</p>
+	<p><i><b>Purge CloudFlare cache</b></i>If you want to purge your CloudFlare cache, or if you forgot to go to Development Mode when making changes to your site, you may purge your CloudFlare cache so that these changes appear. You would only want to do this when you <i>really</i> want to purge all the <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">static content</a> CloudFlare has stored in the cache for that domain. Purging is not selectively done by file extension or file name.</p>
+	<p><i><b>Pulling basic statistics for your site</b></i>One of the most common requests we get from our users is that they would like to share their statistics with clients without providing login details to the account. While we currently don't offer a way for people to access an account with a "read only" option, you can use the API to grab basic CloudFlare statistics from your account.</p>
+	<p><i><b>Reporting spam back to CloudFlare</b></i>While the <a href="https://blog.cloudflare.com/using-the-cloudflare-api-to-report-spam-on-yo">reporting spam</a> back to CloudFlare API option has been fairly well documented on our blog already, you would use this option if <a href="https://support.cloudflare.com/entries/22268462-How-does-CloudFlare-know-which-IPs-to-challenge-">CloudFlare's data sources</a> don't catch some sources of spam that make it through to websites (we're always looking to improve).</p>
 	<p>Since we rely on our community of websites to alert us to online threats reported to us through the API or threat control, it actually helps make our system smarter for all sites on the system and can help stop spam from hitting other sites as well.</p>
-	<p><strong><em>Updating your screen capture on your challenge page</em></strong><br>
-		If the look and feel of your site changes frequently, you probably want to update the image associated with your <a href="https://blog.cloudflare.com/new-feature-customize-your-cloudflare-challen">CloudFlare challenge (captcha) page</a> on a regular basis so your visitors know that they are hitting your site.</p>
+	<p><i><b>Updating your screen capture on your challenge page</b></i>If the look and feel of your site changes frequently, you probably want to update the image associated with your <a href="https://blog.cloudflare.com/new-feature-customize-your-cloudflare-challen">CloudFlare challenge (captcha) page</a> on a regular basis so your visitors know that they are hitting your site.</p>
 	<p>The specific calls and parameters for using each of these API functions can be found in the <a href="https://www.cloudflare.com/docs/client-api.html">CloudFlare Client Interface API</a>.</p>
 	<p>Have a suggestion about improving the API? Please <a href="https://support.cloudflare.com">contact CloudFlare</a> with any requests.</p>
-	<!--kg-card-end: markdown-->
 </div>

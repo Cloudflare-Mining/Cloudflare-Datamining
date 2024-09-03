@@ -1,103 +1,161 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BSCa4pGfBRBRcApwBkzQL/b54e96a2ffda0a6f3dfe33a0341bb3a0/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This post explains how we implemented the <a href="https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress">Automatic Platform Optimization</a> for WordPress. In doing so, we have defined a new place to run WordPress plugins, at the edge written with Cloudflare Workers. We provide the feature as a Cloudflare service but what’s exciting is that anyone could build this using the Workers platform.</p>
 	<p>The service is an evolution of the ideas explained in an earlier <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">zero-config edge caching of HTML</a> blog post. The post will explain how Automatic Platform Optimization combines the best qualities of the regular Cloudflare cache with Workers KV to improve cache cold starts globally.</p>
 	<p>The optimization will work both with and without the <a href="https://support.cloudflare.com/hc/en-us/articles/227634427-Using-Cloudflare-with-WordPress">Cloudflare for WordPress plugin</a> integration. Not only have we provided a zero config edge HTML caching solution but by using the Workers platform we were also able to improve the performance of <a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers">Google font loading</a> for all pages.</p>
 	<p>We are launching the feature first for WordPress specifically but the concept can be applied to any website and/or content management system (CMS).</p>
-	<h3 id="a-new-place-to-run-wordpress-plugins">A new place to run WordPress plugins?</h3>
+	<h3>A new place to run WordPress plugins?</h3>
 	<p>There are many individual WordPress plugins for performance that use similar optimizations to existing Cloudflare services. Automatic Platform Optimization is bringing them all together into one easy to use solution, deployed at the edge.</p>
 	<p>Traditionally you have to maintain server plugins with your WordPress installation. This comes with maintenance costs and can require a deep understanding of how to fine tune performance and security for each and every plugin. Providing the optimizations on the client side can also lead to performance problems due to the <a href="https://v8.dev/blog/cost-of-javascript-2019">costs of JavaScript</a> execution. In contrast most of the optimizations could be built-in in Cloudflare’s edge rather than running on the server or the client. Automatic Platform Optimization will be always up to date with the latest performance and <a href="https://www.cloudflare.com/learning/security/how-to-improve-wordpress-security">security best practices</a>.</p>
-	<h3 id="how-to-optimize-for-wordpress">How to optimize for WordPress</h3>
+	<h3>How to optimize for WordPress</h3>
 	<p>By default Cloudflare CDN caches assets based on <a href="https://support.cloudflare.com/hc/en-us/articles/200172516#h_a01982d4-d5b6-4744-bb9b-a71da62c160a">file extension</a> and doesn’t cache HTML content. It is possible to configure HTML caching with a <a href="https://support.cloudflare.com/hc/en-us/articles/202775670#3SVKvGhbS9BNT34zRCsPJ7">Cache Everything Page</a> rule but it is a manual process and often requires additional features only available on the Business and Enterprise plans. So for the majority of the WordPress websites even with a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> in front them, HTML content is not cached. Requests for a HTML document have to go all the way to the origin.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14SelFUXAc9SBPwqea8OUD/a3781f1d4785062ed876fc503c5dd9c1/image3-2.png" alt="" class="kg-image" width="1536" height="649" loading="lazy">
+
+	</figure>
 	<p>Even if a CDN optimizes the connection between the closest edge and the website’s origin, the origin could be located far away and also be slow to respond, especially under load.</p>
-	<h3 id="move-content-closer-to-the-user">Move content closer to the user</h3>
+	<h3>Move content closer to the user</h3>
 	<p>One of the primary recommendations for speeding up websites is to move content closer to the end-user. This reduces the amount of time it takes for packets to travel between the end-user and the web server - the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trip time (RTT)</a>. This improves the speed of establishing a connection as well as serving content from a closer location.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VJdt6X0xF6xuDyMI0CHXu/98f063583848eae1fd7dc24b33a14b17/image6-1.png" alt="" class="kg-image" width="1297" height="514" loading="lazy">
+
+	</figure>
 	<p>We have previously blogged about the <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">benefits of edge caching HTML</a>. Caching and serving from HTML from the Cloudflare edge will greatly improve the time to first byte (TTFB) by optimizing DNS, connection setup, SSL negotiation, and removing the origin server response time.If your origin is slow in generating HTML and/or your user is far from the origin server then all your performance metrics will be affected.</p>
 	<p>Most HTML isn’t really dynamic. It needs to be able to change relatively quickly when the site is updated but for a huge portion of the web, the content is static for months or years at a time. There are special cases like when a user is logged-in (as the admin or otherwise) where the content needs to differ but the vast majority of visits are of anonymous users.</p>
-	<h3 id="zero-config-edge-caching-revisited">Zero config edge caching revisited</h3>
+	<h3>Zero config edge caching revisited</h3>
 	<p>The goal is to make updating content to the edge happen automatically. The edge will cache and serve the previous version content until there is new content available. This is usually achieved by triggering a cache purge to remove existing content. In fact using a combination of our <a href="https://www.cloudflare.com/integrations/wordpress">WordPress plugin</a> and <a href="https://api.cloudflare.com/#zone-purge-files-by-url">Cloudflare cache purge API</a>, we already support <a href="https://support.cloudflare.com/hc/en-us/articles/115002708027-Cloudflare-WordPress-Plugin-Automatic-Cache-Management-">Automatic Cache Purge on Website Updates</a>. This feature has been in use for many years.</p>
 	<p>Building automatic HTML edge caching is more nuanced than caching traditional static content like images, styles or scripts. It requires defining rules on what to cache and when to update the content. To help with that task we introduced a custom header to communicate caching rules between Cloudflare edge and origin servers.</p>
 	<p>The Cloudflare Worker runs from every edge data center, the serverless platform will take care of scaling to our needs. Based on the request type it will return HTML content from Cloudflare Cache using <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Worker’s Cache API</a> or serve a response directly from the origin. Specifically designed custom header provides information from the origin on how the script should handle the response. For example worker script will never cache responses for authenticated users.</p>
-	<h3 id="html-caching-rules">HTML Caching rules</h3>
-	<p>With or without Cloudflare for WordPress plugin, HTML edge caching requires all of the following conditions to be met:</p><!--kg-card-begin: markdown-->
+	<h3>HTML Caching rules</h3>
+	<p>With or without Cloudflare for WordPress plugin, HTML edge caching requires all of the following conditions to be met:</p>
 	<ul>
-		<li>Origin responds with 200 status</li>
-		<li>Origin responds with "text/html" content type</li>
-		<li>Request method is GET.</li>
-		<li>Request path doesn’t contain query strings</li>
-		<li>Request doesn’t contain any WordPress specific cookies: "wp-*", "wordpress*", "comment_*", "woocommerce_*" unless it’s "wordpress_eli" or "wordpress_test_cookie".</li>
-		<li>Request doesn’t contain any of the following headers:
+		<li>
+			<p>Origin responds with 200 status</p>
+		</li>
+		<li>
+			<p>Origin responds with "text/html" content type</p>
+		</li>
+		<li>
+			<p>Request method is GET.</p>
+		</li>
+		<li>
+			<p>Request path doesn’t contain query strings</p>
+		</li>
+		<li>
+			<p>Request doesn’t contain any WordPress specific cookies: "wp-*", "wordpress*", "comment_*", "woocommerce_*" unless it’s "wordpress_eli" or "wordpress_test_cookie".</p>
+		</li>
+		<li>
+			<p>Request doesn’t contain any of the following headers:</p>
 			<ul>
-				<li>"Cache-Control: no-cache"</li>
-				<li>"Cache-Control: private"</li>
-				<li>"Pragma:no-cache"</li>
-				<li>"Vary: *"</li>
+				<li>
+					<p>"Cache-Control: no-cache"</p>
+				</li>
+				<li>
+					<p>"Cache-Control: private"</p>
+				</li>
+				<li>
+					<p>"Pragma:no-cache"</p>
+				</li>
+				<li>
+					<p>"Vary: *"</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 	<p>Note that the caching is bypassed if the devtools are open and the “Disable cache” option is active.</p>
-	<h3 id="edge-caching-with-plugin">Edge caching with plugin</h3>
+	<h3>Edge caching with plugin</h3>
 	<p>The preferred solution requires a <a href="https://support.cloudflare.com/hc/en-us/articles/227634427-Using-Cloudflare-with-WordPress">configured Cloudflare for WordPress plugin</a>. We provide the following features set when the plugin is activated:</p>
 	<ul>
-		<li>HTML edge caching with 30 days TTL</li>
-		<li>30 seconds or faster cache invalidation</li>
-		<li>Bypass HTML caching for logged in users</li>
-		<li>Bypass HTML caching based on presence of WordPress specific cookies</li>
-		<li>Decrease load on origin servers. If a request is fetched from Cloudflare CDN Cache we skip the request to the origin server.</li>
+		<li>
+			<p>HTML edge caching with 30 days TTL</p>
+		</li>
+		<li>
+			<p>30 seconds or faster cache invalidation</p>
+		</li>
+		<li>
+			<p>Bypass HTML caching for logged in users</p>
+		</li>
+		<li>
+			<p>Bypass HTML caching based on presence of WordPress specific cookies</p>
+		</li>
+		<li>
+			<p>Decrease load on origin servers. If a request is fetched from Cloudflare CDN Cache we skip the request to the origin server.</p>
+		</li>
 	</ul>
-	<h3 id="how-is-this-implemented">How is this implemented?</h3>
+	<h3>How is this implemented?</h3>
 	<p>When an eyeball requests a page from a website and Cloudflare doesn’t have a copy of the content it will be fetched from the origin. As the response is sent from the origin and goes through Cloudflare’s edge, Cloudflare for WordPress plugin adds a custom header: <code>cf-edge-cache</code>. It allows an origin to configure caching rules applied on responses.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6COdQPrdIxdu1UiJgsdyVd/c6594f2dfc0c277e4a30e4439c0e3f39/image4-1.png" alt="" class="kg-image" width="1610" height="772" loading="lazy">
+
+	</figure>
 	<p>Based on the <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">X-HTML-Edge-Cache</a> proposal the plugin adds a cf-edge-cache header to every origin response. There are 2 possible values:</p>
 	<ul>
-		<li>cf-edge-cache: no-cache</li>
+		<li>
+			<p>cf-edge-cache: no-cache</p>
+		</li>
 	</ul>
 	<p>The page contains private information that shouldn’t be cached by the edge. For example, an active session exists on the server.</p>
 	<ul>
-		<li>cf-edge-cache: cache, platform=wordpress</li>
+		<li>
+			<p>cf-edge-cache: cache, platform=wordpress</p>
+		</li>
 	</ul>
 	<p>This combination of cache and platform will ensure that the HTML page is cached. In addition, we ran a number of checks against the presence of WordPress specific cookies to make sure we either bypass or allow caching on the Edge.</p>
 	<p>If the header isn’t present we assume that the Cloudflare for WordPress plugin is not installed or up-to-date. In this case the feature operates without a plugin support.</p>
-	<h3 id="edge-caching-without-plugin">Edge caching without plugin</h3>
-	<p>Using the Automatic Platform Optimization feature in combination with Cloudflare for WordPress plugin is our recommended solution. It provides the best feature set together with almost instant cache invalidation. Still, we wanted to provide performance improvements without the need for any installation on the origin server. </p>
+	<h3>Edge caching without plugin</h3>
+	<p>Using the Automatic Platform Optimization feature in combination with Cloudflare for WordPress plugin is our recommended solution. It provides the best feature set together with almost instant cache invalidation. Still, we wanted to provide performance improvements without the need for any installation on the origin server.</p>
 	<p>We provide the following features set when the plugin is not activated:</p>
 	<ul>
-		<li>HTML edge caching with 30 days TTL</li>
-		<li>Cache invalidation may take up to 30 minutes. A manual cache purge could be triggered to speed up cache invalidation</li>
-		<li>Bypass HTML caching based on presence of WordPress specific cookies</li>
-		<li>No decreased load on origin servers. If a request is fetched from Cloudflare CDN Cache we still require an origin response to apply cache invalidation logic.</li>
+		<li>
+			<p>HTML edge caching with 30 days TTL</p>
+		</li>
+		<li>
+			<p>Cache invalidation may take up to 30 minutes. A manual cache purge could be triggered to speed up cache invalidation</p>
+		</li>
+		<li>
+			<p>Bypass HTML caching based on presence of WordPress specific cookies</p>
+		</li>
+		<li>
+			<p>No decreased load on origin servers. If a request is fetched from Cloudflare CDN Cache we still require an origin response to apply cache invalidation logic.</p>
+		</li>
 	</ul>
 	<p>Without Cloudflare for WordPress plugin we still cache HTML on the edge and serve the content from the cache when possible. The logic of cache revalidation happens after serving the response to the eyeball. <a href="https://developers.cloudflare.com/workers/learning/fetch-event-lifecycle#waituntil">Worker’s waitUntil() callback</a> allows the user to run code without affecting the response to the eyeball and is run in background.</p>
 	<p>We rely on the following headers to detect whether the content is stale and requires cache update:</p>
 	<ul>
-		<li>ETag. If the cached version and origin response both include ETag and they are different we replace cached version with origin response. The behavior is the same for strong and weak ETag values.</li>
-		<li>Last-Modified. If the cached version and origin response both include Last-Modified and origin has a later Last-Modified date we replace cached version with origin response.</li>
-		<li>Date. If no ETag or Last-Modified header is available we compare cached version and origin response Date values. If there was more than a 30 minutes difference we replace cached version with origin response.</li>
+		<li>
+			<p>ETag. If the cached version and origin response both include ETag and they are different we replace cached version with origin response. The behavior is the same for strong and weak ETag values.</p>
+		</li>
+		<li>
+			<p>Last-Modified. If the cached version and origin response both include Last-Modified and origin has a later Last-Modified date we replace cached version with origin response.</p>
+		</li>
+		<li>
+			<p>Date. If no ETag or Last-Modified header is available we compare cached version and origin response Date values. If there was more than a 30 minutes difference we replace cached version with origin response.</p>
+		</li>
 	</ul>
-	<h3 id="getting-content-everywhere">Getting content everywhere</h3>
+	<h3>Getting content everywhere</h3>
 	<p>Cloudflare Cache works great for the frequently requested content. Regular requests to the site make sure the content stays in cache. For a typical personal blog, it will be more common that the content stays in cache only in some parts of our vast edge network. With the Automatic Platform Optimization release we wanted to improve loading time for cache cold start from any location in the world. We explored different approaches and decided to use <a href="https://blog.cloudflare.com/introducing-workers-kv">Workers KV</a> to improve Edge Caching.</p>
 	<p>In addition to Cloudflare's CDN cache we put the content into Workers KV. It only requires a single request to the page to cache it and within a minute it is made available to be read back from KV from any Cloudflare data center.</p>
-	<h3 id="updating-content">Updating content</h3>
+	<h3>Updating content</h3>
 	<p>After an update has been made to the WordPress website the plugin makes a request to Cloudflare’s API which both purges cache and marks content as stale in KV. The next request for the asset will trigger revalidation of the content. If the plugin is not enabled cache revalidation logic is triggered as detailed previously.</p>
 	<p>We serve the stale copy of the content still present in KV and asynchronously fetch new content from the origin, apply possible optimizations and then cache it (both regular local CDN cache and globally in KV).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>To store the content in KV we use a single namespace. It’s keyed with a combination of a zone identifier and the URL. For instance:</p><!--kg-card-begin: markdown-->
-	<pre><code>1:example.com/blog-post-1.html =&gt; "transformed &amp; cached content"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>For marking content as stale in KV we write a new key which will be read from the edge. If the key is present we will revalidate the content.</p><!--kg-card-begin: markdown-->
-	<pre><code>stale:1:example.com/blog-post-1.html =&gt; ""
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UGnbwtDfcNEmZXwV12urw/56773eecd9f346daa597b93fbe33976b/image5-2.png" alt="" class="kg-image" width="1316" height="732" loading="lazy">
+
+	</figure>
+	<p>To store the content in KV we use a single namespace. It’s keyed with a combination of a zone identifier and the URL. For instance:</p>
+	<pre class="language-bash"><code class="language-bash">1:example.com/blog-post-1.html =&gt; "transformed &amp; cached content"</code></pre>
+	<p>For marking content as stale in KV we write a new key which will be read from the edge. If the key is present we will revalidate the content.</p>
+	<pre class="language-bash"><code class="language-bash">stale:1:example.com/blog-post-1.html =&gt; ""</code></pre>
 	<p>Once the content was revalidated the stale marker key is deleted.</p>
-	<h3 id="moving-optimizations-to-the-edge">Moving optimizations to the edge</h3>
+	<h3>Moving optimizations to the edge</h3>
 	<p>On top of caching HTML at the edge, we can pre-process and transform the HTML to make the loading of websites even faster for the user. Moving the development of this feature to our Cloudflare Workers environment makes it easy to add performance features such as improving <a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers">Google Font loading</a>. Using Google Fonts can cause significant performance issues as to load a font requires loading the HTML page; then loading a CSS file and finally loading the font. All of these steps are using different domains.</p>
 	<p>The solution is for the worker to inline the CSS and serve the font directly from the edge minimizing the number of connections required.</p>
-	<p>If you read through the previous blog post’s implementation it required a lot of manual work to provide streaming HTML processing support and character encodings. As the set of worker APIs have improved over time it is now much simpler to implement. Specifically the addition of a streaming <a href="https://blog.cloudflare.com/html-parsing-2">HTML rewriter/parser with CSS-selector based API</a> and the ability to suspend the parsing to <a href="https://blog.cloudflare.com/asynchronous-htmlrewriter-for-cloudflare-workers">asynchronously fetch a resource</a> has reduced the code required to implement this from ~600 lines of source code to under 200.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">export function transform(request, res) {
+	<p>If you read through the previous blog post’s implementation it required a lot of manual work to provide streaming HTML processing support and character encodings. As the set of worker APIs have improved over time it is now much simpler to implement. Specifically the addition of a streaming <a href="https://blog.cloudflare.com/html-parsing-2">HTML rewriter/parser with CSS-selector based API</a> and the ability to suspend the parsing to <a href="https://blog.cloudflare.com/asynchronous-htmlrewriter-for-cloudflare-workers">asynchronously fetch a resource</a> has reduced the code required to implement this from ~600 lines of source code to under 200.</p>
+	<pre class="language-javascript"><code class="language-javascript">export function transform(request, res) {
   return new HTMLRewriter()
     .on("link", {
       async element(e) {
@@ -121,11 +179,13 @@
       }
     })
     .transform(res);
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>The HTML transformation doesn’t block the response to the user. It’s running as a background task which when complete will update kv and replace the global cached version.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="making-edge-publishing-generic">Making edge publishing generic</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ShahwSObRage83CdWSfD0/0eb4cb92f59889beb9f06512e341dbf0/image1-6.png" alt="" class="kg-image" width="1348" height="694" loading="lazy">
+
+	</figure>
+	<h3>Making edge publishing generic</h3>
 	<p>We are launching the feature for WordPress specifically but the concept can be applied to any website and content management system (CMS).</p>
 </div>

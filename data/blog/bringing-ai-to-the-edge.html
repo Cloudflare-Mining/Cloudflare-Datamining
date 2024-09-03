@@ -1,25 +1,37 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/Ai-at-the-edge-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CsiZmyYfRC5NwHdHiJf7s/7f61b7d4ce574fc33344f4fe32955be9/Ai-at-the-edge-1.png" alt="" class="kg-image" width="1310" height="650" loading="lazy">
+
+	</figure>
 	<p>Cloudflare has long used machine learning for <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">bot detection</a>, identifying anomalies, <a href="https://blog.cloudflare.com/using-data-science-and-machine-learning-for-improved-customer-support">customer support</a> and business intelligence. &nbsp;And internally we have a cluster of GPUs used for model training and inference.</p>
 	<p>For even longer we’ve been running code “at the edge” in more than 200 cities worldwide. Initially, that was code that we wrote and any customization was done through our UI or API. About seven years ago we started deploying custom code, written in Lua, for our enterprise customers.</p>
 	<p>But it’s quite obvious that using a language that isn’t widely understood, and going through an account executive to get code written, isn’t a viable solution and so four years ago we announced Cloudflare Workers. Workers allows anyone, on any plan, to write code that gets deployed to our edge network. And they can do it in the language they choose.</p>
 	<p>After launching Workers we added storage through <a href="https://blog.cloudflare.com/workers-kv-is-ga">Workers KV</a> as programs need <a href="https://www.amazon.com/Algorithms-Structures-Prentice-Hall-Automatic-Computation/dp/0130224189">algorithms plus data</a>. And we’ve continued to add to the Workers platform with <a href="https://blog.cloudflare.com/introducing-workers-unbound">Workers Unbound</a>, <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>, <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects">Jurisdictional Restrictions</a> and more.</p>
 	<p>But many of today’s applications need access to the latest <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> and <a href="https://www.cloudflare.com/learning/ai/what-is-deep-learning">deep learning</a> methods. Those applications need three things: to scale easily, to securely handle models and to use familiar tools.</p>
 	<p>To help anyone build AI-based applications Cloudflare is extending the Workers platform to include support for NVIDIA GPUs and TensorFlow. Soon you’ll be able to build AI-based applications that run across the Cloudflare network using pre-built or custom models for inference.</p>
-	<h3 id="nvidia-tensorflow">NVIDIA + TensorFlow</h3>
+	<h3>NVIDIA + TensorFlow</h3>
 	<p>For many years we’ve looked for appropriate hardware to run on our edge network to enable AI-powered applications. We’ve examined a wide variety of dedicated AI accelerator chips, as well as approaches that use clever encoding of the models to make them run efficiently on CPUs.</p>
 	<p>Ultimately, we decided that with our large footprint of servers in more than 200 cities worldwide and the strong support for NVIDIA GPUs in AI toolkits that the best solution was a deployment of NVIDIA GPUs to enable AI-based applications. Today we <a href="https://www.cloudflare.com/press-releases/2021/cloudflare-partners-with-nvidia">announced</a> that we are partnering with NVIDIA to bring AI to our global edge network.</p>
 	<p>Previously machine learning models were deployed on expensive centralized servers or using cloud services that limited them to “regions” around the world. Cloudflare and NVIDIA are putting machine learning at the edge, within milliseconds of the global online population, enabling high performance, low latency AI to be deployed by anyone.</p>
 	<p>Because the models themselves remain in Cloudflare’s data centers, developers can deploy custom models without putting them on end user devices where they might risk being stolen. And because we’ll be deploying models across our large network, scaling becomes trivial and built in.</p>
 	<p>TensorFlow has become one of the defacto standard libraries and toolsets for building and running AI models. Cloudflare’s edge AI will use TensorFlow allowing developers to train and optimize models using familiar tools and tests before deploying them to our edge network.</p>
 	<p>In addition to building your own models using TensorFlow, we plan to offer pre-trained models for tasks such as image labeling/object recognition, text detection, and more.</p>
-	<h3 id="nata-or-not">Nata Or Not</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/Nata-or-Not_.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>As a demonstration of a real AI-based application running on Cloudflare’s infrastructure, the team in the Cloudflare Lisbon office built a website: <a href="https://nataornot.com">nataornot.com</a>. Upload a picture of food and it’ll tell you whether it’s one of Portugal’s delicious <a href="https://en.wikipedia.org/wiki/Pastel_de_nata">pasteis de nata</a> (an egg custard tart pastry dusted with cinnamon) or not. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Nata Or Not</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A8vhJ9vpeOuf2qBIZlig1/c92ae8939add636f26bc06eb807b14bc/Nata-or-Not_.png" alt="" class="kg-image" width="1198" height="492" loading="lazy">
+
+	</figure>
+	<p>As a demonstration of a real AI-based application running on Cloudflare’s infrastructure, the team in the Cloudflare Lisbon office built a website: <a href="https://nataornot.com">nataornot.com</a>. Upload a picture of food and it’ll tell you whether it’s one of Portugal’s delicious <a href="https://en.wikipedia.org/wiki/Pastel_de_nata">pasteis de nata</a> (an egg custard tart pastry dusted with cinnamon) or not.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k5R0ZUSDyLgYGpMYB05mK/01bcdd3f8d06128bb3fd3835a3c34307/image1-14.png" alt="" class="kg-image" width="1260" height="1234" loading="lazy">
+
+	</figure>
 	<p>The code used a TensorFlow model built from thousands of pictures of pasteis and other foods which runs on a Cloudflare server which has an <a href="https://www.nvidia.com/en-us/data-center/a100">NVIDIA A100</a> Tensor Core GPU in it. If you want to build your own pastel de nata recognizer we’ve open sourced the TensorFlow model <a href="https://github.com/cloudflare/tensorflow-nata">here</a>.</p>
 	<p>If you simply want to know whether the picture of food you have is a pastel de nata or not visit <a href="https://nataornot.com">nataornot.com</a>.</p>
-	<h3 id="going-forward">Going Forward</h3>
+	<h3>Going Forward</h3>
 	<p>If you are interested in being notified when Workers AI becomes available <a href="https://www.cloudflare.com/nvidia-workers">please sign up here</a>. And if you’re interested in working on AI at scale <a href="https://www.cloudflare.com/careers">we’re hiring</a>.</p>
 </div>

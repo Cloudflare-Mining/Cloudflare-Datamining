@@ -1,43 +1,38 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/developer-week-2023-wrap-up-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/developer-week-2023-wrap-up-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/developer-week-2023-wrap-up-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/developer-week-2023-wrap-up-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/developer-week-2023-wrap-up-es-es">Español</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-60.png" class="kg-image" alt="Recapping Developer Week" loading="lazy" width="1999" height="1125"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/developer-week-2023-wrap-up">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/developer-week-2023-wrap-up">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/developer-week-2023-wrap-up">日本語</a>, <a href="https://blog.cloudflare.com/es-es/developer-week-2023-wrap-up">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/developer-week-2023-wrap-up">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qWUJQ8FUS29Sd4V8fUad0/901fafeade1d6eaea4ecbdfe2c7a24f9/image1-60.png" alt="Recapping Developer Week" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Developer Week 2023 is officially a wrap. Last week, we shipped 34 posts highlighting what has been going on with our developer platform and where we’re headed in the future – including new products &amp; features, in-depth tutorials to help you get started, and customer stories to inspire you.</p>
 	<p>We’ve loved already hearing feedback from you all about what we’ve shipped:</p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">🤯 Serverless machine learning deployments - OMG! We used to need a team of devops to deploy a todo list MVP, it’s now 3 clicks with workers. They’re gonna do the same with ML workloads. Just like that. Boom. <a href="https://t.co/AcKUQ79fv0">https://t.co/AcKUQ79fv0</a></p>— Thibaut Tiberghien (@tibotiber) <a href="https://twitter.com/tibotiber/status/1658295956574703616?ref_src=twsrc%5Etfw">May 16, 2023</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">.<a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> is totally rocking it with these AI releases 🤘 <a href="https://t.co/7dQb6TUWg3">https://t.co/7dQb6TUWg3</a></p>— Philipp Tsipman (@ptsi) <a href="https://twitter.com/ptsi/status/1658695906483642371?ref_src=twsrc%5Etfw">May 17, 2023</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">Love this direction, for open source, for demos and running things on edge. <br><br>It's still in development, but as someone who've built an AI product on top of Cloudflare and has been asking for something like this, I'm really excited! <a href="https://t.co/AnywRDqecb">https://t.co/AnywRDqecb</a></p>— Altryne - targum.video (@altryne) <a href="https://twitter.com/altryne/status/1658134302700470274?ref_src=twsrc%5Etfw">May 15, 2023</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">I've been waiting for this. Next on my list is a <a href="https://twitter.com/remix_run?ref_src=twsrc%5Etfw">@remix_run</a> app using <a href="https://twitter.com/CockroachDB?ref_src=twsrc%5Etfw">@CockroachDB</a> deployed to Workers. The new multi-region capabilities of <a href="https://twitter.com/hashtag/CockroachDB?src=hash&amp;ref_src=twsrc%5Etfw">#CockroachDB</a> <a href="https://twitter.com/hashtag/serverless?src=hash&amp;ref_src=twsrc%5Etfw">#serverless</a> should pair wonderfully with <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> deployments. <a href="https://t.co/RwnJ2K0ToY">https://t.co/RwnJ2K0ToY</a></p>— Aydrian Howard (@itsaydrian) <a href="https://twitter.com/itsaydrian/status/1658480164152672260?ref_src=twsrc%5Etfw">May 16, 2023</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">Yes! Loving this! I definitely this is the right direction and will help the general DevX and onboarding to the platform a lot ❤️! <a href="https://t.co/rEQWreeS96">https://t.co/rEQWreeS96</a></p>— Adrien Baron (@BaronAdri) <a href="https://twitter.com/BaronAdri/status/1659094809133342720?ref_src=twsrc%5Etfw">May 18, 2023</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
+	<blockquote>
+		<p>🤯 Serverless machine learning deployments - OMG! We used to need a team of devops to deploy a todo list MVP, it’s now 3 clicks with workers. They’re gonna do the same with ML workloads. Just like that. Boom. <a href="https://t.co/AcKUQ79fv0">https://t.co/AcKUQ79fv0</a></p>
+		<p>— Thibaut Tiberghien (@tibotiber) <a href="https://twitter.com/tibotiber/status/1658295956574703616?ref_src=twsrc%5Etfw">May 16, 2023</a></p>
+	</blockquote>
+	<blockquote>
+		<p>.<a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> is totally rocking it with these AI releases 🤘 <a href="https://t.co/7dQb6TUWg3">https://t.co/7dQb6TUWg3</a></p>
+		<p>— Philipp Tsipman (@ptsi) <a href="https://twitter.com/ptsi/status/1658695906483642371?ref_src=twsrc%5Etfw">May 17, 2023</a></p>
+	</blockquote>
+	<blockquote>
+		<p>Love this direction, for open source, for demos and running things on edge.</p>
+		<p>It's still in development, but as someone who've built an AI product on top of Cloudflare and has been asking for something like this, I'm really excited! <a href="https://t.co/AnywRDqecb">https://t.co/AnywRDqecb</a></p>
+		<p>— Altryne - targum.video (@altryne) <a href="https://twitter.com/altryne/status/1658134302700470274?ref_src=twsrc%5Etfw">May 15, 2023</a></p>
+	</blockquote>
+	<blockquote>
+		<p>I've been waiting for this. Next on my list is a <a href="https://twitter.com/remix_run?ref_src=twsrc%5Etfw">@remix_run</a> app using <a href="https://twitter.com/CockroachDB?ref_src=twsrc%5Etfw">@CockroachDB</a> deployed to Workers. The new multi-region capabilities of <a href="https://twitter.com/hashtag/CockroachDB?src=hash&amp;ref_src=twsrc%5Etfw">#CockroachDB</a> <a href="https://twitter.com/hashtag/serverless?src=hash&amp;ref_src=twsrc%5Etfw">#serverless</a> should pair wonderfully with <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> deployments. <a href="https://t.co/RwnJ2K0ToY">https://t.co/RwnJ2K0ToY</a></p>
+		<p>— Aydrian Howard (@itsaydrian) <a href="https://twitter.com/itsaydrian/status/1658480164152672260?ref_src=twsrc%5Etfw">May 16, 2023</a></p>
+	</blockquote>
+	<blockquote>
+		<p>Yes! Loving this! I definitely this is the right direction and will help the general DevX and onboarding to the platform a lot ❤️! <a href="https://t.co/rEQWreeS96">https://t.co/rEQWreeS96</a></p>
+		<p>— Adrien Baron (@BaronAdri) <a href="https://twitter.com/BaronAdri/status/1659094809133342720?ref_src=twsrc%5Etfw">May 18, 2023</a></p>
+	</blockquote>
 	<p>We hope you’re able to spend the coming weeks slinging some code and experimenting with some of the new tools we shipped last week. As you’re building, join us in our <a href="https://discord.cloudflare.com">developers discord</a> and let us know what you think.</p>
 	<p>In case you missed any of our announcements here’s a handy recap:</p>
-	<h3 id="ai-announcements">AI announcements</h3><!--kg-card-begin: html-->
+	<h3>AI announcements</h3><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -88,7 +83,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="data-announcements">Data announcements</h3><!--kg-card-begin: html-->
+	<h3>Data announcements</h3><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -123,7 +118,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="developer-experience-announcements">Developer experience announcements</h3><!--kg-card-begin: html-->
+	<h3>Developer experience announcements</h3><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -162,7 +157,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="but-wait-there%E2%80%99s-more">But wait, there’s more</h3><!--kg-card-begin: html-->
+	<h3>But wait, there’s more</h3><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -193,6 +188,6 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+	<h3>Watch on Cloudflare TV</h3>
 	<p>If you missed any of the announcements or want to also view the associated Cloudflare TV segments, where blog authors went through each announcement, you can now watch all the <a href="https://cloudflare.tv/shows/developer-week">Developer Week videos on Cloudflare TV</a>.</p>
 </div>

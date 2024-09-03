@@ -1,48 +1,69 @@
 <div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cleaning-up-bad-bots">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cleaning-up-bad-bots">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cleaning-up-bad-bots">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cleaning-up-bad-bots">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cleaning-up-bad-bots">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18mZJ1Zg0TnXGGSbMUQjBv/6d717433df690429f04562a8acb56ae7/cleaning-up-bad-bots.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>From the very beginning Cloudflare has been stopping malicious bots from scraping websites, or misusing APIs. Over time we’ve improved our bot detection methods and deployed large <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning models</a> that are able to distinguish real traffic (be it from humans or apps) from malicious bots. We’ve also built a large catalog of good bots to detect things like helpful indexing by search engines.</p>
 	<p>But it’s not enough. Malicious bots continue to be a problem on the Internet and we’ve decided to fight back. From today customers have the option of enabling “bot fight mode” in the Firewall settings of their Cloudflare Dashboard.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image--20-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35xF3Wpr0NQ8CvG9OaDGTQ/51c2675cd4a5f54a9f5f7ab913565e97/image--20-.png" alt="" class="kg-image" width="1600" height="383" loading="lazy">
+
+	</figure>
 	<p>Once enabled, when we detect a bad bot, we will do three things: (1) we’re going to disincentivize the bot maker economically by tarpitting them, including requiring them to solve a computationally intensive challenge that will require more of their bot’s CPU; (2) for <a href="https://blog.cloudflare.com/bandwidth-alliance">Bandwidth Alliance partners</a>, we’re going to hand the IP of the bot to the partner and get the bot kicked offline; and (3) we’re going to plant trees to make up for the bot’s carbon cost.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/dead-robot@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Nbgj0o5gEjyQSq3MBWEzX/0b8ac1d218b19feb30aac41511f4c934/dead-robot_2x.png" alt="" class="kg-image" width="1448" height="1600" loading="lazy">
+
+	</figure>
 	<p>Malicious bots harm legitimate web publishers and applications, hurt hosting providers by misusing resources, and they doubly hurt the planet through the cost of electricity for servers and cooling for their bots and their victims.</p>
 	<p>Enough is enough. Our goal is nothing short of making it no longer viable to run a malicious bot on the Internet. And we think, with our scale, we can do exactly that.</p>
-	<h2 id="how-cloudflare-detects-bots">How Cloudflare Detects Bots</h2>
+	<h2>How Cloudflare Detects Bots</h2>
 	<p>Cloudflare’s secret sauce (ok, not very secret sauce) is <a href="https://w3techs.com/technologies/history_overview/proxy/all/q">our vast scale</a>. &nbsp;We currently handle traffic for over 20 million Internet properties ranging from the smallest personal web sites, through backend APIs for popular apps and IoT devices, to some of the best known names on the Internet (including 10% of the Fortune 1000).</p>
-	<p>This scale gives us a huge advantage in that we see an enormous amount and variety of traffic allowing us to build large machine learning models of Internet behavior. That scale and variety allows us to test new rules and models quickly and easily. </p>
+	<p>This scale gives us a huge advantage in that we see an enormous amount and variety of traffic allowing us to build large machine learning models of Internet behavior. That scale and variety allows us to test new rules and models quickly and easily.</p>
 	<p>Our bot detection breaks down into four large components:</p>
 	<ul>
-		<li>Identification of well known legitimate bots;</li>
-		<li>Hand written rules for simple bots that, however simple, get used day in, day out;</li>
-		<li>Our Bot Activity Detector model that spots the behavior of bots based on past traffic and blocks them; and</li>
-		<li>Our Trusted Client model that spots whether an HTTP User-Agent is what it says it is.</li>
+		<li>
+			<p>Identification of well known legitimate bots;</p>
+		</li>
+		<li>
+			<p>Hand written rules for simple bots that, however simple, get used day in, day out;</p>
+		</li>
+		<li>
+			<p>Our Bot Activity Detector model that spots the behavior of bots based on past traffic and blocks them; and</p>
+		</li>
+		<li>
+			<p>Our Trusted Client model that spots whether an HTTP User-Agent is what it says it is.</p>
+		</li>
 	</ul>
 	<p>In addition, Gatebot, our DDoS mitigation system, fingerprints DDoS bots and blocks their traffic at the packet level. Beyond Gatebot, customers also have access to our Firewall Rules where they can write granular rules to block very specific attack types.</p>
 	<p>Another model allows us to determine whether an IP address belongs to a VPN endpoint, a home broadband subscriber, a company using NAT or a hosting or cloud provider. It’s this last group that “Bot Cleanup” targets.</p>
 	<p>Today, Cloudflare challenges over 3 billion bot requests per day. Some of those bots are about to have a really bad time.</p>
-	<h2 id="how-cloudflare-fights-bots">How Cloudflare Fights Bots</h2>
+	<h2>How Cloudflare Fights Bots</h2>
 	<p>The cost of launching a <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot-attack">bot attack</a> consists of the expense of CPU time that powers the attack. If our models show that the traffic is coming from a bot, and it’s on a hosting or a cloud provider, we’ll deploy CPU intensive code to make the bot writer expend more CPU and slow them down. By forcing the attacker to use more CPU, we increase their costs during an attack and deter future ones.</p>
 	<p>This is one of the many so-called "tarpitting" techniques we're now deploying across our network to change the economics of running a malicious bot. Malicious bot operators be warned: if you target resources behind Cloudflare's IP space we're going to make you spin your wheels.</p>
 	<p>Every minute we tie malicious bots up is a minute they're not harming the Internet as a whole. This means we aren't just protecting our customers but everyone online currently terrorized by malicious bots. The spirit of Cloudflare's Birthday Week has always been about giving back to the Internet as a whole, and we can think of no better gift than ridding the Internet of malicious bots.</p>
 	<p>Beyond just wasting bots time we want to also get them shut down. If the infrastructure provider hosting the bot is part of the <a href="https://www.cloudflare.com/bandwidth-alliance">Bandwidth Alliance</a>, we’ll share the bot’s IP address so they can shutdown the bot completely. The Bandwidth Alliance allows us to reduce transit costs with partners and, with this launch, also helps us work together with them to make the Internet safer for legitimate users.</p>
 	<p>Generally, everyone we ran Bot Fight Mode by thought it was a great idea. The only objection we heard was that as we start forcing bots to solve CPU intensive challenges in the short term, before they just give up — which we think is inevitable in the long term — we may raise carbon emissions. To combat those emissions we’re committed to estimating the extra CPU utilized by these bots, calculating their carbon cost, and then planting trees to compensate and build a better future.</p>
-	<h2 id="planting-trees">Planting Trees</h2>
+	<h2>Planting Trees</h2>
 	<p>Dealing with climate change requires multiple efforts by people and companies. Cloudflare <a href="https://blog.cloudflare.com/the-climate-and-cloudflare">announced earlier this year</a> that we had expanded our purchasing of Renewable Energy Certificates (that previously covered our North American operations) to our entire global network of 194 cities.</p>
 	<p>To figure out how much tree planting we need to do we need to calculate the cost of the extra CPU used when making a bot work hard. Here’s how that will work.</p>
 	<p>Using a figure of 450 kg CO2/year &nbsp;(from <a href="https://www.goclimateneutral.org/blog/the-carbon-footprint-of-servers">https://www.goclimateneutral.org/blog/the-carbon-footprint-of-servers/</a>) for the types of server that a bad bot might use (cloud server using a non-renewable energy source) we get about 8kg CO2/year per CPU core. We are able to measure the time bots spend burning CPU and so we can directly estimate the amount of CO2 emitted by our fight back.</p>
 	<p>According to One Tree Planted, a single mature tree can absorb about 21kg CO2/year. So, very roughly, each tree can absorb a year’s worth of CO2 from 2.5 CPU cores.</p>
 	<p>Since trees take time to mature and the scale of the climate change challenge we’re going to pay to overplant trees. For every tree that we calculate we’d need to plant to sequester the CO2 emissions from fighting bots we’re going to donate $25 to One Tree Planted to plant 25 trees.</p>
 	<p>And, of course, we’ll be handing the IPs of bad bots to our Bandwidth Alliance partners to get the bots shut down and remove their carbon cost completely. In the past, the tech community has largely defeated email spammers and DDoS-for-hire services by making their efforts fruitless, we think this is the right strategy to now defeat malicious bots once and for all.</p>
-	<h2 id="who-do-bots-hurt">Who Do Bots Hurt?</h2>
-	<p>Malicious bots can cause significant harm to our customers’ infrastructure and often result in bad experiences for our customers’ users. </p>
-	<p>For example, a recent customer was being crippled by a credential stuffing attack that not only was attempting to compromise their users’ accounts but was doing so in such significant volume that it was effectively causing a small scale Denial of Service on all aspects of the customer’s website. </p>
+	<h2>Who Do Bots Hurt?</h2>
+	<p>Malicious bots can cause significant harm to our customers’ infrastructure and often result in bad experiences for our customers’ users.</p>
+	<p>For example, a recent customer was being crippled by a credential stuffing attack that not only was attempting to compromise their users’ accounts but was doing so in such significant volume that it was effectively causing a small scale Denial of Service on all aspects of the customer’s website.</p>
 	<p>The malicious bot was overloading the customer’s conventional threat prevention infrastructure and we rapidly onboarded them as an Under Attack customer. As a part of the onboarding, we identified that the attack could be specifically thwarted using our Bot Management product while not impacting any legitimate user traffic.</p>
-	<p>Another trend we have seen is the increase of the combination of bots with botnets, particularly in the world of inventory hoarding bots. The motivation and willingness to spend for these bot operators is quite high. </p>
-	<p>The targets are goods of generally of limited supply and high in demand and in value. Think sneakers, concert tickets, airline seats, and popular short run Broadway musicals. Bot operators who are able to purchase those items at retail can charge massive premiums in aftermarket sales. When the operator identifies a target site, such as an <a href="https://www.cloudflare.com/ecommerce">ecommerce retailer</a>, and a specific item, such as a new pair of sneakers going on sale, they can purchase time on the new <a href="https://medium.com/@xianghangmi/resident-evil-understanding-residential-ip-proxy-as-a-dark-service-dea9010a0e29">Residential Proxy as a Service</a> market to gain access to end user machines and (relatively) clean IPs from which to launch their attack. </p>
+	<p>Another trend we have seen is the increase of the combination of bots with botnets, particularly in the world of inventory hoarding bots. The motivation and willingness to spend for these bot operators is quite high.</p>
+	<p>The targets are goods of generally of limited supply and high in demand and in value. Think sneakers, concert tickets, airline seats, and popular short run Broadway musicals. Bot operators who are able to purchase those items at retail can charge massive premiums in aftermarket sales. When the operator identifies a target site, such as an <a href="https://www.cloudflare.com/ecommerce">ecommerce retailer</a>, and a specific item, such as a new pair of sneakers going on sale, they can purchase time on the new <a href="https://medium.com/@xianghangmi/resident-evil-understanding-residential-ip-proxy-as-a-dark-service-dea9010a0e29">Residential Proxy as a Service</a> market to gain access to end user machines and (relatively) clean IPs from which to launch their attack.</p>
 	<p>They then utilize sophisticated techniques and triggers to change characteristics of the machine, network, and software they use to generate the attack through a very wide array of options and combinations, thwarting systems that rely on repetition or known patterns. This type of attack hurts multiple targets as well: the ecommerce site has real frustrated users who can’t purchase the in demand item. The real users who are losing out on inventory to an attacker who is just there to skim off the largest profit possible. And the unwitting users who are part of the botnet have their resources, such as their home broadband connection, used without their consent or knowledge.</p>
 	<p>The bottom line is that bots hurt companies and their customers.</p>
-	<h2 id="summary">Summary</h2>
+	<h2>Summary</h2>
 	<p>Cloudflare has fought malicious bots from the very beginning and over time has deployed more and more sophisticated methods to block them. Using the power of the over 20 million Internet properties we protect and accelerate and our visibility of networks and users around the world we have build machine learning models that sort the bots from the good and block the bad.</p>
 	<p>But bots continue to be a problem and our new bot fight mode will directly disincentive bot writers from attacking customers. At the same time we don’t want to contribute to climate change and are offsetting the carbon cost of bots by planting trees to absorb carbon and help build a better future (and Internet).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Birthday-week-2019-header@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8VmVn45upeOTkpyiqnPHb/418a1705ab750a8286d8cbe87d13f3be/Birthday-week-2019-header_2x.png" alt="" class="kg-image" width="1600" height="924" loading="lazy">
+
+	</figure>
 </div>

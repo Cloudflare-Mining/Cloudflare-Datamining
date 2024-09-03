@@ -1,24 +1,46 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GSj2m60BkhO8EcF96BaBK/4c408eb6a4ed65c39fc946d1132f76c7/the-daily-ddos-ten-days-of-massive-attacks.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Back in March my colleague Marek wrote about a <a href="https://blog.cloudflare.com/a-winter-of-400gbps-weekend-ddos-attacks">Winter of Whopping Weekend DDoS Attacks</a> where we were seeing 400Gbps attacks occurring mostly at the weekends. We speculated that attackers were busy with something else during the week.</p>
 	<p>This winter we've seen a new pattern, and attackers aren't taking the week off, but they do seem to be working regular hours.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/13368326574_3766538c08_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/librariesrock/13368326574/in/photolist-mnjaKd-hsNTp3-fwRfUh-i1ANfq-GkBCdy-io1qcq-q41yUK-EGwk5F-qfEmaz-775pC8-7G9WfY-5Xp3jH-7MAEcz-hTZPp7-CxnxVN-E1hrZV-6XFPw7-pHQoCm-6ZTcR2-91i9fM-8SQY6m-dDEg1a-q2RLX4-7EH6CN-apKYx5-FdkLrN-7puG8m-9EW9k4-dHeD4u-EHJoRC-dr2FhP-rvRMra-rpH2dX-dDr3e1-6D8zy4-5Ytm2k-qpjQ1M-4gw1Er-nNFeMh-aXdZgg-aMNdAg-9gxZe7-tA6Xf-kdRa6N-7yK95i-8Quqz-DY8m5W-bRioGt-qNFviU-uEzyE2">image</a> by <a href="https://www.flickr.com/photos/librariesrock">Carol VanHook</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YzJzuM2mlCQrDQ4UGWgHQ/c6e7330d01ed0058e89dd6a86481b8c8/13368326574_3766538c08_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/librariesrock/13368326574/in/photolist-mnjaKd-hsNTp3-fwRfUh-i1ANfq-GkBCdy-io1qcq-q41yUK-EGwk5F-qfEmaz-775pC8-7G9WfY-5Xp3jH-7MAEcz-hTZPp7-CxnxVN-E1hrZV-6XFPw7-pHQoCm-6ZTcR2-91i9fM-8SQY6m-dDEg1a-q2RLX4-7EH6CN-apKYx5-FdkLrN-7puG8m-9EW9k4-dHeD4u-EHJoRC-dr2FhP-rvRMra-rpH2dX-dDr3e1-6D8zy4-5Ytm2k-qpjQ1M-4gw1Er-nNFeMh-aXdZgg-aMNdAg-9gxZe7-tA6Xf-kdRa6N-7yK95i-8Quqz-DY8m5W-bRioGt-qNFviU-uEzyE2">image</a> by <a href="https://www.flickr.com/photos/librariesrock">Carol VanHook</a></p>
 	<p>On November 23, the day before US Thanksgiving, our systems detected and mitigated an attack that peaked at 172Mpps and 400Gbps. The attack started at 1830 UTC and lasted non-stop for almost exactly 8.5 hours stopping at 0300 UTC. It felt as if an attacker 'worked' a day and then went home.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.00.41.png"><img src="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.00.41.png" alt="" loading="lazy"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.00.41.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3A8FzbN8hX6Qogv7KpVFeT/59717423109939992542bf6d500250fe/Screen-Shot-2016-12-02-at-11.00.41.png" alt="" class="kg-image" width="1380" height="171" loading="lazy">
+		</a>
+	</figure>
 	<p>The very next day the same thing happened again (although the attack started 30 minutes earlier at 1800 UTC).</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.03.16.png"><img src="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.03.16.png" alt="" loading="lazy"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.03.16.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UN2ck87CU98i7RiTPQemC/87ad3b7e6ddf3f5beb55f4eae46fd3dd/Screen-Shot-2016-12-02-at-11.03.16.png" alt="" class="kg-image" width="1380" height="170" loading="lazy">
+		</a>
+	</figure>
 	<p>On the third day the attacker started promptly at 1800 UTC but went home a little early at around 0130 UTC. But they managed to peak the attack over 200Mpps and 480Gbps.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.04.21.png"><img src="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.04.21.png" alt="" loading="lazy"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-11.04.21.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tWVtXGbAYxfzBhWERpAf/41075ebfd30472f8dbd99d0e47dded04/Screen-Shot-2016-12-02-at-11.04.21.png" alt="" class="kg-image" width="1372" height="171" loading="lazy">
+		</a>
+	</figure>
 	<p>And the attacker just kept this up day after day. Right through Thanksgiving, Black Friday, Cyber Monday and into this week. Night after night attacks were peaking at 400Gbps and hitting 320Gbps for hours on end.</p>
 	<p>This chart shows the packet rate in Mpps.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-10.53.27-1.png"><img src="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-10.53.27-1.png" alt="" loading="lazy"></a></p>
-	<p>This chart shows the attack bandwidth in <em>gigabytes</em> per second (multiply by 8 to get Gbps).</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-13.51.10-1.png"><img src="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-13.51.10-1.png" alt="" loading="lazy"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-10.53.27-1.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TjvOKcMZd6BGnqjD7yadL/804c705c11aaa892e2d25705810dae41/Screen-Shot-2016-12-02-at-10.53.27-1.png" alt="" class="kg-image" width="1354" height="191" loading="lazy">
+		</a>
+	</figure>
+	<p>This chart shows the attack bandwidth in <i>gigabytes</i> per second (multiply by 8 to get Gbps).</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-02-at-13.51.10-1.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oLL7gsr5eXDP11OqpP6lg/27359388121fee301ba659d33c5f34a0/Screen-Shot-2016-12-02-at-13.51.10-1.png" alt="" class="kg-image" width="2129" height="380" loading="lazy">
+		</a>
+	</figure>
 	<p>This Tuesday things got interesting. The attacker stopped taking the night off and moved onto working 24 hours a day.</p>
-	<p>Another curiosity with these attacks is that they are <em>not</em> coming from the much talked about Mirai botnet. They are using different attack software and are sending very large L3/L4 floods aimed at the TCP protocol. The attacks are also highly concentrated in a small number of locations mostly on the US west coast.</p>
+	<p>Another curiosity with these attacks is that they are <i>not</i> coming from the much talked about Mirai botnet. They are using different attack software and are sending very large L3/L4 floods aimed at the TCP protocol. The attacks are also highly concentrated in a small number of locations mostly on the US west coast.</p>
 	<p>Throughout we've mitigated the attack without impact on customers.</p>
 	<p>As we've written before, <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">we architected</a> Cloudflare to handle massive attacks automatically. If you are interested in working on systems like this, we're <a href="https://www.cloudflare.com/join-our-team">hiring</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

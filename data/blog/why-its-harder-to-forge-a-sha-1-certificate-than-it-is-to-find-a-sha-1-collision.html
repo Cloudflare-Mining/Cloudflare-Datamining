@@ -1,93 +1,147 @@
-<div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>It’s well known that SHA-1 is no longer considered a secure cryptographic hash function. Researchers now believe that finding a hash collision (two values that result in the same value when SHA-1 is applied) is inevitable and likely to happen in a matter of months. This poses a potential threat to trust on the web, as many websites use certificates that are digitally signed with algorithms that rely on SHA-1. Luckily for everyone, finding a hash collision is <em>not</em> enough to forge a digital certificate and break the trust model of the Internet.</p>
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ESZA91skHvBtP1AuGECAm/2c219450e222b897e93b1eb3c0fd9a79/why-its-harder-to-forge-a-sha-1-certificate-than-it-is-to-find-a-sha-1-collision.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>It’s well known that SHA-1 is no longer considered a secure cryptographic hash function. Researchers now believe that finding a hash collision (two values that result in the same value when SHA-1 is applied) is inevitable and likely to happen in a matter of months. This poses a potential threat to trust on the web, as many websites use certificates that are digitally signed with algorithms that rely on SHA-1. Luckily for everyone, finding a hash collision is <i>not</i> enough to forge a digital certificate and break the trust model of the Internet.</p>
 	<p>We’ll explore how hash collisions have been used to forge digital signatures in the past. We’ll also discuss how certificate authorities can make this significantly harder for attackers in the future by including randomness in certificate serial numbers.</p>
-	<h3 id="digitalsignaturesarethebedrockoftrust">Digital signatures are the bedrock of trust</h3>
+	<h3>Digital signatures are the bedrock of trust</h3>
 	<p>The Internet relies on trust. Whether it’s logging in to your bank or reading Reddit, HTTPS protects you by encrypting the data you exchange with a site and authenticating the site's identity with a digital certificate. Browsers visually display the added security of HTTPS as a padlock in the address bar.</p>
 	<p>HTTPS can prove a site’s authenticity to a browser when a site owns a digital certificate that asserts the owner’s identity and hostname. Certificates are small files digitally signed by trusted third parties known as Certificate Authorities (CAs). For browsers, digital signatures are the definitive source of trust. If your browser trusts the CA and the digital signature on the certificate is correct, then the browser trusts the certificate. This system of identity is known as the public key infrastructure (PKI), something we’ve covered <a href="https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure">in detail in a previous post</a>.</p>
 	<p>This system falls apart if digital signatures can no longer be trusted. If someone can create a certificate for cloudflare.com with a signature from a trusted CA, they can use it to impersonate the cloudflare.com website to visitors (given they can <a href="https://blog.cloudflare.com/dnssec-an-introduction">modify DNS</a>).</p>
 	<p>A digital signature is a number cryptographically tied to a message with public key. Every digital signature requires a public-private key pair and a hash function. The hash function is used to take the message and replace it with a unique digest, the private key is used to sign, and the public key to verify signatures.</p>
 	<p>For example, to create an RSA signature, you take a hash of the message and encrypt that hash with your private key. Anyone can verify that signature both belongs to you and is valid for the associated message. Take the public key, decrypt the hash and compare it with the hash of the message. If it's a match, the signature is correct. <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA</a> is a more recent algorithm that gets the same job done.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/rsa-signing-1.png" alt="digital signatures" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DECDGDpoEwCG0eHS4QmLn/0826a851ecb03c4436085e0745d1b986/rsa-signing-1.png" alt="digital signatures" class="kg-image" width="720" height="372" loading="lazy">
+
+	</figure>
 	<p>There are several ways of obtaining a digitally signed certificate for a website. The standard way is by purchasing a certificate from a certificate authority like GlobalSign or Comodo. CAs follow a set of rules about certificate issuance, governed by CA/Browser Forum’s <a href="https://cabforum.org/baseline-requirements">Baseline Requirements</a>.</p>
 	<p>Another way to get a certificate is to steal a CA’s private key. In addition to being potentially illegal, it is also very hard to do: CA private keys are usually kept in dedicated secure machines called Hardware Security Modules (HSM) designed to protect against key extraction.</p>
 	<p>A third more interesting way to obtain a certificate is to create a certificate that has the same hash as an existing trusted certificate. The signature from the trusted certificate can be added to the untrusted certificate, making it appear trusted.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/rsa-signing-2.png" alt="hash collision" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v5ZRqGjgWN7MI75yf6SBP/6fd54e1a04a0ac3b36c4b0bcb3021d02/rsa-signing-2.png" alt="hash collision" class="kg-image" width="720" height="217" loading="lazy">
+
+	</figure>
 	<p>If you can find a message that has the same hash value as a signed message, then you can swap in your message and the signature will verify correctly. This can be used to trick anyone into thinking someone signed a message that they didn’t.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/rsa-signing-3.png" alt="exploiting hash collisions" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JUU3Fxeaazw6RMm22opTu/e944c1bf6fb724d61edce8bbe241c72a/rsa-signing-3.png" alt="exploiting hash collisions" class="kg-image" width="720" height="417" loading="lazy">
+
+	</figure>
 	<p>Cryptographic hash functions are designed to resist this sort of thing. They don’t always succeed.</p>
-	<h3 id="securitypropertiesofhashfunctions">Security properties of hash functions</h3>
+	<h3>Security properties of hash functions</h3>
 	<p>Cryptographic hash functions are designed to satisfy three security properties:</p>
 	<ul>
-		<li>collision resistance</li>
-		<li>second pre-image resistance</li>
-		<li>pre-image resistance</li>
+		<li>
+			<p>collision resistance</p>
+		</li>
+		<li>
+			<p>second pre-image resistance</p>
+		</li>
+		<li>
+			<p>pre-image resistance</p>
+		</li>
 	</ul>
 	<p>Collision resistance here means there are no known algorithms faster than brute force to find two values that hash to the same value. This is the strongest security requirement, and usually the first one to be broken.</p>
 	<p>A hash function has second pre-image resistance when, given a value and its hash, it is computationally infeasible to find a second value that hashes to the same value. On the surface, this would seem like the security property that protects digital signatures on certificates. However, as we’ll explore in the next section, it’s still possible to forge certificates signed with a second pre-image resistant hash.</p>
 	<p>Pre-image resistance means that given a hash, it’s computationally infeasible for an attacker to find a value that hashes to it. If you can find a pre-image, you can easily find a second pre-image or a collision.</p>
 	<p>In the next section, we’ll describe what happened the last time we used a cryptographic hash function without collision resistance for digital signatures.</p>
-	<h3 id="breakingmd5">Breaking MD5</h3>
+	<h3>Breaking MD5</h3>
 	<p>MD5 is an incredibly popular cryptographic hash function; it also happens to be completely broken with respect to collision resistance. MD5 is still widely used, just not for digital signatures.</p>
 	<p>The first collision in MD5, discovered in <a href="https://eprint.iacr.org/2004/199.pdf">2004 by a group of Chinese researchers (PDF)</a>, used a lot of math and about an hour of computation by a supercomputer. Today, computing an MD5 collision takes only seconds on a laptop. This was cleverly demonstrated by <a href="https://natmchugh.blogspot.com/2014/10/how-i-created-two-images-with-same-md5.html">Nat McHugh</a>, who used a chosen-prefix hash collision (more on this later) in MD5 to create two images with the same hash—in this case Barry White and James Brown (he later created a three-way collision with <a href="https://natmchugh.blogspot.com/2014/11/three-way-md5-collision.html">Jack Black</a>).</p>
-	<p>Three images with the same MD5 hash:<br>
-		<img src="https://blog.cloudflare.com/content/images/2015/08/white.jpg" alt="" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2015/08/brown.jpg" alt="" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2015/08/black.jpg" alt="" loading="lazy">
-	</p>
+	<p>Three images with the same MD5 hash:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Y4r54sl9X78iapskroWkw/8a3c4412db41467770cdc97c77c94a39/white.jpg" alt="" class="kg-image" width="273" height="184" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DnAT2RzFjTvssur0eOceu/8993d192ea500944bc8a053f50f59087/brown.jpg" alt="" class="kg-image" width="536" height="400" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hARGIj78j9wtOwXzqetBv/fe94238d0634f0f1b0f25cfcb4af3492/black.jpg" alt="" class="kg-image" width="927" height="600" loading="lazy">
+
+	</figure>
 	<p>You can verify this yourself via <code>curl</code> and <code>md5</code>:</p>
-	<pre><code>$ curl -s https://blog.cloudflare.com/content/images/2015/08/white.jpg | md5
+	<pre class="language-bash"><code class="language-bash">$ curl -s https://blog.cloudflare.com/content/images/2015/08/white.jpg | md5
 b69dd1fd1254868b6e0bb8ed9fe7ecad
 $ curl -s https://blog.cloudflare.com/content/images/2015/08/brown.jpg | md5
 b69dd1fd1254868b6e0bb8ed9fe7ecad
 $ curl -s https://blog.cloudflare.com/content/images/2015/08/black.jpg | md5
-b69dd1fd1254868b6e0bb8ed9fe7ecad
-</code></pre>
+b69dd1fd1254868b6e0bb8ed9fe7ecad</code></pre>
 	<p>Despite being relatively trivial to find an MD5 collision, it’s still not known how to perform a second-preimage attack on MD5. For example, given a digitally signed certificate, nobody has been able to create a second certificate with the same hash. Despite this, researchers created a <a href="http://www.win.tue.nl/hashclash/rogue-ca">certificate</a> with the same signature as a certificate trusted by browsers.</p>
 	<p>The technique they used, a chosen-prefix attack, was originally proposed by Marc Stevens in his <a href="http://www.win.tue.nl/hashclash/On%20Collisions%20for%20MD5%20-%20M.M.J.%20Stevens.pdf">Master’s Thesis</a>. It can be used to create a forged certificate as long as you can get a certificate authority to issue a certificate that starts with predictable values.</p>
-	<h3 id="chosenprefixattacks">Chosen-prefix attacks</h3>
+	<h3>Chosen-prefix attacks</h3>
 	<p>If you can find a collision, you can take two different values and append data to each so they hash to the same value. In the original MD5 collision attack, the researchers computed two messages <code>M1</code> and <code>M2</code> such that <code>H(M1) = H(M2)</code>. Stevens extended this research to find a way to make two known values <code>P1</code> and <code>P2</code> collide by appending bytes. With prefixes <code>P1</code> and <code>P2</code>, he was able to demonstrate how to find S1 and S2 so that <code>H(P1|S1) = H(P2|S2)</code>.</p>
 	<p>This was enough to allow an attacker to create two certificates with the same hash. Let’s look at the approximate structure of a certificate:</p>
 	<ul>
-		<li>Serial number</li>
-		<li>Validity period</li>
-		<li><a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">Domain name</a></li>
-		<li>Public key</li>
-		<li>X.509 extensions</li>
-		<li>Signature</li>
+		<li>
+			<p>Serial number</p>
+		</li>
+		<li>
+			<p>Validity period</p>
+		</li>
+		<li>
+			<p>Domain name</p>
+		</li>
+		<li>
+			<p>Public key</p>
+		</li>
+		<li>
+			<p>X.509 extensions</p>
+		</li>
+		<li>
+			<p>Signature</p>
+		</li>
 	</ul>
 	<p>If the attacker knows every value before the domain, then they can take</p>
-	<pre><code>P1 = Serial number | Validity period | real domain name
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">P1 = Serial number | Validity period | real domain name</code></pre>
 	<p>and</p>
-	<pre><code>P2 = Serial number | Validity period | forged domain name
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">P2 = Serial number | Validity period | forged domain name</code></pre>
 	<p>and apply the attack to get S1 and S2 that fit into the public key section. If the serial number and validity period can be predicted, a collision can be found using the following steps:</p>
 	<ol>
-		<li>Guess when the certificate will be issued;</li>
-		<li>Predict the serial number for certificates issued in that time period; and</li>
-		<li>Compute matching prefixes for several guesses covering the expected serial numbers and issuance dates</li>
+		<li>
+			<p>Guess when the certificate will be issued;</p>
+		</li>
+		<li>
+			<p>Predict the serial number for certificates issued in that time period; and</p>
+		</li>
+		<li>
+			<p>Compute matching prefixes for several guesses covering the expected serial numbers and issuance dates</p>
+		</li>
 	</ol>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/sha-1-certificate-forgery-1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79PwdrVZnzNpdV3JWdnUdw/b87f68d5d0b13c5a4dbf893e866e192e/sha-1-certificate-forgery-1.png" alt="" class="kg-image" width="488" height="309" loading="lazy">
+
+	</figure>
 	<p>The attacker precomputes chosen-prefix collisions for the choices for each of these values, where one prefix has a domain name that is under the requester’s control (e.g. for attacker.com) and one for the target domain (e.g. google.com). The "collision bits" that cause the two certificates to collide end up aligning with first few bytes of the public key of the certificate.</p>
 	<p>Once the collisions are computed, the attacker has to convince a CA to issue a certificate with the correct serial number at the correct time for a verifiable domain and a public key that corresponds to the collision bits. If they're lucky, the certificate the CA returns will have the same hash as the malicious certificate. They can then transpose the valid signature onto the malicious certificate to make it trusted.</p>
 	<p>Colliding the domain name is the simplest type of chosen-prefix collision attack. It is also possible to prepare the collision in such a way that the RSA public key from the trusted certificate lines up with the X.509 extensions of the forged certificate. This is much more dangerous since it allows the forged certificate to set the "Is CA" bit. As long as the <a href="https://technet.microsoft.com/en-us/library/cc737026(v=ws.10).aspx">path length constraint</a> of the signing CA is large enough, this forged CA would be able to issue trusted certificates for any domain.</p>
-	<h3 id="forgingmd5certificatesinpractice">Forging MD5 certificates in practice</h3>
+	<h3>Forging MD5 certificates in practice</h3>
 	<p>In 2008, several researchers (including Marc Stevens and Alex Sotirov) used chosen prefix collision techniques to <a href="http://www.win.tue.nl/hashclash/rogue-ca">forge a certificate authority</a> trusted by browsers. This proof of concept was presented at the Chaos Communication Congress in 2008 and required only a few days of computation.</p>
 	<p>In 2012, a piece of malware called Flame was discovered. Flame was able infect computers by hijacking Microsoft’s Windows Update mechanism. At the time, Windows Update validated updates by checking code signatures using certificates signed by Microsoft using a MD5-based signature. The authors of Flame used a forged Microsoft certificate. According to an <a href="http://blog.trailofbits.com/2012/06/11/analyzing-the-md5-collision-in-flame">analysis of this certificate</a>, it was likely the chosen-prefix technique was used to create Flame’s forged certificate.</p>
 	<p>Forbes declared this <a href="http://www.forbes.com/sites/richardstiennon/2012/06/14/flames-md5-collision-is-the-most-worrisome-security-discovery-of-2012">the most worrisome security discovery of 2012</a> since it demonstrated it was feasible for attackers to forge any website’s certificate using an MD5 hash collision when the client trusts MD5-signed certificates.</p>
-	<h3 id="sha1vsmd5">SHA-1 vs MD5</h3>
-	<p>SHA-1 is supposedly more secure than MD5 for use in digital signatures. The National Security Agency published SHA-1 (SHA stands for Secure Hash Algorithm) in 1995 as a standard for cryptographically secure hashing. Designed to be collision resistant up to 2<sup>80</sup> bits, SHA-1 has had a long and useful life, and a collision has not been published as of this blog post. Even though a collision has never been published, several theoretical attacks (the <a href="http://gauss.ececs.uc.edu/Courses/c653/lectures/Hashing/sha1-crypto-auth-new-2-yao.pdf">first in 2005</a>, improved <a href="http://2012.sharcs.org/slides/stevens.pdf">in 2012</a>) indicate that SHA-1 is not as secure as its bit length implies. The latest research suggests that its collision resistance is <a href="https://marc-stevens.nl/research/papers/PhD%20Thesis%20Marc%20Stevens%20-%20Attacks%20on%20Hash%20Functions%20and%20Applications.pdf">at best 2<sup>65</sup></a> — within the realm of feasibility for some governments. In fact, researchers published a freestart collision (a precursor to a full collision) for SHA-1 <a href="https://eprint.iacr.org/2015/967.pdf"> earlier this year</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Sharks_outside_cage.jpg" alt="" loading="lazy"><small><a href="https://en.wikipedia.org/wiki/Shark_proof_cage#/media/File:Sharks_outside_cage.jpg">CC BY-SA 2.0</a></small></p>
+	<h3>SHA-1 vs MD5</h3>
+	<p>SHA-1 is supposedly more secure than MD5 for use in digital signatures. The National Security Agency published SHA-1 (SHA stands for Secure Hash Algorithm) in 1995 as a standard for cryptographically secure hashing. Designed to be collision resistant up to 2<sup>80</sup> bits, SHA-1 has had a long and useful life, and a collision has not been published as of this blog post. Even though a collision has never been published, several theoretical attacks (the <a href="http://gauss.ececs.uc.edu/Courses/c653/lectures/Hashing/sha1-crypto-auth-new-2-yao.pdf">first in 2005</a>, improved <a href="http://2012.sharcs.org/slides/stevens.pdf">in 2012</a>) indicate that SHA-1 is not as secure as its bit length implies. The latest research suggests that its collision resistance is <a href="https://marc-stevens.nl/research/papers/PhD%20Thesis%20Marc%20Stevens%20-%20Attacks%20on%20Hash%20Functions%20and%20Applications.pdf">at best 265</a> — within the realm of feasibility for some governments. In fact, researchers published a freestart collision (a precursor to a full collision) for SHA-1 <a href="https://eprint.iacr.org/2015/967.pdf">earlier this year</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dR7YVWkazh7VY1IGSz8tb/1a423fd5f23f27a5fbb253b9d18a4151/Sharks_outside_cage.jpg" alt="" class="kg-image" width="1280" height="720" loading="lazy">
+
+	</figure>
+	<p><a href="https://en.wikipedia.org/wiki/Shark_proof_cage#/media/File:Sharks_outside_cage.jpg">CC BY-SA 2.0</a></p>
 	<p>Academic cryptanalysts are like sharks. If there's blood in the water, they swarm. It took nine years to get from the first published weakness in MD5 (<a href="http://cseweb.ucsd.edu/~bsy/dobbertin.ps">1996</a>) to a hash collision (<a href="https://www.schneier.com/blog/archives/2005/06/more_md5_collis.html">2005</a>), and then another three years to forge a trusted digital signature (<a href="http://www.win.tue.nl/hashclash/rogue-ca">2008</a>). They might be slow, but they're relentless.</p>
 	<p>Attacks always improve and computers get more powerful. It was nine years from first weakness to hash collision in MD5; it's been ten years for SHA-1. If history is any guide, a public collision for SHA-1 could be published at any moment, with chosen-prefix collisions arriving soon after.</p>
-	<h3 id="preventingchosenprefixattacksbyrequiringserialnumberentropy">Preventing chosen-prefix attacks by requiring serial number entropy</h3>
+	<h3>Preventing chosen-prefix attacks by requiring serial number entropy</h3>
 	<p>One way to improve the security of digital signatures against a chosen-prefix attack is to make the prefix less predictable.</p>
 	<p>As described above, the chosen prefix attack requires the attacker to predict both the serial number and the validity period. Certificates used on the web have serial numbers up to 160 bits long. Requiring CAs to make the serial number unpredictable instead of sequential, it is possible to make the chosen-prefix attack significantly more expensive.</p>
-	<p>For example, if a CA ensures the serial number contains 20 bits of entropy, then the attacker will need to compute 2<sup>20</sup> chosen-prefixes in order to guess the serial number correctly.</p>
-	<p>This makes the attack over a <em>million times</em> more difficult.</p>
+	<p>For example, if a CA ensures the serial number contains 20 bits of entropy, then the attacker will need to compute 220 chosen-prefixes in order to guess the serial number correctly.</p>
+	<p>This makes the attack over a <i>million times</i> more difficult.</p>
 	<p>Computing a SHA-1 collision might be feasible in 2016, and there's a chance that chosen-prefix attacks also become feasible. Nevertheless, choosing partially randomized serial can make certificate forgery significantly more difficult for attackers. Barring a breakthrough in hash collision techniques, it's unlikely we'll see a certificate collision for long time.</p>
-	<h3 id="conclusion">Conclusion</h3>
-	<p>The SHA-1 hash function, widely used for everything from file integrity to digital signatures, is at the end of its useful life. Some browsers even show security warnings when websites use certificates signed using a SHA-1 based digital signature. A hash collision in SHA-1 is bad, but it’s not what matters for web security. Digital signature forgery is more problematic for trust on the Web. Requiring CAs to randomize serial numbers will significantly increase the cost of such forgeries, allowing potentially weak algorithms like SHA-1 to be useful for longer. This is why we make it <strong>mandatory</strong> for CAs to use serial numbers that include at least 20 bits of entropy in our proposal to the CA/B Forum <a href="https://cabforum.org/pipermail/public/2015-December/006488.html">for Legacy Verified (LV) SHA-1 certificates</a>.</p>
-	<!--kg-card-end: markdown-->
+	<h3>Conclusion</h3>
+	<p>The SHA-1 hash function, widely used for everything from file integrity to digital signatures, is at the end of its useful life. Some browsers even show security warnings when websites use certificates signed using a SHA-1 based digital signature. A hash collision in SHA-1 is bad, but it’s not what matters for web security. Digital signature forgery is more problematic for trust on the Web. Requiring CAs to randomize serial numbers will significantly increase the cost of such forgeries, allowing potentially weak algorithms like SHA-1 to be useful for longer. This is why we make it <b>mandatory</b> for CAs to use serial numbers that include at least 20 bits of entropy in our proposal to the CA/B Forum <a href="https://cabforum.org/pipermail/public/2015-December/006488.html">for Legacy Verified (LV) SHA-1 certificates</a>.</p>
 </div>

@@ -1,16 +1,24 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BTscANMIPxOI8vhCGdwNv/e96ab4c75a32761bca8c75d3855e8fe6/gateway-managed-service-provider-meter.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In January 2023, we <a href="https://blog.cloudflare.com/gateway-managed-service-provider">announced</a> support for Managed Service Providers (MSPs) and other businesses to create 'parent-child' and account-level policy configurations when deploying Cloudflare for <a href="https://www.cloudflare.com/learning/access-management/what-is-dns-filtering">DNS filtering</a>. Specifically, organizations leverage the integration between our <a href="https://developers.cloudflare.com/tenant">Tenant API</a> and <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a>, our Secure Web Gateway (SWG) to protect their remote or office end users with web filtering and inspection. Already, customers like the <a href="https://blog.cloudflare.com/gateway-managed-service-provider">US federal government, MalwareBytes, and a large global ISP</a> take advantage of this integration to enable simpler, more flexible policy management across larger deployments across their end customers</p>
 	<p>Today, we're excited to showcase another similar story: <a href="https://www.meter.com">Meter</a>, a provider of Internet infrastructure, is leveraging the Tenant API integration for DNS filtering to help their clients enforce acceptable Internet use policies.</p>
-	<h3 id="how-meter-deploys-cloudflare-to-secure-internet-browsing">How Meter deploys Cloudflare to secure Internet browsing</h3>
+	<h3>How Meter deploys Cloudflare to secure Internet browsing</h3>
 	<p>Meter, headquartered in San Francisco and founded in 2015, provides Internet infrastructure that includes routing, switching, wireless, and applications. They help deliver faster, more efficient, more secure networking experiences for a diverse range of corporate spaces, including offices, warehouses, retail, manufacturing, biotech, and education institutions.</p>
 	<p>Meter integrates with the Cloudflare Tenant API to provide DNS filtering to their customers. With the Meter dashboard, Meter customers can set policies to block or allow Internet traffic to domains, categorized by security risks (phishing, malware, DGA, etc.) or content theme (adult, gambling, shopping, etc.)</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image2-10.png" class="kg-image" alt="" loading="lazy" width="1999" height="1308"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZToFJklGmoULrPD0YjB3q/46d9b399fc17a6aa99757c30cd148c91/image2-10.png" alt="" class="kg-image" width="1999" height="1308" loading="lazy">
+
+	</figure>
 	<p>Across this customer base, having parent-child relationships in security policies is often critical. For example, specific schools within an overall district may have different policies about what Internet browsing is or is not acceptable.</p>
 	<p>Cloudflare’s parent-child configurability means that Meter administrators are equipped to set differential, granular policies for specific offices, retail locations, or warehouses (‘child accounts’) within a larger business (‘parent account’). DNS queries are first filtered against parent account policies before filtering against more specific child account policies.</p>
 	<p>At a more technical level, each “child” customer account can have its own users and tokens to manage accounts. Customers of Meter can set up their DNS endpoints via Gateway locations and may be defined as IPv4, IPv6, DoH, and DoT endpoints. DNS policies can be defined for these Gateway locations. In addition to this, each customer of Meter can customize their block page and even upload their own certificates to serve their custom block page.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-15.png" class="kg-image" alt="" loading="lazy" width="1600" height="1200"></figure>
-	<h3 id="what%E2%80%99s-next">What’s next</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rVlJUsx4rKoAoGWz8xevY/a5bc4744056c75da85520641fd819036/image1-15.png" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
+
+	</figure>
+	<h3>What’s next</h3>
 	<p>MSPs and infrastructure companies like Meter play a vital role in bringing cybersecurity solutions to customers of all sizes and needs. Cloudflare will continue to invest in our tenant architecture to equip MSPs with the flexibility and simplicity they need to serve their end customers.</p>
 	<p>DNS filtering to protect users on the Internet is a valuable solution for MSPs to deliver with Cloudflare. But DNS filtering is just the first of several Zero Trust services that Cloudflare intends to support via our tenant platform, so stay tuned for more.</p>
 	<p>If you are an MSP or an Infrastructure company looking to deliver Cloudflare security for your end customers, <a href="https://www.cloudflare.com/partners/services">learn more here</a>.</p>

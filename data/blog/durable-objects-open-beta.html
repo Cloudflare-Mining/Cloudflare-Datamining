@@ -1,116 +1,92 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Durable-Objects-Beta-Blog-OG.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EUnoyCMHJTxeminr6q3ke/aca52aa8578ad37a6e8a6b64ee29245e/Durable-Objects-Beta-Blog-OG.png" alt="" class="kg-image" width="2284" height="1367" loading="lazy">
+
+	</figure>
 	<p>Back in September, we <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">announced</a> Durable Objects - a new paradigm for stateful serverless.</p>
 	<p>Since then, we’ve seen incredible demand and countless unlocked opportunities on our platform. We’ve watched large enterprises build applications from complex API features to real-time games in a matter of days from inception to launch. We’ve heard from developers that Durable Objects lets them spend time they used to waste configuring and deploying databases on building features for their apps. More than anything, we’ve heard that you want to start building with Durable Objects now.</p>
 	<p>As of today, Durable Objects beta access is available to anyone with a Cloudflare Workers® subscription - you can enable them now in the <a href="https://dash.cloudflare.com">dashboard</a> by navigating to “Workers” and then “Durable Objects”. You can also upgrade to the <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.15.0-custom-builds-rc.2">latest version of Wrangler</a> to deploy Durable Objects!</p>
 	<p>Durable Objects are still in beta and are being made available to you for testing purposes. Storage is capped per-account at 10 GB of data, and there is no associated SLA for Object availability or durability.</p><!--kg-card-begin: html-->
 	<p style="text-align: center;"><strong><a href="https://dash.cloudflare.com">Enable beta access now »</a></strong></p><!--kg-card-end: html-->
-	<h3 id="what-are-durable-objects">What are Durable Objects?</h3>
+	<h3>What are Durable Objects?</h3>
 	<p>Durable Objects provide two things: coordination across multiple Workers and strongly consistent edge storage.</p>
 	<p>Normally Cloudflare’s network executes a Worker wherever the client’s network request is terminated. This means there can be many instances of your Worker running at a given time all over the world, shown below.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-54.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KDw6tGDQlvRrae4PS7AGM/4399b323abc4fa8d61fe5501b2258838/image3-54.png" alt="" class="kg-image" width="938" height="525" loading="lazy">
+
+	</figure>
 	<p>By contrast, a Durable Object is defined by a JavaScript class and an id. There is only ever one instance of a Durable Object with a given id running anywhere in the world. All Workers making subrequests for the Durable Object with that id are routed to the same instance - letting them coordinate across multiple requests. The Durable Object instance can then make requests to downstream APIs and store data with our strongly consistent storage API.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-65.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HLQ06eTIRyAl30bPTlVov/86107a3b11d5729d025d558b8120fb0d/image1-65.png" alt="" class="kg-image" width="1213" height="544" loading="lazy">
+
+	</figure>
 	<p>In this example shown above, we’ve chosen our application’s user id as the Durable Object’s id. &nbsp;When a Worker needs access to a specific user’s data, they can contact the Object with that user’s id. &nbsp;That Object can then handle API calls and data access specific to that individual user.</p>
 	<p>Remember that Durable Objects scale incredibly well across multiple Object ids, but that each Object itself is backed by a single-thread. You should be careful to choose an id for your Objects that minimizes the number of requests processed by a single object. &nbsp;In our example above, if our user API grew to be too complicated, we might decide to have a separate id for each combination of a user id and an API endpoint to host in a single object.</p>
 	<p>For more on Durable Objects, see the <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">docs</a> and the announcement <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">blog</a>.</p>
-	<h3 id="pricing">Pricing</h3>
+	<h3>Pricing</h3>
 	<p>While there’s no charge to use Durable Objects during the beta period, we want to share pricing so you can build your applications with confidence.</p>
 	<p>When you use Durable Objects, you are billed for the compute time your Object uses as well as the storage API operations your Object performs.</p>
 	<p>Durable Objects are significantly cheaper than comparable compute and storage offerings from the other major cloud providers.</p>
-	<p>As announced on the Workers Unbound <a href="https://blog.cloudflare.com/introducing-workers-unbound">blog</a>, Durable Objects bills the standard Workers platform rates for long-running compute time.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th style="text-align:center">Compute</th>
-				<th style="text-align:center"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td></td>
-				<td style="text-align:center">Durable Objects</td>
-				<td style="text-align:center">AWS Lambda</td>
-			</tr>
-			<tr>
-				<td>Price per request</td>
-				<td style="text-align:center">\$0.15 / MM</td>
-				<td style="text-align:center">\$0.20-0.28 / MM</td>
-			</tr>
-			<tr>
-				<td>Compute ($ per MM GB-sec)</td>
-				<td style="text-align:center">\$12.50</td>
-				<td style="text-align:center">\$16.67 - \$22.92 (depending on geo)</td>
-			</tr>
-			<tr>
-				<td>Data Transfer</td>
-				<td style="text-align:center">\$0.09 / GB</td>
-				<td style="text-align:center">\$0.09/GB - \$0.15/GB (depending on geo)</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<p><sup>*Based on pricing disclosed on aws.amazon.com/lambda/pricing as of March 16, 2021. AWS’ published duration pricing is based on 1 GB-sec, which has been multiplied by one million on this table for readability. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places. Data Transfer for AWS is based on Data Transfer OUT From Amazon EC2 to Internet above 1 GB / month, for up to 9.999 TB / month.</sup></p>
-	<!--kg-card-end: markdown-->
-	<p>Durable Objects charges per storage operation for reads, writes and deletes and per GB-Month for data stored. Operations are metered in 4 KB increments - for example, an 8 KB read or write would be billed as two operations. When compared to AWS DynamoDB, Durable Objects charge less for every type of operation, and depending on the size of your operations, your savings could be significant. All price comparisons we’re showing below are based on single-region, strongly consistent DynamoDB storage. AWS charges extra for multi-region and transactionally consistent storage, which is already included for Durable Objects. If you use these features in DynamoDB, your savings will be even greater.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th style="text-align:center">Storage</th>
-				<th style="text-align:center"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td></td>
-				<td style="text-align:center">Durable Objects</td>
-				<td style="text-align:center">AWS DynamoDB</td>
-			</tr>
-			<tr>
-				<td>Price per MM read request</td>
-				<td style="text-align:center">\$0.20 / MM / 4 KB</td>
-				<td style="text-align:center">\$0.25 - \$0.375 / MM / 4 KB</td>
-			</tr>
-			<tr>
-				<td>Price per MM write request</td>
-				<td style="text-align:center">\$1.00 / MM / 4 KB</td>
-				<td style="text-align:center">\$1.25 - \$1.88 / MM / 1 KB</td>
-			</tr>
-			<tr>
-				<td>Price per MM delete request</td>
-				<td style="text-align:center">\$1.00 / MM regardless of size</td>
-				<td style="text-align:center">\$1.25 - \$1.88 / MM / 1 KB</td>
-			</tr>
-			<tr>
-				<td>Price per GB stored data</td>
-				<td style="text-align:center">\$0.20 / GB</td>
-				<td style="text-align:center">\$0.25 / GB</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<p><sup>*Based on pricing disclosed on aws.amazon.com/dynamodb/pricing/on-demand/ as of March 16, 2021. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places.</sup></p>
-	<!--kg-card-end: markdown-->
+	<p>As announced on the Workers Unbound <a href="https://blog.cloudflare.com/introducing-workers-unbound">blog</a>, Durable Objects bills the standard Workers platform rates for long-running compute time.</p>
+	<p>Compute</p>
+	<p>Durable Objects</p>
+	<p>AWS Lambda</p>
+	<p>Price per request</p>
+	<p>\$0.15 / MM</p>
+	<p>\$0.20-0.28 / MM</p>
+	<p>Compute ($ per MM GB-sec)</p>
+	<p>\$12.50</p>
+	<p>\$16.67 - \$22.92 (depending on geo)</p>
+	<p>Data Transfer</p>
+	<p>\$0.09 / GB</p>
+	<p>\$0.09/GB - \$0.15/GB (depending on geo)</p>
+	<p>*Based on pricing disclosed on aws.amazon.com/lambda/pricing as of March 16, 2021. AWS’ published duration pricing is based on 1 GB-sec, which has been multiplied by one million on this table for readability. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places. Data Transfer for AWS is based on Data Transfer OUT From Amazon EC2 to Internet above 1 GB / month, for up to 9.999 TB / month.</p>
+	<p>Durable Objects charges per storage operation for reads, writes and deletes and per GB-Month for data stored. Operations are metered in 4 KB increments - for example, an 8 KB read or write would be billed as two operations. When compared to AWS DynamoDB, Durable Objects charge less for every type of operation, and depending on the size of your operations, your savings could be significant. All price comparisons we’re showing below are based on single-region, strongly consistent DynamoDB storage. AWS charges extra for multi-region and transactionally consistent storage, which is already included for Durable Objects. If you use these features in DynamoDB, your savings will be even greater.</p>
+	<p>Storage</p>
+	<p>Durable Objects</p>
+	<p>AWS DynamoDB</p>
+	<p>Price per MM read request</p>
+	<p>\$0.20 / MM / 4 KB</p>
+	<p>\$0.25 - \$0.375 / MM / 4 KB</p>
+	<p>Price per MM write request</p>
+	<p>\$1.00 / MM / 4 KB</p>
+	<p>\$1.25 - \$1.88 / MM / 1 KB</p>
+	<p>Price per MM delete request</p>
+	<p>\$1.00 / MM regardless of size</p>
+	<p>\$1.25 - \$1.88 / MM / 1 KB</p>
+	<p>Price per GB stored data</p>
+	<p>\$0.20 / GB</p>
+	<p>\$0.25 / GB</p>
+	<p>*Based on pricing disclosed on aws.amazon.com/dynamodb/pricing/on-demand/ as of March 16, 2021. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places.</p>
 	<p>We chose to meter our requests in 4 KB increments across the board to provide the lowest prices with the greatest flexibility. Deletes do not have a size limit.</p>
 	<p>We’ve seen that the vast majority of requests are actually smaller than 4 KB in size - Workers KV, our global, eventually consistent data store, has a median value size in the low single KB range.</p>
-	<h3 id="giving-developers-more-for-less">Giving developers more for less</h3>
+	<h3>Giving developers more for less</h3>
 	<p>Not only are Durable Objects less expensive, they have a unique design that lets you do more than a traditional database layer.</p>
 	<p>Each Durable Object runs custom code that you write. After your Durable Object makes a request to a downstream API or to our storage API, the value can be cached in-memory for no-cost, low latency lookups.</p>
 	<p>Unlike major cloud-provider databases, Durable Objects are replicated to multiple distinct regions by default for high availability with no additional cost. With other cloud providers, this feature generally drives up costs - not to mention the increased complexity of self-managing multiple regions.</p>
 	<p>Durable Objects also provide strong consistency across operations by default. While many systems charge more for higher levels of consistency, running transactionally consistent storage from a Durable Object comes at no additional charge.</p>
-	<h3 id="building-together">Building together</h3>
+	<h3>Building together</h3>
 	<p>Since announcing Durable Objects, we’ve continued to add features to the platform, including:</p>
 	<ul>
-		<li>Smarter initial placement for user-named Objects, for lower latency access after initial creation.</li>
-		<li><a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects">Jurisdictional Restrictions</a>, allowing developers to restrict their Durable Objects to only run and store data in specific regions. This helps with compliance with data localization obligations.</li>
-		<li>Wrangler support for uploading Durable Objects.</li>
-		<li>Platform stability and increased capacity.</li>
+		<li>
+			<p>Smarter initial placement for user-named Objects, for lower latency access after initial creation.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects">Jurisdictional Restrictions</a>, allowing developers to restrict their Durable Objects to only run and store data in specific regions. This helps with compliance with data localization obligations.</p>
+		</li>
+		<li>
+			<p>Wrangler support for uploading Durable Objects.</p>
+		</li>
+		<li>
+			<p>Platform stability and increased capacity.</p>
+		</li>
 	</ul>
 	<p>As we continue to add to the platform, we’re excited to see what you’re building as well. Come hang out in <a href="https://discord.gg/TGG8Fw4zKP">our Discord</a> to ask questions and share what you’re building on Durable Objects!</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.1875%;"><iframe src="https://iframe.videodelivery.net/e3b60d8931812206c33ca38c3fab3535?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 </div>

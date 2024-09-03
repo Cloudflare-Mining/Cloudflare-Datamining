@@ -1,41 +1,57 @@
 <div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/how-we-used-our-new-graphql-api-to-build-firewall-analytics">Français</a>, <a href="https://blog.cloudflare.com/es-es/how-we-used-our-new-graphql-api-to-build-firewall-analytics">Español</a> and <a href="https://blog.cloudflare.com/de-de/how-we-used-our-new-graphql-api-to-build-firewall-analytics">Deutsch</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/analytics-API--copy@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ms5v0G8uX9xVyDYaL3z47/fbab266034006964315fcdeaa9a870f5/analytics-API--copy_2x.png" alt="" class="kg-image" width="1600" height="995" loading="lazy">
+
+	</figure>
 	<p>Firewall Analytics is the first product in the Cloudflare dashboard to utilize the new GraphQL Analytics API. All Cloudflare dashboard products are built using the same public APIs that we provide to our customers, allowing us to understand the challenges they face when interfacing with our APIs. This parity helps us build and shape our products, most recently the new GraphQL Analytics API that we’re thrilled to release today.</p>
 	<p>By defining the data we want, along with the response format, our GraphQL Analytics API has enabled us to prototype new functionality and iterate quickly from our beta user feedback. It is helping us deliver more insightful analytics tools within the Cloudflare dashboard to our customers.</p>
 	<p>Our user research and testing for <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/#new-firewall-analytics-for-analysing-events-and-maintaining-optimal-configurations">Firewall Analytics</a> surfaced common use cases in our customers' workflow:</p>
 	<ul>
-		<li>Identifying spikes in firewall activity over time</li>
-		<li>Understanding the common attributes of threats</li>
-		<li>Drilling down into granular details of an individual event to identify potential false positives</li>
+		<li>
+			<p>Identifying spikes in firewall activity over time</p>
+		</li>
+		<li>
+			<p>Understanding the common attributes of threats</p>
+		</li>
+		<li>
+			<p>Drilling down into granular details of an individual event to identify potential false positives</p>
+		</li>
 	</ul>
 	<p>We can address all of these use cases using our new GraphQL Analytics API.</p>
-	<h3 id="graphql-basics">GraphQL Basics</h3>
+	<h3>GraphQL Basics</h3>
 	<p>Before we look into how to address each of these use cases, let's take a look at the format of a GraphQL query and how our schema is structured.</p>
 	<p>A GraphQL query is comprised of a structured set of fields, for which the server provides corresponding values in its response. The schema defines which fields are available and their type. You can find more information about the GraphQL query syntax and format in the <a href="https://graphql.org/learn/queries">official GraphQL documentation</a>.</p>
 	<p>To run some GraphQL queries, we recommend downloading a GraphQL client, such as <a href="https://electronjs.org/apps/graphiql">GraphiQL</a>, to explore our schema and run some queries. You can find documentation on getting started with this in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started">developer docs</a>.</p>
 	<p>At the top level of the schema is the <code>viewer</code> field. This represents the top level node of the user running the query. Within this, we can query the <code>zones</code> field to find zones the current user has access to, providing a <code>filter</code> argument, with a <code>zoneTag</code> of the identifier of the zone we'd like narrow down to.</p>
-	<pre><code>{
+	<pre class="language-bash"><code class="language-bash">{
   viewer {
     zones(filter: { zoneTag: "YOUR_ZONE_ID" }) {
       # Here is where we'll query our firewall events
     }
   }
-}
-</code></pre>
+}</code></pre>
 	<p>Now that we have a query that finds our zone, we can start querying the firewall events which have occurred in that zone, to help solve some of the use cases we’ve identified.</p>
-	<h3 id="visualising-spikes-in-firewall-activity">Visualising spikes in firewall activity</h3>
+	<h3>Visualising spikes in firewall activity</h3>
 	<p>It's important for customers to be able to visualise and understand anomalies and spikes in their firewall activity, as these could indicate an attack or be the result of a misconfiguration.</p>
 	<p>Plotting events in a timeseries chart, by their respective action, provides users with a visual overview of the trend of their firewall events.</p>
 	<p>Within the <code>zones</code> field in the query we’ve created earlier, we can query our firewall event aggregates using the <code>firewallEventsAdaptiveGroups</code> field, providing arguments to limit the count of groups, a filter for the date range we're looking for (combined with any user-entered filters), and a list of fields to order by; in this case, just the <code>datetimeHour</code> field that we're grouping by.</p>
 	<p>Within the <code>zones</code> field in the query we created earlier, we can further query our firewall event aggregates using the <code>firewallEventsAdaptiveGroups</code> field and providing arguments for:</p>
 	<ul>
-		<li>A <code>limit</code> for the count of groups</li>
-		<li>A <code>filter</code> for the date range we're looking for (combined with any user-entered filters)</li>
-		<li>A list of fields to <code>orderBy</code> (in this case, just the <code>datetimeHour</code> field that we're grouping by).</li>
+		<li>
+			<p>A <code>limit</code> for the count of groups</p>
+		</li>
+		<li>
+			<p>A <code>filter</code> for the date range we're looking for (combined with any user-entered filters)</p>
+		</li>
+		<li>
+			<p>A list of fields to <code>orderBy</code> (in this case, just the <code>datetimeHour</code> field that we're grouping by).</p>
+		</li>
 	</ul>
 	<p>By adding the <code>dimensions</code> field, we're querying for groups of firewall events, aggregated by the fields nested within <code>dimensions</code>. In this case, our query includes the <code>action</code> and <code>datetimeHour</code> fields, meaning the response will be groups of firewall events which share the same action, and fall within the same hour. We also add a <code>count</code> field, to get a numeric count of how many events fall within each group.</p>
-	<pre><code>query FirewallEventsByTime($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
+	<pre class="language-bash"><code class="language-bash">query FirewallEventsByTime($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
   viewer {
     zones(filter: { zoneTag: $zoneTag }) {
       firewallEventsAdaptiveGroups(
@@ -51,11 +67,10 @@
       }
     }
   }
-}
-</code></pre>
-	<p><em>Note - Each of our groups queries require a limit to be set. A firewall event can have one of 8 possible actions, and we are querying over a 72 hour period. At most, we’ll end up with 567 groups, so we can set that as the limit for our query.</em></p>
+}</code></pre>
+	<p><i>Note - Each of our groups queries require a limit to be set. A firewall event can have one of 8 possible actions, and we are querying over a 72 hour period. At most, we’ll end up with 567 groups, so we can set that as the limit for our query.</i></p>
 	<p>This query would return a response in the following format:</p>
-	<pre><code>{
+	<pre class="language-bash"><code class="language-bash">{
   "viewer": {
     "zones": [
       {
@@ -72,16 +87,19 @@
       }
     ]
   }
-}
-</code></pre>
+}</code></pre>
 	<p>We can then take these groups and plot each as a point on a time series chart. Mapping over the <code>firewallEventsAdaptiveGroups</code> array, we can use the group’s <code>count</code> property on the y-axis for our chart, then use the nested fields within the <code>dimensions</code> object, using <code>action</code> as unique series and the <code>datetimeHour</code> as the time stamp on the x-axis.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--1--3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="top-ns">Top Ns</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RH0u6Cc6dIk9ztyZ3E0Ag/dfdfc88b6e5fad91a374f4af4fd2762e/pasted-image-0--1--3.png" alt="" class="kg-image" width="998" height="505" loading="lazy">
+
+	</figure>
+	<h3>Top Ns</h3>
 	<p>After identifying a spike in activity, our next step is to highlight events with commonality in their attributes. For example, if a certain IP address or individual user agent is causing many firewall events, this could be a sign of an individual attacker, or could be surfacing a false positive.</p>
 	<p>Similarly to before, we can query aggregate groups of firewall events using the <code>firewallEventsAdaptiveGroups</code> field. However, in this case, instead of supplying <code>action</code> and <code>datetimeHour</code> to the group’s <code>dimensions</code>, we can add individual fields that we want to find common groups of.</p>
 	<p>By ordering by descending count, we’ll retrieve groups with the highest commonality first, limiting to the top 5 of each. We can add a single field nested within <code>dimensions</code> to group by it. For example, adding <code>clientIP</code> will give five groups with the IP addresses causing the most events.</p>
 	<p>We can also add a <code>firewallEventsAdaptiveGroups</code> field with no nested <code>dimensions</code>. This will create a single group which allows us to find the total count of events matching our filter.</p>
-	<pre><code>query FirewallEventsTopNs($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
+	<pre class="language-bash"><code class="language-bash">query FirewallEventsTopNs($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
   viewer {
     zones(filter: { zoneTag: $zoneTag }) {
       topIPs: firewallEventsAdaptiveGroups(
@@ -112,16 +130,19 @@
       }
     }
   }
-}
-</code></pre>
-	<p><em>Note - we can add the <code>firewallEventsAdaptiveGroups</code> field multiple times within a single query, each aliased differently. This allows us to fetch multiple different groupings by different fields, or with no groupings at all. In this case, getting a list of top IP addresses, top user agents, and the total events.</em></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy"></figure>
+}</code></pre>
+	<p><i>Note - we can add the </i><code><i>firewallEventsAdaptiveGroups</i></code><i> field multiple times within a single query, each aliased differently. This allows us to fetch multiple different groupings by different fields, or with no groupings at all. In this case, getting a list of top IP addresses, top user agents, and the total events.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48ybDlyb9qiOXRcqbxYMBT/d4d00cef7835e84131c644a94d746bc7/pasted-image-0--2--1.png" alt="" class="kg-image" width="1025" height="813" loading="lazy">
+
+	</figure>
 	<p>We can then reference each of these aliases in the UI, mapping over their respective groups to render each row with its count, and a bar which represents the proportion of total events, showing the proportion of all events each row equates to.</p>
-	<h3 id="are-these-firewall-events-false-positives">Are these firewall events false positives?</h3>
+	<h3>Are these firewall events false positives?</h3>
 	<p>After users have identified spikes, anomalies and common attributes, we wanted to surface more information as to whether these have been caused by malicious traffic, or are false positives.</p>
 	<p>To do this, we wanted to provide additional context on the events themselves, rather than just counts. We can do this by querying the <code>firewallEventsAdaptive</code> field for these events.</p>
-	<p>Our GraphQL schema uses the same filter format for both the aggregate <code>firewallEventsAdaptiveGroups</code> field and the raw <code>firewallEventsAdaptive</code> field. This allows us to use the same filters to fetch the individual events which summate to the counts and aggregates in the visualisations above.<br></p>
-	<pre><code>query FirewallEventsList($zoneTag: string, $filter: FirewallEventsAdaptiveFilter_InputObject) {
+	<p>Our GraphQL schema uses the same filter format for both the aggregate <code>firewallEventsAdaptiveGroups</code> field and the raw <code>firewallEventsAdaptive</code> field. This allows us to use the same filters to fetch the individual events which summate to the counts and aggregates in the visualisations above.</p>
+	<pre class="language-bash"><code class="language-bash">query FirewallEventsList($zoneTag: string, $filter: FirewallEventsAdaptiveFilter_InputObject) {
   viewer {
     zones(filter: { zoneTag: $zoneTag }) {
       firewallEventsAdaptive(
@@ -142,9 +163,13 @@
       }
     }
   }
-}
-</code></pre>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy"></figure>
+}</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BmadcWdFvLxALf8fO3MbW/f67acc01a77edf0eec2a0e462e1e6579/pasted-image-0--3--1.png" alt="" class="kg-image" width="1150" height="580" loading="lazy">
+
+	</figure>
 	<p>Once we have our individual events, we can render all of the individual fields we’ve requested, providing users the additional context on event they need to determine whether this is a false positive or not.</p>
 	<p>That’s how we used our new GraphQL Analytics API to build Firewall Analytics, helping solve some of our customers most common security workflow use cases. We’re excited to see what you build with it, and the problems you can help tackle.</p>
 	<p>You can find out how to get started querying our GraphQL Analytics API using GraphiQL in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started">developer documentation</a>, or learn more about writing GraphQL queries on the official GraphQL Foundation <a href="https://graphql.org/learn/queries">documentation</a>.</p>

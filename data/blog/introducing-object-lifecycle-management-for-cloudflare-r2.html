@@ -1,24 +1,42 @@
 <div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/R21.png" class="kg-image" alt="Introducing Object Lifecycle Management for Cloudflare R2" loading="lazy" width="1600" height="900"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gYUTS0mGft4UNdyl6azxW/90fe3f3a39df5f0d95ee401748bbfa60/R21.png" alt="Introducing Object Lifecycle Management for Cloudflare R2" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Last year, <a href="https://blog.cloudflare.com/r2-ga">R2 made its debut</a>, providing developers with <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> while eliminating the burden of <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a>. (For many, egress costs account for <a href="https://twitter.com/CloudflareDev/status/1639281667973033988?s=20">over half of their object storage bills</a>!) Since R2’s launch, tens of thousands of developers have chosen it to store data for many different types of applications.</p>
 	<p>But for some applications, data stored in R2 doesn’t need to be retained forever. Over time, as this data grows, it can unnecessarily lead to higher storage costs. Today, we’re excited to announce that Object Lifecycle Management for R2 is generally available, allowing you to effectively manage object expiration, all from the R2 dashboard or via our API.</p>
-	<h3 id="object-lifecycle-management">Object Lifecycle Management</h3>
+	<h3>Object Lifecycle Management</h3>
 	<p>Object lifecycles give you the ability to define rules (up to 1,000) that determine how long objects uploaded to your bucket are kept. For example, by implementing an object lifecycle rule that deletes objects after 30 days, you could automatically delete outdated logs or temporary files. You can also define rules to abort unfinished multipart uploads that are sitting around and contributing to storage costs.</p>
-	<h3 id="getting-started-with-object-lifecycles-in-r2">Getting started with object lifecycles in R2</h3>
-	<h4 id="cloudflare-dashboard">Cloudflare dashboard</h4>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/R22.png" class="kg-image" alt="" loading="lazy" width="1296" height="703"></figure>
+	<h3>Getting started with object lifecycles in R2</h3>
+	<h4>Cloudflare dashboard</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NokpyjDvm1FLghbgfaXLs/cd0f067dbf050969ff172d45b3d42961/R22.png" alt="" class="kg-image" width="1296" height="703" loading="lazy">
+
+	</figure>
 	<ol>
-		<li>From the Cloudflare dashboard, select <strong>R2</strong>.</li>
-		<li>Select your R2 bucket.</li>
-		<li>Navigate to the <strong>Settings</strong> tab and find the <strong>Object lifecycle rules</strong> section.</li>
-		<li>Select <strong>Add rule</strong> to define the name, relevant prefix, and lifecycle actions: delete uploaded objects or abort incomplete multipart uploads.</li>
-		<li>Select <strong>Add rule</strong> to complete the process.</li>
+		<li>
+			<p>From the Cloudflare dashboard, select <b>R2</b>.</p>
+		</li>
+		<li>
+			<p>Select your R2 bucket.</p>
+		</li>
+		<li>
+			<p>Navigate to the <b>Settings</b> tab and find the <b>Object lifecycle rules</b> section.</p>
+		</li>
+		<li>
+			<p>Select <b>Add rule</b> to define the name, relevant prefix, and lifecycle actions: delete uploaded objects or abort incomplete multipart uploads.</p>
+		</li>
+		<li>
+			<p>Select <b>Add rule</b> to complete the process.</p>
+		</li>
 	</ol>
-	<h4 id="s3-compatible-api">S3 Compatible API</h4>
+	<h4>S3 Compatible API</h4>
 	<p>With R2’s S3-compatible API, it’s easy to apply any existing object lifecycle rules to your R2 buckets.</p>
 	<p>Here’s an example of how to configure your R2 bucket’s lifecycle policy using the AWS SDK for JavaScript. To try this out, you’ll need to generate an <a href="https://developers.cloudflare.com/r2/api/s3/tokens">Access Key</a>.</p>
-	<pre><code class="language-js">import S3 from "aws-sdk/clients/s3.js";
+	<pre class="language-js"><code class="language-js">import S3 from "aws-sdk/clients/s3.js";
 
 const client = new S3({
   endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
@@ -55,12 +73,11 @@ await client
       ],
     },
   })
-  .promise();
-</code></pre>
-	<p>For more information on how object lifecycle policies work and how to configure them in the dashboard or API, see the documentation <a href="https://developers.cloudflare.com/r2/buckets/object-lifecycles">here</a>. </p>
+  .promise();</code></pre>
+	<p>For more information on how object lifecycle policies work and how to configure them in the dashboard or API, see the documentation <a href="https://developers.cloudflare.com/r2/buckets/object-lifecycles">here</a>.</p>
 	<p>Speaking of documentation, if you’d like to provide feedback for R2’s documentation, fill out our <a href="https://docs.google.com/forms/d/e/1FAIpQLScaVrdZh2PoZFvJGFPyMthuGVvKpQvoPfZ-BxIJ4Q5zsQebDA/viewform">documentation survey</a>!</p>
-	<h3 id="what%E2%80%99s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>Creating object lifecycle rules to delete ephemeral objects is a great way to reduce storage costs, but what if you need to keep objects around to access in the future? We’re working on new, lower cost ways to store objects in R2 that aren’t frequently accessed, like long tail user-generated content, archive data, and more. If you’re interested in providing feedback and gaining early access, let us know by joining the waitlist <a href="https://forms.gle/JLLzQtqSuLAQNRPX7">here</a>.</p>
-	<h3 id="join-the-conversation-share-your-feedback-and-experiences">Join the conversation: share your feedback and experiences</h3>
+	<h3>Join the conversation: share your feedback and experiences</h3>
 	<p>If you have any questions or feedback relating to R2, we encourage you to join our <a href="https://discord.gg/cloudflaredev">Discord community</a> to share! Stay tuned for more exciting R2 updates in the future.</p>
 </div>

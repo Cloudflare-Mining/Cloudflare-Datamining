@@ -1,18 +1,30 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/first-round-of-french-election-2024-party-attacks-and-a-modest-traffic-dip-fr-fr">Français</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/07/image1-2.png" class="kg-image" alt="First round of French election: party attacks and a modest traffic dip" loading="lazy" width="1999" height="1125"></figure>
+<div class="mb2 gray5">2 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/first-round-of-french-election-2024-party-attacks-and-a-modest-traffic-dip">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BifY59MIzESnrfP6plza6/c92803a803933dc96516686ec8a42d31/image1-2.png" alt="First round of French election: party attacks and a modest traffic dip" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>France is currently electing a new government through early legislative elections that began on Sunday, June 30, 2024, with a second round scheduled for July 7. In this blog, we show how Cloudflare blocked DDoS attacks targeting three different French political parties.</p>
 	<p>2024 has been dubbed “the year of elections,” with elections taking place in over 60 countries, as we have mentioned before (<a href="https://blog.cloudflare.com/protecting-global-democracy-against-threats-from-emerging-technology">1</a>, <a href="https://blog.cloudflare.com/internet-insights-on-2024-elections-in-the-netherlands-south-africa-iceland-india-and-mexico">2</a>, <a href="https://blog.cloudflare.com/exploring-the-2024-eu-election-internet-traffic-trends-and-cybersecurity-insights">3</a>). If you regularly follow the Cloudflare blog, you’re aware that we consistently cover election-related trends, including in <a href="https://blog.cloudflare.com/internet-insights-on-2024-elections-in-the-netherlands-south-africa-iceland-india-and-mexico">South Africa, India, Iceland, Mexico</a>, the <a href="https://blog.cloudflare.com/exploring-the-2024-eu-election-internet-traffic-trends-and-cybersecurity-insights">European Union</a> and the <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends">2024 US presidential debate</a>. We also continuously update our <a href="https://radar.cloudflare.com/reports/elections-2024">election report</a> on Cloudflare Radar.</p>
 	<p>Recently in France, as in the early stages of the <a href="https://blog.cloudflare.com/one-year-of-war-in-ukraine">war in Ukraine</a> and during <a href="https://blog.cloudflare.com/dutch-political-websites-hit-by-cyber-attacks-as-eu-voting-starts">EU elections in the Netherlands</a>, political events have precipitated cyberattacks. In France, several DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service attack</a>) attacks targeted political parties involved in the elections over the past few days, with two parties hit just before the first round and another on election day itself.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/image3-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="845"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fHEf3lmRn9YCKLtfrWLWy/7f97695b139a567677364edaba0151ed/image3-1.png" alt="" class="kg-image" width="1999" height="845" loading="lazy">
+
+	</figure>
 	<p>The first political party, shown in yellow in the previous chart, experienced a DDoS attack on June 23, 2024, peaking at 68,000 requests per second (rps); it also endured a second DDoS attack on June 29, the day before the election, peaking at 20,000 rps. Although these rates are small on Cloudflare’s scale, they can be devastating for unprotected websites unaccustomed to such levels of traffic.</p>
 	<p>The second party, represented by the blue line, was targeted on June 24, June 27, and June 29, 2024, with the most severe attack occurring on June 27, reaching 118,000 rps during a day marked by frequent DDoS spikes that had in total 610 million daily requests.</p>
 	<p>The third party was attacked on the evening of June 29 in France, with several attempts blocked by Cloudflare on election day, June 30, between 10:00 and 23:00 UTC (12:00 and 01:00 local time). The peak activity targeting this party hit nearly 40,000 rps at 19:00 UTC (21:00 local time), with a total of 620 million daily DDoS requests on election day.</p>
-	<h3 id="modest-drops-and-clear-traffic-increases-after-voting-ends">Modest drops and clear traffic increases after voting ends</h3>
+	<h3>Modest drops and clear traffic increases after voting ends</h3>
 	<p>During the first round of the election this past Sunday, June 30, 2024, Internet traffic was initially higher than the previous week but dropped by as much as 3% at 11:30 local time (09:30 UTC) after the polls opened. Traffic began to increase again after 17:45 local time (15:45 UTC) and peaked at 20:00 local time (18:00 UTC) when the polls closed and the first projections were announced.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/image2-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="514"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IGaH5cuPz9Zrg9nsExLLu/ec2c8333ec1f04eb2e300ec02e64431f/image2-1.png" alt="" class="kg-image" width="1999" height="514" loading="lazy">
+
+	</figure>
 	<p>We will provide a trends update on the French election after the runoff scheduled for July 7, 2024.</p>
 	<p>If you want to follow more trends and insights about the Internet and elections in particular, you can check <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, and more specifically our new <a href="https://radar.cloudflare.com/reports/elections-2024">2024 Elections Insights</a> report, which will be updated as elections take place throughout the year.</p>
 	<p>This week, we’ve updated our trends to include <a href="https://radar.cloudflare.com/reports/elections-2024#id-4-last-minute-voting-in-iran">last-minute voting during the elections in Iran</a> on June 28, 2024, and the <a href="https://radar.cloudflare.com/reports/elections-2024#id-3-mobile-networks-shutdown-following-mauritania-election">suspension of mobile Internet in Mauritania</a> following protests after the presidential elections on June 29, 2024.</p>

@@ -1,16 +1,19 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-ddos-alerts-zh-cn">简体中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/10/DDoS-Alerts@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-ddos-alerts">简体中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2L9W4XTXucWN5nt4doqnHG/3b394275b1f7d6f47514283bf5b1b237/DDoS-Alerts_2x-1.png" alt="" class="kg-image" width="1600" height="783" loading="lazy">
+
+	</figure>
 	<p>Today we’re announcing the availability of DDoS attack alerts. The alerts are available at no extra cost for all Cloudflare customers on paid plans.</p>
-	<h3 id="unmetered-ddos-protection">Unmetered DDoS protection</h3>
-	<p>Last week we celebrated Cloudflare’s 10th birthday in what we call <a href="https://blog.cloudflare.com/welcome-to-birthday-week-2020">Birthday Week</a>. Every year, on each day of Birthday Week, we announce a new product with the goal of helping make the Internet a better place -- one that is safer and faster. To do that, over the years we’ve democratized many products that were previously only available to large enterprises by making them available for free (or at very low cost) to all. For example, on Cloudflare’s 7th birthday in 2017, we announced <a href="https://blog.cloudflare.com/unmetered-mitigation">free unmetered DDoS protection</a> as part of every Cloudflare product and every plan, <strong>including the <a href="https://www.cloudflare.com/plans/free">free plan</a></strong>.</p>
+	<h3>Unmetered DDoS protection</h3>
+	<p>Last week we celebrated Cloudflare’s 10th birthday in what we call <a href="https://blog.cloudflare.com/welcome-to-birthday-week-2020">Birthday Week</a>. Every year, on each day of Birthday Week, we announce a new product with the goal of helping make the Internet a better place -- one that is safer and faster. To do that, over the years we’ve democratized many products that were previously only available to large enterprises by making them available for free (or at very low cost) to all. For example, on Cloudflare’s 7th birthday in 2017, we announced <a href="https://blog.cloudflare.com/unmetered-mitigation">free unmetered DDoS protection</a> as part of every Cloudflare product and every plan, <b>including the </b><a href="https://www.cloudflare.com/plans/free"><b>free plan</b></a>.</p>
 	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a> aim to take down websites or online services and make them unavailable to the public. We wanted to make sure that every organization and every website is available and accessible, regardless if they can or can’t afford enterprise-grade <a href="https://www.cloudflare.com/ddos">DDoS protection</a>. This has been a core part of our mission. We’ve been heavily investing in our DDoS protection capabilities over the last 10 years, and we will continue to do so in the future.</p>
-	<h3 id="real-time-ddos-attack-alerts">Real-time DDoS attack alerts</h3>
+	<h3>Real-time DDoS attack alerts</h3>
 	<p>I’ve recently published a few blogs that provide a look <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge">under the hood of our DDoS protection systems</a>. These systems run autonomously, they detect and mitigate attacks without any human intervention. As was the case with the <a href="https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps">654 Gbps</a> attack in July, and the <a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically">754 Mpps</a> attack in June. We’ve been successful at blocking DDoS attacks and also providing our users with important analytics and insights about the attacks, but our customers also want to be notified in real-time when they are targeted by DDoS attacks.</p>
 	<p>So today, we’re excited to announce the availability of DDoS alerts. The current delivery methods by Cloudflare plan type are listed in the table below. Additional delivery methods will be made available in the future.</p>
-	<p><strong>Delivery methods by plan</strong></p><!--kg-card-begin: html-->
+	<p><b>Delivery methods by plan</b></p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -86,7 +89,7 @@
 	</table>
 	<p></p><!--kg-card-end: html-->
 	<p>There are two types of DDoS alerts: HTTP DDoS alerts and L3/4 DDoS alerts. Whether you are eligible to one or both depends on the Cloudflare services that you are subscribed to. The table below lists the alert types by the Cloudflare service.</p>
-	<p><strong>Alert types by service</strong></p><!--kg-card-begin: html-->
+	<p><b>Alert types by service</b></p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -161,29 +164,55 @@
 		</tbody>
 	</table>
 	<p></p><!--kg-card-end: html-->
-	<h3 id="creating-a-ddos-alert-policy">Creating a DDoS alert policy</h3>
+	<h3>Creating a DDoS alert policy</h3>
 	<p>In order to receive alerts on DDoS attacks that target your Cloudflare-protected Internet property, you must first <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fnotifications%2Fcreate">create a notification</a> policy. That’s fast and easy:</p>
 	<ol>
-		<li>Log in to your Cloudflare account dashboard: <a href="https://dash.cloudflare.com">https://dash.cloudflare.com</a></li>
-		<li>In the Account Home page, navigate to the <strong>Notifications </strong>tab</li>
-		<li>In the Notifications card, click <strong>Create</strong></li>
-		<li>Give your notification a name, add an optional description, and the email addresses of the recipients.</li>
+		<li>
+			<p>Log in to your Cloudflare account dashboard: <a href="https://dash.cloudflare.com">https://dash.cloudflare.com</a></p>
+		</li>
+		<li>
+			<p>In the Account Home page, navigate to the <b>Notifications</b> tab</p>
+		</li>
+		<li>
+			<p>In the Notifications card, click <b>Create</b></p>
+		</li>
+		<li>
+			<p>Give your notification a name, add an optional description, and the email addresses of the recipients.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64PtOgXo6xJhNO0LDlgpE8/5688d65d57d43660ef2bb321d8cd07c2/image1.gif" alt="" class="kg-image" width="600" height="448" loading="lazy">
+
+	</figure>
 	<p>If you are on the Business plan or higher, you’ll need to <a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare">connect to PagerDuty</a> before creating the alert policy. Once you’ve done so, you’ll have the option to send the alert to your PagerDuty service.</p>
-	<h3 id="receive-the-alert-view-the-attack-and-give-feedback">Receive the alert, view the attack, and give feedback</h3>
-	<p>When developing and designing the alert template, we interviewed many of our customers to understand what information is important to them, what would make the alert useful and easy to understand. We’ve intentionally made the alert short. The email subject is also straightforward: <strong>DDoS Attack Detected</strong>, and it will only be sent from our official email address: <strong>noreply@notify.cloudflare[dot]com</strong>. Add this email to your list of trusted email addresses to assure you don’t miss the alerts.</p>
+	<h3>Receive the alert, view the attack, and give feedback</h3>
+	<p>When developing and designing the alert template, we interviewed many of our customers to understand what information is important to them, what would make the alert useful and easy to understand. We’ve intentionally made the alert short. The email subject is also straightforward: <b>DDoS Attack Detected</b>, and it will only be sent from our official email address: <a href="mailto:noreply@notify.cloudflare"><b>noreply@notify.cloudflare</b></a><b>[dot]com</b>. Add this email to your list of trusted email addresses to assure you don’t miss the alerts.</p>
 	<p>The alert includes the following information:</p>
 	<ol>
-		<li>A short description of what happened</li>
-		<li>The date and time the attack was initially detected and mitigated by our systems</li>
-		<li>The attack type</li>
-		<li>The max rate of the attack when the alert was triggered</li>
-		<li>The attack target</li>
+		<li>
+			<p>A short description of what happened</p>
+		</li>
+		<li>
+			<p>The date and time the attack was initially detected and mitigated by our systems</p>
+		</li>
+		<li>
+			<p>The attack type</p>
+		</li>
+		<li>
+			<p>The max rate of the attack when the alert was triggered</p>
+		</li>
+		<li>
+			<p>The attack target</p>
+		</li>
 	</ol>
 	<p>The attack may be ongoing when you receive the alert and so we also include a link to view the attack in the Cloudflare dashboard and also a link to provide feedback on the protection and visibility.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/0-JbUb4fIcPdACvneYxFHXtadjRoEf2S33LJGz62wbIMP3pWf2jMeF9reNNVFumoV4PV5Je_gqXxjNpoUHyI9-pv7IkdnvGS_K_jIolUz6CxYYO06wtrPj-CHo2t__kY6HxNTUXG" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="we-d-love-to-get-your-feedback-">We’d love to get your feedback!</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qNhxAfvTVEta9MK9FVj0g/e59c7eab236a0a3f1fda3acdc5d5e8ee/0-JbUb4fIcPdACvneYxFHXtadjRoEf2S33LJGz62wbIMP3pWf2jMeF9reNNVFumoV4PV5Je_gqXxjNpoUHyI9-pv7IkdnvGS_K_jIolUz6CxYYO06wtrPj-CHo2t.png" alt="" class="kg-image" width="663" height="777" loading="lazy">
+
+	</figure>
+	<h3>We’d love to get your feedback!</h3>
 	<p>We’d love your feedback on our DDoS protection solution. When you receive a DDoS alert, you’ll be provided with a link to submit your feedback. Measuring user satisfaction helps us build better products. Your feedback helps us measure user satisfaction for Cloudflare’s DDoS protection and the attack analytics that we provide in the dashboard. User satisfaction rates are one of the main Key Performance Indicators (KPIs) for our DDoS protection service that we monitor closely. So give your feedback, and help us make DDoS protection better for everyone.</p>
 	<p>Not a Cloudflare customer yet? <a href="https://dash.cloudflare.com/sign-up">Sign up</a> to get started.</p>
 </div>

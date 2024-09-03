@@ -1,75 +1,98 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zYPGrhkfV8AMzgS6G7pg3/5130d1f904536b5de6fc537ccbfa5cb4/increasing-ipv6-mtu.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h2></h2>
 	<p>Back in 2015 we deployed <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing">ECMP routing</a> - Equal Cost Multi Path - within our datacenters. This technology allowed us to spread traffic heading to a single IP address across multiple physical servers.</p>
 	<p>You can think about it as a third layer of load balancing.</p>
 	<ul>
-		<li>First we split the traffic across multiple IP addresses with DNS.</li>
-		<li>Then we split the traffic across <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">multiple datacenters with Anycast</a>.</li>
-		<li>Finally, we split the traffic across multiple servers with ECMP.</li>
+		<li>
+			<p>First we split the traffic across multiple IP addresses with DNS.</p>
+		</li>
+		<li>
+			<p>Then we split the traffic across <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">multiple datacenters with Anycast</a>.</p>
+		</li>
+		<li>
+			<p>Finally, we split the traffic across multiple servers with ECMP.</p>
+		</li>
 	</ul>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/5799659266_28038df72f_b.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/superlatif/5799659266">photo </a>by <a href="https://www.flickr.com/photos/superlatif">Sahra</a> by-sa/2.0</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6brB6jYvBwnIHL5UyGZZpq/58a42d1e42d2a587dfce50d170c854f0/5799659266_28038df72f_b.jpg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
+
 	</figure>
-	<p><br>When deploying ECMP we hit a problem with Path MTU discovery. The ICMP packets destined to our Anycast IP's were being dropped. You can read more about that (and the solution) in the 2015 blog post <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">Path MTU Discovery in practice</a>.</p>
-	<p>To solve the problem we created a small piece of software, called <code>pmtud</code> (<a href="https://github.com/cloudflare/pmtud">https://github.com/cloudflare/pmtud</a>). Since deploying <code>pmtud</code>, our ECMP setup has been working smoothly. </p>
-	<h3 id="hardcoding-ipv6-mtu">Hardcoding IPv6 MTU</h3>
+	<p><a href="https://www.flickr.com/photos/superlatif/5799659266">photo</a> by <a href="https://www.flickr.com/photos/superlatif">Sahra</a> by-sa/2.0</p>
+	<p>When deploying ECMP we hit a problem with Path MTU discovery. The ICMP packets destined to our Anycast IP's were being dropped. You can read more about that (and the solution) in the 2015 blog post <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">Path MTU Discovery in practice</a>.</p>
+	<p>To solve the problem we created a small piece of software, called <code>pmtud</code> (<a href="https://github.com/cloudflare/pmtud">https://github.com/cloudflare/pmtud</a>). Since deploying <code>pmtud</code>, our ECMP setup has been working smoothly.</p>
+	<h3>Hardcoding IPv6 MTU</h3>
 	<p>During that initial ECMP rollout things were broken. To keep services running until <code>pmtud</code> was done, we deployed a quick hack. We reduced the MTU of &nbsp;IPv6 traffic to the minimal possible value: 1280 bytes.</p>
-	<p>This was done as a tag on a default route. This is how our routing table used to look:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ip -6 route show
+	<p>This was done as a tag on a default route. This is how our routing table used to look:</p>
+	<pre class="language-bash"><code class="language-bash">$ ip -6 route show
 ...
-default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280
-</code></pre>
-	<!--kg-card-end: markdown-->
+default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code></pre>
 	<p>Notice the <code>mtu 1280</code> in the default route.</p>
 	<p>With this setting our servers never transmitted IPv6 packets larger than 1280 bytes, therefore "fixing" the issue. Since all IPv6 routers must have an MTU of at least 1280, we could expect that no ICMP Packet-Too-Big message would ever be sent to us.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/ECMP-hashing-ICMP.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WoQ4atXDbAlJ1mhDnXDcf/2a6e0096c4c14ac619c0ebe8344ba679/ECMP-hashing-ICMP.png" alt="" class="kg-image" width="931" height="331" loading="lazy">
+
+	</figure>
 	<p>Remember - the original problem introduced by ECMP was that ICMP routed back to our Anycast addresses could go to a wrong machine within the ECMP group. Therefore we became ICMP black holes. Cloudflare would send large packets, they would be dropped with ICMP PTB packet flying back to us. Which, in turn would fail to be delivered to the right machine due to ECMP.</p>
 	<p>But why did this problem not appear for IPv4 traffic? We believe the same issue exists on IPv4, but it's less damaging due to the different nature of the network. IPv4 is more mature and the great majority of end-hosts support either MTU 1500 or have their MSS option well configured - or clamped by some middle box. This is different in IPv6 where a large proportion of &nbsp;users use tunnels, have Path MTU strictly smaller than 1500 and use incorrect MSS settings in the TCP header. Finally, Linux implements <a href="https://tools.ietf.org/html/rfc4821">RFC4821</a> for IPv4 but not IPv6. RFC4821 (PLPMTUD) has its disadvantages, but does slightly help to alleviate the ICMP blackhole issue.</p>
 	<p>Our "fix" - reducing the MTU to 1280 - was serving us well and we had no pressing reason to revert it.</p>
 	<p>Researchers did notice though. We were caught red-handed twice:</p>
 	<ul>
-		<li><a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system">In 2017 Geoff Huston noticed (pdf)</a> that we sent DNS fragments of 1280 only (<a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system">older blog post</a>).</li>
-		<li>In June 2018 the paper <a href="http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper57.pdf">"Exploring usable Path MTU in the Internet" (pdf)</a> mentioned our weird setting - where we can accept 1500 bytes just fine, but transmit is limited to 1280.</li>
+		<li>
+			<p><a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system">In 2017 Geoff Huston noticed (pdf)</a> that we sent DNS fragments of 1280 only (<a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system">older blog post</a>).</p>
+		</li>
+		<li>
+			<p>In June 2018 the paper <a href="http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper57.pdf">"Exploring usable Path MTU in the Internet" (pdf)</a> mentioned our weird setting - where we can accept 1500 bytes just fine, but transmit is limited to 1280.</p>
+		</li>
 	</ul>
-	<h3 id="when-small-mtu-is-too-small">When small MTU is too small</h3>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/6545737741_077583ca1f_b-1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/nh53/6545737741">photo </a>by <a href="https://www.flickr.com/photos/nh53">NH53</a> by/2.0</figcaption>
+	<h3>When small MTU is too small</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yo93AUS4hONJUarTUlGP/e7e9d646b131700e706d911ec888bc51/6545737741_077583ca1f_b-1.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
 	</figure>
-	<p></p>
+	<p><a href="https://www.flickr.com/photos/nh53/6545737741">photo</a> by <a href="https://www.flickr.com/photos/nh53">NH53</a> by/2.0</p>
 	<p>This changed recently, when we started working on <a href="https://blog.cloudflare.com/spectrum">Cloudflare Spectrum</a> support for UDP. Spectrum is a terminating proxy, able to handle protocols other than HTTP. Getting Spectrum to <a href="https://blog.cloudflare.com/how-we-built-spectrum">forward TCP was relatively straightforward</a> (barring couple of <a href="https://blog.cloudflare.com/mmproxy-creative-way-of-preserving-client-ips-in-spectrum">awesome hacks</a>). UDP is different.</p>
 	<p>One of the major issues we hit was related to the MTU on our servers.</p>
 	<p>During tests we wanted to forward UDP VPN packets through Spectrum. As you can imagine, any VPN would encapsulate a packet in another packet. Spectrum received packets like this:</p>
-	<pre><code> +---------------------+------------------------------------------------+
+	<pre class="language-bash"><code class="language-bash"> +---------------------+------------------------------------------------+
  +  IPv6 + UDP header  |  UDP payload encapsulating a 1280 byte packet  |
  +---------------------+------------------------------------------------+</code></pre>
 	<p>It's pretty obvious, that our edge servers supporting IPv6 packets of max 1280 bytes won't be able to handle this type of traffic. We are going to need at least 1280+40+8 bytes MTU! Hardcoding MTU=1280 in IPv6 may be acceptable solution if you are an end-node on the internet, but is definitely too small when forwarding tunneled traffic.</p>
-	<h3 id="picking-a-new-mtu">Picking a new MTU</h3>
+	<h3>Picking a new MTU</h3>
 	<p>But what MTU value should we use instead? Let's see what other major internet companies do. Here is a couple of examples of advertised MSS values in TCP SYN+ACK packets over IPv6:</p>
-	<pre><code>+---- site -----+- MSS --+- estimated MTU -+
+	<pre class="language-bash"><code class="language-bash">+---- site -----+- MSS --+- estimated MTU -+
 | google.com    |  1360  |    1420         |
 +---------------+--------+-----------------+
 | facebook.com  |  1410  |    1470         |
 +---------------+--------+-----------------+
 | wikipedia.org |  1440  |    1500         |
-+---------------+--------+-----------------+
-</code></pre>
++---------------+--------+-----------------+</code></pre>
 	<p>I believe Google and Facebook adjust their MTU due to their use of L4 load balancers. Their implementations do IP-in-IP encapsulation so need a bit of space for the header. Read more:</p>
 	<ul>
-		<li>Google - <a href="https://ai.google/research/pubs/pub44824">Maglev</a></li>
-		<li>Facebook - <a href="https://code.fb.com/open-source/open-sourcing-katran-a-scalable-network-load-balancer">Katran</a></li>
+		<li>
+			<p>Google - <a href="https://ai.google/research/pubs/pub44824">Maglev</a></p>
+		</li>
+		<li>
+			<p>Facebook - <a href="https://code.fb.com/open-source/open-sourcing-katran-a-scalable-network-load-balancer">Katran</a></p>
+		</li>
 	</ul>
 	<p>There may be other reasons for having a smaller MTU. A reduced value may decrease the probability of the Path MTU detection algorithm kicking in (ie: relying on ICMP PTB). We can theorize that for the misconfigured eyeballs:</p>
 	<ul>
-		<li>MTU=1280 will never run Path MTU detection</li>
-		<li>MTU=1500 will always run it. </li>
-		<li>In-between values would have increasing different chances of hitting the problem. </li>
+		<li>
+			<p>MTU=1280 will never run Path MTU detection</p>
+		</li>
+		<li>
+			<p>MTU=1500 will always run it.</p>
+		</li>
+		<li>
+			<p>In-between values would have increasing different chances of hitting the problem.</p>
+		</li>
 	</ul>
 	<p>But just what is the chance of that?</p>
 	<p>A quick unscientific study of the MSS values we encountered from eyeballs shows the following distributions. For connections going over IPv4:</p>
-	<pre><code>IPv4 eyeball advertised MSS in SYN:
+	<pre class="language-bash"><code class="language-bash">IPv4 eyeball advertised MSS in SYN:
  value |-------------------------------------------------- count cummulative
   1300 |                                                 *  1.28%   98.53%
   1360 |                                              ****  4.40%   95.68%
@@ -80,11 +103,10 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280
   1412 |                                              ****  4.58%   75.49%
   1440 |                                            ******  6.14%   65.71%
   1452 |                                      ************ 11.50%   58.94%
-  1460 |************************************************** 47.09%   47.34%
-</code></pre>
+  1460 |************************************************** 47.09%   47.34%</code></pre>
 	<p>Assuming the majority of clients have MSS configured right, we can say that 89.8% of connections advertised MTU=1380+40=1420 or higher. 75% had MTU &gt;= 1452.</p>
 	<p>For IPv6 connections we saw:</p>
-	<pre><code>IPv6 eyeball advertised MSS in SYN:
+	<pre class="language-bash"><code class="language-bash">IPv6 eyeball advertised MSS in SYN:
  value |-------------------------------------------------- count cummulative
   1220 |                                               ***  4.21%   99.96%
   1340 |                                                **  3.11%   93.23%
@@ -96,65 +118,95 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280
   1400 |                                               ***  3.89%   72.25%
   1412 |                                               ***  3.64%   68.21%
   1420 |                                                 *  2.02%   64.54%
-  1440 |************************************************** 54.31%   54.34%
-</code></pre>
+  1440 |************************************************** 54.31%   54.34%</code></pre>
 	<p>On IPv6 87.7% connections had MTU &gt;= 1422 (1362+60). 75% had MTU &gt;= 1450. (See also: <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">MTU distribution of DNS &nbsp;servers</a>).</p>
-	<h3 id="interpretation">Interpretation</h3>
+	<h3>Interpretation</h3>
 	<p>Before we move on it's worth reiterating the original problem. Each connection from an eyeball to our Anycast network has three numbers related to it:</p>
 	<ul>
-		<li>Client advertised MTU - seen in MSS option in TCP header</li>
-		<li>True Path MTU value - generally unknown until measured</li>
-		<li>Our Edge server MTU - value we are trying to optimize in this exercise</li>
+		<li>
+			<p>Client advertised MTU - seen in MSS option in TCP header</p>
+		</li>
+		<li>
+			<p>True Path MTU value - generally unknown until measured</p>
+		</li>
+		<li>
+			<p>Our Edge server MTU - value we are trying to optimize in this exercise</p>
+		</li>
 	</ul>
 	<p>(This is a slight simplification, paths on the internet aren't symmetric so the path from eyeball to Cloudflare could have different Path MTU than the reverse path.)</p>
 	<p>In order for the connection to misbehave, three conditions must be met:</p>
 	<ul>
-		<li>Client advertised MTU must be "wrong", that is: larger than True Path MTU</li>
-		<li>Our edge server must be willing to send such large packets: Edge server MTU &gt;= True Path MTU</li>
-		<li>The ICMP PTB messages must fail to be delivered to our edge server - preventing Path MTU detection from working.</li>
+		<li>
+			<p>Client advertised MTU must be "wrong", that is: larger than True Path MTU</p>
+		</li>
+		<li>
+			<p>Our edge server must be willing to send such large packets: Edge server MTU &gt;= True Path MTU</p>
+		</li>
+		<li>
+			<p>The ICMP PTB messages must fail to be delivered to our edge server - preventing Path MTU detection from working.</p>
+		</li>
 	</ul>
 	<p>The last condition could occur for one of the reasons:</p>
 	<ul>
-		<li>the routers on the path are misbehaving and perhaps firewalling ICMP</li>
-		<li>due to the asymmetric nature of the internet the ICMP back is routed to the wrong Anycast datacenter</li>
-		<li>something is wrong on our side, for example <code>pmtud</code> process fails</li>
+		<li>
+			<p>the routers on the path are misbehaving and perhaps firewalling ICMP</p>
+		</li>
+		<li>
+			<p>due to the asymmetric nature of the internet the ICMP back is routed to the wrong Anycast datacenter</p>
+		</li>
+		<li>
+			<p>something is wrong on our side, for example <code>pmtud</code> process fails</p>
+		</li>
 	</ul>
 	<p>In the past we limited our Edge Server MTU value to the smallest possible, to make sure we never encounter the problem. Due to the development of Spectrum UDP support we must increase the Edge Server MTU, while still minimizing the probability of the issue happening.</p>
 	<p>Finally, relying on ICMP PTB messages for a large fraction of traffic is a bad idea. It's easy to imagine the cost this induces: even with Path MTU detection working fine, the affected connection will suffer a hiccup. A couple of large packets will be dropped before the reverse ICMP will get through and reconfigure the saved Path MTU value. This is not optimal for latency.</p>
-	<h3 id="progress">Progress</h3>
+	<h3>Progress</h3>
 	<p>In recent days we increased the IPv6 MTU. As part of the process we could have chosen 1300, 1350, or 1400. We choose 1400 because we think it's the next best value to use after 1280. With 1400 we believe 93.2% of IPv6 connections will not need to rely on Path MTU Detection/ICMP. In the near future we plan to increase this value further. We won't settle on 1500 though - we want to leave a couple of bytes for IPv4 encapsulation, to allow the most popular tunnels to keep working without suffering poor latency when Path MTU Detection kicks in.</p>
 	<p>Since the rollout we've been monitoring <code>Icmp6InPktTooBigs</code> counters:</p>
-	<pre><code>$ nstat -az | grep Icmp6InPktTooBigs
-Icmp6InPktTooBigs               738748             0.0
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ nstat -az | grep Icmp6InPktTooBigs
+Icmp6InPktTooBigs               738748             0.0</code></pre>
 	<p>Here is a chart of the ICMP PTB packets we received over last 7 days. You can clearly see that when the rollout started, we saw a large increase in PTB ICMP messages (Y label - packet count - deliberately obfuscated):</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-06-at-2.12.28-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64aFjrP5OwJLKlbMfwIofg/7c13777636abdd8b959877257fe97ee4/Screen-Shot-2018-09-06-at-2.12.28-PM.png" alt="" class="kg-image" width="1678" height="806" loading="lazy">
+
+	</figure>
 	<p>Interestingly the majority of the ICMP packets are concentrated in our Frankfurt datacenter:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-06-at-2.11.53-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rwp7vqya4hZUVtqgALCo0/017ed5078dfb216dbc815683032b842b/Screen-Shot-2018-09-06-at-2.11.53-PM.png" alt="" class="kg-image" width="1722" height="800" loading="lazy">
+
+	</figure>
 	<p>We estimate that in our Frankfurt datacenter, we receive ICMP PTB message on 2 out of every 100 IPv6 TCP connections. These seem to come from only a handful of ASNs:</p>
 	<ul>
-		<li>AS6830 - Liberty Global Operations B.V.</li>
-		<li>AS20825- Unitymedia NRW GmbH</li>
-		<li>AS31334 - Vodafone Kabel Deutschland GmbH</li>
-		<li>AS29562 - Kabel BW GmbH</li>
+		<li>
+			<p>AS6830 - Liberty Global Operations B.V.</p>
+		</li>
+		<li>
+			<p>AS20825- Unitymedia NRW GmbH</p>
+		</li>
+		<li>
+			<p>AS31334 - Vodafone Kabel Deutschland GmbH</p>
+		</li>
+		<li>
+			<p>AS29562 - Kabel BW GmbH</p>
+		</li>
 	</ul>
 	<p>These networks send to us ICMP PTB messages, usually informing that their MTU is 1280. For example:</p>
-	<pre><code>$ sudo tcpdump -tvvvni eth0 icmp6 and ip6[40+0]==2 
+	<pre class="language-bash"><code class="language-bash">$ sudo tcpdump -tvvvni eth0 icmp6 and ip6[40+0]==2 
 IP6 2a02:908:xxx &gt; 2400:xxx ICMP6, packet too big, mtu 1280, length 1240
 IP6 2a02:810d:xx &gt; 2400:xxx ICMP6, packet too big, mtu 1280, length 1240
-IP6 2001:ac8:xxx &gt; 2400:xxx ICMP6, packet too big, mtu 1390, length 1240
-</code></pre>
-	<h3 id="final-thoughts">Final thoughts</h3>
+IP6 2001:ac8:xxx &gt; 2400:xxx ICMP6, packet too big, mtu 1390, length 1240</code></pre>
+	<h3>Final thoughts</h3>
 	<p>Finally, if you are an IPv6 user with a weird MTU and have misconfigured MSS - basically if you are doing tunneling - please let us know of any issues. We know that debugging MTU issues is notoriously hard. To aid that we created <a href="https://blog.cloudflare.com/ip-fragmentation-is-broken">an online fragmentation and ICMP delivery test</a>. You can run it:</p>
 	<ul>
-		<li>IPv6 version: <a href="http://icmpcheckv6.popcount.org">http://icmpcheckv6.popcount.org</a></li>
-		<li>(for completeness, we also have an <a href="http://icmpcheck.popcount.org">IPv4 version</a>)</li>
+		<li>
+			<p>IPv6 version: <a href="http://icmpcheckv6.popcount.org">http://icmpcheckv6.popcount.org</a></p>
+		</li>
+		<li>
+			<p>(for completeness, we also have an <a href="http://icmpcheck.popcount.org">IPv4 version</a>)</p>
+		</li>
 	</ul>
 	<p>If you are a server operator running IPv6 applications, you should not worry. In most cases leaving the MTU at default 1500 is a good choice and should work for the majority of connections. &nbsp;Just remember to allow ICMP PTB packets on the firewall and you should be good. If you serve variety of IPv6 users and need to optimize latency, you may consider choosing a slightly smaller MTU for outbound packets, to reduce the risk of relying on Path MTU Detection / ICMP.</p>
-	<p></p>
-	<p><em>Low level network tuning sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572">world famous team</a> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland.</em></p>
+	<p><i>Low level network tuning sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland.</i></p>
 </div>

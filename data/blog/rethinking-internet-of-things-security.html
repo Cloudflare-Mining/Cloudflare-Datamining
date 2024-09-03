@@ -1,47 +1,68 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/es-es/rethinking-internet-of-things-security-es-es">Español</a>, <a href="https://blog.cloudflare.com/zh-cn/rethinking-internet-of-things-security-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/rethinking-internet-of-things-security-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/rethinking-internet-of-things-security-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/rethinking-internet-of-things-security-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/ko-kr/rethinking-internet-of-things-security-ko-kr">한국어</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-43.png" class="kg-image" alt="Securing the Internet of Things" loading="lazy"></figure>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/rethinking-internet-of-things-security">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/rethinking-internet-of-things-security">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/rethinking-internet-of-things-security">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/rethinking-internet-of-things-security">한국어</a>, <a href="https://blog.cloudflare.com/es-es/rethinking-internet-of-things-security">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/rethinking-internet-of-things-security">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tL8FltH0Rw4qXP6NZ1dN8/2ff323ef25eaf93d19f7207f7e27ffb3/image1-43.png" alt="Securing the Internet of Things" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>It’s hard to imagine life without our smartphones. Whereas computers were mostly fixed and often shared, smartphones meant that every individual on the planet became a permanent, mobile node on the Internet — with some 6.5B smartphones on the planet today.</p>
 	<p>While that represents an explosion of devices on the Internet, it will be dwarfed by the next stage of the Internet’s evolution: connecting devices to give them intelligence. Already, Internet of Things (IoT) devices represent somewhere in the order of double the number of smartphones connected to the Internet today — and unlike smartphones, this number is expected to continue to grow tremendously, since they aren’t bound to the number of humans that can carry them.</p>
 	<p>But the exponential growth in devices has brought with it an explosion in risk. We’ve been defending against DDoS attacks from Internet of Things (IoT) driven botnets like <a href="https://blog.cloudflare.com/tag/mirai">Mirai</a> and <a href="https://blog.cloudflare.com/meris-botnet">Meris</a> for years now. They keep <a href="https://www.securityweek.com/cloudflare-mitigates-2-tbps-ddos-attack-launched-mirai-botnet">growing</a>, because securing IoT devices still remains challenging, and manufacturers are often not incentivized to secure them. This has driven NIST (the U.S. National Institute of Standards and Technology) <a href="https://csrc.nist.gov/publications/detail/nistir/8349/draft">to actively define requirements</a> to address the (lack of) IoT device security, and the EU isn’t far behind.</p>
 	<p>It’s also the type of problem that Cloudflare solves best.</p>
 	<p>Today, we’re excited to announce our Internet of Things platform: with the goal to provide a single pane-of-glass view over your IoT devices, provision connectivity for new devices, and critically, secure every device from the moment it powers on.</p>
-	<h3 id="not-just-lightbulbs">Not just lightbulbs</h3>
+	<h3>Not just lightbulbs</h3>
 	<p>It’s common to immediately think of lightbulbs or simple motion sensors when you read “IoT”, but that’s because we often don’t consider many of the devices we interact with on a daily basis as an IoT device.</p>
 	<p>Think about:</p>
 	<ul>
-		<li>Almost every payment terminal</li>
-		<li>Any modern car with an infotainment or GPS system</li>
-		<li>Millions of industrial devices that power — and are critical to — logistics services, industrial processes, and manufacturing businesses</li>
+		<li>
+			<p>Almost every payment terminal</p>
+		</li>
+		<li>
+			<p>Any modern car with an infotainment or GPS system</p>
+		</li>
+		<li>
+			<p>Millions of industrial devices that power — and are critical to — logistics services, industrial processes, and manufacturing businesses</p>
+		</li>
 	</ul>
-	<p><em>You especially may not realize that nearly every one of these devices has a SIM card, and connects over a cellular network.</em></p>
+	<p><i>You especially may not realize that nearly every one of these devices has a SIM card, and connects over a cellular network.</i></p>
 	<p>Cellular connectivity has become increasingly ubiquitous, and if the device can connect independently of Wi-Fi network configuration (and work out of the box), you’ve immediately avoided a whole class of operational support challenges. If you’ve just read our earlier announcement about <a href="https://blog.cloudflare.com/the-first-zero-trust-sim">the Zero Trust SIM</a>, you’re probably already seeing where we’re headed.</p>
 	<p>Hundreds of thousands of IoT devices already securely connect to our network today using mutual TLS and our <a href="https://developers.cloudflare.com/api-shield">API Shield</a> product. Major device manufacturers use <a href="https://developers.cloudflare.com/workers">Workers</a> and our Developer Platform to offload authentication, compute and most importantly, reduce the compute needed on the device itself. <a href="https://developers.cloudflare.com/pub-sub">Cloudflare Pub/Sub</a>, our programmable, MQTT-based messaging service, is yet another building block.</p>
-	<p>But we realized there were still a few missing pieces: device management, analytics and anomaly detection. There are a <em>lot</em> of “IoT SIM” providers out there, but the clear majority are focused on shipping SIM cards at scale (great!) and less so on the security side (not so great) or the developer side (also not great). Customers have been telling us that they wanted a way to easily secure their IoT devices, just as they secure their employees with our Zero Trust platform.</p>
-	<p><strong>Cloudflare’s IoT Platform will build in support for provisioning cellular connectivity at scale</strong>: we’ll support ordering, provisioning and managing cellular connectivity for your devices. Every packet that leaves each IoT device can be inspected, approved or rejected by policies you create <em>before</em> it reaches the Internet, your cloud infrastructure, or your other devices.</p>
+	<p>But we realized there were still a few missing pieces: device management, analytics and anomaly detection. There are a <i>lot</i> of “IoT SIM” providers out there, but the clear majority are focused on shipping SIM cards at scale (great!) and less so on the security side (not so great) or the developer side (also not great). Customers have been telling us that they wanted a way to easily secure their IoT devices, just as they secure their employees with our Zero Trust platform.</p>
+	<p><b>Cloudflare’s IoT Platform will build in support for provisioning cellular connectivity at scale</b>: we’ll support ordering, provisioning and managing cellular connectivity for your devices. Every packet that leaves each IoT device can be inspected, approved or rejected by policies you create <i>before</i> it reaches the Internet, your cloud infrastructure, or your other devices.</p>
 	<p>Emerging standards like <a href="https://www.gsma.com/iot/iot-safe">IoT SAFE</a> will also allow us to use the SIM card as a root-of-trust, storing device secrets (and API keys) securely on the device, whilst raising the bar to compromise.</p>
 	<p>This also doesn’t mean we’re leaving the world of mutual TLS behind: we understand that not every device makes sense to connect over solely over a cellular network, be it due to per-device costs, lack of coverage, or the need to support an existing deployment that can’t just be re-deployed.</p>
-	<h3 id="bringing-zero-trust-security-to-iot">Bringing Zero Trust security to IoT</h3>
+	<h3>Bringing Zero Trust security to IoT</h3>
 	<p>Unlike humans, who need to be able to access a potentially unbounded number of destinations (websites), the endpoints that an IoT device needs to speak to are typically far more bounded. But in practice, there are often few controls in place (or available) to ensure that a device only speaks to your API backend, your storage bucket, and/or your telemetry endpoint.</p>
 	<p>Our Zero Trust platform, however, has a solution for this: <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a>. You can create DNS, network or HTTP policies, and allow or deny traffic based not only on the source or destination, but on richer identity- and location- based controls. It seemed obvious that we could bring these same capabilities to IoT devices, and allow developers to better <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">restrict and control</a> what endpoints their devices talk to (so they don’t become part of a botnet).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-38.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z8zzOG3weGSYnfNH966TQ/ba2930542657832cf339b61c69e0efb9/image2-38.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>At the same time, we also identified ways to extend Gateway to be aware of IoT device specifics. For example, imagine you’ve provisioned 5,000 IoT devices, all connected over cellular directly into Cloudflare’s network. You can then choose to lock these devices to a specific geography if there’s no need for them to “travel”; ensure they can only speak to your API backend and/or metrics provider; and even ensure that if the SIM is lifted from the device it no longer functions by locking it to the IMEI (the serial of the modem).</p>
 	<p>Building these controls at the network layer raises the bar on IoT device security and reduces the risk that your fleet of devices becomes the tool of a bad actor.</p>
-	<h3 id="get-the-compute-off-the-device">Get the compute off the device</h3>
+	<h3>Get the compute off the device</h3>
 	<p>We’ve talked a lot about security, but what about compute and storage? A device can be extremely secure if it doesn’t have to do anything or communicate anywhere, but clearly that’s not practical.</p>
 	<p>Simultaneously, doing non-trivial amounts of compute “on-device” has a number of major challenges:</p>
 	<ul>
-		<li>It requires a more powerful (and thus, more expensive) device. Moderately powerful (e.g. ARMv8-based) devices with a few gigabytes of RAM might be getting cheaper, but they’re always going to be more expensive than a lower-powered device, and that adds up quickly at IoT-scale.</li>
-		<li>You can’t guarantee (or expect) that your device fleet is homogenous: the devices you deployed three years ago can easily be several times slower than what you’re deploying today. Do you leave those devices behind?</li>
-		<li>The more business logic you have on the device, the greater the operational and deployment risk. Change management becomes critical, and the risk of “bricking” — rendering a device non-functional in a way that you can’t fix it remotely — is never zero. It becomes harder to iterate and add new features when you’re deploying to a device on the other side of the world.</li>
-		<li>Security continues to be a concern: if your device needs to talk to external APIs, you have to ensure you have explicitly scoped the credentials they use to avoid them being pulled from the device and used in a way you don’t expect.</li>
+		<li>
+			<p>It requires a more powerful (and thus, more expensive) device. Moderately powerful (e.g. ARMv8-based) devices with a few gigabytes of RAM might be getting cheaper, but they’re always going to be more expensive than a lower-powered device, and that adds up quickly at IoT-scale.</p>
+		</li>
+		<li>
+			<p>You can’t guarantee (or expect) that your device fleet is homogenous: the devices you deployed three years ago can easily be several times slower than what you’re deploying today. Do you leave those devices behind?</p>
+		</li>
+		<li>
+			<p>The more business logic you have on the device, the greater the operational and deployment risk. Change management becomes critical, and the risk of “bricking” — rendering a device non-functional in a way that you can’t fix it remotely — is never zero. It becomes harder to iterate and add new features when you’re deploying to a device on the other side of the world.</p>
+		</li>
+		<li>
+			<p>Security continues to be a concern: if your device needs to talk to external APIs, you have to ensure you have explicitly scoped the credentials they use to avoid them being pulled from the device and used in a way you don’t expect.</p>
+		</li>
 	</ul>
 	<p>We’ve heard other platforms talk about “edge compute”, but in practice they either mean “run the compute on the device” or “in a small handful of cloud regions” (introducing latency) — neither of which fully addresses the problems highlighted above.</p>
-	<p>Instead, by enabling secure access to <a href="https://workers.cloudflare.com">Cloudflare Workers</a> for compute, <a href="https://blog.cloudflare.com/workers-analytics-engine">Analytics Engine</a> for device telemetry, <a href="https://blog.cloudflare.com/introducing-d1">D1</a> as a SQL database, and <a href="https://developers.cloudflare.com/pub-sub">Pub/Sub</a> for massively scalable messaging — IoT developers can both keep the compute off the device, but still keep it <em>close</em> to the device thanks to our <a href="https://www.cloudflare.com/network">global network</a> (275+ cities and counting).</p>
-	<p>On top of that, developers can use modern tooling like <a href="https://developers.cloudflare.com/workers/wrangler/get-started">Wrangler</a> to both iterate more rapidly <em>and </em>deploy software more safely, avoiding the risk of bricking or otherwise breaking part of your IoT fleet.</p>
-	<h3 id="where-do-i-sign-up">Where do I sign up?</h3>
+	<p>Instead, by enabling secure access to <a href="https://workers.cloudflare.com">Cloudflare Workers</a> for compute, <a href="https://blog.cloudflare.com/workers-analytics-engine">Analytics Engine</a> for device telemetry, <a href="https://blog.cloudflare.com/introducing-d1">D1</a> as a SQL database, and <a href="https://developers.cloudflare.com/pub-sub">Pub/Sub</a> for massively scalable messaging — IoT developers can both keep the compute off the device, but still keep it <i>close</i> to the device thanks to our <a href="https://www.cloudflare.com/network">global network</a> (275+ cities and counting).</p>
+	<p>On top of that, developers can use modern tooling like <a href="https://developers.cloudflare.com/workers/wrangler/get-started">Wrangler</a> to both iterate more rapidly <i>and</i> deploy software more safely, avoiding the risk of bricking or otherwise breaking part of your IoT fleet.</p>
+	<h3>Where do I sign up?</h3>
 	<p>You can <a href="https://www.cloudflare.com/register-for-our-iot-platform">register your interest in our IoT Platform today</a>: we’ll be reaching out over the coming weeks to better understand the problems teams are facing and working to get our closed beta into the hands of customers in the coming months. We’re especially interested in teams who are in the throes of figuring out how to deploy a new set of IoT devices and/or expand an existing fleet, no matter the use-case.</p>
 	<p>In the meantime, you can start building on <a href="https://developers.cloudflare.com/api-shield/security/mtls">API Shield</a> and <a href="https://developers.cloudflare.com/pub-sub">Pub/Sub</a> (MQTT) if you need to start securing IoT devices today.</p>
 </div>

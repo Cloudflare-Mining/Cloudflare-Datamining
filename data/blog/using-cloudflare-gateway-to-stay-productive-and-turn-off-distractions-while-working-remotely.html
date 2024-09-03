@@ -1,43 +1,69 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DguuragluUrKw3ySvW7bb/24caa879f501104a4080c7452aa8c315/using-cloudflare-gateway-to-stay-productive-and-turn-off-distractions-while-working-remotely.gif" alt="">
 <div class="post-content lh-copy gray1">
-	<p>This week, like many of you reading this article, I am working from home. I don’t know about you, but I’ve found it hard to stay focused when the Internet is full of news related to the coronavirus. </p>
+	<p>This week, like many of you reading this article, I am working from home. I don’t know about you, but I’ve found it hard to stay focused when the Internet is full of news related to the coronavirus.</p>
 	<p>CNN. Twitter. Fox News. It doesn’t matter where you look, everyone is vying for your attention. It’s totally riveting…</p>
 	<p>… and it’s really hard not to get distracted.</p>
 	<p>It got me annoyed enough that I decided to do something about it. Using Cloudflare’s <a href="https://teams.cloudflare.com/gateway/index.html">new product, Cloudflare Gateway,</a> I removed all the online distractions I normally get snared by — at least during working hours.</p>
 	<p>This blog post isn’t very long, but that’s a function of how easy it is to get Gateway up and running!</p>
-	<h2 id="getting-started">Getting Started</h2>
+	<h2>Getting Started</h2>
 	<p>To get started, you’ll want to set up Gateway under your Cloudflare account. Head to the <a href="https://dash.teams.cloudflare.com">Cloudflare for Teams dashboard</a> to set it up for free (if you don’t already have a Cloudflare account, hit the ‘Sign up’ button beneath the login form).</p>
 	<p>If you are using Gateway for the first time, the dashboard will take you through an onboarding experience:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/1.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The onboarding flow will help you set up your first location. A location is usually a physical entity like your home, office, store or a data center. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lFkfxTeOS4EvgngLGsfYj/f0336ca7b7dcab948b4ad3271d42929d/1.gif" alt="" class="kg-image" width="1572" height="771" loading="lazy">
+
+	</figure>
+	<p>The onboarding flow will help you set up your first location. A location is usually a physical entity like your home, office, store or a data center.</p>
 	<p>When you are setting up your location, the dashboard will automatically identify your IP address and create a location using that IP. Gateway will associate requests from your router or device by matching requests with your location by using the linked IP address of your location (for an IPv4 network). If you are curious, you can read more about how Gateway determines your location <a href="https://developers.cloudflare.com/gateway/locations/match-query-to-location">here</a>.</p>
 	<p>Before you complete the setup you will have to change your router’s DNS settings by removing the existing DNS resolvers and adding Cloudflare Gateway’s recursive DNS resolvers:</p>
 	<ul>
-		<li>172.64.36.1</li>
-		<li>172.64.36.2</li>
+		<li>
+			<p>172.64.36.1</p>
+		</li>
+		<li>
+			<p>172.64.36.2</p>
+		</li>
 	</ul>
 	<p>How you configure your DNS settings may vary by router or a device, so we <a href="https://developers.cloudflare.com/gateway/locations/setup-instructions">created a page</a> to show you how to change DNS settings for different devices.</p>
 	<p>You can also watch this video to learn how to setup Gateway:</p>
-	<figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/PoipmvkOUrU?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
-	<h2 id="deep-work">Deep Work</h2>
-	<p>Next up, in the dashboard, I am going to go to my policies and create a policy that will block my access to distracting sites. You can call your policy anything you want, but I am going to call mine “Deep work.” <br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Deep Work</h2>
+	<p>Next up, in the dashboard, I am going to go to my policies and create a policy that will block my access to distracting sites. You can call your policy anything you want, but I am going to call mine “Deep work.”</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28c4V0EDP1aLZTLgD7chc8/f5465ffc0c333bf09f657a662cbfacb9/2-1.png" alt="" class="kg-image" width="1600" height="1430" loading="lazy">
+
+	</figure>
 	<p>And I will add a few websites that I don’t want to get distracted by, like CNN, Fox News and Twitter.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/3-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>After I add the domains, I hit Save. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27zOQlDV1Rw5bPxMwKGFk0/6a4db74c8881c4a040b3d1b11cbed2e3/3-1.png" alt="" class="kg-image" width="1600" height="1551" loading="lazy">
+
+	</figure>
+	<p>After I add the domains, I hit Save.</p>
 	<p>If you find the prospect of blocking all of these websites cumbersome, you can use category-based DNS filtering to block all domains that are associated with a category (‘Content categories’ have limited capabilities on Gateway’s free tier).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/4-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>So if I select Sports, all websites that are related to Sports will now be blocked by Gateway. This will take most people a few minutes to complete. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pUCaw8tWwVF7a90HLHgxt/05dc550f1db4ec02ef4dcd32ec7fcb75/4-1.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
+
+	</figure>
+	<p>So if I select Sports, all websites that are related to Sports will now be blocked by Gateway. This will take most people a few minutes to complete.</p>
 	<p>And once you set the rules by hitting ‘Save’, it will take just seconds for the selected policies to propagate across all of Cloudflare’s data centers, spread across more than 200 cities around the world.</p>
-	<h2 id="how-can-i-test-if-gateway-is-blocking-the-websites">How can I test if Gateway is blocking the websites?</h2>
+	<h2>How can I test if Gateway is blocking the websites?</h2>
 	<p>If you now try to go to one of the blocked websites, you will see the following page on your browser:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41ohJ8ViJNlpQnSg0U2lui/df9174c7c7ed680078da9d33edf1e5ce/5.png" alt="" class="kg-image" width="1600" height="874" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Gateway is letting your browser know that the website you blocked is unreachable. You can also test if Gateway is working by using dig or nslookup on your machine:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>If a domain is blocked, you will see the following in the DNS response <code>status:<strong> REFUSED.</strong></code></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sncQ9FhDKMtHuta8Se20H/52e7aa5b96be4e2367221323c32054b9/6.png" alt="" class="kg-image" width="1132" height="578" loading="lazy">
+
+	</figure>
+	<p>If a domain is blocked, you will see the following in the DNS response <code>status: **REFUSED.**</code></p>
 	<p>This means that the policy you created is working!</p>
 	<p>And once working hours are over, it’s back to being glued to the latest news.</p>
 	<p>If you’d rather watch this in video format, here’s one I recorded earlier:</p>
-	<figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/VmVpaTrwqvs?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
 	<p>And to everyone dealing with the challenges of COVID-19 and working from home — stay safe!</p>
 </div>

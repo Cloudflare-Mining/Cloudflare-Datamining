@@ -1,17 +1,29 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-28.png" class="kg-image" alt="Seamless Postgres integration on Cloudflare Workers with Neon.tech" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xCkAJAUyFmN2b0MizGCP0/e28beb0133fb88e210c7faf0f685f11e/image1-28.png" alt="Seamless Postgres integration on Cloudflare Workers with Neon.tech" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>It’s no wonder that Postgres is one of the world’s favorite databases. It’s easy to learn, a pleasure to use, and can scale all the way up from your first database in an early-stage startup to the system of record for giant organizations. Postgres has been an integral part of Cloudflare’s journey, so we know this fact well. But when it comes to connecting to Postgres from environments like Cloudflare Workers, there are unfortunately a bunch of challenges, as we mentioned in our <a href="https://blog.cloudflare.com/relational-database-connectors">Relational Database Connector post</a>.</p>
 	<p>Neon.tech not only solves these problems; it also has other cool features such as <a href="https://neon.tech/docs/conceptual-guides/branching">branching databases</a> — being able to branch your database in exactly the same way you branch your code: instant, cheap and completely isolated.</p>
-	<h3 id="how-to-use-it">How to use it</h3>
+	<h3>How to use it</h3>
 	<p>It’s easy to get started. Neon’s client library <code>@neondatabase/serverless</code> is a drop-in replacement for <a href="https://node-postgres.com">node-postgres</a>, the npm <code>pg</code> package with which you may already be familiar. After going through the <a href="https://neon.tech/docs/get-started-with-neon/signing-up">getting started</a> process to set up your Neon database, you can easily create a Worker to ask Postgres for the current time like so:</p>
 	<ol>
-		<li><strong>Create a new Worker</strong> — Run <code>npx wrangler init neon-cf-demo</code> and accept all the defaults. Enter the new folder with <code>cd neon-cf-demo</code>.</li>
-		<li><strong>Install the Neon package</strong> — Run <code>npm install @neondatabase/serverless</code>.</li>
-		<li><strong>Provide connection details </strong>— For deployment, run <code>npx wrangler secret put DATABASE_URL</code> and paste in your connection string when prompted (you’ll find this in your Neon dashboard: something like <code>postgres://user:password@project-name-1234.cloud.neon.tech/main</code>). For development, create a new file <code>.dev.vars</code> with the contents <code>DATABASE_URL=</code> plus the same connection string.</li>
-		<li><strong>Write the code</strong> — Lastly, replace <code>src/index.ts</code> with the following code:</li>
-	</ol><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">import { Client } from '@neondatabase/serverless';
+		<li>
+			<p><b>Create a new Worker</b> — Run <code>npx wrangler init neon-cf-demo</code> and accept all the defaults. Enter the new folder with <code>cd neon-cf-demo</code>.</p>
+		</li>
+		<li>
+			<p><b>Install the Neon package</b> — Run <code>npm install @neondatabase/serverless</code>.</p>
+		</li>
+		<li>
+			<p><b>Provide connection details</b> — For deployment, run <code>npx wrangler secret put DATABASE_URL</code> and paste in your connection string when prompted (you’ll find this in your Neon dashboard: something like <code>postgres://user:password@project-name-1234.cloud.neon.tech/main</code>). For development, create a new file <code>.dev.vars</code> with the contents <code>DATABASE_URL=</code> plus the same connection string.</p>
+		</li>
+		<li>
+			<p><b>Write the code</b> — Lastly, replace <code>src/index.ts</code> with the following code:</p>
+		</li>
+	</ol>
+	<pre class="language-typescript"><code class="language-typescript">import { Client } from '@neondatabase/serverless';
 interface Env { DATABASE_URL: string; }
 
 export default {
@@ -22,14 +34,16 @@ export default {
     ctx.waitUntil(client.end());  // this doesn’t hold up the response
     return new Response(now);
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>To try this locally, type <code>npm start</code>. To deploy it around the globe, type <code>npx wrangler publish</code>.</p>
 	<p>You can also <a href="https://github.com/neondatabase/serverless-cfworker-demo">check out the source</a> for a slightly more complete demo app. This shows <a href="https://neon-cf-pg-test.pages.dev">your nearest UNESCO World Heritage sites</a> using IP geolocation in Cloudflare Workers and nearest-neighbor sorting in PostGIS.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-18.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>How does this work? In this case, we take the coordinates supplied to our Worker in <code>request.cf.longitude</code> and <code>request.cf.latitude</code>. We then feed these coordinates to a SQL query that uses the <a href="https://postgis.net/docs/geometry_distance_knn.html">PostGIS distance operator <code>&lt;-&gt;</code></a> to order our results:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">const { longitude, latitude } = request.cf
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cdG0zVBCrFyiBilGo94o8/cae4cd6e0a370a502ce3fc5976973ac7/image3-18.png" alt="" class="kg-image" width="1999" height="1041" loading="lazy">
+
+	</figure>
+	<p>How does this work? In this case, we take the coordinates supplied to our Worker in <code>request.cf.longitude</code> and <code>request.cf.latitude</code>. We then feed these coordinates to a SQL query that uses the <a href="https://postgis.net/docs/geometry_distance_knn.html">PostGIS distance operator <code>&lt;-&gt;</code></a> to order our results:</p>
+	<pre class="language-typescript"><code class="language-typescript">const { longitude, latitude } = request.cf
 const { rows } = await client.query(`
   select 
     id_no, name_en, category,
@@ -37,11 +51,9 @@ const { rows } = await client.query(`
   from whc_sites_2021
   order by distance limit 10`,
   [longitude, latitude]
-);
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Since we created a <a href="http://postgis.net/workshops/postgis-intro/indexing.html">spatial index</a> on the location column, the query is blazing fast. The result (<code>rows</code>) looks like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">[{
+);</code></pre>
+	<p>Since we created a <a href="http://postgis.net/workshops/postgis-intro/indexing.html">spatial index</a> on the location column, the query is blazing fast. The result (<code>rows</code>) looks like this:</p>
+	<pre class="language-json"><code class="language-json">[{
   "id_no": 308,
   "name_en": "Yosemite National Park",
   "category": "Natural",
@@ -54,23 +66,31 @@ const { rows } = await client.query(`
   "distance": 416334.3926827573
 },
 /* … */
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
+]</code></pre>
 	<p>For even lower latencies, we could cache these results at a slightly coarser geographical resolution — rounding, say, to one sixtieth of a degree (one <a href="https://en.wikipedia.org/wiki/Minute_and_second_of_arc">arc minute</a>) of longitude and latitude, which is a little under a mile.</p>
-	<p><a href="https://console.neon.tech/?invite=serverless">Sign up to Neon</a> using the invite code <em>serverless</em> and try the @neondatabase/serverless driver with Cloudflare Workers.</p>
-	<h3 id="why-we-did-it">Why we did it</h3>
+	<p><a href="https://console.neon.tech/?invite=serverless">Sign up to Neon</a> using the invite code <i>serverless</i> and try the @neondatabase/serverless driver with Cloudflare Workers.</p>
+	<h3>Why we did it</h3>
 	<p>Cloudflare Workers has enormous potential to improve back-end development and deployment. It’s cost-effective, admin-free, and radically scalable.</p>
 	<p>The use of V8 isolates means Workers are now fast and lightweight enough for nearly any use case. But it has a key drawback: Cloudflare Workers don’t yet support raw TCP communication, which has made database connections a challenge.</p>
 	<p>Even when Workers eventually support raw TCP communication, we will not have fully solved our problem, because database connections are expensive to set up and also have quite a bit of memory overhead.</p>
 	<p>This is what the solution looks like:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-23.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CWb6OEZuNu8mg1YJsQTzY/3880b43885d3ad4b3aac234b427ca342/image2-23.png" alt="" class="kg-image" width="1999" height="1050" loading="lazy">
+
+	</figure>
 	<p>It consists of three parts:</p>
 	<ol>
-		<li><strong>Connection pooling built into the platform</strong> — Given Neon’s serverless compute model, splitting storage and compute operations, it is not recommended to rely on a one-to-one mapping between external clients and Postgres connections. Instead, you can turn on connection pooling simply by flicking a switch (it’s in the <em>Settings</em> area of your Neon dashboard).</li>
-		<li><strong>WebSocket proxy</strong> — We deploy our <a href="https://github.com/neondatabase/wsproxy">own WebSocket-to-TCP proxy</a>, written in Go. The proxy simply accepts WebSocket connections from Cloudflare Worker clients, relays message payloads to a requested (Neon-only) host over plain TCP, and relays back the responses.</li>
-		<li><strong>Client library</strong> — Our driver library is based on node-postgres but provides the necessary <a href="https://github.com/neondatabase/serverless">shims for Node.js features</a> that aren’t present in Cloudflare Workers. Crucially, we replace Node’s <code>net.Socket</code> and <code>tls.connect</code> with code that redirects network reads and writes via the WebSocket connection. To support end-to-end TLS encryption between Workers and the database, we compile <a href="https://www.wolfssl.com">WolfSSL</a> to WebAssembly with <a href="https://emscripten.org">emscripten</a>. Then we use <a href="https://esbuild.github.io">esbuild</a> to bundle it all together into an easy-to-use npm package.</li>
+		<li>
+			<p><b>Connection pooling built into the platform</b> — Given Neon’s serverless compute model, splitting storage and compute operations, it is not recommended to rely on a one-to-one mapping between external clients and Postgres connections. Instead, you can turn on connection pooling simply by flicking a switch (it’s in the <i>Settings</i> area of your Neon dashboard).</p>
+		</li>
+		<li>
+			<p><b>WebSocket proxy</b> — We deploy our <a href="https://github.com/neondatabase/wsproxy">own WebSocket-to-TCP proxy</a>, written in Go. The proxy simply accepts WebSocket connections from Cloudflare Worker clients, relays message payloads to a requested (Neon-only) host over plain TCP, and relays back the responses.</p>
+		</li>
+		<li>
+			<p><b>Client library</b> — Our driver library is based on node-postgres but provides the necessary <a href="https://github.com/neondatabase/serverless">shims for Node.js features</a> that aren’t present in Cloudflare Workers. Crucially, we replace Node’s <code>net.Socket</code> and <code>tls.connect</code> with code that redirects network reads and writes via the WebSocket connection. To support end-to-end TLS encryption between Workers and the database, we compile <a href="https://www.wolfssl.com">WolfSSL</a> to WebAssembly with <a href="https://emscripten.org">emscripten</a>. Then we use <a href="https://esbuild.github.io">esbuild</a> to bundle it all together into an easy-to-use npm package.</p>
+		</li>
 	</ol>
 	<p>The <code>@neondatabase/serverless</code> package is currently in public beta. We have plans to improve, extend, and explain it further in the near future <a href="https://neon.tech/blog">on the Neon blog</a>. In line with our commitment to open source, you can configure our serverless driver and/or run our WebSocket proxy to provide access to Postgres databases hosted anywhere — just see the respective repos for details.</p>
-	<p>So <a href="https://console.neon.tech/?invite=serverless">try Neon</a> using invite code <em><code>serverless</code></em>, <a href="https://workers.cloudflare.com">sign up and connect to it with Cloudflare Workers</a>, and you’ll have a fully flexible back-end service running in next to no time.</p>
+	<p>So <a href="https://console.neon.tech/?invite=serverless">try Neon</a> using invite code <code><i>serverless</i></code>, <a href="https://workers.cloudflare.com">sign up and connect to it with Cloudflare Workers</a>, and you’ll have a fully flexible back-end service running in next to no time.</p>
 </div>

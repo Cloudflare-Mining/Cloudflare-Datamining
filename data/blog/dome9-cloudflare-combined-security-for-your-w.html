@@ -1,36 +1,60 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>This is guest post from Roy Feintuch, Co-Founder &amp; CTO of Dome9</em></p>
-	<p><img alt="Dome9 + CloudFlare = Combined Security For Your Website and Web
-Server" src="https://blog.cloudflare.com/content/images/Dome9_Logo_PNG.png.scaled500.png" title="Dome9 + CloudFlare = Combined Security For Your Website and Web Server "></p>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AeAVQGACkdxhTOK0z8OLv/e2a858f3199346693eaf3de77019e01f/dome9-cloudflare-combined-security-for-your-w.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This is guest post from Roy Feintuch, Co-Founder &amp; CTO of Dome9</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZeOAIVLAK3ZNbNQ3ic7tH/78f326ff145333f369f594d7a65e6a0e/Dome9_Logo_PNG.png.scaled500.png" alt="Dome9 + CloudFlare = Combined Security For Your Website and Web
+Server" class="kg-image" width="500" height="125" loading="lazy">
+
+	</figure>
 	<p>Dome9 is a new kind of security management service that protects your cloud or hosted server firewall, including all the admin services for all your server's applications (e.g., phpMyAdmin). It's a great complement to the web security that CloudFlare provides.</p>
 	<p>Like CloudFlare, Dome9 is super simple. You simply <a href="https://www.cloudflare.com/apps/dome9">create a free Dome9 account</a>and install a lightweight agent on your host machine. After that, Dome9 will secure your server's host firewall, or your EC2 security groups -- Dome9 can work agentless on EC2.</p>
 	<p>The magic of Dome9 is its ability to lock down all your administrative services so hackers can't brute force attack (or exploit a vulnerability of) SSH, RDP, MySQL and whatever else you've got running. Dome9 can open those services on demand (with just the click of a button) only for a specific user, service, and time period.</p>
 	<p>Here's an optimal server security policy you might set with Dome9:</p>
 	<ul>
-		<li>Port 80 - Open *only* for CloudFlare's proxy servers</li>
-		<li>Port 443 - Open *only* for CloudFlare's proxy servers</li>
-		<li>Port 22 (SSH) - Closed, and opened only on demand</li>
-		<li>Port 8080 (phpMyAdmin) - Closed, and opened only on demand</li>
-		<li>All the rest - Closed</li>
+		<li>
+			<p>Port 80 - Open *only* for CloudFlare's proxy servers</p>
+		</li>
+		<li>
+			<p>Port 443 - Open *only* for CloudFlare's proxy servers</p>
+		</li>
+		<li>
+			<p>Port 22 (SSH) - Closed, and opened only on demand</p>
+		</li>
+		<li>
+			<p>Port 8080 (phpMyAdmin) - Closed, and opened only on demand</p>
+		</li>
+		<li>
+			<p>All the rest - Closed</p>
+		</li>
 	</ul>
 	<p>With this, your web server only communicates with CloudFlare and whomever you authorize.</p>
 	<p>How hard is it to set this up? It takes just a few minutes.</p>
 	<ol>
-		<li>Activate your Dome9 account [2 clicks thanks to <a href="https://www.cloudflare.com/apps/dome9">CloudFlare Apps</a>]</li>
-		<li>Install the Dome9 Agent on your server (Linux and Windows are supported). [3 minutes]</li>
-		<li>In Dome9 Central, create a ‘Web Servers' security group with the above policy. [2 minutes]</li>
-		<li>Attach your server to the new security group. [2 clicks]</li>
+		<li>
+			<p>Activate your Dome9 account [2 clicks thanks to <a href="https://www.cloudflare.com/apps/dome9">CloudFlare Apps</a>]</p>
+		</li>
+		<li>
+			<p>Install the Dome9 Agent on your server (Linux and Windows are supported). [3 minutes]</p>
+		</li>
+		<li>
+			<p>In Dome9 Central, create a ‘Web Servers' security group with the above policy. [2 minutes]</p>
+		</li>
+		<li>
+			<p>Attach your server to the new security group. [2 clicks]</p>
+		</li>
 	</ol>
 	<p>Setting a service to ‘On-Demand' is as easy as clicking a button.</p>
-	<h3 id="dome9magicipsallowtrafficonlythroughthecloudflarenetwork">Dome9 Magic IPs allow traffic only through the CloudFlare network</h3>
+	<h3>Dome9 Magic IPs allow traffic only through the CloudFlare network</h3>
 	<p>You're probably wondering how to allow only <a href="https://www.cloudflare.com/ips">CloudFlare IPs</a>? That's where Dome9's Magic IPs come into play.</p>
 	<p>Magic IPs are special IP address lists that Dome9 creates and maintains. We've created a special Magic IP for CloudFlare customers: {cloudflare}</p>
 	<p>With the {cloudflare} Magic IP you never have to worry about changes to CloudFlare's proxy IP addresses – Dome9 maintains them automatically.</p>
 	<p>Hence, your port 80 policy within Dome9 will look like this:</p>
-	<p><img alt="Dome9 + CloudFlare = Combined Security For Your Website and Web Server" src="https://blog.cloudflare.com/content/images/image01.png.scaled500.png" title="Dome9 + CloudFlare = Combined Security For Your Website and Web Server "></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Qx7xyGv3XdEoMvVFsk7Ct/bf9279c246714d7069371b87d0f8b939/image01.png.scaled500.png" alt="Dome9 + CloudFlare = Combined Security For Your Website and Web Server" class="kg-image" width="500" height="285" loading="lazy">
+
+	</figure>
 	<p>With CloudFlare and Dome9 you can kick your cloud or hosted server's security up a notch with fun, easy to use, next generation security services.</p>
 	<p>Visit the <a href="https://www.cloudflare.com/apps/dome9">Dome9 App page</a> today to get started.</p>
-	<p></p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,48 +1,42 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9SYu0yZj7xQ1WnuSEd8Qy/dfbfc683d97b55363cb2508b467f9392/why-google-went-offline-today-and-a-bit-about.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today, Google's services experienced a limited outage for about 27 minutes over some portions of the Internet. The reason this happened dives into the deep, dark corners of networking. I'm a network engineer at CloudFlare and I played a small part in helping ensure Google came back online. Here's a bit about what happened.</p>
 	<p>At around 6:24pm PST / 02:24 UTC (5 Nov. 2012 PST / 6 Nov. 2012 UTC), CloudFlare employees noticed that Google's services were offline. We use Google Apps for things like email so when we can't reach their servers the office notices quickly. I'm on the Network Engineering team so I jumped online to figure out if the problem was local to us or global.</p>
-	<h3 id="troubleshooting">Troubleshooting</h3>
+	<h3>Troubleshooting</h3>
 	<p>I quickly realised that we were unable to resolve all of Googles services — or even reach 8.8.8.8, Googles public DNS server — so I started troubleshooting DNS.</p>
-	<pre>$ dig +trace google.com
-</pre>
+	<p>$ dig +trace google.com</p>
 	<p>Here's the response I got when I tried to reach any of Google.com's name servers:</p>
-	<pre>google.com.                172800        IN        NS        ns2.google.com.google.com.                172800        IN        NS        ns1.google.com.google.com.                172800        IN        NS        ns3.google.com.google.com.                172800        IN        NS        ns4.google.com.;; Received 164 bytes from 192.12.94.30#53(e.gtld-servers.net) in 152 ms;; connection timed out; no servers could be reached
-</pre>
+	<p>google.com. 172800 IN NS ns2.google.com.google.com. 172800 IN NS ns1.google.com.google.com. 172800 IN NS ns3.google.com.google.com. 172800 IN NS ns4.google.com.;; Received 164 bytes from 192.12.94.30#53(e.gtld-servers.net) in 152 ms;; connection timed out; no servers could be reached</p>
 	<p>The fact that no servers could be reached means something was wrong. Specifically, it meant that from our office network we were unable to reach any of Googles DNS servers.</p>
 	<p>I started to look at the network layer, see if that's where the problems lay.</p>
-	<pre>PING 216.239.32.10 (216.239.32.10): 56 data bytesRequest timeout for icmp_seq 092 bytes from 1-1-15.edge2-eqx-sin.moratelindo.co.id (202.43.176.217): Time to live exceeded
-</pre>
+	<p>PING 216.239.32.10 (216.239.32.10): 56 data bytesRequest timeout for icmp_seq 092 bytes from 1-1-15.edge2-eqx-sin.moratelindo.co.id (202.43.176.217): Time to live exceeded</p>
 	<p>That was curious. Normally, we shouldn't be seeing an Indonesian ISP (Moratel) in the path to Google. I jumped on one of CloudFlare's routers to check what was going on. Meanwhile, others reports from around the globe on Twitter suggested we weren't the only ones seeing the problem.</p>
-	<h3 id="internetrouting">Internet Routing</h3>
-	<p>To understand what went wrong you need to understand a bit about how networking on the Internet works. The Internet is a collection of networks, known as "Autonomous Systems" (AS). Each network has a unique number to identify it known as AS number. CloudFlare's AS number is 13335, Google's is 15169. The networks are connected together by what is known as Border Gateway Protocol (BGP). BGP is the glue of the Internet — announcing what IP addresses belong to each network and establishing the routes from one AS to another. An Internet "route" is exactly what it sounds like: a path from the IP address on one AS to an IP address on<br>
-		another AS.</p>
+	<h3>Internet Routing</h3>
+	<p>To understand what went wrong you need to understand a bit about how networking on the Internet works. The Internet is a collection of networks, known as "Autonomous Systems" (AS). Each network has a unique number to identify it known as AS number. CloudFlare's AS number is 13335, Google's is 15169. The networks are connected together by what is known as Border Gateway Protocol (BGP). BGP is the glue of the Internet — announcing what IP addresses belong to each network and establishing the routes from one AS to another. An Internet "route" is exactly what it sounds like: a path from the IP address on one AS to an IP address onanother AS.</p>
 	<p>BGP is largely a trust-based system. Networks trust each other to say which IP addresses and other networks are behind them. When you send a packet or make a request across the network, your ISP connects to its upstream providers or peers and finds the shortest path from your ISP to the destination network.</p>
 	<p>Unfortunately, if a network starts to send out an announcement of a particular IP address or network behind it, when in fact it is not, if that network is trusted by its upstreams and peers then packets can end up misrouted. That is what was happening here.</p>
 	<p>I looked at the BGP Routes for a Google IP Address. The route traversed Moratel (23947), an Indonesian ISP. Given that I'm looking at the routing from California and Google is operating Data Centre's not far from our office, packets should never be routed via Indonesia. The most likely cause was that Moratel was announcing a network that wasn't actually behind them.</p>
 	<p>The BGP Route I saw at the time was:</p>
-	<pre>tom@edge01.sfo01&gt; show route 216.239.34.10                          inet.0: 422168 destinations, 422168 routes (422154 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both216.239.34.0/24    *[BGP/170] 00:15:47, MED 18, localpref 100                      AS path: 4436 3491 23947 15169 I                    &gt; to 69.22.153.1 via ge-1/0/9.0
-</pre>
+	<p><a href="mailto:tom@edge01.sfo01">tom@edge01.sfo01</a>&gt; show route 216.239.34.10 inet.0: 422168 destinations, 422168 routes (422154 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both216.239.34.0/24 *[BGP/170] 00:15:47, MED 18, localpref 100 AS path: 4436 3491 23947 15169 I &gt; to 69.22.153.1 via ge-1/0/9.0</p>
 	<p>Looking at other routes, for example to Google's Public DNS, it was also stuck routing down the same (incorrect) path:</p>
-	<pre>tom@edge01.sfo01&gt; show route 8.8.8.8 inet.0: 422196 destinations, 422196 routes (422182 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both8.8.8.0/24         *[BGP/170] 00:27:02, MED 18, localpref 100                      AS path: 4436 3491 23947 15169 I                    &gt; to 69.22.153.1 via ge-1/0/9.0
-</pre>
-	<h3 id="routeleakage">Route Leakage</h3>
-	<p><img alt="Why Google Went Offline Today and a Bit about How the Internet
-Works" src="https://blog.cloudflare.com/content/images/fingersyouhaveusedtodial.png.scaled500.png" title="Why Google Went Offline Today and a Bit about How the Internet Works"><br>
-		<small>(Image Credit: The Simpsons)</small>
-	</p>
+	<p><a href="mailto:tom@edge01.sfo01">tom@edge01.sfo01</a>&gt; show route 8.8.8.8 inet.0: 422196 destinations, 422196 routes (422182 active, 0 holddown, 14 hidden)+ = Active Route, - = Last Active, * = Both8.8.8.0/24 *[BGP/170] 00:27:02, MED 18, localpref 100 AS path: 4436 3491 23947 15169 I &gt; to 69.22.153.1 via ge-1/0/9.0</p>
+	<h3>Route Leakage</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22fmryxOS3Tm9oxu2HxywQ/b595b8c4d4b7b27d69b92ec8d0608a12/fingersyouhaveusedtodial.png.scaled500.png" alt="Why Google Went Offline Today and a Bit about How the Internet
+Works" class="kg-image" width="500" height="375" loading="lazy">
+
+	</figure>
+	<p>(Image Credit: The Simpsons)</p>
 	<p>Situations like this are referred to in the industry as "route leakage", as the route has "leaked" past normal paths. This isn't an unprecedented event. Google previously suffered a <a href="http://www.renesys.com/blog/2008/02/pakistan-hijacks-youtube-1.shtml">similar outage</a> when Pakistan was allegedly trying to censor a video on YouTube and the National ISP of Pakistan null routed the service's IP addresses. Unfortunately, they leaked the null route externally. Pakistan Telecom's upstream provider, PCCW, trusted what Pakistan Telecom's was sending them and the routes spread across the Internet. The effect was YouTube was knocked offline for around 2 hours.</p>
 	<p>The case today was similar. Someone at Moratel likely "fat fingered" an Internet route. PCCW, who was Moratel's upstream provider, trusted the routes Moratel was sending to them. And, quickly, the bad routes spread. It is unlikely this was malicious, but rather a misconfiguaration or an error evidencing some of the failings in the BGP Trust model.</p>
-	<h3 id="thefix">The Fix</h3>
+	<h3>The Fix</h3>
 	<p>The solution was to get Moratel to stop announcing the routes they shouldn't be. A large part of being a network engineer, especially working at a large network like CloudFlare's, is having relationships with other network engineers around the world. When I figured out the problem, I contacted a colleague at Moratel to let him know what was going on. He was able to fix the problem at around 2:50 UTC / 6:50pm PST. Around 3 minutes later, routing returned to normal and Google's services came back online.</p>
 	<p>Looking at peering maps, I'd estimate the outage impacted around 3–5% of the Internet's population. The heaviest impact will have been felt in Hong Kong, where PCCW is the incumbent provider. If you were in the area and unable to reach Google's services around that time, now you know why.</p>
-	<h3 id="buildingabetterinternet">Building a Better Internet</h3>
+	<h3>Building a Better Internet</h3>
 	<p>This all is a reminder about how the Internet is a system built on trust. Today's incident shows that, even if you're as big as Google, factors outside of your direct control can impact the ability of your customers to get to your site so it's important to have a network engineering team that is watching routes and managing your connectivity around the clock. CloudFlare works every day to ensure our customers get the optimal possible routes. We look out for all the websites on our network to ensure that their traffic is always delivered as fast as possible. Just another day in our ongoing efforts to <a href="https://twitter.com/search?q=%23savetheweb">#savetheweb</a>.</p>
-	<h4 id="updatetuesdaynovember61100ampst">Update: Tuesday, November 6 11:00am PST</h4>
+	<h4>Update: Tuesday, November 6 11:00am PST</h4>
 	<p>Moratel says the issue was caused by an unexpected hardware failure, causing this abnormal condition. This was not a malicious attempt. Moratel immediately shutdown the BGP peering with Google after contact was made while the hardware failure was being looked into.</p>
 	<hr>
-	<p></p>
-	<p><em>Thanks for reading all the way to the end. If you enjoyed this post, take a second to <a href="https://www.cloudflare.com/overview">learn more about CloudFlare</a> or <a href="http://crunchies2012.techcrunch.com/nominate/?MTpDbG91ZEZsYXJl=">nominate us for the 2012 Crunchie Award for Best Technical<br>
-				Innovation</a>.</em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>Thanks for reading all the way to the end. If you enjoyed this post, take a second to </i><a href="https://www.cloudflare.com/overview"><i>learn more about CloudFlare</i></a><i> or </i><a href="http://crunchies2012.techcrunch.com/nominate/?MTpDbG91ZEZsYXJl="><i>nominate us for the 2012 Crunchie Award for Best Technical</i><i>Innovation</i></a><i>.</i></p>
 </div>

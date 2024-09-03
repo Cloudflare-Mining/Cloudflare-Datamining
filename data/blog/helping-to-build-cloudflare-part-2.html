@@ -1,18 +1,18 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This is part 2 of a six part series based on a talk I gave in Trento, Italy. Part 1 is <a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-1">here</a>.</p>
 	<p>It’s always best to speak plainly and honestly about the situation you are in. Or as Matthew Prince likes to put it “Panic Early”. Long ago I started a company in Silicon Valley which had the most beautiful code. We could have taught a computer science course from the code base. But we had hardly any customers and we failed to “Panic Early” and not face up to the fact that our market was too small.</p>
 	<p>Ironically, the CEO of that company used to tell people “Get bad news out fast”. This is a good maxim to live by, if you have bad news then deliver it quickly and clearly. If you don’t the bad news won’t go away, and the situation will likely get worse.</p>
-	<h3 id="cloudbleed">Cloudbleed</h3>
+	<h3>Cloudbleed</h3>
 	<p>Cloudflare had a very, very serious security problem back in 2017. This problem became known as <a href="https://en.wikipedia.org/wiki/Cloudbleed">Cloudbleed</a>. We had, without knowing it, been leaking memory from inside our machines into responses returned to web browsers. And because our machines are shared across millions of web sites, that meant that HTTP requests containing potentially very sensitive information could have been leaked.</p>
 	<p>Worse this information was being cached by search engines. So, anyone could go to Google or Bing or Baidu and look for sensitive information just by knowing a few keywords. Luckily, for us, Google’s Project Zero discovered that we were leaking by looking at Google’s crawler cache. They informed us and we were quickly able to stop the leak.</p>
 	<p>But that didn’t diminish the fact that private information (much of which would have been transmitted encrypted) had been cached by search engines. Although we stopped the leak within 45 minutes the cleanup task was massive. It was massive firstly because we had to find what had been leaked and secondly because we had to find all the search engines with caches and somehow ask them to delete cached data.</p>
-	<p>None of the search engines had handled something like this before. We were asking for mass deletion of data and it took a long time (at least it felt like a long time) to get to the right people and start to get cached data deleted. </p>
+	<p>None of the search engines had handled something like this before. We were asking for mass deletion of data and it took a long time (at least it felt like a long time) to get to the right people and start to get cached data deleted.</p>
 	<p>From the very first night of Cloudbleed I started collecting information to be able to write the public disclosure. Ultimately, when Project Zero wanted to go public, we were ready with a <a href="https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug">long, transparent blog post</a> on the subject and were able to talk about it.</p>
-	<p>It was, by far, the most difficult week of my career. Firstly, we had the bug itself, secondly, we had the cleanup, and then we had to tell people what had happened. Throughout that week I barely slept (and I am not exaggerating) and a large team of people across Cloudflare in the US, UK and elsewhere kept in contact constantly. We learnt that it’s possible to keep a Google Hangout between two offices running, literally, for days without interruption. </p>
-	<h3 id="known-unknowns">Known Unknowns</h3>
+	<p>It was, by far, the most difficult week of my career. Firstly, we had the bug itself, secondly, we had the cleanup, and then we had to tell people what had happened. Throughout that week I barely slept (and I am not exaggerating) and a large team of people across Cloudflare in the US, UK and elsewhere kept in contact constantly. We learnt that it’s possible to keep a Google Hangout between two offices running, literally, for days without interruption.</p>
+	<h3>Known Unknowns</h3>
 	<p>The hardest thing was that we seriously did not know, at the beginning, whether Cloudflare would survive. Right at the start it looked terrible, it was terrible, and we had two questions: “What private data has actually been leaked and cached?” and “Did anyone find this and actively exploit it?”.</p>
-	<p>We answered both by extensive searching and collating of information from search engines. Ultimately, myself and others called customers and spoke to them on the phone. We were able to tell them what we’d found and statistically what was likely to have leaked. </p>
+	<p>We answered both by extensive searching and collating of information from search engines. Ultimately, myself and others called customers and spoke to them on the phone. We were able to tell them what we’d found and statistically what was likely to have leaked.</p>
 	<p>The second question was answered by looking for evidence of exploitation in our logging systems. But there was something very tricky: Cloudflare had long limited the amount of data it logs for privacy reasons. So, we had to dig into statistical analysis of all sorts of data (crash rates, saved core dumps, errors in Sentry, sampled data) to look for exploitation.</p>
 	<p>We split into separate teams to look for different evidence and only myself and Matthew Prince knew what each team was seeing. We did that because we didn’t want one team to influence another. We wanted to be sure that we were right before publishing our second blog with more detailed information.</p>
 	<p><a href="https://blog.cloudflare.com/quantifying-the-impact-of-cloudbleed">We didn’t find evidence of exploitation</a>. And while serious, the data cached in search engines was found to contain little really private information. But it was very, very serious and we all knew that this could have been worse.</p>
@@ -21,13 +21,25 @@
 	<p>In the middle of it someone from the press, the BBC I think, asked me if I’d changed any passwords because of Cloudbleed. I said I had not. And that was true. I didn’t change anything personally. But in the middle of that firestorm I took a lot of criticism from armchair critics for that.</p>
 	<p>Although terrible, Cloudbleed reinforced the culture of Cloudflare: openness and helping others. We were all in together and we got through it. And our customers saw that: we didn’t lose major customers, in fact, we gained customers who told us “We want to work with you because you were so open”.</p>
 	<hr>
-	<h4 id="helping-to-build-cloudflare">Helping to Build Cloudflare</h4>
+	<h4>Helping to Build Cloudflare</h4>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-1">Part 1: How I came to work here</a></li>
-		<li>Part 2: The Most Difficult Fortnight (you are here)</li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-3">Part 3: Audacity, Diversity and Change</a></li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-4">Part 4: Public Engagement</a></li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-5">Part 5: People: Finding, Nurturing and Learning to Let Go</a></li>
-		<li><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-6">Part 6: What does Cloudflare's CTO do?</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-1">Part 1: How I came to work here</a></p>
+		</li>
+		<li>
+			<p>Part 2: The Most Difficult Fortnight (you are here)</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-3">Part 3: Audacity, Diversity and Change</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-4">Part 4: Public Engagement</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-5">Part 5: People: Finding, Nurturing and Learning to Let Go</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-6">Part 6: What does Cloudflare's CTO do?</a></p>
+		</li>
 	</ul>
 </div>

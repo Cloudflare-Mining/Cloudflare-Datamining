@@ -1,39 +1,58 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/deploying-security.txt-copy@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eL6tj4ov78TtCkT8CHP62/13948b2bc1b42e02ff9238de4f4f6ebe/deploying-security.txt-copy_2x-1.png" alt="" class="kg-image" width="4085" height="2281" loading="lazy">
+
+	</figure>
 	<p>When the security team at Cloudflare takes on new projects, we approach them with the goal of achieving the “builder first mindset” whereby we design, develop, and deploy solutions just as any standard engineering team would. Additionally, we aim to dogfood our products wherever possible. Cloudflare as a security platform offers a lot of functionality that is vitally important to us, including, but not limited to, our WAF, Workers platform, and Cloudflare Access. We get a lot of value out of using Cloudflare to secure Cloudflare. Not only does this allow us to test the security of our products; it provides us an avenue of direct feedback to help improve the roadmaps for engineering projects.</p>
-	<p>One specific product that we get a lot of use out of is our serverless platform, <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. With it, we can have incredible flexibility in the types of applications that we are able to build and deploy to our edge. An added bonus here is that our team does not have to manage a single server that our code runs on. </p>
+	<p>One specific product that we get a lot of use out of is our serverless platform, <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. With it, we can have incredible flexibility in the types of applications that we are able to build and deploy to our edge. An added bonus here is that our team does not have to manage a single server that our code runs on.</p>
 	<p>Today, we’re launching support for the <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-09">security.txt</a> initiative through Workers to help give security researchers a common location to learn about how to communicate with our team. In this post, I’m going to focus on some of the benefits of managing security projects through Workers, detail how we built out the mechanism that we’re using to manage security.txt on <a href="https://cloudflare.com">cloudflare.com</a>, and highlight some other use cases that our team has built on Workers in the past few months.</p>
-	<h2 id="building-on-workers">Building on Workers</h2>
-	<p>The Workers platform is designed to let anyone deploy code to our edge network which currently spans across 200 cities in 90 countries. As a result of this, applications deployed on the platform perform exceptionally well, while maintaining high reliability. You can implement nearly any logic imaginable on top of zones in your Cloudflare account with almost no effort. </p>
+	<h2>Building on Workers</h2>
+	<p>The Workers platform is designed to let anyone deploy code to our edge network which currently spans across 200 cities in 90 countries. As a result of this, applications deployed on the platform perform exceptionally well, while maintaining high reliability. You can implement nearly any logic imaginable on top of zones in your Cloudflare account with almost no effort.</p>
 	<p>One of the biggest immediate benefits of this is the idea that there are no servers for our team to maintain. Far too often I have seen situations where a long running application is deployed onto an instanced machine within a cloud environment and immediately forgotten about. In some cases, outdated software or poorly provisioned permissions can open up dangerous vectors for malicious actors if a compromise is occurring. Our team can deploy new projects with the confidence that they will remain secure. The Workers runtime environment has many wins such as the fact that it receives automatic security updates and that we don't need to maintain the software stack, just the application logic.</p>
-	<p>Another benefit is that since Workers executes JavaScript, we can dream up complex applications and rapidly deploy them as full applications in production without a huge investment in engineering time. This encourages rapid experimentation and iteration while achieving high impact with consistent performance. A couple of examples: </p>
+	<p>Another benefit is that since Workers executes JavaScript, we can dream up complex applications and rapidly deploy them as full applications in production without a huge investment in engineering time. This encourages rapid experimentation and iteration while achieving high impact with consistent performance. A couple of examples:</p>
 	<ul>
-		<li><strong>Secure code review -</strong> On every pull request made to a code repository, a Worker runs a set of security curated rules and posts comments if there are matches.</li>
-		<li><strong>CSP nonces and HTML rewriting -</strong> A Worker generates random <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonces</a> and uses the <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter API</a> to mutate responses with dynamic content security policies on our dashboard.</li>
-		<li><strong>Authentication on legacy applications -</strong> &nbsp;Using the <a href="https://developers.cloudflare.com/workers/reference/apis/web-crypto">Web Crypto API</a>, a Worker sits in front of legacy origins and issues, validates, and signs JWTs to control access.</li>
+		<li>
+			<p><b>Secure code review -</b> On every pull request made to a code repository, a Worker runs a set of security curated rules and posts comments if there are matches.</p>
+		</li>
+		<li>
+			<p><b>CSP nonces and HTML rewriting -</b> A Worker generates random <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonces</a> and uses the <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter API</a> to mutate responses with dynamic content security policies on our dashboard.</p>
+		</li>
+		<li>
+			<p><b>Authentication on legacy applications -</b> &nbsp;Using the <a href="https://developers.cloudflare.com/workers/reference/apis/web-crypto">Web Crypto API</a>, a Worker sits in front of legacy origins and issues, validates, and signs JWTs to control access.</p>
+		</li>
 	</ul>
 	<p>Stay tuned for future blog posts where we plan to dive deeper on these initiatives and more!</p>
-	<h2 id="security-txt">security.txt</h2>
-	<p>Our team regularly engages with external security researchers through our HackerOne program and since about 2014, the details of our program can be found on a <a href="https://cloudflare.com/disclosure">dedicated page</a> on our marketing site. This has worked quite well in starting up our program and allows anyone to contact our team if they have a vulnerability to report. However, every so often we’d see that there were issues with this approach. Specifically, there were cases of vulnerabilities being submitted to our support staff who would then tell the reporter about the disclosure page which then directs them to HackerOne resulting in an overall error prone experience for everyone involved. Other times, the team that manages our social media would direct researchers to us. </p>
+	<h2>security.txt</h2>
+	<p>Our team regularly engages with external security researchers through our HackerOne program and since about 2014, the details of our program can be found on a <a href="https://cloudflare.com/disclosure">dedicated page</a> on our marketing site. This has worked quite well in starting up our program and allows anyone to contact our team if they have a vulnerability to report. However, every so often we’d see that there were issues with this approach. Specifically, there were cases of vulnerabilities being submitted to our support staff who would then tell the reporter about the disclosure page which then directs them to HackerOne resulting in an overall error prone experience for everyone involved. Other times, the team that manages our social media would direct researchers to us.</p>
 	<p>Security researchers, having done the hard work to find a vulnerability, face challenges to responsibly disclose it. They need to be able to quickly locate contact information, consume it and disclose without delay. The security.txt initiative addresses this problem by defining a common location and format for organizations to provide this information to researchers. A specification for this was submitted to the IETF with the description:</p>
-	<p><em>“When security vulnerabilities are discovered by researchers, proper reporting channels are often lacking. &nbsp;As a result, vulnerabilities may be left unreported. &nbsp;This document defines a format ("security.txt") to help organizations describe their vulnerability disclosure practices to make it easier for researchers to report vulnerabilities.”</em></p>
+	<p><i>“When security vulnerabilities are discovered by researchers, proper reporting channels are often lacking. &nbsp;As a result, vulnerabilities may be left unreported. &nbsp;This document defines a format ("security.txt") to help organizations describe their vulnerability disclosure practices to make it easier for researchers to report vulnerabilities.”</i></p>
 	<p>Employing the guidance in security.txt doesn't solve the problem entirely but it is becoming common best practice amongst many other security conscious companies. Over time I expect that researchers will rely on security.txt for information gathering. In fact, some integrations are already being built by the community into security tools to automatically fetch information from a company’s security.txt!</p>
 	<p>Our security.txt can be found here: <a href="https://cloudflare.com/.well-known/security.txt">https://cloudflare.com/.well-known/security.txt</a></p>
-	<h2 id="security-txt-as-a-service-built-on-cloudflare-workers">security.txt as a service -- built on Cloudflare Workers</h2>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/03/image-10.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Cloudflare's security.txt</figcaption>
+	<h2>security.txt as a service -- built on Cloudflare Workers</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uEOC8SJevN6HtsGESajmo/a182045d9656cff3822523025ea8be43/image-10.png" alt="" class="kg-image" width="2000" height="1849" loading="lazy">
+
 	</figure>
+	<p>Cloudflare's security.txt</p>
 	<p>When scoping out the work for deploying security.txt we quickly realized that there were a few areas we wanted to address when deploying the service:</p>
 	<ul>
-		<li><strong>Automation -</strong> Deploys should involve as few humans as possible.</li>
-		<li><strong>Ease of maintenance -</strong> Necessary changes (specification updates, key rotations, etc) should be a single commit and deploy away.</li>
-		<li><strong>Version control</strong> <strong>-</strong> security.txt is inherently a sensitive file, retaining attribution of every change made is valuable from an auditing perspective.</li>
+		<li>
+			<p><b>Automation -</b> Deploys should involve as few humans as possible.</p>
+		</li>
+		<li>
+			<p><b>Ease of maintenance -</b> Necessary changes (specification updates, key rotations, etc) should be a single commit and deploy away.</p>
+		</li>
+		<li>
+			<p><b>Version control</b> <b>-</b> security.txt is inherently a sensitive file, retaining attribution of every change made is valuable from an auditing perspective.</p>
+		</li>
 	</ul>
-	<p>Certainly, we could manage this project through a manual process involving extensive documentation and coordination for manual deployments but we felt it was important to build this out as a full service that was easily maintainable. Manual maintenance and deployments do not necessarily scale well over time, especially for something that isn’t touched that often. We wanted to make that process as easy as possible since security.txt is meant to be a regularly maintained, living document. </p>
+	<p>Certainly, we could manage this project through a manual process involving extensive documentation and coordination for manual deployments but we felt it was important to build this out as a full service that was easily maintainable. Manual maintenance and deployments do not necessarily scale well over time, especially for something that isn’t touched that often. We wanted to make that process as easy as possible since security.txt is meant to be a regularly maintained, living document.</p>
 	<p>We quickly turned to <a href="https://workers.cloudflare.com">Workers</a> for the task. Using the <a href="https://github.com/cloudflare/wrangler">Wrangler CLI</a> we can achieve the ease of deployment and automation requirements as well as track the project in git. In under half an hour I was able to build out a full prototype that addressed all of the requirements of the Internet-Draft and deploy it to a staging instance of our website. Since then, members from our team made some revisions to the text itself, updated the expiration on our PGP key, and bumped up to the latest draft version.</p>
-	<p>One cool decision we made is that the security.txt file is created from a template at build time which allows us to perform dynamic operations on our baseline security.txt. For example, <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-09#section-3.5.5">Section 3.5.5</a> of the draft calls for a date and time after which the data contained in the "security.txt" file is considered stale and should not be used. To address this field, we wrote a short node.js script that automatically sets an expiration of 365 days after the point of deployment, encouraging regular updates:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">const dayjs = require('dayjs')
+	<p>One cool decision we made is that the security.txt file is created from a template at build time which allows us to perform dynamic operations on our baseline security.txt. For example, <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-09#section-3.5.5">Section 3.5.5</a> of the draft calls for a date and time after which the data contained in the "security.txt" file is considered stale and should not be used. To address this field, we wrote a short node.js script that automatically sets an expiration of 365 days after the point of deployment, encouraging regular updates:</p>
+	<pre class="language-js"><code class="language-js">const dayjs = require('dayjs')
 const fs = require('fs')
 
 const main = async () =&gt; {
@@ -48,18 +67,13 @@ const main = async () =&gt; {
       console.log('Wrote expiration field!')
     },
   )
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the <a href="https://www.cloudflare.com/gpg/security-at-cloudflare-pubkey-06A67236.txt">security@cloudflare.com PGP key</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code>sign:
+}</code></pre>
+	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the <a href="https://www.cloudflare.com/gpg/security-at-cloudflare-pubkey-06A67236.txt">security@cloudflare.com PGP key</a>:</p>
+	<pre class="language-bash"><code class="language-bash">sign:
 	gpg --local-user security@cloudflare.com -o src/txt/security.txt --clearsign src/txt/security.txt.temp
-	rm src/txt/security.txt.temp
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	rm src/txt/security.txt.temp</code></pre>
 	<p>And finally, leveraging the <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.8.0">multi-route support in wrangler 1.8</a> alongside the <code>request</code> object that gets passed into our Worker, we can serve our PGP public key and security.txt at the same time on two routes using one Worker, differentiated based on what the eyeball is asking for:</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">import pubKey from './txt/security-cloudflare-public-06A67236.txt'
+	<pre class="language-js"><code class="language-js">import pubKey from './txt/security-cloudflare-public-06A67236.txt'
 import securityTxt from './txt/security.txt'
 
 const handleRequest = async request =&gt; {
@@ -74,11 +88,9 @@ const handleRequest = async request =&gt; {
     })
   }
   return fetch(request) // Pass to origin
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>In the interest of transparency and to allow anyone to easily achieve the same wins we did, we’ve open sourced the Worker itself for anyone who wants to deploy this service onto their Cloudflare zone. It just takes a few minutes of time.</p>
 	<p>You can find the project on GitHub: <a href="https://github.com/cloudflare/securitytxt-worker">https://github.com/cloudflare/securitytxt-worker</a></p>
-	<h2 id="what-s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>The security team at Cloudflare <a href="https://blog.cloudflare.com/international-womens-day-2020-building-a-modern-security-team">has grown</a> a significant amount in the past year. This is most evident in terms of our headcount (<a href="https://www.cloudflare.com/careers">and still growing!</a>) but also in how we take on new projects. We’re hoping to share more stories like this in the future and open source some of the other security services that we are building on Workers to help others achieve the same security wins that we are achieving with the platform.</p>
 </div>

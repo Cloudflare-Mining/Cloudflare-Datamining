@@ -1,20 +1,48 @@
 <div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-30.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6044W4qBW6XQ2Vjr5c4lpH/70f89c844d45f3188d09efc28e29e35c/image4-30.png" alt="" class="kg-image" width="1017" height="572" loading="lazy">
+
+	</figure>
 	<p>Today, October 25, following <a href="https://www.bbc.com/news/topics/c1yy8q1re0kt/sudan-crisis">political turmoil</a>, Sudan woke up without Internet access.</p>
 	<p>In our <a href="https://blog.cloudflare.com/sudans-exam-related-internet-shutdowns">June blog</a>, we talked about Sudan when the country decided to shut down the Internet to prevent cheating in exams.</p>
 	<p>Now, the disruption seems to be for other reasons. <a href="https://www.euronews.com/2021/10/25/sudan-government-officials-detained-phones-down-in-possible-coup">AP</a> is reporting that "military forces ... detained at least five senior Sudanese government figures.". This afternoon (UTC) <a href="https://www.aljazeera.com/news/2021/10/25/sudan-army-detains-pm-hamdok-for-resisting-coup-live-news">several</a> media outlets <a href="https://edition.cnn.com/2021/10/25/africa/sudan-military-prime-minister-intl-hnk/index.html">confirmed</a> that Sudan's military dissolved the transitional government in a coup that shut down mobile phone networks and Internet access.</p>
 	<p>Cloudflare Radar allows anyone to track Internet traffic patterns around the world. The <a href="https://radar.cloudflare.com/sd?date_filter=last_24_hours">dedicated page for Sudan</a> clearly shows that this Monday, when the country was waking up, the Internet traffic went down and continued that trend through the afternoon (16:00 local time, 14:00 UTC).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-30.png" class="kg-image" alt="Change in Internet Traffic in Sudan (Last 24 hours)" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fPXNBxD7qbLPNsf2zzUtW/f9eb1f0e0b20f448cf48a178fec5b424/image2-30.png" alt="Change in Internet Traffic in Sudan (Last 24 hours)" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
 	<p>We dug in a little more on the HTTP traffic data. It usually starts increasing after 06:00 local time (04:00 UTC). But this Monday morning, traffic was flat, and the trend continued in the afternoon (there were no signs of the Internet coming back at 18:00 local time).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-21.png" class="kg-image" alt="HTTP Requests" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HYgoaST8E1uloa7rrQTZV/04f3a379364eabde3b5b0822d756ea99/image5-21.png" alt="HTTP Requests" class="kg-image" width="1920" height="657" loading="lazy">
+
+	</figure>
 	<p>When comparing today with the last seven days' pattern, we see that today's drop is abrupt and unusual.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-14.png" class="kg-image" alt="Change in Internet Traffic in Sudan (Last 7 days)" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DxNLn4EQbDQ14NpAVVtZk/88d614a7aa0dec2c2152d71b35f62de8/image7-14.png" alt="Change in Internet Traffic in Sudan (Last 7 days)" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
 	<p>We can see the same pattern when looking at HTTP traffic by ASN (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">Autonomous Systems Number</a>). The shutdown affects all the major ISPs from Sudan.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-28.png" class="kg-image" alt="HTTP requests by ASN" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eb9Pv4inefZUlc3d9rPm8/7605356ee3fbe22d8a13d8aa2aea0440/image3-28.png" alt="HTTP requests by ASN" class="kg-image" width="1802" height="597" loading="lazy">
+
+	</figure>
 	<p>Two weeks ago, we <a href="https://blog.cloudflare.com/where-mobile-traffic-more-and-less-popular">compared mobile traffic worldwide</a> using Cloudflare Radar, and Sudan was one of the most mobile-friendly countries on the planet, with 83% of Internet traffic coming from mobile devices. Today, both mobile and desktop traffic was disrupted.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-21.png" class="kg-image" alt="Devices Traffic" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sn3fNy8wptgmeYECPSjNY/d7e0ffdd93d8d7fe5c0005a4942b8a53/image6-21.png" alt="Devices Traffic" class="kg-image" width="1829" height="628" loading="lazy">
+
+	</figure>
 	<p>Using <a href="https://radar.cloudflare.com/sd?date_filter=last_24_hours">Cloudflare Radar,</a> we can also see a change in Layer 3&amp;4 DDoS attacks because of the lack of data.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-49.png" class="kg-image" alt="Network-level DDOS Attacks Originating in Sudan (Last 24 hours)" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59NFRgv3sW4X5eC2zSxg2Q/c144d4ec2481411ec14e3ca4ae95a503/image1-49.png" alt="Network-level DDOS Attacks Originating in Sudan (Last 24 hours)" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
 	<p>You can keep an eye on <a href="https://radar.cloudflare.com">Cloudflare Radar</a> to monitor how we see the Internet traffic globally and in every country.</p>
 </div>

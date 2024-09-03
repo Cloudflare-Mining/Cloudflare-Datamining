@@ -1,164 +1,124 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nOTshvG9ScsCjvUFrh01p/e43dc49b2165b72f40e3f22e4a059f7f/introducing-http2.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Why choose, if you can have both? Today CloudFlare is <a href="https://www.cloudflare.com/http2">introducing HTTP/2 support</a> for all customers using SSL/TLS connections, while still supporting SPDY. There is no need to make a decision between SPDY or HTTP/2. Both are automatically there for you and your customers.</p>
-	<h3 id="enablinghttp2">Enabling HTTP/2</h3>
+	<h3>Enabling HTTP/2</h3>
 	<p>If you are a customer on the Free or Pro plan, there is no need to do anything at all. Both SPDY and HTTP/2 are already enabled for you. With this improvement, your website’s audience will always use the fastest protocol version when accessing your site over TLS/SSL.</p>
 	<p>Customers on Business and Enterprise plans can enable HTTP/2 within the "Network" application of the CloudFlare Dashboard.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/image_0.png" alt="Enabling HTTP/2 in the CloudFlare dashboard" loading="lazy"></p>
-	<h3 id="http2ishere">HTTP/2 is here!</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Bp5zCpcbaqFL4nb3yjVfv/9b3d8e83f569bcb3b5ef359ec87a702a/image_0.png" alt="Enabling HTTP/2 in the CloudFlare dashboard" class="kg-image" width="1019" height="427" loading="lazy">
+
+	</figure>
+	<h3>HTTP/2 is here!</h3>
 	<p>In February of 2015, the IETF’s steering group for publication as standards-track RFCs approved the <a href="https://tools.ietf.org/html/rfc7540">HTTP/2</a> and associated <a href="https://tools.ietf.org/html/rfc7541">HPACK</a> specifications.</p>
 	<p>After more than 15 years, the Hypertext Transfer Protocol (HTTP) received a long-overdue upgrade. HTTP/2 is largely based on Google's experimental SPDY protocol, which was <a href="https://googleresearch.blogspot.com/2009/11/2x-faster-web.html">first announced</a> in November 2009 as an internal project to increase the speed of the web.</p>
-	<h3 id="benefitsofhttp2andspdy">Benefits of HTTP/2 and SPDY</h3>
+	<h3>Benefits of HTTP/2 and SPDY</h3>
 	<p>The main focus of both SPDY and HTTP/2 is performance, especially latency as perceived by the end-user while using a browser, with a secondary focus on network and server resource usage. One large benefit of HTTP/2 is the ability to use a single TCP connection from a browser to a website, or in the case of CloudFlare, a reverse proxy. As such, CloudFlare is in the perfect position to provide the benefits of HTTP/2 to all CloudFlare users by accelerating the web surfing experience between browsers and CloudFlare, without the need to change anything on the origin server.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/image_1.png" alt="Multiplexing in HTTP/2" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/348oUcNVT22FQiRRcIPUeD/fac9b1be59824fe4dd5197a1c86fdf6f/image_1.png" alt="Multiplexing in HTTP/2" class="kg-image" width="800" height="473" loading="lazy">
+
+	</figure>
 	<p>Although HTTP/2 is based on Google's experimental SPDY protocol, it has evolved, incorporating several improvements in the process. Nevertheless, it maintains many of the benefits known from SPDY:</p>
 	<ul>
 		<li>
-			<p><strong>Multiplexing and concurrency</strong>: Several requests can be sent over the same TCP connection, and responses can be received out of order, eliminating the need for multiple connections between the client and the server and reducing head-of-line blocking.</p>
+			<p><b>Multiplexing and concurrency</b>: Several requests can be sent over the same TCP connection, and responses can be received out of order, eliminating the need for multiple connections between the client and the server and reducing head-of-line blocking.</p>
 		</li>
 		<li>
-			<p><strong>Stream dependencies</strong>: The client can indicate to the server which resources are more important than others.</p>
+			<p><b>Stream dependencies</b>: The client can indicate to the server which resources are more important than others.</p>
 		</li>
 		<li>
-			<p><strong>Header compression</strong>: HTTP header size is reduced.</p>
+			<p><b>Header compression</b>: HTTP header size is reduced.</p>
 		</li>
 		<li>
-			<p><strong>Server push</strong>: The server can send resources the client has not yet requested (This is not yet implemented within NGINX or at CloudFlare, but will become available in the future. It is currently enabled on the experimental test bed server <a href="https://http2.cloudflare.com">https://http2.cloudflare.com/</a>).</p>
+			<p><b>Server push</b>: The server can send resources the client has not yet requested (This is not yet implemented within NGINX or at CloudFlare, but will become available in the future. It is currently enabled on the experimental test bed server <a href="https://http2.cloudflare.com">https://http2.cloudflare.com/</a>).</p>
 		</li>
 	</ul>
 	<p>While the HTTP/2 specification does not require TLS, all major browser vendors have indicated that they will only support HTTP/2 over a TLS connection. As a result, CloudFlare only supports HTTP/2 over TLS. Of course, TLS is free with CloudFlare’s Universal SSL.</p>
-	<h3 id="pageloadimprovementswithspdyandhttp2">Page load improvements with SPDY and HTTP/2</h3>
+	<h3>Page load improvements with SPDY and HTTP/2</h3>
 	<p>Let’s have a look at some real life numbers from the CloudFlare website (<a href="https://www.cloudflare.com">https://www.cloudflare.com</a>) for average page load time. These values (based on a 48h timeframe) should provide an estimate of what improvements you can expect using SPDY and HTTP/2:</p>
-	<table style="margin-bottom: 2em; padding: 1em">
-		<tbody>
-			<tr>
-				<th style="padding-right: 1em">Access via HTTP Protocol Version</th>
-				<th>Average Page Load time</th>
-			</tr>
-			<tr>
-				<td>HTTP 1.x</td>
-				<td>9.07 sec.</td>
-			</tr>
-			<tr>
-				<td>SPDY/3.1</td>
-				<td>7.06 sec.</td>
-			</tr>
-			<tr>
-				<td>HTTP/2</td>
-				<td>4.27 sec.</td>
-			</tr>
-		</tbody>
-	</table>
-	<h3 id="goodbyespdy">Goodbye SPDY?</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/image_2.jpg" alt="Adios SPDY?" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0 image</a> by <a href="https://www.flickr.com/photos/wwworks/5841979717/in/photostream">woodleywonderworks</a></small>
-	</p>
+	<p>Access via HTTP Protocol Version</p>
+	<p>Average Page Load time</p>
+	<p>HTTP 1.x</p>
+	<p>9.07 sec.</p>
+	<p>SPDY/3.1</p>
+	<p>7.06 sec.</p>
+	<p>HTTP/2</p>
+	<p>4.27 sec.</p>
+	<h3>Goodbye SPDY?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/K37xNZoMm22rZNTTPTFN9/b29625212e2896f0ca0ffaeb9fc6eb87/image_2.jpg" alt="Adios SPDY?" class="kg-image" width="1024" height="683" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0 image</a> by <a href="https://www.flickr.com/photos/wwworks/5841979717/in/photostream">woodleywonderworks</a></p>
 	<p>It's no secret that CloudFlare uses a modified version of NGINX as the reverse proxy component in charge of terminating the end-user connection. After NGINX announced availability of the <a href="https://www.nginx.com/blog/nginx-1-9-5">NGINX Open Source 1.9.5 Release</a> with HTTP/2 support on September 22nd, the wait for HTTP/2 seemed to be over.</p>
 	<p>The introduction of the new HTTP/2 module for NGINX also meant that the existing NGINX SPDY module could not be used in parallel. You had to choose to either support the termination of HTTP/2 or SPDY connections on a single NGINX server, but not both. The justification for this approach was based on Google saying goodbye to SPDY and <a href="http://blog.chromium.org/2015/02/hello-http2-goodbye-spdy-http-is_9.html">deprecating the protocol</a>, starting in January 2016.</p>
 	<p>But what would have actually happened if CloudFlare turned off SPDY today while turning on HTTP/2? What would be the impact on our existing user base as well as our customers? As the best decisions are always ones backed by solid data, we looked at what replacing SPDY with HTTP/2 today would mean.</p>
-	<h2 id="usageofspdytoday">Usage of SPDY today</h2>
+	<h2>Usage of SPDY today</h2>
 	<p>CloudFlare started <a href="https://blog.cloudflare.com/introducing-spdy">support for SPDY</a> in June of 2012 and upgraded to the <a href="https://blog.cloudflare.com/staying-up-to-date-with-the-latest-protocols-spdy-3-1">current version of SPDY (3.1)</a> in February 2014. It’s pretty straightforward for us to determine how many SSL/TLS connections are established today via SPDY/3.1 versus HTTP/1.x.</p>
 	<p>During the week before our HTTP/2 launch, 80.38% of all SSL/TLS connections to our own website at <a href="https://www.cloudflare.com">www.cloudflare.com</a> were made over SPDY/3.1.</p>
 	<p>The overall ratio of SPDY/3.1 connections that we see on our network is lower than this due to the number of bots, scrapers, and attackers using HTTP/1.x. Instead, the above number is a good representation of what legitimate traffic a regular website should see, after traffic has been sanitized.</p>
-	<h4 id="http2usage">HTTP/2 usage</h4>
+	<h4>HTTP/2 usage</h4>
 	<p>Without actually rolling out HTTP/2, it’s not that easy to determine what percentage of users to any individual website will benefit. But, there are two approaches to getting a useful estimate up front.</p>
 	<p>Let's start with the one that you could easily replicate yourself for your own website by using Google Analytics.</p>
 	<p>The well-known website caniuse.com provides information on what browsers and their version <a href="http://caniuse.com/#feat=http2">support HTTP/2</a>. Combine this with data from Google Analytics on how often a website was accessed by this type of browser for a given time, and you you gain the information of what ratio of requests could have been served over HTTP/2. During the last 48 hours, web traffic to our own website from HTTP/2-capable browsers looked like this:</p>
-	<table style="margin-bottom: 2em; padding: 1em">
-		<tbody>
-			<tr>
-				<th style="padding-right: 1em">HTTP/2 capable browser</th>
-				<th>Global Market Share</th>
-			</tr>
-			<tr>
-				<td>IE 11 on Windows 10</td>
-				<td>0.14%</td>
-			</tr>
-			<tr>
-				<td>Edge 12, and 13</td>
-				<td>0.35%</td>
-			</tr>
-			<tr>
-				<td>Firefox 36 - 45</td>
-				<td>5.09%</td>
-			</tr>
-			<tr>
-				<td>Chrome 41 - 49</td>
-				<td>15.06%</td>
-			</tr>
-			<tr>
-				<td>Safari 9</td>
-				<td>0.91%</td>
-			</tr>
-			<tr>
-				<td>Opera 28 - 34</td>
-				<td>0.57%</td>
-			</tr>
-			<tr>
-				<td>Safari for iOS 9.1</td>
-				<td>1.07%</td>
-			</tr>
-			<tr>
-				<td>Opera 30 for Android</td>
-				<td>0.01%</td>
-			</tr>
-			<tr>
-				<td>Chrome 46 for Android</td>
-				<td>3.59%</td>
-			</tr>
-			<tr>
-				<td>Firefox 41 for Android</td>
-				<td>0.01%</td>
-			</tr>
-			<tr>
-				<td><b>Total</b></td>
-				<td><b>26.79%</b></td>
-			</tr>
-		</tbody>
-	</table>
+	<p>HTTP/2 capable browser</p>
+	<p>Global Market Share</p>
+	<p>IE 11 on Windows 10</p>
+	<p>0.14%</p>
+	<p>Edge 12, and 13</p>
+	<p>0.35%</p>
+	<p>Firefox 36 - 45</p>
+	<p>5.09%</p>
+	<p>Chrome 41 - 49</p>
+	<p>15.06%</p>
+	<p>Safari 9</p>
+	<p>0.91%</p>
+	<p>Opera 28 - 34</p>
+	<p>0.57%</p>
+	<p>Safari for iOS 9.1</p>
+	<p>1.07%</p>
+	<p>Opera 30 for Android</p>
+	<p>0.01%</p>
+	<p>Chrome 46 for Android</p>
+	<p>3.59%</p>
+	<p>Firefox 41 for Android</p>
+	<p>0.01%</p>
+	<p><b>Total</b></p>
+	<p><b>26.79%</b></p>
 	<p>This would mean that a little more than a quarter of all browsers accessing our website could have used HTTP/2 during this time frame.</p>
 	<p>Again, we see a larger number of non-browsers, which don’t fall into any of the above buckets, on our edge. This is due to bots, crawlers, scrapers and the like. The numbers above represent typical website traffic after it has been sanitized by CloudFlare.</p>
 	<p>After looking at the ratio of browsers that caniuse.com estimates to support HTTP/2 today, we can see a large discrepancy between our estimated 26.79% and the ratio of between 61.7% and 67.89% that caniuse.com estimates. Unfortunately, caniuse.com is overestimating the ratio of some of the above browsers. In particular, the value for "Chrome 46 for Android" appears to incorrectly include all Chrome for Android versions, even though these versions do not have HTTP/2 support.</p>
-	<h3 id="replacingspdywithhttp2">Replacing SPDY with HTTP/2?</h3>
+	<h3>Replacing SPDY with HTTP/2?</h3>
 	<p>Both SPDY and HTTP/2 provide numerous benefits to website owners. Without support for HTTP/2 or SPDY on the browser or server side, the connection can only be established via HTTP/1.x, which usually means higher page load times and a reduced experience.</p>
 	<p>Replacing SPDY with HTTP/2 today would have meant dropping support for faster web surfing from 80.38% of our end-users to 26.79% of them, which is a difference of 53.59 percentage points.</p>
 	<p>Instead, by doing both, we ensure that users with browsers only supporting SPDY/3.1 can still get the best web surfing experience on our customers’ sites, while at the same time ensuring that users with newer browser versions that only support HTTP/2 are and will continue to get the best experience possible.</p>
-	<h3 id="reallifenumbers">Real-Life Numbers</h3>
+	<h3>Real-Life Numbers</h3>
 	<p>After running our own Website <a href="https://www.cloudflare.com">www.cloudflare.com</a> with HTTP/2 and SPDY support for more than 48 hours, we were able to extract some real-life numbers for connections established over HTTP/2 and SPDY versus HTTP/1.x:</p>
-	<table style="margin-bottom: 2em; padding: 1em">
-		<tbody>
-			<tr>
-				<th style="padding-right: 1em">Protocol Version</th>
-				<th>Percentage of Hits</th>
-			</tr>
-			<tr>
-				<td>HTTP/1.x</td>
-				<td>19.36%</td>
-			</tr>
-			<tr>
-				<td>SPDY/3.1</td>
-				<td>57.02%</td>
-			</tr>
-			<tr>
-				<td>HTTP/2</td>
-				<td>23.62%</td>
-			</tr>
-		</tbody>
-	</table>
+	<p>Protocol Version</p>
+	<p>Percentage of Hits</p>
+	<p>HTTP/1.x</p>
+	<p>19.36%</p>
+	<p>SPDY/3.1</p>
+	<p>57.02%</p>
+	<p>HTTP/2</p>
+	<p>23.62%</p>
 	<p>These real-life numbers show that we were on the right path with not removing SPDY in favor of HTTP/2.</p>
-	<h3 id="checkityourselfwhatdoserversspeak">Check it yourself: What do servers speak?</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/12/image_3.jpg" alt="Cans" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0 image</a> by <a href="https://www.flickr.com/photos/86530412@N02/8210762750">Chris Potter</a></small>
-	</p>
+	<h3>Check it yourself: What do servers speak?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pd4NcIeNRHLNrU0TXnQKk/36e67a11fc31b363cf70588394c6754d/image_3.jpg" alt="Cans" class="kg-image" width="2048" height="1365" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0 image</a> by <a href="https://www.flickr.com/photos/86530412@N02/8210762750">Chris Potter</a></p>
 	<p>You can easily check the HTTP/2 support status for a web page yourself. For this, we need to understand first how the protocol negotiation for both HTTP/2 and SPDY works. Browser and web servers use Application-Layer Protocol Negotiation (ALPN) or the slightly older Next Protocol Negotiation (NPN) Transport Layer Security (TLS) extension to negotiate what protocol the server and client "speak".</p>
 	<p>Using OpenSSL, you can easily validate what versions CloudFlare's Edge servers are able to use:</p>
-	<pre><code>openssl s_client -servername www.cloudflare.com -connect www.cloudflare.com:443 -nextprotoneg ''
+	<pre class="language-bash"><code class="language-bash">openssl s_client -servername www.cloudflare.com -connect www.cloudflare.com:443 -nextprotoneg ''
 CONNECTED(00000003)
-Protocols advertised by server: h2, spdy/3.1, http/1.1
-</code></pre>
+Protocols advertised by server: h2, spdy/3.1, http/1.1</code></pre>
 	<p>The advertised protocols include <code>h2</code> for HTTP/2, <code>spdy/3.1</code> for the current version of SPDY and <code>http/1.1</code> for HTTP/1.1 as a fallback mechanism.</p>
 	<p>In a similar way, clients will present to the web server the protocols they support.</p>
-	<h3 id="learnmore">Learn more</h3>
+	<h3>Learn more</h3>
 	<p>Want to learn more about how HTTP/2 and SPDY works, the benefits it brings to your website's audience, and how we can help you speed up your website? Check out our HTTP/2 resources at <a href="https://www.cloudflare.com/http2">cloudflare.com/http2</a></p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,51 +1,82 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image2-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>HTTP headers are central to how the web works. They are used for passing additional information between the client and server, such as which security permissions to apply and information about the client, allowing the correct content to be served.</p>
-	<p>Today we are announcing the immediate availability of the second action within Transform Rules, “<strong>HTTP Request Header Modification</strong>”, available for all Cloudflare plans. This new functionality provides Cloudflare administrators with the ability to easily set or remove HTTP request headers as traffic flows through Cloudflare. This allows customers to enrich requests with information such as the <a href="https://www.cloudflare.com/products/bot-management">Cloudflare Bot Management</a> ‘<strong>Bot Score</strong>’<strong> </strong>prior to being sent to their servers. Previously, HTTP request header modification was done using a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>
-	<h3 id="luggage-tags-of-the-world-wide-web">Luggage tags of the World Wide Web</h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/markus-spiske-pMxKbn5ucZs-unsplash.jpeg" class="kg-image" alt="" loading="lazy">
-		<figcaption>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/B9Ex12zI5oY7cJoXPHHdj/e7a9eb851bb0f237e8823104fa6c9377/image2-4.png" alt="" class="kg-image" width="1584" height="716" loading="lazy">
+
 	</figure>
+	<p>HTTP headers are central to how the web works. They are used for passing additional information between the client and server, such as which security permissions to apply and information about the client, allowing the correct content to be served.</p>
+	<p>Today we are announcing the immediate availability of the second action within Transform Rules, “<b>HTTP Request Header Modification</b>”, available for all Cloudflare plans. This new functionality provides Cloudflare administrators with the ability to easily set or remove HTTP request headers as traffic flows through Cloudflare. This allows customers to enrich requests with information such as the <a href="https://www.cloudflare.com/products/bot-management">Cloudflare Bot Management</a> ‘<b>Bot Score</b>’ prior to being sent to their servers. Previously, HTTP request header modification was done using a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>
+	<h3>Luggage tags of the World Wide Web</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5weknAkW93x2spAcDSstwZ/ea89841d1f69f77f41f1db17aca391c0/markus-spiske-pMxKbn5ucZs-unsplash.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1322" loading="lazy">
+
+	</figure>
+	<p>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 	<p>Think of HTTP headers as the “luggage tag” attached to your bags when you check in at the airport.</p>
 	<p>Generally, you don't need to know what those numbers and words mean. You just know they are important in getting your suitcase from the boarding desk, to the correct airplane, and back to the correct luggage carousel at your destination.</p>
 	<p>These tags contain information about the weight of the suitcase, the destination airport code, baggage tag number, airline carrier, customs handling information, and more. These attributes are all essential, not only for ensuring that your luggage arrives at the correct destination, but also it does so in the safest, most efficient manner.</p>
 	<p>HTTP Headers are the luggage tags of the Internet. They are essential to ensuring the request from your browser arrives at the correct destination, and that traffic is returned to your browser using the correct settings also in the safest, most efficient manner.</p>
-	<h3 id="how-are-http-request-headers-used">How are HTTP request headers used?</h3>
-	<p>HTTP headers are set on both the ‘request’ and ‘response’ interactions; ‘request’ being when the client asks for the file and ‘response’ being what the server returns as a result. The functionality announced today pertains specifically to HTTP <em>request headers</em> only.</p>
+	<h3>How are HTTP request headers used?</h3>
+	<p>HTTP headers are set on both the ‘request’ and ‘response’ interactions; ‘request’ being when the client asks for the file and ‘response’ being what the server returns as a result. The functionality announced today pertains specifically to HTTP <i>request headers</i> only.</p>
 	<p>Many organizations use HTTP request headers to ensure visitor requests are served correctly. They are used to route requests to different clusters, serve mobile-friendly content, and legacy-browser friendly content.</p>
 	<p>HTTP request headers are also used for security purposes, namely authentication and authorization. Simple examples include adding a static, pre-shared key as a custom header which adds an additional security check to all inbound HTTP requests.</p>
 	<p>Ensuring these headers are present on the HTTP request is often the job of the reverse proxy — a server which sits between the client and the server whose job is, amongst many others, to enrich the HTTP request data sent to the server.</p>
-	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server">popular</a> web server used as a reverse proxy, the administrator would have a line in the config similar to:</p><!--kg-card-begin: markdown-->
-	<pre><code>proxy_set_header X-Header-Name "custom";
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>When using &nbsp;<a href="https://workers.cloudflare.com">Cloudflare Workers</a>, the code would be similar to:</p><!--kg-card-begin: markdown-->
-	<pre><code>request.headers.set("X-Header-Name", "custom")
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server">popular</a> web server used as a reverse proxy, the administrator would have a line in the config similar to:</p>
+	<pre class="language-bash"><code class="language-bash">proxy_set_header X-Header-Name "custom";</code></pre>
+	<p>When using &nbsp;<a href="https://workers.cloudflare.com">Cloudflare Workers</a>, the code would be similar to:</p>
+	<pre class="language-bash"><code class="language-bash">request.headers.set("X-Header-Name", "custom")</code></pre>
 	<p>Each of these lines of code would add a custom HTTP request header to the next-hop destination with a name of ‘X-Header-Name’ and a value of ‘custom’.</p>
-	<h3 id="dynamic-modification-of-http-request-headers">Dynamic modification of HTTP request headers</h3>
+	<h3>Dynamic modification of HTTP request headers</h3>
 	<p>“HTTP Request Header Modification” is now available for all Cloudflare plans, within Transform Rules. It gives control to administrators by providing the ability to modify HTTP request headers before they're sent to their own origin servers or third-party services such as SaaS providers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image5-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7I5NghBj6EckxUgICOdPDK/2c86f206c288139f1f0d98b56d944fa1/image5-1.png" alt="" class="kg-image" width="1999" height="784" loading="lazy">
+
+	</figure>
 	<p>Transform Rules allows users to modify up to 10 HTTP request headers per rule using one of three options:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image4-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><strong>‘Set dynamic’ </strong>should be used when the value of a HTTP request header needs to be populated dynamically for each HTTP request. Examples include adding the Cloudflare Bot Management ‘bot score’ to each HTTP request, or the visitor’s country:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image1-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><strong>‘Set static’</strong> should be used to populate the value of a header with a static, literal string. This option should be used for simple header creation such as setting the source CDN (Cloudflare) or a shared secret:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UEQhQfcvvrHW8cu6QzBSU/ad45ea2037be122de00ccb3bbe177d3e/image4-2.png" alt="" class="kg-image" width="1524" height="472" loading="lazy">
+
+	</figure>
+	<p><b>‘Set dynamic’</b> should be used when the value of a HTTP request header needs to be populated dynamically for each HTTP request. Examples include adding the Cloudflare Bot Management ‘bot score’ to each HTTP request, or the visitor’s country:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sd5APjxAng8YJig4dsnoU/9234942a5ea814c5b573cb7012b632a1/image1-3.png" alt="" class="kg-image" width="1066" height="105" loading="lazy">
+
+	</figure>
+	<p><b>‘Set static’</b> should be used to populate the value of a header with a static, literal string. This option should be used for simple header creation such as setting the source CDN (Cloudflare) or a shared secret:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FLBXg7HFvgYubRVr80sI3/e70fc05475af6a4c978044e9b0cd3fb4/image3-3.png" alt="" class="kg-image" width="1999" height="198" loading="lazy">
+
+	</figure>
 	<p>In both "set" examples, if a header with the specified name already exists in the HTTP request, its value will be removed and replaced with the given value.</p>
-	<p><strong>‘Remove’ </strong>is the final option, which should be used to remove all HTTP request headers with the specified name. For example, if you wanted to ensure the ‘cf-connecting-ip’ HTTP request header was removed, you would use a rule similar to the following one:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image6-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><b>‘Remove’</b> is the final option, which should be used to remove all HTTP request headers with the specified name. For example, if you wanted to ensure the ‘cf-connecting-ip’ HTTP request header was removed, you would use a rule similar to the following one:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ju4GXquzb1Sgd5t4It714/e82afb437592b5dae34917d0aaa70c5b/image6-2.png" alt="" class="kg-image" width="1999" height="97" loading="lazy">
+
+	</figure>
 	<p>Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/functions">functions</a> can be used within ‘set dynamic’ header modifications. These functions include:</p>
 	<ul>
-		<li>concat()</li>
-		<li>regex_replace()</li>
-		<li>to_string()</li>
-		<li>lower()</li>
+		<li>
+			<p>concat()</p>
+		</li>
+		<li>
+			<p>regex_replace()</p>
+		</li>
+		<li>
+			<p>to_string()</p>
+		</li>
+		<li>
+			<p>lower()</p>
+		</li>
 	</ul>
-	<p>An example where functions are commonly used is concat() and to_string() used to take a list of different data types and concatenate to form a single header value. For example, <strong><code>concat(“score=”,to_string(cf.bot_management.score))</code></strong> would result in a header value of ‘score=85’.</p>
+	<p>An example where functions are commonly used is concat() and to_string() used to take a list of different data types and concatenate to form a single header value. For example, <code><b>concat(“score=”,to_string(cf.bot_management.score))</b></code> would result in a header value of ‘score=85’.</p>
 	<p>Note: regular expression functions are only available for customers on Business and Enterprise plans.</p>
-	<h3 id="try-it-now">Try it now</h3>
+	<h3>Try it now</h3>
 	<p>HTTP Request Header Modification can be used to improve operations, remove sensitive data, and increase security, amongst many other use cases. Try out the latest <a href="https://dash.cloudflare.com">Transform Rule</a> yourself today.</p>
 </div>

@@ -1,35 +1,53 @@
 <div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/start-measuring-web-vitals-with-browser-insights">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/start-measuring-web-vitals-with-browser-insights">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/start-measuring-web-vitals-with-browser-insights">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/start-measuring-web-vitals-with-browser-insights">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DQmIQzQm2iLrlqNNWDVqf/bf720517bbf91b4e9fccbeec865ce18b/start-measuring-web-vitals-with-browser-insights.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Many of us at Cloudflare obsess about how to make websites faster. But to improve performance, you have to measure it first. Last year we <a href="https://blog.cloudflare.com/introducing-browser-insights">launched Browser Insights</a> to help our customers measure web performance from the perspective of end users.</p>
 	<p>Today, we're partnering with the Google Chrome team to bring <a href="https://web.dev/vitals">Web Vitals</a> measurements into Browser Insights. Web Vitals are a new set of metrics to help web developers and website owners measure and understand load time, responsiveness, and visual stability. And with Cloudflare’s Browser Insights, they’re easier to measure than ever – and it’s free for anyone to collect data from the whole web.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="why-do-we-need-web-vitals">Why do we need Web Vitals?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5u0Dj7AlTqiV3EsJAmwi20/964a907020f0d054961fd136cbe14225/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="734" loading="lazy">
+
+	</figure>
+	<h3>Why do we need Web Vitals?</h3>
 	<p>When trying to understand performance, it’s tempting to focus on the metrics that are easy to measure — like Time To First Byte (TTFB). While TTFB and similar metrics are important to understand, we’ve learned that they don’t always tell the whole story.</p>
 	<p>Our partners on the Google Chrome team have tackled this problem by breaking down user experience into three components:</p>
 	<ul>
-		<li><em>Loading</em>: How long did it take for content to become available?</li>
-		<li><em>Interactivity: </em>How responsive is the website when you interact with it?</li>
-		<li><em>Visual stability</em>: How much does the page move around while loading? (I think of this as the inverse of “jankiness”)</li>
+		<li>
+			<p><i>Loading</i>: How long did it take for content to become available?</p>
+		</li>
+		<li>
+			<p><i>Interactivity:</i> How responsive is the website when you interact with it?</p>
+		</li>
+		<li>
+			<p><i>Visual stability</i>: How much does the page move around while loading? (I think of this as the inverse of “jankiness”)</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>This <a href="https://web.dev/vitals">image</a> is reproduced from work created and <a href="https://developers.google.com/terms/site-policies">shared by Google</a> and used according to terms described in the <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons 4.0 Attribution License</a>.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GxuB1CKyGcwtw0LfZZJXb/f5c413ea819c37bf4d9871be281a5fd9/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="469" loading="lazy">
+
 	</figure>
+	<p>This <a href="https://web.dev/vitals">image</a> is reproduced from work created and <a href="https://developers.google.com/terms/site-policies">shared by Google</a> and used according to terms described in the <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons 4.0 Attribution License</a>.</p>
 	<p>It’s challenging to create a single metric that captures these high-level components. Thankfully, the folks at Google Chrome team have thought about this, and earlier this year introduced three “Core” Web Vitals metrics: &nbsp;<a href="https://web.dev/lcp">Largest Contentful Paint</a>, &nbsp;<a href="https://web.dev/fid">First Input Delay</a>, and <a href="https://web.dev/cls">Cumulative Layout Shift</a>.</p>
-	<h3 id="how-do-web-vitals-help-make-your-website-faster">How do Web Vitals help make your website faster?</h3>
-	<p>Measuring the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals">Core Web Vitals</a> isn’t the end of the story. Rather, they’re a jumping off point to understand what factors impact a website’s performance. Web Vitals tells you <em>what</em> is happening at a high level, and other more detailed metrics help you understand <em>why</em> user experience could be slow.</p>
+	<h3>How do Web Vitals help make your website faster?</h3>
+	<p>Measuring the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals">Core Web Vitals</a> isn’t the end of the story. Rather, they’re a jumping off point to understand what factors impact a website’s performance. Web Vitals tells you <i>what</i> is happening at a high level, and other more detailed metrics help you understand <i>why</i> user experience could be slow.</p>
 	<p>Take loading time, for example. If you notice that your Largest Contentful Paint score is “needs improvement”, you want to dig into what is taking so long to load! Browser Insights still measures <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API#:~:text=The%20Navigation%20Timing%20API%20provides,much%20more%20accurate%20and%20reliable.">navigation timing</a> metrics like DNS lookup time and TTFB. By analyzing these metrics in turn, you might want to dig further into <a href="https://blog.cloudflare.com/introducing-cache-analytics">optimizing cache hit rates</a>, tuning the performance of your origin server, or tweaking order in which resources like JavaScript and CSS load.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QZ7nIb1RbMrWmdqP8uP26/550a2c4aec88555b21efdf33fafadcd3/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="1126" loading="lazy">
+
+	</figure>
 	<p>For more information about improving web performance, check out Google’s guides to improving <a href="https://web.dev/optimize-lcp">LCP</a>, <a href="https://web.dev/optimize-fid">FID</a>, and <a href="https://web.dev/optimize-cls">CLS</a>.</p>
-	<h3 id="why-measure-web-vitals-with-cloudflare">Why measure Web Vitals with Cloudflare?</h3>
+	<h3>Why measure Web Vitals with Cloudflare?</h3>
 	<p>First, we think that RUM (Real User Measurement) is a critical companion to synthetic measurement. While you can always try a few page loads on your own laptop and see the results, gathering data from real users is the only way to take into account real-life device performance and network conditions.</p>
 	<p>There are other great RUM tools out there. Google’s <a href="https://developers.google.com/web/tools/chrome-user-experience-report">Chrome User Experience Report</a> (CrUX) collects data about the entire web and makes it available through tools like <a href="https://developers.google.com/speed/pagespeed/insights">Page Speed Insights</a> (PSI), which combines synthetic and RUM results into useful diagnostic information.</p>
 	<p>One major benefit of Cloudflare’s Browser Insights is that it updates constantly; new data points are available shortly after seeing a request from an end-user. The data in the Chrome UX Report is a 28-day rolling average of aggregated metrics, so you need to wait until you can see changes reflected in the data.</p>
 	<p>Another benefit of Browser Insights is that we can measure any browser — not just Chrome. As of this writing, the APIs necessary to report Web Vitals are only supported in <a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)">Chromium browsers</a>, but we'll support Safari and Firefox when they implement those APIs.</p>
 	<p>Finally, Brower Insights is free to use! We’ve worked really hard to make our analytics blazing fast for websites with any amount of traffic. We’re excited to support slicing and grouping by URL, Browser, OS, and Country, and plan to support several more dimensions soon.</p>
-	<h3 id="push-a-button-to-start-measuring">Push a button to start measuring</h3>
+	<h3>Push a button to start measuring</h3>
 	<p>To start using Browser Insights, just head over to the Speed tab in the dashboard. Starting today, Web Vitals metrics are now available for everyone!</p>
 	<p>Behind the scenes, Browser Insights works by inserting a JavaScript "beacon" into HTML pages. You can control where the beacon loads if you only want to measure specific pages or hostnames. If you’re using CSP version 3, we’ll even automatically detect the nonce (if present) and add it to the script.</p>
-	<h3 id="where-we-ve-been-and-where-we-re-going">Where we’ve been, and where we're going</h3>
+	<h3>Where we’ve been, and where we're going</h3>
 	<p>We've been really proud of the success of Browser Insights. We've been hard at work over the last year making lots of improvements — for example, we've made the dashboard <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">fast and responsive (and still free!) even for the largest websites</a>.</p>
 	<p>Coming soon, we’re excited to make this available for all our Web Analytics customers — even those who <a href="https://www.cloudflare.com/web-analytics">don’t use Cloudflare today</a>. We’re also hard at work adding much-requested features like client-side error reporting, and diagnostics tools to make it easier to understand where to improve.</p>
 </div>

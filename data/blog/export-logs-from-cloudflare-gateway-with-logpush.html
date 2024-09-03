@@ -1,26 +1,38 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jzlwMQj1FdlZPvgIfJAKP/ec57872b60a69b2c4cabb8487821120d/export-logs-from-cloudflare-gateway-with-logpush.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Like many people, I have spent a lot more time at home in the last several weeks. I use the free version of Cloudflare Gateway, part of Cloudflare for Teams, to secure the Internet-connected devices on my WiFi network. In the last week, Gateway has processed about 114,000 DNS queries from those devices and blocked nearly 100 as potential security risks.</p>
 	<p>I can search those requests in the Cloudflare for Teams UI. The logs capture the hostname requested, the time of the request, and Gateway’s decision to allow or block. This works fine for one-off investigations into a block, but does not help if I want to analyze the data more thoroughly. The last thing I want to do is click through hundreds or thousands of pages.</p>
 	<p>That problem is even more difficult for organizations attempting to keep hundreds or thousands of users and their devices secure. Whether they secure roaming devices with DoH or a static IP address, or keep users safe as they return to offices, deployments at that scale need a better option for auditing tens or hundreds of millions of queries each week.</p>
 	<p>Starting today, you can configure the automatic export of logs from Cloudflare Gateway to third-party storage destinations or security information and event management (SIEM) tools. Once exported, your team can analyze and audit the data as needed. The feature builds on the same robust <a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage">Cloudflare Logpush Service</a> that powers data export from Cloudflare’s infrastructure products.</p>
-	<h3 id="cloudflare-gateway">Cloudflare Gateway</h3>
+	<h3>Cloudflare Gateway</h3>
 	<p>Cloudflare Gateway is one-half of Cloudflare for Teams, Cloudflare’s platform for securing users, devices, and data. With Cloudflare for Teams, our global network becomes your team’s network, replacing on-premise appliances and security subscriptions with a single solution delivered closer to your users - wherever they work.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/YwO4JZYUemcjuBKu4nT3Q-StBRocPnnsJb-yQk9t4NgVLdWoKpmrfmaKxJHM1i0m-7EdVRdjuJOkQggh8Y0nEhNjKEs8febz0nooNgRdyg5UCtHekla6aZRuVQivI3mKa7PnDr0D" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JWEZSrQR7ulD8aQN6c39H/56d470c5e24aa74df8ebf1cad148eb98/YwO4JZYUemcjuBKu4nT3Q-StBRocPnnsJb-yQk9t4NgVLdWoKpmrfmaKxJHM1i0m-7EdVRdjuJOkQggh8Y0nEhNjKEs8febz0nooNgRdyg5UCtHekla6aZRuVQiv.png" alt="" class="kg-image" width="1600" height="1264" loading="lazy">
+
+	</figure>
 	<p>As part of that platform, Cloudflare Gateway blocks threats on the public Internet from becoming incidents inside your organization. Gateway’s <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">first release</a> added DNS security filtering and content blocking to the world’s fastest DNS resolver, Cloudflare’s 1.1.1.1.</p>
 	<p><a href="https://developers.cloudflare.com/gateway/locations/setup-instructions/router">Deployment</a> takes less than 5 minutes. Teams can secure entire office networks and segment traffic reports by location. For distributed organizations, Gateway can be deployed via MDM on networks that support IPv6 or using a dedicated IPv4 as part of a <a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> account.</p>
 	<p>With secure DNS filtering, administrators can click a single button to block known threats, like sources of malware or phishing sites. Policies can be extended to block specific categories, like gambling sites or social media. When users request a filtered site, Gateway stops the DNS query from resolving and prevents the device from connecting to a malicious destination or hostname with blocked material.</p>
-	<h3 id="cloudflare-logpush">Cloudflare Logpush</h3>
+	<h3>Cloudflare Logpush</h3>
 	<p>The average user makes about 5,000 DNS queries each day. For an organization with 1,000 employees, that produces 5M rows of data daily. That data includes regular Internet traffic, but also potential trends like targeted phishing campaigns or the use of cloud storage tools that are not approved by your IT organization.</p>
 	<p>The Cloudflare for Teams UI presents some summary views of that data, but each organization has different needs for audit, retention, or analysis. The best way to let you investigate the data in any way you need is to give you all of it. However the volume of data and how often you might need to review it means that API calls or CSV downloads are not suitable. A real logging pipeline is required.</p>
 	<p>Cloudflare Logpush solves that challenge. Cloudflare’s <a href="https://developers.cloudflare.com/logs/logpush">Logpush Service</a> exports the data captured by Cloudflare’s network to storage destinations that you control. Rather than requiring your team to build a system to call Cloudflare APIs and pull data, Logpush routinely exports data with fields that you configure.</p>
 	<p>Cloudflare’s data team built the Logpush pipeline to make it easy to integrate with popular storage providers. Logpush supports AWS S3, Google Cloud Storage, Sumo Logic, and Microsoft Azure out of the box. Administrators can choose a storage provider, validate they own the destination, and configure exports of logs that will send deltas every five minutes from that point onward.</p>
-	<h3 id="how-it-works">How it works</h3>
+	<h3>How it works</h3>
 	<p>When enabled, you can navigate to a new section of the Logs component in the Cloudflare for Teams UI, titled “Logpush”. Once there, you’ll be able to choose which fields you want to export from Cloudflare Gateway and the storage destination.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image2-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Oprf36DuhfSZ8FgwLqisq/876dcafcc3cda9c90570bf5339b7c976/image2-9.png" alt="" class="kg-image" width="1411" height="786" loading="lazy">
+
+	</figure>
 	<p>The Logpush wizard will walk you through validating that you own the destination and configuring how you want folders to be structured. When saved, Logpush will send updated logs every five minutes to that destination. You can configure multiple destinations and monitor for any issues by returning to this section of the Cloudflare for Teams UI.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image1-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-s-next">What’s next?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6t415R9imvFz1P1j5DGcBx/4dd555daab5220bc22f920dd28d85dcc/image1-9.png" alt="" class="kg-image" width="1411" height="786" loading="lazy">
+
+	</figure>
+	<h3>What’s next?</h3>
 	<p>Cloudflare’s Logpush Service is only available to customers on a contract plan. If you are interested in upgrading, please let us know. All Cloudflare for Teams plans include 30-days of data that can be searched in the UI.</p>
 	<p>Cloudflare Access, the other half of Cloudflare for Teams, <a href="https://blog.cloudflare.com/log-every-request-to-corporate-apps-no-code-changes-required">also supports</a> granular log export. You can configure Logpush for Access in the Cloudflare dashboard that houses Infrastructure features like the WAF and CDN. We plan to migrate that configuration to this UI in the near future.</p>
 </div>

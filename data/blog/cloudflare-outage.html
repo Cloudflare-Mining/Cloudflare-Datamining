@@ -1,19 +1,20 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><strike>This is a short placeholder blog and will be replaced with a full post-mortem and disclosure of what happened today.</strike></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
+	<p>This is a short placeholder blog and will be replaced with a full post-mortem and disclosure of what happened today.</p>
 	<p>For about 30 minutes today, visitors to Cloudflare sites received 502 errors caused by a massive spike in CPU utilization on our network. This CPU spike was caused by a bad software deploy that was rolled back. Once rolled back the service returned to normal operation and all domains using Cloudflare returned to normal traffic levels.</p>
 	<p>This was not an attack (as some have speculated) and we are incredibly sorry that this incident occurred. Internal teams are meeting as I write performing a full post-mortem to understand how this occurred and how we prevent this from ever occurring again.</p>
 	<hr>
-	<h3 id="update-at-2009-utc-">Update at 2009 UTC:</h3>
+	<h3>Update at 2009 UTC:</h3>
 	<p>Starting at 1342 UTC today we experienced a global outage across our network that resulted in visitors to Cloudflare-proxied domains being shown 502 errors (“Bad Gateway”). The cause of this outage was deployment of a single misconfigured rule within the Cloudflare <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall (WAF)</a> during a routine deployment of new Cloudflare WAF Managed rules.</p>
 	<p>The intent of these new rules was to improve the blocking of inline JavaScript that is used in attacks. These rules were being deployed in a simulated mode where issues are identified and logged by the new rule but no customer traffic is actually blocked so that we can measure false positive rates and ensure that the new rules do not cause problems when they are deployed into full production.</p>
 	<p>Unfortunately, one of these rules contained a regular expression that caused CPU to spike to 100% on our machines worldwide. This 100% CPU spike caused the 502 errors that our customers saw. At its worst traffic dropped by 82%.</p>
 	<p>This chart shows CPU spiking in one of our PoPs:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/cpuspike.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>We were seeing an unprecedented CPU exhaustion event, which was novel for us as we had not experienced global CPU exhaustion before. </p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5c4YQwNj6F7d4h9CzO2aQv/056041c4a2c34a84de484fc175e463f4/cpuspike.png" alt="" class="kg-image" width="2128" height="423" loading="lazy">
+
+	</figure>
+	<p>We were seeing an unprecedented CPU exhaustion event, which was novel for us as we had not experienced global CPU exhaustion before.</p>
 	<p>We make software deployments constantly across the network and have automated systems to run test suites and a procedure for deploying progressively to prevent incidents. Unfortunately, these WAF rules were deployed globally in one go and caused today’s outage.</p>
 	<p>At 1402 UTC we understood what was happening and decided to issue a ‘global termination’ on the WAF Managed Rulesets, which instantly dropped CPU back to normal and restored traffic. That occurred at 1409 UTC.</p>
 	<p>We then went on to review the offending pull request, roll back the specific rules, test the change to ensure that we were 100% certain that we had the correct fix, and re-enabled the WAF Managed Rulesets at 1452 UTC.</p>

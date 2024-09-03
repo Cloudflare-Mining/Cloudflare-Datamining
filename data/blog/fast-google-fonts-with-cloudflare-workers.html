@@ -1,12 +1,10 @@
-<div class="mb2 gray5">20 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">17 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zhd3A5qtNhaEWrx0iWSay/35fb948205de00c273e3e2384ad73d8c/fast-google-fonts-with-cloudflare-workers.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Google Fonts is one of the most common third-party resources on the web, but carries with it significant user-facing performance issues. Cloudflare Workers running at the edge is a great solution for fixing these performance issues, without having to modify the publishing system for every site using Google Fonts.</p>
 	<p>This post walks through the implementation details for how to fix the performance of Google Fonts with Cloudflare Workers. More importantly, it also provides code for doing high-performance content modification at the edge using Cloudflare Workers.</p>
-	<h3 id="googlefontsareslow">Google fonts are SLOW</h3>
+	<h3>Google fonts are SLOW</h3>
 	<p>First, some background. <a href="https://fonts.google.com">Google Fonts</a> provides a rich selection of royalty-free fonts for sites to use. You select the fonts you want to use, and end up with a simple stylesheet URL to include on your pages, as well as styles to use for applying the fonts to parts of the page:</p>
-	<p>
-	</p>
-	<pre><code class="language-html">&lt;link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab"
+	<pre class="language-html"><code class="language-html">&lt;link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab"
       rel="stylesheet"&gt;
 &lt;style&gt;
 body {
@@ -14,94 +12,130 @@ body {
 }
 h1 {
  font-family: 'Roboto Slab', serif;
-}
-</code></pre>
-	<p>
-	</p>
+}</code></pre>
 	<p>Your visitor’s browser fetches the CSS file as soon as the HTML for the page is available. The browser will request the underlying font files when the browser does layout for the page and discovers that it needs fonts for different sections of text.</p>
 	<p>The way Google fonts are served, the CSS is on one domain (fonts.googleapis.com) and the font files are on a different domain (fonts.gstatic.com). Since they are on separate domains, the fetch for each resource takes a minimum of four round trips back and forth to the server: One each for the DNS lookup, establishing the socket connection, negotiating TLS encryption (for https) and a final round trip for the request itself.</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/before-round-trips.png" alt="Network waterfall diagram showing 4 round trips each for the font css and font file.">
-		<figcaption style="font-size:smaller;line-height:1em;">4 round trips each for the font css and font file.</figcaption>
-	</figure><br>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2emQRH8SC0mYJpSOJ58FUK/e53bfaa32032af25c456b3119bf3df54/before-round-trips.png" alt="Network waterfall diagram showing 4 round trips each for the font css and font file." class="kg-image" width="933" height="199" loading="lazy">
+
+	</figure>
+	<p>4 round trips each for the font css and font file.</p>
 	<p>The requests can’t be done in parallel because the fonts aren’t known about until after the CSS has been downloaded and the styles applied to the page. In a best-case scenario, this translates to eight round-trips before the text can be displayed (the text which was already available in the browser as soon as the HTML was available). On a slower 3G connection with a 300ms round-trip time, this adds up to a 2.4 second delay. Best case!</p>
 	<p>There is also a problem with resource prioritization. When you have all of the requests coming from the same domain on the same HTTP/2 connection they can be scheduled against each other. Critical resources (like CSS and fonts) can be pushed ahead in the queue and delivered before lower priority resources (like images). Since Google Fonts (and most third-party resources) are served from a different domain than the main page resources, they cannot be prioritized and end up competing with each other for download bandwidth. This can cause the actual fetch times to be much longer than the best-case of 8 round trips.</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/before-competing.png" alt="Network waterfall showing CSS and font download competing with low-priority images for bandwidth.">
-		<figcaption style="font-size:smaller;line-height:1em;">CSS and font download competing with low-priority images for bandwidth.</figcaption>
-	</figure><br>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hYNUX0ngMLAKMUqN8jQhj/ce2c683c1be9f5a4f8b00e608710c67d/before-competing.png" alt="Network waterfall showing CSS and font download competing with low-priority images for bandwidth." class="kg-image" width="934" height="404" loading="lazy">
+
+	</figure>
+	<p>CSS and font download competing with low-priority images for bandwidth.</p>
 	<p>Users will see the images and skeleton for the page <a href="https://www.webpagetest.org/video/view.php?id=181016_befafeb79a563c08a7c4012ec10379ccb1c2f755">long before</a> the actual text is displayed:</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/b1-image-paint.png" alt="The page starts painting at 3.3 seconds with partial images and no text.">
-		<figcaption style="font-size:smaller;line-height:1em;">The page starts painting at 3.3 seconds with partial images and no text.</figcaption>
-	</figure><br>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/b2-text.png" alt="The text finally displays at 6.2 seconds into the page load.">
-		<figcaption style="font-size:smaller;line-height:1em;">The text finally displays at 6.2 seconds into the page load.</figcaption>
-	</figure><br>
-	<h3 id="fixinggooglefontsperformance">Fixing Google Fonts performance</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tAfGVsUZxzYE99QUHQTlr/abfc5c236e3c1037acf0977aa0d6af07/b1-image-paint.png" alt="The page starts painting at 3.3 seconds with partial images and no text." class="kg-image" width="408" height="384" loading="lazy">
+
+	</figure>
+	<p>The page starts painting at 3.3 seconds with partial images and no text.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1c2TrfVScCtSgq6uAquxOC/5a64a057a550347ed2984244957c462d/b2-text.png" alt="The text finally displays at 6.2 seconds into the page load." class="kg-image" width="408" height="384" loading="lazy">
+
+	</figure>
+	<p>The text finally displays at 6.2 seconds into the page load.</p>
+	<h3>Fixing Google Fonts performance</h3>
 	<p>The paths to fixing performance issues and making fonts lightning-fast is different for the CSS and the font files themselves. We can reduce the total number of round trips to one:</p>
 	<ol>
-		<li>Embed the CSS directly in the HTML.</li>
-		<li>Proxy the Google Font files through the page origin.</li>
+		<li>
+			<p>Embed the CSS directly in the HTML.</p>
+		</li>
+		<li>
+			<p>Proxy the Google Font files through the page origin.</p>
+		</li>
 	</ol>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/Fonts.png" alt="Before and after diagram showing the embedded CSS loading immediately as part of the HTML and the fonts loading before the images.">
-		<figcaption style="font-size:smaller;line-height:1em;">The embedded CSS loads immediately as part of the HTML and the fonts load before the images.</figcaption>
-	</figure><br>
-	<h4 id="optimizingcssdelivery">Optimizing CSS delivery</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ImYCsOuIuMBm24oD75ZfA/5e9e5c29c710c805bef54c59668a4348/Fonts.png" alt="Before and after diagram showing the embedded CSS loading immediately as part of the HTML and the fonts loading before the images." class="kg-image" width="944" height="704" loading="lazy">
+
+	</figure>
+	<p>The embedded CSS loads immediately as part of the HTML and the fonts load before the images.</p>
+	<h4>Optimizing CSS delivery</h4>
 	<p>For CSS, the easy answer is to just download the CSS file that Google hosts and either serve it yourself directly or place it into the HTML as an embedded stylesheet. The problem with this is that Google fonts serves a browser-specific CSS file that is different for each browser so it can serve newer formats and use newer features, when supported, while still providing custom font support for older browsers.</p>
 	<p>With Cloudflare Workers, we can dynamically replace the external CSS reference with the browser-specific stylesheet content at fetch time when the HTML is requested by the browser. This way, the embedded CSS will always be up to date and support the capabilities of whichever browser is making the request. This completely eliminates any round trips for fetching the CSS for the fonts.</p>
-	<h4 id="optimizingfontfiledelivery">Optimizing font file delivery</h4>
+	<h4>Optimizing font file delivery</h4>
 	<p>For the font files themselves, we can eliminate all of the round trips except for the fetch itself by serving the font files directly from the same domain as the HTML. This brings with it the added benefit of serving fonts over the same HTTP/2 connection as the rest of the page resources, allowing them to be prioritized correctly and not compete for bandwidth.</p>
 	<p>Specifically, when we embed the CSS into the HTML response, we rewrite all of the font URLs to use the same domain as the HTML. When those rewritten requests arrive at the worker the URL is transformed back to the original URL served by Google and fetched by the worker (as a proxy). The worker fetches are routed through Cloudflare’s caching infrastructure so they will be cached automatically at the edge. The actual URL rewriting is pretty simple but effective. We take font URLs that look like this:</p>
-	<p>
-	</p>
-	<pre><code>https://fonts.gstatic.com/s/...
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">https://fonts.gstatic.com/s/...</code></pre>
 	<p>and we just prepend the page domain to the front of the URL:</p>
-	<pre><code>https://www.example.com/fonts.gstatic.com/s/...
-</code></pre>
-	<p>
-	</p>
+	<pre class="language-bash"><code class="language-bash">https://www.example.com/fonts.gstatic.com/s/...</code></pre>
 	<p>That way, when they arrive at the edge, the worker can look at the path of a request and know right away that it is a proxy request for a Google font. At this point, rewriting the original URL is trivial. On the extremely odd chance that a page on your site actually has a path that starts with /fonts.gstatic.com/, those resources would break and something else should be appended to the URL to make sure they are unique.</p>
-	<h4 id="optimizationresults">Optimization Results</h4>
+	<h4>Optimization Results</h4>
 	<p>In practice, the results can be quite dramatic. On <a href="https://www.perftests.com/googlefonts">this test page</a> for example, the wait time for fonts to become available dropped from 5.5 seconds to 1 second (an 81% improvement!):</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/after.png" alt="Network waterfall diagram showing the fonts loading immediately after the HTML.">
-		<figcaption style="font-size:smaller;line-height:1em;">The fonts load immediately after the HTML.</figcaption>
-	</figure><br>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6c3mWxyg3E5LclNnSBxdCy/cb7a95a0798c15b070822cbeec511c3f/after.png" alt="Network waterfall diagram showing the fonts loading immediately after the HTML." class="kg-image" width="932" height="365" loading="lazy">
+
+	</figure>
+	<p>The fonts load immediately after the HTML.</p>
 	<p>Visually, the improvement to the user experience is also <a href="https://www.webpagetest.org/video/view.php?id=181016_040e1e2365d95c4c7836281c9cf713ccc8aed3f5">quite dramatic</a>. Instead of seeing a skeleton page of images followed by the text eventually appearing, the text is available (and correctly styled) immediately and the user can start consuming the content right away:</p>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/1-initial-text.png" alt="The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank.">
-		<figcaption style="font-size:smaller;line-height:1em;">The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank.</figcaption>
-	</figure><br>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/2-image-paint.png" alt="At 3.3 seconds the original page finally starts to paint, displaying part of the images and no text.">
-		<figcaption style="font-size:smaller;line-height:1em;">At 3.3 seconds the original page finally starts to paint, displaying part of the images and no text.</figcaption>
-	</figure><br>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/2.5-text.png" alt="At 4.4 seconds the optimized page is visibly complete while the original page still has not displayed any text.">
-		<figcaption style="font-size:smaller;line-height:1em;">At 4.4 seconds the optimized page is visibly complete while the original page still has not displayed any text.</figcaption>
-	</figure><br>
-	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/3-text-complete.png" alt="At 6.2 seconds the original page finally displays the text content.">
-		<figcaption style="font-size:smaller;line-height:1em;">At 6.2 seconds the original page finally displays the text content.</figcaption>
-	</figure><br>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kWjTwTLDvAES4n8TJg2IH/3d8609ec9571a609b902f2cbf4f93008/1-initial-text.png" alt="The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank." class="kg-image" width="816" height="384" loading="lazy">
+
+	</figure>
+	<p>The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56RnWXmU9RV9zXzpCFn97p/ebc47a59efa0794ea24901fda5834491/2-image-paint.png" alt="At 3.3 seconds the original page finally starts to paint, displaying part of the images and no text." class="kg-image" width="816" height="384" loading="lazy">
+
+	</figure>
+	<p>At 3.3 seconds the original page finally starts to paint, displaying part of the images and no text.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A9zYZNkzElNgOPRuxYkXe/57698d9147a5df6315267e974f68462e/2.5-text.png" alt="At 4.4 seconds the optimized page is visibly complete while the original page still has not displayed any text." class="kg-image" width="816" height="384" loading="lazy">
+
+	</figure>
+	<p>At 4.4 seconds the optimized page is visibly complete while the original page still has not displayed any text.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qfU3rpfQedLhVuUjE4QTg/404fb791ddc60288ecffd317bcc1ae23/3-text-complete.png" alt="At 6.2 seconds the original page finally displays the text content." class="kg-image" width="816" height="384" loading="lazy">
+
+	</figure>
+	<p>At 6.2 seconds the original page finally displays the text content.</p>
 	<p>One thing that I didn’t notice in the initial testing and only discovered when looking at the side-by-side video is that the fonts are only correctly styled in the optimized case. In the original case it took longer than Chrome’s 3-second timeout for the fonts to load and it fell back to the system fonts. Not only was the experience much faster; it was also styled correctly with the custom fonts right from the beginning.</p>
-	<h3 id="optimizinggooglefontswithacloudflareworker">Optimizing Google fonts with a Cloudflare worker</h3>
+	<h3>Optimizing Google fonts with a Cloudflare worker</h3>
 	<p>The full Cloudflare worker code for implementing the font optimization is available on <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts">GitHub here</a>. Buckle-in because this is quite a bit more involved than most of the samples in the documentation.</p>
 	<p>At a high level this code:</p>
 	<ul>
-		<li>Filters all requests and determines if a request is for a proxied font or HTML (and passes all other requests through unmodified).</li>
-		<li>Rewrites the URL and passes the fetch request through for Font requests.</li>
-		<li>For HTML requests:
+		<li>
+			<p>Filters all requests and determines if a request is for a proxied font or HTML (and passes all other requests through unmodified).</p>
+		</li>
+		<li>
+			<p>Rewrites the URL and passes the fetch request through for Font requests.</p>
+		</li>
+		<li>
+			<p>For HTML requests:</p>
 			<ul>
-				<li>Passes the request through unmodified to the origin server.</li>
-				<li>Returns non-UTF-8 content unmodified..</li>
-				<li>Processes the HTML response in streaming chunks as it is available.</li>
-				<li>Replaces Google font stylesheet link tags with style tags containing the CSS and the font URLs rewritten to proxy through the origin.</li>
+				<li>
+					<p>Passes the request through unmodified to the origin server.</p>
+				</li>
+				<li>
+					<p>Returns non-UTF-8 content unmodified..</p>
+				</li>
+				<li>
+					<p>Processes the HTML response in streaming chunks as it is available.</p>
+				</li>
+				<li>
+					<p>Replaces Google font stylesheet link tags with style tags containing the CSS and the font URLs rewritten to proxy through the origin.</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
 	<p>The code here is slightly simplified to make it clearer to understand the flow. The full code on GitHub adds support for an in-memory worker cache for the CSS (in addition to the persistent cache API) and provides query parameters for toggling the HTML rewriting on and off (for testing).</p>
 	<p>The content modification is all done by operating on the HTML as strings (with a combination of regular expressions and string matches). This is much faster and lighter weight than parsing the HTML into a virtual DOM, operating on it and converting back to HTML. It also allows for incremental processing of the HTML as a stream.</p>
-	<h4 id="entrypoint">Entry Point</h4>
+	<h4>Entry Point</h4>
 	<p>The addEventListener(“fetch”) call is the main entry point for any worker and houses the JavaScript for intercepting inbound requests. If the handler does nothing, then the requests will be passed through normally and the worker will be out of the path in processing the response. Our goal it to minimize the amount of work that the worker has to do to determine if it is a request that it is interested in.</p>
 	<p>In the case of the proxied font requests, we can just look at the request URL and see that the path starts with /fonts.gstatic.com/. To identify requests for HTML content we can look at the “accept” header on the request. Every major browser I have tested includes text/html on the list of content types that it will accept when requesting a document. On the off chance that there is a browser that doesn’t include it as an accept header, the HTML will just be passed through and returned unmodified. The goal with everything here is to fail-safe and just return unoptimized content for any edge cases that aren’t covered. This way nothing breaks; it just doesn’t get the added performance boost.</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
  
  const url = new URL(event.request.url);
  const accept = event.request.headers.get('accept');
@@ -118,16 +152,11 @@ h1 {
    event.respondWith(processHtmlRequest(event.request, event));
  
  }
-})
-</code></pre>
-	<p>
-	</p>
-	<h4 id="requestproxy">Request Proxy</h4>
+})</code></pre>
+	<h4>Request Proxy</h4>
 	<p>The proxying of the font requests is pretty straightforward. Since we are crossing origins it is generally a bad idea to just reuse the existing request object with a new URL. That can leak user data like cookies to a Third-party. Instead, we make a new request, clone a subset of the headers and pass the new fetch request back for the Worker runtime to handle.</p>
 	<p>The fetch path between workers and the outside Internet goes through the Cloudflare cache so the actual font files will only be fetched from Google if they aren’t already in the cache. Even in that case, the connection from Cloudflare’s edge to Google’s font servers is much faster (and more reliable) than the end-user’s connection from the browser. Even on a cache miss, it is an insignificant delay.</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">async function proxyRequest(url, request) {
+	<pre class="language-javascript"><code class="language-javascript">async function proxyRequest(url, request) {
  
  // Only pass through a subset of request headers
  let init = {
@@ -174,18 +203,13 @@ h1 {
  }
  
  return response;
-}
-</code></pre>
-	<p>
-	</p>
+}</code></pre>
 	<p>In addition to filtering the request headers we also filter the response headers sent back to the browser. If you’re not careful you could end up in a situation where a third-party is setting cookies on your origin or even turning on something like <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HTTP Strict Transport Security</a> for your site.</p>
-	<h4 id="streaminghtmlprocessing">Streaming HTML Processing</h4>
+	<h4>Streaming HTML Processing</h4>
 	<p>The HTML path is more complicated because we are going to intercept and modify the content itself.</p>
 	<p>In processing the HTML request, the first thing we want to do is make sure it is actually an HTML response. If it is something else, then we should get out of the way and let the response stream back to the browser as it does normally. It is very possible that a PDF document, file download, or even a directly opened image, has a Accept of text/html. It is critical to check the actual content that is being responded with to make sure it is something we want to inspect and possibly modify.</p>
 	<p>The easiest way to modify a response is to just wait for the response to be fully complete, process it as a single block of HTML, and then pass the modified HTML back to the browser:</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript"> async function processHtmlRequest(request) {
+	<pre class="language-javascript"><code class="language-javascript"> async function processHtmlRequest(request) {
  
  // Fetch from origin server.
  const response = await fetch(request)
@@ -198,23 +222,24 @@ h1 {
    return new Response(content, response);
  }
  return response;
-}
-</code></pre>
-	<p>
-	</p>
+}</code></pre>
 	<p>This works reasonably well if you are sure that all of the HTML is UTF-8 (or ascii), and the server returns all of the HTML at once, but there are some pretty serious concerns with doing it this way:</p>
 	<ul>
-		<li>The memory use can be unbounded and only limited by the size of the largest HTML response (possibly causing the worker to be terminated for using too much memory).</li>
-		<li>Significant delay will be added to any pages where the server <a href="https://www.stevesouders.com/blog/2009/05/18/flushing-the-document-early">flushes the initial content early</a> and then does some expensive/slow work before returning the rest of the HTML.</li>
-		<li>This only works if the text content uses an encoding that JavaScript can decode directly as UTF-8. Any other character encodings will fail to decode.</li>
+		<li>
+			<p>The memory use can be unbounded and only limited by the size of the largest HTML response (possibly causing the worker to be terminated for using too much memory).</p>
+		</li>
+		<li>
+			<p>Significant delay will be added to any pages where the server <a href="https://www.stevesouders.com/blog/2009/05/18/flushing-the-document-early">flushes the initial content early</a> and then does some expensive/slow work before returning the rest of the HTML.</p>
+		</li>
+		<li>
+			<p>This only works if the text content uses an encoding that JavaScript can decode directly as UTF-8. Any other character encodings will fail to decode.</p>
+		</li>
 	</ul>
 	<p>For our worker we are going to process the HTML stream incrementally as it arrives from the server and pass it through to the browser as soon as possible (and pass-through any content that isn’t utf-8 unmodified).</p>
-	<h5 id="processinghtmlasastream">Processing HTML as a stream</h5>
+	<h5>Processing HTML as a stream</h5>
 	<p>First we are going to look at what it takes to process the HTML stream incrementally. We will leave the character encoding changes out for now to keep things (relatively) simple.</p>
 	<p>To process the stream incrementally, we need to generate a new fetch response to pass back from the worker that uses a TransformStream for its content. That will allow us to pass the response itself back immediately and write to the stream as soon as we have content to add. We pass all of the other headers through unmodified.</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">async function processHtmlRequest(request) {
+	<pre class="language-javascript"><code class="language-javascript">async function processHtmlRequest(request) {
  
  // Fetch from origin server.
  const response = await fetch(request)
@@ -234,17 +259,12 @@ h1 {
    return newResponse;
  }
  return response;
-}
-</code></pre>
-	<p>
-	</p>
+}</code></pre>
 	<p>The key thing here is to not wait for the async modifyHtmlStream async function to complete before passing the new response back from the worker. This way the initial headers can be sent immediately and the response will continue to stream anything written into the TransformStream until it is closed.</p>
 	<p>Processing the HTML stream in chunks as it arrives is a little tricky. The HTML stream will arrive in chunks of arbitrary sizes as strings. We need to add some protection to make sure that a chunk boundary doesn’t split a link tag. If it does, and we don’t account for it, we can miss a stylesheet link (or worse, process a partial link URL with the wrong style type). To make sure we don’t split link tags, we search from the end of the string for “&lt;link “ and from the start of the last link tag we search forward for a closing “&gt;” tag. If we don’t find one, then there is a partial link tag and we split the string just before the link tag starts. We process everything up to the split link tag and keep the partial tag to prepend it to the next chunk of data that arrives.</p>
 	<p>An alternative would be to keep accumulating data and only process it when there is no split link tag at the end, but this way we can return more data to the browser sooner.</p>
 	<p>When the incoming stream is complete, we process any partial data left over from the previous chunk and close the output stream (ending the response to the browser).</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">async function modifyHtmlStream(readable, writable, request) {
+	<pre class="language-javascript"><code class="language-javascript">async function modifyHtmlStream(readable, writable, request) {
  const reader = readable.getReader();
  const writer = writable.getWriter();
  const encoder = new TextEncoder();
@@ -279,8 +299,7 @@ h1 {
  
      // See if there is an unclosed link tag at the end (and if so,
      // carve it out to complete when the remainder comes in).
-     const linkPos = content.lastIndexOf('&lt;link');
-     if (linkPos &gt;= 0) {
+     const linkPos = content.lastIndexOf('<link'); if="" (linkpos="">= 0) {
        const linkClose = content.indexOf('/&gt;', linkPos);
        if (linkClose === -1) {
          partial = content.slice(linkPos);
@@ -304,20 +323,15 @@ h1 {
  }
  
  await writer.close()
-}
-</code></pre>
-	<p>
-	</p>
+}</link');></code></pre>
 	<p>One thing I was initially worried about was having to modify the “content-length” response header from the original response since we are modifying the content. Luckily, the worker takes care of that automatically and it isn’t something you have to implement.</p>
 	<p>There is a try/catch handler around the processing in case something goes horribly wrong with the decode.</p>
 	<p>The actual HTML rewriting is handled in “modifyHtmlChunk”. This is just the logic for processing the incoming data as incremental chunks.</p>
-	<h5 id="dealingwithcharacterencodingsotherthanutf8">Dealing with character encodings other than UTF-8</h5>
+	<h5>Dealing with character encodings other than UTF-8</h5>
 	<p>We intentionally skipped over handling character encodings other than UTF-8 up until now. To handle arbitrary pages you will need to be able to process other character encodings. The Worker runtime only supports decoding UTF-8 but we need to make sure that we don’t break any content that isn’t UTF-8 (or similar). To do this, we detect the current encoding if it is specified and anything that isn’t UTF-8 is passed through unmodified. In the case that the content type can not be detected we also detect decode errors and pass content through unmodified when they occur.</p>
 	<p>The HTML charset can be specified in the content-type response header or as a <code>&lt;meta charset&gt;</code> tag in the HTML itself.</p>
 	<p>For the response headers it is pretty simple. When we get the original response, see if there is a charset in the content-type header. If there is, extract the current value and if it isn’t a supported charset just pass the response through unmodified.</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">   // Workers can only decode utf-8. If it is anything else, pass the
+	<pre class="language-javascript"><code class="language-javascript">   // Workers can only decode utf-8. If it is anything else, pass the
    // response through unmodified
    const VALID_CHARSETS = ['utf-8', 'utf8', 'iso-8859-1', 'us-ascii'];
    const charsetRegex = /charset\s*=\s*([^\s;]+)/mgi;
@@ -337,17 +351,9 @@ h1 {
    const newResponse = new Response(readable, response);
  
    // Start the async processing of the response stream
-   modifyHtmlStream(response.body, writable, request, event);
-</code></pre>
-	<p>
-	</p>
-	<p>For the cases where there is a “
-		<meta charset="">” tag in the HTML (and possibly no header) things get a bit more complicated. If at any point an unsupported charset is detected then we pipe the incoming byte stream directly into the output stream unmodified. We first decode the first chunk of HTML response using the default decoder. Then, if a
-		<meta charset="">” tag is found in the html we extract the charset. If it isn’t a supported charset then we enter passthrough mode. If at any point the input stream can’t be decoded (likely because of an invalid charset) we also enter passthrough mode and pipe the remaining content through unprocessed.
-	</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">async function modifyHtmlStream(readable, writable, request, event) {
+   modifyHtmlStream(response.body, writable, request, event);</code></pre>
+	<p>For the cases where there is a “” tag in the HTML (and possibly no header) things get a bit more complicated. If at any point an unsupported charset is detected then we pipe the incoming byte stream directly into the output stream unmodified. We first decode the first chunk of HTML response using the default decoder. Then, if a ” tag is found in the html we extract the charset. If it isn’t a supported charset then we enter passthrough mode. If at any point the input stream can’t be decoded (likely because of an invalid charset) we also enter passthrough mode and pipe the remaining content through unprocessed.</p>
+	<pre class="language-javascript"><code class="language-javascript">async function modifyHtmlStream(readable, writable, request, event) {
  const reader = readable.getReader();
  const writer = writable.getWriter();
  const encoder = new TextEncoder();
@@ -413,8 +419,7 @@ h1 {
  
        // See if there is an unclosed link tag at the end (and if so,
        // carve it out to complete when the remainder comes in).
-       const linkPos = content.lastIndexOf('&lt;link');
-       if (linkPos &gt;= 0) {
+       const linkPos = content.lastIndexOf('<link'); if="" (linkpos="">= 0) {
          const linkClose = content.indexOf('/&gt;', linkPos);
          if (linkClose === -1) {
            partial = content.slice(linkPos);
@@ -442,14 +447,9 @@ h1 {
  } catch(e) {
    // Ignore the exception
  }
-}
-</code></pre>
-	<p>
-	</p>
+}</link');></code></pre>
 	<p>There is a helper that scans for the charset in both meta tags that support setting the charset:</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">function chunkContainsInvalidCharset(chunk) {
+	<pre class="language-javascript"><code class="language-javascript">function chunkContainsInvalidCharset(chunk) {
  let invalid = false;
  const VALID_CHARSETS = ['utf-8', 'utf8', 'iso-8859-1', 'us-ascii'];
  
@@ -477,25 +477,27 @@ h1 {
    }
  }
  return invalid;
-}
-</code></pre>
-	<p>
-	</p>
-	<h4 id="htmlbusinesslogic">HTML Business Logic</h4>
+}</code></pre>
+	<h4>HTML Business Logic</h4>
 	<p>Finally, we can start the actual logic for embedding the font CSS. The basic logic is:</p>
 	<ul>
-		<li>Use a regex to find link tags for Google fonts css.</li>
-		<li>Fetch the browser-specific version of the CSS (from cache if possible).
+		<li>
+			<p>Use a regex to find link tags for Google fonts css.</p>
+		</li>
+		<li>
+			<p>Fetch the browser-specific version of the CSS (from cache if possible).</p>
 			<ul>
-				<li>The fetch logic (discussed later) modifies the font URLs in the CSS to proxy through the worker.</li>
+				<li>
+					<p>The fetch logic (discussed later) modifies the font URLs in the CSS to proxy through the worker.</p>
+				</li>
 			</ul>
 		</li>
-		<li>Replace the link tag with a style block with the CSS content.</li>
+		<li>
+			<p>Replace the link tag with a style block with the CSS content.</p>
+		</li>
 	</ul>
-	<p>
-	</p>
-	<pre><code class="language-javascript">async function modifyHtmlChunk(content, request, event) {
- const fontCSSRegex = /&lt;link\s+[^&gt;]*href\s*=\s*['"]((https?:)?\/\/fonts.googleapis.com\/css[^'"]+)[^&gt;]*&gt;/mgi;
+	<pre class="language-javascript"><code class="language-javascript">async function modifyHtmlChunk(content, request, event) {
+ const fontCSSRegex = /<link\s+[^>]*href\s*=\s*['"]((https?:)?\/\/fonts.googleapis.com\/css[^'"]+)[^&gt;]*&gt;/mgi;
  let match = fontCSSRegex.exec(content);
  while (match !== null) {
    const matchString = match[0];
@@ -509,9 +511,9 @@ h1 {
          mediaStr = ' ' + mediaMatch[0];
        }
        // Replace the actual css
-       let cssString = "&lt;style" + mediaStr + "&gt;\n";
+       let cssString = "<style" +="" mediastr="" "="">\n";
        cssString += fontCSS;
-       cssString += "\n&lt;/style&gt;\n";
+       cssString += "\n\n";
        content = content.split(matchString).join(cssString);
      }
      match = fontCSSRegex.exec(content);
@@ -519,24 +521,14 @@ h1 {
  }
  
  return content;
-}
-</code></pre>
-	<p>
-	</p>
+}</style"></link\s+[^></code></pre>
 	<p>The fetching (and modifying) of the CSS is a little more complicated than a straight passthrough because we want to cache the result when possible. We cache the responses locally using the worker’s <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API</a>. Since the response is browser-specific, and we don’t want to fragment the cache too crazily, we create a custom cache key based on the browser user agent string that is basically browser+version+mobile.</p>
 	<p>Some plans have access to named cache storage, but to work with all plans it is easiest if we just modify the font URL that gets stored in cache and append the cache key to the end of the URL as a query parameter. The cache URL never gets sent to a server but is useful for local caching of different content that shares the same URL. For example:</p>
-	<p>
-	</p>
-	<pre><code>https://fonts.googleapis.com/css?family=Roboto&amp;chrome71
-</code></pre>
-	<p>
-	</p>
+	<pre class="language-bash"><code class="language-bash">https://fonts.googleapis.com/css?family=Roboto&amp;chrome71</code></pre>
 	<p>If the CSS isn’t available in the cache then we create a fetch request for the original URL from the Google servers, passing through the HTML url as the referer, the correct browser user agent string and the client’s IP address in a standard proxy X-Forwarded-For header. Once the response is available we store it in the cache for future requests.</p>
 	<p>For browsers that can’t be identified by user agent string a generic request for css is sent with the user agent string from Internet Explorer 8 to get the lowest common denominator fallback CSS.</p>
 	<p>The actual modification of the CSS just uses a regex to look for font URLs, replaces them with the HTML origin as a prefix.</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">async function fetchCSS(url, request) {
+	<pre class="language-javascript"><code class="language-javascript">async function fetchCSS(url, request) {
  let fontCSS = "";
  if (url.startsWith('/'))
    url = 'https:' + url;
@@ -596,14 +588,9 @@ h1 {
  }
  
  return fontCSS;
-}
-</code></pre>
-	<p>
-	</p>
+}</code></pre>
 	<p>Generating the browser-specific cache key is a little sensitive since browsers tend to clone each other’s user agent strings and add their own information to them. For example, Edge includes a Chrome identifier and Chrome includes a Safari identifier, etc. We don’t necessarily have to handle every browser string since it will fallback to the least common denominator (ttf files without unicode range support) but it is helpful to catch as many of the large mainstream browser engines as possible.</p>
-	<p>
-	</p>
-	<pre><code class="language-javascript">function getCacheKey(userAgent) {
+	<pre class="language-javascript"><code class="language-javascript">function getCacheKey(userAgent) {
  let os = '';
  const osRegex = /^[^(]*\(\s*(\w+)/mgi;
  let match = osRegex.exec(userAgent);
@@ -644,13 +631,9 @@ h1 {
    return 'Firefox' + match[1] + os + mobile;
  }
   return null;
-}
-</code></pre>
-	<p>
-	</p>
-	<h3 id="profit">Profit!</h3>
+}</code></pre>
+	<h3>Profit!</h3>
 	<p>Any site served through Cloudflare can implement workers to rewrite their content but for something like Google fonts or other third-party resources it gets much more interesting when someone implements it once and everyone else can benefit. With <a href="https://www.cloudflare.com/apps/developer/docs/getting-started">Cloudflare Apps’</a> new <a href="https://blog.cloudflare.com/introducing-apps-with-workers">worker support</a> you can bundle up and deliver complex worker logic for anyone else to consume and publish it to the Apps marketplace.</p>
 	<p>If you are a third-party content provider for sites, think about what you might be able to do to leverage workers for your content for sites that are served through Cloudflare.</p>
 	<p>I get excited thinking about the performance implications of something like a tag manager running entirely on the edge without the sites having to change their published pages and without browsers having to fetch heavy JavaScript to do the page modifications. It can be done dynamically for every request directly on the edge!</p>
-	<!--kg-card-end: markdown-->
 </div>

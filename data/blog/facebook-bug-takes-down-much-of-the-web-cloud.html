@@ -1,19 +1,20 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UBbela8jAflQV9yZ0IyGB/517afb37d578e823fc2db24aa2375840/facebook-bug-takes-down-much-of-the-web-cloud.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>You may have heard that <a href="http://allthingsd.com/20130207/in-one-fell-swoop-apparent-facebook-glitch-deep-sixes-the-web">Facebook took down a significant portion of the Internet today</a>. A bug in their Facebook Connect script -- which is installed widely across many sites including CNN, MSNBC.com, New York Magazine, and many more places -- caused users to be redirected to a Facebook error page. Here's a video of what it looked like if you visited NBCNews.com:</p>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/lcAmokHHuO0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
 	<p>The incident raises two good points: 1) the risk of Javascript widgets creating a "single points of failure" on your web page; and 2) the ways in which CloudFlare can help protect you from similar errors.</p>
-	<h3 id="widgetsspof">Widgets &amp; SPOF</h3>
+	<h3>Widgets &amp; SPOF</h3>
 	<p>Facebook Connect works as a piece of Javascript that is embeded on pages. When the bug occurred, the Javascript effectively hijacked the page and directed it somewhere else. It may seem like installing a widget such as the Facebook button is harmless, but today's incident shows how much harm it can actually cause.</p>
 	<p><a href="https://twitter.com/BjoernKaiser">Björn Kaiser</a> wrote a <a href="http://calendar.perfplanet.com/2012/spof-bug">great blog post last year about the risks that embedded Javascript widgets can create</a>, and how their failure can create a single point of failure (SPOF) on your site. In the post, he describes how you can test the embedded widgets on your page to see what would happen if any of them fail. Given that no widget provider, even Facebook, is infallible it is important to understand the risk of widget failure bringing down your site.</p>
-	<h3 id="howcloudflarehelps">How CloudFlare Helps</h3>
+	<h3>How CloudFlare Helps</h3>
 	<p>There are two distinct ways in which CloudFlare helps protect you from Javascript widgets taking down your site. The first is via our Rocket Loader feature.</p>
 	<p>While we don't describe it this way often, <a href="https://blog.cloudflare.com/56590463">Rocket Loader</a> is effectively an on-page Javascript optimizer. It sits in front of widgets and makes sure they load as fast as possible. It also has a number of failsafes that can protect from any widget hijacking your site the way Facebook's Connect service did today. While we primarily describe Rocket Loader as a performance feature, in this role it's also very helpful for security and site availability.</p>
-	<p><img alt="Facebook Bug Redirects the Web Through Javascript Widget
-Error" src="https://blog.cloudflare.com/content/images/rocket.png.scaled500.png" title="Facebook Bug Redirects the Web Through Javascript Widget Error"></p>
-	<p>The second way we protect sites from misbehaving Javascript widgets is through CloudFlare's app store. Many CloudFlare apps are Javascript widgets of one kind or another. When you install any CloudFlare app, we go through the process of making sure that the app performs well and can run asychronously. This greatly reduces the risk of an CloudFlare-installed app becoming a SPOF. Moreover, because we can install, upgrade, and remove apps centrally, if a problem like<br>
-		Facebook's had occurred with one of the CloudFlare apps, we could quickly remove it from pages to keep it from causing harm.</p>
-	<h3 id="savetheweb">#savetheweb</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3D3DQTM5K6OYT7XBXsGfQh/cd5953033ebb267dbacf5654c0fcfb58/rocket.png.scaled500.png" alt="Facebook Bug Redirects the Web Through Javascript Widget
+Error" class="kg-image" width="500" height="500" loading="lazy">
+
+	</figure>
+	<p>The second way we protect sites from misbehaving Javascript widgets is through CloudFlare's app store. Many CloudFlare apps are Javascript widgets of one kind or another. When you install any CloudFlare app, we go through the process of making sure that the app performs well and can run asychronously. This greatly reduces the risk of an CloudFlare-installed app becoming a SPOF. Moreover, because we can install, upgrade, and remove apps centrally, if a problem likeFacebook's had occurred with one of the CloudFlare apps, we could quickly remove it from pages to keep it from causing harm.</p>
+	<h3>#savetheweb</h3>
 	<p>Today's Facebook incident shows the risks of misbehaving Javascript widgets, but it also helps drive home the point on how CloudFlare is really building a better web. To that end, we will continue to invest in improving Rocket Loader and adding more and more apps to the CloudFlare Apps Marketplace. If you haven't turned on Rocket Loader or added an app through the <a href="https://www.cloudflare.com/apps">CloudFlare Apps Marketplace</a>, you now have one more reason check them both out.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,29 +1,37 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NeBDFgsfG7VeEqZuMvfGA/df626bce2404feb24e203beabe7b1339/redirect-users-to-new-destinations-with-cloudflare-for-teams.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Phishing attacks begin like any other visit to a site on the Internet. A user opens a suspicious link from an email, and their DNS resolver looks up the hostname, then connects the user to the origin.</p>
 	<p>Cloudflare Gateway’s secure DNS blocks threats like this by checking every hostname query against a constantly-evolving list of known threats on the Internet. Instead of sending the user to the malicious host, Gateway stops the site from resolving. The user sees a “blocked domain” page instead of the malicious site itself.</p>
 	<p>As teams migrate to SaaS applications and zero-trust solutions, they rely more on the public Internet to do their jobs. Gateway's security works like a bouncer, keeping users safe as they navigate the Internet. However, some organizations still need to send traffic to internal destinations for testing or as a way to make the migration more seamless.</p>
 	<p>Starting today, you can use Cloudflare Gateway to direct end user traffic to a different IP than the one they originally requested. Administrators can build rules to override the address that would be returned by a resolver and send traffic to a specified alternative.</p>
 	<p>Like the security features of Cloudflare Gateway, the redirect function is available in every one of Cloudflare’s data centers in 200 cities around the world, so you can block bad traffic and steer internal traffic without compromising performance.</p>
-	<h3 id="what-is-cloudflare-gateway">What is Cloudflare Gateway?</h3>
+	<h3>What is Cloudflare Gateway?</h3>
 	<p>Cloudflare Gateway is one-half of <a href="https://teams.cloudflare.com">Cloudflare for Teams</a>, Cloudflare’s platform for securing users, devices, and data. With Cloudflare for Teams, our global network becomes your team’s network, replacing on-premise appliances and security subscriptions with a single solution delivered closer to your users - wherever they work.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image1-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0PUCP4W4LHG6ZoWiJW3yg/4e74e64eb9f0d7ded4b38b8db72e6f30/image1-5.png" alt="" class="kg-image" width="1608" height="1270" loading="lazy">
+
+	</figure>
 	<p>As part of that platform, Cloudflare Gateway blocks threats on the public Internet from becoming incidents inside of your organization. Gateway’s <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">first release</a> added &nbsp;DNS security filtering and content blocking to the world’s fastest DNS resolver, Cloudflare’s 1.1.1.1.</p>
 	<p><a href="https://developers.cloudflare.com/gateway/locations/setup-instructions/router">Deployment</a> takes less than 5 minutes. Teams can secure entire office networks and segment traffic reports by location. For distributed organizations, Gateway can be deployed via MDM on networks that support IPv6 or using a dedicated IPv4 as part of a <a href="https://www.cloudflare.com/plans/enterprise">Cloudflare enterprise account</a>.</p>
 	<p>With secure DNS filtering, administrators can click a single button to block known threats, like sources of malware or phishing sites. Policies can be extended to block specific categories, like gambling sites or social media. When users request a filtered site, Gateway stops the DNS query from resolving and prevents the device from connecting to a malicious destination or hostname with blocked material.</p>
-	<h3 id="traffic-bound-for-internal-destinations">Traffic bound for internal destinations</h3>
+	<h3>Traffic bound for internal destinations</h3>
 	<p>As users connect to SaaS applications, Cloudflare Gateway can keep those teams secure from threats on the public Internet.</p>
 	<p>In parallel, teams can move applications that previously lived on a private network to a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">zero-trust model</a> with Cloudflare Access. Rather than trusting anyone on a private network, Access checks for identity any time someone attempts to reach the application.</p>
 	<p>Together, Cloudflare for Teams keeps users safe and makes internal applications just as easy to use as SaaS tools. Making it easier to migrate to that model also reduces user friction. Domain overrides can smooth that transition from internal networks to a fully cloud-delivered model.</p>
 	<p>With Gateway's domain override feature, administrators can choose certain hostnames that still run on the private network and send traffic to the local IPs with the same resolver that secures Internet-bound traffic. End users can continue to connect to those resources without disruption. Once ready, those tools can be secured with Cloudflare Access to remove the reliance on a private network altogether.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image2-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5798WYR0WROefGRHC9L71R/564af577c65a048f3d08487b5d4841f2/image2-4.png" alt="" class="kg-image" width="1999" height="1169" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Gateway can help reduce user confusion and IT overhead with split-horizon setups where some traffic routes to the Internet and other requests need to stay on the same network. Administrators can build policies to route traffic bound for hostnames, even ones that exist publicly, to internal IP addresses that a user can reach if they are on the same local network.</p>
-	<h3 id="how-does-it-work">How does it work?</h3>
+	<h3>How does it work?</h3>
 	<p>When administrators configure an override policy, Cloudflare Gateway pushes that information to the edge of our network. The rule becomes part of the Gateway enforcement flow for that organization’s account. Explicit override policies are enforced first, before allowed or blocked rules.</p>
 	<p>When a user makes a request to the original destination, that request arrives at a Gateway IP address where Cloudflare's network checks the source IP to determine which policies to enforce. Gateway determines that the request has an override rule and returns the preconfigured IP address.</p>
 	<p>Gateway's DNS override feature is supported in deployments that use Cloudflare's IPv4 or IPv6 addresses, as well as <a href="https://developers.cloudflare.com/gateway/locations/setup-instructions/firefox">DNS over HTTPS</a>.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>The domain override feature is available to all Cloudflare for Teams customers today at no additional cost. You can begin building override rules by navigating to the Policies section of the Gateway product and selecting the “Custom” tab. Administrators can configure up to 1,000 custom rules.</p>
-	<p>To help organizations in their <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">transition to remote work</a>, Cloudflare has made our Teams platform free for any organization through September 1. You can set up an account at <a href="https://dash.teams.cloudflare.com">dash.teams.cloudflare.com</a> now. </p>
+	<p>To help organizations in their <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">transition to remote work</a>, Cloudflare has made our Teams platform free for any organization through September 1. You can set up an account at <a href="https://dash.teams.cloudflare.com">dash.teams.cloudflare.com</a> now.</p>
 	<p>Need help getting started? You can <a href="https://teams.cloudflare.com/#get-notified">request a dedicated onboarding</a> session at no charge.</p>
 </div>

@@ -1,50 +1,64 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IfT9icfzUPftggaTxi5pK/707d8adcba1a009570bf75b35bfde427/how-to-tell-how-well-railgun-is-working-for-y.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Yesterday, we announced that 30 of the world's largest hosting providers are now supporting CloudFlare's Railgun WAN optimization technology. Railgun uses delta compression to only transmit the parts of a dynamic page that have changed from one request to another. The net effect is that, on average, we can achieve a 99.6% compression ratio. In other words, what uncompressed would have taken 200 packets with Railgun we can transmit in a single packet.</p>
 	<p>This blog post is about using headers we include in responses delivered from Railgun in order to see how it is working. We've been running Railgun on CloudFlare.com for the last few months so I'll use it as an example.</p>
-	<h3 id="exposingtheheaders">Exposing the Headers</h3>
+	<h3>Exposing the Headers</h3>
 	<p>When a request is handled by Railgun, CloudFlare inserts a header with diagnostic information to track how the protocol is doing. If you want to see these headers, you'll need to use a browser that supports examining header information. Google's Chrome Browser or Apple's Safari Browser allow you to access Developer Tools (in Google, select the View &gt; Developer &gt; Developer Tools menu; in Safari, select the Develop &gt; Show Web Inspector menu). In Firefox, you can install <a href="http://getfirebug.com">Firebug</a> to see response headers. Microsoft's Internet Explorer makes it a bit trickier to see the response headers, but you can use a tool like <a href="http://www.fiddler2.com/fiddler2">Fiddler</a> in order to expose them.</p>
-	<p><img alt="How to Tell How Well Railgun Is Working for Your Site" src="https://blog.cloudflare.com/content/images/claire_screenshot.png.scaled500.png" title="How to Tell How Well Railgun Is Working for Your Site"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ECdNDw0dyUtAPF4eoiXBE/4abcae84d742d995b898d72fb4f86fd8/claire_screenshot.png.scaled500.png" alt="How to Tell How Well Railgun Is Working for Your Site" class="kg-image" width="264" height="523" loading="lazy">
+
+	</figure>
 	<p>At CloudFlare, we've also made a Chrome extension for our own debugging purposes that we call Claire. When installed, it adds a small "cloud" icon to the right corner of the URL bar. If you're visiting a site that uses CloudFlare, lights up orange. Small icons under the cloud indicate whether you're using SPDY, Railgun, or IPv6 for your connection. Clicking on the icon exposes more data including information about the Railgun connection.</p>
 	<p>While Claire makes seeing the Railgun information easy, I'm going to walk through the rest of this post assuming you don't have it installed. Instead, I'll use Chrome's Developer Tools for the examples.</p>
-	<h3 id="storyintheheaders">Story in the Headers</h3>
+	<h3>Story in the Headers</h3>
 	<p>If you open the Developer Tools panel and click on the Network tab you'll see an interface like the one in the picture below:</p>
-	<p><img alt="How to Tell How Well Railgun Is Working for Your
-Site" src="https://blog.cloudflare.com/content/images/chrome_developer_tools_cloudflare.png.scaled500.png" title="How to Tell How Well Railgun Is Working for Your Site"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Z2Fn8wfypVSvHqpTeQaZL/c29c97812de1a89b2d2f70ece27f913c/chrome_developer_tools_cloudflare.png.scaled500.png" alt="How to Tell How Well Railgun Is Working for Your
+Site" class="kg-image" width="500" height="310" loading="lazy">
+
+	</figure>
 	<p>Clicking on the first item in the list, which represents the dynamic HTML content that makes up the page, and then clicking on the Headers tab will show you the headers your browser sent to CloudFlare's servers as well as, if you scroll down, the response headers that your browser received back. Below is a sample of the response headers when accessing <a href="https://www.cloudflare.com">www.cloudflare.com</a>:</p>
-	<p><img alt="How to Tell How Well Railgun Is Working for Your
-Site" src="https://blog.cloudflare.com/content/images/cloudflare_response_headers.png.scaled500.png" title="How to Tell How Well Railgun Is Working for Your Site"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35LbDaVPf1JXOIaQDZs4r0/682ed67d8905e73ed63b90ba821eda02/cloudflare_response_headers.png.scaled500.png" alt="How to Tell How Well Railgun Is Working for Your
+Site" class="kg-image" width="500" height="167" loading="lazy">
+
+	</figure>
 	<p>There are two headers that CloudFlare is inserting in the response:</p>
-	<pre><code>cf-railgun: e95b1c46e0 0.02 0.037872 0030 9878
-cf-ray: 478149ad1570291
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cf-railgun: e95b1c46e0 0.02 0.037872 0030 9878
+cf-ray: 478149ad1570291</code></pre>
 	<p>The second of these headers is what we call a RayID. This is a unique serial number attached to every request through the CloudFlare network, start to finish, which helps us diagnose if there's a problem at some step in our chain. If you ever have an error on your site when accessing CloudFlare, providing the RayID to our support team can help us track down the cause very quickly. The header I'm going to focus on for this post is the cf-railgun header, which I'll break down below.</p>
-	<h3 id="thecfrailgunheader">The CF-Railgun Header</h3>
+	<h3>The CF-Railgun Header</h3>
 	<p>The CF-Railgun header has up to five codes separated by a space. In order, these codes and their corresponding values from the example above are:</p>
 	<ul>
-		<li>Railgun Request ID: e95b1c46e0</li>
-		<li>Compression Ratio: 0.02</li>
-		<li>Origin Processing Time: 0.037872</li>
-		<li>Railgun Flags: 0030</li>
-		<li>Version Number: 9878</li>
+		<li>
+			<p>Railgun Request ID: e95b1c46e0</p>
+		</li>
+		<li>
+			<p>Compression Ratio: 0.02</p>
+		</li>
+		<li>
+			<p>Origin Processing Time: 0.037872</p>
+		</li>
+		<li>
+			<p>Railgun Flags: 0030</p>
+		</li>
+		<li>
+			<p>Version Number: 9878</p>
+		</li>
 	</ul>
 	<p>Breaking these down, the Railgun Request ID corresponds to an internal process number that allows us to track what connection handled a request in order to diagnose potential problems. Generally, you shouldn't need this value unless you're reporting a problem with your Railgun installation.</p>
-	<p>The Compression Ratio is more interesting in gauging how Railgun is down. It represents the size of the response after Railgun's delta compression expressed as a percentage. In the example above, the HTML returned for <a href="https://www.cloudflare.com">www.cloudflare.com</a> is 0.02% of the size of the original that would be returned assuming no origin compression. Another way of thinking about this is the amount of data saved, which can be calculated by subtracting the Compression Ratio value from 100. In this case, 99.98% of the data that would have been required to generate <a href="https://www.cloudflare.com">www.cloudflare.com</a><br>
-		doesn't need to be transmitted because of the Railgun compression.</p>
+	<p>The Compression Ratio is more interesting in gauging how Railgun is down. It represents the size of the response after Railgun's delta compression expressed as a percentage. In the example above, the HTML returned for <a href="https://www.cloudflare.com">www.cloudflare.com</a> is 0.02% of the size of the original that would be returned assuming no origin compression. Another way of thinking about this is the amount of data saved, which can be calculated by subtracting the Compression Ratio value from 100. In this case, 99.98% of the data that would have been required to generate <a href="https://www.cloudflare.com">www.cloudflare.com</a>doesn't need to be transmitted because of the Railgun compression.</p>
 	<p>The Origin Processing Time represents the time, in seconds, that Railgun waits for the origin web server to generate the page. In this case, the origin server takes 0.03782 seconds from when the Railgun listener sends the request to the origin to when it responds. If this number is large, it means your web server or database may be hitting a bottleneck that is slowing down its time to render the full page.</p>
 	<p>The Railgun Flags represent how a request was processed. The simplified way of looking at the Railgun Flags is to see the 4-digit sequence as zzXz. Ignore the z's and focus on the number or letter in the X position. If it is 3,7, B or F then it means Railgun Compression is working correctly.</p>
 	<p>If there is an error of some sort, the Compression Ratio is likely to be listed as "normal" or "direct." This means that Railgun's compression was bypassed for one reason or another. The Railgun Flags help diagnose why. The Railgun Flags are a bitset and, in order to fully interpret them, you need to use the rg-diag utility which is included with the <a href="https://www.cloudflare.com/resources-downloads">Railgun packages</a>. Run the utility from the command line with the -decode option. For example, to decode the Railgun Code 0038, for example, you'd run:</p>
-	<p><strong>rg-diag -decode=0038</strong></p>
-	<p>Which returns in:<br>
-		<span style="font-family: Menlo, monospace; font-size: xx-small;">Railgun<br>
-			Flag Existing origin connection reused</span><br>
-		<span style="font-family: Menlo, monospace; font-size: xx-small;">Railgun Flag rg-sender sent dictionary</span><br>
-		<span style="font-family: Menlo, monospace; font-size: xx-small;">Railgun Flag rg-listener found dictionary</span>
-	</p>
+	<p><b>rg-diag -decode=0038</b></p>
+	<p>Which returns in:RailgunFlag Existing origin connection reusedRailgun Flag rg-sender sent dictionaryRailgun Flag rg-listener found dictionary</p>
 	<p>This information can be useful in diagnosing potential problems with Railgun. The good news is that the Railgun protocol is designed to be resilient. If a connection fails for some reason, in most cases it will immediately roll over to a normal HTTP or HTTPS connection without the visitor seeing an error.</p>
 	<p>Finally, returning to the cf-railgun header, the final variable is the Version Number which indicates the version of the Railgun Listener software that is running on the origin server's network. The numbers aren't necessarily sequential, so having a lower number than another Railgun Listener doesn't necessarily mean your Listener is out of date.</p>
-	<h3 id="clairemakesiteasy">Claire Makes It Easy</h3>
+	<h3>Claire Makes It Easy</h3>
 	<p>The Claire Chrome Plugin simplifies the header, leaving out the Railgun Flags and Version Number. Instead, it returns the Railgun Request ID (useful to provide to our support team if there's an issue), the amount of data saved for the particular request (derived from 100 - the Compression Ratio), and the Origin Processing Time (in seconds). Generally, this is all you should need to see whether Railgun is functioning as intended on your site.</p>
 	<p>Stay tuned. We'll post more information on tips for getting the most out of Railgun, as well as some of the design and engineering considerations that went into designing the protocol, over the coming days.</p>
-	<!--kg-card-end: markdown-->
 </div>

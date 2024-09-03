@@ -1,71 +1,100 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44wLSjL4ABCu8mvG3W9Gg5/79d098622a2a45851745f5335337f41d/the-cuban-cdn.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>On a recent trip to Cuba I brought with me a smartphone and hoped to get Internet access either via WiFi or 3G. I managed that (at a price) but also saw for myself how Cubans get access to an alternate Internet delivered by <a href="https://en.wikipedia.org/wiki/Sneakernet">sneakernet</a>.</p>
 	<p>Cuba is currently poorly served by the Internet with a small number of public WiFi hotspots. There are currently <a href="http://www.etecsa.cu/?page=internet_conectividad&amp;sub=wifi">175 public WiFi</a> hotspots in the country, many in public parks. In addition, many large hotels also have public WiFi. Since this is the primary way Cubans get Internet access it’s not uncommon to see situations like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/DSC_0200-1.JPG" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/420bnDWFn5o9GN5k84ieoF/a2c44dcacc2f65b22b2c3057f96aba5a/DSC_0200-1.JPG.jpeg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
+
+	</figure>
 	<p>Getting on the WiFi means buying a card that gives you access for 2 <a href="https://en.wikipedia.org/wiki/Cuban_convertible_peso">CUC</a> ($2) per hour. These cards have a login number and a password (hidden behind a scratch off panel). The hour can be used in chunks by logging off and on.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/IMG_6986-1.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nx2YWwfac8kE4IiA7xLop/1a532c8a79a68f51b6aa56652e9810a9/IMG_6986-1.jpg" alt="" class="kg-image" width="2362" height="1478" loading="lazy">
+
+	</figure>
 	<p>There’s also mobile phone access to the Internet (I saw 3G, EDGE and GPRS as I traveled across Cuba), but at <a href="http://www.etecsa.cu/?page=telefonia_movil&amp;sub=tarifas">1 CUC ($1) per MB</a> it’s very expensive. The phone company does provide email access (to their own <a href="http://www.etecsa.cu/?page=telefonia_movil&amp;sub=movil_nauta">email service</a>) and so some Cubans I met used their phones to get email, but I didn’t come across anyone who used the web on their phone.</p>
 	<p>I was able to use 3G Internet access from my phone (via my home carrier) but curiously got a certificate error trying to access my CloudFlare email and decided not to proceed and discover why!</p>
 	<p>The overall story is that currently there is limited access to the Internet but that it is expensive (especially for Cubans).</p>
-	<h2 id="enterelpaquete">Enter El Paquete</h2>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/IMG_7055-1.jpg" alt="" loading="lazy"></p>
-	<p>To work around this problem everyone I spoke to had access to Cuba’s private “CDN”: <em>El Paquete Semanal</em>. El Paquete is a weekly service where someone (typically found through word of mouth) comes to your home with a disk (usually a 1TB external USB drive) containing a weekly download of the most recent films, soap operas, documentaries, sport, music, mobile apps, magazines, and even web sites. For 2 CUC a week Cubans have access to a huge repository of media while turning a blind eye to copyright.</p>
+	<h2>Enter El Paquete</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2o8BmWr7GL4jlGUW8HXZoM/b2c7c26b56605da68025d655529d0fb0/IMG_7055-1.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p>To work around this problem everyone I spoke to had access to Cuba’s private “CDN”: <i>El Paquete Semanal</i>. El Paquete is a weekly service where someone (typically found through word of mouth) comes to your home with a disk (usually a 1TB external USB drive) containing a weekly download of the most recent films, soap operas, documentaries, sport, music, mobile apps, magazines, and even web sites. For 2 CUC a week Cubans have access to a huge repository of media while turning a blind eye to copyright.</p>
 	<p>Cubans told me of children waiting anxiously for “El Paquete Day” when they’d get the next set of cartoons, music and shows.</p>
 	<p>Vox wrote a nice <a href="http://www.vox.com/2015/9/21/9352095/netflix-cuba-paquete-internet">article</a> that describes El Paquete and includes this short film from Cuba and its creation.</p>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/fTTno8D-b2E" frameborder="0" allowfullscreen=""></iframe>
-	.
-	.
-	.
-	.
-	.
-	.
-	.
-	.
+	<p>. . . . . . . .</p>
 	<p>Being a nerd I talked for a long time with Cubans about El Paquete and was intrigued when one of them mentioned that “it even includes this week’s antivirus update”. Makes sense when you realize people can’t get the latest update downloaded across the Internet. And more than that it piqued my interest in examining a copy of El Paquete and seeing what was really included.</p>
-	<p>I managed to get access to El Paquete Semanal for the week of March 21, 2016<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>. This edition of El Paquete is 815.25 GB and contained 14,208 files. It’s an immense effort to update that on a weekly basis.</p>
+	<p>I managed to get access to El Paquete Semanal for the week of March 21, 2016<a href="https://blog.cloudflare.com/#fn1">[1]</a>. This edition of El Paquete is 815.25 GB and contained 14,208 files. It’s an immense effort to update that on a weekly basis.</p>
 	<p>Here’s the top level directory of El Paquete showing the major categories of media available.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-04-at-10-04-31.png"><img src="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-04-at-10-04-31.png" alt="" loading="lazy"></a></p>
-	<p>Sure enough, right there is <em>Actualizacion Antivirus</em> which contains antivirus updates for Avast, AVG, Avira, BitDefender, ClamAV, Kaspersky, McAfee, Microsoft Security Essentials, ESET and Norton.</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-04-at-10-04-31.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YZH2auEWpFC5S6k5Ix54b/610c280e6734a7e23a60e228704ca637/Screen-Shot-2016-08-04-at-10-04-31.png" alt="" class="kg-image" width="1210" height="556" loading="lazy">
+		</a>
+	</figure>
+	<p>Sure enough, right there is <i>Actualizacion Antivirus</i> which contains antivirus updates for Avast, AVG, Avira, BitDefender, ClamAV, Kaspersky, McAfee, Microsoft Security Essentials, ESET and Norton.</p>
 	<p>The McAfee update was 8107xdat.exe which was released by McAfee on March 17, 2016. So, just four days later that update was in the hands of Cubans. The ClamAV was from the same date.</p>
-	<p>I scanned the entire disk with the latest Sophos release and it showed up three infected files: all in the <em>Aplicaciones Para Pc</em> directory (i.e within PC apps). Luckily, all these would have been picked up by the antivirus programs include in El Paquete.</p>
-	<h2 id="theweeksenglishandspanishmagazines">The week's English and Spanish Magazines</h2>
-	<p>Most stories written about El Paquete talk about the availability of films and TV. I was intrigued by the <em>Revistas</em> directory. It contains magazines and newspapers and is split into two sections (one for international magazines and one for those in Spanish).</p>
-	<p>The international magazines directory contained 53 high-quality PDFs of recent magazines from the English-speaking world. As can be seen from the sample below the PDFs are up to date for the week in question and include edition 511 of The Economist (cover date March 5). There’s also Cosmopolitan (April), Bloomberg Businessweek (March 14), Maxim (March), New Scientist (March 5), The Week (March 11) and a number of other specialist magazines. Somewhat incongruously there’s the NSFW British Sunday tabloid <em>Sunday Sport</em>.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/08/-magazines.png"><img src="https://blog.cloudflare.com/content/images/2016/08/-magazines.png" alt="" loading="lazy"></a></p>
+	<p>I scanned the entire disk with the latest Sophos release and it showed up three infected files: all in the <i>Aplicaciones Para Pc</i> directory (i.e within PC apps). Luckily, all these would have been picked up by the antivirus programs include in El Paquete.</p>
+	<h2>The week's English and Spanish Magazines</h2>
+	<p>Most stories written about El Paquete talk about the availability of films and TV. I was intrigued by the <i>Revistas</i> directory. It contains magazines and newspapers and is split into two sections (one for international magazines and one for those in Spanish).</p>
+	<p>The international magazines directory contained 53 high-quality PDFs of recent magazines from the English-speaking world. As can be seen from the sample below the PDFs are up to date for the week in question and include edition 511 of The Economist (cover date March 5). There’s also Cosmopolitan (April), Bloomberg Businessweek (March 14), Maxim (March), New Scientist (March 5), The Week (March 11) and a number of other specialist magazines. Somewhat incongruously there’s the NSFW British Sunday tabloid <i>Sunday Sport</i>.</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/08/-magazines.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3I55DVA8YlsIzgDdUkq1PY/4a2bb289b34f39cf22b02e5838a38241/-magazines.png" alt="" class="kg-image" width="1066" height="654" loading="lazy">
+		</a>
+	</figure>
 	<p>The Spanish language magazine collection is so large that it is divided into folders and contains 296 magazines. It covers everything from cars to cinema and cooking, health and sports, news and economics, photography, humor, fashion, technology and travel.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-08-at-14-04-55.png"><img src="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-08-at-14-04-55.png" alt="" loading="lazy"></a></p>
-	<h2 id="androidapps">Android Apps</h2>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-08-at-14-04-55.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lhARwwOsCH4lPirX0fah5/25f12c0b5be4d72a8e16fba9d4196b6c/Screen-Shot-2016-08-08-at-14-04-55.png" alt="" class="kg-image" width="777" height="436" loading="lazy">
+		</a>
+	</figure>
+	<h2>Android Apps</h2>
 	<p>I saw many mobile phones based on Android around Cuba (many of them had made their way to Cuba from the US and had US branding; Verizon seemed especially popular). Because most Cubans can't get directly to the Google Play Store to download apps, El Paquete contains a weekly update of Android Apps as <a href="https://en.wikipedia.org/wiki/Android_application_package">apk</a> files.</p>
-	<p>The <em>Aplicaciones Para Moviles</em> directory contains apps for Android and iOS. There are 59 apk files (for Android) and 19 <a href="https://en.wikipedia.org/wiki/.ipa">ipa</a> (for iOS).</p>
+	<p>The <i>Aplicaciones Para Moviles</i> directory contains apps for Android and iOS. There are 59 apk files (for Android) and 19 <a href="https://en.wikipedia.org/wiki/.ipa">ipa</a> (for iOS).</p>
 	<p>The iOS files contain updates for Instagram and WhatsApp as well as Plants vs. Zombies, Subway Surf and Temple Run 2.</p>
 	<p>For Android there's a wider selection (a lot of games) plus Facebook Messenger, WhatsApp, Yahoo Messenger, and a number of apps for handling office documents.</p>
-	<h2 id="tvfilmsmusicandbestof">TV, Films, Music and "Best Of"</h2>
+	<h2>TV, Films, Music and "Best Of"</h2>
 	<p>There are a huge quantity of media files in the copy of El Paquete that I looked at: 4,909 JPEGs, 2,334 MP3 files, 1,804 MP4 files, 219 AVI files, and 74 MKV files covering music, TV (series, documentaries, soaps, sports), films (English-language and Spanish) and an entire section of essentially "Best Of" videos selected from sites like YouTube.</p>
 	<p>The "Best Of" (called Interesantes Variados) contains things like unboxing videos of new products, popular vloggers, and product reviews.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-16-at-14-55-55.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EF6vsPAqPtVu3zucSpW7f/7bfc022658fe3177c989e9fba0b37bf8/Screen-Shot-2016-08-16-at-14-55-55.png" alt="" class="kg-image" width="1006" height="578" loading="lazy">
+
+	</figure>
 	<p>To get a sense of how up to date the information is I took a look at the English-language films available. One of the films, <a href="https://en.wikipedia.org/wiki/London_Has_Fallen">London Has Fallen</a>, was released on March 4, 2016 in the US and was available in El Paquete on March 21, 2016 with hard-coded Spanish subtitles (it looked like it was filmed in a cinema with a hand-held camera).</p>
-	<h2 id="websites">Web Sites</h2>
+	<h2>Web Sites</h2>
 	<p>Some Cubans mentioned to me that El Paquete was important in daily life for things like finding services, or a place to live, or a job. This is done through the Cuban equivalent of Craigslist or Gumtree called Revolico.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-16-at-11-37-02.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZfWBT1Hl23QodxvuLFF7c/ff87c815471e4c686f20069b6e806460/Screen-Shot-2016-08-16-at-11-37-02.png" alt="" class="kg-image" width="811" height="633" loading="lazy">
+
+	</figure>
 	<p><a href="http://www.revolico.com">Revolico</a> is a <a href="https://www.technologyreview.com/s/542106/cuban-web-entrepreneur-endures-a-murky-status">web site with categories for cars, jobs, services, computer equipment and buying and selling pretty much anything</a>. It's available online (just click above) but it's also available in El Paquete.</p>
-	<p>In a folder called <em>! Revolico + Odisea + Lay + Highvista</em> there's an ISO file containing an archive of the entire Revolico web site so that it can be browsed without an Internet connection. It's a web site without the web; just open index.html to start browsing.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-16-at-11-39-18.png"><img src="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-16-at-11-39-18.png" alt="" loading="lazy"></a></p>
+	<p>In a folder called <i>! Revolico + Odisea + Lay + Highvista</i> there's an ISO file containing an archive of the entire Revolico web site so that it can be browsed without an Internet connection. It's a web site without the web; just open index.html to start browsing.</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/08/Screen-Shot-2016-08-16-at-11-39-18.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2t0cnH7nTpJoCrJIPD0Ese/f50362f66b1bec99e9e3de14defbc015/Screen-Shot-2016-08-16-at-11-39-18.png" alt="" class="kg-image" width="628" height="448" loading="lazy">
+		</a>
+	</figure>
 	<p>The ISO file is dated March 18, 2016, making it only three days out of date.</p>
-	<p>Finally, there's a folder called <em>! Lo Ultimo [Red de Redes]</em> which contains screenshots of web pages from the Spanish web site <a href="http://www.melty.es">melty</a>. This is divided into sections for Celebrities, Cinema, Fashion, Music, Series, Technology and Video Games and each web page is a long JPG.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/08/4.jpg"><img src="https://blog.cloudflare.com/content/images/2016/08/4small.jpg" alt="" loading="lazy"></a></p>
+	<p>Finally, there's a folder called <i>! Lo Ultimo [Red de Redes]</i> which contains screenshots of web pages from the Spanish web site <a href="http://www.melty.es">melty</a>. This is divided into sections for Celebrities, Cinema, Fashion, Music, Series, Technology and Video Games and each web page is a long JPG.</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2016/08/4.jpg">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RWhVcqNR8uLx0eS1wkwgy/8eec67d36fac887751b2ca3d48277be9/4small.jpg" alt="" class="kg-image" width="320" height="1237" loading="lazy">
+		</a>
+	</figure>
 	<p>Of course, none of the links are clickable but the news is readable.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>Over time, it's probably inevitable that Cubans end up with direct access to the Internet for a reasonable price and El Paquete will become a historical artifact. Although at 851GB per week you'd need to be downloading at over 11Mbps 24 hours a day, 7 days a week to get the equivalent of El Paquete.</p>
 	<p>Until then, El Paquete contains a fascinating slice of the Internet without having direct access.</p>
-	<h2 id="footnotes">Footnotes</h2>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>I am very grateful to Larry Press, who has written a great deal about Internet access in Cuba and about <a href="https://laredcubana.blogspot.fr/search/label/paquete">El Paquete</a> in particular, for helping me review the contents of El Paquete. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<h2>Footnotes</h2>
+	<hr>
+	<ol>
+		<li>
+			<p>I am very grateful to Larry Press, who has written a great deal about Internet access in Cuba and about <a href="https://laredcubana.blogspot.fr/search/label/paquete">El Paquete</a> in particular, for helping me review the contents of El Paquete. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+	</ol>
 </div>

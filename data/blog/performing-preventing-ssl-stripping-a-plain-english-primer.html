@@ -1,125 +1,93 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68xsHkhLWWZNRGapbG19NK/dd8ae22ecc00b6fb383dd01b4ad3360a/performing-preventing-ssl-stripping-a-plain-english-primer.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Over the past few days we learnt about a new attack that posed a serious weakness in the encryption protocol used to secure all modern Wi-Fi networks. The <a href="https://www.krackattacks.com">KRACK Attack</a> effectively allows interception of traffic on wireless networks secured by the WPA2 protocol. Whilst it is possible to backward patch implementations to mitigate this vulnerability, security updates are rarely installed universally.</p>
-	<p>Prior to this vulnerability, there were no shortage of wireless networks that were vulnerable to interception attacks. Some wireless networks continue to use a dated security protocol (called WEP) that is demonstrably "totally insecure" <sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>; other wireless networks, such as those in coffee shops and airports, remain completely open and do not authenticate users. Once an attacker gains access to a network, they can act as a proxy to intercept connections over the network (using tactics known as ARP Cache Poisoning and <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">DNS Hijacking</a>). And yes, these interception tactics can easily be deployed against wired networks where someone gains access to an ethernet port.</p>
+	<p>Prior to this vulnerability, there were no shortage of wireless networks that were vulnerable to interception attacks. Some wireless networks continue to use a dated security protocol (called WEP) that is demonstrably "totally insecure" <a href="https://blog.cloudflare.com/#fn1">[1]</a>; other wireless networks, such as those in coffee shops and airports, remain completely open and do not authenticate users. Once an attacker gains access to a network, they can act as a proxy to intercept connections over the network (using tactics known as ARP Cache Poisoning and <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">DNS Hijacking</a>). And yes, these interception tactics can easily be deployed against wired networks where someone gains access to an ethernet port.</p>
 	<p>With all this known, it is beyond doubt that it is simply not secure to blindly trust the medium that connects your users to the internet. HTTPS was created to allow HTTP traffic to be transmitted in encrypted form, however the authors of the <a href="https://www.cloudflare.com/learning/security/what-is-a-krack-attack">KRACK Attack</a> presented a <a href="https://www.youtube.com/watch?v=Oh4WURZoR98">video demonstration</a> of how the encryption could be completely stripped away on a popular dating site (despite the website supporting HTTPS). This blog post presents a plain-english primer on how HTTPS protection can be stripped and mechanisms for mitigating this.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/green-lock-4.png" alt="" loading="lazy"></p>
-	<h3 id="httpovertls">HTTP over TLS</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jWqWYOetyD3ddaLc52xeu/e8422b2d1f014f23d4786a24dbcb4f8b/green-lock-4.png" alt="" class="kg-image" width="203" height="233" loading="lazy">
+
+	</figure>
+	<h3>HTTP over TLS</h3>
 	<p>The internet is built on a patchwork of standards, with components being refactored and rebuilt in new published standards. When one standard is found to be flawed, it is later patched or replaced by a new standard. As a standard is falsified and replaced by a better one, the internet as a whole becomes better.</p>
 	<p>The HTTP protocol was originally specified to communicate data in the clear over the internet. Prior to the official introduction of HTTP 1.0, the first documented version of HTTP was known as HTTP V0.9 and was published in 1991. Netscape were the first to recognise the need for greater security assurance over the internet and in mid-1994 HTTPS was implemented into the Netscape browser. In order to implement greater security assurance, a technology called SSL (Secure Socket Layer) was created.</p>
 	<p>SSL 1.0 was short lived (and not even officially standardised) due to a number of security concerns and shortcomings. This protocol was incrementally updated in SSL 2.0 and SSL 3.0; this was then iteratively superseded by the TLS (Transport Layer Security) standards.</p>
-	<br>
-	<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			width: 100%;
-		}
-
-		.tg td {
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			padding: 10px 5px;
-			border-style: solid;
-			border-width: 1px;
-			overflow: hidden;
-			word-break: normal;
-		}
-
-		.tg th {
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			padding: 10px 5px;
-			border-style: solid;
-			border-width: 1px;
-			overflow: hidden;
-			word-break: normal;
-		}
-
-		.tg .tg-yw4l {
-			vertical-align: top
-		}
-	</style>
-	<table class="tg">
-		<tbody>
-			<tr>
-				<th class="tg-031e"><b>Protocol</b></th>
-				<td class="tg-031e">SSL 1.0
-				</td>
-				<td class="tg-yw4l">SSL 2.0
-				</td>
-				<td class="tg-yw4l">SSL 3.0
-				</td>
-				<td class="tg-yw4l">TLS 1.0
-				</td>
-				<td class="tg-yw4l">TLS 1.1
-				</td>
-				<td class="tg-yw4l">TLS 1.2
-				</td>
-				<td class="tg-yw4l">TLS 1.3
-				</td>
-			</tr>
-			<tr>
-				<th class="tg-031e"><b>Release</b>
-				</th>
-				<td class="tg-031e">N/A</td>
-				<td class="tg-yw4l">1995</td>
-				<td class="tg-yw4l">1996</td>
-				<td class="tg-yw4l">1999</td>
-				<td class="tg-yw4l">2006</td>
-				<td class="tg-yw4l">2008</td>
-				<td class="tg-yw4l">Draft</td>
-			</tr>
-		</tbody>
-	</table>
-	<br>
+	<p>.tg {border-collapse:collapse;border-spacing:0;width:100%;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg .tg-yw4l{vertical-align:top}</p>
+	<p><b>Protocol</b></p>
+	<p>SSL 1.0</p>
+	<p>SSL 2.0</p>
+	<p>SSL 3.0</p>
+	<p>TLS 1.0</p>
+	<p>TLS 1.1</p>
+	<p>TLS 1.2</p>
+	<p>TLS 1.3</p>
+	<p><b>Release</b></p>
+	<p>N/A</p>
+	<p>1995</p>
+	<p>1996</p>
+	<p>1999</p>
+	<p>2006</p>
+	<p>2008</p>
+	<p>Draft</p>
 	<p>Each of those versions come with different security constraints and support varies from browser-to-browser. Additionally, the encryption ciphers used can be configured somewhat independently of the overlying protocol. It is therefore vital to ensure any HTTPS-enabled web server is set-up to use a configuration that’s optimised to balance browser support against security. I won't go into detail on this in this post, however you can read about <a href="https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices">SSL and TLS Deployment Best Practices</a> in documentation provided by SSL Labs.</p>
 	<p>At a high-level; the end result of HTTP over TLS, is that when a site is requested over <code>https://</code> instead of <code>http://</code> the connection is completed in an encrypted manner. This process provides a reasonable guarantee of both privacy and integrity; in other words, we don't just encrypt the messages we're sending, we make sure the message we receive isn't altered over the wire. When a secure connection is established, web browsers can indicate this to their users by lighting the browser bar green.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/green_lock.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OOOnZ0z171LSKcz1mh1i4/20d46b4c99caea3ef4578f6b41b22d2f/green_lock.png" alt="" class="kg-image" width="272" height="64" loading="lazy">
+
+	</figure>
 	<p>As SSL Certificates themselves are signed by Certificate Authorities, a degree of "domain validation" is carried out - the Certificate Authority makes sure they are only validating a certificate which is owned by someone who has the ability to make changes to the website. This provides a degree of assurance that certificates aren't being issued to attackers who can then seem legitimate when intercepting web traffic. In the event a certificate ends up in the wrong hands, a <a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">Certificate Revocation List</a> can be used to retract the certificate. Such lists are then automatically downloaded by modern Operating Systems to ensure that when an invalid certificate is served, it is marked as insecure in the browser. As there are a considerable number (&gt;100) certificate authorities with the power to issue SSL certificates, it is possible to allowlist which Certificate Authorities should issue certificates for a given domain by <a href="https://support.cloudflare.com/hc/en-us/articles/115000310792-Configuring-CAA-Records-">configuring CAA DNS records</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/manually-configuring-ssl--1-.png" alt="Configuring SSL" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WvGYZMKozvz5WI3uLW5dC/3aa3fbfb0799abf50d1113f9454877ab/manually-configuring-ssl--1-.png" alt="Configuring SSL" class="kg-image" width="1400" height="267" loading="lazy">
+
+	</figure>
 	<p>Nowadays this process can be simplified, for example; when your traffic is proxied through the Cloudflare network, we will dynamically manage renewing and signing your certificate for you (whilst using Cloudflare's <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Origin CA</a> to generate a certificate to encrypt traffic back to the origin web server). Similarly, the EFF offer a tool called CertBot to make it relatively easy to install and <a href="https://certbot.eff.org">generate Let's Encrypt certificates from the command line</a>.</p>
 	<p>When using HTTPS, it is important that the entire content of the website is then loaded over HTTPS - not just the login pages. It used to be common practice for websites to initially present the login page over a secure encrypted connection, then when the user was logged in, they would degrade the connection back to HTTP. Once logged into a website, a session cookie is stored on the local browser to allow the website to ensure the user is logged in.</p>
 	<p>In 2010, Eric Butler demonstrated how insecure this was by building a simple interception tool called FireSheep. By Eavesdropping wireless connections, FireSheep would capture the login session for common websites. Whilst the attacker would not necessarily be able to capture the password of the website, they would be able to capture the login session and perform behaviours on websites as if they were login. They would also be able to intercept traffic as the user was logged in.</p>
 	<p>When connecting to a website using SSL, the first request should usually redirect the user to a secure version of the website. For example; when you first visit <code>http://www.cloudflare.com/</code> a HTTP 301 redirect is used to send you to the HTTPS version of the site, <code>https://www.cloudflare.com/</code>.</p>
 	<p>This raises an important question; if someone is able to intercept the unencrypted request to the HTTP version of the site, couldn't they then strip away the encryption and serve the site back to the user without encryption? This was a question explored by Moxie Marlinspike, which later led to the creation of HSTS.</p>
-	<h3 id="httpstricttransportsecurityhsts">HTTP Strict Transport Security (HSTS)</h3>
+	<h3>HTTP Strict Transport Security (HSTS)</h3>
 	<p>In 2009 at Blackhat DC, Moxie Marlinspike presented a tool known as SSLStrip. This tool would intercept HTTP traffic and whenever it spotted redirects or links to sites using HTTPS, it would transparently strip them away.</p>
 	<p>Instead of the victim connecting directly to a website; the victim would connect to the attacker, and the attacker would initiate the connection back to the website. This attack is known as an on-path attack.</p>
 	<p>The magic of SSLStrip was that whenever it would spot a link to a HTTPS webpage on an unencrypted HTTP connection, it would replace the HTTPS with a HTTP and sit in the middle to intercept the connection. The interceptor would make the encrypted connection to back to the web server in HTTPS, and serve the traffic back to the site visitor unencrypted (logging any interesting passwords or credit card information in the process).</p>
 	<p>In response, a protocol called HTTP Strict Transport Security (HSTS) was created in 2012 and specified in <a href="https://tools.ietf.org/html/rfc6797">RFC 6797</a>. The protocol works by the server responding with a special header called <code>Strict-Transport-Security</code> which contains a response telling the client that whenever they reconnect to the site, they must use HTTPS. This response contains a <code>"max-age"</code> field which defines how long this rule should last for since it was last seen.</p>
 	<p>Whilst this provided an improvement in preventing interception attacks, it wasn't perfect and there remain a number of shortcomings.</p>
-	<h3 id="hstspreloading">HSTS Preloading</h3>
+	<h3>HSTS Preloading</h3>
 	<p>One of the shortcomings of HSTS is the fact that it requires a previous connection to know to always connect securely to a particular site. When the visitor first connects to the website, they won't have received the HSTS rule that tells them to always use HTTPS. Only on subsequent connections will the visitor's browser be aware of the HSTS rule that requires them to connect over HTTPS.</p>
-	<p>Other mechanisms of attacking HSTS have been explored; for example by hijacking the protocol used to the sync a computer's time (NTP), it can be possible to set a computers date and time to one in the future. This date and time can be set to a value when the HSTS rule has expired and thereby bypassing HSTS<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup>.</p>
+	<p>Other mechanisms of attacking HSTS have been explored; for example by hijacking the protocol used to the sync a computer's time (NTP), it can be possible to set a computers date and time to one in the future. This date and time can be set to a value when the HSTS rule has expired and thereby bypassing HSTS<a href="https://blog.cloudflare.com/#fn2">[2]</a>.</p>
 	<p>HSTS Preload Lists are one potential solution to help with these issues, they effectively work by hardcoding a list of websites that need to be connected to using HTTPS-only. Sites with HSTS enabled can be submitted to the Chrome HSTS Preload List at <a href="https://hstspreload.org">hstspreload.org</a>; which is also used as the basis of the preload lists used in other browsers.</p>
 	<p>Inside the source code of Google Chrome, there is a file which contains a hardcoded file listing the HSTS properties for all domains in the Preload List. Each entry is formatted in JSON and looks something like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/cloudflare_api_hsts.png" alt="api.cloudflare.com in Chrome HSTS list" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KPdamMOutH5y8JbvjkwW9/d1f40907cedcecb214815844fe9a15c2/cloudflare_api_hsts.png" alt="api.cloudflare.com in Chrome HSTS list" class="kg-image" width="1316" height="258" loading="lazy">
+
+	</figure>
 	<p>Even with preload, things still aren't perfect. Suppose someone is reading a blog about books and on that blog there is a link to purchase a book from an online retailer. Despite the fact the online retailer enforces HTTPS using HSTS it is possible to conduct an on-path attack, providing the blog linking to the online retailer does not use HTTPS.</p>
-	<h3 id="morestilltobedone">More Still to be Done</h3>
+	<h3>More Still to be Done</h3>
 	<p>Leonardo Nve revived SSLStrip in a new version called <a href="https://github.com/LeonardoNve/sslstrip2">SSLStrip+</a>, with the ability to avoid HSTS. When a site is connected to over an unencrypted HTTP connection, SSLStrip+ will look for links to HTTPS sites. When a link is found to a HTTPS site, it is rewritten to HTTP and critically the domain is rewritten to an artificial domain which is not on the HSTS Preload list.</p>
 	<p>For example; suppose a site contains a link to <code>https://example.com/</code>, the HSTS could be stripped by rewriting the URLs to <code>http://example.org/</code>; with attacker sitting in the middle, receiving traffic from <code>http://example.org/</code> and proxying it to <code>https://example.com/</code>.</p>
 	<p>Such an attack can also be performed against redirects; suppose <code>http://example.net/</code> is loaded over HTTP but then redirects to <code>https://example.com/</code> which is loaded over HTTPS. At the point the redirect is carried out, the legitimate HSTS-protected site can be redirected to a phoney domain which the attacker uses to serve traffic over HTTP and intercept traffic.</p>
 	<p>As more and more of the internet moves to HTTPS, the surface area of this attack will get smaller as there is less unencrypted HTTP traffic to intercept.</p>
 	<p>In the latest newly-released version of Google Chrome (version 62), websites which serve input forms (such as credit card forms and password fields) on insecure connections are flagged as "Not Secure" to the user, instead of a neutral message. When in Incognito (private browsing) mode, Chrome will flag any website as insecure if it does not use HTTPS.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/10/password_not_secure.png" alt="Security Warning on site with Password Form" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MovGWvLCtKhF4kT0JUKhf/014eb648f6509037d4d044c03dc17e7e/password_not_secure.png" alt="Security Warning on site with Password Form" class="kg-image" width="766" height="140" loading="lazy">
+
+	</figure>
 	<p>This change helps make it clearer to users when HTTPS has been stripped away from a webpage as they try to login. Additionally, in making this change, it hoped that more websites will adopt HTTPS - thereby improving the security of the internet as a whole.</p>
-	<h3 id="finalremarks">Final Remarks</h3>
+	<h3>Final Remarks</h3>
 	<p>This blog post has discussed mechanisms of stripping HTTPS away from websites and in particular how HSTS can affect this. It is worth noting that there are other potential attack vectors within various HTTPS specifications and in certain ciphers; this blog post haven't gone into them.</p>
 	<p>Despite HTTPS offering a mechanism for encrypting web traffic, it is important to implement technologies such as HTTP Strict Transport Security to ensure it is enforced, and preferably submit your site to HSTS Preload lists. As more websites do this, the security of the internet overall is improved.</p>
 	<p>To learn how you can implement HTTPS and HSTS in practice, I'd highly recommend Troy Hunt's blog post: <a href="https://www.troyhunt.com/the-6-step-happy-path-to-https">The 6-Step "Happy Path" to HTTPS</a>. His blog post goes into how you can enable strong HTTPS in practice, and additionally touches on a technology that I didn't mention here known as CSP (Content Security Policy). CSP allows you to automatically upgrade or block HTTP requests when loading pages over HTTPS, as this poses another attack vector.</p>
 	<hr>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>Stubblefield, A., Ioannidis, J. and Rubin, A.D., 2002, February. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.16.2068&amp;rep=rep1&amp;type=pdf">Using the Fluhrer, Mantin, and Shamir Attack to Break WEP</a>. In NDSS. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn2" class="footnote-item">
-				<p>Selvi, J., 2014. <a href="https://www.blackhat.com/docs/eu-14/materials/eu-14-Selvi-Bypassing-HTTP-Strict-Transport-Security-wp.pdf">Bypassing HTTP strict transport security</a>. Black Hat Europe. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>Stubblefield, A., Ioannidis, J. and Rubin, A.D., 2002, February. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.16.2068&amp;rep=rep1&amp;type=pdf">Using the Fluhrer, Mantin, and Shamir Attack to Break WEP</a>. In NDSS. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+		<li>
+			<p>Selvi, J., 2014. <a href="https://www.blackhat.com/docs/eu-14/materials/eu-14-Selvi-Bypassing-HTTP-Strict-Transport-Security-wp.pdf">Bypassing HTTP strict transport security</a>. Black Hat Europe. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
+		</li>
+	</ol>
 </div>

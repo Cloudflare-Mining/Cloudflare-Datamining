@@ -1,17 +1,20 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/aus_kang_1.jpg"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Oi8Gq6u2oFpAY484YOkhF/364db59813bec99b10c5676cf919c165/aus_kang_1.jpg" alt="" class="kg-image" width="648" height="430" loading="lazy">
+
+	</figure>
 	<p>In the coming weeks, connectivity to CloudFlare in Australia is going to a new level. As part of CloudFlare’s ongoing upgrades program, we established connections to three new Internet exchanges: the Megaport Internet exchanges in Sydney, Brisbane, and Melbourne. These connections doubled the number of Australian Internet exchanges we reach and marked the first exchanges outside of Sydney that Cloudflare participates in.</p>
-	<h3 id="whatispeering">What is Peering?</h3>
+	<h3>What is Peering?</h3>
 	<p>When two ISPs peer, they agree to exchange traffic directly between each other rather than sending it a third party. By doing this, both partners avoid congested paths between transit providers, and they avoid paying to ship traffic—it's win-win!</p>
 	<p>What peering exchanges mean for CloudFlare is that we can significantly increase our service performance to users on ISPs that peer with us. Take Australia for example, for users who are currently on ISPs peering at Megaport, instead of CloudFlare sending traffic to the transit providers of those ISPs, we can now route the traffic directly to them. The result is lower latency, and traffic taking paths that are often less congested.</p>
 	<p>Low latency is crucial for internet speed due to the nature of TCP, the fundamental protocol on which the internet is built. TCP operates in such a way that any packet loss from a congested transit link will significantly slow a connection, and, conversely, connections with reduced latency will hugely amplify performance for end users. Therefore, by moving traffic to less congested, more direct "pipes" on the internet, CloudFlare is creating a faster web.</p>
-	<h3 id="themorethemerrier">The More the Merrier</h3>
+	<h3>The More the Merrier</h3>
 	<p>CloudFlare understands the importance of peering, and our team has put considerable time and effort into finding peering partners as our network expands. We peer as much as possible, both by participating at internet exchanges, and by establishing direct interconnects with ISPs.</p>
 	<p>As I write, we’re in the process of deploying equipment to many new data centers around the globe, and extending our network to reach more peering exchanges. In addition to the twenty-eight plus internet exchanges where CloudFlare already peers, we will soon be participating at: Terremark São Paulo, PTT-SP (São Paulo Brazil), EspanIX, FranceIX, MIX, NetNod, JPNAP, and, of course, Megaport. We’re also constantly commissioning new private interconnects with a range of eyeball networks.</p>
-	<h3 id="peeringabetterweb">Peering = A Better Web</h3>
+	<h3>Peering = A Better Web</h3>
 	<p>CloudFlare is building a better web, and part of that project includes reducing the distance packets travel between you and your ISP. As the months go by, <a href="https://www.cloudflare.com/network-map">our network</a> is expanding around the globe, and more of our traffic is sent through peering partners. The result? Faster and more reliable content delivery to our users.</p>
 	<p>CloudFlare's commitment to finding the most direct path over the internet to deliver your traffic, and, as the reach of our network expands, you can expect that our service will only get better.</p>
 	<p>CloudFlare maintains an open peering policy. Our peering details can be found <a href="http://as13335.peeringdb.com">here</a>. Please contact us if you are an ISP on any of the IXs we participate in and would like to peer.</p>
-	<!--kg-card-end: markdown-->
 </div>

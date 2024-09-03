@@ -1,80 +1,76 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Magic-Network.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IONO8okJsdqj30CWEyVNh/8185ce5873a0e9600db65c0e50edab9f/Magic-Network.png" alt="" class="kg-image" width="1095" height="616" loading="lazy">
+
+	</figure>
 	<p>We <a href="https://blog.cloudflare.com/magic-transit">launched Magic Transit</a> two years ago, followed more recently by its siblings <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN</a> and <a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall</a>, and have talked at length about how this suite of products helps security teams sleep better at night by protecting entire networks from malicious traffic. Today, as part of <a href="https://blog.cloudflare.com/fastest-internet">Speed Week</a>, we’ll break down the other side of the Magic: how using Cloudflare can automatically make your entire network faster. Our scale and interconnectivity, use of data to make more intelligent routing decisions, and inherent architecture differences versus traditional networks all contribute to performance improvements across all IP traffic.</p>
-	<h3 id="what-is-magic">What is Magic?</h3>
-	<p>Cloudflare’s <a href="https://www.cloudflare.com/network-services">“Magic” services</a> help customers connect and secure their networks without the cost and complexity of maintaining legacy hardware. Magic Transit provides connectivity and DDoS protection for Internet-facing networks; Magic WAN enables customers to replace legacy <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">WAN architectures </a>by routing private traffic through Cloudflare; and Magic Firewall protects all connected traffic with a built-in <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">firewall-as-a-service</a>. All three share underlying architecture principles that form the basis of the performance improvements we’ll dive deeper into below.</p>
-	<h3 id="anycast-everything">Anycast everything</h3>
+	<h3>What is Magic?</h3>
+	<p>Cloudflare’s <a href="https://www.cloudflare.com/network-services">“Magic” services</a> help customers connect and secure their networks without the cost and complexity of maintaining legacy hardware. Magic Transit provides connectivity and DDoS protection for Internet-facing networks; Magic WAN enables customers to replace legacy <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">WAN architectures</a> by routing private traffic through Cloudflare; and Magic Firewall protects all connected traffic with a built-in <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">firewall-as-a-service</a>. All three share underlying architecture principles that form the basis of the performance improvements we’ll dive deeper into below.</p>
+	<h3>Anycast everything</h3>
 	<p>In contrast to traditional “point-to-point” architecture, Cloudflare uses Anycast GRE or IPsec (coming soon) tunnels to send and receive traffic for customer networks. This means that customers can set up a single tunnel to Cloudflare, but effectively get connected to every single Cloudflare location, dramatically simplifying the process to configure and maintain network connectivity.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/D1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="every-service-everywhere">Every service everywhere</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4y0u7nLWoslE47axWaq81g/584cd95995b5f710ac1a6887bbc3d4e7/D1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<h3>Every service everywhere</h3>
 	<p>In addition to being able to send and receive traffic from anywhere, Cloudflare’s edge network is also designed to run every service on every server in every location. This means that incoming traffic can be processed wherever it lands, which allows us to <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">block DDoS attacks</a> and other malicious traffic within seconds, apply firewall rules, and route traffic efficiently and without bouncing traffic around between different servers or even different locations before it’s dispatched to its destination.</p>
-	<h3 id="zero-trust-magic-the-next-gen-network-of-the-future">Zero Trust + Magic: the next-gen network of the future</h3>
-	<p>With <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a>, customers can seamlessly combine <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> and network connectivity to build a faster, more secure, more reliable experience for their entire corporate network. Everything we’ll talk about today applies even more to customers using the entire Cloudflare One platform - stacking these products together means the performance benefits multiply (check out<a href="https://blog.cloudflare.com/the-zero-trust-platform-built-for-speed"> our post on Zero Trust and speed</a> from today for more on this).</p>
-	<h3 id="more-connectivity-faster-traffic">More connectivity = faster traffic</h3>
-	<p>So where does the Magic come in? This part isn’t intuitive, especially for customers using Magic Transit in front of their network for DDoS protection: how can adding a network hop <em>subtract</em> latency?</p>
+	<h3>Zero Trust + Magic: the next-gen network of the future</h3>
+	<p>With <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a>, customers can seamlessly combine <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> and network connectivity to build a faster, more secure, more reliable experience for their entire corporate network. Everything we’ll talk about today applies even more to customers using the entire Cloudflare One platform - stacking these products together means the performance benefits multiply (check out <a href="https://blog.cloudflare.com/the-zero-trust-platform-built-for-speed">our post on Zero Trust and speed</a> from today for more on this).</p>
+	<h3>More connectivity = faster traffic</h3>
+	<p>So where does the Magic come in? This part isn’t intuitive, especially for customers using Magic Transit in front of their network for DDoS protection: how can adding a network hop <i>subtract</i> latency?</p>
 	<p>The answer lies in Cloudflare’s network architecture — our web of connectivity to the rest of the Internet. Cloudflare has invested heavily in building one of the world’s most <a href="https://www.peeringdb.com/net/4224">interconnected networks</a> (9800 interconnections and counting, including with major ISPs, cloud services, and enterprises). We’re also continuing to grow our own <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">private backbone</a> and giving customers the ability to <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">directly connect with us</a>. And our expansive connectivity to <a href="https://blog.cloudflare.com/last-mile-insights">last mile</a> providers means we’re just milliseconds away from the source of all your network traffic, regardless of where in the world your users or employees are.</p>
 	<p>This toolkit of varying connectivity options means traffic routed through the Cloudflare network is often meaningfully faster than paths across the public Internet alone, because more options available for <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> path selection mean increased ability to choose more performant routes. Imagine having only one possible path between your house and the grocery store versus ten or more - chances are, adding more options means better alternatives will be available. A cornucopia of connectivity methods also means more resiliency: if there’s an issue on one of the paths (like construction happening on what is usually the fastest street), we can easily route around it to avoid impact to your traffic.</p>
-	<p>One common comparison customers are interested in is latency for inbound traffic. From the end user perspective, does routing through Cloudflare speed up or slow down traffic to networks protected by Magic Transit? Our response: let’s test it out and see! We’ve repeatedly compared Magic Transit vs standard Internet performance for customer networks across geographies and industries and consistently seen really exciting results. Here’s an example from one recent test where we used third-party probes to measure the ping time to the same customer network location (their data center in Qatar) before and after onboarding with Magic Transit:</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th>Probe location</th>
-				<th>RTT w/o Magic (ms)</th>
-				<th>RTT w/ Magic (ms)</th>
-				<th>Difference (ms)</th>
-				<th>Difference (% improvement)</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Dubai</td>
-				<td>27</td>
-				<td>23</td>
-				<td>4</td>
-				<td>13%</td>
-			</tr>
-			<tr>
-				<td>Marseille</td>
-				<td>202</td>
-				<td>188</td>
-				<td>13</td>
-				<td>7%</td>
-			</tr>
-			<tr>
-				<td>Global (results averaged across 800+ distributed probes)</td>
-				<td>194</td>
-				<td>124</td>
-				<td>70</td>
-				<td>36%</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p>All of these results were collected <em>without</em> the use of Argo Smart Routing for Packets, which we announced on Tuesday. Early data indicates that networks using Smart Routing will see even more substantial gains.</p>
-	<h3 id="modern-architecture-eliminates-traffic-trombones">Modern architecture eliminates traffic trombones</h3>
+	<p>One common comparison customers are interested in is latency for inbound traffic. From the end user perspective, does routing through Cloudflare speed up or slow down traffic to networks protected by Magic Transit? Our response: let’s test it out and see! We’ve repeatedly compared Magic Transit vs standard Internet performance for customer networks across geographies and industries and consistently seen really exciting results. Here’s an example from one recent test where we used third-party probes to measure the ping time to the same customer network location (their data center in Qatar) before and after onboarding with Magic Transit:</p>
+	<p>Probe location</p>
+	<p>RTT w/o Magic (ms)</p>
+	<p>RTT w/ Magic (ms)</p>
+	<p>Difference (ms)</p>
+	<p>Difference (% improvement)</p>
+	<p>Dubai</p>
+	<p>27</p>
+	<p>23</p>
+	<p>4</p>
+	<p>13%</p>
+	<p>Marseille</p>
+	<p>202</p>
+	<p>188</p>
+	<p>13</p>
+	<p>7%</p>
+	<p>Global (results averaged across 800+ distributed probes)</p>
+	<p>194</p>
+	<p>124</p>
+	<p>70</p>
+	<p>36%</p>
+	<p>All of these results were collected <i>without</i> the use of Argo Smart Routing for Packets, which we announced on Tuesday. Early data indicates that networks using Smart Routing will see even more substantial gains.</p>
+	<h3>Modern architecture eliminates traffic trombones</h3>
 	<p>In addition to the performance boost available for traffic routed across the Cloudflare network versus the public Internet, customers using Magic products benefit from a new architecture model that totally removes up to thousands of miles worth of latency.</p>
-	<p>Traditionally, enterprises adopted a “hub and spoke” model for granting employees access to applications within and outside their network. All traffic from within a connected network location was routed through a central “hub” where a stack of network hardware (e.g. firewalls) was maintained. This model worked great in locations where the hub and spokes were geographically close, but started to strain as companies became more global and applications moved to the cloud. </p>
+	<p>Traditionally, enterprises adopted a “hub and spoke” model for granting employees access to applications within and outside their network. All traffic from within a connected network location was routed through a central “hub” where a stack of network hardware (e.g. firewalls) was maintained. This model worked great in locations where the hub and spokes were geographically close, but started to strain as companies became more global and applications moved to the cloud.</p>
 	<p>Now, networks using hub and spoke architecture are often backhauling traffic thousands of miles, between continents and across oceans, just to apply security policies before packets are dispatched to their final destination, which is often physically closer to where they started! This creates a “trombone” effect, where precious seconds are wasted bouncing traffic back and forth across the globe, and performance problems are amplified by packet loss and instability along the way.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/D2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1M54AiCAu5Ph3fGu9Yp5at/bd3c4d25cdd3563562f6255a52bce7bb/D2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>Network and security teams have tried to combat this issue by installing hardware at more locations to establish smaller, regional hubs, but this quickly becomes prohibitively expensive and hard to manage. The price of purchasing multiple hardware boxes and dedicated private links adds up quickly, both in network gear and connectivity itself as well as the effort required to maintain additional infrastructure. Ultimately, this cost usually outweighs the benefit of the seconds regained with shorter network paths.</p>
-	<h3 id="the-hub-is-everywhere">The “hub” is everywhere</h3>
+	<h3>The “hub” is everywhere</h3>
 	<p>There’s a better way — with the Anycast architecture of Magic products, all traffic is automatically routed to the closest Cloudflare location to its source. There, security policies are applied with single-pass inspection before traffic is routed to its destination. This model is conceptually similar to a hub and spoke, except that the hub is everywhere: 95% of the entire Internet-connected world is within 50 ms of a Cloudflare location (check out this week’s <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">updates</a> on our quickly-expanding network presence for the latest). This means instead of tromboning traffic between locations, it can stop briefly at a Cloudflare hop in-path before it goes on its way: dramatically faster architecture without compromising security.</p>
 	<p>To demonstrate how this architecture shift can make a meaningful difference, we created a lab to mirror the setup we’ve heard many customers describe as they’ve explained performance issues with their existing network. This example customer network is headquartered in South Carolina and has branch office locations on the west coast, in California and Oregon. Traditionally, traffic from each branch would be backhauled through the South Carolina “hub” before being sent on to its destination, either another branch or the public Internet.</p>
 	<p>In our alternative setup, we’ve connected each customer network location to Cloudflare with an Anycast GRE tunnel, simplifying configuration and removing the South Carolina trombone. We can also enforce network and application-layer filtering on all of this traffic, ensuring that the faster network path doesn’t compromise security.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/D4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Here’s a summary of results from performance tests on this example network demonstrating the difference between the traditional hub and spoke setup and the Magic “global hub” — we saw up to 70% improvement in these tests, demonstrating the dramatic impact this architecture shift can make.</p><!--kg-card-begin: markdown-->
-	<p>| | LAX &lt;&gt; OR (ms) |<br>
-		|--------|-----------|-----------|-----------|-----------|<br>
-		| <strong>ICMP round-trip for “Regular” (hub and spoke) WAN</strong> | 127 |<br>
-		| <strong>ICMP round-trip for Magic WAN</strong> | 38 |<br>
-		| <strong>Latency savings for Magic WAN vs “Regular” WAN</strong> | 70% |</p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CowxWFJxc3QGwM1mauUi6/c8d31796c6c6d621963ac8a37172b444/D4.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>Here’s a summary of results from performance tests on this example network demonstrating the difference between the traditional hub and spoke setup and the Magic “global hub” — we saw up to 70% improvement in these tests, demonstrating the dramatic impact this architecture shift can make.</p>
+	<p>| | LAX &lt;&gt; OR (ms) ||--------|-----------|-----------|-----------|-----------|| <b>ICMP round-trip for “Regular” (hub and spoke) WAN</b> | 127 || <b>ICMP round-trip for Magic WAN</b> | 38 || <b>Latency savings for Magic WAN vs “Regular” WAN</b> | 70% |</p>
 	<p>This effect can be amplified for networks with globally distributed locations — imagine the benefits for customers who are used to delays from backhauling traffic between different regions across the world.</p>
-	<h3 id="getting-smarter">Getting smarter</h3>
+	<h3>Getting smarter</h3>
 	<p>Adding more connectivity options and removing traffic trombones provide a performance boost for all Magic traffic, but we’re not stopping there. In the same way we leverage insights from hundreds of billions of requests per day to block new types of malicious traffic, we’re also using our unique perspective on Internet traffic to make more intelligent decisions about routing customer traffic versus relying on BGP alone. Earlier this week, we announced <a href="https://blog.cloudflare.com/argo-v2">updates to Argo Smart Routing</a> including the brand-new Argo Smart Routing for Packets. Customers using Magic products can enable it to automatically boost performance for any IP traffic routed through Cloudflare (by 10% on average according to results so far, and potentially more depending on the individual customer’s network topology) — read more on this in the <a href="https://blog.cloudflare.com/argo-v2">announcement blog</a>.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>The modern architecture, well-connected network, and intelligent optimizations we’ve talked about today are just the start. Our vision is for any customer using Magic to connect and protect their network to have the best performance possible for all of their traffic, automatically. We’ll keep investing in expanding our presence, interconnections, and backbone, as well as continuously improving Smart Routing — but we’re also already cooking up brand-new products in this space to deliver optimizations in new ways, including WAN Optimization and Quality of Service functions. Stay tuned for more Magic coming soon, and get in touch with your account team to learn more about how we can help make your network faster starting today.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/233e1b1e7b7aae7dce341bf1d9fd5c82?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

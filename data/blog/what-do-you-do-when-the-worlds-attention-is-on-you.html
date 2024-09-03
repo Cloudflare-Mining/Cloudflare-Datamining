@@ -1,31 +1,46 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/TexasTribuneLogo_color_Horizontal.png"><br>
-		<em>This is a guest post from Rodney Gibbs. Rodney is the CIO of <a href="http://www.texastribune.org">The Texas Tribune</a>, a nonprofit media organization that covers public policy, politics, and government. He and his team recently supported major livestreamed events at <a href="http://www.sxsw.com">South by Southwest</a> (SXSW), a conference that attracts more than 70,000 music, arts and digital media aficionados.</em>
-	</p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BOp4M4s4EEKPG9nJqdrQN/2fabdc3409297cc8adaff265f578f267/TexasTribuneLogo_color_Horizontal.png" alt="" class="kg-image" width="313" height="74" loading="lazy">
+
+	</figure>
+	<p><i>This is a guest post from Rodney Gibbs. Rodney is the CIO of </i><a href="http://www.texastribune.org"><i>The Texas Tribune</i></a><i>, a nonprofit media organization that covers public policy, politics, and government. He and his team recently supported major livestreamed events at </i><a href="http://www.sxsw.com"><i>South by Southwest</i></a><i> (SXSW), a conference that attracts more than 70,000 music, arts and digital media aficionados.</i></p>
 	<p>A few days before the start of the SXSW, I got a call from <a href="https://twitter.com/Hugh_W_Forrest">Hugh Forrest</a>, the head of interactive programming at the festival. The Texas Tribune has worked with SXSW organizers on previous events such as SXSW Edu. Our organization was also recently in the news for livestreaming the Texas state filibuster that lasted 11 hours, gaining more than 200,000 concurrent viewers from 187 countries around the world.</p>
 	<p>Hugh was looking for help with a couple of events that were sure to be hugely popular - livestreamed interviews of two major speakers - Julian Assange and Edward Snowden. <a href="https://en.wikipedia.org/wiki/Julian_Assange">Julian Assange</a> is the founder of WikiLeaks and has been living in the Ecuadorian embassy in London since 2012. <a href="https://en.wikipedia.org/wiki/Edward_Snowden">Edward Snowden</a> is the NSA contractor who released classified files detailing the US spy agency’s internet-tapping programs around the world. Hugh wanted to work with a news organization to livestream the SXSW interviews so he turned to The Texas Tribune.</p>
-	<h4 id="dontmesswithtexas">Don’t mess with Texas</h4>
+	<h4>Don’t mess with Texas</h4>
 	<p>On Thursday before the festival, we put together a plan to help us prepare for a super high-level of traffic and being on an international stage. We assembled a team, including our director of technology, <a href="https://twitter.com/risatrix">Amanda Krauss</a>, who listed all the things we’d need to do to make sure our website was ready to handle a crush of web visitors. More importantly, we wanted to tighten up security and make it difficult for any malicious actors to mess with us.</p>
 	<p><a href="https://twitter.com/harper">Harper Reed</a> is an advisor to our organization. In a past life, he was the CTO for Obama for America, managing the website for Obama 2012. We asked him to look over our list and see if he would add anything. He made two suggestions - one of which was adding CloudFlare. It was Friday night at 4pm - about 16 hours before the Assange interview, when I reached out to CloudFlare’s CEO Matthew Prince via LinkedIn. We got a call back soon thereafter and our team spent the rest of the night setting up and testing CloudFlare on our website.</p>
 	<p>Our hard work paid off - the Assange livestream went off smoothly.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Texas_Tribune_Assange_2014-03-12_at_7.24.30_AM.png"></p>
-	<h4 id="beyourownforcingfunctiondontassumeyourenotgoingtogethacked">Be your own forcing function - don’t assume you’re not going to get hacked</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VZf7uo8QgkqOeWciJhXjh/04857e3a1a80459b06096053e7f874ec/Texas_Tribune_Assange_2014-03-12_at_7.24.30_AM.png" alt="" class="kg-image" width="566" height="500" loading="lazy">
+
+	</figure>
+	<h4>Be your own forcing function - don’t assume you’re not going to get hacked</h4>
 	<p>We had a lot of loose ends on our to-do list in terms of security, scaling, and elasticity - for us it was good to have these livestreamed interviews as a forcing function. But we were lucky - we had Harper who had learned the hard way and generously shared what he learned so that it went smoothly for us.</p>
 	<p>It seems like the going rule of thumb nowadays is ‘Don’t assume you’re not going to get hacked, just assume you need to figure out what you’re going to do about it.’ The hardest thing is to learn something under pressure. We got our security measures set up pretty quickly but if I could offer advice I would suggest doing the following:</p>
 	<ol>
-		<li>Implement 2-factor authentication for your third party apps</li>
-		<li>Enforce strong passwords for your CMS and apps users, making sure people don’t use the same password elsewhere</li>
-		<li>Close down ports you don’t need - starting, for example, by closing down everything but ports 80 and 443</li>
-		<li>If you're worried you'll come under attack, put up a static site as your main site, disconnecting it from any back-end databases. A hacked database is irrelevant if your static site is still up. </li>
+		<li>
+			<p>Implement 2-factor authentication for your third party apps</p>
+		</li>
+		<li>
+			<p>Enforce strong passwords for your CMS and apps users, making sure people don’t use the same password elsewhere</p>
+		</li>
+		<li>
+			<p>Close down ports you don’t need - starting, for example, by closing down everything but ports 80 and 443</p>
+		</li>
+		<li>
+			<p>If you're worried you'll come under attack, put up a static site as your main site, disconnecting it from any back-end databases. A hacked database is irrelevant if your static site is still up.</p>
+		</li>
 	</ol>
 	<p>Finally, we host our website on Amazon’s S3 but thought it would be good to put CloudFlare in front of it to defend against DDoS or other possible web threats and also speed up any content that wasn’t on Amazon. If you implement CloudFlare, the other piece of advice I’d offer is make sure you don’t mistakenly reveal your origin IPs externally (or ‘leak’ them).</p>
-	<h4 id="a10xspikeintrafficwithviewersfrom200countries">A 10X spike in traffic with viewers from 200+ countries</h4>
+	<h4>A 10X spike in traffic with viewers from 200+ countries</h4>
 	<p>On the day of the Snowden interview, The Texas Tribune saw a 10X spike in traffic. Typically 90% of our traffic is Texas, with the rest coming from New York, Chicago, and Washington DC. This time more than 80% of our visitors were new to the site, hailing from over 200 countries. Visitors from the Netherlands totalled more than half of what we saw from the US and the top country list also included Belgium and Mexico in addition to your usual Western European suspects. It felt good to be able to serve international traffic.</p>
 	<p>We also got a few emails thanking us. One from Brazil said, ‘I caught the end of the telecast and am just so impressed with what you've done and the technology that permitted me to see it! Thank you is not enough to say for your organization!’ That’s the kind of thanks that makes working late nights worthwhile.</p>
 	<p>We had an incredibly smooth experience, no downtime, no lagging, no security problems - it all went super smoothly. A lot of folks pitched in to make these events happen. I tweeted out my thanks and it bears repeating here.</p>
-	<blockquote class="twitter-tweet" lang="en">Big thx to <a href="https://twitter.com/harper">@harper</a> <a href="https://twitter.com/maycotte">@maycotte</a> <a href="https://twitter.com/clockwerks">@clockwerks</a> <a href="https://twitter.com/CloudFlare">@CloudFlare</a> <a href="https://twitter.com/Chartbeat">@Chartbeat</a> &amp; <a href="https://twitter.com/Livestream">@livestream</a> for help w/ <a href="https://twitter.com/TexasTribune">@texastribune</a>'s <a href="https://twitter.com/search?q=%23Snowden&amp;src=hash">#Snowden</a> <a href="https://twitter.com/search?q=%23SXSW&amp;src=hash">#SXSW</a> stream. — Rodney Gibbs (@rgibbs) <a href="https://twitter.com/rgibbs/statuses/443068935353544704">March 10, 2014</a></blockquote>
-	<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<blockquote>
+		<p>Big thx to <a href="https://twitter.com/harper">@harper</a> <a href="https://twitter.com/maycotte">@maycotte</a> <a href="https://twitter.com/clockwerks">@clockwerks</a> <a href="https://twitter.com/CloudFlare">@CloudFlare</a> <a href="https://twitter.com/Chartbeat">@Chartbeat</a> &amp; <a href="https://twitter.com/Livestream">@livestream</a> for help w/ <a href="https://twitter.com/TexasTribune">@texastribune</a>'s <a href="https://twitter.com/search?q=%23Snowden&amp;src=hash">#Snowden</a> <a href="https://twitter.com/search?q=%23SXSW&amp;src=hash">#SXSW</a> stream. — Rodney Gibbs (@rgibbs) <a href="https://twitter.com/rgibbs/statuses/443068935353544704">March 10, 2014</a></p>
+	</blockquote>
 	<p>I hope you can learn from our experiences and your next major event goes as smoothly as ours did.</p>
-	<!--kg-card-end: markdown-->
 </div>

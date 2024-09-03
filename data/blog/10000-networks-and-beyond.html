@@ -1,62 +1,82 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-20.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>During Speed Week, we’ve talked a lot about the products we’ve improved and the places we’ve expanded to. Today, we have a final exciting announcement: Cloudflare now connects with <strong>more than 10,000 other networks</strong>. Put another way, over 10,000 networks have direct on-ramps to the Cloudflare network.</p>
-	<p>This is the culmination of a special project we’ve been working on for the last few months dubbed Project Myriagon, a reference to the 10,000-sided polygon of the same name. In going about this project, we have learned a lot about the performance impact of adding more direct connections to our network — in one recent case, we saw a <strong>90% reduction </strong>in median round-trip end-user latency.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4N8aa1FDPKVe4EhrLQVnLa/ab94ebc8ca9bb713ed46838879a9e221/image5-20.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>During Speed Week, we’ve talked a lot about the products we’ve improved and the places we’ve expanded to. Today, we have a final exciting announcement: Cloudflare now connects with <b>more than 10,000 other networks</b>. Put another way, over 10,000 networks have direct on-ramps to the Cloudflare network.</p>
+	<p>This is the culmination of a special project we’ve been working on for the last few months dubbed Project Myriagon, a reference to the 10,000-sided polygon of the same name. In going about this project, we have learned a lot about the performance impact of adding more direct connections to our network — in one recent case, we saw a <b>90% reduction</b> in median round-trip end-user latency.</p>
 	<p>But to really explain why this is such a big milestone, we first need to explain a bit about how the Internet works.</p>
-	<h3 id="more-roads-leading-to-rome">More roads leading to Rome</h3>
+	<h3>More roads leading to Rome</h3>
 	<p>The Internet that all know and rely on is, on a basic level, an interconnected series of independently run local networks. Each network is defined as its own “autonomous system.” These networks are delineated numerically with Autonomous Systems Numbers, or ASNs. An ASN is like the Internet version of a zip code, a short number directly mapping to a distinct region of IP space using a clearly defined methodology. Network interconnection is all about bringing together different ASNs to exponentially multiply the number of possible paths between source and destination.</p>
 	<p>Most of us have home networks behind a modem and router, connecting your individual miniature network to your ISP. Your ISP then connects with other networks, to fetch the web pages or other Internet traffic you request. These networks in turn have connections to different networks, who in turn connect to interconnected networks, and so on, until your data reaches its destination. The fewer networks your request has to traverse, generally, the lower the end-to-end latency and odds that something will get lost along the way.</p>
 	<p>The average number of hops between any one network on the Internet to any other network is around 5.7 and 4.7, for the IPv4 and IPv6 networks respectively.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-29.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-18.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Source: <a href="https://blog.apnic.net/2020/01/14/bgp-in-2019-the-bgp-table">https://blog.apnic.net/2020/01/14/bgp-in-2019-the-bgp-table/</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sWjivJCnZ6TD1e4HnzclS/0d196fc3b41d3e06f8319d15338a20bc/image2-29.png" alt="" class="kg-image" width="1280" height="760" loading="lazy">
+
 	</figure>
-	<h3 id="how-do-asns-work">How do ASNs work?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7QEwR5zzWO981NGqJmPkK/a9be038a3a6a71fe1cb96feb7f27c021/image6-18.png" alt="" class="kg-image" width="1280" height="760" loading="lazy">
+
+	</figure>
+	<p>Source: <a href="https://blog.apnic.net/2020/01/14/bgp-in-2019-the-bgp-table">https://blog.apnic.net/2020/01/14/bgp-in-2019-the-bgp-table/</a></p>
+	<h3>How do ASNs work?</h3>
 	<p>ASNs are a key part of the routing protocol that directs traffic along the Internet, BGP. Internet Assigned Numbers Authority (IANA), the global coordinator of the DNS Root, IP addressing, and other Internet protocol resources like AS Numbers, delegates ASN-making authority to Regional Internet Registries (RIRs), who in turn assign individual ASNs to network operators in line with their regional policies. The five RIRs are AFRINIC, APNIC, ARIN, LACNIC and RIPE, each entitled to assign and attribute ASN numbers in their respective appointed regions.</p>
 	<p>Cloudflare’s ASN is 13335, one of the approximately 70,000 ASNs advertised on the Internet. While we’d like to — and plan on — connecting to every one of these ASNs eventually, our team tries to prioritize those with the greatest impact on our overall breadth and improving the proximity to as many people on Earth as possible.</p>
 	<p>As enabling optimal routes is key to our core business and services, we continuously track how many ASNs we connect to (technically referred to as “adjacent networks”). With Project Myriagon, we aimed to speed up our rate of interconnection and pass 10,000 adjacent networks by the end of the year. By September 2021, we reached that milestone, bringing us from 8,300 at the start of 2020 to over 10,000 today.</p>
 	<p>As shown in the table below, that milestone is part of a continuous effort towards gradually hitting more of the total advertised ASNs on the Internet.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-23.png" class="kg-image" alt="The Regional Internet Registries and their Regions" loading="lazy">
-		<figcaption><em>The Regional Internet Registries and their Regions</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/a69oo79Vcp55IsVzerODn/554d85eaaa20862aaf0d955ded10bf5f/image1-23.png" alt="The Regional Internet Registries and their Regions" class="kg-image" width="1999" height="1054" loading="lazy">
+
 	</figure>
+	<p><i>The Regional Internet Registries and their Regions</i></p>
 	<p>Table 1: Cloudflare's peer ASNs and their respective RIR</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Screen-Shot-2021-09-18-at-10.02.06-PM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HrTB0gZ43DuOdAqcv3g17/a0f017c6c7fa1df421a4835f4010a7ce/Screen-Shot-2021-09-18-at-10.02.06-PM.png" alt="" class="kg-image" width="1000" height="440" loading="lazy">
+
+	</figure>
 	<p>Given that there are 70,000+ ASNs out there, you might be wondering: why is 10,000 a big deal? To understand this, we need to look deeply at BGP, the protocol that glues the Internet together. There are three different classes of ASNs:</p>
 	<ul>
-		<li>Transit Only ASNs: these networks only provide connectivity to other networks. They don't have any IP addresses inside their networks. These networks are quite rare, as it's very unusual to not have any IP addresses inside your network. Instead, these networks are often used primarily for distinct management purposes within a single organization.</li>
-		<li>Origin Only ASNs: these are networks that do not provide connectivity to other networks. They are a stub network, and often, like your home network, only connected to a single ISP.</li>
-		<li>Mixed ASNs: these networks both have IP addresses inside their network, and provide connectivity to other networks.</li>
-	</ul><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">Origin Only ASNs</th>
-				<th style="text-align:center">Mixed ASNs</th>
-				<th style="text-align:center">Transit Only ASNs</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center">61,127</td>
-				<td style="text-align:center">11,128</td>
-				<td style="text-align:center">443</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p><em>Source: <a href="https://bgp.potaroo.net/as6447">https://bgp.potaroo.net/as6447/</a></em></p>
+		<li>
+			<p>Transit Only ASNs: these networks only provide connectivity to other networks. They don't have any IP addresses inside their networks. These networks are quite rare, as it's very unusual to not have any IP addresses inside your network. Instead, these networks are often used primarily for distinct management purposes within a single organization.</p>
+		</li>
+		<li>
+			<p>Origin Only ASNs: these are networks that do not provide connectivity to other networks. They are a stub network, and often, like your home network, only connected to a single ISP.</p>
+		</li>
+		<li>
+			<p>Mixed ASNs: these networks both have IP addresses inside their network, and provide connectivity to other networks.</p>
+		</li>
+	</ul>
+	<p>Origin Only ASNs</p>
+	<p>Mixed ASNs</p>
+	<p>Transit Only ASNs</p>
+	<p>61,127</p>
+	<p>11,128</p>
+	<p>443</p>
+	<p><i>Source: </i><a href="https://bgp.potaroo.net/as6447"><i>https://bgp.potaroo.net/as6447/</i></a></p>
 	<p>One interesting fact: of the 61,127 origin only ASNs, nearly 43,000 of them are only connected to their ISP. As such, our direct connections to over 10,000 networks indicates that of the networks that connect more than one network, a very good percentage are now already connected to Cloudflare.</p>
-	<h3 id="cutting-out-the-middle-man">Cutting out the middle man</h3>
+	<h3>Cutting out the middle man</h3>
 	<p>Directly connecting to a network — and eliminating the hops in between — can greatly improve performance in two ways. First, connecting with a network directly allows for Internet traffic to be exchanged locally rather than detouring through remote cities; and secondly, direct connections help avoid the congestion caused by bottlenecks that sometimes happen between networks.</p>
-	<p>To take a recent real-world example, turning up a direct peering session caused a <strong>90% improvement</strong> in median end-user latency when turning up a peering session with a European network, from an average of 76ms to an average of 7ms.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-26.png" class="kg-image" alt="Immediate 90% improvement in median end-user latency after peering with a new network. " loading="lazy">
-		<figcaption><em>Immediate <strong>90% improvement</strong> in median end-user latency after peering with a new network.&nbsp;</em></figcaption>
+	<p>To take a recent real-world example, turning up a direct peering session caused a <b>90% improvement</b> in median end-user latency when turning up a peering session with a European network, from an average of 76ms to an average of 7ms.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cZt8LhHGKU2yOfLT1shRl/352aedde40247a6045a06ab7d6597cb2/image3-26.png" alt="Immediate 90% improvement in median end-user latency after peering with a new network. " class="kg-image" width="1999" height="603" loading="lazy">
+
 	</figure>
+	<p><i>Immediate </i><b><i>90% improvement</i></b><i> in median end-user latency after peering with a new network.</i>&nbsp;</p>
 	<p>By using our own on-ramps to other networks, we both ensure superior performance for our users and avoid adding load and causing congestion on the Internet at large.</p>
-	<h3 id="and-as13335-is-just-getting-started">And AS13335 is just getting started</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-22.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>And AS13335 is just getting started</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bBWubnmNYHbSd6hPITLJz/b672e562d7e4e792410d5c030f8fdf9d/image4-22.png" alt="" class="kg-image" width="1600" height="856" loading="lazy">
+
+	</figure>
 	<p>Cloudflare is an anycast network, meaning that the better connected we are, the faster and better-protected we are — obviating legacy concepts like scrubbing centers and slow origins. Hitting five digits of connected networks is something we’re really proud of as a step on our goal to helping to build a better Internet. As we’ve mentioned throughout the week, we’re all about high speed without having to pay a security or reliability cost.</p>
 	<p>There’s still work to do! While Project Myriagon has brought us, we believe, to be one of the top 5 most connected networks in the world, we estimate Google is connected to 12,000-15,000 networks. And so, today, we are kicking off Project CatchG. We won’t rest until we’re #1.</p>
-	<p>Interested in peering with us to help build a better Internet? Reach out to peering@cloudflare.com with your request. More details on the locations we are present at can be found at <a href="http://as13335.peeringdb.com">http://as13335.peeringdb.com/</a>.</p>
+	<p>Interested in peering with us to help build a better Internet? Reach out to <a href="mailto:peering@cloudflare.com">peering@cloudflare.com</a> with your request. More details on the locations we are present at can be found at <a href="http://as13335.peeringdb.com">http://as13335.peeringdb.com/</a>.</p>
 </div>

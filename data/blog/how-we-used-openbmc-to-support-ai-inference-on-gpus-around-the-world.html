@@ -1,45 +1,74 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/2148-HERO.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
-	<p>Cloudflare recently announced<a href="https://blog.cloudflare.com/workers-ai"> Workers AI</a>, giving developers the ability to run serverless GPU-powered AI inference on Cloudflare’s global network. One key area of focus in enabling this across our network was updating our Baseboard Management Controllers (BMCs). The BMC is an embedded microprocessor that sits on most servers and is responsible for remote power management, sensors, serial console, and other features such as virtual media.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JeLifbB3Vdk6jqpeUpVRc/7d490af306b792a039bb73edc2d7e115/2148-HERO.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Cloudflare recently announced <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a>, giving developers the ability to run serverless GPU-powered AI inference on Cloudflare’s global network. One key area of focus in enabling this across our network was updating our Baseboard Management Controllers (BMCs). The BMC is an embedded microprocessor that sits on most servers and is responsible for remote power management, sensors, serial console, and other features such as virtual media.</p>
 	<p>To efficiently manage our BMCs, Cloudflare leverages OpenBMC, an open-source firmware stack from the Open Compute Project (OCP). For Cloudflare, OpenBMC provides transparent, auditable firmware. Below describes some of what Cloudflare has been able to do so far with OpenBMC with respect to our GPU-equipped servers.</p>
-	<h2 id="ouch-that%E2%80%99s-hot">Ouch! That’s HOT!</h2>
+	<h2>Ouch! That’s HOT!</h2>
 	<p>For this project, we needed a way to adjust our BMC firmware to accommodate new GPUs, while maintaining the operational efficiency with respect to thermals and power consumption. OpenBMC was a powerful tool in meeting this objective.</p>
-	<p>OpenBMC allows us to change the hardware of our existing servers without the dependency of our Original Design Manufacturers (ODMs), consequently allowing our product teams to get started on products quickly. To physically support this effort, our servers need to be able to supply enough power and keep the GPU and the rest of the chassis within operating temperatures. Our servers had power supplies that had sufficient power to support new GPUs as well as the rest of the server’s chassis, so we were primarily concerned with ensuring they had sufficient cooling. </p>
+	<p>OpenBMC allows us to change the hardware of our existing servers without the dependency of our Original Design Manufacturers (ODMs), consequently allowing our product teams to get started on products quickly. To physically support this effort, our servers need to be able to supply enough power and keep the GPU and the rest of the chassis within operating temperatures. Our servers had power supplies that had sufficient power to support new GPUs as well as the rest of the server’s chassis, so we were primarily concerned with ensuring they had sufficient cooling.</p>
 	<p>With OpenBMC, our first approach to enabling our product teams to start working with the GPUs was to simply blast fans directly in line with the GPU, assuming the GPU was running at Thermal Design Power (TDP, the maximum heat from a given source). Unfortunately, because of the heat given off by these new GPUs, we could not keep them below 95˚C when they were fully stressed. This prompted us to install another fan to help keep the GPU cool and helped us bring a fully stressed GPU down to 65˚C. This served as our baseline before we began the process of fine-tuning the fan Peripheral Integral Derivative (PID) controller to handle variation in temperature in a more nuanced manner. Below shows a graph of the baseline described above:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/2148-1.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1600" height="769"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1r06acJOE7ZIuVP4jrCnqz/a772f2e937b4f77b7d078447e2554dc0/2148-1.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
+
+	</figure>
 	<p>With this baseline in place, tuning becomes a tedious iteration of PID constants. For those unfamiliar with PID controllers, we use the following equation to describe the control output given the error as input.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Screenshot-2023-12-05-at-15.31.01.png" class="kg-image" alt="" loading="lazy" width="1620" height="190"></figure>
-	<p>To break this down, u(t) represents our control output, e(t) is the error signal, and Kp, Ki, and Kd are the proportional gain, integral gain, and derivative gain constants, respectively. To briefly describe how each of these components work, I will isolate each of the components. Our error, or e(t), is simply the difference between the target temperature and the current temperature, so if our target temperature is 50 ˚C and my current is 60 ˚C, the e(t) for the proportional component is 10 ˚C. If u(t) = Kp⋅e(t), we can see that u(t) is = Kp⋅10. Any given Kp could drastically affect the control output u(t) and is responsible for how quickly the controller adjusts to approaching the target. The Ki⋅∫e(t)dt accumulates the error over time. The scenario where the controller reaches steady state but does not hit the target setpoint is called steady-state error. The integral component accumulating that error is intended for resolving this scenario but can also cause oscillations if the integral gain is too large. Lastly, the derivative portion, Kd⋅∂e(t)/∂t, can be seen as Kd⋅(the slope at the given point in time). You can imagine that the more quickly the controller approaches the target, the greater the slope, and the slower the approach, the less slope. Another way to look at it is that with faster oscillations, the greater the derivative portion, and slower oscillations, the lesser the derivative portion. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ooby3NUPSj7MFRmkYpesl/70e8bce864c214992157687de87b3c88/Screenshot-2023-12-05-at-15.31.01.png" alt="" class="kg-image" width="1620" height="190" loading="lazy">
+
+	</figure>
+	<p>To break this down, u(t) represents our control output, e(t) is the error signal, and Kp, Ki, and Kd are the proportional gain, integral gain, and derivative gain constants, respectively. To briefly describe how each of these components work, I will isolate each of the components. Our error, or e(t), is simply the difference between the target temperature and the current temperature, so if our target temperature is 50 ˚C and my current is 60 ˚C, the e(t) for the proportional component is 10 ˚C. If u(t) = Kp⋅e(t), we can see that u(t) is = Kp⋅10. Any given Kp could drastically affect the control output u(t) and is responsible for how quickly the controller adjusts to approaching the target. The Ki⋅∫e(t)dt accumulates the error over time. The scenario where the controller reaches steady state but does not hit the target setpoint is called steady-state error. The integral component accumulating that error is intended for resolving this scenario but can also cause oscillations if the integral gain is too large. Lastly, the derivative portion, Kd⋅∂e(t)/∂t, can be seen as Kd⋅(the slope at the given point in time). You can imagine that the more quickly the controller approaches the target, the greater the slope, and the slower the approach, the less slope. Another way to look at it is that with faster oscillations, the greater the derivative portion, and slower oscillations, the lesser the derivative portion.</p>
 	<p>With this in mind, the following points are taken into consideration when we manually tune the controller:</p>
 	<ol>
-		<li>Avoid oscillations at the target setpoint, i.e. avoid letting the temperature fluctuate above or below the specified temperature. Oscillations — specifically variations of fan speed and pulse width modulation (generally the power supplied to the fan), increase mechanical wear on components. We want these servers to last the entire five-year lifecycle while also not costing us capital expenses for replacing components or operating expenses in terms of the electricity we expend.</li>
-		<li>Approach the target setpoint as quickly as possible — with the above graph, we see the temperature settle somewhere between 63 ˚C and 65 ˚C quickly, but that’s because the fans are currently at 100% load. Settling at the target setpoint quickly means our fans are able to quickly adjust to the heat expended by the GPU or any component.</li>
-		<li>The proportional gain affects how quickly the controller approaches the setpoints</li>
-		<li>The integral gain is used to remove steady-state errors.</li>
-		<li>The derivative gain is based of the rate of change and is used to remove oscillations </li>
+		<li>
+			<p>Avoid oscillations at the target setpoint, i.e. avoid letting the temperature fluctuate above or below the specified temperature. Oscillations — specifically variations of fan speed and pulse width modulation (generally the power supplied to the fan), increase mechanical wear on components. We want these servers to last the entire five-year lifecycle while also not costing us capital expenses for replacing components or operating expenses in terms of the electricity we expend.</p>
+		</li>
+		<li>
+			<p>Approach the target setpoint as quickly as possible — with the above graph, we see the temperature settle somewhere between 63 ˚C and 65 ˚C quickly, but that’s because the fans are currently at 100% load. Settling at the target setpoint quickly means our fans are able to quickly adjust to the heat expended by the GPU or any component.</p>
+		</li>
+		<li>
+			<p>The proportional gain affects how quickly the controller approaches the setpoints</p>
+		</li>
+		<li>
+			<p>The integral gain is used to remove steady-state errors.</p>
+		</li>
+		<li>
+			<p>The derivative gain is based of the rate of change and is used to remove oscillations</p>
+		</li>
 	</ol>
 	<p>With a better understanding of the PID controller theory, we can see how we can iterate toward our final product. Our initial trial from a full load fan had some difficulties finding the setpoints, as shown by the oscillations on the left side of the graph. As we learned above, by adjusting our integral and derivative gains we were able to help reduce the oscillations. We can see the controller trying to lock in around the 70C, but our intended target was 65 ˚C (if it were to lock in at 70 ˚C, this would be a clear example of steady-state error). The last point we worked to resolve was to improve the speed at which it approaches the setpoint, which we were able to tune with by adjusting proportional gain.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/2148-3.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1600" height="769"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MX23CfxcUPHg4l72ITUVn/ba0869d2db9e022521ae918563e43130/2148-3.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
+
+	</figure>
 	<p>OpenBMC fan configurations are easily configurable JSON files to manually tune PID settings. The graphs presented come from comma-separated-value (CSV) files generated from OpenBMC’s PID controller application and allow us to easily iterate and improve our configuration. Several iterations later, we got our final product. We had a tad bit of overshoot in the beginning, but this is a strong enough result for us to leave the PID controller for now.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/2148-4.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1600" height="769"></figure>
-	<h2 id="talk-to-me-gpu">Talk to me GPU</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5n47tnZ8vZqTD2fQsIX33W/83491e0e655d5992d4fcfd3fc55939ab/2148-4.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
+
+	</figure>
+	<h2>Talk to me GPU</h2>
 	<p>In order to source the temperature data for the PID tuning above, we had to establish communication with the GPU. The first thing we did was identify the route from the BMC to the GPU and Peripheral Component Interconnect Express (PCIe) slot. Looking at our ODM’s schematics for the BMC and motherboard, we found a System Management Bus (SMBus) line to a mux or switch connecting to the PCIe slot. For embedded developers out there, the SMBus protocol is similar to Inter-Integrated Circuit (I2C) bus protocol, with minor differences in electrical and clock speed requirements. With a physical path to communication established, we next needed to communicate with the GPU in software.</p>
 	<p>OpenBMC applications, Linux kernel drivers, and the software tools we can add for development make the configuration and operation of devices such as fans, analog-to-digital converters (ADC), and power supplies as simple as possible. The first thing we try as a test is to get some temperature sensor data from the GPU’s onboard temperature sensor and inventory information from the Electrically-Erasable Programmable Read-Only Memory (EEPROM). We can verify the temperature sensor data with tooling provided by our GPU vendor, and the inventory information can be verified against the asset sheet provided to us when the device was delivered. Building the eerpog tool, we can try communicating with the eeprom:</p>
-	<pre><code>~$ eeprog -f -16 /dev/i2c-23 0x50 -r 0x00:200
+	<pre class="language-bash"><code class="language-bash">~$ eeprog -f -16 /dev/i2c-23 0x50 -r 0x00:200
 eeprog 0.7.5, a 24Cxx EEPROM reader/writer
 Copyright (c) 2003 by Stefano Barbato - All rights reserved.
   Bus: /dev/i2c-23, Address: 0x50, Mode: 16bit
   Reading 200 bytes from 0x0
-&lt;redacted&gt; Ver 0.02
-</code></pre>
+<redacted> Ver 0.02</redacted></code></pre>
 	<p>This tool will produce block read requests over SMBus and dump the returned information. For temperature, the TMP75 temperature sensor is commonly used for many temperature sensors in server commodity components. We can manually bind the temperature sensor in sysfs like this:</p>
 	<p><code>~$echo "tmp75 0x4F &gt; /sys/bus/i2c/devices/i2c-23/new_device"</code></p>
 	<p>This will bind the tmp75 driver to address 0x4F on I2C bus 23, and we can verify the successful binding and sysfs information as seen below:</p>
 	<p><code>~$ cat /sys/bus/i2c/devices/i2c-23/23-004f/name tmp75</code></p>
 	<p>With our temperature sensor and inventory information, we can now leverage OpenBMC’s applications for simple configuration to make this information available via the Intelligent Platform Management Interface (IPMI) or Redfish, a REST based protocol for communicating with the BMC. For adding these components, we will focus on Entity-Manager.</p>
 	<p>Entity-Manager is OpenBMC’s means of making physical components available to the BMC’s software via JSON configuration files. OpenBMC applications refer to information made available with these configurations to make sensor data and inventory data available over BMC interfaces and raise alerts when going out of bounds of critically configured settings. The following is the configuration we use as a result of our discoveries above:</p>
-	<pre><code>{
+	<pre class="language-bash"><code class="language-bash">{
     "Exposes": [
         {
             "Address": "0x4F",
@@ -73,16 +102,15 @@ Copyright (c) 2003 by Stefano Barbato - All rights reserved.
     }
 }</code></pre>
 	<p>Entity-Manager probes the I2C buses for all the EEPROMs for inventory information, possibly detailing what’s available on the buses. It will then try to match the information with a given JSON configuration’s “Probe” member, and if there is a match, it will take the configuration and configure the configurations as part of what is exposed. The end result is the FRU and GPU_TEMP available on IPMI.</p>
-	<pre><code>$~ ipmi 517m206 sdr |grep GPU_TEMP
+	<pre class="language-bash"><code class="language-bash">$~ ipmi 517m206 sdr |grep GPU_TEMP
 GPU_TEMP         | 39 degrees C      | ok
 $~ ipmi 517m206 fru print 151
-FRU Device Description : &lt;redacted&gt; (ID 151)
+FRU Device Description : <redacted> (ID 151)
  Board Mfg Date        : Mon Mar 27 18:13:00 2023 UTC
- Board Mfg             : &lt;redacted&gt;
- Board Product         : &lt;redacted&gt;
- Board Serial          : &lt;redacted&gt;
- Board Part Number     : &lt;redacted&gt;
-</code></pre>
-	<h2 id="open-source-firmware-moving-forward">Open-Source firmware moving forward</h2>
-	<p>Cloudflare has been able to leverage OpenBMC to gain more control and flexibility with our server configurations, without sacrificing the efficiency at the core of our network. While we continue to work closely with our ODM partners, our ongoing GPU deployment has underscored the importance of being able to modify server firmware without being locked to traditional device update cycles. <br>For those who are interested in considering making the jump to open-source firmware, check out OpenBMC <a href="https://github.com/openbmc/openbmc">here</a>!</p>
+ Board Mfg             : <redacted>
+ Board Product         : <redacted>
+ Board Serial          : <redacted>
+ Board Part Number     : <redacted></redacted></redacted></redacted></redacted></redacted></code></pre>
+	<h2>Open-Source firmware moving forward</h2>
+	<p>Cloudflare has been able to leverage OpenBMC to gain more control and flexibility with our server configurations, without sacrificing the efficiency at the core of our network. While we continue to work closely with our ODM partners, our ongoing GPU deployment has underscored the importance of being able to modify server firmware without being locked to traditional device update cycles.For those who are interested in considering making the jump to open-source firmware, check out OpenBMC <a href="https://github.com/openbmc/openbmc">here</a>!</p>
 </div>

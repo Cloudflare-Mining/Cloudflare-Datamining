@@ -1,64 +1,129 @@
 <div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/project-galileo-fifth-anniversary">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/project-galileo-fifth-anniversary">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/project-galileo-fifth-anniversary">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/project-galileo-fifth-anniversary">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wapwHhpalZuEcEqNt7d28/836ec3e65633d62702254f20e5bafac8/project-galileo-fifth-anniversary.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today is the 5th anniversary of <a href="https://www.cloudflare.com/galileo">Cloudflare's Project Galileo</a>. Through the Project, Cloudflare protects—at no cost—nearly 600 organizations around the world engaged in some of the most politically and artistically important work online. Because of their work, these organizations are attacked frequently, often with some of the fiercest cyber attacks we’ve seen.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image1-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13MIq5Uk6UBKQeAdh9iiTY/d29eb8234d12b66e37441a48ebd53c15/image1-1.png" alt="" class="kg-image" width="1890" height="1891" loading="lazy">
+
+	</figure>
 	<p>Since it <a href="https://blog.cloudflare.com/protecting-free-expression-online">launched in 2014</a>, we haven't talked about Galileo much externally because we worry that drawing more attention to these organizations may put them at increased risk. Internally, however, it's a source of pride for our whole team and is something we dedicate significant resources to. And, for me personally, many of the moments that mark my most meaningful accomplishments were born from our work protecting Project Galileo recipients.</p>
 	<p>The promise of Project Galileo is simple: Cloudflare will provide our full set of security services to any politically or artistically important organizations at no cost so long as they are either non-profits or small commercial entities. I'm still on the distribution list that receives an email whenever someone applies to be a Project Galileo participant, and those emails remain the first I open every morning.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image3-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="the-project-galileo-backstory">The Project Galileo Backstory</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wu9fDfa8jwPTPJaE0EcCQ/9bf39760d5f29dcdeac335abc492edac/image3-1.png" alt="" class="kg-image" width="1999" height="1429" loading="lazy">
+
+	</figure>
+	<h3>The Project Galileo Backstory</h3>
 	<p>Five years ago, Project Galileo was born out of a mistake we made. At the time, Cloudflare's free service didn't include DDoS mitigation. If a free customer came under attack, our operations team would generally stop proxying their traffic. We did this to protect our own network, which was much smaller than it is today.</p>
-	<p>Usually this wasn't a problem. Most sites that got attacked at the time were companies or businesses that could pay for our services. </p>
+	<p>Usually this wasn't a problem. Most sites that got attacked at the time were companies or businesses that could pay for our services.</p>
 	<p>Every morning I'd receive a report of the sites that were kicked off Cloudflare the night before. One morning in late February 2014 I was reading the report as I walked to work. One of the sites listed as having been dropped stood out as familiar but I couldn't place it.</p>
 	<p>I tried to pull up the site on my phone but it was offline, presumably because we were no longer shielding the site from attack. Still curious, I did a quick search and found a Wikipedia page describing the site. It was an independent newspaper in Ukraine and had been covering the ongoing Russian invasion of Crimea.</p>
 	<p>I felt sick.</p>
-	<h3 id="when-nation-states-attack">When Nation States Attack</h3>
+	<h3>When Nation States Attack</h3>
 	<p>What we later learned was that this publication had come under a significant attack, most likely directly from the Russian government. The newspaper had turned to Cloudflare for protection. Their IT director actually tried to pay for our higher tier of service but the bank tied to the publication's credit card had had its systems disrupted by a cyber attack as well and the payment failed. So they’d signed up for the free version of Cloudflare and, for a while, we mitigated the attack.</p>
 	<p>The attack was large enough that it triggered an alert in our Network Operations Center (NOC). A member of our Systems Reliability Engineering (SRE) team who was on call investigated and found a free customer being pummeled by a major attack. He followed our run book and triggered a FINT — which stands for "Fail Internal" — directing traffic from the site directly back to its origin rather than passing through Cloudflare's protective edge. Instantly the site was overwhelmed by the attack and, effectively, fell off the Internet.</p>
-	<h3 id="broken-process">Broken Process</h3>
+	<h3>Broken Process</h3>
 	<p>I should be clear: the SRE didn't do anything wrong. He followed the procedures we had established at the time exactly. He was a great computer scientist, but not a political scientist, so didn't recognize the site or understand its importance due to the situation at the time in Crimea and why a newspaper covering it may come under attack. But, the next morning, as I read the report on my walk in to work, I did.</p>
 	<p>Cloudflare's mission is to help build a better Internet. That day we failed to live up to that mission. I knew we had to do something.</p>
-	<h3 id="politically-or-artistically-important">Politically or Artistically Important?</h3>
+	<h3>Politically or Artistically Important?</h3>
 	<p>It was relatively easy for us to decide to provide Cloudflare's security services for free to politically or artistically important non-profits and small commercial entities. We were confident that we could stand up to even the largest attacks. What we were less confident about was our ability to determine who was "politically or artistically important."</p>
 	<p>While Cloudflare runs infrastructure all around the world, our team is largely based in San Francisco, Austin, London, and Singapore. That certainly gives us a viewpoint, but it isn't a particularly globally representative viewpoint. We're also a very technical organization. If we surveyed our team to determine what organizations deserved protection we'd no-doubt identify a number of worthy organizations that were close to home and close to our interests, but we'd miss many others.</p>
 	<p>We also worried that it was dangerous for an infrastructure provider like Cloudflare to start making decisions about what content was "good." Doing so inherently would imply that we were in a position to make decisions about what content was "bad." While moderating content and curating communities is appropriate for some more visible platforms, the deeper you go into Internet infrastructure, the less transparent, accountable, and consistent those decisions inherently become.</p>
-	<h3 id="turning-to-the-experts">Turning to the Experts</h3>
-	<p>So, rather than making the determination of who was politically or artistically important ourselves, we turned to civil society organizations that were experts in exactly that. Initially, we partnered with 15 organizations, including: </p>
+	<h3>Turning to the Experts</h3>
+	<p>So, rather than making the determination of who was politically or artistically important ourselves, we turned to civil society organizations that were experts in exactly that. Initially, we partnered with 15 organizations, including:</p>
 	<ul>
-		<li>Access Now</li>
-		<li>American Civil Liberties Union (ACLU)</li>
-		<li>Center for Democracy and Technology (CDT)</li>
-		<li>Centre for Policy Alternatives</li>
-		<li>Committee to Protect Journalists (CPJ)</li>
-		<li>Electronic Frontier Foundation (EFF)</li>
-		<li>Engine Advocacy</li>
-		<li>Freedom of the Press Foundation</li>
-		<li>Meedan</li>
-		<li>Mozilla</li>
-		<li>Open Tech Fund</li>
-		<li>Open Technology Institute</li>
+		<li>
+			<p>Access Now</p>
+		</li>
+		<li>
+			<p>American Civil Liberties Union (ACLU)</p>
+		</li>
+		<li>
+			<p>Center for Democracy and Technology (CDT)</p>
+		</li>
+		<li>
+			<p>Centre for Policy Alternatives</p>
+		</li>
+		<li>
+			<p>Committee to Protect Journalists (CPJ)</p>
+		</li>
+		<li>
+			<p>Electronic Frontier Foundation (EFF)</p>
+		</li>
+		<li>
+			<p>Engine Advocacy</p>
+		</li>
+		<li>
+			<p>Freedom of the Press Foundation</p>
+		</li>
+		<li>
+			<p>Meedan</p>
+		</li>
+		<li>
+			<p>Mozilla</p>
+		</li>
+		<li>
+			<p>Open Tech Fund</p>
+		</li>
+		<li>
+			<p>Open Technology Institute</p>
+		</li>
 	</ul>
 	<p>We agreed that if any partner said that a non-profit or small commercial entity that applied for protection was "politically or artistically important" then we would extend our security services and protect them, no matter what.</p>
 	<p>With that, Project Galileo was born. Nearly 600 organizations are currently being protected under Project Galileo. We've never removed an organization from protection in spite of occasional political pressure as well as frequent extremely large attacks.</p>
 	<p>Organizations can apply directly through Cloudflare for Project Galileo protection or can be referred by a partner. Today, we've grown the list of partners to 28, adding:</p>
 	<ul>
-		<li>Anti-Defamation League</li>
-		<li>Amnesty International</li>
-		<li>Business &amp; Human Rights Resource Centre</li>
-		<li>Council of Europe</li>
-		<li>Derechos Digitales</li>
-		<li>Fourth Estate</li>
-		<li>Frontline Defenders</li>
-		<li>Institute for War &amp; Peace Reporting (IWPR)</li>
-		<li>LION Publishers</li>
-		<li>National Democratic Institute (NDI)</li>
-		<li>Reporters Sans Frontières</li>
-		<li>Social Media Exchange (SMEX)</li>
-		<li>Sontusdatos.org</li>
-		<li>Tech Against Terrorism</li>
-		<li>World Wide Web Foundation</li>
-		<li>X-Lab</li>
+		<li>
+			<p>Anti-Defamation League</p>
+		</li>
+		<li>
+			<p>Amnesty International</p>
+		</li>
+		<li>
+			<p>Business &amp; Human Rights Resource Centre</p>
+		</li>
+		<li>
+			<p>Council of Europe</p>
+		</li>
+		<li>
+			<p>Derechos Digitales</p>
+		</li>
+		<li>
+			<p>Fourth Estate</p>
+		</li>
+		<li>
+			<p>Frontline Defenders</p>
+		</li>
+		<li>
+			<p>Institute for War &amp; Peace Reporting (IWPR)</p>
+		</li>
+		<li>
+			<p>LION Publishers</p>
+		</li>
+		<li>
+			<p>National Democratic Institute (NDI)</p>
+		</li>
+		<li>
+			<p>Reporters Sans Frontières</p>
+		</li>
+		<li>
+			<p>Social Media Exchange (SMEX)</p>
+		</li>
+		<li>
+			<p>Sontusdatos.org</p>
+		</li>
+		<li>
+			<p>Tech Against Terrorism</p>
+		</li>
+		<li>
+			<p>World Wide Web Foundation</p>
+		</li>
+		<li>
+			<p>X-Lab</p>
+		</li>
 	</ul>
-	<h3 id="cloudflare-s-mission-help-build-a-better-internet">Cloudflare's Mission: Help Build a Better Internet</h3>
+	<h3>Cloudflare's Mission: Help Build a Better Internet</h3>
 	<p>Some companies start with a mission. Cloudflare was not one of those companies. When Michelle, Lee, and I started building Cloudflare it was because we thought we'd identified a significant business opportunity. Truth be told, I thought the idea of being "mission driven" was kind of hokum.</p>
 	<p>I clearly remember the day that changed for me. The director of one of the Project Galileo partners called me to say that he had three journalists who had received protection under Project Galileo that were visiting San Francisco and asked if it would be okay to bring them by our office. I said sure and carved out a bit of time to meet with them.</p>
 	<p>The three journalists turned out to all be covering alleged government corruption in their home countries. One was from Angola, one was from Ethiopia, and they wouldn't tell me the name or home country of the third because he was "currently being hunted by death squads." All three of them hugged me. One had tears in his eyes. And then they proceeded to tell me about how they couldn't do their work as journalists without Cloudflare's protection.</p>
@@ -66,11 +131,23 @@
 	<p>I'm proud of the work we've done through Project Galileo over the last five years lending the full weight of Cloudflare to protect these politically and artistically important organizations. It has defined our mission to help build a better Internet.</p>
 	<p>While we respect the confidentiality of the organizations that receive support under the Project, I'm thankful that a handful have allowed us to tell their stories. I encourage you to read about our newest recipients of the Project:</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/galileo/case-study/majal">Majal</a></li>
-		<li><a href="https://www.cloudflare.com/galileo/case-study/womens-march-global">Women's March Global</a></li>
-		<li><a href="https://www.cloudflare.com/galileo/case-study/vost-portugal">VOST Portugal</a></li>
-		<li><a href="https://www.cloudflare.com/galileo/case-study/bullyingcanada">BullyingCanada</a></li>
+		<li>
+			<p><a href="https://www.cloudflare.com/galileo/case-study/majal">Majal</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/galileo/case-study/womens-march-global">Women's March Global</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/galileo/case-study/vost-portugal">VOST Portugal</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/galileo/case-study/bullyingcanada">BullyingCanada</a></p>
+		</li>
 	</ul>
 	<p>And, finally, if you know of an organization that needs Project Galileo's protection, please let them know we're here and happy to help.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ehokcUt9bB10DL7e2KQ2G/dc27ca39f36adc569535e949785990b6/image2-1.png" alt="" class="kg-image" width="1999" height="1429" loading="lazy">
+
+	</figure>
 </div>

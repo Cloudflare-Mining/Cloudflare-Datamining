@@ -1,14 +1,18 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32MxrvGdVaEEhIecBs5atK/463aa8539a4930143c615cfb4a8c9a89/cloudflare-interview-questions.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>For quite some time we've been grilling our candidates about dirty corners of TCP/IP stack. Every engineer here must prove his/her comprehensive understanding of the full network stack. For example: what are the differences in checksumming algorithms between IPv4 and IPv6 stacks?</p>
 	<p>I'm joking of course, but in the spirit of <a href="http://valerieaurora.org/tcpip.html">the old TCP/IP pub game</a> I want to share some of the amusing TCP/IP quirks I've bumped into over the last few months while working on CloudFlare's automatic attack mitigation systems.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/05/netstat.jpg" alt="" loading="lazy"></p>
-	<p><small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/dbreg2007/4376127852">image</a> by <a href="https://creativecommons.org/licenses/by-sa/2.0">Daan Berg</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xdoPAth68hmlJo2VXCjPk/832cb5faaaf91350db926bdec35c8283/netstat.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/dbreg2007/4376127852">image</a> by <a href="https://creativecommons.org/licenses/by-sa/2.0">Daan Berg</a></p>
 	<p>Don't worry if you don't know the correct answer: you may always come up with a funny one!</p>
 	<p>Some of the questions are fairly obvious, some don't have a direct answer and are supposed to provoke a longer discussion. The goal is to encourage our readers to review the dusty RFCs, get interested in the inner workings of the network stack and generally spread the knowledge about the protocols we rely on so much.</p>
 	<p>Don't forget to add a comment below if you want to share a response!</p>
 	<p>You think you know all about TCP/IP? Let's find out.</p>
-	<h4 id="archaeology">Archaeology</h4>
+	<h4>Archaeology</h4>
 	<ol>
 		<li>
 			<p>What is the lowest TCP port number?</p>
@@ -26,8 +30,8 @@
 			<p>What does the IP_FREEBIND socket option do?</p>
 		</li>
 	</ol>
-	<h4 id="forgottenquirks">Forgotten Quirks</h4>
-	<ol start="6">
+	<h4>Forgotten Quirks</h4>
+	<ol>
 		<li>
 			<p>What does the PSH flag actually do?</p>
 		</li>
@@ -41,8 +45,8 @@
 			<p>How does TCP simultaneous open work? Does it actually work?</p>
 		</li>
 	</ol>
-	<h4 id="fragmentationandcongestion">Fragmentation and Congestion</h4>
-	<ol start="10">
+	<h4>Fragmentation and Congestion</h4>
+	<ol>
 		<li>
 			<p>What is a stupid window syndrome?</p>
 		</li>
@@ -53,8 +57,8 @@
 			<p>What is the IP ID field and what does it have to do with DF bit? Why do some packets have a non-zero IP ID and a DF set?</p>
 		</li>
 	</ol>
-	<h4 id="freshideas">Fresh Ideas</h4>
-	<ol start="13">
+	<h4>Fresh Ideas</h4>
+	<ol>
 		<li>
 			<p>Can a SYN packet have a payload? (hint: new RFC proposals)</p>
 		</li>
@@ -62,8 +66,8 @@
 			<p>Can a SYN+ACK packet have a payload?</p>
 		</li>
 	</ol>
-	<h4 id="icmppathmtu">ICMP Path MTU</h4>
-	<ol start="15">
+	<h4>ICMP Path MTU</h4>
+	<ol>
 		<li>
 			<p>ICMP packet-too-big messages are returned by routers and contain a part of the original packet in the payload. What is the minimal length of this payload that is accepted by Linux?</p>
 		</li>
@@ -71,8 +75,8 @@
 			<p>When an ICMP packet-too-big message is returned by an intermediate router it will have the source IP of that router. In practice though, we often see a source IP of the ICMP message to be identical to the destination IP of the original packet. Why could that happen?</p>
 		</li>
 	</ol>
-	<h4 id="linuxconfiguration">Linux Configuration</h4>
-	<ol start="17">
+	<h4>Linux Configuration</h4>
+	<ol>
 		<li>
 			<p>Linux has a "tcp_no_metrics_save" sysctl setting. What does it save and for how long?</p>
 		</li>
@@ -83,8 +87,8 @@
 			<p>What happens if the SYN queue grows too large and overflows?</p>
 		</li>
 	</ol>
-	<h4 id="touchingtherouter">Touching the router</h4>
-	<ol start="20">
+	<h4>Touching the router</h4>
+	<ol>
 		<li>
 			<p>What are BGP bogons, and why are they less of a problem now?</p>
 		</li>
@@ -93,9 +97,10 @@
 		</li>
 	</ol>
 	<p>And finally:</p>
-	<ol start="22">
-		<li>What are the differences in checksumming algorithms in IPv4 and IPv6?</li>
+	<ol>
+		<li>
+			<p>What are the differences in checksumming algorithms in IPv4 and IPv6?</p>
+		</li>
 	</ol>
 	<p>At CloudFlare we touch low level things like that every day. Is this something that interests you? Consider <a href="https://www.cloudflare.com/join-our-team">applying</a>!</p>
-	<!--kg-card-end: markdown-->
 </div>

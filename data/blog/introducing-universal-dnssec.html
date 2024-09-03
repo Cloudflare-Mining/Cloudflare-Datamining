@@ -1,46 +1,49 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/11/image_0-1.png" alt="" loading="lazy"></p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wzCBL4FMqRMcKMGc0lXnD/adc838f9e437337dfad120e939ed77df/image_0-1.png" alt="" class="kg-image" width="350" height="350" loading="lazy">
+
+	</figure>
 	<p>CloudFlare launched just five years ago with the goal of building a better Internet. That’s why we are excited to announce that beginning today, anyone on CloudFlare can secure their traffic with DNSSEC in just one simple step.</p>
 	<p>This follows one year after <a href="https://blog.cloudflare.com/introducing-universal-ssl">we made SSL available for free</a>, and in one week, more than doubled the size of the encrypted web. Today we will do the same with DNSSEC, and this year, we’ll double the size of the DNSSEC-enabled web, bringing DNSSEC to millions of websites, for free.</p>
 	<p>If DNS is the phone book of the Internet, DNSSEC is the unspoofable caller ID. DNSSEC ensures that a website’s traffic is safely directed to the correct servers, so that a connection to a website is not intercepted by an on-path attack.</p>
-	<h3 id="solvingadecadesoldvulnerabilityindns">Solving A Decades-Old Vulnerability In DNS</h3>
+	<h3>Solving A Decades-Old Vulnerability In DNS</h3>
 	<p>Every website visit begins with a DNS query. When I visit cloudflare.com, my browser first needs to find the IP address:</p>
 	<p><code>cloudflare.com. 272 IN A 198.41.215.163</code></p>
 	<p>When DNS was invented in 1983, the Internet was used by only a handful of professors and researchers, and no one imagined that there could be foul play. Thus, DNS relies on sheer trust to operate; no matter what IP address you receive in return, your browser blindly trusts it and attempts to establish a TCP connection with that server.</p>
-	<p><code>cloudflare.com. 272 IN A <strong>6.6.6.6</strong></code></p>
+	<p><code>cloudflare.com. 272 IN A **6.6.6.6**</code></p>
 	<p>A malicious wifi network, an attacker on your router, a compromised ISP, or any other on-path attack can manipulate this decades-old vulnerability in DNS to connect you to any server they choose. This lack of authentication in DNS has been exploited by countries to block banned websites, by intelligence agencies to intercept traffic, by service providers to inject ads, and by attackers to phish visitors and serve malware.</p>
 	<p>If we want to build an Internet we can trust, we must eliminate the possibility of this type of attack. The proven solution is DNSSEC. Our goal is to have DNSSEC enabled on every website on CloudFlare. It should be the expectation, not the exception, that DNS is secured by DNSSEC.</p>
-	<h3 id="howtrustisdelegatedindnssecandhowitshouldbeautomated">How Trust Is Delegated In DNSSEC, And How It Should Be Automated</h3>
+	<h3>How Trust Is Delegated In DNSSEC, And How It Should Be Automated</h3>
 	<p>In DNSSEC, <a href="https://www.cloudflare.com/dnssec/how-dnssec-works">trust is chained</a> down from the root zone, to the Top Level Domain (TLD), to the domain, and then to any subdomain. You can trust cloudflare.com in DNSSEC because it is verified by a key contained at the .com zone, and you can trust .com because it is verified by a key contained at the root zone.</p>
-	<p>cloudflare.com ECDSA public key:<br>
-		<code>mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+ KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==</code>
-	</p>
-	<p>SHA-256 hash of cloudflare.com key in .com zone:<br>
-		<code>32996839a6d808afe3eb4a795a0e6a7a39a76fc52ff228b22b76f6d63826f2b9</code>
-	</p>
-	<p>SHA-256 hash of .com key published in the <a href="https://www.internic.net/domain/root.zone">root zone</a>:<br>
-		<code>E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CFC41A5766</code>
-	</p>
+	<p>cloudflare.com ECDSA public key:<code>mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+ KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==</code></p>
+	<p>SHA-256 hash of cloudflare.com key in .com zone:<code>32996839a6d808afe3eb4a795a0e6a7a39a76fc52ff228b22b76f6d63826f2b9</code></p>
+	<p>SHA-256 hash of .com key published in the <a href="https://www.internic.net/domain/root.zone">root zone</a>:<code>E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CFC41A5766</code></p>
 	<p>Keys in DNSSEC can be trusted because their hashes are stored in the zone above them, allowing DNS resolvers to compare the key against its hash. Therefore, to activate DNSSEC, a website owner needs to:</p>
 	<ul>
-		<li>Copy the keys from CloudFlare’s dashboard</li>
-		<li>Paste them in the registrar’s dashboard</li>
-		<li>The <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> then updates the information contained in the registry with the new keys</li>
+		<li>
+			<p>Copy the keys from CloudFlare’s dashboard</p>
+		</li>
+		<li>
+			<p>Paste them in the registrar’s dashboard</p>
+		</li>
+		<li>
+			<p>The <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> then updates the information contained in the registry with the new keys</p>
+		</li>
 	</ul>
 	<p>This part is problematic -- copying and pasting opens up the possibility to human error, and prevents the spread of DNSSEC on the web if the registrar still hasn’t added support in their interface for the protocol or our DNSSEC cipher choice.</p>
-	<blockquote class="twitter-tweet" lang="en">
-		<p lang="en" dir="ltr"><a href="https://twitter.com/puntcat">@puntcat</a> can you guys *please* add support for algorithm 13 for DNSSEC so I can use <a href="https://twitter.com/CloudFlare">@CloudFlare</a>?</p>— Evan Kinney (@evankinney) <a href="https://twitter.com/evankinney/status/659115663752044545">October 27, 2015</a>
+	<blockquote>
+		<p><a href="https://twitter.com/puntcat">@puntcat</a> can you guys *please* add support for algorithm 13 for DNSSEC so I can use <a href="https://twitter.com/CloudFlare">@CloudFlare</a>?</p>
+		<p>— Evan Kinney (@evankinney) <a href="https://twitter.com/evankinney/status/659115663752044545">October 27, 2015</a></p>
 	</blockquote>
-	<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 	<p>If CloudFlare could instead communicate directly with the registry, we could activate DNSSEC for every website on CloudFlare automatically, a full <a href="http://www.datanyze.com/market-share/DNS">42% of managed DNS</a>. The sheer scale could fundamentally upgrade the mechanism of trust in the Internet backbone.</p>
-	<h3 id="creatinginternetstandards">Creating Internet Standards</h3>
+	<h3>Creating Internet Standards</h3>
 	<p>At CloudFlare, we care about advancing what’s possible on the Internet, so <a href="https://tools.ietf.org/html/draft-latour-dnsoperator-to-rrr-protocol">we have published an Internet Draft</a> proposing a protocol for DNS providers such as CloudFlare to communicate directly to registries and registrars. We are pushing it to become an accepted Internet Standard RFC.</p>
 	<p>Registries all over the world are already building support for this protocol, which means that over the next year, CloudFlare will be able to activate DNSSEC automatically for the tens of thousands of websites on CloudFlare with the .ca, .cl and .ee TLDs without users having to manage the activation.</p>
 	<p>We are inviting all registries and registrars to take a step forward with us towards a better and safer web. If you’re a registry or registrar and want to get involved, get in touch by emailing <a href="mailto:dnssec-integration@cloudflare.com">dnssec-integration@cloudflare.com</a>. Help us keep the Internet trustworthy.</p>
-	<h3 id="dnssecandcloudflare">DNSSEC and CloudFlare</h3>
+	<h3>DNSSEC and CloudFlare</h3>
 	<p>Since we launched the DNSSEC public beta just three weeks ago, we have protected 150 million people and 21 billion web requests with DNSSEC.</p>
 	<p>Several registries and registrars have added support for DNSSEC with ECDSA, <a href="https://www.cloudflare.com/dnssec/ecdsa-and-dnssec">our chosen cipher</a>, since we started our beta just a few weeks ago. Big shoutout to <a href="https://ovh.com">OVH</a>, <a href="https://hover.com">Hover</a>, <a href="https://internet.bs">Internet.bs</a> and <a href="https://metaname.net">Metaname</a>, as well as <a href="https://eurid.eu">EURid</a> (.EU) and <a href="https://nzrs.net.nz">NZRS</a> (.NZ), allowing hundreds of thousands of websites on CloudFlare to turn on DNSSEC right now.</p>
 	<p>This is just the start. Now it’s your turn. Join us in making the web better.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,37 +1,77 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/unnamed-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NBGzrE0uIc9owf085UHbX/573a8479d8222709e749bea94f27638f/unnamed-6.png" alt="" class="kg-image" width="2048" height="1154" loading="lazy">
+
+	</figure>
 	<p>We often put together experiments that measure hardware performance to improve our understanding and provide insights to our hardware partners. We recently wanted to know more about Hyper-Threading and Turbo Boost. The last time we assessed these two technologies was when we were still <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">deploying the Intel Xeons</a> (Skylake/Purley), but beginning with our Gen X servers we <a href="https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers">switched over to the AMD EPYC</a> (Zen 2/Rome). This blog is about our latest attempt at quantifying the performance impact of Hyper-Threading and Turbo Boost on our AMD-based servers running our software stack.</p>
 	<p>Intel briefly introduced Hyper-Threading with NetBurst (Northwood) back in 2002, then reintroduced Hyper-Threading six years later with Nehalem along with Turbo Boost. AMD presented their own implementation of these technologies with Zen in 2017, but AMD’s version of Turbo Boost actually dates back to AMD K10 (Thuban), in 2010, when it used to be called Turbo Core. Since Zen, Hyper-Threading and Turbo Boost are known as simultaneous multithreading (SMT) and Core Performance Boost (CPB), respectively. The underlying implementation of Hyper-Threading and Turbo Boost differs between the two vendors, but the high-level concept remains the same.</p>
 	<p>Hyper-Threading or simultaneous multithreading creates a second hardware thread within a processor’s core, also known as a logical core, by duplicating various parts of the core to support the context of a second application thread. The two hardware threads execute simultaneously within the core, across their dedicated and remaining shared resources. If neither hardware threads contend over a particular shared resource, then the throughput can be drastically increased.</p>
 	<p>Turbo Boost or Core Performance Boost opportunistically allows the processor to operate beyond its rated base frequency as long as the processor operates within guidelines set by Intel or AMD. Generally speaking, the higher the frequency, the faster the processor finishes a task.</p>
-	<h2 id="simulated-environment">Simulated Environment</h2>
-	<h3 id="cpu-specification">CPU Specification</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Simulated Environment</h2>
+	<h3>CPU Specification</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/STcQJqLbUhlxNm7hYmEc7/9bedb6be507989ee04848773981ad356/image2-12.png" alt="" class="kg-image" width="1334" height="464" loading="lazy">
+
+	</figure>
 	<p>Our <a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">Gen X or 10th generation servers</a> are powered by the <a href="https://www.amd.com/en/products/cpu/amd-epyc-7642">AMD EPYC 7642</a>, based on the Zen 2 microarchitecture. The vast majority of the Zen 2-based processors along with its successor Zen 3 that our <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">Gen 11 servers are based on</a>, supports simultaneous multithreading and Core Performance Boost.</p>
 	<p>Similar to Intel’s Hyper-Threading, AMD implemented 2-way simultaneous multithreading. The AMD EPYC 7642 has 48 cores, and with simultaneous multithreading enabled it can simultaneously execute 96 hardware threads. Core Performance Boost allows the AMD EPYC 7642 to operate anywhere between 2.3 to 3.3 GHz, depending on the workload and limitations imposed on the processor. With Core Performance Boost disabled, the processor will operate at 2.3 GHz, the rated base frequency on the AMD EPYC 7642. We took our usual simulated traffic pattern of 10 KiB cached assets over HTTPS, <a href="https://blog.cloudflare.com/keepalives-considered-harmful">provided by our performance team</a>, to generate a sustained workload that saturated the processor to 100% CPU utilization.</p>
-	<h3 id="results">Results</h3>
+	<h3>Results</h3>
 	<p>After establishing a baseline with simultaneous multithreading and Core Performance Boost disabled, we started enabling one feature at a time. When we enabled Core Performance Boost, the processor operated near its peak turbo frequency, hovering between 3.2 to 3.3 GHz which is more than 39% higher than the base frequency. Higher operating frequency directly translated into 40% additional requests per second. We then disabled Core Performance Boost and enabled simultaneous multithreading. Similar to Core Performance Boost, simultaneous multithreading alone improved requests per second by 43%. Lastly, by enabling both features, we observed an 86% improvement in requests per second.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NfKzNxMrKrtufGQuYjcHp/cbc8c6045c228edf081f262bb594176a/image4-8.png" alt="" class="kg-image" width="1170" height="672" loading="lazy">
+
+	</figure>
 	<p>Latencies were generally lowered by either or both Core Performance Boost and simultaneous multithreading. While Core Performance Boost consistently maintained a lower latency than the baseline, simultaneous multithreading gradually took longer to process a request as it reached tail latencies. Though not depicted in the figure below, when we examined beyond p9999 or 99.99th percentile, simultaneous multithreading, even with the help of Core Performance Boost, exponentially increased in latency by more than 150% over the baseline, presumably due to the two hardware threads contending over a shared resource within the core.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="production-environment">Production Environment</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aLHnhtg8eOGWoUCBe2g98/bc71ec905813c201cbf87d0773cd25b8/image7-4.png" alt="" class="kg-image" width="1170" height="672" loading="lazy">
+
+	</figure>
+	<h2>Production Environment</h2>
 	<p>Moving into production, since our <a href="https://radar.cloudflare.com">traffic fluctuates throughout the day</a>, we took four identical Gen X servers and measured in parallel during peak hours. The only changes we made to the servers were enabling and disabling simultaneous multithreading and Core Performance Boost to create a comprehensive test matrix. We conducted the experiment in two different regions to identify any anomalies and mismatching trends. All trends were alike.</p>
 	<p>Before diving into the results, we should preface that the baseline server operated at a higher CPU utilization than others. Every generation, our servers deliver a noticeable improvement in performance. So our load balancer, named Unimog, <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">sends a different number of connections to the target server based on its generation</a> to balance out the CPU utilization. When we disabled simultaneous multithreading and Core Performance Boost, the baseline server’s performance degraded to the point where Unimog encountered a “guard rail” or the lower limit on the requests sent to the server, and so its CPU utilization rose instead. Given that the baseline server operated at a higher CPU utilization, the baseline server processed more requests per second to meet the minimum performance threshold.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image8-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="results-1">Results</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4f2ViyRNLst20bSKZ5I9fe/76b5d3aff868bcd53a19722a0d1ced43/image8-5.png" alt="" class="kg-image" width="1176" height="644" loading="lazy">
+
+	</figure>
+	<h3>Results</h3>
 	<p>Due to the skewed baseline, when core performance boost was enabled, we only observed 7% additional requests per second. Next, simultaneous multithreading alone improved requests per second by 41%. Lastly, with both features enabled, we saw an 86% improvement in requests per second.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6E6GlehsjYmQmKnpjxgkut/7f3fd901faa461a4364c228117051748/image6-6.png" alt="" class="kg-image" width="1176" height="646" loading="lazy">
+
+	</figure>
 	<p>Though we lack concrete baseline data, we can normalize requests per second by CPU utilization to approximate the improvement for each scenario. Once normalized, the estimated improvement in requests per second from core performance boost and simultaneous multithreading were 36% and 80%, respectively. With both features enabled, requests per second improved by 136%.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OGBo0BJ9POefn6afYw5Mc/7d59481dd445f1b39d2f0498fcea6963/image5-6.png" alt="" class="kg-image" width="1180" height="620" loading="lazy">
+
+	</figure>
 	<p>Latency was not as interesting since the baseline server operated at a higher CPU utilization, and in turn, it produced a higher tail latency than we would have otherwise expected. All other servers maintained a lower latency due to their lower CPU utilization in conjunction with Core Performance Boost, simultaneous multithreading, or both.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JPkPm4EP6DXEGd99nSyVo/cefeae90447e5bb762885f11049b14ce/image1-10.png" alt="" class="kg-image" width="1176" height="646" loading="lazy">
+
+	</figure>
 	<p>At this point, our experiment did not go as we had planned. Our baseline is skewed, and we only got half useful answers. However, we find experimenting to be important because we usually end up finding other helpful insights as well.</p>
 	<p>Let’s add power data. Since our baseline server was operating at a higher CPU utilization, we knew it was serving more requests and therefore, consumed more power than it needed to. Enabling Core Performance Boost allowed the processor to run up to its peak turbo frequency, increasing power consumption by 35% over the skewed baseline. More interestingly, enabling simultaneous multithreading increased power consumption by only 7%. Combining Core Performance Boost with simultaneous multithreading resulted in 58% increase in power consumption.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Qxyi4d9qWZDxc7F09w0bv/2001d13e0c77693434e277649da0dca2/image3-6.png" alt="" class="kg-image" width="1176" height="644" loading="lazy">
+
+	</figure>
 	<p>AMD’s implementation of simultaneous multithreading appears to be power efficient as it achieves 41% additional requests per second while consuming only 7% more power compared to the skewed baseline. For completeness, using the data we have, we bridged performance and power together to obtain performance per watt to summarize power efficiency. We divided the non-normalized requests per second by power consumption to produce the requests per watt figure below. Our Gen X servers attained the best performance per watt by enabling just simultaneous multithreading.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image9-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="conclusion">Conclusion</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZY19SD0eKHUmUo6Zx3bCA/94671089efe88baaae7bf708ebcaab00/image9-4.png" alt="" class="kg-image" width="1176" height="646" loading="lazy">
+
+	</figure>
+	<h2>Conclusion</h2>
 	<p>In our assessment of AMD’s implementation of Hyper-Threading and Turbo Boost, the original experiment we designed to measure requests per second and latency did not pan out as expected. As soon as we entered production, our baseline measurement was skewed due to the imbalance in CPU utilization and only partially reproduced our lab results.</p>
 	<p>We added power to the experiment and found other meaningful insights. By analyzing the performance and power characteristics of simultaneous multithreading and Core Performance Boost, we concluded that simultaneous multithreading could be a power-efficient mechanism to attain additional requests per second. Drawbacks of simultaneous multithreading include long tail latency that is currently curtailed by enabling Core Performance Boost. While the higher frequency enabled by Core Performance Boost provides latency reduction and more requests per second, we are more mindful that the increase in power consumption is quite significant.</p>
 	<p>Do you want to help shape the Cloudflare network? This blog was a glimpse of the work we do at Cloudflare. <a href="https://www.cloudflare.com/careers">Come join us</a> and help complete the feedback loop for our developers and hardware partners.</p>

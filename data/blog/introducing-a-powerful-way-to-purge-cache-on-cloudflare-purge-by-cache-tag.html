@@ -1,30 +1,50 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2D61OXQ8OlMYDjgJpGOU9T/559aad694ef1408b40d46195cb64ce3c/introducing-a-powerful-way-to-purge-cache-on-cloudflare-purge-by-cache-tag.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today CloudFlare is introducing a new way to purge the cache using Cache-Tags. Cache-Tags are assigned to cached content via a Cache-Tag response header, and are stored as metadata with cached objects so that global purges take only seconds, targeting a granular, finite set of cached objects.</p>
 	<p>For example, an e-commerce website can use Cache-Tags to purge all of their catalog images at once, without affecting any of their other assets. A blog can use Cache-Tags to update their JavaScript files in cache, without forcing a cache miss on their CSS. A business can use Cache-Tags to purge cache of all four hundred pages of their blog without purging any of the pages from their core platform.</p>
-	<h3 id="thecloudflarecache">The CloudFlare Cache</h3>
+	<h3>The CloudFlare Cache</h3>
 	<p>With <a href="https://www.cloudflare.com/network-map">42 data centers around the world</a>, web pages served directly from CloudFlare’s cache are guaranteed to be just a few hops away from any visitor, anywhere. With a little bit of fine tuning, many websites succeed in delivering most of their content from cache, saving a majority of bandwidth on their origin servers. One website even managed to <a href="https://www.cloudflare.com/case-studies-buzzlie">reduce their AWS bill by 96%</a> when they started caching assets behind CloudFlare.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/cache-hit.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WwCLa4cieBz9TriRLuT6F/bb2f7d7d4f115707816431e35234d073/cache-hit.png" alt="" class="kg-image" width="1856" height="777" loading="lazy">
+
+	</figure>
 	<p>CloudFlare’s cache is powerful, but when a developer pushes out changes to their website, it can be frustrating to wait for the content to update in CloudFlare’s cache. Long cache TTLs are great for speed, but when a developer updates their website, they want the newest version to be available immediately, globally.</p>
 	<p>CloudFlare now offers three different ways to purge the cache.</p>
 	<ol>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgeasinglefilefromthecache?">Purge individual files in the cache</a></li>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgemycache?">Purge all files in the cache</a></li>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags">Cache-Tags for granular control</a></li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgeasinglefilefromthecache?">Purge individual files in the cache</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-#Caching-HowdoIpurgemycache?">Purge all files in the cache</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags">Cache-Tags for granular control</a></p>
+		</li>
 	</ol>
-	<h3 id="usingcachetags">Using Cache-Tags</h3>
+	<h3>Using Cache-Tags</h3>
 	<p>To setup a Cache-Tag for an item, simply add a Cache-Tag response header to that object. A Cache-Tag header can have multiple tags, separated by a comma.</p>
-	<pre><code>Cache-Tag: tag1,tag2,tag3 
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">Cache-Tag: tag1,tag2,tag3 </code></pre>
 	<p>CloudFlare will automatically assign any tags in the response header as metadata to that object when it is cached. Before the response is proxied to the website visitor, CloudFlare will remove the Cache-Tag header so that end users of your website cannot see the Cache-Tags assigned to an object.</p>
 	<p>To purge content by its Cache-Tag, use the CloudFlare dashboard or purge programmatically <a href="https://api.cloudflare.com">with the API</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/Screen-Shot-2015-08-14-at-4-08-43-PM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66cDZsowle0ceEEFIgMi9T/70636ce8a8f5287e4e3e52cf62b8e2ed/Screen-Shot-2015-08-14-at-4-08-43-PM.png" alt="" class="kg-image" width="993" height="322" loading="lazy">
+
+	</figure>
 	<p>This is a sample curl to purge cache by a Cache-Tag called ‘cat-tag’.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/Screen-Shot-2015-08-11-at-7-17-05-AM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rqRnmQVqyIW667YOEn5i6/3b39dc9a2f5efabd97c339e4455bfef3/Screen-Shot-2015-08-11-at-7-17-05-AM.png" alt="" class="kg-image" width="1182" height="224" loading="lazy">
+
+	</figure>
 	<p>Purging by Cache-Tag is fast. Purges take effect globally in just a few seconds, even if the tag purged is associated with hundreds or thousands of cached files.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/08/Screen-Shot-2015-08-11-at-7-20-05-AM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1165KRG4GmgKynKGlaneNa/2c822977bcb118c9925816dda8fca49e/Screen-Shot-2015-08-11-at-7-20-05-AM.png" alt="" class="kg-image" width="942" height="250" loading="lazy">
+
+	</figure>
 	<p>To read more about how to use Cache-Tags, check out our support article: <a href="https://support.cloudflare.com/hc/en-us/articles/206596608">here</a>.</p>
-	<h3 id="cachetagavailability">Cache Tag Availability</h3>
+	<h3>Cache Tag Availability</h3>
 	<p>Purge by Cache-Tag is enabled automatically for all Enterprise plan websites. All a developer has to do to get started is add the Cache-Tag HTTP response header to items on their website. If you are not yet an Enterprise customer, get in touch with our team <a href="https://www.cloudflare.com/enterprise-service-request">here</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

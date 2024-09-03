@@ -1,49 +1,53 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/catching-up-with-KV-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vbenILawyzD5vRcVtPeiM/d301f0bb81b33df7c25fc894e0a3c4ef/catching-up-with-KV-_2x.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
+
+	</figure>
 	<p>The Workers Distributed Data team has been hard at work since <a href="https://blog.cloudflare.com/whats-new-with-workers-kv">we gave you an update last November</a>. Today, we’d like to share with you some of the stuff that has recently shipped in Workers KV: a new feature and an internal change that should significantly improve latency in some cases. Let’s dig in!</p>
-	<h3 id="kv-metadata">KV Metadata</h3>
-	<p>Workers KV has a fairly straightforward interface: you can put keys and values into KV, and then fetch the value back out by key:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">await contents.put(“index.html”, someHtmlContent);
+	<h3>KV Metadata</h3>
+	<p>Workers KV has a fairly straightforward interface: you can put keys and values into KV, and then fetch the value back out by key:</p>
+	<pre class="language-javascript"><code class="language-javascript">await contents.put(“index.html”, someHtmlContent);
 await contents.put(“index.css”, someCssContent);
 await contents.put(“index.js”, someJsContent);
 
 // later
 
-let index = await contents.get(“index.html”);
-</code></pre>
-	<!--kg-card-end: markdown-->
+let index = await contents.get(“index.html”);</code></pre>
 	<p>Pretty straightforward. But as you can see from this example, you may store different kinds of content in KV, even if the type is identical. All of the values are strings, but one is HTML, one is CSS, and one is JavaScript. If we were going to serve this content to users, we would have to construct a response. And when we do, we have to let the client know what the content type of that request is: text/html for HTML, text/css for CSS, and text/javascript for JavaScript. If we serve the incorrect content type to our clients, they won’t display the pages correctly.</p>
-	<p>One possible solution to this problem is using the <a href="https://www.npmjs.com/package/mime">mime package from npm</a>. This lets us write code that looks like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// pathKey is a variable with a value like “index.html”
-const mimeType = mime.getType(pathKey) || ‘text/plain’
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>One possible solution to this problem is using the <a href="https://www.npmjs.com/package/mime">mime package from npm</a>. This lets us write code that looks like this:</p>
+	<pre class="language-javascript"><code class="language-javascript">// pathKey is a variable with a value like “index.html”
+const mimeType = mime.getType(pathKey) || ‘text/plain’</code></pre>
 	<p>Nice and easy. But there are some drawbacks. First of all, because we have to detect the content type at runtime which means we’re figuring this out on every request. It would be nicer to figure it out only once instead. Second, if we look at how the package implements getType, it does this by <a href="https://github.com/broofa/mime/blob/d97bfaeabf8b5ff0124692244f921836ea405c41/types/standard.js">including an array of possible extensions and their types</a>. This means that this array is included in our worker, taking up 9kb of space. That’s also less than ideal.</p>
-	<p>But now, we have a better way. Workers KV will now allow you to add some extra JSON to each key/value pair, to use however you’d like. So we could start inserting the contents of those files like this, instead:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">await contents.put(“index.html”, someHtmlContent, {“Content-Type”: “text/html”});
+	<p>But now, we have a better way. Workers KV will now allow you to add some extra JSON to each key/value pair, to use however you’d like. So we could start inserting the contents of those files like this, instead:</p>
+	<pre class="language-javascript"><code class="language-javascript">await contents.put(“index.html”, someHtmlContent, {“Content-Type”: “text/html”});
 await contents.put(“index.css”, someCssContent, {“Content-Type”: “text/css”});
-await contents.put(“index.js”, someJsContent, {“Content-Type”: “text/javascript”});
-</code></pre>
-	<!--kg-card-end: markdown-->
+await contents.put(“index.js”, someJsContent, {“Content-Type”: “text/javascript”});</code></pre>
 	<p>You could determine these content types in various ways: by looking at the file extension like the mime package, or by using a library that inspects the file’s contents to figure out its type like libmagic. Regardless, the type would be stored in KV alongside the contents of the file. This way, there’s no need to recompute the type on every request. Additionally, the detection code would live in your uploading tool, not in your worker, creating a smaller bundle. Win-win!</p>
-	<p>The worker code would pass along this metadata by using a new method:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">let {value, metadata} = await contents.getWithMetadata(“index.js”);
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>The worker code would pass along this metadata by using a new method:</p>
+	<pre class="language-javascript"><code class="language-javascript">let {value, metadata} = await contents.getWithMetadata(“index.js”);</code></pre>
 	<p>Here, <code>value</code> would have the contents, like before. But <code>metadata</code> contains the JSON of the metadata that was stored: <code>metadata[“Content-Type”]</code>would return <code>“text/javascript”</code>. You’ll also see this metadata come back when you make a list request as well.</p>
 	<p>Given that you can store arbitrary JSON, it’s useful for more than just content types: we’ve had folks <a href="https://community.cloudflare.com/t/etag-and-content-type-support-in-kv-storage/150331?u=sklabnik">post to the forums asking about etags</a>, for example. We’re excited to see what you do with this new capability!</p>
-	<h3 id="significantly-faster-writes">Significantly faster writes</h3>
+	<h3>Significantly faster writes</h3>
 	<p>Our documentation states:</p>
-	<p><em>Very infrequently read values are stored centrally, while more popular values are maintained in all of our data centers around the world.</em></p>
+	<p><i>Very infrequently read values are stored centrally, while more popular values are maintained in all of our data centers around the world.</i></p>
 	<p>This is why Workers KV is optimized for higher read volumes than writes. We distribute popular data across the globe, close to users wherever they are. However, for infrequently accessed data, we store the data in a central location until access is requested. Each write (and delete) must go back to the central data store, as do reads on less popular values. The central store was located in the United States, and so the speed for writes would be variable. In the US, it would be much faster than say, in Europe or Asia.</p>
 	<p>Recently, we have rolled out a major internal change. We have added a second source of truth on the European continent. These two sources of truth will still coordinate between themselves, ensuring that any data you write or update will be available in both places as soon as possible. But latencies from Europe, as well as places closer to Europe than the United States, should be much faster, as they do not have to go the full way to the US.</p>
 	<p>How much faster? Well, it will depend on your workload. Several other Cloudflare products use Workers KV, and here’s a graph of response times from one of them:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rWSdJkZyGgRnuRQepJzmE/449eb572eff914cbd68d1140e63dfa7d/image2-10.png" alt="" class="kg-image" width="1999" height="1225" loading="lazy">
+
+	</figure>
 	<p>As you can see, there’s a sharp drop in the graph when the switchover happened.</p>
 	<p>We can also measure this time across all customers:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/image1-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bZoPcQ3CbtsahcNKvTExa/025e5a6a2fe0008c64537cf4b9f9b917/image1-11.png" alt="" class="kg-image" width="1015" height="306" loading="lazy">
+
+	</figure>
 	<p>The long tail has been significantly shortened. (We’ve redacted the exact numbers, but you can still see the magnitude of the changes.)</p>
-	<h3 id="more-to-come">More to come</h3>
+	<h3>More to come</h3>
 	<p>The distributed data team has been working on some additional things, but we’re not quite ready to share them with you yet! We hope that you’ll find these changes make Workers KV even better for you, and we’ll be sharing more updates on the blog as we ship.</p>
 </div>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Zjq5yjSg74JORpJCNfzTV/039c863817aeb07357a05be022265876/making-video-intuitive-an-explainer.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On the Stream team at Cloudflare, we work to provide a great viewing experience while keeping our service affordable. That involves a lot of small tweaks to our video pipeline that can be difficult to discern by most people. And that makes the results of those tweaks less intuitive.</p>
 	<p>In this post, let's have some fun. Instead of fine-grained optimization work, we’ll do the opposite. Today we’ll make it easy to see changes between different versions of a video: we’ll start with a high-quality video and ruin it. Instead of aiming for perfection, let’s see the impact of various video coding settings. We’ll go on a deep dive on how to make some victim video look gloriously bad and learn on the way.</p>
@@ -10,294 +10,202 @@
 	<br><!--kg-card-end: html-->
 	<p>For brevity, we'll evaluate our results by two properties: smooth motion and looking ‘crisp’. The video shouldn’t stutter and its important features should be distinguishable.</p>
 	<p>It’s worth mentioning that video is a hack of your brain. Every video is just an optimized series of pictures— a very sophisticated flipbook. Display those pictures quickly enough and you can fool the brain into interpreting motion. If you show enough points of light close together, they meld into a continuous image. Then, change the color of those lights frequently enough and you end up with smooth motion.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/flipbook@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="frame-rate">Frame rate</h3>
-	<p>Not stuttering is covered by framerate, measured in frames-per-second (fps). fps is the number of individual pictures displayed in a single second; many videos are encoded at somewhere between 24 and 30fps. One way to describe fps is in terms of how long a frame is shown for—commonly called the frame time. At 24fps, each frame is shown for about 41 milliseconds. At 2fps, that jumps to 500ms. Lowering fps causes frames to trend rapidly towards persisting for the full second. Smooth motion mostly comes down to the single knob of fps. Mucking about with framerate isn’t a sporting way to achieve our goal. It’s extremely easy to tank the framerate and ruin the experience. Humans have a low tolerance for janky motion. To get the idea, here’s what our original clip reduced to 2fps looks like; 500ms per-frame is a long time.</p><!--kg-card-begin: markdown-->
-	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -r 2 -c:v h264 -c:a copy 2fps.mp4</code></p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EMewvsE1wQR8Zb7UuuY7f/0e8ad6c56bfbffa699e8ce3fe859983f/flipbook_2x.png" alt="" class="kg-image" width="593" height="530" loading="lazy">
+
+	</figure>
+	<h3>Frame rate</h3>
+	<p>Not stuttering is covered by framerate, measured in frames-per-second (fps). fps is the number of individual pictures displayed in a single second; many videos are encoded at somewhere between 24 and 30fps. One way to describe fps is in terms of how long a frame is shown for—commonly called the frame time. At 24fps, each frame is shown for about 41 milliseconds. At 2fps, that jumps to 500ms. Lowering fps causes frames to trend rapidly towards persisting for the full second. Smooth motion mostly comes down to the single knob of fps. Mucking about with framerate isn’t a sporting way to achieve our goal. It’s extremely easy to tank the framerate and ruin the experience. Humans have a low tolerance for janky motion. To get the idea, here’s what our original clip reduced to 2fps looks like; 500ms per-frame is a long time.</p>
+	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -r 2 -c:v h264 -c:a copy 2fps.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="3500917ca1f756546103c86ca5a90348" preload="" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=3500917ca1f756546103c86ca5a90348"></script>
 	<br><!--kg-card-end: html-->
-	<h3 id="resolution">Resolution</h3>
+	<h3>Resolution</h3>
 	<p>Making tiny features distinguishable has many more knobs. Choices you can make include what codec, level, profile, bitrate, resolution, color space, or keyframe frequency, to name a few. Each of these also influences factors apart from perceived quality, such as how large the resulting file is plus what devices it is compatible with. There’s no universal right answer for what parameters to encode a video with. For the best experience while not wasting resources, the same video intended for a modern 4k display should be tailored differently for a 2007 iPod Nano. We’ll spend our time here focusing on what impacts a video’s crispness since that’s what largely determines the experience.</p>
 	<p>We’re going to use <a href="https://www.ffmpeg.org">FFmpeg</a> to make this happen. This is the sonic screwdriver of the video world; a near-universal command-line tool for converting and manipulating media. FFmpeg is almost two decades old, has hundreds of contributors, and can do essentially any digital video-related task. Its flexibility also makes it rather complex to work with. For each version of the video, we’ll show the command used to generate it as we go.</p>
 	<p>Let’s figure out exactly what we want to change about the video to make it a bad experience.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/gradient-bucket-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MjHU6o5w4TzXr7hmENL1a/9c14f0af0b69e259ae8b3d154b60fd2a/gradient-bucket-_2x.png" alt="" class="kg-image" width="1600" height="339" loading="lazy">
+
+	</figure>
 	<p>You may have heard about resolution and bitrate. To explain them, let’s use an analogy. Resolution provides pixels. Pixels are buckets for information. Bitrate is the information that fills those buckets. How full a given bucket is determines how well a pixel can represent content. With too few bits of information for a bucket, the pixel will get less and less accurate to the original source. In practice, their numerical relationship is complicated. These are what we’ll be varying.</p>
 	<p>The decision of which bucket should get how many bits of information is determined by software called a video encoder. The job of the encoder is to use the bits budgeted for it as efficiently as possible to display the best quality video. We’ll be changing the bitrate budget to influence the resulting bitrate. Like people with money, budgeting is a good idea for our encoder. Uncompressed video can use a byte, or more, per-pixel for each of the red, green, and blue(RGB) channels. For a 1080p video, that means 1920x1080 pixels multiplied by 3 bytes to get 6.2MB per frame. We’ll talk about frames later but 6.2 MB is a lot— at this rate, a DVD disc would only fit about 50 seconds of video.</p>
-	<p>With our variables chosen, we’re good to go. For every variation we encode, we’ll show a comparison to this table. Our source video is encoded in H.264 at 24fps with a variety of other settings, those features will not change. Expect these numbers to get significantly smaller as we poke around to see what changes.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Resolution</th>
-				<th>Bitrate</th>
-				<th>File Size</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Source</td>
-				<td>1280x720</td>
-				<td>7.5Mbps</td>
-				<td>16MB</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<p>To start, let’s change just resolution and see what impact that has. The lowest resolution most people are exposed to is usually 140p, so let’s reencode our source video targeting that. Since many video platforms have this as an option, we’re not expecting an unwatchable experience quite yet.</p><!--kg-card-begin: markdown-->
-	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -vf scale=-2:140 -c:v h264 -b:v 6000k -c:a copy scaled-140.mp4 </code></p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p>With our variables chosen, we’re good to go. For every variation we encode, we’ll show a comparison to this table. Our source video is encoded in H.264 at 24fps with a variety of other settings, those features will not change. Expect these numbers to get significantly smaller as we poke around to see what changes.</p>
+	<p>Resolution</p>
+	<p>Bitrate</p>
+	<p>File Size</p>
+	<p>Source</p>
+	<p>1280x720</p>
+	<p>7.5Mbps</p>
+	<p>16MB</p>
+	<p>To start, let’s change just resolution and see what impact that has. The lowest resolution most people are exposed to is usually 140p, so let’s reencode our source video targeting that. Since many video platforms have this as an option, we’re not expecting an unwatchable experience quite yet.</p>
+	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -vf scale=-2:140 -c:v h264 -b:v 6000k -c:a copy scaled-140.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="3d4c5a2b4793c7a34fc2f8ad245a94b2" preload="" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=3d4c5a2b4793c7a34fc2f8ad245a94b2"></script>
-	<br><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Resolution</th>
-				<th>Bitrate</th>
-				<th>File Size</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Source</td>
-				<td>1280x720</td>
-				<td>7.5Mbps</td>
-				<td>16MB</td>
-			</tr>
-			<tr>
-				<td>Scaled to 140p</td>
-				<td><strong>248x140</strong></td>
-				<td>2.9Mbps</td>
-				<td>6.1MB</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<br><!--kg-card-end: html-->
+	<p>Resolution</p>
+	<p>Bitrate</p>
+	<p>File Size</p>
+	<p>Source</p>
+	<p>1280x720</p>
+	<p>7.5Mbps</p>
+	<p>16MB</p>
+	<p>Scaled to 140p</p>
+	<p><b>248x140</b></p>
+	<p>2.9Mbps</p>
+	<p>6.1MB</p>
 	<p>By the numbers, we find some curious results. We didn’t ask for a different bitrate from the source but our encoder gave us one that is roughly a third. Given that the number of pixels was dramatically reduced, the encoder had fewer buckets to put the information in our bitrate. Despite its best attempt at using the entire bitrate budget provided to it, our encoder filled all the buckets we provided. What did it do with the leftover information? Since it isn’t in the video, it tossed it.</p>
 	<p>This would probably be an acceptable experience on a 4in phone screen. You wouldn’t notice the sort-of grainy result on a small display. On a 40in TV, it’d be blocky and unpleasant. At 40in, 140 rows of pixels become individually distinguishable which doesn’t fool the brain and ruins the magic.</p>
-	<h3 id="bitrate">Bitrate</h3>
-	<p>Bitrate is the density of information for a given period of time, typically a second. This interacts with framerate to give us a per frame bitrate budget. Our source having a bitrate of 7.5Mbps (millions of bits-per-second) and framerate of 24fps means we have an average of 7500Kbps / 24fps = 312.5Kb of information per frame.</p><!--kg-card-begin: markdown-->
-	<h3 id="differentkindsofframes">Different kinds of frames</h3>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Bitrate</h3>
+	<p>Bitrate is the density of information for a given period of time, typically a second. This interacts with framerate to give us a per frame bitrate budget. Our source having a bitrate of 7.5Mbps (millions of bits-per-second) and framerate of 24fps means we have an average of 7500Kbps / 24fps = 312.5Kb of information per frame.</p>
+	<h3>Different kinds of frames</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fYct9qhwwZwDraTn29gB7/4f03f852a8ee5fbe60df7c4dc7f67ee9/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="552" loading="lazy">
+
+	</figure>
 	<p>There are different ways a frame can be encoded. It doesn’t make sense to use the same technique for a sequence of frames of a single color and most of the sequences in Big Buck Bunny. There’s differing information density and distribution between those sequences. Different ways of representing frames take advantage of those differing patterns. As a result, the 312Kb average for each frame is both lower than the size of the larger frames and greater than the size of the smallest frames. Some frames contain just changes relative to other frames – these are P or B frames – those could be far smaller than 312Kb. However, some frames contain full images – these are I frames – and tend to be far larger than 312Kb. Since we’re viewing the video holistically as multiple seconds, we don’t need to worry about them since we’re concerned with the overall experience. Knowing about frames is useful for their impact on bitrate for different types of content, which we’ll discuss later.</p>
-	<p>Our starting bitrate is extremely large and has more information than we actually need. Let’s be aggressive and cut it down to 1/75th while maintaining the source’s resolution.</p><!--kg-card-begin: markdown-->
-	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -c:v h264 -b:v 100k -c:a copy bitrate-100k.mp4</code></p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p>Our starting bitrate is extremely large and has more information than we actually need. Let’s be aggressive and cut it down to 1/75th while maintaining the source’s resolution.</p>
+	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -c:v h264 -b:v 100k -c:a copy bitrate-100k.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="7848e2bd7577c121b7cd63e5cc2074e8" preload="" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=7848e2bd7577c121b7cd63e5cc2074e8"></script>
-	<br><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Resolution</th>
-				<th>Bitrate</th>
-				<th>File Size</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Source</td>
-				<td>1280x720</td>
-				<td>7.5Mbps</td>
-				<td>16MB</td>
-			</tr>
-			<tr>
-				<td>Scaled to 140p</td>
-				<td><strong>248x140</strong></td>
-				<td>2.9Mbps</td>
-				<td>6.1MB</td>
-			</tr>
-			<tr>
-				<td>Targeted to 100Kbps</td>
-				<td>1280x720</td>
-				<td><strong>102Kbps</strong></td>
-				<td>217KB</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<br><!--kg-card-end: html-->
+	<p>Resolution</p>
+	<p>Bitrate</p>
+	<p>File Size</p>
+	<p>Source</p>
+	<p>1280x720</p>
+	<p>7.5Mbps</p>
+	<p>16MB</p>
+	<p>Scaled to 140p</p>
+	<p><b>248x140</b></p>
+	<p>2.9Mbps</p>
+	<p>6.1MB</p>
+	<p>Targeted to 100Kbps</p>
+	<p>1280x720</p>
+	<p><b>102Kbps</b></p>
+	<p>217KB</p>
 	<p>When you take a look at the video, fur and grass become blobs. There’s just not enough information to accurately represent the fine details.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/VFLXlL9wI-cBWPlqs7dIfTOnSotYY7asU1lneWr3CW4gdF6S2fY9zVkgnOddmXKgbaYcpt4qhik-8PHogyj1MYAM9S8dag-ww76rRUCR7dVaJCiznUNDbGVYrBiSaFh_SAmb49Tg" class="kg-image" alt="" loading="lazy">
-		<figcaption>Source Video</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SgHZxPmzWOK6cXxmfwK6D/063b96e1f54c87472c39583c5019c52e/VFLXlL9wI-cBWPlqs7dIfTOnSotYY7asU1lneWr3CW4gdF6S2fY9zVkgnOddmXKgbaYcpt4qhik-8PHogyj1MYAM9S8dag-ww76rRUCR7dVaJCiznUNDbGVYrBiS.png" alt="" class="kg-image" width="436" height="384" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/KBvYhdIEKc49weV-tPJkCt2BxVvUVccQpNx6zIjU2I5vPnmnBO6ORBBjrwSy4a2JBbq0o_RQ79s3DhGYL9YIbVPBmnKtQNfojO-WBY_OTd0uPlKbU-oT5lK-a7HW9Rrd0U20SUDS" class="kg-image" alt="" loading="lazy">
-		<figcaption>100 Kbps budget</figcaption>
+	<p>Source Video</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2c67nPJ71w1tnhfcz1sMsQ/9c0220bb2635a8af4c06dce8de0e7ec7/KBvYhdIEKc49weV-tPJkCt2BxVvUVccQpNx6zIjU2I5vPnmnBO6ORBBjrwSy4a2JBbq0o_RQ79s3DhGYL9YIbVPBmnKtQNfojO-WBY_OTd0uPlKbU-oT5lK-a7HW.png" alt="" class="kg-image" width="436" height="384" loading="lazy">
+
 	</figure>
+	<p>100 Kbps budget</p>
 	<p>We provided a bitrate budget of 100Kbps but the encoder doesn’t seem to have quite hit it. When we changed the resolution, we had a lower bitrate than we asked for, here we have a higher bitrate. Why would that be the case?</p>
 	<p>We have so many buckets that there’s some minimum amount the encoder wants in each. Since it can play with the bitrate, it ends up favoring slightly more full buckets since that’s easier. This is somewhat the reverse of why our previous experiment had a lower bitrate than expected.</p>
 	<p>We can influence how the encoder budgets bitrate using rate control modes. We’re going to stick with the default ‘Average-Bitrate’ mode to keep things easy. This mode is sub-optimal since it lets the encoder spend a bunch of budget up front to its detriment later. However, it's easy to reason about.</p>
-	<h3 id="resolution-bitrate">Resolution + Bitrate</h3>
-	<p>Targeting a bitrate of 100Kbps got us an unpleasant video but not something completely unwatchable. We haven’t quite ruined our video yet. We might as well take bitrate down to an even further extreme of 20Kbps while keeping the resolution constant.</p><!--kg-card-begin: markdown-->
-	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -c:v h264 -b:v 20k -c:a copy bitrate-20k.mp4</code></p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<h3>Resolution + Bitrate</h3>
+	<p>Targeting a bitrate of 100Kbps got us an unpleasant video but not something completely unwatchable. We haven’t quite ruined our video yet. We might as well take bitrate down to an even further extreme of 20Kbps while keeping the resolution constant.</p>
+	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -c:v h264 -b:v 20k -c:a copy bitrate-20k.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="c6ae1836ec3505c9150429222e7f9bbb" preload="" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=c6ae1836ec3505c9150429222e7f9bbb"></script>
-	<br><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Resolution</th>
-				<th>Bitrate</th>
-				<th>File Size</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Source</td>
-				<td>1280x720</td>
-				<td>7.5Mbps</td>
-				<td>16MB</td>
-			</tr>
-			<tr>
-				<td>Scaled to 140p</td>
-				<td><strong>248x140</strong></td>
-				<td>2.9Mbps</td>
-				<td>6.1MB</td>
-			</tr>
-			<tr>
-				<td>Targeted to 100Kbps</td>
-				<td>1280x720</td>
-				<td><strong>102Kbps</strong></td>
-				<td>217KB</td>
-			</tr>
-			<tr>
-				<td>Targeted to 20Kbps</td>
-				<td>1280x720</td>
-				<td><strong>35Kbps</strong></td>
-				<td>81KB</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<br><!--kg-card-end: html-->
+	<p>Resolution</p>
+	<p>Bitrate</p>
+	<p>File Size</p>
+	<p>Source</p>
+	<p>1280x720</p>
+	<p>7.5Mbps</p>
+	<p>16MB</p>
+	<p>Scaled to 140p</p>
+	<p><b>248x140</b></p>
+	<p>2.9Mbps</p>
+	<p>6.1MB</p>
+	<p>Targeted to 100Kbps</p>
+	<p>1280x720</p>
+	<p><b>102Kbps</b></p>
+	<p>217KB</p>
+	<p>Targeted to 20Kbps</p>
+	<p>1280x720</p>
+	<p><b>35Kbps</b></p>
+	<p>81KB</p>
 	<p>Now, this is truly unwatchable! There’s sometimes color but the video mostly devolves into grayscale rectangles roughly approximating the silhouettes of what we’re expecting. At slightly less than a third the bitrate of the previous trial, this definitely looks like it has less than a third of the information.</p>
 	<p>As before, we didn’t hit our bitrate target and for the same reason that our pixel buckets were insufficiently filled with information. The encoder needed to start making hard decisions at some point between 102 and 35Kbps. Most of the color and the comprehensibility of the scene were sacrificed.</p>
 	<p>We’ll discuss why there’s moving grayscale rectangles and patches of color in a bit. They’re giving us a hint about how the encoder works under the hood.</p>
-	<p>What if we go just one step further and combine our tiny resolution with the absurdly low bitrate? That should be an even worse experience, right?</p><!--kg-card-begin: markdown-->
-	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -vf scale=-2:140 -c:v h264 -b:v 20k -c:a copy scaled-140_bitrate-20k.mp4</code></p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p>What if we go just one step further and combine our tiny resolution with the absurdly low bitrate? That should be an even worse experience, right?</p>
+	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -vf scale=-2:140 -c:v h264 -b:v 20k -c:a copy scaled-140_bitrate-20k.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="03b273318416ccaa9af82729bfa3c224" preload="" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=03b273318416ccaa9af82729bfa3c224"></script>
-	<br><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Resolution</th>
-				<th>Bitrate</th>
-				<th>File Size</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Source</td>
-				<td>1280x720</td>
-				<td>7.5Mbps</td>
-				<td>16MB</td>
-			</tr>
-			<tr>
-				<td>Scaled to 140p</td>
-				<td><strong>248x140</strong></td>
-				<td>2.9Mbps</td>
-				<td>6.1MB</td>
-			</tr>
-			<tr>
-				<td>Targeted to 100Kbps</td>
-				<td>1280x720</td>
-				<td><strong>102Kbps</strong></td>
-				<td>217KB</td>
-			</tr>
-			<tr>
-				<td>Targeted to 20Kbps</td>
-				<td>1280x720</td>
-				<td><strong>35Kbps</strong></td>
-				<td>81KB</td>
-			</tr>
-			<tr>
-				<td>Scaled to 140p and Targeted to 20Kbps</td>
-				<td><strong>248x140</strong></td>
-				<td><strong>19Kbps</strong></td>
-				<td>48KB</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<br><!--kg-card-end: html-->
+	<p>Resolution</p>
+	<p>Bitrate</p>
+	<p>File Size</p>
+	<p>Source</p>
+	<p>1280x720</p>
+	<p>7.5Mbps</p>
+	<p>16MB</p>
+	<p>Scaled to 140p</p>
+	<p><b>248x140</b></p>
+	<p>2.9Mbps</p>
+	<p>6.1MB</p>
+	<p>Targeted to 100Kbps</p>
+	<p>1280x720</p>
+	<p><b>102Kbps</b></p>
+	<p>217KB</p>
+	<p>Targeted to 20Kbps</p>
+	<p>1280x720</p>
+	<p><b>35Kbps</b></p>
+	<p>81KB</p>
+	<p>Scaled to 140p and Targeted to 20Kbps</p>
+	<p><b>248x140</b></p>
+	<p><b>19Kbps</b></p>
+	<p>48KB</p>
 	<p>Wait a minute, that’s actually not too bad at all. It’s almost like a tinier version of 1280 by 720 at 100Kbps. Why doesn’t this look terrible? Having a lower bitrate means there’s less information, which implies that the video should look worse. A lower resolution means the image should be less detailed. The numbers got smaller, so the video shouldn’t look better!</p>
 	<p>Thinking back to buckets and information, we now have less information but fewer discrete places for that information to live. This specific combination of low bitrate and low resolution means the buckets are nicely filled. The encoder exactly hit our target bitrate which is a reasonable indicator that it was at least somewhat satisfied with the final result.</p>
 	<p>This isn’t going to be a fun experience on a 4k display but it is fine enough for an iPod Nano from 2007. A 3rd generation iPod Nano has a 320x240 display spread across a 2in screen. Our 140p video will be nearly indistinguishable from a much higher quality video. Even more, 48KB for 17 seconds of video makes fantastic use of the limited storage – 4GB on some models. In a resource-constrained environment, this low video quality can be a large quality of experience improvement.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/05/iPod-Nano-3rd-Gen.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> - <a href="https://www.flickr.com/photos/nez/1346068786/in/photostream">image</a> by <a href="https://www.flickr.com/photos/nez">nez</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lffrqtLboX9DPq5hTlmwa/59b851e34176f83bfff20f83f32033aa/iPod-Nano-3rd-Gen.jpg" alt="" class="kg-image" width="800" height="543" loading="lazy">
+
 	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> - <a href="https://www.flickr.com/photos/nez/1346068786/in/photostream">image</a> by <a href="https://www.flickr.com/photos/nez">nez</a></p>
 	<p>We should have a decent intuition for the relationship between bitrate and resolution plus what the tradeoffs are. There’s a lingering question, though, do we need to make tradeoffs? There has to be some ratio of bitrate to pixel-count in order to get the best quality for a given resolution at a minimal file size.</p>
-	<p>In fact, there are such perfect ratios. In ruining the video, we ended up testing a few candidates of this ratio for our source video.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Resolution</th>
-				<th>Bitrate</th>
-				<th>File Size</th>
-				<th>Bits/Pixel</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Source</td>
-				<td>1280x720</td>
-				<td>7.5Mbps</td>
-				<td>16MB</td>
-				<td>8.10</td>
-			</tr>
-			<tr>
-				<td>Scaled to 140p</td>
-				<td><strong>248x140</strong></td>
-				<td>2.9Mbps</td>
-				<td>6.1MB</td>
-				<td>83.5</td>
-			</tr>
-			<tr>
-				<td>Targeted to 100Kbps</td>
-				<td>1280x720</td>
-				<td><strong>102Kbps</strong></td>
-				<td>217KB</td>
-				<td>0.11</td>
-			</tr>
-			<tr>
-				<td>Targeted to 20Kbps</td>
-				<td>1280x720</td>
-				<td><strong>35Kbps</strong></td>
-				<td>81KB</td>
-				<td>0.03</td>
-			</tr>
-			<tr>
-				<td>Scaled to 140p and Targeted to 20Kbps</td>
-				<td><strong>248x140</strong></td>
-				<td><strong>19Kbps</strong></td>
-				<td>48KB</td>
-				<td>0.55</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<p>In fact, there are such perfect ratios. In ruining the video, we ended up testing a few candidates of this ratio for our source video.</p>
+	<p>Resolution</p>
+	<p>Bitrate</p>
+	<p>File Size</p>
+	<p>Bits/Pixel</p>
+	<p>Source</p>
+	<p>1280x720</p>
+	<p>7.5Mbps</p>
+	<p>16MB</p>
+	<p>8.10</p>
+	<p>Scaled to 140p</p>
+	<p><b>248x140</b></p>
+	<p>2.9Mbps</p>
+	<p>6.1MB</p>
+	<p>83.5</p>
+	<p>Targeted to 100Kbps</p>
+	<p>1280x720</p>
+	<p><b>102Kbps</b></p>
+	<p>217KB</p>
+	<p>0.11</p>
+	<p>Targeted to 20Kbps</p>
+	<p>1280x720</p>
+	<p><b>35Kbps</b></p>
+	<p>81KB</p>
+	<p>0.03</p>
+	<p>Scaled to 140p and Targeted to 20Kbps</p>
+	<p><b>248x140</b></p>
+	<p><b>19Kbps</b></p>
+	<p>48KB</p>
+	<p>0.55</p>
 	<p>However, there are some complications.</p>
-	<p>The biggest caveat is that the optimal ratio depends on your source video. Each video has a different amount of information required to be displayed. There are a couple of reasons for that. </p>
+	<p>The biggest caveat is that the optimal ratio depends on your source video. Each video has a different amount of information required to be displayed. There are a couple of reasons for that.</p>
 	<p>If a frame has many details then it takes more information to represent. Frames in chronological order that visually differ significantly (think of an action movie) take more information than a set of visually similar frames (like a security camera outside a quiet warehouse). The former can’t use as many B or P frames which occupy less space. Animated content with flat colors require encoders to make fewer trade offs that cause visual degradation than live-action.</p>
 	<p>Thinking back to the settings that resulted in grayscale rectangles and patches of color, we can learn a bit more. We saw that the rectangles and color seem to move, as though the encoder was playing a shell game with tiny boxes of pictures.</p>
 	<p>What is happening is that the encoder is recognizing repeated patterns within and between frames. Then, it can reference those patterns to move them around without needing to actually duplicate them. The P and B frames mentioned earlier are mainly composed of these shifted patterns. This is similar, at least in spirit, to other compression algorithms that use dictionaries to refer to previous content. In most video codecs, the bits of picture that can be shifted are called ‘macroblocks’, which subdivide each frame with NxN squares of pixels. The less stingy the bitrate, the less obvious the macroblock shell game.</p>
-	<p>To see this effect more clearly, we can ask FFmpeg to show us decisions it makes. Specifically, <a href="https://trac.ffmpeg.org/wiki/Debug/MacroblocksAndMotionVectors">it can show us what it decides is ‘motion’ moving the macroblocks</a>. The video here is 140p for the motion vector arrows to be easier to see.</p><!--kg-card-begin: markdown-->
-	<p><code>ffmpeg -v info -y -hide_banner -flags2 +export_mvs -i source.mp4 -vf scale=-2:140,codecview=mv=pf+bf+bb -c:v h264 -b:v 6000k -c:a copy motion-vector.mp4</code></p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p>To see this effect more clearly, we can ask FFmpeg to show us decisions it makes. Specifically, <a href="https://trac.ffmpeg.org/wiki/Debug/MacroblocksAndMotionVectors">it can show us what it decides is ‘motion’ moving the macroblocks</a>. The video here is 140p for the motion vector arrows to be easier to see.</p>
+	<p><code>ffmpeg -v info -y -hide_banner -flags2 +export_mvs -i source.mp4 -vf scale=-2:140,codecview=mv=pf+bf+bb -c:v h264 -b:v 6000k -c:a copy motion-vector.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="c9ea3f4197316457214c77e4d6b4d032" preload="" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=c9ea3f4197316457214c77e4d6b4d032"></script>
 	<br><!--kg-card-end: html-->

@@ -1,49 +1,76 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-es-es">Español</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-de-de">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-fr-fr">Français</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/DDoS-protection-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This was a weekend of record-breaking <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>. Over the weekend, Cloudflare detected and mitigated dozens of <em>hyper-volumetric</em> DDoS attacks. The majority of attacks peaked in the ballpark of 50-70 million requests per second (rps) with the largest exceeding 71 million rps. This is the largest reported HTTP DDoS attack on record, more than 54% higher than the previous reported record of 46M rps in June 2022.</p>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zzsCqug2fzQ1LZ9cDhPPc/4e9688f2e46bd471546d89c24f94fa8f/DDoS-protection-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>This was a weekend of record-breaking <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>. Over the weekend, Cloudflare detected and mitigated dozens of <i>hyper-volumetric</i> DDoS attacks. The majority of attacks peaked in the ballpark of 50-70 million requests per second (rps) with the largest exceeding 71 million rps. This is the largest reported HTTP DDoS attack on record, more than 54% higher than the previous reported record of 46M rps in June 2022.</p>
 	<p>The attacks were HTTP/2-based and targeted websites protected by Cloudflare. They originated from over 30,000 IP addresses. Some of the attacked websites included a popular gaming provider, cryptocurrency companies, hosting providers, and cloud computing platforms. The attacks originated from numerous cloud providers, and we have been working with them to crack down on the botnet.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Record breaking attack: DDoS attack exceeding 71 million requests per second</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TDtAM4ae2w8i3WkfQqd08/79ce2e696fc622a0bf349592cec07b4b/1711-1.png" alt="" class="kg-image" width="1600" height="791" loading="lazy">
+
 	</figure>
+	<p>Record breaking attack: DDoS attack exceeding 71 million requests per second</p>
 	<p>Over the past year, we’ve seen more attacks originate from cloud computing providers. For this reason, we will be providing service providers that own their own autonomous system a <a href="https://blog.cloudflare.com/botnet-threat-feed-for-isp">free Botnet threat feed</a>. The feed will provide service providers threat intelligence about their own IP space; attacks originating from within their autonomous system. Service providers that operate their own IP space can now <a href="https://www.cloudflare.com/lp/botnet-threat-feed">sign up</a> to the early access waiting list.</p>
-	<h3 id="is-this-related-to-the-super-bowl-or-killnet">Is this related to the Super Bowl or Killnet?</h3>
+	<h3>Is this related to the Super Bowl or Killnet?</h3>
 	<p>No. This campaign of attacks arrives less than two weeks after the <a href="https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks">Killnet DDoS campaign that targeted healthcare websites</a>. Based on the methods and targets, we do not believe that these recent attacks are related to the healthcare campaign. Furthermore, yesterday was the US Super Bowl, and we also do not believe that this attack campaign is related to the game event.</p>
-	<h3 id="what-are-ddos-attacks">What are DDoS attacks?</h3>
-	<p>Distributed Denial of Service attacks are cyber attacks that aim to take down Internet properties and make them unavailable for users. These types of cyberattacks can be very efficient against unprotected websites and they can be very inexpensive for the attackers to execute. </p>
-	<p>An HTTP DDoS attack usually involves a <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack">flood of HTTP requests</a> towards the target website. The attacker’s objective is to bombard the website with more requests than it can handle. Given a sufficiently high amount of requests, the website’s server will not be able to process all of the attack requests along with the <em>legitimate </em>user requests. Users will experience this as website-load delays, timeouts, and eventually not being able to connect to their desired websites at all. </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Illustration of a DDoS attack</figcaption>
+	<h3>What are DDoS attacks?</h3>
+	<p>Distributed Denial of Service attacks are cyber attacks that aim to take down Internet properties and make them unavailable for users. These types of cyberattacks can be very efficient against unprotected websites and they can be very inexpensive for the attackers to execute.</p>
+	<p>An HTTP DDoS attack usually involves a <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack">flood of HTTP requests</a> towards the target website. The attacker’s objective is to bombard the website with more requests than it can handle. Given a sufficiently high amount of requests, the website’s server will not be able to process all of the attack requests along with the <i>legitimate</i> user requests. Users will experience this as website-load delays, timeouts, and eventually not being able to connect to their desired websites at all.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41VYHEH1KGaJHxqfyuCUX3/a8f233b0014e5aff6430f8f81ba7a71b/1711-2.png" alt="" class="kg-image" width="1254" height="759" loading="lazy">
+
 	</figure>
-	<p>To make attacks larger and more complicated, attackers usually leverage a network of bots — a <em><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnet</a></em>. The attacker will orchestrate the botnet to bombard the victim’s websites with HTTP requests. A sufficiently large and powerful botnet can generate very large attacks as we’ve seen in this case.</p>
+	<p>Illustration of a DDoS attack</p>
+	<p>To make attacks larger and more complicated, attackers usually leverage a network of bots — a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet"><i>botnet</i></a>. The attacker will orchestrate the botnet to bombard the victim’s websites with HTTP requests. A sufficiently large and powerful botnet can generate very large attacks as we’ve seen in this case.</p>
 	<p>However, building and operating botnets requires a lot of investment and expertise. What is the average Joe to do? Well, an average Joe that wants to launch a DDoS attack against a website doesn’t need to start from scratch. They can hire one of numerous DDoS-as-a-Service platforms for as little as $30 per month. The more you pay, the larger and longer of an attack you’re going to get.</p>
-	<h3 id="why-ddos-attacks">Why DDoS attacks?</h3>
-	<p>Over the years, it has become easier, cheaper, and more accessible for attackers and attackers-for-hire to launch DDoS attacks. But as easy as it has become for the attackers, we want to make sure that it is even easier - and free - for defenders of organizations of all sizes to protect themselves against DDoS attacks of all types. </p>
+	<h3>Why DDoS attacks?</h3>
+	<p>Over the years, it has become easier, cheaper, and more accessible for attackers and attackers-for-hire to launch DDoS attacks. But as easy as it has become for the attackers, we want to make sure that it is even easier - and free - for defenders of organizations of all sizes to protect themselves against DDoS attacks of all types.</p>
 	<p>Unlike <a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware">Ransomware</a> attacks, <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack">Ransom DDoS attacks</a> don’t require an actual system intrusion or a foothold within the targeted network. Usually Ransomware attacks start once an employee naively clicks an email link that installs and propagates the malware. There’s no need for that with DDoS attacks. They are more like a hit-and-run attack. All a DDoS attacker needs to know is the website’s address and/or IP address.</p>
-	<h3 id="is-there-an-increase-in-ddos-attacks">Is there an increase in DDoS attacks?</h3>
+	<h3>Is there an increase in DDoS attacks?</h3>
 	<p>Yes. The size, sophistication, and frequency of attacks has been increasing over the past months. In our latest <a href="https://blog.cloudflare.com/ddos-threat-report-2022-q4">DDoS threat report</a>, we saw that the amount of HTTP DDoS attacks increased by 79% year-over-year. Furthermore, the amount of volumetric attacks exceeding 100 Gbps grew by 67% quarter-over-quarter (QoQ), and the number of attacks lasting more than three hours increased by 87% QoQ.</p>
 	<p>But it doesn’t end there. The audacity of attackers has been increasing as well. In our latest DDoS threat report, we saw that Ransom DDoS attacks steadily increased throughout the year. They peaked in November 2022 where one out of every four surveyed customers reported being subject to Ransom DDoS attacks or threats.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Distribution of Ransom DDoS attacks by month</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dtJk2dHnMO7XbQ7RQM79W/8dda27ff7c3c2233812a9bb857647b1e/1711-3.png" alt="" class="kg-image" width="1196" height="738" loading="lazy">
+
 	</figure>
-	<h3 id="should-i-be-worried-about-ddos-attacks">Should I be worried about DDoS attacks?</h3>
-	<p>Yes. If your website, server, or networks are not protected against volumetric DDoS attacks using a cloud service that provides automatic detection and mitigation, we really recommend that you consider it. </p>
+	<p>Distribution of Ransom DDoS attacks by month</p>
+	<h3>Should I be worried about DDoS attacks?</h3>
+	<p>Yes. If your website, server, or networks are not protected against volumetric DDoS attacks using a cloud service that provides automatic detection and mitigation, we really recommend that you consider it.</p>
 	<p>Cloudflare customers shouldn’t be worried, but should be aware and prepared. Below is a list of recommended steps to ensure your security posture is optimized.</p>
-	<h3 id="what-steps-should-i-take-to-defend-against-ddos-attacks">What steps should I take to defend against DDoS attacks?</h3>
-	<p>Cloudflare’s systems have been automatically detecting and <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">mitigating</a> these DDoS attacks. </p>
+	<h3>What steps should I take to defend against DDoS attacks?</h3>
+	<p>Cloudflare’s systems have been automatically detecting and <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">mitigating</a> these DDoS attacks.</p>
 	<p>Cloudflare offers many features and capabilities that you may already have access to but may not be using. So as extra precaution, we recommend taking advantage of these capabilities to improve and optimize your security posture:</p>
 	<ol>
-		<li>Ensure all <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets">DDoS Managed Rules</a> are set to default settings (High sensitivity level and mitigation actions) for optimal DDoS activation.</li>
-		<li><a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> customers that are subscribed to the Advanced DDoS Protection service should consider enabling <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection">Adaptive DDoS Protection</a>, which mitigates attacks more intelligently based on your unique traffic patterns.</li>
-		<li>Deploy <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules">firewall rules</a> and <a href="https://developers.cloudflare.com/waf/rate-limiting-rules">rate limiting rules</a> to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.</li>
-		<li>Ensure your origin is not exposed to the public Internet (i.e., <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/allow-cloudflare-ip-addresses">only enable access to Cloudflare IP addresses</a>). As an extra security precaution, we recommend contacting your hosting provider and requesting new origin server IPs if they have been targeted directly in the past.</li>
-		<li>Customers with access to <a href="https://developers.cloudflare.com/fundamentals/global-configurations/lists/ip-lists/#managed-ip-lists">Managed IP Lists</a> should consider leveraging those lists in firewall rules. Customers with <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription">Bot Management</a> should consider leveraging the bot scores within the firewall rules.</li>
-		<li>Enable <a href="https://developers.cloudflare.com/cache">caching</a> as much as possible to reduce the strain on your origin servers, and when using <a href="https://workers.cloudflare.com">Workers</a>, avoid overwhelming your origin server with more subrequests than necessary.</li>
-		<li>Enable <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts">DDoS alerting</a> to improve your response time.</li>
+		<li>
+			<p>Ensure all <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets">DDoS Managed Rules</a> are set to default settings (High sensitivity level and mitigation actions) for optimal DDoS activation.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> customers that are subscribed to the Advanced DDoS Protection service should consider enabling <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection">Adaptive DDoS Protection</a>, which mitigates attacks more intelligently based on your unique traffic patterns.</p>
+		</li>
+		<li>
+			<p>Deploy <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules">firewall rules</a> and <a href="https://developers.cloudflare.com/waf/rate-limiting-rules">rate limiting rules</a> to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.</p>
+		</li>
+		<li>
+			<p>Ensure your origin is not exposed to the public Internet (i.e., <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/allow-cloudflare-ip-addresses">only enable access to Cloudflare IP addresses</a>). As an extra security precaution, we recommend contacting your hosting provider and requesting new origin server IPs if they have been targeted directly in the past.</p>
+		</li>
+		<li>
+			<p>Customers with access to <a href="https://developers.cloudflare.com/fundamentals/global-configurations/lists/ip-lists/#managed-ip-lists">Managed IP Lists</a> should consider leveraging those lists in firewall rules. Customers with <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription">Bot Management</a> should consider leveraging the bot scores within the firewall rules.</p>
+		</li>
+		<li>
+			<p>Enable <a href="https://developers.cloudflare.com/cache">caching</a> as much as possible to reduce the strain on your origin servers, and when using <a href="https://workers.cloudflare.com">Workers</a>, avoid overwhelming your origin server with more subrequests than necessary.</p>
+		</li>
+		<li>
+			<p>Enable <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts">DDoS alerting</a> to improve your response time.</p>
+		</li>
 	</ol>
-	<h3 id="preparing-for-the-next-ddos-wave">Preparing for the next DDoS wave</h3>
+	<h3>Preparing for the next DDoS wave</h3>
 	<p>Defending against DDoS attacks is critical for organizations of all sizes. While attacks may be initiated by humans, they are executed by bots — and to play to win, you must fight bots with bots. Detection and mitigation must be automated as much as possible, because relying solely on humans to mitigate in real time puts defenders at a disadvantage. Cloudflare’s automated systems constantly detect and mitigate DDoS attacks for our customers, so they don’t have to. This automated approach, combined with our wide breadth of security capabilities, lets customers tailor the protection to their needs.</p>
 	<p>We've been providing <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered and unlimited DDoS protection</a> for free to all of our customers since 2017, when we pioneered the concept. Cloudflare's mission is to help build a better Internet. A better Internet is one that is more secure, faster, and reliable for everyone - even in the face of DDoS attacks.</p>
 </div>

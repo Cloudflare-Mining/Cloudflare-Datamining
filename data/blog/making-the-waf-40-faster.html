@@ -1,74 +1,66 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster-zh-cn">简体中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ph397oCX2vpDy4d6PIVCP/bf23f37b0396f99d2c83a706d4e22fc7/making-the-waf-40-faster.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Cloudflare’s <a href="https://www.cloudflare.com/waf">Web Application Firewall (WAF)</a> protects against malicious attacks aiming to exploit vulnerabilities in web applications. It is continuously updated to provide comprehensive coverage against the most recent threats while ensuring a low false positive rate.</p>
 	<p>As with all <a href="https://www.cloudflare.com/security">Cloudflare security products</a>, the WAF is designed to not sacrifice performance for security, but there is always room for improvement.</p>
 	<p>This blog post provides a brief overview of the latest performance improvements that were rolled out to our customers. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">how a Web Application Firewall (WAF) works</a>.</p>
-	<h2 id="transitioning-from-pcre-to-re2">Transitioning from PCRE to RE2</h2>
+	<h2>Transitioning from PCRE to RE2</h2>
 	<p>Back in July 2019, the WAF transitioned from using a regular expression engine based on <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions">PCRE</a> to <a href="https://github.com/rust-lang/regex">one inspired by RE2</a>, which is based around using a <a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton">deterministic finite automaton (DFA)</a> instead of backtracking algorithms. This change came as a result of an outage where an update added a regular expression which backtracked enormously on certain HTTP requests, resulting in exponential execution time.</p>
 	<p>After the migration was finished, we saw no measurable difference in CPU consumption at the edge, but noticed execution time outliers in the 95th and 99th percentiles decreased, something we expected given RE2's guarantees of a linear time execution with the size of the input.</p>
 	<p>As the <a href="https://blog.cloudflare.com/the-problem-with-event-loops">WAF engine uses a thread pool</a>, we also had to implement and tune a regex cache shared between the threads to avoid excessive memory consumption (the first implementation turned out to use a staggering amount of memory).</p>
 	<p>These changes, along with others outlined in the <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/#what-s-happened-since-last-tuesday">postmortem blog post</a>, helped us improve reliability and safety at the edge and have the confidence to explore further performance improvements.</p>
 	<p>But while we’ve highlighted regular expressions, they are only one of the many capabilities of the WAF engine.</p>
-	<h2 id="matching-stages">Matching Stages</h2>
+	<h2>Matching Stages</h2>
 	<p>When an HTTP request reaches the WAF, it gets organized into several logical sections to be analyzed: method, path, headers, and body. These sections are all stored in <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua variables</a>. If you are interested in more detail on the implementation of the WAF itself you can <a href="https://www.youtube.com/watch?v=nlt4XKhucS4">watch this old presentation</a>.</p>
 	<p>Before matching these variables against specific malicious request signatures, some transformations are applied. These transformations are functions that range from simple modifications like lowercasing strings to complex tokenizers and parsers looking to fingerprint certain malicious payloads.</p>
-	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org">ModSecurity</a> syntax, this is what a rule might look like:</p><!--kg-card-begin: markdown-->
-	<pre><code>SecRule REQUEST_BODY "@rx /\x00+evil" "drop, t:urlDecode, t:lowercase"
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org">ModSecurity</a> syntax, this is what a rule might look like:</p>
+	<pre class="language-bash"><code class="language-bash">SecRule REQUEST_BODY "@rx /\x00+evil" "drop, t:urlDecode, t:lowercase"</code></pre>
 	<p>It takes the request body stored in the <code>REQUEST_BODY</code> variable, applies the <code>urlDecode()</code> and <code>lowercase()</code> functions to it and then compares the result with the regular expression signature <code>\x00+evil</code>.</p>
-	<!--kg-card-end: markdown-->
-	<p>In pseudo-code, we can represent it as:</p><!--kg-card-begin: markdown-->
-	<pre><code>rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Which in turn would match a request whose body contained <a href="https://en.wikipedia.org/wiki/Percent-encoding">percent encoded</a> NULL bytes followed by the word "evil", e.g.:</p><!--kg-card-begin: markdown-->
-	<pre><code>POST /cms/admin?action=post HTTP/1.1
+	<p>In pseudo-code, we can represent it as:</p>
+	<pre class="language-bash"><code class="language-bash">rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
+	<p>Which in turn would match a request whose body contained <a href="https://en.wikipedia.org/wiki/Percent-encoding">percent encoded</a> NULL bytes followed by the word "evil", e.g.:</p>
+	<pre class="language-bash"><code class="language-bash">POST /cms/admin?action=post HTTP/1.1
 Host: example.com
 Content-Type: text/plain; charset=utf-8
 Content-Length: 16
 
-thiSis%2F%00eVil
-</code></pre>
-	<!--kg-card-end: markdown-->
+thiSis%2F%00eVil</code></pre>
 	<p>The WAF contains thousands of these rules and its objective is to execute them as quickly as possible to minimize any added latency to a request. And to make things harder, it needs to run most of the rules on nearly every request. That’s because almost all HTTP requests are non-malicious and no rules are going to match. So we have to optimize for the worst case: execute everything!</p>
-	<p>To help mitigate this problem, one of the first matching steps executed for many rules is pre-filtering. By checking if a request contains certain bytes or sets of strings we are able to potentially skip a considerable number of expressions.</p><!--kg-card-begin: markdown-->
+	<p>To help mitigate this problem, one of the first matching steps executed for many rules is pre-filtering. By checking if a request contains certain bytes or sets of strings we are able to potentially skip a considerable number of expressions.</p>
 	<p>In the previous example, doing a quick check for the NULL byte (represented by <code>\x00</code> in the regular expression) allows us to completely skip the rule if it isn’t found:</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code>contains( "\x00", REQUEST_BODY )
+	<pre class="language-bash"><code class="language-bash">contains( "\x00", REQUEST_BODY )
 and
-rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )
-</code></pre>
-	<!--kg-card-end: markdown-->
+rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
 	<p>Since most requests don’t match any rule and these checks are quick to execute, overall we aren’t doing more operations by adding them.</p>
 	<p>Other steps can also be used to scan through and combine several regular expressions and avoid execution of rule expressions. As usual, doing less work is often the simplest way to make a system faster.</p>
-	<h2 id="memoization">Memoization</h2>
+	<h2>Memoization</h2>
 	<p>Which brings us to <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> - caching the output of a function call to reuse it in future calls.</p>
-	<p>Let’s say we have the following expressions:</p><!--kg-card-begin: markdown-->
-	<pre><code>1. rx( "\x00+evil", lowercase( url_decode( body ) ) )
+	<p>Let’s say we have the following expressions:</p>
+	<pre class="language-bash"><code class="language-bash">1. rx( "\x00+evil", lowercase( url_decode( body ) ) )
 2. rx( "\x00+EVIL", remove_spaces( url_decode( body ) ) )
 3. rx( "\x00+evil", lowercase( url_decode( headers ) ) )
-4. streq( "\x00evil", lowercase( url_decode( body ) ) )
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+4. streq( "\x00evil", lowercase( url_decode( body ) ) )</code></pre>
 	<p>In this case, we can reuse the result of the nested function calls (1) as they’re the same in (4). By saving intermediate results we are also able to take advantage of the result of <code>url_decode( body )</code> from (1) and use it in (2) and (4). Sometimes it is also possible to swap the order functions are applied to improve caching, though in this case we would get different results.</p>
-	<!--kg-card-end: markdown-->
 	<p>A naive implementation of this system can simply be a hash table with each entry having the function(s) name(s) and arguments as the key and its output as the value.</p>
 	<p>Some of these functions are expensive and caching the result does lead to significant savings. To give a sense of magnitude, one of the rules we modified to ensure memoization took place saw its execution time reduced by about 95%:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/rule.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Execution time per rule</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kud0Xv668ZFip72geJ3h6/38ca65c94cf6843e65d7b59ffe020aac/rule.png" alt="" class="kg-image" width="1400" height="804" loading="lazy">
+
 	</figure>
+	<p>Execution time per rule</p>
 	<p>The WAF engine implements memoization and the rules take advantage of it, but there’s always room to increase cache hits.</p>
-	<h2 id="rewriting-rules-and-results">Rewriting Rules and Results</h2>
+	<h2>Rewriting Rules and Results</h2>
 	<p>Cloudflare has a <a href="https://developers.cloudflare.com/waf/change-log">very regular cadence of releasing updates</a> and new rules to the Managed Rulesets. However, as more rules are added and new functions implemented, the memoization cache hit rate tends to decrease.</p>
 	<p>To improve this, we first looked into the rules taking the most <a href="https://en.wikipedia.org/wiki/Elapsed_real_time">wall-clock time</a> to execute using some of our performance metrics:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/execution-time.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Execution time per rule</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ahB7tm8BWAjy3zyN8S1ZY/8ae9a7471aa2369df258597aeb1b91cb/execution-time.png" alt="" class="kg-image" width="1166" height="528" loading="lazy">
+
 	</figure>
-	<p>Having these, we cross-referenced them with the ones having cache misses (output is truncated with [...]):</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ./parse.py --profile
+	<p>Execution time per rule</p>
+	<p>Having these, we cross-referenced them with the ones having cache misses (output is truncated with [...]):</p>
+	<pre class="language-bash"><code class="language-bash">$ ./parse.py --profile
 Hit Ratio:
 -------------
 0.5608
@@ -91,18 +83,19 @@ Candidates:
 100215 - replace t:lowercase with (?i)
 100300 - consider REQUEST_URI over REQUEST_FILENAME
 100137D - invert order of t:replaceNulls,t:lowercase
-[...]
-</code></pre>
-	<!--kg-card-end: markdown-->
+[...]</code></pre>
 	<p>After identifying more than 40 rules, we rewrote them to take full advantage of memoization and added pre-filter checks where possible. Many of these changes were not immediately obvious, which is why we’re also creating tools to aid analysts in creating even more efficient rules. This also helps ensure they run in accordance with the latency budgets the team has set.</p>
-	<p>This change resulted in an increase of the cache hit percentage from 56% to <strong>74%</strong>, which crucially included the most expensive transformations. </p>
-	<p>Most importantly, we also observed a sharp decrease of <strong>40%</strong> in the average time the WAF takes to process and analyze an HTTP request at the Cloudflare edge.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/results.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>WAF Request Processing - Time Average</figcaption>
+	<p>This change resulted in an increase of the cache hit percentage from 56% to <b>74%</b>, which crucially included the most expensive transformations.</p>
+	<p>Most importantly, we also observed a sharp decrease of <b>40%</b> in the average time the WAF takes to process and analyze an HTTP request at the Cloudflare edge.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cNxDlf2ad0Ns8yp8OLPLP/62ce6079a0dcdfe0fa5cd6b5d4cd0857/results.png" alt="" class="kg-image" width="1395" height="722" loading="lazy">
+
 	</figure>
+	<p>WAF Request Processing - Time Average</p>
 	<p>A comparable decrease was also observed for the 95th and 99th percentiles.</p>
-	<p>Finally, we saw a drop of CPU consumption at the edge of around <strong>4.3%</strong>.</p>
-	<h2 id="next-steps">Next Steps</h2>
+	<p>Finally, we saw a drop of CPU consumption at the edge of around <b>4.3%</b>.</p>
+	<h2>Next Steps</h2>
 	<p>While the Lua WAF has served us well throughout all these years, we are currently porting it to use the same engine powering Firewall Rules. It is based on our open-sourced <a href="https://github.com/cloudflare/wirefilter">wirefilter</a> execution engine, which uses a filter syntax inspired by Wireshark®. In addition to allowing more flexible filter expressions, it provides better performance and safety.</p>
 	<p>The rule optimizations we've described in this blog post are not lost when moving to the new engine, however, as the changes were deliberately not specific to the current Lua engine’s implementation. And while we're routinely profiling, benchmarking and making complex optimizations to the Firewall stack, sometimes just relatively simple changes can have a surprisingly huge effect.</p>
 </div>

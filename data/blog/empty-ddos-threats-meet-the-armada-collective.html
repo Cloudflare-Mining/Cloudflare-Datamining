@@ -1,61 +1,49 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ptZAksmb7scfPP2If2saV/77f10ec730a7d925f8e3630ac8f58e31/empty-ddos-threats-meet-the-armada-collective.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Beginning in March 2016, we began hearing reports of a gang of cybercriminals once again calling themselves the Armada Collective. The calling card of the gang was an extortion email sent to a wide variety of online businesses threatening to launch DDoS attacks if they weren't paid in Bitcoin.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/wizard_behind_the_curtain.jpeg" alt="Scary Wizard Behind the Curtain" loading="lazy"><small>From <em>The Wizard of Oz</em> (1939)</small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jDCaLnYLq5gfQsM3yeMz8/698d4e9116cfac8fa491ea436ad56fba/wizard_behind_the_curtain.jpeg.jpeg" alt="Scary Wizard Behind the Curtain" class="kg-image" width="1000" height="748" loading="lazy">
+
+	</figure>
+	<p>From <i>The Wizard of Oz</i> (1939)</p>
 	<p>We heard from more than 100 existing and prospective CloudFlare customers who had received the Armada Collective's emailed threats. We've also compared notes with other DDoS mitigation vendors with customers that had received similar threats.</p>
 	<p>Our conclusion was a bit of a surprise: we've been unable to find a single incident where the current incarnation of the Armada Collective has actually launched a DDoS attack. In fact, because the extortion emails reuse Bitcoin addresses, there's no way the Armada Collective can tell who has paid and who has not. In spite of that, the cybercrooks have collected hundreds of thousands of dollars in extortion payments.</p>
-	<h3 id="thethreat">The Threat</h3>
+	<h3>The Threat</h3>
 	<p>The extortion emails sent by the Armada Collective have been remarkably consistent over the last two months. Here's an example:</p>
-	<div style="padding: 20px 20px 20px 20px;margin: 20px 0 20px 0;background-color:#EEE;">
-		<font face="Courier New,
-Courier, monospace" size="3" color="black">
-			<b>To:</b> [Victim Org's Role Account]<br>
-			<b>From:</b> armada.collective@openmailbox.org<br>
-			<b>Subject:</b> DDOS ATTACK!!<br><br>
-			<p>FORWARD THIS MAIL TO WHOEVER IS IMPORTANT<br>
-				IN YOUR COMPANY AND CAN MAKE DECISION!<br><br></p>
-			<p>We are Armada Collective.<br><br>
-				<a href="http://lmgtfy.com/?q=Armada+Collective">http://lmgtfy.com/?q=Armada+Collective</a><br><br>
-			</p>
-			<p>Your network will be DDoS-ed starting [date]<br>
-				if you don't pay protection fee - 10 Bitcoins<br>
-				@ [Bitcoin Address].<br><br></p>
-			<p>If you don't pay by [date], attack will start,<br>
-				yours service going down permanently price to<br>
-				stop will increase to 20 BTC and will go up<br>
-				10 BTC for every day of attack.<br><br></p>
-			<p>This is not a joke.<br><br></p>
-			<p>Our attacks are extremely powerful - sometimes<br>
-				over 1 Tbps per second. And we pass CloudFlare<br>
-				and others remote protections! So, no cheap<br>
-				protection will help.<br><br></p>
-			<p>Prevent it all with just 10 BTC @<br>
-				[Bitcoin Address]<br><br></p>
-			<p>Do not reply, we will not read. Pay and we<br>
-				will know its you. AND YOU WILL NEVER AGAIN<br>
-				HEAR FROM US!<br><br></p>
-		</font>
-		<p>
-			<font face="Courier New,
-Courier, monospace" size="3" color="black">Bitcoin is anonymous, nobody will ever know<br>
-				you cooperated.</font>
-		</p>
-	</div>
+	<p><b>To:</b> [Victim Org's Role Account]<b>From:</b> <a href="mailto:armada.collective@openmailbox.org">armada.collective@openmailbox.org</a><b>Subject:</b> DDOS ATTACK!!</p>
+	<p>FORWARD THIS MAIL TO WHOEVER IS IMPORTANTIN YOUR COMPANY AND CAN MAKE DECISION!</p>
+	<p>We are Armada Collective.</p>
+	<p><a href="http://lmgtfy.com/?q=Armada+Collective">http://lmgtfy.com/?q=Armada+Collective</a></p>
+	<p>Your network will be DDoS-ed starting [date]if you don't pay protection fee - 10 Bitcoins@ [Bitcoin Address].</p>
+	<p>If you don't pay by [date], attack will start,yours service going down permanently price tostop will increase to 20 BTC and will go up10 BTC for every day of attack.</p>
+	<p>This is not a joke.</p>
+	<p>Our attacks are extremely powerful - sometimesover 1 Tbps per second. And we pass CloudFlareand others remote protections! So, no cheapprotection will help.</p>
+	<p>Prevent it all with just 10 BTC @[Bitcoin Address]</p>
+	<p>Do not reply, we will not read. Pay and wewill know its you. AND YOU WILL NEVER AGAINHEAR FROM US!</p>
+	<p>Bitcoin is anonymous, nobody will ever knowyou cooperated.</p>
 	<p>We've seen examples of the "protection fee" requested that range from 10 – 50 Bitcoin (approximately USD$4,600 – USD$23,000 based on BTC to USD exchange rates as of 25 April 2016). There does not appear to be any correlation of the amount requested and the size or financial resources of the threatened victim.</p>
 	<p>While the message states that the attackers will know who has paid, we've seen several examples of multiple victims being targeted during the same time period and asked to send the same amount to the same Bitcoin address. Since Bitcoin is, as the message correctly notes, anonymous, this means that there is no way for the attacker to tell who has paid the extortion fee and who has not.</p>
-	<h3 id="noattackstilllucrative">No Attack, Still Lucrative</h3>
+	<h3>No Attack, Still Lucrative</h3>
 	<p>Given that the attackers can't tell who has paid the extortion fee and who has not, it is perhaps not surprising to learn that they appear to treat all victims the same: attacking none of them. To date, we've not seen a single attack launched against a threatened organization. This is in spite of nearly all of the threatened organizations we're aware of not paying the extortion fee. We've compared notes with fellow DDoS mitigation vendors and none of them have seen any attacks launched since March against organizations that have received Armada Collective threats.</p>
 	<p>Unfortunately, in spite of the lack of actual DDoS follow through, it appears that many victims are paying the extortion fee. A security analyst from the Bitcoin analysis firm <a href="http://chainalysis.com">Chainalysis</a> studied payments sent to the Armada Collective's Bitcoin addresses and concluded that more than USD$100,000 has been sent to the attackers by victims.</p>
-	<h3 id="armadacollectiveredux">Armada Collective Redux</h3>
+	<h3>Armada Collective Redux</h3>
 	<p>This is not the first group to call themselves the Armada Collective. Unlike the current incarnation, the original Armada Collective did carry through on their DDoS threats. That group went silent in November 2015. It's suspected that "Armada Collective" was originally one of the names used by the DD4BC DDoS extortion group. Alleged members of DD4BC were <a href="https://www.zdnet.com/article/suspected-members-of-bitcoin-extortion-group-dd4bc-arrested">arrested in January 2016 as part of Europol's Operation Pleiades</a>.</p>
 	<p>The original Armada Collective/DD4BC attackers claimed the ability to generate 500Gbps DDoS attacks. In reality, we and other DDoS mitigation vendors never saw attacks larger than 60Gbps. Regardless, CloudFlare successfully mitigated all of the original group's attacks targeting our customers, perhaps prompting the Copycat Armada Collective to double the size of their claimed attack capacity to 1Tbps and call CloudFlare out by name in their new threats. (Incidentally, we have plenty of capacity to stop even an attack that large if it ever turns out to be anything more than hypothetical.)</p>
-	<p>When I was first briefed by our team about this latest incarnation of the Armada Collective, I keep thinking of that scene in the movie the <em>Princess Bride</em> where the mild-mannered Wesley explains to Princess Buttercup how he became the "Dread Pirate Roberts": "The name was the important thing for inspiring the necessary fear. You see, no one would surrender to the Dread Pirate Wesley."</p>
-	<p style="padding: 0 0 20px 0;margin: 0 0 0 0;"><iframe width="560" height="315" src="https://www.youtube.com/embed/aHZGqBVBCRw?start=72&amp;end=128" frameborder="0" allowfullscreen=""></iframe></p>
+	<p>When I was first briefed by our team about this latest incarnation of the Armada Collective, I keep thinking of that scene in the movie the <i>Princess Bride</i> where the mild-mannered Wesley explains to Princess Buttercup how he became the "Dread Pirate Roberts": "The name was the important thing for inspiring the necessary fear. You see, no one would surrender to the Dread Pirate Wesley."</p>
 	<p>And so, it seems, the same is true with cybercriminals. While the actual members of the original Armada Collective appear locked up in a European jail, with little more than some Bitcoin addresses and an email account some enterprising individuals are drafting off the group's original name, sowing fear, and collecting hundreds of thousands of extorted dollars.</p>
-	<h3 id="bustingthemyth">Busting the Myth</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/lmgtfy_armada_collective.png" alt="Let Me Google That For You: Armada Collective" loading="lazy"></p>
+	<h3>Busting the Myth</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25TlPONbeMMVdzepkXm831/45a2d93e2b401c3ac787c259de4aa914/lmgtfy_armada_collective.png" alt="Let Me Google That For You: Armada Collective" class="kg-image" width="672" height="264" loading="lazy">
+
+	</figure>
 	<p>The extortion emails encourage targeted victims to Google for the Armada Collective. I'm hopeful this article will start appearing near the top of search results and help organizations act more rationally when they receive such a threat.</p>
 	<p>It's important to note that not all DDoS extortion threats are empty. There are several groups currently sending out extortion emails that actually do follow through on their threats. I won't name them here so as not to encourage copycats. However, if you ever receive a threat and want to know more about the group, don't hesitate to <a href="https://www.cloudflare.com/under-attack-hotline">reach out</a>. We're always happy to share our view from the perspective of the more than 4 million customers we help protect from real cyber attacks every day.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/wizard_behind_the_curtain_revealed.gif" alt="The Wizard Revealed" loading="lazy"><small>From <em>The Wizard of Oz</em> (1939)</small></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55J87nc9Ua3aGbiH83aoUz/609f7d60206ad4ec99f89b4cef61695d/wizard_behind_the_curtain_revealed.gif" alt="The Wizard Revealed" class="kg-image" width="600" height="486" loading="lazy">
+
+	</figure>
+	<p>From <i>The Wizard of Oz</i> (1939)</p>
 </div>

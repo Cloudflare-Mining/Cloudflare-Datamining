@@ -1,28 +1,48 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/edm-beta-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/de-de/edm-beta-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/zh-cn/edm-beta-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/edm-beta-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/edm-beta-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/edm-beta-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image4-2.png" class="kg-image" alt="DLP Exact Data Match beta now available" loading="lazy" width="1999" height="1125"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/edm-beta">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/edm-beta">Français</a>, <a href="https://blog.cloudflare.com/de-de/edm-beta">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/edm-beta">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/edm-beta">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/edm-beta">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Eo6buEcQO3gzGxn3E38WU/866a81998465166ce6b38c98d3a6e6e8/image4-2.png" alt="DLP Exact Data Match beta now available" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>The most famous data breaches–the ones that keep security practitioners up at night–involved the leak of millions of user records. Companies have lost names, addresses, email addresses, Social Security numbers, passwords, and a wealth of other sensitive information. Protecting this data is the highest priority of most security teams, yet many teams still struggle to actually detect these leaks.</p>
 	<p>Cloudflare’s Data Loss Prevention suite already includes the ability to identify sensitive data like credit card numbers, but with the volume of data being transferred every day, it can be challenging to understand which of the transactions that include sensitive data are actually problematic. We hear customers tell us, “I don’t care when one of my employees uses a personal credit card to buy something online. Tell me when one of my customers’ credit cards are leaked.”</p>
 	<p>In response, we looked for a method to distinguish between any credit card and one belonging to a specific customer. We are excited to announce the launch of our newest Data Loss Prevention feature, Exact Data Match. With Exact Data Match (EDM), customers securely tell us what data they want to protect, and then we identify, log, and block the presence or movement of that data. For example, if you provide us with a set of credit card numbers, we will DLP scan your traffic or repositories for only those cards. This allows you to create targeted DLP detections for your organization.</p>
-	<h3 id="what-is-exact-data-match">What is Exact Data Match?</h3>
-	<p>Many <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">Data Loss Prevention (DLP)</a> detections begin with a generic identification of a pattern, often using a regular expression, and then are validated by additional criteria. Validation can leverage a wide range of techniques from checksums to machine learning models. However, this validates that the pattern is <em>a </em>credit card, not that it is <em>your</em> credit card.</p>
+	<h3>What is Exact Data Match?</h3>
+	<p>Many <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">Data Loss Prevention (DLP)</a> detections begin with a generic identification of a pattern, often using a regular expression, and then are validated by additional criteria. Validation can leverage a wide range of techniques from checksums to machine learning models. However, this validates that the pattern is <i>a</i> credit card, not that it is <i>your</i> credit card.</p>
 	<p>With Exact Data Match, you tell us exactly the data you want to protect, but we never see it in cleartext. You provide a list of data of your choosing, such as a list of names, addresses, or credit card numbers, and that data is hashed before ever reaching Cloudflare. We store the hashes and scan your traffic or content for matches of the hashes. When we find a match, we log or block it according to your policy.</p>
 	<p>By using a finite list of data, we drastically reduce false positives compared to generic pattern matching. Meanwhile, hashing the data maintains your data privacy. Our goal is to meet your data protection and privacy needs.</p>
-	<h3 id="how-do-i-use-it">How do I use it?</h3>
+	<h3>How do I use it?</h3>
 	<p>We now offer you the ability to upload DLP datasets. These allow you to provide batches of data to be used for your DLP detections.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/Screenshot-2023-07-12-at-18.38.25.png" class="kg-image" alt="" loading="lazy" width="1612" height="318"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ypSYCeUurEhwpeB0gmxKf/0f8f2775c81a6f4b484e232514debe17/Screenshot-2023-07-12-at-18.38.25.png" alt="" class="kg-image" width="1612" height="318" loading="lazy">
+
+	</figure>
 	<p>When creating a dataset, provide a name, description, and a file containing the data to match.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-2.png" class="kg-image" alt="" loading="lazy" width="1999" height="826"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wPppeLrZflpYyNhe694yt/7d82ba2e0243f715440b183ddfbd92ba/image5-2.png" alt="" class="kg-image" width="1999" height="826" loading="lazy">
+
+	</figure>
 	<p>When you upload the file, Cloudflare one-way hashes the data right in your browser. The hashed data is then transferred via API to Cloudflare, while the cleartext data never leaves the browser.</p>
 	<p>You can see the status of the upload in the datasets table.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-7.png" class="kg-image" alt="" loading="lazy" width="1999" height="408"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xNNEvH9xmpR0eHVZEtwD8/173b15d3a5936e1e3906cfe6d7f2bac4/image1-7.png" alt="" class="kg-image" width="1999" height="408" loading="lazy">
+
+	</figure>
 	<p>The dataset can now be added to a DLP profile for detection. You can also add other predefined and custom entries to the same DLP profile.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-6.png" class="kg-image" alt="" loading="lazy" width="882" height="354"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dc55hQQJI9siKmqxdwFVg/487f882725a3bbad2c49d2cc64da7776/image2-6.png" alt="" class="kg-image" width="882" height="354" loading="lazy">
+
+	</figure>
 	<p>DLP Profiles can be used <a href="https://blog.cloudflare.com/inline-dlp-ga">for inline scanning and protection with Cloudflare Gateway</a> or scanning your data at rest with Cloudflare CASB.</p>
-	<h3 id="can-i-join-the-beta">Can I join the beta?</h3>
+	<h3>Can I join the beta?</h3>
 	<p>Exact data match is now available for every DLP customer. If you are not a DLP customer but would like to learn more about Cloudflare One and DLP, <a href="https://www.cloudflare.com/products/zero-trust/dlp">reach out for a consultation</a>.</p>
-	<h3 id="what%E2%80%99s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>Customers have many different formats to store data, and many different ways in which they want to monitor it. Our goal is to offer as much flexibility as your organization needs to meet your data protection goals.</p>
 </div>

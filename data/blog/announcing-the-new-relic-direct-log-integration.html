@@ -1,29 +1,41 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-the-new-relic-direct-log-integration-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/announcing-the-new-relic-direct-log-integration-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-14.png" class="kg-image" alt="Announcing the new New Relic and Cloudflare direct log integration" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-the-new-relic-direct-log-integration">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/announcing-the-new-relic-direct-log-integration">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zE3PrT40zReo7OGoyxrOC/be31aaf973163b5995fd709f5a39b146/image2-14.png" alt="Announcing the new New Relic and Cloudflare direct log integration" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Building a great customer experience is at the heart of any business. Building resilient products is half the battle — teams also need observability into their applications and services that are running across their stack.</p>
 	<p>Cloudflare provides analytics and logs for our products in order to give our customers visibility to extract insights. Many of our customers use Cloudflare along with other applications and network services and want to be able to correlate data through all of their systems.</p>
 	<p>Understanding normal traffic patterns, causes of latency and errors can be used to improve performance and ultimately the customer experience. For example, for websites behind Cloudflare, analyzing application logs and origin server logs along with Cloudflare’s HTTP request logs give our customers an end-to-end visibility about the journey of a request.</p>
 	<p>We’re excited to have partnered with New Relic to create a direct integration that provides this visibility. The direct integration with our logging product, Logpush, means customers no longer need to pay for middleware to get their Cloudflare data into New Relic. The result is a faster log delivery and fewer costs for our mutual customers!</p>
 	<p>We’ve invited the New Relic team to dig into how New Relic One can be used to provide insights into Cloudflare.</p>
-	<h3 id="new-relic-log-management">New Relic Log Management</h3>
+	<h3>New Relic Log Management</h3>
 	<p>New Relic provides an open, extensible, cloud-based observability platform that gives visibility into your entire stack. Logs, metrics, events, and traces are automatically correlated to help our customers improve user experience, accelerate time to market, and reduce MTTR.</p>
 	<p>Deploying <a href="https://newrelic.com/products/log-management">log management</a> in context and at scale has never been faster, easier, or more attainable. With New Relic One, you can collect, search, and correlate logs and other telemetry data from applications, infrastructure, network devices, and more for faster troubleshooting and investigation.</p>
 	<p>New Relic correlates events from your applications, infrastructure, serverless environments, along with mobile errors, traces and spans to your logs — so you find exactly what you need with less toil. All your logs are only a click away, so there’s no need to dig through logs in a separate etool to manually correlate them with errors and traces.</p>
 	<p>See how engineers have used logs in New Relic to better serve their customers in the short video below.</p>
-	<figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/MMH3gVW16yk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
-	<h3 id="a-quickstart-for-cloudflare-logpush-and-new-relic">A quickstart for Cloudflare Logpush and New Relic</h3>
+	<h3>A quickstart for Cloudflare Logpush and New Relic</h3>
 	<p>To help you get the most of the new Logpush integration with New Relic, we’ve created the <a href="https://newrelic.com/instant-observability/cloudflare-network-logs/fc2bb0ac-6622-43c6-8c1f-6a4c26ab5434/?utm_source=external_partners&amp;utm_medium=referral&amp;utm_campaign=global-ever-green-io-partner">Cloudflare Logpush quickstart for New Relic</a>. The Cloudflare quickstart will enable you to monitor and analyze web traffic metrics on a single pre-built dashboard, integrating with New Relic’s database to provide an at-a-glance overview of the most important logs and metrics from your websites and applications.</p>
 	<p>Getting started is simple:</p>
 	<ul>
-		<li>First, ensure that you have enabled pushing logs directly into New Relic by following the documentation <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/new-relic">“Enable Logpush to New Relic”</a>.</li>
-		<li>You’ll also need a New Relic account. If you don’t have one yet, get a free-forever account <a href="https://newrelic.com/signup?utm_source=external_partners&amp;utm_medium=content&amp;utm_campaign=global-fy22-q4-io-partner-cloudflare">here</a>.</li>
-		<li>Next, visit the <a href="https://newrelic.com/instant-observability/cloudflare-network-logs/fc2bb0ac-6622-43c6-8c1f-6a4c26ab5434/?utm_source=external_partners&amp;utm_medium=referral&amp;utm_campaign=global-ever-green-io-partner">Cloudflare quickstart in New Relic</a>, click “Install quickstart”, and follow the guided click-through.</li>
+		<li>
+			<p>First, ensure that you have enabled pushing logs directly into New Relic by following the documentation <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/new-relic">“Enable Logpush to New Relic”</a>.</p>
+		</li>
+		<li>
+			<p>You’ll also need a New Relic account. If you don’t have one yet, get a free-forever account <a href="https://newrelic.com/signup?utm_source=external_partners&amp;utm_medium=content&amp;utm_campaign=global-fy22-q4-io-partner-cloudflare">here</a>.</p>
+		</li>
+		<li>
+			<p>Next, visit the <a href="https://newrelic.com/instant-observability/cloudflare-network-logs/fc2bb0ac-6622-43c6-8c1f-6a4c26ab5434/?utm_source=external_partners&amp;utm_medium=referral&amp;utm_campaign=global-ever-green-io-partner">Cloudflare quickstart in New Relic</a>, click “Install quickstart”, and follow the guided click-through.</p>
+		</li>
 	</ul>
 	<p>For full instructions to set up the integration and quickstart, read the <a href="http://newrelic.com/blog/how-to-relic/cloudflare-log-integration">New Relic blog post</a>.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-16.png" class="kg-image" alt="New Relic quickstart dashboard" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/686cjyzad7TdJGQzRMobPY/7afd037f46f6b502f9eded52fe375e3b/image1-16.png" alt="New Relic quickstart dashboard" class="kg-image" width="1999" height="823" loading="lazy">
+
+	</figure>
 	<p>As a result, you’ll get a rich ready-made dashboard with key metrics about your Cloudflare logs!</p>
 	<p>Correlating Cloudflare logs across your stack in New Relic One is powerful for monitoring and debugging in order to keep services safe and reliable. Cloudflare customers get access to logs as part of the Enterprise account, if you aren’t using Cloudflare Enterprise, <a href="https://www.cloudflare.com/plans/enterprise/contact">contact us</a>. If you’re not already a New Relic user, <a href="https://newrelic.com/signup">sign up for New Relic</a> to get a free account which includes this new experience and all of our product capabilities.</p>
 </div>

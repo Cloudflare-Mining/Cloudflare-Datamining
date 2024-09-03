@@ -1,24 +1,34 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-16.png" class="kg-image" alt="Cloudflare protection for all your cardinal directions" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/kJ1htV6MvBTyz5BXEW76n/c9b1429d35016900e2646ec2188bb46c/image1-16.png" alt="Cloudflare protection for all your cardinal directions" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>As the Internet becomes the new corporate network, traditional definitions within corporate networking are becoming blurry. Concepts of the corporate WAN, “north/south” and “east/west” traffic, and private versus public application access dissolve and shift their meaning as applications shift outside corporate data center walls and users can access them from anywhere. And security requirements for all of this traffic have become more stringent as new attack vectors continue to emerge.</p>
 	<p>The good news: Cloudflare’s got you covered! In this post, we’ll recap how definitions of corporate network traffic have shifted and how Cloudflare One provides protection for all traffic flows, regardless of source or destination.</p>
-	<h3 id="north-south-east-and-west-traffic">North, south, east, and west traffic</h3>
+	<h3>North, south, east, and west traffic</h3>
 	<p>In the traditional <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter security model</a>, IT and network teams defined a “trusted” private network made up of the LANs at corporate locations, and the WAN connecting them. Network architects described traffic flowing between the trusted network and another, untrusted one as “north/south,” because those traffic flows are typically depicted spatially on network diagrams like the one below.</p>
 	<p>Connected north/south networks could be private, such as one belonging to a partner company, or public like the Internet. Security teams made sure all north/south traffic flowed through one or a few central locations where they could enforce controls across all the “untrusted” traffic, making sure no malicious actors could get in, and no sensitive data could get out.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-8.png" class="kg-image" alt="Network diagram depicting traditional corporate network architecture" loading="lazy">
-		<figcaption><em>Network diagram depicting traditional corporate network architecture</em></figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nSbqXVgnub8P58qQSHyoA/29cc1d8bd6b2afdb231d18559b6a91f9/image2-8.png" alt="Network diagram depicting traditional corporate network architecture" class="kg-image" width="964" height="606" loading="lazy">
+
 	</figure>
+	<p><i>Network diagram depicting traditional corporate network architecture</i></p>
 	<p>Traffic on a single LAN, such as requests from a desktop computer to a printer in an office, was referred to as “east/west” and generally was not subject to the same level of security control. The “east/west” definition also sometimes expanded to include traffic between LANs in a small geographic area, such as multiple buildings on a large office campus. As organizations became more distributed and the need to share information between geographically dispersed locations grew, “east/west” also often included WAN traffic transferred over trusted private connections like <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS links</a>.</p>
 	<p>As applications moved to the Internet and the cloud and users moved out of the office, clean definitions of north/south/east/west traffic started to dissolve. Traffic and data traditionally categorized as “private” and guarded within the boundaries of the corporate perimeter is now commonly transferred over the Internet, and organizations are shifting to cloud-first security models such as <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> which redefine where security controls are enforced across that traffic.</p>
-	<h3 id="how-cloudflare-keeps-you-protected">How Cloudflare keeps you protected</h3>
+	<h3>How Cloudflare keeps you protected</h3>
 	<p>Cloudflare’s services can be used to secure and accelerate all of your traffic flows, regardless of whether your network architecture is fully cloud-based and Internet-native or more traditional and physically defined.</p>
 	<p>For “north/south” traffic from external users accessing your public applications, Cloudflare provides protection at all layers of the OSI stack and for a wide range of threats. Our <a href="https://www.cloudflare.com/application-security">application security</a> portfolio, including DDoS protection, Web Application Firewall, API security, Bot Management, and more includes all the tools you need to keep public facing apps safe from malicious actors outside your network; our <a href="https://www.cloudflare.com/network-services">network services</a> extend similar benefits to all your IP traffic. <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a> has you covered for the growing amount of north/south traffic from internal users - <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access">Zero Trust Network Access</a> provides access to corporate resources on the Internet without sacrificing security, and <a href="https://www.cloudflare.com/products/zero-trust/gateway">Secure Web Gateway</a> filters outgoing traffic to keep your data safe from malware, ransomware, phishing, command and control, and other threats.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-6.png" class="kg-image" alt="Cloudflare protection for all your traffic flows" loading="lazy">
-		<figcaption><em>Cloudflare protection for all your traffic flows</em></figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ohLGeQfrRETUF6sV5csSN/86f7ac2c7fcf73e9d5c154d4053bafb8/image3-6.png" alt="Cloudflare protection for all your traffic flows" class="kg-image" width="1117" height="678" loading="lazy">
+
 	</figure>
+	<p><i>Cloudflare protection for all your traffic flows</i></p>
 	<p>As customers adopt SASE and multicloud architectures, the amount of east/west traffic within a single location continues to decrease. Cloudflare One enables customers to use Cloudflare’s network as an extension of theirs for east/west traffic between locations with a variety of secure on-ramp options including a device client, application and network-layer tunnels, and direct connections, and apply Zero Trust policies to all traffic regardless of where it’s headed. Some customers choose to use Cloudflare One for filtering local traffic as well, which involves a quick hop out to the closest <a href="https://www.cloudflare.com/network">Cloudflare location</a> - less than 50ms from 95% of the world’s Internet-connected population - and enables security and IT teams to enforce consistent security policy across all traffic from a single control plane.</p>
 	<p>Because Cloudflare’s services are all delivered on every server in all locations across our network, customers can connect to us to get access to a full “service mesh” for any traffic. As we develop new capabilities, they can apply across any traffic flow regardless of source or destination. Watch out for some new product announcements coming later this week that enhance these integrations even further.</p>
-	<h3 id="get-started-today">Get started today</h3>
+	<h3>Get started today</h3>
 	<p>As the Internet becomes the new corporate network, Cloudflare’s mission to help build a better Internet enables us to help you protect anything connected to it. Stay tuned for the rest of CIO Week for new capabilities to make all of your north, south, east, and west traffic faster, more secure, and more reliable, including updates on even more flexible application-layer capabilities for your private network traffic.</p>
 </div>

@@ -1,35 +1,57 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4D0jZSmsO7tGSSc8bN3uE1/c876e098618d635cf8d106fc49c26f8d/per-origin-host-header-override.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Load Balancing as a concept is pretty straightforward. Take an existing infrastructure and route requests to the available origin servers so no single server is overwhelmed. Add in some health monitoring to ensure each server has a heartbeat/pulse so proactive decisions can be made. With two steps, you get more effective utilization of your existing resources… simple enough!</p>
 	<p>As your application grows, however, load balancing becomes more complicated. An example of this — and the subject of this blog post — is how load balancing interacts with the Host header in an HTTP request.</p>
-	<h3 id="host-headers-and-load-balancing">Host headers and load balancing</h3>
+	<h3>Host headers and load balancing</h3>
 	<p>Every request to a website contains a unique piece of identifying information called the Host header. The Host header helps route each request to the correct origin server so the end user is sent the information they requested from the start.</p>
-	<p>For example, say that you enter <code>example.com</code> into my URL bar in my browser. You are sending a request to ‘example.com’ to send you back the homepage located <em>within</em> that application. To make sure you actually get resources from <code>example.com</code>, your browser includes a Host header of <code>example.com</code>. When that request reaches the back-end infrastructure, it finds the origin server that also has the host <code>example.com</code> and then sends back the required information.</p>
+	<p>For example, say that you enter <code>example.com</code> into my URL bar in my browser. You are sending a request to ‘example.com’ to send you back the homepage located <i>within</i> that application. To make sure you actually get resources from <code>example.com</code>, your browser includes a Host header of <code>example.com</code>. When that request reaches the back-end infrastructure, it finds the origin server that also has the host <code>example.com</code> and then sends back the required information.</p>
 	<p>Host headers are not only important for locating resources, but also for security. Imagine how jarring it would be if someone sent your request to <code>scary-example.com</code> and returned malicious resources instead! If the Host header in the request does not match the Host header at the destination, then the request will fail.</p>
 	<p>This behavior can cause issues when you start using third-party applications like Google Compute Cloud, Google App Engine, Heroku, and Amazon S3. These applications are great, helping you deploy and scale applications. However, they have an important effect on the requirements for a Host header. Your server is no longer located at <code>example.com</code>. Instead, it’s probably at something like <code>example.herokuapp.com</code>. If you can’t change the Host header on your origin, users might be sending their requests to the wrong place, leading to error messages and poor user experience.</p>
 	<p>The combination of Host headers and third-party applications caused issues with our Load Balancing solution. The Host header of the request would not match the updated Host header for the new application now added into the request pipeline, meaning the request would fail. Larger customers were forced to choose between using third-party applications and load balancing… not a decision we wanted to force our customers to make!</p>
 	<p>We saw this to be a big problem and wanted to help our customers leverage different solutions in the market to ensure they are successful and can align their business objectives with their infrastructure.</p>
-	<h3 id="introducing-origin-server-host-header-overrides">Introducing Origin Server Host Header Overrides</h3>
+	<h3>Introducing Origin Server Host Header Overrides</h3>
 	<p>To address this problem, we’ve added support to override the Host header on a per-origin basis within our Load Balancing solution. This means that you don’t have to worry about sending errors back to your end-users and can seamlessly integrate apps — such as Heroku — into your reliability solutions.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lHzhndIL0cghD1eIW5bp0/238f597b954fd96868e355c621f3c9b3/image3-3.png" alt="" class="kg-image" width="1068" height="437" loading="lazy">
+
+	</figure>
 	<p>We wanted to create a scalable solution, one that allowed you to perform these overrides in an easy and intuitive way. As we reviewed the problem, we saw that there was no one-size fit all solution. Different customers are going to have their apps architected differently and have different goals based on their business, industry, geography, etc. Thus, it was important to provide flexibility to override the Host header on a per-origin basis, since different origins can support different segments of an application or entirely different applications altogether! With a simple click, users can now update the Host header on their origins. When requests hit the Load Balancer, it reads the overwritten value for the origin host instead of the defaulted origin Host header value and requests are routed properly without errors.</p>
-	<p>“<em>But what about my health monitors!?</em>” you may be thinking. When you add a Host header override on your origin, we will automatically apply it to the origin’s health monitor. No extra configuration is required. On top of that, we felt it was important to provide as much meaningful information as possible so you could make informed decisions around any configuration updates. When editing a health monitor, you will see a new table if any origins have a Host header override.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="how-else-can-overriding-the-host-header-help-me">How else can overriding the Host header help me?</h3>
+	<p>“<i>But what about my health monitors!?</i>” you may be thinking. When you add a Host header override on your origin, we will automatically apply it to the origin’s health monitor. No extra configuration is required. On top of that, we felt it was important to provide as much meaningful information as possible so you could make informed decisions around any configuration updates. When editing a health monitor, you will see a new table if any origins have a Host header override.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xmbMjXqdFhPrxqTNQXnsJ/ce3e1d64bde472a02b052271f38f6e8a/image2-2.png" alt="" class="kg-image" width="1056" height="1022" loading="lazy">
+
+	</figure>
+	<h3>How else can overriding the Host header help me?</h3>
 	<p>You might find the Host header override useful if you have a shared web server. In these situations, IP addresses are not uniquely assigned to each server, meaning you might need a Host header override to direct your request to the right domain. For example, you might have <code>example-grocery.com</code>, <code>example-furniture.com</code>, and <code>example-perfume.com</code> all on a shared webserver hosted on the same IP address. When a request intended for <code>example-furniture.com</code> is forwarded to the server, the Host header override — <code>Host: example-furniture.com</code> — specifies which host to connect to.</p>
 	<p>Setting a Host header would mean that you enforce a strict HTTPS/TLS connection to reach the origin. We validate the Server Name Indicator (SNI) to verify that the request will be forwarded to the appropriate website.</p>
-	<h3 id="how-does-it-work-under-the-hood">How does it work under the hood?</h3>
+	<h3>How does it work under the hood?</h3>
 	<p>To understand how it works, first let’s see what solutions we have currently. To configure a Load Balancer with a third-party cloud platform that requires a Host header, you would need to set a Host header override with Page Rules (Enterprise customers only). This solution works great if you have back-end origin1 and origin2 that expect the same Host header. But when the origins expect different Host headers, it wasn’t possible to set it per origin. There was a need for a more granular flexibility, hence the reason for per-origin Host header override.</p>
 	<p>Now, when you navigate to the Traffic tab and set up a Load Balancer, you can add a Host header override on your back-end origin. When you add the Host header, we do safety checks — which we’ll get to in a bit — and if it passes all the checks then your configuration gets saved. If you set a Host header override on an origin, it will take precedence over a Host header override set on the monitor.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pGJS2FVLjiyF6otz5yHiB/be561cb810d756cdf9363807ee1f7d20/image1-4.png" alt="" class="kg-image" width="1140" height="487" loading="lazy">
+
+	</figure>
 	<p>Cloudflare has over 200 edge locations around the world, making it one of the largest Anycast networks. We make sure that your Load Balancer config information is available at all our Cloudflare edge locations. For example, you may have your website hosted on a third-party cloud provider like Heroku. You would set up a Load Balancer with pools and associated origin <code>example.com</code>. To reach <code>example.com</code> hosted on Heroku, you would set the heroku url <code>example.herokuapp.com</code> as the origin Host header “Host:example.herokuapp.com”. When a request hits a Cloudflare edge, we would first check the load balancing config and the health monitor to check the origin health status. Then, we would set the Host header override and Server Name Indication (SNI).For more about, visit our <a href="https://www.cloudflare.com/learning/ssl/what-is-sni">learning center</a>.</p>
 	<p>There are some restrictions that limit the domain set as the Host header override on an origin:</p>
 	<ol>
-		<li>The only allowed HTTP header is “Host” and no other.</li>
-		<li>You can specify only one “Host” Host header per origin, so no duplicates or line wrap/indent Host header with space is allowed.</li>
-		<li>No ports can be added to the Host header.</li>
-		<li>We allow fully qualified domain names (FQDN) and IP addresses that can be resolved by public DNS.</li>
-		<li>The FQDN in the Host header must be a subdomain of a zone associated with the account, which is applicable for partial zones and secondary zones.</li>
+		<li>
+			<p>The only allowed HTTP header is “Host” and no other.</p>
+		</li>
+		<li>
+			<p>You can specify only one “Host” Host header per origin, so no duplicates or line wrap/indent Host header with space is allowed.</p>
+		</li>
+		<li>
+			<p>No ports can be added to the Host header.</p>
+		</li>
+		<li>
+			<p>We allow fully qualified domain names (FQDN) and IP addresses that can be resolved by public DNS.</p>
+		</li>
+		<li>
+			<p>The FQDN in the Host header must be a subdomain of a zone associated with the account, which is applicable for partial zones and secondary zones.</p>
+		</li>
 	</ol>
 	<p>These requirements make sure you are directing requests to domains that belong to you. With future development, we may relax some restrictions.</p>
 	<p>If you want to understand more about Load Balancing on Cloudflare, visit our <a href="https://www.cloudflare.com/load-balancing">product</a> page or look at our help articles, such as <a href="https://support.cloudflare.com/hc/en-us/articles/205893698-Configure-Cloudflare-and-Heroku-over-HTTPS">Configure Cloudflare &amp; Heroku</a>.</p>

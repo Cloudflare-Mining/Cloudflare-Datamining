@@ -1,44 +1,62 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Ransom-DDoS-attacks-target-a-Fortune-Global-500-company-img-LP.png" class="kg-image" alt="Anatomy of a Targeted Ransomware Attack" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Kmgb50IxXdli98gJTRsMj/fb143612b3e14b2fcdeff27b5a18729e/Ransom-DDoS-attacks-target-a-Fortune-Global-500-company-img-LP.png" alt="Anatomy of a Targeted Ransomware Attack" class="kg-image" width="1815" height="738" loading="lazy">
+
+	</figure>
 	<p>Imagine your most critical systems suddenly stop operating, bringing your entire business to a screeching halt. And then someone demands a ransom to get your systems working again. Or someone launches a DDoS against you and demands ransom to make it stop. &nbsp;That’s the world of ransomware and ransom DDoS.</p>
 	<p>So what exactly is ransomware? It is malicious software that encrypts files on computers making them useless until they are decrypted. In some cases, ransomware could even corrupt and destroy data. A ransom note is then placed on compromised systems with instructions to pay a ransom in exchange for a decryption utility that can be used to restore encrypted files. Payment is often in the form of <a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a> or other <a href="https://en.wikipedia.org/wiki/Cryptocurrency">cryptocurrency</a>.</p>
 	<p>Recently, Cloudflare onboarded and <a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company">protected</a> a Fortune 500 customer from a targeted <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack">Ransom DDoS (RDDoS)</a> attack -- a different type of extortion attack.</p>
 	<p>Prior to joining Cloudflare, I responded to and investigated a large number of data breaches and ransomware attacks for clients across various industries, including healthcare, financial, and education, to name a few. I’ve been in the trenches analyzing these types of attacks and working closely with clients to help them recover from the aftermath.</p>
 	<p>In this blog post, I want to share what I learned from those network intrusions and how Cloudflare can help prevent a similar attack in your environment.</p>
-	<h3 id="attack-evolution">Attack Evolution</h3>
+	<h3>Attack Evolution</h3>
 	<p>Before peeling back the layers of targeted ransomware attacks, I want to briefly describe the differences between opportunistic vs. targeted types of attacks.</p>
 	<p>An opportunistic attack is one where a crime group casts a wide net with the end goal of infecting whoever and whatever they can. This is often accomplished by mass distribution of spam email that contains <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud">malicious URLs</a> or file attachments that execute <a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload">malicious code</a> on user endpoints, ultimately infecting them with ransomware.</p>
 	<p>Other methods of distribution include <a href="https://en.wikipedia.org/wiki/Drive-by_download">drive-by downloads</a> and <a href="https://en.wikipedia.org/wiki/Malvertising">malvertising</a> campaigns where unsuspected users visit compromised websites that lead to a series of redirection chains that ultimately serve the user with malicious content. This is where Cloudflare’s <a href="https://www.cloudflare.com/teams/browser-isolation">Remote Browser Isolation</a> (RBI) solution really shines!</p>
 	<p>Over the past few years, threat actors have shifted to much more targeted attacks that net higher Bitcoin payment returns for their efforts. These attacks generally focus on compromising critical systems, exfiltrating data, and installing <a href="https://en.wikipedia.org/wiki/Backdoor_(computing)">backdoors</a> in target environments. Now let’s walk through what I’ve seen from the trenches.</p>
-	<h3 id="initial-compromise">Initial Compromise</h3>
+	<h3>Initial Compromise</h3>
 	<p>From my experience, the majority of the targeted investigations I conducted all started from one of three common initial attack vectors:</p>
 	<ul>
-		<li>An attacker compromised <a href="https://www.cloudflare.com/learning/access-management/what-is-the-remote-desktop-protocol">Remote Desktop Protocol (RDP)</a> or <a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn">Virtual Private Network (VPN)</a> servers</li>
-		<li>An attacker exploited an unpatched vulnerability in a web application or server</li>
-		<li>An attacker <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">spear-phished</a> key individuals to gain a foothold in the target environment</li>
+		<li>
+			<p>An attacker compromised <a href="https://www.cloudflare.com/learning/access-management/what-is-the-remote-desktop-protocol">Remote Desktop Protocol (RDP)</a> or <a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn">Virtual Private Network (VPN)</a> servers</p>
+		</li>
+		<li>
+			<p>An attacker exploited an unpatched vulnerability in a web application or server</p>
+		</li>
+		<li>
+			<p>An attacker <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">spear-phished</a> key individuals to gain a foothold in the target environment</p>
+		</li>
 	</ul>
 	<p>Not surprisingly, the most common method I came across were attacks against RDP and VPN servers. Most of which were accessed from traditional <a href="https://www.cloudflare.com/learning/bots/brute-force-attack">brute force</a> login attempts where <a href="https://www.cloudflare.com/learning/access-management/what-is-two-factor-authentication">two-factor authentication</a> was not enabled. In other cases, attackers leveraged compromised credentials to access the environment over VPN.</p>
 	<p>In reality, the initial compromise stage was not very complex at all. In most cases, attackers simply scanned the Internet for low hanging fruit and looked for any exposed RDP servers that listened on the standard 3389 RDP port. Thankfully, <a href="https://blog.cloudflare.com/cloudflare-access-now-supports-rdp">Cloudflare Access</a> makes it very easy to protect your RDP servers from these types of attacks. Last year, with the pandemic shifting the majority of the workforce to a remote-first environment, Cloudflare announced the ability to <a href="https://blog.cloudflare.com/protecting-remote-desktops-at-scale-with-cloudflare-access">protect your RDP</a> servers at scale. Taking security a step further, Cloudflare announced <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN &amp; Firewall</a> to allow users to have further control over other internal resources by segmenting what they can interact with and from where.</p>
 	<p>In cases where direct exploitation of unpatched vulnerabilities was used as the attack vector to spread ransomware and a patch is not immediately available, using a <a href="https://www.cloudflare.com/learning/security/what-is-a-firewall">web application firewall</a> such as <a href="https://www.cloudflare.com/waf">Cloudflare’s WAF</a>, is a great way to apply short-term mitigation strategies to block exploitation attempts until a patch becomes available.</p>
-	<h3 id="lateral-movement-data-exfiltration-and-extortion">Lateral Movement, Data Exfiltration, and Extortion</h3>
+	<h3>Lateral Movement, Data Exfiltration, and Extortion</h3>
 	<p>One particular compromise was particularly scary. After the attacker gained access to the client’s environment by compromising an RDP server, they began to perform internal reconnaissance to identify critical systems in their environment.</p>
 	<p>After the attacker mapped out the network, they leveraged compromised credentials to remotely install <a href="https://en.wikipedia.org/wiki/Backdoor_(computing)">backdoors</a> on two critical systems in order to maintain persistence. This was one of the first times I saw an attacker do this in a ransomware compromise, but it speaks to the level of effort threat actors are willing to go. Unfortunately, this wasn’t all they did.</p>
 	<p>After installing the backdoors, the threat actor then moved laterally to the company’s internal backup servers to permanently delete all data backups to prevent the client from restoring from them. Unfortunately, they did not maintain offsite copies of this data. And &nbsp;the threat actor also exfiltrated sensitive customer data from the environment before deploying the ransomware.</p>
 	<p>The final blow was when the threat actor deployed ransomware across the environment, crippling their entire operations and literally bringing everything to a halt. Following the ransomware deployment, the threat actor emailed key decision makers of the organization, including the board, and demanded a very high sum of Bitcoin in exchange for the keys to decrypt their systems. They also threatened to release customer data if they did not pay the amount and provided proof as evidence.</p>
 	<p>I remember this investigation vividly because it was quite devastating for the founder. This attack literally took everything he had built away over the span of a day or two.</p>
-	<h3 id="using-cloudflare">Using Cloudflare</h3>
+	<h3>Using Cloudflare</h3>
 	<p>While threat actors may only need one way to get in, defenders have more than one opportunity to detect them. <a href="https://blog.cloudflare.com/announcing-antivirus-in-cloudflare-gateway">One exciting announcement this week that helps with just that is Gateway with AV</a>! By adding malware scanning to Gateway, defenders can now detect malicious files that unsuspecting users download or a threat actor places. Oftentimes, these are early signs of compromise that should be investigated.</p>
 	<p>From a response and investigation standpoint, Gateway can be used to block malicious domains to prevent other users from reaching them. As a bonus, Gateway logs are especially useful for scoping other potentially compromised devices that also communicate with malicious domains. In fact, the Security team at Cloudflare uses Gateway to keep our own users secure and to help us conduct investigations.</p>
 	<p>Combined with Gateway, Cloudflare Access and WAF can be used to add an extra layer of security and visibility into your users and applications, both of which also provide valuable insight to security teams. Threat actors look for different ways to compromise your environment at the user, application, and network level. With Access, you can protect and control what users have access to, monitor authentication activity, and revoke access easily if a compromise is suspected. Critical web applications, especially those that are Internet-facing, should be protected by a <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> to block malicious attacks from legitimate web traffic. All it takes is one vulnerability to be exploited for an attacker to potentially gain access to your data, or worse, embed malicious content that can be used to infect users that visit your web application.</p>
 	<p>Lastly, while I only focused on ransomware on the endpoint, I should point out that threat actors can also leverage <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnets</a> to conduct attacks over the network. Imagine being surrounded by a small army of bulldozers threatening to destroy your home unless you pay them a large sum of money. That’s as Ransom DDoS and it’s why <a href="https://www.cloudflare.com/ddos">DDoS mitigation</a> is so important.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>Ransomware attacks continue <a href="https://www.kroll.com/en/insights/publications/cyber/ransomware-attack-trends-2020">to be on the rise</a> and there’s no sign of them slowing down in the near future. With ransomware as a service (<a href="https://www.crowdstrike.com/cybersecurity-101/ransomware/ransomware-as-a-service-raas">RaaS</a>) models, it’s even easier for inexperienced threat actors to get their hands on them today. RaaS is essentially a franchise that allows criminals to rent ransomware from malware authors. It takes away the need to build their own and creates a win-win opportunity for both parties.</p>
 	<p>Here are some general recommendations to help you and your organization stay secure:</p>
 	<ul>
-		<li>Use 2FA everywhere, especially on your <a href="https://www.cloudflare.com/learning/access-management/what-is-remote-access-security">remote access entry points</a>. This is where Cloudflare Access really helps.</li>
-		<li>Maintain multiple redundant backups of critical systems and data, both onsite and offsite</li>
-		<li>Monitor and block malicious domains using Cloudflare Gateway + AV</li>
-		<li>Sandbox web browsing activity using Cloudflare RBI to isolate threats at the browser</li>
+		<li>
+			<p>Use 2FA everywhere, especially on your <a href="https://www.cloudflare.com/learning/access-management/what-is-remote-access-security">remote access entry points</a>. This is where Cloudflare Access really helps.</p>
+		</li>
+		<li>
+			<p>Maintain multiple redundant backups of critical systems and data, both onsite and offsite</p>
+		</li>
+		<li>
+			<p>Monitor and block malicious domains using Cloudflare Gateway + AV</p>
+		</li>
+		<li>
+			<p>Sandbox web browsing activity using Cloudflare RBI to isolate threats at the browser</p>
+		</li>
 	</ul>
 </div>

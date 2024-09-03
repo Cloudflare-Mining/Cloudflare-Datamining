@@ -1,41 +1,49 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3s6lNptpVhi1lQgOpG9ARA/3fb645e53f993ef77e60e24ecf66ee95/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>The last few weeks have seen several high-profile outages in legacy <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> and DDoS-mitigation services due to large scale attacks. Cloudflare's customers have, understandably, asked how we are positioned to handle similar attacks.</p>
 	<p>While there are limits to any service, including Cloudflare, we are well architected to withstand these recent attacks and continue to scale to stop the larger attacks that will inevitably come. We are, <a href="https://twitter.com/MiraiAttacks">multiple times per day</a>, mitigating the very botnets that have been in the news. Based on the attack data that has been released publicly, and what has been shared with us privately, we have been successfully mitigating attacks of a similar scale and type without customer outages.</p>
 	<p>I thought it was a good time to talk about how Cloudflare's architecture is different than most legacy DNS and DDoS-mitigation services and how that's helped us keep our customers online in the face of these extremely high volume attacks.</p>
-	<h3 id="analogyhowdatabasesscaled">Analogy: How Databases Scaled</h3>
+	<h3>Analogy: How Databases Scaled</h3>
 	<p>Before delving into our architecture, it's worth taking a second to think about another analogous technology problem that is better understood: scaling databases. From the mid-1980s, when relational databases started taking off, through the early 2000s the way companies thought of scaling their database was by buying bigger hardware. The game was: buy the biggest database server you could afford, start filling it with data, and then hope a newer, bigger server you could afford was released before you ran out of room. Hardware companies responded with more and more exotic, database-specific hardware.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/10/IBM-z13-Mainframe-1.png" alt="" loading="lazy"><br>
-		<small>Meet the IBM z13 mainframe (source: IBM)</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37mOkqUk3hRkHBk6ftT82w/9cb5bf77f330a5210a57e80d21551937/IBM-z13-Mainframe-1.png" alt="" class="kg-image" width="640" height="724" loading="lazy">
+
+	</figure>
+	<p>Meet the IBM z13 mainframe (source: IBM)</p>
 	<p>At some point, the bounds of a box couldn't contain all the data some organizations wanted to store. Google is a famous example. Back when the company was a startup, they didn't have the resources to purchase the largest database servers. Nor, even if they did, could the largest servers store everything they wanted to index — which was, literally, everything.</p>
 	<p>So, rather than going the traditional route, Google wrote software that allowed many cheap, commodity servers to work together as if they were one large database. Over time, as Google developed more services, the software became efficient at distributing load across all the machines in Google's network to maximize utilization of network, compute, and storage. And, as Google's needs grew, they just added more commodity servers — allowing them to linearly scale resources to meet their needs.</p>
-	<h3 id="legacydnsandddosmitigation">Legacy DNS and DDoS Mitigation</h3>
+	<h3>Legacy DNS and DDoS Mitigation</h3>
 	<p>Compare this with the way legacy DNS and DDoS mitigation services mitigate attacks. Traditionally, the way to stop an attack was to buy or build a big box and use it to filter incoming traffic. If you were to dig into the technical details of most legacy DDoS mitigation service vendors you'd find hardware from companies like Cisco, Arbor Networks, and Radware clustered together into so-called "scrubbing centers."</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/10/1280px-WWTP_Antwerpen-Zuid.jpg" alt="" loading="lazy"><br>
-		<small><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> sewage treatment <a href="https://en.wikipedia.org/wiki/Wastewater_treatment#/media/File:WWTP_Antwerpen-Zuid.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Annabel">Annabel</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ze9dBcN6b89VeM2HRFy16/6e83f34cbcb55a966053db93c394805a/1280px-WWTP_Antwerpen-Zuid.jpg" alt="" class="kg-image" width="800" height="594" loading="lazy">
+
+	</figure>
+	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> sewage treatment <a href="https://en.wikipedia.org/wiki/Wastewater_treatment#/media/File:WWTP_Antwerpen-Zuid.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Annabel">Annabel</a></p>
 	<p>Just like in the old database world, there were tricks to get these behemoth mitigation boxes to (sort of) work together, but they were kludgy. Often the physical limits of the number of packets that a single box could absorb became the effective limit on the total volume that could be mitigated by a service provider. And, in very large DDoS attacks, much of the attack traffic will never reach the scrubbing center because, with only a few locations, upstream ISPs become the bottleneck.</p>
 	<p>The expense of the equipment meant that it is not cost effective to distribute scrubbing hardware broadly. If you were a DNS provider, how often would you really get attacked? How could you justify investing in expensive mitigation hardware in every one of your data centers? Even if you were a legacy DDoS vendor, typically your service was only provisioned when a customer came under attack so it never made sense to have capacity much beyond a certain margin over the largest attack you'd previously seen. It seemed rational that any investment beyond that was a waste, but that conclusion is proving ultimately fatal to the traditional model.</p>
-	<h3 id="thefuturedoesntcomeinabox">The Future Doesn't Come in a Box</h3>
+	<h3>The Future Doesn't Come in a Box</h3>
 	<p>From the beginning at Cloudflare, we saw our infrastructure much more like how Google saw their database. In our early days, the traditional DDoS mitigation hardware vendors tried to pitch us to use their technology. We even considered building mega boxes ourselves and using them just to scrub traffic. It seemed like a fascinating technical challenge, but we realized that it would never be a scalable model.</p>
 	<p>Instead, we started with a very simple architecture. Cloudflare's first racks had only three components: router, switch, server. Today we’ve made them even simpler, often dropping the router entirely and using switches that can also handle enough of the routing table to route packets over the geographic region the data center serves.</p>
 	<p>Rather than using load balancers or dedicated mitigation hardware, which could become bottlenecks in an attack, we wrote software that uses BGP, the fundamental routing protocol of the Internet, to <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">distribute load geographically and also within each data center in our network</a>. Critical to our model: every server in every rack is able to answer every type of request. Our software dynamically allocates load based on what is needed for a particular customer at a particular time. That means that we automatically spread load across literally tens of thousands of servers during large attacks.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/10/Graphen.jpg" alt="" loading="lazy"><br>
-		<small>Graphene: a simple architecture that’s 100 times stronger than the best steel (credit: <a href="https://commons.wikimedia.org/wiki/File:Graphen.jpg">Wikipedia</a>)</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/372zDV5K3g5yUvtfcSmrPv/8cc9d39de52a11ea9627e696b14528b6/Graphen.jpg" alt="" class="kg-image" width="1280" height="1024" loading="lazy">
+
+	</figure>
+	<p>Graphene: a simple architecture that’s 100 times stronger than the best steel (credit: <a href="https://commons.wikimedia.org/wiki/File:Graphen.jpg">Wikipedia</a>)</p>
 	<p>It has also meant that we can cost-effectively continue to invest in our network. If Frankfurt needs 10 percent more capacity, we can ship it 10 percent more servers rather than having to make the step-function decision of whether to buy or build another Colossus Mega Scrubber™ box.</p>
 	<p>Since every core in every server in every data center can help mitigate attacks, it means that with each new data center we bring online we get better and better at stopping attacks nearer the source. In other words, the solution to a massively distributed botnet is a <a href="https://www.cloudflare.com/network">massively distributed network</a>. This is actually how the Internet was meant to work: distributed strength, not focused brawn within a few scrubbing locations.</p>
-	<h3 id="howwemadeddosmitigationessentiallyfree">How We Made DDoS Mitigation Essentially Free</h3>
+	<h3>How We Made DDoS Mitigation Essentially Free</h3>
 	<p>The efficient use of resources isn't only with capital expenditures but also with operating expenditures. Because we use the same equipment and networks to provide all the functions of Cloudflare, we rarely have any additional bandwidth costs associated with stopping an attack. Bear with me for a second, because, to understand this, you need to understand a bit about how we buy bandwidth.</p>
 	<p>We pay for bandwidth from transit providers on an aggregated basis billed monthly at the 95th percentile of the greater of ingress vs. egress. Ingress is just network speak for traffic being sent into our network. Egress is traffic being sent out from our network.</p>
 	<p>In addition to being a DDoS mitigation service, Cloudflare also offers other functions including caching. The nature of a cache is that you should always have more traffic going out from your cache than coming in. In our case, during normal circumstances, we have many times more egress (traffic out) than ingress (traffic in).</p>
 	<p>Large DDoS attacks drive up our ingress but don't affect our egress. However, even in a <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">very large attack</a>, it is extremely rare that that ingress exceeds egress. Because we only pay for the greater of ingress vs. egress, and because egress is always much higher than ingress, we effectively have an enormous amount of zero-cost bandwidth with which to soak up attacks.</p>
 	<p>As use of our services increases, the amount of capacity to stop attacks increases proportionately. People wonder how we can provide DDoS mitigation at a fixed fee regardless of the size of the attack; the answer is because attacks don't increase the biggest of our unit costs. And, while legacy providers have stated that their offering pro bono DDoS mitigation would cost them millions, we’re able to protect politically and artistically important sites against huge attacks for free through <a href="https://www.cloudflare.com/galileo">Project Galileo</a> without it breaking the bank.</p>
-	<h3 id="winningthearmsrace">Winning the Arms Race</h3>
+	<h3>Winning the Arms Race</h3>
 	<p>Cloudflare is the only DNS provider that was designed, from the beginning, to mitigate large scale DDoS attacks. Just as DDoS attacks are by their very nature distributed, Cloudflare’s DDoS mitigation system is distributed across our massive global network.</p>
 	<p>There is no doubt that we are in an arms race with attackers. However, we are well positioned technically and economically to win that race. Against most legacy providers, attackers have an advantage: providers' costs are high because they have to buy expensive boxes and bandwidth, while attackers' costs are low because they use hacked devices. That’s why our secret sauce is the software that spreads our load across our massively distributed network of commodity hardware. By keeping our costs low we are able to continue to grow our capacity efficiently and stay ahead of attacks.</p>
 	<p>Today, we believe Cloudflare has more capacity to stop attacks than the publicly announced capacity of all our competitors — combined. And we continue to expand, opening nearly a new data center a week. The good news for our customers is that we’ve designed Cloudflare in such a way that we can continue to cost effectively scale our capacity as attacks grow. There are limits to any service, and we remain ever vigilant for new attacks, but we are confident that our architecture is ultimately the right way to stop whatever comes next.</p>
 	<p>PS - Want to work at our scale on some of the hardest problems the Internet faces? We’re <a href="https://www.cloudflare.com/join-our-team">hiring</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,101 +1,311 @@
 <div class="mb2 gray5">15 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/Magic-Network-Monitoring.png" class="kg-image" alt="" loading="lazy" width="2401" height="1351"></figure>
-	<p>The practice of cheating on exams (or at least attempting to) is presumably as old as the concept of exams itself, especially when the results of the exam can have significant consequences for one’s academic future or career. As access to the Internet became more ubiquitous with the growth of mobile connectivity, and communication easier with an assortment of social media and messaging apps, a new avenue for cheating on exams emerged, potentially facilitating the sharing of test materials or answers. <a href="https://www.theguardian.com/technology/2016/may/18/iraq-shuts-down-internet-to-stop-pupils-cheating-in-exams">Over the last decade</a>, some governments have reacted to this perceived risk by taking aggressive action to prevent cheating, ranging from targeted DNS-based blocking/filtering to multi-hour nationwide shutdowns across multi-week exam periods. </p>
-	<p>Syria and Iraq are well-known practitioners of the latter approach, and we have covered past exam-related Internet shutdowns in Syria (<a href="https://blog.cloudflare.com/syria-exam-related-internet-shutdowns">2021</a>, <a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a>, <a href="https://blog.cloudflare.com/q2-2023-internet-disruption-summary">2023</a>) and Iraq (<a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a>, <a href="https://blog.cloudflare.com/exam-internet-shutdowns-iraq-algeria">2023</a>) here on the Cloudflare blog. It is now mid-June 2024, and exams in both countries took place over the last several weeks, and with those exams, regular nationwide Internet shutdowns. In addition, Baccalaureate exams also took place in Algeria, and we have written about related Internet disruptions there in the past (<a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a>, <a href="https://blog.cloudflare.com/exam-internet-shutdowns-iraq-algeria">2023</a>). However, in contrast to the single daily shutdowns in Syria and Iraq, the Algerian government opted instead for two multi-hour disruptions each day – one in the morning, one in the afternoon – and appears to be pursuing a content blocking strategy, rather than a full nationwide shutdown. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/F2HeWDG5hL7dR2ymHqC5x/370b31cea39378934d2ef006ebef8f0e/Magic-Network-Monitoring.png" alt="" class="kg-image" width="2401" height="1351" loading="lazy">
+
+	</figure>
+	<p>The practice of cheating on exams (or at least attempting to) is presumably as old as the concept of exams itself, especially when the results of the exam can have significant consequences for one’s academic future or career. As access to the Internet became more ubiquitous with the growth of mobile connectivity, and communication easier with an assortment of social media and messaging apps, a new avenue for cheating on exams emerged, potentially facilitating the sharing of test materials or answers. <a href="https://www.theguardian.com/technology/2016/may/18/iraq-shuts-down-internet-to-stop-pupils-cheating-in-exams">Over the last decade</a>, some governments have reacted to this perceived risk by taking aggressive action to prevent cheating, ranging from targeted DNS-based blocking/filtering to multi-hour nationwide shutdowns across multi-week exam periods.</p>
+	<p>Syria and Iraq are well-known practitioners of the latter approach, and we have covered past exam-related Internet shutdowns in Syria (<a href="https://blog.cloudflare.com/syria-exam-related-internet-shutdowns">2021</a>, <a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a>, <a href="https://blog.cloudflare.com/q2-2023-internet-disruption-summary">2023</a>) and Iraq (<a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a>, <a href="https://blog.cloudflare.com/exam-internet-shutdowns-iraq-algeria">2023</a>) here on the Cloudflare blog. It is now mid-June 2024, and exams in both countries took place over the last several weeks, and with those exams, regular nationwide Internet shutdowns. In addition, Baccalaureate exams also took place in Algeria, and we have written about related Internet disruptions there in the past (<a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a>, <a href="https://blog.cloudflare.com/exam-internet-shutdowns-iraq-algeria">2023</a>). However, in contrast to the single daily shutdowns in Syria and Iraq, the Algerian government opted instead for two multi-hour disruptions each day – one in the morning, one in the afternoon – and appears to be pursuing a content blocking strategy, rather than a full nationwide shutdown.</p>
 	<p>As we have done in past year’s posts, we will examine the impact that these shutdowns have on Internet traffic, but also analyze routing information and traffic from other Cloudflare services in an effort to better understand how these shutdowns are being implemented.</p>
-	<h3 id="syria">Syria</h3>
+	<h3>Syria</h3>
 	<p>The Syrian Telecom Company, to their credit, publishes an exam schedule on social media, with the image below <a href="https://www.facebook.com/photo/?fbid=827972736029921&amp;set=a.449047400589125">published to their Facebook page</a>. The English version was created by applying Google Translate to the image. The schedule shows the date &amp; time of each Internet shutdown (“disconnection”), in addition to the subject(s) of that day’s exam(s). In 2024, exams started on May 26, and went through June 13.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/Screenshot-2024-06-20-at-1.00.58-PM.png" class="kg-image" alt="" loading="lazy" width="1209" height="857"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9lgp9NIpBSo2RWII1nUmh/cc55e54c3baa36e2454c8b9f851aa33d/Screenshot-2024-06-20-at-1.00.58-PM.png" alt="" class="kg-image" width="1209" height="857" loading="lazy">
+
+	</figure>
 	<p>In Syria, <a href="https://radar.cloudflare.com/as29256">AS29256 (Syrian Telecom)</a> is effectively the Internet, as shown <a href="https://radar.cloudflare.com/routing/as29256">in the table below</a>. While there are a few other <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">autonomous systems</a> (ASNs/ASes) registered in Syria, there are only two that currently announce IP address space to the public Internet. As such, the trends seen at a country level for Syria reflect those seen for AS29256, and this is clearly evident in the traffic graphs below.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/unnamed--1--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="679"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XEcIEFQPHIKevCJZkVbaM/83670f4634722463b0d853045aa6f8af/unnamed--1--2.png" alt="" class="kg-image" width="1600" height="679" loading="lazy">
+
+	</figure>
 	<p>Nationwide Internet shutdowns in Syria began on May 26, taking place for varying multi-hour periods from Sunday to Thursday for three consecutive weeks. The graphs below show Internet traffic from the country, as well as AS29256, dropping to zero during the scheduled shutdowns.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image42.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image5-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uW4E8cmeiDolFehpOFXaE/d1a4875bc0c0df009ba170f8c8d4abbe/image42.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FjHhDRQjGou5kNsIZNzQp/615dac96c4a275c0f7c6a1184d3ff22e/image5-3.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>In addition, graphs from the Cloudflare Radar <a href="https://radar.cloudflare.com/routing">Routing</a> pages for <a href="https://radar.cloudflare.com/routing/sy">Syria</a> and <a href="https://radar.cloudflare.com/routing/as29256">AS29256</a> show the number of IPv4 and IPv6 prefixes being announced country-wide and by AS29256 dropping to at or near zero during each shutdown. This ultimately means that there is no Internet path back to systems (IP addresses) connected to Syrian Telecom. Below, we explore why this is important and problematic.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image4-4.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image47.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image15-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image30.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xFTZkPlwMrvEhmn5Tnz42/0501dbe439e94a98ce47a87ab1e08390/image4-4.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NhFb2khiuAhEJ9Fo8QN19/7a40ce167a8aaef0a46558137db94589/image47.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QesstGGtNnaKfBMpRO6GL/c48c21963bcb372a4cbfa1c1f52c8d4a/image15-1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yXJYfsxpfK1mwQs5a2ZLw/616f76bc02b810abfec7a7782f3c02c6/image30.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>As has been <a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">observed in the past</a>, the shutdowns in Syria are <a href="https://x.com/DougMadory/status/1138064496008806400">asymmetrical</a>. That is, traffic can exit the country (via AS29256), but there are no paths for responses to return. The impact of this approach is clearly evident in traffic to <a href="https://one.one.one.one/dns">Cloudflare’s 1.1.1.1 DNS Resolver</a>. We continue to see traffic to the resolver when the shutdowns take place, and in fact, we see the traffic spike during the shutdowns, as the graph below shows.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image49.png" class="kg-image" alt="" loading="lazy" width="910" height="360"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LSn47S6TsjvoLuDx5fKPU/5795f823ce7cbc440ff22a153cc58b53/image49.png" alt="" class="kg-image" width="910" height="360" loading="lazy">
+
+	</figure>
 	<p>If we dig into traffic to 1.1.1.1 by protocol, we can see that it is driven by requests over <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a> port 53, the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?page=2">standard port</a> used for DNS requests over UDP and TCP. (Given the request pattern, that also appears to be the primary way that we see traffic to the resolver from Syria.)</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image12-1.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CDPlKnjVUF6ViD75S2Zwa/2ca88741443cefbe36658df7bf2a015d/image12-1.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
 	<p>If we remove the UDP line from the graph, we see that request volume for DNS over TCP port 53, as well as <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https">DNS over HTTPS (DoH)</a> and <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls">DNS over TLS (DoT)</a>, all drops to zero during the shutdowns.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image1-18.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vWtoXnCHPogP4HfSjm2G5/97189376acf6b5027e13e0b32ac21a18/image1-18.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
 	<p>Similarly, we can clearly see the shutdowns in HTTP(S) request-based traffic graphs as well, since HTTP(S) is also a TCP-based protocol.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image35.png" class="kg-image" alt="" loading="lazy" width="1008" height="360"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7phbRNoQ9Kg4L1n5F7chjg/36c1965e2feee564715bdda4e4b25a39/image35.png" alt="" class="kg-image" width="1008" height="360" loading="lazy">
+
+	</figure>
 	<p>Why do we see this impact? With DNS over UDP, the client simply makes a request to the resolver – no multi-step handshake is involved, as with TCP. So in this case, 1.1.1.1 is receiving these requests, but as shown above, there’s no path for the response to reach the client. Because it hasn’t received a response, the client retries the request, and this flood of retries is manifested as the spike seen in the graphs above.</p>
 	<p>However, as we see above, request volume for DNS over TCP, as well as DoH, DoT, and HTTP(S) (which all use TCP), falls to zero during the shutdowns. The lack of a path back to the client means that the <a href="https://www.geeksforgeeks.org/tcp-3-way-handshake-process">TCP 3-way handshake</a> can’t complete, and thus we don’t see DNS requests over these protocols.</p>
 	<p>In looking at 1.1.1.1 Resolver request volume from Syria for popular social media and messaging applications, we can see traffic for facebook.com most closely matches the spikes shown above. Removing facebook.com from the graph, we can also see similar, though more limited, increases for domains used by popular messaging applications WhatsApp, Signal, and Telegram. Facebook and WhatsApp are <a href="https://medialandscapes.org/country/syria/media/social-networks">reportedly</a> the most popular social media and messaging applications in Syria.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image18.png" class="kg-image" alt="" loading="lazy" width="920" height="360"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image33.png" class="kg-image" alt="" loading="lazy" width="920" height="360"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nmo0Zbae88h2VZhbRpd8f/0d2f1dfd8d065be30f28d48ff7c08963/image18.png" alt="" class="kg-image" width="920" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gKoz2uKoz2kVIchd0C2vV/1029656afd327184f9604adb3b188db8/image33.png" alt="" class="kg-image" width="920" height="360" loading="lazy">
+
+	</figure>
 	<p>Although we have focused on the analysis of traffic to Cloudflare’s DNS resolver, and the patterns seen within that traffic, it is also worth highlighting an interesting pattern observed in traffic to Cloudflare’s <a href="https://www.cloudflare.com/application-services/products/dns">Authoritative DNS</a> platform. (<a href="https://www.cloudflare.com/en-gb/learning/dns/dns-server-types">DNS resolvers</a> act as a middleman between clients, such as a laptop or phone, and an authoritative DNS server. <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-server-types">Authoritative DNS servers</a> contain information specific to the domain names they serve, including IP addresses and other types of records.)</p>
 	<p>The graph below shows bits/second traffic from Syria for Cloudflare’s <a href="https://www.cloudflare.com/application-services/products/dns">authoritative DNS service</a> on June 13. (Similar patterns were observed during the other days when shutdowns occurred, but data volume limits the ability to create a graph showing an extended period of time.) In this graph, we can see that at the start of the shutdown (03:00 UTC), traffic rises sharply, effectively plateaus for the duration of the shutdown, and then returns to normal levels. We believe that the traffic pattern illustrated here could be the result of some local resolvers in Syria having the IP addresses for our authoritative DNS servers cached, and are making requests to them. The increased traffic level could be because they are retrying their queries after not receiving responses, but in a less aggressive fashion than the client applications driving the resolver traffic spikes shown above.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/unnamed-2.png" class="kg-image" alt="" loading="lazy" width="1600" height="354"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fOqZ4ORPIY4znUD1HRb70/29e42f981401f0e168a16f0e7c3f9390/unnamed-2.png" alt="" class="kg-image" width="1600" height="354" loading="lazy">
+
+	</figure>
 	<p>In summary, Syria appears to be implementing their Internet shutdowns not through filtering, but rather by simply not announcing their IP address space for the duration of the shutdown, thereby preventing any responses from returning to the originating requestor, whether client application, web browser, or local DNS resolver.</p>
-	<h3 id="iraq">Iraq</h3>
-	<p>On May 19, the Iraqi Ministry of Communication <a href="https://moc.gov.iq/?article=767">posted an update</a> that stated (translated) <em>“The Ministry of Communications would like to note that the Internet service will be cut off for two hours during the general exams for intermediate studies, from six in the morning until eight in the morning, based on higher directives and at the request of the Ministry of Education.”</em> The post came nearly a year after the Iraqi Ministry of Communication <a href="https://www.kurdistan24.net/en/story/31453-Iraq%E2%80%99s-communication-ministry-refuses-to-enforce-internet-blackout-for-final-exams">refused a request from the Ministry of Education to shut down the Internet</a> during the baccalaureate exams as part of efforts to prevent cheating. On May 20, the Iraqi Ministry of Education <a href="https://www.facebook.com/Iraq.Ministry.of.Education/posts/pfbid07ny6LazyvGJED37iCmRkk9h9rNPWeEPtANVu8vaL8gknoaBmwgmVZX9a7LkSbhy2l">posted the schedule</a> for the upcoming set of exams to its Facebook page.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/Screenshot-2024-06-21-at-11.07.18.png" class="kg-image" alt="" loading="lazy" width="2048" height="1004"></figure>
+	<h3>Iraq</h3>
+	<p>On May 19, the Iraqi Ministry of Communication <a href="https://moc.gov.iq/?article=767">posted an update</a> that stated (translated) <i>“The Ministry of Communications would like to note that the Internet service will be cut off for two hours during the general exams for intermediate studies, from six in the morning until eight in the morning, based on higher directives and at the request of the Ministry of Education.”</i> The post came nearly a year after the Iraqi Ministry of Communication <a href="https://www.kurdistan24.net/en/story/31453-Iraq%E2%80%99s-communication-ministry-refuses-to-enforce-internet-blackout-for-final-exams">refused a request from the Ministry of Education to shut down the Internet</a> during the baccalaureate exams as part of efforts to prevent cheating. On May 20, the Iraqi Ministry of Education <a href="https://www.facebook.com/Iraq.Ministry.of.Education/posts/pfbid07ny6LazyvGJED37iCmRkk9h9rNPWeEPtANVu8vaL8gknoaBmwgmVZX9a7LkSbhy2l">posted the schedule</a> for the upcoming set of exams to its Facebook page.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Wb00a9bDq0VYe1zhqFHAR/8d4b1deda35aacab2c3785596d5c5764/Screenshot-2024-06-21-at-11.07.18.png" alt="" class="kg-image" width="2000" height="980" loading="lazy">
+
+	</figure>
 	<p>Iraq has a much richer network service provider environment than Syria does, with <a href="https://radar.cloudflare.com/routing/iq#a-ses-registered-in-iraq">over 150</a> <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system">autonomous systems (ASNs)</a> registered in the country and announcing IP address space, compared to just <a href="https://radar.cloudflare.com/routing/sy#a-ses-registered-in-syria">two</a> ASNs (both Syrian Telecom) in Syria announcing IP address space. Although traffic in Iraq is generally concentrated among the larger providers, shutdowns are rarely “complete” at a country level because not every autonomous system (network provider) in the country implements a shutdown. (This is due in part to the autonomous Kurdistan region in the north, which often implements similar shutdowns on their own schedule. Network providers in this region are included in Iraq’s country-level graphs.)</p>
 	<p>We can see this in a Cloudflare Radar traffic graph that shows the shutdowns at a country level, where traffic is dropping by around 87% during each multi-hour shutdown. In addition to the five networks also shown here (<a href="https://radar.cloudflare.com/as203214">AS203214 (HulumTele)</a>, <a href="https://radar.cloudflare.com/as199739">AS199739 (Earthlink)</a>, <a href="https://radar.cloudflare.com/as58322">AS58322 (Halasat)</a>, <a href="https://radar.cloudflare.com/as51684">AS51684 (Asiacell)</a>, and <a href="https://radar.cloudflare.com/as59588">AS59588 (Zainas)</a>), further analysis finds more than 30 where we observed a complete loss of traffic during the shutdowns, with a number of them downstream of these providers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image45.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image28.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image38.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image8-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image22.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image44.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YkIihynKuDtI63g32YJ0u/a9fe3fa58c0d152ef8ee088eff46e56d/image45.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6W7vWmG8ivneqIJavrTLCU/e62f71bc2ee8d950258c359cb5b432d1/image28.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ezNpiALAh32m1LyOng14j/0a01db3203c19a810634e0d6b1d2384e/image38.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bRSpefwBNbcdvMQ2kOkO1/7c74086048db1c222b2dfd16effb5294/image8-3.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WqSWExs5iBdfDlGTqjXlK/a0960579527b1307995685b2faf13f22/image22.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iUNjwfTlp0hz8lqgEnaAV/2900c325b9c38db070bf590dd0c6383a/image44.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>In contrast to Syria, the changes to announced IP address space during the shutdowns are much less severe in Iraq. Several of the shutdowns are correlated with a drop of ~20-25% in announced IPv4 address space, while a few others saw a drop closer to just 2%.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image51.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/kAYLZYHK3wnfSh5KNfc33/9266d14bc748f195882f5a87521f4df4/image51.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>At an ASN level, the changes in announced address space were mixed – <a href="https://radar.cloudflare.com/routing/as59588">AS59588 (Zainas)</a>, <a href="https://radar.cloudflare.com/routing/as199739">AS199739 (Earthlink)</a>, and <a href="https://radar.cloudflare.com/routing/as51684">AS51684 (Asiacell)</a> experienced a significant loss, while <a href="https://radar.cloudflare.com/routing/as203214">AS203214 (HulumTele)</a> and <a href="https://radar.cloudflare.com/routing/as58322">AS58322 (Halasat)</a> experienced little to no change.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image13-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image50.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image39.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image20.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image24.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<p>Similar to Syria, we can also look at 1.1.1.1 resolver traffic data to better understand how the shutdowns are being implemented. The country-level graphs below suggest that UDP traffic patterns are not visibly changing, suggesting that responses from the resolver are, in fact, getting back to the clients. However, this likely isn’t the case, and such a conclusion is at least in part an artifact of the graph’s time frame and hourly granularity, as well as the inclusion of resolver traffic from Kurdish network providers (ASNs). The shutdowns are more clearly evident in the DNS-over-TCP and DNS-over-HTTPS graphs below, as well as in the graph for HTTP(S) request traffic (both mobile &amp; desktop), which is also TCP-based. In these graphs, the troughs on days that shutdowns occurred generally dip lower than those on the days that the Internet remained available. </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image41.png" class="kg-image" alt="" loading="lazy" width="910" height="360"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image3-8.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image27.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image32.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image16-1.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image43.png" class="kg-image" alt="" loading="lazy" width="1008" height="360"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HoWb2U5b8uBf9aZX5PJAb/0f42a9c1674e6c99217107c587cc3d4d/image13-3.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jJpJYqXgDGeb8So4bMWee/5606137ee58016d715bf3fbb4485ee4c/image50.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sVOgW0xr4mwXUU3id092u/190650afa67388517877f4cb850adbd9/image39.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5H64bnOria4mzCtW7VEs40/c6e3648f8a8e46dc8cd8dc749f1df7cb/image20.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6k1oSwvj9pwTyHD9OMesEV/b61c5cc3abacf3fb021da9987f280137/image24.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Similar to Syria, we can also look at 1.1.1.1 resolver traffic data to better understand how the shutdowns are being implemented. The country-level graphs below suggest that UDP traffic patterns are not visibly changing, suggesting that responses from the resolver are, in fact, getting back to the clients. However, this likely isn’t the case, and such a conclusion is at least in part an artifact of the graph’s time frame and hourly granularity, as well as the inclusion of resolver traffic from Kurdish network providers (ASNs). The shutdowns are more clearly evident in the DNS-over-TCP and DNS-over-HTTPS graphs below, as well as in the graph for HTTP(S) request traffic (both mobile &amp; desktop), which is also TCP-based. In these graphs, the troughs on days that shutdowns occurred generally dip lower than those on the days that the Internet remained available.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/o1NrRFgAMr5FLKa2j4Ktb/f362246bd61cb6c56378ac432a204e06/image41.png" alt="" class="kg-image" width="910" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pD02P65uRmaiL73oLzAm9/d4212ccf02633400c7bf92df9993da77/image3-8.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AscDvWNoxmwWeTGcKyDds/a2bec0006f8ffccbc540417c3efb3675/image27.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51pfAyJ519aXX0w6KYCm5I/e79c6c3eeddb00d26de09f9bb1af1f20/image32.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XlAjHrSgzngJulJRIP36J/3674204ba3b101cfebb49c0de66649b7/image16-1.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zO7k4idsNJRtohBPYgXhD/e10006385762bb7ec1ab5c12f0ee0ca0/image43.png" alt="" class="kg-image" width="1008" height="360" loading="lazy">
+
+	</figure>
 	<p>In looking at authoritative DNS traffic from Iraq during a shutdown (for June 13 as an example day, as above), we see evidence of a decline in traffic during the time the shutdown occurs.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image34.png" class="kg-image" alt="" loading="lazy" width="1828" height="430"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LQtyB4CbJBlUjw2PrIBjI/e4341e361cd14cffc333f1246ad63a85/image34.png" alt="" class="kg-image" width="1828" height="430" loading="lazy">
+
+	</figure>
 	<p>The decline in authoritative DNS traffic is more evident at an ASN level, such as in the graph below for AS203214 (Hulum), effectively confirming that UDP traffic is not getting through here either.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image48.png" class="kg-image" alt="" loading="lazy" width="1822" height="426"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14fZ29LuL3wsJpTnTVbeku/026a5d4caff0feda2f6e1440f2d74f98/image48.png" alt="" class="kg-image" width="1822" height="426" loading="lazy">
+
+	</figure>
 	<p>Considering the traffic, 1.1.1.1 Resolver, and authoritative DNS observations reviewed here, it suggests that the Internet shutdowns taking place in Iraq are more complex than Syria’s, as it appears that both UDP and TCP traffic are unable to egress from impacted network providers. As not all impacted network providers are showing a complete loss of announced IP address space during the shutdowns, Iraq is taking a different approach to disrupting Internet connectivity. Although analysis of our data doesn’t provide a definitive conclusion, there are several likely options, and network providers in the country may be combining several. These options revolve around:</p>
 	<ol>
-		<li><strong>IP:</strong> Block packets from reaching IP addresses. This may be done by withdrawing prefix announcements from the routing table (a brute force approach) or by blocking access to specific IP addresses, such as those associated with a specific application or service (a more surgical approach).</li>
-		<li><strong>Connection:</strong> Block connections based on <a href="https://www.cloudflare.com/learning/ssl/what-is-sni">SNI</a>/HTTP headers, or other application data. If a network or on-path device is able to observe the server name (or other relevant headers/data), then the connection can be terminated.</li>
-		<li><strong>DNS:</strong> Operators of private or ‘internal’ DNS resolvers, offered by ISPs and enterprise environments for use by their own users, can apply content restrictions, blocking the resolution of hostnames associated with websites and other applications.</li>
+		<li>
+			<p><b>IP:</b> Block packets from reaching IP addresses. This may be done by withdrawing prefix announcements from the routing table (a brute force approach) or by blocking access to specific IP addresses, such as those associated with a specific application or service (a more surgical approach).</p>
+		</li>
+		<li>
+			<p><b>Connection:</b> Block connections based on <a href="https://www.cloudflare.com/learning/ssl/what-is-sni">SNI</a>/HTTP headers, or other application data. If a network or on-path device is able to observe the server name (or other relevant headers/data), then the connection can be terminated.</p>
+		</li>
+		<li>
+			<p><b>DNS:</b> Operators of private or ‘internal’ DNS resolvers, offered by ISPs and enterprise environments for use by their own users, can apply content restrictions, blocking the resolution of hostnames associated with websites and other applications.</p>
+		</li>
 	</ol>
 	<p>The consequences of these options are covered in more detail <a href="https://blog.cloudflare.com/consequences-of-ip-blocking">in a blog post</a>. In addition, applying them at common network chokepoints, such as <a href="https://iraqixp.com">AS212330 (IRAQIXP)</a> or <a href="https://radar.cloudflare.com/routing/as208293">AS208293</a> (<a href="https://alsalam.gov.iq">AlSalam State Company</a>, associated with the Iraqi Ministry of Communications), can disrupt connectivity at multiple downstream ISPs, without those providers necessarily having to take action themselves.</p>
-	<h3 id="algeria">Algeria</h3>
-	<p>As we noted in blog posts in <a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a> and <a href="https://blog.cloudflare.com/exam-internet-shutdowns-iraq-algeria">2023</a>, Algeria has a history of disrupting Internet connectivity during Baccalaureate exams. This has been taking place since <a href="https://www.bbc.com/news/world-africa-44557028">2018</a>, following widespread cheating in 2016 that saw questions leaked online both before and during tests. On March 13, the Algerian Ministry of Education <a href="https://www.aps.dz/en/health-science-technology/51394-ministry-of-education-announces-dates-for-middle-school-and-high-school-final-exams">announced</a> that the Baccalaureate exams would be held June 9-13. As expected, Internet disruptions were observed both country-wide and at a network level. Similar to previous years, two disruptions were observed each day. The first one began at 08:00 local time (07:00 UTC), and except for June 9, lasted three hours, ending at 11:00 local time (10:00 UTC). (On June 9, it lasted until 13:00 local time (12:00 UTC).) The second one began between 14:00-14:30 local time (13:00-13:30 UTC), and lasted until 16:00-17:00 local time (15:00-16:00 UTC) – the end time varied by day. </p>
+	<h3>Algeria</h3>
+	<p>As we noted in blog posts in <a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown">2022</a> and <a href="https://blog.cloudflare.com/exam-internet-shutdowns-iraq-algeria">2023</a>, Algeria has a history of disrupting Internet connectivity during Baccalaureate exams. This has been taking place since <a href="https://www.bbc.com/news/world-africa-44557028">2018</a>, following widespread cheating in 2016 that saw questions leaked online both before and during tests. On March 13, the Algerian Ministry of Education <a href="https://www.aps.dz/en/health-science-technology/51394-ministry-of-education-announces-dates-for-middle-school-and-high-school-final-exams">announced</a> that the Baccalaureate exams would be held June 9-13. As expected, Internet disruptions were observed both country-wide and at a network level. Similar to previous years, two disruptions were observed each day. The first one began at 08:00 local time (07:00 UTC), and except for June 9, lasted three hours, ending at 11:00 local time (10:00 UTC). (On June 9, it lasted until 13:00 local time (12:00 UTC).) The second one began between 14:00-14:30 local time (13:00-13:30 UTC), and lasted until 16:00-17:00 local time (15:00-16:00 UTC) – the end time varied by day.</p>
 	<p>As seen in the graphs below, the impact to traffic was fairly nominal, suggesting that wide scale Internet shutdowns similar to those seen in Syria were not being implemented. While this is in line with 2023’s <a href="https://x.com/TheAlgiersPost/status/1535917324485656576">pronouncement</a> by the Minister of Education that there would be no Internet shutdown on exam days, <a href="https://x.com/search?f=live&amp;q=algeria+exam+until%3A2024-06-13+since%3A2024-06-09&amp;src=typed_query">a number of posts on X</a> complained of broader cuts to Internet connectivity.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image14-2.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image17.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image2-6.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image37.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b4bFM6GwqaslpXJNGxCSu/4972011200d9fb4208c0f992dbde88e2/image14-2.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5I0HpVYB36DNHhycNbRUjp/532e4ac6f56018ac431834d6af4346b9/image17.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pOO1TV09EyRfv5hRlV3sX/5196b203fa344d949af1aaa78935676b/image25.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1brvTsdkG8vlUDB7CNQ6vL/c5021809fd9631def4fc792790d0298a/image2-6.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mOPVdahSJQ0n6gzs7cGSL/933359aeafe2a349a98f743de8afb7f5/image37.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Similar to the analysis above of the shutdowns in Syria and Iraq, we can also review changes to announced IP address space to better understand how connectivity was being disrupted. In this case, as the graphs below show, no meaningful changes to announced IPv4 address space were observed during the days the Baccalaureate exams were given. As such, the observed drops in traffic were not caused by routing changes.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image52.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image21.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image6-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image40.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXdmsCY4R4OwP5lh6E6PgQdXYDxwUTWl8o5A-sRdNCSBmRNe0Zq7-OlWczYH8tr8q75P8WLqOsd3Po-03gykFfJDJNgqXcOkX4i3KuVp73q1GW7aLXeTNAzkK7yUZfYW0ENbNcMXmbXgFPB66Z0BmVjqSUd6?key=Chnn7b1CRFwkLMzsbTMB_g" class="kg-image" alt="" loading="lazy" width="2048" height="1152"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7l6qUEMRcrdvShbzdd8y5I/288e5c70669deb9131f6ecf58306d903/image52.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gEPeuP0l9czg2nipM8Jjb/6573269997c6df43acfd0c515043aede/image21.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6m0XeCwN3lYLot6AutTNaS/ebc2aebcb73b28d61d143b341114b324/image6-3.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oiRlajqzZGBY5Io0dbXkj/bbd59ba73287c952ea09fea4044db6ac/image40.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kv6LndNtCYpsJUhUPF8UT/b1f859e08a001dbc544861b86839990b/AD_4nXdmsCY4R4OwP5lh6E6PgQdXYDxwUTWl8o5A-sRdNCSBmRNe0Zq7-OlWczYH8tr8q75P8WLqOsd3Po-03gykFfJDJNgqXcOkX4i3KuVp73q1GW7aLXeTNAzkK7yU" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>In the HTTP(S) request traffic graph below, the twice-daily disruptions are highlighted, with the morning one appearing as a nominal drop in traffic, and the afternoon one causing a more severe decline. (The graph shows request traffic aggregated at a country level, but the graphs for the ASNs listed above also show similar patterns.)</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image19.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7afFEaI4r2fREfV0o54f2/193a7a11186c95f92df0fc17f8338b93/image19.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
 	<p>In addition, similar patterns are observed in 1.1.1.1 resolver traffic at a country and ASN level, but only for DNS over TCP, DNS over TLS, and DNS over HTTPS, all of which leverage TCP. In the graph below showing only resolver traffic over UDP, there’s no clear evidence of disruptions. However, in the graph that shows resolver traffic over HTTPS, TCP, and TLS, a slight perturbation is visible in the morning, as traffic begins to rise for the day, and a sharper decrease is visible in the afternoon, with both disruptions aligning with the twice daily drops in traffic discussed above.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image31.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image7-2.png" class="kg-image" alt="" loading="lazy" width="994" height="360"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ydmjTs8hCqfZ4W969jSSy/766c3e366c48ebca3c231a650df3032c/image31.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qSu9orpg29sE5T2cawABq/f166e4666656409db90529b63a414808/image7-2.png" alt="" class="kg-image" width="994" height="360" loading="lazy">
+
+	</figure>
 	<p>These observations support the conjecture that the Algerian government is likely taking a more nuanced approach to restricting access to content, interfering in some fashion with TCP-based traffic. The conjecture is also supported by an internal tool that helps to understand connection tampering that is based on research co-designed and developed by members of the <a href="https://research.cloudflare.com">Cloudflare Research</a> team. We will be launching insights into TCP connection tampering on Cloudflare Radar later in 2024 and, in the meantime, technical details can be found in the peer-reviewed paper titled <a href="https://research.cloudflare.com/publications/SundaraRaman2023">Global, Passive Detection of Connection Tampering</a>.</p>
-	<p>The graph below, taken from the internal tool, highlights observed TCP connection tampering in connections from Algeria during the week that the Baccalaureate exams took place. While some baseline level of post-ACK and post-PSH tampering is consistently visible, we see significant increases in post-ACK twice a day during the exam period, at the times that align with the shifts in traffic discussed above. Technical descriptions of post-ACK and post-PSH tampering can be found in the <a href="https://developers.cloudflare.com/radar/glossary/#tcp-resets-and-timeouts">Cloudflare Radar glossary</a>, but in short, tampering post-ACK means an established TCP connection to Cloudflare’s server has been abruptly ended by one or more RST packets <em>before</em> the server sees data packets. Although clients do use RSTs, clients are more likely to close connections with a FIN (as specified by the <a href="https://datatracker.ietf.org/doc/html/rfc9293">RFC</a>). The RST method can also be used by middleboxes that &nbsp;(i) sees the data packet, then (ii) drops the data packet, then (iii) sends an RST to the server to force the server to close the connection (and very likely another RST to the client too for the same reason). Tampering post-PSH means that something on the path, like a middlebox, (i) saw something it didn't like on an established connection, then (ii) permitted the data to pass but then, (iii) it sends the RST to force endpoints to close the connection.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image11-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="598"></figure>
-	<p>Looking beyond Cloudflare-sourced data, aggregated test results from the <a href="https://ooni.org">Open Observatory of Network Interference (OONI)</a> also show evidence of anomalous behavior. Using <a href="https://ooni.org/install">OONI Probe</a>, a mobile and desktop app, can probe for potential blocking of websites, instant messaging apps, and censorship circumvention tools. Examining test results from users in Algeria for popular messaging platforms <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=whatsapp">WhatsApp</a>, <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=telegram">Telegram</a>, <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=signal">Signal</a>, and <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=facebook_messenger">Facebook Messenger</a> for the first two weeks of June, we clearly see the appearance of test results marked as “Anomaly” starting on June 9. (OONI defines “Anomaly” results as “<em>Measurements that provided signs of potential blocking</em>”.) OONI <a href="https://ooni.org/nettest/tor">Tor test</a> <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-20&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=tor">results</a> also show a similar “Anomaly” pattern. Anomalous traffic patterns are also visible for <a href="https://transparencyreport.google.com/traffic/overview?hl=en&amp;fraction_traffic=start%3A1717200000000%3Bproduct%3A19%3Bregion%3ADZ%3Bend%3A1718495999999&amp;lu=fraction_traffic">Google Web Search</a>, <a href="https://transparencyreport.google.com/traffic/overview?hl=en&amp;fraction_traffic=start%3A1717200000000%3Bproduct%3A21%3Bregion%3ADZ%3Bend%3A1718495999999&amp;lu=fraction_traffic">YouTube</a>, and <a href="https://transparencyreport.google.com/traffic/overview?hl=en&amp;fraction_traffic=start%3A1717200000000%3Bproduct%3A6%3Bregion%3ADZ%3Bend%3A1718495999999&amp;lu=fraction_traffic">GMail</a>.</p>
+	<p>The graph below, taken from the internal tool, highlights observed TCP connection tampering in connections from Algeria during the week that the Baccalaureate exams took place. While some baseline level of post-ACK and post-PSH tampering is consistently visible, we see significant increases in post-ACK twice a day during the exam period, at the times that align with the shifts in traffic discussed above. Technical descriptions of post-ACK and post-PSH tampering can be found in the <a href="https://developers.cloudflare.com/radar/glossary/#tcp-resets-and-timeouts">Cloudflare Radar glossary</a>, but in short, tampering post-ACK means an established TCP connection to Cloudflare’s server has been abruptly ended by one or more RST packets <i>before</i> the server sees data packets. Although clients do use RSTs, clients are more likely to close connections with a FIN (as specified by the <a href="https://datatracker.ietf.org/doc/html/rfc9293">RFC</a>). The RST method can also be used by middleboxes that &nbsp;(i) sees the data packet, then (ii) drops the data packet, then (iii) sends an RST to the server to force the server to close the connection (and very likely another RST to the client too for the same reason). Tampering post-PSH means that something on the path, like a middlebox, (i) saw something it didn't like on an established connection, then (ii) permitted the data to pass but then, (iii) it sends the RST to force endpoints to close the connection.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75i4amnWWtCkUaMhftCllH/a65e6cdbf958c993f0e78774cb58bbff/image11-1.png" alt="" class="kg-image" width="1999" height="598" loading="lazy">
+
+	</figure>
+	<p>Looking beyond Cloudflare-sourced data, aggregated test results from the <a href="https://ooni.org">Open Observatory of Network Interference (OONI)</a> also show evidence of anomalous behavior. Using <a href="https://ooni.org/install">OONI Probe</a>, a mobile and desktop app, can probe for potential blocking of websites, instant messaging apps, and censorship circumvention tools. Examining test results from users in Algeria for popular messaging platforms <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=whatsapp">WhatsApp</a>, <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=telegram">Telegram</a>, <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=signal">Signal</a>, and <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-15&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=facebook_messenger">Facebook Messenger</a> for the first two weeks of June, we clearly see the appearance of test results marked as “Anomaly” starting on June 9. (OONI defines “Anomaly” results as “<i>Measurements that provided signs of potential blocking</i>”.) OONI <a href="https://ooni.org/nettest/tor">Tor test</a> <a href="https://explorer.ooni.org/chart/mat?probe_cc=DZ&amp;since=2024-06-01&amp;until=2024-06-20&amp;time_grain=day&amp;axis_x=measurement_start_day&amp;test_name=tor">results</a> also show a similar “Anomaly” pattern. Anomalous traffic patterns are also visible for <a href="https://transparencyreport.google.com/traffic/overview?hl=en&amp;fraction_traffic=start%3A1717200000000%3Bproduct%3A19%3Bregion%3ADZ%3Bend%3A1718495999999&amp;lu=fraction_traffic">Google Web Search</a>, <a href="https://transparencyreport.google.com/traffic/overview?hl=en&amp;fraction_traffic=start%3A1717200000000%3Bproduct%3A21%3Bregion%3ADZ%3Bend%3A1718495999999&amp;lu=fraction_traffic">YouTube</a>, and <a href="https://transparencyreport.google.com/traffic/overview?hl=en&amp;fraction_traffic=start%3A1717200000000%3Bproduct%3A6%3Bregion%3ADZ%3Bend%3A1718495999999&amp;lu=fraction_traffic">GMail</a>.</p>
 	<p>Although the analysis of these observations and data sets doesn’t provide us with specific details around exactly how the observed Internet disruptions are being implemented, it strongly supports the supposition that network providers in Algeria are, in some fashion, interfering with TCP connections, but not blocking them outright nor shutting down their networks completely. Given that popular messaging platforms, Google properties, Cloudflare’s 1.1.1.1 DNS resolver, and some number of Cloudflare customer sites all appear to be impacted, it suggests that a list of hostnames are being targeted for disruption/interference, <a href="https://blog.cloudflare.com/consequences-of-ip-blocking">either by the SNI or the destination IP address</a>.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>Perhaps recognizing the broad negative impact that brute-force nationwide Internet shutdowns have as a response to cheating on exams, some governments appear to be turning to more nuanced techniques, such as content blocking or connection tampering. However, because these are widely applied as well, they are arguably just as disruptive as a full nationwide Internet shutdown. The cause of full shutdowns, such as those seen in Syria, are arguably easier to diagnose than the disruptions to connectivity seen in Iraq and Algeria, which appear to use approaches that are hard to specifically identify from the outside.</p>
 	<p>Visit <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for additional insights around these, and other, Internet disruptions. Follow us on social media at <a href="https://x.com/CloudflareRadar">@CloudflareRadar</a> (X), <a href="https://noc.social/@cloudflareradar">noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky), or contact us via email.</p>
 </div>

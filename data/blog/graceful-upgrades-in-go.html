@@ -1,19 +1,20 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60qSp4iHg04DudT56qHNsw/18e669aea4b38c6f72c58b0ad857678f/graceful-upgrades-in-go.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The idea behind graceful upgrades is to swap out the configuration and code of a process while it is running, without anyone noticing it. If this sounds error prone, dangerous, undesirable and in general a bad idea – I’m with you. However, sometimes you really need them. Usually this happens in an environment where there is no load balancing layer. We have these at Cloudflare, which led to us investigating and implementing various solutions to this problem.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2018/10/thing.jpg" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<p><small><em>Dingle Dangle! by <a href="https://www.flickr.com/photos/grant_subaru/14175646490">Grant C.</a> (CC-BY 2.0)</em></small></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42EXmdxCgy1Rd2LWEXV7ig/d69584a5d740f4bfdbf776b8e5985f1f/thing.jpg" alt="" class="kg-image" width="2000" height="1250" loading="lazy">
+
+	</figure>
+	<p><i>Dingle Dangle! by </i><a href="https://www.flickr.com/photos/grant_subaru/14175646490"><i>Grant C.</i></a><i> (CC-BY 2.0)</i></p>
 	<p>Coincidentally, implementing graceful upgrades involves some fun low-level systems programming, which is probably why there are already a bajillion options out there. Read on to learn what trade-offs there are, and why you should really really use the Go library we are about to open source. For the impatient, the code is on <a href="https://github.com/cloudflare/tableflip">github</a> &nbsp;and you can read the <a href="https://godoc.org/github.com/cloudflare/tableflip">documentation on godoc</a>.</p>
-	<h3 id="the-basics">The basics</h3>
+	<h3>The basics</h3>
 	<p>So what does it mean for a process to perform a graceful upgrade? Let’s use a web server as an example: we want to be able to fire HTTP requests at it, and never see an error because a graceful upgrade is happening.</p>
 	<p>We know that HTTP uses TCP under the hood, and that we interface with TCP using the BSD socket API. We have told the OS that we’d like to receive connections on port 80, and the OS has given us a listening socket, on which we call <code>Accept()</code> to wait for new clients.</p>
 	<p>A new client will be refused if the OS doesn’t know of a listening socket for port 80, or nothing is calling <code>Accept()</code> on it. The trick of a graceful upgrade is to make sure that neither of these two things occur while we somehow restart our service. Let’s look at the all the ways we could achieve this, from simple to complex.</p>
-	<h3 id="just-exec-">Just <code>Exec()</code></h3>
+	<h3>Just <code>Exec()</code></h3>
 	<p>Ok, how hard can it be. Let’s just <code>Exec()</code> the new binary (without doing a fork first). This does exactly what we want, by replacing the currently running code with the new code from disk.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-Go">// The following is pseudo-Go.
+	<pre class="language-go"><code class="language-go">// The following is pseudo-Go.
 
 func main() {
 	var ln net.Listener
@@ -28,23 +29,20 @@ func main() {
 	&lt;-waitForUpgradeRequest
 
 	syscall.Exec(os.Argv[0], os.Argv[1:], os.Environ())
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+}</code></pre>
 	<p>Unfortunately this has a fatal flaw since we can’t “undo” the exec. Imagine a configuration file with too much white space in it or an extra semicolon. The new process would try to read that file, get an error and exit.</p>
 	<p>Even if the exec call works, this solution assumes that initialisation of the new process is practically instantaneous. We can get into a situation where the kernel refuses new connections because the <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html">listen queue is overflowing</a>.</p>
-	<p></p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Example1-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<p><small><em>New connections may be dropped if <code>Accept()</code> is not called regularly enough</em></small></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46DpPmhtCjeHZmXVkySQTP/87c9479303bcfab7b9ccebcfc8cae1b3/Example1-1.png" alt="" class="kg-image" width="586" height="188" loading="lazy">
+
+	</figure>
+	<p><i>New connections may be dropped if </i><code><i>Accept()</i></code><i> is not called regularly enough</i></p>
 	<p>Specifically, the new binary is going to spend some time after <code>Exec()</code> to initialise, which delays calls to &nbsp;<code>Accept()</code>. This means the backlog of new connections grows until some are dropped. Plain exec is out of the game.</p>
-	<h3 id="listen-all-the-things"><code>Listen()</code> all the things</h3>
+	<h3><code>Listen()</code> all the things</h3>
 	<p>Since just using exec is out of the question, we can try the next best thing. Lets fork and exec a new process which then goes through its usual start up routine. At some point it will create a few sockets by listening on some addresses, except that won’t work out of the box due to errno 48, otherwise known as Address Already In Use. The kernel is preventing us from listening on the address and port combination used by the old process.</p>
 	<p>Of course, there is a flag to fix that: <code>SO_REUSEPORT</code>. This tells the kernel to ignore the fact that there is already a listening socket for a given address and port, and just allocate a new one.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-Go">func main() {
+	<pre class="language-go"><code class="language-go">func main() {
 	ln := net.ListenWithReusePort(network, address)
 
 	go handleRequests(ln)
@@ -55,19 +53,16 @@ func main() {
 	cmd.Start()
 
 	&lt;-waitForNewProcess
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+}</code></pre>
 	<p>Now both processes have working listening sockets and the upgrade works. Right?</p>
 	<p><code>SO_REUSEPORT</code> is a little bit peculiar in what it does inside the kernel. As systems programmers, we tend to think of a socket as the file descriptor that is returned by the socket call. The kernel however makes a distinction between the data structure of a socket, and one or more file descriptors pointing at it. It creates a separate socket structure if you bind using <code>SO_REUSEPORT</code>, not just another file descriptor. The old and the new process are thus referring to two separate sockets, which happen to share the same address. This leads to an unavoidable race condition: new-but-not-yet-accepted connections on the socket used by the old process will be orphaned and terminated by the kernel. GitHub wrote <a href="https://githubengineering.com/glb-part-2-haproxy-zero-downtime-zero-delay-reloads-with-multibinder/#haproxy-almost-safe-reloads">an excellent blog post about this problem</a>.</p>
 	<p>The engineers at GitHub solved the problems with <code>SO_REUSEPORT</code> by using an obscure feature of the sendmsg syscall <a href="http://man7.org/linux/man-pages/man0/sys_socket.h.0p.html">called ancilliary data</a>. It turns out that ancillary data can include file descriptors. Using this API made sense for GitHub, since it allowed them to integrate elegantly with HAProxy. Since we have the luxury of changing the program we can use simpler alternatives.</p>
-	<h3 id="nginx-share-sockets-via-fork-and-exec">NGINX: share sockets via fork and exec</h3>
+	<h3>NGINX: share sockets via fork and exec</h3>
 	<p>NGINX is the tried and trusted workhorse of the Internet, and happens to support graceful upgrades. As a bonus we also use it at Cloudflare, so we were confident in its implementation.</p>
 	<p>It is written in a process-per-core model, which means that instead of spawning a bunch of threads NGINX runs a process per logical CPU core. Additionally, there is a primary process which orchestrates graceful upgrades.</p>
 	<p>The primary is responsible for creating all listen sockets used by NGINX and sharing them with the workers. This is fairly straightforward: first, the <code>FD_CLOEXEC</code> bit is cleared on all listen sockets. This means that they are not closed when the <code>exec()</code> syscall is made. The primary then does the customary <code>fork()</code> / <code>exec()</code> dance to spawn the workers, passing the file descriptor numbers as an environment variable.</p>
-	<p>Graceful upgrades make use of the same mechanism. We can spawn a new primary process (PID 1176) by <a href="http://nginx.org/en/docs/control.html#upgrade">following the NGINX documentation</a>. This inherits the existing listeners from the old primary process (PID 1017) just like workers do. The new primary then spawns its own workers:</p><!--kg-card-begin: markdown-->
-	<pre><code> CGroup: /system.slice/nginx.service
+	<p>Graceful upgrades make use of the same mechanism. We can spawn a new primary process (PID 1176) by <a href="http://nginx.org/en/docs/control.html#upgrade">following the NGINX documentation</a>. This inherits the existing listeners from the old primary process (PID 1017) just like workers do. The new primary then spawns its own workers:</p>
+	<pre class="language-bash"><code class="language-bash"> CGroup: /system.slice/nginx.service
        	├─1017 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
        	├─1019 nginx: worker process
        	├─1021 nginx: worker process
@@ -85,14 +80,10 @@ func main() {
        	├─1192 nginx: worker process
        	├─1193 nginx: worker process
        	├─1194 nginx: worker process
-       	└─1195 nginx: worker process
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+       	└─1195 nginx: worker process</code></pre>
 	<p>At this point there are two completely independent NGINX processes running. PID 1176 might be a new version of NGINX, or could use an updated config file. When a new connection arrives for port 80, one of the 16 worker processes is chosen by the kernel.</p>
 	<p>After executing the remaining steps, we end up with a fully replaced NGINX:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>   CGroup: /system.slice/nginx.service
+	<pre class="language-bash"><code class="language-bash">   CGroup: /system.slice/nginx.service
        	├─1176 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
        	├─1187 nginx: worker process
        	├─1188 nginx: worker process
@@ -101,41 +92,49 @@ func main() {
        	├─1192 nginx: worker process
        	├─1193 nginx: worker process
        	├─1194 nginx: worker process
-       	└─1195 nginx: worker process
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+       	└─1195 nginx: worker process</code></pre>
 	<p>Now, when a request arrives the kernel chooses between one of the eight remaining processes.</p>
 	<p>This process is rather fickle, so NGINX has a safeguard in place. Try requesting a second upgrade while the first hasn’t finished, and you’ll find the following message in the error log:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>[crit] 1176#1176: the changing binary signal is ignored: you should shutdown or terminate before either old or new binary's process
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">[crit] 1176#1176: the changing binary signal is ignored: you should shutdown or terminate before either old or new binary's process</code></pre>
 	<p>This is very sensible, there is no good reason why there should be more than two processes at any given point in time. In the best case, we also want this behaviour from our Go solution.</p>
-	<h3 id="graceful-upgrade-wishlist">Graceful upgrade wishlist</h3>
+	<h3>Graceful upgrade wishlist</h3>
 	<p>The way NGINX has implemented graceful upgrades is very nice. There is a clear life cycle which determines valid actions at any point in time:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/upgrade-lifecycle.svg" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71WT8Hg8Bi4AAgf3yGdN8I/35feac68dd8fdb17e233396ff4c1ef3c/upgrade-lifecycle.svg" alt="" class="kg-image" width="764" height="133" loading="lazy">
+
+	</figure>
 	<p>It also solves the problems we’ve identified with the other approaches. Really, we’d like NGINX-style graceful upgrades as a Go library.</p>
 	<ul>
-		<li>No old code keeps running after a successful upgrade</li>
-		<li>The new process can crash during initialisation, without bad effects</li>
-		<li>Only a single upgrade is active at any point in time</li>
+		<li>
+			<p>No old code keeps running after a successful upgrade</p>
+		</li>
+		<li>
+			<p>The new process can crash during initialisation, without bad effects</p>
+		</li>
+		<li>
+			<p>Only a single upgrade is active at any point in time</p>
+		</li>
 	</ul>
 	<p>Of course, the Go community has produced some fine libraries just for this occasion. We looked at</p>
 	<ul>
-		<li><a href="https://github.com/alext/tablecloth">github.com/alext/tablecloth</a> (hat tip for the great name)</li>
-		<li><a href="https://godoc.org/github.com/astaxie/beego/grace">github.com/astaxie/beego/grace</a></li>
-		<li><a href="https://github.com/facebookgo/grace">github.com/facebookgo/grace</a></li>
-		<li><a href="https://github.com/crawshaw/littleboss">github.com/crawshaw/littleboss</a></li>
+		<li>
+			<p><a href="https://github.com/alext/tablecloth">github.com/alext/tablecloth</a> (hat tip for the great name)</p>
+		</li>
+		<li>
+			<p><a href="https://godoc.org/github.com/astaxie/beego/grace">github.com/astaxie/beego/grace</a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/facebookgo/grace">github.com/facebookgo/grace</a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/crawshaw/littleboss">github.com/crawshaw/littleboss</a></p>
+		</li>
 	</ul>
 	<p>just to name a few. Each of them is different in its implementation and trade offs, but none of them ticked all of our boxes. The most common problem is that they are designed to gracefully upgrade an http.Server. This makes their API much nicer, but removes flexibility that we need to support other socket based protocols. So really, there was absolutely no choice but to write our own library, called tableflip. Having fun was not part of the equation.</p>
-	<h3 id="tableflip">tableflip</h3>
+	<h3>tableflip</h3>
 	<p>tableflip is a Go library for NGINX-style graceful upgrades. Here is what using it looks like:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-Go">upg, _ := tableflip.New(tableflip.Options{})
+	<pre class="language-go"><code class="language-go">upg, _ := tableflip.New(tableflip.Options{})
 defer upg.Stop()
 
 // Do an upgrade on SIGHUP
@@ -159,10 +158,7 @@ _ = upg.Ready()
 &lt;-upg.Exit()
 
 // Wait for connections to drain.
-server.Shutdown(context.TODO())
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+server.Shutdown(context.TODO())</code></pre>
 	<p>Calling <code>Upgrader.Upgrade</code> spawns a new process with the necessary net.Listeners, and waits for the new process to signal that it has finished initialisation, to die or to time out. Calling it when an upgrade is ongoing returns an error.</p>
 	<p><code>Upgrader.Fds.Listen</code> is inspired by <code>facebookgo/grace</code> and allows inheriting net.Listener easily. Behind the scenes, <code>Fds</code> makes sure that unused inherited sockets are cleaned up. This includes UNIX sockets, which are tricky due to <a href="https://golang.org/pkg/net/#UnixListener.SetUnlinkOnClose">UnlinkOnClose</a>. You can also pass straight up <code>*os.File</code> to the new process if you desire.</p>
 	<p>Finally, <code>Upgrader.Ready</code> cleans up unused fds and signals the parent process that initialization is done. The parent can then exit, which completes the graceful upgrade cycle.</p>

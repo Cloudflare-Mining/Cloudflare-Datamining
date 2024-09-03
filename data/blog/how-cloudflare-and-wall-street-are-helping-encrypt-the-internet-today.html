@@ -1,19 +1,34 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-and-wall-street-are-helping-encrypt-the-internet-today">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-cloudflare-and-wall-street-are-helping-encrypt-the-internet-today">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-cloudflare-and-wall-street-are-helping-encrypt-the-internet-today">日本語</a>, <a href="https://blog.cloudflare.com/es-es/how-cloudflare-and-wall-street-are-helping-encrypt-the-internet-today">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/how-cloudflare-and-wall-street-are-helping-encrypt-the-internet-today">Français</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/lavaRand-at-the-NYSE@3x--1-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Today has been a big day for Cloudflare, as we became a public company on the New York Stock Exchange (NYSE: NET). To mark the occasion, we decided to bring our favorite entropy machines to the floor of the NYSE. Footage of these lava lamps is being used as an additional seed to our <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production"><strong>entropy-generation system LavaRand</strong></a> — bolstering Internet encryption for over 20 million Internet properties worldwide.</p>
-	<p><em>(This is mostly for fun. But when’s the last time you saw a lava lamp on the trading floor of the New York Stock Exchange?)</em></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/NYSE-Lava-Lamps-Cropped.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>A little context: generating truly random numbers using computers is impossible, because code is inherently deterministic (i.e. predictable). To compensate for this, engineers draw from pools of randomness created by entropy generators, which is a fancy term for "things that are truly unpredictable". </p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1r2AWCRDBhcQ51Sr4FDl0c/791e2a679eea6a6e6c2e23710221ebdc/lavaRand-at-the-NYSE_3x--1-.png" alt="" class="kg-image" width="1600" height="1068" loading="lazy">
+
+	</figure>
+	<p>Today has been a big day for Cloudflare, as we became a public company on the New York Stock Exchange (NYSE: NET). To mark the occasion, we decided to bring our favorite entropy machines to the floor of the NYSE. Footage of these lava lamps is being used as an additional seed to our <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production"><b>entropy-generation system LavaRand</b></a> — bolstering Internet encryption for over 20 million Internet properties worldwide.</p>
+	<p><i>(This is mostly for fun. But when’s the last time you saw a lava lamp on the trading floor of the New York Stock Exchange?)</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g2vH1hZmjN2EcjCIV8wfi/93c00cb307afe32346362302f5499785/NYSE-Lava-Lamps-Cropped.jpg" alt="" class="kg-image" width="1600" height="1233" loading="lazy">
+
+	</figure>
+	<p>A little context: generating truly random numbers using computers is impossible, because code is inherently deterministic (i.e. predictable). To compensate for this, engineers draw from pools of randomness created by entropy generators, which is a fancy term for "things that are truly unpredictable".</p>
 	<p>It turns out that lava lamps are fantastic sources of entropy, as was first shown by Silicon Graphics in the 1990s. It’s a torch we’ve been proud to carry forward: today, Cloudflare uses lava lamps to generate entropy that helps make millions of Internet properties more secure.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/LavaRand1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Housed in our San Francisco headquarters is a wall filled with dozens of lava lamps, undulating with mesmerizing randomness. We capture these lava lamps on video via a camera mounted across the room, and feed the resulting footage into an algorithm — called <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details"><strong>LavaRand</strong></a> — that amplifies the pure randomness of these lava lamps to dizzying extremes (computers can't create seeds of pure randomness, but they can massively amplify them). </p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ah3LRVUaM1zY6dND64ghZ/e5dbffdde2eda8cb6d1158569eeab41c/LavaRand1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Housed in our San Francisco headquarters is a wall filled with dozens of lava lamps, undulating with mesmerizing randomness. We capture these lava lamps on video via a camera mounted across the room, and feed the resulting footage into an algorithm — called <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details"><b>LavaRand</b></a> — that amplifies the pure randomness of these lava lamps to dizzying extremes (computers can't create seeds of pure randomness, but they can massively amplify them).</p>
 	<p>Shortly before we rang the opening bell this morning, we recorded footage of our lava lamps in operation on the trading room floor of the New York Stock Exchange, and we're ingesting the footage into our LavaRand system. The resulting entropy is mixed with the myriad additional sources of entropy that we leverage every day, creating a cryptographically-secure source of randomness — fortified by Wall Street.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/League-Of-Entropy.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We recently took our enthusiasm for randomness a step further by facilitating the <a href="https://blog.cloudflare.com/league-of-entropy"><strong>League of Entropy</strong></a>, a consortium of global organizations and individual contributors, generating verifiable randomness via a globally distributed network. As one of the founding members of the League, LavaRand (pictured above) plays a key role in empowering developers worldwide with a pool of randomness with extreme entropy and high reliability. </p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2i4n94z75iXaoZZFgXxg7y/b103788007b40b00004f55a5ae114c8e/League-Of-Entropy.png" alt="" class="kg-image" width="1600" height="951" loading="lazy">
+
+	</figure>
+	<p>We recently took our enthusiasm for randomness a step further by facilitating the <a href="https://blog.cloudflare.com/league-of-entropy"><b>League of Entropy</b></a>, a consortium of global organizations and individual contributors, generating verifiable randomness via a globally distributed network. As one of the founding members of the League, LavaRand (pictured above) plays a key role in empowering developers worldwide with a pool of randomness with extreme entropy and high reliability.</p>
 	<p>And today, she’s enjoying the view from the podium!</p>
-	<hr><!--kg-card-begin: markdown-->
-	<p><small><em>One caveat: the lava lamps we run in our San Francisco headquarters are recorded in real-time, 24/7, giving us an ongoing stream of entropy. For reasons that are understandable, the NYSE doesn't allow for live video feeds from the exchange floor while it is in operation. But this morning they did let us record footage of the lava lamps operating shortly before the opening bell. The video was recorded and we're ingesting it into our LavaRand system (alongside many other entropy generators, including the lava lamps back in San Francisco).</em></small></p>
-	<!--kg-card-end: markdown-->
-	<p><br></p>
+	<hr>
+	<p><i>One caveat: the lava lamps we run in our San Francisco headquarters are recorded in real-time, 24/7, giving us an ongoing stream of entropy. For reasons that are understandable, the NYSE doesn't allow for live video feeds from the exchange floor while it is in operation. But this morning they did let us record footage of the lava lamps operating shortly before the opening bell. The video was recorded and we're ingesting it into our LavaRand system (alongside many other entropy generators, including the lava lamps back in San Francisco).</i></p>
 </div>

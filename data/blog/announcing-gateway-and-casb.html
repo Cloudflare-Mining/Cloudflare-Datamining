@@ -1,24 +1,31 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-gateway-and-casb-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-gateway-and-casb-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/es-es/announcing-gateway-and-casb-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-41.png" class="kg-image" alt="Announcing Gateway + CASB" loading="lazy"></figure>
+<div class="mb2 gray5">2 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-gateway-and-casb">简体中文</a>, <a href="https://blog.cloudflare.com/es-es/announcing-gateway-and-casb">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/announcing-gateway-and-casb">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44htlygbwc5lUmosWZy9Zk/e9b3d7dadd3986dbc63d546bb25984c6/image2-41.png" alt="Announcing Gateway + CASB" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Shadow IT and managing access to sanctioned or unsanctioned SaaS applications remain one of the biggest pain points for IT administrators in the era of the cloud.</p>
 	<p>We're excited to announce that starting soon, Cloudflare’s <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> and our new API-driven Cloud Access Security Broker (CASB) work seamlessly together to help IT and security teams go from finding Shadow IT to fixing it in minutes.</p>
-	<h3 id="detect-security-issues-within-saas-applications">Detect security issues within SaaS applications</h3>
-	<p>Cloudflare's API-driven <a href="https://blog.cloudflare.com/API-driven%20CASB%20starts">CASB</a> starts by providing comprehensive visibility into SaaS applications, so you can easily <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">prevent data leaks</a> and compliance violations. Setup takes just a few clicks to integrate with your organization's SaaS services, like Google Workspace and Microsoft 365. From there, IT and security teams can see what applications and services their users are logging into and how company data is being shared.</p>
+	<h3>Detect security issues within SaaS applications</h3>
+	<p>Cloudflare's API-driven [CASB](API-driven CASB starts) starts by providing comprehensive visibility into SaaS applications, so you can easily <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">prevent data leaks</a> and compliance violations. Setup takes just a few clicks to integrate with your organization's SaaS services, like Google Workspace and Microsoft 365. From there, IT and security teams can see what applications and services their users are logging into and how company data is being shared.</p>
 	<p>So you’ve found the issues. But what happens next?</p>
-	<h3 id="identify-and-detect-but-then-what">Identify and detect, but then what?</h3>
-	<p>Customer feedback from the API-driven CASB beta has followed a similar theme: <em>it was super easy to set up and detect all my security issues, but how do I fix this stuff?</em></p>
+	<h3>Identify and detect, but then what?</h3>
+	<p>Customer feedback from the API-driven CASB beta has followed a similar theme: <i>it was super easy to set up and detect all my security issues, but how do I fix this stuff?</i></p>
 	<p>Almost immediately after investigating the most critical issues, it makes sense to want to start taking action. Whether it be detecting an unknown application being used for Shadow IT or wanting to limit functionality, access, or behaviors to a known but unapproved application, remediation is front of mind.</p>
 	<p>This led to customers feeling like they had a bunch of useful data in front of them, but no clear action to take to get started on fixing them.</p>
-	<h3 id="create-gateway-policies-from-casb-security-findings">Create Gateway policies from CASB security findings</h3>
+	<h3>Create Gateway policies from CASB security findings</h3>
 	<p>To solve this problem, we’re allowing you to easily create Gateway policies from CASB <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/#view-security-findings">security findings</a>. Security findings are issues detected within SaaS applications that involve users, data at rest, and settings that are assigned a Low, Medium, High or Critical severity per integration.</p>
 	<p>Using the security findings from CASB allows for fine-grained Gateway policies which prevent future unwanted behavior while still allowing usage that aligns to company security policy. This means going from viewing a CASB security issue, like the use of an unapproved SaaS application, to preventing or controlling access in minutes. This seamless cross-product experience all happens from a single, unified platform.</p>
 	<p>For example, take the CASB Google Workspace <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations/google-workspace/#third-party-apps">security finding around third-party apps</a> which detects sign-ins or other permission sharing from a user's account. In just a few clicks, you can create a Gateway policy to block some or all of the activity, like uploads or downloads, to the detected SaaS application. This policy can be applied to some or all users, based on what access has been granted to the user’s account.</p>
 	<p>By surfacing the exact behavior with CASB, you can take swift and targeted action to better protect your organization with Gateway.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-44.png" class="kg-image" alt="Creating a Gateway policy from a CASB finding in the Zero Trust dashboard" loading="lazy"></figure>
-	<h3 id="get-started-today-with-the-cloudflare-one">Get started today with the Cloudflare One</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yn5pqqYDDAvwF5IN25dEj/104d795f1a8f2501382c0ef1f4e61d85/image1-44.png" alt="Creating a Gateway policy from a CASB finding in the Zero Trust dashboard" class="kg-image" width="1999" height="1522" loading="lazy">
+
+	</figure>
+	<h3>Get started today with the Cloudflare One</h3>
 	<p>This post highlights one of the many ways the Cloudflare One suite of solutions work seamlessly together as a unified platform to find and fix security issues across SaaS applications.</p>
 	<p>Get started now with Cloudflare’s Secure Web Gateway by <a href="https://dash.cloudflare.com/sign-up/teams">signing up here</a>. Cloudflare’s API-driven CASB is in closed beta with new customers being onboarded each week. You can <a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta">request access here</a> to try out this exciting new cross-product feature.</p>
 	<p>To learn more about simplifying the way you protect SaaS applications, <a href="https://cfl.re/saas-security-whitepaper">read our whitepaper</a>.</p>

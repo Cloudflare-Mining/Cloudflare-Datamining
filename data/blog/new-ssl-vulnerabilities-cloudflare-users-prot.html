@@ -1,17 +1,22 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="New" src="https://blog.cloudflare.com/content/images/cloudflare_secure_ssl.png.scaled500.png" title="New "></p>
+<div class="mb2 gray5">1 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kBtGdo2WL0u6viKK6UyjY/d3596080923bc8b12a1f0ce57e95ba51/cloudflare_secure_ssl.png.scaled500.png" alt="New" class="kg-image" width="311" height="380" loading="lazy">
+
+	</figure>
 	<p>CloudFlare often gets early word of new vulnerabilities before they are released. Last week we got word that today (Monday, February 4, 2013) there would be a new SSL vulnerability announced. This vulnerability follows the BEAST and CRIME vulnerabilities that have been discovered over the last 18 months. The bad news is that TLS 1.1/1.2 do not fix the issue.</p>
 	<p>The vulnerabilities are known as the <a href="http://www.isg.rhul.ac.uk/tls">Lucky Thirteen</a>.</p>
-	<p><img alt="New" src="https://blog.cloudflare.com/content/images/California_13.png.scaled500.png" title="New "></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0Hdt0babEnZTbkHy5okdQ/7c620edbba3600d704bfa48237d4a256/California_13.png.scaled500.png" alt="New" class="kg-image" width="385" height="401" loading="lazy">
+
+	</figure>
 	<p>The good news is that our analysis of the newest vulnerability suggests that, while theoretically possible, it is fairly difficult to exploit. It is a timing attack and you'd need to create a fairly large number of connections and measure the differences in timing. That's possible, but non-trivial.</p>
 	<p>That said, at CloudFlare we want to ensure that even remote risks are fully mitigated. In this case, the good news is CloudFlare's SSL configuration is, by default, not generally vulnerable to the new attack. Specifically, because we deprioritize the vulnerable SSL cipher, it makes anyone using a modern browser invulnerable to the attack when visiting a CloudFlare-protected site over an SSL connection.</p>
 	<p>While the easiest way to ensure that your site is protected from the new vulnerability is to sign up for CloudFlare's service, if you haven't gotten around to that yet then there are some steps you should take. First, when a new version of OpenSSL is released that removes this vulnerability, which we expect will happen in the next few weeks, you should upgrade. Second, you should prioritize the RC4 cipher in your web server above others as it isn't vulnerable.</p>
 	<p>Here's the Apache SSL cipher suite configuration we'd recommend:</p>
-	<pre>SSLProtocol -ALL +SSLv3 +TLSv1SSLCipherSuite ECDHE-RSA-AES128-SHA256:AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDHSSLHonorCipherOrder on
-</pre>
+	<p>SSLProtocol -ALL +SSLv3 +TLSv1SSLCipherSuite ECDHE-RSA-AES128-SHA256:AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDHSSLHonorCipherOrder on</p>
 	<p>Here's the NGINX SSL cyber suite configuration we'd recommend:</p>
-	<pre>ssl_protocols               SSLv3 TLSv1 TLSv1.1 TLSv1.2;ssl_ciphers                 ECDHE-RSA-AES128-SHA256:AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDH;ssl_prefer_server_ciphers   on;
-</pre>
-	<!--kg-card-end: markdown-->
+	<p>ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;ssl_ciphers ECDHE-RSA-AES128-SHA256:AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDH;ssl_prefer_server_ciphers on;</p>
 </div>

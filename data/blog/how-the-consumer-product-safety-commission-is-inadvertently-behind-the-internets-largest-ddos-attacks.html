@@ -1,26 +1,28 @@
-<div class="mb2 gray5">19 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45RWzEvrCNr5M4MZc1WHat/fef52c2f77437e9f72ca8b91fa9cc8e1/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>The mission of the United State's Government's <a href="https://www.cpsc.gov">Consumer Product Safety Commission</a> (CPSC) is to protect consumers from injury by products. It's ironic then that the CPSC is playing an unwitting role in most of the largest DDoS attacks seen on the Internet. To understand how, you need to understand a bit about how you launch a high volume DDoS.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/consumer_product_safety_commission.png" alt="Logo of the Consumer Product Safety Commission" loading="lazy"><br>
-		<em>Logo of the <a href="https://www.cpsc.gov">Consumer Product Safety Commission</a></em>
-	</p>
-	<h4 id="amplification">Amplification</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bYfaAR7xabGqEBvwsjXss/d370dccf1a1ddae638948c742d749233/consumer_product_safety_commission.png" alt="Logo of the Consumer Product Safety Commission" class="kg-image" width="300" height="300" loading="lazy">
+
+	</figure>
+	<p><i>Logo of the </i><a href="https://www.cpsc.gov"><i>Consumer Product Safety Commission</i></a></p>
+	<h4>Amplification</h4>
 	<p>DDoS attacks are inherently about an attacker sending more traffic to a victim than the victim can handle. The challenge for an attacker is to find a way to generate a large amount of traffic. Launching a DDoS attack is a criminal act, so an attacker can't simply go sign up for large transit contracts. Instead, attackers find ways to leverage other people's resources.</p>
 	<p>One of the most effective strategies is known as an amplification attack. In these attacks, an attacker can amplify their resources by reflecting them off other resources online that magnify the level of traffic. The most popular amplification vector is known as DNS reflection.</p>
-	<h4 id="dnsreflection">DNS Reflection</h4>
+	<h4>DNS Reflection</h4>
 	<p>We've written about DNS reflection attacks <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">in detail</a> before. The basics are that an attacker generates DNS requests from a network that allows source IP address spoofing. The attacker forges the victim's IP as the source of the DNS requests. The attacker sends these requests to DNS resolvers that aren't locked down and respond to requests from any network. The DNS resolvers receive the requests and then send the responses back to the spoofed IP of the victim.</p>
 	<p>This technique "amplifies" an attack because a small DNS request will generate a larger response. How much larger depends on the size of the DNS record that's being queried. And here's where the Consumer Product Safety Commission comes in.</p>
-	<h4 id="1amongddosattackers">#1 Among DDoS Attackers</h4>
+	<h4>#1 Among DDoS Attackers</h4>
 	<p>You see, the CPSC’s DNS server will respond with a very large DNS record when sent a very small DNS query. This DNS query is only 65 bytes:</p>
-	<pre><code>dig ANY cpsc.gov +notcp +bufsize=65535 @X.X.X.X
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">dig ANY cpsc.gov +notcp +bufsize=65535 @X.X.X.X</code></pre>
 	<p>Substitute X.X.X.X for one of the 13 million currently <a href="http://openresolverproject.org">open DNS resolvers</a> and you'll get back a response that is 4,426 bytes. To generate 68Gbps of traffic to a victim requires only 1Gbps of requests with a spoofed source IP address to open resolvers for the CPSC.gov DNS record. That's an amplification factor of 68x.</p>
-	<p>Now, lots of people have large DNS records, but the CPSC.gov record is very large and particularly popular among attackers. Based on both data about the large volumetric attacks we see hitting CloudFlare, as well as data from various resolver honey pots we run, <strong>approximately 94% of the DNS reflection attack requests we see are for CPSC.gov</strong>. (The next most popular are httrack.com which is used by 2.9% of attacker requests and isc.org which is used by 0.5%.)</p>
+	<p>Now, lots of people have large DNS records, but the CPSC.gov record is very large and particularly popular among attackers. Based on both data about the large volumetric attacks we see hitting CloudFlare, as well as data from various resolver honey pots we run, <b>approximately 94% of the DNS reflection attack requests we see are for CPSC.gov</b>. (The next most popular are httrack.com which is used by 2.9% of attacker requests and isc.org which is used by 0.5%.)</p>
 	<p>At one level there's nothing the CPSC can do to <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">prevent attackers</a> from using their DNS record to launch attacks. CPSC's resources aren't being queried directly by the attackers so they can't block the requests themselves. However, they could construct their DNS record more carefully to make it smaller and therefore less attractive to attackers.</p>
 	<p>To see how, we can walk through the CPSC DNS record entry by entry and make recommendations on how to reduce its size.</p>
-	<h3 id="thecpscsginormouszone">The CPSC's Ginormous Zone</h3>
+	<h3>The CPSC's Ginormous Zone</h3>
 	<p>Here’s the CPSC.gov's entire 4,426-byte DNS response which you get from running the ANY DNS query above against an open resolver (scroll to the left in the grey boxes below to see the full DNS record):</p>
-	<pre><code>cpsc.gov.		18894	IN	SOA	auth00.ns.uu.net. hostmaster.uu.net. 994622 1800 600 1728000 21600
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	SOA	auth00.ns.uu.net. hostmaster.uu.net. 994622 1800 600 1728000 21600
 cpsc.gov.		18894	IN	A	63.74.109.2
 cpsc.gov.		18894	IN	AAAA	2600:803:240::2
 cpsc.gov.		18894	IN	NS	auth61.ns.uu.net.
@@ -46,107 +48,132 @@ cpsc.gov.		893	IN	RRSIG	DS 8 2 3600 20160824041014 20160817041014 64415 gov. c78
 cpsc.gov.		893	IN	DS	58273 7 1 75F81A67F1D76F017B02689E9586FCF3A68F655F
 cpsc.gov.		893	IN	DS	58273 7 2 A04919AA51B4395014E2753430A6DD6AF7585CE2C5C2E693E9ADD4DE C1365DC9
 cpsc.gov.		893	IN	DS	27793 7 2 C078BB7D7A46B0654A7D83755BA6FAB6AA56DAC4CB4D94B6A3562B67 BA7C285C
-cpsc.gov.		893	IN	DS	27793 7 1 E148C892A62ABF2B9157293DA4EE270D9880C238
-</code></pre>
+cpsc.gov.		893	IN	DS	27793 7 1 E148C892A62ABF2B9157293DA4EE270D9880C238</code></pre>
 	<p>You may get the records back in a different order, but you should see something similar if you run the same ANY query.</p>
 	<p>Walking through the DNS zone file line-by-line you can see the mistakes that the CPSC has made that bloat its record and learn a bit about DNS and, in particular, DNSSEC.</p>
-	<h3 id="thegood">The Good</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/the_good.png" alt="The Good" loading="lazy"><br>
-		<em>The Good, The Bad, and The Ugly artwork by Billy Perkins</em>
-	</p>
+	<h3>The Good</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/D5eYO3eWEtK78Kr84IuUk/3f8fbefc3341d4eaf95c2cb7df529cba/the_good.png" alt="The Good" class="kg-image" width="492" height="167" loading="lazy">
+
+	</figure>
+	<p><i>The Good, The Bad, and The Ugly artwork by Billy Perkins</i></p>
 	<p>Let's start with the good. Here are the first eight records, which are pretty standard and can't be optimized much.</p>
-	<pre><code>cpsc.gov.		18894	IN	SOA	auth00.ns.uu.net. hostmaster.uu.net. 994622 1800 600 1728000 21600
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	SOA	auth00.ns.uu.net. hostmaster.uu.net. 994622 1800 600 1728000 21600
 cpsc.gov.		18894	IN	A	63.74.109.2
 cpsc.gov.		18894	IN	AAAA	2600:803:240::2
 cpsc.gov.		18894	IN	NS	auth61.ns.uu.net.
 cpsc.gov.		18894	IN	NS	auth00.ns.uu.net.
 cpsc.gov.		18894	IN	MX	5 stagg.cpsc.gov.
 cpsc.gov.		18894	IN	MX	5 hormel.cpsc.gov.
-cpsc.gov.		18894	IN	TXT	"v=spf1 ip4:63.74.109.6 ip4:63.74.109.10 ip4:63.74.109.20 mx a:list.cpsc.gov -all"
-</code></pre>
+cpsc.gov.		18894	IN	TXT	"v=spf1 ip4:63.74.109.6 ip4:63.74.109.10 ip4:63.74.109.20 mx a:list.cpsc.gov -all"</code></pre>
 	<p>These first eight records are bread and butter DNS: SOA, A, AAAA, NS, MX, and TXT. If you want a quick refresher on these basic DNS records, read on. Otherwise, you can skip to the next section ("<a href="https://blog.cloudflare.com/#thebad">The Bad"</a>) to see where the DNSSEC mess begins.</p>
 	<p>The first record is the SOA record. SOA stands for Start of Authority. Walking through the record left-to-right, the number 18894 — which you'll see appears next to all records — is the TTL (Time to Live) at the moment for the particular resolver I queried. That number represents the seconds until the resolver needs to fetch another result from authoritative DNS server. If I queried the same resolver 10 seconds later, the number would be 18884 — 10 seconds less than it had been before. If you query a different resolver you'll likely get another number that is somewhere between 21600 (the max TTL the CPSC.gov has specified) and 0. When the number reaches 0, the resolver will query the authoritative name server, update its cache, and reset the TTL to 21600 — the maximum TTL specified for the record.</p>
-	<pre><code>cpsc.gov.		18894	IN	SOA	auth00.ns.uu.net. hostmaster.uu.net. 994622 1800 600 1728000 21600
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	SOA	auth00.ns.uu.net. hostmaster.uu.net. 994622 1800 600 1728000 21600</code></pre>
 	<p>Continuing on the SOA record, next up is "IN" — which also appears on every DNS record in the CPSC zone. IN stands for "Internet Class." DNS predated the Internet, so there are other classes that are possible, but IN is the only class you'll see in common use today. After "IN" comes "SOA" which designates this record type.</p>
 	<p>The next entries are the contents of the SOA record. The first entry specifies the primary authoritative name server for the domain ("auth00.ns.uu.net."). The second is the email address of the name server's administrator ("hostmaster.uu.net." means <a href="mailto:hostmaster@uu.net">hostmaster@uu.net</a> is the name server's administrator's email). "994622" is the zone serial number, which other name servers use to make sure they're in sync with the primary authoritative name server. "1800" is the refresh interval, specifying the number of seconds before non-primary name servers should check to see if the zone has changed. "600" is the retry interval, specifying the number of seconds to wait if a refresh failed. "1728000" is the number of seconds that non-primary name servers can serve a zone if they've failed to reach the primary name server. In practice with modern DNS setups, none of these numbers end up having much of an impact.</p>
 	<p>The last number in the SOA record, however, is important. "21600" is the length of time in seconds a negative result should be cached by recursive resolvers. For example, if you query "12345.cpsc.gov" —&nbsp;a record that doesn't exist — then the resolver you query will store the fact that the record doesn't exist for 21600 seconds.</p>
 	<p>SOA records look complicated but, in practice, only the last number — specifying the number of seconds that a negative result should be cached — has an impact on modern DNS implementations.</p>
 	<p>The other records in this group of 8 are less cryptic than SOA so we can quickly work through how they work.</p>
-	<pre><code>cpsc.gov.		18894	IN	A	63.74.109.2
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	A	63.74.109.2
 cpsc.gov.		18894	IN	AAAA	2600:803:240::2
 cpsc.gov.		18894	IN	NS	auth61.ns.uu.net.
-cpsc.gov.		18894	IN	NS	auth00.ns.uu.net.
-</code></pre>
+cpsc.gov.		18894	IN	NS	auth00.ns.uu.net.</code></pre>
 	<p>The A and AAAA records are "anchor" records which specify the IP addresses responsible for the domain. A records are for IPv4 addresses — in this case 63.74.109.2 —&nbsp;and AAAA records are for IPv6 addresses — in this case 2600:803:240::2. The two NS entries define the name servers responsible for the domain ("auth00.ns.uu.net" which is primary as specified by the SOA record, and "auth61.ns.uu.net" which is secondary).</p>
-	<pre><code>cpsc.gov.		18894	IN	MX	5 stagg.cpsc.gov.
-cpsc.gov.		18894	IN	MX	5 hormel.cpsc.gov.
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	MX	5 stagg.cpsc.gov.
+cpsc.gov.		18894	IN	MX	5 hormel.cpsc.gov.</code></pre>
 	<p>The two MX records specify the mail servers responsible for email sent to the domain ("hormel.cpsc.gov" and "stagg.cpsc.gov" — someone at the CPSC seems to have a sense of humor as Hormel is the maker of the pork product spam and "Stagg" is a brand of chili also made by Hormel). The number "5" in both MX records is the weight of that mail server. The lower the number the more it will be preferred. Since these are equally weighted, email will be load balanced equally between the two.</p>
-	<pre><code>cpsc.gov.		18894	IN	TXT	"v=spf1 ip4:63.74.109.6 ip4:63.74.109.10 ip4:63.74.109.20 mx a:list.cpsc.gov -all"
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	TXT	"v=spf1 ip4:63.74.109.6 ip4:63.74.109.10 ip4:63.74.109.20 mx a:list.cpsc.gov -all"</code></pre>
 	<p>Not much from the above could be optimized. The next record is special kind of TXT record known as a SPF record. It specifies what domains or IPs are allowed to send email on behalf of CPSC.gov. In this case, three IP addresses (63.74.109.6, 63.74.109.10 &amp; 63.74.109.20), the MX records (Hormel &amp; Stagg), and the A record for the subdomain (lists.cpsc.gov). The "-all" at the end means mail sent from other domains or IPs not specified here should fail. Alternatives could be "~all" which would soft-fail mail sent from other domains/IPs, or "+all" which would allow mail to be sent from any domain/IP — which would effectively render the SPF record useless.</p>
 	<p>There's a tiny optimization that CPSC.gov could make by listing one CIDR (63.74.109.0/24) rather than each of the three IPs. By doing so they'd save 15 bytes:</p>
-	<pre><code>CPSC.gov.		18894	IN	TXT	"v=spf1 ip4:63.74.109.0/24 mx a:list.cpsc.gov -all"
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">CPSC.gov.		18894	IN	TXT	"v=spf1 ip4:63.74.109.0/24 mx a:list.cpsc.gov -all"</code></pre>
 	<p>However, as you'll see, that's hardly worth the effort compared with other optimizations they could make.</p>
-	<p><a name="thebad"></a></p>
-	<h3 id="thebad">The Bad</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/the_bad.png" alt="The Bad" loading="lazy"><br>
-		<em>The Good, The Bad, and The Ugly artwork by Billy Perkins</em>
-	</p>
+	<h3>The Bad</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QE9nYqXShRNijRWQqxwEC/7e3e504e3eb7813a38c50e633e469b0c/the_bad.png" alt="The Bad" class="kg-image" width="492" height="165" loading="lazy">
+
+	</figure>
+	<p><i>The Good, The Bad, and The Ugly artwork by Billy Perkins</i></p>
 	<p>The misconfiguration of the CPSC.gov DNS largely involves how they've setup DNSSEC. DNSSEC is the mechanism to sign DNS records and help prevent cache poisoning. Each record in the DNS zone needs to be signed. To accomplish this you need RRSIG records and a simple change in their configuration could cut the size of the DDoS attacks the CPSC is indirectly responsible for nearly in half.</p>
 	<p>The signatures for each record are included as RRSIG records. Here's an example of the RRSIG record signing CPSC.gov's SOA record (again, scroll to the left in the box to see the whole record):</p>
-	<pre><code>cpsc.gov.		18894	IN	RRSIG	SOA 7 2 21600 20160824030507 20160817020507 53799 cpsc.gov. I7umZbpbUnh24bvphYP9K70imTyDFxc5QgOEDVVCSkmtVMhRaOU0eiSO 6b/O3ExcMhL0xn+D+/Xs1R7z9zPsKrzvGCfqotkxu8L1mRpAmjgr21WH mEzXftcx+IbSrOCwOa7YuPyBGqJW3f8kb/UHcI7ykqk08xvglD2I77PV TgI59oYsZyufRhfChcFxEyhBY2LZ4o/UO5Tw8Lg5HH/9OGtA0FHum1To v/CeLBOaATrZNygZINKmHlsP6Mm8j83jM4bRNxLGPs8VjpDbKVAHtROq aXR0Zy81zNs0eWfs4vThdOf56nCUnA/HiwlVNgmbO219CCMKQxoBBuY+ FYcWfA==
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	RRSIG	SOA 7 2 21600 20160824030507 20160817020507 53799 cpsc.gov. I7umZbpbUnh24bvphYP9K70imTyDFxc5QgOEDVVCSkmtVMhRaOU0eiSO 6b/O3ExcMhL0xn+D+/Xs1R7z9zPsKrzvGCfqotkxu8L1mRpAmjgr21WH mEzXftcx+IbSrOCwOa7YuPyBGqJW3f8kb/UHcI7ykqk08xvglD2I77PV TgI59oYsZyufRhfChcFxEyhBY2LZ4o/UO5Tw8Lg5HH/9OGtA0FHum1To v/CeLBOaATrZNygZINKmHlsP6Mm8j83jM4bRNxLGPs8VjpDbKVAHtROq aXR0Zy81zNs0eWfs4vThdOf56nCUnA/HiwlVNgmbO219CCMKQxoBBuY+ FYcWfA==</code></pre>
 	<p>Let's walk through this RRSIG record. Just like with the previous records "18894" is the TTL in seconds, "IN" stands for "Internet Class", and RRSIG is the type of DNS record. "SOA" here specifies the type of record this signature applies to. That's easy. However, after that, things get cryptic (both literally and metaphorically).</p>
 	<p>The "7" here specifies the signature algorithm being used. By the <a href="http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml">DNSSEC specification</a>, the 7th zone signing algorithm is: RSASHA1-NSEC3-SHA1.</p>
 	<p>Here's a list of the 10 current algorithms (represented by 14 numbers, just to be confusing) that can be used for signing public DNS records along with the number — or range of numbers if the signatures can be of variable lengths — of bytes each signature generates:</p>
 	<ol>
-		<li>RSA/MD5 / 128–512 bytes (deprecated)</li>
-		<li>[Not used for RRSIG records]</li>
-		<li>DSA/SHA1 / 41 bytes</li>
-		<li>[Reserved]</li>
-		<li>RSA/SHA-1 / 128–512 bytes</li>
-		<li>DSA-NSEC3-SHA1 / 328 bits</li>
-		<li>RSASHA1-NSEC3-SHA1 / 128–512 bytes</li>
-		<li>RSA/SHA-256 / 128–512 bytes</li>
-		<li>[Reserved]</li>
-		<li>RSA/SHA-512 / 128–512 bytes</li>
-		<li>[Reserved]</li>
-		<li>GOST R 34.10-2001 / 64 bytes</li>
-		<li>ECDSA Curve P-256 with SHA-256 / 64 bytes</li>
-		<li>ECDSA Curve P-384 with SHA-384 / 96 bytes</li>
+		<li>
+			<p>RSA/MD5 / 128–512 bytes (deprecated)</p>
+		</li>
+		<li>
+			<p>[Not used for RRSIG records]</p>
+		</li>
+		<li>
+			<p>DSA/SHA1 / 41 bytes</p>
+		</li>
+		<li>
+			<p>[Reserved]</p>
+		</li>
+		<li>
+			<p>RSA/SHA-1 / 128–512 bytes</p>
+		</li>
+		<li>
+			<p>DSA-NSEC3-SHA1 / 328 bits</p>
+		</li>
+		<li>
+			<p>RSASHA1-NSEC3-SHA1 / 128–512 bytes</p>
+		</li>
+		<li>
+			<p>RSA/SHA-256 / 128–512 bytes</p>
+		</li>
+		<li>
+			<p>[Reserved]</p>
+		</li>
+		<li>
+			<p>RSA/SHA-512 / 128–512 bytes</p>
+		</li>
+		<li>
+			<p>[Reserved]</p>
+		</li>
+		<li>
+			<p>GOST R 34.10-2001 / 64 bytes</p>
+		</li>
+		<li>
+			<p>ECDSA Curve P-256 with SHA-256 / 64 bytes</p>
+		</li>
+		<li>
+			<p>ECDSA Curve P-384 with SHA-384 / 96 bytes</p>
+		</li>
 	</ol>
 	<p>Algorithm 7 allows the signer to specify a key length between 128 and 512 bytes. The CPSC specifies a key length of 256 bytes, which, today, for RSA is considered secure. Unfortunately, that means they have a 256-byte signature for every RRSIG record. Compare that with Algorithm 13 which, for a higher level of security, would produce only a 64-byte signature —&nbsp;one fourth the size per RRSIG record.</p>
-	<p>Returning to the RRSIG record, the "2" (after the "7") represents the number of "labels" in the domain being signed. In this case, the domain is cpsc.gov, which is 2 labels deep. If it were www.cpsc.gov then it would be 3 labels. a.b.cpsc.gov would be 4 labels.</p>
+	<p>Returning to the RRSIG record, the "2" (after the "7") represents the number of "labels" in the domain being signed. In this case, the domain is cpsc.gov, which is 2 labels deep. If it were <a href="https://www.cpsc.gov">www.cpsc.gov</a> then it would be 3 labels. a.b.cpsc.gov would be 4 labels.</p>
 	<p>"21600" represents the TTL that was used when the signature was originally calculated. Since the TTL could be different for each resolver's response, the TTL value needs to be set to a default to ensure that the signature is calculated consistently.</p>
 	<p>The next two numbers are timestamps. The first (20160824030507) represents the time this signature will expire (24 August 2016 at 03:05:07 UTC). The second (20160817020507) represents the time this signature became valid (17 August 2016 at 02:05:07 UTC).</p>
 	<p>"53799" is a checksum on the DNSKEY that was used to sign this record. This checksum is used to more quickly find the DNSKEY that was used to sign this particular record when more than one key is returned. (More on DNSKEYs in the next section.)</p>
-	<p>After the checksum is "cpsc.gov." which is the root domain. This root domain is included regardless of the number of subdomains (e.g., cpsc.gov, www.cpsc.gov, and a.b.cpsc.gov would all have "cpsc.gov." listed as the root domain). This specifies where to find the DNSKEY records that could have signed this record.</p>
+	<p>After the checksum is "cpsc.gov." which is the root domain. This root domain is included regardless of the number of subdomains (e.g., cpsc.gov, <a href="https://www.cpsc.gov">www.cpsc.gov</a>, and a.b.cpsc.gov would all have "cpsc.gov." listed as the root domain). This specifies where to find the DNSKEY records that could have signed this record.</p>
 	<p>Next up is the signature itself. In this case, the signature is encoded in base64 and 256 bytes long. The base64 encoding means that the 256 bytes turns into 344 on the wire.</p>
-	<p>Stepping back, the easy optimization here for the RRSIG record would be to pick a better signature algorithm. By choosing Algorithm 13, rather than Algorithm 7, the CPSC could save 192 bytes per RRSIG record. We've written previously about <a href="https://www.cloudflare.com/dnssec/ecdsa-and-dnssec">why we use Algorithm 13</a> for CloudFlare's DNSSEC implementation.<br>
-		Doing so here would add up because there are ten RRSIG records in the CPSC's zone in order to sign each of the other records (e.g., A, AAAA, NS, MX, etc...).</p>
-	<p>Just by switching to a better encryption algorithm the CPSC could increase the security of their DNS zone and save 1,920 bytes per DNS response. <strong>That small change alone would cut the maximum possible DNS reflection attack possible with the CPSC's zone by 44 percent.</strong></p>
+	<p>Stepping back, the easy optimization here for the RRSIG record would be to pick a better signature algorithm. By choosing Algorithm 13, rather than Algorithm 7, the CPSC could save 192 bytes per RRSIG record. We've written previously about <a href="https://www.cloudflare.com/dnssec/ecdsa-and-dnssec">why we use Algorithm 13</a> for CloudFlare's DNSSEC implementation.Doing so here would add up because there are ten RRSIG records in the CPSC's zone in order to sign each of the other records (e.g., A, AAAA, NS, MX, etc...).</p>
+	<p>Just by switching to a better encryption algorithm the CPSC could increase the security of their DNS zone and save 1,920 bytes per DNS response. <b>That small change alone would cut the maximum possible DNS reflection attack possible with the CPSC's zone by 44 percent.</b></p>
 	<p>While that's the biggest savings, choosing a less optimal outcome can't be considered an actual mistake. Unfortunately, the CPSC's zone has some ugly mistakes as well.</p>
-	<h3 id="theugly">The Ugly</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/the_ugly.png" alt="The Ugly" loading="lazy"><br>
-		<em>The Good, The Bad, and The Ugly artwork by Billy Perkins</em>
-	</p>
+	<h3>The Ugly</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7j5PDGr8xfGFvlRBFKdwzs/55d966f9fd0d09a38a094ffd79fc610b/the_ugly.png" alt="The Ugly" class="kg-image" width="492" height="161" loading="lazy">
+
+	</figure>
+	<p><i>The Good, The Bad, and The Ugly artwork by Billy Perkins</i></p>
 	<p>The RRSIG records discussed in the previous section need to be verified with a public key. These public keys are stored as DNSKEY records. For the CPSC, there are four DNSKEYs that each look like this:</p>
-	<pre><code>cpsc.gov.		18894	IN	DNSKEY	256 3 7 AwEAAbpeSszphwwkOIJn1ha6DE/W3YRXFR2vsMi0RKhq5x9t487UJc0c eamz5TZj6KV5/tzL8/Qr2jnTaQmpWtJHbnF0kqpxeZIR+wzaNbMtEH30 UF5BDv9Bya0W9I+40dS48996kedhEvL6KwmMelB7FH6QPd0ixyhp0+ci 5vew9lzTESEsJ2X2uJrCqo3UacsHyYIzaTSXPpfwizQCql4VySq6+im1 74QaYw/FU4aADAv3R2KQvsR/uI0a7oOihxDDAvtYG7SZvotW3ASZFscd 4B6Yd84RMZC3yGdGtyrSD6tZsiJZoXhLQkkf0kOTWCjPvD8oPm+yYiGI Cm64eM3kflU=
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	DNSKEY	256 3 7 AwEAAbpeSszphwwkOIJn1ha6DE/W3YRXFR2vsMi0RKhq5x9t487UJc0c eamz5TZj6KV5/tzL8/Qr2jnTaQmpWtJHbnF0kqpxeZIR+wzaNbMtEH30 UF5BDv9Bya0W9I+40dS48996kedhEvL6KwmMelB7FH6QPd0ixyhp0+ci 5vew9lzTESEsJ2X2uJrCqo3UacsHyYIzaTSXPpfwizQCql4VySq6+im1 74QaYw/FU4aADAv3R2KQvsR/uI0a7oOihxDDAvtYG7SZvotW3ASZFscd 4B6Yd84RMZC3yGdGtyrSD6tZsiJZoXhLQkkf0kOTWCjPvD8oPm+yYiGI Cm64eM3kflU=</code></pre>
 	<p>Walking through the record they're similarly formatted to RRSIG records. Once again, 18894 is the TTL on the record, the record type is DNSKEY and that's followed by three numbers: 256, 3 and 7. These are the flags field, protocol, and algorithm.</p>
 	<p>The flags field is 16-bits wide representing a number of potential boolean flags. Only <a href="https://tools.ietf.org/html/rfc4034#section-2">two bits</a> of this 16-bit field are currently assigned for use with the rest reserved for the future. A value of 256 (or 0000000010000000 or only the 9th flag set to true) indicates that this DNSKEY holds a key that can be used to verify RRSIGs. The protocol requires a 16-bit number so there's no optimization possible here.</p>
 	<p>The protocol field is 3. That is the only valid value for this field in a DNSKEY record. As the RFC says:</p>
-	<pre><code>The Protocol Field MUST have value 3, and the DNSKEY RR MUST be
+	<pre class="language-bash"><code class="language-bash">The Protocol Field MUST have value 3, and the DNSKEY RR MUST be
 treated as invalid during signature verification if it is found 
-to be some value other than 3.
-</code></pre>
+to be some value other than 3.</code></pre>
 	<p>Again, that seems a bit arbitrary but it's what the protocol requires so there's no optimization.</p>
 	<p>Finally, the algorithm field is 7 which indicates <a href="https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml#dns-sec-alg-numbers-1">RSASHA1-NSEC3-SHA1</a>. So, it should be an RSA public key formatted according to <a href="https://tools.ietf.org/html/rfc3110">RFC3110</a>.</p>
 	<p>Passing it through a base64 decoder and hexdump we can take a look inside:</p>
-	<pre><code>00000000  03 01 00 01 ba 5e 4a cc  e9 87 0c 24 38 82 67 d6  |.....^J....$8.g.|
+	<pre class="language-bash"><code class="language-bash">00000000  03 01 00 01 ba 5e 4a cc  e9 87 0c 24 38 82 67 d6  |.....^J....$8.g.|
 00000010  16 ba 0c 4f d6 dd 84 57  15 1d af b0 c8 b4 44 a8  |...O...W......D.|
 00000020  6a e7 1f 6d e3 ce d4 25  cd 1c 79 a9 b3 e5 36 63  |j..m...%..y...6c|
 00000030  e8 a5 79 fe dc cb f3 f4  2b da 39 d3 69 09 a9 5a  |..y.....+.9.i..Z|
@@ -162,16 +189,19 @@ to be some value other than 3.
 000000d0  c7 1d e0 1e 98 77 ce 11  31 90 b7 c8 67 46 b7 2a  |.....w..1...gF.*|
 000000e0  d2 0f ab 59 b2 22 59 a1  78 4b 42 49 1f d2 43 93  |...Y."Y.xKBI..C.|
 000000f0  58 28 cf bc 3f 28 3e 6f  b2 62 21 88 0a 6e b8 78  |X(..?(&gt;o.b!..n.x|
-00000100  cd e4 7e 55                                       |..~U|
-</code></pre>
+00000100  cd e4 7e 55                                       |..~U|</code></pre>
 	<p>Notice that the first four bytes are 03 01 00 01. That indicates an exponent of 65537 (03 means three bytes of exponent, 010001 in hex is 65537) which is very common for the RSA algorithm. The rest of the record consists of 256 bytes (2,048 bits). These 2,048 bits are the modulus part of the RSA key. Thus this is a 2,048 bit key.</p>
 	<p>Like with RRSIG, the CPSC could have better security and a shorter record if they specified a more efficient algorithm for their DNSKEY records. Using Algorithm 13 would save 192 bytes per DNSKEY, or 768 bytes across the 4 records.</p>
-	<p>But there's the rub: the CPSC doesn't need to have 4 DNSKEY records at all. Except during a key rollover, there should generally only be 2 DNSKEY records. In the CPSC's case, one of the DNSKEYs (id 59364) isn't signing anything. Another of the DNSKEYs (id 27793) is redundant. In other words, the CPSC includes 552 bytes of completely worthless data in every DNS record. <strong>Just eliminating these two useless records would cut the maximum size of a DNS Amplification DDoS attack using the CPSC's zone by almost 13 percent.</strong></p>
+	<p>But there's the rub: the CPSC doesn't need to have 4 DNSKEY records at all. Except during a key rollover, there should generally only be 2 DNSKEY records. In the CPSC's case, one of the DNSKEYs (id 59364) isn't signing anything. Another of the DNSKEYs (id 27793) is redundant. In other words, the CPSC includes 552 bytes of completely worthless data in every DNS record. <b>Just eliminating these two useless records would cut the maximum size of a DNS Amplification DDoS attack using the CPSC's zone by almost 13 percent.</b></p>
 	<p>You can visualize the chain of how DNSSEC records are used to sign each other by using a <a href="http://dnsviz.net/d/cpsc.gov/dnssec">tool provided by DNSVIZ</a>. The diagram below shows how the two unused DNSKEYs don't actually sign any records.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/cpsc_dnssec_diagram.png" alt="CPSC's DNSSEC Diagram" loading="lazy"></p>
-	<h4 id="abettercpsczone">A Better CPSC Zone</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yP9O73PZbNI3SPS7jqO6Q/fbd1616cea6fda616f91bb148eb2af2a/cpsc_dnssec_diagram.png" alt="CPSC's DNSSEC Diagram" class="kg-image" width="890" height="299" loading="lazy">
+
+	</figure>
+	<h4>A Better CPSC Zone</h4>
 	<p>There are a handful of other minor optimizations. Add them all up and the CPSC Zone could be much smaller. At CloudFlare, we've worked to optimize the size and performance of our zone records. We used our automated zone generator on the CPSC and got the following zone file:</p>
-	<pre><code>cpsc.gov.		281	IN	A	104.27.142.66
+	<pre class="language-bash"><code class="language-bash">cpsc.gov.		281	IN	A	104.27.142.66
 cpsc.gov.		281	IN	A	104.27.143.66
 cpsc.gov.		281	IN	RRSIG	A 13 2 300 20160402121755 20160331101755 35273 cpsc.gov. xYJVr9iNMm50wgoGbMaG76QNyZk2aU2STmzxlUGe09G9LyEqnlDW6YLK pyAeMqHODKuxt83dKDUeB0bgvSPCyQ==
 cpsc.gov.		278	IN	AAAA	2400:cb00:2048:1::681b:8e42
@@ -191,15 +221,13 @@ cpsc.gov.		3505	IN	RRSIG	DNSKEY 13 2 3600 20160426183927 20160226183927 2371 cps
 cpsc.gov.		47	IN	TXT	"v=spf1 ip4:63.74.109.6 ip4:63.74.109.10 ip4:63.74.109.20 mx a:list.cpsc.gov -all"
 cpsc.gov.		47	IN	RRSIG	TXT 13 2 300 20160402121801 20160331101801 35273 cpsc.gov. LXjZYeejRtkCFOVqqUpupc3I/4s7Ypua/b/xE3wIC+7a4NRjM7+UA90s gDdINQ8ZPF3SLcCqw2nfc3ex2II8Kg==
 cpsc.gov.		3324	IN	NSEC	\000.cpsc.gov. A NS SOA WKS HINFO MX TXT AAAA LOC SRV CERT SSHFP IPSECKEY RRSIG NSEC DNSKEY TLSA HIP CDS CDNSKEY OPENPGPKEY SPF
-cpsc.gov.		3324	IN	RRSIG	NSEC 13 2 3600 20160402121810 20160331101810 35273 cpsc.gov. 3/1I/SQrwvdffqawg6qG3zfetA1ou5SQioVv0kzMmHbYWJooQv9QEEFX L9RwdWxly0Hly/Aq+UMWzcQ8D2UXZg==
-</code></pre>
-	<p>That is 1,389 bytes and close to as optimized as you could manually create. The actual response may be a bit larger because resolvers can add a 320-byte DS record. Even so, <strong>the optimized CPSC zone would be about one third the size without compromising any functionality and actually increasing security</strong>.</p>
+cpsc.gov.		3324	IN	RRSIG	NSEC 13 2 3600 20160402121810 20160331101810 35273 cpsc.gov. 3/1I/SQrwvdffqawg6qG3zfetA1ou5SQioVv0kzMmHbYWJooQv9QEEFX L9RwdWxly0Hly/Aq+UMWzcQ8D2UXZg==</code></pre>
+	<p>That is 1,389 bytes and close to as optimized as you could manually create. The actual response may be a bit larger because resolvers can add a 320-byte DS record. Even so, <b>the optimized CPSC zone would be about one third the size without compromising any functionality and actually increasing security</b>.</p>
 	<p>But we can do better than that. Unlike the CPSC's current DNS provider (Verizon/UU.net), CloudFlare has anti-DNS reflection protections in place. Specifically, we automatically upgrade from UDP to TCP when a DNS response is particularly large (generally, over 512 bytes). Since TCP requires a handshake, it prevents source IP address spoofing which is necessary for a DNS amplification attack.</p>
 	<p>In addition, we rate limit unknown resolvers. Again, this helps ensure that our infrastructure can't be abused to amplify attacks.</p>
 	<p>Finally, across our DNS infrastructure we have <a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">deprecated ANY queries</a> and have <a href="https://tools.ietf.org/html/draft-ogud-dnsop-acl-metaqueries-00">proposed to the IETF</a> to restrict ANY queries to only authorized parties. By neutering ANY, we've significantly reduced the maximum size of responses even for zone files that need to be large due to a large number of records.</p>
-	<h4 id="denouement">Denouement</h4>
+	<h4>Denouement</h4>
 	<p>DNSSEC is complicated and it's easy to get wrong. Unfortunately, getting your DNSSEC configuration wrong creates a real potential harm to the rest of the Internet by making your domain's zone file into a potential weapon to be abused by attackers. That's why, in <a href="https://www.cloudflare.com/dnssec/universal-dnssec">CloudFlare's implementation</a>, we spent a significant amount of time to optimize our automatic DNSSEC configuration to be as efficient as possible while still being easy and free for all our customers.</p>
 	<p>As Clint Eastwood says in the final scene of the movie "The Good, the Bad, and the Ugly": "You see in this world there's two kinds of people, my friend, those with loaded guns and those who dig. You dig." Pardon the puns but… we hope the CPSC will fix their zone and unload the giant gun attackers have used to launch some of the biggest DDoS attacks on the Internet. When they do, it'll be a relief to "<a href="https://en.wikipedia.org/wiki/Dig_(command)">dig</a>" their domain and get back a reasonably sized answer.</p>
 	<p>If the instructions above aren't enough on their own, we'd be happy to work with the CPSC to help them get their DNS record under control and ensure they are no longer inadvertently facilitating the Internet's largest DDoS attacks. Of course, when the CPSC does get its DNS issues fixed, undoubtedly attackers will find another misconfigured and bloated zone they can abuse to launch DNS amplification DDoS attacks. And, when that happens, we'll be happy to work with them too — until the whole Internet has the well-configured DNS foundation it needs to be safe and secure.</p>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/zPVH7rxl6So" frameborder="0" allowfullscreen=""></iframe><!--kg-card-end: markdown-->
 </div>

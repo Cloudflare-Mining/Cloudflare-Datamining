@@ -1,58 +1,52 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-javascript-modules-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-javascript-modules-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-27.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We’re excited to announce that JavaScript modules are now supported on Cloudflare Workers. If you’ve ever taken look at an example Worker written in JavaScript, you might recognize the following code snippet that has been floating around the Internet the past few years:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">addEventListener("fetch", (event) =&gt; {
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-javascript-modules">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/workers-javascript-modules">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/baJtGnmh2zR5W5bkcrrG7/ffc9ef19f7d655c8ac422a50d652da9b/image1-27.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>We’re excited to announce that JavaScript modules are now supported on Cloudflare Workers. If you’ve ever taken look at an example Worker written in JavaScript, you might recognize the following code snippet that has been floating around the Internet the past few years:</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event) =&gt; {
   event.respondWith(new Response("Hello Worker!"));
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>The above syntax is known as the “<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a>” API, and it was proposed to be standardized for use in web browsers. The idea is that you can attach a JavaScript file to a web page to modify its HTTP requests and responses, acting like a virtual endpoint. It was exactly what we needed for Workers, and it even integrated well with standard Web APIs like <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch"><code>fetch()</code></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis/cache"><code>caches</code></a>.</p>
-	<p>Before introducing modules, we want to make it clear that we will continue to support the Service Worker API. No developer wants to get an email saying that <em>you</em> need to rewrite <em>your</em> code because an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> or feature is being deprecated; and you won’t be getting one from us. If you’re interested in learning why we made this decision, you can read about our commitment to <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">backwards-compatibility</a> for Workers.</p>
-	<h3 id="what-are-javascript-modules">What are JavaScript modules?</h3>
-	<p>JavaScript modules, also known as ECMAScript (abbreviated. “ES”) modules, is the standard API for importing and exporting code in JavaScript. It was introduced by the “ES6” language specification for JavaScript, and has been implemented by most Web browsers, Node.js, Deno, and now Cloudflare Workers. Here’s an example to demonstrate how it works:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// filename: ./src/util.js
+	<p>Before introducing modules, we want to make it clear that we will continue to support the Service Worker API. No developer wants to get an email saying that <i>you</i> need to rewrite <i>your</i> code because an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> or feature is being deprecated; and you won’t be getting one from us. If you’re interested in learning why we made this decision, you can read about our commitment to <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">backwards-compatibility</a> for Workers.</p>
+	<h3>What are JavaScript modules?</h3>
+	<p>JavaScript modules, also known as ECMAScript (abbreviated. “ES”) modules, is the standard API for importing and exporting code in JavaScript. It was introduced by the “ES6” language specification for JavaScript, and has been implemented by most Web browsers, Node.js, Deno, and now Cloudflare Workers. Here’s an example to demonstrate how it works:</p>
+	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/util.js
 export function getDate(time) {
   return new Date(time).toISOString().split("T")[0]; // "YYYY-MM-DD"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The "export" keyword indicates that the "getDate" function should be exported from the current module. Then, you can use "import" from another module to use that function.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// filename: ./src/index.js
+}</code></pre>
+	<p>The "export" keyword indicates that the "getDate" function should be exported from the current module. Then, you can use "import" from another module to use that function.</p>
+	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/index.js
 import { getDate } from "./util.js"
 
-console.log("Today’s date:", getDate());
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Those are the basics, but there’s a lot more you can do with modules. It allows you to organize, maintain, and re-use your code elegantly that just works. While we can’t go over <em>every</em> aspect of modules here, if you’d like to learn more we’d encourage you to read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN guide</a> on modules, or a more <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive">technical deep-dive</a> by Lin Clark.</p>
-	<h3 id="how-can-i-use-modules-in-workers">How can I use modules in Workers?</h3>
-	<p>You can export a default module, which will represent your Worker. Instead of using "addEventListener," each event handler is defined as a function on that module. Today, we support "<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker">fetch</a>" for HTTP and WebSocket requests and "<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker">scheduled</a>" for cron triggers.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">export default {
+console.log("Today’s date:", getDate());</code></pre>
+	<p>Those are the basics, but there’s a lot more you can do with modules. It allows you to organize, maintain, and re-use your code elegantly that just works. While we can’t go over <i>every</i> aspect of modules here, if you’d like to learn more we’d encourage you to read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN guide</a> on modules, or a more <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive">technical deep-dive</a> by Lin Clark.</p>
+	<h3>How can I use modules in Workers?</h3>
+	<p>You can export a default module, which will represent your Worker. Instead of using "addEventListener," each event handler is defined as a function on that module. Today, we support "<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker">fetch</a>" for HTTP and WebSocket requests and "<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker">scheduled</a>" for cron triggers.</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
   async fetch(request, environment, context) {
     return new Response("I’m a module!");
   },
   async scheduled(controller, environment, context) {
     // await doATask();
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>You may also notice some other differences, such as the parameters on each event handler. Instead of a single "Event" object, the parameters that you need the most are spread out on their own. The first parameter is specific to the event type: for "fetch" it’s the <a href="https://developers.cloudflare.com/workers/runtime-apis/request">Request</a> object, and for "scheduled" it’s a <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1">controller</a> that contains the cron schedule.</p>
 	<p>The second parameter is an object that contains your environment variables (also known as "<a href="https://developers.cloudflare.com/workers/platform/environment-variables">bindings</a>"). Previously, each variable was inserted into the global scope of the Worker. While a simple solution, it was confusing to have variables magically appear in your code. Now, with an environment object, you can control which modules and libraries get access to your environment variables. This mechanism is more secure, as it can prevent a compromised or nosy third-party library from enumerating all your variables or secrets.</p>
 	<p>The third parameter is a context object, which allows you to register background tasks using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil"><code>waitUntil()</code></a>. This is useful for tasks like logging or error reporting that should not block the execution of the event.</p>
-	<p>When you put that all together, you can import and export multiple modules, as well as use the new event handler syntax.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// filename: ./src/error.js
+	<p>When you put that all together, you can import and export multiple modules, as well as use the new event handler syntax.</p>
+	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/error.js
 export async function logError(url, error) {
   await fetch(url, {
      method: "POST",
      body: error.stack
   })
-}
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// filename: ./src/worker.js
+}</code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/worker.js
 import { logError } from "./error.js"
 
 export default {
@@ -64,21 +58,18 @@ export default {
        return new Response("Oops!", { status: 500 });
     }
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Let’s not forget about Durable Objects, which became <a href="https://blog.cloudflare.com/durable-objects-ga">generally available</a> earlier this week! You can also export classes, which is how you define a Durable Object class. Here’s another example with a "Counter" Durable Object, that responds with an incrementing value.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// filename: ./src/counter.js
+}</code></pre>
+	<p>Let’s not forget about Durable Objects, which became <a href="https://blog.cloudflare.com/durable-objects-ga">generally available</a> earlier this week! You can also export classes, which is how you define a Durable Object class. Here’s another example with a "Counter" Durable Object, that responds with an incrementing value.</p>
+	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/counter.js
 export class Counter {
   value = 0;
   fetch() {
     this.value++;
     return new Response(this.value.toString());
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// filename: ./src/worker.js
+}</code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/worker.js
 // We need to re-export the Durable Object class in the Worker module.
 export { Counter } from "./counter.js"
 
@@ -90,13 +81,11 @@ export default {
     const counter = environment.Counter.get(counterId);
     return counter.fetch("https://counter.object/increment");
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="are-there-non-javascript-modules">Are there non-JavaScript modules?</h3>
+}</code></pre>
+	<h3>Are there non-JavaScript modules?</h3>
 	<p>Yes! While modules are primarily for JavaScript, we also support other modules types, some of which are not yet standardized.</p>
-	<p>For instance, you can import <a href="https://developer.mozilla.org/en-US/docs/WebAssembly">WebAssembly</a> as a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module">module</a>. Previously, with the Service Worker API, WebAssembly was included as a binding. We think that was a mistake, since WebAssembly should be represented as code and not an external resource. With modules, here’s the new way to import WebAssembly:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import module from "./lib/hello.wasm"
+	<p>For instance, you can import <a href="https://developer.mozilla.org/en-US/docs/WebAssembly">WebAssembly</a> as a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module">module</a>. Previously, with the Service Worker API, WebAssembly was included as a binding. We think that was a mistake, since WebAssembly should be represented as code and not an external resource. With modules, here’s the new way to import WebAssembly:</p>
+	<pre class="language-javascript"><code class="language-javascript">import module from "./lib/hello.wasm"
 
 export default {
   async fetch(request) {
@@ -104,28 +93,23 @@ export default {
     const result = instance.exports.hello();
     return new Response(result);
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>While not supported today, we look forward to a future where WebAssembly and JavaScript modules can be more tightly integrated, as outlined in this <a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration">proposal</a>. The ergonomics improvement, demonstrated below, can go a long way to make WebAssembly more included in the JavaScript ecosystem.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import { hello } from "./lib/hello.wasm"
+}</code></pre>
+	<p>While not supported today, we look forward to a future where WebAssembly and JavaScript modules can be more tightly integrated, as outlined in this <a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration">proposal</a>. The ergonomics improvement, demonstrated below, can go a long way to make WebAssembly more included in the JavaScript ecosystem.</p>
+	<pre class="language-javascript"><code class="language-javascript">import { hello } from "./lib/hello.wasm"
 
 export default {
   async fetch(request) {
     return new Response(hello());
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We’ve also added support for text and binary modules, which allow you to import a <code>String</code> and <code>ArrayBuffer</code>, respectively. While not standardized, it allows you to easily import resources like an HTML file or an image.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-html">&lt;!-- filename: ./public/index.html --&gt;
+}</code></pre>
+	<p>We’ve also added support for text and binary modules, which allow you to import a <code>String</code> and <code>ArrayBuffer</code>, respectively. While not standardized, it allows you to easily import resources like an HTML file or an image.</p>
+	<pre class="language-html"><code class="language-html">&lt;!-- filename: ./public/index.html --&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;&lt;body&gt;
 &lt;p&gt;Hello!&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">import html from "../public/index.html"
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">import html from "../public/index.html"
 
 export default {
   fetch(request) {
@@ -136,15 +120,13 @@ export default {
     }
     return fetch(request);
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="how-can-i-get-started">How can I get started?</h3>
+}</code></pre>
+	<h3>How can I get started?</h3>
 	<p>There are many ways to get started with modules.</p>
 	<p>First, you can try out modules in your browser using our <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev">playground</a> (which doesn’t require an account) or by using the dashboard <a href="https://workers.new">quick editor</a>. Your browser will automatically detect when you’re using modules to allow you to seamlessly switch from the Service Worker API. For now, you’ll only be able to create one JavaScript module in the browser, though supporting multiple modules is something we’ll be improving soon.</p>
-	<p>If you’re feeling adventurous and want to start a <em>new</em> project using modules, you can try out the beta release of <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, the next-generation of the command-line interface (CLI) for Workers.</p>
-	<p>For existing projects, we still recommend using <a href="https://github.com/cloudflare/wrangler">wrangler 1.0</a> (release 1.17 or later). To enable modules, you can adapt your "<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules">wrangler.toml</a>" configuration to the following example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-toml">name = "my-worker"
+	<p>If you’re feeling adventurous and want to start a <i>new</i> project using modules, you can try out the beta release of <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, the next-generation of the command-line interface (CLI) for Workers.</p>
+	<p>For existing projects, we still recommend using <a href="https://github.com/cloudflare/wrangler">wrangler 1.0</a> (release 1.17 or later). To enable modules, you can adapt your "<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules">wrangler.toml</a>" configuration to the following example:</p>
+	<pre class="language-toml"><code class="language-toml">name = "my-worker"
 type = "javascript"
 workers_dev = true
 
@@ -159,12 +141,15 @@ globs = ["**/*.js"]
 
 # Uncomment if you have a build script.
 # [build]
-# command = "npm run build"
-</code></pre>
-	<!--kg-card-end: markdown-->
+# command = "npm run build"</code></pre>
 	<p>We’ve updated our <a href="https://developers.cloudflare.com/workers">documentation</a> to provide more details about <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker">modules</a>, though some examples will still be using the Service Worker API as we transition to showing both formats. (and TypeScript as a bonus!)</p>
 	<p>If you experience an issue or notice something strange with modules, please <a href="mailto:workers-modules@cloudflare.com">let us know</a>, and we’ll take a look. Happy coding, and we’re excited to see what you build with modules!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZcNNYExuFZtWS9zT5TZ9E/2cbf416e05d53344c1d2c80bf3a8fa10/image2-11.png" alt="" class="kg-image" width="1200" height="385" loading="lazy">
+
+	</figure>
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

@@ -1,35 +1,51 @@
-<div class="mb2 gray5">11 min read</div>
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Cloudflare-reflections-copy-2@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NJezhsJZ3Up74AGwLZpi6/279e93ceb045d0cb9e161a224a903214/Cloudflare-reflections-copy-2_2x.png" alt="" class="kg-image" width="2214" height="1067" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we’re <a href="https://blog.cloudflare.com/making-the-waf-40-faster">constantly working on</a> improving the performance of our edge — and that was exactly what my internship this summer entailed. I’m excited to share some improvements we’ve made to our popular <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">Firewall Rules</a> product over the past few months.</p>
 	<p>Firewall Rules lets customers filter the traffic hitting their site. It’s built using our engine, Wirefilter, which takes powerful boolean expressions written by customers and matches incoming requests against them. Customers can then choose how to respond to traffic which matches these rules. We will discuss some in-depth optimizations we have recently made to Wirefilter, so you may wish to <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">get familiar</a> with how it works if you haven’t already.</p>
-	<h3 id="minimizing-cpu-usage">Minimizing CPU usage</h3>
+	<h3>Minimizing CPU usage</h3>
 	<p>As a new member of the Firewall team, I quickly learned that performance is important — even in our security products. We look for opportunities to make our customers’ Internet properties faster where it’s safe to do so, maximizing both security and performance.</p>
 	<p>Our engine is already heavily used, powering all of Firewall Rules. But we have bigger plans. More and more products like our <a href="https://support.cloudflare.com/hc/en-us/articles/200172016-Understanding-the-Cloudflare-Web-Application-Firewall-WAF">Web Application Firewall</a> (WAF) will be running behind our Wirefilter-based engine, and it will become responsible for eating up a sizable chunk of our total CPU usage before long.</p>
-	<h3 id="how-to-measure-performance">How to measure performance?</h3>
+	<h3>How to measure performance?</h3>
 	<p>Measuring performance is a notoriously tricky task, and as you can probably imagine trying to do this in a highly distributed environment (aka <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing">Cloudflare’s edge</a>) does not help. We’ve been surprised in the past by optimizations that look good on paper, but, when tested out in production, just don’t seem to do much.</p>
 	<p>Our solution? Performance measurement as a service — an isolated and reproducible benchmark for our Firewall engine and a framework for engineers to easily request runs and view results. It’s worth noting that we took a lot of inspiration from the fantastic <a href="https://perf.rust-lang.org">Rust Compiler benchmarks</a> to build this.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image3-10.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Our benchmarking framework, showing how performance during different stages of processing Wirefilter expressions has changed over time [1].</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j6ou7jUofaSYjEjoMej25/d467199d6dc809000a6fab7608a8c00f/image3-10.png" alt="" class="kg-image" width="1999" height="719" loading="lazy">
+
 	</figure>
-	<h3 id="what-to-measure">What to measure?</h3>
+	<p>Our benchmarking framework, showing how performance during different stages of processing Wirefilter expressions has changed over time [1].</p>
+	<h3>What to measure?</h3>
 	<p>Our next challenge was to find some meaningful performance metrics. Some experimentation quickly uncovered that time was far too volatile a measure for meaningful comparisons, so we turned to <a href="https://en.wikipedia.org/wiki/Hardware_performance_counter">hardware counters</a> [2]. It’s not hard to find tools to measure these (<a href="https://perf.wiki.kernel.org/index.php/Main_Page">perf</a> and <a href="https://software.intel.com/content/www/us/en/develop/tools/vtune-profiler.html">VTune</a> are two such examples), although they (<a href="https://software.intel.com/content/www/us/en/develop/documentation/vtune-help/top/api-support/instrumentation-and-tracing-technology-apis/instrumentation-and-tracing-technology-api-reference/collection-control-api.html">mostly</a>) don’t allow control over which parts of the program are recorded. In our case, we wished to individually record measurements for different stages of filter processing — parsing, compilation, analysis, and execution.</p>
-	<p>Once again we took inspiration from the Rust compiler, and its <a href="https://blog.rust-lang.org/inside-rust/2020/02/25/intro-rustc-self-profile.html">self-profiling options</a>, using the <a href="https://www.man7.org/linux/man-pages/man2/perf_event_open.2.html">perf_event_open</a> API to record counters from <em>inside</em> our binary. We then output something like the following, which our framework can easily ingest and store for later visualization.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-24-at-10.20.42.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Output of our benchmarks in <a href="https://jsonlines.org">JSON Lines</a> format, showing a list of recordings for each combination of hardware counter and Wirefilter processing stage. We’ve used 10 repeats here for readability, but we use around 20, in addition to 5 warmup rounds, within our framework.</figcaption>
+	<p>Once again we took inspiration from the Rust compiler, and its <a href="https://blog.rust-lang.org/inside-rust/2020/02/25/intro-rustc-self-profile.html">self-profiling options</a>, using the <a href="https://www.man7.org/linux/man-pages/man2/perf_event_open.2.html">perf_event_open</a> API to record counters from <i>inside</i> our binary. We then output something like the following, which our framework can easily ingest and store for later visualization.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rMHtBLVjfrHV0BMfTvaZV/e1963508f5cabc4177d346993e232b75/Screen-Shot-2020-09-24-at-10.20.42.png" alt="" class="kg-image" width="1338" height="860" loading="lazy">
+
 	</figure>
+	<p>Output of our benchmarks in <a href="https://jsonlines.org">JSON Lines</a> format, showing a list of recordings for each combination of hardware counter and Wirefilter processing stage. We’ve used 10 repeats here for readability, but we use around 20, in addition to 5 warmup rounds, within our framework.</p>
 	<p>Whilst we mainly focussed on metrics relating to CPU usage, we also use a combination of <a href="https://man7.org/linux/man-pages/man2/getrusage.2.html"><code>getrusage</code></a> and <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=695f055936938c674473ea071ca7359a863551e7"><code>clear_refs</code></a> to find the maximum resident set size (RSS). This is useful to understand the memory impact of <a href="https://github.com/BurntSushi/aho-corasick">particular algorithms</a> in addition to CPU.</p>
 	<p>But the challenge was not over. Cloudflare’s standard CI agents use virtualization and sandboxing for security and convenience, but this makes accessing hardware counters virtually impossible. Running our benchmarks on a dedicated machine gave us access to these counters, and ensured more reproducible results.</p>
-	<h3 id="speeding-up-the-speed-test">Speeding up the speed test</h3>
+	<h3>Speeding up the speed test</h3>
 	<p>Our benchmarks were designed from the outset to take an important place in our development process. For instance, we now perform a full benchmark run before releasing each new version to detect performance regressions.</p>
 	<p>But with our benchmarks in place, it quickly became clear that we had a problem. Our benchmarks simply weren’t fast enough — at least if we wanted to complete them in less than a few hours! The problem was we have a very large number &nbsp;of filters. Since our engine would never usually execute requests against this many filters at once it was proving incredibly costly. We came up with a few tricks to cut this down…</p>
 	<ul>
-		<li><strong><strong><strong>Deduplication. </strong></strong></strong>It turns out that only around a third of filters are structurally unique (something that is easy to check as Wirefilter can helpfully serialize to JSON). We managed to cut down a great deal of time by ignoring duplicate filters in our benchmarks.</li>
-		<li><strong><strong><strong>Sampling.</strong> </strong></strong>Still, we had too many filters and random sampling presented an easy solution. A more subtle challenge was to make sure that the random sample was always the same to maintain reproducibility.</li>
-		<li><strong><strong><strong>Partitioning.</strong> </strong></strong>We worried that deduplication and sampling would cause us to miss important cases that are useful to optimize. By first partitioning filters by Wirefilter language feature, we can ensure we’re getting a good range of filters. It also helpfully gives us more detail about where specifically the impact of a performance change is.</li>
+		<li>
+			<p><b><b><b>Deduplication.</b></b></b> It turns out that only around a third of filters are structurally unique (something that is easy to check as Wirefilter can helpfully serialize to JSON). We managed to cut down a great deal of time by ignoring duplicate filters in our benchmarks.</p>
+		</li>
+		<li>
+			<p><b><b><b>Sampling.</b></b></b> Still, we had too many filters and random sampling presented an easy solution. A more subtle challenge was to make sure that the random sample was always the same to maintain reproducibility.</p>
+		</li>
+		<li>
+			<p><b><b><b>Partitioning.</b></b></b> We worried that deduplication and sampling would cause us to miss important cases that are useful to optimize. By first partitioning filters by Wirefilter language feature, we can ensure we’re getting a good range of filters. It also helpfully gives us more detail about where specifically the impact of a performance change is.</p>
+		</li>
 	</ul>
 	<p>Most of these are trade-offs, but very necessary ones which allow us to run continual benchmarks without development speed grinding to a halt. At the time of writing, we’ve managed to get a benchmark run down to around 20 minutes using these ideas.</p>
-	<h3 id="optimizing-our-engine">Optimizing our engine</h3>
+	<h3>Optimizing our engine</h3>
 	<p>With a benchmarking framework in place, we were ready to begin testing optimizations. But how do you optimize an interpreter like Wirefilter? <a href="https://en.wikipedia.org/wiki/Just-in-time_compilation">Just-in-time (JIT) compilation</a>, <a href="https://dl.acm.org/doi/10.1145/277652.277743">selective inlining</a> and <a href="http://www.complang.tuwien.ac.at/andi/papers/dotnet_06.pdf">replication</a> were some ideas floating around in the word of interpreters that seemed attractive. After all, we <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">previously wrote</a> about the cost of dynamic dispatch in Wirefilter. All of these techniques aim to reduce that effect.</p>
 	<p>However, running some real filters through a profiler tells a different story. Most execution time, around 65%, is spent not resolving dynamic dispatch calls but instead performing <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/operators/#comparison-operators">operations</a> like comparison and searches. Filters currently in production tend to be pretty light on functions, but throw in a few more of these and even less time would be spent on dynamic dispatch. We suspect that even a fair chunk of the remaining 35% is actually spent reading the memory of request fields.</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -106,10 +122,8 @@
 		</tbody>
 	</table>
 	<figcaption>Breakdown of CPU time while executing a typical production filter.</figcaption><!--kg-card-end: html-->
-	<p></p>
-	<p></p>
-	<h3 id="an-adventure-in-substring-searching">An adventure in substring searching</h3>
-	<p>By now, you shouldn’t be surprised that the <code>contains</code> operator was one of the first in line for optimization. If you’ve ever written a Firewall Rule, you’re probably already familiar with what it does — it checks whether a substring is present in the field you are matching against. For example, the following expression would match when the host is “example.com” or “www.example.net”, but not when it is “cloudflare.com”. In <a href="https://en.wikipedia.org/wiki/String-searching_algorithm">string searching algorithms</a>, this is commonly referred to as finding a ‘needle’ (“example”) within a ‘haystack’ (“example.com”).</p>
+	<h3>An adventure in substring searching</h3>
+	<p>By now, you shouldn’t be surprised that the <code>contains</code> operator was one of the first in line for optimization. If you’ve ever written a Firewall Rule, you’re probably already familiar with what it does — it checks whether a substring is present in the field you are matching against. For example, the following expression would match when the host is “example.com” or “<a href="http://www.example.xn--net-9o0a">www.example.net”</a>, but not when it is “cloudflare.com”. In <a href="https://en.wikipedia.org/wiki/String-searching_algorithm">string searching algorithms</a>, this is commonly referred to as finding a ‘needle’ (“example”) within a ‘haystack’ (“example.com”).</p>
 	<p><code>http.host contains “example”</code></p>
 	<p>How does this work under the hood? Ordinarily, we may have used Rust’s <a href="https://doc.rust-lang.org/std/string/struct.String.html#method.contains">`String::contains` function</a> but Wirefilter also allows raw byte expressions that don’t necessarily conform to UTF-8.</p>
 	<p><code>http.host contains 65:78:61:6d:70:6c:65</code></p>
@@ -185,30 +199,48 @@
 		</tbody>
 	</table>
 	<figcaption>Improvements in instruction count using Wojciech Muła’s sse4-strstr library over the memmem crate with Wirefilter.</figcaption><!--kg-card-end: html-->
-	<p></p>
-	<p></p>
 	<p>I encourage you to <a href="http://0x80.pl/articles/simd-strfind.html">read more</a> on “Algorithm 1”, which we used, but it works something like this (I’ve changed the order a little to help make it clearer). It’s worth <a href="https://en.wikipedia.org/wiki/SIMD">reading up</a> on SIMD instructions if you’re unfamiliar with them — they’re the essence behind what makes this algorithm fast.</p>
 	<ol>
-		<li>We fill one SIMD register with the first byte of the needle being searched for, simply repeated over and over.</li>
-		<li>We load as much of our haystack as we can into another SIMD register and perform a bitwise equality operation with our previous register.</li>
-		<li>Now, any position in the resultant register that is 0 cannot be the start of the match since it doesn’t start with the same byte of the needle.</li>
-		<li>We now repeat this process with the last byte of the needle, offsetting the haystack, to rule out any positions that don’t end with the same byte as the needle.</li>
-		<li>Bitwise ANDing these two results together, we (hopefully) have now drastically reduced our potential matches.</li>
-		<li>Each of the remaining potential matches can be checked manually using a memcmp operation. If we find a match, then we’re done.</li>
-		<li>If not, we continue with the next part of our haystack and repeat until we’ve checked the entire thing.</li>
+		<li>
+			<p>We fill one SIMD register with the first byte of the needle being searched for, simply repeated over and over.</p>
+		</li>
+		<li>
+			<p>We load as much of our haystack as we can into another SIMD register and perform a bitwise equality operation with our previous register.</p>
+		</li>
+		<li>
+			<p>Now, any position in the resultant register that is 0 cannot be the start of the match since it doesn’t start with the same byte of the needle.</p>
+		</li>
+		<li>
+			<p>We now repeat this process with the last byte of the needle, offsetting the haystack, to rule out any positions that don’t end with the same byte as the needle.</p>
+		</li>
+		<li>
+			<p>Bitwise ANDing these two results together, we (hopefully) have now drastically reduced our potential matches.</p>
+		</li>
+		<li>
+			<p>Each of the remaining potential matches can be checked manually using a memcmp operation. If we find a match, then we’re done.</p>
+		</li>
+		<li>
+			<p>If not, we continue with the next part of our haystack and repeat until we’ve checked the entire thing.</p>
+		</li>
 	</ol>
-	<h3 id="when-it-goes-wrong">When it goes wrong</h3>
+	<h3>When it goes wrong</h3>
 	<p>You may be wondering what happens if our haystack doesn’t fit neatly into registers. In the original algorithm, nothing. It simply continues reading into the oblivion after the end of the haystack until the last register is full, and uses a bitmask to ignore potential false-positives from this additional region of memory.</p>
 	<p>As we mentioned, security is our priority when it comes to optimizations, so we could never deploy something with this kind of behaviour. We ended up porting Muła’s library to Rust (we’ve also <a href="https://crates.io/crates/sliceslice">open-sourced the crate</a>!) and performed an <a href="https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/coding-for-neon---part-2-dealing-with-leftovers">overlapping registers modification</a> found in ARM’s blog.</p>
 	<p>It’s best illustrated by example — notice the difference between how we would fill registers on an imaginary SIMD instruction-set with 4-byte registers.</p>
-	<p><strong>Before modification</strong></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image1-16.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>How registers are filled in the original implementation for the haystack “abcdefghij”, red squares indicate out of bounds memory.</figcaption>
+	<p><b>Before modification</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OUJ2AojfLLoz1mZepPjg0/5fe5a7e4a451fc49245ad3b7a962779d/image1-16.png" alt="" class="kg-image" width="1999" height="225" loading="lazy">
+
 	</figure>
-	<p><strong>After modification</strong></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image4-10.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>How registers are filled with the overlapping modification for the same haystack, notice how ‘g’ and ‘h’ each appear in two registers.</figcaption>
+	<p>How registers are filled in the original implementation for the haystack “abcdefghij”, red squares indicate out of bounds memory.</p>
+	<p><b>After modification</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j5TTWwSXcV1Rtu7Uaoqsf/420aae85fa11ab55c9e0563d0a31082c/image4-10.png" alt="" class="kg-image" width="1999" height="228" loading="lazy">
+
 	</figure>
+	<p>How registers are filled with the overlapping modification for the same haystack, notice how ‘g’ and ‘h’ each appear in two registers.</p>
 	<p>In our case, repeating some bytes within two different registers will never change the final outcome, so this modification is allowed as-is. However, in reality, we found it was better to use a bitmask to exclude repeated parts of the final register and minimize the number of memcmp calls.</p>
 	<p>What if the haystack is too small to even fill a single register? In this case, we can’t use our overlapping trick since there’s nothing to overlap with. Our solution is straightforward: while we were primarily targeting AVX2, which can store 32-bytes in a lane, we can easily move down to another instruction set with smaller registers that the haystack can fit into. In reality, we don’t currently go any smaller than SSE2. Beyond this, we instead use an implementation of the <a href="https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm">Rabin-Karp searching algorithm</a> which appears to perform well.</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -285,14 +317,12 @@
 		</tbody>
 	</table>
 	<figcaption>Register sizes in different SIMD instruction sets [3]. We did not consider AVX512 since support for this is not widespread enough.</figcaption><!--kg-card-end: html-->
-	<p></p>
-	<p></p>
-	<h3 id="is-it-always-fast">Is it always fast?</h3>
+	<h3>Is it always fast?</h3>
 	<p>Choosing the first and last bytes of the needle to rule out potential matches is a great idea. It means that when it does come to performing a memcmp, we can ignore these, as we know they already match. Unfortunately, as Muła points out, this also makes the algorithm susceptible to a worst-case attack in some instances.</p>
 	<p>Let’s give an expression that a customer might write to illustrate this.</p>
 	<p><code>http.request.uri.path contains “/wp-admin/”</code></p>
 	<p>If we try to search for this within a very long sequence of ‘/’s, we will find a potential match in every position and make lots of calls to memcmp — essentially performing a slow <a href="https://en.wikipedia.org/wiki/String-searching_algorithm#Na%C3%AFve_string_search">bruteforce substring search</a>.</p>
-	<p>Clearly we need to choose different bytes from the needle. But which ones should we choose? For each choice, an adversary can always find a slightly different, but equally troublesome, worst case. We instead use <a href="https://en.wikipedia.org/wiki/Randomized_algorithm">randomness</a> to throw off our would-be adversary, picking the first byte of the needle as before, but then choosing another <em>random</em> byte to use.</p>
+	<p>Clearly we need to choose different bytes from the needle. But which ones should we choose? For each choice, an adversary can always find a slightly different, but equally troublesome, worst case. We instead use <a href="https://en.wikipedia.org/wiki/Randomized_algorithm">randomness</a> to throw off our would-be adversary, picking the first byte of the needle as before, but then choosing another <i>random</i> byte to use.</p>
 	<p>Our new version is unsurprisingly slower than Muła’s, yet it still exhibits a great improvement over both the memmem and regex crates. Performance, but without sacrificing safety.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -382,9 +412,7 @@
 		</tbody>
 	</table>
 	<figcaption>Improvements in instruction count of using sse4-strstr and sliceslice over the memmem crate with Wirefilter.</figcaption><!--kg-card-end: html-->
-	<p></p>
-	<p></p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>This is only a small taste of the performance work we’ve been doing, and we have much more yet to come. Nevertheless, none of this would have been possible without the support of my manager Richard and my mentor Elie, who contributed a lot of these ideas. I’ve learned so much over the past few months, but most of all that Cloudflare is an amazing place to be an intern!</p>
 	<p>[1] Since our benchmarks are not run within a production environment, results in this post do not represent traffic on our edge.</p>
 	<p>[2] We found instruction counts to be a particularly stable measure, and CPU cycles a particularly unstable one.</p>

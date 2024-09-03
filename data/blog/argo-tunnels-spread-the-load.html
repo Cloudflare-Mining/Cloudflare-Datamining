@@ -1,28 +1,43 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Jac4QWW6GnKGhSnLVCdkK/044459663078ac16ad7ca4c5e6b5f09a/argo-tunnels-spread-the-load.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>We recently announced <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> which allows you to deploy your applications anywhere, even if your webserver is sitting behind a NAT or firewall. Now, with support for load balancing, you can spread the traffic across your tunnels.</p>
-	<h3 id="aquickargotunnelrecap">A Quick Argo Tunnel Recap</h3>
-	<p>Argo Tunnel allows you to expose your web server to the internet without having to open routes in your firewall or setup dedicated routes. Your servers stay safe inside your infrastructure. All you need to do is install <em>cloudflared</em> (our open source agent) and point it to your server. <em>cloudflared</em> will establish secure connections to our global network and securely forward requests to your service. Since <em>cloudflared</em> initializes the connection, you don't need to open a hole in your firewall or create a complex routing policy. Think of it as a lightweight GRE tunnel from Cloudflare to your server.</p>
-	<h3 id="tunnelsandloadbalancers">Tunnels and Load Balancers</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Salt_Cars.jpg" alt="Salt_Cars" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-nc-nd/2.0">CC BY-NC-ND 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:Salt_Cars.jpg">image</a> by Carey Lyons</small></p>
+	<h3>A Quick Argo Tunnel Recap</h3>
+	<p>Argo Tunnel allows you to expose your web server to the internet without having to open routes in your firewall or setup dedicated routes. Your servers stay safe inside your infrastructure. All you need to do is install <i>cloudflared</i> (our open source agent) and point it to your server. <i>cloudflared</i> will establish secure connections to our global network and securely forward requests to your service. Since <i>cloudflared</i> initializes the connection, you don't need to open a hole in your firewall or create a complex routing policy. Think of it as a lightweight GRE tunnel from Cloudflare to your server.</p>
+	<h3>Tunnels and Load Balancers</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fRrc22YYv0PJJ8LmwBkp0/42e66345337ce29b589965105b47a220/Salt_Cars.jpg" alt="Salt_Cars" class="kg-image" width="2625" height="1950" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-nc-nd/2.0">CC BY-NC-ND 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:Salt_Cars.jpg">image</a> by Carey Lyons</p>
 	<p>If you are running a simple service as a proof of concept or for local development, a single Argo Tunnel can be enough. For real-world deployments though, you almost always want multiple instances of your service running on seperate machines, availability zones, or even countries. Cloudflare’s distributed Load Balancing can now transparently balance traffic between how ever many Argo Tunnel instances you choose to create. Together this provides you with failure tolerance and, when combined with our geo-routing capabilities, improved performance around the world.</p>
 	<p>Want more performance in Australia? Just spin up more instances. Want to save money on the weekends? Just turn them off. Leave your firewalls closed and let Argo Tunnel handle the service discovery and routing for you.</p>
-	<p>On accounts with Load Balancing enabled, when you launch <em>cloudflared</em> to expose your web service, you can specify a load balancer you want to attach to, and we take care of the rest:</p>
-	<pre><code>cloudflared --lb-pool my_lb_pool --hostname myshinyservice.example.com --url http://localhost:8080
-</code></pre>
+	<p>On accounts with Load Balancing enabled, when you launch <i>cloudflared</i> to expose your web service, you can specify a load balancer you want to attach to, and we take care of the rest:</p>
+	<pre class="language-bash"><code class="language-bash">cloudflared --lb-pool my_lb_pool --hostname myshinyservice.example.com --url http://localhost:8080</code></pre>
 	<p>In the example above we'll take care of:</p>
 	<ul>
-		<li>Creating the DNS entry for your new service (myshinyservice.example.com).</li>
-		<li>Creating the Load Balancer (myshinyservice), if it doesn't exist.</li>
-		<li>Creating the Load Balancer Pool (my_lb_pool), if it doesn't exist.</li>
-		<li>Opening a tunnel and adding it to the pool.</li>
-		<li>Proxying all traffic from myshinyservice.example.com all the way to your server running on your localhost on port 8080.</li>
-		<li>Removing the tunnels from the pool when you shutdown <em>cloudflared</em>.</li>
+		<li>
+			<p>Creating the DNS entry for your new service (myshinyservice.example.com).</p>
+		</li>
+		<li>
+			<p>Creating the Load Balancer (myshinyservice), if it doesn't exist.</p>
+		</li>
+		<li>
+			<p>Creating the Load Balancer Pool (my_lb_pool), if it doesn't exist.</p>
+		</li>
+		<li>
+			<p>Opening a tunnel and adding it to the pool.</p>
+		</li>
+		<li>
+			<p>Proxying all traffic from myshinyservice.example.com all the way to your server running on your localhost on port 8080.</p>
+		</li>
+		<li>
+			<p>Removing the tunnels from the pool when you shutdown <i>cloudflared</i>.</p>
+		</li>
 	</ul>
 	<p>If you run the same command from another machine with another server it will automatically join the pool and start sharing the load across both. You're able to run a load balanced web service across multiple servers with a simple command. You don't even need to login to the Cloudflare UI.</p>
-	<h3 id="loadbalancerfeatures">Load Balancer Features</h3>
+	<h3>Load Balancer Features</h3>
 	<p>Now that you're running a resilient scalable web service, you'll probably want to delve into the other features the Cloudflare Load Balancing has to offer. Go to the traffic page and take a look at your newly minted Load Balancer. From there you can specify health checks, health check policy, routing policy and a fall-back pool in case your service is down.</p>
-	<h3 id="tryitout">Try it Out</h3>
-	<p>Head over to your dashboard and make sure you have Argo (Traffic-&gt;Argo-&gt;Tiered Caching + Smart Routing) and Load Balancer (Traffic-&gt;Load Balancing) enabled. Start with the <a href="https://developers.cloudflare.com/argo-tunnel/quickstart">Argo Tunnel Quickstart Guide</a> and run <em>cloudflared</em> with the --lb-pool option, just like we did in the example above. At the moment we limit our non-Enterprise customers to just a handful of origins, but expect that limitation to be removed in the near future. For now, play away!</p>
-	<!--kg-card-end: markdown-->
+	<h3>Try it Out</h3>
+	<p>Head over to your dashboard and make sure you have Argo (Traffic-&gt;Argo-&gt;Tiered Caching + Smart Routing) and Load Balancer (Traffic-&gt;Load Balancing) enabled. Start with the <a href="https://developers.cloudflare.com/argo-tunnel/quickstart">Argo Tunnel Quickstart Guide</a> and run <i>cloudflared</i> with the --lb-pool option, just like we did in the example above. At the moment we limit our non-Enterprise customers to just a handful of origins, but expect that limitation to be removed in the near future. For now, play away!</p>
 </div>

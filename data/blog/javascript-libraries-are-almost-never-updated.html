@@ -1,18 +1,33 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Qbg2YuPFdZrZT2LphO3up/aa28868621e1cf1736d6c44db7a484bf/javascript-libraries-are-almost-never-updated.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare helps run <a href="https://cdnjs.com">CDNJS</a>, a very popular way of including JavaScript and other frontend resources on web pages. With the CDNJS team’s permission we collect anonymized and aggregated data from CDNJS requests which we use to understand how people build on the Internet. Our analysis today is focused on one question: once installed on a site, do JavaScript libraries ever get updated?</p>
 	<p>Let’s consider jQuery, the most popular JavaScript library on Earth. This chart shows the number of requests made for a selected list of jQuery versions over the past 12 months:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/1-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Spikes in the CDNJS data as you see with version 3.3.1 are not uncommon as very large sites add and remove CDNJS script tags.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78wDloZEiwcRwOAIt0a9i9/baff6639b376acbcd174b41e53c5fcde/1-1.png" alt="" class="kg-image" width="1600" height="977" loading="lazy">
+
 	</figure>
+	<p>Spikes in the CDNJS data as you see with version 3.3.1 are not uncommon as very large sites add and remove CDNJS script tags.</p>
 	<p>We see a steady rise of version 3.4.1 following its release on May 2nd, 2019. What we don’t see is a substantial decline of old versions. Version 3.2.1 shows an average popularity of 36M requests at the beginning of our sample, and 29M at the end, a decline of approximately 20%. This aligns with a <a href="http://informationr.net/ir/9-2/paper174.html#2002">corpus of research</a> which shows the average website lasts somewhere between two and four years. What we don’t see is a decline in our old versions which come close to the volume of growth of new versions when they’re released. In fact the release of 3.4.1, as popular as it quickly becomes, doesn’t change the trend of old version deprecation at all.</p>
 	<p>If you’re curious, the oldest version of jQuery CDNJS includes is 1.10.0, released on May 25, 2013. The project still gets an average of 100k requests per day, and the sites which use it are growing in popularity:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/2-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br>To confirm our theory, let’s consider another project, <a href="https://greensock.com/tweenmax">TweenMax</a>:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/3-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br>As this package isn’t as popular as jQuery, the data has been smoothed with a one week trailing average to make it easier to identify trends.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DVnwBygO53F6wCoy1lccv/436c7caa979a81df5d89ee58d0c3d44d/2-1.png" alt="" class="kg-image" width="1188" height="730" loading="lazy">
+
+	</figure>
+	<p>To confirm our theory, let’s consider another project, <a href="https://greensock.com/tweenmax">TweenMax</a>:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17MaW2IADBKgVYgVcbQfJA/6b570942bf6407f338aebf3645763eb6/3-1.png" alt="" class="kg-image" width="1600" height="980" loading="lazy">
+
+	</figure>
+	<p>As this package isn’t as popular as jQuery, the data has been smoothed with a one week trailing average to make it easier to identify trends.</p>
 	<p>Version 1.20.4 begins the year with 18M requests, and ends it with 14M, a decline of about 23%, again in alignment with the loss of websites on the Internet. The growth of 2.1.3 shows clear evidence that the release of a new version has almost no bearing on the popularity of old versions, the trend line for those older versions doesn’t change even as 2.1.3 grows to 29M requests per day.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/4-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LAcaWQJZ5P02U6pKMX4cP/587a4b3e4f91e29a328e72336272109b/4-1.png" alt="" class="kg-image" width="1470" height="870" loading="lazy">
+
+	</figure>
 	<p>One conclusion is whatever libraries you publish will exist on websites forever. The underlying web platform consequently must support aged conventions indefinitely if it is to continue supporting the full breadth of the web.</p>
 	<p>Cloudflare is very interested in how we can contribute to a web which is kept up-to-date. Please make suggestions in the comments below.</p>
 </div>

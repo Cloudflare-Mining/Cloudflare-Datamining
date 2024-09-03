@@ -1,33 +1,48 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/browser-isolation-for-teams-of-all-sizes-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ko-kr/browser-isolation-for-teams-of-all-sizes-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/ja-jp/browser-isolation-for-teams-of-all-sizes-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/es-es/browser-isolation-for-teams-of-all-sizes-es-es">Español</a>, <a href="https://blog.cloudflare.com/id-id/browser-isolation-for-teams-of-all-sizes-id-id">Bahasa Indonesia</a> and <a href="https://blog.cloudflare.com/th-th/browser-isolation-for-teams-of-all-sizes-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/browser-isolation-for-teams-of-all-sizes">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/browser-isolation-for-teams-of-all-sizes">한국어</a>, <a href="https://blog.cloudflare.com/es-es/browser-isolation-for-teams-of-all-sizes">Español</a>, <a href="https://blog.cloudflare.com/id-id/browser-isolation-for-teams-of-all-sizes">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/browser-isolation-for-teams-of-all-sizes">ไทย</a> and <a href="https://blog.cloudflare.com/zh-tw/browser-isolation-for-teams-of-all-sizes">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CHUOaDOIDbM5O3TgIjDbz/24d882af9405b401a9ddcc60aaf4453f/browser-isolation-for-teams-of-all-sizes.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Every Internet-connected organization relies on web browsers to operate: accepting transactions, engaging with customers, or working with sensitive data. The very act of clicking a link triggers your web browser to download and execute a large bundle of unknown code on your local device.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Browser-Isolation-OG-body-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14XtPSLyUvlfQFjTYYDoTT/1441db39c16f0445079d9ba9afbb1ee8/Browser-Isolation-OG-body-3.png" alt="" class="kg-image" width="1252" height="669" loading="lazy">
+
+	</figure>
 	<p>IT organizations have always been on the back foot while defending themselves from security threats. It is not a question of ‘if’, but ‘when’ the next zero-day vulnerability will compromise a web browser. How can IT organizations protect their users and data from unknown threats without over-blocking every potential risk? The solution is to shift the burden of executing untrusted code from the user’s device to a remote isolated browser.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-27.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="bringing-remote-browser-isolation-to-teams-of-any-size">Bringing Remote Browser Isolation to teams of any size</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Kwv4UgTOIsQ2H80GztC6d/60ddbdb176f0ede41991ba5e411157fb/image4-27.png" alt="" class="kg-image" width="1418" height="722" loading="lazy">
+
+	</figure>
+	<h3>Bringing Remote Browser Isolation to teams of any size</h3>
 	<p>Today we are excited to announce that Cloudflare Browser Isolation is now available within Cloudflare for Teams suite of <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">zero trust security</a> and secure web browsing services as an add-on. Teams of any size from startups to large enterprises can benefit from reliable and safe browsing without changing their preferred web browser or setting up complex network topologies.</p>
-	<h3 id="remote-browsers-must-be-reliable">Remote Browsers must be reliable</h3>
+	<h3>Remote Browsers must be reliable</h3>
 	<p>Running sensitive workloads in secure environments is nothing new, and <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote Browser Isolation (RBI) technologies</a> have existed for many years. This begs the question, why are remote browsers not a common technology used by everyone?</p>
 	<p>The answer is — historically flawed execution. Everyone relies on web browsers for the majority of their work and any impact to user experience or performance can at best mean productivity losses and at worst outright rejection of the solution.</p>
 	<p>Unreliable rendering and poor performance in legacy browser isolation solutions has led IT organizations to reserve the enhanced security posture only for highly targeted users or activities. Much like trusting networks through the castle-and-moat model, assuming some users or websites are not phishing or malware vectors leaves an open door to attack.</p>
 	<p>Cloudflare Browser Isolation is built on top of Chromium (the same engine that powers other popular web browsers such as Google Chrome, Microsoft Edge and Brave Browser). This, combined with our novel <a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation">Network Vector Rendering</a> technique, ensures that web pages are safely and consistently rendered even as web technologies evolve and become more complex.</p>
-	<h3 id="remote-browsers-must-be-fast">Remote Browsers Must Be Fast</h3>
+	<h3>Remote Browsers Must Be Fast</h3>
 	<p>Legacy browser isolation solutions are hamstrung by their fundamental technology or the network they operate on. These old solutions rely on high-latency and bandwidth-heavy pixel pushing, or fragile content-disarm and reconstruction techniques that degrade performance, break websites, and might miss a malicious payload in the process.</p>
 	<p>Network Vector Rendering allows us to deliver a safe view of a remote webpage without high bandwidth usage or degraded image quality, but it is one part of the solution. By leveraging our global network we position remote browsers close to everyone connected to the Internet. This allows us to deliver a responsive, low latency stream of the webpage regardless of where you are physically located.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-35.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14hVfWbzFCUuQBFVWj4obN/0e9b090afe4d21194e8366a376927f28/image1-35.png" alt="" class="kg-image" width="1500" height="948" loading="lazy">
+
+	</figure>
 	<p>Running a web browser on powerful servers connected to the backbone of the Internet introduces a powerful performance benefit. By sending minimal draw commands over the last mile wire, users with low bandwidth Internet connections enjoy a faster more responsive Internet.</p>
 	<p>Combine a massive, smart, distributed network with our patented super fast, lightweight Network Vector Rendering technology, and the result is remote browsing technology liberated from legacy constraints — providing crisp isolated pages to any user, on any device, anywhere in the world.</p>
 	<p>One of the advantages of using Browser Isolation is it reduces the local web browser’s burden downloading modern web pages. According to the FCC nearly 30 million Americans do not have access to broadband Internet (<a href="https://www.fcc.gov/about-fcc/fcc-initiatives/bridging-digital-divide-all-americans">source</a>). Modern websites are not optimised for low bandwidth connections typically requiring the download of hundreds of objects. Cloudflare’s remote browsers are connected to the backbone of the Internet and able to consistently download websites at broadband speeds, leveling the field for users on low-bandwidth Internet connections.</p>
 	<p>Here’s an example of a web page loading on a slow Internet connection compared with and without Browser Isolation. We are excited to see Browser Isolation bridging the digital divide and making the Internet faster for under-served Internet users.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 66.66666666666666%;"><iframe src="https://iframe.videodelivery.net/f3b7ffbe1eba370b4ee28d509fef918a?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p><i>Note: Timing is measured from the start of web page download until the webpage has triggered it’s on-load signal.</i></p><!--kg-card-end: html-->
-	<h3 id="remote-browsers-must-be-easy-to-use">Remote Browsers Must Be Easy to Use</h3>
+	<h3>Remote Browsers Must Be Easy to Use</h3>
 	<p>Browser Isolation products are typically <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">implemented</a> either as add-on network appliances (such as a virtual machine or firewall box) or by changing the user’s preferred browser. As an add-on network appliance, IT teams need to piece together multiple disparate solutions (even when offered by the same vendor). This leads to unnecessary complexity within the network and disparate interfaces for controlling policy configurations and monitoring threats.</p>
 	<p>Cloudflare Browser Isolation integrates natively into Cloudflare for Teams, delivering a consolidated view of all network and isolated traffic. Just like how you can use Gateway to allow / block traffic based on content categories, or security threats you can also define Isolation policies to dynamically isolate websites based on identity, security threats or content.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-29.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="the-future-of-internet-browsing-is-remote-browsing">The Future of Internet Browsing is Remote Browsing</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40YG6LOKdW7W9xsVZoTr5o/bbfe49bd061752bb1006611b842d513f/image2-29.png" alt="" class="kg-image" width="1942" height="1294" loading="lazy">
+
+	</figure>
+	<h3>The Future of Internet Browsing is Remote Browsing</h3>
 	<p>Local webpage execution poses a huge threat to businesses and organizations around the world. The solution is simple: shift the burden of executing untrusted code from the user’s device to a remote isolated browser.</p>
 	<p>Secure, fast, simple Remote Browser Isolation is now possible. Today we’re excited to announce that Cloudflare Browser Isolation is available as an add-on for Cloudflare for Teams. You can now protect your business from browser-based security threats without changing your web browsers or networks. To get started, <a href="https://www.cloudflare.com/teams/browser-isolation">sign up for a Cloudflare for Teams account</a>, and add on Browser Isolation to the Teams Gateway or Teams standard plans. Contract customers can have Browser Isolation added to their Cloudflare for Teams plan by <a href="https://cloudflare.com/teams/plans/enterprise">requesting access at this form</a>.</p>
 	<p>From the day Cloudflare started, our mission has been to help build a better Internet and democratise the technologies that were only previously accessible to the large companies with sophisticated networks, dedicated IT teams and the budgets to support them.</p>

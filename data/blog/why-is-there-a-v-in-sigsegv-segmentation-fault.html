@@ -1,19 +1,24 @@
 <div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1">
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/Image_20200512_095234.jpeg" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/F25eQMbvU7IqgEG5sMMvQ/93789a1a49d9f403b9229b0871e792f8/Image_20200512_095234.jpeg.jpeg" alt="" class="kg-image" width="1280" height="1214" loading="lazy">
+
+	</figure>
 	<p>Another long night. I was working on my perfect, bug-free program in C, when the predictable thing happened:</p>
-	<pre><code>$ clang skynet.c -o skynet
+	<pre class="language-bash"><code class="language-bash">$ clang skynet.c -o skynet
 $ ./skynet.out 
-Segmentation fault (core dumped)
-</code></pre>
+Segmentation fault (core dumped)</code></pre>
 	<p>Oh, well... Maybe I'll be more lucky taking over the world another night. But then it struck me. My program received a SIGSEGV signal and crashed with "Segmentation Fault" message. Where does the "V" come from?</p>
-	<p>Did I read it wrong? Was there a "Segmentation <em>V</em>ault?"? Or did Linux authors make a mistake? Shouldn't the signal be named SIGSEGF?</p>
+	<p>Did I read it wrong? Was there a "Segmentation _V_ault?"? Or did Linux authors make a mistake? Shouldn't the signal be named SIGSEGF?</p>
 	<p>I asked my colleagues and <a href="https://twitter.com/dwragg">David Wragg</a> quickly told me that the signal name stands for "Segmentation Violation". I guess that makes sense. Long long time ago, computers used to have <a href="https://en.wikipedia.org/wiki/X86_memory_segmentation">memory segmentation</a>. Each memory segment had defined length - called Segment Limit. Accessing data over this limit caused a processor fault. This error code got re-used <a href="https://en.wikipedia.org/wiki/Memory_segmentation#Segmentation_with_paging">by newer systems that used paging</a>. I think the Intel manuals call this error <a href="https://en.wikipedia.org/wiki/Page_fault#Invalid">"Invalid Page Fault"</a>. When it's triggered it gets reported to the userspace as a SIGSEGV signal. End of story.</p>
 	<p>Or is it?</p>
 	<p><a href="https://twitter.com/mahtin">Martin Levy</a> pointed me to an ancient <a href="http://man.cat-v.org/unix-6th/2/signal">Version 6th UNIX documentation on "signal"</a>. This is from around 1978:</p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/IMG_5177.jpg" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4guHgMnVrZOyzBS0j2vOF3/02c11573f63a87065686ed3a6013eee9/IMG_5177.jpg" alt="" class="kg-image" width="1195" height="928" loading="lazy">
+
+	</figure>
 	<p>Look carefully. There is no SIGSEGV signal! Signal number 11 is called SIGSEG!</p>
 	<p>It seems that userspace parts of the UNIX tree (i.e. /usr/include/signal.h) switched to SIGSEGV fairly early on. But the kernel internals continued to use the name SIGSEG for much longer.</p>
 	<p>Looking deeper David found that PDP11 trap vector used wording <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V4-Snapshot-Development/sys/ken/low.s#L59">"segmentation violation"</a>. This shows up in Research V4 Edition in the UNIX history repo, but it doesn't mean it was introduced in V4 - it's just because V4 is the first version with code still available.</p>
@@ -22,10 +27,10 @@ Segmentation fault (core dumped)
 	<p>It seems the kernel side was <a href="https://github.com/dspinellis/unix-history-repo/blob/BSD-4/usr/src/sys/sys/trap.c#L67">renamed to SIGSEGV in BSD-4</a>.</p>
 	<p>Here you go. Originally the signal was called SIGSEG. It was subsequently renamed SIGSEGV in the userspace and a bit later - around 1980 - to SIGSEGV on the kernel side. Apparently there are still no Segmentation Vaults found on UNIX systems.</p>
 	<p>As for my original crash, I fixed it - of course - by catching the signal and jumping over the offending instruction. On Linux it is totally possible to catch and handle SIGSEGV. With that fix, my code will never again crash. For sure.</p>
-	<pre><code class="language-.c">#define _GNU_SOURCE
-#include &lt;signal.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;ucontext.h&gt;
+	<pre class="language-.c"><code class="language-.c">#define _GNU_SOURCE
+#include <signal.h>
+#include <stdio.h>
+#include <ucontext.h>
 
 static void sighandler(int signo, siginfo_t *si, void* v_context)
 {
@@ -46,7 +51,5 @@ int main() {
     printf("After NULL pointer. Still here!\n");
 
     return 0;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</ucontext.h></stdio.h></signal.h></code></pre>
 </div>

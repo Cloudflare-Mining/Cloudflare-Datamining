@@ -1,15 +1,23 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image7-10.png" class="kg-image" alt="Developer Week Performance Update: Spotlight on R2   " loading="lazy" width="1201" height="675"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UB4dq7PgKYd3D5qXp8qRJ/c72a5b8caf308d127f62709683b53323/image7-10.png" alt="Developer Week Performance Update: Spotlight on R2   " class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>For developers, performance is everything. If your app is slow, it will get outclassed and no one will use it. In order for your application to be fast, every underlying component and system needs to be as performant as possible. In the past, we’ve shown how our network helps make your apps faster, even in remote places. We’ve focused on how Workers provides the fastest compute, even <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets">in regions that are really far away from traditional cloud datacenters</a>.</p>
 	<p>For Developer Week 2023, we’re going to be looking at one of the newest Cloudflare developer offerings and how it compares to an alternative when retrieving assets from buckets: <a href="https://www.cloudflare.com/pg-cloudflare-r2-vs-aws-s3">R2 versus Amazon Simple Storage Service (S3)</a>. Spoiler alert: we’re faster than S3 when serving media content via public access. Our test showed that on average, <a href="https://blog.cloudflare.com/www.cloudflare.com/developer-platform/r2">Cloudflare R2</a> was 20-40% faster than Amazon S3. For this test, we used 95th percentile Response tests, which measures the time it takes for a user to make a request to the bucket, and get the entirety of the response. This test was designed with the goal of measuring end-user performance when accessing content in public buckets.</p>
 	<p>In this blog we’re going to talk about why your object store needs to be fast, how much faster R2 is, why that is, and how we measured it.</p>
-	<h2 id="storage-performance-is-user-facing">Storage performance is user-facing</h2>
+	<h2>Storage performance is user-facing</h2>
 	<p>Storage performance is critical to a snappy user experience. Storage services are used for many scenarios that directly impact the end-user experience, particularly in the case where the data stored doesn’t end up in a cache (uncacheable or dynamic content). Compute and database services can rely on storage services, so if they’re not fast, the services using them won’t be either. Even the basic content fetching scenarios that use a CDN require storage services to be fast if the asset is either uncacheable or was not cached on the request: if the storage service is slow or far away, users will be impacted by that performance. And as every developer knows, nobody remembers the nine fast <a href="https://www.cloudflare.com/learning/security/api/what-is-api-call">API calls</a> if the last call was slow. Users don’t care about API calls, they care about overall experience. One slow API call, one slow image, one slow anything can muck up the works and provide users with a bad experience.</p>
 	<p>Because there are lots of different ways to use storage services, we’re going to focus on a relatively simple scenario: fetching static images from these services. Let’s talk about R2 and how it compares to one of the alternatives in this scenario: Amazon S3.</p>
-	<h2 id="benchmarking-storage-performance">Benchmarking storage performance</h2>
+	<h2>Benchmarking storage performance</h2>
 	<p>When looking at uncached raw file delivery for users in North America retrieving content from a bucket in Ashburn, Virginia (US-East) and examining 95th percentile Response, R2 is 38% faster than S3:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/05/download-15.png" class="kg-image" alt="" loading="lazy" width="1600" height="412"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UR567FxqqOpDB9QjwrfmS/674c684915c2425207054a55c0c46684/download-15.png" alt="" class="kg-image" width="1600" height="412" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -71,7 +79,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>For content hosted in US-East (Ashburn, VA) and only looking at North America-based eyeballs, R2 beats S3 by 30% in response time. When we look at why this is the case, the answer lies in our closeness to users and highly optimized HTTP stacks. Let’s take a look at the TCP connect and SSL times for these tests, which are the times it takes to reach the storage bucket (TCP connect) and the time to complete TLS handshake (SSL time):</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/05/download--1--10.png" class="kg-image" alt="" loading="lazy" width="1600" height="783"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6w7yI1VykTzK8cPTcJPYhc/6e6836c7a26f2d9a9baa92285232f6e7/download--1--10.png" alt="" class="kg-image" width="1600" height="783" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -136,7 +148,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare’s cumulative connect + SSL time is almost 1/2 of Amazon’s SSL time alone. Being able to be fast on connection establishment gives us an edge right off the bat, especially in North America where cloud and storage providers tend to optimize for performance, and connect times tend to be low because ISPs have good peering with cloud and storage providers. But this isn’t just true in North America. Let’s take a look at Europe (EMEA) and Asia (APAC), where Cloudflare also beats out AWS in 95th percentile response time when we look at eyeballs in region for both regions:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/05/download--2--8.png" class="kg-image" alt="" loading="lazy" width="1600" height="405"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GU1kRza1KCqgwjVxw7J57/1548ab0bab13f213438fb39a0dc92e0c/download--2--8.png" alt="" class="kg-image" width="1600" height="405" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -262,7 +278,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Again, the separator is how optimized Cloudflare is at setting up connections to deliver content. This is also true in APAC, where objects stored in Tokyo are served about 1.5 times faster on Cloudflare than for AWS:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/05/download--3--5.png" class="kg-image" alt="" loading="lazy" width="1600" height="404"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oPF7YYKXYbhlQyse4FemI/ba12db2caeff32802b36c1f6a85f239d/download--3--5.png" alt="" class="kg-image" width="1600" height="404" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -323,9 +343,13 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="focus-on-cross-region">Focus on cross-region</h3>
+	<h3>Focus on cross-region</h3>
 	<p>Up until this point, we’ve been looking at scenarios where users are accessing data that is stored in the same region as they are. But what if that isn’t the case? What if a user in Germany is accessing content in Ashburn? In those cases, Cloudflare also pulls ahead. This is a chart showing 95th percentile response times for cases where users outside the United States are accessing content hosted in Ashburn, VA, or US-East:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/05/download--4--5.png" class="kg-image" alt="" loading="lazy" width="1600" height="404"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jaSmMOAaTB6bQCqFtfiAu/01197cd7544a2fa2629abf87f2fc1952/download--4--5.png" alt="" class="kg-image" width="1600" height="404" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -387,20 +411,28 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare wins again, at almost 2x faster than S3 at P95. This data shows that not only do our in-region calls win out, but we win across the world. Even if you don’t have the money to buy storage everywhere in the world, R2 can still give you world-class performance because not only is R2 faster cross-region, R2’s default no-region setup ensures your data will be close to your users as often as possible.</p>
-	<h3 id="testing-methodology">Testing methodology</h3>
+	<h3>Testing methodology</h3>
 	<p>To measure these tests, we set up over 400 Catchpoint backbone nodes embedded in last mile ISPs around the world to retrieve a 1 MB file from R2 and S3 in specific locations: Ashburn, Tokyo, and Frankfurt. We recognize that many users will store larger files than the one we tested with, and we plan to test with larger files next showing that we’re faster delivering larger files as well.</p>
 	<p>We had these 400 nodes retrieve the file uncached from each storage service every 30 minutes for four days. We configured R2 to disable caching. This allows us to make sure that we aren’t reaping any benefits from our CDN pipeline and are only retrieving uncached files from the storage services.</p>
 	<p>Finally, we had to fix where the public buckets were stored in R2 to get an equivalent test compared to S3. You may notice that when configuring R2, you aren’t able to select specific datacenter locations like you can in AWS. Instead, you can provide a location hint to a general region. Cloudflare will store data anywhere in that region.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/05/download--5--5.png" class="kg-image" alt="" loading="lazy" width="1220" height="598"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VN6jHLJmzjwjwVt0OB3G6/04399c9405b2e0ac574f5ddf28ac1fd0/download--5--5.png" alt="" class="kg-image" width="1220" height="598" loading="lazy">
+
+	</figure>
 	<p>This feature is designed to make it easier for developers to deploy storage that benefits larger ranges of users as opposed to needing to know where specific datacenters are. However, that makes performance comparisons difficult, so for this test we configured R2 to store data in those specific locations (consistent with the S3 placement) on the backend as opposed to in any location in that region to ensure we would get better apples-to-apples results.</p>
-	<h2 id="putting-the-pieces-together">Putting the pieces together</h2>
+	<h2>Putting the pieces together</h2>
 	<p>Storage services like R2 are only part of the equation. Developers will often use storage services in conjunction with other compute services for a complete end-to-end application experience. Previously, we performed <a href="https://blog.cloudflare.com/network-performance-update-developer-week">comparisons of Workers and other compute products</a> such as Fastly’s Compute@Edge and AWS’s Lambda@Edge. We’ve rerun the numbers, and for compute times, Workers is still the fastest compute around, beating AWS Lambda@Edge and Fastly’s Compute@Edge for end-to-end performance for Rust hard tests:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/05/download--6--4.png" class="kg-image" alt="" loading="lazy" width="1600" height="531"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67mQKK1oZ2ChaAnotBZM3W/c493cf97860b05d119713bd1d1b0c645/download--6--4.png" alt="" class="kg-image" width="1600" height="531" loading="lazy">
+
+	</figure>
 	<p>Cloudflare is faster than Fastly for both JavaScript and Rust tests, while also being faster than AWS at JavaScript, which is the only test Lambda@Edge supports</p>
 	<p>To run these tests, we perform two tests against each provider: a complex JavaScript function, and a complex Rust function. These tests run as part of our network benchmarking tests that run from real user browsers around the world. For a more in-depth look at how we collect this data for Workers scenarios, check our <a href="https://blog.cloudflare.com/network-performance-update-developer-week">previous Developer Week posts</a>.</p>
 	<p>Here are the functions for both complex functions in JavaScript and Rust:</p>
-	<p>JavaScript complex function:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">function testHardBusyLoop() {
+	<p>JavaScript complex function:</p>
+	<pre class="language-javascript"><code class="language-javascript">function testHardBusyLoop() {
   let value = 0;
   let offset = Date.now();
 
@@ -409,11 +441,9 @@
   }
 
   return value;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Rust complex function:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-rust">fn test_hard_busy_loop() -&gt; i32 {
+}</code></pre>
+	<p>Rust complex function:</p>
+	<pre class="language-rust"><code class="language-rust">fn test_hard_busy_loop() -&gt; i32 {
   let mut value = 0;
   let offset = Date::now().as_millis();
 
@@ -422,11 +452,9 @@
   }
 
   value
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>By combining Workers and R2, you get a much simpler developer experience and a much faster user experience than you would get with any of the competition.</p>
-	<h2 id="storage-sped-up-and-simplified">Storage, sped up and simplified</h2>
+	<h2>Storage, sped up and simplified</h2>
 	<p>R2 is a unique storage service that doesn’t require the knowledge of specific locations, has a more global footprint, and integrates easily with existing Cloudflare Developer Platform products for a simple, performant experience for both users and developers. However, because it’s built on top of Cloudflare, it comes with performance baked in, and that’s evidenced by R2 being faster than its primary alternatives.</p>
 	<p>At Cloudflare, we believe that developers shouldn’t have to think about performance, you have so many other things to think about. By choosing Cloudflare, you should be able to rest easy knowing that your application will be faster because it’s built on Cloudflare, not because you’re manipulating Cloudflare to be faster for you. And by using R2 and the rest of our developer platform, we’re happy to say that we’re delivering on our vision to make performance easy for you.</p>
 </div>

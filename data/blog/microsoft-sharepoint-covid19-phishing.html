@@ -1,68 +1,84 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-tw/microsoft-sharepoint-covid19-phishing-zh-tw">繁體中文</a>.</small></p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<p><small><em>This blog originally appeared in December 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
-	<p>In August, Area 1 Security researchers identified a Microsoft SharePoint phishing campaign that abused cloud computing services, such as Azure Web Sites, Google Storage, and Amazon Web Services, to host credential harvesters. <strong>Most recently, our researchers detected an updated wave of Microsoft SharePoint phish that are leveraging </strong><a href="https://www.nytimes.com/live/2020/11/27/world/covid-19-coronavirus"><strong>new COVID-19 restrictions</strong></a><strong> to steal victims’ login information.</strong></p>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-tw/microsoft-sharepoint-covid19-phishing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LlsDPDUQYy8P7quKceXl6/a3a6ccecd9c03b36a548b765f71f92af/microsoft-sharepoint-covid19-phishing.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This blog originally appeared in December 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
+	<p>In August, Area 1 Security researchers identified a Microsoft SharePoint phishing campaign that abused cloud computing services, such as Azure Web Sites, Google Storage, and Amazon Web Services, to host credential harvesters. <b>Most recently, our researchers detected an updated wave of Microsoft SharePoint phish that are leveraging</b> <a href="https://www.nytimes.com/live/2020/11/27/world/covid-19-coronavirus"><b>new COVID-19 restrictions</b></a> <b>to steal victims’ login information.</b></p>
 	<p>While this new COVID-19 phishing campaign is incredibly widespread, Area 1 Security noted that a majority of the targets included upper-level management and executives. The attacker may be focusing the bulk of the attacks on these individuals in order to have a better chance of gaining access to sensitive information and potentially infiltrating the target network.</p>
-	<h3 id="just-another-work-email">Just Another Work Email?</h3>
+	<h3>Just Another Work Email?</h3>
 	<p>This new campaign deviates from the previous “Summer Bonus” Microsoft Office 365 phishing campaign by attempting to trick targets into thinking they missed an important update to COVID-19 procedures. As seen in Figure 1, the attacker states that a purported SharePoint-hosted document was sent a week prior, creating a sense of urgency in order to lure targets into clicking on the provided link.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 1. SharePoint Phishing Email</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10ew2nlngWsc3BH6Gt1PED/b09a3c77817360341896a16c77842e22/image3-2.png" alt="" class="kg-image" width="1999" height="1161" loading="lazy">
+
 	</figure>
+	<p>Figure 1. SharePoint Phishing Email</p>
 	<p>The new COVID-19 campaign contains many of the same hallmarks as the previous bonus-themed phish, such as tailoring each message to include the target’s email and company name throughout the body of the message and in the spoofed sender address. However, this time around, the attacker improved upon their formatting to appear more convincing.</p>
 	<p>As with the previous PhishPoint campaign, the attacker continues to use Virtual Private Servers (VPS) to send their phishing messages. Area 1 Security researchers identified roughly 100 unique sender addresses associated with this “COVID Requirements” campaign. The attacker used three main VPS services - CrownCloud, HostWinds, and MGNHost.</p>
 	<p>The versatility of a VPS allows the attacker to remain anonymous and also provides the ability to continually pivot to new infrastructure as soon as a phishing domain or IP address is identified as malicious.</p>
 	<p>To a lesser extent, the attackers also sent the phishing messages through a leading transactional and marketing email provider, SendGrid. This company is known for their presence, experience and expertise in email delivery. As a result, SendGrid’s domain is commonly whitelisted. For this reason, threat actors will often launch their phishing campaigns by abusing reputable providers like this.</p>
 	<p>Not only that, but with SendGrid, the message will easily pass email authentication. This demonstrates just how <a href="https://www.area1security.com/resources/data-sheet-why-dmarc-spf-dkim-limited-against-phishing">DMARC fails at stopping phishing attacks</a>.</p>
 	<p>The use of SendGrid is also a clever way to circumvent Secure Email Gateways (SEGs). SEGs that predominantly depend on email authentication and sender reputation (SPF, DKIM, DMARC) will completely miss these types of phishing attacks.</p>
-	<h3 id="analysis-of-spoofed-microsoft-login-page">Analysis of Spoofed Microsoft Login Page</h3>
+	<h3>Analysis of Spoofed Microsoft Login Page</h3>
 	<p>Disguised as a simple “Open” button, the link in the message body leads to a spoofed Microsoft login page hosted on various cloud computing platforms, including Amazon Web Services, Google’s Appspot engine, and Firebase. These top tier, widely-used cloud services provide attackers the perfect platform for hosting their malicious content, all the while flying under the radar of legacy vendor email security solutions.</p>
-	<p>An example link, hxxps://x9n44x9nvc9nn9a4l9xa4cds[.]df[.]r[.]appspot[.]com/#redacted@redacted.com, shown in the address bar in Figure 2, further demonstrates the targeted nature of the attacks. The redacted information in the URL contains the target’s company email address. To further add legitimacy, this spoofed site is nearly identical to the real Microsoft login page. The only discernible difference is the inclusion of the word “Outlook.”</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 2. Spoofed Microsoft Login Portal</figcaption>
+	<p>An example link, hxxps://x9n44x9nvc9nn9a4l9xa4cds[.]df[.]r[.]appspot[.]com/#<a href="mailto:redacted@redacted.com">redacted@redacted.com</a>, shown in the address bar in Figure 2, further demonstrates the targeted nature of the attacks. The redacted information in the URL contains the target’s company email address. To further add legitimacy, this spoofed site is nearly identical to the real Microsoft login page. The only discernible difference is the inclusion of the word “Outlook.”</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UkOsrJOZ4IcqPO6dTjodI/979b3654ce98b30b809f8024a4e10e65/image1-3.png" alt="" class="kg-image" width="1999" height="1112" loading="lazy">
+
 	</figure>
+	<p>Figure 2. Spoofed Microsoft Login Portal</p>
 	<p>Figure 3 shows a portion of the source code of the spoofed login page. This section of code consists of JavaScript that attempts to mimic the functionality of the legitimate Microsoft login page.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 3. JavaScript of Spoofed Login Page</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WujgZRceknQImQfcIflzs/2940bf3b6fff2a6c97b5fcd6352d2990/image2-2.png" alt="" class="kg-image" width="905" height="732" loading="lazy">
+
 	</figure>
+	<p>Figure 3. JavaScript of Spoofed Login Page</p>
 	<p>The code calls a custom function responsible for extracting the victim’s email from the URL and prepopulating it in the account username field. In this function the actor left a portion of commented code (presumably used by the developer of the code for testing purposes) as highlighted in Figure 4.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 4. Custom Function Containing Commented Code</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bQlfWsHPafn9QTDswuYbv/321b2a2d4edb7fe7303763075d69e09d/image6-2.png" alt="" class="kg-image" width="1320" height="314" loading="lazy">
+
 	</figure>
+	<p>Figure 4. Custom Function Containing Commented Code</p>
 	<p>The commented code specifies a link that contains the string “office1withemail” in the URL path. Pivoting on this code, Area 1 Security researchers identified a massive number of phishing attacks, dating back to at least April 2019. These attacks leveraged a large variety of phishing themes, used numerous cloud hosting and VPS providers to send the messages, and targeted a slew of industry verticals.</p>
 	<p>It's possible these attacks are the work of a single group. However, given the nature and pervasiveness of the activity - and the fact that all of the attacks used JavaScript that contained the same commented code - a phishing kit may be at play.</p>
 	<p>If the target enters their password, it is posted to a website hosted on Microsoft Azure Web Sites, for example hxxps://fajal2a2l0jj0ccf2lf020jf[.]azurewebsites[.]net/handler[.]php, as revealed in Figure 5.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 5. HTTP Post of Victim Credentials</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZnDKBssQT8MxCzPBie6nL/9d310da7f785caaf93cf41d0dc8078b8/image5-3.png" alt="" class="kg-image" width="1138" height="408" loading="lazy">
+
 	</figure>
+	<p>Figure 5. HTTP Post of Victim Credentials</p>
 	<p>After the credentials are entered, the .ldsddddd function above displays a spinning circle next to the “Sign In” button, making it appear as if the credentials are being validated. After several seconds have passed, the error message shown in Figure 6 is displayed.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 6. Error Message Displayed After Credentials Are Entered</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/263zPzyWhhvnNrPQvy9GQI/b99fe459392d4d22cd31c7f8bffcdf0f/image4-3.png" alt="" class="kg-image" width="952" height="1004" loading="lazy">
+
 	</figure>
+	<p>Figure 6. Error Message Displayed After Credentials Are Entered</p>
 	<p>No matter what value is entered, the victim is led to believe they provided an incorrect password. To reduce suspicion, if the victim clicks on the “Forgot my password” link, the browser redirects to the real Microsoft password reset page.</p>
 	<p>This pervasive “COVID Restrictions” campaign is an ongoing threat to many individuals and businesses alike. The use of VPS and leading email service providers, as well as abuse of multiple cloud services throughout several stages of the attack, make it a particularly difficult campaign to detect.</p>
 	<p>To make matters worse, because the URLs used in the attacks point to legitimate domains and the messages contain no malicious payloads, traditional defenses will continually miss phish like this. In fact, Microsoft’s native Office 365 email security failed to stop this phishing attack despite these red flags.</p>
 	<p>Fortunately, Area 1 Security detected this stealthy campaign and stopped these phish from reaching our customers’ inboxes.</p>
 	<p>Area 1 Security‘s advanced Machine Learning and Artificial Intelligence technology allow our algorithms to uncover new tactics malicious actors are using to bypass legacy vendors and cloud email providers in real-time versus waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time. This has many advantages over post-delivery retraction in that the user is never exposed to the attack.</p>
-	<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
-	<p><strong>Malicious Links:</strong></p>
+	<h3>Indicators of Compromise</h3>
+	<p><b>Malicious Links:</b></p>
 	<p>hxxps://pidbbhitbt8007dtdhdlbhhp[.]azurewebsites[.]net/handler[.]php</p>
 	<p>hxxps://fajal2a2l0jj0ccf2lf020jf[.]azurewebsites[.]net/handler[.]php</p>
-	<p>hxxps://03ssrd3334phd00p4sh0s33drcorequemenxxkjw3450w1jklsha[.]s3-ap-southeast-1[.]amazonaws[.]com/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://owacovctctsttc00tscqcqts0c1tq[.]s3-ap-northeast-1[.]amazonaws[.]com/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://s3-ap-northeast-1[.]amazonaws[.]com/cxrequirement[.]sharepointeseugwpjlmahxedgkqsbjlzfgsn/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://storage[.]cloud[.]google[.]com/owa9y0y90yh9y9ffy2990hfy90h[.]appspot[.]com/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://storage[.]cloud[.]google[.]com/sharedpoinnlinej27pj07jjppl7jp[.]appspot[.]com/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://storage[.]cloud[.]google[.]com/sharedpointoneqqnfcefoqi0e6cf[.]appspot[.]com/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://storage[.]cloud[.]google[.]com/sharedpointowauthdhljd1l0tdka0[.]appspot[.]com/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://storage[.]cloud[.]google[.]com/shonecov19dn1n1lnfflnbfblf1d[.]appspot[.]com/index[.]html#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://tlook-off365-signin[.]web[.]app/#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://x9n44x9nvc9nn9a4l9xa4cds[.]df[.]r[.]appspot[.]com/#&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxps://y02hh200222fyhffh90yhyhh[.]s3[.]us-east-2[.]amazonaws[.]com/index[.]html?eid=&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p>hxxp://d-nb[.]xyz/?e=&lt;target&gt;@&lt;targeted_company_domain&gt;</p>
-	<p><strong>Malicious Sites:</strong></p>
+	<p>hxxps://03ssrd3334phd00p4sh0s33drcorequemenxxkjw3450w1jklsha[.]s3-ap-southeast-1[.]amazonaws[.]com/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://owacovctctsttc00tscqcqts0c1tq[.]s3-ap-northeast-1[.]amazonaws[.]com/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://s3-ap-northeast-1[.]amazonaws[.]com/cxrequirement[.]sharepointeseugwpjlmahxedgkqsbjlzfgsn/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://storage[.]cloud[.]google[.]com/owa9y0y90yh9y9ffy2990hfy90h[.]appspot[.]com/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://storage[.]cloud[.]google[.]com/sharedpoinnlinej27pj07jjppl7jp[.]appspot[.]com/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://storage[.]cloud[.]google[.]com/sharedpointoneqqnfcefoqi0e6cf[.]appspot[.]com/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://storage[.]cloud[.]google[.]com/sharedpointowauthdhljd1l0tdka0[.]appspot[.]com/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://storage[.]cloud[.]google[.]com/shonecov19dn1n1lnfflnbfblf1d[.]appspot[.]com/index[.]html#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://tlook-off365-signin[.]web[.]app/#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://x9n44x9nvc9nn9a4l9xa4cds[.]df[.]r[.]appspot[.]com/#@&lt;targeted_company_domain&gt;</p>
+	<p>hxxps://y02hh200222fyhffh90yhyhh[.]s3[.]us-east-2[.]amazonaws[.]com/index[.]html?eid=@&lt;targeted_company_domain&gt;</p>
+	<p>hxxp://d-nb[.]xyz/?e=@&lt;targeted_company_domain&gt;</p>
+	<p><b>Malicious Sites:</b></p>
 	<p>pidbbhitbt8007dtdhdlbhhp[.]azurewebsites[.]net</p>
 	<p>fajal2a2l0jj0ccf2lf020jf[.]azurewebsites[.]net</p>
 	<p>03ssrd3334phd00p4sh0s33drcorequemenxxkjw3450w1jklsha[.]s3-ap-southeast-1[.]amazonaws[.]com</p>

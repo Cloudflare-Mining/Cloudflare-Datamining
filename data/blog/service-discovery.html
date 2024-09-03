@@ -1,80 +1,92 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XZWo0zJHcWhRkTo0DIXWK/2d83900526cf5274bf1760d53dd5409c/service-discovery.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Cloudflare runs 3,588 containers, making up 1,264 apps and services that all need to be able to find and discover each other in order to communicate -- a problem solved with service discovery.</p>
 	<p>You can use Cloudflare for service discovery. By deploying microservices behind Cloudflare, microservices’ origins are masked, secured from DDoS and L7 exploits and authenticated, and service discovery is natively built in. Cloudflare is also cloud platform agnostic, which means that if you have distributed infrastructure deployed across cloud platforms, you still get a holistic view of your services and the ability to manage your security and authentication policies in one place, independent of where services are actually deployed.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/Service-Discovery-Diagram.png" alt="" loading="lazy"></p>
-	<h3 id="howitworks">How it works</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/461lV3kUQYG0CMPbfHrqTF/d541c46efbfae7d48622c842a097827a/Service-Discovery-Diagram.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+
+	</figure>
+	<h3>How it works</h3>
 	<p>Service locations and metadata are stored in a distributed KV store deployed in all 100+ Cloudflare edge locations (the service registry).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/ServiceRegistry.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IwFdoeuc1YrVKYY2rS39X/b82ae4c17f0ee143853e3f4130fdaf89/ServiceRegistry.png" alt="" class="kg-image" width="605" height="314" loading="lazy">
+
+	</figure>
 	<p>Services register themselves to the service registry when they start up and deregister themselves when they spin down via a POST to Cloudflare’s API. Services provide data in the form of a DNS record, either by giving Cloudflare the address of the service in an A (IPv4) or AAAA (IPv6) record, or by providing more metadata like transport protocol and port in an SRV record.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/SRV-POST.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XIaHZx9pShYjAUc6emZcq/345826b02ea0c9fceb09af4c5fe6e431/SRV-POST.png" alt="" class="kg-image" width="565" height="262" loading="lazy">
+
+	</figure>
 	<p>Services are also automatically registered and deregistered by health check monitors so only healthy nodes are sent traffic. Health checks are over HTTP and can be setup with custom configuration so that responses to the health check must return a specific response body and or response code otherwise the nodes are marked as unhealthy.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/healthcheck.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NrIrLYeW04BqxhC7vXoBd/8599bb362bf913ecc899d1b2c7753c2e/healthcheck.png" alt="" class="kg-image" width="821" height="334" loading="lazy">
+
+	</figure>
 	<p>Traffic is distributed evenly between redundant nodes using a load balancer. Clients of the service discovery query the load balancer directly over <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>. The load balancer receives data from the service registry and returns the corresponding service address. If services are behind Cloudflare, the load balancer returns a Cloudflare IP address to route traffic to the service through Cloudflare’s L7 proxy.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/loadbalancer.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZhYdGIkVKzDb6xlk9rYRR/b6d4c7b93107d71ec53e9a2ebf5ec855/loadbalancer.png" alt="" class="kg-image" width="682" height="316" loading="lazy">
+
+	</figure>
 	<p>Traffic can also be sent to specific service nodes based on <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions">client geography</a>, so the data replication service in North America, for example, can talk to a specific North American version of the billing service, or European data can stay in Europe.</p>
 	<p>Clients query the service registry over DNS, and service location and metadata is packaged in A, AAAA, CNAME or SRV records. The benefit of this is that no additional client software needs to be installed on service nodes beyond a DNS client. Cloudflare works natively over DNS, meaning that if your services have a DNS client, there’s no extra software to install, manage, upgrade or patch.</p>
 	<p>While usually, TTL’s in DNS mean that if a service location changes or deregisters, clients may still get stale information, Cloudflare DNS keeps low TTL’s (it’s able to do this and maintain <a href="https://www.dnsperf.com">fast performance</a> because of its distributed network) and if you are using Cloudflare as a proxy, the DNS answers always point back to Cloudflare even when the IP’s of services behind Cloudflare change, removing the effect of cache staleness.</p>
 	<p>If your services communicate over HTTP/S and websockets, you can additionally use Cloudflare as a L7 proxy for added security, authentication and optimization. Cloudflare <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">prevents DDoS attacks</a> from hitting your infrastructure, masks your IP’s behind its network, and routes traffic through an <a href="https://www.cloudflare.com/argo">optimized edge PoP to edge PoP route</a> to shave latency off the internet.</p>
 	<p>Once service &lt;--&gt; service traffic is going through Cloudflare, you can use TLS client certificates to <a href="https://blog.cloudflare.com/introducing-tls-client-auth">authenticate traffic</a> between your services. Cloudflare can authenticate traffic at the edge by ensuring that the client certificate presented during the TLS handshake is signed by your root CA.</p>
-	<h3 id="settingitup">Setting it up</h3>
+	<h3>Setting it up</h3>
 	<p><a href="https://cloudflare.com/a/sign-up">Sign up for Cloudflare account</a></p>
 	<p>During the signup process, add all your initial services as DNS records in the DNS editor.</p>
-	<p>To finish sign up, move DNS to Cloudflare by logging into your <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> and changing your nameservers to the Cloudflare nameservers assigned to you when you signed up for Cloudflare. If you want traffic to those services to be proxied through Cloudflare, click on the cloud next to each DNS record to make it orange.</p>
+	<p>To finish sign up, move DNS to Cloudflare by logging into your registrar and changing your nameservers to the Cloudflare nameservers assigned to you when you signed up for Cloudflare. If you want traffic to those services to be proxied through Cloudflare, click on the cloud next to each DNS record to make it orange.</p>
 	<p>Run a script on each node so that:</p>
 	<p>On startup, the node sends a <a href="https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record">POST to the DNS record API</a> to register itself and <a href="https://api.cloudflare.com/#load-balancer-pools-modify-a-pool">PUT to load balancing API</a> to add itself to the origin pool.</p>
 	<p>On shutdown, the node sends a <a href="https://api.cloudflare.com/#dns-records-for-a-zone-delete-dns-record">DELETE to the DNS record API</a> to deregister itself and <a href="https://api.cloudflare.com/#load-balancer-pools-modify-a-pool">PUT to load balancing API</a> to remove itself to the origin pool.</p>
 	<p>These can be accomplished via <a href="https://cloud.google.com/compute/docs/startupscript">startup and shutdown scripts on Google Compute Engine</a> or <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-shell-scripts">user data scripts</a> or <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html">auto scaling lifecycle hooks</a> on AWS.</p>
 	<p>Registration:</p>
-	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records" \
+	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
      --data '{"type":"SRV","data":{"service":"_http","proto":"_tcp","name":"name","priority":1,"weight":1,"port":80,"target":"staging.badtortilla.com"},"ttl":1,"zone_name":"badtortilla.com","name":"_http._tcp.name.","content":"SRV 1 1 80 staging.badtortilla.com.","proxied":false,"proxiable":false,"priority":1}'
-
 </code></pre>
 	<p>De-Registration:</p>
-	<pre><code>curl -X DELETE "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59" \
+	<pre class="language-bash"><code class="language-bash">curl -X DELETE "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
-     -H "Content-Type: application/json"
-</code></pre>
+     -H "Content-Type: application/json"</code></pre>
 	<p>Add or remove an origin from an origin pool (this should be a unique IP per node added to the pool):</p>
-	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/user/load_balancers/pools/17b5962d775c646f3f9725cbc7a53df4" \
+	<pre class="language-bash"><code class="language-bash">curl -X PUT "https://api.cloudflare.com/client/v4/user/load_balancers/pools/17b5962d775c646f3f9725cbc7a53df4" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
-     --data '{"description":"Primary data center - Provider XYZ","name":"primary-dc-1","enabled":true,"monitor":"f1aba936b94213e5b8dca0c0dbf1f9cc","origins":[{"name":"app-server-1","address":"1.2.3.4","enabled":true}],"notification_email":"someone@example.com"}'
-</code></pre>
+     --data '{"description":"Primary data center - Provider XYZ","name":"primary-dc-1","enabled":true,"monitor":"f1aba936b94213e5b8dca0c0dbf1f9cc","origins":[{"name":"app-server-1","address":"1.2.3.4","enabled":true}],"notification_email":"someone@example.com"}'</code></pre>
 	<p>Create a health check. You can do this <a href="https://api.cloudflare.com/#load-balancer-monitors-create-a-monitor">in the API</a> or in the <a href="https://www.cloudflare.com/a/traffic">Cloudflare dashboard</a> (in the Load Balancer card).</p>
-	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/organizations/01a7362d577a6c3019a474fd6f485823/load_balancers/monitors" \
+	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/organizations/01a7362d577a6c3019a474fd6f485823/load_balancers/monitors" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
-     --data '{"type":"https","description":"Login page monitor","method":"GET","path":"/health","header":{"Host":["example.com"],"X-App-ID":["abc123"]},"timeout":3,"retries":0,"interval":90,"expected_body":"alive","expected_codes":"2xx"}'
-</code></pre>
+     --data '{"type":"https","description":"Login page monitor","method":"GET","path":"/health","header":{"Host":["example.com"],"X-App-ID":["abc123"]},"timeout":3,"retries":0,"interval":90,"expected_body":"alive","expected_codes":"2xx"}'</code></pre>
 	<p>Create an initial load balancer, either <a href="https://api.cloudflare.com/#load-balancers-create-a-load-balancer">through the API</a> or in the <a href="https://www.cloudflare.com/a/traffic">Cloudflare dashboard</a>.</p>
-	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers" \
+	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
-     --data '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'
-</code></pre>
+     --data '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'</code></pre>
 	<p>(optional) Setup geographic routing rules. You can do this <a href="https://api.cloudflare.com/#load-balancers-modify-a-load-balancer">via API</a> or in the <a href="https://www.cloudflare.com/a/traffic">Cloudflare dashboard</a>.</p>
-	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers" \
+	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
-     --data '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'
-</code></pre>
+     --data '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'</code></pre>
 	<p>(optional) Setup Argo for faster PoP to PoP transit in the <a href="https://www.cloudflare.com/a/traffic">traffic app of the Cloudflare dashboard</a>.</p>
 	<p>(optional) Setup rate limiting <a href="https://api.cloudflare.com/#rate-limits-for-a-zone-create-a-ratelimit">via API</a> or <a href="https://www.cloudflare.com/a/firewall">in the dashboard</a></p>
-	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits" \
+	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
-     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b59","disabled":false,"description":"Prevent multiple login failures to mitigate brute force attacks","match":{"request":{"methods":["GET","POST"],"schemes":["HTTP","HTTPS"],"url":"*.example.org/path*"},"response":{"status":[401,403],"origin_traffic":true}},"bypass":[{"name":"url","value":"api.example.com/*"}],"threshold":60,"period":900,"action":{"mode":"simulate","timeout":86400,"response":{"content_type":"text/xml","body":"&lt;error&gt;This request has been rate-limited.&lt;/error&gt;"}}}'
-</code></pre>
+     --data '{"id":"372e67954025e0ba6aaa6d586b9e0b59","disabled":false,"description":"Prevent multiple login failures to mitigate brute force attacks","match":{"request":{"methods":["GET","POST"],"schemes":["HTTP","HTTPS"],"url":"*.example.org/path*"},"response":{"status":[401,403],"origin_traffic":true}},"bypass":[{"name":"url","value":"api.example.com/*"}],"threshold":60,"period":900,"action":{"mode":"simulate","timeout":86400,"response":{"content_type":"text/xml","body":"<error>This request has been rate-limited.</error>"}}}'</code></pre>
 	<p>(optional) Setup TLS client authentication. (Enterprise only) Send your account manager your root CA certificate and <a href="https://support.cloudflare.com/hc/en-us/articles/115000088491-Cloudflare-TLS-Client-Auth">which options you would like enabled</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

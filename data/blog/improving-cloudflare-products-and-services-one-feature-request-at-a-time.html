@@ -1,33 +1,56 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image2-37.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57hagqc2nHDEjKuLv4F5t8/cd18961d5e99e37ca5289060736b6e3d/image2-37.png" alt="" class="kg-image" width="1093" height="572" loading="lazy">
+
+	</figure>
 	<p>I started at Cloudflare in April 2018. I was excited to join an innovative company that operates with integrity and takes customer needs into account when planning product roadmaps. After 2.5 years at Cloudflare, this excitement has only grown, as it has become even clearer that our customers’ feedback is essential to our business. At an all-hands meeting this November, Michelle Zatlyn, our co-founder and COO, said that “every time we see things and approach problems from the lens of a customer, we make better decisions.” One of the ways we make these decisions is through Customer Success Managers funneling our customers’ feedback to our product and engineering teams.</p>
 	<p>As a Strategic Customer Success Manager, I meet regularly with my customers to better understand their experience with Cloudflare and work cross-functionally with our internal teams to continually improve it. One thing my customers often mention to me, regardless of industry or size, is their appreciation that their feedback is not only heard but understood and actioned. We are an engineering-driven company that remains agile enough to incorporate customer feedback into our product roadmap and development cycle when that feedback aligns with our business priorities. In fact, for us, this customer feedback loop is a priority in and of itself.</p>
 	<p>Customer Success Managers, along with Solutions Engineers and Account Executives, convert customer feedback raised in Quarterly Business Reviews or other touchpoints into feature requests routed directly to Cloudflare’s Product and Engineering teams. Here’s how it works:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-54.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Gl9Ae0yospDLJ77PB1pZN/a3388301a2a9bb6bab8c4d675fc860b1/image1-54.png" alt="" class="kg-image" width="1091" height="339" loading="lazy">
+
+	</figure>
 	<ul>
-		<li>A feature request is submitted in our internal CRM on behalf of Cloudflare customers. It includes a description of the request, details on the desired solution, any current or potential workarounds, and level of urgency.</li>
-		<li>All feature requests are then evaluated by our Solutions Engineering Subject Matter Experts to ensure they have the necessary data and are properly classified.</li>
-		<li>Product Managers then review the feature requests and connect them with our internal tracking systems.
+		<li>
+			<p>A feature request is submitted in our internal CRM on behalf of Cloudflare customers. It includes a description of the request, details on the desired solution, any current or potential workarounds, and level of urgency.</p>
+		</li>
+		<li>
+			<p>All feature requests are then evaluated by our Solutions Engineering Subject Matter Experts to ensure they have the necessary data and are properly classified.</p>
+		</li>
+		<li>
+			<p>Product Managers then review the feature requests and connect them with our internal tracking systems.</p>
 			<ul>
-				<li>Often, our Product and Engineering teams already have many of these features planned as part of our roadmap, but customer requests can influence when we take action on these items and/or how we build these products. Factors that can impact these decisions include:
+				<li>
+					<p>Often, our Product and Engineering teams already have many of these features planned as part of our roadmap, but customer requests can influence when we take action on these items and/or how we build these products. Factors that can impact these decisions include:</p>
 					<ul>
-						<li>How critical the requests are,</li>
-						<li>The volume of customer requests per product or feature,</li>
-						<li>Partnerships with customers and promises we’ve made to these customers, and</li>
-						<li>Strategic direction from Cloudflare leadership</li>
+						<li>
+							<p>How critical the requests are,</p>
+						</li>
+						<li>
+							<p>The volume of customer requests per product or feature,</p>
+						</li>
+						<li>
+							<p>Partnerships with customers and promises we’ve made to these customers, and</p>
+						</li>
+						<li>
+							<p>Strategic direction from Cloudflare leadership</p>
+						</li>
 					</ul>
 				</li>
 			</ul>
 		</li>
-		<li>After these feature requests are filed on behalf of our customers, our Product team may reach out to Customer Success Managers to schedule meetings with our customers to ensure they understand their specific use cases and incorporate these requirements into product development.</li>
+		<li>
+			<p>After these feature requests are filed on behalf of our customers, our Product team may reach out to Customer Success Managers to schedule meetings with our customers to ensure they understand their specific use cases and incorporate these requirements into product development.</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 	<p>Let’s illustrate this process with a real-life example. One of my customers, a large financial institution (Customer A), uses Cloudflare for <a href="https://blog.cloudflare.com/secondary-dns-deep-dive">Secondary DNS</a>. Secondary DNS allows an organization to use multiple providers to host and relay its DNS information. It is traditionally used as a synchronized backup for an organization’s primary DNS infrastructure. Secondary DNS offers redundancy across many different nameservers, all of which are synchronized and thus respond to queries with the same answers. Using a Secondary DNS configuration allows for resiliency, availability, and a better overall end-user experience.</p>
 	<p>This particular customer was evaluating a multi-vendor approach to DNS and HTTP services including DDoS mitigation, WAF, and CDN, potentially utilizing Cloudflare at all levels for certain web applications. Cloudflare and many other HTTP proxy services can be provisioned and enabled over DNS, responding to DNS queries with our own IP space, attracting customer traffic, and performing the required functions. Only then is this HTTP traffic sent upstream to a customer’s infrastructure. Because an organization’s Secondary DNS nameservers should all respond with the same synchronized answers, it means any given customer using “standard” Secondary DNS cannot also use their Secondary DNS providers for HTTP proxy services (Layer 7 DDoS mitigation, WAF, CDN, etc). Customer A wanted to leverage our proxy services while simultaneously relying on Cloudflare’s global scale and redundancy as a (Secondary) DNS provider.</p>
 	<p>Another customer interested in this feature (Customer B) was an organization whose on-premise DNS servers had logic that automatically updated their records. They wanted a single Secondary DNS provider that could receive their automated DNS record transfers and respond to queries at scale, while also allowing them to choose which records to proxy. This would let them benefit from Cloudflare’s DNS and proxy services without having to re-architect or migrate their entire DNS infrastructure.</p>
 	<p>I filed feature requests, and our DNS team reached out to schedule time with these customers to better understand their use cases and ensure the feature we were building would support their desired configuration.</p>
-	<p>Enter <a href="https://blog.cloudflare.com/orange-clouding-with-secondary-dns"><em>Secondary DNS Override</em></a>: rather than responding to every DNS query with the answer pre-defined by a customer’s DNS master, the customer instructs Cloudflare, as Secondary DNS vendor, to, in some cases, respond to queries with Cloudflare’s own IP space, which is what enables our HTTP proxy services.</p>
+	<p>Enter <a href="https://blog.cloudflare.com/orange-clouding-with-secondary-dns"><i>Secondary DNS Override</i></a>: rather than responding to every DNS query with the answer pre-defined by a customer’s DNS master, the customer instructs Cloudflare, as Secondary DNS vendor, to, in some cases, respond to queries with Cloudflare’s own IP space, which is what enables our HTTP proxy services.</p>
 	<p>We created Secondary DNS Override to proxy traffic for Customer A’s web apps utilizing multi-CDN, allowing them to benefit from Cloudflare's security and performance features, despite having Secondary DNS already in use. Once Secondary DNS override was implemented, any of their end-users receiving DNS responses from Cloudflare (remember, only one DNS provider of many) now experienced the benefit of Cloudflare’s HTTP proxy services. Customer B simply enabled the automatic transfer of zone files to Cloudflare and set up their on-premise infrastructure as “hidden primary”; they could now utilize Cloudflare proxy services as they had requested.</p>
 	<p>While building the feature, our DNS team and designated account teams remained in close contact with both of these customers and more to keep them updated every step of the way.</p>
 	<p>We shipped our Secondary DNS Override feature in November 2019, API-only at first, and UI feature parity followed the next quarter. Customers were able to take advantage of Secondary DNS Override via API as soon as it was available, while simultaneously giving feedback on what they hoped to see in Cloudflare’s UI. They were delighted with the consultative approach we took while building out their desired features, as we demonstrated commitment to a strong partnership.</p>

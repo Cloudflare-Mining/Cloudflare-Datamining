@@ -1,22 +1,35 @@
 <div class="mb2 gray5">2 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma">日本語</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-8.png" class="kg-image" alt="Workers adds support for two modern data platforms: MongoDB Atlas and Prisma" loading="lazy"></figure>
-	<p>We’ve heard a common theme over the past year: developers want to build more of their applications on Workers. With built-in global deployments, insane scalability and the flexibility of JavaScript, more and more applications are choosing to build on our global platform.<br><br>To do so, developers need access to data. Our strategy for data on Workers has had three parts:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29QG1X6VnDiiUEVacW0OHc/b2153066b3efe6f5b94907bece74cf95/unnamed-8.png" alt="Workers adds support for two modern data platforms: MongoDB Atlas and Prisma" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>We’ve heard a common theme over the past year: developers want to build more of their applications on Workers. With built-in global deployments, insane scalability and the flexibility of JavaScript, more and more applications are choosing to build on our global platform.</p>
+	<p>To do so, developers need access to data. Our strategy for data on Workers has had three parts:</p>
 	<ul>
-		<li>One, to provide first-party solutions that are designed for infinite scale, like Workers KV and Durable Objects.</li>
-		<li>Two, to support a wide array of NoSQL databases that connect over HTTP, and to begin to build connections to data where it already lives today with <a href="https://blog.cloudflare.com/relational-database-connectors">TCP Database Connectors</a>.</li>
-		<li>Three, to partner with best-of-breed data companies to bring their capabilities to the Workers platform.</li>
+		<li>
+			<p>One, to provide first-party solutions that are designed for infinite scale, like Workers KV and Durable Objects.</p>
+		</li>
+		<li>
+			<p>Two, to support a wide array of NoSQL databases that connect over HTTP, and to begin to build connections to data where it already lives today with <a href="https://blog.cloudflare.com/relational-database-connectors">TCP Database Connectors</a>.</p>
+		</li>
+		<li>
+			<p>Three, to partner with best-of-breed data companies to bring their capabilities to the Workers platform.</p>
+		</li>
 	</ul>
 	<p>Today we’re excited to announce that, in addition to our existing partners Fauna and Macrometa, Cloudflare Workers has added support for Prisma and MongoDB Atlas. These data platforms are heavily demanded by developers — Prisma’s modern ORM brings support for Postgres, SQL Server, MySQL via their Prisma client, while MongoDB topped the ranks of integrations most demanded by our users.</p>
 	<p>Both clients are available from their respective authors, <a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare">Realm</a> for MongoDB and <a href="https://github.com/prisma/prisma">Prisma</a> for Prisma. You can begin using them right away by importing them into your Workers.</p>
-	<h3 id="what-s-great-about-mongodb">What’s great about MongoDB?</h3>
+	<h3>What’s great about MongoDB?</h3>
 	<p>MongoDB is a database loved by developers — its document model makes it easy to start with, while transactions and a scale-out distributed systems architecture let it scale with your application.</p>
 	<p>MongoDB brings a robust query language, MQL, to developers on the Workers platform, supporting rich aggregations right within the database. MongoDB support is provided via the Realm SDK, which integrates directly with MongoDB Atlas — the easiest way to run MongoDB.</p>
 	<p>MongoDB Atlas also includes Global Clusters, perfect for creating a low-latency, geo-distributed MongoDB database to back your Workers.</p>
 	<p>Together with MongoDB, we’ve put together a demo application that you can play with on MongoDB’s <a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare">blog</a>. Check it out and let us know if you have questions!</p>
-	<h3 id="what-s-great-about-prisma">What’s great about Prisma?</h3>
+	<h3>What’s great about Prisma?</h3>
 	<p>Prisma is an ORM, or object-relational mapper, which transforms entries in a database into objects in code. What makes Prisma great is its ability to abstract away the complexities of working with the database — Prisma handles type-safety, schema migrations, query optimization and the actual interactions between your code and the database. Like Workers does for compute at the edge, Prisma makes managing your database dead-simple.</p>
-	<p>Prisma currently supports Postgres, MySQL, SQL Server, SQLite and MongoDB. These databases can be existing on any cloud provider or can be spun up on-demand on Heroku.<br><br>Prisma integrates with Workers via the <a href="https://www.prisma.io/docs/concepts/components/prisma-data-platform#prisma-data-proxy">Prisma Data Proxy</a>. After setting up the Proxy, you can import the Prisma client into your Workers script and define a schema to begin using any of the supported databases!</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<p>Prisma currently supports Postgres, MySQL, SQL Server, SQLite and MongoDB. These databases can be existing on any cloud provider or can be spun up on-demand on Heroku.</p>
+	<p>Prisma integrates with Workers via the <a href="https://www.prisma.io/docs/concepts/components/prisma-data-platform#prisma-data-proxy">Prisma Data Proxy</a>. After setting up the Proxy, you can import the Prisma client into your Workers script and define a schema to begin using any of the supported databases!</p>
+	<h3>What’s next?</h3>
 	<p>Alongside our existing partnerships with Macrometa and Fauna, we’re excited to add the MongoDB and Prisma integrations to Worker’s growing library. If you have a data platform you’d like to use with Workers, <a href="mailto:workers-product@cloudflare.com">reach out to us</a>, and we’ll make it happen!</p>
 </div>

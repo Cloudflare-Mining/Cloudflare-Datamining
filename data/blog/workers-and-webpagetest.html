@@ -1,49 +1,68 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jQij9GpVmsJnXneAvwCdA/0711ee664d33eae35994346e3098e122/workers-and-webpagetest.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><em>This article was originally published as part of &nbsp;<a href="https://calendar.perfplanet.com/2019">Perf Planet's 2019 Web Performance Calendar</a>.</em></p>
+	<p><i>This article was originally published as part of &nbsp;</i><a href="https://calendar.perfplanet.com/2019"><i>Perf Planet's 2019 Web Performance Calendar</i></a><i>.</i></p>
 	<p>Have you ever wanted to quickly test a new performance idea, or see if the latest performance wisdom is beneficial to your site? As web performance appears to be a stochastic process, it is really important to be able to iterate quickly and review the effects of different experiments. The challenge is to be able to arbitrarily change requests and responses without the overhead of setting up another internet facing server. This can be straightforward to implement by combining two of my favourite technologies : <a href="https://webpagetest.org">WebPageTest</a> and <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. Pat Meenan sums this up with the following slide from a recent <a href="https://www.slideshare.net/patrickmeenan/getting-the-most-out-of-webpagetest">getting the most of WebPageTest</a> presentation:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/magic.jpg" class="kg-image" alt="With the OverrideHost script command WebPageTest + Cloudflare Workers = magic" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63FuSzxUDPepqCC577lP24/995cb14280f2153df231f99e76fe46d9/magic.jpg" alt="With the OverrideHost script command WebPageTest + Cloudflare Workers = magic" class="kg-image" width="1024" height="576" loading="lazy">
+
+	</figure>
 	<p>So what is Cloudflare Workers and why is it ideally suited to easy prototyping of optimizations?</p>
-	<h2 id="cloudflare-workers">Cloudflare Workers</h2>
+	<h2>Cloudflare Workers</h2>
 	<p>From the documentation :</p>
-	<blockquote>Cloudflare Workers provides a lightweight JavaScript execution environment that allows developers to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.A Cloudflare Worker is a programmable proxy which brings the simplicity and flexibility of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Workers event-based fetch API</a> from the browser to the edge. This allows a worker to intercept and modify requests and responses.</blockquote><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2020/01/worker-4.svg" alt="worker-4" loading="lazy"></p>
-	<!--kg-card-end: markdown-->
-	<p>With the Service Worker API you can add an <code>EventListener</code> to any fetch event that is routed through the worker script and modify the request to come from a different origin. </p>
+	<blockquote>
+		<p>Cloudflare Workers provides a lightweight JavaScript execution environment that allows developers to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.A Cloudflare Worker is a programmable proxy which brings the simplicity and flexibility of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Workers event-based fetch API</a> from the browser to the edge. This allows a worker to intercept and modify requests and responses.</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3y9pmmtBYue73BYEUOHtpN/4efc8c7e6950ca3c1453f08088bd6ecb/worker-4.svg" alt="worker-4" class="kg-image" width="671" height="268" loading="lazy">
+
+	</figure>
+	<p>With the Service Worker API you can add an <code>EventListener</code> to any fetch event that is routed through the worker script and modify the request to come from a different origin.</p>
 	<p>Cloudflare Workers also provides a <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">streaming HTMLRewriter</a> to enable on the fly modification of HTML as it passes through the worker. The streaming nature of this parser ensures latency is minimised as the entire HTML document does not have to be buffered before rewriting can happen.</p>
-	<h3 id="setting-up-a-worker">Setting up a worker</h3>
-	<p>It is really quick and easy to <a href="https://workers.cloudflare.com">sign up</a> for a free subdomain at <code>workers.dev</code> which provides you with 100,000 free requests per day. There is a quick-start guide available <a href="https://developers.cloudflare.com/workers/quickstart">here</a>.To be able to run the examples in this post you will need to <a href="https://github.com/cloudflare/wrangler#installation">install Wrangler</a>, the CLI tool for deploying workers. Once Wrangler is installed run the following command to download the example worker project: &nbsp; &nbsp; </p>
-	<pre><code>wrangler generate wpt-proxy https://github.com/xtuc/WebPageTest-proxy</code></pre>
+	<h3>Setting up a worker</h3>
+	<p>It is really quick and easy to <a href="https://workers.cloudflare.com">sign up</a> for a free subdomain at <code>workers.dev</code> which provides you with 100,000 free requests per day. There is a quick-start guide available <a href="https://developers.cloudflare.com/workers/quickstart">here</a>.To be able to run the examples in this post you will need to <a href="https://github.com/cloudflare/wrangler#installation">install Wrangler</a>, the CLI tool for deploying workers. Once Wrangler is installed run the following command to download the example worker project: &nbsp; &nbsp;</p>
+	<pre class="language-bash"><code class="language-bash">wrangler generate wpt-proxy https://github.com/xtuc/WebPageTest-proxy</code></pre>
 	<p><a href="https://github.com/xtuc/WebPageTest-proxyYou">You</a> will then need to update the <code>wrangler.toml</code> with your account_id, which can be found in the <a href="https://dash.cloudflare.com">dashboard</a> in the right sidebar. Then configure an API key with the command:</p>
 	<p><code>wrangler config</code></p>
-	<p>Finally, you can publish the worker with: &nbsp; </p>
-	<p><code>wrangler publish</code> </p>
+	<p>Finally, you can publish the worker with: &nbsp;</p>
+	<p><code>wrangler publish</code></p>
 	<p>At this the point, the worker will be active at</p>
-	<p> <code>https://wpt-proxy.&lt;your-subdomain&gt;.workers.dev</code>.</p>
-	<h2 id="webpagetest-overridehost">WebPageTest OverrideHost &nbsp;</h2>
+	<p><code>https://wpt-proxy.&lt;your-subdomain&gt;.workers.dev</code>.</p>
+	<h2>WebPageTest OverrideHost &nbsp;</h2>
 	<p>Now that your worker is configured, the next step is to configure WebPageTest to redirect requests through the worker. WebPageTest has a feature where it can re-point arbitrary origins to a different domain. To access the feature in WebPageTest, you need to use the WebPageTest scripting language "overrideHost" command, as shown:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/samplescript.png" class="kg-image" alt="Override the bbc.co.uk domain to wpt-proxy.prf.workers.dev" loading="lazy"></figure>
-	<p>This example will redirect all network requests to www.bbc.co.uk to wpt-proxy.prf.workers.dev instead. WebPageTest also adds an <code>x-host</code> header to each redirected request so that the destination can determine for which host the request was originally intended: &nbsp; &nbsp; </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3obNudq5ry3Gg8kYI0basR/9139737937c698b6a15152790e068cca/samplescript.png" alt="Override the bbc.co.uk domain to wpt-proxy.prf.workers.dev" class="kg-image" width="944" height="368" loading="lazy">
+
+	</figure>
+	<p>This example will redirect all network requests to <a href="http://www.bbc.co.uk">www.bbc.co.uk</a> to wpt-proxy.prf.workers.dev instead. WebPageTest also adds an <code>x-host</code> header to each redirected request so that the destination can determine for which host the request was originally intended: &nbsp; &nbsp;</p>
 	<p><code>x-host: www.bbc.co.uk</code></p>
-	<p>The script can process multiple overrideHost commands to override multiple different origins. If HTTPS is used, WebPageTest can use HTTP/2 and benefit from <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing">connection coalescing</a>: &nbsp; </p>
-	<pre><code>overrideHost www.bbc.co.uk wpt-proxy.prf.workers.dev    
+	<p>The script can process multiple overrideHost commands to override multiple different origins. If HTTPS is used, WebPageTest can use HTTP/2 and benefit from <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing">connection coalescing</a>: &nbsp;</p>
+	<pre class="language-bash"><code class="language-bash">overrideHost www.bbc.co.uk wpt-proxy.prf.workers.dev    
 overrideHost nav.files.bbci.co.uk wpt-proxy.prf.workers.dev
 navigate https://www.bbc.co.uk</code></pre>
-	<p> &nbsp;It also supports wildcards: &nbsp; </p>
-	<pre><code>overrideHost *bbc.co.uk wpt-proxy.prf.workers.dev    
+	<p>&nbsp;It also supports wildcards: &nbsp;</p>
+	<pre class="language-bash"><code class="language-bash">overrideHost *bbc.co.uk wpt-proxy.prf.workers.dev    
 navigate https://www.bbc.co.uk</code></pre>
-	<p> There are a few special strings that can be used in a script when bulk testing, so a single script can be re-used across multiple URLs:</p>
+	<p>There are a few special strings that can be used in a script when bulk testing, so a single script can be re-used across multiple URLs:</p>
 	<ul>
-		<li><code>%URL%</code> - Replaces with the URL of the current test</li>
-		<li><code>%HOST%</code> - Replaces with the hostname of the URL of the current test</li>
-		<li><code>%HOSTR%</code> - Replaces with the hostname of the final URL in case the test URL does a redirect.</li>
+		<li>
+			<p><code>%URL%</code> - Replaces with the URL of the current test</p>
+		</li>
+		<li>
+			<p><code>%HOST%</code> - Replaces with the hostname of the URL of the current test</p>
+		</li>
+		<li>
+			<p><code>%HOSTR%</code> - Replaces with the hostname of the final URL in case the test URL does a redirect.</p>
+		</li>
 	</ul>
 	<p>A more generic script would look like this: &nbsp; &nbsp;</p>
-	<pre><code>overrideHost %HOSTR% wpt-proxy.prf.workers.dev    
+	<pre class="language-bash"><code class="language-bash">overrideHost %HOSTR% wpt-proxy.prf.workers.dev    
 navigate %URL% </code></pre>
-	<h2 id="basic-worker">Basic worker</h2>
+	<h2>Basic worker</h2>
 	<p>In the base example below, the worker listens for the fetch event, looks for the <code>x-host</code> header that WebPageTest has set and responds by fetching the content from the orginal url:</p>
-	<pre><code class="language-javascript">/* 
+	<pre class="language-javascript"><code class="language-javascript">/* 
 * Handle all requests. 
 * Proxy requests with an x-host header and return 403
 * for everything else
@@ -68,33 +87,32 @@ addEventListener("fetch", event =&gt; {
 });</code></pre>
 	<p>The source code can be found <a href="https://github.com/xtuc/WebPageTest-proxy">here</a> and instructions to download and deploy this worker are described in the earlier section.</p>
 	<p>So what happens if we point all the domains on the BBC website through this worker, using the following config: &nbsp;</p>
-	<pre><code>overrideHost    *bbci.co.uk wpt.prf.workers.dev    
+	<pre class="language-bash"><code class="language-bash">overrideHost    *bbci.co.uk wpt.prf.workers.dev    
 overrideHost    *bbc.co.uk  wpt.prf.workers.dev    
 navigate    https://www.bbc.co.uk</code></pre>
 	<p>configured to a 3G Fast setting from a UK test location.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/simpleworkercompare.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Comparison of BBC website if when using a single connection.&nbsp;</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6y7lIsq1654FwvbSlcpBvh/f80891358f32d3bef569eee3c5b0cf01/simpleworkercompare.png" alt="" class="kg-image" width="2000" height="268" loading="lazy">
+
 	</figure>
-	<p></p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th>Before</th>
-				<th>After</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2020/01/beforeBBC2-1.png" alt="beforeBBC2-1" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2020/01/afterBBC2.png" alt="afterBBC2" loading="lazy"></td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p>The potential performance improvement of loading a page over a single connection, eliminating the additional DNS lookup, TCP connection and TLS handshakes, can be seen &nbsp;by comparing the filmstrips and waterfalls. There are several reasons why you may not want or be able to move everything to a single domain, but at least it is now easy to see what the performance difference would be. &nbsp; </p>
-	<h2 id="htmlrewriter">HTMLRewriter</h2>
+	<p>Comparison of BBC website if when using a single connection.&nbsp;</p>
+	<p>Before</p>
+	<p>After</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pwdrZ0TRNcU2x2AosI09b/227f0ed6ae9837ed08b33c5e5db6abaf/beforeBBC2-1.png" alt="beforeBBC2-1" class="kg-image" width="1073" height="1126" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DE8XJvQoNTKguQR4Y9a9J/0c1c8e60df5872145dc1416a2e7a6a0f/afterBBC2.png" alt="afterBBC2" class="kg-image" width="1012" height="1127" loading="lazy">
+
+	</figure>
+	<p>The potential performance improvement of loading a page over a single connection, eliminating the additional DNS lookup, TCP connection and TLS handshakes, can be seen &nbsp;by comparing the filmstrips and waterfalls. There are several reasons why you may not want or be able to move everything to a single domain, but at least it is now easy to see what the performance difference would be. &nbsp;</p>
+	<h2>HTMLRewriter</h2>
 	<p>With the HTMLRewriter, it is possible to change the HTML response as it passes through the worker. A jQuery-like syntax provides CSS-selector matching and a standard set of DOM mutation methods. For instance you could rewrite your page to measure the effects of different preload/prefetch strategies, review the performance savings of removing or using different third-party scripts, or you could stock-take the HEAD of your document. One piece of performance advice is to self-host some third-party scripts. This <a href="https://github.com/xtuc/rewrite-3d-party.git">example</a> script invokes the HTMLRewriter to listen for a script tag with a <code>src</code> attribute. If the script is from a proxiable domain the src is rewritten to be first-party, with a specific path prefix.</p>
-	<pre><code class="language-javascript">async function rewritePage(request) {  
+	<pre class="language-javascript"><code class="language-javascript">async function rewritePage(request) {  
   const response = await fetch(request);    
     return new HTMLRewriter()      
       .on("script[src]", {        
@@ -107,11 +125,11 @@ navigate    https://www.bbc.co.uk</code></pre>
     })    
     .transform(response);
 }</code></pre>
-	<p> Subsequently, when the browser makes a request with the specific prefix, the worker fetches the asset from the original URL. This example can be downloaded with this command: &nbsp; &nbsp; </p>
-	<p><code>wrangler generate test <a href="https://github.com/xtuc/rewrite-3d-party.git">https://github.com/xtuc/rewrite-3d-party.git</a></code></p>
-	<h2 id="request-mangling">Request Mangling</h2>
+	<p>Subsequently, when the browser makes a request with the specific prefix, the worker fetches the asset from the original URL. This example can be downloaded with this command: &nbsp; &nbsp;</p>
+	<p><code>wrangler generate test [https://github.com/xtuc/rewrite-3d-party.git](https://github.com/xtuc/rewrite-3d-party.git)</code></p>
+	<h2>Request Mangling</h2>
 	<p>As well as rewriting content, it is also possible to change or delay a request. Below is an example of how to randomly add a delay of a second to a request:</p>
-	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {    
+	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {    
     const host = event.request.headers.get('x-host');    
     if (host) { 
 //....     
@@ -122,10 +140,10 @@ navigate    https://www.bbc.co.uk</code></pre>
     event.respondWith(fetch(originUrl, init));
 //...
 }</code></pre>
-	<h2 id="http-2-prioritization">HTTP/2 prioritization</h2>
+	<h2>HTTP/2 prioritization</h2>
 	<p>What if you want to see what the effect of changing the HTTP/2 prioritization of assets would make to your website? Cloudflare Workers provide <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">custom http2 prioritization schemes</a> that can be applied by setting a custom header on the response. The <code>cf-priority</code> header is defined as <code>&lt;priority&gt;/&lt;concurrency&gt;</code> so adding: &nbsp; &nbsp;</p>
-	<p><code>response.headers.set('cf-priority', “30/0”);</code> &nbsp; &nbsp; </p>
-	<p>would set the priority of that response to 30 with a concurrency of 0 for the given response. Similarly, “30/1” would set concurrency to 1 and “30/n” would set concurrency to n. With this flexibility, you can prioritize the bytes that are important for your website or run a bulk test to prove that your new &nbsp;prioritization scheme is better than any of the existing browser implementations. </p>
-	<h2 id="summary">Summary </h2>
+	<p><code>response.headers.set('cf-priority', “30/0”);</code> &nbsp; &nbsp;</p>
+	<p>would set the priority of that response to 30 with a concurrency of 0 for the given response. Similarly, “30/1” would set concurrency to 1 and “30/n” would set concurrency to n. With this flexibility, you can prioritize the bytes that are important for your website or run a bulk test to prove that your new &nbsp;prioritization scheme is better than any of the existing browser implementations.</p>
+	<h2>Summary</h2>
 	<p>A major barrier to understanding and innovation, is the amount of time is takes to get feedback. Having a quick and easy framework, to try out a new idea and comprehend the impact, is key. I hope this post has convinced you that combining WebPageTest and Cloudflare Workers is an easy solution to this problem and is indeed magic</p>
 </div>

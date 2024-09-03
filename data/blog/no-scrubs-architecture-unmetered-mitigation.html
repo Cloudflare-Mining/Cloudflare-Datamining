@@ -1,21 +1,30 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KGm2qiwgg1icwvQc0xope/2f206f3344bfed207e6a0db567b06a8e/no-scrubs-architecture-unmetered-mitigation.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>When building a DDoS mitigation service it’s incredibly tempting to think that the solution is scrubbing centers or scrubbing servers. I, too, thought that was a good idea in the beginning, but experience has shown that there are serious pitfalls to this approach.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/Screen-Shot-2017-09-25-at-09.50.52.png" alt="" loading="lazy"></p>
-	<p><span title="And is also known as a buster">A scrubbing server is a dedicated machine that receives all network traffic destined for an IP address and attempts to filter good traffic from bad</span>. Ideally, the scrubbing server will only forward non-DDoS packets to the Internet application being attacked. A scrubbing center is a dedicated location filled with scrubbing servers.</p>
-	<h3 id="threeproblemswithscrubbers">Three Problems With Scrubbers</h3>
-	<p>The three most pressing problems with scrubbing are: <em>bandwidth</em>, <em>cost</em>, <em>knowledge</em>.</p>
-	<p>The <em>bandwidth</em> problem is easy to see. As DDoS attacks have scaled to &gt;1Tbps having that much network capacity available is problematic. Provisioning and maintaining multiple-Tbps of bandwidth for DDoS mitigation is expensive and complicated. And it needs to be located in the right place on the Internet to receive and absorb an attack. If it’s not then attack traffic will need to be received at one location, scrubbed, and then clean traffic forwarded to the real server: that can introduce enormous delays with a limited number of locations.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LesaJydiArltdyjZRhtaV/3f69f7e23c725f0c154ccc2d4329efb6/Screen-Shot-2017-09-25-at-09.50.52.png" alt="" class="kg-image" width="608" height="351" loading="lazy">
+
+	</figure>
+	<p>A scrubbing server is a dedicated machine that receives all network traffic destined for an IP address and attempts to filter good traffic from bad. Ideally, the scrubbing server will only forward non-DDoS packets to the Internet application being attacked. A scrubbing center is a dedicated location filled with scrubbing servers.</p>
+	<h3>Three Problems With Scrubbers</h3>
+	<p>The three most pressing problems with scrubbing are: <i>bandwidth</i>, <i>cost</i>, <i>knowledge</i>.</p>
+	<p>The <i>bandwidth</i> problem is easy to see. As DDoS attacks have scaled to &gt;1Tbps having that much network capacity available is problematic. Provisioning and maintaining multiple-Tbps of bandwidth for DDoS mitigation is expensive and complicated. And it needs to be located in the right place on the Internet to receive and absorb an attack. If it’s not then attack traffic will need to be received at one location, scrubbed, and then clean traffic forwarded to the real server: that can introduce enormous delays with a limited number of locations.</p>
 	<p>Imagine for a moment you’ve built a small number of scrubbing centers, and each center is connected to the Internet with many Gbps of connectivity. When a DDoS attack occurs that center needs to be able to handle potentially 100s of Gbps of attack traffic at line rate. That means exotic network and server hardware. Everything from the line cards in routers, to the network adapter cards in the servers, to the servers themselves is going to be very expensive.</p>
-	<p>This (and bandwidth above) is one of the reasons DDoS mitigation has traditionally <em>cost</em> so much and been billed by attack size.</p>
-	<p>The final problem, <em>knowledge</em>, is the most easily overlooked. When you set out to build a scrubbing server you are building something that has to separate good packets from bad.</p>
+	<p>This (and bandwidth above) is one of the reasons DDoS mitigation has traditionally <i>cost</i> so much and been billed by attack size.</p>
+	<p>The final problem, <i>knowledge</i>, is the most easily overlooked. When you set out to build a scrubbing server you are building something that has to separate good packets from bad.</p>
 	<p>At first this seems easy (let’s filter out all TCP ACK packets for non-established connections, for example), and low level engineers are easy to excite about writing high-performance code to do that. But attackers are not stupid and they’ll throw legitimate looking traffic at a scrubbing server and it gets harder and harder to distinguish good from bad.</p>
 	<p>At that point, scrubbing engineers need to become protocol experts at all levels of the stack. That means you have to build a competency in all levels of TCP/IP, DNS, HTTP, TLS, etc. And that’s hard.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/4663602907_c7312af549_b.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/lisibo/4663602907/in/photolist-dreKAq-877bEF-dC6SaH-87fRQa-87aUnd-878ubK-87j6bE-87fP1t-879ZGj-8777Wc-87aMK5-87iYJq-87bY93-878n2g-879Wmw-87a431-87b9sQ-87bUBy-87bupQ-87bmFE-87fxZ6-87bqyW-87aQm7-87bBCC-878E3P-87833H-87azmU-877ttK-877xNk-878QqX-87bJC5-87b69u-XUmTo9-2Zsyny-87b2YC-877L8r-ebekdb-8w1o6r-8w1nPr-8w1n7B-8w1hKt-8w4jCE-8w1jcZ-8w4qUS-8w1jJz-ovHP2-3feGiy-Wj2Q48-8w4nZQ-8w4m9s">image</a> by <a href="https://www.flickr.com/photos/lisibo">Lisa Stevens</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64KLtaUHX9bNnt7gPObyUW/f6bc3608ba0aa98b167c1ceb747d065a/4663602907_c7312af549_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/lisibo/4663602907/in/photolist-dreKAq-877bEF-dC6SaH-87fRQa-87aUnd-878ubK-87j6bE-87fP1t-879ZGj-8777Wc-87aMK5-87iYJq-87bY93-878n2g-879Wmw-87a431-87b9sQ-87bUBy-87bupQ-87bmFE-87fxZ6-87bqyW-87aQm7-87bBCC-878E3P-87833H-87azmU-877ttK-877xNk-878QqX-87bJC5-87b69u-XUmTo9-2Zsyny-87b2YC-877L8r-ebekdb-8w1o6r-8w1nPr-8w1n7B-8w1hKt-8w4jCE-8w1jcZ-8w4qUS-8w1jJz-ovHP2-3feGiy-Wj2Q48-8w4nZQ-8w4m9s">image</a> by <a href="https://www.flickr.com/photos/lisibo">Lisa Stevens</a></p>
 	<p>The bottom line is scrubbing centers and exotic hardware are great marketing. But, like citadels of medieval times, they are monumentally expensive and outdated, overwhelmed by better weapons and warfighting techniques.</p>
 	<p>And many DDoS mitigation services that use scrubbing centers operate in an offline mode. They are only enabled when a DDoS occurs. This typically means that an Internet application will succumb to the DDoS attack before its traffic is diverted to the scrubbing center.</p>
 	<p>Just imagine citizens fleeing to hide behind the walls of the citadel under fire from an approaching army.</p>
-	<h3 id="bettercheapersmarter">Better, Cheaper, Smarter</h3>
+	<h3>Better, Cheaper, Smarter</h3>
 	<p>There’s a subtler point about not having dedicated scrubbers: it forces us to build better software. If a scrubbing server becomes overwhelmed or fails then only the customer being scrubbed is affected, but when the mitigation happens on the very servers running the core service it has to work and be effective.</p>
 	<p>I spoke above about the ‘knowledge gap’ that comes about with dedicated DDoS scrubbing. The Cloudflare approach means that if bad traffic gets through, say a flood of bad DNS packets, then it reaches a service owned and operated by people who are experts in that domain. If a DNS flood gets through our DDoS protection it hits our custom DNS server, RRDNS, the engineers who work on it can bring their expertise to bear.</p>
 	<p>This makes an enormous difference because the result is either improved DDoS scrubbing or a change to the software (e.g. the DNS stack) that improves its performance under load. We’ve lived that story many, many times and the entire software stack has improved because of it.</p>
@@ -23,24 +32,35 @@
 	<p>Eliminating scrubbing centers and hardware completely changes the cost of building a DDoS mitigation service.</p>
 	<p>We currently have around 15 Tbps of network capacity worldwide but this capacity doesn’t require exotic network hardware. We are able to use low cost or commodity networking equipment bound together using <a href="https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network">network automation</a> to handle normal and DDoS traffic. Just as Google originally built its service by writing software that tied together commodity servers into a super (search) computer; our architecture binds commodity servers together into one giant network device.</p>
 	<p>By building the world’s <a href="https://www.peeringdb.com/net/4224">most peered network</a> we’ve built this capacity at reasonable cost and more importantly are able to handle attack traffic globally wherever it originates with low latency links. No scrubbing solution is able to say the same.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/upload.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nhLKpOgJaQcxsCM0kFcHM/b09a48d054451a7f3135898aa2dce77a/upload.png" alt="" class="kg-image" width="1396" height="924" loading="lazy">
+
+	</figure>
 	<p>And because Cloudflare manages DNS for our customers and uses an Anycasted network attack traffic originating from botnets is automatically distributed across our global network. Each data center deals with a portion of DDoS traffic.</p>
 	<p>Within each data center DDoS traffic is load balanced across multiple servers running our service. Each server handles a portion of the DDoS traffic. This spreading of DDoS traffic means that a single DDoS attack will be handled by a large number of individual servers across the world.</p>
 	<p>And as Cloudflare grows our DDoS mitigation capacity grows automatically, and because our DDoS mitigation is built into our stack it is always on. We mitigate a new DDoS attack every three minutes with no downtime for Internet applications and have no need to ‘switch over’ to a scrubbing center.</p>
-	<h3 id="insideaserver">Inside a Server</h3>
+	<h3>Inside a Server</h3>
 	<p>Once all this global and local load balancing has occurred packets do finally hit a network adapter card in a server. It’s here that Cloudflare’s custom DDoS mitigation stack comes into play.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/image2-1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SsunNzjBUScjiFqvOYqsC/2025151881e5c59faf3a94866602c073/image2-1.png" alt="" class="kg-image" width="1044" height="330" loading="lazy">
+
+	</figure>
 	<p>Over the years we’ve learned how to automatically detect and mitigate anything the internet can throw at us. For most of the attacks, we rely on dynamically managing iptables: the standard Linux firewall. We’ve spoken about <a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible">the most effective techniques</a> in past. iptables has a number of very powerful features which we select depending on specific attack vector. From our experience xt_bpf, ipset, hashlimits and connlimits are the most useful iptables modules.</p>
 	<p>For very large attacks the Linux Kernel is not fast enough though. To relieve the kernel from processing excessive number of packets, we experimented with various <a href="https://blog.cloudflare.com/kernel-bypass">kernel bypass</a> techniques. We’ve settled on a partial kernel bypass interface - Solarflare specific EFVI.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/09/image1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/f4YDKLOLmRBcMaV2CojRO/fb0ab90585a954098c58df849a87fd36/image1.png" alt="" class="kg-image" width="1244" height="530" loading="lazy">
+
+	</figure>
 	<p>With EFVI we can offload the processing of our firewall rules to a user space program, and we can easily process millions of packets per second on each server, while keeping the CPU usage low. This allows us to withstand the largest attacks, without affecting our multi-tenant service.</p>
-	<h3 id="opensource">Open Source</h3>
+	<h3>Open Source</h3>
 	<p>Cloudflare’s vision is to help to build a better internet. Fixing DDoS is a part of it. We’ve been relentlessly documenting the most important and dangerous attacks we’ve encountered, fighting botnets and open sourcing critical pieces of our DDoS infrastructure.</p>
 	<p>We’ve open sourced various tools, from the very low level projects like our <a href="https://blog.cloudflare.com/introducing-the-bpf-tools">BPF Tools</a>, that we use to fight <a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler">DNS and SYN</a> floods, to contributing to <a href="https://github.com/openresty">OpenResty</a> a performant application framework on top of NGINX, which is great for building L7 defenses.</p>
-	<h3 id="furtherreading">Further Reading</h3>
+	<h3>Further Reading</h3>
 	<p>Cloudflare has written a great deal about DDoS mitigation in the past. Some example, blog posts: <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">How Cloudflare's Architecture Allows Us to Scale to Stop the Largest Attacks</a>, <a href="https://blog.cloudflare.com/reflections-on-reflections">Reflections on reflection (attacks)</a>, <a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks">The Daily DDoS: Ten Days of Massive Attacks</a>, and <a href="https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network">The Internet is Hostile: Building a More Resilient Network</a>.</p>
 	<p>And if you want to go deeper, my colleague Marek Majkowski <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">dives deeper into</a> the code we use for DDoS mitigation.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>Cloudflare’s DDoS mitigation architecture and custom software makes Unmetered Mitigation possible. With it we can withstand the largest DDoS attacks and as our network grows our DDoS mitigation capability grows with it.</p>
-	<!--kg-card-end: markdown-->
 </div>

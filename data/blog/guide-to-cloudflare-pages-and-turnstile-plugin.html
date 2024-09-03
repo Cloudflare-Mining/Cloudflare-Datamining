@@ -1,44 +1,90 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image1-26.png" class="kg-image" alt="Building secure websites: a guide to Cloudflare Pages and Turnstile Plugin" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2K7WFOjmj3tTCZ2C90XOzp/f81063ce75e0d3fcc7fa913e2017ba33/image1-26.png" alt="Building secure websites: a guide to Cloudflare Pages and Turnstile Plugin" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Balancing developer velocity and security against bots is a constant challenge. Deploying your changes as quickly and easily as possible is essential to stay ahead of your (or your customers’) needs and wants. Ensuring your website is safe from malicious bots — without degrading user experience with alien hieroglyphics to decipher just to prove that you are a human — is no small feat. With <a href="https://pages.cloudflare.com">Pages</a> and <a href="https://developers.cloudflare.com/turnstile">Turnstile</a>, we'll walk you through just how easy it is to have the best of both worlds!</p>
-	<p><a href="https://pages.cloudflare.com">Cloudflare Pages</a> offer a seamless platform for deploying and scaling your websites with ease. You can get started right away with configuring your websites with a quick integration using your git provider, and get set up with unlimited requests, bandwidth, collaborators, and projects. </p>
+	<p><a href="https://pages.cloudflare.com">Cloudflare Pages</a> offer a seamless platform for deploying and scaling your websites with ease. You can get started right away with configuring your websites with a quick integration using your git provider, and get set up with unlimited requests, bandwidth, collaborators, and projects.</p>
 	<p>Cloudflare Turnstile is Cloudflare’s <a href="https://www.cloudflare.com/products/turnstile">CAPTCHA alternative solution</a> where your users don’t ever have to solve another puzzle to get to your website, no more stop lights and fire hydrants. You can protect your site without having to put your users through an annoying user experience. If you are already using another CAPTCHA service, we have made it easy for you to <a href="https://developers.cloudflare.com/turnstile/migration">migrate over to Turnstile</a> with minimal effort needed. Check out the <a href="https://developers.cloudflare.com/turnstile">Turnstile documentation</a> to get started.</p>
-	<h3 id="alright-what-are-we-building">Alright, what are we building?</h3>
+	<h3>Alright, what are we building?</h3>
 	<p>In this tutorial, we'll walk you through integrating Cloudflare Pages with Turnstile to secure your website against bots. You'll learn how to deploy Pages, embed the Turnstile widget, validate the token on the server side, and monitor Turnstile analytics. Let’s build upon <a href="https://developers.cloudflare.com/pages/tutorials/forms">this tutorial</a> from Cloudflare’s developer docs, which outlines how to create an HTML form with Pages and Functions. We’ll also show you how to secure it by integrating with Turnstile, complete with client-side rendering and server-side validation, using the <a href="https://developers.cloudflare.com/pages/functions/plugins/turnstile">Turnstile Pages Plugin</a>!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/Screenshot-2024-03-07-at-11.52.43.png" class="kg-image" alt="" loading="lazy" width="2072" height="1476"></figure>
-	<h3 id="step-1-deploy-your-pages">Step 1: Deploy your Pages</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DaVCMwbVOKW17aOgthwZh/90e9ffd754b5d70873ac37c33021990e/Screenshot-2024-03-07-at-11.52.43.png" alt="" class="kg-image" width="2000" height="1425" loading="lazy">
+
+	</figure>
+	<h3>Step 1: Deploy your Pages</h3>
 	<p>On the Cloudflare Dashboard, select your account and go to Workers &amp; Pages to create a new Pages application with your git provider. Choose the repository where you cloned the tutorial project or any other repository that you want to use for this walkthrough.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image2-23.png" class="kg-image" alt="" loading="lazy" width="1999" height="1135"></figure>
-	<p>The Build settings for this project is simple: </p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kZP90IyFiaZzl7fX608Dl/bb1d5f35ac0aaf12d5bde6dc0c00e3d2/image2-23.png" alt="" class="kg-image" width="1999" height="1135" loading="lazy">
+
+	</figure>
+	<p>The Build settings for this project is simple:</p>
 	<ul>
-		<li><strong>Framework preset</strong>: None</li>
-		<li><strong>Build command</strong>: npm install @cloudflare/pages-plugin-turnstile</li>
-		<li><strong>Build output directory</strong>: public</li>
+		<li>
+			<p><b>Framework preset</b>: None</p>
+		</li>
+		<li>
+			<p><b>Build command</b>: npm install @cloudflare/pages-plugin-turnstile</p>
+		</li>
+		<li>
+			<p><b>Build output directory</b>: public</p>
+		</li>
 	</ul>
 	<p>Once you select “Save and Deploy”, all the magic happens under the hood and voilà! The form is already deployed.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image8-3.png" class="kg-image" alt="" loading="lazy" width="883" height="363"></figure>
-	<h3 id="step-2-embed-turnstile-widget">Step 2: Embed Turnstile widget</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6I301dY7rRKreWxUwEuHs/f619f68d4a7bd10a9f5d0ef618c1680f/image8-3.png" alt="" class="kg-image" width="883" height="363" loading="lazy">
+
+	</figure>
+	<h3>Step 2: Embed Turnstile widget</h3>
 	<p>Now, let’s navigate to Turnstile and add the newly created Pages site.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image5-14.png" class="kg-image" alt="" loading="lazy" width="1999" height="1134"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BadX97G4W7s5FUuMx82MV/26d797ac03c21641f0380631e5fb2759/image5-14.png" alt="" class="kg-image" width="1999" height="1134" loading="lazy">
+
+	</figure>
 	<p>Here are the widget configuration options:</p>
 	<ul>
-		<li><strong>Domain</strong>: All you need to do is add the domain for the Pages application. In this example, it’s “pages-turnstile-demo.pages.dev”. For each deployment, Pages generates a <a href="https://developers.cloudflare.com/pages/configuration/preview-deployments">deployment specific preview</a> subdomain. Turnstile covers all subdomains automatically, so your Turnstile widget will work as expected even in your previews. This is covered more extensively in our <a href="https://developers.cloudflare.com/turnstile/reference/domain-management">Turnstile domain management documentation</a>.</li>
-		<li><strong>Widget Mode</strong>: There are three types of <a href="https://developers.cloudflare.com/turnstile/reference/widget-types">widget modes</a> you can choose from.</li>
-		<li><strong>Managed</strong>: This is the recommended option where Cloudflare will decide when further validation through the checkbox interaction is required to confirm whether the user is a human or a bot. This is the mode we will be using in this tutorial.</li>
+		<li>
+			<p><b>Domain</b>: All you need to do is add the domain for the Pages application. In this example, it’s “pages-turnstile-demo.pages.dev”. For each deployment, Pages generates a <a href="https://developers.cloudflare.com/pages/configuration/preview-deployments">deployment specific preview</a> subdomain. Turnstile covers all subdomains automatically, so your Turnstile widget will work as expected even in your previews. This is covered more extensively in our <a href="https://developers.cloudflare.com/turnstile/reference/domain-management">Turnstile domain management documentation</a>.</p>
+		</li>
+		<li>
+			<p><b>Widget Mode</b>: There are three types of <a href="https://developers.cloudflare.com/turnstile/reference/widget-types">widget modes</a> you can choose from.</p>
+		</li>
+		<li>
+			<p><b>Managed</b>: This is the recommended option where Cloudflare will decide when further validation through the checkbox interaction is required to confirm whether the user is a human or a bot. This is the mode we will be using in this tutorial.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/Screenshot-2024-03-07-at-11.54.30.png" class="kg-image" alt="" loading="lazy" width="2112" height="304"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78AnsttFltsSDTWMXxFjnH/c249cdd5b15dddc3c5744db766d52f6f/Screenshot-2024-03-07-at-11.54.30.png" alt="" class="kg-image" width="2000" height="288" loading="lazy">
+
+	</figure>
 	<ul>
-		<li><strong>Non-interactive</strong>: This mode does not require the user to interact and check the box of the widget. It is a non-intrusive mode where the widget is still visible to users but requires no added step in the user experience.</li>
+		<li>
+			<p><b>Non-interactive</b>: This mode does not require the user to interact and check the box of the widget. It is a non-intrusive mode where the widget is still visible to users but requires no added step in the user experience.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/Screenshot-2024-03-07-at-11.55.00.png" class="kg-image" alt="" loading="lazy" width="2090" height="292"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EAIzU3P7JhQKFteYXb4Hq/6225806b82399320193802f1d6d166e9/Screenshot-2024-03-07-at-11.55.00.png" alt="" class="kg-image" width="2000" height="279" loading="lazy">
+
+	</figure>
 	<ul>
-		<li><strong>Invisible</strong>: Invisible mode is where the widget is not visible at all to users and runs in the background of your website.</li>
-		<li><strong>Pre-Clearance setting</strong>: With a clearance cookie issued by the Turnstile widget, you can configure your website to verify every single request or once within a session. To learn more about <a href="https://blog.cloudflare.com/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">implementing pre-clearance with Turnstile</a>, check out this blog post.</li>
+		<li>
+			<p><b>Invisible</b>: Invisible mode is where the widget is not visible at all to users and runs in the background of your website.</p>
+		</li>
+		<li>
+			<p><b>Pre-Clearance setting</b>: With a clearance cookie issued by the Turnstile widget, you can configure your website to verify every single request or once within a session. To learn more about <a href="https://blog.cloudflare.com/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">implementing pre-clearance with Turnstile</a>, check out this blog post.</p>
+		</li>
 	</ul>
 	<p>Once you create your widget, you will be given a sitekey and a secret key. The sitekey is public and used to invoke the Turnstile widget on your site. The secret key should be stored safely for security purposes.</p>
-	<p>Let’s embed the widget above the Submit button. Your index.html should look like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-html">&lt;!doctype html&gt;
+	<p>Let’s embed the widget above the Submit button. Your index.html should look like this:</p>
+	<pre class="language-html"><code class="language-html">&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
 	&lt;head&gt;
 		&lt;meta charset="utf8"&gt;
@@ -123,14 +169,11 @@
 	}
 	&lt;/script&gt;
 	&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>You can embed the Turnstile widget implicitly or explicitly. In this tutorial, we will explicitly embed the widget by injecting the JavaScript tag and related code, then specifying the placement of the widget.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb" defer&gt;&lt;/script&gt;
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">&lt;script&gt;
+&lt;/html&gt;</code></pre>
+	<p>You can embed the Turnstile widget implicitly or explicitly. In this tutorial, we will explicitly embed the widget by injecting the JavaScript tag and related code, then specifying the placement of the widget.</p>
+	<pre class="language-javascript"><code class="language-javascript"><script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb" defer=""></script></code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">&lt;script&gt;
 	function _turnstileCb() {
 	    console.debug('_turnstileCb called');
 
@@ -139,17 +182,13 @@
 	      theme: 'light',
 	    });
 	}
-&lt;/script&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Make sure that the <code>div id</code> you assign is the same as the <code>id</code> you specify in <code>turnstile.render</code> call. In this case, let’s use <code>“turnstile-widget”</code>. Once that’s done, you should see the widget show up on your site!</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-html">&lt;div id="turnstile-widget" style="padding-top: 20px;"&gt;&lt;/div&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="step-3-validate-the-token">Step 3: Validate the token</h3>
+&lt;/script&gt;</code></pre>
+	<p>Make sure that the <code>div id</code> you assign is the same as the <code>id</code> you specify in <code>turnstile.render</code> call. In this case, let’s use <code>“turnstile-widget”</code>. Once that’s done, you should see the widget show up on your site!</p>
+	<pre class="language-html"><code class="language-html">&lt;div id="turnstile-widget" style="padding-top: 20px;"&gt;&lt;/div&gt;</code></pre>
+	<h3>Step 3: Validate the token</h3>
 	<p>Now that the Turnstile widget is rendered on the front end, let’s validate it on the server side and check out the Turnstile outcome. We need to make a call to the <code>/siteverify</code> API with the token in the submit function under <code>./functions/api/submit.js</code>.</p>
-	<p>First, grab the token issued from Turnstile under cf-turnstile-response. Then, call the <code>/siteverify</code> API to ensure that the token is valid. In this tutorial, we’ll attach the Turnstile outcome to the response to verify everything is working well. You can decide on the expected behavior and where to direct the user based on the <code>/siteverify</code> response.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">/**
+	<p>First, grab the token issued from Turnstile under cf-turnstile-response. Then, call the <code>/siteverify</code> API to ensure that the token is valid. In this tutorial, we’ll attach the Turnstile outcome to the response to verify everything is working well. You can decide on the expected behavior and where to direct the user based on the <code>/siteverify</code> response.</p>
+	<pre class="language-javascript"><code class="language-javascript">/**
  * POST /api/submit
  */
 
@@ -188,11 +227,9 @@ export const onRequestPost = [
       		}
       	});
     })
-];
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Since Turnstile accurately decided that the visitor was not a bot, the response for “success” is “true” and “interactive” is “false”. The “interactive” being “false” means that the checkbox was automatically checked by Cloudflare as the visitor was determined to be human. The user was seamlessly allowed access to the website without having to perform any additional actions. If the visitor looks suspicious, Turnstile will become interactive, requiring the visitor to actually click the checkbox to verify that they are not a bot. We used the managed mode in this tutorial but depending on your application logic, you can choose the widget mode that works best for you.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">{
+];</code></pre>
+	<p>Since Turnstile accurately decided that the visitor was not a bot, the response for “success” is “true” and “interactive” is “false”. The “interactive” being “false” means that the checkbox was automatically checked by Cloudflare as the visitor was determined to be human. The user was seamlessly allowed access to the website without having to perform any additional actions. If the visitor looks suspicious, Turnstile will become interactive, requiring the visitor to actually click the checkbox to verify that they are not a bot. We used the managed mode in this tutorial but depending on your application logic, you can choose the widget mode that works best for you.</p>
+	<pre class="language-javascript"><code class="language-javascript">{
   "name": "Sally Lee",
   "email": "sallylee@cloudflare.com",
   "referers": "Facebook",
@@ -209,12 +246,18 @@ export const onRequestPost = [
       "interactive": false
     }
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="wrapping-up">Wrapping up</h3>
+}</code></pre>
+	<h3>Wrapping up</h3>
 	<p>Now that we've set up Turnstile, we can head to Turnstile analytics in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">Cloudflare Dashboard</a> to monitor the <a href="https://developers.cloudflare.com/turnstile/reference/tooltips">solve rate</a> and widget traffic. Visitor Solve Rate indicates the percentage of visitors who successfully completed the Turnstile widget. A sudden drop in the Visitor Solve Rate could indicate an increase in bot traffic, as bots may fail to complete the challenge presented by the widget. API Solve Rate measures the percentage of visitors who successfully validated their token against the <code>/siteverify</code> API. Similar to the Visitor Solve Rate, a significant drop in the API Solve Rate may indicate an increase in bot activity, as bots may fail to validate their tokens. Widget Traffic provides insights into the nature of the traffic hitting your website. A high number of challenges requiring interaction may suggest that bots are attempting to access your site, while a high number of unsolved challenges could indicate that the Turnstile widget is effectively blocking suspicious traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image6-4.png" class="kg-image" alt="" loading="lazy" width="1012" height="494"></figure>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image9-1.png" class="kg-image" alt="" loading="lazy" width="1013" height="533"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LS7efg5RG5VVEE9VVh41n/3bf382065618ebed0d397f564eb450c8/image6-4.png" alt="" class="kg-image" width="1012" height="494" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rZfKrfY91tTRuCvJgFFHU/bf8bc8149e7bdda743e6daf36388cb3c/image9-1.png" alt="" class="kg-image" width="1013" height="533" loading="lazy">
+
+	</figure>
 	<p>And that’s it! We’ve walked you through how to easily secure your Pages with Turnstile. Pages and Turnstile are currently available for free for every Cloudflare user to get started right away. If you are looking for a seamless and speedy developer experience to get a secure website up and running, protected by Turnstile, head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">Cloudflare Dashboard</a> today!</p>
 </div>

@@ -1,34 +1,43 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/building-full-stack-with-pages-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/building-full-stack-with-pages-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-13.png" class="kg-image" alt="Building a full-stack application with Cloudflare Pages" loading="lazy"></figure>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/building-full-stack-with-pages">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/building-full-stack-with-pages">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CB3SAMwEgqnuNUBRBeRSA/87fc5be339eb0688a18ea3731a2113fe/image4-13.png" alt="Building a full-stack application with Cloudflare Pages" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>We were so excited to <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">announce support for full stack applications in Cloudflare Pages</a> that we knew we had to show it off in a big way. We've built a sample image-sharing platform to demonstrate how you can add serverless functions right from within Pages with help from Cloudflare Workers. With just one new file to your project, you can add dynamic rendering, interact with other APIs, and persist data with KV and Durable Objects. The possibilities for full-stack applications, in combination with Pages' quick development cycles and unlimited preview environments, gives you the power to create almost any application.</p>
 	<p>Today, we're walking through our example image-sharing platform. We want to be able to share pictures with friends while still also keeping some images private. We'll build a JSON API with Functions (storing data on KV and Durable Objects), integrate with Cloudflare Images and Cloudflare Access, and use React for our front end.</p>
 	<p>If you're wanting to dive right into the good stuff, <a href="https://images.pages.dev">our demo instance is published here</a>, and <a href="https://github.com/cloudflare/images.pages.dev">the code is on GitHub</a>, but stick around for a more gentle approach.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-17.png" class="kg-image" alt="" loading="lazy" title="Screenshot of the image sharing platform showcasing seven pictures of puppies"></figure>
-	<h2 id="building-serverless-functions-with-cloudflare-pages">Building serverless functions with Cloudflare Pages</h2>
-	<h3 id="file-based-routing">File-based routing</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ONc6WtXvEqXxJXIVlwX4o/615cfbefe97122d95c7955997e0c952c/image2-17.png" alt="" class="kg-image" width="1680" height="994" loading="lazy">
+
+	</figure>
+	<h2>Building serverless functions with Cloudflare Pages</h2>
+	<h3>File-based routing</h3>
 	<p>If you're not already familiar, Cloudflare Pages <a href="https://developers.cloudflare.com/pages/get-started">connects with your git provider</a> (GitHub and <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab">GitLab</a>), and automates the deployment of your static site to Cloudflare's network. Functions lets you enhance these apps by sprinkling in dynamic data. If you haven't already, <a href="https://dash.cloudflare.com/sign-up/pages">you can sign up here</a>.</p>
-	<p>In our project, let's create a new function:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// ./functions/time.js
+	<p>In our project, let's create a new function:</p>
+	<pre class="language-javascript"><code class="language-javascript">// ./functions/time.js
 
 
 export const onRequest = () =&gt; {
   return new Response(new Date().toISOString())
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p><code>git commit</code>-ing and pushing this file should trigger a build and deployment of your first Pages function. Any requests for <code>/time</code> will be served by this function, and all other requests will fall-back to the static assets of your project. Placing Functions files in directories works as you'd expect: <code>./functions/api/time.js</code> would be available at <code>/api/time</code> and <code>./functions/some_directory/index.js</code> would be available at <code>/some_directory</code>.</p>
 	<p>We also support TypeScript (<code>./functions/time.ts</code> would work just the same), as well as parameterized files:</p>
 	<ul>
-		<li><code>./functions/todos/[id].js</code> with single square brackets will match all requests like <code>/todos/123</code>;</li>
-		<li>and <code>./functions/todos/[[path]].js</code> with double square brackets, will match requests for any number of path segments (e.g. <code>/todos/123/subtasks</code>).</li>
+		<li>
+			<p><code>./functions/todos/[id].js</code> with single square brackets will match all requests like <code>/todos/123</code>;</p>
+		</li>
+		<li>
+			<p>and <code>./functions/todos/[[path]].js</code> with double square brackets, will match requests for any number of path segments (e.g. <code>/todos/123/subtasks</code>).</p>
+		</li>
 	</ul>
 	<p>We declare a <code>PagesFunction</code> type in the <a href="https://github.com/cloudflare/workers-types">@cloudflare/workers-types</a> library which you can use to type-check your Functions.</p>
-	<h3 id="dynamic-data">Dynamic data</h3>
-	<p>So, returning to our image-sharing app, let's assume we already have some images uploaded, and we want to display them on the homepage. We'll need an endpoint which will return a list of these images, which the front-end can call:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">// ./functions/api/images.ts
+	<h3>Dynamic data</h3>
+	<p>So, returning to our image-sharing app, let's assume we already have some images uploaded, and we want to display them on the homepage. We'll need an endpoint which will return a list of these images, which the front-end can call:</p>
+	<pre class="language-typescript"><code class="language-typescript">// ./functions/api/images.ts
 
 export const jsonResponse = (value: any, init: ResponseInit = {}) =&gt;
   new Response(JSON.stringify(value), {
@@ -57,7 +66,7 @@ export const onRequestGet: PagesFunction&lt;{
 }&gt; = async ({ env }) =&gt; {
   const { imagesKey } = (await env.IMAGES.get("setup", "json")) as Setup;
 
-  const kvImagesList = await env.IMAGES.list&lt;ImageMetadata&gt;({
+  const kvImagesList = await env.IMAGES.list<imagemetadata>({
     prefix: `image:uploaded:`,
   });
 
@@ -88,15 +97,13 @@ export const onRequestGet: PagesFunction&lt;{
     .filter((image) =&gt; image !== undefined);
 
   return jsonResponse({ images });
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</imagemetadata></code></pre>
 	<p>Eagle-eyed readers will notice we're exporting <code>onRequestGet</code> which lets us only respond to <code>GET</code> requests.</p>
 	<p>We're also using a KV namespace (accessed with <code>env.IMAGES</code>) to store information about images that have been uploaded. To create a binding in your Pages project, navigate to the "Settings" tab.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png" class="kg-image" alt="" loading="lazy" title="Screenshot of the &quot;Functions&quot; page on the Pages project &quot;Settings&quot; tab in the Cloudflare dashboard"></figure>
-	<h3 id="interfacing-with-other-apis">Interfacing with other APIs</h3>
-	<p>Cloudflare Images is an inexpensive, high-performance, and featureful service for hosting and transforming images. You can create multiple variants to render your images in different ways and control access with signed URLs. We'll add a function to interface with this service's API and upload incoming files to Cloudflare Images:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">// ./functions/api/admin/upload.ts
+	<p>![](<a href="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png_REGULAR">/content/images/2021/11/unnamed-15.png_REGULAR</a> "Screenshot of the "Functions" page on the Pages project "Settings" tab in the Cloudflare dashboard")</p>
+	<h3>Interfacing with other APIs</h3>
+	<p>Cloudflare Images is an inexpensive, high-performance, and featureful service for hosting and transforming images. You can create multiple variants to render your images in different ways and control access with signed URLs. We'll add a function to interface with this service's API and upload incoming files to Cloudflare Images:</p>
+	<pre class="language-typescript"><code class="language-typescript">// ./functions/api/admin/upload.ts
 
 export const onRequestPost: PagesFunction&lt;{
   IMAGES: KVNamespace;
@@ -161,14 +168,12 @@ export const onRequestPost: PagesFunction&lt;{
   await env.IMAGES.put(`image:${id}`, JSON.stringify(metadata));
 
   return jsonResponse(true);
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="persisting-data">Persisting data</h3>
+};</code></pre>
+	<h3>Persisting data</h3>
 	<p>We're already using KV to store information that is read often but rarely written to. What about features that require a bit more synchronicity?</p>
 	<p>Let's add a download counter to each of our images. We can create a <code>highres</code> variant in Cloudflare Images, and increment the counter every time a user requests a link. This requires a bit more setup, but unlocking the power of Durable Objects in your projects is absolutely worth it.</p>
-	<p>We'll need to create and publish the Durable Object class capable of maintaining this download count:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// ./durable_objects/downloadCounter.js
+	<p>We'll need to create and publish the Durable Object class capable of maintaining this download count:</p>
+	<pre class="language-javascript"><code class="language-javascript">// ./durable_objects/downloadCounter.js
 ts#example---counter
 
 export class DownloadCounter {
@@ -192,13 +197,11 @@ export class DownloadCounter {
 
     return jsonResponse(currentValue);
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="middleware">Middleware</h3>
+}</code></pre>
+	<h3>Middleware</h3>
 	<p>If you need to execute some code (such as authentication or logging) before you run your function, Pages offers easy-to-use middleware which can be applied at any level in your file-based routing. By creating a <code>_middleware.ts</code> file in a directory, we know to first run this file, and then execute your function when <code>next()</code> is called.</p>
-	<p>In our application, we want to prevent unauthorized users from uploading images (<code>/api/admin/upload</code>) or deleting images (<code>/api/admin/delete</code>). Cloudflare Access lets us apply <a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac">role-based access control</a> to all or part of our application, and you only need a single file to integrate it into our serverless functions. We create &nbsp;<code>./functions/api/admin/_middleware.ts</code> which will apply to all incoming requests at <code>/api/admin/*</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">// ./functions/api/admin/_middleware.ts
+	<p>In our application, we want to prevent unauthorized users from uploading images (<code>/api/admin/upload</code>) or deleting images (<code>/api/admin/delete</code>). Cloudflare Access lets us apply <a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac">role-based access control</a> to all or part of our application, and you only need a single file to integrate it into our serverless functions. We create &nbsp;<code>./functions/api/admin/_middleware.ts</code> which will apply to all incoming requests at <code>/api/admin/*</code>:</p>
+	<pre class="language-typescript"><code class="language-typescript">// ./functions/api/admin/_middleware.ts
 
 const validateJWT = async (jwtAssertion: string | null, aud: string) =&gt; {
   // If the JWT is valid, return the JWT payload
@@ -226,53 +229,50 @@ const cloudflareAccessMiddleware: PagesFunction&lt;{ IMAGES: KVNamespace }&gt; =
     return await next();
   };
 
-export const onRequest = [cloudflareAccessMiddleware];
-</code></pre>
-	<!--kg-card-end: markdown-->
+export const onRequest = [cloudflareAccessMiddleware];</code></pre>
 	<p>Middleware is a powerful tool at your disposal allowing you to easily protect parts of your application with Cloudflare Access, or quickly integrate with observability and error logging platforms such as Honeycomb and Sentry.</p>
-	<h2 id="integrating-as-jamstack">Integrating as Jamstack</h2>
+	<h2>Integrating as Jamstack</h2>
 	<p>The "Jam" of "Jamstack" stands for JavaScript, API and Markup. Cloudflare Pages previously provided the 'J' and 'M', and with Workers in the middle, you can truly go full-stack Jamstack.</p>
 	<p>We've built the front end of this image sharing platform with <a href="https://create-react-app.dev">Create React App</a> as an approachable example, but <a href="https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets">Cloudflare Pages natively integrates with an ever-growing number of frameworks</a> (currently 23), and you can always <a href="https://developers.cloudflare.com/pages/platform/build-configuration#build-commands-and-directories">configure your own entirely custom build command</a>.</p>
-	<p>Your front end simply needs to make a call to the Functions we've already configured, and render out that data. We're using <a href="https://swr.vercel.app">SWR</a> to simplify things, but you could do this with entirely vanilla JavaScript <code>fetch</code>-es, if that's your preference.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">// ./src/components/ImageGrid.tsx
+	<p>Your front end simply needs to make a call to the Functions we've already configured, and render out that data. We're using <a href="https://swr.vercel.app">SWR</a> to simplify things, but you could do this with entirely vanilla JavaScript <code>fetch</code>-es, if that's your preference.</p>
+	<pre class="language-typescript"><code class="language-typescript">// ./src/components/ImageGrid.tsx
 
 export const ImageGrid = () =&gt; {
   const { data, error } = useSWR&lt;{ images: Image[] }&gt;("/api/images");
 
   if (error || data === undefined) {
-    return &lt;div&gt;An unexpected error has occurred when fetching the list of images. Please try again.&lt;/div&gt;;
+    return <div>An unexpected error has occurred when fetching the list of images. Please try again.</div>;
   }
 
 
   return (
-    &lt;div&gt;
+    <div>
       {data.images.map((image) =&gt; (
-        &lt;ImageCard image={image} key={image.id} /&gt;
+        <imagecard image="{image}" key="{image.id}">
       ))}
-    &lt;/div&gt;
+    </imagecard></div>
   );
 
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="local-development">Local development</h2>
+}</code></pre>
+	<h2>Local development</h2>
 	<p>No matter how fast it is, iterating on a project like this can be painful if you have to push up every change in order to test how it works. We've released a first-class integration with wrangler for local development of Pages projects, including full support for Functions, Workers, secrets, environment variables and KV. Durable Objects support is coming soon.</p>
-	<p>Install from npm:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh">npm install wrangler@beta
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>and either serve a folder of static assets, or proxy your existing tooling:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-sh"># Serve a directory
+	<p>Install from npm:</p>
+	<pre class="language-sh"><code class="language-sh">npm install wrangler@beta</code></pre>
+	<p>and either serve a folder of static assets, or proxy your existing tooling:</p>
+	<pre class="language-sh"><code class="language-sh"># Serve a directory
 npx wrangler pages dev ./public
 
 # or integrate with your other tools
-npx wrangler pages dev -- npx react-scripts start
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="go-forth-and-build-">Go forth, and build!</h2>
+npx wrangler pages dev -- npx react-scripts start</code></pre>
+	<h2>Go forth, and build!</h2>
 	<p>If you like puppies, <a href="https://images.pages.dev">we've deployed our image-sharing application here</a>, and if you like code, <a href="https://github.com/cloudflare/images.pages.dev">that's over on GitHub</a>. Feel free to fork and deploy it yourself! There's a five-minute setup wizard, and you'll need Cloudflare Images, Access, Workers, and Durable Objects.</p>
 	<p>We are so excited about the future of the Pages platform, and we want to hear what you're building! Show off your full-stack applications in the <a href="https://discord.com/channels/595317990191398933/783765338692386886">#what-i-built channel</a>, or get assistance in the <a href="https://discord.com/channels/595317990191398933/789155108529111069">#pages-help channel</a> on <a href="https://discord.gg/cloudflaredev">our Discord server</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-37.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FMhGC7kxjUEspTnvUGjeQ/73cce33e67c1f00847ace2551f24fadc/image1-37.png" alt="" class="kg-image" width="1800" height="578" loading="lazy">
+
+	</figure>
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

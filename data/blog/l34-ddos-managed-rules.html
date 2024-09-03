@@ -1,66 +1,111 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/l34-ddos-managed-rules-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/l34-ddos-managed-rules-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/id-id/l34-ddos-managed-rules-id-id">bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/l34-ddos-managed-rules-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-28.png" class="kg-image" alt="How to customize your layer 3/4 DDoS protection settings" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/l34-ddos-managed-rules">简体中文</a>, <a href="https://blog.cloudflare.com/id-id/l34-ddos-managed-rules">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/l34-ddos-managed-rules">ไทย</a> and <a href="https://blog.cloudflare.com/ja-jp/l34-ddos-managed-rules">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XAmgCsMHnrtq7ExJ8f80q/e1ba670d9c0b5b10aa290b43e2c9f24a/image2-28.png" alt="How to customize your layer 3/4 DDoS protection settings" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>After initially providing our customers <a href="https://blog.cloudflare.com/http-ddos-managed-rules">control over the HTTP-layer DDoS protection settings earlier this year</a>, we’re now excited to extend the control our customers have to the packet layer. Using these new controls, Cloudflare Enterprise customers using the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> services can now tune and tweak their L3/4 DDoS protection settings directly from the Cloudflare dashboard or via the Cloudflare API.</p>
 	<p>The new functionality provides customers control over two main DDoS rulesets:</p>
 	<ol>
-		<li><strong>Network-layer DDoS Protection</strong> <strong>ruleset</strong> — This ruleset includes rules to detect and mitigate DDoS attacks on layer 3/4 of the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi">OSI model</a> such as UDP floods, SYN-ACK reflection attacks, SYN Floods, and DNS floods. This ruleset is available for Spectrum and Magic Transit customers on the Enterprise plan.</li>
-		<li><strong>Advanced TCP Protection</strong> <strong>ruleset</strong> — This ruleset includes rules to detect and mitigate sophisticated out-of-state TCP attacks such as spoofed ACK Floods, Randomized SYN Floods, and distributed SYN-ACK Reflection attacks. This ruleset is available for Magic Transit customers only.</li>
+		<li>
+			<p><b>Network-layer DDoS Protection</b> <b>ruleset</b> — This ruleset includes rules to detect and mitigate DDoS attacks on layer 3/4 of the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi">OSI model</a> such as UDP floods, SYN-ACK reflection attacks, SYN Floods, and DNS floods. This ruleset is available for Spectrum and Magic Transit customers on the Enterprise plan.</p>
+		</li>
+		<li>
+			<p><b>Advanced TCP Protection</b> <b>ruleset</b> — This ruleset includes rules to detect and mitigate sophisticated out-of-state TCP attacks such as spoofed ACK Floods, Randomized SYN Floods, and distributed SYN-ACK Reflection attacks. This ruleset is available for Magic Transit customers only.</p>
+		</li>
 	</ol>
 	<p>To learn more, review our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets">DDoS Managed Ruleset developer documentation</a>. We’ve put together a few guides that we hope will be helpful for you:</p>
 	<ol>
-		<li><a href="https://developers.cloudflare.com/ddos-protection/get-started">Onboarding &amp; getting started with Cloudflare DDoS protection</a></li>
-		<li><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-negative">Handling false negatives</a></li>
-		<li><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive">Handling false positives</a></li>
-		<li><a href="https://developers.cloudflare.com/ddos-protection/best-practices/third-party">Best practices when using VPNs, VoIP, and other third-party services</a></li>
-		<li><a href="https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack">How to simulate a DDoS attack</a></li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/ddos-protection/get-started">Onboarding &amp; getting started with Cloudflare DDoS protection</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-negative">Handling false negatives</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive">Handling false positives</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/ddos-protection/best-practices/third-party">Best practices when using VPNs, VoIP, and other third-party services</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack">How to simulate a DDoS attack</a></p>
+		</li>
 	</ol>
-	<h2 id="cloudflare-s-ddos-protection">Cloudflare’s DDoS Protection</h2>
+	<h2>Cloudflare’s DDoS Protection</h2>
 	<p>A <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service (DDoS) attack</a> is a type of cyberattack that aims to disrupt the victim’s Internet services. There are many types of DDoS attacks, and they can be generated by attackers at different layers of the Internet. One example is the <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack">HTTP flood</a>. It aims to disrupt HTTP application servers such as those that power mobile apps and websites. Another example is the <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack">UDP flood</a>. While this type of attack can be used to disrupt HTTP servers, it can also be used in an attempt to disrupt non-HTTP applications. These include TCP-based and UDP-based applications, networking services such as <a href="https://blog.cloudflare.com/update-on-voip-attacks">VoIP services</a>, gaming servers, cryptocurrency, and more.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-12.png" class="kg-image" alt="An illustration of a DDoS attack" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2C1TrYyVltpMud4OWi3UgR/5995290fcd1cc02e694e4b2fbec0f1bf/image5-12.png" alt="An illustration of a DDoS attack" class="kg-image" width="746" height="452" loading="lazy">
+
+	</figure>
 	<p>To defend organizations against DDoS attacks, we built and operate software-defined systems that run autonomously. They automatically detect and mitigate DDoS attacks across our entire network. You can read more about our autonomous <a href="https://www.cloudflare.com/ddos">DDoS protection systems</a> and how they work in our <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">deep-dive technical blog post</a>.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-33.png" class="kg-image" alt="A diagram of Cloudflare’s DDoS protection system" loading="lazy"></figure>
-	<h2 id="unmetered-and-unlimited-ddos-protection">Unmetered and unlimited DDoS Protection</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zVNe9hiMYUaf1DcZzxP2t/c70dc07b058b2d2385135c42a95a020a/unnamed-33.png" alt="A diagram of Cloudflare’s DDoS protection system" class="kg-image" width="1600" height="1041" loading="lazy">
+
+	</figure>
+	<h2>Unmetered and unlimited DDoS Protection</h2>
 	<p>The level of protection that we offer is <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered and unlimited</a> — It is not bounded by the size of the attack, the number of the attacks, or the duration of the attacks. This is especially important these days because as we’ve recently seen, attacks are getting larger and more frequent. Consequently, in Q3, network-layer attacks increased by 44% compared to the previous quarter. Furthermore, just recently, our systems automatically detected and mitigated a <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">DDoS attack that peaked just below 2 Tbps</a> — the largest we’ve seen to date.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image4.jpg" class="kg-image" alt="Graph of an almost 2 Tbps DDoS attack launched by a Mirari-variant botnet" loading="lazy">
-		<figcaption>Mirai botnet launched an almost 2 Tbps DDoS attack</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FDNWzHw3jIcywi8qMcKlq/bb6e113b17c06bb8970997df05026c74/image4.jpg" alt="Graph of an almost 2 Tbps DDoS attack launched by a Mirari-variant botnet" class="kg-image" width="1200" height="627" loading="lazy">
+
 	</figure>
+	<p>Mirai botnet launched an almost 2 Tbps DDoS attack</p>
 	<p>Read more about <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q3">recent DDoS trends</a>.</p>
-	<h2 id="managed-rulesets">Managed Rulesets</h2>
+	<h2>Managed Rulesets</h2>
 	<p>You can think of our autonomous DDoS protection systems as groups (rulesets) of intelligent rules. There are rulesets of HTTP DDoS Protection rules, Network-layer DDoS Protection rules and Advanced TCP Protection rules. In this blog post, we will cover the latter two rulesets. We’ve already covered the former in the blog post <a href="https://blog.cloudflare.com/http-ddos-managed-rules">How to customize your HTTP DDoS protection settings</a>.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-6.png" class="kg-image" alt="A screenshot of the DDoS Protection Managed Rulesets in the Cloudflare dashboard" loading="lazy">
-		<figcaption>Cloudflare L3/4 DDoS Managed Rules</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38zn08I5UIGe7IvmFb5aIT/c49daa1936d05e7a5c76ba01e256d078/image7-6.png" alt="A screenshot of the DDoS Protection Managed Rulesets in the Cloudflare dashboard" class="kg-image" width="1225" height="959" loading="lazy">
+
 	</figure>
-	<p>In the <strong>Network-layer DDoS Protection rulesets</strong>, each rule has a unique set of conditional fingerprints, dynamic field masking, activation thresholds, and mitigation actions. These rules are managed (by Cloudflare), meaning that the specifics of each rule is curated in-house by our DDoS experts. Before deploying a new rule, it is first rigorously tested and optimized for mitigation accuracy and efficiency across our entire global network.</p>
-	<p>In the <strong>Advanced TCP Protection ruleset</strong>, we use a novel TCP state classification engine to identify the state of TCP flows. The engine powering this ruleset is <em>flowtrackd</em> — you can read more about it in our <a href="https://blog.cloudflare.com/announcing-flowtrackd">announcement blog post</a>. One of the unique features of this system is that it is able to operate using only the ingress (inbound) packet flows. The system sees only the ingress traffic and is able to drop, challenge, or allow packets based on their legitimacy. For example, a flood of ACK packets that don’t correspond to open TCP connections will be dropped. </p>
-	<h2 id="how-attacks-are-detected-and-mitigated">How attacks are detected and mitigated</h2>
-	<h3 id="sampling">Sampling</h3>
+	<p>Cloudflare L3/4 DDoS Managed Rules</p>
+	<p>In the <b>Network-layer DDoS Protection rulesets</b>, each rule has a unique set of conditional fingerprints, dynamic field masking, activation thresholds, and mitigation actions. These rules are managed (by Cloudflare), meaning that the specifics of each rule is curated in-house by our DDoS experts. Before deploying a new rule, it is first rigorously tested and optimized for mitigation accuracy and efficiency across our entire global network.</p>
+	<p>In the <b>Advanced TCP Protection ruleset</b>, we use a novel TCP state classification engine to identify the state of TCP flows. The engine powering this ruleset is <i>flowtrackd</i> — you can read more about it in our <a href="https://blog.cloudflare.com/announcing-flowtrackd">announcement blog post</a>. One of the unique features of this system is that it is able to operate using only the ingress (inbound) packet flows. The system sees only the ingress traffic and is able to drop, challenge, or allow packets based on their legitimacy. For example, a flood of ACK packets that don’t correspond to open TCP connections will be dropped.</p>
+	<h2>How attacks are detected and mitigated</h2>
+	<h3>Sampling</h3>
 	<p>Initially, traffic is routed through the Internet via <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">BGP Anycast</a> to the nearest Cloudflare edge data center. Once the traffic reaches our data center, our DDoS systems sample it asynchronously allowing for out-of-path analysis of traffic without introducing latency penalties. The Advanced TCP Protection ruleset needs to view the entire packet flow and so it sits inline for Magic Transit customers only. It, too, does not introduce any latency penalties.</p>
-	<h3 id="analysis-mitigation">Analysis &amp; mitigation</h3>
-	<p>The analysis for the <strong>Advanced TCP Protection ruleset</strong> is straightforward and efficient. The system qualifies TCP flows and tracks their state. In this way, packets that don’t correspond to a legitimate connection and its state are dropped or challenged. The mitigation is activated only above certain thresholds that customers can define.</p>
-	<p>The analysis for the <strong>Network-layer DDoS Protection ruleset</strong> is done using data streaming algorithms. Packet samples are compared to the conditional fingerprints and multiple real-time signatures are created based on the dynamic masking. Each time another packet matches one of the signatures, a counter is increased. When the activation threshold is reached for a given signature, a mitigation rule is compiled and pushed inline. The mitigation rule includes the real-time signature and the mitigation action, e.g., drop.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image9-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="-example">​​​​Example</h3>
+	<h3>Analysis &amp; mitigation</h3>
+	<p>The analysis for the <b>Advanced TCP Protection ruleset</b> is straightforward and efficient. The system qualifies TCP flows and tracks their state. In this way, packets that don’t correspond to a legitimate connection and its state are dropped or challenged. The mitigation is activated only above certain thresholds that customers can define.</p>
+	<p>The analysis for the <b>Network-layer DDoS Protection ruleset</b> is done using data streaming algorithms. Packet samples are compared to the conditional fingerprints and multiple real-time signatures are created based on the dynamic masking. Each time another packet matches one of the signatures, a counter is increased. When the activation threshold is reached for a given signature, a mitigation rule is compiled and pushed inline. The mitigation rule includes the real-time signature and the mitigation action, e.g., drop.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fZ5yjyahUgG57t6OeKuNW/3e4364bf25477c0f9cb7f2091efdec52/image9-1.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
+
+	</figure>
+	<h3>​​​​Example</h3>
 	<p>As a simple example, one fingerprint could include the following fields: source IP, source port, destination IP, and the TCP sequence number. A packet flood attack with a fixed sequence number would match the fingerprint and the counter would increase for every packet match until the activation threshold is exceeded. Then a mitigation action would be applied.</p>
 	<p>However, in the case of a <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">spoofed</a> attack where the source IP addresses and ports are randomized, we would end up with multiple signatures for each combination of source IP and port. Assuming a sufficiently randomized/distributed attack, the activation thresholds would not be met and mitigation would not occur. For this reason, we use dynamic masking, i.e. ignoring fields that may not be a strong indicator of the signature. By masking (ignoring) the source IP and port, we would be able to match all the attack packets based on the unique TCP sequence number regardless of how randomized/distributed the attack is.</p>
-	<h3 id="configuring-the-ddos-protection-settings">Configuring the DDoS Protection Settings</h3>
+	<h3>Configuring the DDoS Protection Settings</h3>
 	<p>For now, we’ve only exposed a handful of the Network-layer DDoS protection rules that we’ve identified as the ones most prone to customizations. We will be exposing more and more rules on a regular basis. This shouldn’t affect any of your traffic.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-4.png" class="kg-image" alt="Overriding the sensitivity level and mitigation action" loading="lazy">
-		<figcaption>Overriding the sensitivity level and mitigation action</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WfQ9IUiHT6kl2R6i2fsu4/fc1cddaf54c87878da344fd54f927a14/image8-4.png" alt="Overriding the sensitivity level and mitigation action" class="kg-image" width="1114" height="1076" loading="lazy">
+
 	</figure>
-	<p>For the <strong>Network-layer DDoS Protection ruleset</strong>, for each of the available rules, you can override the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#sensitivity-level">sensitivity level</a> (activation threshold), customize the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#action">mitigation action</a>, and apply <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/fields">expression filters</a> to exclude/include traffic from the DDoS protection system based on various packet fields. You can create multiple overrides to customize the protection for your network and your various applications.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-22.png" class="kg-image" alt="Configuring expression fields for the DDoS Managed Rules to match on" loading="lazy">
-		<figcaption>Configuring expression fields for the DDoS Managed Rules to match on</figcaption>
+	<p>Overriding the sensitivity level and mitigation action</p>
+	<p>For the <b>Network-layer DDoS Protection ruleset</b>, for each of the available rules, you can override the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#sensitivity-level">sensitivity level</a> (activation threshold), customize the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#action">mitigation action</a>, and apply <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/fields">expression filters</a> to exclude/include traffic from the DDoS protection system based on various packet fields. You can create multiple overrides to customize the protection for your network and your various applications.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4S7gQPtUwI4ksZFqre6wvy/f1861e59b338f4e7a2465d998e062003/image3-22.png" alt="Configuring expression fields for the DDoS Managed Rules to match on" class="kg-image" width="1077" height="819" loading="lazy">
+
 	</figure>
+	<p>Configuring expression fields for the DDoS Managed Rules to match on</p>
 	<p>In the past, you’d have to go through our support channels to customize the rules. In some cases, this may have taken longer to resolve than desired. With today’s announcement, you can tailor and fine-tune the settings of our autonomous edge system by yourself to quickly improve the accuracy of the protection for your specific network needs.</p>
-	<p>For the <strong>Advanced TCP Protection ruleset</strong>, for now, we’ve only exposed the ability to enable or disable it as a whole in the dashboard. To enable or disable the ruleset per IP prefix, you must use <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-api">the API</a>. At this time, when initially onboarding to Cloudflare, the Cloudflare team must first create a policy for you. After onboarding, if you need to change the sensitivity thresholds, use Monitor mode, or add filter expressions you must contact Cloudflare Support. In upcoming releases, this too will be available via the dashboard and API without requiring help from our Support team.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-45.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="pre-existing-customizations">Pre-existing customizations</h2>
+	<p>For the <b>Advanced TCP Protection ruleset</b>, for now, we’ve only exposed the ability to enable or disable it as a whole in the dashboard. To enable or disable the ruleset per IP prefix, you must use <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-api">the API</a>. At this time, when initially onboarding to Cloudflare, the Cloudflare team must first create a policy for you. After onboarding, if you need to change the sensitivity thresholds, use Monitor mode, or add filter expressions you must contact Cloudflare Support. In upcoming releases, this too will be available via the dashboard and API without requiring help from our Support team.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UG7jeJmxbiKYel0U9qRol/ed44c22e5d52f39ed93486acb5533f7b/image1-45.png" alt="" class="kg-image" width="1081" height="319" loading="lazy">
+
+	</figure>
+	<h2>Pre-existing customizations</h2>
 	<p>If you previously contacted Cloudflare Support to apply customizations, your customizations have been preserved, and you can visit the dashboard to view the settings of the Network-layer DDoS Protection ruleset and change them if you need. If you require any changes to your Advanced TCP Protection customizations, please reach out to Cloudflare Support.</p>
 	<p>If so far you didn't have the need to customize this protection, there is no action required on your end. However, if you would like to view and customize your DDoS protection settings, follow <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-dashboard">this dashboard guide</a> or review the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-api">API documentation</a> to programmatically configure the DDoS protection settings.</p>
-	<h2 id="helping-build-a-better-internet">Helping Build a Better Internet</h2>
+	<h2>Helping Build a Better Internet</h2>
 	<p>At Cloudflare, everything we do is guided by our mission to help build a better Internet. The DDoS team’s vision is derived from this mission: our goal is to make the impact of DDoS attacks a thing of the past. Our first step was to build the autonomous systems that detect and mitigate attacks independently. Done. The second step was to expose the control plane over these systems to our customers (announced today). Done. The next step will be to fully automate the configuration with an auto-pilot feature — training the systems to learn your specific traffic patterns to automatically optimize your DDoS protection settings. You can expect many more improvements, automations, and new capabilities to keep your Internet properties safe, available, and performant.</p>
 	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Start now</a>.</p>
 </div>

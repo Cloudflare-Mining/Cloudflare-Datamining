@@ -1,8 +1,11 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-one-vs-zscaler-zero-trust-exchange-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-one-vs-zscaler-zero-trust-exchange-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-one-vs-zscaler-zero-trust-exchange-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-one-vs-zscaler-zero-trust-exchange-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-one-vs-zscaler-zero-trust-exchange-es-es">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-one-vs-zscaler-zero-trust-exchange-fr-fr">Français</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange.png" class="kg-image" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect" loading="lazy"></figure>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-one-vs-zscaler-zero-trust-exchange">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-one-vs-zscaler-zero-trust-exchange">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-one-vs-zscaler-zero-trust-exchange">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-one-vs-zscaler-zero-trust-exchange">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-one-vs-zscaler-zero-trust-exchange">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-one-vs-zscaler-zero-trust-exchange">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/484f4I30CuPgNa0gWDI8vM/1835c69bb516062ca454ae49d180508d/Zero-Trust-Exchange.png" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Zscaler has been building out its security offerings for 15 years. Cloudflare is 13 years old, and we have been delivering Zero Trust for the last four. This sounds like we are a late starter — but in this post, we’re going to show that on total <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a>, <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse">SSE</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> and beyond, Cloudflare One functionality surpasses that of Zscaler Zero Trust Exchange.  </p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -145,144 +148,10 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>This may come as a surprise to many folks. When we’ve shared this with customers, the question we’ve often received is: <em>How?</em> How has Cloudflare been able to build out a competitive offering so quickly?</p>
-	<p>Having built out the world’s largest programmable Anycast network has certainly been a big advantage. This was the foundation for Cloudflare’s existing application services business — which delivers secure, performant web and application experiences to customers all around the world. It’s given us deep insight into security and performance on the Internet. But not only was our infrastructure ready to address real customer problems at scale, but our serverless compute development platform — <a href="https://workers.cloudflare.com">Workers</a> — was specifically designed to build globally distributed applications with security, reliability, and performance built in. We’ve been able to build on top of our platform to deliver Zero Trust services at an unmatched velocity — a velocity which we only expect to continue. </p>
+	<p>This may come as a surprise to many folks. When we’ve shared this with customers, the question we’ve often received is: <i>How?</i> How has Cloudflare been able to build out a competitive offering so quickly?</p>
+	<p>Having built out the world’s largest programmable Anycast network has certainly been a big advantage. This was the foundation for Cloudflare’s existing application services business — which delivers secure, performant web and application experiences to customers all around the world. It’s given us deep insight into security and performance on the Internet. But not only was our infrastructure ready to address real customer problems at scale, but our serverless compute development platform — <a href="https://workers.cloudflare.com">Workers</a> — was specifically designed to build globally distributed applications with security, reliability, and performance built in. We’ve been able to build on top of our platform to deliver Zero Trust services at an unmatched velocity — a velocity which we only expect to continue.</p>
 	<p>But we’ve also had another advantage that this timelines belies. So much has changed in the enterprise security space in the past 15 years. The idea of a performant global network like ours, for example, was not an assumption that could be made back then. When we started building out our Zero Trust offering, we had the benefit of a complete blank slate, and we’ve built out our offering on completely modern cloud assumptions.</p>
-	<p>But we know the reason you’re here — you want to see the proof. Here it is: we have released a new functional deep dive on our public page <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler">comparing Zscaler and Cloudflare’s platforms</a>. Let’s share a sneak peek of two of the five criteria groups – services to adopt SASE and network on-ramps. Many criteria include footnotes in the <a href="https://cfl.re/cloudflare-vs-zscaler-functional">PDF</a> for added context and clarity (indicated by an *) </p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-
-		.tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg .tg-ucok {
-			background-color: #afe4fd;
-			border-color: #000000;
-			color: #3663ae;
-			font-size: 18px;
-			font-weight: bold;
-			text-align: center;
-			vertical-align: top
-		}
-
-		.tg .tg-baki {
-			background-color: #fe0000;
-			border-color: #000000;
-			color: #ffffff;
-			text-align: center;
-			vertical-align: middle
-		}
-
-		.tg .tg-ru72 {
-			background-color: #fe0000;
-			border-color: #000000;
-			color: #ffffff;
-			text-align: center;
-			vertical-align: top
-		}
-
-		.tg .tg-ycfl {
-			background-color: #009901;
-			border-color: #000000;
-			color: #ffffff;
-			font-weight: bold;
-			text-align: center;
-			vertical-align: top
-		}
-
-		.tg .tg-68aq {
-			background-color: #afe4fd;
-			border-color: #000000;
-			color: #3663ae;
-			font-size: 18px;
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-
-		.tg .tg-73oq {
-			border-color: #000000;
-			text-align: left;
-			vertical-align: top
-		}
-
-		.tg .tg-dp1c {
-			background-color: #009901;
-			border-color: #000000;
-			color: #ffffff;
-			text-align: center;
-			vertical-align: top
-		}
-	</style>
-	<table class="tg" style="undefined;table-layout: fixed; width: 610px">
-		<colgroup>
-			<col style="width: 342.003472px">
-			<col style="width: 134.003472px">
-			<col style="width: 134.003472px">
-		</colgroup>
-		<thead>
-			<tr>
-				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">Services to adopt SASE</span></th>
-				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
-				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Zero Trust Network Access (ZTNA)</span></td>
-				<td class="tg-ycfl">YES</td>
-				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">YES</span></td>
-			</tr>
-			<tr>
-				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Cloud Access Security Broker (CASB)</span></td>
-				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">YES</span></td>
-				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">YES</span></td>
-			</tr>
-			<tr>
-				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Secure Web Gateway (SWG)</span></td>
-				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">YES</span></td>
-				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">YES</span></td>
-			</tr>
-			<tr>
-				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Firewall as a Service (FWaaS)</span></td>
-				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">YES</span></td>
-				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">YES</span></td>
-			</tr>
-			<tr>
-				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">WAN as a Service with L3-7 traffic acceleration*</span></td>
-				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">YES</span></td>
-				<td class="tg-ru72"><span style="font-weight:700;font-style:normal">NO</span></td>
-			</tr>
-			<tr>
-				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">On-premise SD-WAN*</span></td>
-				<td class="tg-baki"><span style="font-weight:700;font-style:normal">NO - partner</span></td>
-				<td class="tg-baki"><span style="font-weight:700;font-style:normal">NO - partner</span></td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: html--><!--kg-card-begin: html-->
+	<p>But we know the reason you’re here — you want to see the proof. Here it is: we have released a new functional deep dive on our public page <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler">comparing Zscaler and Cloudflare’s platforms</a>. Let’s share a sneak peek of two of the five criteria groups – services to adopt SASE and network on-ramps. Many criteria include footnotes in the <a href="https://cfl.re/cloudflare-vs-zscaler-functional">PDF</a> for added context and clarity (indicated by an *)</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -458,16 +327,16 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>While the <a href="https://cfl.re/cloudflare-vs-zscaler-functional">deep dive comparison of 37 functional criteria</a> shows we’re out in front, and <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler">our page</a> explains why our architecture is simpler, more trusted, and faster to innovate — we also know there’s more to a product than a list of features. Given that zero trust gets rolled out across an entire organization, the experience of using the product is paramount. Here are three key areas where Cloudflare One surpasses the Zscaler Zero Trust Exchange for both end-users and administrators.</p>
-	<h4 id="1-every-service-is-built-to-run-in-every-location-at-enterprise-scale">1) Every service is built to run in every location at enterprise scale</h4>
-	<p><strong>Claim:</strong> Zscaler claims to run the “<a href="https://www.zscaler.com/company/about-zscaler">largest security cloud on the planet</a>” yet Zscaler's network is broken into at <a href="https://config.zscaler.com/zscaler.net/cenr">least 8 distinct clouds</a>, according to its own configuration resources: zscalertwo.net, zscalerthree.net, for example. On the front end, from a usability perspective, many clouds don’t make for a seamless administrator experience as each of Zscaler’s key offerings comes with its own portal and login, meaning you interact with each like a separate product rather than with one single “security cloud.”</p>
-	<p><strong>The Cloudflare One advantage:</strong> We are transparent about the size of our massive, global Anycast network and we report on the number of cities, not data centers. The location of our customers matter, and their ability to access every one of our services no matter where they are, matters. The number of cities in which we have data centers is more than 270 (all in the same cloud network) compared to Zscaler’s 55 cities (and remember — not all of these cities are in the same cloud network). Every service (and their updates and new features) on Cloudflare One is built to run on every server in every data center in every city, which is available to every one of our customers. And on the frontend, Cloudflare One provides one dashboard for all Zero Trust — <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">ZTNA</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">CASB</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">SWG</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">RBI</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">DLP</a>, and much more — solving the swivel chair problem by not spending time manually aligning policies and analytics isolated across separate screens.</p>
-	<h4 id="2-more-throughput-for-improved-end-user-experience">2) More throughput for improved end-user experience</h4>
-	<p>It’s no good offering great security if it slows and degrades user experience; seamless, frictionless, and <strong>fast</strong> access is critical to successful Zero Trust deployments — otherwise you will find your users looking for work arounds before you know it.</p>
+	<h4>1) Every service is built to run in every location at enterprise scale</h4>
+	<p><b>Claim:</b> Zscaler claims to run the “<a href="https://www.zscaler.com/company/about-zscaler">largest security cloud on the planet</a>” yet Zscaler's network is broken into at <a href="https://config.zscaler.com/zscaler.net/cenr">least 8 distinct clouds</a>, according to its own configuration resources: zscalertwo.net, zscalerthree.net, for example. On the front end, from a usability perspective, many clouds don’t make for a seamless administrator experience as each of Zscaler’s key offerings comes with its own portal and login, meaning you interact with each like a separate product rather than with one single “security cloud.”</p>
+	<p><b>The Cloudflare One advantage:</b> We are transparent about the size of our massive, global Anycast network and we report on the number of cities, not data centers. The location of our customers matter, and their ability to access every one of our services no matter where they are, matters. The number of cities in which we have data centers is more than 270 (all in the same cloud network) compared to Zscaler’s 55 cities (and remember — not all of these cities are in the same cloud network). Every service (and their updates and new features) on Cloudflare One is built to run on every server in every data center in every city, which is available to every one of our customers. And on the frontend, Cloudflare One provides one dashboard for all Zero Trust — <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">ZTNA</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">CASB</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">SWG</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">RBI</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">DLP</a>, and much more — solving the swivel chair problem by not spending time manually aligning policies and analytics isolated across separate screens.</p>
+	<h4>2) More throughput for improved end-user experience</h4>
+	<p>It’s no good offering great security if it slows and degrades user experience; seamless, frictionless, and <b>fast</b> access is critical to successful Zero Trust deployments — otherwise you will find your users looking for work arounds before you know it.</p>
 	<p>Zscaler states that they support “... a maximum bandwidth of 1 Gbps for each <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">GRE</a> [IP] tunnel if its internal IP addresses aren’t behind NAT.” &nbsp;While most Internet applications and connections would hit a 1 Gbps network bottleneck somewhere in their path to the end user, some applications require more bandwidth and have been designed to support it — for example, users expect video streams or large file sharing to be as instant as anything else on the Internet. The assumption that there will be a bottleneck creates an artificial limit on the kinds of throughput that can be achieved, limiting throughput even when link speeds and connectivity can be guaranteed.</p>
-	<p><strong>The Cloudflare One advantage:</strong> We have spent a lot of time testing, and the results are clear: from an end-user perspective, performance on Cloudflare One is exceptional, and exceeds that of Zscaler. &nbsp;We tested the throughput between two devices that were running a high-bandwidth application. These devices were located in different VPCs within a public cloud’s network, but they could also be on different subnets within an on-premise private network. Each VPC was configured to use Cloudflare’s Anycast IP tunnel as an on-ramp to Cloudflare’s network thereby enabling both devices to connect securely over Cloudflare One. And the throughput results recorded in both directions was 6 Gbps, which is significantly more capacity than the limits placed by Zscaler and others. So, your organization doesn’t need to worry that your new high-bandwidth application will be constrained by the Zero Trust platform you adopted.</p>
-	<h4 id="3-better-connected-to-the-rest-of-the-internet">3) Better connected to the rest of the Internet</h4>
+	<p><b>The Cloudflare One advantage:</b> We have spent a lot of time testing, and the results are clear: from an end-user perspective, performance on Cloudflare One is exceptional, and exceeds that of Zscaler. &nbsp;We tested the throughput between two devices that were running a high-bandwidth application. These devices were located in different VPCs within a public cloud’s network, but they could also be on different subnets within an on-premise private network. Each VPC was configured to use Cloudflare’s Anycast IP tunnel as an on-ramp to Cloudflare’s network thereby enabling both devices to connect securely over Cloudflare One. And the throughput results recorded in both directions was 6 Gbps, which is significantly more capacity than the limits placed by Zscaler and others. So, your organization doesn’t need to worry that your new high-bandwidth application will be constrained by the Zero Trust platform you adopted.</p>
+	<h4>3) Better connected to the rest of the Internet</h4>
 	<p>Zscaler claims to be the “fastest onramp to the Internet.” But this is a sleight of hand: an on-ramp is only one part of the equation; your data needs to transit the network, and also exit when it reaches its destination. Without fast, effective connectivity capabilities beyond the on-ramp, Zscaler is just an SSE platform and does not extend to SASE — translating this from initialism to English, Zscaler has not focused on the net working part of the platform.</p>
-	<p><strong>The Cloudflare One advantage: </strong>We have over 10,500 interconnection peers, which is an order of magnitude better. We don’t hand customers off at the edge like Zscaler. You can use Cloudflare’s virtual backbone for transit. The Cloudflare network routes over 3 trillion requests per day — providing Argo Smart Routing with a unique vantage point to detect real-time congestion and <a href="https://blog.cloudflare.com/argo-for-packets-generally-available">route IP packets</a> across the fastest and most reliable network paths.</p>
+	<p><b>The Cloudflare One advantage:</b> We have over 10,500 interconnection peers, which is an order of magnitude better. We don’t hand customers off at the edge like Zscaler. You can use Cloudflare’s virtual backbone for transit. The Cloudflare network routes over 3 trillion requests per day — providing Argo Smart Routing with a unique vantage point to detect real-time congestion and <a href="https://blog.cloudflare.com/argo-for-packets-generally-available">route IP packets</a> across the fastest and most reliable network paths.</p>
 	<p>We started this blog writing about the importance of functionality and so let’s end there. All the peering and proven throughout advantages don’t matter as much without considering the services offered. And, while Zscaler claims to be able to eliminate the need for regional DC hubs by offering services such as SWG and ZTNA, they completely miss out on addressing organizations’ need to protect their cloud applications or on-premise servers end-to-end — including inbound traffic when they’re exposed to the Internet — using Web Application Firewalls, Load Balancing, Authoritative DNS, and DDoS Protection, exactly the space in which Cloudflare had its beginnings and now leads the pack.</p>
 	<p>In four years, we have surpassed Zscaler in completeness of offering including deployment simplicity, network resiliency and innovation velocity; <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler">read the details here for yourself</a> and join us as we look to the next four years and beyond.</p>
 </div>

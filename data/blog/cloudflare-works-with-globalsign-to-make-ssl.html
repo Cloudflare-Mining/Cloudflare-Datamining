@@ -1,18 +1,23 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="CloudFlare Works with GlobalSign to Make SSL Faster Across the
-Web" src="https://blog.cloudflare.com/content/images/we_love_ssl.png.scaled500.png" title="CloudFlare Works with GlobalSign to Make SSL Faster Across the Web"></p>
-	<p>Earlier this week we announced how <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">CloudFlare enabled OCSP stapling</a> in order to improve our customers' SSL performance. OCSP stapling is awesome and improves SSL performance by as much as 30%. However, it is limited to browsers that support OCSP stapling and only benefits<br>
-		CloudFlare's customers. So, until every browser vendor updates to support OCSP stapling and until every website uses CloudFlare, we wanted<br>
-		to see if we could do something else to improve SSL performance across the web.</p>
-	<h3 id="globalsignpartnership">GlobalSign Partnership</h3>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dTelzc2yHLj0kPKc8QbqL/2fbec22a51cb2bb53e5630cbf9807dca/we_love_ssl.png.scaled500.png" alt="CloudFlare Works with GlobalSign to Make SSL Faster Across the
+Web" class="kg-image" width="500" height="132" loading="lazy">
+
+	</figure>
+	<p>Earlier this week we announced how <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">CloudFlare enabled OCSP stapling</a> in order to improve our customers' SSL performance. OCSP stapling is awesome and improves SSL performance by as much as 30%. However, it is limited to browsers that support OCSP stapling and only benefitsCloudFlare's customers. So, until every browser vendor updates to support OCSP stapling and until every website uses CloudFlare, we wantedto see if we could do something else to improve SSL performance across the web.</p>
+	<h3>GlobalSign Partnership</h3>
 	<p>CloudFlare has worked with GlobalSign since we first launched in September 2010. Prior to that we surveyed nearly every certificate authority in an effort to find one that was forward thinking enough to support what we needed. GlobalSign has been a terrific partner and is shaking up what has been a commodity industry.</p>
-	<p><img alt="CloudFlare Works with GlobalSign to Make SSL Faster Across the Web" src="https://blog.cloudflare.com/content/images/GlobalSign-His-Res-Logo.png.scaled500.png" title="CloudFlare Works with GlobalSign to Make SSL Faster Across the Web"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MtTUFv0BJXAuB11ocPMzb/8544989935f883da8c1af5feb552274f/GlobalSign-His-Res-Logo.png.scaled500.png" alt="CloudFlare Works with GlobalSign to Make SSL Faster Across the Web" class="kg-image" width="500" height="117" loading="lazy">
+
+	</figure>
 	<p>Several months ago, GlobalSign approached us to talk about SSL performance. Their goal was simple: become the fastest SSL provider on the Internet. As I've written about before, whenever you visit a website over a HTTPS connection your browser has to <a href="https://blog.cloudflare.com/how-cloudflare-is-making-ssl-fast">perform a check to see if the certificate has been revoked</a>. Depending on your browser, these checks are either over the CRL (Certificate Revocation List) or OCSP (Online Certificate Status Protocol) protocol. In either case, they require a request be sent back to the certificate authority and to get a response before content is downloaded. In other words, CRL and OCSP requests inherently slow down HTTPS performance.</p>
 	<p>The amount that these checks slow down performance varies depending on the certificate authority. On average, across the industry, a typical OCSP or CRL response time can be 500ms. That's half a second. In other words, every time you visit a site over HTTPS, you waste half a second waiting for the SSL check to complete. Talking with GlobalSign we realized we could do something about that.</p>
-	<h3 id="nowsaving15yearsworthoftimeaday">Now Saving 1.5 Years Worth of Time a Day</h3>
-	<p>This morning we officially announced our work with GlobalSign to make their CRL and OCSP requests the fastest on the Internet. GlobalSign's SSL checks (OCSP and CRL GET and POST requests) are now served from our cache across CloudFlare's global infrastructure. The results have been awesome. The requests that previously averaging around 500ms are <a href="http://unmitigatedrisk.com/?p=147">now under 100ms</a>. At GlobalSign's scale, that means we're now saving the web about a <em>year and a half of time <span style="text-decoration: underline;">every day</span></em> that people would have otherwise spent waiting for web pages to load. That's crazy.</p>
+	<h3>Now Saving 1.5 Years Worth of Time a Day</h3>
+	<p>This morning we officially announced our work with GlobalSign to make their CRL and OCSP requests the fastest on the Internet. GlobalSign's SSL checks (OCSP and CRL GET and POST requests) are now served from our cache across CloudFlare's global infrastructure. The results have been awesome. The requests that previously averaging around 500ms are <a href="http://unmitigatedrisk.com/?p=147">now under 100ms</a>. At GlobalSign's scale, that means we're now saving the web about a <i>year and a half of time every day</i> that people would have otherwise spent waiting for web pages to load. That's crazy.</p>
 	<p>This improvement accrues to sites using GlobalSign SSL certificates, regardless of whether the sites themselves are running on CloudFlare's network. Getting more sites using SSL is critical for increasing web security and promoting new performance protocols like SPDY. If you are choosing a CA, typically a commodity decision, now there's a good reason to pick GlobalSign over the other choices: they will ensure your site is as fast as possible over HTTPS. Put simply, GlobalSign is now the fastest certificate authority in the world, and nearly <a href="http://unmitigatedrisk.com/?p=147">3x as fast as Symantec/Verisign</a>.</p>
 	<p>CloudFlare's mission is to power a faster, safer Internet so working with GlobalSign to make SSL as fast as possible has been a perfect fit. Our hope is that other certificate authorities will follow GlobalSign's lead and spend the time to optimize their SSL checks for optimal performance. As an added bonus, we've also helped GlobalSign be the first certificate authority to have their SSL checks be available over IPv6. This is all part of our efforts to help build a better Internet. As we like to tweet: <a href="https://twitter.com/search/realtime?q=%23savetheweb">#savetheweb</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

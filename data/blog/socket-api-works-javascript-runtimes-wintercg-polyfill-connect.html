@@ -1,20 +1,28 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/Connect---__-WinterCG.png" class="kg-image" alt="A Socket API that works across JavaScript runtimes — announcing a WinterCG spec and Node.js implementation of  connect()" loading="lazy" width="1600" height="900"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ExYpmTN1eF57MCb4I2aiW/4854cdd4f6795750a88c688200a0a7c7/Connect---__-WinterCG.png" alt="A Socket API that works across JavaScript runtimes — announcing a WinterCG spec and Node.js implementation of  connect()" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Earlier this year, we <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">announced a new API for creating outbound TCP sockets</a> — <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets?cf_target_id=6F3FD2F2360D5526EEE56A7398DB7D9D">connect()</a>. From day one, we’ve been working with the <a href="https://wintercg.org">Web-interoperable Runtimes Community Group (WinterCG) community</a> to chart a course toward making this API a standard, available across all runtimes and platforms — including Node.js.</p>
 	<p>Today, we’re sharing that we’ve reached a new milestone in the path to making this API available across runtimes — engineers from Cloudflare and Vercel have published <a href="https://sockets-api.proposal.wintercg.org">a draft specification of the connect() sockets API</a> for review by the community, along with a Node.js compatible <a href="https://github.com/Ethan-Arrowood/socket">implementation of the connect() API</a> that developers can start using today.</p>
 	<p>This implementation helps both application developers and maintainers of libraries and frameworks:</p>
 	<ol>
-		<li>Maintainers of existing libraries that use the <a href="https://nodejs.org/api/net.html">node:net</a> and <a href="https://nodejs.org/api/tls.html">node:tls</a> APIs can use it to more easily add support for runtimes where node:net and node:tls are not available.</li>
-		<li>JavaScript frameworks can use it to make connect() available in local development, making it easier for application developers to target runtimes that provide connect().</li>
+		<li>
+			<p>Maintainers of existing libraries that use the <a href="https://nodejs.org/api/net.html">node:net</a> and <a href="https://nodejs.org/api/tls.html">node:tls</a> APIs can use it to more easily add support for runtimes where node:net and node:tls are not available.</p>
+		</li>
+		<li>
+			<p>JavaScript frameworks can use it to make connect() available in local development, making it easier for application developers to target runtimes that provide connect().</p>
+		</li>
 	</ol>
-	<h3 id="why-create-a-new-standard-why-connect">Why create a new standard? Why connect()?</h3>
+	<h3>Why create a new standard? Why connect()?</h3>
 	<p>As we <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">described when we first announced connect()</a>, to-date there has not been a standard API across JavaScript runtimes for creating and working with TCP or UDP sockets. This makes it harder for maintainers of open-source libraries to ensure compatibility across runtimes, and ultimately creates friction for application developers who have to navigate which libraries work on which platforms.</p>
 	<p>While Node.js provides the <a href="https://nodejs.org/api/net.html">node:net</a> and <a href="https://nodejs.org/api/tls.html">node:tls</a> APIs, these APIs were designed over 10 years ago in the very early days of the Node.js project and remain callback-based. As a result, they can be hard to work with, and expose configuration in ways that don’t fit serverless platforms or web browsers.</p>
 	<p>The connect() API fills this gap by incorporating the best parts of existing socket APIs and <a href="https://github.com/WICG/direct-sockets/blob/main/docs/explainer.md">prior proposed standards</a>, based on feedback from the JavaScript community — including contributors to Node.js. Libraries like <a href="https://www.npmjs.com/package/pg">pg</a> (<a href="https://github.com/brianc/node-postgres">node-postgres</a> on Github) are already using the connect() API.</p>
-	<h3 id="the-connect-specification">The connect() specification</h3>
-	<p>At time of writing, the <a href="https://sockets-api.proposal.wintercg.org">draft specification of the Sockets API</a> defines the following API:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">dictionary SocketAddress {
+	<h3>The connect() specification</h3>
+	<p>At time of writing, the <a href="https://sockets-api.proposal.wintercg.org">draft specification of the Sockets API</a> defines the following API:</p>
+	<pre class="language-javascript"><code class="language-javascript">dictionary SocketAddress {
   DOMString hostname;
   unsigned short port;
 };
@@ -38,18 +46,16 @@ interface Socket {
   readonly attribute ReadableStream readable;
   readonly attribute WritableStream writable;
 
-  readonly attribute Promise&lt;undefined&gt; closed;
-  Promise&lt;undefined&gt; close();
+  readonly attribute Promise<undefined> closed;
+  Promise<undefined> close();
 
   Socket startTls();
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</undefined></undefined></code></pre>
 	<p>The proposed API is Promise-based and reuses existing standards whenever possible. For example, <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream">ReadableStream</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream">WritableStream</a> are used for the read and write ends of the socket. This makes it easy to pipe data from a TCP socket to any other library or existing code that accepts a ReadableStream as input, or to write to a TCP socket via a WritableStream.</p>
 	<p>The entrypoint of the API is the connect() function, which takes a string containing both the hostname and port separated by a colon, or an object with discrete hostname and port fields. It returns a Socket object which represents a socket connection. An instance of this object exposes attributes and methods for working with the connection.</p>
 	<p>A connection can be established in plain-text or TLS mode, as well as a special “starttls” mode which allows the socket to be easily upgraded to TLS after some period of plain-text data transfer, by calling the startTls() method on the Socket object. No need to create a new socket or switch to using a separate set of APIs once the socket is upgraded to use TLS.</p>
 	<p>For example, to upgrade a socket using the startTLS pattern, you might do something like this:</p>
-	<pre><code class="language-javascript">import { connect } from "@arrowood.dev/socket"
+	<pre class="language-javascript"><code class="language-javascript">import { connect } from "@arrowood.dev/socket"
 
 const options = { secureTransport: "starttls" };
 const socket = connect("address:port", options);
@@ -59,10 +65,9 @@ const secureSocket = socket.startTls();
 const writer = secureSocket.writable.getWriter();
 const encoder = new TextEncoder();
 const encoded = encoder.encode("hello");
-await writer.write(encoded);
-</code></pre>
+await writer.write(encoded);</code></pre>
 	<p>Equivalent code using the node:net and node:tls APIs:</p>
-	<pre><code class="language-javascript">import net from 'node:net'
+	<pre class="language-javascript"><code class="language-javascript">import net from 'node:net'
 import tls from 'node:tls'
 
 const socket = new net.Socket(HOST, PORT);
@@ -74,15 +79,14 @@ socket.once('connect', () =&gt; {
     // Polymorphic API, uses Node.js streams
     secureSocket.write('hello');
   }
-})
-</code></pre>
-	<h3 id="use-the-nodejs-implementation-of-connect-in-your-library">Use the Node.js implementation of connect() in your library</h3>
-	<p>To make it easier for open-source library maintainers to adopt the connect() API, we’ve published an <a href="https://github.com/Ethan-Arrowood/socket">implementation of connect() in Node.js</a> that allows you to publish your library such that it works across JavaScript runtimes, without having to maintain any runtime-specific code.<br></p>
+})</code></pre>
+	<h3>Use the Node.js implementation of connect() in your library</h3>
+	<p>To make it easier for open-source library maintainers to adopt the connect() API, we’ve published an <a href="https://github.com/Ethan-Arrowood/socket">implementation of connect() in Node.js</a> that allows you to publish your library such that it works across JavaScript runtimes, without having to maintain any runtime-specific code.</p>
 	<p>To get started, install it as a dependency:</p>
-	<pre><code>npm install --save @arrowood.dev/socket</code></pre>
+	<pre class="language-bash"><code class="language-bash">npm install --save @arrowood.dev/socket</code></pre>
 	<p>And import it in your library or application:</p>
-	<pre><code class="language-javascript">import { connect } from "@arrowood.dev/socket"</code></pre>
-	<h3 id="what%E2%80%99s-next-for-connect">What’s next for connect()?</h3>
+	<pre class="language-javascript"><code class="language-javascript">import { connect } from "@arrowood.dev/socket"</code></pre>
+	<h3>What’s next for connect()?</h3>
 	<p>The <a href="https://github.com/wintercg/proposal-sockets-api">wintercg/proposal-sockets-api</a> is published as a draft, and the next step is to solicit and incorporate feedback. We’d love your feedback, particularly if you maintain an open-source library or make direct use of the node:net or node:tls APIs.</p>
 	<p>Once feedback has been incorporated, engineers from Cloudflare, Vercel and beyond will be continuing to work towards contributing an implementation of the API directly to Node.js as a built-in API.</p>
 </div>

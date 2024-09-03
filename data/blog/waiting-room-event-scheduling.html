@@ -1,64 +1,125 @@
 <div class="mb2 gray5">11 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/waiting-room-event-scheduling-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/waiting-room-event-scheduling-zh-tw">繁體中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-4.png" class="kg-image" alt="Waiting Room Event Scheduling protects your website during online events" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/waiting-room-event-scheduling">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/waiting-room-event-scheduling">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mZ1PRUJOed6GBla7l9fMn/2c42b2f95555d5efce7a6b8388539a23/image4-4.png" alt="Waiting Room Event Scheduling protects your website during online events" class="kg-image" width="564" height="400" loading="lazy">
+
+	</figure>
 	<p>You've got big plans for your ecommerce strategy in the form of online events — seasonal sales, open registration periods, product drops, ticket sales, and more. With all the hype you've generated, you'll get a lot of site traffic, and that's a good thing! With Waiting Room Event Scheduling, you can protect your servers from being overloaded during your event while delivering a user experience that is unique to the occasion and consistent with your brand. Available now to enterprise customers with an advanced <a href="https://www.cloudflare.com/waiting-room">Waiting Room</a> subscription, Event Scheduling allows you to plan changes to your waiting room’s settings and custom queueing page ahead of time, ensuring flawless execution of your online event.</p>
-	<h2 id="more-than-always-on-protection">More than always-on protection</h2>
+	<h2>More than always-on protection</h2>
 	<p><a href="https://blog.cloudflare.com/cloudflare-waiting-room">We launched Waiting Room</a> to protect our customers' servers during traffic spikes. Waiting Room sends excess visitors to a virtual queue during traffic surges, letting visitors in dynamically as spots become available on your site. By automatically queuing traffic that exceeds your site's capacity, Waiting Room protects your origin servers and your customer experience. Additionally, the Waiting Room's queuing page can be customized to match the look and feel of your site so that your users never feel as though they have left your application, ensuring a seamless customer experience.</p>
 	<p>While many of our customers use Waiting Room as an always-on failsafe against potential traffic spikes, some customers use Waiting Room to manage traffic during time-boxed online events. While these events can undoubtedly result in traffic spikes that Waiting Room safeguards against, they present unique challenges for our customers.</p>
 	<p>In the lifecycle of an online event, various stages of the event generally require the settings of a waiting room to be updated. While each customer's event requirements are unique, consider the following customer use cases. To prevent a mad rush to a landing page that could overwhelm their site ahead of an event, some customers want to queue early arrivers in the days or hours leading up to the event. During an event, some customers want to impose stricter limits on how long visitors have to browse and complete transactions to ensure that as many visitors as possible get a fair chance to partake. After an event has concluded, many customers want to offload event traffic, blocking access to the event pages while informing users that the event has ended.</p>
 	<p>For each of these scenarios, our customers want to communicate expectations to their users and customize the look and feel of their queuing page to ensure a seamless, on-brand user experience. Combine all the use cases in the example above into one timeline, and you've got at least three event stages that would require waiting room settings and queuing pages to be updated, all with perfect timing.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-4.png" class="kg-image" alt="Sample timeline of an online event’s Waiting Room requirements." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JiYnl7UEDs6x57aYP0mhg/58734e72517e0892054fffcbc34233dc/image3-4.png" alt="Sample timeline of an online event’s Waiting Room requirements." class="kg-image" width="1734" height="908" loading="lazy">
+
+	</figure>
 	<p>While these use cases were technically feasible with Waiting Room, they required on-the-spot updates to its configuration settings. This strategy was not ideal or practical when customers needed to be absolutely sure their waiting room would update in lockstep with the timeline of their event. In short, many customers needed to schedule changes to the behavior of their waiting room ahead of time. We built Event Scheduling to give our customers flexibility and control over when and how their waiting room settings change, ensuring that these changes will happen automatically as planned.</p>
-	<h2 id="introducing-waiting-room-event-scheduling">Introducing Waiting Room Event Scheduling</h2>
+	<h2>Introducing Waiting Room Event Scheduling</h2>
 	<p>With Event Scheduling, you can schedule cascading changes to your waiting room ahead of time as discrete events. For each waiting room event, you can customize traffic thresholds, session duration, queuing method, and the content and styling of your queuing page. <a href="https://api.cloudflare.com/#waiting-room-create-event">Refer to the Create Event API documentation</a>, for a complete list of customizable event settings.</p>
-	<h3 id="new-queuing-methods">New Queuing Methods</h3>
+	<h3>New Queuing Methods</h3>
 	<p>Giving our customers the ability to schedule changes to a waiting room's settings is a game-changer for customers with event-based Waiting Room requirements, but we didn't stop there. We've also added two new queueing methods — Reject and Passthrough — to give our customers more options for controlling user flow before, during and after their online events.</p>
 	<p>In the example where customers wanted to offload site traffic after an event, the Reject queuing method would do just that! A waiting room with the Reject queuing method configured will offload traffic from your site, presenting users with a static, fully customizable HTML page. Conversely, the Passthrough queuing method allows all visitors unrestricted access to your site. Unlike simply disabling your waiting room to achieve this, Passthrough has the advantage of being scheduled to turn on or off ahead of time and providing user traffic stats through the Waiting Room status endpoint.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/1.png" class="kg-image" alt="A waiting room with Passthrough queueing method enabled gives you visibility into Total Active Users on your site while in a passive state." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5beqwg6B4YfxAIqADp6bcw/373cdd2f924d2c60930f89cbe90fa0e5/1.png" alt="A waiting room with Passthrough queueing method enabled gives you visibility into Total Active Users on your site while in a passive state." class="kg-image" width="1596" height="148" loading="lazy">
+
+	</figure>
 	<p>If you prefer to have the waiting room in a completely passive state, having the waiting room on and configured with the Passthrough queueing method allows you to turn on Queue All quickly. Queue All places all new site visitors in a queue, which is a life-saver in the case of unexpected site downtime or any other crisis. Before deactivating Queue All, you can see how many users are waiting to enter your site. Queue All also overrides any active waiting room event, giving you authoritative, fast control in an emergency.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/2.png" class="kg-image" alt="Quickly activate Queue All on a passive waiting room when you need to queue users in a hurry." loading="lazy"></figure>
-	<h3 id="event-pre-queuing">Event Pre-queuing</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cIleNThhUIezinKuOhApI/a6a272efbdd2a1cc24ec4234a68056dd/2.png" alt="Quickly activate Queue All on a passive waiting room when you need to queue users in a hurry." class="kg-image" width="1600" height="159" loading="lazy">
+
+	</figure>
+	<h3>Event Pre-queuing</h3>
 	<p>As part of an event's configuration, you can also enable a pre-queue, a virtual holding area for visitors that arrive at your event before its start time. Pre-queues add extra protection against traffic spikes that can cause your site to crash.</p>
 	<p>To illustrate how, imagine your customer is a devoted fan trying to get tickets to their favorite band's upcoming concert. Ticket sales open in one hour, so they visit your sales page about ten minutes before sales open. There is a static landing page on your site where the ticket sales page will be. The fan starts refreshing the page in the minutes leading up to the start time, hoping to get access as soon as sales open. Now multiply that one hopeful concert-goer by many thousands of fans, and before your sale has even begun, your site is already overwhelmed and at risk of crashing. Having a pre-queue in place protects your site from this type of user activity that has the potential to overwhelm your site at a time when stakes are very high for your brand. And with the ability to fully customize the pre-queuing page, you can still generate the same excitement you would have with your event's landing page.</p>
 	<p>Taking it a step further, you can elect to shuffle the pre-queue, randomly assigning users who reach your application during the pre-queue period a place in line when the event starts. If your event uses the First in First Out queuing method, randomizing your pre-queue can help promote fairness, especially if your pre-queuing period spans many time zones. <a href="https://blog.cloudflare.com/waiting-room-random-queueing-and-custom-web-mobile-apps/#:~:text=Random%20queueing%20is,make%20a%20purchase!">Like the Random queuing method</a>, implementing a randomized pre-queue neutralizes the advantage customers in earlier time zones have to grab a place in line ahead of the event's start time. Ultimately, fairness for your event is unique to you and your customers' perspectives and needs. With the order of entry options available for both the pre-queue and overflow queuing during your event, you have control over managing fairness of entry to align with your unique requirements.</p>
-	<h2 id="creating-a-waiting-room-event">Creating a waiting room event</h2>
+	<h2>Creating a waiting room event</h2>
 	<p>Similarly to configuring a waiting room, <a href="https://developers.cloudflare.com/waiting-room/additional-options/create-events">scheduling events with Waiting Room</a> is incredibly easy and requires no coding or application changes. You will first need to <a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room">have a baseline waiting room configured</a>. Then, you can schedule events for this waiting room from the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Ftraffic%2Fwaiting-rooms">Waiting Room dashboard</a>. In the event creation workflow, you'll indicate when you would like the event to start and end and configure an optional pre-queue.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/3.png" class="kg-image" alt="The first step in the event creation workflow–set its duration and configure an optional pre-queue." loading="lazy"></figure>
-	<p>Unless specified otherwise, your event will always inherit the configuration settings of its associated waiting room. That way, you only need to update the waiting room settings that you would like to change for the duration of the event.<em> </em>You can optionally create a queuing page for your users that is unique to the event and preview what your event queuing page will look like in different queuing states and browsers, ensuring that your end-user’s experience doesn’t result in garbled CSS or broken looking pages!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tBvOIrSsQL1tlqcDQadv3/7e8e0c65153923db39074d49ab6c3432/3.png" alt="The first step in the event creation workflow–set its duration and configure an optional pre-queue." class="kg-image" width="1600" height="1349" loading="lazy">
+
+	</figure>
+	<p>Unless specified otherwise, your event will always inherit the configuration settings of its associated waiting room. That way, you only need to update the waiting room settings that you would like to change for the duration of the event. You can optionally create a queuing page for your users that is unique to the event and preview what your event queuing page will look like in different queuing states and browsers, ensuring that your end-user’s experience doesn’t result in garbled CSS or broken looking pages!</p>
 	<p>Before saving your event, you will be able to review your waiting room and event settings side by side, making it easy to verify how the behavior of your waiting room will change for the duration of the event.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-5.png" class="kg-image" alt="Review your event settings against those of your baseline waiting room." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FHJ5PWMak8d2jztdMPdu1/daa5346a24a5ff91785523beb0ef2d70/image2-5.png" alt="Review your event settings against those of your baseline waiting room." class="kg-image" width="1504" height="1346" loading="lazy">
+
+	</figure>
 	<p>Once created, your event will appear in the Waiting Room dashboard nested under its associated waiting room. The date of each waiting room's next event is indicated in the dashboard's default view so that you can tell at a glance if any waiting room's settings may change due to an upcoming event. You can expand each waiting room's row to list upcoming events and associated durations. Additionally, if an event is live, a green dot will appear next to this date, adding extra assurance that it has kicked in.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/4.png" class="kg-image" alt="From the Waiting Room dashboard, easily discern which waiting rooms have upcoming or live events." loading="lazy"></figure>
-	<h2 id="event-scheduling-in-action">Event Scheduling in action</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ah7XO9MuZMXEYXaMDyjlt/b2ffa184010b37d8382c0cad8405aeb5/4.png" alt="From the Waiting Room dashboard, easily discern which waiting rooms have upcoming or live events." class="kg-image" width="1600" height="812" loading="lazy">
+
+	</figure>
+	<h2>Event Scheduling in action</h2>
 	<p>Tying it all together, let's walk through a real-world scenario to demonstrate the versatility and practicality of Event Scheduling. In this example, we have a major women's fashion retailer, let's call them Shopflare, with an upcoming flash sale. A flash sale is an online sales event that is different from a regular sale in that it lasts for a brief time and offers substantial discounts or limited stock. Often, retailers target a specific audience using marketing campaigns in the days leading up to a flash sale.</p>
 	<p>In our example, Shopflare's marketing team plans to send an email campaign to a set of target customers, promoting their Spring Flash Sale, where they will be offering free shipping and 40% off on their freshest spring arrivals for one day only! How could Shopflare use Waiting Room and Event Scheduling to help this sales event go off without a hitch?</p>
-	<h3 id="preparing-for-the-flash-sale">Preparing for the flash sale</h3>
+	<h3>Preparing for the flash sale</h3>
 	<p>One week before the sale, Shopflare's web team creates a landing page with a countdown for their spring flash sale at example.com/sales/spring_flash_sale. They place a waiting room at this URL with a First In First Out queuing method and their desired traffic thresholds to allow traffic while ensuring their site remains performant. They then send an email campaign to their target audience directly linking to the sale's landing page. With their baseline waiting room in place, early traffic to the URL will not overwhelm their site. Shopflare's team also prepares for the upcoming sale by scheduling two cascading waiting room events ahead of time. Let's review Shopflare's flash sale requirements related to Waiting Room and review the steps they would take with Event Scheduling to satisfy them.</p>
-	<h3 id="pre-queueing-and-event-overflow-queuing">Pre-queueing and event overflow queuing</h3>
+	<h3>Pre-queueing and event overflow queuing</h3>
 	<p>A few hours before the sale starts, Shopflare wants to allow shoppers to start "lining up" to secure a spot ahead of those who arrive after the event start time. They want to create a lottery for these early arrivers, randomly assigning them a place in line when the sale starts to mitigate the advantage that customers from earlier time zones have to secure a spot in line. To do this, they would create an event for the waiting room they have already configured.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/5.png" class="kg-image" alt="To create an event, expand the row for the desired waiting room from and click Schedule Event." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5daYKQ0DnbB3V9zAFSiTv0/7c007aeb7fe3ab92dbf3cd52a6cea513/5.png" alt="To create an event, expand the row for the desired waiting room from and click Schedule Event." class="kg-image" width="1600" height="720" loading="lazy">
+
+	</figure>
 	<p>The event creation workflow consists of four main steps: Details, Settings, Customization, and Review. On the Details page of the event creation workflow, they would enter their sale start and end times, set the start time of the pre-queue and enable “Shuffle at Event Start” to create a randomized pre-queue.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/10.png" class="kg-image" alt="To start queuing early visitors and randomize their entry at event start time, enable the pre-queue and select Shuffle at Event start." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2obbiR3ZzeQDAQiIYyW8qa/ccec5e409a1b86412b34133cadee8ab8/10.png" alt="To start queuing early visitors and randomize their entry at event start time, enable the pre-queue and select Shuffle at Event start." class="kg-image" width="1600" height="1362" loading="lazy">
+
+	</figure>
 	<p>While the sale is in progress, Shopflare wants an overflow queue to protect their site from being overwhelmed by traffic in excess of their waiting room limits, letting these users in First in First Out when spots open up on their site. Since their underlying waiting room is already configured with the traffic thresholds they want to enforce for the duration of the event, they would simply leave the Settings page of the event creation workflow unchanged and proceed to Customization.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image13-2.png" class="kg-image" alt="On the Settings page, change traffic thresholds, session settings, and queuing method for your event or choose to keep them the same as the underlying waiting room." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PjA2bwadKhdpNRqZtFPqE/30bfa2db9e3138241c9b3f4c66419f76/image13-2.png" alt="On the Settings page, change traffic thresholds, session settings, and queuing method for your event or choose to keep them the same as the underlying waiting room." class="kg-image" width="1102" height="1188" loading="lazy">
+
+	</figure>
 	<p>On the Customization step, Shopflare will create a custom queuing experience for their sale by uploading a custom HTML template that contains the HTML for both their pre-queueing page and their overflow queue.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/6.png" class="kg-image" alt="From the Customization page, you can override your baseline waiting room’s queuing page by importing a new HTML file. You can also preview your event’s queuing page in different states before publishing." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mi7TXOylH1RWARU3Alm3x/3c5d278060cca66b12997975605990ff/6.png" alt="From the Customization page, you can override your baseline waiting room’s queuing page by importing a new HTML file. You can also preview your event’s queuing page in different states before publishing." class="kg-image" width="1600" height="1072" loading="lazy">
+
+	</figure>
 	<p>Shopflare wants their pre-queuing page to get shoppers excited about the beginning of the sale. They ensure it is branded and unique to the flash sale while setting clear expectations for shoppers. For their overflow queue, they want the same look and feel of their pre-queueing page, with updated messaging that gives shoppers an estimated wait time and explains the reason for queuing. Check out the two sample queuing pages below to see how they create a unique and informative experience for their queued customers in both the pre-queue and overflow queue.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed-3.png" class="kg-image" alt="Shopflare’s pre-queuing page is customized for the brand and the flash sale. Shoppers are informed of the time until the event starts as well as are reassured that the page is automatically refreshing." loading="lazy">
-		<figcaption>Shopflare’s pre-queuing page is customized for the brand and the flash sale. Shoppers are informed of the time until the event starts as well as are reassured that the page is automatically refreshing.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3itstmAHvGAeHQEtv5ZllB/fce915131cd324e5c2e9006380190cf3/unnamed-3.png" alt="Shopflare’s pre-queuing page is customized for the brand and the flash sale. Shoppers are informed of the time until the event starts as well as are reassured that the page is automatically refreshing." class="kg-image" width="1440" height="1024" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed2.png" class="kg-image" alt="Shopflare’s overflow queuing page is also customized for the brand and the flash sale. Shoppers are assured they are in the right place, given an estimated wait time, and an explanation for queuing." loading="lazy">
-		<figcaption>Shopflare’s overflow queuing page is also customized for the brand and the flash sale. Shoppers are assured they are in the right place, given an estimated wait time, and an explanation for queuing.</figcaption>
+	<p>Shopflare’s pre-queuing page is customized for the brand and the flash sale. Shoppers are informed of the time until the event starts as well as are reassured that the page is automatically refreshing.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vsBVyNBPDZjPJNuATIdeB/47a6559af007ee6328ee88bb23f8686e/unnamed2.png" alt="Shopflare’s overflow queuing page is also customized for the brand and the flash sale. Shoppers are assured they are in the right place, given an estimated wait time, and an explanation for queuing." class="kg-image" width="1440" height="1024" loading="lazy">
+
 	</figure>
-	<h3 id="sale-conclusion">Sale conclusion</h3>
+	<p>Shopflare’s overflow queuing page is also customized for the brand and the flash sale. Shoppers are assured they are in the right place, given an estimated wait time, and an explanation for queuing.</p>
+	<h3>Sale conclusion</h3>
 	<p>Once the sale has ended, Shopflare wants to allow active shoppers a five-minute grace period to complete their purchases without admitting any more new visitors. For 48 hours post-sale, they would like to present all visitors with a static page letting them know the sale has concluded while providing a redirect link back to their homepage. To achieve this, Shopflare would create another event for the baseline waiting room that starts when the previous event ends without a pre-queue enabled.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image14-2.png" class="kg-image" alt="To offload post-sale traffic, Shopflare creates another waiting room event that starts right after the previous waiting room event ended." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WnZg7Vv2BNvUzCb7F3TaN/551057dfe78baa5314da481b3febd6b2/image14-2.png" alt="To offload post-sale traffic, Shopflare creates another waiting room event that starts right after the previous waiting room event ended." class="kg-image" width="1626" height="560" loading="lazy">
+
+	</figure>
 	<p>To offload all new site traffic after the sale has ended while giving active shoppers a five-minute grace period, from the Settings page of the event creation workflow, they would set session duration to five minutes, disable session renewal and select the Reject All queuing method.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image12-1.png" class="kg-image" alt="To start blocking traffic that arrives after your event has ended while giving active shoppers a few minutes more to complete their purchases, select the Reject All queuing method and disable session renewal." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ie2hwOKbORMOUucnXEJpq/c0963a99ff4ce4934106fb05cb67e4b8/image12-1.png" alt="To start blocking traffic that arrives after your event has ended while giving active shoppers a few minutes more to complete their purchases, select the Reject All queuing method and disable session renewal." class="kg-image" width="1144" height="1228" loading="lazy">
+
+	</figure>
 	<p>Once again, on the Customization tab, they would elect to override the underlying waiting room template with a custom event template and upload their custom Reject page HTML. They would then Review and save their event and it will appear along with their previously created event in the Waiting Room dashboard.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/7.png" class="kg-image" alt="From the Waiting Room Dashboard, both waiting room events related to the Spring Flash Sale are listed along with their start and end times." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5F5NZrdA6XjLS1TXES15cI/c2929b19560f54bb53ad0ba19246588b/7.png" alt="From the Waiting Room Dashboard, both waiting room events related to the Spring Flash Sale are listed along with their start and end times." class="kg-image" width="1600" height="875" loading="lazy">
+
+	</figure>
 	<p>And that's it! With their waiting room events in place, Shopflare can rest assured that their site will be protected and that their customers have an on-brand and transparent shopping experience on the big day. Each customer and online event is unique. However, you choose to manage your user traffic for your online event, Event Scheduling for Cloudflare Waiting Rooms offers the options necessary to deliver a stellar and fair user experience while protecting your application during your online event. We can't wait to support you in your next online event!</p>
 	<p>For more on Event Scheduling and Waiting Room, <a href="https://developers.cloudflare.com/waiting-room/additional-options/create-events">check out our developer documentation.</a></p>
 	<p>Not using Cloudflare yet? Start now with our <a href="https://www.cloudflare.com/plans/business">Business plan</a> which includes one basic Waiting Room or <a href="https://www.cloudflare.com/plans/enterprise/discover/contact">contact us</a> about our advanced Waiting Room with Event Scheduling available on our <a href="https://www.cloudflare.com/plans/enterprise">Enterprise plan</a>.</p>

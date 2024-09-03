@@ -1,56 +1,17 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Introducing the Cloudflare Cache Purge
-Feature" src="https://blog.cloudflare.com/content/images/purge_cache.png" title="Introducing the Cloudflare Cache Purge Feature"></p>
-	<p>Caching is great. <a href="https://cloudflare.com">Cloudflare</a> makes sites faster
-		in part by taking the static portions of your site and moving them
-		closer to the visitors to your site. Cloudflare is smart about only
-		caching static objects so you can run a dynamic, database-driven site
-		and it will behave as you expect. However, sometimes you want to edit
-		static files like CSS, Javascript, or existing images and it can be
-		frustrating to wait a few hours for the Cloudflare cache to expire.
-		There are two ways to deal with this problem:</p>
-	<p><strong>Go to Development Mode</strong><br>
-		<a href="https://support.cloudflare.com/entries/22280726-What-does-CloudFlare-Development-mode-mean-">Development Mode</a>
-		bypasses Cloudflare's accelerated cache and slows down your site, but is
-		useful if you are making changes to cacheable content (like images, css,
-		or JavaScript) and would like to see those changes right away. You can
-		get to Development Mode by going to:<br>
-		Settings-&gt;Cloudflare Settings-&gt;Development Mode-&gt;Toggle On.
-	</p>
-	<p><strong>Purge Cache</strong><br>
-		We read every email and tweet that we get. Often users write in with
-		feature requests and we aim to build the most common ones quickly. This
-		week, we released a new Cloudflare feature based on user feedback called
-		the "Cache Purge". Some frequently asked questions about the "Cache
-		Purge" can be found below:</p>
-	<p><strong>Where can I find the purge cache option?</strong><br>
-		The cache purge option is found by going to Settings-&gt;Cloudflare
-		settings.</p>
-	<p><strong>What does the cache purge option do?</strong><br>
-		Cache purge will Immediately purge all cached resources for your
-		website. This will force Cloudflare to expire all static resources
-		cached prior to the button click and fetch a new version.<br>
-	</p>
-	<p><strong>I have more than one domain. Do I have to purge the cache for each<br>
-			site?</strong><br>
-		The cache purge is done at the domain level (purging will refresh the<br>
-		cache for all your websites that share a domain).</p>
-	<p></p>
-	<p><strong>Can I only purge certain file extensions?</strong><br>
-		No, not at this time. Please <a href="https://www.cloudflare.com/contact.html">contact
-			us</a> if you would like to see us
-		develop additional caching features.</p>
-	<p><strong>How often should I purge my cache?</strong><br>
-		You should purge your cache if there is a cached resource that you want
-		to immediately stop serving. If you are doing development and making
-		constant changes, use Development Mode instead.</p>
-	<p><strong>Keep in mind...</strong><br>
-		You will end up slowing down your site if you're constantly purging
-		resources from your site. When you purge the cache, that means we have
-		to fetch all requested resources from your server. It will take up to 3
-		days to rebuild the cache to an optimal level depending on the traffic
-		to your site. What this really means is that your site will not be at
-		optimal performance until the cache rebuilds.</p>
-	<!--kg-card-end: markdown-->
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="undefined" alt="undefined" class="kg-image" width="undefined" height="undefined" loading="lazy">
+
+	</figure>
+	<p>Caching is great. <a href="https://cloudflare.com">Cloudflare</a> makes sites faster in part by taking the static portions of your site and moving them closer to the visitors to your site. Cloudflare is smart about only caching static objects so you can run a dynamic, database-driven site and it will behave as you expect. However, sometimes you want to edit static files like CSS, Javascript, or existing images and it can be frustrating to wait a few hours for the Cloudflare cache to expire. There are two ways to deal with this problem:</p>
+	<p><b>Go to Development Mode</b><a href="https://support.cloudflare.com/entries/22280726-What-does-CloudFlare-Development-mode-mean-">Development Mode</a> bypasses Cloudflare's accelerated cache and slows down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. You can get to Development Mode by going to:Settings-&gt;Cloudflare Settings-&gt;Development Mode-&gt;Toggle On.</p>
+	<p><b>Purge Cache</b>We read every email and tweet that we get. Often users write in with feature requests and we aim to build the most common ones quickly. This week, we released a new Cloudflare feature based on user feedback called the "Cache Purge". Some frequently asked questions about the "Cache Purge" can be found below:</p>
+	<p><b>Where can I find the purge cache option?</b>The cache purge option is found by going to Settings-&gt;Cloudflare settings.</p>
+	<p><b>What does the cache purge option do?</b>Cache purge will Immediately purge all cached resources for your website. This will force Cloudflare to expire all static resources cached prior to the button click and fetch a new version.</p>
+	<p><b>I have more than one domain. Do I have to purge the cache for each</b><b>site?</b>The cache purge is done at the domain level (purging will refresh thecache for all your websites that share a domain).</p>
+	<p><b>Can I only purge certain file extensions?</b>No, not at this time. Please <a href="https://www.cloudflare.com/contact.html">contact us</a> if you would like to see us develop additional caching features.</p>
+	<p><b>How often should I purge my cache?</b>You should purge your cache if there is a cached resource that you want to immediately stop serving. If you are doing development and making constant changes, use Development Mode instead.</p>
+	<p><b>Keep in mind...</b>You will end up slowing down your site if you're constantly purging resources from your site. When you purge the cache, that means we have to fetch all requested resources from your server. It will take up to 3 days to rebuild the cache to an optimal level depending on the traffic to your site. What this really means is that your site will not be at optimal performance until the cache rebuilds.</p>
 </div>

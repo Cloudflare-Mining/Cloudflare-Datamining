@@ -1,27 +1,36 @@
-<div class="mb2 gray5">11 min read</div>
+<div class="mb2 gray5">9 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/building-real-time-games-using-workers-durable-objects-and-unity">简体中文</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image1-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uBjvKmUER2NZwN4pOuwYg/4b56592ce7a73d621ec47eadb3c64e3d/image1-14.png" alt="" class="kg-image" width="1531" height="796" loading="lazy">
+
+	</figure>
 	<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a> are an awesome addition to the Workers developer ecosystem, allowing you to address and work inside a specific Worker to provide consistency in your applications. That sounds exciting at a high-level, but if you're like me, you might be wondering "Okay, so what can I build with that?"</p>
 	<p>There’s nothing like building something real with a technology to truly understand it.</p>
-	<p>To better understand why Durable Objects matter, and how<a href="https://blog.cloudflare.com/introducing-websockets-in-workers"> newer announcements in the Workers ecosystem like WebSockets</a> play with Durable Objects, I turned to a category of software that I've been building in my spare time for a few months now: video games.</p>
+	<p>To better understand why Durable Objects matter, and how <a href="https://blog.cloudflare.com/introducing-websockets-in-workers">newer announcements in the Workers ecosystem like WebSockets</a> play with Durable Objects, I turned to a category of software that I've been building in my spare time for a few months now: video games.</p>
 	<p>The technical aspects of games have changed drastically in the last decade. Many games are online-by-default, and the ubiquity of tools like <a href="https://unity.com">Unity</a> have made it so anyone can begin experimenting with developing games.</p>
-	<p>I've heard a lot about the ability of Durable Objects and WebSockets to provide real-time consistency in applications, and to test that use case out, I've built<a href="https://durable-world.pages.dev"> Durable World</a>: a simple 3D multiplayer world that is deployed entirely on our Cloudflare stack: Pages for serving the client-side game, which runs in Unity and WebGL, and Workers as the coordination layer, using Durable Objects and WebSockets to sync player position and other information, like randomly generated usernames.</p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">playing multiplayer on the edge with some of my friends from the <a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Etfw">@cloudflaredev</a> discord?<br><br>client-side:<br>- <a href="https://twitter.com/unity?ref_src=twsrc%5Etfw">@unity</a> webgl + websockets client<br>- hosted on cf pages<br><br>serverless:<br>- cloudflare workers<br>- durable objects<br>- websockets <a href="https://t.co/Ef3nr76D2e">pic.twitter.com/Ef3nr76D2e</a></p>— kristian (@signalnerve) <a href="https://twitter.com/signalnerve/status/1384274000986005511?ref_src=twsrc%5Etfw">April 19, 2021</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
+	<p>I've heard a lot about the ability of Durable Objects and WebSockets to provide real-time consistency in applications, and to test that use case out, I've built <a href="https://durable-world.pages.dev">Durable World</a>: a simple 3D multiplayer world that is deployed entirely on our Cloudflare stack: Pages for serving the client-side game, which runs in Unity and WebGL, and Workers as the coordination layer, using Durable Objects and WebSockets to sync player position and other information, like randomly generated usernames.</p>
+	<blockquote>
+		<p>playing multiplayer on the edge with some of my friends from the <a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Etfw">@cloudflaredev</a> discord?</p>
+		<p>client-side:- <a href="https://twitter.com/unity?ref_src=twsrc%5Etfw">@unity</a> webgl + websockets client- hosted on cf pages</p>
+		<p>serverless:- cloudflare workers- durable objects- websockets <a href="https://t.co/Ef3nr76D2e">pic.twitter.com/Ef3nr76D2e</a></p>
+		<p>— kristian (@signalnerve) <a href="https://twitter.com/signalnerve/status/1384274000986005511?ref_src=twsrc%5Etfw">April 19, 2021</a></p>
+	</blockquote>
 	<p>3D games tend to look really impressive — they serve as great tech demos. Even with the "wow factor" of seeing people connect from all over the world and move around the map with you, you'd probably be surprised at how simple the corresponding code for this project is. Let's dive into both the client and server aspects of Durable World, and then I'll give some thoughts on how a project like this could evolve in the future, and what I'd like to explore next.</p>
 	<p>Separately from this blog post, we also <a href="https://blog.cloudflare.com/doom-multiplayer-workers">recently published a post on Cloudflare’s blog showing a multiplayer Doom port</a>, on Workers using WebAssembly and Durable Objects. The number of use-cases for games on Workers is remarkably strong with the addition of tools like Durable Objects, WebSockets, and WebAssembly, whether you’re porting existing games, or building entirely new ones.</p>
-	<p>Durable World is built using an <em>authoritative client</em> model. The client runs a compiled game directly in the browser, built into WebAssembly, so it can run without needing to download a platform-specific client to your local machine. The server, which runs entirely on Cloudflare Workers, can be interacted with via WebSockets, and uses Durable Objects to manage game state.</p>
+	<p>Durable World is built using an <i>authoritative client</i> model. The client runs a compiled game directly in the browser, built into WebAssembly, so it can run without needing to download a platform-specific client to your local machine. The server, which runs entirely on Cloudflare Workers, can be interacted with via WebSockets, and uses Durable Objects to manage game state.</p>
 	<p>Much like the Doom example we showcased on our blog, the Durable Object managed by the Workers application acts as a message router, accepting game state changes from clients, and retaining a list of active clients that receive those updates via the Worker.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image2-7.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="managing-connections-the-character-durable-object">Managing connections: the Character Durable Object</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6h6IhL6O32SUwdi9vXF1cl/0b5d1fc5edd48f590968a18387d99c5c/image2-7.png" alt="" class="kg-image" width="1566" height="1057" loading="lazy">
+
+	</figure>
+	<h3>Managing connections: the Character Durable Object</h3>
 	<p>My biggest fear before embarking on this project was working with Durable Objects. Even though I've never made any sort of serious game with Unity, and I couldn't even define C# variables without doing Google searches on basic syntax, something about the conceptual pieces of Durable Objects has continued to be intimidating to me, down to the moment I started writing actual code.</p>
 	<p>Imagine my surprise when writing Durable Objects and working with the API turned out to be incredibly easy.</p>
-	<p>The Character module, a Durable Object using our new module support in Workers, is built on top of our <a href="https://github.com/cloudflare/modules-rollup-esm">modules-rollup-esm</a> template. The module handles incoming requests, and acts as a WebSocket provider for clients:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">export class Character {
+	<p>The Character module, a Durable Object using our new module support in Workers, is built on top of our <a href="https://github.com/cloudflare/modules-rollup-esm">modules-rollup-esm</a> template. The module handles incoming requests, and acts as a WebSocket provider for clients:</p>
+	<pre class="language-js"><code class="language-js">export class Character {
   constructor(state, env) {
     this.state = state;
     this.env = env
@@ -67,12 +76,10 @@
 
     return new Response(this.value);
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Much of this is conceptually identical to our <a href="https://github.com/cloudflare/websocket-template">websocket-template</a> — we look for an Upgrade header in the incoming request, and set up a WebSocketPair, which contains a <em>server</em> and a <em>client</em> WebSocket.</p>
-	<p>The handleSession function is where the bulk of our game-specific logic takes place. In this case, our Durable Objects + WebSocket code has two tasks to manage: first, handling new players — giving them a randomly generated username, and setting them up with a valid WebSocket, and second, accepting new player positions, and broadcasting those positions to everyone currently in the game. The `tick` function is used to broadcast game state to our clients, and the remainder of the code parses incoming data, and determines which WebSocket clients should be receiving new data. The code to do this is seen below:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">async tick(skipKey) {
+}</code></pre>
+	<p>Much of this is conceptually identical to our <a href="https://github.com/cloudflare/websocket-template">websocket-template</a> — we look for an Upgrade header in the incoming request, and set up a WebSocketPair, which contains a <i>server</i> and a <i>client</i> WebSocket.</p>
+	<p>The handleSession function is where the bulk of our game-specific logic takes place. In this case, our Durable Objects + WebSocket code has two tasks to manage: first, handling new players — giving them a randomly generated username, and setting them up with a valid WebSocket, and second, accepting new player positions, and broadcasting those positions to everyone currently in the game. The `tick` function is used to broadcast game state to our clients, and the remainder of the code parses incoming data, and determines which WebSocket clients should be receiving new data. The code to do this is seen below:</p>
+	<pre class="language-js"><code class="language-js">async tick(skipKey) {
   const users = this.value.users.filter(user =&gt; user.id !== skipKey)
   this.value.websockets
     .forEach(
@@ -159,23 +166,25 @@ async handleSession(websocket, ip) {
   } catch (err) {
     websocket.send(JSON.stringify({ message: err.toString() }))
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>When setting up a new WebSocketPair, the Workers function creates a unique ID derived from the user's IP address (though you could just as easily use a UUID or anything else), and begins sending WebSocket data down to the new client. When data comes in (e.g. a new player position), the function looks at <em>who</em> is sending it, and sends the new information to every <em>other</em> WebSocket currently in the game.</p>
-	<h3 id="handling-player-position-and-movement-building-with-durable-objects-in-unity">Handling player position and movement: building with Durable Objects in Unity</h3>
-	<p>Unity is a great game engine for someone like me: a fairly experienced programmer who has <em>no</em> experience in making games. I've been working with Unity on and off for years, but in the last few months I've been diving deep into it and expanding my understanding of how to actually build real games.</p>
-	<p>Here's what you need to know about Unity in the context of building Durable World: Game Objects are the primary <em>class</em> of everything in Unity, and using C# scripts you can program different behaviors for your Game Objects, whether networked or local to the player.</p>
-	<p>In our game, there are three distinct types of Game Objects. First, there's the world itself — a collection of static meshes, mostly cubes. These meshes aren't represented inside the networked aspects of the game at all. Via a series of <em>colliders</em>, any other Game Objects that navigate on top of or around these meshes are stopped from falling through floors and moving through walls. This same sort of design is what you've seen in every 3D game over the last twenty years, including classics like Super Mario 64.</p><!--kg-card-begin: html-->
+}</code></pre>
+	<p>When setting up a new WebSocketPair, the Workers function creates a unique ID derived from the user's IP address (though you could just as easily use a UUID or anything else), and begins sending WebSocket data down to the new client. When data comes in (e.g. a new player position), the function looks at <i>who</i> is sending it, and sends the new information to every <i>other</i> WebSocket currently in the game.</p>
+	<h3>Handling player position and movement: building with Durable Objects in Unity</h3>
+	<p>Unity is a great game engine for someone like me: a fairly experienced programmer who has <i>no</i> experience in making games. I've been working with Unity on and off for years, but in the last few months I've been diving deep into it and expanding my understanding of how to actually build real games.</p>
+	<p>Here's what you need to know about Unity in the context of building Durable World: Game Objects are the primary <i>class</i> of everything in Unity, and using C# scripts you can program different behaviors for your Game Objects, whether networked or local to the player.</p>
+	<p>In our game, there are three distinct types of Game Objects. First, there's the world itself — a collection of static meshes, mostly cubes. These meshes aren't represented inside the networked aspects of the game at all. Via a series of <i>colliders</i>, any other Game Objects that navigate on top of or around these meshes are stopped from falling through floors and moving through walls. This same sort of design is what you've seen in every 3D game over the last twenty years, including classics like Super Mario 64.</p><!--kg-card-begin: html-->
 	<div style="width:100%;height:0;padding-bottom:70%;position:relative;"><iframe src="https://giphy.com/embed/fTmOPDE3jH9qP9HVuL" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe></div>
 	<p><a href="https://giphy.com/gifs/glitch-cheat-mario-64-fTmOPDE3jH9qP9HVuL">via GIPHY</a></p><!--kg-card-end: html-->
-	<p>In Durable World, your player Game Object is a simple capsule. This shape is built into Unity, and by attaching a C# script we can have basic movement using keyboard controls (in my case, I used<a href="https://www.youtube.com/watch?v=4HpC--2iowE"> this tutorial from Brackey</a>).</p>
+	<p>In Durable World, your player Game Object is a simple capsule. This shape is built into Unity, and by attaching a C# script we can have basic movement using keyboard controls (in my case, I used <a href="https://www.youtube.com/watch?v=4HpC--2iowE">this tutorial from Brackey</a>).</p>
 	<p>Multiplayer characters are represented as a simplified version of the same player capsule. Instead of attaching any sort of input logic (keyboard, mouse, etc.) to these Game Objects, the crucial aspects of their location in the 3D space — namely, position and rotation — are managed by the WebSocket client.</p>
 	<p>When the game starts, you're placed in a single-player environment: your character can move around the static 3D world. Once the game connects to Workers and receives a WebSocket, it can begin to act in a multiplayer context. Here's a wireframe look at the world before it starts up:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>When it comes to the actual code for the project, the connection aspects are quite simple: a Connection singleton is created when the game starts, which uses a WebSocket class to connect to Workers and call a variety of functions on new WebSocket updates. You can find the complete code<a href="https://github.com/signalnerve/durable-world/blob/main/packages/unity/Assets/Connection.cs"> here</a>, but I'll summarize the important parts below.</p>
-	<p>First, we need to <em>send </em>the position of your player back up to Workers. This happens in a loop, called every 0.2 seconds. The UpdatePosition function takes the player position and rotation, encodes them into JSON, and sends the data up to the WebSocket. Note that by sending the position every 0.2 seconds, we're effectively building a player that updates at five frames per second. Considering that most games run at <em>at least</em> 30 frames per second, if not higher, this will be a problem we'll solve later using interpolation.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cs">using System;
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ODKLZQJIpgx1RpzAeEbvp/fe60caea3128ec254d96d3f0488cf486/image4-11.png" alt="" class="kg-image" width="1999" height="985" loading="lazy">
+
+	</figure>
+	<p>When it comes to the actual code for the project, the connection aspects are quite simple: a Connection singleton is created when the game starts, which uses a WebSocket class to connect to Workers and call a variety of functions on new WebSocket updates. You can find the complete code <a href="https://github.com/signalnerve/durable-world/blob/main/packages/unity/Assets/Connection.cs">here</a>, but I'll summarize the important parts below.</p>
+	<p>First, we need to <i>send</i> the position of your player back up to Workers. This happens in a loop, called every 0.2 seconds. The UpdatePosition function takes the player position and rotation, encodes them into JSON, and sends the data up to the WebSocket. Note that by sending the position every 0.2 seconds, we're effectively building a player that updates at five frames per second. Considering that most games run at <i>at least</i> 30 frames per second, if not higher, this will be a problem we'll solve later using interpolation.</p>
+	<pre class="language-cs"><code class="language-cs">using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -263,11 +272,9 @@ public class Connection : MonoBehaviour
   {
     await websocket.Close();
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Next, we need to listen for other players currently in the game. To handle this, we listen to incoming WebSocket messages <em>from</em> Workers. Each message will contain the entirety of our game state (something we could definitely optimize in the future), which we can parse and use to make decisions about how our local version of the game should update. For each user in our gameState payload, we can create a new instance of a player, and begin tracking it locally. We can also update position, rotation, and set a simple UI element indicating the player's name, inside of CreateClient:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cs">using System;
+}</code></pre>
+	<p>Next, we need to listen for other players currently in the game. To handle this, we listen to incoming WebSocket messages <i>from</i> Workers. Each message will contain the entirety of our game state (something we could definitely optimize in the future), which we can parse and use to make decisions about how our local version of the game should update. For each user in our gameState payload, we can create a new instance of a player, and begin tracking it locally. We can also update position, rotation, and set a simple UI element indicating the player's name, inside of CreateClient:</p>
+	<pre class="language-cs"><code class="language-cs">using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -283,7 +290,7 @@ public class Connection : MonoBehaviour
     websocket.OnMessage += (bytes) =&gt;
     {
       var payload = System.Text.Encoding.UTF8.GetString(bytes);
-      GameState gameState = JsonUtility.FromJson&lt;GameState&gt;(payload);
+      GameState gameState = JsonUtility.FromJson<gamestate>(payload);
 
       foreach (var user in gameState.users)
       {
@@ -320,7 +327,7 @@ public class Connection : MonoBehaviour
         }
       }
 
-      TMPro.TextMeshProUGUI text = onlineText.GetComponent&lt;TMPro.TextMeshProUGUI&gt;();
+      TMPro.TextMeshProUGUI text = onlineText.GetComponent<tmpro.textmeshprougui>();
       text.text = $"Online: {gameState.users.Length + 1}\\nPlaying as {gameState.name}";
     };
 
@@ -338,23 +345,21 @@ public class Connection : MonoBehaviour
     var otherPlayer = Instantiate(otherPlayerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     otherPlayer.name = user.id;
 
-    TMPro.TextMeshPro text = otherPlayer.GetComponentInChildren&lt;TMPro.TextMeshPro&gt;();
+    TMPro.TextMeshPro text = otherPlayer.GetComponentInChildren<tmpro.textmeshpro>();
     text.text = user.name;
 
     newClient.playerObject = otherPlayer;
-    newClient.interpolateMovement = otherPlayer.GetComponent&lt;InterpolateMovement&gt;();
+    newClient.interpolateMovement = otherPlayer.GetComponent<interpolatemovement>();
     Clients.Add(user.id, newClient);
     return newClient;
   }
 
   // Truncated code
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</interpolatemovement></tmpro.textmeshpro></tmpro.textmeshprougui></gamestate></code></pre>
 	<p>With all of this code set up, we've established a simple system for sending our local player position to Workers. When my player position updates, everyone else in the game receives the position as part of the larger game state payload, and updates the local copy of each player accordingly.</p>
-	<p>I mentioned that these updates happen <em>every 0.2 seconds</em>. Games are expected to update <em>at least</em> thirty times a second, if not more: modern games are generally expected to run at 60 frames per second, and update extremely quickly.</p>
-	<p>It's because of that expectation that we need to <em>interpolate</em> movement for our players. Instead of sending player updates sixty times a second, which would be a huge load on our Durable Object, we can look at the incoming new position or rotation for an object, and use some math to smooth the movement from where a player <em>is</em> to where they are <em>going</em>. Unity (and many other game engines) provide this behavior via APIs like SmoothDamp — a function for smoothing rapid, jarring movement over time — as seen below in the InterpolateMovement script, which is used to manage player position and rotation:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cs">using System.Collections;
+	<p>I mentioned that these updates happen <i>every 0.2 seconds</i>. Games are expected to update <i>at least</i> thirty times a second, if not more: modern games are generally expected to run at 60 frames per second, and update extremely quickly.</p>
+	<p>It's because of that expectation that we need to <i>interpolate</i> movement for our players. Instead of sending player updates sixty times a second, which would be a huge load on our Durable Object, we can look at the incoming new position or rotation for an object, and use some math to smooth the movement from where a player <i>is</i> to where they are <i>going</i>. Unity (and many other game engines) provide this behavior via APIs like SmoothDamp — a function for smoothing rapid, jarring movement over time — as seen below in the InterpolateMovement script, which is used to manage player position and rotation:</p>
+	<pre class="language-cs"><code class="language-cs">using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -380,9 +385,7 @@ public class InterpolateMovement : MonoBehaviour
       transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, t);
     }
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="what-s-next">What’s next</h3>
-	<p>The availability of tools like Durable Objects and WebSockets at the edge unlocks a new class of application that we can build with Cloudflare Workers. Games are just a single use case, and we’ve only begun exploring the possibilities for real-time, highly interactive games at the edge. If you're interested in checking out the source for Durable World, you can check it out<a href="https://github.com/signalnerve/durable-world"> on GitHub</a>.<a href="https://discord.com/invite/cloudflaredev"> Join us in our Cloudflare Workers Discord</a> if you want to chat Workers, Durable Objects, or anything else exploring new, interesting stuff we can build in a distributed serverless context.</p>
+}</code></pre>
+	<h3>What’s next</h3>
+	<p>The availability of tools like Durable Objects and WebSockets at the edge unlocks a new class of application that we can build with Cloudflare Workers. Games are just a single use case, and we’ve only begun exploring the possibilities for real-time, highly interactive games at the edge. If you're interested in checking out the source for Durable World, you can check it out <a href="https://github.com/signalnerve/durable-world">on GitHub</a>. <a href="https://discord.com/invite/cloudflaredev">Join us in our Cloudflare Workers Discord</a> if you want to chat Workers, Durable Objects, or anything else exploring new, interesting stuff we can build in a distributed serverless context.</p>
 </div>

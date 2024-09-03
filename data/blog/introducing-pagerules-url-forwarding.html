@@ -1,93 +1,154 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Introducing Page Rules: URL Forwarding" src="https://blog.cloudflare.com/content/images/cf-blog-pagerules.png.scaled500.png" title="Introducing Page Rules: URL Forwarding"></p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CIsw3G5FPqCqIslMgl37a/6552975eb35641acb7d1586352dac799/cf-blog-pagerules.png.scaled500.png" alt="Introducing Page Rules: URL Forwarding" class="kg-image" width="500" height="159" loading="lazy">
+
+	</figure>
 	<p>In the <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">last blog post</a>, I introduced Page Rules and showed how you could use it to control CloudFlare's features like Apps, Performance, and Security settings on a page-by-page basis. Here I'm going to explain how you can use the same Page Rules interface to enable URL forwarding.</p>
 	<p>URL forwarding was a surprise request from a number of early CloudFlare users. Some hosting providers and registrars charge just for this feature, which seemed silly. We'd generally supplied people looking to do URL forwarding with instructions on how to do it via HTACCESS. When we created the infrastructure to support Page Rules, we realized we could now support URL forwarding in an easy but powerful way.</p>
-	<h3 id="thebasicexample">The Basic Example</h3>
+	<h3>The Basic Example</h3>
 	<p>Imagine you have a Google+ profile and you want to make it easy for anyone coming to get to simply by going to a URL like:</p>
 	<ul>
-		<li><code>www.example.com/+</code></li>
+		<li>
+			<p><code>www.example.com/+</code></p>
+		</li>
 	</ul>
 	<p>To setup forwarding, go to the Page Rules administration page which can be found under the Settings menu next to each domain on your CloudFlare My Websites page. There create a pattern to match the URL you want to forward:</p>
 	<ul>
-		<li><code>*example.com/+</code></li>
+		<li>
+			<p><code>*example.com/+</code></p>
+		</li>
 	</ul>
-	This pattern will match:<br>
+	<p>This pattern will match:</p>
 	<ul>
-		<li><code>http://example.com/+</code></li>
-		<li><code>http://www.example.com/+</code></li>
-		<li><code>https://www.example.com/+</code></li>
-		<li><code>https://blog.example.com/+</code></li>
-		<li><code>https://www.blog.example.com/+</code></li>
-		<li><em>Etc...</em></li>
+		<li>
+			<p><code>http://example.com/+</code></p>
+		</li>
+		<li>
+			<p><code>http://www.example.com/+</code></p>
+		</li>
+		<li>
+			<p><code>https://www.example.com/+</code></p>
+		</li>
+		<li>
+			<p><code>https://blog.example.com/+</code></p>
+		</li>
+		<li>
+			<p><code>https://www.blog.example.com/+</code></p>
+		</li>
+		<li>
+			<p><i>Etc...</i></p>
+		</li>
 	</ul>
-	<p>It will not match:<br></p>
+	<p>It will not match:</p>
 	<ul>
-		<li><code>http://www.example.com/blog/+</code> <em>[extra directory before the +]</em></li>
-		<li><code>http://www.example.com+</code> <em>[no trailing slash]</em></li>
+		<li>
+			<p><code>http://www.example.com/blog/+</code> <i>[extra directory before the +]</i></p>
+		</li>
+		<li>
+			<p><code>http://www.example.com+</code> <i>[no trailing slash]</i></p>
+		</li>
 	</ul>
 	<p>Once I've created the pattern that matches what I want, click the Forwarding toggle. That exposes a field where I can enter the address I want requests forwarded to. <a href="https://plus.google.com/117631136894743822101">My Google+ profile</a> is at the following URL:</p>
 	<ul>
-		<li><code>https://plus.google.com/117631136894743822101</code></li>
+		<li>
+			<p><code>https://plus.google.com/117631136894743822101</code></p>
+		</li>
 	</ul>
 	<p>If I enter that in the forwarding box and click the Add Rule button within a few seconds any requests that match the pattern I entered will automatically be forwarded with a <a href="https://en.wikipedia.org/wiki/HTTP_302">302 redirect</a> to the new URL. It's slick.</p>
-	<h3 id="theadvancedexample">The Advanced Example</h3>
+	<h3>The Advanced Example</h3>
 	<p>Basic forwarding is good for something like redirecting traffic to Google+, but what if you want to do something like force all traffic to your root domain to use the www subdomain. If you use a basic redirect, then you lose anything else in the URL.</p>
 	<p>For example, you could setup the pattern:</p>
 	<ul>
-		<li><code>example.com*</code></li>
+		<li>
+			<p><code>example.com*</code></p>
+		</li>
 	</ul>
-	And have it forward to:
+	<p>And have it forward to:</p>
 	<ul>
-		<li><code>www.example.com</code></li>
+		<li>
+			<p><code>www.example.com</code></p>
+		</li>
 	</ul>
-	But then if someone entered:
+	<p>But then if someone entered:</p>
 	<ul>
-		<li><code>example.com/some-particular-page.html</code></li>
+		<li>
+			<p><code>example.com/some-particular-page.html</code></p>
+		</li>
 	</ul>
-	Then they'd be redirected to:
+	<p>Then they'd be redirected to:</p>
 	<ul>
-		<li><code>www.example.com</code></li>
+		<li>
+			<p><code>www.example.com</code></p>
+		</li>
 	</ul>
 	<p>Not where you'd want them to go:</p>
 	<ul>
-		<li><code>www.example.com/some-particular-page.html</code></li>
+		<li>
+			<p><code>www.example.com/some-particular-page.html</code></p>
+		</li>
 	</ul>
-	The solution is to use variables. Each wildcard corresponds to a variable when can be referenced in the forwarding address. The variables are represented by a $ followed by a number. To refer to the first wildcard you'd use $1, to refer to the second wildcard you'd use $2, and so on. To fix the forwarding from the root to www in the above example, you could use the same pattern:
+	<p>The solution is to use variables. Each wildcard corresponds to a variable when can be referenced in the forwarding address. The variables are represented by a $ followed by a number. To refer to the first wildcard you'd use $1, to refer to the second wildcard you'd use $2, and so on. To fix the forwarding from the root to www in the above example, you could use the same pattern:</p>
 	<ul>
-		<li><code>example.com*</code></li>
+		<li>
+			<p><code>example.com*</code></p>
+		</li>
 	</ul>
-	You'd then setup the following URL for traffic to forward to:
+	<p>You'd then setup the following URL for traffic to forward to:</p>
 	<ul>
-		<li><code>www.example.com$1</code></li>
+		<li>
+			<p><code>www.example.com$1</code></p>
+		</li>
 	</ul>
-	In this case, if someone went to:
+	<p>In this case, if someone went to:</p>
 	<ul>
-		<li><code>example.com/some-particular-page.html</code></li>
+		<li>
+			<p><code>example.com/some-particular-page.html</code></p>
+		</li>
 	</ul>
-	They'd be redirected to:
+	<p>They'd be redirected to:</p>
 	<ul>
-		<li><code>www.example.com/some-particular-page.html</code></li>
+		<li>
+			<p><code>www.example.com/some-particular-page.html</code></p>
+		</li>
 	</ul>
-	<p><img alt="Introducing Page Rules: URL Forwarding" src="https://blog.cloudflare.com/content/images/page_rules_forwarding.png.scaled500.png" title="Introducing Page Rules: URL Forwarding"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6j3VBJyoM9uumPaS6Qc5yx/d0b40271803a681187e9231161ae944c/page_rules_forwarding.png.scaled500.png" alt="Introducing Page Rules: URL Forwarding" class="kg-image" width="500" height="188" loading="lazy">
+
+	</figure>
 	<p>Or, if you wanted a more powerful Google+ forwarder than described in the basic example above, you could setup the following pattern:</p>
 	<ul>
-		<li><code>*example.com/+*</code></li>
+		<li>
+			<p><code>*example.com/+*</code></p>
+		</li>
 	</ul>
 	<p>And have it forward to your profile like:</p>
 	<ul>
-		<li><code>https://plus.google.com/117631136894743822101$2</code></li>
+		<li>
+			<p><code>https://plus.google.com/117631136894743822101$2</code></p>
+		</li>
 	</ul>
 	<p>Note the $2 at the end of the URL, which represents the second wildcard (*) in the pattern above. Then all of the following links would work properly:</p>
 	<ul>
-		<li><code>http://example.com/+</code></li>
-		<li><code>http://example.com/+/posts</code></li>
-		<li><code>http://example.com/+/about</code></li>
-		<li><code>http://example.com/+/photos</code></li>
-		<li><code>http://example.com/+/videos</code></li>
+		<li>
+			<p><code>http://example.com/+</code></p>
+		</li>
+		<li>
+			<p><code>http://example.com/+/posts</code></p>
+		</li>
+		<li>
+			<p><code>http://example.com/+/about</code></p>
+		</li>
+		<li>
+			<p><code>http://example.com/+/photos</code></p>
+		</li>
+		<li>
+			<p><code>http://example.com/+/videos</code></p>
+		</li>
 	</ul>
-	<h3 id="troubleshooting">Troubleshooting</h3>
+	<h3>Troubleshooting</h3>
 	<p>If you can't get forwarding to work properly, make sure the subdomain you're forwarding from is enabled (orange cloud) from the CloudFlare DNS manager. Also check that multiple rules don't interact with one another in an unexpected way. The rules will take precedence based on when they were created, so if they are not behaving in the way you expect you may need to delete the rules and recreate them in a different order.</p>
 	<p>Forwarding using Page Rules enables a number of possibilities that used to require you creating complicated redirect rules in HTACCESS. Give it a shot and let us know if you find powerful new uses in the comments below.</p>
-	<!--kg-card-end: markdown-->
 </div>

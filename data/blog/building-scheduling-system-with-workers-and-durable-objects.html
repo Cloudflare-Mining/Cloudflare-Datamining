@@ -1,36 +1,62 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/Scheduling-system-with-Workers-and-Durable-Objects.png" class="kg-image" alt="Building a scheduling system with Workers and Durable Objects" loading="lazy"></figure>
-	<p>We rely on technology to help us on a daily basis – if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fjdl7kWRa7MwLUn86agFI/1bde209e98a5d7d521dee4ff69224edf/Scheduling-system-with-Workers-and-Durable-Objects.png" alt="Building a scheduling system with Workers and Durable Objects" class="kg-image" width="1600" height="901" loading="lazy">
+
+	</figure>
+	<p>We rely on technology to help us on a daily basis – if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening.</p>
 	<p>However, who tells the application when it's the right time to send you a notification? For this, we generally rely on scheduled events. And when you are relying on them, you really want to make sure that they occur. Turns out, this can get difficult. The scheduler and storage backend need to be designed with scale in mind - otherwise you may hit limitations quickly.</p>
-	<p>Workers, Durable Objects, and Alarms are actually a perfect match for this type of workload. Thanks to the distributed architecture of Durable Objects and their storage, they are a reliable and scalable option. Each Durable Object has access to its own isolated storage and alarm scheduler, both being automatically replicated and failover in case of failures. </p>
+	<p>Workers, Durable Objects, and Alarms are actually a perfect match for this type of workload. Thanks to the distributed architecture of Durable Objects and their storage, they are a reliable and scalable option. Each Durable Object has access to its own isolated storage and alarm scheduler, both being automatically replicated and failover in case of failures.</p>
 	<p>There are many use cases where having a reliable scheduler can come in handy: running a webhook service, sending emails to your customers a week after they sign up to keep them engaged, sending invoices reminders, and more!</p>
 	<p>Today, we're going to show you how to build a scalable service that will schedule HTTP requests on a specific schedule or as one-off at a specific time as a way to guide you through any use case that requires scheduled events.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/Scheduling-system-with-Workers-and-Durable-Objects---Diagram.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="quick-intro-into-the-application-stack">Quick intro into the application stack</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QsLhy4QmfImRWULDDCpRx/05aaf1afaa7a53ab787f2c1175240429/Scheduling-system-with-Workers-and-Durable-Objects---Diagram.png" alt="" class="kg-image" width="1531" height="871" loading="lazy">
+
+	</figure>
+	<h3>Quick intro into the application stack</h3>
 	<p>Before we dive in, here are some of the tools we’re going to be using today:</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com/workers/wrangler/get-started/#install">Wrangler</a> - CLI tool to develop and publish Workers</li>
-		<li><a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> - runtime</li>
-		<li><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Cloudflare Durable Objects</a> - storage for HTTP requests and <a href="https://blog.cloudflare.com/durable-objects-alarms">Alarms</a> to schedule them</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/wrangler/get-started/#install">Wrangler</a> - CLI tool to develop and publish Workers</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> - runtime</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Cloudflare Durable Objects</a> - storage for HTTP requests and <a href="https://blog.cloudflare.com/durable-objects-alarms">Alarms</a> to schedule them</p>
+		</li>
 	</ul>
 	<p>The application is going to have the following components:</p>
 	<ul>
-		<li>Scheduling system API to accept scheduled requests and manage Durable Objects</li>
-		<li>Unique Durable Object per scheduled request, each with</li>
-		<li>Storage - keeping the request metadata, such as URL, body, or headers.</li>
-		<li>Alarm - a timer (trigger) to wake Durable Object up.</li>
+		<li>
+			<p>Scheduling system API to accept scheduled requests and manage Durable Objects</p>
+		</li>
+		<li>
+			<p>Unique Durable Object per scheduled request, each with</p>
+		</li>
+		<li>
+			<p>Storage - keeping the request metadata, such as URL, body, or headers.</p>
+		</li>
+		<li>
+			<p>Alarm - a timer (trigger) to wake Durable Object up.</p>
+		</li>
 	</ul>
 	<p>While we will focus on building the application, the Cloudflare global network will take care of the rest – storing and replicating our data, and making sure to wake our Durable Objects up when the time's right. Let’s build it!</p>
-	<h3 id="initialize-new-workers-project">Initialize new Workers project</h3>
+	<h3>Initialize new Workers project</h3>
 	<p>Get started by generating a completely new Workers project using the <code>wrangler init</code> command, which makes creating new projects quick &amp; easy.</p>
-	<p><strong>wrangler init -y durable-objects-requests-scheduler</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><b>wrangler init -y durable-objects-requests-scheduler</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vgw0sXTG850ifbluBAbEy/e33f15332517f6fa6f71125bb65f1914/pasted-image-0.png" alt="" class="kg-image" width="1600" height="562" loading="lazy">
+
+	</figure>
 	<p>For more information on how to install, authenticate, or update Wrangler, check out <a href="https://developers.cloudflare.com/workers/wrangler/get-started">https://developers.cloudflare.com/workers/wrangler/get-started</a></p>
-	<h3 id="preparing-typescript-types">Preparing TypeScript types</h3>
+	<h3>Preparing TypeScript types</h3>
 	<p>From my personal experience, at least a draft of TypeScript types significantly helps to be more productive down the road, so let's prepare and describe our scheduled request in advance. Create a file types.ts in src directory and paste the following TypeScript definitions.</p>
-	<p><strong>src/types.ts</strong></p>
-	<pre><code class="language-typescript">export interface Env {
+	<p><b>src/types.ts</b></p>
+	<pre class="language-typescript"><code class="language-typescript">export interface Env {
     DO_REQUEST: DurableObjectNamespace
 }
  
@@ -38,14 +64,13 @@ export interface ScheduledRequest {
   url: string // URL of the request
   triggerAt?: number // optional, unix timestamp in milliseconds, defaults to `new Date()`
   requestInit?: RequestInit // optional, includes method, headers, body
-}
-</code></pre>
-	<h3 id="a-scheduled-request-durable-object-class-alarm">A scheduled request Durable Object class &amp; alarm</h3>
+}</code></pre>
+	<h3>A scheduled request Durable Object class &amp; alarm</h3>
 	<p>Based on our architecture design, each scheduled request will be saved into its own Durable Object, effectively separating storage and alarms from each other and allowing our scheduling system to scale horizontally - there is no limit to the number of Durable Objects we create.</p>
-	<p>In the end, the Durable Object class is a matter of a couple of lines. The code snippet below accepts and saves the request body to a persistent storage and sets the alarm timer. Workers runtime will wake up the Durable Object and call the <code>alarm()</code> method to process the request. </p>
+	<p>In the end, the Durable Object class is a matter of a couple of lines. The code snippet below accepts and saves the request body to a persistent storage and sets the alarm timer. Workers runtime will wake up the Durable Object and call the <code>alarm()</code> method to process the request.</p>
 	<p>The alarm method reads the scheduled request data from the storage, then processes the request, and in the end reschedules itself in case it's configured to be executed on a recurring schedule.</p>
-	<p><strong>src/request-durable-object.ts</strong></p>
-	<pre><code class="language-js">import { ScheduledRequest } from "./types";
+	<p><b>src/request-durable-object.ts</b></p>
+	<pre class="language-js"><code class="language-js">import { ScheduledRequest } from "./types";
  
 export class RequestDurableObject {
   id: string|DurableObjectId
@@ -84,12 +109,11 @@ export class RequestDurableObject {
       this.storage.deleteAll()
     }
   }
-}
-</code></pre>
-	<h3 id="wrangler-configuration">Wrangler configuration</h3>
-	<p>Once we have the Durable Object class, we need to create a Durable Object binding by instructing Wrangler where to find it and what the exported class name is. </p>
-	<p><strong>wrangler.toml</strong></p>
-	<pre><code class="language-TOML">name = "durable-objects-request-scheduler"
+}</code></pre>
+	<h3>Wrangler configuration</h3>
+	<p>Once we have the Durable Object class, we need to create a Durable Object binding by instructing Wrangler where to find it and what the exported class name is.</p>
+	<p><b>wrangler.toml</b></p>
+	<pre class="language-toml"><code class="language-toml">name = "durable-objects-request-scheduler"
 main = "src/index.ts"
 compatibility_date = "2022-08-02"
  
@@ -101,20 +125,19 @@ bindings = [
  
 [[migrations]]
 tag = "v1"
-new_classes = ["RequestDurableObject"]
-</code></pre>
-	<h3 id="scheduling-system-api">Scheduling system API</h3>
-	<p>The API Worker will accept POST HTTP methods only, and is expecting a JSON body with scheduled request data - what URL to call, optionally what method, headers, or body to send. Any other method than POST will return 405 - Method Not Allowed HTTP error. </p>
-	<p>HTTP <code>POST /:scheduledRequestId?</code> will create or override a scheduled request, where :scheduledRequestId is optional Durable Object ID returned from a scheduling system API before.<br></p>
-	<p><strong>src/index.ts</strong></p>
-	<pre><code class="language-js">import { Env } from "./types"
+new_classes = ["RequestDurableObject"]</code></pre>
+	<h3>Scheduling system API</h3>
+	<p>The API Worker will accept POST HTTP methods only, and is expecting a JSON body with scheduled request data - what URL to call, optionally what method, headers, or body to send. Any other method than POST will return 405 - Method Not Allowed HTTP error.</p>
+	<p>HTTP <code>POST /:scheduledRequestId?</code> will create or override a scheduled request, where :scheduledRequestId is optional Durable Object ID returned from a scheduling system API before.</p>
+	<p><b>src/index.ts</b></p>
+	<pre class="language-js"><code class="language-js">import { Env } from "./types"
 export { RequestDurableObject } from "./request-durable-object"
  
 export default {
     async fetch(
         request: Request,
         env: Env
-    ): Promise&lt;Response&gt; {
+    ): Promise<response> {
         if (request.method !== "POST") {
             return new Response("Method Not Allowed", {status: 405})
         }
@@ -132,42 +155,67 @@ export default {
         // pass the request to Durable Object instance
         return stub.fetch(request)
     },
-}
-</code></pre>
+}</response></code></pre>
 	<p>It's good to mention that the script above does not implement any listing of scheduled or processed webhooks. Depending on how the scheduling system would be integrated, you can save each created Durable Object ID to your existing backend, or write your own registry – using one of the <a href="https://developers.cloudflare.com/workers/get-started/storage-objects">Workers storage options</a>.</p>
-	<h3 id="starting-a-local-development-server-and-testing-our-application">Starting a local development server and testing our application</h3>
+	<h3>Starting a local development server and testing our application</h3>
 	<p>We are almost done! Before we publish our scheduler system to the Cloudflare edge, let's start Wrangler in a completely local mode to run a couple of tests against it and to see it in action – which will work even without an Internet connection!</p>
-	<pre><code class="language-bash">wrangler dev --local</code></pre>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<pre class="language-bash"><code class="language-bash">wrangler dev --local</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2O2DcPjirepk7sgbtlMpbn/35be0f148eddc05146ac04d87466de26/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="614" loading="lazy">
+
+	</figure>
 	<p>The development server is listening on localhost:8787, which we will use for scheduling our first request. The JSON request payload should match the TypeScript schema we defined in the beginning – required URL, and optional <code>triggerEverySeconds</code> number or <code>triggerAt</code> unix timestamp. When only the required URL is passed, the request will be dispatched right away.</p>
 	<p>An example of request payload that will send a GET request to <a href="https://example.com">https://example.com</a> every 30 seconds.</p>
-	<pre><code class="language-JSON">{
+	<pre class="language-json"><code class="language-json">{
 	"url":  "https://example.com",
 	"triggerEverySeconds": 30,
 }</code></pre>
-	<pre><code class="language-bash">&gt; curl -X POST -d '{"url": "https://example.com", "triggerEverySeconds": 30}' http://localhost:8787
-{"id":"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"}
-</code></pre>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>From the wrangler logs we can see the scheduled request ID <code>000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f</code> is being triggered in 30s intervals. </p>
-	<p>Need to double the interval? No problem, just send a new POST request and pass the request ID as a pathname. </p>
-	<pre><code class="language-bash">&gt; curl -X POST -d '{"url": "https://example.com", "triggerEverySeconds": 60}' http://localhost:8787/000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f
+
+	<pre class="language-bash"><code class="language-bash">&gt; curl -X POST -d '{"url": "https://example.com", "triggerEverySeconds": 30}' http://localhost:8787
+{"id":"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"}</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74kGUzg7MYccSbLySud2e5/a56ab1a77e2319c32ee01a8ff4a21cd5/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="998" loading="lazy">
+
+	</figure>
+	<p>From the wrangler logs we can see the scheduled request ID <code>000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f</code> is being triggered in 30s intervals.</p>
+	<p>Need to double the interval? No problem, just send a new POST request and pass the request ID as a pathname.</p>
+	<pre class="language-bash"><code class="language-bash">&gt; curl -X POST -d '{"url": "https://example.com", "triggerEverySeconds": 60}' http://localhost:8787/000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f
 {"id":"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"}</code></pre>
 	<p>Every scheduled request gets a unique Durable Object ID with its own storage and alarm. As we demonstrated, the ID becomes handy when you need to change the settings of the scheduled request, or to deschedule them completely.</p>
-	<h3 id="publishing-to-the-network">Publishing to the network</h3>
-	<p>Following command will bundle our Workers application, export and bind Durable Objects, and deploy it to our workers.dev subdomain. </p>
-	<pre><code class="language-bash">wrangler publish</code></pre>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Publishing to the network</h3>
+	<p>Following command will bundle our Workers application, export and bind Durable Objects, and deploy it to our workers.dev subdomain.</p>
+	<pre class="language-bash"><code class="language-bash">wrangler publish</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3p4tcXHgshwEhYihU8blKm/2fac3745ae4aec6de1eac3ecab6f69d1/pasted-image-0--3-.png" alt="" class="kg-image" width="1190" height="500" loading="lazy">
+
+	</figure>
 	<p>That's it, we are live! ? The URL of your deployment is shown in the Workers logs. In a reasonably short period of time we managed to write our own scheduling system that is ready to handle requests at scale.</p>
 	<p>You can check full source code in <a href="https://github.com/cloudflare/templates/tree/main/worker-example-request-scheduler">Workers templates repository</a>, or experiment from your browser without installing any dependencies locally using the <a href="https://workers.new/example-request-scheduler">StackBlitz template</a>.</p>
-	<p><strong>What to see or build next</strong></p>
+	<p><b>What to see or build next</b></p>
 	<ul>
-		<li>New to Workers? Check our Get started guide.</li>
-		<li>Use <a href="https://www.cloudflare.com/products/zero-trust/access">Access</a> or <a href="https://developers.cloudflare.com/workers/runtime-apis/service-bindings">service bindings</a> if you want to protect your API from unauthorized access.</li>
-		<li>Got an idea for a Worker, get started in seconds =&gt; <a href="https://workers.new/typescript">https://workers.new/typescript</a> (<a href="https://workers.new/list">full list of StackBlitz supported templates</a>)</li>
-		<li>Dive into more Workers examples</li>
-		<li><a href="https://developers.cloudflare.com/workers/examples">https://developers.cloudflare.com/workers/examples/</a></li>
-		<li><a href="https://github.com/cloudflare/templates">https://github.com/cloudflare/templates</a></li>
+		<li>
+			<p>New to Workers? Check our Get started guide.</p>
+		</li>
+		<li>
+			<p>Use <a href="https://www.cloudflare.com/products/zero-trust/access">Access</a> or <a href="https://developers.cloudflare.com/workers/runtime-apis/service-bindings">service bindings</a> if you want to protect your API from unauthorized access.</p>
+		</li>
+		<li>
+			<p>Got an idea for a Worker, get started in seconds =&gt; <a href="https://workers.new/typescript">https://workers.new/typescript</a> (<a href="https://workers.new/list">full list of StackBlitz supported templates</a>)</p>
+		</li>
+		<li>
+			<p>Dive into more Workers examples</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/examples">https://developers.cloudflare.com/workers/examples/</a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/templates">https://github.com/cloudflare/templates</a></p>
+		</li>
 	</ul>
-	<p>  </p>
 </div>

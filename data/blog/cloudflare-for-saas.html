@@ -1,59 +1,76 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-saas-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-for-saas-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-for-saas-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-for-saas-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-for-saas-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-22.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mb2 gray5">8 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-saas">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-for-saas">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-for-saas">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-for-saas">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-for-saas">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7d3D2HKZ77Fmiqiyhdj0vy/145da4c222a842d51746baf81aae0316/image1-22.png" alt="" class="kg-image" width="1619" height="836" loading="lazy">
+
+	</figure>
 	<p>Software as a Service (SaaS) is one of the <a href="https://www.bmc.com/blogs/saas-growth-trends">fastest-growing</a> business segments in the IT market. SaaS providers can be anything from a web hosting provider to a subscription service, to an e-commerce platform. While well-known SaaS providers are industry giants, every day new SaaS companies are created, with the potential to become the next Salesforce.</p>
 	<p>But while it’s a fast-growing segment, if you’re a SaaS company, you know it’s not an easy path to forge.</p>
 	<p>Cloudflare <a href="https://blog.cloudflare.com/introducing-ssl-for-saas">released</a> a solution to help our SaaS customers four years ago — it’s called <a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS</a>. It’s perfect for those who need to manage their customers’ websites and SSL certificates at scale, and it’s been adopted by some of the leading SaaS companies in the world, from <a href="https://www.cloudflare.com/case-studies/wp-engine">WP Engine</a> to <a href="https://www.cloudflare.com/case-studies/shopify">Shopify</a> to <a href="https://www.cloudflare.com/case-studies/hubspot">HubSpot</a>. As the product has evolved, it has become a one-stop-shop for SaaS providers looking to provide fast load times, unparalleled redundancy, and the strongest security to their customers. Now, over 10 million applications have inherited the full benefits of the Cloudflare network through their SaaS provider.</p>
 	<p>Before today, SSL for SaaS was only available to Enterprise customers. Today, we are excited to announce that our SaaS solution is available to everyone. And to reflect the evolution of the product since it was first released, we’re changing the name: Cloudflare for SaaS.</p>
 	<p>The beta is available today — submit your request <a href="https://forms.gle/crARoXd4taCtoSti8">here</a> to try it out!</p>
 	<p>If you're starting a SaaS business, the value proposition is clear: <a href="https://www.cloudflare.com/saas">Cloudflare for SaaS</a> takes care of your underlying infrastructure, enabling you to keep your team lean and focused on building out your core solution. We’ve spent years investing in certificate issuance, building out our security and performance suite of products. Now we make it easy for you to extend all of the benefits we provide for your domain, to your end customers.</p>
-	<h2 id="it-s-technically-tricky-to-build-a-saas-business">It’s Technically Tricky to Build a SaaS Business</h2>
+	<h2>It’s Technically Tricky to Build a SaaS Business</h2>
 	<p>We know first hand the many challenges of building a successful SaaS business. We are not going to tell you how to run your business, but we can share what we've learned about the core infrastructure requirements — and how Cloudflare is well-positioned to address them.</p>
 	<p>Today, the way many SaaS providers offer their services is by giving their customers a web application that’s hosted on their origin (or, often, on Cloudflare).</p>
 	<p>Suppose you’re building a SaaS service for building e-commerce sites. You can give your customers a dedicated subdomain, like myshop.example.com, but it’s likely that your customers will come back asking to run the application on myshopsactualname.com. To give customers a branded experience, SaaS providers are required to support vanity domains.</p>
 	<p>This is more onerous than it sounds.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cCTIET38bt2HSbMMpgzzL/c8ef91d52c4e58fa6bd7fff4148f90bb/image3-7.png" alt="" class="kg-image" width="1639" height="1322" loading="lazy">
+
+	</figure>
 	<p>Once an application has been spun up, the next step is to provision TLS certificates for both the SaaS provider’s application and their customers. Developers may start looking into building out their homespun solution where they have to architect a whole pipeline around making API calls to a Certificate Authority. That means validating certificates, renewing them, and storing them. &nbsp;There are many states to account for in order to prevent certificate failures and uptime for your customers, which translates into a heavy engineering investment.</p>
 	<p>But here’s the thing: every hour of time you invest in doing this, is an hour that can’t be spent on engineering efforts to build out the core part of your business.</p>
 	<p>You don’t have to just take our word for it. In building SSL for SaaS, we got to learn from best-in-class engineering teams who were running into challenges managing complex certificate management systems. <a href="https://www.cloudflare.com/case-studies/hubspot">HubSpot</a>, for example, rolled out their in-house solution in 2015 where they deployed SSL certificates that were shared amongst their customers. This became a short-term solution when they began to run into scaling difficulties, resulting in slow certificate deployment, and leaving their customers with an unsatisfactory experience.</p>
-	<h3 id="enter-ssl-for-saas">Enter: SSL for SaaS</h3>
+	<h3>Enter: SSL for SaaS</h3>
 	<p>Cloudflare has been focused on certificate provisioning and management for many years — it’s at the core of our business. When we launched Universal SSL in 2014, we built our SSL pipeline to manage millions of certificates. We then decided to extend the benefits of our managed certificate issuance platform in 2017 to our SaaS provider customers, allowing them to secure their customer’s websites that they are responsible for managing.</p>
 	<p>This allowed customers like Hubspot to secure thousands of domains, without dedicating a big amount of engineering effort towards it. But while SSL for SaaS was originally built to handle certificate issuance, management, and renewals on behalf of our customers and their own customers, we’ve extended our solution far beyond just that.</p>
-	<h3 id="beyond-ssl">Beyond SSL</h3>
+	<h3>Beyond SSL</h3>
 	<p>For SaaS providers, their customers’ businesses are reliant on them staying online, always being available, and being performant. When their customers sign up for their business, that’s the underlying promise that the SaaS provider is making.</p>
 	<p>Every day, the Internet sees attacks, malicious traffic, unexpected spikes in requests, and so on.</p>
 	<p>At Cloudflare, we’ve heavily invested in building out one of the largest, most resilient networks, with solutions that keep your applications and origins protected. This is one of our core value propositions for customers, and now SaaS-providers can extend it to their customers, too. With built-in DDoS mitigation, a resilient Web Application Firewall (WAF), and a Carrier-grade Bot Management solution, you can prevent costly disruptions and downtime for you and your customers, so that regardless of who attackers are targeting, you both stay online.</p>
 	<p>We not only take the burden off your engineering and support teams, but we make it easy for your end customers to inherit your security settings. Whatever benefits you set up for yourself, your customers will instantly assume them.</p>
-	<h3 id="beyond-security">Beyond Security</h3>
+	<h3>Beyond Security</h3>
 	<p>As a business, you want to provide the best experience for your users. Speed plays a big part in how we perceive our online experiences.</p>
 	<p>For SaaS businesses, investing in performance is a must. When doing so, you need to keep in mind that your customers are global and their eyes are located worldwide, meaning that end users might not always be close to your origin server.</p>
 	<p>Cloudflare for SaaS allows you to take advantage of our performant Anycast network with data centers in more than 100 countries that, when coupled with our speed and performance features like caching and Argo Smart Routing, can improve performance by 30%. This means that, if you’re an e-commerce site and your origin server is in North America, your global customers in Asia will get the same lightning-fast load times that your US visitors get, giving every customer the best experience.</p>
-	<h2 id="built-for-giants-and-future-giants">Built for Giants … and Future Giants</h2>
+	<h2>Built for Giants … and Future Giants</h2>
 	<p>In January, we <a href="https://twitter.com/dinasaur_404/status/1351703331744321536">announced</a> on Twitter that we had an SSL for SaaS beta open. What we didn’t expect was that ~80% of our beta users were building their SaaS application on Workers. In retrospect, it makes total sense: in the same way that managing and scaling an SSL pipeline can take precious time and resources from building out the core business, managing and scaling infrastructure can be costly and time-consuming.</p>
 	<p>By marrying Cloudflare for SaaS with Workers, SaaS companies can unleash their developers — we’ll take care of not just certificate management, security, and performance, but also the burden of infrastructure.</p>
 	<p>You write the code, and we’ll take care of the rest.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-15.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vju7DxminkYK3iDbfP6NZ/a5f779565a4b3a09f739657b47c33d75/image2-15.png" alt="" class="kg-image" width="1586" height="671" loading="lazy">
+
+	</figure>
 	<p>The best part of building for developers is getting to see what they build. Here, we’re going to showcase some of the amazing projects already built on our platform that have taken the path we’ve just described:</p>
-	<h3 id="statusflare-a-status-page-platform">Statusflare: A Status Page Platform</h3>
+	<h3>Statusflare: A Status Page Platform</h3>
 	<p><a href="http://statusflare.com">Statusflare</a> is a tool for monitoring your websites and applications because the only thing worse than downtime is not knowing about it. The Statusflare team has built out a solution that allows businesses to deploy global checks around the world to monitor uptime, metrics, and server response time. Beyond that, they allow their customers to deploy status pages, so their customers stay informed about the availability of their services.</p>
 	<p>When building out their status page product, the Statusflare team decided to use Workers as their deployment platform. This allowed them to spend all their time writing code and building out their API, and zero time worrying about deploying an origin server. Once the Statusflare team had finished building their application, they were ready to integrate it with their customers’ vanity domains, so that anyone could set up a status page for their website.</p>
 	<p>The challenge they then faced was getting their customers the latest version of their product. To start, they decided to open source their solution, give their customers the Workers script, and have their customers deploy it to get their status page up and running. But this makes updates complicated, and instead of giving their end-users the latest version, customers were now responsible for updates.</p>
 	<p>Not just that — they also had to spend time integrating with certificate authorities to issue certificates, so their customers’ pages stay protected.</p>
 	<p>Statusflare found that Cloudflare for SaaS was the perfect solution to help them grow. With easy-to-use integration for custom domains, all they now had to do was to click a few buttons, and their end-users could use a vanity domain, pull the latest update of the status page, and get a certificate deployed. Beyond that, Statusflare is now looking to integrate their solution with Cloudflare Access and Teams, so their customers can keep their monitoring private and only allow authorized users. With built-in security and rate limiting, Statusflare never has to worry about the number of incoming requests, or scaling their application. Statusflare was very excited to share that having everything in one place means that they don’t have to worry about scaling or provisioning servers, they don’t have to worry about the availability of their customer’s domains, and instead of investing time in keeping their application stable, they can now focus on writing code and building out their product.</p>
-	<blockquote>With Cloudflare, our application scales on its own, it scales to infinity. <br>- <strong>Adam, founder of Statusflare</strong>.</blockquote>
-	<h3 id="pluma-all-in-one-platform-for-publishing-blogs-and-podcasts">PLUMA: All-in-One Platform for Publishing Blogs and Podcasts</h3>
+	<blockquote>
+		<p>With Cloudflare, our application scales on its own, it scales to infinity.- <b>Adam, founder of Statusflare</b>.</p>
+	</blockquote>
+	<h3>PLUMA: All-in-One Platform for Publishing Blogs and Podcasts</h3>
 	<p><a href="https://pluma.cloud">PLUMA</a> is an audio hosting service, a blogging platform, and a privacy-focused analytics service for websites and mobile apps that is currently in the making. It’s built on Workers, meaning the application fully runs on Cloudflare’s edge, with 0ms cold starts. With Workers KV, PLUMA is able to store all of its data, i.e. session data, static files, and logs, on Cloudflare’s edge, providing their end-users with a low latency service. One of the biggest requests from PLUMA users was for customers to be able to use their own branded domain, instead of one that PLUMA provides. With Cloudflare for SaaS, PLUMA can easily offer this experience to their end-users, with the extended benefit of keeping their customers’ sites secured with a TLS certificate.</p>
-	<blockquote>Cloudflare for SaaS makes it easy to integrate any number of domains with Workers. This makes Cloudflare a wonderful platform for building out low latency serverless applications. <br>- <strong>Pier Bover, founder of PLUMA</strong></blockquote>
-	<h3 id="plink-smart-links-for-podcasts">Plink: Smart Links for Podcasts</h3>
+	<blockquote>
+		<p>Cloudflare for SaaS makes it easy to integrate any number of domains with Workers. This makes Cloudflare a wonderful platform for building out low latency serverless applications.- <b>Pier Bover, founder of PLUMA</b></p>
+	</blockquote>
+	<h3>Plink: Smart Links for Podcasts</h3>
 	<p>Plink makes universal links for podcasts. One of the top feature requests from their customers has been to have their own custom domains. As an early-stage startup, Plink was looking for a cost-effective solution that would help them optimize their application, scale, and provide a customized experience for their users. With Workers and Workers KV, they were able to optimize their core scripts and functionality, without worrying about DevOps. This, coupled with Cloudflare for SaaS, allowed them to create a “custom-branded” experience of their service to external domains that were owned by their customers.</p>
-	<blockquote>Connecting Plink’s API with Cloudflare’s API has been a seamless experience. In general, building with Workers is amazing! I'm excited to provide a branded experience for Plink customers with Cloudflare for SaaS. - <strong>Scott Mathson, Founder at Plink</strong></blockquote>
-	<h2 id="try-out-cloudflare-for-saas-today-">Try out Cloudflare for SaaS Today!</h2>
+	<blockquote>
+		<p>Connecting Plink’s API with Cloudflare’s API has been a seamless experience. In general, building with Workers is amazing! I'm excited to provide a branded experience for Plink customers with Cloudflare for SaaS. - <b>Scott Mathson, Founder at Plink</b></p>
+	</blockquote>
+	<h2>Try out Cloudflare for SaaS Today!</h2>
 	<p>When developers are starting to build out their next SaaS application, there’s a long list of things they don’t want to worry about. Instead of allocating their engineering resources to work on their infrastructure, they should be dedicating their time building the next billion dollar business.</p>
 	<p>That’s what we’re enabling. And with our beta announced today, we’re doing it for everyone.</p>
 	<p>The end result: you can build the next groundbreaking SaaS business, and we’ll take care of the rest. To sign up for the beta, submit your request <a href="https://forms.gle/crARoXd4taCtoSti8">here</a>. We will be admitting customers on a rolling basis, and allotting 20 custom hostnames to each domain.</p>
 	<p>Request to join our beta <a href="https://forms.gle/crARoXd4taCtoSti8">here</a>!</p>
-	<h2 id="enterprise-customers-stay-tuned">Enterprise customers, stay tuned</h2>
+	<h2>Enterprise customers, stay tuned</h2>
 	<p>While we’re super excited about making Cloudflare for SaaS available to everyone, we know that our largest Enterprise customers have some demanding and specialized needs. We’ve been hard at work to build out new features to satisfy them. Stay tuned for an exciting announcement in the upcoming weeks!</p>
 </div>

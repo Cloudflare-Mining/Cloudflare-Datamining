@@ -1,140 +1,220 @@
 <div class="mb2 gray5">16 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/addressing-agility-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/addressing-agility-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/addressing-agility-es-es">Español</a>, <a href="https://blog.cloudflare.com/pt-br/addressing-agility-pt-br">Português</a>, <a href="https://blog.cloudflare.com/ko-kr/addressing-agility-ko-kr">한국어</a>, and <a href="https://blog.cloudflare.com/de-de/addressing-agility-de-de">Deutsch</a></em></small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-19.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/addressing-agility">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/addressing-agility">Français</a>, <a href="https://blog.cloudflare.com/de-de/addressing-agility">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/addressing-agility">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/addressing-agility">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/addressing-agility">Português</a>, <a href="https://blog.cloudflare.com/es-es/addressing-agility">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/addressing-agility">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Cfsrozo0zVMLQjOH4jB2I/ed8eef8cb1148127b4c33c2c36d4f442/image6-19.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+
+	</figure>
 	<p>At large operational scales, IP addressing stifles innovation in network- and web-oriented services. For every architectural change, and certainly when starting to design new systems, the first set of questions we are forced to ask are:</p>
 	<ul>
-		<li>Which block of IP addresses do or can we use?</li>
-		<li>Do we have enough in IPv4? If not, where or how can we get them?</li>
-		<li>How do we use IPv6 addresses, and does this affect other uses of IPv6?</li>
-		<li>Oh, and what careful plan, checks, time, and people do we need for migration?</li>
+		<li>
+			<p>Which block of IP addresses do or can we use?</p>
+		</li>
+		<li>
+			<p>Do we have enough in IPv4? If not, where or how can we get them?</p>
+		</li>
+		<li>
+			<p>How do we use IPv6 addresses, and does this affect other uses of IPv6?</p>
+		</li>
+		<li>
+			<p>Oh, and what careful plan, checks, time, and people do we need for migration?</p>
+		</li>
 	</ul>
-	<p>Having to stop and worry about IP addresses costs time, money, resources. This may sound surprising, given the visionary and resilient <a href="https://datatracker.ietf.org/doc/html/rfc791">advent of IP</a>, 40+ years ago. By their very design, IP addresses should be the last thing that any network has to think about. However, if the Internet has laid anything bare, it’s that small or seemingly unimportant weaknesses — often invisible or impossible to see at design time — always show up at sufficient scale.</p><!--kg-card-begin: markdown-->
+	<p>Having to stop and worry about IP addresses costs time, money, resources. This may sound surprising, given the visionary and resilient <a href="https://datatracker.ietf.org/doc/html/rfc791">advent of IP</a>, 40+ years ago. By their very design, IP addresses should be the last thing that any network has to think about. However, if the Internet has laid anything bare, it’s that small or seemingly unimportant weaknesses — often invisible or impossible to see at design time — always show up at sufficient scale.</p>
 	<p>One thing we do know: “more addresses” should never be the answer. In IPv4 that type of thinking only contributes to their scarcity, driving up further their market prices. IPv6 is absolutely necessary, but only one part of the solution. For example, in IPv6, the best practice says that the smallest allocation, just for personal use, is /56 -- that’s 2<sup>72</sup> or about 4,722,000,000,000,000,000,000 addresses. I certainly can’t reason about numbers that large. Can you?</p>
-	<!--kg-card-end: markdown-->
 	<p>In this blog post, we’ll explain why IP addressing is a problem for web services, the underlying causes, and then describe an innovative solution that we’re calling Addressing Agility, alongside the lessons we’ve learned. The best part of all may be the kinds of new systems and architectures enabled by Addressing Agility. The full details are available in our recent <a href="https://research.cloudflare.com/publications/Fayed2021">paper</a> from ACM SIGCOMM 2021. As a preview, here is a summary of some of the things we learned:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-18.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>It’s true! There is no limit to the number of names that can appear on any single address; the address of any name can change with every new query, <em>anywhere</em>; and address changes can be made for any reason, be it service provisioning or policy or performance evaluation, or others we’ve yet to encounter...</p>
-	<p>Explained below are the reasons this is all true, the way we get there, and the reasons these lessons matter for HTTP and TLS services<em> of any size</em>. The key insight on which we build: On the Internet Protocol (IP) design, much like the global postal system, <strong>addresses have never been, should never be, and in no way are ever, needed to represent names.</strong> We just sometimes treat addresses as if they do. Instead, this work shows that all names should share all of their addresses, any set of their addresses, or even just one address.</p>
-	<h2 id="the-narrow-waist-is-a-funnel-but-also-a-choke-point">The narrow waist is a funnel, but also a choke point</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74paTQy3g6xZgcTVirW3mz/358ec4fe6c68458d5465f55359468c5c/image5-18.png" alt="" class="kg-image" width="1958" height="544" loading="lazy">
+
+	</figure>
+	<p>It’s true! There is no limit to the number of names that can appear on any single address; the address of any name can change with every new query, <i>anywhere</i>; and address changes can be made for any reason, be it service provisioning or policy or performance evaluation, or others we’ve yet to encounter...</p>
+	<p>Explained below are the reasons this is all true, the way we get there, and the reasons these lessons matter for HTTP and TLS services <i>of any size</i>. The key insight on which we build: On the Internet Protocol (IP) design, much like the global postal system, <b>addresses have never been, should never be, and in no way are ever, needed to represent names.</b> We just sometimes treat addresses as if they do. Instead, this work shows that all names should share all of their addresses, any set of their addresses, or even just one address.</p>
+	<h2>The narrow waist is a funnel, but also a choke point</h2>
 	<p>Decades-old conventions artificially tie IP addresses to names and resources. This is understandable since the architecture and software that drive the Internet evolved from a setting in which one computer had one name and (most often) one network interface card. It would be natural, then, for the Internet to evolve such that one IP address would be associated with names and software processes.</p>
-	<p>Among end clients and network carriers, where there is little need for names and less need for listening processes, these IP bindings have little impact. However, the name and process conventions create strong limitations on <em>all</em> content hosting, distribution, and content-service providers (CSPs). Once assigned to names, interfaces, and sockets, addresses become largely static and require effort, planning, and care to change if change is possible at all.</p>
+	<p>Among end clients and network carriers, where there is little need for names and less need for listening processes, these IP bindings have little impact. However, the name and process conventions create strong limitations on <i>all</i> content hosting, distribution, and content-service providers (CSPs). Once assigned to names, interfaces, and sockets, addresses become largely static and require effort, planning, and care to change if change is possible at all.</p>
 	<p>The “narrow waist” of IP has enabled the Internet, but much like TCP has been to transport protocols and HTTP to application protocols, IP has become a stifling bottleneck to innovation. The idea is depicted by the figure below, in which we see that otherwise separate communication bindings (with names) and connection bindings (with interfaces and sockets) create transitive relationships between them.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image8-12.png" class="kg-image" alt="IP addresses bind to names and, separately, IP addresses bind to interfaces and sockets. This creates a transitive relationship where changing either can affect the other. The transitive nature is hard to follow or reason about, which hinders innovation." loading="lazy" title="The narrow waist of IP has become a chokepoint"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JLHGmkSTwbwo97XCnFRQi/d0c356e8259798e1d8bef0a0b1552ef8/image8-12.png" alt="IP addresses bind to names and, separately, IP addresses bind to interfaces and sockets. This creates a transitive relationship where changing either can affect the other. The transitive nature is hard to follow or reason about, which hinders innovation." class="kg-image" width="1200" height="638" loading="lazy">
+
+	</figure>
 	<p>The transitive lock is hard to break, because changing either can have an impact on the other. Moreover, service providers often use IP addresses to represent policies and service levels that themselves exist independently of names. Ultimately the IP bindings are one more thing to think about — and for no good reason.</p>
 	<p>Let’s put this another way. When thinking of new designs, new architectures, or just better resource allocations, the first set of questions should never be “which IP addresses do we use?” or “do we have IP addresses for this?” Questions like these and their answers slow development and innovation.</p>
-	<p>We realised that IP bindings are not only artificial but, according to the original visionary RFCs and standards, also incorrect. In fact, the notion of IP addresses as being representative of anything other than reachability runs counter to their original design. In the original <a href="https://datatracker.ietf.org/doc/html/rfc791#section-2.3">RFC</a> and related drafts, the architects are explicit, “A distinction is made between names, addresses, and routes. A name indicates what we seek. An address indicates where it is. A route indicates how to get there.” <strong>Any</strong> <strong>association to IP of information like SNI or HTTP host in higher-layer protocols is a clear violation of the layering principle</strong>.</p>
+	<p>We realised that IP bindings are not only artificial but, according to the original visionary RFCs and standards, also incorrect. In fact, the notion of IP addresses as being representative of anything other than reachability runs counter to their original design. In the original <a href="https://datatracker.ietf.org/doc/html/rfc791#section-2.3">RFC</a> and related drafts, the architects are explicit, “A distinction is made between names, addresses, and routes. A name indicates what we seek. An address indicates where it is. A route indicates how to get there.” <b>Any</b> <b>association to IP of information like SNI or HTTP host in higher-layer protocols is a clear violation of the layering principle</b>.</p>
 	<p>Of course none of our work exists in isolation. It does, however, complete a long-standing evolution to decouple IP addresses from their conventional use, an evolution that consists of <a href="https://blog.cloudflare.com/cloudflare-research-two-years-in">standing on</a> the shoulders of giants.</p>
-	<h3 id="the-evolving-past-">The Evolving Past...</h3>
+	<h3>The Evolving Past...</h3>
 	<p>Looking backwards over the last 20 years, it’s easy to see that a quest for addressing agility has been ongoing for some time, and one in which Cloudflare has been deeply invested.</p>
 	<p>The decades-old one-to-one binding between IP and network card interfaces was first broken a few years ago when Google’s <a href="https://research.google/pubs/pub44824">Maglev</a> combined Equal Cost MultiPath (ECMP) and consistent hashing to disseminate traffic from one ‘virtual’ IP address among many servers. As an aside, according to the original Internet Protocol RFCs, this use of IP is proscribed and there is nothing virtual about it.</p>
 	<p>Many similar systems have since emerged at GitHub, Facebook, and elsewhere, including our very own <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a>. More recently, Cloudflare designed a new programmable sockets architecture called <a href="https://blog.cloudflare.com/its-crowded-in-here">bpf_sk_lookup</a> to decouple IP addresses from sockets and processes.</p>
-	<p><strong>But what about those names?</strong> The value of ‘virtual hosting’ was cemented in 1997 when HTTP 1.1 defined the host field as mandatory. This was the first official acknowledgement that multiple names can coexist on a single IP address, and was necessarily reproduced by TLS in the Server Name Indication field. These are absolute requirements since the number of possible names is greater than the number of IP addresses.</p>
-	<h3 id="-indicates-an-agile-future">...Indicates an Agile Future</h3>
+	<p><b>But what about those names?</b> The value of ‘virtual hosting’ was cemented in 1997 when HTTP 1.1 defined the host field as mandatory. This was the first official acknowledgement that multiple names can coexist on a single IP address, and was necessarily reproduced by TLS in the Server Name Indication field. These are absolute requirements since the number of possible names is greater than the number of IP addresses.</p>
+	<h3>...Indicates an Agile Future</h3>
 	<p>Looking ahead, Shakespeare was wise to ask, “What’s in a Name?” If the Internet could speak then it might say, “That name which we label by any other address would be just as reachable.”</p>
 	<p>If Shakespeare instead asked, “What is in an address?” then the Internet would similarly answer, “That address which we label by any other name would be just as reachable, too.”</p>
 	<p>A strong implication emerges from the truth of those answers: The mapping between names and addresses is any-to-any. If this is true then any address can be used to reach a name as long as a name is reachable at an address.</p>
 	<p>In fact, a version of many addresses for a name has been available since 1995 with the introduction of <a href="https://datatracker.ietf.org/doc/html/rfc1794">DNS-based load-balancing</a>. Then why not all addresses for all names, or any addresses at any given time for all names? Or — as we’ll soon discover — one address for all names! But first let’s talk about the manner in which addressing agility is achieved.</p>
-	<h2 id="achieving-addressing-agility-ignore-names-map-policies">Achieving Addressing Agility: Ignore names, map policies</h2>
+	<h2>Achieving Addressing Agility: Ignore names, map policies</h2>
 	<p>The key to addressing agility is authoritative DNS — but not in the static name-to-IP mappings stored in some form of a record or lookup table. Consider that from any client’s perspective, the binding only appears `on-query’. For all practical uses of the mapping, the query’s response is the last possible moment in the lifetime of a request where a name can be bound to an address.</p>
-	<p>This leads to the observation that name mappings are actually made, not in some record or zone file, but at the moment the response is returned. It’s a subtle, but important distinction. Today’s DNS systems use a name to look up a set of addresses, and then sometimes use some policy to decide which specific address to return. The idea is shown in the figure below. When a query arrives, a lookup reveals the addresses associated with that name, and then returns one or more of those addresses. Often, additional policy or logic filters are used to narrow the address selection, such as service level or geo-regional coverage. The important detail is that addresses are identified with a name first, and policies are only applied afterwards. <br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image10-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>This leads to the observation that name mappings are actually made, not in some record or zone file, but at the moment the response is returned. It’s a subtle, but important distinction. Today’s DNS systems use a name to look up a set of addresses, and then sometimes use some policy to decide which specific address to return. The idea is shown in the figure below. When a query arrives, a lookup reveals the addresses associated with that name, and then returns one or more of those addresses. Often, additional policy or logic filters are used to narrow the address selection, such as service level or geo-regional coverage. The important detail is that addresses are identified with a name first, and policies are only applied afterwards.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yJ6ppYKPOIdy8ycWt1WPH/a0645ec2a11a07707a3b2332ab218851/image10-5.png" alt="" class="kg-image" width="612" height="296" loading="lazy">
+
+	</figure>
 	<p>(a) Conventional Authoritative DNS</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aCwoQPNckWBfEa1wbJ5Ah/1faf829032c9b68c9c5e9b5b2cb5354b/image3-24.png" alt="" class="kg-image" width="621" height="296" loading="lazy">
+
+	</figure>
 	<p>(b) Addressing Agility</p>
 	<p>Addressing agility is achieved by inverting this relationship. Instead of IP addresses pre-assigned to a name, our architecture begins with a policy that may (or in our case, not) include a name. For example, a policy may be represented by attributes such as location and account type and ignore the name (which we did in our deployment). The attributes identify a pool of addresses that are associated with that policy. The pool itself may be isolated to that policy or have elements shared with other pools and policies. Moreover, all the addresses in the pool are equivalent. This means that any of the addresses may be returned — or even selected at random — without inspecting the DNS query name.</p>
 	<p>Now pause for a moment because there are two really noteworthy implications that fall out &nbsp;to per-query responses:</p>
 	<p>i. IP addresses can be, and are, computed and assigned at runtime or query-time.</p>
 	<p>ii. The lifetime of the IP-to-name mapping is the larger of the ensuing connection lifetime and the TTL in downstream caches.</p>
-	<p>The outcome is powerful and means that <strong>the binding itself is otherwise ephemeral and can be changed without regard to previous bindings, resolvers, clients, or purpose.</strong> Also, scale is no issue, and we know because we deployed it at the edge.</p>
-	<h3 id="ipv6-new-clothes-same-emperor">IPv6 — new clothes, same emperor</h3>
-	<p>Before talking about our deployment, let’s first address the proverbial elephant in the room: IPv6. The first thing to make clear is that everything — <em>everything</em> — discussed here in the context of IPv4 applies equally in IPv6. As is true of the global postal system, addresses are addresses, whether in Canada, Cambodia, Cameroon, Chile, or China — and that includes their relatively static, inflexible nature.</p>
+	<p>The outcome is powerful and means that <b>the binding itself is otherwise ephemeral and can be changed without regard to previous bindings, resolvers, clients, or purpose.</b> Also, scale is no issue, and we know because we deployed it at the edge.</p>
+	<h3>IPv6 — new clothes, same emperor</h3>
+	<p>Before talking about our deployment, let’s first address the proverbial elephant in the room: IPv6. The first thing to make clear is that everything — <i>everything</i> — discussed here in the context of IPv4 applies equally in IPv6. As is true of the global postal system, addresses are addresses, whether in Canada, Cambodia, Cameroon, Chile, or China — and that includes their relatively static, inflexible nature.</p>
 	<p>Despite equivalence, the obvious question remains: Surely all the reasons to pursue Addressing Agility are satisfied simply by changing to IPv6? Counter-intuitive as the answer may be, the answer is a definite, absolute no! IPv6 may mitigate against address exhaustion, at least for the lifetimes of everyone alive today, but the abundance of IPv6 prefixes and addresses makes reasoning difficult about its bindings to names and resources.</p>
 	<p>The abundance of IPv6 addresses also risks inefficiencies because operators can take advantage of the bit length and large prefix sizes to embed meaning into the IP address. This is a powerful feature of IPv6, but also means many, many, addresses in any prefix will go unused.</p>
 	<p>To be clear, Cloudflare is demonstrably one of the biggest advocates of IPv6, and for good reasons, not least that the abundance of addresses ensures longevity. Even so, IPv6 changes little about the way addresses are tied to names and resources, whereas an address’ agility ensures flexibility and responsiveness for their lifetimes.</p>
-	<h3 id="a-side-note-agility-is-for-everyone">A Side-note: Agility is for Everyone</h3>
-	<p>One last comment on the architecture and its transferability — <strong>Addressing Agility is usable, even desirable, for any service that operates authoritative DNS</strong>. Other content-oriented service providers are obvious contenders, but so too are smaller operators. Universities, enterprises, and governments are just a few examples of organizations that can operate their own authoritative services. So long as the operators are able to accept connections on the IP addresses that are returned, all are potential beneficiaries of addressing agility as a result. </p>
-	<h2 id="policy-based-randomized-addresses-at-scale">Policy-based randomized addresses — at scale</h2>
+	<h3>A Side-note: Agility is for Everyone</h3>
+	<p>One last comment on the architecture and its transferability — <b>Addressing Agility is usable, even desirable, for any service that operates authoritative DNS</b>. Other content-oriented service providers are obvious contenders, but so too are smaller operators. Universities, enterprises, and governments are just a few examples of organizations that can operate their own authoritative services. So long as the operators are able to accept connections on the IP addresses that are returned, all are potential beneficiaries of addressing agility as a result.</p>
+	<h2>Policy-based randomized addresses — at scale</h2>
 	<p>We’ve been working with Addressing Agility live at the edge, with production traffic, since June 2020, as follows:</p>
 	<ul>
-		<li>More than 20 million hostnames and services</li>
-		<li>All data centers in Canada (giving a reasonable population and multiple time zones)</li>
-		<li>/20 (4096 addresses) in IPv4 and /44 in IPv6</li>
-		<li>/24 (256 addresses) in IPv4 from January 2021 to June 2021</li>
-		<li>For every query, generate a random host-portion within the prefix.</li>
+		<li>
+			<p>More than 20 million hostnames and services</p>
+		</li>
+		<li>
+			<p>All data centers in Canada (giving a reasonable population and multiple time zones)</p>
+		</li>
+		<li>
+			<p>/20 (4096 addresses) in IPv4 and /44 in IPv6</p>
+		</li>
+		<li>
+			<p>/24 (256 addresses) in IPv4 from January 2021 to June 2021</p>
+		</li>
+		<li>
+			<p>For every query, generate a random host-portion within the prefix.</p>
+		</li>
 	</ul>
 	<p>After all, the true test of agility is most extreme when a random address is generated for every query that hits our servers. Then we decided to truly put the idea to the test. In June 2021, in our Montreal data center and soon after in Toronto, all 20+ million zones were mapped to one-single address.</p>
 	<p>Over the course of one year, every query for a domain captured by the policy received an address selected at random — from a set of as few as 4096 addresses, then 256, and then one. Internally, we refer to the address set of one as Ao1, and we’ll return to this point later.</p>
-	<h3 id="the-measure-of-success-nothing-to-see-here-">The measure of success: “Nothing to see here”</h3>
+	<h3>The measure of success: “Nothing to see here”</h3>
 	<p>There may be a number of questions our readers are quietly asking themselves:</p>
 	<ul>
-		<li>What did this break on the Internet? </li>
-		<li>What effect did this have on Cloudflare systems?</li>
-		<li>What would I see happening if I could?</li>
+		<li>
+			<p>What did this break on the Internet?</p>
+		</li>
+		<li>
+			<p>What effect did this have on Cloudflare systems?</p>
+		</li>
+		<li>
+			<p>What would I see happening if I could?</p>
+		</li>
 	</ul>
-	<p>The short answer to each question above is <em>nothing</em>. But — and this is important — address randomization does expose weaknesses in the designs of systems that rely on the Internet. The weaknesses <em>always</em>, every one, occurs because the designers ascribe meaning to IP addresses beyond reachability. (And, if only incidentally, every one of those weaknesses are circumvented by the use of one address, or ‘Ao1.’)</p>
+	<p>The short answer to each question above is <i>nothing</i>. But — and this is important — address randomization does expose weaknesses in the designs of systems that rely on the Internet. The weaknesses <i>always</i>, every one, occurs because the designers ascribe meaning to IP addresses beyond reachability. (And, if only incidentally, every one of those weaknesses are circumvented by the use of one address, or ‘Ao1.’)</p>
 	<p>To better understand the nature of “nothing”, let’s answer the above questions starting from the bottom of the list.</p>
-	<h4 id="what-would-i-see-if-i-could"><strong>What would I see if I could?</strong></h4>
+	<h4><b>What would I see if I could?</b></h4>
 	<p>The answer is shown by the example in the figure below. From all data centers in the “Rest of World” outside our deployment, a query for a zone returns the same addresses (such is Cloudflare’s global anycast system). In contrast, every query that lands in a deployment data center receives a random address. These can be seen below in successive dig commands to two different data centers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image9-9.png" class="kg-image" alt="successive dig commands to two different data centers" loading="lazy"></figure>
-	<p>For those who may be wondering about subsequent request traffic, yes, this means that servers are configured to accept connection requests for <em>any</em> of the 20+ million domains on <em>all </em>addresses in the address pool.</p>
-	<h4 id="ok-but-surely-cloudflare-s-surrounding-systems-needed-modification"><strong>Ok, but surely Cloudflare’s surrounding systems needed modification?</strong></h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IDAhbgavbKx0WOhd5uYn/47e15c80f255062e26bebc384e9128e3/image9-9.png" alt="successive dig commands to two different data centers" class="kg-image" width="1158" height="480" loading="lazy">
+
+	</figure>
+	<p>For those who may be wondering about subsequent request traffic, yes, this means that servers are configured to accept connection requests for <i>any</i> of the 20+ million domains on <i>all</i> addresses in the address pool.</p>
+	<h4><b>Ok, but surely Cloudflare’s surrounding systems needed modification?</b></h4>
 	<p>Nope. This is a drop-in transparent change to the data pipeline for authoritative DNS. Each of routing prefix advertisements in BGP, DDoS, load balancers, distributed cache, ... no changes were required.</p>
 	<p>There is, however, one fascinating side effect: randomization is to IP addresses as a good hash function is to a hash table -- it evenly maps an arbitrary size input to a fixed number of outputs. The effect can be seen by looking at measures of load-per-IP before and after randomization as in the graphs below, with data taken from 1% samples of requests at one data center over seven days.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-24.png" class="kg-image" alt="Before Addressing Agility" loading="lazy">
-		<figcaption>Before Addressing Agility</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4cOkznkWXZcsaNI5lScPlI/233cd60a96bdb42565865fa497cb8218/image4-24.png" alt="Before Addressing Agility" class="kg-image" width="1870" height="1104" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-26.png" class="kg-image" alt="Randomization on /20" loading="lazy">
-		<figcaption>Randomization on /20</figcaption>
+	<p>Before Addressing Agility</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YNafEISfLNYqe5GThlNT9/bb5ebe0e519003433280f8bd4b2bbc67/image2-26.png" alt="Randomization on /20" class="kg-image" width="1870" height="1104" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-40.png" class="kg-image" alt="Randomization on /24" loading="lazy">
-		<figcaption>Randomization on /24</figcaption>
+	<p>Randomization on /20</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZVhcE5JRaNbzUf7P7pY3W/c23917dce925d705161da89052922d1b/image1-40.png" alt="Randomization on /24" class="kg-image" width="1870" height="1104" loading="lazy">
+
 	</figure>
+	<p>Randomization on /24</p>
 	<p>Before randomization, for only a small portion of Cloudflare’s IP space, (a) the difference between greatest and least requests per IP (y1-axis on the left) is three orders of magnitude; similarly, bytes per IP (y2-axis on the right) is almost six orders of magnitude. After randomization, (b) for all domains on a single /20 that previously occupied multiple /20s, these reduce to 2 and 3 orders of magnitude, respectively. Taking this one step further down to /24 in (c), per-query randomization of 20+ million zones onto 256 addresses reduces differences in load to small constant factors.</p>
-	<p>This might matter to any content service provider that might think about provisioning resources by IP address. A priori predictions of load generated by a customer can be hard. The above graphs are evidence that the best path forward is to <em>give all the addresses to all the names</em>.</p>
-	<h4 id="surely-this-breaks-something-on-the-wider-internet"><strong>Surely this breaks something on the wider Internet?</strong></h4>
+	<p>This might matter to any content service provider that might think about provisioning resources by IP address. A priori predictions of load generated by a customer can be hard. The above graphs are evidence that the best path forward is to <i>give all the addresses to all the names</i>.</p>
+	<h4><b>Surely this breaks something on the wider Internet?</b></h4>
 	<p>Here, too, the answer is no! Well, perhaps more precisely stated as, “no, randomization breaks nothing... but it can expose weaknesses in systems and their designs.”</p>
-	<p>Any systems that <em>might</em> be affected by address randomization appears to have a prerequisite: some meaning is ascribed to the IP address beyond just reachability. Addressing Agility keeps and even restores the semantics of IP addresses and the core Internet architecture, but it will break software systems that make assumptions about their meaning.</p>
+	<p>Any systems that <i>might</i> be affected by address randomization appears to have a prerequisite: some meaning is ascribed to the IP address beyond just reachability. Addressing Agility keeps and even restores the semantics of IP addresses and the core Internet architecture, but it will break software systems that make assumptions about their meaning.</p>
 	<p>Let’s first cover a few examples, why they don’t matter, and then follow with a small change to addressing agility that bypasses weaknesses (by using one single IP address):</p>
 	<ul>
-		<li><strong>HTTP Connection Coalescing</strong> enables a client to re-use existing connections to request resources from different origins. Clients such as Firefox that permit coalescing when the URI authority matches the connection are unaffected. However, clients that require a URI host to resolve to the same IP address as the given connection will fail.</li>
-		<li><strong>Non-TLS or HTTP-based services</strong> may be affected. One example is ssh, which maintains a hostname-to-IP mapping in its known_hosts. This association, while understandable, is outdated and already broken given that many DNS records presently return more than one IP address.</li>
-		<li><strong>Non-SNI TLS</strong> certificates require a dedicated IP address. Providers are forced to charge a premium because each address can only support a single certificate without SNI. The bigger issue, independent of IP, is the use of TLS without SNI. We have launched efforts to understand non-SNI to hopefully end this unfortunate legacy.</li>
-		<li><strong>DDoS protections</strong> that rely on destination IPs may be hindered, initially. We would argue that addressing agility is beneficial for two reasons. First, IP randomization distributes the attack load across all addresses in use, effectively serving as a layer-3 load-balancer. Second, DoS mitigations often work by changing IP addresses, an ability that is inherent in Addressing Agility.</li>
-	</ul><!--kg-card-begin: markdown-->
-	<h2 id="allsforsononeandoneforall">All <s>for</s> on One, and One for All</h2>
-	<!--kg-card-end: markdown-->
+		<li>
+			<p><b>HTTP Connection Coalescing</b> enables a client to re-use existing connections to request resources from different origins. Clients such as Firefox that permit coalescing when the URI authority matches the connection are unaffected. However, clients that require a URI host to resolve to the same IP address as the given connection will fail.</p>
+		</li>
+		<li>
+			<p><b>Non-TLS or HTTP-based services</b> may be affected. One example is ssh, which maintains a hostname-to-IP mapping in its known_hosts. This association, while understandable, is outdated and already broken given that many DNS records presently return more than one IP address.</p>
+		</li>
+		<li>
+			<p><b>Non-SNI TLS</b> certificates require a dedicated IP address. Providers are forced to charge a premium because each address can only support a single certificate without SNI. The bigger issue, independent of IP, is the use of TLS without SNI. We have launched efforts to understand non-SNI to hopefully end this unfortunate legacy.</p>
+		</li>
+		<li>
+			<p><b>DDoS protections</b> that rely on destination IPs may be hindered, initially. We would argue that addressing agility is beneficial for two reasons. First, IP randomization distributes the attack load across all addresses in use, effectively serving as a layer-3 load-balancer. Second, DoS mitigations often work by changing IP addresses, an ability that is inherent in Addressing Agility.</p>
+		</li>
+	</ul>
+	<h2>All for on One, and One for All</h2>
 	<p>We started with 20+ million zones bound to addresses across tens of thousands of addresses, and successfully served them from 4096 addresses in a /20 and then 256 addresses in a /24. Surely this trend begs the following question:</p>
-	<blockquote><strong>If randomization works over </strong><em><strong>n</strong></em><strong> addresses, then why not randomization over 1 address?</strong></blockquote>
+	<blockquote>
+		<p><b>If randomization works over</b> <b><i>n</i></b> <b>addresses, then why not randomization over 1 address?</b></p>
+	</blockquote>
 	<p>Indeed, why not? Recall from above the comment about randomization over IPs as being equivalent to a perfect hash function in a hash table. The thing about well-designed hash-based structures is that they preserve their properties for any size of the structure, even a size of 1. Such a reduction would be a true test of the foundations on which Addressing Agility is constructed.</p>
-	<p>So, test we did. From a /20 address set, to a /24 and then, from June 2021, to an address set of one /32, and equivalently a /128 (Ao1). It doesn’t just work. It <em>really</em> works. Concerns that might be exposed by randomization are resolved by Ao1. For example, non-TLS or non-HTTP services have a reliable IP address (or at least non-random and until there is a policy change on the name). Also, HTTP connection coalescing falls out as if for free and, yes, we see increased levels of coalescing where Ao1 is being used.</p>
-	<h3 id="but-why-in-ipv6-where-there-are-so-many-addresses">But why in IPv6 where there are so many addresses?</h3>
+	<p>So, test we did. From a /20 address set, to a /24 and then, from June 2021, to an address set of one /32, and equivalently a /128 (Ao1). It doesn’t just work. It <i>really</i> works. Concerns that might be exposed by randomization are resolved by Ao1. For example, non-TLS or non-HTTP services have a reliable IP address (or at least non-random and until there is a policy change on the name). Also, HTTP connection coalescing falls out as if for free and, yes, we see increased levels of coalescing where Ao1 is being used.</p>
+	<h3>But why in IPv6 where there are so many addresses?</h3>
 	<p>One argument against binding to a single IPv6 address is that there is no need, because address exhaustion is unlikely. This is a pre-CIDR position that, we claim, is benign at best and irresponsible at worst. As mentioned above, the number of IPv6 addresses makes reasoning about them difficult. In lieu of asking why use a single IPv6 address, we should be asking, “why not?”</p>
-	<h3 id="are-there-upstream-implications-yes-and-opportunities-">Are there upstream implications? Yes, and opportunities!</h3>
+	<h3>Are there upstream implications? Yes, and opportunities!</h3>
 	<p>Ao1 reveals an entirely different set of implications from IP randomization that, arguably, gives us a window into the future of Internet routing and reachability by amplifying the effects that seemingly small actions might have.</p>
-	<p>Why? The number of possible variable-length names in the universe will always exceed the number of fixed-length addresses. This means that, <strong>by the </strong><a href="https://en.wikipedia.org/wiki/Pigeonhole_principle"><strong>pigeonhole principle</strong></a><strong>, single IP addresses must be shared by multiple names</strong>, and different content from unrelated parties.</p>
+	<p>Why? The number of possible variable-length names in the universe will always exceed the number of fixed-length addresses. This means that, <b>by the</b> <a href="https://en.wikipedia.org/wiki/Pigeonhole_principle"><b>pigeonhole principle</b></a><b>, single IP addresses must be shared by multiple names</b>, and different content from unrelated parties.</p>
 	<p>The possible upstream effects amplified by Ao1 are worth raising and are described below. So far, though, we’ve seen none of these in our evaluations, nor have they come up in communications with upstream networks.</p>
 	<ul>
-		<li><strong><strong><strong>Upstream Routing Errors are Immediate and Total.</strong> </strong></strong>If all traffic arrives on a single address (or prefix), then upstream routing errors affect all content equally. (This is the reason Cloudflare returns two addresses in non-contiguous address ranges.) Note, however, the same is true of threat blocking.</li>
-		<li><strong><strong><strong>Upstream DoS Protections could be triggered.</strong> </strong></strong>It is conceivable that the concentration of requests and traffic on a single address could be perceived upstream as a DoS attack and trigger upstream protections that may exist.</li>
+		<li>
+			<p><b>Upstream Routing Errors are Immediate and Total.</b> If all traffic arrives on a single address (or prefix), then upstream routing errors affect all content equally. (This is the reason Cloudflare returns two addresses in non-contiguous address ranges.) Note, however, the same is true of threat blocking.</p>
+		</li>
+		<li>
+			<p><b>Upstream DoS Protections could be triggered.</b> It is conceivable that the concentration of requests and traffic on a single address could be perceived upstream as a DoS attack and trigger upstream protections that may exist.</p>
+		</li>
 	</ul>
 	<p>In both cases, the actions are mitigated by Addressing Agility’s ability to change addresses en masse so quickly. Prevention is also possible, but requires open communication and discourse.</p>
 	<p>One last upstream effect remains:</p>
 	<ul>
-		<li><strong>Port exhaustion in IPv4 NAT might be accelerated, and is solved by IPv6!</strong> From the client-side, the number of permissible concurrent connections to one-address is upper-bounded by the size of a transport protocol’s port field, for example about 65K in TCP.</li>
+		<li>
+			<p><b>Port exhaustion in IPv4 NAT might be accelerated, and is solved by IPv6!</b> From the client-side, the number of permissible concurrent connections to one-address is upper-bounded by the size of a transport protocol’s port field, for example about 65K in TCP.</p>
+		</li>
 	</ul>
 	<p>For example, in TCP on Linux this was an issue until recently. (See this <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90c337da1524863838658078ec34241f45d8394d">commit</a> and SO_BIND_ADDRESS_NO_PORT in <a href="https://www.man7.org/linux/man-pages/man7/ip.7.html">ip(7) man page</a>.) &nbsp;In UDP the issue remains. In QUIC, connection identifiers can prevent port exhaustion, but they have to be used. So far, though, we have yet to see any evidence that this is an issue.</p>
-	<p>Even so — and here is the best part — to the best of our knowledge <em>this is the only risk to one-address uses, and is also immediately resolved by migrating to IPv6</em>. (So, ISPs and network administrators, go forth and implement IPv6!)</p>
-	<h2 id="we-re-just-getting-started-">We’re just getting started!</h2>
-	<p>And so we end as we began. With no limit to the number of names on any single IP address, the ability to change the address per-query, for any reason, what could <em>you</em> build?</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Even so — and here is the best part — to the best of our knowledge <i>this is the only risk to one-address uses, and is also immediately resolved by migrating to IPv6</i>. (So, ISPs and network administrators, go forth and implement IPv6!)</p>
+	<h2>We’re just getting started!</h2>
+	<p>And so we end as we began. With no limit to the number of names on any single IP address, the ability to change the address per-query, for any reason, what could <i>you</i> build?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AvsEosOmXPtmdbeJJYzN2/97f6362c0f5dd049f2c850fd7f664f34/image7-12.png" alt="" class="kg-image" width="1938" height="428" loading="lazy">
+
+	</figure>
 	<p>We are, indeed, just getting started! The flexibility and future-proofing enabled by Addressing Agility is enabling us to imagine, design, and build new systems and architectures. We’re planning BGP route leak detection and mitigation for anycast systems, measurement platforms, and more.</p>
 	<p>Further technical details on all the above, as well as acknowledgements to so many who helped make this possible, can be found in this <a href="https://research.cloudflare.com/publications/Fayed2021">paper</a> and short <a href="https://youtu.be/zg6944L-B3M?t=2137">talk</a>. Even with these new possibilities, challenges remain. There are many open questions that include, but are in no way limited to the following:</p>
 	<ul>
-		<li>What policies can be reasonably expressed or implemented?</li>
-		<li>Is there an abstract syntax or grammar with which to express them?</li>
-		<li>Could we use formal methods and verification to prevent erroneous or conflicting policies?</li>
+		<li>
+			<p>What policies can be reasonably expressed or implemented?</p>
+		</li>
+		<li>
+			<p>Is there an abstract syntax or grammar with which to express them?</p>
+		</li>
+		<li>
+			<p>Could we use formal methods and verification to prevent erroneous or conflicting policies?</p>
+		</li>
 	</ul>
 	<p>Addressing Agility is for everyone, even necessary for these ideas to succeed more widely. Input and ideas are welcomed at <a href="mailto:ask-research@cloudflare.com">ask-research@cloudflare.com</a>.</p>
 	<p>If you are a student enrolled in a PhD or equivalent research program and looking for an internship for 2022 in the <a href="https://boards.greenhouse.io/cloudflare/jobs/1976547?gh_jid=1976547">USA or Canada</a> and the <a href="https://boards.greenhouse.io/cloudflare/jobs/2525989?gh_jid=2525989">EU or UK</a>.</p>

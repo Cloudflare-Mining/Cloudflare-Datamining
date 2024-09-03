@@ -1,34 +1,62 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image-2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34Ko9laUln2ejkX7zQx97s/1fd1a7657dc0ebb208cfe3e02831113e/image-2-1.png" alt="" class="kg-image" width="1360" height="772" loading="lazy">
+
+	</figure>
 	<p>Attackers continue targeting VoIP infrastructure around the world. In our blog from last week, <a href="https://blog.cloudflare.com/attacks-on-voip-providers">May I ask who’s calling, please? A recent rise in VoIP DDoS attacks</a>, we reviewed how the SIP protocol works, ways it can be abused, and how Cloudflare can help protect against attacks on VoIP infrastructure without impacting performance.</p>
 	<p>Cloudflare’s network stands in front of some of the largest, most performance-sensitive voice and video providers in the world, and is uniquely well suited to mitigating attacks on VoIP providers.</p>
 	<p>Because of the sustained attacks we are observing, we are sharing details on recent attack patterns, what steps they should take before an attack, and what to do after an attack has taken place.</p>
 	<p>Below are three of the most common questions we’ve received from companies concerned about attacks on their VoIP systems, and Cloudflare’s answers.</p>
-	<h3 id="question-1-how-is-voip-infrastructure-being-attacked">Question #1: How is VoIP infrastructure being attacked?</h3>
-	<p>The attackers primarily use off-the-shelf <a href="https://www.cloudflare.com/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser">booter</a> services to launch attacks against VoIP infrastructure. The attack methods being used are not novel, <strong>but the persistence of the attacker and their attempts to understand the target’s infrastructure are. </strong></p>
+	<h3>Question #1: How is VoIP infrastructure being attacked?</h3>
+	<p>The attackers primarily use off-the-shelf <a href="https://www.cloudflare.com/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser">booter</a> services to launch attacks against VoIP infrastructure. The attack methods being used are not novel, <b>but the persistence of the attacker and their attempts to understand the target’s infrastructure are.</b></p>
 	<p>Attackers have used various attack vectors to probe the existing defenses of targets and try to infiltrate any existing defenses to disrupt VoIP services offered by certain providers. In some cases, they have been successful. HTTP attacks against <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateways</a> and the corporate websites of the providers have been combined with network-layer and transport-layer attack against VoIP infrastructures. Examples:</p>
 	<ol>
-		<li><strong><strong><strong>TCP floods targeting stateful firewalls</strong></strong></strong><br>These are being used in “trial-and-error” type attacks. They are not very effective against telephony infrastructure specifically (because it’s mostly UDP) but very effective at overwhelming stateful firewalls.<br></li>
-		<li><strong><strong><strong>UDP floods targeting SIP infrastructure</strong></strong></strong><br>Floods of UDP traffic that have no well-known fingerprint, aimed at critical VoIP services. Generic floods like this may look like legitimate traffic to unsophisticated filtering systems. <br></li>
-		<li><strong><strong><strong>UDP reflection targeting SIP infrastructure</strong></strong></strong><br>These methods, when targeted at SIP or RTP services, can easily overwhelm <a href="https://en.wikipedia.org/wiki/Session_border_controller">Session Border Controllers</a> (SBCs) and other telephony infrastructure. The attacker seems to learn enough about the target’s infrastructure to target such services with high precision. <br></li>
-		<li><strong><strong><strong>SIP protocol-specific attacks</strong></strong></strong><br>Attacks at the application layer are of particular concern because of the higher resource cost of generating application errors vs filtering on network devices.</li>
+		<li>
+			<p><b><b><b>TCP floods targeting stateful firewalls</b></b></b>These are being used in “trial-and-error” type attacks. They are not very effective against telephony infrastructure specifically (because it’s mostly UDP) but very effective at overwhelming stateful firewalls.</p>
+		</li>
+		<li>
+			<p><b><b><b>UDP floods targeting SIP infrastructure</b></b></b>Floods of UDP traffic that have no well-known fingerprint, aimed at critical VoIP services. Generic floods like this may look like legitimate traffic to unsophisticated filtering systems.</p>
+		</li>
+		<li>
+			<p><b><b><b>UDP reflection targeting SIP infrastructure</b></b></b>These methods, when targeted at SIP or RTP services, can easily overwhelm <a href="https://en.wikipedia.org/wiki/Session_border_controller">Session Border Controllers</a> (SBCs) and other telephony infrastructure. The attacker seems to learn enough about the target’s infrastructure to target such services with high precision.</p>
+		</li>
+		<li>
+			<p><b><b><b>SIP protocol-specific attacks</b></b></b>Attacks at the application layer are of particular concern because of the higher resource cost of generating application errors vs filtering on network devices.</p>
+		</li>
 	</ol>
-	<h3 id="question-2-how-should-i-prepare-my-organization-in-case-our-voip-infrastructure-is-targeted">Question #2: How should I prepare my organization in case our VoIP infrastructure is targeted?</h3>
+	<h3>Question #2: How should I prepare my organization in case our VoIP infrastructure is targeted?</h3>
 	<ol>
-		<li><strong><strong><strong>Deploy an always-on DDoS mitigation service</strong></strong></strong><br>Cloudflare recommends the deployment of always-on network level protection, like <a href="https://www.cloudflare.com/magic-transit">Cloudflare Magic Transit</a>, prior to your organization being attacked.<br><br>Do not rely on reactive on-demand SOC-based DDoS Protection services that require humans to analyze attack traffic — they take too long to respond. Instead, onboard to a cloud service that has sufficient network capacity and automated DDoS mitigation systems.<br><br><strong>Cloudflare has effective mitigations in place for the attacks seen against VoIP infrastructure</strong>, including for <a href="https://blog.cloudflare.com/announcing-flowtrackd">sophisticated TCP floods</a> and SIP specific attacks.</li>
-		<li><strong><strong><strong>Enforce a positive security model</strong></strong></strong><br>Block TCP on IP/port ranges that are not expected to receive TCP, instead of relying on on-premise firewalls that can be overwhelmed. Block network probing attempts (e.g. ICMP) and other packets that you don't normally expect to see. <br></li>
-		<li><strong><strong><strong>Build custom mitigation strategies</strong></strong></strong><br>Work together with your DDoS protection vendor to tailor mitigation strategies to your workload. Every network is different, and each poses unique challenges when integrating with DDoS mitigation systems. <br></li>
-		<li><strong><strong><strong>Educate your employees</strong></strong></strong><br>Train all of your employees to be on the lookout for ransom demands. Check email, support tickets, form submissions, and even server access logs. Ensure employees know to immediately report ransom demands to your Security Incident Response team.</li>
+		<li>
+			<p><b><b><b>Deploy an always-on DDoS mitigation service</b></b></b>Cloudflare recommends the deployment of always-on network level protection, like <a href="https://www.cloudflare.com/magic-transit">Cloudflare Magic Transit</a>, prior to your organization being attacked.</p>
+			<p>Do not rely on reactive on-demand SOC-based DDoS Protection services that require humans to analyze attack traffic — they take too long to respond. Instead, onboard to a cloud service that has sufficient network capacity and automated DDoS mitigation systems.</p>
+			<p><b>Cloudflare has effective mitigations in place for the attacks seen against VoIP infrastructure</b>, including for <a href="https://blog.cloudflare.com/announcing-flowtrackd">sophisticated TCP floods</a> and SIP specific attacks.</p>
+		</li>
+		<li>
+			<p><b><b><b>Enforce a positive security model</b></b></b>Block TCP on IP/port ranges that are not expected to receive TCP, instead of relying on on-premise firewalls that can be overwhelmed. Block network probing attempts (e.g. ICMP) and other packets that you don't normally expect to see.</p>
+		</li>
+		<li>
+			<p><b><b><b>Build custom mitigation strategies</b></b></b>Work together with your DDoS protection vendor to tailor mitigation strategies to your workload. Every network is different, and each poses unique challenges when integrating with DDoS mitigation systems.</p>
+		</li>
+		<li>
+			<p><b><b><b>Educate your employees</b></b></b>Train all of your employees to be on the lookout for ransom demands. Check email, support tickets, form submissions, and even server access logs. Ensure employees know to immediately report ransom demands to your Security Incident Response team.</p>
+		</li>
 	</ol>
-	<h3 id="question-3-what-should-i-do-if-i-receive-a-ransom-threat">Question #3: What should I do if I receive a ransom/threat?</h3>
+	<h3>Question #3: What should I do if I receive a ransom/threat?</h3>
 	<ol>
-		<li><strong><strong><strong>Do not pay the ransom</strong></strong></strong><br>Paying the ransom only encourages bad actors—and there’s no guarantee that they won’t attack your network now or later. <br></li>
-		<li><strong><strong><strong>Notify Cloudflare</strong></strong></strong><br>We can help ensure your website and network infrastructure are safeguarded against these attacks. <br></li>
-		<li><strong><strong><strong>Notify local law enforcement</strong></strong></strong><br>They will also likely request a copy of the ransom letter that you received.</li>
+		<li>
+			<p><b><b><b>Do not pay the ransom</b></b></b>Paying the ransom only encourages bad actors—and there’s no guarantee that they won’t attack your network now or later.</p>
+		</li>
+		<li>
+			<p><b><b><b>Notify Cloudflare</b></b></b>We can help ensure your website and network infrastructure are safeguarded against these attacks.</p>
+		</li>
+		<li>
+			<p><b><b><b>Notify local law enforcement</b></b></b>They will also likely request a copy of the ransom letter that you received.</p>
+		</li>
 	</ol>
-	<h3 id="cloudflare-is-here-to-help">Cloudflare is here to help</h3>
-	<p>With over 100 Tbps of network capacity, a network architecture that <a href="https://blog.cloudflare.com/magic-transit-network-functions">efficiently filters traffic close to the source</a>, and a physical presence in over 250 cities, Cloudflare can help protect critical VoIP infrastructure without impacting latency, jitter, and call quality. Test results demonstrate a performance improvement of 36% on average across the globe for a real customer network using Cloudflare Magic Transit. </p>
+	<h3>Cloudflare is here to help</h3>
+	<p>With over 100 Tbps of network capacity, a network architecture that <a href="https://blog.cloudflare.com/magic-transit-network-functions">efficiently filters traffic close to the source</a>, and a physical presence in over 250 cities, Cloudflare can help protect critical VoIP infrastructure without impacting latency, jitter, and call quality. Test results demonstrate a performance improvement of 36% on average across the globe for a real customer network using Cloudflare Magic Transit.</p>
 	<p>Some of the largest voice and video providers in the world rely on Cloudflare to protect their networks and ensure their services remain online and fast. We stand ready to help.</p>
-	<p>Talk to a Cloudflare specialist to <a href="https://www.cloudflare.com/lp/voip-ddos-protection">learn more</a>.<br>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.</p>
+	<p>Talk to a Cloudflare specialist to <a href="https://www.cloudflare.com/lp/voip-ddos-protection">learn more</a>.Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.</p>
 </div>

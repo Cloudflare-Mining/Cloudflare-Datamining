@@ -1,32 +1,63 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LCTzgF9H3cr6y15SENXny/2cbec4079773ce6cbaa9b0cfbac2a21d/introducing-partner-analytics.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>CloudFlare has over 5,000 hosting provider partners. Every day, thousands of our partners' customers take advantage of CloudFlare to help them be faster and more secure. The benefits to our partners aren't just happier customers, they also translate into real savings. In the last month, for instance, we saved our partners more than 25 <a href="http://www.computerweekly.com/feature/What-does-a-petabyte-look-like">Petabytes</a> in aggregate bandwidth. In addition to bandwidth savings, in that same period, we stopped more than 65 billion malicious requests that would have otherwise impacted our partners' infrastructure. Now we've broken out the bandwidth and performance data by partners so they can see the savings and protection we're delivering.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/bandwidth.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sN4vdTMZrgV09b4crGTwc/a25beaacfb1f94ee3bb7fe05ea31ffa9/bandwidth.png" alt="" class="kg-image" width="526" height="440" loading="lazy">
+
+	</figure>
 	<p>Back when we launched the CloudFlare Partner Program four years ago, we periodically distributed these figures as high level summaries of bandwidth saved, threats blocked, and number of domains protected and accelerated via each partnership. Our partners knew anecdotally from their own logs and operating expenditures that CloudFlare was reducing their costs and greatly improving their customers’ experiences, but we did not yet have the tools to help demonstrate these benefits on a repeatable and granular basis.</p>
 	<p>It wasn’t that we didn’t want to provide this data, it was that our tremendous growth rate had stretched our analytics backend to its limits. Capturing hundreds of terabytes of logs each day would take a toll on any logging and analytics infrastructure, let alone one serving 400 billion monthly page views and growing 450% annually! Thankfully this April, our data team came to the rescue and <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb">executed an upgrade</a> of our Customer Analytics and request logging backend. As a result of this architectural overhaul, we now have the capacity (and then some) to deliver dynamic analytics data to all of our 5,000+ partners, aggregated across all of their respective clients in rolling 7 and 30 day periods.</p>
-	<h3 id="partnerportal">Partner Portal</h3>
+	<h3>Partner Portal</h3>
 	<p>We are excited to announce that the Analytics section of the <a href="https://partners.cloudflare.com">Partner Portal</a> is now live. Next time you log in, you will be presented with a new ‘Analytics’ icon in your navigation bar which, when clicked, will help answer the common questions we hear from partners such as <i>How much is CloudFlare saving me on my monthly bandwidth bill?</i>, <i>What types of threats are you protecting my customers from</i>? and <i>How many unique visitors and requests are my servers really handling</i>?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/navbar.png" alt="" loading="lazy"></p>
-	<h3 id="bandwidth">Bandwidth</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZEY1IsUBLlxCkQ5HaGacc/c7cbb3b6425d764b0fc124d93cb57ac7/navbar.png" alt="" class="kg-image" width="671" height="96" loading="lazy">
+
+	</figure>
+	<h3>Bandwidth</h3>
 	<p>Let’s start with that first question, bandwidth savings. It’s an obvious focus area for our hosting partners, especially those buying bandwidth at a small scale or in areas of the world <a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world">where bandwidth costs are high</a> such as Asia, Australia, and Latin America.</p>
 	<p>The chart below, taken from a real partner, shows CloudFlare saved 234.8 terabytes of bandwidth over a 30 day period. Using figures from a leading infrastructure-as-a-service companies, the savings can be quantified at upwards of $20,000/month for low cost regions and more than $40,000/month in higher cost regions!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/bandwidth-chart.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51QhVYCYF7nGVtkYcfm33z/5018e1f8147936b5691738c3c43686b6/bandwidth-chart.png" alt="" class="kg-image" width="970" height="566" loading="lazy">
+
+	</figure>
 	<p><b>Bandwidth</b> - <i>Total Bandwidth</i> is the sum of all responses (in bytes) sent back to visitors. The responses that did not require a trip to the origin – because they were already available on CloudFlare’s servers – are considered <i>Cached Bandwidth</i>, while those that did require a trip are <i>Uncached Bandwidth</i>. Cached responses are not seen by your upstream provider and can be thought of as direct savings on your bandwidth bill.</p>
-	<h3 id="threats">Threats</h3>
+	<h3>Threats</h3>
 	<p>The second most common question we hear is about the types and quantities of threats we block from reaching our partners’ infrastructure. Each request intended for a CloudFlare protected site is examined in sub-millisecond time and compared against our L3 reputation and L7 threat databases. Even <a href="https://blog.cloudflare.com/patching-a-whmcs-zero-day-on-day-zero">zero</a> <a href="https://blog.cloudflare.com/apache-killer-killed-zero-day-exploit-zero-da">day</a> vulnerabilities are regularly identified and blocked before software vendors and system administrators have a chance to distribute and apply patches.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/milton.png" alt="" loading="lazy"></p>
-	<p>The requests that do <em>not</em> pass our checks and blocklists are logged, categorized, and available for review. In the chart below we see the barrage of illegitimate requests that were intended for this partner, but never made it past CloudFlare’s servers. Our unique presence on the Internet – processing over 5% of all requests while observing (and scoring) the behavior of over 1 billion unique IPs per month – puts us in an unparalleled position to automatically stop these attacks at the source.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/threats.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4apPhoQYPDJM7q0c1iKwtR/0a2ab62e67a19d44f1b54371225a37a0/milton.png" alt="" class="kg-image" width="590" height="462" loading="lazy">
+
+	</figure>
+	<p>The requests that do <i>not</i> pass our checks and blocklists are logged, categorized, and available for review. In the chart below we see the barrage of illegitimate requests that were intended for this partner, but never made it past CloudFlare’s servers. Our unique presence on the Internet – processing over 5% of all requests while observing (and scoring) the behavior of over 1 billion unique IPs per month – puts us in an unparalleled position to automatically stop these attacks at the source.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/205Ju8jhQJhu1jTnDiSrK9/4f2e53d4e45171dd169b5a91ba591110/threats.png" alt="" class="kg-image" width="970" height="566" loading="lazy">
+
+	</figure>
 	<p><b>Threats</b> - This chart shows you the <i>Total Threats</i> seen in the period, the <i>Top Country</i> they originated from, and the <i>Top Threat Type</i>. Each threat type is charted on a separate line and hovering over any given day pops a table showing the respective counts.</p>
-	<h3 id="requestsuniquevisitors">Requests &amp; Unique Visitors</h3>
+	<h3>Requests &amp; Unique Visitors</h3>
 	<p>While saving bandwidth and blocking threats are two critical roles CloudFlare plays, our partners also want to know how many requests their web servers are processing and from how many different visitors all over the world? Understanding these two metrics are critical to properly scaling server and network capacity and quantifying the expedited experience provided to their customers' visitors.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/requests-meme.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XHee0rPCinmYWPGhiD2LQ/dbd34e4646178313cd65ace97b5836b9/requests-meme.png" alt="" class="kg-image" width="620" height="336" loading="lazy">
+
+	</figure>
 	<p>As shown in the charts below, over 50% of requests to this specific partner were delivered directly from one of CloudFlare’s <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">highly optimized servers</a> in one of <a href="https://www.cloudflare.com/network-map">36 global data centers</a>. Each of these 71 million unique visitors experienced an accelerated browsing experience thanks to responses returned without needing a round trip to the partner’s server.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/requests-chart.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75gLnqLvJq2sDMZiJ4jMvu/4cfe1604959c9ad7d37d10b46e3874df/requests-chart.png" alt="" class="kg-image" width="973" height="569" loading="lazy">
+
+	</figure>
 	<p><b>Requests</b> - This chart shows the number of <i>Total Requests</i> made by visitors’ browsers to your customers’ sites, such as GET requests for assets like HTML, CSS, and JS. Of these, <i>Cached Requests</i> are those that CloudFlare was able to respond to without contacting the origin (i.e., your servers) while <i>Uncached</i> required a trip back to the origin before a response could be sent.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/07/unique-visitors.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WKvqGec73VAfbUnOiDpod/ed2c58936c80b7672a1db612df3bc11f/unique-visitors.png" alt="" class="kg-image" width="970" height="564" loading="lazy">
+
+	</figure>
 	<p><b>Unique Visitors</b> - Each unique IP address – whether IPv4 or IPv6 – that we see make a request to your customers’ sites is counted towards the <i>Total Unique Visitors</i>. This value is further broken down by the <i>Minimum</i> and <i>Maximum Unique Visitors</i> seen on any given day in the measured period (previous 7 or 30 days).</p>
-	<h3 id="partingthoughts">Parting Thoughts</h3>
+	<h3>Parting Thoughts</h3>
 	<p>Going forward, we plan to add additional layers of insights, building off the new backend system that has made distributed queries easy and highly performant. We have a wealth of data at the edge and want to know what else you’d like to see. Please log in to the <a href="https://partners.cloudflare.com">Partner Portal</a> today to start reviewing your data in the new Analytics section and let us know your thoughts. Or if you're not yet a partner but interested in becoming one, please <a href="https://www.cloudflare.com/certified-partners">sign up</a> and we'll get you started.</p>
-	<!--kg-card-end: markdown-->
 </div>

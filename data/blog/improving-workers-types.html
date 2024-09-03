@@ -1,81 +1,79 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/improving-workers-types-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/improving-workers-types-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/improving-workers-types-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/improving-workers-types-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/improving-workers-types-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/improving-workers-types-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/improving-workers-types-pt-br">Português</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-47.png" class="kg-image" alt="Improving Workers TypeScript support: accuracy, ergonomics and interoperability" loading="lazy"></figure>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/improving-workers-types">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/improving-workers-types">Français</a>, <a href="https://blog.cloudflare.com/de-de/improving-workers-types">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/improving-workers-types">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/improving-workers-types">Português</a>, <a href="https://blog.cloudflare.com/es-es/improving-workers-types">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/improving-workers-types">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q7OqfYCQg4hWl6fxHoOq6/8f02428154ffa42a7dd6c37cf3b32e0b/image2-47.png" alt="Improving Workers TypeScript support: accuracy, ergonomics and interoperability" class="kg-image" width="1201" height="676" loading="lazy">
+
+	</figure>
 	<p><a href="https://www.typescriptlang.org">TypeScript</a> makes it easy for developers to write code that doesn’t crash, by catching type errors before your program runs. We want developers to take advantage of this tooling, which is why one year ago, we <a href="https://blog.cloudflare.com/automatically-generated-types">built a system to automatically generate TypeScript types</a> for the Cloudflare Workers runtime. This enabled developers to see code completions in their IDEs for Workers APIs, and to type check code before deploying. Each week, <a href="https://github.com/cloudflare/workers-types/pull/210">a new version of the types would be published</a>, reflecting the most recent changes.</p>
 	<p>Over the past year, we’ve received lots of feedback from customers and internal teams on how we could improve our types. With the switch to the Bazel build system in <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">preparation for open-sourcing the runtime</a>, we saw an opportunity to rebuild our types to be more accurate, easier to use, and simpler to generate. Today, we’re excited to announce the next major release of <code>@cloudflare/workers-types</code> with a bunch of new features, and the open-sourcing of the <a href="https://github.com/cloudflare/workerd/tree/main/types">fully-rewritten automatic generation scripts</a>.</p>
-	<h3 id="how-to-use-typescript-with-workers">How to use TypeScript with Workers</h3>
-	<p>Setting up TypeScript in Workers is easy! If you’re just getting started with Workers, install <a href="https://nodejs.org">Node.js</a>, then run <code>npx wrangler init</code> in your terminal to generate a new project. If you have an existing Workers project and want to take advantage of our improved typings, install the latest versions of TypeScript and <code>@cloudflare/workers-types</code> with <code>npm install --save-dev typescript @cloudflare/workers-types@latest</code>, then create a <code>tsconfig.json</code> file with the following contents:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<h3>How to use TypeScript with Workers</h3>
+	<p>Setting up TypeScript in Workers is easy! If you’re just getting started with Workers, install <a href="https://nodejs.org">Node.js</a>, then run <code>npx wrangler init</code> in your terminal to generate a new project. If you have an existing Workers project and want to take advantage of our improved typings, install the latest versions of TypeScript and <code>@cloudflare/workers-types</code> with <code>npm install --save-dev typescript @cloudflare/workers-types@latest</code>, then create a <code>tsconfig.json</code> file with the following contents:</p>
+	<pre class="language-json"><code class="language-json">{
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
     "lib": ["esnext"],
     "types": ["@cloudflare/workers-types"]
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Your editor will now highlight issues and give you code completions as you type, leading to a less error-prone and more enjoyable developer experience.<br></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-39.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Editor highlighting incorrect use of <code>set</code> instead of <code>put</code>, and providing code completions</figcaption>
-	</figure>
-	<h3 id="improved-interoperability-with-standard-types">Improved interoperability with standard types</h3>
-	<p>Cloudflare Workers implement many of the same runtime APIs as browsers, and we’re working to improve our standards compliance even more with the <a href="https://blog.cloudflare.com/introducing-the-wintercg">WinterCG</a>. However, there will always be fundamental differences between what browsers and Workers can do. For example, browsers can play audio files, whereas Workers have direct access to Cloudflare’s network for storing globally-distributed data. This mismatch means that the runtime APIs and types provided by each platform are different, which in turn makes it difficult to use Workers types with frameworks, like <a href="https://remix.run">Remix</a>, that run the same files on the Cloudflare network and in the browser. These files need to be type-checked against <a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.dom.d.ts"><code>lib.dom.d.ts</code></a>, which is incompatible with our types.</p>
-	<p>To solve this problem, we now generate a separate version of our types that can be selectively imported, without having to include <code>@cloudflare/workers-types</code> in your <code>tsconfig.json</code>’s <code>types</code> field. Here’s an example of what this looks like:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">import type { KVNamespace } from "@cloudflare/workers-types";
+}</code></pre>
+	<p>Your editor will now highlight issues and give you code completions as you type, leading to a less error-prone and more enjoyable developer experience.</p>
+	<figure class="kg-card kg-image-card ">
 
-declare const USERS_NAMESPACE: KVNamespace;
-</code></pre>
-	<!--kg-card-end: markdown-->
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Q1weJrUhhrrT7QIUkGMIw/e6ed8813c208d476a1f31d9e3338bd07/image3-39.png" alt="" class="kg-image" width="650" height="270" loading="lazy">
+
+	</figure>
+	<p>Editor highlighting incorrect use of <code>set</code> instead of <code>put</code>, and providing code completions</p>
+	<h3>Improved interoperability with standard types</h3>
+	<p>Cloudflare Workers implement many of the same runtime APIs as browsers, and we’re working to improve our standards compliance even more with the <a href="https://blog.cloudflare.com/introducing-the-wintercg">WinterCG</a>. However, there will always be fundamental differences between what browsers and Workers can do. For example, browsers can play audio files, whereas Workers have direct access to Cloudflare’s network for storing globally-distributed data. This mismatch means that the runtime APIs and types provided by each platform are different, which in turn makes it difficult to use Workers types with frameworks, like <a href="https://remix.run">Remix</a>, that run the same files on the Cloudflare network and in the browser. These files need to be type-checked against <a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.dom.d.ts"><code>lib.dom.d.ts</code></a>, which is incompatible with our types.</p>
+	<p>To solve this problem, we now generate a separate version of our types that can be selectively imported, without having to include <code>@cloudflare/workers-types</code> in your <code>tsconfig.json</code>’s <code>types</code> field. Here’s an example of what this looks like:</p>
+	<pre class="language-ts"><code class="language-ts">import type { KVNamespace } from "@cloudflare/workers-types";
+
+declare const USERS_NAMESPACE: KVNamespace;</code></pre>
 	<p>In addition, we automatically generate a diff of our types against TypeScript’s <a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.webworker.d.ts"><code>lib.webworker.d.ts</code></a>. Going forward, we’ll use this to identify areas where we can further improve our spec-compliance.</p>
-	<h3 id="improved-compatibility-with-compatibility-dates">Improved compatibility with compatibility dates</h3>
+	<h3>Improved compatibility with compatibility dates</h3>
 	<p>Cloudflare maintains strong backwards compatibility promises for all the APIs we provide. We use <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flags and dates</a> to make breaking changes in a backwards-compatible way. Sometimes these compatibility flags change the types. For example, the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#global-navigator"><code>global_navigator</code></a> flag adds a new <code>navigator</code> global, and the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#new-url-parser-implementation"><code>url_standard</code></a> flag changes the <code>URLSearchParams</code> constructor signature.</p>
-	<p>We now allow you to select the version of the types that matches your compatibility date, so you can be sure you’re not using features that won’t be supported at runtime.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">{
+	<p>We now allow you to select the version of the types that matches your compatibility date, so you can be sure you’re not using features that won’t be supported at runtime.</p>
+	<pre class="language-ts"><code class="language-ts">{
   "compilerOptions": {
     ...
     "types": ["@cloudflare/workers-types/2022-08-04"]
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="improved-integration-with-wrangler">Improved integration with Wrangler</h3>
+}</code></pre>
+	<h3>Improved integration with Wrangler</h3>
 	<p>In addition to compatibility dates, your Worker environment configuration also impacts the runtime and type API surface. If you have bindings such as <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#kv-namespaces">KV namespaces</a> or <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets">R2 buckets</a> configured in your <code>wrangler.toml</code>, these need to be reflected in TypeScript types. Similarly, <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#bundling">custom text, data and WebAssembly module rules</a> need to be declared so TypeScript knows the types of exports. Previously, it was up to you to create a separate ambient TypeScript file containing these declarations.</p>
 	<p>To keep <code>wrangler.toml</code> as the single source of truth, you can now run <code>npx wrangler types</code> to generate this file automatically.</p>
-	<p>For example, the following <code>wrangler.toml</code>…</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-toml">kv_namespaces = [{ binding = "MY_NAMESPACE", id = "..." }]
-rules = [{ type = "Text", globs = ["**/*.txt"] }]
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>…generates these ambient types:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">interface Env {
+	<p>For example, the following <code>wrangler.toml</code>…</p>
+	<pre class="language-toml"><code class="language-toml">kv_namespaces = [{ binding = "MY_NAMESPACE", id = "..." }]
+rules = [{ type = "Text", globs = ["**/*.txt"] }]</code></pre>
+	<p>…generates these ambient types:</p>
+	<pre class="language-ts"><code class="language-ts">interface Env {
   MY_NAMESPACE: KVNamespace;
 }
 declare module "*.txt" {
   const value: string;
   export default value;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="improved-integrated-documentation-and-changelogs">Improved integrated documentation and changelogs</h3>
-	<p>Code completions provide a great way for developers new to the Workers platform to explore the API surface. We now include the documentation for standard APIs from TypeScript’s official types in our types. We’re also starting the process of bringing <a href="https://developers.cloudflare.com/workers/runtime-apis">docs for Cloudflare specific APIs</a> into them too.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-27.png" class="kg-image" alt="docs in types shown with code completions" loading="lazy"></figure>
+}</code></pre>
+	<h3>Improved integrated documentation and changelogs</h3>
+	<p>Code completions provide a great way for developers new to the Workers platform to explore the API surface. We now include the documentation for standard APIs from TypeScript’s official types in our types. We’re also starting the process of bringing <a href="https://developers.cloudflare.com/workers/runtime-apis">docs for Cloudflare specific APIs</a> into them too.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4N4SjX4uCcnhULQ6BeRfD9/49c44c36995a180258f9f7ed4b27b7ac/image4-27.png" alt="docs in types shown with code completions" class="kg-image" width="477" height="141" loading="lazy">
+
+	</figure>
 	<p>For developers already using the Workers platform, it can be difficult to see how types are changing with each release of <code>@cloudflare/workers-types</code>. To avoid type errors and highlight new features, we now generate a detailed changelog with each release that <a href="https://github.com/cloudflare/workers-types/pull/291#issuecomment-1274541965">splits out new, changed and removed definitions</a>.</p>
-	<h3 id="how-does-type-generation-work-under-the-hood">How does type generation work under the hood?</h3>
-	<p>As mentioned earlier, we’ve completely rebuilt the <a href="https://github.com/cloudflare/workerd/tree/main/types">automatic type generation scripts</a> to be more reliable, extensible and maintainable. This means developers will get improved types as soon as new versions of the runtime are published. Our system now uses <code>workerd</code>’s new <a href="https://github.com/cloudflare/workerd/blob/200ded3d8469371f9ece6a00d4012e26637e5abc/src/workerd/jsg/rtti.h">runtime-type-information (RTTI) system</a> to query types of Workers runtime APIs, rather than attempting to extract this information from parsed C++ ASTs.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">// Encode the KV namespace type without any compatibility flags enabled
+	<h3>How does type generation work under the hood?</h3>
+	<p>As mentioned earlier, we’ve completely rebuilt the <a href="https://github.com/cloudflare/workerd/tree/main/types">automatic type generation scripts</a> to be more reliable, extensible and maintainable. This means developers will get improved types as soon as new versions of the runtime are published. Our system now uses <code>workerd</code>’s new <a href="https://github.com/cloudflare/workerd/blob/200ded3d8469371f9ece6a00d4012e26637e5abc/src/workerd/jsg/rtti.h">runtime-type-information (RTTI) system</a> to query types of Workers runtime APIs, rather than attempting to extract this information from parsed C++ ASTs.</p>
+	<pre class="language-cpp"><code class="language-cpp">// Encode the KV namespace type without any compatibility flags enabled
 CompatibilityFlags::Reader flags = {};
 auto builder = rtti::Builder(flags);
-auto type = builder.structure&lt;KvNamespace&gt;();
+auto type = builder.structure<kvnamespace>();
 capnp::TextCodec codec;
 auto encoded = codec.encode(type);
-KJ_DBG(encoded); // (name = "KvNamespace", members = [ ... ], ...)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We then pass this RTTI to a TypeScript program that uses the <a href="https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API">TypeScript Compiler API</a> to generate declarations and perform AST transformations to tidy them up. This is built into <code>workerd</code>’s Bazel build system, meaning generating types is now a single <code>bazel build //types:types</code> command. We leverage Bazel’s cache to rebuild as little as possible during generation.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">import ts, { factory as f } from "typescript";
+KJ_DBG(encoded); // (name = "KvNamespace", members = [ ... ], ...)</kvnamespace></code></pre>
+	<p>We then pass this RTTI to a TypeScript program that uses the <a href="https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API">TypeScript Compiler API</a> to generate declarations and perform AST transformations to tidy them up. This is built into <code>workerd</code>’s Bazel build system, meaning generating types is now a single <code>bazel build //types:types</code> command. We leverage Bazel’s cache to rebuild as little as possible during generation.</p>
+	<pre class="language-ts"><code class="language-ts">import ts, { factory as f } from "typescript";
 
 const keyParameter = f.createParameterDeclaration(
   /* decorators */ undefined,
@@ -111,20 +109,35 @@ const kvNamespace = f.createInterfaceDeclaration(
 const file = ts.createSourceFile("file.ts", "", ts.ScriptTarget.ESNext);
 const printer = ts.createPrinter();
 const output = printer.printNode(ts.EmitHint.Unspecified, kvNamespace, file);
-console.log(output); // interface KVNamespace { get(key: string): Promise&lt;string | null&gt;; }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-64.png" class="kg-image" alt="new automatic type generation architecture" loading="lazy"></figure>
-	<p>Whilst the auto-generated types <em>correctly</em> describe the JavaScript interface of Workers runtime APIs, TypeScript provides additional features we can use to provide <em>higher-fidelity</em> types and improve developer ergonomics. Our system allows us to handwrite partial TypeScript “overrides” that get merged with the auto-generated types. This enables us to…</p>
+console.log(output); // interface KVNamespace { get(key: string): Promise<string |="" null="">; }</string></code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6d9euawkfvZmWDJeIRw0Yn/dea585e2a613afbd1dcc0a0a376da64c/image1-64.png" alt="new automatic type generation architecture" class="kg-image" width="1102" height="758" loading="lazy">
+
+	</figure>
+	<p>Whilst the auto-generated types <i>correctly</i> describe the JavaScript interface of Workers runtime APIs, TypeScript provides additional features we can use to provide <i>higher-fidelity</i> types and improve developer ergonomics. Our system allows us to handwrite partial TypeScript “overrides” that get merged with the auto-generated types. This enables us to…</p>
 	<ul>
-		<li>Add type parameters (generics) to types such as <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/api/streams/readable.h#L300-L318"><code>ReadableStream</code></a> and avoid <code>any</code> typed values.</li>
-		<li>Specify the correspondence between input and output types with method overloads. For example, <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/api/kv.h#L117-L125"><code>KVNamespace#get()</code></a> should return a <code>string</code> when the <code>type</code> argument is <code>text</code>, but <code>ArrayBuffer</code> when it’s <code>arrayBuffer</code>.</li>
-		<li>Rename types to match TypeScript standards and reduce verbosity.</li>
-		<li>Fully-replace a type for more accurate declarations. For example, we replace <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/api/web-socket.h#L384-L406"><code>WebSocketPair</code></a> with a <code>const</code> declaration for better types with <code>Object.values()</code>.</li>
-		<li>Provide types for values that are internally untyped such as the <code>Request#cf</code> object.</li>
-		<li>Hide internal types that aren’t usable in your workers.</li>
+		<li>
+			<p>Add type parameters (generics) to types such as <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/api/streams/readable.h#L300-L318"><code>ReadableStream</code></a> and avoid <code>any</code> typed values.</p>
+		</li>
+		<li>
+			<p>Specify the correspondence between input and output types with method overloads. For example, <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/api/kv.h#L117-L125"><code>KVNamespace#get()</code></a> should return a <code>string</code> when the <code>type</code> argument is <code>text</code>, but <code>ArrayBuffer</code> when it’s <code>arrayBuffer</code>.</p>
+		</li>
+		<li>
+			<p>Rename types to match TypeScript standards and reduce verbosity.</p>
+		</li>
+		<li>
+			<p>Fully-replace a type for more accurate declarations. For example, we replace <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/api/web-socket.h#L384-L406"><code>WebSocketPair</code></a> with a <code>const</code> declaration for better types with <code>Object.values()</code>.</p>
+		</li>
+		<li>
+			<p>Provide types for values that are internally untyped such as the <code>Request#cf</code> object.</p>
+		</li>
+		<li>
+			<p>Hide internal types that aren’t usable in your workers.</p>
+		</li>
 	</ul>
 	<p>Previously, these overrides were defined in separate TypeScript files to the C++ declarations they were overriding. This meant they often fell out-of-sync with the original declarations. In the new system, overrides are defined alongside the originals with C++ macros, meaning they can be reviewed alongside runtime implementation changes. See the <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/jsg/README.md#typescript">README for <code>workerd</code>’s JavaScript glue code</a> for many more details and examples.</p>
-	<h3 id="try-typing-with-workers-types-today-">Try typing with workers-types today!</h3>
+	<h3>Try typing with workers-types today!</h3>
 	<p>We encourage you to upgrade to the latest version of <code>@cloudflare/workers-types</code> with <code>npm install --save-dev @cloudflare/workers-types@latest</code>, and try out the new <code>wrangler types</code> command. We’ll be publishing a new version of the types with each <code>workerd</code> release. Let us know what you think on the <a href="https://discord.gg/cloudflaredev">Cloudflare Developers Discord</a>, and please <a href="https://github.com/cloudflare/workerd/issues/new">open a GitHub issue</a> if you find any types that could be improved.</p>
 </div>

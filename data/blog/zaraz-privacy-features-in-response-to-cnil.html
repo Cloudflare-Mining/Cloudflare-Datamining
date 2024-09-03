@@ -1,44 +1,79 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/zaraz-privacy-features-in-response-to-cnil-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/zaraz-privacy-features-in-response-to-cnil-fr-fr">Français</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-6.png" class="kg-image" alt="Cloudflare Zaraz launches new privacy features in response to French CNIL standards" loading="lazy"></figure>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/zaraz-privacy-features-in-response-to-cnil">Français</a> and <a href="https://blog.cloudflare.com/de-de/zaraz-privacy-features-in-response-to-cnil">Deutsch</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37Ih31AQe3GF8TsxX3X396/1f1a1c895f46c1998fc360f13028680c/image4-6.png" alt="Cloudflare Zaraz launches new privacy features in response to French CNIL standards" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Last week, the French national data protection authority (the Commission Nationale de l'informatique et des Libertés or “CNIL”), <a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/google-analytics-et-transferts-de-donnees-comment-mettre-son-outil-de-mesure-daudience-en-conformite">published guidelines</a> for what it considers to be a GDPR-compliant way of loading Google Analytics and similar marketing technology tools. The CNIL published these guidelines following notices that the CNIL and other data protection authorities issued to several organizations using Google Analytics stating that such use resulted in impermissible data transfers to the United States. Today, we are excited to announce a set of features and a practical step-by-step guide for using Zaraz that we believe will help organizations continue to use Google Analytics and similar tools in a way that will help protect end user privacy and avoid sending EU personal data to the United States. And the best part? It takes less than a minute.</p>
 	<p>Enter <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fzaraz">Cloudflare Zaraz</a>.</p>
-	<h2 id="the-new-zaraz-privacy-features">The new Zaraz privacy features</h2>
+	<h2>The new Zaraz privacy features</h2>
 	<p>What we are releasing today is a new set of privacy features to help our customers enhance end user privacy. Starting today, on the Zaraz dashboard, you can apply the following configurations:</p>
 	<ul>
-		<li>Remove URL query parameters: when toggled-on, Zaraz will remove all query parameters from a URL that is reported to a third-party server. It will turn <code><a href="https://example.com/?q=hello">https://example.com/?q=hello</a></code> to <a href="https://example.com/?q=hellp"><code>https://example.com</code></a>. This will allow users to remove &nbsp;query parameters, such as UTM, gclid, and the sort that can be used for fingerprinting. This setting will apply to all of your Zaraz integrations.</li>
-		<li>Hide originating IP address: using Zaraz to load tools like Google Analytics entirely server-side while hiding visitor IP addresses from Google and Facebook <a href="https://blog.cloudflare.com/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz">has been doable</a> for quite some time now. This will prevent sending the visitor IP address to a third-party tool provider’s server. This feature is configured at a tool level, currently offered for Google Analytics Universal, Google Analytics 4, and Facebook Pixel. We will add this capability to more and more tools as we go. In addition to hiding visitors’ IP addresses from specific tools, you can use Zaraz to trim visitors’ IP addresses across all tools to avoid sending originating IP addresses to third-party tool servers. This option is available on the Zaraz setting page, and is considered less strict.</li>
-		<li>Clear user agent strings: when toggled on, Zaraz will clear sensitive information from the User Agent String. The User-Agent is a request header that includes information about the operating system, browser, extensions and more of the site visitor. Zaraz clears this string by removing pieces of information (such as versions, extensions, and more) that could lead to user tracking or fingerprinting. This setting will apply only to server-side integrations.</li>
-		<li>Removal of external referrers: when toggled-on, Zaraz will hide the URL of the referring page from third-party servers. If the referring URL is on the same domain, it will not hide it, to keep analytics accurate and avoid the session from “splitting”. This setting will apply to all of your Zaraz integrations.</li>
+		<li>
+			<p>Remove URL query parameters: when toggled-on, Zaraz will remove all query parameters from a URL that is reported to a third-party server. It will turn <code>[https://example.com/?q=hello](https://example.com/?q=hello)</code> to <a href="https://example.com/?q=hellp"><code>https://example.com</code></a>. This will allow users to remove &nbsp;query parameters, such as UTM, gclid, and the sort that can be used for fingerprinting. This setting will apply to all of your Zaraz integrations.</p>
+		</li>
+		<li>
+			<p>Hide originating IP address: using Zaraz to load tools like Google Analytics entirely server-side while hiding visitor IP addresses from Google and Facebook <a href="https://blog.cloudflare.com/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz">has been doable</a> for quite some time now. This will prevent sending the visitor IP address to a third-party tool provider’s server. This feature is configured at a tool level, currently offered for Google Analytics Universal, Google Analytics 4, and Facebook Pixel. We will add this capability to more and more tools as we go. In addition to hiding visitors’ IP addresses from specific tools, you can use Zaraz to trim visitors’ IP addresses across all tools to avoid sending originating IP addresses to third-party tool servers. This option is available on the Zaraz setting page, and is considered less strict.</p>
+		</li>
+		<li>
+			<p>Clear user agent strings: when toggled on, Zaraz will clear sensitive information from the User Agent String. The User-Agent is a request header that includes information about the operating system, browser, extensions and more of the site visitor. Zaraz clears this string by removing pieces of information (such as versions, extensions, and more) that could lead to user tracking or fingerprinting. This setting will apply only to server-side integrations.</p>
+		</li>
+		<li>
+			<p>Removal of external referrers: when toggled-on, Zaraz will hide the URL of the referring page from third-party servers. If the referring URL is on the same domain, it will not hide it, to keep analytics accurate and avoid the session from “splitting”. This setting will apply to all of your Zaraz integrations.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="how-to-set-up-google-analytics-with-the-new-privacy-features">How to set up Google Analytics with the new privacy features</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ksw0eBnqjNGz5uR26SHxC/25b7368d8774ee79d9bed01691e9dde8/image2-12.png" alt="" class="kg-image" width="1999" height="709" loading="lazy">
+
+	</figure>
+	<h2>How to set up Google Analytics with the new privacy features</h2>
 	<p>We wrote this guide to help you implement our new features when using Google Analytics. We will use Google Analytics (Universal) as the example of this guide, because Google Analytics is widely used by Zaraz customers. You can follow the same principles to set up your Facebook Pixel, or other server-side integration that Zaraz offers.</p>
-	<h3 id="step-1-install-zaraz-on-your-website">Step 1: Install Zaraz on your website</h3>
+	<h3>Step 1: Install Zaraz on your website</h3>
 	<p>Zaraz loads automatically for every website proxied by Cloudflare (Orange Clouded), no code changes are needed. If your website is not proxied by Cloudflare, you can <a href="https://developers.cloudflare.com/zaraz/advanced/domains-not-proxied">load Zaraz manually</a> with a JavaScript code snippet. If you are new to Cloudflare, or unsure if your website is proxied by Cloudflare, you can use this <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl">Chrome extension</a> to find out if your site is Orange Clouded or not.</p>
-	<h3 id="step-2-add-google-analytics-via-the-zaraz-dashboard">Step 2: Add Google Analytics via the Zaraz dashboard</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Step 2: Add Google Analytics via the Zaraz dashboard</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tgdFYH4bk4w5XvQ7viT82/46eec55d23862bc95900ceac50bc3ab2/image5-6.png" alt="" class="kg-image" width="1999" height="911" loading="lazy">
+
+	</figure>
 	<p>All customers have access to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fzaraz">Zaraz dashboard</a>. By default, when you add Google Analytics using the Zaraz tools library, it will load server-side. You do not need to set up any cloud environment or proxy server. Zaraz handles this for you. When you add a tool, Zaraz will start loading on your website, and a request will leave from the end user’s browser to a Cloudflare Worker that sits on your own domain. Cloudflare Workers is our edge computing platform, and this Worker will communicate directly with Google Analytics’ servers. There will be no direct communication between an end user’s browser and Google’s servers. If you wish to learn more about how Zaraz works, please read our previous posts about <a href="https://blog.cloudflare.com/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz/#:~:text=Zaraz%E2%80%99s%20solution%20leverages%20Cloudflare%E2%80%99s%20global%20network%20and%20Workers%20platform">the unique Zaraz architecture</a> and <a href="https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast">how we use Workers</a>. Note that “proxying” Google Analytics, by itself, is not enough, according to the CNIL’s guidance. You will have to take more actions to make sure you set up Google Analytics properly.</p>
-	<h3 id="step-3-configure-google-analytics-and-hide-ip-addresses">Step 3: Configure Google Analytics and hide IP addresses</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Step 3: Configure Google Analytics and hide IP addresses</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sv2MQotvaO2KFv7Sor5MH/ee56ac5e308b961730769c59865410bb/image2-10.png" alt="" class="kg-image" width="1748" height="1524" loading="lazy">
+
+	</figure>
 	<p>All you need to do to set up Google Analytics is to enter your Tracking ID. On the tools setting screen, you would also need to toggle-on the “Hide Originating IP Address” feature. This will prevent Zaraz from sending the visitor’s IP address to Google. Zaraz will remove the IP address on the Edge, before it hits Google’s servers. If you want to make sure Zaraz will run only in the EU, review Cloudflare’s <a href="https://www.cloudflare.com/data-localization">Data Localization Suite</a>.</p>
 	<p>According to your needs, you can of course set up more complex configurations of Google Analytics, including Ecommerce tracking, Custom Dimension, fields to set, Custom Metrics, etc. Follow <a href="https://developers.cloudflare.com/zaraz/get-started/add-tool">this guide</a> for more instructions.</p>
-	<h3 id="step-4-toggle-on-zaraz-s-new-privacy-features">Step 4: Toggle-on Zaraz’s new privacy features</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Step 4: Toggle-on Zaraz’s new privacy features</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rYqHM9LhtQOetWn9hru0f/55e26fcb5f4bf4d60c671b5f11b1094d/image2-11.png" alt="" class="kg-image" width="1999" height="709" loading="lazy">
+
+	</figure>
 	<p>Next, you will need to toggle-on all of our new privacy features mentioned above. You can do this on the Zaraz Settings page, under the Privacy section.</p>
-	<h3 id="step-5-clean-your-google-analytics-configuration">Step 5: Clean your Google Analytics configuration</h3>
+	<h3>Step 5: Clean your Google Analytics configuration</h3>
 	<p>In this step, you would need to take actions to clean your specific Google Analytics setting. We gathered a list of suggestions for you to help preserve end user privacy:</p>
 	<ul>
-		<li>Do not include any personal identifiable information. You will want to review the CNIL’s guidance on anonymization and determine how to apply it on your end. It is likely that such anonymization will make the unique identifier pretty much useless with most analytics tools. For example, according to our findings, features like Google Analytics’ User ID View, won’t work well with such anonymization. In such cases, you may want to stop using such analytics tools to avoid discrepancies and assure accuracy.</li>
-		<li>If you wish to hide Google Analytics’ Client ID, on the Google Analytics setting page, click “add field” and choose “Client ID”. To override the Client ID, you can insert any string as the field’s constant value. Please note that this will likely limit Google’s ability to aggregate data and will likely create discrepancies in session and user counts. Still, we’ve seen customers that are using Google Analytics to count events, and to our knowledge that should still be doable with this setting.</li>
-		<li>Clean your implementation from cross-site identifiers. This could include things like your CRM tool unique identifier, or URL query parameters passing identifiers to share them between different domains (avoid “<a href="https://developers.google.com/analytics/devguides/collection/gtagjs/cross-domain">cross-domain tracking</a>” also known as “site linking”).</li>
-		<li>You would need to make sure not to include any personal data in your customized configuration and implementation. We recommend you go over the list of Custom Dimension, Event parameters/properties, Ecommerce Data, and User Properties to make sure they do not contain personal data. While this still demands some manual work, the good news is that soon we are about to announce a new set of Privacy features, Zaraz Data Loss Prevention, that will help you do that automatically, at scale. Stay tuned!</li>
+		<li>
+			<p>Do not include any personal identifiable information. You will want to review the CNIL’s guidance on anonymization and determine how to apply it on your end. It is likely that such anonymization will make the unique identifier pretty much useless with most analytics tools. For example, according to our findings, features like Google Analytics’ User ID View, won’t work well with such anonymization. In such cases, you may want to stop using such analytics tools to avoid discrepancies and assure accuracy.</p>
+		</li>
+		<li>
+			<p>If you wish to hide Google Analytics’ Client ID, on the Google Analytics setting page, click “add field” and choose “Client ID”. To override the Client ID, you can insert any string as the field’s constant value. Please note that this will likely limit Google’s ability to aggregate data and will likely create discrepancies in session and user counts. Still, we’ve seen customers that are using Google Analytics to count events, and to our knowledge that should still be doable with this setting.</p>
+		</li>
+		<li>
+			<p>Clean your implementation from cross-site identifiers. This could include things like your CRM tool unique identifier, or URL query parameters passing identifiers to share them between different domains (avoid “<a href="https://developers.google.com/analytics/devguides/collection/gtagjs/cross-domain">cross-domain tracking</a>” also known as “site linking”).</p>
+		</li>
+		<li>
+			<p>You would need to make sure not to include any personal data in your customized configuration and implementation. We recommend you go over the list of Custom Dimension, Event parameters/properties, Ecommerce Data, and User Properties to make sure they do not contain personal data. While this still demands some manual work, the good news is that soon we are about to announce a new set of Privacy features, Zaraz Data Loss Prevention, that will help you do that automatically, at scale. Stay tuned!</p>
+		</li>
 	</ul>
-	<h3 id="step-6-you-are-done-">Step 6 - you are done! ?</h3>
+	<h3>Step 6 - you are done! ?</h3>
 	<p>A few more things you will want to consider is that implementing this guide will result in some limitations in your ability to use Google Analytics. For example, not collecting UTM parameters and referrers will disable your ability to track traffic sources and campaigns. Not tracking User ID, will prevent you from using the User ID View, and so on. Some companies will find these limitations extreme, but like most things in life, there is a trade-off. We’re taking a step towards a more privacy-oriented web, and this is just the beginning. In the face of new regulatory constraints, new technologies will appear which will unlock new abilities and features. Zaraz is dedicated to leading the way, offering privacy-focused tools that empower website operators and protect end users.</p>
 	<p>We recommend you learn more about Cloudflare’s <a href="https://www.cloudflare.com/data-localization">Data Localization Suite</a>, and how you can <a href="https://blog.cloudflare.com/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz">use Zaraz to keep analytics data in the EU</a>.</p>
-	<p>To wrap up, we would really appreciate any feedback on this announcement, or new feature requests you might have. You can reach out to your Cloudflare account manager, or directly to us on our <a href="https://discord.gg/2TRr6nSxdd">Discord channel</a>. Privacy is at the heart of everything our team is building. </p>
+	<p>To wrap up, we would really appreciate any feedback on this announcement, or new feature requests you might have. You can reach out to your Cloudflare account manager, or directly to us on our <a href="https://discord.gg/2TRr6nSxdd">Discord channel</a>. Privacy is at the heart of everything our team is building.</p>
 	<p>We always take a proactive approach towards privacy, and we believe privacy is not only about responding to different regulations, it is about building technology that helps customers do a better job protecting their users. It is about simplifying what it takes to respect and protect user privacy and personal information. It is about helping build a better Internet.</p>
 </div>

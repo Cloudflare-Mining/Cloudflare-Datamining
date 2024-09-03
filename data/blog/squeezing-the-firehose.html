@@ -1,90 +1,131 @@
-<div class="mb2 gray5">17 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/t9WBSpTQg6vusR59gNAiR/906415c5ee2d55d395538c7280ee62bf/squeezing-the-firehose.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>We at Cloudflare are long time <a href="https://kafka.apache.org">Kafka</a> users, first mentions of it date back to beginning of 2014 when the most recent version was 0.8.0. We use Kafka as a log to power analytics (both HTTP and DNS), <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">DDOS mitigation</a>, logging and metrics.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.09.12-PM.png" alt="Screen-Shot-2018-03-05-at-12.09.12-PM" loading="lazy"><small>Firehose <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://flic.kr/p/xeocpX">image</a> by <a href="https://www.flickr.com/photos/134584268@N04">RSLab</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uXNFMtgVny9ijHOt1qAF2/4b60a9a8b906f30f1e3d5d696ed118ae/Screen-Shot-2018-03-05-at-12.09.12-PM.png" alt="Screen-Shot-2018-03-05-at-12.09.12-PM" class="kg-image" width="795" height="530" loading="lazy">
+
+	</figure>
+	<p>Firehose <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://flic.kr/p/xeocpX">image</a> by <a href="https://www.flickr.com/photos/134584268@N04">RSLab</a></p>
 	<p>While the idea of unifying abstraction of the log remained the same since then (<a href="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying">read this classic blog post</a> from Jay Kreps if you haven't), Kafka evolved in other areas since then. One of these improved areas was compression support. Back in the old days we've tried enabling it a few times and ultimately gave up on the idea because of <a href="https://github.com/Shopify/sarama/issues/805">unresolved</a> <a href="https://issues.apache.org/jira/browse/KAFKA-1718">issues</a> in the protocol.</p>
-	<h3 id="kafkacompressionoverview">Kafka compression overview</h3>
+	<h3>Kafka compression overview</h3>
 	<p>Just last year Kafka 0.11.0 came out with the new improved protocol and log format.</p>
 	<p>The naive approach to compression would be to compress messages in the log individually:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.10.00-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.00-PM" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hIZ5PFDUxsm8R48jv6TfL/a013c950f9eb7a08413375d78276f69f/Screen-Shot-2018-03-05-at-12.10.00-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.00-PM" class="kg-image" width="794" height="285" loading="lazy">
+
+	</figure>
 	<p>Edit: originally we said this is how Kafka worked before 0.11.0, but that appears to be false.</p>
 	<p>Compression algorithms work best if they have more data, so in the new log format messages (now called records) are packed back to back and compressed in batches. In the previous log format messages recursive (compressed set of messages is a message), new format makes things more straightforward: compressed batch of records is just a batch.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.10.13-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.13-PM" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WMDU1akGFipMtPWFPXXJB/2957a138cd4326344a5ed661f845093b/Screen-Shot-2018-03-05-at-12.10.13-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.13-PM" class="kg-image" width="792" height="256" loading="lazy">
+
+	</figure>
 	<p>Now compression has a lot more space to do its job. There's a high chance that records in the same Kafka topic share common parts, which means they can be compressed better. On the scale of thousands of messages difference becomes enormous. The downside here is that if you want to read record3 in the example above, you have to fetch records 1 and 2 as well, whether the batch is compressed or not. In practice this doesn't matter too much, because consumers usually read all records sequentially batch after batch.</p>
 	<p>The beauty of compression in Kafka is that it lets you trade off CPU vs disk and network usage. The protocol itself is designed to minimize overheads as well, by requiring decompression only in a few places:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.10.19-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.19-PM" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/572hmHvuR97iuBVjOqD5SS/3876cbe97c9920c175c9be452696c994/Screen-Shot-2018-03-05-at-12.10.19-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.19-PM" class="kg-image" width="791" height="539" loading="lazy">
+
+	</figure>
 	<p>On the receiving side of the log only consumers need to decompress messages:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.10.25-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.25-PM" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Jyhzp3FFqxOEUML1Zw3Cv/7f99c7200936c1ac9f08976ef2cd0ec0/Screen-Shot-2018-03-05-at-12.10.25-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.25-PM" class="kg-image" width="795" height="472" loading="lazy">
+
+	</figure>
 	<p>In reality, if you don't use encryption, data can be copied between NIC and disks with <a href="https://www.ibm.com/developerworks/linux/library/j-zerocopy">zero copies to user space</a>, lowering the cost to some degree.</p>
-	<h3 id="kafkabottlenecksatcloudflare">Kafka bottlenecks at Cloudflare</h3>
+	<h3>Kafka bottlenecks at Cloudflare</h3>
 	<p>Having less network and disk usage was a big selling point for us. Back in 2014 we started with spinning disks under Kafka and never had issues with disk space. However, at some point we started having issues with random io. Most of the time consumers and replicas (which are just another type of consumer) read from the very tip of the log, and that data resides in page cache meaning you don't need to read from disks at all:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-01-at-13.59.06.png" alt="Screen-Shot-2018-03-01-at-13.59.06" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LFhjE9d3QMnMvDRS4mtlJ/24e3b12b88ac91c119a29a5492598af1/Screen-Shot-2018-03-01-at-13.59.06.png" alt="Screen-Shot-2018-03-01-at-13.59.06" class="kg-image" width="1938" height="1352" loading="lazy">
+
+	</figure>
 	<p>In this case the only time you touch the disk is during writes, and sequential writes are cheap. However, things start to fall apart when you have multiple lagging consumers:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-01-at-13.59.29.png" alt="Screen-Shot-2018-03-01-at-13.59.29" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2b3aYKJupVoKGdx3tLmTjq/cbd1c49a610afcc40369fe9af4ada379/Screen-Shot-2018-03-01-at-13.59.29.png" alt="Screen-Shot-2018-03-01-at-13.59.29" class="kg-image" width="1980" height="1378" loading="lazy">
+
+	</figure>
 	<p>Each consumer wants to read different part of the log from the physical disk, which means seeking back and forth. One lagging consumer was okay to have, but multiple of them would start fighting for disk io and just increase lag for all of them. To work around this problem we upgraded to SSDs.</p>
 	<p>Consumers were no longer fighting for disk time, but it felt terribly wasteful most of the time when consumers are not lagging and there's zero read io. We were not bored for too long, as other problems emerged:</p>
 	<ul>
-		<li>Disk space became a problem. SSDs are much more expensive and usable disk space reduced by a lot.</li>
-		<li>As we grew, we started saturating network. We used 2x10Gbit NICs and imperfect balance meant that we sometimes saturated network links.</li>
+		<li>
+			<p>Disk space became a problem. SSDs are much more expensive and usable disk space reduced by a lot.</p>
+		</li>
+		<li>
+			<p>As we grew, we started saturating network. We used 2x10Gbit NICs and imperfect balance meant that we sometimes saturated network links.</p>
+		</li>
 	</ul>
 	<p>Compression promised to solve both of these problems, so we were eager to try again with improved support from Kafka.</p>
-	<h3 id="performancetesting">Performance testing</h3>
+	<h3>Performance testing</h3>
 	<p>At Cloudflare we use Go extensively, which means that a lot of our Kafka consumers and producers are in Go. This means we can't just take off-the-shelf Java client provided by Kafka team with every server release and start enjoying the benefits of compression. We had to get support from our Kafka client library first (we use <a href="https://github.com/Shopify/sarama">sarama from Shopify</a>). Luckily, support was added at the end of 2017. With more fixes from our side we were able get the test setup working.</p>
 	<p>Kafka supports 4 compression codecs: <code>none</code>, <code>gzip</code>, <code>lz4</code> and <code>snappy</code>. We had to figure out how these would work for our topics, so we wrote a simple producer that copied data from existing topic into destination topic. With four destination topics for each compression type we were able to get the following numbers.</p>
 	<p>Each destination topic was getting roughly the same amount of messages:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/1.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/1.png" alt=""></a><br>
-		Ingress bandwidth was different for different topics, which is expected:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/2.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/2.png" alt=""></a><br>
-		And the average size of messages was proportional to ingress bandwidth difference:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/3.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/3.png" alt=""></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/1.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wju5Al35UR8dZWYxAJMlw/3e030bcd32a1b853e1209a6cbcad6e0a/1.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/2.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lpkJB69KoKcpKDWRnEAmI/2bff10490d18b43d0bd97d5869f88001/2.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/3.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JGQUA6GGFSfisv8fdlhK5/a2985c143be5d2f0975a813a1ad847a1/3.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>To make it even more obvious, this was the disk usage of these topics:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/4.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/4.png" alt=""></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/4.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mzCpvFwiR4fNBFDJ4EOR2/65650075c087cfc19d050ba6469fc5ee/4.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>This looked amazing, but it was rather low throughput nginx errors topic, containing literally string error messages from nginx. Our main target was <code>requests</code> HTTP log topic with <a href="https://capnproto.org">capnp</a> encoded messages that are much harder to compress. Naturally, we moved on to try out one <code>partition</code> of requests topic. First results were insanely good:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/5.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/5.png" alt=""></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/5.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ziqP8gINUJ6THlURi989m/42845805a19c919f51f49ff884544d6a/5.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>They were so good, because they were lies. If with nginx error logs we were pushing under 20Mbps of uncompressed logs, here we jumped 30x to 600Mbps and compression wasn't able to keep up. Still, as a starting point, this experiment gave us some expectations in terms of compression ratios for the main target.</p>
-	<table>
-		<thead>
-			<tr>
-				<th>Compression</th>
-				<th>Messages consumed</th>
-				<th>Disk usage</th>
-				<th>Average message size</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>None</td>
-				<td>30.18M</td>
-				<td>48106MB</td>
-				<td>1594B</td>
-			</tr>
-			<tr>
-				<td>Gzip</td>
-				<td>3.17M</td>
-				<td>1443MB</td>
-				<td>455B</td>
-			</tr>
-			<tr>
-				<td>Snappy</td>
-				<td>20.99M</td>
-				<td>14807MB</td>
-				<td>705B</td>
-			</tr>
-			<tr>
-				<td>LZ4</td>
-				<td>20.93M</td>
-				<td>14731MB</td>
-				<td>703B</td>
-			</tr>
-		</tbody>
-	</table>
+	<p>Compression</p>
+	<p>Messages consumed</p>
+	<p>Disk usage</p>
+	<p>Average message size</p>
+	<p>None</p>
+	<p>30.18M</p>
+	<p>48106MB</p>
+	<p>1594B</p>
+	<p>Gzip</p>
+	<p>3.17M</p>
+	<p>1443MB</p>
+	<p>455B</p>
+	<p>Snappy</p>
+	<p>20.99M</p>
+	<p>14807MB</p>
+	<p>705B</p>
+	<p>LZ4</p>
+	<p>20.93M</p>
+	<p>14731MB</p>
+	<p>703B</p>
 	<p>Gzip sounded too expensive from the beginning (especially in Go), but Snappy should have been able to keep up. We profiled our producer and it was spending just 2.4% of CPU time in Snappy compression, never saturating a single core:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/6.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/6.png" alt=""></a><br>
-		Even gzip was spending just 20%, and it also did not saturate CPU:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/7.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/7.png" alt=""></a><br>
-		It seemed that Kafka was doing something that was slowing us down. In theory, it should only decompress messages to do smoke testing, but it also has a failsafe that recompresses messages if they have invalid offsets.</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/6.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6X1yjXYICcPKzHxKKdQ76K/3bd061b863cf11eae033d8d0fc74ca4d/6.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/7.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57E71JTk6DPA6oo8SOLghQ/129524327fb54e91d42597f288e8ca62/7.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>For Snappy we were able to get the following thread stacktrace from Kafka with <code>jstack</code>:</p>
-	<pre><code>"kafka-request-handler-3" #87 daemon prio=5 os_prio=0 tid=0x00007f80d2e97800 nid=0x1194 runnable [0x00007f7ee1adc000]
+	<pre class="language-bash"><code class="language-bash">"kafka-request-handler-3" #87 daemon prio=5 os_prio=0 tid=0x00007f80d2e97800 nid=0x1194 runnable [0x00007f7ee1adc000]
    java.lang.Thread.State: RUNNABLE
     at org.xerial.snappy.SnappyNative.rawCompress(Native Method)
     at org.xerial.snappy.Snappy.rawCompress(Snappy.java:446)
@@ -138,11 +179,10 @@
     at kafka.server.KafkaApis.handleProduceRequest(KafkaApis.scala:466)
     at kafka.server.KafkaApis.handle(KafkaApis.scala:99)
     at kafka.server.KafkaRequestHandler.run(KafkaRequestHandler.scala:65)
-    at java.lang.Thread.run(Thread.java:748)
-</code></pre>
+    at java.lang.Thread.run(Thread.java:748)</code></pre>
 	<p>This pointed us to <a href="https://github.com/apache/kafka/blob/1.0.0/core/src/main/scala/kafka/log/LogValidator.scala#L70-L71">this piece of code</a> in Kafka repository.</p>
 	<p>There wasn't enough logging to figure out why Kafka was recompressing, but we were able to get this information out with a patched Kafka broker:</p>
-	<pre><code class="language-diff">diff --git a/core/src/main/scala/kafka/log/LogValidator.scala b/core/src/main/scala/kafka/log/LogValidator.scala
+	<pre class="language-diff"><code class="language-diff">diff --git a/core/src/main/scala/kafka/log/LogValidator.scala b/core/src/main/scala/kafka/log/LogValidator.scala
 index 15750e9cd..5197d0885 100644
 --- a/core/src/main/scala/kafka/log/LogValidator.scala
 +++ b/core/src/main/scala/kafka/log/LogValidator.scala
@@ -198,10 +238,9 @@ index 15750e9cd..5197d0885 100644
 +        logger.info("inPlaceAssignment = " + inPlaceAssignment + "; recompressing")
          val (producerId, producerEpoch, sequence, isTransactional) = {
            // note that we only reassign offsets for requests coming straight from a producer. For records with magic V2,
-           // there should be exactly one RecordBatch per request, so the following is all we need to do. For Records
-</code></pre>
+           // there should be exactly one RecordBatch per request, so the following is all we need to do. For Records</code></pre>
 	<p>And the output was:</p>
-	<pre><code>Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = true, condition: sourceCodec (SnappyCompressionCodec) == targetCodec (SnappyCompressionCodec) &amp;&amp; toMagic (2) &gt; RecordBatch.MAGIC_VALUE_V0 (0) (kafka.log.LogValidator$)
+	<pre class="language-bash"><code class="language-bash">Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = true, condition: sourceCodec (SnappyCompressionCodec) == targetCodec (SnappyCompressionCodec) &amp;&amp; toMagic (2) &gt; RecordBatch.MAGIC_VALUE_V0 (0) (kafka.log.LogValidator$)
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = true, condition: sourceCodec (SnappyCompressionCodec) == NoCompressionCodec (NoCompressionCodec) &amp;&amp; batch.isControlBatch (false) (kafka.log.LogValidator$)
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = true, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (0) (kafka.log.LogValidator$)
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (1) (kafka.log.LogValidator$)
@@ -209,96 +248,118 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (3) (kafka.log.LogValidator$)
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (4) (kafka.log.LogValidator$)
 Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (5) (kafka.log.LogValidator$)
-Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (6) (kafka.log.LogValidator$)
-</code></pre>
+Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition: record.offset (0) != expectedInnerOffset.getAndIncrement() (6) (kafka.log.LogValidator$)</code></pre>
 	<p>We promptly <a href="https://github.com/Shopify/sarama/pull/1015">fixed the issue</a> and resumed the testing. These were the results:</p>
-	<table>
-		<thead>
-			<tr>
-				<th>Compression</th>
-				<th>User time</th>
-				<th>Messages</th>
-				<th>Time per 1m</th>
-				<th>CPU ratio</th>
-				<th>Disk usage</th>
-				<th>Avg message size</th>
-				<th>Compression ratio</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>None</td>
-				<td>209.67s</td>
-				<td>26.00M</td>
-				<td>8.06s</td>
-				<td>1x</td>
-				<td>41448MB</td>
-				<td>1594B</td>
-				<td>1x</td>
-			</tr>
-			<tr>
-				<td>Gzip</td>
-				<td>570.56s</td>
-				<td>6.98M</td>
-				<td>81.74s</td>
-				<td>10.14x</td>
-				<td>3111MB</td>
-				<td>445B</td>
-				<td>3.58x</td>
-			</tr>
-			<tr>
-				<td>Snappy</td>
-				<td>337.55s</td>
-				<td>26.02M</td>
-				<td>12.97s</td>
-				<td>1.61x</td>
-				<td>17675MB</td>
-				<td>679B</td>
-				<td>2.35x</td>
-			</tr>
-			<tr>
-				<td>LZ4</td>
-				<td>525.82s</td>
-				<td>26.01M</td>
-				<td>20.22s</td>
-				<td>2.51x</td>
-				<td>22922MB</td>
-				<td>881B</td>
-				<td>1.81x</td>
-			</tr>
-		</tbody>
-	</table>
+	<p>Compression</p>
+	<p>User time</p>
+	<p>Messages</p>
+	<p>Time per 1m</p>
+	<p>CPU ratio</p>
+	<p>Disk usage</p>
+	<p>Avg message size</p>
+	<p>Compression ratio</p>
+	<p>None</p>
+	<p>209.67s</p>
+	<p>26.00M</p>
+	<p>8.06s</p>
+	<p>1x</p>
+	<p>41448MB</p>
+	<p>1594B</p>
+	<p>1x</p>
+	<p>Gzip</p>
+	<p>570.56s</p>
+	<p>6.98M</p>
+	<p>81.74s</p>
+	<p>10.14x</p>
+	<p>3111MB</p>
+	<p>445B</p>
+	<p>3.58x</p>
+	<p>Snappy</p>
+	<p>337.55s</p>
+	<p>26.02M</p>
+	<p>12.97s</p>
+	<p>1.61x</p>
+	<p>17675MB</p>
+	<p>679B</p>
+	<p>2.35x</p>
+	<p>LZ4</p>
+	<p>525.82s</p>
+	<p>26.01M</p>
+	<p>20.22s</p>
+	<p>2.51x</p>
+	<p>22922MB</p>
+	<p>881B</p>
+	<p>1.81x</p>
 	<p>Now we were able to keep up with both Snappy and LZ4. Gzip was still out of the question and LZ4 had incompatibility issues between Kafka versions and our Go client, which left us with Snappy. This was a winner in terms of compression ratio and speed too, so we were not very disappointed by the lack of choice.</p>
-	<h3 id="deployingintoproduction">Deploying into production</h3>
+	<h3>Deploying into production</h3>
 	<p>In production we started small with Java based consumers and producers. Our first production topic was just 1Mbps and 600rps of nginx error logs. Messages there were very repetitive and we were able to get whopping 8x decrease in size with batching records for just 1 second across 2 partitions.</p>
 	<p>This gave us some confidence to move onto next topic with <code>journald</code> logs encoded with JSON. Here we were able to reduce ingress from 300Mbps to just 50Mbps (yellow line on the graph):</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/8.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/8.png" alt=""></a><br>
-		At that point we were switched to our own Go consumers and decreased <code>metrics</code> Kafka topic from 800Mbps to just 170Mpbs, lowering average message size 5x from 150B to just 30B.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/9.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/9.png" alt=""></a><br>
-		<a href="https://blog.cloudflare.com/content/images/2018/03/10.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/10.png" alt=""></a><br>
-		Next stop was DNS logs with 3.5Gbps and 1.5Mrps baseline (attacks can make it go 3x that). Here wins were a lot smaller: just 2.6x lower average message size.
-	</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/11.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/11.png" alt=""></a><br>
-		While it sounds not as exciting as previous size reductions, keep in mind that these are capnp messages, which means there's not much repetition in field names, only in values. As an added bonus, Kafka broker CPU and GC also went down in DNS cluster:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/12.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/12.png" alt=""></a></p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/13.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/13.png" alt=""></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/8.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MBwqqBM9fKfK5etewI3K8/28ef767737266f5cce9fdc3c2f33cd24/8.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/10.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VRIDnquD9cRDxx9EpNliX/6194a5e173cebd913a2a97b941bb45f4/10.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/11.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S1GiVnOPIEaZi20vDdu7B/d4acee7865284787776454ed07571040/11.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/12.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F0xiuQrUHNiU2Q0VgaYtC/00bc103925551c0e4fdc31db4f9fecd3/12.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/13.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lvIkKRy1yrsTJNe4n4DEP/310a795de94b7569648cde135b31b462/13.png" alt="" class="kg-image" width="3104" height="1496" loading="lazy">
+		</a>
+	</figure>
 	<p>With all major topics in DNS cluster switched to Snappy we saw even better picture in terms of broker CPU usage:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/14.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/14.png" alt=""></a></p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/15.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/15.png" alt=""></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/14.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ERRHln9aNu0pSoKSFFQkA/1a9447408599e644583ef8040d37c023/14.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/15.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cfmeyd2Jch2ZfTquu14rW/051eee5ebb3f1e8826408dd09da59633/15.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>On the next graph you can see Kafka CPU usage as the purple line and producer CPU usage as the green line:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/16.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/16.png" alt=""></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/16.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QWGl1NhwkYWMHl5Q5Lius/337477bac94e6c3187dfc983ab201921/16.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>CPU usage of the producer did not go up substantially, which means most of the work is spend in non compression related tasks. Consumers did not see any increase in CPU usage either, which means we've got our 2.6x decrease in size practically for free.</p>
 	<p>It was time to hunt the biggest beast of all: <code>requests</code> topic with HTTP access logs. There we were doing up to 100Gbps and 7.5Mrps of ingress at peak (a lot more when big attacks are happening, but this was a quiet week):</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/17.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/17.png" alt=""></a>**</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/17.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/695gJ4I1AIqDHKIH5phRKh/4484f3a250a4284faaaa4460fad1dd2b/17.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>With many smaller topics switched to Snappy already, we did not need to do anything special here. This is how it went:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/18.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/18.png" alt=""></a></p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/19.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/19.png" alt=""></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/18.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2b39JEnQP0w68PhPDkGjOz/4e4a566c8238cd8e7e78b5c9ba786392/18.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/19.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KvLGzI0Rnk44SXDJb6JXT/40662ceb228f3ab546b51447d68b12d6/19.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
 	<p>That's a 2.25x decrease in ingress bandwidth and average message size. We have multiple replicas and consumers, which means egress is a multiple of ingress. We were able to reduce in-DC traffic by hundreds of gigabits of internal traffic and save terabytes of flash storage. With network and disks being bottlenecks, this meant we'd need less than a half of hardware we had. Kafka was one the the main hardware hogs in this datacenter, so this was a large scale win.</p>
 	<p>Yet, 2.25x seemed a bit on the low side.</p>
-	<h3 id="lookingformore">Looking for more</h3>
+	<h3>Looking for more</h3>
 	<p>We wanted to see if we can do better. To do that, we extracted one batch of records from Kafka and ran some benchmarks on it. All batches are around 1MB uncompressed, 600 records in each on average.</p>
 	<p>To run the benchmarks we used <a href="https://github.com/inikep/lzbench">lzbench</a>, which runs lots of different compression algorithms and provides a summary. Here's what we saw with results sorted by compression ratio (heavily filtered list):</p>
-	<pre><code>lzbench 1.7.3 (64-bit MacOS)   Assembled by P.Skibinski
+	<pre class="language-bash"><code class="language-bash">lzbench 1.7.3 (64-bit MacOS)   Assembled by P.Skibinski
 Compressor name         Compress. Decompress. Compr. size  Ratio Filename
 memcpy                  33587 MB/s 33595 MB/s      984156 100.00
 ...
@@ -310,43 +371,32 @@ zstd 1.3.3 -1             409 MB/s   844 MB/s      259438  26.36
 zstd 1.3.3 -2             303 MB/s   889 MB/s      244650  24.86
 zstd 1.3.3 -3             242 MB/s   899 MB/s      232057  23.58
 zstd 1.3.3 -4             240 MB/s   910 MB/s      230936  23.47
-zstd 1.3.3 -5             154 MB/s   891 MB/s      226798  23.04
-</code></pre>
+zstd 1.3.3 -5             154 MB/s   891 MB/s      226798  23.04</code></pre>
 	<p>This looked too good to be true. <a href="https://facebook.github.io/zstd">Zstandard</a> is a fairly new (released 1.5 years ago) compression algorithm from Facebook. In benchmarks on the project's home page you can see this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/zstd.png" alt="zstd" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RmnIQ4k2nqI5jabUBQLMq/a88a3ea32657e375aaaeec60a190a177/zstd.png" alt="zstd" class="kg-image" width="848" height="720" loading="lazy">
+
+	</figure>
 	<p>In our case we were getting this:</p>
-	<table>
-		<thead>
-			<tr>
-				<th>Compressor name</th>
-				<th>Ratio</th>
-				<th>Compression</th>
-				<th>Decompression</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>zstd</td>
-				<td>3.794</td>
-				<td>409 MB/s</td>
-				<td>844 MB/s</td>
-			</tr>
-			<tr>
-				<td>lz4</td>
-				<td>2.475</td>
-				<td>594 MB/s</td>
-				<td>2428 MB/s</td>
-			</tr>
-			<tr>
-				<td>snappy</td>
-				<td>2.313</td>
-				<td>446 MB/s</td>
-				<td>1344 MB/s</td>
-			</tr>
-		</tbody>
-	</table>
+	<p>Compressor name</p>
+	<p>Ratio</p>
+	<p>Compression</p>
+	<p>Decompression</p>
+	<p>zstd</p>
+	<p>3.794</p>
+	<p>409 MB/s</p>
+	<p>844 MB/s</p>
+	<p>lz4</p>
+	<p>2.475</p>
+	<p>594 MB/s</p>
+	<p>2428 MB/s</p>
+	<p>snappy</p>
+	<p>2.313</p>
+	<p>446 MB/s</p>
+	<p>1344 MB/s</p>
 	<p>Clearly, results are very dependent on the kind of data you are trying to compress. For our data zstd was giving amazing results even on the lowest compression level. Compression ratio was better than even gzip at maximum compression level, while throughput was a lot higher. For posterity, this is how DNS logs compressed (HTTP logs compressed similarly):</p>
-	<pre><code>$ ./lzbench -ezstd/zlib rrdns.recordbatch
+	<pre class="language-bash"><code class="language-bash">$ ./lzbench -ezstd/zlib rrdns.recordbatch
 lzbench 1.7.3 (64-bit MacOS)   Assembled by P.Skibinski
 Compressor name         Compress. Decompress. Compr. size  Ratio Filename
 memcpy                  33235 MB/s 33502 MB/s      927048 100.00 rrdns.recordbatch
@@ -380,22 +430,28 @@ zlib 1.2.11 -5             48 MB/s   367 MB/s      258558  27.89 rrdns.recordbat
 zlib 1.2.11 -6             32 MB/s   376 MB/s      247560  26.70 rrdns.recordbatch
 zlib 1.2.11 -7             24 MB/s   409 MB/s      244623  26.39 rrdns.recordbatch
 zlib 1.2.11 -8           9.67 MB/s   429 MB/s      239659  25.85 rrdns.recordbatch
-zlib 1.2.11 -9           3.63 MB/s   446 MB/s      235604  25.41 rrdns.recordbatch
-</code></pre>
+zlib 1.2.11 -9           3.63 MB/s   446 MB/s      235604  25.41 rrdns.recordbatch</code></pre>
 	<p>For our purposes we picked level 6 as the compromise between compression ratio and CPU cost. It is possible to be even more aggressive as real world usage proved later.</p>
 	<p>One great property of zstd is more or less the same decompression speed between levels, which means you only have one knob that connects CPU cost of compression to compression ratio.</p>
 	<p>Armed with this knowledge, we dug up <a href="https://issues.apache.org/jira/browse/KAFKA-4514">forgotten Kafka ticket</a> to add zstd, along with <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-110%3A+Add+Codec+for+ZStandard+Compression">KIP</a> (Kafka Improvement Proposal) and even <a href="https://github.com/apache/kafka/pull/2267">PR on Github</a>. Sadly, these did not get traction back in the day, but this work saved us a lot of time.</p>
 	<p>We <a href="https://github.com/bobrik/kafka/commit/8b17836efda64dba1ebdc080e30ee2945793aef3">ported</a> the patch to Kafka 1.0.0 release and pushed it in production. After another round of smaller scale testing and with <a href="https://github.com/bobrik/sarama/commit/c36187fbafab5afe5c152d2012b05b9306196cdb">patched</a> clients we pushed Zstd into production for requests topic.</p>
 	<p>Graphs below include switch from no compression (before 2/9) to Snappy (2/9 to 2/17) to Zstandard (after 2/17):</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/20.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/20.png" alt=""></a></p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/21.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/21.png" alt=""></a></p>
-	<p>The decrease in size was <strong>4.5x</strong> compared to no compression at all. On next generation hardware with 2.4x more storage and 2.5x higher network throughput we suddenly made our bottleneck more than 10x wider and shifted it from storage and network to CPU cost. We even got to cancel pending hardware order for Kafka expansion because of this.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/20.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/466acpqo8HHXc9mml41SGp/7c032bc886ec3cabecdfa68d8afcb498/20.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2018/03/21.png">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HSguckI7mJln65401u5Y2/9b6af477766c831d4fcf2605888a37e4/21.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
+		</a>
+	</figure>
+	<p>The decrease in size was <b>4.5x</b> compared to no compression at all. On next generation hardware with 2.4x more storage and 2.5x higher network throughput we suddenly made our bottleneck more than 10x wider and shifted it from storage and network to CPU cost. We even got to cancel pending hardware order for Kafka expansion because of this.</p>
+	<h3>Conclusion</h3>
 	<p>Zstandard is a great modern compression algorighm, promising high compression ratio and throughput, tunable in small increments. Whenever you consider using compression, you should check zstd. If you don't consider compression, then it's worth seeing if you can get benefits from it. Run benchmarks with your data in either case.</p>
 	<p>Testing in real world scenario showed how benchmarks, even coming from zstd itself, can be misleading. Going beyond codecs built into Kafka allowed us to improve compression ratio 2x at very low cost.</p>
 	<p>We hope that the data we gathered can be a catalyst to making Zstandard an official compression codec in Kafka to benefit other people. There are 3 bits allocated for codec type and only 2 are used so far, which means there are 4 more vacant places.</p>
 	<p>If you were skeptical of compression benefits in Kafka because of old flaws in Kafka protocol, this may be the time to reconsider.</p>
 	<hr>
 	<p>If you enjoy benchmarking, profiling and optimizing large scale services, come <a href="https://www.cloudflare.com/careers">join us</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

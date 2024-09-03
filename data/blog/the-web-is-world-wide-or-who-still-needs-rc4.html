@@ -1,65 +1,98 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/R0AuJ4c5jLpPHgOAvTbNm/40155445bfce863b8fdcd9d16d630dfe/the-web-is-world-wide-or-who-still-needs-rc4.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Two weeks ago we <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">changed our TLS configuration to deprioritize the RC4</a> encryption method because it is widely thought to be vulnerable to attack. At the time we had an internal debate about turning off RC4 altogether, but statistics showed that we couldn't. Although only a tiny percentage of web browsers hitting CloudFlare's network needed RC4 that's still thousands of people contacting web sites that use our service.</p>
 	<p>To understand who needs RC4 I delved into our live logging system and extracted the User-Agent and country the visitor was coming from. In total, roughly 0.000002% of requests to CloudFlare use the RC4 protocol. It's a small number, but it's significant enough we believe we need to continue to support it for our customers.</p>
 	<p>Requests to CloudFlare sites that are still using RC4 fall into four main categories: people passing through proxies, older phones (often candy bar), other (more on that below) and a bucket of miscellaneous (like software checking for updates, old email programs and ancient operating systems).</p>
-	<p><img alt="Breakdown" src="https://blog.cloudflare.com/content/images/breakdown_1_1.png"></p>
-	<h3 id="ciphers">Ciphers</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CVcmHPD38EgvHNKtrRWK0/ef5490734ebdc9c760b18a82b7db5e89/breakdown_1_1.png" alt="Breakdown" class="kg-image" width="840" height="843" loading="lazy">
+
+	</figure>
+	<h3>Ciphers</h3>
 	<p>Examining data for a 59 hour period last week showed that 34.4% of RC4-based requests used RC4-SHA and 63.6% used ECDHE-RSA-RC4-SHA. RC4-SHA is the oldest of those; ECDHE-RSA-RC4-SHA uses a newer <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">elliptic curve</a> based method of establishing an SSL connection. Either way, they both use the RC4 encryption algorithm to secure data sent across the SSL connection. We'd like to stop supporting RC4 altogether, because it is no longer believed to be secure, but continue to offer it for the small number of clients who can't connect more securely.</p>
 	<p>If you ever need to know the details of an SSL cipher you can use the <code>openssl ciphers</code> command:</p>
-	<pre>$ openssl ciphers -tls1 -v RC4-SHA
-RC4-SHA SSLv3 Kx=RSA Au=RSA Enc=RC4(128) Mac=SHA1
-</pre>
+	<p>$ openssl ciphers -tls1 -v RC4-SHA
+		RC4-SHA SSLv3 Kx=RSA Au=RSA Enc=RC4(128) Mac=SHA1</p>
 	<p>which shows that RC4-SHA uses RSA for <a href="https://en.wikipedia.org/wiki/Key_exchange">key exchange</a>, RSA for authentication, RC4 (128-bit) for encryption and SHA1 for <a href="https://en.wikipedia.org/wiki/Message_authentication_code">message authentication</a>.</p>
 	<p>Similarly,</p>
-	<pre>$ openssl ciphers -tls1 -v ECDHE-RSA-RC4-SHA
-ECDHE-RSA-RC4-SHA SSLv3 Kx=ECDH Au=RSA Enc=RC4(128) Mac=SHA1
-</pre>
+	<p>$ openssl ciphers -tls1 -v ECDHE-RSA-RC4-SHA
+		ECDHE-RSA-RC4-SHA SSLv3 Kx=ECDH Au=RSA Enc=RC4(128) Mac=SHA1</p>
 	<p>shows that the same encryption, authentication and message authenitication are used as RC4-SHA but the key exchange is made using <a href="https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman">Elliptic Curve Diffie Hellman</a>.</p>
-	<h3 id="insiderc4">Inside RC4</h3>
+	<h3>Inside RC4</h3>
 	<p>One of the reasons RC4 is used for encryption is its speed. RC4 is a very fast encryption algorithm and it can be easily implemented on a wide variety of hardware (including phones with slow processors and even on <a href="https://code.google.com/p/cryptonutter/downloads/detail?name=rc4-avr-v1.0.7z">8-bit systems</a> like the Arduino). After all, RC4 dates back to 1987.</p>
 	<p>The core of <a href="https://en.wikipedia.org/wiki/RC4">RC4</a> is the following algorithm:</p>
-	<pre>i := 0
-j := 0 
-while GeneratingOutput:
-    i := (i + 1) mod 256
-    j := (j + S[i]) mod 256
-    swap values of S[i] and S[j]
-    K := S[(S[i] + S[j]) mod 256]
-    output K
-endwhile
-</pre>
+	<p>i := 0
+		j := 0
+		while GeneratingOutput:
+		i := (i + 1) mod 256
+		j := (j + S[i]) mod 256
+		swap values of S[i] and S[j]
+		K := S[(S[i] + S[j]) mod 256]
+		output K
+		endwhile</p>
 	<p>It generates a pseudo-random stream of numbers (all 8-bit numbers in the range 0 to 255) by doing simple lookups in a table, swapping of values and addition modulo 256 (which is very, very fast). The output of that algorithm is usually combined with the message to be encrypted byte-by-byte using some fast scheme like an <a href="https://en.wikipedia.org/wiki/XOR_cipher">XOR</a>.</p>
 	<p>The following short video shows the RC4 algorithm in action. It's been restricted to 32 values rather than 256 to fit it nicely on the screen but the algorithm is identical. The red stream of numbers at the bottom shows the pseudo-random stream output by the algorithm. (The code for this animation is available <a href="https://github.com/jgrahamc/rc4animation">here</a>; thanks to <a href="https://twitter.com/AntoineGrondin">@AntoineGrondin</a> for making the animated GIF).</p>
-	<p><a href="https://blog.cloudflare.com/content/images/rc4.gif"><img alt="RC4 Animated" src="https://blog.cloudflare.com/content/images/rc4.gif"></a></p>
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xH34568BEvuqrcdGbjdon/add611815b7956635af0fe13ea510d3e/rc4.gif" alt="RC4 Animated" class="kg-image" width="1246" height="285" loading="lazy">
+
+	</figure>
+	<p>](<a href="https://blog.cloudflare.com/content/images/rc4.gif">/content/images/rc4.gif</a>)</p>
 	<p>So, RC4 is fast, but who's still using it? To answer that I looked at the HTTP <a href="https://www.whoishostingthis.com/tools/user-agent">User-Agent</a> reported by the device connecting to CloudFlare. There were 292 unique User-Agents.</p>
-	<h3 id="whostillusesrc4">Who still uses RC4?</h3>
+	<h3>Who still uses RC4?</h3>
 	<p>Firstly, lots of people using older "candy bar" style phones. Phones like the <a href="https://en.wikipedia.org/wiki/Nokia_6120_classic">Nokia 6120 classic</a> which was released in 2007 (and is the phone with the greatest number of RC4 requests to CloudFlare sites: 4% of the RC4-based requests in the measurement period), the <a href="https://www.neowin.net/news/windows-phone-ui-copied-by-indian-lemon-phone">Lemon T109</a> or the <a href="https://en.wikipedia.org/wiki/Sony_Ericsson_K310#K_Series:_Kamera_phones">Sony Ericcson K310</a> which was released in 2006.</p>
-	<p><img alt="Older phones" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-05-09_at_13.31.16.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5K0A7Kv8o5TNbXj1QKo25k/1b7e1d9425bf9c083d2c36a3ba1eb661/Screen_Shot_2014-05-09_at_13.31.16.png" alt="Older phones" class="kg-image" width="2042" height="1136" loading="lazy">
+
+	</figure>
 	<p>And, of course, it's not all older telephones being used to visit CloudFlare-powered web sites. There are old browsers too. For example, we've seen the now ancient <a href="https://en.wikipedia.org/wiki/ICab">iCab</a> 2.9.9 web browser (it was released in 2006) and we've seen it being used running on a <a href="https://en.wikipedia.org/wiki/Motorola_68000_family">68k based Macintosh</a> (last sold by Apple in 1996).</p>
-	<p><img alt="iCab 2.9.9" src="https://blog.cloudflare.com/content/images/software2.jpg"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sxLVXRXir8WoBh99RhXqL/5f1cde14db2d4b21921a468bc0c6c03b/software2.jpg" alt="iCab 2.9.9" class="kg-image" width="633" height="461" loading="lazy">
+
+	</figure>
 	<p>Another source of RC4-only connections is older versions of <a href="https://en.wikipedia.org/wiki/Adobe_Integrated_Runtime">Adobe AIR</a>. AIR is often used for games and if users don't update the AIR runtime they can end up using the older RC4 cipher.</p>
 	<p>Yet another source is stand-alone software that makes its own SSL connection. We've seen some software checking update servers using RC4-secured connections. The software makes a connection to its own update server using HTTPS but the available ciphers are limited and RC4 is chosen. The command-line program <a href="http://curl.haxx.se">curl</a> was used to generate 1.9% of RC4-based requests to CloudFlare sites (all done with versions dating to 2009).</p>
-	<p><img alt="IE 5.01" src="https://blog.cloudflare.com/content/images/ie501_1.gif"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8NB92bZ6qoazfkWBEeoeO/7adfbd7fa9883b5081aad6cf3af23367/ie501_1.gif" alt="IE 5.01" class="kg-image" width="768" height="537" loading="lazy">
+
+	</figure>
 	<p>There's also quite a bit of older Microsoft Internet Explorer around including Internet Explorer 5.01 (which dates back to 1999!). Here's a breakdown of Internet Explorer versions connecting using RC4:</p>
-	<p><img alt="IE Versions" src="https://blog.cloudflare.com/content/images/ie_1.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QxYh3PvbcrlIwy67HjUdG/1e643d4b2709376e82bd1bc47f5de9b5/ie_1.png" alt="IE Versions" class="kg-image" width="957" height="933" loading="lazy">
+
+	</figure>
 	<p>Looking at Windows tells a similar story of older version of the operating system (except for the presence of Windows 7 which is explained below) with lots of Windows XP out there:</p>
-	<p><img alt="Windows versions" src="https://blog.cloudflare.com/content/images/windows_1.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OY8iWhqAgTbX3R7GpMXys/f481bd06956a7f7385076d22e4288baa/windows_1.png" alt="Windows versions" class="kg-image" width="796" height="825" loading="lazy">
+
+	</figure>
 	<p>I sampled connections using RC4 to see which countries they came from. The following mapping shows the distribution of RC4-based connections across the world (the darker the more RC4 was used).</p>
-	<p><img alt="The World" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-05-20_at_11.02.00_1.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lOZRJbALtSnw90hjBh1LG/460f82627d47d4a2996608beec2ecc2a/Screen_Shot_2014-05-20_at_11.02.00_1.png" alt="The World" class="kg-image" width="1994" height="1497" loading="lazy">
+
+	</figure>
 	<p>From the map you can see that in Brazil, India, and across central Africa RC4 is still being used quite widely. But you'll also notice that the coloring of the US indicates that a lot of RC4 is in use there. That seems like a surprise, and there's an extra surprise.</p>
-	<h3 id="transparentsslproxies">Transparent SSL Proxies</h3>
+	<h3>Transparent SSL Proxies</h3>
 	<p>Digging into the User-Agent data for the US we see the following web browser being used to access CloudFlare-powered sites using RC4:</p>
-	<pre>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36
-</pre>
-	<p>That's the most recent version of Google Chrome running on Windows 7 (you can see the presence in Windows 7 in the chart above). That should <em>not</em> be using RC4. In fact, most of the connections from Windows machines that we see using RC4 should not be (since we prioritize 3DES over RC4 for older machines).</p>
+	<p>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36</p>
+	<p>That's the most recent version of Google Chrome running on Windows 7 (you can see the presence in Windows 7 in the chart above). That should <i>not</i> be using RC4. In fact, most of the connections from Windows machines that we see using RC4 should not be (since we prioritize 3DES over RC4 for older machines).</p>
 	<p>It was initially unclear why this was happening until we looked at where the connections were coming from. They were concentrated in the US and Brazil and most seemed to be coming from IP addresses used by schools, hospitals and other large institutions.</p>
 	<p>Although the desktop machines in these locations have recent Windows and up to date browsers (which will not use RC4) the networks they are on are using SSL-based VPNs or firewalls that are performing proxy monitoring of SSL connections.</p>
 	<p>This enables them to filter out undesirable sites, even those that are accessed using HTTPS, but it appears that the VPN/firewall software is using older cipher suites. That software likely needs updating to stop it using RC4 for secure connections.</p>
-	<h3 id="whatyoucando">What you can do</h3>
+	<h3>What you can do</h3>
 	<p>You can check the strength of your browser's SSL configuration by visiting <a href="https://www.howsmyssl.com">How's My SSL</a>. If you get a rating of "Probably Okay" then you're good. If not make sure you have the latest browser version.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-05-13_at_17.56.54.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lKNPXIUZWV6cY05DasU0x/d7a0ab5c4ce9fafd78e4348bf885dde5/Screen_Shot_2014-05-13_at_17.56.54.png" alt="" class="kg-image" width="2365" height="1319" loading="lazy">
+
+	</figure>
 	<p>Also be sure to update to the latest version of <a href="http://get.adobe.com/flashplayer">Adobe Flash</a> (if you use it) and <a href="https://get.adobe.com/air">Adobe AIR</a> (if you use it).</p>
 	<p>If you are using an old phone that uses RC4 consider not using it for secure web browsing. RC4 is widely <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">believed to be broken</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

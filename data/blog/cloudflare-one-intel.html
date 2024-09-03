@@ -1,41 +1,57 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-15.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ghgudXQy9cYcEPUfmgVAD/803be4cee9e6fc17efc834493cdf1ee7/image2-15.png" alt="" class="kg-image" width="2000" height="949" loading="lazy">
+
+	</figure>
 	<p>Earlier this week, we announced <a href="https://blog.cloudflare.com/introducing-cloudflare-one">Cloudflare One</a>, a single platform for networking and security management. Cloudflare One extends the speed, reliability, and security we’ve brought to Internet properties and applications over the last decade to make the Internet the new enterprise WAN.</p>
-	<p>Underpinning Cloudflare One is Cloudflare’s global network - today, our network spans more than 200 cities worldwide and is within milliseconds of nearly everyone connected to the Internet. Our network handles, on average, 18 million HTTP requests and 6 million DNS requests <em>per second</em>. With 1 billion unique IP addresses connecting to the Cloudflare network each day, we have one of the broadest views on Internet activity worldwide.</p>
+	<p>Underpinning Cloudflare One is Cloudflare’s global network - today, our network spans more than 200 cities worldwide and is within milliseconds of nearly everyone connected to the Internet. Our network handles, on average, 18 million HTTP requests and 6 million DNS requests <i>per second</i>. With 1 billion unique IP addresses connecting to the Cloudflare network each day, we have one of the broadest views on Internet activity worldwide.</p>
 	<p>We see a large diversity of Internet traffic across our entire product suite. Every day, we block 72 billion cyberthreats. This visibility provides us with a unique position to <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">understand and mitigate Internet threats</a>, and enables us to see new threats and malware before anyone else.</p>
 	<p>At the beginning of this month, as part of our 10th Birthday Week, we launched <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, which shares high-level trends with the general public based on our network’s aggregate data. The same data that powers that view of the Internet also gives us the ability to create new insights to keep your team safer.</p>
 	<p>Today, we are excited to announce the next phase of network and threat intelligence at Cloudflare: the launch of Cloudflare One Intel. Cloudflare One Intel streamlines network and <a href="https://www.cloudflare.com/soc-as-a-service">security operations</a> by converting the data we can gather on our network into actionable insights.</p>
-	<h3 id="the-challenge-with-the-traditional-security-operations">The challenge with the traditional security operations</h3>
+	<h3>The challenge with the traditional security operations</h3>
 	<p>Most enterprises use a large array of point solutions to ensure that the corporate network remains fast, available and secure. Security teams typically aggregate logs from these point solutions into their <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a> and create custom alerts for incident detection.</p>
 	<p>Once an incident has been detected, security teams will quickly respond with remediating actions to prevent data loss, such as removing a compromised device’s access controls or adding a malicious hostname or URL to a block list.</p>
 	<p>Along with incident remediation, security teams will conduct an investigation of the incident to uncover more details about the attacker. Pivoting across historical DNS records, SSL certificate fingerprints, malware samples, and other indicators of compromise, security researchers will try to uncover more details about an attacker. Linked indicators then get fed back onto block lists in point solutions to prevent subsequent attacks.</p>
 	<p>However, there are several challenges with traditional incident detection and response. Security operations teams are often overwhelmed by the plethora of logs and alerts. With threat intelligence, SIEMs, and control planes all in different platforms, incident detection, remediation and forensics can be slow, arduous, and expensive.</p>
-	<h3 id="improving-incident-response-with-cloudflare-one">Improving Incident Response with Cloudflare One</h3>
+	<h3>Improving Incident Response with Cloudflare One</h3>
 	<p>We want to make network and security operations as streamlined as possible. Cloudflare One Intel helps network and security teams detect and respond to incidents more efficiently. That means bringing together insights from your network activity, global Internet intelligence, and automated remediation in a single platform.</p>
 	<p>As part of the mission to help security teams detect and block emerging security threats more efficiently we are releasing two features within Cloudflare Gateway: DNS tunneling detection and domain insights.</p>
-	<h3 id="what-is-dns-tunneling">What is DNS Tunneling?</h3>
+	<h3>What is DNS Tunneling?</h3>
 	<p>DNS tunneling is the misuse of the Domain Name System (DNS) protocol to encode another protocol’s data into a series of DNS queries and response messages. DNS tunneling is often used to circumvent a corporate firewall. For example, DNS tunneling might be used to visit a website that is blocked on the corporate firewall, distribute malware from a command &amp; control server, or exfiltrate sensitive data.</p>
 	<p>DNS tunneling isn’t only used for malicious activities. One of the most common uses of DNS tunneling is by antivirus software, which will often use DNS tunneling to look up file signatures.</p>
-	<h3 id="blocking-dns-tunneling-using-cloudflare-gateway">Blocking DNS tunneling using Cloudflare Gateway</h3>
+	<h3>Blocking DNS tunneling using Cloudflare Gateway</h3>
 	<p>Starting today, customers using Cloudflare Gateway can block hostnames associated with DNS tunneling using the “DNS Tunneling” filter in Gateway’s DNS filtering policies. This feature is available to all Gateway users at no additional cost.</p>
 	<p>You can begin using the filter by navigating to the Policies section of the Gateway product and selecting the “Security Threats” tab. Once you check the “DNS Tunneling” box, Gateway will automatically block any requests made by your organization’s users to domains on this list. Should you want to manually override any specific domains, you can use the “Domain Override” feature to remove the block policy on a specific domain.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Screenshot-2020-10-14-at-10.33.20.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GD34cT2tPcFp6Q5UfTBfi/b05b992a338e4b93e07264011b06f8dd/Screenshot-2020-10-14-at-10.33.20.png" alt="" class="kg-image" width="2005" height="1425" loading="lazy">
+
+	</figure>
 	<p>We previously included known malicious DNS tunnels in our “Anonymizer” category within Gateway’s security threat categories. We are now pulling that into its own category so that customers can have more granular visibility into threats on their network. Further, we are expanding the filter beyond known malicious DNS tunnels to include newly emerging threats, so that customers can block these threats as soon as we see them on our network.</p>
-	<h3 id="how-we-use-machine-learning-to-detect-dns-tunneling">How we use machine learning to detect DNS tunneling</h3>
+	<h3>How we use machine learning to detect DNS tunneling</h3>
 	<p>Using <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a>, Cloudflare detects anomalous DNS request patterns and flags these requests as suspected DNS tunneling. Our model analyzes requests and detects anomalous behavior at a frequency of every five minutes.</p>
 	<p>Once a set of requests is flagged, we add the associated hostname to our “DNS Tunneling” category. We do not add hostnames of commonly allowed DNS tunnels to this list, such as those used by antivirus software.</p>
 	<p>Our model not only blocks hostnames associated with DNS tunneling seen on your network, but across the entire Cloudflare network. Processing over 500 billion DNS queries each day, we have unique insight into global DNS traffic patterns.</p>
-	<h3 id="adding-transparency-to-security">Adding transparency to security</h3>
+	<h3>Adding transparency to security</h3>
 	<p>Cloudflare’s unique insight into global Internet traffic is what powers the intelligence behind Cloudflare One. DNS tunneling detection is one example of how we use aggregated data from our network to improve Internet security for everyone. But, until now, that has been opaque to users.</p>
 	<p>Security teams investigating the threats that impact their organization need more transparency. Cloudflare One Intel consolidates the information we have about the potentially harmful sites and properties that can target your organization.</p>
 	<p>Starting today, with a single click, administrators reviewing logs in Cloudflare Gateway can get a comprehensive breakdown of any site being allowed or blocked.</p>
-	<p>In this expanded view, you can now click the “View Domain Insights” button, which will take you to the Cloudflare Radar Domain Insights page for the requested hostname. This feature is available to all Gateway users at no additional cost. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-17.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-s-next">What’s Next</h3>
+	<p>In this expanded view, you can now click the “View Domain Insights” button, which will take you to the Cloudflare Radar Domain Insights page for the requested hostname. This feature is available to all Gateway users at no additional cost.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AlHYR5z0LZVTjTWWMR367/5925a61d857ed750d1e21098d4863833/image1-17.png" alt="" class="kg-image" width="1999" height="991" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/p8d5DxN92Ri0134VyvtLc/03f8f6850b96397db674cbf6fc93045a/image4-11.png" alt="" class="kg-image" width="1999" height="808" loading="lazy">
+
+	</figure>
+	<h3>What’s Next</h3>
 	<p>These new features are just the beginning of Cloudflare One Intel. Over the coming weeks and months, we’ll be rolling out more features across the Cloudflare One platform that will make our Internet intelligence more accessible and actionable. Stay tuned for premium features available in Cloudflare Radar for Cloudflare Gateway customers.</p>
-	<h3 id="get-started-now">Get started now</h3>
+	<h3>Get started now</h3>
 	<p>Cloudflare Radar is available to everyone for free - you can check it out <a href="https://radar.cloudflare.com">here</a> and start exploring our Internet intelligence.</p>
-	<p>To protect your team from threats on the Internet that utilize DNS tunnelling, <a href="https://dash.cloudflare.com/sign-up/teams">sign up for a Cloudflare Gateway account </a>and use the Security filter setting to block DNS tunnelling attempts. DNS-based security and content filtering is available for free across every Gateway plan.</p>
+	<p>To protect your team from threats on the Internet that utilize DNS tunnelling, <a href="https://dash.cloudflare.com/sign-up/teams">sign up for a Cloudflare Gateway account</a> and use the Security filter setting to block DNS tunnelling attempts. DNS-based security and content filtering is available for free across every Gateway plan.</p>
 </div>

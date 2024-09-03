@@ -1,38 +1,62 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-13.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Imagine how a customer would feel if they get to your website, and it takes forever to load all the images you serve. This would become a negative user experience that might lead to lower overall site traffic and high bounce rates. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lGb1t6tiG2SxqxS3JDzuO/5e38fb578b83b632acdfd47883858716/image1-13.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>Imagine how a customer would feel if they get to your website, and it takes forever to load all the images you serve. This would become a negative user experience that might lead to lower overall site traffic and high bounce rates.</p>
 	<p>The good news is that regardless of whether you need to store and serve 100,000 or one million images, Cloudflare Images gives you the tools you need to build an entire image pipeline from scratch.</p>
-	<h3 id="customer-pains"><strong>Customer pains</strong></h3>
+	<h3><b>Customer pains</b></h3>
 	<p>After speaking with many of Cloudflare customers, we quickly understood that whether you are an e-commerce retailer, a blogger or have a platform for creators, everyone shares the same problems:</p>
 	<ul>
-		<li><strong>Egress fees.</strong> Each time an image needs to go from Product A (storage) to Product B (optimize) and to Product C (delivery) there’s a fee. If you multiply this by the millions of images clients serve per day it’s easy to understand why their bills are so high. </li>
-		<li><strong><strong><strong>Buckets everywhere. </strong></strong></strong>Our customers’ current pipelines involve uploading images to and from services like AWS, then using open source products to optimize images, and finally to serve the images they need to store them in another cloud bucket since CDN don’t have long-term storage. This means that there is a dependency on buckets at each step of the pipeline.</li>
-		<li><strong>Load times.</strong> When an image is not correctly optimized the image can be much larger than needed resulting in an unnecessarily long download time. This can lead to a bad end user experience that might result in loss of overall site traffic.</li>
-		<li><strong><strong><strong>High Maintenance. </strong></strong></strong>To maintain an image pipeline companies need to rely on several AWS and open source products, plus an engineering team to build and maintain that pipeline. This takes the focus away from engineering on the product itself. </li>
+		<li>
+			<p><b>Egress fees.</b> Each time an image needs to go from Product A (storage) to Product B (optimize) and to Product C (delivery) there’s a fee. If you multiply this by the millions of images clients serve per day it’s easy to understand why their bills are so high.</p>
+		</li>
+		<li>
+			<p><b><b><b>Buckets everywhere.</b></b></b> Our customers’ current pipelines involve uploading images to and from services like AWS, then using open source products to optimize images, and finally to serve the images they need to store them in another cloud bucket since CDN don’t have long-term storage. This means that there is a dependency on buckets at each step of the pipeline.</p>
+		</li>
+		<li>
+			<p><b>Load times.</b> When an image is not correctly optimized the image can be much larger than needed resulting in an unnecessarily long download time. This can lead to a bad end user experience that might result in loss of overall site traffic.</p>
+		</li>
+		<li>
+			<p><b><b><b>High Maintenance.</b></b></b> To maintain an image pipeline companies need to rely on several AWS and open source products, plus an engineering team to build and maintain that pipeline. This takes the focus away from engineering on the product itself.</p>
+		</li>
 	</ul>
-	<h3 id="how-can-cloudflare-images-help">How can Cloudflare Images help? &nbsp;</h3>
-	<h4 id="zero-egress-costs">Zero Egress Costs</h4>
+	<h3>How can Cloudflare Images help? &nbsp;</h3>
+	<h4>Zero Egress Costs</h4>
 	<p>The majority of cloud providers allow you to store images for a small price, but the bill starts to grow every time you need to retrieve that image to optimize and deliver. The good news is that with Cloudflare Images customers don’t need to worry about egress costs, since all storage, optimization and delivery are part of the same tool.</p>
-	<h4 id="the-buckets-stop-with-cloudflare-images">The buckets stop with Cloudflare Images</h4>
-	<p>One small step for humankind, one giant leap for image enthusiasts! </p>
+	<h4>The buckets stop with Cloudflare Images</h4>
+	<p>One small step for humankind, one giant leap for image enthusiasts!</p>
 	<p>With Cloudflare Images the bucket pain stops now, and customers have two options:</p>
 	<ol>
-		<li>One image upload can generate up to 100 variants, which allows developers to stop placing image sizes in URLs. This way, if a site gets redesigned there isn’t a need to change all the image sizes because you already have all the variants you need stored in Cloudflare Images.</li>
-		<li>Give your users a one-time permission to upload one file to your server. This way developers don’t need to write additional code to move files from users into a bucket — they will be automatically uploaded into your Cloudflare storage.</li>
+		<li>
+			<p>One image upload can generate up to 100 variants, which allows developers to stop placing image sizes in URLs. This way, if a site gets redesigned there isn’t a need to change all the image sizes because you already have all the variants you need stored in Cloudflare Images.</p>
+		</li>
+		<li>
+			<p>Give your users a one-time permission to upload one file to your server. This way developers don’t need to write additional code to move files from users into a bucket — they will be automatically uploaded into your Cloudflare storage.</p>
+		</li>
 	</ol>
-	<h4 id="minimal-engineering-effort">Minimal engineering effort</h4>
-	<p>Have you ever dreamed about your team focusing entirely on product development instead of maintaining infrastructure? We understand, and this is why we created a straightforward set of APIs as well as a UI in the Cloudflare Dashboard. This allows your team to serve and optimize images without the need to set up and maintain a pipeline from scratch. </p>
+	<h4>Minimal engineering effort</h4>
+	<p>Have you ever dreamed about your team focusing entirely on product development instead of maintaining infrastructure? We understand, and this is why we created a straightforward set of APIs as well as a UI in the Cloudflare Dashboard. This allows your team to serve and optimize images without the need to set up and maintain a pipeline from scratch.</p>
 	<p>Once you get access to Cloudflare Images your team can start:</p>
 	<ul>
-		<li>Uploading, deleting and updating images via API.</li>
-		<li>Setting up preferred variants.</li>
-		<li>Editing with Image Resizing both with the UI and API.</li>
-		<li>Serving an image with one click.</li>
+		<li>
+			<p>Uploading, deleting and updating images via API.</p>
+		</li>
+		<li>
+			<p>Setting up preferred variants.</p>
+		</li>
+		<li>
+			<p>Editing with Image Resizing both with the UI and API.</p>
+		</li>
+		<li>
+			<p>Serving an image with one click.</p>
+		</li>
 	</ul>
-	<h4 id="process-images-on-the-fly">Process images on the fly</h4>
+	<h4>Process images on the fly</h4>
 	<p>We all know that Google and many other search engines use the loading speed as one of their ranking factors; Cloudflare Images helps you be on the top of that list. We automatically detect what browser your clients are using and serve the most optimized version of the image, so that you don’t need to worry about file extensions, configuring origins for your image sets or even cache hit rates.</p>
 	<p>Curious to have a sneak peek at Cloudflare Images? <a href="https://dash.cloudflare.com/sign-up/images">Sign up now!</a></p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/ba19e3bc1e7f7446809585e535218f65?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

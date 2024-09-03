@@ -1,7 +1,10 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>The following is a guest blog post by <a href="https://www.linkedin.com/in/nathanfranzen">Nathan Franzen</a>, Software Engineer at <a href="https://stackpoint.io">StackPointCloud</a>. StackPointCloud is the creator of Stackpoint.io, the leading multi-cloud management platform for cloud native workloads. They are the developers of the <a href="https://github.com/cloudflare/cloudflare-warp-ingress">Cloudflare Ingress Controller</a> for Kubernetes.</em></p>
-	<h3 id="deployingapplicationsonminikubewithargotunnels">Deploying Applications on Minikube with Argo Tunnels</h3>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lIbr7ys1slKmEegs1MUET/20bcbeab643a686e04bf645bc682dd95/minikube_plus_cloudflare.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><sub><i>The following is a guest blog post by </i></sub><a href="https://www.linkedin.com/in/nathanfranzen"><sub><i>Nathan Franzen</i></sub></a><sub><i>, Software Engineer at </i></sub><a href="https://stackpoint.io"><sub><i>StackPointCloud</i></sub></a><sub><i>. StackPointCloud is the creator of Stackpoint.io, the leading multi-cloud management platform for cloud native workloads. They are the developers of the </i></sub><a href="https://github.com/cloudflare/cloudflare-warp-ingress"><sub><i>Cloudflare Ingress Controller</i></sub></a><sub><i> for Kubernetes.</i></sub></p>
+	<h3>Deploying Applications on Minikube with Argo Tunnels</h3>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lIbr7ys1slKmEegs1MUET/20bcbeab643a686e04bf645bc682dd95/minikube_plus_cloudflare.png" alt="minikube plus cloudflare" class="kg-image" width="1600" height="976" loading="lazy">
+	</figure>
 	<blockquote>
 		<p>This article assumes basic knowledge of Kubernetes. If you're not familiar with Kubernetes, visit <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a> to learn the basics.</p>
 	</blockquote>
@@ -9,13 +12,13 @@
 	<p>At Cloudflare, we've created a product called <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> which allows you to host services through a tunnel using Cloudflare as your edge. Tunnels provide a way to expose your services to the internet by creating a connection to Cloudflare's edge and routing your traffic over it. Since your service is creating its own outbound connection to the edge, you don’t have to open ports, configure a firewall, or even have a public IP address for your service. All traffic flows through Cloudflare, blocking attacks and intrusion attempts before they ever make it to you, completely securing your origin.</p>
 	<p>Deploying your service to more locations around the world is as simple as spinning up more containers. Anything which uses the Ingress Controller will receive your traffic, wherever the container is running in the world or on the Internet. Tunnels make it simpler to have robust security even while deploying across multiple regions or cloud providers.</p>
 	<p>Usually Minikube applications need to be ported over to a production Kubernetes setup to be deployed, but with Argo Tunnel, you can easily deploy a locally-running yet publicly-available Minikube instance making it a great way to try out both Kubernetes and Argo Tunnel. In this example, we’ll create a simple microservice that returns data when given a key, deploy it into Minikube, and start up the Argo Tunnel machinery to get it exposed to the Internet.</p>
-	<h3 id="gettingstartedwithanapplicationapi">Getting Started with an Application API</h3>
+	<h3>Getting Started with an Application API</h3>
 	<p>We'll start by by creating a web service in Python using <a href="http://flask.pocoo.org">Flask</a>. We'll write a simple application to represent a small piece of an API in just a few lines of code. The complete application, secret_token.py is simply:</p>
-	<pre><code class="language-python">from flask import Flask, jsonify, abort  
+	<pre class="language-undefined"><code class="language-undefined">from flask import Flask, jsonify, abort  
   
 app = Flask(__name__)
 
-@app.route('/api/v1/token/&lt;key&gt;', methods=['GET'])  
+@app.route('/api/v1/token/<key>', methods=['GET'])  
 def token(key):  
 	test_data = {  
 		"e8990ab9be26": "3OX9+p39QLIvE6+x/w=",  
@@ -24,36 +27,36 @@ def token(key):
 	secret = test_data.get(key)  
 	if secret is None:  
 		abort(404)  
-	return jsonify({"key": key, "token": secret})
-</code></pre>
+	return jsonify({"key": key, "token": secret})</key></code></pre>
+	<p></p>
 	<p>This tiny service will simply respond to a GET request with some secret data, given a key.</p>
-	<h3 id="usingdocker">Using Docker</h3>
+	<h3>Using Docker</h3>
 	<p>We’ll take the next step toward deployment and package our application into a portable Docker image with a Dockerfile:</p>
-	<pre><code class="language-docker">FROM  python:alpine3.7  
+	<pre class="language-undefined"><code class="language-undefined">FROM  python:alpine3.7  
 RUN  pip install flask gunicorn
 COPY  secret_token.py .
-CMD  gunicorn -b 0.0.0.0:8000 secret_token:app
-</code></pre>
+CMD  gunicorn -b 0.0.0.0:8000 secret_token:app</code></pre>
+	<p></p>
 	<p>This will allow us to define a Docker image, the blueprint for the containers Minikube will build.</p>
-	<h4 id="deployingintominikube">Deploying into Minikube</h4>
+	<h4>Deploying into Minikube</h4>
 	<blockquote>
 		<p>If you don't have Minikube installed, install it here: <a href="https://kubernetes.io/docs/tasks/tools/install-minikube">https://kubernetes.io/docs/tasks/tools/install-minikube/</a></p>
 	</blockquote>
 	<p>Usually, we would build the Docker image with our Docker daemon and push it to a repository where the cluster can access it. With Minikube, however, that’s a round-trip we don’t need. We can share the Minikube Docker daemon with the Docker build process and avoid pushing to a cloud repository:</p>
-	<pre><code class="language-bash">$ eval $(minikube docker-env)  
-$ docker build -t myrepo/secret_token .
-</code></pre>
+	<pre class="language-undefined"><code class="language-undefined">$ eval $(minikube docker-env)  
+$ docker build -t myrepo/secret_token .</code></pre>
+	<p></p>
 	<p>The image is now present on the Minikube VM where Kubernetes is running.</p>
 	<p>In a production Kubernetes system, we might spend a good deal of time going over the details of the deployment and service manifests, but kubectl run provides a simple way to get the basic app up and running. We add the image-pull-policy flag to make sure that Kubernetes doesn’t first try to pull the image remotely from Docker Hub.</p>
-	<pre><code class="language-bash">$ kubectl run token --image myrepo/secret_token --expose --port 8000 --image-pull-policy=IfNotPresent --replicas=3
-</code></pre>
+	<pre class="language-undefined"><code class="language-undefined">$ kubectl run token --image myrepo/secret_token --expose --port 8000 --image-pull-policy=IfNotPresent --replicas=3</code></pre>
+	<p></p>
 	<p>We now have a Kubernetes deployment running with our 3 replicas of containers built from our image, and a service associated with it that exposes port <code>8000</code>. Save the two manifests locally into files:</p>
-	<pre><code class="language-bash">kubectl get deployment token --export -o yaml &gt; deployment.yaml  
-kubectl get svc token --export -o yaml &gt; service.yaml
-</code></pre>
+	<pre class="language-undefined"><code class="language-undefined">kubectl get deployment token --export -o yaml &gt; deployment.yaml  
+kubectl get svc token --export -o yaml &gt; service.yaml</code></pre>
+	<p></p>
 	<p>We’ll be able to edit these files to make changes to our cluster configuration.</p>
 	<p>For local testing, let's change that service so that it exposes a NodePort -- this will proxy the service to a port on the Minikube VM. Replace the spec in the service.yaml file with:</p>
-	<pre><code class="language-yaml">spec:  
+	<pre class="language-undefined"><code class="language-undefined">spec:  
 	ports:  
 	-	nodePort:  32080  
 		port:  8000  
@@ -62,42 +65,30 @@ kubectl get svc token --export -o yaml &gt; service.yaml
 	selector:  
 		run:  token  
 	sessionAffinity:  None  
-	type:  NodePort
-</code></pre>
+	type:  NodePort</code></pre>
+	<p></p>
 	<p>And apply the change to our cluster:</p>
-	<pre><code class="language-bash">$ kubectl apply -f service.yaml
-</code></pre>
+	<pre class="language-undefined"><code class="language-undefined">$ kubectl apply -f service.yaml</code></pre>
+	<p></p>
 	<p>Now, we can test locally with <code>curl</code>, reaching the service via the NodePort on the Minikube VM:</p>
-	<pre><code class="language-bash">$ minikube start
+	<pre class="language-undefined"><code class="language-undefined">$ minikube start
 $ export MINIKUBE_IP=$(minikube ip)
-$ curl http://$MINIKUBE_IP:32080/api/v1/token/b01323031589
-</code></pre>
-	<h3 id="usingcloudflaresargotunnel">Using Cloudflare’s Argo Tunnel</h3>
+$ curl http://$MINIKUBE_IP:32080/api/v1/token/b01323031589</code></pre>
+	<h3>Using Cloudflare’s Argo Tunnel</h3>
 	<p>The NodePort setup is fine for testing the application locally, but if we want to share this service with others or better simulate how it will work in the real world, we need to expose it to the internet. In most cases, this means running in a cloud environment and dealing with load balancer configuration or setting up an NGINX ingress controller and dealing with network rules and routing. The Cloudflare Argo Tunnel Ingress Controller allows us to route almost anything to a Cloudflare domain, including services running inside of Minikube.</p>
 	<p>In the Kubernetes cluster, an <code>ingress</code> is an object that describes how we want our service exposed on the internet and an <code>ingress-controller</code> is the process that actually exposes it. To install the Cloudflare Ingress Controller, you’ll need to have a Cloudflare domain and an Argo Tunnel certificate, configured with the <code>cloudflared</code> application.</p>
 	<p><code>kubectl run</code> was fine for quickly installing the test application, but for more complex installations, <a href="https://helm.sh">helm</a> is a great tool, and is used to package the Cloudflare agent. Once you have the helm client installed, a simple <code>helm init</code> will configure Minikube to work with it. The chart for the ingress controller is found at the <a href="https://github.com/StackPointCloud/trusted-charts/tree/master/stable/cloudflare-warp-ingress&amp;sa=D&amp;ust=1529959945974000">trusted-charts public repository</a> and can be installed directly from there.</p>
-	<h4 id="cloudflaredconfiguration">Cloudflared Configuration</h4>
+	<h4>Cloudflared Configuration</h4>
 	<p><code>Cloudflared</code> is the end of the tunnel that runs on your machine and proxies traffic to and from your origin server through the tunnel. If you don't have it installed already, the <code>cloudflared</code> application complete quickstart instructions can be found at <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fargo-tunnel%2Fquickstart%2Fquickstart%2F&amp;sa=D&amp;ust=1529959945975000">https://developers.cloudflare.com/argo-tunnel/quickstart/quickstart/</a></p>
-	<h4 id="installingthecontrollerwithhelm">Installing the Controller with Helm</h4>
+	<h4>Installing the Controller with Helm</h4>
 	<p>Now we will run some commands that define the repository that holds our chart and override a few default values:</p>
-	<pre><code class="language-bash">$ helm repo add trusted-charts http://trusted-charts.stackpoint.io/ 
-$ DOMAIN=anthopleura.net  
-$ CERT_B64=$(base64 -w0 ~/.cloudflared/cert.pem 2&gt;/dev/null|| base64 ~/.cloudflared/cert.pem)
-$ NS="default"  
-$ USE_RBAC=true
-$ NAME=cloudflare
-
-$ helm install --name $NAME --namespace $NS \                                                                                                             
-   --set rbac.install=$USE_RBAC \
-   --set secret.install=true \
-   --set secret.domain=$DOMAIN,secret.certificate_b64=$CERT_B64 \
-   trusted-charts/argo-ingress
-
-</code></pre>
+	<pre class="language-undefined"><code class="language-undefined">$ minikube start
+$ export MINIKUBE_IP=$(minikube ip)
+$ curl http://$MINIKUBE_IP:32080/api/v1/token/b01323031589</code></pre>
 	<p>This installation configures two cloudflare-warp-ingress controller replicas so that any service we expose will get two separate tunnels to the Cloudflare edge, paired together in a single pool.</p>
-	<h4 id="exposingourapplicationwithaningress">Exposing Our Application with an Ingress</h4>
+	<h4>Exposing Our Application with an Ingress</h4>
 	<p>We'll need to write an ingress definition. Create a file called <code>warp-controller.yaml</code>:</p>
-	<pre><code class="language-yaml">apiVersion:  extensions/v1beta1  
+	<pre class="language-undefined"><code class="language-undefined">apiVersion:  extensions/v1beta1  
 kind:  Ingress  
 metadata:  
 	annotations:  
@@ -111,16 +102,13 @@ spec:
 	paths:  
 	-	backend:  
 			serviceName:  token  
-			servicePort:  8000
-</code></pre>
-	<p>And apply the definition:<br>
-		<code>$ kubectl apply -f service.yaml</code>
-	</p>
-	<h4 id="examiningthedeployment">Examining the deployment</h4>
-	<pre><code class="language-bash">$ kubectl get pod
-</code></pre>
+			servicePort:  8000</code></pre>
+	<p>And apply the definition:</p>
+	<pre class="language-undefined"><code class="language-undefined">$ kubectl apply -f service.yaml</code></pre>
+	<h4>Examining the deployment</h4>
+	<pre class="language-undefined"><code class="language-undefined">$ kubectl get pod</code></pre>
 	<p>Should print:</p>
-	<pre><code>NAME									READY 	STATUS	RESTARTS 	AGE
+	<pre class="language-undefined"><code class="language-undefined">NAME									READY 	STATUS	RESTARTS 	AGE
 
 cloudflare-argo-ingress-6b886994b-52fsl 1/1 	Running 	   0 	34s
 
@@ -128,27 +116,25 @@ token-766cd8dd4c-bmksw 					1/1 	Running 	   0 	 2m
 
 token-766cd8dd4c-l8gkw 					1/1 	Running 	   0 	 2m
 
-token-766cd8dd4c-p2phg 					1/1 	Running 	   0 	 2m
-</code></pre>
+token-766cd8dd4c-p2phg 					1/1 	Running 	   0 	 2m</code></pre>
 	<p>The output shows the three <code>token</code> pods and the <code>cloudflare-warp-ingress</code> pod. Examine the logs from the argo pod to see the activity of the ingress controller:</p>
-	<p><code>$ kubectl logs cloudflare-argo-ingress-6b886994b-52fsl</code></p>
+	<pre class="language-undefined"><code class="language-undefined">$ kubectl logs cloudflare-argo-ingress-6b886994b-52fsl</code></pre>
 	<p>The controller watches the cluster for creation of ingresses, services and pods.</p>
 	<p>The endpoint is live at <a href="https://token.anthopleura.net/api/v1/token/e8990ab9be26">https://token.anthopleura.net/api/v1/token/e8990ab9be26</a> returning</p>
-	<pre><code class="language-json">{  
+	<pre class="language-undefined"><code class="language-undefined">{  
 	"key": "e8990ab9be26",  
 	"token": "3OX9+p39QLIvE6+x/YK4DxWWCFi/D+c7g99c14oNB8g="  
-}
-</code></pre>
+}</code></pre>
 	<p>Now this small piece of an api is available publicly on the internet for testing. Obviously you don’t want to serve public traffic into a minikube instance, but it’s certainly handy for sharing preliminary work across development teams.</p>
-	<p>The Cloudflare <a href="https://blog.cloudflare.com/%5Bhttps://dash.cloudflare.com/%5D(https://dash.cloudflare.com/&amp;sa=D&amp;ust=1529959945990000)">dashboard</a> under the analytics tab will show some general statistics about the requests to your zone.</p>
-	<p><strong><img src="https://lh6.googleusercontent.com/iYi4oSudiLr7BM0dixgS8RcgM0TdaqhReVDOxYklJw5cvBjZ486pS58WUabkMEWnRaFMN9AC3rYhbviIiXpVLxdPcp4DXv2iTF37_lpHRMW2h3n6NkjGjt83EYgLT61oQPjAHsHJ" alt="" loading="lazy"></strong></p>
-	<h3 id="routingandrelationships">Routing and relationships</h3>
+	<p>The Cloudflare <a href="https://blog.cloudflare.com/minikube-cloudflare/%5Bhttps://dash.cloudflare.com/%5D(https://dash.cloudflare.com/&amp;sa=D&amp;ust=1529959945990000)">dashboard</a> under the analytics tab will show some general statistics about the requests to your zone.</p>
+	<h3>Routing and relationships</h3>
 	<p>A quick sketch of the routing in the Kubernetes cluster and from the Cloudflare network:</p>
-	<p><strong><img src="https://docs.google.com/a/cloudflare.com/drawings/d/sIJvdT2Zlf_1ASP9nsISGXA/image?w=624&amp;h=423&amp;rev=32&amp;ac=1&amp;parent=1NhdNEGRmEx16b868bhsbWql_kg2B-qEOMVq0jH0ud6Y" alt="" loading="lazy"></strong></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZiftW67CC2PZM3UfQ25kn/262f6ce0e8827d4928b2099be294db48/Screenshot_2024-08-06_at_5.33.57_PM.png" alt="" class="kg-image" width="667" height="423" loading="lazy">
+	</figure>
 	<p>The warp controller pods provide a way for Argo Tunnels to connect the pods containing your application to the internet through Cloudflare's edge.</p>
-	<h3 id="goingfartherwithcloudflareloadbalancers">Going farther with Cloudflare Load Balancers</h3>
+	<h3>Going farther with Cloudflare Load Balancers</h3>
 	<p>This demo exposes a service through a single Argo Tunnel. If your Cloudflare account is enabled with load balancing, you can route traffic through a load balancer and pool of tunnels instead, by adding the annotation<code>argo.cloudflare.com/lb-pool=token</code> to the ingress. For details of load balancer routing and weighting please refer to the Cloudflare <a href="https://developers.cloudflare.com">docs</a>.</p>
 	<p>If you do use load balancing, then it is possible to run multiple instances of the ingress controller. When installing from the helm chart, set the value <code>replicaCount</code> to two or more and get multiple instances of the controller in the minikube cluster. The configuration will be useful for high availability in a single cluster. Load balancing can also be used to spread traffic across multiple clusters with different argo ingress controllers connecting to the same load balancing pool.</p>
 	<p>With two ingress controllers, the <a href="https://www.cloudflare.com/a/traffic/stackpoint.io&amp;sa=D&amp;ust=1529959945991000">Cloudflare UI</a> will show a pool named token.anthopleura.net with two origins with tunnel ids as origin addresses:</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,14 +1,16 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8aepSiVfi1vUJOcogRaqm/e8e0054fdca4cb99213aafaf7fcf2645/turning-im-under-attack-into-im-doing-some-go.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>CloudFlare's <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode">I'm Under Attack</a> mode allows our customers to, at the click of a button, tell us that they are experiencing an attack and enable automatic protection. It works by slowing down visits to the web site that's under attack and performing extra work to identify malicious visitors. When enabled, visitors to the site suffering an attack see a web page like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/introducing-im-under-attack-mode.png.scaled500.png" alt="introducing-im-under-attack-mode.png.scaled500" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rfIdiItixFtZ29aGGPRA9/65242cdba9b3764c492373182b65267d/introducing-im-under-attack-mode.png.scaled500.png" alt="introducing-im-under-attack-mode.png.scaled500" class="kg-image" width="500" height="207" loading="lazy">
+
+	</figure>
 	<p>These checks take about 5 seconds to perform, and during that time the visitor's (or attacker's) web browser could be performing other work. Part of the verification takes the form of JavaScript that CloudFlare delivers to the browser. Currently, that JavaScript only performs the verification checks, but it could do more. After the checks the visitor is forwarded on to the web site.</p>
 	<p>In the past, many distributed computing efforts have harnessed the power of machines across the Internet to do collaborative work. The <a href="https://en.wikipedia.org/wiki/SETI@home">SETI@Home</a> project looks for extraterrestrial life, <a href="https://en.wikipedia.org/wiki/Folding@home">Folding@Home</a> looks at protein folding to help research into drugs and diseases, and <a href="https://en.wikipedia.org/wiki/Great_Internet_Mersenne_Prime_Search">GIMPS</a> is looking for particular prime numbers. Wikipedia has a <a href="https://en.wikipedia.org/wiki/List_of_distributed_computing_projects">long list</a> of such projects.</p>
 	<p>We think that I'm Under Attack mode version 2.0 could be an "I'm Doing Some Good" mode by including a distributed computation in the JavaScript that's delivered as part of dealing with attacks. The project would need to be able to broken down into chunks that run 5 seconds at a time, and be written in JavaScript. It could be run across all web sites that are under attack and in the browsers of legitimate and attacking users potentially using the resources of evil doers for a good purpose.</p>
-	<p>The end users wouldn't see any difference from the way I'm Under Attack Mode works today, but a little bit of compute power that's not being used while checks for malicious behavior are made could be put to good<br>
-		use. Put together, many thousands of machines could be working on a distributed computing project without any effort on the part of end users. And without any extra impact on web site owners.</p>
+	<p>The end users wouldn't see any difference from the way I'm Under Attack Mode works today, but a little bit of compute power that's not being used while checks for malicious behavior are made could be put to gooduse. Put together, many thousands of machines could be working on a distributed computing project without any effort on the part of end users. And without any extra impact on web site owners.</p>
 	<p>The hard question to answer is... which project?</p>
 	<p>Rather than come up with our own ideas we'd like to throw this open to the community for suggestions. The best (and most implementable) solution will be picked by CloudFlare and implemented to start turning a bad situation into a good one.</p>
 	<p>Make suggestions in the comments below.</p>
-	<!--kg-card-end: markdown-->
 </div>

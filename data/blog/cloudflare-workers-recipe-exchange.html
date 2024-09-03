@@ -1,37 +1,57 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Indian_Spices-1.jpg" alt="Indian_Spices-1" loading="lazy"><br>
-		<small><a href="https://commons.wikimedia.org/wiki/File:Indian_Spices.jpg">Photo of Indian Spices</a>, by Joe mon bkk. <a href="https://commons.wikimedia.org/wiki/File:Indian_Spices.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>.</small>
-	</p>
+<div class="mb2 gray5">2 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qBx6cC3szlYnnQr7s1f40/b5762a7d5544b7c6f31bc0347a67feb7/Indian_Spices-1.jpg" alt="Indian_Spices-1" class="kg-image" width="800" height="508" loading="lazy">
+
+	</figure>
+	<p><a href="https://commons.wikimedia.org/wiki/File:Indian_Spices.jpg">Photo of Indian Spices</a>, by Joe mon bkk. <a href="https://commons.wikimedia.org/wiki/File:Indian_Spices.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>.</p>
 	<p>Share your <a href="https://developers.cloudflare.com/workers/about">Cloudflare Workers</a> recipes with the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community</a>. Developers in Cloudflare’s community each bring a unique perspective that would yield use cases our core team could never have imagined. That is why we invite you to share Workers recipes that are useful in your own work, life, or hobby.</p>
 	<p>We’ve created a new tag <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. We invite you to share your work, borrow / get inspired by the work of others, and upvote useful recipes written by others in the community.</p>
-	<p align="center">
-		<a class="btn btn-warning" href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">Recipe Exchange in Cloudflare Community</a>
-	</p>
+	<p><a href="https://community.cloudflare.com/tags/recipe-exchange">Recipe Exchange in Cloudflare Community</a></p>
 	<p>We will be highlighting interesting and/or popular recipes (with author permission) in the coming months right here in this blog.</p>
-	<h3 id="whatiscloudflareworkersanyway">What is Cloudflare Workers, anyway?</h3>
+	<h3>What is Cloudflare Workers, anyway?</h3>
 	<p><a href="https://developers.cloudflare.com/workers/about">Cloudflare Workers</a> let you run JavaScript in Cloudflare’s hundreds of data centers around the world. Using a Worker, you can modify your site’s HTTP requests and responses, make parallel requests, or generate responses from the edge. Cloudflare Workers has been in open beta phase since February 1st. Read more about the launch in <a href="https://blog.cloudflare.com/cloudflare-workers-is-now-on-open-beta">this blog post</a>.</p>
-	<h4 id="whatcanyoudowithcloudflareworkers">What can you do with Cloudflare Workers?</h4>
+	<h4>What can you do with Cloudflare Workers?</h4>
 	<p>Cloudflare has an incredibly powerful global network of 151 data centers, where you can put compute anywhere and you can write with a language you’re familiar with (JavaScript) with a standard API you're familiar with (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Workers</a>). You can move your compute to be super low latency, to be much nearer to your end user, your database, your embedded device, or anything else you want faster round trips for.</p>
 	<p>You may access and leverage the power of Cloudflare’s network for your next applications or as an add-on for optimizing the performance of your existing projects by running JavaScript on Cloudflare’s edge network.</p>
 	<p>The <a href="https://blog.cloudflare.com/cloudflare-acquires-eager">next</a> <a href="https://blog.cloudflare.com/neumob-optimizing-mobile">product</a> that leverages Cloudflare's infrastructure to create security, performance, usability, and other optimizations for the Internet should have the lowest possible barriers to entry. Millions of customers should have access to those products on day one. That's how the Internet should work.</p>
-	<p><a href="https://developers.cloudflare.com/workers/writing-workers"><img src="https://blog.cloudflare.com/content/images/2018/06/developerplatform.png" alt="Cloudflare's Developer Platform" loading="lazy"></a><small>Cloudflare's Developer Platform. <a href="https://developers.cloudflare.com">See More≫</a></small></p>
-	<p>For inspiration, the Workers core team baked up <a href="https://developers.cloudflare.com/workers/recipes">some recipes</a> to highlight <strong>a few popular use cases</strong>:</p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://developers.cloudflare.com/workers/writing-workers">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EG2qtJRjwzYosFIUu3RQA/790b062d9a3873a1d33bf150c3cfbf2c/developerplatform.png" alt="Cloudflare's Developer Platform" class="kg-image" width="1768" height="930" loading="lazy">
+		</a>
+	</figure>
+	<p>For inspiration, the Workers core team baked up <a href="https://developers.cloudflare.com/workers/recipes">some recipes</a> to highlight <b>a few popular use cases</b>:</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/a-b-testing">A/B Testing</a> You can create a Cloudflare Worker to control A/B tests.</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests">Aggregating Multiple Requests</a> Here, we make multiple requests to different API endpoints, aggregate the responses and send it back as a single response.</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/conditional-routing">Conditional Routing</a> The easiest way to deliver different content based on the device being used is to rewrite the URL of the request based on the condition you care about.</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/return-403">Custom responses that don't hit origin servers</a> You can return responses directly from the edge. No need to hit your origin.</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/hotlink-protection">Hot-link Protection</a> You can use Cloudflare Workers to protect your hot-links on your web properties.</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/post-requests">Post Requests</a> Reading content from an HTTP POST request</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/random-content-cookies">Random Content Cookies</a> You can create random content cookies using Cloudflare Workers.</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/signed-requests">Signed Requests</a> A common URL authentication method known as request signing1 can be implemented in a worker with the help of the Web Crypto API.</li>
-		<li><a href="https://developers.cloudflare.com/workers/recipes/streaming-responses">Streaming Responses</a> Minimize the visitor’s time-to-first-byte and the amount of buffering done in the worker script.</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/a-b-testing">A/B Testing</a> You can create a Cloudflare Worker to control A/B tests.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests">Aggregating Multiple Requests</a> Here, we make multiple requests to different API endpoints, aggregate the responses and send it back as a single response.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/conditional-routing">Conditional Routing</a> The easiest way to deliver different content based on the device being used is to rewrite the URL of the request based on the condition you care about.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/return-403">Custom responses that don't hit origin servers</a> You can return responses directly from the edge. No need to hit your origin.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/hotlink-protection">Hot-link Protection</a> You can use Cloudflare Workers to protect your hot-links on your web properties.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/post-requests">Post Requests</a> Reading content from an HTTP POST request</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/random-content-cookies">Random Content Cookies</a> You can create random content cookies using Cloudflare Workers.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/signed-requests">Signed Requests</a> A common URL authentication method known as request signing1 can be implemented in a worker with the help of the Web Crypto API.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/recipes/streaming-responses">Streaming Responses</a> Minimize the visitor’s time-to-first-byte and the amount of buffering done in the worker script.</p>
+		</li>
 	</ul>
-	<h4 id="whatifiwanttojustofferanideaorausecase">What if I want to just offer an idea or a use case?</h4>
+	<h4>What if I want to just offer an idea or a use case?</h4>
 	<p>That’s great! I’ve created <a href="https://community.cloudflare.com/t/recipe-request-thread/16906">this thread</a> in the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community forum</a> so anyone can submit a recipe idea, comment on one, and anyone can volunteer to write a recipe that there is a ready audience for.</p>
-	<p align="center">
-		<a class="btn btn-warning" href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">Share your recipe in the Community Recipe Exchange</a>
-	</p>
-	<!--kg-card-end: markdown-->
+	<p><a href="https://community.cloudflare.com/tags/recipe-exchange">Share your recipe in the Community Recipe Exchange</a></p>
 </div>

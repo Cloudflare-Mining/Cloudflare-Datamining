@@ -1,98 +1,180 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--15-.png" class="kg-image" alt="Malicious “RedAlert - Rocket Alerts” application targets Israeli phone calls, SMS, and user information" loading="lazy" width="1600" height="895"></figure>
-	<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
-	<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, “Red Alert: Israel” by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a “nuclear bomb is coming”. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally. </p>
-	<p>In the last two days, a new malicious website (<em>hxxps://redalerts[.]me</em>) has advertised the download of well-known open source application RedAlert by Elad Nava (<a href="https://github.com/eladnava/redalert-android">https://github.com/eladnava/redalert-android</a>). Domain impersonation continues to be a popular vector for attackers, as the legitimate website for the application (<em>hxxps://redalert[.]me </em>) differs from the malicious website by only one letter. Further, threat actors continue to exploit open source code and deploy modified, malicious versions to unsuspecting users.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16uIyWaGcO2XWUU8LFgfIF/1042a266021bbec25d89a64f230a6315/pasted-image-0--15-.png" alt="Malicious “RedAlert - Rocket Alerts” application targets Israeli phone calls, SMS, and user information" class="kg-image" width="1600" height="895" loading="lazy">
+
+	</figure>
+	<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (<a href="https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1">https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1</a>). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
+	<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, “Red Alert: Israel” by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a “nuclear bomb is coming”. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally.</p>
+	<p>In the last two days, a new malicious website (<i>hxxps://redalerts[.]me</i>) has advertised the download of well-known open source application RedAlert by Elad Nava (<a href="https://github.com/eladnava/redalert-android">https://github.com/eladnava/redalert-android</a>). Domain impersonation continues to be a popular vector for attackers, as the legitimate website for the application (<i>hxxps://redalert[.]me</i> ) differs from the malicious website by only one letter. Further, threat actors continue to exploit open source code and deploy modified, malicious versions to unsuspecting users.</p>
 	<p>The malicious website hosted links to both the iOS and the Android version of the RedAlert app. But while the link to the Apple App Store referred to the legitimate version of the RedAlert app by Elad Nava, the link supposedly referring to the Android version hosted on the Play Store directly downloads a malicious APK file. This attack demonstrates the danger of sideloading applications directly from the Internet as opposed to installing applications from the approved app store.</p>
 	<p>The malicious RedAlert version imitates the legitimate rocket alert application but simultaneously collects sensitive user data. Additional permissions requested by the malicious app include access to contacts, call logs, SMS, account information, as well as an overview of all installed apps.</p>
-	<p>The website hosting the malicious file was created on October 12, 2023 and has since been taken offline. Only users who installed the Android version of the app from this specific website are impacted and urgently advised to delete the app. Users can determine if they installed the malicious version by reviewing the permissions granted to the RedAlert app. If users are unsure whether they installed the malicious version, they can delete the RedAlert applications and reinstall the legitimate version directly in the Play Store. <br></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy" width="1600" height="1334">
-		<figcaption><em>Screenshot of the attacker site https://redalerts[.]me</em></figcaption>
+	<p>The website hosting the malicious file was created on October 12, 2023 and has since been taken offline. Only users who installed the Android version of the app from this specific website are impacted and urgently advised to delete the app. Users can determine if they installed the malicious version by reviewing the permissions granted to the RedAlert app. If users are unsure whether they installed the malicious version, they can delete the RedAlert applications and reinstall the legitimate version directly in the Play Store.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nCyNtOTncD702msYn7mzW/8b4f83f72149b88bc1e7b85d24141388/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
+
 	</figure>
-	<h3 id="malicious-android-package-kit-apk-analysis">Malicious Android Package Kit (APK) Analysis</h3>
-	<p>The malicious Android Package Kit (APK) file is installed by a user when they click the Google Play button on the fake RedAlert site. Once clicked, the user downloads the app directly from the fake site at <em><code>hxxps://redalerts[.]me/app.apk</code></em>. The SHA-256 hash of the APK is <em><code>5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5</code></em>.</p>
-	<h2 id="capabilities">Capabilities</h2>
-	<p>A quick analysis of the <em>AndroidManifest.xml</em> file shows several differences compared to the legitimate, open source RedAlert application. Most notable are the additional permissions needed to collect information on the victim. The permissions added are listed below:</p>
+	<p><i>Screenshot of the attacker site </i><a href="https://redalerts/[./]me"><i>https://redalerts\[.\]me</i></a></p>
+	<h3>Malicious Android Package Kit (APK) Analysis</h3>
+	<p>The malicious Android Package Kit (APK) file is installed by a user when they click the Google Play button on the fake RedAlert site. Once clicked, the user downloads the app directly from the fake site at <code><i>hxxps://redalerts[.]me/app.apk</i></code>. The SHA-256 hash of the APK is <code><i>5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5</i></code>.</p>
+	<h2>Capabilities</h2>
+	<p>A quick analysis of the <i>AndroidManifest.xml</i> file shows several differences compared to the legitimate, open source RedAlert application. Most notable are the additional permissions needed to collect information on the victim. The permissions added are listed below:</p>
 	<ul>
-		<li>android.permission.GET_ACCOUNTS</li>
-		<li>android.permission.QUERY_ALL_PACKAGES</li>
-		<li>android.permission.READ_CALL_LOG</li>
-		<li>android.permission.READ_CONTACTS</li>
-		<li>android.permission.READ_PHONE_NUMBERS</li>
-		<li>android.permission.READ_PHONE_STATE</li>
-		<li>android.permission.READ_PRIVILEGED_PHONE_STATE</li>
-		<li>android.permission.READ_SMS</li>
+		<li>
+			<p>android.permission.GET_ACCOUNTS</p>
+		</li>
+		<li>
+			<p>android.permission.QUERY_ALL_PACKAGES</p>
+		</li>
+		<li>
+			<p>android.permission.READ_CALL_LOG</p>
+		</li>
+		<li>
+			<p>android.permission.READ_CONTACTS</p>
+		</li>
+		<li>
+			<p>android.permission.READ_PHONE_NUMBERS</p>
+		</li>
+		<li>
+			<p>android.permission.READ_PHONE_STATE</p>
+		</li>
+		<li>
+			<p>android.permission.READ_PRIVILEGED_PHONE_STATE</p>
+		</li>
+		<li>
+			<p>android.permission.READ_SMS</p>
+		</li>
 	</ul>
-	<p>The application is designed to look and act like RedAlert. However, upon opening the app, a malicious service is started in the background. The <em><code>startService()</code></em> call is the only change to the <em><code>onCreate()</code></em> method, and this begins the sequence of malicious activity, which the actor has placed in a package called <em><code>com.company.allinclusive.AI</code></em></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--14-.png" class="kg-image" alt="" loading="lazy" width="1530" height="442">
-		<figcaption><em>The attacker starts their malicious code within the legitimate RedAlert code com.red.alert.activities: Main.java</em></figcaption>
+	<p>The application is designed to look and act like RedAlert. However, upon opening the app, a malicious service is started in the background. The <code><i>startService()</i></code> call is the only change to the <code><i>onCreate()</i></code> method, and this begins the sequence of malicious activity, which the actor has placed in a package called <code><i>com.company.allinclusive.AI</i></code></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SOvfo0vzlyyREVB4A9Jyt/0934cc8d3a7d254075bf62d97381888e/pasted-image-0--14-.png" alt="" class="kg-image" width="1530" height="442" loading="lazy">
+
 	</figure>
+	<p><i>The attacker starts their malicious code within the legitimate RedAlert code com.red.alert.activities: Main.java</i></p>
 	<p>The service is run to gather data from victims’ phones and upload it to the actor’s secure server. The data is extensive and includes:</p>
 	<ul>
-		<li>SIM information, including IMEI and IMSI numbers, network type, country, voicemail number, PIN status, and more</li>
-		<li>Full Contact list</li>
-		<li>All SMS messages, including content and metadata for all statuses (e.g. received, outgoing, sent, etc.)</li>
-		<li>A list of accounts associated with the device</li>
-		<li>All phone calls and conversation details for including incoming, outgoing, missed, rejected, and blocked calls</li>
-		<li>Logged-in email and app accounts</li>
-		<li>List of installed applications</li>
+		<li>
+			<p>SIM information, including IMEI and IMSI numbers, network type, country, voicemail number, PIN status, and more</p>
+		</li>
+		<li>
+			<p>Full Contact list</p>
+		</li>
+		<li>
+			<p>All SMS messages, including content and metadata for all statuses (e.g. received, outgoing, sent, etc.)</p>
+		</li>
+		<li>
+			<p>A list of accounts associated with the device</p>
+		</li>
+		<li>
+			<p>All phone calls and conversation details for including incoming, outgoing, missed, rejected, and blocked calls</p>
+		</li>
+		<li>
+			<p>Logged-in email and app accounts</p>
+		</li>
+		<li>
+			<p>List of installed applications</p>
+		</li>
 	</ul>
 	<p>The actor’s code for gathering this information is illustrated below.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.32.27-PM.png" class="kg-image" alt="" loading="lazy" width="1842" height="1326">
-		<figcaption><em>com.company.allinclusive.AI: AIMain.java contains the data the attacker will capture form the target</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33VyzytviTDeG7qXy6aCrK/51c3207e0b57e9be8d4e62d5134ceaa5/Screenshot-2023-10-13-at-3.32.27-PM.png" alt="" class="kg-image" width="1842" height="1326" loading="lazy">
+
 	</figure>
-	<p>Stolen data is uploaded to an HTTP server at a hardcoded IP address. The actor has a <em>Tools</em> class which details the IP address where the data is to be uploaded:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.31.42-PM.png" class="kg-image" alt="" loading="lazy" width="1896" height="668">
-		<figcaption><em><em>com.company.allinclusive.AI: Tools.java stores the attackers command and control for the malware</em></em></figcaption>
+	<p><i>com.company.allinclusive.AI: AIMain.java contains the data the attacker will capture form the target</i></p>
+	<p>Stolen data is uploaded to an HTTP server at a hardcoded IP address. The actor has a <i>Tools</i> class which details the IP address where the data is to be uploaded:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Fh4WgPsM5kmKnuM8Jqyxh/eb969c27ab91f1a2a8b670436bc67571/Screenshot-2023-10-13-at-3.31.42-PM.png" alt="" class="kg-image" width="1896" height="668" loading="lazy">
+
 	</figure>
+	<p><b>com.company.allinclusive.AI: Tools.java stores the attackers command and control for the malware</b></p>
 	<p>Although HTTP and port 80 are specified, the actor appears to have the ability to use HTTPS and port 443 if a certificate is found bundled within the application package:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.30.20-PM.png" class="kg-image" alt="" loading="lazy" width="2262" height="1058">
-		<figcaption><em>com.company.allinclusive.AI: UploadFileAsync.java</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ty1JMARyIggOGXmFoJjcE/6f439cfc8ad27efc23f3384de202848f/Screenshot-2023-10-13-at-3.30.20-PM.png" alt="" class="kg-image" width="2000" height="935" loading="lazy">
+
 	</figure>
-	<p>Data is uploaded through a <em>Connector</em> class, written by the actor. The <em>Connector</em> is responsible for encrypting the stolen data and uploading it to the HTTP server. In this sample, files are encrypted with AES in CBC mode with PKCS5 Padding. The keys are randomly generated and appended to the packaged data, however the keys are encrypted with RSA using a public key bundled in the malicious app. Because of this, anybody who is able to intercept the stolen data will be unable to decrypt it without the actor’s private key.</p>
-	<p>The encrypted files have names that look like <em>&lt;ID&gt;_&lt;DATE&gt;.final</em>, which contain:</p>
+	<p><i>com.company.allinclusive.AI: UploadFileAsync.java</i></p>
+	<p>Data is uploaded through a <i>Connector</i> class, written by the actor. The <i>Connector</i> is responsible for encrypting the stolen data and uploading it to the HTTP server. In this sample, files are encrypted with AES in CBC mode with PKCS5 Padding. The keys are randomly generated and appended to the packaged data, however the keys are encrypted with RSA using a public key bundled in the malicious app. Because of this, anybody who is able to intercept the stolen data will be unable to decrypt it without the actor’s private key.</p>
+	<p>The encrypted files have names that look like <i>_</i><i>.final</i>, which contain:</p>
 	<ul>
-		<li><em><em><em>&lt;ID&gt;_&lt;DATE&gt;.enc</em> (encrypted data)</em></em></li>
-		<li><em><em><em>&lt;ID&gt;_&lt;DATE&gt;.param</em> (AES encryption parameters, e.g. key and IV)</em></em></li>
-		<li><em><em><em>&lt;ID&gt;_&lt;DATE&gt;.eparam</em> (RSA parameters, e.g. public key)</em></em></li>
+		<li>
+			<p><i><b>_</b></i><i><b>.enc</b></i><b> (encrypted data)</b></p>
+		</li>
+		<li>
+			<p><i><b>_</b></i><i><b>.param</b></i><b> (AES encryption parameters, e.g. key and IV)</b></p>
+		</li>
+		<li>
+			<p><i><b>_</b></i><i><b>.eparam</b></i><b> (RSA parameters, e.g. public key)</b></p>
+		</li>
 	</ul>
-	<h2 id="anti-analysis-runtime-capabilities">Anti-Analysis Runtime Capabilities</h2>
+	<h2>Anti-Analysis Runtime Capabilities</h2>
 	<p>To avoid detection the actor included anti-analysis capabilities which can run at the time the app is started. The methods for anti-analysis that the attacker has included were anti-debugging, anti-emulation, and anti-test operations</p>
-	<h3 id="anti-debugging">Anti-Debugging</h3>
-	<p>The application makes a simple call using the builtin <em>android.os.Debug</em> package to see if the application is being debugged.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.29.28-PM.png" class="kg-image" alt="" loading="lazy" width="1970" height="474">
-		<figcaption><em>com.company.allinclusive.AI.anti.debugger: FindDebugger.java</em></figcaption>
+	<h3>Anti-Debugging</h3>
+	<p>The application makes a simple call using the builtin <i>android.os.Debug</i> package to see if the application is being debugged.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n1Dsyz3tBVwTCQDzQjCpu/19955368529b520bb62368330ef4baaf/Screenshot-2023-10-13-at-3.29.28-PM.png" alt="" class="kg-image" width="1970" height="474" loading="lazy">
+
 	</figure>
-	<h3 id="anti-emulation">Anti-Emulation</h3>
+	<p><i>com.company.allinclusive.AI.anti.debugger: FindDebugger.java</i></p>
+	<h3>Anti-Emulation</h3>
 	<p>The application attempts to locate certain files and identifiers to determine whether it is being run in an emulated environment. A snippet of these indicators are shown below:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--12--1.png" class="kg-image" alt="" loading="lazy" width="1558" height="436">
-		<figcaption><em>com.company.allinclusive.AI.anti.emulator: FindEmulator.java checks for common emulators</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oRGahgfmW0fqsFZ3L7Bi1/49606350da5d8782d9d5f11fea5da004/pasted-image-0--12--1.png" alt="" class="kg-image" width="1558" height="436" loading="lazy">
+
 	</figure>
-	<h3 id="anti-test">Anti-Test</h3>
+	<p><i>com.company.allinclusive.AI.anti.emulator: FindEmulator.java checks for common emulators</i></p>
+	<h3>Anti-Test</h3>
 	<p>The application has utilities to identify whether a test user (“monkey”) is using the application:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.28.48-PM.png" class="kg-image" alt="" loading="lazy" width="2010" height="778">
-		<figcaption><em>com.company.allinclusive.AI.anti.monkey: FindMonkey.java</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bibuD77OAXj6pBVkBb012/e4b666a5baddce89c6e7f7f3d462fc8a/Screenshot-2023-10-13-at-3.28.48-PM.png" alt="" class="kg-image" width="2000" height="774" loading="lazy">
+
 	</figure>
+	<p><i>com.company.allinclusive.AI.anti.monkey: FindMonkey.java</i></p>
 	<p>These methodologies are all rudimentary checks for whether the application is under runtime analysis. It does not, however, protect the malicious code against static analysis.</p>
-	<h2 id="how-to-detect-this-malware-on-your-device">How To Detect This Malware On Your Device</h2>
+	<h2>How To Detect This Malware On Your Device</h2>
 	<p>If you have installed RedAlert on your device, the extraneous permissions added by the actor can be used to determine whether you have been compromised. The following permissions appearing on the RedAlert app (whether or not enabled) would indicate compromise:</p>
 	<ul>
-		<li>Call Logs</li>
-		<li>Contacts</li>
-		<li>Phone</li>
-		<li>SMS</li>
+		<li>
+			<p>Call Logs</p>
+		</li>
+		<li>
+			<p>Contacts</p>
+		</li>
+		<li>
+			<p>Phone</p>
+		</li>
+		<li>
+			<p>SMS</p>
+		</li>
 	</ul>
-	<h2 id="how-to-protect-yourself">How To Protect Yourself</h2>
+	<h2>How To Protect Yourself</h2>
 	<p>You can avoid attacks like this by following the guidance below:</p>
 	<ul>
-		<li>Keep your mobile device up to date on the latest software version at all times</li>
-		<li>Consider using Cloudflare Teams (with <a href="https://www.cloudflare.com/zero-trust/products/gateway">Cloudflare Gateway</a>)</li>
-		<li>Avoid using third party mobile application stores</li>
-		<li>Never install applications from Internet URLs or sideload payloads</li>
-		<li>Consider using <a href="https://1.1.1.1/family">1.1.1.1 for families</a> to block malicious domains on your network</li>
+		<li>
+			<p>Keep your mobile device up to date on the latest software version at all times</p>
+		</li>
+		<li>
+			<p>Consider using Cloudflare Teams (with <a href="https://www.cloudflare.com/zero-trust/products/gateway">Cloudflare Gateway</a>)</p>
+		</li>
+		<li>
+			<p>Avoid using third party mobile application stores</p>
+		</li>
+		<li>
+			<p>Never install applications from Internet URLs or sideload payloads</p>
+		</li>
+		<li>
+			<p>Consider using <a href="https://1.1.1.1/family">1.1.1.1 for families</a> to block malicious domains on your network</p>
+		</li>
 	</ul>
-	<h2 id="iocs">IOCs</h2><!--kg-card-begin: html-->
+	<h2>IOCs</h2><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
 			<col width="333">
@@ -142,5 +224,5 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<hr>
-	<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.<em>Visit </em><a href="https://1.1.1.1"><em>1.1.1.1</em></a><em> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start </em><a href="https://www.cloudflare.com/learning/what-is-cloudflare"><em>here</em></a><em>. If you’re looking for a new career direction, check out </em><a href="https://cloudflare.com/careers"><em>our open positions</em></a><em>.</em></p>
+	<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.<i>Visit</i> <a href="https://1.1.1.1"><i>1.1.1.1</i></a> <i>from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start</i> <a href="https://www.cloudflare.com/learning/what-is-cloudflare"><i>here</i></a><i>. If you’re looking for a new career direction, check out</i> <a href="https://cloudflare.com/careers"><i>our open positions</i></a><i>.</i></p>
 </div>

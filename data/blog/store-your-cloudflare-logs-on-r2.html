@@ -1,40 +1,60 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/store-your-cloudflare-logs-on-r2-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/store-your-cloudflare-logs-on-r2-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/store-your-cloudflare-logs-on-r2-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/store-your-cloudflare-logs-on-r2-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/store-your-cloudflare-logs-on-r2-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/id-id/store-your-cloudflare-logs-on-r2-id-id">Bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/store-your-cloudflare-logs-on-r2-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-4.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/store-your-cloudflare-logs-on-r2">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/store-your-cloudflare-logs-on-r2">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/store-your-cloudflare-logs-on-r2">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/store-your-cloudflare-logs-on-r2">한국어</a>, <a href="https://blog.cloudflare.com/id-id/store-your-cloudflare-logs-on-r2">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/store-your-cloudflare-logs-on-r2">ไทย</a> and <a href="https://blog.cloudflare.com/fr-fr/store-your-cloudflare-logs-on-r2">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q2ecJTQQuYwhfby8PlIwY/c1c1cf76908359faa960e160245ebbaa/unnamed-4.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>We're excited to announce that customers will soon be able to store their Cloudflare logs on <a href="https://blog.cloudflare.com/www.cloudflare.com/developer-platform/r2">Cloudflare R2 storage</a>. Storing your logs on Cloudflare will give CIOs and Security Teams an opportunity to <a href="https://www.cloudflare.com/cio">consolidate their infrastructure</a>; creating simplicity, savings and additional security.</p>
 	<p>Cloudflare protects your applications from malicious traffic, speeds up connections, and keeps bad actors out of your network. The logs we produce from our products help customers answer questions like:</p>
 	<ul>
-		<li>Why are requests being blocked by the Firewall rules I’ve set up?</li>
-		<li>Why are my users seeing disconnects from my applications that use Spectrum?</li>
-		<li>Why am I seeing a spike in Cloudflare Gateway requests to a specific application?</li>
+		<li>
+			<p>Why are requests being blocked by the Firewall rules I’ve set up?</p>
+		</li>
+		<li>
+			<p>Why are my users seeing disconnects from my applications that use Spectrum?</p>
+		</li>
+		<li>
+			<p>Why am I seeing a spike in Cloudflare Gateway requests to a specific application?</p>
+		</li>
 	</ul>
 	<p>Storage on R2 adds to our existing suite of logging products. Storing logs on R2 fills in gaps that our customers have been asking for: a cost-effective solution to store logs for any of our products for any period of time.</p>
-	<h3 id="goodbye-to-old-school-logging">Goodbye to old school logging</h3>
+	<h3>Goodbye to old school logging</h3>
 	<p>Let’s rewind to the early 2000s. Most organizations were running their own self-managed infrastructure: network devices, firewalls, servers and all the associated software. Each company has to manage logs coming from hundreds of sources in the IT stack. With dedicated storage needed for retaining an endless volume of logs, specialized teams are required to build an ETL pipeline and make the data actionable.</p>
 	<p>Fast-forward to the 2010s. Organizations are transitioning to using managed services for their IT functions. As a result of this shift, the way that customers collect logs for all their services have changed too. With managed services, much of the logging load is shifted off of the customer.</p>
 	<p>The challenge now: collecting logs from a combination of managed services, each of which has its own quirks. Logs can be sent at varying latencies, in different formats and some are too detailed while others not detailed enough. To gain a single pane view of their IT infrastructure, companies need to build or buy a <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a> solution.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/Log-storage-diagram.png" class="kg-image" alt="Logging changes over the years" loading="lazy">
-		<figcaption>Logging changes over the years</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PCMvAvpkvBostvlml5Rld/9ba1a2b90aecd8315561391d977adc18/Log-storage-diagram.png" alt="Logging changes over the years" class="kg-image" width="3058" height="1076" loading="lazy">
+
 	</figure>
+	<p>Logging changes over the years</p>
 	<p>Cloudflare replaces these sets of managed services. When a customer onboards to Cloudflare, we make it super easy to gain visibility to their traffic that hits our network. We’ve built analytics for many of our products, such as CDN, Firewall, Magic Transit and Spectrum to both view high level trends and dig into patterns by slicing and dicing data.</p>
 	<p>Analytics are a great way to see data at an aggregate level, but we know that raw logs are important to our customers as well, so we’ve built out a set of logging products.</p>
-	<h3 id="logging-today">Logging today</h3>
+	<h3>Logging today</h3>
 	<p>During <a href="https://blog.cloudflare.com/instant-logs">Speed Week</a> we announced Instant Logs to show customers traffic as it hits their domain. Instant Logs is perfect for live debugging and triaging use cases. Monitor your traffic, make a config change and instantly view its impacts. In cases where you need to retroactively inspect your logs, we have Logpush.</p>
 	<p>We’ve built an impressive logging pipeline to get data from the 250+ cities that house our data centers to our customers in under a minute using Logpush. If your organization has existing practices for getting data across your stack into one place, we support Logpush to a variety of cloud storage or SIEM destinations. We also have partnerships in place with major SIEM platforms to surface Cloudflare data in ways that are meaningful to our customers.</p>
 	<p>Last but not least is Logpull. Using Logpull, customers can access HTTP request logs using our REST API. Our customers like Logpull because it's easy to configure, they don’t have to worry about storing logs on a third party, and you can pull data ad hoc for up to seven days.</p>
-	<h3 id="why-cloudflare-storage">Why Cloudflare storage?</h3>
+	<h3>Why Cloudflare storage?</h3>
 	<p>The top four requests we’ve heard from customers when it comes to logs are:</p>
 	<ul>
-		<li>I have tight budgets and need low cost log storage.</li>
-		<li>They should be low effort to set up and maintain.</li>
-		<li>I should be able to store logs for as long as I need to.</li>
-		<li>I want to access my logs on Cloudflare for any product.</li>
+		<li>
+			<p>I have tight budgets and need low cost log storage.</p>
+		</li>
+		<li>
+			<p>They should be low effort to set up and maintain.</p>
+		</li>
+		<li>
+			<p>I should be able to store logs for as long as I need to.</p>
+		</li>
+		<li>
+			<p>I want to access my logs on Cloudflare for any product.</p>
+		</li>
 	</ul>
 	<p>For many of our customers, Cloudflare is one of the most important data sources, and it also generates more data than other applications on their IT stack. R2 is significantly cheaper than other cloud providers, so our customers don’t need to compromise by sampling or leaving out logs from products all together in order to cut down on costs.</p>
 	<p>Just like the simplicity of Logpull, log storage on R2 will be quick and easy. With a one click setup, we’ll store your logs, and you don’t have to worry about any configuration details. Retention is totally in our customer’s control to match the security and compliance needs of their business. With R2, you can also store your logs for any products we have logging for today (and we’re always adding more as our product line expands).</p>
-	<h3 id="log-storage-we-re-just-getting-started">Log storage; we’re just getting started</h3>
+	<h3>Log storage; we’re just getting started</h3>
 	<p>With log storage on Cloudflare, we’re creating the building blocks to allow customers to perform log analysis and forensics capabilities directly on Cloudflare. Whether conducting an investigation, responding to a support request or addressing an incident, using analytics for a birds eye view and inspecting logs to determine the root cause is a powerful combination.</p>
 	<p>If you’re interested in getting notified when you can store your logs on Cloudflare, sign up through this <a href="https://forms.gle/x24NKoMF8rJBJPpU7">form</a>.</p>
 	<p>We’re always looking for talented engineers to take on the challenges of working with data at an incredible scale. If you’re interested <a href="https://boards.greenhouse.io/cloudflare/jobs/2103918?gh_jid=2103918">apply here</a>.</p>

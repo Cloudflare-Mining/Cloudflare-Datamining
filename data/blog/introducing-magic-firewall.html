@@ -1,98 +1,75 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-magic-firewall-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-magic-firewall-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-magic-firewall-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/introducing-magic-firewall-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-magic-firewall-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/introducing-magic-firewall-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Today we’re excited to announce Magic Firewall™, a network-level firewall delivered through Cloudflare to secure your enterprise. Magic Firewall covers your remote users, branch offices, data centers and cloud infrastructure. Best of all, it’s deeply integrated with Cloudflare One™, giving you a one-stop overview of everything that’s happening on your network. </p>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-magic-firewall">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-magic-firewall">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-magic-firewall">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-magic-firewall">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-magic-firewall">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-magic-firewall">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51DdJ5LPNE1lDkmqfaRebW/4f4d10f0245c73217e388a3d5d2464a3/Image_20201016_072224.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p>Today we’re excited to announce Magic Firewall™, a network-level firewall delivered through Cloudflare to secure your enterprise. Magic Firewall covers your remote users, branch offices, data centers and cloud infrastructure. Best of all, it’s deeply integrated with Cloudflare One™, giving you a one-stop overview of everything that’s happening on your network.</p>
 	<p>Cloudflare Magic Transit™ secures IP subnets with the same DDoS protection technology that we built to keep our own global network secure. That helps ensure your network is safe from attack and available and it replaces physical appliances that have limits with Cloudflare’s network.</p>
 	<p>That still leaves some hardware onsite, though, for a different function: firewalls. Networks don’t just need protection from DDoS attacks; administrators need a way to set policies for all traffic entering and leaving the network. With Magic Firewall, we want to help your team deprecate those network firewall appliances and move that burden to the Cloudflare global network.</p>
-	<h2 id="firewall-boxes-are-miserable-to-manage">Firewall boxes are miserable to manage</h2>
+	<h2>Firewall boxes are miserable to manage</h2>
 	<p>Network firewalls have always been clunky. Not only are they expensive, they are bound by their own hardware constraints. If you need more CPU or memory, you have to buy more boxes. If you lack capacity, the entire network suffers, directly impacting employees that are trying to do their work. To compensate, network operators and security teams are forced to buy more capacity than we need, resulting in having to pay more than necessary.</p>
 	<p>We’ve heard this problem from our Magic Transit customers who are constantly running into capacity challenges:</p>
-	<blockquote><em>“We’re constantly running out of memory and running into connection limits on our firewalls. It’s a huge problem.”</em></blockquote>
+	<blockquote>
+		<p><i>“We’re constantly running out of memory and running into connection limits on our firewalls. It’s a huge problem.”</i></p>
+	</blockquote>
 	<p>Network operators find themselves piecing together solutions from different vendors, mixing and matching features, and worrying about keeping policies in sync across the network. The result is more headache and added cost.</p>
-	<h2 id="the-solution-isn-t-more-hardware">The solution isn’t more hardware</h2>
-	<p>Some organizations then turn to even more vendors and purchase additional hardware to manage the patchwork firewall hardware they have deployed. Teams then have to balance refresh cycles, updates, and end of life management across even more platforms. These are band-aid solutions that do not solve the fundamental problem: how do we create a single view of the entire network that gives insights into what is happening (good and bad) and apply policy instantaneously, <em>globally?</em></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Traditional Firewall Architecture</figcaption>
+	<h2>The solution isn’t more hardware</h2>
+	<p>Some organizations then turn to even more vendors and purchase additional hardware to manage the patchwork firewall hardware they have deployed. Teams then have to balance refresh cycles, updates, and end of life management across even more platforms. These are band-aid solutions that do not solve the fundamental problem: how do we create a single view of the entire network that gives insights into what is happening (good and bad) and apply policy instantaneously, <i>globally?</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VpvWSMYDhXy8OFXWeZuzn/e1ed14f20ca5e5bad38de0c3fea4c1d8/image2-18.png" alt="" class="kg-image" width="1188" height="619" loading="lazy">
+
 	</figure>
-	<h2 id="introducing-magic-firewall">Introducing Magic Firewall</h2>
+	<p>Traditional Firewall Architecture</p>
+	<h2>Introducing Magic Firewall</h2>
 	<p>Instead of more band-aids, we’re excited to launch Magic Firewall as a single, comprehensive, solution to network filtering. Unlike legacy appliances, Magic Firewall runs in the Cloudflare network. That network scales up or down with a customer’s needs at any given time.</p>
 	<p>Running in our network delivers an added benefit. Many customers backhaul network traffic to single chokepoints in order to perform firewalling operations, adding latency. Cloudflare operates data centers in 200 cities around the world and each of those points of presence is capable of delivering the same solution. Regional offices and data centers can instead rely on a Cloudflare Magic Firewall engine running within 100 milliseconds of their operation.</p>
-	<h2 id="integrated-with-cloudflare-one">Integrated with Cloudflare One</h2>
+	<h2>Integrated with Cloudflare One</h2>
 	<p>Cloudflare One consists of products that allow you to apply a single filtering engine with consistent security controls to your entire network, not just part of it. The same types of controls that your organization wants to apply to traffic leaving your networks should be applied to traffic leaving your devices.</p>
 	<p>Magic Firewall will integrate with what you’re already using in Cloudflare. For example, traffic leaving endpoints outside of the network can reach Cloudflare using the Cloudflare WARP client where Gateway will apply the same rules your team configures for network level filtering. Branch offices and data centers can connect through Magic Transit with the same set of rules. This gives you a one-stop overview of your entire network instead of having to hunt down information across multiple devices and vendors.</p>
-	<h2 id="how-does-it-work">How does it work?</h2>
-	<p>So what <em>is</em> Magic Firewall? Magic Firewall is a way to replace your antiquated on-premises network firewall with an as-a-service solution, pushing your <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter</a> out to the edge. We already allow you to apply firewall rules at our edge with Magic Transit, but the process to add or change rules has previously involved working with your account team or Cloudflare support. Our first version, generally available in the next few months, will allow all our Magic Transit customers to apply static OSI Layer 3 &amp; 4 mitigations completely self-service, at Cloudflare scale.</p><!--kg-card-begin: markdown-->
-	<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			margin: 0px auto;
-		}
+	<h2>How does it work?</h2>
+	<p>So what <i>is</i> Magic Firewall? Magic Firewall is a way to replace your antiquated on-premises network firewall with an as-a-service solution, pushing your <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter</a> out to the edge. We already allow you to apply firewall rules at our edge with Magic Transit, but the process to add or change rules has previously involved working with your account team or Cloudflare support. Our first version, generally available in the next few months, will allow all our Magic Transit customers to apply static OSI Layer 3 &amp; 4 mitigations completely self-service, at Cloudflare scale.</p>
+	<p>.tg {border-collapse:collapse;border-spacing:0;margin:0px auto;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<figure class="kg-card kg-image-card ">
 
-		.tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Ev46NEGa1xfrn1DWKTpbF/5e3b3173d92be32bfe8cbae4315ef3d2/image1-23.png" alt="Cloudflare applies firewall policies at every data center" class="kg-image" width="1800" height="1128" loading="lazy">
 
-		.tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
+	</figure>
+	<figure class="kg-card kg-image-card ">
 
-		.tg .tg-0lax {
-			text-align: left;
-			vertical-align: top
-		}
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uCJhkWr15tTnXdWXyZg2M/9348257a507ba276104913010db85a49/image3-18.png" alt="Meaning you have firewalls applying policies across the globe" class="kg-image" width="1800" height="1125" loading="lazy">
 
-		.tg .tg-afol {
-			background-color: #FFF;
-			color: #36393A;
-			text-align: left;
-			vertical-align: top
-		}
-	</style>
-	<table class="tg">
-		<thead>
-			<tr>
-				<th class="tg-0lax"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-23.png" alt="Cloudflare applies firewall policies at every data center" width="340" height="213"></th>
-				<th class="tg-0lax"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-18.png" alt="Meaning you have firewalls applying policies across the globe" width="340" height="213"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td class="tg-afol">Cloudflare applies firewall policies at every data center</td>
-				<td class="tg-afol">Meaning you have firewalls applying policies across the globe</td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	</figure>
+	<p>Cloudflare applies firewall policies at every data center</p>
+	<p>Meaning you have firewalls applying policies across the globe</p><!--kg-card-begin: html-->
 	<p></p><!--kg-card-end: html-->
 	<p>Our first version of Magic Firewall will focus on static mitigations, allowing you to set a standard set of rules that apply to your entire network, whether devices or applications are sitting in the cloud, an employee's device or a branch office. You'll be able to express rules allowing or blocking based on:</p>
 	<ul>
-		<li>Protocol</li>
-		<li>Source or destination IP and port</li>
-		<li>Packet length</li>
-		<li>Bit field match</li>
+		<li>
+			<p>Protocol</p>
+		</li>
+		<li>
+			<p>Source or destination IP and port</p>
+		</li>
+		<li>
+			<p>Packet length</p>
+		</li>
+		<li>
+			<p>Bit field match</p>
+		</li>
 	</ul>
 	<p>Rules can be crafted in <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html">Wireshark syntax</a>, a domain specific language common in the networking world and the same syntax we use across our other products. With this syntax, you can easily craft extremely powerful rules to precisely allow or deny any traffic in or out of your network. If you suspect there’s a bad actor inside or outside of your perimeter, simply log on to the dashboard and block that traffic. Rules are pushed out globally in seconds, shutting down threats at the edge.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZYICN15ioMIF0Zg9aEQZk/290c945c0caa442bf24d83d25d5897a8/image4-13.png" alt="" class="kg-image" width="1452" height="1314" loading="lazy">
+
+	</figure>
 	<p>Configuring firewalls should be easy and powerful. With Magic Firewall, rules can be configured using an easy UI that allows for complex logic. Or, just type the filter rule manually using Wireshark filter syntax and configure that way. Don’t want to mess with a UI? Rules can be added just as easily through the API.</p>
-	<h2 id="what-s-next">What’s next?</h2>
-	<p>Looking at packets is not enough… Even with firewall rules, teams still need visibility into what’s <em>actually</em> happening on their network: what’s happening inside of these datastreams? Is this legitimate traffic or do we have malicious actors either inside or outside of our network doing nefarious things? Deploying Cloudflare to sit between any two actors that interact with any of your assets (be they employee devices or services exposed to the Internet) allows us to enforce any policy, anywhere, either on where the traffic is coming from or what’s inside the traffic. Applying policies based on traffic type is just around the corner and we’re excited to announce that we’re planning to add additional capabilities to automatically detect intrusion events based on what’s happening inside datastreams in the near future.</p>
+	<h2>What’s next?</h2>
+	<p>Looking at packets is not enough… Even with firewall rules, teams still need visibility into what’s <i>actually</i> happening on their network: what’s happening inside of these datastreams? Is this legitimate traffic or do we have malicious actors either inside or outside of our network doing nefarious things? Deploying Cloudflare to sit between any two actors that interact with any of your assets (be they employee devices or services exposed to the Internet) allows us to enforce any policy, anywhere, either on where the traffic is coming from or what’s inside the traffic. Applying policies based on traffic type is just around the corner and we’re excited to announce that we’re planning to add additional capabilities to automatically detect intrusion events based on what’s happening inside datastreams in the near future.</p>
 	<p>We're excited about this new journey. With Cloudflare One, we’re reinventing what the network looks like for corporations. We integrate access management, security features and performance across the board: for your network’s visitors but also for anyone inside it. All of this built on top of a network that was <a href="https://blog.cloudflare.com/our-network-cloudflare-one">#BuiltForThis.</a></p>
 	<p>We’ll be opening up Magic Firewall in a limited beta, starting with existing Magic Transit customers. If you’re interested, please <a href="https://www.cloudflare.com/lp/magic-firewall-beta">let us know</a>.</p>
 </div>

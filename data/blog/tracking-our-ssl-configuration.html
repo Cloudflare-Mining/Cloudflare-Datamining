@@ -1,9 +1,8 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Over time we've updated the SSL configuration we use for serving HTTPS as the security landscape has changed. In the past we've documented those changes in blog posts; to make things simpler to track, and so that people can stay up to date on the configuration we've chosen, I've created a Github repository called <a href="https://github.com/cloudflare/sslconfig">sslconfig</a>. I've recreated the history of our SSL configuration from an internal repository and going forward we'll synchronize this repo with the configuration we are using.</p>
 	<p>Our SSL configuration has changed because attacks on SSL/TLS have appeared: <a href="https://blog.cloudflare.com/new-ssl-vulnerabilities-cloudflare-users-prot">Lucky 13</a>, <a href="https://blog.cloudflare.com/taming-beast-better-ssl-now-available-across">BEAST</a>, and <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">biases in RC4</a>.</p>
 	<p>Not long ago we modified OpenSSL to <a href="https://blog.cloudflare.com/killing-rc4">prevent the use of RC4 for TLS 1.1 and above</a> and introduced <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA</a> and we continue to examine the right set of ciphers to use so that our customers are as secure as possible (such as using <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">Perfect Forward Secrecy</a>).</p>
 	<p>Stay tuned for further announcements, and keep an eye on <a href="https://github.com/cloudflare/sslconfig">sslconfig</a> for the <a href="https://support.cloudflare.com/hc/en-us/articles/200933580-What-cipher-suites-does-CloudFlare-use-for-SSL-">latest configuraton</a>.</p>
 	<p>PS As with any of our <a href="http://cloudflare.github.io">open source</a> efforts, comments, criticisms and pull requests are most welcome.</p>
-	<!--kg-card-end: markdown-->
 </div>

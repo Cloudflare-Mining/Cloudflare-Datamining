@@ -1,13 +1,22 @@
 <div class="mb2 gray5">10 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-access-for-saas">简体中文</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Teams-for-SAAS-thumb.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/J2gwvS7B7LcOGJLm4cyHG/542aa2056729e236094de3bf1acd65ea/Teams-for-SAAS-thumb.png" alt="" class="kg-image" width="1854" height="1059" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%">
 		<iframe src="https://iframe.videodelivery.net/aa624017cde360c69911ee47d70758d9?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Faa624017cde360c69911ee47d70758d9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D247s" style="border: none; position: absolute; top: 0; height: 100%; width: 100%" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div>
 	<p></p><!--kg-card-end: html-->
 	<p>We built Cloudflare Access™ as a tool to solve a problem we had inside of Cloudflare. We rely on a set of applications to manage and monitor our network. Some of these are popular products that we self-host, like the Atlassian suite, and others are tools we built ourselves. We deployed those applications on a private network. To reach them, you had to either connect through a secure WiFi network in a Cloudflare office, or use a VPN.</p>
 	<p>That VPN added friction to how we work. We had to dedicate part of Cloudflare’s onboarding just to teaching users how to connect. If someone received a PagerDuty alert, they had to rush to their laptop and sit and wait while the VPN connected. Team members struggled to work while mobile. New offices had to backhaul their traffic. In 2017 and early 2018, our IT team triaged hundreds of help desk tickets with titles like these:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wxEscGECJL0EvhQW4N6Ot/f1b2966948da9aa138e5b58b00e98cb3/image4-4.png" alt="" class="kg-image" width="516" height="206" loading="lazy">
+
+	</figure>
 	<p>While our IT team wrestled with usability issues, our Security team decided that poking holes in our private network was too much of a risk to maintain. Once on the VPN, users almost always had too much access. We had limited visibility into what happened on the private network. We tried to <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">segment the network</a>, but that was error-prone.</p>
 	<p>Around that time, Google published its BeyondCorp paper that outlined a model of what has become known as <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust Security</a>. Instead of trusting any user on a private network, a Zero Trust perimeter evaluates every request and connection for user identity and other variables.</p>
 	<p>We decided to create our own <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">implementation</a> by building on top of Cloudflare. Despite BeyondCorp being a new concept, we had experience in this field. For nearly a decade, Cloudflare’s global network had been operating like a Zero Trust perimeter for applications on the Internet - we just didn’t call it that. For example, products like our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> evaluated requests to public-facing applications. We could add identity as a new layer and use the same network to protect applications teams used internally.</p>
@@ -16,61 +25,99 @@
 	<p>As a result, our internal tools suddenly became more secure than the SaaS apps we used. We could only add rules to the applications we could place on Cloudflare’s reverse proxy. When users connected to popular SaaS tools, they did not pass through Cloudflare’s network. We lacked a consistent level of visibility and security across all of our applications. So did our customers.</p>
 	<p>Starting today, our team and yours can fix that. We’re excited to announce that you can now bring the Zero Trust security features of Cloudflare Access to your SaaS applications. You can protect any SaaS application that can integrate with a SAML identity provider with Cloudflare Access.</p>
 	<p>Even though that SaaS application is not deployed on Cloudflare, we can still add security rules to every login. You can begin using this feature today and, in the next couple of months, you’ll be able to ensure that all traffic to these SaaS applications connects through Cloudflare Gateway.</p>
-	<h3 id="standardizing-and-aggregating-identity-in-cloudflare-s-network">Standardizing and aggregating identity in Cloudflare’s network</h3>
+	<h3>Standardizing and aggregating identity in Cloudflare’s network</h3>
 	<p>Support for SaaS applications in Cloudflare Access starts with standardizing identity. Cloudflare Access &nbsp;aggregates different sources of identity: username, password, location, and device. Administrators build rules to determine what requirements a user must meet to reach an application. When users attempt to connect, Cloudflare enforces every rule in that checklist before the user ever reaches the app.</p>
 	<p>The primary rule in that checklist is user identity. Cloudflare Access is not an identity provider; instead, we source identity from SSO services like Okta, Ping Identity, OneLogin, or public apps like GitHub. When a user attempts to access a resource, we prompt them to login with the provider configured. If successful, the provider shares the user’s identity and other metadata with Cloudflare Access.</p>
 	<p>A username is just one part of a Zero Trust decision. We consider additional rules, like country restrictions or device posture via partners like Tanium or, soon, additional partners CrowdStrike and VMware Carbon Black. If the user meets all of those criteria, Cloudflare Access summarizes those variables into a standard proof of identity that our network trusts: a JSON Web Token (JWT).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aupuEmhR8lgWRZjvdfqlN/56b89fca6388f68dc82f187181f51eb0/image5-4.png" alt="" class="kg-image" width="1639" height="822" loading="lazy">
+
+	</figure>
 	<p>A JWT is a secure, information-dense way to share information. Most importantly, JWTs <a href="https://tools.ietf.org/html/rfc7519">follow a standard</a>, so that different systems can trust one another. When users login to Cloudflare Access, we generate and sign a JWT that contains the decision and information about the user. We store that information in the user’s browser and treat that as proof of identity for the duration of their session.</p>
 	<p>Every JWT must consist of three Base64-URL strings: the header, the payload, and the signature.</p>
 	<ul>
-		<li>The <strong>header</strong> defines the cryptographic operation that encrypts the data in the JWT.</li>
-		<li>The <strong>payload</strong> consists of name-value pairs for at least one and typically multiple claims, encoded in JSON. For example, the payload can contain the identity of a user.</li>
-		<li>The <strong>signature</strong> allows the receiving party to confirm that the payload is authentic.</li>
+		<li>
+			<p>The <b>header</b> defines the cryptographic operation that encrypts the data in the JWT.</p>
+		</li>
+		<li>
+			<p>The <b>payload</b> consists of name-value pairs for at least one and typically multiple claims, encoded in JSON. For example, the payload can contain the identity of a user.</p>
+		</li>
+		<li>
+			<p>The <b>signature</b> allows the receiving party to confirm that the payload is authentic.</p>
+		</li>
 	</ul>
 	<p>We store the identity data inside of the payload and include the following details:</p>
 	<ul>
-		<li><strong>User identity</strong>: typically the email address of the user retrieved from your identity provider.</li>
-		<li><strong>Authentication domain</strong>: the domain that signs the token. For Access, we use “example.cloudflareaccess.com” where “example” is a subdomain you can configure.</li>
-		<li><strong>amr</strong>: If available, the multifactor authentication method the login used, like a hard key or a TOTP code.</li>
-		<li><strong>Country</strong>: The country where the user is connecting from.</li>
-		<li><strong>Audience</strong>: The domain of the application you are attempting to reach.</li>
-		<li><strong>Expiration</strong>: the time at which the token is no longer valid for use.</li>
+		<li>
+			<p><b>User identity</b>: typically the email address of the user retrieved from your identity provider.</p>
+		</li>
+		<li>
+			<p><b>Authentication domain</b>: the domain that signs the token. For Access, we use “example.cloudflareaccess.com” where “example” is a subdomain you can configure.</p>
+		</li>
+		<li>
+			<p><b>amr</b>: If available, the multifactor authentication method the login used, like a hard key or a TOTP code.</p>
+		</li>
+		<li>
+			<p><b>Country</b>: The country where the user is connecting from.</p>
+		</li>
+		<li>
+			<p><b>Audience</b>: The domain of the application you are attempting to reach.</p>
+		</li>
+		<li>
+			<p><b>Expiration</b>: the time at which the token is no longer valid for use.</p>
+		</li>
 	</ul>
 	<p>Some applications support JWTs natively for SSO. We can send the token to the application and the user can login. In other cases, we’ve released plugins for popular providers like <a href="https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian">Atlassian</a> and <a href="https://blog.cloudflare.com/open-sourcing-our-sentry-sso-plugin">Sentry</a>. However, most applications lack JWT support and rely on a different standard: SAML.</p>
-	<h3 id="converting-jwt-to-saml-with-cloudflare-workers">Converting JWT to SAML with Cloudflare Workers</h3>
+	<h3>Converting JWT to SAML with Cloudflare Workers</h3>
 	<p>You can deploy Cloudflare’s reverse proxy to protect the applications you host, which puts Cloudflare Access in a position to add identity checks when those requests hit our edge. However, the SaaS applications you use are hosted and managed by the vendors themselves as part of the value they offer. In the same way that I cannot decide who can walk into the front door of the bakery downstairs, you can’t build rules about what requests should and shouldn’t be allowed.</p>
 	<p>When those applications support integration with your SSO provider, you do have control over the login flow. Many applications rely on a popular standard, SAML, to securely exchange identity data and user attributes between two systems. The SaaS application does not need to know the details of the identity provider’s rules.</p>
 	<p>Cloudflare Access uses that relationship to force SaaS logins through Cloudflare’s network. The application itself thinks of Cloudflare Access as the SAML identity provider. When users attempt to login, the application sends the user to login with Cloudflare Access.</p>
 	<p>That said, Cloudflare Access is not an identity provider - it’s an identity aggregator. When the user reaches Access, we will redirect them to the identity provider in the same way that we do today when users request a site that uses Cloudflare’s reverse proxy. By adding that hop through Access, though, we can layer the additional contextual rules and log the event.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yv8hYAwCeV36Hhu6of08T/46bec9f67ee2b4b57e6533ecfbad779a/image6-4.png" alt="" class="kg-image" width="1638" height="599" loading="lazy">
+
+	</figure>
 	<p>We still generate a JWT for every login providing a standard proof of identity. Integrating with SaaS applications required us to convert that JWT into a SAML assertion that we can send to the SaaS application. Cloudflare Access runs in every one of Cloudflare’s data centers around the world to improve availability and avoid slowing down users. We did not want to lose those advantages for this flow. To solve that, we turned to Cloudflare Workers.</p>
 	<p>The core login flow of Cloudflare Access already <a href="https://workers.cloudflare.com/built-with/projects/cloudflare-access">runs on Cloudflare Workers</a>. We built support for SaaS applications by using Workers to take the JWT and convert its content into SAML assertions that are sent to the SaaS application. The application thinks that Cloudflare Access is the identity provider, even though we’re just aggregating identity signals from your SSO provider and other sources into the JWT, and sending that summary to the app via SAML.</p>
-	<h3 id="integrate-with-gateway-for-comprehensive-logging-coming-soon-">Integrate with Gateway for comprehensive logging (coming soon)</h3>
+	<h3>Integrate with Gateway for comprehensive logging (coming soon)</h3>
 	<p>Cloudflare Gateway keeps your users and data safe from threats on the Internet by filtering Internet-bound connections that leave laptops and offices. Gateway gives administrators the ability to block, allow, or log every connection and request to SaaS applications.</p>
 	<p>However, users are connecting from personal devices and home WiFi networks, potentially bypassing Internet security filtering available on corporate networks. If users have their password and MFA token, they can bypass security requirements and reach into SaaS applications from their own, unprotected devices at home.</p>
 	<p>To ensure traffic to your SaaS apps only connects over Gateway-protected devices, Cloudflare Access will add a new rule type that requires Gateway when users login to your SaaS applications. Once enabled, users will only be able to connect to your SaaS applications when they use Cloudflare Gateway. Gateway will log those connections and provide visibility into every action within SaaS apps and the Internet.</p>
-	<h3 id="every-identity-provider-is-now-capable-of-saml-sso">Every identity provider is now capable of SAML SSO</h3>
+	<h3>Every identity provider is now capable of SAML SSO</h3>
 	<p>Identity providers come in two flavors and you probably use both every day. One type is purpose-built to be an identity provider, and the other accidentally became one. With this release, Cloudflare Access can convert either into a SAML-compliant SSO option.</p>
-	<p><strong>Corporate identity providers</strong>, like Okta or Azure AD, manage your business identity. Your IT department creates and maintains the account. They can integrate it with SaaS Applications for SSO.</p>
-	<p>The second type of login option consists of SaaS providers that began as consumer applications and evolved into <strong>public identity providers</strong>. LinkedIn, GitHub, and Google required users to create accounts in their applications for networking, coding, or email.</p>
+	<p><b>Corporate identity providers</b>, like Okta or Azure AD, manage your business identity. Your IT department creates and maintains the account. They can integrate it with SaaS Applications for SSO.</p>
+	<p>The second type of login option consists of SaaS providers that began as consumer applications and evolved into <b>public identity providers</b>. LinkedIn, GitHub, and Google required users to create accounts in their applications for networking, coding, or email.</p>
 	<p>Over the last decade, other applications began to trust those public identity provider logins. You could use your Google account to log into a news reader and your GitHub account to authenticate to DigitalOcean. Services like Google and Facebook became SSO options for everyone. However, most corporate applications only supported integration with a single SAML provider, something public identity providers do not provide. To rely on SSO as a team, you still needed a corporate identity provider.</p>
 	<p>Cloudflare Access converts a user login from any identity provider into a JWT. With this release, we also generate a standard SAML assertion. Your team can now use the SAML SSO features of a corporate identity provider with public providers like LinkedIn or GitHub.</p>
-	<h3 id="multi-sso-meets-saas-applications">Multi-SSO meets SaaS applications</h3>
+	<h3>Multi-SSO meets SaaS applications</h3>
 	<p>We <a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">describe Cloudflare Access as a Multi-SSO</a> service because you can integrate multiple identity providers, and their SSO flows, into Cloudflare’s Zero Trust network. That same capability now extends to integrating multiple identity providers with a single SaaS application.</p>
 	<p>Most SaaS applications will only integrate with a single identity provider, limiting your team to a single option. We know that our customers work with partners, contractors, or acquisitions which can make it difficult to standardize around a single identity option for SaaS logins.</p>
 	<p>Cloudflare Access can connect to multiple identity providers simultaneously, including multiple instances of the same provider. When users are prompted to login, they can choose the option that their particular team uses.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fmJ0nY6O5wSBvOfQdg3NX/c8fc26cef2e4fbc0a7a2467139d63d14/image2-11.png" alt="" class="kg-image" width="1294" height="1316" loading="lazy">
+
+	</figure>
 	<p>We’ve taken that ability and extended it into the Access for SaaS feature. Access generates a consistent identity from any provider, which we can now extend for SSO purposes to a SaaS application. Even if the application only supports a single identity provider, you can still integrate Cloudflare Access and merge identities across multiple sources. Now, team members who use your Okta instance and contractors who use LinkedIn can both SSO into your Atlassian suite.</p>
-	<h3 id="all-of-your-apps-in-one-place">All of your apps in one place</h3>
+	<h3>All of your apps in one place</h3>
 	<p>Cloudflare Access released the <a href="https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch">Access App Launch</a> as a single destination for all of your internal applications. Your team members visit a URL that is unique to your organization and the App Launch displays all of the applications they can reach. The feature requires no additional administrative configuration; Cloudflare Access reads the user’s JWT and returns only the applications they are allowed to reach.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tIwkxCD532J0fTugVeAmE/a52330647dcda5ef33c21a3b7da8bc7b/image1-14.png" alt="" class="kg-image" width="1425" height="693" loading="lazy">
+
+	</figure>
 	<p>That experience now extends to all applications in your organization. When you integrate SaaS applications with Cloudflare Access, your users will be able to discover them in the App Launch. Like the flow for internal applications, this requires no additional configuration.</p>
-	<h3 id="how-to-get-started">How to get started</h3>
-	<p>To get started, you’ll need a Cloudflare Access account and a SaaS application that supports SAML SSO. Navigate to the Cloudflare for Teams dashboard and choose the “SaaS” application option to start integrating your applications. Cloudflare Access will walk through the steps to configure the application to trust Cloudflare Access as the SSO option.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>How to get started</h3>
+	<p>To get started, you’ll need a Cloudflare Access account and a SaaS application that supports SAML SSO. Navigate to the Cloudflare for Teams dashboard and choose the “SaaS” application option to start integrating your applications. Cloudflare Access will walk through the steps to configure the application to trust Cloudflare Access as the SSO option.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Sc3CA1krWC7UPnvrdwxQ0/4dcc832f1a07bd33f4142fd284e81f93/image7-2.png" alt="" class="kg-image" width="1999" height="1223" loading="lazy">
+
+	</figure>
 	<p>Do you have an application that needs additional configuration? Please let us know.</p>
-	<h3 id="protect-saas-applications-with-cloudflare-for-teams-today">Protect SaaS applications with Cloudflare for Teams today</h3>
-	<p>Cloudflare Access for SaaS is available to all Cloudflare for Teams customers, including organizations on the <a href="https://www.cloudflare.com/plans/free">free plan</a>. <a href="https://dash.cloudflare.com/sign-up/teams">Sign up for a Cloudflare for Teams account </a>and <a href="https://developers.cloudflare.com/learning-paths/secure-internet-traffic">follow the steps in the documentation </a>to get started.</p>
+	<h3>Protect SaaS applications with Cloudflare for Teams today</h3>
+	<p>Cloudflare Access for SaaS is available to all Cloudflare for Teams customers, including organizations on the <a href="https://www.cloudflare.com/plans/free">free plan</a>. <a href="https://dash.cloudflare.com/sign-up/teams">Sign up for a Cloudflare for Teams account</a> and <a href="https://developers.cloudflare.com/learning-paths/secure-internet-traffic">follow the steps in the documentation</a> to get started.</p>
 	<p>We will begin expanding the Gateway beta program to integrate Gateway’s logging and <a href="https://www.cloudflare.com/learning/access-management/what-is-url-filtering">web filtering</a> with the Access for SaaS feature before the end of the year.</p>
 </div>

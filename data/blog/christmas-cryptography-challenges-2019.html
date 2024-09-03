@@ -1,73 +1,111 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uorddW0QLohjJbIBlo6v9/083cf74aa76cb97a9a4eba84e9c7c3e0/christmas-cryptography-challenges-2019.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last year <a href="https://blog.cloudflare.com/concise-post-christmas-cryptographic-challenges">we published some crypto challenges</a> to keep you momentarily occupied from the festivities. This year, we're doing the same. Whether you're bored or just want to learn a bit more about the technologies that encrypt the internet, feel free to give these short cryptography quizzes a go.</p>
 	<p>We're withholding answers until the start of the new year, to give you a chance to solve them without spoilers. Before we reveal the answers; if you manage to solve them, we'll be giving the first 5 people to get the answers right some Cloudflare swag. Fill out your <a href="https://goo.gl/forms/KexYSIfTgVaiPPKK2">answers and details using this form</a> so we know where to send it.</p>
 	<p>Have fun!</p>
-	<p><strong>UPDATE: This quiz is now closed. </strong>Thank you to everyone who's played. We have received many responses, 15 of which got all the answers right; we will shortly be sending out some swag to those who got the answers right. </p>
-	<p><strong>NOTE: </strong>Hints, <em>now followed with solutions</em>, are below the questions, avoid scrolling too far if you want to avoid any spoilers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/12/Family_Double_Dare_spaghetti_challenge-1.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<h2 id="challenges">Challenges</h2>
-	<h3 id="client-says-hello">Client says Hello</h3>
+	<p><b>UPDATE: This quiz is now closed.</b> Thank you to everyone who's played. We have received many responses, 15 of which got all the answers right; we will shortly be sending out some swag to those who got the answers right.</p>
+	<p><b>NOTE:</b> Hints, <i>now followed with solutions</i>, are below the questions, avoid scrolling too far if you want to avoid any spoilers.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nhuBXAXCdwxp6tYl5HUqt/20d94fd5311b4754f2c2c607b148f596/Family_Double_Dare_spaghetti_challenge-1.jpg" alt="" class="kg-image" width="600" height="399" loading="lazy">
+
+	</figure>
+	<h2>Challenges</h2>
+	<h3>Client says Hello</h3>
 	<p>Client says hello, as follows:</p>
-	<blockquote>00000c07ac01784f437dbfc70800450000f2560140004006db58ac1020c843c<br>7f80cd1f701bbc8b2af3449b598758018102a72a700000101080a675bce16787<br>abd8716030100b9010000b503035c1ea569d5f64df3d8630de8bdddd1152e75f<br>528ae577d2436949ce8deb7108600004400ffc02cc02bc024c023c00ac009c0<br>08c030c02fc028c027c014c013c012009f009e006b0067003900330016009d<br>009c003d003c0035002f000a00af00ae008d008c008b010000480000000b<br>000900000663666c2e7265000a00080006001700180019000b0002010000<br>0d0012001004010201050106010403020305030603000500050100000000<br>001200000017000052305655494338795157524c656d6443436c5246574651<br>675430346754456c4f52564d674e434242546b51674e513d3d</blockquote>
+	<blockquote>
+		<p>00000c07ac01784f437dbfc70800450000f2560140004006db58ac1020c843c7f80cd1f701bbc8b2af3449b598758018102a72a700000101080a675bce16787abd8716030100b9010000b503035c1ea569d5f64df3d8630de8bdddd1152e75f528ae577d2436949ce8deb7108600004400ffc02cc02bc024c023c00ac009c008c030c02fc028c027c014c013c012009f009e006b0067003900330016009d009c003d003c0035002f000a00af00ae008d008c008b010000480000000b000900000663666c2e7265000a00080006001700180019000b00020100000d0012001004010201050106010403020305030603000500050100000000001200000017000052305655494338795157524c656d6443436c5246574651675430346754456c4f52564d674e434242546b51674e513d3d</p>
+	</blockquote>
 	<p>[<a href="https://gist.github.com/IcyApril/bb95c93a333aef24368242fe2af4c5ad">Raw puzzle without text wrap</a>]</p>
-	<h3 id="time-based-one-time-password">Time-Based One-Time Password</h3>
+	<h3>Time-Based One-Time Password</h3>
 	<p>A user has an authenticator device to generate one time passwords for logins to their banking website. The implementation contains a fatal flaw.</p>
 	<p>At the following times, the following codes are generated (all in GMT/UTC):</p>
 	<ul>
-		<li>Friday, 21 December 2018 16:29:28 - <strong>084342</strong></li>
-		<li>Saturday, 22 December 2018 13:11:53 - <strong>411907</strong></li>
-		<li>Tuesday, 25 December 2018 12:15:03 - <strong>617041</strong></li>
+		<li>
+			<p>Friday, 21 December 2018 16:29:28 - <b>084342</b></p>
+		</li>
+		<li>
+			<p>Saturday, 22 December 2018 13:11:53 - <b>411907</b></p>
+		</li>
+		<li>
+			<p>Tuesday, 25 December 2018 12:15:03 - <b>617041</b></p>
+		</li>
 	</ul>
 	<p>What code will be generated at precisely midnight of the 1st of January 2019?</p>
-	<h3 id="rpki">RPKI</h3>
-	<p>At Cloudflare, we just setup <a href="https://blog.cloudflare.com/rpki-details">RPKI</a>: we signed a few hundred prefixes in order to reduce route leaks. But some of the prefixes hide a secret message. Find the ROAs that look different, decode the word! </p>
-	<h2 id="hints">Hints</h2>
-	<h3 id="client-says-hello-1">Client says Hello</h3>
+	<h3>RPKI</h3>
+	<p>At Cloudflare, we just setup <a href="https://blog.cloudflare.com/rpki-details">RPKI</a>: we signed a few hundred prefixes in order to reduce route leaks. But some of the prefixes hide a secret message. Find the ROAs that look different, decode the word!</p>
+	<h2>Hints</h2>
+	<h3>Client says Hello</h3>
 	<p>This challenge has 3 hints, as follows:</p>
 	<ul>
-		<li>Challenge is based on a network capture</li>
-		<li><a href="https://blog.cloudflare.com/encrypted-sni">https://blog.cloudflare.com/encrypted-sni/</a></li>
-		<li>What's weird about the Frame?</li>
+		<li>
+			<p>Challenge is based on a network capture</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/encrypted-sni">https://blog.cloudflare.com/encrypted-sni/</a></p>
+		</li>
+		<li>
+			<p>What's weird about the Frame?</p>
+		</li>
 	</ul>
-	<h3 id="totp">TOTP</h3>
+	<h3>TOTP</h3>
 	<p>The Time-Based One-Time Password Algorithm is described in <a href="https://tools.ietf.org/html/rfc6238">RFC 6238</a>, which was based of <a href="https://tools.ietf.org/html/rfc4226">RFC4226</a> (providing an algorithm for HOTP). The TOTP algorithm requires input of two important parameters, the time and a shared secret - could one be missing?</p>
-	<p>The implementation used to generate the TOTP codes for the challenge uses SHA-1 as a digest algorithm. </p>
-	<h3 id="rpki-1">RPKI</h3>
-	<p><strong>Note:</strong> This challenge will no longer be valid after mid-January 2019.</p>
+	<p>The implementation used to generate the TOTP codes for the challenge uses SHA-1 as a digest algorithm.</p>
+	<h3>RPKI</h3>
+	<p><b>Note:</b> This challenge will no longer be valid after mid-January 2019.</p>
 	<p>This challenge has 4 hints, as follows:</p>
 	<ul>
-		<li>Hint #0: Four or six? Probably six.</li>
-		<li>Hint #1: If only there was a way of listing only our IPs!</li>
-		<li>Hint #2: What is the only part of the ROA where we can hide information into</li>
-		<li>Hint #3: Subtract the reserve, the char will show itself</li>
+		<li>
+			<p>Hint #0: Four or six? Probably six.</p>
+		</li>
+		<li>
+			<p>Hint #1: If only there was a way of listing only our IPs!</p>
+		</li>
+		<li>
+			<p>Hint #2: What is the only part of the ROA where we can hide information into</p>
+		</li>
+		<li>
+			<p>Hint #3: Subtract the reserve, the char will show itself</p>
+		</li>
 	</ul>
-	<h2 id="solutions">Solutions</h2>
+	<h2>Solutions</h2>
 	<p>If you prefer video form, someone has created a YouTube video of the how to solve the problems, else the written solutions are below:</p>
-	<figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/j5jcaQgLDis?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
-	<h3 id="client-says-hello-2">Client says Hello</h3>
+	<h3>Client says Hello</h3>
 	<p>The string was (mostly) a capture from Wireshark of a Client Hello frame in TLS 1.2 handshake; as such, it reveals the Server Name where the connection is intended to go; in this case cfl.re.</p>
 	<p>There is a string suffixed to this hex stream which shouldn't be there; it's a base64 encoded string <code>R0VUIC8yQWRLemdCClRFWFQgT04gTElORVMgNCBBTkQgNQ==</code>. Decoding this string reveals:</p>
-	<blockquote>GET /2AdKzgB<br>TEXT ON LINES 4 AND 5</blockquote>
+	<blockquote>
+		<p>GET /2AdKzgBTEXT ON LINES 4 AND 5</p>
+	</blockquote>
 	<p>Accordingly; <a href="https://cfl.re/2AdKzgB">https://cfl.re/2AdKzgB</a> redirects to <a href="https://www.cloudflare.com/robots.txt">https://www.cloudflare.com/robots.txt</a>; on lines 4 and 5 is the phrase: "Dear robot be nice".</p>
 	<p>The GET request would obviously ordinarily not be appended to the Client Hello like this; however SNI information would be. You can find more about the work Cloudflare is doing to encrypt such information, so attackers cannot see which site you're visiting, in the following post: <a href="https://blog.cloudflare.com/esni">Encrypting SNI: Fixing One of the Core Internet Bugs</a></p>
-	<h3 id="totp-1">TOTP</h3>
-	<p>For this part, I'm going to use the <a href="https://github.com/pyauth/pyotp">pyotp</a> library to demonstrate how the challenge is set-up: </p>
-	<blockquote>&gt;&gt;&gt; import pyotp<br>&gt;&gt;&gt; totp = pyotp.TOTP('')<br>&gt;&gt;&gt; print totp.at(1545409768)<br>084342<br>&gt;&gt;&gt; print totp.at(1545484313)<br>411907<br>&gt;&gt;&gt; print totp.at(1545740103)<br>617041</blockquote>
+	<h3>TOTP</h3>
+	<p>For this part, I'm going to use the <a href="https://github.com/pyauth/pyotp">pyotp</a> library to demonstrate how the challenge is set-up:</p>
+	<blockquote>
+		<p>&gt;&gt;&gt; import pyotp&gt;&gt;&gt; totp = pyotp.TOTP('')&gt;&gt;&gt; print totp.at(1545409768)084342&gt;&gt;&gt; print totp.at(1545484313)411907&gt;&gt;&gt; print totp.at(1545740103)617041</p>
+	</blockquote>
 	<p>Note that the argument to the TOTP function is set to an empty string, this means that there is no secret in place; and the one time passwords are generated solely from a hash of the time. Accordingly, a TOTP with the timestamp generated at midnight on New Year is 301554.</p>
-	<p>Whilst this may seem like a somewhat incredulous position for a developer to end up in - searching GitHub, I was even able to find implementations that used the default secret (<em>base32secret3232</em>) for all users wanting to authenticate to a website. This means that any other user's One Time Password is valid for any other account, and the secret could likely be breached fairly easily (as it isn't randomly generated).</p>
-	<h3 id="rpki-2">RPKI</h3>
-	<p>Cloudflare can only generate ROAs based on their prefixes. The IPv6 prefixes are listed here: https://cloudflare.com/ips-v6.</p>
+	<p>Whilst this may seem like a somewhat incredulous position for a developer to end up in - searching GitHub, I was even able to find implementations that used the default secret (<i>base32secret3232</i>) for all users wanting to authenticate to a website. This means that any other user's One Time Password is valid for any other account, and the secret could likely be breached fairly easily (as it isn't randomly generated).</p>
+	<h3>RPKI</h3>
+	<p>Cloudflare can only generate ROAs based on their prefixes. The IPv6 prefixes are listed here: <a href="https://cloudflare.com/ips-v6">https://cloudflare.com/ips-v6</a>.</p>
 	<p>Using any RPKI validated prefix list (<a href="https://rpki.cloudflare.com/rpki.json">https://rpki.cloudflare.com/rpki.json</a>, or using the GUI of the RIPE’s RPKI Validator), test out our IPv6 prefixes. Some of them will appear coming from Reserved ASNs for Private Use:</p>
 	<ul>
-		<li>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:1 - <strong>B</strong></li>
-		<li>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:2 - <strong>R</strong></li>
-		<li>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:3 - <strong>A</strong></li>
-		<li>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:4 - <strong>V</strong></li>
-		<li>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:5 - <strong>O</strong></li>
+		<li>
+			<p>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:1 - <b>B</b></p>
+		</li>
+		<li>
+			<p>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:2 - <b>R</b></p>
+		</li>
+		<li>
+			<p>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:3 - <b>A</b></p>
+		</li>
+		<li>
+			<p>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:4 - <b>V</b></p>
+		</li>
+		<li>
+			<p>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:5 - <b>O</b></p>
+		</li>
 	</ul>
 	<p>Subtract 4200000000, it will give you one byte for each character of the secret word.</p>
 	<p>Repeat until the word is decoded.</p>
-	<p><em>Interested in helping build a better internet and drive security online? <a href="https://www.cloudflare.com/careers">Cloudflare is hiring</a>.</em></p>
+	<p><i>Interested in helping build a better internet and drive security online? </i><a href="https://www.cloudflare.com/careers"><i>Cloudflare is hiring</i></a><i>.</i></p>
 </div>

@@ -1,78 +1,111 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3q9iJAjpTjJaI7SocjUQOV/54bd2eaaca6f5f2462e4d36c2335cb22/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Eleven days ago the Heartbleed vulnerability was publicly announced.</p>
 	<p>Last Friday, we issued the <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">CloudFlare Challenge: Heartbleed</a> and simultaneously started the process of revoking and reissuing all the SSL certificates that CloudFlare manages for our customers.</p>
 	<p>That process is now complete. We have revoked and reissued every single certificate we manage and all the certificates we use.</p>
 	<p>That mass revocation showed up dramatically on the ISC's <a href="https://isc.sans.edu/crls.html">CRL activity chart</a>.</p>
-	<p><img alt="ISC CRL" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-17_at_10.53.46.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yfntI4FqlbLdPJthNbSiB/50e3d8ab28904159ac2aba3f159eb009/Screen_Shot_2014-04-17_at_10.53.46.png" alt="ISC CRL" class="kg-image" width="1110" height="842" loading="lazy">
+
+	</figure>
 	<p>Customers who use custom certificates are encouraged to rekey, upload their new certificates, and revoke the previous custom certificates.</p>
-	<h3 id="background">Background</h3>
+	<h3>Background</h3>
 	<p>We <a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities">announced</a> last Monday that we had patched a bug in OpenSSL and our customers were safe. We did not know then that CloudFlare was among the few to whom the bug was disclosed before the public announcement. In fact, we did not even know the bug's name. At that time we had simply removed TLS heartbeat functionality completely from OpenSSL by recompiling with the <code>OPENSSL_NO_HEARTBEATS</code> option.</p>
 	<p>After learning the full extent of the bug and that it had been live on the Internet for two years, we started an investigation to see whether our private keys and those of our customers were at risk.</p>
 	<p>We started our investigation by attempting to see what sort of information we could get through Heartbleed. We set up a test server on a local machine and bombarded it with Heartbleed attacks, saving the blocks of memory it returned. We scanned that memory for copies of the private key and after extensive scanning, we could not find a trace of it. Still, we were not fully convinced that it was impossible to do so we decided to crowdsource the problem by setting up the <a href="https://www.cloudflarechallenge.com/heartbleed">CloudFlare Heartbleed Challenge</a>.</p>
 	<p>Nine hours into the challenge the first instance of the key <a href="https://twitter.com/indutny/status/454761620259225600">was revealed on Twitter</a>. Over the five days of the challenge we saw over 75 million Heartbleed attacks against our server and 8,000 submissions.</p>
 	<p>The winners of the challenge used two different techniques in order to obtain the private key.</p>
-	<h3 id="howtheprivatekeyleaks">How the private key leaks</h3>
+	<h3>How the private key leaks</h3>
 	<p>From <a href="https://github.com/openssl/openssl/blob/master/crypto/rsa/rsa_eay.c">looking at the code</a> we knew that some pieces of the key are duplicated and manipulated during the computation of the private key operation. Following the code down into <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn_div.c#L240">bn_div.c</a> this code ends up making a copy of the divisor (in a modulus operation):</p>
-	<pre>/* First we normalise the numbers */
-norm_shift=BN_BITS2-((BN_num_bits(divisor))%BN_BITS2);
-if (!(BN_lshift(sdiv,divisor,norm_shift))) goto err;
-</pre>
+	<p>/* First we normalise the numbers */
+		norm_shift=BN_BITS2-((BN_num_bits(divisor))%BN_BITS2);
+		if (!(BN_lshift(sdiv,divisor,norm_shift))) goto err;</p>
 	<p>The value stored in <code>sdiv</code> ends up remaining in memory until something overwrites it. The divisor is one of the two primes p and q needed for RSA. More on that below. But here's a diagram showing memory inside OpenSSL. The diagram shows the state of memory after 26 HTTPS requests have been sent through (of varying sizes). Memory in black is unused, green is in use, red contains private keys and yellow contains the remnants of private keys.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/frame-26.png"><img alt="OpenSSL memory use" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-04-17_at_15.04.27.png"></a></p>
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dpnaj0pPq5oAQcU254Alx/344d21f3c556c8b072aab086df456f33/Screen_Shot_2014-04-17_at_15.04.27.png" alt="OpenSSL memory use" class="kg-image" width="120" height="1404" loading="lazy">
+
+	</figure>
+	<p>](<a href="https://blog.cloudflare.com/content/images/frame-26.png">/content/images/frame-26.png</a>)</p>
 	<p>The remnants are what enabled Heartbleed to leak private keys. A great deal of the green (in use) memory is being used by OpenSSL as buffers (memory where requests and responses are handled). If some of that green memory near the yellow key remnants is used for a Heartbleed request the yellow memory may be copied into the Heartbleed response and the key may leak.</p>
 	<p>Here's what that looks like in memory:</p>
-	<pre>(gdb) x/128xb 0xbd1560
-0xbd1560:   0xe0    0x09    0xbd    0x00    0x00    0x00    0x00    0x00
-0xbd1568:   0xf0    0x34    0xbb    0x00    0x00    0x00    0x00    0x00    
-0xbd1570:   0x00    0x00    0x00    0x00    0x00    0x00    0x00    0x00
-0xbd1578:   0x00    0x00    0x00    0x00    0x00    0x00    0x00    0x00
-0xbd1580:   0x0f    0x47    0x67    0xe0    0x03    0x11    0x56    0x7d
-0xbd1588:   0x1c    0xdf    0x92    0x9d    0xfe    0x41    0x59    0xfa
-0xbd1590:   0x6e    0x2a    0x99    0x18    0x5f    0x1d    0x2a    0x48
-0xbd1598:   0x99    0xaf    0x31    0x68    0x1e    0x36    0xc8    0x75
-0xbd15a0:   0x3f    0xe2    0x29    0x36    0x53    0xb7    0x8e    0x8c
-0xbd15a8:   0xa2    0x9a    0x9b    0x39    0x3c    0x18    0x94    0x1a
-0xbd15b0:   0x0e    0x92    0xd5    0x1b    0x60    0xc7    0x13    0x60
-0xbd15b8:   0x8a    0xb9    0x0b    0x31    0x95    0x6d    0x46    0x19
-0xbd15c0:   0x40    0xa9    0x89    0x4e    0xc4    0x6d    0x26    0x74
-0xbd15c8:   0x77    0xfe    0x5b    0x90    0xb1    0x5d    0xa9    0x79
-0xbd15d0:   0xce    0xed    0x52    0x4d    0xbe    0x17    0xcc    0x37
-0xbd15d8:   0x87    0xcd    0xfa    0xd9    0x4e    0x3d    0xb1    0x55
-</pre>
+	<p>(gdb) x/128xb 0xbd1560
+		0xbd1560: 0xe0 0x09 0xbd 0x00 0x00 0x00 0x00 0x00
+		0xbd1568: 0xf0 0x34 0xbb 0x00 0x00 0x00 0x00 0x000xbd1570: 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+		0xbd1578: 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+		0xbd1580: 0x0f 0x47 0x67 0xe0 0x03 0x11 0x56 0x7d
+		0xbd1588: 0x1c 0xdf 0x92 0x9d 0xfe 0x41 0x59 0xfa
+		0xbd1590: 0x6e 0x2a 0x99 0x18 0x5f 0x1d 0x2a 0x48
+		0xbd1598: 0x99 0xaf 0x31 0x68 0x1e 0x36 0xc8 0x75
+		0xbd15a0: 0x3f 0xe2 0x29 0x36 0x53 0xb7 0x8e 0x8c
+		0xbd15a8: 0xa2 0x9a 0x9b 0x39 0x3c 0x18 0x94 0x1a
+		0xbd15b0: 0x0e 0x92 0xd5 0x1b 0x60 0xc7 0x13 0x60
+		0xbd15b8: 0x8a 0xb9 0x0b 0x31 0x95 0x6d 0x46 0x19
+		0xbd15c0: 0x40 0xa9 0x89 0x4e 0xc4 0x6d 0x26 0x74
+		0xbd15c8: 0x77 0xfe 0x5b 0x90 0xb1 0x5d 0xa9 0x79
+		0xbd15d0: 0xce 0xed 0x52 0x4d 0xbe 0x17 0xcc 0x37
+		0xbd15d8: 0x87 0xcd 0xfa 0xd9 0x4e 0x3d 0xb1 0x55</p>
 	<p>The data from one of the primes is in the middle of that block of memory.</p>
 	<p>A nagging question is why, when OpenSSL has functions to cleanse memory, are these chunks of keys being found in memory. We are continuing to investigate and if a bug is found will submit a patch for OpenSSL.</p>
 	<p>The more HTTPS traffic the server serves, the more likely some of these intermediate values end up on the heap where Heartbleed can read them. Unfortunately for us, our test server was on our local machine and did not have a large amount of HTTPS traffic. This made it a lot less likely that we would find private keys in our experimental setting. The CloudFlare Challenge site was serving a lot of traffic, making key extraction more likely. There were some other tricks we learned from the winners about efficiently finding keys in memory. To explain these, we will go a bit into how RSA works.</p>
-	<h3 id="thersacryptosystem">The RSA Cryptosystem</h3>
+	<h3>The RSA Cryptosystem</h3>
 	<p>The <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Key_generation">RSA cryptosystem</a> is based on picking two prime numbers (which are habitually called p and q) and then using various mathematical properties of prime numbers to create a secure system. First a number n (called the modulus) is calculated. It is just p x q.</p>
 	<p>The other two vital values in RSA are called exponents and typically called e and d. In common RSA cryptosystems the number e is 65537. The public key is (n, e) (i.e. the modulus and the exponent e), the private key is (n, d) (i.e. the modulus and the exponent d). Of course, the prime numbers p and q also have to be kept secret because everything depends on them.</p>
 	<p>In textbook RSA, you can perform the private key operation with only d and n, but it's slow.</p>
 	<p>In OpenSSL, RSA’s private key operation also uses the primes p and q to speed up the private key operation using <a href="https://en.wikipedia.org/wiki/Montgomery_reduction">Montgomery Arithemetic</a> and other tricks. If either p or q are found, they can be used to derive the private key d. Searching for p and q was the approach taken by most of the successful contestants of the challenge.</p>
 	<p>The most common trick for identifying the prime factors from random data was to take all blocks of data that match the size of a prime factor (128 bytes in the case of our 2,048 bit RSA key) and convert them to a number. Some contestants did a primality check to see if the number was prime or not, and some contestants tried to divide the number into the public modulus n. If the number turned out to be a prime factor, then it can be used to extract the private key d. This was the approach taken by Fedor Indutny as published on <a href="https://blog.indutny.com/9.heartbleed">his blog</a>.</p>
 	<p>The second and slightly more elegant approach was taken by Rubin Xu. He started by attempting to find prime factors but quickly gave up on finding them. He then decided to use <a href="https://en.wikipedia.org/wiki/Coppersmith's_Attack">Coppersmith's Attack</a> to derive the private exponent. In this attack, only pieces of the private key are needed and the private key is reconstructed mathematically. This attack is so efficient that he managed to extract the private key from only the first 50 dumps!</p>
-	<h3 id="thewinners">The Winners</h3>
+	<h3>The Winners</h3>
 	<p>Here are the winners of the challenge in order of when they found the private key:</p>
 	<ol>
-		<li>Fedor Indutny (<a href="https://twitter.com/indutny">@indutny</a>) Developer</li>
-		<li>Ilkka Mattila, Information Security Adviser</li>
-		<li>Rubin Xu (<a href="https://twitter.com/xurubin">@xurubin</a>), Security PhD Student</li>
-		<li>Ben Murphy (<a href="https://twitter.com/benmmurphy">@benmmurphy</a>), Security Researcher</li>
-		<li>Steve Hunter (<a href="https://twitter.com/nonaxiomatic">@nonaxiomatic</a>)</li>
-		<li>Xavier Martin (<a href="https://twitter.com/xav">@xav</a>), Security Researcher</li>
-		<li>no name given</li>
-		<li>Jeremi Gosney (<a href="https://twitter.com/jmgosney">@jmgosney</a>), CEO, Stricture Group</li>
-		<li>Michele Guerini Rocco (<a href="https://twitter.com/Rnhmjoj">@Rnhmjoj</a>), Student</li>
-		<li>David Gervais (<a href="https://twitter.com/davidgervais">@davidgervais</a>), Software Engineer</li>
-		<li>Christian Bürgi (<a href="https://twitter.com/buergich">@buergich</a>)</li>
-		<li>Daniel Burkard (<a href="https://twitter.com/hiptomcat">@hiptomcat</a>)</li>
-		<li>mancha</li>
-		<li>mwgamera</li>
+		<li>
+			<p>Fedor Indutny (<a href="https://twitter.com/indutny">@indutny</a>) Developer</p>
+		</li>
+		<li>
+			<p>Ilkka Mattila, Information Security Adviser</p>
+		</li>
+		<li>
+			<p>Rubin Xu (<a href="https://twitter.com/xurubin">@xurubin</a>), Security PhD Student</p>
+		</li>
+		<li>
+			<p>Ben Murphy (<a href="https://twitter.com/benmmurphy">@benmmurphy</a>), Security Researcher</p>
+		</li>
+		<li>
+			<p>Steve Hunter (<a href="https://twitter.com/nonaxiomatic">@nonaxiomatic</a>)</p>
+		</li>
+		<li>
+			<p>Xavier Martin (<a href="https://twitter.com/xav">@xav</a>), Security Researcher</p>
+		</li>
+		<li>
+			<p>no name given</p>
+		</li>
+		<li>
+			<p>Jeremi Gosney (<a href="https://twitter.com/jmgosney">@jmgosney</a>), CEO, Stricture Group</p>
+		</li>
+		<li>
+			<p>Michele Guerini Rocco (<a href="https://twitter.com/Rnhmjoj">@Rnhmjoj</a>), Student</p>
+		</li>
+		<li>
+			<p>David Gervais (<a href="https://twitter.com/davidgervais">@davidgervais</a>), Software Engineer</p>
+		</li>
+		<li>
+			<p>Christian Bürgi (<a href="https://twitter.com/buergich">@buergich</a>)</p>
+		</li>
+		<li>
+			<p>Daniel Burkard (<a href="https://twitter.com/hiptomcat">@hiptomcat</a>)</p>
+		</li>
+		<li>
+			<p>mancha</p>
+		</li>
+		<li>
+			<p>mwgamera</p>
+		</li>
 	</ol>
 	<p>A big congratulations goes out to all of them!</p>
-	<h3 id="thefindings">The Findings</h3>
+	<h3>The Findings</h3>
 	<p>Based on these findings, we believe that within two hours a dedicated attacker could retrieve a private key from a vulnerable server. Since the allocation of temporary key material is done by OpenSSL itself, and is not special to NGINX, we expect these attacks to work on different server software including non-web servers that use OpenSSL.</p>
 	<p>All administrators running servers using vulnerable versions of OpenSSL should patch OpenSSL with version 1.0.1g (or later) and also reissue and revoke all their private keys. As mentioned above, CloudFlare has now done this for all the customers where we manage SSL on their behalf.</p>
 	<p>As a follow up to the Heartbleed bug and the CloudFlare Challenge, I hosted a webinar with Ben Murphy from Fonix. Ben was one of the winners in the CloudFlare Heartbleed challenge. Ben and I answered many questions; a recording of the webinar is posted on <a href="https://www.youtube.com/user/CloudFlare">CloudFlare's YouTube channel</a> and can be seen below.</p>
-	<iframe width="420" height="315" src="//www.youtube.com/embed/aolAxAM8vdc" frameborder="0" allowfullscreen=""></iframe>
-	<!--kg-card-end: markdown-->
 </div>

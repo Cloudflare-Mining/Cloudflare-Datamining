@@ -1,62 +1,58 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/Grant_mechanical_calculating_machine_1877-1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption>Grant mechanical calculating machine, public domain <a href="https://en.wikipedia.org/wiki/File:Grant_mechanical_calculating_machine_1877.jpg">image</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RIG87YLutsk2XgorZiRtJ/6b2cf5d55d467393976bee25dd747fcd/Grant_mechanical_calculating_machine_1877-1.jpg" alt="" class="kg-image" width="1401" height="897" loading="lazy">
+
 	</figure>
-	<p></p><!--kg-card-begin: markdown-->
+	<p>Grant mechanical calculating machine, public domain <a href="https://en.wikipedia.org/wiki/File:Grant_mechanical_calculating_machine_1877.jpg">image</a></p>
 	<p>It is unlikely we can tell you anything new about the extended Berkeley Packet Filter, eBPF for short, if you've read all the great <a href="http://man7.org/linux/man-pages/man2/bpf.2.html">man pages</a>, <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">docs</a>, <a href="https://cilium.readthedocs.io/en/latest/bpf">guides</a>, and some of our <a href="https://blog.cloudflare.com/epbf_sockets_hop_distance">blogs</a> out there.</p>
 	<p>But we can tell you a war story, and who doesn't like those? This one is about how eBPF lost its ability to count for a while<a href="https://blog.cloudflare.com/#f1"><sup>1</sup></a>.</p>
 	<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe this… tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04">Marek Majkowski</a> after what I heard was a long night:</p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/ebpf_bug_email_netdev.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2z8UE9I87Kpw8ONzxBH3WW/f0b53a3e98de0679961d4cb25f3bf05d/ebpf_bug_email_netdev.png" alt="" class="kg-image" width="1486" height="710" loading="lazy">
+
+	</figure>
 	<p>Marek's findings were quite shocking - if you subtract two 64-bit timestamps in eBPF, the result is garbage. But only when running as an unprivileged user. From root all works fine. Huh.</p>
 	<p>If you've seen Marek's <a href="https://speakerdeck.com/majek04/linux-at-cloudflare">presentation</a> from the Netdev 0x13 conference, you know that we are using BPF socket filters as one of the defenses against simple, volumetric DoS attacks. So potentially getting your packet count wrong could be a Bad Thing™, and affect legitimate traffic.</p>
 	<p>Let's try to reproduce this bug with a simplified <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L63">eBPF socket filter</a> that subtracts two 64-bit unsigned integers passed to it from <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93">user-space</a> though a BPF map. The input for our BPF program comes from a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L44">BPF array map</a>, so that the values we operate on are not known at build time. This allows for easy experimentation and prevents the compiler from optimizing out the operations.</p>
 	<p>Starting small, eBPF, what is 2 - 1? View the code <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93">on our GitHub</a>.</p>
-	<pre><code>$ ./run-bpf 2 1
+	<pre class="language-bash"><code class="language-bash">$ ./run-bpf 2 1
 arg0                    2 0x0000000000000002
 arg1                    1 0x0000000000000001
-diff                    1 0x0000000000000001
-</code></pre>
+diff                    1 0x0000000000000001</code></pre>
 	<p>OK, eBPF, what is 2^32 - 1?</p>
-	<pre><code>$ ./run-bpf $[2**32] 1
+	<pre class="language-bash"><code class="language-bash">$ ./run-bpf $[2**32] 1
 arg0           4294967296 0x0000000100000000
 arg1                    1 0x0000000000000001
-diff 18446744073709551615 0xffffffffffffffff
-</code></pre>
+diff 18446744073709551615 0xffffffffffffffff</code></pre>
 	<p>Wrong! But if we ask nicely with sudo:</p>
-	<pre><code>$ sudo ./run-bpf $[2**32] 1
+	<pre class="language-bash"><code class="language-bash">$ sudo ./run-bpf $[2**32] 1
 [sudo] password for jkbs:
 arg0           4294967296 0x0000000100000000
 arg1                    1 0x0000000000000001
-diff           4294967295 0x00000000ffffffff
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<h3 id="whoismessingwithmyebpf">Who is messing with my eBPF?</h3>
+diff           4294967295 0x00000000ffffffff</code></pre>
+	<h3>Who is messing with my eBPF?</h3>
 	<p>When computers stop subtracting, you know something big is up. We called for reinforcements.</p>
 	<p>Our colleague Arthur Fabre <a href="https://lore.kernel.org/netdev/20190301113901.29448-1-afabre@cloudflare.com">quickly noticed</a> something is off when you examine the eBPF code loaded into the kernel. It turns out kernel doesn't actually run the eBPF it's supplied - it sometimes rewrites it first.</p>
 	<p>Any sane programmer would expect 64-bit subtraction to be expressed as <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.s#L47">a single eBPF instruction</a></p>
-	<pre><code>$ llvm-objdump -S -no-show-raw-insn -section=socket1 bpf/filter.o
+	<pre class="language-bash"><code class="language-bash">$ llvm-objdump -S -no-show-raw-insn -section=socket1 bpf/filter.o
 …
       20:       1f 76 00 00 00 00 00 00         r6 -= r7
-…
-</code></pre>
+…</code></pre>
 	<p>However, that's not what the kernel actually runs. Apparently after the rewrite the subtraction becomes a complex, multi-step operation.</p>
 	<p>To see what the kernel is actually running we can use little known <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/bpf/bpftool?h=v5.0">bpftool utility</a>. First, we need to load our BPF</p>
-	<pre><code>$ ./run-bpf --stop-after-load 2 1
-[2]+  Stopped                 ./run-bpf 2 1
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ ./run-bpf --stop-after-load 2 1
+[2]+  Stopped                 ./run-bpf 2 1</code></pre>
 	<p>Then list all BPF programs loaded into the kernel with <code>bpftool prog list</code></p>
-	<pre><code>$ sudo bpftool prog list
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftool prog list
 …
 5951: socket_filter  name filter_alu64  tag 11186be60c0d0c0f  gpl
         loaded_at 2019-04-05T13:01:24+0200  uid 1000
-        xlated 424B  jited 262B  memlock 4096B  map_ids 28786
-</code></pre>
+        xlated 424B  jited 262B  memlock 4096B  map_ids 28786</code></pre>
 	<p>The most recently loaded <code>socket_filter</code> must be our program (<code>filter_alu64</code>). Now we now know its id is 5951 and we can list its bytecode with</p>
-	<pre><code>$ sudo bpftool prog dump xlated id 5951
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftool prog dump xlated id 5951
 …
   33: (79) r7 = *(u64 *)(r0 +0)
   34: (b4) (u32) r11 = (u32) -1
@@ -67,11 +63,10 @@ diff           4294967295 0x00000000ffffffff
   39: (5f) r6 &amp;= r11
   40: (1f) r6 -= r7
   41: (7b) *(u64 *)(r10 -16) = r6
-…
-</code></pre>
+…</code></pre>
 	<p>bpftool can also display the JITed code with: <code>bpftool prog dump jited id 5951</code>.</p>
 	<p>As you see, subtraction is replaced with a series of opcodes. That is unless you are root. When running from root all is good</p>
-	<pre><code>$ sudo ./run-bpf --stop-after-load 0 0
+	<pre class="language-bash"><code class="language-bash">$ sudo ./run-bpf --stop-after-load 0 0
 [1]+  Stopped                 sudo ./run-bpf --stop-after-load 0 0
 $ sudo bpftool prog list | grep socket_filter
 659: socket_filter  name filter_alu64  tag 9e7ffb08218476f3  gpl
@@ -80,26 +75,25 @@ $ sudo bpftool prog dump xlated id 659
   31: (79) r7 = *(u64 *)(r0 +0)
   32: (1f) r6 -= r7
   33: (7b) *(u64 *)(r10 -16) = r6
-…
-</code></pre>
+…</code></pre>
 	<p>If you've spent any time using eBPF, you must have experienced first hand the dreaded eBPF verifier. It's a merciless judge of all eBPF code that will reject any programs that it deems not worthy of running in kernel-space.</p>
 	<p>What perhaps nobody has told you before, and what might come as a surprise, is that the very same verifier will actually also <a href="https://elixir.bootlin.com/linux/v4.20.13/source/kernel/bpf/verifier.c#L6421">rewrite and patch up your eBPF code</a> as needed to make it safe.</p>
 	<p>The problems with subtraction were introduced by an inconspicuous security fix to the verifier. The patch in question first landed in Linux 5.0 and was backported to 4.20.6 stable and 4.19.19 LTS kernel. <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=979d63d50c0c0f7bc537bf821e056cc9fe5abd38">The over 2000 words long commit message</a> doesn't spare you any details on the attack vector it targets.</p>
 	<p>The mitigation stems from <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-7308">CVE-2019-7308</a> vulnerability <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1711">discovered by Jann Horn at Project Zero</a>, which exploits pointer arithmetic, i.e. adding a scalar value to a pointer, to trigger speculative memory loads from out-of-bounds addresses. Such speculative loads change the CPU cache state and can be used to mount a <a href="https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html">Spectre variant 1 attack</a>.</p>
 	<p>To mitigate it the eBPF verifier rewrites any arithmetic operations on pointer values in such a way the result is always a memory location within bounds. The patch demonstrates how arithmetic operations on pointers get rewritten and we can spot a familiar pattern there</p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/bpf_commit.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8irnzqpgIARBl3UdtS30S/769b1b7c997b9b0ab889784bb5f6e671/bpf_commit.png" alt="" class="kg-image" width="1585" height="1026" loading="lazy">
+
+	</figure>
 	<p>Wait a minute… What pointer arithmetic? We are just trying to subtract two scalar values. How come the mitigation kicks in?</p>
 	<p>It shouldn't. It's a bug. The eBPF verifier keeps track of what kind of values the ALU is operating on, and in this corner case the state was ignored.</p>
 	<p>Why running BPF as root is fine, you ask? If your program has <code>CAP_SYS_ADMIN</code> privileges, side-channel mitigations <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L7218">don't</a> <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L3109">apply</a>. As root you already have access to kernel address space, so nothing new can leak through BPF.</p>
 	<p>After our report, <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3612af783cf52c74a031a2f11b82247b2599d3cd">the fix</a> has quickly landed in v5.0 kernel and got backported to stable kernels 4.20.15 and 4.19.28. Kudos to Daniel Borkmann for getting the fix out fast. However, kernel upgrades are hard and in the meantime we were left with code running in production that was not doing what it was supposed to.</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<h3 id="32bitalutotherescue">32-bit ALU to the rescue</h3>
+	<h3>32-bit ALU to the rescue</h3>
 	<p>As one of the eBPF maintainers <a href="https://lore.kernel.org/netdev/af0643e0-08a1-6326-2a80-71892de1bf56@iogearbox.net">has pointed out</a>, 32-bit arithmetic operations are not affected by the verifier bug. This opens a door for a work-around.</p>
 	<p>eBPF registers, <code>r0</code>..<code>r10</code>, are 64-bits wide, but you can also access just the lower 32 bits, which are exposed as subregisters <code>w0</code>..<code>w10</code>. You can operate on the 32-bit subregisters using BPF ALU32 instruction subset. LLVM 7+ can generate eBPF code that uses this instruction subset. Of course, you need to you ask it nicely with trivial <code>-Xclang -target-feature -Xclang +alu32</code> toggle:</p>
-	<pre><code>$ cat sub32.c
+	<pre class="language-bash"><code class="language-bash">$ cat sub32.c
 #include "common.h"
 
 u32 sub32(u32 x, u32 y)
@@ -112,11 +106,10 @@ $ llvm-objdump -S -no-show-raw-insn sub32.o
 sub32:
        0:       bc 10 00 00 00 00 00 00         w0 = w1
        1:       1c 20 00 00 00 00 00 00         w0 -= w2
-       2:       95 00 00 00 00 00 00 00         exit
-</code></pre>
+       2:       95 00 00 00 00 00 00 00         exit</code></pre>
 	<p>The <code>0x1c</code> <a href="https://elixir.bootlin.com/linux/v5.0/source/include/uapi/linux/bpf_common.h#L11">opcode</a> of the instruction #1, which can be broken down as <code>BPF_ALU | BPF_X | BPF_SUB</code> (read more in the <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">kernel docs</a>), is the 32-bit subtraction between registers we are looking for, as opposed to regular 64-bit subtract operation <code>0x1f = BPF_ALU64 | BPF_X | BPF_SUB</code>, which will get rewritten.</p>
 	<p>Armed with this knowledge we can borrow a page from <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic">bignum arithmetic</a> and subtract 64-bit numbers using just 32-bit ops:</p>
-	<pre><code class="language-c">u64 sub64(u64 x, u64 y)
+	<pre class="language-c"><code class="language-c">u64 sub64(u64 x, u64 y)
 {
         u32 xh, xl, yh, yl;
         u32 hi, lo;
@@ -130,10 +123,9 @@ sub32:
         hi = xh - yh - (lo &gt; xl); /* underflow? */
 
         return ((u64)hi &lt;&lt; 32) | (u64)lo;
-}
-</code></pre>
+}</code></pre>
 	<p>This code compiles as expected on normal architectures, like x86-64 or ARM64, but BPF Clang target plays by its own rules:</p>
-	<pre><code>$ clang -O2 -target bpf -Xclang -target-feature -Xclang +alu32 -c sub64.c -o - \
+	<pre class="language-bash"><code class="language-bash">$ clang -O2 -target bpf -Xclang -target-feature -Xclang +alu32 -c sub64.c -o - \
   | llvm-objdump -S -
 …  
       13:       1f 40 00 00 00 00 00 00         r0 -= r4
@@ -143,15 +135,13 @@ sub32:
       17:       67 01 00 00 20 00 00 00         r1 &lt;&lt;= 32
       18:       77 01 00 00 20 00 00 00         r1 &gt;&gt;= 32
       19:       4f 10 00 00 00 00 00 00         r0 |= r1
-      20:       95 00 00 00 00 00 00 00         exit
-</code></pre>
+      20:       95 00 00 00 00 00 00 00         exit</code></pre>
 	<p>Apparently the compiler decided it was better to operate on 64-bit registers and discard the upper 32 bits. Thus we weren't able to get rid of the problematic <code>0x1f</code> opcode. Annoying, back to square one.</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<h3 id="surelyabitofirwilldo">Surely a bit of IR will do?</h3>
+	<h3>Surely a bit of IR will do?</h3>
 	<p>The problem was in Clang frontend - compiling C to IR. We know that BPF "assembly" backend for LLVM can generate bytecode that uses ALU32 instructions. Maybe if we tweak the Clang compiler's output just a little we can achieve what we want. This means we have to get our hands dirty with the LLVM Intermediate Representation (IR).</p>
 	<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="http://www.aosabook.org/en/llvm.html">reading</a><a href="https://blog.cloudflare.com/#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
 	<p>Time to write IR by hand! Here's a hand-tweaked <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.ll#L7">IR variant</a> of our <code>sub64()</code> function:</p>
-	<pre><code>define dso_local i64 @sub64_ir(i64, i64) local_unnamed_addr #0 {
+	<pre class="language-bash"><code class="language-bash">define dso_local i64 @sub64_ir(i64, i64) local_unnamed_addr #0 {
   %3 = trunc i64 %0 to i32      ; xl = (u32) x;
   %4 = trunc i64 %1 to i32      ; yl = (u32) y;
   %5 = sub i32 %3, %4           ; lo = xl - yl;
@@ -168,58 +158,56 @@ sub32:
   %16 = shl i64 %15, 32         ; tmp2 = hi &lt;&lt; 32
   %17 = or i64 %16, %6          ; res = tmp2 | (u64)lo
   ret i64 %17
-}
-</code></pre>
+}</code></pre>
 	<p>It may not be pretty but it does produce <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.s#L5">desired BPF code</a> when compiled<a href="https://blog.cloudflare.com/#f3"><sup>3</sup></a>. You will likely find the <a href="https://llvm.org/docs/LangRef.html">LLVM IR reference</a> helpful when deciphering it.</p>
 	<p>And voila! First working solution that produces correct results:</p>
-	<pre><code>$ ./run-bpf -filter ir $[2**32] 1
+	<pre class="language-bash"><code class="language-bash">$ ./run-bpf -filter ir $[2**32] 1
 arg0           4294967296 0x0000000100000000
 arg1                    1 0x0000000000000001
-diff           4294967295 0x00000000ffffffff
-</code></pre>
+diff           4294967295 0x00000000ffffffff</code></pre>
 	<p>Actually using this hand-written IR function from C is tricky. See <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/build.ninja#L27">our code on GitHub</a>.</p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/LED_DISP-1.JPG" class="kg-image" alt="" loading="lazy">
-		<figcaption>public domain <a href="https://en.wikipedia.org/wiki/File:LED_DISP.JPG">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Sergei_Frolov">Sergei Frolov</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zQLSvXLH19lXCjYnstl2a/df8305bdaa6564042ab453c0aed77fd3/LED_DISP-1.JPG.jpeg" alt="" class="kg-image" width="1280" height="385" loading="lazy">
+
 	</figure>
-	<p></p><!--kg-card-begin: markdown-->
-	<h3 id="thefinaltrick">The final trick</h3>
+	<p>public domain <a href="https://en.wikipedia.org/wiki/File:LED_DISP.JPG">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Sergei_Frolov">Sergei Frolov</a></p>
+	<h3>The final trick</h3>
 	<p>Hand-written IR does the job. The downside is that linking IR modules to your C modules is hard. Fortunately there is a better way. You can persuade Clang to stick to 32-bit ALU ops in generated IR.</p>
 	<p>We've already seen the problem. To recap, if we ask Clang to subtract 32-bit integers, it will operate on 64-bit values and throw away the top 32-bits. Putting C, IR, and eBPF side-by-side helps visualize this:</p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/sub32_v1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33bbylbcFR7zuF7NwxHcTs/db4601a655f51b4f1caa2f76e15aa52a/sub32_v1.png" alt="" class="kg-image" width="1224" height="362" loading="lazy">
+
+	</figure>
 	<p>The trick to get around it is to declare the 32-bit variable that holds the result as <code>volatile</code>. You might already know the <a href="https://en.wikipedia.org/wiki/Volatile_(computer_programming)"><code>volatile</code> keyword</a> if you've written Unix signal handlers. It basically tells the compiler that the value of the variable may change under its feet so it should refrain from reorganizing loads (reads) from it, as well as that stores (writes) to it might have side-effects so changing the order or eliminating them, by skipping writing it to the memory, is not allowed either.</p>
 	<p>Using <code>volatile</code> makes Clang emit <a href="https://llvm.org/docs/LangRef.html#volatile-memory-accesses">special loads and/or stores</a> at the IR level, which then on eBPF level translates to writing/reading the value from memory (stack) on every access. While this sounds not related to the problem at hand, there is a surprising side-effect to it:</p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/sub32_v2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fEaCu15LmmeauGv7Vh1Wb/9c88d48aec30a92c58b872bece04a290/sub32_v2.png" alt="" class="kg-image" width="1386" height="324" loading="lazy">
+
+	</figure>
 	<p>With volatile access compiler doesn't promote the subtraction to 64 bits! Don't ask me why, although I would love to hear an explanation. For now, consider this a hack. One that does not come for free - there is the overhead of going through the stack on each read/write.</p>
 	<p>However, if we play our cards right we just might reduce it a little. We don't actually need the volatile load or store to happen, we just want the side effect. So instead of declaring the value as volatile, which implies that both reads and writes are volatile, let's try to make only the writes volatile with a help of a macro:</p>
-	<pre><code class="language-c">/* Emits a "store volatile" in LLVM IR */
-#define ST_V(rhs, lhs) (*(volatile typeof(rhs) *) &amp;(rhs) = (lhs))
-</code></pre>
+	<pre class="language-c"><code class="language-c">/* Emits a "store volatile" in LLVM IR */
+#define ST_V(rhs, lhs) (*(volatile typeof(rhs) *) &amp;(rhs) = (lhs))</code></pre>
 	<p>If this macro looks strangely familiar, it's because it does the same thing as <a href="https://elixir.bootlin.com/linux/v5.1-rc5/source/include/linux/compiler.h#L214"><code>WRITE_ONCE()</code> macro</a> in the Linux kernel. Applying it to our example:</p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/sub32_v3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p><!--kg-card-begin: markdown-->
-	<p>That's another <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L143">hacky but working solution</a>. Pick your poison.</p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/poison_bottles-2.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg">image</a> by ANKAWÜ</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qQ1CrUvUBsJJE09xVqzA1/b54a6ee30aaabb74fb6cb9c21001c99b/sub32_v3.png" alt="" class="kg-image" width="1424" height="304" loading="lazy">
+
 	</figure>
-	<p></p><!--kg-card-begin: markdown-->
+	<p>That's another <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L143">hacky but working solution</a>. Pick your poison.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28GXw3wm8YlUgg9nvnBwEx/622d035d7c8e40a23ce0ccf5fd4990c9/poison_bottles-2.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg">image</a> by ANKAWÜ</p>
 	<p>So there you have it - from C, to IR, and back to C to hack around a bug in eBPF verifier and be able to subtract 64-bit integers again. Usually you won't have to dive into LLVM IR or assembly to make use of eBPF. But it does help to know a little about it when things don't work as expected.</p>
 	<p>Did I mention that 64-bit addition is also broken? Have fun fixing it!</p>
-	<!--kg-card-end: markdown-->
-	<hr><!--kg-card-begin: markdown-->
-	<p><a name="f1"><sup>1</sup></a> Okay, it was more like 3 months time until the bug was discovered and fixed.</p>
-	<p><a name="f2"><sup>2</sup></a> Some even think that it is <a href="https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly">better than assembly</a>.</p>
-	<p><a name="f3"><sup>3</sup></a> How do we know? The litmus test is to look for statements matching <code>r[0-9] [-+]= r[0-9]</code> in BPF assembly.</p>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<p><sup>1</sup> Okay, it was more like 3 months time until the bug was discovered and fixed.</p>
+	<p><sup>2</sup> Some even think that it is <a href="https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly">better than assembly</a>.</p>
+	<p><sup>3</sup> How do we know? The litmus test is to look for statements matching <code>r[0-9] [-+]= r[0-9]</code> in BPF assembly.</p>
 </div>

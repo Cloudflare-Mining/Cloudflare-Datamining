@@ -1,62 +1,69 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/iokjW2pWsvmwknGeJ73KB/c07edbf40430d2e91b321537c01af406/subdomains-vs-subdirectories-best-practices-workers-part-1.jpeg" alt="">
 <div class="post-content lh-copy gray1">
-	<h4 id="subdomain-vs-subdirectory-2-different-seo-strategies">Subdomain vs. Subdirectory: 2 Different SEO Strategies</h4>
-	<p>Alice and Bob are budding blogger buddies who met up at a meetup and purchased some <em>root domains </em>to start writing. &nbsp;Alice bought <em>aliceblogs.com</em> and Bob scooped up <em>bobtopia.com</em>.</p>
+	<h4>Subdomain vs. Subdirectory: 2 Different SEO Strategies</h4>
+	<p>Alice and Bob are budding blogger buddies who met up at a meetup and purchased some <i>root domains</i> to start writing. &nbsp;Alice bought <i>aliceblogs.com</i> and Bob scooped up <i>bobtopia.com</i>.</p>
 	<p>Alice and Bob decided against WordPress because its what their parents use and purchased subscriptions to a popular cloud-based Ghost blogging platform instead.</p>
-	<p>Bob decides his blog should live at at blog.bobtopia.com – a <em>subdomain</em> of bobtopia.com. Alice keeps it old school and builds hers at <em>aliceblogs.com/blog</em> – a <em>subdirectory</em> of aliceblogs.com.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Untitled-1-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><em>Subdomains</em> and <em>subdirectories</em> are different strategies for instrumenting root domains with new features (think a blog or a storefront). &nbsp;Alice and Bob chose their strategies on a whim, but <em>which strategy is technically better</em>? &nbsp;The short answer is, <em>it depends</em>. But the long answer can actually improve your SEO. &nbsp;In this article, we'll review the merits and tradeoffs of each. In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how to convert subdomains to subdirectories using <a href="https://blog.cloudflare.com/www.cloudflare.com/workers">Cloudflare Workers</a>.</p>
-	<h4 id="setting-up-subdomains-and-subdirectories">Setting Up Subdomains and Subdirectories</h4>
+	<p>Bob decides his blog should live at at blog.bobtopia.com – a <i>subdomain</i> of bobtopia.com. Alice keeps it old school and builds hers at <i>aliceblogs.com/blog</i> – a <i>subdirectory</i> of aliceblogs.com.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bfADYO8jfROjJXl42KfXV/2dab01484c211734d10db8ac5cb058b0/Untitled-1-1.png" alt="" class="kg-image" width="1240" height="190" loading="lazy">
+
+	</figure>
+	<p><i>Subdomains</i> and <i>subdirectories</i> are different strategies for instrumenting root domains with new features (think a blog or a storefront). &nbsp;Alice and Bob chose their strategies on a whim, but <i>which strategy is technically better</i>? &nbsp;The short answer is, <i>it depends</i>. But the long answer can actually improve your SEO. &nbsp;In this article, we'll review the merits and tradeoffs of each. In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how to convert subdomains to subdirectories using <a href="https://blog.cloudflare.com/www.cloudflare.com/workers">Cloudflare Workers</a>.</p>
+	<h4>Setting Up Subdomains and Subdirectories</h4>
 	<p>Setting up subdirectories is trivial on basic websites. &nbsp;A web server treats its subdirectories (aka subfolders) the same as regular old folders in a file system. &nbsp;In other words, basic sites are already organized using subdirectories out of the box. &nbsp;No set up or configuration is required.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Screen-Shot-2019-01-22-at-4.07.02-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>In the old school site above, we'll assume the <em>blog</em> folder contains an <em>index.html</em> file. The web server renders <em>blog/index.html</em> when a user navigates to the <em>oldschoolsite.com/blog </em>subdirectory<em>. &nbsp;</em>But Alice and Bob's sites don't have a <em>blog</em> folder because their blogs are hosted remotely – so this approach won't work.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Rsiz813gZMirbUtjKPo1H/fa52aa8be83a29ceb0b8a5c248829c80/Screen-Shot-2019-01-22-at-4.07.02-PM.png" alt="" class="kg-image" width="732" height="612" loading="lazy">
+
+	</figure>
+	<p>In the old school site above, we'll assume the <i>blog</i> folder contains an <i>index.html</i> file. The web server renders <i>blog/index.html</i> when a user navigates to the <i>oldschoolsite.com/blog</i> subdirectory_._ &nbsp;But Alice and Bob's sites don't have a <i>blog</i> folder because their blogs are hosted remotely – so this approach won't work.</p>
 	<p>On the modern Internet, subdirectory setup is more complicated because the services that comprise a root domain are often hosted on machines scattered across the world.</p>
-	<p>Because DNS records only operate on the domain level, records like <code>CNAME</code> have no effect on a url like <em>aliceblogs.com/blog</em> – and because her blog is hosted remotely, Alice needs to install <a href="https://www.nginx.com">NGINX</a> or another reverse proxy and write some configuration code that proxies traffic from <em>aliceblogs.com/blog</em> to her hosted blog. It takes time, patience, and experience to connect her domain to her hosted blog.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/02/Screen-Shot-2019-02-05-at-8.25.01-PM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>A location block in NGINX is necessary to proxy traffic from a subdirectory to a remote host</figcaption>
+	<p>Because DNS records only operate on the domain level, records like <code>CNAME</code> have no effect on a url like <i>aliceblogs.com/blog</i> – and because her blog is hosted remotely, Alice needs to install <a href="https://www.nginx.com">NGINX</a> or another reverse proxy and write some configuration code that proxies traffic from <i>aliceblogs.com/blog</i> to her hosted blog. It takes time, patience, and experience to connect her domain to her hosted blog.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5280nHa1SMYG1xAwGUYWDa/8496e15fbef378977b13bbc1d048b7fb/Screen-Shot-2019-02-05-at-8.25.01-PM.png" alt="" class="kg-image" width="1532" height="174" loading="lazy">
+
 	</figure>
-	<p></p>
+	<p>A location block in NGINX is necessary to proxy traffic from a subdirectory to a remote host</p>
 	<p>Bob's subdomain strategy is the easier approach with his remotely hosted blog. &nbsp;A DNS <code>CNAME</code> record is often all that's required to connect Bob's blog to his subdomain. &nbsp;No additional configuration is needed if he can remember to pay his monthly subscription.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/02/Screen-Shot-2019-02-11-at-10.57.06-AM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Configuring a DNS record to point a hosted service at your blog subdomain</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kWlWnq3CzsVQIk5POm8DJ/c5f249d4f01d7608caac8f114fe7fde8/Screen-Shot-2019-02-11-at-10.57.06-AM.png" alt="" class="kg-image" width="2052" height="222" loading="lazy">
+
 	</figure>
-	<p></p>
+	<p>Configuring a DNS record to point a hosted service at your blog subdomain</p>
 	<p>To recap, subdirectories are already built into simple sites that serve structured content from the same machine, but modern sites often rely on various remote services. &nbsp;Subdomain set up is comparatively easy for sites that take advantage of various hosted cloud-based platforms.</p>
-	<h4 id="are-subdomains-or-subdirectories-better-for-seo">Are Subdomains or Subdirectories Better for SEO?</h4>
-	<p>Subdomains are neat. If you ask me, <em>blog.bobtopia.com</em> is more appealing than <em>bobtopia.com/blog</em>. But if we want to make an informed decision about the best strategy, where do we look? &nbsp;If we're interested in SEO, we ought to consult the Google Bot.</p>
-	<p></p>
-	<figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/uJGDyAN9g-g?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
-	<p></p>
-	<p>Subdomains and subdirectories are equal in the eyes of the Google Bot, according to Google itself. &nbsp;This means that Alice and Bob have the same chance at ranking in search results. &nbsp;This is because Alice's root domain and Bob's subdomain build their own sets of <em>keywords</em>. &nbsp;Relevant keywords help your audience find your site in a search. There is one important caveat to point out for Bob:</p>
-	<blockquote>A subdomain is equal and distinct from a root domain. &nbsp;This means that a subdomain's keywords are treated separately from the root domain.</blockquote>
-	<p>What does this mean for Bob? &nbsp;Let's imagine <em>bobtopia.com</em> is already a popular online platform for folks named Bob to seek kinship with other Bobs. &nbsp;In this peculiar world, searches that rank for <em>bobtopia.com</em> wouldn't automatically rank for <em>blog.bobtopia.com</em> because each domain has its own separate keywords. &nbsp;The lesson here is that keywords are diluted across subdomains. &nbsp;Each additional subdomain decreases the likelihood that any particular domain ranks in a given search. &nbsp;A high ranking subdomain does not imply your root domain ranks well.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/Untitled-Diagram.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>In a search for "Cool Blog", <em>bobtopia.com</em> suffers from <em>keyword dilution.</em> It doesn't rank because its blog keyword is owned by <em>blog.bobtopia.com</em>.</figcaption>
+	<h4>Are Subdomains or Subdirectories Better for SEO?</h4>
+	<p>Subdomains are neat. If you ask me, <i>blog.bobtopia.com</i> is more appealing than <i>bobtopia.com/blog</i>. But if we want to make an informed decision about the best strategy, where do we look? &nbsp;If we're interested in SEO, we ought to consult the Google Bot.</p>
+	<p>Subdomains and subdirectories are equal in the eyes of the Google Bot, according to Google itself. &nbsp;This means that Alice and Bob have the same chance at ranking in search results. &nbsp;This is because Alice's root domain and Bob's subdomain build their own sets of <i>keywords</i>. &nbsp;Relevant keywords help your audience find your site in a search. There is one important caveat to point out for Bob:</p>
+	<blockquote>
+		<p>A subdomain is equal and distinct from a root domain. &nbsp;This means that a subdomain's keywords are treated separately from the root domain.</p>
+	</blockquote>
+	<p>What does this mean for Bob? &nbsp;Let's imagine <i>bobtopia.com</i> is already a popular online platform for folks named Bob to seek kinship with other Bobs. &nbsp;In this peculiar world, searches that rank for <i>bobtopia.com</i> wouldn't automatically rank for <i>blog.bobtopia.com</i> because each domain has its own separate keywords. &nbsp;The lesson here is that keywords are diluted across subdomains. &nbsp;Each additional subdomain decreases the likelihood that any particular domain ranks in a given search. &nbsp;A high ranking subdomain does not imply your root domain ranks well.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KQm8LGoY1UrmNc6Nlwmz0/0498deb8a2aec6c5698d5e205bde9ec0/Untitled-Diagram.png" alt="" class="kg-image" width="831" height="261" loading="lazy">
+
 	</figure>
-	<p></p>
-	<p>Subdomains also suffer from <em>backlink dilution.</em> &nbsp;A <em>backlink</em> is simply a hyperlink that points back to your site. Alice's attribution to a post on the etymology of Bob from <em>blog.bobtopia.com</em> does not help <em>bobtopia.com</em> because the subdomain is treated separate but equal from the root domain. &nbsp;If Bob used subdirectories instead, Bob's blog posts would feed the authority of <em>bobtopia.com</em> and Bobs everywhere would rejoice.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/Untitled-Diagram--2-.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>The authority of <em>blog.bobtopia.com</em> is increased when Alice links to Bob's interesting blog post, but the authority of <em>bobtopia.com</em> is not affected.</figcaption>
+	<p>In a search for "Cool Blog", <i>bobtopia.com</i> suffers from <i>keyword dilution.</i> It doesn't rank because its blog keyword is owned by <i>blog.bobtopia.com</i>.</p>
+	<p>Subdomains also suffer from <i>backlink dilution.</i> &nbsp;A <i>backlink</i> is simply a hyperlink that points back to your site. Alice's attribution to a post on the etymology of Bob from <i>blog.bobtopia.com</i> does not help <i>bobtopia.com</i> because the subdomain is treated separate but equal from the root domain. &nbsp;If Bob used subdirectories instead, Bob's blog posts would feed the authority of <i>bobtopia.com</i> and Bobs everywhere would rejoice.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69iuli3pGl8aIxAYNY7FVg/46e73a467a7bf0fbddc1a9b6b7af9135/Untitled-Diagram--2-.png" alt="" class="kg-image" width="694" height="221" loading="lazy">
+
 	</figure>
-	<p></p>
+	<p>The authority of <i>blog.bobtopia.com</i> is increased when Alice links to Bob's interesting blog post, but the authority of <i>bobtopia.com</i> is not affected.</p>
 	<p>Although search engines have improved at identifying subdomains and attributing keywords back to the root domain, they still have a long way to go. &nbsp;A prudent marketer would avoid risk by assuming search engines will always be bad at cataloguing subdomains.</p>
-	<p>So when would you want to use subdomains? &nbsp;A good use case is for companies who are interested in expanding into foreign markets. &nbsp;Pretend <em>bobtopia.com</em> is an American company whose website is in English. &nbsp;Their English keywords won't rank well in German searches – so they translate their site into German to begin building new keywords on <em>deutsch.bobtopia.com</em>. Erfolg!</p>
+	<p>So when would you want to use subdomains? &nbsp;A good use case is for companies who are interested in expanding into foreign markets. &nbsp;Pretend <i>bobtopia.com</i> is an American company whose website is in English. &nbsp;Their English keywords won't rank well in German searches – so they translate their site into German to begin building new keywords on <i>deutsch.bobtopia.com</i>. Erfolg!</p>
 	<p>Other use cases for subdomains include product stratification (think global brands with presence across many markets) and corporate internal tools (think productivity and organization tools that aren't user facing). &nbsp;But unless you're a huge corporation or just finished your Series C round of funding, subdomaining your site into many silos is not helping your SEO.</p>
-	<h4 id="conclusion">Conclusion</h4>
+	<h4>Conclusion</h4>
 	<p>If you're a startup or small business looking to optimize your SEO, consider subdirectories over subdomains. &nbsp;Boosting the authority of your root domain should be a universal goal of any organization. The subdirectory strategy concentrates your keywords onto a single domain while the subdomain strategy spreads your keywords across multiple distinct domains. In a word, the subdirectory strategy results in better root domain authority. Higher domain authority leads to better search rankings which translates to more engagement.</p>
-	<p>Consider the multitude of disruptive PaaS startups with <em>docs.disruptivepaas.com</em> and <em>blog.disruptivepaas.com</em>. &nbsp;Why not switch to <em>disruptivepaas.com/docs</em> and <em>disruptivepaas.com/blog</em> to boost the authority of your root domain with all those docs searches and StackOverflow backlinks?</p>
-	<h4 id="want-to-switch-your-subdomains-to-subdirectories">Want to Switch Your Subdomains to Subdirectories?</h4>
+	<p>Consider the multitude of disruptive PaaS startups with <i>docs.disruptivepaas.com</i> and <i>blog.disruptivepaas.com</i>. &nbsp;Why not switch to <i>disruptivepaas.com/docs</i> and <i>disruptivepaas.com/blog</i> to boost the authority of your root domain with all those docs searches and StackOverflow backlinks?</p>
+	<h4>Want to Switch Your Subdomains to Subdirectories?</h4>
 	<p>Interested in switching your subdomains to subdirectories without a reverse proxy? In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2">Part 2</a>, we'll show you how using Cloudflare Workers.</p>
-	<hr><!--kg-card-begin: markdown-->
-	<p><small>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers" target="blank"><em>here</em></a>.</small></p>
-	<p align="center">
-		<a class="btn btn-warning" href="https://workers.dev" target="_blank">Reserve a workers.dev subdomain</a>
-	</p><!--kg-card-end: markdown-->
+	<hr>
+	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>
+	<p><a href="https://workers.dev">Reserve a workers.dev subdomain</a></p>
 	<hr>
 </div>

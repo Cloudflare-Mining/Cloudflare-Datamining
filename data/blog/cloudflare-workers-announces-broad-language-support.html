@@ -1,52 +1,57 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/Serverless-Week-Day-2@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MiZPpYQdktFLhRS4f5ZrH/807ab9cd48b97a2c4cf037aa60024896/Serverless-Week-Day-2_2x.png" alt="" class="kg-image" width="1600" height="814" loading="lazy">
+
+	</figure>
 	<p>We initially launched <a href="https://workers.cloudflare.com">Cloudflare Workers</a> with support for JavaScript and languages that compile to WebAssembly, such as Rust, C, and C++. Since then, Cloudflare and the community have improved the usability of <a href="https://github.com/cloudflare/workers-types">Typescript on Workers</a>. But we haven't talked much about the many other <a href="https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS">popular languages that compile to JavaScript</a>. Today, we’re excited to announce support for Python, Scala, Kotlin, Reason and Dart.</p>
 	<p>You can build applications on Cloudflare Workers using your favorite language starting today.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/Workers-Languages@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="getting-started"><strong>Getting Started</strong></h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gnOXAk9K4vWzDnK70ndDP/efbeb0e59f111edbc6e1b590cda46b94/Workers-Languages_2x.png" alt="" class="kg-image" width="1600" height="779" loading="lazy">
+
+	</figure>
+	<h2><b>Getting Started</b></h2>
 	<p>Getting started is as simple as installing <a href="https://github.com/cloudflare/wrangler">Wrangler</a>, then running generate for the template for your chosen language: <a href="https://github.com/cloudflare/python-worker-hello-world">Python</a>, <a href="https://github.com/cloudflare/scala-worker-hello-world">Scala</a>, <a href="https://github.com/cloudflare/kotlin-worker-hello-world">Kotlin</a>, <a href="https://github.com/cloudflare/dart-worker-hello-world">Dart</a>, or <a href="https://github.com/cloudflare/reason-worker-hello-world">Reason</a>. For Python, this looks like:</p>
 	<p><code>wrangler generate my-python-project https://github.com/cloudflare/python-worker-hello-world</code></p>
-	<p>Follow the installation instructions in the README inside the generated project directory, then run <code>wrangler publish</code>. You can see the output of your Worker at your workers.dev subdomain, e.g. <a href="https://my-python-project.cody.workers.dev">https://my-python-project.cody.workers.dev/</a>. You can sign up for a <a href="https://dash.cloudflare.com/sign-up/workers">free Workers account</a> if you don't have one yet. </p>
-	<p>That’s it. It is really easy to write in your favorite languages. But, this wouldn’t be a very compelling blog post if we left it at that. Now, I’ll shift the focus to how we added support for these languages and how you can add support for others. </p>
-	<h3 id="how-it-all-works-under-the-hood">How it all works under the hood</h3>
+	<p>Follow the installation instructions in the README inside the generated project directory, then run <code>wrangler publish</code>. You can see the output of your Worker at your workers.dev subdomain, e.g. <a href="https://my-python-project.cody.workers.dev">https://my-python-project.cody.workers.dev/</a>. You can sign up for a <a href="https://dash.cloudflare.com/sign-up/workers">free Workers account</a> if you don't have one yet.</p>
+	<p>That’s it. It is really easy to write in your favorite languages. But, this wouldn’t be a very compelling blog post if we left it at that. Now, I’ll shift the focus to how we added support for these languages and how you can add support for others.</p>
+	<h3>How it all works under the hood</h3>
 	<p>Language features are important. For instance, it's hard to give up the safety and expressiveness of <a href="https://reasonml.github.io/docs/en/pattern-matching">pattern matching</a> once you've used it. Familiar syntax matters to us as programmers.</p>
 	<p>You may also have existing code in your preferred language that you'd like to reuse. Just keep in mind that the <a href="https://www.infoq.com/presentations/cloudflare-v8">advantages of running on V8</a> come with the limitation that if you use libraries that depend on native code or language-specific VM features, they may not translate to JavaScript. WebAssembly may be an option in that case. But for memory-managed languages you're usually better off compiling to JavaScript, at least until the story around <a href="https://github.com/WebAssembly/gc/issues/44">garbage collection for WebAssembly</a> stabilizes.</p>
 	<p>I'll walk through how the Worker language templates are made using a representative example of a dynamically typed language, Python, and a statically typed language, Scala. If you want to follow along, you'll need to have <a href="https://github.com/cloudflare/wrangler">Wrangler</a> installed and configured with your Workers account. If it's your first time using Workers it's a good idea to go through the <a href="https://developers.cloudflare.com/workers/quickstart">quickstart</a>.</p>
-	<h4 id="dynamically-typed-languages-python">Dynamically typed languages: Python</h4>
+	<h4>Dynamically typed languages: Python</h4>
 	<p>You can generate a starter "hello world" Python project for Workers by running</p>
 	<p><code>wrangler generate my-python-project https://github.com/cloudflare/python-worker-hello-world</code></p>
 	<p>Wrangler will create a <code>my-python-project</code> directory and helpfully remind you to configure your account_id in the wrangler.toml file inside it. &nbsp;The <a href="https://github.com/cloudflare/python-worker-hello-world/blob/master/README.md">README.md</a> file in the directory links to instructions on setting up <a href="http://www.transcrypt.org/docs/html/installation_use.html">Transcrypt</a>, the Python to JavaScript compiler we're using. If you already have Python 3.7 and virtualenv installed, this just requires running</p>
-	<pre><code>cd my-python-project
+	<pre class="language-bash"><code class="language-bash">cd my-python-project
 virtualenv env
 source env/bin/activate
 pip install transcrypt
-wrangler publish
-</code></pre>
+wrangler publish</code></pre>
 	<p>The main requirement for compiling to JavaScript on Workers is the ability to produce a single js file that fits in our <a href="https://developers.cloudflare.com/workers/about/limits/#script-size">bundle size limit</a> of 1MB. Transcrypt adds about 70k for its Python runtime in this case, which is well within that limit. But by default running Transcrypt on a Python file will produce multiple JS and source map files in a <code>__target__</code> directory. Thankfully Wrangler has <a href="https://developers.cloudflare.com/workers/tooling/wrangler/webpack">built in support for webpack</a>. There's a <a href="https://www.npmjs.com/package/transcrypt-loader">webpack loader</a> for Transcrypt, making it easy to produce a single file. See the <a href="https://github.com/cloudflare/python-worker-hello-world/blob/master/webpack.config.js">webpack.config.js</a> file for the setup.</p>
 	<p>The point of all this is to run some Python code, so let's take a look at <a href="https://github.com/cloudflare/python-worker-hello-world/blob/master/index.py">index.py</a>:</p>
-	<pre><code>def handleRequest(request):
+	<pre class="language-bash"><code class="language-bash">def handleRequest(request):
    return __new__(Response('Python Worker hello world!', {
        'headers' : { 'content-type' : 'text/plain' }
    }))
 
-addEventListener('fetch', (lambda event: event.respondWith(handleRequest(event.request))))
-</code></pre>
+addEventListener('fetch', (lambda event: event.respondWith(handleRequest(event.request))))</code></pre>
 	<p>In most respects this is very similar to any other <a href="https://developers.cloudflare.com/workers/quickstart#writing-code">Worker hello world</a>, just in Python syntax. Dictionary literals take the place of JavaScript objects, <code>lambda</code> is used instead of an anonymous arrow function, and so on. If using <code>__new__</code> to create instances of JavaScript classes seems awkward, the <a href="http://www.transcrypt.org/docs/html/special_facilities.html#creating-javascript-objects-with-new-constructor-call">Transcrypt docs</a> discuss an alternative.</p>
 	<p>Clearly, <code>addEventListener</code> is not a built-in Python function, it's part of the Workers runtime. Because Python is dynamically typed, you don't have to worry about providing type signatures for JavaScript APIs. The downside is that mistakes will result in failures when your Worker runs, rather than when Transcrypt compiles your code. Transcrypt does have experimental support for some degree of static checking using <a href="http://www.transcrypt.org/docs/html/installation_use.html#static-type-validation">mypy</a>.</p>
-	<h4 id="statically-typed-languages-scala">Statically typed languages: Scala</h4>
+	<h4>Statically typed languages: Scala</h4>
 	<p>You can generate a starter "hello world" Scala project for Workers by running</p>
 	<p><code>wrangler generate my-scala-project https://github.com/cloudflare/scala-worker-hello-world</code></p>
 	<p>The Scala to JavaScript compiler we're using is <a href="https://www.scala-js.org/doc">Scala.js</a>. It has a plugin for the Scala build tool, so <a href="https://www.scala-sbt.org/1.x/docs/Setup.html">installing sbt</a> and a JDK is all you'll need.</p>
 	<p>Running <code>sbt fullOptJS</code> in the project directory will compile your Scala code to a single index.js file. The build configuration in build.sbt is set up to output to the root of the project, where Wrangler expects to find an index.js file. After that you can run <code>wrangler publish</code> as normal.</p>
 	<p>Scala.js uses the Google Closure Compiler to optimize for size when running <code>fullOptJS</code>. For the hello world, the file size is 14k. A more realistic project involving async fetch weighs in around 100k, still well within Workers limits.</p>
 	<p>In order to take advantage of static type checking, you're going to need type signatures for the JavaScript APIs you use. There are existing Scala signatures for fetch and service worker related APIs. You can see those being imported in the entry point for the Worker, <a href="https://github.com/cloudflare/scala-worker-hello-world/blob/master/src/main/scala/Main.scala">Main.scala</a>:</p>
-	<pre><code>import org.scalajs.dom.experimental.serviceworkers.{FetchEvent}
+	<pre class="language-bash"><code class="language-bash">import org.scalajs.dom.experimental.serviceworkers.{FetchEvent}
 import org.scalajs.dom.experimental.{Request, Response, ResponseInit}
-import scala.scalajs.js
-</code></pre>
+import scala.scalajs.js</code></pre>
 	<p>The import of scala.scalajs.js allows easy access to <a href="https://www.scala-js.org/doc/interoperability/types.html">Scala equivalents of JavaScript types</a>, such as <code>js.Array</code> or <code>js.Dictionary</code>. The remainder of Main looks fairly similar to a <a href="https://github.com/EverlastingBugstopper/worker-typescript-template/blob/master/src/handler.ts">Typescript Worker hello world</a>, with syntactic differences such as Unit instead of Void and square brackets instead of angle brackets for type parameters:</p>
-	<pre><code>object Main {
+	<pre class="language-bash"><code class="language-bash">object Main {
   def main(args: Array[String]): Unit = {
     Globals.addEventListener("fetch", (event: FetchEvent) =&gt; {
       event.respondWith(handleRequest(event.request))
@@ -57,37 +62,34 @@ import scala.scalajs.js
     new Response("Scala Worker hello world", ResponseInit(
         _headers = js.Dictionary("content-type" -&gt; "text/plain")))
   }
-}  
-</code></pre>
+}  </code></pre>
 	<p>Request, Response and FetchEvent are defined by the previously mentioned imports. But what's this Globals object? There are some Worker-specific extensions to JavaScript APIs. You can handle these in a statically typed language by either <a href="https://github.com/sjrd/scala-js-ts-importer">automatically converting</a> existing Typescript <a href="https://github.com/cloudflare/workers-types">type definitions for Workers</a> or by writing type signatures for the features you want to use. Writing the type signatures isn't hard, and it's good to know how to do it, so I included an example in <a href="https://github.com/cloudflare/scala-worker-hello-world/blob/master/src/main/scala/Globals.scala">Globals.scala</a>:</p>
-	<pre><code>import scalajs.js
+	<pre class="language-bash"><code class="language-bash">import scalajs.js
 import js.annotation._
 
 @js.native
 @JSGlobalScope
 object Globals extends js.Object {
   def addEventListener(`type`: String, f: js.Function): Unit = js.native
-}
-</code></pre>
-	<p>The annotation <code>@js.native</code> indicates that the implementation is in existing JavaScript code, not in Scala. That's why the body of the <code>addEventListener</code> definition is just <code>js.native</code>. In a JavaScript Worker you'd call <code>addEventListener</code> as a top-level function in global scope. Here, the <code>@JSGlobalScope</code> annotation indicates that the function signatures we're defining are available in the JavaScript global scope. </p>
+}</code></pre>
+	<p>The annotation <code>@js.native</code> indicates that the implementation is in existing JavaScript code, not in Scala. That's why the body of the <code>addEventListener</code> definition is just <code>js.native</code>. In a JavaScript Worker you'd call <code>addEventListener</code> as a top-level function in global scope. Here, the <code>@JSGlobalScope</code> annotation indicates that the function signatures we're defining are available in the JavaScript global scope.</p>
 	<p>You may notice that the type of the function passed to <code>addEventListener</code> is just <code>js.Function</code>, rather than specifying the argument and return types. If you want more type safety, this could be done as <code>js.Function1[FetchEvent, Unit]</code>. &nbsp;If you're trying to work quickly at the expense of safety, you could use <code>def addEventListener(any: Any*): Any</code> to allow anything.</p>
 	<p>For more information on defining types for JavaScript interfaces, see the <a href="https://www.scala-js.org/doc/interoperability/facade-types.html">Scala.js docs</a>.</p>
-	<h4 id="using-workers-kv-and-async-promises">Using Workers KV and async Promises</h4>
+	<h4>Using Workers KV and async Promises</h4>
 	<p>Let's take a look at a more realistic example using Workers KV and asynchronous calls. The idea for the project is our own HTTP API to store and retrieve text values. For simplicity's sake I'm using the first slash-separated component of the path for the key, and the second for the value. Usage of the finished project will look like <code>PUT /meaning of life/42</code> or <code>GET /meaning of life/</code></p>
 	<p>The first thing I need is to add type signatures for the parts of the <a href="https://developers.cloudflare.com/workers/reference/apis/kv">KV API</a> that I'm using, in Globals.scala. My KV namespace binding in wrangler.toml is just going to be named KV, resulting in a corresponding global object:</p>
-	<pre><code>object Globals extends js.Object {
+	<pre class="language-bash"><code class="language-bash">object Globals extends js.Object {
   def addEventListener(`type`: String, f: js.Function): Unit = js.native
   
   val KV: KVNamespace = js.native
-}
-</code></pre>
-	<pre><code>bash$ curl -w "\n" -X PUT 'https://scala-kv-example.cody.workers.dev/meaning of life/42'
+}</code></pre>
+
+	<pre class="language-bash"><code class="language-bash">bash$ curl -w "\n" -X PUT 'https://scala-kv-example.cody.workers.dev/meaning of life/42'
 
 bash$ curl -w "\n" -X GET 'https://scala-kv-example.cody.workers.dev/meaning of life/'
-42
-</code></pre>
+42</code></pre>
 	<p>So what's the definition of the KVNamespace type? It's an interface, so it becomes a Scala trait with a <code>@js.native</code> annotation. The only methods I need to add right now are the simple versions of KV.get and KV.put that take and return strings. The return values are asynchronous, so they're wrapped in a <a href="https://www.scala-js.org/api/scalajs-library/1.1.0/scala/scalajs/js/Promise.html">js.Promise</a>. I'll make that wrapped string a type alias, KVValue, just in case we want to deal with the array or stream return types in the future:</p>
-	<pre><code>object KVNamespace {
+	<pre class="language-bash"><code class="language-bash">object KVNamespace {
   type KVValue = js.Promise[String]
 }
 
@@ -98,21 +100,19 @@ trait KVNamespace extends js.Object {
   def get(key: String): KVValue = js.native
   
   def put(key: String, value: String): js.Promise[Unit] = js.native
-}
-</code></pre>
+}</code></pre>
 	<p>With type signatures complete, I'll move on to Main.scala and how to handle interaction with JavaScript Promises. It's possible to use <code>js.Promise</code> directly, but I'd prefer to use Scala semantics for asynchronous Futures. The methods <code>toJSPromise</code> and <code>toFuture</code> from <code>js.JSConverters</code> can be used to convert back and forth:</p>
-	<pre><code>  def get(key: String): Future[Response] = {
+	<pre class="language-bash"><code class="language-bash">  def get(key: String): Future[Response] = {
     Globals.KV.get(key).toFuture.map { (value: String) =&gt;
         new Response(value, okInit)
     } recover {
       case err =&gt;
         new Response(s"error getting a value for '$key': $err", errInit)
     }
-  }
-</code></pre>
+  }</code></pre>
 	<p>The function for putting values makes similar use of <code>toFuture</code> to convert the return value from KV into a Future. I use <code>map</code> to transform the value into a Response, and <code>recover</code> to handle failures. If you prefer async / await syntax instead of using combinators, you can use <a href="https://github.com/scala/scala-async">scala-async</a>.</p>
 	<p>Finally, the new definition for <code>handleRequest</code> is a good example of how pattern matching makes code more concise and less error-prone at the same time. We match on exactly the combinations of HTTP method and path components that we want, and default to an informative error for any other case:</p>
-	<pre><code>  def handleRequest(request: Request): Future[Response] = {
+	<pre class="language-bash"><code class="language-bash">  def handleRequest(request: Request): Future[Response] = {
     (request.method, request.url.split("/")) match {
       case (HttpMethod.GET, Array(_, _, _, key)) =&gt;
         get(key)
@@ -122,11 +122,10 @@ trait KVNamespace extends js.Object {
         Future.successful(
           new Response("expected GET /key or PUT /key/value", errInit))
     }
-  }
-</code></pre>
+  }</code></pre>
 	<p>You can get the complete code for this example by running</p>
-	<pre><code>wrangler generate projectname https://github.com/cloudflare/scala-worker-kv</code></pre>
-	<h2 id="how-to-contribute">How to contribute</h2>
+	<pre class="language-bash"><code class="language-bash">wrangler generate projectname https://github.com/cloudflare/scala-worker-kv</code></pre>
+	<h2>How to contribute</h2>
 	<p>I'm a fan of programming languages, and will continue to add more <a href="https://developers.cloudflare.com/workers/templates">Workers templates</a>. You probably know your favorite language better than I do, so <a href="https://github.com/cloudflare/template-registry/blob/master/CONTRIBUTING.md">pull requests are welcome</a> for a simple hello world or more complex example.</p>
 	<p>And if you're into programming languages check out the <a href="https://redmonk.com/sogrady/2020/07/27/language-rankings-6-20/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=language-rankings-6-20">latest language rankings</a> from RedMonk where Python is the first non-Java or JavaScript language ever to place in the top two of these rankings.</p>
 	<p>Stay tuned for the rest of <a href="https://blog.cloudflare.com/tag/serverless-week">Serverless Week</a>!</p>

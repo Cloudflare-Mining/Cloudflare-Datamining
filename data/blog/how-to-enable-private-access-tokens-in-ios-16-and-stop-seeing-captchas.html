@@ -1,36 +1,58 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-39.png" class="kg-image" alt="How to enable Private Access Tokens in iOS 16 and stop seeing CAPTCHAs" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ciwToeKuLsqT96YmcigdZ/f05b4e4141824c0c67a965ce9dc157f5/image1-39.png" alt="How to enable Private Access Tokens in iOS 16 and stop seeing CAPTCHAs" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>You go to a website or service, but before access is granted, there’s a visual challenge that forces you to select bikes, buses or traffic lights in a set of images. That can be an exasperating experience. Now, if you have iOS 16 on your iPhone, those days could be over and are just a one-time toggle enabled away.</p>
-	<blockquote><a href="https://en.wikipedia.org/wiki/CAPTCHA"><em>CAPTCHA</em></a><em> = "Completely Automated Public Turing test to tell Computers and Humans Apart"</em></blockquote>
-	<p>In 2021 and 2022, we took direct steps to <a href="https://blog.cloudflare.com/end-cloudflare-captcha">end the madness</a> that <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">wastes humanity about 500 years per day</a> called CAPTCHAs, that have been making sure you’re human and not a bot. In August 2022, we announced <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">Private Access Tokens</a>. With that, we’re able to eliminate CAPTCHAs on iPhones, iPads and Macs (and more to come) with open privacy-preserving standards. </p>
+	<blockquote>
+		<p><a href="https://en.wikipedia.org/wiki/CAPTCHA"><i>CAPTCHA</i></a> <i>= "Completely Automated Public Turing test to tell Computers and Humans Apart"</i></p>
+	</blockquote>
+	<p>In 2021 and 2022, we took direct steps to <a href="https://blog.cloudflare.com/end-cloudflare-captcha">end the madness</a> that <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">wastes humanity about 500 years per day</a> called CAPTCHAs, that have been making sure you’re human and not a bot. In August 2022, we announced <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">Private Access Tokens</a>. With that, we’re able to eliminate CAPTCHAs on iPhones, iPads and Macs (and more to come) with open privacy-preserving standards.</p>
 	<p>On September 12, iOS 16 became generally available (<a href="https://developer.apple.com/wwdc22/10077">iPadOS 16 and macOS 13</a> should arrive in October) and on the settings of your device there’s a toggle that can enable the Private Access Token (PAT) technology that will eliminate the need for those CAPTCHAs, and automatically validate that you are a real human visiting a site. If you already have iOS 16, here’s what you should do to confirm that the toggle is “on” (usually it is):</p>
-	<p><em>Settings &gt; Apple ID &gt; Password &amp; Security &gt; Automatic Verification (should be enabled)</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<p><i>Settings &gt; Apple ID &gt; Password &amp; Security &gt; Automatic Verification (should be enabled)</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10VbYsaYNdnoeAK5LCU9tU/d8022d05989a013c1e4547c02d100c39/image2.jpg" alt="" class="kg-image" width="1541" height="1069" loading="lazy">
+
+	</figure>
 	<p>What will you get? A completely invisible, private way to validate yourself, and for a website, a way to automatically verify that real users are visiting the site without the horrible CAPTCHA user experience.</p>
 	<p>Visitors using operating systems that support these tokens, including <a href="https://developer.apple.com/wwdc22/10077">the upcoming versions of iPadOS and macOS</a>, can now prove they’re human without completing a CAPTCHA or giving up personal data.</p>
 	<p>Let’s recap from our August 2022 announcement <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">blog post</a> what this means for different users:</p>
-	<p>If you’re an <strong>Internet user</strong>:</p>
+	<p>If you’re an <b>Internet user</b>:</p>
 	<ul>
-		<li>We’re helping make your mobile web experience more pleasant and more private.</li>
-		<li>You won’t see a CAPTCHA on a supported iOS or Mac device (other devices coming soon!) accessing the Cloudflare network.</li>
+		<li>
+			<p>We’re helping make your mobile web experience more pleasant and more private.</p>
+		</li>
+		<li>
+			<p>You won’t see a CAPTCHA on a supported iOS or Mac device (other devices coming soon!) accessing the Cloudflare network.</p>
+		</li>
 	</ul>
-	<p>If you’re a<strong> web or application developer</strong>:</p>
+	<p>If you’re a <b>web or application developer</b>:</p>
 	<ul>
-		<li>You’ll know your users are humans coming from an authentic device and signed application, verified by the device vendor directly.</li>
-		<li>And you’ll validate users without maintaining a cumbersome SDK.</li>
+		<li>
+			<p>You’ll know your users are humans coming from an authentic device and signed application, verified by the device vendor directly.</p>
+		</li>
+		<li>
+			<p>And you’ll validate users without maintaining a cumbersome SDK.</p>
+		</li>
 	</ul>
-	<p>If you’re a <strong>Cloudflare customer</strong>:</p>
+	<p>If you’re a <b>Cloudflare customer</b>:</p>
 	<ul>
-		<li>You don’t have to do anything! Cloudflare will automatically ask for and use Private Access Tokens when using <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges">Managed Challenge</a>.</li>
-		<li>Your visitors won’t see a CAPTCHA.</li>
+		<li>
+			<p>You don’t have to do anything! Cloudflare will automatically ask for and use Private Access Tokens when using <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges">Managed Challenge</a>.</p>
+		</li>
+		<li>
+			<p>Your visitors won’t see a CAPTCHA.</p>
+		</li>
 	</ul>
 	<p>It’s all about simplicity, without compromising on privacy. The work done over a year was a collaboration between Cloudflare and Apple, Google, and other industry leaders to extend the <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html">Privacy Pass protocol</a> with support for a new cryptographic token.</p>
 	<p>These tokens simplify application security for developers and security teams, and obsolete legacy, third-party SDK-based approaches for determining if a human is using a device. They work for browsers, APIs called by browsers, and APIs called within apps. After <a href="https://developer.apple.com/wwdc22/10077">Apple announced in August that PATs would be incorporated</a> into iOS 16, iPadOS 16, and macOS 13, the process of ending CAPTCHAs got a big boost. And we expect additional vendors to announce support in the near future.</p>
 	<p>Cloudflare has already incorporated PATs into our <a href="https://blog.cloudflare.com/end-cloudflare-captcha">Managed Challenge platform</a>, so any customer using this feature will automatically take advantage of this new technology to improve the browsing experience for supported devices.</p>
 	<p>In our August <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">in-depth blog post</a> about PATs, you can learn more about how CAPTCHAs don’t work in mobile environments and PATs remove the need for them, and how when sites can’t challenge a visitor with a CAPTCHA, they collect private data.</p>
-	<h3 id="improved-privacy">Improved privacy</h3>
-	<p>In that blog post, we also explain how Private Access Tokens vastly improve privacy by validating without fingerprinting. So, by partnering with third parties like device manufacturers, who already have the data that would help us validate a device, we are able to abstract portions of the validation process, and confirm data <em><strong>without actually collecting, touching, or storing that data ourselves</strong></em>. Rather than interrogating a device directly, we ask the device vendor to do it for us.</p>
+	<h3>Improved privacy</h3>
+	<p>In that blog post, we also explain how Private Access Tokens vastly improve privacy by validating without fingerprinting. So, by partnering with third parties like device manufacturers, who already have the data that would help us validate a device, we are able to abstract portions of the validation process, and confirm data <b><i>without actually collecting, touching, or storing that data ourselves</i></b>. Rather than interrogating a device directly, we ask the device vendor to do it for us.</p>
 	<p>Most customers won’t have to do anything to utilize Private Access Tokens. Why? To take advantage of PATs, all you have to do is choose Managed Challenge rather than Legacy CAPTCHA as a response option in a Firewall rule. More than 65% of Cloudflare customers are already doing this.</p>
 	<p>Now, if you have iOS 16 on your iPhone, it’s your turn.</p>
 </div>

@@ -1,41 +1,72 @@
 <div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/two-clicks-to-enable-regional-zero-trust-compliance">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ayS9TxHqVNjsFrU8TbR0j/ba763499b7931f1e7b8394fa3f3a71ab/two-clicks-to-enable-regional-zero-trust-compliance.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Your team members are probably not just working from home - they may be working from different regions or countries. The flexibility of remote work gives employees a chance to work from the towns where they grew up or countries they always wanted to visit. However, that distribution also presents compliance challenges.</p>
 	<p>Depending on your industry, keeping data inside of certain regions can be a compliance or regulatory requirement. You might require employees to connect from certain countries or exclude entire countries altogether from your corporate systems.</p>
 	<p>When we worked in physical offices, keeping data inside of a country was easy. All of your users connecting to an application from that office were, of course, in that country. Remote work changed that and teams had to scramble to find a way to keep people productive from anywhere, which often led to sacrifices in terms of compliance. Starting today, you can make geography-based compliance easy again in Cloudflare Access with just two clicks.</p>
 	<p>You can now build rules that require employees to connect from certain countries. You can also add rules that block team members from connecting from other countries. This feature works with any identity provider configured and requires no other changes for your users or administrators.</p>
-	<h3 id="what-is-cloudflare-access">What is Cloudflare Access?</h3>
+	<h3>What is Cloudflare Access?</h3>
 	<p>Cloudflare Access secures applications by applying Zero Trust enforcement to every request. Rather than trusting anyone on a private network, Access checks for identity any time someone attempts to reach an application. With Cloudflare’s global network, that check takes place in a data center in over 200 cities around the world to avoid compromising performance.</p>
 	<p>Behind the scenes, administrators build rules to decide who should be able to reach the tools protected by Access. In turn, when users need to connect to those tools, they are prompted to authenticate with one of the identity provider options. Cloudflare Access checks their login against the list of allowed users and, if permitted, allows the request to proceed.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eJU5IsZdyEbtOSfFhVbJi/c6fd39dda02d988230d3bda6b290b0c1/image-1.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Access can check more than just their username. As a Zero Trust platform, Access aggregates multiple sources of signal about a user and surfaces those to the administrator. Some signals include if the user authenticated with a mutual TLS client certificate or hard key. However, some organizations also have compliance requirements that center around region, in addition to multifactor authentication.</p>
-	<h3 id="allow-some-countries-exclude-others">Allow some countries, exclude others</h3>
+	<h3>Allow some countries, exclude others</h3>
 	<p>You can build Cloudflare Access rules to be as simple as <code>only allow team members with @team.com email addresses.</code> However, usernames and passwords alone are not always sufficient. Depending on where you operate, or where you need to operate, you can use Cloudflare Access to layer country-specific rules on top of your identity provider workflows.</p>
 	<p>With this release, you can now add rules that require users to connect from certain countries or restrict logins from other countries. For example, you can require that users only connect from Portugal.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-01-at-3.34.02-PM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6syjJzzq5vgawLrYG5pbzx/f8bdefdb1fc039fcceed94cbc28305b4/Screen-Shot-2020-09-01-at-3.34.02-PM.png" alt="" class="kg-image" width="1058" height="762" loading="lazy">
+
+	</figure>
 	<p>You can also exclude countries altogether. Cloudflare does not have an office in Costa Rica, a place I know many of us would love to visit. If a member of the team was on a beach vacation there and I wanted to make sure they really unplugged from work, we could add a rule to block logins to our applications from Costa Rica.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-01-at-3.34.34-PM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PAVQOcni9AlYcfGrnur4q/46efc6be63e10506af1ecc4ab253a26f/Screen-Shot-2020-09-01-at-3.34.34-PM.png" alt="" class="kg-image" width="1058" height="780" loading="lazy">
+
+	</figure>
 	<p>Some applications might not need country-specific requirements. Cloudflare Access rules can be configured on an application-by-application basis. You can add rules about country connections to specific applications that contain sensitive information, while limiting others to just identity.</p>
-	<h3 id="audit-logins-by-country-and-user">Audit logins by country and user</h3>
+	<h3>Audit logins by country and user</h3>
 	<p>Cloudflare Access captures every request a user makes to an internal application, without the <a href="https://blog.cloudflare.com/log-every-request-to-corporate-apps-no-code-changes-required">need for any code changes</a>. Your organization can export these logs to a third-party storage or SIEM solution to audit the country of origin for each user request. With that data, your compliance and security teams can quickly audit where your corporate devices are operating without the need to deploy additional client-side software.</p>
-	<h3 id="layer-with-other-zero-trust-rules">Layer with other Zero Trust rules</h3>
+	<h3>Layer with other Zero Trust rules</h3>
 	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero trust security</a> starts with a username. Administrators build rules to determine which users can reach specific applications. Cloudflare Access integrates with your team’s identity provider, or even <a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">multiple identity providers</a>, to make those username-based decisions at the edge of our network.</p>
 	<p>However, identity consists of more than just a username. Cloudflare Access can aggregate multiple sources of signal in Cloudflare's network. Access can use that information to make a decision about identity in our network - long before that request ever reaches your infrastructure.</p>
 	<p>You can combine user rules with mutual TLS requirements, or <a href="https://blog.cloudflare.com/tanium-cloudflare-teams">device posture checks</a>, and even force logins to <a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access">always use a hard key</a>. All of these zero-trust rules run inline with Cloudflare’s existing security features, like our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> and DDoS mitigation, to add layers of security to every request. The Cloudflare network gives your team a zero-trust platform to apply all of the data we can gather about a request to determine whether or not it should be allowed.</p>
 	<p>The country rules we’re announcing today become another layer in that zero trust model. Like other sources of signal, you can combine these rules to build a comprehensive policy tailored to your organization’s compliance or security needs. For example, you can build a rule that only allows users to login to your application when they connect from Germany and use a physical hard key.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-01-at-3.36.26-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="how-to-get-started">How to get started</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17jM0dkytZjHIY5h8QAfXr/a0515684f34676b19290f0bb1d2fb912/Screen-Shot-2020-09-01-at-3.36.26-PM.png" alt="" class="kg-image" width="1058" height="817" loading="lazy">
+
+	</figure>
+	<h3>How to get started</h3>
 	<p>To get started, navigate to an application you have added to Cloudflare Access or create a new one. Cloudflare Access policies consist of actions that can allow, block, or bypass requests based on the criteria defined. Access follows policies in order of precedence from top to bottom in the UI.</p>
 	<p>Inside of a policy you can define the criteria with three types of operators:</p>
 	<ul>
-		<li><strong>Include</strong>: Include rules function like OR operators. Users must meet at least one criterion in an Include rule. For example, an include rule can be constructed to allow anyone with @cloudflare.com email domains or user@team.com email domains to connect.</li>
-		<li><strong>Require</strong>: Require rules function like AND operators. Users must meet all Require rule criteria.</li>
-		<li><strong>Exclude</strong>: Exclusion rules function like "NOT" operators. Users must not meet the criterion of an Exclude rule.</li>
+		<li>
+			<p><b>Include</b>: Include rules function like OR operators. Users must meet at least one criterion in an Include rule. For example, an include rule can be constructed to allow anyone with @cloudflare.com email domains or <a href="mailto:user@team.com">user@team.com</a> email domains to connect.</p>
+		</li>
+		<li>
+			<p><b>Require</b>: Require rules function like AND operators. Users must meet all Require rule criteria.</p>
+		</li>
+		<li>
+			<p><b>Exclude</b>: Exclusion rules function like "NOT" operators. Users must not meet the criterion of an Exclude rule.</p>
+		</li>
 	</ul>
 	<p>To require that users connect from a particular country, create an Allow policy that includes your users email or identity provider group. Within that Allow policy, add a <code>Require</code> rule and choose the country that will be required. If you want to create a rule that requires multiple countries, you can add them into an Access Group.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-01-at-3.37.50-PM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Kc5DwGw4XJ1227PtvVblA/86e0d80a7bff3f5a27bc96b3096f7684/Screen-Shot-2020-09-01-at-3.37.50-PM.png" alt="" class="kg-image" width="1058" height="675" loading="lazy">
+
+	</figure>
 	<p>You can then add that group into the <code>Require</code> rule.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-01-at-3.38.35-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-s-next">What’s next?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BjpLXBrxY2mMDtgrTF3lX/42fd4b98aa9562a903727c7fb699873b/Screen-Shot-2020-09-01-at-3.38.35-PM.png" alt="" class="kg-image" width="1058" height="758" loading="lazy">
+
+	</figure>
+	<h3>What’s next?</h3>
 	<p>Cloudflare Access, part of Cloudflare for Teams, is available today. The country requirement rule is available in all plans.</p>
 </div>

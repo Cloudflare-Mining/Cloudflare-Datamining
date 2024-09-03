@@ -1,29 +1,37 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/SVB---Banking-Phishing.png" class="kg-image" alt="How sophisticated scammers and phishers are preying on customers of Silicon Valley Bank" loading="lazy"></figure>
-	<p>By now, the news about what happened at Silicon Valley Bank (SVB) leading up to its <a href="https://www.cnn.com/2023/03/11/business/svb-collapse-roundup-takeaways/index.html">collapse</a> and takeover by the US Federal Government is well known. The rapid speed with which the collapse took place was surprising to many and the impact on organizations, both large and small, is expected to last a while. </p>
-	<p>Unfortunately, where everyone sees a tragic situation, threat actors see opportunity. We have seen this time and again - in order to breach trust and trick unsuspecting victims, threat actors overwhelmingly use topical events as lures. These follow the news cycle or known high profile events (The Super Bowl, March Madness, Tax Day, Black Friday sales, COVID-19, and on and on), since there is a greater likelihood of users falling for messages referencing what’s top of mind at any given moment. </p>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2K9Pq73I7we9IQNaqEV9Yk/52c7a50c66f998ba489d4ff44e989737/SVB---Banking-Phishing.png" alt="How sophisticated scammers and phishers are preying on customers of Silicon Valley Bank" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>By now, the news about what happened at Silicon Valley Bank (SVB) leading up to its <a href="https://www.cnn.com/2023/03/11/business/svb-collapse-roundup-takeaways/index.html">collapse</a> and takeover by the US Federal Government is well known. The rapid speed with which the collapse took place was surprising to many and the impact on organizations, both large and small, is expected to last a while.</p>
+	<p>Unfortunately, where everyone sees a tragic situation, threat actors see opportunity. We have seen this time and again - in order to breach trust and trick unsuspecting victims, threat actors overwhelmingly use topical events as lures. These follow the news cycle or known high profile events (The Super Bowl, March Madness, Tax Day, Black Friday sales, COVID-19, and on and on), since there is a greater likelihood of users falling for messages referencing what’s top of mind at any given moment.</p>
 	<p>The SVB news cycle makes for a similarly compelling topical event that threat actors can take advantage of; and it's crucial that organizations bolster their awareness campaigns and technical controls to help counter the eventual use of these tactics in upcoming attacks. It’s tragic that even as the FDIC is guaranteeing that SVB customers’ money is safe, bad actors are attempting to steal that very money!</p>
-	<h3 id="preemptive-action">Preemptive action</h3>
-	<p>In anticipation of future phishing attacks taking advantage of the SVB brand, <a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">Cloudforce One</a> (Cloudflare’s threat operations and research team) significantly increased our brand monitoring focused on SVB’s digital presence starting March 10, 2023 and launched several additional detection modules to spot SVB-themed phishing campaigns. All of our customers taking advantage of our various <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">phishing protection services</a> automatically get the benefit of these new models. </p>
+	<h3>Preemptive action</h3>
+	<p>In anticipation of future phishing attacks taking advantage of the SVB brand, <a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">Cloudforce One</a> (Cloudflare’s threat operations and research team) significantly increased our brand monitoring focused on SVB’s digital presence starting March 10, 2023 and launched several additional detection modules to spot SVB-themed phishing campaigns. All of our customers taking advantage of our various <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">phishing protection services</a> automatically get the benefit of these new models.</p>
 	<p>Here’s an actual example of a real campaign involving SVB that’s happening since the bank was taken over by the FDIC.</p>
-	<h3 id="kyc-phish-docusign-themed-svb-campaign">KYC phish - DocuSign-themed SVB campaign</h3>
-	<p>A frequent tactic used by threat actors is to mimic ongoing KYC (Know Your Customer) efforts that banks routinely perform to validate details about their clients. This is intended to protect financial institutions against fraud, money laundering and financial crime, amongst other things. </p>
-	<p>On March 14, 2023, Cloudflare detected a large KYC phishing campaign leveraging the SVB brand in a DocuSign themed template. This campaign targeted Cloudflare and almost all industry verticals. Within the first few hours of the campaign, we detected 79 examples targeting different individuals in multiple organizations. Cloudflare is publishing one specific example of this campaign along with the tactics and observables seen to help customers be aware and vigilant of this activity. </p>
-	<h3 id="campaign-details">Campaign Details</h3>
-	<p>The phishing attack shown below targeted Matthew Prince, Founder &amp; CEO of Cloudflare on March 14, 2023. It included HTML code that contains an initial link and a complex redirect chain that is four-deep. The chain begins when the user clicks the ‘<em>Review Documents’</em> link. It takes the user to a trackable analytic link run by Sizmek by Amazon Advertising Server bs[.]serving-sys[.]com. The link then further redirects the user to a Google Firebase Application hosted on the domain na2signing[.]web[.]app. The na2signing[.]web[.]app HTML subsequently redirects the user to a WordPress site which is running yet another redirector at eaglelodgealaska[.]com. After this final redirect, the user is sent to an attacker-controlled docusigning[.]kirklandellis[.]net website.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-14-at-10.11.01.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>KYC phish - DocuSign-themed SVB campaign</h3>
+	<p>A frequent tactic used by threat actors is to mimic ongoing KYC (Know Your Customer) efforts that banks routinely perform to validate details about their clients. This is intended to protect financial institutions against fraud, money laundering and financial crime, amongst other things.</p>
+	<p>On March 14, 2023, Cloudflare detected a large KYC phishing campaign leveraging the SVB brand in a DocuSign themed template. This campaign targeted Cloudflare and almost all industry verticals. Within the first few hours of the campaign, we detected 79 examples targeting different individuals in multiple organizations. Cloudflare is publishing one specific example of this campaign along with the tactics and observables seen to help customers be aware and vigilant of this activity.</p>
+	<h3>Campaign Details</h3>
+	<p>The phishing attack shown below targeted Matthew Prince, Founder &amp; CEO of Cloudflare on March 14, 2023. It included HTML code that contains an initial link and a complex redirect chain that is four-deep. The chain begins when the user clicks the ‘<i>Review Documents’</i> link. It takes the user to a trackable analytic link run by Sizmek by Amazon Advertising Server bs[.]serving-sys[.]com. The link then further redirects the user to a Google Firebase Application hosted on the domain na2signing[.]web[.]app. The na2signing[.]web[.]app HTML subsequently redirects the user to a WordPress site which is running yet another redirector at eaglelodgealaska[.]com. After this final redirect, the user is sent to an attacker-controlled docusigning[.]kirklandellis[.]net website.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CUrJjdOU6E91EhkVvJ97S/d03b2347a9499d10a06de02ce05ed00d/Screenshot-2023-03-14-at-10.11.01.png" alt="" class="kg-image" width="1070" height="1497" loading="lazy">
+
+	</figure>
 	<p>Campaign Timeline</p>
-	<pre><code>2023-03-14T12:05:28Z		First Observed SVB DocuSign Campaign Launched
+	<pre class="language-bash"><code class="language-bash">2023-03-14T12:05:28Z		First Observed SVB DocuSign Campaign Launched
 2023-03-14T15:25:26Z		Last Observed SVB DocuSign Campaign Launched</code></pre>
-	<h3 id="a-look-at-the-html-file-google-firebase-application-na2signing-web-app-">A look at the HTML file Google Firebase application (na2signing[.]web[.]app)</h3>
+	<h3>A look at the HTML file Google Firebase application (na2signing[.]web[.]app)</h3>
 	<p>The included HTML file in the attack sends the user to a WordPress instance that has recursive redirection capability. As of this writing, we are not sure if this specific WordPress installation has been compromised or a plugin was installed to open this redirect location.</p>
-	<pre><code>&lt;html dir="ltr" class="" lang="en"&gt;&lt;head&gt;
-    &lt;title&gt;Sign in to your account&lt;/title&gt;
+	<pre class="language-bash"><code class="language-bash">
+    <title>Sign in to your account</title>
     
-    &lt;script type="text/javascript"&gt;
+    <script type="text/javascript">
     window.onload = function() {
         function Redirect (url){
             window.location.href = url;
@@ -34,25 +42,22 @@
        
         Redirect("https://eaglelodgealaska[.]com/wp-header.php?url="+e);
     }
-&lt;/script&gt;
-
-</code></pre>
-	<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
-	<pre><code>na2signing[.]web[.]app	Malicious Google Cloudbase Application.
+</script>
+<script nonce="89796e56-4278-4a4d-ab85-10e26c379698">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script></code></pre>
+	<h3>Indicators of Compromise</h3>
+	<pre class="language-bash"><code class="language-bash">na2signing[.]web[.]app	Malicious Google Cloudbase Application.
 eaglelodgealaska[.]com	Possibly compromised Wordpress website or an open redirect.
 
-*[.]kirklandellis[.]net		Attacker Controlled Application running on at least docusigning[.]kirklandellis[.]net.
-</code></pre>
-	<h3 id="recommendations">Recommendations<br></h3><!--kg-card-begin: markdown-->
+*[.]kirklandellis[.]net		Attacker Controlled Application running on at least docusigning[.]kirklandellis[.]net.</code></pre>
+	<h3>Recommendations</h3>
 	<ol>
 		<li>
-			<p>Cloudflare Email Security customers can determine if they have received this campaign in their dashboard with the following search terms: <br><br>
-				<code>SH_6a73a08e46058f0ff78784f63927446d875e7e045ef46a3cb7fc00eb8840f6f0</code> <br><br>
-				Customers can also track IOCs related to this campaign through our Threat Indicators API. Any updated IOCs will be continually pushed to the relevant API endpoints.
-			</p>
+			<p>Cloudflare Email Security customers can determine if they have received this campaign in their dashboard with the following search terms:</p>
+			<p><code>SH_6a73a08e46058f0ff78784f63927446d875e7e045ef46a3cb7fc00eb8840f6f0</code></p>
+			<p>Customers can also track IOCs related to this campaign through our Threat Indicators API. Any updated IOCs will be continually pushed to the relevant API endpoints.</p>
 		</li>
 		<li>
-			<p>Ensure that you have appropriate DMARC policy enforcement for inbound messages. Cloudflare recommends <strong>[p = quarantine]</strong> for any DMARC failures on incoming messages at a minimum. SVB’s DMARC records [<code>v=DMARC1; p=reject; pct=100</code>] explicitly state rejecting any messages that impersonate their brand and are not being sent from SVB’s list of designated and verified senders. Cloudflare Email Security customers will automatically get this enforcement based on SVB’s published DMARC records. For other domains, or to apply broader DMARC based policies on all inbound messages, Cloudflare recommends adhering to ‘Enhanced Sender Verification’ policies across all inbound emails within their <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies">Cloudflare Area 1 dashboard</a>.</p>
+			<p>Ensure that you have appropriate DMARC policy enforcement for inbound messages. Cloudflare recommends <b>[p = quarantine]</b> for any DMARC failures on incoming messages at a minimum. SVB’s DMARC records [<code>v=DMARC1; p=reject; pct=100</code>] explicitly state rejecting any messages that impersonate their brand and are not being sent from SVB’s list of designated and verified senders. Cloudflare Email Security customers will automatically get this enforcement based on SVB’s published DMARC records. For other domains, or to apply broader DMARC based policies on all inbound messages, Cloudflare recommends adhering to ‘Enhanced Sender Verification’ policies across all inbound emails within their <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies">Cloudflare Area 1 dashboard</a>.</p>
 		</li>
 		<li>
 			<p>Cloudflare Gateway customers are automatically protected against these malicious URLs and domains. Customers can check their logs for these specific IOCs to determine if their organization had any traffic to these sites.</p>
@@ -62,12 +67,7 @@ eaglelodgealaska[.]com	Possibly compromised Wordpress website or an open redirec
 		</li>
 		<li>
 			<p>Encourage your end users to be vigilant about any ACH (Automated Clearing House) or SWIFT (Society for Worldwide Interbank Financial Telecommunication) related messages. ACH &amp; SWIFT are systems which financial institutions use for electronic funds transfers between entities. Given its large scale prevalence, ACH &amp; SWIFT phish are frequent tactics leveraged by threat actors to redirect payments to themselves. While we haven’t seen any large scale ACH campaigns utilizing the SVB brand over the past few days, it doesn’t mean they are not being planned or are imminent. Here are a few example subject lines to be aware of, that we have seen in similar payment fraud campaigns:</p>
-			<p><em>“We’ve changed our bank details”<br>
-					“Updated Bank Account Information”<br>
-					“YOUR URGENT ACTION IS NEEDED -<br>
-					Important - Bank account details change”<br>
-					“Important - Bank account details change”<br>
-					“Financial Institution Change Notice”</em></p>
+			<p><i>“We’ve changed our bank details”“Updated Bank Account Information”“YOUR URGENT ACTION IS NEEDED -Important - Bank account details change”“Important - Bank account details change”“Financial Institution Change Notice”</i></p>
 		</li>
 		<li>
 			<p>Stay vigilant against look-alike or cousin domains that could pop up in your email and web traffic associated with SVB. Cloudflare customers have in-built new domain controls within their email &amp; web traffic which would prevent <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud">anomalous activity</a> coming from these new domains from getting through.</p>
@@ -76,9 +76,8 @@ eaglelodgealaska[.]com	Possibly compromised Wordpress website or an open redirec
 			<p>Ensure any public facing web applications are always patched to the latest versions and run a modern Web Application Firewall service in front of your applications. The campaign mentioned above took advantage of WordPress, which is frequently used by threat actors for their phishing sites. If you’re using the Cloudflare WAF, you can be automatically protected from third party CVEs before you even know about them. Having an effective <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> is critical to preventing threat actors from taking over your public Web presence and using it as part of a phishing campaign, SVB-themed or otherwise.</p>
 		</li>
 	</ol>
-	<!--kg-card-end: markdown-->
-	<h3 id="staying-ahead">Staying ahead</h3>
-	<p>Cloudforce One (Cloudflare’s threat operations team) proactively monitors emerging campaigns in their formative stages and publishes advisories and detection model updates to ensure our customers are protected. While this specific campaign is focused on SVB, the tactics seen are no different to other similar campaigns that our global network sees every day and automatically stops them before it impacts our customers. </p>
-	<p>Having a blend of strong technical controls across multiple communication channels along with a trained and vigilant workforce that is aware of the dangers posed by digital communications is crucial to stopping these attacks from going through. </p>
+	<h3>Staying ahead</h3>
+	<p>Cloudforce One (Cloudflare’s threat operations team) proactively monitors emerging campaigns in their formative stages and publishes advisories and detection model updates to ensure our customers are protected. While this specific campaign is focused on SVB, the tactics seen are no different to other similar campaigns that our global network sees every day and automatically stops them before it impacts our customers.</p>
+	<p>Having a blend of strong technical controls across multiple communication channels along with a trained and vigilant workforce that is aware of the dangers posed by digital communications is crucial to stopping these attacks from going through.</p>
 	<p>Learn more about how Cloudflare can help in your own journey towards comprehensive phishing protection by using our <a href="https://www.cloudflare.com/zero-trust-hub">Zero Trust services</a> and reach out for a <a href="https://www.cloudflare.com/lp/emailsecurity">complimentary assessment today</a>.</p>
 </div>

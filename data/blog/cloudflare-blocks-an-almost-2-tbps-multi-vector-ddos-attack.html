@@ -1,25 +1,37 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-2.jpg" class="kg-image" alt="Cloudflare blocks an almost 2 Tbps multi-vector DDoS attack" loading="lazy"></figure>
-	<p>Earlier this week, Cloudflare automatically detected and mitigated a <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack">DDoS attack</a> that peaked just below 2 Tbps — the largest we’ve seen to date. This was a multi-vector attack combining <a href="https://www.cloudflare.com/en-gb/learning/ddos/dns-amplification-ddos-attack">DNS amplification </a>attacks and <a href="https://www.cloudflare.com/en-gb/learning/ddos/udp-flood-ddos-attack">UDP floods</a>. The entire attack lasted just one minute. The attack was launched from approximately 15,000 bots running a variant of the original Mirai code on IoT devices and <a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild">unpatched GitLab instances</a>. </p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-11.png" class="kg-image" alt="DDoS attack peaking just below 2 Tbps" loading="lazy">
-		<figcaption>DDoS attack peaking just below 2 Tbps<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JE0lPCre1go0WScgMMCdV/cd61943cd0e782890d48e188188faee8/image2-2.jpg" alt="Cloudflare blocks an almost 2 Tbps multi-vector DDoS attack" class="kg-image" width="1200" height="627" loading="lazy">
+
 	</figure>
-	<h3 id="network-layer-ddos-attacks-increased-by-44-">Network-layer DDoS attacks increased by 44%</h3>
+	<p>Earlier this week, Cloudflare automatically detected and mitigated a <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack">DDoS attack</a> that peaked just below 2 Tbps — the largest we’ve seen to date. This was a multi-vector attack combining <a href="https://www.cloudflare.com/en-gb/learning/ddos/dns-amplification-ddos-attack">DNS amplification</a> attacks and <a href="https://www.cloudflare.com/en-gb/learning/ddos/udp-flood-ddos-attack">UDP floods</a>. The entire attack lasted just one minute. The attack was launched from approximately 15,000 bots running a variant of the original Mirai code on IoT devices and <a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild">unpatched GitLab instances</a>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69O75xM8BJ3AQ4xboaaJc8/016cfcd103510af0a7ba3a953c851b1e/image4-11.png" alt="DDoS attack peaking just below 2 Tbps" class="kg-image" width="1874" height="591" loading="lazy">
+
+	</figure>
+	<p>DDoS attack peaking just below 2 Tbps‌‌</p>
+	<h3>Network-layer DDoS attacks increased by 44%</h3>
 	<p>Last quarter, we saw multiple terabit-strong DDoS attacks and this attack continues this trend of increased attack intensity. Another key finding from our <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2021-q3">Q3 DDoS Trends report</a> was that network-layer DDoS attacks actually increased by 44% quarter-over-quarter. While the fourth quarter is not over yet, we have, again, seen multiple terabit-strong attacks that targeted Cloudflare customers.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-21.png" class="kg-image" alt="DDoS attacks peaking at 1-1.4 Tbps" loading="lazy">
-		<figcaption>DDoS attacks peaking at 1-1.4 Tbps</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16L0jRaxzWrkoprzjXWbEU/2fd311dfe07961d5defa2f6d652e8911/image1-21.png" alt="DDoS attacks peaking at 1-1.4 Tbps" class="kg-image" width="1812" height="714" loading="lazy">
+
 	</figure>
-	<h3 id="how-did-cloudflare-mitigate-this-attack">How did Cloudflare mitigate this attack?</h3>
+	<p>DDoS attacks peaking at 1-1.4 Tbps</p>
+	<h3>How did Cloudflare mitigate this attack?</h3>
 	<p>To begin with, our systems constantly analyze traffic samples “out-of-path” which allows us to asynchronously detect DDoS attacks without causing latency or impacting performance. Once the attack traffic was detected (within sub-seconds), our systems generated a real-time signature that surgically matched against the attack patterns to mitigate the attack without impacting legitimate traffic.</p>
 	<p>Once generated, the fingerprint is propagated as an ephemeral mitigation rule to the most optimal location in the Cloudflare edge for cost-efficient mitigation. In this specific case, as with most L3/4 DDoS attacks, the rule was pushed in-line into the Linux kernel <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">eXpress Data Path</a> (XDP) to drop the attack packet at wirespeed.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-17.png" class="kg-image" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" loading="lazy">
-		<figcaption>A conceptual diagram of Cloudflare’s DDoS protection systems</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aDR60Hnanrkb1TJ5cNgMO/0d63963e6a3e81737f8b5aa7fd7bcd6e/image3-17.png" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" class="kg-image" width="1560" height="866" loading="lazy">
+
 	</figure>
+	<p>A conceptual diagram of Cloudflare’s DDoS protection systems</p>
 	<p>Read more about <a href="https://developers.cloudflare.com/ddos-protection">Cloudflare’s DDoS Protection systems</a>.</p>
-	<h3 id="helping-build-a-better-internet">Helping build a better Internet</h3>
+	<h3>Helping build a better Internet</h3>
 	<p>Cloudflare’s mission is to help build a better Internet — one that is secure, faster, and more reliable for everyone. The DDoS team’s vision is derived from this mission: our goal is to make the impact of DDoS attacks a thing of the past. Whether it's the <a href="https://blog.cloudflare.com/meris-botnet">Meris botnet</a> that launched some of the <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">largest HTTP DDoS attacks on record</a>, the recent <a href="https://blog.cloudflare.com/update-on-voip-attacks">attacks on VoIP providers</a> or this Mirai-variant that’s DDoSing Internet properties, Cloudflare’s network automatically detects and mitigates DDoS attacks. Cloudflare provides a secure, reliable, performant, and <a href="https://blog.cloudflare.com/http-ddos-managed-rules">customizable</a> platform for Internet properties of all types.</p>
 	<p>For more information about Cloudflare’s DDoS protection, <a href="https://www.cloudflare.com/enterprise">reach out to us</a> or have a go with a hands-on evaluation of <a href="https://www.cloudflare.com/plans/free">Cloudflare’s Free plan</a>.</p>
 </div>

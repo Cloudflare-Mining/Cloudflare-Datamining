@@ -1,9 +1,8 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Earlier today we announced the <a href="https://www.cloudflarechallenge.com/heartbleed">Heartbleed Challenge</a>. We set up a nginx server with a vulnerable version of OpenSSL and challenged the community to steal its private key. The world was up to the task: two people independently retrieved private keys using the Heartbleed exploit.</p>
 	<p>The first valid submission was received at 16:22:01PST by Software Engineer <a href="https://twitter.com/indutny">Fedor Indutny</a>. He sent at least 2.5 million requests over the course of the day. The second was submitted at 17:12:19PST by Ilkka Mattila at NCSC-FI, who sent around a hundred thousand requests over the same period of time.</p>
-	<p><strong>UPDATE:</strong> Two more confirmed winners: Rubin Xu, PhD student in the Security group of Cambridge University submitted at 04:11:09PST on 04/12; and <a href="https://twitter.com/benmmurphy">Ben Murphy</a>, Security Researcher submitted at 7:28:50PST on 04/12.</p>
+	<p><b>UPDATE:</b> Two more confirmed winners: Rubin Xu, PhD student in the Security group of Cambridge University submitted at 04:11:09PST on 04/12; and <a href="https://twitter.com/benmmurphy">Ben Murphy</a>, Security Researcher submitted at 7:28:50PST on 04/12.</p>
 	<p>We confirmed that all individuals used only the Heartbleed exploit to obtain the private key. We rebooted the server at 3:08PST, which may have caused the key to be available in uninitiallized heap memory as theorized in our <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">previous blog post</a>. It is at the discretion of the researchers to share the specifics of the techniques used.</p>
 	<p>This result reminds us not to underestimate the power of the crowd and emphasizes the danger posed by this vulnerability.</p>
-	<!--kg-card-end: markdown-->
 </div>

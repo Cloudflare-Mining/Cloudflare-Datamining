@@ -1,31 +1,55 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-33.png" class="kg-image" alt="Verify Apple devices with no installed software" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55s423iV6BrsVfI9TBlvCB/3dea1ed048a955d2a97c7c1bede808d9/image2-33.png" alt="Verify Apple devices with no installed software" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>One of the foundations of <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> is determining if a user’s device is “healthy” — that it has its operating system up-to-date with the latest security patches, that it’s not jailbroken, that it doesn’t have malware installed, and so on. Traditionally, determining this has required installing software directly onto a user’s device.</p>
-	<p>Earlier this month, Cloudflare participated in the announcement of <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">an open source standard called a Private Access<strong> </strong>Token</a>. Device manufacturers who support the standard can now supply a Private Access<strong> </strong>Token with any request made by one of their devices. On the IT Administration side, Private Access<strong> </strong>Tokens means that security teams can verify a user’s device before they access a sensitive application — without the need to install any software or collect a user’s device data.</p>
-	<p>At WWDC 2022, Apple <a href="https://developer.apple.com/videos/play/wwdc2022/10077">announced </a>Private Access<strong> </strong>Tokens. Today, we’re announcing that Cloudflare Access will support verifying a Private Access<strong> </strong>Token. This means that security teams that rely on Cloudflare Access can verify a user’s Apple device before they access a sensitive application — no additional software required.</p>
-	<h3 id="determining-a-healthy-device">Determining a “healthy” device</h3>
+	<p>Earlier this month, Cloudflare participated in the announcement of <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">an open source standard called a Private Access Token</a>. Device manufacturers who support the standard can now supply a Private Access Token with any request made by one of their devices. On the IT Administration side, Private Access Tokens means that security teams can verify a user’s device before they access a sensitive application — without the need to install any software or collect a user’s device data.</p>
+	<p>At WWDC 2022, Apple <a href="https://developer.apple.com/videos/play/wwdc2022/10077">announced</a> Private Access Tokens. Today, we’re announcing that Cloudflare Access will support verifying a Private Access Token. This means that security teams that rely on Cloudflare Access can verify a user’s Apple device before they access a sensitive application — no additional software required.</p>
+	<h3>Determining a “healthy” device</h3>
 	<p>There are many solutions on the market that help security teams determine if a device is “healthy” and corporately managed. What the majority of these solutions have in common is that they require software to be installed directly on the user’s machine. This comes with challenges associated with client software including compatibility issues, version management, and end user support. Many companies have dedicated Mobile Device Management (MDM) tools to manage the software installed on employee machines.</p>
 	<p>MDM is a proven model, but it is also a challenge to manage — taking a dedicated team in many cases. What’s more, installing client or MDM software is not always possible for contractors, vendors or employees using personal machines. Security teams have to resort to VDI or VPN solutions for external users to securely access corporate applications.</p>
-	<h3 id="how-private-access-tokens-verify-a-device">How Private Access<strong> </strong>Tokens verify a device</h3>
-	<p>Private Access<strong> </strong>Tokens leverage the <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html">Privacy Pass Protocol</a>, which Cloudflare authored with major device manufacturers, to attest to a device’s health and integrity.</p>
-	<p>In order for Private Access<strong> </strong>Tokens to work, four parties agree to work in concert with a common framework to generate and exchange anonymous, unforgeable tokens. Without all four parties in the process, PATs won’t work.</p>
+	<h3>How Private Access Tokens verify a device</h3>
+	<p>Private Access Tokens leverage the <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html">Privacy Pass Protocol</a>, which Cloudflare authored with major device manufacturers, to attest to a device’s health and integrity.</p>
+	<p>In order for Private Access Tokens to work, four parties agree to work in concert with a common framework to generate and exchange anonymous, unforgeable tokens. Without all four parties in the process, PATs won’t work.</p>
 	<ol>
-		<li>An <strong>Origin</strong>. A website, application, or API that receives requests from a client. When a website receives a request to their origin, the origin must know to look for and request a token from the client making the request. For Cloudflare customers, Cloudflare acts as the origin (on behalf of customers) and handles the requesting and processing of tokens.</li>
-		<li>A <strong>Client</strong>. Whatever tool the visitor is using to attempt to access the Origin. This will usually be a web browser or mobile application. In our example, let’s say the client is a mobile Safari Browser.</li>
-		<li>An <strong>Attester</strong>. The Attester is who the client asks to prove something (i.e. that a mobile device has a valid IMEI) before a token can be issued. In our example below, the Attester is Apple, the device vendor.</li>
-		<li>An <strong>Issuer</strong>. The issuer is the only one in the process that actually generates, or issues, a token. The Attester makes an API call to whatever Issuer the Origin has chosen to trust, instructing the Issuer to produce a token. In our case, Cloudflare will also be the Issuer.</li>
+		<li>
+			<p>An <b>Origin</b>. A website, application, or API that receives requests from a client. When a website receives a request to their origin, the origin must know to look for and request a token from the client making the request. For Cloudflare customers, Cloudflare acts as the origin (on behalf of customers) and handles the requesting and processing of tokens.</p>
+		</li>
+		<li>
+			<p>A <b>Client</b>. Whatever tool the visitor is using to attempt to access the Origin. This will usually be a web browser or mobile application. In our example, let’s say the client is a mobile Safari Browser.</p>
+		</li>
+		<li>
+			<p>An <b>Attester</b>. The Attester is who the client asks to prove something (i.e. that a mobile device has a valid IMEI) before a token can be issued. In our example below, the Attester is Apple, the device vendor.</p>
+		</li>
+		<li>
+			<p>An <b>Issuer</b>. The issuer is the only one in the process that actually generates, or issues, a token. The Attester makes an API call to whatever Issuer the Origin has chosen to trust, instructing the Issuer to produce a token. In our case, Cloudflare will also be the Issuer.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-33.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/uBg0PUBNIee9hBNdHIYy0/feaedfabbd21171e44ecd8778197ae83/image1-33.png" alt="" class="kg-image" width="1390" height="882" loading="lazy">
+
+	</figure>
 	<p>We are then able to rely on the attestation from the device manufacturer as a form of validation that a device is in a “healthy” enough state to be allowed access to a sensitive application.</p>
-	<h3 id="checking-device-health-without-client-software">Checking device health without client software</h3>
-	<p>Private Access<strong> </strong>Tokens do not require any additional software to be installed on the user’s device. This is because the “attestation” of device health and validity is attested directly by the device operating system’s manufacturer — in this case, Apple.</p>
-	<p>This means that a security team can use Cloudflare Access and Private Access<strong> </strong>Tokens to verify if a user is accessing from a “healthy” Apple device before allowing access to a sensitive corporate application. Some checks as part of the attestation include:</p>
+	<h3>Checking device health without client software</h3>
+	<p>Private Access Tokens do not require any additional software to be installed on the user’s device. This is because the “attestation” of device health and validity is attested directly by the device operating system’s manufacturer — in this case, Apple.</p>
+	<p>This means that a security team can use Cloudflare Access and Private Access Tokens to verify if a user is accessing from a “healthy” Apple device before allowing access to a sensitive corporate application. Some checks as part of the attestation include:</p>
 	<ul>
-		<li>Is the device on the latest OS version?</li>
-		<li>Is the device jailbroken?</li>
-		<li>Is the window attempting to log in, in focus?</li>
-		<li>And much more.</li>
+		<li>
+			<p>Is the device on the latest OS version?</p>
+		</li>
+		<li>
+			<p>Is the device jailbroken?</p>
+		</li>
+		<li>
+			<p>Is the window attempting to log in, in focus?</p>
+		</li>
+		<li>
+			<p>And much more.</p>
+		</li>
 	</ul>
 	<p>Over time, we are working with other device manufacturers to expand device support and what is verified as part of the device attestation process. The attributes that are attested will also continue to expand over time, which means the device verification in Access will only strengthen.</p>
 	<p>In the next few months, we will move Private Attestation Support in Cloudflare Access to a closed beta. The first version will work for iOS devices and support will expand from there. The only change required will be an updated Access policy, no software will need to be installed. If you would like to be part of the beta program, <a href="https://www.cloudflare.com/zero-trust/lp/private-attestation-tokens-access-waitlist">sign up here today</a>!</p>

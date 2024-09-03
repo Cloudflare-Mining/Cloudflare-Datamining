@@ -1,19 +1,23 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-4.png" class="kg-image" alt="Deploying firmware at Cloudflare-scale: How we update thousands of servers in more than 285 cities" loading="lazy"></figure>
-	<p>As a security company, it’s critical that we have good processes for dealing with security issues. We regularly release software to our servers - on a daily basis even - which includes new features, bug fixes, and as required, security patches. But just as critical is the software which is <em>embedded</em> into the server hardware, known as firmware. Primarily of interest is the BIOS and <a href="https://blog.cloudflare.com/bmc-vuln">Baseboard Management Controller</a> (BMC), but many other components also have firmware such as Network Interface Cards (NICs).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aFHXMhZa8uGHc3cxgaXPm/f702b5e74e75d2ec5a2f2dce5a415c17/image2-4.png" alt="Deploying firmware at Cloudflare-scale: How we update thousands of servers in more than 285 cities" class="kg-image" width="1800" height="1014" loading="lazy">
+
+	</figure>
+	<p>As a security company, it’s critical that we have good processes for dealing with security issues. We regularly release software to our servers - on a daily basis even - which includes new features, bug fixes, and as required, security patches. But just as critical is the software which is <i>embedded</i> into the server hardware, known as firmware. Primarily of interest is the BIOS and <a href="https://blog.cloudflare.com/bmc-vuln">Baseboard Management Controller</a> (BMC), but many other components also have firmware such as Network Interface Cards (NICs).</p>
 	<p>As the world becomes more digital, software which needs updating is appearing in more and more devices. As well as my computer, over the last year, I have waited patiently while firmware has updated in my TV, vacuum cleaner, lawn mower and light bulbs. It can be a cumbersome process, including obtaining the firmware, deploying it to the device which needs updating, navigating menus and other commands to initiate the update, and then waiting several minutes for the update to complete.</p>
 	<p>Firmware updates can be annoying even if you only have a couple of devices. We have more than a few devices at Cloudflare. We have a huge number of servers of varying kinds, from varying vendors, spread over 285 cities worldwide. We need to be able to rapidly deploy various types of firmware updates to all of them, reliably, and automatically, without any kind of manual intervention.</p>
 	<p>In this blog post I will outline the methods that we use to automate firmware deployment to our entire fleet. We have been using this method for several years now, and have deployed firmware without interrupting our SRE team, entirely automatically.</p>
-	<h3 id="background">Background</h3>
+	<h3>Background</h3>
 	<p>A key component of our ability to deploy firmware at scale is the iPXE, an open source boot loader. iPXE is the glue which operates between the server and operating system, and is responsible for loading the operating system after the server has completed the Power On Self Test (POST). It is very flexible and contains a scripting language. With iPXE, we can write boot scripts which query the firmware version, continue booting if the correct firmware version is deployed, or if not, boot into a flashing environment to flash the correct firmware.</p>
 	<p>We only deploy new firmware when our systems are out of production, so we need a method to coordinate deployment only on out of production systems. The simplest way to do this is when they are rebooting, because by definition they are out of production then. We reboot our entire fleet every month, and have the ability to schedule reboots more urgently if required to deal with a security issue. Regularly rebooting our fleets has many advantages. We can <a href="https://www.youtube.com/watch?v=8mlJu8hPpQQ">deploy the latest Linux kerne</a>l, base operating system, and ensure that we do not have any breaking changes in our operating system and configuration management environment that breaks on fresh boot.</p>
 	<p>Our entire fleet operates in <a href="https://en.wikipedia.org/wiki/UEFI">UEFI mode</a>. UEFI is a modern replacement for the BIOS and offers more features and more security, such as Secure Boot. A full description of all of these changes is outside the scope of this article, but essentially UEFI provides a minimal environment and shell capable of executing binaries. <a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story">Secure Boot ensures</a> that the binaries are signed with keys embedded in the system, to prevent a bad actor from tampering with our software.</p>
-	<h3 id="how-we-update-the-bios">How we update the BIOS</h3>
+	<h3>How we update the BIOS</h3>
 	<p>We are able to update the BIOS without booting any operating system, purely by taking advantage of features offered by iPXE and the UEFI shell. This requires a <a href="https://wiki.osdev.org/UEFI#UEFI_applications_in_detail">flashing binary written for the UEFI environment</a>.</p>
 	<p>Upon boot, iPXE is started. Through iPXE’s built-in variable <code>${smbios/0.5.0}</code> &nbsp;it is possible to <a href="https://forum.ipxe.org/showthread.php?tid=7749">query the current BIOS version</a>, and compare it to the latest version, and trigger a flash only if there is a mis-match. &nbsp;iPXE then downloads the files required for the firmware update to a ramdisk.</p>
-	<p>The following is an example of a very basic iPXE script which performs such an action:</p><!--kg-card-begin: markdown-->
-	<pre><code># Check whether the BIOS version is 2.03
+	<p>The following is an example of a very basic iPXE script which performs such an action:</p>
+	<pre class="language-bash"><code class="language-bash"># Check whether the BIOS version is 2.03
 iseq ${smbios/0.5.0} 2.03 || goto biosupdate
 echo Nothing to do for {{ model }}
 exit 0
@@ -29,41 +33,37 @@ imgfetch startup.nsh || goto unexpected_error
 imgfetch AfuEfix64.efi || goto unexpected_error
 imgfetch bios-2.03.bin || goto unexpected_error
 
-imgexec shell.efi || goto unexpected_error
-</code></pre>
-	<!--kg-card-end: markdown-->
+imgexec shell.efi || goto unexpected_error</code></pre>
 	<p>Meanwhile, startup.nsh contains the binary to run and command line arguments to effect the flash:</p>
-	<p><code>startup.nsh</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code>%homefilesystem%\AfuEfix64.efi %homefilesystem%\bios-2.03.bin /P /B /K /N /X /RLC:E /REBOOT
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p><code>startup.nsh</code>:</p>
+	<pre class="language-bash"><code class="language-bash">%homefilesystem%\AfuEfix64.efi %homefilesystem%\bios-2.03.bin /P /B /K /N /X /RLC:E /REBOOT</code></pre>
 	<p>After rebooting, the machine will boot using its new BIOS firmware, version 2.03. Since <code>${smbios/0.5.0}</code> now contains 2.03, the machine continues to boot and enter production.</p>
-	<h3 id="other-firmware-updates-such-as-bmc-network-cards-and-more">Other firmware updates such as BMC, network cards and more</h3>
+	<h3>Other firmware updates such as BMC, network cards and more</h3>
 	<p>Unfortunately, the number of vendors that support firmware updates with UEFI flashing binaries is limited. There are a large number of other updates that we need to perform such as BMC and NIC.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Bnbihh4sYojHTFzb0VX5k/479e19bb833769e4c0310b15b16e05ab/image1-6.png" alt="" class="kg-image" width="1999" height="523" loading="lazy">
+
+	</figure>
 	<p>Consequently, we need another way to flash these binaries. Thankfully, these vendors invariably support flashing from Linux. Consequently we can perform flashing from a minimal Linux environment. Since vendor firmware updates are typically closed source utilities and vendors are often highly secretive about firmware flashing, we can ensure that the flashing environment does not provide an attackable surface by ensuring that the network is not configured. If it’s not on the network, it can’t be attacked and exploited.</p>
 	<p>Not being on the network means that we need to inject files into the boot process when the machine boots. We can accomplish this with an <a href="https://docs.kernel.org/admin-guide/initrd.html">initial ramdisk</a> (<code>initrd</code>), and iPXE makes it easy to add additional <code>initrd</code> to the boot.</p>
 	<p>Creating an <code>initrd</code> is as simple as creating an archive of the files using cpio using the newc archive format.</p>
 	<p>Let’s imagine we are going to flash Broadcom NIC firmware. We’ll use the bnxtnvm firmware update utility, the firmware image <code>firmware.pkg</code>, and a shell script called <code>flash</code> to automate the task.</p>
-	<p>The files are laid out in the file system like this:</p><!--kg-card-begin: markdown-->
-	<pre><code>cd broadcom
+	<p>The files are laid out in the file system like this:</p>
+	<pre class="language-bash"><code class="language-bash">cd broadcom
 find .
 ./opt/preflight
 ./opt/preflight/scripts
 ./opt/preflight/scripts/flash
 ./opt/broadcom
 ./opt/broadcom/firmware.pkg
-./opt/broadcom/bnxtnvm
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Now we compress all of these files into an image called <code>broadcom.img</code>.</p><!--kg-card-begin: markdown-->
-	<pre><code>find . | cpio --quiet -H newc -o | gzip -9 -n &gt; ../broadcom.img
-</code></pre>
-	<!--kg-card-end: markdown-->
+./opt/broadcom/bnxtnvm</code></pre>
+	<p>Now we compress all of these files into an image called <code>broadcom.img</code>.</p>
+	<pre class="language-bash"><code class="language-bash">find . | cpio --quiet -H newc -o | gzip -9 -n &gt; ../broadcom.img</code></pre>
 	<p>This is the first step completed; we have the firmware packaged up into an <code>initrd</code>.</p>
 	<p>Since it’s challenging to read, say, the firmware version of the NIC, from the EFI shell, we store firmware versions as UEFI variables. These can be written from Linux via <a href="https://www.kernel.org/doc/html/next/filesystems/efivarfs.html"><code>efivars</code></a>, the UEFI variable file system, and then read by iPXE on boot.</p>
-	<p>An example of writing an EFI variable from Linux looks like this:</p><!--kg-card-begin: markdown-->
-	<pre><code>declare -r fw_path='/sys/firmware/efi/efivars/broadcom-fw-9ca25c23-368a-4c21-943f-7d91f2b76008'
+	<p>An example of writing an EFI variable from Linux looks like this:</p>
+	<pre class="language-bash"><code class="language-bash">declare -r fw_path='/sys/firmware/efi/efivars/broadcom-fw-9ca25c23-368a-4c21-943f-7d91f2b76008'
 declare -r efi_header='\x07\x00\x00\x00'
 declare -r version='1.05'
 
@@ -74,11 +74,9 @@ if [ -f "${fw_path}" ] ; then
     /usr/bin/chattr -i "${fw_path}"
 fi
 
-echo -n -e "${efi_header}${version}" &gt;| "$fw_path"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Then we can write an iPXE configuration file to load the flashing kernel, userland and flashing utilities.</p><!--kg-card-begin: markdown-->
-	<pre><code>set cf/guid 9ca25c23-368a-4c21-943f-7d91f2b76008
+echo -n -e "${efi_header}${version}" &gt;| "$fw_path"</code></pre>
+	<p>Then we can write an iPXE configuration file to load the flashing kernel, userland and flashing utilities.</p>
+	<pre class="language-bash"><code class="language-bash">set cf/guid 9ca25c23-368a-4c21-943f-7d91f2b76008
 
 iseq ${efivar/broadcom-fw-${cf/guid}} 1.05 &amp;&amp; echo Not flashing broadcom firmware, version already at 1.05 || goto update
 exit
@@ -88,12 +86,10 @@ echo Starting broadcom firmware update
 kernel ${boot_prefix}/vmlinuz initrd=baseimg.img initrd=linux-initramfs-modules.img initrd=broadcom.img
 initrd ${boot_prefix}/baseimg.img
 initrd ${boot_prefix}/linux-initramfs-modules.img
-initrd ${boot_prefix}/firmware/broadcom.img
-</code></pre>
-	<!--kg-card-end: markdown-->
+initrd ${boot_prefix}/firmware/broadcom.img</code></pre>
 	<p>Flashing scripts are deposited into <code>/opt/preflight/scripts</code> and we use <code>systemd</code> to execute them with <a href="https://manpages.debian.org/stretch/debianutils/run-parts.8.en.html">run-parts</a> on boot:</p>
-	<p><code>/etc/systemd/system/preflight.service</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code>[Unit]
+	<p><code>/etc/systemd/system/preflight.service</code>:</p>
+	<pre class="language-bash"><code class="language-bash">[Unit]
 Description=Pre-salt checks and simple configurations on boot
 Before=salt-highstate.service
 After=network.target
@@ -105,11 +101,9 @@ ExecStart=/bin/run-parts --verbose /opt/preflight/scripts
 
 [Install]
 WantedBy=multi-user.target
-RequiredBy=salt-highstate.service
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>An example flashing script in <code>/opt/preflight/scripts</code> might look like:</p><!--kg-card-begin: markdown-->
-	<pre><code>#!/bin/bash
+RequiredBy=salt-highstate.service</code></pre>
+	<p>An example flashing script in <code>/opt/preflight/scripts</code> might look like:</p>
+	<pre class="language-bash"><code class="language-bash">#!/bin/bash
 
 trap 'catch $? $LINENO' ERR
 catch(){
@@ -157,10 +151,8 @@ if [ -f "${fw_path}" ]; then
     echo "rebooting in 60 seconds"
     sleep 60
     /sbin/reboot
-fi
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="conclusion">Conclusion</h3>
+fi</code></pre>
+	<h3>Conclusion</h3>
 	<p>Whether you manage just your laptop or desktop computer, or a fleet of servers, it’s important to keep the firmware updated to ensure that the availability, performance and security of the devices is maintained.</p>
 	<p>If you have a few devices and would benefit from automating the deployment process, we hope that we have inspired you to have a go by making use of some basic open source tools such as the iPXE boot loader and some scripting.</p>
 	<p>Final thanks to my colleague <a href="https://blog.cloudflare.com/author/ignat">Ignat Korchagin</a> who did a large amount of the original work on the UEFI BIOS firmware flashing infrastructure.</p>

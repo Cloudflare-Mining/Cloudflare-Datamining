@@ -1,23 +1,31 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-10.png" class="kg-image" alt="Live stream to multiple platforms with Stream Connect" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sBNvmBhIrPqRakpzJBn9C/9d1a0c9127f87565aea61ae55ef907b0/image1-10.png" alt="Live stream to multiple platforms with Stream Connect" class="kg-image" width="1788" height="942" loading="lazy">
+
+	</figure>
 	<p>Today, we are announcing the Stream Connect beta, the first step towards supporting end-to-end live broadcasting on Cloudflare. You can use Stream Connect to push RTMPS feeds to the Cloudflare edge and have it restreamed to your audience on any platform that supports RTMPS such as Facebook, YouTube and Twitch.</p>
-	<h2 id="what-is-restreaming">What is restreaming?</h2>
+	<h2>What is restreaming?</h2>
 	<p>Facebook, YouTube and Twitch are great platforms for creators to broadcast live video to reach billions. They each have their own unique communities and benefits for creators. If you have a band and want to broadcast a live performance for your fans, broadcasting to only one platform limits your reach. Restreaming enables you to push the live video to multiple platforms at the same time so you can meet your fans on their preferred platform.</p>
 	<p>Live video platforms accept incoming connections using a protocol called RTMP or RTMPS. Stream Connect allows you to continue using the same protocol as before. However, instead of using your local connection to send the video feed to multiple platforms, you only send it to Stream Connect. Connect uses the Cloudflare network to send your live feed to the configured media platforms.</p>
-	<h2 id="how-stream-connect-increases-reliability-and-lowers-latency">How Stream Connect increases reliability and lowers latency</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-5.png" class="kg-image" alt="How Stream Connect increases reliability and lowers latency" loading="lazy"></figure>
-	<h3 id="eliminating-the-upload-bandwidth-bottleneck">Eliminating the upload bandwidth bottleneck</h3>
+	<h2>How Stream Connect increases reliability and lowers latency</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cZIZ1zNpJVp2Kz9Bt95wl/1aba0938e430a54118c55cf94e53acf0/image2-5.png" alt="How Stream Connect increases reliability and lowers latency" class="kg-image" width="800" height="400" loading="lazy">
+
+	</figure>
+	<h3>Eliminating the upload bandwidth bottleneck</h3>
 	<p>When you are using your phone to do a live broadcast, your bandwidth is always a bottleneck. If you are simply sending video to one platform only this might not be an issue. Concurrently pushing your live video from your phone to Facebook, Twitch and YouTube can put a strain on your connection resulting in increased latency,dropped frames or forcing you to stream at lower quality.</p>
 	<p>Stream Connect removes the bandwidth bottleneck. When you use Stream Connect, your device sends one copy of the RTMPS feed to the Cloudflare edge. Cloudflare then redistributes the feed to the destinations that you have configured. This reduces the load on your local connection and improves the video quality.</p>
-	<h3 id="configuring-the-right-ingest-servers">Configuring the right ingest servers</h3>
-	<p>It is common for third-party platforms to provide a list of geographic locations and servers so their end users can pick the location closest to them. For example, Twitch has a page <a href="https://stream.twitch.tv/ingests">listing recommended ingestion endpoints</a>. This requires users to <em>manually</em> pick the optimal location. This can get challenging, especially if you have to do this with multiple platforms or you’re travelling and have to change your server often.</p>
+	<h3>Configuring the right ingest servers</h3>
+	<p>It is common for third-party platforms to provide a list of geographic locations and servers so their end users can pick the location closest to them. For example, Twitch has a page <a href="https://stream.twitch.tv/ingests">listing recommended ingestion endpoints</a>. This requires users to <i>manually</i> pick the optimal location. This can get challenging, especially if you have to do this with multiple platforms or you’re travelling and have to change your server often.</p>
 	<p>Stream Connect continually evaluates the health and connection speeds from all Cloudflare data centers to all major video platforms and chooses the best ingest endpoints automatically. This eliminates the manual steps required to find the Twitch ingest server closest to you.</p>
-	<h3 id="solving-unpredictable-routing-with-argo">Solving unpredictable routing with Argo</h3>
+	<h3>Solving unpredictable routing with Argo</h3>
 	<p>When you broadcast a live video from your computer or phone, it travels over the public Internet. This introduces variability in network conditions that can particularly impact end-user experience. Due to the nature of live broadcasting, even brief or small levels of network congestion can result in increased latency, increased buffer times or dropped frames.</p>
 	<p>Cloudflare’s Anycast network allows your video stream to enter the Cloudflare network at the closest point wherever you are in the world or whether you travel or not. Once your live video enters the Cloudflare network, it will be intelligently routed to 3rd party platforms. Connect uses the Cloudflare Network with Argo to lower latency and network errors. After the video hits the Cloudflare network at the closest point to the broadcaster, Stream Connect utilizes Argo Smart Routing to improve reliability and latency to the destination. Your live broadcasts become less prone to degraded end-user experience due to network congestion.</p>
-	<h2 id="join-the-beta">Join the Beta</h2>
+	<h2>Join the Beta</h2>
 	<p>Stream Connect Beta will be available on invite-only basis in mid-May. You can reserve your spot <a href="https://docs.google.com/forms/d/1rpRFKDTZTnh0LxysM2_Rky5pYt_rs9pUdSoJr_Ix2pk">here</a>.</p>
 	<p>It will be free for beta users during the beta phase. We will publish pricing details and developer docs when we begin inviting users to the beta.</p>
-	<p><strong>Update</strong> [20 July 2021]: Stream Connect is now available to all customers.</p>
+	<p><b>Update</b> [20 July 2021]: Stream Connect is now available to all customers.</p>
 </div>

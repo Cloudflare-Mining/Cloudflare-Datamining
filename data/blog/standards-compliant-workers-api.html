@@ -1,8 +1,12 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-20.png" class="kg-image" alt="The road to a more standards-compliant Workers API" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IJArMCAO7IbfVj9glJ6H1/f309a36f2013e8c82bcd79c5f15c578e/image1-20.png" alt="The road to a more standards-compliant Workers API" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Earlier this year, we <a href="https://blog.cloudflare.com/introducing-the-wintercg">announced our participation</a> in a new W3C Community Group for the advancement of Web-interoperable API standards. Since then, this new <a href="https://github.com/wintercg">WinterCG</a> has been hard at work identifying the common API standards around which all JavaScript runtimes can build. Today I just want to give a peek at some work the WinterCG has been doing; and show off some of the improvements we have been making in the Workers runtime to increase alignment with Web Platform standards around event handling, task cancellation using AbortController, text encoding and decoding, URL parsing and pattern matching, and streams support.</p>
-	<h2 id="the-wintercg-minimum-common-web-platform-api">The WinterCG Minimum Common Web Platform API</h2>
+	<h2>The WinterCG Minimum Common Web Platform API</h2>
 	<p>Right at the start of the WinterCG activity, the group took some time to evaluate and compare the various non-browser JavaScript runtimes such as <a href="https://nodejs.org">Node.js</a>, <a href="https://deno.land">Deno</a>, <a href="https://oven.sh">Bun</a>, and <a href="https://workers.cloudflare.com">Workers</a> with the purpose of identifying the Web Platform APIs they all had in common. Following a very simple criteria, we looked at the standard APIs that were already implemented and supported by at least two of these runtimes and compiled those into a list that the WinterCG calls the "<a href="https://common-min-api.proposal.wintercg.org">Minimum Common Web Platform API</a>". This list will serve as the basis for what the community group defines as the minimum set of Web Platform APIs that should be implemented consistently across runtimes that claim to be "Web-interoperable".</p>
 	<p>The current list is straightforward:</p><!--kg-card-begin: html-->
 	<table>
@@ -71,15 +75,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>In addition to these, the WinterCG also expects Web-interoperable runtimes to have implementations of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob">atob()</a>, <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa">btoa()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask">queueMicrotask()</a>, <a href="https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone">structuredClone()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">setTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout">clearTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval">setInterval()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval">clearInterval()</a>, <a href="https://console.spec.whatwg.org/#namespacedef-console">console</a>, and<a href="https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto"> crypto.subtle</a> APIs available on the global scope.<br></p>
+	<p>In addition to these, the WinterCG also expects Web-interoperable runtimes to have implementations of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob">atob()</a>, <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa">btoa()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask">queueMicrotask()</a>, <a href="https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone">structuredClone()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">setTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout">clearTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval">setInterval()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval">clearInterval()</a>, <a href="https://console.spec.whatwg.org/#namespacedef-console">console</a>, and <a href="https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto">crypto.subtle</a> APIs available on the global scope.</p>
 	<p>Today, we are happy to say that the Workers runtime has compliant or nearly compliant implementations of every one of these WinterCG Minimum Common Web Platform APIs. Some of these APIs intentionally diverge from the standards either due to backwards compatibility concerns, Workers-specific features, or performance optimizations. Other APIs diverge still because we are still in the process of updating them to align with the specifications.</p>
-	<h2 id="improving-standards-compliance-in-the-workers-runtime">Improving standards compliance in the Workers runtime</h2>
+	<h2>Improving standards compliance in the Workers runtime</h2>
 	<p>The Workers runtime has, from the beginning, had the mission to align its developer experience with JavaScript and Web Platform standards as much as possible. Over the past year we have worked hard to continue advancing that mission forward both by improving the standards-compliance of existing APIs such as Event, EventTarget, URL, and streams; and the introduction of new Web Platform APIs such as URLPattern, encoding streams, and compression streams.</p>
-	<h3 id="event-and-eventtarget">Event and EventTarget</h3>
+	<h3>Event and EventTarget</h3>
 	<p>The Workers runtime has provided an implementation of the Event and EventTarget Web Platform APIs from the very beginning. These were, however, only limited implementations of what the <a href="https://dom.spec.whatwg.org/#interface-event">WHATWG DOM specification</a> defines. Specifically, Workers had only implemented the bare minimum of the Event API that it itself needed to operate.</p>
 	<p>Today, the Event and EventTarget implementations in Workers provide a more complete implementation.</p>
-	<p>Let's look at the official definition of Event as defined by the WHATWG DOM standard:</p><!--kg-card-begin: markdown-->
-	<pre><code>[Exposed=*]
+	<p>Let's look at the official definition of Event as defined by the WHATWG DOM standard:</p>
+	<pre class="language-bash"><code class="language-bash">[Exposed=*]
 interface Event {
   constructor(DOMString type, optional EventInit eventInitDict = {});
  
@@ -87,7 +91,7 @@ interface Event {
   readonly attribute EventTarget? target;
   readonly attribute EventTarget? srcElement; // legacy
   readonly attribute EventTarget? currentTarget;
-  sequence&lt;EventTarget&gt; composedPath();
+  sequence<eventtarget> composedPath();
  
   const unsigned short NONE = 0;
   const unsigned short CAPTURING_PHASE = 1;
@@ -116,12 +120,10 @@ dictionary EventInit {
   boolean bubbles = false;
   boolean cancelable = false;
   boolean composed = false;
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</eventtarget></code></pre>
 	<p>Web Platform API specifications are always written in terms of a definition language called Web IDL. Every attribute defined in the interface is a property that is exposed on the object. Event objects, then, are supposed to have properties like <code>type</code>, <code>target</code>, <code>srcElement</code>, <code>currentTarget</code>, <code>bubbles</code>, <code>cancelable</code>, <code>returnValue</code>, <code>defaultPrevented</code>, <code>composed</code>, <code>isTrusted</code>, and <code>timeStamp</code>. They are also expected to have methods such as <code>composedPath()</code>, <code>stopPropagation()</code>, and <code>stopImmediatePropagation()</code>. Because most of these were not immediately needed by Workers, most were not provided originally.</p>
-	<p>Today, all standard, non-legacy properties and methods defined by the specification are available for use:</p><!--kg-card-begin: markdown-->
-	<pre><code> const event = new Event('foo', {
+	<p>Today, all standard, non-legacy properties and methods defined by the specification are available for use:</p>
+	<pre class="language-bash"><code class="language-bash"> const event = new Event('foo', {
     bubbles: false,
     cancelable: true,
     composed: true,
@@ -137,11 +139,9 @@ dictionary EventInit {
     console.log(event.composedPath());
   });
  
-  dispatchEvent(event);
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>While we were at it, we also fixed a long standing bug in the implementation of Event that prevented user code from properly subclassing the Event object to create their own custom event types. This change is protected by a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flag</a> that is now enabled by default for all Workers using a compatibility date on or past 2022-01-31.</p><!--kg-card-begin: markdown-->
-	<pre><code>  class MyEvent extends Event {
+  dispatchEvent(event);</code></pre>
+	<p>While we were at it, we also fixed a long standing bug in the implementation of Event that prevented user code from properly subclassing the Event object to create their own custom event types. This change is protected by a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flag</a> that is now enabled by default for all Workers using a compatibility date on or past 2022-01-31.</p>
+	<pre class="language-bash"><code class="language-bash">  class MyEvent extends Event {
     constructor() {
       super('my-event')
     }
@@ -151,24 +151,20 @@ dictionary EventInit {
  
   const myEvent = new MyEvent();
   // Previously, this would print "my-event" instead of "MY-EVENT" as expected.
-  console.log(myEvent.type);
-</code></pre>
-	<!--kg-card-end: markdown-->
+  console.log(myEvent.type);</code></pre>
 	<p>The <code>EventTarget</code> implementation has also been updated to support once handlers (event handlers that are triggered at-most once then automatically unregistered), cancelable handlers (using <code>AbortSignal</code>), and event listener objects, all in line with the standard.</p>
-	<p><strong>Using a one-time event handler</strong></p><!--kg-card-begin: markdown-->
-	<pre><code>  addEventListener('foo', (event) =&gt; {
+	<p><b>Using a one-time event handler</b></p>
+	<pre class="language-bash"><code class="language-bash">  addEventListener('foo', (event) =&gt; {
     console.log('printed only once');
   }, {
     once: true
   });
  
   dispatchEvent(new Event('foo'));
-  dispatchEvent(new Event('foo'));
-</code></pre>
-	<!--kg-card-end: markdown-->
+  dispatchEvent(new Event('foo'));</code></pre>
 	<p>Once handlers are key for preventing memory leaks in your applications when you know that a particular event is only ever going to be emitted once, or whenever you only care about handling it once. The stored reference to the function or object that is handling the event is removed immediately upon the first invocation, allowing the memory to be garbage collected.</p>
-	<p><strong>Using a cancelable event handler</strong></p><!--kg-card-begin: markdown-->
-	<pre><code>  const ac = new AbortController();
+	<p><b>Using a cancelable event handler</b></p>
+	<pre class="language-bash"><code class="language-bash">  const ac = new AbortController();
  
   addEventListener('foo', (event) =&gt; {
     console.log('not printed at all');
@@ -178,12 +174,10 @@ dictionary EventInit {
  
   ac.abort();
  
-  dispatchEvent(new Event('foo'));
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><strong>Using an event listener object</strong></p>
-	<p>While passing a function to <code>addEventListener(</code>) is the most common case, the standard actually allows an event listener to be an object with a <code>handleEvent()</code> method as well.</p><!--kg-card-begin: markdown-->
-	<pre><code>  const listener = {
+  dispatchEvent(new Event('foo'));</code></pre>
+	<p><b>Using an event listener object</b></p>
+	<p>While passing a function to <code>addEventListener(</code>) is the most common case, the standard actually allows an event listener to be an object with a <code>handleEvent()</code> method as well.</p>
+	<pre class="language-bash"><code class="language-bash">  const listener = {
     handleEvent(event) {
       console.log(event.type);
     }
@@ -193,21 +187,17 @@ dictionary EventInit {
   addEventListener('bar', listener);
  
   dispatchEvent(new Event('foo'));
-  dispatchEvent(new Event('bar'));
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="abortcontroller-and-abortsignal">AbortController and AbortSignal</h3>
+  dispatchEvent(new Event('bar'));</code></pre>
+	<h3>AbortController and AbortSignal</h3>
 	<p>As illustrated in the cancelable event example above, we have also introduced an implementation of the <code>AbortController</code> and <code>AbortSignal</code> APIs into Workers. These provide a standard, and interoperable way of signaling cancellation of several kinds of tasks.</p>
-	<p>The <code>AbortController/AbortSignal</code> pattern is straightforward: An <code>AbortSignal</code> is just a type of <code>EventTarget</code> that will emit a single "abort" event when it is triggered:</p><!--kg-card-begin: markdown-->
-	<pre><code>  const ac = new AbortController();
+	<p>The <code>AbortController/AbortSignal</code> pattern is straightforward: An <code>AbortSignal</code> is just a type of <code>EventTarget</code> that will emit a single "abort" event when it is triggered:</p>
+	<pre class="language-bash"><code class="language-bash">  const ac = new AbortController();
  
   ac.signal.addEventListener('abort', (event) =&gt; {
     console.log(event.reason);  // 'just because'
   }, { once: true });
  
-  ac.abort('just because');
-</code></pre>
-	<!--kg-card-end: markdown-->
+  ac.abort('just because');</code></pre>
 	<p>The <code>AbortController</code> is used to actually trigger the abort event, optionally with a reason argument that is passed on to the event. The reason is typically an Error object but can be any JavaScript value.</p>
 	<p>The <code>AbortSignal</code> can only be triggered once, so the "abort" event should only ever be emitted once.</p>
 	<p>It is also possible to create <code>AbortSignals</code> that timeout after a specified period of time:</p>
@@ -215,8 +205,8 @@ dictionary EventInit {
 	<p>Or an <code>AbortSignal</code> that is pre-emptively triggered immediately on creation (these will never actually emit the "abort" event):</p>
 	<p><code>const signal = AbortSignal.abort('for reasons');</code></p>
 	<p>Currently, within Workers, <code>AbortSignal</code> and <code>AbortController</code> has been integrated with the <code>EventTarget</code>, <code>fetch()</code>, and streams APIs in alignment with the relevant standard specifications for each.</p>
-	<h4 id="using-abortsignal-to-cancel-a-fetch-"><strong>Using AbortSignal to cancel a fetch()</strong></h4><!--kg-card-begin: markdown-->
-	<pre><code>  const ac = new AbortController();
+	<h4><b>Using AbortSignal to cancel a fetch()</b></h4>
+	<pre class="language-bash"><code class="language-bash">  const ac = new AbortController();
  
   const res = fetch('https://example.org', {
     signal: ac.signal
@@ -228,20 +218,16 @@ dictionary EventInit {
     await res;
   } catch (err) {
     console.log(err);
-  }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="textencoderstream-and-textdecoderstream">TextEncoderStream and TextDecoderStream</h3>
-	<p>The Workers runtime has long provided basic implementations of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder"><code>TextEncoder</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder"><code>TextDecoder</code></a> APIs. Initially, these were limited to only supporting encoding and decoding of UTF-8 text. The standard definition of <code>TextDecoder</code>, however, defines a much broader range of text encodings that are now fully supported by the Workers implementation. Per the standard, <code>TextEncoder</code> currently only supports UTF-8.</p><!--kg-card-begin: markdown-->
-	<pre><code>  const win1251decoder = new TextDecoder("windows-1251");
+  }</code></pre>
+	<h3>TextEncoderStream and TextDecoderStream</h3>
+	<p>The Workers runtime has long provided basic implementations of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder"><code>TextEncoder</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder"><code>TextDecoder</code></a> APIs. Initially, these were limited to only supporting encoding and decoding of UTF-8 text. The standard definition of <code>TextDecoder</code>, however, defines a much broader range of text encodings that are now fully supported by the Workers implementation. Per the standard, <code>TextEncoder</code> currently only supports UTF-8.</p>
+	<pre class="language-bash"><code class="language-bash">  const win1251decoder = new TextDecoder("windows-1251");
   const bytes = new Uint8Array([
     207, 240, 232, 226, 229, 242, 44, 32, 236, 232, 240, 33,
   ]);
-  console.log(win1251decoder.decode(bytes)); // Привет, мир!
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>In addition to supporting the full range of encodings defined by the standard, Workers also now provides implementations of the <code>TextEncoderStream</code> and <code>TextDecoderStream</code>, which provide <code>TransformStream</code> implementations that apply encoding and decoding to streaming data:</p><!--kg-card-begin: markdown-->
-	<pre><code>  const { writable, readable } = new TextDecoderStream("windows-1251");
+  console.log(win1251decoder.decode(bytes)); // Привет, мир!</code></pre>
+	<p>In addition to supporting the full range of encodings defined by the standard, Workers also now provides implementations of the <code>TextEncoderStream</code> and <code>TextDecoderStream</code>, which provide <code>TransformStream</code> implementations that apply encoding and decoding to streaming data:</p>
+	<pre class="language-bash"><code class="language-bash">  const { writable, readable } = new TextDecoderStream("windows-1251");
  
   const writer = writable.getWriter();
   writer.write(new Uint8Array([
@@ -250,27 +236,23 @@ dictionary EventInit {
  
   const reader = readable.getReader();
   const res = await reader.read();
-  console.log(res.value); // Привет, мир!
-</code></pre>
-	<!--kg-card-end: markdown-->
+  console.log(res.value); // Привет, мир!</code></pre>
 	<p>Using the encoding streams requires the use of the <code>transformstream_enable_standard_constructor</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flag</a>.</p>
-	<h3 id="compressionstream-and-decompressionstream">CompressionStream and DecompressionStream</h3>
-	<p>Streaming compression and decompression is also now supported in the runtime using the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream"><code>CompressionStream</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream"><code>DecompressionStream</code></a> APIs.</p><!--kg-card-begin: markdown-->
-	<pre><code>const ds = new DecompressionStream('gzip');
+	<h3>CompressionStream and DecompressionStream</h3>
+	<p>Streaming compression and decompression is also now supported in the runtime using the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream"><code>CompressionStream</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream"><code>DecompressionStream</code></a> APIs.</p>
+	<pre class="language-bash"><code class="language-bash">const ds = new DecompressionStream('gzip');
 const decompressedStream = blob.stream().pipeThrough(ds);
 
 const cs = new CompressionStream('gzip');
-const compressedStream = blob.stream().pipeThrough(cs);
-</code></pre>
-	<!--kg-card-end: markdown-->
+const compressedStream = blob.stream().pipeThrough(cs);</code></pre>
 	<p>These are <code>TransformStream</code> implementations that fully conform to the standard definitions. Use of the compression streams does not require a compatibility flag to enable.</p>
-	<h3 id="url-and-urlpattern">URL and URLPattern</h3>
+	<h3>URL and URLPattern</h3>
 	<p>Similar to Event, there has been an implementation of the Web Platform standard URL API available within Workers from nearly the beginning. But also like Event, the implementation was not entirely compatible with the standard.</p>
 	<p>The incompatibilities were subtle, for instance, in the original implementation, the URL string "<code>https://a//b//c//</code>" would be parsed incorrectly as "<code>https://a/b/c</code>" (note that the extra empty path segments are removed) whereas the standard parsing algorithm would produce "<code>https://a//b//c/</code>" as a result. Such inconsistent results were causing interoperability issues with JavaScript written to run across multiple JavaScript runtimes and needed to be fixed.</p>
 	<p>A new implementation of the URL parsing algorithm has been provided, and as of October 31, 2022 it has been enabled by default for all newly deployed Workers. Older Workers can begin using the new implementation by updating their compatibility dates to 2022-10-31 or by enabling the <code>url_standard</code> compatibility flag.</p>
 	<p>Along with the updated URL implementation, Workers now provides an implementation of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern">URLPattern</a> API.</p>
-	<p><code>URLPattern</code> provides a regular-expression-like syntax for matching a <code>URL</code> string against a pattern. For instance, consider this example taken from the MDN documentation for <code>URLPattern</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code>  // Matching a pathname
+	<p><code>URLPattern</code> provides a regular-expression-like syntax for matching a <code>URL</code> string against a pattern. For instance, consider this example taken from the MDN documentation for <code>URLPattern</code>:</p>
+	<pre class="language-bash"><code class="language-bash">  // Matching a pathname
   let pattern1 = new URLPattern('https://example.com/books/:id')
   // same as
   let pattern2 = new URLPattern(
@@ -287,15 +269,13 @@ const compressedStream = blob.stream().pipeThrough(cs);
   let pattern4 = new URLPattern({
     pathname: '/books/:id',
     baseURL: 'https://example.com',
-  });
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="readablestream-writablestream-and-transformstream">ReadableStream, WritableStream, and TransformStream</h3>
+  });</code></pre>
+	<h3>ReadableStream, WritableStream, and TransformStream</h3>
 	<p>Last, but absolutely not least, our most significant effort over the past year has been providing new standards compliant implementations of the <code>ReadableStream</code>, <code>WritableStream</code>, and <code>TransformStream</code> APIs.</p>
 	<p>The Workers runtime has always provided an implementation of these objects but they were never fully conformant to the standard. User code was not capable of creating custom <code>ReadableStream</code> and <code>WritableStream</code> instances, and <code>TransformStreams</code> were limited to simple identity pass-throughs of bytes. The implementations have been updated now to near complete compliance with the standard (near complete because we still have a few edge cases and features we are working on).</p>
 	<p>The new streams implementation will be enabled by default in all new Workers as of November 30, 2022, or can be enabled earlier using the <code>streams_enable_constructors</code> and <code>transformstream_enable_standard_constructor</code> compatibility flags.</p>
-	<h4 id="creating-a-custom-readablestream"><strong>Creating a custom ReadableStream</strong></h4><!--kg-card-begin: markdown-->
-	<pre><code>async function handleRequest(request) {
+	<h4><b>Creating a custom ReadableStream</b></h4>
+	<pre class="language-bash"><code class="language-bash">async function handleRequest(request) {
   const enc = new TextEncoder();
 
   const rs = new ReadableStream({
@@ -306,24 +286,20 @@ const compressedStream = blob.stream().pipeThrough(cs);
   });
 
   return new Response(rs);
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>The new implementation supports both "regular" and "bytes" <code>ReadableStream</code> types, supports BYOB readers, and includes performance optimizations for both <code>tee()</code> and <code>pipeThrough()</code>.</p>
-	<h4 id="creating-a-custom-writablestream"><strong>Creating a custom WritableStream</strong></h4><!--kg-card-begin: markdown-->
-	<pre><code>  const ws = new WritableStream({
+	<h4><b>Creating a custom WritableStream</b></h4>
+	<pre class="language-bash"><code class="language-bash">  const ws = new WritableStream({
     write(chunk) {
       console.log(chunk);  // "hello world"
     }
   });
  
   const writer = ws.getWriter();
-  writer.write("hello world");
-</code></pre>
-	<!--kg-card-end: markdown-->
+  writer.write("hello world");</code></pre>
 	<p><code>WritableStreams</code> are fairly simple objects that can accept any JavaScript value written to them.</p>
-	<h4 id="creating-a-custom-transformstream"><strong>Creating a custom TransformStream</strong></h4><!--kg-card-begin: markdown-->
-	<pre><code>  const { readable, writable } = new TransformStream({
+	<h4><b>Creating a custom TransformStream</b></h4>
+	<pre class="language-bash"><code class="language-bash">  const { readable, writable } = new TransformStream({
     transform(chunk, controller) {
       controller.enqueue(chunk.toUpperCase());
     }
@@ -335,12 +311,10 @@ const compressedStream = blob.stream().pipeThrough(cs);
   writer.write("hello world");
  
   const res = await reader.read();
-  console.log(res.value);  // "HELLO WORLD"
-</code></pre>
-	<!--kg-card-end: markdown-->
+  console.log(res.value);  // "HELLO WORLD"</code></pre>
 	<p>It has always been possible in Workers to call new <code>TransformStream()</code> (with no arguments) to create a limited version of a <code>TransformStream</code> that only accepts bytes and only acts as a pass-through, passing the bytes written to the writer on to the reader without any modification.</p>
-	<p>That original implementation is now available within Workers using the <code>IdentityTransformStream</code> class.</p><!--kg-card-begin: markdown-->
-	<pre><code>  const { readable, writable } = new IdentityTransformStream();
+	<p>That original implementation is now available within Workers using the <code>IdentityTransformStream</code> class.</p>
+	<pre class="language-bash"><code class="language-bash">  const { readable, writable } = new IdentityTransformStream();
  
   const writer = writable.getWriter();
   const reader = readable.getReader();
@@ -351,11 +325,9 @@ const compressedStream = blob.stream().pipeThrough(cs);
   writer.write(enc.encode("hello world"));
  
   const res = await reader.read();
-  console.log(dec.decode(res.value));  // "hello world"
-</code></pre>
-	<!--kg-card-end: markdown-->
+  console.log(dec.decode(res.value));  // "hello world"</code></pre>
 	<p>If your code is using new <code>TransformStream()</code> today as this kind of pass-through, the new implementation will continue to work except for one very important difference: the old, non-standard implementation of new <code>TransformStream()</code> supported BYOB reads on the readable side (i.e. <code>readable.getReader({ mode: 'byob' })</code>). The new implementation (enabled via a compatibility flag and becoming the default on November 30 ) does not support BYOB reads as required by the stream standard.</p>
-	<h2 id="what-s-next">What's next</h2>
+	<h2>What's next</h2>
 	<p>It is clear that we have made a lot of progress in improving the standards compliance of the Workers runtime over the past year, but there is far more to do. Next we will be turning our attention to the implementation of the fetch() and WebSockets APIs, as well as actively seeking closer alignment with other runtimes through collaboration in the Web-interoperable Runtimes Community Group.</p>
 	<p>If you are interested in helping drive the implementation of Web Platform APIs forward, and advancing interoperability between JavaScript runtime environments, the Workers Runtime team at Cloudflare is hiring! Reach out, or see our open positions <a href="https://www.cloudflare.com/careers/jobs/?title=Workers+Runtime">here</a>.</p>
 </div>

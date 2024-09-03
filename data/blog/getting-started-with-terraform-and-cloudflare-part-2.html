@@ -1,10 +1,10 @@
-<div class="mb2 gray5">25 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>In <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">Part 1 of Getting Started with Terraform</a>, we explained how Terraform lets developers store Cloudflare configuration in their own source code repository, institute change management processes that include code review, track their configuration versions and history over time, and easily roll back changes as needed.</em></p>
-	<p><em>We covered <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#installingterraform">installing Terraform</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#helloworld">provider initialization</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#trackingchangehistory">storing configuration in git</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#applyingzonesettings">applying zone settings</a>, and <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">managing rate limits</a>. This post continues the Cloudflare Terraform provider walkthrough with examples of <a href="https://blog.cloudflare.com/#addingloadbalancing">load balancing</a>, <a href="https://blog.cloudflare.com/#usingpagerules">page rules</a>, <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">reviewing and rolling back configuration</a>, and <a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration">importing state</a>.</em></p>
-	<h3 id="reviewingthecurrentconfiguration">Reviewing the current configuration</h3>
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RjSXgMC8ct7LBS5x2dK3n/d1d3709e5ecb537be502b8a63bc823f4/getting-started-with-terraform-and-cloudflare-part-2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>In </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1"><i>Part 1 of Getting Started with Terraform</i></a><i>, we explained how Terraform lets developers store Cloudflare configuration in their own source code repository, institute change management processes that include code review, track their configuration versions and history over time, and easily roll back changes as needed.</i></p>
+	<p><i>We covered </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#installingterraform"><i>installing Terraform</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#helloworld"><i>provider initialization</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#trackingchangehistory"><i>storing configuration in git</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#applyingzonesettings"><i>applying zone settings</i></a><i>, and </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits"><i>managing rate limits</i></a><i>. This post continues the Cloudflare Terraform provider walkthrough with examples of </i><a href="https://blog.cloudflare.com/#addingloadbalancing"><i>load balancing</i></a><i>, </i><a href="https://blog.cloudflare.com/#usingpagerules"><i>page rules</i></a><i>, </i><a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges"><i>reviewing and rolling back configuration</i></a><i>, and </i><a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration"><i>importing state</i></a><i>.</i></p>
+	<h3>Reviewing the current configuration</h3>
 	<p>Before we build on Part 1, let's quickly review what we configured in that post. Because our configuration is in git, we can easily view the current configuration and change history that got us to this point.</p>
-	<pre><code>$ git log
+	<pre class="language-bash"><code class="language-bash">$ git log
 commit e1c38cf6f4230a48114ce7b747b77d6435d4646c
 Author: Me
 Date:   Mon Apr 9 12:34:44 2018 -0700
@@ -33,14 +33,13 @@ commit 5acea176050463418f6ac1029674c152e3056bc6
 Author: Me
 Date:   Sun Apr 8 19:52:13 2018 -0700
 
-    Step 2 - Initial commit with webserver definition.
-</code></pre>
+    Step 2 - Initial commit with webserver definition.</code></pre>
 	<p>We'll get into more detail about reviewing and rolling back to prior versions of configuration <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">later in this post</a>, but for now let's review the current version.</p>
 	<p>In lines 1-4 below, we configured the Cloudflare Terraform provider. Initially we stored our email address and API key in the <code>cloudflare.tf</code> file, but for security reasons we removed them before committing to a git repository.</p>
 	<p>In lines 6-8, we define a <code>variable</code> that can be interpolated into <code>resources</code> definitions. Terraform can be used to mass configure multiple zones through the use of variables, as we'll explore in a future post.</p>
-	<p>Lines 10-16 tell Cloudflare to create a DNS <code>A</code> record for <code>www.${var.domain}</code> using IP address <code>203.0.113.10</code>. Later in this post, we'll explore <a href="https://blog.cloudflare.com">adding a second webserver and load balancing</a> between the two origins.</p>
+	<p>Lines 10-16 tell Cloudflare to create a DNS <code>A</code> record for <code>www.${var.domain}</code> using IP address <code>203.0.113.10</code>. Later in this post, we'll explore adding a second webserver and load balancing between the two origins.</p>
 	<p>Lines 18-26 apply zone-wide settings and lines 28-54 define a rate limiting rule to protect against credential stuffing and other brute force attacks.</p>
-	<pre><code>$ cat -n cloudflare.tf 
+	<pre class="language-bash"><code class="language-bash">$ cat -n cloudflare.tf 
      1	provider "cloudflare" {
      2	  # email pulled from $CLOUDFLARE_EMAIL
      3	  # token pulled from $CLOUDFLARE_TOKEN
@@ -94,14 +93,13 @@ Date:   Sun Apr 8 19:52:13 2018 -0700
     51	  }
     52	  disabled = false
     53	  description = "Block failed login attempts (5 in 1 min) for 5 minutes."
-    54	}
-</code></pre>
-	<h3 id="addingloadbalancing">Adding load balancing</h3>
+    54	}</code></pre>
+	<h3>Adding load balancing</h3>
 	<p>Thanks to the <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">rate limiting set up in part 1</a>, our login page is protected against credential brute force attacks. Now it's time to focus on performance and reliability. Imagine organic traffic has grown for your webserver, and this traffic is increasingly global. It’s time to spread these requests to your origin over multiple data centers.</p>
 	<p>Below we'll add a second origin for some basic round robining, and then use the <a href="https://www.cloudflare.com/load-balancing">Cloudflare Load Balancing</a> product to fail traffic over as needed. We'll then enhance our load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.</p>
-	<h4 id="1addanotherdnsrecordforwww">1. Add another DNS record for <code>www</code></h4>
+	<h4>1. Add another DNS record for <code>www</code></h4>
 	<p>To get started, we'll add a DNS record for a second web server, which is located in Asia. The IP address for this server is <code>198.51.100.15</code>.</p>
-	<pre><code>$ git checkout -b step5-loadbalance
+	<pre class="language-bash"><code class="language-bash">$ git checkout -b step5-loadbalance
 Switched to a new branch 'step5-loadbalance'
 
 $ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
@@ -112,12 +110,11 @@ resource "cloudflare_record" "www-asia" {
   type    = "A"
   proxied = true
 }
-EOF
-</code></pre>
+EOF</code></pre>
 	<p>Note that while the name of the resource is different as Terraform resources of the same type must be uniquely named, the DNS name, i.e., what your customers will type in their browser, is the same: "www".</p>
-	<h4 id="2previewandmergethechanges">2. Preview and merge the changes</h4>
+	<h4>2. Preview and merge the changes</h4>
 	<p>Below we'll check the <code>terraform plan</code>, merge and apply the changes.</p>
-	<pre><code>$ terraform plan | grep -v "&lt;computed&gt;"
+	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep -v "<computed>"
 ...
 Terraform will perform the following actions:
 
@@ -129,9 +126,9 @@ Terraform will perform the following actions:
       value:       "198.51.100.15"
 
 
-Plan: 1 to add, 0 to change, 0 to destroy.
-</code></pre>
-	<pre><code>$ git add cloudflare.tf
+Plan: 1 to add, 0 to change, 0 to destroy.</computed></code></pre>
+
+	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 $ git commit -m "Step 5 - Add additional 'www' DNS record for Asia data center."
 [step5-loadbalance 6761a4f] Step 5 - Add additional 'www' DNS record for Asia data center.
  1 file changed, 7 insertions(+)
@@ -143,31 +140,29 @@ $ git merge step5-loadbalance
 Updating e1c38cf..6761a4f
 Fast-forward
  cloudflare.tf | 7 +++++++
- 1 file changed, 7 insertions(+)
-</code></pre>
-	<h4 id="3applyandverifythechanges">3. Apply and verify the changes</h4>
-	<p>Let's add the second DNS record for www.example.com:</p>
-	<pre><code>$ terraform apply --auto-approve
+ 1 file changed, 7 insertions(+)</code></pre>
+	<h4>3. Apply and verify the changes</h4>
+	<p>Let's add the second DNS record for <a href="http://www.example.com">www.example.com</a>:</p>
+	<pre class="language-bash"><code class="language-bash">$ terraform apply --auto-approve
 ...
 cloudflare_record.www-asia: Creating...
-  created_on:  "" =&gt; "&lt;computed&gt;"
+  created_on:  "" =&gt; "<computed>"
   domain:      "" =&gt; "example.com"
-  hostname:    "" =&gt; "&lt;computed&gt;"
-  metadata.%:  "" =&gt; "&lt;computed&gt;"
-  modified_on: "" =&gt; "&lt;computed&gt;"
+  hostname:    "" =&gt; "<computed>"
+  metadata.%:  "" =&gt; "<computed>"
+  modified_on: "" =&gt; "<computed>"
   name:        "" =&gt; "www"
-  proxiable:   "" =&gt; "&lt;computed&gt;"
+  proxiable:   "" =&gt; "<computed>"
   proxied:     "" =&gt; "true"
-  ttl:         "" =&gt; "&lt;computed&gt;"
+  ttl:         "" =&gt; "<computed>"
   type:        "" =&gt; "A"
   value:       "" =&gt; "198.51.100.15"
-  zone_id:     "" =&gt; "&lt;computed&gt;"
+  zone_id:     "" =&gt; "<computed>"
 cloudflare_record.www-asia: Creation complete after 1s (ID: fda39d8c9bf909132e82a36bab992864)
 
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-</code></pre>
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</computed></computed></computed></computed></computed></computed></computed></code></pre>
 	<p>With the second DNS record in place, let's try making some requests to see where the traffic is served from:</p>
-	<pre><code>$ curl https://www.example.com
+	<pre class="language-bash"><code class="language-bash">$ curl https://www.example.com
 Hello, this is 203.0.113.10!
 
 $ curl https://www.example.com
@@ -177,18 +172,15 @@ $ curl https://www.example.com
 Hello, this is 198.51.100.15!
 
 $ curl https://www.example.com
-Hello, this is 203.0.113.10!
-</code></pre>
+Hello, this is 203.0.113.10!</code></pre>
 	<p>As you can see above, there is no discernible pattern for which origin receives the request. When Cloudflare connects to an origin with multiple DNS records, one of the IP addresses is selected at random. If both of these IPs are in the same data center and sessions can be shared (i.e., it doesn't matter if the same user hops between origin servers), this may work fine. However, for anything more complicated such as origins in different geographies or active health checks, you're going to want to use Cloudflare's Load Balancing product.</p>
-	<h4 id="4switchtousingcloudflareloadbalancing">4. Switch to using Cloudflare Load Balancing</h4>
+	<h4>4. Switch to using Cloudflare Load Balancing</h4>
 	<p>Before proceeding, make sure that your account is enabled for Load Balancing. If you're on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Load Balancing within the Cloudflare Dashboard.</p>
 	<p>As described in the <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare">load balancing tutorial</a> on the Cloudflare Support site, you will need to do three things:</p>
-	<p>i. Create a monitor to run health checks against your origin servers<br>
-		ii. Create a pool of one or more origin servers that will receive load balanced traffic<br>
-		iii. Create a load balancer with an external hostname, e.g., www.example.com, and one or more pools</p>
-	<h5 id="idefineandcreatethehealthcheckmonitor">i. Define and create the health check ("monitor")</h5>
+	<p>i. Create a monitor to run health checks against your origin serversii. Create a pool of one or more origin servers that will receive load balanced trafficiii. Create a load balancer with an external hostname, e.g., <a href="http://www.example.com">www.example.com</a>, and one or more pools</p>
+	<h5>i. Define and create the health check ("monitor")</h5>
 	<p>To monitor our origins we're going to create a basic health check that makes a GET request to each origin on the URL <a href="https://www.example.com">https://www.example.com</a>. If the origin returns the 200/OK status code within 5 seconds, we'll consider it healthy. If it fails to do so three (3) times in a row, we'll consider it unhealthy. This health check will be run once per minute from several regions, and send an email notification to <a href="mailto:you@example.com">you@example.com</a> if any failures are detected.</p>
-	<pre><code>$ git checkout step5-loadbalance
+	<pre class="language-bash"><code class="language-bash">$ git checkout step5-loadbalance
 Switched to branch 'step5-loadbalance'
 
 $ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
@@ -203,12 +195,11 @@ resource "cloudflare_load_balancer_monitor" "get-root-https" {
   check_regions = ["WNAM", "ENAM", "WEU", "EEU", "SEAS", "NEAS"]
   description = "GET / over HTTPS - expect 200"
 }
-EOF
-</code></pre>
-	<h5 id="iidefineandcreatethepooloforigins">ii. Define and create the pool of origins</h5>
+EOF</code></pre>
+	<h5>ii. Define and create the pool of origins</h5>
 	<p>We will call our pool "www-servers” and add two origins to it: <code>www-us</code> (<code>203.0.113.10</code>) and www-asia (<code>198.51.100.15</code>). For now, we'll skip any sort of <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions">geo routing</a>.</p>
 	<p>Note that we reference the monitor we added in the last step. When applying this confirmation, Terraform will figure out that it first needs to create the monitor so that it can look up the ID and provide to the pool we wish to create.</p>
-	<pre><code>$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
+	<pre class="language-bash"><code class="language-bash">$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
 resource "cloudflare_load_balancer_pool" "www-servers" {
   name = "www-servers"
   monitor = "${cloudflare_load_balancer_monitor.get-root-https.id}"
@@ -225,11 +216,10 @@ resource "cloudflare_load_balancer_pool" "www-servers" {
   minimum_origins = 1
   notification_email = "you@example.com"
 }
-EOF
-</code></pre>
-	<h5 id="iiidefineandcreatetheloadbalancer">iii. Define and create the load balancer</h5>
-	<p>Note that when you create a load balancer (LB), it will <a href="https://support.cloudflare.com/hc/en-us/articles/115004954407-How-Does-a-Load-Balancer-Interact-with-Existing-DNS-Records-">replace any existing DNS records with the same name</a>. For example, when we create the "www.example.com" LB below, it will supersede the two www DNS records that you have previously defined. One benefit of leaving these DNS records in place is that if you temporarily disable load balancing, connections to this hostname will still be possible <a href="https://blog.cloudflare.com">as shown above</a>.</p>
-	<pre><code>$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
+EOF</code></pre>
+	<h5>iii. Define and create the load balancer</h5>
+	<p>Note that when you create a load balancer (LB), it will <a href="https://support.cloudflare.com/hc/en-us/articles/115004954407-How-Does-a-Load-Balancer-Interact-with-Existing-DNS-Records-">replace any existing DNS records with the same name</a>. For example, when we create the "<a href="http://www.example.com">www.example.com</a>" LB below, it will supersede the two www DNS records that you have previously defined. One benefit of leaving these DNS records in place is that if you temporarily disable load balancing, connections to this hostname will still be possible as shown above.</p>
+	<pre class="language-bash"><code class="language-bash">$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
 resource "cloudflare_load_balancer" "www-lb" {
   zone = "example.com"
   name = "www-lb"
@@ -238,45 +228,44 @@ resource "cloudflare_load_balancer" "www-lb" {
   description = "example load balancer"
   proxied = true
 }
-EOF
-</code></pre>
-	<h5 id="ivpreviewandmergethechanges">iv. Preview and merge the changes</h5>
+EOF</code></pre>
+	<h5>iv. Preview and merge the changes</h5>
 	<p>As usual, we take a look at the proposed plan before we apply any changes:</p>
-	<pre><code>$ terraform plan
+	<pre class="language-bash"><code class="language-bash">$ terraform plan
 ...
 Terraform will perform the following actions:
 
   + cloudflare_load_balancer.www-lb
-      id:                         &lt;computed&gt;
-      created_on:                 &lt;computed&gt;
-      default_pool_ids.#:         &lt;computed&gt;
+      id:                         <computed>
+      created_on:                 <computed>
+      default_pool_ids.#:         <computed>
       description:                "example load balancer"
       fallback_pool_id:           "${cloudflare_load_balancer_pool.www-servers.id}"
-      modified_on:                &lt;computed&gt;
+      modified_on:                <computed>
       name:                       "www-lb"
-      pop_pools.#:                &lt;computed&gt;
+      pop_pools.#:                <computed>
       proxied:                    "true"
-      region_pools.#:             &lt;computed&gt;
-      ttl:                        &lt;computed&gt;
+      region_pools.#:             <computed>
+      ttl:                        <computed>
       zone:                       "example.com"
-      zone_id:                    &lt;computed&gt;
+      zone_id:                    <computed>
 
   + cloudflare_load_balancer_monitor.get-root-https
-      id:                         &lt;computed&gt;
-      created_on:                 &lt;computed&gt;
+      id:                         <computed>
+      created_on:                 <computed>
       description:                "GET / over HTTPS - expect 200"
       expected_body:              "alive"
       expected_codes:             "200"
       interval:                   "60"
       method:                     "GET"
-      modified_on:                &lt;computed&gt;
+      modified_on:                <computed>
       path:                       "/"
       retries:                    "2"
       timeout:                    "5"
       type:                       "http"
 
   + cloudflare_load_balancer_pool.www-servers
-      id:                         &lt;computed&gt;
+      id:                         <computed>
       check_regions.#:            "6"
       check_regions.1151265357:   "SEAS"
       check_regions.1997072153:   "WEU"
@@ -284,11 +273,11 @@ Terraform will perform the following actions:
       check_regions.2826842289:   "ENAM"
       check_regions.2992567379:   "WNAM"
       check_regions.3706632574:   "NEAS"
-      created_on:                 &lt;computed&gt;
+      created_on:                 <computed>
       description:                "www origins"
       enabled:                    "true"
       minimum_origins:            "1"
-      modified_on:                &lt;computed&gt;
+      modified_on:                <computed>
       monitor:                    "${cloudflare_load_balancer_monitor.get-root-https.id}"
       name:                       "www-servers"
       notification_email:         "you@example.com"
@@ -301,10 +290,9 @@ Terraform will perform the following actions:
       origins.4241861547.name:    "www-us"
 
 
-Plan: 3 to add, 0 to change, 0 to destroy.
-</code></pre>
+Plan: 3 to add, 0 to change, 0 to destroy.</computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></code></pre>
 	<p>The plan looks good so let's go ahead, merge it in, and apply it.</p>
-	<pre><code>$ git add cloudflare.tf
+	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 $ git commit -m "Step 5 - Create load balancer (LB) monitor, LB pool, and LB."
 [step5-loadbalance bc9aa9a] Step 5 - Create load balancer (LB) monitor, LB pool, and LB.
  1 file changed, 35 insertions(+)
@@ -312,13 +300,13 @@ $ git commit -m "Step 5 - Create load balancer (LB) monitor, LB pool, and LB."
 $ terraform apply --auto-approve
 ...
 cloudflare_load_balancer_monitor.get-root-https: Creating...
-  created_on:     "" =&gt; "&lt;computed&gt;"
+  created_on:     "" =&gt; "<computed>"
   description:    "" =&gt; "GET / over HTTPS - expect 200"
   expected_body:  "" =&gt; "alive"
   expected_codes: "" =&gt; "200"
   interval:       "" =&gt; "60"
   method:         "" =&gt; "GET"
-  modified_on:    "" =&gt; "&lt;computed&gt;"
+  modified_on:    "" =&gt; "<computed>"
   path:           "" =&gt; "/"
   retries:        "" =&gt; "2"
   timeout:        "" =&gt; "5"
@@ -332,11 +320,11 @@ cloudflare_load_balancer_pool.www-servers: Creating...
   check_regions.2826842289:   "" =&gt; "ENAM"
   check_regions.2992567379:   "" =&gt; "WNAM"
   check_regions.3706632574:   "" =&gt; "NEAS"
-  created_on:                 "" =&gt; "&lt;computed&gt;"
+  created_on:                 "" =&gt; "<computed>"
   description:                "" =&gt; "www origins"
   enabled:                    "" =&gt; "true"
   minimum_origins:            "" =&gt; "1"
-  modified_on:                "" =&gt; "&lt;computed&gt;"
+  modified_on:                "" =&gt; "<computed>"
   monitor:                    "" =&gt; "4238142473fcd48e89ef1964be72e3e0"
   name:                       "" =&gt; "www-servers"
   notification_email:         "" =&gt; "you@example.com"
@@ -349,41 +337,39 @@ cloudflare_load_balancer_pool.www-servers: Creating...
   origins.4241861547.name:    "" =&gt; "www-us"
 cloudflare_load_balancer_pool.www-servers: Creation complete after 0s (ID: 906d2a7521634783f4a96c062eeecc6d)
 cloudflare_load_balancer.www-lb: Creating...
-  created_on:         "" =&gt; "&lt;computed&gt;"
+  created_on:         "" =&gt; "<computed>"
   default_pool_ids.#: "" =&gt; "1"
   default_pool_ids.0: "" =&gt; "906d2a7521634783f4a96c062eeecc6d"
   description:        "" =&gt; "example load balancer"
   fallback_pool_id:   "" =&gt; "906d2a7521634783f4a96c062eeecc6d"
-  modified_on:        "" =&gt; "&lt;computed&gt;"
+  modified_on:        "" =&gt; "<computed>"
   name:               "" =&gt; "www-lb"
-  pop_pools.#:        "" =&gt; "&lt;computed&gt;"
+  pop_pools.#:        "" =&gt; "<computed>"
   proxied:            "" =&gt; "true"
-  region_pools.#:     "" =&gt; "&lt;computed&gt;"
-  ttl:                "" =&gt; "&lt;computed&gt;"
+  region_pools.#:     "" =&gt; "<computed>"
+  ttl:                "" =&gt; "<computed>"
   zone:               "" =&gt; "example.com"
-  zone_id:            "" =&gt; "&lt;computed&gt;"
+  zone_id:            "" =&gt; "<computed>"
 cloudflare_load_balancer.www-lb: Creation complete after 1s (ID: cb94f53f150e5c1a65a07e43c5d4cac4)
 
-Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
-</code></pre>
-	<h5 id="ivtestthechanges">iv. Test the changes</h5>
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.</computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></code></pre>
+	<h5>iv. Test the changes</h5>
 	<p>With load balancing in place, let's run those curl requests again to see where the traffic is served from:</p>
-	<pre><code>$ for i in {1..4}; do curl https://www.example.com &amp;&amp; sleep 5; done
+	<pre class="language-bash"><code class="language-bash">$ for i in {1..4}; do curl https://www.example.com &amp;&amp; sleep 5; done
 Hello, this is 198.51.100.15!
 
 Hello, this is 203.0.113.10!
 
 Hello, this is 198.51.100.15!
 
-Hello, this is 203.0.113.10!
-</code></pre>
+Hello, this is 203.0.113.10!</code></pre>
 	<p>Great, we're now seeing each request load balanced evenly across the two origins we defined.</p>
-	<h3 id="usingpagerules">Using page rules</h3>
+	<h3>Using page rules</h3>
 	<p>Earlier we configured zone settings that apply to all of example.com. Now we're going to add an exception to these settings by using <a href="https://www.cloudflare.com/features-page-rules">Page Rules</a>.</p>
 	<p>Specifically, we're going to turn increase the security level for a URL we know is expensive to render (and cannot be cached): <a href="https://www.example.com/expensive-db-call">https://www.example.com/expensive-db-call</a>. Additionally, we're going to add a redirect from the previous URL we used to host this page.</p>
-	<h4 id="1createanewbranchandappendthepagerule">1. Create a new branch and append the page rule</h4>
+	<h4>1. Create a new branch and append the page rule</h4>
 	<p>As usual we'll create a new branch and append our configuration.</p>
-	<pre><code>$ git checkout -b step6-pagerule
+	<pre class="language-bash"><code class="language-bash">$ git checkout -b step6-pagerule
 Switched to a new branch 'step6-pagerule'
 
 $ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
@@ -409,16 +395,15 @@ resource "cloudflare_page_rule" "redirect-to-new-db-page" {
     }
   }
 }
-EOF
-</code></pre>
-	<h4 id="2previewandmergethechanges">2. Preview and merge the changes</h4>
+EOF</code></pre>
+	<h4>2. Preview and merge the changes</h4>
 	<p>You know the drill: preview the changes Terraform is going to make and then merge them into the master branch.</p>
-	<pre><code>$ terraform plan
+	<pre class="language-bash"><code class="language-bash">$ terraform plan
 ...
 Terraform will perform the following actions:
 
   + cloudflare_page_rule.increase-security-on-expensive-page
-      id:                                     &lt;computed&gt;
+      id:                                     <computed>
       actions.#:                              "1"
       actions.0.always_use_https:             "false"
       actions.0.disable_apps:                 "false"
@@ -429,10 +414,10 @@ Terraform will perform the following actions:
       status:                                 "active"
       target:                                 "www.example.com/expensive-db-call"
       zone:                                   "example.com"
-      zone_id:                                &lt;computed&gt;
+      zone_id:                                <computed>
 
   + cloudflare_page_rule.redirect-to-new-db-page
-      id:                                     &lt;computed&gt;
+      id:                                     <computed>
       actions.#:                              "1"
       actions.0.always_use_https:             "false"
       actions.0.disable_apps:                 "false"
@@ -445,12 +430,12 @@ Terraform will perform the following actions:
       status:                                 "active"
       target:                                 "www.example.com/old-location.php"
       zone:                                   "example.com"
-      zone_id:                                &lt;computed&gt;
+      zone_id:                                <computed>
 
 
-Plan: 2 to add, 0 to change, 0 to destroy.
-</code></pre>
-	<pre><code>$ git add cloudflare.tf
+Plan: 2 to add, 0 to change, 0 to destroy.</computed></computed></computed></computed></code></pre>
+
+	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 
 $ git commit -m "Step 6 - Add two Page Rules."
 [step6-pagerule d4fec16] Step 6 - Add two Page Rules.
@@ -465,13 +450,12 @@ Fast-forward
  cloudflare.tf | 23 +++++++++++++++++++++++
  1 file changed, 23 insertions(+)
 3. Apply And Verify The Changes
-First we'll test requesting the (now missing) old location of the expensive-to-render page.
-</code></pre>
-	<pre><code>$ curl -vso /dev/null https://www.example.com/old-location.php 2&gt;&amp;1 | grep "&lt; HTTP\|Location"
-&lt; HTTP/1.1 404 Not Found
-</code></pre>
+First we'll test requesting the (now missing) old location of the expensive-to-render page.</code></pre>
+
+	<pre class="language-bash"><code class="language-bash">$ curl -vso /dev/null https://www.example.com/old-location.php 2&gt;&amp;1 | grep "&lt; HTTP\|Location"
+&lt; HTTP/1.1 404 Not Found</code></pre>
 	<p>As expected, it can't be found. Let's apply the Page Rules, including the redirect that should fix this error.</p>
-	<pre><code>$ terraform apply --auto-approve
+	<pre class="language-bash"><code class="language-bash">$ terraform apply --auto-approve
 ...
 cloudflare_page_rule.redirect-to-new-db-page: Creating...
   actions.#:                              "0" =&gt; "1"
@@ -486,7 +470,7 @@ cloudflare_page_rule.redirect-to-new-db-page: Creating...
   status:                                 "" =&gt; "active"
   target:                                 "" =&gt; "www.example.com/old-location.php"
   zone:                                   "" =&gt; "example.com"
-  zone_id:                                "" =&gt; "&lt;computed&gt;"
+  zone_id:                                "" =&gt; "<computed>"
 cloudflare_page_rule.increase-security-on-expensive-page: Creating...
   actions.#:                     "0" =&gt; "1"
   actions.0.always_use_https:    "" =&gt; "false"
@@ -498,28 +482,26 @@ cloudflare_page_rule.increase-security-on-expensive-page: Creating...
   status:                        "" =&gt; "active"
   target:                        "" =&gt; "www.example.com/expensive-db-call"
   zone:                          "" =&gt; "example.com"
-  zone_id:                       "" =&gt; "&lt;computed&gt;"
+  zone_id:                       "" =&gt; "<computed>"
 cloudflare_page_rule.redirect-to-new-db-page: Creation complete after 3s (ID: c5c40ff2dc12416b5fe4d0541980c591)
 cloudflare_page_rule.increase-security-on-expensive-page: Creation complete after 6s (ID: 1c13fdb84710c4cc8b11daf7ffcca449)
 
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-</code></pre>
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</computed></computed></code></pre>
 	<p>With the Page Rules in place, let's try that call again, along with the <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode">I'm Under Attack Mode</a> test:</p>
-	<pre><code>$ curl -vso /dev/null https://www.example.com/old-location.php 2&gt;&amp;1 | grep "&lt; HTTP\|Location"
+	<pre class="language-bash"><code class="language-bash">$ curl -vso /dev/null https://www.example.com/old-location.php 2&gt;&amp;1 | grep "&lt; HTTP\|Location"
 &lt; HTTP/1.1 301 Moved Permanently
 &lt; Location: https://www.upinatoms.com/expensive-db-call
 
 $ curl -vso /dev/null https://www.upinatoms.com/expensive-db-call 2&gt;&amp;1 | grep "&lt; HTTP"
-&lt; HTTP/1.1 503 Service Temporarily Unavailable
-</code></pre>
+&lt; HTTP/1.1 503 Service Temporarily Unavailable</code></pre>
 	<p>Great, they work as expected! In the first case, the Cloudflare edge responds with a <code>301</code> redirecting the browser to the new location. In the second case it initially responds with a <code>503</code> (as is consistent with the "I Am Under Attack” mode).</p>
-	<h3 id="reviewingandrollingbackchanges">Reviewing and rolling back changes</h3>
+	<h3>Reviewing and rolling back changes</h3>
 	<p>We've come a long way! Now it's time to tear it all down. Well, maybe just part of it.</p>
 	<p>Sometimes when you deploy configuration changes you later determine that they need to be rolled back. You could be performance testing a new configuration and want to revert to your previous configuration when done testing. Or maybe you fat-fingered an IP address and brought your entire site down (#hugops).</p>
 	<p>Either way, if you've determined you want to revert your configuration, all you need to do is check the desired branch out and ask Terraform to move your Cloudflare settings back in time. And note that if you accidentally brought your site down you should consider establishing a good strategy for peer reviewing pull requests (rather than merging directly to primary, as I do here for brevity)!</p>
-	<h4 id="1reviewingyourconfigurationhistory">1. Reviewing your configuration history</h4>
+	<h4>1. Reviewing your configuration history</h4>
 	<p>Before we figure out how far back in time we want to rollback, let's take a look at our (git) versioned history.</p>
-	<pre><code>$ git log
+	<pre class="language-bash"><code class="language-bash">$ git log
 commit d4fec164581bec44684a4d59bb80aec1f1da5a6e
 Author: Me
 Date:   Wed Apr 18 22:04:52 2018 -0700
@@ -568,11 +550,10 @@ Date:   Sun Apr 8 19:52:13 2018 -0700
 
     Step 2 - Initial commit with webserver definition.
 
-Another nice benefit of storing your Cloudflare configuration in git is that you can see who made the change, as well as who reviewed and approved the change (assuming you're peer reviewing pull requests).
-</code></pre>
-	<h4 id="2examiningspecifichistoricalchanges">2. Examining specific historical changes</h4>
+Another nice benefit of storing your Cloudflare configuration in git is that you can see who made the change, as well as who reviewed and approved the change (assuming you're peer reviewing pull requests).</code></pre>
+	<h4>2. Examining specific historical changes</h4>
 	<p>To begin with, let's see what the last change we made was.</p>
-	<pre><code>$ git show
+	<pre class="language-bash"><code class="language-bash">$ git show
 commit d4fec164581bec44684a4d59bb80aec1f1da5a6e
 Author: Me
 Date:   Wed Apr 18 22:04:52 2018 -0700
@@ -609,10 +590,9 @@ index 0b39450..ef11d8a 100644
 +      status_code = 301
 +    }
 +  }
-+}
-</code></pre>
++}</code></pre>
 	<p>Now let's look at the past few changes:</p>
-	<pre><code>$ git log -p -3
+	<pre class="language-bash"><code class="language-bash">$ git log -p -3
 
 ... 
 // page rule config from above
@@ -688,13 +668,12 @@ index 9f25a0c..b92cb6f 100644
 +  value   = "198.51.100.15"
 +  type    = "A"
 +  proxied = true
-+}
-</code></pre>
-	<h4 id="3redeployingthepreviousconfiguration">3. Redeploying the previous configuration</h4>
++}</code></pre>
+	<h4>3. Redeploying the previous configuration</h4>
 	<p>Imagine that shortly after we <a href="https://blog.cloudflare.com/#usingpagerules">deployed the Page Rules</a>, we got a call from the Product team that manages this page: "The URL was only being used by one customer and is no longer needed, let's drop the security setting and redirect.”</p>
 	<p>While you could always edit the config file directly and delete those entries, it's easier to let git do it for us. To begin with, let's ask git to revert the last commit (without rewriting history).</p>
-	<h5 id="irevertthebranchtothepreviouscommit">i. Revert the branch to the previous commit</h5>
-	<pre><code>$ git revert HEAD~1..HEAD
+	<h5>i. Revert the branch to the previous commit</h5>
+	<pre class="language-bash"><code class="language-bash">$ git revert HEAD~1..HEAD
 [master f9a6f7d] Revert "Step 6 - Bug fix."
  1 file changed, 1 insertion(+), 1 deletion(-)
 
@@ -711,11 +690,10 @@ commit d4fec164581bec44684a4d59bb80aec1f1da5a6e
 Author: Me
 Date:   Wed Apr 18 22:04:52 2018 -0700
 
-    Step 6 - Add two Page Rules.
-</code></pre>
-	<h5 id="iipreviewthechanges">ii. Preview the changes</h5>
+    Step 6 - Add two Page Rules.</code></pre>
+	<h5>ii. Preview the changes</h5>
 	<p>As expected, Terraform is indicating it will remove the two Page Rules we just created.</p>
-	<pre><code>$ terraform plan
+	<pre class="language-bash"><code class="language-bash">$ terraform plan
 ...
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
@@ -728,27 +706,25 @@ Terraform will perform the following actions:
   - cloudflare_page_rule.redirect-to-new-db-page
 
 
-Plan: 0 to add, 0 to change, 2 to destroy.
-</code></pre>
-	<h5 id="ivapplythechanges">iv. Apply the changes</h5>
+Plan: 0 to add, 0 to change, 2 to destroy.</code></pre>
+	<h5>iv. Apply the changes</h5>
 	<p>The changes look good, so let's ask Terraform to roll our Cloudflare configuration back.</p>
-	<pre><code>$ terraform apply --auto-approve
+	<pre class="language-bash"><code class="language-bash">$ terraform apply --auto-approve
 ...
 cloudflare_page_rule.redirect-to-new-db-page: Destroying... (ID: c5c40ff2dc12416b5fe4d0541980c591)
 cloudflare_page_rule.increase-security-on-expensive-page: Destroying... (ID: 1c13fdb84710c4cc8b11daf7ffcca449)
 cloudflare_page_rule.increase-security-on-expensive-page: Destruction complete after 0s
 cloudflare_page_rule.redirect-to-new-db-page: Destruction complete after 1s
 
-Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
-</code></pre>
+Apply complete! Resources: 0 added, 0 changed, 2 destroyed.</code></pre>
 	<p>Two resources destroyed, as expected. We've rolled back to the previous version.</p>
-	<h3 id="importingexistingstateandconfiguration">Importing existing state and configuration</h3>
+	<h3>Importing existing state and configuration</h3>
 	<p>An important point to understand about Terraform is that it is only able to manage configuration that it created, or was explicitly told about after the fact. The reason for this limitation is that Terraform relies on a local <a href="https://www.terraform.io/docs/state">state file</a> that maps the resource names defined in your configuration file, e.g., <code>cloudflare_load_balancer.www-lb</code> to the IDs generated by Cloudflare's API.</p>
 	<p>When Terraform makes calls to Cloudflare's API to create new resources , it persists those IDs to a state file; by default, the <code>terraform.tfstate</code> file in your directory is used, but this can be a remote location as will be discussed in a future blog post. These IDs are later looked up and refreshed when you call <code>terraform plan</code> and <code>terraform apply</code>.</p>
 	<p>If you've configured Cloudflare through other means, e.g., by logging into the Cloudflare Dashboard or making <code>curl</code> calls to <code>api.cloudflare.com</code>, Terraform does not (yet) have these resource IDs in the state file. To manage this preexisting configuration you will need to first i) reproduce the configuration in your config file and; ii) import resources one-by-one by providing their IDs and resource names.</p>
-	<h4 id="1reviewingyourcurrentstatefile">1. Reviewing your current state file</h4>
+	<h4>1. Reviewing your current state file</h4>
 	<p>Before importing resources created by other means, let's take a look at how an existing DNS records is represented in the state file.</p>
-	<pre><code>$ cat terraform.tfstate | jq '.modules[].resources["cloudflare_record.www"]'
+	<pre class="language-bash"><code class="language-bash">$ cat terraform.tfstate | jq '.modules[].resources["cloudflare_record.www"]'
 {
   "type": "cloudflare_record",
   "depends_on": [],
@@ -780,20 +756,22 @@ Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
   },
   "deposed": [],
   "provider": "provider.cloudflare"
-}
-</code></pre>
+}</code></pre>
 	<p>As shown in the above JSON, the <code>cloudflare_record</code> resource named "www" has a unique ID of <code>c38d3103767284e7cd14d5dad3ab8669</code>. This ID is what gets interpolated into the API call that Terraform makes to Cloudflare to pull the latest configuration during the plan stage, e.g.,</p>
-	<pre><code>GET https://api.cloudflare.com/client/v4/zones/:zone_id/dns_records/c38d3103767284e7cd14d5dad3ab8669
-</code></pre>
-	<h4 id="2importingexistingcloudflareresources">2. Importing existing Cloudflare resources</h4>
+	<pre class="language-bash"><code class="language-bash">GET https://api.cloudflare.com/client/v4/zones/:zone_id/dns_records/c38d3103767284e7cd14d5dad3ab8669</code></pre>
+	<h4>2. Importing existing Cloudflare resources</h4>
 	<p>To import an existing record, e.g., another DNS record, you need two things:</p>
 	<ol>
-		<li>The unique identifier that Cloudflare uses to identify the record</li>
-		<li>The resource name to which you wish to map this identifier</li>
+		<li>
+			<p>The unique identifier that Cloudflare uses to identify the record</p>
+		</li>
+		<li>
+			<p>The resource name to which you wish to map this identifier</p>
+		</li>
 	</ol>
-	<h5 id="idownloadidsandconfigurationfromapicloudflarecom">i. Download IDs and configuration from api.cloudflare.com</h5>
+	<h5>i. Download IDs and configuration from api.cloudflare.com</h5>
 	<p>We start by making an API call to Cloudflare to enumerate the DNS records in our account. The output below has been filtered to show only MX records, as these are what we'll be importing.</p>
-	<pre><code>$ curl https://api.cloudflare.com/client/v4/zones/$EXAMPLE_COM_ZONEID \
+	<pre class="language-bash"><code class="language-bash">$ curl https://api.cloudflare.com/client/v4/zones/$EXAMPLE_COM_ZONEID \
        -H "X-Auth-Email: you@example.com" -H "X-Auth-Key: $CF_API_KEY" \
        -H "Content-Type: application/json" | jq .
 
@@ -897,48 +875,29 @@ Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
 
     ...
   ]
-}
-</code></pre>
-	<h5 id="iicreateterraformconfigurationforexistingrecords">ii. Create Terraform configuration for existing records</h5>
+}</code></pre>
+	<h5>ii. Create Terraform configuration for existing records</h5>
 	<p>In the previous step, we found 5 MX records that we wish to add.</p>
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Priority</th>
-				<th>Content</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>a96d72b3c6afe3077f9e9c677fb0a556</td>
-				<td>10</td>
-				<td>aspmx.lo.google.com</td>
-			</tr>
-			<tr>
-				<td>8ea8c36c8530ee01068c65c0ddc4379b</td>
-				<td>15</td>
-				<td>alt1.aspmx.l.google.com</td>
-			</tr>
-			<tr>
-				<td>ad0e9ff2479b13c5fbde77a02ea6fa2c</td>
-				<td>15</td>
-				<td>alt2.aspmx.l.google.com</td>
-			</tr>
-			<tr>
-				<td>ad6ee69519cd02a0155a56b6d64c278a</td>
-				<td>20</td>
-				<td>alt3.aspmx.l.google.com</td>
-			</tr>
-			<tr>
-				<td>baf6655f33738b7fd902630858878206</td>
-				<td>20</td>
-				<td>alt4.aspmx.l.google.com</td>
-			</tr>
-		</tbody>
-	</table>
+	<p>ID</p>
+	<p>Priority</p>
+	<p>Content</p>
+	<p>a96d72b3c6afe3077f9e9c677fb0a556</p>
+	<p>10</p>
+	<p>aspmx.lo.google.com</p>
+	<p>8ea8c36c8530ee01068c65c0ddc4379b</p>
+	<p>15</p>
+	<p>alt1.aspmx.l.google.com</p>
+	<p>ad0e9ff2479b13c5fbde77a02ea6fa2c</p>
+	<p>15</p>
+	<p>alt2.aspmx.l.google.com</p>
+	<p>ad6ee69519cd02a0155a56b6d64c278a</p>
+	<p>20</p>
+	<p>alt3.aspmx.l.google.com</p>
+	<p>baf6655f33738b7fd902630858878206</p>
+	<p>20</p>
+	<p>alt4.aspmx.l.google.com</p>
 	<p>Before importing, we need to create Terraform configuration and give each record a unique name that can be referenced during the import.</p>
-	<pre><code>$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
+	<pre class="language-bash"><code class="language-bash">$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
 resource "cloudflare_record" "mx-10" {
   domain  = "${var.domain}"
   name    = "${var.domain}"
@@ -974,15 +933,13 @@ resource "cloudflare_record" "mx-20-2" {
   type    = "MX"
   priority = "20"
 }
-EOF
-</code></pre>
-	<h5 id="iiiimportresourcesintoterraformstate">iii. Import resources into Terraform state</h5>
+EOF</code></pre>
+	<h5>iii. Import resources into Terraform state</h5>
 	<p>Before we import the records, let's look at what would happen if we ran a <code>terraform apply</code>.</p>
-	<pre><code>$ terraform plan | grep Plan
-Plan: 5 to add, 0 to change, 0 to destroy.
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep Plan
+Plan: 5 to add, 0 to change, 0 to destroy.</code></pre>
 	<p>Terraform does not know that these records already exist on Cloudflare, so until the import completes it will attempt to create them as new records. Below we import them one-by-one, specifying the name of the resource and the <code>zoneName/resourceID</code> returned by api.cloudflare.com.</p>
-	<pre><code>$ terraform import cloudflare_record.mx-10 example.com/a96d72b3c6afe3077f9e9c677fb0a556
+	<pre class="language-bash"><code class="language-bash">$ terraform import cloudflare_record.mx-10 example.com/a96d72b3c6afe3077f9e9c677fb0a556
 cloudflare_record.mx-10: Importing from ID "example.com/a96d72b3c6afe3077f9e9c677fb0a556"...
 cloudflare_record.mx-10: Import complete!
   Imported cloudflare_record (ID: a96d72b3c6afe3077f9e9c677fb0a556)
@@ -1035,14 +992,11 @@ cloudflare_record.mx-20-2: Refreshing state... (ID: baf6655f33738b7fd90263085887
 Import successful!
 
 The resources that were imported are shown above. These resources are now in
-your Terraform state and will henceforth be managed by Terraform.
-</code></pre>
+your Terraform state and will henceforth be managed by Terraform.</code></pre>
 	<p>Now when we run <code>terraform plan</code> it no longer wants to (re-)create the above records.</p>
-	<pre><code>$ terraform plan | grep changes
-No changes. Infrastructure is up-to-date.
-</code></pre>
-	<h3 id="wrappingup">Wrapping up</h3>
+	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep changes
+No changes. Infrastructure is up-to-date.</code></pre>
+	<h3>Wrapping up</h3>
 	<p>That's it for today! We covered the <a href="https://blog.cloudflare.com/#addingloadbalancing">Load Balancing</a> and <a href="https://blog.cloudflare.com/#usingpagerules">Page Rules</a> resources, as well as demonstrated how to <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">review and roll back configuration changes</a>, and <a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration">import state</a>.</p>
 	<p>Stay tuned for future Terraform blog posts, where we plan to show how to manage state effectively in a group setting, go multi-cloud with Terraform, and much more.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,23 +1,35 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Cloudflare-Access-for-single-page-apps--Access-Multi-Hostname---Wildcard-support.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TwuwnkpVu7YEECjieNAhc/48793cae41fb587c229dd0092e69e9e0/Cloudflare-Access-for-single-page-apps--Access-Multi-Hostname---Wildcard-support.png" alt="" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>We are thrilled to announce the full support of wildcard and multi-domain application definitions in Cloudflare Access. Until now, Access had limitations that restricted it to a single hostname or a limited set of wildcards. Before diving into these new features let’s review Cloudflare Access and its previous limitations around application definition.</p>
-	<h3 id="access-and-hostnames">Access and hostnames</h3>
-	<p>Cloudflare Access is the gateway to applications, enforcing security policies based on identity, location, network, and device health. Previously, Access applications were defined as a single hostname. A hostname is a unique identifier assigned to a device connected to the internet, commonly used to identify a website, application, or server. For instance, "www.example.com" is a hostname.</p>
+	<h3>Access and hostnames</h3>
+	<p>Cloudflare Access is the gateway to applications, enforcing security policies based on identity, location, network, and device health. Previously, Access applications were defined as a single hostname. A hostname is a unique identifier assigned to a device connected to the internet, commonly used to identify a website, application, or server. For instance, "<a href="http://www.example.com">www.example.com</a>" is a hostname.</p>
 	<p>Upon successful completion of the security checks, a user is granted access to the protected hostname via a cookie in their browser, in the form of a JSON Web Token (JWT). This cookie's session lasts for a specific period of time defined by the administrators and any request made to the hostname must have this cookie present.</p>
 	<p>However, a single hostname application definition was not sufficient in certain situations, particularly for organizations with Single Page Applications and/or hundreds of identical hostnames.</p>
 	<p>Many Single Page Applications have two separate hostnames - one for the front-end user experience and the other for receiving API requests (e.g., app.example.com and api.example.com). This created a problem for Access customers because the front-end service could no longer communicate with the API as they did not share a session, leading to Access blocking the requests. Developers had to use different custom approaches to issue or share the Access JWT between different hostnames.</p>
 	<p>In many instances, organizations also deploy applications using a consistent naming convention, such as example.service123.example.com, especially for automatically provisioned applications. These applications often have the same set of security requirements. Previously, an Access administrator had to create a unique Access application per unique hostname, even if the services were functionally identical. This resulted in hundreds or thousands of Access applications needing to be created.</p>
 	<p>We aimed to make things easier for security teams as easier configuration means a more coherent security architecture and ultimately more secure applications.</p>
 	<p>We introduced two significant changes to Cloudflare Access: Multi-Domain Applications and Wildcard Support.</p>
-	<h3 id="multi-domain-applications">Multi-Domain Applications</h3>
+	<h3>Multi-Domain Applications</h3>
 	<p>Multi-Domain Applications allow teams to protect multiple subdomains with a single Access app, simplifying the process and reducing the need for multiple apps.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6--3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6e3DHuPdTji4uYmhCKwE3k/9ac641f91454878acc4f1a302b6ae71d/pasted-image-0--6--3.png" alt="" class="kg-image" width="948" height="480" loading="lazy">
+
+	</figure>
 	<p>Access also takes care of JWT cookie issuance across all hostnames associated with a given application. This means that a front-end and API service on two different hostnames can communicate securely without any additional software changes.</p>
-	<h3 id="wildcards">Wildcards</h3>
+	<h3>Wildcards</h3>
 	<p>A wildcard is a special character, in this case *, defines a specific application pattern to match instead of explicitly having to define each unique application. Access applications can now be defined using a wildcard anywhere in the subdomain or path of a hostname. This allows an administrator to protect hundreds of applications with a single application policy.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NbX11Gxhcn1BXW78KS8c5/ac60988e453d307a74f9221c86ee6449/pasted-image-0--7--5.png" alt="" class="kg-image" width="1067" height="495" loading="lazy">
+
+	</figure>
 	<p>In a scenario where an application requires additional security controls, Access is configured such that the most specific hostname definition wins (e.g., test.example.com will take precedence over *.example.com).</p>
-	<h3 id="give-it-a-try-">Give it a try!</h3>
+	<h3>Give it a try!</h3>
 	<p>Wildcard Applications are now available in open beta on the Cloudflare One Dashboard. Multi Domain support will enter an open beta in the coming weeks. For more information, please see our product documentation about Multi-domain applications and wildcards.</p>
 </div>

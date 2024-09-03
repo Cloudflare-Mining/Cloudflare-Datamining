@@ -1,16 +1,23 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/post-quantum-cryptography-ga-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/post-quantum-cryptography-ga-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/post-quantum-cryptography-ga-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/post-quantum-cryptography-ga-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/post-quantum-cryptography-ga-es-es">Español</a>, <a href="https://blog.cloudflare.com/zh-tw/post-quantum-cryptography-ga-zh-tw">繁體中文</a> and <a href="https://blog.cloudflare.com/ko-kr/post-quantum-cryptography-ga-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-28.png" class="kg-image" alt="" loading="lazy" width="1800" height="1013"></figure>
-	<p>Over the last twelve months, we have been talking about the new baseline of encryption on the Internet: post-quantum cryptography. During Birthday Week last year we announced that our <a href="https://blog.cloudflare.com/post-quantum-for-all">beta of Kyber was available for testing,</a> and that <a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a> could be enabled with post-quantum cryptography. Earlier this year, we made our stance clear that this foundational technology should be available to <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">everyone for free, forever</a>.</p><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/post-quantum-cryptography-ga">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/post-quantum-cryptography-ga">Français</a>, <a href="https://blog.cloudflare.com/de-de/post-quantum-cryptography-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/post-quantum-cryptography-ga">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/post-quantum-cryptography-ga">한국어</a>, <a href="https://blog.cloudflare.com/es-es/post-quantum-cryptography-ga">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/post-quantum-cryptography-ga">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CftKQnuBYwGI69XmAFsVq/fd70b83df2ab9b7ecf111ae27cd82e8d/image2-28.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>Over the last twelve months, we have been talking about the new baseline of encryption on the Internet: post-quantum cryptography. During Birthday Week last year we announced that our <a href="https://blog.cloudflare.com/post-quantum-for-all">beta of Kyber was available for testing,</a> and that <a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a> could be enabled with post-quantum cryptography. Earlier this year, we made our stance clear that this foundational technology should be available to <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">everyone for free, forever</a>.</p>
 	<p>Today, we have hit a milestone after six years and <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 blog posts</a> in the making: we’re starting to roll out <a href="https://blog.cloudflare.com/post-quantum-to-origins">General Availability</a><sup>1</sup> of post-quantum cryptography support to our customers, services, and internal systems as described more fully below. This includes products like <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> for origin connectivity, 1.1.1.1, <a href="https://www.cloudflare.com/developer-platform/r2">R2</a>, Argo Smart Routing, Snippets, and so many more.</p>
-	<!--kg-card-end: markdown-->
 	<p>This is a milestone for the Internet. We don't yet know when quantum computers will have enough scale to break today's cryptography, but the benefits of upgrading to post-quantum cryptography now are clear. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">Fast connections and future-proofed</a> security are all possible today because of the advances made by Cloudflare, Google, Mozilla, the National Institutes of Standards and Technology in the United States, the Internet Engineering Task Force, and numerous academic institutions</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-40.png" class="kg-image" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" width="1999" height="522"></figure>
-	<p>What does General Availability mean? In October 2022 <a href="https://blog.cloudflare.com/post-quantum-for-all">we enabled <em>X25519+Kyber</em> as a beta for all websites and APIs</a> served through Cloudflare. However, it takes two to tango: the connection is only secured if the browser also supports post-quantum cryptography. Starting August 2023, <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html">Chrome</a> is slowly enabling <em>X25519+Kyber</em> by default.</p>
-	<p>The user’s request is routed through Cloudflare’s network (2). We have upgraded many of these internal connections to use post-quantum cryptography, and expect to be done upgrading all of our internal connections by the end of 2024. That leaves as the final link the connection (3) between us and the <em>origin server</em>.</p>
-	<p>We are happy to announce that <strong>we are rolling out support for X25519+Kyber for most inbound and outbound connections</strong> <strong>as Generally Available </strong>for use including <em>origin servers</em> and <a href="https://workers.cloudflare.com">Cloudflare Workers</a> <code>fetch()</code>es.</p><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oRJ1q0ib6rCSfgBJPJyuU/d0848344b0160726369c08546d54c78a/image1-40.png" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " class="kg-image" width="1999" height="522" loading="lazy">
+
+	</figure>
+	<p>What does General Availability mean? In October 2022 <a href="https://blog.cloudflare.com/post-quantum-for-all">we enabled <i>X25519+Kyber</i> as a beta for all websites and APIs</a> served through Cloudflare. However, it takes two to tango: the connection is only secured if the browser also supports post-quantum cryptography. Starting August 2023, <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html">Chrome</a> is slowly enabling <i>X25519+Kyber</i> by default.</p>
+	<p>The user’s request is routed through Cloudflare’s network (2). We have upgraded many of these internal connections to use post-quantum cryptography, and expect to be done upgrading all of our internal connections by the end of 2024. That leaves as the final link the connection (3) between us and the <i>origin server</i>.</p>
+	<p>We are happy to announce that <b>we are rolling out support for X25519+Kyber for most inbound and outbound connections</b> <b>as Generally Available</b> for use including <i>origin servers</i> and <a href="https://workers.cloudflare.com">Cloudflare Workers</a> <code>fetch()</code>es.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -80,7 +87,7 @@
 	</table><!--kg-card-end: html-->
 	<p>For our Enterprise customers, we will be sending out additional information regularly over the course of the next six months to help prepare you for the roll-out. Pro, Business, and Enterprise customers can skip the roll-out and opt-in within your zone today, or opt-out ahead of time using an API described in our companion blog post on <a href="https://blog.cloudflare.com/post-quantum-to-origins">post-quantum cryptography</a>. Before rolling out for Enterprise in February 2024, we will add a toggle on the dashboard to opt out.</p>
 	<p>If you're excited to get started now, <a href="https://blog.cloudflare.com/post-quantum-to-origins">check out our blog with the technical details and flip on post-quantum cryptography support via the API</a>!</p>
-	<h3 id="what%E2%80%99s-included-and-what-is-next">What’s included and what is next?</h3>
+	<h3>What’s included and what is next?</h3>
 	<p>With an upgrade of this magnitude, we wanted to focus on our most used products first and then expand outward to cover our edge cases. This process has led us to include the following products and systems in this roll out:</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
@@ -222,13 +229,12 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="why-now">Why now?</h3>
+	<h3>Why now?</h3>
 	<p>As we announced earlier this year, post-quantum cryptography will be included for free in all Cloudflare products and services that can support it. The best encryption technology should be accessible to everyone - free of charge - to help support privacy and human rights globally.</p>
 	<p>As we <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">mentioned</a> in March:</p>
-	<p><em>“What was once an experimental frontier has turned into the underlying fabric of modern society. It runs in our most critical infrastructure like power systems, hospitals, airports, and banks. We trust it with our most precious memories. We trust it with our secrets. That’s why the Internet needs to be private by default. It needs to be secure by default.”</em></p>
+	<p><i>“What was once an experimental frontier has turned into the underlying fabric of modern society. It runs in our most critical infrastructure like power systems, hospitals, airports, and banks. We trust it with our most precious memories. We trust it with our secrets. That’s why the Internet needs to be private by default. It needs to be secure by default.”</i></p>
 	<p>Our work on post-quantum cryptography is driven by the thesis that quantum computers that can break conventional cryptography create a similar problem to the Year 2000 bug. We know there is going to be a problem in the future that could have catastrophic consequences for users, businesses, and even nation states. The difference this time is we don’t know how the date and time that this break in the computational paradigm will occur. Worse, any traffic captured today could be decrypted in the future. We need to prepare today to be ready for this threat.</p>
 	<p>We are excited for everyone to adopt post-quantum cryptography into their systems. To follow the latest developments of our deployment of post-quantum cryptography and third-party client/server support, check out <a href="https://pq.cloudflareresearch.com">pq.cloudflareresearch.com</a> and keep an eye on this blog.</p>
-	<p>***</p><!--kg-card-begin: markdown-->
+	<p>***</p>
 	<p><sup>1</sup>We are using a <a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00">preliminary version</a> of Kyber, NIST’s pick for post-quantum key agreement. Kyber has not been finalized. We expect a final standard to be published in 2024 under the name ML-KEM, which we will then adopt promptly while deprecating support for X25519Kyber768Draft00.</p>
-	<!--kg-card-end: markdown-->
 </div>

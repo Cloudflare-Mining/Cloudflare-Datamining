@@ -1,59 +1,48 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Go's "object-orientation" approach is through <a href="https://golang.org/doc/effective_go.html#interfaces">interfaces</a>. Interfaces provide a way of specifying the behavior expected of an object, but rather than saying what an object itself can do, they specify what's expected of an object. If any object meets the interface specification it can be used anywhere that interface is expected.</p>
 	<p>I was working on a new, small piece of software that does <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression">image compression</a> for CloudFlare and found a nice use for interfaces when stubbing out a complex piece of code in the unit test suite. Central to this code is a collection of goroutines that run jobs. Jobs are provided from a priority queue and performed in priority order.</p>
 	<p>The jobs ask for images to be compressed in myriad ways and the actual package that does the work contained complex code for compressing JPEGs, GIFs and PNGs. It had its own unit tests that checked that the compression worked as expected.</p>
 	<p>But I wanted a way to test the part of the code that runs the jobs (and, itself, doesn't actually know what the jobs do). Because I only want to test if the jobs got run correctly (and not the compression) I don't want to have to create (and configure) the complex job type that gets used when the code really runs.</p>
 	<p>What I wanted was a <code>DummyJob</code>.</p>
 	<p>The <code>Worker</code> package actually runs jobs in a goroutine like this:</p>
-	<pre>func (w *Worker) do(id int, ready chan int) {
-    for {
-        ready &lt;- id
-
-        j, ok := &lt;-w.In
-        if !ok {
-            return
-        }
-
-        if err := j.Do(); err != nil {
-            logger.Printf("Error performing job %v: %s", j, err)
-        }
+	<p>func (w *Worker) do(id int, ready chan int) {
+		for {
+		ready &lt;- id</p>
+	<pre class="language-bash"><code class="language-bash">    j, ok := &lt;-w.In
+    if !ok {
+        return
     }
-}
-</pre>
+
+    if err := j.Do(); err != nil {
+        logger.Printf("Error performing job %v: %s", j, err)
+    }
+}</code></pre>
+	<p>}</p>
 	<p><code>do</code> gets started as a goroutine passed a unique ID (the <code>id</code> parameter) and a channel called <code>ready</code>. Whenever <code>do</code> is able to perform work it sends a message containing its <code>id</code> down <code>ready</code> and then waits for a job on the worker <code>w.In</code> channel. Many such workers run concurrently and a separate goroutine pulls the IDs of workers that are ready for work from the <code>ready</code> channel and sends them work.</p>
 	<p>If you look at <code>do</code> above you'll see that the job (stored in <code>j</code>) is only required to offer a single method:</p>
-	<pre>func (j *CompressionJob) Do() error
-</pre>
+	<p>func (j *CompressionJob) Do() error</p>
 	<p>The worker's <code>do</code> just calls the job's <code>Do</code> function and checks for an error return. But the code originally had <code>w.In</code> defined like this:</p>
-	<pre>w := &amp;Worker{In: make(chan *job.CompressionJob)}
-</pre>
+	<p>w := &amp;Worker{In: make(chan *job.CompressionJob)}</p>
 	<p>which would have required that the test suite for <code>Worker</code> know how to create a <code>CompressionJob</code> and make it runnable. Instead I defined a new interface like this:</p>
-	<pre>type Job interface {
-    Priority() int
-    Do() error
-}
-</pre>
+	<p>type Job interface {
+		Priority() int
+		Do() error
+		}</p>
 	<p>The <code>Priority</code> method is used by the queueing mechanism to figure out the order in which jobs should be run. Then all I needed to do was change the creation of the <code>Worker</code> to</p>
-	<pre>w := &amp;Worker{In: make(chan job.Job)}
-</pre>
-	<p>The <code>w.In</code> channel is no longer a channel of <code>CompressionJob</code>s, but of <em>interfaces</em> of type <code>Job</code>. This shows a really powerful aspect of Go: anything that meets the <code>Job</code> interface can be sent down that channel and only a tiny amount of code had to be changed to use an interface instead of the more 'concrete' type <code>CompressionJob</code>.</p>
+	<p>w := &amp;Worker{In: make(chan job.Job)}</p>
+	<p>The <code>w.In</code> channel is no longer a channel of <code>CompressionJob</code>s, but of <i>interfaces</i> of type <code>Job</code>. This shows a really powerful aspect of Go: anything that meets the <code>Job</code> interface can be sent down that channel and only a tiny amount of code had to be changed to use an interface instead of the more 'concrete' type <code>CompressionJob</code>.</p>
 	<p>Then in the unit test suite for <code>Worker</code> I was able to create a <code>DummyJob</code> like this:</p>
-	<pre>var Done bool
-
-type DummyJob struct {
-}
-
-func (j DummyJob) Priority() int {
-    return 1
-}
-
-func (j DummyJob) Do() error {
-   Done = true
-   return nil
-}
-</pre>
+	<p>var Done bool</p>
+	<p>type DummyJob struct {
+		}</p>
+	<p>func (j DummyJob) Priority() int {
+		return 1
+		}</p>
+	<p>func (j DummyJob) Do() error {
+		Done = true
+		return nil
+		}</p>
 	<p>It sets a <code>Done</code> flag when the <code>Worker</code>'s <code>do</code> function actually runs the <code>DummyJob</code>. Since <code>DummyJob</code> meets the <code>Job</code> interface it can be sent down the <code>w.In</code> channel to a <code>Worker</code> for processing.</p>
-	<p></p>
-	<p>Creating that <code>Job</code> interface totally isolated the interface that the <code>Worker</code> needs to be able to run jobs and hides any of the other details greatly simplifying the unit test suite. Most interesting of all, no changes <em>at all</em> were needed to <code>CompressionJob</code> to achieve this.<!--kg-card-end: markdown--></p>
+	<p>Creating that <code>Job</code> interface totally isolated the interface that the <code>Worker</code> needs to be able to run jobs and hides any of the other details greatly simplifying the unit test suite. Most interesting of all, no changes <i>at all</i> were needed to <code>CompressionJob</code> to achieve this.</p>
 </div>

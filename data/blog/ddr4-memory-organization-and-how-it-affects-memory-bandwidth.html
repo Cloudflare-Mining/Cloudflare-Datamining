@@ -1,53 +1,66 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/DDR4-memory-organization-and-how-it-affects-memory-bandwidth.png" class="kg-image" alt="DDR4 memory organization and how it affects memory bandwidth" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MMvICc6vMA9k4kZMtZiT8/bc7e165409c14fc40b8202c4629c7752/DDR4-memory-organization-and-how-it-affects-memory-bandwidth.png" alt="DDR4 memory organization and how it affects memory bandwidth" class="kg-image" width="1801" height="1008" loading="lazy">
+
+	</figure>
 	<p>When shopping for DDR4 memory modules, we typically look at the memory density and memory speed. For example a 32GB DDR4-2666 memory module has 32GB of memory density, and the data rate transfer speed is 2666 mega transfers per second (MT/s).</p>
 	<p>If we take a closer look at the selection of DDR4 memories, we will then notice that there are several other parameters to choose from. One of them is rank x organization, for example 1Rx8, 2Rx4, 2Rx8 and so on. What are these and does memory module rank and organization have an effect on DDR4 module performance?</p>
 	<p>In this blog, we will study the concepts of memory rank and organization, and how memory rank and organization affect the memory bandwidth performance by reviewing some benchmarking test results.</p>
-	<h2 id="memory-rank">Memory rank</h2>
+	<h2>Memory rank</h2>
 	<p>Memory rank is a term that is used to describe how many sets of DRAM chips, or devices, exist on a memory module. A set of DDR4 DRAM chips is always 64-bit wide, or 72-bit wide if ECC is supported. Within a memory rank, all chips share the address, command and control signals.</p>
 	<p>The concept of memory rank is very similar to memory bank. Memory rank is a term used to describe memory modules, which are small printed circuit boards with memory chips and other electronic components on them; and memory bank is a term used to describe memory integrated circuit chips, which are the building blocks of the memory modules.</p>
 	<p>A single-rank (1R) memory module contains one set of DRAM chips. Each set of DRAM chips is 64-bits wide, or 72-bits wide if Error Correction Code (ECC) is supported.</p>
 	<p>A dual-rank (2R) memory module is similar to having two single-rank memory modules. It contains two sets of DRAM chips, therefore doubling the capacity of a single-rank module. The two ranks are selected one at a time through a chip select signal, therefore only one rank is accessible at a time.</p>
 	<p>Likewise, a quad-rank (4R) memory module contains four sets of DRAM chips. It is similar to having two dual-rank memories on one module, and it provides the greatest capacity. There are two chip select signals needed to access one of the four ranks. Again, only one rank is accessible at a time.</p>
 	<p>Figure 1 is a simplified view of the DQ signal flow on a dual-rank memory module. There are two identical sets of memory chips: set 1 and set 2. The 64-bit data I/O signals of each memory set are connected to a data I/O module. A single bit chip select (CS_n) signal controls which set of memory chips is accessed and the data I/O signals of the selected set will be connected to the DQ pins of the memory module.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/image4-5.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 1: DQ signal path on a dual rank memory module</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q9XI3SWMopg2BQ2DC0RhR/20a22a17e582d738eef50d39aeef6e9a/image4-5.png" alt="" class="kg-image" width="1632" height="710" loading="lazy">
+
 	</figure>
+	<p>Figure 1: DQ signal path on a dual rank memory module</p>
 	<p>Dual-rank and quad-rank memory modules double or quadruple the memory capacity on a module, within the existing memory technology. Even though only one rank can be accessed at a time, the other ranks are not sitting idle. Multi-rank memory modules use a process called rank interleaving, where the ranks that are not accessed go through their refresh cycles in parallel. This pipelined process reduces memory response time, as soon as the previous rank completes data transmission, the next rank can start its transmission.</p>
 	<p>On the other hand, there is some I/O latency penalty with multi-rank memory modules, since memory controllers need additional clock cycles to move from one rank to another. The overall <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency performance</a> difference between single rank and multi-rank memories depend heavily on the type of application.</p>
 	<p>In addition, because there are less memory chips on each module, single-rank modules produce less heat and are less likely to fail.</p>
-	<h2 id="memory-depth-and-width">Memory depth and width</h2>
+	<h2>Memory depth and width</h2>
 	<p>The capacity of each memory chip, or device, is defined as memory depth x memory width. Memory width refers to the width of the data bus, i.e. the number of DQ lines of each memory chip.</p>
 	<p>The width of memory chips are standard, they are either x4, x8 or x16. From here, we can calculate how many memory chips are in a 64-bit wide single rank memory. For example, with x4 memory chips, we will need 16 pieces (64 ÷ 4 = 16); and with x8 memory chips, we will only need 8 of them.</p>
 	<p>Let's look at the following two high-level block diagrams of 1Gbx8 and 2Gbx4 memory chips. The total memory capacity for both of them is 8Gb. Figure 2 describes the 1Gb x8 configuration, and Figure 3 describes the 2Gbx4 configuration. With DDR4, both x4 and x8 devices have 4 groups of 4 banks. x16 devices have 2 groups of 4 banks.</p>
 	<p>We can think of each memory chip as a library. Within that library, there are four bank groups, which are the four floors of the library. On each floor, there are four shelves, each shelf is similar to one of the banks. And we can locate each one of the memory cells by its row and column addresses, just like the library book call numbers. Within each bank, the row address MUX activates a line in the memory array through the Row address latch and decoder, based on the given row address. This line is also called the word line. When a word line is activated, the data on the word line is loaded on to the sense amplifiers. Subsequently, the column decoder accesses the data on the sense amplifier based on the given column address.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 2: 1Gbx8 block diagram</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69bOFcBszD2lzFKP6PuKmv/6e6814664a176ec4762f53dac8e12b54/pasted-image-0-3.png" alt="" class="kg-image" width="966" height="580" loading="lazy">
+
 	</figure>
+	<p>Figure 2: 1Gbx8 block diagram</p>
 	<p>The capacity, or density of a memory chip is calculated as:</p>
-	<p><strong>Memory Depth</strong> = Number of Rows * Number of Columns * Number of Banks</p>
-	<p><strong>Total Memory Capacity</strong> = Memory Depth * Memory Width</p>
+	<p><b>Memory Depth</b> = Number of Rows * Number of Columns * Number of Banks</p>
+	<p><b>Total Memory Capacity</b> = Memory Depth * Memory Width</p>
 	<p>In the example of a 1Gbx8 device as shown in Figure 2 above:</p>
 	<p>Number of Row Address Bits = 16</p>
 	<p>Total Number of Rows = 2 ^ 16 = 65536</p>
 	<p>Number of Column Address Bits = 10</p>
 	<p>Total Number of Columns = 2 ^ 10 = 1024</p>
 	<p>And the calculation goes:</p>
-	<p><strong>Memory Depth</strong> = 65536 Rows * 1024 Columns * 16 Banks = 1Gb</p>
-	<p><strong>Total Memory Capacity</strong> = 1Gb * 8 = 8Gb</p>
+	<p><b>Memory Depth</b> = 65536 Rows * 1024 Columns * 16 Banks = 1Gb</p>
+	<p><b>Total Memory Capacity</b> = 1Gb * 8 = 8Gb</p>
 	<p>Figure 3 describes the function block diagram of a 2 Gb x 4 device.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0--1--3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 3: 2Gbx4 Block Diagram</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JTK5yWP3Kw5O7g1gZS6p7/6c357c60e7b5046083a95b238c291b91/pasted-image-0--1--3.png" alt="" class="kg-image" width="958" height="582" loading="lazy">
+
 	</figure>
+	<p>Figure 3: 2Gbx4 Block Diagram</p>
 	<p>Number of Row Address Bits = 17</p>
 	<p>Total Number of Rows = 2 ^ 17 = 131072</p>
 	<p>Number of Column Address Bits = 10</p>
 	<p>Total Number of Columns = 2 ^ 10 = 1024</p>
 	<p>And the calculation goes:</p>
-	<p><strong>Memory Depth</strong> = 131072 * 1024 * 16 = 2Gb</p>
-	<p><strong>Total Memory Capacity</strong> = 2Gb* 4 = 8Gb</p>
-	<h2 id="memory-module-capacity">Memory module capacity</h2>
+	<p><b>Memory Depth</b> = 131072 * 1024 * 16 = 2Gb</p>
+	<p><b>Total Memory Capacity</b> = 2Gb* 4 = 8Gb</p>
+	<h2>Memory module capacity</h2>
 	<p>Memory rank and memory width determine how many memory devices are needed on each memory module.</p>
 	<p>A 64-bit DDR4 module with ECC support has a total of 72 bits for the data bus. Of the 72 bits, 8 bits are used for ECC. It would require a total of 18 x4 memory devices for a single rank module. Each memory device would supply 4 bits, and the total number of bits with 18 devices is 72 bits. &nbsp;For a dual rank module, we would need to double the amount of memory devices to 36.</p>
 	<p>If each x4 memory device has a memory capacity of 8Gb, a single rank module with 16 + 2 (ECC) devices would have 16GB module capacity.</p>
@@ -59,7 +72,7 @@
 	<p>A dual rank ECC module with 18 8Gb (1Gb x 8) devices would have 16GB module capacity.</p>
 	<p>8Gb * 16 = 128Gb = 16GB</p>
 	<p>Notice that within the same memory device technology, for example 8Gb in our example, higher memory module capacity is achieved through using x4 device width, or dual-rank, or even quad-rank.</p>
-	<h2 id="activate-timing-and-dram-page-sizes">ACTIVATE timing and DRAM page sizes</h2>
+	<h2>ACTIVATE timing and DRAM page sizes</h2>
 	<p>Memory device width, whether it is x4, x8 or x16, also has an effect on memory timing parameters such as tFAW.</p>
 	<p>tFAW refers to Four Active Window time. It specifies a timing window within which four ACTIVATE commands can be issued. An ACTIVATE command is issued to open a row within a bank. In the block diagrams above we can see that each bank has its own set of sense amplifiers, thus one row can remain active per bank. A memory controller can issue four back-to-back ACTIVATE commands, but once the fourth ACTIVATE is done, the fifth ACTIVATE cannot be issued until the tFAW window expires.</p>
 	<p>The table below lists out the tFAW window lengths assigned to various DDR4 speeds and page sizes. Notice that under the same DDR4 speed, the bigger the page size, the longer the tFAW window is. For example, DDR4-1600 has a tFAW window of 20ns with 1/2KB page size. This means that within a bank, once a command to open a first row is issued, the controller must wait for 20ns, or 16 clock cycles (CK) before a command to open a fifth row can be issued.</p>
@@ -235,12 +248,15 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Among the three device widths, x4 devices have the shortest tFAW timing limit, and x16 devices have the longest tFAW timing limit. The difference in tFAW specification has a negative timing performance impact on devices with higher device width.</p>
-	<h2 id="an-experiment-with-2rx4-and-2rx8-ddr4-modules">An experiment with 2Rx4 and 2Rx8 DDR4 modules</h2>
+	<h2>An experiment with 2Rx4 and 2Rx8 DDR4 modules</h2>
 	<p>To quantify the impact on memory performance from different memory device widths, an experiment has been conducted on our Gen11 servers with AMD EPYC 7713 Milan CPU. The Milan CPU has 64 cores, supports 8 memory channels.</p>
 	<p>Our production Gen11 servers are configured with 1 DIMM populated in each memory channel. In order to achieve 6GB/core memory per core ratio, the total memory for the Gen11 system is 64 core * 6 GB/core = 384 GB. This is achieved by installing four pieces of 32GB 2Rx8 and four pieces of 64GB 2Rx4 memory modules.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/Untitled.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 5: Gen11 server memory configuration</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xl4Gwvsl4gUdpgNafGzhW/116c6eb15e7245fd9486b0ed2a1ad879/Untitled.png" alt="" class="kg-image" width="1448" height="636" loading="lazy">
+
 	</figure>
+	<p>Figure 5: Gen11 server memory configuration</p>
 	<p>To compare the bandwidth performance difference between 2Rx4 and 2Rx8 DDR4 modules, two test cases are needed. One with all 2Rx4 DDR4 modules, and another one with 2Rx8 DDR4 modules. Each test case populates eight pieces of 32GB 32Mbps DDR4 RDIMM memories in each memory channel (1DPC). As shown in the table below, the difference between the set up of the two test cases is: case A tests 2Rx4 memory modules, and case B tests 2Rx8 memory modules.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -329,7 +345,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h2 id="memory-latency-checker-results">Memory Latency Checker results</h2>
+	<h2>Memory Latency Checker results</h2>
 	<p>Memory Latency Checker is an Intel developed synthetic benchmarking tool. It measures memory latency and bandwidth, and how they vary with workloads of different read/write ratios, as well as stream triad. Stream triad is a memory benchmark workload that contains three operations: it first multiples a large 1D array with a scalar, then adds it to a second array, and assigns it to a third array.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -429,7 +445,7 @@
 	</table><!--kg-card-end: html-->
 	<p>The bandwidth performance difference in the All reads test case is not very significant, only 0.21%.</p>
 	<p>As the amount of writes increase, from 25% (3:1 reads-writes) to 50% (1:1 reads-writes), the bandwidth performance differences between test case A and test case B increase from 1.13% to 2.93%.</p>
-	<h2 id="lmbench-results">LMBench Results</h2>
+	<h2>LMBench Results</h2>
 	<p>LMBench is another synthetic benchmarking tool often used to study bandwidth performances of memory. &nbsp;Our LMBench bw_mem tests results are comparable to the results obtained from the MLC benchmark test.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -522,11 +538,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>The biggest bandwidth performance difference is with Write workload. The 2Rx4 test case has 3.88% higher write bandwidth than the 2Rx8 test case.</p>
-	<h2 id="summary">Summary</h2>
+	<h2>Summary</h2>
 	<p>Memory organization and memory width has a slight effect on memory bandwidth performance. The difference is most obvious in write-heavy workloads than read-heavy workloads. But even in write-heavy workloads, the difference is less than 4% according to our benchmark tests.</p>
 	<p>Memory modules with x4 width require twice the number of memory devices on the memory module, as compared to memory modules with x8 width of the same capacity. More memory devices would consume more power. According to Micron's measurement data, 2Rx8 32GB memory modules using 16Gb devices consume 31% less power than 2Rx4 32GB memory modules using 8Gb devices. The substantial power saving of using x8 memory modules may outweigh the slight bandwidth performance impact.</p>
 	<p>Our Gen11 servers are configured with a mix of 2Rx4 and 2Rx8 DDR4 modules. For our future generations, we may consider using 2Rx8 memory where possible, in order to reduce overall system power consumption, with minimal impact to bandwidth performance.</p>
-	<h2 id="references">References</h2>
+	<h2>References</h2>
 	<p><a href="https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr4/8gb_ddr4_sdram.pdf">https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr4/8gb_ddr4_sdram.pdf</a></p>
 	<p><a href="https://www.systemverilog.io/ddr4-basics#:~:text=DRAM%20Page%20Size&amp;text=Since%20the%20column%20address%20is,it%20is%202KB%20per%20page">https://www.systemverilog.io/ddr4-basics#:~:text=DRAM%20Page%20Size&amp;text=Since%20the%20column%20address%20is,it%20is%202KB%20per%20page</a></p>
 </div>

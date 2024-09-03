@@ -1,31 +1,57 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xtok1cx2QaNRK8WjwEI4J/9111902af1a851d381f62ff86f4fa3cb/saturday-night-fever-layer-7-attacks-against.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Recently, I've taken a look at DDoS attacks against CloudFlare sites at the IP level and the source of those attacks. The worst time for those DDoS attacks is the <a href="https://blog.cloudflare.com/the-wednesday-witching-hour-cloudflare-dos-st">Wednesday Witching Hour</a> and because of source IP address forgery most of the attacks seem to <a href="https://blog.cloudflare.com/mars-attacks">come from Mars</a>. But layer 7 attacks, where the attacker actually connects to our hardware using TCP and makes apparently valid HTTP requests are another matter: their source is traceable because of the need to establish a TCP connection.</p>
-	<p><img alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
-sites" src="https://blog.cloudflare.com/content/images/Saturday-Night-Fever-1977-movie-props.jpeg.scaled500.jpg" title="Saturday Night Fever: Layer 7 attacks against CloudFlare sites"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dyLzuhwquzwHo4ejUFBZ7/9c3b8cc5d4b2485c6df519f4852d3801/Saturday-Night-Fever-1977-movie-props.jpeg.scaled500.jpg" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+sites" class="kg-image" width="500" height="375" loading="lazy">
+
+	</figure>
 	<p>Layer 7 attacks are in some ways the simplest attacks: an attacker performs lots of HTTP requests hoping to overwhelm the target server. To the target these requests look perfectly valid and have to be serviced. That uses up resources on the target server and either causes it to slow down or crash. CloudFlare's automatic system monitor unusual spikes in HTTP traffic and automatically deal with HTTP DoS attacks (often with a little help from our staff). At the same time the systems gather statistics about attacks.</p>
 	<p>Looking at our attack statistics we see a layer 7 DoS attack against a CloudFlare site 95.5% of the time. Those attacks come from just 0.05% of the IP addresses we see connecting to our network. There's virtually no rest for the systems (and people!) that deal with these attacks. The attacks come in the form of floods of HTTP requests made to the site that the attacker wants to knock off line. CloudFlare's systems record the IP addresses of the machines making layer 7 attacks because the address cannot be forged and are useful for filtering purposes.</p>
 	<p>Although the attacks come all the time the worst day is Saturday. The following chart shows the number of unique IP addresses use in layer 7 DoS attacks by day of the week for the period January to August 2012.</p>
-	<p><img alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
-sites" src="https://blog.cloudflare.com/content/images/7day.png.scaled500.png" title="Saturday Night Fever: Layer 7 attacks against CloudFlare sites"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4a59c9TMWALYotuaG3aia3/1ea553cde9247aa1ec3bbc2e0205a17e/7day.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+sites" class="kg-image" width="500" height="304" loading="lazy">
+
+	</figure>
 	<p>Focusing on the largest attacks shows the same trend with an uptick on Saturdays and layer 7 DoS attackers seeming to take a bit of a break on Sundays.</p>
-	<p><img alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" src="https://blog.cloudflare.com/content/images/7day-big.png.scaled500.png" title="Saturday Night Fever: Layer 7 attacks against CloudFlare sites"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mp5GeHfxTeMoEdy31J340/79e2154bac2cd71758ab3d83323199f8/7day-big.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" class="kg-image" width="500" height="312" loading="lazy">
+
+	</figure>
 	<p>Looking at the time of day shows that attacks are occurring 24 hours a day with only a slight dip in the overall number of attacks around 0700 UTC (the middle of the night in California).</p>
-	<p><img alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
-sites" src="https://blog.cloudflare.com/content/images/7hod.png.scaled500.png" title="Saturday Night Fever: Layer 7 attacks against CloudFlare sites"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/L2FZB8dgqbARJKtjkTWpq/d9848de5468e591cac0b3173ae2a270f/7hod.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+sites" class="kg-image" width="500" height="278" loading="lazy">
+
+	</figure>
 	<p>But focussing on the largest attacks reveals a pattern with which our team is familiar. The largest layer 7 attacks come during the night in California (around midnight, 0800 UTC) and then again at around 1800 UTC (just when the folks who've been up half the night fighting attacks are coming into work).</p>
-	<p><img alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
-sites" src="https://blog.cloudflare.com/content/images/7hod-big.png.scaled500.png" title="Saturday Night Fever: Layer 7 attacks against CloudFlare sites"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4C1zmGWgmKAqet0Zi42j0R/1e4f54db53262f24b12cbafe6787a939/7hod-big.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+sites" class="kg-image" width="500" height="319" loading="lazy">
+
+	</figure>
 	<p>So whether it's night in California, or in Europe, the layer 7 DoS attackers keep the team busy.</p>
 	<p>The trend across the year shows some intriguing, and dramatic, dips in layer 7 DoS activity. The dips in the chart are around the following dates: January 30, February 21 (Mardi Gras), March 20 (attackers recovering from St. Patrick's Day?), April 22 (did attackers take Earth Day off, or did people switch off their home machines making botnets smaller for a day?), May 29 (Memorial Day weekend), June 28 (just before July 4).</p>
-	<p><img alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" src="https://blog.cloudflare.com/content/images/7trend.png.scaled500.png" title="Saturday Night Fever: Layer 7 attacks against CloudFlare sites"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mZXlKgWmTr0jWJwzL8hiV/85c7534e38377f5a6cd1a124e957cdfc/7trend.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" class="kg-image" width="500" height="244" loading="lazy">
+
+	</figure>
 	<p>The overall trend month on month is up. For the first 6 months of 2012 we say a 10% increase in layer 7 DoS attacks but a 21% increase in large layer 7 attacks. Statistics for lower level DDoS attacks show a slight decline. Attackers appear to be switching to layer 7 attacks to take sites offline.</p>
 	<p>Since the source of layer 7 attacks is known it's possible to look at where attacks originate (or at least where the machines performing the attack are). Most of these machines will be zombies taking part in botnets. The top five countries that attack CloudFlare sites are: 18.34% from US, 11.47% from China, 7.88% Turkey, 6.96% Brazil, 6.55% Thailand.</p>
 	<p>Focussing on the US the biggest networks that attack CloudFlare sites are: Verizon Online, Comcast, AT&amp;T, Cox, Cablevision and Charter. That's consistent with the fact that attackers use botnets of machines connected to home broadband connections for their attacks.</p>
 	<p>Of course, at CloudFlare we spend a great deal of time defending against these attacks (both automatically and with tools like <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode">I'm under attack mode</a>). And we've successfully defended small and large sites (such as the <a href="http://venturebeat.com/2012/07/18/cloudflare-amazon-wikipedia-twitter">Eurovision Song Contest</a>) against all layers of attack.</p>
 	<p>CloudFlare's mission is all about making sure our customers' web sites stay alive.</p>
-	<p><img alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
-sites" src="https://blog.cloudflare.com/content/images/sa002.jpg.scaled500.jpg" title="Saturday Night Fever: Layer 7 attacks against CloudFlare sites"></p>
-	<p></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ofbCjYxxLY5fu6Ip0Ap7/1eddb871c14d13e0bfc8ac7eeb0dce05/sa002.jpg.scaled500.jpg" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+sites" class="kg-image" width="500" height="355" loading="lazy">
+
+	</figure>
 </div>

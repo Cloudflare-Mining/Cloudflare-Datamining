@@ -1,17 +1,22 @@
 <div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-1.jpg" class="kg-image" alt="Keeping the Cloudflare API 'all green' using Python-based testing" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aBKnrrV2Crr7lywo98G0h/323466934489c315c9fe65b60a7ca378/image2-1.jpg" alt="Keeping the Cloudflare API 'all green' using Python-based testing" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we reuse existing core systems to power multiple products and testing of these core systems is essential. In particular, we require being able to have a wide and thorough visibility of our live APIs’ behaviors. We want to be able to detect regressions, prevent incidents and maintain healthy APIs. That is why we built Scout.</p>
 	<p>Scout is an automated system periodically running Python tests verifying the end to end behavior of our APIs. Scout allows us to evaluate APIs in production-like environments and thus ensures we can green light a production deployment while also monitoring the behavior of APIs in production.</p>
-	<h2 id="why-scout">Why Scout?</h2>
-	<p>Before Scout, we were using an automated test system leveraging the Robot Framework. This older system was limiting our testing capabilities. In fact, we could not easily match json responses against keys we were looking for. We would abandon covering different behaviors of our APIs as it was impossible to decide on which resources a given test suite would run. Two different test suites would create false negatives as they were running on the same account. <br><br>Regarding schema validation, only API responses were validated against a json schema and tests would not fail if the response did not match the schema. Moreover, It was impossible to validate API requests.</p>
+	<h2>Why Scout?</h2>
+	<p>Before Scout, we were using an automated test system leveraging the Robot Framework. This older system was limiting our testing capabilities. In fact, we could not easily match json responses against keys we were looking for. We would abandon covering different behaviors of our APIs as it was impossible to decide on which resources a given test suite would run. Two different test suites would create false negatives as they were running on the same account.</p>
+	<p>Regarding schema validation, only API responses were validated against a json schema and tests would not fail if the response did not match the schema. Moreover, It was impossible to validate API requests.</p>
 	<p>Test suites were run in a queue, making the delay to a new feature assessment dependent on the number of test suites to run. The queue would as well potentially make newer test suites run the following day. Hence we often ended up with a mismatch between tests and APIs versions. Test steps could not be run in parallel either.</p>
 	<p>We could not split test suites between different environments. If a new API feature was being developed it was impossible to write a test without first needing the actual feature to be released to production.</p>
 	<p>We built Scout to overcome all these difficulties. We wanted the developer experience to be easy and we wanted Scout to be fast and reliable while spotting any live API issue.</p>
-	<h3 id="a-scout-test-example">A Scout test example</h3>
+	<h3>A Scout test example</h3>
 	<p>Scout is built in Python and leverages the functionalities of Pytest. Before diving into the exact capabilities of Scout and its architecture, let’s have a quick look at how to use it!</p>
-	<p>Following is an example of a Scout test on the Rulesets API (the docs are available <a href="https://developers.cloudflare.com/ruleset-engine/about">here</a>):</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">from scout import requires, validate, Account, Zone
+	<p>Following is an example of a Scout test on the Rulesets API (the docs are available <a href="https://developers.cloudflare.com/ruleset-engine/about">here</a>):</p>
+	<pre class="language-python"><code class="language-python">from scout import requires, validate, Account, Zone
 
 @validate(schema="rulesets", ignorePaths=["accounts/[^/]+/rules/lists"])
 @requires(
@@ -56,15 +61,13 @@ class TestZone:
                 }}
             ],
             ...
-        }}""")
-</code></pre>
-	<!--kg-card-end: markdown-->
+        }}""")</code></pre>
 	<p>A Scout test is a succession of roundtrips of requests and responses against a given API. We use the functionalities of Pytest fixtures and marks to be able to target specific resources while validating the request and responses. &nbsp;Pytest marks in Scout allow to provide an extra set of information to test suites. Pytest fixtures are contexts with information and methods which can be used across tests to enhance their capabilities. Hence the conjunction of marks with fixtures allow Scout to build the whole harness required to run a test suite against APIs.</p>
 	<p>Being able to exactly describe the resources against which a given test will run provides us confidence the live API behaves as expected under various conditions.</p>
-	<p>The <em><strong>cfapi</strong></em> fixture provides the capability to target different resources such as a Cloudflare account or a zone. In the test above, we use a Pytest mark <em><strong>@requires </strong></em>to describe the characteristics of the resources we want, e.g. we need here an account with a flag allowing us to have 2 rules for a ruleset. This will allow the test to only be run against accounts with such entitlements.</p>
-	<p>The <em><strong>@validate</strong></em> mark provides the capability to validate requests and responses to a given OpenAPI schema (here the rulesets OpenAPI schema). Any validation failure will be reported and flagged as a test failure.</p>
-	<p>Regarding the actual requests and responses, their payloads are described as f-strings, in particular the response f-string can be written as a “semi-json”:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python"> response.expect_json_success(
+	<p>The <b><i>cfapi</i></b> fixture provides the capability to target different resources such as a Cloudflare account or a zone. In the test above, we use a Pytest mark <b><i>@requires</i></b> to describe the characteristics of the resources we want, e.g. we need here an account with a flag allowing us to have 2 rules for a ruleset. This will allow the test to only be run against accounts with such entitlements.</p>
+	<p>The <b><i>@validate</i></b> mark provides the capability to validate requests and responses to a given OpenAPI schema (here the rulesets OpenAPI schema). Any validation failure will be reported and flagged as a test failure.</p>
+	<p>Regarding the actual requests and responses, their payloads are described as f-strings, in particular the response f-string can be written as a “semi-json”:</p>
+	<pre class="language-python"><code class="language-python"> response.expect_json_success(
             200,
             result=f"""{{
             "name": "My zone ruleset",
@@ -82,55 +85,75 @@ class TestZone:
                 }}
             ],
             ...
-        }}""")
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Among many test assertions possible, Scout can assert the validity of a partial json response and it will log the information. We added the handling of ellipsis <strong>… </strong>as an indication for Scout not to care about any further fields at a given json nesting level. Hence, we are able to do partial matching on JSON API responses, thus focusing only on what matters the most in each test.</p>
+        }}""")</code></pre>
+	<p>Among many test assertions possible, Scout can assert the validity of a partial json response and it will log the information. We added the handling of ellipsis <b>…</b> as an indication for Scout not to care about any further fields at a given json nesting level. Hence, we are able to do partial matching on JSON API responses, thus focusing only on what matters the most in each test.</p>
 	<p>Once a test suite run is complete, the results are pushed by the service and stored using Cloudflare Workers KV. They are displayed via a Cloudflare Worker.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Scout is run in separate environments such as production-like and production environments. It is part of our deployment process to verify Scout is <em>green</em> in our production-like environment prior to deploying to production where Scout is also used for monitoring purposes.</p>
-	<h2 id="how-we-built-it">How we built it</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iDExs9LHFvCjTMC12zsSp/64f2d5b6e2e9e49a28ba85f5a4d7d1d8/image6-2.png" alt="" class="kg-image" width="804" height="400" loading="lazy">
+
+	</figure>
+	<p>Scout is run in separate environments such as production-like and production environments. It is part of our deployment process to verify Scout is <i>green</i> in our production-like environment prior to deploying to production where Scout is also used for monitoring purposes.</p>
+	<h2>How we built it</h2>
 	<p>The core of Scout is written in Python and it is a combination of three components interacting together:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WgzfD8Wk6Vyd0uTE7hfNk/012dcb3ff0041bb665ebbaf23880aab3/image4-3.png" alt="" class="kg-image" width="1250" height="900" loading="lazy">
+
+	</figure>
 	<ul>
-		<li><strong>The Scout plugin</strong>: a Pytest plugin to write tests easily</li>
-		<li><strong>The Scout service</strong>: a scheduler service to run the test suites periodically</li>
-		<li><strong>The Scout Worker</strong>: a collector and presenter of test reports</li>
+		<li>
+			<p><b>The Scout plugin</b>: a Pytest plugin to write tests easily</p>
+		</li>
+		<li>
+			<p><b>The Scout service</b>: a scheduler service to run the test suites periodically</p>
+		</li>
+		<li>
+			<p><b>The Scout Worker</b>: a collector and presenter of test reports</p>
+		</li>
 	</ul>
-	<h3 id="the-scout-plugin">The Scout plugin</h3>
+	<h3>The Scout plugin</h3>
 	<p>This is the core component of the Scout system. It allows us to write self explanatory tests while ensuring a high level of compliance against OpenAPI schemas and verifying the APIs’ behaviors.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IAEu33ULvtQorn3fZWBrn/d630ef53264038e8ccacfd26b7d65210/image1-2.png" alt="" class="kg-image" width="1700" height="1030" loading="lazy">
+
+	</figure>
 	<p>The Scout plugin architecture can be split into three components: setup, resource allocator, and runners. Setup is a conjunction of multiple sub components in charge of setting up the plugin.</p>
 	<p>The Registry contains all the information regarding a pool of accounts and zones we use for testing. As an example, entitlements are flags gating customers for using products features, the Registry provides the capability to describe entitlements per account and zone so that Scout can run a test against a specific setup.</p>
-	<p>As explained earlier, Scout can validate requests and responses against OpenAPI schemas. This is the responsibility of validators. A validator is built per OpenAPI schema and can be selected via the <em><strong>@validate</strong></em> mark we saw above.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">@validate(schema="rulesets", ignorePaths=["accounts/[^/]+/rules/lists"])
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>As explained earlier, Scout can validate requests and responses against OpenAPI schemas. This is the responsibility of validators. A validator is built per OpenAPI schema and can be selected via the <b><i>@validate</i></b> mark we saw above.</p>
+	<pre class="language-python"><code class="language-python">@validate(schema="rulesets", ignorePaths=["accounts/[^/]+/rules/lists"])</code></pre>
 	<p>As soon as a validator is selected, all the interaction of a given test with an API will be validated. If there is a validation failure, it will be marked as a test failure.</p>
 	<p>Last element of the setup, the config reader. It is the sub component in charge of providing all the URLs and authentication elements required for the Scout plugin to communicate with APIs.</p>
-	<p>Next in the chain, the resources allocator. This component is in charge of consuming the configuration and objects of the setup to build multiple runners. This is a factory which will make available the runners in the <em><strong>cfapi</strong></em> fixture.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">response = cfapi.zone.request(method, path, payload)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>When such a line of code is processed, it is the actual method <em><strong>request</strong></em> of the zone runner allocated for the test which is executed. Actually, the resources allocator is able to provide specialized runners (account, zone or default) which grant the possibility of targeting specific API endpoints for a given account or zone.</p>
+	<p>Next in the chain, the resources allocator. This component is in charge of consuming the configuration and objects of the setup to build multiple runners. This is a factory which will make available the runners in the <b><i>cfapi</i></b> fixture.</p>
+	<pre class="language-python"><code class="language-python">response = cfapi.zone.request(method, path, payload)</code></pre>
+	<p>When such a line of code is processed, it is the actual method <b><i>request</i></b> of the zone runner allocated for the test which is executed. Actually, the resources allocator is able to provide specialized runners (account, zone or default) which grant the possibility of targeting specific API endpoints for a given account or zone.</p>
 	<p>Runners are in charge of handling the execution of requests, managing the test expectations and using the validators for request/response schema validation.</p>
 	<p>Any failure on expectation or validation and any exceptions are recorded in the stash. The stash is shared across all runners. As such, when a test setup, run or cleanup is processed, the timeline of execution and potential retries are logged in the stash. The stash contents are later used for building the test suite reports.</p>
 	<p>Scout is able to run multiple test steps in parallel. Actually, each resource couple (Account Runner, Zone Runner) is associated with a Pytest-xdist worker which runs test steps independently. There can be as many workers as there are resource couples. An extra “default” runner is provided for reaching our different APIs and/or URLs with or without authentication.</p>
 	<p>Testing a test system was not the easiest part. We have been required to build a fake API and assert the Scout plugin would behave as it should in different situations. We reached and maintained a test coverage confidence which was considered good (close to 90%) for using the Scout plugin permanently.</p>
-	<h3 id="the-scout-service">The Scout service</h3>
+	<h3>The Scout service</h3>
 	<p>The Scout service is meant to schedule test suites periodically. It is a configurable scheduler providing a reporting harness for the test suites as well as multiple metrics. It was a design decision to build a scheduler instead of using cron jobs.</p>
 	<p>We wanted to be aware of any scheduling issue as well as run issues. For this we used Prometheus metrics. The problem is that the Prometheus default configuration is to scrape metrics advertised by services. This scraping happens periodically and we were concerned about the eventuality of missing metrics if a cron job was to finish prior to the next Prometheus metrics scraping. As such we decided a small scheduler was better suited for overall observability of the test runs. Among the metrics the Scout service provides are network failures, general test failures, reporting failures, tests lagging and more.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42kpAT26a338B07zUR59ke/0ba6d1a9741fc13b11f7feb1bd42cf66/image3-3.png" alt="" class="kg-image" width="1520" height="1031" loading="lazy">
+
+	</figure>
 	<p>The Scout service runs threads on configured periods. Each thread is a test suite run as a separate Pytest with Scout plugin process followed by a reporting execution consuming the results and publishing them to the relevant parties.</p>
 	<p>The reporting component provided to each thread publishes the report to Workers KV and notifies us on chat in case there is a failure. Reporting takes also care of publishing the information relevant for building API testing coverage. In fact it is mandatory for us to have coverage of all the API endpoints and their possible methods so that we can achieve a wide and thorough visibility of our live APIs.</p>
 	<p>As a fallback, if there are any thread failure, test failure or reporting failure we are alerted based on the Prometheus metrics being updated across the service execution. The logs of the Scout service as well as the logs of each Pytest-Scout plugin execution provide the last resort information if no metrics are available and reporting is failing.</p>
 	<p>The service can be deployed with a minimal YAML configuration and be set up for different environments. We can for example decide to run different test suites based on the environment, publish or not to Cloudflare Workers, set different periods and retry mechanisms and so on.</p>
 	<p>We keep the tests as part of our code base alongside the configuration of the Scout service, and that’s about it, the Scout service is a separate entity.</p>
-	<h3 id="the-scout-worker">The Scout Worker</h3>
+	<h3>The Scout Worker</h3>
 	<p>It is a Cloudflare worker in charge of fetching the most recent Worker KVs and displaying them in an eye pleasing manner. The Scout service publishes a test report as JSON, thus the Scout worker parses the report and displays its content based on the status of the test suite run.</p>
 	<p>For example, we present below an authentication failure during a test which resulted in such a display in the worker:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="what-does-scout-let-us-do">What does Scout let us do</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42dMShTD7SrsgASIKbpCcZ/43cef5d1d45aefa38d271261e3e79563/image5.png" alt="" class="kg-image" width="1380" height="1654" loading="lazy">
+
+	</figure>
+	<h2>What does Scout let us do</h2>
 	<p>Through leveraging the capabilities of Pytest and Cloudflare Workers, we have been able to build a configurable, robust and reliable system which allows us to easily write self explanatory tests for our APIs.</p>
 	<p>We can validate requests and responses against OpenAPI schemas and test behaviors over specific resources while getting alerted through multiple means if something goes wrong.</p>
 	<p>For specific use cases, we can write a test verifying the API behaves as it should, the configuration to be pushed at the edge is valid and a given zone will react as it should to security threats. Thus going beyond an end-to-end API test.</p>

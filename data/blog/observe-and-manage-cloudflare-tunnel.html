@@ -1,32 +1,58 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/169KSmGL69LnKgm5HFsbT4/77dadb891e4b94216ae2cd9666c099aa/observe-and-manage-cloudflare-tunnel.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare Tunnel connects your infrastructure to Cloudflare. Your team runs a lightweight connector in your environment, <code>cloudflared</code>, and services can reach Cloudflare and your audience through an outbound-only connection without the need for opening up holes in your firewall.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-27.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BqXIo11SFcAQALHZuWya8/2517b0d4cfa29a193f3629593311f17a/image4-27.png" alt="" class="kg-image" width="1923" height="633" loading="lazy">
+
+	</figure>
 	<p>Whether the services are internal apps protected with Zero Trust policies, websites running in Kubernetes clusters in a public cloud environment, or a <a href="https://blog.cloudflare.com/building-a-pet-cam-using-a-raspberry-pi-cloudflare-tunnels-and-teams">hobbyist project on a Raspberry Pi</a> — Cloudflare Tunnel provides a stable, secure, and highly performant way to serve traffic.</p>
 	<p>Starting today, with our new UI in the Cloudflare for Teams Dashboard, users who deploy and manage Cloudflare Tunnel at scale now have easier visibility into their tunnels’ status, routes, uptime, connectors, <code>cloudflared</code> version, and much more. On the Teams Dashboard you will also find an interactive guide that walks you through setting up your first tunnel. &nbsp;</p>
-	<h3 id="getting-started-with-tunnel">Getting Started with Tunnel</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-26.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Getting Started with Tunnel</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40CrkppZAhLfvEEiP8fCaZ/4a90491f9a1c0ba4872995e2cd7de42a/image3-26.png" alt="" class="kg-image" width="575" height="444" loading="lazy">
+
+	</figure>
 	<p>We wanted to start by making the tunnel onboarding process more transparent for users. We understand that not all users are intimately familiar with the command line nor are they deploying tunnel in an environment or OS they’re most comfortable with. To alleviate that burden, we designed a comprehensive onboarding guide with pathways for MacOS, Windows, and Linux for our two primary onboarding flows:</p>
 	<ol>
-		<li>Connecting an <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">origin to Cloudflare</a></li>
-		<li>Connecting a private network via <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/warp-to-tunnel">WARP to Tunnel</a></li>
+		<li>
+			<p>Connecting an <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">origin to Cloudflare</a></p>
+		</li>
+		<li>
+			<p>Connecting a private network via <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/warp-to-tunnel">WARP to Tunnel</a></p>
+		</li>
 	</ol>
 	<p>Our new onboarding guide walks through each command required to create, route, and run your tunnel successfully while also highlighting relevant validation commands to serve as guardrails along the way. Once completed, you’ll be able to view and manage your newly established tunnels.</p>
-	<h3 id="managing-your-tunnels">Managing your tunnels</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-43.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Managing your tunnels</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6574ihZ3Lv32PE6Ycfrrkp/3283a69eaa5a2e17e68d8665de68344c/image1-43.png" alt="" class="kg-image" width="1564" height="1136" loading="lazy">
+
+	</figure>
 	<p>When thinking about the new user interface for tunnel we wanted to concentrate our efforts on how users gain visibility into their tunnels today. It was important that we provide the same level of observability, but through the lens of a visual, interactive dashboard. Specifically, we strove to build a familiar experience like the one a user may see if they were to run <code>cloudflared tunnel list</code> to show all of their tunnels, or <code>cloudflared tunnel info</code> if they wanted to better understand the connection status of a specific tunnel.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-14-at-1.07.21-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In the interface, you can quickly search by name or filter by name, status, uptime, or creation date. This allows users to easily identify and manage the tunnels they need, when they need them. We also included other key metrics such as <strong>Status</strong> and <strong>Uptime</strong>. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bI6i82oBS4t9ccPrfpdj7/71fb08956210e44652c8e7e73e8b34da/Screen-Shot-2021-10-14-at-1.07.21-PM.png" alt="" class="kg-image" width="1664" height="908" loading="lazy">
+
+	</figure>
+	<p>In the interface, you can quickly search by name or filter by name, status, uptime, or creation date. This allows users to easily identify and manage the tunnels they need, when they need them. We also included other key metrics such as <b>Status</b> and <b>Uptime</b>.</p>
 	<p>A tunnel's status depends on the health of its connections:</p>
 	<ul>
-		<li><strong>Active</strong>: This means your tunnel is running and has a healthy connection to the Cloudflare network.</li>
-		<li><strong>Inactive</strong>: This means your tunnel is not running and is not connected to Cloudflare.</li>
-		<li><strong>Degraded</strong>: This means one or more of your <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">four long-lived TCP connections</a> to Cloudflare have been disconnected, but traffic is still being served to your origin. </li>
+		<li>
+			<p><b>Active</b>: This means your tunnel is running and has a healthy connection to the Cloudflare network.</p>
+		</li>
+		<li>
+			<p><b>Inactive</b>: This means your tunnel is not running and is not connected to Cloudflare.</p>
+		</li>
+		<li>
+			<p><b>Degraded</b>: This means one or more of your <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">four long-lived TCP connections</a> to Cloudflare have been disconnected, but traffic is still being served to your origin.</p>
+		</li>
 	</ul>
 	<p>A tunnel’s uptime is also calculated by the health of its connections. We perform this calculation by determining the UTC timestamp of when the first (of four) long-lived TCP connections is established with the Cloudflare Edge. In the event this single connection is terminated, we will continue tracking uptime as long as one of the other three connections continues to serve traffic. If no connections are active, Uptime will reset to zero.</p>
-	<h3 id="tunnel-routes-and-connectors">Tunnel Routes and Connectors</h3>
-	<p>Last year, shortly after the announcement of Named Tunnels, we released a new feature that allowed users to utilize the same Named Tunnel to serve traffic to <a href="https://blog.cloudflare.com/many-services-one-cloudflared">many different services</a> through the use of <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/configuration-file/ingress">Ingress Rules</a>. In the new UI, if you’re running your tunnels in this manner, you’ll be able to see these various services reflected by hovering over the route's value in the dashboard. Today, this includes routes for DNS records, Load Balancers, and Private IP ranges. </p>
+	<h3>Tunnel Routes and Connectors</h3>
+	<p>Last year, shortly after the announcement of Named Tunnels, we released a new feature that allowed users to utilize the same Named Tunnel to serve traffic to <a href="https://blog.cloudflare.com/many-services-one-cloudflared">many different services</a> through the use of <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/configuration-file/ingress">Ingress Rules</a>. In the new UI, if you’re running your tunnels in this manner, you’ll be able to see these various services reflected by hovering over the route's value in the dashboard. Today, this includes routes for DNS records, Load Balancers, and Private IP ranges.</p>
 	<p>Even more recently, we announced highly available and highly scalable instances of cloudflared, known more commonly as “<a href="https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels">cloudflared replicas</a>.” To view your <code>cloudflared</code> replicas, select and expand a tunnel. Then you will identify how many <code>cloudflared</code> replicas you’re running for a given tunnel, as well as the corresponding connection status, data center, IP address, and version. And ultimately, when you’re ready to delete a tunnel, you can do so directly from the dashboard as well.</p>
-	<h3 id="what-s-next">What’s next</h3>
+	<h3>What’s next</h3>
 	<p>Moving forward, we’re excited to begin incorporating more Cloudflare Tunnel analytics into our dashboard. We also want to continue making Cloudflare Tunnel the easiest way to connect to Cloudflare. In order to do that, we will focus on improving our onboarding experience for new users and look forward to bringing more of that functionality into the Teams Dashboard. If you have things you’re interested in having more visibility around in the future, let us know below!</p>
 </div>

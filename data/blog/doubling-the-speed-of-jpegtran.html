@@ -1,24 +1,26 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3t5wxHYxYElumNClTXy3dD/e5499c2c83a9215037160c3a4bf6e6bf/doubling-the-speed-of-jpegtran.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>It is no secret that at CloudFlare we put a great effort into accelerating our customers' websites. One way to do it is to reduce the size of the images on the website. This is what our <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a> product is for. It takes various images and makes them smaller using open source tools, such as jpegtran, gifsicle and pngcrush.</p>
 	<p>However those tools are computationally expensive, and making them go faster, makes our servers go faster, and subsequently our customers' websites as well.</p>
 	<p>Recently, I noticed that we spent ten times as much time "polishing" jpeg images as we do when polishing pngs.</p>
 	<p>We already improved the performance of <a href="https://github.com/cloudflare/pngcrush">pngcrush</a> by using our supercharged version of <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">zlib</a>. So it was time to look what can be done for jpegtran (part of the <a href="http://www.ijg.org">libjpeg</a> distribution).</p>
-	<h3 id="quickprofiling">Quick profiling</h3>
+	<h3>Quick profiling</h3>
 	<p>To get fast results I usually use the Linux perf utility. It gives a nice, if simple, view of the hotspots in the code. I used this image for my benchmark.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/print_poster_0025.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a> <a href="http://www.eso.org/public/products/print_posters/print_poster_0025">image</a> by <a href="http://www.eso.org">ESO</a></small></p>
-	<p><code>perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg </code></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/etDiZy3jlhasH4jzoAVTD/b8c8dde7c5a3d59d19ce3f8b846968d3/print_poster_0025.jpg" alt="" class="kg-image" width="1280" height="904" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a> <a href="http://www.eso.org/public/products/print_posters/print_poster_0025">image</a> by <a href="http://www.eso.org">ESO</a></p>
+	<p><code>perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg</code></p>
 	<p>And we get:</p>
-	<p><code>perf report </code><br>
-		<code>54.90% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine </code><br>
-		<code>28.58% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first </code>
-	</p>
+	<p><code>perf report</code><code>54.90% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine</code><code>28.58% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first</code></p>
 	<p>Wow. That is 83.5% of the time spent in just two functions! A quick look suggested that both functions deal with Huffman coding of the jpeg image. That is a fairly simple compression technique where frequently occurring characters are replaced with short encodings, and rare characters get longer encodings.</p>
 	<p>The time elapsed for the tested file was 6 seconds.</p>
-	<h3 id="wheretostart">Where to start?</h3>
-	<p>First let's look at the most used function, <em>encode_mcu_AC_refine</em>. It is the heaviest function, and therefore optimizing it would benefit us the most.</p>
+	<h3>Where to start?</h3>
+	<p>First let's look at the most used function, <i>encode_mcu_AC_refine</i>. It is the heaviest function, and therefore optimizing it would benefit us the most.</p>
 	<p>The function has two loops. The first loop:</p>
-	<pre><code>for (k = cinfo-&gt;Ss; k &lt;= Se; k++) {
+	<pre class="language-bash"><code class="language-bash">for (k = cinfo-&gt;Ss; k &lt;= Se; k++) {
     temp = (*block)[natural_order[k]];
     if (temp &lt; 0)
       temp = -temp;      /* temp is abs value of input */
@@ -26,14 +28,13 @@
     absvalues[k] = temp; /* save abs value for main pass */
     if (temp == 1)
       EOB = k;           /* EOB = index of last newly-nonzero coef */
-  }
-</code></pre>
-	<p>This loop iterates over one array (<em>natural_order</em>), reads indices that it uses to read from *<em>block</em> into <em>temp</em>, computes the absolute value of <em>temp</em>, and shifts it to the right by some value. In addition it keeps the <em>EOB</em> variable pointing to the last value of the index for which <em>temp</em> was <em>1</em>.</p>
-	<p>Generally looping over an array is the schoolbook exercise for SIMD (Single Instruction Multiple Data) instructions, however in this case we have two problems: 1) Indirect indices are hard for SIMD 2) Keeping the <em>EOB</em> value updated.</p>
-	<h3 id="optimizing">Optimizing</h3>
+  }</code></pre>
+	<p>This loop iterates over one array (<i>natural_order</i>), reads indices that it uses to read from *<i>block</i> into <i>temp</i>, computes the absolute value of <i>temp</i>, and shifts it to the right by some value. In addition it keeps the <i>EOB</i> variable pointing to the last value of the index for which <i>temp</i> was <i>1</i>.</p>
+	<p>Generally looping over an array is the schoolbook exercise for SIMD (Single Instruction Multiple Data) instructions, however in this case we have two problems: 1) Indirect indices are hard for SIMD 2) Keeping the <i>EOB</i> value updated.</p>
+	<h3>Optimizing</h3>
 	<p>The first problem can not be solved on the function level. While Haswell introduced the new Gather instructions, that allow loading data using indices, those instructions are still slow, and more importantly they operate only on 32-bit and 64-bit values. We are dealing with 16-bit values here.</p>
 	<p>Our only option is therefore to load all the values sequentially. One SIMD XMM register is 128-bits wide and can hold eight 16-bit integers, therefore we will load eight values each iteration of the loop. (Note: we could also choose to use 256-bit wide YMM registers here, but that would only work on the newest CPUs, while gaining little performance).</p>
-	<pre><code>    __m128i x1 = _mm_setzero_si128(); // Load 8 16-bit values sequentially
+	<pre class="language-bash"><code class="language-bash">    __m128i x1 = _mm_setzero_si128(); // Load 8 16-bit values sequentially
     x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+0]], 0);
     x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+1]], 1);
     x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+2]], 2);
@@ -41,34 +42,29 @@
     x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+4]], 4);
     x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+5]], 5);
     x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+6]], 6);
-    x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+7]], 7);
-</code></pre>
-	<p>What you see above are intrinsic functions. Such intrinsics usually map to a specific CPU instruction. By using intrinsics we can integrate high performance code inside a C function, without writing assembly code. Usually they give more than enough flexibility and performance. The <em>__m128i</em> type corresponds to a 128-bit XMM register.</p>
+    x1 = _mm_insert_epi16(x1, (*block)[natural_order[k+7]], 7);</code></pre>
+	<p>What you see above are intrinsic functions. Such intrinsics usually map to a specific CPU instruction. By using intrinsics we can integrate high performance code inside a C function, without writing assembly code. Usually they give more than enough flexibility and performance. The <i>__m128i</i> type corresponds to a 128-bit XMM register.</p>
 	<p>Performing the transformation is straightforward:</p>
-	<pre><code>    x1 = _mm_abs_epi16(x1);        // Get absolute value of 16-bit integers
+	<pre class="language-bash"><code class="language-bash">    x1 = _mm_abs_epi16(x1);        // Get absolute value of 16-bit integers
     x1 = _mm_srli_epi16(x1, Al);   // &gt;&gt; 16-bit integers by Al bits
-    _mm_storeu_si128((__m128i*)&amp;absvalues[k], x1); // Store
-</code></pre>
+    _mm_storeu_si128((__m128i*)&amp;absvalues[k], x1); // Store</code></pre>
 	<p>As you can see we only need two instructions to perform the simple transformation on eight values, and no branch is required as a bonus.</p>
-	<p>The next tricky part is to update <em>EOB</em>, so it points to the last nonzero index. For that we need to find the index of the highest nonzero value inside <em>x1</em>, and if there is one update <em>EOB</em> accordingly.</p>
+	<p>The next tricky part is to update <i>EOB</i>, so it points to the last nonzero index. For that we need to find the index of the highest nonzero value inside <i>x1</i>, and if there is one update <i>EOB</i> accordingly.</p>
 	<p>We can easily compare all the values inside x1 to one:</p>
-	<pre><code>    x1 = _mm_cmpeq_epi16(x1, _mm_set1_epi16(1));  // Compare to 1
-</code></pre>
-	<p>The result of this operation is a mask. For all equal values all bits are set to 1 and for all non-equal values all bits are cleared to 0. However, how do we find the highest index whose bits are all ones? Well, there is an instruction that extracts the top bit of each byte inside an <em>__m128i</em> value, and puts it into a regular integer. From there we can find the index by finding the top set bit in that integer:</p>
-	<pre><code>    unsigned int idx = _mm_movemask_epi8(x1);        // Extract byte mask
-    EOB = idx? k + 16 - __builtin_clz(idx)/2 : EOB;  // Compute index
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">    x1 = _mm_cmpeq_epi16(x1, _mm_set1_epi16(1));  // Compare to 1</code></pre>
+	<p>The result of this operation is a mask. For all equal values all bits are set to 1 and for all non-equal values all bits are cleared to 0. However, how do we find the highest index whose bits are all ones? Well, there is an instruction that extracts the top bit of each byte inside an <i>__m128i</i> value, and puts it into a regular integer. From there we can find the index by finding the top set bit in that integer:</p>
+	<pre class="language-bash"><code class="language-bash">    unsigned int idx = _mm_movemask_epi8(x1);        // Extract byte mask
+    EOB = idx? k + 16 - __builtin_clz(idx)/2 : EOB;  // Compute index</code></pre>
 	<p>That is it. EOB will be updated correctly.</p>
 	<p>What does that simple optimization give us? Running jpegtran again shows that the same image now takes 5.2 seconds! That is a 1.15x speedup right there. But no reason to stop now.</p>
-	<h3 id="keepgoing">Keep going</h3>
-	<p>Next the loop iterates over the array we just prepared (<em>absvalues</em>). At the beginning of the loop we see:</p>
-	<pre><code>  if ((temp = absvalues[k]) == 0) {
+	<h3>Keep going</h3>
+	<p>Next the loop iterates over the array we just prepared (<i>absvalues</i>). At the beginning of the loop we see:</p>
+	<pre class="language-bash"><code class="language-bash">  if ((temp = absvalues[k]) == 0) {
       r++;
       continue;
-    }
-</code></pre>
+    }</code></pre>
 	<p>So it simply skips all the 0 values in the array, until it finds a nonzero value. Is it worth optimizing? Running a quick test, I found out that it is common to have long sequences of zero values. And iterating over them individually can be expensive. Let's try our previous method of finding the top nonzero element in an array here:</p>
-	<pre><code>    __m128i t = _mm_loadu_si128((__m128i*)&amp;absvalues[k]);
+	<pre class="language-bash"><code class="language-bash">    __m128i t = _mm_loadu_si128((__m128i*)&amp;absvalues[k]);
     t = _mm_cmpeq_epi16(t, _mm_setzero_si128()); // Compare to 0
     int idx = _mm_movemask_epi8(t);              // Extract byte mask
     if (idx == 0xffff) {                         // If all the values are zero skip them all
@@ -81,45 +77,37 @@
       k += skip;
       if (k&gt;Se) break;   // Stop if gone too far
     }
-    temp = absvalues[k]; // Load the first nonzero value
-</code></pre>
+    temp = absvalues[k]; // Load the first nonzero value</code></pre>
 	<p>What do we get now? Our test image now takes only 3.7 seconds. We are already at 1.62x speedup.</p>
 	<p>And what does perf show?</p>
-	<p><code>45.94% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first </code><br>
-		<code>28.73% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine </code>
-	</p>
-	<p>We can see that the tables have turned. Now <em>encode_mcu_AC_first</em> is the slower function of the two, and takes almost 50% of the time.</p>
-	<h3 id="moaroptimizations">Moar optimizations!</h3>
-	<p>Looking at <em>encode_mcu_AC_first</em> we see one loop, that performs similar operations as the function we already optimized. Why not reuse the optimizations we already know are good?</p>
+	<p><code>45.94% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first</code><code>28.73% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine</code></p>
+	<p>We can see that the tables have turned. Now <i>encode_mcu_AC_first</i> is the slower function of the two, and takes almost 50% of the time.</p>
+	<h3>Moar optimizations!</h3>
+	<p>Looking at <i>encode_mcu_AC_first</i> we see one loop, that performs similar operations as the function we already optimized. Why not reuse the optimizations we already know are good?</p>
 	<p>We shall split the one big loop into two smaller loops, one would perform the required transformations, and store them into auxiliary arrays, the other would read those values skipping the zero entries.</p>
 	<p>Note that transformations are a little different now:</p>
-	<pre><code>  if (temp &lt; 0) {
+	<pre class="language-bash"><code class="language-bash">  if (temp &lt; 0) {
       temp = -temp;
       temp &gt;&gt;= Al;
       temp2 = ~temp;
     } else {
       temp &gt;&gt;= Al;
       temp2 = temp;
-    }
-</code></pre>
+    }</code></pre>
 	<p>The equivalent for SIMD would be:</p>
-	<pre><code>    __m128i neg = _mm_cmpgt_epi16(_mm_setzero_si128(), x1);// Negative mask
+	<pre class="language-bash"><code class="language-bash">    __m128i neg = _mm_cmpgt_epi16(_mm_setzero_si128(), x1);// Negative mask
     x1 = _mm_abs_epi16(x1);                                // Absolute value
     x1 = _mm_srli_epi16(x1, Al);                           // &gt;&gt;
     __m128i x2 = _mm_andnot_si128(x1, neg);                // Invert x1, and apply negative mask
-    x2 = _mm_xor_si128(x2, _mm_andnot_si128(neg, x1));     // Apply non-negative mask
-</code></pre>
+    x2 = _mm_xor_si128(x2, _mm_andnot_si128(neg, x1));     // Apply non-negative mask</code></pre>
 	<p>And skipping zero values is performed in the same manner as before.</p>
 	<p>Measuring the performance now gives as 2.65 seconds for the test image! And that is 2.25X faster than the original jpegtran.</p>
-	<h3 id="conclusions">Conclusions</h3>
+	<h3>Conclusions</h3>
 	<p>Let's take a final look at the perf output:</p>
-	<p><code>40.78% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine </code><br>
-		<code>26.01% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first </code>
-	</p>
+	<p><code>40.78% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine</code><code>26.01% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first</code></p>
 	<p>We can see that the two functions we optimized still take a significant portion of the execution. But now it is just 67% of the entire program. If you are asking yourself how we got 2.25X speedup with those functions going from 83.5% to 67%, read about the <a href="https://en.wikipedia.org/wiki/Potato_paradox">Potato Paradox</a>.</p>
 	<p>It is definitely worth making further optimizations here. But it might be better looking outside the functions into how the data is arranged and passed around.</p>
 	<p>The bottom line is: optimizing code is fun, and using SIMD instructions can give you significant boost. Such as in this case.</p>
 	<p>We at CloudFlare make sure that our servers run at top notch performance, so our customers' websites do as well!.</p>
 	<p>You can find the final code on our GitHub repository: <a href="https://github.com/cloudflare/jpegtran">https://github.com/cloudflare/jpegtran</a></p>
-	<!--kg-card-end: markdown-->
 </div>

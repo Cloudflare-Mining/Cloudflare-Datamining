@@ -1,35 +1,34 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YeDFlqzKVL3p9c6WDBJa8/6696eb0403bb1f82c30c474d27969c08/introducing-apps-with-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Since its inception, <a href="https://www.cloudflare.com/apps">Cloudflare Apps</a> has made it possible for website owners to install a tool or a service directly onto a domain they have that lives on the Cloudflare network. &nbsp;As an App Developer, you’ve had the ability to deliver your product by modifying traffic and content of a user’s website using a combination of Javascript, HTML, CSS injection with the ability to modify Cloudflare features such as DNS. </p>
+	<p>Since its inception, <a href="https://www.cloudflare.com/apps">Cloudflare Apps</a> has made it possible for website owners to install a tool or a service directly onto a domain they have that lives on the Cloudflare network. &nbsp;As an App Developer, you’ve had the ability to deliver your product by modifying traffic and content of a user’s website using a combination of Javascript, HTML, CSS injection with the ability to modify Cloudflare features such as DNS.</p>
 	<p>Today we are announcing a public beta for our Cloudflare Apps with Workers! &nbsp;If you are a developer who has been using Workers or Cloudflare Apps, this is a significant step forward to bring together our server-less platform allowing you the next wave of innovation in the Cloudflare marketplace.</p>
 	<p>Wait! &nbsp;Yet more Workers news? &nbsp;It’s already been a furious year of releases for Workers, from our GA launch in February to numerous improvements including the beta of Cache API and a flurry of updates during Cloudflare’s Birthday week, where we made available our K/V Storage and WASM support. &nbsp;With this beta, developers can now package all Workers capabilities, deliver new worker-powered experiences to Cloudflare customers all within a few clicks via Cloudflare Apps.</p>
 	<p>Now your Apps can be more powerful, and Workers code running on the Cloudflare network are the engine that can take you there. &nbsp; If you’ve successfully built and deployed a worker on your own domain, you can package it as an App and bring your idea to the Cloudflare Marketplace. &nbsp;</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/workers-marketplace-apps-@2x.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Apps and Workers Life of a Request</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HUeaGOjSurGZn1Uirfs38/dc7d1a6f14531a9585f20e066847530f/workers-marketplace-apps-_2x.png" alt="" class="kg-image" width="2000" height="1098" loading="lazy">
+
 	</figure>
-	<p>New App experiences are possible including but not limited to personalization, experimentation with A/B testing, custom security, content validation, and localization. </p>
-	<h3 id="how-do-i-build-an-app-with-cloudflare-workers">How Do I Build An App with Cloudflare Workers?</h3>
-	<p>To package a Worker in your App as an additional resource in your <a href="https://www.cloudflare.com/apps/developer/docs/install-json"><em>install.json</em></a>, simply add a reference to your Worker script similar to how <a href="https://www.cloudflare.com/apps/developer/docs/dns">DNS entries</a> were declared before.</p><!--kg-card-begin: markdown-->
-	<pre><code>{
+	<p>Apps and Workers Life of a Request</p>
+	<p>New App experiences are possible including but not limited to personalization, experimentation with A/B testing, custom security, content validation, and localization.</p>
+	<h3>How Do I Build An App with Cloudflare Workers?</h3>
+	<p>To package a Worker in your App as an additional resource in your <a href="https://www.cloudflare.com/apps/developer/docs/install-json"><i>install.json</i></a>, simply add a reference to your Worker script similar to how <a href="https://www.cloudflare.com/apps/developer/docs/dns">DNS entries</a> were declared before.</p>
+	<pre class="language-bash"><code class="language-bash">{
 	"resources": [...],
 	"hooks": [...],
 	"workers": [{
 		"src": "./worker.js"
 	}]
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>You can also deliver custom variables as <a href="https://www.cloudflare.com/apps/developer/docs/environment">install options</a> which can then be referenced in Workers; useful for apps who may need to include a service specific token at App install time. <strong> </strong></p><!--kg-card-begin: markdown-->
-	<pre><code>// inside src/worker.js
+}</code></pre>
+	<p>You can also deliver custom variables as <a href="https://www.cloudflare.com/apps/developer/docs/environment">install options</a> which can then be referenced in Workers; useful for apps who may need to include a service specific token at App install time.</p>
+	<pre class="language-bash"><code class="language-bash">// inside src/worker.js
 addEventListener('fetch', event =&gt; {
   event.respondWith(workerFn(event.request))
   let someOptionFromInstall = INSTALL_OPTIONS.UserAgents // UserAgents was selected by siteowner in previewer
-})
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="does-the-approval-process-change">Does the Approval Process Change?</h3>
-	<p>As before, when you submit your app for approval and review, the submission process will gather your app &nbsp;and worker &nbsp;sources and make it available for our Moderation Team to review. &nbsp;Once successfully through the Moderation process, you can expect an additional Security Review of your Worker, before this app will be made available just like any App is today. </p>
-	<h3 id="how-can-i-apply-to-the-beta">How Can I Apply to the Beta? </h3>
-	<p>Back in August, we <a href="https://blog.cloudflare.com/growing-the-cloudflare-apps-ecosystem">announced</a> the upcoming App with Worker capability and since then we’ve seen great interest across our developers and partners who are eager to put their Workers based solutions into the hands to a much broader audience We are continuing to welcome new App Developers in our beta. Apply below to be part of our beta program.</p><!--kg-card-begin: markdown-->
-	<p style="text-align: center"><a class="btn btn-warning" href="https://www.cloudflare.com/products/cloudflare-workers/#otherways">Sign-up to Join the beta!</a></p><!--kg-card-end: markdown-->
+})</code></pre>
+	<h3>Does the Approval Process Change?</h3>
+	<p>As before, when you submit your app for approval and review, the submission process will gather your app &nbsp;and worker &nbsp;sources and make it available for our Moderation Team to review. &nbsp;Once successfully through the Moderation process, you can expect an additional Security Review of your Worker, before this app will be made available just like any App is today.</p>
+	<h3>How Can I Apply to the Beta?</h3>
+	<p>Back in August, we <a href="https://blog.cloudflare.com/growing-the-cloudflare-apps-ecosystem">announced</a> the upcoming App with Worker capability and since then we’ve seen great interest across our developers and partners who are eager to put their Workers based solutions into the hands to a much broader audience We are continuing to welcome new App Developers in our beta. Apply below to be part of our beta program.</p>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/#otherways">Sign-up to Join the beta!</a></p>
 </div>

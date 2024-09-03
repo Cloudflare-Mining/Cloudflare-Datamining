@@ -1,65 +1,77 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-1.png" class="kg-image" alt="Wildcard proxy for everyone" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Vq5d0pnUVLCKecfndzz2r/e9401c208fb83fed47d06272b6a58a96/image6-1.png" alt="Wildcard proxy for everyone" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Today, I have the pleasure to announce that we’re giving everyone the ability to proxy DNS wildcard records. Previously, this feature was only available to our Enterprise customers. After many of our free and pay-as-you-go users reached out, we decided that this feature should be available to everyone.</p>
-	<h3 id="what-is-a-wildcard-dns-record">What is a wildcard DNS record?</h3>
+	<h3>What is a wildcard DNS record?</h3>
 	<p>A <a href="https://www.cloudflare.com/learning/dns/dns-records">DNS record</a> usually maps a domain name to one or multiple IP addresses or another resource associated with that name, so it’s a one-to-many mapping. Let’s look at an example:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4.png" class="kg-image" alt="DNS records for mycoolwebpage.xyz" loading="lazy"></figure>
-	<p>When I do a DNS lookup for the IP address of <code>subdomain1.mycoolwebpage.xyz</code>, I get two IP addresses back, because I have added two A records on that subdomain:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ dig subdomain1.mycoolwebpage.xyz -t a +short
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XOfmXg6BcOIgiu251hBJD/721741e2d3e1f843abdad3f98a896114/image4.png" alt="DNS records for mycoolwebpage.xyz" class="kg-image" width="1999" height="831" loading="lazy">
+
+	</figure>
+	<p>When I do a DNS lookup for the IP address of <code>subdomain1.mycoolwebpage.xyz</code>, I get two IP addresses back, because I have added two A records on that subdomain:</p>
+	<pre class="language-bash"><code class="language-bash">$ dig subdomain1.mycoolwebpage.xyz -t a +short
 192.0.2.1
-192.0.2.2
-</code></pre>
-	<!--kg-card-end: markdown-->
+192.0.2.2</code></pre>
 	<p>I could specify the target of all subdomains like this, with one or multiple DNS records per subdomain. But what if I have hundreds or even thousands of subdomains that I all want to point to the same resource?</p>
-	<p>This is where a wildcard DNS record comes in. By using the asterisk symbol <code>"*"</code> in the <em>Name</em> field, I can create one or multiple DNS records that are used as the response for all subdomains <strong>that are not specifically covered by another DNS record</strong> (more on this later). So the wildcard record you can see in the screenshot above is covering <code>*.mycoolwebpage.xyz</code>, meaning all subdomains of <code>mycoolwebpage.xyz</code>. This can also be done on deeper levels, like on <code>*.www.mycoolwebpage.xyz</code>.</p>
-	<p>If I perform a lookup for <code>subdomain2.mycoolwebpage.xyz</code>, the target I specified in the wildcard record will be used as the response. Again, this is only happening because there is no DNS record specifically for this subdomain.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ dig subdomain2.mycoolwebpage.xyz -t a +short
-192.0.2.3
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>And it is often overlooked that a wildcard record does not only cover the level it is set on directly, but deeper levels, as well:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ dig some.deep.label.subdomain2.mycoolwebpage.xyz -t a +short 
-192.0.2.3
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Also, a wildcard DNS record does <strong>not</strong> cover the apex of the zone (in this example the apex is <code>mycoolwebpage.xyz</code>).</p>
-	<h3 id="a-few-more-things-to-know-about-wildcard-records">A few more things to know about wildcard records</h3>
+	<p>This is where a wildcard DNS record comes in. By using the asterisk symbol <code>"*"</code> in the <i>Name</i> field, I can create one or multiple DNS records that are used as the response for all subdomains <b>that are not specifically covered by another DNS record</b> (more on this later). So the wildcard record you can see in the screenshot above is covering <code>*.mycoolwebpage.xyz</code>, meaning all subdomains of <code>mycoolwebpage.xyz</code>. This can also be done on deeper levels, like on <code>*.www.mycoolwebpage.xyz</code>.</p>
+	<p>If I perform a lookup for <code>subdomain2.mycoolwebpage.xyz</code>, the target I specified in the wildcard record will be used as the response. Again, this is only happening because there is no DNS record specifically for this subdomain.</p>
+	<pre class="language-bash"><code class="language-bash">$ dig subdomain2.mycoolwebpage.xyz -t a +short
+192.0.2.3</code></pre>
+	<p>And it is often overlooked that a wildcard record does not only cover the level it is set on directly, but deeper levels, as well:</p>
+	<pre class="language-bash"><code class="language-bash">$ dig some.deep.label.subdomain2.mycoolwebpage.xyz -t a +short 
+192.0.2.3</code></pre>
+	<p>Also, a wildcard DNS record does <b>not</b> cover the apex of the zone (in this example the apex is <code>mycoolwebpage.xyz</code>).</p>
+	<h3>A few more things to know about wildcard records</h3>
 	<p>Below you can find additional rules that apply to wildcard DNS records you should be aware of:</p>
-	<p><strong>Wildcards are only supported on the first label</strong>. Meaning something like <code>subdomain.*.mycoolwebpage.xyz</code> is not a wildcard on the level of the asterisk character. If you create a DNS record with that name, the asterisk is interpreted as the literal character and not as the wildcard operator.</p>
-	<p><strong>You cannot create wildcards on multiple levels</strong>. So if you create a DNS record on <code>*.*.mycoolwebpage.xyz</code>, only the first asterisk is interpreted as a wildcard while the second one is interpreted as the literal <code>“*”</code> character.</p>
-	<p><strong>Wildcards will be applied for multiple levels</strong>. But a specific record on any equal or lower level will terminate anything on or below this specific record — independent of the type of that specific record. Here is an example. If you have <strong>only</strong> these two records on your domain</p><!--kg-card-begin: markdown-->
-	<pre><code>subdomain1.mycoolwebpage.xyz  TXT  “some text”
-*.mycoolwebpage.xyz  	A  192.0.2.3
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>the wildcard record will be used for queries going to any subdomain of <code>mycoolwebpage.xyz</code> <strong>except</strong> <code>subdomain1.mycoolwebpage.xyz</code> or anything <strong>below</strong> that specific label, like <code>deeper.label.subdomain1.mycoolwebpage.xyz</code> — simply because there already exists a record on <code>subdomain1.mycoolwebpage.xyz</code>. However, the wildcard will be used for deeper labels that are <strong>not</strong> below the specific record on subdomain1 — for example, <code>deeper.label.subdomain2.mycoolwebpage.xyz</code>.</p>
-	<p>To expand on this rule: if you think of DNS as a tree starting from the <a href="https://en.wikipedia.org/wiki/DNS_root_zone">root zone</a> (see the diagram below), simply the existence of a branch terminates the wildcard for <strong>all records</strong> on that branch. In the example above the wildcard was terminated for anything on the label subdomain1 <strong>and below</strong>, but even if there only exists a record on a deeper level, anything <strong>above</strong> will also be terminating the wildcard. This example should make it clear. If you <strong>only</strong> have the following two records on your domain, as shown in the diagram below</p><!--kg-card-begin: markdown-->
-	<pre><code>some.deep.label.subdomain1.mycoolwebpage.xyz  TXT  “some other text”
-*.mycoolwebpage.xyz  	A  192.0.2.3
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>a query to <code>label.subdomain1.mycoolwebpage.xyz</code> for an A record is <strong>not</strong> covered by the wildcard because it is a node on the existing branch ending in the TXT record above.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3.png" class="kg-image" alt="DNS tree structure for mycoolwebpage.xyz" loading="lazy"></figure>
-	<p><strong>Wildcard records only cover the record type they are specified for</strong>. If you add a wildcard A record for <code>*.mycoolwebpage.xyz</code> it will not cover queries specifying AAAA records (or any other type). But as mentioned in the previous point, a record on a specific label will terminate the wildcard for this label and everything below even if it’s a different record type.</p>
+	<p><b>Wildcards are only supported on the first label</b>. Meaning something like <code>subdomain.*.mycoolwebpage.xyz</code> is not a wildcard on the level of the asterisk character. If you create a DNS record with that name, the asterisk is interpreted as the literal character and not as the wildcard operator.</p>
+	<p><b>You cannot create wildcards on multiple levels</b>. So if you create a DNS record on <code>*.*.mycoolwebpage.xyz</code>, only the first asterisk is interpreted as a wildcard while the second one is interpreted as the literal <code>“*”</code> character.</p>
+	<p><b>Wildcards will be applied for multiple levels</b>. But a specific record on any equal or lower level will terminate anything on or below this specific record — independent of the type of that specific record. Here is an example. If you have <b>only</b> these two records on your domain</p>
+	<pre class="language-bash"><code class="language-bash">subdomain1.mycoolwebpage.xyz  TXT  “some text”
+*.mycoolwebpage.xyz  	A  192.0.2.3</code></pre>
+	<p>the wildcard record will be used for queries going to any subdomain of <code>mycoolwebpage.xyz</code> <b>except</b> <code>subdomain1.mycoolwebpage.xyz</code> or anything <b>below</b> that specific label, like <code>deeper.label.subdomain1.mycoolwebpage.xyz</code> — simply because there already exists a record on <code>subdomain1.mycoolwebpage.xyz</code>. However, the wildcard will be used for deeper labels that are <b>not</b> below the specific record on subdomain1 — for example, <code>deeper.label.subdomain2.mycoolwebpage.xyz</code>.</p>
+	<p>To expand on this rule: if you think of DNS as a tree starting from the <a href="https://en.wikipedia.org/wiki/DNS_root_zone">root zone</a> (see the diagram below), simply the existence of a branch terminates the wildcard for <b>all records</b> on that branch. In the example above the wildcard was terminated for anything on the label subdomain1 <b>and below</b>, but even if there only exists a record on a deeper level, anything <b>above</b> will also be terminating the wildcard. This example should make it clear. If you <b>only</b> have the following two records on your domain, as shown in the diagram below</p>
+	<pre class="language-bash"><code class="language-bash">some.deep.label.subdomain1.mycoolwebpage.xyz  TXT  “some other text”
+*.mycoolwebpage.xyz  	A  192.0.2.3</code></pre>
+	<p>a query to <code>label.subdomain1.mycoolwebpage.xyz</code> for an A record is <b>not</b> covered by the wildcard because it is a node on the existing branch ending in the TXT record above.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30H8qRK0B7QqrPfuut8e9I/7b62e585a028e73587259695c707faf2/image3.png" alt="DNS tree structure for mycoolwebpage.xyz" class="kg-image" width="1379" height="1066" loading="lazy">
+
+	</figure>
+	<p><b>Wildcard records only cover the record type they are specified for</b>. If you add a wildcard A record for <code>*.mycoolwebpage.xyz</code> it will not cover queries specifying AAAA records (or any other type). But as mentioned in the previous point, a record on a specific label will terminate the wildcard for this label and everything below even if it’s a different record type.</p>
 	<p>All the above and more can be found in <a href="https://datatracker.ietf.org/doc/rfc4592">RFC4592</a>. Not the type to read through complex RFCs but still generally interested in how DNS works, go check out <a href="https://wizardzines.com/zines/dns">Julia Evans’ wizard zines about DNS</a>, she did a great job explaining all the complexities about DNS in an easy to digest way.</p>
-	<h3 id="what-is-a-proxied-wildcard-dns-record">What is a proxied wildcard DNS record?</h3>
+	<h3>What is a proxied wildcard DNS record?</h3>
 	<p>Cloudflare provides a range of features (including <a href="https://www.cloudflare.com/cdn">Caching</a>, <a href="https://www.cloudflare.com/waf">Firewall</a>, or <a href="https://workers.cloudflare.com">Workers</a>) that require you to proxy the specific hostname you want to use these features on. You can proxy DNS records of the type A, AAAA, and CNAME. These record types are used to specify the origin server of a hostname which expects traffic via HTTP/S.</p>
-	<p>Proxying a wildcard DNS record works exactly as proxying a specific record. In the Cloudflare dashboard, navigate to the DNS app and either create a new wildcard record or edit an existing record and toggle the proxy status to <em>Proxied</em>. Previously, we only allowed this on wildcard records if the domain was upgraded to the Enterprise plan, but this feature is now available on all plan levels!</p><!--kg-card-begin: html-->
+	<p>Proxying a wildcard DNS record works exactly as proxying a specific record. In the Cloudflare dashboard, navigate to the DNS app and either create a new wildcard record or edit an existing record and toggle the proxy status to <i>Proxied</i>. Previously, we only allowed this on wildcard records if the domain was upgraded to the Enterprise plan, but this feature is now available on all plan levels!</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 41.50579150579151%;"><iframe src="https://iframe.videodelivery.net/a1d478d3d894cf763ecf701297d2f221?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fa1d478d3d894cf763ecf701297d2f221%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<p>Once you have enabled the proxy status of your wildcard DNS record, Cloudflare nameservers will respond with two Cloudflare anycast IPs instead of the origin IP(s) you have specified for that record. These Cloudflare IPs are advertised on our global network from more than 275 locations in more than 100 countries.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ dig subdomain2.mycoolwebpage.xyz -t a +short
+	<p>Once you have enabled the proxy status of your wildcard DNS record, Cloudflare nameservers will respond with two Cloudflare anycast IPs instead of the origin IP(s) you have specified for that record. These Cloudflare IPs are advertised on our global network from more than 275 locations in more than 100 countries.</p>
+	<pre class="language-bash"><code class="language-bash">$ dig subdomain2.mycoolwebpage.xyz -t a +short
 104.18.35.126
-172.64.152.130
-</code></pre>
-	<!--kg-card-end: markdown-->
+172.64.152.130</code></pre>
 	<p>In the example above, this will ensure that all HTTP/S requests sent to <code>subdomain2.mycoolwebpage.xyz</code> or any other subdomain that is covered by the proxied wildcard DNS record are proxied by Cloudflare’s network, specifically the closest Cloudflare data center. Go see for yourself and pick a random subdomain of <code>mycoolwebpage.xyz</code>. You will see a simple page that is generated using <a href="https://workers.cloudflare.com">Cloudflare Workers</a>:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image7.png" class="kg-image" alt="Simple website generated by Cloudflare Workers" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nyqcGBvEDTqTkiuzN0JpZ/3bf76c26c5543fd8553029cbfa79a1a6/image7.png" alt="Simple website generated by Cloudflare Workers" class="kg-image" width="1842" height="1416" loading="lazy">
+
+	</figure>
 	<p>And the cool thing is that you don’t even have to think about creating a TLS certificate. By default, Cloudflare will issue and automatically renew a certificate for your zone apex (<code>mycoolwebpage.xyz</code>) and all subdomains on the next level (<code>*.mycoolwebpage.xyz</code>).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pzweO95uHrqoomb81KBJl/523e5b0b1d5cf69d0e7d21f03838b2b1/image5.png" alt="" class="kg-image" width="1999" height="253" loading="lazy">
+
+	</figure>
 	<p>If you want to proxy a wildcard DNS record on a deeper level like <code>*.www.mycoolwebpage.xyz</code> you can subscribe to <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">Cloudflare Advanced Certificate Manager</a> and get a certificate that is covering that wildcard like this:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1.png" class="kg-image" alt="Covered hostnames for Advanced Certificate Manager" loading="lazy"></figure>
-	<h3 id="try-it-yourself-on-your-domain">Try it yourself on your domain</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Qy2GEdfZ7yQxqfrmt4MaN/8015e6b34c03fcae5da090cdcef26182/image1.png" alt="Covered hostnames for Advanced Certificate Manager" class="kg-image" width="1999" height="197" loading="lazy">
+
+	</figure>
+	<h3>Try it yourself on your domain</h3>
 	<p>If you are not already using <a href="https://www.cloudflare.com/dns">Cloudflare DNS</a> for your domain, it is very easy to move from your existing DNS provider and can be done in a few minutes. Head over to our developer documentation for detailed instructions on <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup">how to change your authoritative nameservers</a>.</p>
 </div>

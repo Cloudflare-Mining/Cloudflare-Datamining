@@ -1,35 +1,54 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>Today we are happy to release the <a href="https://github.com/cloudflare/boringtun">source code</a> of a project we’ve been working on for the past few months. It is called BoringTun, and is a <a href="https://www.wireguard.com/xplatform">userspace</a> implementation of the <a href="https://www.wireguard.com">WireGuard<sup>®</sup></a> protocol written in Rust.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/03/boring-tun-logo.png" alt="boring-tun-logo" loading="lazy"></p>
-	<h3 id="abitaboutwireguard">A Bit About WireGuard</h3>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lbDzDJmKzRutSrDQ5pQj6/b33ece498f79c94c50240545e9e172e8/boringtun-userspace-wireguard-rust.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Today we are happy to release the <a href="https://github.com/cloudflare/boringtun">source code</a> of a project we’ve been working on for the past few months. It is called BoringTun, and is a <a href="https://www.wireguard.com/xplatform">userspace</a> implementation of the <a href="https://www.wireguard.com">WireGuard®</a> protocol written in Rust.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/265ROm9gzfd6Fg7Qg5eL22/05f86ca73b6f54459ee1ae0bf7e3581e/boring-tun-logo.png" alt="boring-tun-logo" class="kg-image" width="1675" height="402" loading="lazy">
+
+	</figure>
+	<h3>A Bit About WireGuard</h3>
 	<p>WireGuard is relatively new project that attempts to replace old VPN protocols, with a simple, fast, and safe protocol. Unlike legacy VPNs, WireGuard is built around the <a href="http://www.noiseprotocol.org">Noise Protocol Framework</a> and relies only on a select few, modern, cryptographic primitives: X25519 for public key operations, <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305</a> for authenticated encryption, and Blake2s for message authentication.</p>
 	<p>Like <a href="https://blog.cloudflare.com/http-3-from-root-to-tip">QUIC</a>, WireGuard works over UDP, but its only goal is to securely encapsulate IP packets. As a result, it does not guarantee the delivery of packets, or that packets are delivered in the order they are sent.</p>
 	<p>The simplicity of the protocol means it is more robust than old, unmaintainable codebases, and can also be implemented relatively quickly. Despite its relatively young age, WireGuard is <a href="https://arstechnica.com/gadgets/2018/08/wireguard-vpn-review-fast-connections-amaze-but-windows-support-needs-to-happen">quickly gaining in popularity</a>.</p>
-	<h3 id="startingfromscratch">Starting From Scratch</h3>
+	<h3>Starting From Scratch</h3>
 	<p>While evaluating the potential value WireGuard could provide us, we first considered the existing implementations. Currently, there are three usable implementations</p>
 	<ul>
-		<li>The WireGuard kernel module - written in C, it is tightly integrated with the Linux kernel, and is not usable outside of it. Due to its integration with the kernel it provides the best possible performance. It is licensed under the GPL-2.0 license.</li>
-		<li>wireguard-go - this is the only compliant userspace implementation of WireGuard. As its name suggests it is written in Go, a language that we love, and is licensed under the permissive MIT license.</li>
-		<li>TunSafe - written in C++, it does not implement the userspace protocol exactly, but rather a deviation of it. It supports several platforms, but by design it supports only a single peer. TunSafe uses the AGPL-1.0 license.</li>
+		<li>
+			<p>The WireGuard kernel module - written in C, it is tightly integrated with the Linux kernel, and is not usable outside of it. Due to its integration with the kernel it provides the best possible performance. It is licensed under the GPL-2.0 license.</p>
+		</li>
+		<li>
+			<p>wireguard-go - this is the only compliant userspace implementation of WireGuard. As its name suggests it is written in Go, a language that we love, and is licensed under the permissive MIT license.</p>
+		</li>
+		<li>
+			<p>TunSafe - written in C++, it does not implement the userspace protocol exactly, but rather a deviation of it. It supports several platforms, but by design it supports only a single peer. TunSafe uses the AGPL-1.0 license.</p>
+		</li>
 	</ul>
 	<p>Whereas we were looking for:</p>
 	<ul>
-		<li><a href="https://en.wikipedia.org/wiki/User_space">Userspace</a></li>
-		<li>Cross-platform - including Linux, Windows, macOS, iOS and Android</li>
-		<li>Fast</li>
+		<li>
+			<p><a href="https://en.wikipedia.org/wiki/User_space">Userspace</a></p>
+		</li>
+		<li>
+			<p>Cross-platform - including Linux, Windows, macOS, iOS and Android</p>
+		</li>
+		<li>
+			<p>Fast</p>
+		</li>
 	</ul>
 	<p>Clearly we thought, only one of those fits the bill, and that is wireguard-go. However, benchmarks quickly showed that wireguard-go falls very short of the performance offered by the kernel module. This is because while the Go language is very good for writing servers, it is not so good for raw packet processing, which a VPN essentially does.</p>
-	<h3 id="choosingrust">Choosing <a href="https://www.rust-lang.org">Rust</a></h3>
+	<h3>Choosing <a href="https://www.rust-lang.org">Rust</a></h3>
 	<p>After we decided to create a userspace WireGuard implementation, there was the small matter of choosing the right language. While C and C++ are both high performance, low level languages, <a href="https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug">recent history</a> has demonstrated that their memory model was too fragile for a modern cryptography and security-oriented project. Go was shown to be suboptimal for this use case by wireguard-go.</p>
 	<p>The obvious answer was Rust. Rust is a modern, safe language that is both as fast as C++ and is arguably safer than Go (it is memory safe and also imposes rules that allow for safer concurrency), while supporting a huge selection of <a href="https://forge.rust-lang.org/platform-support.html">platforms</a>. We also have some of the best Rust talent in the industry working at the company.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/03/Screen-Shot-2019-03-26-at-4.13.07-PM-2.png" alt="Screen-Shot-2019-03-26-at-4.13.07-PM-2" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JAfjcdBRke6buHmC9MV0h/4b7662f65b4337bbf4d2c90408aa7aa5/Screen-Shot-2019-03-26-at-4.13.07-PM-2.png" alt="Screen-Shot-2019-03-26-at-4.13.07-PM-2" class="kg-image" width="1100" height="130" loading="lazy">
+
+	</figure>
 	<p>In fact, another Rust implementation of WireGuard, wireguard-rs, exists. But wireguard-rs is very immature, and we strongly felt that it would benefit the WireGuard ecosystem if there was a completely independent implementation under a permissive license.</p>
 	<p>Thus BoringTun was born.</p>
 	<p>The name might sound a bit boring but there's a reason for it: BoringTun creates a tunnel by 'boring' it. And it’s a nod to Google’s <a href="https://boringssl.googlesource.com/boringssl">BoringSSL</a> which strips the complexity out of OpenSSL. We think WireGuard has the opportunity to do the same for legacy VPN protocols like OpenVPN. And we hope BoringTun can be a valuable tool as part of that ecosystem.</p>
 	<p>WireGuard is an incredible tool and we believe it has a chance of being the defacto standard for VPN-like technologies going forward. We're adding our Rust implementation of WireGuard to the ecosystem and hope people find it useful.</p>
-	<h3 id="nextsteps">Next steps</h3>
+	<h3>Next steps</h3>
 	<p>BoringTun is currently under internal security review, and it is probably not fully ready to be used in mission critical tasks. We will fix issues as we find them, and we also welcome contributions from the community on the projects <a href="https://github.com/cloudflare/boringtun">Github page</a>. The project is licensed under the open source <a href="https://opensource.org/licenses/BSD-3-Clause">3-Clause BSD License</a>.</p>
 	<p>Note: WireGuard is a registered trademark of <a href="https://www.zx2c4.com">Jason A. Donenfeld</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,22 +1,34 @@
-<div class="mb2 gray5">12 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/network-performance-update-security-week-2023-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/network-performance-update-security-week-2023-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/network-performance-update-security-week-2023-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/network-performance-update-security-week-2023-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/network-performance-update-security-week-2023-es-es">Español</a>, <a href="https://blog.cloudflare.com/lt-lt/one-year-of-war-in-ukraine/-lt-lt">Lietuviešu</a>, <a href="https://blog.cloudflare.com/lv-lv/network-performance-update-security-week-2023-lv-lv">Latviešu</a>, and <a href="https://blog.cloudflare.com/et-ee/network-performance-update-security-week-2023-et-ee">Eesti</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-12.png" class="kg-image" alt="Cloudflare Access is the fastest Zero Trust proxy" loading="lazy"></figure>
+<div class="mb2 gray5">10 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/network-performance-update-security-week-2023">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/network-performance-update-security-week-2023">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/network-performance-update-security-week-2023">日本語</a>, <a href="https://blog.cloudflare.com/es-es/network-performance-update-security-week-2023">Español</a>, <a href="https://blog.cloudflare.com/lv-lv/network-performance-update-security-week-2023"></a>, <a href="https://blog.cloudflare.com/et-ee/network-performance-update-security-week-2023"></a>, <a href="https://blog.cloudflare.com/lt-lt/network-performance-update-security-week-2023"></a> and <a href="https://blog.cloudflare.com/fr-fr/network-performance-update-security-week-2023">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55TdGvLzWIBgOcEtkpsMso/5e9fb595b04edbb4462e86e653fbc496/image6-12.png" alt="Cloudflare Access is the fastest Zero Trust proxy" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>During every Innovation Week, Cloudflare looks at our network’s performance versus our competitors. In past weeks, we’ve focused on how much faster we are compared to <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy">reverse proxies</a> like <a href="https://www.cloudflare.com/cloudflare-vs-akamai">Akamai</a>, or platforms that sell serverless compute that compares to our <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a>, like Fastly and AWS. This week, we’d like to provide an update on how we compare to other reverse proxies as well as an update to our application services security product comparison against Zscaler and Netskope. This product is part of our Zero Trust platform, which helps <a href="https://www.cloudflare.com/application-services/solutions">secure applications</a> and Internet experiences out to the public Internet, as opposed to our reverse proxy which protects your websites from outside users.</p>
 	<p>In addition to our <a href="https://blog.cloudflare.com/network-performance-update-cio-edition">previous post showing how our Zero Trust platform compared against Zscaler</a>, we also <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">have previously shared extensive network benchmarking results</a> for reverse proxies from 3,000 last mile networks around the world. It’s been a while since we’ve shown you our progress towards being #1 in every last mile network. We want to show that data as well as revisiting our series of tests comparing Cloudflare Access to Zscaler Private Access and Netskope Private Access. For our overall network tests, Cloudflare is #1 in 47% of the top 3,000 most reported networks. For our application security tests, Cloudflare is 50% faster than Zscaler and 75% faster than Netskope.</p>
 	<p>In this blog we’re going to talk about why performance matters for our products, do a deep dive on what we’re measuring to show that we’re faster, and we’ll talk about how we measured performance for each product.</p>
-	<h3 id="why-does-performance-matter">Why does performance matter?</h3>
+	<h3>Why does performance matter?</h3>
 	<p>We talked about it in our last blog, but <a href="https://blog.cloudflare.com/network-performance-update-cio-edition">performance matters</a> because it impacts your employees' experience and their ability to get their job done. Whether it’s accessing services through access control products, connecting out to the public Internet through a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a>, or securing risky external sites through <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote Browser Isolation</a>, all of these experiences need to be frictionless.</p>
 	<p>A quick summary: say Bob at Acme Corporation is connecting from Johannesburg out to Slack or Zoom to get some work done. If Acme’s Secure Web Gateway is located far away from Bob in London, then Bob’s traffic may go out of Johannesburg to London, and then back into Johannesburg to reach his email. If Bob tries to do something like a voice call on Slack or Zoom, his performance may be painfully slow as he waits for his emails to send and receive. Zoom and Slack both recommend low latency for optimal performance. That extra hop Bob has to take through his gateway could decrease throughput and increase his latency, giving Bob a bad experience.</p>
 	<p>As we’ve discussed before, if these products or experiences are slow, then something worse might happen than your users complaining: they may find ways to turn off the products or bypass them, which puts your company at risk. A Zero Trust product suite is completely ineffective if no one is using it because it’s slow. Ensuring <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> is fast is critical to the effectiveness of a Zero Trust solution: employees won’t want to turn it off and put themselves at risk if they barely know it’s there at all.</p>
 	<p>Much like Zscaler, Netskope may outperform many older, antiquated solutions, but their network still fails to measure up to a highly performant, optimized network like Cloudflare’s. We’ve tested all of our Zero Trust products against Netskope equivalents, and we’re even bringing back Zscaler to show you how Zscaler compares against them as well. So let’s dig into the data and show you how and why we’re faster in a critical Zero Trust scenario, comparing Cloudflare Access to Zscaler Private Access and Netskope Private Access.</p>
-	<h3 id="cloudflare-access-the-fastest-zero-trust-proxy">Cloudflare Access: the fastest Zero Trust proxy</h3>
+	<h3>Cloudflare Access: the fastest Zero Trust proxy</h3>
 	<p>Access control needs to be seamless and transparent to the user: the best compliment for a <a href="https://www.cloudflare.com/zero-trust/solutions">Zero Trust solution</a> is employees barely notice it’s there. These services allow users to cache authentication information on the provider network, ensuring applications can be accessed securely and quickly to give users that seamless experience they want. So having a network that minimizes the number of logins required while also reducing the latency of your application requests will help keep your Internet experience snappy and reactive.</p>
 	<p>Cloudflare Access does all that 75% faster than Netskope and 50% faster than Zscaler, ensuring that no matter where you are in the world, you’ll get a fast, secure application experience:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/395y3xqEmEc1esGtwPddNw/bbf6b46197478edfe50e89485d9c182c/pasted-image-0-10.png" alt="" class="kg-image" width="1600" height="792" loading="lazy">
+
+	</figure>
 	<p>Cloudflare measured application access across ourselves, Zscaler and Netskope from 300 different locations around the world connecting to 6 distinct application servers in Hong Kong, Toronto, Johannesburg, São Paulo, Phoenix, and Switzerland. In each of these locations, Cloudflare’s P95 response time was faster than Zscaler and Netskope. Let’s take a look at the data when the application is hosted in Toronto, an area where Zscaler and Netskope should do well as it’s in a heavily interconnected region: North America.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--8.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FEMU2tMrWq2Qps7mlEVTt/fe5b93cec48b1f802b8637d5c6e59069/pasted-image-0--1--8.png" alt="" class="kg-image" width="1330" height="1442" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -82,7 +94,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare really stands out in regions with more diverse connectivity options like South America or Asia Pacific, where Zscaler compares better to Netskope than it does Cloudflare:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RonjCNZLQDUTetXsKJ0q1/903139456654273928f6a355001e809b/pasted-image-0--2--5.png" alt="" class="kg-image" width="1362" height="1462" loading="lazy">
+
+	</figure>
 	<p>When we look at application servers hosted locally in South America, Cloudflare stands out:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -214,7 +230,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare’s network sets us apart here because we’re able to get users onto our network faster and find the optimal routes around the world back to the application host. We’re twice as fast as Zscaler and three times faster than Netskope because of this superpower. Across all the different tests, Cloudflare’s Connect times is consistently faster across all 300 testing nodes.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46vdh3YktcfPIZHE7Bhgzn/e4eaf2b6a438e804ba146b14b2b1b807/pasted-image-0--3--5.png" alt="" class="kg-image" width="1600" height="752" loading="lazy">
+
+	</figure>
 	<p>In our <a href="https://blog.cloudflare.com/network-performance-update-cio-edition">last blog</a>, we looked at two distinct scenarios that need to be measured individually when we compared Cloudflare and Zscaler. The first scenario is when a user logs into their application and has to authenticate. In this case, the Zero Trust Access service will direct the user to a login page, the user will authenticate, and then be redirected to their application.</p>
 	<p>This is called a new session, because no authentication information is cached or exists on the Access network. The second scenario is called an existing session, when a user has already been authenticated and that authentication information can be cached. This scenario is usually much faster, because it doesn’t require an extra call to an identity provider to complete.</p>
 	<p>We like to measure these scenarios separately, because when we look at 95th percentile values, we would almost always be looking at new sessions if we combined new and existing sessions together. But across both scenarios, Cloudflare is consistently faster in every region. Let’s go back and look at an application hosted in Toronto, where users connecting to us connect faster than Zscaler and Netskope for both new and existing sessions.</p><!--kg-card-begin: html-->
@@ -359,27 +379,51 @@
 	<p>We like to separate these new and existing sessions because it’s important to look at similar request paths to do a proper comparison. For example, if we’re comparing a request via Zscaler on an existing session and a request via Cloudflare on a new session, we could see that Cloudflare was much slower than Zscaler because of the need to authenticate. So when we contracted a third party to design these tests, we made sure that they took that into account.</p>
 	<p>For these tests, Cloudflare configured five application instances hosted in Toronto, Los Angeles, Sao Paulo, and Hong Kong. Cloudflare then used 300 different Catchpoint nodes from around the world to mimic a browser login as follows:</p>
 	<ul>
-		<li>User connects to the application from a browser mimicked by a Catchpoint instance - new session</li>
-		<li>User authenticates against their identity provider</li>
-		<li>User accesses resource</li>
-		<li>User refreshes the browser page and tries to access the same resource but with credentials already present - existing session</li>
+		<li>
+			<p>User connects to the application from a browser mimicked by a Catchpoint instance - new session</p>
+		</li>
+		<li>
+			<p>User authenticates against their identity provider</p>
+		</li>
+		<li>
+			<p>User accesses resource</p>
+		</li>
+		<li>
+			<p>User refreshes the browser page and tries to access the same resource but with credentials already present - existing session</p>
+		</li>
 	</ul>
 	<p>This allows us to look at Cloudflare versus all the other products for application performance for both new and existing sessions, and we’ve shown that we’re faster. As we’ve mentioned, a lot of that is due to our network and how we get close to our users. So now we’re going to talk about how we compare to other large networks and how we get close to you.</p>
-	<h3 id="network-effects-make-the-user-experience-better">Network effects make the user experience better</h3>
+	<h3>Network effects make the user experience better</h3>
 	<p>Getting closer to users improves the last mile <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">Round Trip Time (RTT)</a>. As we discussed in the Access comparison, having a low RTT improves customer performance because new and existing sessions don’t have to travel very far to get to Cloudflare’s Zero Trust network. Embedding ourselves in these last mile networks helps us get closer to our users, which doesn’t just help Zero Trust performance, it helps <a href="https://blog.cloudflare.com/network-performance-update-security-week">web performance</a> and <a href="https://blog.cloudflare.com/network-performance-update-developer-week">developer performance</a>, as we’ve discussed in prior blogs.</p>
 	<p>To quantify network performance, we have to get enough data from around the world, across all manner of different networks, comparing ourselves with other providers. We used Real User Measurements (RUM) to fetch a 100kb file from several different providers. Users around the world report the performance of different providers. The more users who report the data, the higher fidelity the signal is. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week 2021 blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
 	<p>We are constantly going through the process of figuring out why we were slow — and then improving. The challenges we faced were unique to each network and highlighted a variety of different issues that are prevalent on the Internet. We’re going to provide an overview of some of the efforts we use to improve our performance for our users.</p>
 	<p>But before we do, here are the results of our efforts since Developer Week 2022, the last time we showed off these numbers. Out of the top 3,000 networks in the world (by number of IPv4 addresses advertised), here’s a breakdown of the number of networks where each provider is number one in p95 TCP Connection Time, which represents the time it takes for a user on a given network to connect to the provider:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5T9VF91tGgsZqGP8e6Oak8/a4cccb87d916c8efbfd202636cc53e55/pasted-image-0--4--4.png" alt="" class="kg-image" width="1600" height="694" loading="lazy">
+
+	</figure>
 	<p>Here’s what those numbers look like as of this week, Security Week 2023:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YiP64E2kEY9i3V7baEgTC/edb9f6d3982d2f7e858e19bb41a923c1/pasted-image-0--5--2.png" alt="" class="kg-image" width="1600" height="701" loading="lazy">
+
+	</figure>
 	<p>As you can see, Cloudflare has extended its lead in being faster in more networks, while other networks that previously were faster like Akamai and Fastly lost their lead. This translates to the effects we see on the World Map. Here’s what that world map looked like in Developer Week 2022:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pnpGlJdpxeTIoU6nc05Qy/897a8bbeeaa0eb90407bdeb68042c4e6/pasted-image-0--6--2.png" alt="" class="kg-image" width="1600" height="816" loading="lazy">
+
+	</figure>
 	<p>Here’s how that world map looks today during Security Week 2023:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kwJ7AU0PYqaHguQDjel2L/143f70565b1543f1faa2df655f55d29a/pasted-image-0--7--4.png" alt="" class="kg-image" width="1600" height="799" loading="lazy">
+
+	</figure>
 	<p>As you can see, Cloudflare has gotten faster in Brazil, many countries in Africa including South Africa, Ethiopia, and Nigeria, as well as Indonesia in Asia, and Norway, Sweden, and the UK in Europe.</p>
 	<p>A lot of these countries benefited from the Edge Partner Program that we discussed in the <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets">Impact Week blog</a>. A quick refresher: the Edge Partner Program encourages last mile ISPs to partner with Cloudflare to deploy Cloudflare locations that are embedded in the last mile ISP. This improves the last mile RTT and improves performance for things like Access. Since we last showed you this map, Cloudflare has deployed more partner locations in places like Nigeria, and Saudi Arabia, which have improved performance for users in all scenarios. Efforts like the Edge Partner Program help improve not just the Zero Trust scenarios like we described above, but also the general web browsing experience for end users who use websites protected by Cloudflare.</p>
-	<h3 id="next-generation-performance-in-a-zero-trust-world">Next-generation performance in a Zero Trust world</h3>
+	<h3>Next-generation performance in a Zero Trust world</h3>
 	<p>In a non-Zero Trust world, you and your IT teams were the network operator — which gave you the ability to control performance. While this control was comforting, it was also a huge burden on your IT teams who had to manage middle mile connections between offices and resources. But in a Zero Trust world, your network is now… well, it’s the public Internet. This means less work for your teams — but a lot more responsibility on your Zero Trust provider, which has to manage performance for every single one of your users. The better your Zero Trust provider is at improving end-to-end performance, the better an experience your users will have and the less risk you expose yourself to. For real-time applications like authentication and secure web gateways, having a snappy user experience is critical.</p>
 	<p>A Zero Trust provider needs to not only secure your users on the public Internet, but it also needs to optimize the public Internet to make sure that your users continuously stay protected. Moving to Zero Trust doesn’t just reduce the need for corporate networks, it also allows user traffic to flow to resources more naturally. However, given your Zero Trust provider is going to be the gatekeeper for all your users and all your applications, performance is a critical aspect to evaluate to reduce friction for your users and reduce the likelihood that users will complain, be less productive, or turn the solutions off. Cloudflare is constantly improving our network to ensure that users always have the best experience, through programs like the <a href="https://www.cloudflare.com/partners/peering-portal">Edge Partner Program</a> and constantly improving our peering and interconnectivity. It’s this tireless effort that makes us the fastest Zero Trust provider.</p>
 </div>

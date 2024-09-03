@@ -1,41 +1,50 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/Platform-Week-Wrap-up.png" class="kg-image" alt="Platform Week wrap-up" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G15FSzkri7R2fIszaa4Xs/b9d3fe03cdc222a9c0240f0b31ad0207/Platform-Week-Wrap-up.png" alt="Platform Week wrap-up" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>A comprehensive developer platform includes all the necessary storage, compute, and services to effectively deliver an application. Compute that runs globally and auto-scales to execute code without having to worry about the underlying infrastructure; storage for user information, objects, and key-value pairs; and all the related services including delivering video, optimizing images, managing third-party components, and capturing telemetry.</p>
 	<p>Whether you’re looking to modernize legacy backend infrastructure or are building a brand-new application from the ground up the Cloudflare Developer Platform provides all the building blocks you need to deliver an application on the edge.</p>
 	<p>Recently, during Platform Week, we made a number of announcements expanding what’s possible with the Developer Platform. Let’s take a look at some of the announcements we made and what this enables you to build. For a complete list visit the <a href="https://www.cloudflare.com/platform-week">Platform Week hub</a>.</p>
-	<h3 id="compute">Compute</h3>
+	<h3>Compute</h3>
 	<p>The core of our compute offering is Workers, our serverless runtime. Workers integrates with other Cloudflare offerings helping you route requests, take action on bots, <a href="https://blog.cloudflare.com/sending-email-from-workers-with-mailchannels">send an email,</a> or <a href="https://blog.cloudflare.com/announcing-route-to-workers">route and filter emails</a>, just to name a few.</p>
 	<p>There are times when you’ll want to use multiple Workers to perform an action, Workers now have the ability to <a href="https://blog.cloudflare.com/service-bindings-ga">call another Worker</a>. And while that Worker is sitting idly you aren’t charged. If serverless computing is about paying for what you use, why should you be charged when a Worker is waiting for a response?</p>
 	<p>Serverless compute works great for an application that’s in production, but what about when you’re in development? &nbsp;You need the ability to run and test locally, that’s why we’ve announced that the <a href="https://blog.cloudflare.com/workers-open-source-announcement">Workers runtime will be available via an open-source license</a> later this year.</p>
 	<p>But it’s not just the flexibility to run locally that’s important, the worry of vendor lock-in is real. You need the ability to move your application without significant efforts, that’s where the <a href="https://blog.cloudflare.com/introducing-the-wintercg">WinterCG</a> comes in. Cloudflare is working with core contributors from Deno and Node.js to create server-side API standards to enable just this.</p>
-	<h3 id="storage">Storage</h3>
+	<h3>Storage</h3>
 	<p>Applications, of course, cannot exist without storage. And when it comes to storage, there is no one-size-fits-all solution: <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> is great for images, but maybe not for storing user information; meanwhile, databases are great for storing user information, but not videos, and even when it comes to databases, there are so many kinds. &nbsp;Developers need a variety of storage solutions, there’s no one-size-fits all storage offering.</p>
 	<p>As of Platform Week we expanded our storage products, to include <a href="https://blog.cloudflare.com/r2-open-beta">R2 (which is now in beta)</a>, and <a href="https://blog.cloudflare.com/introducing-d1">D1 SQLite database</a>. These are in addition to the existing products, such as Workers KV, Durable Objects, and even Cloudflare’s cache!</p>
 	<p>You have the flexibility to choose the right tool for the task. Part of being flexible means, not encountering <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">egress charges</a> to access or move your data, and you should always have the ability to integrate with whichever tool you want.</p>
-	<h3 id="developer-services">Developer Services</h3>
+	<h3>Developer Services</h3>
 	<p>The Developer Platform doesn’t end with the compute power and storage. It also includes a full range of services to build your Jamstack application, optimize the images you serve, and stream videos.</p>
 	<p><a href="https://pages.cloudflare.com">Pages</a> simplifies the build and deploy process for Jamstack applications. Too much time is spent waiting. Waiting for builds to compile, when only a few lines of code were changed only to find out there was an error. Pages now reduces your waiting time with a <a href="https://blog.cloudflare.com/cloudflare-pages-build-improvements">new build infrastructure</a>, and the ability to view logs as a build is in progress to immediately see if something has gone wrong. (And speaking of logs, did you know you can <a href="https://blog.cloudflare.com/logs-r2">store your logs on R2</a>?)</p>
-	<p>To get started with Pages, you can either use our Git-integrations or<a href="https://blog.cloudflare.com/cloudflare-pages-direct-uploads"> deploy pre-built assets directly.</a> Functionality on your static sites can be extended via Workers or the new <a href="https://blog.cloudflare.com/cloudflare-pages-plugins">Pages Plugins</a>.</p>
+	<p>To get started with Pages, you can either use our Git-integrations or <a href="https://blog.cloudflare.com/cloudflare-pages-direct-uploads">deploy pre-built assets directly.</a> Functionality on your static sites can be extended via Workers or the new <a href="https://blog.cloudflare.com/cloudflare-pages-plugins">Pages Plugins</a>.</p>
 	<p>If you don’t have a Jamstack application, we still have services related to media (which is an essential part of any website). Store, resize, and optimize your Images or <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">deliver live streams</a>.</p>
-	<p>In addition to building and delivering the applications there is a host of observability solutions to view how everything is performing. The reliability of your systems is impacted when you don’t have visibility into how they are performing. We continue to expand the tools available to track performance of your applications through internal tools and partnerships. <a href="https://blog.cloudflare.com/logpush-for-workers">Logpush for Workers, </a><a href="https://blog.cloudflare.com/announcing-pubsub-programmable-mqtt-messaging">Pub/sub</a>, and <a href="https://blog.cloudflare.com/workers-analytics-engine">Workers Analytics Engine</a> are the latest additions giving you the ability to publish, gather, and process events, telemetry or sensor data, and create visualizations from the data.</p>
-	<h3 id="application-and-network-services">Application and network services</h3>
+	<p>In addition to building and delivering the applications there is a host of observability solutions to view how everything is performing. The reliability of your systems is impacted when you don’t have visibility into how they are performing. We continue to expand the tools available to track performance of your applications through internal tools and partnerships. <a href="https://blog.cloudflare.com/logpush-for-workers">Logpush for Workers,</a> <a href="https://blog.cloudflare.com/announcing-pubsub-programmable-mqtt-messaging">Pub/sub</a>, and <a href="https://blog.cloudflare.com/workers-analytics-engine">Workers Analytics Engine</a> are the latest additions giving you the ability to publish, gather, and process events, telemetry or sensor data, and create visualizations from the data.</p>
+	<h3>Application and network services</h3>
 	<p>The benefits of building on the Cloudflare Developer Platform is the interoperability of solutions within our application and network services.</p>
 	<p>With the beta release of R2 we also announced <a href="https://blog.cloudflare.com/introducing-cache-reserve">Cache Reserve</a>. When content is expired or evicted from our CDN a cache reserve can be configured in R2 to stay in-network and avoid having to pay egress fees refreshing content from the origin.</p>
 	<p>Connectivity and communication across distributed systems requires network address translation. <a href="https://blog.cloudflare.com/magic-nat">Magic NAT</a> makes it easy for systems to communicate across private subnets with overlapping IP space without having to backhaul traffic, deploy gateways in multiple zones, incur fees, or deal with latency.</p>
-	<h3 id="ecosystem-of-providers">Ecosystem of providers</h3>
+	<h3>Ecosystem of providers</h3>
 	<p>It’s not enough to have a suite of tools and services, you need to integrate and extend them with your existing vendors. The <a href="https://blog.cloudflare.com/developer-platform-ecosystem">Developer Platform Ecosystem</a> exists to do exactly this. We continue to expand our directory giving you the peace of mind that the Cloudflare Developer Platform will work for you.</p>
-	<h3 id="how-this-all-fits-together">How this all fits together</h3>
+	<h3>How this all fits together</h3>
 	<p>Whether you want to modify requests or responses on their way to or from the origin, build a Jamstack application, or build an entire dynamic application without any origin the Cloudflare Developer Platform has what you need. Instead of serving your application from a single region where your servers are, you can serve your application from “Region Earth.”</p>
 	<p>The applications you can build are limitless with compute, storage, and comprehensive developer services. Build your app, maintain state, upload your images directly to R2 and have them optimized via Images before being delivered by the CDN.</p>
 	<p>Unnecessary human decisions such as which region your objects should be stored in, become system decisions when the region is chosen automatically based on a request. When cached content is expired or evicted from cache, Cache Reserve is there to retrieve the object locally from R2 instead of traversing the Internet to the origin.</p>
 	<p>Once you have the application up and running you can visualize events and telemetry to ensure a reliable and fast application.</p>
-	<p>Here’s a small sample of what you can do with the Developer Platform: </p><!--kg-card-begin: markdown-->
+	<p>Here’s a small sample of what you can do with the Developer Platform:</p>
 	<ul>
-		<li>Build a collaborative app like a <a href="https://github.com/cloudflare/templates/tree/main/worker-example-wordle">multi-player Wordle game</a>.</li>
-		<li>Deliver a newsletter, allow users to <a href="https://abyteofcoding.com/blog/oauth-with-cloudflare-workers-on-a-statically-generated-site">sign up using Oauth</a>. Or aggregate articles into a <a href="https://newsfeed.aaronsdevera.com">newsfeed</a>.</li>
-		<li>Create a website with <a href="https://simonprickett.dev/bus-stop-api-with-cloudflare-workers">up-to-date train departures and arrivals</a>.</li>
+		<li>
+			<p>Build a collaborative app like a <a href="https://github.com/cloudflare/templates/tree/main/worker-example-wordle">multi-player Wordle game</a>.</p>
+		</li>
+		<li>
+			<p>Deliver a newsletter, allow users to <a href="https://abyteofcoding.com/blog/oauth-with-cloudflare-workers-on-a-statically-generated-site">sign up using Oauth</a>. Or aggregate articles into a <a href="https://newsfeed.aaronsdevera.com">newsfeed</a>.</p>
+		</li>
+		<li>
+			<p>Create a website with <a href="https://simonprickett.dev/bus-stop-api-with-cloudflare-workers">up-to-date train departures and arrivals</a>.</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 	<p>With over 35 announcements made during Platform Week we can’t wait to see what you’re going to build.</p>
 </div>

@@ -1,11 +1,11 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4slvDmPx8XeZ41YDuvTeNX/bcf2f33c095309708addde45de87a4ca/why-iot-is-insecure.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>As I’m writing this, four DDoS attacks are ongoing and being automatically mitigated by <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a>. Cloudflare’s job is to get attacked. Our network gets attacked constantly.</p>
 	<p>Around the fall of 2016, we started seeing DDoS attacks that looked a little <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras">different than usual</a>. One attack we saw around that time had traffic coming from 52,467 unique IP addresses. The clients weren’t servers or desktop computers; when we tried to connect to the clients over port 80, we got the login pages to CCTV cameras.</p>
 	<p>Obviously it’s important to lock down IoT devices so that they can’t be co-opted into evil botnet armies, but when we talk to some IoT developers, we hear a few concerning security patterns. We’ll dive into two problematic areas and their solutions: software updates and TLS.</p>
-	<h3 id="thetroublewithupdates">The Trouble With Updates</h3>
+	<h3>The Trouble With Updates</h3>
 	<p>With PCs, the end user is ultimately responsible for securing their devices. People understand that they need to update their computers and phones. <a href="https://www.macrumors.com/2017/01/05/ios-10-installed-on-76-percent-of-ios-devices">Just 4 months after Apple released iOS 10, it was installed on 76% of active devices</a>.</p>
-	<p>People just don’t know that they are supposed to update IoT <em>things</em> like they are supposed to update their computers because they’ve never had to update things in the past. My parents are never going to install a software update for their thermometer.</p>
+	<p>People just don’t know that they are supposed to update IoT <i>things</i> like they are supposed to update their computers because they’ve never had to update things in the past. My parents are never going to install a software update for their thermometer.</p>
 	<p>And the problem gets worse over time. The longer a device stays on an older software version, the less likely it will be compatible with the newer version. At some point, an update may not be possible anymore. This is a very real concern as the shelf life of a connected thing can be 10 years in the case of a kitchen appliance - have you ever bought a refrigerator?</p>
 	<p>This is if the device can be patched at all. First, devices that are low battery are programmed not to receive updates because it’s too draining on the battery. Second, IoT devices are too lightweight to run a full operating system, they run just a compiled binary on firmware which means there’s a limit to the code that can later be pushed to it. Some devices cannot receive specific patches.</p>
 	<p>The other thing we hear about updates from IoT developers is that often they are afraid to push a new update because it could mean breaking hundreds of thousands of devices at once.</p>
@@ -13,34 +13,61 @@
 	<p>The security model that worked for PC doesn’t work for IoT — the end user can’t be responsible, and patching isn’t reliable. We need something else. What’s the solution?</p>
 	<p>Traffic to an IoT device passes through many different networks: the transit provider from the application server, the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">content delivery network</a> used to deliver device traffic, the ISP to the building where the device sits.</p>
 	<p>It is at those network layers that protection can be added. As IoT device traffic moves through these networks, packets can be filtered to only let in good traffic. Even if a device is running vulnerable code, filters added in the network level can keep hackers out.</p>
-	<h3 id="thetroublewithtls">The Trouble With TLS</h3>
+	<h3>The Trouble With TLS</h3>
 	<p>TLS is used in two ways in IoT devices: First, TLS is used to encrypt data in transit. This is used for data privacy and to make it harder to reverse engineer the communications used by the device. Second, devices store client TLS certificates that are used to authenticate the devices to the application - makes it one step harder to fake a device.</p>
 	<p>There are three problems developers run into when they want to implement TLS in IoT. The first is that while IoT traffic needs to be quick and lightweight, TLS adds an additional two round trips to the start of every session. The second is that certificates can be large files, and device memory is limited in IoT. And the third is that some of the protocols that are being developed for IoT are plaintext by default.</p>
-	<h3 id="tlsisntlightweight">TLS Isn’t Lightweight</h3>
+	<h3>TLS Isn’t Lightweight</h3>
 	<p>IoT devices run on low power chips. An IoT device may only have 256 or 512 KB of RAM and often need to conserve battery. They send and receive lots of small information constantly. Imagine an internet connected wind sensor - it measures wind speed and every 30 seconds, sends the new wind speed to the application server. It’s just a few bytes of data it needs to get over the wire and it wants to be able to do so without as much overhead as possible to conserve RAM and battery life.</p>
 	<p>Here’s an HTTP POST to do that:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-23-at-8.39.11-PM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10XN1xsCbML3sq6IUtHQlk/6cc27cb85f5409f727464002dd9336f4/Screen-Shot-2017-12-23-at-8.39.11-PM.png" alt="" class="kg-image" width="872" height="311" loading="lazy">
+
+	</figure>
 	<p>But let’s say the same device is going to use TLS. Here’s what the same POST looks like with the TLS handshake — this is with TLS 1.2:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-23-at-8.40.00-PM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XYspSKePX6SnuugQdO58g/68c54f8f8dbf0755d494b61fdcff917b/Screen-Shot-2017-12-23-at-8.40.00-PM.png" alt="" class="kg-image" width="876" height="481" loading="lazy">
+
+	</figure>
 	<p>Depending on distance between the device and the application server and the latency of the server, this can be hundreds of milliseconds added. The solution is likely the newest version of TLS, TLS 1.3.</p>
 	<p>TLS 1.3 eliminates a complete round trip in the TLS handshake, which makes TLS much lighter and faster. It cuts the number of round trips in the handshake by half by predicting what key agreement protocol and algorithm the server will decide to use and sends those guessed parameters and the key share directly in the client hello. And if the server likes that, it sends back its own key share for the same algorithm, and the whole handshake is done.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-23-at-8.50.04-PM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LB8N0MKT0QFOFfZL3S91v/ddd43f973adeaa8e59bfd570cd0a8589/Screen-Shot-2017-12-23-at-8.50.04-PM.png" alt="" class="kg-image" width="857" height="370" loading="lazy">
+
+	</figure>
 	<p>If the same IoT device talks to the same server again, there’s actually <a href="https://blog.cloudflare.com/introducing-0-rtt">no round trip at all</a>. The parameters chosen in the initial handshake are sent alongside application data in the first packet.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-24-at-8.23.08-AM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BVBCXVFfkOtvxxvXO0M1Y/dda47c80c1599a615e46f02971be4a0b/Screen-Shot-2017-12-24-at-8.23.08-AM.png" alt="" class="kg-image" width="867" height="331" loading="lazy">
+
+	</figure>
 	<p>Why isn’t every IoT device using 1.3 today? TLS 1.3 is still actively being developed in the IETF standards track and while Chrome as of version 56 in January and Firefox as of version 52 in March support 1.3, not everything does. The biggest problem today are middleboxes that are used by ISP’s and enterprises that panic when they see a 1.3 handshake and close the connection. This also happened when the world was upgrading to TLS 1.2 and middleboxes only understood TLS 1.1, so it’s just a matter of time.</p>
-	<h3 id="tlscertificatesize">TLS Certificate Size</h3>
+	<h3>TLS Certificate Size</h3>
 	<p>In a TLS handshake, the server can use a server-side TLS certificate to authenticate itself to the client, and the client can use a client-side certificate to authenticate itself to the server. Devices often store certificates to authenticate themselves to the application server. However, device memory is often limited in IoT, and certificates can be large. What can we do?</p>
 	<p>Most certificates today use the RSA algorithm, which has been around since the 70’s. The certificates are large because the keys in RSA to be secure need to be large - either 1,024 to 2,048 bytes, however, a newer algorithm using elliptic curve cryptography has been in wide use since the early 2000’s that can solve this problem. With elliptic curve cryptography we can use smaller keys with the same level of security as a larger RSA key and save space on the device.</p>
-	<h3 id="defaultplaintextiotprotocols">Default Plaintext IoT Protocols</h3>
+	<h3>Default Plaintext IoT Protocols</h3>
 	<p>IoT devices need to be lightweight so two emerging protocols are replacing HTTP as the dominant transfer protocol for some IoT devices: MQTT and CoAP.</p>
 	<p>MQTT is a pub/sub protocol that has been around almost 20 years. In MQTT, a proxy server acts as a broker. An IoT device or web app publishes a message to the broker, and the broker distributes those messages to all the other IoT devices that need to receive that message.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-23-at-8.52.51-PM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/E4huJmd0Qc5gRa4N5kuxH/4c349a0ac9beb9c59cce9d580b23605c/Screen-Shot-2017-12-23-at-8.52.51-PM.png" alt="" class="kg-image" width="861" height="516" loading="lazy">
+
+	</figure>
 	<p>When MQTT was written almost 20 years ago, it was written without security by intention. It was written for oil and gas companies and they were just sending sensor data and no one thought it needed to be encrypted.</p>
 	<p>CoAP was standardized just three years ago. It has all the same methods as HTTP, but it’s over UDP so it’s really light.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-23-at-8.53.03-PM.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PLPc3UEGFJ8RVGsEWpGpk/acfde92b542ccd30536f0aa9598e300d/Screen-Shot-2017-12-23-at-8.53.03-PM.png" alt="" class="kg-image" width="866" height="314" loading="lazy">
+
+	</figure>
 	<p>The problem is, if you want to add TLS (DTLS really because CoAP is over UDP), it no longer is light anymore.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/Screen-Shot-2017-12-23-at-8.53.41-PM.png" alt="" loading="lazy"></p>
-	<h3 id="thefuture">The Future</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Ih9SbeRbtRJk4OqCZGXgx/afd5753aace9ab445652d757bd805c4e/Screen-Shot-2017-12-23-at-8.53.41-PM.png" alt="" class="kg-image" width="861" height="568" loading="lazy">
+
+	</figure>
+	<h3>The Future</h3>
 	<p>It will be quite interesting to see how update mechanisms and TLS implementations change as the number of deployed IoT devices continues to grow. If this type of thing interests you, <a href="https://www.cloudflare.com/careers">come join us</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

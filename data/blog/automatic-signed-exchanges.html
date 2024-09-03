@@ -1,45 +1,87 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JPQjQy0Spx8apubTTgo2a/6879cbe98f57a92b2b1b471be117b507/image2-12.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>We’re excited to announce that, starting today, Cloudflare customers will be able to generate Signed Exchanges (SXG) for Google Search with just one click. Signed Exchanges is an open <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html">web platform specification</a> Google developed as a way of verifying a cached version of a website — enabling massively <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website">faster delivery of a website from a third party</a>, such as Google itself from its search results page, or from a news aggregator that is linking out to other sites.</p>
 	<p>The advantage to you as a website owner? Not only will your site load faster when linked to from a site supporting SXG, but because many search engines use page load times in order to determine search results, you should see a very nice <a href="https://www.cloudflare.com/learning/performance/how-website-speed-boosts-seo">boost in SEO</a>.</p>
-	<h3 id="what-are-signed-exchanges-and-how-do-they-work">What are signed exchanges, and how do they work?</h3>
+	<h3>What are signed exchanges, and how do they work?</h3>
 	<p><a href="https://web.dev/signed-exchanges">Introduced by Google</a>, a Signed Exchange (SXG) is an open standard delivery mechanism that makes it possible to authenticate the origin of a resource, independent of how it was delivered. This decoupling advances a variety of use cases, such as prefetching, offline Internet experiences, and serving from third-party caches. It does so in a secure and privacy-preserving manner.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OjZeHJZXsvdoFZoI2cfvj/9cac840b0cfb1d7d6da29939377f1c64/image5-6.png" alt="" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>Now, imagine yourself as the ruler of your kingdom with an important message to deliver to all your subjects. You have too many people to reach, so you can’t do it alone. You decide to enlist your trusty knights to ride out with large chests filled with copies of your message. There are villains everywhere that would love to take these messages and modify them for their own nefarious machinations for their own profit.</p>
 	<p>You, being the wise ruler you are, have a crafty plan: you have a very special stamp made that can imprint a seal that everyone can recognize, yet no one can recreate. With this wondrous seal, no one can tamper with the messages without breaking the seal and proving the forgery for all to see. Now, your knights can bring these chests to all corners of the kingdom and hand out the messages to the masses, and your subjects can trust that the message came from you. There is a side benefit for your people, too. They can come whenever they want to pick up the message without your watchful eye, so they’re more inclined to read it at their leisure.</p>
-	<p>Maybe this is stretching the analogy a bit, but in the case of Signed Exchanges, a cryptographic signature on a digest of the response and headers acts as the tamper proof seal for the message. Fast forwarding our example to the present day: you want to get your newest web experience out to global distribution with the understanding that just about everyone will come through a search engine or aggregator site. Ahead of time, when you publish your content, the search engine <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler">crawls your site</a> for content, but instead of delivering the raw content, you negotiate the delivery of the signed exchange. (This is accomplished simply through additional “Accept: application/signed-exchange;v=&lt;version&gt;” request headers from the crawler that announces the preference for signed exchanges).</p>
+	<p>Maybe this is stretching the analogy a bit, but in the case of Signed Exchanges, a cryptographic signature on a digest of the response and headers acts as the tamper proof seal for the message. Fast forwarding our example to the present day: you want to get your newest web experience out to global distribution with the understanding that just about everyone will come through a search engine or aggregator site. Ahead of time, when you publish your content, the search engine <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler">crawls your site</a> for content, but instead of delivering the raw content, you negotiate the delivery of the signed exchange. (This is accomplished simply through additional “Accept: application/signed-exchange;v=” request headers from the crawler that announces the preference for signed exchanges).</p>
 	<p>Then Cloudflare generates the Signed Exchange, using the following process:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41mWvVJkJcKzFAUhjOexa5/2455229f4399d1c3439fa73cc69e1e2e/image3-7.png" alt="" class="kg-image" width="1201" height="676" loading="lazy">
+
+	</figure>
 	<ol>
-		<li>Cloudflare fetches the original content that you want to sign, including the response headers.</li>
-		<li>An additional Digest header is added that uses Merkle Integrity Content Encoding to support the progressive detection of data modification/corruption.</li>
-		<li>We also strip out headers that don’t make sense within the context of Signed Exchanges (like Connection, Keep-Alive, etc.) as well as security sensitive headers (Set-Cookie, Authentication-Info, etc.).</li>
-		<li>Then these headers, including the digest, along with additional metadata, like request URL, URL of the certificate, hash of the certificate, expiration time, etc., are all chained together into a stream that is used to calculate the final signature.</li>
-		<li>The original content, along with the headers, signature, and a fallback URL are then packed into a final binary for delivery.</li>
+		<li>
+			<p>Cloudflare fetches the original content that you want to sign, including the response headers.</p>
+		</li>
+		<li>
+			<p>An additional Digest header is added that uses Merkle Integrity Content Encoding to support the progressive detection of data modification/corruption.</p>
+		</li>
+		<li>
+			<p>We also strip out headers that don’t make sense within the context of Signed Exchanges (like Connection, Keep-Alive, etc.) as well as security sensitive headers (Set-Cookie, Authentication-Info, etc.).</p>
+		</li>
+		<li>
+			<p>Then these headers, including the digest, along with additional metadata, like request URL, URL of the certificate, hash of the certificate, expiration time, etc., are all chained together into a stream that is used to calculate the final signature.</p>
+		</li>
+		<li>
+			<p>The original content, along with the headers, signature, and a fallback URL are then packed into a final binary for delivery.</p>
+		</li>
 	</ol>
 	<p>This Signed Exchange is then cached and sent to the crawler, which also stores the Signed Exchange. After indexing the content, it can now show up in searches. The user then discovers the link to your content in the search results. The search engine also preloads the signed exchange for your content in the background in the meantime, effectively pre-filling the cache in the client’s browser. This exchange was delivered from the search engine, so no signal has gone to the origin yet. Thus, the search intent of the user isn’t leaked to the origin. Since the exchange is signed and validated against your certificate, the browser trusts the contents and can display the content with attribution to the original URL. Now, when the user clicks on the link to view the contents, it magically loads instantaneously from the local cache.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fxVcYcnHZHJqUUKXXbr8N/72b562418ae4d287354c4a1a243c48d5/image4-8.png" alt="" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>There are many resources on the web available that go into detail about the specific format of <a href="https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html">Signed Exchanges</a>, so we won’t rehash them here in detail. But one important aspect that isn’t obvious at first glance is the complexity of managing the signing process itself. The many details involve:</p>
 	<ul>
-		<li>The inclusion of the atypical CanSignHttpExchanges extension to your certificate.</li>
-		<li>The requirement to deliver your certificates in a specific CBOR (like binary JSON) format.</li>
-		<li><a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">OCSP stapling</a> to ensure the validity of the certificates is required.</li>
-		<li>Renewals of these certificates on a more frequent basis (i.e. requires automation).</li>
-		<li>Caching of the generated signed exchanges, since they can be expensive to generate.</li>
+		<li>
+			<p>The inclusion of the atypical CanSignHttpExchanges extension to your certificate.</p>
+		</li>
+		<li>
+			<p>The requirement to deliver your certificates in a specific CBOR (like binary JSON) format.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">OCSP stapling</a> to ensure the validity of the certificates is required.</p>
+		</li>
+		<li>
+			<p>Renewals of these certificates on a more frequent basis (i.e. requires automation).</p>
+		</li>
+		<li>
+			<p>Caching of the generated signed exchanges, since they can be expensive to generate.</p>
+		</li>
 	</ul>
 	<p>Luckily, all of these are in Cloudflare’s wheelhouse, since we already have deep expertise in <a href="https://www.cloudflare.com/advanced-certificate-manager">Certificate Management</a> and <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS delivery</a> infrastructure. By partnering with Google on the Signed Exchange implementation, we can ensure the consistency of implementation, but improve the simplicity of integrating the technology with the single push of a button.</p>
-	<blockquote><em>“Signed Exchanges make the web faster and a better user experience for users, by enabling cross-site prefetching. Site owners have seen clear improvement to Largest Contentful Paint, one of the Core Web Vitals, as well as increased user stickiness. Cloudflare now makes it simple for sites to implement Signed Exchanges and derive these benefits.” — </em>Jeff Jose, Product Manager, Google</blockquote>
-	<h3 id="bigger-than-search-alone">Bigger than search alone</h3>
+	<blockquote>
+		<p><i>“Signed Exchanges make the web faster and a better user experience for users, by enabling cross-site prefetching. Site owners have seen clear improvement to Largest Contentful Paint, one of the Core Web Vitals, as well as increased user stickiness. Cloudflare now makes it simple for sites to implement Signed Exchanges and derive these benefits.” —</i> Jeff Jose, Product Manager, Google</p>
+	</blockquote>
+	<h3>Bigger than search alone</h3>
 	<p>The broader implication of SXGs is that they make content portable: content delivered via an SXG can be easily distributed by third parties while maintaining full assurance and attribution of its origin. Historically, the only way for a site to use a third party to distribute its content while maintaining attribution has been for the site to share its <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificates</a> with the distributor. This has security drawbacks. Moreover, it is a far stretch from making content truly portable.</p>
 	<p>In the long-term, truly portable content can be used to achieve use cases like fully offline experiences. In the immediate term, the primary use case of SXGs is the delivery of faster user experiences by providing content in an easily cacheable format. Specifically, <a href="https://web.dev/signed-exchanges/#google-search">Google Search</a> will cache and sometimes prefetch SXGs. For sites that receive a large portion of their traffic from Google Search, SXGs can be an important tool for delivering faster page loads to users.</p>
 	<p>It’s also possible that all sites could eventually support this standard. Every time a site is loaded, all the linked articles could be pre-loaded. Web speeds across the board would be dramatically increased. <a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare">Matthew’s blog post</a> talks more about this possibility.</p>
-	<h3 id="sign-up-today">Sign up today</h3>
+	<h3>Sign up today</h3>
 	<p>Automatic Signed Exchanges will be free for all Cloudflare Pro, Business and Enterprise customers as well as for customers using our <a href="https://www.cloudflare.com/automatic-platform-optimization/wordpress">Advanced Platform Optimization</a> product.</p>
 	<p>Sign up for the Automatic Signed Exchange beta waitlist today and after being approved, activating is only one flip of a switch.</p>
 	<p>To sign up for the waitlist go to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card">Speed page</a> on the Cloudflare dashboard and click on “Join Waitlist” on the Automatic Signed Exchanges (SXGs) card.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IAJGfwzNRXcjVs5nzhi5W/0124b28e07c7addca400d0095b7131df/image1-7.png" alt="" class="kg-image" width="1051" height="320" loading="lazy">
+
+	</figure>
 	<p>We’ll take care of the rest.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b1eb4d946d6caf511e983395b27f2bbc?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

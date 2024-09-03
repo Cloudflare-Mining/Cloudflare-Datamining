@@ -1,46 +1,90 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-express-cni-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/announcing-express-cni-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-express-cni-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/announcing-express-cni-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/announcing-express-cni-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/announcing-express-cni-es-es">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/announcing-express-cni-fr-fr">Français</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image5-6.png" class="kg-image" alt="Simplifying how enterprises connect to Cloudflare with Express Cloudflare Network Interconnect" loading="lazy" width="1200" height="675"></figure>
-	<p>We’re excited to announce the largest update to Cloudflare Network Interconnect (CNI) since its <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">launch</a>, and because we’re making CNIs faster and easier to deploy, we’re calling this Express CNI. At the most basic level, CNI is a cable between a customer’s network router and Cloudflare, which facilitates the direct exchange of information between networks instead of via the Internet. CNIs are fast, secure, and reliable, and have connected customer networks directly to Cloudflare for years. We’ve been listening to how we can improve the CNI experience, and today we are sharing more information about how we’re making it faster and easier to order CNIs, and connect them to Magic Transit and Magic WAN. </p>
-	<h3 id="interconnection-services-and-what-to-consider">Interconnection services and what to consider</h3>
-	<p>Interconnection services provide a private connection that allows you to connect your networks to other networks like the Internet, cloud service providers, and other businesses directly. This private connection benefits from improved connectivity versus going over the Internet and reduced exposure to common threats like <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service (DDoS)</a> attacks. </p>
-	<p>Cost is an important consideration when evaluating any vendor for interconnection services. The cost of an interconnection is typically comprised of a fixed port fee, based on the capacity (speed) of the port, and the variable amount of data transferred. Some cloud providers also add complex inter-region bandwidth charges. </p>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-express-cni">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/announcing-express-cni">Français</a>, <a href="https://blog.cloudflare.com/de-de/announcing-express-cni">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-express-cni">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/announcing-express-cni">한국어</a>, <a href="https://blog.cloudflare.com/es-es/announcing-express-cni">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/announcing-express-cni">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YLq6dIHmtmzYSFO271qpe/74f7da01f9a5e3708b853a1f3601c7b7/image5-6.png" alt="Simplifying how enterprises connect to Cloudflare with Express Cloudflare Network Interconnect" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>We’re excited to announce the largest update to Cloudflare Network Interconnect (CNI) since its <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">launch</a>, and because we’re making CNIs faster and easier to deploy, we’re calling this Express CNI. At the most basic level, CNI is a cable between a customer’s network router and Cloudflare, which facilitates the direct exchange of information between networks instead of via the Internet. CNIs are fast, secure, and reliable, and have connected customer networks directly to Cloudflare for years. We’ve been listening to how we can improve the CNI experience, and today we are sharing more information about how we’re making it faster and easier to order CNIs, and connect them to Magic Transit and Magic WAN.</p>
+	<h3>Interconnection services and what to consider</h3>
+	<p>Interconnection services provide a private connection that allows you to connect your networks to other networks like the Internet, cloud service providers, and other businesses directly. This private connection benefits from improved connectivity versus going over the Internet and reduced exposure to common threats like <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service (DDoS)</a> attacks.</p>
+	<p>Cost is an important consideration when evaluating any vendor for interconnection services. The cost of an interconnection is typically comprised of a fixed port fee, based on the capacity (speed) of the port, and the variable amount of data transferred. Some cloud providers also add complex inter-region bandwidth charges.</p>
 	<p>Other important considerations include the following:</p>
 	<ul>
-		<li>How much capacity is needed?</li>
-		<li>Are there variable or fixed costs associated with the port?</li>
-		<li>Is the provider located in the same colocation facility as my business?</li>
-		<li>Are they able to scale with my network infrastructure?</li>
-		<li>Are you able to predict your costs without any unwanted surprises?</li>
-		<li>What additional products and services does the vendor offer?</li>
+		<li>
+			<p>How much capacity is needed?</p>
+		</li>
+		<li>
+			<p>Are there variable or fixed costs associated with the port?</p>
+		</li>
+		<li>
+			<p>Is the provider located in the same colocation facility as my business?</p>
+		</li>
+		<li>
+			<p>Are they able to scale with my network infrastructure?</p>
+		</li>
+		<li>
+			<p>Are you able to predict your costs without any unwanted surprises?</p>
+		</li>
+		<li>
+			<p>What additional products and services does the vendor offer?</p>
+		</li>
 	</ul>
 	<p>Cloudflare does not charge a port fee for Cloudflare Network Interconnect, nor do we charge for inter-region bandwidth. Using CNI with products like Magic Transit and Magic WAN may even reduce bandwidth spending with Internet service providers. For example, you can deliver Magic Transit-cleaned traffic to your data center with a CNI instead of via your Internet connection, reducing the amount of bandwidth that you would pay an Internet service provider for.</p>
-	<p>To underscore the value of CNI, <a href="https://aws.amazon.com/directconnect/pricing">one vendor</a> charges nearly \$20,000 a year for a 10 Gigabit per second (Gbps) direct connect port. The same 10 Gbps CNI on Cloudflare for one year is $0. Their cost also does not include any costs related to the amount of data transferred between different regions or geographies, or <a href="https://blog.cloudflare.com/aws-egregious-egress">outside of their cloud</a>. We have never charged for CNIs, and are committed to making it even easier for customers to connect to Cloudflare, and destinations beyond on the open Internet. </p>
-	<h3 id="3-minute-provisioning">3 Minute Provisioning</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image6-1.png" class="kg-image" alt="" loading="lazy" width="1800" height="615"></figure>
+	<p>To underscore the value of CNI, <a href="https://aws.amazon.com/directconnect/pricing">one vendor</a> charges nearly \$20,000 a year for a 10 Gigabit per second (Gbps) direct connect port. The same 10 Gbps CNI on Cloudflare for one year is $0. Their cost also does not include any costs related to the amount of data transferred between different regions or geographies, or <a href="https://blog.cloudflare.com/aws-egregious-egress">outside of their cloud</a>. We have never charged for CNIs, and are committed to making it even easier for customers to connect to Cloudflare, and destinations beyond on the open Internet.</p>
+	<h3>3 Minute Provisioning</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7h6VD2SSNO1J1jud76BvNf/f8c598c54d91bbc6045728abd76c96f8/image6-1.png" alt="" class="kg-image" width="1800" height="615" loading="lazy">
+
+	</figure>
 	<p>Our first big announcement is a new, faster approach to CNI provisioning and deployment. Starting today, all Magic Transit and Magic WAN customers can order CNIs directly from their Cloudflare account. The entire process is about 3 clicks and takes less than 3 minutes (roughly the time to make coffee). We’re going to show you how simple it is to order a CNI.</p>
-	<p>The first step is to find out whether Cloudflare is in the same data center or colocation facility as your routers, servers, and network hardware. Let’s navigate to the new “<strong>Interconnects</strong>” section of the Cloudflare dashboard, and order a new Direct CNI.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image4-20.png" class="kg-image" alt="" loading="lazy" width="1947" height="1021"></figure>
+	<p>The first step is to find out whether Cloudflare is in the same data center or colocation facility as your routers, servers, and network hardware. Let’s navigate to the new “<b>Interconnects</b>” section of the Cloudflare dashboard, and order a new Direct CNI.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4z8AbF030XyVSgzj4RAt3L/499100bd8a0f105b10daab203a224d9a/image4-20.png" alt="" class="kg-image" width="1947" height="1021" loading="lazy">
+
+	</figure>
 	<p>Search for the city of your data center, and quickly find out if Cloudflare is in the same facility. I’m going to stand up a CNI to connect my example network located in Ashburn, VA.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image6-3.png" class="kg-image" alt="" loading="lazy" width="1527" height="1324"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Zqx0cB5urfxIgkil06Qm6/4f6b849416477324d1080ad6cfff9371/image6-3.png" alt="" class="kg-image" width="1527" height="1324" loading="lazy">
+
+	</figure>
 	<p>It looks like Cloudflare is in the same facility as my network, so I’m going to select the location where I’d like to connect.</p>
 	<p>As of right now, my data center is only exchanging a few hundred Megabits per second of traffic on Magic Transit, so I’m going to select a 1 Gigabit per second interface, which is the smallest port speed available. I can also order a 10 Gbps link if I have more than 1 Gbps of traffic in a single location. Cloudflare also supports 100 Gbps CNIs, but if you have this much traffic to exchange with us, we recommend that you coordinate with your account team.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image5-12.png" class="kg-image" alt="" loading="lazy" width="1409" height="861"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7y8r8T0LfLzGertimjKu4j/3dab1936111772f29e3435eb06d77900/image5-12.png" alt="" class="kg-image" width="1409" height="861" loading="lazy">
+
+	</figure>
 	<p>After selecting your preferred port speed, you can name your CNI, which will be referenceable later when you direct your Magic Transit or Magic WAN traffic to the interconnect. We are given the opportunity to verify that everything looks correct before confirming our CNI order.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image2-16.png" class="kg-image" alt="" loading="lazy" width="1605" height="1556"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zi43jRdQmaGYFwbHgUC5j/c0d45aa87926d7064498f3bd9d291c41/image2-16.png" alt="" class="kg-image" width="1605" height="1556" loading="lazy">
+
+	</figure>
 	<p>Once we click the “Confirm Order” button, Cloudflare will provision an interface on our router for your CNI, and also assign IP addresses for you to configure on your router interface. Cloudflare will also issue you a Letter of Authorization (LOA) for you to order a cross connect with the local facility. Cloudflare will provision a port on our router for your CNI within 3 minutes of your order, and you will be able to ping across the CNI as soon as the interface line status comes up.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image3-18.png" class="kg-image" alt="" loading="lazy" width="1612" height="1286"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CfV6hjtbtFSYARhuaXFBC/98feb85a2a72369fb54ed2d9e847e134/image3-18.png" alt="" class="kg-image" width="1612" height="1286" loading="lazy">
+
+	</figure>
 	<p>After downloading the Letter of Authorization (LOA) to order a cross connect, we’ll navigate back to our Interconnects area. Here we can see the point to point IP addressing, and the CNI name that is used in our Magic Transit or Magic WAN configuration. We can also redownload the LOA if needed.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image1-21.png" class="kg-image" alt="" loading="lazy" width="1620" height="401"></figure>
-	<h3 id="simplified-magic-transit-and-magic-wan-onboarding">Simplified Magic Transit and Magic WAN onboarding</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qmjbvR2g79H5US8TOKB2W/3c249e3b44895f8b931c3a25cf08a072/image1-21.png" alt="" class="kg-image" width="1620" height="401" loading="lazy">
+
+	</figure>
+	<h3>Simplified Magic Transit and Magic WAN onboarding</h3>
 	<p>Our second major announcement is that Express CNI dramatically simplifies how <a href="https://www.cloudflare.com/network-services/products/magic-transit">Magic Transit</a> and <a href="https://www.cloudflare.com/network-services/products/magic-wan">Magic WAN</a> customers connect to Cloudflare. Getting packets into Magic Transit or Magic WAN in the past with a CNI required customers to configure a <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">GRE</a> (Generic Routing Encapsulation) tunnel on their router. These configurations are complex, and not all routers and switches support these changes. Since both Magic Transit and Magic WAN protect networks, and operate at the network layer on packets, customers rightly asked us, “If I connect directly to Cloudflare with CNI, why do I also need a GRE tunnel for Magic Transit and Magic WAN?”</p>
 	<p>Starting today, GRE tunnels are no longer required with Express CNI. This means that Cloudflare supports standard 1500-byte packets on the CNI, and there’s no need for complex GRE or MSS adjustment configurations to get traffic into Magic Transit or Magic WAN. This significantly reduces the amount of configuration required on a router for Magic Transit and Magic WAN customers who can connect over Express CNI. If you’re not familiar with Magic Transit, the key takeaway is that we’ve reduced the complexity of changes you must make on your router to protect your network with Cloudflare.</p>
-	<h3 id="what%E2%80%99s-next-for-cni">What’s next for CNI?</h3>
-	<p>We’re excited about how Express CNI simplifies connecting to Cloudflare’s network. Some customers connect to Cloudflare through our Interconnection Platform Partners, like Equinix and Megaport, and we plan to bring the Express CNI features to our partners too. </p>
-	<p>We have upgraded a number of our data centers to support Express CNI, and plan to upgrade many more over the next few months. We are rapidly expanding the number of global locations that support Express CNI as we install new network hardware. If you’re interested in connecting to Cloudflare with Express CNI, but are unable to find your data center, please let your account team know. </p>
+	<h3>What’s next for CNI?</h3>
+	<p>We’re excited about how Express CNI simplifies connecting to Cloudflare’s network. Some customers connect to Cloudflare through our Interconnection Platform Partners, like Equinix and Megaport, and we plan to bring the Express CNI features to our partners too.</p>
+	<p>We have upgraded a number of our data centers to support Express CNI, and plan to upgrade many more over the next few months. We are rapidly expanding the number of global locations that support Express CNI as we install new network hardware. If you’re interested in connecting to Cloudflare with Express CNI, but are unable to find your data center, please let your account team know.</p>
 	<p>If you’re on an existing classic CNI today, and you don’t need Express CNI features, there is no obligation to migrate to Express CNI. Magic Transit and Magic WAN customers have been asking for BGP support to control how Cloudflare routes traffic back to their networks, and we expect to extend BGP support to Express CNI first, so keep an eye out for more Express CNI announcements later this year.</p>
-	<h3 id="get-started-with-express-cni-today">Get started with Express CNI today</h3>
+	<h3>Get started with Express CNI today</h3>
 	<p>As we’ve demonstrated above, Express CNI makes it fast and easy to connect your network to Cloudflare. If you’re a Magic Transit or Magic WAN customer, the new “Interconnects” area is now available on your Cloudflare dashboard. To deploy your first CNI, you can follow along with the screenshots above, or refer to our updated <a href="https://developers.cloudflare.com/network-interconnect">interconnects documentation</a>.</p>
 </div>

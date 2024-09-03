@@ -1,15 +1,18 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/advanced-certificate-manager-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/id-id/advanced-certificate-manager-id-id">Bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/advanced-certificate-manager-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/v-8pnnsudxboAbEXt3xC2YBMa-99X16A6yN37fIX95UHEXttekGKCswaeXxib6Ya2F4MUNVYxPZ3-_1ErYy7T-GYQ0rEkND_5jD4bBttOBufVFufFWzY7Cs3LJSiEYhkLXjIV7un" class="kg-image" alt="Introducing: Advanced Certificate Manager" loading="lazy"></figure>
-	<p>In 2016, we launched <a href="https://blog.cloudflare.com/dedicated-ssl-certificates">Dedicated Certificates</a>. Today, we are excited to announce that dedicated certs are getting an upgrade… and a new name… introducing Advanced Certificate Manager! Advanced Certificate Manager is a flexible and customizable way to manage your certificates on Cloudflare. </p>
-	<h3 id="certificates">Certificates</h3>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/advanced-certificate-manager">日本語</a>, <a href="https://blog.cloudflare.com/th-th/advanced-certificate-manager">ไทย</a> and <a href="https://blog.cloudflare.com/id-id/advanced-certificate-manager">Indonesia</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ana3jnRVO3K366Vg2kITH/0c0a908d89624324e60decf4e9935ac2/v-8pnnsudxboAbEXt3xC2YBMa-99X16A6yN37fIX95UHEXttekGKCswaeXxib6Ya2F4MUNVYxPZ3-_1ErYy7T-GYQ0rEkND_5jD4bBttOBufVFufFWzY7Cs3LJSi.png" alt="Introducing: Advanced Certificate Manager" class="kg-image" width="1600" height="767" loading="lazy">
+
+	</figure>
+	<p>In 2016, we launched <a href="https://blog.cloudflare.com/dedicated-ssl-certificates">Dedicated Certificates</a>. Today, we are excited to announce that dedicated certs are getting an upgrade… and a new name… introducing Advanced Certificate Manager! Advanced Certificate Manager is a flexible and customizable way to manage your certificates on Cloudflare.</p>
+	<h3>Certificates</h3>
 	<p>TLS Certificates are the reason you can safely browse the Internet, securely transfer money online, and keep your passwords private. They do that by encrypting your sensitive messages using public-key cryptography that is cryptographically linked to the certificate itself. But beyond that, TLS certificates are used to make an assertion about identity — verifying that the server is who they claim to be. Server Certificates — used by every website — include the website's name on the certificate and is issued by a third-party certificate authority (CA) who verifies that the certificate's information is correct and accurate.</p>
 	<p>Browsers only let you visit a website when it's encrypted using TLS after it has successfully validated the certificate presented by the server — much like how security checks your ID to board a plane.</p>
 	<p>We are focusing on securing the Internet now more than ever. We want to make it as easy as possible for any customer to be a security-conscious customer. This is why we’re moving towards a certificate management system, so it’s simple to customize your certificates and TLS settings. We are doing this by giving you the right tools to proactively increase the security of your domain.</p>
 	<p>Let’s start by talking about modifying your certificate’s validity period, a small change that can make a big difference.</p>
-	<h3 id="decrease-your-certificate-s-validity-period">Decrease Your Certificate’s Validity Period</h3>
+	<h3>Decrease Your Certificate’s Validity Period</h3>
 	<p>The <a href="https://cabforum.org">Certification Authority Browser Forum</a> — a voluntary group that sets the industry guidelines for certificates — has been shortening the maximum validity period for publicly trusted certificates over the past several years. You used to be able to get a three-year cert, but now you can only get a one-year cert. Why did they do this?</p>
 	<p>Rotating a certificate more frequently should — but does not necessarily — mean you're rotating your private key more frequently. Changing secrets more frequently means that if a secret (in this case a private key) is ever compromised, the compromise has a smaller maximum lifespan. This is widely regarded as a better security posture and helps to minimize the risk associated with key compromise.</p>
 	<p>It also has the added bonus of <a href="https://letsencrypt.org/2015/11/09/why-90-days.html">encouraging automation</a> — the more frequently you have to do a task, the more likely you'll want to automate it. Automation means you're less likely to let a cert expire in production or give a person access to key material.</p>
@@ -18,32 +21,50 @@
 	<p>At Cloudflare, it’s not a problem. Shorter validity periods encouraged us to keep improving our certificate issuance and renewal pipeline. With ~4.5 million certificates issued a day, we can confidently say that every customer can set a 14-day validity period, and we’ll take care of it.</p>
 	<p>Overall, the <a href="https://www.websecurity.digicert.com/blog/cabforum-votes-shorten-certificate-lifetime-validity-periods-impacts#:~:text=This%20topic%20led%20to%20a,also%20had%20an%20unintended%20consequence.&amp;text=However%2C%20effective%20April%2022%2C%202017,unless%20a%20corrective%20ballot%20passes.">industry is moving towards shortening</a> certificate cycles, so we are very excited to make this an easy option for our customers.</p>
 	<p>Some customers want to go a step further and control the cipher suites used for TLS. Now, with ACM, you can do just that!</p>
-	<h3 id="setting-cipher-suites">Setting Cipher Suites</h3>
+	<h3>Setting Cipher Suites</h3>
 	<p>A cipher suite is a set of algorithms that help secure a network connection that uses TLS. The set of algorithms that cipher suites contain are :</p>
 	<ul>
-		<li>Key Exchange Algorithm</li>
-		<li>Authentication Algorithm</li>
-		<li>Bulk encryption Algorithm</li>
-		<li>Message Authentication Code (MAC) Algorithm</li>
+		<li>
+			<p>Key Exchange Algorithm</p>
+		</li>
+		<li>
+			<p>Authentication Algorithm</p>
+		</li>
+		<li>
+			<p>Bulk encryption Algorithm</p>
+		</li>
+		<li>
+			<p>Message Authentication Code (MAC) Algorithm</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-46.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>When two servers want to communicate with one another securely over TLS, they start off by initiating a TLS handshake. During the TLS handshake, the client and the server establish which encryption algorithms they will be using. The client initiates this handshake with the Client Hello message that indicates the cipher suites — or encryption algorithms — it supports. The server then responds with the Server Hello message which contains its choice of cipher based on the list of supported ciphers that the client sent. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gqYUWUnmEsDfvxp1kmeZF/ae4a81a038bac794ba53b1983fd1e62f/image2-46.png" alt="" class="kg-image" width="1220" height="350" loading="lazy">
+
+	</figure>
+	<p>When two servers want to communicate with one another securely over TLS, they start off by initiating a TLS handshake. During the TLS handshake, the client and the server establish which encryption algorithms they will be using. The client initiates this handshake with the Client Hello message that indicates the cipher suites — or encryption algorithms — it supports. The server then responds with the Server Hello message which contains its choice of cipher based on the list of supported ciphers that the client sent.</p>
 	<p>When a user connects to a website on Cloudflare’s network, Cloudflare is responsible for choosing a cipher. In the past, we’ve <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">talked about</a> how Cloudflare’s servers prefer certain ciphers. For example, we prioritize ciphers that use ECDHE over those that start with RSA. As discussed in our previous blog post, RSA is more susceptible to security vulnerabilities, especially if an SSL server’s private key were to leak.</p>
 	<p>While prioritizing certain ciphers over others offers a higher level of security, we are going a step further and giving our customers the ability to choose which cipher suites from Cloudflare’s <a href="https://support.cloudflare.com/hc/en-us/articles/203041594-Cloudflare-SSL-cipher-browser-and-protocol-support">list of approved ciphers</a> they want their website to support. For those that want to remove weak ciphers and only allow the strongest ciphers available, they can now do so through one API call. To do this, they would use the <a href="https://api.cloudflare.com/#zone-settings-change-ciphers-setting">Cipher Suite Settings endpoint</a> and indicate their allowlist of ciphers for TLS termination.</p>
 	<p>Customers like <a href="https://onetrust.com">OneTrust</a> and <a href="https://report-uri.com">Report URI</a> use this functionality to improve their security posture:</p>
-	<blockquote>Advanced Certificate Manager has simplified the way we manage certificates across our many domains, while still allowing us to meet our strict security requirements. The ability to manage cipher suites, as well as auto-renewal within our parameters, creates for an available and secure environment.<br>- <strong>Colin Henderson, Head of Information Security, OneTrust</strong></blockquote>
-	<blockquote>We've been using Advanced Certificate Manager for fine-grained control over the cipher suites used in our TLS connections and to reduce the lifetime of certificates issued for our domain. With stronger cipher suites and shorter certificates we're better able to protect connections made to our site and the data within them.<br>- <strong>Scott Helme, Founder, Report URI</strong></blockquote>
-	<h3 id="custom-signing-requests">Custom Signing Requests</h3>
+	<blockquote>
+		<p>Advanced Certificate Manager has simplified the way we manage certificates across our many domains, while still allowing us to meet our strict security requirements. The ability to manage cipher suites, as well as auto-renewal within our parameters, creates for an available and secure environment.- <b>Colin Henderson, Head of Information Security, OneTrust</b></p>
+	</blockquote>
+	<blockquote>
+		<p>We've been using Advanced Certificate Manager for fine-grained control over the cipher suites used in our TLS connections and to reduce the lifetime of certificates issued for our domain. With stronger cipher suites and shorter certificates we're better able to protect connections made to our site and the data within them.- <b>Scott Helme, Founder, Report URI</b></p>
+	</blockquote>
+	<h3>Custom Signing Requests</h3>
 	<p>Some customers want to acquire their own SSL certificate from a certificate authority (CA), but want Cloudflare to generate and store the associated private key. These customers can now use Advanced Certificate Manager to generate a Certificate Signing Request (CSR) with their organization name, location, etc. Then, they would take it to their preferred CA, obtain a certificate, and upload it to Cloudflare. Cloudflare takes key management seriously, with both highly secure key management software and <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">hardware controls</a>. With CSR support, customers can get a certificate from the CA of their choice, all without the private key leaving our network, so that they do not have to worry about any unsafe handling.</p>
-	<h3 id="additional-features">Additional Features</h3>
+	<h3>Additional Features</h3>
 	<p>Apart from the security features that ACM has to offer, we are excited to give our customers an easy-to-use and configurable certificate management solution. With ACM, customers will now be able to issue up to 100 edge certificates per zone, which includes the zone apex and up to 50 hostnames. This means your certificate now has multi-level support, so you can create certificates for second and third-level hostnames. In addition, customers will be able to choose their preferred validation method (HTTP, TXT, or Email) and their certificate authority (Let’s Encrypt or Digicert).</p>
-	<blockquote>Compared to our previous CDN, using Cloudflare gives us the lifetime advantage of creating and maintaining wildcard certificates. With just a few lines of Terraform code, Cloudflare does all the work for you. <br><strong>- Nikita Ponomarev, DevOps Engineer at Spark Networks </strong></blockquote>
+	<blockquote>
+		<p>Compared to our previous CDN, using Cloudflare gives us the lifetime advantage of creating and maintaining wildcard certificates. With just a few lines of Terraform code, Cloudflare does all the work for you.<b>- Nikita Ponomarev, DevOps Engineer at Spark Networks</b></p>
+	</blockquote>
 	<p>To learn how to configure ACM settings, check our <a href="https://developers.cloudflare.com/ssl/advanced-certificate-manager">developer docs</a>.</p>
-	<h3 id="upgrading-from-dedicated-certificates">Upgrading from Dedicated Certificates</h3>
+	<h3>Upgrading from Dedicated Certificates</h3>
 	<p>For our customers who have been using dedicated certificates, we are excited to announce that we will be upgrading them to Advanced Certificate Manager in the next month.</p>
-	<p>This will be a zero-downtime migration, and you should expect to see your Certificate Type change in the dashboard from <strong>Dedicated</strong> to <strong>Advanced</strong>.</p>
-	<p>In addition to that, if you have been using our API to issue dedicated certificates, you will need to switch to the new ACM certificate issuance <a href="https://api.cloudflare.com/#certificate-packs-order-advanced-certificate-manager-certificate-pack">API endpoint.</a> One change to note is that in the API response field, the “type” will change from “Dedicated” to “Advanced”.</p><!--kg-card-begin: markdown-->
-	<pre><code>{
+	<p>This will be a zero-downtime migration, and you should expect to see your Certificate Type change in the dashboard from <b>Dedicated</b> to <b>Advanced</b>.</p>
+	<p>In addition to that, if you have been using our API to issue dedicated certificates, you will need to switch to the new ACM certificate issuance <a href="https://api.cloudflare.com/#certificate-packs-order-advanced-certificate-manager-certificate-pack">API endpoint.</a> One change to note is that in the API response field, the “type” will change from “Dedicated” to “Advanced”.</p>
+	<pre class="language-bash"><code class="language-bash">{
   "success": true,
   "errors": [],
   "messages": [],
@@ -61,9 +82,7 @@
     "certificate_authority": "digicert",
     "cloudflare_branding": false
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Customers who have already purchased Dedicated Certificates will be grandfathered into their current pricing. For all other Free, Pro, and Business customers, Advanced Certificate Manager will be $10/month per zone. This means customers will get all the benefits of Dedicated Certificates, with the features that ACM offers at no additional cost.</p>
 	<p>If you are an Enterprise customer interested in Advanced Certificate Manager, talk to your account team.</p>
 </div>

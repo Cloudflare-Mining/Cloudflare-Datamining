@@ -1,59 +1,82 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/analysis-of-todays-centurylink-level-3-outage">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/analysis-of-todays-centurylink-level-3-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/analysis-of-todays-centurylink-level-3-outage">日本語</a>, <a href="https://blog.cloudflare.com/es-es/analysis-of-todays-centurylink-level-3-outage">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/analysis-of-todays-centurylink-level-3-outage">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nsX8J6T5JObTBYKWf1sLF/d40318864fff3a4f44c87aa21934c161/analysis-of-todays-centurylink-level-3-outage.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today CenturyLink/Level(3), a major ISP and Internet bandwidth provider, experienced a significant outage that impacted some of Cloudflare’s customers as well as a significant number of other services and providers across the Internet. While we’re waiting for a postmortem from CenturyLink/Level(3), I wanted to write up the timeline of what we saw, how Cloudflare’s systems routed around the problem, why some of our customers were still impacted in spite of our mitigations, and what appears to be the likely root cause of the issue.</p>
-	<h3 id="increase-in-errors">Increase In Errors</h3>
-	<p>At 10:03 UTC our monitoring systems started to observe an increased number of errors reaching our customers’ origin servers. These show up as “522 Errors” and indicate that there is an issue connecting from Cloudflare’s network to wherever our customers’ applications are hosted. </p>
+	<h3>Increase In Errors</h3>
+	<p>At 10:03 UTC our monitoring systems started to observe an increased number of errors reaching our customers’ origin servers. These show up as “522 Errors” and indicate that there is an issue connecting from Cloudflare’s network to wherever our customers’ applications are hosted.</p>
 	<p>Cloudflare is connected to CenturyLink/Level(3) among a large and diverse set of network providers. When we see an increase in errors from one network provider, our systems automatically attempt to reach customers’ applications across alternative providers. Given the number of providers we have access to, we are generally able to continue to route traffic even when one provider has an issue.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/1-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>The diverse set of network providers Cloudflare connects to. Source: <a href="https://bgp.he.net/AS13335#_asinfo">https://bgp.he.net/AS13335#_asinfo</a><span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Ucm3D0MTr0jFICxEASaRY/9336a626cad3523be19c85f82884a206/1-3.png" alt="" class="kg-image" width="1462" height="936" loading="lazy">
+
 	</figure>
-	<h3 id="automatic-mitigations">Automatic Mitigations</h3>
+	<p>The diverse set of network providers Cloudflare connects to. Source: <a href="https://bgp.he.net/AS13335#_asinfo">https://bgp.he.net/AS13335#_asinfo</a>‌‌</p>
+	<h3>Automatic Mitigations</h3>
 	<p>In this case, beginning within seconds of the increase in 522 errors, our systems automatically rerouted traffic from CenturyLink/Level(3) to alternate network providers we connect to including Cogent, NTT, GTT, Telia, and Tata.</p>
 	<p>Our Network Operations Center was also alerted and our team began taking additional steps to mitigate any issues our automated systems weren’t automatically able to address beginning at 10:09 UTC. We were successful in keeping traffic flowing across our network for most customers and end users even with the loss of CenturyLink/Level(3) as one of our network providers.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/2-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Dashboard Cloudflare’s automated systems recognizing the damage to the Internet caused by the CenturyLink/Level(3) failure and automatically routing around it.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IaqqA25SioJLk6FRblsgn/5ea254308286447d8ec0134eb54d517c/2-1.png" alt="" class="kg-image" width="1600" height="1174" loading="lazy">
+
 	</figure>
+	<p>Dashboard Cloudflare’s automated systems recognizing the damage to the Internet caused by the CenturyLink/Level(3) failure and automatically routing around it.</p>
 	<p>The graph below shows traffic between Cloudflare’s network and six major tier-1 networks that are among the network providers we connect to. The red portion shows CenturyLink/Level(3) traffic, which dropped to near-zero during the incident. You can also see how we automatically shifted traffic to other network providers during the incident to mitigate the impact and ensure traffic continued to flow.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/3-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Traffic across six major tier-1 networks that are among the network providers Cloudflare connects to. CenturyLink/Level(3) in red.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gRbJZ7VJViIBe1zJ9mbC6/4ae08df73dbc0979adec4788165e1ffa/3-2.png" alt="" class="kg-image" width="1510" height="319" loading="lazy">
+
 	</figure>
-	<p>The following graph shows 522 errors (indicating our inability to reach customers’ applications) across our network during the time of the incident. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/4-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Traffic across six major tier-1 networks that are among the network providers Cloudflare connects to. CenturyLink/Level(3) in red.</p>
+	<p>The following graph shows 522 errors (indicating our inability to reach customers’ applications) across our network during the time of the incident.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AcGLxXmSoDEtjAKB4thEQ/166512641ad5c2d3d5bb4b4b9b0508ca/4-2.png" alt="" class="kg-image" width="1428" height="880" loading="lazy">
+
+	</figure>
 	<p>The sharp spike up at 10:03 UTC was the CenturyLink/Level(3) network failing. Our automated systems immediately kicked in to attempt to reroute and rebalance traffic across alternative network providers, causing the errors to drop in half immediately and then fall to approximately 25 percent of the peak as those paths were automatically optimized.</p>
 	<p>Between 10:03 UTC and 10:11 UTC our systems automatically disabled CenturyLink/Level(3) in the 48 cities where we’re connected to them and rerouted traffic across alternate network providers. Our systems take into account capacity on other providers before shifting out traffic in order to prevent cascading failures. This is why the failover, while automatic, isn’t instantaneous in all locations. Our team was able to apply additional manual mitigations to reduce the number of errors another 5 percent.</p>
-	<h3 id="why-did-the-errors-not-drop-to-zero">Why Did the Errors Not Drop to Zero?</h3>
+	<h3>Why Did the Errors Not Drop to Zero?</h3>
 	<p>Unfortunately, there were still an elevated number of errors indicating we were still unable to reach some customers. CenturyLink/Level(3) is among the largest network providers in the world. As a result, many hosting providers only have single-homed connectivity to the Internet through their network.</p>
 	<p>To use the <a href="https://www.theverge.com/2014/8/20/6046003/a-history-of-metaphors-for-the-internet">old Internet as a “superhighway” analogy</a>, that’s like only having a single offramp to a town. If the offramp is blocked, then there’s no way to reach the town. This was exacerbated in some cases because CenturyLink/Level(3)’s network was not honoring route withdrawals and continued to advertise routes to networks like Cloudflare’s even after they’d been withdrawn. In the case of customers whose only connectivity to the Internet is via CenturyLink/Level(3), or if CenturyLink/Level(3) continued to announce bad routes after they'd been withdrawn, there was no way for us to reach their applications and they continued to see 522 errors until CenturyLink/Level(3) resolved their issue around 14:30 UTC.</p>
 	<p>The same was a problem on the other (“eyeball”) side of the network. Individuals need to have an onramp onto the Internet’s superhighway. An onramp to the Internet is essentially what your ISP provides. CenturyLink is one of the largest ISPs in the United States.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/image-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Source: <a href="https://broadbandnow.com/CenturyLink">https://broadbandnow.com/CenturyLink</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2icudbLYouwM170cYZ6Sgg/5ca2e06c4716d970fd4953fd4a3f9c9a/image-3.png" alt="" class="kg-image" width="1426" height="1406" loading="lazy">
+
 	</figure>
+	<p>Source: <a href="https://broadbandnow.com/CenturyLink">https://broadbandnow.com/CenturyLink</a></p>
 	<p>Because this outage appeared to take all of the CenturyLink/Level(3) network offline, individuals who are CenturyLink customers would not have been able to reach Cloudflare or any other Internet provider until the issue was resolved. Globally, we saw a 3.5% drop in global traffic during the outage, nearly all of which was due to a nearly complete outage of CenturyLink’s ISP service across the United States.</p>
-	<h3 id="so-what-likely-happened-here">So What Likely Happened Here?</h3>
+	<h3>So What Likely Happened Here?</h3>
 	<p>While we will not know exactly what happened until CenturyLink/Level(3) issue a post mortem, we can see clues from BGP announcements and how they propagated across the Internet during the outage. BGP is the Border Gateway Protocol. It is how routers on the Internet announce to each other what IPs sit behind them and therefore what traffic they should receive.</p>
 	<p>Starting at 10:04 UTC, there were a significant number of BGP updates. A BGP update is the signal a router makes to say that a route has changed or is no longer available. Under normal conditions, the Internet sees about 1.5MBs – 2MBs of BGP updates every 15 minutes. At the start of the incident, the number of BGP updates spiked to more than 26MBs of BGP updates per 15 minute period and stayed elevated throughout the incident.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/6-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Source: <a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QVexHMHnmU6OVZdcPpy94/3958dc6d776e9f8b9abc517eaeea5e2d/6-1.png" alt="" class="kg-image" width="734" height="312" loading="lazy">
+
 	</figure>
+	<p>Source: <a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></p>
 	<p>These updates show the instability of BGP routes inside the CenturyLink/Level(3) backbone. The question is what would have caused this instability. The CenturyLink/Level(3) status update offers some hints and points at a flowspec update as the root cause.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/7-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-s-flowspec">What’s Flowspec?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cy2Ywz7cnqyfNFwIX3nGa/80fb7304c891f9de78e268011bb79d4b/7-1.png" alt="" class="kg-image" width="1540" height="312" loading="lazy">
+
+	</figure>
+	<h3>What’s Flowspec?</h3>
 	<p>In CenturyLink/Level(3)’s update they mention that a bad Flowspec rule caused the issue. So what is Flowspec? Flowspec is an extension to BGP, which allows firewall rules to be easily distributed across a network, or even between networks, using BGP. Flowspec is a powerful tool. It allows you to efficiently push rules across an entire network almost instantly. It is great when you are trying to quickly respond to something like an attack, but it can be dangerous if you make a mistake.</p>
 	<p>At Cloudflare, early in our history, we used to use Flowspec ourselves to push out firewall rules in order to, for instance, mitigate large network-layer DDoS attacks. We <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">suffered our own Flowspec-induced outage more than 7 years ago</a>. We no longer use Flowspec ourselves, but it remains a common protocol for pushing out network firewall rules.</p>
 	<p>We can only speculate what happened at CenturyLink/Level(3), but one plausible scenario is that they issued a Flowspec command to try to block an attack or other abuse directed at their network. The status report indicates that the Flowspec rule prevented BGP itself from being announced. We have no way of knowing what that Flowspec rule was, but here’s one in Juniper’s format that would have blocked all BGP communications across their network.</p>
-	<pre><code>route DISCARD-BGP {
+	<pre class="language-bash"><code class="language-bash">route DISCARD-BGP {
    match {
       protocol tcp;
       destination-port 179;
    }
  then discard;
-}
-</code></pre>
-	<h3 id="why-so-many-updates">Why So Many Updates?</h3>
+}</code></pre>
+	<h3>Why So Many Updates?</h3>
 	<p>A mystery remains, however, why global BGP updates stayed elevated throughout the incident. If the rule blocked BGP then you would expect to see an increase in BGP announcements initially, and then they would fall back to normal.</p>
 	<p>One possible explanation is that the offending Flowspec rule came near the end of a long list of BGP updates. If that were the case, what may have happened is that every router in CenturyLink/Level(3)’s network would receive the Flowspec rule. They would then block BGP. That would cause them to stop receiving the rule. They would start back up again, working their way through all the BGP rules until they got to the offending Flowspec rule again. BGP would be dropped again. The Flowspec rule would no longer be received. And the loop would continue, over and over.</p>
 	<p>One challenge of this is that on every cycle, the queue of BGP updates would continue to increase within CenturyLink/Level(3)’s network. This may have gotten to a point where the memory and CPU of their routers was overloaded, causing an additional set of challenges to getting their network back online.</p>
-	<h3 id="why-did-it-take-so-long-to-fix">Why Did It Take So Long to Fix?</h3>
+	<h3>Why Did It Take So Long to Fix?</h3>
 	<p>This was a significant global Internet outage and, undoubtedly, the CenturyLink/Level(3) team received immediate alerts. They are a very sophisticated network operator with a world-class Network Operations Center (NOC). So why did it take more than four hours to resolve?</p>
 	<p>Again, we can only speculate. First, it may have been that the Flowspec rule and the significant load that large number of BGP updates imposed on their routers made it difficult for them to login to their own interfaces. Several of the other tier-1 providers took action, it appears at CenturyLink/Level(3)’s request, to de-peer their networks. This would have limited the number of BGP announcements being received by the CenturyLink/Level(3) network and helped give it time to catch up.</p>
 	<p>Second, it also may have been that the Flowspec rule was not issued by CenturyLink/Level(3) themselves but rather by one of their customers. Many network providers will allow Flowspec peering. This can be a powerful tool for downstream customers wishing to block attack traffic, but can make it much more difficult to track down an offending Flowspec rule when something goes wrong.</p>

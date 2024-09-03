@@ -1,37 +1,39 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><a href="http://www.flickr.com/photos/damonbillian/5934859823" title="multiplicity-II-pagination by dbillian, on Flickr"><img alt="multiplicity-II-pagination" src="http://farm7.static.flickr.com/6141/5934859823_979c223bab.jpg"></a></p>
+<div class="post-content lh-copy gray1">
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eLdKa5XU8ZoVypVmTTicX/78a314cd4efebb66b33e1a78c7022527/5934859823_979c223bab.jpg" alt="multiplicity-II-pagination" class="kg-image" width="300" height="191" loading="lazy">
+
+	</figure>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/5934859823">http://www.flickr.com/photos/damonbillian/5934859823/</a> "multiplicity-II-pagination by dbillian, on Flickr")</p>
 	<p>CloudFlare gets a lot of questions about caching and our free CDN (content delivery network), so I thought I would put together a really quick guide about what CloudFlare caches and more.</p>
-	<h4 id="whyshouldicachemystaticcontentatall">Why should I cache my static content at all?</h4>
+	<h4>Why should I cache my static content at all?</h4>
 	<p>Distributing your static content with CloudFlare's CDN will lead to faster page loading times for your visitors. As visitors are more inclined to bounce away from a slow loading site, you will reduce your bounce rate and increase the amount of time that people spend on your site. Or, in other words, a faster a website means your visitors will stay longer.</p>
-	<h4 id="doineedtodoanythingspecialtohavecloudflarecachemycontent">Do I need to do anything special to have CloudFlare cache my content?</h4>
+	<h4>Do I need to do anything special to have CloudFlare cache my content?</h4>
 	<p>No. Unlike many other traditional CDNs, CloudFlare is zero configuration. What this means is that there is no configuration once you sign up for CloudFlare. CloudFlare's technology will automatically cache the static <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">content based on file extensions</a>.</p>
-	<h4 id="ialreadyuseacdncanistillusecloudflare">I already use a CDN. Can I still use CloudFlare?</h4>
+	<h4>I already use a CDN. Can I still use CloudFlare?</h4>
 	<p>Absolutely. There are two setup options.</p>
-	<p><strong>Option 1:</strong><br>
-		If you want to use both CloudFlare and your current CDN, in your CloudFlare DNS Settings page, you want to make sure that the CNAME for the CDN subdomain is listed and that the cloud is orange. This means that the traffic passes through CloudFlare first, before hitting your other CDN. As a result, your bill for your other CDN provider should decrease.</p>
-	<p><strong>Option 2:</strong><br>
-		If you don't want to use CloudFlare on the same subdomains as your other CDN, you can turn CloudFlare 'off' for those subdomains by marking the cloud as gray. This means that none of the traffic to those subdomains will pass through CloudFlare's network.</p>
+	<p><b>Option 1:</b>If you want to use both CloudFlare and your current CDN, in your CloudFlare DNS Settings page, you want to make sure that the CNAME for the CDN subdomain is listed and that the cloud is orange. This means that the traffic passes through CloudFlare first, before hitting your other CDN. As a result, your bill for your other CDN provider should decrease.</p>
+	<p><b>Option 2:</b>If you don't want to use CloudFlare on the same subdomains as your other CDN, you can turn CloudFlare 'off' for those subdomains by marking the cloud as gray. This means that none of the traffic to those subdomains will pass through CloudFlare's network.</p>
 	<p>To access your CloudFlare DNS Settings page:</p>
 	<p>My Websites-&gt;Settings-&gt;DNS settings</p>
-	<h4 id="willcloudflareconflictwithanyofmywordpresscachingplugins">Will CloudFlare conflict with any of my WordPress caching plugins?</h4>
-	<p>CloudFlare is a complementary offering to <a href="http://www.tutorial9.net/tutorials/web-tutorials/wordpress-caching-whats-the-best-caching-plugin">popular WordPress caching plugins</a>. Where as most WordPress caching plugins focus on optimizing your database and server, CloudFlare optimizes at the network level. CloudFlare has partnered with the popular W3 Total Cache plugin and is included as an option in <a href="https://blog.cloudflare.com/w3-total-cache-w3tc-total-cloudflare-integrat">W3 Total<br>
-			Cache</a> (W3TC).</p>
+	<h4>Will CloudFlare conflict with any of my WordPress caching plugins?</h4>
+	<p>CloudFlare is a complementary offering to <a href="http://www.tutorial9.net/tutorials/web-tutorials/wordpress-caching-whats-the-best-caching-plugin">popular WordPress caching plugins</a>. Where as most WordPress caching plugins focus on optimizing your database and server, CloudFlare optimizes at the network level. CloudFlare has partnered with the popular W3 Total Cache plugin and is included as an option in <a href="https://blog.cloudflare.com/w3-total-cache-w3tc-total-cloudflare-integrat">W3 TotalCache</a> (W3TC).</p>
 	<p>On the topic of WordPress, <a href="http://wordpress.org/extend/plugins/cloudflare">CloudFlare has a WordPress plugin</a> as well. This ensures that WordPress users get the most out of the service. Note: If you activate CloudFlare through W3TC, then you do not need to use the CloudFlare WordPress plugin as well.</p>
-	<h4 id="whatkindofstaticcontentdoescloudflarecache">What kind of static content does CloudFlare cache?</h4>
+	<h4>What kind of static content does CloudFlare cache?</h4>
 	<p>CloudFlare caches common static content file extensions, including JavaScript, CSS and images. The full list of what CloudFlare caches can be found <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">here</a>.</p>
-	<h4 id="doescloudflarecachedynamiccontentsuchashtmlorphp">Does CloudFlare cache dynamic content, such as HTML or PHP?</h4>
+	<h4>Does CloudFlare cache dynamic content, such as HTML or PHP?</h4>
 	<p>CloudFlare does not currently cache these content types.</p>
-	<h4 id="willcachingmystaticcontentaffectdynamicupdatestomysite">Will caching my static content affect dynamic updates to mysite?</h4>
+	<h4>Will caching my static content affect dynamic updates to mysite?</h4>
 	<p>No, dynamic updates to your site will still occur as they do now. CloudFlare is fully compatible.</p>
-	<h4 id="ineedtoupdatemystaticcontentthatcloudflareiscachingwhatdoido">I need to update my static content that CloudFlare is caching. What do I do?</h4>
+	<h4>I need to update my static content that CloudFlare is caching. What do I do?</h4>
 	<p>If you plan on changing the static content on your site, like an image, we recommend going to <a href="https://support.cloudflare.com/kb/what-do-the-various-cloudflare-settings-do/what-does-cloudflare-development-mode-mean">Development Mode</a> on your CloudFlare Settings page. Development Mode will bypass CloudFlare's cache and so any change that you make will be immediately live around the world. Development Mode is turned on and off with one click.</p>
 	<p>If you forget to enable Development Mode before making the change, you can simply <a href="https://blog.cloudflare.com/introducing-the-cloudflare-cache-purge-featur">purge your CloudFlare cache</a>.</p>
 	<p>It takes less than one minute to purge your cache and by doing this, your new resources will automatically be live around the world.</p>
 	<p>If you don't want to purge your CloudFlare cache, then CloudFlare's cache will automatically expire after two to four hours.</p>
 	<p>Directions for getting to your Development Mode and Purge Cache settings: My websites-&gt;Settings-&gt;CloudFlare Settings.</p>
-	<h4 id="howcancloudflareofferafreecdn">How can CloudFlare offer a Free CDN?</h4>
+	<h4>How can CloudFlare offer a Free CDN?</h4>
 	<p>CloudFlare believes that all websites should be fast. Because of CloudFlare's technology, we've been able to build a CDN that is available to any website online. From the beginning, we worked to minimize the costs of serving every byte. Wherever possible, we use our own custom-built systems that are designed for this purpose. We buy our bandwidth through the wholesale market, which means we're paying for the size of our pipe, not for each byte we serve through it. We also peer with other networks wherever possible in order to drive the cost of bandwidth as close to zero as possible. In addition to a Free service, CloudFlare offers additional paid plans and services.</p>
 	<p><a href="https://cloudflare.com/sign-up">Sign up today</a> to get all of the benefits of CloudFlare's free CDN.</p>
-	<!--kg-card-end: markdown-->
 </div>

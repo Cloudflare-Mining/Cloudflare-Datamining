@@ -1,14 +1,16 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-1.png" class="kg-image" alt="Cloudflare's handling of a bug in interpreting IPv4-mapped IPv6 addresses" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bM3bqKIK97Fl11tZZIlhf/bb4a0ef96b88fdf14dd8afc970f8a933/image1-1.png" alt="Cloudflare's handling of a bug in interpreting IPv4-mapped IPv6 addresses" class="kg-image" width="1200" height="676" loading="lazy">
+
+	</figure>
 	<p>In November 2022, our <a href="https://www.cloudflare.com/disclosure">bug bounty program</a> received a critical and very interesting report. The report stated that certain types of DNS records could be used to bypass some of our network policies and connect to ports on the loopback address (e.g. 127.0.0.1) of our servers. This post will explain how we dealt with the report, how we fixed the bug, and the outcome of our internal investigation to see if the vulnerability had been previously exploited.</p>
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc4291#section-2-5-5">RFC 4291</a> defines ways to embed an IPv4 address into IPv6 addresses. One of the methods defined in the RFC is to use IPv4-mapped IPv6 addresses, that have the following format:</p><!--kg-card-begin: markdown-->
-	<pre><code>   |                80 bits               | 16 |      32 bits        |
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc4291#section-2-5-5">RFC 4291</a> defines ways to embed an IPv4 address into IPv6 addresses. One of the methods defined in the RFC is to use IPv4-mapped IPv6 addresses, that have the following format:</p>
+	<pre class="language-bash"><code class="language-bash">   |                80 bits               | 16 |      32 bits        |
    +--------------------------------------+--------------------------+
    |0000..............................0000|FFFF|    IPv4 address     |
-   +--------------------------------------+----+---------------------+
-</code></pre>
-	<!--kg-card-end: markdown-->
+   +--------------------------------------+----+---------------------+</code></pre>
 	<p>In IPv6 notation, the corresponding mapping for <code>127.0.0.1</code> is <code>::ffff:127.0.0.1</code> (<a href="https://datatracker.ietf.org/doc/html/rfc4038">RFC 4038</a>)</p>
 	<p>The researcher was able to use DNS entries based on mapped addresses to bypass some of our controls and access ports on the loopback address or non-routable IPs.</p>
 	<p>This vulnerability was reported on November 27 to our bug bounty program. Our Security Incident Response Team (SIRT) was contacted, and incident response activities began shortly after the report was filed. A hotpatch was deployed three hours later to prevent exploitation of the bug.</p><!--kg-card-begin: html-->
@@ -120,39 +122,33 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="blocking-exploitation">Blocking exploitation</h3>
+	<h3>Blocking exploitation</h3>
 	<p>Immediately after the vulnerability was reported to our Bug Bounty program, the team began working to understand the issue and find ways to quickly block potential exploitation. It was determined that the fastest way to prevent exploitation would be to block the creation of the DNS records required to execute the attack.</p>
 	<p>The team then began to implement a patch to prevent the creation of DNS records that include IPv6 addresses that map loopback or RFC 1918 (internal) IPv4 addresses. The fix was fully deployed and confirmed three hours after the report was filed. We later realized that this change was insufficient because records hosted on external DNS servers could also be used in this attack.</p>
-	<h3 id="the-exploit">The exploit</h3>
-	<p>The exploit provided consisted of the following: a DNS entry, and a Cloudflare Worker. The DNS entry was an <code>AAAA</code> record pointing to <code>::ffff:127.0.0.1: </code></p>
+	<h3>The exploit</h3>
+	<p>The exploit provided consisted of the following: a DNS entry, and a Cloudflare Worker. The DNS entry was an <code>AAAA</code> record pointing to <code>::ffff:127.0.0.1:</code></p>
 	<p><code>exploit.example.com</code> <code>AAAA</code> <code>::ffff:127.0.0.1</code></p>
-	<p>The worker included the following code:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">export default {
+	<p>The worker included the following code:</p>
+	<pre class="language-json"><code class="language-json">export default {
     async fetch(request) {
         const requestJson = await request.json()
         return fetch(requestJson.url, requestJson)
     }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>The Worker was given a custom URL such as <code>proxy.example.com</code>.</p>
-	<p>With that setup, it was possible to make the worker attempt connections on the loopback interface of the server where it was running. The call would look like this:</p><!--kg-card-begin: markdown-->
-	<pre><code>curl https://proxy.example.com/json -d '{"url":"http://exploit.example.com:80/url_path"}'
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>With that setup, it was possible to make the worker attempt connections on the loopback interface of the server where it was running. The call would look like this:</p>
+	<pre class="language-bash"><code class="language-bash">curl https://proxy.example.com/json -d '{"url":"http://exploit.example.com:80/url_path"}'</code></pre>
 	<p>The attack could then be scripted to attempt to connect to multiple ports on the server.</p>
-	<p>It was also found that a similar setup could be used with other IPv4 addresses to attempt connections into internal services. In this case, the DNS entry would look like:</p><!--kg-card-begin: markdown-->
-	<pre><code>exploit.example.com AAAA ::ffff:10.0.0.1
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>It was also found that a similar setup could be used with other IPv4 addresses to attempt connections into internal services. In this case, the DNS entry would look like:</p>
+	<pre class="language-bash"><code class="language-bash">exploit.example.com AAAA ::ffff:10.0.0.1</code></pre>
 	<p>This exploit would allow an attacker to connect to services running on the loopback interface of the server. If the attacker was able to bypass the security and authentication mechanisms of a service, it could impact the confidentiality and integrity of data. For services running on other servers, the attacker could also use the worker to attempt connections and map services available over the network. As in most networks, Cloudflare's network policies and ACLs must allow a few ports to be accessible. These ports would be accessible by an attacker using this exploit.</p>
-	<h3 id="investigation">Investigation</h3>
+	<h3>Investigation</h3>
 	<p>We started an investigation to understand the root cause of the problem and created a proof-of-concept that allowed the team to debug the issue. At the same time, we started a parallel investigation to determine if the issue had been previously exploited.</p>
 	<p>It all happened when two bugs collided.</p>
 	<p>The first bug happened in our internal DNS system which is responsible for mapping hostnames to IP addresses of our customers’ origin servers (the DNS system). When the DNS system tried to answer a query for the DNS record from exploit.example.com, it serialized the IP as a string. The <a href="https://pkg.go.dev/net#IP.String">Golang net library</a> used for DNS automatically converted the IP <code>::ffff:10.0.0.1</code> to string “10.0.0.1”. However, the DNS system still treated it as an IPv6 address. So a query response <code>{ipv6: “10.0.0.1”}</code> was returned.</p>
 	<p>The second bug was in our internal HTTP system (the proxy) which is responsible for forwarding HTTP traffic to customer’s origin servers. The bug happened in how the proxy validates this DNS response, <code>{ipv6: “10.0.0.1”}</code>. The proxy has two deny lists of IPs that are not allowed to be used, one for IPv4 and one for IPv6. These lists contain localhost IPs and private IPs. The bug was that the proxy system compared the address 10.0.0.1 against the IPv6 deny list because the address was in the “ipv6” section. Naturally the address didn’t match any entry in the deny list. So the address was allowed to be used as an origin IP address.</p>
 	<p>The second investigation team searched through the logs and found no evidence of previous exploitation of this vulnerability. The team also checked Cloudflare DNS for entries using IPv4-mapped IPv6 addresses and determined that all the existing entries had been used for testing purposes. As of now, there are no signs that this vulnerability could have been previously used against Cloudflare systems.</p>
-	<h3 id="remediating-the-vulnerability">Remediating the vulnerability</h3>
+	<h3>Remediating the vulnerability</h3>
 	<p>To address this issue we implemented a fix in the proxy service to correctly use the deny list of the parsed address, not the deny list of the IP family the DNS API response claimed to be, to validate the IP address. We confirmed both in our test and production environments that the fix did prevent the issue from happening again.</p>
 	<p>Beyond maintaining a <a href="https://www.cloudflare.com/disclosure">bug bounty program</a>, we regularly perform internal security reviews and hire third-party firms to audit the software we develop. But it is through our bug bounty program that we receive some of the most interesting and creative reports. Each report has helped us improve the security of our services. We invite those that find a security issue in any of Cloudflare’s services to report it to us through <a href="https://hackerone.com/cloudflare">HackerOne</a>.</p>
 </div>

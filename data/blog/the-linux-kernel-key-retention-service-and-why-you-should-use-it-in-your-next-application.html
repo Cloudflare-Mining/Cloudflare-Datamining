@@ -1,16 +1,20 @@
-<div class="mb2 gray5">17 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application-pt-br">Português</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/unnamed-5.png" class="kg-image" alt="The Linux Kernel Key Retention Service and why you should use it in your next application" loading="lazy"></figure>
+<div class="mb2 gray5">15 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">Français</a>, <a href="https://blog.cloudflare.com/de-de/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">Português</a>, <a href="https://blog.cloudflare.com/es-es/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p><i></i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LKKOrcwGlRDUpSWhMkxe4/94d594f713f49ea1c416b233bf4d2f46/unnamed-5.png" alt="The Linux Kernel Key Retention Service and why you should use it in your next application" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>We want our digital data to be safe. We want to visit websites, send bank details, type passwords, sign documents online, login into remote computers, encrypt data before storing it in databases and be sure that nobody can tamper with it. Cryptography can provide a high degree of data security, but we need to protect cryptographic keys.</p>
 	<p>At the same time, we can’t have our key written somewhere securely and just access it occasionally. Quite the opposite, it’s involved in every request where we do crypto-operations. If a site supports TLS, then the private key is used to establish each connection.</p>
 	<p>Unfortunately cryptographic keys sometimes leak and when it happens, it is a big problem. Many leaks happen because of software bugs and security vulnerabilities. In this post we will learn how the Linux kernel can help protect cryptographic keys from a whole class of potential security vulnerabilities: memory access violations.</p>
-	<h3 id="memory-access-violations">Memory access violations</h3>
+	<h3>Memory access violations</h3>
 	<p>According to the <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues">NSA</a>, around 70% of vulnerabilities in both Microsoft's and Google's code were related to memory safety issues. One of the consequences of incorrect memory accesses is leaking security data (including cryptographic keys). Cryptographic keys are just some (mostly random) data stored in memory, so they may be subject to memory leaks like any other in-memory data. The below example shows how a cryptographic key may accidentally leak via stack memory reuse:</p>
-	<p>broken.c</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
-#include &lt;stdint.h&gt;
+	<p>broken.c</p>
+	<pre class="language-cpp"><code class="language-cpp">#include <stdio.h>
+#include <stdint.h>
 
 static void encrypt(void)
 {
@@ -31,20 +35,20 @@ int main(void)
     /* notify that we're done */
     log_completion();
     return 0;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Compile and run our program:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc -o broken broken.c
+}</stdint.h></stdio.h></code></pre>
+	<p>Compile and run our program:</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc -o broken broken.c
 $ ./broken 
 encrypting with super secret key: hunter2
-not important, just fyi: hunter2
-</code></pre>
-	<!--kg-card-end: markdown-->
+not important, just fyi: hunter2</code></pre>
 	<p>Oops, we printed the secret key in the “fyi” logger instead of the intended log message! There are two problems with the code above:</p>
 	<ul>
-		<li>we didn’t securely destroy the key in our pseudo-encryption function (by overwriting the key data with zeroes, for example), when we finished using it</li>
-		<li>our buggy logging function has access to any memory within our process</li>
+		<li>
+			<p>we didn’t securely destroy the key in our pseudo-encryption function (by overwriting the key data with zeroes, for example), when we finished using it</p>
+		</li>
+		<li>
+			<p>our buggy logging function has access to any memory within our process</p>
+		</li>
 	</ul>
 	<p>And while we can probably easily fix the first problem with some additional code, the second problem is the inherent result of how software runs inside the operating system.</p>
 	<p>Each process is given a block of contiguous virtual memory by the operating system. It allows the kernel to share limited computer resources among several simultaneously running processes. This approach is called <a href="https://en.wikipedia.org/wiki/Virtual_memory">virtual memory management</a>. Inside the virtual memory a process has its own address space and doesn’t have access to the memory of other processes, but it can access any memory within its address space. In our example we are interested in a piece of process memory called the stack.</p>
@@ -54,47 +58,75 @@ not important, just fyi: hunter2
 	<p>At the beginning we have a stack frame of the main function. Further, the <code>main()</code> function calls <code>encrypt()</code> which will be placed on the stack immediately below the <code>main()</code> (the code stack grows downwards). Inside <code>encrypt()</code> the compiler requests 8 bytes for the <code>key</code> variable (7 bytes of data + C-null character). When <code>encrypt()</code> finishes execution, the same memory addresses are taken by <code>log_completion()</code>. Inside the <code>log_completion()</code> the compiler allocates eight bytes for the <code>msg</code> variable. Accidentally, it was put on the stack at the same place where our private key was stored before. The memory for <code>msg</code> was only allocated, but not initialized, the data from the previous function left as is.</p>
 	<p>Additionally, to the code bugs, programming languages provide unsafe functions known for the safe-memory vulnerabilities. For example, for C such functions are <code>printf()</code>, <code>strcpy()</code>, <code>gets()</code>. The function <code>printf()</code> doesn’t check how many arguments must be passed to replace all placeholders in the format string. The function arguments are placed on the stack above the function stack frame, <code>printf()</code> fetches arguments according to the numbers and type of placeholders, easily going off its arguments and accessing data from the stack frame of the previous function.</p>
 	<p>The NSA advises us to use safety-memory languages like Python, Go, Rust. But will it completely protect us?</p>
-	<p>The Python compiler will definitely check boundaries in many cases for you and notify with an error:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-python">&gt;&gt;&gt; print("x: {}, y: {}, {}".format(1, 2))
+	<p>The Python compiler will definitely check boundaries in many cases for you and notify with an error:</p>
+	<pre class="language-python"><code class="language-python">&gt;&gt;&gt; print("x: {}, y: {}, {}".format(1, 2))
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-IndexError: Replacement index 2 out of range for positional args tuple
-</code></pre>
-	<!--kg-card-end: markdown-->
+  File "<stdin>", line 1, in <module>
+IndexError: Replacement index 2 out of range for positional args tuple</module></stdin></code></pre>
 	<p>However, this is a quote from one of 36 (for now) <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html">vulnerabilities</a>:</p>
-	<blockquote><em>Python 2.7.14 is vulnerable to a Heap-Buffer-Overflow as well as a Heap-Use-After-Free.</em></blockquote>
+	<blockquote>
+		<p><i>Python 2.7.14 is vulnerable to a Heap-Buffer-Overflow as well as a Heap-Use-After-Free.</i></p>
+	</blockquote>
 	<p>Golang has its own list of <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html">overflow vulnerabilities</a>, and has an <a href="https://pkg.go.dev/unsafe">unsafe package</a>. The name of the package speaks for itself, usual rules and checks don’t work inside this package.</p>
-	<h3 id="heartbleed">Heartbleed</h3>
+	<h3>Heartbleed</h3>
 	<p>In 2014, the Heartbleed bug was discovered. The (at the time) most used cryptography library OpenSSL leaked private keys. We experienced it <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">too</a>.</p>
-	<h3 id="mitigation">Mitigation</h3>
+	<h3>Mitigation</h3>
 	<p>So memory bugs are a fact of life, and we can’t really fully protect ourselves from them. But, given the fact that cryptographic keys are much more valuable than the other data, can we do better protecting the keys at least?</p>
 	<p>As we already said, a memory address space is normally associated with a process. And two different processes don’t share memory by default, so are naturally isolated from each other. Therefore, a potential memory bug in one of the processes will not accidentally leak a cryptographic key from another process. The security of ssh-agent builds on this principle. There are always two processes involved: a client/requester and the <a href="https://linux.die.net/man/1/ssh-agent">agent</a>.</p>
-	<blockquote><em>The agent will never send a private key over its request channel. Instead, operations that require a private key will be performed by the agent, and the result will be returned to the requester. This way, private keys are not exposed to clients using the agent.</em></blockquote>
+	<blockquote>
+		<p><i>The agent will never send a private key over its request channel. Instead, operations that require a private key will be performed by the agent, and the result will be returned to the requester. This way, private keys are not exposed to clients using the agent.</i></p>
+	</blockquote>
 	<p>A requester is usually a network-facing process and/or processing untrusted input. Therefore, the requester is much more likely to be susceptible to memory-related vulnerabilities but in this scheme it would never have access to cryptographic keys (because keys reside in a separate process address space) and, thus, can never leak them.</p>
 	<p>At Cloudflare, we employ the same principle in <a href="https://blog.cloudflare.com/heartbleed-revisited">Keyless SSL</a>. Customer private keys are stored in an isolated environment and protected from Internet-facing connections.</p>
-	<h3 id="linux-kernel-key-retention-service">Linux Kernel Key Retention Service</h3>
+	<h3>Linux Kernel Key Retention Service</h3>
 	<p>The client/requester and agent approach provides better protection for secrets or cryptographic keys, but it brings some drawbacks:</p>
 	<ul>
-		<li>we need to develop and maintain two different programs instead of one</li>
-		<li>we also need to design a well-defined-interface for communication between the two processes</li>
-		<li>we need to implement the communication support between two processes (Unix sockets, shared memory, etc.)</li>
-		<li>we might need to authenticate and support ACLs between the processes, as we don’t want any requester on our system to be able to use our cryptographic keys stored inside the agent</li>
-		<li>we need to ensure the agent process is up and running, when working with the client/requester process</li>
+		<li>
+			<p>we need to develop and maintain two different programs instead of one</p>
+		</li>
+		<li>
+			<p>we also need to design a well-defined-interface for communication between the two processes</p>
+		</li>
+		<li>
+			<p>we need to implement the communication support between two processes (Unix sockets, shared memory, etc.)</p>
+		</li>
+		<li>
+			<p>we might need to authenticate and support ACLs between the processes, as we don’t want any requester on our system to be able to use our cryptographic keys stored inside the agent</p>
+		</li>
+		<li>
+			<p>we need to ensure the agent process is up and running, when working with the client/requester process</p>
+		</li>
 	</ul>
 	<p>What if we replace the agent process with the Linux kernel itself?</p>
 	<ul>
-		<li>it is already running on our system (otherwise our software would not work)</li>
-		<li>it has a well-defined interface for communication (system calls)</li>
-		<li>it can enforce various ACLs on kernel objects</li>
-		<li>and it runs in a separate address space!</li>
+		<li>
+			<p>it is already running on our system (otherwise our software would not work)</p>
+		</li>
+		<li>
+			<p>it has a well-defined interface for communication (system calls)</p>
+		</li>
+		<li>
+			<p>it can enforce various ACLs on kernel objects</p>
+		</li>
+		<li>
+			<p>and it runs in a separate address space!</p>
+		</li>
 	</ul>
 	<p>Fortunately, the <a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html">Linux Kernel Key Retention Service</a> can perform all the functions of a typical agent process and probably even more!</p>
 	<p>Initially it was designed for kernel services like dm-crypt/ecryptfs, but later was opened to use by userspace programs. It gives us some advantages:</p>
 	<ul>
-		<li>the keys are stored outside the process address space</li>
-		<li>the well-defined-interface and the communication layer is implemented via syscalls</li>
-		<li>the keys are kernel objects and so have associated permissions and ACLs</li>
-		<li>the keys lifecycle can be implicitly bound to the process lifecycle</li>
+		<li>
+			<p>the keys are stored outside the process address space</p>
+		</li>
+		<li>
+			<p>the well-defined-interface and the communication layer is implemented via syscalls</p>
+		</li>
+		<li>
+			<p>the keys are kernel objects and so have associated permissions and ACLs</p>
+		</li>
+		<li>
+			<p>the keys lifecycle can be implicitly bound to the process lifecycle</p>
+		</li>
 	</ul>
 	<p>The Linux Kernel Key Retention Service operates with two types of entities: keys and keyrings, where a keyring is a key of a special type. If we put it into analogy with files and directories, we can say a key is a file and a keyring is a directory. Moreover, they represent a key hierarchy similar to a filesystem tree hierarchy: keyrings reference keys and other keyrings, but only keys can hold the actual cryptographic material similar to files holding the actual data.</p>
 	<p>Keys have types. The type of key determines which operations can be performed over the keys. For example, keys of user and logon types can hold arbitrary blobs of data, but logon keys can never be read back into userspace, they are exclusively used by the in-kernel services.</p>
@@ -104,44 +136,36 @@ IndexError: Replacement index 2 out of range for positional args tuple
 	<p>User keyring lifetime is bound to the existence of a particular user and this keyring is shared between all the processes of the same UID. Thus, one process, for example, can store a key in a user keyring and another process running as the same user can retrieve/use the key. When the UID is removed from the system, all the keys (and other keyrings) under the associated user keyring will be securely destroyed by the kernel.</p>
 	<p>Process keyrings are bound to some processes and may be of three types differing in semantics: process, thread and session. A process keyring is bound and private to a particular process. Thus, any code within the process can store/use keys in the keyring, but other processes (even with the same user id or child processes) cannot get access. And when the process dies, the keyring and the associated keys are securely destroyed. Besides the advantage of storing our secrets/keys in an isolated address space, the process keyring gives us the guarantee that the keys will be destroyed regardless of the reason for the process termination: even if our application crashed hard without being given an opportunity to execute any clean up code - our keys will still be securely destroyed by the kernel.</p>
 	<p>A thread keyring is similar to a process keyring, but it is private and bound to a particular thread. For example, we can build a multithreaded web server, which can serve TLS connections using multiple private keys, and we can be sure that connections/code in one thread can never use a private key, which is associated with another thread (for example, serving a different domain name).</p>
-	<p>A session keyring makes its keys available to the current process and all its children. It is destroyed when the topmost process terminates and child processes can store/access keys, while the topmost process exists. It is mostly useful in shell and interactive environments, when we employ the <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html">keyctl tool</a> to access the Linux Kernel Key Retention Service, rather than using the kernel system call interface. In the shell, we generally can’t use the process keyring as every executed command creates a new process. Thus, if we add a key to the process keyring from the command line - that key will be immediately destroyed, because the “adding” process terminates, when the command finishes executing. Let’s actually confirm this with <code><a href="https://github.com/iovisor/bpftrace">bpftrace</a></code>.</p>
-	<p>In one terminal we will trace the <code><a href="https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146">user_destroy</a></code> function, which is responsible for deleting a user key:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftrace -e 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'
-Att
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>And in another terminal let’s try to add a key to the process keyring:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ keyctl add user mykey hunter2 @p
-742524855
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Going back to the first terminal we can immediately see:</p><!--kg-card-begin: markdown-->
-	<pre><code>…
+	<p>A session keyring makes its keys available to the current process and all its children. It is destroyed when the topmost process terminates and child processes can store/access keys, while the topmost process exists. It is mostly useful in shell and interactive environments, when we employ the <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html">keyctl tool</a> to access the Linux Kernel Key Retention Service, rather than using the kernel system call interface. In the shell, we generally can’t use the process keyring as every executed command creates a new process. Thus, if we add a key to the process keyring from the command line - that key will be immediately destroyed, because the “adding” process terminates, when the command finishes executing. Let’s actually confirm this with <code>[bpftrace](https://github.com/iovisor/bpftrace)</code>.</p>
+	<p>In one terminal we will trace the <code>[user_destroy](https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146)</code> function, which is responsible for deleting a user key:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace -e 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'
+Att</code></pre>
+	<p>And in another terminal let’s try to add a key to the process keyring:</p>
+	<pre class="language-bash"><code class="language-bash">$ keyctl add user mykey hunter2 @p
+742524855</code></pre>
+	<p>Going back to the first terminal we can immediately see:</p>
+	<pre class="language-bash"><code class="language-bash">…
 Attaching 1 probe...
-destroying key 742524855
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>And we can confirm the key is not available by trying to access it:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ keyctl print 742524855
-keyctl_read_alloc: Required key not available
-</code></pre>
-	<!--kg-card-end: markdown-->
+destroying key 742524855</code></pre>
+	<p>And we can confirm the key is not available by trying to access it:</p>
+	<pre class="language-bash"><code class="language-bash">$ keyctl print 742524855
+keyctl_read_alloc: Required key not available</code></pre>
 	<p>So in the above example, the key “mykey” was added to the process keyring of the subshell executing <code>keyctl add user mykey hunter2 @p</code>. But since the subshell process terminated the moment the command was executed, both its process keyring and the added key were destroyed.</p>
 	<p>Instead, the session keyring allows our interactive commands to add keys to our current shell environment and subsequent commands to consume them. The keys will still be securely destroyed, when our main shell process terminates (likely, when we log out from the system).</p>
 	<p>So by selecting the appropriate keyring type we can ensure the keys will be securely destroyed, when not needed. Even if the application crashes! This is a very brief introduction, but it will allow you to play with our examples, for the whole context, please, reach the <a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html">official documentation</a>.</p>
-	<h3 id="replacing-the-ssh-agent-with-the-linux-kernel-key-retention-service">Replacing the ssh-agent with the Linux Kernel Key Retention Service</h3>
+	<h3>Replacing the ssh-agent with the Linux Kernel Key Retention Service</h3>
 	<p>We gave a long description of how we can replace two isolated processes with the Linux Kernel Retention Service. It’s time to put our words into code. We talked about ssh-agent as well, so it will be a good exercise to replace our private key stored in memory of the agent with an in-kernel one. We picked the most popular SSH implementation <a href="https://github.com/openssh/openssh-portable.git">OpenSSH</a> as our target.</p>
-	<p>Some minor changes need to be added to the code to add functionality to retrieve a key from the kernel:</p><!--kg-card-begin: markdown-->
+	<p>Some minor changes need to be added to the code to add functionality to retrieve a key from the kernel:</p>
 	<p>openssh.patch</p>
-	<pre><code>diff --git a/ssh-rsa.c b/ssh-rsa.c
+	<pre class="language-bash"><code class="language-bash">diff --git a/ssh-rsa.c b/ssh-rsa.c
 index 6516ddc1..797739bb 100644
 --- a/ssh-rsa.c
 +++ b/ssh-rsa.c
 @@ -26,6 +26,7 @@
  
- #include &lt;stdarg.h&gt;
- #include &lt;string.h&gt;
-+#include &lt;stdbool.h&gt;
+ #include <stdarg.h>
+ #include <string.h>
++#include <stdbool.h>
  
  #include "sshbuf.h"
  #include "compat.h"
@@ -318,12 +342,12 @@ index 771c4bce..a7ae45f6 100644
 --- a/sshkey.h
 +++ b/sshkey.h
 @@ -29,6 +29,7 @@
- #include &lt;sys/types.h&gt;
+ #include <sys types.h="">
  
  #ifdef WITH_OPENSSL
-+#include &lt;keyutils.h&gt;
- #include &lt;openssl/rsa.h&gt;
- #include &lt;openssl/dsa.h&gt;
++#include <keyutils.h>
+ #include <openssl rsa.h="">
+ #include <openssl dsa.h="">
  # ifdef OPENSSL_HAS_ECC
 @@ -153,6 +154,7 @@ struct sshkey {
  	size_t	shielded_len;
@@ -332,37 +356,29 @@ index 771c4bce..a7ae45f6 100644
 +	key_serial_t serial;
  };
  
- #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We need to download and patch OpenSSH from the latest git as the above patch won’t work on the latest release (<code>V_9_1_P1</code> at the time of this writing):</p><!--kg-card-begin: markdown-->
-	<pre><code>$ git clone https://github.com/openssh/openssh-portable.git
+ #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES</openssl></openssl></keyutils.h></sys></stdbool.h></string.h></stdarg.h></code></pre>
+	<p>We need to download and patch OpenSSH from the latest git as the above patch won’t work on the latest release (<code>V_9_1_P1</code> at the time of this writing):</p>
+	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/openssh/openssh-portable.git
 …
 $ cd openssl-portable
 $ $ patch -p1 &lt; ../openssh.patch
 patching file ssh-rsa.c
 patching file sshkey.c
-patching file sshkey.h
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Now compile and build the patched OpenSSH</p><!--kg-card-begin: markdown-->
-	<pre><code>$ autoreconf
+patching file sshkey.h</code></pre>
+	<p>Now compile and build the patched OpenSSH</p>
+	<pre class="language-bash"><code class="language-bash">$ autoreconf
 $ ./configure --with-libs=-lkeyutils --disable-pkcs11
 …
 $ make
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Note that we instruct the build system to additionally link with <code><a href="https://man7.org/linux/man-pages/man3/keyctl.3.html">libkeyutils</a></code>, which provides convenient wrappers to access the Linux Kernel Key Retention Service. Additionally, we had to disable PKCS11 support as the code has a function with the same name as in `libkeyutils`, so there is a naming conflict. There might be a better fix for this, but it is out of scope for this post.</p>
-	<p>Now that we have the patched OpenSSH - let’s test it. Firstly, we need to generate a new SSH RSA key that we will use to access the system. Because the Linux kernel only supports private keys in the PKCS8 format, we’ll use it from the start (instead of the default OpenSSH format):</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ./ssh-keygen -b 4096 -m PKCS8
+…</code></pre>
+	<p>Note that we instruct the build system to additionally link with <code>[libkeyutils](https://man7.org/linux/man-pages/man3/keyctl.3.html)</code>, which provides convenient wrappers to access the Linux Kernel Key Retention Service. Additionally, we had to disable PKCS11 support as the code has a function with the same name as in `libkeyutils`, so there is a naming conflict. There might be a better fix for this, but it is out of scope for this post.</p>
+	<p>Now that we have the patched OpenSSH - let’s test it. Firstly, we need to generate a new SSH RSA key that we will use to access the system. Because the Linux kernel only supports private keys in the PKCS8 format, we’ll use it from the start (instead of the default OpenSSH format):</p>
+	<pre class="language-bash"><code class="language-bash">$ ./ssh-keygen -b 4096 -m PKCS8
 Generating public/private rsa key pair.
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Normally, we would be using `ssh-add` to add this key to our ssh agent. In our case we need to use a replacement script, which would add the key to our current session keyring:</p><!--kg-card-begin: markdown-->
+…</code></pre>
+	<p>Normally, we would be using `ssh-add` to add this key to our ssh agent. In our case we need to use a replacement script, which would add the key to our current session keyring:</p>
 	<p>ssh-add-keyring.sh</p>
-	<pre><code>#/bin/bash -e
+	<pre class="language-bash"><code class="language-bash">#/bin/bash -e
 
 in=$1
 key_desc=$2
@@ -442,57 +458,43 @@ chmod 600 $out
 
 # load the PKCS8 private key into the designated keyring
 openssl pkcs8 -in $in -topk8 -outform DER -nocrypt | keyctl padd asymmetric $key_desc $keyring
-
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Depending on how our kernel was compiled, we might also need to load some kernel modules for asymmetric private key support:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo modprobe pkcs8_key_parser
+	<p>Depending on how our kernel was compiled, we might also need to load some kernel modules for asymmetric private key support:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo modprobe pkcs8_key_parser
 $ ./ssh-add-keyring.sh ~/.ssh/id_rsa myssh @s
 Enter pass phrase for ~/.ssh/id_rsa:
-723263309
-</code></pre>
-	<!--kg-card-end: markdown-->
+723263309</code></pre>
 	<p>Finally, our private ssh key is added to the current session keyring with the name “myssh”. In addition, the <code>ssh-add-keyring.sh</code> will create a pseudo-private key file in <code>~/.ssh/id_rsa_keyring</code>, which needs to be passed to the main <code>ssh</code> process. It is a pseudo-private key, because it doesn’t have any sensitive cryptographic material. Instead, it only has the “myssh” identifier in a native OpenSSH format. If we use multiple SSH keys, we have to tell the main <code>ssh</code> process somehow which in-kernel key name should be requested from the system.</p>
-	<p>Before we start testing it, let’s make sure our SSH server (running locally) will accept the newly generated key as a valid authentication:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Now we can try to SSH into the system:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
+	<p>Before we start testing it, let’s make sure our SSH server (running locally) will accept the newly generated key as a valid authentication:</p>
+	<pre class="language-bash"><code class="language-bash">$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></pre>
+	<p>Now we can try to SSH into the system:</p>
+	<pre class="language-bash"><code class="language-bash">$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
 The authenticity of host 'localhost (::1)' can't be established.
 ED25519 key fingerprint is SHA256:3zk7Z3i9qZZrSdHvBp2aUYtxHACmZNeLLEqsXltynAY.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.
 Linux dev 5.15.79-cloudflare-2022.11.6 #1 SMP Mon Sep 27 00:00:00 UTC 2010 x86_64
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
+…</code></pre>
 	<p>It worked! Notice that we’re resetting the `SSH_AUTH_SOCK` environment variable to make sure we don’t use any keys from an ssh-agent running on the system. Still the login flow does not request any password for our private key, the key itself is resident of the kernel address space, and we reference it using its serial for signature operations.</p>
-	<h3 id="user-or-session-keyring">User or session keyring?</h3>
-	<p>In the example above, we set up our SSH private key into the session keyring. We can check if it is there:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ keyctl show
+	<h3>User or session keyring?</h3>
+	<p>In the example above, we set up our SSH private key into the session keyring. We can check if it is there:</p>
+	<pre class="language-bash"><code class="language-bash">$ keyctl show
 Session Keyring
  577779279 --alswrv   1000  1000  keyring: _ses
  846694921 --alswrv   1000 65534   \_ keyring: _uid.1000
- 723263309 --als--v   1000  1000   \_ asymmetric: myssh
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We might have used user keyring as well. What is the difference? Currently, the “myssh” key lifetime is limited to the current login session. That is, if we log out and login again, the key will be gone, and we would have to run the <code>ssh-add-keyring.sh</code> script again. Similarly, if we log in to a second terminal, we won’t see this key:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ keyctl show
+ 723263309 --als--v   1000  1000   \_ asymmetric: myssh</code></pre>
+	<p>We might have used user keyring as well. What is the difference? Currently, the “myssh” key lifetime is limited to the current login session. That is, if we log out and login again, the key will be gone, and we would have to run the <code>ssh-add-keyring.sh</code> script again. Similarly, if we log in to a second terminal, we won’t see this key:</p>
+	<pre class="language-bash"><code class="language-bash">$ keyctl show
 Session Keyring
  333158329 --alswrv   1000  1000  keyring: _ses
- 846694921 --alswrv   1000 65534   \_ keyring: _uid.1000
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Notice that the serial number of the session keyring <code>_ses</code> in the second terminal is different. A new keyring was created and &nbsp;“myssh” key along with the previous session keyring doesn’t exist anymore:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
+ 846694921 --alswrv   1000 65534   \_ keyring: _uid.1000</code></pre>
+	<p>Notice that the serial number of the session keyring <code>_ses</code> in the second terminal is different. A new keyring was created and &nbsp;“myssh” key along with the previous session keyring doesn’t exist anymore:</p>
+	<pre class="language-bash"><code class="language-bash">$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
 Load key "/home/ignat/.ssh/id_rsa_keyring": key not found
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
+…</code></pre>
 	<p>If instead we tell <code>ssh-add-keyring.sh</code> to load the private key into the user keyring (replace <code>@s</code> with <code>@u</code> in the command line parameters), it will be available and accessible from both login sessions. In this case, during logout and re-login, the same key will be presented. Although, this has a security downside - any process running as our user id will be able to access and use the key.</p>
-	<h3 id="summary">Summary</h3>
+	<h3>Summary</h3>
 	<p>In this post we learned about one of the most common ways that data, including highly valuable cryptographic keys, can leak. We talked about some real examples, which impacted many users around the world, including Cloudflare. Finally, we learned how the Linux Kernel Retention Service can help us to protect our cryptographic keys and secrets.</p>
 	<p>We also introduced a working patch for OpenSSH to use this cool feature of the Linux kernel, so you can easily try it yourself. There are still many Linux Kernel Key Retention Service features left untold, which might be a topic for another blog post. Stay tuned!</p>
 </div>

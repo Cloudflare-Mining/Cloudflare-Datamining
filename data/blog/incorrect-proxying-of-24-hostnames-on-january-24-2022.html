@@ -1,6 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IeXybuliWDzpWxEqvcuP4/52db2584b9a8f57e1d527d92ba0d2bd7/incorrect-proxying-of-24-hostnames-on-january-24-2022.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>On January 24, 2022, as a result of an internal Cloudflare product migration, 24 hostnames (including www.cloudflare.com) that were actively proxied through the Cloudflare global network were mistakenly redirected to the wrong origin. During this incident, traffic destined for these hostnames was passed through to the clickfunnels.com origin and may have resulted in a <code>clickfunnels.com</code> page being displayed instead of the intended website. This was our doing and clickfunnels.com was unaware of our error until traffic started to reach their origin.</p>
+	<p>On January 24, 2022, as a result of an internal Cloudflare product migration, 24 hostnames (including <a href="https://www.cloudflare.com">www.cloudflare.com</a>) that were actively proxied through the Cloudflare global network were mistakenly redirected to the wrong origin. During this incident, traffic destined for these hostnames was passed through to the clickfunnels.com origin and may have resulted in a <code>clickfunnels.com</code> page being displayed instead of the intended website. This was our doing and clickfunnels.com was unaware of our error until traffic started to reach their origin.</p>
 	<p>API calls or other expected responses to and from these hostnames may not have responded properly, or may have failed completely. For example, if you were making an API call to api.example.com, and api.example.com was an impacted hostname, you likely would not have received the response you would have expected.</p>
 	<p>Here is what happened:</p>
 	<p>At 2022-01-24 22:24 UTC we started a migration of hundreds of thousands of custom hostnames to the Cloudflare for SaaS product. Cloudflare for SaaS allows SaaS providers to manage their customers’ websites and SSL certificates at scale - more information is available <a href="https://blog.cloudflare.com/cloudflare-for-saas">here</a>. This <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/reference/versioning">migration</a> was intended to be completely seamless, with the outcome being enhanced features and security for our customers. The migration process was designed to read the custom hostname configuration from a database and migrate it from SaaS v1 (the old system) to SaaS v2 (the current version) automatically.</p>
@@ -8,19 +8,33 @@
 	<p>First, Cloudflare for SaaS customers can configure any hostname; but before we will proxy traffic to them, they must prove (via DNS validation) that they actually are allowed to handle that hostname’s traffic.</p>
 	<p>When the Cloudflare for SaaS customer first configures the hostname, it is marked as pending until DNS validation has occurred. Pending hostnames are very common for Cloudflare for SaaS customers as the hostname gets provisioned, and then the SaaS provider will typically work with their customer to put in place the appropriate DNS validation that proves ownership.</p>
 	<p>Once a hostname passes DNS validation, it moves from a pending state to an active state and can be proxied. Except in one case: there’s a special check for whether the hostname is marked as blocked within Cloudflare’s system. A blocked hostname is one that can’t be activated without manual approval by our Trust &amp; Safety team. Some scenarios that could lead to a hostname being blocked include when the hostname is a Cloudflare-owned property, a well known brand, or a hostname in need of additional review for a variety of reasons.</p>
-	<p>During this incident, a very small number of blocked hostnames were erroneously moved to the active state while migrating clickfunnels.com’s customers. Once that occurred, traffic destined for those previously blocked hostnames was then processed by a configuration belonging to clickfunnels.com, sending traffic to the clickfunnels.com’s origin. One of those hostnames was www.cloudflare.com. Note that it was www.cloudflare.com and not cloudflare.com, so subdomains like dash.cloudflare.com, api.cloudflare.com, cdnjs.cloudflare.com, and so on were unaffected by this problem.</p>
-	<p>As the migration process continued down the list of hostnames, additional traffic was re-routed to the clickfunnels.com origin. At 23:06 UTC www.cloudflare.com was affected. At 23:15 UTC an incident was declared internally. Since the first alert we received was for www.cloudflare.com, we started our investigation there. In the next 19 minutes, the team restored www.cloudflare.com to its correct origin, determined the breadth of the impact and the root cause of the incident, and began remediation for the remaining affected hostnames.</p>
+	<p>During this incident, a very small number of blocked hostnames were erroneously moved to the active state while migrating clickfunnels.com’s customers. Once that occurred, traffic destined for those previously blocked hostnames was then processed by a configuration belonging to clickfunnels.com, sending traffic to the clickfunnels.com’s origin. One of those hostnames was <a href="https://www.cloudflare.com">www.cloudflare.com</a>. Note that it was <a href="https://www.cloudflare.com">www.cloudflare.com</a> and not cloudflare.com, so subdomains like dash.cloudflare.com, api.cloudflare.com, cdnjs.cloudflare.com, and so on were unaffected by this problem.</p>
+	<p>As the migration process continued down the list of hostnames, additional traffic was re-routed to the clickfunnels.com origin. At 23:06 UTC <a href="https://www.cloudflare.com">www.cloudflare.com</a> was affected. At 23:15 UTC an incident was declared internally. Since the first alert we received was for <a href="https://www.cloudflare.com">www.cloudflare.com</a>, we started our investigation there. In the next 19 minutes, the team restored <a href="https://www.cloudflare.com">www.cloudflare.com</a> to its correct origin, determined the breadth of the impact and the root cause of the incident, and began remediation for the remaining affected hostnames.</p>
 	<p>By 2022-01-25 00:13 UTC, all custom hostnames had been restored to their proper configuration and the incident was closed. We have contacted all the customers who were affected by this error. We have worked with ClickFunnels to delete logs of this event to ensure that no data erroneously sent to the clickfunnels.com’s origin is retained by them and are very grateful for their speedy assistance.</p>
-	<p>Here is a graph (on a log scale) of requests to clickfunnels.com during the event. Out of a total of 268,430,157 requests redirected, 268,220,296 (99.92%) were for www.cloudflare.com:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed-16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Here is a graph (on a log scale) of requests to clickfunnels.com during the event. Out of a total of 268,430,157 requests redirected, 268,220,296 (99.92%) were for <a href="https://www.cloudflare.com">www.cloudflare.com</a>:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZJtL8tRo16K0DbDL5D2lj/1ddcd61b22f2a5890c020cf72ec6becd/unnamed-16.png" alt="" class="kg-image" width="1196" height="664" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we take these types of incidents very seriously, dedicating massive amounts of resources in preventative action and in follow-up engineering. In this case, there are both procedural and technical follow-ups to prevent reoccurrence. Here are our next steps:</p>
 	<ul>
-		<li>No more blocked hostname overrides. All blocked hostname changes will route through our verification pipeline as part of the migration process.</li>
-		<li>All migrations will require explicit validation and approval from SaaS customers for a blocked hostname to be considered for activation.</li>
-		<li>Additional monitoring will be added to the hostnames being migrated to spot potential erroneous traffic patterns and alert the migration team.</li>
-		<li>Additional monitoring added for www.cloudflare.com.</li>
-		<li>Stage hostname activations on non-production elements prior to promoting to production will enable the ability to verify the new hostname state is expected. This will allow us to catch issues before they hit production traffic.</li>
+		<li>
+			<p>No more blocked hostname overrides. All blocked hostname changes will route through our verification pipeline as part of the migration process.</p>
+		</li>
+		<li>
+			<p>All migrations will require explicit validation and approval from SaaS customers for a blocked hostname to be considered for activation.</p>
+		</li>
+		<li>
+			<p>Additional monitoring will be added to the hostnames being migrated to spot potential erroneous traffic patterns and alert the migration team.</p>
+		</li>
+		<li>
+			<p>Additional monitoring added for <a href="https://www.cloudflare.com">www.cloudflare.com</a>.</p>
+		</li>
+		<li>
+			<p>Stage hostname activations on non-production elements prior to promoting to production will enable the ability to verify the new hostname state is expected. This will allow us to catch issues before they hit production traffic.</p>
+		</li>
 	</ul>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>This event exposed previously unknown gaps in our process and technology that directly impacted our customers. We are truly sorry for the disruption to our customers and any potential visitor to the impacted properties. Our commitment is to provide fully reliable and secure products, and we will continue to make every effort possible to deliver just that for our customers and partners.</p>
 </div>

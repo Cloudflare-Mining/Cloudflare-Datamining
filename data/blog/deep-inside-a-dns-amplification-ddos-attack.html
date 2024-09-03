@@ -1,168 +1,135 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Deep Inside a DNS Amplification DDoS
-Attack" src="https://blog.cloudflare.com/content/images/amplification.gif.scaled500.gif" title="Deep Inside a DNS Amplification DDoS Attack"></p>
+<div class="mb2 gray5">7 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FYBrVa8C0gIUsmIX7c2id/ab6e20e98fada3fe11712627ef684c2c/amplification.gif.scaled500.gif" alt="Deep Inside a DNS Amplification DDoS
+Attack" class="kg-image" width="271" height="258" loading="lazy">
+
+	</figure>
 	<p>A few weeks ago I wrote about <a href="https://blog.cloudflare.com/65gbps-ddos-no-problem">DNS Amplification Attacks</a>. These attacks are some of the largest, as measured by the number of Gigabits per second (Gbps), that we see directed toward our network. For the last three weeks, one persistent attacker has been sending at least 20Gbps twenty-four hours a day as an attack against one of our customers.</p>
 	<p>That size of an attack is enough to cripple even a large web host. For CloudFlare, the nature of our network means that the attack, which gets diluted across all of our <a href="https://www.cloudflare.com/network-map">global data centers</a>, doesn't cause us harm. Even from a cost perspective, the attack doesn't end up adding to our bandwidth bill because of the way in which we're charged for wholesale bandwidth.</p>
 	<p>We buy a lot of bandwidth and we pay for the higher of our ingress (in-bound) or egress (out-bound) averaged over a month. Since we act as a caching proxy, under normal circumstances egress always exceeds ingress. When there's an attack, the two lines get closer together but rarely is an attack large enough to add to our overall bandwidth costs.</p>
 	<p>Given that the latest attack wasn't impacting us or any of our customers, we decided to let it run for a while and see what we could learn.</p>
-	<h3 id="amplificationattacks">Amplification Attacks</h3>
+	<h3>Amplification Attacks</h3>
 	<p><a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack">DNS Amplification Attacks</a> are a way for an attacker to magnify the amount of bandwidth they can target at a potential victim. Imagine you are an attacker and you control a botnet capable of sending out 100Mbps of traffic. While that may be sufficient to knock some sites offline, it is a relatively trivial amount of traffic in the world of DDoS. In order to increase your attack's volume, you could try and add more compromised machines to your botnet. That is becoming increasingly difficult. Alternatively, you could find a way to amplify your 100Mbps into something much bigger.</p>
-	<p><img alt="Deep Inside a DNS Amplification DDoS Attack" src="https://blog.cloudflare.com/content/images/jokey_smurf_attack.jpg.scaled500.jpg" title="Deep Inside a DNS Amplification DDoS Attack"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KWlUrWlV2lKDfXcF659H8/0fd177d8fa4ac37557beea9f44681ecc/jokey_smurf_attack.jpg.scaled500.jpg" alt="Deep Inside a DNS Amplification DDoS Attack" class="kg-image" width="300" height="300" loading="lazy">
+
+	</figure>
 	<p>The original amplification attack was known as a <a href="https://www.cloudflare.com/learning/ddos/smurf-ddos-attack">SMURF attack</a>. A SMURF attack involves an attacker sending <a href="https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp">ICMP</a> requests (i.e., ping requests) to the network's broadcast address (i.e., X.X.X.255) of a router configured to relay ICMP to all devices behind the router. The attacker spoofs the source of the ICMP request to be the IP address of the intended victim. Since ICMP does not include a handshake, the destination has no way of verifying if the source IP is legitimate. The router receives the request and passes it on to all the devices that sit behind it. All those devices then respond back to the ping. The attacker is able to amplify the attack by a multiple of how ever many devices are behind the router (i.e., if you have 5 devices behind the router then the attacker is able to amplify the attack 5x, see the diagram below).</p>
-	<p><img alt="Deep Inside a DNS Amplification DDoS Attack" src="https://blog.cloudflare.com/content/images/smurf_attack_diagram.png.scaled500.png" title="Deep Inside a DNS Amplification DDoS Attack"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3O75rdntqtBWfPBJewha1g/28625f3614343d3940564a863cc86c67/smurf_attack_diagram.png.scaled500.png" alt="Deep Inside a DNS Amplification DDoS Attack" class="kg-image" width="500" height="276" loading="lazy">
+
+	</figure>
 	<p>SMURF attacks are largely a thing of the past. For the most part, network operators have configured their routers to not relay ICMP requests sent to a network's broadcast address. However, even as that amplification attack vector has closed, others remain wide open.</p>
-	<h3 id="dnsamplification">DNS Amplification</h3>
+	<h3>DNS Amplification</h3>
 	<p>There are two criteria for a good amplification attack vector: 1) query can be set with a spoofed source address (e.g., via a protocol like ICMP or <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a> that does not require a handshake); and 2) the response to the query is significantly larger than the query itself. <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> is a core, ubiquitous Internet platform that meets these criteria and therefore has become the largest source of amplification attacks.</p>
 	<p>DNS queries are typically transmitted over UDP, meaning that, like ICMP queries used in a SMURF attack, they are fire and forget. As a result, their source attribute can be spoofed and the receiver has no way of determining its veracity before responding. DNS also is capable of generating a much larger response than query. For example, you can send the following (tiny) query (where x.x.x.x is the IP of an open DNS resolver):</p>
-	<pre>dig ANY isc.org @x.x.x.x
-</pre>
+	<p>dig ANY isc.org @x.x.x.x</p>
 	<p>And get back the following (gigantic) response:</p>
-	<pre>; &lt;&lt;&gt;&gt; DiG 9.7.3 &lt;&lt;&gt;&gt; ANY isc.org @x.x.x.x
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 5147
-;; flags: qr rd ra; QUERY: 1, ANSWER: 27, AUTHORITY: 4, ADDITIONAL: 5
-
-;; QUESTION SECTION:
-;isc.org.                        IN        ANY
-
-;; ANSWER SECTION:
-isc.org.                4084       IN        SOA          ns-int.isc.org. hostmaster.isc.org. 2012102700 7200 3600 24796800 3600
-isc.org.                4084       IN        A            149.20.64.42
-isc.org.                4084       IN        MX           10 mx.pao1.isc.org.
-isc.org.                4084       IN        MX           10 mx.ams1.isc.org.
-isc.org.                4084       IN        TXT          "v=spf1 a mx ip4:204.152.184.0/21 ip4:149.20.0.0/16 ip6:2001:04F8::0/32 ip6:2001:500:60::65/128 ~all"
-isc.org.                4084       IN        TXT          "$Id: isc.org,v 1.1724 2012-10-23 00:36:09 bind Exp $"
-isc.org.                4084       IN        AAAA         2001:4f8:0:2::d
-isc.org.                4084       IN        NAPTR        20 0 "S" "SIP+D2U" "" _sip._udp.isc.org.
-isc.org.                484        IN        NSEC         _kerberos.isc.org. A NS SOA MX TXT AAAA NAPTR RRSIG NSEC DNSKEY SPF
-isc.org.                4084       IN        DNSKEY       256 3 5 BQEAAAAB2F1v2HWzCCE9vNsKfk0K8vd4EBwizNT9KO6WYXj0oxEL4eOJ aXbax/BzPFx+3qO8B8pu8E/JjkWH0oaYz4guUyTVmT5Eelg44Vb1kssy q8W27oQ+9qNiP8Jv6zdOj0uCB/N0fxfVL3371xbednFqoECfSFDZa6Hw jU1qzveSsW0=
-isc.org.                4084       IN        DNSKEY       257 3 5 BEAAAAOhHQDBrhQbtphgq2wQUpEQ5t4DtUHxoMVFu2hWLDMvoOMRXjGr hhCeFvAZih7yJHf8ZGfW6hd38hXG/xylYCO6Krpbdojwx8YMXLA5/kA+ u50WIL8ZR1R6KTbsYVMf/Qx5RiNbPClw+vT+U8eXEJmO20jIS1ULgqy3 47cBB1zMnnz/4LJpA0da9CbKj3A254T515sNIMcwsB8/2+2E63/zZrQz Bkj0BrN/9Bexjpiks3jRhZatEsXn3dTy47R09Uix5WcJt+xzqZ7+ysyL KOOedS39Z7SDmsn2eA0FKtQpwA6LXeG2w+jxmw3oA8lVUgEf/rzeC/bB yBNsO70aEFTd
-isc.org.                4084       IN        SPF          "v=spf1 a mx ip4:204.152.184.0/21 ip4:149.20.0.0/16 ip6:2001:04F8::0/32 ip6:2001:500:60::65/128 ~all"
-isc.org.                484        IN        RRSIG        NS 5 2 7200 20121125230752 20121026230752 4442 isc.org. oFeNy69Pn+/JnnltGPUZQnYzo1YGglMhS/SZKnlgyMbz+tT2r/2v+X1j AkUl9GRW9JAZU+x0oEj5oNAkRiQqK+D6DC+PGdM2/JHa0X41LnMIE2NX UHDAKMmbqk529fUy3MvA/ZwR9FXurcfYQ5fnpEEaawNS0bKxomw48dcp Aco=
-isc.org.                484        IN        RRSIG        SOA 5 2 7200 20121125230752 20121026230752 4442 isc.org. S+DLHzE/8WQbnSl70geMYoKvGlIuKARVlxmssce+MX6DO/J1xdK9xGac XCuAhRpTMKElKq2dIhKp8vnS2e+JTZLrGl4q/bnrrmhQ9eBS7IFmrQ6s 0cKEEyuijumOPlKCCN9QX7ds4siiTIrEOGhCaamEgRJqVxqCsg1dBUrR hKk=
-isc.org.                484        IN        RRSIG        MX 5 2 7200 20121125230752 20121026230752 4442 isc.org. VFqFWRPyulIT8VsIdXKMpMRJTYpdggoGgOjKJzKJs/6ZrxmbJtmAxgEu /rkwD6Q9JwsUCepNC74EYxzXFvDaNnKp/Qdmt2139h/xoZsw0JVA4Z+b zNQ3kNiDjdV6zl6ELtCVDqj3SiWDZhYB/CR9pNno1FAF2joIjYSwiwbS Lcw=
-isc.org.                484        IN        RRSIG        TXT 5 2 7200 20121125230752 20121026230752 4442 isc.org. Ojj8YCZf3jYL9eO8w4Tl9HjWKP3CKXQRFed8s9xeh5TR3KI3tQTKsSeI JRQaCXkADiRwHt0j7VaJ3xUHa5LCkzetcVgJNPmhovVa1w87Hz4DU6q9 k9bbshvbYtxOF8xny/FCiR5c6NVeLmvvu4xeOqSwIpoo2zvIEfFP9deR UhA=
-isc.org.                484        IN        RRSIG        AAAA 5 2 7200 20121125230752 20121026230752 4442 isc.org. hutAcro0NBMvKU/m+2lF8sgIYyIVWORTp/utIn8KsF1WOwwM2QMGa5C9 /rH/ZQBQgN46ZMmiEm4LxH6mtaKxMsBGZwgzUEdfsvVtr+fS5NUoA1rF wg92eBbInNdCvT0if8m1Sldx5/hSqKn8EAscKfg5BMQp5YDFsllsTauA 8Y4=
-isc.org.                484        IN        RRSIG        NAPTR 5 2 7200 20121125230752 20121026230752 4442 isc.org. ZD14qEHR7jVXn5uJUn6XR9Lvt5Pa7YTEW94hNAn9Lm3Tlnkg11AeZiOU 3woQ1pg+esCQepKCiBlplPLcag3LHlQ19OdACrHGUzzM+rnHY50Rn/H4 XQTqUWHBF2Cs0CvfqRxLvAl5AY6P2bb/iUQ6hV8Go0OFvmMEkJOnxPPw 5i4=
-isc.org.                484        IN        RRSIG        NSEC 5 2 3600 20121125230752 20121026230752 4442 isc.org. rY1hqZAryM045vv3bMY0wgJhxHJQofkXLeRLk20LaU1mVTyu7uair7jb MwDVCVhxF7gfRdgu8x7LPSvJKUl6sn731Y80CnGwszXBp6tVpgw6oOcr Pi0rsnzC6lIarXLwNBFmLZg2Aza6SSirzOPObnmK6PLQCdmaVAPrVJQs FHY=
-isc.org.                484        IN        RRSIG        DNSKEY 5 2 7200 20121125230126 20121026230126 4442 isc.org. i0S2MFqvHB3wOhv2IPozE/IQABM/eDDCV2D7dJ3AuOwi1A3sbYQ29XUd BK82+mxxsET2U6hv64crpbGTNJP3OsMxNOAFA0QYphoMnt0jg3OYg+AC L2j92kx8ZdEhxKiE6pm+cFVBHLLLmXGKLDaVnffLv1GQIl5YrIyy4jiw h0A=
-isc.org.                484        IN        RRSIG        DNSKEY 5 2 7200 20121125230126 20121026230126 12892 isc.org. j1kgWw+wFFw01E2z2kXq+biTG1rrnG1XoP17pIOToZHElgpy7F6kEgyj fN6e2C+gvXxOAABQ+qr76o+P+ZUHrLUEI0ewtC3v4HziMEl0Z2/NE0MH qAEdmEemezKn9O1EAOC7gZ4nU5psmuYlqxcCkUDbW0qhLd+u/8+d6L1S nlrD/vEi4R1SLl2bD5VBtaxczOz+2BEQLveUt/UusS1qhYcFjdCYbHqF JGQziTJv9ssbEDHT7COc05gG+A1Av5tNN5ag7QHWa0VE+Ux0nH7JUy0N ch1kVecPbXJVHRF97CEH5wCDEgcFKAyyhaXXh02fqBGfON8R5mIcgO/F DRdXjA==
-isc.org.                484        IN        RRSIG        SPF 5 2 7200 20121125230752 20121026230752 4442 isc.org. IB/bo9HPjr6aZqPRkzf9bXyK8TpBFj3HNQloqhrguMSBfcMfmJqHxKyD ZoLKZkQk9kPeztau6hj2YnyBoTd0zIVJ5fVSqJPuNqxwm2h9HMs140r3 9HmbnkO7Fe+Lu5AD0s6+E9qayi3wOOwunBgUkkFsC8BjiiGrRKcY8GhC kak=
-isc.org.                484        IN        RRSIG        A 5 2 7200 20121125230752 20121026230752 4442 isc.org. ViS+qg95DibkkZ5kbL8vCBpRUqI2/M9UwthPVCXl8ciglLftiMC9WUzq Ul3FBbri5CKD/YNXqyvjxyvmZfkQLDUmffjDB+ZGqBxSpG8j1fDwK6n1 hWbKf7QSe4LuJZyEgXFEkP16CmVyZCTITUh2TNDmRgsoxrvrOqOePWhp 8+E=
-isc.org.                4084       IN        NS           ns.isc.afilias-nst.info.
-isc.org.                4084       IN        NS           ams.sns-pb.isc.org.
-isc.org.                4084       IN        NS           ord.sns-pb.isc.org.
-isc.org.                4084       IN        NS           sfba.sns-pb.isc.org.
-
-;; AUTHORITY SECTION:
-isc.org.                4084       IN        NS           ns.isc.afilias-nst.info.
-isc.org.                4084       IN        NS           ams.sns-pb.isc.org.
-isc.org.                4084       IN        NS           ord.sns-pb.isc.org.
-isc.org.                4084       IN        NS           sfba.sns-pb.isc.org.
-
-;; ADDITIONAL SECTION:
-mx.ams1.isc.org.        484        IN        A            199.6.1.65
-mx.ams1.isc.org.        484        IN        AAAA         2001:500:60::65
-mx.pao1.isc.org.        484        IN        A            149.20.64.53
-mx.pao1.isc.org.        484        IN        AAAA         2001:4f8:0:2::2b
-_sip._udp.isc.org.      4084       IN        SRV          0 1 5060 asterisk.isc.org.
-
-;; Query time: 176 msec
-;;SERVER: x.x.x.x#53(x.x.x.x)
-;; WHEN: Tue Oct 30 01:14:32 2012
-;; MSG SIZE  rcvd: 3223
-</pre>
+	<p>; &lt;&lt;&gt;&gt; DiG 9.7.3 &lt;&lt;&gt;&gt; ANY isc.org @x.x.x.x
+		;; global options: +cmd
+		;; Got answer:
+		;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 5147
+		;; flags: qr rd ra; QUERY: 1, ANSWER: 27, AUTHORITY: 4, ADDITIONAL: 5</p>
+	<p>;; QUESTION SECTION:
+		;isc.org. IN ANY</p>
+	<p>;; ANSWER SECTION:
+		isc.org. 4084 IN SOA ns-int.isc.org. hostmaster.isc.org. 2012102700 7200 3600 24796800 3600
+		isc.org. 4084 IN A 149.20.64.42
+		isc.org. 4084 IN MX 10 mx.pao1.isc.org.
+		isc.org. 4084 IN MX 10 mx.ams1.isc.org.
+		isc.org. 4084 IN TXT "v=spf1 a mx ip4:204.152.184.0/21 ip4:149.20.0.0/16 ip6:2001:04F8::0/32 ip6:2001:500:60::65/128 ~all"
+		isc.org. 4084 IN TXT "$Id: isc.org,v 1.1724 2012-10-23 00:36:09 bind Exp $"
+		isc.org. 4084 IN AAAA 2001:4f8:0:2::d
+		isc.org. 4084 IN NAPTR 20 0 "S" "SIP+D2U" "" _sip._udp.isc.org.
+		isc.org. 484 IN NSEC _kerberos.isc.org. A NS SOA MX TXT AAAA NAPTR RRSIG NSEC DNSKEY SPF
+		isc.org. 4084 IN DNSKEY 256 3 5 BQEAAAAB2F1v2HWzCCE9vNsKfk0K8vd4EBwizNT9KO6WYXj0oxEL4eOJ aXbax/BzPFx+3qO8B8pu8E/JjkWH0oaYz4guUyTVmT5Eelg44Vb1kssy q8W27oQ+9qNiP8Jv6zdOj0uCB/N0fxfVL3371xbednFqoECfSFDZa6Hw jU1qzveSsW0=
+		isc.org. 4084 IN DNSKEY 257 3 5 BEAAAAOhHQDBrhQbtphgq2wQUpEQ5t4DtUHxoMVFu2hWLDMvoOMRXjGr hhCeFvAZih7yJHf8ZGfW6hd38hXG/xylYCO6Krpbdojwx8YMXLA5/kA+ u50WIL8ZR1R6KTbsYVMf/Qx5RiNbPClw+vT+U8eXEJmO20jIS1ULgqy3 47cBB1zMnnz/4LJpA0da9CbKj3A254T515sNIMcwsB8/2+2E63/zZrQz Bkj0BrN/9Bexjpiks3jRhZatEsXn3dTy47R09Uix5WcJt+xzqZ7+ysyL KOOedS39Z7SDmsn2eA0FKtQpwA6LXeG2w+jxmw3oA8lVUgEf/rzeC/bB yBNsO70aEFTd
+		isc.org. 4084 IN SPF "v=spf1 a mx ip4:204.152.184.0/21 ip4:149.20.0.0/16 ip6:2001:04F8::0/32 ip6:2001:500:60::65/128 ~all"
+		isc.org. 484 IN RRSIG NS 5 2 7200 20121125230752 20121026230752 4442 isc.org. oFeNy69Pn+/JnnltGPUZQnYzo1YGglMhS/SZKnlgyMbz+tT2r/2v+X1j AkUl9GRW9JAZU+x0oEj5oNAkRiQqK+D6DC+PGdM2/JHa0X41LnMIE2NX UHDAKMmbqk529fUy3MvA/ZwR9FXurcfYQ5fnpEEaawNS0bKxomw48dcp Aco=
+		isc.org. 484 IN RRSIG SOA 5 2 7200 20121125230752 20121026230752 4442 isc.org. S+DLHzE/8WQbnSl70geMYoKvGlIuKARVlxmssce+MX6DO/J1xdK9xGac XCuAhRpTMKElKq2dIhKp8vnS2e+JTZLrGl4q/bnrrmhQ9eBS7IFmrQ6s 0cKEEyuijumOPlKCCN9QX7ds4siiTIrEOGhCaamEgRJqVxqCsg1dBUrR hKk=
+		isc.org. 484 IN RRSIG MX 5 2 7200 20121125230752 20121026230752 4442 isc.org. VFqFWRPyulIT8VsIdXKMpMRJTYpdggoGgOjKJzKJs/6ZrxmbJtmAxgEu /rkwD6Q9JwsUCepNC74EYxzXFvDaNnKp/Qdmt2139h/xoZsw0JVA4Z+b zNQ3kNiDjdV6zl6ELtCVDqj3SiWDZhYB/CR9pNno1FAF2joIjYSwiwbS Lcw=
+		isc.org. 484 IN RRSIG TXT 5 2 7200 20121125230752 20121026230752 4442 isc.org. Ojj8YCZf3jYL9eO8w4Tl9HjWKP3CKXQRFed8s9xeh5TR3KI3tQTKsSeI JRQaCXkADiRwHt0j7VaJ3xUHa5LCkzetcVgJNPmhovVa1w87Hz4DU6q9 k9bbshvbYtxOF8xny/FCiR5c6NVeLmvvu4xeOqSwIpoo2zvIEfFP9deR UhA=
+		isc.org. 484 IN RRSIG AAAA 5 2 7200 20121125230752 20121026230752 4442 isc.org. hutAcro0NBMvKU/m+2lF8sgIYyIVWORTp/utIn8KsF1WOwwM2QMGa5C9 /rH/ZQBQgN46ZMmiEm4LxH6mtaKxMsBGZwgzUEdfsvVtr+fS5NUoA1rF wg92eBbInNdCvT0if8m1Sldx5/hSqKn8EAscKfg5BMQp5YDFsllsTauA 8Y4=
+		isc.org. 484 IN RRSIG NAPTR 5 2 7200 20121125230752 20121026230752 4442 isc.org. ZD14qEHR7jVXn5uJUn6XR9Lvt5Pa7YTEW94hNAn9Lm3Tlnkg11AeZiOU 3woQ1pg+esCQepKCiBlplPLcag3LHlQ19OdACrHGUzzM+rnHY50Rn/H4 XQTqUWHBF2Cs0CvfqRxLvAl5AY6P2bb/iUQ6hV8Go0OFvmMEkJOnxPPw 5i4=
+		isc.org. 484 IN RRSIG NSEC 5 2 3600 20121125230752 20121026230752 4442 isc.org. rY1hqZAryM045vv3bMY0wgJhxHJQofkXLeRLk20LaU1mVTyu7uair7jb MwDVCVhxF7gfRdgu8x7LPSvJKUl6sn731Y80CnGwszXBp6tVpgw6oOcr Pi0rsnzC6lIarXLwNBFmLZg2Aza6SSirzOPObnmK6PLQCdmaVAPrVJQs FHY=
+		isc.org. 484 IN RRSIG DNSKEY 5 2 7200 20121125230126 20121026230126 4442 isc.org. i0S2MFqvHB3wOhv2IPozE/IQABM/eDDCV2D7dJ3AuOwi1A3sbYQ29XUd BK82+mxxsET2U6hv64crpbGTNJP3OsMxNOAFA0QYphoMnt0jg3OYg+AC L2j92kx8ZdEhxKiE6pm+cFVBHLLLmXGKLDaVnffLv1GQIl5YrIyy4jiw h0A=
+		isc.org. 484 IN RRSIG DNSKEY 5 2 7200 20121125230126 20121026230126 12892 isc.org. j1kgWw+wFFw01E2z2kXq+biTG1rrnG1XoP17pIOToZHElgpy7F6kEgyj fN6e2C+gvXxOAABQ+qr76o+P+ZUHrLUEI0ewtC3v4HziMEl0Z2/NE0MH qAEdmEemezKn9O1EAOC7gZ4nU5psmuYlqxcCkUDbW0qhLd+u/8+d6L1S nlrD/vEi4R1SLl2bD5VBtaxczOz+2BEQLveUt/UusS1qhYcFjdCYbHqF JGQziTJv9ssbEDHT7COc05gG+A1Av5tNN5ag7QHWa0VE+Ux0nH7JUy0N ch1kVecPbXJVHRF97CEH5wCDEgcFKAyyhaXXh02fqBGfON8R5mIcgO/F DRdXjA==
+		isc.org. 484 IN RRSIG SPF 5 2 7200 20121125230752 20121026230752 4442 isc.org. IB/bo9HPjr6aZqPRkzf9bXyK8TpBFj3HNQloqhrguMSBfcMfmJqHxKyD ZoLKZkQk9kPeztau6hj2YnyBoTd0zIVJ5fVSqJPuNqxwm2h9HMs140r3 9HmbnkO7Fe+Lu5AD0s6+E9qayi3wOOwunBgUkkFsC8BjiiGrRKcY8GhC kak=
+		isc.org. 484 IN RRSIG A 5 2 7200 20121125230752 20121026230752 4442 isc.org. ViS+qg95DibkkZ5kbL8vCBpRUqI2/M9UwthPVCXl8ciglLftiMC9WUzq Ul3FBbri5CKD/YNXqyvjxyvmZfkQLDUmffjDB+ZGqBxSpG8j1fDwK6n1 hWbKf7QSe4LuJZyEgXFEkP16CmVyZCTITUh2TNDmRgsoxrvrOqOePWhp 8+E=
+		isc.org. 4084 IN NS ns.isc.afilias-nst.info.
+		isc.org. 4084 IN NS ams.sns-pb.isc.org.
+		isc.org. 4084 IN NS ord.sns-pb.isc.org.
+		isc.org. 4084 IN NS sfba.sns-pb.isc.org.</p>
+	<p>;; AUTHORITY SECTION:
+		isc.org. 4084 IN NS ns.isc.afilias-nst.info.
+		isc.org. 4084 IN NS ams.sns-pb.isc.org.
+		isc.org. 4084 IN NS ord.sns-pb.isc.org.
+		isc.org. 4084 IN NS sfba.sns-pb.isc.org.</p>
+	<p>;; ADDITIONAL SECTION:
+		mx.ams1.isc.org. 484 IN A 199.6.1.65
+		mx.ams1.isc.org. 484 IN AAAA 2001:500:60::65
+		mx.pao1.isc.org. 484 IN A 149.20.64.53
+		mx.pao1.isc.org. 484 IN AAAA 2001:4f8:0:2::2b
+		_sip._udp.isc.org. 4084 IN SRV 0 1 5060 asterisk.isc.org.</p>
+	<p>;; Query time: 176 msec
+		;;SERVER: x.x.x.x#53(x.x.x.x)
+		;; WHEN: Tue Oct 30 01:14:32 2012
+		;; MSG SIZE rcvd: 3223</p>
 	<p>That's a 64 byte query that resulted in a 3,223 byte response. In other words, an attacker is able to achieve a 50x amplification over whatever traffic they can initiate to an open DNS resolver. Note, ironically, how the effectiveness of the attack based on the size of the response is made worse by the inclusion of the huge <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works">DNSSEC</a> keys -- a protocol designed to make the DNS system more secure.</p>
-	<h3 id="opendnsresolversbaneoftheinternet">Open DNS Resolvers: Bane of the Internet</h3>
-	<p>The key term that I used a couple times so far is "open DNS resolver." The best practice, if you're running a <a href="https://www.cloudflare.com/learning/dns/what-is-recursive-dns">recursive DNS resolver</a> is to ensure that it only responds to queries from authorized clients. In other words, if you're running a recursive DNS server for your company and your company's IP space is 5.5.5.0/24 (i.e., 5.5.5.0 - 5.5.5.255) then it should only respond to queries from that range. If a query<br>
-		arrives from 9.9.9.9 then it should not respond.</p>
+	<h3>Open DNS Resolvers: Bane of the Internet</h3>
+	<p>The key term that I used a couple times so far is "open DNS resolver." The best practice, if you're running a <a href="https://www.cloudflare.com/learning/dns/what-is-recursive-dns">recursive DNS resolver</a> is to ensure that it only responds to queries from authorized clients. In other words, if you're running a recursive DNS server for your company and your company's IP space is 5.5.5.0/24 (i.e., 5.5.5.0 - 5.5.5.255) then it should only respond to queries from that range. If a queryarrives from 9.9.9.9 then it should not respond.</p>
 	<p>The problem is, many people running DNS resolvers leave them open and willing to respond to any IP address that queries them. This is a known problem that is at least 10 years old. What has happened recently is a number of distinct <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnets</a> appear to have enumerated the Internet's IP space in order to discover open resolvers. Once discovered, they can be used to launch significant DNS Amplification Attacks.</p>
 	<p>If you look at the geographic data on attack origins, the US dominates the list, but that is largely skewed by the number of networks present within the country. Per capita, the worst country is Taiwan where the country's HINET is the second largest source of open resolvers of any network in the world. We've also published a <a href="http://graphs.peskey.info/dns-networks.txt">list of the top networks from which we're seeing abused open DNS resolvers</a>. Below is a sample of the top-ten worst offenders:</p>
-	<p></p>
-	<table>
-		<thead>
-			<tr>
-				<th>
-					<p><strong># of Open Resolvers</strong></p>
-				</th>
-				<th><strong>AS Number</strong></th>
-				<th><strong>Network Name</strong></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>3359</td>
-				<td>45595</td>
-				<td>PKTELECOM-AS-PK Pakistan Telecom Company Limited</td>
-			</tr>
-			<tr>
-				<td>2992</td>
-				<td>3462</td>
-				<td>HINET Data Communication Business Group</td>
-			</tr>
-			<tr>
-				<td>1431</td>
-				<td>9394</td>
-				<td>CRNET CHINA RAILWAY Internet(CRNET)</td>
-			</tr>
-			<tr>
-				<td>1403</td>
-				<td>21844</td>
-				<td>THEPLANET-AS - ThePlanet.com Internet Services, Inc.</td>
-			</tr>
-			<tr>
-				<td>1323</td>
-				<td>4134</td>
-				<td>CHINANET-BACKBONE No.31, Jin-rong Street</td>
-			</tr>
-			<tr>
-				<td>1120</td>
-				<td>36351</td>
-				<td>SOFTLAYER - SoftLayer Technologies Inc.</td>
-			</tr>
-			<tr>
-				<td>1112</td>
-				<td>4713</td>
-				<td>OCN NTT Communications Corporation</td>
-			</tr>
-			<tr>
-				<td>1039</td>
-				<td>26496</td>
-				<td>AS-26496-GO-DADDY-COM-LLC - GoDaddy.com, LLC</td>
-			</tr>
-			<tr>
-				<td>980</td>
-				<td>7018</td>
-				<td>ATT-INTERNET4 - AT&amp;T Services, Inc.</td>
-			</tr>
-			<tr>
-				<td>852</td>
-				<td>32613</td>
-				<td>IWEB-AS - iWeb Technologies Inc.</td>
-			</tr>
-			<tr>
-				<td>--------------------------</td>
-				<td>---------------</td>
-				<td>------------------------------------------------------</td>
-			</tr>
-		</tbody>
-	</table>
-	<p>Wonder why there's been an increase in big <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>? It's in large part because the network operators listed above have continued to allow open resolvers to run on their networks and the attackers have begun abusing them. While we're reluctant to publish the list of the actual IP address of the open resolvers for fear that they may be misused, if you are one of the operators of one of the networks listed above, we're happy to share data with you in order to help you get your network cleaned up. Organizations such as Team Cymru publish <a href="http://www.team-cymru.org/Services/Resolvers">more extensive lists</a> and also work with<br>
-		network operators to get their networks cleaned up.</p>
+	<p><b># of Open Resolvers</b></p>
+	<p><b>AS Number</b></p>
+	<p><b>Network Name</b></p>
+	<p>3359</p>
+	<p>45595</p>
+	<p>PKTELECOM-AS-PK Pakistan Telecom Company Limited</p>
+	<p>2992</p>
+	<p>3462</p>
+	<p>HINET Data Communication Business Group</p>
+	<p>1431</p>
+	<p>9394</p>
+	<p>CRNET CHINA RAILWAY Internet(CRNET)</p>
+	<p>1403</p>
+	<p>21844</p>
+	<p>THEPLANET-AS - ThePlanet.com Internet Services, Inc.</p>
+	<p>1323</p>
+	<p>4134</p>
+	<p>CHINANET-BACKBONE No.31, Jin-rong Street</p>
+	<p>1120</p>
+	<p>36351</p>
+	<p>SOFTLAYER - SoftLayer Technologies Inc.</p>
+	<p>1112</p>
+	<p>4713</p>
+	<p>OCN NTT Communications Corporation</p>
+	<p>1039</p>
+	<p>26496</p>
+	<p>AS-26496-GO-DADDY-COM-LLC - GoDaddy.com, LLC</p>
+	<p>980</p>
+	<p>7018</p>
+	<p>ATT-INTERNET4 - AT&amp;T Services, Inc.</p>
+	<p>852</p>
+	<p>32613</p>
+	<p>IWEB-AS - iWeb Technologies Inc.</p>
+	<p>--------------------------</p>
+	<p>---------------</p>
+	<p>------------------------------------------------------</p>
+	<p>Wonder why there's been an increase in big <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>? It's in large part because the network operators listed above have continued to allow open resolvers to run on their networks and the attackers have begun abusing them. While we're reluctant to publish the list of the actual IP address of the open resolvers for fear that they may be misused, if you are one of the operators of one of the networks listed above, we're happy to share data with you in order to help you get your network cleaned up. Organizations such as Team Cymru publish <a href="http://www.team-cymru.org/Services/Resolvers">more extensive lists</a> and also work withnetwork operators to get their networks cleaned up.</p>
 	<p>If you are running an open recursor, you should close it now. Leaving it open means you will continue to aid in these attacks. If you're running BIND, you can include one or more of the following in your configuration file in order to limit attackers abusing your network:</p>
-	<pre>// Disable recursion for the DNS service
-//options {    recursion no;};
-
-// Permit DNS queries for DNS messages with source addresses
-// in the 192.168.1.0/24 netblock. The 'allow-query-cache'
-// options configuration can also be used to limit the IP
-// addresses permitted to obtain answers from the cache of
-// the DNS server. Substitute with your own network range.
-//options {    allow-query {192.168.1.0/24;};};
-</pre>
+	<p>// Disable recursion for the DNS service
+		//options { recursion no;};</p>
+	<p>// Permit DNS queries for DNS messages with source addresses
+		// in the 192.168.1.0/24 netblock. The 'allow-query-cache'
+		// options configuration can also be used to limit the IP
+		// addresses permitted to obtain answers from the cache of
+		// the DNS server. Substitute with your own network range.
+		//options { allow-query {192.168.1.0/24;};};</p>
 	<p>CloudFlare itself is designed to automatically learn from the traffic to our network, whether the traffic is good or bad. While this size of attack would be crippling for most networks, it has been relatively trivial for us to identify the sources of the attack, route them so they don't affect any of our customers, and study their behavior over the last three weeks. Now that we've enumerated the sources of the attack, we've begun to null route the traffic upstream to fully neuter the attack.</p>
 	<p>We will continue to work with the networks listed above in order to get their networks cleaned up. And, as new threats emerge, we'll continue to share information on them in order to ensure the Internet can remain fast and safe.</p>
-	<!--kg-card-end: markdown-->
 </div>

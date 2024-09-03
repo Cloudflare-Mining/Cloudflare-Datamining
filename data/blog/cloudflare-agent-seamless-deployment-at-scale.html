@@ -1,47 +1,72 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-agent-seamless-deployment-at-scale">简体中文</a>, <a href="https://blog.cloudflare.com/id-id/cloudflare-agent-seamless-deployment-at-scale">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/cloudflare-agent-seamless-deployment-at-scale">ไทย</a> and <a href="https://blog.cloudflare.com/ja-jp/cloudflare-agent-seamless-deployment-at-scale">日本語</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-51.png" class="kg-image" alt="Cloudflare Agent — Seamless Deployment at Scale" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ENA8ESd7nbWapQok39RhX/248e04f321c4d1d64ad0f9a4e4ddb4a1/image1-51.png" alt="Cloudflare Agent — Seamless Deployment at Scale" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>A year ago we launched <a href="https://blog.cloudflare.com/warp-for-desktop">WARP for Desktop</a> to give anyone a fast, private on-ramp to the Internet. For our business customers, IT and security administrators can also use that same agent and enroll the devices in their organization into Cloudflare for Teams. Once enrolled, their team members have an accelerated on-ramp to the Internet where Cloudflare can also provide comprehensive security filtering from network firewall functions all the way to remote browser isolation.</p>
 	<p>When we launched last year, we supported the broadest possible deployment mechanisms with a simple set of configuration options to get your organization protected quickly. We focused on helping organizations keep users and data safe with HTTP and DNS filtering from any location. We started with support for Mac, Windows, iOS, and Android.</p>
 	<p>Since that launch, thousands of organizations have deployed the agent to secure their team members and endpoints. We’ve heard from customers who are excited to expand their rollout, but need more OS support and great control over the configuration.</p>
 	<p>Today we are excited to announce our zero trust agent now has feature parity across all major platforms. Beyond that, you can control new options to determine how traffic is routed and your administrators can orchestrate deployment at scale. With today’s releases, we’re ready to help you fully ditch the legacy VPN and network security tools your IT teams hate.</p>
-	<h3 id="built-to-scale">Built to scale</h3>
+	<h3>Built to scale</h3>
 	<p>Two of the most important factors in our zero trust agent are reliability across platforms and reliability of the connection. If you have ever shipped software at this scale, you'll know that maintaining a client across all major operating systems is a daunting (and error-prone) task.</p>
 	<p>To avoid platform pitfalls, we wrote the core of the agent in Rust, which allows for 95% of the code to be shared across all devices. Internally we refer to this common code as the shared daemon (or service, for Windows folks). A common, Rust-based implementation allows our engineers to spend less time duplicating code across multiple platforms while ensuring most quality improvements hit everyone at the same time.</p>
 	<p>On the reliability of connection front, if you’ve had any experience at all with traditional VPNs, you’ll know that they are error prone and slow. Our network foundation is built on our own WireGuard implementation called <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust">BoringTun</a>. Unlike traditional and slow VPNs, we run over UDP and are optimized for the wide variation of Internet infrastructure users connect over today (ex. on a plane, at the coffee shop, a congested network in the city, etc.). Proved year over year at scale with millions of our consumer devices, BoringTun ensures your traffic is encrypted and ready for whatever policies you decide for it.</p>
 	<p>With the power to reliability scale, we now fully support the following operating systems with our agent</p>
 	<ul>
-		<li>Windows 8.1, Windows 10 and Windows 11</li>
-		<li>macOS Mojave, Catalina, Big Sur, Monterey</li>
-		<li>Including M1 support</li>
-		<li>ChromeBooks (Manufactured after 2019) <strong>(New)</strong></li>
-		<li>Linux CentOS 8, RHEL, Ubuntu, Debian <strong>(New)</strong></li>
-		<li>iOS</li>
-		<li>Android</li>
+		<li>
+			<p>Windows 8.1, Windows 10 and Windows 11</p>
+		</li>
+		<li>
+			<p>macOS Mojave, Catalina, Big Sur, Monterey</p>
+		</li>
+		<li>
+			<p>Including M1 support</p>
+		</li>
+		<li>
+			<p>ChromeBooks (Manufactured after 2019) <b>(New)</b></p>
+		</li>
+		<li>
+			<p>Linux CentOS 8, RHEL, Ubuntu, Debian <b>(New)</b></p>
+		</li>
+		<li>
+			<p>iOS</p>
+		</li>
+		<li>
+			<p>Android</p>
+		</li>
 	</ul>
-	<h3 id="built-to-meet-your-deployment-model">Built to meet your deployment model</h3>
+	<h3>Built to meet your deployment model</h3>
 	<p>When our agent was first introduced, the focus was on encrypting all device traffic to the Cloudflare network and allowing an admin to build HTTP and DNS <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering">policies</a> around that traffic. We also know that customers are on a journey to migrate to a Zero Trust model. Sometimes that transformation needs to happen one step at a time.</p>
 	<p>We’ve spent that time building features that allow you to not just fully replace your legacy solution, but also run our software alongside those legacy solutions to ensure a smoother migration.</p>
 	<ul>
-		<li><strong>Domain-Based Split Tunneling</strong> - Sometimes, you don’t need to send all traffic through your security layer. We already support IP-based exclusions, but we now make it easy to create <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/split-tunnels#add-a-domain">Split Tunnel rules with domain names</a> (e.g., *.example.com or example.com) &nbsp;instead of forcing you to look up the IP address CIDR for a particular domain.</li>
-		<li><strong>Include-Only Split Tunnels</strong> - Our agent was initially built on the premise that all device traffic should be encrypted and sent to our network. This ensured traffic wasn’t being snooped on and allowed admins to maintain visibility. Sometimes, though, you only want to send some traffic to Cloudflare and exclude the rest by default. <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic"><em>Include-only</em> split tunneling</a> does just that, allowing you to select individual routes you want going to our network. If you need a quick legacy VPN replacement to connect to a <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare">Cloudflare Tunnel resource</a> or only want to ensure traffic to your most sensitive infrastructure is subject to HTTP inspection, use <em>include-only</em> split tunnel rules.</li>
-		<li><strong>Improved Private Domains</strong> - Some organizations start their migration by running Cloudflare’s Zero Trust products alongside an existing third party VPN. In the past, our agent supported this configuration by letting administrators set fall back domain name resolution to send DNS queries for certain use cases through the VPN. However, it was global and lacked control over where the queries were sent. We have now added the ability to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/local-domains">specify which DNS server</a> should respond to private domains, and as discussed <a href="https://blog.cloudflare.com/zero-trust-private-networking-rules">earlier in the week</a>, can be used with our new Zero Trust networking capabilities.</li>
-		<li><strong>Posture-only mode (coming soon)</strong> — We’ve <a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture">talked previously</a> about the importance of device posture and our capabilities. In the first quarter of 2022, we’ll ship the ability for our agent to run in posture-only mode. That is our client will not process any DNS requests or send any other traffic to us. This allows you to onboard Cloudflare Access posture policies without turning on HTTP inspection for your users.</li>
+		<li>
+			<p><b>Domain-Based Split Tunneling</b> - Sometimes, you don’t need to send all traffic through your security layer. We already support IP-based exclusions, but we now make it easy to create <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/split-tunnels#add-a-domain">Split Tunnel rules with domain names</a> (e.g., *.example.com or example.com) &nbsp;instead of forcing you to look up the IP address CIDR for a particular domain.</p>
+		</li>
+		<li>
+			<p><b>Include-Only Split Tunnels</b> - Our agent was initially built on the premise that all device traffic should be encrypted and sent to our network. This ensured traffic wasn’t being snooped on and allowed admins to maintain visibility. Sometimes, though, you only want to send some traffic to Cloudflare and exclude the rest by default. <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic"><i>Include-only</i> split tunneling</a> does just that, allowing you to select individual routes you want going to our network. If you need a quick legacy VPN replacement to connect to a <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare">Cloudflare Tunnel resource</a> or only want to ensure traffic to your most sensitive infrastructure is subject to HTTP inspection, use <i>include-only</i> split tunnel rules.</p>
+		</li>
+		<li>
+			<p><b>Improved Private Domains</b> - Some organizations start their migration by running Cloudflare’s Zero Trust products alongside an existing third party VPN. In the past, our agent supported this configuration by letting administrators set fall back domain name resolution to send DNS queries for certain use cases through the VPN. However, it was global and lacked control over where the queries were sent. We have now added the ability to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/local-domains">specify which DNS server</a> should respond to private domains, and as discussed <a href="https://blog.cloudflare.com/zero-trust-private-networking-rules">earlier in the week</a>, can be used with our new Zero Trust networking capabilities.</p>
+		</li>
+		<li>
+			<p><b>Posture-only mode (coming soon)</b> — We’ve <a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture">talked previously</a> about the importance of device posture and our capabilities. In the first quarter of 2022, we’ll ship the ability for our agent to run in posture-only mode. That is our client will not process any DNS requests or send any other traffic to us. This allows you to onboard Cloudflare Access posture policies without turning on HTTP inspection for your users.</p>
+		</li>
 	</ul>
-	<h3 id="built-for-seamless-configuration">Built for seamless configuration</h3>
+	<h3>Built for seamless configuration</h3>
 	<p>Deploying any agent to tens of thousands of users can become a logistical hurdle. We built the Cloudflare for Teams agent to be seamless to deploy at scale in your team. Today’s announcement gives you more options to rolling out the agent to your entire organization with API and Terraform based controls.</p>
 	<p>Automating administrative tasks is the best way to keep them consistent. At Cloudflare, we build our UI on top of a set of RESTful APIs based on HTTPS requests and JSON responses. These same APIs in the case of our device management are then exposed to users via our <a href="https://api.cloudflare.com">API Documentation</a> and additionally via our <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs">Terraform provider</a>. Everything exposed in the web version of <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com/</a> is available via one of these interfaces.</p>
 	<p>As an example of how you can accomplish automation, we’ll take a look at our domain-based split tunneling. For reference, here’s the <a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list">API documentation</a> and the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel">Terraform equivalent</a>.</p>
-	<p>To create a domain-based include rule for example.com:</p><!--kg-card-begin: markdown-->
-	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
+	<p>To create a domain-based include rule for example.com:</p>
+	<pre class="language-bash"><code class="language-bash">curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
-     --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>That same rule could be created in Terraform with this:</p><!--kg-card-begin: markdown-->
-	<pre><code># Including *.example.com in WARP routes
+     --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'</code></pre>
+	<p>That same rule could be created in Terraform with this:</p>
+	<pre class="language-bash"><code class="language-bash"># Including *.example.com in WARP routes
 resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
   account_id = "699d98642c564d2e855e9661899b7252"
   mode       = "include"
@@ -49,17 +74,13 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
     host        = "*.example.com",
     description = "Include all traffic to example.com in the tunnel"
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Another common task is to generate a report of enrolled devices. Using the <a href="https://api.cloudflare.com/#devices-list-devices">Device List API</a>, the following example shows how to list all Windows devices registered with your organization:</p><!--kg-card-begin: markdown-->
-	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
+}</code></pre>
+	<p>Another common task is to generate a report of enrolled devices. Using the <a href="https://api.cloudflare.com/#devices-list-devices">Device List API</a>, the following example shows how to list all Windows devices registered with your organization:</p>
+	<pre class="language-bash"><code class="language-bash">curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
      --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
-     -H "Content-Type: application/json"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Running that command would return JSON that looks something like this:</p><!--kg-card-begin: markdown-->
-	<pre><code>        {
+     -H "Content-Type: application/json"</code></pre>
+	<p>Running that command would return JSON that looks something like this:</p>
+	<pre class="language-bash"><code class="language-bash">        {
             "created": "2021-12-01T17:14:23.847538Z",
             "device_type": "windows",
             "gateway_device_id": "215f9adc-52ca-11ec-9ece-f240956bdf5f",
@@ -97,22 +118,32 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
                 "id": "39663a0d-9f7c-4a24-ae7f-f869a8cf07f1"
             },
             "version": "2021.11.34"
-        },
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="built-for-anyone-to-administer">Built for anyone to administer</h3>
+        },</code></pre>
+	<h3>Built for anyone to administer</h3>
 	<p>As part of today’s releases, we also announced <a href="https://blog.cloudflare.com/mdm-partnerships">partnerships with MDM providers</a> as a mechanism you can use to deploy software with your users. We also know that some organizations do not yet have an MDM or have administrators managing the deployment who prefer a visual user interface.</p>
 	<p>In the next few weeks we’ll be turning on, in beta, the ability to manage aspects of client behavior directly from the dashboard. This will allow you to immediately make changes to the client configuration without having to push a new version of the client.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-s-coming-next">What's coming next</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6x9bhs9l9DzZL405QXNBTk/aa58a53a84cf5e614129e2cd98b7e382/image3-24.png" alt="" class="kg-image" width="1999" height="1869" loading="lazy">
+
+	</figure>
+	<h3>What's coming next</h3>
 	<p>Next year is an exciting time for the client when we are really going to double down on the supportability and flexibility of clients once deployed. Some of the features that we are most excited to deliver are:</p>
 	<ul>
-		<li><strong>Device settings by User/Group</strong> where you will be able to specify client settings (e.g. who is allowed to update, split tunnel rules, etc.) to different users</li>
-		<li><strong>Posture-only mode</strong> allowing you to onboard additional Cloudflare Access posture controls if you aren’t yet ready for Cloudflare Gateway</li>
-		<li><strong>Additional Linux distro support</strong> so everyone in your organization can be protected</li>
-		<li><strong>Telemetry and Analytics</strong> about how devices in your organization are performing as it relates to our client and traffic flowing to Cloudflare’s network</li>
+		<li>
+			<p><b>Device settings by User/Group</b> where you will be able to specify client settings (e.g. who is allowed to update, split tunnel rules, etc.) to different users</p>
+		</li>
+		<li>
+			<p><b>Posture-only mode</b> allowing you to onboard additional Cloudflare Access posture controls if you aren’t yet ready for Cloudflare Gateway</p>
+		</li>
+		<li>
+			<p><b>Additional Linux distro support</b> so everyone in your organization can be protected</p>
+		</li>
+		<li>
+			<p><b>Telemetry and Analytics</b> about how devices in your organization are performing as it relates to our client and traffic flowing to Cloudflare’s network</p>
+		</li>
 	</ul>
-	<h3 id="get-connected-now">Get Connected Now</h3>
+	<h3>Get Connected Now</h3>
 	<p>You can find downloads for all our clients listed below:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {

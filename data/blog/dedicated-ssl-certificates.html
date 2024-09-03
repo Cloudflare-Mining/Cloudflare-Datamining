@@ -1,55 +1,62 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jXRhh4wglCyzsnko4wz9j/95e29dbe7bc43fc6c824fcc21ae7c7a8/dedicated-ssl-certificates.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>When we launched <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a> in September 2014 we eliminated the costly and confusing process of securing a website or application with SSL, and replaced it with one free step: sign up for Cloudflare.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/3574716051_8d8c6c7eec_b.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jdhancock/3574716051/in/album-72157618524893239">image</a> by <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oB3OlsBKmitIgZsur5oUb/8a1942583bd6332d14413a6095677639/3574716051_8d8c6c7eec_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jdhancock/3574716051/in/album-72157618524893239">image</a> by <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a></p>
 	<p>When you complete the sign-up process, we batch your domain together with a few dozen other recently signed-up domains, and fire off a request to one of our Certificate Authority (CA) partners. The CA then sends us back a shared certificate covering the root (e.g. example.com) and top-level wildcard (e.g. *.example.com) of your domain, along with the hostnames of the other customers in the request. We then package this shared certificate with its encrypted private key and distribute it to our <a href="https://blog.cloudflare.com/amsterdam-to-zhuzhou-cloudflare-global-network">datacenters</a> around the world, ensuring that your visitors’ HTTPS sessions are speedy no matter where they originate.</p>
 	<p>Since that process was created, we have used it to secure millions of domains with free Universal SSL certificates and helped make the Internet a <a href="https://istlsfastyet.com">faster</a> and <a href="https://blog.cloudflare.com/introducing-tls-1-3">more secure</a> place.</p>
-	<h2 id="morecontrolandpersonalization">More control and personalization</h2>
+	<h2>More control and personalization</h2>
 	<p>But along the way we heard from customers who wanted more control over the certificates used for their domains. They want control of when they’re issued, whether other customers’ (or Cloudflare’s) hostnames appear on them, the breadth of subdomains they protect and which SSL/TLS versions and encryption options they support.</p>
 	<p>In short, customers want a service that provides a non-shared, customizable certificate for their domain.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/3432525439_1d23baa7de_b.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jdhancock/3432525439/in/album-72157618524893239">image</a> by <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a></small>
-	</p>
-	<p>Perhaps the most common request we heard was "<em>I love your Universal SSL product, but how can I use it on my website in a way that the certificate shows my domain name instead of cloudflaressl.com? And how can I prevent the certificate from being shared with other customers (all without upgrading my plan)?</em>".</p>
-	<p>A close second was “*Why do I have to disable Cloudflare on my extra.long.name.example.com or risk my users experiencing browser errors? Your Universal SSL certificates cover only one level of wildcard but I also want my hosts at <em>.staging.example.com protected.</em>”</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38aFHz9vUVYfj4USGPywkx/de59c215642e7fe405e766ca019d85ed/3432525439_1d23baa7de_b.jpg" alt="" class="kg-image" width="903" height="709" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jdhancock/3432525439/in/album-72157618524893239">image</a> by <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a></p>
+	<p>Perhaps the most common request we heard was "<i>I love your Universal SSL product, but how can I use it on my website in a way that the certificate shows my domain name instead of cloudflaressl.com? And how can I prevent the certificate from being shared with other customers (all without upgrading my plan)?</i>".</p>
+	<p>A close second was “*Why do I have to disable Cloudflare on my extra.long.name.example.com or risk my users experiencing browser errors? Your Universal SSL certificates cover only one level of wildcard but I also want my hosts at <i>.staging.example.com protected.</i>”</p>
 	<p>Lastly, as we’ve rolled out exciting encryption features like <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a>, <a href="https://blog.cloudflare.com/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Automatic HTTPS Rewrites</a>, <a href="https://blog.cloudflare.com/opportunistic-encryption-bringing-http-2-to-the-unencrypted-web">Opportunistic Encryption</a>, we’ve heard that you want granular control over which certificates and subdomains have these new features enabled.</p>
-	<h2 id="dedicatedssl">Dedicated SSL</h2>
-	<p>Today we’re excited to announce two new products to meet all of these needs and many more to come: <a href="https://www.cloudflare.com/ssl/dedicated-certificates">Dedicated SSL Certificates</a> and <a href="https://www.cloudflare.com/ssl/dedicated-certificates">Dedicated SSL Certificates with Custom Hostnames</a>. These new certificate offerings are issued on-demand, with a new private key generated exclusively for your domain, and branded prominently with your <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a>.</p>
+	<h2>Dedicated SSL</h2>
+	<p>Today we’re excited to announce two new products to meet all of these needs and many more to come: <a href="https://www.cloudflare.com/ssl/dedicated-certificates">Dedicated SSL Certificates</a> and <a href="https://www.cloudflare.com/ssl/dedicated-certificates">Dedicated SSL Certificates with Custom Hostnames</a>. These new certificate offerings are issued on-demand, with a new private key generated exclusively for your domain, and branded prominently with your domain name.</p>
 	<p>A customer owning the domain dedicatedcerts.xyz would have shared certificate with a name like ssl329744.cloudflaressl.com under Universal SSL, but their own certificate with Dedicated SSL Certificates.</p>
-	<p><small><b>Dedicated Certificate as rendered in Google Chrome</b></small><br>
-		<img src="https://blog.cloudflare.com/content/images/2016/09/dedicated-upgrade.png" alt="" loading="lazy"><br>
-		<small><b>Universal SSL Certificate as rendered in Google Chrome</b></small>
-	</p>
+	<p><b>Dedicated Certificate as rendered in Google Chrome</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SckEdxYOecZOCqcXTPW2s/e39e2aac3bc375cc1ba506dcdddc24e5/dedicated-upgrade.png" alt="" class="kg-image" width="499" height="631" loading="lazy">
+
+	</figure>
+	<p><b>Universal SSL Certificate as rendered in Google Chrome</b></p>
 	<p>Dedicated Certificates combine the benefits of Universal SSL certificates—automated renewal and <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">rapid revocation/reissuance</a> to address nascent <a href="https://www.openssl.org/news/vulnerabilities.html">crypto vulnerabilities</a>—without having to upload (and manage the renewal of) certificates purchased elsewhere.</p>
 	<p>They’re also the first step in our plan to provide true subdomain-level customization of your HTTPS settings, whether <a href="https://support.cloudflare.com/hc/en-us/articles/206029258-How-to-use-Cloudflare-s-Require-Modern-TLS-Feature">requiring</a> <a href="https://support.cloudflare.com/hc/en-us/articles/206029258-How-to-use-Cloudflare-s-Require-Modern-TLS-Feature">Modern TLS</a> or selectively enabling new and upcoming features such as Automatic HTTPS Rewrites or HTTPS from within China using separate keys.</p>
 	<p>Unlike custom certificates that you acquire and upload yourself, Dedicated Certificates free you from the complexity and monotony of safely generating and storing private keys; crafting certificate signing requests (CSRs); requesting, downloading, and building certificate chains; and regularly renewing and re-installing certificates on your server. Why risk letting a certificate expire and show errors to users, or not reissuing your key pair fast enough when the next <a href="https://blog.cloudflare.com/searching-for-the-prime-suspect-how-heartbleed-leaked-private-keys">Heartbleed</a> pops up?</p>
-	<h2 id="soundsgreathowdoiorderone">Sounds great. How do I order one?</h2>
+	<h2>Sounds great. How do I order one?</h2>
 	<p>The process is incredibly easy and quick. Simply log in to the Cloudflare Dashboard, click on the Crypto tab, and then click the "Order SSL Certificate" button. You’ll be asked whether you need to add custom hostnames, given a chance to input them, and then confirm your billing information. The cost for a Dedicated Certificate is $5 per month and the cost of a Dedicated Certificate with Custom Hostnames is $10 per month.</p>
 	<p>As soon as you hit "Next" we’ll validate your domain name with one of our Certificate Authorities, charge your account for the remainder of the month, and then order the certificate and distribute it to our edge. The whole process takes just a minute or two to order and send your certificate to all 100 of our datacenters, where it’ll be ready and waiting to accelerate and protect your visitors’ HTTPS sessions.</p>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/gyPKKbHEFGc" frameborder="0" allowfullscreen=""></iframe>
-	<br><br>
-	<h2 id="usecasesfordedicatedcertificates">Use cases for Dedicated Certificates</h2>
-	<h4 id="isolatingcertificatesfromothercloudflarecustomerszones">Isolating certificates from other Cloudflare customers’ zones</h4>
+	<h2>Use cases for Dedicated Certificates</h2>
+	<h4>Isolating certificates from other Cloudflare customers’ zones</h4>
 	<p>While there are no inherent security risks with a shared certificate, we’ve heard from quite a few customers that they do not want their hostnames listed alongside the hostnames of other customers (who may be in other, entirely unrelated industries). By ordering a Dedicated Certificate you can be sure that only your hostnames appear on your certificate.</p>
-	<h4 id="isolatingcertificatesforagenciesandsaasproviders">Isolating certificates for agencies and SaaS providers</h4>
+	<h4>Isolating certificates for agencies and SaaS providers</h4>
 	<p>Similarly, Dedicated Certificates allows agencies, SaaS providers, and other businesses to isolate their customers onto separate certificates—a must for those serving competitive firms in the same industry. If you currently serve customer1 and customer2 on a sub-domain of your zone, example.com, you can issue a separate certificate to each, guaranteeing that neither customers’ domain name appears on the other’s certificate.</p>
-	<h4 id="abrandedhttpsexperience">A branded HTTPS experience</h4>
+	<h4>A branded HTTPS experience</h4>
 	<p>Universal SSL certificates are issued using a common name that is a concatenation of "ssl", a six-digit sequence number, and “.cloudflaressl.com”. For example, ssl123456.cloudflaressl.com. With Dedicated Certificates you can use your domain name in this field, and be sure that no other domains—whether an unrelated site or yours or someone else’s—are ever shown to your visitors.</p>
-	<h4 id="protectingmultiplelevelsofsubdomains">Protecting multiple levels of subdomains</h4>
-	<p>Until today, if you had orange-clouded (proxied) entries in <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> for hosts such as www.staging.example.com and www.uat.example.com, you would need a Business or Enterprise plan to avoid showing your users SSL errors (that may or may not be dismissible, depending on other security settings). Using Dedicated Certificates with Custom Hostnames you can now order a certificate protecting *.staging.example.com, *.uat.example.com—with room for up to 50 total hostnames or wildcards.</p>
-	<h4 id="controloverreissuancefrequency">Control over reissuance frequency</h4>
+	<h4>Protecting multiple levels of subdomains</h4>
+	<p>Until today, if you had orange-clouded (proxied) entries in <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> for hosts such as <a href="http://www.staging.example.com">www.staging.example.com</a> and <a href="http://www.uat.example.com">www.uat.example.com</a>, you would need a Business or Enterprise plan to avoid showing your users SSL errors (that may or may not be dismissible, depending on other security settings). Using Dedicated Certificates with Custom Hostnames you can now order a certificate protecting *.staging.example.com, *.uat.example.com—with room for up to 50 total hostnames or wildcards.</p>
+	<h4>Control over reissuance frequency</h4>
 	<p>Dedicated Certificates gives you control over how frequently you want their private keys to be regenerated and your certificate reissued. Want us to reissue your certificate immediately? Weekly? Simply delete it from the Edge Certificates table and request another one through our UI or API. You won’t be charged for the replacement unless you explicitly cancel your monthly subscription.</p>
-	<h4 id="dedicatedprivatekeysforsslinchinacomingsoon">Dedicated private keys for SSL in China (coming soon)</h4>
+	<h4>Dedicated private keys for SSL in China (coming soon)</h4>
 	<p>Enterprise customers that want to <a href="https://www.cloudflare.com/network/china">serve SSL within China</a> may have concerns about using the same private key there as the one that secures their HTTPS traffic in other parts of the world. We’re looking forward to giving you control over designating a specific Dedicated SSL Certificate to be used exclusively in China.</p>
-	<h3 id="whatifimakeamistakeduringmyorder">What if I make a mistake during my order?</h3>
+	<h3>What if I make a mistake during my order?</h3>
 	<p>Not a problem. Simply delete the certificate from the Edge Certificates card on the Crypto tab in your dashboard and re-order it. You will not be prompted for payment again unless you explicitly cancel the subscription from the Subscriptions page.</p>
-	<h2 id="candedicatedcertificatesbeusedwithallplans">Can Dedicated Certificates be used with all plans?</h2>
+	<h2>Can Dedicated Certificates be used with all plans?</h2>
 	<p>Yes, all <a href="https://www.cloudflare.com/plans">Cloudflare plans</a> can order Dedicated Certificates.</p>
 	<p>If you are a Free, Pro, or Business customer, simply follow the instructions above to place an order. If you are an Enterprise customer or want to order certificates for a Multi-User Organization, please contact your Customer Success Engineer to request that your account be provisioned with the desired number of certificates.</p>
 	<p>Note that in all cases you must have completed the onboarding process for your zone and have your nameservers pointed to Cloudflare DNS. We are working on adding support for those zones that use an external DNS provider, or have been onboarded through one of our partners.</p>
-	<h2 id="ihaveauniversalsslcertificateadedicatedcertificateadedicatedcertificatewithcustomhostnamesandanuploadedcertificatealllistedinthedashboardwhichonewillbeservedtomywebvisitors">I have a Universal SSL certificate, a Dedicated Certificate, a Dedicated Certificate with Custom Hostnames, and an Uploaded Certificate all listed in the dashboard. Which one will be served to my web visitors?</h2>
+	<h2>I have a Universal SSL certificate, a Dedicated Certificate, a Dedicated Certificate with Custom Hostnames, and an Uploaded Certificate all listed in the dashboard. Which one will be served to my web visitors?</h2>
 	<p>Certificates are served in the following priority order (from highest to lowest):</p>
 	<ol>
 		<li>
@@ -65,8 +72,8 @@
 			<p>Universal Certificates</p>
 		</li>
 	</ol>
-	<p>However, if the highest priority certificate doesn’t have a hostname matching the incoming request, we’ll move on to the next certificate. If none of the certificates can handle the request, e.g., you’re serving traffic at www.staging.example.com but haven’t purchased a Dedicated Certificate with Custom Hostnames (or uploaded a certificate to a Business or Enterprise plan), your users will see an error.</p>
-	<h2 id="howdodedicatedcertificatesdifferfromletsencryptoranotherca">How do Dedicated Certificates differ from Let's Encrypt or another CA?</h2>
+	<p>However, if the highest priority certificate doesn’t have a hostname matching the incoming request, we’ll move on to the next certificate. If none of the certificates can handle the request, e.g., you’re serving traffic at <a href="http://www.staging.example.com">www.staging.example.com</a> but haven’t purchased a Dedicated Certificate with Custom Hostnames (or uploaded a certificate to a Business or Enterprise plan), your users will see an error.</p>
+	<h2>How do Dedicated Certificates differ from Let's Encrypt or another CA?</h2>
 	<p>Cloudflare works with Let's Encrypt (and other CA certificates) in two ways: you can upload a Let's Encrypt certificate and we will serve it to your visitors, and when we make a connection to your origin server you can use a Let's Encrypt certificate to secure the connection.</p>
 	<p>Cloudflare's Dedicated Certificates totally automates the process of acquiring and distributing a certificate and has added advantages over using a third-party certificate.</p>
 	<ol>
@@ -80,14 +87,13 @@
 			<p>We handle renewal automatically and distributed renewed certificates without any work required by you.</p>
 		</li>
 	</ol>
-	<h2 id="howdodedicatedcertificatesrelatetoorigincacertificates">How do Dedicated Certificates relate to Origin CA certificates?</h2>
+	<h2>How do Dedicated Certificates relate to Origin CA certificates?</h2>
 	<p>Dedicated Certificates encrypt traffic between your visitors’ web browsers and Cloudflare, while <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Origin CA certificates</a> encrypt traffic between Cloudflare and your (origin) server.</p>
 	<p>When a user connects to your site hosted on Cloudflare, e.g., <a href="https://www.example.com">https://www.example.com</a>, a Dedicated Certificate will be used if it exists. When we need to fetch data from your origin server, we’ll look for an Origin CA (or other) certificate on your origin.</p>
 	<p>The two offerings are complementary and should be used together with Strict mode to create a validated, end-to-end encrypted connection.</p>
-	<h2 id="caniputmultipledomainsonmydedicatedcertificate">Can I put multiple domains on my Dedicated Certificate?</h2>
+	<h2>Can I put multiple domains on my Dedicated Certificate?</h2>
 	<p>No, these certificates are branded with the Common Name (CN) of the domain under which you placed the order. All custom hostnames or wildcard entries added must be subdomains of this parent zone.</p>
 	<p>If you would like a Dedicated Certificate for another domain, simply switch to that zone using the "Select Website" dropdown in the top-left corner of the Cloudflare Dashboard.</p>
-	<p><strong>Want to work with the amazing group of Software Engineers and Product Designers that built this product?</strong></p>
+	<p><b>Want to work with the amazing group of Software Engineers and Product Designers that built this product?</b></p>
 	<p>We’d love to talk to you. And we’re always hiring. Reach out on whatever medium suits you, or find us at <a href="https://www.cloudflare.com/join-our-team">https://www.cloudflare.com/join-our-team</a>!</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,390 +1,51 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/Internet-traffic-during-Euro-Cup-2024.png" class="kg-image" alt="How the UEFA Euro 2024 football games are impacting local Internet traffic" loading="lazy" width="3601" height="2026"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Re64Qy3WrGbazVLDsx6sj/b95e5705f61c926890588d4b18e59a61/Internet-traffic-during-Euro-Cup-2024.png" alt="How the UEFA Euro 2024 football games are impacting local Internet traffic" class="kg-image" width="2000" height="1125" loading="lazy">
+
+	</figure>
 	<p>Football (“soccer” in the US) is considered the most popular sport in the world, with around <a href="https://sportsmonkie.com/most-popular-sports">3.5 billion fans</a> spread across the world. European football is central to its popularity. The <a href="https://www.uefa.com/euro2024">UEFA Euro 2024</a> (the European Football Championship) started on June 14 and will run until July 14, 2024. But how much do these games impact Internet traffic in countries where national teams are playing? That’s what we aim to explore in this blog post. We found that, on average, traffic dropped 6% during games in European countries with national teams playing in the tournament.</p>
 	<p>Cloudflare has a global presence with data centers in over 320 cities, which helps provide a global view of what’s happening on the Internet. This is helpful for security, privacy, efficiency, and speed purposes, but also for observing Internet <a href="https://radar.cloudflare.com/outage-center">disruptions</a> and <a href="https://blog.cloudflare.com/tag/cloudflare-radar">traffic trends</a>.</p>
-	<p>In the past, we’ve seen how Internet traffic and HTTP requests are impacted by events such as <a href="https://blog.cloudflare.com/total-eclipse-internet-traffic-impacts-mexico-us-canada">total solar eclipses</a>, the <a href="https://blog.cloudflare.com/super-bowl-lvii">Super Bowl</a>, and <a href="https://blog.cloudflare.com/tag/election-security">elections</a>. 2024 is the year of elections, and we’ve been sharing our observations in <a href="https://blog.cloudflare.com/tag/election-security">blog posts</a> and our new 2024 <a href="https://radar.cloudflare.com/reports/elections-2024">Election Insights report</a> on Cloudflare Radar. </p>
+	<p>In the past, we’ve seen how Internet traffic and HTTP requests are impacted by events such as <a href="https://blog.cloudflare.com/total-eclipse-internet-traffic-impacts-mexico-us-canada">total solar eclipses</a>, the <a href="https://blog.cloudflare.com/super-bowl-lvii">Super Bowl</a>, and <a href="https://blog.cloudflare.com/tag/election-security">elections</a>. 2024 is the year of elections, and we’ve been sharing our observations in <a href="https://blog.cloudflare.com/tag/election-security">blog posts</a> and our new 2024 <a href="https://radar.cloudflare.com/reports/elections-2024">Election Insights report</a> on Cloudflare Radar.</p>
 	<p>However, football games are different from elections. Related trends happen when major teams or national squads are playing matches that draw a lot of human attention. If a game is broadcast on a national TV channel, Internet traffic typically drops because during games. People’s attention is more on the TV set with the ‘old’ broadcast signal, for those games that don’t require a paid subscription. That’s the most common situation when national teams are playing in Europe.</p>
 	<p>If it’s on a closed or paid channel (where a subscription is needed), then sometimes traffic increases as fewer viewers have access to the TV broadcast. For context, there’s a trend of channels offering games in their apps through streaming, not only for paid channels but also national broadcasters such as the British BBC. The opening England game in Euro 2024 on Sunday, June 16, 2024, had <a href="https://www.bbc.co.uk/mediacentre/2024/15-million-bbc-one-england-mens-euro-2024-opener">15 million viewers on BBC</a> One and was also streamed 3.5 million times on BBC iPlayer. This variety of viewing options from a single service appears to be a new trend in the digital age.</p>
-	<h2 id="football-games-associated-with-drops-in-traffic">Football games associated with drops in traffic</h2>
+	<h2>Football games associated with drops in traffic</h2>
 	<p>Now, for some game-related Internet trends: the Netherlands, Turkey, Belgium, Croatia, Slovakia, Serbia, and host Germany were the countries where their national team games had a significant impact on requests, with a drop of at least 12% compared to the previous week. Western Europe and countries around Germany top the list. The list shown in the map and the table below covers the first round of games among all teams in all six groups, which concluded on June 19, 2024.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image1-19.png" class="kg-image" alt="" loading="lazy" width="1999" height="1454"></figure>
-	<p><em>Source: Cloudflare. Map created with </em><a href="https://www.datawrapper.de"><em>Datawrapper</em></a></p>
-	<p>Here is the full list, which provides more detail than the map above, showing each country and the percentage decrease (or increase) in traffic as compared to the previous week at the time those countries’ national team games were occurring.</p><!--kg-card-begin: html-->
-	<table style="border:none;border-collapse:collapse;">
-		<colgroup>
-			<col width="107">
-			<col width="114">
-			<col width="117">
-			<col width="94">
-		</colgroup>
-		<tbody>
-			<tr style="height:39pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Country</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Increase/ decrease traffic</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Game day/hour (UTC)</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Opponent</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Netherlands</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-18%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 16, 13:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Poland</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Turkey</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-16%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 18, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Georgia</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Belgium</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-15%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 17, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Slovakia</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Croatia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-14%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 15, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Spain</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Slovakia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-14%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 17, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Belgium</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Serbia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-13%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 16, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">England</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Germany</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-12%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 14, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Scotland</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Denmark</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-10%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 16, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Slovenia</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Slovenia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-10%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 16, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Denmark</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Switzerland</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-9%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 15, 13:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Hungary</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">England</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-8%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 16, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Serbia</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Georgia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-8%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 18, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Turkey</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Austria</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-7%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 17, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">France</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Hungary</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-7%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 15, 13:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Switzerland</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Spain</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-7%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 15, 16:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Croatia</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">France</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-6%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 17, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Austria</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Scotland</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-6%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 14, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Germany</span></p>
-				</td>
-			</tr>
-			<tr style="height:27pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Portugal</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-6%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 18, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Czechia</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Italy</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-3%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 15, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Albania</span></p>
-				</td>
-			</tr>
-			<tr style="height:27pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Czechia</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">-3%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 18, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Portugal</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ukraine</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 17, 13:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Romania</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Poland</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">12%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 16, 13:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Netherlands</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Romania</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">16%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 17, 13:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ukraine</span></p>
-				</td>
-			</tr>
-			<tr style="height:15.75pt">
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Albania</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">25%</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;text-align: right;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">June 15, 19:00</span></p>
-				</td>
-				<td style="border-left:solid #cccccc 0.75pt;border-right:solid #cccccc 0.75pt;border-bottom:solid #cccccc 0.75pt;border-top:solid #cccccc 0.75pt;vertical-align:bottom;padding:2pt 2pt 2pt 2pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Italy</span></p>
-				</td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Albania, Romania, Poland, Ukraine, and Slovenia were the only countries with an increase in HTTP requests during games. England (-8%) and Scotland (-6%) both have similar drops in requests during their national team games. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uwxKimwaTdrno5TcJVWIr/e46d92037dd8e52d37cddf04696243e8/image1-19.png" alt="" class="kg-image" width="1999" height="1454" loading="lazy">
+
+	</figure>
+	<p><i>Source: Cloudflare. Map created with</i> <a href="https://www.datawrapper.de"><i>Datawrapper</i></a></p>
+	<p>Here is the full list, which provides more detail than the map above, showing each country and the percentage decrease (or increase) in traffic as compared to the previous week at the time those countries’ national team games were occurring.</p>
+	<p></p>
+	<p>Albania, Romania, Poland, Ukraine, and Slovenia were the only countries with an increase in HTTP requests during games. England (-8%) and Scotland (-6%) both have similar drops in requests during their national team games.</p>
 	<p>We’ve also noticed looking at our country-related <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP</a> data around games that social media services usually go up during half-time and before and after these national team games. As expected, traffic to websites in categories like AI chatbots, ecommerce (though some see increases during halftime), productivity tools, and business and financial services tends to decrease during Euro 2024 games.</p>
-	<h2 id="first-day-of-competition-germany-scotland">First day of competition: Germany-Scotland</h2>
-	<p>Another important perspective is focused on the first day of competition. On June 14, 2024, Euro 2024 kicked off in Germany. How was Internet traffic impacted in the country? </p>
+	<h2>First day of competition: Germany-Scotland</h2>
+	<p>Another important perspective is focused on the first day of competition. On June 14, 2024, Euro 2024 kicked off in Germany. How was Internet traffic impacted in the country?</p>
 	<p>When the ceremony started around 18:45 UTC (20:45 local time), by as much as 11%, deepening to a 12% drop from the previous week when the first game between Germany and Scotland began at 19:00 UTC (21:00 local time). Traffic briefly recovered during halftime to only 4% below the previous week’s levels, but fell again to 11% below the prior week during the second half. At 00:00 UTC (02:00 local time), requests dropped as much as 19% from the previous week, in a night of celebration for German fans.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image2-7.png" class="kg-image" alt="" loading="lazy" width="1999" height="603"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mb3YLglHc9l22Z2BJIJiS/29a30ba06cd8bb1f6d985c541f3d776a/image2-7.png" alt="" class="kg-image" width="1999" height="603" loading="lazy">
+
+	</figure>
 	<p>The second round of games in the Euro 2024 group phase is already underway. We’re keeping an eye on country-related trends after games on <a href="https://x.com/CloudflareRadar/status/1803515512221012356">X</a>.</p>
-	<h2 id="an-attacks-perspective">An attacks perspective</h2>
+	<h2>An attacks perspective</h2>
 	<p>During the UEFA Euro 2024 event in Germany, we’ve observed several attacks in the country. These included application layer DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service</a>) attacks targeting various websites, such as a translation tool, a data protection tool, a search engine, and a local government website. The most significant DDoS attack occurred on June 15, 2024, the day after the competition started, targeting the translation tool. This attack reached 105 million requests per hour at 23:00 UTC and lasted about two hours with two distinct spikes.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image5-4.png" class="kg-image" alt="" loading="lazy" width="1906" height="930"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sy8WejWqksvBSbukunfuQ/20a064466953b71c9458e823d949ed24/image5-4.png" alt="" class="kg-image" width="1906" height="930" loading="lazy">
+
+	</figure>
 	<p>Looking more closely at the attack on the translation tool, it peaked at 1.74 million requests per second (rps) at 23:40 UTC, following an initial spike of 147,000 rps at 21:04 UTC.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/06/image4-5.png" class="kg-image" alt="" loading="lazy" width="1999" height="872"></figure>
-	<h2 id="conclusion">Conclusion</h2>
-	<p>Football is incredibly important to Europeans, enough to cause nationwide Internet traffic to drop when fans are rooting for their national teams in a UEFA Euro 2024 game broadcast on national TV. </p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dR0RBzTCX6xWGo3nhNnzV/40056a0841361f4fa7c6a086479a0128/image4-5.png" alt="" class="kg-image" width="1999" height="872" loading="lazy">
+
+	</figure>
+	<h2>Conclusion</h2>
+	<p>Football is incredibly important to Europeans, enough to cause nationwide Internet traffic to drop when fans are rooting for their national teams in a UEFA Euro 2024 game broadcast on national TV.</p>
 	<p>Despite the popularity of online services like live score apps, sports news sites that track every minute of each game, and betting services enhanced with new visual tools and stats, national team football (or soccer) still significantly diverts attention away from the Internet.</p>
-	<p>We will continue to monitor UEFA Euro 2024 Internet trends. Based on the results of a <a href="https://x.com/CloudflareRadar/status/1803515512221012356">poll we conducted on X</a>, we plan to publish daily updates about games and their impact on countries whose national teams are playing that day. Follow us there.<br></p>
+	<p>We will continue to monitor UEFA Euro 2024 Internet trends. Based on the results of a <a href="https://x.com/CloudflareRadar/status/1803515512221012356">poll we conducted on X</a>, we plan to publish daily updates about games and their impact on countries whose national teams are playing that day. Follow us there.</p>
 </div>

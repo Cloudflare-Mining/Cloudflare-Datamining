@@ -1,59 +1,46 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2019/04/chat-bot@2x_optimized.png" alt="chat-bot@2x_optimized" loading="lazy"></p>
+<div class="mb2 gray5">6 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KiDis2Ki65ox7urlr4a4b/f7ed10cd2593f9f15f2092538201d821/chat-bot_2x_optimized.png" alt="chat-bot@2x_optimized" class="kg-image" width="3195" height="1598" loading="lazy">
+
+	</figure>
 	<p>I'm the Product Manager for the Application Services team here at Cloudflare. We recently identified a need for a new tool around service ownership. As a fast growing engineering organization, ownership of services changes fairly frequently. Many cycles get burned in chat with questions like "Who owns service x now?</p>
 	<p>Whilst it's easy to see how a tool like this saves a few seconds per day for the asker and askee, and saves on some mental context switches, the time saved is unlikely to add up to the cost of development and maintenance.</p>
-	<pre><code class="language-10">= 5 minutes per day
+	<pre class="language-10"><code class="language-10">= 5 minutes per day
 x 260 work days 
 = 1300 mins 
 / 60 mins 
-= 20 person hours per year
-</code></pre>
+= 20 person hours per year</code></pre>
 	<p>So a 20 hour investment in that tool would pay itself back in a year valuing everyone's time the same. While we've made great strides in improving the efficiency of building tools at Cloudflare, 20 hours is a stretch for an end-to-end build, deploy and operation of a new tool.</p>
-	<h3 id="entercloudflareworkersworkerskv">Enter Cloudflare Workers + Workers KV</h3>
+	<h3>Enter Cloudflare Workers + Workers KV</h3>
 	<p>The more I use Serverless and Workers, the more I'm struck with the benefits of:</p>
-	<h4 id="1reducedoperationaloverhead">1. Reduced operational overhead</h4>
+	<h4>1. Reduced operational overhead</h4>
 	<p>When I upload a Worker, it's automatically distributed to 175+ data centers. I don't have to be worried about uptime - it will be up, and it will be fast.</p>
-	<h4 id="2reduceddevtime">2. Reduced dev time</h4>
+	<h4>2. Reduced dev time</h4>
 	<p>With operational overhead largely removed, I'm able to focus purely on code. A constrained problem space like this lends itself really well to Workers. I reckon we can knock this out in well under 20 hours.</p>
-	<h3 id="requirements">Requirements</h3>
+	<h3>Requirements</h3>
 	<p>At Cloudflare, people ask these questions in Chat, so that's a natural interface to service ownership. Here's the spec:</p>
-	<table>
-		<thead>
-			<tr>
-				<th>Use Case</th>
-				<th>Input</th>
-				<th>Output</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Add</td>
-				<td>@ownerbot add Jira IT <a href="https://chat.google.com/room/ABC123">http://chat.google.com/room/ABC123</a></td>
-				<td>Service added</td>
-			</tr>
-			<tr>
-				<td>Delete</td>
-				<td>@ownerbot delete Jira</td>
-				<td>Service deleted</td>
-			</tr>
-			<tr>
-				<td>Question</td>
-				<td>@ownerbot Kibana</td>
-				<td>SRE Core owns Kibana. The room is: <a href="https://chat.google.com/ABC123">http://chat.google.com/ABC123</a></td>
-			</tr>
-			<tr>
-				<td>Export</td>
-				<td>@ownerbot export</td>
-				<td><code>[{name: "Kibana", owner: "SRE Core"...}]</code></td>
-			</tr>
-		</tbody>
-	</table>
-	<h3 id="helloownerbot">Hello @ownerbot</h3>
+	<p>Use Case</p>
+	<p>Input</p>
+	<p>Output</p>
+	<p>Add</p>
+	<p>@ownerbot add Jira IT <a href="https://chat.google.com/room/ABC123">http://chat.google.com/room/ABC123</a></p>
+	<p>Service added</p>
+	<p>Delete</p>
+	<p>@ownerbot delete Jira</p>
+	<p>Service deleted</p>
+	<p>Question</p>
+	<p>@ownerbot Kibana</p>
+	<p>SRE Core owns Kibana. The room is: <a href="https://chat.google.com/ABC123">http://chat.google.com/ABC123</a></p>
+	<p>Export</p>
+	<p>@ownerbot export</p>
+	<p><code>[{name: "Kibana", owner: "SRE Core"...}]</code></p>
+	<h3>Hello @ownerbot</h3>
 	<p>Following the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop">Hangouts Chat API Guide</a>, let's start with a hello world bot.</p>
 	<ol>
 		<li>
-			<p>To configure the bot, go to the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish">Publish</a> page and scroll down to the <strong>Enable The API</strong> button:</p>
+			<p>To configure the bot, go to the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish">Publish</a> page and scroll down to the <b>Enable The API</b> button:</p>
 		</li>
 		<li>
 			<p>Enter the bot name</p>
@@ -65,19 +52,29 @@ x 260 work days
 			<p>Go to the <a href="https://console.developers.google.com">API Console</a></p>
 		</li>
 		<li>
-			<p>Search for the <strong>Hangouts Chat API</strong> (<em>Note: not the Google+ Hangouts API</em>) <br><br><br>
-				<img src="https://blog.cloudflare.com/content/images/2019/04/api-console-hangouts-chat-api-1.png" alt="api-console-hangouts-chat-api-1" loading="lazy">
-			</p>
+			<p>Search for the <b>Hangouts Chat API</b> (<i>Note: not the Google+ Hangouts API</i>)</p>
+			<figure class="kg-card kg-image-card ">
+
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mQUzoV7nOtkEjVc5IOxnf/51216ae4b482ea730b56684fa7fc9f1a/api-console-hangouts-chat-api-1.png" alt="api-console-hangouts-chat-api-1" class="kg-image" width="1710" height="250" loading="lazy">
+
+			</figure>
 		</li>
 		<li>
-			<p>Click <strong>Configuration</strong> onthe left menu</p>
+			<p>Click <b>Configuration</b> onthe left menu</p>
 		</li>
 		<li>
-			<p>Fill out the form as per below <sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup></p>
+			<p>Fill out the form as per below <a href="https://blog.cloudflare.com/#fn1">[1]</a></p>
 			<ul>
-				<li>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx">generate a guid</a> and use that in the url.</li>
-				<li>The URL will be the route you associate with your Worker in the Dashboard<br>
-					<img src="https://blog.cloudflare.com/content/images/2019/04/bot-configuration-1.png" alt="bot-configuration-1" loading="lazy">
+				<li>
+					<p>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx">generate a guid</a> and use that in the url.</p>
+				</li>
+				<li>
+					<p>The URL will be the route you associate with your Worker in the Dashboard</p>
+					<figure class="kg-card kg-image-card ">
+
+						<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LfF9FngUCK4THzSlrnFho/2a17c7e7b7354e7ceb5cbdbb0e50222a/bot-configuration-1.png" alt="bot-configuration-1" class="kg-image" width="2000" height="1820" loading="lazy">
+
+					</figure>
 				</li>
 			</ul>
 		</li>
@@ -86,28 +83,34 @@ x 260 work days
 		</li>
 	</ol>
 	<p>So Google Chat should know about our bot now. Back in Google Chat, click in the "Find people, rooms, bots" textbox and choose "Message a Bot". Your bot should show up in the search:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/04/message-a-bot.png" alt="message-a-bot" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6En5Ilq95DEcC1hQEfpCO/a4763fb27aa1342c86a00d98b811fc42/message-a-bot.png" alt="message-a-bot" class="kg-image" width="1946" height="858" loading="lazy">
+
+	</figure>
 	<p>It won't be too useful just yet, as we need to create our Worker to receive the messages and respond!</p>
-	<h3 id="theworker">The Worker</h3>
-	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guid). It should look something like below. <sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/04/route.png" alt="route" loading="lazy"></p>
+	<h3>The Worker</h3>
+	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guid). It should look something like below. <a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pjvx9aep146V4aVSCBjvV/52bc993ad63b133d42921d256bb0f0b5/route.png" alt="route" class="kg-image" width="1246" height="546" loading="lazy">
+
+	</figure>
 	<p>The Google Chatbot interface is pretty simple, but weirdly obfuscated in the Hangouts API guide IMHO. You have to reverse engineer the python example.</p>
 	<p>Basically, if we message our bot like <code>@ownerbot-blog Kibana</code>, we'll get a message like this:</p>
-	<pre><code>  {
+	<pre class="language-bash"><code class="language-bash">  {
     "type": "MESSAGE",
     "message": {
       "argumentText": "Kibana"
     }
-  }
-</code></pre>
+  }</code></pre>
 	<p>To respond, we need to respond with <code>200 OK</code> and JSON body like this:</p>
-	<pre><code>content-length: 27
+	<pre class="language-bash"><code class="language-bash">content-length: 27
 content-type: application/json
 
-{"text":"Hello chat world"}
-</code></pre>
+{"text":"Hello chat world"}</code></pre>
 	<p>So, the minimum Chatbot Worker looks something like this:</p>
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; { event.respondWith(process(event.request)) });
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; { event.respondWith(process(event.request)) });
 
 function process(request) {
   let body = {
@@ -120,17 +123,18 @@ function process(request) {
         "Cache-Control": "no-cache"
     }
   });
-}
-</code></pre>
+}</code></pre>
 	<p>Save and deploy that and we should be able message our bot:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/04/google-chatbot-hello-world-response.png" alt="google-chatbot-hello-world-response" loading="lazy"></p>
-	<p>
-		<marquee><strong>Success</strong>!</marquee>
-	</p>
-	<h3 id="implementation">Implementation</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BL2D9sXew5rPpVLtif5bS/0569b31f608ae70cd1e73c2e2d826ee6/google-chatbot-hello-world-response.png" alt="google-chatbot-hello-world-response" class="kg-image" width="1462" height="680" loading="lazy">
+
+	</figure>
+	<p><b>Success</b>!</p>
+	<h3>Implementation</h3>
 	<p>OK, on to the meat of the code. Based on the requirements, I see a need for an <code>AddCommand</code>, <code>QueryCommand</code>, <code>DeleteCommand</code> and <code>HelpCommand</code>. I also see some sort of <code>ServiceDirectory</code> that knows how to add, delete and retrieve services.</p>
 	<p>I created a CommandFactory which accepts a ServiceDirectory, as well as an implementation of a KV store, which will be Workers KV in production, but I'll mock out in tests.</p>
-	<pre><code class="language-javascript">class CommandFactory {
+	<pre class="language-javascript"><code class="language-javascript">class CommandFactory {
     constructor(serviceDirectory, kv) {
         this.serviceDirectory = serviceDirectory;
         this.kv = kv;
@@ -151,20 +155,18 @@ function process(request) {
                 return new QueryCommand(argumentText, this.serviceDirectory, this.kv);
         }
     }
-}
-</code></pre>
+}</code></pre>
 	<p>OK, so if we receive a message like <code>@ownerbot add</code>, we'll interpret it as an <code>AddCommand</code>, but if it's not something we recognize, we'll assume it's a <code>QueryCommand</code> like <code>@ownerbot Kibana</code> which makes it easy to parse commands.</p>
 	<p>OK, our commands need a service directory, which will look something like this:</p>
-	<pre><code class="language-javascript">class ServiceDirectory {     
+	<pre class="language-javascript"><code class="language-javascript">class ServiceDirectory {     
     get(serviceName) {...}
     async add(service) {...}
     async delete(serviceName) {...}
     find(serviceName) {...}
     getNames() {...}
-}
-</code></pre>
+}</code></pre>
 	<p>Let's build some commands. Oh, and my chatbot is going to be Ultima IV themed, because... reasons.</p>
-	<pre><code class="language-javascript">class AddCommand extends Command {
+	<pre class="language-javascript"><code class="language-javascript">class AddCommand extends Command {
 
     async respond() {
         let cmdParts = this.commandParts;
@@ -187,10 +189,9 @@ function process(request) {
         await this.serviceDirectory.add(service);
         return new OwnerbotResponse(`My codex of knowledge has expanded to contain knowledge of ${name}. Congratulations virtuous Paladin.`);
     }
-}
-</code></pre>
+}</code></pre>
 	<p>The nice thing about the <a href="https://en.wikipedia.org/wiki/Command_pattern">Command</a> pattern for chatbots, is you can encapsulate the logic of each command for testing, as well as compose series of commands together to test out conversations. Later, we could extend it to support undo. Let's test the <code>AddCommand</code></p>
-	<pre><code class="language-javascript">  it('requires all args', async function() {
+	<pre class="language-javascript"><code class="language-javascript">  it('requires all args', async function() {
             let addCmd = new AddCommand("add AdminPanel 'Internal Tools' 'Internal Tools'", dir, kv); //missing url            
             let res = await addCmd.respond();
             console.log(res.text);
@@ -202,17 +203,16 @@ function process(request) {
             let res = await addCmd.respond();
             console.debug(res.text);
             assert.equal(res.success, true, "Should have succeeded with all args");            
-        });
-</code></pre>
-	<pre><code>$ mocha -g "AddCommand"
+        });</code></pre>
+
+	<pre class="language-bash"><code class="language-bash">$ mocha -g "AddCommand"
   AddCommand
     add
       ✓ requires all args
       ✓ returns success for all args
-  2 passing (19ms)
-</code></pre>
+  2 passing (19ms)</code></pre>
 	<p>So far so good. But adding commands to our ownerbot isn't going to be so useful unless we can query them.</p>
-	<pre><code class="language-javascript">class QueryCommand extends Command {
+	<pre class="language-javascript"><code class="language-javascript">class QueryCommand extends Command {
     async respond() {
         let service = this.serviceDirectory.get(this.argumentText);
         if (service) {
@@ -221,10 +221,9 @@ function process(request) {
         let serviceNames = this.serviceDirectory.getNames().join(", ");
         return new OwnerbotResponse(`I knoweth not of that service. Thou mightst asketh me of: ${serviceNames}`);
     }
-}
-</code></pre>
+}</code></pre>
 	<p>Let's write a test that runs an <code>AddCommand</code> followed by a <code>QueryCommand</code></p>
-	<pre><code class="language-javascript">describe ('QueryCommand', function() {
+	<pre class="language-javascript"><code class="language-javascript">describe ('QueryCommand', function() {
     let kv = new MockKeyValueStore();
     let dir = new ServiceDirectory(kv);
     await dir.init();
@@ -238,29 +237,35 @@ function process(request) {
         assert.equal(res.success, true, "Should have succeeded");
         assert(res.text.indexOf('Internal Tools') &gt; -1, "Should have returned the team name in the query response");
     })
-})
-</code></pre>
-	<h3 id="demo">Demo</h3>
+})</code></pre>
+	<h3>Demo</h3>
 	<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot">full source on Github</a>. Let's take it for a spin!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/04/ownerbot1-1.gif" alt="ownerbot1-1" loading="lazy"></p>
-	<h3 id="learnings">Learnings</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UJpvFMBP0gI5gx6ggEadY/991f161a60bada2cb00e4e9a235d3258/ownerbot1-1.gif" alt="ownerbot1-1" class="kg-image" width="847" height="526" loading="lazy">
+
+	</figure>
+	<h3>Learnings</h3>
 	<p>Some of the things I learned during the development of @ownerbot were:</p>
 	<ul>
-		<li>Chatbots are an awesome use case for Serverless. You can deploy and not worry again about the infrastructure</li>
-		<li>Workers KV means extends the range of useful chat bots to include stateful bots like @ownerbot</li>
-		<li>The <code>Command</code> pattern provides a useful way to encapsulate the parsing and responding to commands in a chat bot.</li>
+		<li>
+			<p>Chatbots are an awesome use case for Serverless. You can deploy and not worry again about the infrastructure</p>
+		</li>
+		<li>
+			<p>Workers KV means extends the range of useful chat bots to include stateful bots like @ownerbot</p>
+		</li>
+		<li>
+			<p>The <code>Command</code> pattern provides a useful way to encapsulate the parsing and responding to commands in a chat bot.</p>
+		</li>
 	</ul>
-	<p>In <strong>Part 2</strong> we'll add authentication to ensure we're only responding to requests from our instance of Google Chat</p>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-			<li id="fn2" class="footnote-item">
-				<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<p>In <b>Part 2</b> we'll add authentication to ensure we're only responding to requests from our instance of Google Chat</p>
+	<hr>
+	<ol>
+		<li>
+			<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+		<li>
+			<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
+		</li>
+	</ol>
 </div>

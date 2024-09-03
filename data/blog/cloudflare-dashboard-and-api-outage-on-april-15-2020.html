@@ -1,37 +1,66 @@
 <div class="mb2 gray5">3 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-dashboard-and-api-outage-on-april-15-2020">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-dashboard-and-api-outage-on-april-15-2020">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-dashboard-and-api-outage-on-april-15-2020">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-dashboard-and-api-outage-on-april-15-2020">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55tLbQzodDo7pr6HbedkcF/77eeceb4b7989825f1a46c37943d1f52/cloudflare-dashboard-and-api-outage-on-april-15-2020.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Starting at 1531 UTC and lasting until 1952 UTC, the Cloudflare Dashboard and API were unavailable because of the disconnection of multiple, redundant fibre connections from one of our two core data centers.</p>
 	<p>This outage was not caused by a DDoS attack, or related to traffic increases caused by the COVID-19 crisis. Nor was it caused by any malfunction of software or hardware, or any misconfiguration.</p>
-	<h3 id="what-happened">What happened</h3>
+	<h3>What happened</h3>
 	<p>As part of planned maintenance at one of our core data centers, we instructed technicians to remove all the equipment in one of our cabinets. That cabinet contained old inactive equipment we were going to retire and had no active traffic or data on any of the servers in the cabinet. The cabinet also contained a patch panel (switchboard of cables) providing all external connectivity to other Cloudflare data centers. Over the space of three minutes, the technician decommissioning our unused hardware also disconnected the cables in this patch panel.</p>
 	<p>This data center houses Cloudflare’s main control plane and database and as such, when we lost connectivity, the Dashboard and API became unavailable immediately. The Cloudflare network itself continued to operate normally and proxied customer websites and applications continued to operate. As did Magic Transit, Cloudflare Access, and Cloudflare Spectrum. All security services, such as our Web Application Firewall, continued to work normally.</p>
 	<p>But the following were not possible:</p>
 	<ul>
-		<li>Logging into the Dashboard</li>
-		<li>Using the API</li>
-		<li>Making any configuration changes (such as changing a DNS record)</li>
-		<li>Purging cache</li>
-		<li>Running automated Load Balancing health checks</li>
-		<li>Creating or maintaining Argo Tunnel connections</li>
-		<li>Creating or updating Cloudflare Workers</li>
-		<li>Transferring domains to <a href="https://www.cloudflare.com/products/registrar">Cloudflare Registrar</a></li>
-		<li>Accessing Cloudflare Logs and Analytics</li>
-		<li>Encoding videos on Cloudflare Stream</li>
-		<li>Logging information from edge services (customers will see a gap in log data)</li>
+		<li>
+			<p>Logging into the Dashboard</p>
+		</li>
+		<li>
+			<p>Using the API</p>
+		</li>
+		<li>
+			<p>Making any configuration changes (such as changing a DNS record)</p>
+		</li>
+		<li>
+			<p>Purging cache</p>
+		</li>
+		<li>
+			<p>Running automated Load Balancing health checks</p>
+		</li>
+		<li>
+			<p>Creating or maintaining Argo Tunnel connections</p>
+		</li>
+		<li>
+			<p>Creating or updating Cloudflare Workers</p>
+		</li>
+		<li>
+			<p>Transferring domains to <a href="https://www.cloudflare.com/products/registrar">Cloudflare Registrar</a></p>
+		</li>
+		<li>
+			<p>Accessing Cloudflare Logs and Analytics</p>
+		</li>
+		<li>
+			<p>Encoding videos on Cloudflare Stream</p>
+		</li>
+		<li>
+			<p>Logging information from edge services (customers will see a gap in log data)</p>
+		</li>
 	</ul>
 	<p>No configuration data was lost as a result of the outage. Our customers’ configuration data is both backed up and replicated off-site, but neither backups nor replicas were needed. All configuration data remained in place.</p>
-	<h3 id="how-we-responded">How we responded</h3>
-	<p>During the outage period, we worked simultaneously to cut over to our disaster recovery core data center and restore connectivity. </p>
-	<p>Dozens of engineers worked in two virtual war rooms, as Cloudflare is mostly working remotely because of the COVID-19 emergency. One room dedicated to restoring connectivity, the other to disaster recovery failover. </p>
+	<h3>How we responded</h3>
+	<p>During the outage period, we worked simultaneously to cut over to our disaster recovery core data center and restore connectivity.</p>
+	<p>Dozens of engineers worked in two virtual war rooms, as Cloudflare is mostly working remotely because of the COVID-19 emergency. One room dedicated to restoring connectivity, the other to disaster recovery failover.</p>
 	<p>We quickly failed over our internal monitoring systems so that we had visibility of the entire Cloudflare network. This gave us global control and the ability to see issues in any of our network locations in more than 200 cities worldwide. This cutover meant that Cloudflare’s edge service could continue running normally and the SRE team could deal with any problems that arose in the day to day operation of the service.</p>
 	<p>As we were working the incident, we made a decision every 20 minutes on whether to fail over the Dashboard and API to disaster recovery or to continue trying to restore connectivity. If there had been physical damage to the data center (e.g. if this had been a natural disaster) the decision to cut over would have been easy, but because we had run tests on the failover we knew that the failback from disaster recovery would be very complex and so we were weighing the best course of action as the incident unfolded.</p>
-	<p>At 1944 UTC the first link from the data center to the Internet came back up. This was a backup link with 10Gbps of connectivity.<br>At 1951 UTC we restored the first of four large links to the Internet.<br>At 1952 UTC the Cloudflare Dashboard and API became available.<br>At 2016 UTC the second of four links was restored.<br>At 2019 UTC the third of four links was restored.<br>At 2031 UTC fully-redundant connectivity was restored.</p>
-	<h3 id="moving-forward">Moving forward</h3>
-	<p>We take this incident very seriously, and recognize the magnitude of impact it had. We have identified several steps we can take to address the risk of these sorts of problems from recurring in the future, and we plan to start working on these matters immediately: </p>
+	<p>At 1944 UTC the first link from the data center to the Internet came back up. This was a backup link with 10Gbps of connectivity.At 1951 UTC we restored the first of four large links to the Internet.At 1952 UTC the Cloudflare Dashboard and API became available.At 2016 UTC the second of four links was restored.At 2019 UTC the third of four links was restored.At 2031 UTC fully-redundant connectivity was restored.</p>
+	<h3>Moving forward</h3>
+	<p>We take this incident very seriously, and recognize the magnitude of impact it had. We have identified several steps we can take to address the risk of these sorts of problems from recurring in the future, and we plan to start working on these matters immediately:</p>
 	<ul>
-		<li>Design: While the external connectivity used diverse providers and led to diverse data centers, we had all the connections going through only one patch panel, creating a single physical point of failure. This should be spread out across multiple parts of our facility.</li>
-		<li>Documentation: After the cables were removed from the patch panel, we lost valuable time identifying for data center technicians the critical cables providing external connectivity to be restored. We should take steps to ensure the various cables and panels are labeled for quick identification by anyone working to remediate the problem. This should expedite our ability to access the needed documentation. </li>
-		<li>Process: While sending our technicians instructions to retire hardware, we should call out clearly the cabling that should not be touched.</li>
+		<li>
+			<p>Design: While the external connectivity used diverse providers and led to diverse data centers, we had all the connections going through only one patch panel, creating a single physical point of failure. This should be spread out across multiple parts of our facility.</p>
+		</li>
+		<li>
+			<p>Documentation: After the cables were removed from the patch panel, we lost valuable time identifying for data center technicians the critical cables providing external connectivity to be restored. We should take steps to ensure the various cables and panels are labeled for quick identification by anyone working to remediate the problem. This should expedite our ability to access the needed documentation.</p>
+		</li>
+		<li>
+			<p>Process: While sending our technicians instructions to retire hardware, we should call out clearly the cabling that should not be touched.</p>
+		</li>
 	</ul>
 	<p>We will be running a full internal post-mortem to ensure that the root causes of this incident are found and addressed.</p>
 	<p>We are very sorry for the disruption.</p>

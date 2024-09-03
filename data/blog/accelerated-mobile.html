@@ -1,34 +1,56 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sPfFz9IPc9o09vgtx2sR9/0c0fa101e0c51409d4d11768de331d63/accelerated-mobile.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In 2017, we've predicted that more than half of the traffic to Cloudflare's network will come from mobile devices. Even if they are formatted to be displayed on a small screen, the mobile web is built on traditional web protocols and technologies that were designed for desktop CPUs, network connections, and displays. As a result, browsing the mobile web feels sluggish compared with using native mobile apps.</p>
 	<p>In October 2015, the team at Google announced <a href="https://ampproject.org">Accelerated Mobile Pages (AMP)</a>, a new, open technology to make the mobile web as fast as native apps. Since then, a large number of publishers have adopted AMP. Today, 600 million pages across 700,000 different domains are available in the AMP format.</p>
 	<p>The majority of traffic to this AMP content comes from people running searches on Google.com. If a visitor finds content through some source other than a Google search, even if the content can be served from AMP, it typically won't be. As a result, the mobile web continues to be slower than it needs to be.</p>
-	<h4 id="makingthemobilewebappquick">Making the Mobile Web App-Quick</h4>
+	<h4>Making the Mobile Web App-Quick</h4>
 	<p>Cloudflare's <a href="https://www.cloudflare.com/website-optimization/accelerated-mobile-links">Accelerated Mobile Links</a> helps solve this problem, making content, regardless of how it's discovered, app-quick. Once enabled, Accelerated Mobile Links automatically identifies links on a Cloudflare customer's site to content with an <a href="https://www.cloudflare.com/website-optimization/accelerated-mobile-links">AMP</a> version available. If a link is clicked from a mobile device, the AMP content will be loaded nearly instantly.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/01/amp-configuration-1.png" alt="Enabling Accelerated Mobile Links on Cloudflare" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ieCvJzcYWwJ2YOKbUrKFZ/1fac6ae0fc5cd83b6e7936a1050baeeb/amp-configuration-1.png" alt="Enabling Accelerated Mobile Links on Cloudflare" class="kg-image" width="1548" height="514" loading="lazy">
+
+	</figure>
 	<p>To see how it works, try viewing this post from your mobile device and clicking any of these links:</p>
 	<ul>
-		<li><strong>TechCrunch:</strong> <a href="https://techcrunch.com/2017/01/11/cloudflare-explains-how-fbi-gag-order-impacted-business">Cloudflare explains how FBI gag order impacted business</a></li>
-		<li><strong>ZDNet:</strong> <a href="https://www.zdnet.com/article/cloudflare-offers-http2-server-push-to-boost-internet-speeds">CloudFlare figured out how to make the Web one second faster</a></li>
-		<li><strong>The Register:</strong> <a href="http://www.theregister.co.uk/2016/06/21/cloudflare_apologizes_for_telia_screwing_you_over">CloudFlare apologizes for Telia screwing you over</a></li>
-		<li><strong>AMP 8 Ball:</strong> <a href="https://amp8ball.com">Ask The Amp Magic 8-Ball A Yes Or No Question.</a><br>
-			<img src="https://blog.cloudflare.com/content/images/2017/01/AML_animated_demo.gif" alt="Accelerated Mobile Links animated demo" loading="lazy">
+		<li>
+			<p><b>TechCrunch:</b> <a href="https://techcrunch.com/2017/01/11/cloudflare-explains-how-fbi-gag-order-impacted-business">Cloudflare explains how FBI gag order impacted business</a></p>
+		</li>
+		<li>
+			<p><b>ZDNet:</b> <a href="https://www.zdnet.com/article/cloudflare-offers-http2-server-push-to-boost-internet-speeds">CloudFlare figured out how to make the Web one second faster</a></p>
+		</li>
+		<li>
+			<p><b>The Register:</b> <a href="http://www.theregister.co.uk/2016/06/21/cloudflare_apologizes_for_telia_screwing_you_over">CloudFlare apologizes for Telia screwing you over</a></p>
+		</li>
+		<li>
+			<p><b>AMP 8 Ball:</b> <a href="https://amp8ball.com">Ask The Amp Magic 8-Ball A Yes Or No Question.</a></p>
+			<figure class="kg-card kg-image-card ">
+
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LVE0NPtwr0c0kluYKwhAR/d4e766255a880d8b82cfa4fdcfbe4328/AML_animated_demo.gif" alt="Accelerated Mobile Links animated demo" class="kg-image" width="378" height="666" loading="lazy">
+
+			</figure>
 		</li>
 	</ul>
-	<h4 id="increasinguserengagement">Increasing User Engagement</h4>
+	<h4>Increasing User Engagement</h4>
 	<p>One of the benefits of Accelerated Mobile Links is that AMP content is loaded in a viewer directly on the site that linked to the content. As a result, when a reader is done consuming the AMP content closing the viewer returns them to the original source of the link. In that way, every Cloudflare customers' site can be more like a native mobile app, with the corresponding increase in user engagement.</p>
 	<p>For large publishers that want an even more branded experience, Cloudflare will offer the ability to customize the domain of the viewer to match the publisher's domain. This, for the first time, provides a seamless experience where AMP content can be consumed without having to send visitors to a Google owned domain. If you're a large publisher interested in customizing the Accelerated Mobile Links viewer, you can contact <a href="mailto:amp-publisher@cloudflare.com">Cloudflare's team</a>.</p>
-	<h4 id="innovatingonamp">Innovating on AMP</h4>
+	<h4>Innovating on AMP</h4>
 	<p>While Google was the initial champion of AMP, the technologies involved are <a href="https://github.com/ampproject/amphtml">open</a>. We worked closely with the Google team in developing Cloudflare's Accelerated Mobile Links as well as our own AMP cache. Malte Ubl, the technical lead for the AMP Project at Google said of our collaboration:</p>
-	<p><em>"Working with Cloudflare on its AMP caching solution was as seamless as open-source development can be. Cloudflare has become a regular contributor on the project and made the code base better for all users of AMP. It is always a big step for a software project to go from supporting specific caches to many, and it is awesome to see Cloudflare’s elegant solution for this."</em></p>
+	<p><i>"Working with Cloudflare on its AMP caching solution was as seamless as open-source development can be. Cloudflare has become a regular contributor on the project and made the code base better for all users of AMP. It is always a big step for a software project to go from supporting specific caches to many, and it is awesome to see Cloudflare’s elegant solution for this."</i></p>
 	<p>Cloudflare now powers the only <a href="https://github.com/ampproject/amphtml/blob/master/spec/amp-cache-guidelines.md">compliant</a> non-Google AMP cache with all the same performance and security benefits as Google.</p>
 	<p>In the spirit of open source, we're working to help develop updates to the project to address some of publishers' and end users' concerns. Specifically, here are some features we're developing to address concerns that have been expressed about AMP:</p>
 	<ul>
-		<li>Easier ways to share AMP content using publisher's original domains</li>
-		<li>Automatically redirecting desktop visitors from the AMP version back to the original version of the content</li>
-		<li>A way for end users who would prefer not to be redirected to the AMP version of content to opt out</li>
-		<li>The ability for publishers to brand the AMP viewer and serve it from their own domain</li>
+		<li>
+			<p>Easier ways to share AMP content using publisher's original domains</p>
+		</li>
+		<li>
+			<p>Automatically redirecting desktop visitors from the AMP version back to the original version of the content</p>
+		</li>
+		<li>
+			<p>A way for end users who would prefer not to be redirected to the AMP version of content to opt out</p>
+		</li>
+		<li>
+			<p>The ability for publishers to brand the AMP viewer and serve it from their own domain</p>
+		</li>
 	</ul>
 	<p>Cloudflare is committed to the AMP project. Accelerated Mobile Links is the first AMP feature we're releasing, but we'll be doing more over the months to come. As of today, Accelerated Mobile Links is available to all Cloudflare customers for free. You can enable it in your <a href="https://www.cloudflare.com/a/performance">Cloudflare Performance dashboard</a>. Stay tuned for more AMP features that will continue to increase the speed of the mobile web.</p>
-	<!--kg-card-end: markdown-->
 </div>

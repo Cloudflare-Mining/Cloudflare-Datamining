@@ -1,12 +1,16 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GNSCIt5sNLFweMrq4ZydL/27575348e6b6b3a4d8a6920e74858c98/cloudflare-traffic.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today, we're introducing two new Cloudflare Traffic products to give customers control over how Cloudflare’s edge network handles their traffic, allowing them to shape and direct it for their specific needs.</p>
 	<p>More than 10 trillion requests flow through Cloudflare every month. More than 4 million customers and 10% of internet requests benefit from our global network. Cloudflare's virtual backbone gives every packet <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">improved performance</a>, security, and reliability.</p>
 	<p>That's the macro picture.</p>
-	<p>What's more interesting is keeping each individual customer globally available. While every customer benefits from the network effect of Cloudflare, each customer is (appropriately) focused on <em>their</em> application uptime, security and performance.</p>
-	<h3 id="ratelimiting">Rate Limiting*</h3>
+	<p>What's more interesting is keeping each individual customer globally available. While every customer benefits from the network effect of Cloudflare, each customer is (appropriately) focused on <i>their</i> application uptime, security and performance.</p>
+	<h3>Rate Limiting*</h3>
 	<p>Cloudflare’s new <a href="https://www.cloudflare.com/traffic-control">Rate Limiting</a> allows a customer to rate limit, shape or block traffic based on the number of requests per second per IP, cookie, or authentication token. Traffic can be controlled on a per-URI (with wildcards for greater flexibility) basis giving pinpoint control over a website, application, or API.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/traffic-control-graph.png" alt="Cloudflare Traffic Control" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/z0czXftPrSgtKMQSA6caM/ca94f51cda0e685bf804ae7f85b47bc9/traffic-control-graph.png" alt="Cloudflare Traffic Control" class="kg-image" width="576" height="430" loading="lazy">
+
+	</figure>
 	<p>Customers seek reliability and availability in the face of popularity or unexpected traffic such as slow brute force attacks on a <a href="https://www.cloudflare.com/learning/security/how-to-improve-wordpress-security">WordPress site</a>, Denial of Service against dynamic pages, or the stampede of requests that comes with success. We are the leader at stopping significant <a href="https://www.cloudflare.com/ddos">DDoS attacks</a> and offer a comprehensive <a href="https://www.cloudflare.com/waf">WAF</a> to target specific application-level attacks.</p>
 	<p>Now we are adding the capability to give each customer fine-grained control over the traffic that reaches their origin servers.</p>
 	<p>Even well-engineered applications have a resource limit. Any dynamic endpoint either has a hard system limit or an economic limit on the number of servers you can afford. Those expensive endpoints need additional protection against floods of traffic, including legitimate visitors. You can provision for the worst case...but when you find a new Pokémon Go on your hands, the best case hurts, too.</p>
@@ -15,8 +19,12 @@
 	<p>Static pages are easy to cache at Cloudflare's edge, so high traffic on a home page is welcome. But a competitor scraping your search results is different, and may cause economic pain in server resources in addition to disrupting business as usual. So Rate Limiting lets you define specific URLs with lower limits and different policies.</p>
 	<p>Similarly, rules designed to protect a login endpoint enables real users to still access your application while defending yourself from brute-force attacks designed to break into your system or simply exhaust your resources. Rate Limiting gives customers this power, in part, by distinguishing between POSTs versus GETs and identifying authentication failures through the server response code.</p>
 	<p>From rate limiting within your applications to replacing hardware capabilities at the top of your rack, Rate Limiting solves a problem that otherwise requires several tools and custom development to solve. In the future, Rate Limiting will become even more intelligent, automatically enabling caching on your marketing site on a product launch, queueing customers on Black Friday to ensure your <a href="https://www.cloudflare.com/ecommerce">e-commerce system</a> handles the demand, and helping to maximize the return on your IT investments by protecting them from damaging spikes and traffic patterns.</p>
-	<h3 id="trafficmanager">Traffic Manager</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/traffic-manager-failover.png" alt="" loading="lazy"></p>
+	<h3>Traffic Manager</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BMtHV6Vr8mhIuoeGSvGFC/b54a97f3a9a685d9e51a3e483e1181b4/traffic-manager-failover.png" alt="" class="kg-image" width="1267" height="467" loading="lazy">
+
+	</figure>
 	<p>For many customers, gone are the days of running a single server for their web application. Two scenarios are common: a single datacenter or cloud provider running multiple load-balanced servers, and replication of that infrastructure across multiple geographies.</p>
 	<p>Customers have moved to load balanced infrastructure to provide reliability, handle traffic spikes, and handle traffic locally in different regions of the world.</p>
 	<p>The beauty of the single server approach was that it was simple to manage: all traffic from everywhere on the Internet hit the same server. Unfortunately, that doesn’t scale to today’s Internet and so controls are needed to handle load balancing across servers and locations.</p>
@@ -31,9 +39,12 @@
 	<p>Sometimes, it's not the network. With Traffic Manager, you may load balance across individual hosts and across multiple hosts. Application down on AWS? Send those visitors to your Rackspace-hosted application in seconds. Failover from a cloud provider to your own datacenter, and back again as soon as your primary location is healthy again.</p>
 	<p>Other times, customers run different instances to account for the speed of light, and be as close as possible to their customers -- much as Cloudflare does. With Traffic Manager, you can route visitors to your site to the nearest host, based on their region. Choose to send visitors in Munich to your datacenter in Amsterdam, and visitors from Kansas City to your St. Louis datacenter. These policies can be combined, so if your European datacenter is down, then and only then send that traffic to your United States datacenter.</p>
 	<p>Many of our customers put significant investment into the availability of their infrastructure. Traffic Manager extends that investment across Cloudflare's ever-growing global network.</p>
-	<h3 id="earlyaccess">Early Access</h3>
+	<h3>Early Access</h3>
 	<p>CloudFlare Traffic is now available in Early Access for all customers, and will be available publicly before the end of the year. Read more about <a href="https://www.cloudflare.com/traffic-manager">Traffic Manager</a> and <a href="https://www.cloudflare.com/traffic-control">Rate Limiting</a> and request access in your Cloudflare dashboard, in the Traffic app.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/traffic-app-in-cloudflare-dashboard-1.png" alt="Cloudflare dashboard, Traffic app" loading="lazy"></p>
-	<p><small>**Note: This post was updated 4/13/17 to reflect the current product name. All references to Traffic Control have been changed to Rate Limiting.*</small></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pNVbDcRjNrafnHVaZNfbm/f964cd950522ba238841e5c64d0321bd/traffic-app-in-cloudflare-dashboard-1.png" alt="Cloudflare dashboard, Traffic app" class="kg-image" width="576" height="361" loading="lazy">
+
+	</figure>
+	<p>**Note: This post was updated 4/13/17 to reflect the current product name. All references to Traffic Control have been changed to Rate Limiting.*</p>
 </div>

@@ -1,46 +1,65 @@
 <div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/free-privacy-first-analytics-for-a-better-web">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/free-privacy-first-analytics-for-a-better-web">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/free-privacy-first-analytics-for-a-better-web">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/free-privacy-first-analytics-for-a-better-web">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rM4plSsukeY8lFxcnyE5e/8f3de52ca2f34090194aed168f958134/free-privacy-first-analytics-for-a-better-web.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Everyone with a website needs to know some basic facts about their website: what pages are people visiting? Where in the world are they? What other sites sent traffic to <em>my</em> website?</p>
+	<p>Everyone with a website needs to know some basic facts about their website: what pages are people visiting? Where in the world are they? What other sites sent traffic to <i>my</i> website?</p>
 	<p>There are “free” analytics tools out there, but they come at a cost: not money, but your users’ privacy. Today we’re announcing a brand new, privacy-first analytics service that’s open to everyone — even if they're not already a Cloudflare customer. And if you're a Cloudflare customer, we've enhanced our analytics to make them even more powerful than before.</p>
-	<h3 id="the-most-important-analytics-feature-privacy">The most important analytics feature: Privacy</h3>
+	<h3>The most important analytics feature: Privacy</h3>
 	<p>The most popular analytics services available were built to help ad-supported sites sell more ads. But, a lot of websites don’t have ads. So if you use those services, you're giving up the privacy of your users in order to understand how what you've put online is performing.</p>
 	<p>Cloudflare's business has never been built around tracking users or selling advertising. We don’t want to know what you do on the Internet — it’s not our business. So we wanted to build an analytics service that gets back to what really matters for web creators, not necessarily marketers, and to give web creators the information they need in a simple, clean way that doesn't sacrifice their visitors' privacy. And giving web creators these analytics shouldn’t depend on their use of Cloudflare’s infrastructure for performance and security. (More on that in a bit.)</p>
 	<p>What does it mean for us to make our analytics “privacy-first”? Most importantly, it means we don’t need to track individual users over time for the purposes of serving analytics. We don’t use any client-side state, like cookies or localStorage, for the purposes of tracking users. And we don’t “fingerprint” individuals via their IP address, User Agent string, or any other data for the purpose of displaying analytics. (We consider fingerprinting even more intrusive than cookies, because users have no way to opt out.)</p>
-	<h3 id="counting-visits-without-tracking-users">Counting visits without tracking users</h3>
+	<h3>Counting visits without tracking users</h3>
 	<p>One of the most essential stats about any website is: “how many people went there”? Analytics tools frequently show counts of “unique” visitors, which requires tracking individual users by a cookie or IP address.</p>
-	<p>We use the concept of a <em>visit</em>: a privacy-friendly measure of how people have interacted with your website. A visit is defined simply as a successful page view that has an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer">HTTP referer</a> that doesn’t match the hostname of the request. This tells you how many times people came to your website and clicked around before navigating away, but doesn’t require tracking individuals.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image1-25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>We use the concept of a <i>visit</i>: a privacy-friendly measure of how people have interacted with your website. A visit is defined simply as a successful page view that has an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer">HTTP referer</a> that doesn’t match the hostname of the request. This tells you how many times people came to your website and clicked around before navigating away, but doesn’t require tracking individuals.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aMryeUUOgKqESxu82af0O/ed4c4a306a89b83276001e922850691e/image1-25.png" alt="" class="kg-image" width="1534" height="628" loading="lazy">
+
+	</figure>
 	<p>A visit has slightly different semantics from a “unique”, and you should expect this number to differ from other analytics tools.</p>
-	<h3 id="all-of-the-details-none-of-the-bots">All of the details, none of the bots</h3>
-	<p>Our analytics deliver the most important metrics about your website, like page views and visits. But we know that an essential analytics feature is <em>flexibility: </em>the ability to add arbitrary filters, and slice-and-dice data as you see fit. Our analytics can show you the top hostnames, URLs, countries, and other critical metrics like status codes. You can filter on any of these metrics with a click and see the whole dashboard update.</p>
+	<h3>All of the details, none of the bots</h3>
+	<p>Our analytics deliver the most important metrics about your website, like page views and visits. But we know that an essential analytics feature is <i>flexibility:</i> the ability to add arbitrary filters, and slice-and-dice data as you see fit. Our analytics can show you the top hostnames, URLs, countries, and other critical metrics like status codes. You can filter on any of these metrics with a click and see the whole dashboard update.</p>
 	<p>I’m especially excited about two features in our time series charts: the ability to drag-to-zoom into a narrower time range, and the ability to “group by” different dimensions to see data in a different way. This is a super powerful way to drill into an anomaly in traffic and quickly see what’s going on. For example, you might notice a spike in traffic, zoom into that spike, and then try different groupings to see what contributed the extra clicks. A GIF is worth a thousand words:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 72.43133265513734%;"><iframe src="https://iframe.videodelivery.net/a922327eb87d7bedbe067367828cee89?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<br><!--kg-card-end: html-->
 	<p>And for customers of our <a href="https://www.cloudflare.com/products/bot-management">Bot Management product</a>, we’re working on the ability to detect (and remove) automated traffic. Coming very soon, you’ll be able to see which bots are reaching your website -- with just a click, <a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules">block them by using Firewall Rules</a>.</p>
 	<p>This is all possible thanks to our ABR analytics technology, which enables us to serve analytics very quickly for websites large and small. Check out our <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">blog post</a> to learn more about how this works.</p>
-	<h3 id="edge-or-browser-analytics-why-not-both">Edge or Browser analytics? Why not both?</h3>
+	<h3>Edge or Browser analytics? Why not both?</h3>
 	<p>There are two ways to collect web analytics data: at the edge (or on an origin server), or in the client using a JavaScript beacon.</p>
-	<p>Historically, Cloudflare has collected analytics data at our <em>edge</em>. This has some nice benefits over traditional, client-side analytics approaches:</p>
+	<p>Historically, Cloudflare has collected analytics data at our <i>edge</i>. This has some nice benefits over traditional, client-side analytics approaches:</p>
 	<ul>
-		<li>It’s more accurate because you don’t miss users who block third-party scripts, or JavaScript altogether</li>
-		<li>You can see all of the traffic back to your origin server, even if an HTML page doesn’t load</li>
-		<li>We can detect (and block) bots, apply Firewall rules, and generally scrub traffic of unwanted noise</li>
-		<li>You can measure the performance of your origin server</li>
+		<li>
+			<p>It’s more accurate because you don’t miss users who block third-party scripts, or JavaScript altogether</p>
+		</li>
+		<li>
+			<p>You can see all of the traffic back to your origin server, even if an HTML page doesn’t load</p>
+		</li>
+		<li>
+			<p>We can detect (and block) bots, apply Firewall rules, and generally scrub traffic of unwanted noise</p>
+		</li>
+		<li>
+			<p>You can measure the performance of your origin server</p>
+		</li>
 	</ul>
 	<p>More commonly, most web analytics providers use client-side measurement. This has some benefits as well:</p>
 	<ul>
-		<li>You can understand performance as your <em>users</em> see it -- e.g. how long did the page actually take to render</li>
-		<li>You can detect errors in client-side JavaScript execution</li>
-		<li>You can define custom event types emitted by JavaScript frameworks</li>
+		<li>
+			<p>You can understand performance as your <i>users</i> see it -- e.g. how long did the page actually take to render</p>
+		</li>
+		<li>
+			<p>You can detect errors in client-side JavaScript execution</p>
+		</li>
+		<li>
+			<p>You can define custom event types emitted by JavaScript frameworks</p>
+		</li>
 	</ul>
 	<p>Ultimately, we want our customers to have the best of both worlds. We think it’s really powerful to get web traffic numbers directly from the edge. We also <a href="https://blog.cloudflare.com/introducing-browser-insights">launched Browser Insights</a> a year ago to augment our existing edge analytics with more performance information, and today Browser Insights are taking a big step forward by <a href="https://blog.cloudflare.com/start-measuring-web-vitals-with-browser-insights">incorporating Web Vitals metrics</a>.</p>
 	<p>But, we know not everyone can modify their DNS to take advantage of Cloudflare’s edge services. That’s why today we’re announcing a free, standalone analytics product for everyone.</p>
-	<h3 id="how-do-i-get-it">How do I get it?</h3>
+	<h3>How do I get it?</h3>
 	<p>For existing Cloudflare customers on our Pro, Biz, and Enterprise plans, just go to your Analytics tab! Starting today, you’ll see a banner to opt-in to the new analytics experience. (We plan to make this the default in a few weeks.)</p>
 	<p>But when building privacy-first analytics, we realized it’s important to make this accessible even to folks who don’t use Cloudflare today. You’ll be able to use Cloudflare’s web analytics even if you can’t change your DNS servers -- just add our JavaScript, and you’re good to go.</p>
 	<p>We’re still putting on the finishing touches on our JavaScript-based analytics, but you can <a href="https://www.cloudflare.com/web-analytics">sign up here</a> and we’ll let you know when it’s ready.</p>
-	<h3 id="the-evolution-of-analytics-at-cloudflare">The evolution of analytics at Cloudflare</h3>
+	<h3>The evolution of analytics at Cloudflare</h3>
 	<p>Just over a year ago, Cloudflare’s analytics consisted of a simple set of metrics: cached vs uncached data transfer, or how many requests were blocked by the Firewall. Today we provide flexible, powerful analytics across all our products, including <a href="https://blog.cloudflare.com/updates-to-firewall-analytics">Firewall</a>, <a href="https://blog.cloudflare.com/introducing-cache-analytics">Cache</a>, <a href="https://blog.cloudflare.com/introducing-load-balancing-analytics">Load Balancing</a> and <a href="https://blog.cloudflare.com/announcing-network-analytics">Network traffic</a>.</p>
-	<p>While we’ve been focused on building analytics <em>about</em> our products, we realized that our analytics are also powerful as a <em>standalone</em> product. Today is just the first step on that journey. We have so much more planned: from real-time analytics, to ever-more performance analysis, and even allowing customers to add custom events.</p>
+	<p>While we’ve been focused on building analytics <i>about</i> our products, we realized that our analytics are also powerful as a <i>standalone</i> product. Today is just the first step on that journey. We have so much more planned: from real-time analytics, to ever-more performance analysis, and even allowing customers to add custom events.</p>
 	<p>We want to hear what you want most out of analytics — drop a note in the comments to let us know what you want to see next.</p>
 </div>

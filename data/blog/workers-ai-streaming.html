@@ -1,12 +1,16 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-ai-streaming-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/workers-ai-streaming-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-ai-streaming-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/workers-ai-streaming-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/workers-ai-streaming-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/workers-ai-streaming-es-es">Español</a>, and <a href="https://blog.cloudflare.com/ko-kr/workers-ai-streaming-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--3--2.png" class="kg-image" alt="Streaming LLMs and longer context lengths available in Workers AI" loading="lazy" width="1600" height="901"></figure>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-ai-streaming">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/workers-ai-streaming">Français</a>, <a href="https://blog.cloudflare.com/de-de/workers-ai-streaming">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-ai-streaming">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/workers-ai-streaming">한국어</a>, <a href="https://blog.cloudflare.com/es-es/workers-ai-streaming">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/workers-ai-streaming">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hqH5G1qi0RIrmIsdkb1Ql/b3ddf916e909fb740a067fe7ade898ff/pasted-image-0--3--2.png" alt="Streaming LLMs and longer context lengths available in Workers AI" class="kg-image" width="1600" height="901" loading="lazy">
+
+	</figure>
 	<p>Workers AI is our serverless GPU-powered inference platform running on top of Cloudflare’s global network. It provides a growing catalog of off-the-shelf models that run seamlessly with Workers and enable developers to build powerful and scalable AI applications in minutes. We’ve already seen developers doing amazing things with Workers AI, and we can’t wait to see what they do as we continue to expand the platform. To that end, today we’re excited to announce some of our most-requested new features: streaming responses for all <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model">Large Language Models</a> (LLMs) on Workers AI, larger context and sequence windows, and a full-precision <a href="https://developers.cloudflare.com/workers-ai/models/llm">Llama-2</a> model variant.</p>
 	<p>If you’ve used ChatGPT before, then you’re familiar with the benefits of response streaming, where responses flow in token by token. LLMs work internally by generating responses sequentially using a process of repeated inference — the full output of a LLM model is essentially a sequence of hundreds or thousands of individual prediction tasks. For this reason, while it only takes a few milliseconds to generate a single token, generating the full response takes longer, on the order of seconds. The good news is we can start displaying the response as soon as the first tokens are generated, and append each additional token until the response is complete. This yields a much better experience for the end user — &nbsp;displaying text incrementally as it's generated not only provides instant responsiveness, but also gives the end-user time to read and interpret the text.</p>
 	<p>As of today, you can now use response streaming for any LLM model in our catalog, including the very popular <a href="https://developers.cloudflare.com/workers-ai/models/llm">Llama-2 model</a>. Here’s how it works.</p>
-	<h3 id="server-sent-events-a-little-gem-in-the-browser-api">Server-sent events: a little gem in the browser API</h3>
+	<h3>Server-sent events: a little gem in the browser API</h3>
 	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server-sent events</a> are easy to use, simple to implement on the server side, standardized, and broadly available across many platforms natively or as a polyfill. Server-sent events fill a niche of handling a stream of updates from the server, removing the need for the boilerplate code that would otherwise be necessary to handle the event stream.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -89,13 +93,13 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<center><small><sup>Comparing fetch, server-sent events, and websockets</sup></small></center><!--kg-card-end: markdown-->
+	</table><!--kg-card-end: html-->
+	<p><sup>Comparing fetch, server-sent events, and websockets</sup></p>
 	<p>To get started using streaming on Workers AI’s text generation models with server-sent events, set the “stream” parameter to true in the input of request. This will change the response format and <code>mime-type</code> to <code>text/event-stream</code>.</p>
 	<p>Here’s an example of using streaming with the <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api">REST API</a>:</p>
-	<pre><code class="language-bash">curl -X POST \
-"https://api.cloudflare.com/client/v4/accounts/&lt;account&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8" \
--H "Authorization: Bearer &lt;token&gt;" \
+	<pre class="language-bash"><code class="language-bash">curl -X POST \
+"https://api.cloudflare.com/client/v4/accounts/<account>/ai/run/@cf/meta/llama-2-7b-chat-int8" \
+-H "Authorization: Bearer <token>" \
 -H "Content-Type:application/json" \
 -d '{ "prompt": "where is new york?", "stream": true }'
 
@@ -113,9 +117,9 @@ data: {"response":" the"}
 
 ...
 
-data: [DONE]</code></pre>
+data: [DONE]</token></account></code></pre>
 	<p>And here’s an example using a Worker script:</p>
-	<pre><code class="language-TypeScript">import { Ai } from "@cloudflare/ai";
+	<pre class="language-typescript"><code class="language-typescript">import { Ai } from "@cloudflare/ai";
 export default {
     async fetch(request, env, ctx) {
         const ai = new Ai(env.AI, { sessionOptions: { ctx: ctx } });
@@ -129,7 +133,7 @@ export default {
     }
 }</code></pre>
 	<p>If you want to consume the output event-stream from this Worker in a browser page, the client-side JavaScript is something like:</p>
-	<pre><code class="language-typescript">const source = new EventSource("/worker-endpoint");
+	<pre class="language-typescript"><code class="language-typescript">const source = new EventSource("/worker-endpoint");
 source.onmessage = (event) =&gt; {
     if(event.data=="[DONE]") {
         // SSE spec says the connection is restarted
@@ -142,10 +146,14 @@ source.onmessage = (event) =&gt; {
 }</code></pre>
 	<p>You can use this simple code with any simple HTML page, complex SPAs using React or other Web frameworks.</p>
 	<p>This creates a much more interactive experience for the user, who now sees the page update as the response is incrementally created, instead of waiting with a spinner until the entire response sequence has been generated. Try it out streaming on <a href="https://ai.cloudflare.com">ai.cloudflare.com</a>.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/llama-streaming.gif" class="kg-image" alt="" loading="lazy" width="1518" height="610"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VIIO6crNIkpaz8hG9n8jg/a7105f439c60510ad8465b248ea699b8/llama-streaming.gif" alt="" class="kg-image" width="1518" height="610" loading="lazy">
+
+	</figure>
 	<p>Workers AI supports streaming text responses for the <a href="https://developers.cloudflare.com/workers-ai/models/llm">Llama-2</a> model and any future LLM models we are adding to our catalog.</p>
 	<p>But this is not all.</p>
-	<h3 id="higher-precision-longer-context-and-sequence-lengths">Higher precision, longer context and sequence lengths</h3>
+	<h3>Higher precision, longer context and sequence lengths</h3>
 	<p>Another top request we heard from our community after the launch of Workers AI was for longer questions and answers in our Llama-2 model. In LLM terminology, this translates to higher context length (the number of tokens the model takes as input before making the prediction) and higher sequence length (the number of tokens the model generates in the response.)</p>
 	<p>We’re listening, and in conjunction with streaming, today we are adding a higher 16-bit full-precision Llama-2 variant to the catalog, and increasing the context and sequence lengths for the existing 8-bit version.</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -211,5 +219,5 @@ source.onmessage = (event) =&gt; {
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Streaming, higher precision, and longer context and sequence lengths provide a better user experience and enable new, richer applications using large language models in Workers AI.</p>
-	<p>Check the Workers AI <a href="https://developers.cloudflare.com/workers-ai">developer documentation</a> for more information and options. If you have any questions or feedback about Workers AI, please come see us in the <a href="https://community.cloudflare.com">Cloudflare Community</a> and the <a href="https://discord.gg/cloudflaredev">Cloudflare Discord</a>.<br>If you are interested in machine learning and serverless AI, the Cloudflare Workers AI team is building a global-scale platform and tools that enable our customers to run fast, low-latency inference tasks on top of our network. Check our <a href="https://www.cloudflare.com/careers/jobs">jobs page</a> for opportunities.</p>
+	<p>Check the Workers AI <a href="https://developers.cloudflare.com/workers-ai">developer documentation</a> for more information and options. If you have any questions or feedback about Workers AI, please come see us in the <a href="https://community.cloudflare.com">Cloudflare Community</a> and the <a href="https://discord.gg/cloudflaredev">Cloudflare Discord</a>.If you are interested in machine learning and serverless AI, the Cloudflare Workers AI team is building a global-scale platform and tools that enable our customers to run fast, low-latency inference tasks on top of our network. Check our <a href="https://www.cloudflare.com/careers/jobs">jobs page</a> for opportunities.</p>
 </div>

@@ -1,22 +1,38 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/twitter-In-Stream_Wide___New_Spectrum_light_back_4x-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xM5OZ7RPWsIMYPCA68uAx/278cdc4baade9d68f0b6f8a80835d8f8/twitter-In-Stream_Wide___New_Spectrum_light_back_4x-3.png" alt="" class="kg-image" width="1200" height="572" loading="lazy">
+
+	</figure>
 	<p>Almost exactly two years ago, we <a href="https://blog.cloudflare.com/spectrum">launched Cloudflare Spectrum</a> for our Enterprise customers. Today, we’re thrilled to extend DDoS protection and traffic acceleration with Spectrum for <a href="https://www.cloudflare.com/products/cloudflare-spectrum/ssh">SSH</a>, <a href="https://www.cloudflare.com/products/cloudflare-spectrum/rdp">RDP</a>, and <a href="https://www.cloudflare.com/products/cloudflare-spectrum/minecraft">Minecraft</a> to our Pro and Business plan customers.</p>
 	<p>When we think of Cloudflare, a lot of the time we think about protecting and improving the performance of websites. But the Internet is so much more, ranging from gaming, to managing servers, to cryptocurrencies. How do we make sure these applications are secure and performant?</p>
 	<p>With Spectrum, you can put Cloudflare in front of your SSH, RDP and Minecraft services, protecting them from DDoS attacks and improving network performance. This allows you to protect the management of your servers, not just your website. Better yet, by leveraging the Cloudflare network you also get increased reliability and increased performance: lower latency!</p>
-	<h3 id="remote-access-to-servers">Remote access to servers</h3>
-	<p>While access to websites from home is incredibly important, being able to remotely manage your servers can be equally critical. Losing access to your infrastructure can be disastrous: people need to know their infrastructure is safe and connectivity is good and performant. Usually, server management is done through SSH (Linux or Unix based servers) and RDP (Windows based servers). With these protocols, performance and reliability are <em>key</em>: you need to know you can always reliably manage your servers and that the bad people are kept out. What's more, low latency is really important. Every time you type a key in an SSH terminal or click a button in a remote desktop session, that key press or button click has to traverse the Internet to your origin before the server can process the input and send feedback. While increasing bandwidth can help, lowering latency can help even more in getting your sessions to feel like you're working on a local machine and not one half-way across the globe.</p>
-	<h3 id="all-work-and-no-play-makes-jack-steve-a-dull-boy">All work and no play makes <s>Jack</s> Steve a dull boy</h3>
+	<h3>Remote access to servers</h3>
+	<p>While access to websites from home is incredibly important, being able to remotely manage your servers can be equally critical. Losing access to your infrastructure can be disastrous: people need to know their infrastructure is safe and connectivity is good and performant. Usually, server management is done through SSH (Linux or Unix based servers) and RDP (Windows based servers). With these protocols, performance and reliability are <i>key</i>: you need to know you can always reliably manage your servers and that the bad people are kept out. What's more, low latency is really important. Every time you type a key in an SSH terminal or click a button in a remote desktop session, that key press or button click has to traverse the Internet to your origin before the server can process the input and send feedback. While increasing bandwidth can help, lowering latency can help even more in getting your sessions to feel like you're working on a local machine and not one half-way across the globe.</p>
+	<h3>All work and no play makes Jack Steve a dull boy</h3>
 	<p>While we stay at home, many of us are also looking to play and not only work. Video games in particular have seen a huge <a href="https://en.wikipedia.org/wiki/Impact_of_the_2019%E2%80%9320_coronavirus_pandemic_on_the_video_game_industry">increase in popularity</a>. As personal interaction becomes more difficult to come by, Minecraft has become a popular social outlet. Many of us at Cloudflare are using it to stay in touch and have fun with friends and family in the current age of quarantine. And it’s not just employees at Cloudflare that feel this way, we’ve seen a big increase in Minecraft traffic flowing through our network. Traffic per week had remained steady for a while but has more than tripled since many countries have put their citizens in lockdown:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-10.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AXaLJtErEqZ3dQb1wJguw/bf95c6c6df2719504d0de3a8077f5465/image3-10.png" alt="" class="kg-image" width="1871" height="742" loading="lazy">
+
+	</figure>
 	<p>Minecraft is a particularly popular target for DDoS attacks: it's not uncommon for people to develop feuds whilst playing the game. When they do, some of the more tech-savvy players of this game opt to take matters into their own hands and launch a (D)DoS attack, rendering it unusable for the duration of the attacks. Our friends at Hypixel and Nodecraft have known this for many years, which is why they’ve chosen to protect their servers using Spectrum.</p>
 	<p>While we love recommending their services, we realize some of you prefer to run your own Minecraft server on a VPS (virtual private server like a DigitalOcean droplet) that you maintain. To help you protect your Minecraft server, we're providing Spectrum for Minecraft as well, available on Pro and Business plans. You'll be able to use the entire Cloudflare network to protect your server and increase network performance.</p>
-	<h3 id="how-does-it-work">How does it work?</h3>
-	<p>Configuring Spectrum is easy, just log into your dashboard and head on over to the Spectrum tab. From there you can choose a protocol and configure the IP of your server: </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>How does it work?</h3>
+	<p>Configuring Spectrum is easy, just log into your dashboard and head on over to the Spectrum tab. From there you can choose a protocol and configure the IP of your server:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AVtgjvLEEdw2qPCABTjyg/95d015eb3bded0a2801ae416a3f9e071/image2-10.png" alt="" class="kg-image" width="1999" height="1074" loading="lazy">
+
+	</figure>
 	<p>After that all you have to do is use the subdomain you configured to connect instead of your IP. Traffic will be proxied using Spectrum on the Cloudflare network, keeping the bad people out and your services safe.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image1-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tBzB1f6aFcCSNo9awsyXQ/a0930674c11a3c46bdd2a89310d425bf/image1-13.png" alt="" class="kg-image" width="1999" height="1038" loading="lazy">
+
+	</figure>
 	<p>So how much does this cost? We're happy to announce that <a href="https://www.cloudflare.com/plans">all paid plans</a> will get access to Spectrum for free, with a generous free data allowance. Pro plans will be able to use SSH and Minecraft, up to 5 gigabytes for free each month. Biz plans can go up to 10 gigabytes for free and also get access to RDP. After the free cap you will be billed on a per <a href="https://support.cloudflare.com/hc/en-us/articles/360041721872">gigabyte basis</a>.</p>
 	<p>Spectrum is complementary to Access: it offers DDoS protection and improved network performance as a 'drop-in' product, no configuration necessary on your origins. If you want more control over who has access to which services, we highly recommend taking a look at <a href="https://teams.cloudflare.com/access">Cloudflare for Teams</a>.</p>
-	<p>We're very excited to extend Cloudflare's services to not just HTTP traffic, allowing you to protect your core management services and Minecraft gaming servers. In the future, we'll add support for more protocols. If you have a suggestion, let us know! In the meantime, if you have a Pro or Business account, head on over to the dashboard and enable Spectrum today!<br></p>
+	<p>We're very excited to extend Cloudflare's services to not just HTTP traffic, allowing you to protect your core management services and Minecraft gaming servers. In the future, we'll add support for more protocols. If you have a suggestion, let us know! In the meantime, if you have a Pro or Business account, head on over to the dashboard and enable Spectrum today!</p>
 </div>

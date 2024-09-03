@@ -1,22 +1,28 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>This blog originally appeared in July 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2E3o6Ju78Dd4ML1dIWej3n/b0c35360f345b0190d693e3a3fe88677/dont-trust-that-tweet-or-email.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This blog originally appeared in July 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>Each day, hundreds of thousands of new domains are registered by users around the world. Unfortunately, the simplicity of domain registration makes it simple for attackers to register fraudulent domains for use in phishing campaigns. In fact, according to ICANN, nearly 5.45% of newly registered domains per day are malicious (including phishing, botnets, and malware). This means there are 25,070 newly registered malicious domains per day on average.</p>
 	<p>On July 16th, 2020, an email appearing to be from the Bill &amp; Melinda Gates Foundation was sent to numerous recipients, seeking donations for the Foundation in Bitcoin. The email enticed potential donors by offering to double any donations received within seven days. The sender domain of the email was strikingly similar to the legitimate foundation’s domain, gatesfoundation.org.</p>
-	<p><strong>Aside from one letter, the malicious sender domain could easily pass for one belonging to the Gates Foundation.</strong> The attacker cleverly employed typosquatting when creating the domain name, just minutes before sending the email. Without close scrutiny, the domain’s typo is indistinguishable from the legitimate domain. The attacker also set up an SPF record for the domain in order to ensure reliable delivery of their attack. Interestingly, this phish was sent just a day after Bill Gates’ Twitter account was hacked and used to tweet a message nearly identical to this email.</p><!--kg-card-begin: markdown-->
-	<pre><code>Benign Domain: gatesfoundation.org
+	<p><b>Aside from one letter, the malicious sender domain could easily pass for one belonging to the Gates Foundation.</b> The attacker cleverly employed typosquatting when creating the domain name, just minutes before sending the email. Without close scrutiny, the domain’s typo is indistinguishable from the legitimate domain. The attacker also set up an SPF record for the domain in order to ensure reliable delivery of their attack. Interestingly, this phish was sent just a day after Bill Gates’ Twitter account was hacked and used to tweet a message nearly identical to this email.</p>
+	<pre class="language-bash"><code class="language-bash">Benign Domain: gatesfoundation.org
 Malicious Domain: gatesfoundatlon[.]com
 Malicious Domain Age: 2020-07-16 17:00:54 +0000 UTC
 SPF Record:
      gatesfoundatlon[.]com.	1759	IN	TXT	"v=spf1 include:spf.privateemail.com ~all"
-Bitcoin address: 18XJzrgPqYhKKeR2j4vz6wPQorK3sNuNxs
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-16.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="whois-record-for-gatesfoundatlon-com">Whois Record for gatesfoundatlon[.]com</h3><!--kg-card-begin: markdown-->
-	<pre><code>Domain name: gatesfoundatlon[.]com
+Bitcoin address: 18XJzrgPqYhKKeR2j4vz6wPQorK3sNuNxs</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DcmAJSHyYgulPzRRnPhHd/b56c68c991f37a9303cce161164f6d35/image2-16.png" alt="" class="kg-image" width="822" height="407" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Jc4dDl2jFFtw9pNOKIAzk/55cf86086285640cc22c83b563320586/image3.jpg" alt="" class="kg-image" width="1999" height="1177" loading="lazy">
+
+	</figure>
+	<h3>Whois Record for gatesfoundatlon[.]com</h3>
+	<pre class="language-bash"><code class="language-bash">Domain name: gatesfoundatlon[.]com
 Registry Domain ID: 2546450570_DOMAIN_COM-VRSN
 Registrar WHOIS Server: whois.namecheap.com
 Registrar URL: http://www.namecheap.com
@@ -73,10 +79,12 @@ Name Server: dns1.registrar-servers.com
 Name Server: dns2.registrar-servers.com
 DNSSEC: unsigned
 URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
-&gt;&gt;&gt; Last update of WHOIS database: 2020-07-15T23:22:34.80Z &lt;&lt;&lt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="twitter-message-from-july-15-2020-">Twitter Message From July 15, 2020:</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-4.jpg" class="kg-image" alt="" loading="lazy"></figure>
+&gt;&gt;&gt; Last update of WHOIS database: 2020-07-15T23:22:34.80Z &lt;&lt;&lt;</code></pre>
+	<h3>Twitter Message From July 15, 2020:</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75JTu1z0KjOComkOIRQQWb/166bdd667f1511691f41f871232dd858/image1-4.jpg" alt="" class="kg-image" width="1458" height="1332" loading="lazy">
+
+	</figure>
 	<p>Area 1 uses multiple analysis techniques that leverage insight gained from proactive web crawling and early identification of attacker campaign infrastructure, to detect and stop email from spoofed domains and accounts. Using preemptive threat hunting and a broad set of proprietary analysis techniques, Area 1 identifies phishing campaigns, including malicious newly registered domains, that other defenses miss.</p>
 </div>

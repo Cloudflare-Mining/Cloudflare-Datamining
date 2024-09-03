@@ -1,22 +1,29 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Introducing ScrapeShield: Discover, Defend &amp; Deter Content Scraping" src="https://blog.cloudflare.com/content/images/cf-scrapeshield-logo.png.scaled500.png" title="Introducing ScrapeShield: Discover, Defend &amp; Deter Content Scraping"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bj51x8sNEZSWIxmJdNLBi/76bd6c97a9aee18c5e5030dd004404e9/cf-scrapeshield-logo.png.scaled500.png" alt="Introducing ScrapeShield: Discover, Defend &amp; Deter Content Scraping" class="kg-image" width="200" height="200" loading="lazy">
+
+	</figure>
 	<p>If you're a publisher, whether an individual blogger or major media outlet, you've undoubtedly experienced content scraping. Searching the web for an article you've published or other original content you've created and you find it copied and republished on some other random website. Often the site will be full of ads. And, sometimes, it will even rank higher in search results than your original work.</p>
 	<p>While you may envision an army of individuals copying and pasting your content on their sites, the truth is content scraping is typically an automated process with bots that grab original content and then republish it without human intervention onto link farm sites. CloudFlare has blocked many of these bots automatically in the past, but we decided it was time to do something to more actively stop them.</p>
-	<h3 id="introducingscrapeshield">Introducing ScrapeShield</h3>
+	<h3>Introducing ScrapeShield</h3>
 	<p><a href="https://www.cloudflare.com/apps/scrapeshield">ScrapeShield</a> is an app created by the CloudFlare team. It incorporates several existing CloudFlare features like email obfuscation and hotlink protection that serve to protect from content scraping and adds a number of new features as well. Because we believe every publisher of original content should be able to understand and control how their work is used, we're providing ScrapeShield free for every CloudFlare user.</p>
-	<p><img alt="Introducing ScrapeShield: Discover, Defend &amp; Deter Content
-Scraping" src="https://blog.cloudflare.com/content/images/scrape_shield_interface.png.scaled500.png" title="Introducing ScrapeShield: Discover, Defend &amp; Deter Content Scraping"></p>
-	<h3 id="detectdefenddeter">Detect, Defend &amp; Deter</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yCGgHdeeMVTz466zTMChq/33f938027aacce0222842d75e2f19997/scrape_shield_interface.png.scaled500.png" alt="Introducing ScrapeShield: Discover, Defend &amp; Deter Content
+Scraping" class="kg-image" width="500" height="213" loading="lazy">
+
+	</figure>
+	<h3>Detect, Defend &amp; Deter</h3>
 	<p>ScrapeShield has different elements to help you detect when your content is scraped, defend your site against content scrapers, and even deter content scrapers from targeting you in the first place. If you enable ScrapeShield, CloudFlare will automatically insert invisible tracking beacons in your content. When automated bots scrape your content, they pull the beacons along with them. CloudFlare detects these beacons when they ping from sites that aren't your own. You can access your ScrapeShield control panel to see where your content is being republished. Not only is this useful in showing scraping, but you can also see users who are reading your content through proxy services like Flipboard or Pulse.</p>
 	<p>The data from the content beacons is fed back into CloudFlare's protection system. As CloudFlare identifies content scraping bots, we automatically prevent them from accessing your site. Just like Project Honey Pot, the original inspiration for CloudFlare, used traps to detect when spammers were harvesting email addresses, CloudFlare now uses data from ScrapeShield to identify content scrapers and keep them off publishers' sites.</p>
-	<h3 id="maze">Maze</h3>
+	<h3>Maze</h3>
 	<p>We didn't want to just stop scrapers from attacking sites on CloudFlare, we also wanted to tie up their resources so they couldn't harm the rest of the web. To do this, we created Maze. Maze routes known content scrapers who are visiting ScrapeShield-protected sites into a virtual labyrinth of gibirish and gobbledygook. We dynamically throttle the bandwidth and speed so instead of the pages loading as fast as possible, the connection is held open to the scrapers and their resources are tied up.</p>
 	<p>We use excess resources on the CloudFlare network to generate Maze, and it doesn't consume any of our publishers' resources or add any additional load to their sites. What's beautiful about the system is that the only way that content scrapers can be sure they're avoiding Maze is to avoid CloudFlare's IP addresses entirely. For any content scrapers who may be reading this, here's a <a href="https://www.cloudflare.com/ips">helpful list of all of our IPs</a> so you can make sure to stay away.</p>
-	<h3 id="nopinning">No Pinning</h3>
+	<h3>No Pinning</h3>
 	<p>Finally, with the rise of sites like Pinterest, innocent content scraping may become even more prolific. While many sites welcome their images being pinned, we wanted to make it easy to opt out. ScrapeShield includes an option to add the no-pinning meta tag to your site to prevent your images from being pinned to the site. As other similar services include a mechanism to opt out, expect that we'll include an easy way for you to do so right from the ScrapeShield interface.</p>
 	<p>The health of the web depends on publishers creating original content getting credit for their creations. CloudFlare is committed to building a better web and we're extremely excited about ScrapeShield as a new tool to help publishers do exactly that.</p>
-	<h4 id="addendummay2016">Addendum May 2016</h4>
+	<h4>Addendum May 2016</h4>
 	<p>ScrapeShield has now been rolled into the core CloudFlare dashboard. You can <a href="https://www.cloudflare.com/a/content-protection">find ScrapeShield here</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

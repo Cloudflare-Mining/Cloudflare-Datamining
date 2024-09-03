@@ -1,7 +1,11 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/Durable-Object-Alarms.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Since we launched Durable Objects, developers have leveraged them as a novel building block for distributed applications. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KBFsrZapTGmQH28QipBma/26d9ca6d497315a0e17e9fc6913450f8/Durable-Object-Alarms.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>Since we launched Durable Objects, developers have leveraged them as a novel building block for distributed applications.</p>
 	<p>Durable Objects provide globally unique instances of a JavaScript class a developer writes, accessed via a unique ID. The Durable Object associated with each ID implements some fundamental component of an application — a banking application might have a Durable Object representing each bank account, for example. The bank account object would then expose methods for incrementing a balance, transferring money or any other actions that the application needs to do on the bank account.</p>
 	<p>Durable Objects work well as a stateful backend for applications — while Workers can instantiate a new instance of your code in any of Cloudflare’s data centers in response to a request, Durable Objects guarantee that all requests for a given Durable Object will reach the same instance on Cloudflare’s network.</p>
 	<p>Each Durable Object is single-threaded and has access to a stateful storage API, making it easy to build consistent and highly-available distributed applications on top of them.</p>
@@ -9,19 +13,17 @@
 	<p>However, up until now, there’s been a piece missing — how do you invoke a Durable Object when a client Worker is not making requests to it?</p>
 	<p>As with any distributed system, Durable Objects can become unavailable and stop running. Perhaps the machine you were running on was unplugged, or the datacenter burned down and is never coming back, or an individual object exceeded its memory limit and was reset. Before today, a subsequent request would reinitialize the Durable Object on another machine, but there was no way to programmatically wake up an Object.</p>
 	<p>Durable Objects Alarms are here to change that, unlocking new use cases for Durable Objects like queues and deferred processing.</p>
-	<h3 id="what-is-a-durable-object-alarm">What is a Durable Object Alarm?</h3>
+	<h3>What is a Durable Object Alarm?</h3>
 	<p>Durable Object Alarms allow you, from within your Durable Object, to schedule the object to be woken up at a time in the future. When the alarm’s scheduled time comes, the Durable Object’s <code>alarm()</code> handler will be called. If this handler throws an exception, the alarm will be automatically retried using exponential backoff until it succeeds — alarms have guaranteed at-least-once execution.</p>
-	<h3 id="how-are-alarms-different-from-workers-cron-triggers">How are Alarms different from Workers Cron Triggers?</h3>
+	<h3>How are Alarms different from Workers Cron Triggers?</h3>
 	<p>Alarms are more fine-grained than Cron Triggers. While a Workers service can have up to three Cron Triggers configured at once, it can have an unlimited amount of Durable Objects, each of which can have a single alarm active at a time.</p>
 	<p>Alarms are directly scheduled from and invoke a function within your Durable Object. Cron Triggers, on the other hand, are not programmatic — they execute based on their schedules, which have to be configured via the Cloudflare Dashboard or centralized configuration APIs.</p>
-	<h3 id="how-do-i-use-alarms">How do I use Alarms?</h3>
-	<p>First, you’ll need to add the <code>durable_object_alarms</code> compatibility flag to your <code>wrangler.toml</code>.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-toml">compatibility_flags = ["durable_object_alarms"]
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<h3>How do I use Alarms?</h3>
+	<p>First, you’ll need to add the <code>durable_object_alarms</code> compatibility flag to your <code>wrangler.toml</code>.</p>
+	<pre class="language-toml"><code class="language-toml">compatibility_flags = ["durable_object_alarms"]</code></pre>
 	<p>Next, implement an <code>alarm()</code> handler in your Durable Object that will be called when the alarm executes. From anywhere else in your Durable Object, call <code>state.storage.setAlarm()</code> and pass in a time for the alarm to run at. You can use <code>state.storage.getAlarm()</code> to retrieve the currently set alarm time.</p>
-	<p>In this example, we implemented an alarm handler that wakes the Durable Object up once every 10 seconds to batch requests to a single Durable Object, deferring processing until there is enough work in the queue for it to be worthwhile to process them.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">export default {
+	<p>In this example, we implemented an alarm handler that wakes the Durable Object up once every 10 seconds to batch requests to a single Durable Object, deferring processing until there is enough work in the queue for it to be worthwhile to process them.</p>
+	<pre class="language-js"><code class="language-js">export default {
   async fetch(request, env) {
     let id = env.BATCHER.idFromName("foo");
     return await env.BATCHER.get(id).fetch(request);
@@ -66,16 +68,14 @@ export class Batcher {
     await this.storage.deleteAll();
     this.count = 0;
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Once every 10 seconds, the <code>alarm()</code> handler will be called. In the event an unexpected error terminates the Durable Object, it will be re-instantiated on another machine, following a short delay, after which it can continue processing.</p>
 	<p>Under the hood, Alarms are implemented by making reads and writes to the storage layer. This means Alarm <code>get</code> and <code>set</code> operations follow the same rules as any other storage operation – writes are coalesced with other writes, and reads have a defined ordering. See <a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three">our blog post</a> on the caching layer we implemented for Durable Objects for more information.</p>
-	<h3 id="durable-objects-alarms-guarantee-fault-tolerance">Durable Objects Alarms guarantee fault-tolerance</h3>
+	<h3>Durable Objects Alarms guarantee fault-tolerance</h3>
 	<p>Alarms are designed to have no single point of failure and to run entirely on our edge – every Cloudflare data center running Durable Objects is capable of running alarms, including migrating Durable Objects from unhealthy data centers to healthy ones as necessary to ensure that their Alarm executes. Single failures should resolve in under 30 seconds, while multiple failures may take slightly longer.</p>
 	<p>We achieve this by storing alarms in the same distributed datastore that backs the Durable Object storage API. This allows alarm reads and writes to behave identically to storage reads and writes and to be performed atomically with them, and ensures that alarms are replicated across multiple datacenters.</p>
 	<p>Within each data center capable of running Durable Objects, there are multiple processes responsible for tracking upcoming alarms and triggering them, providing fault tolerance and scalability within the data center. A single elected leader in each data center is responsible for detecting failure of other data centers and assigning responsibility of those alarms to healthy local processes in its own data center. In the event of leader failure, another leader will be elected and become responsible for executing Alarms in the data center. This allows us to guarantee at-least-once execution for all Alarms.</p>
-	<h3 id="how-do-i-get-started">How do I get started?</h3>
+	<h3>How do I get started?</h3>
 	<p>Alarms are a great way to build new distributed primitives, like queues, atop Durable Objects. They also provide a method for guaranteeing work within a Durable Object will complete, without relying on a client request to “kick” the Object.</p>
 	<p>You can get started with Alarms now by enabling Durable Objects in the Cloudflare <a href="https://dash.cloudflare.com">dashboard</a>. For more info, check the developer docs or jump in our Discord.</p>
 </div>

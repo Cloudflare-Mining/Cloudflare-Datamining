@@ -1,25 +1,52 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today there were <a href="https://openssl.org/news/secadv_20150319.txt">multiple vulnerabilities</a> released in <a href="https://www.openssl.org">OpenSSL</a>, a cryptographic library used by CloudFlare (and most sites on the Internet). There has been advance notice that an announcement would be forthcoming, although the contents of the vulnerabilities were kept closely controlled and shared only with major operating system vendors until this notice.</p>
 	<p>Based on our analysis of the vulnerabilities and how CloudFlare uses the OpenSSL library, this batch of vulnerabilties primarily affects CloudFlare as a "Denial of Service" possibility (it can cause CloudFlare's proxy servers to crash), rather than as an information disclosure vulnerability. Customer traffic and customer SSL keys continue to be protected.</p>
 	<p>As is good security practice, we have quickly tested the patched version and begun a push to our production environment, to be completed within the hour. We encourage all customers to upgrade to the latest patched versions of OpenSSL on their own servers, particularly if they are using the 1.0.2 branch of the OpenSSL library.</p>
 	<p>The individual vulnerabilities included in this announcement are:</p>
 	<ul>
-		<li>OpenSSL 1.0.2 ClientHello sigalgs DoS (CVE-2015-0291)</li>
-		<li>Reclassified: RSA silently downgrades to EXPORT_RSA [Client] (CVE-2015-0204)</li>
-		<li>Multiblock corrupted pointer (CVE-2015-0290)</li>
-		<li>Segmentation fault in DTLSv1_listen (CVE-2015-0207)</li>
-		<li>Segmentation fault in ASN1_TYPE_cmp (CVE-2015-0286)</li>
-		<li>Segmentation fault for invalid PSS parameters (CVE-2015-0208)</li>
-		<li>ASN.1 structure reuse memory corruption (CVE-2015-0287)</li>
-		<li>PKCS7 NULL pointer dereferences (CVE-2015-0289)</li>
-		<li>Base64 decode (CVE-2015-0292)</li>
-		<li>DoS via reachable assert in SSLv2 servers (CVE-2015-0293)</li>
-		<li>Empty CKE with client auth and DHE (CVE-2015-1787)</li>
-		<li>Handshake with unseeded PRNG (CVE-2015-0285)</li>
-		<li>Use After Free following d2i_ECPrivatekey error (CVE-2015-0209)</li>
-		<li>X509_to_X509_REQ NULL pointer deref (CVE-2015-0288)</li>
+		<li>
+			<p>OpenSSL 1.0.2 ClientHello sigalgs DoS (CVE-2015-0291)</p>
+		</li>
+		<li>
+			<p>Reclassified: RSA silently downgrades to EXPORT_RSA [Client] (CVE-2015-0204)</p>
+		</li>
+		<li>
+			<p>Multiblock corrupted pointer (CVE-2015-0290)</p>
+		</li>
+		<li>
+			<p>Segmentation fault in DTLSv1_listen (CVE-2015-0207)</p>
+		</li>
+		<li>
+			<p>Segmentation fault in ASN1_TYPE_cmp (CVE-2015-0286)</p>
+		</li>
+		<li>
+			<p>Segmentation fault for invalid PSS parameters (CVE-2015-0208)</p>
+		</li>
+		<li>
+			<p>ASN.1 structure reuse memory corruption (CVE-2015-0287)</p>
+		</li>
+		<li>
+			<p>PKCS7 NULL pointer dereferences (CVE-2015-0289)</p>
+		</li>
+		<li>
+			<p>Base64 decode (CVE-2015-0292)</p>
+		</li>
+		<li>
+			<p>DoS via reachable assert in SSLv2 servers (CVE-2015-0293)</p>
+		</li>
+		<li>
+			<p>Empty CKE with client auth and DHE (CVE-2015-1787)</p>
+		</li>
+		<li>
+			<p>Handshake with unseeded PRNG (CVE-2015-0285)</p>
+		</li>
+		<li>
+			<p>Use After Free following d2i_ECPrivatekey error (CVE-2015-0209)</p>
+		</li>
+		<li>
+			<p>X509_to_X509_REQ NULL pointer deref (CVE-2015-0288)</p>
+		</li>
 	</ul>
 	<p>We thank the OpenSSL project and the individual vulnerability reporters for finding, disclosing, and remediating these problems. All software has bugs, sometimes security critical bugs, and having a good process for handling them once identified is a necessary part of the world of computer software.</p>
-	<!--kg-card-end: markdown-->
 </div>

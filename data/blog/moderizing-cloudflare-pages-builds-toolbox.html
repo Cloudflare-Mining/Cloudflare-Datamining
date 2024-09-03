@@ -1,46 +1,82 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-22.png" class="kg-image" alt="Modernizing the toolbox for Cloudflare Pages builds" loading="lazy" width="1999" height="1125"></figure>
-	<p>Cloudflare Pages <a href="https://blog.cloudflare.com/cloudflare-pages">launched</a> over two years ago in December 2020, and since then, we have grown Pages to build millions of deployments for developers. In May 2022, to support developers with more complex requirements, we opened up Pages to empower developers to <a href="https://blog.cloudflare.com/cloudflare-pages-direct-uploads">create deployments using their own build environments</a> — but that wasn't the end of our journey. Ultimately, we want to be able to allow anyone to use our build platform and take advantage of the git integration we offer. You should be able to connect your repository and have it <em>just work </em>on Cloudflare Pages.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lME1CWawsCQtIuzvvfLPq/c6a23f19519d4d66a3e0d9c4fb5ea403/image2-22.png" alt="Modernizing the toolbox for Cloudflare Pages builds" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Cloudflare Pages <a href="https://blog.cloudflare.com/cloudflare-pages">launched</a> over two years ago in December 2020, and since then, we have grown Pages to build millions of deployments for developers. In May 2022, to support developers with more complex requirements, we opened up Pages to empower developers to <a href="https://blog.cloudflare.com/cloudflare-pages-direct-uploads">create deployments using their own build environments</a> — but that wasn't the end of our journey. Ultimately, we want to be able to allow anyone to use our build platform and take advantage of the git integration we offer. You should be able to connect your repository and have it <i>just work</i> on Cloudflare Pages.</p>
 	<p>Today, we're introducing a new beta version of our build system (a.k.a. "build image") which brings the default set of tools and languages up-to-date, and sets the stage for future improvements to builds on Cloudflare Pages. We now support the latest versions of Node.js, Python, Hugo and many more, putting you on the best path for any new projects that you undertake. Existing projects will continue to use the current build system, but this upgrade will be available to opt-in for everyone.</p>
-	<h2 id="new-defaults-new-possibilities">New defaults, new possibilities</h2>
+	<h2>New defaults, new possibilities</h2>
 	<p>The Cloudflare Pages build system has been updated to not only support new versions of your favorite languages and tools, but to also include new versions by default. The versions of 2020 are no longer relevant for the majority of today's projects, and as such, we're bumping these to their more modern equivalents:</p>
 	<ul>
-		<li><strong>Node.js</strong>' default is being increased from 12.18.0 to 18.16.0,</li>
-		<li><strong>Python</strong> 2.7.18 and 3.10.5 are both now available by default,</li>
-		<li><strong>Ruby</strong>'s default is being increased from 2.7.1 to 3.2.2,</li>
-		<li><strong>Yarn</strong>'s default is being increased from 1.22.4 to 3.5.1,</li>
-		<li>And we're adding <strong>pnpm</strong> with a default version of 8.2.0.</li>
+		<li>
+			<p><b>Node.js</b>' default is being increased from 12.18.0 to 18.16.0,</p>
+		</li>
+		<li>
+			<p><b>Python</b> 2.7.18 and 3.10.5 are both now available by default,</p>
+		</li>
+		<li>
+			<p><b>Ruby</b>'s default is being increased from 2.7.1 to 3.2.2,</p>
+		</li>
+		<li>
+			<p><b>Yarn</b>'s default is being increased from 1.22.4 to 3.5.1,</p>
+		</li>
+		<li>
+			<p>And we're adding <b>pnpm</b> with a default version of 8.2.0.</p>
+		</li>
 	</ul>
 	<p>These are just some of the headlines — check out <a href="https://developers.cloudflare.com/pages/platform/language-support-and-tools">our documentation</a> for the full list of changes.</p>
 	<p>We're aware that these new defaults constitute a breaking change for anyone using a project without pinning their versions with an environment variable or version file. That's why we're making this new build system opt-in for existing projects. You'll be able to stay on the existing system without breaking your builds. If you do decide to adventure with us, we make it easy to test out the new system in your preview environments before rolling out to production.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image5-5.png" class="kg-image" alt="Screenshot of the Cloudflare dashboard Pages project settings screen where you can configure the build system version." loading="lazy" width="1758" height="1288"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/265Kkauu3hg7i7PgW6l9IC/56f958e09cba78e60ee164922fe86ae5/image5-5.png" alt="Screenshot of the Cloudflare dashboard Pages project settings screen where you can configure the build system version." class="kg-image" width="1758" height="1288" loading="lazy">
+
+	</figure>
 	<p>Additionally, we're now making your builds more reproducible by taking advantage of lockfiles with many package managers. <code>npm ci</code> and <code>yarn --pure-lockfile</code> are now used ahead of your build command in this new version of the build system.</p>
 	<p>For new projects, these updated defaults and added support for pnpm and Yarn 3 mean that more projects will just work immediately without any undue setup, tweaking, or configuration. Today, we're launching this update as a beta, but we will be quickly promoting it to general availability once we're satisfied with its stability. Once it does graduate, new projects will use this updated build system by default.</p>
 	<p>We know that this update has been a long-standing request from our users (we thank you for your patience!) but part of this rollout is ensuring that we are now in a better position to make regular updates to Cloudflare Pages' build system. You can expect these default languages and tools to now keep pace with the rapid rate of change seen in the world of web development.</p>
 	<p>We very much welcome your continued feedback as we know that new tools can quickly appear on the scene, and old ones can just as quickly drop off. As ever, our <a href="https://discord.com/invite/cloudflaredev">Discord server</a> is the best place to engage with the community and Pages team. We’re excited to hear your thoughts and suggestions.</p>
-	<h2 id="our-modular-and-scalable-architecture">Our modular and scalable architecture</h2>
+	<h2>Our modular and scalable architecture</h2>
 	<p>Powering this updated build system is a new architecture that we've been working on behind-the-scenes. <a href="https://blog.cloudflare.com/cloudflare-pages-build-improvements">We're no strangers to sweeping changes of our build infrastructure</a>: we've done a lot of work to grow and scale our infrastructure. Moving beyond purely static site hosting with <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Pages Functions</a> brought a new wave of users, and as we explore <a href="https://blog.cloudflare.com/pages-and-workers-are-converging-into-one-experience">convergence</a> with Workers, we expect even more developers to rely on our git integrations and CI builds. Our new architecture is being rolled out without any changes affecting users, so unless you're interested in the technical nitty-gritty, feel free to stop reading!</p>
 	<p>The biggest change we're making with our architecture is its modularity. Previously, we were using Kubernetes to run a monolithic container which was responsible for everything for the build. Within the same image, we'd stream our build logs, clone the git repository, install any custom versions of languages and tools, install a project's dependencies, run the user's build command, and upload all the assets of the build. This was a lot of work for one container! It meant that our system tooling had to be compatible with versions in the user's space and therefore new default versions were a massive change to make. This is a big part of why it took us so long to be able to update the build system for our users.</p>
 	<p>In the new architecture, we've broken these steps down into multiple separate containers. We make use of <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers">Kubernetes' init containers feature</a> and instead of one monolithic container, we have three that execute sequentially:</p>
 	<ol>
-		<li>clone a user's git repository,</li>
-		<li>install any custom versions of languages and tools, install a project's dependencies, run the user's build command, and</li>
-		<li>upload all the assets of a build.</li>
+		<li>
+			<p>clone a user's git repository,</p>
+		</li>
+		<li>
+			<p>install any custom versions of languages and tools, install a project's dependencies, run the user's build command, and</p>
+		</li>
+		<li>
+			<p>upload all the assets of a build.</p>
+		</li>
 	</ol>
-	<p>We use a <a href="https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume">shared volume</a> to give the build a persistent workspace to use between containers, but now there is clear isolation between <strong>system</strong> stages (cloning a repository and uploading assets) and <strong>user</strong> stages (running code that the user is responsible for). We no longer need to worry about conflicting versions, and we've created an additional layer of security by isolating a user's control to a separate environment.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/1-6.png" class="kg-image" alt="A diagram of three sequential Kubernetes containers which all connect to a Kubernetes Shared Volume. They belong to a Kubernetes job which itself is run within a Kubernetes Node. The first container clones a user's git repository; the second installs languages, tools, dependencies and runs the build; and the third uploads the assets." loading="lazy" width="1500" height="1360"></figure>
+	<p>We use a <a href="https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume">shared volume</a> to give the build a persistent workspace to use between containers, but now there is clear isolation between <b>system</b> stages (cloning a repository and uploading assets) and <b>user</b> stages (running code that the user is responsible for). We no longer need to worry about conflicting versions, and we've created an additional layer of security by isolating a user's control to a separate environment.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11McSSl7sZWok1UdR8EuRV/913d88563fed59c0af4646526a7a657b/1-6.png" alt="A diagram of three sequential Kubernetes containers which all connect to a Kubernetes Shared Volume. They belong to a Kubernetes job which itself is run within a Kubernetes Node. The first container clones a user's git repository; the second installs languages, tools, dependencies and runs the build; and the third uploads the assets." class="kg-image" width="1500" height="1360" loading="lazy">
+
+	</figure>
 	<p>We're also aligning the final stage, the one responsible for uploading static assets, with the same APIs that Wrangler uses for Direct Upload projects. This reduces our maintenance burden going forward since we'll only need to consider one way of uploading assets and creating deployments. As we consolidate, we're exploring ways to make these APIs even faster and more reliable.</p>
-	<h3 id="logging-out">Logging out</h3>
+	<h3>Logging out</h3>
 	<p>You might have noticed that we haven't yet talked about how we're continuing to stream build logs. Arguably, this was one of the most challenging pieces to work out. When everything ran in a single container, we were able to simply latch directly into the <code>stdout</code> of our various stages and pipe them through to a Durable Object which could communicate with the Cloudflare dashboard.</p>
 	<p>By introducing this new isolation between containers, we had to get a bit more inventive. After prototyping a number of approaches, we've found one that we like. We run a separate, global log collector container inside Kubernetes which is responsible for collating logs from a build, and passing them through to that same Durable Object infrastructure. The one caveat is that the logs now need to be annotated with which build they are coming from, since one global log collector container accepts logs from multiple builds. A Worker in front of the Durable Object is responsible for reading the annotation and delegating to the relevant build's Durable Object instance.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-40.png" class="kg-image" alt="A diagram of multiple builds within a Kubernetes node, all streaming their container logs to a global log collector running in yet another container in the Kubernetes node. This container then posts its aggregated logs to a Cloudflare Worker which distributes the logs to a Durable Object instance for each build." loading="lazy" width="1999" height="1298"></figure>
-	<h3 id="caching-in"> Caching in</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6liD6t03jOlyaUug44A7gQ/266b108422c385f3a1ff13d3011c3f83/image1-40.png" alt="A diagram of multiple builds within a Kubernetes node, all streaming their container logs to a global log collector running in yet another container in the Kubernetes node. This container then posts its aggregated logs to a Cloudflare Worker which distributes the logs to a Durable Object instance for each build." class="kg-image" width="1999" height="1298" loading="lazy">
+
+	</figure>
+	<h3>Caching in</h3>
 	<p>With this new modular architecture, we plan to integrate a feature we've been teasing for a while: build caching. Today, when you run a build in Cloudflare Pages, we start fresh every time. This works, but it's inefficient.</p>
 	<p>Very often, only small changes are actually made to your website between deployments: you might tweak some text on your homepage, or add a new blog post; but rarely does the core foundation of your site actually change between deployments. With build caching, we can reuse some of the work from earlier builds to speed up subsequent builds. We'll offer a best-effort storage mechanism that allows you to persist and restore files between builds. You'll soon be able to cache dependencies, as well as the build output itself if your framework supports it, resulting in considerably faster builds and a tighter feedback loop from push to deploy.</p>
 	<p>This is possible because our new modular design has clear divides between the stages where we'd want to restore and cache files.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/2-3.png" class="kg-image" alt="A diagram showing the three containers of a build, plus a divider between the first and second marked &quot;RESTORE CACHE&quot; and a divider between the second and third marked &quot;PERSIST CACHE&quot;." loading="lazy" width="1600" height="1190"></figure>
-	<h2 id="start-building">Start building</h2>
-	<p>We're excited about the improvements that this new modular architecture will afford the Pages team, but we're even more excited for how this will result in faster and more scalable builds for our users. This architecture transition is rolling out behind-the-scenes, but <strong>the updated beta build system with new languages and tools is available to try today</strong>. Navigate to your Pages project settings in the Cloudflare Dashboard to opt-in. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YcQdgswXh6aueVEkJkBGK/6c1f8a13e6d1bf1c183cadc02af6ef49/2-3.png" alt="A diagram showing the three containers of a build, plus a divider between the first and second marked " restore="" cache"="" and="" a="" divider="" between="" the="" second="" third="" marked="" "persist="" cache" ."="" class="kg-image" width="1600" height="1190" loading="lazy">
+
+	</figure>
+	<h2>Start building</h2>
+	<p>We're excited about the improvements that this new modular architecture will afford the Pages team, but we're even more excited for how this will result in faster and more scalable builds for our users. This architecture transition is rolling out behind-the-scenes, but <b>the updated beta build system with new languages and tools is available to try today</b>. Navigate to your Pages project settings in the Cloudflare Dashboard to opt-in.</p>
 	<p>Let us know if you have any feedback on the <a href="https://discord.com/invite/cloudflaredev">Discord server</a>, and stay tuned for more information about build caching in upcoming posts on this blog. Later today (Wednesday 17th, 2023), the Pages team will be hosting a <a href="https://discord.com/invite/cloudflaredev?event=1103324690149298196">Q&amp;A session</a> to talk about this announcement on Discord at 17:30 UTC.</p>
 </div>

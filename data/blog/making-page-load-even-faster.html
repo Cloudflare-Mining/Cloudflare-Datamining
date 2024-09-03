@@ -1,266 +1,174 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uaGzDxOHpdfDJSiuCIZGj/8b485ff709b0ee46807544ad2c9e2706/making-page-load-even-faster.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In 2017 we made two of our web optimisation products - <a href="https://www.cloudflare.com/website-optimization/mirage">Mirage</a> and <a href="https://vimeo.com/24900882">Rocket Loader</a> - even faster! Combined, these products speed up around 1.2 billion web-pages a week. The products are both around 5 years old, so there was a big opportunity to update them for the brave new world of highly-tuned browsers, HTTP2 and modern Javascript tooling. We measured a performance boost that, <a href="https://blog.cloudflare.com/#savings">very roughly</a>, will save visitors to sites on our network between 50-700ms. Visitors that see content faster have much higher engagement and lower bounce rates, as shown by studies like <a href="https://www.doubleclickbygoogle.com/articles/mobile-speed-matters">Google’s</a>. This really adds up, representing a further saving of 380 years of loading time each year and a staggering 1.03 petabytes of data transfer!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/dimon-blr-309444.jpg" alt="dimon-blr-309444" loading="lazy"><br>
-		<small>Cycling image Photo by <a href="https://unsplash.com/photos/mdgMbYfFlSA">Dimon Blr on Unsplash</a>.</small>
-	</p>
-	<h3 id="whatmirageandrocketloaderdo">What Mirage and Rocket Loader do</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2I9Wjjv1mmUo8m0mpjQuiI/cb7b3da2f7bb13df28a8114b9ae11283/dimon-blr-309444.jpg" alt="dimon-blr-309444" class="kg-image" width="2784" height="1856" loading="lazy">
+
+	</figure>
+	<p>Cycling image Photo by <a href="https://unsplash.com/photos/mdgMbYfFlSA">Dimon Blr on Unsplash</a>.</p>
+	<h3>What Mirage and Rocket Loader do</h3>
 	<p>Mirage and Rocket Loader both optimise the loading of a web page by reducing and deferring the number of assets the browser needs to request for it to complete HTML parsing and rendering on screen.</p>
-	<h4 id="mirage">Mirage</h4>
-	<style>
-		.has_images {
-			overflow: auto;
-		}
+	<h4>Mirage</h4>
+	<p>.has_images { overflow: auto; } @media (min-width: 600px) { .has_images p { float: left; width: 50%; } .has_images img { float: right; margin: 1em; width: 40% } }</p>
+	<p>With Mirage, users on slow mobile connections will be quickly shown a full page of content, using placeholder images with a low file-size which will load much faster. Without Mirage visitors on a slow mobile connection will have to wait a long time to download high-quality images. Since it’ll take a long time, they will perceive your website as slow:</p>
+	<figure class="kg-card kg-image-card ">
 
-		@media (min-width: 600px) {
-			.has_images p {
-				float: left;
-				width: 50%;
-			}
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IqZ5hbozfR4VXhvHoynn4/b42f1193d91a36bf0987a14e7f021e15/Mirage---before-1.svg" alt="Mirage---before" class="kg-image" width="365" height="247" loading="lazy">
 
-			.has_images img {
-				float: right;
-				margin: 1em;
-				width: 40%
-			}
-		}
-	</style>
-	<div class="has_images">
-		<p>With Mirage, users on slow mobile connections will be quickly shown a full page of content, using placeholder images with a low file-size which will load much faster. Without Mirage visitors on a slow mobile connection will have to wait a long time to download high-quality images. Since it’ll take a long time, they will perceive your website as slow:</p>
-		<img alt="Mirage---before" src="https://blog.cloudflare.com/content/images/2018/02/Mirage---before-1.svg">
-	</div>
-	<p><br><br></p>
-	<div class="has_images">
-		<p>With Mirage visitors will see content much faster, will thus perceive that the content is loading quickly, and will be less likely to give up:</p>
-		<p></p>
-		<img alt="mirage-after" src="https://blog.cloudflare.com/content/images/2018/02/mirage-after-1.svg">
-	</div>
-	<h4 id="rocketloader">Rocket Loader</h4>
-	<div class="has_images">
-		<p>Browsers will not show content that until all the Javascript that might affect it has been loaded and run. This can mean users wait a significant time before seeing any content at all, even if that content is the only reason they’re on visiting the page!</p>
-		<img alt="Rocket-before" src="https://blog.cloudflare.com/content/images/2018/02/Rocket-before.svg">
-	</div>
-	<div class="has_images">
-		<p>Rocket Loader transparently defers all Javascript execution until the rest of the page has loaded. This allows the browser to display the content the visitors are interested in as soon as possible.</p>
-		<img alt="Rocket-after" src="https://blog.cloudflare.com/content/images/2018/02/Rocket-after.svg">
-	</div>
-	<h3 id="howtheywork">How they work</h3>
+	</figure>
+	<p>With Mirage visitors will see content much faster, will thus perceive that the content is loading quickly, and will be less likely to give up:</p>
+	<h4>Rocket Loader</h4>
+	<p>Browsers will not show content that until all the Javascript that might affect it has been loaded and run. This can mean users wait a significant time before seeing any content at all, even if that content is the only reason they’re on visiting the page!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ATanlKIoEw2yABAoJ4y8x/6a68cc3e165f383d231ec0384e3cba7c/Rocket-before.svg" alt="Rocket-before" class="kg-image" width="389" height="261" loading="lazy">
+
+	</figure>
+	<p>Rocket Loader transparently defers all Javascript execution until the rest of the page has loaded. This allows the browser to display the content the visitors are interested in as soon as possible.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4svTMwAb9yRtZ56uBpBZFR/c827373464064b92568315efe60da622/Rocket-after.svg" alt="Rocket-after" class="kg-image" width="389" height="261" loading="lazy">
+
+	</figure>
+	<h3>How they work</h3>
 	<p>Both of these products involve a two step process: first our optimizing proxy-server will rewrite customers’ HTML as it’s delivered, and then our on-page Javascript will attempt to optimise aspects of the page load. For instance, Mirage's server-side rewrites image tags as follows:</p>
-	<pre><code>&lt;!-- before --&gt;
-&lt;img src="/some-image.png"&gt;
+	<pre class="language-bash"><code class="language-bash"><!-- before -->
+<img src="/some-image.png" alt="">
 
-&lt;!-- after --&gt;
-&lt;img data-cfsrc="/some-image.png" style="display:none;visibility:hidden;"&gt;
-</code></pre>
+<!-- after -->
+<img data-cfsrc="/some-image.png" style="display:none;visibility:hidden;" alt=""></code></pre>
 	<p>Since browsers don't recognise <code>data-cfsrc</code>, the Mirage Javascript can control the whole process of loading these images. It uses this opportunity to intelligently load placeholder images on slow connections.</p>
 	<p>Rocket Loader uses a similar approach to de-prioritise Javascript during page load, allowing the browser to show visitors the content of the page sooner.</p>
-	<h3 id="theproblems">The problems</h3>
+	<h3>The problems</h3>
 	<p>The Javascript for both products was written years ago, when <a href="https://github.com/rollup/rollup">‘rollup’</a> brought to mind a poor lifestyle choice rather than an excellent build-tool. With the big changes we’ve seen in browsers, protocols, and JS, there were many opportunities to optimise.</p>
-	<h4 id="dynamicallyslowingthingsdown">Dynamically... slowing things down</h4>
+	<h4>Dynamically... slowing things down</h4>
 	<p>Designed for the ecosystem of the time, both products were loaded by Cloudflare’s <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">asynchronous-module-definition</a> (AMD) loader, called CloudflareJS, which also bundled some shared libraries.</p>
 	<p>This meant the process of loading Mirage or Rocket Loader looked like:</p>
 	<ol>
-		<li>CFJS inserted in blocking script tag by server-side rewriter</li>
-		<li>CFJS runs, and looks at some on-page config to decide at runtime whether to load Rocket/Mirage via AMD, inserting new script tags</li>
-		<li>Rocket/Mirage are loaded and run</li>
+		<li>
+			<p>CFJS inserted in blocking script tag by server-side rewriter</p>
+		</li>
+		<li>
+			<p>CFJS runs, and looks at some on-page config to decide at runtime whether to load Rocket/Mirage via AMD, inserting new script tags</p>
+		</li>
+		<li>
+			<p>Rocket/Mirage are loaded and run</p>
+		</li>
 	</ol>
-	<h4 id="fightingbrowsers">Fighting browsers</h4>
+	<h4>Fighting browsers</h4>
 	<p>Dynamic loading meant the products could not benefit from optimisations present in modern browsers. Browsers now scan HTML as they receive it instead of waiting for it all to arrive, identifying and loading external resources like script tags as quickly as possible. This process is called <a href="https://andydavies.me/blog/2013/10/22/how-the-browser-pre-loader-makes-pages-load-faster">preload scanning</a>, and is one of the most important optimisations performed by the brower. Since we used dynamic code inside CFJS to load Mirage and Rocket Loader, we were preventing them from benefitting from the preload scanner.</p>
 	<p>To make matters worse, Rocket Loader was being dynamically inserted using that villain of the DOM API, <code>document.write</code> - a technique that creates huge performance problems. Understanding exactly why is involved, so I’ve created a diagram. Skim it, and refer back to it as you read the next paragraph:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Old-version.svg" alt="Old-version" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45iYLM7SRhBk216L8GaIZJ/8338be0447af1c979806a1a59b7afa3f/Old-version.svg" alt="Old-version" class="kg-image" width="784" height="304" loading="lazy">
+
+	</figure>
 	<p>As said, using <code>document.write</code> to insert scripts is be particularly damaging to page load performance. Since the <code>document.write</code> that inserts the script is invisible to the preload scanner (even if the script is inline, which ours isn’t, preload scanning <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=575850">doesn’t</a> even attempt to scan JS), at the instant it is inserted the browser will already be busy requesting resources the scanner found elsewhere in the page (other script tags, images etc). This matters because a browser encountering a non-deferred or asynchronous Javascript, like Rocket Loader, must block all further building of the DOM tree until that script is loaded and executed, to give the script a chance to modify the DOM. So Rocket Loader was being inserted at an instant in which it was going to be very slow to load, due to the backlog of requests from the preload scan, and therefore causes a very long delay until the DOM parser can resume!</p>
 	<p>Aside from this grave performance issue, it became more urgent to remove <code>document.write</code> when <a href="https://www.chromestatus.com/feature/5718547946799104">Chrome began to intervene against it in version 55</a> triggering a <a href="https://github.com/WICG/interventions/issues/17">very interesting discussion</a>. This intervention would sometimes prevent Rocket Loader from being inserted on slow 2G connections, stopping any other Javascript from loading at all!</p>
 	<p>Clearly, <code>document.write</code> needed to be extirpated!</p>
-	<h4 id="unusedandovergeneralcode">Unused and over-general code</h4>
+	<h4>Unused and over-general code</h4>
 	<p>CFJS was authored as a shared library for Cloudflare client-side code, including the original Cloudflare app store. This meant it had quite a large set of APIs. Although both Mirage and Rocket Loader depended on some of them, the overlap was actually small. Since we've launched the new, shiny <a href="https://blog.cloudflare.com/cloudflare-apps-2">Cloudflare Apps</a>, CFJS had no other important products dependant upon it.</p>
-	<h3 id="aplanofaction">A plan of action</h3>
+	<h3>A plan of action</h3>
 	<p>Before joining Cloudflare in July this year, I had been working in TypeScript, a language with all the lovely new syntax of modern Javascript. Taking over multiple AMD, ES5-based projects using Gulp and Grunt was a bit of a shock. I really thought I'd written my last <code>define(['writing', 'very-bug'], function(twice, prone) {})</code>, but here I was in 2017 seeing it again!</p>
 	<p>So it was very tempting to do a big-bang rewrite and get back to playing with the new ECMAScript 2018 toys. However, I’ve been involved in enough rewrites to know they’re <a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i">very rarely justified</a>, and instead identified the highest priority changes we’d need to improve performance (though I admit I wrote a few <code>git checkout -b typescript-version</code> branches to vent).</p>
 	<p>So, the plan was:</p>
 	<ol>
-		<li>identify and inline the parts of CFJS used by Mirage and Rocket Loader</li>
-		<li>produce a new version of the other dependencies of CFJS (our <a href="https://www.cloudflare.com/logo">logo badge widget</a> is actually hardcoded to point at CloudflareJS)</li>
-		<li>switch from AMD to Rollup (and thus ECMAScript import syntax)</li>
+		<li>
+			<p>identify and inline the parts of CFJS used by Mirage and Rocket Loader</p>
+		</li>
+		<li>
+			<p>produce a new version of the other dependencies of CFJS (our <a href="https://www.cloudflare.com/logo">logo badge widget</a> is actually hardcoded to point at CloudflareJS)</p>
+		</li>
+		<li>
+			<p>switch from AMD to Rollup (and thus ECMAScript import syntax)</p>
+		</li>
 	</ol>
 	<p>The decision to avoid making a new shared library may be surprising, especially as tree-shaking avoids some of the code-size overhead from unused parts of our dependencies. However, a little duplication seemed the lesser evil compared to cross-project dependencies given that:</p>
 	<ul>
-		<li>the overlap in code used was small</li>
-		<li>over-general, library-style functions were part of why CFJS became too big in the first place</li>
-		<li>Rocket Loader has some exciting things in its future...</li>
+		<li>
+			<p>the overlap in code used was small</p>
+		</li>
+		<li>
+			<p>over-general, library-style functions were part of why CFJS became too big in the first place</p>
+		</li>
+		<li>
+			<p>Rocket Loader has some exciting things in its future...</p>
+		</li>
 	</ul>
 	<p>Sweating kilobytes out of the minified + Gzipped Javascript files is be a waste of time for most applications. However, in the context of code that'll be run literally millions of times in the time you read this article, it really pays off. This is a process we’ll be continuing in 2018.</p>
-	<h4 id="switchingoutamd">Switching out AMD</h4>
+	<h4>Switching out AMD</h4>
 	<p>Switching out Gulp, Grunt and AMD was a fairly mechanical process of replacing syntax like this:</p>
-	<pre><code>define(['cloudflare/iterator', 'cloudflare/dom'], function(iterator, dom) {
+	<pre class="language-bash"><code class="language-bash">define(['cloudflare/iterator', 'cloudflare/dom'], function(iterator, dom) {
     // ...
     return {
         Mirage: Mirage,
     };
-})
-</code></pre>
+})</code></pre>
 	<p>with ECMAScript modules, ready for Rollup, like:</p>
-	<pre><code>import * as iterator from './iterator';
+	<pre class="language-bash"><code class="language-bash">import * as iterator from './iterator';
 import { isHighLatency } from './connection';
 
 // ...
 
-export { Mirage }
-</code></pre>
-	<h4 id="postrefactorweighin">Post refactor weigh-in</h4>
+export { Mirage }</code></pre>
+	<h4>Post refactor weigh-in</h4>
 	<p>Once the parts of CFJS used by the projects were inlined into the projects, we ended up with both Rocket and Mirage being slightly <a href="https://blog.cloudflare.com/#badge">larger</a> (all numbers minified + GZipped):</p>
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<div id="sizeChart"></div>
-	<script>
-		(function() {
-			var x = ['Mirage old', 'Mirage new', 'Rocket Loader old', 'Rocket Loader new'];
-			var trace1 = {
-				x: x,
-				y: [8019, 13029, 25151, 31621],
-				name: 'Main file',
-				type: 'bar'
-			};
-			var trace2 = {
-				x: x,
-				y: [21572, 0, 21572, 0],
-				name: 'Additional dependencies',
-				type: 'bar'
-			};
-			var data = [trace1, trace2];
-			var layout = {
-				barmode: 'stack',
-				plot_bgcolor: 'transparent',
-				paper_bgcolor: 'transparent'
-			};
-			Plotly.newPlot('sizeChart', data, layout);
-		})();
-	</script>
 	<p>So we made a significant file-size saving (about <a href="https://mathiasbynens.be/demo/jquery-size">half a jQuery’s worth</a>) vs the original file-size required to completely load either product.</p>
-	<h4 id="newinsertionflow">New insertion flow</h4>
+	<h4>New insertion flow</h4>
 	<p>Before, our original insertion flow looked something like this:</p>
-	<pre><code>// on page embed, injected into customers' pages
-&lt;script&gt;
+	<pre class="language-bash"><code class="language-bash">// on page embed, injected into customers' pages
+<script>
   var cloudflare = { rocket: true, mirage: true };
-&lt;/script&gt;
-&lt;script src="/cloudflare.min.js"&gt;&lt;/script&gt;
-</code></pre>
+</script>
+<script src="/cloudflare.min.js"></script></code></pre>
 	<p>Inside cloudflare.min.js we found the dynamic code that, once run, would kick off the requests for Mirage and Rocket Loader:</p>
-	<pre><code>// cloudflare.min.js
+	<pre class="language-bash"><code class="language-bash">// cloudflare.min.js
 if(cloudflare.rocket) {
     require(“cloudflare/rocket”);
-}
-</code></pre>
+}</code></pre>
 	<p>Our approach is now far more browser friendly, roughly:</p>
-	<pre><code>// on page embed
-&lt;script&gt;
+	<pre class="language-bash"><code class="language-bash">// on page embed
+<script>
   var cloudflare = { /* some config */ }
-&lt;/script&gt;
-&lt;script src="/mirage.min.js"&gt;&lt;/script&gt;
-&lt;script src="/rocket.min.js"&gt;&lt;/script&gt;
-</code></pre>
+</script>
+<script src="/mirage.min.js"></script>
+<script src="/rocket.min.js"></script></code></pre>
 	<p>If you compare the new insertion sequence diagram, you can see why this is so much better:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/New-Version.svg" alt="New-Version" loading="lazy"></p>
-	<h3 id="measurement">Measurement</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UOAgrBB8DitoNbPqlG6yP/ad4aba17f20a1b775204759b1c60279d/New-Version.svg" alt="New-Version" class="kg-image" width="784" height="340" loading="lazy">
+
+	</figure>
+	<h3>Measurement</h3>
 	<p>Theory implied our smaller, browser-friendly strategy should be faster, but only by doing some good old empirical research would we know <a href="https://blog.cloudflare.com/#hume">for sure</a>.</p>
 	<p>To measure the results, I set up a representative test page (including Bootstrap, custom fonts, some images, text) and calculated the change in the average <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> performance scores out of 100 over a number of runs. The metrics I focussed on were:</p>
 	<ol>
-		<li>Time till first meaningful paint (TTFMP) - FMP is when we first see some useful content, e.g. images and text</li>
-		<li>Overall - this is Lighthouse's aggregate score for a page - the closer to 100, the better</li>
+		<li>
+			<p>Time till first meaningful paint (TTFMP) - FMP is when we first see some useful content, e.g. images and text</p>
+		</li>
+		<li>
+			<p>Overall - this is Lighthouse's aggregate score for a page - the closer to 100, the better</p>
+		</li>
 	</ol>
-	<div id="lighthouse"></div>
-	<script>
-		(function() {
-			var x = ['Mirage', 'Rocket Loader'];
-			var trace1 = {
-				x: x,
-				y: [93.4, 86.6],
-				marker: {
-					color: '#F8B168'
-				},
-				name: 'Lighthouse score, old',
-				type: 'bar'
-			};
-			var trace2 = {
-				x: x,
-				y: [93.4, 92.9],
-				marker: {
-					color: '#FF7900'
-				},
-				name: 'Lighthouse score, new',
-				type: 'bar'
-			};
-			var trace3 = {
-				x: x,
-				y: [88, 72.2],
-				marker: {
-					color: '#2F7BBF'
-				},
-				name: 'Lightscore FMP score, old',
-				type: 'bar'
-			};
-			var trace4 = {
-				x: x,
-				y: [89, 86.8],
-				marker: {
-					color: '#63A1D7'
-				},
-				name: 'Lightscore FMP score, new',
-				type: 'bar'
-			};
-			var data = [trace1, trace2, trace3, trace4];
-			var layout = {
-				barmode: 'group',
-				plot_bgcolor: 'transparent',
-				paper_bgcolor: 'transparent',
-				title: 'Observed average Lighthouse scores (max 100) for FMP, and overall performance'
-			};
-			Plotly.newPlot('lighthouse', data, layout);
-		})();
-	</script>
-	<div id="ttfmp_chart"></div>
-	<script>
-		(function() {
-			var x = ['Mirage', 'Rocket Loader'];
-			var trace1 = {
-				x: x,
-				y: [2195.3, 2959.5],
-				name: 'Old version, TTFMP ms',
-				type: 'bar'
-			};
-			var trace2 = {
-				x: x,
-				y: [2146.3, 2265.5],
-				name: 'New version, TTFMP ms',
-				type: 'bar'
-			};
-			var data = [trace1, trace2];
-			var layout = {
-				barmode: 'group',
-				plot_bgcolor: 'transparent',
-				paper_bgcolor: 'transparent',
-				title: 'Observed average TTFMP in ms'
-			};
-			Plotly.newPlot('ttfmp_chart', data, layout);
-		})();
-	</script>
-	<h4 id="assessment">Assessment</h4>
+	<h4>Assessment</h4>
 	<p>So, improved metrics across the board! We can see the changes have resulted in solid improvements, e.g a reduction in our average time till first meaningful paint of 694ms for Rocket, and 49ms for Mirage.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>The optimisations to Mirage and Rocket Loader have resulted in less bandwidth use, and measurably better performance for visitors to Cloudflare optimised sites.</p>
-	<br>
-	<br>
-	<br>
-	<h4 id="footnotes">Footnotes</h4>
-	<style>
-		a:not([href]) {
-			text-decoration: inherit !important;
-			color: inherit !important;
-		}
-	</style>
+	<h4>Footnotes</h4>
+	<p>a:not([href]) { text-decoration: inherit !important; color: inherit !important; }</p>
 	<ol>
-		<li><a id="savings">The</a> following are back-of-the-envelope calculations. Mirage gets 980 million requests a week, TTFMP reduction of 50ms. There are 1000 ms in a second * 60 seconds * 60 minutes * 24 hours * 365 days = 31.5 billion milliseconds in a year. So (980e6 * 50 * 52) / 31.5e9 = in aggregate, 81 years less waiting for first-paint. Rocket gets 270 million requests a week, average TTFMP reduction of 694ms, (270e6 * 694 * 52) / 31.5e9 = in aggregate, 301 years less waiting for first-meaningful-paint. Similarly 980 million savings of 16kb per week for Mirage = 817.60 terabytes per year and 270 million savings of 15.2kb per week for Rocket Loader = 213.79 terabytes per year for a combined total of 1031 terabytes or 1.031 petabytes.</li>
-		<li><a id="badge">and</a> a tiny 1.5KB file for our <a href="https://www.cloudflare.com/logo">web badge</a> - written in TypeScript ? - which previously was loaded on top of the 21.6KB CFJS</li>
-		<li><a id="hume"></a><a href="https://plato.stanford.edu/entries/induction-problem">shut it Hume</a></li>
-		<li>Thanks to Peter Belesis for doing the initial work of identifying which products depended upon CloudflareJS, and Peter, Matthew Cottingham, Andrew Galloni, Henry Heinemann, Simon Moore and Ivan Nikulin for their wise counsel on this blog post.</li>
+		<li>
+			<p>The following are back-of-the-envelope calculations. Mirage gets 980 million requests a week, TTFMP reduction of 50ms. There are 1000 ms in a second * 60 seconds * 60 minutes * 24 hours * 365 days = 31.5 billion milliseconds in a year. So (980e6 * 50 * 52) / 31.5e9 = in aggregate, 81 years less waiting for first-paint. Rocket gets 270 million requests a week, average TTFMP reduction of 694ms, (270e6 * 694 * 52) / 31.5e9 = in aggregate, 301 years less waiting for first-meaningful-paint. Similarly 980 million savings of 16kb per week for Mirage = 817.60 terabytes per year and 270 million savings of 15.2kb per week for Rocket Loader = 213.79 terabytes per year for a combined total of 1031 terabytes or 1.031 petabytes.</p>
+		</li>
+		<li>
+			<p>and a tiny 1.5KB file for our <a href="https://www.cloudflare.com/logo">web badge</a> - written in TypeScript ? - which previously was loaded on top of the 21.6KB CFJS</p>
+		</li>
+		<li>
+			<p><a href="https://plato.stanford.edu/entries/induction-problem">shut it Hume</a></p>
+		</li>
+		<li>
+			<p>Thanks to Peter Belesis for doing the initial work of identifying which products depended upon CloudflareJS, and Peter, Matthew Cottingham, Andrew Galloni, Henry Heinemann, Simon Moore and Ivan Nikulin for their wise counsel on this blog post.</p>
+		</li>
 	</ol>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,27 +1,36 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6G5zavviaQgpTpaH2j7rWN/88d3968c4cc4e8252026ef6c8b99c83b/manage-cloudflare-records-with-salt.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>We use <a href="https://github.com/saltstack/salt">Salt</a> to manage our ever growing global fleet of machines. Salt is great for managing configurations and being the source of truth. We use it for remote command execution and for <a href="https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network">network automation tasks</a>. It allows us to grow our infrastructure quickly with minimal human intervention.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/10/grains.jpg" alt="Salt" loading="lazy"></p>
-	<p><small><a href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a> <a href="https://secure.flickr.com/photos/pagedooley/2769134850">image</a> by <a href="https://secure.flickr.com/photos/pagedooley">Kevin Dooley</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HTPX88whBMGq7gOYzrjhw/e36a024bc81bba9d326c25e76b5f1cd7/grains.jpg" alt="Salt" class="kg-image" width="1024" height="770" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a> <a href="https://secure.flickr.com/photos/pagedooley/2769134850">image</a> by <a href="https://secure.flickr.com/photos/pagedooley">Kevin Dooley</a></p>
 	<p>We got to thinking. Are DNS records not just a piece of the configuration? We concluded that they are and decided to manage our own records from Salt too.</p>
 	<p>We are strong believers in <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">eating our own dog food</a>, so we make our employees use the next version of our service before rolling it to everyone else. That way if there's a problem visiting one of the 5 million websites that use Cloudflare it'll get spotted quickly internally. This is also why we keep our own DNS records on Cloudflare itself.</p>
 	<p>Cloudflare has an <a href="https://api.cloudflare.com">API</a> that allows you to manage your zones programmatically without ever logging into the dashboard. Until recently, we were using handcrafted scripts to manage our own DNS records via our API. These scripts were in exotic languages like PHP for historical reasons and had interesting behavior that not everybody enjoyed. While we were dogfooding our own APIs, these scripts were pushing the source of truth for DNS out of Salt.</p>
 	<p>When we decided to move some zones to Salt, we had a few key motivations:</p>
 	<ol>
-		<li>Single source of truth</li>
-		<li>Peer-reviewed, audited and versioned changes</li>
-		<li>Making things that our customers would want to use</li>
+		<li>
+			<p>Single source of truth</p>
+		</li>
+		<li>
+			<p>Peer-reviewed, audited and versioned changes</p>
+		</li>
+		<li>
+			<p>Making things that our customers would want to use</p>
+		</li>
 	</ol>
 	<p>Points 1 and 2 were achieved by having DNS records in a Salt repo. The Salt configuration is itself in git, so we get peer reviews and audit trail for free. We think that we made progress on point 3 also.</p>
 	<p>After extensive internal testing and finding a few bugs in our API (that's what we wanted!), we are happy to announce the public availability of <a href="https://github.com/cloudflare/salt-cloudflare">Cloudflare Salt module</a>.</p>
 	<p>If you are familiar with Salt, it should be easy to see how to configure your records via Salt. All you need is the following:</p>
 	<p>Create the state <code>cloudflare</code> to deploy your zones:</p>
-	<pre><code>example.com:
+	<pre class="language-bash"><code class="language-bash">example.com:
   cloudflare.manage_zone_records:
-    - zone: {{ pillar["cloudflare_zones"]["example.com"]|yaml }}
-</code></pre>
+    - zone: {{ pillar["cloudflare_zones"]["example.com"]|yaml }}</code></pre>
 	<p>Add a pillar to configure your zone:</p>
-	<pre><code>cloudflare_zones:
+	<pre class="language-bash"><code class="language-bash">cloudflare_zones:
   example.com:
     auth_email: ivan@example.com
     auth_key: auth key goes here
@@ -29,17 +38,13 @@
     records:
       - name: blog.example.com
         content: 93.184.216.34
-        proxied: true
-</code></pre>
+        proxied: true</code></pre>
 	<p>Here we configure zone <code>example.com</code> to only have one record <code>blog.example.com</code> pointing to <code>93.184.216.34</code> behind Cloudflare.</p>
 	<p>You can test your changes before you deploy:</p>
-	<pre><code>salt-call state.apply cloudflare test=true
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">salt-call state.apply cloudflare test=true</code></pre>
 	<p>And then deploy if you are happy with the dry run:</p>
-	<pre><code>salt-call state.apply cloudflare
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">salt-call state.apply cloudflare</code></pre>
 	<p>After the initial setup, all you need is to change the <code>records</code> array in pillar and re-deploy the state. See the <a href="https://github.com/cloudflare/salt-cloudflare">README</a> for more details.</p>
 	<p>DNS records are only one part of configuration you may want to change for your Cloudflare domain. We have plans to "saltify" other settings like WAF, caching, page rules and others too.</p>
 	<p><a href="https://www.cloudflare.com/join-our-team">Come work with us</a> if you want to help!</p>
-	<!--kg-card-end: markdown-->
 </div>

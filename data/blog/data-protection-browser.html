@@ -1,56 +1,84 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image3-21.png" class="kg-image" alt="Data protection controls with Cloudflare Browser Isolation" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pfCjaLKWhg07vPGyAP50X/a651c54241b4f971d82b217cbd8d03a1/image3-21.png" alt="Data protection controls with Cloudflare Browser Isolation" class="kg-image" width="1748" height="1017" loading="lazy">
+
+	</figure>
 	<p>Starting today, your team can use Cloudflare’s Browser Isolation service to protect sensitive data inside the web browser. Administrators can define <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust policies</a> to control who can copy, paste, and print data in any web based application.</p>
-	<p>In March 2021, for <a href="https://blog.cloudflare.com/welcome-to-security-week-2021">Security Week</a>, we announced the <a href="https://blog.cloudflare.com/browser-isolation-for-teams-of-all-sizes">general availability</a> of Cloudflare Browser Isolation as an add-on within the Cloudflare for Teams suite of Zero Trust application access and browsing services. <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Browser Isolation</a> protects users from browser-borne malware and zero-day threats by shifting the risk of executing untrusted website code from their local browser to a secure browser hosted on our edge.</p><!--kg-card-begin: markdown-->
+	<p>In March 2021, for <a href="https://blog.cloudflare.com/welcome-to-security-week-2021">Security Week</a>, we announced the <a href="https://blog.cloudflare.com/browser-isolation-for-teams-of-all-sizes">general availability</a> of Cloudflare Browser Isolation as an add-on within the Cloudflare for Teams suite of Zero Trust application access and browsing services. <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Browser Isolation</a> protects users from browser-borne malware and zero-day threats by shifting the risk of executing untrusted website code from their local browser to a secure browser hosted on our edge.</p>
 	<p>And currently, we’re democratizing browser isolation for any business by including it with our Teams Enterprise Plan at no additional charge.<sup>1</sup></p>
-	<!--kg-card-end: markdown-->
-	<h3 id="a-different-approach-to-zero-trust-browsing">A different approach to zero trust browsing</h3>
+	<h3>A different approach to zero trust browsing</h3>
 	<p>Web browsers, the same tool that connects users to critical business applications, is one of the most common attack vectors and hardest to control.</p>
 	<p>Browsers started as simple tools intended to share academic documents over the Internet and over time have become sophisticated platforms that replaced virtually every desktop application in the workplace. The dominance of web-based applications in the workplace has created a challenge for security teams who race to stay patch zero-day vulnerabilities and protect sensitive data stored in self-hosted and SaaS based applications.</p>
-	<p>In an attempt to <a href="https://www.cloudflare.com/application-services/solutions">protect users and applications from web based attacks</a>, administrators have historically relied on DNS or HTTP inspection to prevent threats from reaching the browser. These tools, while useful for protecting against <em>known threats, </em>are difficult to tune without false-positives (negatively impacting user productivity and increasing IT support burden) and ineffective against zero day vulnerabilities.</p>
-	<p>Browser isolation technologies mitigate risk by shifting the risk of executing foreign code from the endpoint to a secure environment. Historically administrators have had to make a compromise between <strong>performance</strong> and <strong>security</strong> when adopting such a solution. They could either:</p>
+	<p>In an attempt to <a href="https://www.cloudflare.com/application-services/solutions">protect users and applications from web based attacks</a>, administrators have historically relied on DNS or HTTP inspection to prevent threats from reaching the browser. These tools, while useful for protecting against <i>known threats,</i> are difficult to tune without false-positives (negatively impacting user productivity and increasing IT support burden) and ineffective against zero day vulnerabilities.</p>
+	<p>Browser isolation technologies mitigate risk by shifting the risk of executing foreign code from the endpoint to a secure environment. Historically administrators have had to make a compromise between <b>performance</b> and <b>security</b> when adopting such a solution. They could either:</p>
 	<ul>
-		<li><strong>Prioritize</strong> <strong>security</strong> by choosing a solution that relies on pixel pushing techniques to serve a visual representation to users. This comes at the cost of performance by introducing latency, graphical artifacts and heavy bandwidth usage.</li>
+		<li>
+			<p><b>Prioritize</b> <b>security</b> by choosing a solution that relies on pixel pushing techniques to serve a visual representation to users. This comes at the cost of performance by introducing latency, graphical artifacts and heavy bandwidth usage.</p>
+		</li>
 	</ul>
-	<p><em><strong>OR</strong></em></p>
+	<p><b><i>OR</i></b></p>
 	<ul>
-		<li><strong>Prioritize performance</strong> by choosing a solution that relies on code scrubbing techniques to unpack, inspect and repack the webpage. This model is fragile (often failing to repack leading to a broken webpage) and insecure by allowing undetected threats to compromise users.</li>
+		<li>
+			<p><b>Prioritize performance</b> by choosing a solution that relies on code scrubbing techniques to unpack, inspect and repack the webpage. This model is fragile (often failing to repack leading to a broken webpage) and insecure by allowing undetected threats to compromise users.</p>
+		</li>
 	</ul>
 	<p>At Cloudflare, we know that security products do not need to come at the expense of performance. We developed a third option that delivers a remote browsing experience without needing to compromise on performance and security for users.</p>
 	<ul>
-		<li><strong>Prioritize security</strong> by never sending foreign code to the endpoint and executing it in a secure remote environment.</li>
-		<li><strong>Prioritize</strong> <strong>performance</strong> sending light-weight vector instructions (rather than pixels) over the wire and minimize remote latency on our global edge network.</li>
+		<li>
+			<p><b>Prioritize security</b> by never sending foreign code to the endpoint and executing it in a secure remote environment.</p>
+		</li>
+		<li>
+			<p><b>Prioritize</b> <b>performance</b> sending light-weight vector instructions (rather than pixels) over the wire and minimize remote latency on our global edge network.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image4-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41ebdDVZfNPcZDrzSErdei/c2949e4a36cc4b9563d70df3f7d52e1f/image4-14.png" alt="" class="kg-image" width="606" height="358" loading="lazy">
+
+	</figure>
 	<p>This unique approach delivers an isolated browser without the security or performance challenges faced by legacy solutions.</p>
-	<h3 id="data-control-through-the-browser">Data control through the browser</h3>
+	<h3>Data control through the browser</h3>
 	<p>Malware and zero-day threats are not the only security challenges administrators face with web browsers. The mass adoption of SaaS products has made the web browser the primary tool used to access data. Lack of control over both the application and the browser has left administrators little control over their data once it is delivered to an endpoint.</p>
 	<p>Data loss prevention tools typically rely on pattern recognition to partially or completely redact the transmission of sensitive data values. This model is useful for protecting against an unexpected breach of PII and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI</a> data, such as locations and financial information but comes at the loss of visibility.</p>
 	<p>The redaction model falls short when sensitive data does not fit into easily recognizable patterns, and the end-users require visibility to do their job. In industries such as health care, redacting sensitive data is not feasible as medical professions require visibility of patient notes and appointment data.</p>
 	<p>Once data lands in the web browser it is trivial for a user to copy-paste and print sensitive data into another website, application, or physical location. These seemingly innocent actions can lead to data being misplaced by naive users leading to a data breach. Administrators have had limited options to protect data in the browser, some even going so far as to deploy virtual desktop services to <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">control access</a> to a SaaS based customer relationship management (CRM) tool. This increased operating costs, and frustrated users who had to learn how to use computer-in-a-computer just to use a website.</p>
-	<h3 id="one-click-to-isolate-data-in-the-browser">One-click to isolate data in the browser</h3>
+	<h3>One-click to isolate data in the browser</h3>
 	<p>Cloudflare Browser Isolation executes all website code (including HTML) in the remote browser. Since page content remains on the remote browser and draw instructions are only sent to the browser, Cloudflare Browser Isolation is in a powerful position to protect sensitive data on any website or SaaS application.</p>
 	<p>Administrators can now control copy-paste, and printing functionality with per-rule granularity with one click in the Cloudflare for Teams Dashboard. For example, now administrators can build rules that prevent users from copying information from your CRM or that stop team members from printing data from your ERP—without blocking their attempts to print from external websites where printing does not present a data loss risk.</p>
 	<p>From the user’s perspective websites look and behave normally until the user performs a restricted action.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image2-5.gif" class="kg-image" alt="Animated picture demonstrating data being locked from copying or printing for data loss prevention uses." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/117OYpWOP2A2nfrdIyvKy1/d1669d4052d9f664fdda8450e1b1b90d/image2-5.gif" alt="Animated picture demonstrating data being locked from copying or printing for data loss prevention uses." class="kg-image" width="646" height="500" loading="lazy">
+
+	</figure>
 	<p>Copy-paste and printing control can be configured for both new and existing HTTP policies in the Teams Dashboard.</p>
 	<ol>
-		<li>Navigate to the Cloudflare for Teams dashboard.</li>
-		<li>Navigate to Gateway → Policies → HTTP.</li>
-		<li>Create/update an HTTP policy with an <strong>Isolate</strong> action (<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/#isolate">docs</a>).</li>
-		<li>Configure policy settings.</li>
+		<li>
+			<p>Navigate to the Cloudflare for Teams dashboard.</p>
+		</li>
+		<li>
+			<p>Navigate to Gateway → Policies → HTTP.</p>
+		</li>
+		<li>
+			<p>Create/update an HTTP policy with an <b>Isolate</b> action (<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/#isolate">docs</a>).</p>
+		</li>
+		<li>
+			<p>Configure policy settings.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image1-34.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hA5ZS9T1CskQuCcYmU0z5/9da8c2e902e37abe4b0d5f15210ba3a8/image1-34.png" alt="" class="kg-image" width="1962" height="1792" loading="lazy">
+
+	</figure>
 	<p>Administrators have flexibility with data protection controls and can enable/disable browser behaviours based on application, hostname, user identity and security risk.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>We’re just getting started with zero trust browsing controls. We’re hard at work building controls to protect against phishing attacks, further protect data by controlling file uploading and downloading without needing to craft complex network policies as well as support for a fully clientless browser isolation experience.</p>
-	<h3 id="democratizing-browser-isolation-for-any-business">Democratizing browser isolation for any business</h3>
-	<p>Historically, only large enterprises had justified the cost to add on remote browser isolation to their existing security deployments. And the resulting loosely-integrated solution fell short of achieving Zero Trust due to poor end-user experiences. Cloudflare has already solved these challenges, so businesses achieve full Zero Trust security including browser-based data protection controls without performance tradeoffs.</p><!--kg-card-begin: markdown-->
+	<h3>Democratizing browser isolation for any business</h3>
+	<p>Historically, only large enterprises had justified the cost to add on remote browser isolation to their existing security deployments. And the resulting loosely-integrated solution fell short of achieving Zero Trust due to poor end-user experiences. Cloudflare has already solved these challenges, so businesses achieve full Zero Trust security including browser-based data protection controls without performance tradeoffs.</p>
 	<p>Yet it’s not always enough to democratize Zero Trust browser isolation for any business, so we’re currently including it with our Teams Enterprise Plan at no additional charge.<sup>1</sup> <a href="https://www.cloudflare.com/teams/browser-isolation">Get started here</a>.</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<p>.......<br>
-		<sup>1. For up to 2000 seats until 31 Dec 2021</sup>
-	</p>
-	<!--kg-card-end: markdown-->
+	<p>.......</p>
+	<p><sup>1</sup> For up to 2000 seats until 31 Dec 2021</p>
 </div>

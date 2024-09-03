@@ -1,40 +1,48 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Many of our recent blog posts have had to do with helping customers navigate the CloudFlare service effectively. Staying wit that theme, we wanted to review some of the most frequently used CloudFlare settings that people use (or need to know about) on the CloudFlare 'Settings' page.</p>
-	<h4 id="cloudflaresettingsbasics">CloudFlare ‘Settings' Basics</h4>
+	<h4>CloudFlare ‘Settings' Basics</h4>
 	<p>You can get to your CloudFlare Settings by going to:</p>
 	<p>Your Websites-&gt;Settings-&gt;CloudFlare Settings</p>
-	<p>Given that each domain you register on CloudFlare may have different uses or security needs, CloudFlare settings are available on a domain by domain basis.
-	</p>
-	<h3 id="frequentlyusedcloudflaresettings">Frequently used CloudFlare settings</h3>
-	<h4 id="basicsecuritylevel">Basic Security Level</h4>
+	<p>Given that each domain you register on CloudFlare may have different uses or security needs, CloudFlare settings are available on a domain by domain basis.</p>
+	<h3>Frequently used CloudFlare settings</h3>
+	<h4>Basic Security Level</h4>
 	<p>CloudFlare lets you adjust the security setting for your website between High, Medium and Low. CloudFlare protects your website from malicious attacks by stopping the request before it reaches your server. Often these requests are from automated bots crawling your website looking for a vulnerability. Sometimes, the threat is a web surfer whose computer has been compromised with a virus or malware and the web surfer is unknowingly spreading viruses online. In these situations, the web surfer visiting a CloudFlare protected website is presented with a challenge page asking them to enter a CAPTCHA to prove they are human.</p>
 	<p>The challenge page also educates the visitor that their computer may be infected. This helps to clean up the number of infected computers online, ultimately making the web a better place. The security setting determines which visitors are challenged based on their associated threat score.</p>
 	<p>Note: <a href="https://support.cloudflare.com/forums/21319496-Reporting-Threat-Control-and-Analytics-">Threat Level scores</a> are based on a logarithmic scale, not category, so threat types like spammer and exploit attacker could have similar scores.</p>
-	<h4 id="challengepagecustomization">Challenge Page Customization</h4>
-	<p><a href="http://www.flickr.com/photos/damonbillian/5391625276" title="CloudFlare Captcha Page by dbillian, on Flickr"><img alt="CloudFlare Captcha
-Page" src="http://farm6.static.flickr.com/5257/5391625276_7721c94ce2.jpg"></a></p>
-	<p>Related to the ‘Security Settings', you can change the look and feel of your <a href="https://blog.cloudflare.com/new-feature-customize-your-cloudflare-challen">challenge page</a><br>
-		that is presented to your challenged visitors. Website owners can customize the colors on the page to match their website and the text that is displayed.</p>
-	<h4 id="developmentmode">Development Mode</h4>
-	<p><a href="http://www.flickr.com/photos/damonbillian/5391020267" title="CloudFlare Development Mode by dbillian, on Flickr"><img alt="CloudFlare Development
-Mode" src="http://farm6.static.flickr.com/5051/5391020267_ccf0293744.jpg"></a></p>
+	<h4>Challenge Page Customization</h4>
+	<p>[</p>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/5391625276">http://www.flickr.com/photos/damonbillian/5391625276/</a> "CloudFlare Captcha Page by dbillian, on Flickr")</p>
+	<p>Related to the ‘Security Settings', you can change the look and feel of your <a href="https://blog.cloudflare.com/new-feature-customize-your-cloudflare-challen">challenge page</a>that is presented to your challenged visitors. Website owners can customize the colors on the page to match their website and the text that is displayed.</p>
+	<h4>Development Mode</h4>
+	<p>[</p>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/5391020267">http://www.flickr.com/photos/damonbillian/5391020267/</a> "CloudFlare Development Mode by dbillian, on Flickr")</p>
 	<p>If you know that you have to make a number of changes to the <a href="https://cloudflare.tenderapp.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">cachable content</a> on your site (images, CSS, javascript, etc.), we recommend going to ‘Development Mode' before making these changes. Going to ‘Development Mode' will bypass CloudFlare so any site changes to static files are reflected immediately.</p>
-	<h4 id="purgecache">Purge Cache</h4>
-	<p><a href="http://www.flickr.com/photos/damonbillian/5391020249" title="CloudFlare Purge Cache by dbillian, on Flickr"><img alt="CloudFlare Purge
-Cache" src="http://farm6.static.flickr.com/5172/5391020249_a8008fd043.jpg"></a></p>
+	<h4>Purge Cache</h4>
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2c5tqNSOOYxtDCx8dFRQaQ/a9fda7491efdb053c6a0e030ce5551a5/5391020249_a8008fd043.jpg" alt="CloudFlare Purge
+Cache" class="kg-image" width="496" height="51" loading="lazy">
+
+	</figure>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/5391020249">http://www.flickr.com/photos/damonbillian/5391020249/</a> "CloudFlare Purge Cache by dbillian, on Flickr")</p>
 	<p>If you want to have CloudFlare fetch a new version of your site's cachable content, Purge Cache will expire all the <a href="https://cloudflare.tenderapp.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">cached resources</a> that CloudFlare has in your domain's cache. Please note that doing so means that it will take several days for a new cache to build.</p>
-	<h4 id="googleanalytics">Google Analytics</h4>
-	<p><a href="http://www.flickr.com/photos/damonbillian/5391020231" title="CloudFlare Google Analytics by dbillian, on Flickr"><img alt="CloudFlare Google
-Analytics" src="http://farm6.static.flickr.com/5216/5391020231_aaf820c110.jpg"></a></p>
+	<h4>Google Analytics</h4>
+	<p>[</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GQENyhnCIA5hL0CfAQuCe/9b129c63c72758d78facc2921cca5c3d/5391020231_aaf820c110.jpg" alt="CloudFlare Google
+Analytics" class="kg-image" width="500" height="86" loading="lazy">
+
+	</figure>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/5391020231">http://www.flickr.com/photos/damonbillian/5391020231/</a> "CloudFlare Google Analytics by dbillian, on Flickr")</p>
 	<p>CloudFlare can make sure that <a href="https://www.google.com/analytics">Google Analytics</a> is appearing on all of your site's pages, which helps improve the accuracy of your analytics. Adding the Google Analytics' code will also make sure you're always working off of the most recent version.</p>
-	<h4 id="specialsettingsforproaccounts">Special Settings for Pro Accounts</h4>
+	<h4>Special Settings for Pro Accounts</h4>
 	<p>CloudFlare <a href="https://www.cloudflare.com/plans.html">Pro accounts</a> have two additional options available on the settings' page, which are:</p>
-	<h4 id="advancedsecurity">Advanced Security</h4>
+	<h4>Advanced Security</h4>
 	<p>Advanced security is a WAF (<a href="http://www.owasp.org/index.php/Web_Application_Firewall">Web Application Firewall</a>) that helps further <a href="https://www.cloudflare.com/overview.html">protect your site</a> from malicious attacks. Similar to the Basic Security Level, you can change the strength of the protection to low or high.</p>
-	<h4 id="websitepreloader">Website Preloader</h4>
-	<p><em>[Note: The website preloader was discontinued in June 2014.]</em> <s>The website preloader is a<br>
-			stronger caching option to help improve the page loading times for your most requested static resources for subsequent page loads. You would only want to turn this feature off if you didn't want javascript to run.</s></p>
+	<h4>Website Preloader</h4>
+	<p><i>[Note: The website preloader was discontinued in June 2014.]</i> The website preloader is astronger caching option to help improve the page loading times for your most requested static resources for subsequent page loads. You would only want to turn this feature off if you didn't want javascript to run.</p>
 	<p>Also see: <a href="https://blog.cloudflare.com/top-tips-after-installing-cloudflare">Top Tips after joining CloudFlare</a></p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,38 +1,47 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3M8XcagYCSKKH7CGEKNzmV/8c4cfced65a9ee6307cddd8ab110b60f/universal-ssl-how-it-scales.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>On Monday, <a href="https://blog.cloudflare.com/introducing-universal-ssl">we announced Universal SSL</a>, enabling HTTPS for all websites using CloudFlare’s Free plan. Universal SSL represents a massive increase in the number of sites we serve over HTTPS—from tens of thousands, to millions. People have asked us, both in comments and in person, how our servers handle this extra load. The answer, in a nutshell, is this: we found that with the right hardware, software, and configuration, the cost of SSL on web servers can be reduced to almost nothing.</p>
-	<h3 id="modernhardware">Modern Hardware</h3>
+	<h3>Modern Hardware</h3>
 	<p>CloudFlare’s entire infrastructure is built on <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">modern commodity hardware</a>. Specifically, our web servers are running on CPUs manufactured by Intel that were designed with cryptography in mind.</p>
 	<p>All Intel CPUs based on the <a href="https://en.wikipedia.org/wiki/Westmere_(microarchitecture)">Westmere</a> CPU microarchitecture (introduced in 2010) and later have specialized cryptographic instructions. Important for CloudFlare’s Universal SSL rollout are the <a href="https://en.wikipedia.org/wiki/AES_instruction_set">AES-NI</a> instructions which speed up the <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Advanced Encryption Standard (AES)</a> algorithm. There’s also a set of instructions called <a href="https://en.wikipedia.org/wiki/CLMUL_instruction_set">Carry-less Multiplication (CLMUL)</a> that computes mathematical operations on <a href="https://en.wikipedia.org/wiki/Finite_field">binary finite fields</a>. CLMUL can be used to speed up AES in Galois Counter-mode (GCM): our preferred mode of encryption due to its resistance against recent attacks like <a href="https://community.qualys.com/blogs/securitylabs/2013/09/10/is-beast-still-a-threat">BEAST</a>.</p>
 	<p>As we described in our <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">primer on TLS</a>, the server picks which algorithm is used in a connection based on the cipher suites supported by the client. In our configuration (<a href="https://github.com/cloudflare/sslconfig">available on GitHub</a>), we prioritize AES-based ciphers, and prefer AES-GCM to AES-CBC.</p>
 	<p>The vast majority of the HTTPS data served by CloudFlare’s servers is encrypted with AES. Here’s the breakdown of ciphers we use on an average day:</p>
-	<pre><code>AES-CBC: 	62.8013%
+	<pre class="language-bash"><code class="language-bash">AES-CBC: 	62.8013%
 AES-GCM: 	36.2813%
 3DES: 		0.9170%
-RC4: 		0.0003%
-</code></pre>
+RC4: 		0.0003%</code></pre>
 	<p>AES is practically free of performance cost on our modern processors, and 99% of data enciphered by CloudFlare’s servers uses AES so the cost is trivially small. Note that out of these ciphers, RC4 is the second fastest; however, we de-prioritized it <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">for security reasons</a>, though we couldn’t remove it completely due to <a href="https://blog.cloudflare.com/the-web-is-world-wide-or-who-still-needs-rc4">some odd client configurations</a>.</p>
-	<h3 id="moderncrypto">Modern Crypto</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/Screen-Shot-2014-10-01-at-3-57-56-PM-2.jpg" alt="Modern Crypto" loading="lazy"><br>
-		<small>Image © Trevor Perrin 2014</small>
-	</p>
+	<h3>Modern Crypto</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ayQvSYvSxbJLTi6YVdMiL/d5f85e88a9c002b8563fe6290e978830/Screen-Shot-2014-10-01-at-3-57-56-PM-2.jpg" alt="Modern Crypto" class="kg-image" width="1472" height="906" loading="lazy">
+
+	</figure>
+	<p>Image © Trevor Perrin 2014</p>
 	<p>There are two potentially costly portions of a TLS connection: the data encipherment and the handshake. With AES-NI and CLMUL data encipherment is essentially free; however, there are two expensive steps in the handshake. One is the the private key operation, and the other is the key establishment (this is described in our <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL post</a>).</p>
 	<p>With Universal SSL, both the private key operation and the key establishment use <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">elliptic curve cryptography</a>. The private key operation uses the <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">Elliptic Curve Digital Signature Algorithm (ECDSA)</a>, and the key establishment uses <a href="https://blog.cloudflare.com/cloudflare-prism-secure-ciphers">Ephemeral Elliptic Curve Diffie-Hellman (ECDHE)</a>.</p>
 	<p>Elliptic curve cryptography allows you to use smaller keys than traditional RSA. For example, a 256-bit elliptic curve key is <a href="https://www.keylength.com/en/compare">equivalent in strength</a> to a 3072-bit RSA key. Smaller keys allow elliptic curve cryptography to be around 5-10x faster than RSA in general cases. For Universal SSL, we chose the elliptic curve <a href="https://en.wikipedia.org/wiki/Elliptic_curve_cryptography#NIST-recommended_elliptic_curves">P-256</a> with an optimized assembly code implementation by Shay Gueron and Vlad Krasnov (currently at Intel). This implementation was merged into OpenSSL <a href="https://git.openssl.org/gitweb/?p=openssl.git%3Ba%3Dcommitdiff%3Bh%3D3842a64d36bc47ef7cc1370147fd0e5b60a27a2b%3Bhp%3D8aed2a7548362e88e84a7feb795a3a97e8395008">this week</a>, and provides additional speedup of 2-3x for both ECDHE and ECDSA. Choosing this elliptic curve reduced the computational burden of the TLS handshake on our servers by an order of magnitude.</p>
 	<p>Up until the launch of Universal SSL this week, all but a hundred sites on the Internet used RSA-based certificates. Universal SSL is the first large-scale deployment of ECDSA keys for TLS. This is the first major step towards bringing the advantages of elliptic curves onto the web.</p>
-	<h3 id="sessionsharing">Session Sharing</h3>
+	<h3>Session Sharing</h3>
 	<p>Even with fast elliptic curve cryptography, the asymmetric steps (key establishment and digital signature) are still the most expensive part of a TLS handshake. For returning visitors of a site we have a shortcut that eliminates the need for our servers to perform these expensive operations. The shortcut is called session resumption and it's <a href="https://tools.ietf.org/html/rfc5077">built into the TLS specification</a>.</p>
 	<p>In our post about <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a>, we mentioned new work we did to improve session resumption. Resuming a TLS connection is not only faster in terms of latency—there is one less round-trip to the server—but it’s also more lightweight because the server can skip the expensive asymmetric cryptographic operations.</p>
 	<p>The TLS protocol has two ways to resume a session: session tickets and session IDs. In session ID resumption, the server stores the session information for reuse later. For session tickets, the session information is encrypted by a key known only by the server and sent to the client in the handshake in a “session ticket”. When the client wants to resume a session, it can send the session ticket to the server which can decrypt it and resume the session. By storing the connection information in a way that it can be reused later, the expensive parts of the handshake are not necessary.</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_ticket.jpg"><img src="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_ticket.jpg" alt="Session resumption with session tickets" loading="lazy"></a></p>
-	<p><a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_id.jpg"><img src="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_id.jpg" alt="Session resumption with session IDs" loading="lazy"></a></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_ticket.jpg">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53uz7327RW3oJxRIyI7fi/e8f2a76097a71312be06f80111d79b1a/session_resumption_with_session_ticket.jpg" alt="Session resumption with session tickets" class="kg-image" width="1297" height="605" loading="lazy">
+		</a>
+	</figure>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_id.jpg">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1t5PpxBOHyEB7u7xHsxOLb/22997d4ea8a58c72c805854008e3c2c0/session_resumption_with_session_id.jpg" alt="Session resumption with session IDs" class="kg-image" width="1334" height="518" loading="lazy">
+		</a>
+	</figure>
 	<p>The work done by Zi Lin and Kyle Isom for <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> to share sessions and session tickets across machines allows us to resume connections even if they were made to a different CloudFlare server. For SSL session ticket based resumption (used in Chrome and Firefox), sessions can be resumed worldwide; for session ID based resumption (all other browsers), sessions can be resumed from any machine in the same data center.</p>
-	<h3 id="lazyloading">Lazy Loading</h3>
+	<h3>Lazy Loading</h3>
 	<p>CloudFlare can serve any customer’s site, from any CloudFlare server, anywhere in the world—including sites over TLS. This flexibility allows us to efficiently handle attacks, and evenly share the load across our data centers.</p>
 	<p>Web servers like nginx are designed to use static configurations. If something about a site changes (like the certificate), the server configuration needs to be reloaded. Reloading can cause the server to read data from disk and re-initialize internal state, causing a strain on server resources. Reloading often is necessary when you have millions of customers who are able to change their certificates at any time. At CloudFlare’s scale, this can result in a performance bottleneck.</p>
 	<p>Lazy loading of certificates helps relieve that bottleneck. Using custom modifications to nginx by CloudFlare engineer Piotr Sikora, we are able to dynamically load certificates into memory only when they’re needed. Now, if one site changes their certificate, the server does not have to reload every certificate. This change allows our servers to scale up to handle millions of HTTPS sites.</p>
-	<h3 id="lookingahead">Looking ahead</h3>
+	<h3>Looking ahead</h3>
 	<p>Through a combination of modern hardware, modern algorithms, lazy loading, and session resumption techniques, we were able to reduce the CPU usage of Universal SSL to almost nothing.</p>
 	<p>Hopefully, our experience helps debunk one of the myths about SSL by showing that it can be done on a massive scale with minimal extra burden on web servers.</p>
-	<!--kg-card-end: markdown-->
 </div>

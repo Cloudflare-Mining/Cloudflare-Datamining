@@ -1,40 +1,49 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AxarJUwWlXlxvrAHzEVeZ/da4088ab825b7bd625c07176a6c7f5f8/living-in-a-multi-cloud-world.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>A few months ago at Cloudflare’s Internet Summit, we hosted a discussion on <a href="https://blog.cloudflare.com/a-cloud-without-handcuffs">A Cloud Without Handcuffs</a> with Joe Beda, one of the creators of Kubernetes, and Brandon Phillips, the co-founder of CoreOS. The conversation touched on multiple areas, but it’s clear that more and more companies are recognizing the need to have some strategy around hosting their applications on multiple cloud providers.</p>
 	<p>Earlier this year, Mary Meeker published her annual <a href="http://www.kpcb.com/internet-trends">Internet Trends</a> report which revealed that 22% of respondents viewed Cloud Vendor Lock-In as a top 3 concern, up from just 7% in 2012. This is in contrast to previous top concerns, Data Security and Cost &amp; Savings, both of which dropped amongst those surveyed.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/Mary-Meeker-Internet-Trends-2017.png" alt="Internet Trends" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lCKoQPPU77zT1kPMwe2Mb/8ac621ed9c75759830200e9a786dcf90/Mary-Meeker-Internet-Trends-2017.png" alt="Internet Trends" class="kg-image" width="2776" height="1310" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, our mission is to help build a better internet. To fulfill this mission, our customers need to have consistent access to the best technology and services, over time. This is especially the case with respect to storage and compute providers. This means not becoming locked-in to any single provider and taking advantage of multiple cloud computing vendors (such as Amazon Web Services or Google Cloud Platform) for the same end user services.</p>
-	<h3 id="thebenefitsofhavingmultiplecloudvendors">The Benefits of Having Multiple Cloud Vendors</h3>
+	<h3>The Benefits of Having Multiple Cloud Vendors</h3>
 	<p>There are a number of potential challenges when selecting a single cloud provider. Though there may be scenarios where it makes sense to consolidate on a single vendor, our belief is that it is important that customers are aware of their choice and downsides of being potentially locked-in to that particular vendor. In short, know what trade offs you are making should you decide to continue to consolidate parts of your network, compute, and storage with a single cloud provider. While not comprehensive, here are a few trade-offs you may be making if you are locked-in to one cloud.</p>
-	<h4 id="costefficiences">Cost Efficiences</h4>
+	<h4>Cost Efficiences</h4>
 	<p>For some companies, there may be a cost savings involved in spreading traffic across multiple vendors. Some can take advantage of free or reduced cost tiers at lower volumes. Vendors may provide reduced costs for certain times of day that are lower utilized on their infrastructure. Applications can have varying compute requirements amongst layers of the application: some may require faster, immediate processing while others may benefit from delayed processing at a lower cost.</p>
-	<h4 id="negotiationstrength">Negotiation Strength</h4>
+	<h4>Negotiation Strength</h4>
 	<p>One of the most important reasons to consider deploying in multiple cloud providers is to minimize your reliance on a single vendor’s technology for your critical business processes. As you become more vertically integrated with any vendor, your negotiation posture for pricing or favorable contract terms becomes diminished. Having production ready code available on multiple providers allows you to have less technical debt should you need to change. If you go a step further and are already sending traffic to multiple providers, you have minimized the technical debt required to switch and can negotiate from a position of strength.</p>
-	<h4 id="businesscontinuityorhighavailability">Business Continuity or High Availability</h4>
+	<h4>Business Continuity or High Availability</h4>
 	<p>While the major cloud providers are generally reliable, there have been a few notable outages in recent years. The most significant in recent memory being Amazon’s <a href="https://aws.amazon.com/message/41926">US-EAST S3</a> outage in February. Some organizations may have a policy specifying multiple providers for high availability while others should consider it where necessary and feasible as a best practice. A multi-cloud strategy can lower operational risk from a single vendor’s mistakes causing a significant outage for a mission critical application.</p>
-	<h4 id="experimentation">Experimentation</h4>
+	<h4>Experimentation</h4>
 	<p>One of the exciting things about having competition in the space is the level of innovation and feature velocity of each provider. Every year there are major announcements of new products or features that may have a significant impact on improving your organization's competitive advantage. Having test and production environments in multiple providers gives your engineers the ability to understand and experiment with a new capability in the context of your technology stack and data. You may even try these features for a portion of your traffic and get real world data on any benefits realized.</p>
-	<h3 id="cloudflaresrole">Cloudflare’s Role</h3>
+	<h3>Cloudflare’s Role</h3>
 	<p>Cloudflare is an independent third party in your multi-cloud strategy. Our goal is to minimize the layers of lock-in between you and a provider and lower the effort of change. In particular, one area where we can help right away is to minimize the operational changes necessary at the network, similar to what Kubernetes can do at the storage and compute level. As a benefit of our network, you can also have a centralized point for security and operational control.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/Cloudflare_Multi_Cloud.png" alt="Cloudflare Multi Cloud" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63ggEFEj8gBOjaS6OJ8HKJ/c64e951b51a4087d3c71c48d28c5b443/Cloudflare_Multi_Cloud.png" alt="Cloudflare Multi Cloud" class="kg-image" width="2002" height="934" loading="lazy">
+
+	</figure>
 	<p>Cloudflare’s Load Balancing can easily be configured to act as your global application traffic aggregator and distribute your traffic amongst origins at as many clouds as you choose to utilize. Active layer 7 health checks continually probe your origins and can automatically move traffic in the case of network or application failure. All consolidated web traffic can be inspected and acted upon by Cloudflare’s best of breed <a href="https://www.cloudflare.com/security">Security</a> services, providing a single control point and visibility across all application traffic, regardless of which cloud the origin may be on. You also have the benefit of Cloudflare’s <a href="https://www.cloudflare.com/network">Global Anycast Network</a>, providing for better speed and higher availability regardless of which clouds your origins are hosted on.</p>
-	<h3 id="billforwardusingcloudflaretoimplementmulticloud">Billforward: Using Cloudflare to Implement Multi-Cloud</h3>
+	<h3>Billforward: Using Cloudflare to Implement Multi-Cloud</h3>
 	<p>Billforward is a San Francisco and London based startup that is focused and mission driven on changing the way people bill and charge their customers, providing a solution to the complexities of Quote-to-Cash. Their platform is built on a number of Rest APIs that other developers call to bill and generate revenue for their own companies.</p>
 	<p>Billforward is using Cloudflare for its core customer facing application to failover traffic between Google Compute Engine and Amazon Web Services. Acting as a reverse proxy, Cloudflare receives all requests for and decides which of Billforward’s two configured cloud origins to use based upon the availability of that origin in near real-time. This allows Billforward to completely manage the connections to and from two disparate cloud providers using Cloudflare’s UI or API. Billforward is in the process of migrating all of their customer facing domains to a similar setup.</p>
-	<h4 id="configuration">Configuration</h4>
+	<h4>Configuration</h4>
 	<p>Billforward has a single load balanced hostname with two available Pools. They’ve named the two Pools with “gce” and “aws” labels and each Pool has one Origin associated with it. All of the Pools are enabled and the entire LB/hostname is proxied through Cloudflare (as indicated by the orange cloud).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/Billforward_Config_UI.png" alt="Billforward Configuration UI" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28B3npbU2VtpVbeHeQApBz/04a0ab954504da45d029ef1ba786e432/Billforward_Config_UI.png" alt="Billforward Configuration UI" class="kg-image" width="1994" height="510" loading="lazy">
+
+	</figure>
 	<p>Cloudflare probes Billforward’s Origins once every minute from all of Cloudflare’s data centers around the world (a feature available to all Load Balancing Enterprise customers). If Billforward’s GCE Origin goes down, Cloudflare will quickly and automatically failover to the AWS Origin with no actions required from Billforward’s team.</p>
-	<p>Google Compute Engine was chosen as the primary provider for this application by virtue of cost. Martin Lee, Site Reliability Engineer at Billforward says, “Essentially, GCE is cheaper for our general purpose computing needs but we're more experienced with deployments in AWS. This strategy allows us to switch back and forth at will and avoid being tied in to either platform.” It is likely that Billforward will change the priority as pricing models evolve.<br>
-		<br>
-	</p>
+	<p>Google Compute Engine was chosen as the primary provider for this application by virtue of cost. Martin Lee, Site Reliability Engineer at Billforward says, “Essentially, GCE is cheaper for our general purpose computing needs but we're more experienced with deployments in AWS. This strategy allows us to switch back and forth at will and avoid being tied in to either platform.” It is likely that Billforward will change the priority as pricing models evolve.</p>
 	<blockquote>
 		<p>“It's a fairly fast moving world and features released by cloud providers can have a meaningful impact on performance and cost on a week by week basis - it helps to stay flexible,” says Martin. “We may also change priority based on features.”</p>
 	</blockquote>
-	<p><br>For orchestration of the compute and storage layers, Billforward uses <a href="https://www.docker.com">Docker</a> containers managed through <a href="http://www.rancher.com">Rancher</a>. They use distinct environments between cloud providers but are considering bridging an environment across cloud providers and using VPNs between them, which will enable them to move load between providers even more easily. “Our system is loosely coupled through a message queue,” adds Martin. “Having a container system across clouds means we can really take advantage of this - we can very easily move workloads across clouds without any danger of dropping tasks or ending up in an inconsistent state.”</p>
-	<h4 id="benefits">Benefits</h4>
+	<p>For orchestration of the compute and storage layers, Billforward uses <a href="https://www.docker.com">Docker</a> containers managed through <a href="http://www.rancher.com">Rancher</a>. They use distinct environments between cloud providers but are considering bridging an environment across cloud providers and using VPNs between them, which will enable them to move load between providers even more easily. “Our system is loosely coupled through a message queue,” adds Martin. “Having a container system across clouds means we can really take advantage of this - we can very easily move workloads across clouds without any danger of dropping tasks or ending up in an inconsistent state.”</p>
+	<h4>Benefits</h4>
 	<p>Billforward manages these connections at Cloudflare’s edge. Through this interface (or via the Cloudflare APIs), they can also manually move traffic from GCE to AWS by just disabling the GCE pool or by rearranging the Pool priority and make AWS the primary. These changes are near instant on the Cloudflare network and require no downtime to Billforward’s customer facing application. This allows them to act on potential advantageous pricing changes between the two cloud providers or move traffic to hit pricing tiers.</p>
 	<p>In addition, Billforward is now not “locked-in” to either provider’s network; being able to move traffic and without any downtime means they can make traffic changes independent of Amazon or Google. They can also integrate additional cloud providers any time they deem fit: adding Microsoft Azure, for example, as a third Origin would be as simple as creating a new Pool and adding it to the Load Balancer.</p>
 	<p>Billforward is a good example of a forward thinking company that is taking advantage of technologies from multiple providers to best serve their business and customers, while not being reliant on a single vendor. For further detail on their setup using Cloudflare, please check their <a href="https://www.billforward.net/blog/being-multi-cloud-with-cloudflare">blog</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

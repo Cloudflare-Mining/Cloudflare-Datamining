@@ -1,176 +1,310 @@
-<div class="mb2 gray5">13 min read</div>
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4E823T6JV1PfB7ppUdLJGz/ae90c14a43b701093622fb12e3dae93b/apo-post-launch-report.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last year during <a href="https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress">Birthday Week</a>, we announced Automatic Platform Optimization for WordPress (APO): smart HTML caching for WordPress sites using Cloudflare. Initial testing across various WordPress sites demonstrated significant improvements in performance metrics like Time to First Byte (TTFB), First Contentful Paint (FCP), and Speed Index. We wanted to measure how APO impacted web performance for our customers since the launch.</p>
 	<p>In the blog post, we answer the following questions:</p>
 	<ul>
-		<li>How fast is Automatic Platform Optimization? Can you demonstrate it with data?</li>
+		<li>
+			<p>How fast is Automatic Platform Optimization? Can you demonstrate it with data?</p>
+		</li>
 	</ul>
 	<p>We will show real-world improvements for several performance metrics.</p>
 	<ul>
-		<li>Is Automatic Platform Optimization flexible enough to integrate smoothly with my WordPress site?</li>
+		<li>
+			<p>Is Automatic Platform Optimization flexible enough to integrate smoothly with my WordPress site?</p>
+		</li>
 	</ul>
 	<p>We have added and improved lots of features since the initial launch.</p>
 	<ul>
-		<li>Will Automatic Platform Optimization work when used with other plugins?</li>
+		<li>
+			<p>Will Automatic Platform Optimization work when used with other plugins?</p>
+		</li>
 	</ul>
 	<p>We will cover the most common use cases and explain how Automatic Platform Optimization could be fined-tuned.</p>
-	<h2 id="measuring-performance-with-webpagetest">Measuring performance with WebPageTest</h2>
+	<h2>Measuring performance with WebPageTest</h2>
 	<p>We use WebPageTest as a go-to tool for <a href="https://blog.cloudflare.com/new-speed-page">synthetic testing at Cloudflare</a>. It measures web performance metrics in real browsers, is highly programmable, and could scale to test millions of sites per day. Among the benefits of synthetic testing are easy to produce results and their relatively high reproducibility.</p>
 	<p>Automatic Platform Optimization internal testing with WebPageTest demonstrated a very promising 72% reduction in Time to First Byte (TTFB) and 23% reduction to <a href="https://web.dev/fcp">First Contentful Paint</a>. Follow <a href="https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress/#the-benefits-of-automatic-platform-optimization">the original blog post</a> to learn more about our test setup and results analysis.</p>
-	<h2 id="measuring-performance-with-the-chrome-user-experience-report">Measuring performance with the Chrome User Experience Report</h2>
+	<h2>Measuring performance with the Chrome User Experience Report</h2>
 	<p>In comparison to synthetic testing, Real User Monitoring (RUM) is invaluable in painting the picture of how a website performs in real-world conditions: on different form factors and variable connection types. Although noise to signal ratio could be high in RUM data, there is no substitute for measuring web performance in the wild.</p>
 	<p>We analyzed Google's <a href="https://developers.google.com/web/tools/chrome-user-experience-report">Chrome User Experience Report</a> of Automatic Platform Optimization websites and compared results from two months before enabling CrUX to the two months after. We present results of Time To First Byte, First Paint, First Contentful Paint, and Largest Contentful Paint.</p>
-	<h3 id="time-to-first-byte-by-device">Time To First Byte by device</h3>
+	<h3>Time To First Byte by device</h3>
 	<p>Time To First Byte (TTFB) is the time taken from the user or client making an HTTP request until the first byte arrives back to the browser.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-15.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-5.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ukvHUfnTwdV6G9O2tInJK/a8d2a1cf00d2735b021fd38fd882f409/image1-15.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nDmdI6LfhEhCmwrw8YAdE/d86147838847c994af42672cea34e4cb/image6-5.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
 	<p>Automatic Platform Optimization improvements in the TTFB metric demonstrated the largest increase in the 'good' bucket and the largest decrease in the 'poor' bucket both on desktop and phone form factors among all metrics. The improvement in the 'poor' bucket on mobile demonstrates how Automatic Platform Optimization makes a difference even on slow connection types like 3G, 2G, slow 2G. Faster response times with Automatic Platform Optimization from edge servers translate directly into quicker TTFB timings, positively affecting all other performance measurements.</p>
-	<h3 id="first-paint-by-device">First Paint by device</h3>
+	<h3>First Paint by device</h3>
 	<p>First Paint measures the first time the browser rendered any content. First Paint signifies the earliest point when something happens on the screen after a user requests a page. It is a good proxy for a user believing the website is not broken.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-12.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7-4.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5crFujbvMLpxg5SWITmSm5/c0ff79f73bc7c8d8e0e75ce9a5cb8f99/image3-12.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aaGYS8TwMdLUbyI75g7jA/efa458f6dc993fa44314d7b20826b802/image7-4.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
 	<p>Almost a 10% increase in the 'good' bucket on a desktop is the highlight for the First Paint metric. It's nice to see a clear trend of improvement in both desktop and phone data. It's also worth mentioning that the exact values used to define 'good’, 'moderate’, and the 'poor' buckets are picked arbitrarily for each timing metric. This trend means it's more important to look at the percentage of improvement rather than absolute values for each 'bucket'.</p>
-	<h3 id="first-contentful-paint-by-device">First Contentful Paint by device</h3>
+	<h3>First Contentful Paint by device</h3>
 	<p>First Contentful Paint (FCP) metric measures how long a page takes to start rendering any text, image, non-white canvas, or SVG content. FCP is a good indicator of perceived speed as it portrays how long people wait to see the first signs of a site loading.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image8-4.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-12.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DmAXL8e0YkFDplrWevrkS/2525da5bf737b6060c4afb94d1744c12/image8-4.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SPbEFcNeYbmiKYAkGnLZk/1ca67d27ba9281a1d54793cb5c1f5832/image5-12.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
 	<p>It is the third straight metric that has been improved in both form factors after customers activated Automatic Platform Optimization. FCP happens even later than the First Paint event. We can draw a hypothesis that Automatic Platform Optimization positively impacts the loading performance metrics of the site. Still, the later the event happens, the less impact Automatic Platform Optimization has on that particular metric.</p>
-	<h3 id="largest-contentful-paint-by-device">Largest Contentful Paint by device</h3>
+	<h3>Largest Contentful Paint by device</h3>
 	<p>The Largest Contentful Paint (LCP) metric reports the render time for the largest image or text block visible within the viewport.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-11.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-10.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VPFYu1C2Z4QJGbIUVuOTn/62594b9e910c046e83a6ad006ef62aeb/image4-11.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UvAakum79HmgCxkdj9Hw3/80f803d65923760e743535cc99541342/image2-10.png" alt="" class="kg-image" width="942" height="580" loading="lazy">
+
+	</figure>
 	<p>Our hypothesis holds ground with LCP as well. Interestingly enough, the positive impact of Automatic Platform Optimization activation is relatively equal on desktops and phones.</p>
-	<h3 id="summary">Summary</h3>
+	<h3>Summary</h3>
 	<p>Overall, Automatic Platform Optimization consistently demonstrated better aggregate performance among sites we analyzed in TTFB, First Paint, FCP, and LCP metrics. Even more impressive are improvements on both desktop and phone form factors. It’s worth pointing out that apart from noticeable differences in hardware characteristics, phone data capture all mobile connection types from slow 2G to fast 4G.</p>
 	<p>We explored almost 200 websites with the activated Automatic Platform Optimization feature in Chrome User Experience Report data. To smooth the variance, we combined two months of data before and after Automatic Platform Optimization activation. To further decrease inaccuracy, we dropped a month’s worth of data that included the activation period. As an example, for a website that activated Automatic Platform Optimization last October, we used Chrome User Experience Report measurements from August and September as the <code>before</code> bucket. The <code>after</code> bucket combined data from November and December.</p>
 	<p>It is important to note that due to the limitations of iOS, Chrome User Experience Report mobile results don't include devices running Apple's mobile operating system.</p>
 	<p>Chrome User Experience Report data provides performance metrics per geographic location, form factor, or connection type. We analyzed aggregated data across all countries and connection types to focus on the overall performance.</p>
-	<h2 id="extended-automatic-platform-optimization-functionality">Extended Automatic Platform Optimization Functionality</h2>
+	<h2>Extended Automatic Platform Optimization Functionality</h2>
 	<p>Since the product launch, we have been listening carefully to the customers' reports of Automatic Platform Optimization’s missing functionality or unexpected behavior. The number of different use cases our customers have underlines how broad the WordPress ecosystem is. One of the advantages of Automatic Platform Optimization utilizing the Workers platform is that we can quickly iterate and release in a matter of hours instead of days or weeks. Granted, some features like Cache By Device Type or subdomains support took us longer to build. Still, for apparent bugs or missing functionality, the ability to release on demand made all the difference for the team and our customers.</p>
 	<p>We start the second part of the report with a brief description of the features we have released since October. Afterward, we will paint a bigger picture of how Automatic Platform Optimization fits together with a broad WordPress plugins ecosystem.</p>
-	<h3 id="smart-caching-for-marketing-query-parameters">Smart caching for marketing query parameters</h3>
+	<h3>Smart caching for marketing query parameters</h3>
 	<p>By default Automatic Platform Optimization doesn’t cache pages with query parameters. One of the first feature requests from the community was to add caching support for marketing attribution (for example, UTMs) query parameters. We did exactly that, and the full list of the supported parameters is in <a href="https://support.cloudflare.com/hc/en-us/articles/360049822312#h_01EN42YA87TDRX47MSB2XC61Q9">the documentation</a>.</p>
-	<h3 id="improved-cache-hit-ratio">Improved cache hit ratio</h3>
+	<h3>Improved cache hit ratio</h3>
 	<p>Cloudflare provides <a href="https://support.cloudflare.com/hc/en-us/articles/200172516">static caching</a> out of the box by default. The caching system for static content relies on file extensions to determine the content type. In contrast, HTML pages don't always have file extensions in the URL. That's why Automatic Platform Optimization caching relies on HTTP's <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation">content negotiation mechanism</a> for HTML content.</p>
 	<p>We check both the request's Accept and the response's Content-Type headers for the 'text/html' substring. When humans access sites on the Internet, browsers send correct Accept headers behind the scene. When bots access the sites, they don't always send Accept headers. Initially, the Automatic Platform Optimization cache passed all requests without a valid Accept header to the origin servers. When customers tried to migrate from using the "Cache Everything" page rule to only using Automatic Platform Optimization, they noticed extra load on the origin servers.. Now all GET and HEAD requests are checked against the Automatic Platform Optimization cache. The change noticeably improved the cache hit ratio for all Automatic Platform Optimization customers and enhanced page loads for good bots.</p>
-	<h3 id="improved-security">Improved security</h3>
+	<h3>Improved security</h3>
 	<p><a href="https://portswigger.net/research/practical-web-cache-poisoning">Cache poisoning</a> is a common attack vector against any caching system. One of the benefits of Automatic Platform Optimization is that most of the logic runs on edge servers, and we can update it without any changes on the origin server. To mitigate potential cache poisoning, we released a new version to bypass caching if any of the following request headers are present:</p>
 	<ul>
-		<li>X-Host</li>
-		<li>X-Forwarded-Host</li>
-		<li>X-Original-URL</li>
-		<li>X-Rewrite-URL</li>
+		<li>
+			<p>X-Host</p>
+		</li>
+		<li>
+			<p>X-Forwarded-Host</p>
+		</li>
+		<li>
+			<p>X-Original-URL</p>
+		</li>
+		<li>
+			<p>X-Rewrite-URL</p>
+		</li>
 	</ul>
 	<p>Additionally, any GET request <a href="https://portswigger.net/research/web-cache-entanglement#fatget">with a body</a> will bypass Automatic Platform Optimization caching.</p>
-	<h3 id="page-rules-integration">Page Rules integration</h3>
+	<h3>Page Rules integration</h3>
 	<p>Automatic Platform Optimization's primary goal is to improve page load performance while keeping the configuration as simple as possible. On the other hand, the Automatic Platform Optimization service should allow fine-tuning for advanced use cases. One such mechanism is Cloudflare's <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-">Page Rules</a>. As of today, Automatic Platform Optimization supports the following rules:</p>
 	<ul>
-		<li>Cache Level: Bypass</li>
-		<li>Cache Level: Ignore Query String</li>
-		<li>Cache Level: Cache Everything</li>
-		<li>Bypass Cache on Cookie (Biz and Ent plans only)</li>
-		<li>Edge Cache TTL</li>
-		<li>Browser Cache TTL</li>
+		<li>
+			<p>Cache Level: Bypass</p>
+		</li>
+		<li>
+			<p>Cache Level: Ignore Query String</p>
+		</li>
+		<li>
+			<p>Cache Level: Cache Everything</p>
+		</li>
+		<li>
+			<p>Bypass Cache on Cookie (Biz and Ent plans only)</p>
+		</li>
+		<li>
+			<p>Edge Cache TTL</p>
+		</li>
+		<li>
+			<p>Browser Cache TTL</p>
+		</li>
 	</ul>
 	<p>For a detailed description, refer to the <a href="https://support.cloudflare.com/hc/en-us/articles/360049822312-Understanding-Automatic-Platform-Optimization-APO-with-WordPress#h_01ER098Z0DRS95ERCMZRV3022S">official documentation</a>.</p>
-	<h3 id="subdomain-support">Subdomain Support</h3>
+	<h3>Subdomain Support</h3>
 	<p>Automatic Platform Optimization aims to provide seamless integration with the WordPress ecosystem. It recognizes specific cookies for the most popular plugins like WooCommerce, JetPack, BigCommerce, Easy Digital Downloads, etc.</p>
 	<p>Currently, we limit Automatic Platform Optimization usage to WordPress sites. During the initial launch, we restricted Automatic Platform Optimization to run against root domains only, but we learned later of the high demand to run Automatic Platform Optimization on subdomains. To make it possible, we updated both the plugin and <a href="https://api.cloudflare.com/#zone-settings-change-automatic-platform-optimization-for-wordpress-setting">API</a> to allow Automatic Platform Optimization to run on subdomains. Three steps are required to enable Automatic Platform Optimization on a subdomain:</p>
 	<ul>
-		<li>Install version 3.8.7 or later of the Cloudflare WordPress plugin.</li>
-		<li>Log in using Global key. (You can only use an API token for the root domain.)</li>
-		<li>Enable APO. The subdomain displays in the list of hostnames in the card.</li>
+		<li>
+			<p>Install version 3.8.7 or later of the Cloudflare WordPress plugin.</p>
+		</li>
+		<li>
+			<p>Log in using Global key. (You can only use an API token for the root domain.)</p>
+		</li>
+		<li>
+			<p>Enable APO. The subdomain displays in the list of hostnames in the card.</p>
+		</li>
 	</ul>
 	<p>The initial cost of $5 per month for Free plans includes running Automatic Platform Optimization against any number of subdomains.</p>
-	<h3 id="caching-by-device-type">Caching by Device Type</h3>
+	<h3>Caching by Device Type</h3>
 	<p>The majority of site visits come from users accessing the web on <a href="https://www.perficient.com/insights/research-hub/mobile-vs-desktop-usage-study">mobile devices</a>. And website visitors expect sites to work well on mobile devices. In fact, responsive design is a recommended approach for websites. APO works well for responsive design websites because the cache's content will adjust to the client's screen size seamlessly. The alternative method is to serve different markup on mobile browsers.</p>
 	<p>Many popular WordPress plugins add a mobile-friendly theme to the site. For sites with such plugins installed, Automatic Platform Optimization breaks functionality by serving the same cached version for all users. As we learned about the growing number of customers with this problem, we looked for the solution. Cloudflare’s caching already has support for <a href="https://support.cloudflare.com/hc/en-us/articles/229373388-Understand-Cache-by-Device-Type-Enterprise-plans-only-">cache by device type</a> functionality, but it's only available for customers on the Enterprise plan. As was a case for the <a href="https://support.cloudflare.com/hc/en-us/articles/236166048">Bypass Cache on Cookie</a> page rule, we decided to include the functionality as part of the Automatic Platform Optimization offering. As a recap, Caching by Device Type relies on the User-Agent request header for detection. There are three types:</p>
 	<ul>
-		<li>Mobile</li>
-		<li>Tablet</li>
-		<li>Everything else</li>
+		<li>
+			<p>Mobile</p>
+		</li>
+		<li>
+			<p>Tablet</p>
+		</li>
+		<li>
+			<p>Everything else</p>
+		</li>
 	</ul>
 	<p>For each type, the Cloudflare cache will store content in a separate bucket. To enable caching by device type, either navigate to the dashboard's Automatic Platform Optimization card or the Cloudflare WordPress plugin. We recommend using a single cache whenever possible because caching by device type can decrease cache hit ratio and increase the load on origin servers.</p>
-	<h3 id="other-noticeable-changes">Other noticeable changes</h3>
+	<h3>Other noticeable changes</h3>
 	<p>There are many improvements including:</p>
 	<ul>
-		<li>Improved purging infrastructure of content from KV.</li>
-		<li>Extended automatic cache purging for categories and tags.</li>
-		<li>Addressed many edge cases for Google Fonts optimization.</li>
-		<li>Added support for HEAD requests.</li>
-		<li>Automated release pipeline for the Cloudflare WordPress plugin.</li>
+		<li>
+			<p>Improved purging infrastructure of content from KV.</p>
+		</li>
+		<li>
+			<p>Extended automatic cache purging for categories and tags.</p>
+		</li>
+		<li>
+			<p>Addressed many edge cases for Google Fonts optimization.</p>
+		</li>
+		<li>
+			<p>Added support for HEAD requests.</p>
+		</li>
+		<li>
+			<p>Automated release pipeline for the Cloudflare WordPress plugin.</p>
+		</li>
 	</ul>
-	<h2 id="improved-wordpress-plugins-compatibility">Improved WordPress plugins compatibility</h2>
+	<h2>Improved WordPress plugins compatibility</h2>
 	<p>There are over 50,000 WordPress plugins currently available for download, and because there are so many, we can't test the compatibility of Automatic Platform Optimization with each one individually. We do know, however, that it's vital to provide compatibility for the most popular plugins. Thanks to the vibrant community, we quickly learned about the most widely used issues with Automatic Platform Optimization caching. The plugins that experienced problems could be grouped into the following categories:</p>
 	<ul>
-		<li>Plugins with custom cookies</li>
-		<li>Plugins with geolocation functionality</li>
-		<li>Plugins with mobile themes</li>
-		<li>Plugins with AMP support</li>
-		<li>Plugins that generate HTML</li>
-		<li>Caching and optimizations plugins</li>
+		<li>
+			<p>Plugins with custom cookies</p>
+		</li>
+		<li>
+			<p>Plugins with geolocation functionality</p>
+		</li>
+		<li>
+			<p>Plugins with mobile themes</p>
+		</li>
+		<li>
+			<p>Plugins with AMP support</p>
+		</li>
+		<li>
+			<p>Plugins that generate HTML</p>
+		</li>
+		<li>
+			<p>Caching and optimizations plugins</p>
+		</li>
 	</ul>
 	<p>Let's review those categories and available solutions for improved compatibility.</p>
-	<h3 id="plugins-with-custom-cookies">Plugins with custom cookies</h3>
+	<h3>Plugins with custom cookies</h3>
 	<p>One of the critical features Automatic Platform Optimization provides out of the box is cookie-based rules to bypass APO caching. For any plugin that uses custom cookies, Automatic Platform Optimization requires extending the rules. We have a list of <a href="https://support.cloudflare.com/hc/en-us/articles/360049822312#h_01EQ44V6KRFM6Z0F06MM0EJGJ5">supported plugins</a> that uses our cookies bypass logic.</p>
-	<h3 id="plugins-with-geolocation-functionality">Plugins with geolocation functionality</h3>
+	<h3>Plugins with geolocation functionality</h3>
 	<p>This broad category of plugins relies on geolocation information based on the client's (visitor) IP address (connecting to Cloudflare) to provide its functionality. Early on, we had a misconfiguration in Automatic Platform Optimization functionality that resulted in sending a dummy IP address in the CF-Connecting-IP request header that was forwarded to the origin server.</p>
 	<p>This behavior effectively broke the functionality of the widely used Wordfence Security plugin. We promptly released a fix. Because we use Cloudflare Workers internally, Cloudflare Workers treated Automatic Platform Optimization requests sent to the origin as cross-zone requests due to security concerns. As a result, <a href="https://support.cloudflare.com/hc/en-us/articles/200170986-How-does-Cloudflare-handle-HTTP-Request-headers-">the CF-Connecting-IP</a> header value was replaced with a dummy IP address. The change was to send the Automatic Platform Optimization worker's subrequest to the origin as a same-zone request to pass the real client IP without a security concern. Also, Automatic Platform Optimization now sends the client's IP via the X-Forwarded-For request header to the origin to improve plugin compatibility.</p>
-	<h3 id="plugins-with-mobile-themes">Plugins with mobile themes</h3>
+	<h3>Plugins with mobile themes</h3>
 	<p>There are several WordPress plugins that render custom themes for mobile visitors. Those plugins rely on the browser's User-Agent to detect visitors from mobile devices. In December, we released Automatic Platform Optimization support for the "Cache by device type" feature. With a single configuration change, you can activate a separate cache based on the device type: mobile, tablet, and everything else. You can learn more about the feature in the <a href="https://support.cloudflare.com/hc/en-us/articles/360049822312#h_01ERZ6QHBGFVPSC44SJAC1YM6Q">official documentation</a>.</p>
-	<h3 id="plugins-with-amp-support">Plugins with AMP support</h3>
+	<h3>Plugins with AMP support</h3>
 	<p>The AMP (<a href="https://amp.dev">Accelerated Mobile Pages</a>) project's goal is to make the web, and, in particular, the mobile web, much more pleasant to surf. The AMP HTML framework is designed to help web pages load quickly and avoid distracting the user with irrelevant content.</p>
 	<p>The most popular AMP WordPress plugins render AMP-compatible markup when the page URL contains the amp= query parameter. AMP markup is a subset of HTML with several restrictions and we looked into possible solutions to provide Automatic Platform Optimization caching for AMP pages. It requires a separate cache for AMP pages similar to the "Cache by device type" feature. Considering Google's recent push with Core Web Vitals, the AMP format's importance will decrease going forward. Based on the complexity of supporting dedicated AMP caching and Google's deprioritization of the AMP format, we decided to bypass Automatic Platform Optimization caching of AMP pages.</p>
 	<p>There are two possible approaches for caching AMP pages. The first one is to change the URL schema for AMP pages from, for example, site.com/page/?amp= to site.com/amp/page/. With this option, Automatic Platform Optimization caches AMP pages out of the box. Another solution is to activate the "Cache Everything" Page rule for AMP pages served with amp= query parameter. Note that AMP pages will require manual cache purging in both cases on content change.</p>
-	<h3 id="plugins-that-generate-html">Plugins that generate HTML</h3>
+	<h3>Plugins that generate HTML</h3>
 	<p>Using Automatic Platform Optimization with Page Rules makes it possible to:</p>
 	<ul>
-		<li>Bypass caching pages that contain CAPTCHAs.</li>
-		<li>Set Edge TTL for pages that contain nonces or server-rendered ads to six hours or shorter.</li>
+		<li>
+			<p>Bypass caching pages that contain CAPTCHAs.</p>
+		</li>
+		<li>
+			<p>Set Edge TTL for pages that contain nonces or server-rendered ads to six hours or shorter.</p>
+		</li>
 	</ul>
-	<h3 id="caching-and-optimizations-plugins">Caching and optimizations plugins</h3>
+	<h3>Caching and optimizations plugins</h3>
 	<p>Among the most popular caching and optimizations WordPress plugins are LiteSpeed Cache, W3 Total Cache, WP Rocket, WP Fastest Cache, WP Super Cache, Autoptimize. To successfully activate Advanced Platform Optimization when any of the plugins above already present, follow these steps:</p>
 	<ul>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/360049822312#h_01EKKWPM2KC6H9CD0ATX98KG1C">Install</a> and activate the Cloudflare WordPress plugin.</li>
-		<li>Enable Automatic Platform Optimization in the plugin.</li>
-		<li>Clear any server cache used via other plugins.</li>
-		<li>Verify that your origin starts serving the response header "cf-edge-cache: cache,platform=wordpress".</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/360049822312#h_01EKKWPM2KC6H9CD0ATX98KG1C">Install</a> and activate the Cloudflare WordPress plugin.</p>
+		</li>
+		<li>
+			<p>Enable Automatic Platform Optimization in the plugin.</p>
+		</li>
+		<li>
+			<p>Clear any server cache used via other plugins.</p>
+		</li>
+		<li>
+			<p>Verify that your origin starts serving the response header "cf-edge-cache: cache,platform=wordpress".</p>
+		</li>
 	</ul>
 	<p>That should make caching plugins and Automatic Platform Optimization compatible.</p>
 	<p>In using optimizations features inside the plugins, additional steps are necessary to integrate with Automatic Platform Optimization. Any of the following plugin's optimizations require subsequent purging of Cloudflare cache:</p>
 	<ul>
-		<li>JavaScript minification and async-loading</li>
-		<li>CSS minification, inlining, and aggregation</li>
-		<li>HTML minification</li>
-		<li>Images optimization and lazy-loading</li>
-		<li>Google fonts optimizations</li>
+		<li>
+			<p>JavaScript minification and async-loading</p>
+		</li>
+		<li>
+			<p>CSS minification, inlining, and aggregation</p>
+		</li>
+		<li>
+			<p>HTML minification</p>
+		</li>
+		<li>
+			<p>Images optimization and lazy-loading</p>
+		</li>
+		<li>
+			<p>Google fonts optimizations</p>
+		</li>
 	</ul>
 	<p>There are three potential solutions we discuss in the order of preference.</p>
-	<h4 id="1-use-cloudflare-products">1. Use Cloudflare products</h4>
+	<h4>1. Use Cloudflare products</h4>
 	<p>Most of the optimizations are possible with Cloudflare today:</p>
 	<ul>
-		<li>Auto Minify provides minification for HTML, CSS, and JavaScript</li>
-		<li>Rocket Loader provides JavaScript lazy loading</li>
-		<li>Mirage and Image-resizing allows image optimization and lazy-loading</li>
-		<li>Advanced Platform Optimization optimizes Google fonts out of the box</li>
+		<li>
+			<p>Auto Minify provides minification for HTML, CSS, and JavaScript</p>
+		</li>
+		<li>
+			<p>Rocket Loader provides JavaScript lazy loading</p>
+		</li>
+		<li>
+			<p>Mirage and Image-resizing allows image optimization and lazy-loading</p>
+		</li>
+		<li>
+			<p>Advanced Platform Optimization optimizes Google fonts out of the box</p>
+		</li>
 	</ul>
-	<h4 id="2-activate-plugins-integration-with-cloudflare">2. Activate plugins integration with Cloudflare</h4>
+	<h4>2. Activate plugins integration with Cloudflare</h4>
 	<ul>
-		<li>WP Rocket <a href="https://docs.wp-rocket.me/article/18-using-wp-rocket-with-cloudflare">integrates</a> with Cloudflare API.</li>
-		<li>WP Fastest Cache <a href="https://www.wpfastestcache.com/tutorial/wp-fastest-cache-cloudflare">integrates</a> with Cloudflare API.</li>
-		<li>W3 Total Cache <a href="https://kinsta.com/blog/w3-total-cache/#how-to-set-up-w3-total-cache-with-the-cloudflare-extension">integrates</a> with Cloudflare API. Make sure to enable the Page Caching option.</li>
+		<li>
+			<p>WP Rocket <a href="https://docs.wp-rocket.me/article/18-using-wp-rocket-with-cloudflare">integrates</a> with Cloudflare API.</p>
+		</li>
+		<li>
+			<p>WP Fastest Cache <a href="https://www.wpfastestcache.com/tutorial/wp-fastest-cache-cloudflare">integrates</a> with Cloudflare API.</p>
+		</li>
+		<li>
+			<p>W3 Total Cache <a href="https://kinsta.com/blog/w3-total-cache/#how-to-set-up-w3-total-cache-with-the-cloudflare-extension">integrates</a> with Cloudflare API. Make sure to enable the Page Caching option.</p>
+		</li>
 	</ul>
-	<h4 id="3-integration-with-cloudflare-cache-purging">3. Integration with Cloudflare cache purging</h4>
+	<h4>3. Integration with Cloudflare cache purging</h4>
 	<p>The rest of the plugins in the list, when producing content optimizations, require triggering of Cloudflare cache purging manually or via <a href="https://api.cloudflare.com/#zone-purge-files-by-url">API</a>:</p>
 	<ul>
-		<li>LiteSpeed Cache</li>
-		<li>WP Super Cache</li>
-		<li>Autoptimize</li>
+		<li>
+			<p>LiteSpeed Cache</p>
+		</li>
+		<li>
+			<p>WP Super Cache</p>
+		</li>
+		<li>
+			<p>Autoptimize</p>
+		</li>
 	</ul>
-	<h3 id="summary-1">Summary</h3>
+	<h3>Summary</h3>
 	<p>Automatic Platform Optimization is compatible with the most popular caching plugins. Content optimizations should be preferably migrated to Cloudflare offerings. Alternatively, plugins require triggering Cloudflare cache purging via API integration. The action of the last resort is to disable plugins optimizations but keep caching functionality.</p>
 	<p>We work closely with the WordPress plugins community to improve compatibility with Advanced Platform Optimization.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>Automatic Platform Optimization demonstrated improved performance metrics in both synthetic and real-world settings. The public Chrome User Experience Report dataset proved to be an invaluable source of RUM metrics for web performance analysis. Automatic Platform Optimization showed noticeable improvements on desktops and phones. TTFB is the most improved metric, but we also noticed positive changes in the First Paint, First Contentful Paint, and Largest Contentful Paint metrics.</p>
 	<p>It has been intensive and rewarding several months since the Automatic Platform Optimization launch, and we greatly increased Automatic Platform Optimization applicability based on customer feedback. Our <a href="https://community.cloudflare.com">community forum</a> is a great place to get help and ask questions about Cloudflare products, including Advanced Platform Optimization.</p>
 	<p>There are more exciting Automatic Platform Optimization improvements the team is actively working on, and we can't wait to share them. Stay tuned!</p>

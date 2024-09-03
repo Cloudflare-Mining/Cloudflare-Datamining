@@ -1,40 +1,64 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-17.png" class="kg-image" alt="One-click data security for your internal and SaaS applications" loading="lazy"></figure>
-	<p>Most of the CIOs we talk to want to replace dozens of point solutions as they start their own Zero Trust journey. <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a>, our comprehensive <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">Secure Access Service Edge (SASE) </a>platform can help teams of any size rip out all the legacy appliances and services that tried to keep their data, devices, and applications safe without compromising speed.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nirO70ymZjx0rcbyHmdCZ/628a949b9b5d6f490cb7cf317e4ff0a8/image3-17.png" alt="One-click data security for your internal and SaaS applications" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>Most of the CIOs we talk to want to replace dozens of point solutions as they start their own Zero Trust journey. <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a>, our comprehensive <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">Secure Access Service Edge (SASE)</a> platform can help teams of any size rip out all the legacy appliances and services that tried to keep their data, devices, and applications safe without compromising speed.</p>
 	<p>We also built those products to work better together. Today, we’re bringing Cloudflare’s best-in-class <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation">browser isolation</a> technology to our industry-leading Zero Trust <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access control</a> product. Your team can now control the data in any application, and what a user can do in the application, with a single click in the Cloudflare dashboard. We’re excited to help you replace your private networks, virtual desktops, and data control boxes with a <a href="https://www.cloudflare.com/zero-trust/solutions">single, faster Zero Trust solution</a>.</p>
-	<h3 id="zero-trust-access-control-is-just-the-first-step">Zero Trust access control is just the first step</h3>
+	<h3>Zero Trust access control is just the first step</h3>
 	<p>Most organizations begin their <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">Zero Trust migration</a> by replacing a virtual private network (VPN). VPN deployments trust too many users by default. In most configurations, any user on a private network can reach any resource on that same network.</p>
 	<p>The consequences vary. On one end of the spectrum, employees in marketing can accidentally stumble upon payroll amounts for the entire organization. At the other end, attackers who compromise the credentials of a support agent can move through a network to reach trade secrets or customer production data.</p>
 	<p>Zero Trust access control replaces this model by inverting the security posture. A Zero Trust network trusts no one by default. Every user and each request or connection, must prove they can reach a specific resource. Administrators can build granular rules and monitor comprehensive logs to prevent incidental or malicious access incidents.</p>
 	<p><a href="https://blog.cloudflare.com/cloudflare-one-one-year-later">Over 10,000 teams</a> have adopted Cloudflare One to replace their own private network with a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a>. We offer those teams rules that go beyond just identity. Security teams can <a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access">enforce hard key authentication</a> for specific applications as a second factor. Sensitive production systems can require users to <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/require-purpose-justification">provide the reason</a> they need <a href="https://blog.cloudflare.com/announcing-access-temporary-authentication">temporary access</a> while they request permission from a senior manager. We integrate with just about <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices">every device posture provider</a>, or you can <a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture">build your own</a>, to ensure that only corporate devices connect to your systems.</p>
 	<p>The teams who deploy this solution improve the security of their enterprise overnight while also making their applications faster and more usable for employees in any region. However, once users pass all of those checks we still rely on the application to decide what they can and cannot do.</p>
 	<p>In some cases, that means Zero Trust access control is not sufficient. An employee planning to leave tomorrow could download customer contact info. A contractor connecting from an unmanaged device can screenshot schematics. As enterprises evolve on their SASE migration, they need to extend Zero Trust control to application usage and data.</p>
-	<h3 id="isolate-sessions-without-any-client-software">Isolate sessions without any client software</h3>
+	<h3>Isolate sessions without any client software</h3>
 	<p>Cloudflare’s browser isolation technology gives teams the ability to control usage and data without making the user experience miserable. Legacy approaches to <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">browser isolation</a> relied on one of two methods to secure a user on the public Internet:</p>
 	<ul>
-		<li><strong>Document Object Model (DOM) manipulation</strong> - unpack the webpage, inspect it, hope you caught the vulnerability, attempt to repack the webpage, deliver it. This model leads to thousands of broken webpages and total misses on zero days and other threats.</li>
-		<li><strong>Pixel pushing</strong> - stream a browser running far away to the user, like a video. This model leads to user complaints due to performance and a long tail of input incompatibilities.</li>
+		<li>
+			<p><b>Document Object Model (DOM) manipulation</b> - unpack the webpage, inspect it, hope you caught the vulnerability, attempt to repack the webpage, deliver it. This model leads to thousands of broken webpages and total misses on zero days and other threats.</p>
+		</li>
+		<li>
+			<p><b>Pixel pushing</b> - stream a browser running far away to the user, like a video. This model leads to user complaints due to performance and a long tail of input incompatibilities.</p>
+		</li>
 	</ul>
 	<p><a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation">Cloudflare’s approach is different</a>. We run headless versions of Chromium, the open source project behind Google Chrome and Microsoft Edge and other browsers, in our data centers around the world. We send the final rendering of the webpage, the draw commands, to a user's local device.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Rub7G6NKrhsrrE7sI5DJZ/90f2b7a2fa130df709d65c1fe2890c48/image2-18.png" alt="" class="kg-image" width="1583" height="846" loading="lazy">
+
+	</figure>
 	<p>The user thinks it is just the Internet. Highlighting, right-clicking, videos - they all just work. Users do not need a special browser client. Cloudflare’s technology just works in any browser on mobile or desktop. For security teams, they can guarantee that code never executes on the devices in the field to stop Zero-Day attacks.</p>
 	<p>We added browser isolation to Cloudflare One to protect against attacks that leap out of a browser from the public Internet. However, controlling the browser also gives us the ability to pass that control along to security and IT departments, so they can focus on another type of risk - data misuse.</p>
 	<p>As part of this launch, when administrators <a href="https://www.cloudflare.com/application-services/solutions">secure an application</a> with Cloudflare’s Zero Trust access control product, they can click an additional button that will force sessions into our isolated browser.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-28.png" class="kg-image" alt="Screenshot of Zero Trust dashboard control to isolate user sessions." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lsdhsnQffyncOIP1jPfJJ/09d12b42f61e045868db73268b182927/image1-28.png" alt="Screenshot of Zero Trust dashboard control to isolate user sessions." class="kg-image" width="1154" height="919" loading="lazy">
+
+	</figure>
 	<p>When the user authenticates, Cloudflare Access checks all the Zero Trust rules configured for a given application. When this isolation feature is enabled, Cloudflare will silently open the session in our isolated browser. The user does not need any special software or to be trained on any unique steps. They just navigate to the application and start doing their work. Behind the scenes, the session runs entirely in Cloudflare’s network.</p>
-	<h3 id="control-usage-and-data-in-sessions">Control usage and data in sessions</h3>
+	<h3>Control usage and data in sessions</h3>
 	<p>By running the session in Cloudflare’s isolated browser, administrators can begin to build rules that replace some goals of legacy virtual desktop solutions. Some enterprises deploy virtual desktop instances (VDIs) to sandbox application usage. Those VDI platforms extended applications to employees and contractors without allowing the application to run on the physical device.</p>
 	<p>Employees and contractors tend to hate this method. The client software required is clunky and not available on every operating system. The speed slows them down. Administrators also need to invest time in maintaining the desktops and the virtualization software that power them.</p>
-	<p>We’re excited<a href="https://blog.cloudflare.com/decommissioning-virtual-desktop"> to help you replace that point solution</a>, too. Once an application is isolated in Cloudflare’s network, you can toggle additional rules that control how users interact with the resource. For example, you can disable potential data loss vectors like file downloads, printing, or copy-pasting. Add watermarks, both visible and invisible, to audit screenshot leaks.</p>
+	<p>We’re excited <a href="https://blog.cloudflare.com/decommissioning-virtual-desktop">to help you replace that point solution</a>, too. Once an application is isolated in Cloudflare’s network, you can toggle additional rules that control how users interact with the resource. For example, you can disable potential data loss vectors like file downloads, printing, or copy-pasting. Add watermarks, both visible and invisible, to audit screenshot leaks.</p>
 	<p>You can extend this control beyond just data loss. Some teams have sensitive applications where you need users to connect without inputting any data, but they do not have the developer time to build a “Read Only” mode. With Cloudflare One, those teams can toggle “Disable keyboard” and allow users to reach the service while blocking any input.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-9.png" class="kg-image" alt="Screenshot of the Zero Trust dashboard’s controls available to Browser Isolation" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7f3WOaiEPIsf8WaxShdurE/e3a6eea1be9e5517ce649b2765c472d6/image5-9.png" alt="Screenshot of the Zero Trust dashboard’s controls available to Browser Isolation" class="kg-image" width="1999" height="1375" loading="lazy">
+
+	</figure>
 	<p>The isolated solution also integrates with <a href="https://blog.cloudflare.com/inline-dlp-ga">Cloudflare One’s Data Loss Prevention</a> (DLP) suite. With a few additional settings, you can bring comprehensive data control to your applications without any additional engineering work or point solution deployment. If a user strays too far in an application and attempts to download something that contains personal information like social security or credit card numbers, Cloudflare’s network will stop that download while still allowing otherwise approved files.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-15.png" class="kg-image" alt="Screenshot of Zero Trust dashboard illustrating the data loss prevention platform blocking Financial Information." loading="lazy"></figure>
-	<h3 id="extend-that-control-to-saas-applications">Extend that control to SaaS applications</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bqHdkpi2r8Cb04Frl0geg/5064e0118513ff7db7a655b7bc313d0c/image4-15.png" alt="Screenshot of Zero Trust dashboard illustrating the data loss prevention platform blocking Financial Information." class="kg-image" width="1146" height="863" loading="lazy">
+
+	</figure>
+	<h3>Extend that control to SaaS applications</h3>
 	<p>Most of the customers we hear from need to bring this level of data and usage control to their self-hosted applications. Many of the SaaS tools they rely on have more advanced role-based rules. However, that is not always the case and, even if the rules exist, they are not as comprehensive as needed and require an administrator to manage a dozen different application settings.</p>
 	<p>To avoid that hassle you can bring Cloudflare One’s one-click isolation feature to your SaaS applications, too. Cloudflare’s access control solution can be configured as an identity proxy that will force all logins to any SaaS application that supports SSO through Cloudflare’s network where additional rules, including isolation, can be applied.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>Today’s announcement brings together two of our customers’ favorite solutions - our Cloudflare Access solution and our browser isolation technology. Both products are available to use today. You can start building rules that force isolation or control data usage by following the guides linked <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/isolation-policies">here</a>.</p>
 	<p>Willing to wait for the easy button? Join the <a href="https://www.cloudflare.com/lp/application-isolation-beta">beta</a> today for the one-click version that we are rolling out to customer accounts.</p>
 </div>

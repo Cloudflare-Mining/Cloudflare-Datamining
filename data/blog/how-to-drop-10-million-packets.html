@@ -1,12 +1,16 @@
-<div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">9 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-to-drop-10-million-packets">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-to-drop-10-million-packets">Deutsch</a>, <a href="https://blog.cloudflare.com/ko-kr/how-to-drop-10-million-packets">한국어</a>, <a href="https://blog.cloudflare.com/es-es/how-to-drop-10-million-packets">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/how-to-drop-10-million-packets">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AaLqkJOn4yMNV7GNOhWxy/c757cf4ee347a9cdde593d3390ada936/how-to-drop-10-million-packets.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Internally our DDoS mitigation team is sometimes called "the packet droppers". When other teams build exciting products to do smart things with the traffic that passes through our network, we take joy in discovering novel ways of discarding it.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" alt="38464589350_d00908ee98_b" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350">image</a> by <a href="https://www.flickr.com/photos/beegee49">Brian Evans</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yS2j3vUrdmAkLkGjcunWg/9e1e465035911d455f60897e50492f31/38464589350_d00908ee98_b.jpg" alt="38464589350_d00908ee98_b" class="kg-image" width="1024" height="820" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350">image</a> by <a href="https://www.flickr.com/photos/beegee49">Brian Evans</a></p>
 	<p>Being able to quickly discard packets is very important to withstand DDoS attacks.</p>
 	<p>Dropping packets hitting our servers, as simple as it sounds, can be done on multiple layers. Each technique has its advantages and limitations. In this blog post we'll review all the techniques we tried thus far.</p>
-	<h3 id="testbench">Test bench</h3>
+	<h3>Test bench</h3>
 	<p>To illustrate the relative performance of the methods we'll show some numbers. The benchmarks are synthetic, so take the numbers with a grain of salt. We'll use one of our Intel servers, with a 10Gbps network card. The hardware details aren't too important, since the tests are prepared to show the operating system, not hardware, limitations.</p>
 	<p>Our testing setup is prepared as follows:</p>
 	<ul>
@@ -22,7 +26,7 @@
 	</ul>
 	<p>We're not trying to maximize userspace application speed, nor packet throughput - instead, we're trying to specifically show kernel bottlenecks.</p>
 	<p>The synthetic traffic is prepared to put maximum stress on conntrack - it uses random source IP and port fields. Tcpdump will show it like this:</p>
-	<pre><code>$ tcpdump -ni vlan100 -c 10 -t udp and dst port 1234
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -ni vlan100 -c 10 -t udp and dst port 1234
 IP 198.18.40.55.32059 &gt; 198.18.0.12.1234: UDP, length 16
 IP 198.18.51.16.30852 &gt; 198.18.0.12.1234: UDP, length 16
 IP 198.18.35.51.61823 &gt; 198.18.0.12.1234: UDP, length 16
@@ -32,52 +36,47 @@ IP 198.18.48.67.19533 &gt; 198.18.0.12.1234: UDP, length 16
 IP 198.18.49.38.40566 &gt; 198.18.0.12.1234: UDP, length 16
 IP 198.18.50.73.22989 &gt; 198.18.0.12.1234: UDP, length 16
 IP 198.18.43.204.37895 &gt; 198.18.0.12.1234: UDP, length 16
-IP 198.18.104.128.1543 &gt; 198.18.0.12.1234: UDP, length 16
-</code></pre>
+IP 198.18.104.128.1543 &gt; 198.18.0.12.1234: UDP, length 16</code></pre>
 	<p>On the target side all of the packets are going to be forwarded to exactly one RX queue, therefore one CPU. We do this with hardware flow steering:</p>
-	<pre><code>ethtool -N ext0 flow-type udp4 dst-ip 198.18.0.12 dst-port 1234 action 2
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">ethtool -N ext0 flow-type udp4 dst-ip 198.18.0.12 dst-port 1234 action 2</code></pre>
 	<p>Benchmarking is always hard. When preparing the tests we learned that having any active raw sockets destroys performance. It's obvious in hindsight, but easy to miss. Before running any tests remember to make sure you don't have any stale <code>tcpdump</code> process running. This is how to check it, showing a bad process active:</p>
-	<pre><code>$ ss -A raw,packet_raw -l -p|cat
+	<pre class="language-bash"><code class="language-bash">$ ss -A raw,packet_raw -l -p|cat
 Netid  State      Recv-Q Send-Q Local Address:Port
-p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,fd=3))
-</code></pre>
+p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,fd=3))</code></pre>
 	<p>Finally, we are going to disable the Intel Turbo Boost feature on the machine:</p>
-	<pre><code>echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo</code></pre>
 	<p>While Turbo Boost is nice and increases throughput by at least 20%, it also drastically worsens the standard deviation in our tests. With turbo enabled we had ±1.5% deviation in our numbers. With Turbo off this falls down to manageable 0.25%.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" alt="layers" loading="lazy"></p>
-	<h4 id="step1droppingpacketsinapplication">Step 1. Dropping packets in application</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oJAi3KKpj9clrG5Abebho/d405da4ed707f03cd431759b4a1d5705/layers.JPG.jpeg" alt="layers" class="kg-image" width="1280" height="782" loading="lazy">
+
+	</figure>
+	<h4>Step 1. Dropping packets in application</h4>
 	<p>Let's start with the idea of delivering packets to an application and ignoring them in userspace code. For the test setup, let's make sure our iptables don't affect the performance:</p>
-	<pre><code>iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
+	<pre class="language-bash"><code class="language-bash">iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
 iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
-iptables -I INPUT -t filter -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
-</code></pre>
+iptables -I INPUT -t filter -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT</code></pre>
 	<p>The application code is a simple loop, receiving data and immediately discarding it in the userspace:</p>
-	<pre><code>s = socket.socket(AF_INET, SOCK_DGRAM)
+	<pre class="language-bash"><code class="language-bash">s = socket.socket(AF_INET, SOCK_DGRAM)
 s.bind(("0.0.0.0", 1234))
 while True:
-    s.recvmmsg([...])
-</code></pre>
+    s.recvmmsg([...])</code></pre>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c">We prepared the code</a>, to run it:</p>
-	<pre><code>$ ./dropping-packets/recvmmsg-loop
-packets=171261 bytes=1940176
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ ./dropping-packets/recvmmsg-loop
+packets=171261 bytes=1940176</code></pre>
 	<p>This setup allows the kernel to receive a meagre 175kpps from the hardware receive queue, as measured by <code>ethtool</code> and using our simple <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram"><code>mmwatch</code> tool</a>:</p>
-	<pre><code>$ mmwatch 'ethtool -S ext0|grep rx_2'
- rx2_packets: 174.0k/s
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ mmwatch 'ethtool -S ext0|grep rx_2'
+ rx2_packets: 174.0k/s</code></pre>
 	<p>The hardware technically gets 14Mpps off the wire, but it's impossible to pass it all to a single RX queue handled by only one CPU core doing kernel work. <code>mpstat</code> confirms this:</p>
-	<pre><code>$ watch 'mpstat -u -I SUM -P ALL 1 1|egrep -v Aver'
+	<pre class="language-bash"><code class="language-bash">$ watch 'mpstat -u -I SUM -P ALL 1 1|egrep -v Aver'
 01:32:05 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
 01:32:06 PM    0    0.00    0.00    0.00    2.94    0.00    3.92    0.00    0.00    0.00   93.14
 01:32:06 PM    1    2.17    0.00   27.17    0.00    0.00    0.00    0.00    0.00    0.00   70.65
 01:32:06 PM    2    0.00    0.00    0.00    0.00    0.00  100.00    0.00    0.00    0.00    0.00
-01:32:06 PM    3    0.95    0.00    1.90    0.95    0.00    3.81    0.00    0.00    0.00   92.38
-</code></pre>
+01:32:06 PM    3    0.95    0.00    1.90    0.95    0.00    3.81    0.00    0.00    0.00   92.38</code></pre>
 	<p>As you can see application code is not a bottleneck, using 27% sys + 2% userspace on CPU #1, while network SOFTIRQ on CPU #2 uses 100% resources.</p>
 	<p>By the way, using <code>recvmmsg(2)</code> is important. In these post-Spectre days, syscalls got more expensive and indeed, we run kernel 4.14 with KPTI and retpolines:</p>
-	<pre><code>$ tail -n +1 /sys/devices/system/cpu/vulnerabilities/*
+	<pre class="language-bash"><code class="language-bash">$ tail -n +1 /sys/devices/system/cpu/vulnerabilities/*
 ==&gt; /sys/devices/system/cpu/vulnerabilities/meltdown &lt;==
 Mitigation: PTI
 
@@ -85,85 +84,73 @@ Mitigation: PTI
 Mitigation: __user pointer sanitization
 
 ==&gt; /sys/devices/system/cpu/vulnerabilities/spectre_v2 &lt;==
-Mitigation: Full generic retpoline, IBPB, IBRS_FW
-</code></pre>
-	<h4 id="step2slaughterconntrack">Step 2. Slaughter conntrack</h4>
+Mitigation: Full generic retpoline, IBPB, IBRS_FW</code></pre>
+	<h4>Step 2. Slaughter conntrack</h4>
 	<p>We specifically designed the test - by choosing random source IP and ports - to put stress on the conntrack layer. This can be verified by looking at number of conntrack entries, which during the test is reaching the maximum:</p>
-	<pre><code>$ conntrack -C
+	<pre class="language-bash"><code class="language-bash">$ conntrack -C
 2095202
 
 $ sysctl net.netfilter.nf_conntrack_max
-net.netfilter.nf_conntrack_max = 2097152
-</code></pre>
+net.netfilter.nf_conntrack_max = 2097152</code></pre>
 	<p>You can also observe conntrack shouting in <code>dmesg</code>:</p>
-	<pre><code>[4029612.456673] nf_conntrack: nf_conntrack: table full, dropping packet
+	<pre class="language-bash"><code class="language-bash">[4029612.456673] nf_conntrack: nf_conntrack: table full, dropping packet
 [4029612.465787] nf_conntrack: nf_conntrack: table full, dropping packet
-[4029617.175957] net_ratelimit: 5731 callbacks suppressed
-</code></pre>
+[4029617.175957] net_ratelimit: 5731 callbacks suppressed</code></pre>
 	<p>To speed up our tests let's disable it:</p>
-	<pre><code>iptables -t raw -I PREROUTING -d 198.18.0.12 -p udp -m udp --dport 1234 -j NOTRACK
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">iptables -t raw -I PREROUTING -d 198.18.0.12 -p udp -m udp --dport 1234 -j NOTRACK</code></pre>
 	<p>And rerun the tests:</p>
-	<pre><code>$ ./dropping-packets/recvmmsg-loop
-packets=331008 bytes=5296128
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ ./dropping-packets/recvmmsg-loop
+packets=331008 bytes=5296128</code></pre>
 	<p>This instantly bumps the application receive performance to 333kpps. Hurray!</p>
 	<p>PS. With SO_BUSY_POLL we can bump the numbers to 470k pps, but this is a subject for another time.</p>
-	<h4 id="step3bpfdroponasocket">Step 3. BPF drop on a socket</h4>
+	<h4>Step 3. BPF drop on a socket</h4>
 	<p>Going further, why deliver packets to userspace application at all? While this technique is uncommon, we can attach a classical BPF filter to a SOCK_DGRAM socket with <code>setsockopt(SO_ATTACH_FILTER)</code> and program the filter to discard packets in kernel space.</p>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c">See the code</a>, to run it:</p>
-	<pre><code>$ ./bpf-drop
-packets=0 bytes=0
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ ./bpf-drop
+packets=0 bytes=0</code></pre>
 	<p>With drops in BPF (both Classical as well as extended eBPF have similar performance) we process roughly 512kpps. All of them get dropped in the BPF filter while still in software interrupt mode, which saves us CPU needed to wake up the userspace application.</p>
-	<h4 id="step4iptablesdropafterrouting">Step 4. iptables DROP after routing</h4>
+	<h4>Step 4. iptables DROP after routing</h4>
 	<p>As a next step we can simply drop packets in the iptables firewall INPUT chain by adding rule like this:</p>
-	<pre><code>iptables -I INPUT -d 198.18.0.12 -p udp --dport 1234 -j DROP
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">iptables -I INPUT -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></pre>
 	<p>Remember we disabled conntrack already with <code>-j NOTRACK</code>. These two rules give us 608kpps.</p>
 	<p>The numbers in iptables counters:</p>
-	<pre><code>$ mmwatch 'iptables -L -v -n -x | head'
+	<pre class="language-bash"><code class="language-bash">$ mmwatch 'iptables -L -v -n -x | head'
 
 Chain INPUT (policy DROP 0 packets, 0 bytes)
     pkts      bytes target     prot opt in     out     source               destination
-605.9k/s    26.7m/s DROP       udp  --  *      *       0.0.0.0/0            198.18.0.12          udp dpt:1234
-</code></pre>
+605.9k/s    26.7m/s DROP       udp  --  *      *       0.0.0.0/0            198.18.0.12          udp dpt:1234</code></pre>
 	<p>600kpps is not bad, but we can do better!</p>
-	<h4 id="step5iptablesdropinprerouting">Step 5. iptables DROP in PREROUTING</h4>
+	<h4>Step 5. iptables DROP in PREROUTING</h4>
 	<p>An even faster technique is to drop packets before they get routed. This rule can do this:</p>
-	<pre><code>iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j DROP
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></pre>
 	<p>This produces whopping 1.688mpps.</p>
 	<p>This is quite a significant jump in performance, I don't fully understand it. Either our routing layer is unusually complex or there is a bug in our server configuration.</p>
 	<p>In any case - "raw" iptables table is definitely way faster.</p>
-	<h4 id="step6nftablesdropbeforeconntrack">Step 6. nftables DROP before CONNTRACK</h4>
+	<h4>Step 6. nftables DROP before CONNTRACK</h4>
 	<p>Iptables is considered passé these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
 	<p>Since this article is not about comparing the nftables vs iptables speed, let's try only the fastest drop I could came up with:</p>
-	<pre><code>nft add table netdev filter
+	<pre class="language-bash"><code class="language-bash">nft add table netdev filter
 nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }
 nft add rule netdev filter input ip daddr 198.18.0.0/24 udp dport 1234 counter drop
-nft add rule netdev filter input ip6 daddr fd00::/64 udp dport 1234 counter drop
-</code></pre>
+nft add rule netdev filter input ip6 daddr fd00::/64 udp dport 1234 counter drop</code></pre>
 	<p>The counters can be seen with this command:</p>
-	<pre><code>$ mmwatch 'nft --handle list chain netdev filter input'
+	<pre class="language-bash"><code class="language-bash">$ mmwatch 'nft --handle list chain netdev filter input'
 table netdev filter {
     chain input {
         type filter hook ingress device vlan100 priority -500; policy accept;
         ip daddr 198.18.0.0/24 udp dport 1234 counter packets    1.6m/s bytes    69.6m/s drop # handle 2
         ip6 daddr fd00::/64 udp dport 1234 counter packets 0 bytes 0 drop # handle 3
     }
-}
-</code></pre>
+}</code></pre>
 	<p>Nftables "ingress" hook yields around 1.53mpps. This is slightly slower than iptables in the PREROUTING layer. This is puzzling - theoretically "ingress" happens before PREROUTING, so should be faster.</p>
 	<p>In our test nftables was slightly slower than iptables, but not by much. Nftables is still better :P</p>
-	<h4 id="step7tcingresshandlerdrop">Step 7. tc ingress handler DROP</h4>
+	<h4>Step 7. tc ingress handler DROP</h4>
 	<p>A somewhat surprising fact is that a tc (traffic control) ingress hook happens before even PREROUTING. tc makes it possible to select packets based on basic criteria and indeed - action drop - them. The syntax is rather hacky, so it's recommended to <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh">use this script</a> to set it up. We need a tiny bit more complex tc match, here is the command line:</p>
-	<pre><code>tc qdisc add dev vlan100 ingress
+	<pre class="language-bash"><code class="language-bash">tc qdisc add dev vlan100 ingress
 tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
-tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop
-</code></pre>
+tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop</code></pre>
 	<p>We can verify it:</p>
-	<pre><code>$ mmwatch 'tc -s filter  show dev vlan100  ingress'
+	<pre class="language-bash"><code class="language-bash">$ mmwatch 'tc -s filter  show dev vlan100  ingress'
 filter parent ffff: protocol ip pref 4 u32 
 filter parent ffff: protocol ip pref 4 u32 fh 800: ht divisor 1 
 filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:1  (rule hit   1.8m/s success   1.8m/s)
@@ -175,59 +162,68 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
          index 1 ref 1 bind 1 installed 1.0/s sec
         Action statistics:
         Sent    79.7m/s bytes   1.8m/s pkt (dropped   1.8m/s, overlimits 0 requeues 0) 
-        backlog 0b 0p requeues 0
-</code></pre>
+        backlog 0b 0p requeues 0</code></pre>
 	<p>A tc ingress hook with u32 match allows us to drop 1.8mpps on a single CPU. This is brilliant!</p>
 	<p>But we can go even faster...</p>
-	<h4 id="step8xdp_drop">Step 8. XDP_DROP</h4>
+	<h4>Step 8. XDP_DROP</h4>
 	<p>Finally, the ultimate weapon is XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP">eXpress Data Path</a>. With XDP we can run eBPF code in the context of a network driver. Most importantly, this is before the <code>skbuff</code> memory allocation, allowing great speeds.</p>
 	<p>Usually XDP projects have two parts:</p>
 	<ul>
-		<li>the eBPF code loaded into the kernel context</li>
-		<li>the userspace loader, which loads the code onto the right network card and manages it</li>
+		<li>
+			<p>the eBPF code loaded into the kernel context</p>
+		</li>
+		<li>
+			<p>the userspace loader, which loads the code onto the right network card and manages it</p>
+		</li>
 	</ul>
 	<p>Writing the loader is pretty hard, so instead we can use the <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2">new <code>iproute2</code> feature</a> and load the code with this trivial command:</p>
-	<pre><code>ip link set dev ext0 xdp obj xdp-drop-ebpf.o
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">ip link set dev ext0 xdp obj xdp-drop-ebpf.o</code></pre>
 	<p>Tadam!</p>
 	<p>The source code for <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c">the loaded eBPF XDP program is available here</a>. The program parses IP packets and looks for desired characteristics: IP transport, UDP protocol, desired target subnet and destination port:</p>
-	<pre><code class="language-.c">if (h_proto == htons(ETH_P_IP)) {
+	<pre class="language-.c"><code class="language-.c">if (h_proto == htons(ETH_P_IP)) {
     if (iph-&gt;protocol == IPPROTO_UDP
         &amp;&amp; (htonl(iph-&gt;daddr) &amp; 0xFFFFFF00) == 0xC6120000 // 198.18.0.0/24
         &amp;&amp; udph-&gt;dest == htons(1234)) {
         return XDP_DROP;
     }
-}
-</code></pre>
+}</code></pre>
 	<p>XDP program needs to be compiled with modern <code>clang</code> that can emit BPF bytecode. After this we can load and verify the running XDP program:</p>
-	<pre><code>$ ip link show dev ext0
-4: ext0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 xdp qdisc fq state UP mode DEFAULT group default qlen 1000
+	<pre class="language-bash"><code class="language-bash">$ ip link show dev ext0
+4: ext0: <broadcast,multicast,up,lower_up> mtu 1500 xdp qdisc fq state UP mode DEFAULT group default qlen 1000
     link/ether 24:8a:07:8a:59:8e brd ff:ff:ff:ff:ff:ff
-    prog/xdp id 5 tag aedc195cc0471f51 jited
-</code></pre>
+    prog/xdp id 5 tag aedc195cc0471f51 jited</broadcast,multicast,up,lower_up></code></pre>
 	<p>And see the numbers in <code>ethtool -S</code> network card statistics:</p>
-	<pre><code>$ mmwatch 'ethtool -S ext0|egrep "rx"|egrep -v ": 0"|egrep -v "cache|csum"'
+	<pre class="language-bash"><code class="language-bash">$ mmwatch 'ethtool -S ext0|egrep "rx"|egrep -v ": 0"|egrep -v "cache|csum"'
      rx_out_of_buffer:     4.4m/s
      rx_xdp_drop:         10.1m/s
-     rx2_xdp_drop:        10.1m/s
-</code></pre>
+     rx2_xdp_drop:        10.1m/s</code></pre>
 	<p>Whooa! With XDP we can drop 10 million packets per second on a single CPU.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/225821241_ed5da2da91_o.jpg" alt="225821241_ed5da2da91_o" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241">image</a> by <a href="https://www.flickr.com/photos/afiler">Andrew Filer</a></small>
-	</p>
-	<h3 id="summary">Summary</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SE8JnlqRwU9PvWk57Drtp/83ebe66d69a9d9677bc5a32584697ff6/225821241_ed5da2da91_o.jpg" alt="225821241_ed5da2da91_o" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241">image</a> by <a href="https://www.flickr.com/photos/afiler">Andrew Filer</a></p>
+	<h3>Summary</h3>
 	<p>We repeated the these for both IPv4 and IPv6 and prepared this chart:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/numbers-noxdp.png" alt="numbers-noxdp" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gFSZtRxYtyzjQwOjcfXE/ad82b4d8b73732984e56374dd8efb1ba/numbers-noxdp.png" alt="numbers-noxdp" class="kg-image" width="1500" height="900" loading="lazy">
+
+	</figure>
 	<p>Generally speaking in our setup IPv6 had slightly lower performance. Remember that IPv6 packets are slightly larger, so some performance difference is unavoidable.</p>
 	<p>Linux has numerous hooks that can be used to filter packets, each with different performance and ease of use characteristics.</p>
 	<p>For DDoS purporses, it may totally be reasonable to just receive the packets in the application and process them in userspace. Properly tuned applications can get pretty decent numbers.</p>
 	<p>For DDoS attacks with random/spoofed source IP's, it might be worthwhile disabling conntrack to gain some speed. Be careful though - there are attacks for which conntrack is very helpful.</p>
 	<p>In other circumstances it may make sense to integrate the Linux firewall into the DDoS mitigation pipeline. In such cases, remember to put the mitigations in a "-t raw PREROUTING" layer, since it's significantly faster than "filter" table.</p>
 	<p>For even more demanding workloads, we always have XDP. And boy, it is powerful. Here is the same chart as above, but including XDP:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/numbers-xdp-1.png" alt="numbers-xdp-1" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OUdMjazlfP6gpm6usqmj7/87e60146d1a602623bb888cb50078eb3/numbers-xdp-1.png" alt="numbers-xdp-1" class="kg-image" width="1500" height="900" loading="lazy">
+
+	</figure>
 	<p>If you want to reproduce these numbers, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md">see the README where we documented everything</a>.</p>
 	<p>Here at Cloudflare we are using... almost all of these techniques. Some of the userspace tricks are integrated with our applications. The iptables layer is managed by <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">our Gatebot DDoS pipeline</a>. Finally, we are working on replacing our proprietary kernel offload solution with XDP.</p>
 	<p>Want to help us drop more packets? We're hiring for many roles, including packet droppers, systems engineers and more!</p>
-	<p><em>Special thanks to <a href="https://twitter.com/JesperBrouer">Jesper Dangaard Brouer</a> for helping with this work.</em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>Special thanks to </i><a href="https://twitter.com/JesperBrouer"><i>Jesper Dangaard Brouer</i></a><i> for helping with this work.</i></p>
 </div>

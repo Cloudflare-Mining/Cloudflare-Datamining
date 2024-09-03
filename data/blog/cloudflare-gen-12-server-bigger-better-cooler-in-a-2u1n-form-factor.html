@@ -1,58 +1,49 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-es-es">Español</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/de-de/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-de-de">Deutsch</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4k4pAqN8lhelYK7bHj3j2n/ed66f02a287492ccb4efa81d4b619a59/image5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Two years ago, Cloudflare undertook a significant upgrade to our compute server hardware as we deployed our cutting-edge <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">11th Generation server fleet</a>, based on AMD EPYC Milan x86 processors. It's nearly time for another refresh to our x86 infrastructure, with deployment planned for 2024. This involves upgrading not only the processor itself, but many of the server's components. It must be able to accommodate the GPUs that drive inference on <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a>, and leverage the latest advances in memory, storage, and security. Every aspect of the server is rigorously evaluated — including the server form factor itself.</p>
-	<p>One crucial variable always in consideration is temperature. The latest generations of x86 processors have yielded significant leaps forward in performance, with the tradeoff of higher power draw and heat output. In this post we will explore this trend, and how it informed our decision to adopt a new physical footprint for our next-generation fleet of servers. </p>
+	<p>One crucial variable always in consideration is temperature. The latest generations of x86 processors have yielded significant leaps forward in performance, with the tradeoff of higher power draw and heat output. In this post we will explore this trend, and how it informed our decision to adopt a new physical footprint for our next-generation fleet of servers.</p>
 	<p>In preparation for the upcoming refresh, we conducted an extensive survey of the x86 CPU landscape. AMD recently introduced its latest offerings: Genoa, Bergamo, and Genoa-X, featuring the power of their innovative Zen 4 architecture. At the same time, Intel unveiled Sapphire Rapids as part of its 4th Generation Intel Xeon Scalable Processor Platform, code-named “Eagle Stream”, showcasing their own advancements. These options offer valuable choices as we consider how to shape the future of Cloudflare's server technology to match the needs of our customers.</p>
-	<p>A continuing challenge we face across x86 CPU vendors, including the new Intel and AMD chipsets, is the rapidly increasing CPU Thermal Design Point (TDP) generation over generation. TDP is defined to be the maximum heat dissipated by the CPU under load that a cooling system should be designed to cool; TDP also describes the maximum power consumption of the CPU socket. This plot shows the CPU TDP trend of each hardware server generation since 2014: </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image4.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1594" height="986"></figure>
+	<p>A continuing challenge we face across x86 CPU vendors, including the new Intel and AMD chipsets, is the rapidly increasing CPU Thermal Design Point (TDP) generation over generation. TDP is defined to be the maximum heat dissipated by the CPU under load that a cooling system should be designed to cool; TDP also describes the maximum power consumption of the CPU socket. This plot shows the CPU TDP trend of each hardware server generation since 2014:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ae6NrHId3uKhuS6mIhW7F/9e7ab93ed1ae61f5b60ae681c8417e1b/image4.png" alt="" class="kg-image" width="1594" height="986" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 server</a> was based on Intel Skylake 6162 with a TDP of 150W, our <a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">Gen 10 server</a> was based on AMD Rome 7642 at 240W, and our <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">Gen 11 server</a> was based on AMD Milan 7713 at 240W. Today, <a href="https://www.amd.com/system/files/documents/epyc-9004-series-processors-data-sheet.pdf">AMD EPYC 9004 Series SKU Stack</a> default TDP goes up to 360W and is configurable up to 400W. <a href="https://ark.intel.com/content/www/us/en/ark/products/codename/126212/products-formerly-sapphire-rapids.html#@Server">Intel Sapphire Rapid SKU stack</a> default TDP goes up to 350W. This trend of rising TDP is expected to continue with the next generation of x86 CPU offerings.</p>
-	<h2 id="designing-multi-generational-cooling-solutions">Designing multi-generational cooling solutions</h2>
-	<p>Cloudflare Gen 10 servers and Gen 11 servers were designed in a 1U1N form factor, with air cooling to maximize rack density (1U means the server form factor is 1 Rack Unit, which is 1.75” in height or thickness; 1N means there is one server node per chassis). However, to cool more than 350 Watt TDP CPU with air in a 1U1N form factor requires fans to be spinning at 100% duty cycle (running all the time, at max speed). A single fan running at full speed consumes about 40W, and a typical server configuration of 7–8 dual rotor fans per server can hit 280–320 W to power the fans alone. At peak loads, the total system power consumed, including the cooling fans, processor, and other components, can eclipse 750 Watt per server. </p>
-	<p>The 1U form factor can fit a maximum of eight 40mm dual rotor fans, which sets an upper bound on the temperature range it can support. We first take into account ambient room temperature, which we assume to be 40° C (the maximum expected temperature under normal conditions). Under these conditions we determined that air-cooled servers, with all eight fans running at 100% duty cycle, can support CPUs with a maximum TDP of 400W. </p>
+	<h2>Designing multi-generational cooling solutions</h2>
+	<p>Cloudflare Gen 10 servers and Gen 11 servers were designed in a 1U1N form factor, with air cooling to maximize rack density (1U means the server form factor is 1 Rack Unit, which is 1.75” in height or thickness; 1N means there is one server node per chassis). However, to cool more than 350 Watt TDP CPU with air in a 1U1N form factor requires fans to be spinning at 100% duty cycle (running all the time, at max speed). A single fan running at full speed consumes about 40W, and a typical server configuration of 7–8 dual rotor fans per server can hit 280–320 W to power the fans alone. At peak loads, the total system power consumed, including the cooling fans, processor, and other components, can eclipse 750 Watt per server.</p>
+	<p>The 1U form factor can fit a maximum of eight 40mm dual rotor fans, which sets an upper bound on the temperature range it can support. We first take into account ambient room temperature, which we assume to be 40° C (the maximum expected temperature under normal conditions). Under these conditions we determined that air-cooled servers, with all eight fans running at 100% duty cycle, can support CPUs with a maximum TDP of 400W.</p>
 	<p>This poses a challenge, because the next generation of AMD CPUs, while being socket compatible with the current gen, rise up to 500W TDP and we expect other vendors to follow a similar trend in subsequent generations. In order to future-proof, and re-use as much of Gen 12 design as possible for future generations across all x86 CPU products, we will need a scalable thermal solution. Moreover, many co-location facilities where Cloudflare deploys servers have a rack power limit. With total system power consumption at north of 750 Watt per node, and after accounting for space utilized by networking gear, we would have been underutilizing rack space by as much as 50%.</p>
-	<h3 id="we-have-a-problem">We have a problem!</h3>
+	<h3>We have a problem!</h3>
 	<p>We do have a variety of SKU options available to use on each CPU generation, and if power is the primary constraint, we could choose to limit the TDP and use a lower core count, low-power SKU. To evaluate this, the hardware team ran a synthetic workload benchmark in the lab across several CPU SKUs. We found that Cloudflare services continue to scale with cores effectively up to 128 cores or 256 hardware threads, resulting in significant performance gain, and Total Cost of Ownership (TCO) benefit, at and above 360W TDP.</p>
-	<p>However, while the performance metric and TCO metric look good on a per-server basis, this is only part of the story: servers go into a server rack when they are deployed, and server racks come with constraints and limitations that have to be taken into design consideration. The two limiting factors are rack power budget and rack height. Taking these two rack-level constraints into account, how does the combined Total Cost of Ownership (TCO) benefit scale with TDP? We ran a performance sweep across the configurable TDP range of the highest core count CPUs and noticed that rack-level TCO benefit stagnates when CPU TDP rises above roughly 340W. </p>
+	<p>However, while the performance metric and TCO metric look good on a per-server basis, this is only part of the story: servers go into a server rack when they are deployed, and server racks come with constraints and limitations that have to be taken into design consideration. The two limiting factors are rack power budget and rack height. Taking these two rack-level constraints into account, how does the combined Total Cost of Ownership (TCO) benefit scale with TDP? We ran a performance sweep across the configurable TDP range of the highest core count CPUs and noticed that rack-level TCO benefit stagnates when CPU TDP rises above roughly 340W.</p>
 	<p>TCO advantage stagnates because we hit our rack power budget limit — the incremental performance gain per server, coinciding with an incremental increase of CPU TDP above 340W, is negated by the reduction in the number of servers that can be installed in a rack to remain within the rack’s power budget. Even with CPU TDP power capped at 340W, we are still underutilizing the rack, with 30% of the space still available.</p>
-	<p>Thankfully, there is an alternative to power capping and compromising on possible performance gain, by increasing the chassis height to a 2U form factor (from 1.75” in height to 3.5” in height). The benefits from doing this include: </p>
+	<p>Thankfully, there is an alternative to power capping and compromising on possible performance gain, by increasing the chassis height to a 2U form factor (from 1.75” in height to 3.5” in height). The benefits from doing this include:</p>
 	<ul>
-		<li>Larger fans (up to 80mm) that can move more air</li>
-		<li>Allowing for a taller and larger heatsink that can dissipate heat more effectively</li>
-		<li>Less air impedance within the chassis since the majority of components are 1U height</li>
-		<li>Providing sufficient room to add PCIe attached accelerators / GPUs, including dual-slot form factor options</li>
+		<li>
+			<p>Larger fans (up to 80mm) that can move more air</p>
+		</li>
+		<li>
+			<p>Allowing for a taller and larger heatsink that can dissipate heat more effectively</p>
+		</li>
+		<li>
+			<p>Less air impedance within the chassis since the majority of components are 1U height</p>
+		</li>
+		<li>
+			<p>Providing sufficient room to add PCIe attached accelerators / GPUs, including dual-slot form factor options</p>
+		</li>
 	</ul>
-	<p></p><!--kg-card-begin: html-->
-	<table style="border-collapse: collapse ; border-spacing: 0 ; margin: 0px auto ; table-layout: fixed ; width: 724px" class="tg">
-		<colgroup>
-			<col style="width: 361.88889px">
-			<col style="width: 361.88889px">
-		</colgroup>
-		<thead>
-			<tr>
-				<th style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; font-weight: normal ; overflow: hidden ; padding: 10px 5px ; text-align: center ; vertical-align: top ; word-break: normal"><span style="font-weight: bold ; font-style: normal ; text-decoration: none ; color: #000 ; background-color: transparent">Deprecated 1U design</span></th>
-				<th style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; font-weight: normal ; overflow: hidden ; padding: 10px 5px ; text-align: center ; vertical-align: top ; word-break: normal"><span style="font-weight: bold ; font-style: normal ; text-decoration: none ; color: #000 ; background-color: transparent">New 2U design</span></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; overflow: hidden ; padding: 10px 5px ; text-align: left ; vertical-align: top ; word-break: normal"><a href="https://blog.cloudflare.com/content/images/2023/12/old_server_2.jpg" target="new">
-						<img src="https://blog.cloudflare.com/content/images/2023/12/old_server_2.jpg" alt="click to enlarge" width="355" height="205"></a></td>
-				<td style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; overflow: hidden ; padding: 10px 5px ; text-align: left ; vertical-align: top ; word-break: normal"><a href="https://blog.cloudflare.com/content/images/2023/12/server_large_2.jpg" target="new">
-						<img src="https://blog.cloudflare.com/content/images/2023/12/server_large_2.jpg" alt="click to enlarge" width="355" height="205"></a></td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<p><em></em></p>
-	<center><em><small>Click images to enlarge</small></em></center>
-	<p></p>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<p>2U chassis design is nothing new, and is actually very common in the industry for various reasons, one of which is better airflow to dissipate more heat, but it does come with the tradeoff of taking up more space and limiting the number of servers than can be installed in a rack. Since we are power constrained instead of space constrained, the tradeoff did not negatively impact our design. </p>
+	<p><i>Click images to enlarge</i></p>
+	<p>2U chassis design is nothing new, and is actually very common in the industry for various reasons, one of which is better airflow to dissipate more heat, but it does come with the tradeoff of taking up more space and limiting the number of servers than can be installed in a rack. Since we are power constrained instead of space constrained, the tradeoff did not negatively impact our design.</p>
 	<p>Thermal simulations provided by Cloudflare vendors showed that 4x 60mm fans or 4x 80mm fans at less than 40 Watt per fan is sufficient to cool the system. That is a theoretical savings of at least 150 Watt compared to 8x 40mm fans in a 1U design, which would result in significant Operational Expenditure (OPEX) savings and a boost to TCO improvement. Switching to a 2U form factor also gives us the benefit of fully utilizing our rack power budget and our rack space, and provides ample room for the addition of PCIe attached accelerators / GPUs, including dual-slot form factor options.</p>
-	<h2 id="conclusion">Conclusion</h2>
-	<p>It might seem counter-intuitive, but our observations indicate that growing the server chassis, and utilizing more space per node actually increases rack density and improves overall TCO benefit over previous generation deployments, since it allows for a better thermal design. We are very happy with the result of this technical readiness investigation, and are actively working on validating our Gen 12 Compute servers and launching them into production soon. Stay tuned for more details on our Gen 12 designs. </p>
+	<h2>Conclusion</h2>
+	<p>It might seem counter-intuitive, but our observations indicate that growing the server chassis, and utilizing more space per node actually increases rack density and improves overall TCO benefit over previous generation deployments, since it allows for a better thermal design. We are very happy with the result of this technical readiness investigation, and are actively working on validating our Gen 12 Compute servers and launching them into production soon. Stay tuned for more details on our Gen 12 designs.</p>
 	<p>If you are excited about helping build &nbsp;a better Internet, come join us, <a href="https://www.cloudflare.com/careers/jobs">we are hiring</a>!</p>
 </div>

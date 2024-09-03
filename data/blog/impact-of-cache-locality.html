@@ -1,59 +1,86 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Wednesday@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Yld72RZV077SDlS9w3sTs/80034fc86eab3659a0e065e28cc9b8e2/gen-x-color-Wednesday_2x.png" alt="" class="kg-image" width="1662" height="703" loading="lazy">
+
+	</figure>
 	<p>In the past, we didn't have the opportunity to evaluate as many CPUs as we do today. The hardware ecosystem was simple – Intel had consistently delivered industry leading processors. Other vendors could not compete with them on both performance and cost. Recently it all changed: AMD has been challenging the status quo with their 2nd Gen EPYC processors.</p>
 	<p>This is not the first time that Intel has been challenged; previously <a href="https://blog.cloudflare.com/arm-takes-wing">there was Qualcomm</a>, and we worked with AMD and considered their 1st Gen EPYC processors and based on the original Zen architecture, but ultimately, <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Intel prevailed</a>. AMD did not give up and unveiled their 2nd Gen EPYC processors codenamed Rome based on the latest Zen 2 architecture.</p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">Playing with some new fun kit. <a href="https://twitter.com/hashtag/epyc?src=hash&amp;ref_src=twsrc%5Etfw">#epyc</a> <a href="https://t.co/1No8Cmfzwl">pic.twitter.com/1No8Cmfzwl</a></p>— Matthew Prince ? (@eastdakota) <a href="https://twitter.com/eastdakota/status/1192898039003766785?ref_src=twsrc%5Etfw">November 8, 2019</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
+	<blockquote>
+		<p>Playing with some new fun kit. <a href="https://twitter.com/hashtag/epyc?src=hash&amp;ref_src=twsrc%5Etfw">#epyc</a> <a href="https://t.co/1No8Cmfzwl">pic.twitter.com/1No8Cmfzwl</a></p>
+		<p>— Matthew Prince ? (@eastdakota) <a href="https://twitter.com/eastdakota/status/1192898039003766785?ref_src=twsrc%5Etfw">November 8, 2019</a></p>
+	</blockquote>
 	<p>This made many improvements over its predecessors. Improvements include a die shrink from 14nm to 7nm, a doubling of the top end core count from 32 to 64, and a larger L3 cache size. Let’s emphasize again on the size of that L3 cache, which is 32 MiB L3 cache per Core Complex Die (CCD).</p>
 	<p>This time around, we have taken steps to understand our workloads at the hardware level through the use of hardware performance counters and profiling tools. Using these specialized CPU registers and profilers, we collected data on the AMD 2nd Gen EPYC and Intel Skylake-based Xeon processors in a lab environment, then validated our observations in production against other generations of servers from the past.</p>
-	<h2 id="simulated-environment">Simulated Environment</h2>
+	<h2>Simulated Environment</h2>
 	<p>CPU Specifications</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42MpuiHDcFmNWT8c5GOh96/f549a8ef6deb8f2a718a2dc2dece4e1f/image-3.png" alt="" class="kg-image" width="1242" height="452" loading="lazy">
+
+	</figure>
 	<p>We evaluated several Intel Cascade Lake and AMD 2nd Gen EPYC processors, trading off various factors between power and performance; the AMD EPYC 7642 CPU came out on top. The majority of Cascade Lake processors have 1.375 MiB L3 cache per core shared across all cores, a common theme that started with Skylake. On the other hand, the 2nd Gen EPYC processors start at 4 MiB per core. The AMD EPYC 7642 is a unique SKU since it has 256 MiB of L3 cache. Having a cache this large or approximately 5.33 MiB sitting right next to each core means that a program will spend fewer cycles fetching data from RAM with the capability to have more data readily available in the L3 cache.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/Infrastructure-before@2x.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Before (Intel)</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FVYxpe6TeVh26fV12eeBw/b5ac624ef8fbf70e25d3170dc9932b92/Infrastructure-before_2x.png" alt="" class="kg-image" width="3191" height="1296" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/Infrastructure-after-@2x--1-.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>After (AMD)</em></figcaption>
+	<p><i>Before (Intel)</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zMlvsRWnuL6SwUUPyLHBu/1f38e661b94a14898096155cf2d5cd64/Infrastructure-after-_2x--1-.png" alt="" class="kg-image" width="3191" height="1297" loading="lazy">
+
 	</figure>
+	<p><i>After (AMD)</i></p>
 	<p>Traditional cache layout has also changed with the introduction of 2nd Gen EPYC, a byproduct of AMD using a multi-chip module (MCM) design. The 256 MiB L3 cache is formed by 8 individual dies or Core Complex Die (CCD) that is formed by 2 Core Complexes (CCX) with each CCX containing 16 MiB of L3 cache.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/image6.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Core Complex (CCX) - Up to four cores</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oqKl2iToZamCbBNQBH2uj/ae244a5497fc71b2a8aacca6bd133603/image6.png" alt="" class="kg-image" width="1999" height="575" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/image9.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><em>Core Complex Die (CCD) - Created by combining two CCXs</em></em></figcaption>
+	<p><i>Core Complex (CCX) - Up to four cores</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6p5FRRU9VZTMWhkdNH7g4/d8490fa598f639721885be69a93c621e/image9.png" alt="" class="kg-image" width="1946" height="1242" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/image1-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>AMD 2nd Gen EPYC 7642 - Created with 8x CCDs plus an I/O die in the center</em></figcaption>
+	<p><b>Core Complex Die (CCD) - Created by combining two CCXs</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IyMxh74THzCubUs6H3SY1/bfbd7b0b0c90903bdbb0a0b6b6ef0035/image1-2.png" alt="" class="kg-image" width="1430" height="1096" loading="lazy">
+
 	</figure>
-	<h3 id="methodology">Methodology</h3>
+	<p><i>AMD 2nd Gen EPYC 7642 - Created with 8x CCDs plus an I/O die in the center</i></p>
+	<h3>Methodology</h3>
 	<p>Our production traffic shares many characteristics of a sustained workload which typically does not induce large variation in operating frequencies nor enter periods of idle time. We picked out a simulated traffic pattern that closely resembled our production traffic behavior which was the Cached 10KiB png via HTTPS. We were interested in assessing the CPU’s maximum throughput or requests per second (RPS), one of our key metrics. With that being said, we did not disable Intel Turbo Boost or AMD Precision Boost, nor matched the frequencies clock-for-clock while measuring for requests per second, instructions retired per second (IPS), L3 cache miss rate, and sustained operating frequency.</p>
-	<h3 id="results">Results</h3>
+	<h3>Results</h3>
 	<p>The 1P AMD 2nd Gen EPYC 7642 powered server took the lead and processed 50% more requests per second compared to our Gen 9’s 2P Intel Xeon Platinum 6162 server.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/bg1akuH5YPbhMUGrZ9EGFTjdpVyHd5UKdhdCCFE6pbVli_zJ91Fc8RN37qWujzaKQczUJ5qxw64UrV_cGS-mvzGQMmLstid4SiaYSggPvRDWknWMp-kUJnnoNCb8JBkRoDkVbyQC" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We are running a sustained workload, so we should end up with a sustained operating frequency that is higher than base clock. The AMD EPYC 7642 operating frequency or the number cycles that the processor had at its disposal was approximately 20% greater than the Intel Xeon Platinum 6162, so frequency alone was not enough to explain the 50% gain in requests per second.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/ym963p-QVuLp3sk_d3mlEoKgjmL3uaY-H0oITLKyx_DxD4XgwbJ_U1pq0fIdLLV-PB953QLV6_LUpmnLlbsF04owsHpMoGDy9SGnqAPkUbe0Gew2lZDQJ_siknRLakMtTKEkwYH5" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Taking a closer look, the number of instructions retired over time was far greater on the AMD 2nd Gen EPYC 7642 server, thanks to its low L3 cache miss rate.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/CzKp4mSknMJKkSnRe0O28GV-7Qv9jXnHOgvQgg4WP5GC_cKUrLkusjY9QTG2JPJM9-Pu7YSxybpZrJccCZH7qZPnwy4XBEgWuQf_xcqpsZ1d8vjA2V4--aHWQ3rOnUnFAOQxMhpT" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/te7FuWC6Yt_wN9HebMlqgyxjzZionjdfQWtwfK1sdzX30MEl7jcgX7rAGhyXQqFDJ6H7SA1YhK1eBOQYKX-PYHF__-5XfaS5iCS8yRXQcDVcegxO96GIwVRw0NouIf9yOt-eu07S" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="production-environment">Production Environment</h3>
+	<h3>Production Environment</h3>
 	<p>CPU Specifications</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="methodology-1">Methodology</h3>
-	<p>Our most predominant bottleneck appears to be the cache memory and we saw significant improvement in requests per second as well as <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">time to process a request </a>due to low L3 cache miss rate. The data we present in this section was collected at a point of presence that spanned between Gen 7 to Gen 9 servers. We also collected data from a secondary region to gain additional confidence that the data we present here was not unique to one particular environment. Gen 9 is the baseline just as we have done in the previous section.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lji8wRNR827IKHgDE3asr/cde9b52f4d08a68d4f24091baa4ccca7/image-2.png" alt="" class="kg-image" width="1254" height="404" loading="lazy">
+
+	</figure>
+	<h3>Methodology</h3>
+	<p>Our most predominant bottleneck appears to be the cache memory and we saw significant improvement in requests per second as well as <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">time to process a request</a> due to low L3 cache miss rate. The data we present in this section was collected at a point of presence that spanned between Gen 7 to Gen 9 servers. We also collected data from a secondary region to gain additional confidence that the data we present here was not unique to one particular environment. Gen 9 is the baseline just as we have done in the previous section.</p>
 	<p>We put the 2nd Gen EPYC-based Gen X into production with hopes that the results would mirror closely to what we have previously seen in the lab. We found that the requests per second did not quite align with the results we had hoped, but the AMD EPYC server still outperformed all previous generations including outperforming the Intel Gen 9 server by 36%.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V8uzcFfnFwUIH0leecLnm/94332f6736e871ef5a49bf2e599552ce/image8.png" alt="" class="kg-image" width="590" height="337" loading="lazy">
+
+	</figure>
 	<p>Sustained operating frequency was nearly identical to what we have seen back in the lab.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DhckmjQqo7b9JtllouvVL/541044b52dc2017524f7e9e4302a117c/image10.png" alt="" class="kg-image" width="591" height="322" loading="lazy">
+
+	</figure>
 	<p>Due to the lower than expected requests per second, we also saw lower instructions retired over time and higher L3 cache miss rate but maintained a lead over Gen 9, with 29% better performance.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/StUGiLjEYh7zhsHFysAwN0veK3NTYgwTsgqFf2O4JtbFTyOcJgXZ02kmMgEXE46nSbgggsZMD-f02sjJ7ZYuDao6s7_p3PWWFMPyasa4DegORiSo7RYhxVMVffgGZmrXtJDBTFn5" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/-aEX0XTMp1Ztyl1ehFHWtOauNlLBtVGVjni55yqdOf7f3pepJI5xeyySn3vZse-ulfA-t3XOq2Uu_LRDreZUN0ZntgoWotLlzz8MB91I8M7YTK_378mWMIzzhFZKhm22t7ChkQdx" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>The single AMD EPYC 7642 performed very well during our lab testing, beating our Gen 9 server with dual Intel Xeon Platinum 6162 with the same total number of cores. Key factors we noticed were its large L3 cache, which led to a low L3 cache miss rate, as well as a higher sustained operating frequency. The AMD 2nd Gen EPYC 7642 did not have as big of an advantage in production, but nevertheless still outperformed all previous generations. The observation we made in production was based on a PoP that could have been influenced by a number of other factors such as but not limited to ambient temperature, timing, and other new products that will shape our traffic patterns in the future such as <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">WebAssembly on Cloudflare Workers</a>. The AMD EPYC 7642 opens up the possibility for our upcoming Gen X server to maintain the same core count while processing more requests per second than its predecessor.</p>
 	<p>Got a passion for hardware? I think we should get in touch. We are always looking for talented and curious individuals to <a href="https://www.cloudflare.com/careers/departments">join our team</a>. The data presented here would not have been possible if it was not for the teamwork between many different individuals within Cloudflare. As a team, we strive to work together to create highly performant, reliable, and secure systems that will form the pillars of our rapidly growing <a href="https://www.cloudflare.com/network">network</a> that spans 200 cities in more than 90 countries and we are just getting started.</p>
 </div>

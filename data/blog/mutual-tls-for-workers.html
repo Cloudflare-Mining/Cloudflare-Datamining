@@ -1,25 +1,36 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-46.png" class="kg-image" alt="Bringing authentication and identification to Workers through Mutual TLS" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2C9SIkN4rzva5O7NMFgW4p/0d7439b489588556536cd53757b9da91/image1-46.png" alt="Bringing authentication and identification to Workers through Mutual TLS" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>We’re excited to announce that Workers will soon be able to send outbound requests through a mutually authenticated channel via mutual TLS authentication!</p>
 	<p>When making outbound requests from a Worker, TLS is always used on the server side, so that the client can validate that the information is being sent to the right destination. But in the same way, the server may want to authenticate the client to ensure that the request is coming from an authorized client. This two-way street of authentication is called Mutual TLS. In this blog, we’re going to talk through the importance of mutual TLS authentication, what it means to use mutual TLS within Workers, and how in a few months you’ll be able to use it to send information through an authenticated channel — adding a layer of security to your application!</p>
-	<h3 id="mtls-between-cloudflare-and-an-origin">mTLS between Cloudflare and an Origin</h3>
+	<h3>mTLS between Cloudflare and an Origin</h3>
 	<p>Mutual TLS authentication works by having a server validate the client certificate against a CA. If the validation passes then the server knows that it’s the right client and will let the request go through. If the validation fails or if a client certificate is not presented then the server can choose to drop the request.</p>
 	<p>Today, customers use mTLS to secure connections between Cloudflare and an origin — this is done through a product called Authenticated Origin Pull. Once a customer enables it, Cloudflare starts serving a client certificate on all outgoing requests. This is either a Cloudflare managed client certificate or it can be one uploaded by the customer. When enabled, Cloudflare will present this certificate when connecting to an origin. The origin should then check the client certificate to see if it’s the one that it expects to see. If it is then the request will go through. If it’s the wrong client certificate or is not included then the origin can choose to drop the request.</p>
 	<p>Doing this brings a big security boost because it allows the origin to only accept traffic from Cloudflare and drop any unexpected external traffic.</p>
-	<h3 id="digging-up-problems-with-dogfooding">Digging up problems with dogfooding</h3>
+	<h3>Digging up problems with dogfooding</h3>
 	<p>Today, many Cloudflare services are built on Cloudflare Workers — it’s the secret sauce we use to continuously ship fast, reliable products to our customers. Internally, we might have one Cloudflare account that runs multiple services, with each service deployed on an individual Worker.</p>
 	<p>Whenever one service needs to talk to another, the <code>fetch()</code> function is used to request or send information. This can be object data that we send to upstream providers, it can be a read or write to a database, or service to service communication. In most regards, the information that’s going to the origin is sensitive and requires a layer of authentication. Without proper authentication, any client would be able to access the data, removing a layer of security.</p>
-	<h3 id="implementing-service-to-service-authentication">Implementing service to service authentication</h3>
+	<h3>Implementing service to service authentication</h3>
 	<p>Today, there are a few ways that you can set up service to service authentication, if you’re building on Workers.</p>
 	<p>One way to set up service authentication is to use Authenticated Origin Pull. Authenticated Origin Pull allows customers to implement mutual TLS between Cloudflare and an origin by attaching a client certificate and private key to a domain or hostname, so that all outbound requests include a client certificate. The origin can then check this certificate to see whether the request came from Cloudflare. If there’s a valid certificate, then the origin can let the request through and if there’s an invalid certificate or no certificate then the origin can choose to drop the request. However, Authenticated Origin Pull has its limitations and isn’t ideal for some use-cases.</p>
 	<p>The first limitation is that an Authenticated Origin Pull certificate is tied to a publicly hosted hostname or domain. Some services that are built on Workers don’t necessarily need to be exposed to the public Internet. Therefore, tying it to a domain doesn’t really make sense.</p>
 	<p>The next limitation is that if you have multiple Workers services that are each writing to the same database, you may want to be able to distinguish them. What if at some point, you need to take the “write” power away from the Worker? Or, what if only Workers A and B are allowed to make writes but Worker C should only make “read” requests?</p>
 	<p>Today, if you use Authenticated Origin Pulls with Cloudflare’s client certificate then all requests will be accepted as valid. This is because for all outbound requests, we attach the same client certificate. So even though you're restricting your traffic to “Cloudflare-Only”, there’s no Worker-level granularity.</p>
 	<p>Now, there’s another solution that you can use. You can make use of Access and set up <a href="https://support.cloudflare.com/hc/en-us/articles/115001376488-Configuring-Token-Authentication">Token Authentication</a> by using a pre-shared key and <a href="https://developers.cloudflare.com/workers/examples/auth-with-headers">configuring your Worker</a> to allow or deny access based on the pre-shared key, presented in the header. While this does allow you to lock down authentication on a per-Worker or per-service basis, the feedback that we’ve gotten from our internal teams who have implemented this is that it’s 1) cumbersome to manage and 2) requires the two service to speak over HTTP, and 3) doesn’t expose the client’s identity. And so, with these limitations in mind, we’re excited to bring mutual TLS authentication to Workers — an easy, scalable way to manage authentication and identity for anyone building on Workers.</p>
-	<h3 id="coming-soon-mutual-tls-for-workers">Coming soon: Mutual TLS for Workers</h3>
+	<h3>Coming soon: Mutual TLS for Workers</h3>
 	<p>We’re excited to announce that in the next few months, we’re going to be bringing mutual TLS support to Workers. Customers will be able to upload client certificates to Cloudflare and attach them in the <code>fetch()</code> requests within a Worker. That way, you can have per-Worker or even per-request level of granularity when it comes to authentication and identification.</p>
 	<p>When sending out the subrequest, Cloudflare will present the client certificate and the receiving server will be able to check:</p>
-	<p>1) Is this client presenting a valid certificate? <br>2) Within Cloudflare, what service or Worker is this request coming from?</p>
+	<ol>
+		<li>
+			<p>Is this client presenting a valid certificate?</p>
+		</li>
+		<li>
+			<p>Within Cloudflare, what service or Worker is this request coming from?</p>
+		</li>
+	</ol>
 	<p>This is one of our most highly requested features, both from customers and from internal teams, and we’re excited to launch it and make it a no-brainer for any developer to use Cloudflare as their platform for anything they want to build!</p>
 </div>

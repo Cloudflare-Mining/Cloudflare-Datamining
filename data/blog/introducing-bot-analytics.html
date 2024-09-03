@@ -1,44 +1,95 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/w3xy8GhBdIbn0kkOIykx6/e4b15a6563c67d158f4d0fa9e2880d75/image7-7.png" alt="" class="kg-image" width="1999" height="988" loading="lazy">
+
+	</figure>
 	<p>Bots — both good and bad — are everywhere on the Internet. <a href="https://radar.cloudflare.com">Roughly 40% of Internet traffic is automated</a>. Fortunately, Cloudflare offers a tool that can detect and block unwanted bots: we call it <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a>. This is the most recent platform in our long history of detecting bots for our customers. In fact, Cloudflare has always offered some form of bot detection. Over the past two years, our team has focused on building advanced detection engines, innovating as bots become more sophisticated, and creating new features.</p>
 	<p>Today, we are releasing Bot Analytics to help you visualize your automated traffic.</p>
-	<h3 id="background">Background</h3>
+	<h3>Background</h3>
 	<p>It’s worth including some background for those who are new to bots.</p>
 	<p>Many websites expect human behavior. When I shop online, I behave as anyone else would: I might search for a few items, read reviews when I find something interesting, and eventually complete an order. This is expected. It is a standard use of the Internet.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Unfortunately, without protection these sites can be ripe for exploitation. Those shoes I was looking at? They are limited edition sneakers that resell for five times the price. Sneaker hoarders clamor at the chance to buy a pair (or fifty). Or perhaps I just added a book to my cart: there are probably hundreds of online retailers that sell the same book, each one eager to offer the best price. These retailers desperately want to know what their competitors’ prices are.</p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PKDIUq43ZKgR4GprVqnrC/4a4ef8bce0a74cb411f4f72afa43a90b/image6-10.png" alt="" class="kg-image" width="1692" height="800" loading="lazy">
+
+	</figure>
+	<p>Unfortunately, without protection these sites can be ripe for exploitation. Those shoes I was looking at? They are limited edition sneakers that resell for five times the price. Sneaker hoarders clamor at the chance to buy a pair (or fifty). Or perhaps I just added a book to my cart: there are probably hundreds of online retailers that sell the same book, each one eager to offer the best price. These retailers desperately want to know what their competitors’ prices are.</p>
 	<p>You can see where this is going. While most humans make good use of the Internet, some use automated tools to perform abuse at scale. For example, attackers will deplete sneaker inventories by using automated bots to check out quickly. By the time humans click “add to cart,” bots have already paid for shipping. Humans hardly stand a chance. Similarly, online retailers keep track of their competitors with “price scraping” bots that collect pricing information. So when one retailer lowers a book price to \$10, another retailer’s bot will respond by pricing at \$9.99. This is how we end up with weird prices like \$12.32 for toilet paper. Worst of all, malicious bots are incentivized to hide their identities. They’re hidden among us.</p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image13-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25XdmwXLYGpXu9BvNPawjh/bc59a56c4d2bcaddc26db99c3569b4e1/image13-3.png" alt="" class="kg-image" width="497" height="165" loading="lazy">
+
+	</figure>
 	<p>Not all bots are bad. Cloudflare maintains a list of verified good bots that we keep separated from the rest. Verified bots are usually transparent about who they are: DuckDuckGo, for example, <a href="https://help.duckduckgo.com/duckduckgo-help-pages/results/duckduckbot">publicly lists</a> the IP addresses it uses for its search engine. This is a well-intentioned service that happens to be automated, so we verified it. We also verify bots for error monitoring and other tools.</p>
-	<h3 id="enter-bot-analytics">Enter: Bot Analytics<br></h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-28.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>Enter: Bot Analytics</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78OZrXRrska6hHPQQIdIJB/2a179374d11589b2f2facb6d8c1b5ca1/image2-28.png" alt="" class="kg-image" width="975" height="527" loading="lazy">
+
+	</figure>
 	<p>As discussed earlier, we built a Bot Management platform that intelligently detects bots on the Internet, allowing our customers to block bad ones and allow good ones. If you’re curious about how our solution works, read <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">here</a>.</p>
-	<p>Beginning today, we are going to <em>show</em> you the bots that reach your website. You can see these bots with a new tool called Bot Analytics. It’s fast, accurate, and loaded with information. You can query data up to one month in the past with no noticeable lag. To accomplish this, we exposed the data with GraphQL and paired it with <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">adaptive bitrate (ABR) technology</a> to dynamically load content. If you already have Bot Management added to your Cloudflare account, Bot Analytics is included in your service. Open up your dashboard and let’s take a tour…</p>
-	<h3 id="the-tour">The Tour</h3>
+	<p>Beginning today, we are going to <i>show</i> you the bots that reach your website. You can see these bots with a new tool called Bot Analytics. It’s fast, accurate, and loaded with information. You can query data up to one month in the past with no noticeable lag. To accomplish this, we exposed the data with GraphQL and paired it with <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">adaptive bitrate (ABR) technology</a> to dynamically load content. If you already have Bot Management added to your Cloudflare account, Bot Analytics is included in your service. Open up your dashboard and let’s take a tour…</p>
+	<h3>The Tour</h3>
 	<p>First: where to go? Bot Analytics lives under the Firewall tab of the dashboard. Once you’re in the Firewall, go to “Overview” and click the second thumbnail on the left. Remember, Bot Management must be added to your account for full access to analytics.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<p>It’s worth noting that Enterprise sites <em>without</em> Bot Management can see a snapshot of their bot traffic. This data is updated in real time and should help you determine if you have a bot problem. Generally speaking, if you have a double-digit percentage of automated traffic, you might be spending more on origin costs than you have to. More importantly, you might be losing revenue or sensitive information to inventory hoarding and credential stuffing.</p>
-	<p>“Requests by bot score” is the first section on the page. Here, we show traffic over time, but we split it vertically by the traffic <em>type</em>. Green segments represent verified bots, while shades of purple and blue show varying degrees of bot/human likelihood.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fb4sfLtgjis1FjxqxOomf/19b1b126f63b48f634472981fe6222df/image3.gif" alt="" class="kg-image" width="800" height="547" loading="lazy">
+
+	</figure>
+	<p>It’s worth noting that Enterprise sites <i>without</i> Bot Management can see a snapshot of their bot traffic. This data is updated in real time and should help you determine if you have a bot problem. Generally speaking, if you have a double-digit percentage of automated traffic, you might be spending more on origin costs than you have to. More importantly, you might be losing revenue or sensitive information to inventory hoarding and credential stuffing.</p>
+	<p>“Requests by bot score” is the first section on the page. Here, we show traffic over time, but we split it vertically by the traffic <i>type</i>. Green segments represent verified bots, while shades of purple and blue show varying degrees of bot/human likelihood.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZaSbc6cWjucmYClGvzuS5/a10c3c9b6bbd5bcd0a75345986fd5e80/image4-18.png" alt="" class="kg-image" width="901" height="575" loading="lazy">
+
+	</figure>
 	<p>“Bot score distribution” is next. This shows similar data, but we display it horizontally without the notion of time. Use the slider below to filter on subsets of traffic and watch the rest of the page adapt.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image11.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We recommend that you use the slider to find your ideal bot threshold. In other words: what is the cutoff for suspicious traffic on your site? We generally consider traffic below 30 to be automated, but customers might choose to challenge traffic below 40 or block traffic below 10 (you can even do both!). You should set a threshold that is ambitious but not too aggressive. If your traffic looks like the example below, consider setting a threshold at a “drop off” point like 3 or 14. Why? Notice that the request density is <em>very</em> high near scores 1-2 and 12-13. Many of these requests will have similar characteristics, meaning that the scores immediately above them (3 and 14) offer some differentiating quality. These are the most promising places to segment your bot rules. Notably, not every graph is this pronounced.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image9-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BYVWPMCGAaG5pXPxaqEmv/627d8c692198c1165f28a3713643543c/image11.gif" alt="" class="kg-image" width="800" height="302" loading="lazy">
+
+	</figure>
+	<p>We recommend that you use the slider to find your ideal bot threshold. In other words: what is the cutoff for suspicious traffic on your site? We generally consider traffic below 30 to be automated, but customers might choose to challenge traffic below 40 or block traffic below 10 (you can even do both!). You should set a threshold that is ambitious but not too aggressive. If your traffic looks like the example below, consider setting a threshold at a “drop off” point like 3 or 14. Why? Notice that the request density is <i>very</i> high near scores 1-2 and 12-13. Many of these requests will have similar characteristics, meaning that the scores immediately above them (3 and 14) offer some differentiating quality. These are the most promising places to segment your bot rules. Notably, not every graph is this pronounced.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76J7q8lsSDNiYinbUxSbPj/b7c2d1edda734a77b5e230b96c07a939/image9-7.png" alt="" class="kg-image" width="936" height="335" loading="lazy">
+
+	</figure>
 	<p>“Bot score source” sits lower on the page. Here, you can examine the detection engines that are responsible for scoring your traffic. If you can’t remember the purpose of each engine, simply hover over the tooltip to view a brief description. Customers may wonder why some requests are flagged as “not computed.” This commonly occurs when Cloudflare has issued an error page on your behalf. Perhaps a visitor’s request was met with a gateway timeout (error 504), in which case Cloudflare responded with a branded error page. The error page would not have warranted a challenge or a block, so we did not spend time calculating a bot score. We <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">published another blog post</a> that provides an overview of the most common sources, including <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> and heuristics.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image8-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yoWsQlSyd7sSxwTFNW17w/b8c3f1e7c6b1ad806449e75121660d03/image8-5.png" alt="" class="kg-image" width="945" height="204" loading="lazy">
+
+	</figure>
 	<p>“Top requests by source” is the final section of Bot Analytics. Although it’s not quite as colorful as the sections above, this section grounds Bot Analytics in highly specific data. You can filter or exclude request attributes, including IP addresses, user agents, and ASNs. In the next section, we’ll use this to spot a <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot-attack">bot attack</a>.</p>
-	<h3 id="let-s-spot-a-bot-attack-">Let's Spot A Bot Attack!</h3>
+	<h3>Let's Spot A Bot Attack!</h3>
 	<p>First, I’m going to use the “bot score source” tool to select the most obvious bot requests — those detected by our heuristics engine. This provides us with the following information, some of which has been redacted for privacy reasons:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>I already suspect a correlation between a few of these attributes. First, the IP addresses all have <em>very</em> similar request counts. No human would access a site 22,000 times, and the uniformity across IPs 2-5 suggests foul play. Not surprisingly, the same pattern occurs for user agents on the right. User agents tell us about the browser and device associated with a particular request. When Bot Analytics shows <em>this</em> much uniformity and presents clear anomalies in country and ASN, I get suspicious (and you should too). I’m now going to filter on these anomalies to see if my instinct is right:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image12.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tWLaakMDU1XsVQSDfSlYw/93417942e347576a96f9f038aeadd5e7/image1.jpg" alt="" class="kg-image" width="1852" height="1378" loading="lazy">
+
+	</figure>
+	<p>I already suspect a correlation between a few of these attributes. First, the IP addresses all have <i>very</i> similar request counts. No human would access a site 22,000 times, and the uniformity across IPs 2-5 suggests foul play. Not surprisingly, the same pattern occurs for user agents on the right. User agents tell us about the browser and device associated with a particular request. When Bot Analytics shows <i>this</i> much uniformity and presents clear anomalies in country and ASN, I get suspicious (and you should too). I’m now going to filter on these anomalies to see if my instinct is right:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kh839KKKuO74e0jDpBgTu/4d64f9e1e4dc411ea4d49968a40a161f/image12.jpg" alt="" class="kg-image" width="1872" height="1360" loading="lazy">
+
+	</figure>
 	<p>The trends hold true — to be sure, I briefly expanded the table and found nine separate IP addresses exhibiting the same behavior. This is likely an aggressive content scraper. Notably, it is not marked as a verified bot, so Bot Management issued the lowest possible score and flagged it as “automated.” At the top of Bot Analytics, I will narrow down the traffic and keep the time period at 24 hours:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image10.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/XuwBlGBWjAfic4QHBRht7/a08553becd540a77045e09af02093e32/image10.jpg" alt="" class="kg-image" width="1852" height="1420" loading="lazy">
+
+	</figure>
 	<p>The most severe attacks come and go. This traffic is clearly sustained, and my best guess is that someone is frequently scraping the homepage for content. This isn’t the most malicious of attacks, but content is still being taken. If I wanted to, I could set a firewall rule to target this bot score or any of the filters I used.</p>
-	<h3 id="try-it-out">Try It Out</h3>
+	<h3>Try It Out</h3>
 	<p>As a reminder, all Enterprise customers will be able to see a snapshot of their bot traffic. Even if you don’t have <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> for your site, visit the Firewall for some high-level insights that are updated in real time.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SxTiDi4jTTjw3BydRiaZG/30af1f2c39b3621f0b1a0416acc00678/image5-12.png" alt="" class="kg-image" width="925" height="217" loading="lazy">
+
+	</figure>
 	<p>And for those of you with Bot Management — check out Bot Analytics! It’s live now, and we hope you’ll have fun using it. Keep your eyes open for new analytics features in the coming months.</p>
 </div>

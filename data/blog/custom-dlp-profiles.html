@@ -1,54 +1,110 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/custom-dlp-profiles-ja-jp">日本語</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-4.png" class="kg-image" alt="Announcing Custom DLP profiles" loading="lazy"></figure>
-	<h3 id="introduction">Introduction</h3>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/custom-dlp-profiles">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qJZd1dizqFIdaPcbY7Xxo/2d318a2177e22bcdf3e0272797fd8a34/image5-4.png" alt="Announcing Custom DLP profiles" class="kg-image" width="1800" height="1012" loading="lazy">
+
+	</figure>
+	<h3>Introduction</h3>
 	<p>Where does sensitive data live? Who has access to that data? How do I know if that data has been improperly shared or leaked? These questions keep many IT and security administrators up at night. The goal of <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">data loss prevention (DLP)</a> is to give administrators the desired visibility and control over their sensitive data.</p>
 	<p>We shipped the <a href="https://blog.cloudflare.com/inline-dlp-ga">general availability of DLP</a> in September 2022, offering Cloudflare One customers better protection of their sensitive data. With DLP, customers can identify sensitive data in their corporate traffic, evaluate the intended destination of the data, and then allow or block it accordingly -- with details logged as permitted by your privacy and sovereignty requirements. We began by offering customers predefined detections for identifier numbers (e.g. Social Security #s) and financial information (e.g. credit card #s). Since then, nearly every customer has asked:</p>
-	<blockquote>“When can I build my own detections?”</blockquote>
+	<blockquote>
+		<p>“When can I build my own detections?”</p>
+	</blockquote>
 	<p>Most organizations care about credit card numbers, which use standard patterns that are easily detectable. But the data patterns of intellectual property or trade secrets vary widely between industries and companies, so customers need a way to detect the loss of their unique data. This can include internal project names, unreleased product names, or unannounced partner names.</p>
 	<p>As of today, your organization can build custom detections to identify these types of sensitive data using Cloudflare One. That’s right, today you are able to build Custom DLP Profile using the same regular expression approach that is used in policy building across our platform.</p>
-	<h3 id="how-to-use-it">How to use it</h3>
+	<h3>How to use it</h3>
 	<p><a href="https://www.cloudflare.com/products/zero-trust/dlp">Cloudflare’s DLP</a> is embedded in our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway (SWG)</a> product, <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gatewa</a>y, which routes your corporate traffic through Cloudflare for fast, safe Internet browsing. As your traffic passes through Cloudflare, you can inspect that HTTP traffic for sensitive data and apply DLP policies.</p>
 	<p>Building DLP custom profiles follows the same intuitive approach you’ve come to expect from Cloudflare.</p>
 	<p>First, once within the Zero Trust dashboard, navigate to the DLP Profiles tab under Gateway:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kfzsPRGyGAS35yu7A0uC9/c834a01c9b823f46b68193e7b53802d1/image2-13.png" alt="" class="kg-image" width="1198" height="428" loading="lazy">
+
+	</figure>
 	<p>Here you will find any available DLP profiles, either predefined or custom:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-20.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Select to <strong>Create Profile</strong> to begin a new one. &nbsp;After providing a name and description, select <strong>Add detection entry</strong> to add a custom regular expression. A <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>, or regex, is a sequence of characters that specifies a search pattern in text, and is a standard way for administrators to achieve the flexibility and granularity they need in policy building.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/199ahBcyglz52Lpsofvl1F/cdd2709bd3e7e1e1e775729b5f578bb7/image1-20.png" alt="" class="kg-image" width="1999" height="748" loading="lazy">
+
+	</figure>
+	<p>Select to <b>Create Profile</b> to begin a new one. &nbsp;After providing a name and description, select <b>Add detection entry</b> to add a custom regular expression. A <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>, or regex, is a sequence of characters that specifies a search pattern in text, and is a standard way for administrators to achieve the flexibility and granularity they need in policy building.</p>
 	<p>Cloudflare Gateway currently supports regexes in HTTP policies using the <a href="https://docs.rs/regex/latest/regex/#syntax">Rust regex crate</a>. For consistency, we used the same crate to offer custom DLP detections. For documentation on our regex support, see <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile">our documentation</a>.</p>
 	<p>Regular expressions can be used to build custom PII detections of your choosing, such as email addresses, or to detect keywords for sensitive intellectual property.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KclkjaZOxF6PMVkY0L2yM/f671f4976c9bdd9f8f7c56fb2ba76433/image3-9.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
+
+	</figure>
 	<p>Provide a name and a regex of your choosing. Every entry in a DLP profile is a new detection that you can scan for in your corporate traffic. Our <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile">documentation</a> provides resources to help you create and test Rust regexes.</p>
 	<p>Below is an example of regex to detect a simple email address:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image7-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>When you are done, you will see the entry in your profile. &nbsp;You can turn entries on and off in the <strong>Status</strong> field for easier testing.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QUMf9IdSNh6i81pYWdzUb/99ee96c462bde9e9b89f3cc70402cedd/image7-1.png" alt="" class="kg-image" width="1340" height="472" loading="lazy">
+
+	</figure>
+	<p>When you are done, you will see the entry in your profile. &nbsp;You can turn entries on and off in the <b>Status</b> field for easier testing.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XCjno9mGXiEPz3oCv8BwL/a0cdba6d8d3b9ccae92a83aa4871234d/image4-5.png" alt="" class="kg-image" width="1999" height="1053" loading="lazy">
+
+	</figure>
 	<p>The custom profile can then be applied to traffic using an HTTP policy, just like a predefined profile. Here both a predefined and custom profile are used in the same policy, blocking sensitive traffic to dlptest.com:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="our-dlp-roadmap">Our DLP roadmap</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cUsE6rB7AcS5oQMQVicXs/5f348dc4f7841bf23c7f6cf6027d74f4/image6.png" alt="" class="kg-image" width="1910" height="1568" loading="lazy">
+
+	</figure>
+	<h3>Our DLP roadmap</h3>
 	<p>This is just the start of our DLP journey, and we aim to grow the product exponentially in the coming quarters. In Q4 we delivered:</p>
 	<ul>
-		<li>Expanded Predefined DLP Profiles</li>
-		<li>Custom DLP Profiles</li>
-		<li>PDF scanning support</li>
-		<li>Upgraded file name logging</li>
+		<li>
+			<p>Expanded Predefined DLP Profiles</p>
+		</li>
+		<li>
+			<p>Custom DLP Profiles</p>
+		</li>
+		<li>
+			<p>PDF scanning support</p>
+		</li>
+		<li>
+			<p>Upgraded file name logging</p>
+		</li>
 	</ul>
 	<p>Over the next quarters, we will add a number of features, including:</p>
 	<ul>
-		<li>Data at rest scanning with Cloudflare CASB</li>
-		<li>Minimum DLP match counts</li>
-		<li>Microsoft Sensitivity Label support</li>
-		<li>Exact Data Match (EDM)</li>
-		<li>Context analysis</li>
-		<li>Optical Character Recognition (OCR)</li>
-		<li>Even more predefined DLP detections</li>
-		<li>DLP analytics</li>
-		<li>Many more!</li>
+		<li>
+			<p>Data at rest scanning with Cloudflare CASB</p>
+		</li>
+		<li>
+			<p>Minimum DLP match counts</p>
+		</li>
+		<li>
+			<p>Microsoft Sensitivity Label support</p>
+		</li>
+		<li>
+			<p>Exact Data Match (EDM)</p>
+		</li>
+		<li>
+			<p>Context analysis</p>
+		</li>
+		<li>
+			<p>Optical Character Recognition (OCR)</p>
+		</li>
+		<li>
+			<p>Even more predefined DLP detections</p>
+		</li>
+		<li>
+			<p>DLP analytics</p>
+		</li>
+		<li>
+			<p>Many more!</p>
+		</li>
 	</ul>
 	<p>Each of these features will offer you new data visibility and control solutions, and we are excited to bring these features to customers very soon.</p>
-	<h3 id="how-do-i-get-started">How do I get started?</h3>
+	<h3>How do I get started?</h3>
 	<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> <a href="https://blog.cloudflare.com/custom-dlp-profiles/edit">network-as-a-service</a> platform that connects users to enterprise resources. Our <a href="https://blog.cloudflare.com/inline-dlp-ga">GA blog announcement</a> provides more detail about using Cloudflare One to onboard traffic to DLP.</p>
 	<p>To get access to DLP via Cloudflare One, <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us">reach out for a consultation</a>, or contact your account manager.</p>
 </div>

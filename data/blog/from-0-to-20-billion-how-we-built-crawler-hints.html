@@ -1,73 +1,133 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-57.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xs3odwiEbW2X4uv6wNNdA/647b85d38c09f3d504cdef6d4be642f6/image2-57.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>In July 2021, as part of <a href="https://blog.cloudflare.com/welcome-to-cloudflare-impact-week">Impact Innovation Week</a>, we announced our intention to launch <a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches">Crawler Hints</a> as a means to reduce the environmental impact of web searches. We spent the weeks following the announcement hard at work, and in October 2021, we announced <a href="https://blog.cloudflare.com/cloudflare-now-supports-indexnow">General Availability for the first iteration of the product</a>. This post explains how we built it, some of the interesting engineering problems we had to solve, and shares some metrics on how it's going so far.</p>
-	<h2 id="before-we-begin-">Before We Begin...</h2>
+	<h2>Before We Begin...</h2>
 	<p>Search indexers crawl sites periodically to check for new content. Algorithms vary by search provider, but are often based on either a regular interval or cadence of past updates, and these crawls are often not aligned with real world content changes. This naive crawling approach may harm customer page rank and also works to the detriment of search engines with respect to their operational costs and environmental impact. To make the Internet greener and more energy efficient, the goal of Crawler Hints is to help search indexers make more informed decisions on when content has changed, saving valuable compute cycles/bandwidth and having a net positive environmental impact.</p>
 	<p>Cloudflare is in an advantageous position to help inform crawlers of content changes, as we are often the “front line” of the interface between site visitors and the origin server where the content updates take place. This grants us knowledge of some key data points like headers, content hashes, and site purges among others. For customers who have opted in to Crawler Hints, we leverage this data to generate a “content freshness score” using an ensemble of active and passive signals from our customer base and request flow. To help with efficiency, Crawler Hints helps to improve SEO for websites behind Cloudflare, improves relevance for search engine users, and improves origin responsiveness by reducing bot traffic to our customers’ origin servers.</p>
 	<p>A high level design of the system we built looks as follows:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-42.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kSfCs22YboeTPDLdbffsG/a3807415d5923268f7dbda1fe08cd10a/image3-42.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
+
+	</figure>
 	<p>In this blog we will dig into each aspect of it in more detail.</p>
-	<h2 id="keeping-things-fresh">Keeping Things Fresh</h2>
-	<p><a href="https://www.cloudflare.com/network">Cloudflare has a large global network spanning 250 cities</a>. &nbsp;A popular use case for Cloudflare is to use our CDN product to cache your website's assets so that users accessing your site can benefit from lightning fast response times. You can read more about how Cloudflare manages our cache <a href="https://blog.cloudflare.com/why-we-started-putting-unpopular-assets-in-memory">here</a>. The important thing to call out for the purpose of this post is that the cache is Data Center local. A cache hit in London might be a cache miss in San Francisco unless you have opted-in to<a href="https://blog.cloudflare.com/orpheus"> tiered-caching</a>, but that is beyond the scope of this post.</p>
-	<p>For Crawler Hints to work, we make use of a number of signals available at request time to make an informed decision on the “freshness” of content. For our first iteration of Crawler Hints, we used a cache miss from Cloudflare’s cache as a starting basis. Although a naive signal on its own, getting the data pipelines in place to forward cache miss data from our global network to our control plane meant we would have everything in place to iterate on and improve the signal processing quickly going forward. To do this, we leveraged some existing services from our data team that takes request data , marshalls it into <a href="https://capnproto.org">Cap'n Proto format</a>, and forwards it to a message bus (we use apache Kafka). These messages include the URLs of the resources that have met the signal criteria, along with some additional metadata for analytics/future improvement. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-34.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The amount of traffic our global network receives is substantial. We serve over 28 million HTTP requests per second on average, with more than 35 million HTTP requests per second at peak. Typically, Cloudflare teams sample this data to enable products <a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">such as being alerted when you are under attack</a>. For Crawler Hints, every cache miss is important. Therefore, 100% of all cache misses for opted-in sites were sent for further processing, and we’ll discuss more on opt-in later. </p>
-	<h2 id="redis-as-a-distributed-buffer">Redis as a Distributed Buffer</h2>
+	<h2>Keeping Things Fresh</h2>
+	<p><a href="https://www.cloudflare.com/network">Cloudflare has a large global network spanning 250 cities</a>. &nbsp;A popular use case for Cloudflare is to use our CDN product to cache your website's assets so that users accessing your site can benefit from lightning fast response times. You can read more about how Cloudflare manages our cache <a href="https://blog.cloudflare.com/why-we-started-putting-unpopular-assets-in-memory">here</a>. The important thing to call out for the purpose of this post is that the cache is Data Center local. A cache hit in London might be a cache miss in San Francisco unless you have opted-in to <a href="https://blog.cloudflare.com/orpheus">tiered-caching</a>, but that is beyond the scope of this post.</p>
+	<p>For Crawler Hints to work, we make use of a number of signals available at request time to make an informed decision on the “freshness” of content. For our first iteration of Crawler Hints, we used a cache miss from Cloudflare’s cache as a starting basis. Although a naive signal on its own, getting the data pipelines in place to forward cache miss data from our global network to our control plane meant we would have everything in place to iterate on and improve the signal processing quickly going forward. To do this, we leveraged some existing services from our data team that takes request data , marshalls it into <a href="https://capnproto.org">Cap'n Proto format</a>, and forwards it to a message bus (we use apache Kafka). These messages include the URLs of the resources that have met the signal criteria, along with some additional metadata for analytics/future improvement.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XeWU8Bx1SuIOajaVbu3Kd/f7c02e359c3322d52b79cdd66257a9a7/image4-34.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
+
+	</figure>
+	<p>The amount of traffic our global network receives is substantial. We serve over 28 million HTTP requests per second on average, with more than 35 million HTTP requests per second at peak. Typically, Cloudflare teams sample this data to enable products <a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">such as being alerted when you are under attack</a>. For Crawler Hints, every cache miss is important. Therefore, 100% of all cache misses for opted-in sites were sent for further processing, and we’ll discuss more on opt-in later.</p>
+	<h2>Redis as a Distributed Buffer</h2>
 	<p>With messages buffered in Kafka, we can now begin the work of aggregation and deduplication. We wrote a consumer service that we call an ingestor. The ingestor reads the data from Kafka. The ingestor performs validation to ensure proper sanitization and data integrity and passes this data onto the next stage of the system. We run the ingestor as part of a Kafka consumer group, allowing us to scale our consumer count up to the partition size as throughput increases.</p>
 	<p>We ultimately want to deliver a set of “fresh” content to our search partners on a dynamic interval. For example, we might want to send a batch of 10,000 URLs every two minutes. There are, however, a couple of important things to call out though:</p>
 	<ul>
-		<li>There should be no duplicate resources in each batch.</li>
-		<li>We should strike a balance in our size and frequency such that overall request size isn’t too large, but big enough to remove some pressure on the receiving API by not sending too <em>many </em>requests at once. </li>
+		<li>
+			<p>There should be no duplicate resources in each batch.</p>
+		</li>
+		<li>
+			<p>We should strike a balance in our size and frequency such that overall request size isn’t too large, but big enough to remove some pressure on the receiving API by not sending too <i>many</i> requests at once.</p>
+		</li>
 	</ul>
 	<p>For the deduplication, the simplest thing to do would be to have an in-memory map in our service to track resources between a pre-specified interval. A naive implementation in Go might look something like this.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-22.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vlmka7b85QzcVxziLLGdR/92a97efa5644dbc023ba09c3c204326d/image5-22.png" alt="" class="kg-image" width="1144" height="624" loading="lazy">
+
+	</figure>
 	<p>The problem with this approach is we have little resilience. If the service was to crash, we would lose all the data for our current batch. Furthermore, if we were to run multiple instances of our services, they would all have a different “view” of which resources they had seen before and therefore we would not be deduplicating.To mitigate this issue, we decided to use a specialist caching service. There are a number of distributed caches that would fit the bill, but we chose Redis given our team’s familiarity with operating it at scale.</p>
-	<p>Redis is well known as a Key Value(KV) store often used for caching things,optionally with a specified Time To Live(TTL). Perhaps slightly less obvious is its value as a distributed buffer, housing ephemeral data with periodic flush/tear-downs. For Crawler Hints, we leveraged both these traits via a multi-generational, multi-cluster setup to achieve a highly available rolling aggregation service. </p>
+	<p>Redis is well known as a Key Value(KV) store often used for caching things,optionally with a specified Time To Live(TTL). Perhaps slightly less obvious is its value as a distributed buffer, housing ephemeral data with periodic flush/tear-downs. For Crawler Hints, we leveraged both these traits via a multi-generational, multi-cluster setup to achieve a highly available rolling aggregation service.</p>
 	<p>Two standalone Redis clusters were spun up. For each generation of request data, one cluster would be designated as the active primary. The validated records would be inserted as keys on the primary, serving the dual purpose of buffering while also deduplicating since Redis keys are unique. Separately, a downstream service (more on this later!) would periodically issue the command for these inserters to switch from the active primary (cluster A) to the inactive cluster (cluster B). Cluster A could then be flushed with records being batch read in a size of our choosing.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image9-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="buffering-for-dispatch">Buffering for Dispatch</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IYn9s1nmM2Qcci2c5A8cn/b79bfeac09e135b8faaef35263481d47/image9-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<h2>Buffering for Dispatch</h2>
 	<p>At this point, we have clean, batched data. Things are looking good! However, there’s one small hiccup in the plan: we’re reading these batches from Redis at some set interval. What if it takes longer to dispatch than the interval itself? What if the search partner API is having issues?</p>
-	<p>We need a way to ensure the durability of the batch URLs and reduce the impact of any dispatch issues. To do this, we revisit an old friend from earlier: Kafka. The batches that get read from Redis are then fed into a Kafka topic. We wrote a Kafka consumer that we call the “dispatcher service” which runs within a consumer group to enable us to scale it if necessary just like the ingestor. The dispatcher reads from the Kafka topic and sends a batch of resources to each of our API partners. </p>
+	<p>We need a way to ensure the durability of the batch URLs and reduce the impact of any dispatch issues. To do this, we revisit an old friend from earlier: Kafka. The batches that get read from Redis are then fed into a Kafka topic. We wrote a Kafka consumer that we call the “dispatcher service” which runs within a consumer group to enable us to scale it if necessary just like the ingestor. The dispatcher reads from the Kafka topic and sends a batch of resources to each of our API partners.</p>
 	<p>Launching in tandem with Cloudflare, Crawler Hints was a joint venture between a few early adopters in the search engine space to provide a means for sites to inform indexers of content changes called IndexNow. <a href="https://blog.cloudflare.com/cloudflare-now-supports-indexnow">You can read more about this launch here.</a> IndexNow is a large part of what makes Crawler Hints possible. As part of its manifest, it provides a common API spec to publish resources that should be re-indexed. The standardized API makes abstracting the communication layer quite simple for the partners that support it. “Pushing” these signals to our search engine partners is a big step away from the inefficient “Pull” based model that is used today (you can read more about that <a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches">here</a>). We launched with Yandex and Bing as Search Engine Partners.</p>
 	<p>To ensure we can add more partners in the future, we defined an interface which we call a “Hinter”.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7K0wQWVx2hciGxZVwFMxM6/7168bc31d8e84e3dda3cccb4c19c1f37/image8-12.png" alt="" class="kg-image" width="1346" height="552" loading="lazy">
+
+	</figure>
 	<p>We then satisfy this interface for each partner that we work with. We return a custom error from the Hinter service that is of type *indexers.Error. The definition of which is:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-84.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Aq6eqraSEg1TpQ2b2QJK9/893ec595c792f9acb5c62e7142fc82cd/image1-84.png" alt="" class="kg-image" width="1632" height="840" loading="lazy">
+
+	</figure>
 	<p>This allows us to “bubble up” information about which indexer has failed and increment metrics and retry only those calls to indexers which have failed.</p>
 	<p>This all culminates together with the following in our service layer:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-21.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fwN6ZGTRJ5NARBrJWLfOq/0f0f9de0887da85f3cb1135697173474/image6-21.png" alt="" class="kg-image" width="1970" height="1056" loading="lazy">
+
+	</figure>
 	<p>Simple, performant, maintainable, AND easy to add more partners in the future.</p>
-	<h2 id="rolling-out-crawler-hints">Rolling out Crawler Hints</h2>
-	<p>At Cloudflare, we often release things that haven’t been done before at scale. This project is a great example of that. Trying to gauge how many users would be interested in this product and what the uptake might be like on day one, day ten, and day one thousand is close to impossible. As engineers responsible for running this system, it is essential we build in checks and balances so that the system does not become overwhelmed and responds appropriately. For this particular project, there are three different types of “protection” we put in place. These are: </p>
+	<h2>Rolling out Crawler Hints</h2>
+	<p>At Cloudflare, we often release things that haven’t been done before at scale. This project is a great example of that. Trying to gauge how many users would be interested in this product and what the uptake might be like on day one, day ten, and day one thousand is close to impossible. As engineers responsible for running this system, it is essential we build in checks and balances so that the system does not become overwhelmed and responds appropriately. For this particular project, there are three different types of “protection” we put in place. These are:</p>
 	<ul>
-		<li>Customer opt-in</li>
-		<li>Monitoring &amp; Alerts</li>
-		<li>System resilience via “self-healing”</li>
+		<li>
+			<p>Customer opt-in</p>
+		</li>
+		<li>
+			<p>Monitoring &amp; Alerts</p>
+		</li>
+		<li>
+			<p>System resilience via “self-healing”</p>
+		</li>
 	</ul>
-	<h3 id="customer-opt-in">Customer opt-in</h3>
+	<h3>Customer opt-in</h3>
 	<p>Cloudflare takes any changes that can impact customer traffic flow seriously. Considering Crawler Hints has the potential to change how sites are seen externally (even if in this instance the site’s viewers are robots!) and can impact things like SEO and bandwidth usage, asking customers to opt-in is a sensible default. By asking customers to opt-in to the service, we can start to get an understanding of our system’s capacity and look for bottle necks and how to remove them. To do this, we make extensive use of Prometheus, Grafana, and Kibana.</p>
-	<h3 id="monitoring-alerting">Monitoring &amp; Alerting</h3>
+	<h3>Monitoring &amp; Alerting</h3>
 	<p>We do our best to make our systems as “self-healing” and easy to run as possible, but as they say, “By failing to prepare, you are preparing to fail.” We therefore invest a lot of time creating ways to track the health and performance of our system and creating automated alerts when things fall outside of expected bounds.</p>
 	<p>Below is a small sample of the Grafana dashboard we created for this project. As you can see, we can track customer enablement and the rate of hint dispatch in real time. The bottom two panels show the throughput of our Kafka clusters by partition. Even just these four metrics give us a lot of insight into how things are going, but we also track (as well as other things):</p>
 	<ul>
-		<li>Lag on Kafka by partition (how far behind real time we are)</li>
-		<li>Bad messages received from Kafka</li>
-		<li>Amount of URLs processed per “run”</li>
-		<li>Response code per index partner over time</li>
-		<li>Response time of partner API over time</li>
-		<li>Health of the Redis clusters (how much memory is used, frequency of commands we are using received by the cluster)</li>
-		<li>Memory, CPU usage, and pods available against configured limits/requests</li>
+		<li>
+			<p>Lag on Kafka by partition (how far behind real time we are)</p>
+		</li>
+		<li>
+			<p>Bad messages received from Kafka</p>
+		</li>
+		<li>
+			<p>Amount of URLs processed per “run”</p>
+		</li>
+		<li>
+			<p>Response code per index partner over time</p>
+		</li>
+		<li>
+			<p>Response time of partner API over time</p>
+		</li>
+		<li>
+			<p>Health of the Redis clusters (how much memory is used, frequency of commands we are using received by the cluster)</p>
+		</li>
+		<li>
+			<p>Memory, CPU usage, and pods available against configured limits/requests</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>It seems a lot to track, but this information is invaluable to us, and we use it to generate alerts that notify the on-call engineer if a threshold is breached. For example, we have an alert that would escalate to an engineer if our Redis cluster approached 80% capacity. For some thresholds we specify, we may want the system to “self-heal.” In this instance, we would want an engineer to investigate as this is outside the bounds of “normal,” and it might be that something is not working as expected. An alternative reason that we might receive alerts is that our product has increased in popularity beyond our expectations, and we simply need to increase the memory limit. This requires context and is therefore best left to a human to make this decision. </p>
-	<h3 id="system-resilience-via-self-healing-">System Resilience via “self-healing”</h3>
-	<p>We do everything we can to not disturb on-call engineers, and therefore, we try to make the system as “self-healing” as possible. We also don’t want to have too much extra resource running as it can be expensive and use limited capacity that another &nbsp;Cloudflare service might need more - it's a trade off. &nbsp;To do this, we make use of a few patterns and tools common in every distributed engineer’s toolbelt. Firstly, we deploy on Kubernetes. This enables us to make use of great features like <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale">Horizontal Pod Autoscaling</a>. When any of our pods reach ~80% memory usage, a new pod is created which will pick up some of the slack up to a predefined limit. </p>
-	<p>Secondly, by using a message bus, we get a lot of control over the amount of “work” our services have to do in a given time frame. In general, a message bus is “pull” based. If we want more work, we ask for it. If we want less work, we pull less. This holds for the most part, but with a system where being close to real time is important, it is essential that we monitor the “lag” of the topic, or how far we are behind real time. If we are too far behind, we may want to introduce more partitions or consumers. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bunGQ2Uvk8bZ5jdRz3t6G/b92361b0b84649cc81d005d566dc853e/image7-12.png" alt="" class="kg-image" width="1999" height="248" loading="lazy">
+
+	</figure>
+	<p>It seems a lot to track, but this information is invaluable to us, and we use it to generate alerts that notify the on-call engineer if a threshold is breached. For example, we have an alert that would escalate to an engineer if our Redis cluster approached 80% capacity. For some thresholds we specify, we may want the system to “self-heal.” In this instance, we would want an engineer to investigate as this is outside the bounds of “normal,” and it might be that something is not working as expected. An alternative reason that we might receive alerts is that our product has increased in popularity beyond our expectations, and we simply need to increase the memory limit. This requires context and is therefore best left to a human to make this decision.</p>
+	<h3>System Resilience via “self-healing”</h3>
+	<p>We do everything we can to not disturb on-call engineers, and therefore, we try to make the system as “self-healing” as possible. We also don’t want to have too much extra resource running as it can be expensive and use limited capacity that another &nbsp;Cloudflare service might need more - it's a trade off. &nbsp;To do this, we make use of a few patterns and tools common in every distributed engineer’s toolbelt. Firstly, we deploy on Kubernetes. This enables us to make use of great features like <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale">Horizontal Pod Autoscaling</a>. When any of our pods reach ~80% memory usage, a new pod is created which will pick up some of the slack up to a predefined limit.</p>
+	<p>Secondly, by using a message bus, we get a lot of control over the amount of “work” our services have to do in a given time frame. In general, a message bus is “pull” based. If we want more work, we ask for it. If we want less work, we pull less. This holds for the most part, but with a system where being close to real time is important, it is essential that we monitor the “lag” of the topic, or how far we are behind real time. If we are too far behind, we may want to introduce more partitions or consumers.</p>
 	<p>Finally, networks fail. We therefore add retry policies to all HTTP calls we make before reporting them a failure. For example, if we were to receive a 500 (Internal Server Error) from one of our partner APIs, we would retry up to five times using an exponential backoff strategy before reporting a failure.</p>
-	<h2 id="data-from-the-first-couple-of-months">Data from the first couple of months</h2>
+	<h2>Data from the first couple of months</h2>
 	<p>Since the release of Crawler Hints on October 18, 2021 until December 15, 2021, Crawler Hints has processed over twenty five billion crawl signals, has been opted-in to by more than 81,000 customers, and has handled roughly 18,000 requests per second. It’s been an exciting project to be a part of, and we are just getting started.</p>
-	<h2 id="what-s-next">What’s Next?</h2>
-	<p>We will continue to work with our partners to improve the standard even further and continue to improve the signaling on our side to ensure the most valuable information is being pushed on behalf of our customers in a timely manner. </p>
-	<p><em><strong>If you're interested in building scalable services and solving interesting technical problems, we are hiring engineers on our team in </strong></em><a href="https://boards.greenhouse.io/cloudflare/jobs/3129759?gh_jid=3129759"><em><strong>Austin</strong></em></a><em><strong>, </strong></em><a href="https://boards.greenhouse.io/cloudflare/jobs/3231716?gh_jid=3231716"><em><strong>Lisbon</strong></em></a><em><strong>, and </strong></em><a href="https://boards.greenhouse.io/cloudflare/jobs/3231718?gh_jid=3231718"><em><strong>London</strong></em></a><em><strong>.</strong></em></p>
+	<h2>What’s Next?</h2>
+	<p>We will continue to work with our partners to improve the standard even further and continue to improve the signaling on our side to ensure the most valuable information is being pushed on behalf of our customers in a timely manner.</p>
+	<p><b><i>If you're interested in building scalable services and solving interesting technical problems, we are hiring engineers on our team in</i></b> <a href="https://boards.greenhouse.io/cloudflare/jobs/3129759?gh_jid=3129759"><b><i>Austin</i></b></a><b><i>,</i></b> <a href="https://boards.greenhouse.io/cloudflare/jobs/3231716?gh_jid=3231716"><b><i>Lisbon</i></b></a><b><i>, and</i></b> <a href="https://boards.greenhouse.io/cloudflare/jobs/3231718?gh_jid=3231718"><b><i>London</i></b></a><b><i>.</i></b></p>
 </div>

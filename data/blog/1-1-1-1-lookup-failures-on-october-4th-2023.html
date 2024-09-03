@@ -1,28 +1,43 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/1-1-1-1-lookup-failures-on-october-4th-2023-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/1-1-1-1-lookup-failures-on-october-4th-2023-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/1-1-1-1-lookup-failures-on-october-4th-2023-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/1-1-1-1-lookup-failures-on-october-4th-2023-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/1-1-1-1-lookup-failures-on-october-4th-2023-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/ko-kr/1-1-1-1-lookup-failures-on-october-4th-2023-ko-kr">한국어</a> and <a href="https://blog.cloudflare.com/es-es/1-1-1-1-lookup-failures-on-october-4th-2023-es-es">Español</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/DNS-Incident-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
-	<p>On 4 October 2023, Cloudflare experienced DNS resolution problems starting at 07:00 UTC and ending at 11:00 UTC. Some users of 1.1.1.1 or products like WARP, Zero Trust, or third party DNS resolvers which use 1.1.1.1 may have received SERVFAIL DNS responses to valid queries. We’re very sorry for this outage. This outage was an internal software error and not the result of an attack. In this blog, we’re going to talk about what the failure was, why it occurred, and what we’re doing to make sure this doesn’t happen again. </p>
-	<h2 id="background">Background</h2>
-	<p>In the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>, every domain name exists within a DNS zone. The zone is a collection of <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain names</a> and host names that are controlled together. For example, Cloudflare is responsible for the domain name cloudflare.com, which we say is in the “cloudflare.com” zone. The .com top-level domain (TLD) is owned by a third party and is in the “com” zone. It gives directions on how to reach cloudflare.com. Above all of the TLDs is <a href="https://en.wikipedia.org/wiki/DNS_root_zone">the root zone</a>, which gives <a href="https://www.iana.org/domains/root/db">directions on how to reach TLDs</a>. This means that the root zone is important in being able to resolve all other domain names. Like other important parts of the DNS, <a href="https://www.iana.org/dnssec/procedures">the root zone is signed with DNSSEC</a>, which means the root zone itself contains cryptographic signatures.</p>
+<div class="mb2 gray5">8 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/1-1-1-1-lookup-failures-on-october-4th-2023">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/1-1-1-1-lookup-failures-on-october-4th-2023">Français</a>, <a href="https://blog.cloudflare.com/de-de/1-1-1-1-lookup-failures-on-october-4th-2023">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/1-1-1-1-lookup-failures-on-october-4th-2023">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/1-1-1-1-lookup-failures-on-october-4th-2023">한국어</a>, <a href="https://blog.cloudflare.com/es-es/1-1-1-1-lookup-failures-on-october-4th-2023">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/1-1-1-1-lookup-failures-on-october-4th-2023">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5S774vlQ0Giaa7OrRw5WpA/9984bb314ed0de76ac33ef7b2ded6ad8/DNS-Incident-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>On 4 October 2023, Cloudflare experienced DNS resolution problems starting at 07:00 UTC and ending at 11:00 UTC. Some users of 1.1.1.1 or products like WARP, Zero Trust, or third party DNS resolvers which use 1.1.1.1 may have received SERVFAIL DNS responses to valid queries. We’re very sorry for this outage. This outage was an internal software error and not the result of an attack. In this blog, we’re going to talk about what the failure was, why it occurred, and what we’re doing to make sure this doesn’t happen again.</p>
+	<h2>Background</h2>
+	<p>In the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>, every domain name exists within a DNS zone. The zone is a collection of domain names and host names that are controlled together. For example, Cloudflare is responsible for the domain name cloudflare.com, which we say is in the “cloudflare.com” zone. The .com top-level domain (TLD) is owned by a third party and is in the “com” zone. It gives directions on how to reach cloudflare.com. Above all of the TLDs is <a href="https://en.wikipedia.org/wiki/DNS_root_zone">the root zone</a>, which gives <a href="https://www.iana.org/domains/root/db">directions on how to reach TLDs</a>. This means that the root zone is important in being able to resolve all other domain names. Like other important parts of the DNS, <a href="https://www.iana.org/dnssec/procedures">the root zone is signed with DNSSEC</a>, which means the root zone itself contains cryptographic signatures.</p>
 	<p>The root zone is published on <a href="https://root-servers.org">the root servers</a>, but it is also common for DNS operators to <a href="https://www.rfc-editor.org/rfc/rfc8806">retrieve and retain a copy of the root zone automatically</a> so that in the event that the root servers cannot be reached, the information in the root zone is still available. Cloudflare’s recursive DNS infrastructure takes this approach as it also makes the resolution process faster. New versions of the root zone are normally published twice a day. 1.1.1.1 has a <a href="https://blog.cloudflare.com/big-pineapple-intro">WebAssembly app</a> called static_zone running on top of the main DNS logic that serves those new versions when they are available.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image2-1.png" class="kg-image" alt="" loading="lazy" width="951" height="604"></figure>
-	<h2 id="what-happened">What happened</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tgd6rlFY7udR3qnaykmLu/9b810768001ac87be63b2dd9fd6c997a/image2-1.png" alt="" class="kg-image" width="951" height="604" loading="lazy">
+
+	</figure>
+	<h2>What happened</h2>
 	<p>On 21 September, as part of <a href="https://blog.verisign.com/security/root-zone-zonemd">a known and planned change in root zone management</a>, a new resource record type was included in the root zones for the first time. The new resource record is named <a href="https://www.rfc-editor.org/rfc/rfc8976.html">ZONEMD</a>, and is in effect a checksum for the contents of the root zone.</p>
 	<p>The root zone is retrieved by software running in Cloudflare’s core network. It is subsequently redistributed to Cloudflare’s data centers around the world. After the change, the root zone containing the ZONEMD record continued to be retrieved and distributed as normal. However, the 1.1.1.1 resolver systems that make use of that data had problems parsing the ZONEMD record. Because zones must be loaded and served in their entirety, the system’s failure to parse ZONEMD meant the new versions of the root zone were not used in Cloudflare’s resolver systems. Some of the servers hosting Cloudflare's resolver infrastructure failed over to querying the DNS root servers directly on a request-by-request basis when they did not receive the new root zone. However, others continued to rely on the known working version of the root zone still available in their memory cache, which was the version pulled on 21 September before the change.</p>
 	<p>On 4 October 2023 at 07:00 UTC, the DNSSEC signatures in the version of the root zone from 21 September expired. Because there was no newer version that the Cloudflare resolver systems were able to use, some of Cloudflare’s resolver systems stopped being able to validate DNSSEC signatures and as a result started sending error responses (SERVFAIL). The rate at which Cloudflare resolvers generated SERVFAIL responses grew by 12%. The diagrams below illustrate the progression of the failure and how it became visible to users.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image3-1.png" class="kg-image" alt="" loading="lazy" width="1337" height="1999"></figure>
-	<h2 id="incident-timeline-and-impact">Incident timeline and impact</h2>
-	<p><strong>21 September 6:30 UTC</strong>: Last successful pull of the root zone.<br><strong>4 October 7:00 UTC</strong>: DNSSEC signatures in the root zone obtained on 21 September expired causing an increase in SERVFAIL responses to client queries.<br><strong>7:57</strong>: First external reports of unexpected SERVFAILs started coming in.<br><strong>8:03</strong>: Internal Cloudflare incident declared.<br><strong>8:50</strong>: Initial attempt made at stopping 1.1.1.1 from serving responses using the stale root zone file with an override rule.<br><strong>10:30</strong>: Stopped 1.1.1.1 from preloading the root zone file entirely.<br><strong>10:32</strong>: Responses returned to normal.<br><strong>11:02</strong>: Incident closed.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XAzPsw7SXN9MWtsdfATWP/3e56d4612154b2a1a1f7a516cf3946f7/image3-1.png" alt="" class="kg-image" width="1337" height="1999" loading="lazy">
+
+	</figure>
+	<h2>Incident timeline and impact</h2>
+	<p><b>21 September 6:30 UTC</b>: Last successful pull of the root zone.<b>4 October 7:00 UTC</b>: DNSSEC signatures in the root zone obtained on 21 September expired causing an increase in SERVFAIL responses to client queries.<b>7:57</b>: First external reports of unexpected SERVFAILs started coming in.<b>8:03</b>: Internal Cloudflare incident declared.<b>8:50</b>: Initial attempt made at stopping 1.1.1.1 from serving responses using the stale root zone file with an override rule.<b>10:30</b>: Stopped 1.1.1.1 from preloading the root zone file entirely.<b>10:32</b>: Responses returned to normal.<b>11:02</b>: Incident closed.</p>
 	<p>This below chart shows the timeline of impact along with the percentage of DNS queries that returned with a SERVFAIL error:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-3.png" class="kg-image" alt="" loading="lazy" width="1431" height="414"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Wfn8yZCTZqq1AcB8EjQ4L/5515a149b0bee2c99f8c6d64bdda4005/image1-3.png" alt="" class="kg-image" width="1431" height="414" loading="lazy">
+
+	</figure>
 	<p>We expect a baseline volume of SERVFAIL errors for regular traffic during normal operation. Usually that percentage sits at around 3%. These SERVFAILs can be caused by legitimate issues in the DNSSEC chain, failures to connect to authoritative servers, authoritative servers taking too long to respond, <a href="https://blog.cloudflare.com/unwrap-the-servfail">and many others</a>. During the incident the amount of SERVFAILs peaked at 15% of total queries, although the impact was not evenly distributed around the world and was mainly concentrated in our larger data centers like Ashburn, Virginia; Frankfurt, Germany; and Singapore.</p>
-	<h2 id="why-this-incident-happened">Why this incident happened</h2>
-	<h4 id="why-parsing-the-zonemd-record-failed">Why parsing the ZONEMD record failed</h4>
+	<h2>Why this incident happened</h2>
+	<h4>Why parsing the ZONEMD record failed</h4>
 	<p>DNS has a binary format for storing resource records. In this binary format the type of the resource record (TYPE) &nbsp;is stored as a 16-bit integer. The type of resource record determines how the resource data (RDATA) is parsed. When the record type is 1, this means it is an A record, and the RDATA can be parsed as an IPv4 address. Record type 28 is an AAAA record, whose RDATA can be parsed as an IPv6 address instead. When a parser runs into an unknown resource type it won’t know how to parse its RDATA, but fortunately it doesn’t have to: the RDLENGTH field indicates how long the RDATA field is, allowing the parser to treat it as an opaque data element.</p>
-	<figure class="kg-card kg-code-card">
-		<pre><code>                                   1  1  1  1  1  1
+	<pre class="language-bash"><code class="language-bash">                                   1  1  1  1  1  1
       0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
     +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
     |                                               |
@@ -41,38 +56,36 @@
     +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     /                     RDATA                     /
     /                                               /
-    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-</code></pre>
-		<figcaption><a href="https://www.ietf.org/rfc/rfc1035.txt">RFC 1035</a></figcaption>
-	</figure>
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</code></pre>
+	<p><a href="https://www.ietf.org/rfc/rfc1035.txt">RFC 1035</a></p>
 	<p>The reason static_zone didn’t support the new ZONEMD record is because up until now we had chosen to distribute the root zone internally in its presentation format, rather than in the binary format. When looking at the text representation for a few resource records we can see there is a lot more variation in how different records are presented.</p>
-	<figure class="kg-card kg-code-card">
-		<pre><code>.			86400	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2023100400 1800 900 604800 86400
+	<pre class="language-bash"><code class="language-bash">.			86400	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2023100400 1800 900 604800 86400
 .			86400	IN	RRSIG	SOA 8 0 86400 20231017050000 20231004040000 46780 . J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==
 .			518400	IN	NS	a.root-servers.net.
-.			86400	IN	ZONEMD	2023100400 1 241 E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C
-</code></pre>
-		<figcaption>Example records taken from <a href="https://www.internic.net/domain/root.zone">https://www.internic.net/domain/root.zone</a></figcaption>
-	</figure>
+.			86400	IN	ZONEMD	2023100400 1 241 E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</code></pre>
+	<p>Example records taken from <a href="https://www.internic.net/domain/root.zone">https://www.internic.net/domain/root.zone</a></p>
 	<p>When we run into an unknown resource record it’s not always easy to know how to handle it. Because of this, the library we use to parse the root zone at the edge does not make an attempt at doing so, and instead returns a parser error.</p>
-	<h3 id="why-a-stale-version-of-the-root-zone-was-used">Why a stale version of the root zone was used</h3>
+	<h3>Why a stale version of the root zone was used</h3>
 	<p>The static_zone app, tasked with loading and parsing the root zone for the purpose of serving the root zone locally (<a href="https://datatracker.ietf.org/doc/html/rfc7706">RFC 7706</a>), stores the latest version in memory. When a new version is published it parses it and, when successfully done so, drops the old version. However, as parsing failed the static_zone app never switched to a newer version, and instead continued using the old version indefinitely. When the 1.1.1.1 service is first started the static_zone app does not have an existing version in memory. When it tries to parse the root zone it fails in doing so, but because it does not have an older version of the root zone to fall back on, it falls back on querying the root servers directly for incoming requests.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1417"></figure>
-	<h3 id="why-the-initial-attempt-at-disabling-staticzone-didn%E2%80%99t-work">Why the initial attempt at disabling static_zone didn’t work</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CnsfVerlBEVukAWjtcK0B/4f6fb46d37057aef66ee71becd86e1ef/image5.png" alt="" class="kg-image" width="1999" height="1417" loading="lazy">
+
+	</figure>
+	<h3>Why the initial attempt at disabling static_zone didn’t work</h3>
 	<p>Initially we tried to disable the static_zone app through override rules, a mechanism that allows us to programmatically change some behavior of 1.1.1.1. The rule we deployed was:</p>
-	<pre><code>phase = pre-cache set-tag rec_disable_static
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">phase = pre-cache set-tag rec_disable_static</code></pre>
 	<p>For any incoming request this rule adds the tag rec_disable_static to the request. Inside the static_zone app we check for this tag and, if it’s set, we do not return a response from the cached, static root zone. However, <a href="https://blog.cloudflare.com/big-pineapple-intro">to improve cache performance</a> queries are sometimes forwarded to another node if the current node can’t find the response in its own cache. Unfortunately, the rec_disable_static tag is not included in the queries being forwarded to other nodes, which caused the static_zone app to continue replying with stale information until we eventually disabled the app entirely.</p>
-	<h3 id="why-the-impact-was-partial">Why the impact was partial</h3>
+	<h3>Why the impact was partial</h3>
 	<p>Cloudflare regularly performs rolling reboots of the servers that host our services for tasks like kernel updates that can only take effect after a full system restart. At the time of this outage, resolver server instances that were restarted between the ZONEMD change and the DNSSEC invalidation did not contribute to impact. If they had restarted during this two-week period, they would have failed to load the root zone on startup and fallen back to resolving by sending DNS queries to root servers instead. In addition, the resolver uses a technique called serve stale (<a href="https://datatracker.ietf.org/doc/html/rfc8767">RFC 8767</a>) with the purpose of being able to continue to serve popular records from a potentially stale cache to limit the impact. A record is considered to be stale once the TTL amount of seconds has passed since the record was retrieved from upstream. &nbsp;This prevented a total outage; impact was mainly felt in our largest data centers which had many servers that had not restarted the 1.1.1.1 service in that timeframe.</p>
-	<h2 id="remediation-and-follow-up-steps">Remediation and follow-up steps</h2>
+	<h2>Remediation and follow-up steps</h2>
 	<p>This incident had widespread impact, and we take the availability of our services very seriously. We have identified several areas of improvement and will continue to work on uncovering any other gaps that could cause a recurrence.</p>
 	<p>Here is what we are working on immediately:</p>
-	<p><strong>Visibility</strong>: We’re adding alerts to notify when static_zone serves a stale root zone file. It should not have been the case that serving a stale root zone file went unnoticed for as long as it did. If we had been monitoring this better, with the caching that exists, there would have been no impact. It is our goal to protect our customers and their users from upstream changes.</p>
-	<p><strong>Resilience:</strong> We will re-evaluate how we ingest and distribute the root zone internally. Our ingestion and distribution pipelines should handle new RRTYPEs seamlessly, and any brief interruption to the pipeline should be invisible to end users.</p>
-	<p><strong>Testing:</strong> Despite having tests in place around this problem, including tests related to unreleased changes in parsing the new ZONEMD records, we did not adequately test what happens when the root zone fails to parse. We will improve our test coverage and the related processes.</p>
-	<p><strong>Architecture</strong>: We should not use stale copies of the root zone past a certain point. While it’s certainly possible to continue to use stale root zone data for a limited amount of time, past a certain point there are unacceptable operational risks. We will take measures to ensure that the lifetime of cached root zone data is better managed as described in <a href="https://www.rfc-editor.org/rfc/rfc8806">RFC 8806: Running a Root Server Local to a Resolver</a>.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<p><b>Visibility</b>: We’re adding alerts to notify when static_zone serves a stale root zone file. It should not have been the case that serving a stale root zone file went unnoticed for as long as it did. If we had been monitoring this better, with the caching that exists, there would have been no impact. It is our goal to protect our customers and their users from upstream changes.</p>
+	<p><b>Resilience:</b> We will re-evaluate how we ingest and distribute the root zone internally. Our ingestion and distribution pipelines should handle new RRTYPEs seamlessly, and any brief interruption to the pipeline should be invisible to end users.</p>
+	<p><b>Testing:</b> Despite having tests in place around this problem, including tests related to unreleased changes in parsing the new ZONEMD records, we did not adequately test what happens when the root zone fails to parse. We will improve our test coverage and the related processes.</p>
+	<p><b>Architecture</b>: We should not use stale copies of the root zone past a certain point. While it’s certainly possible to continue to use stale root zone data for a limited amount of time, past a certain point there are unacceptable operational risks. We will take measures to ensure that the lifetime of cached root zone data is better managed as described in <a href="https://www.rfc-editor.org/rfc/rfc8806">RFC 8806: Running a Root Server Local to a Resolver</a>.</p>
+	<h2>Conclusion</h2>
 	<p>We are deeply sorry that this incident happened. There is one clear message from this incident: do not ever assume that something is not going to change! &nbsp;Many modern systems are built with a long chain of libraries that are pulled into the final executable, each one of those may have bugs or may not be updated early enough for programs to operate correctly when changes in input happen. We understand how important it is to have good testing in place that allows detection of regressions and systems and components that fail gracefully on changes to input. We understand that we need to always assume that “format” changes in the most critical systems of the internet (DNS and BGP) are going to have an impact.</p>
 	<p>We have a lot to follow up on internally and are working around the clock to make sure something like this does not happen again.</p>
 </div>

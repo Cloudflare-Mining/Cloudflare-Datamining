@@ -1,35 +1,56 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/Dogfooding-access@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><em>It’s never been more crucial to help remote workforces stay fully operational — for the sake of countless individuals, businesses, and the economy at large. In light of this, Cloudflare recently launched a program that offers our </em><a href="https://teams.cloudflare.com"><em>Cloudflare for Teams</em></a><em> suite for free to any company, of any size, through September 1. Some of these firms have been curious about how Cloudflare itself uses these tools.</em></p>
-	<p><em>Here’s how Cloudflare’s next-generation <a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement">VPN alternativ</a>e, Cloudflare Access, came to be.</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vpbRR5FxJbn8eT0eKnoU1/bec87f94595fe001e97a952640590e21/Dogfooding-access_2x.png" alt="" class="kg-image" width="2000" height="1141" loading="lazy">
+
+	</figure>
+	<p><i>It’s never been more crucial to help remote workforces stay fully operational — for the sake of countless individuals, businesses, and the economy at large. In light of this, Cloudflare recently launched a program that offers our</i> <a href="https://teams.cloudflare.com"><i>Cloudflare for Teams</i></a> <i>suite for free to any company, of any size, through September 1. Some of these firms have been curious about how Cloudflare itself uses these tools.</i></p>
+	<p><i>Here’s how Cloudflare’s next-generation </i><a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement"><i>VPN alternativ</i></a><i>e, Cloudflare Access, came to be.</i></p>
 	<p>Rewind to 2015. Back then, as with many other companies, all of Cloudflare’s internally-hosted applications were reached via a hardware-based VPN. When one of our on-call engineers received a notification (usually on their phone), they would fire up a clunky client on their laptop, connect to the VPN, and log on to Grafana.</p>
-	<p>It felt a bit like solving a combination lock with a fire alarm blaring overhead. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/1-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>But for three of our engineers enough was enough. Why was a cloud network security company relying on clunky on-premise hardware? </p>
+	<p>It felt a bit like solving a combination lock with a fire alarm blaring overhead.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1loScoER3jSbV0Fx8ew5K3/393ff8659c1f9d445e41d113a94710f8/1-4.png" alt="" class="kg-image" width="512" height="301" loading="lazy">
+
+	</figure>
+	<p>But for three of our engineers enough was enough. Why was a cloud network security company relying on clunky on-premise hardware?</p>
 	<p>And thus, Cloudflare Access was born.</p>
-	<h2 id="a-culture-of-dogfooding">A Culture of Dogfooding</h2>
+	<h2>A Culture of Dogfooding</h2>
 	<p>Many of the products Cloudflare builds are a direct result of the challenges our own team is looking to address, and Access is a perfect example. Development on Access originally began in 2015, when the project was known internally as EdgeAuth.</p>
 	<p>Initially, just one application was put behind Access. Engineers who received a notification on their phones could tap a link and, after authenticating via their browser, they would immediately have access to the key details of the alert in Grafana. We liked it a lot — enough to get excited about what we were building.</p>
-	<p>Access solved a variety of issues for our security team as well. Using our identity provider of choice, we were able to restrict access to internal applications at L7 using Access policies. This once onerous process of managing access control at the network layer with a VPN was replaced with a few clicks in the Cloudflare dashboard. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/2-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Access solved a variety of issues for our security team as well. Using our identity provider of choice, we were able to restrict access to internal applications at L7 using Access policies. This once onerous process of managing access control at the network layer with a VPN was replaced with a few clicks in the Cloudflare dashboard.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2r6zOhcoktU4SKn3GV40q9/f45acdc3eda287a8b45ee357d53d177a/2-4.png" alt="" class="kg-image" width="779" height="687" loading="lazy">
+
+	</figure>
 	<p>After Grafana, our internal Atlassian suite including Jira and Wiki, and hundreds of other internal applications, the Access team began working to support non-HTTP based services. Support for git allowed Cloudflare’s developers to securely commit code from anywhere in the world in a fully audited fashion. This made Cloudflare’s security team very happy. Here’s a slightly modified example of a real authentication event that was generated while pushing code to our internal git repository.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/3-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hRbK6bKTBmNnQhiaWF0Z6/638bd261e1f76da26bb01a85932378ce/3-5.png" alt="" class="kg-image" width="942" height="578" loading="lazy">
+
+	</figure>
 	<p>It didn’t take long for more and more of Cloudflare’s internal applications to make their way behind Access. As soon as people started working with the new authentication flow, they wanted it everywhere. Eventually our security team mandated that we move our apps behind Access, but for a long time it was totally organic: teams were eager to use it.</p>
-	<p>Incidentally, this highlights a perk of utilizing Access: you can start by protecting and streamlining the authentication flows for your most popular internal tools — but there’s no need for a wholesale rip-and-replace. For organizations that are experiencing limits on their hardware-based VPNs, it can be an immediate salve that is up and running after just one setup call with a Cloudflare onboarding expert (<a href="https://calendly.com/cloudflare-for-teams/onboarding?month=2020-03">you can schedule a time here).</a> </p>
+	<p>Incidentally, this highlights a perk of utilizing Access: you can start by protecting and streamlining the authentication flows for your most popular internal tools — but there’s no need for a wholesale rip-and-replace. For organizations that are experiencing limits on their hardware-based VPNs, it can be an immediate salve that is up and running after just one setup call with a Cloudflare onboarding expert (<a href="https://calendly.com/cloudflare-for-teams/onboarding?month=2020-03">you can schedule a time here).</a></p>
 	<p>That said, there are some upsides to securing everything with Access.</p>
-	<h2 id="supporting-a-global-team">Supporting a Global Team</h2>
+	<h2>Supporting a Global Team</h2>
 	<p>VPNs are notorious for bogging down Internet connections, and the one we were using was no exception. When connecting to internal applications, having all of our employees’ Internet connections pass through a standalone VPN was a serious performance bottleneck and single point of failure.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/CLoudflare-access-vs-legacy-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Cloudflare Access is a much saner approach. Authentication occurs at our network edge, which extends to 200 cities in over 90 countries globally. Rather than having all of our employees route their network traffic through a single network appliance, employees connecting to internal apps are connecting to a data center just down the road instead.<br><br>As we support a globally-distributed workforce, our security team is committed to protecting our internal applications with the most secure and usable authentication mechanisms.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5v9QonqpsJsIHAQnskqPn4/eb9eafaf007a822c6e51f5074c84b60c/CLoudflare-access-vs-legacy-_2x.png" alt="" class="kg-image" width="1672" height="2297" loading="lazy">
+
+	</figure>
+	<p>Cloudflare Access is a much saner approach. Authentication occurs at our network edge, which extends to 200 cities in over 90 countries globally. Rather than having all of our employees route their network traffic through a single network appliance, employees connecting to internal apps are connecting to a data center just down the road instead.</p>
+	<p>As we support a globally-distributed workforce, our security team is committed to protecting our internal applications with the most secure and usable authentication mechanisms.</p>
 	<p>With Cloudflare Access we’re able to rely on the strong two-factor authentication mechanisms of our identity provider, which was much more difficult to do with our legacy VPN.</p>
-	<h2 id="on-boarding-and-off-boarding-with-confidence">On-Boarding and Off-Boarding with Confidence</h2>
-	<p>One of the trickiest things for any company is ensuring everyone has access to the tools and data they need — but no more than that. That’s a challenge that becomes all the more difficult as a team scales. As employees and contractors leave, it is similarly essential to ensure that their permissions are swiftly revoked. </p>
+	<h2>On-Boarding and Off-Boarding with Confidence</h2>
+	<p>One of the trickiest things for any company is ensuring everyone has access to the tools and data they need — but no more than that. That’s a challenge that becomes all the more difficult as a team scales. As employees and contractors leave, it is similarly essential to ensure that their permissions are swiftly revoked.</p>
 	<p>Managing these access controls is a real challenge for IT organizations around the world — and it’s greatly exacerbated when each employee has multiple accounts strewn across different tools in different environments. Before using Access, our team had to put in a lot of time to make sure every box was checked.</p>
-	<p>Now that Cloudflare’s internal applications are secured with Access, on- and offboarding is much smoother. Each new employee and contractor is quickly granted rights to the applications they need, and they can reach them via a launchpad that makes them readily accessible. When someone leaves the team, one configuration change gets applied to every application, so there isn’t any guesswork. </p>
+	<p>Now that Cloudflare’s internal applications are secured with Access, on- and offboarding is much smoother. Each new employee and contractor is quickly granted rights to the applications they need, and they can reach them via a launchpad that makes them readily accessible. When someone leaves the team, one configuration change gets applied to every application, so there isn’t any guesswork.</p>
 	<p>Access is also a big win for network visibility. With a VPN, you get minimal insight into the activity of users on the network – you know their username and IP address. but that’s about it. If someone manages to get in, it’s difficult to retrace their steps.</p>
 	<p>Cloudflare Access is based on a zero-trust model, which means that every packet is authenticated. It allows us to assign granular permissions via Access Groups to employees and contractors. And it gives our security team the ability to detect unusual activity across any of our applications, with extensive logging to support analysis. Put simply: it makes us more confident in the security of our internal applications.</p>
-	<h2 id="but-it-s-not-just-for-us">But It’s Not Just for Us</h2>
+	<h2>But It’s Not Just for Us</h2>
 	<p>With the massive transition to a <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">remote work model</a> for many organizations, Cloudflare Access can make you more confident in the security of your internal applications — while also driving increased productivity in your remote employees. Whether you rely on Jira, Confluence, SAP or custom-built applications, it can secure those applications and it can be live in minutes.</p>
-	<p>Cloudflare has made the decision to make Access completely free to all organizations, all around the world, through September 1. If you’d like to get started, follow our quick start guide here:<br>Or, if you’d prefer to onboard with one of our specialists, schedule a 30 minute call at this link: <a href="https://calendly.com/cloudflare-for-teams/onboarding?month=2020-03">calendly.com/cloudflare-for-teams/onboarding?month=2020-03</a></p>
+	<p>Cloudflare has made the decision to make Access completely free to all organizations, all around the world, through September 1. If you’d like to get started, follow our quick start guide here:Or, if you’d prefer to onboard with one of our specialists, schedule a 30 minute call at this link: <a href="https://calendly.com/cloudflare-for-teams/onboarding?month=2020-03">calendly.com/cloudflare-for-teams/onboarding?month=2020-03</a></p>
 </div>

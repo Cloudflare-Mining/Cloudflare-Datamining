@@ -1,35 +1,50 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Railgun Gives our Ecommerce Sites the Edge" src="https://blog.cloudflare.com/content/images/railgun.png.scaled500.png" title="Railgun Gives our Ecommerce Sites the Edge"></p>
-	<p><em>The following is a guest blog post by <a href="http://www.linkedin.com/in/chrisholland">Chris Holland</a>, Director of Technology at <a href="http://www.luxurylink.com">Luxury Link</a>. Luxury Link has been using CloudFlare’s <a href="https://www.cloudflare.com/railgun">Railgun acceleration technology</a> since March 2013.</em></p>
+<div class="mb2 gray5">4 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KaVdS0fjrAC2lVYQnUVxT/545ebe36f864add0103359ee09673013/railgun.png.scaled500.png" alt="Railgun Gives our Ecommerce Sites the Edge" class="kg-image" width="500" height="225" loading="lazy">
+
+	</figure>
+	<p><i>The following is a guest blog post by </i><a href="http://www.linkedin.com/in/chrisholland"><i>Chris Holland</i></a><i>, Director of Technology at </i><a href="http://www.luxurylink.com"><i>Luxury Link</i></a><i>. Luxury Link has been using CloudFlare’s </i><a href="https://www.cloudflare.com/railgun"><i>Railgun acceleration technology</i></a><i> since March 2013.</i></p>
 	<p>In March 2013, we started testing Railgun, and slowly rolled it out across our three web properties. We saw immediate results.</p>
 	<p>First, we saw instant reductions in time to retrieve uncached HTML documents, and as an <a href="https://www.cloudflare.com/ecommerce">ecommerce web property</a> every millisecond counts. Using Railgun, the HTML for our home page (hosted in Los Angeles, California) loads 40 percent faster from the East Coast in the United States. Measurements we've run from London showed a 2x speedup, which is invaluable in positioning ourselves as a global player in the travel industry.</p>
 	<p>Second, we saw a reduction in outbound bandwidth from our origin web servers. Because Railgun does compression between the origin server and CloudFlare’s data centers, our bandwidth needs were dramatically reduced. This is especially important for our business because sudden peaks of traffic are commonplace.</p>
 	<p>We had tried other dynamic acceleration products offered by top-tier CDNs, but the results weren't as good and they cost a lot more than the CloudFlare Business plan.</p>
 	<p>Railgun, to put it mildly, was rather impressive.</p>
-	<h3 id="bandwidthbeforeandafter">Bandwidth: Before and After</h3>
+	<h3>Bandwidth: Before and After</h3>
 	<p>We had the sneaking suspicion that Railgun's delta compression algorithm might have a noticeable impact on outbound bandwidth consumption out of our data center. In fact, it was more than noticeable!</p>
 	<p>In the chart below, the green line shows our outbound bandwidth consumption over a six month period. You can see that before we turned Railgun on in March, there are many spikes. Post-March, the spikes disappear.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/6-months-before-after-Railgun.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4t1FdWM6x2riXcMBVLMfgs/a23e8e3ea586194bddb3353cc06f99d2/6-months-before-after-Railgun.png" alt="" class="kg-image" width="1200" height="304" loading="lazy">
+
+	</figure>
 	<p>It is important to note that with or without Railgun enabled, all of our HTML documents are delivered using gzip encoding. All our images, stylesheets and scripts are cached in CloudFlare data centers; as such they barely factor in the outbound bandwidth consumption. It's for the most part fair to state that our outbound bandwidth consumption is solely comprised of the retrieval of uncached HTML documents.</p>
 	<p>For us, this is why Railgun makes such a difference on top of the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">traditional CDN benefits</a>. Railgun is accelerating and compressing the parts of the site that a normal CDN just can't handle. By accelerating the delivery of ‘uncacheable’ HTML pages, our visitors are getting better response times and we are seeing a big decrease in outbound bandwidth.</p>
-	<h3 id="bandwidthbeforerailguninboundvsoutboundratio">Bandwidth Before Railgun: Inbound vs. Outbound Ratio</h3>
+	<h3>Bandwidth Before Railgun: Inbound vs. Outbound Ratio</h3>
 	<p>This chart shows the inbound (orange line) and outbound (green line) bandwidth on February 6, 2013, before we introduced Railgun. It shows a pretty typical story for us: dramatic peaks in traffic linked to specific email campaigns.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/graphs-feb.png"><br>
-		The data shows that our outbound bandwidth is between 5x and 10x our inbound. That's pretty typical of gzipped HTTP traffic serving mostly HTML: inbound traffic is made up of HTTP requests, most of which fit in a packet or two, while outbound traffic is made up of all the actual HTML documents in response to those requests.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fGev8Eca4TOz0YAjaj6Tc/ff1f3a694680a42bcbc4d000a8ea49cd/graphs-feb.png" alt="" class="kg-image" width="977" height="432" loading="lazy">
+
+	</figure>
+	<p>The data shows that our outbound bandwidth is between 5x and 10x our inbound. That's pretty typical of gzipped HTTP traffic serving mostly HTML: inbound traffic is made up of HTTP requests, most of which fit in a packet or two, while outbound traffic is made up of all the actual HTML documents in response to those requests.</p>
 	<p>Our peak traffic often comes from email campaigns sending users to some of our largest HTML documents, which is why we're more likely to come in at a 10:1 ratio. Off-peak outbound is still about 5x inbound traffic, and reflects a longer tail of smaller HTML documents from more organic browsing.</p>
-	<h3 id="bandwidthwithrailguninboundvsoutboundratio">Bandwidth With Railgun: Inbound vs. Outbound Ratio</h3>
+	<h3>Bandwidth With Railgun: Inbound vs. Outbound Ratio</h3>
 	<p>Next take a look at this chart from May 8, 2013, with CloudFlare Railgun running on our site:</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/graphs-may.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GKMMlK5ygAO9Hqeb4wc4y/eead0fbfe5cd3289ce305fe9d4957c52/graphs-may.png" alt="" class="kg-image" width="977" height="432" loading="lazy">
+
+	</figure>
 	<p>Railgun shines when many users access a handful of similar URIs, which is the pattern of our peak traffic. Even though the documents being returned are different in subtle ways for each user, those unique subtleties are the only bits of information exiting our data center. Think "diffs." Railgun essentially flattens our peaks: going from a 10:1 ratio to a 1:1 ratio, our peak outbound traffic is 1/10th of what it used to be before Railgun.</p>
 	<p>Off-peak outbound traffic, which is the longer-tail organic browsing, is also down to a 3:1 ratio from a 5:1 ratio without Railgun.</p>
-	<h3 id="internationalexpansion">International Expansion</h3>
+	<h3>International Expansion</h3>
 	<p>After much hard work internationalizing our platforms, we were extremely thrilled to launch our site in the UK just before July 4th: <a href="http://www.luxurylink.co.uk">http://www.luxurylink.co.uk</a>. As we expand internationally, our audience will continue to grow geographically further from our data center located in Los Angeles, California, and Railgun will have an even greater impact by ensuring less data has to travel over increasing distances. Our UK site is also backed by Railgun.</p>
-	<h3 id="giveitatry">Give it a Try</h3>
+	<h3>Give it a Try</h3>
 	<p>While Railgun is likely to have a different impact for every application based on trafficked URIs and heterogeneity of documents, our observations would indicate that the impact for most web applications will fall somewhere between "noticeable" and "unbelievable."</p>
 	<p>Looking at these numbers, Railgun ought to be extremely attractive to cloud-hosted companies, such as people using services like Heroku, AWS or the Rackspace Cloud, as well as anyone paying for every single byte transferred in and out of their applications.</p>
-	<h3 id="lookingahead">Looking Ahead</h3>
+	<h3>Looking Ahead</h3>
 	<p>I would love to one day see Railgun's "edge agents" implemented as Chrome, Firefox, or Safari extensions. Right now, while very significant in terms of percentage, Railgun's acceleration is only marginally "felt" by end-users: full HTML documents are still sent to end-users from CloudFlare's edges. Picture a day when this "diff'ing" technology gets baked into the web browser, such that a web property becomes faster as you browse it because you're rarely ever retrieving a full HTML document for a given request, but rather a small HTML fragment which might fit in a single packet.</p>
 	<p>Dreaming up possibilities afforded by CloudFlare's platforms could be a full-time occupation. But before getting too far ahead of ourselves, <a href="https://www.cloudflare.com/railgun">Railgun</a> as it stands today ought to be wildly transformative to the Internet and the many businesses that operate online. It certainly is to us.</p>
-	<!--kg-card-end: markdown-->
 </div>

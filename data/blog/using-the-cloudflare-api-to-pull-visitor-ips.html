@@ -1,45 +1,37 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>Note: This API feature no longer works. Please contact support if you have a question about current functions available via the CloudFlare API.</em></p>
-	<p><a href="http://www.flickr.com/photos/damonbillian/5641360814" title="CloudFlare Recent IPs API blog post by dbillian, on Flickr"><img alt="CloudFlare Recent IPs API blog
-post" src="http://farm6.static.flickr.com/5222/5641360814_be4d992db4.jpg"></a></p>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oYXvXSrfT3I1Eym7fHqqH/82a656edb7f9049259c98ef38870f876/using-the-cloudflare-api-to-pull-visitor-ips.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>Note: This API feature no longer works. Please contact support if you have a question about current functions available via the CloudFlare API.</i></p>
+	<p>[</p>
+	<p>](<a href="http://www.flickr.com/photos/damonbillian/5641360814">http://www.flickr.com/photos/damonbillian/5641360814/</a> "CloudFlare Recent IPs API blog post by dbillian, on Flickr")</p>
 	<p>Many of our customers love CloudFlare's statistics report because the information available differs from other services providing analytics.</p>
 	<p>One frequent request is that customers would like to be able to look at the individual IP hits coming to their site. This information can be useful if you see a sudden increase in traffic and want more insight into the origin. <a href="https://www.cloudflare.com/people.html">Ian Pye</a>, CloudFlare's API and reporting guru, created a solution in the <a href="https://www.cloudflare.com/docs/client-api.html">CloudFlare API</a>.</p>
-	<h4 id="howtousetheapifunctiontoviewrecentvisitoripswithinthepast48hours">How to use the API function to view recent visitor IPs within the past 48 hours:</h4>
+	<h4>How to use the API function to view recent visitor IPs within the past 48 hours:</h4>
 	<ol>
-		<li>Open Firefox and install the <a href="https://addons.mozilla.org/en-US/firefox/addon/jsonview">Firefox JSONview addon</a>. We recommend doing the API call in Firefox with the JSONview addon since the data output is easy to read.</li>
-		<li>Get your <a href="https://www.cloudflare.com/my-account.html">API key</a> from your CloudFlare account.</li>
-		<li>Get your zone id by clicking on the 'Reports and Stats' option for the domain you want to pull data for. The zone ID is at the end of the url on that page (zid=xxxx).</li>
-		<li>The API values from the <a href="https://www.cloudflare.com/docs/client-api.html">Client Interface API</a> are as follows:
-			<pre>[a] = zone_ips
-
-[tkn] = Your API Key
-
-[email] = abc@example.com (use the one associated with your CloudFlare account)
-
-[zid] = ID of the zone you would like to check.
-
-[hours] = Number of hours to go back. Default is 24, max is 48.
-
-[class] = (Optional) Restrict the result set to a given class. Currently r|s|t, for regular, crawler, threat respectively. If you omit this token you will see the results for all visitors.
-
-[geo] = (Optional) Include to add longitude and latitude information to the response. 0,0 means no data.
-</pre>
+		<li>
+			<p>Open Firefox and install the <a href="https://addons.mozilla.org/en-US/firefox/addon/jsonview">Firefox JSONview addon</a>. We recommend doing the API call in Firefox with the JSONview addon since the data output is easy to read.</p>
+		</li>
+		<li>
+			<p>Get your <a href="https://www.cloudflare.com/my-account.html">API key</a> from your CloudFlare account.</p>
+		</li>
+		<li>
+			<p>Get your zone id by clicking on the 'Reports and Stats' option for the domain you want to pull data for. The zone ID is at the end of the url on that page (zid=xxxx).</p>
+		</li>
+		<li>
+			<p>The API values from the <a href="https://www.cloudflare.com/docs/client-api.html">Client Interface API</a> are as follows:</p>
+			<p>[a] = zone_ips</p>
+			<p>[tkn] = Your API Key</p>
+			<p>[email] = <a href="mailto:abc@example.com">abc@example.com</a> (use the one associated with your CloudFlare account)</p>
+			<p>[zid] = ID of the zone you would like to check.</p>
+			<p>[hours] = Number of hours to go back. Default is 24, max is 48.</p>
+			<p>[class] = (Optional) Restrict the result set to a given class. Currently r|s|t, for regular, crawler, threat respectively. If you omit this token you will see the results for all visitors.</p>
+			<p>[geo] = (Optional) Include to add longitude and latitude information to the response. 0,0 means no data.</p>
 		</li>
 	</ol>
-
-	<p>The URL is:<br>
-		<a href="https://www.cloudflare.com/api_json.html">https://www.cloudflare.com/api_json.html</a>
-	</p>
-	<p></p>
-	<p>​5. So, you are now ready to run the query. Open your Firefox browser, and run the following function, but insert the data from steps 1 through 3 for your particular site:<br>
-		<a href="https://www.cloudflare.com/api_json.html?a=zone_ips&amp;tkn=">https://www.cloudflare.com/api_json.html?a=zone_ips&amp;tkn=</a><span style="color: #3366ff;">InsertYourAPIKey&amp;email=<span style="color: #3366ff;"><a href="mailto:abc@example.com">abc@example.com</a>&amp;zid=<span style="color: #3366ff;">1228&amp;hours=<span style="color: #3366ff;">36&amp;geo</span></span></span></span>
-	</p>
-	<p>The <span style="color: #3366ff;">variables listed in blue are the ones that you should customize for your particular site.</span></p>
+	<p>The URL is:<a href="https://www.cloudflare.com/api_json.html">https://www.cloudflare.com/api_json.html</a></p>
+	<p>​5. So, you are now ready to run the query. Open your Firefox browser, and run the following function, but insert the data from steps 1 through 3 for your particular site:<a href="https://www.cloudflare.com/api_json.html?a=zone_ips&amp;tkn=">https://www.cloudflare.com/api_json.html?a=zone_ips&amp;tkn=</a>InsertYourAPIKey&amp;email=<a href="mailto:abc@example.com">abc@example.com</a>&amp;zid=1228&amp;hours=36&amp;geo</p>
+	<p>The variables listed in blue are the ones that you should customize for your particular site.</p>
 	<p>​6. The data output will list the IPs in order from the most number of hits in the selected time period to the least. You will also be able to see the visitor classified by type.</p>
-	<p>One thing to note is that for Free accounts, you will only be able to see data older than 24 hours. For Pro accounts, you can see data in the<br>
-		last 24 hours as well.</p>
+	<p>One thing to note is that for Free accounts, you will only be able to see data older than 24 hours. For Pro accounts, you can see data in thelast 24 hours as well.</p>
 	<p>In terms of what you can do with the data, if you see a lot of requests coming a certain IP in a short period of time, you may determine it is an attack. In that case, you should add it to your Block List in your <a href="https://www.cloudflare.com/threat-control.html">CloudFlare Threat Control</a> panel. By adding the IP to the Block List, the visitor will be stopped from accessing your server reducing your server load.</p>
 	<p>Have any suggestions for improving the API? Have something cool that you've done with the CloudFlare API that you would like to share with the rest of the community? We'd love to hear about it. <a href="https://www.cloudflare.com/contact.html">Share it</a> with us.</p>
-	<!--kg-card-end: markdown-->
 </div>

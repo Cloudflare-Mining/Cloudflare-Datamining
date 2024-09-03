@@ -1,35 +1,54 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l4Lk8dgbuXB4n30D4SJ4Q/be0483df4dd2bd55f2c9fbe741e0d6bb/why-use-stream.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>It’s our pleasure to announce the general availability of <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a>. Cloudflare Stream is the best way for any founder or developer to deliver an extraordinary video experience to their viewers while cutting development time and costs, and as of today it is available to every Cloudflare customer.</p>
 	<p>If I had to summarize what we’ve learned as we’ve built Stream it would be: Video streaming is hard, but building a successful video streaming business is even harder. This is why our goal has been to take away the complexity of encoding, storage, and smooth delivery so you can focus on all the other critical parts of your business.</p>
-	<h3 id="cloudflarestreamapi">Cloudflare Stream API</h3>
+	<h3>Cloudflare Stream API</h3>
 	<p>You call a single endpoint, Cloudflare Stream delivers a high-quality streaming experience to your visitors. Here’s how it works:</p>
 	<ol>
-		<li>Your app calls the /stream endpoint to upload a video. You can submit the contents of the video with the request or you can provide a URL to a video hosted elsewhere.</li>
-		<li>Cloudflare Stream encodes the stream in multiple resolutions to enable multi-bitrate streaming. We also automatically prepare DASH and HLS manifest files.</li>
-		<li>Cloudflare serves your video (in multiple resolutions) from our vast network of 150+ data centers around the world, as close as we can manage to every Internet-connected device on earth.</li>
-		<li>We provide you an embed code for the video which loads the unbranded and customizable Cloudflare Stream Player.</li>
-		<li>You place the embed code in your app, and you’re done.</li>
+		<li>
+			<p>Your app calls the /stream endpoint to upload a video. You can submit the contents of the video with the request or you can provide a URL to a video hosted elsewhere.</p>
+		</li>
+		<li>
+			<p>Cloudflare Stream encodes the stream in multiple resolutions to enable multi-bitrate streaming. We also automatically prepare DASH and HLS manifest files.</p>
+		</li>
+		<li>
+			<p>Cloudflare serves your video (in multiple resolutions) from our vast network of 150+ data centers around the world, as close as we can manage to every Internet-connected device on earth.</p>
+		</li>
+		<li>
+			<p>We provide you an embed code for the video which loads the unbranded and customizable Cloudflare Stream Player.</p>
+		</li>
+		<li>
+			<p>You place the embed code in your app, and you’re done.</p>
+		</li>
 	</ol>
-	<h3 id="whystream">Why Stream</h3>
+	<h3>Why Stream</h3>
 	<p>Cloudflare Stream is a simple product by design. We are happy to say we don’t provide every configuration option. Instead we make the best choices possible, both on a player and network level, to deliver a high-quality experience to your visitors.</p>
-	<h4 id="lowcost">Low Cost</h4>
+	<h4>Low Cost</h4>
 	<p>Cloudflare Stream does not charge you for the intensive and complex job of encoding your video in different resolutions. You pay a dollar for every 1,000 minutes of streaming, and $5/mo for every 1,000 minutes of storage, and that’s it.</p>
 	<p>Behind the scenes we are driving costs so low by having both the most peered network in the world, and by intelligently serving your video from the data center which is fastest when the user has an empty buffer, and the most affordable when their buffer is full. This gives them the experience they need, while allowing you to serve video at a lower cost than you can find from platforms which can’t make these optimizations.</p>
-	<h4 id="efficientrouting">Efficient Routing</h4>
+	<h4>Efficient Routing</h4>
 	<p>Cloudflare touches as much as one in every ten web requests made over the Internet. If you read this blog you know how much energy and effort we put into optimizing that system to deliver resources faster. When applied to video, it means faster time to first frame and reduced buffering for your viewers than providers who operate at a smaller scale.</p>
-	<h4 id="integratedsolution">Integrated Solution</h4>
+	<h4>Integrated Solution</h4>
 	<p>The key innovation of Stream is looking at a video as not just a bunch of bytes to be served over the Internet, but as an experience for a user. Our encoding takes into account how files will be delivered from our data centers. Our player uses its knowledge of how we deliver to provide a better experience. All of this is only made possible through working with a partner who can see the entire user experience from developer to viewer.</p>
-	<h3 id="commonusecases">Common Use Cases</h3>
+	<h3>Common Use Cases</h3>
 	<ul>
-		<li><strong><a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand">Video-on-demand</a></strong>: Whether you have 50 hours or 50,000 hours of video content, you can use Cloudflare Stream to make it streamable to the world.</li>
-		<li><strong>Gaming</strong>: Allow your users from around the world to upload and share videos of their gameplay.</li>
-		<li><strong>eLearning</strong>: Cloudflare Stream makes it a breeze to build eLearning applications that offer multi-bitrate streaming and other important features such as offline viewing and advance security tokens.</li>
-		<li><strong>Video Ads</strong>: Use the Cloudflare Player to stream video ads with the confidence that your stream will be optimized for your audience.</li>
-		<li><em><strong>Your Idea</strong></em>: We are here to help make the Internet better so you can build amazing things with it. Reach out with your ideas for how video can make your app, site, or service more powerful.</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand"><b>Video-on-demand</b></a>: Whether you have 50 hours or 50,000 hours of video content, you can use Cloudflare Stream to make it streamable to the world.</p>
+		</li>
+		<li>
+			<p><b>Gaming</b>: Allow your users from around the world to upload and share videos of their gameplay.</p>
+		</li>
+		<li>
+			<p><b>eLearning</b>: Cloudflare Stream makes it a breeze to build eLearning applications that offer multi-bitrate streaming and other important features such as offline viewing and advance security tokens.</p>
+		</li>
+		<li>
+			<p><b>Video Ads</b>: Use the Cloudflare Player to stream video ads with the confidence that your stream will be optimized for your audience.</p>
+		</li>
+		<li>
+			<p><b><i>Your Idea</i></b>: We are here to help make the Internet better so you can build amazing things with it. Reach out with your ideas for how video can make your app, site, or service more powerful.</p>
+		</li>
 	</ul>
-	<h3 id="howtogetstarted">How to Get Started</h3>
+	<h3>How to Get Started</h3>
 	<p>To get started, simply sign-up for Cloudflare and visit the Stream tab! As of today it is generally available for every Cloudflare user. If you’re an Enterprise customer, speak with your Cloudflare team.</p>
 	<p>Have a question or idea? Reach out in the <a href="https://community.cloudflare.com/tags/stream">community forum</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,81 +1,118 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>I grew up with DOS and Windows 3.1. I remember applications being <em>fast</em> - instant feedback or close to it. Today, native applications like Outlook or Apple Mail still feel fast - click compose and the window is there instantly and it feels snappy. Internet applications do not.</p>
-	<p>My first Internet experience was paying $30 for a prepaid card with 10 hour access over a 14.4k modem. First, it was bulletin boards and later IRC and the WWW. From my small seaside town in Australia, the Internet was a window into the wider world, but it was slooooooow. In a way, it didn’t matter. The world of opportunities the Internet opened up, from information to music, to socializing and ecommerce, who cared if it was slow? The <em>utility</em> of the Internet and Internet applications meant I would use them regardless of the experience.</p>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2nlaeGe9sQYJuiFa4wpJMy/a60b68b4146b74a3252d7b7265d752f0/internet-native-applications.gif" alt="">
+<div class="post-content lh-copy gray1">
+	<p>I grew up with DOS and Windows 3.1. I remember applications being <i>fast</i> - instant feedback or close to it. Today, native applications like Outlook or Apple Mail still feel fast - click compose and the window is there instantly and it feels snappy. Internet applications do not.</p>
+	<p>My first Internet experience was paying $30 for a prepaid card with 10 hour access over a 14.4k modem. First, it was bulletin boards and later IRC and the <a href="http://www">WWW</a>. From my small seaside town in Australia, the Internet was a window into the wider world, but it was slooooooow. In a way, it didn’t matter. The world of opportunities the Internet opened up, from information to music, to socializing and ecommerce, who cared if it was slow? The <i>utility</i> of the Internet and Internet applications meant I would use them regardless of the experience.</p>
 	<p>Performance improved from the 90s, but in 2008 when I switched from Outlook downloading my Yahoo! email over IMAP to Gmail in the browser, it wasn’t because it was faster - it wasn’t - it was because features like search, backed up mail, and unlimited storage were too good to resist. The cloud computing power that Google could bring to bear on my mail meant I was happy to trade native performance for a browser-based one that wasn’t bad, but definitely not snappy.</p>
-	<p>Efforts like Electron have attempted to blend performance and utility by offering a host in the native windowing technology, which loads an HTML5 app. <em>It’s not working</em>. Some of the most popular Electron apps today are not snappy at all.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image3.gif" alt="Electron load time" loading="lazy"><br>
-		<em>Recorded on Macbook 2013 with 8gb RAM</em>
-	</p>
-	<h3 id="howdidwegethere">How did we get here?</h3>
+	<p>Efforts like Electron have attempted to blend performance and utility by offering a host in the native windowing technology, which loads an HTML5 app. <i>It’s not working</i>. Some of the most popular Electron apps today are not snappy at all.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5B68Pcbo7EKP8JzGpIQF7J/974c4d612b25e608af7a42a27cb6715c/image3.gif" alt="Electron load time" class="kg-image" width="1523" height="1131" loading="lazy">
+
+	</figure>
+	<p><i>Recorded on Macbook 2013 with 8gb RAM</i></p>
+	<h3>How did we get here?</h3>
 	<p>So how did we get here and where are we going? I think of applications during the period of 1980-2018 like this:</p>
 	<ol>
-		<li>1980-2000 Functionality and performance increased at a similar rate</li>
-		<li>2000-2018 Functionality increased during the Internet age, but perceived performance degraded</li>
+		<li>
+			<p>1980-2000 Functionality and performance increased at a similar rate</p>
+		</li>
+		<li>
+			<p>2000-2018 Functionality increased during the Internet age, but perceived performance degraded</p>
+		</li>
 	</ol>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image2-2.png" alt="1980-2000 Perf vs Utility" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dRgEm1gzsQLTd8DUxc9FF/145e496ef954614a762d753ba1b62040/image2-2.png" alt="1980-2000 Perf vs Utility" class="kg-image" width="821" height="632" loading="lazy">
+
+	</figure>
 	<p>I think we’re entering the next phase, whereby performance and the user experience will again track the rise in the utility of those apps. I predict we’ll go back to a chart like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image13-1.png" alt="2000-2018 Perf vs Utility" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eXaUH6WubzdKd3iemMEay/d252a9b7f6c547f28150227e2db163d7/image13-1.png" alt="2000-2018 Perf vs Utility" class="kg-image" width="828" height="628" loading="lazy">
+
+	</figure>
 	<p>To summarize, while the Internet and the “Cloud” brought a huge increase in functionality the performance of Internet Applications has been hampered by:</p>
 	<ul>
-		<li>Downloading interpreted code</li>
-		<li>Over chatty protocols</li>
-		<li>From origin servers far away from users</li>
+		<li>
+			<p>Downloading interpreted code</p>
+		</li>
+		<li>
+			<p>Over chatty protocols</p>
+		</li>
+		<li>
+			<p>From origin servers far away from users</p>
+		</li>
 	</ul>
-	<p>This has prevented Internet Applications achieving their potential of being both performant and functional. This is changing and I am defining this new era of applications as <strong>Internet Native Applications</strong>.</p>
-	<h3 id="wherearewegoing">Where are we going?</h3>
+	<p>This has prevented Internet Applications achieving their potential of being both performant and functional. This is changing and I am defining this new era of applications as <b>Internet Native Applications</b>.</p>
+	<h3>Where are we going?</h3>
 	<p>Internet Native Applications will combine the utility of Internet apps, but with the speed of local desktop apps. These apps will feel magical, as the functionality that was previously in some distant data center, will now feel like just an extension of the computer itself.</p>
 	<p>How will this happen and what will be the drivers?</p>
-	<h3 id="1remoteserviceswillbeembeddedinthenetworkitselflessthan10msfromtheclient">1. Remote services will be embedded in the network itself less than 10ms from the client.</h3>
-	<p>As <a href="https://www.cloudflare.com/network">huge Edge networks</a> get closer to end-users, the perceived performance cost of not serving a request from the Edge and requiring a round-trip to a legacy cloud provider will increase. In a world where users will come to expect near-instant responses from Internet Native applications, a response not served from the Edge and requiring a trip to a centralized cloud-based origin will feel like a <strong>"cache miss"</strong>.</p>
+	<h3>1. Remote services will be embedded in the network itself less than 10ms from the client.</h3>
+	<p>As <a href="https://www.cloudflare.com/network">huge Edge networks</a> get closer to end-users, the perceived performance cost of not serving a request from the Edge and requiring a round-trip to a legacy cloud provider will increase. In a world where users will come to expect near-instant responses from Internet Native applications, a response not served from the Edge and requiring a trip to a centralized cloud-based origin will feel like a <b>"cache miss"</b>.</p>
 	<p>In the same way systems programmers have to consider the impact of <a href="https://gist.github.com/jboner/2841832">L1 vs L2 vs Main Memory access</a>, so too will Internet Native application architects consider carefully each time an application requires a resource to be fetched or a computation to be run from a centralized data center, as opposed to the Edge. As more and more services are available &lt;10ms from the end user, the cost of the new “cache miss” will increase. For comparison, <a href="https://en.wikipedia.org/wiki/Hard_disk_drive_performance_characteristics#Seek_time">a disk seek on an average desktop HDD costs around 10ms</a> - the same time it takes to get a request to Edge, so Edge network requests will feel local - requests to far flung centralized data centers will be noticeably slow.</p>
 	<p>APIs, storage, and eventually even data-intensive tasks will be processed on the Edge. To the user, it will feel like this magical functionality is just an extension of their computer. As network compute nodes push further and further towards users, from <a href="https://en.wikipedia.org/wiki/Internet_exchange_point">Internet Exchange Points</a> (IXs), to <a href="https://en.wikipedia.org/wiki/Internet_service_provider">ISPs</a> and even to cell towers, it will indeed be close to the truth.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-15-at-6.48.36-PM.png" alt="Edge Access Time" loading="lazy"><br>
-		<em>Near instant</em>
-	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image11-1.png" alt="Cloud Access Time" loading="lazy"><br>
-		<em>The new "cache miss"</em>
-	</p>
-	<h3 id="2clientsidecodewillexecutedatnearnativespeedusingwebassembly">2. Client-side code will executed at near-native speed using WebAssembly.</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/07PtrtEHkKY6rmv2oLMai/265d46a7d94cfdf2e3ee25e61aa0983b/Screen-Shot-2018-08-15-at-6.48.36-PM.png" alt="Edge Access Time" class="kg-image" width="1260" height="248" loading="lazy">
+
+	</figure>
+	<p><i>Near instant</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GyKDAuepS3wp1ci9rlir2/f20ffaa30bb4475261c155cb9670cdb1/image11-1.png" alt="Cloud Access Time" class="kg-image" width="852" height="186" loading="lazy">
+
+	</figure>
+	<p><i>The new "cache miss"</i></p>
+	<h3>2. Client-side code will executed at near-native speed using WebAssembly.</h3>
 	<p>Ever since the web emerged as the ultimate app distribution platform, there have been attempts to embed runtimes in browsers. Java Applets, ActiveX and Flash to name a few. Java probably made the most headway, but was plagued by write-once-debug-everywhere issues and installation friction.</p>
 	<p><a href="https://developer.mozilla.org/en-US/docs/WebAssembly">WASM</a> is gaining <a href="https://caniuse.com/#feat=wasm">momentum</a> and now ships in all <a href="https://blog.mozilla.org/blog/2017/11/13/webassembly-in-browsers">major browsers</a>. It's still an <a href="https://webassembly.org/docs/mvp">MVP</a>, but with wide support and promising early <a href="https://hackernoon.com/screamin-speed-with-webassembly-b30fac90cd92">performance testing</a>, expect more and more apps to take advantage of WASM. It's early days  –  WASM can't interact with the DOM yet, but <a href="https://webassembly.org/docs/future-features">that is coming</a> too. The debate is ongoing, but I believe WASM will enable user interaction with UI elements in the browser to get much closer to the “native” speed of the past.</p>
-	<h3 id="3clientsexchangedatausinganewgenerationofperformancebasedprotocols">3. Clients exchange data using a new generation of performance-based protocols.</h3>
+	<h3>3. Clients exchange data using a new generation of performance-based protocols.</h3>
 	<p>TCP, conceived in <a href="https://tools.ietf.org/html/rfc793">1981</a>, can no longer meet the needs of the highest performing Internet applications. Dropped packets on mobile networks cause <a href="http://blog.davidsingleton.org/mobiletcp">back-off</a> and newer protocols handle congestion control better.</p>
 	<p><a href="https://en.wikipedia.org/wiki/QUIC">QUIC</a>, now under the auspices of the IETF and starting to see Internet-facing <a href="https://blog.cloudflare.com/the-road-to-quic">server implementations</a>, will underpin the connection of Internet Native applications to their nearest network compute node, mostly using an efficient, multiplexed <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a> connection.</p>
-	<table>
-		<thead>
-			<tr>
-				<th style="text-align:center">HTTPS</th>
-				<th style="text-align:center">QUIC</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="text-align:center"><img src="https://blog.cloudflare.com/content/images/2018/08/image6-1.png" alt="image6-1" loading="lazy"></td>
-				<td style="text-align:center"><img src="https://blog.cloudflare.com/content/images/2018/08/image9-1.png" alt="image9-1" loading="lazy"></td>
-			</tr>
-		</tbody>
-	</table>
-	<h4 id="marketimplications">Market Implications</h4>
-	<h5 id="moreservicestomovetotheedge">More services to move to the Edge</h5>
+	<p>HTTPS</p>
+	<p>QUIC</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZtrEcl4N7PZI5sQchvDjT/25cd9809c146d28778f107aa23c769ed/image6-1.png" alt="image6-1" class="kg-image" width="968" height="994" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q3E8kshxICSuXUS7KjfIa/e2206e0f8de4a0fadf6da2b74ae44fc4/image9-1.png" alt="image9-1" class="kg-image" width="1038" height="744" loading="lazy">
+
+	</figure>
+	<h4>Market Implications</h4>
+	<h5>More services to move to the Edge</h5>
 	<p>With the Edge now a <a href="https://developers.cloudflare.com/workers/about">general-compute platform</a> – more and more services will move there, driving up the percentage of requests that can be fulfilled within 10ms. Legacy cloud providers will continue to provide services like like AI/ML training, data pipelines and "big data" applications for some time, but many services will move "up the stack", to be closer to the user.</p>
-	<h5 id="theoldcloudbecomesapluggableimplementationdetail">The old “Cloud” becomes a pluggable implementation detail</h5>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image4-1.png" alt="image4-1" loading="lazy"><br>
-		<em>Source: <a href="https://github.com/google/go-cloud">https://github.com/google/go-cloud</a></em>
-	</p>
+	<h5>The old “Cloud” becomes a pluggable implementation detail</h5>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xBRedqe8gIaouzevON2Pn/d0f52be90ab769b1c64ce9869134500e/image4-1.png" alt="image4-1" class="kg-image" width="533" height="45" loading="lazy">
+
+	</figure>
+	<p><i>Source: </i><a href="https://github.com/google/go-cloud"><i>https://github.com/google/go-cloud</i></a></p>
 	<p>CIOs woke up years ago to the risk of vendor lock-in and have defended against it in a variety of forms such as hybrid clouds, open-source, and container orchestration to name a few. Google launched another attempt to further commoditize cloud services with its launch of <a href="https://blog.golang.org/go-cloud">go/cloud</a>. It provides a generalizable way for application architects to define cloud resources in a non-vendor specific way.</p>
 	<p>I believe Internet Native applications will increasingly define their cloud dependencies, e.g., storage, as pluggable implementation details, and deploy policies on the edge to route according to latency, cost, privacy and other domain-specific criteria.</p>
-	<h3 id="summary">Summary</h3>
-	<p>No single technology defines <strong>Internet Native Applications</strong>. However, I believe the combination of:</p>
+	<h3>Summary</h3>
+	<p>No single technology defines <b>Internet Native Applications</b>. However, I believe the combination of:</p>
 	<ul>
-		<li>A rapidly increasing percentage of requests serviced directly from the Edge under 10ms</li>
-		<li>Near-native speed code on the browser, powered by WebAssembly</li>
-		<li>Improved Internet protocols like QUIC and HTTP/2</li>
+		<li>
+			<p>A rapidly increasing percentage of requests serviced directly from the Edge under 10ms</p>
+		</li>
+		<li>
+			<p>Near-native speed code on the browser, powered by WebAssembly</p>
+		</li>
+		<li>
+			<p>Improved Internet protocols like QUIC and HTTP/2</p>
+		</li>
 	</ul>
-	<p>Will usher in a new era of performance for Internet-based applications. I believe the difference in user experience will be so significant, that it will bring about a fundamental shift in the way we architect the applications of tomorrow  –  <strong>Internet Native Applications</strong>  –  and Engineers, Architects and CIOs need to start planning for this shift now.</p>
-	<h4 id="closingnote">Closing Note</h4>
-	<p>Do you remember people asking if <em>“you have the Internet on your computer?”</em> when people didn’t really understand what the Internet was? Internet Native applications will finally make it irrelevant  –  you won’t be able to tell the difference.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image12-1.png" alt="image12-1" loading="lazy"></p>
-	<p><strong>Want to work on technology powering the next era? <a href="https://boards.greenhouse.io/cloudflare/jobs/589484?gh_jid=589484">I’m hiring</a> for Cloudflare in San Francisco and Austin.</strong></p>
-	<!--kg-card-end: markdown-->
+	<p>Will usher in a new era of performance for Internet-based applications. I believe the difference in user experience will be so significant, that it will bring about a fundamental shift in the way we architect the applications of tomorrow  –  <b>Internet Native Applications</b>  –  and Engineers, Architects and CIOs need to start planning for this shift now.</p>
+	<h4>Closing Note</h4>
+	<p>Do you remember people asking if <i>“you have the Internet on your computer?”</i> when people didn’t really understand what the Internet was? Internet Native applications will finally make it irrelevant  –  you won’t be able to tell the difference.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jt9eezd1xMGLoFlKILWCJ/c2543e90d25d53432c61402855e76fa4/image12-1.png" alt="image12-1" class="kg-image" width="222" height="225" loading="lazy">
+
+	</figure>
+	<p><b>Want to work on technology powering the next era? </b><a href="https://boards.greenhouse.io/cloudflare/jobs/589484?gh_jid=589484"><b>I’m hiring</b></a><b> for Cloudflare in San Francisco and Austin.</b></p>
 </div>

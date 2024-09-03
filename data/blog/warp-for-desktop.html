@@ -1,60 +1,96 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/warp-for-desktop">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/warp-for-desktop">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/warp-for-desktop">Français</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/BDES-1101_Gateway-Client-App-Blog_2@3x-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CGBMrVHpqSj8WkwLEhPV3/668ae9e972b01e9aaa36af29290e59e1/BDES-1101_Gateway-Client-App-Blog_2_3x-2.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+
+	</figure>
 	<p>Cloudflare launched ten years ago to keep web-facing properties safe from attack and fast for visitors. Cloudflare customers owned Internet properties that they placed on our network. Visitors to those sites and applications enjoyed a faster experience, but that speed was not consistent for accessing Internet properties outside the Cloudflare network.</p>
 	<p>Over the last few years, we began building products that could help deliver a faster and safer Internet to everyone, not just visitors to sites on our network. We started with the first step to visiting any website, a <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS query</a>, and released the world’s fastest public DNS resolver, 1.1.1.1. Any Internet user could improve the speed to connect to any website simply by changing their resolver.</p>
 	<p>While making the Internet faster for users, we also focused on making it more private. We built 1.1.1.1 to accelerate the last mile of connections, from user to our edge or other destinations on the Internet. Unlike other providers, we did not build it to sell ads.</p>
 	<p>Last year we went one step further to make the entire connection from a device both faster and safer when we launched Cloudflare WARP. With the push of a button, users could connect their mobile device to the entire Internet using a WireGuard tunnel through a Cloudflare data center near to them. Traffic to sites behind Cloudflare became even faster and a user’s experience with the rest of the Internet became more secure and private.</p>
 	<p>We brought that experience to desktops in beta earlier this year, and are excited to announce the general availability of Cloudflare WARP for desktop users today. The entire Internet can now be more secure and private regardless of how you connect.</p>
-	<h3 id="bringing-the-power-of-warp-to-security-teams-everywhere">Bringing the power of WARP to security teams everywhere</h3>
+	<h3>Bringing the power of WARP to security teams everywhere</h3>
 	<p>WARP made the Internet faster and more private for individual users everywhere. But as businesses embraced remote work models at scale, security teams struggled to extend the security controls they had enabled in the office to their remote workers. Today, we’re bringing everything our users have come to expect from WARP to security teams. The release also enables new functionality in our <a href="https://blog.cloudflare.com/gateway-swg">Cloudflare Gateway product</a>.</p>
 	<p>Customers can use the Cloudflare WARP application to connect corporate desktops to Cloudflare Gateway for advanced <a href="https://www.cloudflare.com/learning/access-management/what-is-url-filtering">web filtering</a>. The Gateway features rely on the same performance and security benefits of the underlying WARP technology, now with security filtering available to the connection.</p>
 	<p>The result is a simple way for enterprises to protect their users wherever they are without requiring the backhaul of network traffic to a centralized security boundary. Instead, organizations can configure the WARP client application to securely and privately send remote users’ traffic through a Cloudflare data center near them. Gateway administrators apply policies to outbound Internet traffic proxied through the client, allowing organizations to protect users from threats on the Internet, and stop corporate data from leaving their organization.</p>
-	<h3 id="privacy-security-and-speed-for-everyone">Privacy, Security and Speed for Everyone</h3>
+	<h3>Privacy, Security and Speed for Everyone</h3>
 	<p>WARP was built on the philosophy that even people who don’t know what “VPN” <a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn">stands for</a> should be able to still easily get the protection a VPN offers. For those of us unfortunately very familiar with traditional corporate VPNs, something better was needed. Enter our own WireGuard implementation called <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust">BoringTun</a>.</p>
 	<p>The WARP application uses BoringTun to encrypt all the traffic from your device and send it directly to Cloudflare’s edge, ensuring that no one in between is snooping on what you're doing. If the site you are visiting is already a Cloudflare customer, the content is immediately sent down to your device. With WARP+ we use Argo Smart Routing to devise the shortest path through our global network of data centers to reach whomever you are talking to.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image4-17.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OB8augc9tb7AuAD8XGPiH/33a08eddf49f1afdd6cad71a680a9f27/image4-17.png" alt="" class="kg-image" width="1100" height="701" loading="lazy">
+
+	</figure>
 	<p>Combined with the power of <a href="http://one.one.one.one">1.1.1.1</a> (the <a href="https://www.dnsperf.com/#!dns-resolvers">world's fastest</a> public DNS resolver), WARP keeps your traffic secure, private and fast. Since nearly everything you do on the Internet starts with a DNS request, choosing the fastest DNS server across all your devices will accelerate almost everything you do online. Speed isn’t everything though, and while the connection between your application and a website may be encrypted, DNS lookups for that website were not. This allowed anyone, even your Internet Service Provider, to potentially snoop (and sell) on where you are going on the Internet.</p>
 	<p>Cloudflare will never snoop or sell your personal data. And if you use DNS-over-HTTPS or DNS-over-TLS to our 1.1.1.1 resolver, your DNS request will be sent over a secure channel. This means that if you use the 1.1.1.1 resolver then in addition to our privacy guarantees an eavesdropper can’t see your DNS requests. Don’t take our word for it though, earlier this year we published the results of a <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination">third-party privacy examination</a>, something we’ll keep doing and wish others would do as well.</p>
 	<p>For Gateway customers, we are committed to privacy and trust and will never sell your personal data to third parties. While your administrator will have the ability to audit your organization's traffic, create rules around how long data is retained, or create specific policies about where they can go, Cloudflare will never sell your personal data or use your personal data to retarget you with advertisements. Privacy and control of your organization's data is in your hands.</p>
-	<h3 id="now-integrated-with-cloudflare-gateway">Now integrated with Cloudflare Gateway</h3>
+	<h3>Now integrated with Cloudflare Gateway</h3>
 	<p>Traditionally, companies have used VPN solutions to gate access to corporate resources and keep devices secure with their filtering rules. These connections quickly became a point of failure (and intrusion vector) as organizations needed to manage and scale up VPN servers as traffic through their on premise servers grew. End users didn't like it either. VPN servers were usually overwhelmed at peak times, the client was bulky and they were rarely made with performance in mind. And once a bad actor got in, they had access to everything.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/02/image3-21.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Traditional VPN architecture‌‌</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FFPXwzDszlejtKy5SNEgd/f7c000af8fa0c646c83e1ee57ce1c2f4/image3-21.png" alt="" class="kg-image" width="1100" height="533" loading="lazy">
+
 	</figure>
+	<p>Traditional VPN architecture‌‌</p>
 	<p>In <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams">January 2020</a>, we launched Cloudflare for Teams as a replacement to this model. Cloudflare for Teams is built around two core products. <a href="https://www.cloudflare.com/teams/access">Cloudflare Access</a> is a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust solution</a> allowing organizations to connect internal (and now, <a href="https://blog.cloudflare.com/cloudflare-access-for-saas">SaaS</a>) applications to Cloudflare’s edge and build security rules to enforce safe access to them. No longer were VPNs a single entry point to your organization; users could work from anywhere and still get access. <a href="https://www.cloudflare.com/teams/gateway">Cloudflare Gateway</a>’s first features focused on protecting users from threats on the Internet with a DNS resolver and policy engine built for enterprises.</p>
 	<p>The strength and power of WARP clients, used today by millions of users around the world, will enable incredible new use cases for security teams:</p>
 	<ul>
-		<li><strong>Encrypt all user traffic </strong>- Regardless of your users’ location, all traffic from their device is encrypted with WARP and sent privately to the nearest WARP endpoint. This keeps your users and your organizations protected from whomever may be snooping. If you still used a traditional VPN on top of Access to encrypt user traffic, that is no longer needed.</li>
-		<li><strong>WARP+</strong> - Cloudflare offers a premium WARP+ service for customers who want additional speed benefits. That now comes packaged into Teams deployments. Any Teams customer who deploys the Teams client applications will automatically receive the premium speed benefits of WARP+.</li>
-		<li><strong>Gateway for remote workers </strong>- Until today, Gateway required that you keep track of all your users’ IP addresses and build policies per location. This made it difficult to enforce policy or provide malware protection when a user took their device to a new location. With the client installed, these policies can be enforced anywhere.</li>
-		<li><strong>L7 Firewall and user based policies</strong> - Today's announcement of <a href="https://blog.cloudflare.com/gateway-swg">Cloudflare Gateway SWG and Secure DNS</a> allows your organization to enforce device authentication to your Teams account, enabling you to build user-specific policies and force all traffic through the firewall.</li>
-		<li><strong>Device and User auditing </strong>- Along with user and device policies, administrators will also be able to audit specific user and device traffic. Used in conjunction with logpush, this will allow your organization to do detailed level tracing in case of a breach or audit.</li>
+		<li>
+			<p><b>Encrypt all user traffic</b> - Regardless of your users’ location, all traffic from their device is encrypted with WARP and sent privately to the nearest WARP endpoint. This keeps your users and your organizations protected from whomever may be snooping. If you still used a traditional VPN on top of Access to encrypt user traffic, that is no longer needed.</p>
+		</li>
+		<li>
+			<p><b>WARP+</b> - Cloudflare offers a premium WARP+ service for customers who want additional speed benefits. That now comes packaged into Teams deployments. Any Teams customer who deploys the Teams client applications will automatically receive the premium speed benefits of WARP+.</p>
+		</li>
+		<li>
+			<p><b>Gateway for remote workers</b> - Until today, Gateway required that you keep track of all your users’ IP addresses and build policies per location. This made it difficult to enforce policy or provide malware protection when a user took their device to a new location. With the client installed, these policies can be enforced anywhere.</p>
+		</li>
+		<li>
+			<p><b>L7 Firewall and user based policies</b> - Today's announcement of <a href="https://blog.cloudflare.com/gateway-swg">Cloudflare Gateway SWG and Secure DNS</a> allows your organization to enforce device authentication to your Teams account, enabling you to build user-specific policies and force all traffic through the firewall.</p>
+		</li>
+		<li>
+			<p><b>Device and User auditing</b> - Along with user and device policies, administrators will also be able to audit specific user and device traffic. Used in conjunction with logpush, this will allow your organization to do detailed level tracing in case of a breach or audit.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="enroll-your-organization-to-use-the-warp-client-with-cloudflare-for-teams">Enroll your organization to use the WARP client with Cloudflare for Teams</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1n6ktVdf9yYbKrxQhWOIpN/af2e5533bf088587d1a14f5520963c82/image5-10.png" alt="" class="kg-image" width="354" height="456" loading="lazy">
+
+	</figure>
+	<h3>Enroll your organization to use the WARP client with Cloudflare for Teams</h3>
 	<p>We know how hard it can be to deploy another piece of software in your organization, so we’ve worked hard to make deployment easy. To get started, just navigate to our <a href="https://dash.cloudflare.com/sign-up/teams">sign-up page</a> and create an account. If you already have an active account, you can bypass this step and head straight to the <a href="https://dash.teams.cloudflare.com/onboarding">Cloudflare for Teams dashboard</a> where you’ll be dropped directly into our onboarding flow. After you have signed up and configured your team, <a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway">setup a Gateway policy</a> and then choose one of the three ways to install the clients to enforce that policy from below:</p>
-	<h4 id="self-install-">Self Install‌‌ </h4>
+	<h4>Self Install‌‌</h4>
 	<p>If you are a small organization without an IT department, asking your users to download the client themselves and type in the required settings is the fastest way to get going.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-35.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Manually join an organization</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NWq76ePHRKAyzUj9pX7uL/726526b7c5bd09054e9cb91e5a63136c/image1-35.png" alt="" class="kg-image" width="815" height="530" loading="lazy">
+
 	</figure>
-	<h4 id="scripted-install-">Scripted Install‌‌</h4>
+	<p>Manually join an organization</p>
+	<h4>Scripted Install‌‌</h4>
 	<p>Our desktop installers support the ability to quickly script the installation. In the case of Windows, this is as easy as this command line:</p>
-	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="&lt;insert your org&gt;" SERVICE_MODE="warp" ENABLE="true" GATEWAY_UNIQUE_ID="&lt;insert your gateway DoH domain&gt;" SUPPORT_URL=”&lt;mailto or http of your support person&gt;"</code></pre>
-	<h4 id="managed-device-">Managed Device‌‌</h4>
+	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="<insert your="" org="">" SERVICE_MODE="warp" ENABLE="true" GATEWAY_UNIQUE_ID="<insert your="" gateway="" doh="" domain="">" SUPPORT_URL=”<mailto or="" http="" of="" your="" support="" person="">"</mailto></insert></insert></code></pre>
+	<h4>Managed Device‌‌</h4>
 	<p>Organizations with MDM tools like Intune or JAMF can deploy WARP to their entire fleet of devices from a single operation. Just as you preconfigure all other device settings, WARP can be set so that all end users need to do is login with your team’s identity provider by clicking on the Cloudflare WARP client after it has been deployed.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-21.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Microsoft Intune Configurationa</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7004IBMmW5cUllHPDjIHDG/4d482c96298a18f6a71787f9409ece28/image2-21.png" alt="" class="kg-image" width="989" height="719" loading="lazy">
+
 	</figure>
+	<p>Microsoft Intune Configurationa</p>
 	<p>For a complete list of the installation options, required fields and step by step instructions for all platforms see the <a href="https://developers.cloudflare.com/warpclient">WARP Client documentation</a>.</p>
-	<h3 id="what-s-coming-next">What's coming next</h3>
+	<h3>What's coming next</h3>
 	<p>There is still more we want to build for both our consumer users of WARP and our Cloudflare for Teams customers. Here’s a sneak peek at some of the ones we are most excited about (and allowed to share):</p>
 	<ul>
-		<li>New partner integrations with CrowdStrike and VMware Carbon Black (Tanium available today) will allow you to build even more comprehensive Cloudflare Access policies that check for device health before allowing users to connect to applications</li>
-		<li>Split Tunnel support will allow you or your organization to specify applications, sites or IP addresses that should be excluded from WARP. This will allow content like games, streaming services, or any application you choose to work outside the connection.</li>
+		<li>
+			<p>New partner integrations with CrowdStrike and VMware Carbon Black (Tanium available today) will allow you to build even more comprehensive Cloudflare Access policies that check for device health before allowing users to connect to applications</p>
+		</li>
+		<li>
+			<p>Split Tunnel support will allow you or your organization to specify applications, sites or IP addresses that should be excluded from WARP. This will allow content like games, streaming services, or any application you choose to work outside the connection.</p>
+		</li>
 	</ul>
-	<h3 id="download-now">Download now</h3>
+	<h3>Download now</h3>
 	<p>We are excited to finally share these applications with our customers. We'd especially like to thank our Cloudflare MVP’s, the 100,000+ beta users on desktop, and the millions of existing users on mobile who have helped grow WARP into what it is today.</p>
 	<p>You can download the applications right now from <a href="https://one.one.one.one">https://one.one.one.one</a>‌‌.</p>
 </div>

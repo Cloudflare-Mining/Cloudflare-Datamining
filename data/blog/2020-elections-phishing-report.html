@@ -1,23 +1,38 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>This blog originally appeared on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PX7Zxwm7qdJ1cBxYnchfN/0ce58de780c9bd5ce463665ea05ce637/2020-elections-phishing-report.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This blog originally appeared on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>Today, Area 1 Security published the results of “<a href="https://www.cloudflare.com/static/12411304c9c8902d6744dd8a641c6d9b/BDES-3794_CloudflareArea1_Report_PhishingElectionAdministrators_REVSEPT2022.pdf">Phishing Election Administrators</a>,” a comprehensive study analyzing more than 10,000 U.S. state and local election administrators’ email phishing vulnerabilities. With fewer than 100 days left until Election Day, the report reveals that states are still in widely varying stages of cybersecurity readiness.</p>
 	<p>Key findings include:</p>
 	<ul>
-		<li>The majority (53.24 percent) of state and local election administrators have only <em>rudimentary or non-standard technologies </em>to protect themselves from phishing;</li>
-		<li>Fewer than 3 out of 10 (28.14 percent) election administrators have <em>basic </em>controls to <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">prevent phishing</a>;</li>
-		<li>Fewer than 2 out of 10 (18.61 percent) election administrators have implemented <em>advanced anti-phishing </em>cybersecurity controls;</li>
-		<li>A surprising 5.42 percent of election administrators rely on <em>personal email accounts</em> or technologies designed for personal email (such as Yahoo!, Hotmail, AOL or others), to conduct their duties; and</li>
-		<li>A number of election administrators independently manage their own custom email infrastructure, including using <a href="https://media.defense.gov/2020/May/28/2002306626/-1/-1/0/CSA%20Sandworm%20Actors%20Exploiting%20Vulnerability%20in%20Exim%20Transfer%20Agent%2020200528.pdf">versions of Exim known to be targeted</a> by cyber actors linked to the Russian military that interfered in prior U.S. elections.</li>
+		<li>
+			<p>The majority (53.24 percent) of state and local election administrators have only <i>rudimentary or non-standard technologies</i> to protect themselves from phishing;</p>
+		</li>
+		<li>
+			<p>Fewer than 3 out of 10 (28.14 percent) election administrators have <i>basic</i> controls to <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">prevent phishing</a>;</p>
+		</li>
+		<li>
+			<p>Fewer than 2 out of 10 (18.61 percent) election administrators have implemented <i>advanced anti-phishing</i> cybersecurity controls;</p>
+		</li>
+		<li>
+			<p>A surprising 5.42 percent of election administrators rely on <i>personal email accounts</i> or technologies designed for personal email (such as Yahoo!, Hotmail, AOL or others), to conduct their duties; and</p>
+		</li>
+		<li>
+			<p>A number of election administrators independently manage their own custom email infrastructure, including using <a href="https://media.defense.gov/2020/May/28/2002306626/-1/-1/0/CSA%20Sandworm%20Actors%20Exploiting%20Vulnerability%20in%20Exim%20Transfer%20Agent%2020200528.pdf">versions of Exim known to be targeted</a> by cyber actors linked to the Russian military that interfered in prior U.S. elections.</p>
+		</li>
 	</ul>
 	<p>Ninety-five percent of cybersecurity damages worldwide begin with phishing, and phishing campaigns come in all shapes and sizes. The majority of phishing campaigns begin with an <a href="https://www.wsj.com/articles/phishing-the-clintons-1481761502">innocuous and authentic email</a> that individuals are unable to recognize as malicious. Consequently, the quality of email protection used by organizations and individuals has an inordinate bearing on their overall cybersecurity posture.</p>
 	<p>“Our elections are vital. They need to be resilient against whatever crisis the moment throws at us — and that requires resources and planning,” said Oren J. Falkowitz, co-founder of Area 1 Security. “However, most state and local election administrators are not very close to ensuring a safe election. This challenge is going to be exacerbated the longer it takes for them to get the resources and expertise needed to make changes.”</p>
-	<p><strong>Area 1’s email security recommendations for state and local election administrators include:</strong></p>
+	<p><b>Area 1’s email security recommendations for state and local election administrators include:</b></p>
 	<ul>
-		<li><strong>Ending use of Exim email servers:</strong> Given the government’s guidance to update Exim to mitigate <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-10149">CVE-2019-10149</a> and other vulnerabilities including, but not limited to, <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-15846">CVE-2019-15846</a> and <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-16928">CVE-2019-16928, </a>election administrators are urged to cease use of Exim. Upgrading alone does not mitigate exploitation. Prior Russian cyber activities directed towards U.S. elections make use of Exim ill-advised. For those who must continue running Exim, update to the latest version; running a version prior to 4.93 leaves a system vulnerable to disclosed vulnerabilities. Administrators can update Exim Mail Transfer Agent software through their Linux distribution’s package manager or by downloading the latest version from <a href="https://exim.org/mirrors.html">https://exim.org/mirrors.html</a>.</li>
-		<li><strong>Transitioning to cloud email infrastructure:</strong> Running custom email infrastructure requires network administrators to be perfect every single day. Instead, Area 1 Security recommends the use of cloud email infrastructure such as Google’s GSuite or Microsoft’s Office 365 in combination with a cloud email security solution.</li>
-		<li><strong>Ending use of personal email technologies for election duties: </strong>Under no circumstances should election administrators use personal email for the conduct or administration of elections.</li>
+		<li>
+			<p><b>Ending use of Exim email servers:</b> Given the government’s guidance to update Exim to mitigate <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-10149">CVE-2019-10149</a> and other vulnerabilities including, but not limited to, <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-15846">CVE-2019-15846</a> and <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-16928">CVE-2019-16928,</a> election administrators are urged to cease use of Exim. Upgrading alone does not mitigate exploitation. Prior Russian cyber activities directed towards U.S. elections make use of Exim ill-advised. For those who must continue running Exim, update to the latest version; running a version prior to 4.93 leaves a system vulnerable to disclosed vulnerabilities. Administrators can update Exim Mail Transfer Agent software through their Linux distribution’s package manager or by downloading the latest version from <a href="https://exim.org/mirrors.html">https://exim.org/mirrors.html</a>.</p>
+		</li>
+		<li>
+			<p><b>Transitioning to cloud email infrastructure:</b> Running custom email infrastructure requires network administrators to be perfect every single day. Instead, Area 1 Security recommends the use of cloud email infrastructure such as Google’s GSuite or Microsoft’s Office 365 in combination with a cloud email security solution.</p>
+		</li>
+		<li>
+			<p><b>Ending use of personal email technologies for election duties:</b> Under no circumstances should election administrators use personal email for the conduct or administration of elections.</p>
+		</li>
 	</ul>
-	<p><em>Area 1 Security is committed to <strong>Responsible Disclosure</strong> guidelines in all situations where it uncovers specific and verifiable campaign activity. As part of our commitment to those guidelines, Area 1 has been engaged with relevant stakeholders that have an interest in understanding this campaign in greater depth.</em></p>
+	<p><i>Area 1 Security is committed to </i><b><i>Responsible Disclosure</i></b><i> guidelines in all situations where it uncovers specific and verifiable campaign activity. As part of our commitment to those guidelines, Area 1 has been engaged with relevant stakeholders that have an interest in understanding this campaign in greater depth.</i></p>
 </div>

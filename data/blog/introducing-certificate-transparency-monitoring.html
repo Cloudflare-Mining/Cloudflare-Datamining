@@ -1,62 +1,119 @@
 <div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-certificate-transparency-monitoring">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-certificate-transparency-monitoring">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-certificate-transparency-monitoring">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-certificate-transparency-monitoring">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-certificate-transparency-monitoring">Français</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Today we’re launching <strong>Certificate Transparency Monitoring</strong> (my summer project as an intern!) to help customers spot malicious certificates. If you opt into CT Monitoring, we’ll send you an email whenever a certificate is issued for one of your domains. We crawl all public logs to find these certificates quickly. CT Monitoring is available now in public beta and can be enabled in the <a href="https://dash.cloudflare.com/?zone=crypto">Crypto Tab</a> of the Cloudflare dashboard.</p>
-	<h2 id="background">Background</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mB1bQ28xtM5QZxzQIct80/84fda2116edb7f7ef0e0020b26695234/image10.png" alt="" class="kg-image" width="1327" height="879" loading="lazy">
+
+	</figure>
+	<p>Today we’re launching <b>Certificate Transparency Monitoring</b> (my summer project as an intern!) to help customers spot malicious certificates. If you opt into CT Monitoring, we’ll send you an email whenever a certificate is issued for one of your domains. We crawl all public logs to find these certificates quickly. CT Monitoring is available now in public beta and can be enabled in the <a href="https://dash.cloudflare.com/?zone=crypto">Crypto Tab</a> of the Cloudflare dashboard.</p>
+	<h2>Background</h2>
 	<p>Most web browsers include a lock icon in the address bar. This icon is actually a button — if you’re a security advocate or a compulsive clicker (I’m both), you’ve probably clicked it before! Here’s what happens when you do just that in Google Chrome:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XvfkfThYBIJKSknSrYtC/09006df895c31108305bcd0cbb91441d/image7.png" alt="" class="kg-image" width="902" height="710" loading="lazy">
+
+	</figure>
 	<p>This seems like good news. The Cloudflare blog has presented a valid certificate, your data is private, and everything is secure. But what does this actually mean?</p>
-	<h2 id="certificates">Certificates</h2>
+	<h2>Certificates</h2>
 	<p>Your browser is performing some behind-the-scenes work to keep you safe. When you request a website (say, cloudflare.com), the website should present a certificate that proves its identity. This certificate is like a stamp of approval: it says that your connection is secure. In other words, the certificate proves that content was not intercepted or modified while in transit to you. An altered Cloudflare site would be problematic, especially if it looked like the actual Cloudflare site. Certificates protect us by including information about websites and their owners.</p>
-	<p>We pass around these certificates because <strong>the honor system doesn’t work on the Internet</strong>. If you want a certificate for your own website, just request one from a Certificate Authority (CA), or sign up for Cloudflare and we’ll do it for you! CAs issue certificates just as real-life notaries stamp legal documents. They confirm your identity, look over some data, and use their special status to grant you a digital certificate. Popular CAs include DigiCert, Let’s Encrypt, and Sectigo. This system has served us well because it has kept imposters in check, but also promoted trust between domain owners and their visitors.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>We pass around these certificates because <b>the honor system doesn’t work on the Internet</b>. If you want a certificate for your own website, just request one from a Certificate Authority (CA), or sign up for Cloudflare and we’ll do it for you! CAs issue certificates just as real-life notaries stamp legal documents. They confirm your identity, look over some data, and use their special status to grant you a digital certificate. Popular CAs include DigiCert, Let’s Encrypt, and Sectigo. This system has served us well because it has kept imposters in check, but also promoted trust between domain owners and their visitors.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rSjggcosa2uxJsC5WHSq/e6f97983febdbb1d9105f18aaa04dbb0/image12.png" alt="" class="kg-image" width="1999" height="792" loading="lazy">
+
+	</figure>
 	<p>Unfortunately, nothing is perfect.</p>
-	<p>It turns out that CAs make mistakes. In rare cases, they become reckless. When this happens, <em>illegitimate</em> certificates are issued (even though they appear to be authentic). If a CA accidentally issues a certificate for your website, but you did <em>not</em> request the certificate, you have a problem. Whoever received the certificate might be able to:</p>
+	<p>It turns out that CAs make mistakes. In rare cases, they become reckless. When this happens, <i>illegitimate</i> certificates are issued (even though they appear to be authentic). If a CA accidentally issues a certificate for your website, but you did <i>not</i> request the certificate, you have a problem. Whoever received the certificate might be able to:</p>
 	<ol>
-		<li>Steal login credentials from your visitors.</li>
-		<li>Interrupt your usual services by serving different content.</li>
+		<li>
+			<p>Steal login credentials from your visitors.</p>
+		</li>
+		<li>
+			<p>Interrupt your usual services by serving different content.</p>
+		</li>
 	</ol>
-	<p><a href="https://slate.com/technology/2016/12/how-the-2011-hack-of-diginotar-changed-the-internets-infrastructure.html">These attacks <em>do</em> happen</a>, so there’s good reason to care about certificates. More often, domain owners lose track of their certificates and panic when they discover unexpected certificates. We need a way to prevent these situations from ruining the entire system.</p>
-	<h2 id="certificate-transparency">Certificate Transparency</h2>
+	<p><a href="https://slate.com/technology/2016/12/how-the-2011-hack-of-diginotar-changed-the-internets-infrastructure.html">These attacks <i>do</i> happen</a>, so there’s good reason to care about certificates. More often, domain owners lose track of their certificates and panic when they discover unexpected certificates. We need a way to prevent these situations from ruining the entire system.</p>
+	<h2>Certificate Transparency</h2>
 	<p>Ah, Certificate Transparency (CT). CT solves the problem I just described by making all certificates public and easy to audit. When CAs issue certificates, they must submit certificates to at least two “public logs.” This means that collectively, the logs carry important data about all trusted certificates on the Internet. Several companies offer CT logs — Google has launched a few of its own. <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">We announced Cloudflare's Nimbus log last year</a>.</p>
 	<p>Logs are really, really big, and often hold hundreds of millions of certificate records.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GbvFMP5eeaj2RWq6Yaxsf/ed53aa15c0d4229a2f1a95824cec274a/image1.png" alt="" class="kg-image" width="1258" height="861" loading="lazy">
+
+	</figure>
 	<p>The log infrastructure helps browsers validate websites’ identities. When you request cloudflare.com in Safari or Google Chrome, the browser will actually require Cloudflare’s certificate to be registered in a CT log. If the certificate isn’t found in a log, you won’t see the lock icon next to the address bar. Instead, the browser will tell you that the website you’re trying to access is not secure. Are you going to visit a website marked “NOT SECURE”? Probably not.</p>
 	<p>There are systems that audit CT logs and report illegitimate certificates. Therefore, if your browser finds a valid certificate that is also trusted in a log, everything is secure.</p>
-	<h2 id="what-we-re-announcing-today">What We're Announcing Today</h2>
+	<h2>What We're Announcing Today</h2>
 	<p>Cloudflare has been an industry leader in CT. In addition to Nimbus, <a href="https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard">we launched a CT dashboard called Merkle Town and explained how we made it.</a> Today, we’re releasing a public beta of Certificate Transparency Monitoring.</p>
 	<p>If you opt into CT Monitoring, we’ll send you an email whenever a certificate is issued for one of your domains. When you get an alert, don’t panic; we err on the side of caution by sending alerts whenever a possible domain match is found. Sometimes you may notice a suspicious certificate. Maybe you won’t recognize the issuer, or the subdomain is not one you offer (e.g. slowinternet.cloudflare.com). Alerts are sent quickly so you can contact a CA if something seems wrong.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This raises the question: if services already audit public logs, why are alerts necessary? Shouldn’t errors be found automatically? Well no, because auditing is not exhaustive. The best person to audit your certificates is <em>you</em>. You know your website. You know your personal information. Cloudflare will put relevant certificates right in front of you.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aHufY0b0kBy8dvmJ3dums/b51847e07a81b6af3fb03f0ab9b45438/image6.png" alt="" class="kg-image" width="1996" height="1822" loading="lazy">
+
+	</figure>
+	<p>This raises the question: if services already audit public logs, why are alerts necessary? Shouldn’t errors be found automatically? Well no, because auditing is not exhaustive. The best person to audit your certificates is <i>you</i>. You know your website. You know your personal information. Cloudflare will put relevant certificates right in front of you.</p>
 	<p>You can enable CT Monitoring on the Cloudflare dashboard. Just head over to the <a href="https://dash.cloudflare.com/?zone=crypto">Crypto Tab</a> and find the “Certificate Transparency Monitoring” card. You can always turn the feature off if you’re too popular in the CT world.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/ct-free.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nCWrURoHLrjcm1nScYuBR/4f3d78d6391e6187991e54efc52b1957/ct-free.png" alt="" class="kg-image" width="2094" height="352" loading="lazy">
+
+	</figure>
 	<p>If you’re on a Business or Enterprise plan, you can tell us who to notify. Instead of emailing the zone owner (which we do for Free and Pro customers), we accept up to 10 email addresses as alert recipients. We do this to avoid overwhelming large teams. These emails do not have to be tied to a Cloudflare account and can be manually added or removed at any time.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/ct-enterprise.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="how-this-actually-works">How This Actually Works</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F3T0DoxkHboFcrAlluK9n/46be8cf0bec1fd9f870d09706b0500ea/ct-enterprise.png" alt="" class="kg-image" width="2096" height="964" loading="lazy">
+
+	</figure>
+	<h2>How This Actually Works</h2>
 	<p>Our Cryptography and SSL teams worked hard to make this happen; they built on the work of some clever tools mentioned earlier:</p>
 	<ul>
-		<li><a href="https://ct.cloudflare.com">Merkle Town</a> is a hub for CT data. We process <em>all</em> trusted certificates and present relevant statistics on our website. This means that every certificate issued on the Internet passes through Cloudflare, and all the data is public (so no privacy concerns here).</li>
-		<li>Cloudflare Nimbus is our very own CT log. It contains more than 400 million certificates.</li>
+		<li>
+			<p><a href="https://ct.cloudflare.com">Merkle Town</a> is a hub for CT data. We process <i>all</i> trusted certificates and present relevant statistics on our website. This means that every certificate issued on the Internet passes through Cloudflare, and all the data is public (so no privacy concerns here).</p>
+		</li>
+		<li>
+			<p>Cloudflare Nimbus is our very own CT log. It contains more than 400 million certificates.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/image11.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Note: Cloudflare, Google, and DigiCert are not the only CT log providers.</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2B2hYIC9O5TDhAiESAODVG/54822f09857aa0d6dfa49c640466adf4/image11.png" alt="" class="kg-image" width="1999" height="740" loading="lazy">
+
 	</figure>
+	<p>Note: Cloudflare, Google, and DigiCert are not the only CT log providers.</p>
 	<p>So here’s the process... At some point in time, you (or an impostor) request a certificate for your website. A Certificate Authority approves the request and issues the certificate. Within 24 hours, the CA sends this certificate to a set of CT logs. This is where we come in: Cloudflare uses an internal process known as “The Crawler” to look through millions of certificate records. Merkle Town dispatches The Crawler to monitor CT logs and check for new certificates. When The Crawler finds a new certificate, it pulls the entire certificate through Merkle Town.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7r0eW4WoQeH64mvg354HO6/d8de6f4d9cc2e852c4f2f19157fd5349/image4.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
 	<p>When we process the certificate in Merkle Town, we also check it against a list of monitored domains. If you have CT Monitoring enabled, we’ll send you an alert immediately. This is only possible because of Merkle Town’s existing infrastructure. Also, The Crawler is ridiculously fast.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image13.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="i-got-a-certificate-alert-what-now">I Got a Certificate Alert. What Now?</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NncFdAIyDlEDUo5BmKKZC/29d5972fadb6a4c6c426d2a1a25b942f/image13.png" alt="" class="kg-image" width="1340" height="648" loading="lazy">
+
+	</figure>
+	<h2>I Got a Certificate Alert. What Now?</h2>
 	<p>Good question. Most of the time, certificate alerts are routine. Certificates expire and renew on a regular basis, so it’s totally normal to get these emails. If everything looks correct (the issuer, your domain name, etc.), go ahead and toss that email in the trash.</p>
 	<p>In rare cases, you might get an email that looks suspicious. <a href="https://support.cloudflare.com/hc/en-us/articles/360031379012">We provide a detailed support article that will help</a>. The basic protocol is this:</p>
 	<ol>
-		<li>Contact the CA (listed as “Issuer” in the email).</li>
-		<li>Explain <em>why</em> you think the certificate is suspicious.</li>
-		<li>The CA should revoke the certificate (if it really is malicious).</li>
+		<li>
+			<p>Contact the CA (listed as “Issuer” in the email).</p>
+		</li>
+		<li>
+			<p>Explain <i>why</i> you think the certificate is suspicious.</p>
+		</li>
+		<li>
+			<p>The CA should revoke the certificate (if it really is malicious).</p>
+		</li>
 	</ol>
 	<p>We also have a friendly support team that can be reached <a href="https://support.cloudflare.com/hc/en-us/articles/200172476">here</a>. While Cloudflare is not at CA and cannot revoke certificates, our support team knows quite a bit about certificate management and is ready to help.</p>
-	<h2 id="the-future">The Future</h2>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Certificate Transparency has started making regular appearances on the Cloudflare blog. Why? It’s required by Chrome and Safari, <a href="http://gs.statcounter.com">which dominate the browser market</a> and <a href="https://github.com/chromium/ct-policy">set precedents for Internet security</a>. But more importantly, CT can help us spot malicious certificates <em>before</em> they are used in attacks. This is why we will continue to refine and improve our certificate detection methods.</p>
+	<h2>The Future</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yBCtqs81a22hZy4ri78Nb/78b117f5bc6461a1c6d8ccdbc1f9d19b/image2.png" alt="" class="kg-image" width="1999" height="1383" loading="lazy">
+
+	</figure>
+	<p>Certificate Transparency has started making regular appearances on the Cloudflare blog. Why? It’s required by Chrome and Safari, <a href="http://gs.statcounter.com">which dominate the browser market</a> and <a href="https://github.com/chromium/ct-policy">set precedents for Internet security</a>. But more importantly, CT can help us spot malicious certificates <i>before</i> they are used in attacks. This is why we will continue to refine and improve our certificate detection methods.</p>
 	<p>What are you waiting for? Go enable <a href="https://dash.cloudflare.com/?zone=crypto">Certificate Transparency Monitoring</a>!</p>
 </div>

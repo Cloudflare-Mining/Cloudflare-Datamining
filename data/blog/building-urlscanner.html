@@ -1,56 +1,83 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/image3-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eSANAscXnEBIAQrZDXEEs/6c78bdca9b6bab049ff98436e6e7437b/image3-25.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Today, we’re excited to talk about <a href="https://radar.cloudflare.com/scan">URL Scanner</a>, a tool that helps everyone from security teams to everyday users to detect and safeguard against malicious websites by scanning and analyzing them. URL Scanner has executed almost a million scans since its <a href="https://blog.cloudflare.com/radar-url-scanner-early-access">launch</a> last March on <a href="https://radar.cloudflare.com/scan">Cloudflare Radar</a>, driving us to continuously innovate and enhance its capabilities. Since that time, we have introduced unlisted scans, detailed malicious verdicts, enriched search functionality, and now, integration with Security Center and an official API, all built upon the robust foundation of <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>, and the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a>.</p>
-	<h2 id="integration-with-the-security-center-in-the-cloudflare-dashboard">Integration with the Security Center in the Cloudflare Dashboard</h2>
+	<h2>Integration with the Security Center in the Cloudflare Dashboard</h2>
 	<p>Security Center is the single place in the Cloudflare Dashboard to map your <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a>, identify potential security risks, and mitigate risks with a few clicks. Its users can now access the URL scanner directly from the <a href="https://developers.cloudflare.com/security-center/investigate">Investigate Portal</a>, enhancing their cybersecurity workflow. These scans will be unlisted by default, ensuring privacy while facilitating a deep dive into website security. Users will be able to see their historic scans and access the related reports when they need to, and they will benefit from automatic screenshots for multiple screen sizes, enriching the context of each scan.</p>
 	<p>Customers with Cloudflare dashboard access will enjoy higher API limits and faster response times, crucial for agile security operations. Integration with internal workflows becomes seamless, allowing for sophisticated network and user protection strategies.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/03/image2-24.png" class="kg-image" alt="Security Center in the Cloudflare Dashboard" loading="lazy" width="888" height="988">
-		<figcaption><em>Security Center in the Cloudflare Dashboard</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xsq5tQ1cjM8cQwnCRUCmh/f315a8104811c503fed06f215d8b6041/image2-24.png" alt="Security Center in the Cloudflare Dashboard" class="kg-image" width="888" height="988" loading="lazy">
+
 	</figure>
-	<h2 id="unlocking-the-potential-of-the-url-scanner-api">Unlocking the potential of the URL Scanner API</h2>
+	<p><i>Security Center in the Cloudflare Dashboard</i></p>
+	<h2>Unlocking the potential of the URL Scanner API</h2>
 	<p>The <a href="https://developers.cloudflare.com/radar/investigate/url-scanner">URL Scanner API</a> is a powerful asset for developers, enabling custom scans to detect <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">phishing</a> or <a href="https://www.cloudflare.com/learning/ddos/glossary/malware">malware</a> risks, analyze website technologies, and much more. With new features like custom HTTP headers and multi-device screenshots, developers gain a comprehensive toolkit for thorough website assessment.</p>
-	<h3 id="submitting-a-scan-request">Submitting a scan request</h3>
-	<p>Using the API, here’s the simplest way to <a href="https://developers.cloudflare.com/api/operations/urlscanner-create-scan">submit</a> a scan request:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-curl">curl --request POST \
-	--url https://api.cloudflare.com/client/v4/accounts/&lt;accountId&gt;/urlscanner/scan \
+	<h3>Submitting a scan request</h3>
+	<p>Using the API, here’s the simplest way to <a href="https://developers.cloudflare.com/api/operations/urlscanner-create-scan">submit</a> a scan request:</p>
+	<pre class="language-curl"><code class="language-curl">curl --request POST \
+	--url https://api.cloudflare.com/client/v4/accounts/<accountid>/urlscanner/scan \
 	--header 'Content-Type: application/json' \
---header "Authorization: Bearer &lt;API_TOKEN&gt;" \
+--header "Authorization: Bearer <api_token>" \
 	--data '{
 		"url": "https://www.cloudflare.com",
-	}'
-</code></pre>
-	<!--kg-card-end: markdown-->
+	}'</api_token></accountid></code></pre>
 	<p>New features include the option to set custom HTTP headers, like <a href="https://developer.mozilla.org/en-US/docs/Glossary/User_agent">User-Agent</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization</a>, request multiple target device screenshots, like mobile and desktop, as well as set the visibility level to “unlisted”. This essentially marks the scan as private and was often requested by developers who wanted to keep their investigations confidential. Public scans, on the other hand, can be found by anyone through search and are useful to share results with the wider community. You can find more details in our <a href="https://developers.cloudflare.com/radar/investigate/url-scanner">developer documentation</a>.</p>
-	<h3 id="exploring-the-scan-results">Exploring the scan results</h3>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/03/image5-16.png" class="kg-image" alt="Scan results for www.cloudflare.com on Cloudflare Radar" loading="lazy" width="1999" height="1185">
-		<figcaption><em>Scan results for </em><a href="https://www.cloudflare.com"><em>www.cloudflare.com</em></a><em> on Cloudflare Radar</em></figcaption>
+	<h3>Exploring the scan results</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NRMloVOilGBXsYy12xeeT/8202728097a541d3bd027d51892e1bb4/image5-16.png" alt="Scan results for www.cloudflare.com on Cloudflare Radar" class="kg-image" width="1999" height="1185" loading="lazy">
+
 	</figure>
+	<p><i>Scan results for</i> <a href="https://www.cloudflare.com"><i>www.cloudflare.com</i></a> <i>on Cloudflare Radar</i></p>
 	<p>Once a scan concludes, fetch the final <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan">report</a> and the full <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan-har">network log</a>. Recently added features include the `verdict` property, indicating the site’s malicious status, and the `securityViolations` section detailing <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">CSP</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">SRI</a> policy breaches — as a developer, you can also scan your own website and see our recommendations. Expect improvements on verdict accuracy over time, as this is an area we’re focusing on.</p>
-	<h3 id="enhanced-search-functionality">Enhanced search functionality</h3>
-	<p>Developers can now <a href="https://developers.cloudflare.com/api/operations/urlscanner-search-scans">search</a> scans by hostname, a specific URL or even <em>any</em> URL the page connected to during the scan. This allows, for example, to search for websites that use a JavaScript library named jquery.min.js (‘?path=jquery.min.js’). Future plans include additional features like searching by IP address, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, and malicious website categorisation.</p>
+	<h3>Enhanced search functionality</h3>
+	<p>Developers can now <a href="https://developers.cloudflare.com/api/operations/urlscanner-search-scans">search</a> scans by hostname, a specific URL or even <i>any</i> URL the page connected to during the scan. This allows, for example, to search for websites that use a JavaScript library named jquery.min.js (‘?path=jquery.min.js’). Future plans include additional features like searching by IP address, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, and malicious website categorisation.</p>
 	<p>The URL Scanner can be used for a diverse range of applications. These include capturing a website's evolving state over time (such as tracking changes to the front page of an online newspaper), analyzing technologies employed by a website, preemptively assessing potential risks (as when scrutinizing shortened URLs), and supporting the investigation of persistent cybersecurity threats (such as identifying affected websites hosting a malicious JavaScript file).</p>
-	<h2 id="how-we-built-the-url-scanner-api">How we built the URL Scanner API</h2>
+	<h2>How we built the URL Scanner API</h2>
 	<p>In recounting the process of developing the URL Scanner, we aim to showcase the potential and versatility of Cloudflare Workers as a platform. This story is more than a technical journey, but a testament to the capabilities inherent in our platform's suite of APIs. By dogfooding our own technology, we not only demonstrate confidence in its robustness but also encourage developers to harness the same capabilities for building sophisticated applications. The URL Scanner exemplifies how Cloudflare Workers, Durable Objects, and the Browser Rendering API seamlessly integrate.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/03/image4-23.png" class="kg-image" alt="High level overview of the Cloudflare URL Scanner technology stack" loading="lazy" width="1999" height="564">
-		<figcaption><em><em>High level overview of the</em> <em>Cloudflare URL Scanner technology stack</em></em></figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55HCrSeFuu3FUjcjjIXJyl/3eebc727f0034d32e54526c6a50f939a/image4-23.png" alt="High level overview of the Cloudflare URL Scanner technology stack" class="kg-image" width="1999" height="564" loading="lazy">
+
 	</figure>
+	<p><i><i>High level overview of the</i></i><i> </i><i><i>Cloudflare URL Scanner technology stack</i></i></p>
 	<p>As seen above, Cloudflare’s runtime infrastructure is the foundation the system runs on. <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> serves the public API, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a> handles orchestration, <a href="https://developers.cloudflare.com/r2">R2</a> acts as the primary storage solution, and <a href="https://developers.cloudflare.com/queues">Queues</a> efficiently handles batch operations, all at the edge. However, what truly enables the URL Scanner’s capabilities is the <a href="https://developers.cloudflare.com/browser-rendering">Browser Rendering API</a>. It’s what initially allowed us to release in such a short time frame, since we didn’t have to build and manage an entire fleet of Chrome browsers from scratch. We simply request a browser, and then using the well known <a href="https://pptr.dev">Puppeteer</a> library, instruct it to fetch the webpage and process it in the way we want. This API is at the heart of the entire system.</p>
-	<h3 id="scanning-a-website">Scanning a website</h3>
+	<h3>Scanning a website</h3>
 	<p>The entire process of scanning a website, can be split into 4 phases:</p>
 	<ol>
-		<li>Queue a scan</li>
-		<li>Browse to the website and compile initial report</li>
-		<li>Post-process: compile additional information and build final report</li>
-		<li>Store final report, ready for serving and searching</li>
+		<li>
+			<p>Queue a scan</p>
+		</li>
+		<li>
+			<p>Browse to the website and compile initial report</p>
+		</li>
+		<li>
+			<p>Post-process: compile additional information and build final report</p>
+		</li>
+		<li>
+			<p>Store final report, ready for serving and searching</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image1-28.png" class="kg-image" alt="" loading="lazy" width="1999" height="438"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AUAfO5VBEUvbRlYwoJ5zL/dedd5666ad32c6824d8b53eecb934ab0/image1-28.png" alt="" class="kg-image" width="1999" height="438" loading="lazy">
+
+	</figure>
 	<p>In short, we create a Durable Object, the Scanner, unique to each scan, which is responsible for orchestrating the scan from start to finish. Since we want to respond immediately to the user, we save the scan to the Durable Object’s transactional Key-Value storage, and schedule an alarm so we can perform the scan asynchronously a second later. &nbsp;We then respond to the user, informing them that the scan request was accepted.</p>
 	<p>When the Scanner’s alarm triggers, we enter the second phase:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image7-5.png" class="kg-image" alt="" loading="lazy" width="1999" height="878"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qnzMmDQbPtWmyIClv6680/f251bd874d45b397013355d804a1b292/image7-5.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
+
+	</figure>
 	<p>There are 3 components at work in this phase, the Scanner, the Browser Pool and the Browser Controller, all <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>.</p>
-	<p>In the initial release, for each new scan we would launch a brand-new browser. However, This operation would take time and was inefficient, so after review, we decided to reuse browsers across multiple scans. This is why we introduced both the Browser Pool and the Browser Controller components. The Browser Pool keeps track of what browsers we have open, when they last pinged the browser pool (so it knows they’re alive), and whether they’re free to accept a new scan. The Browser Controller is responsible for keeping the browser instance alive, once it’s launched, and orchestrating (ahem, <a href="https://pptr.dev">puppeteering</a>) the entire browsing session. Here’s a simplified version of our Browser Controller code:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">export class BrowserController implements DurableObject {
+	<p>In the initial release, for each new scan we would launch a brand-new browser. However, This operation would take time and was inefficient, so after review, we decided to reuse browsers across multiple scans. This is why we introduced both the Browser Pool and the Browser Controller components. The Browser Pool keeps track of what browsers we have open, when they last pinged the browser pool (so it knows they’re alive), and whether they’re free to accept a new scan. The Browser Controller is responsible for keeping the browser instance alive, once it’s launched, and orchestrating (ahem, <a href="https://pptr.dev">puppeteering</a>) the entire browsing session. Here’s a simplified version of our Browser Controller code:</p>
+	<pre class="language-javascript"><code class="language-javascript">export class BrowserController implements DurableObject {
 	//[..]
 	private async handleNewScan(url: string) {
 		if (!this.browser) {
@@ -84,20 +111,22 @@
 		// Keep durable object alive
 		await this.state.storage.setAlarm(Date.now() + 5 * 1000)
 	}
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Launching a browser (Step 6) and maintaining a connection to it is abstracted away from us thanks to the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a>. This API is responsible for all the infrastructure required to maintain a fleet of Chrome browsers, and led to a much quicker development and release of the URL Scanner. It also allowed us to use a well-known library, <a href="https://pptr.dev">Puppeteer</a>, to communicate with Google Chrome via the <a href="https://chromedevtools.github.io/devtools-protocol">DevTools</a> protocol.</p>
 	<p>The initial report is made up of the network log of all requests, captured in <a href="https://en.wikipedia.org/wiki/HAR_(file_format)">HAR</a> (HTTP Archive) format. HAR files, essentially JSON files, provide a detailed record of all interactions between a web browser and a website. As an established standard in the industry, HAR files can be easily <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan-har">shared</a> and analyzed using specialized <a href="https://toolbox.googleapps.com/apps/har_analyzer">tools</a>. In addition to this network log, we augment our dataset with an array of other metadata, including base64-encoded screenshots which provide a snapshot of the website at the moment of the scan.</p>
 	<p>Having this data, we transition to phase 3, where the Scanner Durable Object initiates a series of interactions with a few other Cloudflare APIs in order to collect additional information, like running a phishing scanner over the web page's Document Object Model (DOM), fetching <a href="https://www.cloudflare.com/learning/dns/dns-records">DNS records</a>, and extracting information about <a href="https://developers.cloudflare.com/api/operations/domain-intelligence-get-domain-details">categories</a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-ranking-domain-details">Radar rank</a> associated with the main hostname.</p>
 	<p>This process ensures that the final report is enriched with insights coming from different sources, making the URL Scanner more efficient in assessing websites. Once all the necessary information is collected, we compile the final report and store it as a JSON file within <a href="https://developers.cloudflare.com/r2">R2</a>, Cloudflare’s object storage solution. To empower users with efficient scan searches, we use Postgres.</p>
 	<p>While the initial approach involved sending each completed scan promptly to the core API for immediate storage in Postgres, we realized that, as the rate of scans grew, a more efficient strategy would be to batch those operations, and for that, we use Worker Queues:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/image6-8.png" class="kg-image" alt="" loading="lazy" width="1999" height="469"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gyX0lHVmgVGhmYZeyipcM/ff87f8dbfdaff32775b8c5f454ccd40c/image6-8.png" alt="" class="kg-image" width="1999" height="469" loading="lazy">
+
+	</figure>
 	<p>This allows us to better manage the write load on Postgres. We wanted scans available as soon as possible to those who requested them, but it’s ok if they’re only available in search results at a slightly later point in time (seconds to minutes, depending on load).</p>
 	<p>In short, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a> together with the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a> power the entire scanning process. Once that’s finished, the Cloudflare Worker serving the API will simply fetch it from <a href="https://developers.cloudflare.com/r2">R2</a> by ID. All together, Workers, Durable Objects, and R2 scale seamlessly and will allow us to grow as demand evolves.</p>
-	<h3 id="last-but-not-least">Last but not least</h3>
-	<p>While we've extensively covered the URL scanning workflow, we've yet to delve into the construction of the API worker itself. Developed with <a href="https://www.typescriptlang.org">Typescript</a>, it uses <a href="https://github.com/cloudflare/itty-router-openapi">itty-router-openapi</a>, a Javascript router with <a href="https://spec.openapis.org/oas/v3.1.0">Open API 3</a> schema generation and validation, originally built for <a href="https://radar.cloudflare.com">Radar</a>, but that’s been improving ever since with contributions from the community. Here’s a quick example of how to set up an endpoint, with input validation built in:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">import { DateOnly, OpenAPIRoute, Path, Str, OpenAPIRouter } from '@cloudflare/itty-router-openapi'
+	<h3>Last but not least</h3>
+	<p>While we've extensively covered the URL scanning workflow, we've yet to delve into the construction of the API worker itself. Developed with <a href="https://www.typescriptlang.org">Typescript</a>, it uses <a href="https://github.com/cloudflare/itty-router-openapi">itty-router-openapi</a>, a Javascript router with <a href="https://spec.openapis.org/oas/v3.1.0">Open API 3</a> schema generation and validation, originally built for <a href="https://radar.cloudflare.com">Radar</a>, but that’s been improving ever since with contributions from the community. Here’s a quick example of how to set up an endpoint, with input validation built in:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { DateOnly, OpenAPIRoute, Path, Str, OpenAPIRouter } from '@cloudflare/itty-router-openapi'
 
 import { z } from 'zod'
 import { OpenAPIRoute, OpenAPIRouter, Uuid } from '@cloudflare/itty-router-openapi'
@@ -140,12 +169,10 @@ router.all('*', () =&gt; new Response('Not Found.', { status: 404 }))
 
 export default {
   fetch: router.handle,
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>In the example above, the ScanMetadataCreate endpoint will make sure to validate the incoming POST data to match the defined schema before calling the ‘async handle(request,env,context,data)’ function. This way you can be sure that if your code is called, the data argument will always be validated and formatted.</p>
 	<p>You can learn more about the project on its <a href="https://github.com/cloudflare/itty-router-openapi">GitHub page</a>.</p>
-	<h2 id="future-plans-and-new-features">Future plans and new features</h2>
+	<h2>Future plans and new features</h2>
 	<p>Looking ahead, we're committed to further elevating the URL Scanner's capabilities. Key upcoming features include geographic scans, where users can customize the location that the scan is done from, providing critical insights into regional security threats and content compliance; expanded scan details, including more comprehensive headers and security details; and continuous performance improvements and optimisations, so we can deliver faster scan results.</p>
 	<p>The evolution of the URL Scanner is a reflection of our commitment to Internet safety and innovation. Whether you're a developer, a security professional, or simply invested in the safety of the digital landscape, the URL Scanner API offers a comprehensive suite of tools to enhance your efforts. Explore the new features today, and join us in shaping a safer Internet for everyone.</p>
 	<p>Remember, while Security Center's new capabilities offer advanced tools for URL Scanning for Cloudflare’s existing customers, the URL Scanner remains accessible for basic scans to the public on <a href="https://radar.cloudflare.com/scan">Cloudflare Radar</a>, ensuring our technology benefits a broad audience.</p>

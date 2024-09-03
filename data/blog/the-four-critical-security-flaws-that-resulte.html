@@ -1,27 +1,34 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hATzhpw6fGpWJE2TgdJXh/f62cef01dfc9fb6f5b5e80cd0d041e9a/the-four-critical-security-flaws-that-resulte.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>A core value CloudFlare is that security information should be shared between organizations to make the entire Internet safer. That is how CloudFlare's systems work: if one site is attacked, data about that attack is immediately shared with the rest of the network so other sites can be safe. We believe that same core value should apply when we are the victim of the attack. That is why we immediately posted an <a href="https://blog.cloudflare.com/post-mortem-todays-attack-apparent-google-app">incident report</a> and have continue to update it as we learn more.</p>
 	<p>Writing that report wasn't fun, but I believe it is important to share the details of the event so others who may be affected can learn from the events that transpired last Friday. This is not the usual way for the security industry, but we believe it's the way the security industry should be. To that end, here's what we know about the hack.</p>
-	<h3 id="thefourkeysecurityflaws">The Four Key Security Flaws</h3>
+	<h3>The Four Key Security Flaws</h3>
 	<p>There were four key security flaws that allowed the hack to happen:</p>
 	<ol>
-		<li>AT&amp;T was tricked into redirecting my voicemail to a fraudulent voicemail box;</li>
-		<li>Google's account recovery process was tricked by the fraudulent voicemail box and left an account recovery PIN code that allowed my personal Gmail account to be reset;</li>
-		<li>A flaw in Google's Enterprise Apps account recovery process allowed
-			the hacker to bypass two-factor authentication on my CloudFlare.com
-			address; and</li>
-		<li>CloudFlare BCCing transactional emails to some administrative
-			accounts allowed the hacker to reset the password of a customer once
-			the hacker had gained access to the administrative email account.</li>
+		<li>
+			<p>AT&amp;T was tricked into redirecting my voicemail to a fraudulent voicemail box;</p>
+		</li>
+		<li>
+			<p>Google's account recovery process was tricked by the fraudulent voicemail box and left an account recovery PIN code that allowed my personal Gmail account to be reset;</p>
+		</li>
+		<li>
+			<p>A flaw in Google's Enterprise Apps account recovery process allowed the hacker to bypass two-factor authentication on my CloudFlare.com address; and</p>
+		</li>
+		<li>
+			<p>CloudFlare BCCing transactional emails to some administrative accounts allowed the hacker to reset the password of a customer once the hacker had gained access to the administrative email account.</p>
+		</li>
 	</ol>
-	<h3 id="patchingtheholes">Patching the Holes</h3>
+	<h3>Patching the Holes</h3>
 	<p>We are following up with AT&amp;T to understand more about how the voicemail was redirected. That remains unsettling, but it is not surprising that a phone company's voicemail security procedures are lax. It is also unsettling that Gmail's account recovery process appears to still be vulnerable to the voicemail hack. That is troubling since it means if a hacker knows your phone number then your Gmail account may, at best, only be as secure as your voicemail PIN.</p>
 	<p>You can mitigate these risk if you are a user by enabling two-factor authentication, ideally relying on Google's Authenticator App rather than anything that passes through the phone company's network. While Google is advising otherwise, I have removed my phone number from all my Google accounts.</p>
 	<p>Google has publicly stated that the flaw in the Google Enterprise App account recovery process has been patched and you can no longer use it get around two-factor authentication. Again, since any security system is only as strong as its weakest link, we would recommend using an out-of-band authentication that doesn't rely on the phone company's network (e.g., Google Authenticator App, not SMS or voice verification).</p>
 	<p>Finally, CloudFlare has stopped BCCing password reset and other transactional messages to administrative accounts, closing that attack vector if an administrator's email account is compromised in the future. If you're doing that at your company, and a troubling number of companies do use email as a poor man's logs, you should stop. This incident is why.</p>
-	<h3 id="timeline">Timeline</h3>
+	<h3>Timeline</h3>
 	<p>The event, from start to finish, lasted less than 2 hours. The hackers were in my personal Gmail account for about 1 hour 35 minutes. They were in CloudFlare's email accounts for about 28 minutes, although likely interrupted several times as our ops team reset passwords and sessions. To better understand the hack, we put together the visual timeline below which is our best understanding of the events as they transpired. As we learn more, we'll update the information here and on the <a href="https://blog.cloudflare.com/post-mortem-todays-attack-apparent-google-app">official incident report</a>.</p>
-	<p><img alt="The Four Critical Security Flaws that Resulted in Last Friday's
-Hack" src="https://blog.cloudflare.com/content/images/attack-timeline.png.scaled500.png" title="The Four Critical Security Flaws that Resulted in Last Friday's Hack"></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MZMJLpZlvDTZHxfv3LHE6/0cb7e4a55392c6dcc788cca35b009e64/attack-timeline.png.scaled500.png" alt="The Four Critical Security Flaws that Resulted in Last Friday's
+Hack" class="kg-image" width="500" height="1118" loading="lazy">
+
+	</figure>
 </div>

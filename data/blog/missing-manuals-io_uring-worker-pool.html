@@ -1,4 +1,4 @@
-<div class="mb2 gray5">18 min read</div>
+<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36xQggu1S0XWrH9UMDLkds/eab56248f19c18bbd08eec4c4a656c50/missing-manuals-io_uring-worker-pool.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Chances are you might have heard of <code>io_uring</code>. It first appeared in <a href="https://kernelnewbies.org/Linux_5.1#High-performance_asynchronous_I.2FO_with_io_uring">Linux 5.1</a>, back in 2019, and was <a href="https://lwn.net/Articles/776703">advertised as the new API for asynchronous I/O</a>. Its goal was to be an alternative to the deemed-to-be-broken-beyond-repair <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">AIO</a>, the “old” asynchronous I/O API.</p>
 	<p>Calling <code>io_uring</code> just an asynchronous I/O API doesn’t do it justice, though. Underneath the API calls, io_uring is a full-blown runtime for processing I/O requests. One that spawns threads, sets up work queues, and dispatches requests for processing. All this happens “in the background” so that the user space process doesn’t have to, but can, block while waiting for its I/O requests to complete.</p>
@@ -7,24 +7,28 @@
 	<p>2. How can I monitor and control the thread pool size?</p>
 	<p>I could not find the answers to these questions in either the <a href="https://kernel.dk/io_uring.pdf">Efficient I/O with io_uring</a> article, or the <a href="https://unixism.net/loti">Lord of the io_uring</a> guide – two well-known pieces of available documentation.</p>
 	<p>And while a recent enough <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_register.2.en.html"><code>io_uring</code> man page</a> touches on the topic:</p>
-	<blockquote>By default, <code>io_uring</code> limits the unbounded workers created to the maximum processor count set by <code>RLIMIT_NPROC</code> and the bounded workers is a function of the SQ ring size and the number of CPUs in the system.</blockquote>
+	<blockquote>
+		<p>By default, <code>io_uring</code> limits the unbounded workers created to the maximum processor count set by <code>RLIMIT_NPROC</code> and the bounded workers is a function of the SQ ring size and the number of CPUs in the system.</p>
+	</blockquote>
 	<p>… it also leads to more questions:</p>
 	<p>3. What is an unbounded worker?</p>
 	<p>4. How does it differ from a bounded worker?</p>
 	<p>Things seem a bit under-documented as is, hence this blog post. Hopefully, it will provide the clarity needed to put <code>io_uring</code> to work in your project when the time comes.</p>
 	<p>Before we dig in, a word of warning. This post is not meant to be an introduction to <code>io_uring</code>. The existing documentation does a much better job at showing you the ropes than I ever could. Please give it a read first, if you are not familiar yet with the io_uring API.</p>
-	<h2 id="not-all-i-o-requests-are-created-equal">Not all I/O requests are created equal</h2>
+	<h2>Not all I/O requests are created equal</h2>
 	<p><code>io_uring</code> can perform I/O on any kind of file descriptor; be it a regular file or a special file, like a socket. However, the kind of file descriptor that it operates on makes a difference when it comes to the size of the worker pool.</p>
 	<p>You see, <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2e480058ddc21ec53a10e8b41623e245e908bdbc">I/O requests get classified into two categories</a> by <code>io_uring</code>:</p>
-	<blockquote><code>io-wq</code> divides work into two categories:<br>1. Work that completes in a bounded time, like reading from a regular file or a block device. This type of work is limited based on the size of the SQ ring.<br>2. Work that may never complete, we call this unbounded work. The amount of workers here is limited by <code>RLIMIT_NPROC</code>.</blockquote>
+	<blockquote>
+		<p><code>io-wq</code> divides work into two categories:1. Work that completes in a bounded time, like reading from a regular file or a block device. This type of work is limited based on the size of the SQ ring.2. Work that may never complete, we call this unbounded work. The amount of workers here is limited by <code>RLIMIT_NPROC</code>.</p>
+	</blockquote>
 	<p>This answers the latter two of our open questions. Unbounded workers handle I/O requests that operate on neither regular files (<code>S_IFREG</code>) nor block devices (<code>S_ISBLK</code>). This is the case for network I/O, where we work with sockets (<code>S_IFSOCK</code>), and other special files like character devices (e.g. <code>/dev/null</code>).</p>
 	<p>We now also know that there are different limits in place for how many bounded vs unbounded workers there can be running. So we have to pick one before we dig further.</p>
-	<h2 id="capping-the-unbounded-worker-pool-size">Capping the unbounded worker pool size</h2>
+	<h2>Capping the unbounded worker pool size</h2>
 	<p>Pushing data through sockets is Cloudflare’s bread and butter, so this is what we are going to base our test workload around. To put it in <code>io_uring</code> lingo – we will be submitting unbounded work requests.</p>
 	<p>While doing that, we will observe how <code>io_uring</code> goes about creating workers.</p>
 	<p>To observe how <code>io_uring</code> goes about creating workers we will ask it to read from a UDP socket multiple times. No packets will arrive on the socket, so we will have full control over when the requests complete.</p>
-	<p>Here is our test workload - <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-io_uring-worker-pool/src/bin/udp_read.rs">udp_read.rs</a>.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ./target/debug/udp-read -h
+	<p>Here is our test workload - <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-io_uring-worker-pool/src/bin/udp_read.rs">udp_read.rs</a>.</p>
+	<pre class="language-bash"><code class="language-bash">$ ./target/debug/udp-read -h
 udp-read 0.1.0
 read from UDP socket with io_uring
 
@@ -37,21 +41,19 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-    -c, --cpu &lt;cpu&gt;...                     CPU to run on when invoking io_uring_enter for Nth ring (specify multiple
+    -c, --cpu <cpu>...                     CPU to run on when invoking io_uring_enter for Nth ring (specify multiple
                                            times) [default: 0]
-    -w, --workers &lt;max-unbound-workers&gt;    Maximum number of unbound workers per NUMA node (0 - default, that is
+    -w, --workers <max-unbound-workers>    Maximum number of unbound workers per NUMA node (0 - default, that is
                                            RLIMIT_NPROC) [default: 0]
-    -r, --rings &lt;num-rings&gt;                Number io_ring instances to create per thread [default: 1]
-    -t, --threads &lt;num-threads&gt;            Number of threads creating io_uring instances [default: 1]
-    -s, --sqes &lt;sqes&gt;                      Number of read requests to submit per io_uring (0 - fill the whole queue)
-                                           [default: 0]
-</code></pre>
-	<!--kg-card-end: markdown-->
+    -r, --rings <num-rings>                Number io_ring instances to create per thread [default: 1]
+    -t, --threads <num-threads>            Number of threads creating io_uring instances [default: 1]
+    -s, --sqes <sqes>                      Number of read requests to submit per io_uring (0 - fill the whole queue)
+                                           [default: 0]</sqes></num-threads></num-rings></max-unbound-workers></cpu></code></pre>
 	<p>While it is parametrized for easy experimentation, at its core it doesn’t do much. We fill the submission queue with read requests from a UDP socket and then wait for them to complete. But because data doesn’t arrive on the socket out of nowhere, and there are no timeouts set up, nothing happens. As a bonus, we have complete control over when requests complete, which will come in handy later.</p>
 	<p>Let’s run the test workload to convince ourselves that things are working as expected. <code>strace</code> won’t be very helpful when using <code>io_uring</code>. We won’t be able to tie I/O requests to system calls. Instead, we will have to turn to in-kernel tracing.</p>
 	<p>Thankfully, <code>io_uring</code> comes with a set of ready to use static tracepoints, which save us the trouble of digging through the source code to decide where to hook up dynamic tracepoints, known as <a href="https://docs.kernel.org/trace/kprobes.html">kprobes</a>.</p>
-	<p>We can discover the tracepoints with <a href="https://man7.org/linux/man-pages/man1/perf-list.1.html"><code>perf list</code></a> or <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#4--l-listing-probes"><code>bpftrace -l</code></a>, or by browsing the <code>events/</code> directory on the <a href="https://www.kernel.org/doc/Documentation/trace/ftrace.txt"><code>tracefs filesystem</code></a>, usually mounted under <code>/sys/kernel/tracing</code>.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo perf list 'io_uring:*'
+	<p>We can discover the tracepoints with <a href="https://man7.org/linux/man-pages/man1/perf-list.1.html"><code>perf list</code></a> or <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#4--l-listing-probes"><code>bpftrace -l</code></a>, or by browsing the <code>events/</code> directory on the <a href="https://www.kernel.org/doc/Documentation/trace/ftrace.txt"><code>tracefs filesystem</code></a>, usually mounted under <code>/sys/kernel/tracing</code>.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo perf list 'io_uring:*'
 
 List of pre-defined events (to be used in -e):
 
@@ -68,13 +70,15 @@ List of pre-defined events (to be used in -e):
   io_uring:io_uring_register                         [Tracepoint event]
   io_uring:io_uring_submit_sqe                       [Tracepoint event]
   io_uring:io_uring_task_add                         [Tracepoint event]
-  io_uring:io_uring_task_run                         [Tracepoint event]
-</code></pre>
-	<!--kg-card-end: markdown-->
+  io_uring:io_uring_task_run                         [Tracepoint event]</code></pre>
 	<p>Judging by the number of tracepoints to choose from, <code>io_uring</code> takes visibility seriously. To help us get our bearings, here is a diagram that maps out paths an I/O request can take inside io_uring code annotated with tracepoint names – not all of them, just those which will be useful to us.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/02/image3-8.png" class="kg-image" alt="Missing Manuals - io_uring worker pool" loading="lazy"></figure>
-	<p>Starting on the left, we expect our toy workload to push entries onto the submission queue. When we publish submitted entries by calling <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_enter.2.en.html"><code>io_uring_enter()</code></a>, the kernel consumes the submission queue and constructs internal request objects. A side effect we can observe is a hit on the <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L7193"><code>io_uring:io_uring_submit_sqe</code></a> tracepoint.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo perf stat -e io_uring:io_uring_submit_sqe -- timeout 1 ./udp-read
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MeUxepPVh1riK3jpiWQ0m/b6a83dcab374768617c82078ba2f60c3/image3-8.png" alt="Missing Manuals - io_uring worker pool" class="kg-image" width="1999" height="820" loading="lazy">
+
+	</figure>
+	<p>Starting on the left, we expect our toy workload to push entries onto the submission queue. When we publish submitted entries by calling <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_enter.2.en.html"><code>io_uring_enter()</code></a>, the kernel consumes the submission queue and constructs internal request objects. A side effect we can observe is a hit on the <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L7193"><code>io_uring:io_uring_submit_sqe</code></a> tracepoint.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo perf stat -e io_uring:io_uring_submit_sqe -- timeout 1 ./udp-read
 
  Performance counter stats for 'timeout 1 ./udp-read':
 
@@ -83,23 +87,19 @@ List of pre-defined events (to be used in -e):
        1.049016083 seconds time elapsed
 
        0.003747000 seconds user
-       0.013720000 seconds sys
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>But, as it turns out, submitting entries is not enough to make <code>io_uring</code> spawn worker threads. Our process remains single-threaded:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ./udp-read &amp; p=$!; sleep 1; ps -o thcount $p; kill $p; wait $p
+       0.013720000 seconds sys</code></pre>
+	<p>But, as it turns out, submitting entries is not enough to make <code>io_uring</code> spawn worker threads. Our process remains single-threaded:</p>
+	<pre class="language-bash"><code class="language-bash">$ ./udp-read &amp; p=$!; sleep 1; ps -o thcount $p; kill $p; wait $p
 [1] 25229
 THCNT
     1
-[1]+  Terminated              ./udp-read
-</code></pre>
-	<!--kg-card-end: markdown-->
+[1]+  Terminated              ./udp-read</code></pre>
 	<p>This shows that <code>io_uring</code> is smart. It knows that sockets support non-blocking I/O, and they <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L2837">can be polled for readiness to read</a>.</p>
 	<p>So, by default, <code>io_uring</code> performs a non-blocking read on sockets. This is bound to fail with <code>-EAGAIN</code> in our case. What follows is that <code>io_uring</code> registers a wake-up call (<a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L5570"><code>io_async_wake()</code></a>) for when the socket becomes readable. There is no need to perform a blocking read, when we can wait to be notified.</p>
 	<p>This resembles polling the socket with <code>select()</code> or <code>[e]poll()</code> from user space. There is no timeout, if we didn’t ask for it explicitly by submitting an <code>IORING_OP_LINK_TIMEOUT</code> request. <code>io_uring</code> will simply wait indefinitely.</p>
 	<p>We can observe <code>io_uring</code> when it calls <a href="https://elixir.bootlin.com/linux/v5.15.16/source/include/linux/poll.h#L86"><code>vfs_poll</code></a>, the machinery behind non-blocking I/O, to monitor the sockets. If that happens, we will be hitting the <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L5691"><code>io_uring:io_uring_poll_arm</code></a> tracepoint. Meanwhile, the wake-ups that follow, if the polled file becomes ready for I/O, can be recorded with the <code>io_uring:io_uring_poll_wake</code> tracepoint embedded in <code>io_async_wake()</code> wake-up call.</p>
-	<p>This is what we are experiencing. <code>io_uring</code> is polling the socket for read-readiness:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftrace -lv t:io_uring:io_uring_poll_arm
+	<p>This is what we are experiencing. <code>io_uring</code> is polling the socket for read-readiness:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace -lv t:io_uring:io_uring_poll_arm
 tracepoint:io_uring:io_uring_poll_arm
     void * ctx
     void * req
@@ -114,33 +114,27 @@ Attaching 2 probes...
 @[tracepoint:io_uring:io_uring_poll_arm, 22]: 4096
 $ sudo bpftool btf dump id 1 format c | grep 'IORING_OP_.*22'
         IORING_OP_READ = 22,
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>To make <code>io_uring</code> spawn worker threads, we have to force the read requests to be processed concurrently in a blocking fashion. We can do this by marking the I/O requests as asynchronous. As <a href="https://manpages.debian.org/bullseye/liburing-dev/io_uring_enter.2.en.html"><code>io_uring_enter(2) man-page</code></a> says:</p><!--kg-card-begin: markdown-->
-	<pre><code>  IOSQE_ASYNC
+$</code></pre>
+	<p>To make <code>io_uring</code> spawn worker threads, we have to force the read requests to be processed concurrently in a blocking fashion. We can do this by marking the I/O requests as asynchronous. As <a href="https://manpages.debian.org/bullseye/liburing-dev/io_uring_enter.2.en.html"><code>io_uring_enter(2) man-page</code></a> says:</p>
+	<pre class="language-bash"><code class="language-bash">  IOSQE_ASYNC
          Normal operation for io_uring is to try and  issue  an
          sqe  as non-blocking first, and if that fails, execute
          it in an async manner. To support more efficient over‐
          lapped  operation  of  requests  that  the application
          knows/assumes will always (or most of the time) block,
          the  application can ask for an sqe to be issued async
-         from the start. Available since 5.6.
-</code></pre>
-	<!--kg-card-end: markdown-->
+         from the start. Available since 5.6.</code></pre>
 	<p>This will trigger a call to <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L1482"><code>io_queue_sqe() → io_queue_async_work()</code></a>, which deep down invokes <a href="https://elixir.bootlin.com/linux/v5.15.16/source/kernel/fork.c#L2520"><code>create_io_worker() → create_io_thread()</code></a> to spawn a new task to process work. Remember that last function, <code>create_io_thread()</code> – it will come up again later.</p>
-	<p>Our toy program sets the <code>IOSQE_ASYNC</code> flag on requests when we pass the <code>--async</code> command line option to it. Let’s give it a try:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ./udp-read --async &amp; pid=$!; sleep 1; ps -o pid,thcount $pid; kill $pid; wait $pid
+	<p>Our toy program sets the <code>IOSQE_ASYNC</code> flag on requests when we pass the <code>--async</code> command line option to it. Let’s give it a try:</p>
+	<pre class="language-bash"><code class="language-bash">$ ./udp-read --async &amp; pid=$!; sleep 1; ps -o pid,thcount $pid; kill $pid; wait $pid
 [2] 3457597
     PID THCNT
 3457597  4097
 [2]+  Terminated              ./udp-read --async
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
+$</code></pre>
 	<p>The thread count went up by the number of submitted I/O requests (4,096). And there is one extra thread - the main thread. <code>io_uring</code> has spawned workers.</p>
-	<p>If we trace it again, we see that requests are now taking the blocking-read path, and we are hitting the <code>io_uring:io_uring_queue_async_work</code> tracepoint on the way.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo perf stat -a -e io_uring:io_uring_poll_arm,io_uring:io_uring_queue_async_work -- ./udp-read --async
+	<p>If we trace it again, we see that requests are now taking the blocking-read path, and we are hitting the <code>io_uring:io_uring_queue_async_work</code> tracepoint on the way.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo perf stat -a -e io_uring:io_uring_poll_arm,io_uring:io_uring_queue_async_work -- ./udp-read --async
 ^C./udp-read: Interrupt
 
  Performance counter stats for 'system wide':
@@ -150,21 +144,23 @@ $
 
        1.335559294 seconds time elapsed
 
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
+$</code></pre>
 	<p>In the code, the fork happens in the <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L7046"><code>io_queue_sqe()</code> function</a>, where we are now branching off to <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L1482"><code>io_queue_async_work()</code></a>, which contains the corresponding tracepoint.</p>
 	<p>We got what we wanted. We are now using the worker thread pool.</p>
 	<p>However, having 4,096 threads just for reading one socket sounds like overkill. If we were to limit the number of worker threads, how would we go about that? There are four ways I know of.</p>
-	<h3 id="method-1-limit-the-number-of-in-flight-requests">Method 1 - Limit the number of in-flight requests</h3>
+	<h3>Method 1 - Limit the number of in-flight requests</h3>
 	<p>If we take care to never have more than some number of in-flight blocking I/O requests, then we will have more or less the same number of workers. This is because:</p>
 	<ol>
-		<li><code>io_uring</code> spawns workers only when there is work to process. We control how many requests we submit and can throttle new submissions based on completion notifications.</li>
-		<li><code>io_uring</code> retires workers when there is no more pending work in the queue. Although, there is a grace period before a worker dies.</li>
+		<li>
+			<p><code>io_uring</code> spawns workers only when there is work to process. We control how many requests we submit and can throttle new submissions based on completion notifications.</p>
+		</li>
+		<li>
+			<p><code>io_uring</code> retires workers when there is no more pending work in the queue. Although, there is a grace period before a worker dies.</p>
+		</li>
 	</ol>
 	<p>The downside of this approach is that by throttling submissions, we reduce batching. We will have to drain the completion queue, refill the submission queue, and switch context with <code>io_uring_enter()</code> syscall more often.</p>
-	<p>We can convince ourselves that this method works by tweaking the number of submitted requests, and observing the thread count as the requests complete. The <code>--sqes &lt;n&gt;</code> option (<strong>s</strong>ubmission <strong>q</strong>ueue <strong>e</strong>ntrie<strong>s</strong>) controls how many read requests get queued by our workload. If we want a request to complete, we simply need to send a packet toward the UDP socket we are reading from. The workload does not refill the submission queue.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ./udp-read --async --sqes 8 &amp; pid=$!
+	<p>We can convince ourselves that this method works by tweaking the number of submitted requests, and observing the thread count as the requests complete. The <code>--sqes &lt;n&gt;</code> option (<b>s</b>ubmission <b>q</b>ueue <b>e</b>ntrie<b>s</b>) controls how many read requests get queued by our workload. If we want a request to complete, we simply need to send a packet toward the UDP socket we are reading from. The workload does not refill the submission queue.</p>
+	<pre class="language-bash"><code class="language-bash">$ ./udp-read --async --sqes 8 &amp; pid=$!
 [1] 7264
 $ ss -ulnp | fgrep pid=$pid
 UNCONN 0      0          127.0.0.1:52763      0.0.0.0:*    users:(("udp-read",pid=7264,fd=3))
@@ -174,14 +170,12 @@ THCNT
 ?
 THCNT
     8
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
+$</code></pre>
 	<p>After sending one packet, the run queue length shrinks by one, and the thread count soon follows.</p>
 	<p>This works, but we can do better.</p>
-	<h3 id="method-2-configure-ioring_register_iowq_max_workers">Method 2 - Configure IORING_REGISTER_IOWQ_MAX_WORKERS</h3>
-	<p>In 5.15 the <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_register.2.en.html"><code>io_uring_register()</code> syscall</a> gained a new command for setting the maximum number of bound and unbound workers.</p><!--kg-card-begin: markdown-->
-	<pre><code>  IORING_REGISTER_IOWQ_MAX_WORKERS
+	<h3>Method 2 - Configure IORING_REGISTER_IOWQ_MAX_WORKERS</h3>
+	<p>In 5.15 the <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_register.2.en.html"><code>io_uring_register()</code> syscall</a> gained a new command for setting the maximum number of bound and unbound workers.</p>
+	<pre class="language-bash"><code class="language-bash">  IORING_REGISTER_IOWQ_MAX_WORKERS
          By default, io_uring limits the unbounded workers cre‐
          ated   to   the   maximum   processor   count  set  by
          RLIMIT_NPROC and the bounded workers is a function  of
@@ -201,13 +195,11 @@ $
          and doesn't modify the current setting.  nr_args  must
          be set to 2, as the command takes two values.
 
-         Available since 5.15.
-</code></pre>
-	<!--kg-card-end: markdown-->
+         Available since 5.15.</code></pre>
 	<p>By the way, if you would like to grep through the <code>io_uring</code> man pages, they live in the <a href="https://github.com/axboe/liburing">liburing</a> repo maintained by <a href="https://twitter.com/axboe">Jens Axboe</a> – not the go-to repo for Linux API <a href="https://github.com/mkerrisk/man-pages">man-pages</a> maintained by <a href="https://twitter.com/mkerrisk">Michael Kerrisk</a>.</p>
 	<p>Since it is a fresh addition to the <code>io_uring</code> API, the <a href="https://docs.rs/io-uring/latest/io_uring"><code>io-uring</code></a> Rust library we are using has not caught up yet. But with <a href="https://github.com/tokio-rs/io-uring/pull/121">a bit of patching</a>, we can make it work.</p>
-	<p>We can tell our toy program to set <code>IORING_REGISTER_IOWQ_MAX_WORKERS (= 19 = 0x13)</code> by running it with the <code>--workers &lt;N&gt;</code> option:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ strace -o strace.out -e io_uring_register ./udp-read --async --workers 8 &amp;
+	<p>We can tell our toy program to set <code>IORING_REGISTER_IOWQ_MAX_WORKERS (= 19 = 0x13)</code> by running it with the <code>--workers &lt;N&gt;</code> option:</p>
+	<pre class="language-bash"><code class="language-bash">$ strace -o strace.out -e io_uring_register ./udp-read --async --workers 8 &amp;
 [1] 3555377
 $ pstree -pt $!
 strace(3555377)───udp-read(3555380)─┬─{iou-wrk-3555380}(3555381)
@@ -220,18 +212,16 @@ strace(3555377)───udp-read(3555380)─┬─{iou-wrk-3555380}(3555381)
                                     └─{iou-wrk-3555380}(3555388)
 $ cat strace.out
 io_uring_register(4, 0x13 /* IORING_REGISTER_??? */, 0x7ffd9b2e3048, 2) = 0
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
+$</code></pre>
 	<p>This works perfectly. We have spawned just eight <code>io_uring</code> worker threads to handle 4k of submitted read requests.</p>
 	<p>Question remains - is the set limit per io_uring instance? Per thread? Per process? Per UID? Read on to find out.</p>
-	<h3 id="method-3-set-rlimit_nproc-resource-limit">Method 3 - Set RLIMIT_NPROC resource limit</h3>
+	<h3>Method 3 - Set RLIMIT_NPROC resource limit</h3>
 	<p>A resource limit for the maximum number of new processes is another way to cap the worker pool size. The documentation for the <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> command mentions this.</p>
 	<p>This resource limit overrides the <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> setting, which makes sense because bumping <code>RLIMIT_NPROC</code> above the configured hard maximum requires <code>CAP_SYS_RESOURCE</code> capability.</p>
 	<p>The catch is that the limit is tracked <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=21d1c5e386bc751f1953b371d72cd5b7d9c9e270">per UID within a user namespace</a>.</p>
 	<p>Setting the new process limit without using a dedicated UID or outside a dedicated user namespace, where other processes are running under the same UID, can have surprising effects.</p>
-	<p>Why? io_uring will try over and over again to scale up the worker pool, only to generate a bunch of <code>-EAGAIN</code> errors from <code>create_io_worker()</code> if it can’t reach the configured <code>RLIMIT_NPROC</code> limit:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ prlimit --nproc=8 ./udp-read --async &amp;
+	<p>Why? io_uring will try over and over again to scale up the worker pool, only to generate a bunch of <code>-EAGAIN</code> errors from <code>create_io_worker()</code> if it can’t reach the configured <code>RLIMIT_NPROC</code> limit:</p>
+	<pre class="language-bash"><code class="language-bash">$ prlimit --nproc=8 ./udp-read --async &amp;
 [1] 26348
 $ ps -o thcount $!
 THCNT
@@ -250,22 +240,18 @@ Linux 5.15.9-cloudflare-2021.12.8 (bullseye)    01/04/22        _x86_64_        
 02:52:48     all    0.00    0.00   25.13    0.00    0.00    0.00    0.00    0.00    0.00   74.87
 02:52:49     all    0.00    0.00   25.30    0.00    0.00    0.00    0.00    0.00    0.00   74.70
 Average:     all    0.00    0.00   25.14    0.00    0.00    0.00    0.00    0.00    0.00   74.86
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
+$</code></pre>
 	<p>We are hogging one core trying to spawn new workers. This is not the best use of CPU time.</p>
-	<p>So, if you want to use <code>RLIMIT_NPROC</code> as a safety cap over the <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> limit, you better use a “fresh” UID or a throw-away user namespace:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ unshare -U prlimit --nproc=8 ./udp-read --async --workers 16 &amp;
+	<p>So, if you want to use <code>RLIMIT_NPROC</code> as a safety cap over the <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> limit, you better use a “fresh” UID or a throw-away user namespace:</p>
+	<pre class="language-bash"><code class="language-bash">$ unshare -U prlimit --nproc=8 ./udp-read --async --workers 16 &amp;
 [1] 3555870
 $ ps -o thcount $!
 THCNT
-    9
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="anti-method-4-cgroup-process-limit-pids-max-file">Anti-Method 4 - cgroup process limit - pids.max file</h3>
+    9</code></pre>
+	<h3>Anti-Method 4 - cgroup process limit - pids.max file</h3>
 	<p>There is also one other way to cap the worker pool size – <a href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html#pid-interface-files">limit the number of tasks</a> (that is, processes and their threads) in a control group.</p>
-	<p>It is an anti-example and a potential misconfiguration to watch out for, because just like with <code>RLIMIT_NPROC</code>, we can fall into the same trap where <code>io_uring</code> will burn CPU:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ systemd-run --user -p TasksMax=128 --same-dir --collect --service-type=exec ./udp-read --async
+	<p>It is an anti-example and a potential misconfiguration to watch out for, because just like with <code>RLIMIT_NPROC</code>, we can fall into the same trap where <code>io_uring</code> will burn CPU:</p>
+	<pre class="language-bash"><code class="language-bash">$ systemd-run --user -p TasksMax=128 --same-dir --collect --service-type=exec ./udp-read --async
 Running as unit: run-ra0336ff405f54ad29726f1e48d6a3237.service
 $ systemd-cgls --user-unit run-ra0336ff405f54ad29726f1e48d6a3237.service
 Unit run-ra0336ff405f54ad29726f1e48d6a3237.service (/user.slice/user-1000.slice/user@1000.service/app.slice/run-ra0336ff405f54ad29726f1e48d6a3237.service):
@@ -284,17 +270,19 @@ Attaching 2 probes...
 
 @[-11]: 76680
 $ systemctl --user stop run-ra0336ff405f54ad29726f1e48d6a3237.service
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
+$</code></pre>
 	<p>Here, we again see <code>io_uring</code> wasting time trying to spawn more workers without success. The kernel does not let the number of tasks within the service’s control group go over the limit.</p>
 	<p>Okay, so we know what is the best and the worst way to put a limit on the number of <code>io_uring</code> workers. But is the limit per <code>io_uring</code> instance? Per user? Or something else?</p>
-	<h2 id="one-ring-two-ring-three-ring-four-">One ring, two ring, three ring, four …</h2>
+	<h2>One ring, two ring, three ring, four …</h2>
 	<p>Your process is not limited to one instance of io_uring, naturally. In the case of a network proxy, where we push data from one socket to another, we could have one instance of io_uring servicing each half of the proxy.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/02/image2-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TXCzhgUiUGocx8WP9rJ8B/97ae6d76ca304a98b0023c94eeb755c4/image2-3.png" alt="" class="kg-image" width="1999" height="539" loading="lazy">
+
+	</figure>
 	<p>How many worker threads will be created in the presence of multiple <code>io_urings</code>? That depends on whether your program is single- or multithreaded.</p>
-	<p>In the single-threaded case, if the main thread creates two io_urings, and configures each io_uring to have a maximum of two unbound workers, then:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ unshare -U ./udp-read --async --threads 1 --rings 2 --workers 2 &amp;
+	<p>In the single-threaded case, if the main thread creates two io_urings, and configures each io_uring to have a maximum of two unbound workers, then:</p>
+	<pre class="language-bash"><code class="language-bash">$ unshare -U ./udp-read --async --threads 1 --rings 2 --workers 2 &amp;
 [3] 3838456
 $ pstree -pt $!
 udp-read(3838456)─┬─{iou-wrk-3838456}(3838457)
@@ -306,12 +294,10 @@ lrwx------ 1 vagrant vagrant 64 Dec 26 03:32 1 -&gt; /dev/pts/0
 lrwx------ 1 vagrant vagrant 64 Dec 26 03:32 2 -&gt; /dev/pts/0
 lrwx------ 1 vagrant vagrant 64 Dec 26 03:32 3 -&gt; 'socket:[279241]'
 lrwx------ 1 vagrant vagrant 64 Dec 26 03:32 4 -&gt; 'anon_inode:[io_uring]'
-lrwx------ 1 vagrant vagrant 64 Dec 26 03:32 5 -&gt; 'anon_inode:[io_uring]'
-</code></pre>
-	<!--kg-card-end: markdown-->
+lrwx------ 1 vagrant vagrant 64 Dec 26 03:32 5 -&gt; 'anon_inode:[io_uring]'</code></pre>
 	<p>… a total of two worker threads will be spawned.</p>
-	<p>While in the case of a multithreaded program, where two threads create one <code>io_uring</code> each, with a maximum of two unbound workers per ring:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ unshare -U ./udp-read --async --threads 2 --rings 1 --workers 2 &amp;
+	<p>While in the case of a multithreaded program, where two threads create one <code>io_uring</code> each, with a maximum of two unbound workers per ring:</p>
+	<pre class="language-bash"><code class="language-bash">$ unshare -U ./udp-read --async --threads 2 --rings 1 --workers 2 &amp;
 [2] 3838223
 $ pstree -pt $!
 udp-read(3838223)─┬─{iou-wrk-3838224}(3838227)
@@ -328,20 +314,25 @@ lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 2 -&gt; /dev/pts/0
 lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 3 -&gt; 'socket:[279160]'
 lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 4 -&gt; 'socket:[279819]'
 lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 5 -&gt; 'anon_inode:[io_uring]'
-lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 6 -&gt; 'anon_inode:[io_uring]'
-</code></pre>
-	<!--kg-card-end: markdown-->
+lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 6 -&gt; 'anon_inode:[io_uring]'</code></pre>
 	<p>… four workers will be spawned in total – two for each of the program threads. This is reflected by the owner thread ID present in the worker’s name (<code>iou-wrk-&lt;tid&gt;</code>).</p>
-	<p>So you might think - “It makes sense! Each thread has their own dedicated pool of I/O workers, which service all the <code>io_uring</code> instances operated by that thread.”</p><!--kg-card-begin: markdown-->
+	<p>So you might think - “It makes sense! Each thread has their own dedicated pool of I/O workers, which service all the <code>io_uring</code> instances operated by that thread.”</p>
 	<p>And you would be right<sup>1</sup>. If we follow the code – <code>task_struct</code> has an instance of <code>io_uring_task</code>, aka <code>io_uring</code> context for the task<sup>2</sup>. Inside the context, we have a reference to the <code>io_uring</code> work queue (<code>struct io_wq</code>), which is actually an array of work queue entries (<code>struct io_wqe</code>). More on why that is an array soon.</p>
-	<!--kg-card-end: markdown-->
 	<p>Moving down to the work queue entry, we arrive at the work queue accounting table (<code>struct io_wqe_acct [2]</code>), with one record for each type of work – bounded and unbounded. This is where <code>io_uring</code> keeps track of the worker pool limit (<code>max_workers</code>) the number of existing workers (<code>nr_workers</code>).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/02/image4-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5czT5432CY7bwHC2jznios/706248960f63ead2d36469d16ea13c62/image4-3.png" alt="" class="kg-image" width="1562" height="1004" loading="lazy">
+
+	</figure>
 	<p>The perhaps not-so-obvious consequence of this arrangement is that setting just the <code>RLIMIT_NPROC</code> limit, without touching <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code>, can backfire for multi-threaded programs.</p>
 	<p>See, when the maximum number of workers for an io_uring instance is not configured, <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io-wq.c#L1162">it defaults to <code>RLIMIT_NPROC</code></a>. This means that <code>io_uring</code> will try to scale the unbounded worker pool to <code>RLIMIT_NPROC</code> for each thread that operates on an <code>io_uring</code> instance.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/02/io_uring_workers_multi_threaded.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>A multi-threaded process, by definition, creates threads. Now recall that the process management in the kernel tracks the number of tasks <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=21d1c5e386bc751f1953b371d72cd5b7d9c9e270">per UID within the user namespace</a>. Each spawned thread depletes the quota set by <code>RLIMIT_NPROC</code>. As a consequence, <code>io_uring</code> will never be able to fully scale up the worker pool, and will burn the CPU trying to do so.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ unshare -U prlimit --nproc=4 ./udp-read --async --threads 2 --rings 1 &amp;
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42pJE30GsrNspCHfDzq5xa/bb293ded76000eea2a5547bd410acd9d/io_uring_workers_multi_threaded.png" alt="" class="kg-image" width="677" height="288" loading="lazy">
+
+	</figure>
+	<p>A multi-threaded process, by definition, creates threads. Now recall that the process management in the kernel tracks the number of tasks <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=21d1c5e386bc751f1953b371d72cd5b7d9c9e270">per UID within the user namespace</a>. Each spawned thread depletes the quota set by <code>RLIMIT_NPROC</code>. As a consequence, <code>io_uring</code> will never be able to fully scale up the worker pool, and will burn the CPU trying to do so.</p>
+	<pre class="language-bash"><code class="language-bash">$ unshare -U prlimit --nproc=4 ./udp-read --async --threads 2 --rings 1 &amp;
 [1] 26249
 vagrant@bullseye:/blog/io-uring-worker-pool$ pstree -pt $!
 udp-read(26249)─┬─{iou-wrk-26251}(26252)
@@ -362,22 +353,18 @@ Linux 5.15.9-cloudflare-2021.12.8 (bullseye)    01/04/22        _x86_64_        
 02:23:25     all    0.00    0.00   50.25    0.00    0.00    0.00    0.00    0.00    0.00   49.75
 02:23:26     all    0.00    0.00   49.87    0.00    0.00    0.50    0.00    0.00    0.00   49.62
 Average:     all    0.00    0.00   50.08    0.00    0.00    0.17    0.00    0.00    0.00   49.75
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="numa-numa-yay">NUMA, NUMA, yay <a href="https://en.wikipedia.org/wiki/Numa_Numa_(video)">?</a></h2>
+$</code></pre>
+	<h2>NUMA, NUMA, yay <a href="https://en.wikipedia.org/wiki/Numa_Numa_(video)">?</a></h2>
 	<p>Lastly, there’s the case of NUMA systems with more than one memory node. <code>io_uring</code> documentation clearly says that <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> configures the maximum number of workers per NUMA node.</p>
 	<p>That is why, as we have seen, <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io-wq.c#L125"><code>io_wq.wqes</code></a> is an array. It contains one entry, struct <code>io_wqe</code>, for each NUMA node. If your servers are NUMA systems like <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">Cloudflare</a>, that is something to take into account.</p>
 	<p>Luckily, we don’t need a NUMA machine to experiment. <a href="https://www.qemu.org">QEMU</a> happily emulates NUMA architectures. If you are hardcore enough, you can configure the NUMA layout with the right combination of <a href="https://www.qemu.org/docs/master/system/qemu-manpage.html"><code>-smp</code> and <code>-numa</code> options</a>.</p>
-	<p>But why bother when the <a href="https://github.com/vagrant-libvirt/vagrant-libvirt"><code>libvirt</code> provider</a> for Vagrant makes it so simple to configure a 2 node / 4 CPU layout:</p><!--kg-card-begin: markdown-->
-	<pre><code>    libvirt.numa_nodes = [
+	<p>But why bother when the <a href="https://github.com/vagrant-libvirt/vagrant-libvirt"><code>libvirt</code> provider</a> for Vagrant makes it so simple to configure a 2 node / 4 CPU layout:</p>
+	<pre class="language-bash"><code class="language-bash">    libvirt.numa_nodes = [
       {:cpus =&gt; "0-1", :memory =&gt; "2048"},
       {:cpus =&gt; "2-3", :memory =&gt; "2048"}
-    ]
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Let’s confirm how io_uring behaves on a NUMA system.<br>Here’s our NUMA layout with two vCPUs per node ready for experimentation:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ numactl -H
+    ]</code></pre>
+	<p>Let’s confirm how io_uring behaves on a NUMA system.Here’s our NUMA layout with two vCPUs per node ready for experimentation:</p>
+	<pre class="language-bash"><code class="language-bash">$ numactl -H
 available: 2 nodes (0-1)
 node 0 cpus: 0 1
 node 0 size: 1980 MB
@@ -388,23 +375,19 @@ node 1 free: 1751 MB
 node distances:
 node   0   1
   0:  10  20
-  1:  20  10
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>If we once again run our test workload and ask it to create a single <code>io_uring</code> with a maximum of two workers per NUMA node, then:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ./udp-read --async --threads 1 --rings 1 --workers 2 &amp;
+  1:  20  10</code></pre>
+	<p>If we once again run our test workload and ask it to create a single <code>io_uring</code> with a maximum of two workers per NUMA node, then:</p>
+	<pre class="language-bash"><code class="language-bash">$ ./udp-read --async --threads 1 --rings 1 --workers 2 &amp;
 [1] 693
 $ pstree -pt $!
 udp-read(693)─┬─{iou-wrk-693}(696)
-              └─{iou-wrk-693}(697)
-</code></pre>
-	<!--kg-card-end: markdown-->
+              └─{iou-wrk-693}(697)</code></pre>
 	<p>… we get just two workers on a machine with two NUMA nodes. Not the outcome we were hoping for.</p>
 	<p>Why are we not reaching the expected pool size of <code>&lt;max workers&gt; × &lt;# NUMA nodes&gt;</code> = 2 × 2 = 4 workers? And is it possible to make it happen?</p>
 	<p>Reading the code reveals that – yes, it is possible. However, for the per-node worker pool to be scaled up for a given NUMA node, we have to submit requests, that is, call <code>io_uring_enter()</code>, from a CPU that belongs to that node. In other words, the process scheduler and thread CPU affinity have a say in how many I/O workers will be created.</p>
 	<p>We can demonstrate the effect that jumping between CPUs and NUMA nodes has on the worker pool by operating two instances of <code>io_uring</code>. We already know that having more than one io_uring instance per thread does not impact the worker pool limit.</p>
-	<p>This time, however, we are going to ask the workload to pin itself to a particular CPU before submitting requests with the <code>--cpu</code> option – first it will run on CPU 0 to enter the first ring, then on CPU 2 to enter the second ring.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ strace -e sched_setaffinity,io_uring_enter ./udp-read --async --threads 1 --rings 2 --cpu 0 --cpu 2 --workers 2 &amp; sleep 0.1 &amp;&amp; echo
+	<p>This time, however, we are going to ask the workload to pin itself to a particular CPU before submitting requests with the <code>--cpu</code> option – first it will run on CPU 0 to enter the first ring, then on CPU 2 to enter the second ring.</p>
+	<pre class="language-bash"><code class="language-bash">$ strace -e sched_setaffinity,io_uring_enter ./udp-read --async --threads 1 --rings 2 --cpu 0 --cpu 2 --workers 2 &amp; sleep 0.1 &amp;&amp; echo
 [1] 6949
 sched_setaffinity(0, 128, [0])          = 0
 io_uring_enter(4, 4096, 0, 0, NULL, 128) = 4096
@@ -416,16 +399,13 @@ strace(6949)───udp-read(6953)─┬─{iou-wrk-6953}(6954)
                               ├─{iou-wrk-6953}(6955)
                               ├─{iou-wrk-6953}(6956)
                               └─{iou-wrk-6953}(6957)
-$
-</code></pre>
-	<!--kg-card-end: markdown-->
+$</code></pre>
 	<p>Voilà. We have reached the said limit of <code>&lt;max workers&gt; x &lt;# NUMA nodes&gt;</code>.</p>
-	<h2 id="outro">Outro</h2>
+	<h2>Outro</h2>
 	<p>That is all for the very first installment of the Missing Manuals. <code>io_uring</code> has more secrets that deserve a write-up, like request ordering or handling of interrupted syscalls, so Missing Manuals might return soon.</p>
 	<p>In the meantime, please tell us what topic would you nominate to have a Missing Manual written?</p>
 	<p>Oh, and did I mention that if you enjoy putting cutting edge Linux APIs to use, <a href="https://www.cloudflare.com/careers/jobs">we are hiring</a>? Now also remotely ?.</p>
-	<p>_____</p><!--kg-card-begin: markdown-->
-	<p><small><sup>1</sup>And it probably does not make the users of runtimes that implement a hybrid threading model, like Golang, too happy.<br>
-			<sup>2</sup>To the Linux kernel, processes and threads are just kinds of tasks, which either share or don’t share some resources.</small></p>
-	<!--kg-card-end: markdown-->
+	<p>_____</p>
+	<p><sup>1</sup>And it probably does not make the users of runtimes that implement a hybrid threading model, like Golang, too happy.</p>
+	<p><sup>2</sup>To the Linux kernel, processes and threads are just kinds of tasks, which either share or don’t share some resources.</p>
 </div>

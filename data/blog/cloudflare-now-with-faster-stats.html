@@ -1,39 +1,11 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="CloudFlare, Now With Faster
-Stats!" src="https://blog.cloudflare.com/content/images/fusion-io-small.jpg" title="CloudFlare, Now With Faster Stats!"></p>
-	<p>We generate a lot of logs. To give you some sense, across the CloudFlare
-		network every minute we write a half a Gigabyte of just log data.
-		Collecting, reducing, sorting, and displaying that data back to you is
-		one of the biggest challenges of running a service like CloudFlare. Over
-		the last few days we've been upgrading our core logging infrastructure
-		to make the displaying portion a lot faster. We want our stats page to
-		be lightening quick whenever you load it or run a query. We were hitting
-		an I/O bottleneck with some queries that produced what we felt were
-		unacceptably slow results. While we have some long-term plans on how to
-		enhance the core storage architecture to get around this, in the short
-		term we needed a fix we knew would work so we turned to our friends at
-		<a href="http://fusionio.com">Fusion-IO</a>.
-	</p>
-	<p>Lee had used Fusion-IO cards at <a href="http://www.projecthoneypot.org">Project Honey
-			Pot</a> to get around file system
-		limitations, and at CloudFlare we had become even more familiar with
-		them because some of our investors were also investors in Fusion. Plus
-		Steve Wozniak is on their Board of Directors and, as Damon has pointed
-		out on Twitter, we have a <a href="https://www.facebook.com/photo.php?fbid=434528210431">Woz
-			ninja</a>. If you're
-		not familiar with Fusion-IO, here's all you need to know: they'll make
-		something other than I/O the bottleneck on your system.</p>
-	<p>Over the last few days we've moved the parts of the stats database that
-		need to be fast onto Fusion-IO cards. Moving that much data and
-		rebuilding indexes took longer than we anticipated. However, as we
-		anticipated the bottleneck was the slow media and CPU, not the new
-		Fusion cards. Going forward, we'll be evaluating their performance and
-		deciding whether to incorporate them into our core storage architecture
-		more broadly. In the meantime, sorry for the downtime with stats being
-		displayed. Rest assured that we we've been gathering data all that time
-		and what's not already back online will trickle in over the next day.
-		And, best of all, the page to view your stats should now be a lot
-		faster.</p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">1 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="undefined" alt="undefined" class="kg-image" width="undefined" height="undefined" loading="lazy">
+
+	</figure>
+	<p>We generate a lot of logs. To give you some sense, across the CloudFlare network every minute we write a half a Gigabyte of just log data. Collecting, reducing, sorting, and displaying that data back to you is one of the biggest challenges of running a service like CloudFlare. Over the last few days we've been upgrading our core logging infrastructure to make the displaying portion a lot faster. We want our stats page to be lightening quick whenever you load it or run a query. We were hitting an I/O bottleneck with some queries that produced what we felt were unacceptably slow results. While we have some long-term plans on how to enhance the core storage architecture to get around this, in the short term we needed a fix we knew would work so we turned to our friends at <a href="http://fusionio.com">Fusion-IO</a>.</p>
+	<p>Lee had used Fusion-IO cards at <a href="http://www.projecthoneypot.org">Project Honey Pot</a> to get around file system limitations, and at CloudFlare we had become even more familiar with them because some of our investors were also investors in Fusion. Plus Steve Wozniak is on their Board of Directors and, as Damon has pointed out on Twitter, we have a <a href="https://www.facebook.com/photo.php?fbid=434528210431">Woz ninja</a>. If you're not familiar with Fusion-IO, here's all you need to know: they'll make something other than I/O the bottleneck on your system.</p>
+	<p>Over the last few days we've moved the parts of the stats database that need to be fast onto Fusion-IO cards. Moving that much data and rebuilding indexes took longer than we anticipated. However, as we anticipated the bottleneck was the slow media and CPU, not the new Fusion cards. Going forward, we'll be evaluating their performance and deciding whether to incorporate them into our core storage architecture more broadly. In the meantime, sorry for the downtime with stats being displayed. Rest assured that we we've been gathering data all that time and what's not already back online will trickle in over the next day. And, best of all, the page to view your stats should now be a lot faster.</p>
 </div>

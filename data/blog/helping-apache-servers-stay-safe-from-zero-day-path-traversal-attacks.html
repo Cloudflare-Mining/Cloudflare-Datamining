@@ -1,20 +1,28 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Helping-Apache-Servers-stay-safe-from-zero-day-path-traversal-attacks-header-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><em>Update: This blog post was edited on Monday 11th of October 2021 — added additional WAF rule ID</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7laqCrhlHlYZuK5iWJtNC7/f362acbd620af637808fc48bc9a4e28a/Helping-Apache-Servers-stay-safe-from-zero-day-path-traversal-attacks-header-1.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+
+	</figure>
+	<p><i>Update: This blog post was edited on Monday 11th of October 2021 — added additional WAF rule ID</i></p>
 	<p>On September 29, 2021, the Apache Security team was alerted to a path traversal vulnerability being actively exploited (zero-day) against Apache HTTP Server version 2.4.49. The vulnerability, in some instances, can allow an attacker to fully compromise the web server via remote code execution (RCE) or at the very least access sensitive files. CVE number <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-41773">2021-41773</a> has been assigned to this issue. Both Linux and Windows based servers are vulnerable.</p>
 	<p>An initial patch was made available on October 4 with an update to 2.4.50, however, this was found to be insufficient resulting in an additional patch bumping the version number to 2.4.51 on October 7th (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42013">CVE-2021-42013</a>).</p>
 	<p>Customers using Apache HTTP Server versions 2.4.49 and 2.4.50 should immediately update to version 2.4.51 to mitigate the vulnerability. Details on how to update can be found on the <a href="https://httpd.apache.org/security/vulnerabilities_24.html">official Apache HTTP Server project site</a>.</p>
 	<p>Any Cloudflare customer with the setting <a href="https://developers.cloudflare.com/rules/normalization/manage">normalize URLs to origin</a> turned on have always been protected against this vulnerability.</p>
 	<p>Additionally, customers who have access to the <a href="https://www.cloudflare.com/waf">Cloudflare Web Application Firewall</a> (WAF), receive additional protection by turning on the rules with the following IDs:</p>
 	<ul>
-		<li><code>1c3d3022129c48e9bb52e953fe8ceb2f</code> and <code>ca955959c4ab4b1f84f681a4d0a5c982</code> (for our new WAF)</li>
-		<li><code>100045</code> and <code>100045A</code> (for our legacy WAF)</li>
+		<li>
+			<p><code>1c3d3022129c48e9bb52e953fe8ceb2f</code> and <code>ca955959c4ab4b1f84f681a4d0a5c982</code> (for our new WAF)</p>
+		</li>
+		<li>
+			<p><code>100045</code> and <code>100045A</code> (for our legacy WAF)</p>
+		</li>
 	</ul>
 	<p>The rules can also be identified by the following descriptions:</p>
 	<p><code>Rule message: Anomaly:URL:Query String - Multiple Slashes, Relative Paths, CR, LF or NULL</code> and &nbsp;<code>Anomaly:URL:Path - Multiple Slashes, Relative Paths, CR, LF or NULL</code></p>
 	<p>Given the nature of the vulnerability, attackers would normally try to access sensitive files (for example <code>/etc/passwd</code>), and as such, many other Cloudflare Managed Rule signatures are also effective at stopping exploit attempts depending on the file being accessed.</p>
-	<h3 id="how-the-vulnerability-works">How the vulnerability works</h3>
+	<h3>How the vulnerability works</h3>
 	<p>The vulnerability leverages missing path normalization logic. If the Apache server is not configured with a <code>require all denied</code> directive for files outside the document root, attackers can craft special URLs to read any file on the file system accessible by the Apache process. Additionally, this flaw could also leak the source of interpreted files like CGI scripts and, in some cases, also allow the attacker to take over the web server <a href="https://twitter.com/hackerfantastic/status/1445523524555186189">by executing shell scripts</a>.</p>
 	<p>For example, the following path:</p>
 	<p><code>$hostname/cgi-bin/../../../etc/passwd</code></p>
@@ -24,17 +32,19 @@
 	<p><code>$hostname/cgi-bin/.%2e/%2e%2e/%2e%2e/etc/passwd</code></p>
 	<p>as the characters <code>%2e</code> represent the percent encoded version of dot “.”. Not taking this properly into account was the cause of the vulnerability.</p>
 	<p><a href="https://packetstormsecurity.com/files/164418/Apache-HTTP-Server-2.4.49-Path-Traversal.html">The PoC for this vulnerability</a> is straightforward and simply relies on attempting to access sensitive files on vulnerable Apache web servers.</p>
-	<h3 id="exploit-attempts">Exploit Attempts</h3>
+	<h3>Exploit Attempts</h3>
 	<p>Cloudflare has seen a sharp increase in attempts to exploit and find vulnerable servers since October 5.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-14.png" class="kg-image" alt="graph of CVE-2021-41773 exploit attempts showing a sharp increase since 2021-10-05" loading="lazy" title="Chart"></figure>
-	<p>Most exploit attempts observed have been probing for static file paths — indicating heavy scanning activity before attackers (or researchers) may have attempted more sophisticated techniques that could lead to remote code execution. The most commonly attempted file paths are reported below:</p><!--kg-card-begin: markdown-->
-	<pre><code>/cgi-bin/.%2e/.git/config
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3unCWyOkyS1rfz9HWAYZ1N/2643a089526519ae97e3fe92ccad7bc8/image2-14.png" alt="graph of CVE-2021-41773 exploit attempts showing a sharp increase since 2021-10-05" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
+	<p>Most exploit attempts observed have been probing for static file paths — indicating heavy scanning activity before attackers (or researchers) may have attempted more sophisticated techniques that could lead to remote code execution. The most commonly attempted file paths are reported below:</p>
+	<pre class="language-bash"><code class="language-bash">/cgi-bin/.%2e/.git/config
 /cgi-bin/.%2e/app/etc/local.xml
 /cgi-bin/.%2e/app/etc/env.php
-/cgi-bin/.%2e/%2e%2e/%2e%2e/etc/passwd
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="conclusion">Conclusion</h3>
+/cgi-bin/.%2e/%2e%2e/%2e%2e/etc/passwd</code></pre>
+	<h3>Conclusion</h3>
 	<p>Keeping web environments safe is not an easy task. Attackers will normally gain access and try to exploit vulnerabilities even before PoCs become widely available — we reported such a case not too long ago with <a href="https://blog.cloudflare.com/how-cloudflare-helped-mitigate-the-atlassian-confluence-ognl-vulnerability-before-the-poc-was-released">Atlassian’s Confluence OGNL vulnerability</a>.</p>
 	<p>It is vital to employ all security measures available. Cloudflare features such as our <a href="https://developers.cloudflare.com/rules/normalization">URL normalization</a> and the <a href="https://www.cloudflare.com/waf">WAF</a>, are easy to implement and can buy time to deploy any relevant patches offered by the affected software vendors.</p>
 </div>

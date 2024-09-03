@@ -1,50 +1,66 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>At Cloudflare we like Go. We use it in many <a href="https://blog.cloudflare.com/what-weve-been-doing-with-go">in-house software projects</a> as well as parts of <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">bigger pipeline systems</a>. But can we take Go to the next level and use it as a scripting language for our favourite operating system, Linux?<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/02/gopher-tux-1.png" alt="gopher-tux-1" loading="lazy"><br>
-		<small><a href="https://golang.org/doc/gopher/gophercolor.png">gopher image</a> <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> <a href="https://reneefrench.blogspot.com">Renee French</a></small><br>
-		<small><a href="https://pixabay.com/en/linux-penguin-tux-2025536">Tux image</a> <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0 BY</a> <a href="https://pixabay.com/en/users/OpenClipart-Vectors-30363">OpenClipart-Vectors</a></small>
-	</p>
-	<h3 id="whyconsidergoasascriptinglanguage">Why consider Go as a scripting language</h3>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/using-go-as-a-scripting-language-in-linux">Français</a>, <a href="https://blog.cloudflare.com/ko-kr/using-go-as-a-scripting-language-in-linux">한국어</a>, <a href="https://blog.cloudflare.com/es-es/using-go-as-a-scripting-language-in-linux">Español</a> and <a href="https://blog.cloudflare.com/de-de/using-go-as-a-scripting-language-in-linux">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UNxiTImsDgCFhcyXbnC7H/82ac896467a6a4e7c8a58900734cdb5b/using-go-as-a-scripting-language-in-linux.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>At Cloudflare we like Go. We use it in many <a href="https://blog.cloudflare.com/what-weve-been-doing-with-go">in-house software projects</a> as well as parts of <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">bigger pipeline systems</a>. But can we take Go to the next level and use it as a scripting language for our favourite operating system, Linux?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xPPT6bpUh23aWgb47ugak/95b56fd4b624c36da18d33b06e8dff30/gopher-tux-1.png" alt="gopher-tux-1" class="kg-image" width="1500" height="1000" loading="lazy">
+
+	</figure>
+	<p><a href="https://golang.org/doc/gopher/gophercolor.png">gopher image</a> <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> <a href="https://reneefrench.blogspot.com">Renee French</a><a href="https://pixabay.com/en/linux-penguin-tux-2025536">Tux image</a> <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0 BY</a> <a href="https://pixabay.com/en/users/OpenClipart-Vectors-30363">OpenClipart-Vectors</a></p>
+	<h3>Why consider Go as a scripting language</h3>
 	<p>Short answer: why not? Go is relatively easy to learn, not too verbose and there is a huge ecosystem of libraries which can be reused to avoid writing all the code from scratch. Some other potential advantages it might bring:</p>
 	<ul>
-		<li>Go-based build system for your Go project: <code>go build</code> command is mostly suitable for small, self-contained projects. More complex projects usually adopt some build system/set of scripts. Why not have these scripts written in Go then as well?</li>
-		<li>Easy non-privileged package management out of the box: if you want to use a third-party library in your script, you can simply <code>go get</code> it. And because the code will be installed in your <code>GOPATH</code>, getting a third-party library does not require administrative privileges on the system (unlike some other scripting languages). This is especially useful in large corporate environments.</li>
-		<li>Quick code prototyping on early project stages: when you're writing the first iteration of the code, it usually takes a lot of edits even to make it compile and you have to waste a lot of keystrokes on <em>"edit-&gt;build-&gt;check"</em> cycle. Instead you can skip the "build" part and just immediately execute your source file.</li>
-		<li>Strongly-typed scripting language: if you make a small typo somewhere in the middle of the script, most scripts will execute everything up to that point and fail on the typo itself. This might leave your system in an inconsistent state. With strongly-typed languages many typos can be caught at compile time, so the buggy script will not run in the first place.</li>
+		<li>
+			<p>Go-based build system for your Go project: <code>go build</code> command is mostly suitable for small, self-contained projects. More complex projects usually adopt some build system/set of scripts. Why not have these scripts written in Go then as well?</p>
+		</li>
+		<li>
+			<p>Easy non-privileged package management out of the box: if you want to use a third-party library in your script, you can simply <code>go get</code> it. And because the code will be installed in your <code>GOPATH</code>, getting a third-party library does not require administrative privileges on the system (unlike some other scripting languages). This is especially useful in large corporate environments.</p>
+		</li>
+		<li>
+			<p>Quick code prototyping on early project stages: when you're writing the first iteration of the code, it usually takes a lot of edits even to make it compile and you have to waste a lot of keystrokes on <i>"edit-&gt;build-&gt;check"</i> cycle. Instead you can skip the "build" part and just immediately execute your source file.</p>
+		</li>
+		<li>
+			<p>Strongly-typed scripting language: if you make a small typo somewhere in the middle of the script, most scripts will execute everything up to that point and fail on the typo itself. This might leave your system in an inconsistent state. With strongly-typed languages many typos can be caught at compile time, so the buggy script will not run in the first place.</p>
+		</li>
 	</ul>
-	<h3 id="currentstateofgoscripting">Current state of Go scripting</h3>
+	<h3>Current state of Go scripting</h3>
 	<p>At first glance Go scripts seem easy to implement with Unix support of <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang lines</a> for scripts. A shebang line is the first line of the script, which starts with <code>#!</code> and specifies the script interpreter to be used to execute the script (for example, <code>#!/bin/bash</code> or <code>#!/usr/bin/env python</code>), so the system knows exactly how to execute the script regardless of the programming language used. And Go already supports interpreter-like invocation for <code>.go</code> files with <code>go run</code> command, so it should be just a matter of adding a proper shebang line, something like <code>#!/usr/bin/env go run</code>, to any <code>.go</code> file, setting the executable bit and we're good to go.</p>
 	<p>However, there are problems around using <code>go run</code> directly. <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd">This great post</a> describes in detail all the issues around <code>go run</code> and potential workarounds, but the gist is:</p>
 	<ul>
-		<li><code>go run</code> does not properly return the script error code back to the operating system and this is important for scripts, because error codes are one of the most common ways multiple scripts interact with each other and the operating system environment.</li>
-		<li>you can't have a shebang line in a valid <code>.go</code> file, because Go does not know how to process lines starting with <code>#</code>. Other scripting languages do not have this problem, because for most of them <code>#</code> is a way to specify comments, so the final interpreter just ignores the shebang line, but Go comments start with <code>//</code> and <code>go run</code> on invocation will just produce an error like:</li>
+		<li>
+			<p><code>go run</code> does not properly return the script error code back to the operating system and this is important for scripts, because error codes are one of the most common ways multiple scripts interact with each other and the operating system environment.</p>
+		</li>
+		<li>
+			<p>you can't have a shebang line in a valid <code>.go</code> file, because Go does not know how to process lines starting with <code>#</code>. Other scripting languages do not have this problem, because for most of them <code>#</code> is a way to specify comments, so the final interpreter just ignores the shebang line, but Go comments start with <code>//</code> and <code>go run</code> on invocation will just produce an error like:</p>
+		</li>
 	</ul>
-	<pre><code class="language-bash">package main:
-helloscript.go:1:1: illegal character U+0023 '#'
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">package main:
+helloscript.go:1:1: illegal character U+0023 '#'</code></pre>
 	<p><a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd">The post</a> describes several workarounds for above issues including using a custom wrapper program <a href="https://github.com/erning/gorun">gorun</a> as an interpreter, but all of them do not provide an ideal solution. You either:</p>
 	<ul>
-		<li>have to use non-standard shebang line, which starts with <code>//</code>. This is technically not even a shebang line, but the way how <code>bash</code> shell processes executable text files, so this solution is <code>bash</code> specific. Also, because of the specific behaviour of <code>go run</code>, this line is rather complex and not obvious (see <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd">original post</a> for examples).</li>
-		<li>have to use a custom wrapper program <a href="https://github.com/erning/gorun">gorun</a> in the shebang line, which works well, however, you end up with <code>.go</code> files, which are not compilable with standard <code>go build</code> command because of the illegal <code>#</code> character.</li>
+		<li>
+			<p>have to use non-standard shebang line, which starts with <code>//</code>. This is technically not even a shebang line, but the way how <code>bash</code> shell processes executable text files, so this solution is <code>bash</code> specific. Also, because of the specific behaviour of <code>go run</code>, this line is rather complex and not obvious (see <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd">original post</a> for examples).</p>
+		</li>
+		<li>
+			<p>have to use a custom wrapper program <a href="https://github.com/erning/gorun">gorun</a> in the shebang line, which works well, however, you end up with <code>.go</code> files, which are not compilable with standard <code>go build</code> command because of the illegal <code>#</code> character.</p>
+		</li>
 	</ul>
-	<h3 id="howlinuxexecutesfiles">How Linux executes files</h3>
+	<h3>How Linux executes files</h3>
 	<p>OK, it seems the shebang approach does not provide us with an all-rounder solution. Is there anything else we could use? Let's take a closer look how Linux kernel executes binaries in the first place. When you try to execute a binary/script (or any file for that matter which has executable bit set), your shell in the end will just use Linux <code>execve</code> <a href="https://en.wikipedia.org/wiki/System_call">system call</a> passing it the filesystem path of the binary in question, command line parameters and currently defined environment variables. Then the kernel is responsible for correct parsing of the file and creating a new process with the code from the file. Most of us know that Linux (and many other Unix-like operating systems) use <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF binary format</a> for its executables.</p>
 	<p>However, one of the core principles of Linux kernel development is to avoid "vendor/format lock-in" for any subsystem, which is part of the kernel. Therefore, Linux implements a "pluggable" system, which allows any binary format to be supported by the kernel - all you have to do is to write a correct module, which can parse the format of your choosing. And if you take a closer look at the kernel source code, you'll see that Linux supports more binary formats out of the box. For example, for the recent <code>4.14</code> Linux kernel <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs?h=linux-4.14.y">we can see</a> that it supports at least 7 binary formats (in-tree modules for various binary formats usually have <code>binfmt_</code> prefix in their names). It is worth to note the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_script.c?h=linux-4.14.y">binfmt_script</a> module, which is responsible for parsing above mentioned shebang lines and executing scripts on the target system (not everyone knows that the shebang support is actually implemented in the kernel itself and not in the shell or other daemon/process).</p>
-	<h3 id="extendingsupportedbinaryformatsfromuserspace">Extending supported binary formats from userspace</h3>
+	<h3>Extending supported binary formats from userspace</h3>
 	<p>But since we concluded that shebang is not the best option for our Go scripting, seems we need something else. Surprisingly Linux kernel already has a <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_misc.c?h=linux-4.14.y">"something else" binary support module</a>, which has an appropriate name <code>binfmt_misc</code>. The module allows an administrator to dynamically add support for various executable formats directly from userspace through a well-defined <code>procfs</code> interface and is <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html">well-documented</a>.</p>
 	<p>Let's follow <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html">the documentation</a> and try to setup a binary format description for <code>.go</code> files. First of all the guide tells you to mount special <code>binfmt_misc</code> filesystem to <code>/proc/sys/fs/binfmt_misc</code>. If you're using relatively recent systemd-based Linux distribution, it is highly likely the filesystem is already mounted for you, because systemd by default installs special <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.mount">mount</a> and <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.automount">automount</a> units for this purpose. To double-check just run:</p>
-	<pre><code class="language-bash">$ mount | grep binfmt_misc
-systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=27,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ mount | grep binfmt_misc
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=27,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)</code></pre>
 	<p>Another way is to check if you have any files in <code>/proc/sys/fs/binfmt_misc</code>: properly mounted <code>binfmt_misc</code> filesystem will create at least two special files with names <code>register</code> and <code>status</code> in that directory.</p>
 	<p>Next, since we do want our <code>.go</code> scripts to be able to properly pass the exit code to the operating system, we need the custom <a href="https://github.com/erning/gorun">gorun</a> wrapper as our "interpreter":</p>
-	<pre><code class="language-bash">$ go get github.com/erning/gorun
-$ sudo mv ~/go/bin/gorun /usr/local/bin/
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ go get github.com/erning/gorun
+$ sudo mv ~/go/bin/gorun /usr/local/bin/</code></pre>
 	<p>Technically we don't need to move <code>gorun</code> to <code>/usr/local/bin</code> or any other system path as <code>binfmt_misc</code> requires full path to the interpreter anyway, but the system may run this executable with arbitrary privileges, so it is a good idea to limit access to the file from security perspective.</p>
 	<p>At this point let's create a simple toy Go script <code>helloscript.go</code> and verify we can successfully "interpret" it. The script:</p>
-	<pre><code class="language-go">package main
+	<pre class="language-go"><code class="language-go">package main
 
 import (
 	"fmt"
@@ -64,10 +80,9 @@ func main() {
 	if s == "fail" {
 		os.Exit(30)
 	}
-}
-</code></pre>
+}</code></pre>
 	<p>Checking if parameter passing and error handling works as intended:</p>
-	<pre><code class="language-bash">$ gorun helloscript.go
+	<pre class="language-bash"><code class="language-bash">$ gorun helloscript.go
 Hello, world!
 $ echo $?
 0
@@ -78,15 +93,13 @@ $ echo $?
 $ gorun helloscript.go fail
 Hello, fail!
 $ echo $?
-30
-</code></pre>
+30</code></pre>
 	<p>Now we need to tell <code>binfmt_misc</code> module how to execute our <code>.go</code> files with <code>gorun</code>. Following <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html">the documentation</a> we need this configuration string: <code>:golang:E::go::/usr/local/bin/gorun:OC</code>, which basically tells the system: "if you encounter an executable file with <code>.go</code> extension, please, execute it with <code>/usr/local/bin/gorun</code> interpreter". The <code>OC</code> flags at the end of the string make sure, that the script will be executed according to the owner information and permission bits set on the script itself, and not the ones set on the interpreter binary. This makes Go script execution behaviour same as the rest of the executables and scripts in Linux.</p>
 	<p>Let's register our new Go script binary format:</p>
-	<pre><code class="language-bash">$ echo ':golang:E::go::/usr/local/bin/gorun:OC' | sudo tee /proc/sys/fs/binfmt_misc/register
-:golang:E::go::/usr/local/bin/gorun:OC
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ echo ':golang:E::go::/usr/local/bin/gorun:OC' | sudo tee /proc/sys/fs/binfmt_misc/register
+:golang:E::go::/usr/local/bin/gorun:OC</code></pre>
 	<p>If the system successfully registered the format, a new file <code>golang</code> should appear under <code>/proc/sys/fs/binfmt_misc</code> directory. Finally, we can natively execute our <code>.go</code> files:</p>
-	<pre><code class="language-bash">$ chmod u+x helloscript.go
+	<pre class="language-bash"><code class="language-bash">$ chmod u+x helloscript.go
 $ ./helloscript.go
 Hello, world!
 $ ./helloscript.go gopher
@@ -94,10 +107,8 @@ Hello, gopher!
 $ ./helloscript.go fail
 Hello, fail!
 $ echo $?
-30
-</code></pre>
+30</code></pre>
 	<p>That's it! Now we can edit <code>helloscript.go</code> to our liking and see the changes will be immediately visible the next time the file is executed. Moreover, unlike the previous shebang approach, we can compile this file any time into a real executable with <code>go build</code>.</p>
 	<hr>
-	<p><em>Whether you like Go or digging in Linux internals, we have positions for either or these and even both of them at once. Check-out <a href="https://www.cloudflare.com/careers">our careers page.</a></em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>Whether you like Go or digging in Linux internals, we have positions for either or these and even both of them at once. Check-out </i><a href="https://www.cloudflare.com/careers"><i>our careers page.</i></a></p>
 </div>

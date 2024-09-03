@@ -1,28 +1,43 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/id-id/zero-trust-with-managed-devices-id-id">Bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/zero-trust-with-managed-devices-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-61.png" class="kg-image" alt="Build Zero Trust rules with managed devices" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/id-id/zero-trust-with-managed-devices">Indonesia</a> and <a href="https://blog.cloudflare.com/th-th/zero-trust-with-managed-devices">ไทย</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60t2KD3KYW8KkL4ypbHV0v/46a08001578bc707fd705a33009762a1/image1-61.png" alt="Build Zero Trust rules with managed devices" class="kg-image" width="1614" height="794" loading="lazy">
+
+	</figure>
 	<p>Starting today, your team can use Cloudflare Access to build rules that only allow users to connect to applications from a device that your enterprise manages. You can combine this requirement with any other rule in Cloudflare’s Zero Trust platform, including identity, multifactor method, and geography.</p>
 	<p>As more organizations adopt a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust security model</a> with Cloudflare Access, we hear from customers who want to prevent connections from devices they do not own or manage. For some businesses, a <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">fully remote workforce</a> increases the risk of data loss when any user can log in to sensitive applications from an unmanaged tablet. Other enterprises need to meet new compliance requirements that restrict work to corporate devices.</p>
 	<p>We’re excited to help teams of any size apply this security model, even if your organization does not have a device management platform or mobile device manager (MDM) today. Keep reading to learn how Cloudflare Access solves this problem and how you can get started.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-50.png" class="kg-image" alt="We’re excited to help teams of any size apply this security model, even if your organization does not have a device management platform or mobile device manager (MDM) today." loading="lazy"></figure>
-	<h3 id="the-challenge-of-unmanaged-devices">The challenge of unmanaged devices</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13ljhhnZMI237lVhSthYIe/325ee34f61fb03a547260f20be2bec44/image4-50.png" alt="We’re excited to help teams of any size apply this security model, even if your organization does not have a device management platform or mobile device manager (MDM) today." class="kg-image" width="1044" height="514" loading="lazy">
+
+	</figure>
+	<h3>The challenge of unmanaged devices</h3>
 	<p>An enterprise that owns corporate devices has some level of control over them. Administrators can assign, revoke, inspect and manage devices in their inventory. Whether teams rely on management platforms or a simple spreadsheet, businesses can treat corporate devices as their own.</p>
 	<p>That visibility and management does not apply to a personal device — and we are all glad that is true. However, that same value causes problems when enterprises need to restrict data or access to applications to only a corporate device. If I’m able to login to a system and download data on a personal device, I have created a new headache for IT and security.</p>
 	<p>Single sign-on (SSO) providers and SaaS applications make it easier to make that mistake, intentionally or not. Users can login to a corporate application by simply reusing their passwords. Even if the organization enforces multifactor methods like hard key authentication, a user can just plug their key into a personal device.</p>
-	<h3 id="cloudflare-s-solution">Cloudflare’s Solution</h3>
+	<h3>Cloudflare’s Solution</h3>
 	<p>We’re excited to give any team the ability to maintain control over data by ensuring it stays on corporate devices. Cloudflare Access is a comprehensive <a href="https://www.cloudflare.com/zero-trust/solutions">Zero Trust platform</a> that administrators can use to build rules by identity and other signals. Teams can build rules for self-managed and SaaS applications. Every request and login is captured and all of it is made faster for end users on Cloudflare’s global network.</p>
 	<p>You can now use Cloudflare’s Zero Trust platform to build a new type of rule: only allow connections or logins from a corporate-owned device. You can use your own inventory system, whether it is a simple spreadsheet or API from an MDM platform. Our Cloudflare for Teams agent runs on the device and gathers details about the hardware, checks it against your inventory, and Cloudflare’s edge makes a decision instantly.</p>
-	<h3 id="how-it-works">How it works</h3>
+	<h3>How it works</h3>
 	<p>Enforcing corporate devices in Access takes about 20 minutes to set up and only requires that you have a list of corporate devices’ serial numbers.</p>
 	<p>The first step is to establish and import your list of managed device serial numbers. Serial number lists can be uploaded in bulk or created manually directly in the Teams Dashboard. Many inventory and asset management tools provide a straightforward way to export device serial numbers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-44.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11MlRwkSSNPERpyl0HfVGh/e06b0f1db1ff4d9eb332b2ef15a8ec23/image3-44.png" alt="" class="kg-image" width="1999" height="977" loading="lazy">
+
+	</figure>
 	<p>It is also possible to to upload new serial numbers over the API allowing for automation when new devices are purchased.</p>
 	<p>The next step is to deploy the WARP client across your corporate machines. Users can <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp">download</a> and install the client themselves or it can be installed via an <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment">MDM solution</a>.</p>
 	<p>That’s all that is required to begin enforcing Zero Trust access for only corporate devices! You will now be able to build Access rules that check if a device’s serial number is in the managed devices list.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-49.png" class="kg-image" alt="You will now be able to build Access rules that check if a device’s serial number is in the managed devices list." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62KJ66Rig411X9qm5teNlD/0438db1b459eca5b84617d939fdc5f9d/image2-49.png" alt="You will now be able to build Access rules that check if a device’s serial number is in the managed devices list." class="kg-image" width="1818" height="878" loading="lazy">
+
+	</figure>
 	<p>Now even if a user moved their hard-key over and installed WARP on their personal device, they would still be blocked because they’re not in the corporate serial number list.</p>
-	<h3 id="getting-started">Getting Started</h3>
+	<h3>Getting Started</h3>
 	<p>If you would like to start locking down applications to only corporate devices, <a href="https://www.cloudflare.com/teams/access">sign up</a> for a free Teams account up to 50 users. If you are an existing customer, this is available in your Teams Dashboard today and can be set up with the <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/corp-device-tag">following guide</a>.</p>
 </div>

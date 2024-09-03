@@ -1,12 +1,12 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<h3 id="usingthecloudflareapiviapython">Using the CloudFlare API via Python</h3>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GOesLC2I4qEGSXJPmJFLx/999e64ffba2c987b97fba27b05749c33/python-cloudflare.png" alt="">
+<div class="post-content lh-copy gray1">
+	<h3>Using the CloudFlare API via Python</h3>
 	<p>Very early on in the company’s history we decided that everything that CloudFlare does on behalf of its customer-base should be controllable via an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a>. In fact, when you login to the CloudFlare control panel, you’re really just making API calls to our backend services. Over time that API has matured and improved. We are now on v4 of that API.</p>
 	<p>The current CloudFlare API is documented <a href="https://api.cloudflare.com">here</a> and it’s used by both the CloudFlare control panel and directly by umpteen customers every minute of every day. The new API is designed with a clean naming structure and consistent data representation for data. It’s also extensible.</p>
 	<p>This blog entry introduces <a href="https://github.com/cloudflare/python-cloudflare">python-cloudflare</a>, a Python wrapper providing full access to the CloudFlare v4 API.</p>
-	<h3 id="anexample">An example</h3>
+	<h3>An example</h3>
 	<p>Let’s get right into the thick-of-it with the simplest coding example available to show python-cloudflare in action. This example lists all your domains (zones) and also checks some basic features for each zone.</p>
-	<pre><code class="language-py">#!/usr/bin/env python
+	<pre class="language-py"><code class="language-py">#!/usr/bin/env python
 import CloudFlare
 def main():
     cf = CloudFlare.CloudFlare()
@@ -19,22 +19,27 @@ def main():
         print zone_id, ipv6_on, zone_name
     exit(0)
 if __name__ == '__main__':
-    main()
-</code></pre>
+    main()</code></pre>
 	<p>The structure of the CloudFlare class matches the API documentation. The <code>CloudFlare.zones.get()</code> method returns information about the zones as per the <a href="https://api.cloudflare.com/#zone-list-zones">list zones</a> documentation. The same for <code>CloudFlare.zones.settings.ipv6.get()</code> and its <a href="https://api.cloudflare.com/#zone-settings-get-ipv6-setting">documentation</a>.</p>
 	<p>Data is passed into the methods via standard Python structures and they are returned in Python structures that match the API documentation. That means if you see an API call in the documentation, then you can translate it into the Python code in a one-to-one manner.</p>
 	<p>For example, take a look at the <a href="https://api.cloudflare.com/#waf-rules-list-rules">WAF list rules</a> API call.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/05/1-list_rules.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58QXJkTf6PTJW4n69AsL1R/e9ebd68756e3b2d3d9b174b2a1637da1/1-list_rules.png" alt="alt" class="kg-image" width="892" height="313" loading="lazy">
+
+	</figure>
 	<p>This codes into <code>CloudFlare.zones.dns_records.post()</code> method with the <code>zone_id</code> as the first argument, the <code>package_id</code> as the second argument and the optional parameters passed last (or if there aren’t any; then just drop the third argument for the call). Because this is a <code>GET</code> call there’s a <code>.get()</code> as part of the method name.</p>
-	<pre><code class="language-python">    r = cf.zones.firewall.waf.packages.rules.get(zone_id, package_id, params=params)
-</code></pre>
+	<pre class="language-python"><code class="language-python">    r = cf.zones.firewall.waf.packages.rules.get(zone_id, package_id, params=params)</code></pre>
 	<p>Here’s the much simpler <a href="https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record">Create DNS record</a> API call.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/05/2-create_dns_record.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/giA1qSsZ55yOwwczVcXBk/08dd0a38bcde2464b411de2faff2e1f4/2-create_dns_record.png" alt="alt" class="kg-image" width="892" height="340" loading="lazy">
+
+	</figure>
 	<p>This would be coded into the Python method <code>CloudFlare.zones.dns_records.post()</code> with the <code>zone_id</code> as the first argument and the required parameters passed as data. Because this is a <code>POST</code> call there’s a <code>.post()</code> as part of the method name.</p>
-	<pre><code class="language-python">    r = cf.zones.dns_records.post(zone_id, data=dns_record)
-</code></pre>
+	<pre class="language-python"><code class="language-python">    r = cf.zones.dns_records.post(zone_id, data=dns_record)</code></pre>
 	<p>Here’s an example of that Create DNS record call in action. In this code, we add two records to an existing zone. We also show how the error is handled (in classic Python style).</p>
-	<pre><code class="language-python">    zone_name = 'example.com'
+	<pre class="language-python"><code class="language-python">    zone_name = 'example.com'
     try:
         r = cf.zones.get(params={'name': zone_name})
     except CloudFlare.CloudFlareAPIError as e:
@@ -51,54 +56,51 @@ if __name__ == '__main__':
         try:
             r = cf.zones.dns_records.post(zone_id, data=dns_record)
         except CloudFlare.CloudFlareAPIError as e:
-            exit('/zones.dns_records.post %s - %d %s' % (record['name'], e, e))
-</code></pre>
+            exit('/zones.dns_records.post %s - %d %s' % (record['name'], e, e))</code></pre>
 	<p>There’s a whole folder of example code available on the GitHub repository.</p>
-	<h2 id="allongithubforanyonetouse">All on GitHub for anyone to use</h2>
+	<h2>All on GitHub for anyone to use</h2>
 	<p>As we stated above (and as CloudFlare has done many times before) we have placed this code up on <a href="https://github.com/cloudflare/python-cloudflare">GitHub</a> for anyone to download and use. We welcome contributions and will review any pull requests. To install it, just clone it and follow the README instructions. For those that just want to get going right now; here’s the tl;dr install:</p>
-	<pre><code class="language-bash">$ git clone https://github.com/cloudflare/python-cloudflare
+	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/cloudflare/python-cloudflare
 $ cd python-cloudflare
 $ ./setup.py build
-$ sudo ./setup.py install
-</code></pre>
-	<h2 id="butwaittheresmore">But wait; there’s more!</h2>
+$ sudo ./setup.py install</code></pre>
+	<h2>But wait; there’s more!</h2>
 	<p>Not only do you get the python API calls, you also get a fully functioning CLI (command line interface) that allows quick creation of scripts that interface with CloudFlare.</p>
 	<p>From the CLI command you can call any of the CloudFlare API calls. The command responds with the returned JSON data. If you want to filter the results you possibly also want to install the highly-versatile <a href="https://stedolan.github.io/jq">jq</a> command. Here’s a command to check the nameservers for a specific domain hosted on CloudFlare and then process it via jq.</p>
-	<pre><code class="language-bash">$ cli4 name=example.com /zones | jq -c '.[]|{"name_servers":.name_servers}'
+	<pre class="language-bash"><code class="language-bash">$ cli4 name=example.com /zones | jq -c '.[]|{"name_servers":.name_servers}'
 {
   "name_servers":[
     "alice.ns.cloudflare.com",
     "bob.ns.cloudflare.com"
   ]
 }
-$
-</code></pre>
+$</code></pre>
 	<p>The CLI command will convert on-the-fly zone names into zone identifiers. For example; if you want to check the <a href="https://blog.cloudflare.com/dnssec-an-introduction">DNSSEC</a> status on a zone your operate on CloudFlare; then use this command.</p>
-	<pre><code class="language-bash">$ cli4 /zones/:example.com/dnssec | jq '{"status":.status,"ds":.ds}'
+	<pre class="language-bash"><code class="language-bash">$ cli4 /zones/:example.com/dnssec | jq '{"status":.status,"ds":.ds}'
 {
   "status": "active",
   "ds": "example.com. 3600 IN DS 2371 13 2 00000000000000000000000000000 ..."
 }
-$
-</code></pre>
+$</code></pre>
 	<p>You can issue <code>GET</code> <code>PUT</code> <code>POST</code> <code>PATCH</code> or <code>DELETE</code> calls into the API. You can pass data into a CloudFlare API call with the CLI command. All documented via the <code>README.md</code> and wiki examples in GitHub.</p>
 	<p>Here’s a useful command for customers that need to flush their cache files.</p>
-	<pre><code class="language-bash">$ cli4 --delete purge_everything=true /zones/:example.com/purge_cache
+	<pre class="language-bash"><code class="language-bash">$ cli4 --delete purge_everything=true /zones/:example.com/purge_cache
 {
   "id":"d8afaec3dd2b7f8c1b470e594a21a01d"
 }
-$
-</code></pre>
+$</code></pre>
 	<p>See how the commands arguments match the <a href="https://api.cloudflare.com/#zone-purge-all-files">purge_cache</a> API documentation.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/05/3-purge.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3E5z7ixk8yXPm3sg4hYmGT/1108337dd020efec7c0fe78037dc97e7/3-purge.png" alt="alt" class="kg-image" width="894" height="316" loading="lazy">
+
+	</figure>
 	<p>Finally, here’s an example of turning on DNSSEC via the API.</p>
-	<pre><code class="language-bash">$ cli4 --patch status=active /zones/:example.com/dnssec | jq -c '{"status":.status}'
+	<pre class="language-bash"><code class="language-bash">$ cli4 --patch status=active /zones/:example.com/dnssec | jq -c '{"status":.status}'
 {"status":"pending"}
-$
-</code></pre>
+$</code></pre>
 	<p>There are plenty more examples available within the GitHub repo.</p>
-	<h3 id="cloudflareapiviaotherlanguagesalsoavailable">CloudFlare API via other languages also available</h3>
+	<h3>CloudFlare API via other languages also available</h3>
 	<p>Python isn’t the only language you can use to interact with CloudFlare’s API. If you’re a <code>Go</code>, or <code>Node.js</code> user, we also have client libraries you can use to interact with CloudFlare on our <a href="https://github.com/cloudflare/python-cloudflare">GitHub</a>. Find them here <a href="https://github.com/cloudflare/cloudflare-go">Go client</a> and here <a href="https://github.com/cloudflare/node-cloudflare">Node.js client</a>. Want to write something in a different language? Feel free to do that. The <a href="https://api.cloudflare.com">API</a> spec is online and ready for you to code up.</p>
 	<p>If you like what you read here today and are interested in joining one of CloudFlare’s software teams, then checkout our <a href="https://www.cloudflare.com/join-our-team">Join Our Team</a> page.</p>
-	<!--kg-card-end: markdown-->
 </div>

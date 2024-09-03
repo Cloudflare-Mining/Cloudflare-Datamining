@@ -1,77 +1,68 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/moving-from-recaptcha-to-hcaptcha-de-de">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/moving-from-recaptcha-to-hcaptcha-fr-fr">Français</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-4.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/moving-from-recaptcha-to-hcaptcha">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/moving-from-recaptcha-to-hcaptcha">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/moving-from-recaptcha-to-hcaptcha">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/moving-from-recaptcha-to-hcaptcha">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/586NrhRaDhvMRqqpV5X8sp/90680731e710235957144c7462f19bec/image3-4.png" alt="" class="kg-image" width="1999" height="1043" loading="lazy">
+
+	</figure>
 	<p>We recently migrated the CAPTCHA provider we use from Google's reCAPTCHA to a service provided by the independent hCaptcha. We're excited about this change because it helps address a privacy concern inherent to relying on a Google service that we've had for some time and also gives us more flexibility to customize the CAPTCHAs we show. Since this change potentially impacts all Cloudflare customers, we wanted to walk through the rationale in more detail.</p>
-	<h3 id="captchas-at-cloudflare">CAPTCHAs at Cloudflare</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image1-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>CAPTCHAs at Cloudflare</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZzleadTrmvoAHqnbOYSIh/6e6c3cfd9aa26427622aad3b77a2e82b/image1-9.png" alt="" class="kg-image" width="1999" height="1026" loading="lazy">
+
+	</figure>
 	<p>One of the services Cloudflare provides is a way to block <a href="https://www.cloudflare.com/learning/bots/what-is-bot-traffic">malicious automated ("bot") traffic</a>. We use a number of techniques to accomplish that. When we are confident something is malicious bot activity we block it entirely. When we are confident it's good human traffic (or a good bot like a search engine crawler) then we let it through. But, sometimes, when we're not 100% sure if something is malicious or good we issue it a “challenge”.</p>
 	<p>We have different types of challenges, some are entirely automatic, but one requires human intervention. Those challenges are known as <a href="https://www.cloudflare.com/learning/bots/how-captchas-work">CAPTCHAs</a>. That's an acronym for Completely Automated Public Turing Test to Tell Computers and Humans Apart (a few Ts are dropped otherwise it'd be CAPTTTCHA). These are the prompts to enter squiggly letters in a box or identify traffic lights or cross walks. Generally, they're supposed to be something that's easy for humans to do but hard for machines.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rC4odqDfae4WAV1tIDYXd/2904d99e7992fb180260b9e0b76fa82f/image2-7.png" alt="" class="kg-image" width="1999" height="1465" loading="lazy">
+
+	</figure>
 	<p>Since Cloudflare's earliest days, we have used Google's reCAPTCHA service. ReCAPTCHA started as a research project out of Carnegie Mellon University in 2007. Google acquired the project in 2009, around the same time that Cloudflare was first getting started. Google provided reCAPTCHA for free in exchange for data from the service being used to train its visual identification systems. When we were looking for a CAPTCHA for Cloudflare, we chose reCAPTCHA because it was effective, could scale, and was offered for free — which was important since so many of Cloudflare's customers use our free service.</p>
-	<h3 id="privacy-and-blocking-concerns">Privacy and Blocking Concerns</h3>
+	<h3>Privacy and Blocking Concerns</h3>
 	<p>Since those early days, some customers have expressed concerns about using a Google service to serve CAPTCHAs. Google's business is targeting users with advertising. Cloudflare's is not. We have strict privacy commitments. We were able to get comfortable with the Privacy Policy around reCAPTCHA, but understood why some of our customers were concerned about feeding more data to Google.</p>
 	<p>We also had issues in some regions, such as China, where Google's services are intermittently blocked. China alone accounts for 25 percent of all Internet users. Given that some subset of those could not access Cloudflare's customers if they triggered a CAPTCHA was always concerning to us.</p>
 	<p>Over the years, the privacy and blocking concerns were enough to cause us to think about switching from reCAPTCHA. But, like most technology companies, it was difficult to prioritize removing something that was largely working instead of brand new features and functionality for our customers.</p>
-	<h3 id="google-s-changing-business-model">Google's Changing Business Model</h3>
+	<h3>Google's Changing Business Model</h3>
 	<p>Earlier this year, Google informed us that they were going to begin charging for reCAPTCHA. That is entirely within their right. Cloudflare, given our volume, no doubt imposed significant costs on the reCAPTCHA service, even for Google.</p>
 	<p>Again, this is entirely rational for Google. If the value of the image classification training did not exceed those costs, it makes perfect sense for Google to ask for payment for the service they provide. In our case, that would have added millions of dollars in annual costs just to continue to use reCAPTCHA for our free users. That was finally enough of an impetus for us to look for a better alternative.</p>
-	<h3 id="a-better-captcha">A Better CAPTCHA</h3>
+	<h3>A Better CAPTCHA</h3>
 	<p>We evaluated a number of CAPTCHA vendors as well as building a system ourselves. In the end, <a href="https://www.hcaptcha.com">hCaptcha</a> emerged as the best alternative to reCAPTCHA. We liked a number of things about the hCaptcha solutions: 1) they don't sell personal data; they collect only minimum necessary personal data, they are transparent in describing the info they collect and how they use and/or disclose it, and they agreed to only use such data to provide the hCaptcha service to Cloudflare; 2) performance (both in speed and solve rates) was as good as or better than expected during our A/B testing; 3) it has a robust solution for visually impaired and other users with accessibility challenges; 4) it supported <a href="https://privacypass.github.io">Privacy Pass</a> to reduce the frequency of CAPTCHAs; 5) it worked in regions where Google was blocked; and 6) the hCaptcha team was nimble and responsive in a way that was refreshing.</p>
 	<p>The standard hCaptcha business model was similar to how reCAPTCHA started. They planned to charge customers that needed image classification data and pay publishers to install their CAPTCHA on their sites. Sounded great to us, but, unfortunately, while that may work well for most publishers, it doesn't at Cloudflare's scale.</p>
 	<p>We worked with hCaptcha in two ways. First, we are in the process of leveraging our <a href="https://www.cloudflare.com/plans/developer-platform">Workers platform</a> to bear much of the technical load of the CAPTCHAs and, in doing so, reduce their costs. And, second, we proposed that rather than them paying us we pay them. This ensured they had the resources to scale their service to meet our needs. While that has imposed some additional costs, those costs were a fraction of what reCAPTCHA would have. And, in exchange, we have a much more flexible CAPTCHA platform and a much more responsive team.</p>
-	<h3 id="when-do-customers-serve-captchas">When do Customers Serve CAPTCHAs?</h3>
+	<h3>When do Customers Serve CAPTCHAs?</h3>
 	<p>When we first started working on this project, the assumption was that <a href="https://www.cloudflare.com/application-services/products/bot-management">Cloudflare Bot Management</a> and Firewall Rules would be by far the largest consumer of CAPTCHAs. This was somewhat correct. While Firewall/Bots was the #1 consumer, it only was a bit over 50% of our CAPTCHAs served.</p>
-	<p>These are the breakdowns of when Cloudflare customers asked us to serve a CAPTCHA on their zones, by total CAPTCHAs served.</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th>Source</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Firewall and Bot Rules</td>
-				<td>54.8%</td>
-			</tr>
-			<tr>
-				<td>IP Firewall</td>
-				<td>18.6%</td>
-			</tr>
-			<tr>
-				<td>Security Level</td>
-				<td>16.8%</td>
-			</tr>
-			<tr>
-				<td>DDoS</td>
-				<td>6.3%</td>
-			</tr>
-			<tr>
-				<td>Rate Limiting</td>
-				<td>1.7%</td>
-			</tr>
-			<tr>
-				<td>WAF Rules</td>
-				<td>1.5%</td>
-			</tr>
-			<tr>
-				<td>Other</td>
-				<td>0.3%</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
+	<p>These are the breakdowns of when Cloudflare customers asked us to serve a CAPTCHA on their zones, by total CAPTCHAs served.</p>
+	<p>Source</p>
+	<p>Firewall and Bot Rules</p>
+	<p>54.8%</p>
+	<p>IP Firewall</p>
+	<p>18.6%</p>
+	<p>Security Level</p>
+	<p>16.8%</p>
+	<p>DDoS</p>
+	<p>6.3%</p>
+	<p>Rate Limiting</p>
+	<p>1.7%</p>
+	<p>WAF Rules</p>
+	<p>1.5%</p>
+	<p>Other</p>
+	<p>0.3%</p>
 	<p>Our Firewall and Bot Rules are at the top and are the majority of the CAPTCHAs served by Cloudflare. These are rules written by our customers that specifically throw a CAPTCHA when the rule is matched. Examples of these include firing a Captcha if a <a href="https://developers.cloudflare.com/bots/concepts/bot-score">Bot Management score</a> is below a threshold where you believe it is likely that the connection is automated, but the score is above a threshold where you are not certain. Another common rule in this bucket is to CAPTCHA 100% of all traffic behind a site or specific endpoint. Customers may be doing this to limit connections to their origins, or to slow down automated systems from doing something like credential stuffing on a login page or polluting registration data. This leads to some sites on Cloudflare serving hundreds of millions of CAPTCHAs per day.</p>
 	<p>The second most popular is our <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules">IP Firewall</a>. This is similar to the Firewall and Bot Rules, but much less granular at the IP, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, or country level. The majority of CAPTCHAs for this category are done for rules written at the ASN or country level. Presumably our customers find some level of distrust with a particular ASN (for example, why would there be supposed user traffic coming from a cloud infrastructure provider?) or are being attacked from specific countries.</p>
 	<p>Next comes <a href="https://support.cloudflare.com/hc/en-us/articles/200170056-Understanding-the-Cloudflare-Security-Level">Security Levels</a>. Security levels have two distinct use cases: 1) as a blunt tool for IP address reputation and 2) I’m Under Attack Mode. While we recommend to customers that they only use I’m Under Attack Mode while under an active denial of service attack, some customers leave the feature on 100% of the time as a rudimentary form of rate limiting and filtering.</p>
 	<p>The final major use of CAPTCHA is through one of our automated systems: recently our Denial of Service protection engineering team taught <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a> to use CAPTCHAs to mitigate small floods in specific scenarios. Gatebot can now write temporary rules that result in CAPTCHAs being shown to attackers.</p>
 	<p>Lastly, there were also some customers selecting it as an override action for their <a href="https://www.cloudflare.com/application-services/products/rate-limiting">Rate Limiting</a> or Managed WAF rulesets.</p>
 	<p>We also took a look at which types of customers were serving the CAPTCHAs. Over a week’s period of time (normalizing for attacks), our free customers configured their zones to serve roughly 40-60% of the total CAPTCHAs served by Cloudflare. Of our paying customers, there is a generally even split between our pay-as-you-go and our enterprise customers. Overall, we have measured that Cloudflare will show multiple millions of CAPTCHAs per second when one or more of our customers are under attack.</p>
-	<h3 id="fixing-challenges">Fixing Challenges</h3>
+	<h3>Fixing Challenges</h3>
 	<p>Whenever we change any part of Cloudflare's systems, it makes things significantly better for some, but temporarily worse for others. We and the hCaptcha team are committed to addressing any problems that come up. If you or your users see issues with the new hCaptcha implementation, please <a href="https://community.cloudflare.com">post on the forum</a> or open a <a href="https://support.cloudflare.com/hc/en-us/articles/200172476-Contacting-Cloudflare-Support">Support ticket</a> with as much detail as possible.</p>
-	<p>Whenever possible, please include the RayID that usually appears on the footer of the CAPTCHA page so we can track down what went wrong. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image4-8.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Over time, we believe visual (and audio) CAPTCHAs are an imperfect answer to a number of difficult problems. Cloudflare is continuing work to minimize and hopefully eventually eliminate altogether the number of CAPTCHAs we issue and we will be excited to share the results of that work in this blog as we move along. The name of our internal chat room for the team making this change isn’t New CAPTCHA, it’s (No)CAPTCHA.<br></p>
+	<p>Whenever possible, please include the RayID that usually appears on the footer of the CAPTCHA page so we can track down what went wrong.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PzJKNivdvbBrD44OEP5eM/2efc05e10ed0fa65ee743186f670dffd/image4-8.png" alt="" class="kg-image" width="1668" height="206" loading="lazy">
+
+	</figure>
+	<p>Over time, we believe visual (and audio) CAPTCHAs are an imperfect answer to a number of difficult problems. Cloudflare is continuing work to minimize and hopefully eventually eliminate altogether the number of CAPTCHAs we issue and we will be excited to share the results of that work in this blog as we move along. The name of our internal chat room for the team making this change isn’t New CAPTCHA, it’s (No)CAPTCHA.</p>
 </div>

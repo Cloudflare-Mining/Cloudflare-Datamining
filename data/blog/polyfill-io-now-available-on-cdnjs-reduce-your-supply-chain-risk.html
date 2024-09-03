@@ -1,6 +1,10 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image1-17.png" class="kg-image" alt="polyfill.io now available on cdnjs: reduce your supply chain risk" loading="lazy" width="1201" height="675"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nxvskYVuRnRJHoLUMRY4l/49bedceb8aabd8da9fcdd352a5f37093/image1-17.png" alt="polyfill.io now available on cdnjs: reduce your supply chain risk" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>Polyfill.io is a popular JavaScript library that nullifies differences across old browser versions. These differences often take up substantial development time.</p>
 	<p>It does this by adding support for modern functions (via <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill">polyfilling</a>), ultimately letting developers work against a uniform environment simplifying development. The tool is historically loaded by linking to the endpoint provided under the domain polyfill.io.</p>
 	<p>In the interest of providing developers with additional options to use polyfill, today we are launching an <a href="https://cdnjs.cloudflare.com/polyfill">alternative endpoint under cdnjs</a>. You can replace links to polyfill.io “as is” with our new endpoint. You will then rely on the same service and reputation that <a href="https://cdnjs.com">cdnjs</a> has built over the years for your polyfill needs.</p>
@@ -8,17 +12,17 @@
 	<p>The concerns are that any website embedding a link to the original polyfill.io domain, will now be relying on Funnull to maintain and secure the underlying project to avoid the risk of a supply chain attack. Such an attack would occur if the underlying third party is compromised or alters the code being served to end users in nefarious ways, causing, by consequence, all websites using the tool to be compromised.</p>
 	<p>Supply chain attacks, in the context of web applications, are a growing concern for security teams, and also led us to build a client side security product to detect and mitigate these attack vectors: <a href="https://developers.cloudflare.com/page-shield">Page Shield</a>.</p>
 	<p>Irrespective of the scenario described above, this is a timely reminder of the complexities and risks tied to modern web applications. As maintainers and contributors of <a href="https://cdnjs.com">cdnjs</a>, currently used by <a href="https://w3techs.com/technologies/overview/content_delivery">more than 12% of all sites</a>, this reinforces our commitment to help keep the Internet safe.</p>
-	<h3 id="polyfillio-on-cdnjs">polyfill.io on cdnjs</h3>
+	<h3>polyfill.io on cdnjs</h3>
 	<p>The full polyfill.io implementation has been deployed at the following URL:</p>
 	<p><a href="https://cdnjs.cloudflare.com/polyfill"><code>https://cdnjs.cloudflare.com/polyfill/</code></a></p>
 	<p>The underlying bundle link is:</p>
-	<p>For minified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js</a><br>For unminified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js</a></p>
+	<p>For minified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js</a>For unminified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js</a></p>
 	<p>Usage and deployment is intended to be identical to the original polyfill.io site. As a developer, you should be able to simply “replace” the old link with the new cdnjs-hosted link without observing any side effects, besides a possible improvement in performance and reliability.</p>
-	<p>If you don’t have access to the underlying website code, but your website is behind Cloudflare, replacing the links is even easier, as you can deploy a Cloudflare Worker to update the links for you:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">export interface Env {}
+	<p>If you don’t have access to the underlying website code, but your website is behind Cloudflare, replacing the links is even easier, as you can deploy a Cloudflare Worker to update the links for you:</p>
+	<pre class="language-javascript"><code class="language-javascript">export interface Env {}
 
 export default {
-    async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+    async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<response> {
         ctx.passThroughOnException();
 
         const response = await fetch(request);
@@ -58,18 +62,16 @@ export default {
             return response;
         }
     },
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</response></code></pre>
 	<p>Instructions on how to deploy a worker can be found on our <a href="https://developers.cloudflare.com/workers/get-started">developer documentation</a>.</p>
 	<p>You can also test the Worker on your website without deploying the worker. You can find instructions on how to do this in <a href="https://blog.cloudflare.com/workers-and-webpagetest">another blog post we wrote in the past</a>.</p>
-	<h3 id="implemented-with-rust-on-cloudflare-workers">Implemented with Rust on Cloudflare Workers</h3>
+	<h3>Implemented with Rust on Cloudflare Workers</h3>
 	<p>We were happy to discover that polyfill.io is a <a href="https://github.com/polyfillpolyfill/polyfill-service">Rust project</a>. As you might know, Rust has been a <a href="https://blog.cloudflare.com/workers-rust-sdk">first class citizen on Cloudflare Workers</a> from the start.</p>
 	<p>The polyfill.io service was hosted on Fastly and used their Rust library. We forked the project to add the compatibility for Cloudflare Workers, and plan to make the fork publicly accessible in the near future.</p>
-	<h3 id="worker">Worker</h3>
-	<p>The <code>https://cdnjs.cloudflare.com/polyfill/[...].js</code> endpoints are also implemented in a Cloudflare Worker that wraps our Polyfill.io fork. The wrapper uses <a href="https://github.com/cloudflare/workers-rs">Cloudflare’s Rust API</a> and looks like the following:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">#[event(fetch)]
-async fn main(req: Request, env: Env, ctx: Context) -&gt; Result&lt;Response&gt; {
+	<h3>Worker</h3>
+	<p>The <code>https://cdnjs.cloudflare.com/polyfill/[...].js</code> endpoints are also implemented in a Cloudflare Worker that wraps our Polyfill.io fork. The wrapper uses <a href="https://github.com/cloudflare/workers-rs">Cloudflare’s Rust API</a> and looks like the following:</p>
+	<pre class="language-javascript"><code class="language-javascript">#[event(fetch)]
+async fn main(req: Request, env: Env, ctx: Context) -&gt; Result<response> {
     let metrics = {...};
 
     let polyfill_store = get_d1(&amp;req, &amp;env)?;
@@ -95,14 +97,12 @@ async fn main(req: Request, env: Env, ctx: Context) -&gt; Result&lt;Response&gt;
     });
 
     res
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</response></code></pre>
 	<p>The wrapper only sets up our internal <a href="https://developers.cloudflare.com/workers/observability/metrics-and-analytics">metrics</a> and <a href="https://developers.cloudflare.com/workers/observability/logging/logpush">logging</a> tools, so we can monitor uptime and performance of the underlying logic while calling the Polyfill.io entrypoint.</p>
-	<h3 id="storage-for-the-polyfill-files">Storage for the Polyfill files</h3>
+	<h3>Storage for the Polyfill files</h3>
 	<p>All the polyfill files are stored in a key-value store powered by <a href="https://developers.cloudflare.com/d1">Cloudflare D1</a>. This allows us to fetch as many polyfill files as we need with a single SQL query, as opposed to the original implementation doing one KV get() per file.</p>
 	<p>For performance, we have one Cloudflare D1 instance per region and the SQL queries are routed to the nearest database.</p>
-	<h3 id="cdnjs-for-your-javascript-libraries">cdnjs for your JavaScript libraries</h3>
-	<p>cdnjs is hosting over 6k JavaScript libraries as of today. We are looking for ways to improve the service and provide new content. We listen to community feedback and welcome suggestions on our <a href="https://community.cloudflare.com">community forum</a>, or <a href="https://github.com/cdnjs">cdnjs on GitHub</a>.<br></p>
+	<h3>cdnjs for your JavaScript libraries</h3>
+	<p>cdnjs is hosting over 6k JavaScript libraries as of today. We are looking for ways to improve the service and provide new content. We listen to community feedback and welcome suggestions on our <a href="https://community.cloudflare.com">community forum</a>, or <a href="https://github.com/cdnjs">cdnjs on GitHub</a>.</p>
 	<p><a href="https://developers.cloudflare.com/page-shield">Page Shield</a> is also available to all paid plans. Log in to turn it on with a single click to increase visibility and security for your third party assets.</p>
 </div>

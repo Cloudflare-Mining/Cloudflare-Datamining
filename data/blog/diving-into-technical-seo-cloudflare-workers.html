@@ -1,76 +1,93 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1b4sXoTzoaOFV9Z9CDmlsa/abd294e240ae4944a4817dd2c896f20a/diving-into-technical-seo-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><em>This is a guest post by Igor Krestov and Dan Taylor. Igor is a lead software developer at SALT.agency, and Dan a lead technical SEO consultant, and has also been credited with <a href="https://searchengineland.com/service-workers-and-seo-seo-for-developers-311292">coining the term “edge SEO”</a>. <a href="https://salt.agency">SALT.agency</a> is a technical SEO agency with offices in London, Leeds, and Boston, offering bespoke consultancy to brands around the world. You can reach them both via <a href="https://twitter.com/salt_agency">Twitter</a>.</em></p>
+	<p><i>This is a guest post by Igor Krestov and Dan Taylor. Igor is a lead software developer at SALT.agency, and Dan a lead technical SEO consultant, and has also been credited with </i><a href="https://searchengineland.com/service-workers-and-seo-seo-for-developers-311292"><i>coining the term “edge SEO”</i></a><i>. </i><a href="https://salt.agency"><i>SALT.agency</i></a><i> is a technical SEO agency with offices in London, Leeds, and Boston, offering bespoke consultancy to brands around the world. You can reach them both via </i><a href="https://twitter.com/salt_agency"><i>Twitter</i></a><i>.</i></p>
 	<p>With this post we illustrate the potential applications of <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> in relation to search engine optimization, which is more commonly referred to as ‘SEO’ using our research and testing over the past year making Sloth.</p>
 	<p>This post is aimed at readers who are both proficient in writing performant JavaScript, as well as complete newcomers, and less technical stakeholders, who haven’t really written many lines of code before.</p>
-	<h2 id="endless-practical-applications-to-overcome-obstacles">Endless practical applications to overcome obstacles</h2>
+	<h2>Endless practical applications to overcome obstacles</h2>
 	<p>Working with various clients and projects over the years we’ve continuously encountered the same problems and obstacles in getting their websites to a point of “technical SEO excellence”. A lot of these problems come from platform restriction at an enterprise level, legacy tech stacks, incorrect builds, and years of patching together various services and infrastructures.</p>
 	<p>As a team of technical SEO consultants, we can often be left frustrated by these barriers, that often lead to essential fixes and implementations either being not possible or delayed for months (if not years) at a time – and in this time, the business is often losing traffic and revenue.</p>
 	<p>Workers offers us a hail Mary solution to a lot of common frustrations in getting technical SEO implemented, and we believe in the long run can become an integral part of overcoming legacy issues, reducing DevOps costs, speeding up lead times, all in addition to utilising a globally distributed serverless platform with blazing fast cold start times.</p>
-	<h2 id="creating-accessibility-at-scale">Creating accessibility at scale</h2>
+	<h2>Creating accessibility at scale</h2>
 	<p>When we first started out, we needed to implement simple redirects, which should be easy to create on the majority of platforms but wasn’t supported in this instance.</p>
 	<p>When the second barrier arose, we needed to inject Hreflang tags, cross-linking an old multi-lingual website on a bespoke platform build to an outdated spec. This required experiments to find an efficient way of implementing the tags without increasing latency or adding new code to the server – in a manner befitting of search engine crawling.</p>
 	<p>At this point we had a number of other applications for Workers, with arising need for non-developers to be able to modify and deploy new Worker code. This has since become an idea of Worker code generation, via Web UI or command line.</p>
 	<p>Having established a number of different use cases for Workers, we identified 3 processing phases:</p>
 	<ul>
-		<li>Incoming request modification – changing origin request URL or adding authorization headers.</li>
-		<li>Outgoing response modification - adding security headers, Hreflang header injection, logging.</li>
-		<li>Response body modification – injecting/changing content e.g. canonicals, robots and JSON-LD</li>
+		<li>
+			<p>Incoming request modification – changing origin request URL or adding authorization headers.</p>
+		</li>
+		<li>
+			<p>Outgoing response modification - adding security headers, Hreflang header injection, logging.</p>
+		</li>
+		<li>
+			<p>Response body modification – injecting/changing content e.g. canonicals, robots and JSON-LD</p>
+		</li>
 	</ul>
 	<p>We wanted to generate lean Worker code, which would enable us to keep each functionality contained and independent of another, and went with an idea of filter chains, which can be used to compose fairly complex request processing.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/request-filter-chain.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>A request chain depicting the path of a request as it is transformed while moving from client to origin server and back again.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XNqSuHWNflu8gXityDn7E/fe95a32adc255d8fa2200fb3e14c0694/request-filter-chain.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+
 	</figure>
+	<p>A request chain depicting the path of a request as it is transformed while moving from client to origin server and back again.</p>
 	<p>A key accessibility issue we identified from a non-technical perspective was the goal trying of making this serverless technology accessible to all in SEO, because with understanding comes buy-in from stakeholders. In order to do this, we had to make Workers:</p>
 	<ul>
-		<li>Accessible to users who don’t understand how to write JavaScript / Performant JavaScript</li>
-		<li>Process of implementation can complement existing deployment processes</li>
-		<li>Process of implementation is secure (internally and externally)</li>
-		<li>Process of implementation is compliant with data and privacy policies</li>
-		<li>Implementations must be able to be verified through existing processes and practices (BAU)</li>
+		<li>
+			<p>Accessible to users who don’t understand how to write JavaScript / Performant JavaScript</p>
+		</li>
+		<li>
+			<p>Process of implementation can complement existing deployment processes</p>
+		</li>
+		<li>
+			<p>Process of implementation is secure (internally and externally)</p>
+		</li>
+		<li>
+			<p>Process of implementation is compliant with data and privacy policies</p>
+		</li>
+		<li>
+			<p>Implementations must be able to be verified through existing processes and practices (BAU)</p>
+		</li>
 	</ul>
 	<p>Before we dive into actual filters, here are partial TypeScript interfaces to illustrate filter APIs:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">interface FilterExecutor&lt;Type, Context, ReturnType extends Type | void&gt; {
-    apply(filterChain: { next: (c: Context, obj: Type) =&gt; ReturnType | Promise&lt;ReturnType&gt; }&gt;, context: Context, obj: Type): ReturnType | Promise&lt;ReturnType&gt;;
+	<pre class="language-javascript"><code class="language-javascript">interface FilterExecutor<type, context,="" returntype="" extends="" type="" |="" void=""> {
+    apply(filterChain: { next: (c: Context, obj: Type) =&gt; ReturnType | Promise<returntype> }&gt;, context: Context, obj: Type): ReturnType | Promise<returntype>;
 }
 interface RequestFilterContext {
     // Request URL
     url: URL;
     // Short-circuit request filters 
-    respondWith(response: Response | Promise&lt;Response&gt;): void;
+    respondWith(response: Response | Promise<response>): void;
     // Short-circuit all filters
-    respondWithAndStop(response: Response | Promise&lt;Response&gt;): void;
+    respondWithAndStop(response: Response | Promise<response>): void;
     // Add additonal response filter
     appendResponseFilter(filter: ResponseFilter): void;
     // Add body filter
     appendBodyFilter(filter: BodyFilter): void;
 }
-interface RequestFilter extends FilterExecutor&lt;Request, RequestFilterContext, Request&gt; { };
+interface RequestFilter extends FilterExecutor<request, requestfiltercontext,="" request=""> { };
 interface ResponseFilterContext {
     readonly startMs: number;
     readonly endMs: number;
     readonly url: URL;
-    waitUntil(promise: Promise&lt;any&gt;): void;
-    respondWith(response: Response | Promise&lt;Response&gt;): void;
-    respondWithAndStop(response: Response | Promise&lt;Response&gt;): void;
+    waitUntil(promise: Promise<any>): void;
+    respondWith(response: Response | Promise<response>): void;
+    respondWithAndStop(response: Response | Promise<response>): void;
     appendBodyFilter(filter: BodyFilter): void;
 }
-interface ResponseFilter extends FilterExecutor&lt;Response, ResponseFilterContext, Response&gt; { };
+interface ResponseFilter extends FilterExecutor<response, responsefiltercontext,="" response=""> { };
 interface BodyFilterContext {
-    waitUntil(promise: Promise&lt;any&gt;): void;
+    waitUntil(promise: Promise<any>): void;
 }
 interface ChunkChain {
     public next: ChunkChain | null;
     public chunk: Uint8Array;
 }
-interface BodyFilter extends MutableFilterExecutor&lt;ChunkChain | null, BodyFilterContext, ChunkChain | null&gt; { };
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="request-filter-simple-redirects">Request filter — Simple Redirects<br></h2>
-	<p>Firstly, we would like to point out that this is very niche use case, if your platform supports redirects natively, you should absolutely do it through your platform, but there are a number of limited, legacy or bespoke platforms, where redirects are not supported or are limited, or are charged for (per line) by your hosting or platform. For example, Github Pages only support redirects via HTML refresh meta tag. <br><br>The most basic redirect filter, would look like this:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">class RedirectRequestFilter {
+interface BodyFilter extends MutableFilterExecutor<chunkchain |="" null,="" bodyfiltercontext,="" chunkchain="" null=""> { };</chunkchain></any></response,></response></response></any></request,></response></response></returntype></returntype></type,></code></pre>
+	<p>Request filter — Simple Redirects</p>
+	<hr>
+	<p>Firstly, we would like to point out that this is very niche use case, if your platform supports redirects natively, you should absolutely do it through your platform, but there are a number of limited, legacy or bespoke platforms, where redirects are not supported or are limited, or are charged for (per line) by your hosting or platform. For example, Github Pages only support redirects via HTML refresh meta tag.</p>
+	<p>The most basic redirect filter, would look like this:</p>
+	<pre class="language-javascript"><code class="language-javascript">class RedirectRequestFilter {
     constructor(redirects) {
         this.redirects = redirects;
     }
@@ -90,30 +107,38 @@ interface BodyFilter extends MutableFilterExecutor&lt;ChunkChain | null, BodyFil
 const { requestFilterHandle } = self.slothRequire('./worker.js');
 requestFilterHandle.append(new RedirectRequestFilter({
     "https://sloth.cloud/old-homepage": "https://sloth.cloud/"
-}));
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+}));</code></pre>
 	<p>You can see it live in Cloudflare’s playground <a href="https://cloudflareworkers.com/#f59a71db84c026a5d2bee72170113f26:https://sloth.cloud/old-homepage">here</a>.</p>
 	<p>The one implemented in Sloth supports basic path matching, hostname matching and query string matching, as well as wildcards.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/sloth-redirect-manager.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>The Sloth dashboard for visually creating and modifying redirects.&nbsp;</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bOFFqK57Xr5IsGHGsxCyd/1009d5d6ff7b139611a3e9abd922b677/sloth-redirect-manager.png" alt="" class="kg-image" width="939" height="343" loading="lazy">
+
 	</figure>
+	<p>The Sloth dashboard for visually creating and modifying redirects.&nbsp;</p>
 	<p>It is all well and good when you do not have a lot of redirects to manage, but what do you do when size of redirects starts to take up significant memory available to Worker? This is where we faced another scaling issue, in taking a small handful of possible redirects, to the tens of thousands.</p>
-	<h2 id="managing-redirects-with-workers-kv-and-cuckoo-filters">Managing Redirects with Workers KV and Cuckoo Filters</h2>
-	<p>Well, here is one way you can solve it by using <a href="https://developers.cloudflare.com/workers/kv">Workers KV</a> - a key-value data store.<br><br>Instead of hard coding redirects inside Worker code, we will store them inside Workers KV. Naive approach would be to check redirect for each URL. But Workers KV, maximum performance is not reached until a key is being read on the order of once-per-second in any given data center.<br><br>Alternative could be using a probabilistic data structure, like <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing">Cuckoo Filters</a>, stored in KV, possibly split between a couple of keys as KV is limited to 64KB. Such filter flow would be:</p>
+	<h2>Managing Redirects with Workers KV and Cuckoo Filters</h2>
+	<p>Well, here is one way you can solve it by using <a href="https://developers.cloudflare.com/workers/kv">Workers KV</a> - a key-value data store.</p>
+	<p>Instead of hard coding redirects inside Worker code, we will store them inside Workers KV. Naive approach would be to check redirect for each URL. But Workers KV, maximum performance is not reached until a key is being read on the order of once-per-second in any given data center.</p>
+	<p>Alternative could be using a probabilistic data structure, like <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing">Cuckoo Filters</a>, stored in KV, possibly split between a couple of keys as KV is limited to 64KB. Such filter flow would be:</p>
 	<ol>
-		<li>Retrieve frequently read filter key.</li>
-		<li>Check whether full url (or only pathname) is in the filter.</li>
-		<li>Get redirect from Worker KV using URL as a key. </li>
+		<li>
+			<p>Retrieve frequently read filter key.</p>
+		</li>
+		<li>
+			<p>Check whether full url (or only pathname) is in the filter.</p>
+		</li>
+		<li>
+			<p>Get redirect from Worker KV using URL as a key.</p>
+		</li>
 	</ol>
 	<p>In our tests, we managed to pack 20 thousand redirects into Cuckoo Filter taking up 128KB, split between 2 keys, verified against 100 thousand active URLs with a false-positive rate of 0.5-1%.</p>
-	<h2 id="body-filter-hreflang-injection">Body filter - Hreflang Injection</h2>
-	<p>Hreflang meta tags need to be placed inside HTML <em>&lt;head&gt;</em> element, so before actually injecting them, we need to find either start or end of the head HTML tag, which in itself is a streaming search problem. </p>
-	<p>The caveat here is that naive method decoding UTF-8 into JavaScript string, performing search, re-encoding back into UTF-8 is fairly slow. Instead, we attempted pure JavaScript search on bytes strings (<em>Uint8Array</em>), which straight away showed promising results. </p>
+	<h2>Body filter - Hreflang Injection</h2>
+	<p>Hreflang meta tags need to be placed inside HTML element, so before actually injecting them, we need to find either start or end of the head HTML tag, which in itself is a streaming search problem.</p>
+	<p>The caveat here is that naive method decoding UTF-8 into JavaScript string, performing search, re-encoding back into UTF-8 is fairly slow. Instead, we attempted pure JavaScript search on bytes strings (<i>Uint8Array</i>), which straight away showed promising results.</p>
 	<p>For our use case, we picked the <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore%E2%80%93Horspool_algorithm">Boyer-Moore-Horspool</a> algorithm as a base of our streaming search, as it is simple, has great average case performance and only requires a pre-processing search pattern, with manual prefix/suffix matching at chunk boundaries.</p>
 	<p>Here is comparison of methods we have tested on Node v10.15.0:</p>
-	<pre><code>| Chunk Size | Method                               | Ops/s               |
+	<pre class="language-bash"><code class="language-bash">| Chunk Size | Method                               | Ops/s               |
 |------------|--------------------------------------|---------------------|
 |            |                                      |                     |
 | 1024 bytes | Boyer-Moore-Horspool over byte array | 163,086 ops/sec     |
@@ -127,9 +152,9 @@ requestFilterHandle.append(new RedirectRequestFilter({
 | 4096 bytes | Boyer-Moore-Horspool over byte array | 78,729 ops/sec      |
 | 4096 bytes | **precomputed BMH over byte array**  | **117,010 ops/sec** |
 | 4096 bytes | decode utf8 into strings &amp; indexOf() | 25,835 ops/sec      |</code></pre>
-	<h2 id="can-we-do-better">Can we do better?</h2>
+	<h2>Can we do better?</h2>
 	<p>Having achieved decent performance improvement with pure JavaScript search over naive method, we wanted to see whether we can do better. As Workers support <a href="https://developers.cloudflare.com/workers/api/resource-bindings/webassembly-modules">WASM</a>, we used rust to build a simple WASM module, which exposed standard rust string search.</p>
-	<pre><code>| Chunk Size | Method                              | Ops/s               |
+	<pre class="language-bash"><code class="language-bash">| Chunk Size | Method                              | Ops/s               |
 |------------|-------------------------------------|---------------------|
 |            |                                     |                     |
 | 1024 bytes | Rust WASM                           | 348,197 ops/sec     |
@@ -140,10 +165,10 @@ requestFilterHandle.append(new RedirectRequestFilter({
 |            |                                     |                     |
 | 4096 bytes | **Rust WASM**                       | **129,144 ops/sec** |
 | 4096 bytes | precomputed BMH over byte array     | 117,010 ops/sec     |</code></pre>
-	<p>As rust version did not use precomputed search pattern, it should be significantly faster, if we precomputed and cached search patterns. </p>
+	<p>As rust version did not use precomputed search pattern, it should be significantly faster, if we precomputed and cached search patterns.</p>
 	<p>In our case, we were searching for a single pattern and stopping once it was found, where pure JavaScript version was fast enough, but if you need multi-pattern, advanced search, WASM is the way to go.</p>
 	<p>We could not record statistically significant change in latency, between basic worker and one with a body filter deployed to production, due to unstable network latency, with a mean response latency of 150ms and 10% 90th percentile standard deviation.</p>
-	<h2 id="what-s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>We believe that Workers and serverless applications can open up new opportunities to overcome a lot of issues faced by the SEO community when working with legacy tech stacks, platform limitations, and heavily congested development queues.</p>
 	<p>We are also investigating whether Workers can allow us to make a more efficient Tag Manager, which bundles and pushes only matching Tags with their code, to minimize number of external requests caused by trackers and thus reduce load on user browser.</p>
 	<p>You can experiment with Cloudflare Workers yourself through <a href="https://sloth.cloud">Sloth</a>, even if you don’t know how to write JavaScript.</p>

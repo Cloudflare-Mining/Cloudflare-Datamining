@@ -1,152 +1,322 @@
-<div class="mb2 gray5">22 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/lt-lt/one-year-of-war-in-ukraine/-lt-lt">Lietuviešu</a>, <a href="https://blog.cloudflare.com/lv-lv/one-year-of-war-in-ukraine-lv-lv">Latviešu</a>, and <a href="https://blog.cloudflare.com/et-ee/one-year-of-war-in-ukraine-et-ee">Eesti</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image13-2.png" class="kg-image" alt="One year of war in Ukraine: Internet trends, attacks, and resilience." loading="lazy"></figure><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">21 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/lv-lv/one-year-of-war-in-ukraine"></a>, <a href="https://blog.cloudflare.com/lt-lt/one-year-of-war-in-ukraine"></a> and <a href="https://blog.cloudflare.com/et-ee/one-year-of-war-in-ukraine"></a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UCjd3HXts42QBVpS9nceR/235c53605e3ec5dfb7023700452d56ac/image13-2.png" alt="One year of war in Ukraine: Internet trends, attacks, and resilience." class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
 	<p>The Internet has become a significant factor in geopolitical conflicts, such as the ongoing war in Ukraine. Tomorrow marks one year since the Russian invasion of that country. This post reports on Internet insights and discusses how Ukraine's Internet remained resilient in spite of dozens of disruptions in three different stages of the conflict.</p>
-	<!--kg-card-end: markdown-->
 	<p>Key takeaways:</p>
 	<ul>
-		<li>Internet traffic shifts in Ukraine are clearly visible from east to west as Ukrainians fled the war, with country-wide traffic dropping as much as 33% after February 24, 2022.</li>
-		<li>Air strikes on energy infrastructure starting in October led to widespread Internet disruptions that continue in 2023.</li>
-		<li>Application-layer cyber attacks in Ukraine rose 1,300% in early March 2022 compared to pre-war levels.</li>
-		<li>Government administration, financial services, and the media saw the most attacks targeting Ukraine.</li>
-		<li>Traffic from a number of networks in Kherson was re-routed through Russia between June and October, subjecting traffic to Russia’s restrictions and limitations, including content filtering. Even after traffic ceased to reroute through Russia, those Ukrainian networks saw major outages through at least the end of the year, while two networks remain offline.</li>
-		<li>Through efforts on the ground to repair damaged fiber optics and restore electrical power, Ukraine’s networks have remained resilient from both an infrastructure and routing perspective. This is partly due to Ukraine’s widespread connectivity to networks outside the country and large number of IXPs.</li>
-		<li>Starlink traffic in Ukraine grew over 500% between mid-March and mid-May, and continued to grow from mid-May through mid-November, increasing nearly 300% over that six-month period. For the full period from mid-March (two weeks after it was made available) to mid-December, it was over a 1,600% increase, dropping a bit after that.</li>
+		<li>
+			<p>Internet traffic shifts in Ukraine are clearly visible from east to west as Ukrainians fled the war, with country-wide traffic dropping as much as 33% after February 24, 2022.</p>
+		</li>
+		<li>
+			<p>Air strikes on energy infrastructure starting in October led to widespread Internet disruptions that continue in 2023.</p>
+		</li>
+		<li>
+			<p>Application-layer cyber attacks in Ukraine rose 1,300% in early March 2022 compared to pre-war levels.</p>
+		</li>
+		<li>
+			<p>Government administration, financial services, and the media saw the most attacks targeting Ukraine.</p>
+		</li>
+		<li>
+			<p>Traffic from a number of networks in Kherson was re-routed through Russia between June and October, subjecting traffic to Russia’s restrictions and limitations, including content filtering. Even after traffic ceased to reroute through Russia, those Ukrainian networks saw major outages through at least the end of the year, while two networks remain offline.</p>
+		</li>
+		<li>
+			<p>Through efforts on the ground to repair damaged fiber optics and restore electrical power, Ukraine’s networks have remained resilient from both an infrastructure and routing perspective. This is partly due to Ukraine’s widespread connectivity to networks outside the country and large number of IXPs.</p>
+		</li>
+		<li>
+			<p>Starlink traffic in Ukraine grew over 500% between mid-March and mid-May, and continued to grow from mid-May through mid-November, increasing nearly 300% over that six-month period. For the full period from mid-March (two weeks after it was made available) to mid-December, it was over a 1,600% increase, dropping a bit after that.</p>
+		</li>
 	</ul>
-	<h2 id="internet-changes-and-disruptions">Internet changes and disruptions</h2>
-	<h3 id="an-internet-shock-after-february-24-2022">An Internet shock after February 24, 2022</h3>
+	<h2>Internet changes and disruptions</h2>
+	<h3>An Internet shock after February 24, 2022</h3>
 	<p>In Ukraine, human Internet traffic dropped as much as 33% in the weeks following February 24. The following chart shows Cloudflare’s perspective on daily traffic (by number of requests).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ABCdu3AGNa1CG3ZmZChic/1044b797db2a18207395acf684783a2a/pasted-image-0.png" alt="" class="kg-image" width="1600" height="647" loading="lazy">
+
+	</figure>
 	<p>Internet traffic levels recovered over the next few months, including strong growth seen in September and October, when many Ukrainian refugees <a href="https://en.wikipedia.org/wiki/2022%E2%80%932023_Ukrainian_refugee_crisis">returned</a> to the country. That said, there were also country-wide outages, mostly after October, that are discussed below.</p>
-	<p>14% of total traffic <em>from</em> Ukraine (including traffic from Crimea and other occupied regions) was mitigated as potential attacks, while 10% of total traffic <em>to</em> Ukraine was mitigated as potential attacks in the last 12 months.</p>
+	<p>14% of total traffic <i>from</i> Ukraine (including traffic from Crimea and other occupied regions) was mitigated as potential attacks, while 10% of total traffic <i>to</i> Ukraine was mitigated as potential attacks in the last 12 months.</p>
 	<p>Before February 24, 2022, typical weekday Internet traffic in Ukraine initially peaked after lunch, around 15:00 local time, dropped between 17:00 and 18:00 (consistent with people leaving work), and reached the biggest peak of the day at around 21:00 (possibly after dinner for mobile and streaming use).</p>
 	<p>After the invasion started, we observed less variation during the day in a clear change in the usual pattern given the reported disruption and “<a href="https://www.france24.com/en/europe/20220226-exodus-from-ukraine-a-night-spent-with-civilians-fleeing-war-russia-s-invasion">exodus</a>” from the country​. During the first few days after the invasion began, peak traffic occurred around 19:00, at a time when nights for many in cities such as Kyiv were spent in improvised underground <a href="https://www.newyorker.com/magazine/2022/03/14/inside-kyivs-metro-a-citywide-bomb-shelter">bunkers</a>. By late March, the 21:00 peak had returned, but the early evening drop in traffic did not return until May.</p>
-	<p>When looking at Ukraine Internet requests by type of traffic<strong> </strong>in the chart below (from February 10, 2022, through February 2023), we observe that while traffic from both mobile and desktop devices dropped after the invasion, request volume from mobile devices has remained higher over the past year. Pre-war, mobile devices accounted for around 53% of traffic, and grew to around 60% during the first weeks of the invasion. By late April, it had returned to typical pre-war levels, falling back to around 54% of traffic. There’s also a noticeable December drop/outage that we’ll go over below.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="millions-moving-from-east-to-west-in-ukraine">Millions moving from east to west in Ukraine</h3>
+	<p>When looking at Ukraine Internet requests by type of traffic in the chart below (from February 10, 2022, through February 2023), we observe that while traffic from both mobile and desktop devices dropped after the invasion, request volume from mobile devices has remained higher over the past year. Pre-war, mobile devices accounted for around 53% of traffic, and grew to around 60% during the first weeks of the invasion. By late April, it had returned to typical pre-war levels, falling back to around 54% of traffic. There’s also a noticeable December drop/outage that we’ll go over below.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jLPx0Ah8ulYoq3oDMICNV/ba1ee4e6df6e258397dd4fbc58e6420d/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="718" loading="lazy">
+
+	</figure>
+	<h3>Millions moving from east to west in Ukraine</h3>
 	<p>The invasion brought attacks and failing infrastructure across a number of cities, but the target in the early days wasn’t the country’s energy infrastructure, as it was in October 2022. In the first weeks of the war, <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">Internet traffic changes</a> were largely driven by people evacuating conflict zones with their families. Over <a href="https://en.wikipedia.org/wiki/2022%E2%80%932023_Ukrainian_refugee_crisis">eight million</a> Ukrainians left the country in the first three months, and many more relocated internally to safer cities, although many returned during the summer of 2022. The Internet played a critical role during this refugee crisis, supporting communications and access to real-time information that could save lives, as well as apps providing services, among others.</p>
 	<p>There was also an increase in traffic in the western part of Ukraine, in areas such as Lviv (further away from the conflict areas), and a decrease in the east, in areas like Kharkiv, where the Russian military was arriving and attacks were a constant threat. The figure below provides a view of how Internet traffic across Ukraine changed in the week after the war began (a darker pink means a drop in traffic — as much as 60% — while a darker green indicates an increase in Internet traffic — as much as 50%).</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Source: <a href="https://datawrapper.dwcdn.net/dsUSJ/2">https://datawrapper.dwcdn.net/dsUSJ/2/</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37b5qs3jPnFkxC1zypMlj0/c29ab004a9d5fee78b80fcf20927befc/Untitled-1.png" alt="" class="kg-image" width="1600" height="1282" loading="lazy">
+
 	</figure>
+	<p>Source: <a href="https://datawrapper.dwcdn.net/dsUSJ/2">https://datawrapper.dwcdn.net/dsUSJ/2/</a></p>
 	<p>The biggest drops in Internet traffic observed in Ukraine in the first days of the war were in Kharkiv Oblast in the east, and Chernihiv in the north, both with a 60% decrease, followed by Kyiv Oblast, with traffic 40% lower on March 2, 2022, as compared with February 23.</p>
 	<p>In western Ukraine, traffic surged. The regions with the highest observed traffic growth included Rivne (50%), Volyn (30%), Lviv (28%), Chernivtsi (25%), and Zakarpattia (15%).</p>
 	<p>At the city level, analysis of Internet traffic in Ukraine gives us some insight into usage of the Internet and availability of Internet access in those first weeks, with noticeable outages in places where direct conflict was going on or that was already occupied by Russian soldiers.</p>
-	<p>North of Kyiv, the city of <strong>Chernihiv</strong> had a significant drop in traffic the first week of the war and residual traffic by mid-March, with traffic picking up only after the Russians retreated in early April.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/che-2023-02-16-at-14.04.32.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In the capital city of <strong>Kyiv</strong>, there is a clear disruption in Internet traffic right after the war started, possibly caused by people leaving, attacks and use of underground shelters.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--1-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Near Kyiv, we observed a clear outage in early March in <strong>Bucha</strong>. After April 1, when the Russians withdrew, Internet traffic started to come back a few weeks later.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In <strong>Irpin</strong>, just outside Kyiv, close to the Hostomel airport and Bucha, a similar outage pattern to Bucha was observed. Traffic only began to come back more clearly in late May.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--2-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In the east, in the city of <strong>Kharkiv</strong>, traffic dropped 50% on March 3, with a similar scenario seen not far away in Sumy. The disruption was related to people leaving and also by power outages affecting some networks.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>North of Kyiv, the city of <b>Chernihiv</b> had a significant drop in traffic the first week of the war and residual traffic by mid-March, with traffic picking up only after the Russians retreated in early April.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6p1togn43sDxBn4oDo5SXq/86570e6332ef89c530e0db14c0c49204/che-2023-02-16-at-14.04.32.png" alt="" class="kg-image" width="1932" height="800" loading="lazy">
+
+	</figure>
+	<p>In the capital city of <b>Kyiv</b>, there is a clear disruption in Internet traffic right after the war started, possibly caused by people leaving, attacks and use of underground shelters.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lyu7CCFeLrinelkuTicOY/0de623f155d50324bb378aec2b8e5765/Untitled--1-.png" alt="" class="kg-image" width="1600" height="757" loading="lazy">
+
+	</figure>
+	<p>Near Kyiv, we observed a clear outage in early March in <b>Bucha</b>. After April 1, when the Russians withdrew, Internet traffic started to come back a few weeks later.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Svc57sobrQ5ttZeJ9CNZI/431f4a62fb8758d618fb3ecf50491008/Untitled.jpg" alt="" class="kg-image" width="1600" height="783" loading="lazy">
+
+	</figure>
+	<p>In <b>Irpin</b>, just outside Kyiv, close to the Hostomel airport and Bucha, a similar outage pattern to Bucha was observed. Traffic only began to come back more clearly in late May.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2eLEO72oSRcx81QBtrIAi4/cc344e2e640549557c9027a87ce3a041/Untitled--2-.png" alt="" class="kg-image" width="1600" height="763" loading="lazy">
+
+	</figure>
+	<p>In the east, in the city of <b>Kharkiv</b>, traffic dropped 50% on March 3, with a similar scenario seen not far away in Sumy. The disruption was related to people leaving and also by power outages affecting some networks.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Fvemnakzm0LocyqwcYxvh/87d5ee422ba199f399432419dfcd1852/Untitled--3-.png" alt="" class="kg-image" width="1600" height="684" loading="lazy">
+
+	</figure>
 	<p>Other cities in the south of Ukraine, like Berdyansk, had outages. This graph shows Enerhodar, the small city where Europe’s largest nuclear plant, <a href="https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant">Zaporizhzhya NPP</a>, is located, with residual traffic compared to before.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--4-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gVxSD0CpZL5YjQvvrevqD/2de3c4efb74de4a01db6caaff9f0264e/Untitled--4-.png" alt="" class="kg-image" width="1600" height="664" loading="lazy">
+
+	</figure>
 	<p>In the cities located in the south of Ukraine, there were clear Internet disruptions. The Russians laid <a href="https://en.wikipedia.org/wiki/Siege_of_Mariupol">siege</a> to Mariupol on February 24. Energy infrastructure strikes and shutdowns had an impact on local networks and Internet traffic, which fell to minimal levels by March 1. Estimates indicate that <a href="https://web.archive.org/web/20220418203018/https://www.cnbc.com/2022/04/17/russia-ukraine-live-updates.html">95%</a> of the buildings in the city were destroyed, and by mid-May, the city was fully under Russian control. While there was some increase in traffic by the end of April, it reached only ~22% of what it was before the war’s start.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--5-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1azuAR2NyRI6vKtS1PSmhV/2291b9c96256011ea42fbbaf11d05ffc/Untitled--5-.png" alt="" class="kg-image" width="1600" height="602" loading="lazy">
+
+	</figure>
 	<p>When looking at Ukrainian Internet Service Providers (ISPs) or the autonomous systems (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASNs</a>) they use, we observed more localized disruptions in certain regions during the first months of the war, but recovery was almost always swift. <a href="https://radar.cloudflare.com/as6849">AS6849 (Ukrtel)</a> experienced problems with very short-term outages in mid-March. <a href="https://radar.cloudflare.com/as13188">AS13188 (Triolan)</a>, which services Kyiv, Chernihiv, and Kharkiv, was another provider experiencing problems (they <a href="https://t.me/triolan_me/630">reported</a> a cyberattack on March 9), as could be observed in the next chart:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--6-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4M7YLMNNgXMj6skpszjDoM/b70690e583d43505ac6703ac926fdff9/Untitled--6-.png" alt="" class="kg-image" width="1600" height="624" loading="lazy">
+
+	</figure>
 	<p>We did not observe a clear national outage in Ukraine’s main ISP, <a href="https://radar.cloudflare.com/as15895">AS15895 (Kyivstar)</a> until the October-November attacks on energy infrastructure, which also shows some early resilience of Ukrainian networks.</p>
-	<h3 id="ukraine-s-counteroffensive-and-its-internet-impact">Ukraine’s counteroffensive and its Internet impact</h3>
+	<h3>Ukraine’s counteroffensive and its Internet impact</h3>
 	<p>As Russian troops retreated from the northern front in Ukraine, they shifted their efforts to gain ground in the east (<a href="https://en.wikipedia.org/wiki/Battle_of_Donbas_(2022%E2%80%93present)">Battle of Donbas</a>) and south (occupation of the <a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast">Kherson region</a>) after late April. This resulted in Internet disruptions and traffic <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine">shifts</a>, which are discussed in more detail in a section below. However, Internet traffic in the Kherson region was intermittent and included outages after May, given the battle for Internet control. News reports in <a href="https://www.bloomberg.com/news/articles/2022-06-21/ukrainian-telecom-workers-damage-own-equipment-to-thwart-russia">June</a> revealed that ISP workers damaged their own equipment to thwart Russia’s efforts to control the Ukrainian Internet.</p>
 	<p>Before the September Ukrainian counteroffensive, another example of the war’s impact on a city’s Internet traffic occurred during the summer, when Russian troops seized Lysychansk in eastern Ukraine in early <a href="https://www.cnn.com/2022/07/03/europe/russia-ukraine-luhansk-lysychansk-intl/index.html">July</a> after what became known as the <a href="https://en.wikipedia.org/wiki/Battle_of_Lysychansk">Battle of Lysychansk</a>. Internet traffic in Lysychansk clearly decreased after the war started. That slide continues during the intense <a href="https://en.wikipedia.org/wiki/Battle_of_Lysychansk">fighting</a> that took place after April, which led to most of the city’s population <a href="https://news.yahoo.com/12-000-lysychansk-residents-remain-194356536.html?fr=sycsrp_catchall">leaving</a>. By May, traffic was almost residual (with a mid-May few days short term increase).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Lysychansk.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/v4LYcK9VisjSWM6uCIxAE/f357aeef1b61fb8b33cb36c2b03365a0/Lysychansk.png" alt="" class="kg-image" width="2000" height="921" loading="lazy">
+
+	</figure>
 	<p>In early September the Ukrainian <a href="https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive">counteroffensive</a> took off in the east, although the media initially <a href="https://www.euronews.com/2022/08/29/ukraine-launches-counter-offensive-to-retake-kherson-say-authorities">reported</a> a south offensive in <a href="https://en.wikipedia.org/wiki/2022_Kherson_counteroffensive">Kherson Oblast</a> that was a “<a href="https://mwi.usma.edu/the-kherson-ruse-ukraine-and-the-art-of-military-deception">deception</a>” move. The Kherson offensive only came to fruition in late October and early November. Ukraine was able to retake in September over 500 settlements and 12,000 square kilometers of territory in the Kharkiv region. At that time, there were Internet outages in several of those settlements.</p>
 	<p>In response to the successful Ukrainian counteroffensive, Russian airstrikes caused power outages and Internet disruptions in the region. That was the case in <a href="https://twitter.com/CloudflareRadar/status/1569055256889147394">Kharkiv</a> on September 11, 12, and 13. The figure below shows a 12-hour near-complete outage on September 11, followed by two other periods of drop in traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="when-nuclear-inspectors-arrive-so-do-internet-outages">When nuclear inspectors arrive, so do Internet outages</h3>
-	<p>In the Zaporizhzhia region, there were also outages. On September 1, 2022, the day the International Atomic Energy Agency (IAEA) inspectors <a href="https://www.cnn.com/2022/09/01/europe/ukraine-zaporizhzhia-iaea-inspectors-intl/index.html">arrived</a> at the Russian-controlled Zaporizhzhia nuclear power plant in Enerhodar, there were Internet outages in two local ASNs that service the area: <a href="https://radar.cloudflare.com/as199560">AS199560 (Engrup)</a> and <a href="https://radar.cloudflare.com/as197002">AS197002<strong> </strong>(OOO Tenor<strong>)</strong></a>. Those outages lasted until September 10, as shown in the charts below.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZIh3YgijKEymynJlGr65L/b6807dc83c20446b008c307354a520a6/pasted-image-0.jpg" alt="" class="kg-image" width="1030" height="360" loading="lazy">
+
+	</figure>
+	<h3>When nuclear inspectors arrive, so do Internet outages</h3>
+	<p>In the Zaporizhzhia region, there were also outages. On September 1, 2022, the day the International Atomic Energy Agency (IAEA) inspectors <a href="https://www.cnn.com/2022/09/01/europe/ukraine-zaporizhzhia-iaea-inspectors-intl/index.html">arrived</a> at the Russian-controlled Zaporizhzhia nuclear power plant in Enerhodar, there were Internet outages in two local ASNs that service the area: <a href="https://radar.cloudflare.com/as199560">AS199560 (Engrup)</a> and <a href="https://radar.cloudflare.com/as197002">AS197002 (OOO Tenor**)**</a>. Those outages lasted until September 10, as shown in the charts below.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/a2PY7w4O0wV09zksdZq0H/7da7b27473c18a53e7ac39f5e2bb833a/image5-4.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GNWaVX6QswPk6FtvInWH1/e3e72073a7384f24d1245379218a5140/image2-10.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+
+	</figure>
 	<p>More broadly, the city of Enerhodar, where the nuclear power plant is located, experienced a four-day outage after September 6.</p>
-	<h3 id="mid-september-traffic-drop-in-crimea">Mid-September traffic drop in Crimea</h3>
+	<h3>Mid-September traffic drop in Crimea</h3>
 	<p>In mid-September, following Ukraine’s counteroffensive, there were questions as to when Crimea might be targeted by Ukrainian forces, with <a href="https://twitter.com/KyivIndependent/status/1569659989417152515?s=20">news reports</a> indicating that there was an evacuation of the Russian population from Crimea around September 13. We saw a clear drop in traffic on that Tuesday, compared with the previous day, as seen in the map of Crimea below (red is decrease in traffic, green is increase).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--8-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="october-brings-energy-infrastructure-attacks-and-country-wide-disruptions">October brings energy infrastructure attacks and country-wide disruptions</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gx1e3kabp7xVFBubow5UH/f57ad97627884a349c64398067e9e3da/Untitled--8-.png" alt="" class="kg-image" width="1600" height="895" loading="lazy">
+
+	</figure>
+	<h3>October brings energy infrastructure attacks and country-wide disruptions</h3>
 	<p>As we have seen, the Russian air strikes targeting critical energy infrastructure began in September as a retaliation to Ukraine's counteroffensive. The following month, the <a href="https://en.wikipedia.org/wiki/Crimean_Bridge_explosion">Crimean Bridge explosion</a> on Saturday, October 8 (when a truck-borne bomb destroyed part of the bridge) led to more air strikes that affected networks and Internet traffic across Ukraine.</p>
 	<p>On Monday, October 10, Ukraine woke up to air strikes on energy infrastructure and experienced severe electricity and Internet outages. At 07:35 UTC, traffic in the country was 35% below its usual level compared with the previous week and only fully recovered more than 24 hours later. The impact was particularly significant in regions like Kharkiv, where traffic was down by around 80%, and Lviv, where it dropped by about 60%. The graph below shows how new air strikes in Lviv Oblast the following day affected Internet traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78CSYl5UmR3bKYRQSBt6sT/e7a0ed955f7e410dff929c508c27edc5/pasted-image-0--3-.png" alt="" class="kg-image" width="1600" height="597" loading="lazy">
+
+	</figure>
 	<p>There were clear disruptions in Internet connectivity in several regions on October 17, but also on <a href="https://twitter.com/CloudflareRadar/status/1583102832810790920">October 20</a>, when the destruction of several power stations in Kyiv resulted in a 25% drop in Internet traffic from Kyiv City as compared to the two previous weeks. It lasted 12 hours, and was followed the next day by a shorter partial outage as seen in the graph below.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--4-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4msXK7eZ34Sq8NEGd3nrpx/4092b5e5141d733f645b3b556be622ee/pasted-image-0--4-.png" alt="" class="kg-image" width="1600" height="409" loading="lazy">
+
+	</figure>
 	<p>In late October, <a href="https://www.politico.eu/article/russia-strike-several-energy-power-station-ukraine-cause-outage-zelenskyy">according</a> to Ukrainian officials, 30% of Ukraine’s power stations were destroyed. Self-imposed power limitations because of this destruction resulted in drops in Internet traffic observed in places like Kyiv and the surrounding region.</p>
 	<p>The start of a multi-week Internet disruption in Kherson Oblast can be seen in the graph below, showing ~70% lower traffic than in previous weeks. The disruption began on Saturday, October 22, when Ukrainians were gaining ground in the Kherson region.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7d7wtQDtI7LpxPE4JOIEHF/abf7c58ccc663e2f3ab29b2e435fff63/pasted-image-0--5-.png" alt="" class="kg-image" width="1600" height="455" loading="lazy">
+
+	</figure>
 	<p>Traffic began to return after Ukrainian forces <a href="https://en.wikipedia.org/wiki/2022_Kherson_counteroffensive">took Kherson city</a> on November 11, 2022. The graph below shows a week-over-week comparison for Kherson Oblast for the weeks of November 7, November 28, and December 19 for better visualization in the chart while showing the evolution through a seven-week period.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="ongoing-strikes-and-internet-disruptions">Ongoing strikes and Internet disruptions</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LArjk5J5TffAU8hp6ZlLs/d650cd59605d1f369b756255dc93697d/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="455" loading="lazy">
+
+	</figure>
+	<h3>Ongoing strikes and Internet disruptions</h3>
 	<p>Throughout the rest of the year and into 2023, Ukraine has continued to face intermittent Internet disruptions. On <a href="https://twitter.com/CloudflareRadar/status/1595419978282733573">November 23</a>, 2022, the country experienced widespread power outages after Russian strikes, causing a nearly 50% decrease in Internet traffic in Ukraine. This disruption lasted for almost a day and a half, further emphasizing the ongoing impact of the conflict on Ukraine's infrastructure.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--5--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ks6M4QSM7KTPunVEeQ2q0/f4317eeb1bf518b8719dd0768524558a/pasted-image-0--5--1.png" alt="" class="kg-image" width="1600" height="605" loading="lazy">
+
+	</figure>
 	<p>Although there was a recovery after that late November outage, only a few days later traffic seemed closer to normal levels. Below is a chart of the week-over-week evolution of Internet traffic in Ukraine at both a national and local level during that time:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--1-.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jN9YdDDfG3baEorEPwSTv/ab80c02aac8744b347a2a52953f6a309/pasted-image-0--1-.jpg" alt="" class="kg-image" width="1600" height="660" loading="lazy">
+
+	</figure>
 	<p>In Kyiv Oblast:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--7-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10OgvUg5wAa34rKguZnHRO/e7a34659440cd025b260f14f945ca2b8/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="440" loading="lazy">
+
+	</figure>
 	<p>In the Odessa region:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--8-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KqzCQ9DmqpeUBsujAC8OA/59670e8a32e39a007e1541c6d6f391ab/pasted-image-0--8-.png" alt="" class="kg-image" width="1600" height="447" loading="lazy">
+
+	</figure>
 	<p>And Kharkiv (where a <a href="https://twitter.com/CloudflareRadar/status/1603750187058561024">December 16</a> outage is also clear — in the green line):</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh6.googleusercontent.com/M-2axCRAh672FEYZnaQYK7QR5xcNVGYUKmQBa3jSQaC6p08PlhumoaevZzzrcH3z3hhvirRz5jfPUSSFaqov2FT9eOOK3cEsdyluH_9l9OvfFsCriHKo8p6YfuwfBMAjFKZ_WZcd4EFnXiHKVUQ1KqM" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/o51CEp2CODgryKNnp1GxX/ec1cccceb8ad04666cbaa58b0aeecfec/M-2axCRAh672FEYZnaQYK7QR5xcNVGYUKmQBa3jSQaC6p08PlhumoaevZzzrcH3z3hhvirRz5jfPUSSFaqov2FT9eOOK3cEsdyluH_9l9OvfFsCriHKo8p6Yfuw.jpeg" alt="" class="kg-image" width="1600" height="445" loading="lazy">
+
+	</figure>
 	<p>On <a href="https://twitter.com/CloudflareRadar/status/1603750187058561024">December 16</a>, there was another country-level Internet disruption caused by air strikes targeting energy infrastructure. Traffic at a national level dropped as much as 13% compared with the previous week, but Ukrainian networks were even more affected. <a href="https://radar.cloudflare.com/as13188">AS13188 (Triolan)</a> had a 70% drop in traffic, and <a href="https://radar.cloudflare.com/as15895">AS15895 (Kyivstar)</a> a 40% drop, both shown in the figures below.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--7--1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--8--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/U6UWXE81VqYFBi1km2vDM/42275668054b3c24d5bc2ddfeeae25ed/pasted-image-0--7--1.png" alt="" class="kg-image" width="1600" height="600" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DBFwEmyxfvmtoTR4cOyQ5/be736fc142763442ed120e75b40cb298/pasted-image-0--8--1.png" alt="" class="kg-image" width="1600" height="598" loading="lazy">
+
+	</figure>
 	<p>In January 2023, air strikes caused additional Internet disruptions. One such recent event was in <a href="https://twitter.com/CloudflareRadar/status/1618602213965692930">Odessa</a>, where traffic dropped as low as 54% compared with the previous week during an 18-hour disruption.</p>
-	<h2 id="a-cyber-war-with-global-impact">A cyber war with global impact</h2>
-	<h3 id="-shields-up-on-cyber-attacks">“Shields Up” on cyber attacks</h3>
+	<h2>A cyber war with global impact</h2>
+	<h3>“Shields Up” on cyber attacks</h3>
 	<p>The <a href="https://www.usatoday.com/story/tech/2022/02/28/russia-cyber-attack-ukraine-invasion-protect-yourself/6976490001">US government</a> and the <a href="https://edition.cnn.com/2022/02/24/tech/russia-ukraine-us-sanctions-cyberattacks/index.html">FBI</a> issued warnings in March to all citizens, businesses, and organizations in the country, as well as allies and partners, to be aware of the need to “enhance cybersecurity.” The US Cybersecurity and Infrastructure Security Agency (CISA) launched the <a href="https://www.cisa.gov/shields-up">Shields Up</a> initiative, noting that “Russia’s invasion of Ukraine could impact organizations both within and beyond the region.” The <a href="https://blog.cloudflare.com/shields-up-free-cloudflare-services-to-improve-your-cyber-readiness/#:~:text=National%20Cyber%20Security%20Center">UK</a> and <a href="https://www.meti.go.jp/press/2021/02/20220221003/20220221003.html">Japan</a>, among others, also issued warnings.</p>
 	<p>Below, we discuss Web Application Firewall (WAF) mitigations and DDoS attacks. A <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf">WAF</a> helps protect web applications by filtering and monitoring <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP</a> traffic between a web application and the Internet. A WAF is a protocol <a href="https://www.cloudflare.com/learning/ddos/what-is-layer-7">layer 7</a> defense (in the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi">OSI model</a>), and is not designed to defend against all types of attacks. <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service (DDoS)</a> attacks are cyber attacks that aim to take down Internet properties and make them unavailable for users.</p>
-	<h3 id="cyber-attacks-rose-1-300-in-ukraine-by-early-march">Cyber attacks rose 1,300% in Ukraine by early March</h3>
+	<h3>Cyber attacks rose 1,300% in Ukraine by early March</h3>
 	<p>The charts below are based on normalized data, and show threats mitigated by our <a href="https://www.cloudflare.com/waf">WAF</a>.</p>
 	<p>Mitigated application-layer threats blocked by our WAF skyrocketed after the war started on February 24. Mitigated requests were 105% higher on Monday, February 28 than in the previous (pre-war) Monday, and peaked on March 8, reaching 1,300% higher than pre-war levels.</p>
 	<p>Between February 2022 and February 2023, an average of 10% of all traffic to Ukraine was mitigations of potential attacks.</p>
 	<p>The graph below shows the daily percentage of application layer traffic to Ukraine that Cloudflare mitigated as potential attacks. In early March, 30% of all traffic was mitigated. This fell in April, and remained low for several months, but it picked up in early September around the time of the Ukrainian counteroffensive in east and south Ukraine. The peak was reached on October 29 when DDoS attack traffic constituted 39% of total traffic to Cloudflare’s Ukrainian customer websites.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--9-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69JPlC7rPSRlJAgzyg7Z40/9dde251771f49815a1fb9a6fb17116f6/pasted-image-0--9-.png" alt="" class="kg-image" width="1600" height="734" loading="lazy">
+
+	</figure>
 	<p>This trend is more evident when looking at all traffic to sites on the “.ua” top-level domain (from Cloudflare’s perspective). The chart below shows that DDoS attack traffic accounted for over 80% of all traffic by early March 2022. The first clear spikes occurred on February 16 and 19, with around 25% of traffic mitigated. There was no moment of rest after the war started, except towards the end of November and December, but the attacks resumed just before Christmas. An average of 13% of all traffic to “.ua”, between February 2022 and February 2023 was mitigations of potential attacks. The following graph provides a comprehensive view of DDoS application layer attacks on “.ua” sites:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--10-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ThkcumHJByzthF3agS1Wu/d113a8eeffb39e67f6ece3bdf8999549/pasted-image-0--10-.png" alt="" class="kg-image" width="1600" height="620" loading="lazy">
+
+	</figure>
 	<p>Moving on to types of mitigations of product groups that were used (related to “.ua” sites), as seen in the next chart, around 57% were done by the ruleset which automatically detects and mitigates HTTP DDoS attacks (DDoS Mitigation), 31% were being mitigated by firewall rules put in place (WAF), and 10% were blocking requests based on our IP threat reputation database (IP Reputation).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--11-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3tGh3tD8phTB1LWdWK2G1G/473f167755ef3893a403721f23612264/pasted-image-0--11-.png" alt="" class="kg-image" width="1600" height="600" loading="lazy">
+
+	</figure>
 	<p>It’s important to note that <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf">WAF</a> rules in the graph above are also associated with custom firewall rules created by customers to provide a more tailored protection. “DDoS Mitigation” (application layer DDoS protection) and “Access Rules” (rate limiting) are specifically used for DDoS protection.</p>
 	<p>In contrast to the first graph shown in this section, which looked at mitigated attack traffic targeting Ukraine, we can also look at mitigated attack traffic originating in Ukraine. The graph below also shows that the share of mitigated traffic from Ukraine also increased considerably after the invasion started.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--12-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="top-attacked-industries-from-government-to-news-media">Top attacked industries: from government to news media</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2el6N8mlMwLmLhWXo2sVPe/6cbca78f017ce546ab4ac7a63c219069/pasted-image-0--12-.png" alt="" class="kg-image" width="1600" height="660" loading="lazy">
+
+	</figure>
+	<h3>Top attacked industries: from government to news media</h3>
 	<p>The industries sectors that had a higher share of <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> mitigations were government administration, financial services, and the media, representing almost half of all WAF mitigations targeting Ukraine during 2022.</p>
 	<p>Looking at DDoS attacks, there was a surge in attacks on media and publishing companies during 2022 in Ukraine. Entities targeting Ukrainian companies appeared to be focused on information-related websites. The top five most attacked industries in the Ukraine in the first two quarters of 2022 were all in broadcasting, Internet, online media, and publishing, accounting for almost 80% of all DDoS attacks targeting Ukraine.</p>
 	<p>In a more focused look at the type of websites Cloudflare has protected throughout the war, the next two graphs provide a view of mitigated application layer attacks by the type of “.ua” sites we helped to protect. In the first days of the war, mitigation spikes were observed at a news service, a TV channel, a government website, and a bank.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--9-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/knjDKJhZz4ROjGD7UuNg0/490515e27d1c71fd0ecef646298f950b/Untitled--9-.png" alt="" class="kg-image" width="1600" height="739" loading="lazy">
+
+	</figure>
 	<p>In July, spikes in mitigations we observed across other types of “.ua” websites, including food delivery, e-commerce, auto parts, news, and government.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--10-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LOBeDItrjkmhbyz4y4xxk/1a3bef5c79e1ca5f87a3df206e09b350/Untitled--10-.png" alt="" class="kg-image" width="1600" height="692" loading="lazy">
+
+	</figure>
 	<p>More recently, in February 2023, the spikes in mitigations were somewhat similar to what we saw one year ago, including electronics, e-commerce, IT, and education websites.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="12-6-of-network-layer-traffic-was-ddos-activity-in-q1-2022">12.6% of network-layer traffic was DDoS activity in Q1 2022</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nYWrM52S26I2Zr4Vt0VRi/e6989c71fed6d1a60c471dd417900bef/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="804" loading="lazy">
+
+	</figure>
+	<h3>12.6% of network-layer traffic was DDoS activity in Q1 2022</h3>
 	<p>Network-layer (layer 3 and 4) traffic is harder to attribute to a specific domain or target because IP addresses are shared across different customers. Looking at network-level DDoS traffic hitting our Kyiv data center, we saw peaks of DDoS traffic higher than before the war in early March, but they were much higher in June and August.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--11-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HpbYWRhmqbUud7AJI0Rby/05224a59b5103c62157936eb4e174f13/Untitled--11-.png" alt="" class="kg-image" width="1600" height="702" loading="lazy">
+
+	</figure>
 	<p>In our Q1 2022 <a href="https://radar.cloudflare.com/reports/ddos-2022-q1">DDoS report</a>, we also noted that <a href="https://radar.cloudflare.com/reports/ddos-2022-q1">12.6% of Ukraine’s traffic was DDoS activity</a>, compared with 1% in the previous quarter, a 1,160% quarter-over-quarter increase.</p>
 	<p>Several of our quarterly <a href="https://blog.cloudflare.com/tag/ddos">DDoS reports</a> from 2022 include attack trends related to the war in Ukraine, with quarter over quarter <a href="https://radar.cloudflare.com/reports?q=DDoS">interactive</a> comparisons.</p>
-	<h2 id="network-re-routing-in-kherson">Network re-routing in Kherson</h2>
+	<h2>Network re-routing in Kherson</h2>
 	<p>On February 24, 2022, Russian forces <a href="https://en.wikipedia.org/wiki/Southern_Ukraine_campaign">invaded</a> Ukraine's Kherson Oblast region. The city of Kherson was captured on March 2, as the first major city and only regional capital to be captured by Russian forces during the initial invasion. The <a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast">Russian occupation of Kherson Oblast</a> continued until Ukrainian forces <a href="https://en.wikipedia.org/wiki/Liberation_of_Kherson">resumed control</a> on November 11, after launching a counteroffensive at the end of August.</p>
-	<p>On May 4, 2022, we published <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine"><em>Tracking shifts in Internet connectivity in Kherson, Ukraine</em></a>, a blog post that explored a re-routing event that impacted <a href="https://radar.cloudflare.com/as47598">AS47598 (Khersontelecom)</a>, a telecommunications provider in Kherson Oblast. Below, we summarize this event, and explore similar activity across other providers in Kherson that has taken place since then.</p>
+	<p>On May 4, 2022, we published <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine"><i>Tracking shifts in Internet connectivity in Kherson, Ukraine</i></a>, a blog post that explored a re-routing event that impacted <a href="https://radar.cloudflare.com/as47598">AS47598 (Khersontelecom)</a>, a telecommunications provider in Kherson Oblast. Below, we summarize this event, and explore similar activity across other providers in Kherson that has taken place since then.</p>
 	<p>On May 1, 2022, we observed a shift in routing for the <a href="https://bgpview.io/prefix/91.206.110.0/23">IPv4 prefix</a> announced by Ukrainian network <a href="https://radar.cloudflare.com/as47598">AS47598 (Khersontelecom)</a>. During April, it reached the Internet through several other Ukrainian network providers, including <a href="https://radar.cloudflare.com/as12883">AS12883 (Vega Telecom)</a> and <a href="https://radar.cloudflare.com/as3326">AS3326 (Datagroup)</a>. However, after the shift, its routing path now showed a Russian network, <a href="https://radar.cloudflare.com/as201776">AS201776 (Miranda-Media)</a>, as the sole upstream provider. With traffic from KhersonTelecom passing through a Russian network, it was subject to the restrictions and limitations imposed on any traffic transiting Russian networks, including content filtering.</p>
 	<p>The flow of traffic from Khersontelecom before and after May 1, with rerouting through Russian network provider Miranda-Media, is illustrated in the chart below. This particular re-routing event was short-lived, as a routing update for AS47598 on May 4 saw it return to reaching the Internet through other Ukrainian providers.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--14-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OIpRjlvTbltFtWxLX0cIt/768f3295d7fb21575348f4501a7fb5e0/pasted-image-0--14-.png" alt="" class="kg-image" width="1600" height="645" loading="lazy">
+
+	</figure>
 	<p>As a basis for our analysis, we started with a list of 15 Autonomous System Numbers (ASNs) belonging to networks in Kherson Oblast. Using that list, we analyzed routing information collected by route-views2 over the past year, from February 1, 2022, to February 15, 2023. route-views2 is a BGP route collector run by the <a href="https://www.routeviews.org/routeviews">University of Oregon Route Views Project</a>. Note that with respect to the discussions of ASNs in this and the following section, we are treating them equally, and have not specifically factored estimated user population into these analyses.</p>
 	<p>The figure below illustrates the result of this analysis, showing that re-routing of Kherson network providers (listed along the y-axis) through Russian upstream networks was fairly widespread, and for some networks, has continued into 2023. During the analysis time frame, there were three primary Russian networks that appeared as upstream providers: <a href="https://radar.cloudflare.com/as201776">AS201776 (Miranda-Media)</a>, <a href="https://radar.cloudflare.com/as52091">AS52091 (Level-MSK Ltd.)</a>, and <a href="https://radar.cloudflare.com/as8492">AS8492 (OBIT Ltd.)</a>.</p>
 	<p>Within the graph, black bars indicate periods when the ASN effectively disappeared from the Internet; white segments indicate the ASN was dependent on other Ukraine networks as immediate upstreams; and red indicates the presence of Russian networks in the set of upstream providers. The intensity of the red shading corresponds to the percentage of announced prefixes for which a Russian network provider is present in the routing path as observed from networks outside Ukraine. Bright red shading, equivalent to “1” in the legend, indicates the presence of a Russian provider in all routing paths for announced prefixes.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--12-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k9m2YU1xgahnheA5nXR9V/a41cdca692785c07be1995bd5d414d05/Untitled--12-.png" alt="" class="kg-image" width="1600" height="667" loading="lazy">
+
+	</figure>
 	<p>In the blog post linked above, we referenced an outage that began on April 30. This is clearly visible in the figure as a black bar that runs for several days across all the listed ASNs. In this instance, AS47598 (KhersonTelecom) recovered a day later, but was sending traffic through AS201776 (Miranda-Media), a Russian provider, as discussed above.</p>
 	<p>Another Ukrainian network, <a href="https://radar.cloudflare.com/as49168">AS49168 (Brok-X)</a>, recovered from the outage on May 2, and was also sending traffic through Miranda-Media. By May 4, most of the other Kherson networks recovered from the outage, and both AS47598 and AS49168 returned to using Ukrainian networks as immediate upstream providers. Routing remained “normal” until May 30. Then, a more widespread shift to routing traffic through Russian providers began, although it appears that this shift was preceded by a brief outage for a few networks. For the most part, this re-routing lasted through the summer and into October. Some networks saw a brief outage on October 17, but most stopped routing directly through Russia by October 22.</p>
 	<p>However, this shift away from Russia was followed by periods of extended outages. KhersonTelecom suffered such an outage, and has remained offline since October, except for the first week of November when all of its traffic routed through Russia. Many other networks rejoined the Internet in early December, relying mostly on other Ukrainian providers for Internet connectivity. However, since early December, <a href="https://radar.cloudflare.com/as204485">AS204485 (PE Berislav Cable Television)</a>, <a href="https://radar.cloudflare.com/as56359">AS56359 (CHP Melnikov Roman Sergeevich)</a>, and <a href="https://radar.cloudflare.com/as49465">AS49465 (Teleradiocompany RubinTelecom Ltd.)</a> have continued to use Miranda-Media as an upstream provider, in addition to experiencing several brief outages. In addition, over the last several months, <a href="https://radar.cloudflare.com/as25082">AS25082 (Viner Telecom)</a> has used both a Ukrainian network and Miranda-Media as upstream providers.</p>
-	<h2 id="internet-resilience-in-ukraine">Internet resilience in Ukraine</h2>
+	<h2>Internet resilience in Ukraine</h2>
 	<p>In the context of the Internet, “<a href="https://csrc.nist.gov/glossary/term/network_resilience">resilience</a>” refers to the ability of a network to operate continuously in a manner that is highly resistant to disruption. This includes the ability of a network to: (1) operate in a degraded mode if damaged, (2) rapidly recover if failure does occur, and (3) scale to meet rapid or unpredictable demands. Throughout the Russia-Ukraine conflict, media coverage (<a href="https://www.vice.com/en/article/qjbapv/diy-volunteers-are-repairing-ukraines-destroyed-internet-infrastructure">VICE</a>, <a href="https://www.bloomberg.com/news/features/2022-11-17/ukraine-stays-online-during-war-thanks-to-repair-crews#xj4y7vzkg">Bloomberg</a>, <a href="https://www.washingtonpost.com/technology/2022/03/29/ukraine-internet-faq">Washington Post</a>) has highlighted the work done in Ukraine to repair damaged fiber-optic cables and mobile network infrastructure to keep the country online. This work has been critically important to maintaining the resilience of Ukrainian Internet infrastructure.</p>
 	<p>According to <a href="https://www.peeringdb.com/advanced_search?country__in=UA&amp;reftag=ix">PeeringDB</a>, as of February 2023, there are 25 Internet Exchange Points (IXPs) in Ukraine and 50 interconnection facilities. (An IXP may span multiple physical facilities.) Within this set of IXPs, Autonomous Systems (ASes) belonging to international providers are currently present in over half of them. The number of facilities, IXPs, and international ASes present in Ukraine points to a resilient interconnection fabric, with multiple locations for both domestic and international providers to exchange traffic.</p>
 	<p>To better understand these international interconnections, we first analyze the connectivity of ASes in Ukraine, and we classify the links to domestic networks (links where both ASes are registered in Ukraine) and international networks (links between ASes in Ukraine and ASes outside Ukraine). To determine which ASes are domestic in Ukraine, we can use information from the extended delegation reports from the <a href="https://ftp.ripe.net/pub/stats/ripencc/2023">Réseaux IP Européens Network Coordination Centre (RIPE NCC)</a>, the <a href="https://www.nro.net/about/rirs">Regional Internet Registry</a> that covers Ukraine. We also parsed collected BGP data to extract the AS-level links between Ukrainian ASes and ASes registered in a different country, and we consider these the international connectivity of the domestic ASes.</p>
-	<p>A <a href="https://www.economist.com/science-and-technology/2022/03/26/the-degrading-treatment-of-ukraines-internet">March 2022 article in The Economist</a> noted that <em>“For one thing, Ukraine boasts an unusually large number of internet-service providers—by one reckoning the country has the world’s fourth-least-concentrated Internet market. This means the network has few choke points, so is hard to disable.”</em> As of the writing of this blog post, there are 2,190 ASes registered in Ukraine (UA ASes), and 1,574 of those ASes appear in the BGP routing table as active. These counts support the article’s characterization, and below we discuss several additional observations that reinforce Ukraine’s Internet resilience.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--13-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>A <a href="https://www.economist.com/science-and-technology/2022/03/26/the-degrading-treatment-of-ukraines-internet">March 2022 article in The Economist</a> noted that <i>“For one thing, Ukraine boasts an unusually large number of internet-service providers—by one reckoning the country has the world’s fourth-least-concentrated Internet market. This means the network has few choke points, so is hard to disable.”</i> As of the writing of this blog post, there are 2,190 ASes registered in Ukraine (UA ASes), and 1,574 of those ASes appear in the BGP routing table as active. These counts support the article’s characterization, and below we discuss several additional observations that reinforce Ukraine’s Internet resilience.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qohQNRwMLbdA96Gb9uhXv/b18cb98ba6392fc67b3b04db17983191/Untitled--13-.png" alt="" class="kg-image" width="593" height="307" loading="lazy">
+
+	</figure>
 	<p>The figure above is a cumulative distribution function showing the fraction of domestic Ukrainian ASes that have direct connections to international networks. In February 2023, approximately 50% had more than one (100) international link, while approximately 10% had more than 10, and approximately 2% had 100 or more. Although these numbers have dropped slightly over the last year, they underscore the lack of centralized choke points in the Ukrainian Internet.</p>
 	<p>For the networks with international connectivity, we can also look at the distribution of “next-hop” countries – countries with which those international networks are associated. (Note that some networks may have a global footprint, and for these, the associated country is the one recorded in their autonomous system registration.) Comparing the choropleth maps below illustrates how this set of countries, and their fraction of international paths, have changed between February 2022 and February 2023. The data underlying these maps shows that international connectivity from Ukraine is distributed across 18 countries — unsurprisingly, mostly in Europe.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/UA-2022-fraction-of-next-hop-ases-by-country.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68XPvDkbwMtRjqfJ7dpeJd/881fedb48513dfe9a5b74beae815964c/UA-2022-fraction-of-next-hop-ases-by-country.png" alt="" class="kg-image" width="1600" height="848" loading="lazy">
+
+	</figure>
 	<p>In February 2022, these countries/locations accounted for 77% of Ukraine’s next-hop international paths. The top four all had 7.8% each. However, in February 2023, the top 10 next-hop countries/locations dropped slightly to 76% of international paths. While just a slight change from the previous year, the set of countries/locations and many of their respective fractions saw considerable change.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -287,13 +457,25 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Russia’s share grew by 50% year to 11.6%, giving it the biggest share of next-hop ASes. Germany also grew to account for more than 11% of paths.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/UA-2023-fraction-of-next-hop-ases-by-country.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="satellite-internet-connectivity">Satellite Internet connectivity</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39NvtNpj2gb0VliIbWRyRn/f15a41714ad66ac58b1d773c464592fa/UA-2023-fraction-of-next-hop-ases-by-country.png" alt="" class="kg-image" width="1600" height="848" loading="lazy">
+
+	</figure>
+	<h2>Satellite Internet connectivity</h2>
 	<p>Cloudflare observed a rapid growth in Starlink’s ASN (<a href="https://radar.cloudflare.com/traffic/as14593?range=28d">AS14593</a>) traffic to Ukraine during 2022 and into 2023. Between mid-March and mid-May, Starlink’s traffic in the country grew over 530%, and continued to grow from mid-May up until mid-November, increasing nearly 300% over that six-month period — from mid-March to mid-December the growth percentage was over 1600%. After that, traffic stabilized and even dropped a bit during January 2023.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--15-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3vp8xcUtGUjTDl0GS4VuhI/6912e7010e5d64803dea355fdab1e7d7/pasted-image-0--15-.png" alt="" class="kg-image" width="1600" height="657" loading="lazy">
+
+	</figure>
 	<p>Our data shows that between November and December 2022, Starlink represented between 0.22% and 0.3% of traffic from Ukraine, but that number is now lower than 0.2%.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--16-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="conclusion">Conclusion</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1T5N07PtSUf2QsK3ABhp1d/7fc49a8caf275038bfb150696835ba1c/pasted-image-0--16-.png" alt="" class="kg-image" width="1600" height="612" loading="lazy">
+
+	</figure>
+	<h2>Conclusion</h2>
 	<p>One year in, the war in Ukraine has taken an unimaginable humanitarian toll. The Internet in Ukraine has also become a battleground, suffering attacks, re-routing, and disruptions. But it has proven to be exceptionally resilient, recovering time and time again from each setback.</p>
 	<p>We know that the need for a secure and reliable Internet there is more critical than ever. At Cloudflare, we’re committed to continue providing tools that <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protect Internet services from cyber attack</a>, improve security for those operating in the region, and share information about Internet connectivity and routing inside Ukraine.</p>
 </div>

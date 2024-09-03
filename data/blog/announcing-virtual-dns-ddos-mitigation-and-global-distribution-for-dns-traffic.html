@@ -1,34 +1,48 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/03/VirtualDns.png" alt="" loading="lazy"></p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Nx5JdRUNuD6n10egJCyMT/330b053c1337eeb69fb63e96d5bf6c33/VirtualDns.png" alt="" class="kg-image" width="2000" height="740" loading="lazy">
+
+	</figure>
 	<p>It’s 9am and CloudFlare has already mitigated three billion malicious requests for our customers today. Six out of every one hundred requests we see are malicious, and increasingly, more of those bad requests are targeting DNS nameservers.</p>
 	<p>DNS is the phone book of the Internet and fundamental to the usability of the web, but is also a serious weak link in Internet security. One of the ways CloudFlare is trying to make DNS more secure is by implementing <a href="https://blog.cloudflare.com/dnssec-an-introduction">DNSSEC</a>, cryptographic authentication for DNS responses. Another way is <a href="https://www.cloudflare.com/virtual-dns">Virtual DNS</a>, the authoritative DNS proxy service we are introducing today.</p>
 	<p>Virtual DNS provides CloudFlare’s DDoS mitigation and global distribution to DNS nameservers. DNS operators need performant, resilient infrastructure, and we are offering ours, the <a href="http://dnsperf.com">fastest</a> of any providers, to any organization’s DNS servers.</p>
 	<p>Many organizations have legacy DNS infrastructure that is difficult to change. The hosting industry is a key example of this. A host may have given thousands of clients a set of nameservers but now realize that they don't have the performance or defensibility that their clients need.</p>
 	<p>Virtual DNS means that the host can get the benefits of a global, modern DNS infrastructure without having to contact every customer and get them to update their name servers.</p>
 	<p>With legacy infrastructure blocking a host from deploying modern cloud-based security services, DNS providers, even if they are securing their customers' websites, may have a massive single point of failure: their own nameservers.</p>
-	<h3 id="aquickbriefonddos">A Quick Brief on DDoS</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/03/Diner-Dash-apk-mod.jpg" alt="" loading="lazy"><br>
-		<em>Source: <a href="http://androidcorps.com">Android Corps</a></em>
-	</p>
+	<h3>A Quick Brief on DDoS</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HxpoxFqnYJrkoSvaqgfvn/77d947b8787bce445753d15303c8f242/Diner-Dash-apk-mod.jpg" alt="" class="kg-image" width="600" height="292" loading="lazy">
+
+	</figure>
+	<p><i>Source: </i><a href="http://androidcorps.com"><i>Android Corps</i></a></p>
 	<p>DDoS stands for <a href="https://blog.cloudflare.com/ddos-prevention-protecting-the-origin">Distributed Denial of Service</a>, and works much like the 2004 video game Diner Dash. In each case, the server is expected to handle more and more requests (for food, in the case of Diner Dash, and for data, in the case of web servers) until the server is so overwhelmed that it invariably fails to answer at all.</p>
 	<p>A successful DDoS attack on a provider's nameservers will take every website with DNS records on those nameservers offline. For larger providers, this could be hundreds of thousands or millions of websites depending on those nameservers.</p>
-	<h3 id="introducingvirtualdns">Introducing Virtual DNS</h3>
+	<h3>Introducing Virtual DNS</h3>
 	<p>Today, CloudFlare introduces Virtual DNS, leveraging its global DNS and proxying infrastructure to provide performance and security for any nameserver by acting as authoritative for its domains.</p>
 	<p>With Virtual DNS, DNS queries for the provider's records are responded to by the nearest CloudFlare edge location. If the proper DNS response is available in CloudFlare's cache, CloudFlare will return the response to the visitor, saving bandwidth at the origin nameserver.</p>
 	<p>If the DNS response is not available in cache, CloudFlare will query one of the provider's nameservers in the background to fetch the DNS response and send it back to the visitor. Simultaneously, that response will be temporarily cached on CloudFlare to be automatically returned when the next query for that record comes along. The caching of records at the edge makes CloudFlare one of the <a href="http://dnsperf.com">fastest DNS providers</a> worldwide.</p>
 	<p>To protect against attacks, malicious requests to the nameservers will be identified and blocked at CloudFlare’s edge before those requests ever make it to the provider's DNS infrastructure.</p>
 	<p>A simple representation of this communication can be seen below:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/03/virtual-dns-03-2.png" alt="" loading="lazy"></p>
-	<h3 id="additionalsecurity">Additional Security</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WozKJkxrcKaEjvATEhlJw/33bea8c6ac913b2b954a4f5ed8bd5457/virtual-dns-03-2.png" alt="" class="kg-image" width="1719" height="519" loading="lazy">
+
+	</figure>
+	<h3>Additional Security</h3>
 	<p>Virtual DNS provides two additional layers of security through the CloudFlare proxy:</p>
 	<p>First, if for some reason the origin nameserver is knocked offline and the DNS records are cached on CloudFlare, CloudFlare will keep the records in the cache and will continue to answer for them, providing DNS answers even when the origin nameserver is unreachable, and automatically checking in the background for the origin's return or failing over to designated origins.</p>
 	<p>Secondly, Virtual DNS masks the true origin IP addresses of the provider's nameservers behind CloudFlare’s IP addresses. Visitors and/or attackers only see CloudFlare’s IP addresses when requesting answers, keeping customer nameservers safe from being targeted by attackers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/03/virtual-dns-only.png" alt="" loading="lazy"></p>
-	<h3 id="virtualdnsrollout">Virtual DNS Rollout</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wYqf3gCLp3ySKp2YPgMfY/c81cb0310c0ca086e618d483621b309c/virtual-dns-only.png" alt="" class="kg-image" width="1968" height="1687" loading="lazy">
+
+	</figure>
+	<h3>Virtual DNS Rollout</h3>
 	<p>We are currently rolling out Virtual DNS support. Organizations interested in enabling Virtual DNS should <a href="https://www.cloudflare.com/enterprise-service-request">contact our sales team</a>.</p>
 	<p>Over the past year, we’ve been testing the product with hosting providers, <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrars</a> and some enterprises with very positive results.</p>
 	<p>DigitalOcean, for example, put their nameservers behind Virtual DNS in July 2014, and is now supporting 10K requests per second of 100% clean traffic. They <a href="https://www.cloudflare.com/case-studies-digital-ocean">report</a> that they haven’t seen malicious traffic reach their nameservers since.</p>
 	<p>Maintaining custom DNS infrastructure is hard and expensive, and Virtual DNS makes it more accessible. Any enterprise can use CloudFlare Virtual DNS to deliver answers to the edge, with high performance anywhere in the world, saving bandwidth costs by caching answers, and stopping malicious traffic.</p>
-	<!--kg-card-end: markdown-->
 </div>

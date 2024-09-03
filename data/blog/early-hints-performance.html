@@ -1,85 +1,145 @@
 <div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34CtmnpR4eAtUQI1cRG9v8/af01b80f7d9d06b48fbbb17c13daba52/image7-4.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>A few months ago, we wrote a <a href="https://blog.cloudflare.com/early-hints">post</a> focused on a product we were building that could vastly improve page load performance. That product, known as Early Hints, has seen wide adoption since that original post. In early benchmarking experiments with Early Hints, we saw performance improvements that were as high as 30%.</p>
 	<p>Now, with over 100,000 customers using Early Hints on Cloudflare, we are excited to talk about how much Early Hints have improved page loads for our customers in production, how customers can get the most out of Early Hints, and provide an update on the next iteration of Early Hints we’re building.</p>
-	<h3 id="what-are-early-hints-again">What Are Early Hints again?</h3>
+	<h3>What Are Early Hints again?</h3>
 	<p>As a reminder, the browser you’re using right now to read this page needed instructions for what to render and what resources (like images, fonts, and scripts) need to be fetched from somewhere else in order to complete the loading of this (or any given) web page. When you decide you want to see a page, your browser sends a request to a server and the instructions for what to load come from the server’s response. These responses are generally composed of a multitude of <a href="https://developer.chrome.com/docs/devtools/resources/#browse">resources</a> that tell the browser what content to load and how to display it to the user. The servers sending these instructions to your browser often need time to gather up all of the resources in order to compile the whole webpage. This period is known as “server think time.” Traditionally, during the “server think time” the browser would sit waiting until the server has finished gathering all the required resources and is able to return the full response.</p>
-	<p>Early Hints was designed to take advantage of this “server think time” to send instructions to the browser to begin loading readily-available resources <em>while</em> the server finishes compiling the full response. Concretely, the server sends two responses: the first to instruct the browser on what it can begin loading right away, and the second is the full response with the remaining information. By sending these hints to a browser before the full response is prepared, the browser can figure out what it needs to do to load the webpage faster for the end user.</p>
+	<p>Early Hints was designed to take advantage of this “server think time” to send instructions to the browser to begin loading readily-available resources <i>while</i> the server finishes compiling the full response. Concretely, the server sends two responses: the first to instruct the browser on what it can begin loading right away, and the second is the full response with the remaining information. By sending these hints to a browser before the full response is prepared, the browser can figure out what it needs to do to load the webpage faster for the end user.</p>
 	<p>Early Hints uses the <a href="https://datatracker.ietf.org/doc/html/rfc8297">HTTP status code 103</a> as the first response to the client. The “hints” are HTTP headers attached to the 103 response that are likely to appear in the final response, indicating (with the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link">Link</a> header) resources the browser should begin loading while the server prepares the final response. Sending hints on which assets to expect before the entire response is compiled allows the browser to use this “think time” (when it would otherwise have been sitting idle) to fetch needed assets, prepare parts of the displayed page, and otherwise get ready for the full response to be returned.</p>
 	<p>Early Hints on Cloudflare accomplishes performance improvements in three ways:</p>
 	<ul>
-		<li>By sending a response where resources are directed to be <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload">preloaded</a> by the browser. Preloaded resources direct the browser to begin loading the specified resources as they will be needed soon to load the full page. For example, if the browser needs to fetch a font resource from a third party, that fetch can happen before the full response is returned, so the font is already waiting to be used on the page when the full response returns from the server.</li>
-		<li>By using <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preconnect">preconnect</a> to initiate a connection to places where content will be returned from an origin server. For example, if a Shopify storefront needs content from a Shopify origin to finish loading the page, preconnect will warm up the connection which improves the performance for when the origin returns the content.</li>
-		<li>By caching and emitting Early Hints on Cloudflare, we make an efficient use of the full waiting period - not just server think time - which includes transit latency to the origin. Cloudflare sits within<strong> </strong>50 milliseconds of 95% of the Internet-connected population globally. So while a request is routed to an origin and the final response is being compiled, Cloudflare can send an Early Hint from much closer and the browser can begin loading.</li>
+		<li>
+			<p>By sending a response where resources are directed to be <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload">preloaded</a> by the browser. Preloaded resources direct the browser to begin loading the specified resources as they will be needed soon to load the full page. For example, if the browser needs to fetch a font resource from a third party, that fetch can happen before the full response is returned, so the font is already waiting to be used on the page when the full response returns from the server.</p>
+		</li>
+		<li>
+			<p>By using <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preconnect">preconnect</a> to initiate a connection to places where content will be returned from an origin server. For example, if a Shopify storefront needs content from a Shopify origin to finish loading the page, preconnect will warm up the connection which improves the performance for when the origin returns the content.</p>
+		</li>
+		<li>
+			<p>By caching and emitting Early Hints on Cloudflare, we make an efficient use of the full waiting period - not just server think time - which includes transit latency to the origin. Cloudflare sits within 50 milliseconds of 95% of the Internet-connected population globally. So while a request is routed to an origin and the final response is being compiled, Cloudflare can send an Early Hint from much closer and the browser can begin loading.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-26.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5X6KUywKFKIT4njcqG6oDx/af49733c71c38bad7f49fb54e2e5f5a3/image1-26.png" alt="" class="kg-image" width="1652" height="760" loading="lazy">
+
+	</figure>
 	<p>Early Hints is like multitasking across the Internet - at the same time the origin is compiling resources for the final response and making calls to databases or other servers, the browser is already beginning to load assets for the end user.</p>
-	<h3 id="what-s-new-with-early-hints">What’s new with Early Hints?</h3>
+	<h3>What’s new with Early Hints?</h3>
 	<p>While developing Early Hints, we’ve been fortunate to work with Google and Shopify to collect data on the performance impact. Chrome provided web developers with <a href="https://developer.chrome.com/en/docs/web-platform/origin-trials">experimental access</a> to both <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload">preload</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preconnect">preconnect</a> support for Link headers in Early Hints. Shopify worked with us to guide the development by providing test frameworks which were invaluable to getting real performance data.</p>
 	<p>Today is a big day for Early Hints. Google <a href="https://developer.chrome.com/blog/early-hints">announced</a> that Early Hints is available in Chrome version 103 with support for preload and preconnect to start. Previously, Early Hints was available via an <a href="https://developer.chrome.com/en/docs/web-platform/origin-trials">origin trial</a> so that Chrome could measure the full performance benefit (A/B test). Now that the data has been collected and analyzed, and we’ve been able to prove a substantial improvement to page load, we’re excited that Chrome’s full support of Early Hints will mean that many more requests will see the performance benefits.</p>
 	<p>That's not the only big news coming out about Early Hints. Shopify battle-tested Cloudflare’s implementation of Early Hints during Black Friday/Cyber Monday 2021 and is sharing the performance benefits they saw during the busiest shopping time of the year:</p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">Today, HTTP 103 Early Hints ships with Chrome 103! <br><br>Why is this important for <a href="https://twitter.com/hashtag/webperf?src=hash&amp;ref_src=twsrc%5Etfw">#webperf</a>? How did <a href="https://twitter.com/Shopify?ref_src=twsrc%5Etfw">@Shopify</a> help make all merchant sites faster? (LCP over 500ms faster at p50!) ?<br><br>Hint: A little collaboration w/ <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@cloudflare</a> &amp; <a href="https://twitter.com/googlechrome?ref_src=twsrc%5Etfw">@googlechrome</a> <a href="https://t.co/Dz7BD4Jplp">pic.twitter.com/Dz7BD4Jplp</a></p>— Colin Bendell (@colinbendell) <a href="https://twitter.com/colinbendell/status/1539322190541295616?ref_src=twsrc%5Etfw">June 21, 2022</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
-	<p>While talking to the audience at <a href="https://www.cloudflare.com/connect2022">Cloudflare Connect London</a> last week, Colin Bendell, Director, Performance Engineering at Shopify summarized it best: "<em>when a buyer visits a website, if that first page that (they) experience is just 10% faster, on average there is a 7% increase in conversion</em>". The beauty of Early Hints is you can get that sort of speedup easily, and with Early Hints that can be one click away. </p>
+	<blockquote>
+		<p>Today, HTTP 103 Early Hints ships with Chrome 103!</p>
+		<p>Why is this important for <a href="https://twitter.com/hashtag/webperf?src=hash&amp;ref_src=twsrc%5Etfw">#webperf</a>? How did <a href="https://twitter.com/Shopify?ref_src=twsrc%5Etfw">@Shopify</a> help make all merchant sites faster? (LCP over 500ms faster at p50!) ?</p>
+		<p>Hint: A little collaboration w/ <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@cloudflare</a> &amp; <a href="https://twitter.com/googlechrome?ref_src=twsrc%5Etfw">@googlechrome</a> <a href="https://t.co/Dz7BD4Jplp">pic.twitter.com/Dz7BD4Jplp</a></p>
+		<p>— Colin Bendell (@colinbendell) <a href="https://twitter.com/colinbendell/status/1539322190541295616?ref_src=twsrc%5Etfw">June 21, 2022</a></p>
+	</blockquote>
+	<p>While talking to the audience at <a href="https://www.cloudflare.com/connect2022">Cloudflare Connect London</a> last week, Colin Bendell, Director, Performance Engineering at Shopify summarized it best: "<i>when a buyer visits a website, if that first page that (they) experience is just 10% faster, on average there is a 7% increase in conversion</i>". The beauty of Early Hints is you can get that sort of speedup easily, and with Early Hints that can be one click away.</p>
 	<p>You can see a portion of his talk here:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/bf3a41e1c19167bcacb0ee98b3cf1309?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fbf3a41e1c19167bcacb0ee98b3cf1309%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D55s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 	<p>The headline here is that during a time of vast uncertainty due to the global pandemic, a time when everyone was more online than ever before, when people needed their Internet to be reliably fast — Cloudflare, Google, and Shopify all came together to build and test Early Hints so that the whole Internet would be a faster, better, and more efficient place.</p>
-	<p>So how much did Early Hints improve performance of customers’ websites? </p>
-	<h3 id="performance-improvement-with-early-hints">Performance Improvement with Early Hints</h3>
-	<p>In our simple tests back in September, we were able to accelerate the <a href="https://web.dev/lcp/#what-is-lcp">Largest Contentful Paint (LCP) </a>by 20-30%. Granted, this result was on an artificial page with mostly large images where Early Hints impact could be maximized. As for Shopify, we also knew their storefronts were <a href="https://blog.cloudflare.com/early-hints/#how-can-we-speed-up-slow-dynamic-page-loads">particularly good candidates</a> for Early Hints. Each mom-and-pop.shop page depends on many assets served from cdn.shopify.com - speeding up a preconnect to that host should meaningfully accelerate loading those assets.</p>
+	<p>So how much did Early Hints improve performance of customers’ websites?</p>
+	<h3>Performance Improvement with Early Hints</h3>
+	<p>In our simple tests back in September, we were able to accelerate the <a href="https://web.dev/lcp/#what-is-lcp">Largest Contentful Paint (LCP)</a> by 20-30%. Granted, this result was on an artificial page with mostly large images where Early Hints impact could be maximized. As for Shopify, we also knew their storefronts were <a href="https://blog.cloudflare.com/early-hints/#how-can-we-speed-up-slow-dynamic-page-loads">particularly good candidates</a> for Early Hints. Each mom-and-pop.shop page depends on many assets served from cdn.shopify.com - speeding up a preconnect to that host should meaningfully accelerate loading those assets.</p>
 	<p>But what about other zones? We expected most origins already using Link preload and preconnect headers to see at least modest improvements if they turned on Early Hints. We wanted to assess performance impact for other uses of Early Hints beyond Shopify’s.</p>
 	<p>However, <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">getting good data on web page performance impact</a> can be tricky. Not every 103 response from Cloudflare will result in a subsequent request through our network. Some hints tell the browser to preload assets on important third-party origins, for example. And not every Cloudflare zone may have <a href="https://blog.cloudflare.com/introducing-browser-insights">Browser Insights</a> enabled to gather Real User Monitoring data.</p>
 	<p>Ultimately, we decided to do some lab testing with <a href="https://www.webpagetest.org">WebPageTest</a> of a sample of the most popular websites (top 1,000 by request volume) using Early Hints on their URLs with preload and preconnect Link headers. WebPageTest (which we’ve <a href="https://blog.cloudflare.com/workers-and-webpagetest">written about in the past</a>) is an excellent tool to visualize and collect metrics on web page performance across a variety of device and connectivity settings.</p>
-	<h3 id="lab-testing">Lab Testing</h3>
+	<h3>Lab Testing</h3>
 	<p>In our earlier blog post, we were mainly focused on Largest Contentful Paint (LCP), which is the time at which the browser renders the largest visible image or text block, relative to the start of the page load. Here we’ll focus on improvements not only to LCP, but also <a href="https://web.dev/fcp">FCP (First Contentful Paint)</a>, which is the time at which the browser first renders visible content relative to the start of the page load.</p>
 	<p>We compared test runs with Early Hints support off and on (in Chrome), across four different simulated environments: desktop with a cable connection (5Mbps download / 28ms <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a>), mobile with 3G (1.6Mbps / 300ms RTT), mobile with low-latency 3G (1.6Mbps / 150ms RTT) and mobile with 4G (9Mbps / 170ms RTT). After running the tests, we cleaned the data to remove URLs with no visual completeness metrics or less than five DOM elements. (These usually indicated document fragments vs. a page a user might actually navigate to.) This gave us a final sample population of a little more than 750 URLs, each from distinct zones.</p>
 	<p>In the box plots below, we’re comparing FCP and LCP percentiles between the timing data control runs (no Early Hints) and the runs with Early Hints enabled. Our sample population represents a variety of zones, some of which load relatively quickly and some far slower, thus the long whiskers and string of outlier points climbing the y-axis. The y-axis is constrained to the max p99 of the dataset, to ensure 99% of the data are reflected in the graph while still letting us focus on the p25 / p50 / p75 differences.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-26.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1j17ZcUiVpUfYsuGE2INtM/afde526a71d6e99e0513ba4bc7ba5462/image2-26.png" alt="" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7h5iGHo8JCg7a6tYeBxaiV/03a3f96d59b38601814e5f46d6d9f78e/image6-10.png" alt="" class="kg-image" width="800" height="600" loading="lazy">
+
+	</figure>
 	<p>The relative shift in the box plot quantiles suggest we should expect modest benefits for Early Hints for the majority of web pages. By comparing FCP / LCP percentage improvement of the web pages from their respective baselines, we can quantify what those median and p75 improvements would look like:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image8-7.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MNoOPalsR0oildpZutzx6/f0337ed1fc89df906f9b3cfe23820d41/image8-7.png" alt="" class="kg-image" width="708" height="438" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BlauSorivIGRF5fZiu5Oy/0f052e76a20d1e8befad1c56b900abc3/image4-14.png" alt="" class="kg-image" width="708" height="438" loading="lazy">
+
+	</figure>
 	<p>A couple observations:</p>
 	<ul>
-		<li>From the p50 values, we see that for 50% of web pages on desktop, Early Hints improved FCP by more than 9.47% and LCP by more than 6.03%. For the p75, or the upper 25%, FCP improved by more than 20.4% and LCP by more than 15.97%.</li>
-		<li>The sizable improvements in First Contentful Paint suggest many hints are for <a href="https://web.dev/render-blocking-resources">render-blocking assets</a> (such as critical but dynamic stylesheets and scripts that can’t be embedded in the HTML document itself).</li>
-		<li>We see a greater percentage impact on desktop over cable and on mobile over 4G. In theory, the impact of Early Hints is bounded by the load time of the linked asset (i.e. ideally we could preload the entire asset before the browser requires it), so we might expect the FCP / LCP reduction to increase in step with latency. Instead, it appears to be the other way around. There could be many variables at play here - for example, the extra bandwidth the 4G connection provides seems to be more influential than the decreased latency between the two 3G connection settings. Likely that wider bandwidth pipe is especially helpful for URLs we observed that preloaded larger assets such as JS bundles or font files. We also found examples of pages that performed consistently worse on lower-grade connections (see our note on “over-hinting” below).</li>
-		<li>Quite a few sample zones cached their HTML pages on Cloudflare (~15% of the sample). For CDN cache hits, we’d expect Early Hints to be less influential on the final result (because the “server think time” is drastically shorter). Filtering them out from the sample, however, yielded almost identical relative improvement metrics.</li>
+		<li>
+			<p>From the p50 values, we see that for 50% of web pages on desktop, Early Hints improved FCP by more than 9.47% and LCP by more than 6.03%. For the p75, or the upper 25%, FCP improved by more than 20.4% and LCP by more than 15.97%.</p>
+		</li>
+		<li>
+			<p>The sizable improvements in First Contentful Paint suggest many hints are for <a href="https://web.dev/render-blocking-resources">render-blocking assets</a> (such as critical but dynamic stylesheets and scripts that can’t be embedded in the HTML document itself).</p>
+		</li>
+		<li>
+			<p>We see a greater percentage impact on desktop over cable and on mobile over 4G. In theory, the impact of Early Hints is bounded by the load time of the linked asset (i.e. ideally we could preload the entire asset before the browser requires it), so we might expect the FCP / LCP reduction to increase in step with latency. Instead, it appears to be the other way around. There could be many variables at play here - for example, the extra bandwidth the 4G connection provides seems to be more influential than the decreased latency between the two 3G connection settings. Likely that wider bandwidth pipe is especially helpful for URLs we observed that preloaded larger assets such as JS bundles or font files. We also found examples of pages that performed consistently worse on lower-grade connections (see our note on “over-hinting” below).</p>
+		</li>
+		<li>
+			<p>Quite a few sample zones cached their HTML pages on Cloudflare (~15% of the sample). For CDN cache hits, we’d expect Early Hints to be less influential on the final result (because the “server think time” is drastically shorter). Filtering them out from the sample, however, yielded almost identical relative improvement metrics.</p>
+		</li>
 	</ul>
 	<p>The relative distributions between control and Early Hints runs, as well as the per-site baseline improvements, show us Early Hints can be broadly beneficial for use cases beyond Shopify’s. As suggested by the p75+ values, we also still find plenty of case studies showing a more substantial potential impact to LCP (and FCP) like the one we observed from our artificial test case, as indicated from these WebPageTest waterfall diagrams:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SXT10k2QdHrLaBfVW2ygc/0e3e51fa267def2ac909f31a79f8a093/image3-18.png" alt="" class="kg-image" width="943" height="314" loading="lazy">
+
+	</figure>
 	<p>These diagrams show the network and rendering activity on the same web page (which, bucking the trend, had some of its best results over mobile – 3G settings, shown here) for its first ten resources. Compare the WebPageTest waterfall view above (with Early Hints disabled) with the waterfall below (Early Hints enabled). The first green vertical line in each indicates First Contentful Paint. The page configures Link preload headers for a few JS / CSS assets, as well as a handful of key images. When Early Hints is on, those assets (numbered 2 through 9 below) get a significant head start from the preload hints. In this case, FCP and LCP improved by 33%!</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="early-hints-best-practices-and-strategies-for-better-performance">Early Hints Best Practices and Strategies for Better Performance</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zORzzS6Qvh3eX4KEvUW0P/cd82ffd90e0e5fce74cbf16330032e8e/image5-9.png" alt="" class="kg-image" width="945" height="313" loading="lazy">
+
+	</figure>
+	<h3>Early Hints Best Practices and Strategies for Better Performance</h3>
 	<p>The effect of Early Hints can vary widely on a case-by-case basis. We noticed particularly successful zones had one or more of the following:</p>
 	<ul>
-		<li>Preconnect Link headers to important third-party origins (e.g. an origin hosting the pages’ assets, or Google Fonts).</li>
-		<li>Preload Link headers for a handful of critical render-blocking resources.</li>
-		<li>Scripts and stylesheets split into chunks, enumerated in preload Links.</li>
-		<li>A preload Link for the LCP asset, e.g. the featured image on a blog post.</li>
+		<li>
+			<p>Preconnect Link headers to important third-party origins (e.g. an origin hosting the pages’ assets, or Google Fonts).</p>
+		</li>
+		<li>
+			<p>Preload Link headers for a handful of critical render-blocking resources.</p>
+		</li>
+		<li>
+			<p>Scripts and stylesheets split into chunks, enumerated in preload Links.</p>
+		</li>
+		<li>
+			<p>A preload Link for the LCP asset, e.g. the featured image on a blog post.</p>
+		</li>
 	</ul>
-	<p>It’s quite possible these strategies are already familiar to you if you work on web performance! Essentially the <a href="https://web.dev/uses-rel-preload">best</a> <a href="https://web.dev/uses-rel-preconnect">practices</a> that apply to using Link headers or &lt;link&gt; elements in the HTML &lt;head&gt; also apply to Early Hints. That is to say: if your web page is already using preload or preconnect Link headers, using Early Hints should amplify those benefits.</p>
-	<p>A cautionary note here: while it may be safer to aggressively send assets in Early Hints versus <a href="https://web.dev/performance-http2">Server Push</a> (as the hints won’t arbitrarily send browser-cached content the way <a href="https://blog.cloudflare.com/early-hints/#didn-t-server-push-try-to-solve-this-problem">Server Push might</a>), it is still possible to <em>over-</em>hint non-critical assets and saturate network bandwidth in a similar manner to <a href="https://docs.google.com/document/d/1K0NykTXBbbbTlv60t5MyJvXjqKGsCVNYHyLEXIxYMv0/edit">overpushing</a>. For example, one page in our sample listed well over 50 images in its 103 response (but not one of its render-blocking JS scripts). It saw improvements over cable, but was consistently worse off in the higher latency, lower bandwidth mobile connection settings.</p>
+	<p>It’s quite possible these strategies are already familiar to you if you work on web performance! Essentially the <a href="https://web.dev/uses-rel-preload">best</a> <a href="https://web.dev/uses-rel-preconnect">practices</a> that apply to using Link headers or elements in the HTML also apply to Early Hints. That is to say: if your web page is already using preload or preconnect Link headers, using Early Hints should amplify those benefits.</p>
+	<p>A cautionary note here: while it may be safer to aggressively send assets in Early Hints versus <a href="https://web.dev/performance-http2">Server Push</a> (as the hints won’t arbitrarily send browser-cached content the way <a href="https://blog.cloudflare.com/early-hints/#didn-t-server-push-try-to-solve-this-problem">Server Push might</a>), it is still possible to _over-_hint non-critical assets and saturate network bandwidth in a similar manner to <a href="https://docs.google.com/document/d/1K0NykTXBbbbTlv60t5MyJvXjqKGsCVNYHyLEXIxYMv0/edit">overpushing</a>. For example, one page in our sample listed well over 50 images in its 103 response (but not one of its render-blocking JS scripts). It saw improvements over cable, but was consistently worse off in the higher latency, lower bandwidth mobile connection settings.</p>
 	<p>Google has great guidelines for configuring Link headers at your origin in their <a href="https://developer.chrome.com/blog/early-hints">blog post</a>. As for emitting these Links as Early Hints, Cloudflare can take care of that for you!</p>
-	<h3 id="how-to-enable-on-cloudflare">How to enable on Cloudflare</h3>
+	<h3>How to enable on Cloudflare</h3>
 	<ul>
-		<li>To enable Early Hints on Cloudflare, simply sign in to your account and select the domain you’d like to enable it on.</li>
-		<li>Navigate to the <strong>Speed Tab</strong> of the dashboard.</li>
-		<li>Enable Early Hints.</li>
+		<li>
+			<p>To enable Early Hints on Cloudflare, simply sign in to your account and select the domain you’d like to enable it on.</p>
+		</li>
+		<li>
+			<p>Navigate to the <b>Speed Tab</b> of the dashboard.</p>
+		</li>
+		<li>
+			<p>Enable Early Hints.</p>
+		</li>
 	</ul>
 	<p>Enabling Early Hints means that we will harvest the preload and preconnect Link headers from your origin responses, cache them, and send them as 103 Early Hints for subsequent requests so that future visitors will be able to gain an even greater performance benefit.</p>
 	<p>For more information about our Early Hints feature, please refer to our <a href="https://blog.cloudflare.com/early-hints">announcement post</a> or our <a href="https://developers.cloudflare.com/cache/about/early-hints">documentation</a>.</p>
-	<h3 id="smart-early-hints-update">Smart Early Hints update</h3>
+	<h3>Smart Early Hints update</h3>
 	<p>In our <a href="https://blog.cloudflare.com/early-hints">original blog post</a>, we also mentioned our intention to ship a product improvement to Early Hints that would generate the 103 on your behalf.</p>
 	<p>Smart Early Hints will generate Early Hints even when there isn’t a Link header present in the origin response from which we can harvest a 103. The goal is to be a no-code/configuration experience with massive improvements to page load. Smart Early Hints will infer what assets can be preloaded or <a href="https://web.dev/priority-hints">prioritized</a> in different ways by analyzing responses coming from our customer’s origins. It will be your one-button web performance guru completely dedicated to making sure your site is loading as fast as possible.</p>
 	<p>This work is still under development, but we look forward to getting it built before the end of the year.</p>
-	<h3 id="try-it-out-">Try it out!</h3>
+	<h3>Try it out!</h3>
 	<p>The promise Early Hints holds has only started to be explored, and we’re excited to continue to build products and features and make the web performance reliably fast.</p>
 	<p>We’ll continue to update you along our journey as we develop Early Hints and look forward to your <a href="https://community.cloudflare.com">feedback</a> (special thanks to the Cloudflare Community members who have already been invaluable) as we move to bring Early Hints to everyone.</p>
 </div>

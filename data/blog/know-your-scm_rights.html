@@ -1,5 +1,5 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>As TLS 1.3 was ratified earlier <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">this year</a>, I was recollecting how we got started with it here at Cloudflare. We made the decision to be early adopters of <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> a little over two years ago. It was a very important decision, and we took it very seriously.</p>
 	<p>It is no secret that Cloudflare uses <a href="https://blog.cloudflare.com/end-of-the-road-for-cloudflare-nginx">nginx</a> to handle user traffic. A little less known fact, is that we have several instances of nginx running. I won’t go into detail, but there is one instance whose job is to accept connections on port 443, and proxy them to another instance of nginx that actually handles the requests. It has pretty limited functionality otherwise. We fondly call it nginx-ssl.</p>
 	<p>Back then we were using OpenSSL for TLS and Crypto in nginx, but OpenSSL (and BoringSSL) had yet to announce a timeline for TLS 1.3 support, therefore we had to implement our own TLS 1.3 stack. Obviously we wanted an implementation that would not affect any customer or client that would not enable TLS 1.3. We also needed something that we could iterate on quickly, because the spec was very fluid back then, and also something that we can release frequently without worrying about the rest of the Cloudflare stack.</p>
@@ -7,11 +7,10 @@
 	<p>Instead, Filippo Valsorda and Brendan McMillion suggested that the easier path would be to implement TLS 1.3 on top of the Go TLS library and make a Go replica of nginx-ssl (go-ssl). Go is very easy to iterate and prototype, with a powerful standard library, and we had a great pool of Go talent to use, so it made a lot of sense. Thus <a href="https://github.com/cloudflare/tls-tris">tls-tris</a> was born.</p>
 	<p>The question remained how would we have Go handle only TLS 1.3 while letting nginx handling all prior versions of TLS?</p>
 	<p>And herein lies the problem. Both TLS 1.3 and older versions of TLS communicate on port 443, and it is common knowledge that only one application can listen on a given TCP port, and that application is nginx, that would still handle the bulk of the TLS traffic. We could pipe all the TCP data into another connection in Go, effectively creating an additional proxy layer, but where is the fun in that? Also it seemed a little inefficient.</p>
-	<h2 id="meetscm_rights">Meet SCM_RIGHTS</h2>
+	<h2>Meet SCM_RIGHTS</h2>
 	<p>So how do you make two different processes, written in two different programming languages, share the same TCP socket?</p>
-	<p>Fortunately, Linux (or rather UNIX) provides us with just the tool that we need. You can use UNIX-domain sockets to pass file descriptors between applications, and like everything else in UNIX connections are files.<br>
-		Looking at <code>man 7 unix</code> we see the following:</p>
-	<pre><code>   Ancillary messages
+	<p>Fortunately, Linux (or rather UNIX) provides us with just the tool that we need. You can use UNIX-domain sockets to pass file descriptors between applications, and like everything else in UNIX connections are files.Looking at <code>man 7 unix</code> we see the following:</p>
+	<pre class="language-bash"><code class="language-bash">   Ancillary messages
        Ancillary  data  is  sent and received using sendmsg(2) and recvmsg(2).
        For historical reasons the ancillary message  types  listed  below  are
        specified with a SOL_SOCKET type even though they are AF_UNIX specific.
@@ -23,13 +22,12 @@
               Send or receive a set of  open  file  descriptors  from  another
               process.  The data portion contains an integer array of the file
               descriptors.  The passed file descriptors behave as though  they
-              have been created with dup(2).
-</code></pre>
+              have been created with dup(2).</code></pre>
 	<blockquote>
 		<p>Technically you do not send “file descriptors”. The “file descriptors” you handle in the code are simply indices into the processes' local file descriptor table, which in turn points into the OS' open file table, that finally points to the vnode representing the file. Thus the “file descriptor” observed by the other process will most likely have a different numeric value, despite pointing to the same file.</p>
 	</blockquote>
 	<p>We can also check <code>man 3 cmsg</code> as suggested, to find a handy example on how to use SCM_RIGHTS:</p>
-	<pre><code class="language-C">   struct msghdr msg = { 0 };
+	<pre class="language-c"><code class="language-c">   struct msghdr msg = { 0 };
    struct cmsghdr *cmsg;
    int myfds[NUM_FD];  /* Contains the file descriptors to pass */
    int *fdptr;
@@ -46,13 +44,12 @@
    cmsg-&gt;cmsg_type = SCM_RIGHTS;
    cmsg-&gt;cmsg_len = CMSG_LEN(sizeof(int) * NUM_FD);
    fdptr = (int *) CMSG_DATA(cmsg);    /* Initialize the payload */
-   memcpy(fdptr, myfds, NUM_FD * sizeof(int));
-</code></pre>
+   memcpy(fdptr, myfds, NUM_FD * sizeof(int));</code></pre>
 	<p>And that is what we decided to use. We let OpenSSL read the “Client Hello” message from an established TCP connection. If the “Client Hello” indicated TLS version 1.3, we would use SCM_RIGHTS to send it to the Go process. The Go process would in turn try to parse the rest of the “Client Hello”, if it were successful it would proceed with TLS 1.3 connection, and upon failure it would give the file descriptor back to OpenSSL, to handle regularly.</p>
 	<p>So how exactly do you implement something like that?</p>
 	<p>Since in our case we established that the C process will listen for TCP connections, our other process will have to listen on a UNIX socket, for connections C will want to forward.</p>
 	<p>For example in Go:</p>
-	<pre><code class="language-Go">type scmListener struct {
+	<pre class="language-go"><code class="language-go">type scmListener struct {
 	*net.UnixListener
 }
 
@@ -89,10 +86,9 @@ func (l *scmListener) Accept() (*scmConn, error) {
 		return nil, err
 	}
 	return &amp;scmConn{uc}, nil
-}
-</code></pre>
+}</code></pre>
 	<p>Then in the C process, for each connection we want to pass, we will connect to that socket first:</p>
-	<pre><code class="language-C">int connect_unix()
+	<pre class="language-c"><code class="language-c">int connect_unix()
 {
     struct sockaddr_un addr = {.sun_family = AF_UNIX,
                                .sun_path = "/tmp/scm_example.sock"};
@@ -108,10 +104,9 @@ func (l *scmListener) Accept() (*scmConn, error) {
     }
 
     return unix_sock;
-}
-</code></pre>
+}</code></pre>
 	<p>To actually pass a file descriptor we utilize the example from <code>man 3 cmsg</code>:</p>
-	<pre><code class="language-C">int send_fd(int unix_sock, int fd)
+	<pre class="language-c"><code class="language-c">int send_fd(int unix_sock, int fd)
 {
     struct iovec iov = {.iov_base = ":)", // Must send at least one byte
                         .iov_len = 2};
@@ -134,10 +129,9 @@ func (l *scmListener) Accept() (*scmConn, error) {
     memcpy(CMSG_DATA(cmsg), &amp;fd, sizeof(fd));
 
     return sendmsg(unix_sock, &amp;msg, 0);
-}
-</code></pre>
+}</code></pre>
 	<p>Then to receive the file descriptor in Go:</p>
-	<pre><code class="language-go">func (c *scmConn) ReadFD() (*os.File, error) {
+	<pre class="language-go"><code class="language-go">func (c *scmConn) ReadFD() (*os.File, error) {
 	msg, oob := make([]byte, 2), make([]byte, 128)
 
 	_, oobn, _, _, err := c.ReadMsgUnix(msg, oob)
@@ -165,12 +159,11 @@ func (l *scmListener) Accept() (*scmConn, error) {
 	}
 
 	return fd, nil
-}
-</code></pre>
-	<h2 id="rust">Rust</h2>
+}</code></pre>
+	<h2>Rust</h2>
 	<p>We can also do this in Rust, although the standard library in Rust does not yet support UNIX sockets, but it does let you address the C library via the <a href="https://rust-lang.github.io/libc/x86_64-unknown-linux-gnu/libc">libc</a> crate. Warning, unsafe code ahead!</p>
 	<p>First we want to implement some UNIX socket functionality in Rust:</p>
-	<pre><code class="language-rust">use libc::*;
+	<pre class="language-rust"><code class="language-rust">use libc::*;
 use std::io::prelude::*;
 use std::net::TcpStream;
 use std::os::unix::io::FromRawFd;
@@ -203,18 +196,18 @@ impl Drop for UNIXConn {
 }
 
 impl UNIXSocket {
-    pub fn new() -&gt; Result&lt;UNIXSocket, String&gt; {
+    pub fn new() -&gt; Result<unixsocket, string=""> {
         match unsafe { socket(AF_UNIX, SOCK_STREAM, 0) } {
             -1 =&gt; Err(errno_str()),
             fd @ _ =&gt; Ok(UNIXSocket { fd }),
         }
     }
 
-    pub fn bind(self, address: &amp;str) -&gt; Result&lt;UNIXSocket, String&gt; {
+    pub fn bind(self, address: &amp;str) -&gt; Result<unixsocket, string=""> {
         assert!(address.len() &lt; 104);
 
         let mut addr = sockaddr_un {
-            sun_len: std::mem::size_of::&lt;sockaddr_un&gt;() as u8,
+            sun_len: std::mem::size_of::<sockaddr_un>() as u8,
             sun_family: AF_UNIX as u8,
             sun_path: [0; 104],
         };
@@ -228,7 +221,7 @@ impl UNIXSocket {
             bind(
                 self.fd,
                 &amp;addr as *const sockaddr_un as *const sockaddr,
-                std::mem::size_of::&lt;sockaddr_un&gt;() as u32,
+                std::mem::size_of::<sockaddr_un>() as u32,
             )
         } {
             -1 =&gt; Err(errno_str()),
@@ -236,23 +229,22 @@ impl UNIXSocket {
         }
     }
 
-    pub fn listen(self) -&gt; Result&lt;UNIXSocket, String&gt; {
+    pub fn listen(self) -&gt; Result<unixsocket, string=""> {
         match unsafe { listen(self.fd, 50) } {
             -1 =&gt; Err(errno_str()),
             _ =&gt; Ok(self),
         }
     }
 
-    pub fn accept(&amp;self) -&gt; Result&lt;UNIXConn, String&gt; {
+    pub fn accept(&amp;self) -&gt; Result<unixconn, string=""> {
         match unsafe { accept(self.fd, std::ptr::null_mut(), std::ptr::null_mut()) } {
             -1 =&gt; Err(errno_str()),
             fd @ _ =&gt; Ok(UNIXConn { fd }),
         }
     }
-}
-</code></pre>
+}</unixconn,></unixsocket,></sockaddr_un></sockaddr_un></unixsocket,></unixsocket,></code></pre>
 	<p>And the code to extract the file desciptor:</p>
-	<pre><code class="language-rust">#[repr(C)]
+	<pre class="language-rust"><code class="language-rust">#[repr(C)]
 pub struct ScmCmsgHeader {
     cmsg_len: c_uint,
     cmsg_level: c_int,
@@ -261,7 +253,7 @@ pub struct ScmCmsgHeader {
 }
 
 impl UNIXConn {
-    pub fn recv_fd(&amp;self) -&gt; Result&lt;RawFd, String&gt; {
+    pub fn recv_fd(&amp;self) -&gt; Result<rawfd, string=""> {
         let mut iov = iovec {
             iov_base: std::ptr::null_mut(),
             iov_len: 0,
@@ -280,14 +272,14 @@ impl UNIXConn {
             msg_iov: &amp;mut iov as *mut iovec,
             msg_iovlen: 1,
             msg_control: &amp;mut scm as *mut ScmCmsgHeader as *mut c_void,
-            msg_controllen: std::mem::size_of::&lt;ScmCmsgHeader&gt;() as u32,
+            msg_controllen: std::mem::size_of::<scmcmsgheader>() as u32,
             msg_flags: 0,
         };
 
         let n = unsafe { recvmsg(self.fd, &amp;mut mhdr, 0) };
 
         if n == -1
-            || scm.cmsg_len as usize != std::mem::size_of::&lt;ScmCmsgHeader&gt;()
+            || scm.cmsg_len as usize != std::mem::size_of::<scmcmsgheader>()
             || scm.cmsg_level != SOL_SOCKET
             || scm.cmsg_type != SCM_RIGHTS
         {
@@ -296,16 +288,20 @@ impl UNIXConn {
             Ok(scm.fd)
         }
     }
-}
-</code></pre>
-	<h2 id="conclusion">Conclusion</h2>
+}</scmcmsgheader></scmcmsgheader></rawfd,></code></pre>
+	<h2>Conclusion</h2>
 	<p>SCM_RIGHTS is a very powerful tool that can be used for many purposes. In our case we used to to introduce a new service in a non-obtrusive fashion. Other uses may be:</p>
 	<ul>
-		<li>A/B testing</li>
-		<li>Phasing out of an old C based service in favor of new Go or Rust one</li>
-		<li>Passing connections from a privileged process to an unprivileged one</li>
+		<li>
+			<p>A/B testing</p>
+		</li>
+		<li>
+			<p>Phasing out of an old C based service in favor of new Go or Rust one</p>
+		</li>
+		<li>
+			<p>Passing connections from a privileged process to an unprivileged one</p>
+		</li>
 	</ul>
 	<p>And more</p>
 	<p>You can find the full example <a href="https://github.com/vkrasnov/scm_sample">here</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,13 +1,17 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-54.png" class="kg-image" alt="Dynamic URL redirects: 301 to the future" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OtZJno32ySI8NPIN3LEzd/b4ffe4bb485cc537efc953886bf85fb4/image2-54.png" alt="Dynamic URL redirects: 301 to the future" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>The Internet is a dynamic place. Websites are constantly changing as technologies and business practices evolve. What was front-page news is quickly moved into a sub-directory. To ensure website visitors continue to see the correct webpage even if it has been moved, administrators often implement URL redirects.</p>
 	<p>A URL redirect is a mapping from one location on the Internet to another, effectively telling the visitor's browser that the location of the page has changed, and where they can now find it. This is achieved by providing a virtual ‘link’ between the content’s original and new location.</p>
 	<p>URL Redirects have typically been implemented as Page Rules within Cloudflare, however Page Rules only match on the URL, rather than other elements such as the visitor's source country or preferred language. This limitation meant customers with a need for more dynamic URL redirects had to implement alternative solutions such Cloudflare Workers to achieve their goals.</p>
-	<p>To simplify the management of these more complex use cases we have created <strong>Dynamic Redirects. </strong>With Dynamic Redirects, users can redirect visitors to another webpage or website based upon hundreds of options such as the visitor's country of origin or language, without having to write a single line of code.</p>
-	<h3 id="more-than-a-url">More than a URL</h3>
+	<p>To simplify the management of these more complex use cases we have created <b>Dynamic Redirects.</b> With Dynamic Redirects, users can redirect visitors to another webpage or website based upon hundreds of options such as the visitor's country of origin or language, without having to write a single line of code.</p>
+	<h3>More than a URL</h3>
 	<p>For nine years users were limited to 125 URL redirects per zone. This limitation meant those with a need for more URL redirects had to implement alternative solutions such <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to achieve their goals.</p>
-	<p>In December 2021, we launched <a href="https://blog.cloudflare.com/maximum-redirects-minimum-effort-announcing-bulk-redirects">Bulk Redirects</a>, allowing up to 100,000 URL redirects per account at the time. In April 2022 we increased this maximum number to <strong>over six million </strong>URL redirects per account. However, there is still a gap in the ‘URL redirect’ product unfulfilled. Until now.</p>
+	<p>In December 2021, we launched <a href="https://blog.cloudflare.com/maximum-redirects-minimum-effort-announcing-bulk-redirects">Bulk Redirects</a>, allowing up to 100,000 URL redirects per account at the time. In April 2022 we increased this maximum number to <b>over six million</b> URL redirects per account. However, there is still a gap in the ‘URL redirect’ product unfulfilled. Until now.</p>
 	<p>Bulk Redirects, much like the ‘Forwarding URL’ Page Rule, are prescriptive URL redirects. You tell us what URL to look for, and where to redirect the user to when they visit it. We can support this use case at a huge scale.</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
@@ -34,46 +38,14 @@
 	<p>That's a simple concept to understand, however user needs have evolved. What if a user wanted to redirect visitors to a localized version of the requested page based on their preferred language? What if a user wanted to redirect visitors to their local subsidiary on the website? Or direct them to an optimized site when they visit from a mobile device? Suddenly, this well understood concept doesn’t work - and they have to deploy code in Workers to solve what is actually a common problem. And common problems deserve to be productized.</p>
 	<p>This is where Dynamic Redirects can help. The new product provides the same consistent user interface as Transform Rules, Custom Rules, Bulk Redirects, etc. and provides a new action allowing for the target URL to be dynamically created, much like the dynamic rewrite action offered in <a href="https://developers.cloudflare.com/rules/transform/url-rewrite">Transform Rules</a>.</p>
 	<p>This dynamic action frees the user from having to define explicitly what the target URL should look like, and instead provides them with a full gamut of fields and functions to custom generate the target URL based upon the parameters of the request. For example, rather than redirecting all traffic for <a href="http://www.example.com/shop"><code>www.example.com/shop</code></a> to <a href="http://www.example.com/en/shop"><code>www.example.com/en/shop</code></a>, users can conceptually redirect the traffic to <a href="http://www.example.com/%7BPREFERRED_LANGUAGE%7D/shop"><code>www.example.com/{PREFERRED_LANGUAGE}/shop</code></a> (not actual syntax!). With this, traffic from a browser with a preferred language of French will be redirected to <a href="http://www.example.com/fr/shop"><code>www.example.com/fr/shop</code></a>, likewise those with a preferred language of German will be redirected to <a href="http://www.example.com/de/shop"><code>www.example.com/de/shop</code></a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-38.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KSMb1ZP3E4N1nFuUPDFde/ba3dd64c5a8c055bc2dabce97b3be3c4/image3-38.png" alt="" class="kg-image" width="1930" height="1220" loading="lazy">
+
+	</figure>
 	<p>The other big difference between Dynamic Redirects and &nbsp;Page Rules is in the filtering. Page Rules are limited to filtering on a URL, or a URL with asterisks as wildcards. Dynamic Redirects is built atop our lightning-fast <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets">Rulesets Engine</a>, which also runs products such as Transform Rules, Custom Rules (WAF), Bulk Redirects and API Shield.</p>
 	<p>Due to this, Dynamic Redirects offers almost the entire suite of Ruleset Engine <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a> for use in filtering; from <code>http.request.full_uri</code> for the whole URL, to <code>ip.geoip.country</code> (where is the visitor located) and <code>http.request.accepted_languages[]</code> (the language preferred by the visitor). The possibilities are endless.</p>
 	<p>Users can also now use <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/operators">logical operators</a> such as ‘OR’. Where previously, if a user wanted to redirect five distinct URLs to the same URL they would need to deploy five Page Rules. Today, they can simply use an ‘OR’ to consolidate this use case into just one Dynamic Redirect rule:</p><!--kg-card-begin: html-->
-	<table>
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>URL</th>
-				<th>Destination URL</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>https:/www.cloudflare.com/partners/integrations/</td>
-				<td>www.cloudflare.com/partners/</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>https:/www.cloudflare.com/partners/become-a-partner/</td>
-				<td>www.cloudflare.com/partners/</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>https:/www.cloudflare.com/partners/digital-agency/</td>
-				<td>www.cloudflare.com/partners/</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>https:/www.cloudflare.com/partners/technology-integrator/</td>
-				<td>www.cloudflare.com/partners/</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>https:/www.cloudflare.com/partners/view-partners/</td>
-				<td>www.cloudflare.com/partners/</td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: html--><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
@@ -91,7 +63,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>We can further simplify this use case in the future by adding hostname lists, allowing users to add URLs to a list and reference it from within the rule expression, similar to IP Lists. This allows an expression like (http.request.full_uri in $vanity_urls), for example.</p>
-	<h3 id="a-dedicated-quota-just-for-u-rl-">A dedicated quota, just for U(RL)</h3>
+	<h3>A dedicated quota, just for U(RL)</h3>
 	<p>Page Rules are used to set everything from configuration and caching behaviour to header modification and also URL redirection (Forwarding URL). This means that users tend to run out of available rules quickly.</p>
 	<p>To address this, we’re matching the Page Rule quota in each of the four new products that are being announced today. This means where in Page Rules an Enterprise customer would get 125 Page Rules to share amongst the aforementioned functions, in Dynamic Redirects they have 125 rules just for redirects. This number can be increased for Enterprise customers, also.</p>
 	<p>We’re also increasing the quota for free plans; where today free plans get three Page Rules, they will now get 10 rules for dynamic redirects, along with each of the other three products (cache, origin, config rules). That's a net increase of 37 additional rules!</p><!--kg-card-begin: html-->
@@ -127,14 +99,18 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Users can now get more out of their Cloudflare setup, being more specific about when traffic is redirected, optimizing cache and adjusting which settings are and aren't applied - without having to trade off between these areas due to a limit in rules quota.</p>
-	<h3 id="localized-redirects">Localized redirects</h3>
+	<h3>Localized redirects</h3>
 	<p>One of the examples covered earlier is being able to redirect visitors to localized content depending on their preferred language.</p>
 	<p>This can be done by analyzing the ‘Accept-Language’ header sent by the browser, which is stored as an array in the field http.request.accepted_languages[]. This field is an array of the values received by Cloudflare within the Accept-Language HTTP request header, sorted in descending weight order. This header is calculated based on the preferences set by the visitor in the ‘Language’ section of their web browser.</p>
 	<p>For example, if the visitors browser sends an 'Accept-Language' header containing "Accept-Language: fr-CH, fr;q=0.8, en;q=0.9, de;q=0.7, *;q=0.5", then the field http.request.accepted_languages[0] would contain "en", with http.request.accepted_languages[1] containing "fr" and so forth.</p>
 	<p>With this information, we can create a dynamic redirect using the action:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-62.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ffOgGltGbr8MSOJW90DP7/e02b082d405167ddce9f38cc29131fcc/image1-62.png" alt="" class="kg-image" width="1081" height="520" loading="lazy">
+
+	</figure>
 	<p>With this rule in place, traffic from visitors with a preferred language of English (en) will be redirected to <a href="http://www.example.com/en/shop"><code>www.example.com/en/shop</code></a>. The rule can be duplicated for other languages also, ensuring those with a preferred language of French (fr) will be redirected to <a href="http://www.example.com/fr/shop"><code>www.example.com/fr/shop</code></a>.</p>
-	<h3 id="mobile-redirects-cookie-redirects-">Mobile redirects, cookie redirects, …</h3>
+	<h3>Mobile redirects, cookie redirects, …</h3>
 	<p>There are so many use cases for Dynamic Redirects we couldn't fit them all in this blog.</p>
 	<p>Other possible use cases include mobile redirects, redirects based on cookies, redirects to different endpoints based on request headers for live testing. The potential list is huge, and we can't wait to hear what you come up with. Try it <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F">today</a>!</p>
 </div>

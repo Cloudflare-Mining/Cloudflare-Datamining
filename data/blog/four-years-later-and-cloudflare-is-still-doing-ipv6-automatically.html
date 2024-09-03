@@ -1,26 +1,44 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>Over the past four years CloudFlare has helped well over two million websites join the modern web, making us one of the fastest growing providers of IPv6 web connectivity on the Internet. CloudFlare's <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa" target="_blank">Automatic IPv6 Gateway</a> allows IPv4-only websites to support IPv6-only clients with zero clicks. No hardware. No software. No code changes. And no need to change your hosting provider.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/Screen-Shot-2015-06-05-at-10-07-51-AM.png" alt="alt" loading="lazy"><br>
-		<small><a href="http://cs.brown.edu/~adf/cerf/Cerf_ipv6_poster.pdf">Image</a> by <a href="http://cs.brown.edu/~adf">Andrew D. Ferguson</a></small>
-	</p>
-	<h3 id="afouryearstory">A Four Year Story</h3>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ttKyAQLMuNjJoBmHVOaL2/206c09dbe47d3cd6b346c6b29ebbc5cd/four-years-later-and-cloudflare-is-still-doing-ipv6-automatically.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Over the past four years CloudFlare has helped well over two million websites join the modern web, making us one of the fastest growing providers of IPv6 web connectivity on the Internet. CloudFlare's <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">Automatic IPv6 Gateway</a> allows IPv4-only websites to support IPv6-only clients with zero clicks. No hardware. No software. No code changes. And no need to change your hosting provider.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2V14CHrnFNob3rp8bKgyOh/96a4ca1d89d1e2b921d81ac745679c33/Screen-Shot-2015-06-05-at-10-07-51-AM.png" alt="alt" class="kg-image" width="485" height="675" loading="lazy">
+
+	</figure>
+	<p><a href="http://cs.brown.edu/~adf/cerf/Cerf_ipv6_poster.pdf">Image</a> by <a href="http://cs.brown.edu/~adf">Andrew D. Ferguson</a></p>
+	<h3>A Four Year Story</h3>
 	<p>The story of IPv6 support for customers of CloudFlare is about as long as the story of CloudFlare itself. June 6th, 2011 (four years ago) was the original World IPv6 Day, and CloudFlare participated. Each year since, the global Internet community has pushed forward with additional IPv6 deployment. Now, four years later, CloudFlare is celebrating June 6th knowing that our customers are being provided with a solid IPv6 offering that requires zero configuration to enable. CloudFlare is the only <a href="https://www.cloudflare.com/network-map">global CDN</a> that provides IPv4/IPv6 delivery of content by default and at scale.</p>
 	<p>IPv6 has been <a href="https://blog.cloudflare.com/eliminating-the-last-reasons-to-not-enable-ipv6">featured</a> <a href="https://blog.cloudflare.com/three-years-after-world-ipv6-day">in</a> <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">our</a> <a href="https://blog.cloudflare.com/ipv6-challenge-to-the-web">blog</a> various times over the last four years. We have provided support for legacy logging systems to handle IPv6 addresses, provided <a href="https://www.cloudflare.com/ddos">DDoS protection</a> on IPv6 alongside classic IPv4 address space, and provided the open source community with software to handle <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">ECMP load balancing</a> correctly.</p>
-	<h3 id="itsallaboutthenumbers">It's all about the numbers</h3>
+	<h3>It's all about the numbers</h3>
 	<p>Today CloudFlare is celebrating four years of World IPv6 Day with a few new graphs:</p>
 	<p>First, let's measure IPv6 addresses (broken down by /64 blocks).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/Growth-of-IPv6-IPs-on-CloudFlare-over-the-last-year-2.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g911dZxFjbTq0baNqsATc/3114b4d9034091eee64602b3a014e0ef/Growth-of-IPv6-IPs-on-CloudFlare-over-the-last-year-2.png" alt="alt" class="kg-image" width="2304" height="1250" loading="lazy">
+
+	</figure>
 	<p>While CloudFlare operates the CDN portion of web traffic delivery to end-users, we don’t control the end-user's deployment of IPv6. We do, however, see IP addresses when they are used, and we clearly see an uptick in deployed IPv6 at the end-user sites. Measuring unique IP addresses is a good indicator of IPv6 deployment.</p>
 	<p>Next we can look at how end users, using IPv6, access CloudFlare customers' websites.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/Percentage-of-IPv6-Traffic-by-Device-as-seen-by-CloudFlare.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XxlbrdqfSNuD7inHmj6rQ/a388ff0a3b5b4925ddf915508c469d84/Percentage-of-IPv6-Traffic-by-Device-as-seen-by-CloudFlare.png" alt="alt" class="kg-image" width="501" height="431" loading="lazy">
+
+	</figure>
 	<p>With nearly 25% of our IPv6 traffic being delivered to mobile devices as of today, CloudFlare is happy to help demonstrate that mobile operators have embraced IPv6 with gusto.</p>
 	<p>The third graph looks at traffic based on destination country and is a measure of end-users (eyeballs as they are called in the industry) that are enabled for IPv6. The graph shows the top countries that CloudFlare delivers IPv6 web traffic to.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/IPv6-as-percentage-of-all-traffic-by-country.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YPKZmpdawhtnBYDIoJL1S/d0d0f39da54597a47b308bc6bbd31b88/IPv6-as-percentage-of-all-traffic-by-country.png" alt="alt" class="kg-image" width="2230" height="964" loading="lazy">
+
+	</figure>
 	<p>On the Y Axis, we have the percentage of traffic delivered via IPv6. On the X Axis we have each of the last eight months. Let's just have a shoutout to Latin America. In Latin America CloudFlare operates five data centers: <a href="https://blog.cloudflare.com/buenos-aires">Argentina</a>, <a href="https://blog.cloudflare.com/parabens-brasil-cloudflares-27th-data-center-now-live">Brazil</a>, <a href="https://blog.cloudflare.com/bienvenido-a-chile-cloudflares-24th-data-center-now-live">Chile</a>, <a href="https://blog.cloudflare.com/listo-medellin-colombia-cloudflares-28th-data-center">Columbia</a>, and <a href="https://blog.cloudflare.com/lima-peru-cloudflares-29th-data-center">Peru</a>. CloudFlare would like to highlight our Peru datacenter because it has the highest percentage of traffic being delivered over IPv6 in Latin America. Others <a href="https://twitter.com/lacnic/status/596445340905152512">agree</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/twitter-lacnic-peru-ipv6.png" alt="alt" loading="lazy"></p>
-	<h3 id="whatsnextforipv6">What's next for IPv6?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zzlrIo11Q7M09KKW2ojDO/62420a0ac2a07274e98ec1f110a717dc/twitter-lacnic-peru-ipv6.png" alt="alt" class="kg-image" width="1140" height="357" loading="lazy">
+
+	</figure>
+	<h3>What's next for IPv6?</h3>
 	<p>The real question is: What's next for users stuck with only IPv4? Because the RIRs have depleted their IPv4 address space pools, ISPs are simply out of options regarding the need to embrace IPv6. Basically, <a href="https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying">there are no more IPv4 addresses available</a>.</p>
 	<p>Supporting IPv6 is even more important today than it was four years ago and CloudFlare is happy that it provides this automatic IPv6 solution for all its customers. Come try it out and don’t let other web properties languish in the non-IPv6 world by telling a friend about our <a href="https://www.cloudflare.com/ipv6">automatic IPv6 support</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

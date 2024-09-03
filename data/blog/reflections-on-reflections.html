@@ -1,34 +1,61 @@
-<div class="mb2 gray5">12 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7z3StKcINqYvK3VC2oJfY4/e653869d22b42be3cdfdb00649855338/reflections-on-reflections.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Recently <a href="https://www.akamai.com/us/en/about/our-thinking/threat-advisories/connection-less-lightweight-directory-access-protocol-reflection-ddos-threat-advisory.jsp">Akamai published an article about CLDAP</a> reflection attacks. This got us thinking. We saw attacks from <a href="https://ldapscan.shadowserver.org">Connectionless LDAP</a> servers back in November 2016 but totally ignored them because our systems were automatically dropping the attack traffic without any impact.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/5624068176_547766995c_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ragez/5624068176">image</a> by <a href="https://www.flickr.com/photos/ragez">RageZ</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cPH4iVdvSLz4zASMsx4y1/e8b920bb7738f33c2c7ef331beb152c8/5624068176_547766995c_z.jpg" alt="" class="kg-image" width="640" height="447" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ragez/5624068176">image</a> by <a href="https://www.flickr.com/photos/ragez">RageZ</a></p>
 	<p>We decided to take a second look through our logs and share some statistics about reflection attacks we see regularly. In this blog post, I'll describe popular reflection attacks, explain how to defend against them and why Cloudflare and our customers are immune to most of them.</p>
-	<h2 id="arecipeforreflection">A recipe for reflection</h2>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/Untitled-2.001saaa.png" alt="" loading="lazy"></p>
+	<h2>A recipe for reflection</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37shntzMKVznz96CFNVl4n/e7e765bbdd4ccd80ed07cd1d589c995a/Untitled-2.001saaa.png" alt="" class="kg-image" width="640" height="354" loading="lazy">
+
+	</figure>
 	<p>Let's start with a brief reminder on how reflection attacks (often called "amplification attacks") work.</p>
 	<p>To bake a reflection attack, the villain needs four ingredients:</p>
 	<ul>
-		<li>A server capable of performing <a href="https://en.wikipedia.org/wiki/IP_address_spoofing">IP address spoofing</a>.</li>
-		<li>A protocol vulnerable to reflection/amplification. Any badly designed UDP-based request-response protocol will do.</li>
-		<li>A list of "reflectors": servers that support the vulnerable protocol.</li>
-		<li>A victim IP address.</li>
+		<li>
+			<p>A server capable of performing <a href="https://en.wikipedia.org/wiki/IP_address_spoofing">IP address spoofing</a>.</p>
+		</li>
+		<li>
+			<p>A protocol vulnerable to reflection/amplification. Any badly designed UDP-based request-response protocol will do.</p>
+		</li>
+		<li>
+			<p>A list of "reflectors": servers that support the vulnerable protocol.</p>
+		</li>
+		<li>
+			<p>A victim IP address.</p>
+		</li>
 	</ul>
 	<p>The general idea:</p>
 	<ul>
-		<li>The villain sends fake UDP requests.</li>
-		<li>The source IP address in these packets is spoofed: the attacker sticks the victim's IP address in the source IP address field, not their own IP address as they normally would.</li>
-		<li>Each packet is destined to a random reflector server.</li>
-		<li>The spoofed packets traverse the Internet and eventually are delivered to the reflector server.</li>
-		<li>The reflector server receives the fake packet. It looks at it carefully and thinks: "Oh, what a nice request from <em>the victim</em>! I must be polite and respond!". It sends the response in good faith.</li>
-		<li>The response, though, is directed to the victim.</li>
+		<li>
+			<p>The villain sends fake UDP requests.</p>
+		</li>
+		<li>
+			<p>The source IP address in these packets is spoofed: the attacker sticks the victim's IP address in the source IP address field, not their own IP address as they normally would.</p>
+		</li>
+		<li>
+			<p>Each packet is destined to a random reflector server.</p>
+		</li>
+		<li>
+			<p>The spoofed packets traverse the Internet and eventually are delivered to the reflector server.</p>
+		</li>
+		<li>
+			<p>The reflector server receives the fake packet. It looks at it carefully and thinks: "Oh, what a nice request from <i>the victim</i>! I must be polite and respond!". It sends the response in good faith.</p>
+		</li>
+		<li>
+			<p>The response, though, is directed to the victim.</p>
+		</li>
 	</ul>
 	<p>The victim will end up receiving a large volume of response packets it never had requested. With a large enough attack the victim may end up with congested network and <a href="https://en.wikipedia.org/wiki/Interrupt_storm">an interrupt storm</a>.</p>
-	<p>The responses delivered to victim might be larger than the spoofed requests (hence <em>amplification</em>). A carefully mounted attack may amplify the villain's traffic. In the past <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">we've documented a 300Gbps attack</a> generated with an estimated 27Gbps of spoofing capacity.</p>
-	<h2 id="popularreflections">Popular reflections</h2>
+	<p>The responses delivered to victim might be larger than the spoofed requests (hence <i>amplification</i>). A carefully mounted attack may amplify the villain's traffic. In the past <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">we've documented a 300Gbps attack</a> generated with an estimated 27Gbps of spoofing capacity.</p>
+	<h2>Popular reflections</h2>
 	<p>During the last six months our DDoS mitigation system "Gatebot" detected 6,329 simple reflection attacks (that's one every 40 minutes). Here is the list by popularity of different attack vectors. An attack is defined as a large flood of packets identified by a tuple: (Protocol, Source Port, Target IP). Basically - a flood of packets with the same source port to a single target. This notation is pretty accurate - during normal Cloudflare operation, incoming packets rarely share a source port number!</p>
-	<pre><code>  Count  Proto  Src port
+	<pre class="language-bash"><code class="language-bash">  Count  Proto  Src port
    3774   udp    123        NTP
    1692   udp    1900       SSDP
     438   udp    0          IP fragmentation
@@ -42,17 +69,22 @@
      10   udp    137        Netbios
       6   tcp    80         HTTP
       5   udp    27005      SRCDS
-      2   udp    520        RIP
-</code></pre>
-	<h2 id="sourceport123udpntp">Source port 123/udp NTP</h2>
+      2   udp    520        RIP</code></pre>
+	<h2>Source port 123/udp NTP</h2>
 	<p>By far the most popular reflection attack vector remains NTP. We have blogged about NTP in the past:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">Understanding and mitigating NTP-based DDoS attacks</a></li>
-		<li><a href="https://blog.cloudflare.com/technical-details-behind-a-400Gbps-ntp-amplification-ddos-attack">Technical Details Behind a 400Gbps NTP Amplification DDoS Attack</a></li>
-		<li><a href="https://blog.cloudflare.com/good-news-vulnerable-ntp-servers-closing-down">Good News: Vulnerable NTP Servers Closing Down</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">Understanding and mitigating NTP-based DDoS attacks</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/technical-details-behind-a-400Gbps-ntp-amplification-ddos-attack">Technical Details Behind a 400Gbps NTP Amplification DDoS Attack</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/good-news-vulnerable-ntp-servers-closing-down">Good News: Vulnerable NTP Servers Closing Down</a></p>
+		</li>
 	</ul>
 	<p>Over the last six months we've seen 3,374 unique NTP amplification attacks. Most of them were short. The average attack duration was 11 minutes, with the longest lasting 22 hours (1,300 minutes). Here's a histogram showing the distribution of NTP attack duration:</p>
-	<pre><code>Minutes min:1.00 avg:10.51 max:1297.00 dev:35.02 count:3774
+	<pre class="language-bash"><code class="language-bash">Minutes min:1.00 avg:10.51 max:1297.00 dev:35.02 count:3774
 Minutes:
  value |-------------------------------------------------- count
      0 |                                                   2
@@ -66,10 +98,9 @@ Minutes:
    128 |                                                   11
    256 |                                                   7
    512 |                                                   2
-  1024 |                                                   1
-</code></pre>
+  1024 |                                                   1</code></pre>
 	<p>Most of the attacks used a small number of reflectors - we've recorded an average of 1.5k unique IPs per attack. The largest attack used an estimated 12.3k reflector servers.</p>
-	<pre><code>Unique IPs min:5.00 avg:1552.84 max:12338.00 dev:1416.03 count:3774
+	<pre class="language-bash"><code class="language-bash">Unique IPs min:5.00 avg:1552.84 max:12338.00 dev:1416.03 count:3774
 Unique IPs:
  value |-------------------------------------------------- count
     16 |                                                   0
@@ -81,10 +112,9 @@ Unique IPs:
   1024 |************************************************** 1093
   2048 |                   ******************************* 685
   4096 |                                        ********** 220
-  8192 |                                                   13
-</code></pre>
+  8192 |                                                   13</code></pre>
 	<p>The peak attack bandwidth was on average 5.76Gbps and max of 64Gbps:</p>
-	<pre><code>Peak bandwidth in Gbps min:0.06 avg:5.76 max:64.41 dev:6.39 count:3774
+	<pre class="language-bash"><code class="language-bash">Peak bandwidth in Gbps min:0.06 avg:5.76 max:64.41 dev:6.39 count:3774
 Peak bandwidth in Gbps:
  value |-------------------------------------------------- count
      0 |                                            ****** 187
@@ -94,13 +124,16 @@ Peak bandwidth in Gbps:
      8 |                                ****************** 526
     16 |                                           ******* 212
     32 |                                                 * 39
-    64 |                                                   1
-</code></pre>
+    64 |                                                   1</code></pre>
 	<p>This stacked chart shows the geographical distribution of the largest NTP attack we've seen in the last six months. You can see the packets per second number directed to each datacenter. One our datacenters (San Jose to be precise) received about a third of the total attack volume, while the remaining packets were distributed roughly evenly across other datacenters.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/ntp-3164b6fac836774c.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZfOEawZjCimyFTOrVawyI/ade7a4030b65272dcf841eeae7aa551c/ntp-3164b6fac836774c.png" alt="" class="kg-image" width="800" height="257" loading="lazy">
+
+	</figure>
 	<p>The attack lasted 20 minutes, used 527 reflector NTP servers and generated about 20Mpps / 64Gbps at peak.</p>
 	<p>Dividing these numbers we can estimate that a single packet in that attack had on average size of 400 bytes. In fact, in NTP attacks the great majority of packets have a length of precisely 468 bytes (less often 516). Here's a snippet from tcpdump:</p>
-	<pre><code>$ tcpdump -n -r 3164b6fac836774c.pcap -v -c 5 -K
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -n -r 3164b6fac836774c.pcap -v -c 5 -K
 11:38:06.075262 IP -(tos 0x20, ttl 60, id 0, offset 0, proto UDP (17), length 468)
     216.152.174.70.123 &gt; x.x.x.x.47787:  [|ntp]
 11:38:06.077141 IP -(tos 0x0, ttl 56, id 0, offset 0, proto UDP (17), length 468)
@@ -110,11 +143,10 @@ Peak bandwidth in Gbps:
 11:38:06.095971 IP -(tos 0x0, ttl 60, id 0, offset 0, proto UDP (17), length 468)
     126.219.94.77.123 &gt; x.x.x.x.21784:  [|ntp]
 11:38:06.113935 IP -(tos 0x0, ttl 59, id 0, offset 0, proto UDP (17), length 516)
-    69.57.241.60.123 &gt; x.x.x.x.9285:  [|ntp]
-</code></pre>
-	<h2 id="sourceport1900udpssdp">Source port 1900/udp SSDP</h2>
+    69.57.241.60.123 &gt; x.x.x.x.9285:  [|ntp]</code></pre>
+	<h2>Source port 1900/udp SSDP</h2>
 	<p>The second most popular reflection attack was <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol">SSDP</a>, with a count of 1,692 unique events. These attacks were using much larger fleets of reflector servers. On average we've seen around 100k reflectors used in each attack, with the largest attack using 1.23M reflector IPs. Here's the histogram of number of unique IPs used <a href="https://www.us-cert.gov/ncas/alerts/TA14-017A">in SSDP attacks</a>:</p>
-	<pre><code>Unique IPs min:15.00 avg:98272.02 max:1234617.00 dev:162699.90 count:1691
+	<pre class="language-bash"><code class="language-bash">Unique IPs min:15.00 avg:98272.02 max:1234617.00 dev:162699.90 count:1691
 Unique IPs:
    value |-------------------------------------------------- count
      256 |                                                   0
@@ -129,10 +161,9 @@ Unique IPs:
   131072 |              ************************************ 225
   262144 |                                   *************** 95
   524288 |                                           ******* 47
- 1048576 |                                                 * 7
-</code></pre>
+ 1048576 |                                                 * 7</code></pre>
 	<p>The attacks were also longer, with 24 minutes average duration:</p>
-	<pre><code>$ cat 1900-minutes| ~/bin/mmhistogram -t "Minutes"
+	<pre class="language-bash"><code class="language-bash">$ cat 1900-minutes| ~/bin/mmhistogram -t "Minutes"
 Minutes min:2.00 avg:23.69 max:1139.00 dev:57.65 count:1692
 Minutes:
  value |-------------------------------------------------- count
@@ -147,10 +178,9 @@ Minutes:
    128 |                                                 * 19
    256 |                                                 * 16
    512 |                                                   1
-  1024 |                                                   2
-</code></pre>
+  1024 |                                                   2</code></pre>
 	<p>Interestingly the bandwidth doesn't follow a <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a>. The average SSDP attack was 12Gbps and the largest just shy of 80Gbps:</p>
-	<pre><code>$ cat 1900-Gbps| ~/bin/mmhistogram -t "Bandwidth in Gbps"
+	<pre class="language-bash"><code class="language-bash">$ cat 1900-Gbps| ~/bin/mmhistogram -t "Bandwidth in Gbps"
 Bandwidth in Gbps min:0.41 avg:11.95 max:78.03 dev:13.32 count:1692
 Bandwidth in Gbps:
  value |-------------------------------------------------- count
@@ -161,24 +191,26 @@ Bandwidth in Gbps:
      8 |                                            ****** 65
     16 |************************************************** 533
     32 |                                       *********** 118
-    64 |                                                 * 13
-</code></pre>
+    64 |                                                 * 13</code></pre>
 	<p>Let's take a closer look at the largest (80Gbps) attack we've recorded. Here's a stacked chart showing packets per second going to each datacenter. This attack was using 940k reflector IPs, generated 30Mpps. The datacenters receiving the largest proportion of the traffic were San Jose, Los Angeles and Moscow.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/ssdp-4ca985a2211f8c88.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tn5lGP6EmQYqB6gwESNST/df0128602894fc8e25f86ba0a7e4a075/ssdp-4ca985a2211f8c88.png" alt="" class="kg-image" width="800" height="262" loading="lazy">
+
+	</figure>
 	<p>The average packet size was 300 bytes. Here's how the attack looked on the wire:</p>
-	<pre><code>$ tcpdump -n -r 4ca985a2211f8c88.pcap -K -c 7
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -n -r 4ca985a2211f8c88.pcap -K -c 7
 10:24:34.030339 IP - 219.121.108.27.1900 &gt; x.x.x.x.25255: UDP, length 301
 10:24:34.406943 IP - 208.102.119.37.1900 &gt; x.x.x.x.37081: UDP, length 331
 10:24:34.454707 IP - 82.190.96.126.1900 &gt; x.x.x.x.25255: UDP, length 299
 10:24:34.460455 IP - 77.49.122.27.1900 &gt; x.x.x.x.25255: UDP, length 289
 10:24:34.491559 IP - 212.171.247.139.1900 &gt; x.x.x.x.25255: UDP, length 323
 10:24:34.494385 IP - 111.1.86.109.1900 &gt; x.x.x.x.37081: UDP, length 320
-10:24:34.495474 IP - 112.2.47.110.1900 &gt; x.x.x.x.37081: UDP, length 288
-</code></pre>
-	<h2 id="sourceport0udpipfragmentation">Source port 0/udp IP fragmentation</h2>
+10:24:34.495474 IP - 112.2.47.110.1900 &gt; x.x.x.x.37081: UDP, length 288</code></pre>
+	<h2>Source port 0/udp IP fragmentation</h2>
 	<p>Sometimes we see reflection attacks showing UDP source and destination port numbers set to zero. This is usually a side effect of attacks where the reflecting servers responded with large fragmented packets. Only the first IP fragment contains a UDP header, preventing subsequent fragments from being reported properly. From a router point of view this looks like a UDP packet without UDP header. A confused router reports a packet from source port 0, going to port 0!</p>
 	<p>This is a tcpdump-like view:</p>
-	<pre><code>$ tcpdump -n -r 4651d0ec9e6fdc8e.pcap -c 8
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -n -r 4651d0ec9e6fdc8e.pcap -c 8
 02:05:03.408800 IP - 190.88.35.82.0 &gt; x.x.x.x.0: UDP, length 1167
 02:05:03.522186 IP - 95.111.126.202.0 &gt; x.x.x.x.0: UDP, length 1448
 02:05:03.525476 IP - 78.90.250.3.0 &gt; x.x.x.x.0: UDP, length 839
@@ -186,13 +218,12 @@ Bandwidth in Gbps:
 02:05:03.571970 IP - 54.158.14.127.0 &gt; x.x.x.x.0: UDP, length 1328
 02:05:03.734834 IP - 1.21.56.71.0 &gt; x.x.x.x.0: UDP, length 1250
 02:05:03.745220 IP - 195.4.131.174.0 &gt; x.x.x.x.0: UDP, length 1472
-02:05:03.766862 IP - 157.7.137.101.0 &gt; x.x.x.x.0: UDP, length 1122
-</code></pre>
+02:05:03.766862 IP - 157.7.137.101.0 &gt; x.x.x.x.0: UDP, length 1122</code></pre>
 	<p>An avid reader will notice - the source IPs above are open DNS resolvers! Indeed, from our experience most of the attacks categorized as fragmentation are actually a side effect of DNS amplifications.</p>
-	<h2 id="sourceport53udpdns">Source port 53/udp DNS</h2>
+	<h2>Source port 53/udp DNS</h2>
 	<p>Over the last six months we've seen 253 DNS amplifications. On average an attack used 7100 DNS reflector servers and lasted 24 minutes. Average bandwidth was around 3.4Gbps with largest attack using 12Gbps.</p>
 	<p>This is a simplification though. As mentioned above multiple DNS attacks were registered by our systems as two distinct vectors. One was categorized as source port 53, and another as source port 0. This happened when the DNS server flooded us with DNS responses larger than max packet size, usually about 1,460 bytes. It's easy to see if that was the case by inspecting the DNS attack packet lengths. Here's an example:</p>
-	<pre><code>DNS attack packet lengths min:44.00 avg:1458.94 max:1500.00 dev:208.14 count:40000
+	<pre class="language-bash"><code class="language-bash">DNS attack packet lengths min:44.00 avg:1458.94 max:1500.00 dev:208.14 count:40000
 DNS attack packet lengths:
  value |-------------------------------------------------- count
      8 |                                                   0
@@ -202,10 +233,9 @@ DNS attack packet lengths:
    128 |                                                   84
    256 |                                                   164
    512 |                                                   268
-  1024 |************************************************** 38876
-</code></pre>
+  1024 |************************************************** 38876</code></pre>
 	<p>The great majority of the received DNS packets were indeed close to the max packet size. This suggests the DNS responses were large and were split into multiple fragmented packets. Let's see the packet size distribution for accompanying source port 0 attack:</p>
-	<pre><code>$ tcpdump -n -r 4651d0ec9e6fdc8e.pcap \
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -n -r 4651d0ec9e6fdc8e.pcap \
     | grep length \
     | sed -s 's#.*length \([0-9]\+\).*#\1#g' \
     | ~/bin/mmhistogram -t "Port 0 packet length" -l -b 100
@@ -226,35 +256,49 @@ Port 0 packet length:
   1100 |              ************************************ 12986
   1200 |                                             ***** 1791
   1300 |                                             ***** 2057
-  1400 |************************************************** 17785
-</code></pre>
+  1400 |************************************************** 17785</code></pre>
 	<p>About half of the fragments were large, close to the max packet length in size, and rest were just shy of 1,200 bytes. This makes sense: a typical max DNS response is capped at 4,096 bytes. 4,096 bytes would be seen on the wire as one DNS packet fragment with an IP header, one max length packet fragment and one fragment of around 1,100 bytes:</p>
-	<pre><code>4,096 = 1,460+1,460+1,060
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">4,096 = 1,460+1,460+1,060</code></pre>
 	<p>For the record, the particular attack illustrated here used about 17k reflector server IPs, lasted 64 minutes, generated about 6Gbps on the source port 53 strand and 11Gbps of source port 0 fragments.</p>
 	<p>We have blogged about DNS reflection attacks in the past:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/65Gbps-ddos-no-problem">How to Launch a 65Gbps DDoS, and How to Stop One</a></li>
-		<li><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep Inside a DNS Amplification DDoS Attack</a></li>
-		<li><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the Consumer Product Safety Commission is (Inadvertently) Behind the Internet’s Largest DDoS Attacks</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/65Gbps-ddos-no-problem">How to Launch a 65Gbps DDoS, and How to Stop One</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep Inside a DNS Amplification DDoS Attack</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the Consumer Product Safety Commission is (Inadvertently) Behind the Internet’s Largest DDoS Attacks</a></p>
+		</li>
 	</ul>
-	<h2 id="otherprotocols">Other protocols</h2>
+	<h2>Other protocols</h2>
 	<p>We've seen amplification using other protocols such as:</p>
 	<ul>
-		<li>port 19 - Chargen</li>
-		<li>port 27015 - SRCDS</li>
-		<li>port 20800 - Call Of Duty</li>
+		<li>
+			<p>port 19 - Chargen</p>
+		</li>
+		<li>
+			<p>port 27015 - SRCDS</p>
+		</li>
+		<li>
+			<p>port 20800 - Call Of Duty</p>
+		</li>
 	</ul>
 	<p>...and many other obscure protocols. These attacks were usually small and not notable. We didn't see enough of then to provide meaningful statistics but the attacks were automatically mitigated.</p>
-	<h2 id="poorobservability">Poor observability</h2>
+	<h2>Poor observability</h2>
 	<p>Unfortunately we're not able to report on the contents of the attack traffic. This is notable for the NTP and DNS amplifications - without case by case investigations we can't report what responses were actually being delivered to us.</p>
 	<p>This is because all these attacks stopped at the network layer. Routers are heavily optimized to perform packet forwarding and have a limited capacity of extracting raw packets. Basically there is no "tcpdump" there.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/Untitled-2.001bbb.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OT709HCNnicRfaMIXxaRV/c73865139a75236b70c23eb7511b0be9/Untitled-2.001bbb.png" alt="" class="kg-image" width="640" height="292" loading="lazy">
+
+	</figure>
 	<p>We track these attacks with netflow, and we observe them hit our routers firewall. The tcpdump snippets shown above were actually fake, reconstructed artificially from netflow data.</p>
-	<h2 id="trivialtomitigate">Trivial to mitigate</h2>
+	<h2>Trivial to mitigate</h2>
 	<p>With properly configured firewall and sufficient network capacity (which isn't always easy to come by unless you are the size of Cloudflare) it's trivial to block the reflection attacks. But note that we've seen reflection attacks up to 80Gbps so you do need sufficient capacity.</p>
 	<p>Properly configuring a firewall is not rocket science: default DROP can get you quite far. In other cases you might want to configure rate limiting rules. This is a snippet from our JunOS config:</p>
-	<pre><code>term RATELIMIT-SSDP-UPNP {
+	<pre class="language-bash"><code class="language-bash">term RATELIMIT-SSDP-UPNP {
     from {
         destination-prefix-list {
             ANYCAST;
@@ -267,12 +311,11 @@ Port 0 packet length:
         count ACCEPT-SSDP-UPNP;
         next term;
     }
-}
-</code></pre>
+}</code></pre>
 	<p>But properly configuring firewall requires some Internet hygiene. You should avoid using the same IP for inbound and outbound traffic. For example, filtering a potential NTP DDoS will be harder if you can't just block inbound port 123 indiscriminately. If your server requires NTP, make sure it exits to the Internet over non-server IP address!</p>
-	<h2 id="capacitygame">Capacity game</h2>
+	<h2>Capacity game</h2>
 	<p>While having sufficient network capacity is necessary, you don't need to be a Tier 1 to survive amplification DDoS. The median attack size we've received was just 3.35Gbps, average 7Gbps, Only 195 attacks out of 6,353 attacks recorded - 3% - were larger than 30Gbps.</p>
-	<pre><code>All attacks in Gbps: min:0.04 avg:7.07 med:3.35 max:78.03 dev:9.06 count:6329
+	<pre class="language-bash"><code class="language-bash">All attacks in Gbps: min:0.04 avg:7.07 med:3.35 max:78.03 dev:9.06 count:6329
 All attacks in Gbps:
  value |-------------------------------------------------- count
      0 |                                  **************** 658
@@ -282,24 +325,30 @@ All attacks in Gbps:
      8 |                                  **************** 641
     16 |                               ******************* 748
     32 |                                              **** 157
-    64 |                                                   14
-</code></pre>
+    64 |                                                   14</code></pre>
 	<p>But not all Cloudflare datacenters have equal sized network connections to the Internet. So how can we manage?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/Untitled-2.001-1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zPhFBCkn2Dmw14rD2TUhe/0a206630fbc5b67f6c59183830434629/Untitled-2.001-1.png" alt="" class="kg-image" width="640" height="376" loading="lazy">
+
+	</figure>
 	<p>Cloudflare <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">was architected to withstand large attacks</a>. We are able to spread the traffic on two layers:</p>
 	<ul>
-		<li>Our <a href="https://blog.cloudflare.com/a-brief-anycast-primer">public network</a> uses <a href="https://en.wikipedia.org/wiki/Anycast">Anycast</a>. For certain attack types - like amplification - this allows us <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">to split the attack</a> across multiple datacenters avoiding a single choke point.</li>
-		<li>Additionally we use <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">ECMP</a> internally to spread a traffic destined to single IP address across multiple physical servers.</li>
+		<li>
+			<p>Our <a href="https://blog.cloudflare.com/a-brief-anycast-primer">public network</a> uses <a href="https://en.wikipedia.org/wiki/Anycast">Anycast</a>. For certain attack types - like amplification - this allows us <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">to split the attack</a> across multiple datacenters avoiding a single choke point.</p>
+		</li>
+		<li>
+			<p>Additionally we use <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">ECMP</a> internally to spread a traffic destined to single IP address across multiple physical servers.</p>
+		</li>
 	</ul>
 	<p>In the examples above, I showed a couple of amplification attacks getting nicely distributed across dozens of datacenters across the globe. In the shown attacks, if our router firewall failed, our physical servers wouldn't receive more than 500kpps of attack data. A well tuned <code>iptables</code> firewall should be able to cope with such a volume without <a href="https://blog.cloudflare.com/kernel-bypass">a special kernel offload</a> help.</p>
-	<h2 id="interasflowspecfortherest">Inter-AS Flowspec for the rest</h2>
+	<h2>Inter-AS Flowspec for the rest</h2>
 	<p>Withstanding reflection attacks requires sufficient network capacity. Internet citizens not having fat network cables should use a good Internet Service Provider supporting <a href="https://tools.ietf.org/html/rfc5575">flowspec</a>.</p>
 	<p>Flowspec can be thought of as a protocol enabling firewall rules to be transmitted over a BGP session. In theory flowspec allows BGP routers on <a href="https://conference.apnic.net/data/41/apricot-ddos-mitigation-using-flowspec_1456208439.pdf">different Autonomous Systems</a> to share firewall rules. The rule can be set up on the attacked router and distributed to the ISP network with the BGP magic. This will stop the packets closer to the source and effectively relieve network congestion.</p>
 	<p>Unfortunately, due to performance and security concerns only a handful of large ISP's allow inter-AS flowspec rules. Still - it's worth a try. Check if your ISP is willing to accept flowspec from your BGP router!</p>
 	<p>At Cloudflare we maintain an intra-AS flowspec infrastructure, <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">and we have plenty of war stories</a> about it.</p>
-	<h2 id="summary">Summary</h2>
+	<h2>Summary</h2>
 	<p>In this blog post we've given details of three popular reflection attack vectors: NTP, SSDP and DNS. We discussed how the Cloudflare Anycast network helps us avoid a single choke point. In most cases dealing with reflection attacks is not rocket science though sufficient network capacity is needed and simple firewall rules are usually enough to cope.</p>
 	<p>The types of DDoS attacks we see from other vectors (such as IoT botnets) are another matter. They tend to be much larger and require specialized, automatic DDoS mitigation. And, of course, there are many DDoS attacks that occur using techniques other than reflection and not just using UDP.</p>
 	<p>Whether you face DDoS attacks of 10Gbps+, 100Gbps+ or 1Tbps+, Cloudflare can mitigate them.</p>
-	<!--kg-card-end: markdown-->
 </div>

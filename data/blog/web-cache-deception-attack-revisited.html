@@ -1,17 +1,19 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dDqeFYNS2Qi9o2ecw0sGd/41cf8a142a5b6ebff6016d2cf1c66c64/web-cache-deception-attack-revisited.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In April, we wrote about <a href="https://blog.cloudflare.com/understanding-our-cache-and-the-web-cache-deception-attack">Web Cache Deception attacks</a>, and how our customers can avoid them using origin configuration.</p>
 	<p>Read that blog post to learn about how to configure your website, and for those who are not able to do that, how to disable caching for certain URIs to prevent this type of attacks. Since our previous blog post, we have looked for but have not seen any large scale attacks like this in the wild.</p>
 	<p>Today, we have released a tool to help our customers make sure only assets that should be cached are being cached.</p>
-	<h3 id="abriefreintroductiontowebcachedeceptionattack">A brief re-introduction to Web Cache Deception attack</h3>
+	<h3>A brief re-introduction to Web Cache Deception attack</h3>
 	<p>Recall that the Web Cache Deception attack happens when an attacker tricks a user into clicking a link in the format of <code>http://www.example.com/newsfeed/foo.jpg</code>, when <code>http://www.example.com/newsfeed</code> is the location of a dynamic script that returns different content for different users. For some website configurations (default in Apache but not in nginx), this would invoke <code>/newsfeed</code> with <a href="https://tools.ietf.org/html/rfc3875#section-4.1.5"><code>PATH_INFO</code></a> set to <code>/foo.jpg</code>. If <code>http://www.example.com/newsfeed/foo.jpg</code> does not return the proper <code>Cache-Control</code> headers to tell a web cache not to cache the content, web caches may decide to cache the result based on the extension of the URL. The attacker can then visit the same URL and retrieve the cached content of a private page.</p>
 	<p>The proper fix for this is to configure your website to either reject requests with the extra <code>PATH_INFO</code> or to return the proper <code>Cache-Control</code> header. Sometimes our customers are not able to do that (maybe the website is running third-party software that they do not fully control), and they can apply a Bypass Cache Page Rule for those script locations.</p>
-	<h3 id="cachedeceptionarmor">Cache Deception Armor</h3>
-	<p><img src="https://images.unsplash.com/photo-1460194436988-671f763436b7?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ%3D%3D&amp;s=f88dc2407daf736e430ab5820b486f60" alt="black and white portrait of a man in Medieval armor, getting ready to swing a sword." loading="lazy"><br>
-		<small>Photo by <a href="https://unsplash.com/@enzo74?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Henry Hustava</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></small>
-	</p>
+	<h3>Cache Deception Armor</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KOEBIR0VfOtdSOjvueaLv/e1e8a827fa4bfc6e1cc457fa9663ac09/photo-1460194436988-671f763436b7" alt="black and white portrait of a man in Medieval armor, getting ready to swing a sword." class="kg-image" width="1080" height="720" loading="lazy">
+
+	</figure>
+	<p>Photo by <a href="https://unsplash.com/@enzo74?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Henry Hustava</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
 	<p>The new Cache Deception Armor Page Rule protects customers from Web Cache Deception attacks while still allowing static assets to be cached. It verifies that the URL's extension matches the returned <code>Content-Type</code>. In the above example, if <code>http://www.example.com/newsfeed</code> is a script that outputs a web page, the <code>Content-Type</code> is <code>text/html</code>. On the other hand, <code>http://www.example.com/newsfeed/foo.jpg</code> is expected to have <code>image/jpeg</code> as <code>Content-Type</code>. When we see a mismatch that could result in a Web Cache Deception attack, we will not cache the response.</p>
 	<p>There are some exceptions to this. For example if the returned <code>Content-Type</code> is <code>application/octet-stream</code> we don't care what the extension is, because that's typically a signal to instruct the browser to save the asset instead of to display it. We also allow <code>.jpg</code> to be served as <code>image/webp</code> or <code>.gif</code> as <code>video/webm</code> and other cases that we think are unlikely to be attacks.</p>
 	<p>This new Page Rule depends upon <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852s">Origin Cache Control</a>. A <code>Cache-Control</code> header from the origin or Edge Cache TTL Page Rule will override this protection.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,33 +1,53 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-9.png" class="kg-image" alt="New ways to troubleshoot Cloudflare Access 'blocked' messages" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sdHQvbtJmNo643O9TI8V4/7ea268eedb0279adaa24fc19277e099b/image4-9.png" alt="New ways to troubleshoot Cloudflare Access 'blocked' messages" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Access is the industry’s easiest <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> access control solution to deploy and maintain. Users can connect via Access to reach the resources and applications that power your team, all while Cloudflare’s network enforces least privilege rules and accelerates their connectivity.</p>
 	<p>Enforcing least privilege rules can lead to accidental blocks for legitimate users. Over the past year, we have focused on adding <a href="https://community.cloudflare.com/t/cloudflare-access-policy-tester-and-block-reasons">tools</a> to make it easier for security administrators to troubleshoot why legitimate users are denied access. These block reasons were initially limited to users denied access due to information about their identity (e.g. wrong identity provider group, email address not in the Access policy, etc.)</p>
 	<p>Zero Trust <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access control</a> extends beyond identity and device. Cloudflare Access allows for rules that enforce how a user connects. These rules can include their location, IP address, the presence of our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> and other controls.</p>
 	<p>Starting today, you can investigate those allow or block decisions based on how a connection was made with the same level of ease that you can troubleshoot user identity. We’re excited to help more teams make the migration to a Zero Trust model as easy as possible and ensure the ongoing maintenance is a significant reduction compared to their previous private network.</p>
-	<h3 id="why-was-i-blocked">Why was I blocked?</h3>
+	<h3>Why was I blocked?</h3>
 	<p>All Zero Trust deployments start and end with identity. In a Zero Trust model, you want your resources (and the network protecting them) to have zero trust by default of any incoming connection or request. Instead, every attempt should have to prove to the network that they should be allowed to connect.</p>
 	<p>Organizations provide users with a mechanism of proof by integrating their identity provider (IdP) like Azure Active Directory or Okta. With Cloudflare, teams can integrate multiple providers simultaneously to help users connect during activities like mergers or to allow contractors to reach specific resources. Users authenticate with their provider and Cloudflare Access uses that to determine if we should trust a given request or connection.</p>
 	<p>After integrating identity, most teams start to layer on new controls like device posture. In some cases, or in every case, the resources are so sensitive that you want to ensure only approved users connecting from managed, healthy devices are allowed to connect.</p>
 	<p>While that model significantly improves security, it can also create strain for IT teams managing remote or hybrid workforces. Troubleshooting “why” a user cannot reach a resource becomes a guessing game over chat. Earlier this year, we launched a new tool to tell you exactly why a user’s identity or device posture did not meet the rules that your administrators created.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-about-how-they-connected">What about how they connected?</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn4Aw1yeKmTsMavr9Tf7A/7b87d5d463aba62a59c98bf9b55a5c14/image3-11.png" alt="" class="kg-image" width="787" height="608" loading="lazy">
+
+	</figure>
+	<h3>What about how they connected?</h3>
 	<p>As organizations advance in their Zero Trust journey, they add rules that go beyond the identity of the user or the posture of the device. For example, some teams might have regulatory restrictions that prevent users from accessing sensitive data from certain countries. Other enterprises need to understand the network context before granting access.</p>
 	<p>These adaptive controls enforce decisions around how a user connects. The user (and their device) might otherwise be allowed, but their current context like location or network prohibits them from doing so. These checks can extend to automated services, too, like a trusted chatbot that uses a service token to connect to your internal ticketing system.</p>
 	<p>While user and device posture checks require at least one step of authentication, these contextual rules can consist of policies that make it simple for a bad actor to retry over and over again like an IP address check. While the user will still be denied, that kind of information can overwhelm and flood your logs while you attempt to investigate what should be a valid login attempt.</p>
 	<p>With today’s release, your team can now have the best of both worlds.</p>
 	<p>However, other checks are not based on a user’s identity, these include looking at a device’s properties, network context, location, presence of a certificate and more. Requests that fail these “non-identity” checks are immediately blocked. These requests are immediately blocked in order to prevent a malicious user from seeing which identity providers are used by a business.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-23.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NQryfkVToO2AMvsbKNDNM/0d1f1b56c62c0d8852e5576c88416b11/image1-23.png" alt="" class="kg-image" width="1918" height="519" loading="lazy">
+
+	</figure>
 	<p>Additionally, these blocks were not logged in order to avoid overloading the Access request logs of an individual account. A malicious user attempting hundreds of requests or a misconfigured API making thousands of requests should not cloud a security admin’s ability to analyze legitimate user Access requests.</p>
 	<p>These logs would immediately become overloaded if every blocked request were logged. However, we heard from users that in some situations, especially during initial setup, it is helpful to see individual block requests even for non-identity checks.</p>
 	<p>We have released a GraphQL API that allows Access administrators to look up a specific blocked request by RayID, User or Application. The API response will return a full output of the properties of the associated request which makes it much easier to diagnose why a specific request was blocked.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LTEVSS76EJG20vVl4TXS4/991167dd905cce1a6a57bd342497e146/image5-5.png" alt="" class="kg-image" width="420" height="311" loading="lazy">
+
+	</figure>
 	<p>In addition to the GraphQL API, we also improved the user facing block page to include additional detail about a user’s session. This will make it faster for end users and administrators to diagnose why a legitimate user was not allowed access.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-15.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="how-does-it-work">How does it work?</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7f8WpHnWbF99HA2gki3yvw/f7b4c6122e3a809b7db73157aa3e2402/image2-15.png" alt="" class="kg-image" width="1135" height="728" loading="lazy">
+
+	</figure>
+	<h3>How does it work?</h3>
 	<p>Collecting blocked request logs for thousands of Access customers presented an interesting scale challenge. A single application in a single customer account could have millions of blocked requests in a day, multiply that out across all protected applications across all Access customers and the number of logs start to get large quickly.</p>
 	<p>We were able to leverage our existing analytics pipeline that was built to handle the scale of our global network which is far beyond the scale of Access. The analytics pipeline is configured to intelligently begin sampling data if an individual account begins generating too many requests. The majority of customers will have all non-identity block logs captured while accounts generating large traffic volumes will retain a significant portion to diagnose issues.</p>
-	<h3 id="how-can-i-get-started">How can I get started?</h3>
+	<h3>How can I get started?</h3>
 	<p>We have built an <a href="https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-access-login-events">example guide</a> to use the GraphQL API to diagnose Access block reasons. These logs can be manually checked using an GraphQL API client or periodically ingested into a log storage database.</p>
 	<p>We know that achieving a Zero Trust Architecture is a journey and a significant part of that is troubleshooting and initial configuration. We are committed to making Cloudflare Zero Trust the <a href="https://www.cloudflare.com/zero-trust/solutions">easiest Zero Trust solution</a> to troubleshoot and configure at scale. Keep an eye out for additional announcements in the coming months that make Cloudflare Zero Trust even easier to troubleshoot.</p>
 	<p>If you don’t already have Cloudflare Zero Trust set up, getting started is easy - see the platform yourself with 50 free seats by signing up <a href="https://www.cloudflare.com/products/zero-trust">here</a>.</p>

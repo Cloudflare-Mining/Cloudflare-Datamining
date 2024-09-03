@@ -1,24 +1,36 @@
-<div class="mb2 gray5">14 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-14.png" class="kg-image" alt="The quantum state of a TCP port" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jtTk2dCNu3WzoL9bLxFHA/5f8216b7c8c3b567cb22a33237d300f0/image6-14.png" alt="The quantum state of a TCP port" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Have you noticed how simple questions sometimes lead to complex answers? Today we will tackle one such question. Category: our favorite - Linux networking.</p>
-	<h2 id="when-can-two-tcp-sockets-share-a-local-address">When can two TCP sockets share a local address?</h2>
+	<h2>When can two TCP sockets share a local address?</h2>
 	<p>If I navigate to <a href="https://blog.cloudflare.com">https://blog.cloudflare.com/</a>, my browser will connect to a remote TCP address, might be 104.16.132.229:443 in this case, from the local IP address assigned to my Linux machine, and a randomly chosen local TCP port, say 192.0.2.42:54321. What happens if I then decide to head to a different site? Is it possible to establish another TCP connection from the same local IP address and port?</p>
 	<p>To find the answer let's do a bit of <a href="https://en.wikipedia.org/wiki/Discovery_learning">learning by discovering</a>. We have prepared eight quiz questions. Each will let you discover one aspect of the rules that govern local address sharing between TCP sockets under Linux. Fair warning, it might get a bit mind-boggling.</p>
 	<p>Questions are split into two groups by test scenario:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-15.png" class="kg-image" alt="image" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Fu0occJtMgjz3Rd7xGJCo/415fb6cd96d6265d5a533269c4f7aa0e/image4-15.png" alt="image" class="kg-image" width="881" height="461" loading="lazy">
+
+	</figure>
 	<p>In the first test scenario, two sockets connect from the same local port to the same remote IP and port. However, the local IP is different for each socket.</p>
 	<p>While, in the second scenario, the local IP and port is the same for all sockets, but the remote address, or actually just the IP address, differs.</p>
 	<p>In our quiz questions, we will either:</p>
 	<ol>
-		<li>let the OS automatically select the the local IP and/or port for the socket, or</li>
-		<li>we will explicitly assign the local address with <a href="https://man7.org/linux/man-pages/man2/bind.2.html"><code>bind()</code></a> before <a href="https://man7.org/linux/man-pages/man2/connect.2.html"><code>connect()</code></a>’ing the socket; a method also known as <a href="https://idea.popcount.org/2014-04-03-bind-before-connect">bind-before-connect</a>.</li>
+		<li>
+			<p>let the OS automatically select the the local IP and/or port for the socket, or</p>
+		</li>
+		<li>
+			<p>we will explicitly assign the local address with <a href="https://man7.org/linux/man-pages/man2/bind.2.html"><code>bind()</code></a> before <a href="https://man7.org/linux/man-pages/man2/connect.2.html"><code>connect()</code></a>’ing the socket; a method also known as <a href="https://idea.popcount.org/2014-04-03-bind-before-connect">bind-before-connect</a>.</p>
+		</li>
 	</ol>
 	<p>Because we will be examining corner cases in the bind() logic, we need a way to exhaust available local addresses, that is (IP, port) pairs. We could just create lots of sockets, but it will be easier to <a href="https://www.kernel.org/doc/html/latest/networking/ip-sysctl.html#ip-variables">tweak the system configuration</a> and pretend that there is just one ephemeral local port, which the OS can assign to sockets:</p>
 	<p><code>sysctl -w net.ipv4.ip_local_port_range='60000 60000'</code></p>
 	<p>Each quiz question is a short Python snippet. Your task is to predict the outcome of running the code. Does it succeed? Does it fail? If so, what fails? Asking ChatGPT is not allowed ?</p>
-	<p>There is always a common setup procedure to keep in mind. We will omit it from the quiz snippets to keep them short:</p><!--kg-card-begin: markdown-->
-	<pre><code>from os import system
+	<p>There is always a common setup procedure to keep in mind. We will omit it from the quiz snippets to keep them short:</p>
+	<pre class="language-bash"><code class="language-bash">from os import system
 from socket import *
 
 # Missing constants
@@ -30,11 +42,9 @@ system("sysctl -w net.ipv4.ip_local_port_range='60000 60000'")
 # Open a listening socket at *:1234. We will connect to it.
 ln = socket(AF_INET, SOCK_STREAM)
 ln.bind(("", 1234))
-ln.listen(SOMAXCONN)
-</code></pre>
-	<!--kg-card-end: markdown-->
+ln.listen(SOMAXCONN)</code></pre>
 	<p>With the formalities out of the way, let us begin. Ready. Set. Go!</p>
-	<h3 id="scenario-1-when-the-local-ip-is-unique-but-the-local-port-is-the-same">Scenario #1: When the local IP is unique, but the local port is the same</h3>
+	<h3>Scenario #1: When the local IP is unique, but the local port is the same</h3>
 	<p>In Scenario #1 we connect two sockets to the same remote address - 127.9.9.9:1234. The sockets will use different local IP addresses, but is it enough to share the local port?</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -99,9 +109,9 @@ ln.listen(SOMAXCONN)
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="quiz-1">Quiz #1</h3>
-	<p>On the local side, we bind two sockets to distinct, explicitly specified IP addresses. We will allow the OS to select the local port. Remember: our local ephemeral port range contains just one port (60,000).</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<h3>Quiz #1</h3>
+	<p>On the local side, we bind two sockets to distinct, explicitly specified IP addresses. We will allow the OS to select the local port. Remember: our local ephemeral port range contains just one port (60,000).</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.1.1.1', 0))
 s1.connect(('127.9.9.9', 1234))
 s1.getsockname(), s1.getpeername()
@@ -109,37 +119,31 @@ s1.getsockname(), s1.getpeername()
 s2 = socket(AF_INET, SOCK_STREAM)
 s2.bind(('127.2.2.2', 0))
 s2.connect(('127.9.9.9', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_1.py">Answer #1</a></p>
-	<h3 id="quiz-2">Quiz #2</h3>
-	<p>Here, the setup is almost identical as before. However, we ask the OS to select the local IP address and port for the first socket. Do you think the result will differ from the previous question?</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<h3>Quiz #2</h3>
+	<p>Here, the setup is almost identical as before. However, we ask the OS to select the local IP address and port for the first socket. Do you think the result will differ from the previous question?</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.connect(('127.9.9.9', 1234))
 s1.getsockname(), s1.getpeername()
 
 s2 = socket(AF_INET, SOCK_STREAM)
 s2.bind(('127.2.2.2', 0))
 s2.connect(('127.9.9.9', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_2.py">Answer #2</a></p>
-	<h3 id="quiz-3">Quiz #3</h3>
-	<p>This quiz question is just like &nbsp;the one above. We just changed the ordering. First, we connect a socket from an explicitly specified local address. Then we ask the system to select a local address for us. Obviously, such an ordering change should not make any difference, right?</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<h3>Quiz #3</h3>
+	<p>This quiz question is just like &nbsp;the one above. We just changed the ordering. First, we connect a socket from an explicitly specified local address. Then we ask the system to select a local address for us. Obviously, such an ordering change should not make any difference, right?</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.1.1.1', 0))
 s1.connect(('127.9.9.9', 1234))
 s1.getsockname(), s1.getpeername()
 
 s2 = socket(AF_INET, SOCK_STREAM)
 s2.connect(('127.9.9.9', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_3.py">Answer #3</a></p>
-	<h3 id="scenario-2-when-the-local-ip-and-port-are-the-same-but-the-remote-ip-differs">Scenario #2: When the local IP and port are the same, but the remote IP differs</h3>
+	<h3>Scenario #2: When the local IP and port are the same, but the remote IP differs</h3>
 	<p>In Scenario #2 we reverse our setup. Instead of multiple local IP's and one remote address, we now have one local address <code>127.0.0.1:60000</code> and two distinct remote addresses. The question remains the same - can two sockets share the local port? Reminder: ephemeral port range is still of size one.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -204,21 +208,19 @@ s2.getsockname(), s2.getpeername()
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="quiz-4">Quiz #4</h3>
-	<p>Let’s start from the basics. We <code>connect()</code> to two distinct remote addresses. This is a warm up ?</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<h3>Quiz #4</h3>
+	<p>Let’s start from the basics. We <code>connect()</code> to two distinct remote addresses. This is a warm up ?</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.connect(('127.8.8.8', 1234))
 s1.getsockname(), s1.getpeername()
 
 s2 = socket(AF_INET, SOCK_STREAM)
 s2.connect(('127.9.9.9', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_4.py">Answer #4</a></p>
-	<h3 id="quiz-5">Quiz #5</h3>
-	<p>What if we <code>bind()</code> to a local IP explicitly but let the OS select the port - does anything change?</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<h3>Quiz #5</h3>
+	<p>What if we <code>bind()</code> to a local IP explicitly but let the OS select the port - does anything change?</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.0.0.1', 0))
 s1.connect(('127.8.8.8', 1234))
 s1.getsockname(), s1.getpeername()
@@ -226,13 +228,11 @@ s1.getsockname(), s1.getpeername()
 s2 = socket(AF_INET, SOCK_STREAM)
 s2.bind(('127.0.0.1', 0))
 s2.connect(('127.9.9.9', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_5.py">Answer #5</a></p>
-	<h3 id="quiz-6">Quiz #6</h3>
-	<p>This time we explicitly specify the local address and port. Sometimes there is a need to specify the local port.</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<h3>Quiz #6</h3>
+	<p>This time we explicitly specify the local address and port. Sometimes there is a need to specify the local port.</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.0.0.1', 60_000))
 s1.connect(('127.8.8.8', 1234))
 s1.getsockname(), s1.getpeername()
@@ -240,14 +240,12 @@ s1.getsockname(), s1.getpeername()
 s2 = socket(AF_INET, SOCK_STREAM)
 s2.bind(('127.0.0.1', 60_000))
 s2.connect(('127.9.9.9', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_6.py">Answer #6</a></p>
-	<h3 id="quiz-7">Quiz #7</h3>
+	<h3>Quiz #7</h3>
 	<p>Just when you thought it couldn’t get any weirder, we add <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEADDR"><code>SO_REUSEADDR</code></a> into the mix.</p>
-	<p>First, we ask the OS to allocate a local address for us. Then we explicitly bind to the same local address, which we know the OS must have assigned to the first socket. We enable local address reuse for both sockets. Is this allowed?</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<p>First, we ask the OS to allocate a local address for us. Then we explicitly bind to the same local address, which we know the OS must have assigned to the first socket. We enable local address reuse for both sockets. Is this allowed?</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 s1.connect(('127.8.8.8', 1234))
 s1.getsockname(), s1.getpeername()
@@ -256,13 +254,11 @@ s2 = socket(AF_INET, SOCK_STREAM)
 s2.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 s2.bind(('127.0.0.1', 60_000))
 s2.connect(('127.9.9.9', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_7.py">Answer #7</a></p>
-	<h3 id="quiz-8">Quiz #8</h3>
-	<p>Finally, a cherry on top. This is Quiz #7 but in reverse. Common sense dictates that the outcome should be the same, but is it?</p><!--kg-card-begin: markdown-->
-	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
+	<h3>Quiz #8</h3>
+	<p>Finally, a cherry on top. This is Quiz #7 but in reverse. Common sense dictates that the outcome should be the same, but is it?</p>
+	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 s1.bind(('127.0.0.1', 60_000))
 s1.connect(('127.9.9.9', 1234))
@@ -271,24 +267,32 @@ s1.getsockname(), s1.getpeername()
 s2 = socket(AF_INET, SOCK_STREAM)
 s2.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 s2.connect(('127.8.8.8', 1234))
-s2.getsockname(), s2.getpeername()
-</code></pre>
-	<!--kg-card-end: markdown-->
+s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_8.py">Answer #8</a></p>
-	<h2 id="the-secret-tri-state-life-of-a-local-tcp-port">The secret tri-state life of a local TCP port</h2>
+	<h2>The secret tri-state life of a local TCP port</h2>
 	<p>Is it all clear now? Well, probably no. It feels like reverse engineering a black box. So what is happening behind the scenes? Let's take a look.</p>
-	<p>Linux tracks all TCP <strong>ports</strong> in use in a hash table named <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L166">bhash</a>. Not to be confused with with <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L156">ehash</a> table, which tracks <strong>sockets</strong> with both local and remote address already assigned.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/Untitled.png" class="kg-image" alt="image" loading="lazy"></figure>
+	<p>Linux tracks all TCP <b>ports</b> in use in a hash table named <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L166">bhash</a>. Not to be confused with with <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L156">ehash</a> table, which tracks <b>sockets</b> with both local and remote address already assigned.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OJ1M8Zu9lgEZoEJdJCNgr/9a7b060c02b468c2d84910ead24aa88d/Untitled.png" alt="image" class="kg-image" width="1600" height="585" loading="lazy">
+
+	</figure>
 	<p>Each hash table entry points to a chain of so-called bind buckets, which group together sockets which share a local port. To be precise, sockets are grouped into buckets by:</p>
 	<ul>
-		<li>the <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html">network namespace</a> they belong to, and</li>
-		<li>the <a href="https://docs.kernel.org/networking/vrf.html">VRF</a> device they are bound to, and</li>
-		<li>the local port number they are bound to.</li>
+		<li>
+			<p>the <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html">network namespace</a> they belong to, and</p>
+		</li>
+		<li>
+			<p>the <a href="https://docs.kernel.org/networking/vrf.html">VRF</a> device they are bound to, and</p>
+		</li>
+		<li>
+			<p>the local port number they are bound to.</p>
+		</li>
 	</ul>
 	<p>But in the simplest possible setup - single network namespace, no VRFs - we can say that sockets in a bind bucket are grouped by their local port number.</p>
 	<p>The set of sockets in each bind bucket, that is sharing a local port, is backed by a linked list of named owners.</p>
-	<p>When we ask the kernel to assign a local address to a socket, its task is to check for a conflict with any existing socket. That is because a local port number can be shared only <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L43">under some conditions</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code>/* There are a few simple rules, which allow for local port reuse by
+	<p>When we ask the kernel to assign a local address to a socket, its task is to check for a conflict with any existing socket. That is because a local port number can be shared only <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L43">under some conditions</a>:</p>
+	<pre class="language-bash"><code class="language-bash">/* There are a few simple rules, which allow for local port reuse by
  * an application.  In essence:
  *
  *   1) Sockets bound to different interfaces may share a local port.
@@ -308,11 +312,9 @@ s2.getsockname(), s2.getpeername()
  * As long as all sockets added to a bind bucket pass this test,
  * the flag bit will be set.
  * ...
- */
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The comment above hints that the kernel tries to optimize for the happy case of no conflict. To this end the bind bucket holds additional state which aggregates the properties of the sockets it holds:</p><!--kg-card-begin: markdown-->
-	<pre><code>struct inet_bind_bucket {
+ */</code></pre>
+	<p>The comment above hints that the kernel tries to optimize for the happy case of no conflict. To this end the bind bucket holds additional state which aggregates the properties of the sockets it holds:</p>
+	<pre class="language-bash"><code class="language-bash">struct inet_bind_bucket {
         /* ... */
         signed char          fastreuse;
         signed char          fastreuseport;
@@ -324,18 +326,24 @@ s2.getsockname(), s2.getpeername()
         unsigned short       fast_sk_family;
         bool                 fast_ipv6_only;
         /* ... */
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</code></pre>
 	<p>Let's focus our attention just on the first aggregate property - <code>fastreuse</code>. It has existed since, now prehistoric, Linux 2.1.90pre1. Initially in the form of a <a href="https://git.kernel.org/pub/scm/linux/kernel/git/history/history.git/tree/include/net/tcp.h?h=2.1.90pre1&amp;id=9d11a5176cc5b9609542b1bd5a827b8618efe681#n76">bit flag</a>, as the comment says, only to evolve to a byte-sized field over time.</p>
 	<p>The other six fields came on much later with the introduction of <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da5e36308d9f7151845018369148201a5d28b46d"><code>SO_REUSEPORT</code> in Linux 3.9</a>. Because they play a role only when there are sockets with the <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEPORT"><code>SO_REUSEPORT</code></a> flag set. We are going to ignore them today.</p>
 	<p>Whenever the Linux kernel needs to bind a socket to a local port, it first has to look for the bind bucket for that port. What makes life a bit more complicated is the fact that the search for a TCP bind bucket exists in two places in the kernel. The bind bucket lookup can happen early - <code>at bind()</code> time - or late - <code>at connect()</code> - time. Which one gets called depends on how the connected socket has been set up:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image5-5.png" class="kg-image" alt="image" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KOEGkTF7HEH7qku86bufY/7586451996b53e4317fdce0356f1ccfa/image5-5.png" alt="image" class="kg-image" width="711" height="481" loading="lazy">
+
+	</figure>
 	<p>However, whether we land in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L486"><code>inet_csk_get_port</code></a> or <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L992"><code>__inet_hash_connect</code></a>, we always end up walking the bucket chain in the bhash looking for the bucket with a matching port number. The bucket might already exist or we might have to create it first. But once it exists, its fastreuse field is in one of three possible states: <code>-1</code>, <code>0</code>, or <code>+1</code>. As if Linux developers were inspired by <a href="https://en.wikipedia.org/wiki/Triplet_state">quantum mechanics</a>.</p>
 	<p>That state reflects two aspects of the bind bucket:</p>
 	<ol>
-		<li>What sockets are in the bucket?</li>
-		<li>When can the local port be shared?</li>
+		<li>
+			<p>What sockets are in the bucket?</p>
+		</li>
+		<li>
+			<p>When can the local port be shared?</p>
+		</li>
 	</ol>
 	<p>So let us try to decipher the three possible fastreuse states then, and what they mean in each case.</p>
 	<p>First, what does the fastreuse property say about the owners of the bucket, that is the sockets using that local port?</p><!--kg-card-begin: html-->
@@ -488,14 +496,22 @@ s2.getsockname(), s2.getpeername()
 	<p>③ Because <code>inet_hash_connect()</code> → <code>__inet_hash_connect()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L1062">skips buckets</a> with <code>fastreuse != -1</code>.</p>
 	<p>While it all looks rather complicated at first sight, we can distill the table above into a few statements that hold true, and are a bit easier to digest:</p>
 	<ul>
-		<li><code>bind()</code>, or early local address allocation, always succeeds if there is no local IP address conflict with any existing socket,</li>
-		<li><code>connect()</code>, or late local address allocation, always fails when TCP bind bucket for a local port is in any state other than <code>fastreuse = -1</code>,</li>
-		<li><code>connect()</code> only succeeds if there is no local and remote address conflict,</li>
-		<li><code>SO_REUSEADDR</code> socket option allows local address sharing, if all conflicting sockets also use it (and none of them is in the listening state).</li>
+		<li>
+			<p><code>bind()</code>, or early local address allocation, always succeeds if there is no local IP address conflict with any existing socket,</p>
+		</li>
+		<li>
+			<p><code>connect()</code>, or late local address allocation, always fails when TCP bind bucket for a local port is in any state other than <code>fastreuse = -1</code>,</p>
+		</li>
+		<li>
+			<p><code>connect()</code> only succeeds if there is no local and remote address conflict,</p>
+		</li>
+		<li>
+			<p><code>SO_REUSEADDR</code> socket option allows local address sharing, if all conflicting sockets also use it (and none of them is in the listening state).</p>
+		</li>
 	</ul>
-	<h3 id="this-is-crazy-i-don-t-believe-you-">This is crazy. I don’t believe you.</h3>
-	<p>Fortunately, you don't have to. With <a href="https://drgn.readthedocs.io/en/latest/index.html">drgn</a>, the programmable debugger, we can examine the bind bucket state on a live kernel:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-Python">#!/usr/bin/env drgn
+	<h3>This is crazy. I don’t believe you.</h3>
+	<p>Fortunately, you don't have to. With <a href="https://drgn.readthedocs.io/en/latest/index.html">drgn</a>, the programmable debugger, we can examine the bind bucket state on a live kernel:</p>
+	<pre class="language-python"><code class="language-python">#!/usr/bin/env drgn
 
 """
 dump_bhash.py - List all TCP bind buckets in the current netns.
@@ -550,12 +566,10 @@ def main():
         dump_bind_bucket(head, net)
 
 
-main()
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Let's take <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/dump_bhash.py">this script</a> for a spin and try to confirm what <em>Table 1</em> claims to be true. Keep in mind that to produce the <code>ipython --classic</code> session snippets below I've used the same setup as for the quiz questions.</p>
-	<p>Two connected sockets sharing ephemeral port 60,000:</p><!--kg-card-begin: markdown-->
-	<pre><code>&gt;&gt;&gt; s1 = socket(AF_INET, SOCK_STREAM)
+main()</code></pre>
+	<p>Let's take <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/dump_bhash.py">this script</a> for a spin and try to confirm what <i>Table 1</i> claims to be true. Keep in mind that to produce the <code>ipython --classic</code> session snippets below I've used the same setup as for the quiz questions.</p>
+	<p>Two connected sockets sharing ephemeral port 60,000:</p>
+	<pre class="language-bash"><code class="language-bash">&gt;&gt;&gt; s1 = socket(AF_INET, SOCK_STREAM)
 &gt;&gt;&gt; s1.connect(('127.1.1.1', 1234))
 &gt;&gt;&gt; s2 = socket(AF_INET, SOCK_STREAM)
 &gt;&gt;&gt; s2.connect(('127.2.2.2', 1234))
@@ -563,11 +577,9 @@ main()
 TCP-PORT  FASTREUSE  #OWNERS
     1234          0        3
    60000         -1        2
-&gt;&gt;&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Two bound sockets reusing port 60,000:</p><!--kg-card-begin: markdown-->
-	<pre><code>&gt;&gt;&gt; s1 = socket(AF_INET, SOCK_STREAM)
+&gt;&gt;&gt;</code></pre>
+	<p>Two bound sockets reusing port 60,000:</p>
+	<pre class="language-bash"><code class="language-bash">&gt;&gt;&gt; s1 = socket(AF_INET, SOCK_STREAM)
 &gt;&gt;&gt; s1.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 &gt;&gt;&gt; s1.bind(('127.1.1.1', 60_000))
 &gt;&gt;&gt; s2 = socket(AF_INET, SOCK_STREAM)
@@ -577,11 +589,9 @@ TCP-PORT  FASTREUSE  #OWNERS
 TCP-PORT  FASTREUSE  #OWNERS
     1234          0        1
    60000         +1        2
-&gt;&gt;&gt; 
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>A mix of bound sockets with and without REUSEADDR sharing port 60,000:</p><!--kg-card-begin: markdown-->
-	<pre><code>&gt;&gt;&gt; s1 = socket(AF_INET, SOCK_STREAM)
+&gt;&gt;&gt; </code></pre>
+	<p>A mix of bound sockets with and without REUSEADDR sharing port 60,000:</p>
+	<pre class="language-bash"><code class="language-bash">&gt;&gt;&gt; s1 = socket(AF_INET, SOCK_STREAM)
 &gt;&gt;&gt; s1.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 &gt;&gt;&gt; s1.bind(('127.1.1.1', 60_000))
 &gt;&gt;&gt; !./dump_bhash.py
@@ -594,26 +604,32 @@ TCP-PORT  FASTREUSE  #OWNERS
 TCP-PORT  FASTREUSE  #OWNERS
     1234          0        1
    60000          0        2
-&gt;&gt;&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>With such tooling, proving that <em>Table 2</em> holds true is just a matter of writing a bunch of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py">exploratory tests</a>.</p>
-	<p>But what has happened in that last snippet? The bind bucket has clearly transitioned from one fastreuse state to another. This is what <em>Table 1</em> fails to capture. And it means that we still don't have the full picture.</p>
+&gt;&gt;&gt;</code></pre>
+	<p>With such tooling, proving that <i>Table 2</i> holds true is just a matter of writing a bunch of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py">exploratory tests</a>.</p>
+	<p>But what has happened in that last snippet? The bind bucket has clearly transitioned from one fastreuse state to another. This is what <i>Table 1</i> fails to capture. And it means that we still don't have the full picture.</p>
 	<p>We have yet to find out when the bucket's fastreuse state can change. This calls for a state machine.</p>
-	<h3 id="das-state-machine">Das State Machine</h3>
+	<h3>Das State Machine</h3>
 	<p>As we have just seen, a bind bucket does not need to stay in the initial fastreuse state throughout its lifetime. Adding sockets to the bucket can trigger a state change. As it turns out, it can only transition into <code>fastreuse = 0</code>, if we happen to bind() a socket that:</p>
 	<ol>
-		<li>doesn't conflict existing owners, and</li>
-		<li>doesn't have the <code>SO_REUSEADDR</code> option enabled.</li>
+		<li>
+			<p>doesn't conflict existing owners, and</p>
+		</li>
+		<li>
+			<p>doesn't have the <code>SO_REUSEADDR</code> option enabled.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Untitled--1-.png" class="kg-image" alt="image" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7awSZQJp00EDbGbvcpBNv9/2ced446902f2c53a78db6009cf0e84d0/Untitled--1-.png" alt="image" class="kg-image" width="731" height="681" loading="lazy">
+
+	</figure>
 	<p>And while we could have figured it all out by carefully reading the code in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L431"><code>inet_csk_get_port → inet_csk_update_fastreuse</code></a>, it certainly doesn't hurt to confirm our understanding with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse_states.py">a few more tests</a>.</p>
 	<p>Now that we have the full picture, this begs the question...</p>
-	<h3 id="why-are-you-telling-me-all-this">Why are you telling me all this?</h3>
+	<h3>Why are you telling me all this?</h3>
 	<p>Firstly, so that the next time <code>bind()</code> syscall rejects your request with <code>EADDRINUSE</code>, or <code>connect()</code> refuses to cooperate by throwing the <code>EADDRNOTAVAIL</code> error, you will know what is happening, or at least have the tools to find out.</p>
 	<p>Secondly, because we have previously <a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">advertised a technique</a> for opening connections from a specific range of ports which involves bind()'ing sockets with the SO_REUSEADDR option. What we did not realize back then, is that there exists <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py#L300">a corner case</a> when the same port can't be shared with the regular, <code>connect()</code>'ed sockets. While that is not a deal-breaker, it is good to understand the consequences.</p>
 	<p>To make things better, we have worked with the Linux community to extend the kernel API with a new socket option that lets the user <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177">specify the local port range</a>. The new option will be available in the upcoming Linux 6.3. With it we no longer have to resort to bind()-tricks. This makes it possible to yet again share a local port with regular <code>connect()</code>'ed sockets.</p>
-	<h2 id="closing-thoughts">Closing thoughts</h2>
+	<h2>Closing thoughts</h2>
 	<p>Today we posed a relatively straightforward question - when can two TCP sockets share a local address? - and worked our way towards an answer. An answer that is too complex to compress it into a single sentence. What is more, it's not even the full answer. After all, we have decided to ignore the existence of the SO_REUSEPORT feature, and did not consider conflicts with TCP listening sockets.</p>
 	<p>If there is a simple takeaway, though, it is that bind()'ing a socket can have tricky consequences. When using bind() to select an egress IP address, it is best to combine it with IP_BIND_ADDRESS_NO_PORT socket option, and leave the port assignment to the kernel. Otherwise we might unintentionally block local TCP ports from being reused.</p>
 	<p>It is too bad that the same advice does not apply to UDP, where IP_BIND_ADDRESS_NO_PORT does not really work today. But that is another story.</p>

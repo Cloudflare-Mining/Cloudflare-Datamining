@@ -1,21 +1,29 @@
-<div class="mb2 gray5">19 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error-zh-tw">繁體中文</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-33.png" class="kg-image" alt="A debugging story: corrupt packets in AF_XDP; a kernel bug or user error?" loading="lazy"></figure>
-	<h3 id="panic-invalid-tcp-packet-truncated">panic: Invalid TCP packet: Truncated</h3>
-	<p>A few months ago we started getting a handful of crash reports for flowtrackd, our <a href="https://developers.cloudflare.com/ddos-protection/tcp-protection">Advanced TCP Protection</a> system that runs on our global network. The provided stack traces indicated that the panics occurred while parsing a TCP packet that was truncated. </p>
-	<p>What was most interesting wasn’t that we failed to parse the packet. It isn’t rare that we receive malformed packets from the Internet that are (deliberately or not) truncated. Those packets will be caught the first time we parse them and won’t make it to the latter processing stages. However, in our case, the panic occurred the second time we parsed the packet, indicating it had been truncated <strong>after</strong> we received it and successfully parsed it the first time. Both parse calls were made from a single green thread and referenced the same packet buffer in memory, and we made no attempts to mutate the packet in between.</p>
+<div class="mb2 gray5">18 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6y8e5gSMEYuaTCmUVwscON/b02f4adb1ac59344125568a7790a6cc3/image2-33.png" alt="A debugging story: corrupt packets in AF_XDP; a kernel bug or user error?" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<h3>panic: Invalid TCP packet: Truncated</h3>
+	<p>A few months ago we started getting a handful of crash reports for flowtrackd, our <a href="https://developers.cloudflare.com/ddos-protection/tcp-protection">Advanced TCP Protection</a> system that runs on our global network. The provided stack traces indicated that the panics occurred while parsing a TCP packet that was truncated.</p>
+	<p>What was most interesting wasn’t that we failed to parse the packet. It isn’t rare that we receive malformed packets from the Internet that are (deliberately or not) truncated. Those packets will be caught the first time we parse them and won’t make it to the latter processing stages. However, in our case, the panic occurred the second time we parsed the packet, indicating it had been truncated <b>after</b> we received it and successfully parsed it the first time. Both parse calls were made from a single green thread and referenced the same packet buffer in memory, and we made no attempts to mutate the packet in between.</p>
 	<p>It can be easy to dread discovering a bug like this. Is there a race condition? Is there memory corruption? Is this a kernel bug? A compiler bug? Our plan to get to the root cause of this potentially complex issue was to identify symptom(s) related to the bug, create theories on what may be occurring and create a way to test our theories or gather more information.</p>
 	<p>Before we get into the details we first need some background information about <code>AF_XDP</code> and our setup.</p>
-	<h3 id="af_xdp-overview">AF_XDP overview</h3>
+	<h3>AF_XDP overview</h3>
 	<p><a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> is the high performance asynchronous user-space networking API in the Linux kernel. For network devices that support it, AF_XDP provides a way to perform extremely fast, zero-copy packet forwarding using a memory buffer that’s shared between the kernel and a user-space application.</p>
 	<p>A number of components need to be set up by the user-space application to start interacting with the packets entering a network device using AF_XDP.</p>
 	<p>First, a shared packet buffer (UMEM) is created. This UMEM is divided into equal-sized “frames” that are referenced by a “descriptor address,” which is just the offset from the start of the UMEM.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image12-2.png" class="kg-image" alt="AF_XDP UMEM representation" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sZldzVDmiFTIbWi5VROpW/6bde251d538b13c99322ead690395894/image12-2.png" alt="AF_XDP UMEM representation" class="kg-image" width="1600" height="810" loading="lazy">
+
+	</figure>
 	<p>Next, multiple AF_XDP sockets (XSKs) are created – one for each hardware queue on the network device – and bound to the UMEM. Each of these sockets provides four ring buffers (or “queues”) which are used to send descriptors back and forth between the kernel and user-space.</p>
-	<p>User-space sends packets by taking an unused descriptor and copying the packet into that descriptor (or rather, into the UMEM frame that the descriptor points to). It gives the descriptor to the kernel by enqueueing it on the <strong>TX queue</strong>. Some time later, the kernel dequeues the descriptor from the <strong>TX queue</strong> and transmits the packet that it points to out of the network device. Finally, the kernel gives the descriptor back to user-space by enqueueing it on the <strong>COMPLETION queue</strong>, so that user-space can reuse it later to send another packet.</p>
-	<p>To receive packets, user-space provides the kernel with unused descriptors by enqueueing them on the <strong>FILL queue</strong>. The kernel copies packets it receives into these unused descriptors, and then gives them to user-space by enqueueing them on the <strong>RX queue</strong>. Once user-space processes the packets it dequeues from the <strong>RX queue</strong>, it either transmits them back out of the network device by enqueueing them on the <strong>TX queue</strong>, or it gives them back to the kernel for later reuse by enqueueing them on the <strong>FILL queue</strong>.</p><!--kg-card-begin: html-->
+	<p>User-space sends packets by taking an unused descriptor and copying the packet into that descriptor (or rather, into the UMEM frame that the descriptor points to). It gives the descriptor to the kernel by enqueueing it on the <b>TX queue</b>. Some time later, the kernel dequeues the descriptor from the <b>TX queue</b> and transmits the packet that it points to out of the network device. Finally, the kernel gives the descriptor back to user-space by enqueueing it on the <b>COMPLETION queue</b>, so that user-space can reuse it later to send another packet.</p>
+	<p>To receive packets, user-space provides the kernel with unused descriptors by enqueueing them on the <b>FILL queue</b>. The kernel copies packets it receives into these unused descriptors, and then gives them to user-space by enqueueing them on the <b>RX queue</b>. Once user-space processes the packets it dequeues from the <b>RX queue</b>, it either transmits them back out of the network device by enqueueing them on the <b>TX queue</b>, or it gives them back to the kernel for later reuse by enqueueing them on the <b>FILL queue</b>.</p><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -54,27 +62,33 @@
 	</table><!--kg-card-end: html-->
 	<p>Finally, a BPF program is attached to the network device. Its job is to direct incoming packets to whichever XSK is associated with the specific hardware queue that the packet was received on.</p>
 	<p>Here is an overview of the interactions between the kernel and user-space:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="our-setup">Our setup</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5g3TzP8qFYPWMxEXeXxhz3/0071ee946ede5ebe3f96887be1304764/Untitled-2.png" alt="" class="kg-image" width="1600" height="866" loading="lazy">
+
+	</figure>
+	<h3>Our setup</h3>
 	<p>Our application uses AF_XDP on a pair of multi-queue veth interfaces (“outer” and “inner”) that are each in different network namespaces. We follow the process outlined above to bind an XSK to each of the interfaces’ queues, forward packets from one interface to the other, send packets back out of the interface they were received on, or drop them. This functionality enables us to implement bidirectional traffic inspection to perform DDoS mitigation logic.</p>
 	<p>This setup is depicted in the following diagram:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled--1--1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="information-gathering">Information gathering</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nAwNZF6NfDJK6sz1yymW2/d9a504dbc65fc41227657adf9516c12e/Untitled--1--1.png" alt="" class="kg-image" width="1600" height="646" loading="lazy">
+
+	</figure>
+	<h3>Information gathering</h3>
 	<p>All we knew to start with was that our program was occasionally seeing corruption that seemed to be impossible. We didn’t know what these corrupt packets actually looked like. It was possible that their contents would reveal more details about the bug and how to reproduce it, so our first step was to log the packet bytes and discard the packet instead of panicking. We could then take the logs with packet bytes in them and create a PCAP file to analyze with <a href="https://www.wireshark.org">Wireshark</a>. This showed us that the packets looked mostly normal, except for Wireshark’s TCP analyzer complaining that their “IPv4 total length exceeds packet length”. In other words, the “total length” IPv4 header field said the packet should be (for example) 60 bytes long, but the packet itself was only 56 bytes long.</p>
-	<h3 id="lengths-mismatch">Lengths mismatch</h3>
+	<h3>Lengths mismatch</h3>
 	<p>Could it be possible that the number of bytes we read from the RX ring was incorrect? Let’s check.</p>
-	<p>An XDP descriptor has the following <a href="https://elixir.bootlin.com/linux/v5.15.77/source/include/uapi/linux/if_xdp.h#L103">C struct</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-C">struct xdp_desc {
+	<p>An XDP descriptor has the following <a href="https://elixir.bootlin.com/linux/v5.15.77/source/include/uapi/linux/if_xdp.h#L103">C struct</a>:</p>
+	<pre class="language-c"><code class="language-c">struct xdp_desc {
 	__u64 addr;
 	__u32 len;
 	__u32 options;
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</code></pre>
 	<p>Here the len member tells us the total size of the packet pointed to by addr in the UMEM frame.</p>
 	<p>Our first interaction with the packet content happens in the BPF code attached to the network interfaces.</p>
-	<p>There our entrypoint function gets a pointer to a xdp_md C struct with <a href="https://elixir.bootlin.com/linux/v5.15.77/source/include/uapi/linux/bpf.h#L5442">the following definition</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-C">struct xdp_md {
+	<p>There our entrypoint function gets a pointer to a xdp_md C struct with <a href="https://elixir.bootlin.com/linux/v5.15.77/source/include/uapi/linux/bpf.h#L5442">the following definition</a>:</p>
+	<pre class="language-c"><code class="language-c">struct xdp_md {
 	__u32 data;
 	__u32 data_end;
 	__u32 data_meta;
@@ -83,46 +97,58 @@
 	__u32 rx_queue_index;  /* rxq-&gt;queue_index  */
 
 	__u32 egress_ifindex;  /* txq-&gt;dev-&gt;ifindex */
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</code></pre>
 	<p>This context structure contains two pointers (<code>as __u32</code>) referring to start and the end of the packet. Getting the packet length can be done by subtracting data from data_end.</p>
 	<p>If we compare that value with the one we get from the descriptors, we would surely find they are the same right?</p>
 	<p>We can use the BPF helper function <a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html"><code>bpf_xdp_adjust_meta()</code></a> (since the veth driver supports it) to declare a metadata space that will hold the packet buffer length that we computed. We use it the same way <a href="https://elixir.bootlin.com/linux/v5.15.77/source/samples/bpf/xdp2skb_meta_kern.c#L41">this kernel sample code</a> does.</p>
 	<p>After deploying the new code in production, we saw the following lines in our logs:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NG7NbMAC6kpbMT1mBZtwT/04f59b6964651b17fc1469f1feec4871/pasted-image-0-2.png" alt="" class="kg-image" width="1476" height="607" loading="lazy">
+
+	</figure>
 	<p>Here you can see three interesting things:</p>
 	<ol>
-		<li>As we theorized, the length of the packet when first seen in XDP doesn’t match the length present in the descriptor.</li>
-		<li>We had already observed from our truncated packet panics that sometimes the descriptor length is shorter than the actual packet length, however the prints show that sometimes the descriptor length might be larger than the real packet bytes.</li>
-		<li>These often appeared to happen in “pairs” where the XDP length and descriptor length would swap between packets.</li>
+		<li>
+			<p>As we theorized, the length of the packet when first seen in XDP doesn’t match the length present in the descriptor.</p>
+		</li>
+		<li>
+			<p>We had already observed from our truncated packet panics that sometimes the descriptor length is shorter than the actual packet length, however the prints show that sometimes the descriptor length might be larger than the real packet bytes.</p>
+		</li>
+		<li>
+			<p>These often appeared to happen in “pairs” where the XDP length and descriptor length would swap between packets.</p>
+		</li>
 	</ol>
-	<h3 id="two-packets-and-one-buffer">Two packets and one buffer?</h3>
+	<h3>Two packets and one buffer?</h3>
 	<p>Seeing the XDP and descriptor lengths swap in “pairs” was perhaps the first lightbulb moment. Are these two different packets being written to the same buffer? This also revealed a key piece of information that we failed to add to our debug prints, the descriptor address! We took this opportunity to print additional information like the packet bytes, and to print at multiple locations in the path to see if anything changed over time.</p>
-	<p>The real key piece of information that these debug prints revealed was that not only were each swapped “pair” sharing a descriptor address, but nearly every corrupt packet on a single server was always using the same descriptor address. Here you can see 49750 corrupt packets that all used descriptor address 69837056:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ cat flowtrackd.service-2022-11-03.log | grep 87m237 | grep -o -E 'desc_addr: [[:digit:]]+' | sort | uniq -c
-  49750 desc_addr: 69837056
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>The real key piece of information that these debug prints revealed was that not only were each swapped “pair” sharing a descriptor address, but nearly every corrupt packet on a single server was always using the same descriptor address. Here you can see 49750 corrupt packets that all used descriptor address 69837056:</p>
+	<pre class="language-bash"><code class="language-bash">$ cat flowtrackd.service-2022-11-03.log | grep 87m237 | grep -o -E 'desc_addr: [[:digit:]]+' | sort | uniq -c
+  49750 desc_addr: 69837056</code></pre>
 	<p>This was the second lightbulb moment. Not only are we trying to copy two packets to the same buffer, but it is always the same buffer. Perhaps the problem is that this descriptor has been inserted into the AF_XDP rings twice? We tested this theory by updating our consumer code to test if a batch of descriptors read from the RX ring ever contained the same descriptor twice. This wouldn’t guarantee that the descriptor isn’t in the ring twice since there is no guarantee that the two descriptors will be in the same read batch, but we were lucky enough that it did catch the same descriptor twice in a single read proving this was our issue. In hindsight the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">linux kernel AF_XDP documentation</a> points out this very issue:</p>
-	<blockquote><em>Q: My packets are sometimes corrupted. What is wrong?</em></blockquote>
-	<blockquote><em>A: Care has to be taken not to feed the same buffer in the UMEM into more than one ring at the same time. If you for example feed the same buffer into the FILL ring and the TX ring at the same time, the NIC might receive data into the buffer at the same time it is sending it. This will cause some packets to become corrupted. Same thing goes for feeding the same buffer into the FILL rings belonging to different queue ids or netdevs bound with the XDP_SHARED_UMEM flag.</em></blockquote>
-	<p>We now understand <em>why </em>we have corrupt packets, but we still don’t understand how a descriptor ever ends up in the AF_XDP rings twice. I would love to blame this on a kernel bug, but as the documentation points out this is more likely that we’ve placed the descriptor in the ring twice in our application. Additionally, since this is listed as a FAQ for AF_XDP we will need sufficient evidence proving that this is caused by a kernel bug and not user error before reporting to the kernel mailing list(s).</p>
-	<h3 id="tracking-descriptor-transitions">Tracking descriptor transitions</h3>
+	<blockquote>
+		<p><i>Q: My packets are sometimes corrupted. What is wrong?</i></p>
+	</blockquote>
+	<blockquote>
+		<p><i>A: Care has to be taken not to feed the same buffer in the UMEM into more than one ring at the same time. If you for example feed the same buffer into the FILL ring and the TX ring at the same time, the NIC might receive data into the buffer at the same time it is sending it. This will cause some packets to become corrupted. Same thing goes for feeding the same buffer into the FILL rings belonging to different queue ids or netdevs bound with the XDP_SHARED_UMEM flag.</i></p>
+	</blockquote>
+	<p>We now understand <i>why</i> we have corrupt packets, but we still don’t understand how a descriptor ever ends up in the AF_XDP rings twice. I would love to blame this on a kernel bug, but as the documentation points out this is more likely that we’ve placed the descriptor in the ring twice in our application. Additionally, since this is listed as a FAQ for AF_XDP we will need sufficient evidence proving that this is caused by a kernel bug and not user error before reporting to the kernel mailing list(s).</p>
+	<h3>Tracking descriptor transitions</h3>
 	<p>Auditing our application code did not show any obvious location where we might be inserting the same descriptor address into either the FILL or TX ring twice. We do however know that descriptors transition through a set of known states, and we could track those transitions with a state machine. The below diagram shows all the possible valid transitions:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/af_xdp_descriptor_transitions.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7c0EnogcWg13acmzNWQmiJ/a0b5e40e062e66dc1bb36a038ce11002/af_xdp_descriptor_transitions.png" alt="" class="kg-image" width="1403" height="441" loading="lazy">
+
+	</figure>
 	<p>For example, a descriptor going from the RX ring to either the FILL or the TX ring is a perfectly valid transition. On the other hand, a descriptor going from the FILL ring to the COMP ring is an invalid transition.</p>
-	<p>To test the validity of the descriptor transitions, we added code to track their membership across the rings. This produced some of the following log messages:</p><!--kg-card-begin: markdown-->
-	<pre><code>Nov 16 23:49:01 fuzzer4 flowtrackd[45807]: thread 'flowtrackd-ZrBh' panicked at 'descriptor 26476800 transitioned from Fill to Tx'
+	<p>To test the validity of the descriptor transitions, we added code to track their membership across the rings. This produced some of the following log messages:</p>
+	<pre class="language-bash"><code class="language-bash">Nov 16 23:49:01 fuzzer4 flowtrackd[45807]: thread 'flowtrackd-ZrBh' panicked at 'descriptor 26476800 transitioned from Fill to Tx'
 Nov 17 02:09:01 fuzzer4 flowtrackd[45926]: thread 'flowtrackd-Ay0i' panicked at 'descriptor 18422016 transitioned from Comp to Rx'
-Nov 29 10:52:08 fuzzer4 flowtrackd[83849]: thread 'flowtrackd-5UYF' panicked at 'descriptor 3154176 transitioned from Tx to Rx'
-</code></pre>
-	<!--kg-card-end: markdown-->
+Nov 29 10:52:08 fuzzer4 flowtrackd[83849]: thread 'flowtrackd-5UYF' panicked at 'descriptor 3154176 transitioned from Tx to Rx'</code></pre>
 	<p>The first print shows a descriptor was put on the FILL ring and transitioned directly to the TX ring without being read from the RX ring first. This appears to hint at a bug in our application, perhaps indicating that our application duplicates the descriptor putting one copy in the FILL ring and the other copy in the TX ring.</p>
 	<p>The second invalid transition happened for a descriptor moving from the COMP ring to the RX ring without being put first on the FILL ring. This appears to hint at a kernel bug, perhaps indicating that the kernel duplicated a descriptor and put it both in the COMP ring and the RX ring.</p>
 	<p>The third invalid transition was from the TX to the RX ring without going through the FILL or COMP ring first. This seems like an extended case of the previous COMP to RX transition and again hints at a possible kernel bug.</p>
 	<p>Confused by the results we double-checked our tracking code and attempted to find any possible way our application could duplicate a descriptor putting it both in the FILL and TX rings. With no bugs found we felt we needed to gather more information.</p>
-	<h3 id="using-ftrace-as-a-flight-recorder-">Using ftrace as a “flight recorder”</h3>
+	<h3>Using ftrace as a “flight recorder”</h3>
 	<p>While using a state machine to catch invalid descriptor transitions was able to catch these cases, it still lacked a number of important details which might help track down the ultimate cause of the bug. We still didn’t know if the bug was a kernel issue or an application issue. Confusingly the transition states seemed to indicate it was both.</p>
 	<p>To gather some more information we ideally wanted to be able to track the history of a descriptor. Since we were using a shared UMEM a descriptor could in theory transition between interfaces, and receive queues. Additionally, our application uses a single green thread to handle each XSK, so it might be interesting to track those descriptor transitions by XSK, CPU, and thread. A simple but unscalable way to achieve this would be to simply print this information at every transition point. This of course is not really an option for a production environment that needs to be able to process millions of packets per second. Both the amount of data produced and the overhead of printing that information will not work.</p>
 	<p>Up to this point we had been carefully debugging this issue in production systems. The issue was rare enough that even with our large production deployment it might take a day for some production machines to start to display the issue. If we did want to explore more resource intensive debugging techniques we needed to see if we could reproduce this in a test environment. For this we created 10 virtual machines that were continuously load testing our application with <a href="https://iperf.fr">iperf</a>. Fortunately with this setup we were able to reproduce the issue about once a day, giving us some more freedom to try some more resource intensive debugging techniques.</p>
@@ -137,8 +163,8 @@ Nov 29 10:52:08 fuzzer4 flowtrackd[83849]: thread 'flowtrackd-5UYF' panicked at 
 	<p>It is worth noting that writing messages to the trace_marker virtual file still involves making a system call and copying your message into the ring buffers. This can still add overhead and in our case where we are logging several prints per packet that overhead might be significant. Additionally, ftrace is a systemwide kernel tracing feature, so you may need to either adjust the permissions of virtual files, or run your application with the appropriate permissions.</p>
 	<p>There is of course one more big advantage of using ftrace to assist in debugging this issue. As shown above we can log our own application messages to ftrace using the trace_marker file, but at its core ftrace is a kernel tracing feature. This means that we can additionally use ftrace to log events from the kernel side of the AF_XDP packet processing. There are several ways to do this, but for our purposes we used kprobes so that we could target very specific lines of code and print some variables. kprobes can be created directly in ftrace, but I find it easier to create them using the “perf probe” command of perf tool in Linux. Using the “-L” and “-V” arguments you can find which lines of a function can be probed and which variables can be viewed at those probe points. Finally, you can add the probe with the “-a” argument. For example after examining the kernel code we insert the following probe in the receive path of a XSK:</p>
 	<p><code>perf probe -a '__xsk_rcv_zc:7 addr len xs xs-&gt;pool-&gt;fq xs-&gt;dev'</code></p>
-	<p>This will probe line 7 of __xsk_rcv_zc() and print the descriptor address, the packet length, the XSK address, the fill queue address and the net device address. For context here is what <a href="https://elixir.bootlin.com/linux/v5.15.77/source/net/xdp/xsk.c#L152"><code>__xsk_rcv_zc()</code></a> looks like from the perf probe command:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ perf probe -L __xsk_rcv_zc
+	<p>This will probe line 7 of __xsk_rcv_zc() and print the descriptor address, the packet length, the XSK address, the fill queue address and the net device address. For context here is what <a href="https://elixir.bootlin.com/linux/v5.15.77/source/net/xdp/xsk.c#L152"><code>__xsk_rcv_zc()</code></a> looks like from the perf probe command:</p>
+	<pre class="language-bash"><code class="language-bash">$ perf probe -L __xsk_rcv_zc
       0  static int __xsk_rcv_zc(struct xdp_sock *xs, struct xdp_buff *xdp, u32 len)
          {
                 struct xdp_buff_xsk *xskb = container_of(xdp, struct xdp_buff_xsk, xdp);
@@ -150,30 +176,32 @@ Nov 29 10:52:08 fuzzer4 flowtrackd[83849]: thread 'flowtrackd-5UYF' panicked at 
       8         if (err) {
                         xs-&gt;rx_queue_full++;
                         return err;
-                }
-</code></pre>
-	<!--kg-card-end: markdown-->
+                }</code></pre>
 	<p>In our case line 7 is the call to xskq_prod_reserve_desc(). At this point in the code the kernel has already removed a descriptor from the FILL queue and copied a packet into that descriptor. The call to xsk_prod_reserve_desc() will ensure that there is space in the RX queue, and if there is space will add that descriptor to the RX queue. It is important to note that while xskq_prod_reserve_desc() will put the descriptor in the RX queue it does not update the producer pointer of the RX ring or notify the XSK that packets are ready to be read because the kernel tries to batch these operations.</p>
 	<p>Similarly, we wanted to place a probe in the transmit path on the kernel side and ultimately placed the following probe:</p>
 	<p><code>perf probe -a 'xp_raw_get_data:0 addr'</code></p>
 	<p>There isn’t much interesting to show here in <a href="https://elixir.bootlin.com/linux/v5.15.77/source/net/xdp/xsk_buff_pool.c#L542">the code</a>, but this probe is placed at a location where descriptors have been removed from the TX queue but have not yet been put in the COMPLETION queue.</p>
 	<p>In both of these probes it would have been nice to put the probes at the earliest location where descriptors were added or removed from the XSK queues, and to print as much information as possible at these locations. However, in practice the locations where kprobes can be placed and the variables available at those locations limits what can be seen.</p>
 	<p>With the probes created we still need to enable them to be seen in ftrace. This can be done with:</p>
-	<p><code>echo 1 &gt; /sys/kernel/debug/tracing/events/probe/__xsk_rcv_zc_L7/enable</code><br><code>echo 1 &gt; /sys/kernel/debug/tracing/events/probe/xp_raw_get_data/enable</code></p>
+	<p><code>echo 1 &gt; /sys/kernel/debug/tracing/events/probe/__xsk_rcv_zc_L7/enableecho 1 &gt; /sys/kernel/debug/tracing/events/probe/xp_raw_get_data/enable</code></p>
 	<p>With our application updated to trace the transition of every descriptor and stop tracing when an invalid transition occurred we were ready to test again.</p>
-	<h3 id="tracking-descriptor-state-is-not-enough">Tracking descriptor state is not enough</h3>
+	<h3>Tracking descriptor state is not enough</h3>
 	<p>Unfortunately our initial test of our “flight recorder” didn’t immediately tell us anything new. Instead, it mostly confirmed what we already knew, which was that somehow we would end up in a state with the same descriptor twice. It also highlighted the fact that catching an invalid descriptor transition doesn’t mean you have caught the earliest point where the duplicate descriptor appeared. For example assume we have our descriptor A and our duplicate A’. If these are already both present in the FILL queue it is perfectly valid to:</p>
-	<p><code>RX A -&gt; FILL A</code><br><code>RX A’ -&gt; FILL A’</code></p>
+	<p><code>RX A -&gt; FILL ARX A’ -&gt; FILL A’</code></p>
 	<p>This can occur for many cycles, before an invalid transition eventually occurs when both descriptors are seen either in the same batch or between queues.</p>
 	<p>Instead, we needed to rethink our approach. We knew that the kernel removes descriptors from the FILL queue, fills them, and places them in the RX queue. This means that for any given XSK the order that descriptors are inserted into the FILL queue should match the order that they come out of the RX queue. If a descriptor was ever duplicated in this kernel RX path we should see the duplicate descriptor appear out-of-order. With this in mind we updated our application to independently track the order of the FILL queue using a double ended queue. As our application puts descriptors into the FILL queue we also push the descriptor address into the tail of our tracking queue and when we receive packets we pop the descriptor address from the head of our tracking queue and ensure the address matches. If it ever doesn’t match we again can log to trace_marker and stop ftrace.</p>
 	<p>Below is the end of the first trace we captured with the updated code tracking the order of the FILL to RX queues. The color has been added to improve readability:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Screenshot-2023-01-16-at-14.16.47.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/uSATZc25o3ESPjeXWQVUX/c3114ccb1029770a3a400eebbe8e9b1f/Screenshot-2023-01-16-at-14.16.47.png" alt="" class="kg-image" width="1422" height="636" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<p>Here you can see the power of our ftrace flight recorder. For example, we can follow the full cycle of descriptor <span style="color:#ff00ff">0x16ce900</span> as it is first received in the kernel, received by our application which forwards the packet by adding to the TX queue, the kernel transmitting, and finally our application receiving the completion and placing the descriptor back in the FILL queue.</p>
 	<p>
 		The trace starts to get interesting on the next two packets received by the kernel. We can see <span style="color:#980000">0x160a100</span> received first in the kernel and then by our application. However things go wrong when the kernel receives <span style="color:#00ff00">0x13d3900</span> but our application receives <span style="color:#ff0000">0x1229100</span>. The last print of the trace shows the result of our descriptor order tracking. We can see that the kernel side appears to match our next expected descriptor and the next two descriptors, yet unexpectedly we see <span style="color:#ff0000">0x1229100</span> arrive out of nowhere. We do think that the descriptor is present in the FILL queue, but it is much further down the line in the queue. Another potentially interesting detail is that between <span style="color:#980000">0x160a100</span> and <span style="color:#00ff00">0x13d3900</span> the kernel’s softirq switches from CPU 1 to CPU 2.</p>
 	<!--kg-card-end: html-->
-	<p>If you recall, our __xsk_rcv_zc_L7 kprobe was placed on the call to xskq_prod_reserve_desc() which adds the descriptor to the RX queue. Below we can examine that function to see if there are any clues on how the descriptor address received by our application could be different from what we think should have been inserted by the kernel.</p><!--kg-card-begin: markdown-->
-	<pre><code>static inline int xskq_prod_reserve_desc(struct xsk_queue *q,
+	<p>If you recall, our __xsk_rcv_zc_L7 kprobe was placed on the call to xskq_prod_reserve_desc() which adds the descriptor to the RX queue. Below we can examine that function to see if there are any clues on how the descriptor address received by our application could be different from what we think should have been inserted by the kernel.</p>
+	<pre class="language-bash"><code class="language-bash">static inline int xskq_prod_reserve_desc(struct xsk_queue *q,
                                      	u64 addr, u32 len)
 {
     	struct xdp_rxtx_ring *ring = (struct xdp_rxtx_ring *)q-&gt;ring;
@@ -188,17 +216,19 @@ Nov 29 10:52:08 fuzzer4 flowtrackd[83849]: thread 'flowtrackd-5UYF' panicked at 
     	ring-&gt;desc[idx].len = len;
  
     	return 0;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Here you can see that the queue’s cached_prod pointer is incremented first before we update the descriptor address and length. As the name implies the cached_prod pointer isn’t the actual producer pointer which means that at some point <code>xsk_flush()</code> must be called to sync the cached_prod pointer and the prod pointer to actually expose the newly received descriptors to user-mode. Perhaps there is a race where <code>xsk_flush()</code> is called after updating the <code>cached_prod</code> pointer, but before the actual descriptor address has been updated in the ring? If this were to occur our application would see the old descriptor address from that slot in the RX queue and would cause us to “duplicate” that descriptor.</p>
 	<p>We can test our theory by making two more changes. First we can update our application to write back a known “poisoned” descriptor address to each RX queue slot after we have received a packet. In this case we chose <code>0xdeadbeefdeadbeef</code> as our known invalid address and if we ever receive this value back out of the RX queue we know a race has occurred and exposed an uninitialized descriptor. The second change we can make is to add a kprobe on <code>xsk_flush()</code> to see if we can actually capture the race in the trace.</p>
 	<p><code>perf probe -a 'xsk_flush:0 xs'</code></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Screenshot-2023-01-16-at-14.16.05.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xx2qaoywvGvlb0VsenLAw/6202379ff2efc2d6a6190851fd1a9c72/Screenshot-2023-01-16-at-14.16.05.png" alt="" class="kg-image" width="1426" height="196" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<p>Here we appear to have our smoking gun. As we predicted we can see that <span style="font-family:'Roboto Mono',monospace"><span style="color:#000000">xsk_flush()</span></span> is called on CPU 0 while a softirq is currently in progress on CPU 2. After the flush our application sees the expected <span style="font-size:11pt"><span style="font-family:'Roboto Mono',monospace"><span style="color:#0000ff">0xff0900</span></span></span> filled in from the softirq on CPU 0, and then <span style="font-family:'Roboto Mono',monospace"><span style="color:#ff0000">0xdeadbeefdeadbeef</span></span> which is our poisoned uninitialized descriptor address.</p>
 	<!--kg-card-end: html-->
-	<p>We now have evidence that the following order of operations is happening:</p><!--kg-card-begin: markdown-->
-	<pre><code>CPU 2                                                   CPU 0
+	<p>We now have evidence that the following order of operations is happening:</p>
+	<pre class="language-bash"><code class="language-bash">CPU 2                                                   CPU 0
 -----------------------------------                     --------------------------------
 __xsk_rcv_zc(struct xdp_sock *xs):                      xsk_flush(struct xdp_sock *xs):
                                         
@@ -214,12 +244,10 @@ idx = xs-&gt;rx-&gt;cached_prod++ &amp; xs-&gt;rx-&gt;ring_mask;
                                                         // flowtrackd reads a descriptor "too soon" where the addr
                                                         // and/or len fields have not yet been updated.
 xs-&gt;rx-&gt;ring-&gt;desc[idx].addr = addr;
-xs-&gt;rx-&gt;ring-&gt;desc[idx].len = len;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The AF_XDP documentation states that: <em>“All rings are single-producer/single-consumer, so the user-space application needs explicit synchronization of multiple processes/threads are reading/writing to them.” </em>The explicit synchronization requirement must also apply on the kernel side. How can two operations on the RX ring of a socket run at the same time?</p>
-	<p>On Linux, a mechanism called <a href="https://wiki.linuxfoundation.org/networking/napi">NAPI</a> prevents CPU interrupts from occurring every time a packet is received by the network interface. It instructs the network driver to process a certain amount of packets at a frequent interval. For the veth driver that polling function is called <a href="https://elixir.bootlin.com/linux/v5.15.77/source/drivers/net/veth.c#L906">veth_poll</a>, and it is <a href="https://elixir.bootlin.com/linux/v5.15.77/source/drivers/net/veth.c#L1015">registered</a> as the function handler for each queue of the XDP enabled network device. A NAPI-compliant network driver provides the guarantee that the processing of the packets tied to a NAPI context (<code>struct napi_struct *napi</code>) will not be happening at the same time on multiple processors. In our case, a NAPI context exists for each queue of the device which means per AF_XDP socket and their associated set of ring buffers (RX, TX, FILL, COMPLETION).</p><!--kg-card-begin: markdown-->
-	<pre><code>static int veth_poll(struct napi_struct *napi, int budget)
+xs-&gt;rx-&gt;ring-&gt;desc[idx].len = len;</code></pre>
+	<p>The AF_XDP documentation states that: <i>“All rings are single-producer/single-consumer, so the user-space application needs explicit synchronization of multiple processes/threads are reading/writing to them.”</i> The explicit synchronization requirement must also apply on the kernel side. How can two operations on the RX ring of a socket run at the same time?</p>
+	<p>On Linux, a mechanism called <a href="https://wiki.linuxfoundation.org/networking/napi">NAPI</a> prevents CPU interrupts from occurring every time a packet is received by the network interface. It instructs the network driver to process a certain amount of packets at a frequent interval. For the veth driver that polling function is called <a href="https://elixir.bootlin.com/linux/v5.15.77/source/drivers/net/veth.c#L906">veth_poll</a>, and it is <a href="https://elixir.bootlin.com/linux/v5.15.77/source/drivers/net/veth.c#L1015">registered</a> as the function handler for each queue of the XDP enabled network device. A NAPI-compliant network driver provides the guarantee that the processing of the packets tied to a NAPI context (<code>struct napi_struct *napi</code>) will not be happening at the same time on multiple processors. In our case, a NAPI context exists for each queue of the device which means per AF_XDP socket and their associated set of ring buffers (RX, TX, FILL, COMPLETION).</p>
+	<pre class="language-bash"><code class="language-bash">static int veth_poll(struct napi_struct *napi, int budget)
 {
 	struct veth_rq *rq =
 		container_of(napi, struct veth_rq, xdp_napi);
@@ -250,12 +278,10 @@ xs-&gt;rx-&gt;ring-&gt;desc[idx].len = len;
 	xdp_clear_return_frame_no_direct();
 
 	return done;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><code>veth_xdp_rcv()</code> processes as many packets as the budget variable is set to, marks the NAPI processing as complete, potentially reschedules a NAPI polling, and <strong>then</strong>, calls <code>xdp_do_flush()</code>, breaking the NAPI guarantee cited above. After the call to <code>napi_complete_done()</code>, any CPU is free to execute the <code>veth_poll()</code> function before all the flush operations of the previous call are complete, allowing the race on the RX ring.</p>
+}</code></pre>
+	<p><code>veth_xdp_rcv()</code> processes as many packets as the budget variable is set to, marks the NAPI processing as complete, potentially reschedules a NAPI polling, and <b>then</b>, calls <code>xdp_do_flush()</code>, breaking the NAPI guarantee cited above. After the call to <code>napi_complete_done()</code>, any CPU is free to execute the <code>veth_poll()</code> function before all the flush operations of the previous call are complete, allowing the race on the RX ring.</p>
 	<p>The race condition can be fixed by completing all the packet processing before signaling the NAPI poll as complete. The patch as well as the discussion on the kernel mailing list that lead to the fix are available here: <a href="https://lore.kernel.org/bpf/20221220185903.1105011-1-sbohrer@cloudflare.com">[PATCH] veth: Fix race with AF_XDP exposing old or uninitialized descriptors</a>. The patch was recently merged upstream.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>We’ve found and fixed a race condition in the Linux virtual ethernet (veth) driver that was corrupting packets for AF_XDP enabled devices!</p>
 	<p>This issue was a tough one to find (and to reproduce) but logical iterations lead us all the way down to the internals of the Linux kernel where we saw that a few lines of code were not executed in the correct order.</p>
 	<p>A rigorous methodology and the knowledge of the right debugging tools are essential to go about tracking down the root cause of potentially complex bugs.</p>

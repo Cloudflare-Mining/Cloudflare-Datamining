@@ -1,18 +1,15 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/AWS_LOGO_RGB.png.scaled.500.jpg" alt="" title="Zone Apex / Naked Domain / Root Domain CNAME Support for Amazon EC2, Google App Engine and Other Cloud Hosts" loading="lazy"><br>
-		<strong>CloudFlare now supports CNAME Flattening, which is a better solution to this same problem. Read more in our knowledge base about <a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root">RFC-compliant support for CNAME at the root</a>.</strong>
-	</p>
-	<p>One of the challenges of using a service like Amazon Web Services (AWS) Elastic Cloud (EC2) is you need to point your DNS to a CNAME. The problem is the DNS RFC (RFC1033) requires the "zone apex" (sometimes called the "root domain" or "naked domain") to be an "A Record," not a CNAME. This means that with most DNS providers you can setup a subdomain CNAME to point to EC2, but you cannot setup your root domain as a CNAME<br>
-		to point to EC2.</p>
-	<p>In other words, you can do this:<br>
-		<a href="http://www.yourdomain.com">www.yourdomain.com</a> CNAME <a href="http://some-id.ec2.amazonaws.com">some-id.ec2.amazonaws.com</a>&lt;
-	</p>
-	<p>But, with most DNS providers (including Amazon's own Route 53), you can't do this:<br>
-		<a href="http://yourdomain.com">yourdomain.com</a> CNAME <a href="http://some-id.ec2.amazonaws.com">some-id.ec2.amazonaws.com</a>
-	</p>
+<div class="mb2 gray5">1 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VkNO6ssHnj1TnUZ88z1a4/fb8e4e0e59c1bc375ec33ed6b1b5de9d/AWS_LOGO_RGB.png.scaled.500.jpg" alt="" class="kg-image" width="500" height="250" loading="lazy">
+
+	</figure>
+	<p><b>CloudFlare now supports CNAME Flattening, which is a better solution to this same problem. Read more in our knowledge base about </b><a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root"><b>RFC-compliant support for CNAME at the root</b></a><b>.</b></p>
+	<p>One of the challenges of using a service like Amazon Web Services (AWS) Elastic Cloud (EC2) is you need to point your DNS to a CNAME. The problem is the DNS RFC (RFC1033) requires the "zone apex" (sometimes called the "root domain" or "naked domain") to be an "A Record," not a CNAME. This means that with most DNS providers you can setup a subdomain CNAME to point to EC2, but you cannot setup your root domain as a CNAMEto point to EC2.</p>
+	<p>In other words, you can do this:<a href="http://www.yourdomain.com">www.yourdomain.com</a> CNAME <a href="http://some-id.ec2.amazonaws.com">some-id.ec2.amazonaws.com</a>&lt;</p>
+	<p>But, with most DNS providers (including Amazon's own Route 53), you can't do this:<a href="http://yourdomain.com">yourdomain.com</a> CNAME <a href="http://some-id.ec2.amazonaws.com">some-id.ec2.amazonaws.com</a></p>
 	<p>You also cannot reliably point your root A Record to an IP address within the EC2 network since Amazon reserves the right to reallocate the IP address dedicated to your instance. While there are some hacks to redirect the root domain to a subdomain like "www", this limitation creates a mess many people wanting to use cloud service providers ("&gt;as evidenced by <a href="https://forums.aws.amazon.com/thread.jspa?threadID=26945">several</a> <a href="https://forums.aws.amazon.com/thread.jspa?threadID=55995">threads</a> <a href="https://forums.aws.amazon.com/thread.jspa?threadID=56868">on</a> <a href="https://forums.aws.amazon.com/thread.jspa?threadID=62808">the</a> <a href="https://forums.aws.amazon.com/thread.jspa?threadID=62808">subject</a>).</p>
 	<p>Never one to let a RFC stand in the way of a solution to a real problem, we're happy to announce that CloudFlare allows you to set your zone apex to a CNAME. This allows CloudFlare users to host on EC2, Rackspace's Cloud, Google App Engine, or other cloud hosts and use their naked domain (e.g., <a href="http://yourdomain.com">yourdomain.com</a>) without forcing a hack solution to a subdomain (e.g., <a href="http://www.yourdomain.com">www.yourdomain.com</a>). Pick whatever host makes the most sense for you, <a href="https://www.cloudflare.com/plans">sign up for CloudFlare</a>, and we'll help ensure your site is as fast, secure, and effective as possible.</p>
 	<p>And, by the way, using CloudFlare's free service for a website hosted on EC2 typically makes the site about 50% faster worldwide while saving you about 65% off your bandwidth bill! Enjoy.</p>
-	<!--kg-card-end: markdown-->
 </div>

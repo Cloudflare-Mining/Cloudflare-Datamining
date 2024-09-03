@@ -1,18 +1,28 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/Running-Serverless-Puppeteer-with-Workers-and-Durable-Objects.png" class="kg-image" alt="Running Serverless Puppeteer with Workers and Durable Objects" loading="lazy" width="1600" height="900"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q1qWS257ltTlrgJ2rOFcf/9764b8a960daccfef2c2b1b6d3c37a1f/Running-Serverless-Puppeteer-with-Workers-and-Durable-Objects.png" alt="Running Serverless Puppeteer with Workers and Durable Objects" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Last year, we <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">announced the Browser Rendering API</a> – letting users running Puppeteer, a browser automation library, directly in Workers. Puppeteer is one of the most popular libraries used to interact with a headless browser instance to accomplish tasks like taking screenshots, generating PDFs, crawling web pages, and testing <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security">web applications</a>. We’ve heard from developers that configuring and maintaining their own serverless browser automation systems can be quite painful.</p>
-	<p>The <a href="https://developers.cloudflare.com/browser-rendering">Workers Browser Rendering API</a> solves this. It makes the Puppeteer library available directly in your Worker, connected to a real web browser, without the need to configure and manage infrastructure or keep browser sessions warm yourself. You can use <a href="https://www.npmjs.com/package/@cloudflare/puppeteer">@cloudflare/puppeteer</a> to run the full Puppeteer API directly on Workers! </p>
+	<p>The <a href="https://developers.cloudflare.com/browser-rendering">Workers Browser Rendering API</a> solves this. It makes the Puppeteer library available directly in your Worker, connected to a real web browser, without the need to configure and manage infrastructure or keep browser sessions warm yourself. You can use <a href="https://www.npmjs.com/package/@cloudflare/puppeteer">@cloudflare/puppeteer</a> to run the full Puppeteer API directly on Workers!</p>
 	<p>We’ve seen so much interest from the developer community since launching last year. While the Browser Rendering API is still in beta (sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2">waitlist</a> to get access), we wanted to share a way to get more out of our <a href="https://developers.cloudflare.com/browser-rendering/platform/limits">current limits</a> by using the Browser Rendering API with <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>. We’ll also be sharing pricing for the Rendering API, so you can build knowing exactly what you’ll pay for.</p>
-	<h3 id="building-a-responsive-web-design-testing-tool-with-the-browser-rendering-api">Building a responsive web design testing tool with the Browser Rendering API</h3>
-	<p>As a designer or frontend developer, you want to make sure that content is well-designed for visitors browsing on different screen sizes. With the number of possible devices that users are browsing on are growing, it becomes difficult to test all the possibilities manually. While there are many testing tools on the market, we want to show how easy it is to create your own Chromium based tool with the Workers Browser Rendering API and Durable Objects. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--6--2.png" class="kg-image" alt="" loading="lazy" width="852" height="236"></figure>
+	<h3>Building a responsive web design testing tool with the Browser Rendering API</h3>
+	<p>As a designer or frontend developer, you want to make sure that content is well-designed for visitors browsing on different screen sizes. With the number of possible devices that users are browsing on are growing, it becomes difficult to test all the possibilities manually. While there are many testing tools on the market, we want to show how easy it is to create your own Chromium based tool with the Workers Browser Rendering API and Durable Objects.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OQNeORd8VW4RffHGH8ndq/0562bb743f246684c32ec268095f0496/pasted-image-0--6--2.png" alt="" class="kg-image" width="852" height="236" loading="lazy">
+
+	</figure>
 	<p>We’ll be using the Worker to handle any incoming requests, pass them to the Durable Object to take screenshots and store them in an R2 bucket. The Durable Object is used to create a browser session that’s persistent. By using <a href="https://developers.cloudflare.com/durable-objects/api/alarms-in-durable-objects">Durable Object Alarms</a> we can keep browsers open for longer and reuse browser sessions across requests.</p>
 	<p>Let’s dive into how we can build this application:</p>
 	<ol>
-		<li>Create a Worker with a Durable Object, Browser Rendering API binding and R2 bucket. This is the resulting wrangler.toml:</li>
+		<li>
+			<p>Create a Worker with a Durable Object, Browser Rendering API binding and R2 bucket. This is the resulting wrangler.toml:</p>
+		</li>
 	</ol>
-	<pre><code>name = "rendering-api-demo"
+	<pre class="language-bash"><code class="language-bash">name = "rendering-api-demo"
 main = "src/index.js"
 compatibility_date = "2023-09-04"
 compatibility_flags = [ "nodejs_compat"]
@@ -34,11 +44,10 @@ class_name = "Browser"
 
 [[migrations]]
 tag = "v1" # Should be unique for each entry
-new_classes = ["Browser"] # Array of new classes
-</code></pre>
+new_classes = ["Browser"] # Array of new classes</code></pre>
 	<p>2. Define the Worker</p>
 	<p>This Worker simply passes the request onto the Durable Object.</p>
-	<pre><code class="language-javascript">export default {
+	<pre class="language-javascript"><code class="language-javascript">export default {
 	async fetch(request, env) {
 
 		let id = env.BROWSER.idFromName("browser");
@@ -50,10 +59,9 @@ new_classes = ["Browser"] # Array of new classes
 	  
 		return new Response("success");
 	}
-};
-</code></pre>
+};</code></pre>
 	<p>3. Define the Durable Object class</p>
-	<pre><code class="language-js">const KEEP_BROWSER_ALIVE_IN_SECONDS = 60;
+	<pre class="language-js"><code class="language-js">const KEEP_BROWSER_ALIVE_IN_SECONDS = 60;
 
 export class Browser {
 	constructor(state, env) {
@@ -127,20 +135,27 @@ export class Browser {
 		} else console.log(`Browser DO: cxceeded life of ${KEEP_BROWSER_ALIVE_IN_SECONDS}. Browser DO will be shut down in 10 seconds.`);
 	  }
 
-  }
-</code></pre>
+  }</code></pre>
 	<p>That’s it! With less than a hundred lines of code, you can fully customize a powerful tool to automate responsive web design testing. You can even incorporate it into your CI pipeline to automatically test different window sizes with each build and verify the result is as expected by using an automated library like <a href="https://www.npmjs.com/package/pixelmatch">pixelmatch</a>.</p>
-	<h3 id="how-much-will-this-cost">How much will this cost?</h3>
-	<p>We’ve spoken to many customers deploying a Puppeteer service on their own infrastructure, on <a href="https://www.cloudflare.com/learning/cloud/what-is-a-public-cloud">public cloud containers</a> or <a href="https://www.cloudflare.com/learning/serverless/glossary/function-as-a-service-faas">functions</a> or using managed services. The common theme that we’ve heard is that these services are costly – costly to maintain and expensive to run. </p>
+	<h3>How much will this cost?</h3>
+	<p>We’ve spoken to many customers deploying a Puppeteer service on their own infrastructure, on <a href="https://www.cloudflare.com/learning/cloud/what-is-a-public-cloud">public cloud containers</a> or <a href="https://www.cloudflare.com/learning/serverless/glossary/function-as-a-service-faas">functions</a> or using managed services. The common theme that we’ve heard is that these services are costly – costly to maintain and expensive to run.</p>
 	<p>While you won’t be billed for the Browser Rendering API yet, we want to be transparent with you about costs you start building. We know it’s important to understand the pricing structure so that you don’t get a surprise bill and so that you can design your application efficiently.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--7--2.png" class="kg-image" alt="" loading="lazy" width="1316" height="468"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gFIbTnuDafnmpIH2FpQUX/ba2965aaad0484b014034266aeee5add/pasted-image-0--7--2.png" alt="" class="kg-image" width="1316" height="468" loading="lazy">
+
+	</figure>
 	<p>You pay based on two usage metrics:</p>
 	<ol>
-		<li>Number of sessions: A Browser Session is a new instance of a browser being launched</li>
-		<li>Number of concurrent sessions: Concurrent Sessions is the number of browser instances open at once</li>
+		<li>
+			<p>Number of sessions: A Browser Session is a new instance of a browser being launched</p>
+		</li>
+		<li>
+			<p>Number of concurrent sessions: Concurrent Sessions is the number of browser instances open at once</p>
+		</li>
 	</ol>
 	<p>Using Durable Objects to persist browser sessions improves performance by eliminating the time that it takes to spin up a new browser session. Since it re-uses sessions, it cuts down on the number of concurrent sessions needed. We highly encourage this model of session re-use if you expect to see consistent traffic for applications that you build on the Browser Rendering API.</p>
 	<p>If you have feedback about this pricing, we’re all ears. Feel free to reach out through <a href="https://discord.gg/8Gs9T6jN">Discord</a> (channel name: browser-rendering-api-beta) and share your thoughts.</p>
-	<h3 id="get-started">Get Started</h3>
+	<h3>Get Started</h3>
 	<p>Sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2">waitlist</a> to get access to the Workers Browser Rendering API. We’re so excited to see what you build! Share your creations with us on Twitter/X <a href="https://www.twitter.com/cloudflaredev">@CloudflareDev</a> or on our Discord community.</p>
 </div>

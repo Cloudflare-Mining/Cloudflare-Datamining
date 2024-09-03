@@ -1,36 +1,50 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/8uHUgHVBxIa7korOiedxqDl3mAVxDh2QDj16RY-LosbmnFsetQERWXZNJ8WAmeZKzIK9svSAZ17JhDLq7UnipFbHb-FDBQTcfzdRn8wive0ds6WLECzc0_qcUd9f4LTuqfB9qIQth3rbn2TN9pW1Zc-b8OVJ_wVW0EXL1BW0RhQVTgtr433QVRQFlw" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o4IpEFT9F7YZvytQ5mlUP/74db345fe2214e327fc201e6801cad5d/8uHUgHVBxIa7korOiedxqDl3mAVxDh2QDj16RY-LosbmnFsetQERWXZNJ8WAmeZKzIK9svSAZ17JhDLq7UnipFbHb-FDBQTcfzdRn8wive0ds6WLECzc0_qcUd9f.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Cloudflare Images was announced one year ago <a href="https://blog.cloudflare.com/announcing-cloudflare-images">on this very blog</a> to help you solve the problem of delivering images in the right size, right quality and fast. Very fast.</p>
 	<p>It doesn’t really matter if you only run a personal blog, or a portal with thousands of vendors and millions of end-users. Doesn’t matter if you need one hundred images to be served one thousand times each at most, or if you deal with tens of millions of new, unoptimized, images that you deliver billions of times per month.</p>
 	<p>We want to remove the complexity of dealing with the need to store, to process, resize, re-encode and serve the images using multiple platforms and vendors.</p>
 	<p>At the time we wrote:</p>
-	<blockquote><em>Images is a single product that stores, resizes, optimizes and serves images. We built Cloudflare Images, so customers of all sizes can build a scalable and affordable image pipeline in minutes.</em></blockquote>
+	<blockquote>
+		<p><i>Images is a single product that stores, resizes, optimizes and serves images. We built Cloudflare Images, so customers of all sizes can build a scalable and affordable image pipeline in minutes.</i></p>
+	</blockquote>
 	<p>We supported the most common formats, such as JPG, WebP, PNG and GIF.</p>
-	<p>We did not feel the need to support SVG files. SVG files are inherently scalable, so there is nothing to resize on the server side before serving them to your audience. One can even argue that SVG files are documents that can generate images through mathematical formulas of vectors and nodes, but are not images <em>per se.</em></p>
-	<p>There was also the clear notion that SVG files were a potential risk due to known and <a href="https://www.fortinet.com/blog/threat-research/scalable-vector-graphics-attack-surface-anatomy">well documented</a> vulnerabilities. We knew we could do something from the security angle, but still, why go through that workload if it <em>didn’t make sense</em> in the first place to consider an SVG as a supported format.</p>
+	<p>We did not feel the need to support SVG files. SVG files are inherently scalable, so there is nothing to resize on the server side before serving them to your audience. One can even argue that SVG files are documents that can generate images through mathematical formulas of vectors and nodes, but are not images <i>per se.</i></p>
+	<p>There was also the clear notion that SVG files were a potential risk due to known and <a href="https://www.fortinet.com/blog/threat-research/scalable-vector-graphics-attack-surface-anatomy">well documented</a> vulnerabilities. We knew we could do something from the security angle, but still, why go through that workload if it <i>didn’t make sense</i> in the first place to consider an SVG as a supported format.</p>
 	<p>Not supporting SVG files, though, did bring a set of challenges to an increasing number of our customers. <a href="https://w3techs.com/technologies/details/im-svg">Some stats already show that around 50% of websites serve SVG files</a>, which matches the pulse we got from talking with many of you, customers and community.</p>
 	<p>If you relied on SVGs, you had to select a second storage location or a second image platform elsewhere. That commonly resulted in an egress fee when serving an uncached file from that source, and it goes against what we want for our product: one image pipeline to cover all your needs.</p>
 	<p>We heard loud and clear, and starting from today, you can store and serve SVG files, safely, with Cloudflare Images.</p>
-	<h3 id="svg-what-is-so-special-about-them">SVG, what is so special about them?</h3>
+	<h3>SVG, what is so special about them?</h3>
 	<p>The Scalable Vector Graphics file type is great for serving all kinds of illustrations, charts, logos, and icons.</p>
 	<p>SVG files don't represent images as pixels, but as geometric shapes (lines, arcs, polygons) that can be drawn with perfect sharpness at any resolution.</p>
 	<p>Let’s use now a complex image as an example, filled with more than four hundred paths and ten thousand nodes:</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/uHWAmWDUYVNmDByskHnBsSf_-poXNMAz7sxTw-bjNYHldqbU5ecTj_upSCKIHoXRnolnrlpPqvyDbBray-TaRkDJcGOO9CKQUdY3CpvwmaNn0rRkqqnPLAJJaE0DV8lZZwuXmWakt0sBIRnyO816EQBQe4FR2FodxSxIkZ4BZcFPABFYypeOtoFAaA" class="kg-image" alt="A complex representation of a Toroid, using nodes and paths on an SVG file" loading="lazy"></figure>
-	<p>Contrary to the bitmaps where pixels arrange together to create the visual perception of an image to the human eye, that vector image can be resized with no quality loss. That happens because resizing that SVG to 300% of its original size is redefining the size of the vectors to 300%, not expanding pixels to 300%. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ruJDon2gjvBXwHi9DGsA7/d1ff2c68b6179748ac11367207225074/uHWAmWDUYVNmDByskHnBsSf_-poXNMAz7sxTw-bjNYHldqbU5ecTj_upSCKIHoXRnolnrlpPqvyDbBray-TaRkDJcGOO9CKQUdY3CpvwmaNn0rRkqqnPLAJJaE0D.png" alt="A complex representation of a Toroid, using nodes and paths on an SVG file" class="kg-image" width="1255" height="768" loading="lazy">
+
+	</figure>
+	<p>Contrary to the bitmaps where pixels arrange together to create the visual perception of an image to the human eye, that vector image can be resized with no quality loss. That happens because resizing that SVG to 300% of its original size is redefining the size of the vectors to 300%, not expanding pixels to 300%.</p>
 	<p>This becomes evident when we’re dealing with small resolution images.</p>
 	<p>Here is the 100px width SVG from the Toroid shown above:</p><!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/Toroid.svg" alt="a toroid, in a 100px width SVG" width="100" height="100"></p><!--kg-card-end: html-->
+	<p><img src="/content/images/2022/09/Toroid.svg" alt="a toroid, in a 100px width SVG" width="100" height="100"></p><!--kg-card-end: html-->
 	<p>and the correspondent 100 pixels width PNG:</p><!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/image3-18.png" alt="a toroid, in a small PNG file encoding" width="100" height="61"></p><!--kg-card-end: html-->
+	<p><img src="/content/images/2022/09/image3-18.png" alt="a toroid, in a small PNG file encoding" width="100" height="61"></p><!--kg-card-end: html-->
 	<p>Now here is the same SVG with the HTML width attribute set at 300px:</p><!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/Toroid.svg" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="300"></p><!--kg-card-end: html-->
+	<p><img src="/content/images/2022/09/Toroid.svg" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="300"></p><!--kg-card-end: html-->
 	<p>and the same PNG you saw before, but, upscaled by 3x, so the width is also 300px:</p><!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/unnamed.png" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="183"></p><!--kg-card-end: html-->
+	<p><img src="/content/images/2022/09/unnamed.png" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="183"></p><!--kg-card-end: html-->
 	<p>The visual quality loss on the PNG is obvious when it gets scaled up.</p>
 	<p>Keep in mind: The Toroid shown above is stored in an SVG file of 142Kb. And that is a very complex and heavy SVG file already.</p>
 	<p>Now, if you do want to display a PNG with an original width of 1024px to present a high quality image of the same Toroid above, the size will become an issue:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/unnamed--1-.png" class="kg-image" alt="A PNG of high dimensions also brings a lot more KBs than an SVG" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1haST58mkysZs17Fn2dNv4/ac6dc73cee01aee5f26270b04660f11b/unnamed--1-.png" alt="A PNG of high dimensions also brings a lot more KBs than an SVG" class="kg-image" width="1024" height="625" loading="lazy">
+
+	</figure>
 	<p>The new 1024px PNG, however, weighs 344 KB. That’s about 2.4 times the weight of the unique SVG that you could use in any size.</p>
 	<p>Think about the storage and bandwidth savings when all you need to do with an SVG, to get the exact same displayed image is use a <code>width=”1024”</code> in your HTML. It requires less than half of the kilobytes used on the PNG.</p>
 	<p>Couple all of this with the flexibility of using attributes like <code>viewbox</code> in your HTML code, and you can pan, zoom, crop, scale, all without ever needing anything other than the one and original SVG file.</p>
@@ -39,19 +53,25 @@
 	<p></p><!--kg-card-end: html-->
 	<p>Let’s do a quick summary of what we covered so far: SVG files are wonderful for vector images like illustrations, charts, logos, and are infinitely scalable with no need to resize on the server side;</p>
 	<p>the same generated image, but on a bitmap is either heavier than the SVG when used in high resolutions, or with very noticeable loss of visual quality when scaled up from a lower resolution.</p>
-	<h3 id="so-what-are-the-downsides-of-using-svg-files">So, what are the downsides of using SVG files?</h3>
+	<h3>So, what are the downsides of using SVG files?</h3>
 	<p>SVG files aren't just images. They are XML-based documents that are as powerful as HTML pages. They can contain arbitrary JavaScript, fetch external content from other URLs or embed HTML elements. This gives SVG files much more power than expected from a simple image.</p>
 	<p>Throughout the years, numerous exploits have been known, identified and corrected.</p>
 	<p>Some old attacks were very rudimentary, yet effective. The famous <a href="https://en.wikipedia.org/wiki/Billion_laughs_attack">Billion Laughs</a> exploited how <a href="https://www.w3resource.com/xml/entities.php">XML uses Entities and declares them in the Document Type Definition</a>, and how it handles recursion.</p>
 	<p>Entities can be something as simple as a declaration of a text string, or a nested reference to other previous entities.</p>
 	<p>If you defined a first entity with a simple string, and then created a second entity calling 10 times the first one, and then a third entity calling 10 times the second one up until a 10th one of the same kind, you were requiring a parser to generate an output of a billion strings as defined on the very simple first entity. This would most commonly exhaust resources on the server parsing the XML, and form a <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack">DoS</a>. While that particular limitation from the XML parsing got widely addressed through XML parser memory caps and lazy loading of entities, more complex attacks became a regular thing in recent years.</p>
-	<p>The common themes in these more recent attacks have been <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">XSS (cross-site-scripting)</a> and foreign objects referenced in the XML content. In both cases, using SVG inside &lt;object&gt; tags in your HTML is an invitation for any ill-intended file to reach your end-users. So, what exactly can we do about it and make you trust any SVG file you serve?</p>
-	<h3 id="the-svg-filter">The SVG filter</h3>
+	<p>The common themes in these more recent attacks have been <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">XSS (cross-site-scripting)</a> and foreign objects referenced in the XML content. In both cases, using SVG inside tags in your HTML is an invitation for any ill-intended file to reach your end-users. So, what exactly can we do about it and make you trust any SVG file you serve?</p>
+	<h3>The SVG filter</h3>
 	<p>We've developed a filter that simplifies SVG files to only features used for images, so that serving SVG images from any source is just as safe as serving a JPEG or PNG, while preserving SVG's vector graphics capabilities.</p>
 	<ul>
-		<li>We remove scripting. This prevents SVG files from being used for cross-site scripting attacks. Although browsers don't allow scripts in &lt;img&gt;, they would run scripts when SVG files are opened directly as a top-level document.</li>
-		<li>We remove hyperlinks to other documents. This makes SVG files less attractive for SEO spam and phishing.</li>
-		<li>We remove references to cross-origin resources. This stops 3rd parties from tracking who is viewing the image.</li>
+		<li>
+			<p>We remove scripting. This prevents SVG files from being used for cross-site scripting attacks. Although browsers don't allow scripts in , they would run scripts when SVG files are opened directly as a top-level document.</p>
+		</li>
+		<li>
+			<p>We remove hyperlinks to other documents. This makes SVG files less attractive for SEO spam and phishing.</p>
+		</li>
+		<li>
+			<p>We remove references to cross-origin resources. This stops 3rd parties from tracking who is viewing the image.</p>
+		</li>
 	</ul>
 	<p>What's left is just an image.</p>
 	<p>SVG files can also contain embedded images in other formats, like JPEG and PNG, in the form of <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs">Data URLs</a>. We treat these embedded images just like other images that we process, and optimize them too. We don't support SVG files embedded in SVG recursively, though. It does open the door to recursive parsing leading to resource exhaustion on the parser. While the most common browsers are already limiting SVG recursion to one level, the potential to exploit that door led us to not include, at least for now, this capability on our filter.</p>
@@ -60,20 +80,31 @@
 	<p>The SVG format is pretty complex, with lots of features. If there is safe SVG functionality that we don't support yet, you can report issues and contribute to development of the filter.</p>
 	<p>You can see how the tool actually works by looking at the tests folder in the open-source repository, &nbsp;where a sample unfiltered XML and the already filtered version are present.</p>
 	<p>Here’s how a diff of those files looks like:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-8.png" class="kg-image" alt="Comparing an SVG file with XML code that contains threats, to the same one but filtered, and made safe, by our tool." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61edBaHRCc923sZoBnknKB/c5d4e3a2be2d5c36767ac2e869a28234/image5-8.png" alt="Comparing an SVG file with XML code that contains threats, to the same one but filtered, and made safe, by our tool." class="kg-image" width="1999" height="1096" loading="lazy">
+
+	</figure>
 	<p>Removed are the external references, foreignObjects and any other potential threats.</p>
-	<h3 id="how-you-can-use-svg-files-in-cloudflare-images">How you can use SVG files in Cloudflare Images</h3>
+	<h3>How you can use SVG files in Cloudflare Images</h3>
 	<p>Starting now you can upload SVG files to Cloudflare Images and serve them at will. Uploading the images can be done like for any other supported format, <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload">via UI</a> or <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url">API</a>.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 50%%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4df9e5608e70f983c65703e3f7d98cfc/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4df9e5608e70f983c65703e3f7d98cfc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>Variants, <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/resize-images">named </a>or <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/flexible-variants">flexible</a>, are intended to transform bitmap (raster) images into whatever size you want to serve them.</p>
-	<p>SVG files, as vector images, do not require resizing inside the Images pipeline.<br><br>This results in a banner with the following message when you’re previewing an SVG in the UI:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-30.png" class="kg-image" alt="Since Variants get disabled for SVG files, a banner will remind you of that in the Dashboard" loading="lazy"></figure>
+	<p>Variants, <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/resize-images">named</a> or <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/flexible-variants">flexible</a>, are intended to transform bitmap (raster) images into whatever size you want to serve them.</p>
+	<p>SVG files, as vector images, do not require resizing inside the Images pipeline.</p>
+	<p>This results in a banner with the following message when you’re previewing an SVG in the UI:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DBn12LoNf1pQdIV0yxlN3/a01eef147aa9c9a395b43a4f6557244d/image1-30.png" alt="Since Variants get disabled for SVG files, a banner will remind you of that in the Dashboard" class="kg-image" width="1939" height="235" loading="lazy">
+
+	</figure>
 	<p>And as a result, all variants listed will show the exact same image in the exact same dimensions.</p>
 	<p>Because an image is worth a thousand words, especially when trying to describe behaviors, here is what will it look like if you scroll through the variants preview:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 50%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4d7fb2347054fca3418a8edd3840b427/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4d7fb2347054fca3418a8edd3840b427%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>With Cloudflare Images you do get a default Public Variant listed when you start using the product, and so you can immediately start serving your SVG files using it, just like this:<br><br>https://imagedelivery.net/&lt;your_account_hash&gt;/&lt;your_SVG_ID&gt;/public<br><br>And, as shown from above, you can use any of your variant names to serve the image, as it won’t affect the output at all.</p>
+	<p>With Cloudflare Images you do get a default Public Variant listed when you start using the product, and so you can immediately start serving your SVG files using it, just like this:</p>
+	<p><a href="https://imagedelivery.net">https://imagedelivery.net/</a>&lt;your_account_hash&gt;/&lt;your_SVG_ID&gt;/public</p>
+	<p>And, as shown from above, you can use any of your variant names to serve the image, as it won’t affect the output at all.</p>
 	<p>If you’re an Image Resizing customer, you can also benefit from serving your files with our tool. Make sure you head to the <a href="https://developers.cloudflare.com/images/image-resizing">Developer Documentation</a> pages to see how.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>You can subscribe to Cloudflare Images <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages">directly in the dashboard</a>, and starting from today you can use the product to store and serve SVG files.</p>
 	<p>If you want to contribute to further developments of the filtering too and help expand its abilities, check out our <a href="https://github.com/cloudflare/svg-hush">SVG-Hush Tool repo</a>.</p>
 	<p>You can also connect directly with the team in our <a href="https://discord.com/invite/cloudflaredev">Cloudflare Developers Discord Server</a>.</p>

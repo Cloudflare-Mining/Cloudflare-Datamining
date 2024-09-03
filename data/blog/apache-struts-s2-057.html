@@ -1,73 +1,75 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41e7iaoM4HRg29VnyMOqME/db5048304d7c206050481203fa017880/apache-struts-s2-057.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>On August 22 a new vulnerability in the Apache Struts framework was<a href="https://cwiki.apache.org/confluence/display/WW/S2-057"> announced.</a> It allows unauthenticated attackers to perform Remote Code Execution (RCE) on vulnerable hosts.</p>
+	<p>On August 22 a new vulnerability in the Apache Struts framework was <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">announced.</a> It allows unauthenticated attackers to perform Remote Code Execution (RCE) on vulnerable hosts.</p>
 	<p>As security researcher Man Yue Mo <a href="https://lgtm.com/blog/apache_struts_CVE-2018-11776">explained</a>, the vulnerability has similarities with previous Apache Struts vulnerabilities. The Cloudflare WAF already mitigated these so adjusting our rules to handle the new vulnerability was simple. Within hours of the disclosure we deployed a mitigation with no customer action required.</p>
-	<h3 id="ognl-again">OGNL, again</h3>
+	<h3>OGNL, again</h3>
 	<p>Apache Struts RCE payloads often come in the form of Object-Graph Navigation Library (OGNL) expressions. OGNL is a language for interacting with the properties and functions of Java classes and Apache Struts supports it in many contexts.</p>
-	<p>For example, the snippet below uses OGNL to dynamically insert the value "5" into a webpage by calling a function.</p><!--kg-card-begin: markdown-->
-	<pre><code>&lt;s:property value="%{getSum(2,3)}" /&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>OGNL expressions can also be used for more general code execution:</p><!--kg-card-begin: markdown-->
-	<pre><code>${
+	<p>For example, the snippet below uses OGNL to dynamically insert the value "5" into a webpage by calling a function.</p>
+	<pre class="language-bash"><code class="language-bash"><s:property value="%{getSum(2,3)}"></s:property></code></pre>
+	<p>OGNL expressions can also be used for more general code execution:</p>
+	<pre class="language-bash"><code class="language-bash">${
     #_memberAccess["allowStaticMethodAccess"]=true,
     @java.lang.Runtime@getRuntime().exec('calc')
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Which means if you can find a way to make Apache Struts execute a user supplied OGNL expression, you've found an RCE vulnerability. Security researchers have found a significant number of vulnerabilities where this was the root cause.</p>
-	<h3 id="what-s-different-this-time">What’s different this time?</h3>
+	<h3>What’s different this time?</h3>
 	<p>The major difference between the various OGNL related Struts vulnerabilities is where the payload can be supplied.</p>
 	<p>For example <a href="https://cwiki.apache.org/confluence/display/WW/S2-003">S2-003</a>, <a href="https://cwiki.apache.org/confluence/display/WW/S2-005">S2-005</a> and <a href="https://cwiki.apache.org/confluence/display/WW/S2-009">S2-009</a> allowed OGNL expressions to be included in HTTP Parameters. In <a href="https://cwiki.apache.org/confluence/display/WW/S2-045">S2-045</a>, expressions could be supplied via the ‘Content-Type’ header. &nbsp;And <a href="https://cwiki.apache.org/confluence/display/WW/S2-048">S2-048</a> worked by inserting OGNL expressions anywhere they might be used incorrectly with the ActionMessage class (most likely via an HTTP parameter).</p>
-	<p>With <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">S2-057</a>, the payload is supplied via an action’s “namespace”. Semmel do a great job of explaining the exact conditions for this in their disclosure<a href="https://semmle.com/news/apache-struts-CVE-2018-11776"> post</a>.</p>
-	<p>An example is to omit the "namespace" parameter from the &nbsp;redirectAction result type.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">&lt;package name="public" extends="struts-default"&gt;
-    &lt;action name="login" class="..."&gt;
-        &lt;!-- Redirect to another namespace --&gt;
-        &lt;result type="redirectAction"&gt;
-            &lt;param name="actionName"&gt;dashboard&lt;/param&gt;
-            &lt;!-- namespace is omitted --&gt;
-            &lt;!--&lt;param name="namespace"&gt;/secure&lt;/param&gt;--&gt;
-        &lt;/result&gt;
-    &lt;/action&gt;
-&lt;/package&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>With <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">S2-057</a>, the payload is supplied via an action’s “namespace”. Semmel do a great job of explaining the exact conditions for this in their disclosure <a href="https://semmle.com/news/apache-struts-CVE-2018-11776">post</a>.</p>
+	<p>An example is to omit the "namespace" parameter from the &nbsp;redirectAction result type.</p>
+	<pre class="language-javascript"><code class="language-javascript"><package name="public" extends="struts-default">
+    <action name="login" class="...">
+        <!-- Redirect to another namespace -->
+        <result type="redirectAction">
+            <param name="actionName">dashboard
+            <!-- namespace is omitted -->
+            <!--<param name="namespace">/secure</param>-->
+        </result>
+    </action>
+</package></code></pre>
 	<p>The documentation describes this parameter as optional. If you don't include an explicit "namespace" then the client can supply it in the URI.</p>
-	<pre><code>vulnerablesite.com/struts2-blank/my-current-name-space/HelloWorld.action</code></pre>
+	<pre class="language-bash"><code class="language-bash">vulnerablesite.com/struts2-blank/my-current-name-space/HelloWorld.action</code></pre>
 	<p>If the client inserts an OGNL expression instead, it will be executed.</p>
-	<pre><code>vulnerablesite.com/struts2-blank/${#_memberAccess["allowStaticMethodAccess"]=true,@java.lang.Runtime@getRuntime().exec('calc')}/HelloWorld.action</code></pre>
-	<h3 id="cloudflare-s-got-your-covered">Cloudflare’s got your covered</h3>
+	<pre class="language-bash"><code class="language-bash">vulnerablesite.com/struts2-blank/${#_memberAccess["allowStaticMethodAccess"]=true,@java.lang.Runtime@getRuntime().exec('calc')}/HelloWorld.action</code></pre>
+	<h3>Cloudflare’s got your covered</h3>
 	<p>Cloudflare has rules to protect against this particular vulnerability, and many other Struts vulnerabilities. These have been configured as Block by default, so no customer action is needed, assuming the Cloudflare Specials rule set is enabled in your WAF configuration.</p>
 	<p>For customers on our Pro, Business and Enterprise plans, you can do this by going to the “Firewall” tab:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/MUanKxcbMSlqE35y-3-QYk4_Jd2hoRfKoO0vtbgCMTUpnP4yyqFYHQpNWdTrh90jpjjK6PvPPlgH05MQ89B-1V2ghr1jlFPtjtQA_lb65Vy4UZsjTkhfFdSH5iU4ZZMPrE_w-lYc" class="kg-image" alt="" loading="lazy"></figure>
-	<p> </p>
 	<p>Clicking “Web Application Firewall” and setting the toggle to “On”:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/R5Mqe9ITeQ7UuT6P3JSEqDgAoclFIG7wgn-7UI4GX7D1-qfCJytK336CuE0nmgYP1Z_qvL1-x5Wcsv1A_drFUobArittn14YpXKLK0KX9V0EavIK3U1Wc148voYnSNC4cLOpMaNT" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
 	<p>Then finally ensuring the “Cloudflare Specials” rule set is set to “On” as well:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/xuQ1zTBNxtmsY6W29wWc5N5tocST8Ias7OjmisgIGJjl9GgHSiFfZqndkTTMWhiZj8YMJtfChnfZXgFl_nXVbZEhZWB72qcaoktYqkeFy0czBb0nWOnpy-LibXHZ-uPKSGAZMdzC" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
 	<p>Where possible, we signature OGNL expressions in general, because of how dangerous it is for a server to trust any user-supplied OGNL. This allows the WAF to protect you without detailed knowledge of how specific exploits might work.</p>
 	<p>Additionally, for this and other Struts vulnerabilities, we produce rules that target specific locations where payloads can be supplied in (e.g. URI, parameters, etc). By focusing on specific payload vectors these rules can be much stricter in the range of inputs allowed, without the risk of increased false positives.</p>
-	<h3 id="what-we-ve-seen-in-the-last-24h">What we've seen in the last 24h</h3>
+	<h3>What we've seen in the last 24h</h3>
 	<p>Since the disclosure, we've seen a fairly constant rate of attacks targeting S2-057 vulnerability:</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/EyEC-eTn-_lgEUrdjzGxQVspd4cY8sxfvE2TlGQMgz8uyVNO351KtQ-ID6QPZZLsaNox7QGn9WdHnaYycCKbz_tBy9CmyB5_X7vNsRRmAkwydVQ0J5N0pqyO4l6EcusPINv-33zn" class="kg-image" alt="" loading="lazy"></figure>
 	<p>About half of these are coming from known vulnerability scanners, however our research has shown that the vast majority of payloads are only probing, rather than attempting to execute malicious actions. The most common tactics for that are using the OGNL expression print extra strings in the server response, or append extra headers.</p>
 	<p>Aside from that, our Research team have also seen attempts to run various commands:</p>
 	<ul>
-		<li>Ipconfig.exe</li>
-		<li>dir</li>
-		<li>'cat /etc/passwd'</li>
-		<li>/sbin/ifconfig</li>
-		<li>net users</li>
-		<li>file /etc/passwd</li>
-		<li>Whoami</li>
-		<li>id</li>
-		<li>Ping and nslookup commands to contact external servers</li>
+		<li>
+			<p>Ipconfig.exe</p>
+		</li>
+		<li>
+			<p>dir</p>
+		</li>
+		<li>
+			<p>'cat /etc/passwd'</p>
+		</li>
+		<li>
+			<p>/sbin/ifconfig</p>
+		</li>
+		<li>
+			<p>net users</p>
+		</li>
+		<li>
+			<p>file /etc/passwd</p>
+		</li>
+		<li>
+			<p>Whoami</p>
+		</li>
+		<li>
+			<p>id</p>
+		</li>
+		<li>
+			<p>Ping and nslookup commands to contact external servers</p>
+		</li>
 	</ul>
 	<p>If you have any further questions about how our WAF works, or whether you have the right protections in place, please don’t hesitate to reach out to our Support teams.</p>
 </div>

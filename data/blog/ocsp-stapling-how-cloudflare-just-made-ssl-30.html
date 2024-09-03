@@ -1,34 +1,65 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" src="https://blog.cloudflare.com/content/images/2015/04/2009-cheetah-sprint_flip2.jpg" title="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster"><br> <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://upload.wikimedia.org/wikipedia/commons/a/ab/2009-cheetah-sprint.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Yathin_sk">Yathin sk</a></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aEg5hWU8kbH6EqNQ8ubQ0/84b9a29f9cc6e8d6e79f197788b145eb/2009-cheetah-sprint_flip2.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="513" height="397" loading="lazy">
+
+	</figure>
+	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://upload.wikimedia.org/wikipedia/commons/a/ab/2009-cheetah-sprint.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Yathin_sk">Yathin sk</a></p>
 	<p>This week CloudFlare is announcing several things we're doing to significantly improve the performance of SSL. Too few sites are secured with SSL. One of the reasons sites don't implement SSL is that it can slow down web performance. One of the less frequently discussed, but most significant, performance hits to SSL is the OCSP/CRL check. These checks make up 30% or more of the HTTPS overhead. That's painful.</p>
-	<p>The best solution to speed up OCSP/CRL performance is something called <a href="https://en.wikipedia.org/wiki/OCSP_stapling">OCSP Stapling</a>. CloudFlare is committed to making the Internet faster and safer so we just enabled OCSP Stapling network wide in order to speed up all HTTPS connections<br>
-		and making the decision to secure a site with SSL a no-brainer. So what is the OCSP/CRL check? Why does it slow down page loads so significantly? And how have we eliminated this performance tax on HTTP connections with OCSP Stapling? Read on to find out.</p>
-	<h3 id="therevocationoverhead">The Revocation Overhead</h3>
+	<p>The best solution to speed up OCSP/CRL performance is something called <a href="https://en.wikipedia.org/wiki/OCSP_stapling">OCSP Stapling</a>. CloudFlare is committed to making the Internet faster and safer so we just enabled OCSP Stapling network wide in order to speed up all HTTPS connectionsand making the decision to secure a site with SSL a no-brainer. So what is the OCSP/CRL check? Why does it slow down page loads so significantly? And how have we eliminated this performance tax on HTTP connections with OCSP Stapling? Read on to find out.</p>
+	<h3>The Revocation Overhead</h3>
 	<p>To support secure web connections over HTTPS a website must have a SSL certificate. SSL certificates are issued by what is known as a Certificate Authority (CA). SSL certificates are issued for a period of time during which they will be trusted by browsers. If, however, a SSL certificate is stolen or compromised in some way before it expires, sites need a way to revoke the certificate so it will no longer be trusted.</p>
 	<p>The OCSP and CRL are the two protocols used to revoke certificates. CRL, which stands for Certificate Revocation List, is the older and cruder of the two protocols. When a CA receives a CRL request from a browser, it returns a complete list of all the certificates that CA manages that have been revoked. The browser then needs to parse the list and determine if the certificate of the visited site has been revoked.</p>
 	<p>With OCSP, the browser sends the certificate for the site in question to the CA. The CA then returns good, revoked, or unknown for the particular certificate. OCSP is generally preferable because less data needs to be sent and there's less overhead from the browser having to parse the CRL response. While every browser handles the revocation check process differently, generally modern browsers prefer OCSP to CRL checks.</p>
-	<p><img alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" src="https://blog.cloudflare.com/content/images/guard_dogs.jpg.scaled500.jpg" title="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster"></p>
-	<h3 id="revocationchecks30ofsslslowness">Revocation Checks: 30%+ of SSL Slowness</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TmhgM2xaDZSYQBQOLCbnt/34191bf3624a5b7dd0289865d4161595/guard_dogs.jpg.scaled500.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="500" height="384" loading="lazy">
+
+	</figure>
+	<h3>Revocation Checks: 30%+ of SSL Slowness</h3>
 	<p>Regardless of whether the browser performs an OCSP or CRL check, the check adds significant overhead. To give you a sense, the following connection flow is taken from this post on <a href="http://www.belshe.com/2012/02/04/rethinking-ssl-for-mobile-apps">SSL overhead on mobile devices</a>:</p>
 	<ol>
-		<li>DNS (1334ms)</li>
-		<li>TCP handshake (240ms)</li>
-		<li>SSL handshake (376ms)</li>
-		<li>Follow certificate chain (1011ms)</li>
-		<li><span style="color: #ff0000;">DNS to CA (300ms)</span></li>
-		<li><span style="color: #ff0000;">TCP to CA (407ms)</span></li>
-		<li><span style="color: #ff0000;">OCSP to CA #1 (598ms)</span></li>
-		<li><span style="color: #ff0000;">TCP to CA #2 (317ms)</span></li>
-		<li><span style="color: #ff0000;">OCSP to CA #2 (444ms)</span></li>
-		<li>Finish SSL handshake (1270ms)</li>
+		<li>
+			<p>DNS (1334ms)</p>
+		</li>
+		<li>
+			<p>TCP handshake (240ms)</p>
+		</li>
+		<li>
+			<p>SSL handshake (376ms)</p>
+		</li>
+		<li>
+			<p>Follow certificate chain (1011ms)</p>
+		</li>
+		<li>
+			<p>DNS to CA (300ms)</p>
+		</li>
+		<li>
+			<p>TCP to CA (407ms)</p>
+		</li>
+		<li>
+			<p>OCSP to CA #1 (598ms)</p>
+		</li>
+		<li>
+			<p>TCP to CA #2 (317ms)</p>
+		</li>
+		<li>
+			<p>OCSP to CA #2 (444ms)</p>
+		</li>
+		<li>
+			<p>Finish SSL handshake (1270ms)</p>
+		</li>
 	</ol>
 	<p>The red portions in the list above (steps 5 - 9) represent the overhead required for the revocation check requests. Add up the time for each step and you'll see that over 30% of the SSL overhead comes from checking whether the certificate has been revoked. And, unfortunately, this check is not done in parallel. In most browsers, until the revocation check is complete, the browser won't begin downloading any additional content. In other words, the OCSP check is blocking on content delivery and inherently adds a significant amount of time to the request. Painful.</p>
-	<h3 id="staplingocspforthewin">Stapling OCSP for the Win</h3>
+	<h3>Stapling OCSP for the Win</h3>
 	<p>The key to speeding up OCSP is to get rid of the requests that go back to the CA. Rather than needing to request the OCSP response from the CA directly, the OCSP response can be included in the initial SSL handshake (step 3 in the example above). In this sense, the OCSP response is "stapled" to the initial SSL handshake. While it seems like this approach would be less secure, the response is signed by the CA's root certificate so the browser can verify its authenticity even if it is not delivered directly from the CA's OCSP server.</p>
-	<p><img alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" src="https://blog.cloudflare.com/content/images/sneakers_ssl.jpg.scaled500.jpg" title="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uInqYkKZt1noMtSsVPuWc/204c51056acdf20529cb517751f24349/sneakers_ssl.jpg.scaled500.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="480" height="259" loading="lazy">
+
+	</figure>
 	<p>While OCSP Stapling makes a ton of sense, it unfortunately hasn't previously been widely supported by web servers. Part of the problem is that it often requires a significant technical investment by web administrators. While that investment may not make sense for many individual sites, CloudFlare sits in a unique position to enable OCSP Stapling for a large number of sites in one fell swoop. So that's what we just did.</p>
 	<p>At CloudFlare, our mission is to make the web faster and more secure. Inherent to this mission is eliminating the performance penalty of SSL connections so as many sites as possible will support secure HTTPS connections. Our SSL performance was already best of class, now it's even faster. If you're already a CloudFlare customer with SSL enabled, your HTTPS performance is now about 30% faster than it was last week. If you're not yet a CloudFlare customer but you want to make sure your SSL performance it as fast as possible, it only takes about 5 minutes to <a href="https://www.cloudflare.com/sign-up">sign up</a>.</p>
 	<p>Stay tuned this week for more announcements on how we're helping improve SSL performance for the whole web.</p>
-	<!--kg-card-end: markdown-->
 </div>

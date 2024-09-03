@@ -1,26 +1,35 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2s3tpFrqpA51MsSKSKiBNo/e7e9125375561bb03743860c0550dd86/spectrum-for-udp-ddos-protection-and-firewalling-for-unreliable-protocols.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Today, we're announcing Spectrum for UDP. Spectrum for UDP works the same as Spectrum for TCP: Spectrum sits between your clients and your origin. Incoming connections are <em>proxied</em> through, whilst applying our DDoS protection and IP Firewall rules. This allows you to protect your services from all sorts of nasty attacks and completely hides your origin behind Cloudflare.</p>
+	<p>Today, we're announcing Spectrum for UDP. Spectrum for UDP works the same as Spectrum for TCP: Spectrum sits between your clients and your origin. Incoming connections are <i>proxied</i> through, whilst applying our DDoS protection and IP Firewall rules. This allows you to protect your services from all sorts of nasty attacks and completely hides your origin behind Cloudflare.</p>
 	<p>Last year, we launched <a href="https://blog.cloudflare.com/spectrum">Spectrum</a>. Spectrum brought the power of our DDoS and firewall features to all TCP ports and services. Spectrum for TCP allows you to protect your SSH services, gaming protocols, and as of last month, even <a href="https://developers.cloudflare.com/spectrum/getting-started/ftp">FTP servers</a>. We’ve seen customers running all sorts of applications behind Spectrum, such as <a href="https://www.bitfly.at">Bitfly</a>, <a href="https://nicehash.com">Nicehash</a>, and <a href="https://hypixel.net">Hypixel</a>.</p>
 	<p>This is great if you're running TCP services, but plenty of our customers also have workloads running over UDP. As an example, many multiplayer games prefer the low cost and lighter weight of UDP and don't care about whether packets arrive or not.</p>
 	<p>UDP applications have historically been hard to protect and secure, which is why we built Spectrum for UDP. Spectrum for UDP allows you to protect standard UDP services (such as RDP over UDP), but can also protect any custom protocol you come up with! The only requirement is that it uses UDP as an underlying protocol.</p>
-	<h3 id="configuring-a-udp-application-on-spectrum">Configuring a UDP application on Spectrum</h3>
+	<h3>Configuring a UDP application on Spectrum</h3>
 	<p>To configure on the dashboard, simply switch the application type from TCP to UDP:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/image1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<h3 id="retrieving-client-information">Retrieving client information</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mq0LQqGOJk7r1M8rwwC8P/963fe75b1bd7c0773e23ffed09fcabd4/image1.png" alt="" class="kg-image" width="1436" height="1602" loading="lazy">
+
+	</figure>
+	<h3>Retrieving client information</h3>
 	<p>With Spectrum, we terminate the connection and open a new one to your origin. But, what if you want to still see who's actually connecting to you? For TCP, there's <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt">Proxy Protocol</a>. Whilst initially introduced by HAProxy, it has since been adopted by more parties, such as <a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol">nginx</a>. We added <a href="https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol">support</a> late 2018, allowing you to easily read the client's IP and port from a header that precedes each data stream.</p>
 	<p>Unfortunately, there is no equivalent for UDP, so we're rolling our own. Due to the fact that UDP is connection-less, we can't get away with the Proxy Protocol approach for TCP, which prepends the entire stream with one header. Instead, we are forced to prepend each packet with a small header that specifies:</p>
 	<ul>
-		<li>the original client IP</li>
-		<li>the Spectrum IP</li>
-		<li>the original client port</li>
-		<li>the Spectrum port</li>
+		<li>
+			<p>the original client IP</p>
+		</li>
+		<li>
+			<p>the Spectrum IP</p>
+		</li>
+		<li>
+			<p>the original client port</p>
+		</li>
+		<li>
+			<p>the Spectrum port</p>
+		</li>
 	</ul>
-	<p>Schema representing a UDP packet prefaced with our <em>Simple Proxy Protocol</em> header.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>0                   1                   2                   3
+	<p>Schema representing a UDP packet prefaced with our <i>Simple Proxy Protocol</i> header.</p>
+	<pre class="language-bash"><code class="language-bash">0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |          Magic Number         |                               |
@@ -42,13 +51,10 @@
 |                               |         Client Port           |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |           Proxy Port          |          Payload...           |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</code></pre>
 	<p>Simple Proxy Protocol is turned off by default, which means UDP packets will arrive at your origin as if they were sent from Spectrum. To enable, just enable it on your Spectrum app.</p>
-	<h3 id="getting-access-to-spectrum-for-udp">Getting access to Spectrum for UDP</h3>
+	<h3>Getting access to Spectrum for UDP</h3>
 	<p>We're excited about launching this and and even more excited to see what you'll build and protect with it. In fact, what if you could build serverless services on Spectrum, without actually having an origin running? Stay tuned for some cool announcements in the near future.</p>
-	<p>Spectrum for UDP is currently an Enterprise-only feature. To get UDP enabled for your account, please reach out to your account team and we’ll get you set up. </p>
+	<p>Spectrum for UDP is currently an Enterprise-only feature. To get UDP enabled for your account, please reach out to your account team and we’ll get you set up.</p>
 	<p>One more thing... if you’re at <a href="https://gdconf.com">GDC</a> this year, say hello at booth <a href="https://www.expocad.com/host/fx/ubm/gdc19/exfx.html#floorplan">P1639</a>! We’d love to talk more and learn about what you’d like to do with Spectrum.</p>
 </div>

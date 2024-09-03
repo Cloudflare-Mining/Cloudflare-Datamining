@@ -1,79 +1,140 @@
-<div class="mb2 gray5">15 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UaoX6fPvFuhN1ecJpbe6v/564c5a0cc67371272bdcbff53253dd10/New-system-architecture.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>One of our large scale data infrastructure challenges here at Cloudflare is around providing HTTP traffic analytics to our customers. HTTP Analytics is available to all our customers via two options:</p>
 	<ul>
-		<li>Analytics tab in Cloudflare dashboard</li>
-		<li>Zone Analytics API with 2 endpoints
+		<li>
+			<p>Analytics tab in Cloudflare dashboard</p>
+		</li>
+		<li>
+			<p>Zone Analytics API with 2 endpoints</p>
 			<ul>
-				<li><a href="https://api.cloudflare.com/#zone-analytics-dashboard">Dashboard endpoint</a></li>
-				<li><a href="https://api.cloudflare.com/#zone-analytics-analytics-by-co-locations">Co-locations endpoint</a> (Enterprise plan only)</li>
+				<li>
+					<p><a href="https://api.cloudflare.com/#zone-analytics-dashboard">Dashboard endpoint</a></p>
+				</li>
+				<li>
+					<p><a href="https://api.cloudflare.com/#zone-analytics-analytics-by-co-locations">Co-locations endpoint</a> (Enterprise plan only)</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
 	<p>In this blog post I'm going to talk about the exciting evolution of the Cloudflare analytics pipeline over the last year. I'll start with a description of the old pipeline and the challenges that we experienced with it. Then, I'll describe how we leveraged ClickHouse to form the basis of a new and improved pipeline. In the process, I'll share details about how we went about schema design and performance tuning for ClickHouse. Finally, I'll look forward to what the Data team is thinking of providing in the future.</p>
 	<p>Let's start with the old data pipeline.</p>
-	<h3 id="olddatapipeline">Old data pipeline</h3>
-	<p>The previous pipeline was built in 2014. It has been mentioned previously in <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb">Scaling out PostgreSQL for CloudFlare Analytics using CitusDB</a> and <a href="https://blog.cloudflare.com/more-data-more-data">More data, more data</a> blog posts from the Data team.<br>
-		<a href="https://blog.cloudflare.com/content/images/2018/03/Old-system-architecture.jpg"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/Old-system-architecture.jpg"></a><br>
-		It had following components:
-	</p>
+	<h3>Old data pipeline</h3>
+	<p>The previous pipeline was built in 2014. It has been mentioned previously in <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb">Scaling out PostgreSQL for CloudFlare Analytics using CitusDB</a> and <a href="https://blog.cloudflare.com/more-data-more-data">More data, more data</a> blog posts from the Data team.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MY5UJgdkM35pwDy4mMOxt/17a5c1cf18a4e653aa440225ce71ad12/Old-system-architecture.jpg" alt="Old-system-architecture" class="kg-image" width="2171" height="551" loading="lazy">
+	</figure>
+	<p>It had following components:</p>
 	<ul>
-		<li><strong>Log forwarder</strong> - collected Cap'n Proto formatted logs from the edge, notably DNS and Nginx logs, and shipped them to Kafka in Cloudflare central datacenter.</li>
-		<li><strong>Kafka cluster</strong> - consisted of 106 brokers with x3 replication factor, 106 partitions, ingested Cap'n Proto formatted logs at average rate 6M logs per second.</li>
-		<li><strong>Kafka consumers</strong> - each of 106 partitions had dedicated Go consumer (a.k.a. Zoneagg consumer), which read logs and produced aggregates per partition per zone per minute and then wrote them into Postgres.<br>
-			<strong>Postgres database</strong> - single instance PostgreSQL database (a.k.a. RollupDB), accepted aggregates from Zoneagg consumers and wrote them into temporary tables per partition per minute. It then rolled-up the aggregates into further aggregates with aggregation cron. More specifically:
+		<li>
+			<p><b>Log forwarder </b>- collected Cap'n Proto formatted logs from the edge, notably DNS and Nginx logs, and shipped them to Kafka in Cloudflare central datacenter.</p>
+		</li>
+		<li>
+			<p><b>Kafka cluster </b>- consisted of 106 brokers with x3 replication factor, 106 partitions, ingested Cap'n Proto formatted logs at average rate 6M logs per second.</p>
+		</li>
+		<li>
+			<p><b>Kafka consumers</b> - each of 106 partitions had dedicated Go consumer (a.k.a. Zoneagg consumer), which read logs and produced aggregates per partition per zone per minute and then wrote them into Postgres.
+				<b>Postgres database</b> - single instance PostgreSQL database (a.k.a. RollupDB), accepted aggregates from Zoneagg consumers and wrote them into temporary tables per partition per minute. It then rolled-up the aggregates into further aggregates with aggregation cron. More specifically:
+			</p>
 			<ul>
-				<li>Aggregates per partition, minute, zone → aggregates data per minute, zone</li>
-				<li>Aggregates per minute, zone → aggregates data per hour, zone</li>
-				<li>Aggregates per hour, zone → aggregates data per day, zone</li>
-				<li>Aggregates per day, zone → aggregates data per month, zone</li>
+				<li>
+					<p>Aggregates per partition, minute, zone → aggregates data per minute, zone</p>
+				</li>
+				<li>
+					<p>Aggregates per minute, zone → aggregates data per hour, zone</p>
+				</li>
+				<li>
+					<p>Aggregates per hour, zone → aggregates data per day, zone</p>
+				</li>
+				<li>
+					<p>Aggregates per day, zone → aggregates data per month, zone</p>
+				</li>
 			</ul>
 		</li>
-		<li><strong>Citus Cluster</strong> - consisted of Citus main and 11 Citus workers with x2 replication factor (a.k.a. Zoneagg Citus cluster), the storage behind Zone Analytics API and our BI internal tools. It had replication cron, which did remote copy of tables from Postgres instance into Citus worker shards.</li>
-		<li><strong>Zone Analytics API</strong> - served queries from internal PHP API. It consisted of 5 API instances written in Go and queried Citus cluster, and was not visible to external users.</li>
-		<li><strong>PHP API</strong> - 3 instances of proxying API, which forwarded public API queries to internal Zone Analytics API, and had some business logic on zone plans, error messages, etc.</li>
-		<li><strong>Load Balancer</strong> - nginx proxy, forwarded queries to PHP API/Zone Analytics API.</li>
+		<li>
+			<p><b>Citus Cluster</b> - consisted of Citus main and 11 Citus workers with x2 replication factor (a.k.a. Zoneagg Citus cluster), the storage behind Zone Analytics API and our BI internal tools. It had replication cron, which did remote copy of tables from Postgres instance into Citus worker shards.</p>
+		</li>
+		<li>
+			<p><b>Zone Analytics API</b> - served queries from internal PHP API. It consisted of 5 API instances written in Go and queried Citus cluster, and was not visible to external users.</p>
+		</li>
+		<li>
+			<p><b>PHP API </b>- 3 instances of proxying API, which forwarded public API queries to internal Zone Analytics API, and had some business logic on zone plans, error messages, etc.</p>
+		</li>
+		<li>
+			<p><b>Load Balancer </b>- nginx proxy, forwarded queries to PHP API/Zone Analytics API.</p>
+		</li>
 	</ul>
 	<p>Cloudflare has grown tremendously since this pipeline was originally designed in 2014. It started off processing under 1M requests per second and grew to current levels of 6M requests per second. The pipeline had served us and our customers well over the years, but began to split at the seams. Any system should be re-engineered after some time, when requirements change.</p>
 	<p>Some specific disadvantages of the original pipeline were:</p>
 	<ul>
-		<li><strong>Postgres SPOF</strong> - single PostgreSQL instance was a SPOF (Single Point of Failure), as it didn't have replicas or backups and if we were to lose this node, whole analytics pipeline could be paralyzed and produce no new aggregates for Zone Analytics API.</li>
-		<li><strong>Citus main SPOF</strong> - Citus main was the entrypoint to all Zone Analytics API queries and if it went down, all our customers' Analytics API queries would return errors.</li>
-		<li><strong>Complex codebase</strong> - thousands of lines of bash and SQL for aggregations, and thousands of lines of Go for API and Kafka consumers made the pipeline difficult to maintain and debug.</li>
-		<li><strong>Many dependencies</strong> - the pipeline consisted of many components, and failure in any individual component could result in halting the entire pipeline.</li>
-		<li><strong>High maintenance cost</strong> - due to its complex architecture and codebase, there were frequent incidents, which sometimes took engineers from the Data team and other teams many hours to mitigate.</li>
+		<li>
+			<p><b>Postgres SPOF</b> - single PostgreSQL instance was a SPOF (Single Point of Failure), as it didn't have replicas or backups and if we were to lose this node, whole analytics pipeline could be paralyzed and produce no new aggregates for Zone Analytics API.</p>
+		</li>
+		<li>
+			<p><b>Citus main SPOF</b> - Citus main was the entrypoint to all Zone Analytics API queries and if it went down, all our customers' Analytics API queries would return errors.</p>
+		</li>
+		<li>
+			<p><b>Complex codebase</b> - thousands of lines of bash and SQL for aggregations, and thousands of lines of Go for API and Kafka consumers made the pipeline difficult to maintain and debug.</p>
+		</li>
+		<li>
+			<p><b>Many dependencies</b> - the pipeline consisted of many components, and failure in any individual component could result in halting the entire pipeline.</p>
+		</li>
+		<li>
+			<p><b>High maintenance cost</b> - due to its complex architecture and codebase, there were frequent incidents, which sometimes took engineers from the Data team and other teams many hours to mitigate.</p>
+		</li>
 	</ul>
 	<p>Over time, as our request volume grew, the challenges of operating this pipeline became more apparent, and we realized that this system was being pushed to its limits. This realization inspired us to think about which components would be ideal candidates for replacement, and led us to build new data pipeline.</p>
 	<p>Our first design of an improved analytics pipeline centred around the use of the <a href="https://flink.apache.org">Apache Flink</a> stream processing system. We had previously used Flink for other data pipelines, so it was a natural choice for us. However, these pipelines had been at a much lower rate than the 6M requests per second we needed to process for HTTP Analytics, and we struggled to get Flink to scale to this volume - it just couldn't keep up with ingestion rate per partition on all 6M HTTP requests per second.</p>
 	<p>Our colleagues on our DNS team had already built and productionized DNS analytics pipeline atop ClickHouse. They wrote about it in <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second">"How Cloudflare analyzes 1M DNS queries per second"</a> blog post. So, we decided to take a deeper look at ClickHouse.</p>
-	<h3 id="clickhouse">ClickHouse</h3>
+	<h3>ClickHouse</h3>
 	<blockquote>
-		<p>"ClickHouse не тормозит."<br>
-			Translation from Russian: ClickHouse doesn't have brakes (or isn't slow)<br>
+		<p>"ClickHouse не тормозит."
+			Translation from Russian: ClickHouse doesn't have brakes (or isn't slow)
 			© ClickHouse core developers</p>
 	</blockquote>
 	<p>When exploring additional candidates for replacing some of the key infrastructure of our old pipeline, we realized that using a column oriented database might be well suited to our analytics workloads. We wanted to identify a column oriented database that was horizontally scalable and fault tolerant to help us deliver good uptime guarantees, and extremely performant and space efficient such that it could handle our scale. We quickly realized that ClickHouse could satisfy these criteria, and then some.</p>
 	<p><a href="https://clickhouse.yandex">ClickHouse</a> is an open source column-oriented database management system capable of real time generation of analytical data reports using SQL queries. It is blazing fast, linearly scalable, hardware efficient, fault tolerant, feature rich, highly reliable, simple and handy. ClickHouse core developers provide great help on solving issues, merging and maintaining our PRs into ClickHouse. For example, engineers from Cloudflare have contributed a whole bunch of code back upstream:</p>
 	<ul>
-		<li>Aggregate function <a href="https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/topk">topK</a> by <a href="https://github.com/vavrusa">Marek Vavruša</a></li>
-		<li>IP prefix dictionary by Marek Vavruša</li>
-		<li>SummingMergeTree engine optimizations by Marek Vavruša</li>
-		<li><a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/kafka">Kafka table Engine</a> by Marek Vavruša. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</li>
-		<li>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value">sumMap</a> by <a href="https://github.com/bocharov">Alex Bocharov</a>. Without this function it would be impossible to build our new Zone Analytics API.</li>
-		<li><a href="https://github.com/yandex/ClickHouse/pull/1636">Mark cache fix</a> by Alex Bocharov</li>
-		<li><a href="https://github.com/yandex/ClickHouse/pull/1844">uniqHLL12 function fix</a> for big cardinalities by Alex Bocharov. The description of the issue and its fix should be an interesting reading.<br>
-			<a href="https://blog.cloudflare.com/content/images/2018/03/ClickHouse-uniq-functions.png"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/ClickHouse-uniq-functions.png"></a>
+		<li>
+			<p>Aggregate function <a href="https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/topk">topK</a> by <a href="https://github.com/vavrusa">Marek Vavruša</a></p>
+		</li>
+		<li>
+			<p>IP prefix dictionary by Marek Vavruša</p>
+		</li>
+		<li>
+			<p>SummingMergeTree engine optimizations by Marek Vavruša</p>
+		</li>
+		<li>
+			<p><a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/kafka">Kafka table Engine</a> by Marek Vavruša. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</p>
+		</li>
+		<li>
+			<p>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value">sumMap</a> by <a href="https://github.com/bocharov">Alex Bocharov</a>. Without this function it would be impossible to build our new Zone Analytics API.</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/yandex/ClickHouse/pull/1636">Mark cache fix</a> by Alex Bocharov</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/yandex/ClickHouse/pull/1844">uniqHLL12 function fix</a> for big cardinalities by Alex Bocharov. The description of the issue and its fix should be an interesting reading.</p>
 		</li>
 	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mN4cq6YrpiHjBfbP6vpCh/20d05cda889737ddf5288b55fe185ba9/ClickHouse-uniq-functions.png" alt="ClickHouse-uniq-functions" class="kg-image" width="1029" height="698" loading="lazy">
+	</figure>
 	<p>Along with filing many bug reports, we also report about every issue we face in our cluster, which we hope will help to improve ClickHouse in future.</p>
 	<p>Even though DNS analytics on ClickHouse had been a great success, we were still skeptical that we would be able to scale ClickHouse to the needs of the HTTP pipeline:</p>
 	<ul>
-		<li>Kafka DNS topic has on average 1.5M messages per second vs 6M messages per second for HTTP requests topic.</li>
-		<li>Kafka DNS topic average uncompressed message size is 130B vs 1630B for HTTP requests topic.</li>
-		<li>DNS query ClickHouse record consists of 40 columns vs 104 columns for HTTP request ClickHouse record.</li>
+		<li>
+			<p>Kafka DNS topic has on average 1.5M messages per second vs 6M messages per second for HTTP requests topic.</p>
+		</li>
+		<li>
+			<p>Kafka DNS topic average uncompressed message size is 130B vs 1630B for HTTP requests topic.</p>
+		</li>
+		<li>
+			<p>DNS query ClickHouse record consists of 40 columns vs 104 columns for HTTP request ClickHouse record.</p>
+		</li>
 	</ul>
 	<p>After unsuccessful attempts with Flink, we were skeptical of ClickHouse being able to keep up with the high ingestion rate. Luckily, early prototype showed promising performance and we decided to proceed with old pipeline replacement. The first step in replacing the old pipeline was to design a schema for the new ClickHouse tables.</p>
-	<h3 id="clickhouseschemadesign">ClickHouse schema design</h3>
+	<h3>ClickHouse schema design</h3>
 	<p>Once we identified ClickHouse as a potential candidate, we began exploring how we could port our existing Postgres/Citus schemas to make them compatible with ClickHouse.</p>
 	<p>For our <a href="https://api.cloudflare.com/#zone-analytics-dashboard">Zone Analytics API</a> we need to produce many different aggregations for each zone (domain) and time period (minutely / hourly / daily / monthly). For deeper dive about specifics of aggregates please follow Zone Analytics API documentation or this handy <a href="https://docs.google.com/spreadsheets/d/1zQ3yI3HB2p8hiM-Jwvq1-MaeEyIouix2I-iUAPZtJYw/edit#gid=1788221216">spreadsheet</a>.</p>
 	<p>These aggregations should be available for any time range for the last 365 days. While ClickHouse is a really great tool to work with non-aggregated data, with our volume of 6M requests per second we just cannot afford yet to store non-aggregated data for that long.</p>
@@ -81,63 +142,121 @@
 	<table>
 		<tbody>
 			<tr>
-				<th>Metric</th>
-				<th>Cap'n Proto</th>
-				<th>Cap'n Proto (zstd)</th>
-				<th>ClickHouse</th>
+				<th>
+					<p><b>Metric</b></p>
+				</th>
+				<th>
+					<p><b>Cap'n Proto</b></p>
+				</th>
+				<th>
+					<p><b>Cap'n Proto (zstd)</b></p>
+				</th>
+				<th>
+					<p><b>ClickHouse</b></p>
+				</th>
 			</tr>
 			<tr>
-				<td>Avg message/record size</td>
-				<td>1630 B</td>
-				<td>360 B</td>
-				<td>36.74 B</td>
+				<td>
+					<p>Avg message/record size</p>
+				</td>
+				<td>
+					<p>1630 B</p>
+				</td>
+				<td>
+					<p>360 B</p>
+				</td>
+				<td>
+					<p>36.74 B</p>
+				</td>
 			</tr>
 			<tr>
-				<td>Storage requirements for 1 year</td>
-				<td>273.93 PiB</td>
-				<td>60.5 PiB</td>
-				<td>18.52 PiB (RF x3)</td>
+				<td>
+					<p>Storage requirements for 1 year</p>
+				</td>
+				<td>
+					<p>273.93 PiB</p>
+				</td>
+				<td>
+					<p>60.5 PiB</p>
+				</td>
+				<td>
+					<p>18.52 PiB (RF x3)</p>
+				</td>
 			</tr>
 			<tr>
-				<td>Storage cost for 1 year</td>
-				<td>$28M</td>
-				<td>$6.2M</td>
-				<td>$1.9M</td>
+				<td>
+					<p>Storage cost for 1 year</p>
+				</td>
+				<td>
+					<p>$28M</p>
+				</td>
+				<td>
+					<p>$6.2M</p>
+				</td>
+				<td>
+					<p>$1.9M</p>
+				</td>
 			</tr>
 		</tbody>
 	</table>
-	And that is if we assume that requests per second will stay the same, but in fact it's growing fast all the time.
+	<p>And that is if we assume that requests per second will stay the same, but in fact it's growing fast all the time.</p>
 	<p>Even though storage requirements are quite scary, we're still considering to store raw (non-aggregated) requests logs in ClickHouse for 1 month+. See "Future of Data APIs" section below.</p>
-	<h4 id="nonaggregatedrequeststable">Non-aggregated requests table</h4>
+	<h4>Non-aggregated requests table</h4>
 	<p>We store over <a href="https://docs.google.com/spreadsheets/d/1zQ3yI3HB2p8hiM-Jwvq1-MaeEyIouix2I-iUAPZtJYw/edit?usp=sharing">100+ columns</a>, collecting lots of different kinds of metrics about each request passed through Cloudflare. Some of these columns are also available in our <a href="https://support.cloudflare.com/hc/en-us/articles/216672448-Enterprise-Log-Share-Logpull-REST-API">Enterprise Log Share</a> product, however ClickHouse non-aggregated requests table has more fields.</p>
 	<p>With so many columns to store and huge storage requirements we've decided to proceed with the aggregated-data approach, which worked well for us before in old pipeline and which will provide us with backward compatibility.</p>
-	<h4 id="aggregationsschemadesign1">Aggregations schema design #1</h4>
+	<h4>Aggregations schema design #1</h4>
 	<p>According to the <a href="https://api.cloudflare.com/#zone-analytics-dashboard">API documentation</a>, we need to provide lots of different requests breakdowns and to satisfy these requirements we decided to test the following approach:</p>
 	<ol>
-		<li>Create Cickhouse <a href="https://clickhouse.com/docs/en/sql-reference/statements/create/view">materialized views</a> with <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/aggregatingmergetree">ReplicatedAggregatingMergeTree</a> engine pointing to non-aggregated requests table and containing minutely aggregates data for each of the breakdowns:
+		<li>
+			<p>Create Cickhouse <a href="https://clickhouse.com/docs/en/sql-reference/statements/create/view">materialized views</a> with <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/aggregatingmergetree">ReplicatedAggregatingMergeTree</a> engine pointing to non-aggregated requests table and containing minutely aggregates data for each of the breakdowns:</p>
 			<ul>
-				<li><strong>Requests totals</strong> - containing numbers like total requests, bytes, threats, uniques, etc.</li>
-				<li><strong>Requests by colo</strong> - containing requests, bytes, etc. breakdown by edgeColoId - each of 120+ Cloudflare datacenters</li>
-				<li><strong>Requests by http status</strong> - containing breakdown by HTTP status code, e.g. 200, 404, 500, etc.</li>
-				<li><strong>Requests by content type</strong> - containing breakdown by response content type, e.g. HTML, JS, CSS, etc.</li>
-				<li><strong>Requests by country</strong> - containing breakdown by client country (based on IP)</li>
-				<li><strong>Requests by threat type</strong> - containing breakdown by threat type</li>
-				<li><strong>Requests by browser</strong> - containing breakdown by browser family, extracted from user agent</li>
-				<li><strong>Requests by ip class</strong> - containing breakdown by client IP class</li>
+				<li>
+					<p><b>Requests totals</b> - containing numbers like total requests, bytes, threats, uniques, etc.</p>
+				</li>
+				<li>
+					<p><b>Requests by colo</b> - containing requests, bytes, etc. breakdown by edgeColoId - each of 120+ Cloudflare datacenters</p>
+				</li>
+				<li>
+					<p><b>Requests by http status</b> - containing breakdown by HTTP status code, e.g. 200, 404, 500, etc.</p>
+				</li>
+				<li>
+					<p><b>Requests by content type</b> - containing breakdown by response content type, e.g. HTML, JS, CSS, etc.</p>
+				</li>
+				<li>
+					<p><b>Requests by country</b> - containing breakdown by client country (based on IP)</p>
+				</li>
+				<li>
+					<p><b>Requests by threat type</b> - containing breakdown by threat type</p>
+				</li>
+				<li>
+					<p><b>Requests by browser</b> - containing breakdown by browser family, extracted from user agent</p>
+				</li>
+				<li>
+					<p><b>Requests by ip class</b> - containing breakdown by client IP class</p>
+				</li>
 			</ul>
 		</li>
-		<li>Write the code gathering data from all 8 materialized views, using two approaches:
+		<li>
+			<p>Write the code gathering data from all 8 materialized views, using two approaches:</p>
 			<ul>
-				<li>Querying all 8 materialized views at once using JOIN</li>
-				<li>Querying each one of 8 materialized views separately in parallel</li>
+				<li>
+					<p>Querying all 8 materialized views at once using JOIN</p>
+				</li>
+				<li>
+					<p>Querying each one of 8 materialized views separately in parallel</p>
+				</li>
 			</ul>
 		</li>
-		<li>Run performance testing benchmark against common Zone Analytics API queries</li>
+		<li>
+			<p>Run performance testing benchmark against common Zone Analytics API queries</p>
+		</li>
 	</ol>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/03/Schema-design--1-1.jpg"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/Schema-design--1-1.jpg"></a><br>
-		Schema design #1 didn't work out well. ClickHouse JOIN syntax forces to write monstrous query over 300 lines of SQL, repeating the selected columns many times because you can do only <a href="https://github.com/yandex/ClickHouse/issues/873">pairwise joins</a> in ClickHouse.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iQvOQSik5xLDR7lkG0X9H/e03ceb9475a0df36c90458a1444c9077/Schema-design--1-1.jpg" alt="Schema-design--1-1" class="kg-image" width="981" height="151" loading="lazy">
+	</figure>
+	<p>Schema design #1 didn't work out well. ClickHouse JOIN syntax forces to write monstrous query over 300 lines of SQL, repeating the selected columns many times because you can do only <a href="https://github.com/yandex/ClickHouse/issues/873">pairwise joins</a> in ClickHouse.</p>
 	<p>As for querying each of materialized views separately in parallel, benchmark showed prominent, but moderate results - query throughput would be a little bit better than using our Citus based old pipeline.</p>
-	<h4 id="aggregationsschemadesign2">Aggregations schema design #2</h4>
+	<h4>Aggregations schema design #2</h4>
 	<p>In our second iteration of the schema design, we strove to keep a similar structure to our existing Citus tables. To do this, we experimented with the SummingMergeTree engine, which is described in detail by the excellent ClickHouse <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/summingmergetree">documentation</a>:</p>
 	<blockquote>
 		<p>In addition, a table can have nested data structures that are processed in a special way. If the name of a nested table ends in 'Map' and it contains at least two columns that meet the following criteria... then this nested table is interpreted as a mapping of key =&gt; (values...), and when merging its rows, the elements of two data sets are merged by 'key' with a summation of the corresponding (values...).</p>
@@ -145,114 +264,197 @@
 	<p>We were pleased to find this feature, because the SummingMergeTree engine allowed us to significantly reduce the number of tables required as compared to our initial approach. At the same time, it allowed us to match the structure of our existing Citus tables. The reason was that the ClickHouse Nested structure ending in 'Map' was similar to the <a href="https://www.postgresql.org/docs/9.6/static/hstore.html">Postgres hstore</a> data type, which we used extensively in the old pipeline.</p>
 	<p>However, there were two existing issues with ClickHouse maps:</p>
 	<ul>
-		<li>SummingMergeTree does aggregation for all records with same primary key, but final aggregation across all shards should be done using some aggregate function, which didn't exist in ClickHouse.</li>
-		<li>For storing uniques (uniques visitors based on IP), we need to use AggregateFunction data type, and although SummingMergeTree allows you to create column with such data type, it will not perform aggregation on it for records with same primary keys.</li>
+		<li>
+			<p>SummingMergeTree does aggregation for all records with same primary key, but final aggregation across all shards should be done using some aggregate function, which didn't exist in ClickHouse.</p>
+		</li>
+		<li>
+			<p>For storing uniques (uniques visitors based on IP), we need to use AggregateFunction data type, and although SummingMergeTree allows you to create column with such data type, it will not perform aggregation on it for records with same primary keys.</p>
+		</li>
 	</ul>
 	<p>To resolve problem #1, we had to create a new aggregation function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value">sumMap</a>. Luckily, ClickHouse source code is of excellent quality and its core developers are very helpful with reviewing and merging requested changes.</p>
 	<p>As for problem #2, we had to put uniques into separate materialized view, which uses the ReplicatedAggregatingMergeTree Engine and supports merge of AggregateFunction states for records with the same primary keys. We're considering adding the same functionality into SummingMergeTree, so it will simplify our schema even more.</p>
-	<p>We also created a separate materialized view for the Colo endpoint because it has much lower usage (5% for Colo endpoint queries, 95% for Zone dashboard queries), so its more dispersed primary key will not affect performance of Zone dashboard queries.<br>
-		<a href="https://blog.cloudflare.com/content/images/2018/03/Schema-design--2.jpg"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/Schema-design--2.jpg"></a><br>
-		Once schema design was acceptable, we proceeded to performance testing.
-	</p>
-	<h3 id="clickhouseperformancetuning">ClickHouse performance tuning</h3>
+	<p>We also created a separate materialized view for the Colo endpoint because it has much lower usage (5% for Colo endpoint queries, 95% for Zone dashboard queries), so its more dispersed primary key will not affect performance of Zone dashboard queries.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZmeMrcqIgAI99UJgfx1HK/2a418131e5e8bf9bd4863da9af9c3e9a/Schema-design--2.jpg" alt="Schema-design--2" class="kg-image" width="557" height="316" loading="lazy">
+	</figure>
+	<p>Once schema design was acceptable, we proceeded to performance testing.</p>
+	<h3>ClickHouse performance tuning</h3>
 	<p>We explored a number of avenues for performance improvement in ClickHouse. These included tuning index granularity, and improving the merge performance of the SummingMergeTree engine.</p>
 	<p>By default ClickHouse recommends to use 8192 index granularity. There is <a href="https://medium.com/@f1yegor/clickhouse-primary-keys-2cf2a45d7324">nice article</a> explaining ClickHouse primary keys and index granularity in depth.</p>
 	<p>While default index granularity might be excellent choice for most of use cases, in our case we decided to choose the following index granularities:</p>
 	<ul>
-		<li>For the main non-aggregated requests table we chose an index granularity of 16384. For this table, the number of rows read in a query is typically on the order of millions to billions. In this case, a large index granularity does not make a huge difference on query performance.</li>
-		<li>For the aggregated requests_* stables, we chose an index granularity of 32. A low index granularity makes sense when we only need to scan and return a few rows. It made a huge difference in API performance - query latency decreased by 50% and throughput increased by ~3 times when we changed index granularity 8192 → 32.</li>
+		<li>
+			<p>For the main non-aggregated requests table we chose an index granularity of 16384. For this table, the number of rows read in a query is typically on the order of millions to billions. In this case, a large index granularity does not make a huge difference on query performance.</p>
+		</li>
+		<li>
+			<p>For the aggregated requests_* stables, we chose an index granularity of 32. A low index granularity makes sense when we only need to scan and return a few rows. It made a huge difference in API performance - query latency decreased by 50% and throughput increased by ~3 times when we changed index granularity 8192 → 32.</p>
+		</li>
 	</ul>
 	<p>Not relevant to performance, but we also disabled the min_execution_speed setting, so queries scanning just a few rows won't return exception because of "slow speed" of scanning rows per second.</p>
 	<p>On the aggregation/merge side, we've made some ClickHouse optimizations as well, like <a href="https://github.com/yandex/ClickHouse/pull/1330">increasing SummingMergeTree maps merge speed</a> by x7 times, which we contributed back into ClickHouse for everyone's benefit.</p>
 	<p>Once we had completed the performance tuning for ClickHouse, we could bring it all together into a new data pipeline. Next, we describe the architecture for our new, ClickHouse-based data pipeline.</p>
-	<h3 id="newdatapipeline">New data pipeline</h3>
-	<p>The new pipeline architecture re-uses some of the components from old pipeline, however it replaces its most weak components.<br>
-		<a href="https://blog.cloudflare.com/content/images/2018/03/New-system-architecture.jpg"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/New-system-architecture.jpg"></a><br>
-		New components include:
-	</p>
+	<h3>New data pipeline</h3>
+	<p>The new pipeline architecture re-uses some of the components from old pipeline, however it replaces its most weak components.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UaoX6fPvFuhN1ecJpbe6v/564c5a0cc67371272bdcbff53253dd10/New-system-architecture.jpg" alt="New-system-architecture" class="kg-image" width="1609" height="553" loading="lazy">
+	</figure>
+	<p>New components include:</p>
 	<ul>
-		<li><strong>Kafka consumers</strong> - 106 Go consumers per each partition consume Cap'n Proto raw logs and extract/prepare needed 100+ ClickHouse fields. Consumers no longer do any aggregation logic.</li>
-		<li><strong>ClickHouse cluster</strong> - 36 nodes with x3 replication factor. It handles non-aggregate requests logs ingestion and then produces aggregates using materialized views.</li>
-		<li><strong>Zone Analytics API</strong> - rewritten and optimized version of API in Go, with many meaningful metrics, healthchecks, failover scenarios.</li>
+		<li>
+			<p><b>Kafka consumers </b>- 106 Go consumers per each partition consume Cap'n Proto raw logs and extract/prepare needed 100+ ClickHouse fields. Consumers no longer do any aggregation logic.</p>
+		</li>
+		<li>
+			<p><b>ClickHouse cluster</b> - 36 nodes with x3 replication factor. It handles non-aggregate requests logs ingestion and then produces aggregates using materialized views.</p>
+		</li>
+		<li>
+			<p><b>Zone Analytics API</b> - rewritten and optimized version of API in Go, with many meaningful metrics, healthchecks, failover scenarios.</p>
+		</li>
 	</ul>
 	<p>As you can see the architecture of new pipeline is much simpler and fault-tolerant. It provides Analytics for all our 7M+ customers' domains totalling more than 2.5 billion monthly unique visitors and over 1.5 trillion monthly page views.</p>
-	<p>On average we process 6M HTTP requests per second, with peaks of upto 8M requests per second.<br>
-		<a href="https://blog.cloudflare.com/content/images/2018/03/HTTP-Logfwdr-throughput.png"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/HTTP-Logfwdr-throughput.png"></a><br>
-		Average log message size in <a href="https://capnproto.org">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.
-	</p>
-	<h4 id="benefitsofnewpipeline">Benefits of new pipeline</h4>
+	<p>On average we process 6M HTTP requests per second, with peaks of upto 8M requests per second.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zjubA3CgetykRE8Angxln/8bccf6f1101dbe5dd3409121420a947d/HTTP-Logfwdr-throughput.png" alt="HTTP-Logfwdr-throughput" class="kg-image" width="1833" height="764" loading="lazy">
+	</figure>
+	<p>Average log message size in <a href="https://capnproto.org">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.</p>
+	<h4>Benefits of new pipeline</h4>
 	<ul>
-		<li><strong>No SPOF</strong> - removed all SPOFs and bottlenecks, everything has at least x3 replication factor.</li>
-		<li><strong>Fault-tolerant</strong> - it's more fault-tolerant, even if Kafka consumer or ClickHouse node or Zone Analytics API instance fails, it doesn't impact the service.</li>
-		<li><strong>Scalable</strong> - we can add more Kafka brokers or ClickHouse nodes and scale ingestion as we grow. We are not so confident about query performance when cluster will grow to hundreds of nodes. However, Yandex team managed to scale their cluster to 500+ nodes, distributed geographically between several data centers, using two-level sharding.</li>
-		<li><strong>Reduced complexity</strong> - due to removing messy crons and consumers which were doing aggregations and refactoring API code we were able to:
+		<li>
+			<p><b>No SPOF</b> - removed all SPOFs and bottlenecks, everything has at least x3 replication factor.</p>
+		</li>
+		<li>
+			<p><b>Fault-tolerant</b> - it's more fault-tolerant, even if Kafka consumer or ClickHouse node or Zone Analytics API instance fails, it doesn't impact the service.</p>
+		</li>
+		<li>
+			<p><b>Scalable</b> - we can add more Kafka brokers or ClickHouse nodes and scale ingestion as we grow. We are not so confident about query performance when cluster will grow to hundreds of nodes. However, Yandex team managed to scale their cluster to 500+ nodes, distributed geographically between several data centers, using two-level sharding.</p>
+		</li>
+		<li>
+			<p><b>Reduced complexity</b> - due to removing messy crons and consumers which were doing aggregations and refactoring API code we were able to:</p>
 			<ul>
-				<li>Shutdown Postgres RollupDB instance and free it up for reuse.</li>
-				<li>Shutdown Citus cluster 12 nodes and free it up for reuse. As we won't use Citus for serious workload anymore we can reduce our operational and support costs.</li>
-				<li>Delete tens of thousands of lines of old Go, SQL, Bash, and PHP code.</li>
-				<li>Remove WWW PHP API dependency and extra latency.</li>
+				<li>
+					<p>Shutdown Postgres RollupDB instance and free it up for reuse.</p>
+				</li>
+				<li>
+					<p>Shutdown Citus cluster 12 nodes and free it up for reuse. As we won't use Citus for serious workload anymore we can reduce our operational and support costs.</p>
+				</li>
+				<li>
+					<p>Delete tens of thousands of lines of old Go, SQL, Bash, and PHP code.</p>
+				</li>
+				<li>
+					<p>Remove WWW PHP API dependency and extra latency.</p>
+				</li>
 			</ul>
 		</li>
-		<li><strong>Improved API throughput and latency</strong> - with previous pipeline Zone Analytics API was struggling to serve more than 15 queries per second, so we had to introduce temporary hard rate limits for largest users. With new pipeline we were able to remove hard rate limits and now we are serving ~40 queries per second. We went further and did intensive load testing for new API and with current setup and hardware we are able serve up to ~150 queries per second and this is scalable with additional nodes.<br>
-			<a href="https://blog.cloudflare.com/content/images/2018/03/Zone-Analytics-API-requests-latency-quantiles.png"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/Zone-Analytics-API-requests-latency-quantiles.png"></a>
+		<li>
+			<p><b>Improved API throughput and latency </b>- with previous pipeline Zone Analytics API was struggling to serve more than 15 queries per second, so we had to introduce temporary hard rate limits for largest users. With new pipeline we were able to remove hard rate limits and now we are serving ~40 queries per second. We went further and did intensive load testing for new API and with current setup and hardware we are able serve up to ~150 queries per second and this is scalable with additional nodes.
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TCHFdGAndAank2N3agHQj/02f71f0c4768cd30d26f0e083f6b2540/Zone-Analytics-API-requests-latency-quantiles.png" alt="Zone-Analytics-API-requests-latency-quantiles" class="kg-image" width="3678" height="1570" loading="lazy">
+			</figure>
+			<p></p>
 		</li>
-		<li><strong>Easier to operate</strong> - with shutdown of many unreliable components, we are finally at the point where it's relatively easy to operate this pipeline. ClickHouse quality helps us a lot in this matter.</li>
-		<li><strong>Decreased amount of incidents</strong> - with new more reliable pipeline, we now have fewer incidents than before, which ultimately has reduced on-call burden. Finally, we can sleep peacefully at night :-).</li>
+		<li>
+			<p><b>Easier to operate</b> - with shutdown of many unreliable components, we are finally at the point where it's relatively easy to operate this pipeline. ClickHouse quality helps us a lot in this matter.</p>
+		</li>
+		<li>
+			<p><b>Decreased amount of incidents</b> - with new more reliable pipeline, we now have fewer incidents than before, which ultimately has reduced on-call burden. Finally, we can sleep peacefully at night :-).</p>
+		</li>
 	</ul>
 	<p>Recently, we've improved the throughput and latency of the new pipeline even further with better hardware. I'll provide details about this cluster below.</p>
-	<h4 id="ourclickhousecluster">Our ClickHouse cluster</h4>
+	<h4>Our ClickHouse cluster</h4>
 	<p>In total we have 36 ClickHouse nodes. The new hardware is a big upgrade for us:</p>
 	<ul>
-		<li><strong>Chassis</strong> - Quanta D51PH-1ULH chassis instead of Quanta D51B-2U chassis (2x less physical space)</li>
-		<li><strong>CPU</strong> - 40 logical cores E5-2630 v3 @ 2.40 GHz instead of 32 cores E5-2630 v4 @ 2.20 GHz</li>
-		<li><strong>RAM</strong> - 256 GB RAM instead of 128 GB RAM</li>
-		<li><strong>Disks</strong> - 12 x 10 TB Seagate ST10000NM0016-1TT101 disks instead of 12 x 6 TB Toshiba TOSHIBA MG04ACA600E</li>
-		<li><strong>Network</strong> - 2 x 25G Mellanox ConnectX-4 in MC-LAG instead of 2 x 10G Intel 82599ES</li>
+		<li>
+			<p><b>Chassis</b> - Quanta D51PH-1ULH chassis instead of Quanta D51B-2U chassis (2x less physical space)</p>
+		</li>
+		<li>
+			<p><b>CPU</b> - 40 logical cores E5-2630 v3 @ 2.40 GHz instead of 32 cores E5-2630 v4 @ 2.20 GHz</p>
+		</li>
+		<li>
+			<p><b>RAM</b> - 256 GB RAM instead of 128 GB RAM</p>
+		</li>
+		<li>
+			<p><b>Disks</b> - 12 x 10 TB Seagate ST10000NM0016-1TT101 disks instead of 12 x 6 TB Toshiba TOSHIBA MG04ACA600E</p>
+		</li>
+		<li>
+			<p><b>Network</b> - 2 x 25G Mellanox ConnectX-4 in MC-LAG instead of 2 x 10G Intel 82599ES</p>
+		</li>
 	</ul>
 	<p>Our Platform Operations team noticed that ClickHouse is not great at running heterogeneous clusters yet, so we need to gradually replace all nodes in the existing cluster with new hardware, all 36 of them. The process is fairly straightforward, it's no different than replacing a failed node. The problem is that <a href="https://github.com/yandex/ClickHouse/issues/1821">ClickHouse doesn't throttle recovery</a>.</p>
 	<p>Here is more information about our cluster:</p>
 	<ul>
-		<li><strong>Avg insertion rate</strong> - all our pipelines bring together 11M rows per second.</li>
-		<li><strong>Avg insertion bandwidth</strong> - 47 Gbps.</li>
-		<li><strong>Avg queries per second</strong> - on average cluster serves ~40 queries per second with frequent peaks up to ~80 queries per second.</li>
-		<li><strong>CPU time</strong> - after recent hardware upgrade and all optimizations, our cluster CPU time is quite low.<br>
-			<a href="https://blog.cloudflare.com/content/images/2018/03/ClickHouse-CPU-usage.png"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/ClickHouse-CPU-usage.png"></a>
+		<li>
+			<p><b>Avg insertion rate</b> - all our pipelines bring together 11M rows per second.</p>
 		</li>
-		<li><strong>Max disk IO</strong> (device time) - it's low as well.<br>
-			<a href="https://blog.cloudflare.com/content/images/2018/03/Max-disk-IO.PNG"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/Max-disk-IO.PNG"></a>
+		<li>
+			<p><b>Avg insertion bandwidth</b> - 47 Gbps.</p>
+		</li>
+		<li>
+			<p><b>Avg queries per second</b> - on average cluster serves ~40 queries per second with frequent peaks up to ~80 queries per second.</p>
+		</li>
+		<li>
+			<p><b>CPU time</b> - after recent hardware upgrade and all optimizations, our cluster CPU time is quite low.
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61sIThxxM4s9mgA8nQSibn/49b66751e7da1ed46b55f2fd92eaaae0/ClickHouse-CPU-usage.png" alt="ClickHouse-CPU-usage" class="kg-image" width="3650" height="1568" loading="lazy">
+			</figure>
+			<p></p>
+		</li>
+		<li>
+			<p><b>Max disk IO</b> (device time) - it's low as well.
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rNrJvGvXd6VNvPRH2qe0l/296b66b233a5762a1c2324db7cc7fd44/Max-disk-IO.png" alt="Max-disk-IO" class="kg-image" width="1875" height="735" loading="lazy">
+			</figure>
+			<p></p>
+			<p></p>
 		</li>
 	</ul>
 	<p>In order to make the switch to the new pipeline as seamless as possible, we performed a transfer of historical data from the old pipeline. Next, I discuss the process of this data transfer.</p>
-	<h4 id="historicaldatatransfer">Historical data transfer</h4>
+	<h4>Historical data transfer</h4>
 	<p>As we have 1 year storage requirements, we had to do one-time ETL (Extract Transfer Load) from the old Citus cluster into ClickHouse.</p>
 	<p>At Cloudflare we love Go and its goroutines, so it was quite straightforward to write a simple ETL job, which:</p>
 	<ul>
-		<li>For each minute/hour/day/month extracts data from Citus cluster</li>
-		<li>Transforms Citus data into ClickHouse format and applies needed business logic</li>
-		<li>Loads data into ClickHouse</li>
+		<li>
+			<p>For each minute/hour/day/month extracts data from Citus cluster</p>
+		</li>
+		<li>
+			<p>Transforms Citus data into ClickHouse format and applies needed business logic</p>
+		</li>
+		<li>
+			<p>Loads data into ClickHouse</p>
+		</li>
 	</ul>
 	<p>The whole process took couple of days and over 60+ billions rows of data were transferred successfully with consistency checks. The completion of this process finally led to the shutdown of old pipeline. However, our work does not end there, and we are constantly looking to the future. In the next section, I'll share some details about what we are planning.</p>
-	<h3 id="futureofdataapis">Future of Data APIs</h3>
-	<h4 id="logpush">Log Push</h4>
+	<h3>Future of Data APIs</h3>
+	<h4>Log Push</h4>
 	<p>We're currently working on something called "Log Push". Log push allows you to specify a desired data endpoint and have your HTTP request logs sent there automatically at regular intervals. At the moment, it's in private beta and going to support sending logs to:</p>
 	<ul>
-		<li>Amazon S3 bucket</li>
-		<li>Google Cloud Service bucket</li>
-		<li>Other storage services and platforms</li>
+		<li>
+			<p>Amazon S3 bucket</p>
+		</li>
+		<li>
+			<p>Google Cloud Service bucket</p>
+		</li>
+		<li>
+			<p>Other storage services and platforms</p>
+		</li>
 	</ul>
 	<p>It's expected to be generally available soon, but if you are interested in this new product and you want to try it out please contact our Customer Support team.</p>
-	<h4 id="logssqlapi">Logs SQL API</h4>
+	<h4>Logs SQL API</h4>
 	<p>We're also evaluating possibility of building new product called Logs SQL API. The idea is to provide customers access to their logs via flexible API which supports standard SQL syntax and JSON/CSV/TSV/XML format response.</p>
 	<p>Queries can extract:</p>
 	<ul>
-		<li><strong>Raw requests logs fields</strong> (e.g. SELECT field1, field2, ... FROM requests WHERE ...)</li>
-		<li><strong>Aggregated data from requests logs</strong> (e.g. SELECT clientIPv4, count() FROM requests GROUP BY clientIPv4 ORDER BY count() DESC LIMIT 10)</li>
+		<li>
+			<p><b>Raw requests logs fields</b> (e.g. SELECT field1, field2, ... FROM requests WHERE ...)</p>
+		</li>
+		<li>
+			<p><b>Aggregated data from requests logs</b> (e.g. SELECT clientIPv4, count() FROM requests GROUP BY clientIPv4 ORDER BY count() DESC LIMIT 10)</p>
+		</li>
 	</ul>
 	<p>Google BigQuery provides similar <a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query">SQL API</a> and Amazon has product callled <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/sqlref/analytics-sql-reference.html">Kinesis Data analytics</a> with SQL API support as well.</p>
 	<p>Another option we're exploring is to provide syntax similar to <a href="https://api.cloudflare.com/#dns-analytics-properties">DNS Analytics API</a> with filters and dimensions.</p>
 	<p>We're excited to hear your feedback and know more about your analytics use case. It can help us a lot to build new products!</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>All this could not be possible without hard work across multiple teams! First of all thanks to other Data team engineers for their tremendous efforts to make this all happen. Platform Operations Team made significant contributions to this project, especially Ivan Babrou and Daniel Dao. Contributions from Marek Vavruša in DNS Team were also very helpful.</p>
 	<p>Finally, Data team at Cloudflare is a small team, so if you're interested in building and operating distributed services, you stand to have some great problems to work on. Check out the <a href="https://boards.greenhouse.io/cloudflare/jobs/613800">Distributed Systems Engineer - Data</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/688056">Data Infrastructure Engineer</a> roles in London, UK and San Francisco, US, and let us know what you think.</p>
-	<!--kg-card-end: markdown-->
 </div>

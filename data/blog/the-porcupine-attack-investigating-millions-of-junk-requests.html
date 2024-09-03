@@ -1,55 +1,74 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DuyJ94v0vkWC7AkFq9f1m/afbf15c36df2bd411a9d8928d5156607/the-porcupine-attack-investigating-millions-of-junk-requests.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>We extensively monitor our network and use multiple systems that give us visibility including external monitoring and internal alerts when things go wrong. One of the most useful systems is <a href="http://grafana.org">Grafana</a> that allows us to quickly create arbitrary dashboards. And a heavy user of Grafana we are: at last count we had 645 different Grafana dashboards configured in our system!</p>
-	<pre><code>grafana=&gt; select count(1) from dashboard;
+	<pre class="language-bash"><code class="language-bash">grafana=&gt; select count(1) from dashboard;
  count
 -------
    645
-(1 row)
-</code></pre>
+(1 row)</code></pre>
 	<p>This post is not about our Grafana systems though. It's about something we noticed a few days ago, while looking at one of those dashboards. We noticed this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/01/hedgehog.png" alt="" loading="lazy"></p>
-	<p>This chart shows the number of HTTP requests per second handled by our systems globally. You can clearly see multiple spikes, and this chart most definitely should not look like a porcupine! The spikes were large in scale - <em>500k to 1M HTTP requests per second</em>. Something very strange was going on.</p>
-	<h3 id="tracingthespikes">Tracing the spikes<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup></h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5J5NcPnvP0aNMRm7SdcuAI/fbc7a4cc38d0e0d33911ef2503d79034/hedgehog.png" alt="" class="kg-image" width="1024" height="324" loading="lazy">
+
+	</figure>
+	<p>This chart shows the number of HTTP requests per second handled by our systems globally. You can clearly see multiple spikes, and this chart most definitely should not look like a porcupine! The spikes were large in scale - <i>500k to 1M HTTP requests per second</i>. Something very strange was going on.</p>
+	<h3>Tracing the spikes<a href="https://blog.cloudflare.com/#fn1">[1]</a></h3>
 	<p>Our intuition indicated an attack - but our attack mitigation systems didn't confirm it. We'd seen no major HTTP attacks at those times.</p>
-	<p>It would be <em>bad</em> if we were under such heavy HTTP attack and our mitigation systems didn't notice it. Without more ideas, we went back to one of our favorite debugging tools - <code>tcpdump</code>.</p>
+	<p>It would be <i>bad</i> if we were under such heavy HTTP attack and our mitigation systems didn't notice it. Without more ideas, we went back to one of our favorite debugging tools - <code>tcpdump</code>.</p>
 	<p>The spikes happened every 80 minutes and lasted about 10 minutes. We waited, and tried to catch the offending traffic. Here is what the HTTP traffic looked like on the wire:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/hwire.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/acRydqIF0JozrKjwO470H/0774292f16435f5f35c48199a0f5edb0/hwire.png" alt="" class="kg-image" width="892" height="307" loading="lazy">
+
+	</figure>
 	<p>The client had sent some binary junk to our HTTP server on port 80; they weren't even sending a fake GET or POST line!</p>
 	<p>Our server politely responded with HTTP 400 error. This explains why it wasn't caught by our attack mitigation systems. Invalid HTTP requests don't trigger our HTTP DDoS mitigations - it makes no sense to mitigate traffic which is never accepted by NGINX in the first place!</p>
-	<h3 id="thepayload">The payload</h3>
+	<h3>The payload</h3>
 	<p>At first glance the payload sent to HTTP servers seems random. A colleague of mine, <a href="https://twitter.com/chrisbranch">Chris Branch</a>, investigated and proved me wrong. The payload has patterns.</p>
 	<p>Let me show what's happening. Here are the first 24 bytes of the mentioned payload:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/hp1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xuqzBVwsArs569h0oJmAa/02774e8f16280ed8631c6a304d7c2a34/hp1.png" alt="" class="kg-image" width="800" height="329" loading="lazy">
+
+	</figure>
 	<p>If you look closely, the pattern will start to emerge. Let's add some colors and draw it in not eight, but seven bytes per row:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/hp2-1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/l8hPvQM54L9hQnRbRZ3S1/2098b9a944149e97e2dff69157c3fbd4/hp2-1.png" alt="" class="kg-image" width="800" height="475" loading="lazy">
+
+	</figure>
 	<p>This checkerboard-like pattern, is exhibited in most of the requests with payload sizes below 512 bytes.</p>
 	<p>Another <a href="https://twitter.com/jgrahamc">engineer</a> pointed out there appear to actually be two separate sequences generated in the same fashion. Starting with the <code>a6</code> and the <code>cb</code> take alternating bytes</p>
-	<pre><code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f
-cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f
+cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	<p>Aligning that differently shows that the second sequence is essentially the same as the first:</p>
-	<pre><code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f
-            cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f
+            cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	<p>Thinking of that as one sequence gets</p>
-	<pre><code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	<p>Which is generated by starting at <code>ef</code> and adding the following repeating sequence.</p>
-	<pre><code>4a 49 49 4a 49 49 49
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">4a 49 49 4a 49 49 49</code></pre>
 	<p>The 'random' binary junk is actually generated by some simple code.</p>
 	<p>The length distribution of the requests is also interesting. Here's the histogram showing the popularity of particular lengths of payloads.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/hlengths.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CqXp7Q2ihFt6gWng6lJqP/cc47940b795531bb4fda540374f6e3b5/hlengths.png" alt="" class="kg-image" width="600" height="550" loading="lazy">
+
+	</figure>
 	<p>About 80% of the junk requests we received had length of up to 511 bytes, uniformly distributed.</p>
 	<p>The remaining 20% had length uniformly distributed between 512 and 2047 bytes, with a few interesting spikes. For some reason lengths of 979, 1383 and 1428 bytes stand out. The rest of the distribution looks uniform.</p>
-	<h3 id="thescale">The scale</h3>
+	<h3>The scale</h3>
 	<p>The spikes were large. It takes a lot of firepower to generate a spike in our global HTTP statistics! On the first day the spikes reached about 600k junk requests per second. On second day the score went up to 1M rps. In total we recorded 37 spikes.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/01/hattacks.png" alt="" loading="lazy"></p>
-	<h3 id="geography">Geography</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dRBYTfiRAb6aYn3yGhlKQ/34a3df5842671a33b64a4df1f370955a/hattacks.png" alt="" class="kg-image" width="918" height="768" loading="lazy">
+
+	</figure>
+	<h3>Geography</h3>
 	<p>Unlike L3 attacks, L7 attacks require TCP/IP connections to be fully established. That means the source IP addresses are not spoofed and can be used to investigate the geographic distribution of attacking hosts.</p>
 	<p>The spikes were generated by IP addresses from all around the world. We recorded IP numbers from 4,912 distinct Autonomous Systems. Here are top ASN numbers by number of unique attacking IP addresses:</p>
-	<pre><code class="language-.txt">Percent of unique IP addresses seen:
+	<pre class="language-.txt"><code class="language-.txt">Percent of unique IP addresses seen:
 21.51% AS36947  # AS de Algerie Telecom, Algeria
  5.34% AS18881  # Telefonica Brasil S.A, Brasil
  3.60% AS7738   # Telemar Norte Leste S.A., Brasil
@@ -65,10 +84,9 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b
  1.30% AS37705  # TOPNET, Tunisia
  1.26% AS53006  # Algar Telecom S/A, Brasil
  1.22% AS36903  # ASN du reseaux MPLs de Maroc Telecom, Morocco
- ... 4897 AS numbers below 1% of IP addresses.
-</code></pre>
+ ... 4897 AS numbers below 1% of IP addresses.</code></pre>
 	<p>You get the picture - the traffic was sourced all over the place, with bias towards South America and North Africa. Here is the country distribution of attacking IPs:</p>
-	<pre><code class="language-.txt">Percent of unique IP addresses seen:
+	<pre class="language-.txt"><code class="language-.txt">Percent of unique IP addresses seen:
 31.76% BR
 21.76% DZ
  7.49% UA
@@ -81,63 +99,73 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b
  1.36% MA
  1.15% GB
  1.05% ES
- ... 109 countries below 1% of IP addresses
-</code></pre>
+ ... 109 countries below 1% of IP addresses</code></pre>
 	<p>The traffic was truly global and launched with IPs from 121 countries. This kind of globally distributed attack is where <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">Cloudflare's Anycast</a> network shines. During these spikes the load was nicely distributed across dozens of datacenters. <a href="https://blog.cloudflare.com/parabens-brasil-cloudflares-27th-data-center-now-live">Our datacenter in São Paulo</a> absorbed the most traffic, roughly 4 times more traffic than the second in line - Paris. This chart shows how the traffic was distributed across many datacenters:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/01/hcolos.png" alt="" loading="lazy"></p>
-	<h3 id="uniqueips">Unique IPs</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qrKg7vQPH8xcmC2rMOVcn/53e4c167fce350ac13c46ae0c18abd11/hcolos.png" alt="" class="kg-image" width="950" height="768" loading="lazy">
+
+	</figure>
+	<h3>Unique IPs</h3>
 	<p>During each of the spikes our systems recorded 200k unique source IP addresses sending us junk requests.</p>
 	<p>Normally we would conclude that whoever generated the attack controlled roughly 200k bots, and that's it. But these spikes were different. It seems the bots rotated IPs aggressively. Here is an example: during these 16 spikes we recorded a total count of a whopping 1.2M unique IP addresses attacking us.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/01/hmillion.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EtSV8z8pfbXnnebomGU0i/78b51b4b9ab68cd5951c8fde5a5dfcf4/hmillion.png" alt="" class="kg-image" width="1024" height="633" loading="lazy">
+
+	</figure>
 	<p>This can be explained by bots churning through IP addresses. We believe that out of the estimated 200k bots, between 50k and 100k bots changed their IP addresses during the 80 minutes between attacks. This resulted in 1.2M unique IP addresses during the 16 spikes happening over 24 hours.</p>
-	<h3 id="abotnet">A botnet?</h3>
+	<h3>A botnet?</h3>
 	<p>These spikes were unusual for a number of reasons.</p>
 	<ul>
-		<li>They were generated by a large number of IP addresses. We estimate 200k concurrent bots.</li>
-		<li>The bots were rotating IP addresses aggressively.</li>
-		<li>The bots were from around the world with an emphasis on South America and North Africa.</li>
-		<li>The traffic generated was enormous, reaching 1M junk connections per second.</li>
-		<li>The spikes happened exactly every 80 minutes and lasted for 10 minutes.</li>
-		<li>The payload of the traffic was junk, not a usual HTTP request attack.</li>
-		<li>The payload had uniformly distributed payload sizes.</li>
+		<li>
+			<p>They were generated by a large number of IP addresses. We estimate 200k concurrent bots.</p>
+		</li>
+		<li>
+			<p>The bots were rotating IP addresses aggressively.</p>
+		</li>
+		<li>
+			<p>The bots were from around the world with an emphasis on South America and North Africa.</p>
+		</li>
+		<li>
+			<p>The traffic generated was enormous, reaching 1M junk connections per second.</p>
+		</li>
+		<li>
+			<p>The spikes happened exactly every 80 minutes and lasted for 10 minutes.</p>
+		</li>
+		<li>
+			<p>The payload of the traffic was junk, not a usual HTTP request attack.</p>
+		</li>
+		<li>
+			<p>The payload had uniformly distributed payload sizes.</p>
+		</li>
 	</ul>
 	<p>It's hard to draw conclusions, but we can imagine two possible scenarios. It is possible these spikes were an attack intended to break our HTTP servers.</p>
 	<p>A second possibility is that these spikes were legitimate connection attempts by some weird, obfuscated protocol. For some reason the clients were connecting to port 80/TCP and retried precisely every 80 minutes.</p>
 	<p>We are continuing our investigation. In the meantime we are looking for clues. Please do let us know if you have encountered this kind of TCP/IP payload. We are puzzled by these large spikes.</p>
 	<p>If you'd like to work on this type of problem <a href="https://www.cloudflare.com/join-our-team">we're hiring</a> in London, San Francisco, Austin, Champaign and Singapore.</p>
-	<p><em>Update</em> A <a href="https://twitter.com/GGreg/status/818462582998704128">Twitter user</a> pointed out that the sequence <code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code> appears in this set of <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/TestVectors/KetjeJr.txt">test vectors</a> so we contacted the <a href="http://gva.noekeon.org">author</a> who was kind enough to reply and point us to the <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/Tests/testKetje.c#L46">code</a> that generated those vectors.</p>
-	<pre><code>static void generateSimpleRawMaterial(unsigned char* data, unsigned int length, unsigned char seed1, unsigned int seed2)
+	<p><i>Update</i> A <a href="https://twitter.com/GGreg/status/818462582998704128">Twitter user</a> pointed out that the sequence <code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code> appears in this set of <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/TestVectors/KetjeJr.txt">test vectors</a> so we contacted the <a href="http://gva.noekeon.org">author</a> who was kind enough to reply and point us to the <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/Tests/testKetje.c#L46">code</a> that generated those vectors.</p>
+	<pre class="language-bash"><code class="language-bash">static void generateSimpleRawMaterial(unsigned char* data, unsigned int length, unsigned char seed1, unsigned int seed2)
 {
     unsigned int i;
 
-    for( i=0; i&lt;length; i++) {
-        unsigned int iRolled = i*seed1;
-        unsigned char byte = (iRolled+length+seed2)%0xFF;
-        data[i] = byte;
-    }
-}
-</code></pre>
-	<p>Since we identified above that the difference between two bytes seemed to be 0x49 or 0x4a it's worth looking at the difference between bytes in this algorithm. Simplifying, bytes are generated from:</p>
-	<pre><code>((i * seed1) + length + seed2)%0xFF
-</code></pre>
+    for( i=0; i<length; i++)="" {="" unsigned="" int="" irolled="i*seed1;" char="" byte="(iRolled+length+seed2)%0xFF;" data[i]="byte;" }="" }<="" pre=""></length;></code>
+            <p>Since we identified above that the difference between two bytes seemed to be 0x49 or 0x4a it's worth looking at the difference between bytes in this algorithm. Simplifying, bytes are generated from:</p>
+            <pre class="language-bash"><code class="language-bash">((i * seed1) + length + seed2)%0xFF</code></pre>
 	<p>Ignoring the <code>% 0xff</code> for the moment that's <code>(i * seed1) + length + seed</code>. Taking the difference between two adjacent bytes (for <code>i</code> and <code>i+1</code>) gives a difference of just <code>seed1</code>.</p>
 	<p>Thus in our case it's likely that <code>seed1</code> is 0x49. It's fairly easy to end up with the following code to generate the sequence:</p>
-	<pre><code>seed = 0x49
+	<pre class="language-bash"><code class="language-bash">seed = 0x49
 byte = 0xa6
 
 do
    byte = (seed + byte) % 0xff
-done
-</code></pre>
+done</code></pre>
 	<p>One big mystery remaining is 'what's the 0x75 at the start of the junk data?'.</p>
-	<p>&nbsp;</p>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>Yes, we're aware that porcupines have spines/quills not spikes. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>Yes, we're aware that porcupines have spines/quills not spikes. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+	</ol>
+	</pre>
 </div>

@@ -1,10 +1,10 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In a recent blog post, my colleague <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek</a> talked about some <a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP-based DDoS</a> activity we'd been seeing recently. In that blog post he used a tool called <code>mmhistogram</code> to output an ASCII histogram.</p>
 	<p>That tool is part of a small suite of command-line tools that can be handy when messing with data. Since a reader asked for them to be open sourced... here they are.</p>
-	<h3 id="mmhistogram">mmhistogram</h3>
+	<h3>mmhistogram</h3>
 	<p>Suppose you have the following CSV of the ages of major Star Wars characters at the time of Episode IV:</p>
-	<pre><code>Anakin Skywalker (Darth Vader),42
+	<pre class="language-bash"><code class="language-bash">Anakin Skywalker (Darth Vader),42
 Boba Fett,32
 C-3PO,32
 Chewbacca,200
@@ -24,10 +24,9 @@ Qui-Gon Jinn,92
 R2-D2,32
 Shmi Skywalker,72
 Wedge Antilles,21
-Yoda,896
-</code></pre>
+Yoda,896</code></pre>
 	<p>You can get an ASCII histogram of the ages as follows using the <code>mmhistogram</code> tool.</p>
-	<pre><code>$ cut -d, -f2 epiv | mmhistogram -t "Age"
+	<pre class="language-bash"><code class="language-bash">$ cut -d, -f2 epiv | mmhistogram -t "Age"
 Age min:19.00 avg:123.90 med=54.00 max:896.00 dev:211.28 count:21
 Age:
  value |-------------------------------------------------- count
@@ -41,32 +40,31 @@ Age:
     64 |             ************************************* 6
    128 |                                            ****** 1
    256 |                                                   0
-   512 |                                      ************ 2
-</code></pre>
+   512 |                                      ************ 2</code></pre>
 	<p>Handy for getting a quick sense of the data. (These charts are inspired by the <a href="https://blog.cloudflare.com/revenge-listening-sockets">ASCII output from systemtap</a>).</p>
-	<h3 id="mmwatch">mmwatch</h3>
+	<h3>mmwatch</h3>
 	<p>The <code>mmwatch</code> tool is handy if you want to look at output from a command-line tool that provides some snapshot of values, but need to have a rate.</p>
 	<p>For example, here's <code>df -H</code> on my machine:</p>
-	<pre><code>$ df -H
+	<pre class="language-bash"><code class="language-bash">$ df -H
 Filesystem             Size   Used  Avail Capacity  iused   ifree %iused  Mounted on
 /dev/disk1             250G   222G    28G    89% 54231161 6750085   89%   /
 devfs                  384k   384k     0B   100%     1298       0  100%   /dev
 map -hosts             0B     0B     0B   100%        0       0  100%   /net
 map auto_home          0B     0B     0B   100%        0       0  100%   /home
 /dev/disk4             7.3G    50M   7.2G     1%    12105 1761461    1%   
-/Volumes/LANGDON
-</code></pre>
+/Volumes/LANGDON</code></pre>
 	<p>Now imagine you were interested in understanding the rate of change in iused and ifree. You can with <code>mmwatch</code>. It's just like <code>watch</code> but looks for changing numbers and interprets them as rates:</p>
-	<pre><code>$ mmwatch 'df -H'
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ mmwatch 'df -H'</code></pre>
 	<p>Here's a short GIF showing it working:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/mmwatch.gif" alt="" loading="lazy"></p>
-	<h3 id="mmsum">mmsum</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n0JNaLVIvtD7cqC9kfasI/b9ce4c583d7838d982c635e3469ce6a0/mmwatch.gif" alt="" class="kg-image" width="687" height="84" loading="lazy">
+
+	</figure>
+	<h3>mmsum</h3>
 	<p>And the final tool is <code>mmsum</code> that simply sums a list of floating point numbers (one per line).</p>
 	<p>Suppose you are downloading real-time rainfall data from the UK's Environment Agency and would like to know the total current rainfall. <code>mmsum</code> can help:</p>
-	<pre><code>$ curl -s 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall' | jq -e '.items[].latestReading.value+0' | ./mmsum
-40.2
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ curl -s 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall' | jq -e '.items[].latestReading.value+0' | ./mmsum
+40.2</code></pre>
 	<p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp">Github</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

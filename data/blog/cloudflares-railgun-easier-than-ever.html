@@ -1,58 +1,139 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="CloudFlare's Railgun: Easier Than
-Ever" src="https://blog.cloudflare.com/content/images/railgun.png.scaled500.png" title="CloudFlare's Railgun: Easier Than Ever"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PUJWoFPHb93gDT8slwF0L/bc6467bda398cd782be856d31d7c5d14/railgun.png.scaled500.png" alt="CloudFlare's Railgun: Easier Than
+Ever" class="kg-image" width="500" height="225" loading="lazy">
+
+	</figure>
 	<p>Over the next few days we have a number of announcements regarding CloudFlare's Railgun technology. We wanted to begin, however, with what is in some ways the end: the ways in which you can take advantage of Railgun yourself. Today we're proud to announce two ways in which you can make your dynamic content faster than was ever possible before.</p>
-	<h3 id="doityourself">Do It Yourself</h3>
+	<h3>Do It Yourself</h3>
 	<p>First, today CloudFlare is announcing version 3.3.3 of Railgun. This version has been battle tested on high-traffic sites including <a href="http://www.imgur.com">Imgur</a> and <a href="http://www.4chan.org">4chan</a>. It's run billions of requests in a number of different environments through the new protocol and we're ready to push it out to the world. To make the process of installing Railgun easy, we've released RPMs for most the popular Linux and BSD variants including:</p>
 	<ul>
-		<li>Ubuntu 12.10</li>
-		<li>Ubuntu 12.04</li>
-		<li>Ubuntu 11.10</li>
-		<li>Ubuntu 10.04 </li>
-		<li>FreeBSD 9</li>
-		<li>FreeBSD 8 </li>
-		<li>CentOS 6</li>
-		<li>CentOS 5 </li>
-		<li>Debian 6</li>
+		<li>
+			<p>Ubuntu 12.10</p>
+		</li>
+		<li>
+			<p>Ubuntu 12.04</p>
+		</li>
+		<li>
+			<p>Ubuntu 11.10</p>
+		</li>
+		<li>
+			<p>Ubuntu 10.04</p>
+		</li>
+		<li>
+			<p>FreeBSD 9</p>
+		</li>
+		<li>
+			<p>FreeBSD 8</p>
+		</li>
+		<li>
+			<p>CentOS 6</p>
+		</li>
+		<li>
+			<p>CentOS 5</p>
+		</li>
+		<li>
+			<p>Debian 6</p>
+		</li>
 	</ul>
 	<p>You can download any of these RPMs via the <a href="https://www.cloudflare.com/resources-downloads">CloudFlare Downloads page</a>. In addition, we've released an Amazon Machine Instance (AMI) for Amazon Web Services that you can install if you want to have you own Railgun listener. The AMI will be available soon via the AWS AMI manager.</p>
 	<p>The largest platform we're missing is Windows Server and we are working on updates to the Go runtime in order to allow us to compile for that platform and meet our quality standards. For the Windows Server users out there, stay tuned. We haven't forgotten about you.</p>
-	<h3 id="butwaittheresmore">But Wait, There's More</h3>
+	<h3>But Wait, There's More</h3>
 	<p>But that's not the really exciting part. We're extremely excited to announce that a majority of the world's leading hosting providers are now supporting CloudFlare's Railgun technology. These 30 hosting providers have already registered to be CloudFlare Optimized Hosts. That means you can enable Railgun, usually with a single click and without having to install any software or change any of your code. Within the next few days, all of the following hosts will be supporting CloudFlare's Railgun:</p>
 	<ul>
-		<li><a href="http://www.040hosting.eu">040hosting</a></li>
-		<li><a href="http://www.a2hosting.com">A2 Hosting</a></li>
-		<li><a href="http://www.arvixe.com">Arvixe</a></li>
-		<li><a href="http://www.bluehost.com">Bluehost</a></li>
-		<li><a href="http://byethost.com">ByetHost</a></li>
-		<li><a href="http://www.corecommerce.com">CoreCommerce</a></li>
-		<li><a href="http://dreamhost.com">DreamHost</a></li>
-		<li><a href="http://elserver.com">ELServer</a></li>
-		<li><a href="http://www.fastdomain.com">FastDomain</a></li>
-		<li><a href="http://www.greengeeks.com">GreenGeeks</a></li>
-		<li><a href="http://www.hostpapa.com">HostPapa</a></li>
-		<li><a href="http://www.hostmonster.com">HostMonster</a></li>
-		<li><a href="http://www.justhost.com">Just Host</a></li>
-		<li><a href="http://www.interserver.net">InterServer</a></li>
-		<li><a href="https://www.mapletime.com">MapleTime</a></li>
-		<li><a href="http://mediatemple.net">(mt) Media Temple</a></li>
-		<li><a href="http://www.mddhosting.com">MDDHosting</a></li>
-		<li><a href="http://www.namecheap.com">NameCheap</a></li>
-		<li><a href="http://www.pacifichost.com">PacificHost</a></li>
-		<li><a href="http://www.proisp.no">PRO ISP</a></li>
-		<li><a href="http://www.siteground.com">SiteGround</a></li>
-		<li><a href="http://www.sliqua.com">Sliqua Enterprise Hosting</a></li>
-		<li><a href="http://www.softcloud.co.uk">Softcloud Hosting</a></li>
-		<li><a href="https://www.sparkred.com">SparkRed</a></li>
-		<li><a href="https://ventraip.com.au">VentraIP</a></li>
-		<li><a href="http://vexxhost.com">VEXXHOST</a></li>
-		<li><a href="http://www.webhostingbuzz.com">WebHostingBuzz</a></li>
-		<li><a href="http://www.webhostingpad.com">WebHostingPad</a></li>
-		<li><a href="http://x10hosting.com">x10Hosting</a></li>
-		<li><a href="http://zuver.net.au">Zuver</a></li>
+		<li>
+			<p><a href="http://www.040hosting.eu">040hosting</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.a2hosting.com">A2 Hosting</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.arvixe.com">Arvixe</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.bluehost.com">Bluehost</a></p>
+		</li>
+		<li>
+			<p><a href="http://byethost.com">ByetHost</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.corecommerce.com">CoreCommerce</a></p>
+		</li>
+		<li>
+			<p><a href="http://dreamhost.com">DreamHost</a></p>
+		</li>
+		<li>
+			<p><a href="http://elserver.com">ELServer</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.fastdomain.com">FastDomain</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.greengeeks.com">GreenGeeks</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.hostpapa.com">HostPapa</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.hostmonster.com">HostMonster</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.justhost.com">Just Host</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.interserver.net">InterServer</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.mapletime.com">MapleTime</a></p>
+		</li>
+		<li>
+			<p><a href="http://mediatemple.net">(mt) Media Temple</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.mddhosting.com">MDDHosting</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.namecheap.com">NameCheap</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.pacifichost.com">PacificHost</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.proisp.no">PRO ISP</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.siteground.com">SiteGround</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.sliqua.com">Sliqua Enterprise Hosting</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.softcloud.co.uk">Softcloud Hosting</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.sparkred.com">SparkRed</a></p>
+		</li>
+		<li>
+			<p><a href="https://ventraip.com.au">VentraIP</a></p>
+		</li>
+		<li>
+			<p><a href="http://vexxhost.com">VEXXHOST</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.webhostingbuzz.com">WebHostingBuzz</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.webhostingpad.com">WebHostingPad</a></p>
+		</li>
+		<li>
+			<p><a href="http://x10hosting.com">x10Hosting</a></p>
+		</li>
+		<li>
+			<p><a href="http://zuver.net.au">Zuver</a></p>
+		</li>
 	</ul>
 	<p>In most cases, if you're already hosted with one of these hosting providers, getting the benefits of Railgun is free for you. If you're using one of these hosts, look for an option in your control panel to enable Railgun. If you're not already using one of these hosts, but you want to use Railgun, you should either contact your hosting provider to <a href="https://www.cloudflare.com/partner-programs">become a CloudFlare Optimized Partner</a>, or consider switching to one of the providers above.</p>
 	<p>Railgun is a revolutionary new protocol that makes dynamic web performance significantly faster and less bandwidth-intensive than was ever previously possible. Over the next few days, we'll be releasing more details about the protocol. In the meantime, we wanted to make sure you knew where you could go to get Railgun today if you're interested. Stay tuned for more.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,21 +1,32 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Cloudflare: Happy 3rd Birthday" src="https://blog.cloudflare.com/content/images/i_am_three_years_old.jpeg"></p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lQP0nRhnnwmDDfGVHCMol/7ad0722ed2edfd7455ec36ab39d1ff4c/i_am_three_years_old.jpeg.jpeg" alt="Cloudflare: Happy 3rd Birthday" class="kg-image" width="225" height="225" loading="lazy">
+
+	</figure>
 	<p>Today is CloudFlare's birthday. We opened to the public exactly three years ago today, September 27, 2010. In those three years we've grown to power more than 1.5 million websites and sit in front of more than 4% of all web requests. Three years ago, however, those first signups were terrifying.</p>
 	<p>Early on we realized that if we were going to bring CloudFlare's services to as broad an audience as possible we needed to focus on making the signup process ridiculously easy. Traditional CDNs typically require months of integration work and, often, thousands of dollars in professional consulting services to get up and running. We spent most of our engineering time designing a signup process that took less than 5 minutes to complete on average.</p>
 	<p>While we were convinced that would be a long term advantage, as our launch grew near we started to worry: what would happen if hundreds, or even thousands, of websites signed up? We only had a limited number of servers running in a handful of data centers around the world (Chicago, San Jose, Ashburn, Amsterdam, and Tokyo).</p>
-	<h3 id="circuitbreakers">Circuit Breakers</h3>
+	<h3>Circuit Breakers</h3>
 	<p>We debated internally how to deal with this problem. We decided, about a month before launch, that what we would do is create an invite system for people to sign up with their email and then we'd let them in as we had capacity. Unfortunately, the Monday morning of our launch we realized no one on the team had gotten around to building the invite system.</p>
 	<p>As Michelle and I practiced our presentation back stage at the TechCrunch Disrupt conference, where we were scheduled to launch on stage, Lee sat in the audience and hastily coded together a system of "circuit breakers" that would limit new signups. Every hundred signups or so the circuit breakers would trip and cause the signup form to shut down. This would allow us time to check all the systems before opening up again for new customers.</p>
-	<p><img alt="Cloudflare: Happy 3rd Birthday" src="https://blog.cloudflare.com/content/images/TC_Disrupt_Ridiculously_Easy.jpg"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kFruUKa5nVQ7UmRYCaB65/b19a4351b4229659708ae239fc1778c4/TC_Disrupt_Ridiculously_Easy.jpg" alt="Cloudflare: Happy 3rd Birthday" class="kg-image" width="720" height="480" loading="lazy">
+
+	</figure>
 	<p>The signups started within the first minute of our Disrupt presentation. About half way through we'd already signed up more than 100 customers and the first circuit breaker tripped and our engineering team was alerted to check on the health of the servers. Unexpectedly, signups continued. In the haste to get the circuit breakers in place, the piece of code to shut down the signup form never went live.</p>
 	<p>As the judges on stage quizzed Michelle and me on stage about our business plan and technical systems, our engineering team sat in the audience frantically auditing our systems and trying to decide whether to shut down signups manually. By the time the judges finished questioning us, we'd signed up about 500 sites and there was no sign that the pace was slowing down. The TechCrunch <a href="http://techcrunch.com/2010/09/27/cloudflare-wants-to-be-a-cdn-for-the-masses-and-takes-five-minutes-to-set-up">launch article</a> went live and there was another surge.</p>
-	<p><img alt="Cloudflare: Happy 3rd Birthday" src="https://blog.cloudflare.com/content/images/TC_Disrupt_Judges.jpg"></p>
-	<h3 id="fullsteamahead">Full Steam Ahead</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Iqos7JQYhvwnMiBR9Ji0K/137fef54b42d867be013379afc486dd9/TC_Disrupt_Judges.jpg" alt="Cloudflare: Happy 3rd Birthday" class="kg-image" width="720" height="480" loading="lazy">
+
+	</figure>
+	<h3>Full Steam Ahead</h3>
 	<p>Sri, who was our first and, at the time, only member of our ops team, was checking all the servers to find any hot spots. Our traffic across the network had spiked from virtually nothing just a few minutes before to hundreds of requests per second. But the system appeared to be holding up. Lee made the call to allow people to keep signing up and didn't fix the circuit breakers.</p>
 	<p>By the end of the day, we'd signed up just shy of 2,000 new sites -- almost 10 times what we'd originally anticipated. The core system we'd spent the previous 9 months building held up. None of us slept much that first night as we were all logged in to our dashboards and watched the health of the systems. New signups slowed down a bit but traffic only compounded. Lee called me sometime Tuesday afternoon and said, "Ok, I've looked everything over and I'm confident what we've built will continue to scale for at least the next 2 to 3 years. After that, we'll have to redesign some things, but until then I don't think we'll ever have to turn away a new customer, so I terminated the circuit breakers."</p>
-	<h3 id="hittingourstride">Hitting Our Stride</h3>
+	<h3>Hitting Our Stride</h3>
 	<p>Today we signup as many as 5,000 new customers a day. And, as Lee correctly predicted, the core system has held up very well. About a year ago we conducted a full survey of CloudFlare's core systems. Based on that we embarked on an effort to rearchitect all the systems where we were beginning to see bottlenecks. That effort is largely finished and is beginning to bear fruit with a new flexibility and extensibility for more features, faster performance, and a dramatic expansion of our network.</p>
 	<p>While we've had an amazing third year, I predict you'll be blown away by what we have in store over the next twelve months. But, today, at the CloudFlare office our team will be taking a short break to celebrate our birthday.</p>
-	<!--kg-card-end: markdown-->
 </div>

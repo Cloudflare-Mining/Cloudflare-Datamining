@@ -1,9 +1,9 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25CGqnY0FCAxQZulueAkNl/02c66982b4be8a7cb1d16bd4fddf2734/fixing-reachability-to-1-1-1-1-globally.gif" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Recently <a href="https://blog.cloudflare.com/announcing-1111">we announced</a> our fast, privacy-centric DNS resolver <a href="https://1.1.1.1">1.1.1.1</a>, supported by our <a href="https://www.cloudflare.com/network">global network</a>. As you can see 1.1.1.1 is very easy to remember, which is both a blessing and a curse. In the time leading up to the announcement of the resolver service we began testing reachability to 1.1.1.1, primarily using the RIPE Atlas probes. The <a href="https://atlas.ripe.net/about">RIPE Atlas</a> project is an extensive collection of small monitoring devices hosted by the public around the world. Currently there are over 10,000 active probes hosted in over 3,000 networks, giving great vantage points for testing. We found large numbers of probes unable to query 1.1.1.1, but successfully able to query 1.0.0.1 in almost all cases. 1.0.0.1 is the secondary address we have assigned for the resolver, to allow clients who are unable to reach 1.1.1.1 to be able to make DNS queries.</p>
 	<p>This blog focuses on IPv4. We provide four IPs (two for each IP address family) in order to provide a path toward the DNS resolver independent of IPv4 or IPv6 reachability.</p>
 	<p><a href="http://seclists.org/nanog/2010/Jan/776">1.0.0.0/8 was assigned in 2010 to APNIC</a>, before this time it was unassigned space.</p>
-	<pre><code>% IANA WHOIS server
+	<pre class="language-bash"><code class="language-bash">% IANA WHOIS server
 % for more information on IANA, visit http://www.iana.org
 % This query returned 1 object
 
@@ -16,42 +16,73 @@ whois:        whois.apnic.net
 changed:      2010-01
 source:       IANA
 
-https://www.iana.org/whois?q=1.0.0.0%2F8
-</code></pre>
+https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<p>Unassigned, however is not the same as reserved for private use!</p>
-	<h3 id="whatwefound">What we found</h3>
+	<h3>What we found</h3>
 	<p>To put it simply, 1.1.1.1 was BROKEN! The good news is, for most users 1.1.1.1 is now reachable. We’ve worked hard to ensure that issues get resolved and continue to contact operators to resolve issues quickly. We’re confident we can get everything cleaned up, but this is a stark reminder that you shouldn’t hijack IP addresses not assigned to you. We found over 1,000 probes out of just over 10,000 were unable to make DNS queries to 1.1.1.1 successfully. Some of this was due to single large networks having reachability issues, for example a large operator in Germany has nearly 350 probes connected, all of them failing. The methodology for testing was very simple:</p>
 	<ol>
-		<li>Run a DNS lookup measurement towards 1.1.1.1</li>
-		<li>Find probes where the lookup fails</li>
-		<li>Run a traceroute with affected probes</li>
-		<li>Analyse the result</li>
+		<li>
+			<p>Run a DNS lookup measurement towards 1.1.1.1</p>
+		</li>
+		<li>
+			<p>Find probes where the lookup fails</p>
+		</li>
+		<li>
+			<p>Run a traceroute with affected probes</p>
+		</li>
+		<li>
+			<p>Analyse the result</p>
+		</li>
 	</ol>
 	<p>The results were quite mixed, but fell into three main causes:</p>
 	<ol>
-		<li><strong>Built-in 1.1.1.1</strong> ISP routers using 1.1.1.1 as an internal IP address, preventing queries from reaching the real 1.1.1.1</li>
-		<li><strong>Blackholing 1.1.1.1</strong> ISPs statically configuring a route for 1.1.1.1 inside their networks, preventing traffic leaving their network, either through routing internally, or by sending the packets to null0</li>
-		<li><strong>Filtering 1.1.1.1</strong> ISPs dropping packets on ingress or egress to/from their network when sourced/destined from/to 1.1.1.1</li>
+		<li>
+			<p><b>Built-in 1.1.1.1</b> ISP routers using 1.1.1.1 as an internal IP address, preventing queries from reaching the real 1.1.1.1</p>
+		</li>
+		<li>
+			<p><b>Blackholing 1.1.1.1</b> ISPs statically configuring a route for 1.1.1.1 inside their networks, preventing traffic leaving their network, either through routing internally, or by sending the packets to null0</p>
+		</li>
+		<li>
+			<p><b>Filtering 1.1.1.1</b> ISPs dropping packets on ingress or egress to/from their network when sourced/destined from/to 1.1.1.1</p>
+		</li>
 	</ol>
 	<p>Of these three main causes, the majority of cases were either 1, 2 or both! Several ISPs even had route loops internally, where they were advertising 1.1.1.1 inside their network, but had no actually path to it, so packets loop around and around.</p>
-	<h3 id="timetogetfixing">Time to get fixing</h3>
+	<h3>Time to get fixing</h3>
 	<p>Once we had narrowed it down for each group of probes we began contacting ISPs for clarification on what was happening, several networks responded very quickly reporting they had removed an internal route to 1.1.1.1, which in most cases was the beginning and end of the matter. There were plenty of networks which took their time to respond, but in the end did the same, removing the internal routes left there for legacy testing reasons.</p>
 	<p>All of those fixes were great to make, but most were quite uninteresting, what was more interesting was finding cases from issue number 1, CPEs (customer premises equipment) aka home routers, gateways and wireless access points. With the help from the folks at <a href="https://www.sonic.com">Sonic</a> we were quickly able to identify that the Pace 5268 a common xDSL modem deployed primarily in the United States (including wide usage on AT&amp;T) uses 1.1.1.0/29 for internal communication. We requested comment from AT&amp;T’s noc, but have not heard anything from them. We did however receive a response from them via social media:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/DaMmfBTUQAEmc3k.jpg" alt="DaMmfBTUQAEmc3k" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50omQfbLechc9NUeetoHc8/e4b646c7b2488e330e01675a294301dc/DaMmfBTUQAEmc3k.jpg" alt="DaMmfBTUQAEmc3k" class="kg-image" width="914" height="728" loading="lazy">
+
+	</figure>
 	<p>Independent investigation confirms the findings:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/thumb.jpg" alt="thumb" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IyfRcal5A339fbfs9l2Vy/9c94ad422e9d49dc8132b971f6313ca6/thumb.jpg" alt="thumb" class="kg-image" width="600" height="498" loading="lazy">
+
+	</figure>
 	<p>The same finding was made with the D-Link DMG-6661, which was reported to us by a user from Brazil connected to Vivo FTTH.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-05-at-10.57.21.png" alt="Screen-Shot-2018-04-05-at-10.57.21" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-05-at-10.57.32.png" alt="Screen-Shot-2018-04-05-at-10.57.32" loading="lazy">
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jJuqQBGf0Eg3TMcaameD4/0d2ed4c92a4a9c92923a7d6e4b95791e/Screen-Shot-2018-04-05-at-10.57.21.png" alt="Screen-Shot-2018-04-05-at-10.57.21" class="kg-image" width="556" height="215" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/G2DNnIkM8BRfZWykOnxnN/4df7317e59abc356945d9814c003e65c/Screen-Shot-2018-04-05-at-10.57.32.png" alt="Screen-Shot-2018-04-05-at-10.57.32" class="kg-image" width="550" height="178" loading="lazy">
+
+	</figure>
 	<p>Another user in Argentina connected to Telefónica found the issue on the Mitrastar GPT-2541GNAC.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/DaKwk7eW0AEUKL-.jpg" alt="DaKwk7eW0AEUKL-" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3E2hUBQObLarnWzMkoQRy9/c7338d0167f9d042834079b83d2b6d0d/DaKwk7eW0AEUKL-.jpg" alt="DaKwk7eW0AEUKL-" class="kg-image" width="684" height="250" loading="lazy">
+
+	</figure>
 	<p>It appears this CPE has been deployed in many of Telefónica's networks internationally.</p>
 	<p>We noticed similar behaviour on a large portion of probes connected to Orange France, we contacted them and received a swift response that the CPE team was investigating the issue. After providing more details they came back to us with a statement.</p>
 	<blockquote>
-		<p>We have escalated your alert inside ORANGE France.<br>
-			Our CPE team has analyzed the issue which is now well understood. This problem only impacts a subset of our CPEs. The commitment of the fix is currently on going and a deployment on our CPEs will follow.<br>
-			In case of complaints notified by our customers in the meantime we have prepared a communication to inform them that we are currently fixing the issue.</p>
+		<p>We have escalated your alert inside ORANGE France.Our CPE team has analyzed the issue which is now well understood. This problem only impacts a subset of our CPEs. The commitment of the fix is currently on going and a deployment on our CPEs will follow.In case of complaints notified by our customers in the meantime we have prepared a communication to inform them that we are currently fixing the issue.</p>
 	</blockquote>
 	<p>The CPE in question is the Livebox, although it's not clear which versions are affected, it should be resolved by Orange across all affected devices. Users in Poland reported the same issues as users in France, likely due to Orange deploying the same models across multiple networks.</p>
 	<p>By far my favourite response was from the friendly folks at Telenor:</p>
@@ -61,84 +92,170 @@ https://www.iana.org/whois?q=1.0.0.0%2F8
 	<p>Obsolescence is inevitable, but the desire to speedily fix such occurrences is great to see.</p>
 	<p>These are by no means all devices that have issues, but some of the wider deployed ones. The current list we have of affected devices is:</p>
 	<ul>
-		<li>Pace (Arris) 5268</li>
-		<li>D-Link DMG-6661</li>
-		<li>Technicolor C2100 Series</li>
-		<li>Mitrastar GPT-2541GNAC</li>
-		<li>Askey RTF3507VW-N1</li>
-		<li>Calix GigaCenter</li>
-		<li>Nomadix (model(s) unknown)</li>
-		<li>Xerox Phaser multi-function printer</li>
-		<li>See below :)</li>
+		<li>
+			<p>Pace (Arris) 5268</p>
+		</li>
+		<li>
+			<p>D-Link DMG-6661</p>
+		</li>
+		<li>
+			<p>Technicolor C2100 Series</p>
+		</li>
+		<li>
+			<p>Mitrastar GPT-2541GNAC</p>
+		</li>
+		<li>
+			<p>Askey RTF3507VW-N1</p>
+		</li>
+		<li>
+			<p>Calix GigaCenter</p>
+		</li>
+		<li>
+			<p>Nomadix (model(s) unknown)</p>
+		</li>
+		<li>
+			<p>Xerox Phaser multi-function printer</p>
+		</li>
+		<li>
+			<p>See below :)</p>
+		</li>
 	</ul>
 	<p>If you have a device that is affected, please let us know in the comments. A good example of this is a super-low latency with only 1 hop to 1.1.1.1:</p>
-	<pre><code>Traceroute to 1.1.1.1 (1.1.1.1), 48 byte packets
+	<pre class="language-bash"><code class="language-bash">Traceroute to 1.1.1.1 (1.1.1.1), 48 byte packets
 
-1 1.1.1.1 1dot1dot1dot1.cloudflare-dns.com AS13335 8.301ms 1.879ms 1.836ms
-</code></pre>
-	<h3 id="whoelsehasbeenmisusing1111morethanothers">Who else has been mis-using 1.1.1.1 more than others?</h3>
+1 1.1.1.1 1dot1dot1dot1.cloudflare-dns.com AS13335 8.301ms 1.879ms 1.836ms</code></pre>
+	<h3>Who else has been mis-using 1.1.1.1 more than others?</h3>
 	<p>Using the RIPE Atlas probes gives excellent visibility into residential and business internet connections, however they’re connected via a cable, so this rules out another use-case, WiFi access points. After very little research we quickly came across <a href="https://supportforums.cisco.com/t5/wireless-mobility-documents/web-authentication-1-1-1-1-login-redirect-issue-wireless-lan/ta-p/3161248">Cisco mis-using 1.1.1.1</a>, a quick search for “cisco 1.1.1.1” brought up numerous articles where Cisco are squatting on 1.1.1.1 for their Wireless LAN Controllers (WLC). It’s unclear if Cisco officially regards 1.0.0.0/8 as <a href="https://en.wikipedia.org/wiki/Bogon_filtering">bogon</a> space, but there are lots of examples that can be found on their community websites giving example bogon lists that include the /8. It mostly seems to be used for captive portal when authenticating to the wireless access point, often found in hotels, cafés and other public WiFi hotspot locations.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/cisco_captive_portal_issue.jpg" alt="cisco_captive_portal_issue" loading="lazy"></p>
-	<h3 id="somestatistics">Some statistics</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PR9A4lMN8YjfHlKhXbkjD/758dff216e398e7dc7ee5ef9d4c08ffb/cisco_captive_portal_issue.jpg" alt="cisco_captive_portal_issue" class="kg-image" width="750" height="902" loading="lazy">
+
+	</figure>
+	<h3>Some statistics</h3>
 	<p>Here are some interesting statistics from before we started contacting operators and after we have fixed many issues. It’s staggering to see how fixing some key networks increased availability by almost 20% in Europe &amp; North America!</p>
 	<p>We began testing the availability of 1.1.1.1 on the 23rd of March, in Europe and North America it was only around 91%.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/catchpoint_eu_us_march.png" alt="catchpoint_eu_us_march" loading="lazy"><br>
-		<em>1.1.1.1 availability from Europe and North America, 23rd of March</em>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KxLfhj5QlhTnj04yqOFvh/ab56c23abc8d82a9262197968d704361/catchpoint_eu_us_march.png" alt="catchpoint_eu_us_march" class="kg-image" width="1652" height="408" loading="lazy">
+
+	</figure>
+	<p><i>1.1.1.1 availability from Europe and North America, 23rd of March</i></p>
 	<p>By the 3rd of April, our work cleaning up the space had pushed the availability up to 97%.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/EU-US-3rd-of-April-2018.png" alt="EU-US-3rd-of-April-2018" loading="lazy"><br>
-		<em>1.1.1.1 availability from Europe and North America, 3rd of April</em>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rLR2f0i9O6Q3SpA8iO6xm/fe5e45e40f0916d52a3f43e926849da6/EU-US-3rd-of-April-2018.png" alt="EU-US-3rd-of-April-2018" class="kg-image" width="1766" height="444" loading="lazy">
+
+	</figure>
+	<p><i>1.1.1.1 availability from Europe and North America, 3rd of April</i></p>
 	<p>For the rest of the world, excluding Europe and North America, availability to 1.1.1.1 was only 73% on the 23d of March.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/world_without_eu_us_march.png" alt="world_without_eu_us_march" loading="lazy"><br>
-		<em>1.1.1.1 availability for the World (Europe and North America excluded), 23rd of March</em>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/T3QYlMASaL5wIo3Uyug5r/48153185087694022c3f4380d870f4fb/world_without_eu_us_march.png" alt="world_without_eu_us_march" class="kg-image" width="1367" height="365" loading="lazy">
+
+	</figure>
+	<p><i>1.1.1.1 availability for the World (Europe and North America excluded), 23rd of March</i></p>
 	<p>By the 3rd of April we've made a tonne of progress and managed to clean up enough of the bad routing that availability was up to 85%.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/World-without-EU-US-3rd-of-April-2018.png" alt="World-without-EU-US-3rd-of-April-2018" loading="lazy"><br>
-		<em>1.1.1.1 availability for the World (Europe and North America excluded), 3rd of April</em>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gjNpj8fgMPxvNdTUmMYGs/c1f66c42e9907d2b50de698d4f8b3807/World-without-EU-US-3rd-of-April-2018.png" alt="World-without-EU-US-3rd-of-April-2018" class="kg-image" width="1850" height="448" loading="lazy">
+
+	</figure>
+	<p><i>1.1.1.1 availability for the World (Europe and North America excluded), 3rd of April</i></p>
 	<p>We are continuing to work with ISPs and CPE manufacturers to clean up bad routing globally. Our goal is for 1.1.1.1 to be properly routed and available for 100% of Internet users.</p>
-	<p><em>Above images from Catchpoint analytics</em></p>
-	<h3 id="badtraffic">Bad traffic</h3>
+	<p><i>Above images from Catchpoint analytics</i></p>
+	<h3>Bad traffic</h3>
 	<p>The last public analysis was done in 2010 by <a href="http://www.potaroo.net/studies/1slash8/1slash8.html">RIPE and APNIC</a>. At the time, 1.1.1.0/24 was 100 to 200Mb/s of traffic, most of it being audio traffic. In March, when Cloudflare announced 1.0.0.0/24 and 1.1.1.0/24, ~10Gbps of unsolicited background traffic appeared on our interfaces.</p>
 	<p>The most targeted IPs were 1.1.1.1, 1.1.1.8, 1.1.1.10, 1.0.0.19. When searching these IPs, we notice it is usually misconfiguration or hardcoded IPs.</p>
 	<p>The destination port is usually 80/443, but also other variants of HTTP ports (8000, 8080, et al.) using UDP and TCP, seemingly trying to setup a proxy connection. Some of the traffic was also DHCP/BOOTP, iperf and syslog.</p>
 	<p>Some IPs are also the target of DDoS attacks (even before we announced the new service publicly). Analysing by source port we saw NTP and memcached, usually reaching 5Gbps for a few minutes. The short duration of the attack shows that could be a hardcoded IP in a botnet before it starts sending traffic to a specific target.</p>
 	<p>We also noticed daily patterns where 4 IPs receive the same amount of traffic (±50Mbps).</p>
 	<p>All of this bad traffic is unrelated to DNS, simple, unsolicited background traffic.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-05-at-7.28.41-AM.png" alt="Screen-Shot-2018-04-05-at-7.28.41-AM" loading="lazy"></p>
-	<h3 id="conclusion">Conclusion</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60MHzDgsP3kPWPHXDSg0Nh/462532430d06063bc69b05aaa15fbf88/Screen-Shot-2018-04-05-at-7.28.41-AM.png" alt="Screen-Shot-2018-04-05-at-7.28.41-AM" class="kg-image" width="1294" height="510" loading="lazy">
+
+	</figure>
+	<h3>Conclusion</h3>
 	<p>It was clear from the start that we’d have our work cut out, especially with CPE vendors, where a firmware update would be required. What was impressive was the willingness of operators to collaborate with us to clean up the legacy misconfiguration. It was clear that 1.1.1.1 needed a lot of cleaning in order to be globally accessible. We decided six months before the 1st of April release date we'd commit the network and support resources to that task. Now that 1.1.1.1 is live, we’re thankful to all the networks and hardware companies who have assisted us in this effort. We’re not done, nor are others.</p>
 	<p>The <a href="https://atlas.ripe.net">RIPE Atlas</a> project was immensely useful in testing reachability from as many networks around the world as possible. If you’d like to help the project, please consider <a href="https://atlas.ripe.net/get-involved/become-a-host">hosting a probe</a>. Some networks are not covered with at least one probe, you can see if your ISP has a probe <a href="http://sg-pub.ripe.net/petros/population_coverage/table.html">here</a>, sorted by country.</p>
 	<p>Particular thanks to the following operators who were responsive and helped clean up issues quickly.</p>
 	<ul>
-		<li>Airtel</li>
-		<li>Beirut-IX</li>
-		<li>BHTelecom</li>
-		<li>Comcast</li>
-		<li>ITC</li>
-		<li>Fastweb</li>
-		<li>Kazakhtelecom</li>
-		<li>Level(3)</li>
-		<li>LG Telecom</li>
-		<li>Liquid Telecom</li>
-		<li>MTN</li>
-		<li>Omantel</li>
-		<li>Rostelecom</li>
-		<li>SKBB</li>
-		<li>SFR</li>
-		<li>STC</li>
-		<li>Tata</li>
-		<li>Telecom Italia</li>
-		<li>Telenor</li>
-		<li>Telus</li>
-		<li>Turk Telekom</li>
-		<li>Turkcell</li>
-		<li>Voo</li>
-		<li>XS4ALL</li>
-		<li>Ziggo</li>
+		<li>
+			<p>Airtel</p>
+		</li>
+		<li>
+			<p>Beirut-IX</p>
+		</li>
+		<li>
+			<p>BHTelecom</p>
+		</li>
+		<li>
+			<p>Comcast</p>
+		</li>
+		<li>
+			<p>ITC</p>
+		</li>
+		<li>
+			<p>Fastweb</p>
+		</li>
+		<li>
+			<p>Kazakhtelecom</p>
+		</li>
+		<li>
+			<p>Level(3)</p>
+		</li>
+		<li>
+			<p>LG Telecom</p>
+		</li>
+		<li>
+			<p>Liquid Telecom</p>
+		</li>
+		<li>
+			<p>MTN</p>
+		</li>
+		<li>
+			<p>Omantel</p>
+		</li>
+		<li>
+			<p>Rostelecom</p>
+		</li>
+		<li>
+			<p>SKBB</p>
+		</li>
+		<li>
+			<p>SFR</p>
+		</li>
+		<li>
+			<p>STC</p>
+		</li>
+		<li>
+			<p>Tata</p>
+		</li>
+		<li>
+			<p>Telecom Italia</p>
+		</li>
+		<li>
+			<p>Telenor</p>
+		</li>
+		<li>
+			<p>Telus</p>
+		</li>
+		<li>
+			<p>Turk Telekom</p>
+		</li>
+		<li>
+			<p>Turkcell</p>
+		</li>
+		<li>
+			<p>Voo</p>
+		</li>
+		<li>
+			<p>XS4ALL</p>
+		</li>
+		<li>
+			<p>Ziggo</p>
+		</li>
 	</ul>
 	<p>We still have work to do, contacting operators that we see issues with, in the meantime you should be able to use our second IP address of 1.0.0.1, which has far fewer issues. Don't forget, both of our IPv6 addresses too: 2606:4700:4700::1001 and 2606:4700:4700::1111.</p>
 	<p>Do you still have reachability issues to 1.1.1.1? You can find more information at our <a href="https://community.cloudflare.com/c/reliability/1111">community forum</a>. We’d also recommend reporting such issues to your ISP, they may already be aware of issues, or they may need you to report it to them to start investigating. Whichever is true, making them aware is especially helpful, operators are not always receptive to reports from external parties.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,71 +1,59 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-02-13_at_9.34.43_AM.png"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19SQaf01KoZvz3J3XtblQm/43489ef915ce8e9ac16cfc77f56db33f/Screen_Shot_2014-02-13_at_9.34.43_AM.png" alt="" class="kg-image" width="329" height="330" loading="lazy">
+
+	</figure>
 	<p>On Monday we mitigated a large DDoS that targeted one of our customers. The attack peaked just shy of 400Gbps. We've seen a handful of other attacks at this scale, but this is the largest attack we've seen that uses NTP amplification. This style of attacks has grown dramatically over the last six months and poses a significant new threat to the web. Monday's attack serves as a good case study to examine how these attacks work.</p>
-	<h3 id="ntpamplification101">NTP Amplification 101</h3>
+	<h3>NTP Amplification 101</h3>
 	<p>Before diving into the particular details of this attack, it's important to understand the basic mechanics of how NTP amplification attacks work. This is a quick overview of how these attacks occur. John Graham-Cumming on our team previously wrote a <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">detailed primer on NTP amplification attacks</a> if you're interested in further technical details. If you're interested in amplification attacks, you may also find interesting <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">our posts about DNS Amplification attacks</a>. These attacks use a similar method but target open DNS resolvers rather than NTP servers.</p>
 	<p>An NTP amplification attack begins with a server controlled by an attacker on a network that allows source IP address spoofing (e.g., it does not follow <a href="http://tools.ietf.org/html/bcp38">BCP38</a>). The attacker generates a large number of UDP packets spoofing the source IP address to make it appear the packets are coming from the intended target. These UDP packets are sent to Network Time Protocol servers (port 123) that support the MONLIST command.</p>
 	<p>I'd personally be curious to talk with whoever added MONLIST as a command to NTP servers. The command seems of such little practical use -- it returns a list of up to the last 600 IP addresses that last accessed the NTP server -- and yet it can do so much harm. If an NTP server has its list fully populated, the response to a MONLIST request will be 206-times larger than the request. In the attack, since the source IP address is spoofed and UDP does not require a handshake, the amplified response is sent to the intended target. An attacker with a 1Gbps connection can theoretically generate more than 200Gbps of DDoS traffic.</p>
-	<h3 id="notjusttheoretical">Not Just Theoretical</h3>
+	<h3>Not Just Theoretical</h3>
 	<p>Monday's DDoS proved these attacks aren't just theoretical. To generate approximately 400Gbps of traffic, the attacker used 4,529 NTP servers running on 1,298 different networks. On average, each of these servers sent 87Mbps of traffic to the intended victim on CloudFlare's network. Remarkably, it is possible that the attacker used only a single server running on a network that allowed source IP address spoofing to initiate the requests.</p>
 	<p>While NTP servers that support MONLIST are less common than open DNS resolvers, they tend to run on beefier servers with fatter connections to the network. Combined with the high amplification factor, this allows a much smaller number of NTP servers to generate very large attacks. For comparison, the attack that targeted Spamhaus used 30,956 open DNS resolvers to <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">generate a 300Gbps DDoS</a>. On Monday, with 1/7th the number of vulnerable servers, the attacker was able to generate an attack that was 33% larger than the Spamhaus attack.</p>
-	<h3 id="globallydistributedthreat">Globally Distributed Threat</h3>
-	<script type="text/javascript" src="https://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
-	<div class="tableauPlaceholder" style="width: 663px; height: 437px;"><object class="tableauViz" width="663" height="437" style="display:none;">
-			<param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F">
-			<param name="site_root" value="">
-			<param name="name" value="IPMap/Sheet1">
-			<param name="tabs" value="no">
-			<param name="toolbar" value="yes">
-			<param name="static_image" value="http://public.tableausoftware.com/content/images/IP/IPMap/Sheet1/1.png">
-			<param name="animate_transition" value="yes">
-			<param name="display_static_image" value="yes">
-			<param name="display_spinner" value="yes">
-			<param name="display_overlay" value="yes">
-			<param name="display_count" value="yes">
-		</object></div>
-	<div style="width:663px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
-		<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products" target="_blank">Learn About Tableau</a></div>
-	</div>
+	<h3>Globally Distributed Threat</h3>
+	<p></p>
+	<p><a href="http://www.tableausoftware.com/public/about-tableau-products">Learn About Tableau</a></p>
 	<p>We saw attack traffic hitting every one of CloudFlare's data centers. While we were generally able to mitigate the attack, it was large enough that it caused network congestion in parts of Europe. The map above shows the global distribution of the 4,529 NTP servers used in the attack. The chart below lists the AS Numbers and names of the top 24 networks we saw traffic from in the attack, as well as the number of exploited NTP servers running on each.</p>
-	<pre>  ASN Network                                                          Count 
- 9808 CMNET-GD Guangdong Mobile Communication Co.Ltd.                    136
- 4134 CHINANET-BACKBONE No.31,Jin-rong Street                            116
-16276 OVH OVH Systems                                                    114
- 4837 CHINA169-BACKBONE CNCGROUP China169 Backbone                        81
- 3320 DTAG Deutsche Telekom AG                                            69
-39116 TELEHOUSE Telehouse Inter. Corp. of Europe Ltd                      61
-10796 SCRR-10796 - Time Warner Cable Internet LLC                         53
- 6830 LGI-UPC Liberty Global Operations B.V.                              48
- 6663 TTI-NET Euroweb Romania SA                                          46
- 9198 KAZTELECOM-AS JSC Kazakhtelecom                                     45
- 2497 IIJ Internet Initiative Japan Inc.                                  39
- 3269 ASN-IBSNAZ Telecom Italia S.p.a.                                    39
- 9371 SAKURA-C SAKURA Internet Inc.                                       39
-12322 PROXAD Free SAS                                                     37
-20057 AT&amp;T Wireless Service                                               37
-30811 EPiServer AB                                                        36
-  137 ASGARR GARR Italian academic and research network                   34
-  209 ASN-QWEST-US NOVARTIS-DMZ-US                                        33
- 6315 XMISSION - XMission, L.C.                                           33
-52967 NT Brasil Tecnologia Ltda. ME                                       32
- 4713 OCN NTT Communications Corporation                                  31
-56041 CMNET-ZHEJIANG-AP China Mobile communications corporation           31
- 1659 ERX-TANET-ASN1 Tiawan Academic Network (TANet) Information Center   30
- 4538 ERX-CERNET-BKB China Education and Research Network Center          30
-</pre>
+	<p>ASN Network Count
+		9808 CMNET-GD Guangdong Mobile Communication Co.Ltd. 136
+		4134 CHINANET-BACKBONE No.31,Jin-rong Street 116
+		16276 OVH OVH Systems 114
+		4837 CHINA169-BACKBONE CNCGROUP China169 Backbone 81
+		3320 DTAG Deutsche Telekom AG 69
+		39116 TELEHOUSE Telehouse Inter. Corp. of Europe Ltd 61
+		10796 SCRR-10796 - Time Warner Cable Internet LLC 53
+		6830 LGI-UPC Liberty Global Operations B.V. 48
+		6663 TTI-NET Euroweb Romania SA 46
+		9198 KAZTELECOM-AS JSC Kazakhtelecom 45
+		2497 IIJ Internet Initiative Japan Inc. 39
+		3269 ASN-IBSNAZ Telecom Italia S.p.a. 39
+		9371 SAKURA-C SAKURA Internet Inc. 39
+		12322 PROXAD Free SAS 37
+		20057 AT&amp;T Wireless Service 37
+		30811 EPiServer AB 36
+		137 ASGARR GARR Italian academic and research network 34
+		209 ASN-QWEST-US NOVARTIS-DMZ-US 33
+		6315 XMISSION - XMission, L.C. 33
+		52967 NT Brasil Tecnologia Ltda. ME 32
+		4713 OCN NTT Communications Corporation 31
+		56041 CMNET-ZHEJIANG-AP China Mobile communications corporation 31
+		1659 ERX-TANET-ASN1 Tiawan Academic Network (TANet) Information Center 30
+		4538 ERX-CERNET-BKB China Education and Research Network Center 30</p>
 	<p>At this time, we've decided not to publish the full list of the IP addresses of the NTP servers involved in the attack out of concern that it could give even more attackers access to a powerful weapon. However, we have published a <a href="https://docs.google.com/spreadsheet/ccc?key=0AhuvvqAkGlindHFtS0pJa0lYZGNlLXNONWtlY01qanc&amp;usp=sharing">spreadsheet with the complete list of the networks with NTP servers that participated in the attack</a>. While the per server amplification makes these attacks troubling, the smaller number of servers and networks involved gives us some hope that we can make a dent in getting them cleaned up. We are reaching out to network operators whose resources were used in the attack to encourage them to restrict access to their NTP servers and disable the MONLIST command.</p>
 	<p>Somewhat ironically, the large French hosting provider OVH was one of the largest sources of our attack and also a victim of a large scale NTP amplification attack around the same time. The company's founder Tweeted:</p>
-	<blockquote class="twitter-tweet" lang="en">We see today lot of new DDoS attacks from Internet to our network. Type: NTP AMP Size: &gt;350Gbps. No issue. VAC is great :) — Oles (@olesovhcom) <a href="https://twitter.com/olesovhcom/statuses/433631778620702721">February 12, 2014</a></blockquote>
-	<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-	<h3 id="timetocleanuptheproblem">Time to Clean Up the Problem</h3>
-	<p>If you're a network administrator and on Monday you saw network graphs like the one in the Tweet below then you are running a vulnerable NTP server.</p>
-	<blockquote class="twitter-tweet" lang="en">
-		<p>and here's what it looks like when a device participates in the NTP DDOS against <a href="https://twitter.com/CloudFlare">@CloudFlare</a> <a href="http://t.co/QcrPGxbcUz">pic.twitter.com/QcrPGxbcUz</a></p>— Eric C (@ctrl_alt_esc) <a href="https://twitter.com/ctrl_alt_esc/statuses/433629994351214592">February 12, 2014</a>
+	<blockquote>
+		<p>We see today lot of new DDoS attacks from Internet to our network. Type: NTP AMP Size: &gt;350Gbps. No issue. VAC is great :) — Oles (@olesovhcom) <a href="https://twitter.com/olesovhcom/statuses/433631778620702721">February 12, 2014</a></p>
 	</blockquote>
-	<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<h3>Time to Clean Up the Problem</h3>
+	<p>If you're a network administrator and on Monday you saw network graphs like the one in the Tweet below then you are running a vulnerable NTP server.</p>
+	<blockquote>
+		<p>and here's what it looks like when a device participates in the NTP DDOS against <a href="https://twitter.com/CloudFlare">@CloudFlare</a> <a href="http://t.co/QcrPGxbcUz">pic.twitter.com/QcrPGxbcUz</a></p>
+		<p>— Eric C (@ctrl_alt_esc) <a href="https://twitter.com/ctrl_alt_esc/statuses/433629994351214592">February 12, 2014</a></p>
+	</blockquote>
 	<p>You can check whether there are open NTP servers that support the MONLIST command running on your network by visiting the <a href="http://openntpproject.org">Open NTP Project</a>. Even if you don't think you're running an NTP server, you should check your network because you may be running one inadvertently. For example, some firmware on Supermicro's IPMI controllers <a href="http://blog.gmane.org/gmane.network.ntp.pool/month=20140201">shipped with a MONLIST-enabled NTP server on by default</a>. More details on NTP attacks and instructions on how to disable the MONLIST command can be found on the <a href="https://isc.sans.edu/diary/NTP+reflection+attack/17300">Internet Storm Center's NTP attack advisory</a>.</p>
 	<p>NTP and all other UDP-based amplification attacks rely on source IP address spoofing. If attackers weren't able to spoof the source IP address then they would only be able to DDoS themselves. If you're running a network then you should ensure that you are following BCP38 and preventing packets with spoofed source addresses from leaving your network. You can test whether your network currently follows BCP38 using tools from MIT's <a href="http://spoofer.cmand.org/summary.php">the Spoofer Project</a>. If you're running a naughty network that allows source IP address spoofing, you can easily implement BCP38 by following the <a href="http://www.bcp38.info/index.php/Main_Page">instructions listed at BCP38.info</a>.</p>
 	<p>Finally, if you think NTP is bad, just wait for what's next. SNMP has a theoretical 650x amplification factor. We've already begun to see evidence attackers have begun to experiment with using it as a DDoS vector. Buckle up.</p>
-	<!--kg-card-end: markdown-->
 </div>

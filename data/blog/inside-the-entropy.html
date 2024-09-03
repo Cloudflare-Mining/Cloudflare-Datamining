@@ -1,136 +1,179 @@
-<div class="mb2 gray5">15 min read</div>
+<div class="mb2 gray5">14 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image8-3.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NQyCGeUZv6OohlsKmkHKc/68e5591259b4e4fbf76d34996aaeeca4/image8-3.png" alt="" class="kg-image" width="1762" height="1047" loading="lazy">
+
+	</figure>
 	<blockquote>
-		<p>Randomness, randomness everywhere;<br>
-			Nor any verifiable entropy.</p>
+		<p>Randomness, randomness everywhere;Nor any verifiable entropy.</p>
 	</blockquote>
-	<!--kg-card-end: markdown-->
 	<p>Generating random outcomes is an essential part of everyday life; from lottery drawings and constructing competitions, to performing deep cryptographic computations. To use randomness, we must have some way to 'sample' it. This requires interpreting some natural phenomenon (such as a fair dice roll) as an event that generates some random output. From a computing perspective, we interpret random outputs as bytes that we can then use in algorithms (such as drawing a lottery) to achieve the functionality that we want.</p>
 	<p>The sampling of randomness securely and efficiently is a critical component of all modern computing systems. For example, nearly all public-key cryptography relies on the fact that algorithms can be seeded with bytes generated from genuinely random outcomes.</p>
 	<p>In scientific experiments, a random sampling of results is necessary to ensure that data collection measurements are not skewed. Until now, generating random outputs in a way that we can verify that they are indeed random has been very difficult; typically involving taking a variety of statistical measurements.</p>
-	<p></p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image9-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com">League of Entropy</a>. The League of Entropy is a network of beacons that produces <em>distributed</em>, <em>publicly verifiable</em> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand">drand project</a>.</p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CEsiU1gZNLRG4VZ8pKenE/645c9a798c5672062a950bf9916610ee/image9-2.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+
+	</figure>
+	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com">League of Entropy</a>. The League of Entropy is a network of beacons that produces <i>distributed</i>, <i>publicly verifiable</i> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand">drand project</a>.</p>
 	<p>Verifiable randomness is essential for ensuring trust in various institutional decision-making processes such as <a href="https://blog.cloudflare.com/league-of-entropy">elections and lotteries</a>. There are also cryptographic applications that require verifiable randomness. In the land of decentralized consensus mechanisms, the <a href="https://dfinity.org/static/dfinity-consensus-0325c35128c72b42df7dd30c22c41208.pdf">DFINITY approach</a> uses random seeds to decide the outcome of leadership elections. In this setting, it is essential that the randomness is publicly verifiable so that the outcome of the leadership election is trustworthy. Such a situation arises more generally in <a href="https://en.wikipedia.org/wiki/Sortition">Sortitions</a>: an election where leaders are selected as a random individual (or subset of individuals) from a larger set.</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>In this blog post, we will give a technical overview behind the cryptography used in the distributed randomness beacon, and how it can be used to generate publicly verifiable randomness. We believe that distributed randomness beacons have a huge amount of utility in realizing the <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019">Internet of the Future</a>; where we will be able to rely on distributed, decentralized solutions to problems of a global-scale.</p>
-	<!--kg-card-end: markdown-->
-	<h2 id="randomness-entropy">Randomness &amp; entropy</h2><!--kg-card-begin: markdown-->
-	<p>A source of randomness is measured in terms of the amount of <em>entropy</em> it provides. Think about the entropy provided by a random output as a score to indicate how “random” the output actually is. The notion of information entropy was concretised by the famous scientist Claude Shannon in his paper <a href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication">A Mathematical Theory of Communication</a>, and is sometimes known as <em><a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">Shannon Entropy</a></em>.</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2>Randomness &amp; entropy</h2>
+	<p>A source of randomness is measured in terms of the amount of <i>entropy</i> it provides. Think about the entropy provided by a random output as a score to indicate how “random” the output actually is. The notion of information entropy was concretised by the famous scientist Claude Shannon in his paper <a href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication">A Mathematical Theory of Communication</a>, and is sometimes known as <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)"><i>Shannon Entropy</i></a>.</p>
 	<p>A common way to think about random outputs is: a sequence of bits derived from some random outcome. For the sake of an argument, consider a fair 8-sided dice roll with sides marked 0-7. The outputs of the dice can be written as the bit-strings <code>000,001,010,...,111</code>. Since the dice is fair, any of these outputs is equally likely. This is means that each of the bits is equally likely to be <code>0</code> or <code>1</code>. Consequently, interpreting the output of the dice roll as a random output then derives randomness with <code>3</code> bits of entropy.</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<p>More generally, if a perfect source of randomness guarantees strings with <code>n</code> bits of entropy, then it generates bit-strings where each bit is equally likely to be <code>0</code> or <code>1</code>. This allows us to predict the value of any bit with maximum probability <code>1/2</code>. If the outputs are sampled from such a perfect source, we consider them <em>uniformly distributed</em>. If we sample the outputs from a source where one bit is predictable with higher probability, then the string has <code>n-1</code> bits of entropy. To go back to the dice analogy, rolling a 6-sided dice provides less than <code>3</code> bits of entropy because the possible outputs are <code>000,001,010,011,100,101</code> and so the 2nd and 3rd bits are more likely to be to set to <code>0</code> than to <code>1</code>.</p>
+	<p>More generally, if a perfect source of randomness guarantees strings with <code>n</code> bits of entropy, then it generates bit-strings where each bit is equally likely to be <code>0</code> or <code>1</code>. This allows us to predict the value of any bit with maximum probability <code>1/2</code>. If the outputs are sampled from such a perfect source, we consider them <i>uniformly distributed</i>. If we sample the outputs from a source where one bit is predictable with higher probability, then the string has <code>n-1</code> bits of entropy. To go back to the dice analogy, rolling a 6-sided dice provides less than <code>3</code> bits of entropy because the possible outputs are <code>000,001,010,011,100,101</code> and so the 2nd and 3rd bits are more likely to be to set to <code>0</code> than to <code>1</code>.</p>
 	<p>It is possible to mix entropy sources using specifically designed mixing functions to retrieve something with even greater entropy. The maximum resulting entropy is the sum of the entropy taken from the number of entropic sources used as input.</p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/combined-entropy-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h4 id="sampling-randomness">Sampling randomness</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LcFWOh6MsFEqmYrGB6PXa/4ac05a3ddd40d32168a3bfd15bcb30b5/combined-entropy-_2x.png" alt="" class="kg-image" width="1600" height="1060" loading="lazy">
+
+	</figure>
+	<h4>Sampling randomness</h4>
 	<p>To sample randomness, let’s first identify the appropriate sources. There are many natural phenomena that one can use:</p>
 	<ul>
-		<li>atmospheric noise;</li>
-		<li>radioactive decay;</li>
-		<li>turbulent motion; like that generated in Cloudflare’s wall of <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">lava lamps(!)</a>.</li>
+		<li>
+			<p>atmospheric noise;</p>
+		</li>
+		<li>
+			<p>radioactive decay;</p>
+		</li>
+		<li>
+			<p>turbulent motion; like that generated in Cloudflare’s wall of <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">lava lamps(!)</a>.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2nJtxum8JhhrkxOyplTTka/ae58f9eddc6623c955806c1ac1683986/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Unfortunately, these phenomena require very specific measuring tools, which are prohibitively expensive to install in mainstream consumer electronics. As such, most personal computing devices usually use external usage characteristics for seeding specific generator functions that output randomness as and when the system requires it. These characteristics include keyboard typing patterns and speed and mouse movement – since such usage patterns are based on the human user, it is assumed they provide sufficient entropy as a randomness source. An example of a random number generator that takes entropy from these characteristics is the Linux-based <a href="https://en.wikipedia.org/wiki/RdRand">RDRAND</a> function.</p>
-	<p>Naturally, it is difficult to tell whether a system is <em>actually</em> returning random outputs by only inspecting the outputs. There are statistical tests that detect whether a series of outputs is not uniformly distributed, but these tests cannot ensure that they are unpredictable. This means that it is hard to detect if a given system has had its randomness generation compromised.</p>
-	<h2 id="distributed-randomness">Distributed randomness</h2>
+	<p>Naturally, it is difficult to tell whether a system is <i>actually</i> returning random outputs by only inspecting the outputs. There are statistical tests that detect whether a series of outputs is not uniformly distributed, but these tests cannot ensure that they are unpredictable. This means that it is hard to detect if a given system has had its randomness generation compromised.</p>
+	<h2>Distributed randomness</h2>
 	<p>It’s clear we need alternative methods for sampling randomness so that we can provide guarantees that trusted mechanisms, such as elections and lotteries, take place in secure tamper-resistant environments. The <a href="https://github.com/dedis/drand">drand</a> project was started by researchers at <a href="https://www.epfl.ch/about">EPFL</a> to address this problem. The drand charter is to provide an easily configurable randomness beacon running at geographically distributed locations around the world. The intention is for each of these beacons to generate portions of randomness that can be combined into a single random string that is publicly verifiable.</p>
-	<p>This functionality is achieved using <em>threshold cryptography</em>. Threshold cryptography seeks to derive solutions for standard cryptographic problems by combining information from multiple distributed entities. The notion of the threshold means that if there are <code>n</code> entities, then any <code>t</code> of the entities can combine to construct some cryptographic object (like a ciphertext, or a digital signature). These threshold systems are characterised by a setup phase, where each entity learns a <em>share</em> of data. They will later use this share of data to create a combined cryptographic object with a subset of the other entities.</p>
-	<h3 id="threshold-randomness">Threshold randomness</h3>
-	<p>In the case of a distributed randomness protocol, there are <code>n</code> <em>randomness beacons</em> that broadcast random values sampled from their initial data share, and the current state of the system. This data share is created during a trusted setup phase, and also takes in some internal random value that is generated by the beacon itself.</p>
+	<p>This functionality is achieved using <i>threshold cryptography</i>. Threshold cryptography seeks to derive solutions for standard cryptographic problems by combining information from multiple distributed entities. The notion of the threshold means that if there are <code>n</code> entities, then any <code>t</code> of the entities can combine to construct some cryptographic object (like a ciphertext, or a digital signature). These threshold systems are characterised by a setup phase, where each entity learns a <i>share</i> of data. They will later use this share of data to create a combined cryptographic object with a subset of the other entities.</p>
+	<h3>Threshold randomness</h3>
+	<p>In the case of a distributed randomness protocol, there are <code>n</code> <i>randomness beacons</i> that broadcast random values sampled from their initial data share, and the current state of the system. This data share is created during a trusted setup phase, and also takes in some internal random value that is generated by the beacon itself.</p>
 	<p>When a user needs randomness, they send requests to some number <code>t</code> of beacons, where <code>t &lt; n</code>, and combine these values using a specific procedure. The result is a random value that can be verified and used for public auditing mechanisms.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>Consider what happens if some proportion <code>c/n</code> of the randomness beacons are <em>corrupted</em> at any one time. The nature of a threshold cryptographic system is that, as long as <code>c &lt; t</code>, then the end result still remains random.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BeauvWICHvAH9uX1tCqaY/250bf2ba66f892753f1a9ece98ead790/pasted-image-0--2-.png" alt="" class="kg-image" width="512" height="446" loading="lazy">
+
+	</figure>
+	<p>Consider what happens if some proportion <code>c/n</code> of the randomness beacons are <i>corrupted</i> at any one time. The nature of a threshold cryptographic system is that, as long as <code>c &lt; t</code>, then the end result still remains random.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NM7oB6KqjsC5ys55cVEGP/881e0a703ee6b513e98de6920aa4ab0c/pasted-image-0--3-.png" alt="" class="kg-image" width="512" height="285" loading="lazy">
+
+	</figure>
 	<p>If <code>c</code> exceeds <code>t</code> then the random values produced by the system become predictable and the notion of randomness is lost. In summary, the distributed randomness procedure provides verifiably random outputs with sufficient entropy only when <code>c &lt; t</code>.</p>
 	<p>By distributing the beacons independent of each other and in geographically disparate locations, the probability that <code>t</code> locations can be corrupted at any one time is extremely low. The minimum choice of <code>t</code> is equal to <code>n/2</code>.</p>
-	<h2 id="how-does-it-actually-work">How does it actually work?</h2>
+	<h2>How does it actually work?</h2>
 	<p>What we described above sounds a bit like magic<sup>tm</sup>. Even if <code>c = t-1</code>, then we can ensure that the output is indeed random and unpredictable! To make it clearer how this works, let’s dive a bit deeper into the underlying cryptography.</p>
-	<p>Two core components of drand are: a <em>distributed key generation</em> (DKG) procedure, and a <em>threshold signature scheme</em>. These core components are used in setup and randomness generation procedures, respectively. In just a bit, we’ll outline how drand uses these components (without navigating too deeply into the onerous mathematics).</p>
-	<h3 id="distributed-key-generation">Distributed key generation</h3>
+	<p>Two core components of drand are: a <i>distributed key generation</i> (DKG) procedure, and a <i>threshold signature scheme</i>. These core components are used in setup and randomness generation procedures, respectively. In just a bit, we’ll outline how drand uses these components (without navigating too deeply into the onerous mathematics).</p>
+	<h3>Distributed key generation</h3>
 	<p>At a high-level, the DKG procedure creates a distributed secret key that is formed of <code>n</code> different key pairs <code>(vk_i, sk_i)</code>, each one being held by the entity <code>i</code> in the system. These key pairs will eventually be used to instantiate a <code>(t,n)</code>-threshold signature scheme (we will discuss this more later). In essence, <code>t</code> of the entities will be able to combine to construct a valid signature on any message.</p>
 	<p>To think about how this might work, consider a distributed key generation scheme that creates <code>n</code> distributed keys that are going to be represented by pizzas. Each pizza is split into <code>n</code> slices and one slice from each is secretly passed to one of the participants. Each entity receives one slice from each of the different pizzas (<code>n</code> in total) and combines these slices to form their own pizza. Each combined pizza is unique and secret for each entity, representing their own key pair.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/ggviF6qzgC5ENm8dYhK88NzMpyA2yHIP9OCDCL0TsO2ajFUhNnre8lpK3EeWGKsAGJiEPrCI_-d5G9-xsqmO9RdEJNN9t-o-OxvrSlTnRT_QJj7OVamtAoGrZF_DrpYkBcy9kAvJ" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/dKBnrDjJh_fPKm2bkI9O2Rrw2LMfVAOpOc78wZBOKXhGjGJ4whqNT4ZZOQScfYGTW6Pj3JYljx5SCBZ9RsGNnmTCP0hhQL7A9uF2rYdB2yqghaFu6JAVGmBUmvVFtdomOQ50Cb3i" class="kg-image" alt="" loading="lazy"></figure>
-	<h4 id="mathematical-intuition">Mathematical intuition</h4>
-	<p>Mathematically speaking, and rather than thinking about pizzas, we can describe the underlying phenomenon by reconstructing lines or curves on a graph. We can take two coordinates on a <code>(x,y)</code> plane and immediately (and uniquely) define a line with the equation <code>y = ax+b</code>. For example, the points <code>(2,3)</code> and <code>(4,7)</code> immediately define a line with gradient <code>(7-3)/(4/2) = 2</code> so <code>a=2</code>. You can then derive the <code>b</code> coefficient as <code>-1</code> by evaluating either of the coordinates in the equation <code>y = 2x + b</code>. By <em>uniquely</em>, we mean that only the line <code>y = 2x -1</code> satisfies the two coordinates that are chosen; no other choice of <code>a</code> or <code>b</code> fits.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/line2-2-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The curve <code>ax+b</code> has degree <code>1</code>, where the degree of the equation refers to the highest order multiplication of unknown variables in the equation. That might seem like mathematical jargon, but the equation above contains only one term <code>ax</code>, which depends on the unknown variable <code>x</code>. In this specific term, the &nbsp;<em>exponent</em> (or <em>power</em>) of <code>x</code> is <code>1</code>, and so the degree of the entire equation is also <code>1</code>.</p>
+	<h4>Mathematical intuition</h4>
+	<p>Mathematically speaking, and rather than thinking about pizzas, we can describe the underlying phenomenon by reconstructing lines or curves on a graph. We can take two coordinates on a <code>(x,y)</code> plane and immediately (and uniquely) define a line with the equation <code>y = ax+b</code>. For example, the points <code>(2,3)</code> and <code>(4,7)</code> immediately define a line with gradient <code>(7-3)/(4/2) = 2</code> so <code>a=2</code>. You can then derive the <code>b</code> coefficient as <code>-1</code> by evaluating either of the coordinates in the equation <code>y = 2x + b</code>. By <i>uniquely</i>, we mean that only the line <code>y = 2x -1</code> satisfies the two coordinates that are chosen; no other choice of <code>a</code> or <code>b</code> fits.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2htl50xQeT4euGS3VR6rxf/772cd8dfabde3cbc32052e9ed7e0bc8e/line2-2-.png" alt="" class="kg-image" width="488" height="718" loading="lazy">
+
+	</figure>
+	<p>The curve <code>ax+b</code> has degree <code>1</code>, where the degree of the equation refers to the highest order multiplication of unknown variables in the equation. That might seem like mathematical jargon, but the equation above contains only one term <code>ax</code>, which depends on the unknown variable <code>x</code>. In this specific term, the &nbsp;<i>exponent</i> (or <i>power</i>) of <code>x</code> is <code>1</code>, and so the degree of the entire equation is also <code>1</code>.</p>
 	<p>Likewise, by taking three sets of coordinates pairs in the same plane, we uniquely define a quadratic curve with an equation that approximately takes the form <code>y = ax^2 + bx + c</code> with the coefficients <code>a,b,c</code> uniquely defined by the chosen coordinates. The process is a bit more involved than the above case, but it essentially starts in the same way using three coordinate pairs <code>(x_1, y_1)</code>, <code>(x_2, y_2)</code> and <code>(x_3, y_3)</code>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/line3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br>By a quadratic curve, we mean a curve of degree <code>2</code>. We can see that this curve has degree <code>2</code> because it contains two terms <code>ax^2</code> and <code>bx</code> that depend on <code>x</code>. The highest order term is the <code>ax^2</code> term with an exponent of <code>2</code>, so this curve has degree <code>2</code> (ignore the term <code>bx</code> which has a smaller power).</p>
-	<p>What we are ultimately trying to show is that this approach scales for curves of degree <code>n</code> (of the form <code>y = a_n x^n + … a_1 x + a_0</code>). So, if we take <code>n+1</code> coordinates on the <code>(x,y)</code> plane, then we can uniquely reconstruct the curve of this form entirely. Such degree <code>n</code> equations are also known as <em>polynomials</em> of degree <code>n</code>.</p>
-	<p>In order to generalise the approach to general degrees we need some kind of formula. This formula should take <code>n+1</code> pairs of coordinates and return a polynomial of degree <code>n</code>. Fortunately, such a formula exists without us having to derive it ourselves, it is known as the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial#Definition"><em>Lagrange interpolation polynomial</em></a>. Using the formula in the link, we can reconstruct any <code>n</code> degree polynomial using <code>n+1</code> unique pairs of coordinates.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24FGvRaMCx5lUA2umjk6wi/26e8c64727377aa82b1cd086f10b3591/line3.png" alt="" class="kg-image" width="516" height="648" loading="lazy">
+
+	</figure>
+	<p>By a quadratic curve, we mean a curve of degree <code>2</code>. We can see that this curve has degree <code>2</code> because it contains two terms <code>ax^2</code> and <code>bx</code> that depend on <code>x</code>. The highest order term is the <code>ax^2</code> term with an exponent of <code>2</code>, so this curve has degree <code>2</code> (ignore the term <code>bx</code> which has a smaller power).</p>
+	<p>What we are ultimately trying to show is that this approach scales for curves of degree <code>n</code> (of the form <code>y = a_n x^n + … a_1 x + a_0</code>). So, if we take <code>n+1</code> coordinates on the <code>(x,y)</code> plane, then we can uniquely reconstruct the curve of this form entirely. Such degree <code>n</code> equations are also known as <i>polynomials</i> of degree <code>n</code>.</p>
+	<p>In order to generalise the approach to general degrees we need some kind of formula. This formula should take <code>n+1</code> pairs of coordinates and return a polynomial of degree <code>n</code>. Fortunately, such a formula exists without us having to derive it ourselves, it is known as the <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial#Definition"><i>Lagrange interpolation polynomial</i></a>. Using the formula in the link, we can reconstruct any <code>n</code> degree polynomial using <code>n+1</code> unique pairs of coordinates.</p>
 	<p>Going back to pizzas temporarily, it will become clear in the next section how this Lagrange interpolation procedure essentially describes the dissemination of one slice (corresponding to <code>(x,y)</code> coordinates) taken from a single pizza (the entire <code>n-1</code> degree polynomial) among <code>n</code> participants. Running this procedure <code>n</code> times in parallel allows each entity to construct their entire pizza (or the eventual key pair).</p>
-	<h4 id="back-to-key-generation">Back to key generation</h4>
+	<h4>Back to key generation</h4>
 	<p>Intuitively, in the DKG procedure we want to distribute <code>n</code> key pairs among <code>n</code> participants. This effectively means running <code>n</code> parallel instances of a <code>t</code>-out-of-<code>n</code> <a href="https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing">Shamir Secret Sharing</a> scheme. This secret sharing scheme is built entirely upon the polynomial interpolation technique that we described above.</p>
 	<p>In a single instance, we take the secret key to be the first coefficient of a polynomial of degree <code>t-1</code> and the public key is a published value that depends on this secret key, but does not reveal the actual coefficient. Think of RSA, where we have a number <code>N = pq</code> for secret large prime numbers <code>p,q</code>, where <code>N</code> is public but does not reveal the actual factorisation. Notice that if the polynomial is reconstructed using the interpolation technique above, then we immediately learn the secret key, because the first coefficient will be made explicit.</p>
 	<p>Each secret sharing scheme publishes shares, where each share is a different evaluation of the polynomial (dependent on the entity <code>i</code> receiving the key share). These evaluations are essentially coordinates on the <code>(x,y)</code> plane.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/sXyVqw9ZGXOODiMiLN7e11JyzO6KZMq_r04xnOH-N_Wdqndau2CUUHmNG0RB1XJMG8YiCeT6Hddy0g4MuwsqvKyHQRQcchyydXTTT89s346jgmwoql8drJ1dWPRQWctKKoN8ZVRW" class="kg-image" alt="" loading="lazy"></figure>
 	<p>By running <code>n</code> parallel instances of the secret sharing scheme, each entity receives <code>n</code> shares and then combines all of these to form their overall key pair <code>(vk_i, sk_i)</code>.</p>
 	<p>The DKG procedure uses <code>n</code> parallel secret sharing procedures along with <a href="https://link.springer.com/chapter/10.1007/3-540-46766-1_9">Pedersen commitments</a> to distribute the key pairs. We explain in the next section how this procedure is part of the procedure for provisioning randomness beacons.</p>
-	<p>In summary, it is important to remember that <strong>each party</strong> in the DKG protocol generates a random secret key from the <code>n</code> shares that they receive, and they compute the corresponding public key from this. We will now explain how each entity uses this key pair to perform the cryptographic procedure that is used by the drand protocol.</p>
-	<h3 id="threshold-signature-scheme">Threshold signature scheme</h3>
+	<p>In summary, it is important to remember that <b>each party</b> in the DKG protocol generates a random secret key from the <code>n</code> shares that they receive, and they compute the corresponding public key from this. We will now explain how each entity uses this key pair to perform the cryptographic procedure that is used by the drand protocol.</p>
+	<h3>Threshold signature scheme</h3>
 	<p>Remember: a standard signature scheme considers a key-pair <code>(vk,sk)</code>, where <code>vk</code> is a public verification key and <code>sk</code> is a private signing key. So, messages <code>m</code> signed with <code>sk</code> can be verified with <code>vk</code>. The security of the scheme ensures that it is difficult for anybody who does not hold <code>sk</code> to compute a valid signature for any message <code>m</code>.</p>
-	<p>A <em>threshold signature scheme</em> allows a set of users holding distributed key-pairs <code>(vk_i,sk_i)</code> to compute intermediate signatures <code>u_i</code> on a given message <code>m</code>.</p>
+	<p>A <i>threshold signature scheme</i> allows a set of users holding distributed key-pairs <code>(vk_i,sk_i)</code> to compute intermediate signatures <code>u_i</code> on a given message <code>m</code>.</p>
 	<p>Given knowledge of some number <code>t</code> of intermediate signatures <code>u_i</code>, a valid signature <code>u</code> on the message <code>m</code> can be reconstructed under the combined secret key <code>sk</code>. The public key <code>vk</code> can also be inferred using knowledge of the public keys <code>vk_i</code>, and then this public key can be used to verify <code>u</code>.</p>
 	<p>Again, think back to reconstructing the degree <code>t-1</code> curves on graphs with <code>t</code> known coordinates. In this case, the coordinates correspond to the intermediate signatures <code>u_i</code>, and the signature <code>u</code> corresponds to the entire curve. For the actual signature schemes, the mathematics are much more involved than in the DKG procedure, but the principal is the same.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/threshold-sig-3-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="drand-protocol">drand protocol</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SpuFg5fE6Trs3KhVfGeQq/f10fead03ece321cda2a39fc2c2e863b/threshold-sig-3-.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
+
+	</figure>
+	<h3>drand protocol</h3>
 	<p>The <code>n</code> beacons that will take part in the drand project are identified. In the trusted setup phase, the DKG protocol from above is run, and each beacon effectively creates a key pair <code>(vk_i, sk_i)</code> for a threshold signature scheme. In other words, this key pair will be able to generate intermediate signatures that can be combined to create an entire signature for the system.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/DKG-6-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZkOUnhX8QiVnhPou3nC9/400931ec6d2ab75701334f976923ab01/DKG-6-.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
+
+	</figure>
 	<p>For each round (occurring once a minute, for example), the beacons agree on a signature <code>u</code> evaluated over a message containing the previous round’s signature and the current round’s number. This signature <code>u</code> is the result of combining the intermediate signatures <code>u_i</code> over the same message. Each intermediate signature <code>u_i</code> is created by each of the beacons using their secret <code>sk_i</code>.</p>
 	<p>Once this aggregation completes, each beacon displays the signature for the current round, along with the previous signature and round number. This allows any client to publicly verify the signature over this data to verify that the beacons honestly aggregate. This provides a chain of verifiable signatures, extending back to the first round of output. In addition, there are threshold signature schemes that output signatures that are indistinguishable from random sequences of bytes. Therefore, these signatures can be used directly as verifiable randomness for the applications we discussed previously.</p>
-	<h3 id="what-does-drand-use">What does drand use?</h3>
+	<h3>What does drand use?</h3>
 	<p>To instantiate the required threshold signature scheme, drand uses the <code>(t,n)</code>-<a href="https://www.iacr.org/archive/pkc2003/25670031/25670031.pdf">BLS signature scheme</a> of Boneh, Lynn and Shacham. In particular, we can instantiate this scheme in the elliptic curve setting using &nbsp;<a href="https://github.com/dfinity/bn">Barreto-Naehrig</a> curves. Moreover, the BLS signature scheme outputs sufficiently large signatures that are randomly distributed, giving them enough entropy to be sources of randomness. Specifically the signatures are randomly distributed over 64 bytes.</p>
-	<p>BLS signatures use a specific form of mathematical operation known as a <em>cryptographic pairing</em>. Pairings can be computed in certain elliptic curves, including the Barreto-Naehrig curve configurations. A detailed description of pairing operations is beyond the scope of this blog post; though it is important to remember that these operations are integral to how BLS signatures work.</p>
+	<p>BLS signatures use a specific form of mathematical operation known as a <i>cryptographic pairing</i>. Pairings can be computed in certain elliptic curves, including the Barreto-Naehrig curve configurations. A detailed description of pairing operations is beyond the scope of this blog post; though it is important to remember that these operations are integral to how BLS signatures work.</p>
 	<p>Concretely speaking, all drand cryptographic operations are carried out using a library built on top of Cloudflare's implementation of the <a href="https://github.com/cloudflare/bn256/tree/lattices">bn256 curve</a>. The Pedersen DKG protocol follows the design of <a href="https://link.springer.com/article/10.1007/s00145-006-0347-3">Gennaro et al.</a>.</p>
-	<h3 id="how-does-it-work">How does it work?</h3>
+	<h3>How does it work?</h3>
 	<p>The randomness beacons are synchronised in rounds. At each round, a beacon produces a new signature <code>u_i</code> using its private key <code>sk_i</code> on the previous signature generated and the round ID. These signatures are usually broadcast on the URL <code>drand.&lt;host&gt;.com/api/public</code>. These signatures can be verified using the keys <code>vk_i</code> and over the same data that is signed. By signing the previous signature and the current round identifier, this establishes a chain of trust for the randomness beacon that can be traced back to the original signature value.</p>
 	<p>The randomness can be retrieved by combining the signatures from each of the beacons using the threshold property of the scheme. This reconstruction of the signature <code>u</code> from each intermediate signature <code>u_i</code> is done internally by the League of Entropy nodes. Each beacon broadcasts the entire signature <code>u</code>, that can be accessed over the HTTP endpoint above.</p>
-	<h2 id="the-drand-beacon">The drand beacon</h2>
+	<h2>The drand beacon</h2>
 	<p>As we mentioned at the start of this blog post, Cloudflare has launched our <a href="https://blog.cloudflare.com/league-of-entropy">distributed randomness beacon</a>. This beacon is part of a network of beacons from different institutions around the globe that form the <a href="https://leagueofentropy.com">League of &nbsp;Entropy</a>.</p>
 	<p>The Cloudflare beacon uses <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand</a> as its internal source of randomness for the DKG. Other League of Entropy drand beacons have their own sources of randomness.</p>
-	<h3 id="give-me-randomness-">Give me randomness!</h3>
-	<blockquote>The below API endpoints are obsolete. Please see <a href="https://drand.love">https://drand.love</a> for the most up-to-date documentation.</blockquote>
-	<p>The drand beacon allows you to retrieve the latest random value from the League of Entropy using a simple HTTP request:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">curl https://drand.cloudflare.com/api/public
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The response is a JSON blob of the form:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<h3>Give me randomness!</h3>
+	<blockquote>
+		<p>The below API endpoints are obsolete. Please see <a href="https://drand.love">https://drand.love</a> for the most up-to-date documentation.</p>
+	</blockquote>
+	<p>The drand beacon allows you to retrieve the latest random value from the League of Entropy using a simple HTTP request:</p>
+	<pre class="language-bash"><code class="language-bash">curl https://drand.cloudflare.com/api/public</code></pre>
+	<p>The response is a JSON blob of the form:</p>
+	<pre class="language-json"><code class="language-json">{
     "round": 7,
-    "previous": &lt;hex-encoded-previous-signature&gt;,
+    "previous": <hex-encoded-previous-signature>,
     "randomness": {
         "gid": 21,
-        "point": &lt;hex-encoded-new-signature&gt;
+        "point": <hex-encoded-new-signature>
     }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</hex-encoded-new-signature></hex-encoded-previous-signature></code></pre>
 	<p>where, <code>randomness.point</code> is the signature <code>u</code> aggregated among the entire set of beacons.</p>
-	<p>The signature is computed as an evaluation of the message, and is comprised of the signature of the previous round, <code>previous</code>, the current round number, <code>round</code>, and the aggregated secret key of the system. This signature can be verified using the entire public key <code>vk</code> of the Cloudflare beacon, learned using another HTTP request:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">curl https://drand.cloudflare.com/api/public
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>The signature is computed as an evaluation of the message, and is comprised of the signature of the previous round, <code>previous</code>, the current round number, <code>round</code>, and the aggregated secret key of the system. This signature can be verified using the entire public key <code>vk</code> of the Cloudflare beacon, learned using another HTTP request:</p>
+	<pre class="language-bash"><code class="language-bash">curl https://drand.cloudflare.com/api/public</code></pre>
 	<p>There are eight collaborators in the League of Entropy. You can learn the current round of randomness (or the system’s public key) by querying these beacons on the HTTP endpoints listed above.</p>
 	<ul>
-		<li><a href="https://drand.cloudflare.com">https://drand.cloudflare.com:443</a></li>
-		<li><a href="https://random.uchile.cl:8080">https://random.uchile.cl:8080</a></li>
-		<li><a href="https://drand.cothority.net:7003">https://drand.cothority.net:7003</a></li>
-		<li><a href="https://drand.kudelskisecurity.com">https://drand.kudelskisecurity.com:443</a></li>
-		<li><a href="https://drand.lbarman.ch">https://drand.lbarman.ch:443</a></li>
-		<li><a href="https://drand.nikkolasg.xyz:8888">https://drand.nikkolasg.xyz:8888</a></li>
-		<li><a href="https://drand.protocol.ai:8080">https://drand.protocol.ai:8080</a></li>
-		<li><a href="https://drand.zerobyte.io:8888">https://drand.zerobyte.io:8888</a></li>
+		<li>
+			<p><a href="https://drand.cloudflare.com">https://drand.cloudflare.com:443</a></p>
+		</li>
+		<li>
+			<p><a href="https://random.uchile.cl:8080">https://random.uchile.cl:8080</a></p>
+		</li>
+		<li>
+			<p><a href="https://drand.cothority.net:7003">https://drand.cothority.net:7003</a></p>
+		</li>
+		<li>
+			<p><a href="https://drand.kudelskisecurity.com">https://drand.kudelskisecurity.com:443</a></p>
+		</li>
+		<li>
+			<p><a href="https://drand.lbarman.ch">https://drand.lbarman.ch:443</a></p>
+		</li>
+		<li>
+			<p><a href="https://drand.nikkolasg.xyz:8888">https://drand.nikkolasg.xyz:8888</a></p>
+		</li>
+		<li>
+			<p><a href="https://drand.protocol.ai:8080">https://drand.protocol.ai:8080</a></p>
+		</li>
+		<li>
+			<p><a href="https://drand.zerobyte.io:8888">https://drand.zerobyte.io:8888</a></p>
+		</li>
 	</ul>
-	<h2 id="randomness-the-future">Randomness &amp; the future</h2>
+	<h2>Randomness &amp; the future</h2>
 	<p>Cloudflare will continue to take an active role in the drand project, both as a contributor and by running a randomness beacon with the League of Entropy. The League of Entropy is a worldwide joint effort of individuals and academic institutions. We at Cloudflare believe it can help us realize the mission of helping Build a Better Internet. For more information on Cloudflare's participation in the League of Entropy, visit <a href="https://leagueofentropy.com">https://leagueofentropy.com</a> or read <a href="https://blog.cloudflare.com/league-of-entropy">Dina's blog post</a>.</p>
 	<p>Cloudflare would like to thank all of their collaborators in the League of Entropy; from EPFL, UChile, Kudelski Security and Protocol Labs. This work would not have been possible without the work of those who contributed to the <a href="https://github.com/dedis/drand">open-source drand project</a>. We would also like to thank and appreciate the work of Gabbi Fisher, Brendan McMillion, and Mahrud Sayrafi in launching the Cloudflare randomness beacon.</p>
 </div>

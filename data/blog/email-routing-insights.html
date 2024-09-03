@@ -1,26 +1,52 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image5-10.png" class="kg-image" alt="paper airplane illustration" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5U2PLDUSHyw1LrfMFCsgxc/e1dbdda275c3892ad6ad629bb1ef5482/image5-10.png" alt="paper airplane illustration" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>Have you ever wanted to try a new email service but worried it might lead to you missing any emails? If you have, you’re definitely not alone. Some of us email ourselves to make sure it reaches the correct destination, others don’t rely on a new address for anything serious until they’ve seen it work for a few days. In any case, emails often contain important information, and we need to trust that our emails won’t get lost for any reason.</p>
 	<p>To help reduce these worries about whether emails are being received and forwarded - and for troubleshooting if needed - we are rolling out a new Overview page to Email Routing. On the Overview tab people now have full visibility into our service and can see exactly how we are <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">routing emails</a> on their behalf.</p>
-	<h3 id="routing-status-and-metrics">Routing Status and Metrics</h3>
+	<h3>Routing Status and Metrics</h3>
 	<p>The first thing you will see in the new tab is an at a glance view of the service. This includes the routing status (to know if the service is configured and running), whether the necessary DNS records are configured correctly, and the number of custom and destination addresses on the zone.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image4-7.png" class="kg-image" alt="Email Routing configuration summary shows routing status, number of custom addresses and number of destination addresses" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pNymBZ2FTzmPLJ5WBTiq2/912a4ad23067ef6068d25917d92f2198/image4-7.png" alt="Email Routing configuration summary shows routing status, number of custom addresses and number of destination addresses" class="kg-image" width="1420" height="484" loading="lazy">
+
+	</figure>
 	<p>Below the configuration summary, you will see more advanced statistics about the number of messages received on your custom addresses, and what happened to those messages. You will see information about the number of emails forwarded or dropped by Email Routing (based on the rules you created), and the number that fall under other scenarios such as being rejected by Email Routing (due to errors, not passing security checks or being considered spam) or rejected by your destination mailbox. You now have the exact counts and a chart, so that you can track these metrics over time.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-13.png" class="kg-image" alt="Email Routing metrics by action. Table and graph." loading="lazy"></figure>
-	<h3 id="activity-log">Activity Log</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jo7olZgIdmRiAXoCieF01/1f621effbd8255f64a10e811d3590ab4/image2-13.png" alt="Email Routing metrics by action. Table and graph." class="kg-image" width="1043" height="588" loading="lazy">
+
+	</figure>
+	<h3>Activity Log</h3>
 	<p>On the Cloudflare Email Routing tab you'll also see the Activity Log, where you can drill deeper into specific behaviors. These logs show you details about the email messages that reached one of the custom addresses you have configured on your Cloudflare zone.</p>
 	<p>For each message the logs will show you the Message ID, Sender, Custom Address, when Cloudflare Email Routing received it, and the action that was taken. You can also expand the row to see the SPF, DMARC, and DKIM status of that message along with any relevant error messaging.</p>
 	<p>And we know looking at every message can be overwhelming, especially when you might be resorting to the logs for troubleshooting purposes, so you have a few options for filtering:</p>
 	<ul>
-		<li>Search for specific people (email addresses) that have messaged you.</li>
-		<li>Filter to show only one of your custom addresses.</li>
-		<li>Filter to show only messages where a specific action was taken.</li>
+		<li>
+			<p>Search for specific people (email addresses) that have messaged you.</p>
+		</li>
+		<li>
+			<p>Filter to show only one of your custom addresses.</p>
+		</li>
+		<li>
+			<p>Filter to show only messages where a specific action was taken.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-16.png" class="kg-image" alt="Email Routing logs for troubleshooting. Table and filters." loading="lazy"></figure>
-	<h3 id="routes-and-settings">Routes and Settings</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMzDZKZfwXt5IjOoevIs2/645d76f78dc9f179f16f9e7b028bc662/image1-16.png" alt="Email Routing logs for troubleshooting. Table and filters." class="kg-image" width="1420" height="499" loading="lazy">
+
+	</figure>
+	<h3>Routes and Settings</h3>
 	<p>Next to the Overview tab, you will find the Routes tab with the configuration UI that is likely already familiar to you. That’s where you create custom addresses, add and verify destination addresses, and create rules with the relationships between the custom and destination addresses.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image3-12.png" class="kg-image" alt="Most of the UI that existed so far, such as viewing and creating custom addresses and rules, is now in the Routes tab." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uXTTb5EPjihecDDyimvoz/01fafdc9789d0a25247e300faecfd67e/image3-12.png" alt="Most of the UI that existed so far, such as viewing and creating custom addresses and rules, is now in the Routes tab." class="kg-image" width="1999" height="595" loading="lazy">
+
+	</figure>
 	<p>Lastly the Settings tab includes less common actions such as the DNS configuration and the options for off boarding from Email Routing.</p>
 	<p>We expect Email Routing Insights to be available to everyone by Monday May 2nd. We hope you enjoy this update. And if you have any questions or feedback about this product, please come see us in the <a href="https://community.cloudflare.com/new-topic?category=Feedback%2FPreviews+%26+Betas&amp;tags=email">Cloudflare Community</a> and the <a href="https://discord.gg/cloudflaredev">Cloudflare Discord</a>.</p>
 </div>

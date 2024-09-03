@@ -1,36 +1,59 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ggjawBGr4t92zyLzlZ71e/c746aee8eff83fc71e1836c9221d1df5/what-weve-been-doing-with-go.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Almost two years ago CloudFlare started working with Go. What started as an experiment on one network and concurrency heavy project has turned into full, production use of Go for multiple services. Today Go is at the heart of CloudFlare's services including handling compression for high-latency HTTP connections, our entire DNS infrastructure, SSL, load testing and more.</p>
 	<p>I first wrote about CloudFlare's use of <a href="https://blog.cloudflare.com/go-at-cloudflare">Go back in July 2012</a>. At that time there was only one CloudFlare project, <a href="https://www.cloudflare.com/railgun">Railgun</a>, written in Go, but others were starting to germinate around the company. Today we have many major projects in Go. So, we celebrate Go's <a href="https://blog.golang.org/4years">4th birthday</a> with a short list of interesting things we've written in Go.</p>
-	<h3 id="rrdns">RRDNS</h3>
+	<h3>RRDNS</h3>
 	<p>RRDNS is a DNS proxy that was written to help scale CloudFlare's DNS infrastructure. Our DNS was <a href="https://blog.cloudflare.com/cloudflare-fastest-free-dns-among-fastest-dns">already very fast</a> and we wanted to make it faster, more reliable and resilient to attack.</p>
 	<p>RRDNS provides response rate limiting to stop DNS attacks, caching to lower the load on the database, load balancing to detect downed upstreams, seamless binary upgrade (with no service interruption), CNAME flattening and more. It is built on a modular framework that allows the implementation of each behaviour to exist in separately maintained modules.</p>
 	<p>This modularity was trivial to enforce with interfaces, allowing each module to remain strictly self-contained but retain the flexibility of implementation (some use cgo, others have background workers). A goroutine is dedicated to each request to force isolation where panics are recovered and logged instead of crashing the server.</p>
 	<p>The guarantees needed to avoid leaving the server in a bad state when handling panics would be impossible without the defer mechanism Go provides. Other language features simplified the complexity of writing new modules; garbage collection allows us to avoid complex reference counting schemes and concentrate on the business logic. Managing the concurrent requests' access to shared data was also easy, either by wrapping this in a goroutine or using read-write locks.</p>
-	<h3 id="railgun">Railgun</h3>
-	<p><img alt="Railgun" src="https://blog.cloudflare.com/content/images/railgun.png.scaled500_1.png"></p>
+	<h3>Railgun</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WoNHpcKK14wLSsSifQYQA/cbeed54fb4b77e0e1d187c08d90a13f8/railgun.png.scaled500_1.png" alt="Railgun" class="kg-image" width="500" height="225" loading="lazy">
+
+	</figure>
 	<p>Railgun is CloudFlare's compression technology that's used to speed up connections between CloudFlare's data centers and origin web servers (especially when there is high latency between them). It's 100% written in Go and performs on the fly compression of web pages (and other textual assets) against recent versions of those pages to send the absolute minimum data possible.</p>
 	<p>Railgun also helps cache <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">previously uncacheable</a> assets (such as dynamically generated web pages) by spotting the often small changes between web pages over time, or the small changes between different users. Railgun is now widely used by CloudFlare customers to create responsive web sites wherever the end user is in the world.</p>
 	<p>It is now widely used by CloudFlare customers and hosting partners and achieves impressive <a href="https://blog.cloudflare.com/railgun-in-the-real-world">real world speedups</a>, including faster TTFB and better page load time, and <a href="https://blog.cloudflare.com/railgun-gives-our-ecommerce-sites-the-edge">bandwidth savings</a> which translate into additional savings for people using services like AWS.</p>
-	<h3 id="redoctober">Red October</h3>
-	<p><img alt="The Hunt for Red October" src="https://blog.cloudflare.com/content/images/The_Hunt_for_Red_October-1.jpg"></p>
+	<h3>Red October</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bgG5mznimQuyVwyYePpnb/2fe1dc428a3bd0b97754d517dfef80d3/The_Hunt_for_Red_October-1.jpg" alt="The Hunt for Red October" class="kg-image" width="480" height="206" loading="lazy">
+
+	</figure>
 	<p>Red October is a cryptographically secure implementation of the <a href="https://en.wikipedia.org/wiki/Two-man_rule">two-man rule</a> control mechanism. It is a software-based encryption and decryption server. The server allows authorized individuals to encrypt a payload in such a way that no one individual can decrypt it. To decrypt the payload, at least two authorized individuals must be logged into the server. The decryption of the payload is cryptographically tied to the login credentials of the authorized individuals and is only kept in memory for the duration of the decryption.</p>
 	<p>We'll be using Red October to secure very sensitive material (such as private encryption keys) so that no single CloudFlare employee (or single attacker) can get access to them. In coming months we'll write more about the cryptographic underpinnings of keeping CloudFlare secure.</p>
-	<h3 id="sslbundler">SSL Bundler</h3>
-	<p><img alt="Chain" src="https://blog.cloudflare.com/content/images/chain.jpg.scaled500_1.jpg"></p>
+	<h3>SSL Bundler</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ISeaNc9XgwhFEpdVP8Mce/8354c8a21bb13ebd73a792de7e813680/chain.jpg.scaled500_1.jpg" alt="Chain" class="kg-image" width="220" height="165" loading="lazy">
+
+	</figure>
 	<p>The SSL Bundler allows us to take a customer's own SSL certificate and compute the <a href="https://blog.cloudflare.com/what-we-just-did-to-make-ssl-even-faster">fastest, shortest chain of intermediate certificates</a> that can be used to verify the connection. When someone uploads a custom SSL certificate, we use our directory of intermediate certificates to build all the possible chains from the uploaded cert to a trusted browser root. We then rank these chains based on a number of factors including:</p>
 	<ol>
-		<li>The length of the certificate chain</li>
-		<li>The ubiquity of the root certificate in browsers and other clients</li>
-		<li>The security of each step in the chain (e.g., does their Extended Key Usage include Server Authentication)</li>
-		<li>The length of the validity period of all the steps in the chain</li>
+		<li>
+			<p>The length of the certificate chain</p>
+		</li>
+		<li>
+			<p>The ubiquity of the root certificate in browsers and other clients</p>
+		</li>
+		<li>
+			<p>The security of each step in the chain (e.g., does their Extended Key Usage include Server Authentication)</p>
+		</li>
+		<li>
+			<p>The length of the validity period of all the steps in the chain</p>
+		</li>
 	</ol>
 	<p>The result is a server bundle that is small, fast and strong while having ubiquitous browser and client support. We then present that chain of certificates when an SSL connection is made so that the browser can securely verify the SSL connection as quickly as possible.</p>
-	<h3 id="andthatsnotall">And that's not all</h3>
+	<h3>And that's not all</h3>
 	<p>We're also experimenting with Go-based software like CoreOS (we're working with their go-raft library) and Docker. We have internal tools for load testing written in Go for Kyoto Tycoon, HTTP servers, SPDY and memcached. And we've open-sourced our <a href="https://github.com/cloudflare/go-stream">Go stream processing library</a>, a Go wrapper for <a href="https://github.com/cloudflare/golog">high-performance syslogging</a>, our changes to Go <a href="https://github.com/cloudflare/gokabinet">bindings for Kyoto Cabinet</a>, and a tool for <a href="https://github.com/cloudflare/gurl">'curling' SPDY</a> sites. And, of course, we've been contributing directly to Go itself.</p>
 	<p>All in all Go is one of the main languages in use at CloudFlare and from here it looks like it has a bright future.</p>
-	<p><img alt="Go's 4th Birthday" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-11-11_at_9.04.31_PM.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nLQBFNBDHtGXjroUxDBbE/38f38f06718470fd44686b3ce695f0a3/Screen_Shot_2013-11-11_at_9.04.31_PM.png" alt="Go's 4th Birthday" class="kg-image" width="159" height="175" loading="lazy">
+
+	</figure>
 	<p>Happy 4th Birthday Go!</p>
 	<p>(And, yes, we're <a href="https://www.cloudflare.com/join-our-team">hiring Go programmers</a> in London and San Francisco)</p>
-	<!--kg-card-end: markdown-->
 </div>

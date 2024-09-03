@@ -1,88 +1,157 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/Gen-X.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62GuPBeaKG1VrC8w2j6zwO/cb47b874b36a10ef4d8a1ea0743d176a/Gen-X.png" alt="" class="kg-image" width="623" height="352" loading="lazy">
+
+	</figure>
 	<p>Security is a serious business, one that we do not take lightly at Cloudflare. We have <a href="https://www.cloudflare.com/compliance">invested a lot of effort</a> into ensuring that our services, both external and internal, are protected by meeting or exceeding industry best practices. Encryption is a huge part of our strategy as it is embedded in nearly every process we have. At Cloudflare, we encrypt data both in <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">transit</a> (on the network) and at rest (on the disk). Both practices address some of the most common vectors used to exfiltrate information and these measures serve to <a href="https://www.cloudflare.com/learning/security/what-is-information-security">protect sensitive data</a> from attackers but, what about data currently in use?</p>
 	<p>Can encryption or any technology eliminate all threats? No, but as Infrastructure Security, it’s our job to consider worst-case scenarios. For example, what if someone were to steal a server from one of our <a href="https://www.cloudflare.com/network">data centers</a>? How can we leverage the most reliable, cutting edge, innovative technology to secure all data on that host if it were in the wrong hands? Would it be protected? And, in particular, what about the server’s RAM?</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/mission-impossible-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/F40SGb897EzCafJNfUMxo/865b882dff5dbe541d8db7b0b4eac9ab/mission-impossible-1.png" alt="" class="kg-image" width="1568" height="1192" loading="lazy">
+
+	</figure>
 	<p>Data in random access memory (RAM) is usually stored in the clear. This can leave data vulnerable to software or hardware probing by an attacker on the system. Extracting data from memory isn’t an easy task but, with the rise of <a href="https://www.snia.org/sites/default/files/SSSI/NVDIMM%20-%20Changes%20are%20Here%20So%20What's%20Next%20-%20final.pdf">persistent memory technologies</a>, additional attack vectors are possible:</p>
 	<ul>
-		<li>Dynamic random-access memory (<a href="https://user.eng.umd.edu/~blj/talks/DRAM-Tutorial-isca2002.pdf">DRAM</a>) interface snooping</li>
-		<li>Installation of hardware devices that access host memory</li>
-		<li><a href="https://en.wikipedia.org/wiki/Cold_boot_attack">Freezing and stealing</a> dual in-line memory module (<a href="https://en.wikipedia.org/wiki/DIMM">DIMMs</a>)</li>
-		<li>Stealing non-volatile dual in-line memory module (<a href="https://en.wikipedia.org/wiki/NVDIMM">NVDIMMs</a>)</li>
+		<li>
+			<p>Dynamic random-access memory (<a href="https://user.eng.umd.edu/~blj/talks/DRAM-Tutorial-isca2002.pdf">DRAM</a>) interface snooping</p>
+		</li>
+		<li>
+			<p>Installation of hardware devices that access host memory</p>
+		</li>
+		<li>
+			<p><a href="https://en.wikipedia.org/wiki/Cold_boot_attack">Freezing and stealing</a> dual in-line memory module (<a href="https://en.wikipedia.org/wiki/DIMM">DIMMs</a>)</p>
+		</li>
+		<li>
+			<p>Stealing non-volatile dual in-line memory module (<a href="https://en.wikipedia.org/wiki/NVDIMM">NVDIMMs</a>)</p>
+		</li>
 	</ul>
 	<p>So, what about enclaves? Hardware manufacturers have introduced <a href="https://en.wikipedia.org/wiki/Trusted_execution_environment">Trusted Execution Environments</a> (also known as enclaves) to help create security boundaries by isolating software execution at runtime so that sensitive data can be processed in a trusted environment, such as secure area inside an existing processor or <a href="https://en.wikipedia.org/wiki/Trusted_Platform_Module">Trusted Platform Module</a>.</p>
-	<p>While this allows developers to shield applications in untrusted environments, it doesn’t effectively address all of the physical system attacks mentioned previously. Enclaves were also meant to run small pieces of code. You <em>could</em> run an <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-baumann.pdf">entire OS in an enclave</a>, but there are <a href="https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html">limitations</a> and performance issues in doing so.</p>
+	<p>While this allows developers to shield applications in untrusted environments, it doesn’t effectively address all of the physical system attacks mentioned previously. Enclaves were also meant to run small pieces of code. You <i>could</i> run an <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-baumann.pdf">entire OS in an enclave</a>, but there are <a href="https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html">limitations</a> and performance issues in doing so.</p>
 	<p>This isn’t meant to bash enclave usage; we just wanted a better solution for encrypting all memory at scale. We expected performance to be compromised, and conducted tests to see just how much.</p>
-	<h2 id="time-to-get-epyc"><strong>Time to get EPYC</strong></h2>
+	<h2><b>Time to get EPYC</b></h2>
 	<p>Since we are using <a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">AMD for our tenth generation "Gen X servers"</a>, we found an interesting security feature within the System on a Chip architecture of the AMD EPYC line. Secure Memory Encryption (SME) is an <a href="https://en.wikichip.org/wiki/x86">x86</a> instruction set <a href="https://en.wikichip.org/wiki/x86/extension">extension</a> introduced by AMD and available in the <a href="https://developer.amd.com/sev">EPYC processor line.</a> SME provides the ability to mark individual pages of memory as encrypted using standard x86 page tables. A page that is marked encrypted will be automatically decrypted when read from DRAM and encrypted when written to DRAM. SME can therefore be used to protect the contents of DRAM from physical attacks on the system.</p>
 	<p>Sounds complicated, right? Here’s the secret: It isn’t ?</p>
-	<h2 id="components">Components</h2>
+	<h2>Components</h2>
 	<p>SME is comprised of two components:</p>
 	<ul>
-		<li><strong>AES-128 encryption</strong> <strong>engine</strong>: Embedded in the memory controller. It is responsible for encrypting and decrypting data in main memory when an appropriate key is provided via the Secure Processor.</li>
-		<li><strong>AMD Secure Processor (AMD-SP)</strong>: An on-die 32-bit <a href="https://developer.arm.com/ip-products/processors/cortex-a/cortex-a5">ARM Cortex A5 CPU</a> that provides cryptographic functionality for secure key generation and key management. Think of this like a mini hardware security module that uses a hardware random number generator to generate the 128-bit key(s) used by the encryption engine.</li>
+		<li>
+			<p><b>AES-128 encryption</b> <b>engine</b>: Embedded in the memory controller. It is responsible for encrypting and decrypting data in main memory when an appropriate key is provided via the Secure Processor.</p>
+		</li>
+		<li>
+			<p><b>AMD Secure Processor (AMD-SP)</b>: An on-die 32-bit <a href="https://developer.arm.com/ip-products/processors/cortex-a/cortex-a5">ARM Cortex A5 CPU</a> that provides cryptographic functionality for secure key generation and key management. Think of this like a mini hardware security module that uses a hardware random number generator to generate the 128-bit key(s) used by the encryption engine.</p>
+		</li>
 	</ul>
-	<h2 id="how-it-works">How It Works</h2>
+	<h2>How It Works</h2>
 	<p>We had two options available to us when it came to enabling SME. The first option, regular SME, requires enabling a model specific register <code>MSR 0xC001_0010[SMEE]</code>. This enables the ability to set a page table entry encryption bit:</p>
 	<ul>
-		<li>0 = memory encryption features are disabled</li>
-		<li>1 = memory encryption features are enabled</li>
+		<li>
+			<p>0 = memory encryption features are disabled</p>
+		</li>
+		<li>
+			<p>1 = memory encryption features are enabled</p>
+		</li>
 	</ul>
 	<p>After memory encryption is enabled, a physical address bit (C-Bit) is utilized to mark if a memory page is protected. The operating system sets the bit of a physical address to 1 in the page table entry (PTE) to indicate the page should be encrypted. This causes any data assigned to that memory space to be automatically encrypted and decrypted by the AES engine in the memory controller:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/enclavng-diagrams@3x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="becoming-more-transparent">Becoming More Transparent</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Y55gr55Ypmf0kCFfSBrNN/c3ee9af90021d89cf8944bd6530c466e/enclavng-diagrams_3x.png" alt="" class="kg-image" width="3845" height="4105" loading="lazy">
+
+	</figure>
+	<h3>Becoming More Transparent</h3>
 	<p>While arbitrarily flagging which page table entries we want encrypted is nice, our objective is to ensure that we are incorporating the full physical protection of SME. This is where the second mode of SME came in, Transparent SME (TSME). In TSME, all memory is encrypted regardless of the value of the encrypt bit on any particular page. This includes both instruction and data pages, as well as the pages corresponding to the page tables themselves.</p>
 	<p>Enabling TSME is as simple as:</p>
 	<ol>
-		<li>Setting a BIOS flag:</li>
+		<li>
+			<p>Setting a BIOS flag:</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/bios-tsme2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AqdL0sTjEI4YKjHdwas11/eb2d60460bff5ae4bc75af77a307198a/bios-tsme2.png" alt="" class="kg-image" width="963" height="658" loading="lazy">
+
+	</figure>
 	<p>2. Enabling kernel support with the following flag:</p>
 	<p><code>CONFIG_AMD_MEM_ENCRYPT=y</code></p>
-	<p>After a reboot you should see the following in <code>dmesg</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo dmesg | grep SME
-[    2.537160] AMD Secure Memory Encryption (SME) active
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="performance-testing">Performance Testing</h2>
+	<p>After a reboot you should see the following in <code>dmesg</code>:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo dmesg | grep SME
+[    2.537160] AMD Secure Memory Encryption (SME) active</code></pre>
+	<h2>Performance Testing</h2>
 	<p>To weigh the pros and cons of implementation against the potential risk of a stolen server, we had to test the performance of enabling TSME. We took a test server that mirrored a production edge metal with the following specs:</p>
 	<ul>
-		<li>Memory: 8 x 32GB 2933MHz</li>
-		<li>CPU: AMD 2nd Gen EPYC 7642 with SMT enabled and running NPS4 mode</li>
-		<li>OS: Debian 9</li>
-		<li>Kernel: <a href="https://lwn.net/Articles/809568">5.4.12</a></li>
+		<li>
+			<p>Memory: 8 x 32GB 2933MHz</p>
+		</li>
+		<li>
+			<p>CPU: AMD 2nd Gen EPYC 7642 with SMT enabled and running NPS4 mode</p>
+		</li>
+		<li>
+			<p>OS: Debian 9</p>
+		</li>
+		<li>
+			<p>Kernel: <a href="https://lwn.net/Articles/809568">5.4.12</a></p>
+		</li>
 	</ul>
 	<p>The performance tools we used were:</p>
 	<ul>
-		<li><a href="http://www.cs.virginia.edu/stream/ref.html">STREAM</a></li>
-		<li><a href="http://man7.org/linux/man-pages/man8/cryptsetup.8.html">Cryptsetup</a></li>
-		<li>Benchmarky</li>
+		<li>
+			<p><a href="http://www.cs.virginia.edu/stream/ref.html">STREAM</a></p>
+		</li>
+		<li>
+			<p><a href="http://man7.org/linux/man-pages/man8/cryptsetup.8.html">Cryptsetup</a></p>
+		</li>
+		<li>
+			<p>Benchmarky</p>
+		</li>
 	</ul>
-	<h2 id="stream">Stream</h2>
+	<h2>Stream</h2>
 	<p>We used a custom STREAM binary with 24 threads, using all available cores, to measure the sustainable memory bandwidth (in MB/s). Four synthetic computational kernels are run, with the output of each kernel being used as an input to the next. The best rates observed are reported for each choice of thread count.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/Stream-SME-On-vs-Off-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/Stream-Performance-delta-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kwLMDcfqdWZ0dP9dgpbBO/bb547229938577091701e712ae9b539a/Stream-SME-On-vs-Off-1.png" alt="" class="kg-image" width="974" height="430" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3C8c6Nfn0cScGA0dt4yTaN/4a4127264da959f856075d4a075a90a5/Stream-Performance-delta-1.png" alt="" class="kg-image" width="922" height="570" loading="lazy">
+
+	</figure>
 	<p>The figures above show 2.6% to 4.2% performance variation, with a mean of 3.7%. These were the highest numbers measured, which fell below an expected performance impact of &gt;5%.</p>
-	<h2 id="cryptsetup">Cryptsetup</h2>
+	<h2>Cryptsetup</h2>
 	<p>While cryptsetup is normally used for encrypting disk partitions, it has a benchmarking utility that will report on a host’s cryptographic performance by iterating key derivation functions using memory only:</p>
-	<p>Example:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo cryptsetup benchmark
+	<p>Example:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo cryptsetup benchmark
 # Tests are approximate using memory only (no storage IO).
 PBKDF2-sha1      1162501 iterations per second for 256-bit key
 PBKDF2-sha256    1403716 iterations per second for 256-bit key
 PBKDF2-sha512    1161213 iterations per second for 256-bit key
 PBKDF2-ripemd160  856679 iterations per second for 256-bit key
-PBKDF2-whirlpool  661979 iterations per second for 256-bit key
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/cryptsetup-benchmark-SME-Off-vs-On-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/crypt-Performance-delta-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="benchmarky">Benchmarky</h2>
-	<p>Benchmarky is a homegrown tool <a href="https://blog.cloudflare.com/author/ivan">provided by our Performance team </a>to run synthetic workloads against a specific target to evaluate performance of different components. It uses <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to send requests and read stats on responses. In addition to that, it also reports versions of all important stack components and their CPU usage. Each test runs 256 concurrent clients, grabbing a cached 10kB PNG image from a performance testing endpoint, and calculating the requests per second (RPS).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/benckmarky-SME-off-and-SME-on-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/bench-Performance-delta-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h1 id="conclusion">Conclusion</h1>
-	<p>In the majority of test results, performance decreased by a nominal amount, actually less than we expected. AMD’s official <a href="https://developer.amd.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf">white paper</a> on SME even states that encryption and decryption of memory through the AES engine does incur a small amount of additional latency for DRAM memory accesses, though dependent on the workload. Across all 11 data points, our average performance drag was only down by .699%. Even at scale, enabling this feature has reduced the worry that <em>any</em> data could be exfiltrated from a stolen server.</p>
-	<p>While we wait for other hardware manufacturers to add support for <a href="https://en.wikichip.org/wiki/x86/tme">total memory encryption,</a> we are happy that AMD has set the bar high and is protecting our next generation edge hardware.<br></p>
+PBKDF2-whirlpool  661979 iterations per second for 256-bit key</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BC1HclFkbzijWahfsXLxH/b2ffc56c623f8ee1e09e6851165dcab1/cryptsetup-benchmark-SME-Off-vs-On-1.png" alt="" class="kg-image" width="973" height="484" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FoosofQ0iHlQbLAdi8fuS/45f62dae33bbb36458579e294140d464/crypt-Performance-delta-1.png" alt="" class="kg-image" width="727" height="371" loading="lazy">
+
+	</figure>
+	<h2>Benchmarky</h2>
+	<p>Benchmarky is a homegrown tool <a href="https://blog.cloudflare.com/author/ivan">provided by our Performance team</a> to run synthetic workloads against a specific target to evaluate performance of different components. It uses <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to send requests and read stats on responses. In addition to that, it also reports versions of all important stack components and their CPU usage. Each test runs 256 concurrent clients, grabbing a cached 10kB PNG image from a performance testing endpoint, and calculating the requests per second (RPS).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uHw5bMNlZiKFLb3Ks5weQ/a0843bacf8ed49348b7401bdb834726b/benckmarky-SME-off-and-SME-on-1.png" alt="" class="kg-image" width="649" height="371" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3h5FsuK2Lv5xS3qUwv382A/bf7491746bf958b34366c0a2fbacedd7/bench-Performance-delta-1.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+
+	</figure>
+	<h1>Conclusion</h1>
+	<p>In the majority of test results, performance decreased by a nominal amount, actually less than we expected. AMD’s official <a href="https://developer.amd.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf">white paper</a> on SME even states that encryption and decryption of memory through the AES engine does incur a small amount of additional latency for DRAM memory accesses, though dependent on the workload. Across all 11 data points, our average performance drag was only down by .699%. Even at scale, enabling this feature has reduced the worry that <i>any</i> data could be exfiltrated from a stolen server.</p>
+	<p>While we wait for other hardware manufacturers to add support for <a href="https://en.wikichip.org/wiki/x86/tme">total memory encryption,</a> we are happy that AMD has set the bar high and is protecting our next generation edge hardware.</p>
 </div>

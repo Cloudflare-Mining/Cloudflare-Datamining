@@ -1,26 +1,43 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PnhHI8bKXfySLu7Tdeqe9/719e21f59334556f4c85f56a99c58a05/internet-traffic-analysis-iran-israel-april-attack.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><em>(UPDATED on April 15, 2024, with information regarding the Palestinian territories.)</em></p>
+	<p><i>(UPDATED on April 15, 2024, with information regarding the Palestinian territories.)</i></p>
 	<p>As <a href="https://en.wikipedia.org/wiki/2024_Iranian_strikes_in_Israel">news came</a> on Saturday, April 13, 2024, that Iran was launching a coordinated retaliatory attack on Israel, we took a closer look at the potential impact on Internet traffic and attacks. So far, we have seen some traffic shifts in both Israel and Iran, but we haven’t seen a coordinated large cyberattack on Israeli domains protected by Cloudflare.</p>
 	<p>First, let’s discuss general Internet traffic patterns. Following <a href="https://www.reuters.com/world/middle-east/iran-launches-drones-israel-retaliatory-attack-live-coverage-2024-04-13">reports</a> of attacks with drones, cruise missiles, and ballistic missiles, confirmed by Israeli and US authorities, Internet traffic in <a href="https://radar.cloudflare.com/il">Israel</a> surged after 02:00 local time on Saturday, April 13 (23:00 UTC on April 12), peaking at 75% higher than in the previous week around 02:30 (23:30 UTC) as people sought news updates. This traffic spike was predominantly driven by mobile device usage, accounting for 62% of all traffic from Israel at that time. Traffic remained higher than usual during Sunday.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/cloudflare-radar-traffic-trends-xy-20240414-20240414--3-.png" class="kg-image" alt="An Internet traffic analysis during Iran's April 13, 2024, attack on Israel" loading="lazy" width="2048" height="1152"></figure>
-	<p>Around that time, at 02:00 local time (23:00 UTC), the IDF (Israel Defense Forces) <a href="https://x.com/IDF/status/1779280803677036803">posted on X</a> that sirens were sounding across Israel because of an imminent attack from Iran.</p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">🚨Sirens sounding across Israel🚨 <a href="https://t.co/BuDasagr10">pic.twitter.com/BuDasagr10</a></p>— Israel Defense Forces (@IDF) <a href="https://twitter.com/IDF/status/1779280803677036803?ref_src=twsrc%5Etfw">April 13, 2024</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KY6IvR0UPVYLfVZNp4lvg/db7c9e8a801d323c005596825bb87635/cloudflare-radar-traffic-trends-xy-20240414-20240414--3-.png" alt="An Internet traffic analysis during Iran's April 13, 2024, attack on Israel" class="kg-image" width="2048" height="1152" loading="lazy">
 
 	</figure>
-	<p><em>(April 15 UPDATE: the Palestinian territories related part).</em> At around the same time, 01:25 local time (22:45 UTC), when the sirens were sounding in Israel, we observed not an increase, but a clear drop in traffic in <a href="https://radar.cloudflare.com/ps">Palestinian territories</a>. The noticeable drop was seen in all of the Palestinian governorates, although it was a bigger drop in the West Bank, than in the <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-israel-and-palestine-following-the-october-2023-attacks">Gaza Strip</a>.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/cloudflare-radar-traffic-trends-xy-20240415-20240415--1-.png" class="kg-image" alt="" loading="lazy" width="2048" height="1152"></figure>
+	<p>Around that time, at 02:00 local time (23:00 UTC), the IDF (Israel Defense Forces) <a href="https://x.com/IDF/status/1779280803677036803">posted on X</a> that sirens were sounding across Israel because of an imminent attack from Iran.</p>
+	<blockquote>
+		<p>🚨Sirens sounding across Israel🚨 <a href="https://t.co/BuDasagr10">pic.twitter.com/BuDasagr10</a></p>
+		<p>— Israel Defense Forces (@IDF) <a href="https://twitter.com/IDF/status/1779280803677036803?ref_src=twsrc%5Etfw">April 13, 2024</a></p>
+	</blockquote>
+	<p><i>(April 15 UPDATE: the Palestinian territories related part).</i> At around the same time, 01:25 local time (22:45 UTC), when the sirens were sounding in Israel, we observed not an increase, but a clear drop in traffic in <a href="https://radar.cloudflare.com/ps">Palestinian territories</a>. The noticeable drop was seen in all of the Palestinian governorates, although it was a bigger drop in the West Bank, than in the <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-israel-and-palestine-following-the-october-2023-attacks">Gaza Strip</a>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BeE2T4sgdeVX3zSgYnL5j/ca0b200fdd4ab2924d856d69489d20be/cloudflare-radar-traffic-trends-xy-20240415-20240415--1-.png" alt="" class="kg-image" width="2048" height="1152" loading="lazy">
+
+	</figure>
 	<p>Usually, based on our past observations, drops in traffic unrelated to connectivity issues can occur when people pause their online activities for some reason (an <a href="https://blog.cloudflare.com/total-eclipse-internet-traffic-impacts-mexico-us-canada">eclipse</a> or <a href="https://blog.cloudflare.com/one-year-of-war-in-ukraine">war</a>, for example) or turn to television for news updates instead of the Internet (common during <a href="https://blog.cloudflare.com/pt-br/how-the-brazilian-presidential-elections-affected-internet-traffic">election days</a> when TVs broadcast the latest exit polls).</p>
-	<p>Here’s the noticeable HTTP requests drop in Hebron, one of the most populated states of the Palestinian territories, part of the West Bank. The noticeable drops in the blue line from the previous week are related to the <a href="https://blog.cloudflare.com/how-ramadan-shows-up-in-internet-trends">Ramadan</a>, and the <a href="https://en.wikipedia.org/wiki/Iftar">Iftar, </a>the first meal after sunset that breaks the fast and often also a family or community event. Ramadan ended on Tuesday, April 9, 2024.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/Screenshot-2024-04-15-at-11.03.02.png" class="kg-image" alt="" loading="lazy" width="2000" height="602"></figure>
+	<p>Here’s the noticeable HTTP requests drop in Hebron, one of the most populated states of the Palestinian territories, part of the West Bank. The noticeable drops in the blue line from the previous week are related to the <a href="https://blog.cloudflare.com/how-ramadan-shows-up-in-internet-trends">Ramadan</a>, and the <a href="https://en.wikipedia.org/wiki/Iftar">Iftar,</a> the first meal after sunset that breaks the fast and often also a family or community event. Ramadan ended on Tuesday, April 9, 2024.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zZviojHzyAXruFRL052Or/1056eb111a214df52533a1cb97d38ea0/Screenshot-2024-04-15-at-11.03.02.png" alt="" class="kg-image" width="2000" height="602" loading="lazy">
+
+	</figure>
 	<p>Meanwhile, in <a href="https://radar.cloudflare.com/ir">Iran</a>, there has been a noticeable decline in traffic over the past few days in the early morning hours, around 04:30 local time (01:00 UTC), as compared to the previous week. However, this decline appears to be linked to the conclusion of Ramadan, which ended April 9. As we have <a href="https://blog.cloudflare.com/easter-passover-ramadan-internet-trends-2023">written</a> <a href="https://blog.cloudflare.com/how-ramadan-shows-up-in-internet-trends">before</a>, during Ramadan, there is typically an increase in traffic around 04:00 in most Muslim countries for <a href="https://en.wikipedia.org/wiki/Suhur">Suhur</a>, the pre-dawn meal. Nevertheless, traffic was higher in Iran early in the morning of Sunday, April 14 than the previous day, between 02:30 local time (23:00 UTC on April 13) and 07:00 (03:30 UTC).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/cloudflare-radar-traffic-trends-xy-20240414-20240414--2-.png" class="kg-image" alt="" loading="lazy" width="2048" height="1152"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RpGY2Tk4Rmr6RlhPpdYfI/c46ca75603bed9f65272ae1182252b63/cloudflare-radar-traffic-trends-xy-20240414-20240414--2-.png" alt="" class="kg-image" width="2048" height="1152" loading="lazy">
+
+	</figure>
 	<p>When analyzing <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack">application layer</a> attacks, we haven’t observed any significant changes in those targeting Israel over the past few days. However, over the past month, the Government Administration sector emerged as the most targeted industry, with blocked DDoS requests accounting for 46% of all traffic directed towards it.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/04/Screenshot-2024-04-14-at-08.08.21.png" class="kg-image" alt="" loading="lazy" width="2064" height="620"></figure>
-	<p>Based on Cloudflare data, we have not yet seen a coordinated cyberattack campaign targeting Israel. However, we saw a <a href="https://blog.cloudflare.com/cyber-attacks-in-the-israel-hamas-war">clear uptick in attacks</a> back in October 2023, after the Israel-Hamas war started, as we noted in a blog post at that time. </p>
-	<p>We will continue to monitor the situation in the Middle East, and you can keep track of by country up-to-date trends visiting <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, and following us on social media at <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> (X), <a href="https://noc.social/@cloudflareradar">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky).<br><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MuXBOuFapDbKiVye3g2yE/ee5d64ff35cd045ccecfb0a94d1fe52a/Screenshot-2024-04-14-at-08.08.21.png" alt="" class="kg-image" width="2064" height="620" loading="lazy">
+
+	</figure>
+	<p>Based on Cloudflare data, we have not yet seen a coordinated cyberattack campaign targeting Israel. However, we saw a <a href="https://blog.cloudflare.com/cyber-attacks-in-the-israel-hamas-war">clear uptick in attacks</a> back in October 2023, after the Israel-Hamas war started, as we noted in a blog post at that time.</p>
+	<p>We will continue to monitor the situation in the Middle East, and you can keep track of by country up-to-date trends visiting <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, and following us on social media at <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> (X), <a href="https://noc.social/@cloudflareradar">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky).</p>
 </div>

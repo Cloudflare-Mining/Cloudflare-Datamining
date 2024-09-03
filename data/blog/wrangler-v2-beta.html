@@ -1,35 +1,45 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-23.png" class="kg-image" alt="wrangler 2.0 allows you to get started with “npm install wrangler@beta”" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wPm9OXoKzXK658EtrmVST/4ab8385ab0c641900659b905b47cfdbf/image1-23.png" alt="wrangler 2.0 allows you to get started with “npm install wrangler@beta”" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>Much of a developer’s work is about making trade-offs: consistency versus availability, speed over correctness, you name it. While there will always be different technical trade-offs to consider, we believe there are some that you, as a developer, should never need to make.</p>
 	<p>One of those decisions is an easy-to-use development environment. Whether you’re onboarding a new developer to your team or you simply want to develop faster, it’s important that even the smallest of things are optimized for speed and simplicity.</p>
 	<p>That’s why we're excited to announce the second-generation of our developer tooling for Cloudflare Workers. It’s a new developer experience that’s out-of-the-box, lightning fast, and can even run Workers on a local machine. (Yes!)</p>
 	<p>If you’re already familiar with our existing tools, we’re not just talking about the wrangler CLI, we’re talking about its next major release: wrangler 2.0. Stick around to get a sneak-peak at the new experience.</p>
-	<h3 id="no-config-no-problem">No config? No problem</h3>
+	<h3>No config? No problem</h3>
 	<p>We’ve made it much easier to get started with Cloudflare Workers. All you need is a single JavaScript file to run a Worker -- no configuration needed. You don't even need to decide on a name!</p>
 	<p>When you run <code>wrangler dev &lt;filename&gt;</code>, your code is automatically bundled and deployed to a development environment. Then, you can send HTTP requests to that environment using a localhost proxy. Here’s what that looks like in-action:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/765a39a1dba51748080bbe98e4205119?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<h3 id="live-debugging-just-like-that">Live debugging, just like that</h3>
+	<h3>Live debugging, just like that</h3>
 	<p>Now there’s a completely redesigned experience for debugging a Worker. With a simple command you get access to a remote debugger, the same used by Chrome when you click “Inspect,” which provides an interactive view of logs, exceptions, and requests. It feels like your Worker is running locally, yet it’s actually running on the Cloudflare network.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/ac6691614c4515cb3ee82048a46de96f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>A debugger that “just works” and auto-detects your changes makes <em>all</em> the difference when you’re just trying to code. We’ve also made a number of improvements to make the debugging experience even easier:</p>
+	<p>A debugger that “just works” and auto-detects your changes makes <i>all</i> the difference when you’re just trying to code. We’ve also made a number of improvements to make the debugging experience even easier:</p>
 	<ul>
-		<li>Keybind shortcuts, to quickly toggle features or open a window.</li>
-		<li>Support for “--public &lt;path&gt;”, to automatically serve your static assets.</li>
-		<li>Faster and more reliable file-watching.</li>
+		<li>
+			<p>Keybind shortcuts, to quickly toggle features or open a window.</p>
+		</li>
+		<li>
+			<p>Support for “--public ”, to automatically serve your static assets.</p>
+		</li>
+		<li>
+			<p>Faster and more reliable file-watching.</p>
+		</li>
 	</ul>
 	<p>To start a debugging session, just run: <code>wrangler dev &lt;filename&gt;</code>, then hit the “D” keybind.</p>
-	<h3 id="local-mode-flip-a-switch">Local mode? Flip a switch</h3>
+	<h3>Local mode? Flip a switch</h3>
 	<p>Another aspect of the new debugging experience is the ability to switch to “local mode,” which runs your Worker on your local machine. In fact, you can easily switch between “network” and “local” mode with just a keybind shortcut.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/9d1f091813399737dfeadaaaa01d26be?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>How does this work? Recently, we announced that <a href="https://github.com/cloudflare/miniflare">Miniflare</a> (created by <a href="https://twitter.com/_mrbbot">Brendan Coll</a>), a project to locally emulate Workers in Node.js, has joined the Cloudflare organization. Miniflare is great for unit testing and situations where you’d like to debug Workers without an Internet connection. Now we’ve integrated it directly into the local development experience, so you can enjoy the benefits of both the network and your localhost!</p>
-	<h3 id="let-us-know-what-you-think-">Let us know what you think!</h3>
-	<p>Serverless should be simple. We’re really excited about these improvements to the developer experience for Workers, and we have a <em>lot</em> more planned.</p>
+	<h3>Let us know what you think!</h3>
+	<p>Serverless should be simple. We’re really excited about these improvements to the developer experience for Workers, and we have a <i>lot</i> more planned.</p>
 	<p>While we’re still working on wrangler 2.0, you can try the beta release by running: <code>npm install wrangler@beta</code> or by visiting the <a href="https://github.com/cloudflare/wranglerv2">repository</a> to see what we’re working on. If you’re already using wrangler to deploy existing applications, we recommend continuing to use wrangler 1.0 until the 2.0 release is officially out. We will continue to develop and maintain wrangler 1.0 until we’re finished with backwards-compatibility for 2.0.</p>
 	<p>If you’re starting a project or want to try out the new experience, we’d love to hear your feedback! Let us know what we’re missing or what you’d like to see in wrangler 2.0. You can create a feature request or start a discussion in the <a href="https://github.com/cloudflare/wranglerv2">repository</a>. (we’ll merge them into the existing wrangler repository when 2.0 is out of beta).</p>
 	<p>Thank you to all of our developers out there, and we look forward to seeing what you build!</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

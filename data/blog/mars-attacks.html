@@ -1,25 +1,35 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lxy6vpG3sEEbllFy98AO8/2ad42d8fb0fc5efa9a1fb874964aef67/mars-attacks.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Following on from my recent post about <a href="https://blog.cloudflare.com/the-wednesday-witching-hour-cloudflare-dos-st">when attacks hit CloudFlare</a>, here's a follow up looking at where they come from. Or at least where they say they come from. Looking at attack statistics for the month of July 2012 the largest source of attacks is Mars.</p>
-	<p><img alt="Mars
-Attacks!" src="https://blog.cloudflare.com/content/images/mars-attacks1.jpeg.scaled500.jpg" title="Mars Attacks!"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RJhOuRwK9MzDcOvkawkxN/04faf0968e4fd7c74ab0eb821192f91c/mars-attacks1.jpeg.scaled500.jpg" alt="Mars
+Attacks!" class="kg-image" width="500" height="213" loading="lazy">
+
+	</figure>
 	<p>Of course, not literally from Mars itself, but from what network engineers refer to as '<a href="https://en.wikipedia.org/wiki/Martian_packet">Martian IP addresses</a>': IP addresses that are otherwise valid but shouldn't appear on the public Internet. For example, many corporate networks use the 10.0.0.0/8 IP address range, and many home users will be familiar with addresses in the 192.168.0.0/16 address range. Both of those addresses are valid, but not valid on the public Internet. When machines in a home or corporate network actually communicate onto the public Internet those internal addresses are converted to a public address by a technique called <a href="https://en.wikipedia.org/wiki/Network_address_translation">Network Address Translation</a> (or NAT). If you're on a home or corporate network right now you can find your public IP address using the CloudFlare-powered <a href="http://www.whatismyip.com">WhatIsMyIP.com</a>.</p>
 	<p>Full details of the reserved blocks of IP addresses can be found in <a href="http://tools.ietf.org/html/rfc5735">RFC 5735</a>.</p>
 	<p>We see vast numbers of attacks with IP addresses such as 192.168.91.84 (apparently from inside a network), 127.0.0.1 (apparently from inside the machine that's being attacked--spooky), 10.99.88.226 (inside a corporate network), and 169.254.85.75 (used on a local, private link).</p>
-	<p><img alt="Mars
-Attacks!" src="https://blog.cloudflare.com/content/images/campfire.png.scaled500.png" title="Mars Attacks!"><br>
-		<small>Thanks, <a href="http://xkcd.com/license.html">XKCD</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o2Kbzd6OMY64ujmgGythi/31a79e3ed6820fc186492fba33228208/campfire.png.scaled500.png" alt="Mars
+Attacks!" class="kg-image" width="273" height="276" loading="lazy">
+
+	</figure>
+	<p>Thanks, <a href="http://xkcd.com/license.html">XKCD</a></p>
 	<p>Because these addresses are invalid on the public Internet when we build our attack statistics they appear as an invalid network. Looking at the top, potentially spoofed, networks that attack CloudFlare shows that invalid accounts for 23% of attacks, followed by 3.45% from (apparently) China Telecom, 2.14% from China Unicom, 1.74% from Comcast, 1.45% from Dreamhost and 1.36% from WEBNX. And then, on and on, for 37,284 different networks around the world. With a total of 41,838 networks, we've apparently been attacked during July by 89% of the networks on (this) planet.</p>
 	<p>It's also not surprising to see China Telecom high on the list: it's the largest network in the world announcing to the Internet that it has 114,212,832 addresses.</p>
 	<p>Of course, this traffic didn't necessarily actually come from those networks, and certainly not from Mars, unless NASA's <a href="http://www.nasa.gov/mission_pages/msl/index.html">Curiosity</a> dropped off some servers on its way down, because the source IP address is being <a href="https://en.wikipedia.org/wiki/IP_address_spoofing">spoofed or forged</a>.</p>
 	<p>The attackers can spoof the source IP address (where the packet says it comes from) because they do not need a reply. In most cases the attacker is simply seeking to overwhelm a CloudFlare Internet connection, or server, with traffic. There's no need for a reply at all, just a huge flow of packets. Forging the IP address means that the source cannot be easily determined.</p>
 	<p>And in some cases the IP address is legitimate but actually the IP address of an innocent victim. In the case of DNS or SNMP <a href="https://en.wikipedia.org/wiki/Distributed_Reflection_Denial_of_Service">reflection attacks</a> where a legitimate DNS or SNMP server is fooled into sending packets to attack CloudFlare, the source IP address is a real server. CloudFlare sees a great number of reflection attacks against our DNS infrastructure.</p>
 	<p>DNS reflection works like this: an attacker sends a DNS query to a DNS server on the Internet with a forged source address. The source address being forged is set to the address of a DNS server at CloudFlare that the attacker wants to overwhelm. The innocent DNS server that receives the packet sends a reply to the source adderss at CloudFlare. Of course, CloudFlare never sent the original packet, by address spoofing made it look like we did.</p>
-	<p>Of course, the attacker doesn't do this with one DNS server, they do it with hundreds or thousands so that CloudFlare suddenly receives a huge wave of DNS replies we didn't ask for. And, ironically, we get frantic calls from network managers asking us to stop attacking <em>them</em>. Since they see the source IP address is CloudFlare they, naturally, assume we've sent the traffic.</p>
-	<p><img alt="Mars Attacks!" src="https://blog.cloudflare.com/content/images/spinal_tap_but_it_goes_to_eleven1.jpeg.scaled500.jpg" title="Mars Attacks!"></p>
+	<p>Of course, the attacker doesn't do this with one DNS server, they do it with hundreds or thousands so that CloudFlare suddenly receives a huge wave of DNS replies we didn't ask for. And, ironically, we get frantic calls from network managers asking us to stop attacking <i>them</i>. Since they see the source IP address is CloudFlare they, naturally, assume we've sent the traffic.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GxCAyLfP7Um8OzZIz1knd/fa1fd13b67fc70b925a2d36ad58e7bd0/spinal_tap_but_it_goes_to_eleven1.jpeg.scaled500.jpg" alt="Mars Attacks!" class="kg-image" width="500" height="281" loading="lazy">
+
+	</figure>
 	<p>Worse, reflection attacks also have an amplification effect as well. Since a DNS query packet can be very small (60 bytes, for example) and the reply much larger (e.g. 512 bytes), it's possible for an attacker to amplify the bandwidth available to them by sending thousands of small packets to DNS servers which respond to the CloudFlare server with a large packet. That means that the attacker uses a small amount of outgoing bandwidth to hit CloudFlare at a much greater rate.</p>
 	<p>The upshot is that when looking at layer 3/4 attacks the source IP is mostly useless: it's likely bogus or the address of a victim not an attacker.</p>
 	<p>So, Curiosity can trundle across the Martian landscape safe in the knowledge that CloudFlare's network team won't be firing back any response to those Martian packets.</p>
-	<!--kg-card-end: markdown-->
 </div>

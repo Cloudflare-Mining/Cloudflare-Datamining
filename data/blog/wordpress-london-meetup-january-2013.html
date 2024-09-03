@@ -1,17 +1,27 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nKeLRTrcpSYIDe1xC1rpx/d61b3ad5627196d97f138e92e6c87695/wordpress-london-meetup-january-2013.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Last night I gave a short presentation about how to use CloudFlare with WordPress sites to about 60 people attending the <a href="http://www.meetup.com/London-WordPress/events/81910532">WordPress London Meetup</a>. CloudFlare was happy to be sponsor of the event providing drinks, beers and lots and lots of pizza. The meetup was held at the <a href="http://www.campuslondon.com">Google Campus</a>.</p>
-	<p><img alt="WordPress London Meetup January 2013" src="https://blog.cloudflare.com/content/images/IMG_4277.JPG.scaled500.jpg" title="WordPress London Meetup January 2013"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bdYQMglHyT6gy21JAG1Q/80b66a5902a5fa32ea271b1e4a860cc4/IMG_4277.JPG.scaled500.jpg" alt="WordPress London Meetup January 2013" class="kg-image" width="500" height="375" loading="lazy">
+
+	</figure>
 	<p>There were two talks: I was preceded by designer <a href="http://laurakalbag.com">Laura Kalbag</a> who talked about designing icons for WordPress sites. This is something that she made look incredibly easy using a tool called <a href="http://www.bohemiancoding.com/sketch">Sketch</a>. I suspect that however good Sketch is, I'd end up drawing icons that looked awful!</p>
 	<p>My talk was about using WordPress and CloudFlare together. CloudFlare has a ton of features and I highlighted some that are of great interest to WordPress users including the <a href="http://wordpress.org/extend/plugins/cloudflare">CloudFlare WordPress Plugin</a> and our integration with <a href="https://blog.cloudflare.com/w3-total-cache-w3tc-total-cloudflare-integrat">W3TC</a>.</p>
 	<p>The other features that people found most interesting were:</p>
 	<ol>
-		<li><a href="https://blog.cloudflare.com/always-online-v2">Always Online</a>:
-			CloudFlare crawls the WordPress site and keeps a copy in a special cache. If the original site goes down CloudFlare serves up the most recent version from the crawler cache with a banner indicating that it is old content. This helps keep sites online when things go badly wrong.</li>
-		<li><a href="https://blog.cloudflare.com/an-all-new-and-improved-autominify">Auto-minify</a>: many WordPress sites have large amount of HTML, <a href="https://www.cloudflare.com/learning/performance/how-to-minify-css">CSS</a>, and JavaScript (especially if they use lots of plugins). Auto-minify helps shrink those resources so that sites are delivered faster to web browsers.</li>
-		<li><a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">Rocket Loader</a>: a tool that reorganizes the loading of resources such as CSS and JavaScript to that they are downloaded to web browsers quickly by bundling them.</li>
-		<li>A new, unannounced feature that I'm calling "Help, I've gone viral!" which allows any web site owner to instantly tell CloudFlare to start completely caching a URL (overriding any caching headers set by the site) to cope with load. With this if a URL goes viral and is overloading a WordPress site it's possible to just paste in its URL and ask CloudFlare to take the load of that page. We'll be writing more about that feature when it's released.</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/always-online-v2">Always Online</a>: CloudFlare crawls the WordPress site and keeps a copy in a special cache. If the original site goes down CloudFlare serves up the most recent version from the crawler cache with a banner indicating that it is old content. This helps keep sites online when things go badly wrong.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/an-all-new-and-improved-autominify">Auto-minify</a>: many WordPress sites have large amount of HTML, <a href="https://www.cloudflare.com/learning/performance/how-to-minify-css">CSS</a>, and JavaScript (especially if they use lots of plugins). Auto-minify helps shrink those resources so that sites are delivered faster to web browsers.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">Rocket Loader</a>: a tool that reorganizes the loading of resources such as CSS and JavaScript to that they are downloaded to web browsers quickly by bundling them.</p>
+		</li>
+		<li>
+			<p>A new, unannounced feature that I'm calling "Help, I've gone viral!" which allows any web site owner to instantly tell CloudFlare to start completely caching a URL (overriding any caching headers set by the site) to cope with load. With this if a URL goes viral and is overloading a WordPress site it's possible to just paste in its URL and ask CloudFlare to take the load of that page. We'll be writing more about that feature when it's released.</p>
+		</li>
 	</ol>
 	<p>And, of course, other CloudFlare features like <a href="https://blog.cloudflare.com/easiest-ssl-ever-now-included-automatically-w">Easy SSL</a>, <a href="https://blog.cloudflare.com/spdy-now-one-click-simple-for-any-website">SPDY</a>, and <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">IPv6</a> help everyone get the latest technology onto their site quickly.</p>
-	<!--kg-card-end: markdown-->
 </div>

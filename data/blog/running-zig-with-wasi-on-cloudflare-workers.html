@@ -1,14 +1,17 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/running-zig-with-wasi-on-cloudflare-workers-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/running-zig-with-wasi-on-cloudflare-workers-zh-tw">繁體中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-4.png" class="kg-image" alt="Running Zig with WASI on Cloudflare Workers" loading="lazy"></figure>
+<div class="mb2 gray5">3 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/running-zig-with-wasi-on-cloudflare-workers">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/running-zig-with-wasi-on-cloudflare-workers">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IYT1Gc6y5cogG4X4H9skK/ce9294185063c19547fee5238dcfde69/image1-4.png" alt="Running Zig with WASI on Cloudflare Workers" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
-	<h3 id="hello-world-">Hello, World!</h3>
+	<h3>Hello, World!</h3>
 	<p>I’m not a Zig expert by any means, and to keep things entirely honest I’ve only just started looking into the language, but we all have to start somewhere. So, if my Zig code isn’t perfect please bear with me. My goal was to build a real, small program using Zig and deploy it on Cloudflare Workers. And to see how fast I can go from a blank screen to production code.</p>
 	<p>My goal for this wasn’t ambitious, just read some text from stdin and print it to stdout with line numbers, like running <code>cat -n</code>. But it does show just how easy the Workers paradigm is. This Zig program works identically on the command-line on my laptop and as an HTTP API deployed on Cloudflare Workers.</p>
-	<p>Here’s my code. It reads a line from stdin and outputs the same line prefixed with a line number. It terminates when there’s no more input.</p><!--kg-card-begin: markdown-->
-	<pre><code>const std = @import("std");
+	<p>Here’s my code. It reads a line from stdin and outputs the same line prefixed with a line number. It terminates when there’s no more input.</p>
+	<pre class="language-bash"><code class="language-bash">const std = @import("std");
 
 pub fn main() anyerror!void {
 	// setup allocator
@@ -29,11 +32,9 @@ pub fn main() anyerror!void {
     	    try stdout.print("{d}\t{s}\n", .{counter, line});
     	    counter = counter + 1;
 	}
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>To build Zig code, you create a <code>build.zig</code> file that defines how to build your project. For this trivial case I just opted to build an executable from the sources</p><!--kg-card-begin: markdown-->
-	<pre><code>const std = @import("std");
+}</code></pre>
+	<p>To build Zig code, you create a <code>build.zig</code> file that defines how to build your project. For this trivial case I just opted to build an executable from the sources</p>
+	<pre class="language-bash"><code class="language-bash">const std = @import("std");
 
 pub fn build(b: *std.build.Builder) void {
 	const target = b.standardTargetOptions(.{});
@@ -43,59 +44,47 @@ pub fn build(b: *std.build.Builder) void {
 	exe.setTarget(target);
 	exe.setBuildMode(mode);
 	exe.install();
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>By running <code>zig build</code> the compiler will run and output a binary under <code>zig-out/bin</code></p><!--kg-card-begin: markdown-->
-	<pre><code>$ zig build
+}</code></pre>
+	<p>By running <code>zig build</code> the compiler will run and output a binary under <code>zig-out/bin</code></p>
+	<pre class="language-bash"><code class="language-bash">$ zig build
 
 $ ls zig-out/bin
 print-with-line-numbers
 
 $ echo "Hello\nWorld" | ./zig-out/bin/print-with-line-numbers
 1    Hello
-2    World
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="wasi">WASI</h3>
+2    World</code></pre>
+	<h3>WASI</h3>
 	<p>The next step is to get this running on Workers, but first I need to compile it into WASM with WASI support.</p>
 	<p>Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev">wasmtime</a>.</p>
-	<p>This same .wasm file can be run in wasmtime and deployed directly to Cloudflare Workers. This makes building, testing and deploying seamless.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ zig build -Dtarget=wasm32-wasi
+	<p>This same .wasm file can be run in wasmtime and deployed directly to Cloudflare Workers. This makes building, testing and deploying seamless.</p>
+	<pre class="language-bash"><code class="language-bash">$ zig build -Dtarget=wasm32-wasi
 
 $ ls zig-out/bin
 print-with-line-numbers.wasm
 
 $ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
 1    Hello
-2    World
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="zig-on-workers">Zig on Workers</h3>
-	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide">getting started guide </a>that will get you from code to deployment within minutes!</p>
-	<p>In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ npx wrangler@wasm login
+2    World</code></pre>
+	<h3>Zig on Workers</h3>
+	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide">getting started guide</a> that will get you from code to deployment within minutes!</p>
+	<p>In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p>
+	<pre class="language-bash"><code class="language-bash">$ npx wrangler@wasm login
 Attempting to login via OAuth...
 Opening a link in your default browser: https://dash.cloudflare.com/oauth2/auth
-Successfully logged in.
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Then, I ran the following command to publish my worker:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ npx wrangler@wasm publish --name print-with-line-numbers --compatibility-date=2022-07-07 zig-out/bin/print-with-line-numbers.wasm
+Successfully logged in.</code></pre>
+	<p>Then, I ran the following command to publish my worker:</p>
+	<pre class="language-bash"><code class="language-bash">$ npx wrangler@wasm publish --name print-with-line-numbers --compatibility-date=2022-07-07 zig-out/bin/print-with-line-numbers.wasm
 Uploaded print-with-line-numbers (3.04 sec)
 Published print-with-line-numbers (6.28 sec)
-  print-with-line-numbers.workers.dev
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>With that step completed, the worker is ready to run and can be invoked by calling the URL printed from the output above.</p><!--kg-card-begin: markdown-->
-	<pre><code>echo "Hello\nWorld" | curl https://print-with-line-numbers.workers.dev -X POST --data-binary @-
+  print-with-line-numbers.workers.dev</code></pre>
+	<p>With that step completed, the worker is ready to run and can be invoked by calling the URL printed from the output above.</p>
+	<pre class="language-bash"><code class="language-bash">echo "Hello\nWorld" | curl https://print-with-line-numbers.workers.dev -X POST --data-binary @-
 1    Hello
-2    World
-</code></pre>
-	<!--kg-card-end: markdown-->
+2    World</code></pre>
 	<p>Success!</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>What impressed me the most here was just how easy this process was.</p>
-	<p>First, I had a binary compiled for the architecture of my laptop, then I compiled the code into WebAssembly by just passing a flag to the compiler, and finally I had this running on workers <strong>without having to change any code.</strong></p>
-	<p>Granted, this program was not very complicated and does not do anything other than read from STDIN and write to STDOUT, but it gives me confidence of what is possible, especially as technology like WASI matures.<br><br><br></p>
+	<p>First, I had a binary compiled for the architecture of my laptop, then I compiled the code into WebAssembly by just passing a flag to the compiler, and finally I had this running on workers <b>without having to change any code.</b></p>
+	<p>Granted, this program was not very complicated and does not do anything other than read from STDIN and write to STDOUT, but it gives me confidence of what is possible, especially as technology like WASI matures.</p>
 </div>

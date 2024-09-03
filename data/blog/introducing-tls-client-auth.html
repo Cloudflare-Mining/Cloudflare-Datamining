@@ -1,20 +1,27 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/IOT_v3.1-1.png" alt="" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12mn4x1CfmZwS8R7ThPMDo/bf89013c16fbe926d530c1586dae83da/IOT_v3.1-1.png" alt="" class="kg-image" width="535" height="209" loading="lazy">
+
+	</figure>
 	<p>In a traditional TLS handshake, the client authenticates the server, and the server doesn’t know too much about the client. However, starting now, Cloudflare is offering enterprise customers TLS with client authentication, meaning that the server additionally authenticates that the client connecting to it is authorized to connect.</p>
 	<p>TLS Client Authentication is useful in cases where a server is keeping track of hundreds of thousands or millions of clients, as in IoT, or in a mobile app with millions of installs exchanging secure information. For example, an IoT company can issue a unique client certificate per device, and then limit connections to their IoT infrastructure to only their devices by blocking connections where the client doesn’t present a certificate signed by the company’s certificate authority.</p>
 	<p>Or in the case of a mobile banking app, where the bank wants to ensure customers’ secure financial data doesn’t get stolen by bots spoofing their mobile app, they can issue a unique certificate to every app install and in the TLS handshake validate requests are coming from their mobile app. Client authentication is also useful for VPNs, <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise networks</a> or staging sites, where corporations and developers need to lock down connections to only laptops and phones owned by their employees and teammates.</p>
 	<p>You may be thinking - don’t we have API keys for that? But client certificates offer a layer of security that API keys cannot provide. If an API key gets compromised mid-connection, it can be reused to fire its own valid, trusted requests to the backend infrastructure. However, the private key of the client certificate is used to create a digital signature in every TLS connection, and so even if the certificate is sniffed mid-connection, new requests can’t be instantiated with it.</p>
-	<h3 id="handshakeswithtlsclientauth">Handshakes With TLS Client Auth</h3>
+	<h3>Handshakes With TLS Client Auth</h3>
 	<p>In a handshake with TLS Client Authentication, the server expects the client to present a certificate, and sends the client a client certificate request with the server hello. Then in the key exchange in the next trip to the server, the client also sends its client certificate. The client certificate is then used to sign the TLS handshake and the digital signature is sent to the server for verification. You can see the whole handshake here:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/illustration-tls-ssl-client-auth.png" alt="" loading="lazy"></p>
-	<h3 id="tlsclientauthenticationontheedge">TLS Client Authentication On The Edge</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1j5hvPyQ2Apt0THlts9xh1/73bd84177026d356254858ffba605b99/illustration-tls-ssl-client-auth.png" alt="" class="kg-image" width="900" height="1256" loading="lazy">
+
+	</figure>
+	<h3>TLS Client Authentication On The Edge</h3>
 	<p>TLS Client Authentication can be CPU intensive to implement - it’s an additional cryptographic operation on every request. And if there’s a flood of invalid traffic, each request in that traffic flood kicks off a verification step. Companies can move the TLS client authentication to Cloudflare’s edge to offload the expensive verification.</p>
 	<p>If we are performing TLS Client Authentication for a company, the company sends us the root certificate(s) we should validate the client certificates against. Then the company can set TLS Client Authentication to one of two modes: enforce mode returns a 403 and optional custom JSON or HTML when the client certificate is invalid, and report mode forwards all requests to the origin, even if the certificate is invalid. Cloudflare will send a header including the status of the certificate (none, valid, invalid) and the certificate Subject Key Identifier (SKI) to the origin. For companies that use the client certificate for identification, Cloudflare can also forward any field of the client certificate as a custom header.</p>
-	<h3 id="getstarted">Get Started</h3>
+	<h3>Get Started</h3>
 	<p>To use TLS client authentication, you must first set up PKI (Public Key Infrastructure) infrastructure to issue client certificates. If you are interested in running TLS client authentication but don’t have PKI infrastructure set up to issue client certificates, we have <a href="https://github.com/cloudflare/cfssl">open sourced our PKI</a> for you to use. Here is great documentation by our friends at CoreOS on <a href="https://coreos.com/os/docs/latest/generate-self-signed-certificates.html">how to use cfssl to issue client certificates</a>. If you prefer not to run your own CA and rely on an established certificate authority, we have partnered with a few certificate authorities who can provide the client certificates for you.</p>
 	<p>If you are an enterprise customer and would like to get started using TLS client authentication with Cloudflare, reach out to your account team and we’ll help you get setup. If you are not yet an enterprise customer but are interested in trying out TLS client authentication, <a href="https://www.cloudflare.com/plans/enterprise/contact">get in touch</a>.</p>
-	<p><strike>Within the next year, we’ll be adding TLS client authentication support for all Cloudflare plans. After all, using encryption to make the web more trusted is what we’re about. Stay tuned.</strike></p>
-	<p><em>UPDATE - 1/22/19: This functionality has changed and is being <a href="https://developers.cloudflare.com/access/service-auth/mtls">incorporated into Cloudflare Access</a>. A beta is currently underway. Apologies for any confusion.</em></p>
-	<!--kg-card-end: markdown-->
+	<p>Within the next year, we’ll be adding TLS client authentication support for all Cloudflare plans. After all, using encryption to make the web more trusted is what we’re about. Stay tuned.</p>
+	<p><i>UPDATE - 1/22/19: This functionality has changed and is being </i><a href="https://developers.cloudflare.com/access/service-auth/mtls"><i>incorporated into Cloudflare Access</i></a><i>. A beta is currently underway. Apologies for any confusion.</i></p>
 </div>

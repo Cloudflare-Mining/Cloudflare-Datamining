@@ -1,218 +1,245 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-9.png" class="kg-image" alt="MPLS to Zero Trust in 30 days." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lEUZwzoGeTleyCGdkKCki/cc0531b370f75dd192b6eb7a80761911/image7-9.png" alt="MPLS to Zero Trust in 30 days." class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Employees returning to the office are experiencing that their corporate networks are much slower compared to what they’ve been using at home. It’s partly due to outdated line speeds, and also partly due to security requirements that force all traffic to get backhauled through centralized data centers. While 44% of the US currently has access to fiber-based broadband Internet with speeds reaching 1 Gbps, many MPLS sites are still on old 1.5 Mbps circuits. This is a reality check and a reminder that the current MPLS based networks are unable to support the shift from centralized applications in the datacenter to a distributed SaaS and hybrid multi-cloud world.</p>
 	<p>In this post, we are going to outline the steps required to take your network from MPLS to <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a>. But, before we do — a little about how we ended up in this situation.</p>
-	<h3 id="enterprise-networks-today">Enterprise networks today</h3>
+	<h3>Enterprise networks today</h3>
 	<p>Over the past 10 years, most <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise networks</a> have evolved from perimeter hub and spoke networks into franken-networks as a means to solve connectivity and security issues. We have not had a chance to redesign them holistically for distributed application access. The band-aid and point solutions have only pushed the problems further down the road — to a future day for someone else to solve.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-13.png" class="kg-image" alt="Example of legacy MPLS-based WAN" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g4qxCDY9uN6sCggULAK04/f0214e410a5a94cf176ded9cf7b78d4f/image6-13.png" alt="Example of legacy MPLS-based WAN" class="kg-image" width="1035" height="690" loading="lazy">
+
+	</figure>
 	<p>The advent of cloud adoption put additional pressure on the already ailing legacy WAN. Increased Internet use for business, mining data for actionable insights, advanced security monitoring multiplied bandwidth demand at customer branches. This puts additional pressure on companies seeking to manage their WAN cost. Below is a graphical representation of business loss due to growing bandwidth needs on.</p>
-	<h3 id="business-loss-x-cost-of-project-delay-y-loss-of-productivity-due-to-outages">Business loss = (X) cost of project delay &nbsp;+ (Y) loss of productivity due to outages</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="excitement-about-sd-wan">Excitement about SD-WAN</h3>
+	<h3>Business loss = (X) cost of project delay &nbsp;+ (Y) loss of productivity due to outages</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50jWFTo8tiwY6abJO3Aa8v/60c439504909ee612fad8f2412f40659/image5-11.png" alt="" class="kg-image" width="693" height="637" loading="lazy">
+
+	</figure>
+	<h3>Excitement about SD-WAN</h3>
 	<p>Organizations have been looking to Software-Defined WAN (SD-WAN) to solve some of these challenges. It allows organizations to shift from MPLS private lines to broadband Internet and significantly reduce their cost per Mbps. SD-WAN offers other valuable features like application-aware intelligent routing based on path quality. Orchestrator and analytics help to provide much-needed deployment speed and network visibility, respectively.</p>
 	<p>Despite the incremental improvement that SD-WAN offers over traditional network architectures, some fundamental challenges remain. SD-WAN is a hardware-dependent edge routing technology that does not always account for the middle mile. While broadband Internet is reasonably fast and available everywhere, it doesn't offer the end-to-end security and reliability that mission-critical applications require. Further, managing security policies and Internet breakouts across hundreds of edge devices is complex, and many organizations are still choosing to backhaul traffic to centralized data centers. We require a new architecture — with security, speed, and reliability built-in.</p>
-	<h3 id="cloudflare-magic-wan">Cloudflare Magic WAN</h3>
+	<h3>Cloudflare Magic WAN</h3>
 	<p>Cloudflare Magic WAN simplifies legacy WAN architectures by enabling customers to use the Cloudflare global network to interconnect their branch offices, data centers, and public cloud services. It includes Zero Trust security services that can be enabled as needed, improve performance, and can be managed through a single dashboard.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6p3czpYwUDvwvZKYlIeGJG/716d0a57128bdc4e134245b0faa46d0d/image3-24.png" alt="" class="kg-image" width="1801" height="734" loading="lazy">
+
+	</figure>
 	<p>Magic WAN has many advantages over traditional WAN architectures. It eliminates the need to manage a mesh of tunnels. A single <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">Anycast</a> IPSec or GRE tunnel from a site provides connectivity to all other sites and applications, with the Cloudflare network acting as the network hub, simplifying operational overhead. It removes the requirement for all traffic to be backhauled to a centralized data center to enforce security policies. Cloud-native <a href="https://www.cloudflare.com/magic-firewall">firewall-as-a-service</a> (FWaaS) for inbound and site-to-site traffic and <a href="https://www.cloudflare.com/products/zero-trust/gateway">security web gateway</a> (SWG) for outbound traffic is available at the same data centers where WAN traffic enters the Cloudflare network. Organizations can deploy consistent security policies globally which get enforced at the Cloudflare data center closest to the user at any of our 270+ cities. SaaS and consumer application traffic can be routed directly to the Internet from the edge of the network. With Cloudflare serving millions of websites, the destination might be available on the same server, resulting in better performance for users.</p>
 	<p>Furthermore, with no appliances to manage or scale, Magic WAN gives you an elastic WAN with zero capital investment that you can quickly scale up or down depending on business needs.</p>
-	<h3 id="bridge-to-zero-trust">Bridge to Zero Trust</h3>
+	<h3>Bridge to Zero Trust</h3>
 	<p>The ultimate goal for many organizations is to move their network and security architecture from a castle &amp; moat model to a Zero Trust model where there’s no longer a hard boundary between “private” and “public” networks. Instead, security is enforced at the user and the application level, using identity, endpoint health and location as key attributes. So an employee on a managed laptop in their home country may have access to all corporate applications, but if they log in from a personal laptop, they might have limited access to only certain applications. Or if the network detects malware on their managed laptop, their access can be quickly revoked, <a href="https://www.cloudflare.com/learning/security/ransomware/how-to-prevent-ransomware">preventing the spread of ransomware</a>, for example, through their organization.</p>
 	<p>This requires a WAN that is intelligent enough to understand user identities and endpoint health and make intelligent enforcement decisions based on these attributes. This also requires enforcement points that can apply consistent security policies regardless of whether the users are coming from a corporate branch office or from a home office over the Internet.</p>
 	<p>Cloudflare Magic WAN, part of the Cloudflare One product suite, enables this transition to a true Zero Trust architecture by building in security natively into the network.</p>
-	<h3 id="prep-work-for-successful-transformation-from-mpls-to-zero-trust">Prep work for successful transformation from MPLS to Zero Trust</h3>
+	<h3>Prep work for successful transformation from MPLS to Zero Trust</h3>
 	<p>Planning leads to awareness, while preparation leads to readiness.</p>
 	<p>MPLS to Zero Trust transformation is a team effort. Traditionally, network managers are responsible for the WAN; security managers for the security perimeter &amp; policies; infrastructure team for the cloud; application teams for application development. Future transformed state has built-in security for seamless on-demand, secured and reliable distributed application access.</p>
-	<p>1) Network, security, infrastructure, and application project management teams should collectively discuss and document the current/future state. &nbsp;Sample document below</p><!--kg-card-begin: markdown-->
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th></th>
-				<th>Current state</th>
-				<th>Future state</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Applications</td>
-				<td>List</td>
-				<td>Example: 1600 apps</td>
-				<td>Example: 2400 apps</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Location</td>
-				<td>Local: 300, DC: 600, Public cloud: 400, Private cloud:100, SaaS: 200</td>
-				<td>TBD</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Regional application needs</td>
-				<td>Local File servers</td>
-				<td>Cloud</td>
-			</tr>
-			<tr>
-				<td>Location/branch</td>
-				<td># of branch locations</td>
-				<td>80</td>
-				<td>85</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Availability</td>
-				<td>Example: Platinum 99%, Gold 95%, Silver: 90%, bronze: best effort</td>
-				<td>Platinum 100%, Gold 99%, Silver: 95%, bronze: best effort</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Current set up</td>
-				<td>Platinum: Dual MPLS, Gold: MPLS + Internet etc</td>
-				<td>Platinum: 2 x 1G DIA, Gold: 2 x 1G DIA etc</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Bandwidth</td>
-				<td>Platinum: 100M, Gold 50M etc</td>
-				<td>Platinum 1G, Gold 500M etc</td>
-			</tr>
-			<tr>
-				<td>CSP with location</td>
-				<td>Azure/GCP/AWS</td>
-				<td>1G ExpressRoute 1G Direct Connect</td>
-				<td>10G 10G</td>
-			</tr>
-			<tr>
-				<td>Internet breakout</td>
-				<td>Capacity</td>
-				<td>500M</td>
-				<td>On demand</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td>DC: XXX Firewall HA</td>
-				<td>Cloud based local break out</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Features</td>
-				<td>Limited security control</td>
-				<td>Identity based granular ZT based policies</td>
-			</tr>
-			<tr>
-				<td>Remote Access</td>
-				<td>Quantity</td>
-				<td>1000 seats</td>
-				<td>2000 seats</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Technology</td>
-				<td>SSL VPN</td>
-				<td>Zero Trust Network Access</td>
-			</tr>
-			<tr>
-				<td>Cloud security</td>
-				<td></td>
-				<td>None</td>
-				<td>CASB, RBI</td>
-			</tr>
-			<tr>
-				<td>Device posture</td>
-				<td></td>
-				<td>None</td>
-				<td>Yes</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--kg-card-end: markdown-->
-	<p>2) Conduct transformation workshop to</p>
-	<ul>
-		<li>Map all combinations of future traffic flows: Device Type - User profile - Application - Enforcement technology - Zero Trust rules</li>
-		<li>Traffic flows help to determine future architecture baseline</li>
-	</ul>
-	<p>3) Invite vendors, partners, and providers for discussion to validate the design and identify technology readiness to support traffic flows and architecture. </p>
-	<p>4) Carry out budgeting exercises and a business plan to map current pain points with solutions and pricing. Involve specialized experts to develop business plans if needed.</p>
-	<p>5) Form a special project team that includes project managers, engineering point of contact from all technical groups, local site contacts, escalation team, stakeholder representatives, business owners.</p>
-	<h3 id="transition-plan">Transition plan</h3>
-	<p>A transition plan is a critical step toward a successful transformation. A good transition and project plan will ensure minimal downtime, while a bad plan will result in outages, business disruption, increased transition time, and cost. The plan should include detailed steps and milestones.</p>
-	<p>Sample transition plan below:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-22.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
 	<ol>
 		<li>
-			<p><strong>Identify bridging point</strong></p>
-			<ul>
-				<li>Bridging point will act as a bridge between transitioned and non-transitioned branch locations.</li>
-				<li>Ideally, regional and global data centers are preferred bridging points between existing MPLS and the new Cloudflare based WAN.</li>
-			</ul>
-		</li>
-		<li>
-			<p><strong>Create user acceptance test (UAT)</strong></p>
-			<ul>
-				<li>Collaborate with internal teams and site contacts to create a UAT.</li>
-				<li>Perform UAT before and after cutover for each site to ensure users can access their applications as expected performance after transition.</li>
-			</ul>
-		</li>
-		<li>
-			<p><strong>Migration schedule</strong></p>
-			<ul>
-				<li>Develop a migration schedule to ensure minimal business impact.</li>
-			</ul>
-		</li>
-		<li>
-			<p><strong>Prep for Magic WAN</strong></p>
-			<ul>
-				<li>Connect applications: Leverage Cloudflare onramp options to connect your various applications to Cloudflare platform.</li>
-				<li>Connect branch: Configure your WAN Edge device (router, SD-WAN device, firewall etc) and connect to Cloudflare platform</li>
-				<li>Please refer <a href="https://developers.cloudflare.com/magic-wan">https://developers.cloudflare.com/magic-wan/</a> for detailed step-by-step instructions to configure Magic WAN</li>
-			</ul>
+			<p>Network, security, infrastructure, and application project management teams should collectively discuss and document the current/future state. &nbsp;Sample document below</p>
 		</li>
 	</ol>
-	<!--kg-card-end: markdown-->
-	<p>Note: <em>Above step will NOT impact existing traffic flows via the existing MPLS path. Take precautions to ensure no production impact. Please follow your change control guidelines and request a maintenance window if applicable.</em><br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-36.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<ol start="5">
+	<p>Current state</p>
+	<p>Future state</p>
+	<p>Applications</p>
+	<p>List</p>
+	<p>Example: 1600 apps</p>
+	<p>Example: 2400 apps</p>
+	<p>Location</p>
+	<p>Local: 300, DC: 600, Public cloud: 400, Private cloud:100, SaaS: 200</p>
+	<p>TBD</p>
+	<p>Regional application needs</p>
+	<p>Local File servers</p>
+	<p>Cloud</p>
+	<p>Location/branch</p>
+	<p># of branch locations</p>
+	<p>80</p>
+	<p>85</p>
+	<p>Availability</p>
+	<p>Example: Platinum 99%, Gold 95%, Silver: 90%, bronze: best effort</p>
+	<p>Platinum 100%, Gold 99%, Silver: 95%, bronze: best effort</p>
+	<p>Current set up</p>
+	<p>Platinum: Dual MPLS, Gold: MPLS + Internet etc</p>
+	<p>Platinum: 2 x 1G DIA, Gold: 2 x 1G DIA etc</p>
+	<p>Bandwidth</p>
+	<p>Platinum: 100M, Gold 50M etc</p>
+	<p>Platinum 1G, Gold 500M etc</p>
+	<p>CSP with location</p>
+	<p>Azure/GCP/AWS</p>
+	<p>1G ExpressRoute 1G Direct Connect</p>
+	<p>10G 10G</p>
+	<p>Internet breakout</p>
+	<p>Capacity</p>
+	<p>500M</p>
+	<p>On demand</p>
+	<p>DC: XXX Firewall HA</p>
+	<p>Cloud based local break out</p>
+	<p>Features</p>
+	<p>Limited security control</p>
+	<p>Identity based granular ZT based policies</p>
+	<p>Remote Access</p>
+	<p>Quantity</p>
+	<p>1000 seats</p>
+	<p>2000 seats</p>
+	<p>Technology</p>
+	<p>SSL VPN</p>
+	<p>Zero Trust Network Access</p>
+	<p>Cloud security</p>
+	<p>None</p>
+	<p>CASB, RBI</p>
+	<p>Device posture</p>
+	<p>None</p>
+	<p>Yes</p>
+	<ol>
 		<li>
-			<p><strong>Ready for cutover</strong></p>
-			<ul>
-				<li>We are ready for cutover after steps 4 &amp; 5, i.e., ready to migrate and transition branches to Cloudflare based network.</li>
-			</ul>
-		</li>
-		<li>
-			<p><strong>Cutover window</strong></p>
-			<ul>
-				<li>During the cutover window, production traffic will stop traversing the existing MPLS path and transition to the new Cloudflare based network..</li>
-				<li>Perform UAT before and after cutover.</li>
-			</ul>
-		</li>
-		<li>
-			<p><strong>Disconnect MPLS</strong></p>
-			<ul>
-				<li>MPLS circuits can be disconnected, as sites are migrated.</li>
-			</ul>
+			<p>Conduct transformation workshop to</p>
 		</li>
 	</ol>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<p><strong>Additional:</strong></p>
 	<ul>
-		<li>Retire legacy VPN
+		<li>
+			<p>Map all combinations of future traffic flows: Device Type - User profile - Application - Enforcement technology - Zero Trust rules</p>
+		</li>
+		<li>
+			<p>Traffic flows help to determine future architecture baseline</p>
+		</li>
+	</ul>
+	<ol>
+		<li>
+			<p>Invite vendors, partners, and providers for discussion to validate the design and identify technology readiness to support traffic flows and architecture.</p>
+		</li>
+		<li>
+			<p>Carry out budgeting exercises and a business plan to map current pain points with solutions and pricing. Involve specialized experts to develop business plans if needed.</p>
+		</li>
+		<li>
+			<p>Form a special project team that includes project managers, engineering point of contact from all technical groups, local site contacts, escalation team, stakeholder representatives, business owners.</p>
+		</li>
+	</ol>
+	<h3>Transition plan</h3>
+	<p>A transition plan is a critical step toward a successful transformation. A good transition and project plan will ensure minimal downtime, while a bad plan will result in outages, business disruption, increased transition time, and cost. The plan should include detailed steps and milestones.</p>
+	<p>Sample transition plan below:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19yCemA4UrDIklPMCsZ8e9/7bff384645aba42f4d3934476e720a46/image4-22.png" alt="" class="kg-image" width="1999" height="903" loading="lazy">
+
+	</figure>
+	<ol>
+		<li>
+			<p><b>Identify bridging point</b></p>
 			<ul>
-				<li>Customers can leverage Cloudflare’s Zero Trust Network Access to access their applications and retire legacy VPN based access.</li>
+				<li>
+					<p>Bridging point will act as a bridge between transitioned and non-transitioned branch locations.</p>
+				</li>
+				<li>
+					<p>Ideally, regional and global data centers are preferred bridging points between existing MPLS and the new Cloudflare based WAN.</p>
+				</li>
 			</ul>
 		</li>
-		<li>Assumption
+		<li>
+			<p><b>Create user acceptance test (UAT)</b></p>
 			<ul>
-				<li>Customer is responsible for Internet circuit procurement and installation to replace MPLS circuits.</li>
+				<li>
+					<p>Collaborate with internal teams and site contacts to create a UAT.</p>
+				</li>
+				<li>
+					<p>Perform UAT before and after cutover for each site to ensure users can access their applications as expected performance after transition.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p><b>Migration schedule</b></p>
+			<ul>
+				<li>
+					<p>Develop a migration schedule to ensure minimal business impact.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p><b>Prep for Magic WAN</b></p>
+			<ul>
+				<li>
+					<p>Connect applications: Leverage Cloudflare onramp options to connect your various applications to Cloudflare platform.</p>
+				</li>
+				<li>
+					<p>Connect branch: Configure your WAN Edge device (router, SD-WAN device, firewall etc) and connect to Cloudflare platform</p>
+				</li>
+				<li>
+					<p>Please refer <a href="https://developers.cloudflare.com/magic-wan">https://developers.cloudflare.com/magic-wan/</a> for detailed step-by-step instructions to configure Magic WAN</p>
+				</li>
+			</ul>
+		</li>
+	</ol>
+	<p>Note: <i>Above step will NOT impact existing traffic flows via the existing MPLS path. Take precautions to ensure no production impact. Please follow your change control guidelines and request a maintenance window if applicable.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gRUYKe4nUXMEEeI2Y34lM/b3707fed3ab32037635067171c3474ae/image2-36.png" alt="" class="kg-image" width="1410" height="1185" loading="lazy">
+
+	</figure>
+	<ol>
+		<li>
+			<p><b>Ready for cutover</b></p>
+			<ul>
+				<li>
+					<p>We are ready for cutover after steps 4 &amp; 5, i.e., ready to migrate and transition branches to Cloudflare based network.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p><b>Cutover window</b></p>
+			<ul>
+				<li>
+					<p>During the cutover window, production traffic will stop traversing the existing MPLS path and transition to the new Cloudflare based network..</p>
+				</li>
+				<li>
+					<p>Perform UAT before and after cutover.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p><b>Disconnect MPLS</b></p>
+			<ul>
+				<li>
+					<p>MPLS circuits can be disconnected, as sites are migrated.</p>
+				</li>
+			</ul>
+		</li>
+	</ol>
+	<p><b>Additional:</b></p>
+	<ul>
+		<li>
+			<p>Retire legacy VPN</p>
+			<ul>
+				<li>
+					<p>Customers can leverage Cloudflare’s Zero Trust Network Access to access their applications and retire legacy VPN based access.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>Assumption</p>
+			<ul>
+				<li>
+					<p>Customer is responsible for Internet circuit procurement and installation to replace MPLS circuits.</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-35.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fpero8ipUPnWWgaT79a9R/c8a157cccdd548e20230e00f514495ef/image1-35.png" alt="" class="kg-image" width="1410" height="932" loading="lazy">
+
+	</figure>
 	<p>We’re proud of how we’ve been able to help some of Cloudflare customers reinvent their corporate networks. It makes sense to close with their own words</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image8-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="summary">Summary</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42Cl7WQXBLxGEVKQOav3Ze/d6de577d37b6dd5445ff93c77e778c59/image8-9.png" alt="" class="kg-image" width="1382" height="554" loading="lazy">
+
+	</figure>
+	<h3>Summary</h3>
 	<p>Replacing MPLS, modernizing network and network security to provide business agility is a must for the digital future. Move to Zero Trust is inevitable for most organizations. Temporary band-aids and point solutions have resulted in business losses, poor employee experience and increased security risk. Moving from MPLS to Zero Trust sounds like a daunting task but teamwork, proper planning, preparation, and right <a href="https://www.cloudflare.com/network-security">solution</a> will make transformation easily achievable and more manageable.</p>
 	<p>If you’d like to get started, <a href="https://www.cloudflare.com/magic-wan">contact us</a> today and get started on your journey.</p>
 	<p>Replacing MPLS lines is a great project to fit into your overall <a href="https://zerotrustroadmap.org">Zero Trust roadmap</a>. For a full summary of Cloudflare One Week and what’s new, tune in to our <a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog">recap webinar</a>.</p>

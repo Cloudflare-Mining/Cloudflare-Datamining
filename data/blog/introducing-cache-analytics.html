@@ -1,58 +1,93 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fO2QJrXAaP0VJMdWBiIuq/617bab5d69b805442a6225f47c22efef/introducing-cache-analytics.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today, I’m delighted to announce Cache Analytics: a new tool that gives deeper exploration capabilities into what Cloudflare’s caching and content delivery services are doing for your web presence.</p>
 	<p>Caching is the most effective way to improve the performance and economics of serving your website to the world. Unsurprisingly, customers consistently ask us how they can optimize their cache performance to get the most out of Cloudflare.</p>
 	<p>With Cache Analytics, it’s easier than ever to learn how to speed up your website, and reduce traffic sent to your origin. Some of my favorite capabilities include:</p>
 	<ul>
-		<li>See what resources are missing from cache, expired, or never eligible for cache in the first place</li>
-		<li>Slice and dice your data as you see fit: filter by hostnames, or see a list of top URLs that miss cache</li>
-		<li>Switch between views of requests and data Transfer to understand both performance and cost</li>
+		<li>
+			<p>See what resources are missing from cache, expired, or never eligible for cache in the first place</p>
+		</li>
+		<li>
+			<p>Slice and dice your data as you see fit: filter by hostnames, or see a list of top URLs that miss cache</p>
+		</li>
+		<li>
+			<p>Switch between views of requests and data Transfer to understand both performance and cost</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/image6-5.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>An overview of Cache Analytics</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6stMyGTJsZvF3WxgPuGxoF/dea12550ff2d82f6daf54eee416cb7bf/image6-5.png" alt="" class="kg-image" width="1999" height="1504" loading="lazy">
+
 	</figure>
-	<p><strong>Cache Analytics is available today for all customers on our Pro, Business, and Enterprise plans.</strong></p>
+	<p>An overview of Cache Analytics</p>
+	<p><b>Cache Analytics is available today for all customers on our Pro, Business, and Enterprise plans.</b></p>
 	<p>In this blog post, I’ll explain why we built Cache Analytics and how you can get the most out of it.</p>
-	<h2 id="why-do-we-need-analytics-focused-on-caching">Why do we need analytics focused on caching?</h2>
+	<h2>Why do we need analytics focused on caching?</h2>
 	<p>If you want to scale the delivery of a <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">fast, high-performance website</a>, then caching is critical. Caching has two main goals:</p>
-	<p>First, caching improves<strong> performance</strong>. Cloudflare data centers are within 100ms of 90% of the planet; putting your content in Cloudflare’s cache gets it <em>physically</em> closer to your customers and visitors, meaning that visitors will see your website <em>faster</em> when they request it! (Plus, reading assets on our edge SSDs is really fast, rather than waiting for origins to generate a response.)</p>
-	<p>Second, caching helps <strong>reduce bandwidth costs </strong>associated with operating a presence on the Internet<strong>. </strong>Origin data transfer is one of the biggest expenses of running a web service, so serving content out of Cloudflare’s cache can significantly reduce costs incurred by origin infrastructure.</p>
-	<p>Because it’s not safe to cache all content (we wouldn’t want to cache your bank balance by default), Cloudflare relies on customers to tell us what’s safe to cache with <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control">HTTP Cache-Control headers</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules">page rules</a>. But even with page rules, it can be hard to understand what’s actually getting cached — or more importantly, what’s <em>not</em> getting cached, and why. Is a resource expired? Or was it even eligible for cache in the first place?</p>
-	<h2 id="faster-or-cheaper-why-not-both-">Faster or cheaper? Why not both!</h2>
+	<p>First, caching improves <b>performance</b>. Cloudflare data centers are within 100ms of 90% of the planet; putting your content in Cloudflare’s cache gets it <i>physically</i> closer to your customers and visitors, meaning that visitors will see your website <i>faster</i> when they request it! (Plus, reading assets on our edge SSDs is really fast, rather than waiting for origins to generate a response.)</p>
+	<p>Second, caching helps <b>reduce bandwidth costs</b> associated with operating a presence on the Internet**.** Origin data transfer is one of the biggest expenses of running a web service, so serving content out of Cloudflare’s cache can significantly reduce costs incurred by origin infrastructure.</p>
+	<p>Because it’s not safe to cache all content (we wouldn’t want to cache your bank balance by default), Cloudflare relies on customers to tell us what’s safe to cache with <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control">HTTP Cache-Control headers</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules">page rules</a>. But even with page rules, it can be hard to understand what’s actually getting cached — or more importantly, what’s <i>not</i> getting cached, and why. Is a resource expired? Or was it even eligible for cache in the first place?</p>
+	<h2>Faster or cheaper? Why not both!</h2>
 	<p>Cache Analytics was designed to help users understand how Cloudflare’s cache is performing, but it can also be used as a general-purpose analytics tool. Here I’ll give a quick walkthrough of the interface.</p>
-	<p>First, at the top-left, you should decide if you want to focus on <em>requests</em> or <em>data transfer.</em></p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/image2-6.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Cache Analytics enables you to toggle between views of requests and data transfer.</figcaption>
+	<p>First, at the top-left, you should decide if you want to focus on <i>requests</i> or <i>data transfer.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6E4TiwJwvHQDMIs0EmsRvG/44365a1b5ec63ec14574deedbea7ddf7/image2-6.png" alt="" class="kg-image" width="602" height="552" loading="lazy">
+
 	</figure>
-	<p>As a general rule, <em>requests</em> (the default view) is more useful for understanding <em>performance</em>, because every request that misses cache results in a performance hit. Data transfer is useful for understanding <em>cost</em>, because most hosts charge for every byte that leaves their network — every gigabyte served by Cloudflare translates into money saved at the origin.</p>
+	<p>Cache Analytics enables you to toggle between views of requests and data transfer.</p>
+	<p>As a general rule, <i>requests</i> (the default view) is more useful for understanding <i>performance</i>, because every request that misses cache results in a performance hit. Data transfer is useful for understanding <i>cost</i>, because most hosts charge for every byte that leaves their network — every gigabyte served by Cloudflare translates into money saved at the origin.</p>
 	<p>You can always toggle between these two views while keeping filters enabled.</p>
-	<h2 id="a-filter-for-every-occasion">A filter for every occasion</h2>
-	<p>Let’s say you’re focused on improving the performance of a specific subdomain on your zone. Cache Analytics allows flexible <em>filtering</em> of the data that’s important to you:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/image4-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Cache Analytics enables flexible filtering of data.</figcaption>
+	<h2>A filter for every occasion</h2>
+	<p>Let’s say you’re focused on improving the performance of a specific subdomain on your zone. Cache Analytics allows flexible <i>filtering</i> of the data that’s important to you:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iIzRLv4XmL8o4nmtKGzH4/f6c1b4448e94ac5fecc689f30b96715c/image4-2.png" alt="" class="kg-image" width="932" height="452" loading="lazy">
+
 	</figure>
+	<p>Cache Analytics enables flexible filtering of data.</p>
 	<p>Filtering is essential for zooming in on the chunk of traffic that you’re most interested in. You can filter by cache status, hostname, path, content type, and more. This is helpful, for example, if you’re trying to reduce data transfer for a specific subdomain, or are trying to tune the performance of your HTML pages.</p>
-	<h2 id="seeing-the-big-picture">Seeing the big picture</h2>
+	<h2>Seeing the big picture</h2>
 	<p>When analyzing traffic patterns, it’s essential to understand how things change over time. Perhaps you just applied a configuration change and want to see the impact, or just launched a big sale on your <a href="https://www.cloudflare.com/ecommerce">e-commerce site</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qAzVrLDsOjvybzVUIipiB/66e2d52433549cf9b9f0c6025bbcf4f7/image5-4.png" alt="" class="kg-image" width="1882" height="998" loading="lazy">
+
+	</figure>
 	<p>“Served by Cloudflare” indicates traffic that we were able to serve from our edge without reaching your origin server. “Served by Origin” indicates traffic that was proxied back to origin servers. (It can be really satisfying to add a page rule and see the amount of traffic “Served by Cloudflare” go up!)</p>
-	<p>Note that this graph will change significantly when you switch between “Requests” and “Data Transfer.” <em>Revalidated</em> requests are particularly interesting; because Cloudflare checks with the origin before returning a result from cache, these count as “Served by Cloudflare” for the purposes of data transfer, but “Served by Origin” for the purposes of “requests.”</p>
-	<h2 id="slicing-the-pie">Slicing the pie</h2>
-	<p>After the high-level summary, we show an overview of cache status, which explains <em>why </em>traffic might be served from Cloudflare or from origin. We also show a breakdown of cache status by <em>Content-Type</em> to give an overview on how different components of your website perform:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/image3-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Note that this graph will change significantly when you switch between “Requests” and “Data Transfer.” <i>Revalidated</i> requests are particularly interesting; because Cloudflare checks with the origin before returning a result from cache, these count as “Served by Cloudflare” for the purposes of data transfer, but “Served by Origin” for the purposes of “requests.”</p>
+	<h2>Slicing the pie</h2>
+	<p>After the high-level summary, we show an overview of cache status, which explains <i>why</i> traffic might be served from Cloudflare or from origin. We also show a breakdown of cache status by <i>Content-Type</i> to give an overview on how different components of your website perform:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54lsfNe9UwuV39o5WSbahf/78a037a48847a830b402b12339889c77/image3-4.png" alt="" class="kg-image" width="1876" height="902" loading="lazy">
+
+	</figure>
 	<p>Cache statuses are also essential for understanding what you need to do to optimize cache ratios. For example:</p>
 	<ul>
-		<li><strong><strong><strong>Dynamic </strong></strong></strong>indicates that a request was never eligible for cache, and went straight to origin. This is the default for many file types, including HTML. <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules">Learn more about making more content eligible for cache using page rules</a>. Fixing this is one of the fastest ways to reduce origin data transfer cost.</li>
-		<li><strong><strong><strong>Revalidated</strong> </strong></strong>indicates content that was expired, but after Cloudflare checked the origin, it was still fresh! If you see a lot of revalidated content, it’s a good sign you should increase your Edge Cache TTLs through a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427#summary-of-page-rules-settings">page rule</a> or <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control">max-age origin directive</a>. Updating TTLs is one of the easiest ways to make your site faster.</li>
-		<li><strong><strong><strong>Expired </strong></strong></strong>resources are ones that were in our cache, but were expired. Consider if you can extend TTLs on these, or at least support revalidation at your origin.</li>
-		<li>A <strong><strong><strong>miss </strong></strong></strong>indicates that Cloudflare has not seen that resource recently. These can be tricky to optimize, but there are a few potential remedies: Enable <a href="https://support.cloudflare.com/hc/en-us/articles/115000224552">Argo Tiered Caching</a> to check another datacenter’s cache before going to origin, or use a <a href="https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys#6aSlDJLc9DvvBv5mXc2n4O">Custom Cache Key</a> to make multiple URLs match the same cached resource (for example, by ignoring query string)</li>
+		<li>
+			<p><b><b><b>Dynamic</b></b></b> indicates that a request was never eligible for cache, and went straight to origin. This is the default for many file types, including HTML. <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules">Learn more about making more content eligible for cache using page rules</a>. Fixing this is one of the fastest ways to reduce origin data transfer cost.</p>
+		</li>
+		<li>
+			<p><b><b><b>Revalidated</b></b></b> indicates content that was expired, but after Cloudflare checked the origin, it was still fresh! If you see a lot of revalidated content, it’s a good sign you should increase your Edge Cache TTLs through a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427#summary-of-page-rules-settings">page rule</a> or <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control">max-age origin directive</a>. Updating TTLs is one of the easiest ways to make your site faster.</p>
+		</li>
+		<li>
+			<p><b><b><b>Expired</b></b></b> resources are ones that were in our cache, but were expired. Consider if you can extend TTLs on these, or at least support revalidation at your origin.</p>
+		</li>
+		<li>
+			<p>A <b><b><b>miss</b></b></b> indicates that Cloudflare has not seen that resource recently. These can be tricky to optimize, but there are a few potential remedies: Enable <a href="https://support.cloudflare.com/hc/en-us/articles/115000224552">Argo Tiered Caching</a> to check another datacenter’s cache before going to origin, or use a <a href="https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys#6aSlDJLc9DvvBv5mXc2n4O">Custom Cache Key</a> to make multiple URLs match the same cached resource (for example, by ignoring query string)</p>
+		</li>
 	</ul>
 	<p>For a full explanation of each cache status, see our <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN">help center</a>.</p>
-	<h2 id="to-the-nth-dimension">To the Nth dimension</h2>
+	<h2>To the Nth dimension</h2>
 	<p>Finally, Cache Analytics shows a number of what we call “Top Ns” — various ways to slice and dice the above data on useful dimensions.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/image1-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zHWR6Nk3roxlDioqGsbXk/063d97714fef48b62dbcc1b6bab1a10c/image1-7.png" alt="" class="kg-image" width="1872" height="1274" loading="lazy">
+
+	</figure>
 	<p>It’s often helpful to apply filters (for example, to a specific cache status) before looking at these lists. For example, when trying to tune performance, I often filter to just “expired” or “revalidated,” then see if there are a few URLs that dominate these stats.</p>
-	<h2 id="but-wait-there-s-more">But wait, there’s more</h2>
+	<h2>But wait, there’s more</h2>
 	<p>Cache Analytics is available now for customers on our Pro, Business, and Enterprise plans. Pro customers have access to up to 3 days of analytics history. Business and Enterprise customers have access to up to 21 days, with more coming soon.</p>
 	<p>This is just the first step for Cache Analytics. We’re planning to add more dimensions to drill into the data. And we’re planning to add even more essential statistics — for example, about how cache keys are being used.</p>
 	<p>Finally, I’m really excited about Cache Analytics because it shows what we have in store for Cloudflare Analytics more broadly. We know that you’ve asked for many features— like per-hostname analytics, or the ability to see top URLs — for a long time, and we’re hard at work on bringing these to Zone Analytics. Stay tuned!</p>

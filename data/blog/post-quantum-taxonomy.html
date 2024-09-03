@@ -1,27 +1,50 @@
-<div class="mb2 gray5">15 min read</div>
+<div class="mb2 gray5">14 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image2-17.png" class="kg-image" alt="the first blogpost of the adventures in the Post-Quantum land series: a taxonomy of challenges." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YbIrwSzZaG5GIHfUgte1e/246959c6d64a5734493065fbcb77a1c3/image2-17.png" alt="the first blogpost of the adventures in the Post-Quantum land series: a taxonomy of challenges." class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we help to build a <a href="https://www.cloudflare.com/betterinternet">better Internet</a>. In the face of <a href="https://blog.cloudflare.com/securing-the-post-quantum-world">quantum computers and their threat to cryptography</a>, we want to provide protections for this future challenge. The only way that we can change the future is by analyzing and perusing the past. Only in the present, with the past in mind and the future in sight, can we categorize and unfold events. Predicting, understanding and anticipating quantum computers (with the opportunities and challenges they bring) is a daunting task. We can, though, create a taxonomy of these challenges, so the future can be better unrolled.</p>
 	<p>This is the first blog post in a post-quantum series, where we talk about our past, present and future “adventures in the Post-Quantum land”. We have <a href="https://blog.cloudflare.com/securing-the-post-quantum-world">written about previous post-quantum efforts</a> at Cloudflare, but we think that here first we need to understand and categorize the problem by looking at what we have done and what lies ahead. So, welcome to our adventures!</p>
 	<p>A taxonomy of the challenges ahead that quantum computers and their threat to cryptography bring (for more information about it, read <a href="https://blog.cloudflare.com/quantum-solace-and-spectre">our other blog posts</a>) could be a good way to approach this problem. This taxonomy should not only focus at the technical level, though. Quantum computers fundamentally change the way certain protocols, properties, storage and retrieval systems, and infrastructure need to work. Following the <a href="https://en.wikipedia.org/wiki/Taxonomy_(biology)">biological tradition</a>, we can see this taxonomy as the idea of grouping together problems into spaces and the arrangement of them into a classification that helps to understand what and who the problems impact. Following the same tradition, we can use the idea of <a href="https://en.wikipedia.org/wiki/Kingdom_(biology)">kingdoms</a> to classify those challenges. The kingdoms are (in no particular order):</p>
 	<ol>
-		<li>Challenges at the Protocols level, <em>Protocolla</em></li>
-		<li>Challenges at the implementation level, <em>Implementa</em></li>
-		<li>Challenges at the standardization level, <em>Regulae</em></li>
-		<li>Challenges at the community level: <em>Communitates</em></li>
-		<li>Challenges at the research level, <em>Investigationes</em></li>
+		<li>
+			<p>Challenges at the Protocols level, <i>Protocolla</i></p>
+		</li>
+		<li>
+			<p>Challenges at the implementation level, <i>Implementa</i></p>
+		</li>
+		<li>
+			<p>Challenges at the standardization level, <i>Regulae</i></p>
+		</li>
+		<li>
+			<p>Challenges at the community level: <i>Communitates</i></p>
+		</li>
+		<li>
+			<p>Challenges at the research level, <i>Investigationes</i></p>
+		</li>
 	</ol>
 	<p>Let’s explore them one by one.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/02/image1-16.png" class="kg-image" alt="Image of the taxonomy tree of the post-quantum challenges." loading="lazy">
-		<figcaption>The taxonomy tree of the post-quantum challenges.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LI4lo7slRYcSTCmVPR6bk/b497546b352c4dba2e0267e6bf8596a6/image1-16.png" alt="Image of the taxonomy tree of the post-quantum challenges." class="kg-image" width="1602" height="1344" loading="lazy">
+
 	</figure>
-	<h3 id="challenges-at-the-protocols-level-protocolla">Challenges at the Protocols level, <em>Protocolla</em></h3>
+	<p>The taxonomy tree of the post-quantum challenges.</p>
+	<h3>Challenges at the Protocols level, <i>Protocolla</i></h3>
 	<p>One conceptual model of the Internet is that it is composed of layers that stack on top of each other, as defined by the <a href="https://en.wikipedia.org/wiki/OSI_model">Open Systems Interconnection (OSI) model</a>. Communication protocols in each layer enable parties to interact with a corresponding one at the same layer. While quantum computers are a threat to the security and privacy of digital connections, they are not a direct threat to communication itself (we will see, though, that one of the consequences of the existence of quantum computers is how new algorithms that are safe to their attacks can impact the communication itself). But, if the protocol used in a layer aims to provide certain security or privacy properties, those properties can be endangered by a quantum computer. The properties that these protocols often aim to provide are <a href="https://users.ece.cmu.edu/~koopman/des_s99/security">confidentiality</a> (no one can read the content of communications), <a href="https://users.ece.cmu.edu/~koopman/des_s99/security">authentication</a> (communication parties are assured who they are talking to) and <a href="https://users.ece.cmu.edu/~koopman/des_s99/security">integrity</a> (the content of the communication is assured to have not been changed in transit).</p>
 	<p>Well-known examples of protocols that aim to provide security or privacy properties to protect the different layers are:</p>
 	<ul>
-		<li>For the Network layer: <a href="https://en.wikipedia.org/wiki/IPsec">IPsec </a>or <a href="https://www.wireguard.com/papers/wireguard.pdf">WireGuard</a>.</li>
-		<li>For the Transport layer: <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security (TLS)</a> or <a href="https://en.wikipedia.org/wiki/QUIC">QUIC</a>.</li>
-		<li>For the Application later: DNSSEC, <a href="https://datatracker.ietf.org/wg/mls/about">Message Layer Security (MLS)</a>, <a href="https://en.wikipedia.org/wiki/Secure_Shell">Secure Shell (SSH</a>), and many more.</li>
+		<li>
+			<p>For the Network layer: <a href="https://en.wikipedia.org/wiki/IPsec">IPsec</a> or <a href="https://www.wireguard.com/papers/wireguard.pdf">WireGuard</a>.</p>
+		</li>
+		<li>
+			<p>For the Transport layer: <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security (TLS)</a> or <a href="https://en.wikipedia.org/wiki/QUIC">QUIC</a>.</p>
+		</li>
+		<li>
+			<p>For the Application later: DNSSEC, <a href="https://datatracker.ietf.org/wg/mls/about">Message Layer Security (MLS)</a>, <a href="https://en.wikipedia.org/wiki/Secure_Shell">Secure Shell (SSH</a>), and many more.</p>
+		</li>
 	</ul>
 	<p>We know how to provide those properties (and protect the protocols) against the threat of quantum computers: the solution is to use post-quantum cryptography, and, for this reason, the National Institute of Standards and Technology (NIST) has been running an <a href="https://csrc.nist.gov/projects/post-quantum-cryptography">ongoing process</a> to choose the most suitable algorithms. At this protocol level, then, the problem doesn’t seem to be adding these new algorithms, as nothing impedes it from a theoretical perspective. But protocols and our connections often have other requirements or constraints. Requirements or constraints are, for example, that data to be exchanged fits into a specific packet or segment size. In the case of the Transport Control Protocol (TCP), which ensures that data packets are delivered and received in order, for example, the <a href="https://en.wikipedia.org/wiki/Maximum_segment_size">Maximum Segment Size</a> — <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mss">MSS</a> — sets the largest segment size that a network-connected device can receive and, if a packet exceeds the MSS, it is dropped (certain middleboxes or software desire all data to fit into a single segment). IPv4 hosts are required to handle an MSS of 536 bytes and IPv6 hosts are required to handle an MSS of 1220 bytes. In the case of <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>, it has primarily answered queries over the User Datagram Protocol (UDP), which limits the answer size to 512 bytes unless the extension EDNS is in use. Larger packets are subject to fragmentation or to the request that TCP should be used: this results in added round-trips, which should be avoided.</p>
 	<p>Another important requirement is that the operations that algorithms execute (such as multiplication or addition) or the resources they consume (which can be time but also space/memory) are fast enough that connection times are not impacted. This is even more pressing when fast, reliable and cheap Internet access is not available, as access to this “type” of Internet is not globally available.</p>
@@ -32,122 +55,227 @@
 	<p>While all the data seems to suggest that replacing classical cryptography by post-quantum cryptography in the key exchange phase of TLS handshakes is a straightforward exercise, the problem seems to be much harder for handshake authentication (or for any protocol that aims to give authentication, such as DNSSEC or IPsec). The majority of TLS handshakes achieve authentication by using digital signatures generated via advertised public keys in public certificates (what is called “certificate-based” authentication). Most of the post-quantum signature algorithms currently being considered for standardization in the NIST post-quantum process, have signatures or public keys that are much larger than their classical counterparts. Their operations’ computation time, in the majority of cases, is also much bigger. It is unclear how this will affect the TLS handshake latency and round-trip times, though we have a <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">better insight now</a> in respect to which sizes can be used. We still need to know how much slowdown will be acceptable for early adoption.</p>
 	<p>There seems to be several ways by which we can add post-quantum cryptography to the authentication phase of TLS. We can:</p>
 	<ul>
-		<li>Change the standard to reduce the number of signatures needed.</li>
-		<li>Use different post-quantum signature schemes that fit.</li>
-		<li>Or achieve authentication in a novel way.</li>
+		<li>
+			<p>Change the standard to reduce the number of signatures needed.</p>
+		</li>
+		<li>
+			<p>Use different post-quantum signature schemes that fit.</p>
+		</li>
+		<li>
+			<p>Or achieve authentication in a novel way.</p>
+		</li>
 	</ul>
 	<p>On the latter, a novel way to achieve certificate-based TLS authentication is to use KEMs, as their post-quantum versions have smaller sizes than post-quantum signatures. This mechanism is called <a href="https://eprint.iacr.org/2020/534">KEMTLS</a> and we ran a controlled <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">experiment</a> showing that it performs well, even when it adds an extra or full round trip to the handshake (KEMTLS adds half a round trip for server-only authentication and a full round-trip for mutual authentication). It is worth noting that we only experimented with replacing the authentication algorithm in the handshake itself and not all the authentication algorithms needed for the certificate chain. We used a mechanism called “<a href="https://blog.cloudflare.com/keyless-delegation">delegated credentials</a>” for this: since we can’t change the whole certificate chain to post-quantum cryptography (as it involves other actors beyond ourselves), we use this short-lived credential that advertises new algorithms. More details around this experiment can be found in <a href="https://eprint.iacr.org/2021/1019">our paper</a>.</p>
 	<p>Lastly, on the TLS front, <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we wanted to</a> test the notion that having bigger signatures (such as the post-quantum ones) noticeably impacts TLS handshake times. Since it is difficult to deploy post-quantum signatures to real-world connections, we found a way to emulate bigger signatures without having to modify clients. This emulation was done by using dummy data. The result of this experiment showed that even if large signatures fit in the TCP congestion window, there will still be a double-digit percentage slowdown due to the relatively low average Internet speed. This slowdown is a hard sell for browser vendors and for content servers to adopt. The ideal situation for early adoption seems to be that the six signatures and two public keys of the TLS handshake fit together within 9kB (the signatures are: two in the certificate chain, one handshake signature, one OCSP staple and two SCTs for certificate transparency).</p>
-	<p>After this TLS detour, we can now list the challenges at this kingdom, <em>Protocolla</em>, level. The challenges (in no order in particular) seem to be (divided into sections):</p>
-	<p><em>Storage of cryptographic parameters used during the protocol’s execution:</em></p>
+	<p>After this TLS detour, we can now list the challenges at this kingdom, <i>Protocolla</i>, level. The challenges (in no order in particular) seem to be (divided into sections):</p>
+	<p><i>Storage of cryptographic parameters used during the protocol’s execution:</i></p>
 	<ul>
-		<li>How are we going to properly store post-quantum cryptographic parameters, such as keys or certificates, that are generated for/during protocol execution (their sizes are bigger than what we are accustomed to)?</li>
-		<li>How is post-quantum cryptography going to work with stateless servers, ones that do not store session state and where every client request is treated as a new one, such as <a href="https://en.wikipedia.org/wiki/Network_File_System">NFS, Sun’s Network File System</a> (for an interesting discussion on the matter, see <a href="https://mctiny.org/mctiny-20191202.pdf">this paper</a>)?</li>
+		<li>
+			<p>How are we going to properly store post-quantum cryptographic parameters, such as keys or certificates, that are generated for/during protocol execution (their sizes are bigger than what we are accustomed to)?</p>
+		</li>
+		<li>
+			<p>How is post-quantum cryptography going to work with stateless servers, ones that do not store session state and where every client request is treated as a new one, such as <a href="https://en.wikipedia.org/wiki/Network_File_System">NFS, Sun’s Network File System</a> (for an interesting discussion on the matter, see <a href="https://mctiny.org/mctiny-20191202.pdf">this paper</a>)?</p>
+		</li>
 	</ul>
-	<p><em>Long-term operations and ephemeral ones:</em></p>
+	<p><i>Long-term operations and ephemeral ones:</i></p>
 	<ul>
-		<li>What are the impacts of using post-quantum cryptography for long-term operations or for ephemeral ones: will bigger parameters make ephemeral connections a problem?</li>
-		<li>Are security properties assumed in protocols preserved and could we relax others (such as IND-CCA or IND-CPA. For an interesting discussion on the matter, see <a href="https://eprint.iacr.org/2020/379.pdf">this paper</a>)?</li>
+		<li>
+			<p>What are the impacts of using post-quantum cryptography for long-term operations or for ephemeral ones: will bigger parameters make ephemeral connections a problem?</p>
+		</li>
+		<li>
+			<p>Are security properties assumed in protocols preserved and could we relax others (such as IND-CCA or IND-CPA. For an interesting discussion on the matter, see <a href="https://eprint.iacr.org/2020/379.pdf">this paper</a>)?</p>
+		</li>
 	</ul>
-	<p><em>Managing bigger keys and signatures:</em></p>
+	<p><i>Managing bigger keys and signatures:</i></p>
 	<ul>
-		<li>What are the impacts on latency and bandwidth?</li>
-		<li>Does the usage of post-quantum increase the roundtrips at the Network layer, for example? And, if so, are these increases tolerable?</li>
-		<li>Will the increased sizes cause dropped or fragmented packets?</li>
-		<li>Devices can occasionally have settings for packets smaller than expected: a router, for example, along a network path can have a maximum transmission unit, MTU (the MSS plus the TCP and IP headers), value set lower than the typical 1,500 bytes. In these scenarios, will post-quantum cryptography make these settings more difficult (one can apply <a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/administration/GUID-5ADD0FBB-7F30-4933-8737-2AC0D919EE3F.html">MSS clamping</a> for some cases)?</li>
+		<li>
+			<p>What are the impacts on latency and bandwidth?</p>
+		</li>
+		<li>
+			<p>Does the usage of post-quantum increase the roundtrips at the Network layer, for example? And, if so, are these increases tolerable?</p>
+		</li>
+		<li>
+			<p>Will the increased sizes cause dropped or fragmented packets?</p>
+		</li>
+		<li>
+			<p>Devices can occasionally have settings for packets smaller than expected: a router, for example, along a network path can have a maximum transmission unit, MTU (the MSS plus the TCP and IP headers), value set lower than the typical 1,500 bytes. In these scenarios, will post-quantum cryptography make these settings more difficult (one can apply <a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/administration/GUID-5ADD0FBB-7F30-4933-8737-2AC0D919EE3F.html">MSS clamping</a> for some cases)?</p>
+		</li>
 	</ul>
-	<p><em>Preservation of protocols as we know them:</em></p>
+	<p><i>Preservation of protocols as we know them:</i></p>
 	<ul>
-		<li>Can we achieve the same security or privacy properties as we use them today?</li>
-		<li>Can protocols change: should we change, for example, the way DNSSEC or the <a href="https://en.wikipedia.org/wiki/Public_key_infrastructure">PKI</a> work? Can we consider this radical change?</li>
-		<li>Can we integrate and deploy novel ways to achieve authentication?</li>
+		<li>
+			<p>Can we achieve the same security or privacy properties as we use them today?</p>
+		</li>
+		<li>
+			<p>Can protocols change: should we change, for example, the way DNSSEC or the <a href="https://en.wikipedia.org/wiki/Public_key_infrastructure">PKI</a> work? Can we consider this radical change?</p>
+		</li>
+		<li>
+			<p>Can we integrate and deploy novel ways to achieve authentication?</p>
+		</li>
 	</ul>
-	<p><em>Hardware (or novel alternative to hardware) usage during protocol’s execution:</em></p>
+	<p><i>Hardware (or novel alternative to hardware) usage during protocol’s execution:</i></p>
 	<ul>
-		<li>Is <a href="https://www.nist.gov/publications/post-quantum-cryptography-and-5g-security-tutorial">post-quantum cryptography</a> going to impact <a href="https://docbox.etsi.org/isg/nfv/open/Publications_pdf/White%20Papers/NFV_White_Paper1_2012.pdf">network function virtualization</a> (as used in 5G cellular networks)?</li>
-		<li>Will middleware, such as middleboxes, be able to handle post-quantum cryptography (as noted in “<a href="https://www.chromium.org/cecpq2">The Chromium Projects</a>”)?</li>
-		<li>What will be the impacts on mobile device’s connections?</li>
-		<li>What will be the impacts on old servers and clients?</li>
+		<li>
+			<p>Is <a href="https://www.nist.gov/publications/post-quantum-cryptography-and-5g-security-tutorial">post-quantum cryptography</a> going to impact <a href="https://docbox.etsi.org/isg/nfv/open/Publications_pdf/White%20Papers/NFV_White_Paper1_2012.pdf">network function virtualization</a> (as used in 5G cellular networks)?</p>
+		</li>
+		<li>
+			<p>Will middleware, such as middleboxes, be able to handle post-quantum cryptography (as noted in “<a href="https://www.chromium.org/cecpq2">The Chromium Projects</a>”)?</p>
+		</li>
+		<li>
+			<p>What will be the impacts on mobile device’s connections?</p>
+		</li>
+		<li>
+			<p>What will be the impacts on old servers and clients?</p>
+		</li>
 	</ul>
-	<p><em>Novel attacks:</em></p>
+	<p><i>Novel attacks:</i></p>
 	<ul>
-		<li>Will post-quantum cryptography increase the possibility of mounting denial of service attacks?</li>
+		<li>
+			<p>Will post-quantum cryptography increase the possibility of mounting denial of service attacks?</p>
+		</li>
 	</ul>
-	<h3 id="challenges-at-the-implementation-level-implementa">Challenges at the Implementation level, <em>Implementa</em></h3>
+	<h3>Challenges at the Implementation level, <i>Implementa</i></h3>
 	<p>The second kingdom that we are going to look at is the one that deals with the implementation of post-quantum algorithms. The ongoing NIST process is standardizing post-quantum algorithms on two fronts: those that help preserve confidentiality (KEMs) and those that provide authentication (signatures). There are other algorithms not currently part of the process that already can be used in a post-quantum world, such as <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf">hash-based signatures</a> (for example, <a href="https://datatracker.ietf.org/doc/html/rfc8391">XMSS</a>).</p>
 	<p>What must happen for algorithms to be widely deployed? What are the steps they need to take in order to be usable by protocols or for data at rest? The usual path that algorithms take is:</p>
 	<ol>
-		<li>Standardization: usually by a standardization body. We will talk about it further in the next section.</li>
-		<li>Efficiency at an algorithmic level: by finding new ways to speed up operations in an algorithm. In the case of Elliptic Curve Cryptography, for example, it happened with the usage of <a href="https://link.springer.com/chapter/10.1007/3-540-44647-8_11">endomorphisms for faster scalar multiplication</a>.</li>
-		<li>Efficient software implementations: by identifying the pitfalls that cause increase in time or space consumption (in the case of ECC, <a href="https://link.springer.com/content/pdf/10.1007%2F3-540-44499-8_1.pdf">this paper</a> can illustrate these efforts), and fixing them. An optimal implementation is always dependent on the target, though: where it will be used.</li>
-		<li>Hardware efficiency: by using, for example, <a href="https://en.wikipedia.org/wiki/Hardware_acceleration">hardware acceleration</a>.</li>
-		<li>Avoidance of attacks: by looking at the usual pitfalls of algorithms which, in practice, are <a href="https://en.wikipedia.org/wiki/Side-channel_attack">side-channel attacks</a>.</li>
+		<li>
+			<p>Standardization: usually by a standardization body. We will talk about it further in the next section.</p>
+		</li>
+		<li>
+			<p>Efficiency at an algorithmic level: by finding new ways to speed up operations in an algorithm. In the case of Elliptic Curve Cryptography, for example, it happened with the usage of <a href="https://link.springer.com/chapter/10.1007/3-540-44647-8_11">endomorphisms for faster scalar multiplication</a>.</p>
+		</li>
+		<li>
+			<p>Efficient software implementations: by identifying the pitfalls that cause increase in time or space consumption (in the case of ECC, <a href="https://link.springer.com/content/pdf/10.1007%2F3-540-44499-8_1.pdf">this paper</a> can illustrate these efforts), and fixing them. An optimal implementation is always dependent on the target, though: where it will be used.</p>
+		</li>
+		<li>
+			<p>Hardware efficiency: by using, for example, <a href="https://en.wikipedia.org/wiki/Hardware_acceleration">hardware acceleration</a>.</p>
+		</li>
+		<li>
+			<p>Avoidance of attacks: by looking at the usual pitfalls of algorithms which, in practice, are <a href="https://en.wikipedia.org/wiki/Side-channel_attack">side-channel attacks</a>.</p>
+		</li>
 	</ol>
 	<p>Implementation of post-quantum cryptography will follow (and is following) the same path. <a href="https://en.wikipedia.org/wiki/Lattice-based_cryptography">Lattice-based cryptography</a> for KEMs, for example, has taken <a href="https://eprint.iacr.org/2016/461.pdf">many steps</a> in order to be faster than ECC (but, from a protocol level perspective, it is inefficient than them, as their parameters are bigger than ECC ones and might cause extra round-trips). <a href="https://arxiv.org/pdf/1711.04062.pdf">Isogeny-based cryptography</a>, on the other hand, is still too slow (due to <a href="https://www.martindale.info/car_article.pdf">long isogenies evaluation</a>), but it is an active area of research.</p>
-	<p>The challenges at this kingdom, <em>Implementa</em>, (in no particular order) level are:</p>
+	<p>The challenges at this kingdom, <i>Implementa</i>, (in no particular order) level are:</p>
 	<ul>
-		<li>Efficiency of algorithms: can we make them faster at the software, hardware (by using &nbsp;acceleration or FPGA-based research) or at an algorithmic level (with new data structures or parallelization techniques) to meet the requirements of network protocols and <a href="https://www.cloudflare.com/en-gb/learning/performance/more/speed-up-the-web">ever-fastest connections</a>?</li>
-		<li>Can we use new mechanisms to accelerate algorithms (such as, for example, the usage of floating point numbers as in the <a href="https://falcon-sign.info">Falcon signature scheme</a>)? Will this lead to <a href="https://cryptoservices.github.io/post-quantum/cryptography/2019/09/18/new-falcon-impl.html">portability issues</a> as it might be dependent on the underlying architecture?</li>
-		<li>What is the asymptotic complexity of post-quantum algorithms (how they impact time and space)?</li>
-		<li>How will post-quantum algorithms work on embedded devices due to their limited capacity (see this <a href="https://arxiv.org/abs/2106.05577">paper</a> for more explanations)?</li>
-		<li>How can we avoid attacks, failures in security proofs and misuse of APIs?</li>
-		<li>Can we provide correct testing of these algorithms?</li>
-		<li>Can we ensure <a href="https://www.bearssl.org/constanttime.html">constant-time</a> needs for the algorithms?</li>
-		<li>What will happen in a disaster-recovery mode: what happens if an algorithm is found to be weaker than expected or is fully broken? How will we be able to remove or update this algorithm? How can we make sure there are transition paths to recover from a cryptographical weakening?</li>
+		<li>
+			<p>Efficiency of algorithms: can we make them faster at the software, hardware (by using &nbsp;acceleration or FPGA-based research) or at an algorithmic level (with new data structures or parallelization techniques) to meet the requirements of network protocols and <a href="https://www.cloudflare.com/en-gb/learning/performance/more/speed-up-the-web">ever-fastest connections</a>?</p>
+		</li>
+		<li>
+			<p>Can we use new mechanisms to accelerate algorithms (such as, for example, the usage of floating point numbers as in the <a href="https://falcon-sign.info">Falcon signature scheme</a>)? Will this lead to <a href="https://cryptoservices.github.io/post-quantum/cryptography/2019/09/18/new-falcon-impl.html">portability issues</a> as it might be dependent on the underlying architecture?</p>
+		</li>
+		<li>
+			<p>What is the asymptotic complexity of post-quantum algorithms (how they impact time and space)?</p>
+		</li>
+		<li>
+			<p>How will post-quantum algorithms work on embedded devices due to their limited capacity (see this <a href="https://arxiv.org/abs/2106.05577">paper</a> for more explanations)?</p>
+		</li>
+		<li>
+			<p>How can we avoid attacks, failures in security proofs and misuse of APIs?</p>
+		</li>
+		<li>
+			<p>Can we provide correct testing of these algorithms?</p>
+		</li>
+		<li>
+			<p>Can we ensure <a href="https://www.bearssl.org/constanttime.html">constant-time</a> needs for the algorithms?</p>
+		</li>
+		<li>
+			<p>What will happen in a disaster-recovery mode: what happens if an algorithm is found to be weaker than expected or is fully broken? How will we be able to remove or update this algorithm? How can we make sure there are transition paths to recover from a cryptographical weakening?</p>
+		</li>
 	</ul>
 	<p>At Cloudflare, we have also worked on implementation of post-quantum algorithms. We published our own library (<a href="https://github.com/cloudflare/circl">CIRCL</a>) that contains high-speed assembly versions of several post-quantum algorithms (like <a href="https://pq-crystals.org/kyber">Kyber</a>, <a href="https://pq-crystals.org/dilithium">Dilithium</a>, <a href="https://sike.org">SIKE</a> and <a href="https://eprint.iacr.org/2018/383.pdf">CSIDH</a>). We believe that providing these implementations for public use will help others with the transition to post-quantum cryptography by giving easy-to-use APIs that developers can integrate into their projects.</p>
-	<h3 id="challenges-at-the-standards-level-regulae">Challenges at the Standards level, <em>Regulae</em></h3>
+	<h3>Challenges at the Standards level, <i>Regulae</i></h3>
 	<p>The third kingdom deals with the standardization process as done by different bodies of organizations (such NIST or the Internet Engineering Task Force — IETF). We have talked a little about the matter in the previous section as it involves the standardization of both protocols and algorithms. Standardization can be a long process due to the need for careful discussion, and this discussion will be needed for the standardization of post-quantum algorithms. Post-quantum cryptography is based on mathematical constructions that are not widely known by the engineering community, which can then lead to difficulty levels when standardizing.</p>
-	<p>The challenges in this kingdom, <em>Regulae</em>, (in no particular order) are:</p><!--kg-card-begin: markdown-->
+	<p>The challenges in this kingdom, <i>Regulae</i>, (in no particular order) are:</p>
 	<ul>
-		<li>The mathematical base of post-quantum cryptography is an active area of development and research, and there are some concerns in the security they give (are there new attacks in the confidentiality or authentication they give?). How will standardization bodies approach this problem?</li>
-		<li>Post-quantum cryptography introduces new models in which to analyze the security of algorithms (for example, the usage of the <a href="https://eprint.iacr.org/2010/428.pdf">Quantum Random Oracle Model</a>). Will this mean that new attacks or adversaries will not be noted at the standards level?</li>
-		<li>What will be the recommendation of migrating to post-quantum cryptography from the standards' perspective: will we use a <a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design">hybrid approach</a>?</li>
-		<li>How can we bridge the academic/research community into the standardization community, so analysis of protocols are executed and attacks are found on time (prior to being widely deployed)<sup>1</sup>? How can we make sure that standards bodies are informed enough to make the right practical/theoretical trade-offs?</li>
+		<li>
+			<p>The mathematical base of post-quantum cryptography is an active area of development and research, and there are some concerns in the security they give (are there new attacks in the confidentiality or authentication they give?). How will standardization bodies approach this problem?</p>
+		</li>
+		<li>
+			<p>Post-quantum cryptography introduces new models in which to analyze the security of algorithms (for example, the usage of the <a href="https://eprint.iacr.org/2010/428.pdf">Quantum Random Oracle Model</a>). Will this mean that new attacks or adversaries will not be noted at the standards level?</p>
+		</li>
+		<li>
+			<p>What will be the recommendation of migrating to post-quantum cryptography from the standards' perspective: will we use a <a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design">hybrid approach</a>?</p>
+		</li>
+		<li>
+			<p>How can we bridge the academic/research community into the standardization community, so analysis of protocols are executed and attacks are found on time (prior to being widely deployed)<sup>1</sup>? How can we make sure that standards bodies are informed enough to make the right practical/theoretical trade-offs?</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 	<p>At Cloudflare, we are closely collaborating with standardization bodies to prepare the path for post-quantum cryptography (see, for example, the <a href="https://github.com/claucece/draft-celi-wiggers-tls-authkem">AuthKEM</a> draft at IETF).</p>
-	<h3 id="challenges-at-the-community-level-comunitates">Challenges at the Community level, <em>Comunitates</em></h3>
+	<h3>Challenges at the Community level, <i>Comunitates</i></h3>
 	<p>The Internet is not an isolated system: it is a community of different actors coming together to make protocols and systems work. Migrating to post-quantum cryptography means sitting together as a community to update systems and understand the different needs. This is one of the reasons why, at Cloudflare, we are organizing a second installment of the <a href="https://www.sofiaceli.com/PQNet-Workshop">PQNet workshop</a> (expected to be colocated with <a href="https://rwc.iacr.org/2022">Real World Crypto 2022</a> on April 2022) for experts on post-quantum cryptography to talk about the challenges of putting it into protocols, systems and architectures.</p>
-	<p>The challenges in this kingdom, <em>Comunitates</em>, are:</p>
+	<p>The challenges in this kingdom, <i>Comunitates</i>, are:</p>
 	<ul>
-		<li>What are the needs of different systems? While we know what the needs of different protocols are, we don’t know exactly how all deployed systems and services work. Are there further restrictions?</li>
-		<li>On certain systems (for example, on the PKI), when will the migration happen, and how will it be coordinated?</li>
-		<li>How will the migration be communicated to the end-user?</li>
-		<li>How will we deprecate pre-quantum cryptography?</li>
-		<li>How will we integrate post-quantum cryptography into systems where algorithms are hardcoded (such as IoT devices)?</li>
-		<li>Who will maintain implementations of post-quantum algorithms and protocols? Is there incentive and funding for a diverse set of interoperable implementations?</li>
+		<li>
+			<p>What are the needs of different systems? While we know what the needs of different protocols are, we don’t know exactly how all deployed systems and services work. Are there further restrictions?</p>
+		</li>
+		<li>
+			<p>On certain systems (for example, on the PKI), when will the migration happen, and how will it be coordinated?</p>
+		</li>
+		<li>
+			<p>How will the migration be communicated to the end-user?</p>
+		</li>
+		<li>
+			<p>How will we deprecate pre-quantum cryptography?</p>
+		</li>
+		<li>
+			<p>How will we integrate post-quantum cryptography into systems where algorithms are hardcoded (such as IoT devices)?</p>
+		</li>
+		<li>
+			<p>Who will maintain implementations of post-quantum algorithms and protocols? Is there incentive and funding for a diverse set of interoperable implementations?</p>
+		</li>
 	</ul>
-	<h3 id="challenges-at-the-research-level-investigationes">Challenges at the Research level, <em>Investigationes</em></h3>
+	<h3>Challenges at the Research level, <i>Investigationes</i></h3>
 	<p>Post-quantum cryptography is an active area of research. This research is not devoted only to how algorithms interact with protocols, systems and architectures (as we have seen), but it is heavily interested at the foundational level. The open challenges on this front are many. We will list four that are of the most interest to us:</p>
 	<ul>
-		<li>Are there any efficient and secure post-quantum non-interactive key exchange (NIKE) algorithms?</li>
+		<li>
+			<p>Are there any efficient and secure post-quantum non-interactive key exchange (NIKE) algorithms?</p>
+		</li>
 	</ul>
 	<p><a href="https://eprint.iacr.org/2012/732.pdf">NIKE</a> is a cryptographic algorithm which enables two participants, who know each others’ public keys, to agree on a shared key, without requiring any interaction. An example of a NIKE is the <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman algorithm</a>. There are no efficient and secure post-quantum NIKEs. A candidate seems to be <a href="https://eprint.iacr.org/2018/383.pdf">CSIDH</a>, which is rather slow and whose security <a href="https://csrc.nist.gov/CSRC/media/Events/Second-PQC-Standardization-Conference/documents/accepted-papers/stebila-prototyping-post-quantum.pdf">is debated</a>.</p>
 	<ul>
-		<li>Are there post-quantum alternatives to (V)OPRFs based protocols, such as <a href="https://blog.cloudflare.com/privacy-pass-v3">Privacy Pass</a> or <a href="https://blog.cloudflare.com/opaque-oblivious-passwords">OPAQUE</a>?</li>
-		<li>Are there post-quantum alternatives to other cryptographic schemes such as threshold signature schemes, credential based signatures and more?</li>
-		<li>How can post-quantum algorithms be formally verified with new notions such as the QROM?</li>
+		<li>
+			<p>Are there post-quantum alternatives to (V)OPRFs based protocols, such as <a href="https://blog.cloudflare.com/privacy-pass-v3">Privacy Pass</a> or <a href="https://blog.cloudflare.com/opaque-oblivious-passwords">OPAQUE</a>?</p>
+		</li>
+		<li>
+			<p>Are there post-quantum alternatives to other cryptographic schemes such as threshold signature schemes, credential based signatures and more?</p>
+		</li>
+		<li>
+			<p>How can post-quantum algorithms be formally verified with new notions such as the QROM?</p>
+		</li>
 	</ul>
-	<h3 id="post-quantum-future">Post-Quantum Future</h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/02/image3-19.png" class="kg-image" alt="Image of an atom." loading="lazy">
-		<figcaption>The future of Cloudflare is post-quantum.</figcaption>
+	<h3>Post-Quantum Future</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fSXz737Szc3uhVJsP7M2Z/cd903967ac7a08412b9ba8d40008671a/image3-19.png" alt="Image of an atom." class="kg-image" width="1200" height="500" loading="lazy">
+
 	</figure>
+	<p>The future of Cloudflare is post-quantum.</p>
 	<p>What is the post-quantum future at Cloudflare? There are many avenues that we explore in this blog series. While all of these experiments have given us some good and reliable information for the post-quantum migration, we further need tests in different network environments and with broader connections. We also need to test how post-quantum cryptography fits into different architectures and systems. We are preparing a bigger, wide-scale post-quantum effort that will give more insight into what can be done for real-world connections.</p>
 	<p>In this series of blog posts, we will be looking at:</p>
 	<ul>
-		<li>What has been happening in the quantum research world in the last years and how it impacts post-quantum efforts.</li>
-		<li>What is a post-quantum algorithm: explanations of KEMs and signatures, and their security properties.</li>
-		<li>How one integrates post-quantum algorithms into protocols.</li>
-		<li>What is formal verification, analysis and implementation, and how it is needed for the post-quantum transition.</li>
-		<li>What does it mean to implement post-quantum cryptography: we will look at our efforts making Logfwdr, Cloudflare Tunnel and Gokeyless post-quantum.</li>
-		<li>What does the future hold for a post-quantum Cloudflare.</li>
+		<li>
+			<p>What has been happening in the quantum research world in the last years and how it impacts post-quantum efforts.</p>
+		</li>
+		<li>
+			<p>What is a post-quantum algorithm: explanations of KEMs and signatures, and their security properties.</p>
+		</li>
+		<li>
+			<p>How one integrates post-quantum algorithms into protocols.</p>
+		</li>
+		<li>
+			<p>What is formal verification, analysis and implementation, and how it is needed for the post-quantum transition.</p>
+		</li>
+		<li>
+			<p>What does it mean to implement post-quantum cryptography: we will look at our efforts making Logfwdr, Cloudflare Tunnel and Gokeyless post-quantum.</p>
+		</li>
+		<li>
+			<p>What does the future hold for a post-quantum Cloudflare.</p>
+		</li>
 	</ul>
 	<p>See you in the next blogpost and prepare for a better, safer, faster and quantum-protected Internet!</p>
-	<p>If you are a student enrolled in a PhD or equivalent research program and looking for an internship for 2022, see <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=University&amp;location=default"><strong>open opportunities</strong></a><strong>.</strong></p>
+	<p>If you are a student enrolled in a PhD or equivalent research program and looking for an internship for 2022, see <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=University&amp;location=default"><b>open opportunities</b></a><b>.</b></p>
 	<p>If you’re interested in contributing to projects helping Cloudflare, <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering&amp;location=default">our engineering teams are hiring</a>.</p>
 	<p>You can reach us with questions, comments, and research ideas at <a href="mailto:ask-research@cloudflare.com">ask-research@cloudflare.com</a>.</p>
-	<p>.......</p><!--kg-card-begin: markdown-->
-	<p><small><sup>1</sup>A success scenario of this is the standardization of TLS 1.3 (in comparison to TLS 1.0-1.2) as it involved the formal verification community, which helped bridge the academic-standards communities to good effect. Read <a href="https://pure.royalholloway.ac.uk/portal/files/27884959/paper.pdf">the analysis</a> of this novel process. </small></p>
-	<!--kg-card-end: markdown-->
+	<p>.......</p>
+	<p><sup>1</sup>A success scenario of this is the standardization of TLS 1.3 (in comparison to TLS 1.0-1.2) as it involved the formal verification community, which helped bridge the academic-standards communities to good effect. Read <a href="https://pure.royalholloway.ac.uk/portal/files/27884959/paper.pdf">the analysis</a> of this novel process.</p>
 </div>

@@ -1,32 +1,48 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/04/aus-nz.png" alt="" loading="lazy"></p>
-	<p>The genesis of our 33rd and 34th data centers in Auckland and Melbourne started a short hop away in nearby Sydney. Prior to these deployments traffic from all of New Zealand and Australia's collective 23 million Internet users was routed through CloudFlare's <a href="https://blog.cloudflare.com/sydney-australia-cloudflares-15th-data-center">Sydney data center</a>. Even for those in faraway Perth, the time necessary to reach our Sydney PoP was a mere 55ms of <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a>. By comparison, the blink of an eye takes 300-400ms. In other words, latency wasn't exactly the pressing concern. The <em>real</em> concern was a failure scenario in our Sydney data center.</p>
-	<p>Fortunately, our entire architecture starts with an assumption: failure is going to happen. As a result, we plan for failure at every level and have designed a system to gracefully handle it when it occurs. Even though we now maintain multiple layers of redundancy—from power supplies and power circuits to line cards, routing engines and network providers—our ultimate level of redundancy is in the ability to fail out an entire data center in favor of another. In the past we've even written about how this might even play out in the case of a <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">global thermonuclear war</a>. In this instance, the challenge we set out to solve was not how to fail gracefully, but how to fail gracefully <em>without</em> materially increasing latency for the millions of applications that depend on our network in the Oceania region.</p>
-	<h3 id="graceandspeed">Grace and speed</h3>
-	<p>Prior to our Auckland and Melbourne data centers, a failure in Sydney meant a shift in traffic to the West Coast of the US or Southeast Asia adding significant, and noticeable, latency to our users' applications (<em>spoiler:</em> it now fails over to Auckland and Melbourne with minimal latency!). But before we get to how the Kiwi's and Australia's "second city" saved the day, it is important to understand how the Internet "works" in Oceania. As we set out to create resiliency in-region, we considered several options:</p>
-	<h4 id="planasecondredundantdatacenterinsydney">Plan A: Second (redundant) data center in Sydney</h4>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2W5Y5EhCBeCYjD5Az5bAc2/b39e09c9e59570a436ffae8ae5b179ac/aus-nz.png" alt="" class="kg-image" width="640" height="307" loading="lazy">
+
+	</figure>
+	<p>The genesis of our 33rd and 34th data centers in Auckland and Melbourne started a short hop away in nearby Sydney. Prior to these deployments traffic from all of New Zealand and Australia's collective 23 million Internet users was routed through CloudFlare's <a href="https://blog.cloudflare.com/sydney-australia-cloudflares-15th-data-center">Sydney data center</a>. Even for those in faraway Perth, the time necessary to reach our Sydney PoP was a mere 55ms of <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a>. By comparison, the blink of an eye takes 300-400ms. In other words, latency wasn't exactly the pressing concern. The <i>real</i> concern was a failure scenario in our Sydney data center.</p>
+	<p>Fortunately, our entire architecture starts with an assumption: failure is going to happen. As a result, we plan for failure at every level and have designed a system to gracefully handle it when it occurs. Even though we now maintain multiple layers of redundancy—from power supplies and power circuits to line cards, routing engines and network providers—our ultimate level of redundancy is in the ability to fail out an entire data center in favor of another. In the past we've even written about how this might even play out in the case of a <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">global thermonuclear war</a>. In this instance, the challenge we set out to solve was not how to fail gracefully, but how to fail gracefully <i>without</i> materially increasing latency for the millions of applications that depend on our network in the Oceania region.</p>
+	<h3>Grace and speed</h3>
+	<p>Prior to our Auckland and Melbourne data centers, a failure in Sydney meant a shift in traffic to the West Coast of the US or Southeast Asia adding significant, and noticeable, latency to our users' applications (<i>spoiler:</i> it now fails over to Auckland and Melbourne with minimal latency!). But before we get to how the Kiwi's and Australia's "second city" saved the day, it is important to understand how the Internet "works" in Oceania. As we set out to create resiliency in-region, we considered several options:</p>
+	<h4>Plan A: Second (redundant) data center in Sydney</h4>
 	<p>At first blush a second facility in Sydney would seem to solve most imaginable failure scenarios (perhaps save a nuclear one). However, when it comes to the Internet, things are rarely intuitive. Australia, at least in the context of the Internet, is very Sydney-centric. The vast majority of traffic from Australia to the rest of the Internet passes through a single data center (which just so happens to be the same exact facility in which we are currently located). Even if we were to make a redundant deployment in a completely separate facility, traffic to that facility would still have to pass through the same potential point of failure: our current facility. Not to mention, a second facility in Sydney would neither reduce latency and improve performance for a larger subset of Internet users in the region nor localize our traffic any further than it already was. It also wouldn't have opened up any new peering opportunities which, as we've explained in a prior <a href="https://blog.cloudflare.com/cloudflare-joins-three-more-peering-exchanges-in-australia">blog post</a>, is of immense importance to the performance and overall health of our network.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/03/aus-pops-sydney-1.png" alt="" loading="lazy"><br>
-		<small><em>Not enough redundancy. No performance gain from status quo.</em></small>
-	</p>
-	<h4 id="planbaddadatacenterinauckland">Plan B: Add a data center in Auckland</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KpTUPwnKjCml13Tuv4lWG/2f9f177323761c3181aaecbe78800be8/aus-pops-sydney-1.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
+
+	</figure>
+	<p><i>Not enough redundancy. No performance gain from status quo.</i></p>
+	<h4>Plan B: Add a data center in Auckland</h4>
 	<p>Out of left pitch came Auckland. Although not an obvious choice, Auckland is rather uniquely situated to provide redundancy in-region as a result of how many operators have constructed their networks: by building or buying a 3 drop ring between New Zealand-Australia, Australia-USA, and USA-New Zealand.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/04/map-1.gif" alt="" loading="lazy"></p>
-	<p>Because traffic is only heavily utilized in one direction, <em>towards</em> New Zealand, this leaves a lot of free capacity between New Zealand-Australia (i.e. <em>from</em> New Zealand). After working with various providers, we've structured a solution that allows us to reduce latency and further localize traffic for Internet users in New Zealand while <em>also</em> allowing for full redundancy between both Auckland, Sydney and the rest of Oceania. Not to mention, CloudFlare is now a member of New Zealand's largest peering exchange, <a href="http://ape.nzix.net">APE-IX</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/04/aus-pops-auckland.png" alt="" loading="lazy"><br>
-		<small><em>Redundancy and performance gains versus the status quo.</em></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WuzE3YpRrToyhp6Qq9rDY/87ca58e96b36be5948c0a81a79f06880/map-1.gif" alt="" class="kg-image" width="405" height="299" loading="lazy">
+
+	</figure>
+	<p>Because traffic is only heavily utilized in one direction, <i>towards</i> New Zealand, this leaves a lot of free capacity between New Zealand-Australia (i.e. <i>from</i> New Zealand). After working with various providers, we've structured a solution that allows us to reduce latency and further localize traffic for Internet users in New Zealand while <i>also</i> allowing for full redundancy between both Auckland, Sydney and the rest of Oceania. Not to mention, CloudFlare is now a member of New Zealand's largest peering exchange, <a href="http://ape.nzix.net">APE-IX</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hc6GXzHHuQIIkcP0F2nHb/ea684546b559eefe406759bcf82de876/aus-pops-auckland.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
+
+	</figure>
+	<p><i>Redundancy and performance gains versus the status quo.</i></p>
 	<p>But why stop there?</p>
-	<h4 id="plancaddadatacenterinaucklandandmelbourne">Plan C: Add a data center in Auckland AND Melbourne</h4>
+	<h4>Plan C: Add a data center in Auckland AND Melbourne</h4>
 	<p>Despite achieving the desired level of redundancy and performance gains in New Zealand through our own version of the <a href="https://en.wikipedia.org/wiki/Trans-Tasman_Travel_Arrangement">Trans-Tasman arrangement</a>, we figured that both Kiwi’s and Aussies would prefer not to have the others' redundancy deposited at their doorstep. So, along came Melbourne as a complement to Auckland. Our Melbourne data center offers the same benefits of content localization and performance improvement for Internet users south of the border, as well as domestic redundancy in the case of a data center failure.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/04/aus-pops-melbourne.png" alt="" loading="lazy"><br>
-		<small><em>Latency improvement and additional redundancy.</em></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/tj4UsfEkenMu8Phwl9KcT/2bfc6dc32fd41e673b919aca3dac2fc7/aus-pops-melbourne.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
+
+	</figure>
+	<p><i>Latency improvement and additional redundancy.</i></p>
 	<p>Problem solved, right? Almost...</p>
-	<h3 id="theaucklandsituation">The Auckland situation</h3>
+	<h3>The Auckland situation</h3>
 	<p>The Auckland fiber situation is an interesting one. Auckland is situated around a harbour. Over this harbour is a bridge which most of the fiber in the city runs across, with a small amount running via a much longer path around the harbour (think 30km longer fiber runs). Purchasing fiber between the areas of the city separated by the harbour costs more than a Kim Dotcom political party (i.e. a lot of money).</p>
 	<p>The bulk of the country's Internet providers (particularly the smaller ones) exist only south of the harbour bridge. The cable landing stations and many of the data centers, on the other hand, only exist north of the harbour bridge. If you are as performance obsessed as we are, you want to be south of the bridge so that you can peer with all networks in as inexpensive, resilient and easy manner as possible. But for us, the vetting process didn't stop there. The specific site we selected is the core node for most major New Zealand transit providers, allows us to interconnect with nearly every provider from within the same facility, and hosts a core node of the local peering exchange.</p>
-	<p>Now that our Auckland DC is live, some users in New Zealand may notice that their ISPs continue to route to CloudFlare in Sydney. That makes no sense you say!? We agree! Despite our best efforts, it takes two to tango. Should this be the case with your ISP, let them know...hopefully that will <b><em>spark</em></b> a conversation.</p>
-	<!--kg-card-end: markdown-->
+	<p>Now that our Auckland DC is live, some users in New Zealand may notice that their ISPs continue to route to CloudFlare in Sydney. That makes no sense you say!? We agree! Despite our best efforts, it takes two to tango. Should this be the case with your ISP, let them know...hopefully that will <i><b>spark</b></i> a conversation.</p>
 </div>

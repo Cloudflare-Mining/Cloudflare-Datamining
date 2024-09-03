@@ -1,86 +1,81 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lCDvfhTzFcVMB5PveKJco/eb0dcfca429a2949ffd1abb7606e5129/the-weird-and-wonderful-world-of-dns-loc-records.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>A cornerstone of CloudFlare's infrastructure is our ability to serve DNS requests quickly and <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">handle DNS attacks</a>. To do both those things we wrote our own authoritative DNS server called <a href="https://blog.cloudflare.com/the-story-of-a-little-dns-easter-egg">RRDNS</a> in Go. Because of it we've been able to fight off DNS attacks, and be consistenly one of the <a href="https://blog.cloudflare.com/cloudflare-fastest-free-dns-among-fastest-dns">fastest</a> DNS providers on the web.</p>
 	<p>Implementing an authoritative DNS server is a large task. That's in part because DNS is a very old standard (<a href="http://www.ietf.org/rfc/rfc1035.txt">RFC 1035</a> dates to 1987), in part because as DNS has developed it has grown into a more and more complex system, and in part because what's written in the RFCs and what happens in the real-world aren't always the same thing.</p>
 	<p>One little used type of DNS record is the LOC (or location). It allows you to specify a physical location. CloudFlare handles millions of DNS records; of those just 743 are LOCs. Nevertheless, it's possible to set up a LOC record in the CloudFlare DNS editor.</p>
-	<p><img alt="Trinity" src="https://blog.cloudflare.com/content/images/480px-Trinity_Site_Obelisk_National_Historic_Landmark.jpg"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SE3YNqdqCWTZjCq2X3204/f2eac4b46e9465b2ab11e75649643ad5/480px-Trinity_Site_Obelisk_National_Historic_Landmark.jpg" alt="Trinity" class="kg-image" width="480" height="480" loading="lazy">
+
+	</figure>
 	<p>My site <a href="http://geekatlas.com">geekatlas.com</a> has a LOC record as an Easter Egg. Here's how it's configured in the CloudFlare DNS settings:</p>
-	<p><img alt="LOC Example" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-03-27_at_11.34.24.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Qe1yA3xIACsdf36XEi1oQ/e46ec25c5981e87c3e31749679bcf68f/Screen_Shot_2014-03-27_at_11.34.24.png" alt="LOC Example" class="kg-image" width="1894" height="96" loading="lazy">
+
+	</figure>
 	<p>When you operate at CloudFlare scale the little-used nooks and crannies turn out to be important. And even though there are only 743 LOC records in our entire database, at least one customer contacted support to find out why their LOC record wasn't being served.</p>
 	<p>And that sent me into the RRDNS source code to find out why.</p>
 	<p>The answer was simple. Although RRDNS had code for receiving requests for LOC records, creating response packets containing LOC data, there was a missing link. The CloudFlare DNS server stores the LOC record as a string (such as the <code>33 40 31 N 106 28 29 W 10m</code> above) and no one had written the code to parse that and turn it into the internal format. Oops.</p>
 	<p>The textual LOC format and the binary, on-the-wire, format are described in <a href="https://tools.ietf.org/rfc/rfc1876.txt">RFC 1876</a> and it's one of many RFCs that updated the original 1987 standard. RFC 1876 is from 1996.</p>
 	<p>The textual format is fairly simple. Here's what the RFC says:</p>
-	<pre>The LOC record is expressed in a primary file in the following format:
-
-owner TTL class LOC ( d1 [m1 [s1]] {"N"|"S"} d2 [m2 [s2]]
-                           {"E"|"W"} alt["m"] [siz["m"] [hp["m"]
-                           [vp["m"]]]] )
-
-where:
-
-   d1:     [0 .. 90]            (degrees latitude)
-   d2:     [0 .. 180]           (degrees longitude)
-   m1, m2: [0 .. 59]            (minutes latitude/longitude)
-   s1, s2: [0 .. 59.999]        (seconds latitude/longitude)
-   alt:    [-100000.00 .. 42849672.95] BY .01 (altitude in meters)
-   siz, hp, vp: [0 .. 90000000.00] (size/precision in meters)
-
-If omitted, minutes and seconds default to zero, size defaults to 1m,
-horizontal precision defaults to 10000m, and vertical precision
-defaults to 10m.  These defaults are chosen to represent typical
-ZIP/postal code area sizes, since it is often easy to find
-approximate geographical location by ZIP/postal code.
-</pre>
+	<p>The LOC record is expressed in a primary file in the following format:</p>
+	<p>owner TTL class LOC ( d1 [m1 [s1]] {"N"|"S"} d2 [m2 [s2]]
+		{"E"|"W"} alt["m"] [siz["m"] [hp["m"]
+		[vp["m"]]]] )</p>
+	<p>where:</p>
+	<p>d1: [0 .. 90] (degrees latitude)
+		d2: [0 .. 180] (degrees longitude)
+		m1, m2: [0 .. 59] (minutes latitude/longitude)
+		s1, s2: [0 .. 59.999] (seconds latitude/longitude)
+		alt: [-100000.00 .. 42849672.95] BY .01 (altitude in meters)
+		siz, hp, vp: [0 .. 90000000.00] (size/precision in meters)</p>
+	<p>If omitted, minutes and seconds default to zero, size defaults to 1m,
+		horizontal precision defaults to 10000m, and vertical precision
+		defaults to 10m. These defaults are chosen to represent typical
+		ZIP/postal code area sizes, since it is often easy to find
+		approximate geographical location by ZIP/postal code.</p>
 	<p>So, there are required latitude, longitude and altitude and three optional values for the size of the location and precision information. Pretty simple.</p>
 	<p>Then there's the on-the-wire format. Unlike a TXT record the LOC record data is parsed and turned into a fixed size binary format. Back to RFC 1876:</p>
-	<pre>   MSB                                           LSB
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-  0|        VERSION        |         SIZE          |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-  2|       HORIZ PRE       |       VERT PRE        |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-  4|                   LATITUDE                    |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-  6|                   LATITUDE                    |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-  8|                   LONGITUDE                   |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
- 10|                   LONGITUDE                   |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
- 12|                   ALTITUDE                    |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
- 14|                   ALTITUDE                    |
-   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-</pre>
+	<p>MSB LSB
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		0| VERSION | SIZE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		2| HORIZ PRE | VERT PRE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		4| LATITUDE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		6| LATITUDE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		8| LONGITUDE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		10| LONGITUDE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		12| ALTITUDE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+		14| ALTITUDE |
+		+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</p>
 	<p>So, 32 bits of latitude, longitude and altitude and then three 8 bit values for the size and precision. The latitude and longitude values have a pretty simple encoding that treats the 32 bits as an unsigned integer:</p>
-	<pre>The latitude of the center of the sphere described by the SIZE field, expressed as a 32-bit integer, most significant octet first (network standard byte order), in thousandths of a second of arc.  2^31 represents the equator; numbers above that are north latitude.
-</pre>
+	<p>The latitude of the center of the sphere described by the SIZE field, expressed as a 32-bit integer, most significant octet first (network standard byte order), in thousandths of a second of arc. 2^31 represents the equator; numbers above that are north latitude.</p>
 	<p>And the altitude can be below sea-level but still unsigned:</p>
-	<pre>The altitude of the center of the sphere described by the SIZE field, expressed as a 32-bit integer, most significant octet first (network standard byte order), in centimeters, from a base of 100,000m below the [WGS 84] reference spheroid used by GPS.
-</pre>
+	<p>The altitude of the center of the sphere described by the SIZE field, expressed as a 32-bit integer, most significant octet first (network standard byte order), in centimeters, from a base of 100,000m below the [WGS 84] reference spheroid used by GPS.</p>
 	<p>But the 8 bit values use a very special encoding that allows a wide range of approximate values to be packed into 8 bits and also be human-readable when dumped out in hex!</p>
-	<pre>The diameter of a sphere enclosing the described entity, in centimeters, expressed as a pair of four-bit unsigned integers, each ranging from zero to nine, with the most significant four bits representing the base and the second number representing the power of ten by which to multiply the base.  This allows sizes from 0e0 (&lt;1cm) to 9e9 (90,000km) to be expressed.  This representation was chosen such that the hexadecimal representation can be read by eye; 0x15 = 1e5.
-</pre>
+	<p>The diameter of a sphere enclosing the described entity, in centimeters, expressed as a pair of four-bit unsigned integers, each ranging from zero to nine, with the most significant four bits representing the base and the second number representing the power of ten by which to multiply the base. This allows sizes from 0e0 (&lt;1cm) to 9e9 (90,000km) to be expressed. This representation was chosen such that the hexadecimal representation can be read by eye; 0x15 = 1e5.</p>
 	<p>For example, the value <code>0x12</code> means <code>1 * 10^2</code> or 100cm. <code>0x99</code> means <code>9 * 10^9</code> or 90,000,000m. The smallest value that can be represented is 1cm (it's <code>0x10</code>). So, in just 8 bits there's a range values from 1cm to larger than the diameter of Jupiter.</p>
 	<p>To fix this I wrote a parser for the LOC text record type (and associated tests). It can be found <a href="https://gist.github.com/jgrahamc/9807839">here</a>.</p>
 	<p>We've now rolled out the the fix and all the existing LOC records are being served by RRDNS. For example, my <code>geekatlas.com</code> LOC record can be queried like this:</p>
-	<pre>$ dig geekatlas.com LOC
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; geekatlas.com LOC
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 2997
-;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:    
-;geekatlas.com.         IN  LOC
-
-;; ANSWER SECTION:
-geekatlas.com.      299 IN  LOC 33 40 31.000 N 106 28 29.000 W 10.00m 1m 10000m 10m
-
-;; Query time: 104 msec
-;; SERVER: 192.168.14.1#53(192.168.14.1)
-;; WHEN: Tue Apr  1 14:13:48 2014
-;; MSG SIZE  rcvd: 59
-</pre>m<!--kg-card-end: markdown-->
+	<p>$ dig geekatlas.com LOC
+		; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; geekatlas.com LOC
+		;; global options: +cmd
+		;; Got answer:
+		;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 2997
+		;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0</p>
+	<p>;; QUESTION SECTION:;geekatlas.com. IN LOC</p>
+	<p>;; ANSWER SECTION:
+		geekatlas.com. 299 IN LOC 33 40 31.000 N 106 28 29.000 W 10.00m 1m 10000m 10m</p>
+	<p>;; Query time: 104 msec
+		;; SERVER: 192.168.14.1#53(192.168.14.1)
+		;; WHEN: Tue Apr 1 14:13:48 2014
+		;; MSG SIZE rcvd: 59</p>
+	<p>m</p>
 </div>

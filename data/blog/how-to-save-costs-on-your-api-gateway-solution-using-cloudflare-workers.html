@@ -1,55 +1,86 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AgWn1BUzTlZlAY9ZGMLKj/4ea0d00eedcf5ffca7a69a60996290c8/how-to-save-costs-on-your-api-gateway-solution-using-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/sJyedfdl8g3IUfA8JB4zoZcCbu47Vgu4N9mdSa_5f9Ph4825n7a3fV2M36PljSIt6lg5U_HuwLp-Z0vnBoi_vRkvZ4Ejw66cyIx-yLeV9mQYYjggIhKNYCPmh7veBKVtjKgT5BKL" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br><em>The following is a guest post by </em><a href="https://www.linkedin.com/in/jezowicz"><em>Janusz Jezowicz</em></a><em>, CEO of </em><a href="http://www.speedchecker.xyz"><em>Speedchecker</em></a><em>. The Speedchecker team runs a global distributed measurement network and offer speed test solutions using the Cloudflare platform. </em></p>
+	<p><i>The following is a guest post by</i> <a href="https://www.linkedin.com/in/jezowicz"><i>Janusz Jezowicz</i></a><i>, CEO of</i> <a href="http://www.speedchecker.xyz"><i>Speedchecker</i></a><i>. The Speedchecker team runs a global distributed measurement network and offer speed test solutions using the Cloudflare platform.</i></p>
 	<p>Software companies contemplating offering a public API to 3rd party developers have many options to choose from for how to offer their API securely with high reliability and with fast performance. When it comes to cost though, commercial solutions are expensive and open-source solutions require a lot of time managing servers and the synchronization between them. This blog post describes how we successfully moved our API gateway to <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> and slashed our costs by a factor of 10.</p>
-	<h3 id="our-original-solution-based-on-the-kong-open-source-api-gateway">Our original solution based on the Kong open-source API gateway</h3>
-	<p>When we built our <a href="http://probeapi.speedchecker.xyz">measurement network API</a> &nbsp;for cost reasons we opted for open-source solution <a href="https://konghq.com">Kong</a>. Kong is a great solution which has a vibrant community of users and plug-in developers who extend and maintain the platform. Kong is a good alternative to commercial solutions from companies such as Apigee or Mulesoft whose solutions are really catering for larger businesses who can afford them. Kong is free and it works. On the other hand, if your business has complex needs for <a href="https://www.cloudflare.com/application-services/products/api-gateway">API management</a> - e.g. powerful analytics, access control, user-friendly administration then you will need plug-ins. Kong Plug-ins are often not free and you end up with costs approaching commercial solutions. </p>
+	<h3>Our original solution based on the Kong open-source API gateway</h3>
+	<p>When we built our <a href="http://probeapi.speedchecker.xyz">measurement network API</a> &nbsp;for cost reasons we opted for open-source solution <a href="https://konghq.com">Kong</a>. Kong is a great solution which has a vibrant community of users and plug-in developers who extend and maintain the platform. Kong is a good alternative to commercial solutions from companies such as Apigee or Mulesoft whose solutions are really catering for larger businesses who can afford them. Kong is free and it works. On the other hand, if your business has complex needs for <a href="https://www.cloudflare.com/application-services/products/api-gateway">API management</a> - e.g. powerful analytics, access control, user-friendly administration then you will need plug-ins. Kong Plug-ins are often not free and you end up with costs approaching commercial solutions.</p>
 	<p>At Speedchecker we already have a lot of metrics and access control logic within the API itself so the basic functionality of Kong suited us. Here you can see a simplified architecture diagram of our API gateway:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/pk63rTUqTanVc7R_W2pcA9k6VtPWz2kkffHCLnFgiuN9LYyvI9miufSdzlgubyCYNWD5GTlNNsnZ6UYcQeu_yUHbOhahKDoYLQVkhN9f73NuZT2UYsIcY6udCESh1LrHZfwv3sJK" class="kg-image" alt="" loading="lazy"></figure>
-	<p><br></p>
 	<p>Two Kong instances are, of course, a must if we want to provide a reliable service to our customers. Kong offers flexibility in what database it uses for its API management engine. We have been experimenting with MySQL and moved to PostgreSQL for its better support of replication using Bucardo.</p>
 	<p>We have been running this solution for over a year and during production we have learned the hard way following drawbacks in our architecture:</p>
 	<ul>
-		<li>While our Azure Cloud Service is scalable, Kong instance is not. With increased loads we were worried that the instance might fail if we don’t anticipate the traffic increase and do not scale the VM correctly</li>
-		<li>Replication setup was quite complex and we had incidents where it failed and we spent days trying to work out why and how to repair it. During those times we were exposed to one live instance and, if it went down, our API would not work</li>
-		<li>We had at least one incident where a rogue actor launched a DDOS on our customer-facing website (not API). If the attacker launched on our Kong instance endpoints we would not be able to protect our API </li>
-		<li>API management got more complex and not easier which is not how should be once you integrate the API gateway. Our API works using apikey authentication and using one apikey user can access all of our APIs. The quotas per user are not based on the number of API calls but are based on the number of measurement results that we execute on the user’s behalf. Each API call can have a different number of measurement results and, therefore, the complex quota logic and billing calculations need to be done on Azure API and not in Kong. &nbsp;All of this means that the central repository for user apikeys and their quotas lies in the Azure API and we need to make sure synchronization happens between Azure API and Kong. For those reasons, many of the plug-ins make less sense for us to use since we have done all the work on the Azure API side.</li>
-		<li>While we saved money on a commercial licence for API gateway, we were spending more man hours on server administration and the monitoring of our system</li>
+		<li>
+			<p>While our Azure Cloud Service is scalable, Kong instance is not. With increased loads we were worried that the instance might fail if we don’t anticipate the traffic increase and do not scale the VM correctly</p>
+		</li>
+		<li>
+			<p>Replication setup was quite complex and we had incidents where it failed and we spent days trying to work out why and how to repair it. During those times we were exposed to one live instance and, if it went down, our API would not work</p>
+		</li>
+		<li>
+			<p>We had at least one incident where a rogue actor launched a DDOS on our customer-facing website (not API). If the attacker launched on our Kong instance endpoints we would not be able to protect our API</p>
+		</li>
+		<li>
+			<p>API management got more complex and not easier which is not how should be once you integrate the API gateway. Our API works using apikey authentication and using one apikey user can access all of our APIs. The quotas per user are not based on the number of API calls but are based on the number of measurement results that we execute on the user’s behalf. Each API call can have a different number of measurement results and, therefore, the complex quota logic and billing calculations need to be done on Azure API and not in Kong. &nbsp;All of this means that the central repository for user apikeys and their quotas lies in the Azure API and we need to make sure synchronization happens between Azure API and Kong. For those reasons, many of the plug-ins make less sense for us to use since we have done all the work on the Azure API side.</p>
+		</li>
+		<li>
+			<p>While we saved money on a commercial licence for API gateway, we were spending more man hours on server administration and the monitoring of our system</p>
+		</li>
 	</ul>
-	<h3 id="new-api-solution-using-cloudflare-workers">New API solution using Cloudflare Workers</h3>
-	<p>After Cloudflare announced the Workers feature we have been following it closely and started experimenting with its functionality. </p>
+	<h3>New API solution using Cloudflare Workers</h3>
+	<p>After Cloudflare announced the Workers feature we have been following it closely and started experimenting with its functionality.</p>
 	<p>A few of the things that originally stood out for us were:</p>
 	<ul>
-		<li>We have been using the Cloudflare platform for other parts of our infrastructure for years: we like their platform for its features, performance, cost-effectiveness and reliability. It's always better to use your existing vendors than start exploring new ones we have no experience with.</li>
-		<li>Attractive per request pricing. With our 30 million API requests per month, Workers would cost us $25. To compare Azure API management would cost us $300 for 2 Basic instances and Apigee would cost $2500 for the Business plan.</li>
-		<li>Powerful DDOS protection. Cloudflare has one of the best DDOS protections available for small-businesses included in the price.</li>
-		<li>No need for separate DNS failover and health monitoring</li>
-		<li>Extensible platform which we can leverage for any custom logic in the future should our requirements change</li>
+		<li>
+			<p>We have been using the Cloudflare platform for other parts of our infrastructure for years: we like their platform for its features, performance, cost-effectiveness and reliability. It's always better to use your existing vendors than start exploring new ones we have no experience with.</p>
+		</li>
+		<li>
+			<p>Attractive per request pricing. With our 30 million API requests per month, Workers would cost us $25. To compare Azure API management would cost us $300 for 2 Basic instances and Apigee would cost $2500 for the Business plan.</p>
+		</li>
+		<li>
+			<p>Powerful DDOS protection. Cloudflare has one of the best DDOS protections available for small-businesses included in the price.</p>
+		</li>
+		<li>
+			<p>No need for separate DNS failover and health monitoring</p>
+		</li>
+		<li>
+			<p>Extensible platform which we can leverage for any custom logic in the future should our requirements change</p>
+		</li>
 	</ul>
 	<p>On the downside we knew Cloudflare Workers were still in Beta and we would need to spend some time coding the logic instead of using an out of the box solution. After brainstorming with developers, we realized that, for our situation, Cloudflare workers are a good choice. Since most of our API management logic is already in Azure we really need a simple and cost-effective way to protect our origin API. Also, we need to make sure that the new solution is 100% compatible with our Kong solution. I believe this situation is common for all API providers when they are contemplating changing the API gateway infrastructure. You never want to get into a situation where during migration or after you realize some API users cannot access the API and they need to update their own code to work with your new API gateway For that reason, it was important for us that no endpoint changes and no authentication changes are necessary and that our new solution will work seamlessly with just a DNS change.</p>
 	<p>After one week of development we were ready with our first proof of concept to prepare for migration. The architecture of our new solution looks like the attached diagram.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/wr4NfjJHXW0y_bIJAoOamYwnj2PCZlQAMJY9-pao_rPWBwlkKikF0W_BV7y1n3GZg9JAV9SyFfVUSvLYQ4nJEUk2w3HRvueKYcJ0nG33QugkSmMR7Neh2EsRZzRV5w_78Nuj2Wyi" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
 	<p>Typical API call is handled in following way:</p>
 	<ol>
-		<li>User uses apikey in HTTP headers or querystring of their HTTP request (GET or POST) to query the endpoint hosted on CloudFlare workers</li>
-		<li>Worker examines apikey and looks it up in local cache. There are a few different mechanisms in Workers for storing data tables. For our purposes we picked <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data">cache in global memory</a>. Since the data table contains only a list of apikeys it’s not very big and the restriction of 128MB does not cause issues. Also, each Cloudflare POP has a different cache which can be problematic for some use cases. In our case though it isn’t - if apikey is not in cache, it can be quickly retrieved from our Azure API.</li>
-		<li>If apikey is not found in the local cache, Worker does HTTP subrequest to Azure API and retrieves information about whether apikey is valid. The response is then stored locally in the Global memory cache so that subsequent apikey requests are saving the round-trip to Azure API and do not overload our Origin.</li>
-		<li>If apikey is invalid, Worker responds to the API user message about an invalid apikey and Origin is not being hit with a request. </li>
-		<li>If apikey is valid, Worker forwards API user request to our Origin and responds back to the API user when it gets a response. In this step we also include any custom redirection logic as some API calls have different Origin endpoints. Using Workers we can easily specify custom logic in which API calls use different endpoints.</li>
+		<li>
+			<p>User uses apikey in HTTP headers or querystring of their HTTP request (GET or POST) to query the endpoint hosted on CloudFlare workers</p>
+		</li>
+		<li>
+			<p>Worker examines apikey and looks it up in local cache. There are a few different mechanisms in Workers for storing data tables. For our purposes we picked <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data">cache in global memory</a>. Since the data table contains only a list of apikeys it’s not very big and the restriction of 128MB does not cause issues. Also, each Cloudflare POP has a different cache which can be problematic for some use cases. In our case though it isn’t - if apikey is not in cache, it can be quickly retrieved from our Azure API.</p>
+		</li>
+		<li>
+			<p>If apikey is not found in the local cache, Worker does HTTP subrequest to Azure API and retrieves information about whether apikey is valid. The response is then stored locally in the Global memory cache so that subsequent apikey requests are saving the round-trip to Azure API and do not overload our Origin.</p>
+		</li>
+		<li>
+			<p>If apikey is invalid, Worker responds to the API user message about an invalid apikey and Origin is not being hit with a request.</p>
+		</li>
+		<li>
+			<p>If apikey is valid, Worker forwards API user request to our Origin and responds back to the API user when it gets a response. In this step we also include any custom redirection logic as some API calls have different Origin endpoints. Using Workers we can easily specify custom logic in which API calls use different endpoints.</p>
+		</li>
 	</ol>
-	<h3 id="migration-process">Migration process</h3>
+	<h3>Migration process</h3>
 	<p>As described above, we wanted the change of the architecture to be done seamlessly without requiring users to update any of their API code. For that reason, we devised the following approach to migrate to Cloudflare workers.</p>
 	<ol>
-		<li>Enable Cloudflare Workers on a staging domain. Perform all tests to production API endpoint and the same tests to staging domain with Workers enabled. The API endpoints should behave in the same way.</li>
-		<li>Enable Workers on the production domain with Origin IP still pointing to Kong live instance. Using Workers Routes settings we make sure the Workers code is not being executed on any of the live API endpoints.</li>
-		<li>Using Worker Routes we bring online instantly method by method the API calls to the Workers. In case of any problems we can quickly revert by modifying the Routes. </li>
-		<li>We monitor Worker Analytics screens, number of API calls and status codes of sub requests to ensure no calls are failing.</li>
+		<li>
+			<p>Enable Cloudflare Workers on a staging domain. Perform all tests to production API endpoint and the same tests to staging domain with Workers enabled. The API endpoints should behave in the same way.</p>
+		</li>
+		<li>
+			<p>Enable Workers on the production domain with Origin IP still pointing to Kong live instance. Using Workers Routes settings we make sure the Workers code is not being executed on any of the live API endpoints.</p>
+		</li>
+		<li>
+			<p>Using Worker Routes we bring online instantly method by method the API calls to the Workers. In case of any problems we can quickly revert by modifying the Routes.</p>
+		</li>
+		<li>
+			<p>We monitor Worker Analytics screens, number of API calls and status codes of sub requests to ensure no calls are failing.</p>
+		</li>
 	</ol>
 	<p>During our live migration process everything went smoothly until we started seeing some errors with some of our customers. We had not realized that the Cloudflare firewall has some rate limiting in place and was preventing our API users who queried more than 2000 requests per minute from the same IP. After raising the ticket with Cloudflare Support we got the limit lifted and errors stopped happening.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>We believe Cloudflare Workers are a good alternative to existing API gateway solutions. For companies who already have an existing codebase for authentication and analytics there is not a compelling reason to use commercial API gateway package when Cloudflare Workers can add a protection layer to your API at the fraction of the cost of alternatives. While Workers are a relatively new product from Cloudflare, we already feel comfortable using it in production. We encourage you to explore Workers for your new projects. Also, if you are wanting to save costs or to make your self-hosted solution more robust, Workers are a good alternative which can be deployed with no impact on your API users or business.</p>
 </div>

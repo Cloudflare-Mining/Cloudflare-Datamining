@@ -1,29 +1,38 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KhgvJchhKsSh1StaMW0um/69441eada5f00ddf4e6546d2bb29d327/solving-problems-with-serverless-the-cloudflare-led-data-center-board-part-i.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>You know you have a cool job when your first project lets you bring your hobby into the office. </p>
-	<p>That’s what happened to me just a few short weeks ago when I joined Cloudflare. The task: to create a light-up version of our Data Center map – we’re talking more than a hundred LEDs tied to the deployment state of each and every Cloudflare data center. This map will be a part of our booths, so it has to be able to travel; meaning we have to consider physical shipping <em>and </em>the ability to update the data when the map is away from the office. And the fun part – we are debuting it at SF Developer Week in late February (I even get to give a talk about it!) That gave me one week of software time in our San Francisco office, and a little over two and a half in the Austin office with the physical materials.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/02/Screen-Shot-2019-02-14-at-9.33.11-AM.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>What the final LEDs will look like on a map of the world.</figcaption>
+	<p>You know you have a cool job when your first project lets you bring your hobby into the office.</p>
+	<p>That’s what happened to me just a few short weeks ago when I joined Cloudflare. The task: to create a light-up version of our Data Center map – we’re talking more than a hundred LEDs tied to the deployment state of each and every Cloudflare data center. This map will be a part of our booths, so it has to be able to travel; meaning we have to consider physical shipping <i>and</i> the ability to update the data when the map is away from the office. And the fun part – we are debuting it at SF Developer Week in late February (I even get to give a talk about it!) That gave me one week of software time in our San Francisco office, and a little over two and a half in the Austin office with the physical materials.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eS2D5nN1ryxnbNscLYa3G/a166021937b603115f775fc695a99e1b/Screen-Shot-2019-02-14-at-9.33.11-AM.png" alt="" class="kg-image" width="2000" height="1033" loading="lazy">
+
 	</figure>
+	<p>What the final LEDs will look like on a map of the world.</p>
 	<p>So what does this have to do with Serverless? Well, let’s think about where and how this map will need to operate: This will be going to expo halls and conferences, and we want it to update to show our most current data center statuses for at least that event, if not updating once a day. But we don’t need to stay connected to the information store constantly-- nor should we expect to, over conference or expo WiFi.</p>
-	<h2 id="data-stored-about-data-centers">Data Stored about Data Centers</h2>
+	<h2>Data Stored about Data Centers</h2>
 	<p>The data stored about each data center has two distinct categories; data relevant to the data center itself, and data about how that data center should be rendered on the map. These are relatively simple data structures, however: for a data center, we want to store what city the data center is in, the latitude and longitude, and the status. We arbitrarily assign an ID integer to each data center, which we'll use to match this data with the data in the other store. We’re not going to pick and choose which data centers we want; just pull them all down and let the microcontroller figure out how to display them.</p>
 	<p>Speaking of, this is where the data store relevant to the display comes in. LEDs are on strands numbered 0-7, and are represented by an LED numbered 0-63. We need to store the ID of the data center we created for the first store, the strand number, and the LED number in the strand.</p>
 	<p>Both of these sets of data can be stored in a key-value store, with the ID number as the key and a JSON object representing either the data center or its representative LED on the map as the value. Because of this, coupled with the fact that we do not need to search or index this data, we decided to use <a href="https://developers.cloudflare.com/workers/kv">Workers KV</a> data stores to keep this information.</p>
-	<h2 id="the-data-center-and-data-center-map-api">The Data Center and Data Center Map API</h2>
-	<p>We needed two APIs around the data centers, and we needed them fast– both in the more immediate sense of having only a few weeks to complete the project, and in the sense that we needed the data to download relatively quickly over non-ideal internet situations. We also know this map will be traveling all over the world– we'd need the API to work and have at least a decent latency no matter where the map was geographically. </p>
+	<h2>The Data Center and Data Center Map API</h2>
+	<p>We needed two APIs around the data centers, and we needed them fast– both in the more immediate sense of having only a few weeks to complete the project, and in the sense that we needed the data to download relatively quickly over non-ideal internet situations. We also know this map will be traveling all over the world– we'd need the API to work and have at least a decent latency no matter where the map was geographically.</p>
 	<p>This is where the hundreds of LEDs comes in handy– each one represents a data center that we could deploy <a href="https://developers.cloudflare.com/workers/about">serverless Workers</a> to. We can deploy the API to the data center before we leave from the comfort of the office, and it'd be ready for us when we hit the conference floor. Workers also, unsurprisingly, work really well with Workers KV data stores; allowing us to rapidly develop APIs around our data.</p>
-	<h2 id="our-software-architecture-diagram">Our Software Architecture Diagram</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/LED-PoP-Board-Architecture-Diagram.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Our Software Architecture Diagram</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yB2l13rg61b9JTNZu9aZj/89caaf018a4a5f77743999381e8dd2d0/LED-PoP-Board-Architecture-Diagram.png" alt="" class="kg-image" width="391" height="441" loading="lazy">
+
+	</figure>
 	<p>In the end, we ended up with this architecture diagram; 2 Workers KV data stores, and 2 serverless Workers; all of which can be deployed across the world in order to make sure the physical map has the updated data every time we head to a new show.</p>
 	<hr>
 	<p>In the next post in this series, we'll take a look at the physical architecture of the sign:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/Image_20190212_102827.jpeg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42wDBaBFqptcC9iCt99h6I/b7f3e8cb682a64aaadd6a4a8656fd816/Image_20190212_102827.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1500" loading="lazy">
+
+	</figure>
 	<p>We'll also take a look at the system we built that uses the architecture laid out in this post that consumes this data and turns it into an LED map – so keep an eye out for it next month!</p>
-	<hr><!--kg-card-begin: markdown-->
-	<p><small>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers" target="blank"><em>here</em></a>.</small></p>
-	<p align="center">
-		<a class="btn btn-warning" href="https://workers.dev" target="_blank">Reserve a workers.dev subdomain</a>
-	</p><!--kg-card-end: markdown-->
+	<hr>
+	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>
+	<p><a href="https://workers.dev">Reserve a workers.dev subdomain</a></p>
 	<hr>
 </div>

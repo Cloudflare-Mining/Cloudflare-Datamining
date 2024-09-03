@@ -1,157 +1,239 @@
-<div class="mb2 gray5">17 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-2023-q4-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-2023-q4-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2023-q4-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-2023-q4-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-2023-q4-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-2023-q4-es-es">Español</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2023-q4-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-2023-q4-pt-br">Português</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/01/image14-1.png" class="kg-image" alt="DDoS threat report for 2023 Q4" loading="lazy" width="1999" height="1125"></figure>
+<div class="mb2 gray5">16 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-2023-q4">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2023-q4">Français</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-2023-q4">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2023-q4">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-2023-q4">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-2023-q4">Português</a>, <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-2023-q4">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-2023-q4">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dLcyHxuJpOmtuilCdmlMv/5ae714d270fb5529e72fd1349cac1212/image14-1.png" alt="DDoS threat report for 2023 Q4" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Welcome to the sixteenth edition of Cloudflare’s DDoS Threat Report. This edition covers DDoS trends and key findings for the fourth and final quarter of the year 2023, complete with a review of major trends throughout the year.</p>
-	<h2 id="what-are-ddos-attacks">What are DDoS attacks?</h2>
+	<h2>What are DDoS attacks?</h2>
 	<p>DDoS attacks, or <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">distributed denial-of-service attacks</a>, are a type of cyber attack that aims to disrupt websites and online services for users, making them unavailable by overwhelming them with more traffic than they can handle. They are similar to car gridlocks that jam roads, preventing drivers from getting to their destination.</p>
 	<p>There are three main types of DDoS attacks that we will cover in this report. The first is an <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP request</a> intensive DDoS attack that aims to overwhelm HTTP servers with more requests than they can handle to cause a denial of service event. The second is an <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-packet">IP packet</a> intensive DDoS attack that aims to overwhelm in-line appliances such as routers, firewalls, and servers with more packets than they can handle. The third is a bit-intensive attack that aims to saturate and clog the Internet link causing that ‘gridlock’ that we discussed. In this report, we will highlight various techniques and insights on all three types of attacks.</p>
 	<p>Previous editions of the report can be found <a href="https://blog.cloudflare.com/tag/ddos-reports">here</a>, and are also available on our interactive hub, <a href="https://radar.cloudflare.com/reports?q=DDoS">Cloudflare Radar</a>. Cloudflare Radar showcases global Internet traffic, attacks, and technology trends and insights, with drill-down and filtering capabilities for zooming in on insights of specific countries, industries, and service providers. Cloudflare Radar also offers a <a href="https://developers.cloudflare.com/radar">free API</a> allowing academics, data sleuths, and other web enthusiasts to investigate Internet usage across the globe.</p>
 	<p>To learn how we prepare this report, refer to our <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports">Methodologies</a>.</p>
-	<h2 id="key-findings">Key findings</h2>
+	<h2>Key findings</h2>
 	<ol>
-		<li>In Q4, we observed a 117% year-over-year increase in network-layer DDoS attacks, and overall increased DDoS activity targeting retail, shipment and public relations websites during and around Black Friday and the holiday season.</li>
-		<li>In Q4, DDoS attack traffic targeting Taiwan registered a 3,370% growth, compared to the previous year, amidst the upcoming general election and reported tensions with China. The percentage of DDoS attack traffic targeting Israeli websites grew by 27% quarter-over-quarter, and the percentage of DDoS attack traffic targeting Palestinian websites grew by 1,126% quarter-over-quarter — as the military conflict between Israel and Hamas continues.</li>
-		<li>In Q4, there was a staggering 61,839% surge in DDoS attack traffic targeting Environmental Services websites compared to the previous year, coinciding with the 28th United Nations Climate Change Conference (COP 28).</li>
+		<li>
+			<p>In Q4, we observed a 117% year-over-year increase in network-layer DDoS attacks, and overall increased DDoS activity targeting retail, shipment and public relations websites during and around Black Friday and the holiday season.</p>
+		</li>
+		<li>
+			<p>In Q4, DDoS attack traffic targeting Taiwan registered a 3,370% growth, compared to the previous year, amidst the upcoming general election and reported tensions with China. The percentage of DDoS attack traffic targeting Israeli websites grew by 27% quarter-over-quarter, and the percentage of DDoS attack traffic targeting Palestinian websites grew by 1,126% quarter-over-quarter — as the military conflict between Israel and Hamas continues.</p>
+		</li>
+		<li>
+			<p>In Q4, there was a staggering 61,839% surge in DDoS attack traffic targeting Environmental Services websites compared to the previous year, coinciding with the 28th United Nations Climate Change Conference (COP 28).</p>
+		</li>
 	</ol>
 	<p>For an in-depth analysis of these key findings and additional insights that could redefine your understanding of current cybersecurity challenges, read on!</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/image1.png" class="kg-image" alt="" loading="lazy" width="1134" height="600">
-		<figcaption>Illustration of a DDoS attack</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UZbT93S5MJZLC4lm3oEFA/aa80536faeb585ee86881d19e4ae9cba/image1.png" alt="" class="kg-image" width="1134" height="600" loading="lazy">
+
 	</figure>
-	<h2 id="hyper-volumetric-http-ddos-attacks">Hyper-volumetric HTTP DDoS attacks</h2>
+	<p>Illustration of a DDoS attack</p>
+	<h2>Hyper-volumetric HTTP DDoS attacks</h2>
 	<p>2023 was the year of uncharted territories. DDoS attacks reached new heights — in size and sophistication. The wider Internet community, including Cloudflare, faced a persistent and deliberately engineered campaign of thousands of hyper-volumetric DDoS attacks at never before seen rates.</p>
 	<p>These attacks were highly complex and exploited an <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack">HTTP/2 vulnerability</a>. Cloudflare developed purpose-built technology to mitigate the vulnerability’s effect and worked with others in the industry to responsibly disclose it.</p>
 	<p>As part of this DDoS campaign, in Q3 our systems mitigated the largest attack we’ve ever seen — 201 million requests per second (rps). That’s almost 8 times larger than our previous 2022 record of 26 million rps.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0.png" class="kg-image" alt="" loading="lazy" width="1255" height="755">
-		<figcaption>Largest HTTP DDoS attacks as seen by Cloudflare, by year</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49CXz2EGW8rzgjsaRcSFyT/b6eea0ccabf5ef051052989536bc5fd0/pasted-image-0.png" alt="" class="kg-image" width="1255" height="755" loading="lazy">
+
 	</figure>
-	<h2 id="growth-in-network-layer-ddos-attacks">Growth in network-layer DDoS attacks</h2>
+	<p>Largest HTTP DDoS attacks as seen by Cloudflare, by year</p>
+	<h2>Growth in network-layer DDoS attacks</h2>
 	<p>After the hyper-volumetric campaign subsided, we saw an unexpected drop in HTTP DDoS attacks. Overall in 2023, our automated defenses mitigated over 5.2 million HTTP DDoS attacks consisting of over 26 trillion requests. That averages at 594 HTTP DDoS attacks and 3 billion mitigated requests every hour.</p>
 	<p>Despite these astronomical figures, the amount of HTTP DDoS attack requests actually declined by 20% compared to 2022. This decline was not just annual but was also observed in 2023 Q4 where the number of HTTP DDoS attack requests decreased by 7% YoY and 18% QoQ.</p>
 	<p>On the network-layer, we saw a completely different trend. Our automated defenses mitigated 8.7 million network-layer DDoS attacks in 2023. This represents an 85% increase compared to 2022.</p>
 	<p>In 2023 Q4, Cloudflare’s automated defenses mitigated over 80 petabytes of network-layer attacks. On average, our systems auto-mitigated 996 network-layer DDoS attacks and 27 terabytes every hour. The number of network-layer DDoS attacks in 2023 Q4 increased by 175% YoY and 25% QoQ.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/HTTP-and-Network-layer-DDoS-attacks-by-quarter-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="840">
-		<figcaption>HTTP and Network-layer DDoS attacks by quarter</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Da5bEJbgh9FT5UQb6qPWo/29b08dbbc64bc1f272ba5c41526a4602/HTTP-and-Network-layer-DDoS-attacks-by-quarter-1.png" alt="" class="kg-image" width="1600" height="840" loading="lazy">
+
 	</figure>
-	<h3 id="ddos-attacks-increase-during-and-around-cop-28">DDoS attacks increase during and around COP 28</h3>
+	<p>HTTP and Network-layer DDoS attacks by quarter</p>
+	<h3>DDoS attacks increase during and around COP 28</h3>
 	<p>In the final quarter of 2023, the landscape of cyber threats witnessed a significant shift. While the Cryptocurrency sector was initially leading in terms of the volume of HTTP DDoS attack requests, a new target emerged as a primary victim. The Environmental Services industry experienced an unprecedented surge in HTTP DDoS attacks, with these attacks constituting half of all its HTTP traffic. This marked a staggering 618-fold increase compared to the previous year, highlighting a disturbing trend in the cyber threat landscape.</p>
 	<p>This surge in cyber attacks coincided with COP 28, which ran from November 30th to December 12th, 2023. The conference was a pivotal event, signaling what many considered the <a href="https://unfccc.int/news/cop28-agreement-signals-beginning-of-the-end-of-the-fossil-fuel-era">'beginning of the end' for the fossil fuel era</a>. It was observed that in the period leading up to COP 28, there was a noticeable spike in HTTP attacks targeting Environmental Services websites. This pattern wasn't isolated to this event alone.</p>
 	<p>Looking back at historical data, particularly during COP 26 and COP 27, as well as other UN environment-related resolutions or announcements, a similar pattern emerges. Each of these events was accompanied by a corresponding increase in cyber attacks aimed at Environmental Services websites.</p>
 	<p>In February and March 2023, significant environmental events like the UN's resolution on <a href="https://www.unep.org/news-and-stories/story/un-resolution-billed-turning-point-climate-justice">climate justice</a> and the launch of United Nations Environment Programme’s <a href="https://www.unep.org/news-and-stories/press-release/largest-river-and-wetland-restoration-initiative-history-launched-un">Freshwater Challenge</a> potentially heightened the profile of environmental websites, possibly correlating with an increase in attacks on these sites​​​​.</p>
 	<p>This recurring pattern underscores the growing intersection between environmental issues and cyber security, a nexus that is increasingly becoming a focal point for attackers in the digital age.</p>
-	<h2 id="ddos-attacks-and-iron-swords">DDoS attacks and Iron Swords</h2>
+	<h2>DDoS attacks and Iron Swords</h2>
 	<p>It’s not just UN resolutions that trigger DDoS attacks. Cyber attacks, and particularly DDoS attacks, have long been a tool of war and disruption. We witnessed an increase in DDoS attack activity in the Ukraine-Russia war, and now we’re also witnessing it in the Israel-Hamas war. We first reported the cyber activity in our report <a href="https://blog.cloudflare.com/cyber-attacks-in-the-israel-hamas-war">Cyber attacks in the Israel-Hamas war</a>, and we continued to monitor the activity throughout Q4.</p>
 	<p>Operation “Iron Swords” is the <a href="https://en.wikipedia.org/wiki/2023_Israel%E2%80%93Hamas_war#Israeli_response">military offensive launched by Israel against Hamas</a> following the <a href="https://en.wikipedia.org/wiki/2023_Hamas-led_attack_on_Israel">Hamas-led 7 October attack</a>. During this ongoing armed conflict, we continue to see DDoS attacks targeting both sides.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy" width="1587" height="908">
-		<figcaption>DDoS attacks targeting Israeli and Palestinian websites, by industry</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31johknCeQ8F1pbczj7Neq/e76202ca569247fe845a19a35fb50970/pasted-image-0--1-.png" alt="" class="kg-image" width="1587" height="908" loading="lazy">
+
 	</figure>
+	<p>DDoS attacks targeting Israeli and Palestinian websites, by industry</p>
 	<p>Relative to each region's traffic, the Palestinian territories was the second most attacked region by HTTP DDoS attacks in Q4. Over 10% of all HTTP requests towards Palestinian websites were DDoS attacks, a total of 1.3 billion DDoS requests — representing a 1,126% increase in QoQ. 90% of these DDoS attacks targeted Palestinian Banking websites. Another 8% targeted Information Technology and Internet platforms.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="689">
-		<figcaption>Top attacked Palestinian industries</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uYrGNHSPfp3nEmFkhTGpa/719451af49a16c83fe62e49c3c4e9661/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="689" loading="lazy">
+
 	</figure>
+	<p>Top attacked Palestinian industries</p>
 	<p>Similarly, our systems automatically mitigated over 2.2 billion HTTP DDoS requests targeting Israeli websites. While 2.2 billion represents a decrease compared to the previous quarter and year, it did amount to a larger percentage out of the total Israel-bound traffic. This normalized figure represents a 27% increase QoQ but a 92% decrease YoY. Notwithstanding the larger amount of attack traffic, Israel was the 77th most attacked region relative to its own traffic. It was also the 33rd most attacked by total volume of attacks, whereas the Palestinian territories was 42nd.</p>
 	<p>Of those Israeli websites attacked, Newspaper &amp; Media were the main target — receiving almost 40% of all Israel-bound HTTP DDoS attacks. The second most attacked industry was the Computer Software industry. The Banking, Financial Institutions, and Insurance (BFSI) industry came in third.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy" width="1600" height="910">
-		<figcaption>Top attacked Israeli industries</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2N6E8K9fZJZUFID7t0liAB/61ae364ab2f4c5becacb6216e94bc732/pasted-image-0--3-.png" alt="" class="kg-image" width="1600" height="910" loading="lazy">
+
 	</figure>
+	<p>Top attacked Israeli industries</p>
 	<p>On the network layer, we see the same trend. Palestinian networks were targeted by 470 terabytes of attack traffic — accounting for over 68% of all traffic towards Palestinian networks. Surpassed only by China, this figure placed the Palestinian territories as the second most attacked region in the world, by network-layer DDoS attack, relative to all Palestinian territories-bound traffic. By absolute volume of traffic, it came in third. Those 470 terabytes accounted for approximately 1% of all DDoS traffic that Cloudflare mitigated.</p>
 	<p>Israeli networks, though, were targeted by only 2.4 terabytes of attack traffic, placing it as the 8th most attacked country by network-layer DDoS attacks (normalized). Those 2.4 terabytes accounted for almost 10% of all traffic towards Israeli networks.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy" width="1600" height="936">
-		<figcaption>Top attacked countries</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Fk4fxxDf20Wt6BmMTDPNq/b5bc3e768a47b8938405d7239221c14e/pasted-image-0--5-.png" alt="" class="kg-image" width="1600" height="936" loading="lazy">
+
 	</figure>
+	<p>Top attacked countries</p>
 	<p>When we turned the picture around, we saw that 3% of all bytes that were ingested in our Israeli-based data centers were network-layer DDoS attacks. In our Palestinian-based data centers, that figure was significantly higher — approximately 17% of all bytes.</p>
 	<p>On the application layer, we saw that 4% of HTTP requests originating from Palestinian IP addresses were DDoS attacks, and almost 2% of HTTP requests originating from Israeli IP addresses were DDoS attacks as well.</p>
-	<h2 id="main-sources-of-ddos-attacks">Main sources of DDoS attacks</h2>
+	<h2>Main sources of DDoS attacks</h2>
 	<p>In the third quarter of 2022, China was the largest source of HTTP DDoS attack traffic. However, since the fourth quarter of 2022, the US took the first place as the largest source of HTTP DDoS attacks and has maintained that undesirable position for five consecutive quarters. Similarly, our data centers in the US are the ones ingesting the most network-layer DDoS attack traffic — over 38% of all attack bytes.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/imageLikeEmbed.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1200" height="742">
-		<figcaption>HTTP DDoS attacks originating from China and the US by quarter</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LQRkEFpGgYH1o7Ld5m3LH/f487782df0e497c163472c665ff89a1b/imageLikeEmbed.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
 	</figure>
+	<p>HTTP DDoS attacks originating from China and the US by quarter</p>
 	<p>Together, China and the US account for a little over a quarter of all HTTP DDoS attack traffic in the world. Brazil, Germany, Indonesia, and Argentina account for the next twenty-five percent.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
-		<figcaption>Top source of HTTP DDoS attacks</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OJH3XgpVKTtd93Lhv9pQd/7c1d25b74adf3e5c3d828371b5c99876/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
+
 	</figure>
+	<p>Top source of HTTP DDoS attacks</p>
 	<p>These large figures usually correspond to large markets. For this reason, we also normalize the attack traffic originating from each country by comparing their outbound traffic. When we do this, we often get small island nations or smaller market countries that a disproportionate amount of attack traffic originates from. In Q4, 40% of Saint Helena’s outbound traffic were HTTP DDoS attacks — placing it at the top. Following the ‘<a href="https://en.wikipedia.org/wiki/Saint_Helena">remote volcanic tropical island</a>’, Libya came in second, <a href="https://en.wikipedia.org/wiki/Eswatini">Swaziland</a> (also known as Eswatini) in third. Argentina and Egypt follow in fourth and fifth place.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--7-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
-		<figcaption>Top source of HTTP DDoS attacks with respect to each country’s traffic</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hyX9SLpTS3ncRB5QZnR9R/223957ebf284a57b380fd7c8f7eabec8/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
+
 	</figure>
+	<p>Top source of HTTP DDoS attacks with respect to each country’s traffic</p>
 	<p>On the network layer, Zimbabwe came in first place. Almost 80% of all traffic we ingested in our Zimbabwe-based data center was malicious. In second place, Paraguay, and Madagascar in third.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--8-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
-		<figcaption>Top source of Network-layer DDoS attacks with respect to each country’s traffic</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sln1Hbv1Wz7j4oCCL9XRA/24e7b4b943fdadcfe82c1f0ec3b7507c/pasted-image-0--8-.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
+
 	</figure>
-	<h2 id="most-attacked-industries">Most attacked industries</h2>
+	<p>Top source of Network-layer DDoS attacks with respect to each country’s traffic</p>
+	<h2>Most attacked industries</h2>
 	<p>By volume of attack traffic, Cryptocurrency was the most attacked industry in Q4. Over 330 billion HTTP requests targeted it. This figure accounts for over 4% of all HTTP DDoS traffic for the quarter. The second most attacked industry was Gaming &amp; Gambling. These industries are known for being coveted targets and attract a lot of traffic and attacks.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--9-.png" class="kg-image" alt="" loading="lazy" width="1600" height="901">
-		<figcaption>Top industries targeted by HTTP DDoS attacks</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UoOV6PIx9DqJ0monxhfwu/2e94ecbe04115c43c3b16362b935c1e9/pasted-image-0--9-.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
+
 	</figure>
+	<p>Top industries targeted by HTTP DDoS attacks</p>
 	<p>On the network layer, the Information Technology and Internet industry was the most attacked — over 45% of all network-layer DDoS attack traffic was aimed at it. Following far behind were the Banking, Financial Services and Insurance (BFSI), Gaming &amp; Gambling, and Telecommunications industries.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--10-.png" class="kg-image" alt="" loading="lazy" width="1600" height="901">
-		<figcaption>Top industries targeted by Network-layer DDoS attacks</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/tlGK3k5YutHhSEbvm1va0/a57dcccc73d73cf7cebe3f9ce9e67612/pasted-image-0--10-.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
+
 	</figure>
+	<p>Top industries targeted by Network-layer DDoS attacks</p>
 	<p>To change perspectives, here too, we normalized the attack traffic by the total traffic for a specific industry. When we do that, we get a different picture.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/Top-Attacked-Industry-by-Region-Q4-2023.png" class="kg-image" alt="" loading="lazy" width="1600" height="1335">
-		<figcaption>Top attacked industries by HTTP DDoS attacks, by region</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DxEla6GwSvU7OBnjGmhJX/9e644f5e86301bb8a6485ef3b1d486df/Top-Attacked-Industry-by-Region-Q4-2023.png" alt="" class="kg-image" width="1600" height="1335" loading="lazy">
+
 	</figure>
+	<p>Top attacked industries by HTTP DDoS attacks, by region</p>
 	<p>We already mentioned in the beginning of this report that the Environmental Services industry was the most attacked relative to its own traffic. In second place was the Packaging and Freight Delivery industry, which is interesting because of its timely correlation with online shopping during Black Friday and the winter holiday season. Purchased gifts and goods need to get to their destination somehow, and it seems as though attackers tried to interfere with that. On a similar note, DDoS attacks on retail companies increased by 16% compared to the previous year.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--11-.png" class="kg-image" alt="" loading="lazy" width="1600" height="906">
-		<figcaption>Top industries targeted by HTTP DDoS attacks with respect to each industry’s traffic</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14CXtsmUxjRwOB1kmYHA6Q/11047be895015a5441fd2c6bf6391f2b/pasted-image-0--11-.png" alt="" class="kg-image" width="1600" height="906" loading="lazy">
+
 	</figure>
+	<p>Top industries targeted by HTTP DDoS attacks with respect to each industry’s traffic</p>
 	<p>On the network layer, Public Relations and Communications was the most targeted industry — 36% of its traffic was malicious. This too is very interesting given its timing. Public Relations and Communications companies are usually linked to managing public perception and communication. Disrupting their operations can have immediate and widespread reputational impacts which becomes even more critical during the Q4 holiday season. This quarter often sees increased PR and communication activities due to holidays, end-of-year summaries, and preparation for the new year, making it a critical operational period — one that some may want to disrupt.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--12-.png" class="kg-image" alt="" loading="lazy" width="1600" height="906">
-		<figcaption>Top industries targeted by Network-layer DDoS attacks with respect to each industry’s traffic</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NLJAkykpHhrRuFA2OVuKg/2e0684c516fc2313e4f40e70b046cdcd/pasted-image-0--12-.png" alt="" class="kg-image" width="1600" height="906" loading="lazy">
+
 	</figure>
-	<h2 id="most-attacked-countries-and-regions">Most attacked countries and regions</h2>
+	<p>Top industries targeted by Network-layer DDoS attacks with respect to each industry’s traffic</p>
+	<h2>Most attacked countries and regions</h2>
 	<p>Singapore was the main target of HTTP DDoS attacks in Q4. Over 317 billion HTTP requests, 4% of all global DDoS traffic, were aimed at Singaporean websites. The US followed closely in second and Canada in third. Taiwan came in as the fourth most attacked region — amidst the upcoming <a href="https://www.bbc.co.uk/news/world-asia-67770782">general elections and the tensions with China</a>. Taiwan-bound attacks in Q4 traffic increased by 847% compared to the previous year, and 2,858% compared to the previous quarter. This increase is not limited to the absolute values. When normalized, the percentage of HTTP DDoS attack traffic targeting Taiwan relative to all Taiwan-bound traffic also significantly increased. It increased by 624% quarter-over-quarter and 3,370% year-over-year.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
-		<figcaption>Top targeted countries by HTTP DDoS attacks</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/730lynQatPwtsRfi10TXOi/304cc3fcecea946aaaf4779509a02f6d/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
+
 	</figure>
+	<p>Top targeted countries by HTTP DDoS attacks</p>
 	<p>While China came in as the ninth most attacked country by HTTP DDoS attacks, it's the number one most attacked country by network-layer attacks. 45% of all network-layer DDoS traffic that Cloudflare mitigated globally was China-bound. The rest of the countries were so far behind that it is almost negligible.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--14-.png" class="kg-image" alt="Top targeted countries by Network-layer DDoS attacks" loading="lazy" width="1600" height="936">
-		<figcaption>Top targeted countries by Network-layer DDoS attacks</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MIf27g0zSIEZYQxUsFlTh/536d8b88832d1cbad8ceac735bd80b46/pasted-image-0--14-.png" alt="Top targeted countries by Network-layer DDoS attacks" class="kg-image" width="1600" height="936" loading="lazy">
+
 	</figure>
+	<p>Top targeted countries by Network-layer DDoS attacks</p>
 	<p>When normalizing the data, Iraq, Palestinian territories, and Morocco take the lead as the most attacked regions with respect to their total inbound traffic. What’s interesting is that Singapore comes up as fourth. So not only did Singapore face the largest amount of HTTP DDoS attack traffic, but that traffic also made up a significant amount of the total Singapore-bound traffic. By contrast, the US was second most attacked by volume (per the application-layer graph above), but came in the fiftieth place with respect to the total US-bound traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--15-.png" class="kg-image" alt="Top targeted countries by HTTP DDoS attacks with respect to each country’s traffic" loading="lazy" width="1600" height="936">
-		<figcaption>Top targeted countries by HTTP DDoS attacks with respect to each country’s traffic</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LX2zl13YVM9hZB60Ucedg/e16f707ca5d3d2ece69a5f2dd49c1336/pasted-image-0--15-.png" alt="Top targeted countries by HTTP DDoS attacks with respect to each country’s traffic" class="kg-image" width="1600" height="936" loading="lazy">
+
 	</figure>
+	<p>Top targeted countries by HTTP DDoS attacks with respect to each country’s traffic</p>
 	<p>Similar to Singapore, but arguably more dramatic, China is both the number one most attacked country by network-layer DDoS attack traffic, and also with respect to all China-bound traffic. Almost 86% of all China-bound traffic was mitigated by Cloudflare as network-layer DDoS attacks. The Palestinian territories, Brazil, Norway, and again Singapore followed with large percentages of attack traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--16-.png" class="kg-image" alt="Top targeted countries by Network-layer DDoS attacks with respect to each country’s traffic" loading="lazy" width="1600" height="936">
-		<figcaption>Top targeted countries by Network-layer DDoS attacks with respect to each country’s traffic</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2n9rHcScBY63Q4yX01yKu5/e44ff50a937cb2c73e215e894ce92384/pasted-image-0--16-.png" alt="Top targeted countries by Network-layer DDoS attacks with respect to each country’s traffic" class="kg-image" width="1600" height="936" loading="lazy">
+
 	</figure>
-	<h2 id="attack-vectors-and-attributes">Attack vectors and attributes</h2>
+	<p>Top targeted countries by Network-layer DDoS attacks with respect to each country’s traffic</p>
+	<h2>Attack vectors and attributes</h2>
 	<p>The majority of DDoS attacks are short and small relative to Cloudflare’s scale. However, unprotected websites and networks can still suffer disruption from short and small attacks without proper inline automated protection — underscoring the need for organizations to be proactive in <a href="https://www.cloudflare.com/cybersecurity-risk-management">adopting a robust security posture</a>.</p>
 	<p>In 2023 Q4, 91% of attacks ended within 10 minutes, 97% peaked below 500 megabits per second (mbps), and 88% never exceeded 50 thousand packets per second (pps).</p>
 	<p>Two out of every 100 network-layer DDoS attacks lasted more than an hour, and exceeded 1 gigabit per second (gbps). One out of every 100 attacks exceeded 1 million packets per second. Furthermore, the amount of network-layer DDoS attacks exceeding 100 million packets per second increased by 15% quarter-over-quarter.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/DDoS-attacks-stats-2023-Q4_a.png" class="kg-image" alt="" loading="lazy" width="1600" height="900">
-		<figcaption>DDoS attack stats you should know</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YPOZlyzEHc5u5DeFbQXqW/0b7986d34972943c2ba3a01c012351b0/DDoS-attacks-stats-2023-Q4_a.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
 	</figure>
+	<p>DDoS attack stats you should know</p>
 	<p>One of those large attacks was a Mirai-botnet attack that peaked at 160 million packets per second. The packet per second rate was not the largest we’ve ever seen. The largest we’ve ever seen was <a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically">754 million packets per second</a>. That attack occurred in 2020, and we have yet to see anything larger.</p>
 	<p>This more recent attack, though, was unique in its bits per second rate. This was the largest network-layer DDoS attack we’ve seen in Q4. It peaked at 1.9 terabits per second and originated from a <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet">Mirai botnet</a>. It was a multi-vector attack, meaning it combined multiple attack methods. Some of those methods included UDP fragments flood, UDP/Echo flood, SYN Flood, ACK Flood, and TCP malformed flags.</p>
 	<p>This attack targeted a known European Cloud Provider and originated from over 18 thousand unique IP addresses that are assumed to be <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">spoofed</a>. It was automatically detected and mitigated by Cloudflare’s defenses.</p>
 	<p>This goes to show that even the largest attacks end very quickly. Previous large attacks we’ve seen ended within seconds — underlining the need for an in-line automated defense system. Though still rare, attacks in the terabit range are becoming more and more prominent.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--17-.png" class="kg-image" alt="1.9 Terabit per second Mirai DDoS attacks" loading="lazy" width="1273" height="687">
-		<figcaption>1.9 Terabit per second Mirai DDoS attacks</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10QBHlFJPubkFIG1R2uPf1/37b88d1f2b451e5ebeeca409026b27c3/pasted-image-0--17-.png" alt="1.9 Terabit per second Mirai DDoS attacks" class="kg-image" width="1273" height="687" loading="lazy">
+
 	</figure>
+	<p>1.9 Terabit per second Mirai DDoS attacks</p>
 	<p>The use of Mirai-variant botnets is still very common. In Q4, almost 3% of all attacks originate from Mirai. Though, of all attack methods, DNS-based attacks remain the attackers’ favorite. Together, DNS Floods and DNS Amplification attacks account for almost 53% of all attacks in Q4. <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack">SYN Flood</a> follows in second and <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack">UDP floods</a> in third. We’ll cover the two DNS attack types here, and you can visit the hyperlinks to learn more about UDP and SYN floods in our Learning Center.</p>
-	<h3 id="dns-floods-and-amplification-attacks">DNS floods and amplification attacks</h3>
-	<p>DNS floods and DNS amplification attacks both exploit the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>, but they operate differently. DNS is like a phone book for the Internet, translating human-friendly domain names like "www.cloudflare.com" into numerical IP addresses that computers use to identify each other on the network.</p>
+	<h3>DNS floods and amplification attacks</h3>
+	<p>DNS floods and DNS amplification attacks both exploit the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>, but they operate differently. DNS is like a phone book for the Internet, translating human-friendly domain names like "<a href="https://www.cloudflare.com">www.cloudflare.com</a>" into numerical IP addresses that computers use to identify each other on the network.</p>
 	<p>Simply put, DNS-based DDoS attacks comprise the method computers and servers used to identify one another to cause an outage or disruption, without actually ‘taking down’ a server. For example, a server may be up and running, but the DNS server is down. So clients won't be able to connect to it and will experience it as an outage.</p>
-	<p>A <strong>DNS flood</strong> attack bombards a DNS server with an overwhelming number of DNS queries. This is usually done using a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">DDoS botnet</a>. The sheer volume of queries can overwhelm the DNS server, making it difficult or impossible for it to respond to legitimate queries. This can result in the aforementioned service disruptions, delays or even an outage for those trying to access the websites or services that rely on the targeted DNS server.</p>
-	<p>On the other hand, a <strong>DNS amplification</strong> attack involves sending a small query with a spoofed IP address (the address of the victim) to a DNS server. The trick here is that the DNS response is significantly larger than the request. The server then sends this large response to the victim's IP address. By exploiting open DNS resolvers, the attacker can amplify the volume of traffic sent to the victim, leading to a much more significant impact. This type of attack not only disrupts the victim but also can congest entire networks.</p>
+	<p>A <b>DNS flood</b> attack bombards a DNS server with an overwhelming number of DNS queries. This is usually done using a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">DDoS botnet</a>. The sheer volume of queries can overwhelm the DNS server, making it difficult or impossible for it to respond to legitimate queries. This can result in the aforementioned service disruptions, delays or even an outage for those trying to access the websites or services that rely on the targeted DNS server.</p>
+	<p>On the other hand, a <b>DNS amplification</b> attack involves sending a small query with a spoofed IP address (the address of the victim) to a DNS server. The trick here is that the DNS response is significantly larger than the request. The server then sends this large response to the victim's IP address. By exploiting open DNS resolvers, the attacker can amplify the volume of traffic sent to the victim, leading to a much more significant impact. This type of attack not only disrupts the victim but also can congest entire networks.</p>
 	<p>In both cases, the attacks exploit the critical role of DNS in network operations. Mitigation strategies typically include securing DNS servers against misuse, implementing rate limiting to manage traffic, and filtering DNS traffic to identify and block malicious requests.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--18--1.png" class="kg-image" alt="Top attack vectors" loading="lazy" width="1600" height="934">
-		<figcaption>Top attack vectors</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UolIGOVG2jx7ST3CeoF0j/438c133b8f875ce32238c480d580aaba/pasted-image-0--18--1.png" alt="Top attack vectors" class="kg-image" width="1600" height="934" loading="lazy">
+
 	</figure>
+	<p>Top attack vectors</p>
 	<p>Amongst the emerging threats we track, we recorded a 1,161% increase in ACK-RST Floods as well as a 515% increase in CLDAP floods, and a 243% increase in SPSS floods, in each case as compared to last quarter. Let’s walk through some of these attacks and how they’re meant to cause disruption.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--19-.png" class="kg-image" alt="Top emerging attack vectors" loading="lazy" width="1600" height="934">
-		<figcaption>Top emerging attack vectors</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ac5D51H55vXbKPbWnSGEx/ca9d143377c53904fb8ab9f5fd602563/pasted-image-0--19-.png" alt="Top emerging attack vectors" class="kg-image" width="1600" height="934" loading="lazy">
+
 	</figure>
-	<h3 id="ack-rst-floods">ACK-RST floods</h3>
+	<p>Top emerging attack vectors</p>
+	<h3>ACK-RST floods</h3>
 	<p>An ACK-RST Flood exploits the <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">Transmission Control Protocol (TCP)</a> by sending numerous ACK and RST packets to the victim. This overwhelms the victim's ability to process and respond to these packets, leading to service disruption. The attack is effective because each ACK or RST packet prompts a response from the victim’s system, consuming its resources. ACK-RST Floods are often difficult to filter since they mimic legitimate traffic, making detection and mitigation challenging.</p>
-	<h3 id="cldap-floods">CLDAP floods</h3>
+	<h3>CLDAP floods</h3>
 	<p>CLDAP (Connectionless Lightweight Directory Access Protocol) is a variant of LDAP (Lightweight Directory Access Protocol). It's used for querying and modifying directory services running over IP networks. CLDAP is connectionless, using UDP instead of TCP, making it faster but less reliable. Because it uses UDP, there’s no handshake requirement which allows attackers to spoof the IP address thus allowing attackers to exploit it as a reflection vector. In these attacks, small queries are sent with a spoofed source IP address (the victim's IP), causing servers to send large responses to the victim, overwhelming it. Mitigation involves filtering and monitoring unusual CLDAP traffic.</p>
-	<h3 id="spss-floods">SPSS floods</h3>
+	<h3>SPSS floods</h3>
 	<p>Floods abusing the SPSS (Source Port Service Sweep) protocol is a network attack method that involves sending packets from numerous random or spoofed source ports to various destination ports on a targeted system or network. The aim of this attack is two-fold: first, to overwhelm the victim's processing capabilities, causing service disruptions or network outages, and second, it can be used to scan for open ports and identify vulnerable services. The flood is achieved by sending a large volume of packets, which can saturate the victim's network resources and exhaust the capacities of its firewalls and intrusion detection systems. To mitigate such attacks, it's essential to leverage in-line automated detection capabilities.</p>
-	<h2 id="cloudflare-is-here-to-helpno-matter-the-attack-type-size-or-duration">Cloudflare is here to help - no matter the attack type, size, or duration</h2>
+	<h2>Cloudflare is here to help - no matter the attack type, size, or duration</h2>
 	<p>Cloudflare’s mission is to help build a better Internet, and we believe that a better Internet is one that is secure, performant, and available to all. No matter the attack type, the attack size, the attack duration or the motivation behind the attack, Cloudflare’s defenses stand strong. Since we pioneered <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered DDoS Protection in 2017</a>, we’ve made and kept our commitment to make enterprise-grade DDoS protection free for all organizations alike — and of course, without compromising performance. This is made possible by our <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">unique technology</a> and robust network architecture.</p>
 	<p>It’s important to remember that security is a process, not a single product or flip of a switch. Atop of our automated DDoS protection systems, we offer comprehensive bundled features such as <a href="https://developers.cloudflare.com/waf">firewall</a>, <a href="https://developers.cloudflare.com/bots">bot detection</a>, <a href="https://developers.cloudflare.com/api-shield">API protection</a>, and <a href="https://developers.cloudflare.com/cache">caching</a> to bolster your defenses. Our multi-layered approach optimizes your security posture and minimizes potential impact. We’ve also put together a <a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks">list of recommendations</a> to help you optimize your defenses against DDoS attacks, and you can follow our step-by-step wizards to <a href="https://developers.cloudflare.com/learning-paths/application-security">secure your applications</a> and <a href="https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks">prevent DDoS attacks</a>. And, if you’d like to benefit from our easy to use, best-in-class protection against DDoS and other attacks on the Internet, you can sign up — for free! — at <a href="https://www.cloudflare.com/plans">cloudflare.com</a>. If you’re under attack, register or call the <a href="https://www.cloudflare.com/under-attack-hotline">cyber emergency hotline number</a> for a rapid response.</p>
 </div>

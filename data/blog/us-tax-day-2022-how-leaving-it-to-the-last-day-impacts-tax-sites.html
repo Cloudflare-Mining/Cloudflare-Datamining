@@ -1,45 +1,91 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-15.png" class="kg-image" alt="US Tax Day 2022. How leaving it to the last day impacts tax sites" loading="lazy"></figure>
-	<blockquote><em>“Our new Constitution is now established, and has an appearance that promises permanency; but in this world nothing can be said to be certain, except death and taxes.”</em><br>—<a href="https://en.wikipedia.org/wiki/Death_and_taxes_(idiom)"> Benjamin Franklin</a>, in a letter to Jean-Baptiste Le Roy, 1789</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4H3VDbSMZAiTPjE5Xe5UFz/dd5cfa9b903347f1204712610501ff00/image1-15.png" alt="US Tax Day 2022. How leaving it to the last day impacts tax sites" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p><i>“Our new Constitution is now established, and has an appearance that promises permanency; but in this world nothing can be said to be certain, except death and taxes.”</i>— <a href="https://en.wikipedia.org/wiki/Death_and_taxes_(idiom)">Benjamin Franklin</a>, in a letter to Jean-Baptiste Le Roy, 1789</p>
+	</blockquote>
 	<p>The famous <a href="https://en.wikipedia.org/wiki/Death_and_taxes_(idiom)">expression</a> highlighting that only “death and taxes” seem certain in life (something that goes back to the beginning of civilization and to <a href="https://en.wikipedia.org/wiki/Tax#:~:text=The%20first%20known%20taxation%20took,or%20as%20its%20labour%20equivalent.">Ancient Egypt</a>) is on people’s minds during the month of April in the <a href="https://en.wikipedia.org/wiki/Taxation_in_the_United_States">United States</a>. This past Monday, April 18, 2022, was <a href="https://eu.usatoday.com/story/money/taxes/2022/04/18/taxes-due-2022-live-coverage/7353661001">Tax Day</a>. So, were US citizens procrastinators, leaving their federal (and state) tax returns to the last day? Traffic to tax-related official federal and state websites seems to show it: there was a spike of more than 470% on April 18.</p>
 	<p>Just for reference, we can see on <a href="https://radar.cloudflare.com/us">Cloudflare Radar</a> that Internet traffic in the US, from our perspective, wasn’t significantly impacted on Monday, April 18, although there was a clear peak, higher than in the previous 14 days, that night at 22:00 EST (that’s 02:00 UTC on April 19). So, traffic (that includes DNS and HTTP requests from our standpoint) was 18% higher compared to the same time on the previous Monday.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image6.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AvrEhVnWiVC4wZFOZ4FVU/39ec1e6a9ec7919a31229db7b5b58973/image6.jpg" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
 	<p>For the following charts, Cloudflare Radar uses a variety of sources to provide aggregate information about Internet traffic and attack trends. In this blog post, we will use DNS name resolution data as a proxy for traffic to Internet services, as we did for <a href="https://blog.cloudflare.com/who-won-super-bowl-lvi-a-look-at-internet-traffic-during-the-big-game">Super Bowl LVI</a> or for the <a href="https://blog.cloudflare.com/oscars-2022-impact">Oscars 2022</a>.</p>
 	<p>In this case, the baseline value for the charts (that we use to get the percent growth) was calculated by taking the mean DNS traffic level for the associated Internet services on March 31 — a typical day before from the April 18 deadline. On these charts, we are using the EST timezone.</p>
 	<p>Let’s start with an aggregate of all the federal and <a href="https://en.wikipedia.org/wiki/State_tax_levels_in_the_United_States">state level</a> official tax-related sites. This Monday, DNS requests jumped at 13:00 EST to 472% more than usual (the average on March 31 for all the 51 sites we’re checking is the baseline here). That’s 203% more than the previous highest growth day in April.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image3.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xV0ZSsMxdLPavsYVIPsIr/2f1985ff91035ebe9320af838fc0d36c/image3.jpg" alt="" class="kg-image" width="1999" height="701" loading="lazy">
+
+	</figure>
 	<p>Here are the top five days in April ranked by traffic increase:</p>
-	<h3 id="us-federal-and-state-official-tax-sites-peaks-in-requests">US federal and state official tax sites peaks in requests</h3>
+	<h3>US federal and state official tax sites peaks in requests</h3>
 	<ol>
-		<li>Monday, April 18 (Tax Day 2022), 13:00 — 472% growth.</li>
-		<li>Thursday, April 14, 15:00 — 269%.</li>
-		<li>Friday, April 15, 15:00 — 264%.</li>
-		<li>Monday, April 11, 13:00 — 252%.</li>
-		<li>Wednesday, April 13, 14:00 — 251%.</li>
+		<li>
+			<p>Monday, April 18 (Tax Day 2022), 13:00 — 472% growth.</p>
+		</li>
+		<li>
+			<p>Thursday, April 14, 15:00 — 269%.</p>
+		</li>
+		<li>
+			<p>Friday, April 15, 15:00 — 264%.</p>
+		</li>
+		<li>
+			<p>Monday, April 11, 13:00 — 252%.</p>
+		</li>
+		<li>
+			<p>Wednesday, April 13, 14:00 — 251%.</p>
+		</li>
 	</ol>
-	<h3 id="taxes-on-weekdays">Taxes on weekdays</h3>
+	<h3>Taxes on weekdays</h3>
 	<p>Another trend in the previous chart is that people seem to use more weekdays in April than the weekends to submit their taxes (or to visit official tax-related sites). That’s a trend we see not only for federal sites, but also for the state ones (even more in the latter).</p>
 	<p>State official tax sites also have a bigger growth in requests in April, from our perspective, than federal, but the general growth is very clear right from the beginning of April, with a relevant peak going up to 221% of increase in traffic at 13:00 EST on April 4.</p>
 	<p>Another more specific trend regarding Tax Day 2022 was that traffic was higher than before any other day in April right around 09:00 (with 293% increase) and it continued that way until 20:00.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image4.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="tax-services-with-a-growth-up-to-680-">Tax services with a growth up to 680%</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64jycIwkhZmmNSxzkmTamz/05dcebc8d51bd25ddb539d7ed2b7544f/image4.jpg" alt="" class="kg-image" width="1999" height="697" loading="lazy">
+
+	</figure>
+	<h3>Tax services with a growth up to 680%</h3>
 	<p>In the taxes filling realm there are also many services, some smaller and local, others national and well known, that help people to do the inevitable business of dealing with sales, income, property, license or other taxes.</p>
 	<p>The peak was reached on Monday, April 18, at 19:00 EST with a growth in requests of 680%. It was a busy afternoon and evening across the US for tax services.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-1.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yGgKkgk8obprR28nj1wdF/8cb5fddb105ca4aa0b1c31768fac2ea8/image2-1.jpg" alt="" class="kg-image" width="1999" height="717" loading="lazy">
+
+	</figure>
 	<p>And here’s the top five ranking of traffic growth for tax services sites in April:</p>
-	<h3 id="us-tax-services-sites-peaks-in-requests">US tax services sites peaks in requests</h3>
+	<h3>US tax services sites peaks in requests</h3>
 	<ol>
-		<li>Monday, April 18 (Tax Day 2022), 19:00 — 680% growth</li>
-		<li>Sunday, April 17, 20:00 — 439%</li>
-		<li>Friday, April 15, 12:00 — 328%</li>
-		<li>Saturday, April 16, 14:00 — 326%</li>
-		<li>Sunday, April 10, 15:00 — 311%</li>
+		<li>
+			<p>Monday, April 18 (Tax Day 2022), 19:00 — 680% growth</p>
+		</li>
+		<li>
+			<p>Sunday, April 17, 20:00 — 439%</p>
+		</li>
+		<li>
+			<p>Friday, April 15, 12:00 — 328%</p>
+		</li>
+		<li>
+			<p>Saturday, April 16, 14:00 — 326%</p>
+		</li>
+		<li>
+			<p>Sunday, April 10, 15:00 — 311%</p>
+		</li>
 	</ol>
 	<p>For these types of sites, there are more spikes of traffic on the weekends than on weekdays and that started right at the beginning of April, with Sunday, April 3, reaching 295% in growth, not that far from the peaks on the days prior to Tax Day 2022.</p>
 	<p>We can also see in a more detailed view in the next chart that at 10:00 on Tax Day 2022 requests growth were already at an all month high with more than 478% of increase. The sustained growth was maintained throughout the day and only after 22:00 (474%) did it drop lower than in previous days.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image5-1.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="conclusion">Conclusion</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oGp6p4Ljpy9RLrIAL7mxG/46312dbd947ca3d875cc389b5475a3bb/image5-1.jpg" alt="" class="kg-image" width="1999" height="744" loading="lazy">
+
+	</figure>
+	<h3>Conclusion</h3>
 	<p>No surprise, people are aware of the deadlines for their tax returns, and many do leave it to the last day and that is very clear looking at the trends related to tax sites.</p>
 	<p>If you’re curious about these types of trends, check <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for up-to-date insights about all the countries on Earth.</p>
 </div>

@@ -1,28 +1,55 @@
 <div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ddos-attacks-have-evolved-and-so-should-your-ddos-protection">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-attacks-have-evolved-and-so-should-your-ddos-protection">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-attacks-have-evolved-and-so-should-your-ddos-protection">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/ddos-attacks-have-evolved-and-so-should-your-ddos-protection">繁體中文</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image1-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dFJZEkVz7UOyMy1J7Ucrx/a495ab1836e97b9e5d4341fa64e1d9aa/image1-24.png" alt="" class="kg-image" width="1999" height="949" loading="lazy">
+
+	</figure>
 	<p>The proliferation of DDoS attacks of varying size, duration, and persistence has made DDoS protection a foundational part of every business and organization’s online presence. However, there are key considerations including network capacity, management capabilities, global distribution, alerting, reporting and support that security and risk management technical professionals need to evaluate when selecting a DDoS protection solution.</p>
-	<h3 id="gartner-s-view-of-the-ddos-solutions-how-did-cloudflare-fare">Gartner’s view of the DDoS solutions; How did Cloudflare fare?</h3>
+	<h3>Gartner’s view of the DDoS solutions; How did Cloudflare fare?</h3>
 	<p>Gartner recently published the report Solution Comparison for DDoS Cloud Scrubbing Centers (ID G00467346), authored by Thomas Lintemuth, Patrick Hevesi and Sushil Aryal. This report enables customers to view a side-by-side solution comparison of different DDoS cloud scrubbing centers measured against common assessment criteria. &nbsp;If you have a Gartner subscription, you can view the report <a href="https://www.gartner.com/document/3983636">here</a>. Cloudflare has received the greatest number of ‘High’ ratings as compared to the 6 other DDoS vendors across 23 assessment criteria in the report.</p>
-	<h3 id="the-vast-landscape-of-ddos-attacks">The vast landscape of DDoS attacks</h3>
+	<h3>The vast landscape of DDoS attacks</h3>
 	<p>From our perspective, the nature of DDoS attacks has transformed, as the economics and ease of launching a DDoS attack has changed dramatically. With a rise in cost-effective capabilities of launching a DDoS attack, we have observed a rise in the number of under 10 Gbps DDoS network-level attacks, as shown in the figure below. Even though 10 Gbps from an attack size perspective does not seem that large, it is large enough to significantly affect a majority of the websites existing today.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-17.png" class="kg-image" alt="Chart" loading="lazy"></figure>
-	<p>At the same time, larger-sized DDoS attacks are still prevalent and have the capability of crippling the availability of an organization’s infrastructure. In March 2020, Cloudflare observed numerous 300+ Gbps attacks with the largest attack being 550 Gbps in size. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-22.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
-	<p>In the report Gartner also observes a similar trend, <em>“In speaking with the vendors for this research, Gartner discovered a consistent theme: Clients are experiencing more frequent smaller attacks versus larger volumetric attacks.</em>” In addition, they also observe that <em>“For enterprises with Internet connections up to and exceeding 10 Gbps, frequent but short attacks up to 10 Gbps are still quite disruptive without DDoS protection. Not to say that large attacks have gone away. We haven’t seen a 1-plus Tbps attack since spring 2018, but attacks over 500 Gbps are still common.”</em></p>
-	<p>Gartner recommends in the report to <em>“Choose a provider that offers scrubbing capacity of three times the largest documented volumetric attack on your continent.”</em></p>
-	<p>From an application-level DDoS attack perspective an interesting DDoS attack observed and mitigated by Cloudflare last year, is shown below. This HTTP DDoS attack had a peak of 1.4M requests per second, which isn’t highly rate-intensive. However, the fact that the 1.1M IPs from which the attack originated were unique and not spoofed made the attack quite interesting. The unique IP addresses were actual clients who were able to complete a TCP and HTTPS handshake. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image4-14.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="harness-the-full-power-of-cloudflare-s-ddos-protection">Harness the full power of Cloudflare’s DDoS protection</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ra5D7MmxLrRGPozCBPLvR/f6c686f83346e46b68d45d93abba9eb2/image3-17.png" alt="Chart" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
+	<p>At the same time, larger-sized DDoS attacks are still prevalent and have the capability of crippling the availability of an organization’s infrastructure. In March 2020, Cloudflare observed numerous 300+ Gbps attacks with the largest attack being 550 Gbps in size.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OB9Z5DNZ7BWXFCVuzT367/ba1958e8e01b9611a2d1c30d08c84573/image2-22.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
+	<p>In the report Gartner also observes a similar trend, <i>“In speaking with the vendors for this research, Gartner discovered a consistent theme: Clients are experiencing more frequent smaller attacks versus larger volumetric attacks.</i>” In addition, they also observe that <i>“For enterprises with Internet connections up to and exceeding 10 Gbps, frequent but short attacks up to 10 Gbps are still quite disruptive without DDoS protection. Not to say that large attacks have gone away. We haven’t seen a 1-plus Tbps attack since spring 2018, but attacks over 500 Gbps are still common.”</i></p>
+	<p>Gartner recommends in the report to <i>“Choose a provider that offers scrubbing capacity of three times the largest documented volumetric attack on your continent.”</i></p>
+	<p>From an application-level DDoS attack perspective an interesting DDoS attack observed and mitigated by Cloudflare last year, is shown below. This HTTP DDoS attack had a peak of 1.4M requests per second, which isn’t highly rate-intensive. However, the fact that the 1.1M IPs from which the attack originated were unique and not spoofed made the attack quite interesting. The unique IP addresses were actual clients who were able to complete a TCP and HTTPS handshake.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GpF3Jz6n0qYY1XxOwfNLv/bbda6a53d02ea1d9fc1ddfb6c3e4f6d6/image4-14.png" alt="" class="kg-image" width="1600" height="671" loading="lazy">
+
+	</figure>
+	<h3>Harness the full power of Cloudflare’s DDoS protection</h3>
 	<p>Cloudflare’s cloud-delivered DDoS solution provides key features that enable security professionals to protect their organizations and customers against even the most sophisticated DDoS attacks. Some of the key features and benefits include:</p>
 	<ul>
-		<li><strong>Massive network capacity</strong>: With over 35 Tbps of network capacity, Cloudflare ensures that you are protected against even the most sophisticated and largest DDoS attacks. Cloudflare’s network capacity is almost equal to the total scrubbing capacity of the other 6 leading DDoS vendors combined.</li>
-		<li><strong>Globally distributed architecture</strong>: Having a few scrubbing centers globally to mitigate DDoS attacks is an outdated approach. As DDoS attacks scale and individual attacks originate from millions of unique IPs worldwide, it’s important to have a DDoS solution that mitigates the attack at the source rather than hauling traffic to a dedicated scrubbing center. With every one of our data centers across 200 cities enabled with full DDoS mitigation capabilities, Cloudflare has more points of presence than the 6 leading DDoS vendors combined.</li>
-		<li><strong>Fast time to mitigation</strong>: Automated edge-analyzed and edge-enforced DDoS mitigation capabilities allows us to mitigate attacks at unprecedented speeds. Typical time to mitigate a DDoS attack is less than 10s.</li>
-		<li><strong>Integrated security:</strong> A key design tenet while building products at Cloudflare is integration. Our DDoS solution integrates seamlessly with other product offerings including WAF, Bot Management, CDN and many more. A comprehensive and integrated security solution to bolster the security posture while aiding performance. No tradeoffs between security and performance!</li>
-		<li><strong>Unmetered and unlimited mitigation:</strong> Cloudflare offers unlimited and unmetered DDoS mitigation. This eliminates the legacy concept of ‘Surge Pricing,’ which is especially painful when a business is under duress and experiencing a DDoS attack. This enables you to avoid unpredictable costs from traffic.</li>
+		<li>
+			<p><b>Massive network capacity</b>: With over 35 Tbps of network capacity, Cloudflare ensures that you are protected against even the most sophisticated and largest DDoS attacks. Cloudflare’s network capacity is almost equal to the total scrubbing capacity of the other 6 leading DDoS vendors combined.</p>
+		</li>
+		<li>
+			<p><b>Globally distributed architecture</b>: Having a few scrubbing centers globally to mitigate DDoS attacks is an outdated approach. As DDoS attacks scale and individual attacks originate from millions of unique IPs worldwide, it’s important to have a DDoS solution that mitigates the attack at the source rather than hauling traffic to a dedicated scrubbing center. With every one of our data centers across 200 cities enabled with full DDoS mitigation capabilities, Cloudflare has more points of presence than the 6 leading DDoS vendors combined.</p>
+		</li>
+		<li>
+			<p><b>Fast time to mitigation</b>: Automated edge-analyzed and edge-enforced DDoS mitigation capabilities allows us to mitigate attacks at unprecedented speeds. Typical time to mitigate a DDoS attack is less than 10s.</p>
+		</li>
+		<li>
+			<p><b>Integrated security:</b> A key design tenet while building products at Cloudflare is integration. Our DDoS solution integrates seamlessly with other product offerings including WAF, Bot Management, CDN and many more. A comprehensive and integrated security solution to bolster the security posture while aiding performance. No tradeoffs between security and performance!</p>
+		</li>
+		<li>
+			<p><b>Unmetered and unlimited mitigation:</b> Cloudflare offers unlimited and unmetered DDoS mitigation. This eliminates the legacy concept of ‘Surge Pricing,’ which is especially painful when a business is under duress and experiencing a DDoS attack. This enables you to avoid unpredictable costs from traffic.</p>
+		</li>
 	</ul>
 	<p>Whether you’re part of a large global enterprise, or use Cloudflare for your personal site, we want to make sure that you’re protected and also have the visibility that you need. DDoS Protection is included as part of every Cloudflare service. Enterprise-level plans include advanced mitigation, detailed reporting, enriched logs, productivity enhancements and fine-grained controls. Enterprise Plan customers also receive access to dedicated customer success and solution engineering.</p>
-	<p>To learn more about Cloudflare’s DDoS solution <a href="https://www.cloudflare.com/plans/enterprise/contact">contact us</a> or <a href="https://dash.cloudflare.com/sign-up">get started</a>. </p>
-	<p>*Gartner “Solution Comparison for DDoS Cloud Scrubbing Centers,” Thomas Lintemuth, &nbsp;Patrick Hevesi, Sushil Aryal, 16 April 2020 <br><br></p>
+	<p>To learn more about Cloudflare’s DDoS solution <a href="https://www.cloudflare.com/plans/enterprise/contact">contact us</a> or <a href="https://dash.cloudflare.com/sign-up">get started</a>.</p>
+	<p>*Gartner “Solution Comparison for DDoS Cloud Scrubbing Centers,” Thomas Lintemuth, &nbsp;Patrick Hevesi, Sushil Aryal, 16 April 2020</p>
 </div>

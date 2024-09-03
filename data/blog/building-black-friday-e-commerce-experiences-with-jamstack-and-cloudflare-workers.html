@@ -1,26 +1,32 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76cgIR2sMWLAXkGDeQtCbS/035a2d1c2a4c0416a4fc4c251e6945cd/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>The idea of serverless is to allow developers to focus on writing code rather than operations — the hardest of which is scaling applications. A predictably great deal of traffic that flows through Cloudflare's network every year is Black Friday. As John wrote at the end of last year,<a href="https://blog.cloudflare.com/this-holidays-biggest-online-shopping-day-was-black-friday"> Black Friday is the Internet's biggest online shopping day</a>. In a past<a href="https://www.cloudflare.com/case-studies/cordial-workers-black-friday"> case study</a>, we talked about how Cordial, a marketing automation platform, used Cloudflare Workers to <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">reduce their API server latency</a> and handle the busiest shopping day of the year without breaking a sweat.</p>
+	<p>The idea of serverless is to allow developers to focus on writing code rather than operations — the hardest of which is scaling applications. A predictably great deal of traffic that flows through Cloudflare's network every year is Black Friday. As John wrote at the end of last year, <a href="https://blog.cloudflare.com/this-holidays-biggest-online-shopping-day-was-black-friday">Black Friday is the Internet's biggest online shopping day</a>. In a past <a href="https://www.cloudflare.com/case-studies/cordial-workers-black-friday">case study</a>, we talked about how Cordial, a marketing automation platform, used Cloudflare Workers to <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">reduce their API server latency</a> and handle the busiest shopping day of the year without breaking a sweat.</p>
 	<p>The ability to handle immense scale is well-trodden territory for us on the Cloudflare blog, but scale is not always the first thing developers think about when building an application — developer experience is likely to come first. And developer experience is something Workers does just as well; through Wrangler and APIs like Workers KV, Workers is an awesome place to hack on new projects.</p>
-	<p>Over the past few weeks, I've been working on<a href="https://deals.bytesized.xyz"> </a>a sample <a href="https://github.com/signalnerve/ecommerce-bundles-workers-example">open-source</a> e-commerce app for selling software, educational products, and bundles. Inspired by Humble Bundle, it's built entirely on Workers, and it integrates powerfully with all kinds of first-class modern tooling:<a href="https://stripe.com"> Stripe</a>, an API for accepting payments (both <em>from</em> customers and <em>to</em> authors, as we’ll see later), and<a href="https://www.sanity.io"> Sanity.io</a>, a headless CMS for data management.</p>
-	<p>This kind of project is perfectly suited for Workers. We can lean into Workers as a static site hosting platform (via<a href="https://workers.cloudflare.com/sites"> Workers Sites</a>), API server, and webhook consumer, all within a single codebase, and deployed instantly around the world on Cloudflare's network.</p>
+	<p>Over the past few weeks, I've been working on <a href="https://deals.bytesized.xyz"></a>a sample <a href="https://github.com/signalnerve/ecommerce-bundles-workers-example">open-source</a> e-commerce app for selling software, educational products, and bundles. Inspired by Humble Bundle, it's built entirely on Workers, and it integrates powerfully with all kinds of first-class modern tooling: <a href="https://stripe.com">Stripe</a>, an API for accepting payments (both <i>from</i> customers and <i>to</i> authors, as we’ll see later), and <a href="https://www.sanity.io">Sanity.io</a>, a headless CMS for data management.</p>
+	<p>This kind of project is perfectly suited for Workers. We can lean into Workers as a static site hosting platform (via <a href="https://workers.cloudflare.com/sites">Workers Sites</a>), API server, and webhook consumer, all within a single codebase, and deployed instantly around the world on Cloudflare's network.</p>
 	<p>If you want to see a deployed version of this template, check out <a href="https://ecommerce-example.signalnerve.workers.dev">ecommerce-example.signalnerve.workers.dev</a>.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-14.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>The frontend of the e-commerce Workers template.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74ASlUQIruTiQ3vb7IofzP/1a6d548b0a698c1f0113a7efe3fa7c80/image2-14.png" alt="" class="kg-image" width="1999" height="1201" loading="lazy">
+
 	</figure>
-	<p>In this blog post, I'll dive deeper into the implementation details of the site, covering how Workers<a href="https://blog.cloudflare.com/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers"> continues to excel as a JAMstack deployment platform</a>. I’ll also cover some new territory in integrating Workers with Stripe. The project is <a href="https://github.com/cloudflare/ecommerce-bundles-workers-example">open-source on GitHub</a>, and I'm actively working on improving the documentation, so that you can take the codebase and build on it for your own <a href="https://www.cloudflare.com/ecommerce">e-commerce sites</a> and use cases.</p>
-	<h3 id="the-frontend">The frontend</h3>
-	<p>As I wrote last year, Workers continues to be an<a href="https://blog.cloudflare.com/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers"> amazing platform for JAMstack apps</a>. When I started building this template, I wanted to use some things I already knew — Sanity.io for managing data, and of course, Workers Sites for deploying — but some new tools as well.</p>
-	<p>Workers Sites is incredibly simple to use: just point it at a directory of static assets, and you're good to go. With this project, I decided to try out<a href="https://nuxtjs.org"> Nuxt.js</a>, a Vue-based static site generator, to power the frontend for the application.</p>
+	<p><i>The frontend of the e-commerce Workers template.</i></p>
+	<p>In this blog post, I'll dive deeper into the implementation details of the site, covering how Workers <a href="https://blog.cloudflare.com/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers">continues to excel as a JAMstack deployment platform</a>. I’ll also cover some new territory in integrating Workers with Stripe. The project is <a href="https://github.com/cloudflare/ecommerce-bundles-workers-example">open-source on GitHub</a>, and I'm actively working on improving the documentation, so that you can take the codebase and build on it for your own <a href="https://www.cloudflare.com/ecommerce">e-commerce sites</a> and use cases.</p>
+	<h3>The frontend</h3>
+	<p>As I wrote last year, Workers continues to be an <a href="https://blog.cloudflare.com/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers">amazing platform for JAMstack apps</a>. When I started building this template, I wanted to use some things I already knew — Sanity.io for managing data, and of course, Workers Sites for deploying — but some new tools as well.</p>
+	<p>Workers Sites is incredibly simple to use: just point it at a directory of static assets, and you're good to go. With this project, I decided to try out <a href="https://nuxtjs.org">Nuxt.js</a>, a Vue-based static site generator, to power the frontend for the application.</p>
 	<p>Using Sanity.io, the data representing the bundles (and the products inside of those bundles) is stored on Sanity.io's own CDN, and retrieved client-side by the Nuxt.js application.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-18.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Managing data inside Sanity.io’s headless CMS interface.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hCZNF9X1W2MNRgsSEJMbl/8707161745594a2ddeff8c91e34e2a36/image3-18.png" alt="" class="kg-image" width="1999" height="1154" loading="lazy">
+
 	</figure>
+	<p><i>Managing data inside Sanity.io’s headless CMS interface.</i></p>
 	<p>When a potential customer visits a bundle, they'll see a list of products from Sanity.io, and a checkout button provided by Stripe.</p>
-	<h3 id="responding-to-new-checkout-sessions-and-purchases">Responding to new checkout sessions and purchases</h3>
-	<p>Making API requests with Stripe's Node SDK isn't currently supported in Workers (check out the GitHub issue where we're<a href="https://github.com/stripe/stripe-node/issues/997"> discussing a fix</a>), but because it's just REST underneath, we can easily make REST requests using the library.</p>
-	<p>When a user clicks the checkout button on a bundle page, it makes a request to the Cloudflare Workers API, and securely generates a new session for the user to checkout with Stripe.</p><!--kg-card-begin: markdown-->
-	<pre><code>import { json, stripe } from '../helpers'
+	<h3>Responding to new checkout sessions and purchases</h3>
+	<p>Making API requests with Stripe's Node SDK isn't currently supported in Workers (check out the GitHub issue where we're <a href="https://github.com/stripe/stripe-node/issues/997">discussing a fix</a>), but because it's just REST underneath, we can easily make REST requests using the library.</p>
+	<p>When a user clicks the checkout button on a bundle page, it makes a request to the Cloudflare Workers API, and securely generates a new session for the user to checkout with Stripe.</p>
+	<pre class="language-bash"><code class="language-bash">import { json, stripe } from '../helpers'
 
 export default async (request) =&gt; {
   const body = await request.json()
@@ -36,21 +42,29 @@ export default async (request) =&gt; {
   }, 'POST')
 
   return json({ session_id: session.id })
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>This is where Workers excels as a JAMstack platform. Yes, it can do static site hosting, but with just a few extra lines of routing code, I can deploy a highly scalable API <strong>right alongside</strong> my Nuxt.js application.</p>
-	<h3 id="webhooks-and-working-with-external-services">Webhooks and working with external services</h3>
+}</code></pre>
+	<p>This is where Workers excels as a JAMstack platform. Yes, it can do static site hosting, but with just a few extra lines of routing code, I can deploy a highly scalable API <b>right alongside</b> my Nuxt.js application.</p>
+	<h3>Webhooks and working with external services</h3>
 	<p>This idea extends throughout the rest of the checkout process. When a customer is successfully charged for their purchase, Stripe sends a webhook back to Cloudflare Workers. In order to complete the transaction on our end, the Workers application:</p>
 	<ul>
-		<li><strong>Validates the incoming data from Stripe to ensure that it’s legitimate</strong>. This means that every incoming webhook request is explicitly validated using your Stripe account details, and can be confirmed to be valid before the function acts on it.</li>
-		<li><strong>Distributes payments to the authors using Stripe Connect</strong>. When a customer buys a bundle for $20, that $20 (minus Stripe fees) gets distributed evenly between the authors in that bundle — all of this calculation and the associated transfer requests happen inside the Worker.</li>
-		<li><strong>Sends a unique download link to the customer</strong>. Using Workers KV, a unique token is set up that corresponds to the customer's email, which can be used to retrieve the content the customer purchased. This integration uses Mailgun to construct an email and send it entirely over REST APIs.</li>
+		<li>
+			<p><b>Validates the incoming data from Stripe to ensure that it’s legitimate</b>. This means that every incoming webhook request is explicitly validated using your Stripe account details, and can be confirmed to be valid before the function acts on it.</p>
+		</li>
+		<li>
+			<p><b>Distributes payments to the authors using Stripe Connect</b>. When a customer buys a bundle for $20, that $20 (minus Stripe fees) gets distributed evenly between the authors in that bundle — all of this calculation and the associated transfer requests happen inside the Worker.</p>
+		</li>
+		<li>
+			<p><b>Sends a unique download link to the customer</b>. Using Workers KV, a unique token is set up that corresponds to the customer's email, which can be used to retrieve the content the customer purchased. This integration uses Mailgun to construct an email and send it entirely over REST APIs.</p>
+		</li>
 	</ul>
-	<p>By the time the purchase is complete, the Workers serverless API will have interfaced with four distinct APIs, persisting records, sending emails, and handling and distributing payments to everyone involved in the e-commerce transaction. With Workers, this all happens in a single codebase, with low latency and a superb developer experience. The entire API is type-checked and validated before it ever gets shipped to production, thanks to our<a href="https://github.com/cloudflare/worker-typescript-template"> TypeScript template</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image1-19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>By the time the purchase is complete, the Workers serverless API will have interfaced with four distinct APIs, persisting records, sending emails, and handling and distributing payments to everyone involved in the e-commerce transaction. With Workers, this all happens in a single codebase, with low latency and a superb developer experience. The entire API is type-checked and validated before it ever gets shipped to production, thanks to our <a href="https://github.com/cloudflare/worker-typescript-template">TypeScript template</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28P0T9V4Vr2rUjFGafTKbg/5bd206cbbaa6bf3ea280e898094113f6/image1-19.png" alt="" class="kg-image" width="958" height="1018" loading="lazy">
+
+	</figure>
 	<p>Each of these tasks involves a pretty serious level of complexity, but by using Workers, we can abstract each of them into smaller pieces of functionality, and compose powerful, on-demand, and infinitely scalable webhooks directly on the serverless edge.</p>
-	<h3 id="conclusion">Conclusion</h3>
-	<p>I'm really excited about the launch of this template and, of course, it wouldn't have been possible to ship something like this in just a few weeks without using Cloudflare Workers. If you're interested in digging into how any of the above stuff works,<a href="https://github.com/cloudflare/ecommerce-bundles-workers-example"> check out the project on GitHub</a>!</p>
-	<p>With the recent announcement of our<a href="https://blog.cloudflare.com/workers-kv-free-tier"> Workers KV free tier</a>, this project is perfect to fork and build your own e-commerce products with. Let me know what you build and<a href="https://twitter.com/signalnerve"> say hi on Twitter</a>!</p>
+	<h3>Conclusion</h3>
+	<p>I'm really excited about the launch of this template and, of course, it wouldn't have been possible to ship something like this in just a few weeks without using Cloudflare Workers. If you're interested in digging into how any of the above stuff works, <a href="https://github.com/cloudflare/ecommerce-bundles-workers-example">check out the project on GitHub</a>!</p>
+	<p>With the recent announcement of our <a href="https://blog.cloudflare.com/workers-kv-free-tier">Workers KV free tier</a>, this project is perfect to fork and build your own e-commerce products with. Let me know what you build and <a href="https://twitter.com/signalnerve">say hi on Twitter</a>!</p>
 </div>

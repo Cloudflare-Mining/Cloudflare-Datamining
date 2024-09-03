@@ -1,35 +1,54 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The last two years have given rise to hundreds of live streaming platforms. Most live streaming platforms enable their creators to go live by providing them with a server and an RTMP/SRT key that they can configure in their broadcasting app. </p>
-	<p>Until today, even if your live streaming platform was called <em>live-yoga-classes.com</em>, your users would need to push the RTMPS feed to <em>live.cloudflare.com</em>. Starting today, every Stream account can configure its own domain in the Stream dashboard. And your creators can broadcast to a domain such as <em>push.live-yoga-classes.com</em>. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KQscD2SrIO66eYcgSugyV/3b4edd04aec638f1478f97488102aba1/image6-11.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>The last two years have given rise to hundreds of live streaming platforms. Most live streaming platforms enable their creators to go live by providing them with a server and an RTMP/SRT key that they can configure in their broadcasting app.</p>
+	<p>Until today, even if your live streaming platform was called <i>live-yoga-classes.com</i>, your users would need to push the RTMPS feed to <i>live.cloudflare.com</i>. Starting today, every Stream account can configure its own domain in the Stream dashboard. And your creators can broadcast to a domain such as <i>push.live-yoga-classes.com</i>.</p>
 	<p>This feature is available to all Stream accounts, including self-serve customers at no additional cost. Every Cloudflare account with a Stream subscription can add up to five ingest domains.</p>
-	<h3 id="secure-cnameing-for-live-video-ingestion">Secure CNAMEing for live video ingestion</h3>
-	<p>Cloudflare Stream only supports encrypted video ingestion using RTMPS and SRT protocols. These are secure protocols and, similar to HTTPS, ensure encryption between the broadcaster and Cloudflare servers. Unlike non-secure protocols like RTMP, secure RTMP (or RTMPS) protects your users from monster-in-the-middle attacks. </p>
-	<p>In an unsecure world, you could simply CNAME a domain to another domain regardless of whether you own the domain you are sending traffic to. Because Stream Live intentionally does not support insecure live streams, you cannot simply CNAME your domain to <code>live.cloudflare.com</code>. So we leveraged other Cloudflare products such as Spectrum to natively support custom-branded domains in the Stream Live product <em>without</em> making the live streams less private for your broadcasters.</p>
-	<h3 id="configuring-custom-domain-for-live-ingestion">Configuring Custom Domain for Live Ingestion</h3>
+	<h3>Secure CNAMEing for live video ingestion</h3>
+	<p>Cloudflare Stream only supports encrypted video ingestion using RTMPS and SRT protocols. These are secure protocols and, similar to HTTPS, ensure encryption between the broadcaster and Cloudflare servers. Unlike non-secure protocols like RTMP, secure RTMP (or RTMPS) protects your users from monster-in-the-middle attacks.</p>
+	<p>In an unsecure world, you could simply CNAME a domain to another domain regardless of whether you own the domain you are sending traffic to. Because Stream Live intentionally does not support insecure live streams, you cannot simply CNAME your domain to <code>live.cloudflare.com</code>. So we leveraged other Cloudflare products such as Spectrum to natively support custom-branded domains in the Stream Live product <i>without</i> making the live streams less private for your broadcasters.</p>
+	<h3>Configuring Custom Domain for Live Ingestion</h3>
 	<p>To begin configuring your custom domain, add the domain to your Cloudflare account as a regular zone.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-11.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Add a zone to your Cloudflare account</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rYWhOUOIX5TOW7OSfx7VX/48c927ceabfc94c447b577d2a62d0f91/image5-11.png" alt="" class="kg-image" width="1290" height="710" loading="lazy">
+
 	</figure>
+	<p><i>Add a zone to your Cloudflare account</i></p>
 	<p>Next, CNAME the domain to live.cloudflare.com.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-18.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>CNAME the zone to live.cloudflare.com</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/d2DA80TGOJLsbHGkmk2om/b7bd035cb3cdc36349616b91671c9753/image4-18.png" alt="" class="kg-image" width="1692" height="556" loading="lazy">
+
 	</figure>
+	<p><i>CNAME the zone to live.cloudflare.com</i></p>
 	<p>Assuming you have a <a href="https://support.cloudflare.com/hc/en-us/articles/360017801091#1Hq8KLx5TCtkJhzJVMlEPL">Stream subscription</a>, visit the Inputs page and click on the Settings icon:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-29.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Click on Settings icon on Live Inputs page</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3SEqMpZ6iYrxwPBOjHpH9D/3e79df5b8e5602b6ad07b40dfa8501b7/image2-29.png" alt="" class="kg-image" width="1256" height="190" loading="lazy">
+
 	</figure>
+	<p><i>Click on Settings icon on Live Inputs page</i></p>
 	<p>Next, add the domain you configured in the previous step as a Live Ingest Domain:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-22.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Add Custom Ingest Domain</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OlFEll8C4YiPHYgB7VqW/44d076966f87de7fa644efb7565c602b/image3-22.png" alt="" class="kg-image" width="1266" height="572" loading="lazy">
+
 	</figure>
+	<p><i>Add Custom Ingest Domain</i></p>
 	<p>If your domain is successfully added, you will see a confirmation:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-37.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Confirmation of domain being added as an ingest domain</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37ecPeYiNM7Qn8hP4Du7fL/b49edbbb61113ffe4e260d2b2b85d19f/image1-37.png" alt="" class="kg-image" width="1276" height="434" loading="lazy">
+
 	</figure>
+	<p><i>Confirmation of domain being added as an ingest domain</i></p>
 	<p>Once you’ve added your ingest domain, test it by changing your existing configuration in your broadcasting software to your ingest domain. You can read the complete docs and limitations in the <a href="https://developers.cloudflare.com/stream/stream-live/custom-domains">Stream Live developer docs.</a></p>
-	<h3 id="what-s-next">What’s Next</h3>
-	<p>Besides the branding upside — &nbsp;you don’t have to instruct your users to configure a domain such as live.cloudflare.com — custom domains help you avoid vendor lock-in and seamless migration. For example, if you have an existing live video pipeline that you are considering moving to Stream Live, this makes the migration one step easier because you no longer have to ask your users to change any settings in their broadcasting app. </p>
+	<h3>What’s Next</h3>
+	<p>Besides the branding upside — &nbsp;you don’t have to instruct your users to configure a domain such as live.cloudflare.com — custom domains help you avoid vendor lock-in and seamless migration. For example, if you have an existing live video pipeline that you are considering moving to Stream Live, this makes the migration one step easier because you no longer have to ask your users to change any settings in their broadcasting app.</p>
 	<p>A natural next step is to support custom keys. Currently, your users must still use keys that are provided by Stream Live. Soon, you will be able to bring your own keys. Custom domains combined with custom keys will help you migrate to Stream Live with zero breaking changes for your end users.</p>
 </div>

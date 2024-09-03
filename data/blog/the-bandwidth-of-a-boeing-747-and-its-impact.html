@@ -1,21 +1,26 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/6058320343_383e2a2c46.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><br>
-		<small>Image credit: <a href="http://www.flickr.com/photos/markyharky">markyharky</a></small>
-	</p>
+<div class="mb2 gray5">3 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bj0AZG6jMFEqUeHbfnnZK/b4be41866d409ba88ce655041ffdc2d4/6058320343_383e2a2c46.jpeg.scaled500.jpg" alt="The bandwidth of a Boeing 747 and its impact on web browsing" class="kg-image" width="492" height="208" loading="lazy">
+
+	</figure>
+	<p>Image credit: <a href="http://www.flickr.com/photos/markyharky">markyharky</a></p>
 	<p>This is the first in a series of posts looking at what makes the web slow and what to do about it.</p>
 	<p>Suppose you needed to transfer 1TB of data (perhaps your home movie collection) from San Francisco to London. What would be the fastest route? Put the disk on British Airways flight 286 at SFO, or transfer it across the Internet using a 100 Mbps connection?</p>
 	<p>Surprisingly, the answer is the former not the latter. If you had a perfect 100 Mbps Internet connection and could fill it completely with data the transfer would take 22 hours 13 minutes. British Airways make the flight in under 10 hours.</p>
 	<p>But even with a 100 Mbps Internet connection you're unlikely to get 100 Mbps of transfer speed between San Francisco and London. The details of the TCP protocol used on the Internet and the speed of light collude to make the effective transfer speed much lower.</p>
 	<p>To really understand the speed of an Internet connection, be it transferring 1TB of data or downloading a web page, there are two values that you need to know: the bandwidth and the latency.</p>
 	<p>The bandwidth is how much data can be sent on the connection in a unit of time. In the example above the Internet connection has a bandwidth of 100 Mbps, the Boeing 747 has a bandwidth of 222 Mbps (the 1TB carried divided by the flight time).</p>
-	<p>The latency is the 'flight time' of data across the connection. For a connection between London and San Francisco across the Internet the<br>
-		latency will be something like 150ms. That figure is governed and limited by the speed of light. For the 747 the latency is the literal flying time of 10 hours.</p>
+	<p>The latency is the 'flight time' of data across the connection. For a connection between London and San Francisco across the Internet thelatency will be something like 150ms. That figure is governed and limited by the speed of light. For the 747 the latency is the literal flying time of 10 hours.</p>
 	<p>One thing British Airways ensures while flying the 1TB of data is reliability. The data is very, very unlikely to not arrive in London. The Internet does not provide the same guarantee. As data is transferred across the Internet it gets delayed, lost, corrupted and misordered. So, the Internet's core protocol TCP provides mechanisms to ensure the reliable delivery of data despite the lossy network the data is passing through. It's these mechanisms that slow the transfer of data down and where the speed of light comes into play.</p>
 	<p>(If airlines experienced aircraft loss at the rate the Internet sees packet loss there'd be 28 crashes per day in the US alone).</p>
-	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/5080064040_cfa89f55d2.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><br>
-		<small>Image credit: <a href="http://www.flickr.com/photos/ronniechan">El Ronzo</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rTqeYfCV1ToUQMAuZftw3/6132cc762880163b3368c63055b8a81f/5080064040_cfa89f55d2.jpeg.scaled500.jpg" alt="The bandwidth of a Boeing 747 and its impact on web browsing" class="kg-image" width="500" height="342" loading="lazy">
+
+	</figure>
+	<p>Image credit: <a href="http://www.flickr.com/photos/ronniechan">El Ronzo</a></p>
 	<p>To ensure reliability, TCP breaks data to be sent up into chunks (which are further broken down into packets) and sends chunks of data and then waits for an acknowledgement that the chunk was successfully received. It's while waiting for the acknowledgement that the speed of light comes into play.</p>
 	<p>Imagine that a 65kB chunk of data has been sent across a link with a latency of 150ms. The 65kB take 150ms to reach their destination and the receiving machine sends an acknowledgement that takes a further 150ms to arrive. So 0.3s is taken up making sure that 65KB have arrived successfully; that number is called the Round Trip Time.</p>
 	<p>Those acknowledgement delays significantly hamper connections across long distances (and also from mobile phones).</p>
@@ -25,9 +30,8 @@
 	<p>So, my 1TB download would actually take more than 6 days! The speed of light really is a limiting factor in downloading.</p>
 	<p>How do you fight the speed of light? Since you can't control the Receive Window the only thing you can do is move your web site closer to the people surfing it. And, of course, that's not practical for most web sites since you'd have to have copies of the web site all over the world.</p>
 	<p>CloudFlare fights the speed of light for you by having data centers around the world. If your site is on CloudFlare then surfers will connect to the data center that's nearest to them.</p>
-	<p>For example, CloudFlare's own web site is in California, but from London it appears to be only 10ms away because of CloudFlare's London data center. The same distribution of a web site across the world works for<br>
-		any CloudFlare customer.</p>
+	<p>For example, CloudFlare's own web site is in California, but from London it appears to be only 10ms away because of CloudFlare's London data center. The same distribution of a web site across the world works forany CloudFlare customer.</p>
 	<p>In my next post I'll look at optimizations you can make to web site content for speedy browsing, and show how CloudFlare helps.</p>
 	<hr>
-	Part two of this series is now available: <a href="https://blog.cloudflare.com/what-makes-spdy-speedy">What Makes SPDY Speedy?</a><!--kg-card-end: markdown-->
+	<p>Part two of this series is now available: <a href="https://blog.cloudflare.com/what-makes-spdy-speedy">What Makes SPDY Speedy?</a></p>
 </div>

@@ -1,101 +1,115 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-we-built-spectrum">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-we-built-spectrum">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-we-built-spectrum">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-we-built-spectrum">한국어</a>, <a href="https://blog.cloudflare.com/es-es/how-we-built-spectrum">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/how-we-built-spectrum">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fBc1UfFU6JKIdXFfqTLE1/7009b4bb5310431f5398b8873704b239/how-we-built-spectrum.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today we are <a href="https://blog.cloudflare.com/spectrum">introducing Spectrum</a>: a new Cloudflare feature that brings <a href="https://www.cloudflare.com/ddos">DDoS protection</a>, load balancing, and content acceleration to any TCP-based protocol.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/13334109713_0b32435032_z.jpg" alt="13334109713_0b32435032_z" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713">image</a> by <a href="https://www.flickr.com/photos/liftarn">Staffan Vilcans</a></small>
-	</p>
-	<p>Soon after we started building Spectrum, we hit a major technical obstacle: Spectrum requires us to accept connections on any valid TCP port, from 1 to 65535. On our Linux edge servers it's impossible to "accept inbound connections on <em>any</em> port number". This is not a Linux-specific limitation: it's a characteristic of the BSD sockets API, the basis for network applications on most operating systems. Under the hood there are two overlapping problems that we needed to solve in order to deliver Spectrum:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Gm96owfEOWttanNpmKl0l/02a16b37b62499c6132a5389c3001e9b/13334109713_0b32435032_z.jpg" alt="13334109713_0b32435032_z" class="kg-image" width="640" height="425" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713">image</a> by <a href="https://www.flickr.com/photos/liftarn">Staffan Vilcans</a></p>
+	<p>Soon after we started building Spectrum, we hit a major technical obstacle: Spectrum requires us to accept connections on any valid TCP port, from 1 to 65535. On our Linux edge servers it's impossible to "accept inbound connections on <i>any</i> port number". This is not a Linux-specific limitation: it's a characteristic of the BSD sockets API, the basis for network applications on most operating systems. Under the hood there are two overlapping problems that we needed to solve in order to deliver Spectrum:</p>
 	<ul>
-		<li>how to accept TCP connections on all port numbers from 1 to 65535</li>
-		<li>how to configure a single Linux server to accept connections on a very large number of IP addresses (we have many thousands of IP addresses in our anycast ranges)</li>
+		<li>
+			<p>how to accept TCP connections on all port numbers from 1 to 65535</p>
+		</li>
+		<li>
+			<p>how to configure a single Linux server to accept connections on a very large number of IP addresses (we have many thousands of IP addresses in our anycast ranges)</p>
+		</li>
 	</ul>
-	<h3 id="assigningmillionsofipstoaserver">Assigning millions of IPs to a server</h3>
-	<p>Cloudflare’s edge servers have an almost identical configuration. In our early days, we used to assign specific /32 (and /128) IP addresses to the loopback network interface<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>. This worked well when we had dozens of IP addresses, but failed to scale as we grew.</p>
+	<h3>Assigning millions of IPs to a server</h3>
+	<p>Cloudflare’s edge servers have an almost identical configuration. In our early days, we used to assign specific /32 (and /128) IP addresses to the loopback network interface<a href="https://blog.cloudflare.com/#fn1">[1]</a>. This worked well when we had dozens of IP addresses, but failed to scale as we grew.</p>
 	<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
 	<p>This trick is applicable to more than the 127.0.0.1/8 block. To treat the whole range of 192.0.2.0/24 as assigned locally, run:</p>
-	<pre><code>ip route add local 192.0.2.0/24 dev lo
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">ip route add local 192.0.2.0/24 dev lo</code></pre>
 	<p>Following this, you can bind to port 8080 on one of these IP addresses just fine:</p>
-	<pre><code>nc -l 192.0.2.1 8080
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">nc -l 192.0.2.1 8080</code></pre>
 	<p>Getting IPv6 to work is a bit harder:</p>
-	<pre><code>ip route add local 2001:db8::/64 dev lo
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">ip route add local 2001:db8::/64 dev lo</code></pre>
 	<p>Sadly, you can't just bind to these attached v6 IP addresses like in the v4 example. To get this working you must use the <code>IP_FREEBIND</code> socket option, which requires elevated privileges. For completeness, there is also a sysctl <code>net.ipv6.ip_nonlocal_bind</code>, but we don't recommend touching it.</p>
 	<p>This AnyIP trick allows us to have millions of IP addresses assigned locally to each server:</p>
-	<pre><code>$ ip addr show
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
+	<pre class="language-bash"><code class="language-bash">$ ip addr show
+1: lo: <loopback,up,lower_up> mtu 65536
     inet 1.1.1.0/24 scope global lo
        valid_lft forever preferred_lft forever
     inet 104.16.0.0/16 scope global lo
        valid_lft forever preferred_lft forever
-...
-</code></pre>
-	<h3 id="bindingtoallports">Binding to ALL ports</h3>
+...</loopback,up,lower_up></code></pre>
+	<h3>Binding to ALL ports</h3>
 	<p>The second major issue is the ability to open TCP sockets for any port number. In Linux, and generally in any system supporting the BSD sockets API, you can only bind to a specific TCP port number with a single <code>bind</code> system call. It’s not possible to bind to multiple ports in a single operation.</p>
 	<p>A naive solution would be to <code>bind</code> 65535 times, once for each of the 65535 possible ports. Indeed, this could have been an option, but with terrible consequences:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets">The revenge of the listening sockets</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/revenge-listening-sockets">The revenge of the listening sockets</a></p>
+		</li>
 	</ul>
 	<p>Internally, the Linux kernel stores listening sockets in a hash table indexed by port numbers, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118">LHTABLE</a>, using exactly 32 buckets:</p>
-	<pre><code>/* Yes, really, this is all you need. */
-#define INET_LHTABLE_SIZE       32
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">/* Yes, really, this is all you need. */
+#define INET_LHTABLE_SIZE       32</code></pre>
 	<p>Had we opened 65k ports, lookups to this table would slow drastically: each hash table bucket would contain two thousand items.</p>
 	<p>Another way to solve our problem would be to use iptables’ rich NAT features: we could rewrite the destination of inbound packets to some specific address/port, and our application would bind to that.</p>
 	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
 	<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c">the code doesn't look encouraging</a>.</p>
 	<p>Fortunately, there is a way to achieve our goals that does not involve binding to all 65k ports, or use <code>conntrack</code>.</p>
-	<h3 id="firewalltotherescue">Firewall to the rescue</h3>
+	<h3>Firewall to the rescue</h3>
 	<p>Before we go any further, let’s revisit the general flow of network packets in an operating system.</p>
 	<p>Commonly, there are two distinct layers in the inbound packet path:</p>
 	<ul>
-		<li>IP firewall</li>
-		<li>network stack</li>
+		<li>
+			<p>IP firewall</p>
+		</li>
+		<li>
+			<p>network stack</p>
+		</li>
 	</ul>
-	<p>These are conceptually distinct. The IP firewall is usually a stateless piece of software (let's ignore <code>conntrack</code> and IP fragment reassembly for now). The firewall analyzes IP packets and decides whether to ACCEPT or DROP them. Please note: at this layer we are talking about <em>packets</em> and <em>port numbers</em> - not <em>applications</em> or <em>sockets</em>.</p>
-	<p>Then there is the network stack. This beast maintains plenty of state. Its main task is to dispatch inbound IP packets into <em>sockets</em>, which are then handled by userspace <em>applications</em>. The network stack manages abstractions which are shared with userspace. It reassembles TCP flows, deals with routing, and knows which IP addresses are local.</p>
-	<h3 id="themagicdust">The magic dust</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/upload-1.jpg" alt="upload-1" loading="lazy"><br>
-		<small>Source: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc">still from YouTube</a></small>
-	</p>
+	<p>These are conceptually distinct. The IP firewall is usually a stateless piece of software (let's ignore <code>conntrack</code> and IP fragment reassembly for now). The firewall analyzes IP packets and decides whether to ACCEPT or DROP them. Please note: at this layer we are talking about <i>packets</i> and <i>port numbers</i> - not <i>applications</i> or <i>sockets</i>.</p>
+	<p>Then there is the network stack. This beast maintains plenty of state. Its main task is to dispatch inbound IP packets into <i>sockets</i>, which are then handled by userspace <i>applications</i>. The network stack manages abstractions which are shared with userspace. It reassembles TCP flows, deals with routing, and knows which IP addresses are local.</p>
+	<h3>The magic dust</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AmbKOGpP2SLYGI4dCFTvG/c71c24b17764a8299cf957b0e478399e/upload-1.jpg" alt="upload-1" class="kg-image" width="640" height="360" loading="lazy">
+
+	</figure>
+	<p>Source: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc">still from YouTube</a></p>
 	<p>At some point we stumbled upon the <code>TPROXY</code> iptables module. The <a href="http://ipset.netfilter.org/iptables-extensions.man.html">official documentation</a> is easy to overlook:</p>
-	<pre><code>TPROXY
+	<pre class="language-bash"><code class="language-bash">TPROXY
 This target is only valid in the mangle table, in the 
 PREROUTING chain and user-defined chains which are only 
 called from this chain.  It redirects the packet to a local 
 socket without changing the packet header in any way. It can
 also change the mark value which can then be used in 
-advanced routing rules. 
-</code></pre>
+advanced routing rules. </code></pre>
 	<p>Another piece of documentation can be found in the kernel:</p>
 	<ul>
-		<li><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt">docs/networking/tproxy.txt</a></li>
+		<li>
+			<p><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt">docs/networking/tproxy.txt</a></p>
+		</li>
 	</ul>
 	<p>The more we thought about it, the more curious we became...</p>
-	<p>So... What does TPROXY actually <em>do</em>?</p>
-	<h3 id="revealingthemagictrick">Revealing the magic trick</h3>
+	<p>So... What does TPROXY actually <i>do</i>?</p>
+	<h3>Revealing the magic trick</h3>
 	<p>The <code>TPROXY</code> code is <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119">surprisingly trivial</a>:</p>
-	<pre><code>case NFT_LOOKUP_LISTENER:
+	<pre class="language-bash"><code class="language-bash">case NFT_LOOKUP_LISTENER:
   sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
 				    ip_hdrlen(skb) +
 				      __tcp_hdrlen(tcph),
 				    saddr, sport,
 				    daddr, dport,
-				    in-&gt;ifindex, 0);
-</code></pre>
+				    in-&gt;ifindex, 0);</code></pre>
 	<p>Let me read this out loud for you: in an <code>iptables</code> module, which is part of the firewall, we call <code>inet_lookup_listener</code>. This function takes a src/dst port/IP 4-tuple, and returns the listening socket that is able to accept that connection. This is a core functionality of the network stack’s socket dispatch.</p>
 	<p>Once again: firewall code calls a socket dispatch routine.</p>
-	<p>Later on <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299"><code>TPROXY</code> actually <em>does</em> the socket dispatch</a>:</p>
-	<pre><code>skb-&gt;sk = sk;
-</code></pre>
+	<p>Later on <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299"><code>TPROXY</code> actually <i>does</i> the socket dispatch</a>:</p>
+	<pre class="language-bash"><code class="language-bash">skb-&gt;sk = sk;</code></pre>
 	<p>This line assigns a socket <code>struct sock</code> to an inbound packet - completing the dispatch.</p>
-	<h3 id="pullingtherabbitfromthehat">Pulling the rabbit from the hat</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/04/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd">Angela Boothroyd</a></small>
-	</p>
+	<h3>Pulling the rabbit from the hat</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51PUlTDqve3FXm5AhGdfZt/705af25c02942ee285330038c52a626d/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" class="kg-image" width="640" height="424" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd">Angela Boothroyd</a></p>
 	<p>Armed with <code>TPROXY</code>, we can perform the bind-to-all-ports trick very easily. Here's the configuration:</p>
-	<pre><code># Set 192.0.2.0/24 to be routed locally with AnyIP.
+	<pre class="language-bash"><code class="language-bash"># Set 192.0.2.0/24 to be routed locally with AnyIP.
 # Make it explicit that the source IP used for this network
 # when connecting locally should be in 127.0.0.0/8 range.
 # This is needed since otherwise the TPROXY rule would match
@@ -106,10 +120,9 @@ sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
 # Set the magical TPROXY routing
 sudo iptables -t mangle -I PREROUTING \
         -d 192.0.2.0/24 -p tcp \
-        -j TPROXY --on-port=1234 --on-ip=127.0.0.1
-</code></pre>
+        -j TPROXY --on-port=1234 --on-ip=127.0.0.1</code></pre>
 	<p>In addition to setting this in place, you need to start a TCP server with the magical <code>IP_TRANSPARENT</code> socket option. Our example below needs to listen on tcp://127.0.0.1:1234. The <a href="http://man7.org/linux/man-pages/man7/ip.7.html">man page for <code>IP_TRANSPARENT</code></a> shows:</p>
-	<pre><code>IP_TRANSPARENT (since Linux 2.6.24)
+	<pre class="language-bash"><code class="language-bash">IP_TRANSPARENT (since Linux 2.6.24)
 Setting this boolean option enables transparent proxying on
 this socket.  This socket option allows the calling applica‐
 tion to bind to a nonlocal IP address and operate both as a
@@ -122,10 +135,9 @@ Enabling this socket option requires superuser privileges
 (the CAP_NET_ADMIN capability).
 
 TProxy redirection with the iptables TPROXY target also
-requires that this option be set on the redirected socket.
-</code></pre>
+requires that this option be set on the redirected socket.</code></pre>
 	<p>Here's a simple Python server:</p>
-	<pre><code>import socket
+	<pre class="language-bash"><code class="language-bash">import socket
 
 IP_TRANSPARENT = 19
 
@@ -141,32 +153,26 @@ while True:
     l_ip, l_port = c.getsockname()
     print("[ ] Connection from tcp://%s:%d to tcp://%s:%d" % (r_ip, r_port, l_ip, l_port))
     c.send(b"hello world\n")
-    c.close()
-</code></pre>
+    c.close()</code></pre>
 	<p>After running the server you can connect to it from arbitrary IP addresses:</p>
-	<pre><code>$ nc -v 192.0.2.1 9999
+	<pre class="language-bash"><code class="language-bash">$ nc -v 192.0.2.1 9999
 Connection to 192.0.2.1 9999 port [tcp/*] succeeded!
-hello world
-</code></pre>
-	<p>Most importantly, the server will report the connection indeed was directed to 192.0.2.1 port 9999, <em>even though nobody actually listens on that IP address and port</em>:</p>
-	<pre><code>$ sudo python3 transparent2.py
+hello world</code></pre>
+	<p>Most importantly, the server will report the connection indeed was directed to 192.0.2.1 port 9999, <i>even though nobody actually listens on that IP address and port</i>:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo python3 transparent2.py
 [+] Bound to tcp://127.0.0.1:1234
-[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999
-</code></pre>
-	<p>Tada! This is how to <em>bind to any port</em> on Linux, without using <code>conntrack</code>.</p>
-	<h3 id="thatsallfolks">That's all folks</h3>
+[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</code></pre>
+	<p>Tada! This is how to <i>bind to any port</i> on Linux, without using <code>conntrack</code>.</p>
+	<h3>That's all folks</h3>
 	<p>In this post we described how to use an obscure iptables module, originally designed to help transparent proxying, for something slightly different. With its help we can perform things we thought impossible using the standard BSD sockets API, avoiding the need for any custom kernel patches.</p>
 	<p>The <code>TPROXY</code> module is very unusual - in the context of the Linux firewall it performs things typically done by the Linux network stack. The official documentation is rather lacking, and I don't believe many Linux users understand the full power of this module.</p>
 	<p>It's fair to say that <code>TPROXY</code> allows our Spectrum product to run smoothly on the vanilla kernel. It’s yet another reminder of how important it is to try to understand iptables and the network stack!</p>
 	<hr>
-	<p><em>Doing low level socket work sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572">world famous team</a> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</em>.</p>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>Assigning IP addresses to loopback interface, together with appropriate <code>rp_filter</code> and BGP configuration allows us to handle arbitrary IP ranges on our edge servers. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<p><i>Doing low level socket work sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</i>.</p>
+	<hr>
+	<ol>
+		<li>
+			<p>Assigning IP addresses to loopback interface, together with appropriate <code>rp_filter</code> and BGP configuration allows us to handle arbitrary IP ranges on our edge servers. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+	</ol>
 </div>

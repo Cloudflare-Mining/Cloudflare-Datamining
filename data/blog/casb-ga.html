@@ -1,42 +1,62 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/casb-ga-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/casb-ga-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/casb-ga-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/casb-ga-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/casb-ga-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-15.png" class="kg-image" alt="Detect security issues in your SaaS apps with Cloudflare CASB" loading="lazy"></figure>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/casb-ga">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/casb-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/casb-ga">日本語</a>, <a href="https://blog.cloudflare.com/es-es/casb-ga">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/casb-ga">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/584dq4kyvBkZDPfFusLGfq/c2cfecfb9c97a4223acc15ba8db23f50/image1-15.png" alt="Detect security issues in your SaaS apps with Cloudflare CASB" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>It’s GA Week here at Cloudflare, meaning some of our latest and greatest endeavors are here and ready to be put in the hands of Cloudflare customers around the world. One of those releases is Cloudflare’s API-driven Cloud Access Security Broker, or <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">CASB</a>, one of the newest additions to our <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust platform</a>.</p>
 	<p>Starting today, IT and security administrators can begin using <a href="https://www.cloudflare.com/products/zero-trust/casb">Cloudflare CASB</a> to connect, scan, and <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">monitor their third-party SaaS applications</a> for a wide variety of security issues - all in just a few clicks.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vuJA1D61molQYhcWYK9G8/4da57be461690a6fe7bf09541311d091/image2-13.png" alt="" class="kg-image" width="1600" height="1300" loading="lazy">
+
+	</figure>
 	<p>Whether it’s auditing Google Drive for data exposure and file oversharing, checking Microsoft 365 for misconfigurations and insecure settings, or reviewing <a href="https://www.cloudflare.com/products/zero-trust/third-party-access">third-party access</a> for Shadow IT, CASB is now here to help organizations establish a direct line of sight into their SaaS app security and DLP posture.</p>
-	<h3 id="the-problem">The problem</h3>
+	<h3>The problem</h3>
 	<p>Try to think of a business or organization that uses fewer than 10 SaaS applications. Hard, isn’t it?</p>
 	<p>It’s 2022, and by now, most of us have noticed the trend of mass SaaS adoption balloon over recent years, with some organizations utilizing hundreds of third-party services across a slew of internal functions. Google Workspace and Microsoft 365 for business collaboration. Slack and Teams for communication. Salesforce for customer management, GitHub for version control… the list goes on and on and on.</p>
 	<p>And while the average employee might see these products as simply tools used in their day-to-day work, the reality is much starker than that. Inside these services lie some of an organization’s most precious, sensitive, business-critical data - something IT and security teams don’t take lightly and strive to protect at all costs.</p>
 	<p>But there hasn’t been a great way for these teams to ensure their data and the applications that contain it are kept secure. Go user by user, file by file, SaaS app by SaaS app and review everything for what could be potentially problematic? For most organizations, that’s just simply not realistic.</p>
 	<p>So, doing what Cloudflare does best, how are we helping our users get a grip on this wave of growing security risk in an intuitive and manageable way?</p>
-	<h3 id="the-solution">The solution</h3>
-	<p><u>Connect your most critical SaaS applications in just minutes and clicks</u></p>
-	<p>It all starts with a simple integration process, connecting your favorite SaaS applications to Cloudflare CASB in just a few clicks. Once connected, you’ll instantly begin to see <em>Findings</em> - or identified security issues - appear on your CASB home page.</p>
+	<h3>The solution</h3>
+	<p>Connect your most critical SaaS applications in just minutes and clicks</p>
+	<p>It all starts with a simple integration process, connecting your favorite SaaS applications to Cloudflare CASB in just a few clicks. Once connected, you’ll instantly begin to see <i>Findings</i> - or identified security issues - appear on your CASB home page.</p>
 	<p>CASB utilizes each vendor’s API to scan and identify a range of application-specific security issues that span several domains of information security, including misconfigurations and insecure settings, file sharing security, Shadow IT, best practices not being followed, and more.</p>
 	<p>Today CASB supports integrations with Google Workspace, Microsoft 365, Slack, and GitHub, with a growing list of other critical applications not far behind. Have a SaaS app you want to see next? <a href="https://forms.gle/zN6W8K3ys3RyaQu86">Let us know</a>!</p>
-	<p><u>See how all your files have been shared</u></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>One of the easiest ways for employees to accidentally expose internal information is usually with just the flick of a switch - changing a sharing setting to <em>Share this file to anyone with the link</em>.</p>
+	<p>See how all your files have been shared</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jz5NNEO31yqGuxl19ljUs/3677e399af1db82153eeb0a67f35d719/image3-9.png" alt="" class="kg-image" width="1600" height="1218" loading="lazy">
+
+	</figure>
+	<p>One of the easiest ways for employees to accidentally expose internal information is usually with just the flick of a switch - changing a sharing setting to <i>Share this file to anyone with the link</i>.</p>
 	<p>Cloudflare CASB provides users an exhaustive list of files that have questionable, often insecure, sharing settings, giving them a fast and reliable way to address low-hanging fruit exposures and get ahead of data protection incidents.</p>
-	<p><u>Identify insecure settings and bad practices</u></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Identify insecure settings and bad practices</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AweM5BmHVJZlqqnbL46Tl/b16e91779d297915d118402d4b4cfec1/image5-4.png" alt="" class="kg-image" width="1600" height="1218" loading="lazy">
+
+	</figure>
 	<p>How we configure our SaaS apps dictates how they keep our data secure. Would you know if that one important GitHub repository had its visibility changed from Private to Public overnight? And why does one of our IT admins not have 2FA enabled on their account?</p>
 	<p>With Cloudflare CASB, users can now see those issues in just a few clicks and prioritize misconfigurations that might not expose just one file, but the entirety of them across your organization’s SaaS footprint.</p>
-	<p><u>Discover third-party apps with shadowy permissions</u></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Discover third-party apps with shadowy permissions</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74DjxhmE1iGNgchSmmcepx/ab983490c55580ab2a1634bd313aab48/image4-5.png" alt="" class="kg-image" width="1600" height="1218" loading="lazy">
+
+	</figure>
 	<p>With the advent of frictionless product signups comes the rise of third-party applications that have breezed past approval processes and internal security reviews to lay claim to data and other sensitive resources. You guessed it, we’re talking about Shadow IT.</p>
-	<p>Cloudflare CASB adds a layer of access visibility beyond what traditional network-based Shadow IT discovery tools (like <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a>) can accomplish on their own, providing a detailed list of access that’s been granted to third-party services via those easy <em>Sign in with Google</em> buttons.</p>
-	<h3 id="so-why-does-this-matter-in-the-context-of-zero-trust">So, why does this matter in the context of Zero Trust?</h3>
+	<p>Cloudflare CASB adds a layer of access visibility beyond what traditional network-based Shadow IT discovery tools (like <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a>) can accomplish on their own, providing a detailed list of access that’s been granted to third-party services via those easy <i>Sign in with Google</i> buttons.</p>
+	<h3>So, why does this matter in the context of Zero Trust?</h3>
 	<p>While we’re here to talk about CASB, it would be remiss if we didn’t acknowledge how CASB is only one piece of the puzzle in the wider context of Zero Trust.</p>
 	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> is all about broad security coverage and simple interconnectivity with how employees access, navigate, and leverage the complex systems and services needed to operate every day. Where <a href="https://www.cloudflare.com/products/zero-trust/access">Cloudflare Access</a> and Gateway have provided users with <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">granular access control</a> and visibility into how employees traverse systems, and where <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation">Browser Isolation</a> and our new <a href="https://www.cloudflare.com/products/zero-trust/dlp">in-line DLP</a> offering protect users from malicious sites and limit sensitive data flying over the wire, CASB adds coverage for one of enterprise security’s final frontiers: visibility into data at-rest, who/what has access to it, and the practices that make it easier or harder for someone to access it inappropriately.</p>
-	<h3 id="how-to-get-started">How to get started</h3>
+	<h3>How to get started</h3>
 	<p>As we’ve found through CASB’s beta program over the last few months, SaaS sprawl and misuse compounds with time - we’ve already identified more than five million potential security issues across beta users, with some organizations seeing several thousand files flagged as needing a sharing setting review.</p>
 	<p>So don’t hesitate to get started on your SaaS app wrangling and cleanup journey; it’s easier than you might think.</p>
 	<p>To get started, create a <a href="https://dash.cloudflare.com/sign-up/teams">free Zero Trust account</a> to try it out with 50 free seats, and then get in touch with our team <a href="https://www.cloudflare.com/products/zero-trust/casb">here</a> to learn more about how Cloudflare CASB can help at your organization. We can’t wait to hear what you think.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/4e33fd9cb5859f1a5d57dfed8f95e956/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F4e33fd9cb5859f1a5d57dfed8f95e956%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

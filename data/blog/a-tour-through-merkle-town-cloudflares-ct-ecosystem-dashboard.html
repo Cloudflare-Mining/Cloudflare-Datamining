@@ -1,51 +1,86 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>For a quick primer on <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">Certificate Transparency</a>, please read my colleague Nick Sullivan’s post from earlier today. The discussion below expands on that post and details how Cloudflare monitors the health and performance of Certificate Transparency (CT) logs.</em></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/merkle-town.png" alt="merkle-town" loading="lazy"></p>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ikLLdm8NOhGXyWPPn6RJ7/152a76a9ff4840a5c34fc73be487900c/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>For a quick primer on </i><a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus"><i>Certificate Transparency</i></a><i>, please read my colleague Nick Sullivan’s post from earlier today. The discussion below expands on that post and details how Cloudflare monitors the health and performance of Certificate Transparency (CT) logs.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vH4aWBui9mA6DKcTeR4YA/b0bbfd858a19672297bab4b4777d8278/merkle-town.png" alt="merkle-town" class="kg-image" width="935" height="444" loading="lazy">
+
+	</figure>
 	<p>The success of Certificate Transparency rests on the existence of a robust ecosystem of logs and log operators. Without logs that CAs can depend on, it’s not practical for browsers to require that SSL certificates have been logged to be trusted—as Chrome <a href="https://groups.google.com/a/chromium.org/forum/#!topic/ct-policy/wHILiYf31DE">plans to do</a> on April 30. With this deadline fast approaching and others browsers likely to follow suit, it’s critical that the CT ecosystem continues to strengthen and expand with new log operators.</p>
 	<p>As we <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">wrote about</a> earlier today, Cloudflare recently joined this group of <a href="https://github.com/chromium/ct-policy#qualified-logs">trusted log operators</a>, helping strengthen this critical ecosystem. Now, we’d like to take you on a quick guide through our new publicly accessible tool that tracks the health of all trusted logs. In addition to basic uptime and response times, <a href="https://ct.cloudflare.com">Merkle Town</a> provides statistics on the type and frequency of certificates issued, the top issuers, and the inter-dependencies CAs have on existing logs and each other. Click here to jump right into our CT ecosystem dashboard, or continue reading for a quick overview of what we’ve built.</p>
-	<h2 id="dashboardoverview">Dashboard Overview</h2>
+	<h2>Dashboard Overview</h2>
 	<p>The dashboard is divided into two pages: the list of monitored logs and analyses of certificates found while monitoring. The latter can be grouped into the following sections:</p>
 	<ul>
-		<li>Certificate Breakdown by Type</li>
-		<li>Root Certificate Authorities</li>
-		<li>Global Details</li>
-		<li>Legacy Algorithms</li>
-		<li>Issuance Per Day By Certificate Authority</li>
-		<li>Log Utilization by Large Certificate Authorities</li>
+		<li>
+			<p>Certificate Breakdown by Type</p>
+		</li>
+		<li>
+			<p>Root Certificate Authorities</p>
+		</li>
+		<li>
+			<p>Global Details</p>
+		</li>
+		<li>
+			<p>Legacy Algorithms</p>
+		</li>
+		<li>
+			<p>Issuance Per Day By Certificate Authority</p>
+		</li>
+		<li>
+			<p>Log Utilization by Large Certificate Authorities</p>
+		</li>
 	</ul>
-	<h3 id="loglist">Log List</h3>
+	<h3>Log List</h3>
 	<p>On this page we list all of the logs that we’re actively monitoring. The set is currently comprised of all logs trusted by Chrome, with one exception: WoSign has <a href="https://groups.google.com/a/chromium.org/forum/#!topic/ct-policy/UcCqlxuz_1c">recently been distrusted</a> and will be removed soon. We also plan to expand our list once Mozilla, Apple, and others (finally) codify their CT policies.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/log-list.png" alt="log-list" loading="lazy"></p>
-	<h3 id="monitoringmethodology">Monitoring Methodology</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GTCbLzGoF22QFyZ1udbJj/8dc341b40f8be92a1ec847d7a28e199f/log-list.png" alt="log-list" class="kg-image" width="2380" height="1444" loading="lazy">
+
+	</figure>
+	<h3>Monitoring Methodology</h3>
 	<p>For each log listed, we fetch the current Signed Tree Head (STH) and set of trusted roots once per minute. New entries that we haven’t seen yet are crawled, and we periodically submit strictly-valid unexpired certificates or pre-certificates to each log (unless the log is sharded by year, in which case we submit a certificate expiring in that year regardless of expiration status).</p>
 	<p>All requests to a log count towards our estimate of its uptime and response time. A specific endpoint's uptime, e.g., <a href="https://tools.ietf.org/html/rfc6962#section-4.3">get-sth</a> or <a href="https://tools.ietf.org/html/rfc6962#section-4.6">get-entries</a>, is computed as the percentage of requests to that endpoint that succeed—return a 200 status code with a valid response—in a 90 day rolling window. An endpoint's response time is computed as the average amount of time it takes to fully receive and parse a response after sending the request (again over a 90 day rolling window). Putting these together, we can compute the log's uptime and response times by taking the fair average of the uptime and response times for all monitored endpoints.</p>
 	<p>Note that some parts of the monitor may enforce different timeouts or will retry in the event that a request fails, while others will not. For example, <code>get-roots</code> and <code>get-sth</code> will start retrying more often if there's a failure, but if <code>add-chain</code> fails that doesn't change when the next <code>add-chain</code> will get sent. This behavior means that downtime may be penalized unfairly relative to a more intuitive interpretation of “downtime”. Lastly, the response time of the get-entries endpoint is strongly correlated with the number of entries it returns, but this information is currently ignored by our monitor.</p>
-	<h3 id="certificatebreakdownbytype">Certificate Breakdown by Type</h3>
+	<h3>Certificate Breakdown by Type</h3>
 	<p>On this section of the dashboard we group all certificates found across CT logs we monitor into the following categories: Validation Level; Public Key Algorithm; Signature Algorithm; Entry Type; and Expired v. Current. Selecting one slice of a chart will filter the other charts by this selection, as well as the Root Certificate Authorities section below the pie charts.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/ev-gif.gif" alt="ev-gif" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45obK1BTk6zdZRV7k5aCwZ/b43975ce7a50f790a0dc1efc60f72c97/ev-gif.gif" alt="ev-gif" class="kg-image" width="800" height="727" loading="lazy">
+
+	</figure>
 	<p>In the example shown above, I start by clicking “Other” in the Validation Level chart to discard the 315 million DV certs found. Then, I click on “Extended” to show only EV certificates and “Current” in the Expired v. Current chart to filter out expired certificates. From here I hover over the Root Certificate Authorities horizontal bar chart to see the distribution of unexpired EVs across roots. Note that we don’t (yet) group roots by owner, e.g., GeoTrust is listed separately rather than part of DigiCert, who purchased the brand along with the rest of Symantec’s CA business.</p>
 	<p>EV was the first type of certificate that was <a href="https://github.com/chromium/ct-policy/blob/master/ct_policy.md">required to have been logged</a> in CT. Chrome enforced this starting in 2015 and any EV certificates that are not logged do not receive the semi-standardized treatment of showing the organization’s legal name and country.</p>
 	<p>Another interesting observation from Merkle Town, as observed the day this post was published, is that RSA represents 93% of all certificates in our database but only 91% of unexpired certificates. This data indicates increased adoption of <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">elliptic curve cryptography</a>, a technology that uses smaller keys than RSA (at equivalent cryptographic strength), resulting in less load on the terminating server and fewer bytes sent over the wire during the TLS handshake.</p>
-	<h3 id="rootcertificateauthorities">Root Certificate Authorities</h3>
+	<h3>Root Certificate Authorities</h3>
 	<p>Here we break down certificate count based on the root to which it chains. The animation below has been filtered to show only current certificates, across all validation types. Note also that the roots displayed have not been grouped by owner.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/root-gif.gif" alt="root-gif" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66hNPZ3bTZtXWzhB3pXi5m/2e0a6f876741c5ec20aecf9674a6746a/root-gif.gif" alt="root-gif" class="kg-image" width="740" height="102" loading="lazy">
+
+	</figure>
 	<p>As can be seen as I continuously drill into the “Other” category, there is a long tail of browser-trusted CAs with very few unexpired certificates. Certificate Transparency and policy enforcement does not discriminate based on issuer size: soon any certificate issued worldwide must be logged or risk not being trusted.</p>
-	<h3 id="globaldetails">Global Details</h3>
+	<h3>Global Details</h3>
 	<p>This section is quite simple, but helps put into perspective the scale at which web PKI operates. As captured on the day this post was written, we’re observing 33,906 certificates issued and 28,955 expiring per hour.</p>
 	<p>Remarkably, roughly three-quarters of this issuance can be <a href="https://letsencrypt.org/stats/#daily-issuance">attributed to Let’s Encrypt</a>. Now that they <a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579">offer wildcard certificates</a>, it will be interesting to observe how this rate changes: wildcards expand the universe of users they can serve, but decreases the number of certificates required per domain.</p>
-	<h3 id="legacyalgorithms">Legacy Algorithms</h3>
+	<h3>Legacy Algorithms</h3>
 	<p>In the future we plan to offer the ability to drill down into categories to view specific certificates, especially those using deprecated algorithms. For now, you can see counts of still-valid certificates signed using deprecated algorithms such as RSA-MD2 (4), RSA-MD5 (22), and RSA-SHA1 (744,732).</p>
-	<h3 id="issuanceperdaybycertificateauthority">Issuance Per Day By Certificate Authority</h3>
+	<h3>Issuance Per Day By Certificate Authority</h3>
 	<p>Globally there are upwards of 1,000,000 certificates issued per day. As previously mentioned, Let’s Encrypt represents approximately 75-80% of this issuance—except for days when Cloudflare accelerates issuance through DigiCert. On these days, as shown below in the two rightmost-bars, Let’s Encrypt represents 70%.</p>
 	<p>Chrome’s upcoming "not secure" labeling of HTTP sites has been driving intense adoption of HTTPS using Cloudflare's <a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS provider offering</a>. Our customers are moving tens of thousands of sites per day from HTTP to HTTPS using our custom hostnames API.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/issuance-by-day.png" alt="issuance-by-day" loading="lazy"></p>
-	<h3 id="logutilizationbylargecertificateauthorities">Log Utilization by Large Certificate Authorities</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vDFSsmdRVETZsmOqw3Att/8cd1ce89dadc0c6784abbb3d6593a295/issuance-by-day.png" alt="issuance-by-day" class="kg-image" width="2288" height="824" loading="lazy">
+
+	</figure>
+	<h3>Log Utilization by Large Certificate Authorities</h3>
 	<p>As we <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus#lettingbrowsersknowthatcertificatesarelogged">explained earlier today</a>, the most popular way to let browsers that know that a SSL certificate has been logged to CT is by embedding SCTs in the certificate. This process takes place before the certificate has been signed and provided to the website operator, so it is critical that it be performed reliably and quickly.</p>
 	<p>The chart below shows that CAs typically obtain their SCTs from the same set of logs, operated by other CAs. In some cases, CAs will allow other CAs to log for free, while in other cases they may charge a modest sum to offset the cost of operating the log. Cloudflare has been working with CAs to help them streamline this process, by providing APIs that (in parallel) acquire SCTs in accordance with browsers’ CT policies.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/ca-interdependencies.png" alt="ca-interdependencies" loading="lazy"></p>
-	<h2 id="helpspreadthetransparency">Help spread the transparency</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3M9WKOeTgDUwLMqIaio23K/00ec15533dfb8e09a624263bc3f8a600/ca-interdependencies.png" alt="ca-interdependencies" class="kg-image" width="1986" height="860" loading="lazy">
+
+	</figure>
+	<h2>Help spread the transparency</h2>
 	<p>Merkle Town was built by Cloudflare Cryptography Team Engineer, Brendan McMillion. Want to work with Brendan, <a href="https://blog.cloudflare.com/author/nick-sullivan">Nick Sullivan</a>, and the rest of the Cloudflare Crypto team? You're in luck as <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">they're hiring</a> full time Cryptography Engineers and interns in San Francisco and London. Apply today and help us further strengthen encryption on the web.</p>
 	<p>Additionally, as I said at the outset of this post, Certificate Transparency relies on a robust ecosystem of logs and log operators. CT improves the security of everyone using HTTPS, so if your organization has the resources to stand up a log, free to reach out to us at <a href="mailto:ct-logs@cloudflare.com">ct-logs@cloudflare.com</a>. Drop us a line and we’d be happy to point you in the right direction.</p>
-	<!--kg-card-end: markdown-->
 </div>

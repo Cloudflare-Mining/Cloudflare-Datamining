@@ -1,31 +1,54 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><strong>UPDATES</strong>: <a href="https://blog.cloudflare.com/introducing-universal-ssl">SSL is now included on all Plans</a>, and <a href="https://support.cloudflare.com/hc/en-us/articles/200168566-How-do-I-add-a-Tumblr-custom-domain-">Tumblr is no longer compatible with CloudFlare</a>.</p>
-	<p><img alt="How to Enable SSL on ~~Tumblr~~, WordPress, Blogger, AppEngine, Posterous &amp; More..." src="https://blog.cloudflare.com/content/images/platform_logos.png.scaled500.png" title="How to Enable SSL on ~~Tumblr~~, WordPress, Blogger, AppEngine, Posterous &amp; More..."></p>
-	<p>The number of services today that allow you to quickly get online is stunning. <s>Tumblr</s>, WordPress, Blogger, AppEngine, Posterous, Ning, TypePad, Smugmug, and more allow anyone to publish content online. Unfortunately, most don't support SSL. This means that, if you access one of these platforms from a shared network connection, like a coffee shop or airport wifi, someone can use a tool like Firesheep to sniff your session cookie information and gain access to your account even without your password.</p>
-	<p>While the risk of this for most people isn't very high, our customer support team has been getting more and more inquiries about whether CloudFlare can add SSL encryption to these third party platforms. <s>Justin on our team wanted to find out how easy it was so he used his own Tumblr blog (<a href="https://justinpaine.com">justinpaine.com</a>) to find out.</s></p>
-	<h3 id="setupacustomdomain">Setup a Custom Domain</h3>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TlypT9QwRWGX2OqecFm5M/2706f5139ab0a189fe94224a5124a55d/ssl-on-tumblr-wordpress-blogger-appengine-pos.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><b>UPDATES</b>: <a href="https://blog.cloudflare.com/introducing-universal-ssl">SSL is now included on all Plans</a>, and <a href="https://support.cloudflare.com/hc/en-us/articles/200168566-How-do-I-add-a-Tumblr-custom-domain-">Tumblr is no longer compatible with CloudFlare</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7klUcXuWYpLRwUG5ZFxNuk/f7821d9a30f303f414bd8eb1917572f3/platform_logos.png.scaled500.png" alt="How to Enable SSL on Tumblr, WordPress, Blogger, AppEngine, Posterous &amp; More..." class="kg-image" width="500" height="222" loading="lazy">
+
+	</figure>
+	<p>The number of services today that allow you to quickly get online is stunning. Tumblr, WordPress, Blogger, AppEngine, Posterous, Ning, TypePad, Smugmug, and more allow anyone to publish content online. Unfortunately, most don't support SSL. This means that, if you access one of these platforms from a shared network connection, like a coffee shop or airport wifi, someone can use a tool like Firesheep to sniff your session cookie information and gain access to your account even without your password.</p>
+	<p>While the risk of this for most people isn't very high, our customer support team has been getting more and more inquiries about whether CloudFlare can add SSL encryption to these third party platforms. Justin on our team wanted to find out how easy it was so he used his own Tumblr blog (<a href="https://justinpaine.com">justinpaine.com</a>) to find out.</p>
+	<h3>Setup a Custom Domain</h3>
 	<p>The first step for any of these platforms is to setup a custom domain. Tumblr, for example, defaults sites to using a subdomain of tumblr.com. While we're working with platforms to allow you to add CloudFlare support when you're on a subdomain account, until the platforms explicitly allow it you'll need to setup your own domain. You can find instructions on how to do so for each of the platforms mentioned already through the following links:</p>
 	<ul>
-		<li><s>Tumblr</s>,</li>
-		<li><a href="http://en.support.wordpress.com/domain-mapping">WordPress</a></li>
-		<li><a href="https://support.google.com/blogger/bin/static.py?hl=en&amp;ts=1233381&amp;page=ts.cs&amp;authuser=1">Blogger</a></li>
-		<li><a href="https://code.google.com/appengine/docs/domain.html">AppEngine</a></li>
-		<li><a href="http://posterous.uservoice.com/knowledgebase/articles/36298-setting-up-a-custom-domain-for-your-posterous">Posterous</a></li>
-		<li><a href="http://www.ning.com/help/cgi-bin/ning.cfg/php/enduser/std_adp.php?p_faqid=2920">Ning</a></li>
-		<li><a href="http://help.typepad.com/domain_mapping.html">TypePad</a></li>
-		<li><a href="http://help.smugmug.com/customer/portal/articles/93340">Smugmug</a></li>
+		<li>
+			<p>Tumblr,</p>
+		</li>
+		<li>
+			<p><a href="http://en.support.wordpress.com/domain-mapping">WordPress</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.google.com/blogger/bin/static.py?hl=en&amp;ts=1233381&amp;page=ts.cs&amp;authuser=1">Blogger</a></p>
+		</li>
+		<li>
+			<p><a href="https://code.google.com/appengine/docs/domain.html">AppEngine</a></p>
+		</li>
+		<li>
+			<p><a href="http://posterous.uservoice.com/knowledgebase/articles/36298-setting-up-a-custom-domain-for-your-posterous">Posterous</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.ning.com/help/cgi-bin/ning.cfg/php/enduser/std_adp.php?p_faqid=2920">Ning</a></p>
+		</li>
+		<li>
+			<p><a href="http://help.typepad.com/domain_mapping.html">TypePad</a></p>
+		</li>
+		<li>
+			<p><a href="http://help.smugmug.com/customer/portal/articles/93340">Smugmug</a></p>
+		</li>
 	</ul>
-	<h3 id="addingcloudflare">Adding CloudFlare</h3>
+	<h3>Adding CloudFlare</h3>
 	<p>Once you have a custom domain for your site, you then need to add the site to CloudFlare. If you don't already have a CloudFlare account, you can <a href="https://www.cloudflare.com/sign-up">create one</a>. After you create a new account, or login to your existing account, you can walk through the quick process of adding your site. The process takes four steps and about five minutes to complete.</p>
-	<p><s>To get SSL on your site, you'll need to select one of the <a href="https://www.cloudflare.com/plans">paid CloudFlare plans</a>. All paid plans come with SSL support automatically</s>. <a href="https://blog.cloudflare.com/introducing-universal-ssl">SSL is now included on all Plans</a>. You don't need to buy or configure a SSL certificate seperately, we take care of that process for you automatically. As soon as you've finished configuring CloudFlare, we automatically add the SSL certificate and activate it for your account.</p>
-	<h3 id="flexiblessl">Flexible SSL</h3>
+	<p>To get SSL on your site, you'll need to select one of the <a href="https://www.cloudflare.com/plans">paid CloudFlare plans</a>. All paid plans come with SSL support automatically. <a href="https://blog.cloudflare.com/introducing-universal-ssl">SSL is now included on all Plans</a>. You don't need to buy or configure a SSL certificate seperately, we take care of that process for you automatically. As soon as you've finished configuring CloudFlare, we automatically add the SSL certificate and activate it for your account.</p>
+	<h3>Flexible SSL</h3>
 	<p>CloudFlare automatically detects that your platform provider doesn't support SSL and defaults you to the Flexible SSL setup. This means that connections from a browser to CloudFlare will be encrypted via HTTPS, but connections from CloudFlare to the platform will pass over unencrypted HTTP.</p>
 	<p>While it is ideal to have an end-to-end HTTPS connection, securing the connection from the browser to CloudFlare mitigates 99% of the real risk. A way to think about it is if you're worried about the government monitoring your web traffic, Flexible SSL won't offer a complete solution. On the other hand, if you're worried about someone next to you in the coffee shop sniffing your cookie or password information, CloudFlare's Flexible SSL will protect you.</p>
-	<p><img alt="How to Enable SSL on Tumblr, WordPress, Blogger, AppEngine, Posterous &amp; More..." src="https://blog.cloudflare.com/content/images/Flexible_SSL.png.scaled500.png" title="How to Enable SSL on Tumblr, WordPress, Blogger, AppEngine, Posterous &amp; More..."></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28Hg5AHNr1dBDMZEa9xfvV/2246ec04ed9eca44182fbdddf7f53869/Flexible_SSL.png.scaled500.png" alt="How to Enable SSL on Tumblr, WordPress, Blogger, AppEngine, Posterous &amp; More..." class="kg-image" width="500" height="62" loading="lazy">
+
+	</figure>
 	<p>If your platform provider ever begins to support SSL themselves, you can switch CloudFlare to Full SSL mode at any point from the CloudFlare Settings page and have end-to-end encryption. If you think about it, Flexible SSL is a lot like <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">CloudFlare's IPv6/IPv4 Gateway</a>. In that case, we were translating between IPv6 and IPv4 networks seamlessly. In this case, we're translating between the HTTPS and HTTP protocols, also seamlessly.</p>
-	<h3 id="surfsecurely">Surf Securely</h3>
+	<h3>Surf Securely</h3>
 	<p>That's all there is to it. Once the DNS propogates, you'll be able to connect to your site securely just by entering HTTPS rather than HTTP. You can also use PageRules to force all connections to HTTPS if you'd like to default to an encrypted connection.</p>
 	<p>One last note: we had previously supported <a href="https://blog.cloudflare.com/ssl-on-custom-domains-for-appengine-and-other">another method for SSL on Google's AppEngine</a>. That method, which relied on domain masking, proved brittle and unreliable so it was depricated for now. This new method using Flexible SSL is 100% reliable and has the advantage of supporting a number of platforms beyond Google's AppEngine. We'll be bringing back domain masking enabled via PageRules in the future since it does have some beneficial uses.</p>
-	<!--kg-card-end: markdown-->
 </div>

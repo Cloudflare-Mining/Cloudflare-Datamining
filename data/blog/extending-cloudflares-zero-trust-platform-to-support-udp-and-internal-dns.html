@@ -1,52 +1,53 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/id-id/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-id-id">bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-20.png" class="kg-image" alt="Extending Cloudflare’s Zero Trust platform to support UDP and Internal DNS" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns">简体中文</a>, <a href="https://blog.cloudflare.com/id-id/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns">ไทย</a> and <a href="https://blog.cloudflare.com/ja-jp/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qNR8P0afU5vtgazbDjswr/0fb58dff30ba0add7b7e7a15af30f05b/image2-20.png" alt="Extending Cloudflare’s Zero Trust platform to support UDP and Internal DNS" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>At the end of 2020, Cloudflare empowered organizations to start <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare">building a private network</a> on top of our network. Using Cloudflare Tunnel on the server side, and Cloudflare WARP on the client side, the need for a legacy VPN was eliminated. Fast-forward to today, and thousands of organizations have gone on this journey with us — unplugging their legacy VPN concentrators, internal firewalls, and load balancers. They’ve eliminated the need to maintain all this legacy hardware; they’ve dramatically improved speeds for end users; and they’re able to maintain Zero Trust rules organization-wide.</p>
 	<p>We started with TCP, which is powerful because it enables an important range of use cases. However, to truly replace a VPN, you need to be able to cover UDP, too. Starting today, we’re excited to provide early access to UDP on Cloudflare’s Zero Trust platform. And even better: as a result of supporting UDP, we can offer Internal DNS — so there’s no need to migrate thousands of private hostnames by hand to override DNS rules. You can get started with Cloudflare for Teams for free today by signing up <a href="https://dash.cloudflare.com/sign-up/teams">here</a>; and if you’d like to join the waitlist to gain early access to UDP and Internal DNS, please visit <a href="https://cloudflare.com/zero-trust/lp/private-dns-waitlist">here</a>.</p>
-	<h2 id="the-topology-of-a-private-network-on-cloudflare">The topology of a private network on Cloudflare</h2>
+	<h2>The topology of a private network on Cloudflare</h2>
 	<p>Building out a private network has two primary components: the infrastructure side, and the client side.</p>
 	<p>The infrastructure side of the equation is powered by Cloudflare Tunnel, which simply connects your infrastructure (whether that be a singular application, many applications, or an entire <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">network segment</a>) to Cloudflare. This is made possible by running a simple command-line daemon in your environment to establish multiple secure, outbound-only, load-balanced links to Cloudflare. Simply put, Tunnel is what connects your network to Cloudflare.</p>
-	<p>On the other side of this equation, we need your end users to be able to easily connect to Cloudflare and, more importantly, your network. This connection is handled by our robust device client, <a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare WARP</a>. This client can be rolled out to your entire organization in just a few minutes using your in-house MDM tooling, and it establishes a secure, WireGuard-based connection from your users’ devices to the Cloudflare network. </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-36.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>On the other side of this equation, we need your end users to be able to easily connect to Cloudflare and, more importantly, your network. This connection is handled by our robust device client, <a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare WARP</a>. This client can be rolled out to your entire organization in just a few minutes using your in-house MDM tooling, and it establishes a secure, WireGuard-based connection from your users’ devices to the Cloudflare network.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2m1z6HnFMDxGRFpphnS5kB/2540655afe72803d1f6dd9fd4ebc8472/image1-36.png" alt="" class="kg-image" width="1999" height="951" loading="lazy">
+
+	</figure>
 	<p>Now that we have your infrastructure and your users connected to Cloudflare, it becomes easy to tag your applications and layer on <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust security controls</a> to verify both identity and device-centric rules for each and every request on your network.</p>
 	<p>Up until now though, only TCP was supported.</p>
-	<h2 id="extending-cloudflare-zero-trust-to-support-udp">Extending Cloudflare Zero Trust to support UDP</h2>
+	<h2>Extending Cloudflare Zero Trust to support UDP</h2>
 	<p>Over the past year, with more and more users adopting Cloudflare’s Zero Trust platform, we have gathered data surrounding all the use cases that are keeping VPNs plugged in. Of those, the most common need has been blanket support for UDP-based traffic. Modern protocols like QUIC take advantage of UDP’s lightweight architecture — and at Cloudflare, we believe it is part of our mission to advance these new standards to help build a better Internet.</p>
 	<p>Today, we’re excited to open an official waitlist for those who would like early access to Cloudflare for Teams with UDP support.</p>
-	<h3 id="what-is-udp-and-why-does-it-matter">What is UDP and why does it matter?</h3>
+	<h3>What is UDP and why does it matter?</h3>
 	<p>UDP is a vital component of the Internet. Without it, many applications would be rendered woefully inadequate for modern use. Applications which depend on near real time communication such as <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">video streaming</a> or VoIP services are prime examples of why we need UDP and the role it fills for the Internet. At their core, however, TCP and UDP achieve the same results — just through vastly different means. Each has their own unique benefits and drawbacks, which are always felt downstream by the applications that utilize them.</p>
 	<p>Here’s a quick example of how they both work, if you were to ask a question to somebody as a metaphor. TCP should look pretty familiar: you would typically say hi, wait for them to say hi back, ask how they are, wait for their response, and then ask them what you want.</p>
 	<p>UDP, on the other hand, is the equivalent of just walking up to someone and asking what you want without checking to make sure that they're listening. With this approach, some of your question may be missed, but that's fine as long as you get an answer.</p>
 	<p>Like the conversation above, with UDP many applications actually don’t care if some data gets lost; video streaming or game servers are good examples here. If you were to lose a packet in transit while streaming, you wouldn’t want the entire stream to be interrupted until this packet is received — you’d rather just drop the packet and move on. Another reason application developers may utilize UDP is because they’d prefer to develop their own controls around connection, transmission, and quality control rather than use TCP’s standardized ones.</p>
 	<p>For Cloudflare, end-to-end support for UDP-based traffic will unlock a number of new use cases. Here are a few we think you’ll agree are pretty exciting.</p>
-	<h3 id="internal-dns-resolvers">Internal DNS Resolvers</h3>
+	<h3>Internal DNS Resolvers</h3>
 	<p>Most corporate networks require an internal DNS resolver to disseminate access to resources made available over their Intranet. Your Intranet needs an internal DNS resolver for many of the same reasons the Internet needs public DNS resolvers. In short, humans are good at many things, but remembering long strings of numbers (in this case IP addresses) is not one of them. Both public and internal DNS resolvers were designed to solve this problem (and <a href="https://www.cloudflare.com/learning/dns/what-is-dns">much more</a>) for us.</p>
 	<p>In the corporate world, it would be needlessly painful to ask internal users to navigate to, say, 192.168.0.1 to simply reach Sharepoint or OneDrive. Instead, it’s much easier to create DNS entries for each resource and let your internal resolver handle all the mapping for your users as this is something humans are actually quite good at.</p>
 	<p>Under the hood, DNS queries generally consist of a single UDP request from the client. The server can then return a single reply to the client. Since DNS requests are not very large, they can often be sent and received in a single packet. This makes support for UDP across our Zero Trust platform a key enabler to pulling the plug on your VPN.</p>
-	<h3 id="thick-client-applications">Thick Client Applications</h3>
+	<h3>Thick Client Applications</h3>
 	<p>Another common use case for UDP is thick client applications. One benefit of UDP we have discussed so far is that it is a lean protocol. It’s lean because the <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">three-way handshake</a> of TCP and other measures for reliability have been stripped out by design. In many cases, application developers still want these reliability controls, but are intimately familiar with their applications and know these controls could be better handled by tailoring them to their application. These thick client applications often perform critical business functions and must be supported end-to-end to migrate. As an example, legacy versions of Outlook may be implemented through thick clients where most of the operations are performed by the local machine, and only the sync interactions with Exchange servers occur over UDP.</p>
 	<p>Again, UDP support on our Zero Trust platform now means these types of applications are no reason to remain on your legacy VPN.</p>
-	<h3 id="and-more-">And more…</h3>
+	<h3>And more…</h3>
 	<p>A huge portion of the world's Internet traffic is transported over UDP. Often, people equate time-sensitive applications with UDP, where occasionally dropping packets would be better than waiting — but there are a number of other use cases, and we’re excited to be able to provide sweeping support.</p>
-	<h2 id="how-can-i-get-started-today">How can I get started today?</h2>
+	<h2>How can I get started today?</h2>
 	<p>You can already get started building your private network on Cloudflare with our tutorials and guides in our developer documentation. Below is the critical path. And if you’re already a customer, and you’re interested in joining the waitlist for UDP and Internal DNS access, please skip ahead to the end of this post!</p>
-	<h3 id="connecting-your-network-to-cloudflare">Connecting your network to Cloudflare</h3>
-	<p>First, you need to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation">install cloudflared</a> on your network and authenticate it with the command below:</p><!--kg-card-begin: markdown-->
-	<pre><code>cloudflared tunnel login
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Next, you’ll create a tunnel with a user-friendly name to identify your network or environment.</p><!--kg-card-begin: markdown-->
-	<pre><code>cloudflared tunnel create acme-network
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Finally, you’ll want to configure your tunnel with the IP/CIDR range of your private network. By doing this, you’re making the Cloudflare WARP agent aware that any requests to this IP range need to be routed to our new tunnel.</p><!--kg-card-begin: markdown-->
-	<pre><code>cloudflared tunnel route ip add 192.168.0.1/32
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<h3>Connecting your network to Cloudflare</h3>
+	<p>First, you need to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation">install cloudflared</a> on your network and authenticate it with the command below:</p>
+	<pre class="language-bash"><code class="language-bash">cloudflared tunnel login</code></pre>
+	<p>Next, you’ll create a tunnel with a user-friendly name to identify your network or environment.</p>
+	<pre class="language-bash"><code class="language-bash">cloudflared tunnel create acme-network</code></pre>
+	<p>Finally, you’ll want to configure your tunnel with the IP/CIDR range of your private network. By doing this, you’re making the Cloudflare WARP agent aware that any requests to this IP range need to be routed to our new tunnel.</p>
+	<pre class="language-bash"><code class="language-bash">cloudflared tunnel route ip add 192.168.0.1/32</code></pre>
 	<p>Then, all you need to do is run your tunnel!</p>
-	<h3 id="connecting-your-users-to-your-network">Connecting your users to your network</h3>
+	<h3>Connecting your users to your network</h3>
 	<p>To connect your first user, start by downloading the Cloudflare WARP agent on the device they’ll be connecting from, then follow the steps in our installer.</p>
 	<p>Next, you’ll visit the <a href="https://dash.teams.cloudflare.com">Teams Dashboard</a> and define who is allowed to access our network by creating an enrollment policy. This policy can be created under Settings &gt; Devices &gt; Device Enrollment. In the example below, you can see that we’re requiring users to be located in Canada and have an email address ending @cloudflare.com.</p>
 	<p>Once you’ve created this policy, you can enroll your first device by clicking the WARP desktop icon on your machine and navigating to preferences &gt; Account &gt; Login with Teams.</p>
@@ -54,6 +55,6 @@
 	<p>In addition to the tutorial above, we also have in-product guides in the Teams Dashboard which go into more detail about each step and provide validation along the way.</p>
 	<p>To create your first Tunnel, navigate to the <a href="https://dash.teams.cloudflare.com/access/tunnels">Access &gt; Tunnels</a>.</p>
 	<p>To enroll your first device into WARP, navigate to <a href="https://dash.teams.cloudflare.com/team/devices">My Team &gt; Devices</a>.</p>
-	<h2 id="what-s-next">What’s Next</h2>
+	<h2>What’s Next</h2>
 	<p>We’re incredibly excited to release our <a href="https://cloudflare.com/zero-trust/lp/private-dns-waitlist">waitlist</a> today and even more excited to launch this feature in the coming weeks. We’re just getting started with private network Tunnels and plan to continue adding more support for Zero Trust access rules for each request to each internal DNS hostname after launch. We’re also working on a number of efforts to measure performance and to ensure we remain the fastest Zero Trust platform — making using us a delight for your users, compared to the pain of using a legacy VPN.</p>
 </div>

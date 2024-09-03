@@ -1,42 +1,60 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/Screen-Shot-2018-07-20-at-11.26.39-AM.png" alt="Ricky Bobby" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LZNySVMEKXPpHByOETLV2/ce763204aee713c37e53e9078e5188b5/Screen-Shot-2018-07-20-at-11.26.39-AM.png" alt="Ricky Bobby" class="kg-image" width="477" height="257" loading="lazy">
+
+	</figure>
 	<p>Earlier this month we released <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering">Dynamic Steering</a> for Load Balancing which allows you to have your Cloudflare load balancer direct traffic to the fastest pool for a given Cloudflare region or colo (Enterprise only).</p>
 	<p>To build this feature, we had to solve two key problems: 1) How to decide which pool of origins was the fastest and 2) How to distribute this decision to a growing group of 151 locations around the world.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/steering_logo.png" alt="steering_logo" loading="lazy"></p>
-	<h3 id="distanceapproximatelatencyandabetterway">Distance, Approximate Latency, and a Better Way</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52lBF8CGh1rOdQrpgHQHHa/39e7353c7fc61e155cf707805ace66e5/steering_logo.png" alt="steering_logo" class="kg-image" width="1600" height="882" loading="lazy">
+
+	</figure>
+	<h3>Distance, Approximate Latency, and a Better Way</h3>
 	<p>As my math teacher taught me, the shortest distance between two points is a straight line. This is also typically true on the internet - the shorter approximate distance there is between a user going through Cloudflare location to a customer origin, the better the experience is for the user. Geography is one way to approximate speed and we included the <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions">Geo Steering</a> function when we initially introduced the <a href="https://blog.cloudflare.com/introducing-load-balancing-intelligent-failover-with-cloudflare">Cloudflare Load Balancer</a>. It is powerful, but manual; it’s not the best way. A customer on Twitter said it best:</p>
-	<blockquote class="twitter-tweet" data-lang="en">
-		<p lang="en" dir="ltr"><a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> <a href="https://twitter.com/hashtag/FeatureRequest?src=hash&amp;ref_src=twsrc%5Etfw">#FeatureRequest</a> why can’t your load balancers determine which server is closest to the user then direct them to that one? <br><br>I don't want to have configure 10+ regions manually. This feels like something that should be built in? Am I missing it?<br><br>cc: <a href="https://twitter.com/eastdakota?ref_src=twsrc%5Etfw">@eastdakota</a></p>— Adam Evers ? OAK / SFO (@adamevers) <a href="https://twitter.com/adamevers/status/979849896738963456?ref_src=twsrc%5Etfw">March 30, 2018</a>
+	<blockquote>
+		<p><a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> <a href="https://twitter.com/hashtag/FeatureRequest?src=hash&amp;ref_src=twsrc%5Etfw">#FeatureRequest</a> why can’t your load balancers determine which server is closest to the user then direct them to that one?</p>
+		<p>I don't want to have configure 10+ regions manually. This feels like something that should be built in? Am I missing it?</p>
+		<p>cc: <a href="https://twitter.com/eastdakota?ref_src=twsrc%5Etfw">@eastdakota</a></p>
+		<p>— Adam Evers ? OAK / SFO (@adamevers) <a href="https://twitter.com/adamevers/status/979849896738963456?ref_src=twsrc%5Etfw">March 30, 2018</a></p>
 	</blockquote>
-	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	<h3 id="abriefrefresheroncloudflareloadbalancing">A Brief Refresher on Cloudflare Load Balancing</h3>
+	<h3>A Brief Refresher on Cloudflare Load Balancing</h3>
 	<p>Cloudflare’s <a href="https://www.cloudflare.com/load-balancing">Load Balancers</a> are comprised of a combination of origins, pools, and health checks. Origins are IPs or hostnames from which our customers serve content. Pools are collections of origins, usually grouped in along some dimension, like geography, cloud service provider, or a combination thereof (eg. a pool named GCP-West-1 may contain a customer’s origins in Google Cloud’s Oregon west1 region). Finally, there are health checks — configurable probes by our customers to their pools and origins to identify whether a given pool or origin is up or down. These health checks allow Cloudflare load balancers to quickly identify and fail over from downed origins from a network of systems that can map to the customer’s user base.</p>
-	<h3 id="measuringanddeterminingfast">Measuring and Determining “Fast”</h3>
+	<h3>Measuring and Determining “Fast”</h3>
 	<p>The first decision we faced was when and how to measure speed. We already probe at regular intervals for uptime from the Cloudflare locations that our customers tell us are relevant for their setup. It was an obvious choice to use our existing health checks and gather the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a> from there.</p>
 	<p>As pool origins are probed periodically we get RTT information from the edge. The next question was how to use this data to decide which pool is the fastest: we decided to calculate the pool RTT using Exponential Weighted Moving Average (EWMA).</p>
-	<h4 id="whydidwechooseewma">Why did we choose EWMA?</h4>
+	<h4>Why did we choose EWMA?</h4>
 	<p>We considered other ways to calculate the RTT such as Simple Moving Average (SMA). Although the RTT calculation is much simpler using SMA, we chose EWMA is because it responds to RTT changes faster than SMA, since it applies more weight to the most recent RTT. Also, it can reduce the noise and help make the trend clearer in a dataset with large variance. Another benefit EWMA has is that stays more true to the trend than other types of moving averages, some of which can over- or under-correct, or others that smooth things out too much.</p>
-	<h4 id="howdoesewmawork">How does EWMA work?</h4>
+	<h4>How does EWMA work?</h4>
 	<p>EWMA works by applying weights to the data in such a way that older data weighs less (and therefore becomes less impactful to the result) than more recent data. The weight for a datapoint decreases exponentially for each time period further in the past. The exponential decay is determined by the time bias parameter. When the time bias is set to 1 minute, about 63.2% of the value is coming from the last minute measurements, 23.3% from the minute before that (0.233 = (1 – 0.632) * 0.632), etc. The weight is decreasing exponentially with each passing minute, historical data older than t minutes have weight 1 / exp(t). The most recent minute has weight 63.2%, since 63.2% = 1 – 1 / exp(1).</p>
-	<h4 id="actualimplementation">Actual Implementation</h4>
+	<h4>Actual Implementation</h4>
 	<p>For every load balancer that has Dynamic Steering enabled, the RTT is calculated independently for each of its pools using an EWMA. We wait for a period of time (default is 10m, but this is configurable) before writing the calculated pool RTT values to our internal key-value store, QuickSilver (QS). This is done to build the RTT profile, which helps reduce the noise in cases of large variance data. From then on, we keep writing the values periodically (default 10m, again this value is tunable) and only if there is a change in RTT value to avoid unnecessary writes to QuickSilver.</p>
-	<h3 id="datapropagation">Data Propagation</h3>
+	<h3>Data Propagation</h3>
 	<p>To make sure that Dynamic Steering is as performant as possible, all data we use for steering decisions needs to be as close as possible to every machine serving requests. When it comes down to delivering responses as fast as possible, requesting data from another machine - even in the same datacenter - can add non-trivial overhead.</p>
 	<p>We run a custom inhouse key-value store on every machine servicing requests. The main advantage of this datastore lies in how its replication logic takes advantage of the hierarchy nature of our network layout to facilitate faster replication while transfering less data.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/data_model.png" alt="data_model" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14niTMB5ZnIjSfRkYSke3N/85b43b82d37afb758b9291fc2c67faea/data_model.png" alt="data_model" class="kg-image" width="707" height="625" loading="lazy">
+
+	</figure>
 	<p>Since we keep a copy of the data on every machine in <a href="https://www.cloudflare.com/network">every data center</a>, we need to make sure our dataset is as small as possible. We evaluated what additional data we actually needed to select a pool inside a Load Balancer configured with Dynamic Steering. Currently the only information we propagate is a map of the pool identifier to the EWMA.</p>
-	<h3 id="eyeballexperience">Eyeball Experience</h3>
+	<h3>Eyeball Experience</h3>
 	<p>Internally at Cloudflare we often talk about eyeballs, the actual visitors of a site clicking away in their browsers, and their experience of the process. Let's say you’ve setup three pools around the world: North America, Europe, and Australia. With Dynamic Steering, we will route your traffic to the pool with the lowest EWMA. Assuming all your pools are in good health and reporting expected RTT values an eyeballs experience should look like this.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/IMG_1101.jpeg" alt="IMG_1101" loading="lazy"></p>
-	<h3 id="tryingitout">Trying It Out</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3u3ZIX76FCGgkc5TViWtTu/42b7830fef23f7880dfd3f3fdd0375e2/IMG_1101.jpeg.jpeg" alt="IMG_1101" class="kg-image" width="530" height="468" loading="lazy">
+
+	</figure>
+	<h3>Trying It Out</h3>
 	<p>All Enterprise customers and customers with the Geo Routing add-on for Load Balancing have access to Dynamic Steering. To enable Dynamic Steering, select the option in your Load Balancing traffic steering configuration. Please see the <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering">KB article</a> or your Cloudflare account team for more information.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/Step_4.png" alt="Dynamic Steering Configuration" loading="lazy"></p>
-	<h3 id="interestedinhelpingusgofaster">Interested in helping us go faster?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OKw6wPzI1kyNZK7GPf5ZD/ab3e9379878e350807c32324604f56c2/Step_4.png" alt="Dynamic Steering Configuration" class="kg-image" width="1526" height="372" loading="lazy">
+
+	</figure>
+	<h3>Interested in helping us go faster?</h3>
 	<p>The Cloudflare Load Balancing and DNS Engineering teams are hiring in San Francisco and London.</p>
-	<p><a href="https://boards.greenhouse.io/cloudflare/jobs/935603?gh_jid=935603">Backend Systems Engineer San Francisco</a><br>
-		<a href="https://boards.greenhouse.io/cloudflare/jobs/982644?gh_jid=982644">Backend Systems Engineer London</a><br>
-		<a href="https://boards.greenhouse.io/cloudflare/jobs/1213352?gh_jid=1213352">Software Engineer London</a>
-	</p>
-	<!--kg-card-end: markdown-->
+	<p><a href="https://boards.greenhouse.io/cloudflare/jobs/935603?gh_jid=935603">Backend Systems Engineer San Francisco</a><a href="https://boards.greenhouse.io/cloudflare/jobs/982644?gh_jid=982644">Backend Systems Engineer London</a><a href="https://boards.greenhouse.io/cloudflare/jobs/1213352?gh_jid=1213352">Software Engineer London</a></p>
 </div>

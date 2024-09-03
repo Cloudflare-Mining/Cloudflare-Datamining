@@ -1,36 +1,54 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4R3BoyrCknND1F8psMs0JD/6449836446457f779a91f462cc1bcad1/addressing-the-webs-client-side-security-challenge.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Modern web architecture relies heavily on JavaScript and enabling third-party code to make client-side network requests. These innovations are built on client-heavy frameworks such as Angular, Ember, React, and Backbone that leverage the processing power of the browser to enable the execution of code directly on the client interface/web browser. These third-party integrations provide richness (chat tools, images, fonts) or extract analytics (Google Analytics). Today, up to 70% of the code executing and rendering on your customer’s browser comes from these integrations. All of these software integrations provide avenues for potential vulnerabilities. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/pasted-image-0-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Modern web architecture relies heavily on JavaScript and enabling third-party code to make client-side network requests. These innovations are built on client-heavy frameworks such as Angular, Ember, React, and Backbone that leverage the processing power of the browser to enable the execution of code directly on the client interface/web browser. These third-party integrations provide richness (chat tools, images, fonts) or extract analytics (Google Analytics). Today, up to 70% of the code executing and rendering on your customer’s browser comes from these integrations. All of these software integrations provide avenues for potential vulnerabilities.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xMumJ99IceKS6OvahVWev/29de099a407c671975edbc9390241fac/pasted-image-0-2.png" alt="" class="kg-image" width="789" height="457" loading="lazy">
+
+	</figure>
 	<p>Unfortunately, these unmanaged, unmonitored integrations operate without security consideration, providing an expansive attack surface that attackers have routinely exploited to compromise websites. Today, only 2% of the Alexa 1000 global websites were <a href="https://go.talasecurity.io/state-of-the-web-report-2019">found</a> to deploy client-side security measures to protect websites and web applications against attacks such as Magecart, XSS, credit card skimming, session redirects and website defacement.</p>
-	<h3 id="improving-website-security-and-ensuring-performance-with-cloudflare-workers">Improving website security and ensuring performance with Cloudflare Workers</h3>
+	<h3>Improving website security and ensuring performance with Cloudflare Workers</h3>
 	<p>In this post, we focus on how Cloudflare Workers can be used to improve security and ensure the high performance of web applications. Tala has joined Cloudflare’s marketplace to further our common goals of ensuring website security, preserving data privacy and assuring the integrity of web commerce. Tala’s innovative and unobtrusive solution, coupled with Cloudflare’s global reach, offers a compelling, highly effective solution for combatting the acceleration of client-side website attacks.</p>
-	<h4 id="about-cloudflare-workers">About Cloudflare Workers</h4>
+	<h4>About Cloudflare Workers</h4>
 	<p>Cloudflare Workers is a globally distributed serverless compute platform that runs across Cloudflare’s network of 200+ locations worldwide. Workers is designed for flexibility, with multiple use cases ranging from customizing configuration of Cloudflare services and features to building full, independent applications.</p>
-	<h4 id="cloudflare-tala">Cloudflare &amp; Tala</h4>
-	<p>Tala has integrated its "web module" capabilities into Cloudflare’s service Worker platform to enable a serverless, instantaneous deployment. This allows customers to activate enterprise-grade website security quickly and efficiently from<a href="https://www.cloudflare.com/network"> Cloudflare's 200+ reliable and redundant edge locations</a> around the world. Tala automates the activation of standards-based, browser-native security controls to deliver highly effective security, without impacting website performance or user experience.</p>
-	<h4 id="about-tala">About Tala</h4>
+	<h4>Cloudflare &amp; Tala</h4>
+	<p>Tala has integrated its "web module" capabilities into Cloudflare’s service Worker platform to enable a serverless, instantaneous deployment. This allows customers to activate enterprise-grade website security quickly and efficiently from <a href="https://www.cloudflare.com/network">Cloudflare's 200+ reliable and redundant edge locations</a> around the world. Tala automates the activation of standards-based, browser-native security controls to deliver highly effective security, without impacting website performance or user experience.</p>
+	<h4>About Tala</h4>
 	<p>Tala secures millions of web sessions for large providers in verticals such as financial services, online retail, payment processing, tech, fintech and education. We secure websites and web applications by continuously interrogating application architecture to enable the automation and continuous deployment of precise, browser-native, standards-based policies &amp; controls. Our technology allows organizations to deploy standards-based website security with near-zero impact to performance and without the operational burdens associated with the application and administration of these policies.</p>
-	<h4 id="how-tala-works">How Tala Works</h4>
+	<h4>How Tala Works</h4>
 	<p>Tala’s solution is enabled with an analytics engine that evaluates over 150 unique indicators of a web page’s behavior and integrations. This dynamic analytics engine scans continuously, working in conjunction with an AI-assisted automation engine that activates and tunes standards-based security capabilities, like Content Security Policy (CSP), Subresource Integrity (SRI), Strict Transport (HSTS), Sandboxing (iFrame rules), Referrer Policy, Trusted Types, Certificate Stapling, Clear Site Data and others.</p>
 	<p>The automation of browser-native security controls provides comprehensive security without requiring any changes to application code and has near-zero impact on website performance. Tala’s solution can be installed via the Cloudflare Workers Integration to deliver instantaneous client-side security.</p>
 	<p>With Tala, rich website analytics become available with the risk of client-side website attacks. Website performance is preserved, administration is accelerated and the need for costly and continuous administration, remediation or incident response is minimized.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h4 id="how-tala-integrates-with-cloudflare-workers">How Tala Integrates with Cloudflare Workers</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/cUtPnfPXMvbY2cCDoK10n/67b18ea2ae17d0141573ea92aad62840/pasted-image-0--1-.png" alt="" class="kg-image" width="624" height="331" loading="lazy">
+
+	</figure>
+	<h4>How Tala Integrates with Cloudflare Workers</h4>
 	<p>Customers can deploy Tala-generated security policies (discussed in the section above) on their website using Cloudflare’s Service Workers. The customer will install the Tala Service Worker on their Cloudflare account, using Tala’s installation scripts. These scripts invoke Cloudflare’s APIs to upload and enable the Tala Service Worker to Cloudflare as well upload the customized Tala security policies to Cloudflare’s KV store.</p>
 	<p>Once the installation is complete, the Tala service worker will be invoked every time an end user requests the customer’s site. During the response from Cloudflare, the Tala Service Worker implements the appropriate Tala’s security policies. Here are the steps involved:</p>
 	<ul>
-		<li>Tala Service Worker sees the HTML content coming from the origin web server</li>
-		<li>Tala Service Worker parses the HTML page</li>
-		<li>Based on the content of the page, the Tala Service Worker inserts the appropriate security controls (e.g., CSP, SRI) which could include a combination of HTTP security headers (e.g., referrer policy, CSP, HSTS) as well as page insertions (e.g., nonces, SRI hashes)</li>
+		<li>
+			<p>Tala Service Worker sees the HTML content coming from the origin web server</p>
+		</li>
+		<li>
+			<p>Tala Service Worker parses the HTML page</p>
+		</li>
+		<li>
+			<p>Based on the content of the page, the Tala Service Worker inserts the appropriate security controls (e.g., CSP, SRI) which could include a combination of HTTP security headers (e.g., referrer policy, CSP, HSTS) as well as page insertions (e.g., nonces, SRI hashes)</p>
+		</li>
 	</ul>
 	<p>Periodically, the Tala Service Worker polls the Tala cloud service to check for any security policy updates and if required, push the latest policies. For more details on how to install Tala into Cloudflare’s Service Workers, please read the <a href="https://talasec.atlassian.net/wiki/spaces/ECD/pages/242483573/Tala+Deployment+through+Cloudflare">installation manual</a>.</p>
-	<h4 id="deploy-client-side-website-security">Deploy Client-Side Website Security</h4>
+	<h4>Deploy Client-Side Website Security</h4>
 	<p>Client-side vulnerability is a significant and accelerating problem. Workers can provide speed and capability to ensure your organization isn’t the next victim of a growing volume of successful attacks targeting widespread website and web application vulnerability. Standards-based security offers the most effective, comprehensive solution to safeguard against these attacks.</p>
 	<p>The combination of Cloudflare and Tala can help you expedite deployment. We’d love to hear from you and explore a Workers deployment!</p>
 	<p>The <a href="https://go.talasecurity.io/tala-cloudflare-integration">Tala solution</a> is available today!</p>
 	<ul>
-		<li>Cloudflare Enterprise Customers: Reach out to your dedicated Cloudflare account manager to learn more and start the process.</li>
-		<li>Tala Customers and Cloudflare Customers, reach out to <a href="https://www.talasecurity.io/get-started-2">Tala</a> to learn more and start the process. You can sign up for and learn more about using Cloudflare Workers <a href="https://workers.cloudflare.com">here</a>!</li>
+		<li>
+			<p>Cloudflare Enterprise Customers: Reach out to your dedicated Cloudflare account manager to learn more and start the process.</p>
+		</li>
+		<li>
+			<p>Tala Customers and Cloudflare Customers, reach out to <a href="https://www.talasecurity.io/get-started-2">Tala</a> to learn more and start the process. You can sign up for and learn more about using Cloudflare Workers <a href="https://workers.cloudflare.com">here</a>!</p>
+		</li>
 	</ul>
 </div>

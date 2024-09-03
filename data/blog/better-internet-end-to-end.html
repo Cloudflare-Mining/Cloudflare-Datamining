@@ -1,101 +1,129 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://images.unsplash.com/photo-1416671245579-fc1a6d884d04?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=c880dc092c8e033ccd2dc536dd1fd40e" alt="pink steel bridge during night" loading="lazy"><br>
-		<small>Photo by <a href="https://unsplash.com/@allenliu?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Liu Zai Hou</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></small>
-	</p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13fuz1ZoBUH5hzkay9nxjb/c0336e6739abe86a1e383e6f4e40b6ea/photo-1416671245579-fc1a6d884d04" alt="pink steel bridge during night" class="kg-image" width="1080" height="720" loading="lazy">
+
+	</figure>
+	<p>Photo by <a href="https://unsplash.com/@allenliu?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Liu Zai Hou</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
 	<p>In Q2, Cloudflare released several products which enable a better Internet “end-to-end” — from the mobile client to host infrastructure. Now, anyone from an individual developer to large companies and governments, can control, secure, and accelerate their applications from the “<a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter</a>” back to the “host.”</p>
 	<p>On the client side, <a href="https://www.cloudflare.com/products/mobile-sdk">Cloudflare’s Mobile SDK</a> extends control directly into your mobile apps, providing visibility into application performance and load times across any global carrier network.</p>
 	<p>On the host side, <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> lets companies move workloads from their host to the Cloudflare Network, reducing infrastructure costs and speeding up the user experience. <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> lets you securely connect your host directly to a Cloudflare data center. If your host infrastructure is running other TCP services besides HTTP(S), you can now protect it with Cloudflare’s DDoS protection using <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a>.</p>
 	<p>So for end-to-end control that is easy and fast to deploy, these recent products are all incredible “workers” across the “spectrum” of your needs.</p>
-	<h3 id="buttheresmoretothestory">But there’s more to the story</h3>
+	<h3>But there’s more to the story</h3>
 	<p>End users want richer experiences, such as more video, interactivity, and images. Meeting those needs can incur real costs in bandwidth, hardware, and time. Cloudflare addresses these with three products that improve video delivery, reduce paint times, and shrink the round-trip times.</p>
 	<p>Cloudflare now simplifies and reduces delivery cost of video with <a href="https://www.cloudflare.com/products/stream-delivery">Stream Delivery</a>. Pages using plenty of Javascript now have faster paint times and wider mobile-device support with <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Rocket Loader</a>. If you’re managing multiple origins and want to ensure fastest delivery based on the shortest round-trip time, Cloudflare Load Balancer now supports <a href="https://blog.cloudflare.com/i-wanna-go-fast-load-balancing-dynamic-steering">Dynamic Steering</a>.</p>
 	<p>Attackers are shifting their focus to the application layer. Some security features, like CAPTCHA and Javascript Challenge, give you more control and reduce false-positives when blocking rate-based threats at the edge, such as layer 7 DDoS or brute-force attacks.</p>
 	<p>Finally, Cloudflare extended privacy to consumers through the launch of our DNS resolver <a href="https://1.1.1.1">1.1.1.1</a> on 4/1/2018! Now users who set their DNS resolvers to 1.1.1.1 can browse faster while protecting browser data with Cloudflare’s privacy-first consumer DNS service.</p>
-	<h3 id="hereisarecapfromapriltojuneofthefeatureswereleasedinq2">Here is a recap from April to June of the features we released in Q2</h3>
-	<br>
-	<h4 id="dynamicsteering">Dynamic Steering</h4>
-	<p><em>Tue, July 10, 2018</em><br>
-		Dynamic steering is a load balancing feature that automates traffic steering across origins in multiple geographic regions. <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">Round-trip time (RTT)</a> for health checks is calculated across multiple pools of load balanced servers and origins to determine the fastest server pools. This RTT data enables the load balancers to identify the fastest pools, and to direct user requests to the most responsive origins.</p>
+	<h3>Here is a recap from April to June of the features we released in Q2</h3>
+	<h4>Dynamic Steering</h4>
+	<p><i>Tue, July 10, 2018</i>Dynamic steering is a load balancing feature that automates traffic steering across origins in multiple geographic regions. <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">Round-trip time (RTT)</a> for health checks is calculated across multiple pools of load balanced servers and origins to determine the fastest server pools. This RTT data enables the load balancers to identify the fastest pools, and to direct user requests to the most responsive origins.</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/i-wanna-go-fast-load-balancing-dynamic-steering">Blog Post</a></li>
-		<li><a href="https://www.cloudflare.com/load-balancing">Product Page</a></li>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/360006900952">Support Article</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/i-wanna-go-fast-load-balancing-dynamic-steering">Blog Post</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/load-balancing">Product Page</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/360006900952">Support Article</a></p>
+		</li>
 	</ul>
-	<h4 id="supportfornewdnsrecordtypes">Support for New DNS Record Types</h4>
-	<p><em>Thu, July 5, 2018</em><br>
-		Cloudflare's Authoritative DNS now supports the following record types: CERT, DNSKEY, DS, NAPTR, SMIMEA, SSHFP, TLSA, and URI via the web and API.</p>
-	<h4 id="developerportalq2update">Developer Portal Q2 Update</h4>
-	<p><em>Mon, June 11, 2018</em><br>
-		The Developer Portal has been updated in Q2 to include improved search, documentation for new products, and listings of upcoming Cloudflare community events.</p>
+	<h4>Support for New DNS Record Types</h4>
+	<p><i>Thu, July 5, 2018</i>Cloudflare's Authoritative DNS now supports the following record types: CERT, DNSKEY, DS, NAPTR, SMIMEA, SSHFP, TLSA, and URI via the web and API.</p>
+	<h4>Developer Portal Q2 Update</h4>
+	<p><i>Mon, June 11, 2018</i>The Developer Portal has been updated in Q2 to include improved search, documentation for new products, and listings of upcoming Cloudflare community events.</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com">Developer Portal</a></li>
+		<li>
+			<p><a href="https://developers.cloudflare.com">Developer Portal</a></p>
+		</li>
 	</ul>
-	<h4 id="rocketloaderupgrade">Rocket Loader Upgrade</h4>
-	<p><em>Fri, June 1, 2018</em><br>
-		Rocket Loader has been updated to deliver faster performance for website paint &amp; load times by prioritizing website content over JavaScript. Majority of mobile devices are now supported. Increased compliance with strict content security policies.</p>
+	<h4>Rocket Loader Upgrade</h4>
+	<p><i>Fri, June 1, 2018</i>Rocket Loader has been updated to deliver faster performance for website paint &amp; load times by prioritizing website content over JavaScript. Majority of mobile devices are now supported. Increased compliance with strict content security policies.</p>
 	<ul>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/200168056-What-does-Rocket-Loader-do-">Support</a></li>
-		<li><a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Blog</a></li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200168056-What-does-Rocket-Loader-do-">Support</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Blog</a></p>
+		</li>
 	</ul>
-	<h4 id="streamdelivery">Stream Delivery</h4>
-	<p><em>Thu, May 31, 2018</em><br>
-		Cloudflare’s Stream Delivery solution offers fast caching and delivery of video content across our network of 150+ global data centers.</p>
+	<h4>Stream Delivery</h4>
+	<p><i>Thu, May 31, 2018</i>Cloudflare’s Stream Delivery solution offers fast caching and delivery of video content across our network of 150+ global data centers.</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/products/stream-delivery">Product Page</a></li>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/stream-delivery">Product Page</a></p>
+		</li>
 	</ul>
-	<h4 id="deprecatingtls10and11onapicloudflarecom">Deprecating TLS 1.0 and 1.1 on api.cloudflare.com</h4>
-	<p><em>Tue, May 29, 2018</em><br>
-		On June 4, Cloudflare will be dropping support for TLS 1.0 and 1.1 on <a href="https://api.cloudflare.com">api.cloudflare.com</a>. Additionally, the dashboard will be moved from <a href="https://www.cloudflare.com/a">www.cloudflare.com/a</a> to <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> and will require a browser that supports TLS 1.2 or higher.</p>
+	<h4>Deprecating TLS 1.0 and 1.1 on api.cloudflare.com</h4>
+	<p><i>Tue, May 29, 2018</i>On June 4, Cloudflare will be dropping support for TLS 1.0 and 1.1 on <a href="https://api.cloudflare.com">api.cloudflare.com</a>. Additionally, the dashboard will be moved from <a href="https://www.cloudflare.com/a">www.cloudflare.com/a</a> to <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> and will require a browser that supports TLS 1.2 or higher.</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/ssl">Product Page</a></li>
-		<li><a href="https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api">Blog Post</a></li>
+		<li>
+			<p><a href="https://www.cloudflare.com/ssl">Product Page</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api">Blog Post</a></p>
+		</li>
 	</ul>
-	<h4 id="ratelimitinghasnewactionsandtriggers">Rate Limiting has new Actions and Triggers</h4>
-	<p><em>Mon, May 21, 2018</em><br>
-		Rate Limiting has two new features: challenges (CAPTCHA and JS Challenge) as an Action; and matching Header attributes in the response (from either origin or the cache) as the Trigger. These features give more control over how Cloudflare Rate Limiting responds to threshold violations, giving customers granularity over the types of requests to "count" to fit their different applications. To learn more, go to the blog post.</p>
+	<h4>Rate Limiting has new Actions and Triggers</h4>
+	<p><i>Mon, May 21, 2018</i>Rate Limiting has two new features: challenges (CAPTCHA and JS Challenge) as an Action; and matching Header attributes in the response (from either origin or the cache) as the Trigger. These features give more control over how Cloudflare Rate Limiting responds to threshold violations, giving customers granularity over the types of requests to "count" to fit their different applications. To learn more, go to the blog post.</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/rate-limiting">Product Page</a></li>
-		<li><a href="https://blog.cloudflare.com/rate-limiting-delivering-more-rules-and-greater-control">Blog Post</a></li>
+		<li>
+			<p><a href="https://www.cloudflare.com/rate-limiting">Product Page</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/rate-limiting-delivering-more-rules-and-greater-control">Blog Post</a></p>
+		</li>
 	</ul>
-	<h4 id="supportpurgebytagforlargetagsizes">Support purge-by-tag for large tag sizes</h4>
-	<p><em>Thu, May 10, 2018</em><br>
-		The Cache-Tag header now supports up to 1000 tags and a total header length of 16kb. This update simplifies file purges for customers who deploy websites with Drupal.</p>
+	<h4>Support purge-by-tag for large tag sizes</h4>
+	<p><i>Thu, May 10, 2018</i>The Cache-Tag header now supports up to 1000 tags and a total header length of 16kb. This update simplifies file purges for customers who deploy websites with Drupal.</p>
 	<ul>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-">Support article</a></li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-">Support article</a></p>
+		</li>
 	</ul>
-	<h4 id="multiuseraccessondashcloudflarecom">Multi-User Access on dash.cloudflare.com</h4>
-	<p><em>Wed, May 2, 2018</em><br>
-		Starting May 2 2018, users can go to the new home of Cloudflare’s Dashboard at <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> and share account access. This has been supported at our Enterprise level of service, but is now being extended to all customers.</p>
+	<h4>Multi-User Access on dash.cloudflare.com</h4>
+	<p><i>Wed, May 2, 2018</i>Starting May 2 2018, users can go to the new home of Cloudflare’s Dashboard at <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> and share account access. This has been supported at our Enterprise level of service, but is now being extended to all customers.</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/expanding-multi-user-access">Blog Post</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/expanding-multi-user-access">Blog Post</a></p>
+		</li>
 	</ul>
-	<h4 id="supportfullsslstrictmodevalidationforcnamedomains">Support full SSL (Strict) mode validation for CNAME domains</h4>
-	<p><em>Thu, April 12, 2018</em><br>
-		Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.</p>
+	<h4>Support full SSL (Strict) mode validation for CNAME domains</h4>
+	<p><i>Thu, April 12, 2018</i>Cloudflare is now able to validate origin certificates that use a hostname's CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate's Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.</p>
 	<ul>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-">Support</a></li>
-		<li><a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS</a></li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-">Support</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS</a></p>
+		</li>
 	</ul>
-	<h4 id="cloudflarespectrum">Cloudflare Spectrum</h4>
-	<p><em>Thu, April 12, 2018</em><br>
-		Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare’s Anycast network.</p>
+	<h4>Cloudflare Spectrum</h4>
+	<p><i>Thu, April 12, 2018</i>Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare’s Anycast network.</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/products/cloudflare-spectrum">Product Page</a></li>
-		<li><a href="https://blog.cloudflare.com/spectrum">Blog Post</a></li>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/cloudflare-spectrum">Product Page</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/spectrum">Blog Post</a></p>
+		</li>
 	</ul>
-	<h4 id="workerscancontrolcachettlbyresponsecode">Workers Can Control Cache TTL by Response Code</h4>
-	<p><em>Wed, April 11, 2018</em><br>
-		Cloudflare workers can now control cache TTL by response code. This provides greater control over cached assets with Cloudflare Workers.</p>
+	<h4>Workers Can Control Cache TTL by Response Code</h4>
+	<p><i>Wed, April 11, 2018</i>Cloudflare workers can now control cache TTL by response code. This provides greater control over cached assets with Cloudflare Workers.</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com/workers/reference/cloudflare-features">Documentation</a></li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/reference/cloudflare-features">Documentation</a></p>
+		</li>
 	</ul>
-	<h4 id="argotunnel">Argo Tunnel</h4>
-	<p><em>Thu, April 5, 2018</em><br>
-		Argo Tunnel ensures that no visitor or attacker can reach your web server unless they first pass through Cloudflare. Using a lightweight agent installed on your origin, Cloudflare creates an encrypted tunnel between your host infrastructure and our nearest data centers without opening a public inbound port. It’s more secure, more performant, and easier to manage than exposing your services publically.</p>
+	<h4>Argo Tunnel</h4>
+	<p><i>Thu, April 5, 2018</i>Argo Tunnel ensures that no visitor or attacker can reach your web server unless they first pass through Cloudflare. Using a lightweight agent installed on your origin, Cloudflare creates an encrypted tunnel between your host infrastructure and our nearest data centers without opening a public inbound port. It’s more secure, more performant, and easier to manage than exposing your services publically.</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com/argo-tunnel/quickstart">Developer Doc</a></li>
-		<li><a href="https://www.cloudflare.com/products/argo-tunnel">Read More</a></li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/argo-tunnel/quickstart">Developer Doc</a></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/argo-tunnel">Read More</a></p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 </div>

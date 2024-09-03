@@ -1,9 +1,12 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Avoid Losing SEO Link Juice to Traditional CDNs" src="https://blog.cloudflare.com/content/images/cloudfront_twitter_search.jpg.scaled500.jpg" title="Avoid Losing SEO Link Juice to Traditional CDNs"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qmVb3IyY2Uv3A784v6eZz/e6ddb5ba7df57710efc8b4c828ea21f0/cloudfront_twitter_search.jpg.scaled500.jpg" alt="Avoid Losing SEO Link Juice to Traditional CDNs" class="kg-image" width="500" height="441" loading="lazy">
+
+	</figure>
 	<p>One of the problems with many traditional CDNs it that they require you to rewrite the URLs of your static resources to point to a third party domain. This is problematic for two reasons: one obvious, one less obvious. The obvious reason is that it can be difficult to do. As a web administrator, you used to have to manually edit the links to your images and other static files to assign them to a CDN. Today there are tools like W3 Total Cache (W3TC) that can make that process more automatic, and some new services are promising to automate the process, but in the end even if automated this adds an extra step to the content creation process.</p>
 	<p>The less obvious problem is that these rewritten URLs point to someone else's domain, not yours, and that can potentially hurt your SEO. Deep in the bowels of search engines, backlinks to your site give you credit and increase the likelihood you'll appear near the top of search results. While the algorithms of search engines are secret and ever-changing, pointing links to a third party's domain, whether automatically or otherwise, poses a risk that you're not getting full credit for the content you create.</p>
 	<p>You can see this for yourself via Twitter. Try a search for a <a href="https://twitter.com/#!/search/cloudfront">traditional CDN like Amazon's CloudFront</a>. What you see are not people posting about the service itself, but instead links to photos from third party sites using CloudFront to store them. What's too bad is that even if you were interested in the photo and wanted to follow the link back to the original source, there's no way to figure it out because the domain doesn't reference the original content creator.</p>
 	<p>There is a time and a place for traditional CDNs, and CloudFlare works great in conjunction with them. However, we designed CloudFlare to make sure that we were completely transparent to your visitors and search engines. This means we never rewrite the URLs of your static content to point away from your domain. As a result, if you do a search for a CloudFlare user's domain on Twitter, you'll see everything being shared about them, even if some of the shared items are photos cached on our network. Similarly, if you do a <a href="https://twitter.com/#!/search/realtime/cloudflare">search on Twitter for CloudFlare</a>, all you'll see are people talking about our service.</p>
-	<!--kg-card-end: markdown-->
 </div>

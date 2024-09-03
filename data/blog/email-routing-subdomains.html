@@ -1,80 +1,96 @@
-<div class="mb2 gray5">11 min read</div>
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Email-Routing.png" class="kg-image" alt="Email Routing subdomain support, new APIs and security protocols" loading="lazy" width="1600" height="900"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CQZeq4fA43VsgiIpBptsZ/8f932435529e21b06b91602097095fa7/Email-Routing.png" alt="Email Routing subdomain support, new APIs and security protocols" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>It's been two years since we announced Email Routing, our solution to create custom email addresses for your domains and route incoming emails to your preferred mailbox. Since then, the team has worked hard to evolve the product and add more powerful features to meet our users' expectations. Examples include <a href="https://blog.cloudflare.com/announcing-route-to-workers">Route to Workers</a>, which allows you to <a href="https://developers.cloudflare.com/email-routing/email-workers">process your Emails programmatically</a> using Workers scripts, <a href="https://blog.cloudflare.com/email-routing-leaves-beta">Public APIs</a>, Audit Logs, or <a href="https://blog.cloudflare.com/dmarc-management">DMARC Management</a>.</p>
 	<p>We also made significant progress in supporting more email security extensions and protocols, protecting our customers from unwanted traffic, and keeping our IP space reputation for email egress impeccable to maximize our deliverability rates to whatever inbox upstream provider you chose.</p>
 	<p>Since <a href="https://blog.cloudflare.com/email-routing-leaves-beta">leaving beta</a>, Email Routing has grown into one of our most popular products; it’s used by more than one million different customer zones globally, and we forward around 20 million messages daily to every major email platform out there. Our product is mature, robust enough for general usage, and suitable for any production environment. And it keeps evolving: today, we announce three new features that will help make Email Routing more secure, flexible, and powerful than ever.</p>
-	<h2 id="new-security-protocols">New security protocols</h2>
+	<h2>New security protocols</h2>
 	<p>The SMTP email protocol has been around since the early 80s. Naturally, it wasn't designed with the best security practices and requirements in mind, at least not the ones that the Internet expects today. For that reason, several protocol revisions and extensions have been standardized and adopted by the community over the years. Cloudflare is known for being an early adopter of promising emerging technologies; Email Routing already <a href="https://developers.cloudflare.com/email-routing/postmaster">supports</a> things like SPF, DKIM signatures, DMARC policy enforcement, TLS transport, STARTTLS, and IPv6 egress, to name a few. Today, we are introducing support for two new standards to help <a href="https://www.cloudflare.com/zero-trust/products/email-security">increase email security</a> and improve deliverability to third-party upstream email providers.</p>
-	<h3 id="arc">ARC</h3>
+	<h3>ARC</h3>
 	<p><a href="https://arc-spec.org">Authenticated Received Chain</a> (ARC) is an email authentication system designed to allow an intermediate email server (such as Email Routing) to preserve email authentication results. In other words, with ARC, we can securely preserve the results of validating sender authentication mechanisms like SPF and DKIM, which we support when the email is received, and transport that information to the upstream provider when we forward the message. ARC establishes a chain of trust with all the hops the message has passed through. So, if it was tampered with or changed in one of the hops, it is possible to see where by following that chain.</p>
 	<p>We began rolling out ARC support to Email Routing a few weeks ago. Here’s how it works:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--1--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="734"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67xk7IFzgYjOSwQEqUSbY/30e7a894a2bdfe5566f4729745ca0035/pasted-image-0--1--2.png" alt="" class="kg-image" width="1600" height="734" loading="lazy">
+
+	</figure>
 	<p>As you can see, <code>joe@example.com</code> sends an Email to <code>henry@domain.example</code>, an Email Routing address, which in turn is forwarded to the final address, <code>example@gmail.com</code>.</p>
-	<p>Email Routing will use <code>@example.com</code>’s DMARC policy to check the SPF and DKIM alignments (SPF, DKIM, and DMARC <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf">help authenticate</a> email senders by verifying that the emails came from the domain that they claim to be from.) It then stores this authentication result by adding a <code>Arc-Authentication-Results</code> header in the message:</p><!--kg-card-begin: markdown-->
-	<pre><code>ARC-Authentication-Results: i=1; mx.cloudflare.net; dkim=pass header.d=cloudflare.com header.s=example09082023 header.b=IRdayjbb; dmarc=pass header.from=example.com policy.dmarc=reject; spf=none (mx.cloudflare.net: no SPF records found for postmaster@example.com) smtp.helo=smtp.example.com; spf=pass (mx.cloudflare.net: domain of joe@example.com designates 2a00:1440:4824:20::32e as permitted sender) smtp.mailfrom=joe@example.com; arc=none smtp.remote-ip=2a00:1440:4824:20::32e
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Then we take a snapshot of all the headers and the body of the original message, and we generate an <code>Arc-Message-Signature</code> header with a DKIM-like cryptographic signature (in fact ARC uses the same DKIM keys):</p><!--kg-card-begin: markdown-->
-	<pre><code>ARC-Message-Signature: i=1; a=rsa-sha256; s=2022; d=email.cloudflare.net; c=relaxed/relaxed; h=To:Date:Subject:From:reply-to:cc:resent-date:resent-from:resent-to :resent-cc:in-reply-to:references:list-id:list-help:list-unsubscribe :list-subscribe:list-post:list-owner:list-archive; t=1697709687; bh=sN/+...aNbf==;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Finally, before forwarding the message to <code>example@gmail.com</code>, Email Routing generates the <code>Arc-Seal</code> header, another DKIM-like signature, composed out of the <code>Arc-Authentication-Results</code> and <code>Arc-Message-Signature</code>, and cryptographically “seals” the message:</p><!--kg-card-begin: markdown-->
-	<pre><code>ARC-Seal: i=1; a=rsa-sha256; s=2022; d=email.cloudflare.net; cv=none; b=Lx35lY6..t4g==;
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>Email Routing will use <code>@example.com</code>’s DMARC policy to check the SPF and DKIM alignments (SPF, DKIM, and DMARC <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf">help authenticate</a> email senders by verifying that the emails came from the domain that they claim to be from.) It then stores this authentication result by adding a <code>Arc-Authentication-Results</code> header in the message:</p>
+	<pre class="language-bash"><code class="language-bash">ARC-Authentication-Results: i=1; mx.cloudflare.net; dkim=pass header.d=cloudflare.com header.s=example09082023 header.b=IRdayjbb; dmarc=pass header.from=example.com policy.dmarc=reject; spf=none (mx.cloudflare.net: no SPF records found for postmaster@example.com) smtp.helo=smtp.example.com; spf=pass (mx.cloudflare.net: domain of joe@example.com designates 2a00:1440:4824:20::32e as permitted sender) smtp.mailfrom=joe@example.com; arc=none smtp.remote-ip=2a00:1440:4824:20::32e</code></pre>
+	<p>Then we take a snapshot of all the headers and the body of the original message, and we generate an <code>Arc-Message-Signature</code> header with a DKIM-like cryptographic signature (in fact ARC uses the same DKIM keys):</p>
+	<pre class="language-bash"><code class="language-bash">ARC-Message-Signature: i=1; a=rsa-sha256; s=2022; d=email.cloudflare.net; c=relaxed/relaxed; h=To:Date:Subject:From:reply-to:cc:resent-date:resent-from:resent-to :resent-cc:in-reply-to:references:list-id:list-help:list-unsubscribe :list-subscribe:list-post:list-owner:list-archive; t=1697709687; bh=sN/+...aNbf==;</code></pre>
+	<p>Finally, before forwarding the message to <code>example@gmail.com</code>, Email Routing generates the <code>Arc-Seal</code> header, another DKIM-like signature, composed out of the <code>Arc-Authentication-Results</code> and <code>Arc-Message-Signature</code>, and cryptographically “seals” the message:</p>
+	<pre class="language-bash"><code class="language-bash">ARC-Seal: i=1; a=rsa-sha256; s=2022; d=email.cloudflare.net; cv=none; b=Lx35lY6..t4g==;</code></pre>
 	<p>When Gmail receives the message from Email Routing, it not only normally authenticates the last hop domain.example domain (Email Routing uses <a href="https://developers.cloudflare.com/email-routing/postmaster/#sender-rewriting">SRS</a>), but it also checks the ARC seal header, which provides the authentication results of the original sender.</p>
 	<p>ARC increases the traceability of the message path through email intermediaries, allowing for more informed delivery decisions by those who receive emails as well as higher deliverability rates for those who transport them, like Email Routing. It has been adopted by all the major email providers like <a href="https://support.google.com/a/answer/175365?hl=en">Gmail</a> and Microsoft. You can read more about the ARC protocol in the <a href="https://datatracker.ietf.org/doc/html/rfc8617">RFC8617</a>.</p>
-	<h3 id="mta-sts">MTA-STS</h3>
+	<h3>MTA-STS</h3>
 	<p>As we said earlier, SMTP is an old protocol. Initially Email communications were done in the clear, in plain-text and unencrypted. At some point in time in the late 90s, the email providers community standardized STARTTLS, also known as Opportunistic TLS. The <a href="https://datatracker.ietf.org/doc/html/rfc3207">STARTTLS extension</a> allowed a client in a SMTP session to upgrade to TLS encrypted communications.</p>
 	<p>While at the time this seemed like a step forward in the right direction, we later found out that because STARTTLS can start with an unencrypted plain-text connection, and that can be hijacked, the protocol is <a href="https://lwn.net/Articles/866481">susceptible to man-in-the-middle attacks</a>.</p>
-	<p>A few years ago MTA Strict Transport Security (<a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email. </p>
+	<p>A few years ago MTA Strict Transport Security (<a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email.</p>
 	<p>Suppose that <code>example.com</code> uses Email Routing. Here’s how you can enable MTA-STS for it.</p>
-	<p>First, log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> and select your account and zone. Then go to <strong>DNS</strong> &gt; <strong>Records</strong> and create a new CNAME record with the name “<code>_mta-sts</code>” that points to Cloudflare’s record “<code>_mta-sts.mx.cloudflare.net</code>”. Make sure to disable the proxy mode.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0-2.png" class="kg-image" alt="" loading="lazy" width="1600" height="261"></figure>
-	<p>Confirm that the record was created:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ dig txt _mta-sts.example.com
+	<p>First, log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> and select your account and zone. Then go to <b>DNS</b> &gt; <b>Records</b> and create a new CNAME record with the name “<code>_mta-sts</code>” that points to Cloudflare’s record “<code>_mta-sts.mx.cloudflare.net</code>”. Make sure to disable the proxy mode.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4czTYhSi9X5kPU3TZ0m861/5ea71915974c2bbd3ec076f1187efaa0/pasted-image-0-2.png" alt="" class="kg-image" width="1600" height="261" loading="lazy">
+
+	</figure>
+	<p>Confirm that the record was created:</p>
+	<pre class="language-bash"><code class="language-bash">$ dig txt _mta-sts.example.com
 _mta-sts.example.com.	300	IN	CNAME	_mta-sts.mx.cloudflare.net.
-_mta-sts.mx.cloudflare.net. 300	IN	TXT	"v=STSv1; id=20230615T153000;"
-</code></pre>
-	<!--kg-card-end: markdown-->
+_mta-sts.mx.cloudflare.net. 300	IN	TXT	"v=STSv1; id=20230615T153000;"</code></pre>
 	<p>This tells the other end client that is trying to connect to us that we support MTA-STS.</p>
 	<p>Next you need an HTTPS endpoint at <code>mta-sts.example.com</code> to serve your policy file. This file defines the mail servers in the domain that use MTA-STS. The reason why HTTPS is used here instead of DNS is because not everyone uses DNSSEC yet, so we want to avoid another MITM attack vector.</p>
-	<p>To do this you need to deploy a very simple Worker that allows Email clients to pull Cloudflare’s Email Routing <a href="https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt">policy</a> file using the <a href="https://en.wikipedia.org/wiki/Well-known_URI">“well-known” URI</a> convention. Go to your <strong>Account</strong> &gt; <strong>Workers &amp; Pages</strong> and press <strong>Create Application</strong>. Pick the “MTA-STS” template from the list.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--2--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="910"></figure>
-	<p>This Worker simply proxies <code>https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt</code> to your own domain. After deploying it, go to the Worker configuration, then <strong>Triggers</strong> &gt; <strong>Custom Domains</strong> and <strong>Add Custom Domain</strong>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/customdomains.png" class="kg-image" alt="" loading="lazy" width="1600" height="919"></figure>
-	<p>You can then confirm that your policy file is working:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ curl https://mta-sts.example.com/.well-known/mta-sts.txt
+	<p>To do this you need to deploy a very simple Worker that allows Email clients to pull Cloudflare’s Email Routing <a href="https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt">policy</a> file using the <a href="https://en.wikipedia.org/wiki/Well-known_URI">“well-known” URI</a> convention. Go to your <b>Account</b> &gt; <b>Workers &amp; Pages</b> and press <b>Create Application</b>. Pick the “MTA-STS” template from the list.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BBFtG8hiHehJw74L2DbHX/ecd9631608152439b137b24cb5a7203e/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="910" loading="lazy">
+
+	</figure>
+	<p>This Worker simply proxies <code>https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt</code> to your own domain. After deploying it, go to the Worker configuration, then <b>Triggers</b> &gt; <b>Custom Domains</b> and <b>Add Custom Domain</b>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MWHc7AuevDzxafJ0gfaFb/81fbe5baf08cca92d2d57ff4b9ea8fe9/customdomains.png" alt="" class="kg-image" width="1600" height="919" loading="lazy">
+
+	</figure>
+	<p>You can then confirm that your policy file is working:</p>
+	<pre class="language-bash"><code class="language-bash">$ curl https://mta-sts.example.com/.well-known/mta-sts.txt
 version: STSv1
 mode: enforce
 mx: *.mx.cloudflare.net
-max_age: 86400
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>This says that we enforce MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered. </p>
+max_age: 86400</code></pre>
+	<p>This says that we enforce MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered.</p>
 	<p>Email Routing also supports MTA-STS upstream, which greatly improves security when forwarding your Emails to service providers like <a href="https://support.google.com/a/answer/9261504?hl=en">Gmail</a> or <a href="https://learn.microsoft.com/en-us/purview/enhancing-mail-flow-with-mta-sts">Microsoft</a>, and others.</p>
 	<p>While enabling MTA-STS involves a few steps today, we plan to simplify things for you and automatically configure MTA-STS for your domains from the Email Routing dashboard as a future improvement.</p>
-	<h2 id="sending-emails-and-replies-from-workers">Sending emails and replies from Workers</h2>
+	<h2>Sending emails and replies from Workers</h2>
 	<p>Last year we announced <a href="https://developers.cloudflare.com/email-routing/email-workers">Email Workers</a>, allowing anyone using Email Routing to associate a Worker script to an Email address rule, and programmatically process their incoming emails in any way they want. <a href="https://developers.cloudflare.com/workers">Workers</a> is our serverless compute platform, it provides hundreds of features and APIs, like <a href="https://developers.cloudflare.com/workers/databases">databases</a> and <a href="https://developers.cloudflare.com/r2/api/workers/workers-api-reference">storage</a>. Email Workers opened doors to a flood of use-cases and applications that weren’t possible before like implementing allow/block lists, advanced rules, notifications to messaging applications, honeypot aggregators and more.</p>
 	<p>Still, you could only act on the incoming email event. You could read and process the email message, you could even manipulate and create some headers, but you couldn’t rewrite the body of the message or create new emails from scratch.</p>
 	<p>Today we’re announcing two new powerful Email Workers APIs that will further enhance what you can do with Email Routing and Workers.</p>
-	<h3 id="send-emails-from-workers">Send emails from Workers</h3>
+	<h3>Send emails from Workers</h3>
 	<p>Now you can send an email from any Worker, from scratch, whenever you want, not just when you receive incoming messages, to any email address verified on Email Routing under your account. Here are a few practical examples where sending email from Workers to your verified addresses can be helpful:</p>
 	<ul>
-		<li>Daily digests with the news from your favorite publications.</li>
-		<li>Alert messages whenever the weather conditions are adverse.</li>
-		<li>Automatic notifications when systems complete tasks.</li>
-		<li>Receive a message composed of the inputs of a form online on a contact page.</li>
+		<li>
+			<p>Daily digests with the news from your favorite publications.</p>
+		</li>
+		<li>
+			<p>Alert messages whenever the weather conditions are adverse.</p>
+		</li>
+		<li>
+			<p>Automatic notifications when systems complete tasks.</p>
+		</li>
+		<li>
+			<p>Receive a message composed of the inputs of a form online on a contact page.</p>
+		</li>
 	</ul>
-	<p>Let's see a simple example of a Worker sending an email. First you need to create “<code>send_email</code>” bindings in your wrangler.toml configuration:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-toml">send_email = [
+	<p>Let's see a simple example of a Worker sending an email. First you need to create “<code>send_email</code>” bindings in your wrangler.toml configuration:</p>
+	<pre class="language-toml"><code class="language-toml">send_email = [
     {type = "send_email", name = "EMAIL_OUT"}
- ]
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>And then creating a new message and sending it in a Workers is as simple as:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">import { EmailMessage } from "cloudflare:email";
+ ]</code></pre>
+	<p>And then creating a new message and sending it in a Workers is as simple as:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { EmailMessage } from "cloudflare:email";
 import { createMimeMessage } from "mimetext";
 
 export default {
@@ -101,50 +117,81 @@ export default {
 
    return new Response("email sent!");
  },
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
+};</code></pre>
 	<p>This example makes use of <a href="https://muratgozel.github.io/MIMEText">mimetext</a>, an open-source raw email message generator.</p>
 	<p>Again, for security reasons, you can only send emails to the addresses for which you confirmed ownership in Email Routing under your Cloudflare account. If you’re looking for sending email campaigns or newsletters to destination addresses that you do not control or larger subscription groups, you should consider other options like our <a href="https://blog.cloudflare.com/sending-email-from-workers-with-mailchannels">MailChannels integration</a>.</p>
 	<p>Since sending Emails from Workers is not tied to the EmailEvent, you can send them from any type of Worker, including <a href="https://developers.cloudflare.com/workers/configuration/cron-triggers">Cron Triggers</a> and <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>, whenever you want, you control all the logic.</p>
-	<h3 id="reply-to-emails">Reply to emails</h3>
-	<p>One of our most-requested features has been to provide a way to programmatically respond to incoming emails. It has been possible to do this with Email Workers in a very limited capacity by returning a permanent SMTP error message — but this may or may not be visible to the end user depending on the client implementation. </p>
-	<pre><code class="language-javascript">export default {
+	<h3>Reply to emails</h3>
+	<p>One of our most-requested features has been to provide a way to programmatically respond to incoming emails. It has been possible to do this with Email Workers in a very limited capacity by returning a permanent SMTP error message — but this may or may not be visible to the end user depending on the client implementation.</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
   async email(message, env, ctx) {
       message.setReject("Address not allowed");
   }
 }
-
 </code></pre>
 	<p>As of today, you can now truly reply to incoming emails with another new message and implement smart auto-responders programmatically, adding any content and context in the main body of the message. Think of a customer support email automatically generating a ticket and returning the link to the sender, an out-of-office reply with instructions when you're on vacation, or a detailed explanation of why you rejected an email. Here’s a code example:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-26-at-12.05.33.png" class="kg-image" alt="" loading="lazy" width="1198" height="1122"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NgbXFwy3Xw0VHLemZ4smZ/832756e7ffeaccf8aa967e1a854c7683/Screenshot-2023-10-26-at-12.05.33.png" alt="" class="kg-image" width="1198" height="1122" loading="lazy">
+
+	</figure>
 	<p>To mitigate security risks and abuse, replying to incoming emails has a few requirements:</p>
 	<ul>
-		<li>The incoming email has to have valid DMARC.</li>
-		<li>The email can only be replied to once.</li>
-		<li>The <code>In-Reply-To</code> header of the reply message must match the <code>Message-ID</code> of the incoming message.</li>
-		<li>The recipient of the reply must match the incoming sender.</li>
-		<li>The outgoing sender domain must match the same domain that received the email.</li>
+		<li>
+			<p>The incoming email has to have valid DMARC.</p>
+		</li>
+		<li>
+			<p>The email can only be replied to once.</p>
+		</li>
+		<li>
+			<p>The <code>In-Reply-To</code> header of the reply message must match the <code>Message-ID</code> of the incoming message.</p>
+		</li>
+		<li>
+			<p>The recipient of the reply must match the incoming sender.</p>
+		</li>
+		<li>
+			<p>The outgoing sender domain must match the same domain that received the email.</p>
+		</li>
 	</ul>
 	<p>If these and other internal conditions are not met, then <code>reply()</code> will fail with an exception, otherwise you can freely compose your reply message and send it back to the original sender.</p>
 	<p>For more information the documentation to these APIs is available in our <a href="https://developers.cloudflare.com/email-routing/email-workers/runtime-api">Developer Docs</a>.</p>
-	<h2 id="subdomains-support">Subdomains support</h2>
+	<h2>Subdomains support</h2>
 	<p>This is a big one.</p>
-	<p>Email Routing is a <a href="https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones">zone-level</a> feature. A zone has a top-level domain (the same as the zone name) and it can have subdomains (managed under the DNS feature.) As an example, I can have the <code>example.com</code> &nbsp;zone, and then the <code>mail.example.com</code> and <code>corp.example.com</code> subdomains under it. However, we can only use Email Routing with the top-level domain of the zone, <code>example.com</code> in this example. While this is fine for the vast majority of use cases, some customers — particularly bigger organizations with complex email requirements — have asked for more flexibility. </p>
+	<p>Email Routing is a <a href="https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones">zone-level</a> feature. A zone has a top-level domain (the same as the zone name) and it can have subdomains (managed under the DNS feature.) As an example, I can have the <code>example.com</code> &nbsp;zone, and then the <code>mail.example.com</code> and <code>corp.example.com</code> subdomains under it. However, we can only use Email Routing with the top-level domain of the zone, <code>example.com</code> in this example. While this is fine for the vast majority of use cases, some customers — particularly bigger organizations with complex email requirements — have asked for more flexibility.</p>
 	<p>This changes today. Now you can use Email Routing with any subdomain of any zone in your account. To make this possible we redesigned the dashboard UI experience to make it easier to get you started and manage all your Email Routing domains and subdomains, rules and destination addresses in one single place. Let’s see how it works.</p>
-	<p>To add Email Routing features to a new subdomain, log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> and select your account and zone. Then go to <strong>Email</strong> &gt; <strong>Email Routing</strong> &gt; <strong>Settings</strong> and click “Add subdomain”.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/prev-req-rec.png" class="kg-image" alt="" loading="lazy" width="1600" height="1093"></figure>
-	<p>Once the subdomain is added and the DNS records are configured, you can see it in the <strong>Settings</strong> list under the <strong>Subdomains</strong> section:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Domain.png" class="kg-image" alt="" loading="lazy" width="1600" height="787"></figure>
-	<p>Now you can go to <strong>Email</strong> &gt; <strong>Email Routing</strong> &gt; <strong>Routing rules</strong> and create new custom addresses that will show you the option of using either the top domain of the zone or any other configured subdomain.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-25-at-11.55.31-AM.png" class="kg-image" alt="" loading="lazy" width="1047" height="383"></figure>
+	<p>To add Email Routing features to a new subdomain, log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> and select your account and zone. Then go to <b>Email</b> &gt; <b>Email Routing</b> &gt; <b>Settings</b> and click “Add subdomain”.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WwS0LP1o8Ijlk0IzcqzCE/70fd19de70b0586d6b0def81f18795d7/prev-req-rec.png" alt="" class="kg-image" width="1600" height="1093" loading="lazy">
+
+	</figure>
+	<p>Once the subdomain is added and the DNS records are configured, you can see it in the <b>Settings</b> list under the <b>Subdomains</b> section:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gwBTgYQ36QxcvCGHfBqEd/9e1f83627a538d92538872dbfb85d0ea/Domain.png" alt="" class="kg-image" width="1600" height="787" loading="lazy">
+
+	</figure>
+	<p>Now you can go to <b>Email</b> &gt; <b>Email Routing</b> &gt; <b>Routing rules</b> and create new custom addresses that will show you the option of using either the top domain of the zone or any other configured subdomain.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KJ9AIM6MpcaYeV5IrVZQw/a4a728fb41952d7261ed051a4455d3ad/Screenshot-2023-10-25-at-11.55.31-AM.png" alt="" class="kg-image" width="1047" height="383" loading="lazy">
+
+	</figure>
 	<p>After the new custom address for the subdomain is created you can see it in the list with all the other addresses, and manage it from there.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/custom-addresses.png" class="kg-image" alt="" loading="lazy" width="1600" height="562"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vEJFroWoVivSr9n6SwPVl/f89365dbf653b554d0e1d2d6dd9ed51e/custom-addresses.png" alt="" class="kg-image" width="1600" height="562" loading="lazy">
+
+	</figure>
 	<p>It’s this easy.</p>
-	<h2 id="final-words">Final words</h2>
+	<h2>Final words</h2>
 	<p>We hope you enjoy the new features that we are announcing today. Still, we want to be clear: there are no changes in pricing, and Email Routing is still free for Cloudflare customers.</p>
 	<p>Ever since Email Routing was launched, we’ve been listening to customers’ feedback and trying to adjust our roadmap to both our requirements and their own ideas and requests. Email shouldn't be difficult; our goal is to listen, learn and keep improving the <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">email security service</a> with better, more powerful features.</p>
 	<p>You can find detailed information about the new features and more in our Email Routing <a href="https://developers.cloudflare.com/email-routing">Developer Docs</a>.</p>
 	<p>If you have any questions or feedback about Email Routing, please come see us in the <a href="https://community.cloudflare.com/new-topic?category=Feedback%2FPreviews+%26+Betas&amp;tags=email">Cloudflare Community</a> and the <a href="https://discord.gg/cloudflaredev">Cloudflare Discord</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Email-Routing-spot.png" class="kg-image" alt="" loading="lazy" width="1600" height="408"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OKqc3VieWKGRFBDtPU7io/6ed11beb434ce21009019384af85d8cc/Email-Routing-spot.png" alt="" class="kg-image" width="1600" height="408" loading="lazy">
+
+	</figure>
 </div>

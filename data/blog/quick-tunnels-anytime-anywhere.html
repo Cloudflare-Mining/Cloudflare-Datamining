@@ -1,32 +1,46 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image2-28.png" class="kg-image" alt="Quick Tunnels: Anytime, Anywhere." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aq4Df0NwD6Jx4gVeluk4N/65592828bd459b8ac16a244e318b20a8/image2-28.png" alt="Quick Tunnels: Anytime, Anywhere." class="kg-image" width="1200" height="628" loading="lazy">
+
+	</figure>
 	<p>My name is Rishabh Bector, and this summer, I worked as a software engineering intern on the Cloudflare Tunnel team. One of the things I built was quick Tunnels and before departing for the summer, I wanted to write a blog post on how I developed this feature.</p>
 	<p>Over the years, our engineering team has worked hard to continually improve the underlying architecture through which we serve our Tunnels. However, the core use case has stayed largely the same. Users can implement Tunnel to establish an encrypted connection between their origin server and Cloudflare’s edge.</p>
 	<p>This connection is initiated by installing a lightweight daemon on your origin, to serve your traffic to the Internet without the need to poke holes in your firewall or create intricate access control lists. Though we’ve always centered around the idea of being a <code>connector</code> to Cloudflare, we’ve also made many enhancements behind the scenes to the way in which our connector operates.</p>
 	<p>Typically, users run into a few speed bumps before being able to use Cloudflare Tunnel. Before they can create or route a tunnel, users need to authenticate their unique token against a zone on their account. This means in order to simply spin up a Tunnel testing environment, users need to first create an account, add a website, change their nameservers, and wait for DNS propagation.</p>
 	<p>Starting today, we’re excited to fix that. Cloudflare Tunnel now supports a free version that includes all the latest features and does not require any onboarding to Cloudflare. With today’s change, you can begin experimenting with Tunnel in five minutes or less.</p>
-	<h3 id="introducing-quick-tunnels">Introducing Quick Tunnels</h3>
+	<h3>Introducing Quick Tunnels</h3>
 	<p>When administrators start using Cloudflare Tunnel, they need to perform four specific steps:</p>
 	<ol>
-		<li>Create the Tunnel</li>
-		<li>Configure the Tunnel and what services it will represent</li>
-		<li>Route traffic to the Tunnel</li>
-		<li>And finally… run the Tunnel!</li>
+		<li>
+			<p>Create the Tunnel</p>
+		</li>
+		<li>
+			<p>Configure the Tunnel and what services it will represent</p>
+		</li>
+		<li>
+			<p>Route traffic to the Tunnel</p>
+		</li>
+		<li>
+			<p>And finally… run the Tunnel!</p>
+		</li>
 	</ol>
 	<p>These steps give you control over how your services connect to Cloudflare, but they are also a chore. Today’s change, which we are calling quick Tunnels, not only removes some onboarding requirements, we’re also condensing these into a single step.</p>
-	<p>If you have a service running locally that you want to share with teammates or an audience, you can use this single command to connect your service to Cloudflare’s edge. First, you need to install the Cloudflare connector, a lightweight daemon called <code>cloudflared</code>. Once installed, you can run the command below.</p><!--kg-card-begin: markdown-->
+	<p>If you have a service running locally that you want to share with teammates or an audience, you can use this single command to connect your service to Cloudflare’s edge. First, you need to install the Cloudflare connector, a lightweight daemon called <code>cloudflared</code>. Once installed, you can run the command below.</p>
 	<p><code>cloudflared tunnel</code></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image1-36.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52RN2zWOVsS0PKx2CJRIUx/c1306963c16ab884b97f2c3808cacc72/image1-36.png" alt="" class="kg-image" width="1398" height="844" loading="lazy">
+
+	</figure>
 	<p>When run, <code>cloudflared</code> will generate a URL that consists of a random subdomain of the website <code>trycloudflare.com</code> and point traffic to localhost port 8080. If you have a web service running at that address, users who visit the subdomain generated will be able to visit your web service through Cloudflare’s network.</p>
-	<h3 id="configuring-quick-tunnels">Configuring Quick Tunnels</h3>
+	<h3>Configuring Quick Tunnels</h3>
 	<p>We built this feature with the single command in mind, but if you have services that are running at different default locations, you can optionally configure your quick Tunnel to support that.</p>
-	<p>One example is if you’re building a multiplayer game that you want to share with friends. If that game is available locally on your origin, or even your laptop, at localhost:3000, you can run the command below.</p><!--kg-card-begin: markdown-->
+	<p>One example is if you’re building a multiplayer game that you want to share with friends. If that game is available locally on your origin, or even your laptop, at localhost:3000, you can run the command below.</p>
 	<p><code>cloudflared tunnel --url localhost:3000</code></p>
-	<!--kg-card-end: markdown-->
 	<p>You can do this with IP addresses or URLs, as well. Anything that <code>cloudflared</code> can reach can be made available through this service.</p>
-	<h3 id="how-does-it-work">How does it work?</h3>
+	<h3>How does it work?</h3>
 	<p>Cloudflare quick Tunnels is powered by Cloudflare <a href="https://workers.cloudflare.com">Workers</a>, giving us a serverless compute deployment that puts Tunnel management in a Cloudflare data center closer to you instead of a centralized location.</p>
 	<p>When you run the command <code>cloudflared tunnel</code>, your instance of <code>cloudflared</code> initiates an outbound-only connection to Cloudflare. Since that connection was initiated without any account details, we treat it as a quick Tunnel.</p>
 	<p>A Cloudflare Worker, which we call the quick Tunnel Worker, receives a request that a new quick Tunnel should be created. The Worker generates the random subdomain and returns that to the instance of <code>cloudflared</code>. That instance of <code>cloudflared</code> can now establish a connection for that subdomain.</p>
@@ -34,12 +48,16 @@
 	<p>The deployment also relies on the <a href="https://blog.cloudflare.com/introducing-cron-triggers-for-cloudflare-workers">Workers Cron Trigger</a> feature to perform clean up operations. On a regular interval, the Worker looks for quick Tunnels which have been disconnected for more than five minutes. Our Worker classifies these Tunnels as abandoned and proceeds to delete them and their associated DNS records.</p>
 	<p>What about Zero Trust policies?</p>
 	<p>By default, all the quick Tunnels that you create are available on the public Internet at the randomly generated URL. While this might be fine for some projects and tests, other use cases require more security.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image3-23.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nQnLMDD856i6qX9MjHMFD/782187b8992a993e79bea7655e41d65a/image3-23.png" alt="" class="kg-image" width="1999" height="991" loading="lazy">
+
+	</figure>
 	<p>If you need to add additional Zero Trust rules to control who can reach your services, you can use Cloudflare Access alongside Cloudflare Tunnel. That use case does require creating a Cloudflare account and adding a zone to Cloudflare, but we’re working on ideas to make that easier too.</p>
-	<h3 id="where-should-i-notice-improvements">Where should I notice improvements?</h3>
+	<h3>Where should I notice improvements?</h3>
 	<p>We first launched a version of Cloudflare Tunnel that did not require accounts over two years ago. While we’ve been thrilled that customers have used this for their projects, Cloudflare Tunnel evolved significantly since then. Specifically, Cloudflare Tunnel relies on a new architecture that is more redundant and stable than the one used by that older launch. While all Tunnels that migrated to this new architecture, which we call <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever">Named Tunnels</a>, enjoyed those benefits, the users on this option that did not require an account were left behind.</p>
 	<p>Today’s announcement brings that stability to quick Tunnels. Tunnels are now designed to be long-lived, persistent objects. Unless you delete them, Tunnels can live for months, an improvement over the average lifespan measured in hours before connectivity issues disrupted a Tunnel in the older architecture.</p>
 	<p>These quick Tunnels run on this same, resilient architecture not only expediting time-to-value, but also improving the overall tunnel quality of life.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>Today’s quick Tunnels add a powerful feature to Cloudflare Tunnels: the ability to create a reliable, resilient tunnel in a single command, without the hassle of creating an account first. We’re excited to help your team build and connect services to Cloudflare’s network and on to your audience or teammates. If you have additional questions, please share them in this community post here.</p>
 </div>

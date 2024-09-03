@@ -1,36 +1,56 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-22.png" class="kg-image" alt="Isolate browser-borne threats on any network with WAN-as-a-Service" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dtxQjHOl7ukeWBsQprTgb/52c4ec7a29e1b18a7d9fdb951a68c822/image1-22.png" alt="Isolate browser-borne threats on any network with WAN-as-a-Service" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Defending corporate networks from emerging threats is no easy task for security teams who manage complex stacks of firewalls, DNS and HTTP filters, and DLP and sandboxing appliances. Layering new defenses, such as Remote Browser Isolation to mitigate browser-borne threats that target vulnerabilities in unpatched browsers, can be complex for administrators who first have to plan how to integrate a new solution within their existing networks.</p>
 	<p>Today, we’re making it easier for administrators to integrate <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation">Cloudflare Browser Isolation</a> into their existing network from any traffic source such as IPsec and GRE via our <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">WAN-as-a-service</a>, <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a>. This new capability enables administrators to connect on-premise networks to Cloudflare and protect Internet activity from browser-borne malware and zero day threats, without installing any endpoint software or nagging users to update their browsers.</p>
 	<p>Before diving into the technical details, let’s recap how Magic WAN and Browser Isolation fit into network perimeter architecture and a defense-in-depth security strategy.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Magic-Gateway---BISO_diagram.png" class="kg-image" alt="Illustration of on-premise web gateway connecting to Browser Isolation via GRE/IPSec Tunnel" loading="lazy"></figure>
-	<h2 id="securing-networks-at-scale-with-magic-wan">Securing networks at scale with Magic WAN</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eWvHjEtNKbRnfuzqzpPCO/bb8cd2048b5b0f18896149804cb00aed/Magic-Gateway---BISO_diagram.png" alt="Illustration of on-premise web gateway connecting to Browser Isolation via GRE/IPSec Tunnel" class="kg-image" width="1501" height="451" loading="lazy">
+
+	</figure>
+	<h2>Securing networks at scale with Magic WAN</h2>
 	<p>Companies have <a href="https://blog.cloudflare.com/magic-wan-firewall">historically</a> secured their networks by building a perimeter out of on-premise routers, firewalls, dedicated connectivity and additional appliances for each layer of the security stack. Expanding the security perimeter pushes networks to their limits as centralized solutions become saturated, congested and add latency, and decentralizing adds complexity, operational overhead and cost.</p>
 	<p>These challenges are further compounded as security teams introduce more sophisticated security measures such as Browser Isolation. Cloudflare eliminates the complexity, fragility and performance limitations of legacy network perimeters by displacing on-premise firewalls with cloud firewalls hosted on our global network. This enables security teams to focus on delivering a layered security approach and successfully deploy Browser Isolation without the latency and scale constraints of legacy approaches.</p>
-	<h2 id="securing-web-browsing-activity-with-browser-isolation">Securing web browsing activity with Browser Isolation</h2>
+	<h2>Securing web browsing activity with Browser Isolation</h2>
 	<p>A far cry from their humble origins as document viewers, web browsers have evolved into extraordinarily complex pieces of software capable of running untrusted code from any connected server on the planet. In 2022 alone, Chromium, the engine that powers more than 70% of all web browsing activity and is used by everyone to access sensitive data in email and internal applications has seen six disclosed zero-day vulnerabilities.</p>
-	<p>In spite of this persistent and ongoing security risk, the patching of browsers is often left to the end-user who chooses when to <em>hit update</em> (while also restarting their browser and disrupting productivity). Patching browsers typically takes days and users remain exposed to malicious website code until it is complete.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-6.png" class="kg-image" alt="Isolating browsers protects users from malicious web based code before their local browser is patched." loading="lazy"></figure>
+	<p>In spite of this persistent and ongoing security risk, the patching of browsers is often left to the end-user who chooses when to <i>hit update</i> (while also restarting their browser and disrupting productivity). Patching browsers typically takes days and users remain exposed to malicious website code until it is complete.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39IcBO7YrxjuLNHIVcY0xC/3c4f78a23e952b4a266fa37e9b92113c/image5-6.png" alt="Isolating browsers protects users from malicious web based code before their local browser is patched." class="kg-image" width="785" height="515" loading="lazy">
+
+	</figure>
 	<p>To combat this risk Browser Isolation takes a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">zero trust approach</a> to web browsing and executes all website code in a remote browser. Should malicious code be executed, it occurs remotely from the user in an isolated container. The end-user and their connected network is insulated from the impact of the attack.</p>
-	<h2 id="magic-wan-browser-isolation">Magic WAN + Browser Isolation</h2>
+	<h2>Magic WAN + Browser Isolation</h2>
 	<p>Customers who have networks protected by Magic WAN can now enable Browser Isolation through HTTP policies.</p>
-	<h3 id="connect-your-network-to-cloudflare-and-enable-secure-web-gateway">Connect your network to Cloudflare and enable Secure Web Gateway</h3>
+	<h3>Connect your network to Cloudflare and enable Secure Web Gateway</h3>
 	<p>Magic WAN enables connecting any network to Cloudflare over IPsec, GRE, Private Network connectivity. The steps for this process may vary significantly depending on your vendor. See our <a href="https://developers.cloudflare.com/magic-wan/get-started">developer documentation</a> for more information.</p>
-	<h3 id="create-an-isolation-policy">Create an isolation policy</h3>
+	<h3>Create an isolation policy</h3>
 	<p>Isolation policies function the same with Magic WAN as they do for traffic sourced from devices with our Roaming Client (WARP) installed.</p>
 	<p>Navigate to the Cloudflare Zero Trust dashboard → Gateway → HTTP Policies and create a new HTTP policy with an isolate action.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/COOtMQFiiiCHjZHPyBcMt/01e5eba4e02882c1dca2c983c40e979c/image3-11.png" alt="" class="kg-image" width="1999" height="1398" loading="lazy">
+
+	</figure>
 	<p>See our developer documentation to <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/#isolate-policies">learn more about isolation policies</a>.</p>
-	<h3 id="enable-non-identity-on-ramp-support">Enable non-identity on-ramp support</h3>
+	<h3>Enable non-identity on-ramp support</h3>
 	<p>Prior to this release, Magic WAN + Browser Isolation traffic presented a block page. Existing customers will continue to see this block page. To enable Browser Isolation traffic for Magic Gateway navigate to: Cloudflare Zero Trust → Settings → Browser Isolation → Non-identity on-ramp support and select Enable.</p>
-	<h3 id="configuration-complete">Configuration complete</h3>
+	<h3>Configuration complete</h3>
 	<p>Once configured traffic that matches your isolation criteria is transparently intercepted and served through a remote browser. End-users are automatically connected to a remote browser at the closest Cloudflare data center. This keeps latency to a minimum, ensuring a positive end-user experience while mitigating security threats.</p>
-	<h2 id="try-cloudflare-browser">Try Cloudflare Browser</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Try Cloudflare Browser</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AkJyD6rdgQNs6ad3r5YP0/1122af5fb490b26bfcea11be85f8bd7c/image2-18.png" alt="" class="kg-image" width="1418" height="722" loading="lazy">
+
+	</figure>
 	<p>Interested in testing our remote browsing experience? Visit <a href="https://cloudflare.com/products/zero-trust/browser-isolation/experience">this landing page</a> to request demo access to Browser Isolation. This service is hosted on our global network, and you’ll be connected to a real remote browser hosted in a nearby Cloudflare data center.</p>
-	<h2 id="what-s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>We’re excited to continue integrating new on-ramps to consistently protect users from web based threats on any device and any network. Stay tuned for updates on deploying Browser Isolation via Proxy PAC files and deploying in-line on top of self-hosted Access applications.</p>
-	<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
+	<h2>Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/5aa20a0f69238fd79fc0bb9668a7d539/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F5aa20a0f69238fd79fc0bb9668a7d539%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

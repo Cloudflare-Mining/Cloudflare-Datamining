@@ -1,23 +1,28 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eLqguOeTtaIuT3agBG5oQ/2aaca001c21f99a0f8924fb31f611767/delivering-a-serverless-api-in-10-minutes-using-workers.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In preparation for Chrome’s Not Secure flag, which will update the indicator to show Not Secure when a site is not accessed over https, we wanted people to be able to test whether their site would pass. If you read our previous <a href="https://blog.cloudflare.com/chrome-not-secure-for-http">blog post</a> about the existing misconceptions around using https, and preparing your site, you may have noticed a small fiddle, allowing you to test which sites will be deemed “Secure”. In preparation for the blog post itself, one of our PMs approached me asking for help making this fiddle come to life. It was a simple ask: we need an endpoint which runs logic to see if a given domain will automatically redirect to https.</p>
 	<p>The logic and requirements turned out to be very simple:</p>
 	<ul>
-		<li>Make a serverless API endpoint</li>
-		<li>Input: domain (e.g. example.com)</li>
-		<li>Output: “secure” / “not secure”</li>
+		<li>
+			<p>Make a serverless API endpoint</p>
+		</li>
+		<li>
+			<p>Input: domain (e.g. example.com)</p>
+		</li>
+		<li>
+			<p>Output: “secure” / “not secure”</p>
+		</li>
 	</ul>
 	<p>Logic:</p>
-	<pre><code>if http://example.com redirects to https://example.com
+	<pre class="language-bash"><code class="language-bash">if http://example.com redirects to https://example.com
 	Return “secure”
 Else
-	Return “not secure”
-</code></pre>
+	Return “not secure”</code></pre>
 	<p>One additional requirement here was that we needed to follow redirects all the way; sites often redirect to <a href="http://www.example.com">http://www.example.com</a> first, and only then redirect to https. That is an additional line of code I was prepared to handle.</p>
 	<p>I’ve done some software engineering in previous jobs, and am now a Solutions Engineer at Cloudflare, but I have no DevOps experience. I’ve set up my fair share of origin servers, installed a few LAMP stacks, and NGINX (thanks to some very detailed guides on the interwebs), but the task of setting up a server to run 10 lines of code on it is daunting. Even with PaaS services such as Heroku, some prerequisite knowledge (and a Github account) is required to get your "Hello, World" app off the ground.</p>
 	<p>Using Cloudflare Workers, I was able to get an endpoint on the web, soup to nuts, within a few minutes. I spent no time on research, and 99% of the time converting the very simple pseudo code above into real code. The other 1% was spent adding a DNS record. In 10 minutes, I had a demo-ready cURL for the PM to test domains against.</p>
-	<h2 id="theworker">The Worker</h2>
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<h2>The Worker</h2>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))
 })
 
@@ -53,22 +58,20 @@ async function handleRequest(request) {
   catch (e) {
    return new Response(`Something went wrong ${e}`, {status: 404})
  }
-}
-</code></pre>
+}</code></pre>
 	<p>The Worker itself is fairly simple, but let us walk through what it is doing, as there are a few noteworthy things in here.</p>
-	<h3 id="parsingtheinput">Parsing the input</h3>
+	<h3>Parsing the input</h3>
 	<p>I initially thought about sending the input into the Worker in a POST. However, given the input was fairly simple, and requires no authentication, I decided it would be easier to pass in the domain in the query string.</p>
 	<p>Here, I instantiate a new URL object, which will handle all the URL parsing for us. Since I’m not using or modifying any other aspects of the URL, I’m performing all the functions on the object in one line. However, if I was looking at other parts such as the hostname, or path, it would have made sense for us to define a separate object.</p>
-	<pre><code class="language-javascript"> let domain = new URL(request.url).searchParams.get('domain')
+	<pre class="language-javascript"><code class="language-javascript"> let domain = new URL(request.url).searchParams.get('domain')
  if(domain === null) {
    return new Response('Please pass in domain via query string', {status: 404})
- }
-</code></pre>
+ }</code></pre>
 	<p>The <code>URL.searchParams</code> property returns a <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams">URLSearchParams</a> object, which allows us to <code>get</code> the value of the query string parameter we are looking for directly. In a situation when a parameter is not passed, we return an error response.</p>
-	<h3 id="makingthesubrequest">Making the subrequest</h3>
+	<h3>Making the subrequest</h3>
 	<p>Next, we will need to make a subrequest to the domain, and validate whether or not it redirects us to https.</p>
 	<p>On the <code>fetch</code>, we will also pass in the User-Agent header of the original request, as we have noticed some sites (for example google.com) will vary their responses for different User-Agents.</p>
-	<pre><code class="language-javascript">   let resp = await fetch(`http://${domain}`, {headers: {‘User-Agent’: request.headers.get(‘User-Agent’)}})
+	<pre class="language-javascript"><code class="language-javascript">   let resp = await fetch(`http://${domain}`, {headers: {‘User-Agent’: request.headers.get(‘User-Agent’)}})
    if(resp.redirected == true &amp;&amp; resp.url.startsWith('https')) {
      return SECURE_RESPONSE 
    }
@@ -77,35 +80,33 @@ async function handleRequest(request) {
    }
    else {
      return INSECURE_RESPONSE
-   }
-</code></pre>
-	<h3 id="followingredirects">Following Redirects</h3>
+   }</code></pre>
+	<h3>Following Redirects</h3>
 	<p>When I initially wrote this Worker, I did more work than I really needed to. In order to cover the use-case of some websites redirecting to their canonical site first (<a href="http://example.com">http://example.com</a> -&gt; <a href="http://www.example.com">http://www.example.com</a>), and only then redirecting to https, I was inspecting the redirect URL, and making an additional subrequest to then inspect the outcome. As one of our engineers pointed out, I was doing all that extra work for nothing.</p>
 	<p>By default, when you make a new <code>fetch</code>, what actually happens behind the scenes is that the <code>redirect</code> property is set to <code>follow</code>. Thus <code>fetch(url)</code> is the same as <code>fetch(url, {redirect: “follow”})</code>. So when we are making the subrequest within the Worker, the final <code>resp.url</code> property we are inspecting will provide us with the final location of the redirect chain.</p>
 	<p>Somewhat unintuitively, the <code>event.request.redirect</code> property is by default set to <code>”manual”</code>. So if we carried over all the initial request properties in our subrequest, the redirect chain would not have been followed, or we would have had to explicitly override it.</p>
 	<p>There is a good reason for this default: it allows trivial, pass-through Cloudflare Workers to function correctly in situations where origins assume they are actually redirecting the client itself. One situation is when an HTTP redirect sends browsers to a non-HTTP URL, such as a <code>mailto:</code> link, which Service Workers have no ability to follow. The intended recipient of the redirect is clearly the browser in this case. Another situation arises when the origin needs the browser to update its navigation bar with a new URL (like when redirecting from HTTP to HTTPS!). If redirects are followed in a Cloudflare Service Worker before returning the resulting response to the browser, the browser will have no way of displaying the correct, redirected URL in the navigation bar.</p>
-	<h3 id="corsheaders">CORS Headers</h3>
-	<pre><code class="language-javascript"> let headers = new Headers({
+	<h3>CORS Headers</h3>
+	<pre class="language-javascript"><code class="language-javascript"> let headers = new Headers({
    'Content-Type': 'text/html',
    'Access-Control-Allow-Origin': '*'
- })
-</code></pre>
+ })</code></pre>
 	<p>As you may have noticed, in the static response, we are always adding a response header called <code>Access-Control-Allow-Origin</code>. <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS headers</a> are meant to help protect origins from being accessed by other sites. If we tried to run our app directly on the client (from the browser side), the browser would enforce the CORS policies of the domains you were trying to test against, and block those requests. Setting <code>Access-Control-Allow-Origin</code> to <code>*</code> will allow this endpoint to be accessed from this blog, or any other sites trying to use it (if you are looking to embed it into your site, you can!). Otherwise, if the javascript on the blog post itself was making browser side calls to various domains, many requests would be blocked by the browser.</p>
-	<h3 id="testingourworker">Testing our Worker</h3>
-	<p>As I was building the Worker, I was using the preview UI to validate that I was on the right track at every step. The console output is really useful for simple debugging along the way.<br>
-		For example, to make sure the query string was getting parsed properly, I can <code>console.log(domain)</code>.<br>
-		<img src="https://blog.cloudflare.com/content/images/2018/06/workers_preview.png" alt="workers_preview" loading="lazy">
-	</p>
+	<h3>Testing our Worker</h3>
+	<p>As I was building the Worker, I was using the preview UI to validate that I was on the right track at every step. The console output is really useful for simple debugging along the way.For example, to make sure the query string was getting parsed properly, I can <code>console.log(domain)</code>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rAXIaf2zY93aBHC6ucvdS/d3ba79fc96859cb13b18a4fd36c552e8/workers_preview.png" alt="workers_preview" class="kg-image" width="850" height="660" loading="lazy">
+
+	</figure>
 	<p>It’s hard to get code right on the first try, and it’s not always clear where things went wrong. While the Preview is not reflective of the end to end experience (there are many variables that may change once a request is going over the web), it’s a great developer tool to help validate progress along the way.</p>
 	<p>Once I got it all working in the preview, it was time for the real test: the cURL.</p>
-	<pre><code class="language-bash">curl https://secure.ritakozlov.com/?domain=cloudflare.com
+	<pre class="language-bash"><code class="language-bash">curl https://secure.ritakozlov.com/?domain=cloudflare.com
 secure
 curl https://secure.ritakozlov.com/?domain=maxisacutecat.club
-not secure
-</code></pre>
+not secure</code></pre>
 	<p>And it works! You may now test your site by running the same cURL from your machine and adjusting the domain parameter, or you can deploy the Worker above on your zone, and have your own testing endpoint.</p>
 	<p>To sum, Workers are great for building simple, stateless serverless apps (to add flare to your blog posts, and wayyyy beyond!). We are always curious to hear what you are building!</p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
-	<!--kg-card-end: markdown-->
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>

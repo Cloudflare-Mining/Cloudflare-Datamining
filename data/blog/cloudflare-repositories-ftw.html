@@ -1,30 +1,29 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MTBi3ZP8GhmGn8ZYrRvMP/f53c2f4131e5211ca0fb41d513b7c85c/cloudflare-repositories-ftw.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><em>This is a guest post by <a href="https://twitter.com/kalilinux">Jim “Elwood” O’Gorman</a>, one of the maintainers of <a href="https://www.kali.org">Kali Linux</a>. Kali Linux is a Debian based GNU/Linux distribution popular amongst the security research communities.</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/1200px-Kali_Linux_2.0_wordmark.svg.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<p><i>This is a guest post by </i><a href="https://twitter.com/kalilinux"><i>Jim “Elwood” O’Gorman</i></a><i>, one of the maintainers of </i><a href="https://www.kali.org"><i>Kali Linux</i></a><i>. Kali Linux is a Debian based GNU/Linux distribution popular amongst the security research communities.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1X8bsOBR1p27T0JYTdHcHo/5870aa9edd2b3d4237044852b79a78d6/1200px-Kali_Linux_2.0_wordmark.svg.png" alt="" class="kg-image" width="1200" height="705" loading="lazy">
+
+	</figure>
 	<p>Kali Linux turned six years old this year!</p>
 	<p>In this time, Kali has established itself as the de-facto standard open source penetration testing platform. On a quarterly basis, we release updated ISOs for multiple platforms, pre-configured virtual machines, Kali Docker, WSL, Azure, AWS images, tons of ARM devices, Kali NetHunter, and on and on and on. This has lead to Kali being trusted and relied on to always being there for both security professionals and enthusiasts alike.</p>
 	<p>But that popularity has always led to one complication: How to get Kali to people?</p>
 	<p>With so many different downloads plus the apt repository, we have to move a lot of data. To accomplish this, we have always relied on our network of first- and third-party mirrors.</p>
 	<p>The way this works is, we run a master server that pushes out to a number of mirrors. We then pay to host a number of servers that are geographically dispersed and use them as our first-party mirrors. Then, a number of third parties donate storage and bandwidth to operate third-party mirrors, ensuring that we have even more systems that are geographically close to you. When you go to download, you hit a redirector that will send you to a mirror that is close to you, ideally allowing you to download your files quickly.</p>
 	<p>This solution has always been pretty decent, however it has some drawbacks. First, our network of first-party mirrors is expensive. Second, some mirrors are not as good as others. Nothing is worse than trying to download Kali and getting sent to a slow mirror, where your download might drag on for hours. Third, we always always need more mirrors as Kali continues to grow in popularity.</p>
-	<p>This situation led to us encountering Cloudflare thanks to some extremely generous outreach </p>
-	<p></p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr"><a href="https://t.co/k6M5UZxhWF">https://t.co/k6M5UZxhWF</a> and we can chat more about your specific use case.</p>— Justin (@xxdesmus) <a href="https://twitter.com/xxdesmus/status/1012492314608988160?ref_src=twsrc%5Etfw">June 29, 2018</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</figure>
-	<p></p>
+	<p>This situation led to us encountering Cloudflare thanks to some extremely generous outreach</p>
+	<blockquote>
+		<p><a href="https://t.co/k6M5UZxhWF">https://t.co/k6M5UZxhWF</a> and we can chat more about your specific use case.</p>
+		<p>— Justin (@xxdesmus) <a href="https://twitter.com/xxdesmus/status/1012492314608988160?ref_src=twsrc%5Etfw">June 29, 2018</a></p>
+	</blockquote>
 	<p>I will be honest, we are a bunch of security nerds, so we were a bit skeptical at first. We have some pretty unique needs, we use a lot of bandwidth, syncing an apt repository to a CDN is no small task, and well, we are paranoid. We have an average of 1,000,000 downloads a month on just our ISO images. Add in our apt repos and you are talking some serious, serious traffic. So how much help could we really expect from Cloudflare anyway? Were we really going to be able to put this to use, or would this just be a nice fancy front end to our website and nothing else?</p>
 	<p>On the other hand, it was a chance to use something new and shiny, and it is an expensive product, so of course we dove right in to play with it.</p>
 	<p>Initially we had some sync issues. A package repository is a mix of static data (binary and source packages) and dynamic data (package lists are updated every 6 hours). To make things worse, the cryptographic sealing of the metadata means that we need atomic updates of all the metadata (the signed top-level ‘<a href="http://kali.download/kali/dists/kali-rolling/Release">Release</a>’ file contains checksums of all the binary and source package lists).</p>
 	<p>The default behavior of a CDN is not appropriate for this purpose as it caches all files for a certain amount of time after they have been fetched for the first time. This means that you could have different versions of various metadata files in the cache, resulting in invalid checksums errors returned by apt-get. So we had to implement a few tweaks to make it work and reap the full benefits of Cloudflare’s CDN network.</p>
 	<p>First we added an “Expires” HTTP header to disable <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852">expiration</a> of all files that will never change. Then we added another HTTP header to <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only">tag</a> all metadata files so that we could manually purge those files from the CDN cache through <a href="https://api.cloudflare.com/#zone-purge-files-by-cache-tags-or-host">an API call</a> that we integrated at the end of the repository update procedure on our backend server.</p>
-	<p>With nginx in our backend, the configuration looks like this:<br></p><!--kg-card-begin: markdown-->
-	<pre><code>location /kali/dists/ {
+	<p>With nginx in our backend, the configuration looks like this:</p>
+	<pre class="language-bash"><code class="language-bash">location /kali/dists/ {
     add_header Cache-Tag metadata,dists;
 }
 location /kali/project/trace/ {
@@ -36,20 +35,14 @@ location /kali/pool/ {
     location ~ \.(deb|udeb|dsc|changes|xz|gz|bz2)$ {
         expires max;
     }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<p>The API call is a simple shell script launched by a hook of the repository mirroring script:<br></p><!--kg-card-begin: markdown-->
-	<pre><code>#!/bin/sh
+}</code></pre>
+	<p>The API call is a simple shell script launched by a hook of the repository mirroring script:</p>
+	<pre class="language-bash"><code class="language-bash">#!/bin/sh
 curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/xxxxxxxxxxx/purge_cache" \
     -H "Content-Type:application/json" \
     -H "X-Auth-Key:XXXXXXXXXXXXX" \
     -H "X-Auth-Email:your-account@example.net" \
-    --data '{"tags":["metadata"]}'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+    --data '{"tags":["metadata"]}'</code></pre>
 	<p>With this simple yet powerful feature, we ensure that the CDN cache always contains consistent versions of the metadata files. Going further, we might want to configure <a href="https://support.cloudflare.com/hc/en-us/articles/206776707-Does-Cloudflare-Do-Prefetching">Prefetching</a> so that Cloudflare downloads all the package lists as soon as a user downloads the top-level ‘Release’ file.</p>
 	<p>In short, we were using this system in a way that was never intended, but it worked! This really reduced the load on our backend, as a single server could feed the entire CDN. Putting the files geographically close to users, allowing the classic <code>apt dist-upgrade</code> to occur much, much faster than ever before.</p>
 	<p>A huge benefit, and was not really a lot of work to set up. Sevki Hasirci was there with us the entire time as we worked through this process, ensuring any questions we had were answered promptly. A great win.</p>
@@ -58,22 +51,31 @@ curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/xxxxxxxxxxx/purge_c
 	<p>Talking with Sevki, it turns out there were limits to how large of a file Cloudflare would cache. He upped our limit to the system capacity, but that still was not enough for how large some of our images are. At this point, we just assumed that was that--we could use this solution for the repo but for our image distribution it would not help. However, Sevki told us to wait a bit. He had a surprise in the works for us.</p>
 	<p>After some development time, Cloudflare pushed out an update to address our issue, allowing us to cache very large files. With that in place, everything just worked with no additional tweaking. Even items like partial downloads for users using download accelerators worked just fine. Amazing!</p>
 	<p>To show an example of what this translated into, let’s look at some graphs. Once the very large file support was added and we started to push out our images through Cloudflare, you could see that there is not a real increase in requests:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Initial-Request-Long-view.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bhZs8Ewipr2DpEbTC3IWU/df1e37a0364f0e69a5f84e74cd4a7802/Initial-Request-Long-view.png" alt="" class="kg-image" width="1996" height="1006" loading="lazy">
+
+	</figure>
 	<p>However, looking at Bandwidth there is a clear increase:</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Initial-Bandwidth-long-view.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/s1AfdE6BReJywalltbTt5/496c6ff30164e219544eb8c0b66e1746/Initial-Bandwidth-long-view.png" alt="" class="kg-image" width="2038" height="1034" loading="lazy">
+
+	</figure>
 	<p>After it had been implemented for a while, we see a clear pattern.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Initial-Request.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Initial-Bandwidth.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6R6OtPNSQa95hRpEPDGtCq/a0070ab8c1b8426db5da252a70bbd6d0/Initial-Request.png" alt="" class="kg-image" width="2008" height="1002" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kaU7xAAEN8tUIKykDXNPp/af0933725455a6734d772a88e766f1e3/Initial-Bandwidth.png" alt="" class="kg-image" width="1986" height="984" loading="lazy">
+
+	</figure>
 	<p>This pushed us from around 80 TB a week when we had just the repo, to now around 430TB a month when its repo and images. As you can imagine, that's an amazing bandwidth savings for an open source project such as ours.</p>
 	<p>Performance is great, and with a cache hit rate of over 97% (amazingly high considering how often and frequently files in our repo changes), we could not be happier.</p>
 	<p>So what’s next? That's the question we are asking ourselves. This solution has worked so well, we are looking at other ways to leverage it, and there are a lot of options. One thing is for sure, we are not done with this.</p>
 	<p>Thanks to Cloudflare, Sevki, Justin, and Matthew for helping us along this path. It is fair to say this is the single largest contribution to Kali that we have received outside of the support by Offensive Security.</p>
-	<p>Support we received from Cloudflare was amazing. The Kali project and community thanks you immensely every time they update their distribution or download an image.<br><br><br></p>
+	<p>Support we received from Cloudflare was amazing. The Kali project and community thanks you immensely every time they update their distribution or download an image.</p>
 </div>

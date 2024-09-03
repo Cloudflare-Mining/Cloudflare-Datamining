@@ -1,29 +1,44 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyuVruJG7h5nTbAQRVeNh/5e68586713d4517a810c89e944620e8b/how-cloudflare-is-making-ssl-fast.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>HTTP, the protocol of the web, is unencrypted by default. That means it is trivial for someone using the same local network as you to spy on all the data you send to and receive from most websites. If, for example, someone sniffs your session cookie for a website then they can install it themselves and log in as if they were you without knowing your password. One high profile example was when actor <a href="http://www.huffingtonpost.com/2011/03/02/ashton-kutcher-twitter-hacked_n_830619.html">Ashton Kutcher's Twitter session cookie was sniffed off the TED conference's wifi network</a>, allowing a hacker to take control of his Twitter account.</p>
-	<p><img alt="How to make SSL fast" src="https://blog.cloudflare.com/content/images/we_love_ssl.png.scaled500.png" title="How to make SSL fast"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OIpYAf5gSb7J12tffxHPR/14f06a640c70a6b707fad0c3300d1b34/we_love_ssl.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="500" height="132" loading="lazy">
+
+	</figure>
 	<p>The solution to problems like Ashton's is to use an encrypted HTTPS connection which requires a website to support SSL. The problem is that the SSL protocol imposes a heavy burden. I'm fairly technically savvy and still find the process of installing and maintaining SSL keys on a web server Byzantine. SSL sessions also add considerable CPU load to web servers and slow down web performance.</p>
-	<p>CloudFlare is the web performance <span style="text-decoration: underline;"><em>and</em></span> security company. For security, we believe it is incumbent on us to make SSL easier and more widely deployed. Given that, in order to maximize performance, we are spending significant resources in order to improve the performance of SSL.</p>
-	<h3 id="whatmakessslslow">What Makes SSL Slow?</h3>
+	<p>CloudFlare is the web performance <i>and</i> security company. For security, we believe it is incumbent on us to make SSL easier and more widely deployed. Given that, in order to maximize performance, we are spending significant resources in order to improve the performance of SSL.</p>
+	<h3>What Makes SSL Slow?</h3>
 	<p>SSL imposes an additional tax on web performance, but it's important to understand exactly how. The primary source of the SSL performance tax comes from the initial setup of a new connection. Before any web page data can be exchanged, a SSL session must be "negotiated" between the client and the server. A simplified version of this process is as follows.</p>
-	<p><img alt="How to make SSL fast" src="https://blog.cloudflare.com/content/images/SSL_session_negotiation.png.scaled500.png" title="How to make SSL fast"><br>
-		If you have multiple resources on your web page under different domains, your visitors' browsers will need to negotiate an SSL session for each domain. Because each SSL session requires at least 4 additional exchanges, the <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">problems of flakey connections with high loss rates</a> (e.g., <a href="https://blog.cloudflare.com/why-mobile-performance-is-difficult">connections to mobile devices</a>) are amplified over HTTPS.</p>
-	<h3 id="ocspcrlhiddenvampires">OCSP &amp; CRL: Hidden Vampires</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qw0GzK3LEAQJhgAzEj8qH/566c84c485b9a6c3c7b50ea72e09f154/SSL_session_negotiation.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="400" height="358" loading="lazy">
+
+	</figure>
+	<p>If you have multiple resources on your web page under different domains, your visitors' browsers will need to negotiate an SSL session for each domain. Because each SSL session requires at least 4 additional exchanges, the <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">problems of flakey connections with high loss rates</a> (e.g., <a href="https://blog.cloudflare.com/why-mobile-performance-is-difficult">connections to mobile devices</a>) are amplified over HTTPS.</p>
+	<h3>OCSP &amp; CRL: Hidden Vampires</h3>
 	<p>SSL certificates are issued by a certificate authority (CA). The CA attests that the website behind the certificate is who they say they are. Sometimes, after a certificate is issued, it is lost or compromised and needs to be revoked. CAs maintain a list of certificates that have been revoked, known as a Certificate Revocation List (CRL). Browsers, when they access a SSL-protected site, can query to download a CA's CRL and parse the list to see if a particular site is on it. Alternatively, they can issue a request via the Online Certificate Status Protocol (OCSP) to check if a particular site has had its certificate revoked.</p>
-	<p><img alt="How to make SSL fast" src="https://blog.cloudflare.com/content/images/revoked_cert.png.scaled500.png" title="How to make SSL fast"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Xs4W7wZZ7iObBu9fYpu8d/c51bd77fcd826c88e99972bb890ae3ca/revoked_cert.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="400" height="250" loading="lazy">
+
+	</figure>
 	<p>The problem is, for most CAs CRL and OCSP performance appears to be an afterthought. The CRL and OCSP servers are also not typically geographically distributed or tuned for performance. Verisign, one of the largest CAs, averages nearly <a href="http://unmitigatedrisk.com/?p=147">300ms to respond to a OCSP request</a>. That inherently means an additional third of a second gets added to your page load time for any visitor connecting to your site if you're using Verisign's SSL. To add insult to injury, most CAs don't yet accept IPv6 requests to their CRL or OCSP servers.</p>
 	<p>The problem of CRL and OCSP slowness is a significant enough impact on SSL performance that browser vendors have begun to <a href="http://www.imperialviolet.org/2012/02/05/crlsets.html">discuss removing the verifications entirely</a>. While that may help performance, it would hurt overall web security and make it harder to reliably trust a site's SSL.</p>
-	<h3 id="moresslsluggishness">More SSL Sluggishness</h3>
+	<h3>More SSL Sluggishness</h3>
 	<p>A number of other factors further contribute to SSL's overall slowness. Often certificates are chained using a number of intermediate certificates, which can increase the amount of data that needs to be exchanged during the initial session negotiation. Most sites haven't taken the time to optimize their crypto cypher. Choosing a crypto cypher that is too weak can subject your site to a number of potential vulnerabilities. On the other hand, choosing a stronger cypher can add load if your site is already CPU bound.</p>
 	<p>Overall, we regularly hear from customers who want to have SSL protection on their sites but find it either too difficult or to resource intensive. The end result is that many sites that should use SSL don't, sacrificing security for performance. And, for those sites that do support SSL, it is often implemented in a way that causes a significant performance penalty. Neither case is good for the web, so we wanted to see what we could do to help fix the problem.</p>
-	<h3 id="speedingupssl">Speeding Up SSL</h3>
+	<h3>Speeding Up SSL</h3>
 	<p>CloudFlare is working on a number of initiatives to speed up SSL. First, we have a number of techniques to limit the number of connections that a browser needs to make and therefore reduce the number of session initiation handshakes that need be made. Rocket Loader, for example, <a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">combines requests for scripts</a>, even across third party services, into a single connection under a site's own domain. We're also <a href="https://blog.cloudflare.com/introducing-spdy">rolling out support for SPDY for all SSL-enabled sites</a>, which allows requests to be multiplexed across a single connection.</p>
 	<p>Beyond reducing the number of connections to improve SSL performance, we're working with Globalsign, our primary CA, to speed up CRL and OCSP. Today, Globalsign's CRL and OCSP requests are powered through CloudFlare's global network and <a href="http://unmitigatedrisk.com/?p=147">response times are under 100ms</a>. We are also planning on rolling out OCSP stapling, which allows the query for whether a certificate is invalid to be sent from the server without making an additional request to the CA's infrastructure.</p>
 	<p>CloudFlare runs all its own infrastructure, which allowed us to spec the hardware for maximum SSL performance. We worked with Intel to integrate a custom tuned version of OpenSSL which takes advantage of special instruction sets on our servers' CPUs to make encryption and decryption as fast as possible. In our tests, it is about 30% faster and uses fewer CPU resources. This allows us to choose stronger cyphers that maximize performance without suffering a performance penalty.</p>
-	<p><img alt="How to make SSL fast" src="https://blog.cloudflare.com/content/images/speedy-gonzales.jpeg.scaled500.jpg" title="How to make SSL fast"></p>
-	<h3 id="expandingssladoption">Expanding SSL Adoption</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CWlaNy0UKN5jhdaxwOj7a/d901265d6f42219c995c925551095351/speedy-gonzales.jpeg.scaled500.jpg" alt="How to make SSL fast" class="kg-image" width="290" height="332" loading="lazy">
+
+	</figure>
+	<h3>Expanding SSL Adoption</h3>
 	<p>Equally important, we've worked to make SSL as easy as possible, regardless of the capabilities of your own infrastructure. SSL is included automatically for every <a href="https://www.cloudflare.com/plans">paid CloudFlare plan</a> and is provisioned automatically with a single click. We allow customers to choose Full SSL, which ensures end-to-end encryption, or Flexible SSL, which encrypts the connection from the browser to CloudFlare's network, the riskiest part of the transaction, but doesn't require you to run SSL on your origin server. This allows you to <a href="https://blog.cloudflare.com/ssl-on-tumblr-wordpress-blogger-appengine-pos">add SSL to services like Google AppEngine and Tumblr</a>, which don't allow SSL support themselves or only include it as an expensive add on.</p>
 	<p>While CloudFlare's Pro accounts include SSL certificates issued by our own systems, with the launch of our <a href="https://www.cloudflare.com/plans">Business and Enterprise tiers</a>, customers can now upload their own certificates to use on our network. This allows support of extended validation (EV) certificates on our optimized infrastructure.</p>
-	<p>As new performance technologies like SPDY require SSL support, and as new threats continue to emerge online, ensuring SSL runs as fast and secure as possible becomes increasingly important. CloudFlare will continue to work to make SSL performance faster in order to fulfill our mission of building a web that is both safer <span style="text-decoration: underline;"><em>and</em></span> faster.</p>
-	<!--kg-card-end: markdown-->
+	<p>As new performance technologies like SPDY require SSL support, and as new threats continue to emerge online, ensuring SSL runs as fast and secure as possible becomes increasingly important. CloudFlare will continue to work to make SSL performance faster in order to fulfill our mission of building a web that is both safer <i>and</i> faster.</p>
 </div>

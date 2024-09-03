@@ -1,20 +1,19 @@
-<div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<h2 id="dealingwithexternallibraries">Dealing with external libraries</h2>
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L2LYeMJ5dbwiIINGXRCJ2/fc402d5812d80ce884adf382569429da/how-to-execute-an-object-file-part-3.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<h2>Dealing with external libraries</h2>
 	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies — that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">the code from part 2</a>. Let's add another function to our toy object file:</p>
-	<p><em>obj.c</em>:</p>
-	<pre><code class="language-C">#include &lt;stdio.h&gt;
+	<p><i>obj.c</i>:</p>
+	<pre class="language-c"><code class="language-c">#include <stdio.h>
  
 ...
  
 void say_hello(void)
 {
     puts("Hello, world!");
-}
-</code></pre>
+}</stdio.h></code></pre>
 	<p>In the above scenario our <code>say_hello</code> function now depends on the <code>puts</code> <a href="https://man7.org/linux/man-pages/man3/puts.3.html">function from the C standard library</a>. To try it out we also need to modify our <code>loader</code> to import the new function and execute it:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 static void execute_funcs(void)
 {
@@ -37,16 +36,14 @@ static void execute_funcs(void)
     puts("Executing say_hello...");
     say_hello();
 }
-...
-</code></pre>
+...</code></pre>
 	<p>Let's run it:</p>
-	<pre><code class="language-bash">$ gcc -c obj.c
+	<pre class="language-bash"><code class="language-bash">$ gcc -c obj.c
 $ gcc -o loader loader.c
 $ ./loader
-No runtime base address for section
-</code></pre>
+No runtime base address for section</code></pre>
 	<p>Seems something went wrong when the <code>loader</code> tried to process relocations, so let's check the relocations table:</p>
-	<pre><code class="language-bash">$ readelf --relocs obj.o
+	<pre class="language-bash"><code class="language-bash">$ readelf --relocs obj.o
  
 Relocation section '.rela.text' at offset 0x3c8 contains 7 entries:
   Offset          Info           Type           Sym. Value    Sym. Name + Addend
@@ -57,10 +54,9 @@ Relocation section '.rela.text' at offset 0x3c8 contains 7 entries:
 000000000058  000300000002 R_X86_64_PC32     0000000000000000 .data - 4
 000000000066  000500000002 R_X86_64_PC32     0000000000000000 .rodata - 4
 00000000006b  001100000004 R_X86_64_PLT32    0000000000000000 puts - 4
-...
-</code></pre>
+...</code></pre>
 	<p>The compiler generated a relocation for the <code>puts</code> invocation. The relocation type is <code>R_X86_64_PLT32</code> and our <code>loader</code> already knows how to process these, so the problem is elsewhere. The above entry shows that the relocation references 17th entry (<code>0x11</code> in hex) in the symbol table, so let's check that:</p>
-	<pre><code class="language-bash">$ readelf --symbols obj.o
+	<pre class="language-bash"><code class="language-bash">$ readelf --symbols obj.o
  
 Symbol table '.symtab' contains 18 entries:
    Num:    Value          Size Type    Bind   Vis      Ndx Name
@@ -81,12 +77,10 @@ Symbol table '.symtab' contains 18 entries:
     14: 000000000000004c    19 FUNC    GLOBAL DEFAULT    1 set_var
     15: 000000000000005f    19 FUNC    GLOBAL DEFAULT    1 say_hello
     16: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND _GLOBAL_OFFSET_TABLE_
-    17: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND puts
-</code></pre>
-	<p>Oh! The section index for the <code>puts</code> function is <code>UND</code> (essentially <code>0</code> in the code), which makes total sense: unlike previous symbols, <code>puts</code> is an external dependency, and it is not implemented in our <code>obj.o</code> file. Therefore, it can't be a part of any section within <code>obj.o</code>.<br>
-		So how do we resolve this relocation? We need to somehow point the code to jump to a <code>puts</code> implementation. Our <code>loader</code> actually already has access to the C library <code>puts</code> function (because it is written in C and we've used <code>puts</code> in the <code>loader</code> code itself already), but technically it doesn't have to be the C library <code>puts</code>, just some <code>puts</code> implementation. For completeness, let's implement our own custom <code>puts</code> function in the <code>loader</code>, which is just a decorator around the C library <code>puts</code>:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+    17: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND puts</code></pre>
+	<p>Oh! The section index for the <code>puts</code> function is <code>UND</code> (essentially <code>0</code> in the code), which makes total sense: unlike previous symbols, <code>puts</code> is an external dependency, and it is not implemented in our <code>obj.o</code> file. Therefore, it can't be a part of any section within <code>obj.o</code>.So how do we resolve this relocation? We need to somehow point the code to jump to a <code>puts</code> implementation. Our <code>loader</code> actually already has access to the C library <code>puts</code> function (because it is written in C and we've used <code>puts</code> in the <code>loader</code> code itself already), but technically it doesn't have to be the C library <code>puts</code>, just some <code>puts</code> implementation. For completeness, let's implement our own custom <code>puts</code> function in the <code>loader</code>, which is just a decorator around the C library <code>puts</code>:</p>
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 /* external dependencies for obj.o */
 static int my_puts(const char *s)
@@ -94,19 +88,22 @@ static int my_puts(const char *s)
     puts("my_puts executed");
     return puts(s);
 }
-...
-</code></pre>
+...</code></pre>
 	<p>Now that we have a <code>puts</code> implementation (and thus its runtime address) we should just write logic in the <code>loader</code> to resolve the relocation by instructing the code to jump to the correct function. However, there is one complication: in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a>, when we processed relocations for constants and global variables, we learned we're mostly dealing with 32-bit relative relocations and that the code or data we're referencing needs to be no more than 2147483647 (<code>0x7fffffff</code> in hex) bytes away from the relocation itself. <code>R_X86_64_PLT32</code> is also a 32-bit relative relocation, so it has the same requirements, but unfortunately we can't reuse the trick from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2</a> as our <code>my_puts</code> function is part of the <code>loader</code> itself and we don't have control over where in the address space the operating system places the <code>loader</code> code.</p>
 	<p>Luckily, we don't have to come up with any new solutions and can just borrow the approach used in shared libraries.</p>
-	<h3 id="exploringpltgot">Exploring PLT/GOT</h3>
+	<h3>Exploring PLT/GOT</h3>
 	<p>Real world ELF executables and shared libraries have the same problem: often executables have dependencies on shared libraries and shared libraries have dependencies on other shared libraries. And all of the different pieces of a complete runtime program may be mapped to random ranges in the process address space. When a shared library or an ELF executable is linked together, the linker enumerates all the external references and creates two or more additional sections (for a refresher on ELF sections check out the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">part 1 of our series</a>) in the ELF file. The two mandatory ones are <a href="https://refspecs.linuxfoundation.org/ELF/zSeries/lzsabi0_zSeries/x2251.html">the Procedure Linkage Table (PLT) and the Global Offset Table (GOT)</a>.</p>
 	<p>We will not deep-dive into specifics of the standard PLT/GOT implementation as there are many other great resources online, but in a nutshell PLT/GOT is just a jumptable for external code. At the linking stage the linker resolves all external 32-bit relative relocations with respect to a locally generated PLT/GOT table. It can do that, because this table would become part of the final ELF file itself, so it will be "close" to the main code, when the file is mapped into memory at runtime. Later, at runtime <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html">the dynamic loader</a> populates PLT/GOT tables for every loaded ELF file (both the executable and the shared libraries) with the runtime addresses of all the dependencies. Eventually, when the program code calls some external library function, the CPU "jumps" through the local PLT/GOT table to the final code:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2021/09/image2-5.png" alt="simplified PLT/GOT call flow" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xHrWlui04cqRxeurzvRpd/87fd68f6b7ad8a46bf5ec65dc85f8c05/image2-5.png" alt="simplified PLT/GOT call flow" class="kg-image" width="648" height="572" loading="lazy">
+
+	</figure>
 	<p>Why do we need two ELF sections to implement one jumptable you may ask? Well, because real world PLT/GOT is a bit more complex than described above. Turns out resolving all external references at runtime may significantly slow down program startup time, so symbol resolution is implemented via a "lazy approach": a reference is resolved by <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html">the dynamic loader</a> only when the code actually tries to call a particular function. If the main application code never calls a library function, that reference will never be resolved.</p>
-	<h3 id="implementingasimplifiedpltgot">Implementing a simplified PLT/GOT</h3>
+	<h3>Implementing a simplified PLT/GOT</h3>
 	<p>For learning and demonstrative purposes though we will not be reimplementing a full-blown PLT/GOT with lazy resolution, but a simple jumptable, which resolves external references when the object file is loaded and parsed. First of all we need to know the size of the table: for ELF executables and shared libraries the linker will count the external references at link stage and create appropriately sized PLT and GOT sections. Because we are dealing with raw object files we would have to do another pass over the <code>.rela.text</code> section and count all the relocations, which point to an entry in the symbol table with undefined section index (or <code>0</code> in code). Let's add a function for this and store the number of external references in a global variable:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 /* number of external symbols in the symbol table */
 static int num_ext_symbols = 0;
@@ -131,12 +128,11 @@ static void count_external_symbols(void)
             num_ext_symbols++;
     }
 }
-...
-</code></pre>
+...</code></pre>
 	<p>This function is very similar to our <code>do_text_relocations</code> function. Only instead of actually performing relocations it just counts the number of external symbol references.</p>
 	<p>Next we need to decide the actual size in bytes for our jumptable. <code>num_ext_symbols</code> has the number of external symbol references in the object file, but how many bytes per symbol to allocate? To figure this out we need to design our jumptable format. As we established above, in its simple form our jumptable should be just a collection of unconditional CPU jump instructions — one for each external symbol. However, unfortunately modern x64 CPU architecture <a href="https://www.felixcloutier.com/x86/jmp">does not provide a jump instruction</a>, where an address pointer can be a direct operand. Instead, the jump address needs to be stored in memory somewhere "close" — that is within 32-bit offset — and the offset is the actual operand. So, for each external symbol we need to store the jump address (64 bits or 8 bytes on a 64-bit CPU system) and the actual jump instruction with an offset operand (<a href="https://www.felixcloutier.com/x86/jmp">6 bytes for x64 architecture</a>). We can represent an entry in our jumptable with the following C structure:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 struct ext_jump {
     /* address to jump to */
@@ -148,12 +144,11 @@ struct ext_jump {
 };
  
 struct ext_jump *jumptable;
-...
-</code></pre>
+...</code></pre>
 	<p>We've also added a global variable to store the base address of the jumptable, which will be allocated later. Notice that with the above approach the actual jump instruction will always be constant for every external symbol. Since we allocate a dedicated entry for each external symbol with this structure, the <code>addr</code> member would always be at the same offset from the end of the jump instruction in <code>instr</code>: <code>-14</code> bytes or <code>0xfffffff2</code> in hex for a 32-bit operand. So <code>instr</code> will always be <code>{0xff, 0x25, 0xf2, 0xff, 0xff, 0xff}</code>: <code>0xff</code> and <code>0x25</code> is the encoding of the x64 jump instruction and its modifier and <code>0xfffffff2</code> is the operand offset in little-endian format.</p>
 	<p>Now that we have defined the entry format for our jumptable, we can allocate and populate it when parsing the object file. First of all, let's not forget to call our new <code>count_external_symbols</code> function from the <code>parse_obj</code> to populate <code>num_ext_symbols</code> (it has to be done before we allocate the jumptable):</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 static void parse_obj(void)
 {
@@ -164,11 +159,10 @@ static void parse_obj(void)
     /* allocate memory for `.text`, `.data` and `.rodata` copies rounding up each section to whole pages */
     text_runtime_base = mmap(NULL, page_align(text_hdr-&gt;sh_size)...
 ...
-}
-</code></pre>
+}</code></pre>
 	<p>Next we need to allocate memory for the jumptable and store the pointer in the <code>jumptable</code> global variable for later use. Just a reminder that in order to resolve 32-bit relocations from the <code>.text</code> section to this table, it has to be "close" in memory to the main code. So we need to allocate it in the same <code>mmap</code> call as the rest of the object sections. Since we defined the table's entry format in <code>struct ext_jump</code> and have <code>num_ext_symbols</code>, the size of the table would simply be <code>sizeof(struct ext_jump) * num_ext_symbols</code>:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 static void parse_obj(void)
 {
@@ -194,11 +188,10 @@ static void parse_obj(void)
  
 ...
 }
-...
-</code></pre>
+...</code></pre>
 	<p>Finally, because the CPU will actually be executing the jump instructions from our <code>instr</code> fields from the jumptable, we need to mark this memory readonly and executable (after <code>do_text_relocations</code> earlier in this function has completed):</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 static void parse_obj(void)
 {
@@ -214,11 +207,10 @@ static void parse_obj(void)
         exit(errno);
     }
 }
-...
-</code></pre>
+...</code></pre>
 	<p>At this stage we have our jumptable allocated and usable — all is left to do is to populate it properly. We’ll do this by improving the <code>do_text_relocations</code> implementation to handle the case of external symbols. The <code>No runtime base address for section</code> error from the beginning of this post is actually caused by this line in <code>do_text_relocations</code>:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 static void do_text_relocations(void)
 {
@@ -226,14 +218,13 @@ static void do_text_relocations(void)
     for (int i = 0; i &lt; num_relocations; i++) {
 ...
         /* symbol, with respect to which the relocation is performed */
-        uint8_t *symbol_address = = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+        uint8_t *symbol_address = = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
 ...
 }
-...
-</code></pre>
+...</code></pre>
 	<p>Currently we try to determine the runtime symbol address for the relocation by looking up the symbol's section runtime address and adding the symbol's offset. But we have established above that external symbols do not have an associated section, so their handling needs to be a special case. Let's update the implementation to reflect this:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 static void do_text_relocations(void)
 {
@@ -264,16 +255,15 @@ static void do_text_relocations(void)
  
             curr_jmp_idx++;
         } else {
-            symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+            symbol_address = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
         }
 ...
 }
-...
-</code></pre>
+...</code></pre>
 	<p>If a relocation symbol does not have an associated section, we consider it external and call a helper function to lookup the symbol's runtime address by its name. We store this address in the next available jumptable entry, populate the x64 jump instruction with our fixed operand and store the address of the instruction in the <code>symbol_address</code> variable. Later, the existing code in <code>do_text_relocations</code> will resolve the <code>.text</code> relocation with respect to the address in <code>symbol_address</code> in the same way it does for local symbols in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a>.</p>
 	<p>The only missing bit here now is the implementation of the newly introduced <code>lookup_ext_function</code> helper. Real world loaders may have complicated logic on how to find and resolve symbols in memory at runtime. But for the purposes of this article we'll provide a simple naive implementation, which can only resolve the <code>puts</code> function:</p>
-	<p><em>loader.c</em>:</p>
-	<pre><code class="language-C">...
+	<p><i>loader.c</i>:</p>
+	<pre class="language-c"><code class="language-c">...
  
 static void *lookup_ext_function(const char *name)
 {
@@ -285,10 +275,9 @@ static void *lookup_ext_function(const char *name)
     fprintf(stderr, "No address for function %s\n", name);
     exit(ENOENT);
 }
-...
-</code></pre>
+...</code></pre>
 	<p>Notice though that because we control the <code>loader</code> logic we are free to implement resolution as we please. In the above case we actually "divert" the object file to use our own "custom" <code>my_puts</code> function instead of the C library one. Let's recompile the <code>loader</code> and see if it works:</p>
-	<pre><code class="language-bash">$ gcc -o loader loader.c
+	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c
 $ ./loader
 Executing add5...
 add5(42) = 47
@@ -303,9 +292,7 @@ Executing get_var again...
 get_var() = 42
 Executing say_hello...
 my_puts executed
-Hello, world!
-</code></pre>
+Hello, world!</code></pre>
 	<p>Hooray! We not only fixed our <code>loader</code> to handle external references in object files — we have also learned how to "hook" any such external function call and divert the code to a custom implementation, which might be useful in some cases, like malware research.</p>
 	<p>As in the previous posts, the complete source code from this post is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/3">available on GitHub</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

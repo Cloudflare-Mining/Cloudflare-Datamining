@@ -1,62 +1,108 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/intelligent-automatic-restarts-for-unhealthy-kafka-consumers-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/intelligent-automatic-restarts-for-unhealthy-kafka-consumers-zh-tw">繁體中文</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-8-2.png" class="kg-image" alt="Intelligent, automatic restarts for unhealthy Kafka consumers" loading="lazy"></figure>
+<div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/intelligent-automatic-restarts-for-unhealthy-kafka-consumers">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/intelligent-automatic-restarts-for-unhealthy-kafka-consumers">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eWbGD5pEX9bKf2p58iqOw/de2f2c74a0924acfa92037e7ddc2c5dd/image3-8-2.png" alt="Intelligent, automatic restarts for unhealthy Kafka consumers" class="kg-image" width="1999" height="942" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we take steps to ensure we are resilient against failure at all levels of our infrastructure. This includes Kafka, which we use for critical workflows such as sending time-sensitive emails and alerts.</p>
 	<p>We learned a lot about keeping our applications that leverage Kafka healthy, so they can always be operational. Application health checks are notoriously hard to implement: What determines an application as healthy? How can we keep services operational at all times?</p>
 	<p>These can be implemented in many ways. We’ll talk about an approach that allows us to considerably reduce incidents with unhealthy applications while requiring less manual intervention.</p>
-	<h3 id="kafka-at-cloudflare">Kafka at Cloudflare</h3>
+	<h3>Kafka at Cloudflare</h3>
 	<p><a href="https://blog.cloudflare.com/using-apache-kafka-to-process-1-trillion-messages">Cloudflare is a big adopter of Kafka</a>. We use Kafka as a way to decouple services due to its asynchronous nature and reliability. It allows different teams to work effectively without creating dependencies on one another. You can also read more about how other teams at Cloudflare use Kafka in <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">this</a> post.</p>
 	<p>Kafka is used to send and receive messages. Messages represent some kind of event like a credit card payment or details of a new user created in your platform. These messages can be represented in multiple ways: JSON, Protobuf, Avro and so on.</p>
 	<p>Kafka organises messages in topics. A topic is an ordered log of events in which each message is marked with a progressive offset. When an event is written by an external system, that is appended to the end of that topic. These events are not deleted from the topic by default (retention can be applied).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/1-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Topics are stored as log files on disk, which are finite in size. Partitions are a systematic way of breaking the one topic log file into many logs, each of which can be hosted on separate servers–enabling to scale topics.<br><br>Topics are managed by brokers–nodes in a Kafka cluster. These are responsible for writing new events to partitions, serving reads and replicating partitions among themselves.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KUYbqCCL74YZVU8NXOThl/4860dd2ab6c257b57d6ffb4e1c8c56e9/1-4.png" alt="" class="kg-image" width="1600" height="715" loading="lazy">
+
+	</figure>
+	<p>Topics are stored as log files on disk, which are finite in size. Partitions are a systematic way of breaking the one topic log file into many logs, each of which can be hosted on separate servers–enabling to scale topics.</p>
+	<p>Topics are managed by brokers–nodes in a Kafka cluster. These are responsible for writing new events to partitions, serving reads and replicating partitions among themselves.</p>
 	<p>Messages can be consumed by individual consumers or co-ordinated groups of consumers, known as consumer groups.</p>
-	<p>Consumers use a unique id (consumer id) that allows them to be identified by the broker as an application which is consuming from a specific topic.<br><br>Each topic can be read by an infinite number of different consumers, as long as they use a different id. Each consumer can replay the same messages as many times as they want.</p>
+	<p>Consumers use a unique id (consumer id) that allows them to be identified by the broker as an application which is consuming from a specific topic.</p>
+	<p>Each topic can be read by an infinite number of different consumers, as long as they use a different id. Each consumer can replay the same messages as many times as they want.</p>
 	<p>When a consumer starts consuming from a topic, it will process all messages, starting from a selected offset, from each partition. With a consumer group, the partitions are divided amongst each consumer in the group. This division is determined by the consumer group leader. This leader will receive information about the other consumers in the group and will decide which consumers will receive messages from which partitions (partition strategy).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/2-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Qe2Qe5nQ5gcHyhV0zpTWw/e957e5b053b9b58b96e86f69560b5ecc/2-3.png" alt="" class="kg-image" width="1518" height="836" loading="lazy">
+
+	</figure>
 	<p>The offset of a consumer’s commit can demonstrate whether the consumer is working as expected. Committing a processed offset is the way a consumer and its consumer group report to the broker that they have processed a particular message.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/unnamed-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29Y9mQiHkvGKUzc3RGF1sk/d6d424af059dd157e395ec736ddefbb9/unnamed-6.png" alt="" class="kg-image" width="1600" height="741" loading="lazy">
+
+	</figure>
 	<p>A standard measurement of whether a consumer is processing fast enough is lag. We use this to measure how far behind the newest message we are. This tracks time elapsed between messages being written to and read from a topic. When a service is lagging behind, it means that the consumption is at a slower rate than new messages being produced.</p>
 	<p>Due to Cloudflare’s scale, message rates typically end up being very large and a lot of requests are time-sensitive so monitoring this is vital.</p>
 	<p>At Cloudflare, our applications using Kafka are deployed as microservices on Kubernetes.</p>
-	<h3 id="health-checks-for-kubernetes-apps">Health checks for Kubernetes apps</h3>
+	<h3>Health checks for Kubernetes apps</h3>
 	<p>Kubernetes uses <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes">probes</a> to understand if a service is healthy and is ready to receive traffic or to run. When a liveness probe fails and the bounds for retrying are exceeded, Kubernetes restarts the services.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/4-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FagbTygES9L7dmEQ6ratD/b5f168689b0b9899c6d031f98b57a288/4-3.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
+
+	</figure>
 	<p>When a readiness probe fails and the bounds for retrying are exceeded, it stops sending HTTP traffic to the targeted pods. In the case of Kafka applications this is not relevant as they don’t run an http server. For this reason, we’ll cover only liveness checks.</p>
 	<p>A classic Kafka liveness check done on a consumer checks the status of the connection with the broker. It’s often best practice to keep these checks simple and perform some basic operations - in this case, something like listing topics. If, for any reason, this check fails consistently, for instance the broker returns a TLS error, Kubernetes terminates the service and starts a new pod of the same service, therefore forcing a new connection. Simple Kafka liveness checks do a good job of understanding when the connection with the broker is unhealthy.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/5-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="problems-with-kafka-health-checks">Problems with Kafka health checks</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gNWb3Rit0MmTutsurm7sf/285f88c5ea3579b3513b31cd123c06bb/5-2.png" alt="" class="kg-image" width="1553" height="1151" loading="lazy">
+
+	</figure>
+	<h3>Problems with Kafka health checks</h3>
 	<p>Due to Cloudflare’s scale, a lot of our Kafka topics are divided into multiple partitions (in some cases this can be hundreds!) and in many cases the replica count of our consuming service doesn’t necessarily match the number of partitions on the Kafka topic. This can mean that in a lot of scenarios this simple approach to health checking is not quite enough!</p>
 	<p>Microservices that consume from Kafka topics are healthy if they are consuming and committing offsets at regular intervals when messages are being published to a topic. When such services are not committing offsets as expected, it means that the consumer is in a bad state, and it will start accumulating lag. An approach we often take is to manually terminate and restart the service in Kubernetes, this will cause a reconnection and rebalance.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/lag.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/N4YalYdgNRxYJK7PVAlzY/d455a225ee280d1a02d3f51cce95853b/lag.png" alt="" class="kg-image" width="1225" height="897" loading="lazy">
+
+	</figure>
 	<p>When a consumer joins or leaves a consumer group, a rebalance is triggered and the consumer group leader must re-assign which consumers will read from which partitions.</p>
 	<p>When a rebalance happens, each consumer is notified to stop consuming. Some consumers might get their assigned partitions taken away and re-assigned to another consumer. We noticed when this happened within our library implementation; if the consumer doesn’t acknowledge this command, it will wait indefinitely for new messages to be consumed from a partition that it’s no longer assigned to, ultimately leading to a deadlock. Usually a manual restart of the faulty client-side app is needed to resume processing.</p>
-	<h3 id="intelligent-health-checks">Intelligent health checks</h3>
+	<h3>Intelligent health checks</h3>
 	<p>As we were seeing consumers reporting as “healthy” but sitting idle, it occurred to us that maybe we were focusing on the wrong thing in our health checks. Just because the service is connected to the Kafka broker and can read from the topic, it does not mean the consumer is actively processing messages.</p>
 	<p>Therefore, we realised we should be focused on message ingestion, using the offset values to ensure that forward progress was being made.</p>
-	<h4 id="the-pagerduty-approach">The PagerDuty approach</h4>
+	<h4>The PagerDuty approach</h4>
 	<p>PagerDuty wrote an excellent <a href="https://www.pagerduty.com/eng/kafka-health-checks">blog</a> on this topic which we used as inspiration when coming up with our approach.</p>
 	<p>Their approach used the current (latest) offset and the committed offset values. The current offset signifies the last message that was sent to the topic, while the committed offset is the last message that was processed by the consumer.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fwem7NtBnO6M1RMhrezr8/d234a968e3cbc99eb9b146743af55bce/pasted-image-0-4.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
+
+	</figure>
 	<p>Checking the consumer is moving forwards, by ensuring that the latest offset was changing (receiving new messages) and the committed offsets were changing as well (processing the new messages).</p>
 	<p>Therefore, the solution we came up with:</p>
 	<ul>
-		<li>If we cannot read the current offset, fail liveness probe.</li>
-		<li>If we cannot read the committed offset, fail liveness probe.</li>
-		<li>If the committed offset == the current offset, pass liveness probe.</li>
-		<li>If the value for the committed offset has not changed since the last run of the health check, fail liveness probe.</li>
+		<li>
+			<p>If we cannot read the current offset, fail liveness probe.</p>
+		</li>
+		<li>
+			<p>If we cannot read the committed offset, fail liveness probe.</p>
+		</li>
+		<li>
+			<p>If the committed offset == the current offset, pass liveness probe.</p>
+		</li>
+		<li>
+			<p>If the value for the committed offset has not changed since the last run of the health check, fail liveness probe.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1--3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r76n2Iew7pSqA8vYNZzIy/836e90ff862eb75c8c940a7f7cdbde7a/pasted-image-0--1--3.png" alt="" class="kg-image" width="1600" height="320" loading="lazy">
+
+	</figure>
 	<p>To measure if the committed offset is changing, we need to store the value of the previous run, we do this using an in-memory map where partition number is the key. This means each instance of our service only has a view of the partitions it is currently consuming from and will run the health check for each.</p>
-	<h4 id="problems">Problems</h4>
+	<h4>Problems</h4>
 	<p>When we first rolled out our smart health checks we started to notice cascading failures some time after release. After initial investigations we realised this was happening when a rebalance happens. It would initially affect one replica then quickly result in the others reporting as unhealthy.</p>
 	<p>What we observed was due to us storing the previous value of the committed offset in-memory, when a rebalance happens the service may get re-assigned a different partition. When this happened it meant our service was incorrectly assuming that the committed offset for that partition had not changed (as this specific replica was no longer updating the latest value), therefore it would start to report the service as unhealthy. The failing liveness probe would then cause it to restart which would in-turn trigger another rebalancing in Kafka causing other replicas to face the same issue.</p>
-	<h4 id="solution">Solution</h4>
+	<h4>Solution</h4>
 	<p>To fix this issue we needed to ensure that each replica only kept track of the offsets for the partitions it was consuming from at that moment. Luckily, the Shopify Sarama library, which we use internally, has functionality to observe when a rebalancing happens. This meant we could use it to rebuild the in-memory map of offsets so that it would only include the relevant partition values.</p>
-	<p>This is handled by receiving the signal from the session context channel:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-golang">for {
+	<p>This is handled by receiving the signal from the session context channel:</p>
+	<pre class="language-golang"><code class="language-golang">for {
   select {
   case message, ok := &lt;-claim.Messages(): // &lt;-- Message received
 
@@ -77,11 +123,9 @@
      // Remove rebalanced partition from in-memory map
      delete(offsetMap, claim.Partition())
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Verifying this solution was straightforward, we just needed to trigger a rebalance. To test this worked in all possible scenarios we spun up a single replica of a service consuming from multiple partitions, then proceeded to scale up the number of replicas until it matched the partition count, then scaled back down to a single replica. By doing this we verified that the health checks could safely handle new partitions being assigned as well as partitions being taken away.</p>
-	<h3 id="takeaways">Takeaways</h3>
+	<h3>Takeaways</h3>
 	<p>Probes in Kubernetes are very easy to set up and can be a powerful tool to ensure your application is running as expected. Well implemented probes can often be the difference between engineers being called out to fix trivial issues (sometimes outside of working hours) and a service which is self-healing.</p>
 	<p>However, without proper thought, “dumb” health checks can also lead to a false sense of security that a service is running as expected even when it’s not. One thing we have learnt from this was to think more about the specific behaviour of the service and decide what being unhealthy means in each instance, instead of just ensuring that dependent services are connected.</p>
 </div>

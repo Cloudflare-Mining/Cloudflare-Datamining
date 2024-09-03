@@ -1,56 +1,36 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bgRw7syr0i4ussFwCEhD6/d8e992d2b943ef3b1368bec2b90976c7/how-my-team-wrote-12-cloudflare-apps-with-fewer-than-20-lines-of-code.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><em>This is a guest post by </em><a href="https://www.linkedin.com/in/benmross"><em>Ben Ross</em></a><em>. Ben is a Berkeley PhD, serial entrepreneur, and Founder and CTO and </em><a href="http://www.powr.io/?src=cloudflareblog"><em>POWr.io</em></a><em>, where he spends his days helping small businesses grow online.</em></p>
-	<p>I like my code the same way I like my <a href="http://www.powr.io/about">team of POWr Rangers</a>… <strong>DRY</strong>.</p>
+	<p><i>This is a guest post by</i> <a href="https://www.linkedin.com/in/benmross"><i>Ben Ross</i></a><i>. Ben is a Berkeley PhD, serial entrepreneur, and Founder and CTO and</i> <a href="http://www.powr.io/?src=cloudflareblog"><i>POWr.io</i></a><i>, where he spends his days helping small businesses grow online.</i></p>
+	<p>I like my code the same way I like my <a href="http://www.powr.io/about">team of POWr Rangers</a>… <b>DRY</b>.</p>
 	<p>And no, I don’t mean dull and unexciting! (If you haven’t heard this acronym before, DRY stands for Don’t Repeat Yourself, the single most important principle in software engineering. Because, as a mentor once told me, “when someone needs to re-write your code, at least they only need to do it once.”)</p>
 	<p>At <a href="https://www.powr.io/?src=cloudflareblog">POWr</a>, being DRY is not just a way to write code, it’s a way of life. This is true whether you’re an Engineer, a Customer Support agent, or an Office Manager; if you find you’re repeating yourself, we want to find a way to automate that repetition away. Our employees’ time is our company’s most valuable resource. Not to mention, who wants to spend all day repeating themselves?</p>
-	<p>We call this process becoming a <strong>Scaled Employee</strong>. A Scaled Employee leverages their time and resources to make a multifold impact compared to an average employee in their field. Building a culture of scaled employees plays a large part in how we have been able rapidly grow our company over the past 4 years without raising any VC funding.</p>
-	<p>So when we recently integrated <a href="https://www.cloudflare.com/apps/list/powr">12 POWr apps into Cloudflare</a>, you might think that we had to write code for 12 different apps. This would have required months of tedious building and QA testing. </p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/hEuXGjzNYAm26EbdmsZH6g8feWc7hx86Pp8oUhTXmUGtdb5QfPXOFRM82Y8R-91em_-rYOMUQmGwQGSJ5qTD6ckuYy5A7qxFJ8SP7jwU4q-XVma2dzKvbWJx2Ny0Zo2osatcxPzR" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>Instead, we built a single integration template. Then, we wrote a few lines of code to automatically generate 12 apps in about as long as it takes to enjoy a sumptuous sip of California Cab. Ready for a quick overview? Begin swirling... </p>
+	<p>We call this process becoming a <b>Scaled Employee</b>. A Scaled Employee leverages their time and resources to make a multifold impact compared to an average employee in their field. Building a culture of scaled employees plays a large part in how we have been able rapidly grow our company over the past 4 years without raising any VC funding.</p>
+	<p>So when we recently integrated <a href="https://www.cloudflare.com/apps/list/powr">12 POWr apps into Cloudflare</a>, you might think that we had to write code for 12 different apps. This would have required months of tedious building and QA testing.</p>
+	<p>Instead, we built a single integration template. Then, we wrote a few lines of code to automatically generate 12 apps in about as long as it takes to enjoy a sumptuous sip of California Cab. Ready for a quick overview? Begin swirling...</p>
 	<p>First we defined a “replacements” object with the important attributes of each app (which is already available in our database in an AppDetail model):</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ruby">replacements = {
+	<pre class="language-ruby"><code class="language-ruby">replacements = {
     APP_COMMON_NAME: app_detail.common_name, #eg “Form Builder”
     APP_SLUG: app_detail.slug, #e.g. “form-builder”
     APP_DESCRIPTION: app_detail.short_description #e.g. “Increase conversions and get more sign-ups.”
     …
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+}</code></pre>
 	<p>Using these replacements, we then duplicated and renamed each file of our Cloudflare App accordingly:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ruby">replacements.each do |key, val|
+	<pre class="language-ruby"><code class="language-ruby">replacements.each do |key, val|
   `find #{parent_dir} -name "*#{key}*" -exec rename 's/#{key}/#{val}/' * -v {} +`
-end
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<p>And finally, we moved into each file and made the corresponding replacements: <br></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ruby">Dir.glob("lib/cloudflare/powr-#{replacements[:APP_SLUG]}/**/*").reject{|fn| File.directory?(fn)}.each do |file_name|
+end</code></pre>
+	<p>And finally, we moved into each file and made the corresponding replacements:</p>
+	<pre class="language-ruby"><code class="language-ruby">Dir.glob("lib/cloudflare/powr-#{replacements[:APP_SLUG]}/**/*").reject{|fn| File.directory?(fn)}.each do |file_name|
   text = File.read(file_name)
   replacements.each do |key, val|
     text = text.gsub(key.to_s, val)
    end
    File.open(file_name, "w") {|file| file.puts text }
-end
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+end</code></pre>
 	<p>Delicious, right?</p>
-	<p>At this point, you may be wondering, “what are POWr Apps, anyway?” I’m glad you asked. They are a customizable and easy-to-use set of tools to supercharge any website… from forms to galleries to social media integrations to eCommerce.<br></p>
-	<p>Could you build a custom form for your website, a backend to handle and graph responses, and an integration with Zapier to turn on a lightbulb every time someone presses submit? Probably. Is that a good use of your time? Probably not. Instead, you can install <a href="https://www.cloudflare.com/apps/powr-form-builder">POWr Form Builder</a> in about 2 minutes, pass it off to your Marketing Intern to make it look pretty, and get back to the hard problems. <br></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/MM3sP6_ihh_ijrvHrfTvtlhExqbEcoc5lQrG-IM0-NFLXKBMacRgfhF5L3gJdweCvuVNEVOeF-ml7viqilEnS-krPohj2q9bKR5K4qkD5ClHvFJs18Z3VWy9zqECppkEPYq97Csf" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Adding POWr Form Builder to Cloudflare</em></figcaption>
-	</figure>
-	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/QZQ5zk6qBl5jBJn3pLc42UaEULwfVO8cclIA61M2LD2Eb3_BvyLNvrLfnYfomLW_laJnyY0JIEnDo3_zCStvCO0dW29nQzNWMcB5_B-2OtZOvjA4e_bG6g_on1tpXONbH5ZVaY30" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Customize your app in the POWr Editor</em></figcaption>
-	</figure>
-	<p></p>
+	<p>At this point, you may be wondering, “what are POWr Apps, anyway?” I’m glad you asked. They are a customizable and easy-to-use set of tools to supercharge any website… from forms to galleries to social media integrations to eCommerce.</p>
+	<p>Could you build a custom form for your website, a backend to handle and graph responses, and an integration with Zapier to turn on a lightbulb every time someone presses submit? Probably. Is that a good use of your time? Probably not. Instead, you can install <a href="https://www.cloudflare.com/apps/powr-form-builder">POWr Form Builder</a> in about 2 minutes, pass it off to your Marketing Intern to make it look pretty, and get back to the hard problems.</p>
+	<p><i>Adding POWr Form Builder to Cloudflare</i></p>
+	<p><i>Customize your app in the POWr Editor</i></p>
 	<p>If YOU want to be a Scaled Engineer, it’s not about knowing everything there is to know. The geekiest engineers that spend their lunches vehemently discussing the pros and cons of bubble vs selection sort often do not make the best Scaled Engineers. Scaled Engineers know when to avoid going down Rabbit Holes and use whatever tools are at their disposal to maximize impact.</p>
 	<p>So if you want to add some dynamic content to your site, take a look at <a href="https://www.cloudflare.com/apps/list/powr">POWr Apps for Cloudflare</a>. I’d tell you that again, but I don’t want to repeat myself.</p>
 </div>

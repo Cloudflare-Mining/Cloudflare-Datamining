@@ -1,50 +1,91 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/february-28-2024-workersai-catalog-update-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/february-28-2024-workersai-catalog-update-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/february-28-2024-workersai-catalog-update-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/february-28-2024-workersai-catalog-update-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image1-12.png" class="kg-image" alt="Unlocking new use cases with 17 new models in Workers AI, including new LLMs, image generation models, and more" loading="lazy" width="1801" height="1013"></figure>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/february-28-2024-workersai-catalog-update">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/february-28-2024-workersai-catalog-update">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/february-28-2024-workersai-catalog-update">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/february-28-2024-workersai-catalog-update">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d9j97FE4iH7irbaPySHvc/7c078905ba9b3d2f89826a66ff4c8826/image1-12.png" alt="Unlocking new use cases with 17 new models in Workers AI, including new LLMs, image generation models, and more" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>On February 6th, 2024 we <a href="https://blog.cloudflare.com/february-2024-workersai-catalog-update">announced eight new models</a> that we added to our catalog for text generation, classification, and code generation use cases. Today, we’re back with seventeen (17!) more models, focused on enabling new types of tasks and use cases with Workers AI. Our catalog is now nearing almost 40 models, so we also decided to introduce a revamp of our developer documentation that enables users to easily search and discover new models.</p>
 	<p>The new models are listed below, and the full Workers AI catalog can be found on our <a href="https://developers.cloudflare.com/workers-ai/models">new developer documentation</a>.</p>
-	<p><strong>Text generation</strong></p>
+	<p><b>Text generation</b></p>
 	<ul>
-		<li><strong><strong><strong>@cf/deepseek-ai/deepseek-math-7b-instruct</strong></strong></strong></li>
-		<li><strong><strong><strong>@</strong></strong>cf/openchat/openchat-3.5-0106</strong></li>
-		<li><strong><strong><strong>@cf/microsoft/phi-2</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/tinyllama/tinyllama-1.1b-chat-v1.0</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/thebloke/discolm-german-7b-v1-awq</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/qwen/qwen1.5-0.5b-chat</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/qwen/qwen1.5-1.8b-chat</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/qwen/qwen1.5-7b-chat-awq</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/qwen/qwen1.5-14b-chat-awq</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/tiiuae/falcon-7b-instruct</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/defog/sqlcoder-7b-2</strong></strong></strong></li>
+		<li>
+			<p><b>@cf/deepseek-ai/deepseek-math-7b-instruct</b></p>
+		</li>
+		<li>
+			<p>******@**<b>cf/openchat/openchat-3.5-0106</b></p>
+		</li>
+		<li>
+			<p><b>@cf/microsoft/phi-2</b></p>
+		</li>
+		<li>
+			<p><b>@cf/tinyllama/tinyllama-1.1b-chat-v1.0</b></p>
+		</li>
+		<li>
+			<p><b>@cf/thebloke/discolm-german-7b-v1-awq</b></p>
+		</li>
+		<li>
+			<p><b>@cf/qwen/qwen1.5-0.5b-chat</b></p>
+		</li>
+		<li>
+			<p><b>@cf/qwen/qwen1.5-1.8b-chat</b></p>
+		</li>
+		<li>
+			<p><b>@cf/qwen/qwen1.5-7b-chat-awq</b></p>
+		</li>
+		<li>
+			<p><b>@cf/qwen/qwen1.5-14b-chat-awq</b></p>
+		</li>
+		<li>
+			<p><b>@cf/tiiuae/falcon-7b-instruct</b></p>
+		</li>
+		<li>
+			<p><b>@cf/defog/sqlcoder-7b-2</b></p>
+		</li>
 	</ul>
-	<p><strong>Summarization</strong></p>
+	<p><b>Summarization</b></p>
 	<ul>
-		<li><strong><strong><strong>@cf/facebook/bart-large-cnn</strong></strong></strong></li>
+		<li>
+			<p><b>@cf/facebook/bart-large-cnn</b></p>
+		</li>
 	</ul>
-	<p><strong>Text-to-image</strong></p>
+	<p><b>Text-to-image</b></p>
 	<ul>
-		<li><strong><strong><strong>@cf/lykon/dreamshaper-8-lcm</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/runwayml/stable-diffusion-v1-5-inpainting</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/runwayml/stable-diffusion-v1-5-img2img</strong></strong></strong></li>
-		<li><strong><strong><strong>@cf/bytedance/stable-diffusion-xl-lightning</strong></strong></strong></li>
+		<li>
+			<p><b>@cf/lykon/dreamshaper-8-lcm</b></p>
+		</li>
+		<li>
+			<p><b>@cf/runwayml/stable-diffusion-v1-5-inpainting</b></p>
+		</li>
+		<li>
+			<p><b>@cf/runwayml/stable-diffusion-v1-5-img2img</b></p>
+		</li>
+		<li>
+			<p><b>@cf/bytedance/stable-diffusion-xl-lightning</b></p>
+		</li>
 	</ul>
-	<p><strong>Image-to-text</strong></p>
+	<p><b>Image-to-text</b></p>
 	<ul>
-		<li><strong><strong><strong>@cf/unum/uform-gen2-qwen-500m</strong></strong></strong></li>
+		<li>
+			<p><b>@cf/unum/uform-gen2-qwen-500m</b></p>
+		</li>
 	</ul>
-	<h3 id="new-language-models-fine-tunes-and-quantizations">New language models, fine-tunes, and quantizations</h3>
+	<h3>New language models, fine-tunes, and quantizations</h3>
 	<p>Today’s catalog update includes a number of new language models so that developers can pick and choose the best LLMs for their use cases. Although most LLMs can be generalized to work in any instance, there are many benefits to choosing models that are tailored for a specific use case. We are excited to bring you some new large language models (LLMs), small language models (SLMs), and multi-language support, as well as some fine-tuned and quantized models.</p>
 	<p>Our latest LLM additions include <code>falcon-7b-instruct</code>, which is particularly exciting because of its innovative use of multi-query attention to generate high-precision responses. There’s also better language support with <code>discolm_german_7b</code> and the <code>qwen1.5</code> models, which are trained on multilingual data and boast impressive LLM outputs not only in English, but also in German (<code>discolm</code>) and Chinese (<code>qwen1.5</code>). The Qwen models range from 0.5B to 14B parameters and have shown particularly impressive accuracy in our testing. We’re also releasing a few new SLMs, which are growing in popularity because of their ability to do inference faster and cheaper without sacrificing accuracy. For SLMs, we’re introducing small but performant models like a 1.1B parameter version of Llama (<code>tinyllama-1.1b-chat-v1.0</code>) and a 1.3B parameter model from Microsoft (<code>phi-2</code>).</p>
 	<p>As the AI industry continues to accelerate, talented people have found ways to improve and optimize the performance and accuracy of models. We’ve added a fine-tuned model (openchat-3.5) which implements <a href="https://arxiv.org/abs/2309.11235">Conditioned Reinforcement Learning Fine-Tuning (C-RLFT)</a>, a technique that enables open-source language model development through the use of easily collectable mixed quality data.</p>
 	<p>We’re really excited to be bringing all these new text generation models onto our platform today. The open-source community has been incredible at developing new AI breakthroughs, and we’re grateful for everyone’s contributions to training, fine-tuning, and quantizing these models. We’re thrilled to be able to host these models and make them accessible to all so that developers can quickly and easily build new applications with AI. You can check out the new models and their API schemas on <a href="https://developers.cloudflare.com/workers-ai/models">our developer docs</a>.</p>
-	<h3 id="new-image-generation-models">New image generation models</h3>
+	<h3>New image generation models</h3>
 	<p>We are adding new Stable Diffusion pipelines and optimizations to enable powerful new image editing and generation use cases. We’ve added support for Stable Diffusion XL Lightning which generates high quality images in just two inference steps. Text-to-image is a really popular task for folks who want to take a text prompt and have the model generate an image based on the input, but Stable Diffusion is actually capable of much more. With this new Workers AI release, we’ve unlocked new pipelines so that you can experiment with different modalities of input and tasks with Stable Diffusion.</p>
 	<p>You can now use Stable Diffusion on Workers AI for image-to-image and inpainting use cases. Image-to-image allows you to transform an input image into a different image – for example, you can ask Stable Diffusion to generate a cartoon version of a portrait. Inpainting allows users to upload an image and transform the same image into something new – examples of inpainting include “expanding” the background of photos or colorizing black-and-white photos.</p>
-	<p>To use inpainting, you’ll need to input an image, a mask, and a prompt. The image is the original picture that you want modified, the mask is a monochrome screen that highlights the area that you want to be painted over, and the prompt tells the model what to generate in that space. Below is an example of the inputs and the request template to perform inpainting.<br></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh7-us.googleusercontent.com/RIgkPzrxrrjSz2YPCYJItmJrOftfe5ZgcA-oS2mvIYI3L7enm62_lmSV9ua2d663tj2kpXSDUf__lVJAsaU2XOhlnUw-XS9Kt8CiwygsD30Mptndu1vQDrhafph6deOyAiktofnf-Lm4edIvpSu1Zws" class="kg-image" alt="" loading="lazy" width="2048" height="611"></figure><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai';
+	<p>To use inpainting, you’ll need to input an image, a mask, and a prompt. The image is the original picture that you want modified, the mask is a monochrome screen that highlights the area that you want to be painted over, and the prompt tells the model what to generate in that space. Below is an example of the inputs and the request template to perform inpainting.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RdRXcGbrGjlfhlZ3iF5Wj/36b5feb4adab8f4ad08e771f4ec179ee/RIgkPzrxrrjSz2YPCYJItmJrOftfe5ZgcA-oS2mvIYI3L7enm62_lmSV9ua2d663tj2kpXSDUf__lVJAsaU2XOhlnUw-XS9Kt8CiwygsD30Mptndu1vQDrhafph6.png" alt="" class="kg-image" width="1600" height="477" loading="lazy">
+
+	</figure>
+	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai';
 
 export default {
     async fetch(request, env) {
@@ -73,16 +114,18 @@ export default {
             },
         });
     }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="new-use-cases">New use cases</h3>
+}</code></pre>
+	<h3>New use cases</h3>
 	<p>We’ve also added new models to Workers AI that allow for various specialized tasks and use cases, such as LLMs specialized in solving math problems (<code>deepseek-math-7b-instruct</code>), generating SQL code (<code>sqlcoder-7b-2</code>), summarizing text (<code>bart-large-cnn</code>), and image captioning (<code>uform-gen2-qwen-500m</code>).</p>
 	<p>We wanted to release these to the public, so you can start building with them, but we’ll be releasing more demos and tutorial content over the next few weeks. Stay tuned to our <a href="https://twitter.com/CloudflareDev">X account</a> and <a href="https://developers.cloudflare.com/workers-ai/models">Developer Documentation</a> for more information on how to use these new models.</p>
-	<h3 id="optimizing-our-model-catalog">Optimizing our model catalog</h3>
+	<h3>Optimizing our model catalog</h3>
 	<p>AI model innovation is advancing rapidly, and so are the tools and techniques for fast and efficient inference. We’re excited to be incorporating new tools that help us optimize our models so that we can offer the best inference platform for everyone. Typically, when optimizing AI inference it is useful to serialize the model into a format such as <a href="https://onnxruntime.ai">ONNX</a>, one of the most generally applicable options for this use case with broad hardware and model architecture support. An ONNX model can be further optimized by being converted to a <a href="https://github.com/NVIDIA/TensorRT">TensorRT</a> engine. This format, designed specifically for Nvidia GPUs, can result in faster inference latency and higher total throughput from LLMs. &nbsp;Choosing the right format usually comes down to what is best supported by specific model architectures and the hardware available for inference. We decided to leverage both TensorRT and ONNX formats for our new Stable Diffusion pipelines, which represent a series of models applied for a specific task.</p>
-	<h3 id="explore-more-on-our-new-developer-docs">Explore more on our new developer docs</h3>
+	<h3>Explore more on our new developer docs</h3>
 	<p>You can explore all these new models in our <a href="https://developers.cloudflare.com/workers-ai/models">new developer docs</a>, where you can learn more about individual models, their prompt templates, as well as properties like context token limits. We’ve redesigned the model page to be simpler for developers to explore new models and learn how to use them. You’ll now see all the models on one page for searchability, with the task type on the right-hand side. Then, you can click into individual model pages to see code examples on how to use those models.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/02/image3.png" class="kg-image" alt="" loading="lazy" width="1556" height="687"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vsVFSfZ9pvpWkTXdl6iWw/500710f50a59ad5238e8d02745342364/image3.png" alt="" class="kg-image" width="1556" height="687" loading="lazy">
+
+	</figure>
 	<p>We hope you try out these new models and build something new on Workers AI! We have more updates coming soon, including more demos, tutorials, and Workers AI pricing. Let us know what you’re working on and other models you’d like to see on our <a href="https://discord.cloudflare.com">Discord</a>.</p>
 </div>

@@ -1,28 +1,37 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/automatic-signed-exchanges-desktop-android-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/automatic-signed-exchanges-desktop-android-zh-tw">繁體中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--4-.png" class="kg-image" alt="Illustration of sealed envelopes" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/automatic-signed-exchanges-desktop-android">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/automatic-signed-exchanges-desktop-android">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mUZ1vtinqv4i8DyEobO4K/f5ec9285e74abad509d4d9ee80d425d4/pasted-image-0--4-.png" alt="Illustration of sealed envelopes" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>It’s been about nine months since <a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare">Cloudflare announced</a> support for Signed Exchanges (SXG), a <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html">web platform specification</a> to deterministically verify the cached version of a website and enable third parties such as search engines and news aggregators to serve it much faster than the origin ever could.</p>
-	<p>Giving Internet users fast load times, even on slow connections in remote parts of the globe, is to <em>help build a better Internet</em> (our mission!) and <a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare">we couldn’t be more excited about the potential of SXG</a>.<br>Signed Exchanges drive quite impressive benefits in terms of performance improvements. <a href="https://web.dev/signed-exchanges/#impact-of-signed-exchanges">Google’s experiments</a> have shown an average 300ms to 400ms reduction in <a href="https://web.dev/lcp">Largest Contentful Paint (LCP)</a> from SXG-enabled prefetches. &nbsp;<strong>And speeding up your website usually results in a </strong><a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks"><strong>significant bounce rate reduction</strong></a><strong> and improved SEO</strong>. </p><!--kg-card-begin: markdown-->
-	<p><em></em></p>
-	<center><em>faster websites= better SEO and lower bounce rates</em></center>
-	<p></p>
-	<!--kg-card-end: markdown-->
-	<p>And if setting up and maintaining SXGs through the <a href="https://web.dev/signed-exchanges/#tooling">open source toolkit</a> is a complex yet very valuable endeavor, with Cloudflare’s <a href="https://blog.cloudflare.com/automatic-signed-exchanges">Automatic Signed Exchanges </a>it becomes a no-brainer. Just enable it with one click and see for yourself.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="our-own-measurements">Our own measurements</h3>
+	<p>Giving Internet users fast load times, even on slow connections in remote parts of the globe, is to <i>help build a better Internet</i> (our mission!) and <a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare">we couldn’t be more excited about the potential of SXG</a>.Signed Exchanges drive quite impressive benefits in terms of performance improvements. <a href="https://web.dev/signed-exchanges/#impact-of-signed-exchanges">Google’s experiments</a> have shown an average 300ms to 400ms reduction in <a href="https://web.dev/lcp">Largest Contentful Paint (LCP)</a> from SXG-enabled prefetches. &nbsp;<b>And speeding up your website usually results in a</b> <a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks"><b>significant bounce rate reduction</b></a> <b>and improved SEO</b>.</p>
+	<p><i>faster websites= better SEO and lower bounce rates</i></p>
+	<p>And if setting up and maintaining SXGs through the <a href="https://web.dev/signed-exchanges/#tooling">open source toolkit</a> is a complex yet very valuable endeavor, with Cloudflare’s <a href="https://blog.cloudflare.com/automatic-signed-exchanges">Automatic Signed Exchanges</a> it becomes a no-brainer. Just enable it with one click and see for yourself.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4O7ZL4hRXnDPWWIqrP68Jr/91d2eaa7e98d8d775e07d66377bdf53b/pasted-image-0--5-.png" alt="" class="kg-image" width="1600" height="705" loading="lazy">
+
+	</figure>
+	<h3>Our own measurements</h3>
 	<p>Now that Signed Exchanges have been available on Chromium for Android for several months we dove into the change in performance our customers have experienced in the real world.</p>
 	<p>We picked the 500 most visited sites that have Automatic Signed Exchanges enabled and saw that 425 of them (85%) saw an improvement in <a href="https://web.dev/lcp">LCP</a>, which is widely considered as the Core Web Vital with the most impact on SEO and where SXG should make the biggest difference.</p>
 	<p>Out of those same 500 Cloudflare sites 389 (78%) saw an improvement in <a href="https://web.dev/fcp">First Contentful Paint (FCP)</a> and a whopping 489 (98%) saw an improvement in <a href="https://web.dev/ttfb">Time to First Byte (TTFB)</a>. The TTFB improvement measured here is an interesting case since if the exchange has already been prefetched, when the user clicks on the link the resource is already in the client browser cache and the TTFB measurement becomes close to zero.</p>
-	<p><strong>Overall, the median customer saw an improvement of over 20% across these metrics. Some customers saw improvements of up to 80%.</strong></p>
+	<p><b>Overall, the median customer saw an improvement of over 20% across these metrics. Some customers saw improvements of up to 80%.</b></p>
 	<p>There were also a few customers that did not see an improvement, or saw a slight degradation of their metrics.</p>
 	<p>One of the main reasons for this is that SXG wasn’t compatible with server-side personalization (e.g., serving different HTML for logged-in users) until today. To solve that, today Google added ‘Dynamic SXG’, that selectively enables SXG for visits from cookieless users only (more details on the Google blog post <a href="https://developer.chrome.com/blog/sxg-desktop">here</a>). Dynamic SXG are supported today - all you need to do is add a `Vary: Cookie’ annotation to the HTTP header of pages that contain server-side personalization.</p>
-	<p><em>Note: Signed Exchanges are compatible with client-side personalization (lazy-loading).</em></p>
+	<p><i>Note: Signed Exchanges are compatible with client-side personalization (lazy-loading).</i></p>
 	<p>To see what the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals">Core Web Vitals</a> look like for your own users across the world we recommend a RUM solution such as our free and privacy-first <a href="https://www.cloudflare.com/web-analytics">Web Analytics</a>.</p>
-	<h3 id="now-available-for-desktop-and-android">Now available for Desktop and Android</h3>
-	<p><strong><strong>Starting today, Signed Exchanges is also supported by Chromium-based desktop browsers, including Chrome, Edge and Opera.</strong></strong></p>
+	<h3>Now available for Desktop and Android</h3>
+	<p><b>Starting today, Signed Exchanges is also supported by Chromium-based desktop browsers, including Chrome, Edge and Opera.</b></p>
 	<p>If you enabled Automatic Signed Exchanges on your Cloudflare dashboard, no further action is needed - the supported desktop browsers will automatically start being served the SXG version of your site’s content. Google estimates that this release will, on average, double SXG’s coverage of your site’s visits, enabling improved loading and performance for more users.</p>
 	<p>And if you haven’t yet enabled it but are curious about the impact SXG will have on your site, Automatic Signed Exchanges is available through the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization">Speed &gt; Optimization link</a> on your Cloudflare dashboard (more details <a href="https://support.cloudflare.com/hc/en-us/articles/4411075595661-Automatic-Signed-Exchanges-SXGs-">here</a>).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7B9QWzclctIMHPsOzHUasO/290f53c6a14c4ab0e4eded95a744179f/image3.png" alt="" class="kg-image" width="1180" height="750" loading="lazy">
+
+	</figure>
+	<p></p>
 </div>

@@ -1,43 +1,62 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/waf-for-everyone-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/waf-for-everyone-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/waf-for-everyone-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/waf-for-everyone-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/waf-for-everyone-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/waf-for-everyone-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/it-it/waf-for-everyone-it-it">Italiano</a> and <a href="https://blog.cloudflare.com/es-es/waf-for-everyone-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-26.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/waf-for-everyone">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/waf-for-everyone">Français</a>, <a href="https://blog.cloudflare.com/de-de/waf-for-everyone">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/waf-for-everyone">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/waf-for-everyone">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/waf-for-everyone">한국어</a>, <a href="https://blog.cloudflare.com/es-es/waf-for-everyone">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/waf-for-everyone">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YAdVOnv4BDNI1VeMhXLf1/cd64fe6bbccdc2ba7aea646485435a1a/image2-26.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we like disruptive ideas. Pair that with our core belief that security is something that should be accessible to everyone and the outcome is a better and safer Internet for all.</p>
 	<p>This isn’t idle talk. For example, back in 2014, we announced <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>. Overnight, we provided SSL/TLS encryption to over one million Internet properties without anyone having to pay a dime, or configure a certificate. This was good not only for our customers, but also for everyone using the web.</p>
 	<p>In 2017, we announced <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered DDoS mitigation</a>. We’ve never asked customers to pay for DDoS bandwidth as it never felt right, but it took us some time to reach the network size where we could offer completely unmetered mitigation for everyone, paying customer or not.</p>
 	<p>Still, I often get the question: how do we do this? It’s simple really. We do it by building great, efficient technology that scales well—and this allows us to keep costs low.</p>
-	<p><em><strong>Today, we’re doing it again, by providing a Cloudflare WAF (Web Application Firewall) Managed Ruleset to all <a href="https://www.cloudflare.com/plans">Cloudflare plans</a>, free of charge.</strong></em></p>
-	<h3 id="why-are-we-doing-this">Why are we doing this?</h3>
+	<p><b><i>Today, we’re doing it again, by providing a Cloudflare WAF (Web Application Firewall) Managed Ruleset to all </i></b><a href="https://www.cloudflare.com/plans"><b><i>Cloudflare plans</i></b></a><b><i>, free of charge.</i></b></p>
+	<h3>Why are we doing this?</h3>
 	<p>High profile vulnerabilities have a major impact across the Internet affecting organizations of all sizes. We’ve <a href="https://blog.cloudflare.com/tag/log4j">recently seen this with Log4J</a>, but even before that, major vulnerabilities such as <a href="https://blog.cloudflare.com/inside-shellshock">Shellshock</a> and <a href="https://blog.cloudflare.com/tag/heartbleed">Heartbleed</a> have left scars across the Internet.</p>
 	<p>Small application owners and teams don’t always have the time to keep up with fast moving security related patches, causing many applications to be compromised and/or used for nefarious purposes.</p>
 	<p>With millions of Internet properties behind the Cloudflare proxy, we have a duty to help keep the web safe. And that is what we did with Log4J by <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">deploying mitigation rules</a> for all traffic, including FREE zones. We are now formalizing our commitment by providing a Cloudflare Free Managed Ruleset to all plans on top of our new WAF engine.</p>
-	<h3 id="when-are-we-doing-this">When are we doing this?</h3>
+	<h3>When are we doing this?</h3>
 	<p>If you are on a <a href="https://blog.cloudflare.com/www.cloudflare.com/plans/free">FREE plan</a>, you are already receiving protection. Over the coming months, all our FREE zone plan users will also receive access to the <a href="https://www.cloudflare.com/waf">Cloudflare WAF</a> user interface in the dashboard and will be able to deploy and configure the new ruleset. This ruleset will provide mitigation rules for high profile vulnerabilities such as Shellshock and Log4J among others.</p>
 	<p>To access our broader set of WAF rulesets (Cloudflare Managed Rules, Cloudflare OWASP Core Ruleset and Cloudflare Leaked Credential Check Ruleset) along with advanced WAF features, customers will still have to upgrade to PRO or higher <a href="https://www.cloudflare.com/plans">plans</a>.</p>
-	<h3 id="the-challenge">The Challenge</h3>
+	<h3>The Challenge</h3>
 	<p>With over 32 million HTTP requests per second being proxied by the Cloudflare global network, running the WAF on every single request is no easy task.</p>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAFs</a> secure all HTTP request components, including bodies, by running a set of rules, sometimes referred as signatures, that look for specific patterns that could represent a malicious payload. These rules vary in complexity, and the more rules you have, the harder the system is to optimize. Additionally, many rules will take advantage of regex capabilities, allowing the author to perform complex matching logic.</p>
 	<p>All of this needs to happen with a negligible latency impact, as security should not come with a performance penalty and many application owners come to Cloudflare for performance benefits.</p>
 	<p>By leveraging our new Edge Rules Engine, on top of which the <a href="https://blog.cloudflare.com/new-cloudflare-waf">new WAF has been built on</a>, we have been able to reach the performance and memory milestones that make us feel comfortable and that allow us to provide a good baseline WAF protection to everyone. Enter the new Cloudflare Free Managed Ruleset.</p>
-	<h3 id="the-free-cloudflare-managed-ruleset">The Free Cloudflare Managed Ruleset</h3>
+	<h3>The Free Cloudflare Managed Ruleset</h3>
 	<p>This ruleset is automatically deployed on any new Cloudflare zone and is specially designed to reduce false positives to a minimum across a very broad range of traffic types. Customers will be able to disable the ruleset, if necessary, or configure the traffic filter or individual rules. As of today, the ruleset contains the following rules:</p>
 	<ul>
-		<li>Log4J rules matching payloads in the URI and HTTP headers;</li>
-		<li>Shellshock rules;</li>
-		<li>Rules matching very common WordPress exploits;</li>
+		<li>
+			<p>Log4J rules matching payloads in the URI and HTTP headers;</p>
+		</li>
+		<li>
+			<p>Shellshock rules;</p>
+		</li>
+		<li>
+			<p>Rules matching very common WordPress exploits;</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-28.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ooomtu9SplFlHMJIY0Bu4/5519046cb08b0c6a56f6eab1df8c5815/image1-28.png" alt="" class="kg-image" width="1999" height="908" loading="lazy">
+
+	</figure>
 	<p>Whenever a rule matches, an event will be generated in the Security Overview tab, allowing you to inspect the request.</p>
-	<h3 id="deploying-and-configuring">Deploying and configuring</h3>
+	<h3>Deploying and configuring</h3>
 	<p>For all new FREE zones, the ruleset will be automatically deployed. The rules are battle tested across the Cloudflare network and are safe to deploy on most applications out of the box. Customers can, in any case, configure the ruleset further by:</p>
 	<ul>
-		<li>Overriding all rules to LOG or other action.</li>
-		<li>Overriding specific rules only to LOG or other action.</li>
-		<li>Completely disabling the ruleset or any specific rule.</li>
+		<li>
+			<p>Overriding all rules to LOG or other action.</p>
+		</li>
+		<li>
+			<p>Overriding specific rules only to LOG or other action.</p>
+		</li>
+		<li>
+			<p>Completely disabling the ruleset or any specific rule.</p>
+		</li>
 	</ul>
 	<p>All options are easily accessible via the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fwaf%2Fmanaged-rules">dashboard</a>, but can also be performed via API. Documentation on how to configure the ruleset, once it is available in the UI, will be found on our <a href="https://developers.cloudflare.com/waf/managed-rulesets">developer site</a>.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>The Cloudflare Free Managed Ruleset will be updated by Cloudflare whenever a relevant wide-ranging vulnerability is discovered. Updates to the ruleset will be published on our <a href="https://developers.cloudflare.com/waf/change-log">change log</a>, &nbsp;like that customers can keep up to date with any new rules.</p>
 	<p>We love building cool new technology. But we also love making it widely available and easy to use. We’re really excited about making the web much safer for everyone with a WAF that won’t cost you a dime. If you’re interested in getting started, <a href="https://dash.cloudflare.com/sign-up">just head over here</a> to sign up for our free plan.</p>
 </div>

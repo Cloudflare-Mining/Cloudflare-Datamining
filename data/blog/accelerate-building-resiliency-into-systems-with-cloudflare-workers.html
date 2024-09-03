@@ -1,50 +1,74 @@
 <div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-3.jpg" class="kg-image" alt="Accelerate building resiliency into systems with Cloudflare Workers" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2eoQ3MsgfZRQlfLPgLeDLO/c4fc61c9def2cf3a02075dd321f2ec3d/image2-3.jpg" alt="Accelerate building resiliency into systems with Cloudflare Workers" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>In this blog post we’ll discuss how Cloudflare Workers enabled us to quickly improve the resiliency of a legacy system. In particular, we’ll discuss how we prevented the email notification systems within Cloudflare from outages caused by external vendors.</p>
-	<h3 id="email-notification-services">Email notification services</h3>
+	<h3>Email notification services</h3>
 	<p>At Cloudflare, we send email notifications to customers such as billing invoices, password resets, OTP logins and certificate status updates. We rely on external Email Service Providers (ESPs) to deliver these emails to customers.</p>
 	<p>The following diagram shows how the system looks. Multiple services in our control plane dispatch emails through an external email vendor. They use HTTP Transmission APIs and also SMTP to send messages to the vendor. If dispatching an email fails, they are retried with exponential back-off mechanisms. Even when our ESP has outages, the retry mechanisms in place guarantee that we don’t lose any messages.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="why-did-we-need-to-improve-resilience">Why did we need to improve resilience?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7blNZOkW5ujnoqJDm6ZR3W/e689f356c6bf81324f6fe63b444615cd/image6.jpg" alt="" class="kg-image" width="1999" height="1680" loading="lazy">
+
+	</figure>
+	<h3>Why did we need to improve resilience?</h3>
 	<p>In some cases, it isn’t sufficient to just deliver the email to the customer; it must be delivered on time. For example, OTP login emails are extremely time sensitive; their validity is short-lived such that a delay in sending them is as bad as not sending them at all. If the ESP is down, all emails including the critical ones will be delayed.</p>
 	<p>Some time ago our ESP suffered an outage; both the HTTP API and SMTP were unavailable and we couldn’t send emails to customers for a few hours. Several thousand emails couldn’t be delivered immediately and were queued. &nbsp;This led to a delay in clearing out the backlogged messages in the retry queue in addition to sending new messages.</p>
 	<p>Critical emails not being sent is a major incident for us. A major incident impacts our customers, our business, and also our reputation. We take serious measures to prevent it from happening again in the future. Hence improving the resiliency of this system was our top priority.</p>
 	<p>Our concrete action items to reduce the failure possibilities were to improve availability by onboarding another email vendor and, when ESP has an outage, mitigate downtime by failing over from one vendor to another.</p>
 	<p>We wanted to achieve the above as quickly as possible so that our customers are not impacted again.</p>
-	<h3 id="step-1-improve-availability">Step 1 - Improve Availability</h3>
+	<h3>Step 1 - Improve Availability</h3>
 	<p>Introducing a new vendor gives us the option to failover. But before we introduced it we had to consider another key component of email deliverability, which is the email sender reputation. &nbsp;ISPs assign a sending score to any organization that sends emails. The higher the score, the higher the probability that the email sent by the organization reaches your inbox. Similarly the lower the score, the higher the probability it reaches your spam folder.</p>
-	<p>Adding a new vendor means emails will be delivered from a new IP address. Mailbox providers (such as Gmail or Hotmail) view new IP addresses as suspicious until they achieve a positive sending reputation. A positive sending reputation is determined by answering the question “did the recipient want this email?”. This is calculated differently for different mailbox providers, but the simplest measure would be that the recipient opened it, and perhaps clicked a link within. To build this reputation, it's recommended to use an IP warm-up strategy. This usually involves increasing e-mail volume slowly over a matter of days and weeks.<br></p>
+	<p>Adding a new vendor means emails will be delivered from a new IP address. Mailbox providers (such as Gmail or Hotmail) view new IP addresses as suspicious until they achieve a positive sending reputation. A positive sending reputation is determined by answering the question “did the recipient want this email?”. This is calculated differently for different mailbox providers, but the simplest measure would be that the recipient opened it, and perhaps clicked a link within. To build this reputation, it's recommended to use an IP warm-up strategy. This usually involves increasing e-mail volume slowly over a matter of days and weeks.</p>
 	<p>Using this new vendor “only” during failovers would increase the probability of emails reaching our customer’s spam folder for the reasons outlined above. To avoid this and establish a positive sending reputation we want to send a constant stream of traffic between the two vendors.</p>
-	<h3 id="solution">Solution</h3>
+	<h3>Solution</h3>
 	<p>We came up with a weighted traffic routing module, an algorithm to <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">route emails</a> to the ESPs based on the ratio of weights assigned to them. This is how the algorithm works roughly:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-08-at-13.21.04.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5orLJeAifKo7LQh0jaRWAi/e5cc57c28d06ec3e22b66204039eee50/Screenshot-2023-03-08-at-13.21.04.png" alt="" class="kg-image" width="1108" height="578" loading="lazy">
+
+	</figure>
 	<p>This algorithm solves the problem of maintaining a constant stream of traffic between the two vendors and to failover when outages happen.</p>
 	<p>Our next big question was “where” to implement this module? How should this be implemented so that we can build, deploy, and test as quickly as possible? Since there are multiple teams involved, how can we make it quicker for all of them? This leads to a perfect segue to our next step.</p>
-	<h3 id="step-2-mitigate-downtime">Step 2 - Mitigate downtime</h3>
+	<h3>Step 2 - Mitigate downtime</h3>
 	<p>Let’s discuss a few approaches on where to build this logic. Should this just be a library? Or should it be a service in itself? Or do we have an even better way?</p>
-	<h3 id="design-1-a-simple-solution">Design 1 - A simple solution</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image5.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In this proposed solution, we would implement the weighted traffic routing module in a library and import it in every service.<strong> </strong> The pros of this approach is that there are no major changes to the overall existing architecture. However, it does come with quite a few drawbacks. &nbsp;Firstly, All of the services require a major code change and a considerable amount of development effort would &nbsp;have to be spent on this integration and testing end-to-end. Furthermore, updating libraries can be slow and there is no guarantee that teams would update in a timely manner. This means we may see teams still sending only to the old ESP during an incident, and we have not solved the problem we set out to.</p>
-	<h3 id="design-2-extract-email-routing-decisions-to-its-own-microservice">Design 2 - Extract email routing decisions to its own microservice</h3>
+	<h3>Design 1 - A simple solution</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NwMOz8SFMyDz8YsjjHXvf/5a73457c9fdb698e9b9da2d514d36939/image5.jpg" alt="" class="kg-image" width="1999" height="1119" loading="lazy">
+
+	</figure>
+	<p>In this proposed solution, we would implement the weighted traffic routing module in a library and import it in every service. The pros of this approach is that there are no major changes to the overall existing architecture. However, it does come with quite a few drawbacks. &nbsp;Firstly, All of the services require a major code change and a considerable amount of development effort would &nbsp;have to be spent on this integration and testing end-to-end. Furthermore, updating libraries can be slow and there is no guarantee that teams would update in a timely manner. This means we may see teams still sending only to the old ESP during an incident, and we have not solved the problem we set out to.</p>
+	<h3>Design 2 - Extract email routing decisions to its own microservice</h3>
 	<p>The first approach is simple and doesn’t disrupt the architecture, but is not a sustainable solution in the long run. This naturally leads to our next design.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75jQKklNlVsDZ1QwxCumKj/acaddbe4895b4d48158f47433042eb15/image1.jpg" alt="" class="kg-image" width="1999" height="1412" loading="lazy">
+
+	</figure>
 	<p>In this iteration, the weighted-traffic-routing module is extracted to its own service. This service decides where to route emails. Although it’s better than the previous approach, it is not without its drawbacks.</p>
 	<p>Firstly, the positives. This approach requires no major code changes in each service. As long as we honor the original ESP contract, team’s should simply need to update the base URL. Furthermore, we achieve the Single Responsibility Principle. When outages happen, the configurations have to be changed only in the weighted-traffic-routing service and this is the only service to be modified. &nbsp;Finally, we have much more control over retry semantics as they are implemented in a single place.</p>
 	<p>Some of the drawbacks of taking this approach are the time involved in spinning up a new service from scratch - &nbsp;building, testing, and shipping it is not insignificant. Secondly, we are adding an additional network hop; previously the email-notification-services talked directly to the email service providers, now we are proxying it through another service. Furthermore, since all the upstream requests are funneled through this service, it has to be load-balanced and scaled according to the incoming traffic and we need to ensure we service every request.</p>
-	<h3 id="design-3-the-workers-way">Design 3 - The Workers way</h3>
+	<h3>Design 3 - The Workers way</h3>
 	<p>The final design we considered; Implementing the weighted traffic routing module in a Cloudflare Worker.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qwjWyomY40JtIvkaTBIr2/3ab977c2e1f08996d18f2183279ac8a1/image4.jpg" alt="" class="kg-image" width="1999" height="1107" loading="lazy">
+
+	</figure>
 	<p>There are a lot of positives to doing it this way.</p>
 	<p>Firstly, minimal code changes are required in each service. In fact, nothing beyond the environment variables need to be updated. As with the previous design, when email vendor outages happen, only the Email Weighted Traffic Router Worker configuration has to be changed. One positive of using a Cloudflare Worker is when an environment variable is changed and deployed, it’s deployed in all of Cloudflare’s network in a few milliseconds. This is a significant advantage for us because it means the failover process takes only a few milliseconds; time-critical emails will reach our customers’ inbox on time, preventing major incidents.</p>
 	<p>Secondly, As the email traffic increases, we don’t have to care about scaling or load balancing the weighted-traffic-routing module. A Worker automatically takes care of it.</p>
 	<p>Finally, the operational overhead to building and running this is incredibly low. We don’t have to spend time on spinning up new containers, configuring and deploying them. The majority of the work is just to programme the algorithm that we discussed earlier.</p>
 	<p>There are still some drawbacks here though.We are still introducing a new service and an additional network hop. However, we can make use of the templates available <a href="https://developers.cloudflare.com/workers/wrangler">here</a> to make bootstrapping as efficient as possible.</p>
-	<h3 id="building-it-the-workers-way">Building it the Workers way</h3>
+	<h3>Building it the Workers way</h3>
 	<p>Weighing the pros and cons of the above approaches, we went with implementing it in a Cloudflare Worker.</p>
 	<p>The Email Traffic Router Worker sits in between the Cloudflare control plane and the ESPs and proxies requests between them. We stream raw responses from the upstream; the internal service is completely agnostic of multiple ESPs, and how the traffic is routed.</p>
-	<p>We configure the percentage of traffic we want to send to each vendor using environment variables. Cloudflare Workers provide environment variables which is a convenient way to configure a worker application.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">addEventListener('fetch', async (event: FetchEvent) =&gt; {
+	<p>We configure the percentage of traffic we want to send to each vendor using environment variables. Cloudflare Workers provide environment variables which is a convenient way to configure a worker application.</p>
+	<pre class="language-typescript"><code class="language-typescript">addEventListener('fetch', async (event: FetchEvent) =&gt; {
 try {
     const finalInstance = ratioBasedRandPicker(
       parseFloat(VENDOR1_TO_VENDOR2_RATIO),
@@ -56,10 +80,9 @@ try {
   } catch (err) {
        // handle errors
     }
-})  
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">export const ratioBasedRandPicker = (
+})  </code></pre>
+
+	<pre class="language-typescript"><code class="language-typescript">export const ratioBasedRandPicker = (
   ratio: number,
   VENDOR1: string,
   VENDOR2: string,
@@ -67,17 +90,15 @@ try {
 ): string =&gt; {
   if (isNaN(ratio) || ratio &lt; 0 || ratio &gt; 1) throw new ConfigurationError(`invalid ratio ${ratio}`)
   return generator() &lt; ratio ? VENDOR1 : VENDOR2  
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>The Email Weighted Traffic Router Worker generates a random number between 0 (inclusive) and 1 with approximately uniform distribution over the range. When the ratio is set to <code>1</code>, vendor 1 will be picked always, and similarly when it’s set to <code>0</code> vendor 2 will be picked all the time. For any values in between, the vendor is picked based on the weights assigned. Thus, when all the traffic has to be routed to vendor 1 we set the ratio to 1; the random numbers generated are always less than <code>1</code>, hence vendor 1 will always be selected.</p>
 	<p>Doing a failover is as simple as updating the <code>vendor1_to_vendor2</code> environment variable. In general, an environment variable for a Cloudflare Worker can be updated in one of the following ways:</p>
-	<p><strong>Using Cloudflare Dashboard:</strong> All Worker environment variables are available to be configured in the Cloudflare Dashboard. Navigate to Workers -&gt; Settings -&gt; Variables -&gt; Edit Variables and update the value</p>
-	<p><strong>Using Wrangler</strong> (if your Worker is managed by wrangler): edit the environment variable in the wrangler.toml file and execute wrangler publish for the new values to kick in.</p>
+	<p><b>Using Cloudflare Dashboard:</b> All Worker environment variables are available to be configured in the Cloudflare Dashboard. Navigate to Workers -&gt; Settings -&gt; Variables -&gt; Edit Variables and update the value</p>
+	<p><b>Using Wrangler</b> (if your Worker is managed by wrangler): edit the environment variable in the wrangler.toml file and execute wrangler publish for the new values to kick in.</p>
 	<p>Once the variable is updated using one of the above methods, the Email Traffic Router Worker is deployed immediately in all Cloudflare data centers with this value. Hence all our emails will now be routed by the healthy vendor.</p>
 	<p>Now, we have built and shipped our weighted-traffic-routing logic in a Worker and building it in a Worker really accelerated our process of improving the resiliency.</p>
 	<p>The module is shipped, now what happens when the ESP is suffering an outage or a degraded performance? Let me conclude with a success story.</p>
-	<h3 id="when-an-esp-outage-happened">When an ESP outage happened</h3>
+	<h3>When an ESP outage happened</h3>
 	<p>After deploying this Email Traffic Router Worker to production, we saw an outage declared by one of our vendors. We immediately configured our Traffic Router to send all traffic to the healthy vendor. Changing this configuration took about a few seconds, and deploying the change was even faster. Within a few milliseconds all the traffic was routed to the healthy instance, and all the critical emails reached their corresponding inboxes on time!</p>
 	<p>Looking at some timelines:</p>
 	<p>18:45 UTC - we get alerted that message delivery is slow/degraded from email provider 1. The other provider is not impacted</p>
@@ -86,15 +107,25 @@ try {
 	<p>18:50 UTC - we configured the Email Traffic Router Worker to dispatch all the traffic to the healthy email provider, deployed the changes</p>
 	<p>Starting 18:50 we saw a steady decrease in requests to email provider 1 and a steady uptick in the requests to the provider 2 instance.</p>
 	<p>Here’s our metrics dashboard:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image7.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="next-steps">Next steps</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2E8kywz4Y85sIWrVG10Ero/c0336b6c6d07e4010db2a521a9eb88d3/image7.png" alt="" class="kg-image" width="1600" height="1041" loading="lazy">
+
+	</figure>
+	<h3>Next steps</h3>
 	<p>Currently, the failover step is manual. Our next step is to automate this process. Once we get notified that one of the vendors is experiencing outages, the Email Traffic Router Worker will failover automatically to the healthy vendor.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>To reiterate our goals, we wanted to make our email notification systems resilient by</p>
 	<ol>
-		<li>adding another vendor</li>
-		<li>having a simple and fast mechanism to failover when vendor outages happen</li>
-		<li>achieving the above two objectives as quickly as possible to reduce customer impact</li>
+		<li>
+			<p>adding another vendor</p>
+		</li>
+		<li>
+			<p>having a simple and fast mechanism to failover when vendor outages happen</p>
+		</li>
+		<li>
+			<p>achieving the above two objectives as quickly as possible to reduce customer impact</p>
+		</li>
 	</ol>
 	<p>Thus our email systems are more reliable, and more resilient to any outages or failures of our email service providers. Cloudflare Worker makes it easy and simple to build and ship a production-ready service in no time; it also makes failovers possible without any code changes or downtime. It’s powerful that multiple services/teams within Cloudflare can rely on one place, the Email Traffic Router Worker, for uninterrupted email delivery.</p>
 </div>

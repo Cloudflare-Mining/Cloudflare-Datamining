@@ -1,16 +1,19 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xguPwVPbmK7wIWeDlYhwD/971c35c0688925664a444d690fb91729/go-crypto-bridging-the-performance-gap.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>It is no secret that we at CloudFlare love Go. We use it, and we use it a LOT. There are many things to love about Go, but what I personally find appealing is the ability to write assembly code!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/05/4238725400_58e0df7d8a_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/curns/4238725400/in/photolist-7syzoq-bX6MBP-7MB6AP-bV6qYW-JKJyC-jwtSkq-eaezFL-cYsmkE-ndmMRH-2EMNd1-oW5DRv-N7SWP-62CbPG-mm4X-5hUghN-bUdHXE-awERSL-5rx4ST-nUJ7Za-ewYVyy-diiyTv-pprT55-6tuZgp-fQDkYD-fQDkUF-bMRznn-3VAiJx-bvGxVF-7S8RZX-pcqyM9-6g4iYb-8NwRYU-cwiigy-9PkavU-61G39m-4bnYXH-d2QTGb-32J1co-q2VB1P-nGbBjk-rnm8s8-nT6b6W-88u81w-9aWDrY-9C5Anx-nT6TBk-oah7x8-oarCdA-pb3eXW-68dr8i">image</a> by <a href="https://www.flickr.com/photos/curns">Jon Curnow</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KXkUfdeZkkc1sWRj7cMWM/d594f474bcec6fdb6c4398a7a25de021/4238725400_58e0df7d8a_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/curns/4238725400/in/photolist-7syzoq-bX6MBP-7MB6AP-bV6qYW-JKJyC-jwtSkq-eaezFL-cYsmkE-ndmMRH-2EMNd1-oW5DRv-N7SWP-62CbPG-mm4X-5hUghN-bUdHXE-awERSL-5rx4ST-nUJ7Za-ewYVyy-diiyTv-pprT55-6tuZgp-fQDkYD-fQDkUF-bMRznn-3VAiJx-bvGxVF-7S8RZX-pcqyM9-6g4iYb-8NwRYU-cwiigy-9PkavU-61G39m-4bnYXH-d2QTGb-32J1co-q2VB1P-nGbBjk-rnm8s8-nT6b6W-88u81w-9aWDrY-9C5Anx-nT6TBk-oah7x8-oarCdA-pb3eXW-68dr8i">image</a> by <a href="https://www.flickr.com/photos/curns">Jon Curnow</a></p>
 	<p>That is probably not the first thing that pops to your mind when you think of Go, but yes, it does allow you to write code "close to the metal" if you need the performance!</p>
 	<p>Another thing we do a lot in CloudFlare is... cryptography. To keep your data safe we encrypt everything. And everything in CloudFlare is a LOT.</p>
 	<p>Unfortunately the built-in cryptography libraries in Go do not perform nearly as well as state-of-the-art implementations such as OpenSSL. That is not acceptable at CloudFlare's scale, therefore we created assembly implementations of <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">Elliptic Curves</a> and AES-GCM for Go on the amd64 architecture, supporting the AES and CLMUL NI to bring performance up to par with the OpenSSL implementation we use for <a href="https://blog.cloudflare.com/universal-ssl-how-it-scales">Universal SSL</a>.</p>
 	<p>We have been using those improved implementations for a while, and attempting to make them part of the official Go build for the good of the community. For now you can use our <a href="https://github.com/cloudflare/go">special fork of Go</a> to enjoy the improved performance.</p>
 	<p>Both implementations are constant-time and side-channel protected. In addition the fork includes small improvements to Go's RSA implementation.</p>
 	<p>The performance benefits of this fork over the standard Go 1.4.2 library on the tested Haswell CPU are:</p>
-	<pre><code>                         CloudFlare          Go 1.4.2        Speedup
+	<pre class="language-bash"><code class="language-bash">                         CloudFlare          Go 1.4.2        Speedup
 AES-128-GCM           2,138.4 MB/sec          91.4 MB/sec     23.4X
 
 P256 operations:
@@ -22,31 +25,39 @@ ECDSA Verify           146,991 ns/op      3,086,282 ns/op     21.0X
 
 RSA2048:
 Sign                 3,733,747 ns/op      7,979,705 ns/op      2.1X
-Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X
-</code></pre>
-	<h3 id="aesgcminabrief">AES-GCM in a brief</h3>
+Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X</code></pre>
+	<h3>AES-GCM in a brief</h3>
 	<p>So what is AES-GCM and why do we care? Well, it is an AEAD - Authenticated Encryption with Associated Data. Specifically AEAD is a special combination of a cipher and a MAC (Message Authentication Code) algorithm into a single robust algorithm, using a single key. This is different from the other method of performing authenticated encryption "encrypt-then-MAC" (or as TLS does it with CBC-SHAx, "MAC-then-encrypt"), where you can use any combination of cipher and MAC.</p>
 	<p>Using a dedicated AEAD reduces the dangers of bad combinations of ciphers and MACs, and other mistakes, such as using related keys for encryption and authentication.</p>
-	<p>Given the <em>many</em> vulnerabilities related to the use of AES-CBC with HMAC, and the weakness of RC4, AES-GCM is the de-facto secure standard on the web right now, as the only IETF-approved AEAD to use with TLS at the moment.</p>
+	<p>Given the <i>many</i> vulnerabilities related to the use of AES-CBC with HMAC, and the weakness of RC4, AES-GCM is the de-facto secure standard on the web right now, as the only IETF-approved AEAD to use with TLS at the moment.</p>
 	<p>Another AEAD you may have heard of is <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305</a>, which CloudFlare also supports, but it is not a standard just yet.</p>
 	<p>That is why we use AES-GCM as the preferred cipher for customer HTTPS only prioritizing ChaCha20-Poly1305 for mobile browsers that support it. You can see it in our <a href="https://github.com/cloudflare/sslconfig">configuration</a>. As such today more than 60% of our client facing traffic is encrypted with AES-GCM, and about 10% is encrypted with ChaCha20-Poly1305. This percentage grows every day, as browser support improves. We also use AES-GCM to encrypt all the traffic between our data centers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/05/2564482934_d26c31c011_z-1.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/319/2564482934/in/photolist-5FYmSD-7zvQwN-6ATEuo-4VgpgZ-kUSNp3-6wAN3r-c3LXyY-c3LXpW-4S2DaR-4UBDr1-4UxqxR-82A7UM-4VgH6r-6cXGRY">image</a> by <a href="https://www.flickr.com/photos/319">3:19</a></small>
-	</p>
-	<h3 id="aesgcmasanaead">AES-GCM as an AEAD</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YfENR53QhCOS7e6p5hxww/0332bc209400d0ddfbf5b6e301c28bfa/2564482934_d26c31c011_z-1.jpg" alt="" class="kg-image" width="549" height="448" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/319/2564482934/in/photolist-5FYmSD-7zvQwN-6ATEuo-4VgpgZ-kUSNp3-6wAN3r-c3LXyY-c3LXpW-4S2DaR-4UBDr1-4UxqxR-82A7UM-4VgH6r-6cXGRY">image</a> by <a href="https://www.flickr.com/photos/319">3:19</a></p>
+	<h3>AES-GCM as an AEAD</h3>
 	<p>As I mentioned AEAD is a special combination of a cipher and a MAC. In the case of AES-GCM the cipher is the AES block cipher in <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29">Counter Mode</a> (AES-CTR). For the MAC it uses a universal hash called <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode#Encryption_and_authentication">GHASH</a>, encrypted with AES-CTR.</p>
 	<p>The inputs to the AES-GCM AEAD encryption are as follows:</p>
 	<ul>
-		<li>The secret key (K), that may be 128, 192 or 256 bit long. In TLS, the key is usually valid for the entire connection.</li>
-		<li>A special unique value called IV (initialization value) - in TLS it is 96 bits. The IV is not secret, but the same IV may not be used for more than one message with the same key under any circumstance! To achieve that, usually part of the IV is generated as a nonce value, and the rest of it is incremented as a counter. In TLS the IV counter is also the record sequence number. The IV of GCM is unlike the IV in CBC mode, which must also be unpredictable.<br>
-			The disadvantage of using this type of IV, is that in order to avoid collisions, one must change the encryption key, before the IV counter overflows.</li>
-		<li>The additional data (A) - this data is not secret, and therefore not encrypted, but it is being authenticated by the GHASH. In TLS the additional data is 13 bytes, and includes data such as the record sequence number, type, length and the protocol version.</li>
-		<li>The plaintext (P) - this is the secret data, it is both encrypted and authenticated.</li>
+		<li>
+			<p>The secret key (K), that may be 128, 192 or 256 bit long. In TLS, the key is usually valid for the entire connection.</p>
+		</li>
+		<li>
+			<p>A special unique value called IV (initialization value) - in TLS it is 96 bits. The IV is not secret, but the same IV may not be used for more than one message with the same key under any circumstance! To achieve that, usually part of the IV is generated as a nonce value, and the rest of it is incremented as a counter. In TLS the IV counter is also the record sequence number. The IV of GCM is unlike the IV in CBC mode, which must also be unpredictable.The disadvantage of using this type of IV, is that in order to avoid collisions, one must change the encryption key, before the IV counter overflows.</p>
+		</li>
+		<li>
+			<p>The additional data (A) - this data is not secret, and therefore not encrypted, but it is being authenticated by the GHASH. In TLS the additional data is 13 bytes, and includes data such as the record sequence number, type, length and the protocol version.</p>
+		</li>
+		<li>
+			<p>The plaintext (P) - this is the secret data, it is both encrypted and authenticated.</p>
+		</li>
 	</ul>
 	<p>The operation outputs the ciphertext (C) and the authentication tag (T). The length of C is identical to that of P, and the length of T is 128 bits (although some applications allow for shorter tags). The tag T is computed over A and C, so if even a single bit of either of them is changed, the decryption process will detect the tampering attempt and refuse to use the data. In TLS, the tag T is attached at the end of the ciphertext C.</p>
 	<p>When decrypting the data, the function will receive A, C and T and compute the authentication tag of the received A and C. It will compare the resulting value to T, and only if both are equal it will output the plaintext P.</p>
 	<p>By supporting the two state of the art AEADs - AES-GCM and ChaCha20-Poly1305, together with ECDSA and ECDH algorithms, CloudFlare is able to provide the fastest, most flexible and most secure TLS experience possible to date on all platforms, be it a PC or a mobile phone.</p>
-	<h3 id="bottomline">Bottom line</h3>
+	<h3>Bottom line</h3>
 	<p>Go is a very easy to learn and fun to use, yet it is one of the most powerful languages for system programming. It allows us to deliver robust web-scale software in short time frames. With the performance improvements CloudFlare brings to its crypto stack, Go can now be used for high performance TLS servers as well!</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,27 +1,48 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/McAllen-Texas-USA.jpg" alt="McAllen Texas" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Z5fRdeDomAjTBHuoQR15t/a643c0d1b05f2042d280711e9fcdea20/McAllen-Texas-USA.jpg" alt="McAllen Texas" class="kg-image" width="1600" height="800" loading="lazy">
+
+	</figure>
 	<p>Five key facts to know about McAllen, Texas</p>
 	<ul>
-		<li>McAllen, Texas is on the southern tip of the Rio Grande Valley</li>
-		<li>The city is named after John McAllen, who provided land in 1904 to bring the <a href="https://en.wikipedia.org/wiki/St._Louis,_Brownsville_and_Mexico_Railway">St. Louis, Brownsville &amp; Mexico Railway</a> railway into the area</li>
-		<li>McAllen, Texas is named the City of Palms</li>
-		<li>The border between Mexico and the USA is less than nine miles away from the data center</li>
-		<li>McAllen, Texas is where Cloudflare has placed its 119th data center</li>
+		<li>
+			<p>McAllen, Texas is on the southern tip of the Rio Grande Valley</p>
+		</li>
+		<li>
+			<p>The city is named after John McAllen, who provided land in 1904 to bring the <a href="https://en.wikipedia.org/wiki/St._Louis,_Brownsville_and_Mexico_Railway">St. Louis, Brownsville &amp; Mexico Railway</a> railway into the area</p>
+		</li>
+		<li>
+			<p>McAllen, Texas is named the City of Palms</p>
+		</li>
+		<li>
+			<p>The border between Mexico and the USA is less than nine miles away from the data center</p>
+		</li>
+		<li>
+			<p>McAllen, Texas is where Cloudflare has placed its 119th data center</p>
+		</li>
 	</ul>
-	<h3 id="seconddatacenterintexasfirstontheborderwithmexico">Second datacenter in Texas; first on the border with Mexico</h3>
+	<h3>Second datacenter in Texas; first on the border with Mexico</h3>
 	<p>While McAllen is close to the Mexican border, its importance goes well beyond that simple fact. The city is halfway between <a href="https://blog.cloudflare.com/alert-the-ewings-cloudflares-dallas-data-cent">Dallas, Texas</a> (where Cloudflare has an existing datacenter) and Mexico City, the center and capital of Mexico. This means that any Cloudflare traffic delivered into Mexico is better served from McAllen. Removing 500 miles from the latency equation is a good thing. 500 miles equates to around 12 milliseconds of round-trip latency and when a connection operates (as all connections should), as a secure connection, then there can be many round trip communications before the first page starts showing up. Improving latency is key, even if we have a <a href="https://blog.cloudflare.com/introducing-0-rtt">0-RTT</a> environment.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/mcallen-mexico-map.png" alt="mcallen-mexico-map" loading="lazy"><br>
-		Image courtesy of gcmap service</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Zp1VPwH6gRq018JV4gpHG/025b03ea673488f8e40950849f469033/mcallen-mexico-map.png" alt="mcallen-mexico-map" class="kg-image" width="720" height="360" loading="lazy">
+
+	</figure>
+	<p>Image courtesy of gcmap service</p>
 	<p>However, it gets better! A significant amount of Mexican Cloudflare traffic is delivered to ISPs and telcos that are just south of the Mexican border, hence McAllen improves their performance even more-so. Cloudflare chose the McAllen Data Center in order to provide those ISPs and telcos a local interconnect point.</p>
-	<h3 id="talkingofinterconnectionwhatsneededisasolidixpfootprint">Talking of interconnection - what’s needed is a solid IXP footprint</h3>
+	<h3>Talking of interconnection - what’s needed is a solid IXP footprint</h3>
 	<p>As astute readers of the Cloudflare blog know, the Cloudflare network interconnects to a large number of Internet Exchanges globally. Why should that be any different in McAllen, Texas. It’s not. As of last week, there was a brand new Internet Exchange (IX) in McAllen, Texas.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/12/mcallen-ixp-install-1.jpg" alt="mcallen-ixp-install-on-fb" loading="lazy"><br>
-		Image, with permission, from <a href="https://www.facebook.com/photo.php?fbid=10159793533710387&amp;set=a.10151069523530387.780604.794635386&amp;type=3&amp;theater=">Joel Pacheco’s</a> Facebook page</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LVY4nkkmZCbWIKpvSZqUb/3416aa13d47639d6c700c2c524409ce0/mcallen-ixp-install-1.jpg" alt="mcallen-ixp-install-on-fb" class="kg-image" width="2001" height="1519" loading="lazy">
+
+	</figure>
+	<p>Image, with permission, from <a href="https://www.facebook.com/photo.php?fbid=10159793533710387&amp;set=a.10151069523530387.780604.794635386&amp;type=3&amp;theater=">Joel Pacheco’s</a> Facebook page</p>
 	<p><a href="https://www.peeringdb.com/ix/2036">MEX-IX</a> is that new IX and it provides a whole new way to interconnect with Mexican carriers, many of which are present in McAllen already. Cloudflare will enable peering on that IX as quickly as we can.</p>
-	<h3 id="nextupwegosouth">Next up, we go south!</h3>
+	<h3>Next up, we go south!</h3>
 	<p>Cloudflare has plenty of datacenter presence in South America, however <a href="https://blog.cloudflare.com/panama-expands-cloudflare-network-to-50-countries">Panama</a> is the only datacenter we have operating within Central America. That means that we still have to work on Belize, Costa Rica, El Salvador, Guatemala, Honduras, and Nicaragua.</p>
 	<p>But there’s one more place we need to deploy into in order to move the Mexican story forward and that’s Mexico City. More about that in a later blog.</p>
 	<p>Cloudflare will continue to build new datacenters, including the ones south of the border, and ones around the globe. If you enjoy the idea of helping build one of the world's largest networks, come <a href="https://www.cloudflare.com/careers">join our team</a>!</p>
-	<!--kg-card-end: markdown-->
 </div>

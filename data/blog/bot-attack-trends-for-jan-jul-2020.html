@@ -1,139 +1,212 @@
-<div class="mb2 gray5">13 min read</div>
+<div class="mb2 gray5">12 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/bot-attack-trends-for-jan-jul-2020">日本語</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Bots-Trends-header.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cszDcfthjiqxTSjL0K2Q0/58ca69d8038aedb4a793e246d6e6711f/Bots-Trends-header.png" alt="" class="kg-image" width="698" height="378" loading="lazy">
+
+	</figure>
 	<p>Now that we’re a long way through 2020, let’s take a look at automated traffic, which makes up almost <a href="https://radar.cloudflare.com">40% of total Internet traffic</a>.</p>
 	<p>This blog post is a high-level overview of bot traffic on Cloudflare’s network. Cloudflare offers a comprehensive <a href="https://www.cloudflare.com/products/bot-management">Bot Management tool</a> for Enterprise customers, along with an effective free tool called Bot Fight Mode. Because of the tremendous amount of traffic that flows through our network each day, Cloudflare is in a unique position to analyze global bot trends.</p>
-	<p>In this post, we will cover the basics of bot traffic and distinguish between automated requests and other human requests (<strong>What Is A Bot?)</strong>. Then, we’ll move on to a global overview of bot traffic around the world (<strong>A RoboBird’s Eye View, A Bot Day </strong>and<strong> Bots All Over The World</strong>), and dive into North American traffic (<strong>A Look into North American Traffic)</strong>. &nbsp;Lastly, we’ll finish with an overview of how the coronavirus pandemic affected global traffic, and we’ll take a deeper look at European traffic (<strong>Bots During COVID-19 In Europe)</strong>.</p>
+	<p>In this post, we will cover the basics of bot traffic and distinguish between automated requests and other human requests (<b>What Is A Bot?)</b>. Then, we’ll move on to a global overview of bot traffic around the world (<b>A RoboBird’s Eye View, A Bot Day</b> and <b>Bots All Over The World</b>), and dive into North American traffic (<b>A Look into North American Traffic)</b>. &nbsp;Lastly, we’ll finish with an overview of how the coronavirus pandemic affected global traffic, and we’ll take a deeper look at European traffic (<b>Bots During COVID-19 In Europe)</b>.</p>
 	<p>On average, Cloudflare processes 18 million HTTP requests every second. This is a great opportunity to understand how bots shape the Internet, how much infrastructure is dedicated to these automated requests, and why our customers need a great bot management solution.</p>
-	<h3 id="what-is-a-bot">What Is A Bot?</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3>What Is A Bot?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WDMsOvCcXwNaDjyPyDA4P/4425e043db8b3510d12df2a0612a8e94/image3-19.png" alt="" class="kg-image" width="1999" height="732" loading="lazy">
+
+	</figure>
 	<p>Cloudflare groups traffic into four bot-related categories:</p>
-	<p>1. Verified <br>2. Definitely automated <br>3. Likely automated <br>4. Likely human</p>
+	<p>1. Verified2. Definitely automated3. Likely automated4. Likely human</p>
 	<p>Our goal is to stop malicious and unwanted bots from harming our customers, while giving customers the opportunity to control how other automated traffic is managed.</p>
 	<p>We label each request that comes into Cloudflare with a “bot score” 1 through 99, where a lower score means that a request probably came from a bot. A higher score means that a request probably came from a human. This score is available in our Firewall, logs, and Workers, giving customers the flexibility to act on any score.</p>
 	<p>Cloudflare also maintains a challenge platform that customers can choose to deploy on suspected bots. You’ll recognize these as CAPTCHA challenges or JavaScript challenges. In fact, having the score available in Firewall Rules means that customers can take any action they choose. This platform can be used for mitigation, ensuring that unwanted traffic is stopped in its tracks.</p>
 	<p>To learn more about how Bot Management interacts with our firewall, check out our <a href="https://support.cloudflare.com/hc/en-us/articles/360027519452-Understanding-Cloudflare-Bot-Management">support page</a>.</p>
 	<p>We track successes and failures during these challenges, which ultimately allows us to improve our detection systems. Assuming that our challenges are solvable by humans, effective detections should have low solve rates, given that they are usually presented to bots.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image15-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><strong>Verified</strong> bots are registered in an internal verified bot directory. These good bots power search engines and monitoring tools. Good bots enable our customers’ web pages to be found by search engines, for example.</p>
-	<p>For known non-verified bots (such as a scraper using a simple curl library), we keep a similar directory that is managed by our heuristics engine. If not otherwise verified, we consider requests caught by this engine to be <strong>definitely automated</strong>.</p>
-	<p>Our machine learning engine provides another way to identify potential bots. This engine identifies requests with a high probability of automation and marks them as <strong>likely automated</strong>. This detection mechanism benefits from models built on data from our global network.</p>
-	<p>If a request is not marked as automated, we mark it as <strong>likely human</strong> and pass along the bot score from our machine learning system.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n79MsY5KEtsHVDMrKUAIc/2a0ad7486fc9aee546102cf7f41cbc01/image15-2.png" alt="" class="kg-image" width="1810" height="732" loading="lazy">
+
+	</figure>
+	<p><b>Verified</b> bots are registered in an internal verified bot directory. These good bots power search engines and monitoring tools. Good bots enable our customers’ web pages to be found by search engines, for example.</p>
+	<p>For known non-verified bots (such as a scraper using a simple curl library), we keep a similar directory that is managed by our heuristics engine. If not otherwise verified, we consider requests caught by this engine to be <b>definitely automated</b>.</p>
+	<p>Our machine learning engine provides another way to identify potential bots. This engine identifies requests with a high probability of automation and marks them as <b>likely automated</b>. This detection mechanism benefits from models built on data from our global network.</p>
+	<p>If a request is not marked as automated, we mark it as <b>likely human</b> and pass along the bot score from our machine learning system.</p>
 	<p>We also have a behavioral analysis engine and a JavaScript detections engine. You can learn more about these systems by checking out <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Alex Bocharov’s previous post</a> on Cloudflare Bot Management.</p>
 	<p>The two bot definitions for automated traffic are somewhat complementary. Requests caught by heuristic detections will not count towards machine learning detections. Requests that are reliably caught by our machine learning detections won’t need to be registered in our known heuristics bot directory. Because of this, we combine these two together when we discuss “automated traffic” in general.</p>
-	<h3 id="a-robobird-s-eye-view">A RoboBird’s Eye View</h3>
+	<h3>A RoboBird’s Eye View</h3>
 	<p>Data from this piece comes from information about Cloudflare’s customers, analyzed between January 15, 2020 and July 31, 2020.</p>
 	<p>First, let’s get a basic understanding of the traffic on our network.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-9.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><strong>Figure 1.1</strong> Traffic type on Cloudflare’s network.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZbothlOCfZiBnRIJuRhg1/5cef5d8b4b067e1e2f89608b991fd323/image6-9.png" alt="" class="kg-image" width="1999" height="715" loading="lazy">
+
 	</figure>
+	<p><b>Figure 1.1</b> Traffic type on Cloudflare’s network.</p>
 	<p>Figure 1.1 has a global breakdown regarding classification; 60.6% of traffic is likely human, 19.3% is likely automated, 18.1% is definitely automated and only 2.1% is from verified bots. In total, 39.5% of requests we score come from some kind of bot.</p>
-	<h3 id="a-bot-day">A Bot Day</h3>
+	<h3>A Bot Day</h3>
 	<p>Regular traffic fluctuates throughout the day. Do bots follow suit? Let’s check. Figure 2.1 represents traffic deviation from the average hourly traffic. An increase of 10% would mean that the hour is 10% busier than the average hour (measuring requests per hour). We include the total overall traffic in this chart to serve as a comparison to other types of traffic.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image19-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><strong>Figure 2.1</strong> Hourly traffic as a deviation from the average hour.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ce2GsyZWSptrwxEvizyLI/76c76bacb2e2625ffc00a3329b72dfce/image19-1.png" alt="" class="kg-image" width="1999" height="724" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-14.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><strong>Figure 2.2</strong> Bot classification over an average day.&nbsp;</figcaption>
+	<p><b>Figure 2.1</b> Hourly traffic as a deviation from the average hour.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7UoVmHAH5keWrT4ol6kUg/8fbb5305aedfbb66f8a19d04a03687d9/image4-14.png" alt="" class="kg-image" width="1999" height="736" loading="lazy">
+
 	</figure>
+	<p><b>Figure 2.2</b> Bot classification over an average day.&nbsp;</p>
 	<p>We can clearly see a difference between human traffic and bot traffic. Human traffic varies heavily, but predictably, throughout the day. We can see a 15% decrease in human traffic early in the day, between midnight and 05:00 UTC, corresponding to the end of business hours in the Americas, and up to a 25% increase during business hours, 14:00 to 17:00 UTC, where traffic is highest. Conversely, bot traffic is more consistent. Slow hours still see a smaller drop than overall traffic, and busy hours are less busy. The difference between good and bad bots is also apparent: good bots are even more consistent, with small fluctuations in hourly traffic.</p>
 	<p>But why would this happen? A large portion of bots, good and bad, perform the same task across the Internet. Bad bots may be scraping websites or looking to infect unprotected machines, and they will do this with little intervention from human operators. Good bots could be doing some of these operations, but less frequently and in a more targeted fashion. A good bot scraping a website may be doing so to add it to a search engine, while a bad bot will do the same thing at a much higher rate, for other reasons.</p>
 	<p>A lot of bots follow business hours. For example, sneaker bots—focused on nabbing exclusive items from sneaker stores—will naturally be active when new products launch.</p>
 	<p>This difference in volume does not mean that our classifications are affected: our scores remain consistent throughout the day, as Figure 2.1 shows.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image14-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 2.3</strong> Daily traffic as a deviation from the average day. Grouped by day of week.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FGicO2LIu6u59W0x6SJOD/4d4b8020c448c65c23f0225d5bd18e33/image14-1.png" alt="" class="kg-image" width="1999" height="730" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image20.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 2.4 </strong>Bot classification over an average week.</em></figcaption>
+	<p><b><i>Figure 2.3</i></b><i> Daily traffic as a deviation from the average day. Grouped by day of week.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uY9kPFzYg5cIpDgrOYQSC/8e3e3ec5ef728b48b68deccaf1f5f10e/image20.png" alt="" class="kg-image" width="1999" height="736" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 2.4</i></b><i> Bot classification over an average week.</i></p>
 	<p>We can also see that good bots don’t take weekends off. Weekdays and weekends have fairly marked differences for most traffic, but good bots keep a consistent schedule. Whereas a typical weekday is slightly above average, we can see a drop of about 4% in overall traffic. This does not fully apply to verified bots, which only see a small 1% drop in traffic.</p>
-	<h3 id="bots-all-over-the-world">Bots All Over The World</h3>
+	<h3>Bots All Over The World</h3>
 	<p>Now that we’ve taken a look at global traffic, let’s dig a little deeper.</p>
 	<p>Different regions have distinct traffic landscapes regarding automated traffic.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image18-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong><em><strong>Figure 3.1</strong> </em></strong><em>Traffic type by region</em>.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UEGzJ3XAHef2PX9QPk2qK/bfe95e841ed8ecebf95083d354651599/image18-2.png" alt="" class="kg-image" width="1999" height="571" loading="lazy">
+
 	</figure>
+	<p><i>**</i><b>Figure 3.1</b><i>** </i><i><i>Traffic type by region</i></i><i>.</i></p>
 	<p>Figure 3.1 breaks down traffic by region, letting us peek into where each type of traffic comes from. North America stands out as a major automated traffic source; over 50% of definitely automated traffic comes from there, and they also contribute almost 80% of all verified bot traffic. Europe makes up the second largest chunk of traffic, followed by Asia.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image11-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 3.2</strong> Traffic classification within each region.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DJj8W8fOl12fNCdfkFsc7/b0de5833756627aa035d85f5701fa2b1/image11-2.png" alt="" class="kg-image" width="1999" height="1110" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 3.2</i></b><i> Traffic classification within each region.</i></p>
 	<p>Looking at regional breakdown of traffic in Figure 3.2, we can see just how much North American traffic is automated, well above the global average.</p>
-	<h3 id="a-look-into-north-american-traffic">A Look into North American Traffic</h3>
+	<h3>A Look into North American Traffic</h3>
 	<p>As the largest source of automated traffic, North America deserves a closer look.</p>
 	<p>First, we’ll start with a breakdown of each country.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image12-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 3.3</strong> Percentage of traffic within North America.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/apqoRsJwg86CoGP6qjLnK/529f395de1ca0c2a00d6f390800b7ecc/image12-1.png" alt="" class="kg-image" width="1999" height="542" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 3.3</i></b><i> Percentage of traffic within North America.</i></p>
 	<p>Most of our requests in North America come from just three countries—the United States, Canada and Mexico. These account for 98% of all requests from North America, 97% of all requests from likely human sources and 100% of requests from verified bots. The United States alone accounts for 88% of total requests, 82% of requests from likely human sources, 96% of requests from definitely automated sources, 88% of requests from likely automated traffic sources and &nbsp;98% of requests from verified bot.</p>
 	<p>However, this alone does not mean that the United States has an unusual amount of activity. These countries have a combined population of roughly 497 million people. The United States accounts for 66.5% of that, Mexico 25.9% and Canada 7.6%. With this context, we can see that the United States is overrepresented in terms of raw requests, but underrepresented in terms of how much of that traffic is likely to be human. Conversely, Canadian traffic is more likely to be human.</p>
 	<p>Let's take another look at each country.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-9.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 3.4</strong> Percentage of traffic within each country.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WoxVVla9ULSUap7HvYvZj/d47db60816b29768e739a3d7819612fc/image5-9.png" alt="" class="kg-image" width="1999" height="599" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 3.4</i></b><i> Percentage of traffic within each country.</i></p>
 	<p>Over half of the traffic from the United States is automated in some way, which is a clear departure from trends in Mexico and Canada.</p>
-	<h3 id="american-bots">American Bots</h3>
-	<p>So far, we’ve seen how much the United States contributes to automated traffic. If we want to go deeper, a good place to start is by understanding how these bots get online. We can do this by examining the networks from which the traffic originates. Networks are identified by Autonomous System Numbers, or ASNs. These form the backbone of the Internet infrastructure. </p>
-	<p>Think of these as Internet Service Providers, but facing inward towards the network instead of outward towards end consumers. ISPs like Comcast and Verizon are examples of residential ASNs, where we expect mostly human traffic. Cloud providers such as Google and Amazon are also ASNs, but targeted towards cloud services. We expect most of these requests to be automated in some way. </p>
-	<p>Looking at traffic on the ASN level is important because we can identify cloud-based traffic, or traffic using residential proxies, among others. </p>
+	<h3>American Bots</h3>
+	<p>So far, we’ve seen how much the United States contributes to automated traffic. If we want to go deeper, a good place to start is by understanding how these bots get online. We can do this by examining the networks from which the traffic originates. Networks are identified by Autonomous System Numbers, or ASNs. These form the backbone of the Internet infrastructure.</p>
+	<p>Think of these as Internet Service Providers, but facing inward towards the network instead of outward towards end consumers. ISPs like Comcast and Verizon are examples of residential ASNs, where we expect mostly human traffic. Cloud providers such as Google and Amazon are also ASNs, but targeted towards cloud services. We expect most of these requests to be automated in some way.</p>
+	<p>Looking at traffic on the ASN level is important because we can identify cloud-based traffic, or traffic using residential proxies, among others.</p>
 	<p>Let's take a look at which ASNs are associated with visitors in the United States. We’ll restrict ourselves to “eyeball” traffic, which is the term we use for requests coming from site visitors.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image21.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 4.1</strong> Top ASN in the United States.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vfhm7SZ899H8ancIgAVq1/2bb883fb7c344b88bff45feab84b624a/image21.png" alt="" class="kg-image" width="1999" height="587" loading="lazy">
+
 	</figure>
-	<p>From figure 4.1 we can clearly see the impact that cloud services have on traffic; 11.5% of all eyeball traffic comes from Amazon and Google. </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image22.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 4.2</strong> Top ASN in the United States for verified bot traffic.</em></figcaption>
+	<p><b><i>Figure 4.1</i></b><i> Top ASN in the United States.</i></p>
+	<p>From figure 4.1 we can clearly see the impact that cloud services have on traffic; 11.5% of all eyeball traffic comes from Amazon and Google.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42Vx0NeK5gy4izAtyuHtXq/6013759b29800388140da10bb3d81951/image22.png" alt="" class="kg-image" width="1999" height="595" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 4.2</i></b><i> Top ASN in the United States for verified bot traffic.</i></p>
 	<p>Verified bots operate in a different landscape, coming from cloud providers such as Amazon, Google, Microsoft, Advanced Hosting and Wowrack.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image8-4.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 4.3</strong> Top ASN in the United States for likely and definitely automated traffic.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hX8AfhmPJkiAINQjXzlyx/538a148513aecfcfd7eea3f78be7b127/image8-4.png" alt="" class="kg-image" width="1999" height="578" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 4.3</i></b><i> Top ASN in the United States for likely and definitely automated traffic.</i></p>
 	<p>Automated traffic has a variety of ASNs. Cloud providers such as Amazon, Google and Microsoft make up the 30% of automated traffic. Comcast also makes up a significant portion of traffic at 4.8%, indicating that some bots come from residential services.</p>
-	<h3 id="bots-during-covid-19-in-europe">Bots During COVID-19 In Europe</h3>
-	<p>Lockdowns and limits on public events came as a consequence of the ongoing coronavirus pandemic. Many people have been working from home, and even those who do not have this option are using the Internet in new ways. Overall, this has meant that Cloudflare’s network has grown tremendously. </p>
+	<h3>Bots During COVID-19 In Europe</h3>
+	<p>Lockdowns and limits on public events came as a consequence of the ongoing coronavirus pandemic. Many people have been working from home, and even those who do not have this option are using the Internet in new ways. Overall, this has meant that Cloudflare’s network has grown tremendously.</p>
 	<p>But how does this impact bot traffic? First let’s get an idea of how it impacted traffic in general. Countries were impacted by the virus at different times, so we expect to see differences, right?</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-30.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><strong>Figure 5.1</strong> <em>Total traffic across all regions.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rzZx17XrGONvWYx1OjhQO/589332b9a24ca1b1a5d5c673c1ab6087/image1-30.png" alt="" class="kg-image" width="1999" height="1247" loading="lazy">
+
 	</figure>
+	<p><b>Figure 5.1</b> <i>Total traffic across all regions.</i></p>
 	<p>Figure 5.1 has just the traffic increase. Globally, we are seeing an average increase of 10%, while North America saw an increase of over 40% compared to the beginning of the year. Some regions did not change much, such as Africa and Asia, while others, such as Europe saw an increased period, but has since normalized to previous levels.</p>
 	<p>Let's look at a few countries, so we can understand what this looks like.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-6.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 5.2</strong> Daily traffic evolution for Italy, the United Kingdom and Portugal, overlaid with Europe.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Gm3p9tTCf5ciaAG2CGpsF/70d202069b7355f67c5337f3d80d1e6f/image7-6.png" alt="" class="kg-image" width="1999" height="1437" loading="lazy">
+
 	</figure>
-	<p>Figure 5.2 shows daily traffic relative to January 15, when data collection started. For comparison, we have overall European traffic, and three selected countries: Italy, the United Kingdom and Portugal. Italy was picked because it was one of the first countries in Europe to face the worst of the coronavirus and enact lockdown measures. The United Kingdom took another strategy, with an initial focus on herd immunity, and enacted measures later than the others. Portugal is somewhere in between, locking down later than Italy, in slightly different circumstances. </p>
+	<p><b><i>Figure 5.2</i></b><i> Daily traffic evolution for Italy, the United Kingdom and Portugal, overlaid with Europe.</i></p>
+	<p>Figure 5.2 shows daily traffic relative to January 15, when data collection started. For comparison, we have overall European traffic, and three selected countries: Italy, the United Kingdom and Portugal. Italy was picked because it was one of the first countries in Europe to face the worst of the coronavirus and enact lockdown measures. The United Kingdom took another strategy, with an initial focus on herd immunity, and enacted measures later than the others. Portugal is somewhere in between, locking down later than Italy, in slightly different circumstances.</p>
 	<p>At the beginning of the year, traffic kept stable and fluctuations kept in line with the European average. As lockdown measures began, traffic increased. Italy was first out of these countries, rising a few weeks before the others, and keeping well above average. Eventually, all countries saw a growth in traffic, followed by a stabilization. Italy seems to have adjusted to a normal, with its growth in line with the European average. Portugal has also stabilized, but with busier weekdays. Conversely, the United Kingdom showed no signs of stopping, exceeding a growth of 40% compared to the beginning of the year.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image17-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 5.3</strong> Daily definitely automated traffic evolution for Italy, the United Kingdom and Portugal, overlaid with Europe.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KcqhhSQl2Yyw6djCq0q3C/a67738e2e4f11c438c8a754fbfdb9c00/image17-1.png" alt="" class="kg-image" width="1999" height="707" loading="lazy">
+
 	</figure>
-	<p>Definitely automated traffic did not have that much of a pronounced variation. Italian traffic kept steady throughout, and Portugal had a rather large increase. The biggest one, however, was the United Kingdom, which tripled its initial count. </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image10-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 5.4</strong> Verified bot traffic evolution for Italy, the United Kingdom and Portugal, overlaid with Europe.&nbsp;</em></figcaption>
+	<p><b><i>Figure 5.3</i></b><i> Daily definitely automated traffic evolution for Italy, the United Kingdom and Portugal, overlaid with Europe.</i></p>
+	<p>Definitely automated traffic did not have that much of a pronounced variation. Italian traffic kept steady throughout, and Portugal had a rather large increase. The biggest one, however, was the United Kingdom, which tripled its initial count.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5P8ZyuojJzPGmcl3efgcqJ/40b625521a96ed943526c5b29608c86b/image10-3.png" alt="" class="kg-image" width="1999" height="707" loading="lazy">
+
 	</figure>
-	<p>Verified bot traffic is steady, except in Italy, with a massive increase between March and May. What could be the cause of this? Are these a few zones, getting a massive number of requests? </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image9-6.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 5.5</strong> Verified bot traffic in Italy for the top 10 000 zones, relative to January 15th 2020.</em></figcaption>
+	<p><b><i>Figure 5.4</i></b><i> Verified bot traffic evolution for Italy, the United Kingdom and Portugal, overlaid with Europe.</i>&nbsp;</p>
+	<p>Verified bot traffic is steady, except in Italy, with a massive increase between March and May. What could be the cause of this? Are these a few zones, getting a massive number of requests?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Q57OIbJokvrpiBS5cxaw/658570580d12267e2945840de8295a00/image9-6.png" alt="" class="kg-image" width="1999" height="707" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 5.5</i></b><i> Verified bot traffic in Italy for the top 10 000 zones, relative to January 15th 2020.</i></p>
 	<p>Well, no. If we only examine the top 10,000 zones (by total verified bot requests), we can still see a massive increase in traffic for other zones. So, what’s happening?</p>
 	<p>Let's look at user agents. We can separate the top 10 user agents during the bump, and see how they evolve over time.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image13-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 5.6</strong> Verified bot traffic in Italy for the top 10 user agents, relative to January 15th 2020.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xY9yvU7ivvHGwyLVMa8G6/2a996200f112f7efb0f97cf9907b48e3/image13-1.png" alt="" class="kg-image" width="1999" height="738" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 5.6</i></b><i> Verified bot traffic in Italy for the top 10 user agents, relative to January 15th 2020.</i></p>
 	<p>We can see that these 10 user agents are responsible for the majority of verified traffic coming from Italy.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-19.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 5.7</strong> Verified bot traffic in Italy for the top user agent, relative to January 15 2020.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EnCrxpZgLfmyyyWLeEF31/5a5118dc047d75a61e311ec58c582163/image2-19.png" alt="" class="kg-image" width="1999" height="738" loading="lazy">
+
 	</figure>
-	<p>In fact, most of this increase is from a single user agent. This instance of Google image proxy anonymizes image requests from Gmail, which explains its popularity. </p>
-	<p>Where does this increase come from? Did this bot suddenly appear and disappear? </p>
-	<p>Not quite. One thing to keep in mind when dealing with bots is that they cross borders easily. As a proxy service, this bot is making calls on behalf of the end user – people opening emails. These requests will originate from a data center, which can be anywhere in the world. To see this in action, let's take a look at traffic for this bot in a few select countries. </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image23.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em><strong>Figure 5.8.</strong> Countries of origin for GoogleImageProxy.</em></figcaption>
+	<p><b><i>Figure 5.7</i></b><i> Verified bot traffic in Italy for the top user agent, relative to January 15 2020.</i></p>
+	<p>In fact, most of this increase is from a single user agent. This instance of Google image proxy anonymizes image requests from Gmail, which explains its popularity.</p>
+	<p>Where does this increase come from? Did this bot suddenly appear and disappear?</p>
+	<p>Not quite. One thing to keep in mind when dealing with bots is that they cross borders easily. As a proxy service, this bot is making calls on behalf of the end user – people opening emails. These requests will originate from a data center, which can be anywhere in the world. To see this in action, let's take a look at traffic for this bot in a few select countries.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cZ5OxCnVyzzvzqoQ4WIYP/e9f53f38463d590a12c63dd5b2be91d0/image23.png" alt="" class="kg-image" width="1999" height="721" loading="lazy">
+
 	</figure>
+	<p><b><i>Figure 5.8.</i></b><i> Countries of origin for GoogleImageProxy.</i></p>
 	<p>We can see that the global average barely budges. It appears that Google may be moving image proxy traffic between data centers and during the period we observed above that traffic was coming from Italy.</p>
-	<h3 id="summary">Summary</h3>
+	<h3>Summary</h3>
 	<p>With Cloudflare’s global reach, we’re in a position to understand how bots behave.</p>
-	<p>The first half of 2020 saw a massive increase in web traffic of around 35% since the beginning of the year, driven by the ongoing coronavirus pandemic, and some bots have taken advantage of it. </p>
-	<p>We explained how bot management works for our customers, and how we distinguish between likely automated and human traffic. </p>
-	<p>We showed an overview of how much of our global traffic is automated, and how bots change their behavior throughout the day and the week. Notably, 39.4% of all traffic Cloudflare processes comes from a suspected automated source. </p>
-	<p>A regional overview of automated traffic lets us know which regions were the source of traffic from likely automated agents. North America, Europe and Asia were the primary sources of traffic, and also of automated traffic in particular. </p>
+	<p>The first half of 2020 saw a massive increase in web traffic of around 35% since the beginning of the year, driven by the ongoing coronavirus pandemic, and some bots have taken advantage of it.</p>
+	<p>We explained how bot management works for our customers, and how we distinguish between likely automated and human traffic.</p>
+	<p>We showed an overview of how much of our global traffic is automated, and how bots change their behavior throughout the day and the week. Notably, 39.4% of all traffic Cloudflare processes comes from a suspected automated source.</p>
+	<p>A regional overview of automated traffic lets us know which regions were the source of traffic from likely automated agents. North America, Europe and Asia were the primary sources of traffic, and also of automated traffic in particular.</p>
 	<p>We then focused on North America, where the majority of automated traffic originates. The United States alone accounted for the majority of requests, over half of which come from automated sources.</p>
 	<p>To explore this further, we briefly dived into ASN traffic in the United States, so we could see where these requests were coming from. ASNs like Comcast and AT&amp;T were the top ASNs for overall traffic, but unsurprisingly, data centers like Google and Amazon AWS were the main drivers of automated traffic.</p>
 	<p>Finally, we examined how the coronavirus has impacted traffic in Europe, with a deeper dive on Italian traffic. This led to some interesting insights on verified bot traffic, which saw a massive increase in Italy for a few months.</p>

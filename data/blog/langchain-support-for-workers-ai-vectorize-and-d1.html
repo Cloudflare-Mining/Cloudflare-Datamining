@@ -1,45 +1,65 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/langchain-support-for-workers-ai-vectorize-and-d1-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/langchain-support-for-workers-ai-vectorize-and-d1-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/langchain-support-for-workers-ai-vectorize-and-d1-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/langchain-support-for-workers-ai-vectorize-and-d1-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://lh7-us.googleusercontent.com/X2uuTU5jqOf4kskV9IUy6-EFJtW1QL7NCTeaIK1Ezs29fHv5rxii32xZ_eAu-9IHMQQhzevrxEeUR4Zq5_C0Y_HmIciI-GZaj-RbEnRI4vnshmYAV6jymeq1KXQrqbrbvP7YIhjDfFpkusAeZZe2-HE" class="kg-image" alt="LangChain Support for Workers AI, Vectorize and D1" loading="lazy" width="624" height="351"></figure>
-	<p>During Developer Week, we announced<a href="https://blog.cloudflare.com/langchain-and-cloudflare"> LangChain support for Cloudflare Workers</a>. Langchain is an open-source framework that allows developers to create powerful AI workflows by combining different models, providers, and plugins using a declarative API — and it dovetails perfectly with Workers for creating full stack, AI-powered applications.</p>
+<div class="mb2 gray5">2 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/langchain-support-for-workers-ai-vectorize-and-d1">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/langchain-support-for-workers-ai-vectorize-and-d1">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/langchain-support-for-workers-ai-vectorize-and-d1">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/langchain-support-for-workers-ai-vectorize-and-d1">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vfmv2IUCSWhFxb0iIhRwp/c6bc5f90eb736356df74ec0551c89e86/X2uuTU5jqOf4kskV9IUy6-EFJtW1QL7NCTeaIK1Ezs29fHv5rxii32xZ_eAu-9IHMQQhzevrxEeUR4Zq5_C0Y_HmIciI-GZaj-RbEnRI4vnshmYAV6jymeq1KXQr.png" alt="LangChain Support for Workers AI, Vectorize and D1" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>During Developer Week, we announced <a href="https://blog.cloudflare.com/langchain-and-cloudflare">LangChain support for Cloudflare Workers</a>. Langchain is an open-source framework that allows developers to create powerful AI workflows by combining different models, providers, and plugins using a declarative API — and it dovetails perfectly with Workers for creating full stack, AI-powered applications.</p>
 	<p>Since then, we’ve been working with the LangChain team on deeper integration of many tools across Cloudflare’s developer platform and are excited to share what we’ve been up to.</p>
 	<p>Today, we’re announcing five new key integrations with LangChain:</p>
 	<ol>
-		<li><a href="https://js.langchain.com/docs/integrations/chat/cloudflare_workersai">Workers AI Chat Models</a>: This allows you to use <a href="https://developers.cloudflare.com/workers-ai/models/text-generation">Workers AI text generation</a> to power your chat model within your LangChain.js application.</li>
-		<li><a href="https://js.langchain.com/docs/integrations/llms/cloudflare_workersai">Workers AI Instruct Models</a>: This allows you to use Workers AI models fine-tuned for instruct use-cases, such as Mistral and CodeLlama, inside your Langchain.js application.</li>
-		<li><a href="https://js.langchain.com/docs/integrations/text_embedding/cloudflare_ai">Text Embeddings Models</a>: If you’re working with text embeddings, you can now use <a href="https://developers.cloudflare.com/workers-ai/models/text-embeddings">Workers AI text embeddings</a> with LangChain.js.</li>
-		<li><a href="https://js.langchain.com/docs/integrations/vectorstores/cloudflare_vectorize">Vectorize Vector Store</a>: When working with a Vector database and LangChain.js, you now have the option of using <a href="https://developers.cloudflare.com/vectorize">Vectorize</a>, Cloudflare’s powerful vector database.</li>
-		<li><a href="https://js.langchain.com/docs/integrations/chat_memory/cloudflare_d1">Cloudflare D1-Backed Chat Memory</a>: For longer-term persistence across chat sessions, you can swap out LangChain’s default in-memory chatHistory that backs chat memory classes like BufferMemory for a <a href="https://developers.cloudflare.com/d1">Cloudflare D1 instance</a>.</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/chat/cloudflare_workersai">Workers AI Chat Models</a>: This allows you to use <a href="https://developers.cloudflare.com/workers-ai/models/text-generation">Workers AI text generation</a> to power your chat model within your LangChain.js application.</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/llms/cloudflare_workersai">Workers AI Instruct Models</a>: This allows you to use Workers AI models fine-tuned for instruct use-cases, such as Mistral and CodeLlama, inside your Langchain.js application.</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/text_embedding/cloudflare_ai">Text Embeddings Models</a>: If you’re working with text embeddings, you can now use <a href="https://developers.cloudflare.com/workers-ai/models/text-embeddings">Workers AI text embeddings</a> with LangChain.js.</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/vectorstores/cloudflare_vectorize">Vectorize Vector Store</a>: When working with a Vector database and LangChain.js, you now have the option of using <a href="https://developers.cloudflare.com/vectorize">Vectorize</a>, Cloudflare’s powerful vector database.</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/chat_memory/cloudflare_d1">Cloudflare D1-Backed Chat Memory</a>: For longer-term persistence across chat sessions, you can swap out LangChain’s default in-memory chatHistory that backs chat memory classes like BufferMemory for a <a href="https://developers.cloudflare.com/d1">Cloudflare D1 instance</a>.</p>
+		</li>
 	</ol>
 	<p>With the addition of these five Cloudflare AI tools into LangChain, developers have powerful new primitives to integrate into new and existing AI applications. With LangChain’s expressive tooling for mixing and matching AI tools and models, you can use Vectorize, Cloudflare AI’s text embedding and generation models, and Cloudflare D1 to build a fully-featured AI application in just a few lines of code.</p>
-	<figure class="kg-card kg-embed-card">
-		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">This is a full persistent chat app powered by an LLM in 10 lines of code–deployed to <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> Workers, powered by <a href="https://twitter.com/LangChainAI?ref_src=twsrc%5Etfw">@LangChainAI</a> and <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> D1.<br><br>You can even pass in a unique sessionId and have completely user/session-specific conversations 🤯 <a href="https://t.co/le9vbMZ7Mc">https://t.co/le9vbMZ7Mc</a> <a href="https://t.co/jngG3Z7NQ6">pic.twitter.com/jngG3Z7NQ6</a></p>— Kristian Freeman (@kristianf_) <a href="https://twitter.com/kristianf_/status/1704592544099631243?ref_src=twsrc%5Etfw">September 20, 2023</a>
-		</blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-	</figure>
-	<h3 id="getting-started-with-a-cloudflare-langchain-nuxt-multi-source-chatbot-template">Getting started with a Cloudflare + LangChain + Nuxt Multi-source Chatbot template</h3>
-	<p>You can get started by using LangChain’s Cloudflare Chatbot template: <a href="https://github.com/langchain-ai/langchain-cloudflare-nuxt-template">https://github.com/langchain-ai/langchain-cloudflare-nuxt-template</a></p><!--kg-card-begin: markdown-->
-	<div style="position: relative; padding-top: 56.84210526315789%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/a510d87181af47fede2255c74da89d7f/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fa510d87181af47fede2255c74da89d7f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p></p><!--kg-card-end: markdown-->
+	<blockquote>
+		<p>This is a full persistent chat app powered by an LLM in 10 lines of code–deployed to <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> Workers, powered by <a href="https://twitter.com/LangChainAI?ref_src=twsrc%5Etfw">@LangChainAI</a> and <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> D1.</p>
+		<p>You can even pass in a unique sessionId and have completely user/session-specific conversations 🤯 <a href="https://t.co/le9vbMZ7Mc">https://t.co/le9vbMZ7Mc</a> <a href="https://t.co/jngG3Z7NQ6">pic.twitter.com/jngG3Z7NQ6</a></p>
+		<p>— Kristian Freeman (@kristianf_) <a href="https://twitter.com/kristianf_/status/1704592544099631243?ref_src=twsrc%5Etfw">September 20, 2023</a></p>
+	</blockquote>
+	<h3>Getting started with a Cloudflare + LangChain + Nuxt Multi-source Chatbot template</h3>
+	<p>You can get started by using LangChain’s Cloudflare Chatbot template: <a href="https://github.com/langchain-ai/langchain-cloudflare-nuxt-template">https://github.com/langchain-ai/langchain-cloudflare-nuxt-template</a></p>
 	<p>This application shows how various pieces of Cloudflare Workers AI fit together and expands on the concept of <a href="https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai">retrieval augmented generation (RAG)</a> to build a conversational retrieval system that can route between multiple data sources, choosing the one more relevant based on the incoming question. This method helps cut down on distraction from off-topic documents getting pulled in by a vector store’s similarity search, which could occur if only a single database were used.</p>
 	<p>The base version runs entirely on the Cloudflare Workers AI stack with the Llama 2-7B model. It uses:</p>
 	<ul>
-		<li>A chat variant of Llama 2-7B run on Cloudflare Workers AI</li>
-		<li>A Cloudflare Workers AI embeddings model</li>
-		<li>Two different Cloudflare Vectorize DBs (though you could add more!)</li>
-		<li>Cloudflare Pages for hosting</li>
-		<li>LangChain.js for orchestration</li>
-		<li>Nuxt + Vue for the frontend</li>
+		<li>
+			<p>A chat variant of Llama 2-7B run on Cloudflare Workers AI</p>
+		</li>
+		<li>
+			<p>A Cloudflare Workers AI embeddings model</p>
+		</li>
+		<li>
+			<p>Two different Cloudflare Vectorize DBs (though you could add more!)</p>
+		</li>
+		<li>
+			<p>Cloudflare Pages for hosting</p>
+		</li>
+		<li>
+			<p>LangChain.js for orchestration</p>
+		</li>
+		<li>
+			<p>Nuxt + Vue for the frontend</p>
+		</li>
 	</ul>
 	<p>The two default data sources are <a href="https://www.cloudflare.com/resources/assets/slt3lc6tev37/3HWObubm6fybC0FWUdFYAJ/5d5e3b0a4d9c5a7619984ed6076f01fe/Cloudflare_for_Campaigns_Security_Guide.pdf">a PDF detailing some of Cloudflare's features</a> and <a href="https://lilianweng.github.io/posts/2023-06-23-agent">a blog post by Lilian Weng at OpenAI</a> that talks about autonomous agents.</p>
 	<p>The bot will classify incoming questions as being about Cloudflare, AI, or neither, and draw on the corresponding data source for more targeted results. Everything is fully customizable - you can change the content of the ingested data, the models used, and all prompts!</p>
 	<p>And if you have access to the <a href="https://smith.langchain.com">LangSmith</a> beta, the app also has tracing set up so that you can easily <a href="https://smith.langchain.com/public/24807f4a-4335-497e-bfbf-3a1de019b22e/r">see and debug each step</a> in the application.</p>
-	<h3 id="we-can%E2%80%99t-wait-to-see-what-you-build">We can’t wait to see what you build</h3>
+	<h3>We can’t wait to see what you build</h3>
 	<p>We can't wait to see what you all build with LangChain and Cloudflare. Come tell us about it in <a href="https://discord.cloudflare.com">discord</a> or on our <a href="https://community.cloudflare.com">community forums</a>.</p>
 </div>

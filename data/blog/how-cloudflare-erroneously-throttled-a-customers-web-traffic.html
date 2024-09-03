@@ -1,24 +1,36 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-erroneously-throttled-a-customers-web-traffic-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-erroneously-throttled-a-customers-web-traffic-zh-tw">繁體中文</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/BLOG-1707-header-1.png" class="kg-image" alt="How Cloudflare erroneously throttled a customer’s web traffic" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-erroneously-throttled-a-customers-web-traffic">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-erroneously-throttled-a-customers-web-traffic">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TlF3dN51Im2Zyzwy04oyr/87d8e39fb3b663e2981ee92dc5f12168/BLOG-1707-header-1.png" alt="How Cloudflare erroneously throttled a customer’s web traffic" class="kg-image" width="2400" height="1350" loading="lazy">
+
+	</figure>
 	<p>Over the years when Cloudflare has had an <a href="https://blog.cloudflare.com/tag/outage">outage</a> that affected our customers we have very quickly blogged about what happened, why, and what we are doing to address the causes of the outage. Today’s post is a little different. It’s about a single customer’s website <a href="https://news.ycombinator.com/item?id=34639212">not working correctly</a> because of incorrect action taken by Cloudflare.</p>
 	<p>Although the customer was not in any way banned from Cloudflare, or lost access to their account, their website didn’t work. And it didn’t work because Cloudflare applied a bandwidth throttle between us and their origin server. The effect was that the website was unusable.</p>
 	<p>Because of this unusual throttle there was some internal confusion for our customer support team about what had happened. They, incorrectly, believed that the customer had been limited because of a breach of section 2.8 of our <a href="https://www.cloudflare.com/terms">Self-Serve Subscription Agreement</a> which prohibits use of our self-service CDN to serve excessive non-HTML content, such as images and video, without a paid plan that includes those services (this is, for example, designed to prevent someone building an image-hosting service on Cloudflare and consuming a huge amount of bandwidth; for that sort of use case we have paid <a href="https://www.cloudflare.com/products/cloudflare-images">image</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream">video</a> plans).</p>
 	<p>However, this customer wasn’t breaking section 2.8, and they were both a paying customer and a paying customer of Cloudflare Workers through which the throttled traffic was passing. This throttle should not have happened. In addition, there is and was no need for the customer to upgrade to some other plan level.</p>
 	<p>This incident has set off a number of workstreams inside Cloudflare to ensure better communication between teams, prevent such an incident happening, and to ensure that communications between Cloudflare and our customers are much clearer.</p>
 	<p>Before we explain our own mistake and how it came to be, we’d like to apologize to the customer. We realize the serious impact this had, and how we fell short of expectations. In this blog post, we want to explain what happened, and more importantly what we’re going to change to make sure it does not happen again.</p>
-	<h3 id="background">Background</h3>
+	<h3>Background</h3>
 	<p>On February 2, an on-call network engineer received an alert for a congesting interface with Equinix IX in our Ashburn data center. While this is not an unusual alert, this one stood out for two reasons. First, it was the second day in a row that it happened, and second, the congestion was due to a sudden and extreme spike of traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BHPQTMGbXizjZHfUEwf7S/5b98b49d92bb2a1693182be26f0d47c6/image2-1.png" alt="" class="kg-image" width="918" height="263" loading="lazy">
+
+	</figure>
 	<p>The engineer in charge identified the customer’s domain, tardis.dev, as being responsible for this sudden spike of traffic between Cloudflare and their origin network, a storage provider. Because this congestion happens on a physical interface connected to external peers, there was an immediate impact to many of our customers and peers. A port congestion like this one typically incurs packet loss, slow throughput and higher than usual latency. While we have automatic mitigation in place for congesting interfaces, in this case the mitigation was unable to resolve the impact completely.</p>
 	<p>The traffic from this customer went suddenly from an average of 1,500 requests per second, and a 0.5 MB payload per request, to 3,000 requests per second (2x) and more than 12 MB payload per request (25x).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ROLTRXsuoeYEpw0ewWDFX/97aa82beda829fe9dc958b909f118956/image1-4.png" alt="" class="kg-image" width="1999" height="1209" loading="lazy">
+
+	</figure>
 	<p>The congestion happened between Cloudflare and the origin network. Caching did not happen because the requests were all unique URLs going to the origin, and therefore we had no ability to serve from cache.</p>
-	<p><strong>A Cloudflare engineer decided to apply a throttling mechanism to prevent the zone from pulling so much traffic from their origin. Let's be very clear on this action: Cloudflare does not have an established process to throttle customers that consume large amounts of bandwidth, and does not intend to have one. This remediation was a mistake, it was not sanctioned, and we deeply regret it.</strong></p>
+	<p><b>A Cloudflare engineer decided to apply a throttling mechanism to prevent the zone from pulling so much traffic from their origin. Let's be very clear on this action: Cloudflare does not have an established process to throttle customers that consume large amounts of bandwidth, and does not intend to have one. This remediation was a mistake, it was not sanctioned, and we deeply regret it.</b></p>
 	<p>We lifted the throttle through internal escalation 12 hours and 53 minutes after having set it up.</p>
-	<h3 id="what-s-next">What's next</h3>
+	<h3>What's next</h3>
 	<p>To make sure a similar incident does not happen, we are establishing clear rules to mitigate issues like this one. Any action taken against a customer domain, paying or not, will require multiple levels of approval and clear communication to the customer. Our tooling will be improved to reflect this. We have many ways of traffic shaping in situations where a huge spike of traffic affects a link and could have applied a different mitigation in this instance.</p>
 	<p>We are in the process of rewriting our terms of service to better reflect the type of services that our customers deliver on our platform today. We are also committed to explaining to our users in plain language what is permitted under self-service plans. As a developer-first company with transparency as one of its core principles, we know we can do better here. We will follow up with a blog post dedicated to these changes later.</p>
 	<p>Once again, we apologize to the customer for this action and for the confusion it created for other Cloudflare customers.</p>

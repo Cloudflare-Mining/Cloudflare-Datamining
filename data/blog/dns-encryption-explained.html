@@ -1,76 +1,139 @@
-<div class="mb2 gray5">14 min read</div>
+<div class="mb2 gray5">13 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/dns-encryption-explained">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/dns-encryption-explained">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/dns-encryption-explained">日本語</a>, <a href="https://blog.cloudflare.com/es-es/dns-encryption-explained">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/dns-encryption-explained">Français</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/DoT-DoH@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a> is the address book of the Internet. When you visit cloudflare.com or any other site, your browser will ask a DNS resolver for the IP address where the website can be found. Unfortunately, these DNS queries and answers are typically unprotected. Encrypting DNS would improve user privacy and security. In this post, we will look at two mechanisms for encrypting DNS, known as <a href="https://www.cloudflare.com/learning/dns/dns-over-tls">DNS over TLS (DoT) and DNS over HTTPS (DoH)</a>, and explain how they work.</p>
-	<p>Applications that want to resolve a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a> to an IP address typically use DNS. This is usually not done explicitly by the programmer who wrote the application. Instead, the programmer writes something such as <code>fetch("https://example.com/news")</code> and expects a software library to handle the translation of “example.com” to an IP address.</p>
-	<p>Behind the scenes, the software library is responsible for discovering and connecting to the external <a href="https://www.cloudflare.com/learning/dns/what-is-recursive-dns">recursive DNS resolver</a> and speaking the DNS protocol (see the figure below) in order to resolve the name requested by the application. The choice of the external DNS resolver and whether any privacy and security is provided at all is outside the control of the application. It depends on the software library in use, and the policies provided by the operating system of the device that runs the software.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/DNS-flow-diagram.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Overview of DNS query and response</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IOupV8pnzUywVdRQ9IHgO/7e1defe58ce97c0cc5bc5fe80f60161d/DoT-DoH_2x.png" alt="" class="kg-image" width="1600" height="920" loading="lazy">
+
 	</figure>
-	<h2 id="the-external-dns-resolver">The external DNS resolver</h2>
+	<p>The <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a> is the address book of the Internet. When you visit cloudflare.com or any other site, your browser will ask a DNS resolver for the IP address where the website can be found. Unfortunately, these DNS queries and answers are typically unprotected. Encrypting DNS would improve user privacy and security. In this post, we will look at two mechanisms for encrypting DNS, known as <a href="https://www.cloudflare.com/learning/dns/dns-over-tls">DNS over TLS (DoT) and DNS over HTTPS (DoH)</a>, and explain how they work.</p>
+	<p>Applications that want to resolve a domain name to an IP address typically use DNS. This is usually not done explicitly by the programmer who wrote the application. Instead, the programmer writes something such as <code>fetch("https://example.com/news")</code> and expects a software library to handle the translation of “example.com” to an IP address.</p>
+	<p>Behind the scenes, the software library is responsible for discovering and connecting to the external <a href="https://www.cloudflare.com/learning/dns/what-is-recursive-dns">recursive DNS resolver</a> and speaking the DNS protocol (see the figure below) in order to resolve the name requested by the application. The choice of the external DNS resolver and whether any privacy and security is provided at all is outside the control of the application. It depends on the software library in use, and the policies provided by the operating system of the device that runs the software.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YN2i6IydAzTY2KPg0mdVA/341309cc4c1e658ff25524d6e7690e7b/DNS-flow-diagram.png" alt="" class="kg-image" width="1200" height="555" loading="lazy">
+
+	</figure>
+	<p>Overview of DNS query and response</p>
+	<h2>The external DNS resolver</h2>
 	<p>The operating system usually learns the resolver address from the local network using <a href="https://www.cloudflare.com/learning/dns/glossary/dynamic-dns">Dynamic Host Configuration Protocol (DHCP)</a>. In home and mobile networks, it typically ends up using the resolver from the Internet Service Provider (ISP). In corporate networks, the selected resolver is typically controlled by the network administrator. If desired, users with control over their devices can override the resolver with a specific address, such as the address of a public resolver like Google’s 8.8.8.8 or <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">Cloudflare’s 1.1.1.1</a>, but most users will likely not bother changing it when connecting to a public Wi-Fi hotspot at a coffee shop or airport.</p>
 	<p>The choice of external resolver has a direct impact on the end-user experience. Most users do not change their resolver settings and will likely end up using the DNS resolver from their network provider. The most obvious observable property is the speed and accuracy of name resolution. Features that improve privacy or security might not be immediately visible, but will help to prevent others from profiling or interfering with your browsing activity. This is especially important on public Wi-Fi networks where anyone in physical proximity can capture and decrypt wireless network traffic.</p>
-	<h2 id="unencrypted-dns">Unencrypted DNS</h2>
+	<h2>Unencrypted DNS</h2>
 	<p>Ever since DNS was created in 1987, it has been largely unencrypted. Everyone between your device and the resolver is able to snoop on or even modify your DNS queries and responses. This includes anyone in your local Wi-Fi network, your Internet Service Provider (ISP), and transit providers. This may affect your privacy by revealing the domain names that are you are visiting.</p>
 	<p>What can they see? Well, consider this network packet capture taken from a laptop connected to a home network:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/dns-at-home-marked.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d6w6OMSPn4jcLKyam6ArW/bb7023adaab4212afd371735a464ab98/dns-at-home-marked.png" alt="" class="kg-image" width="1600" height="1109" loading="lazy">
+
+	</figure>
 	<p>The following observations can be made:</p>
 	<ul>
-		<li>The UDP source port is 53 which is the standard port number for unencrypted DNS. The UDP payload is therefore likely to be a DNS answer.</li>
-		<li>That suggests that the source IP address 192.168.2.254 is a DNS resolver while the destination IP 192.168.2.14 is the DNS client.</li>
-		<li>The UDP payload could indeed be parsed as a DNS answer, and reveals that the user was trying to visit twitter.com.</li>
-		<li>If there are any future connections to 104.244.42.129 or 104.244.42.1, then it is most likely traffic that is directed at “twitter.com”.</li>
-		<li>If there is some further encrypted HTTPS traffic to this IP, succeeded by more DNS queries, it could indicate that a web browser loaded additional resources from that page. That could potentially reveal the pages that a user was looking at while visiting twitter.com.</li>
+		<li>
+			<p>The UDP source port is 53 which is the standard port number for unencrypted DNS. The UDP payload is therefore likely to be a DNS answer.</p>
+		</li>
+		<li>
+			<p>That suggests that the source IP address 192.168.2.254 is a DNS resolver while the destination IP 192.168.2.14 is the DNS client.</p>
+		</li>
+		<li>
+			<p>The UDP payload could indeed be parsed as a DNS answer, and reveals that the user was trying to visit twitter.com.</p>
+		</li>
+		<li>
+			<p>If there are any future connections to 104.244.42.129 or 104.244.42.1, then it is most likely traffic that is directed at “twitter.com”.</p>
+		</li>
+		<li>
+			<p>If there is some further encrypted HTTPS traffic to this IP, succeeded by more DNS queries, it could indicate that a web browser loaded additional resources from that page. That could potentially reveal the pages that a user was looking at while visiting twitter.com.</p>
+		</li>
 	</ul>
 	<p>Since the DNS messages are unprotected, other attacks are possible:</p>
 	<ul>
-		<li>Queries could be directed to a resolver that performs <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">DNS hijacking</a>. For example, in the UK, Virgin Media and <a href="https://bt.custhelp.com/app/answers/detail/a_id/14244/c/402">BT</a> return a fake response for domains that do not exist, redirecting users to a search page. This redirection is possible because the computer/phone blindly trusts the DNS resolver that was advertised using DHCP by the ISP-provided gateway router.</li>
-		<li>Firewalls can easily intercept, block or modify any unencrypted DNS traffic based on the port number alone. It is worth noting that plaintext inspection is not a silver bullet for achieving visibility goals, because the DNS resolver can be bypassed.</li>
+		<li>
+			<p>Queries could be directed to a resolver that performs <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">DNS hijacking</a>. For example, in the UK, Virgin Media and <a href="https://bt.custhelp.com/app/answers/detail/a_id/14244/c/402">BT</a> return a fake response for domains that do not exist, redirecting users to a search page. This redirection is possible because the computer/phone blindly trusts the DNS resolver that was advertised using DHCP by the ISP-provided gateway router.</p>
+		</li>
+		<li>
+			<p>Firewalls can easily intercept, block or modify any unencrypted DNS traffic based on the port number alone. It is worth noting that plaintext inspection is not a silver bullet for achieving visibility goals, because the DNS resolver can be bypassed.</p>
+		</li>
 	</ul>
-	<h2 id="encrypting-dns">Encrypting DNS</h2>
+	<h2>Encrypting DNS</h2>
 	<p>Encrypting DNS makes it much harder for snoopers to look into your DNS messages, or to corrupt them in transit. Just as the web moved from unencrypted HTTP to encrypted HTTPS, there are now upgrades to the DNS protocol that encrypt DNS itself. Encrypting the web has made it possible for private and secure communications and commerce to flourish. Encrypting DNS will further enhance user privacy.</p>
 	<p>Two standardized mechanisms exist to secure the DNS transport between you and the resolver, <a href="https://tools.ietf.org/html/rfc7858">DNS over TLS (2016)</a> and <a href="https://tools.ietf.org/html/rfc8484">DNS Queries over HTTPS (2018)</a>. Both are based on <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">Transport Layer Security (TLS)</a> which is also used to secure communication between you and a website using HTTPS. In TLS, the server (be it a web server or DNS resolver) authenticates itself to the client (your device) using a certificate. This ensures that no other party can impersonate the server (the resolver).</p>
 	<p>With DNS over TLS (DoT), the original DNS message is directly embedded into the secure TLS channel. From the outside, one can neither learn the name that was being queried nor modify it. The intended client application will be able to decrypt TLS, it looks like this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/dns-over-tls13-marked.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YaRbOJm8SaN6SZvy40b7t/1a322e1709fced7499e2d69d528a2161/dns-over-tls13-marked.png" alt="" class="kg-image" width="1600" height="957" loading="lazy">
+
+	</figure>
 	<p>In the packet trace for unencrypted DNS, it was clear that a DNS request can be sent directly by the client, followed by a DNS answer from the resolver. In the encrypted DoT case however, some <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS handshake</a> messages are exchanged prior to sending encrypted DNS messages:</p>
 	<ul>
-		<li>The client sends a Client Hello, advertising its supported TLS capabilities.</li>
-		<li>The server responds with a Server Hello, agreeing on TLS parameters that will be used to secure the connection. The Certificate message contains the identity of the server while the Certificate Verify message will contain a digital signature which can be verified by the client using the server Certificate. The client typically checks this certificate against its local list of trusted Certificate Authorities, but the DoT specification mentions <a href="https://tools.ietf.org/html/rfc7858#section-3.2">alternative trust mechanisms</a> such as public key pinning.</li>
-		<li>Once the TLS handshake is Finished by both the client and server, they can finally start exchanging encrypted messages.</li>
-		<li>While the above picture contains one DNS query and answer, in practice the secure TLS connection will remain open and will be reused for future DNS queries.</li>
+		<li>
+			<p>The client sends a Client Hello, advertising its supported TLS capabilities.</p>
+		</li>
+		<li>
+			<p>The server responds with a Server Hello, agreeing on TLS parameters that will be used to secure the connection. The Certificate message contains the identity of the server while the Certificate Verify message will contain a digital signature which can be verified by the client using the server Certificate. The client typically checks this certificate against its local list of trusted Certificate Authorities, but the DoT specification mentions <a href="https://tools.ietf.org/html/rfc7858#section-3.2">alternative trust mechanisms</a> such as public key pinning.</p>
+		</li>
+		<li>
+			<p>Once the TLS handshake is Finished by both the client and server, they can finally start exchanging encrypted messages.</p>
+		</li>
+		<li>
+			<p>While the above picture contains one DNS query and answer, in practice the secure TLS connection will remain open and will be reused for future DNS queries.</p>
+		</li>
 	</ul>
 	<p>Securing unencrypted protocols by slapping TLS on top of a new port has been done before:</p>
 	<ul>
-		<li>Web traffic: HTTP (tcp/80) -&gt; HTTPS (tcp/443)</li>
-		<li>Sending email: SMTP (tcp/25) -&gt; SMTPS (tcp/465)</li>
-		<li>Receiving email: IMAP (tcp/143) -&gt; IMAPS (tcp/993)</li>
-		<li>Now: DNS (tcp/53 or udp/53) -&gt; DoT (tcp/853)</li>
+		<li>
+			<p>Web traffic: HTTP (tcp/80) -&gt; HTTPS (tcp/443)</p>
+		</li>
+		<li>
+			<p>Sending email: SMTP (tcp/25) -&gt; SMTPS (tcp/465)</p>
+		</li>
+		<li>
+			<p>Receiving email: IMAP (tcp/143) -&gt; IMAPS (tcp/993)</p>
+		</li>
+		<li>
+			<p>Now: DNS (tcp/53 or udp/53) -&gt; DoT (tcp/853)</p>
+		</li>
 	</ul>
 	<p>A problem with introducing a new port is that existing firewalls may block it. Either because they employ a allowlist approach where new services have to be explicitly enabled, or a blocklist approach where a network administrator explicitly blocks a service. If the secure option (DoT) is less likely to be available than its insecure option, then users and applications might be tempted to try to fall back to unencrypted DNS. This subsequently could allow attackers to force users to an insecure version.</p>
 	<p>Such fallback attacks are not theoretical. <a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer">SSL stripping</a> has previously been used to downgrade HTTPS websites to HTTP, allowing attackers to steal passwords or hijack accounts.</p>
 	<p>Another approach, DNS Queries over HTTPS (DoH), was <a href="https://tools.ietf.org/html/rfc8484#section-1">designed</a> to support two primary use cases:</p>
 	<ul>
-		<li>Prevent the above problem where on-path devices interfere with DNS. This includes the port blocking problem above.</li>
-		<li>Enable web applications to access DNS through existing browser APIs.<br>DoH is essentially HTTPS, the same encrypted standard the web uses, and reuses the same port number (tcp/443). Web browsers have already <a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http">deprecated non-secure HTTP</a> in favor of HTTPS. That makes HTTPS a great choice for securely transporting DNS messages. An example of such a DoH request can be found <a href="https://tools.ietf.org/html/rfc8484#section-4.1.1">here</a>.</li>
+		<li>
+			<p>Prevent the above problem where on-path devices interfere with DNS. This includes the port blocking problem above.</p>
+		</li>
+		<li>
+			<p>Enable web applications to access DNS through existing browser APIs.DoH is essentially HTTPS, the same encrypted standard the web uses, and reuses the same port number (tcp/443). Web browsers have already <a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http">deprecated non-secure HTTP</a> in favor of HTTPS. That makes HTTPS a great choice for securely transporting DNS messages. An example of such a DoH request can be found <a href="https://tools.ietf.org/html/rfc8484#section-4.1.1">here</a>.</p>
+		</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/DoH-flow-diagram.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>DoH: DNS query and response transported over a secure HTTPS stream</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nHSbgeKy6xjxzhkGzotY8/a1df9b30ffadb3ae4d41c323e9c846f5/DoH-flow-diagram.png" alt="" class="kg-image" width="1200" height="1066" loading="lazy">
+
 	</figure>
+	<p>DoH: DNS query and response transported over a secure HTTPS stream</p>
 	<p>Some users have been concerned that the use of HTTPS could weaken privacy due to the potential use of cookies for tracking purposes. The DoH protocol designers <a href="https://tools.ietf.org/html/rfc8484#section-8">considered</a> various privacy aspects and explicitly discouraged use of HTTP cookies to prevent tracking, a recommendation that is widely respected. TLS session resumption improves TLS 1.2 handshake performance, but can potentially be used to correlate TLS connections. Luckily, use of <a href="https://www.cloudflare.com/learning/ssl/why-use-tls-1.3">TLS 1.3</a> obviates the need for TLS session resumption by reducing the number of round trips by default, effectively addressing its associated privacy concern.</p>
 	<p>Using HTTPS means that HTTP protocol improvements can also benefit DoH. For example, the in-development <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">HTTP/3 protocol</a>, built on top of <a href="https://blog.cloudflare.com/the-road-to-quic">QUIC</a>, could offer additional performance improvements in the presence of packet loss due to lack of head-of-line blocking. This means that multiple DNS queries could be sent simultaneously over the secure channel without blocking each other when one packet is lost.</p>
 	<p>A <a href="https://tools.ietf.org/html/draft-huitema-quic-dnsoquic">draft</a> for DNS over QUIC (DNS/QUIC) also exists and is similar to DoT, but without the head-of-line blocking problem due to the use of QUIC. Both <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> and DNS/QUIC, however, require a UDP port to be accessible. In theory, both could fall back to DoH over HTTP/2 and DoT respectively.</p>
-	<h2 id="deployment-of-dot-and-doh">Deployment of DoT and DoH</h2>
+	<h2>Deployment of DoT and DoH</h2>
 	<p>As both DoT and DoH are relatively new, they are not universally deployed yet. On the server side, major public resolvers including Cloudflare’s 1.1.1.1 and <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">Google DNS</a> support it. Many ISP resolvers however still lack support for it. A small list of public resolvers supporting DoH can be found at <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/DNS-server-sources">DNS server sources</a>, another list of public resolvers supporting DoT and DoH can be found on <a href="https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Public+Resolvers">DNS Privacy Public Resolvers</a>.</p>
 	<p>There are two methods to enable DoT or DoH on end-user devices:</p>
 	<ul>
-		<li>Add support to applications, bypassing the resolver service from the operating system.</li>
-		<li>Add support to the operating system, transparently providing support to applications.</li>
+		<li>
+			<p>Add support to applications, bypassing the resolver service from the operating system.</p>
+		</li>
+		<li>
+			<p>Add support to the operating system, transparently providing support to applications.</p>
+		</li>
 	</ul>
 	<p>There are generally three configuration modes for DoT or DoH on the client side:</p>
 	<ul>
-		<li>Off: DNS will not be encrypted.</li>
-		<li>Opportunistic mode: try to use a secure transport for DNS, but fallback to unencrypted DNS if the former is unavailable. This mode is vulnerable to downgrade attacks where an attacker can force a device to use unencrypted DNS. It aims to offer privacy when there are no on-path active attackers.</li>
-		<li>Strict mode: try to use DNS over a secure transport. If unavailable, fail hard and show an error to the user.</li>
+		<li>
+			<p>Off: DNS will not be encrypted.</p>
+		</li>
+		<li>
+			<p>Opportunistic mode: try to use a secure transport for DNS, but fallback to unencrypted DNS if the former is unavailable. This mode is vulnerable to downgrade attacks where an attacker can force a device to use unencrypted DNS. It aims to offer privacy when there are no on-path active attackers.</p>
+		</li>
+		<li>
+			<p>Strict mode: try to use DNS over a secure transport. If unavailable, fail hard and show an error to the user.</p>
+		</li>
 	</ul><!--kg-card-begin: html-->
 	<p>The current state for system-wide configuration of DNS over a secure transport:</p>
 	<ul>
@@ -93,45 +156,69 @@
 		<li>
 			Linux, macOS, and Windows can <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy">use</a> a DoH client in strict mode. The <code>cloudflared proxy-dns</code> command uses the Cloudflare DNS resolver by default, but users can override it through the proxy-dns-upstream option.
 		</li>
-	</ul><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	</ul><!--kg-card-end: html-->
 	<p>Web browsers support DoH instead of DoT:</p>
 	<ul>
-		<li>Firefox 62 <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https">supports</a> DoH and provides several <a href="https://wiki.mozilla.org/Trusted_Recursive_Resolver">Trusted Recursive Resolver (TRR)</a> settings. By default DoH is disabled, but Mozilla is running an <a href="https://blog.mozilla.org/futurereleases/2019/09/06/whats-next-in-making-dns-over-https-the-default">experiment</a> to enable DoH for some users in the USA. This experiment currently uses Cloudflare's 1.1.1.1 resolver, since we are the only provider that currently satisfies the <a href="https://wiki.mozilla.org/Security/DOH-resolver-policy">strict resolver policy</a> required by Mozilla. Since many DNS resolvers still do not support an encrypted DNS transport, Mozilla's approach will ensure that more users are protected using DoH.
+		<li>
+			<p>Firefox 62 <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https">supports</a> DoH and provides several <a href="https://wiki.mozilla.org/Trusted_Recursive_Resolver">Trusted Recursive Resolver (TRR)</a> settings. By default DoH is disabled, but Mozilla is running an <a href="https://blog.mozilla.org/futurereleases/2019/09/06/whats-next-in-making-dns-over-https-the-default">experiment</a> to enable DoH for some users in the USA. This experiment currently uses Cloudflare's 1.1.1.1 resolver, since we are the only provider that currently satisfies the <a href="https://wiki.mozilla.org/Security/DOH-resolver-policy">strict resolver policy</a> required by Mozilla. Since many DNS resolvers still do not support an encrypted DNS transport, Mozilla's approach will ensure that more users are protected using DoH.</p>
 			<ul>
-				<li>When enabled through the experiment, or through the “Enable DNS over HTTPS” option at Network Settings, Firefox will use opportunistic mode (network.trr.mode=2 at about:config).</li>
-				<li>Strict mode can be enabled with network.trr.mode=3, but requires an explicit resolver IP to be specified (for example, network.trr.bootstrapAddress=1.1.1.1).</li>
-				<li>While Firefox ignores the default resolver from the system, it can be configured with alternative resolvers. Additionally, enterprise deployments who use a resolver that does not support DoH have the <a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https">option</a> to disable DoH.</li>
+				<li>
+					<p>When enabled through the experiment, or through the “Enable DNS over HTTPS” option at Network Settings, Firefox will use opportunistic mode (network.trr.mode=2 at about:config).</p>
+				</li>
+				<li>
+					<p>Strict mode can be enabled with network.trr.mode=3, but requires an explicit resolver IP to be specified (for example, network.trr.bootstrapAddress=1.1.1.1).</p>
+				</li>
+				<li>
+					<p>While Firefox ignores the default resolver from the system, it can be configured with alternative resolvers. Additionally, enterprise deployments who use a resolver that does not support DoH have the <a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https">option</a> to disable DoH.</p>
+				</li>
 			</ul>
 		</li>
-		<li>Chrome 78 <a href="https://blog.chromium.org/2019/09/experimenting-with-same-provider-dns.html">enables</a> opportunistic DoH if the system resolver address matches one of the <a href="https://www.chromium.org/developers/dns-over-https">hard-coded DoH providers</a> (<a href="https://chromium.googlesource.com/chromium/src.git/+/f93a48e3720931c25a3abc7848b08afed43e3be2%5E%21">source code change</a>). This experiment is enabled for all platforms except Linux and iOS, and excludes enterprise deployments by default.</li>
-		<li>Opera 65 <a href="https://blogs.opera.com/desktop/2019/09/opera-65-0-3430-0-developer-update">adds</a> an option to enable DoH through Cloudflare's 1.1.1.1 resolver. This feature is off by default. Once enabled, it appears to use opportunistic mode: if 1.1.1.1:443 (without SNI) is reachable, it will be used. Otherwise it falls back to the default resolver, unencrypted.</li>
+		<li>
+			<p>Chrome 78 <a href="https://blog.chromium.org/2019/09/experimenting-with-same-provider-dns.html">enables</a> opportunistic DoH if the system resolver address matches one of the <a href="https://www.chromium.org/developers/dns-over-https">hard-coded DoH providers</a> (<a href="https://chromium.googlesource.com/chromium/src.git/+/f93a48e3720931c25a3abc7848b08afed43e3be2%5E%21">source code change</a>). This experiment is enabled for all platforms except Linux and iOS, and excludes enterprise deployments by default.</p>
+		</li>
+		<li>
+			<p>Opera 65 <a href="https://blogs.opera.com/desktop/2019/09/opera-65-0-3430-0-developer-update">adds</a> an option to enable DoH through Cloudflare's 1.1.1.1 resolver. This feature is off by default. Once enabled, it appears to use opportunistic mode: if 1.1.1.1:443 (without SNI) is reachable, it will be used. Otherwise it falls back to the default resolver, unencrypted.</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 	<p>The <a href="https://github.com/curl/curl/wiki/DNS-over-HTTPS">DNS over HTTPS</a> page from the curl project has a comprehensive list of DoH providers and additional implementations.</p>
 	<p>As an alternative to encrypting the full network path between the device and the external DNS resolver, one can take a middle ground: use unencrypted DNS between devices and the gateway of the local network, but <a href="https://blog.cloudflare.com/dns-over-tls-built-in">encrypt all DNS traffic</a> between the gateway router and the external DNS resolver. Assuming a secure wired or wireless network, this would protect all devices in the local network against a snooping ISP, or other adversaries on the Internet. As public Wi-Fi hotspots are not considered secure, this approach would not be safe on open Wi-Fi networks. Even if it is password-protected with WPA2-PSK, others will still be able to snoop and modify unencrypted DNS.</p>
-	<h2 id="other-security-considerations">Other security considerations</h2>
+	<h2>Other security considerations</h2>
 	<p>The previous sections described secure DNS transports, DoH and DoT. These will only ensure that your client receives the untampered answer from the DNS resolver. It does not, however, protect the client against the resolver returning the wrong answer (through <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">DNS hijacking</a> or <a href="https://www.cloudflare.com/learning/dns/dns-cache-poisoning">DNS cache poisoning</a> attacks). The “true” answer is determined by the owner of a domain or zone as reported by the authoritative name server. <a href="https://www.cloudflare.com/learning/dns/dns-security">DNSSEC</a> allows clients to verify the integrity of the returned DNS answer and catch any unauthorized tampering along the path between the client and authoritative name server.</p>
 	<p>However deployment of DNSSEC is hindered by middleboxes that <a href="https://labs.ripe.net/Members/willem_toorop/sunrise-dns-over-tls-sunset-dnssec">incorrectly</a> forward DNS messages, and even if the information is available, stub resolvers used by applications might not even validate the results. A report from 2016 <a href="https://www.internetsociety.org/resources/doc/2016/state-of-dnssec-deployment-2016">found</a> that only 26% of users use DNSSEC-validating resolvers.</p>
 	<p>DoH and DoT protect the transport between the client and the public resolver. The public resolver may have to reach out to additional authoritative name servers in order to resolve a name. Traditionally, the path between any resolver and the authoritative name server uses unencrypted DNS. To protect these DNS messages as well, we did an experiment with Facebook, using DoT between 1.1.1.1 and Facebook’s authoritative name servers. While setting up a secure channel using TLS increases latency, it can be amortized over many queries.</p>
 	<p>Transport encryption ensures that resolver results and metadata are protected. For example, the <a href="https://tools.ietf.org/html/rfc7871">EDNS Client Subnet (ECS)</a> information included with DNS queries could reveal the original client address that started the DNS query. Hiding that information along the path improves privacy. It will also <a href="https://labs.ripe.net/Members/willem_toorop/sunrise-dns-over-tls-sunset-dnssec">prevent</a> broken middle-boxes from breaking DNSSEC due to issues in forwarding DNS.</p>
-	<h2 id="operational-issues-with-dns-encryption">Operational issues with DNS encryption</h2>
+	<h2>Operational issues with DNS encryption</h2>
 	<p>DNS encryption may bring challenges to individuals or organizations that rely on monitoring or modifying DNS traffic. Security appliances that rely on passive monitoring watch all incoming and outgoing network traffic on a machine or on the edge of a network. Based on unencrypted DNS queries, they could potentially identify machines which are infected with malware for example. If the DNS query is encrypted, then passive monitoring solutions will not be able to monitor domain names.</p>
 	<p>Some parties expect DNS resolvers to apply content filtering for purposes such as:</p>
 	<ul>
-		<li>Blocking domains used for malware distribution.</li>
-		<li>Blocking advertisements.</li>
-		<li>Perform parental control filtering, blocking domains associated with adult content.</li>
-		<li>Block access to domains serving illegal content according to local regulations.</li>
-		<li>Offer a <a href="https://en.wikipedia.org/wiki/Split-horizon_DNS">split-horizon DNS</a> to provide different answers depending on the source network.</li>
+		<li>
+			<p>Blocking domains used for malware distribution.</p>
+		</li>
+		<li>
+			<p>Blocking advertisements.</p>
+		</li>
+		<li>
+			<p>Perform parental control filtering, blocking domains associated with adult content.</p>
+		</li>
+		<li>
+			<p>Block access to domains serving illegal content according to local regulations.</p>
+		</li>
+		<li>
+			<p>Offer a <a href="https://en.wikipedia.org/wiki/Split-horizon_DNS">split-horizon DNS</a> to provide different answers depending on the source network.</p>
+		</li>
 	</ul>
 	<p>An advantage of blocking access to domains via the DNS resolver is that it can be centrally done, without reimplementing it in every single application. Unfortunately, it is also quite coarse. Suppose that a website hosts content for multiple users at example.com/videos/for-kids/ and example.com/videos/for-adults/. The DNS resolver will only be able to see “example.com” and can either choose to block it or not. In this case, application-specific controls such as browser extensions would be more effective since they can actually look into the URLs and selectively prevent content from being accessible.</p>
 	<p>DNS monitoring is not comprehensive. Malware could skip DNS and hardcode IP addresses, or use <a href="https://blog.netlab.360.com/an-analysis-of-godlua-backdoor-en">alternative methods</a> to query an IP address. However, not all malware is that complicated, so DNS monitoring can still serve as a <a href="https://en.wikipedia.org/wiki/Defense_in_depth_%28computing%29">defence-in-depth</a> tool.</p>
 	<p>All of these non-passive monitoring or DNS blocking use cases require support from the DNS resolver. Deployments that rely on opportunistic DoH/DoT upgrades of the current resolver will maintain the same feature set as usually provided over unencrypted DNS. Unfortunately this is vulnerable to downgrades, as mentioned before. To solve this, system administrators can point endpoints to a DoH/DoT resolver in strict mode. Ideally this is done through secure device management solutions (<a href="https://en.wikipedia.org/wiki/Mobile_device_management">MDM</a>, <a href="https://en.wikipedia.org/wiki/Group_Policy">group policy</a> on Windows, etc.).</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>One of the cornerstones of the Internet is mapping names to an address using DNS. DNS has traditionally used insecure, unencrypted transports. This has been abused by ISPs in the past for injecting <a href="https://www.icsi.berkeley.edu/pubs/networking/redirectingdnsforads11.pdf">advertisements</a>, but also causes a privacy leak. Nosey visitors in the coffee shop can use unencrypted DNS to follow your activity. All of these issues can be solved by using DNS over TLS (DoT) or DNS over HTTPS (DoH). These techniques to protect the user are relatively new and are seeing increasing adoption.</p>
 	<p>From a technical perspective, DoH is very similar to HTTPS and follows the general industry trend to <a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http">deprecate non-secure options</a>. DoT is a simpler transport mode than DoH as the HTTP layer is removed, but that also makes it easier to be blocked, either deliberately or by accident.</p>
 	<p>Secondary to enabling a secure transport is the choice of a DNS resolver. Some vendors will use the locally configured DNS resolver, but try to opportunistically upgrade the unencrypted transport to a more secure transport (either DoT or DoH). Unfortunately, the DNS resolver usually defaults to one provided by the ISP which may not support secure transports.</p>
 	<p>Mozilla has adopted a different approach. Rather than relying on local resolvers that may not even support DoH, they allow the user to explicitly select a resolver. Resolvers recommended by Mozilla have to satisfy <a href="https://wiki.mozilla.org/Security/DOH-resolver-policy">high standards</a> to protect user privacy. To ensure that parental control features based on DNS remain functional, and to support the split-horizon use case, Mozilla has <a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https">added</a> a mechanism that allows private resolvers to disable DoH.</p>
 	<p>The DoT and DoH transport protocols are ready for us to move to a more secure Internet. As can be seen in previous packet traces, these protocols are similar to existing mechanisms to <a href="https://www.cloudflare.com/application-services/solutions">secure application traffic</a>. Once this security and privacy hole is closed, there will be <a href="https://arxiv.org/pdf/1906.09682.pdf">many</a> <a href="https://blog.cloudflare.com/esni">more</a> to tackle.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/tales-from-the-crypto-team@2x-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rE1TtD6u8D6Wk64LriLUB/a715d1bf411932967df73bd32dd4191e/tales-from-the-crypto-team_2x-5.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
+
+	</figure>
 </div>

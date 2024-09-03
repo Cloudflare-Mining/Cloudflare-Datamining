@@ -1,31 +1,43 @@
-<div class="mb2 gray5">16 min read</div>
+<div class="mb2 gray5">14 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/The-tale-of-a-single-register-value-header-2.png" class="kg-image" alt="The tale of a single register value" loading="lazy"></figure>
-	<blockquote>“Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth.” — Sherlock Holmes</blockquote>
-	<h2 id="intro">Intro</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3l34KM4Sax8EgLid3Z9UbD/a003b8ac4086c3099966d335cec46968/The-tale-of-a-single-register-value-header-2.png" alt="The tale of a single register value" class="kg-image" width="1200" height="628" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>“Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth.” — Sherlock Holmes</p>
+	</blockquote>
+	<h2>Intro</h2>
 	<p>It’s not every day that you get to debug what may well be a packet of death. It was certainly the first time for me.</p>
 	<p>What do I mean by “a packet of death”? A software bug where the network stack crashes in reaction to a single received network packet, taking down the whole operating system with it. Like in the well known case of Windows <a href="https://en.wikipedia.org/wiki/Ping_of_death">ping of death</a>.</p>
-	<p><em>Challenge accepted.</em></p>
-	<h2 id="it-starts-with-an-oops">It starts with an oops</h2>
+	<p><i>Challenge accepted.</i></p>
+	<h2>It starts with an oops</h2>
 	<p>Around a year ago <a href="https://lore.kernel.org/netdev/CAKxSbF01cLpZem2GFaUaifh0S-5WYViZemTicAg7FCHOnh6kug@mail.gmail.com/T/#u">we started seeing kernel crashes</a> in the Linux ipv4 stack. Servers were crashing sporadically, but we learned the hard way to never ignore cases like that — when possible we always trace crashes. We also couldn’t tie it to a particular kernel version, which could indicate a regression which hopefully could be tracked down to a single faulty change in the Linux kernel.</p>
 	<p>The crashed servers were leaving behind only a crash report, affectionately known as a “kernel oops”. Let’s take a look at it and go over what information we have there.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/oops-before-decode-white-bg.png" class="kg-image" alt="kernel oops before decoding" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X4BpNNGAD1ZPfxBlb1o4T/f1f5b48598c3d3a43f039fc6698cfc54/oops-before-decode-white-bg.png" alt="kernel oops before decoding" class="kg-image" width="1920" height="1348" loading="lazy">
+
+	</figure>
 	<p>Parts of the oops, like offsets into functions, need to be decoded in order to be human-readable. Fortunately Linux comes with the <code>decode_stacktrace.sh</code> script that did the work for us.</p>
-	<p>All we need is to install a kernel debug and source packages before running the script. We will use the latest version of the script as it has been significantly improved since Linux v5.4 came out.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ RELEASE=`uname -r`
+	<p>All we need is to install a kernel debug and source packages before running the script. We will use the latest version of the script as it has been significantly improved since Linux v5.4 came out.</p>
+	<pre class="language-bash"><code class="language-bash">$ RELEASE=`uname -r`
 $ apt install linux-image-$RELEASE-dbg linux-source-$RELEASE
 $ curl -sLO https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/scripts/decode_stacktrace.sh
 $ curl -sLO https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/scripts/decodecode
 $ chmod +x decode_stacktrace.sh decodecode
-$ ./decode_stacktrace.sh -r 5.4.14-cloudflare-2020.1.11 &lt; oops.txt &gt; oops-decoded.txt
-</code></pre>
-	<!--kg-card-end: markdown-->
+$ ./decode_stacktrace.sh -r 5.4.14-cloudflare-2020.1.11 &lt; oops.txt &gt; oops-decoded.txt</code></pre>
 	<p>When decoded, the oops report is even longer than before! But that is a good thing. There is new information there that can help us.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/oops-after-decode-white-bg.png" class="kg-image" alt="kernel oops after decoding" loading="lazy"></figure>
-	<h2 id="what-has-happened">What has happened?</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1J7tFIHQHeUhXDkBLEWFth/c42f9684f0222b839ae6ed3c77cf770c/oops-after-decode-white-bg.png" alt="kernel oops after decoding" class="kg-image" width="1920" height="2365" loading="lazy">
+
+	</figure>
+	<h2>What has happened?</h2>
 	<p>With this much input we can start sketching a picture of what could have happened. First thing to check is where exactly did we crash?</p>
-	<p>The report points at line 5160 in the <code>skb_gso_transport_seglen()</code> function. If we take a look at the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/core/skbuff.c?h=v5.4.14#n5160">source code</a>, we can get a rough idea of what happens there. We are processing a <a href="https://www.kernel.org/doc/html/latest/networking/segmentation-offloads.html#generic-segmentation-offload">Generic Segmentation Offload</a> (GSO) packet carrying an encapsulated TCP packet. What is a GSO packet? In this context it's a batch of consecutive TCP segments, travelling through the network stack together to amortize the processing cost. We will look more at the GSO later.</p><!--kg-card-begin: markdown-->
-	<pre><code>net/core/skbuff.c:
+	<p>The report points at line 5160 in the <code>skb_gso_transport_seglen()</code> function. If we take a look at the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/core/skbuff.c?h=v5.4.14#n5160">source code</a>, we can get a rough idea of what happens there. We are processing a <a href="https://www.kernel.org/doc/html/latest/networking/segmentation-offloads.html#generic-segmentation-offload">Generic Segmentation Offload</a> (GSO) packet carrying an encapsulated TCP packet. What is a GSO packet? In this context it's a batch of consecutive TCP segments, travelling through the network stack together to amortize the processing cost. We will look more at the GSO later.</p>
+	<pre class="language-bash"><code class="language-bash">net/core/skbuff.c:
 5150) static unsigned int skb_gso_transport_seglen(const struct sk_buff *skb)
 5151) {
           …
@@ -36,32 +48,38 @@ $ ./decode_stacktrace.sh -r 5.4.14-cloudflare-2020.1.11 &lt; oops.txt &gt; oops-
 5161)     } else if (…) {
           …
 5172)     return thlen + shinfo-&gt;gso_size;
-5173) }
-</code></pre>
-	<!--kg-card-end: markdown-->
+5173) }</code></pre>
 	<p>The exact line where we crashed belongs to an if-branch that handles tunnel traffic. It calculates the length of the TCP header of the inner packet, that is the encapsulated one. We do that to compute the length of the outer L4 segment, which accounts for the inner packet length:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>To understand how the length of the inner TCP header is computed we have to peel off a few layers of inlined function calls:</p><!--kg-card-begin: markdown-->
-	<pre><code>inner_tcp_hdrlen(skb)
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5f4jCCQGws5d2j7iRB8Duo/e622a6437081ae2ffa1a7f54e73162ff/image3-9.png" alt="" class="kg-image" width="601" height="223" loading="lazy">
+
+	</figure>
+	<p>To understand how the length of the inner TCP header is computed we have to peel off a few layers of inlined function calls:</p>
+	<pre class="language-bash"><code class="language-bash">inner_tcp_hdrlen(skb)
 ⇓
 inner_tcp_hdr(skb)-&gt;doff * 4
 ⇓
 ((struct tcphdr *)skb_inner_transport_header(skb))-&gt;doff * 4
 ⇓
-((struct tcphdr *)(skb-&gt;head + skb-&gt;inner_transport_header))-&gt;doff * 4
-</code></pre>
-	<!--kg-card-end: markdown-->
+((struct tcphdr *)(skb-&gt;head + skb-&gt;inner_transport_header))-&gt;doff * 4</code></pre>
 	<p>Now it is clear that <code>inner_tcp_hdrlen(skb)</code> simply reads the <a href="https://datatracker.ietf.org/doc/html/rfc793#section-3.1">Data Offset field</a> (<code>doff</code>) inside the inner TCP header. Because Data Offset carries the number of 32-bit words in the TCP header, we multiply it by 4 to get the TCP header length in bytes.</p>
 	<p>From the memory access point of view, to read the Data Offset value we need to:</p>
 	<ol>
-		<li>load <code>skb-&gt;head</code> value from address <code>skb + offsetof(struct sk_buff, head)</code></li>
-		<li>load <code>skb-&gt;inner_transport_header</code> value from address <code>skb + offsetof(struct sk_buff, inner_transport_header)</code>,</li>
-		<li>load the TCP Data Offset from <code>skb-&gt;head + skb-&gt;inner_transport_header + offsetof(struct tcphdr, doff)</code></li>
+		<li>
+			<p>load <code>skb-&gt;head</code> value from address <code>skb + offsetof(struct sk_buff, head)</code></p>
+		</li>
+		<li>
+			<p>load <code>skb-&gt;inner_transport_header</code> value from address <code>skb + offsetof(struct sk_buff, inner_transport_header)</code>,</p>
+		</li>
+		<li>
+			<p>load the TCP Data Offset from <code>skb-&gt;head + skb-&gt;inner_transport_header + offsetof(struct tcphdr, doff)</code></p>
+		</li>
 	</ol>
 	<p>Potentially, any of these loads could trigger a page fault. But it’s unlikely that <code>skb</code> contains an invalid address since we accessed the <code>skb-&gt;encapsulation</code> field without crashing just a few lines earlier. Our main suspect is the last load.</p>
 	<p>The invalid memory address we attempt to load from should be in one of the CPU registers at the time of the exception. And we have the CPU register snapshot in the oops report. Which register holds the address? That has been decided by the compiler. We will need to take a look at the instruction stream to discover that.</p>
-	<p>Remember the disassembly in the decoded kernel oops? Now is the time to go back to it. Hint, it’s in <a href="https://en.wikipedia.org/wiki/X86_assembly_language#Syntax">AT&amp;T syntax</a>. But to give everyone a fair chance to follow along, here’s the same disassembly but in Intel syntax. (Alright, alright. You caught me. I just can’t read the AT&amp;T syntax.)</p><!--kg-card-begin: markdown-->
-	<pre><code>All code
+	<p>Remember the disassembly in the decoded kernel oops? Now is the time to go back to it. Hint, it’s in <a href="https://en.wikipedia.org/wiki/X86_assembly_language#Syntax">AT&amp;T syntax</a>. But to give everyone a fair chance to follow along, here’s the same disassembly but in Intel syntax. (Alright, alright. You caught me. I just can’t read the AT&amp;T syntax.)</p>
+	<pre class="language-bash"><code class="language-bash">All code
 ========
    0:   c0 41 83 e0             rol    BYTE PTR [rcx-0x7d],0xe0
    4:   11 f6                   adc    esi,esi
@@ -94,25 +112,25 @@ Code starting with the faulting instruction
   11:   01 d0                   add    eax,edx
   13:   c3                      ret
   14:   45                      rex.RB
-  15:   85                      .byte 0x85
-</code></pre>
-	<!--kg-card-end: markdown-->
+  15:   85                      .byte 0x85</code></pre>
 	<p>When the trapped page fault happened, we tried to load from address <code>%rcx + 0xc</code>, or 12 bytes from whatever memory location <code>%rcx</code> held. Which is hardly a coincidence since the Data Offset field is 12 bytes into the TCP header.</p>
-	<p>This means that <code>%rcx</code> holds the computed <code>skb-&gt;head + skb-&gt;inner_transport_header</code> address. Let’s take a look at it:</p><!--kg-card-begin: markdown-->
-	<pre><code>RSP: 0018:ffffa4740d344ba0 EFLAGS: 00010202
+	<p>This means that <code>%rcx</code> holds the computed <code>skb-&gt;head + skb-&gt;inner_transport_header</code> address. Let’s take a look at it:</p>
+	<pre class="language-bash"><code class="language-bash">RSP: 0018:ffffa4740d344ba0 EFLAGS: 00010202
 RAX: 000000000000feda RBX: ffff9d982becc900 RCX: ffff9d9624bbaffc
 RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
+…</code></pre>
 	<p>The RCX value doesn’t look particularly suspicious. We can say that:</p>
 	<ol>
-		<li>it’s in a kernel virtual address space because it is greater than <code>0xffff000000000000</code> - expected, and</li>
-		<li>it is very close to the 4 KiB page boundary (<code>0xffff9d9624bbb000</code> - 4),</li>
+		<li>
+			<p>it’s in a kernel virtual address space because it is greater than <code>0xffff000000000000</code> - expected, and</p>
+		</li>
+		<li>
+			<p>it is very close to the 4 KiB page boundary (<code>0xffff9d9624bbb000</code> - 4),</p>
+		</li>
 	</ol>
 	<p>... and not much more.</p>
-	<p>We must go back further in the instruction stream. Where did the value in <code>%rcx</code> come from? What I like to do is try to correlate the machine code leading up to the crash with pseudo source code:</p><!--kg-card-begin: markdown-->
-	<pre><code>&lt;function entry&gt;                # %rdi = skb
+	<p>We must go back further in the instruction stream. Where did the value in <code>%rcx</code> come from? What I like to do is try to correlate the machine code leading up to the crash with pseudo source code:</p>
+	<pre class="language-bash"><code class="language-bash"><function entry="">                # %rdi = skb
 …
 movzx  eax,WORD PTR [rdi+0xaa]  # %eax = skb-&gt;inner_transport_header
 movzx  esi,WORD PTR [rdi+0xb2]  # %esi = skb-&gt;transport_header
@@ -121,91 +139,110 @@ sub    rax,rsi                  # %rax = skb-&gt;inner_transport_header - skb-&g
 test   r8d,r8d
 mov    rsi,rax                  # %rsi = skb-&gt;inner_transport_header - skb-&gt;transport_header
 je     0x37
-movzx  eax,BYTE PTR [rcx+0xc]   # %eax = *(skb-&gt;head + skb-&gt;inner_transport_header + offsetof(struct tcphdr, doff))
-</code></pre>
-	<!--kg-card-end: markdown-->
+movzx  eax,BYTE PTR [rcx+0xc]   # %eax = *(skb-&gt;head + skb-&gt;inner_transport_header + offsetof(struct tcphdr, doff))</function></code></pre>
 	<p>How did I decode that assembly snippet? We know that the <code>skb</code> address was passed to our function in the <code>%rdi</code> register because the <a href="https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI">System V AMD64 ABI calling convention</a> dictates that. If the <code>%rdi</code> register hasn’t been clobbered by any function calls, or reused because the compiler decided so, then maybe, just maybe, it still holds the <code>skb</code> address.</p>
-	<p>If <code>0xaa</code> and <code>0xb2</code> are offsets into an <code>sk_buff</code> structure, then <code>pahole</code> tool can tell us which fields they correspond to:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ pahole --hex -C sk_buff /usr/lib/debug/vmlinux-5.4.14-cloudflare-2020.1.11 | grep '\(head\|inner_transport_header\|transport_header\);'
+	<p>If <code>0xaa</code> and <code>0xb2</code> are offsets into an <code>sk_buff</code> structure, then <code>pahole</code> tool can tell us which fields they correspond to:</p>
+	<pre class="language-bash"><code class="language-bash">$ pahole --hex -C sk_buff /usr/lib/debug/vmlinux-5.4.14-cloudflare-2020.1.11 | grep '\(head\|inner_transport_header\|transport_header\);'
         __u16                      inner_transport_header; /*  0xaa   0x2 */
         __u16                      transport_header;     /*  0xb2   0x2 */
-        unsigned char *            head;                 /*  0xc0   0x8 */
-</code></pre>
-	<!--kg-card-end: markdown-->
+        unsigned char *            head;                 /*  0xc0   0x8 */</code></pre>
 	<p>To confirm our guesswork, we can <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-10-gso-encap-crash/listings/gdb-disassemble-skb_gso_transport_seglen.txt">disassemble the whole function</a> in <code>gdb</code>.</p>
 	<p>It would be great to find out the value of the <code>inner_transport_header</code> and <code>transport_header</code> offsets. But the registers that were holding them, <code>%rax</code> and <code>%rsi</code>, respectively, were reused after the offset values were loaded.</p>
 	<p>However, we can still examine the difference between <code>inner_transport_header</code> and <code>transport_header</code> that both <code>%rax</code> and <code>%rsi</code> hold. Let’s take a look.</p>
-	<h2 id="the-suspicious-offset">The suspicious offset</h2>
-	<p>Here are the register values from the oops as a reminder:</p><!--kg-card-begin: markdown-->
-	<pre><code>RAX: 000000000000feda RBX: ffff9d982becc900 RCX: ffff9d9624bbaffc
-RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<h2>The suspicious offset</h2>
+	<p>Here are the register values from the oops as a reminder:</p>
+	<pre class="language-bash"><code class="language-bash">RAX: 000000000000feda RBX: ffff9d982becc900 RCX: ffff9d9624bbaffc
+RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900</code></pre>
 	<p>From the register snapshot we can tell that:</p>
 	<p><code>%rax = %rsi = skb-&gt;inner_transport_header - skb-&gt;transport_header = 0xfeda = 65242</code></p>
 	<p>That is clearly suspicious. We expect that <code>skb-&gt;transport_header &lt; skb-&gt;inner_transport_header</code>, so either</p>
 	<ol>
-		<li><code>skb-&gt;inner_transport_header &gt; 0xfeda</code>, which would mean that between outer and inner L4 packets there is 65k+ bytes worth of headers - unlikely, or</li>
-		<li><code>0xfeda</code> is a garbage value, perhaps an effect of an underflow if <code>skb-&gt;inner_transport_header &lt; skb-&gt;transport_header</code>.</li>
+		<li>
+			<p><code>skb-&gt;inner_transport_header &gt; 0xfeda</code>, which would mean that between outer and inner L4 packets there is 65k+ bytes worth of headers - unlikely, or</p>
+		</li>
+		<li>
+			<p><code>0xfeda</code> is a garbage value, perhaps an effect of an underflow if <code>skb-&gt;inner_transport_header &lt; skb-&gt;transport_header</code>.</p>
+		</li>
 	</ol>
 	<p>Let’s entertain the theory that an underflow has occurred.</p>
 	<p>Any other scenario, be it an out-of-bounds write or a use-after-free that corrupted the memory, is a scary prospect where we don’t stand much chance of debugging it without help from tools like <a href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html">KASAN report</a>.</p>
 	<p>But if we assume for a moment that it’s an underflow, then the task is simple ?. We “just” need to audit all places where <code>skb-&gt;inner_transport_header</code> or <code>skb-&gt;transport_header</code> offsets could have been updated while the <code>skb</code> buffer travelled through the network stack.</p>
 	<p>That raises the question — what path did the packet take through the network stack before it brought the machine down?</p>
-	<h2 id="packet-path">Packet path</h2>
+	<h2>Packet path</h2>
 	<p>It is time to take a look at the call trace in the oops report. If we walk through it, it is apparent that a veth device received a packet. The packet then got routed and forwarded to some other network device. The kernel crashed before the egress device transmitted the packet out.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30cfhDbkYftnpJA2cU0q6W/c7c536d321ac54710345dc2028e12f67/image4-2.png" alt="" class="kg-image" width="802" height="242" loading="lazy">
+
+	</figure>
 	<p>What immediately draws our attention is the <code>veth_poll()</code> function in the call trace. Polling inside a virtual device that acts as a simple pipe joining two network namespaces together? Puzzling!</p>
 	<p>The regular operation mode of a <code>veth</code> device is that transmission of a packet from one side of a <code>veth-pair</code> results in immediate, in-line, on the same CPU, reception of the packet by the other side of the pair. There shouldn't be any polling, context switches or such.</p>
 	<p>However, in Linux v4.19 veth driver <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=60afdf066a35317efd5d1d7ae7c7f4ef2b32601f">gained support</a> for native mode <a href="https://docs.cilium.io/en/latest/bpf/#xdp">eXpress Data Path (XDP)</a>. XDP relies on <a href="https://lwn.net/Articles/244640">NAPI</a>, an interface between the network drivers and the Linux network stack. NAPI requires that drivers <a href="https://www.kernel.org/doc/html/latest/networking/kapi.html?highlight=netif_napi_add#c.netif_napi_add">register a <code>poll()</code> callback</a> for fetching received packets.</p>
 	<p>The NAPI receive path in the <code>veth</code> driver is taken only when there is an XDP program attached. The fork occurs in <a href="https://elixir.bootlin.com/linux/v5.4.14/source/drivers/net/veth.c#L228"><code>veth_forward_skb</code></a>, where the TX path ends and a RX path on the other side begins.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image9-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qHZ8EKuRnrslIiRz0Bj2L/adf6ee8bb44f5ddf372769a8f852b1e4/image9-4.png" alt="" class="kg-image" width="1162" height="402" loading="lazy">
+
+	</figure>
 	<p>This is an important observation because only on the NAPI/XDP path in the <code>veth</code> driver, received packets might get aggregated by the <a href="https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/#generic-receive-offloading-gro">Generic Receive Offload</a>.</p>
-	<h2 id="super-packets">Super-packets</h2>
+	<h2>Super-packets</h2>
 	<p>Early on we’ve noted that the crash happens when processing a GSO packet. I’ve promised we will get back to it and now is the time.</p>
 	<p>Generic Segmentation Offload (GSO) is all about delaying the L4 segmentation process until the very last moment. So called super-packets, that exceed the egress route MTU in size, travel all the way through the network stack, only to be cut into MTU-sized segments just before handing the data over to the network driver for transmission. This way we process just one big packet on the transmit path, instead of a few smaller ones and save on CPU cycles in all the IP-level stack functions like routing, nftables, traffic control</p>
 	<p>Where do these super-packets come from? They can be a result of large write to a socket, or as is our case, they can be received from one network and forwarded to another network.</p>
 	<p>The latter case, that is forwarding a super-packet, happens when Generic Receive Offload (GRO) kicks in during receive. GRO is the opposite process of GSO. Smaller, MTU-sized packets get merged to form a super-packet early on the receive path. The goal is the same — process less by pushing just one packet through the network stack layers.</p>
 	<p>Not just any packets can be fused together by GRO. <a href="https://lwn.net/Articles/358910">Loosely speaking</a>, any two packets to be merged must form a logical sequence in the network flow, and carry the same metadata in protocol headers. It is critical that no information is lost in the aggregation process. Otherwise, GSO won’t be able to reconstruct the segment stream when serializing packets in the network card transmission code.</p>
-	<p>To this end, each network protocol that supports GRO provides a callback which signals whether the above conditions hold true. GRO implementation (<a href="https://elixir.bootlin.com/linux/v5.4.14/source/net/core/dev.c#L5496"><code>dev_gro_receive()</code></a>) then walks through the packet headers, the outer as well as the inner ones, and delegates the pre-merge check to the right protocol callback. If all stars align, the packets get spliced at the end of the callback chain (<a href="https://elixir.bootlin.com/linux/v5.4.14/source/net/core/skbuff.c#L3986"><code>skb_gro_receive()</code></a>).</p><!--kg-card-begin: markdown-->
-	<p>I will be frank. The code that performs GRO is pretty complex, and I spent a significant amount of time staring into it. Hat tip to its authors. However, for our little investigation it will be enough to understand that a TCP stream encapsulated with <a href="https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation">GRE</a><sup>1</sup> would trigger callback chain like so:</p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image11-3.png" class="kg-image" alt="GRO walks the headers to check if packets can be merged." loading="lazy"></figure>
+	<p>To this end, each network protocol that supports GRO provides a callback which signals whether the above conditions hold true. GRO implementation (<a href="https://elixir.bootlin.com/linux/v5.4.14/source/net/core/dev.c#L5496"><code>dev_gro_receive()</code></a>) then walks through the packet headers, the outer as well as the inner ones, and delegates the pre-merge check to the right protocol callback. If all stars align, the packets get spliced at the end of the callback chain (<a href="https://elixir.bootlin.com/linux/v5.4.14/source/net/core/skbuff.c#L3986"><code>skb_gro_receive()</code></a>).</p>
+	<p>I will be frank. The code that performs GRO is pretty complex, and I spent a significant amount of time staring into it. Hat tip to its authors. However, for our little investigation it will be enough to understand that a TCP stream encapsulated with <a href="https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation">GRE</a>1 would trigger callback chain like so:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qEZv8Xq8brXJwmOplw0HA/990a338b498fbbf7bbe21a19d580a722/image11-3.png" alt="GRO walks the headers to check if packets can be merged." class="kg-image" width="1562" height="1142" loading="lazy">
+
+	</figure>
 	<p>Armed with basic GRO/GSO understanding we are ready to take a shot at reproducing the crash.</p>
-	<h2 id="the-reproducer">The reproducer</h2>
+	<h2>The reproducer</h2>
 	<p>Let’s recap what we know:</p>
 	<ol>
-		<li>a super-packet was received from a <code>veth</code> device,</li>
-		<li>the <code>veth</code> device had an <code>XDP</code> program attached,</li>
-		<li>the packet was forwarded to another device,</li>
-		<li>the egress device was transmitting a GSO super-packet,</li>
-		<li>the packet was encapsulated,</li>
-		<li>the super-packet must have been produced by GRO on ingress.</li>
+		<li>
+			<p>a super-packet was received from a <code>veth</code> device,</p>
+		</li>
+		<li>
+			<p>the <code>veth</code> device had an <code>XDP</code> program attached,</p>
+		</li>
+		<li>
+			<p>the packet was forwarded to another device,</p>
+		</li>
+		<li>
+			<p>the egress device was transmitting a GSO super-packet,</p>
+		</li>
+		<li>
+			<p>the packet was encapsulated,</p>
+		</li>
+		<li>
+			<p>the super-packet must have been produced by GRO on ingress.</p>
+		</li>
 	</ol>
 	<p>This paints a pretty clear picture on what the setup should look like:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image6-4.png" class="kg-image" alt="We have crashed on egress when transmitting forwarded GSO packet." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tj05SVdRlQaspSaW0DO9J/7dd93927a06b01cf0d431c6dc80948e7/image6-4.png" alt="We have crashed on egress when transmitting forwarded GSO packet." class="kg-image" width="1902" height="430" loading="lazy">
+
+	</figure>
 	<p>We can work with that. A <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-10-gso-encap-crash/setup.sh">simple shell script</a> will be our setup machinery.</p>
-	<p>We will be sending traffic from <code>10.1.1.1</code> to <code>10.2.2.2</code>. Our traffic pattern will be a TCP stream consisting of two consecutive segments so that GRO can merge something. A <a href="https://scapy.net">Scapy</a> script will be great for that. Let’s call it <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-10-gso-encap-crash/send-a-pair.py"><code>send-a-pair.py</code></a> and give it a run:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ { sleep 5; sudo ip netns exec A ./send-a-pair.py; } &amp;
+	<p>We will be sending traffic from <code>10.1.1.1</code> to <code>10.2.2.2</code>. Our traffic pattern will be a TCP stream consisting of two consecutive segments so that GRO can merge something. A <a href="https://scapy.net">Scapy</a> script will be great for that. Let’s call it <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-10-gso-encap-crash/send-a-pair.py"><code>send-a-pair.py</code></a> and give it a run:</p>
+	<pre class="language-bash"><code class="language-bash">$ { sleep 5; sudo ip netns exec A ./send-a-pair.py; } &amp;
 [1] 1603
 $ sudo ip netns exec B tcpdump -i BA -n -nn -ttt 'ip and not arp'
 …
  00:00:00.020506 IP 10.1.1.1 &gt; 10.2.2.2: GREv0, length 1480: IP 192.168.1.1.12345 &gt; 192.168.2.2.443: Flags [.], seq 0:1436, ack 1, win 8192, length 1436
- 00:00:00.000082 IP 10.1.1.1 &gt; 10.2.2.2: GREv0, length 1480: IP 192.168.1.1.12345 &gt; 192.168.2.2.443: Flags [.], seq 1436:2872, ack 1, win 8192, length 1436
-</code></pre>
-	<!--kg-card-end: markdown-->
+ 00:00:00.000082 IP 10.1.1.1 &gt; 10.2.2.2: GREv0, length 1480: IP 192.168.1.1.12345 &gt; 192.168.2.2.443: Flags [.], seq 1436:2872, ack 1, win 8192, length 1436</code></pre>
 	<p>Where is our super-packet? Look at the packet sizes, the GRO didn’t merge anything.</p>
-	<p>Turns out NAPI is just too fast at fetching the packets from the Rx ring. We need a little buffering on transmit to increase our chances of GRO batching:</p><!--kg-card-begin: markdown-->
-	<pre><code># Help GRO
-ip netns exec A tc qdisc add dev AB root netem delay 200us slot 5ms 10ms packets 2 bytes 64k
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>With the delay in place, things look better:</p><!--kg-card-begin: markdown-->
-	<pre><code> 00:00:00.016972 IP 10.1.1.1 &gt; 10.2.2.2: GREv0, length 2916: IP 192.168.1.1.12345 &gt; 192.168.2.2.443: Flags [.], seq 0:2872, ack 1, win 8192, length 2872
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>2,872 bytes shown by <code>tcpdump</code> clearly indicate GRO in action. And we are even hitting the crash point:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftrace -e 'kprobe:skb_gso_transport_seglen { print(kstack()); }' -c '/usr/bin/ip netns exec A ./send-a-pair.py'
+	<p>Turns out NAPI is just too fast at fetching the packets from the Rx ring. We need a little buffering on transmit to increase our chances of GRO batching:</p>
+	<pre class="language-bash"><code class="language-bash"># Help GRO
+ip netns exec A tc qdisc add dev AB root netem delay 200us slot 5ms 10ms packets 2 bytes 64k</code></pre>
+	<p>With the delay in place, things look better:</p>
+	<pre class="language-bash"><code class="language-bash"> 00:00:00.016972 IP 10.1.1.1 &gt; 10.2.2.2: GREv0, length 2916: IP 192.168.1.1.12345 &gt; 192.168.2.2.443: Flags [.], seq 0:2872, ack 1, win 8192, length 2872</code></pre>
+	<p>2,872 bytes shown by <code>tcpdump</code> clearly indicate GRO in action. And we are even hitting the crash point:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace -e 'kprobe:skb_gso_transport_seglen { print(kstack()); }' -c '/usr/bin/ip netns exec A ./send-a-pair.py'
 Attaching 1 probe...
 
         skb_gso_transport_seglen+1
@@ -222,54 +259,56 @@ Attaching 1 probe...
         net_rx_action+314
         …
 
-^C
-</code></pre>
-	<!--kg-card-end: markdown-->
+^C</code></pre>
 	<p>…but we are not crashing. We will need to dig deeper.</p>
-	<p>We know what packet metadata <code>skb_gso_transport_seglen()</code> looks at — the header offsets, then <code>encapsulation</code> flag, and GSO info. Let’s <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-10-gso-encap-crash/why-no-crash.bt">dump</a> all of it:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftrace ./why-no-crash.bt -c '/usr/bin/ip netns exec A ./send-a-pair.py'
+	<p>We know what packet metadata <code>skb_gso_transport_seglen()</code> looks at — the header offsets, then <code>encapsulation</code> flag, and GSO info. Let’s <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-10-gso-encap-crash/why-no-crash.bt">dump</a> all of it:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace ./why-no-crash.bt -c '/usr/bin/ip netns exec A ./send-a-pair.py'
 Attaching 2 probes...
 DEV  LEN  NH  TH  ENC INH ITH GSO SIZE SEGS TYPE FUNC
-sink 2936 270 290 1   294 254  |  1436 2    0x41 skb_gso_transport_seglen
-</code></pre>
-	<!--kg-card-end: markdown-->
+sink 2936 270 290 1   294 254  |  1436 2    0x41 skb_gso_transport_seglen</code></pre>
 	<p>Since the <code>skb-&gt;encapsulation</code> flag (<code>ENC</code>) is set, both outer and inner header offsets should be valid. Are they?</p>
 	<p>The outer network / L3 header (<code>NH</code>) looks sane. When XDP is enabled, it reserves 256 bytes of headroom before the headers. 14 byte long Ethernet header follows the headroom. The IPv4 header should then start at 270 bytes into the packet buffer.</p>
 	<p>The outer transport / L4 header offset is as expected as well. The IPv4 header takes 20 bytes, and the GRE header follows it.</p>
 	<p>The inner network header (<code>INH</code>) begins at the offset of 294 bytes. This makes sense because the GRE header in its most basic form is 4 bytes long.</p>
 	<p>The surprise comes last. The inner transport header offset points somewhere near the end of headroom which XDP reserves. Instead, it should start at 314, following the inner IPv4 header.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image10-6.png" class="kg-image" alt="Header offsets" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cyux0UKvxGzmBEfxSh6Pf/0c5a046ce601110307aad23ad25c736e/image10-6.png" alt="Header offsets" class="kg-image" width="1864" height="310" loading="lazy">
+
+	</figure>
 	<p>Is this the smoking gun we were looking for?</p>
-	<h2 id="the-bug">The bug</h2>
+	<h2>The bug</h2>
 	<p><code>skb_gso_transport_seglen()</code> calculates the length of the outer L4 segment when given a GSO packet. If the <code>inner_transport_header</code> offset is off, then the result of the calculation might be off as well. Worth checking.</p>
-	<p>We know that our segments are 1500 bytes long. That makes the L4 part 1480 bytes long. What does <code>skb_gso_transport_seglen()</code> say though?</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftrace -e 'kretprobe:skb_gso_transport_seglen { print(retval); }' -c …
+	<p>We know that our segments are 1500 bytes long. That makes the L4 part 1480 bytes long. What does <code>skb_gso_transport_seglen()</code> say though?</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace -e 'kretprobe:skb_gso_transport_seglen { print(retval); }' -c …
 Attaching 1 probe...
-1460
-</code></pre>
-	<!--kg-card-end: markdown-->
+1460</code></pre>
 	<p>Seems that we don’t agree. But if <code>skb_gso_transport_seglen()</code> is getting garbage on input we can’t really <a href="https://en.wikipedia.org/wiki/Garbage_in%2C_garbage_out">blame it</a>.</p>
 	<p>If <code>inner_transport_header</code> is not correct, that TCP Data Offset read that we know happens inside the function cannot end well.</p>
 	<p>If we map it out, it looks like we are loading part of the source MAC address (upper 4 bits of the 5th byte, to be precise) and interpreting it as TCP Data Offset.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EPmlwZGRF0Yeykmr4gHPu/655ea0a1198a76eefbadae8fb1be9562/image5-4.png" alt="" class="kg-image" width="1100" height="319" loading="lazy">
+
+	</figure>
 	<p>Are we? There is an easy way to check.</p>
 	<p>If we ask nicely, <code>tcpdump</code> will tell us what the MAC addresses are:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Screenshot-2021-11-03-at-14-57-51-The-tale-of-a-single-register-value---Blog-Drafts-documentation.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Plugging that into the calculations that <code>skb_gso_transport_seglen()</code> …</p><!--kg-card-begin: markdown-->
-	<pre><code>thlen = inner_transport_header(skb) - transport_header(skb) = 254 - 290 = -36
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6m1WVc1zTBaEVPTQLqLbz2/bd04e59141145fd028c988eb5d3352f0/Screenshot-2021-11-03-at-14-57-51-The-tale-of-a-single-register-value---Blog-Drafts-documentation.png" alt="" class="kg-image" width="685" height="102" loading="lazy">
+
+	</figure>
+	<p>Plugging that into the calculations that <code>skb_gso_transport_seglen()</code> …</p>
+	<pre class="language-bash"><code class="language-bash">thlen = inner_transport_header(skb) - transport_header(skb) = 254 - 290 = -36
 thlen += inner_transport_header(skb)-&gt;doff * 4 = -36 + (0xf * 4) = -36 + 60 = 24
-retval = gso_size + thlen = 1436 + 24 = 1460
-</code></pre>
-	<!--kg-card-end: markdown-->
+retval = gso_size + thlen = 1436 + 24 = 1460</code></pre>
 	<p>…checks out!</p>
-	<p>Does this mean that I can control the return value by setting source MAC address?!</p><!--kg-card-begin: markdown-->
-	<pre><code>                                               ?
+	<p>Does this mean that I can control the return value by setting source MAC address?!</p>
+	<pre class="language-bash"><code class="language-bash">                                               ?
 $ sudo ip -n A link set AB address be:d6:07:5e:05:11 # Change the MAC address 
 $ sudo bpftrace -e 'kretprobe:skb_gso_transport_seglen { print(retval); }' -c …
 Attaching 1 probe...
-1400
-</code></pre>
-	<!--kg-card-end: markdown-->
+1400</code></pre>
 	<p>Yes! <code>1436 + (-36) + (0 * 4) = 1400</code>. This is it.</p>
 	<p>However, how does all this tie it to the original crash? The badly calculated L4 segment length will make GSO emit shorter segments on egress. But that’s all.</p>
 	<p>Remember the suspicious offset from the crash report?</p>
@@ -280,16 +319,19 @@ Attaching 1 probe...
 	<p>Solving it for <code>skb-&gt;head yields 0xffff9d9624bbb008 - 0xfffc - 12 = 0xffff9d9624bab000</code>.</p>
 	<p>And this makes sense. The <a href="http://vger.kernel.org/~davem/skb_data.html"><code>skb-&gt;head buffer</code></a> is page-aligned, meaning it’s a multiple of 4 KiB on x86-64 platforms — the 12 least significant bits the address are 0.</p>
 	<p>However, the address we were trying to read was <code>(0xfffc+12)/4096 ~= 16 pages</code> (or 64 KiB) past the <code>skb-&gt;head</code> page boundary <code>(0xffff9d9624babfff)</code>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image7-5.png" class="kg-image" alt="Faulty read from an address beyond the packet data" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69J4h6qU3nC1rv0Pvypxng/7b3270c2bbdcb1391ad8516e908312ca/image7-5.png" alt="Faulty read from an address beyond the packet data" class="kg-image" width="346" height="291" loading="lazy">
+
+	</figure>
 	<p>Who knows if there was memory mapped to this address?! Looks like from time to time there wasn’t anything mapped there and the kernel page fault handling code went “oops!”.</p>
-	<h2 id="the-fix">The fix</h2>
+	<h2>The fix</h2>
 	<p>It is finally time to understand who sets the header offsets in a super-packet.</p>
 	<p>Once GRO is done merging segments, it flushes the super-packet down the pipe by kicking off a chain of <code>gro_complete</code> callbacks:</p>
 	<p><code>napi_gro_complete → inet_gro_complete → gre_gro_complete → inet_gro_complete → tcp4_gro_complete → tcp_gro_complete</code></p>
-	<p>These callbacks are responsible for updating the header offsets and populating the GSO-related fields in <code>skb_shared_info</code> struct. Later on the transmit side will consume this data.</p><!--kg-card-begin: markdown-->
-	<p>Let’s see how the packet metadata changes as it travels through the <code>gro_complete callbacks</code><sup>2</sup> by adding a few more tracepoint to our bpftrace script:</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftrace ./why-no-crash.bt -c '/usr/bin/ip netns exec A ./send-a-pair.py'
+	<p>These callbacks are responsible for updating the header offsets and populating the GSO-related fields in <code>skb_shared_info</code> struct. Later on the transmit side will consume this data.</p>
+	<p>Let’s see how the packet metadata changes as it travels through the <code>gro_complete callbacks</code>2 by adding a few more tracepoint to our bpftrace script:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace ./why-no-crash.bt -c '/usr/bin/ip netns exec A ./send-a-pair.py'
 Attaching 7 probes...
 DEV  LEN  NH  TH  ENC INH ITH GSO SIZE SEGS TYPE FUNC
 BA   2936 294 314 0   254 254  |  1436 0    0x00 napi_gro_complete
@@ -298,12 +340,10 @@ BA   2936 294 314 0   254 254  |  1436 0    0x00 gre_gro_complete
 BA   2936 294 314 1   254 254  |  1436 0    0x40 inet_gro_complete
 BA   2936 294 314 1   294 254  |  1436 0    0x40 tcp4_gro_complete
 BA   2936 294 314 1   294 254  |  1436 0    0x41 tcp_gro_complete
-sink 2936 270 290 1   294 254  |  1436 2    0x41 skb_gso_transport_seglen
-</code></pre>
-	<!--kg-card-end: markdown-->
+sink 2936 270 290 1   294 254  |  1436 2    0x41 skb_gso_transport_seglen</code></pre>
 	<p>As the packet travels through the <code>gro_complete</code> callbacks, the inner network header (<code>INH</code>) offset <a href="https://elixir.bootlin.com/linux/v5.4.14/source/net/ipv4/af_inet.c#L1591">gets updated</a> after we have processed the inner IPv4 header.</p>
-	<p>However, the same thing did not happen to the inner transport header (ITH) that is causing trouble. We need to fix that.</p><!--kg-card-begin: markdown-->
-	<pre><code>--- a/net/ipv4/tcp_offload.c
+	<p>However, the same thing did not happen to the inner transport header (ITH) that is causing trouble. We need to fix that.</p>
+	<pre class="language-bash"><code class="language-bash">--- a/net/ipv4/tcp_offload.c
 +++ b/net/ipv4/tcp_offload.c
 @@ -298,6 +298,9 @@ int tcp_gro_complete(struct sk_buff *skb)
         if (th-&gt;cwr)
@@ -314,28 +354,20 @@ sink 2936 270 290 1   294 254  |  1436 2    0x41 skb_gso_transport_seglen
 +
         return 0;
  }
- EXPORT_SYMBOL(tcp_gro_complete);
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>With the patch in place, the header offsets are finally all sane and <code>skb_gso_transport_seglen()</code> return value is as expected:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ sudo bpftrace ./why-no-crash.bt -c '/usr/bin/ip netns exec A ./send-a-pair.py'
+ EXPORT_SYMBOL(tcp_gro_complete);</code></pre>
+	<p>With the patch in place, the header offsets are finally all sane and <code>skb_gso_transport_seglen()</code> return value is as expected:</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace ./why-no-crash.bt -c '/usr/bin/ip netns exec A ./send-a-pair.py'
 Attaching 2 probes...
 DEV  LEN  NH  TH  ENC INH ITH GSO SIZE SEGS TYPE FUNC
 sink 2936 270 290 1   294 314  |  1436 2    0x41 skb_gso_transport_seglen
 
 $ sudo bpftrace -e 'kretprobe:skb_gso_transport_seglen { print(retval); }' -c …
 Attaching 1 probe...
-1480
-</code></pre>
-	<!--kg-card-end: markdown-->
+1480</code></pre>
 	<p>Don’t worry, though. The fix is already likely in your kernel long time ago. Patch <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d51c5907e9809a803b276883d203f45849abd4d6">d51c5907e980 (“net, gro: Set inner transport header offset in tcp/udp GRO hook”)</a> has been merged into Linux v5.14, and backported to v5.10.58 and v5.4.140 LTS kernels. The Linux kernel community has got you covered. But please, keep on updating your production kernels.</p>
-	<h2 id="outro">Outro</h2>
+	<h2>Outro</h2>
 	<p>What a journey! We have learned a ton and fixed a real bug in the Linux kernel. In the end it was not a Packet of Death. Maybe next time we can find one ;-)</p>
 	<p>Enjoyed the read? Why not join Cloudflare and help us fix the remaining bugs in the Linux kernel? We are hiring in <a href="https://boards.greenhouse.io/cloudflare/jobs/3547091?gh_jid=3547091">Lisbon</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/3550616?gh_jid=3550616">London</a>, and <a href="https://boards.greenhouse.io/cloudflare/jobs/3550623?gh_jid=3550623">Austin</a>.</p>
-	<p>And if you would like to see more kernel blog posts, please let us know!</p><!--kg-card-begin: markdown-->
-	<p>...<br>
-		<sup>1</sup>Why GRE and not some other type of encapsulation? If you follow our blog closely, you might already know that <a href="https://blog.cloudflare.com/magic-transit-network-functions">Cloudflare Magic Transit</a> uses veth pairs to route traffic into and out of network namespaces. It also happens to use GRE encapsulation. If you are curious why we chose network namespaces linked with veth pairs, be sure to watch the <a href="https://linuxplumbersconf.org/event/7/contributions/682">How we built Magic Transit</a> talk.<br>
-		<sup>2</sup>Just turn off GRO on all other network devices in use to get a clean output (sudo ethtool -K enp0s5 gro off).
-	</p>
-	<!--kg-card-end: markdown-->
+	<p>And if you would like to see more kernel blog posts, please let us know!</p>
+	<p>...1Why GRE and not some other type of encapsulation? If you follow our blog closely, you might already know that <a href="https://blog.cloudflare.com/magic-transit-network-functions">Cloudflare Magic Transit</a> uses veth pairs to route traffic into and out of network namespaces. It also happens to use GRE encapsulation. If you are curious why we chose network namespaces linked with veth pairs, be sure to watch the <a href="https://linuxplumbersconf.org/event/7/contributions/682">How we built Magic Transit</a> talk.2Just turn off GRO on all other network devices in use to get a clean output (sudo ethtool -K enp0s5 gro off).</p>
 </div>

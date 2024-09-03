@@ -1,21 +1,31 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="CDNJS: Community Moderated Javascript Libraries + CloudFlare" src="https://blog.cloudflare.com/content/images/cdnjs.png.scaled500.png" title="CDNJS: Community Moderated Javascript Libraries + CloudFlare"></p>
-	<p>If you're using a Javascript library, the ideal case is that your visitors arrive on your site with it already stored in their browser's cache. The more sites that use the same URL to reference the library, the more likely it is that it will be cached even for first-time visitors. Google realized the importance of this for some of the major Internet libraries when they created the <a href="https://code.google.com/apis/libraries/devguide.html">Google Libraries API</a>. Unfortunately, Google has limited the number of libraries to 11 and not given much guidance on the practice of updating existing libraries or<br>
-		adding new ones.</p>
+<div class="mb2 gray5">2 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kg3LGZ7cep7ym2xDT5Dnt/9a0c31e5363c59b97aeba5ca9bcd0c10/cdnjs.png.scaled500.png" alt="CDNJS: Community Moderated Javascript Libraries + CloudFlare" class="kg-image" width="246" height="65" loading="lazy">
+
+	</figure>
+	<p>If you're using a Javascript library, the ideal case is that your visitors arrive on your site with it already stored in their browser's cache. The more sites that use the same URL to reference the library, the more likely it is that it will be cached even for first-time visitors. Google realized the importance of this for some of the major Internet libraries when they created the <a href="https://code.google.com/apis/libraries/devguide.html">Google Libraries API</a>. Unfortunately, Google has limited the number of libraries to 11 and not given much guidance on the practice of updating existing libraries oradding new ones.</p>
 	<p>In early 2011, Ryan Kirkman and Thomas Davis recognized that there were a number of additional libraries that needed the benefit of a central repository any site could link to in order to get the shared caching benefit. They created <a href="https://www.cdnjs.com">CDNJS</a>, a project that allowed anyone to add new javascript libraries that would then get moderated by the project's community. They needed to make the libraries globally accessible on a fast network, so they looked to popular CDNs. They originally chose Amazon's CloudFront service, but as CDNJS gained in popularity the price became prohibitive for the non-profit project. Amazon's service also didn't offer an easy way to implement SSL/HTTPS connections, which limited CDNJS to only those sites that weren't using encryption. Not ideal on either front.</p>
 	<p>A couple months ago I saw a Tweet from Paul Irish, one of the creators of jQuery who is on Google's Chrome dev team, who was talking about how CDNJS needed to find a long term solution to ensuring a fast, reliable, affordable network. I reached out to Paul and Ryan via Twitter and put them in touch with Chris Joel from our team. Immediately the benefits were obvious: CloudFlare could offer CDNJS a globally-distributed network with extremely low latency that could support SSL/HTTPS. In doing so, CloudFlare could further our mission of making the web a faster, more secure place.</p>
 	<p>Yesterday the system went live and all the CDNJS libraries are now powered by CloudFlare. You can use CDNJS without signing up for CloudFlare for your own site. Existing CDNJS URLs will continue to work but should be updated to the latest URLs for full SSL support. CDNJS's community retains full control over what libraries are included. As they moderate in new libraries, or updates to existing libraries, they will be automatically included on our network and available worldwide at lightening speeds. We've ensured that all the HTTP headers are set in order for visitors' browsers to cache the libraries for as long as possible. As a result, the more people who use CDNJS as the central repo for their javascript libraries, the more everyone using it will benefit.</p>
 	<p>Our network rocks for this application. In the comparisons we ran with the old setup versus the CloudFlare new setup, our latency times were about 1/3rd of what CDNJS was previously seeing. We even compare extremely well versus the Google Libraries API. Don't take our word for it, try it yourself! Run the following commands from your terminal window:</p>
 	<ul>
-		<li>ping ajax.googleapis.com</li>
-		<li>ping cdnjs.cloudflare.com</li>
+		<li>
+			<p>ping ajax.googleapis.com</p>
+		</li>
+		<li>
+			<p>ping cdnjs.cloudflare.com</p>
+		</li>
 	</ul>
 	<p>Your results may vary, but here's what I'm seeing from a major DSL provider's network in San Francisco:</p>
 	<ul>
-		<li>Google Libraries API Average Latency: 82ms</li>
-		<li>CloudFlare-Powered CDNJS Average Latency: 14ms</li>
+		<li>
+			<p>Google Libraries API Average Latency: 82ms</p>
+		</li>
+		<li>
+			<p>CloudFlare-Powered CDNJS Average Latency: 14ms</p>
+		</li>
 	</ul>
 	<p>At CloudFlare, we believe that open source, community-driven projects like CDNJS are the tools upon which the future of the Internet will be built. CloudFlare is proud to provide the global CDN infrastructure that helps power that future.</p>
-	<!--kg-card-end: markdown-->
 </div>

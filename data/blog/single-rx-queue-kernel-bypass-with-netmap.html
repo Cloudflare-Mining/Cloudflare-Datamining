@@ -1,44 +1,71 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/mtwkycUiz0G5AOoqkjs4Q/361909bc7ab8d2818468690d8736d40a/single-rx-queue-kernel-bypass-with-netmap.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>In <a href="https://blog.cloudflare.com/kernel-bypass">a previous post</a> we discussed the performance limitations of the Linux kernel network stack. We detailed the available kernel bypass techniques allowing user space programs to receive packets with high throughput. Unfortunately, none of the discussed open source solutions supported our needs. To improve the situation we decided to contribute to the <a href="http://info.iet.unipi.it/~luigi/netmap">Netmap project</a>. In this blog post we'll describe our proposed changes.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/122715232_32da8cd353_o-1.jpg" alt="network card" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232">image</a> by Binary Koala</small>
-	</p>
-	<h3 id="ourneeds">Our needs</h3>
-	<p>At CloudFlare we are constantly dealing with large packet floods. Our network constantly receives a large volume of packets, often coming from many, simultaneous attacks. In fact, it is entirely possible that the server which just served you this blog post is dealing with a many-million packets per second flood <em>right now</em>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wUCqE4w1PE0nbGFJLjIX3/10e7e2b28c94297597d61d7d9cf0b374/122715232_32da8cd353_o-1.jpg" alt="network card" class="kg-image" width="861" height="536" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232">image</a> by Binary Koala</p>
+	<h3>Our needs</h3>
+	<p>At CloudFlare we are constantly dealing with large packet floods. Our network constantly receives a large volume of packets, often coming from many, simultaneous attacks. In fact, it is entirely possible that the server which just served you this blog post is dealing with a many-million packets per second flood <i>right now</i>.</p>
 	<p>Since the Linux Kernel can't really handle a large volume of packets, we need to work around it. During packet floods we offload selected network flows (belonging to a flood) to a user space application. This application filters the packets at very high speed. Most of the packets are dropped, as they belong to a flood. The small number of "valid" packets are injected back to the kernel and handled in the same way as usual traffic.</p>
 	<p>It’s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
 	<p>This setup works perfectly on our servers with Solarflare network cards - we can use the <code>ef_vi</code> API to achieve the kernel bypass. Unfortunately, we don’t have this functionality on our servers with Intel IXGBE NIC’s.</p>
 	<p>This is when <a href="http://info.iet.unipi.it/~luigi/netmap">Netmap</a> comes in.</p>
-	<h4 id="netmap">Netmap</h4>
+	<h4>Netmap</h4>
 	<p>Over the last few months we’ve been thinking hard about how to achieve bypass for selected flows (aka: bifurcated driver) on non-Solarflare network cards.</p>
 	<p>We’ve considered PF_RING, DPDK and other custom solutions, but sadly all of them take over the whole network card. Eventually we decided that the best way would be to patch Netmap with the functionality we need.</p>
 	<p>We chose Netmap because:</p>
 	<ul>
-		<li>It’s fully open source and released under a BSD license.</li>
-		<li>It has a great NIC-agnostic API.</li>
-		<li>It’s very fast: can reach line rate easily.</li>
-		<li>The project is well maintained and reasonably mature.</li>
-		<li>The code is very high quality.</li>
-		<li>The driver-specific modifications are trivial: most of the magic happens in the shared Netmap module. It’s easy to add support for new hardware.</li>
+		<li>
+			<p>It’s fully open source and released under a BSD license.</p>
+		</li>
+		<li>
+			<p>It has a great NIC-agnostic API.</p>
+		</li>
+		<li>
+			<p>It’s very fast: can reach line rate easily.</p>
+		</li>
+		<li>
+			<p>The project is well maintained and reasonably mature.</p>
+		</li>
+		<li>
+			<p>The code is very high quality.</p>
+		</li>
+		<li>
+			<p>The driver-specific modifications are trivial: most of the magic happens in the shared Netmap module. It’s easy to add support for new hardware.</p>
+		</li>
 	</ul>
-	<h3 id="introducingthesinglerxqueuemode">Introducing the single RX queue mode</h3>
+	<h3>Introducing the single RX queue mode</h3>
 	<p>Usually, when a network card goes into the Netmap mode, all the RX queues get disconnected from the kernel and are available to the Netmap applications.</p>
 	<p>We don't want that. We want to keep most of the RX queues back in the kernel mode, and enable Netmap mode only on selected RX queues. We call this functionality: "single RX queue mode".</p>
 	<p>The intention was to expose a minimal API which could:</p>
 	<ul>
-		<li>Open a network interface in "a single RX queue mode".</li>
-		<li>This would allow netmap applications to receive packets from that specific RX queue.</li>
-		<li>While leaving all the other queues attached to the host network stack.</li>
-		<li>On demand add or remove RX queues from the "single RX queue mode".</li>
-		<li>Eventually remove the interface from the Netmap mode and reattach the RX queues to the host stack.</li>
+		<li>
+			<p>Open a network interface in "a single RX queue mode".</p>
+		</li>
+		<li>
+			<p>This would allow netmap applications to receive packets from that specific RX queue.</p>
+		</li>
+		<li>
+			<p>While leaving all the other queues attached to the host network stack.</p>
+		</li>
+		<li>
+			<p>On demand add or remove RX queues from the "single RX queue mode".</p>
+		</li>
+		<li>
+			<p>Eventually remove the interface from the Netmap mode and reattach the RX queues to the host stack.</p>
+		</li>
 	</ul>
 	<p>The patch to Netmap is awaiting code review and is available here:</p>
 	<ul>
-		<li><a href="https://github.com/luigirizzo/netmap/pull/87">https://github.com/luigirizzo/netmap/pull/87</a></li>
+		<li>
+			<p><a href="https://github.com/luigirizzo/netmap/pull/87">https://github.com/luigirizzo/netmap/pull/87</a></p>
+		</li>
 	</ul>
 	<p>The minimal program receiving packets from <code>eth3</code> RX queue #4 would look like:</p>
-	<pre><code class="language-.c">d = nm_open("netmap:eth3~4", NULL, 0, 0);
+	<pre class="language-.c"><code class="language-.c">d = nm_open("netmap:eth3~4", NULL, 0, 0);
 while (1) {
     fds = {fds: d-&gt;fd, events: POLLIN};
     poll(&amp;fds, 1, -1);
@@ -51,58 +78,68 @@ while (1) {
         //process(buf, len)
         ring-&gt;head = ring-&gt;cur = nm_ring_next(ring, i);
     }
-}
-</code></pre>
+}</code></pre>
 	<p>This code is very close to a Netmap example program. Indeed the only difference is the <code>nm_open()</code> call, which uses the new syntax <code>netmap:ifname~queue_number</code>.</p>
 	<p>Once again, when running this code only packets arriving on the RX queue #4 will go to the netmap program. All other RX and TX queues will be handled by the Linux kernel network stack.</p>
 	<p>You can find a more complete example here:</p>
 	<ul>
-		<li><a href="https://github.com/jibi/nm-single-rx-queue">https://github.com/jibi/nm-single-rx-queue</a></li>
+		<li>
+			<p><a href="https://github.com/jibi/nm-single-rx-queue">https://github.com/jibi/nm-single-rx-queue</a></p>
+		</li>
 	</ul>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/RX_bypass.png" alt="" loading="lazy"></p>
-	<h4 id="isolatingaqueue">Isolating a queue</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2a0bUYxkJn3js1Nnve8vV6/d57be335e53ff830702967d3ce6ccfc0/RX_bypass.png" alt="" class="kg-image" width="1024" height="500" loading="lazy">
+
+	</figure>
+	<h4>Isolating a queue</h4>
 	<p>In multiqueue network cards, any packet can end up in almost any RX queue due to RSS. This is why before enabling the single RX mode it is necessary to make sure only the selected flow goes to the Netmap queue.</p>
 	<p>To do so it is necessary to:</p>
 	<ul>
-		<li>Modify the <strong>indirection table</strong> to ensure no new RSS-hashed packets will go there.</li>
-		<li>Use <strong>flow steering</strong> to specifically direct some flows to the isolated queue.</li>
-		<li>Work around <strong>RFS</strong> - make sure no other application is running on the CPU Netmap will run on.</li>
+		<li>
+			<p>Modify the <b>indirection table</b> to ensure no new RSS-hashed packets will go there.</p>
+		</li>
+		<li>
+			<p>Use <b>flow steering</b> to specifically direct some flows to the isolated queue.</p>
+		</li>
+		<li>
+			<p>Work around <b>RFS</b> - make sure no other application is running on the CPU Netmap will run on.</p>
+		</li>
 	</ul>
 	<p>For example:</p>
-	<pre><code>$ ethtool -X eth3 weight 1 1 1 1 0 1 1 1 1 1
+	<pre class="language-bash"><code class="language-bash">$ ethtool -X eth3 weight 1 1 1 1 0 1 1 1 1 1
 $ ethtool -K eth3 ntuple on
-$ ethtool -N eth3 flow-type udp4 dst-port 53 action 4
-</code></pre>
+$ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
 	<p>Here we are setting the indirection table to prevent traffic from going to RX queue #4. Then we are enabling flow steering to enqueue all UDP traffic with destination port 53 into queue #4.</p>
-	<h4 id="tryingitout">Trying it out</h4>
+	<h4>Trying it out</h4>
 	<p>Here's how to run it with the IXGBE NIC. First grab the sources:</p>
-	<pre><code>$ git clone https://github.com/jibi/netmap.git
+	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/jibi/netmap.git
 $ cd netmap
 $ git checkout -B single-rx-queue-mode
-$ ./configure --drivers=ixgbe --kernel-sources=/path/to/kernel
-</code></pre>
+$ ./configure --drivers=ixgbe --kernel-sources=/path/to/kernel</code></pre>
 	<p>Load the netmap-patched modules and setup the interface:</p>
-	<pre><code>$ insmod ./LINUX/netmap.ko
+	<pre class="language-bash"><code class="language-bash">$ insmod ./LINUX/netmap.ko
 $ insmod ./LINUX/ixgbe/ixgbe.ko
 $ # Distribute the interrupts:
 $ (let CPU=0; cd /sys/class/net/eth3/device/msi_irqs/; for IRQ in *; do \
   echo $CPU &gt; /proc/irq/$IRQ/smp_affinity_list; let CPU+=1
          done)
 $ # Enable RSS:
-$ ethtool -K eth3 ntuple on
-</code></pre>
+$ ethtool -K eth3 ntuple on</code></pre>
 	<p>At this point we started flooding the interface with 6M short UDP packets. <code>htop</code> shows the server being totally busy with handling the flood:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/htop1-1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7etmtoEPnxIeh6CPP8mrJd/4e48729d359fa34e75263692d79096b8/htop1-1.png" alt="" class="kg-image" width="248" height="339" loading="lazy">
+
+	</figure>
 	<p>To counter the flood we started Netmap. First, we needed to edit the indirection table, to isolate the RX queue #4:</p>
-	<pre><code>$ ethtool -X eth3 weight 1 1 1 1 0 1 1 1 1 1
-$ ethtool -N eth3 flow-type udp4 dst-port 53 action 4
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ ethtool -X eth3 weight 1 1 1 1 0 1 1 1 1 1
+$ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
 	<p>This caused all the flood packets to go to RX queue #4.</p>
 	<p>Before putting an interface in Netmap mode it is necessary to turn off hardware offload features:</p>
-	<pre><code>$ ethtool -K eth3 lro off gro off
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ ethtool -K eth3 lro off gro off</code></pre>
 	<p>Finally we launched the netmap offload:</p>
-	<pre><code>$ sudo taskset -c 15 ./nm_offload eth3 4
+	<pre class="language-bash"><code class="language-bash">$ sudo taskset -c 15 ./nm_offload eth3 4
 [+] starting test02 on interface eth3 ring 4
 [+] UDP pps: 5844714
 [+] UDP pps: 5996166
@@ -113,16 +150,18 @@ $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4
 [+] UDP pps: 5909715
 [+] UDP pps: 5865769
 [+] UDP pps: 5906668
-[+] UDP pps: 5875486
-</code></pre>
+[+] UDP pps: 5875486</code></pre>
 	<p>As you see the netmap program on a single RX queue was able to receive about 5.8M packets.</p>
 	<p>For completeness, here's an <code>htop</code> showing only a single core being busy with Netmap:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/htop2-1.png" alt="" loading="lazy"></p>
-	<h4 id="thanks">Thanks</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72C2hRcoZTkoaTJZLaqgoi/3ee48807c9591069dde5063529ca95e0/htop2-1.png" alt="" class="kg-image" width="246" height="335" loading="lazy">
+
+	</figure>
+	<h4>Thanks</h4>
 	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html">the initial hack</a> we based our work on.</p>
 	<p>We would also like to thank Luigi Rizzo, for his Netmap work and great feedback on our patches.</p>
-	<h4 id="finalwords">Final words</h4>
+	<h4>Final words</h4>
 	<p>At CloudFlare our application stack is based on open source software. We’re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>
 	<p>You can find more CloudFlare open source <a href="https://cloudflare.github.io">here</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

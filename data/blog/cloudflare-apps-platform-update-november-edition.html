@@ -1,14 +1,16 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2m7ailpiw5PzvdgNs7u8jX/08baf322f92292d47712ed6761fec400/cloudflare-apps-platform-update-november-edition.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Since our last newsletter, dozens of developers like you have reached out with ideas for new kinds of apps that weren’t yet possible. These are some of my favorite conversations because they help us find out which features should be prioritized. With your guidance, we’ve spent this month meticulously converting our supply of Halloween candy into those ideas. Let’s dive in and see what’s new!</p>
-	<h3 id="paidappproductenhancements">? Paid App Product Enhancements</h3>
+	<h3>? Paid App Product Enhancements</h3>
 	<p>We’ve made it easier to upsell premium features with product specific options. Customers can try out exclusive features before making a purchase, on any site, even without Cloudflare account! Here’s an example of Lead Box using <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#limiting-radio-options-to-a-set-of-products">product specific radio buttons</a>:</p>
-	<figure class="content-box light" data-image="1">
-		<img src="https://blog.cloudflare.com/content/images/2017/11/Screen-Shot-2017-11-22-at-5.31.19-AM.png" alt="">
-		<figcaption>Previewing premium features in <a href="https://www.cloudflare.com/apps/lead-box/install" target="_blank">Lead Box</a></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RJXwYv56e20NI57m2ZR5d/a5ecdf39034ba439273a243b0c2e8d2a/Screen-Shot-2017-11-22-at-5.31.19-AM.png" alt="" class="kg-image" width="924" height="628" loading="lazy">
+
 	</figure>
+	<p>Previewing premium features in <a href="https://www.cloudflare.com/apps/lead-box/install">Lead Box</a></p>
 	<p>In this example, a customer can choose to see the newsletter option after choosing&nbsp;the "Pro" plan.&nbsp;Developers can now update the <a href="https://www.cloudflare.com/apps/developer/docs/install-json/preview">Live Preview</a> in response to this choice. We’ve added new <code>"_product"</code> keyword for this event.&nbsp;Here’s a snippet on how Lead Box handles a customer <a href="https://github.com/cloudflare-apps/lead-box/blob/68a914ab58e526aa62572e2e16b9cb631f4cdfff/install.json#L14-L29">changing products</a> without refreshing the page:</p>
-	<pre><code class="language-javascript">{
+	<pre class="language-javascript"><code class="language-javascript">{
   "preview": {
     "handlers": [
       {
@@ -21,9 +23,9 @@
       }
     ]
   }
-}
-</code></pre>
-	<pre><code class="language-javascript">let options = INSTALL_OPTIONS
+}</code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">let options = INSTALL_OPTIONS
 let product = INSTALL_PRODUCT
 
 function renderApp () {/*...*/}
@@ -37,18 +39,19 @@ window.INSTALL_SCOPE = {
     product = nextProduct
     renderApp()
   }
-}
-</code></pre>
-	<h3 id="commentsratings">? Comments &amp; Ratings</h3>
+}</code></pre>
+	<h3>? Comments &amp; Ratings</h3>
 	<p>Our previous newsletter included two of our most requested features: customer feedback, and install metrics. Together these features have helped developers reach out to their customers and track down issues. Customers can now share their feedback publically with comments and ratings:</p>
-	<figure class="content-box light" data-image="2">
-		<img src="https://blog.cloudflare.com/content/images/2017/11/previous-comments-1.png" alt="">
-		<figcaption>Revealing older comments.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RcAjLum5hUPeNquIAxxyt/de816ac62e6e5808251717f2ed51e0b9/previous-comments-1.png" alt="" class="kg-image" width="1062" height="898" loading="lazy">
+
 	</figure>
+	<p>Revealing older comments.</p>
 	<p>Comments for previous releases are initially hidden to emphasize the most recent feedback. As customers send in new feedback, previous ratings will have less of an impact on your app’s sentiment. Apps that score well with customers will gradually increase your visibility in the public listing as well!</p>
-	<h3 id="manangingdnsviaapps">? Mananging DNS via Apps</h3>
+	<h3>? Mananging DNS via Apps</h3>
 	<p>We’ve saved the best for last! App developers can now manage a customer’s DNS records. The simplest way to define a DNS record is directly in your app’s <code>install.json</code> file. This for example, would allow a customer to create a CNAME to send traffic to your domain, and insert a <code>A</code> record on their root domain:</p>
-	<pre><code class="language-javascript">{
+	<pre class="language-javascript"><code class="language-javascript">{
   "resources": [/*...*/],
   "hooks": [/*...*/],
   "options": {
@@ -71,505 +74,109 @@ window.INSTALL_SCOPE = {
       "proxied": true
     }
   ]
-}
-</code></pre>
+}</code></pre>
 	<p>The customer can then confirm your changes after before completing their installation.</p>
-	<figure class="content-box light" data-image="3">
-		<img src="https://blog.cloudflare.com/content/images/2017/11/DNS.png" alt="">
-		<figcaption>Requesting permission to access a customer’s email address and DNS entries.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZzXNIl4h8JiMvf8Bxqoqo/a1db37a8625532983d0b7b92c0cf9c26/DNS.png" alt="" class="kg-image" width="1196" height="856" loading="lazy">
+
 	</figure>
+	<p>Requesting permission to access a customer’s email address and DNS entries.</p>
 	<p>DNS records make it possible to add new records to a customer’s account for your email services, blogging platforms, customer management systems, <a href="https://www.cloudflare.com/apps/developer/docs/dns">and much, much more</a>!</p>
-	<h4 id="otherplatformimprovements">⚙ Other Platform Improvements</h4>
+	<h4>⚙ Other Platform Improvements</h4>
 	<p>We’ve made hundreds of changes since our last newsletter, some more visible than others. Here’s a quick recap of some our favorites:</p>
 	<ul>
-		<li>New Cloudflare customers are onboarded with apps after registration</li>
-		<li>Updated docs on <a href="https://www.cloudflare.com/apps/developer/docs/webhooks#item-add-event">“item add” event</a></li>
-		<li>Developers can now optionally link to their public GitHub repository</li>
-		<li>A new input type: Numbers <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#number-with-unit">with units</a>!</li>
+		<li>
+			<p>New Cloudflare customers are onboarded with apps after registration</p>
+		</li>
+		<li>
+			<p>Updated docs on <a href="https://www.cloudflare.com/apps/developer/docs/webhooks#item-add-event">“item add” event</a></p>
+		</li>
+		<li>
+			<p>Developers can now optionally link to their public GitHub repository</p>
+		</li>
+		<li>
+			<p>A new input type: Numbers <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#number-with-unit">with units</a>!</p>
+		</li>
 	</ul>
-	<h2 id="thankyou">Thank you ?</h2>
-	<p>In the spirit of Thanksgiving, we raise a gravy boat to everyone who made this winter a little warmer. To the all the Cloudflarians and developers who sent in feedback, we say <strong>thank you!</strong></p>
+	<h2>Thank you ?</h2>
+	<p>In the spirit of Thanksgiving, we raise a gravy boat to everyone who made this winter a little warmer. To the all the Cloudflarians and developers who sent in feedback, we say <b>thank you!</b></p>
 	<p>Reach out at <a href="https://twitter.com/CloudflareApps">@CloudflareApps</a> and let us know what you’d like to see next!!!</p>
 	<p>Until next time! ⛄️️</p>
 	<p>— Teffen</p>
-	<footer class="content-footer">
-		<div class="email-pitch">
-			Powerful tools built by world-class developers, delivered by Cloudflare, easily added to your website.
-		</div>
-		<div class="email-container"></div>
-		<div class="playbook-container">
-			<div class="content-accent">
-				<img src="https://blog.cloudflare.com/content/images/2017/11/gcp-logo-2.png" alt="">
-			</div>
-			<div class="content-primary">
-				<div class="content-headline">Up to $100k in Cloud Credits</div>
-				<div class="content-description">
-					Cloudflare Apps makes it easy to get what you build installed, but building a great app also requires great infrastructure. We’ve partnered with Google to offer app developers like you up to $100,000 in free Google Cloud credits to support the apps you build.
-				</div>
-				<p><a class="btn btn-primary" href="https://www.cloudflare.com/apps/developer/offers/google" target="_blank">Check it out ›</a></p>
-			</div>
-		</div>
-	</footer>
-	<style>
-		.content-box {
-			margin: 1em auto;
-			max-width: 100%;
-			box-sizing: border-box;
+	<p>Powerful tools built by world-class developers, delivered by Cloudflare, easily added to your website.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IAzPTMTwhimAtCSIAY7SJ/1f82d175b7d84c1538e70ec4d20c4fe2/gcp-logo-2.png" alt="" class="kg-image" width="468" height="290" loading="lazy">
+
+	</figure>
+	<p>Up to $100k in Cloud Credits</p>
+	<p>Cloudflare Apps makes it easy to get what you build installed, but building a great app also requires great infrastructure. We’ve partnered with Google to offer app developers like you up to $100,000 in free Google Cloud credits to support the apps you build.</p>
+	<p><a href="https://www.cloudflare.com/apps/developer/offers/google">Check it out ›</a></p>
+	<p>.content-box { margin: 1em auto; max-width: 100%; box-sizing: border-box; } .content-box img { padding: .5em; border: 1px solid #ddd; border-radius: 3px; max-height: 100%; box-sizing: border-box; } .content-box[data-image="1"] img { background-color: #f3f3f3; padding: 0; } .content-box[data-image="2"] img { background-color: #fff; padding: 0; } .content-box[data-image="3"] img { background-color: #eee; padding: 0; } @media (min-width: 768px) { .content-box[data-image="1"] img { height: 314px; } .content-box[data-image="2"] img { height: 449px; } .content-box[data-image="3"] img { height: 428px; } } .content-footer { display: flex; align-items: center; justify-content: center; flex-flow: column; padding: 1em .5em; background: #272727; color: #f1f1f1; line-height: 1.533; position: absolute; left: 0; right: 0; } .content-footer .email-pitch { text-align: center; } .content-footer #mc-embedded-subscribe-form { display: flex; align-items: center; } .content-footer #mce-responses { margin-left: .5em; } .content-footer #mce-EMAIL { flex: 0 1 auto !important; width: 245px; margin: 0; } .content-footer #mce-EMAIL, .content-footer #mc-embedded-subscribe { height: 2.4em; font-size: 1.2em; line-height: 1; } .content-footer #mc-embedded-subscribe { padding: .55em 1em; font-weight: 500; } .content-footer #mc-embedded-subscribe-form, .content-footer #mc-embedded-subscribe-form &gt; * { flex: 0 0 auto; } .content-footer .email-container { display: flex; } .content-footer .playbook-container { display: flex; align-items: center; } .content-footer .content-accent { flex: 0 0 auto; } .content-footer .content-accent img { height: 145px; margin-right: 2em; } .content-footer .content-headline { font-size: 2.1em; font-weight: bold; } .content-footer .content-description { font-size: .9em; max-width: 600px; margin-bottom: 1em; } @media (max-width: 768px) { .content-footer .email-container { flex: 1 1 auto; width: 100%; } .content-footer .playbook-container { flex-flow: column; } } /* Floating Sidebar */ body.floating-sidebar .primary-content, body.floating-sidebar .post-content { width: 100% !important; } body.floating-sidebar aside.sidebar { float: right !important; margin-bottom: 0.5em; } .post-content, .post-header { max-width: 36em; } body.floating-sidebar .post-content, body.floating-sidebar .post-header { max-width: none; } body.floating-sidebar .footer-nav { width: 100% !important; } /* Social */ .social { display: flex; align-items: center; } /*.fb_iframe_widget { padding-top: 3px; padding-right: 1px; }*/ .social &gt; * + * { margin-right: 0 !important; margin-left: 7px !important; } .social &gt; .IN-widget { margin-bottom: -2px !important; margin-left: 9px !important; } /* Hide period after author */ .post-header .meta a { border-right: 5px solid white; margin-right: -5px; position: relative; } /* Post */ body { background-color: white; } .post-header, .post-content p, .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content pre, .post-content ul, .post-content figcaption { display: block; margin-left: auto; margin-right: auto; width: 75%; } .post-content pre { width: 55%; font-size: .7em; margin-bottom: 1.9em; } .post-content figcaption { text-align: center; font-style: italic; opacity: .8; margin-top: 0.2em; margin-bottom: 1.9em; font-size: .9em; } pre, code { font-size: inherit; line-height: inherit; } section.primary-content { font-size: 16px; line-height: 1.6; color: black; } blockquote { padding-bottom: 1.5em; padding-top: 1em; font-style: italic; font-size: 1.2rem; } blockquote.pull-quote-centered { font-size: 1.2em; text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; } blockquote blockquote { margin-left: 1em; padding-left: 1em; border-left: 5px solid rgba(0, 0, 0, 0.2); padding-bottom: 0.5em; padding-top: 0.5em; margin-bottom: 0.5em; margin-top: 0.5em; } p.attribution { color: #666; font-size: 0.8em; padding-bottom: 1em; } a code.year { text-decoration: underline; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0.75em 0; } .closing-cards #mc_embed_signup input { font-size: 1.5em; height: auto; } .closing-cards #mc_embed_signup input[type="email"] { border: 1px solid #bcbcbc; border-radius: 2px; margin-bottom: 0; } .closing-cards #mc_embed_signup input[type="submit"] { background: #f38020; color: #fff; padding: .8em 1em .8em 1em; white-space: nowrap; line-height: 1.2; text-align: center; border-radius: 2px; border: 0; display: inline-block; text-rendering: optimizeLegibility; -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: subpixel-antialiased; user-select: none; -webkit-appearance: none; appearance: none; letter-spacing: .04em; text-indent: .04em; cursor: pointer; } .closing-cards #mc_embed_signup div.mce_inline_error { background-color: transparent; color: #C33; padding: 0; display: inline-block; font-size: 0.9em; } .closing-cards #mc_embed_signup p:not(:empty) { line-height: 1.5; margin-bottom: 2em; } .closing-cards #mc_embed_signup input[type="email"] { font-size: 20px !important; width: 100% !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0 !important; } .closing-cards #mc_embed_signup input[type="submit"] { font-size: 20px !important; margin-top: .5em !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup div.mce_inline_error { padding: 0; margin: 0; color: #F38020 !important; } aside.section.learn-more { display: none; } .closing-cards { background: #eee; width: 100%; list-style-type: none; margin-left: 0; } .closing-card { width: calc(50% - 10px) !important; font-size: 20px; padding: 1.5em; display: inline-block; box-sizing: border-box; vertical-align: top; } #mc_embed_signup { max-width: 400px; margin: 1em auto; } @media (min-width: 768px) { #mc_embed_signup { margin-left: 1em; } } @media (max-width: 788px){ .closing-card { width: 100% !important; } .closing-card + .closing-card { border-top: 10px solid white; } }</p>
+	<p>(function () {
+		'use strict'</p>
+	<p>document.body.style.visibility = 'hidden'</p>
+	<p>function fakeReady (fn) {
+		if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', fn)
+		} else {
+		fn()
 		}
-
-		.content-box img {
-			padding: .5em;
-			border: 1px solid #ddd;
-			border-radius: 3px;
-			max-height: 100%;
-			box-sizing: border-box;
+		}</p>
+	<p>window.$ = window.jQuery = function fakejQuery () {
+		return {
+		ready: fakeReady,
+		fitVids: function () {
+		// if (window.$.fn.fitVids) {
+		// window.$.fn.fitVids.apply(window.$.fn, arguments)
+		// }
 		}
-
-		.content-box[data-image="1"] img {
-			background-color: #f3f3f3;
-			padding: 0;
 		}
-
-		.content-box[data-image="2"] img {
-			background-color: #fff;
-			padding: 0;
-		}
-
-		.content-box[data-image="3"] img {
-			background-color: #eee;
-			padding: 0;
-		}
-
-		@media (min-width: 768px) {
-			.content-box[data-image="1"] img {
-				height: 314px;
-			}
-
-			.content-box[data-image="2"] img {
-				height: 449px;
-			}
-
-			.content-box[data-image="3"] img {
-				height: 428px;
-			}
-		}
-
-		.content-footer {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-flow: column;
-			padding: 1em .5em;
-			background: #272727;
-			color: #f1f1f1;
-			line-height: 1.533;
-			position: absolute;
-			left: 0;
-			right: 0;
-		}
-
-		.content-footer .email-pitch {
-			text-align: center;
-		}
-
-		.content-footer #mc-embedded-subscribe-form {
-			display: flex;
-			align-items: center;
-		}
-
-		.content-footer #mce-responses {
-			margin-left: .5em;
-		}
-
-		.content-footer #mce-EMAIL {
-			flex: 0 1 auto !important;
-			width: 245px;
-			margin: 0;
-		}
-
-		.content-footer #mce-EMAIL,
-		.content-footer #mc-embedded-subscribe {
-			height: 2.4em;
-			font-size: 1.2em;
-			line-height: 1;
-		}
-
-		.content-footer #mc-embedded-subscribe {
-			padding: .55em 1em;
-			font-weight: 500;
-		}
-
-		.content-footer #mc-embedded-subscribe-form,
-		.content-footer #mc-embedded-subscribe-form>* {
-			flex: 0 0 auto;
-		}
-
-		.content-footer .email-container {
-			display: flex;
-		}
-
-		.content-footer .playbook-container {
-			display: flex;
-			align-items: center;
-		}
-
-		.content-footer .content-accent {
-			flex: 0 0 auto;
-		}
-
-		.content-footer .content-accent img {
-			height: 145px;
-			margin-right: 2em;
-		}
-
-		.content-footer .content-headline {
-			font-size: 2.1em;
-			font-weight: bold;
-		}
-
-		.content-footer .content-description {
-			font-size: .9em;
-			max-width: 600px;
-			margin-bottom: 1em;
-		}
-
-		@media (max-width: 768px) {
-			.content-footer .email-container {
-				flex: 1 1 auto;
-				width: 100%;
-			}
-
-			.content-footer .playbook-container {
-				flex-flow: column;
-			}
-		}
-
-		/* Floating Sidebar */
-
-		body.floating-sidebar .primary-content,
-		body.floating-sidebar .post-content {
-			width: 100% !important;
-		}
-
-		body.floating-sidebar aside.sidebar {
-			float: right !important;
-			margin-bottom: 0.5em;
-		}
-
-		.post-content,
-		.post-header {
-			max-width: 36em;
-		}
-
-		body.floating-sidebar .post-content,
-		body.floating-sidebar .post-header {
-			max-width: none;
-		}
-
-		body.floating-sidebar .footer-nav {
-			width: 100% !important;
-		}
-
-		/* Social */
-
-		.social {
-			display: flex;
-			align-items: center;
-		}
-
-		/*.fb_iframe_widget {
-  padding-top: 3px;
-  padding-right: 1px;
-}*/
-		.social>*+* {
-			margin-right: 0 !important;
-			margin-left: 7px !important;
-		}
-
-		.social>.IN-widget {
-			margin-bottom: -2px !important;
-			margin-left: 9px !important;
-		}
-
-		/* Hide period after author */
-
-		.post-header .meta a {
-			border-right: 5px solid white;
-			margin-right: -5px;
-			position: relative;
-		}
-
-		/* Post */
-
-		body {
-			background-color: white;
-		}
-
-		.post-header,
-		.post-content p,
-		.post-content h1,
-		.post-content h2,
-		.post-content h3,
-		.post-content h4,
-		.post-content h5,
-		.post-content pre,
-		.post-content ul,
-		.post-content figcaption {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			width: 75%;
-		}
-
-		.post-content pre {
-			width: 55%;
-			font-size: .7em;
-			margin-bottom: 1.9em;
-		}
-
-		.post-content figcaption {
-			text-align: center;
-			font-style: italic;
-			opacity: .8;
-			margin-top: 0.2em;
-			margin-bottom: 1.9em;
-			font-size: .9em;
-		}
-
-		pre,
-		code {
-			font-size: inherit;
-			line-height: inherit;
-		}
-
-		section.primary-content {
-			font-size: 16px;
-			line-height: 1.6;
-			color: black;
-		}
-
-		blockquote {
-			padding-bottom: 1.5em;
-			padding-top: 1em;
-			font-style: italic;
-			font-size: 1.2rem;
-		}
-
-		blockquote.pull-quote-centered {
-			font-size: 1.2em;
-			text-align: center;
-			max-width: 100%;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		blockquote blockquote {
-			margin-left: 1em;
-			padding-left: 1em;
-			border-left: 5px solid rgba(0, 0, 0, 0.2);
-			padding-bottom: 0.5em;
-			padding-top: 0.5em;
-			margin-bottom: 0.5em;
-			margin-top: 0.5em;
-		}
-
-		p.attribution {
-			color: #666;
-			font-size: 0.8em;
-			padding-bottom: 1em;
-		}
-
-		a code.year {
-			text-decoration: underline;
-		}
-
-		.closing-cards #mc_embed_signup .mc-field-group {
-			margin: 0.75em 0;
-		}
-
-		.closing-cards #mc_embed_signup input {
-			font-size: 1.5em;
-			height: auto;
-		}
-
-		.closing-cards #mc_embed_signup input[type="email"] {
-			border: 1px solid #bcbcbc;
-			border-radius: 2px;
-			margin-bottom: 0;
-		}
-
-		.closing-cards #mc_embed_signup input[type="submit"] {
-			background: #f38020;
-			color: #fff;
-			padding: .8em 1em .8em 1em;
-			white-space: nowrap;
-			line-height: 1.2;
-			text-align: center;
-			border-radius: 2px;
-			border: 0;
-			display: inline-block;
-			text-rendering: optimizeLegibility;
-			-webkit-tap-highlight-color: transparent;
-			-webkit-font-smoothing: subpixel-antialiased;
-			user-select: none;
-			-webkit-appearance: none;
-			appearance: none;
-			letter-spacing: .04em;
-			text-indent: .04em;
-			cursor: pointer;
-		}
-
-		.closing-cards #mc_embed_signup div.mce_inline_error {
-			background-color: transparent;
-			color: #C33;
-			padding: 0;
-			display: inline-block;
-			font-size: 0.9em;
-		}
-
-		.closing-cards #mc_embed_signup p:not(:empty) {
-			line-height: 1.5;
-			margin-bottom: 2em;
-		}
-
-		.closing-cards #mc_embed_signup input[type="email"] {
-			font-size: 20px !important;
-			width: 100% !important;
-			padding: .6em 1em !important;
-		}
-
-		.closing-cards #mc_embed_signup .mc-field-group {
-			margin: 0 !important;
-		}
-
-		.closing-cards #mc_embed_signup input[type="submit"] {
-			font-size: 20px !important;
-			margin-top: .5em !important;
-			padding: .6em 1em !important;
-		}
-
-		.closing-cards #mc_embed_signup div.mce_inline_error {
-			padding: 0;
-			margin: 0;
-			color: #F38020 !important;
-		}
-
-		aside.section.learn-more {
-			display: none;
-		}
-
-		.closing-cards {
-			background: #eee;
-			width: 100%;
-			list-style-type: none;
-			margin-left: 0;
-		}
-
-		.closing-card {
-			width: calc(50% - 10px) !important;
-			font-size: 20px;
-			padding: 1.5em;
-			display: inline-block;
-			box-sizing: border-box;
-			vertical-align: top;
-		}
-
-		#mc_embed_signup {
-			max-width: 400px;
-			margin: 1em auto;
-		}
-
-		@media (min-width: 768px) {
-			#mc_embed_signup {
-				margin-left: 1em;
-			}
-		}
-
-
-		@media (max-width: 788px) {
-			.closing-card {
-				width: 100% !important;
-			}
-
-			.closing-card+.closing-card {
-				border-top: 10px solid white;
-			}
-		}
-	</style>
-	<!-- Ghost.io fixes -->
-	<pre><script type="text/javascript">
-(function () {
-  'use strict'
-
-  document.body.style.visibility = 'hidden'
-
-  function fakeReady (fn) {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', fn)
-    } else {
-      fn()
-    }
-  }
-
-  window.$ = window.jQuery = function fakejQuery () {
-    return {
-      ready: fakeReady,
-      fitVids: function () {
-        // if (window.$.fn.fitVids) {
-        //   window.$.fn.fitVids.apply(window.$.fn, arguments)
-        // }
-      }
-    }
-  }
-
-  window.$.fn = window.$.fn || {}
-
-  function restyleBlog () {
-    'use strict'
-
-    if (window.innerWidth >= 800) {
-      var sidebar = document.querySelector('aside.sidebar')
-      var header = document.querySelector('header.post-header')
-      var post = document.querySelector('article.post')
-
-      try {
-        post.insertBefore(sidebar, header)
-        document.body.className += ' floating-sidebar'
-      } catch (e) { console.log('Style Error', e)}
-    }
-
-    try {
-      document.querySelector('body > .wrapper .sidebar').style.display = 'none'
-    } catch (e) { console.log('Style Error', e)}
-
-    try {
-      var tagFooter = document.querySelector('.post-content + footer')
-      tagFooter.appendChild(document.querySelector('.post-header .social'))
-    } catch (e) { console.log('Style Error', e)}
-
-    function resizeFooter () {
-      post.style.paddingBottom = footer.clientHeight + 'px'
-    }
-
-    try {
-      var signup = document.querySelector('#mc_embed_signup')
-      signup.querySelector('#mce-EMAIL').placeholder = 'email@example.com'
-      signup.querySelector('#mc-embedded-subscribe').textContent = 'Get Updates'
-      signup.querySelector('#mc-embedded-subscribe').className += ' btn-warning'
-
-      var post = document.querySelector('.post-content')
-      var footer = post.querySelector('.content-footer')
-      footer.querySelector('.email-container').appendChild(signup)
-
-      window.addEventListener('resize', resizeFooter)
-      resizeFooter()
-    } catch (e) { console.log('Style Error', e)}
-
-    document.body.style.visibility = ''
-  }
-
-  fakeReady(restyleBlog)
-})()
-</script>
-</pre><!--kg-card-end: markdown-->
+		}</p>
+	<p>window.$.fn = window.$.fn || {}</p>
+	<p>function restyleBlog () {
+		'use strict'</p>
+	<pre class="language-bash"><code class="language-bash">if (window.innerWidth &gt;= 800) {
+  var sidebar = document.querySelector('aside.sidebar')
+  var header = document.querySelector('header.post-header')
+  var post = document.querySelector('article.post')
+
+  try {
+    post.insertBefore(sidebar, header)
+    document.body.className += ' floating-sidebar'
+  } catch (e) { console.log('Style Error', e)}
+}
+
+try {
+  document.querySelector('body &gt; .wrapper .sidebar').style.display = 'none'
+} catch (e) { console.log('Style Error', e)}
+
+try {
+  var tagFooter = document.querySelector('.post-content + footer')
+  tagFooter.appendChild(document.querySelector('.post-header .social'))
+} catch (e) { console.log('Style Error', e)}
+
+function resizeFooter () {
+  post.style.paddingBottom = footer.clientHeight + 'px'
+}
+
+try {
+  var signup = document.querySelector('#mc\_embed\_signup')
+  signup.querySelector('#mce-EMAIL').placeholder = 'email@example.com'
+  signup.querySelector('#mc-embedded-subscribe').textContent = 'Get Updates'
+  signup.querySelector('#mc-embedded-subscribe').className += ' btn-warning'
+
+  var post = document.querySelector('.post-content')
+  var footer = post.querySelector('.content-footer')
+  footer.querySelector('.email-container').appendChild(signup)
+
+  window.addEventListener('resize', resizeFooter)
+  resizeFooter()
+} catch (e) { console.log('Style Error', e)}
+
+document.body.style.visibility = ''</code></pre>
+	<p>}</p>
+	<p>fakeReady(restyleBlog)
+		})()</p>
 </div>

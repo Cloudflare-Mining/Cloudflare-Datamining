@@ -1,13 +1,24 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12KcfaZNa7NSxT2N3zBtJ0/3caf13044eee1f671a22bdc66cfa83ac/refresh-stale-dns-records-on-1-1-1-1.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>You can now refresh <a href="https://1.1.1.1">1.1.1.1</a>’s DNS cache for domain names by using the <a href="https://cloudflare-dns.com/purge-cache">purge cache tool</a>. This is useful for domain owners who have just updated their DNS records and want to make sure it is reflected for everyone using 1.1.1.1 as their public DNS resolver.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image2-3.png" alt="image2-3" loading="lazy"><br>
-		<img src="https://blog.cloudflare.com/content/images/2018/08/image1-2.png" alt="image1-2" loading="lazy">
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BBLdPQGUZg5MmY9Hja51A/045d60994942844b125e72c795cffed9/image2-3.png" alt="image2-3" class="kg-image" width="1666" height="364" loading="lazy">
+
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A5t7Y9XCv4EpC0kEKilbk/08ffba9a72d5ddda9f5249d95829da81/image1-2.png" alt="image1-2" class="kg-image" width="1666" height="394" loading="lazy">
+
+	</figure>
 	<p>When a client queries for a domain against 1.1.1.1, the resolver returns the IP address from its cache.1.1.1.1 caches DNS entries for up to 3 hours, if the specified record has TTL that is shorter than 3 hours, the resolver respects that. This means, when a domain owner changes the DNS host from one to another, in the worst case, she will have to wait for at least 3 hours before the old IP address expires from 1.1.1.1’s cache. With the help of the purge cache tool, a domain owner can now easily refresh 1.1.1.1’s DNS cache and will not have to wait for the cached entry to expire.</p>
 	<p>To purge a DNS record, you enter the name of your domain, pick the DNS record type and hit the ‘Purge Cache’ button.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/image3-2.gif" alt="image3-2" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KDbqBxGKRUZWAsupqHMeh/6a666c7eb142de5466ab617d0d0272c5/image3-2.gif" alt="image3-2" class="kg-image" width="1353" height="977" loading="lazy">
+
+	</figure>
 	<p>You can pick from one of the following DNS records: A, AAAA, CNAME, DNSKEY, DS, MX, NAPTR, NS, PTR, SPF, SRV, SSHFP, TLSA, and TXT. Once you hit the purge button it takes a few seconds to propagate the cache purge to all of Cloudflare’s data centers.</p>
 	<p>Check out the <a href="https://cloudflare-dns.com/purge-cache">purge cache tool</a> here and let us know what you think in the comments!</p>
-	<!--kg-card-end: markdown-->
 </div>

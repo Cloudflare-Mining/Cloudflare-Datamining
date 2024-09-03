@@ -1,15 +1,19 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/04/whmcs-cpanel.png" alt="WHMCS + cPanel" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ijd3SOMmD3ZlED54aWCK2/e463bf59443ce7dd5fdbaea2f46b3026/whmcs-cpanel.png" alt="WHMCS + cPanel" class="kg-image" width="640" height="330" loading="lazy">
+
+	</figure>
 	<p>CloudFlare provides integrations for several of the most popular hosting control panels and billing systems such as WHMCS, cPanel, and Plesk. Each of these integrations provide a simple interface for our partners’ customers to sign-up for CloudFlare and start adding domains almost immediately.</p>
 	<p>But what about partners that use more than one system? The best experience occurs when we can get our integrations talking to each other, as our recently updated WHMCS and cPanel plugins do.</p>
-	<h3 id="integrationbasics">Integration Basics</h3>
+	<h3>Integration Basics</h3>
 	<p>All of <a href="https://www.cloudflare.com/resources-downloads">our hosting integrations</a> speak directly to CloudFlare through our host API. With just a single click, the integration passes the necessary information for CloudFlare to create an account and provision the domain. We respond when the provisioning completes, and the integration finishes the setup by making the necessary changes locally (adding and adjusting several DNS records) to route traffic to the domain through CloudFlare.</p>
 	<p>This makes signing up through a hosting partner integration even easier than signing up directly with CloudFlare. These proven systems make DNS changes accurately in order to save a lot of headaches.</p>
-	<h3 id="wheredoiintegratecloudflare">Where do I integrate CloudFlare?</h3>
+	<h3>Where do I integrate CloudFlare?</h3>
 	<p>Many hosting companies expose two different applications to their customers: a billing system and a hosting control panel. The former allows customers to manage their billing information and the products they have purchased; the latter is used to configure hosting products such as accessing files, managing DNS, adding email addresses, and setting up a database.</p>
 	<p>Hosting partners that use both WHMCS (billing) and cPanel (hosting), commonly ask, “Which integration should I use?” In the past, we have recommended the cPanel integration, because cPanel manages the DNS records for a domain. Domains added through cPanel can be set up in one click, whereas WHMCS required presenting instructions to the end-user on finishing the configuration.</p>
-	<h3 id="timetogetwhmcsandcpaneltalking">Time to Get WHMCS and cPanel Talking!</h3>
+	<h3>Time to Get WHMCS and cPanel Talking!</h3>
 	<p>WHMCS, as a billing system, handles auto-provisioning for a variety of hosting control panels, including cPanel. When configured, WHMCS will automatically set up new accounts in cPanel once the order is complete.</p>
 	<p>We join in this auto-provisioning, and immediately after CloudFlare is added, we send requests from WHMCS to the cPanel account to set up a CloudFlare account as well. The exact setup breaks down to a few easy steps:</p>
 	<ol>
@@ -22,9 +26,8 @@
 	</ol>
 	<p>This action has the added benefit of not only setting the domain to run on CloudFlare, but it also sets up our cPanel plugin to show the domain as orange clouded and provides the options to manage many CloudFlare settings through cPanel.</p>
 	<p>Analogous to how CloudFlare stands between web servers and web visitors, we’re using cPanel between WHMCS and our API to make it easy for our partners’ customers to add CloudFlare to any new cPanel hosting account at the point of purchase!</p>
-	<p><em>(Note: only CNAME or partial setup added in WHMCS currently provisions through cPanel.)</em></p>
-	<h3 id="gettingstarted">Getting Started</h3>
+	<p><i>(Note: only CNAME or partial setup added in WHMCS currently provisions through cPanel.)</i></p>
+	<h3>Getting Started</h3>
 	<p>The latest version of our WHMCS integration can be <a href="https://www.cloudflare.com/static/misc/cloudflare_whmcs-latest.zip">downloaded here</a>. Installation requires a partner API key. New partners can apply at <a href="https://www.cloudflare.com/certified-partners">https://www.cloudflare.com/certified-partners</a>.</p>
 	<p>For technical questions related to our integrations, please email us at <a href="mailto:partnersupport@cloudflare.com">partnersupport@cloudflare.com</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

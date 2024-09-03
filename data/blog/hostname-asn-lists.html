@@ -1,34 +1,41 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/hostname-asn-lists-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/hostname-asn-lists-zh-tw">繁體中文</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image2-1.png" class="kg-image" alt="Introducing hostname and ASN lists to simplify WAF rules creation" loading="lazy" width="1999" height="1125"></figure>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/hostname-asn-lists">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/hostname-asn-lists">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FatPlhXcZ6qnKtShFBu74/792fdc54579e638e9abb6a67206263aa/image2-1.png" alt="Introducing hostname and ASN lists to simplify WAF rules creation" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>If you’re responsible for creating a <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall (WAF)</a> rule, you’ll almost certainly need to reference a large list of potential values that each field can have. And having to manually manage and enter all those fields, for numerous WAF rules, would be a guaranteed headache.</p>
 	<p>That’s why we introduced <a href="https://blog.cloudflare.com/introducing-ip-lists">IP lists</a>. Having a separate list of values that can be referenced, reused, and managed independently of the actual rule makes for a better WAF user experience. You can create a new list, such as <code>$organization_ips</code>, and then use it in a rule like “allow requests where source IP is in <code>$organization_ips</code>”. If you need to add or remove IPs, you do that in the list, without touching each of the rules that reference the list. You can even add a descriptive name to help track its content. It’s easy, clean, and organized.</p>
 	<p>Which led us, and our customers, to ask the next natural question: why stop at IPs?</p>
 	<p>Cloudflare’s WAF is highly configurable and allows you to write rules evaluating a set of hostnames, Autonomous System Numbers (ASNs), countries, header values, or values of JSON fields. But to do so, you’ve to input a list of items directly into the rule expression editor, with all the associated downsides: it’s slow (you need to modify each rule individually), prone to error, and sometimes impossible (given the 4 KB limit of a custom rule expression).</p>
 	<p>Well, no longer! Today we are expanding Custom Lists by enabling you to create lists of hostnames and ASNs. The new list types are included in all Enterprise plans, so you’re free to start creating expansive lists the moment you read this.</p>
-	<h3 id="hostname">Hostname </h3>
-	<p>You can now create a list of hostnames by navigating to <strong>Configurations</strong> &gt; <strong>Lists</strong> in your account. This is the same place where you can manage your IP lists and browse the available Managed IP Lists.</p><!--kg-card-begin: html-->
+	<h3>Hostname</h3>
+	<p>You can now create a list of hostnames by navigating to <b>Configurations</b> &gt; <b>Lists</b> in your account. This is the same place where you can manage your IP lists and browse the available Managed IP Lists.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 55.87354409317804%;">
 		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/09526a21aedceb0ec67f2d829aca01a5/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F09526a21aedceb0ec67f2d829aca01a5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;primaryColor=%23f6821f" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div>
 	<p></p><!--kg-card-end: html-->
 	<p>Once the list is created, you can use it in any WAF rule expression. <a href="https://blog.cloudflare.com/account-waf">Account WAF</a> users will find this useful as they will be able to run a managed or custom ruleset only on traffic matching a set of hosts.</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-3.png" class="kg-image" alt="Use of hostname lists in the filter of a custom ruleset (available to Account-level WAF users)." loading="lazy" width="1999" height="1246">
-		<figcaption>Use of hostname lists in the filter of a custom ruleset (available to Account-level WAF users).</figcaption>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vZTeZid1fng7QkSGrtH7U/f8df1eee32d1b8fbba73681ee535c45d/image1-3.png" alt="Use of hostname lists in the filter of a custom ruleset (available to Account-level WAF users)." class="kg-image" width="1999" height="1246" loading="lazy">
+
 	</figure>
+	<p>Use of hostname lists in the filter of a custom ruleset (available to Account-level WAF users).</p>
 	<p>SSL for SaaS users will find hostname lists useful as they can restrict specific rules or rulesets to run on a subset of hosts. The list can be updated programmatically (via the API) to add or remove hosts as they are onboarded to the account.</p>
 	<p>A few things to know about lists: you can add domains and subdomains to a list, and a domain doesn’t automatically match subdomains. For example, if you add example.com to your list and use it in a custom rule to block traffic, requests for api.example.com won’t match. Hostname lists accept the <code>*</code> wildcard to include subdomains. For example, adding <code>*.example.com</code> to a list will match on <code>api.example.com</code> but it won’t match on ‘example.com’. Finally, <code>example.com/path/subfolder</code> wouldn’t be a valid entry — we are building string lists for this use case (more on that below).</p>
-	<h3 id="asn">ASN</h3>
+	<h3>ASN</h3>
 	<p>An <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">autonomous system</a> (AS) is a large network or group of networks that has a unified routing policy. Every device that connects to the Internet is connected to an AS. Imagine an AS, as being like a town's post office, while an IP is the address of a single home. ASNs do not rotate like IPs do, making ASNs a better option when managing a larger portion of the IP space. Typically, each AS is operated by a single large organization, such as an Internet service provider, a large enterprise technology company, or a government agency.</p>
 	<p>You can use an ASN list to manage traffic from ISPs and cloud providers where bots generating automated traffic might be hosted. Using IPs would be less practical as the range of addresses would be too broad and change very frequently. Note that while ASNs are useful in this scenario, they should be used with caution, because blocking the wrong ASN could cause a large range of IPs to be affected.</p>
-	<h3 id="how-many-lists-do-i-get">How many lists do I get?</h3>
+	<h3>How many lists do I get?</h3>
 	<p>Every Enterprise account can create up to 10 Custom lists with a total of 10,000 items shared across all lists. An account is considered Enterprise when at least 1 Enterprise plan has been purchased. Quotas are shared across all data types (IP, ASN and Hostname) and they are defined at the account level, so you can use your lists across all your applications.</p>
 	<p>For example, an account with one (or more) Enterprise plan can have 8 IP lists with 1,000 items each, one Hostname list with 1,700 entries, and one list with 300 ASNs; no more lists or items can be added.</p>
 	<p>Enterprise customers can increase their quotas by reaching out to their account team.</p>
 	<p>At the moment of writing Free, Professional and Business accounts have access only to IP Lists.</p>
-	<h3 id="where-can-i-use-them">Where can I use them?</h3>
+	<h3>Where can I use them?</h3>
 	<p>The following table summarizes what Custom List types will be available and on what fields they can be used. ASN and Hostname Lists are accessible from any WAF product built on the <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset</a> Engine, including Custom, Rate Limiting and Managed rules.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -101,7 +108,7 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3 id="string-the-future-of-lists-coming-soon">String: the future of lists (coming soon)</h3>
+	<h3>String: the future of lists (coming soon)</h3>
 	<p>The next chapter for lists is a hyper-flexible string type. You’ll be able to use it against fields such as header, cookie, path, query, JSON body field, user agent, JA3, MIME type, and more. For each entry you will be able to specify different matching operators, such as ‘exact match’, ‘start with’, ’ends with’ or ‘contains’.</p>
 	<p>Common applications include listing all the user agents you want blocked, listing URLs you want to restrict access to, and more.</p>
 	<p>More complex use cases include creating a different rate limiting rule that applies to a group of users that can be identified using cookies, API keys, or session IDs. A string list will also allow you to collect JA3 fingerprints of known malicious bots.</p>

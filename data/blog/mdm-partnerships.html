@@ -1,48 +1,71 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/mdm-partnerships">简体中文</a>, <a href="https://blog.cloudflare.com/id-id/mdm-partnerships">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/mdm-partnerships">ไทย</a> and <a href="https://blog.cloudflare.com/ja-jp/mdm-partnerships">日本語</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-35.png" class="kg-image" alt="Cloudflare announces integrations with MDM companies" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6E87jqNDUV5WNhRKmreITS/9a75fd101367e2329c9b3e4cec38020a/image2-35.png" alt="Cloudflare announces integrations with MDM companies" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we are continuously thinking about ways to make the Internet more secure, more reliable and more performant for consumers and businesses of all sizes. Connecting devices safely to applications is critical for the safety of enterprise applications and for the peace of mind of a CIO.</p>
 	<p>Last January, we <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams">launched our Zero Trust platform, Cloudflare for Teams</a>, that protects users, their devices, and their data by replacing legacy security perimeters with Cloudflare’s global edge network. Cloudflare for Teams makes security solutions like Zero Trust Network Access and <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> more accessible, for all companies, regardless of size, scale, or resources. This means building products that are more user-friendly, easier to deploy, and less cumbersome to manage.</p>
 	<p>The Cloudflare WARP agent encrypts traffic from devices to Cloudflare’s network, and many customers use it as a critical component to extend default-deny controls to where their users are. Today, Cloudflare is rolling out richer documentation on how to deploy WARP with these partners, so your administrators have a streamlined, easy-to-follow process to enroll your entire device fleet.</p>
 	<p>And we’re excited to announce new integrations with mobile device management vendors Microsoft Intune, Ivanti, JumpCloud, Kandji, and Hexnode to make it even easier to deploy and install Cloudflare WARP.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-54.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="what-is-mdm">What is MDM?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wCd32Mqqcd5yQ1lJkIXb7/308f53418d64f6fe9c95d74eee17d68c/image1-54.png" alt="" class="kg-image" width="1881" height="651" loading="lazy">
+
+	</figure>
+	<h3>What is MDM?</h3>
 	<p>Mobile Device Management (MDM), sometimes also called Unified Endpoint Management (UEM) tools, offers a simple solution to an increasingly challenging problem in an era of distributed working — managing all of an organization's devices from a single platform.</p>
 	<p>Take a fictional healthcare consultancy firm. Suppose when starting her firm, the CEO hires largely in her home state of Colorado and allows employees to use their own personal phones and laptops to access emails and other data. This bring-your-own-device (BYOD) policy has been convenient to get the company off the ground.</p>
 	<p>Then, her firm starts landing higher profile clients with larger-scale projects, and to service this increased demand, our CEO begins hiring across the United States and rolling out corporate devices. Moreover, these clients have more rigorous standards around handling confidential patient data.</p>
 	<p>Our consultancy feels the pressure to level up its security. But with a mixed device fleet dispersed nationwide, how can our CEO improve visibility across managed and unmanaged devices; to check that they are properly updated, not compromised or lost? If lost or compromised, how can those devices be wiped remotely, so that client or company information does not leak?</p>
 	<p>MDM solutions can help answer these questions. They were made specifically to configure policies for what users can do on a device, roll out operating systems updates, and install new software -- all while providing a unified view of a device fleet for IT teams. While these problems used to be solved by stopping by an IT desk, they can now be addressed remotely, at scale.</p>
-	<h3 id="streamlining-deployment-of-our-device-client">Streamlining deployment of our device client</h3>
+	<h3>Streamlining deployment of our device client</h3>
 	<p>Cloudflare recognizes that organizations like the healthcare consultancy above will be looking to enhance security and visibility across their dispersed users. Our device client, WARP, helps with this by enabling identity and device posture-aware policy enforcement at the endpoint.</p>
 	<p>We have optimized our client to enable diverse deployment approaches, so organizations have the flexibility they need to roll the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> capabilities of Cloudflare for Teams with ease. For example, WARP works across all major operating systems (e.g., Windows, MacOS, Linux, chrome OS, iOS, and Android). And regardless of the deployment mechanism, WARP uses a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters">common set of parameters</a>, so your admins have a consistent experience.</p>
 	<p>To show this streamlined deployment in action, here are some common scenarios on how to deploy our client on Windows with only some minor tweaks through the command line:</p>
-	<p>1. If you want to use HTTP filtering rules, Browser Isolation or do anything with device posture, the most important thing is to get your user authenticated to a Teams Organization and send their traffic over WARP:</p><!--kg-card-begin: markdown-->
-	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>2. If you don’t care about identity and just want a silent install with the same scenario above, use <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens">service tokens</a> and disable the initial client UI:</p><!--kg-card-begin: markdown-->
-	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” 
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>3. Do your employees sometimes travel to countries or locations where encrypting traffic in a tunnel isn’t allowed? You can let them turn off WARP while still being subject to your company’s DNS rules:</p><!--kg-card-begin: markdown-->
-	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="our-partnerships">Our Partnerships</h3>
+	<p>1. If you want to use HTTP filtering rules, Browser Isolation or do anything with device posture, the most important thing is to get your user authenticated to a Teams Organization and send their traffic over WARP:</p>
+	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"</code></pre>
+	<p>2. If you don’t care about identity and just want a silent install with the same scenario above, use <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens">service tokens</a> and disable the initial client UI:</p>
+	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” </code></pre>
+	<p>3. Do your employees sometimes travel to countries or locations where encrypting traffic in a tunnel isn’t allowed? You can let them turn off WARP while still being subject to your company’s DNS rules:</p>
+	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”</code></pre>
+	<h3>Our Partnerships</h3>
 	<p>Cloudflare recognizes that many organizations rely on MDM solutions to deploy software like our client, and when they do deploy, they deserve a process that makes life simpler. To that end, we are partnering with leading MDM organizations that you already rely on to ensure our software is compatible and has purpose-built documentation to protect your users.</p>
-	<blockquote>“The close collaboration and deep integration between Cloudflare and Microsoft helps strengthen the security posture of our joint customers and ensure people stay productive as Zero Trust remains top of mind for every organizational leader. ”<br><em><strong>– </strong></em><strong>Ann Johnson, Corporate Vice President of Security, Compliance, Identity, and Management, Business Development at Microsoft.</strong></blockquote>
-	<blockquote><em>“ZTNA is no longer a choice for enterprises to loom over, it has become a necessity. As a global solution for enterprise endpoint management, Hexnode sees this partnership with Cloudflare as a great step towards the future. “</em><br><em><strong>– Sahad M, CTO, Hexnode</strong></em></blockquote>
-	<blockquote><em>“Zero Trust is a mindset and culture that every organization needs to not only adopt, but accelerate with the various devices employees use to access corporate data and systems. Our partnership with Cloudflare will not only improve the experience of IT teams, but the employee experience in the Everywhere Workplace as well. This partnership is another proof point of Ivanti’s commitment to secure users and manage devices.” </em><br><em><strong>– Nayaki Nayyar, President and Chief Product Officer, Ivanti</strong></em></blockquote>
-	<blockquote><em>"The bedrock of a zero trust approach is a combination of securing the identity, the device, and the network. By partnering with Cloudflare, we are creating a best-in-class approach for securing today's modern organization."</em><br><em><strong>– Chase Doelling, Principal Strategist at JumpCloud</strong></em></blockquote>
-	<blockquote><em>“Kandji and Cloudflare’s partnership will help IT teams to quickly deploy Cloudflare’s network security solutions across their Apple fleet. Using device management software like Kandji to install, enable, and enforce Cloudflare for Teams will allow IT teams to manage their security posture at any scale.”</em><br><em><strong>– Weldon Dodd, SVP, Product Strategy, Kandji</strong></em></blockquote>
-	<h3 id="what-s-next">What’s next?</h3>
+	<blockquote>
+		<p>“The close collaboration and deep integration between Cloudflare and Microsoft helps strengthen the security posture of our joint customers and ensure people stay productive as Zero Trust remains top of mind for every organizational leader. ”<b><i>–</i></b> <b>Ann Johnson, Corporate Vice President of Security, Compliance, Identity, and Management, Business Development at Microsoft.</b></p>
+	</blockquote>
+	<blockquote>
+		<p><i>“ZTNA is no longer a choice for enterprises to loom over, it has become a necessity. As a global solution for enterprise endpoint management, Hexnode sees this partnership with Cloudflare as a great step towards the future. “</i><b><i>– Sahad M, CTO, Hexnode</i></b></p>
+	</blockquote>
+	<blockquote>
+		<p><i>“Zero Trust is a mindset and culture that every organization needs to not only adopt, but accelerate with the various devices employees use to access corporate data and systems. Our partnership with Cloudflare will not only improve the experience of IT teams, but the employee experience in the Everywhere Workplace as well. This partnership is another proof point of Ivanti’s commitment to secure users and manage devices.”</i><b><i>– Nayaki Nayyar, President and Chief Product Officer, Ivanti</i></b></p>
+	</blockquote>
+	<blockquote>
+		<p><i>"The bedrock of a zero trust approach is a combination of securing the identity, the device, and the network. By partnering with Cloudflare, we are creating a best-in-class approach for securing today's modern organization."</i><b><i>– Chase Doelling, Principal Strategist at JumpCloud</i></b></p>
+	</blockquote>
+	<blockquote>
+		<p><i>“Kandji and Cloudflare’s partnership will help IT teams to quickly deploy Cloudflare’s network security solutions across their Apple fleet. Using device management software like Kandji to install, enable, and enforce Cloudflare for Teams will allow IT teams to manage their security posture at any scale.”</i><b><i>– Weldon Dodd, SVP, Product Strategy, Kandji</i></b></p>
+	</blockquote>
+	<h3>What’s next?</h3>
 	<p>Click below to get started with deploying Cloudflare for Teams:</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/intune">Deploy with Microsoft Intune</a></li>
-		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/kandji">Deploy with Kandji</a></li>
-		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/jumpcloud">Deploy with JumpCloud</a></li>
-		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/hexnode">Deploy with Hexnode</a></li>
-		<li>Deploy with Ivanti — Coming soon!</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/intune">Deploy with Microsoft Intune</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/kandji">Deploy with Kandji</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/jumpcloud">Deploy with JumpCloud</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/hexnode">Deploy with Hexnode</a></p>
+		</li>
+		<li>
+			<p>Deploy with Ivanti — Coming soon!</p>
+		</li>
 	</ul>
 	<p>Don’t see the MDM tool you use today or interested in partnering with us to ensure our mutual customers can hit the ground running? Fill out the contact form on our <a href="https://www.cloudflare.com/partners/mdm">MDM Partnerships page</a>.</p>
 </div>

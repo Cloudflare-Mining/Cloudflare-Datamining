@@ -1,11 +1,14 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SDfDFG2CTr8NOiyt9xLR9/433a6837217344a01d0e789fdb26d31c/thwarting-the-tactics-of-the-equifax-attackers.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>We are now 3 months on from one of the biggest, most significant data breaches in history, but has it redefined people's awareness on security?</p>
 	<p>The answer to that is absolutely yes, awareness is at an all-time high. Awareness, however, does not always result in positive action. The fallacy which is often assumed is "surely, if I keep my software up to date with all the patches, that's more than enough to keep me safe?". It's true, keeping software up to date does defend against known vulnerabilities, but it's a very reactive stance. The more important part is protecting against the unknown.</p>
 	<p>Something every engineer will agree on is that security is hard, and maintaining systems is even harder. Patching or upgrading systems can lead to unforeseen outages or unexpected behaviour due to other fixes which may be applied. This, in most cases, can cause huge delays in the deployment of patches or upgrades, due to requiring either regression testing or deployment in a staging environment. Whilst processes are followed, and tests are done, systems are sat vulnerable, ready to be exploited if they are exposed to the internet.</p>
 	<p>Looking at the wider landscape, an increase in security research has created a surge of CVEs (Common Vulnerability and Exposures) being announced. This compounded by GDPR, NIST and other new data protection legislation, businesses are now forced to pay much more attention to security vulnerabilities that potentially could affect their software, and ultimately put them on the forever growing list of victims of data breaches.</p>
-	<p><a href="https://public.tableau.com/profile/nela7296#!/vizhome/CommonVulnerabilitiesandExposurescvedetails_com/Sheet2"><img src="https://blog.cloudflare.com/content/images/2017/11/cve2.png" alt="" loading="lazy"></a><br>
-		Stats from <a href="https://www.cvedetails.com">cvedetails.com</a> <em>(November 2017)</em></p>
+	<figure class="kg-card kg-image-card ">
+		<a href="https://public.tableau.com/profile/nela7296#!/vizhome/CommonVulnerabilitiesandExposurescvedetails_com/Sheet2">
+			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8XeikDcpPYgT2tFoIN9IT/72bc40373035336525594193e5f072a3/cve2.png" alt="" class="kg-image" width="2556" height="1118" loading="lazy">
+		</a>
+	</figure>
 	<p>Dissecting the Equifax tragedy, in testimony from the CEO, he mentions that the reason for the breach was that there was one single person within the organisation who was responsible for communicating the availability of the patch for Apache Struts, the software at the heart of the breach. The crucial lesson learned from Equifax is that we are all human, and that mistakes can happen, however having multiple people responsible for communicating and notifying teams about threats is crucial. In this case, the mistake almost destroyed one of the largest credit agencies in the world.</p>
 	<p>How could attacks and breaches like Equifax be avoided? First is about understanding how these attacks happen. There are some key attacks which are often the source of data exfiltration through vulnerable software.</p>
 	<ul>
@@ -16,60 +19,68 @@
 			<p>SQL Injection (SQLi), which is delivering an SQL statement hidden in a payload, accessing a backend database powering a website.</p>
 		</li>
 	</ul>
-	<h3 id="remotecodeexecution">Remote Code Execution</h3>
+	<h3>Remote Code Execution</h3>
 	<p>The Struts vulnerability, <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5638">CVE-2017-5638</a>, which is protected by rule 100054 in Cloudflare Specials, was quite simple. In a payload targeted at the web-server, a specific command could be executed which can be seen in the example below:</p>
-	<pre><code>"(#context.setMemberAccess(#dm))))."
+	<pre class="language-bash"><code class="language-bash">"(#context.setMemberAccess(#dm))))."
 "(#cmd='touch /tmp/hacked')."
 "(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win')))."
 "(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd}))."
-"(#p=new java.lang.ProcessBuilder(#cmds))."
-</code></pre>
+"(#p=new java.lang.ProcessBuilder(#cmds))."</code></pre>
 	<p>More critically however, further to this CVE, Apache Struts also announced another vulnerability earlier this year (<a href="https://nvd.nist.gov/vuln/detail/CVE-2017-9805">CVE-2017-9805</a>), which works by delivering a payload against the REST plugin combined with the Xstream handler, which provides an XML ingest capability. By delivering an specially crafted XML payload, a shell command can be embedded, and will be executed.</p>
-	<pre><code>&lt;next class="java.lang.ProcessBuilder"&gt;
-   &lt;command&gt;
+	<pre class="language-bash"><code class="language-bash"><next class="java.lang.ProcessBuilder">
+   <command></command>
       "touch /tmp/hacked".
-   &lt;/command&gt;
-   &lt;redirectErrorStream&gt;false&lt;/redirectErrorStream&gt;
-&lt;/next&gt;
-</code></pre>
+   
+   <redirecterrorstream>false</redirecterrorstream>
+</next></code></pre>
 	<p>And the result from the test:</p>
-	<pre><code>root@struts-demo:~$ ls /tmp
+	<pre class="language-bash"><code class="language-bash">root@struts-demo:~$ ls /tmp
 hacked
-root@struts-demo:~$
-</code></pre>
+root@struts-demo:~$</code></pre>
 	<p>In the last week, we have seen over 180,000 hits on our WAF rules protecting against Apache Struts across the Cloudflare network.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/Struts-1.png" alt="" loading="lazy"></p>
-	<h3 id="sqlinjection">SQL Injection</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IPzn62W8nzdCNR4F8if95/9e5325cabc1000308b7a82d66be0a568/Struts-1.png" alt="" class="kg-image" width="2426" height="2084" loading="lazy">
+
+	</figure>
+	<h3>SQL Injection</h3>
 	<p>SQL Injection (SQLi) is an attempt to inject nefarious queries into a GET or POST dynamic variable, which is used to query a database. Cloudflare, on a day to day basis will see over 2.3m SQLi attempts on our network. Most commonly, we see SQLi attacks against Wordpress sites, as it is one of the biggest web applications used on Cloudflare today. Wordpress is used by some of the world's giants, like Sony Music, all the way down to "mom &amp; pop" businesses. The challenge with being the leader in the space, is you then become a hot target. Looking at the CVE list as we near the close of 2017, there have been 41 vulnerabilities found in multiple versions of Wordpress which would force people to upgrade to the latest versions. To protect our customers, and buy them time to upgrade, Cloudflare works with a number of vendors to address vulnerabilities and then virtual-patching using our WAF to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">prevent these vulnerabilities being exploited</a>.</p>
 	<p>The way a SQL injection works is by "breaking out" or malforming a query when a web application is needing data from a database. As an example, a Forgotten Password page has a single email input field, which will be used to validate whether the username exists, and if so, sends the user a “Forgotten Password” link. Below is a straightforward SQL query example, which could be used in a web application:</p>
-	<pre><code>SELECT user, password FROM users WHERE user = 'john@smith';
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">SELECT user, password FROM users WHERE user = 'john@smith';</code></pre>
 	<p>Which results in:</p>
-	<pre><code>+------------+------------------------------+
+	<pre class="language-bash"><code class="language-bash">+------------+------------------------------+
 |    user   |           password           |
 +------------+------------------------------+
 | john@smith | $2y$10$h9XJRX.EBnGFrWQlnt... |
-+------------+------------------------------+
-</code></pre>
++------------+------------------------------+</code></pre>
 	<p>Without the right query validation, an attacker could escape out of this query, and carry out some extremely malicious queries. For example, if an attacker was looking to <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">takeover another user’s account</a>, and an attacker found that the query validation was inadequate, he could escape the query, and UPDATE the username, which is an email address in this instance, to his own. This can simply be done by entering the query string below into the email input field, instead of an email address.</p>
-	<pre><code>dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;
-</code></pre>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/emaileg.png" alt="" loading="lazy"><br>
-		Due to the lack of validation, the query which the web application sends to the database will be:</p>
-	<pre><code>SELECT user, password FROM users WHERE user = 'dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xkZ2dHeg7dLuOI7TUoyfS/11e80327cd63f2ca9ff591571a1441fa/emaileg.png" alt="" class="kg-image" width="1458" height="130" loading="lazy">
+
+	</figure>
+	<p>Due to the lack of validation, the query which the web application sends to the database will be:</p>
+	<pre class="language-bash"><code class="language-bash">SELECT user, password FROM users WHERE user = 'dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;</code></pre>
 	<p>Now this has been updated, the attacker can now request a password reset using his own email address, gaining him access to the victim’s account.</p>
-	<pre><code>+----------+------------------------------+
+	<pre class="language-bash"><code class="language-bash">+----------+------------------------------+
 |  user   |           password           |
 +----------+------------------------------+
 | mr@robot | $2y$10$h9XJRX.EBnGFrWQlnt... |
-+----------+------------------------------+
-</code></pre>
++----------+------------------------------+</code></pre>
 	<p>Many SQLi attacks are often on fields which are not often considered high risk, like an authentication form for example. To put the seriousness of SQLi attacks in perspective, in the last week, we have seen over 2.4 million matches.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/SQLi-1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4521BwLEn69dAUQR0W5sbC/495f6267980498d0f220c36462e04026/SQLi-1.png" alt="" class="kg-image" width="2412" height="2072" loading="lazy">
+
+	</figure>
 	<p>The Cloudflare WAF is built to not only protect customers against SQLi and RCE based attacks, but also add <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">protection against Cross Site Scripting (XSS)</a> and a number of other known attacks. On an average week, just on our Cloudflare Specials WAF ruleset, we see over 138 million matches.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/WAF.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6T7PzjGJwXvJLNAk006MMf/e411ce288b5f95193e104994672a3546/WAF.png" alt="" class="kg-image" width="3142" height="1748" loading="lazy">
+
+	</figure>
 	<p>The next important part is communication and awareness; understanding what you have installed, what versions you are running, and most importantly, what announcements your vendor is making. Generally, most notifications are received via email, and are usually quite cumbersome to digest, regardless of their complexity, it is crucial to try and understand them.</p>
 	<p>And, finally, the last line of defense is to have protection in front of your application, which is where Cloudflare can help. At Cloudflare, Security is very core to our values, and was one of the foundation pillars we were founded upon. Even to this day, we are known as one of the most cost effective ways of being able to shore up your Web Applications with just our Pro Plan@$20/mo.</p>
-	<!--kg-card-end: markdown-->
 </div>

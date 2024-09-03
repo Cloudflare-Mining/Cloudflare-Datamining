@@ -1,26 +1,26 @@
-<div class="mb2 gray5">14 min read</div>
+<div class="mb2 gray5">12 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/workers-vitest-integration">Français</a>, <a href="https://blog.cloudflare.com/es-es/workers-vitest-integration">Español</a> and <a href="https://blog.cloudflare.com/de-de/workers-vitest-integration">Deutsch</a>.</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/Improved-Workers-Testing-via-Vitest-and-Workerd.png" class="kg-image" alt="Improved Workers testing via Vitest and workerd" loading="lazy" width="1600" height="900"></figure><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/es-es/workers-vitest-integration-es-es">Español</a>, <a href="https://blog.cloudflare.com/de-de/workers-vitest-integration-de-de">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/workers-vitest-integration-fr-fr">Français</a>.</small></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Wyffq1E1d40ZSk1j55Vwc/1f8be9a7dcb59f637e8d577e7eb7903b/Improved-Workers-Testing-via-Vitest-and-Workerd.png" alt="Improved Workers testing via Vitest and workerd" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p></p>
 	<p>Today, we’re excited to announce a new Workers Vitest integration - allowing you to write unit and integration tests via the popular testing framework, <a href="https://vitest.dev">Vitest</a>, that execute directly in our runtime, <a href="https://github.com/cloudflare/workerd">workerd</a>!</p>
-	<p>This integration provides you with the ability to test <em><strong>anything</strong></em> related to your Worker!</p>
+	<p>This integration provides you with the ability to test <b><i>anything</i></b> related to your Worker!</p>
 	<p>For the first time, you can write unit tests that run within the same <a href="https://github.com/cloudflare/workerd">runtime</a> that Cloudflare Workers run on in production, providing greater confidence that the behavior of your Worker in tests will be the same as when deployed to production. For integration tests, you can now write tests for Workers that are triggered by <a href="https://developers.cloudflare.com/workers/configuration/cron-triggers">Cron Triggers</a> in addition to traditional <code>fetch()</code> events. You can also more easily test complex applications that interact with <a href="https://developers.cloudflare.com/kv">KV</a>, <a href="https://developers.cloudflare.com/r2">R2</a>, <a href="https://developers.cloudflare.com/d1">D1</a>, <a href="https://developers.cloudflare.com/queues">Queues</a>, <a href="https://developers.cloudflare.com/workers/configuration/bindings/about-service-bindings">Service Bindings</a>, and more Cloudflare products.</p>
 	<p>For all of your tests, you have access to <a href="https://vitest.dev/guide/features.html">Vitest features</a> like snapshots, mocks, timers, and spies.</p>
 	<p>In addition to increased testing and functionality, you’ll also notice other developer experience improvements like hot-module-reloading, watch mode on by default, and per-test isolated storage. Meaning that, as you develop and edit your tests, they’ll automatically re-run, without you having to restart your test runner.</p>
-	<h2 id="get-started-testing-workers-with-vitest">Get started testing Workers with Vitest</h2>
-	<p>The easiest way to get started with testing your Workers via Vitest is to start a new Workers project via our create-cloudflare tool:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-shell">npm create cloudflare@latest hello-world -- --type=hello-world
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<h2>Get started testing Workers with Vitest</h2>
+	<p>The easiest way to get started with testing your Workers via Vitest is to start a new Workers project via our create-cloudflare tool:</p>
+	<pre class="language-shell"><code class="language-shell">npm create cloudflare@latest hello-world -- --type=hello-world</code></pre>
 	<p>Running this command will scaffold a new project for you with the Workers Vitest integration already set up. An example unit test and integration test are also included.</p>
-	<h3 id="manual-install-and-setup-instructions">Manual install and setup instructions </h3>
-	<p>If you prefer to manually install and set up the Workers Vitest integration, begin by installing <code>@cloudflare/vitest-pool-workers</code> from npm:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-shell">$ npm install --save-dev @cloudflare/vitest-pool-workers
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p><code>@cloudflare/vitest-pool-workers</code> has a peer dependency on a specific version of <code>vitest</code>. Modern versions of <code>npm</code> will install this automatically, but we recommend you install it explicitly too. Refer to the <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/write-your-first-test">getting started guide</a> for the current supported version. If you’re using TypeScript, add <code>@cloudflare/vitest-pool-workers</code> to your <code>tsconfig.json</code>’s <code>types</code> to get types for the <code>cloudflare:test</code> module:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<h3>Manual install and setup instructions</h3>
+	<p>If you prefer to manually install and set up the Workers Vitest integration, begin by installing <code>@cloudflare/vitest-pool-workers</code> from npm:</p>
+	<pre class="language-shell"><code class="language-shell">$ npm install --save-dev @cloudflare/vitest-pool-workers</code></pre>
+	<p><code>@cloudflare/vitest-pool-workers</code> has a peer dependency on a specific version of <code>vitest</code>. Modern versions of <code>npm</code> will install this automatically, but we recommend you install it explicitly too. Refer to the <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/write-your-first-test">getting started guide</a> for the current supported version. If you’re using TypeScript, add <code>@cloudflare/vitest-pool-workers</code> to your <code>tsconfig.json</code>’s <code>types</code> to get types for the <code>cloudflare:test</code> module:</p>
+	<pre class="language-json"><code class="language-json">{
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -30,11 +30,9 @@
       "@cloudflare/vitest-pool-workers"
     ]
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Then, enable the pool in your Vitest configuration file:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">// vitest.config.js
+}</code></pre>
+	<p>Then, enable the pool in your Vitest configuration file:</p>
+	<pre class="language-ts"><code class="language-ts">// vitest.config.js
 import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
 
 export default defineWorkersConfig({
@@ -45,21 +43,17 @@ export default defineWorkersConfig({
       },
     },
   },
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>After that, define a compatibility date after “2022-10-31” and enable the <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag"><code>nodejs_compat</code> compatibility flag</a> in your <code>wrangler.toml</code>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-toml"># wrangler.toml
+});</code></pre>
+	<p>After that, define a compatibility date after “2022-10-31” and enable the <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag"><code>nodejs_compat</code> compatibility flag</a> in your <code>wrangler.toml</code>:</p>
+	<pre class="language-toml"><code class="language-toml"># wrangler.toml
 main = "src/index.ts"
 compatibility_date = "2024-01-01"
-compatibility_flags = ["nodejs_compat"]
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="test-anything-exported-from-a-worker">Test anything exported from a Worker</h2>
+compatibility_flags = ["nodejs_compat"]</code></pre>
+	<h2>Test anything exported from a Worker</h2>
 	<p>With the new Workers Vitest Integration, you can test anything exported from your Worker in both unit and integration-style tests. Within these tests, you can also test connected resources like R2, KV, and Durable Objects, as well as applications involving multiple Workers.</p>
-	<h3 id="writing-unit-tests">Writing unit tests</h3>
-	<p>In a Workers context, a unit test imports and directly calls functions from your Worker then asserts on their return values. Let’s say you have a Worker that looks like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">export function add(a, b) {
+	<h3>Writing unit tests</h3>
+	<p>In a Workers context, a unit test imports and directly calls functions from your Worker then asserts on their return values. Let’s say you have a Worker that looks like this:</p>
+	<pre class="language-js"><code class="language-js">export function add(a, b) {
   return a + b;
 }
 
@@ -70,11 +64,9 @@ export default {
     const b = parseInt(url.searchParams.get("b"));
     return new Response(add(a, b));
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>After you’ve setup and installed the Workers Vitest integration, you can unit test this Worker by creating a new test file called <code>index.spec.js</code> with the following code:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">import { env, createExecutionContext, waitOnExecutionContext, } from "cloudflare:test";
+}</code></pre>
+	<p>After you’ve setup and installed the Workers Vitest integration, you can unit test this Worker by creating a new test file called <code>index.spec.js</code> with the following code:</p>
+	<pre class="language-js"><code class="language-js">import { env, createExecutionContext, waitOnExecutionContext, } from "cloudflare:test";
 import { describe, it, expect } from "vitest";
 import { add }, worker from "./src";
 
@@ -89,14 +81,12 @@ describe("Hello World worker", () =&gt; {
     await waitOnExecutionContext(ctx);
     expect(await response.text()).toMatchInlineSnapshot(`"7"`);
   });
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
+});</code></pre>
 	<p>Using the Workers Vitest integration, you can write unit tests like these for any of your Workers.</p>
-	<h3 id="writing-integration-tests">Writing integration tests</h3>
+	<h3>Writing integration tests</h3>
 	<p>While unit tests are great for testing individual parts of your application, integration tests assess multiple units of functionality, ensuring that workflows and features work as expected. These are usually more complex than unit tests, but provide greater confidence that your app works as expected. In the Workers context, an integration test sends HTTP requests to your Worker and asserts on the HTTP responses.</p>
-	<p>With the Workers Vitest Integration, you can run integration tests by importing <code>SELF</code> from the new <code>cloudflare:test</code> utility like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">// test/index.spec.ts
+	<p>With the Workers Vitest Integration, you can run integration tests by importing <code>SELF</code> from the new <code>cloudflare:test</code> utility like this:</p>
+	<pre class="language-ts"><code class="language-ts">// test/index.spec.ts
 import { SELF } from "cloudflare:test";
 import { it, expect } from "vitest";
 import "../src";
@@ -105,45 +95,57 @@ import "../src";
 it("sends request (integration style)", async () =&gt; {
    const response = await SELF.fetch("http://example.com/?a=3&amp;b=4");
    expect(await response.text()).toMatchInlineSnapshot(`"7"`);
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
+});</code></pre>
 	<p>When using <code>SELF</code> for integration tests, your Worker code runs in the same context as the test runner. This means you can use mocks to control your Worker.</p>
-	<h3 id="testing-different-scenarios">Testing different scenarios</h3>
+	<h3>Testing different scenarios</h3>
 	<p>Whether you’re writing unit or integration tests, if your application uses Cloudflare Developer Platform products (e.g. KV, R2, D1, Queues, or Durable Objects), you can test them. To demonstrate this, we have created a set of <a href="https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples">examples</a> to help get you started testing.</p>
-	<h2 id="better-testing-experience-better-testing">Better testing experience === better testing</h2>
+	<h2>Better testing experience === better testing</h2>
 	<p>Having better testing tools makes it easier to test your projects right from the start, which leads to better overall quality and experience for your end users. The Workers Vitest integration provides that better experience, not just in terms of developer experience, but in making it easier to test your entire application.</p>
-	<p>The rest of this post will focus on <em>how</em> we built this new testing integration, diving into the internals of how Vitest works, the problems we encountered trying to get a framework to work within our runtime, and ultimately how we solved it and the improved DX that it unlocked.</p>
-	<h2 id="how-vitest-traditionally-works">How Vitest traditionally works</h2>
+	<p>The rest of this post will focus on <i>how</i> we built this new testing integration, diving into the internals of how Vitest works, the problems we encountered trying to get a framework to work within our runtime, and ultimately how we solved it and the improved DX that it unlocked.</p>
+	<h2>How Vitest traditionally works</h2>
 	<p>When you start Vitest’s CLI, it first collects and sequences all your test files. By default, Vitest uses a “threads” pool, which spawns <a href="https://nodejs.org/api/worker_threads.html">Node.js worker threads</a> for isolating and running tests in parallel. Each thread gets a test file to run, dynamically requesting and evaluating code as needed. When the test runner imports a module, it sends a request to the host’s “Vite Node Server” which will either return raw JavaScript code transformed by Vite, or an external module path. If raw code is returned, it will be executed using the <a href="https://nodejs.org/api/vm.html#vmruninthiscontextcode-options"><code>node:vm</code> <code>runInThisContext()</code> function</a>. If a module path is returned, it will be imported using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import">dynamic <code>import()</code></a>. Transforming user code with Vite allows hot-module-reloading (HMR) — when a module changes, it’s invalidated in the module cache and a new version will be returned when it’s next imported.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Untitled-1.png" class="kg-image" alt="overview of Vitest’s architecture using Miniflare v2’s environments" loading="lazy" width="1600" height="726"></figure>
-	<p>Miniflare is a fully-local simulator for Cloudflare's Developer Platform. <a href="https://blog.cloudflare.com/miniflare">Miniflare v2</a> provided a <a href="https://miniflare.dev/testing/vitest">custom environment</a> for Vitest that allowed you to run your tests <em>inside </em>the Workers sandbox. This meant you could import and call any function using Workers runtime APIs in your tests. You weren’t restricted to integration tests that just sent and received HTTP requests. In addition, this environment provided per-test isolated storage, automatically undoing any changes made at the end of each test. In Miniflare v2, this environment was relatively simple to implement. We’d already reimplemented Workers Runtime APIs in a Node.js environment, and could inject them using Vitest’s APIs into the global scope of the test runner.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bmF35IKzPZ9mTXK7lnTA8/b39afbadaced8fca9df3898c3a588879/Untitled-1.png" alt="overview of Vitest’s architecture using Miniflare v2’s environments" class="kg-image" width="1600" height="726" loading="lazy">
+
+	</figure>
+	<p>Miniflare is a fully-local simulator for Cloudflare's Developer Platform. <a href="https://blog.cloudflare.com/miniflare">Miniflare v2</a> provided a <a href="https://miniflare.dev/testing/vitest">custom environment</a> for Vitest that allowed you to run your tests <i>inside</i> the Workers sandbox. This meant you could import and call any function using Workers runtime APIs in your tests. You weren’t restricted to integration tests that just sent and received HTTP requests. In addition, this environment provided per-test isolated storage, automatically undoing any changes made at the end of each test. In Miniflare v2, this environment was relatively simple to implement. We’d already reimplemented Workers Runtime APIs in a Node.js environment, and could inject them using Vitest’s APIs into the global scope of the test runner.</p>
 	<p>By contrast, Miniflare v3 runs your Worker code <a href="https://blog.cloudflare.com/miniflare-and-workerd">inside the same <code>workerd</code> runtime</a> that Cloudflare uses in production. Running tests directly in <a href="https://github.com/cloudflare/workerd"><code>workerd</code></a> presented a challenge — <code>workerd</code> runs in its own process, separate from the Node.js worker thread, and it’s not possible to reference JavaScript classes across a process boundary.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Untitled--1--1.png" class="kg-image" alt="problem with Miniflare v3, the runtime APIs are defined in a separate process to the test environments, and JavaScript objects cannot cross process boundaries" loading="lazy" width="1600" height="635"></figure>
-	<h2 id="solving-the-problem-with-custom-pools">Solving the problem with custom pools</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ngw1zLJWN4jfTko19ZhOn/d56f5a021b33293f89c5937d520dcbec/Untitled--1--1.png" alt="problem with Miniflare v3, the runtime APIs are defined in a separate process to the test environments, and JavaScript objects cannot cross process boundaries" class="kg-image" width="1600" height="635" loading="lazy">
+
+	</figure>
+	<h2>Solving the problem with custom pools</h2>
 	<p>Instead, we use <a href="https://vitest.dev/advanced/pool.html">Vitest’s custom pools</a> feature to run the test runner in Cloudflare Workers running locally with <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime"><code>workerd</code></a>. A pool receives test files to run and decides how to execute them. By executing the runner inside <code>workerd</code>, tests have direct access to Workers runtime APIs as they’re running in a Worker. WebSockets are used to send and receive serialisable RPC messages between the Node.js host and <code>workerd</code> process. Note we’re running the exact same test runner code originally designed for a Node-context inside a Worker here. This means our Worker needs to provide Node’s built-in modules, support for dynamic code evaluation, and loading of arbitrary modules from disk with <a href="https://nodejs.org/api/esm.html#resolution-algorithm-specification">Node-resolution behavior</a>. The <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage"><code>nodejs_compat</code> compatibility flag</a> provides support for some of Node’s built-in modules, but does not solve our other problems. For that, we had to get creative…</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Untitled--2--1.png" class="kg-image" alt="our solution for Miniflare v3, make the tests run in workerd, and use WebSockets for communication" loading="lazy" width="1600" height="726"></figure>
-	<h2 id="dynamic-code-evaluation">Dynamic code evaluation</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xktF5P98mL5puD3UaQnZx/3fc26ddd3f0e8eed4ab6698583857ed2/Untitled--2--1.png" alt="our solution for Miniflare v3, make the tests run in workerd, and use WebSockets for communication" class="kg-image" width="1600" height="726" loading="lazy">
+
+	</figure>
+	<h2>Dynamic code evaluation</h2>
 	<p>For <a href="https://developers.cloudflare.com/workers/runtime-apis/web-standards/#javascript-standards">security reasons</a>, the Cloudflare Workers runtime does not allow dynamic code evaluation via <code>eval()</code> or <code>new Function()</code>. It also requires all modules to be defined ahead-of-time before execution starts. The test runner doesn't know what code to run until we start executing tests, so without lifting these restrictions, we have no way of executing the raw JavaScript code transformed by Vite nor importing arbitrary modules from disk. Fortunately, code that is only meant to run locally – like tests – has a much more relaxed security model than deployed code. To support local testing and other development-specific use-cases such as <a href="https://vitejs.dev/guide/api-vite-runtime">Vite’s new Runtime API</a>, we added <a href="https://github.com/cloudflare/workerd/pull/1338">“unsafe-eval bindings”</a> and <a href="https://github.com/cloudflare/workerd/pull/1423">“module-fallback services”</a> to <code>workerd</code>.</p>
-	<p>Unsafe-eval bindings provide local-only access to the <code>eval()</code> function, and <code>new Function()</code>/<code>new AsyncFunction()</code>/<code>new WebAssembly.Module()</code> constructors. By exposing these through a binding, we retain control over which code has access to these features.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">// Type signature for unsafe-eval bindings
+	<p>Unsafe-eval bindings provide local-only access to the <code>eval()</code> function, and <code>new Function()</code>/<code>new AsyncFunction()</code>/<code>new WebAssembly.Module()</code> constructors. By exposing these through a binding, we retain control over which code has access to these features.</p>
+	<pre class="language-ts"><code class="language-ts">// Type signature for unsafe-eval bindings
 interface UnsafeEval {
   eval(script: string, name?: string): unknown;
   newFunction(script: string, name?: string, ...args: string[]): Function;
   newAsyncFunction(script: string, name?: string, ...args: string[]): AsyncFunction;
   newWasmModule(src: BufferSource): WebAssembly.Module;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Using the unsafe-eval binding <code>eval()</code> method, we were able to implement a <a href="https://github.com/cloudflare/workers-sdk/blob/main/packages/vitest-pool-workers/src/worker/lib/node/vm.ts">polyfill for the required <code>vm.runInThisContext()</code></a> function. While we could also implement loading of arbitrary modules from disk using unsafe-eval bindings, this would require us to rebuild <code>workerd</code>’s module resolution system in JavaScript. Instead, we allow workers to be configured with module fallback services. If enabled, imports that cannot be resolved by <code>workerd</code> become HTTP requests to the fallback service. These include the specifier, referrer, and whether it was an <code>import</code> or <code>require</code>. The service may respond with a module definition, or a redirect to another location if the resolved location doesn’t match the specifier. Requests originating from synchronous <code>require</code>s will block the main thread until the module is resolved. The Workers Vitest pool’s <a href="https://github.com/cloudflare/workers-sdk/blob/main/packages/vitest-pool-workers/src/pool/module-fallback.ts">fallback service</a> implements <a href="https://nodejs.org/api/esm.html#resolution-algorithm">Node-like resolution</a> with Node-style <a href="https://nodejs.org/api/esm.html#interoperability-with-commonjs">interoperability between CommonJS and ES modules</a>.</p>
-	<h2 id="durable-objects-as-test-runners">Durable Objects as test runners</h2>
-	<p>Now that we can run and import arbitrary code, the next step is to get Vitest’s thread worker running inside <code>workerd</code>. Every incoming request has its own request context. To improve overall performance, I/O objects such as streams, request/response bodies and WebSockets created in one request context cannot be used from another. This means if we want to use a WebSocket for RPC between the pool and our <code>workerd</code> processes, we need to make sure the WebSocket is only used from one request context. To coordinate this, we define a singleton Durable Object for accepting the RPC connection and running tests from. Functions using RPC such as resolving modules, reporting results and console logging will always use this singleton. We use <a href="https://github.com/cloudflare/miniflare/pull/639">Miniflare’s “magic proxy” system</a> to get a reference to the singleton’s stub in Node.js, and send a WebSocket upgrade request directly to it. After adding a few more Node.js polyfills, and a basic <code>cloudflare:test</code> module to provide access to bindings and a function for creating <code>ExecutionContext</code>s, we’re able to write basic Workers unit tests! 🎉 </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Vitest-Pool-Workers-Architecture--4-.png" class="kg-image" alt="architecture of the Workers Vitest Pool" loading="lazy" width="1600" height="1087"></figure>
-	<h2 id="integration-tests-with-hot-module-reloading">Integration tests with hot-module-reloading</h2>
+	<h2>Durable Objects as test runners</h2>
+	<p>Now that we can run and import arbitrary code, the next step is to get Vitest’s thread worker running inside <code>workerd</code>. Every incoming request has its own request context. To improve overall performance, I/O objects such as streams, request/response bodies and WebSockets created in one request context cannot be used from another. This means if we want to use a WebSocket for RPC between the pool and our <code>workerd</code> processes, we need to make sure the WebSocket is only used from one request context. To coordinate this, we define a singleton Durable Object for accepting the RPC connection and running tests from. Functions using RPC such as resolving modules, reporting results and console logging will always use this singleton. We use <a href="https://github.com/cloudflare/miniflare/pull/639">Miniflare’s “magic proxy” system</a> to get a reference to the singleton’s stub in Node.js, and send a WebSocket upgrade request directly to it. After adding a few more Node.js polyfills, and a basic <code>cloudflare:test</code> module to provide access to bindings and a function for creating <code>ExecutionContext</code>s, we’re able to write basic Workers unit tests! 🎉</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vRactoOowJXYwInIONXC9/553e85d4f59d33f3da313f781cf08030/Vitest-Pool-Workers-Architecture--4-.png" alt="architecture of the Workers Vitest Pool" class="kg-image" width="1600" height="1087" loading="lazy">
+
+	</figure>
+	<h2>Integration tests with hot-module-reloading</h2>
 	<p>In addition to unit tests, we support integration testing with a special <code>SELF</code> service binding in the <code>cloudflare:test</code> module. This points to a special <code>export default { fetch(...) {...} }</code> handler which uses Vite to import your Worker’s <code>main</code> module.</p>
 	<p>Using Vite’s transformation pipeline here means your handler gets hot-module-reloading (HMR) for free! When code is updated, the module cache is invalidated, tests are rerun, and subsequent requests will execute with new code. The same approach of wrapping user code handlers applies to Durable Objects too, providing the same HMR benefits.</p>
-	<p>Integration tests can be written by calling <code>SELF.fetch()</code>, which will dispatch a <code>fetch()</code> event to your user code in the same global scope as your test, but under a different request context. This means global mocks apply to your Worker’s execution, as do request context lifetime restrictions. In particular, if you forget to call <code>ctx.waitUntil()</code>, you’ll see an appropriate error message. This wouldn’t be the case if you called your Worker’s handler directly in a unit test, as you’d be running under the runner singleton’s Durable Object request context, whose lifetime is automatically extended.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">// test/index.spec.ts
+	<p>Integration tests can be written by calling <code>SELF.fetch()</code>, which will dispatch a <code>fetch()</code> event to your user code in the same global scope as your test, but under a different request context. This means global mocks apply to your Worker’s execution, as do request context lifetime restrictions. In particular, if you forget to call <code>ctx.waitUntil()</code>, you’ll see an appropriate error message. This wouldn’t be the case if you called your Worker’s handler directly in a unit test, as you’d be running under the runner singleton’s Durable Object request context, whose lifetime is automatically extended.</p>
+	<pre class="language-ts"><code class="language-ts">// test/index.spec.ts
 import { SELF } from "cloudflare:test";
 import { it, expect } from "vitest";
 import "../src/index";
@@ -151,17 +153,15 @@ import "../src/index";
 it("sends request", async () =&gt; {
    const response = await SELF.fetch("https://example.com");
    expect(await response.text()).toMatchInlineSnapshot(`"body"`);
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="isolated-per-test-storage">Isolated per-test storage</h2>
-	<p>Most Workers applications will have at least one binding to a Cloudflare storage service, such as KV, R2 or D1. Ideally, tests should be self-contained and runnable in any order or on their own. To make this possible, writes to storage need to be undone at the end of each test, so reads by other tests aren’t affected. Whilst it’s possible to do this manually, it can be tricky to keep track of all writes and undo them in the correct order. For example, take the following two functions:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">// helpers.ts
+});</code></pre>
+	<h2>Isolated per-test storage</h2>
+	<p>Most Workers applications will have at least one binding to a Cloudflare storage service, such as KV, R2 or D1. Ideally, tests should be self-contained and runnable in any order or on their own. To make this possible, writes to storage need to be undone at the end of each test, so reads by other tests aren’t affected. Whilst it’s possible to do this manually, it can be tricky to keep track of all writes and undo them in the correct order. For example, take the following two functions:</p>
+	<pre class="language-ts"><code class="language-ts">// helpers.ts
 interface Env {
   NAMESPACE: KVNamespace;
 }
 // Get the current list stored in a KV namespace
-export async function get(env: Env, key: string): Promise&lt;string[]&gt; {
+export async function get(env: Env, key: string): Promise<string[]> {
   return await env.NAMESPACE.get(key, "json") ?? [];
 }
 // Add an item to the end of the list
@@ -169,11 +169,9 @@ export async function append(env: Env, key: string, item: string) {
   const value = await get(env, key);
   value.push(item);
   await env.NAMESPACE.put(key, JSON.stringify(value));
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>If we wanted to test these functions, we might write something like below. Note we have to keep track of all the keys we might write to, and restore their values at the end of tests, even if those tests fail.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">// helpers.spec.ts
+}</string[]></code></pre>
+	<p>If we wanted to test these functions, we might write something like below. Note we have to keep track of all the keys we might write to, and restore their values at the end of tests, even if those tests fail.</p>
+	<pre class="language-ts"><code class="language-ts">// helpers.spec.ts
 import { env } from "cloudflare:test";
 import { beforeAll, beforeEach, afterEach, it, expect } from "vitest";
 import { get, append } from "./helpers";
@@ -213,16 +211,18 @@ it("appends to two lists", async () =&gt; {
   await append(env, "list 2", "four");
   expect(await get(env, "list 1")).toStrictEqual(["one", "three"]);
   expect(await get(env, "list 2")).toStrictEqual(["four"]);
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
+});</code></pre>
 	<p>This is slightly easier with the recently introduced <a href="https://vitest.dev/api/#ontestfinished"><code>onTestFinished()</code> hook</a>, but you still need to remember which keys were written to, or enumerate them at the start/end of tests. You’d also need to manage this for KV, R2, Durable Objects, caches and any other storage service you used. Ideally, the testing framework should just manage this all for you.</p>
 	<p>That’s exactly what the Workers Vitest pool does with the <code>isolatedStorage</code> option which is enabled by default. Any writes to storage performed in a test are automagically undone at the end of the test. To support seeding data in <code>beforeAll()</code> hooks, including those in nested <code>describe()</code>-blocks, a stack is used. Before each suite or test, a new frame is pushed to the storage stack. All writes performed by the test or associated <code>beforeEach()</code>/<code>afterEach()</code> hooks are written to the frame. After each suite or test, the top frame is popped from the storage stack, undoing any writes.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/Untitled--3--1.png" class="kg-image" alt="Storage stack frames created with isolated storage enabled" loading="lazy" width="1600" height="890"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Ixe0KPm6lrn7dvt7N1AhY/c88eb8a07fcf7926b844d758448b3f61/Untitled--3--1.png" alt="Storage stack frames created with isolated storage enabled" class="kg-image" width="1600" height="890" loading="lazy">
+
+	</figure>
 	<p>Miniflare implements simulators for storage services <a href="https://github.com/cloudflare/miniflare/pull/656">on top of Durable Objects</a> with <a href="https://github.com/cloudflare/miniflare/discussions/525">a separate blob store</a>. When running locally, <code>workerd</code> uses SQLite for Durable Object storage. To implement isolated storage, we implement an on-disk stack of <code>.sqlite</code> database files by backing up the databases when “pushing”, and restoring backups when “popping”. Blobs stored in the separate store are retained through stack operations, and cleaned up at the end of each test run. Whilst this works, it involves copying lots of <code>.sqlite</code> files. Looking ahead, we’d like to explore using SQLite <a href="https://www.sqlite.org/lang_savepoint.html"><code>SAVEPOINTS</code></a> for a more efficient solution.</p>
-	<h2 id="declarative-request-mocking">Declarative request mocking</h2>
-	<p>In addition to storage, most Workers will make outbound <code>fetch()</code> requests. For tests, it’s often useful to mock responses to these requests. Miniflare already allows you to specify an <a href="https://undici.nodejs.org/#/docs/api/MockAgent"><code>undici</code> <code>MockAgent</code></a> to route all requests through. The <code>MockAgent</code> class provides a declarative interface for specifying requests to mock and the corresponding responses to return. This API is relatively simple, whilst being flexible enough for advanced use cases. We provide an instance of <code>MockAgent</code> as <code>fetchMock</code> in the <code>cloudflare:test</code> module.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">import { fetchMock } from "cloudflare:test";
+	<h2>Declarative request mocking</h2>
+	<p>In addition to storage, most Workers will make outbound <code>fetch()</code> requests. For tests, it’s often useful to mock responses to these requests. Miniflare already allows you to specify an <a href="https://undici.nodejs.org/#/docs/api/MockAgent"><code>undici</code> <code>MockAgent</code></a> to route all requests through. The <code>MockAgent</code> class provides a declarative interface for specifying requests to mock and the corresponding responses to return. This API is relatively simple, whilst being flexible enough for advanced use cases. We provide an instance of <code>MockAgent</code> as <code>fetchMock</code> in the <code>cloudflare:test</code> module.</p>
+	<pre class="language-ts"><code class="language-ts">import { fetchMock } from "cloudflare:test";
 import { beforeAll, afterEach, it, expect } from "vitest";
 
 beforeAll(() =&gt; {
@@ -243,14 +243,12 @@ it("mocks requests", async () =&gt; {
 
   const response = await fetch("https://example.com/");
   expect(await response.text()).toBe("body");
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
+});</code></pre>
 	<p>To implement this, we bundled a stripped down version of <code>undici</code> containing just the <code>MockAgent</code> code. We then <a href="https://github.com/cloudflare/workers-sdk/blob/main/packages/vitest-pool-workers/src/worker/fetch-mock.ts">built a custom <code>undici</code> <code>Dispatcher</code></a> that used the Worker’s global <code>fetch()</code> function instead of <code>undici</code>’s built-in HTTP implementation based on <a href="https://github.com/nodejs/llhttp"><code>llhttp</code></a> and <a href="https://nodejs.org/api/net.html"><code>node:net</code></a>.</p>
-	<h2 id="testing-durable-objects-directly">Testing Durable Objects directly</h2>
+	<h2>Testing Durable Objects directly</h2>
 	<p>Finally, Miniflare v2’s custom Vitest environment provided support for accessing the instance methods and state of Durable Objects in tests directly. This allowed you to unit test Durable Objects like any other JavaScript class—you could mock particular methods and properties, or immediately call specific handlers like <code>alarm()</code>. To implement this in <code>workerd</code>, we rely on our existing wrapping of user Durable Objects for Vite transforms and hot-module reloading. When you call the <code>runInDurableObject(stub, callback)</code> function from <code>cloudflare:test</code>, we store <code>callback</code> in a global cache and send a special <code>fetch()</code> request to <code>stub</code> which is intercepted by the wrapper. The wrapper executes the <code>callback</code> in the request context of the Durable Object, and stores the result in the same cache. <code>runInDurableObject()</code> then reads from this cache, and returns the result.</p>
 	<p>Note that this assumes the Durable Object is running in the same isolate as the <code>runInDurableObject()</code> call. While this is true for same-Worker Durable Objects running locally, it means Durable Objects defined in auxiliary workers can’t be accessed directly.</p>
-	<h2 id="try-it-out">Try it out!</h2>
+	<h2>Try it out!</h2>
 	<p>We are excited to release the <code>@cloudflare/vitest-pool-workers</code> package on npm, and to provide an improved testing experience for you.</p>
 	<p>Make sure to read the <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/write-your-first-test">Write your first test guide</a> and begin writing unit and integration tests today! If you’ve been writing tests using one of our previous options, our <code>unstable_dev</code> <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/migrate-from-unstable-dev">migration guide</a> or our Miniflare 2 <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/migrate-from-miniflare-2">migration guide</a> should explain key differences and help you move your tests over quickly.</p>
 	<p>If you run into issues or have suggestions for improvements, please <a href="https://github.com/cloudflare/workers-sdk/issues/new/choose">file an issue</a> in our GitHub repo or reach out via our <a href="https://discord.com/invite/cloudflaredev">Developer Discord</a>.</p>

@@ -1,58 +1,72 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/the-complete-guide-to-golang-net-http-timeouts">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vTKS6Y5QPbl52ONtLm9WQ/bf1df25e8306d428f988c5696f8a85c6/the-complete-guide-to-golang-net-http-timeouts.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>When writing an HTTP server or client in Go, timeouts are amongst the easiest and most subtle things to get wrong: there’s many to choose from, and a mistake can have no consequences for a long time, until the network glitches and the process hangs.</p>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP</a> is a complex multi-stage protocol, so there's no one-size fits all solution to timeouts. Think about a <a href="https://www.cloudflare.com/learning/video/what-is-streaming">streaming</a> endpoint versus a JSON API versus a <a href="https://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> endpoint. Indeed, the defaults are often not what you want.</p>
 	<p>In this post I’ll take apart the various stages you might need to apply a timeout to, and look at the different ways to do it, on both the Server and the Client side.</p>
-	<h3 id="setdeadline">SetDeadline</h3>
+	<h3>SetDeadline</h3>
 	<p>First, you need to know about the network primitive that Go exposes to implement timeouts: Deadlines.</p>
 	<p>Exposed by <a href="https://golang.org/pkg/net/#Conn"><code>net.Conn</code></a> with the <code>Set[Read|Write]Deadline(time.Time)</code> methods, Deadlines are an absolute time which when reached makes all I/O operations fail with a timeout error.</p>
-	<p><strong>Deadlines are not timeouts.</strong> Once set they stay in force forever (or until the next call to <code>SetDeadline</code>), no matter if and how the connection is used in the meantime. So to build a timeout with <code>SetDeadline</code> you'll have to call it before <em>every</em> <code>Read</code>/<code>Write</code> operation.</p>
-	<p>You probably don't want to call <code>SetDeadline</code> yourself, and let <code>net/http</code> call it for you instead, using its higher level timeouts. However, keep in mind that all timeouts are implemented in terms of Deadlines, so they <strong>do NOT reset every time data is sent or received</strong>.</p>
-	<h3 id="servertimeouts">Server Timeouts</h3>
-	<p><em>The <a href="https://blog.cloudflare.com/exposing-go-on-the-internet">"So you want to expose Go on the Internet" post</a> has more information on server timeouts, in particular about HTTP/2 and Go 1.7 bugs.</em></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/Timeouts-001.png" alt="HTTP server phases" loading="lazy"></p>
+	<p><b>Deadlines are not timeouts.</b> Once set they stay in force forever (or until the next call to <code>SetDeadline</code>), no matter if and how the connection is used in the meantime. So to build a timeout with <code>SetDeadline</code> you'll have to call it before <i>every</i> <code>Read</code>/<code>Write</code> operation.</p>
+	<p>You probably don't want to call <code>SetDeadline</code> yourself, and let <code>net/http</code> call it for you instead, using its higher level timeouts. However, keep in mind that all timeouts are implemented in terms of Deadlines, so they <b>do NOT reset every time data is sent or received</b>.</p>
+	<h3>Server Timeouts</h3>
+	<p><i>The </i><a href="https://blog.cloudflare.com/exposing-go-on-the-internet"><i>"So you want to expose Go on the Internet" post</i></a><i> has more information on server timeouts, in particular about HTTP/2 and Go 1.7 bugs.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sOlH0CkRueHYFHY9JhYag/cb856c8a4f0a9425887c84f7ff36fc21/Timeouts-001.png" alt="HTTP server phases" class="kg-image" width="2215" height="648" loading="lazy">
+
+	</figure>
 	<p>It's critical for an HTTP server exposed to the Internet to enforce timeouts on client connections. Otherwise very slow or disappearing clients might leak file descriptors and eventually result in something along the lines of:</p>
-	<pre><code>http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms</code></pre>
 	<p>There are two timeouts exposed in <code>http.Server</code>: <code>ReadTimeout</code> and <code>WriteTimeout</code>. You set them by explicitly using a Server:</p>
-	<pre><code class="language-go">srv := &amp;http.Server{
+	<pre class="language-go"><code class="language-go">srv := &amp;http.Server{
     ReadTimeout: 5 * time.Second,
     WriteTimeout: 10 * time.Second,
 }
-log.Println(srv.ListenAndServe())
-</code></pre>
+log.Println(srv.ListenAndServe())</code></pre>
 	<p><code>ReadTimeout</code> covers the time from when the connection is accepted to when the request body is fully read (if you do read the body, otherwise to the end of the headers). It's implemented in <code>net/http</code> by calling <code>SetReadDeadline</code> <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L750">immediately after Accept</a>.</p>
 	<p><code>WriteTimeout</code> normally covers the time from the end of the request header read to the end of the response write (a.k.a. the lifetime of the ServeHTTP), by calling <code>SetWriteDeadline</code> <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L753-L755">at the end of readRequest</a>.</p>
 	<p>However, when the connection is <a href="https://www.cloudflare.com/learning/ssl/what-is-https">HTTPS</a>, <code>SetWriteDeadline</code> is called <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L1477-L1483">immediately after Accept</a> so that it also covers the packets written as part of the TLS handshake. Annoyingly, this means that (in that case only) <code>WriteTimeout</code> ends up including the header read and the first byte wait.</p>
 	<p>You should set both timeouts when you deal with untrusted clients and/or networks, so that a client can't hold up a connection by being slow to write or read.</p>
-	<p>Finally, there's <a href="https://golang.org/pkg/net/http/#TimeoutHandler"><code>http.TimeoutHandler</code></a>. It’s not a Server parameter, but a Handler wrapper that limits the maximum duration of <code>ServeHTTP</code> calls. It works by buffering the response, and sending a <em>504 Gateway Timeout</em> instead if the deadline is exceeded. Note that it is <a href="https://github.com/golang/go/issues/15327">broken in 1.6 and fixed in 1.6.2</a>.</p>
-	<h4 id="httplistenandserveisdoingitwrong">http.ListenAndServe is doing it wrong</h4>
+	<p>Finally, there's <a href="https://golang.org/pkg/net/http/#TimeoutHandler"><code>http.TimeoutHandler</code></a>. It’s not a Server parameter, but a Handler wrapper that limits the maximum duration of <code>ServeHTTP</code> calls. It works by buffering the response, and sending a <i>504 Gateway Timeout</i> instead if the deadline is exceeded. Note that it is <a href="https://github.com/golang/go/issues/15327">broken in 1.6 and fixed in 1.6.2</a>.</p>
+	<h4>http.ListenAndServe is doing it wrong</h4>
 	<p>Incidentally, this means that the package-level convenience functions that bypass <code>http.Server</code> like <code>http.ListenAndServe</code>, <code>http.ListenAndServeTLS</code> and <code>http.Serve</code> are unfit for public Internet servers.</p>
 	<p>Those functions leave the Timeouts to their default off value, with no way of enabling them, so if you use them you'll soon be leaking connections and run out of file descriptors. I've made this mistake at least half a dozen times.</p>
 	<p>Instead, create a <code>http.Server</code> instance with ReadTimeout and WriteTimeout and use its corresponding methods, like in the example a few paragraphs above.</p>
-	<h4 id="aboutstreaming">About streaming</h4>
+	<h4>About streaming</h4>
 	<p>Very annoyingly, there is no way of accessing the underlying <code>net.Conn</code> from <code>ServeHTTP</code> so a server that intends to stream a response is forced to unset the <code>WriteTimeout</code> (which is also possibly why they are 0 by default). This is because without <code>net.Conn</code> access, there is no way of calling <code>SetWriteDeadline</code> before each <code>Write</code> to implement a proper idle (not absolute) timeout.</p>
 	<p>Also, there's no way to cancel a blocked <code>ResponseWriter.Write</code> since <code>ResponseWriter.Close</code> (which you can access via an interface upgrade) is not documented to unblock a concurrent Write. So there's no way to build a timeout manually with a Timer, either.</p>
 	<p>Sadly, this means that streaming servers can't really defend themselves from a slow-reading client.</p>
 	<p>I submitted <a href="https://github.com/golang/go/issues/16100">an issue with some proposals</a>, and I welcome feedback there.</p>
-	<h3 id="clienttimeouts">Client Timeouts</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/Timeouts-002.png" alt="HTTP Client phases" loading="lazy"></p>
+	<h3>Client Timeouts</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/255U6cjjLCH1vUEJoA9QWo/2345ca2aa4d6aeb213939e0f9b686f00/Timeouts-002.png" alt="HTTP Client phases" class="kg-image" width="2234" height="603" loading="lazy">
+
+	</figure>
 	<p>Client-side timeouts can be simpler or much more complex, depending which ones you use, but are just as important to prevent leaking resources or getting stuck.</p>
 	<p>The easiest to use is the <code>Timeout</code> field of <a href="https://golang.org/pkg/net/http/#Client"><code>http.Client</code></a>. It covers the entire exchange, from Dial (if a connection is not reused) to reading the body.</p>
-	<pre><code class="language-go">c := &amp;http.Client{
+	<pre class="language-go"><code class="language-go">c := &amp;http.Client{
     Timeout: 15 * time.Second,
 }
-resp, err := c.Get("https://blog.filippo.io/")
-</code></pre>
+resp, err := c.Get("https://blog.filippo.io/")</code></pre>
 	<p>Like the server-side case above, the package level functions such as <code>http.Get</code> use <a href="https://golang.org/pkg/net/http/#DefaultClient">a Client without timeouts</a>, so are dangerous to use on the open Internet.</p>
 	<p>For more granular control, there are a number of other more specific timeouts you can set:</p>
 	<ul>
-		<li><code>net.Dialer.Timeout</code> limits the time spent establishing a TCP connection (if a new one is needed).</li>
-		<li><code>http.Transport.TLSHandshakeTimeout</code> limits the time spent performing the TLS handshake.</li>
-		<li><code>http.Transport.ResponseHeaderTimeout</code> limits the time spent reading the headers of the response.</li>
-		<li><code>http.Transport.ExpectContinueTimeout</code> limits the time the client will wait between sending the request headers <em>when including an <code>Expect: 100-continue</code></em> and receiving the go-ahead to send the body. Note that setting this in 1.6 <a href="https://github.com/golang/go/issues/14391">will disable HTTP/2</a> (<code>DefaultTransport</code> <a href="https://github.com/golang/go/commit/406752b640fcc56a9287b8454564cffe2f0021c1#diff-6951e7593bfb1e773c9121df44df1c36R179">is special-cased from 1.6.2</a>).</li>
+		<li>
+			<p><code>net.Dialer.Timeout</code> limits the time spent establishing a TCP connection (if a new one is needed).</p>
+		</li>
+		<li>
+			<p><code>http.Transport.TLSHandshakeTimeout</code> limits the time spent performing the TLS handshake.</p>
+		</li>
+		<li>
+			<p><code>http.Transport.ResponseHeaderTimeout</code> limits the time spent reading the headers of the response.</p>
+		</li>
+		<li>
+			<p><code>http.Transport.ExpectContinueTimeout</code> limits the time the client will wait between sending the request headers <i>when including an </i><code><i>Expect: 100-continue</i></code> and receiving the go-ahead to send the body. Note that setting this in 1.6 <a href="https://github.com/golang/go/issues/14391">will disable HTTP/2</a> (<code>DefaultTransport</code> <a href="https://github.com/golang/go/commit/406752b640fcc56a9287b8454564cffe2f0021c1#diff-6951e7593bfb1e773c9121df44df1c36R179">is special-cased from 1.6.2</a>).</p>
+		</li>
 	</ul>
-	<pre><code>c := &amp;http.Client{
+	<pre class="language-bash"><code class="language-bash">c := &amp;http.Client{
     Transport: &amp;http.Transport{
         Dial: (&amp;net.Dialer{
                 Timeout:   30 * time.Second,
@@ -62,16 +76,15 @@ resp, err := c.Get("https://blog.filippo.io/")
         ResponseHeaderTimeout: 10 * time.Second,
         ExpectContinueTimeout: 1 * time.Second,
     }
-}
-</code></pre>
+}</code></pre>
 	<p>As far as I can tell, there's no way to limit the time spent sending the request specifically. The time spent reading the request body can be controlled manually with a <code>time.Timer</code> since it happens after the Client method returns (see below for how to cancel a request).</p>
 	<p>Finally, new in 1.7, there's <code>http.Transport.IdleConnTimeout</code>. It does not control a blocking phase of a client request, but how long an idle connection is kept in the connection pool.</p>
 	<p>Note that a Client will follow redirects by default. <code>http.Client.Timeout</code> includes all time spent following redirects, while the granular timeouts are specific for each request, since <code>http.Transport</code> is a lower level system that has no concept of redirects.</p>
-	<h4 id="cancelandcontext">Cancel and Context</h4>
+	<h4>Cancel and Context</h4>
 	<p><code>net/http</code> offers two ways to cancel a client request: <code>Request.Cancel</code> and, new in 1.7, Context.</p>
 	<p><code>Request.Cancel</code> is an optional channel that when set and then closed causes the request to abort as if the <code>Request.Timeout</code> had been hit. (They are actually implemented through the same mechanism, and while writing this post I <a href="https://github.com/golang/go/issues/16094">found a bug</a> in 1.7 where all cancellations would be returned as timeout errors.)</p>
 	<p>We can use <code>Request.Cancel</code> and <code>time.Timer</code> to build a more granular timeout that allows streaming, pushing the deadline back every time we successfully read some data from the Body:</p>
-	<pre><code class="language-go">package main
+	<pre class="language-go"><code class="language-go">package main
 
 import (
 	"io"
@@ -112,12 +125,11 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-}
-</code></pre>
+}</code></pre>
 	<p>In the example above, we put a timeout of 5 seconds on the Do phases of the request, but then we spend at least 8 seconds reading the body in 8 rounds, each time with a timeout of 2 seconds. We could go on streaming like this forever without risk of getting stuck. If we were not to receive body data for more than 2 seconds, then io.CopyN would return <code>net/http: request canceled</code>.</p>
 	<p>In 1.7 the <code>context</code> package graduated to the standard library. There's <a href="https://blog.golang.org/context">a lot to learn about Contexts</a>, but for our purposes you should know that they replace and deprecate <code>Request.Cancel</code>.</p>
 	<p>To use Contexts to cancel a request we just obtain a new Context and its <code>cancel()</code> function with <code>context.WithCancel</code> and create a Request bound to it with <code>Request.WithContext</code>. When we want to cancel the request, we cancel the Context by calling <code>cancel()</code> (instead of closing the Cancel channel):</p>
-	<pre><code class="language-go">ctx, cancel := context.WithCancel(context.TODO())
+	<pre class="language-go"><code class="language-go">ctx, cancel := context.WithCancel(context.TODO())
 timer := time.AfterFunc(5*time.Second, func() {
 	cancel()
 })
@@ -126,10 +138,8 @@ req, err := http.NewRequest("GET", "http://httpbin.org/range/2048?duration=8&amp
 if err != nil {
 	log.Fatal(err)
 }
-req = req.WithContext(ctx)
-</code></pre>
+req = req.WithContext(ctx)</code></pre>
 	<p>Contexts have the advantage that if the parent context (the one we passed to <code>context.WithCancel</code>) is canceled, ours will be, too, propagating the command down the entire pipeline.</p>
 	<p>This is all. I hope I didn't exceed your <code>ReadDeadline</code>!</p>
 	<p>If this kind of deep dive into the Go standard libraries sound entertaining to you, know that <a href="https://www.cloudflare.com/join-our-team">we are hiring in London, Austin (TX), Champaign (IL), San Francisco and Singapore.</a></p>
-	<!--kg-card-end: markdown-->
 </div>

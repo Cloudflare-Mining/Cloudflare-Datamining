@@ -1,37 +1,60 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69t1eTdz7tZ6tVKsNYv1uv/65475a0733d2f8cccb91bac5c5f2c808/always-on-ipv6.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>At Cloudflare we believe in being good to the Internet and good to our customers. By moving on from the legacy world of IPv4-only to the modern-day world where IPv4 and IPv6 are treated equally, we believe we are doing exactly that.</p>
-	<p><em>"No matter what happens in life, be good to people. Being good to people is a wonderful legacy to leave behind."</em> - Taylor Swift (whose website has been IPv6 enabled for many many years)</p>
+	<p><i>"No matter what happens in life, be good to people. Being good to people is a wonderful legacy to leave behind."</i> - Taylor Swift (whose website has been IPv6 enabled for many many years)</p>
 	<p>Starting today with free domains, IPv6 is no longer something you can toggle on and off, it’s always just on.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/before-after-ipv6.png" alt="" loading="lazy"></p>
-	<h3 id="howwegothere">How we got here</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UqOfN1xF7mt0PpJ1BbVCy/657c6f86ac0e20320c0544c033f2e4df/before-after-ipv6.png" alt="" class="kg-image" width="1978" height="266" loading="lazy">
+
+	</figure>
+	<h3>How we got here</h3>
 	<p>Cloudflare has always been a gateway for visitors on IPv6 connections to access sites and applications hosted on legacy IPv4-only infrastructure. Connections to Cloudflare are terminated on either IP version and then proxied to the backend over whichever IP version the backend infrastructure can accept.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/ipv4-ipv6-translation-gateway.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7w5o9faqmZFjQSgXnYIVIP/9ea566f5dd8fdcaccd87fbce18b4925e/ipv4-ipv6-translation-gateway.png" alt="" class="kg-image" width="804" height="167" loading="lazy">
+
+	</figure>
 	<p>That means that a v6-only mobile phone (looking at you, T-Mobile users) can establish a clean path to any site or mobile app behind Cloudflare instead of doing an expensive 464XLAT protocol translation as part of the connection (shaving milliseconds and conserving very precious battery life).</p>
 	<p>That IPv6 gateway is set by a simple toggle that for a while now has been default-on. And to make up for the time lost before the toggle was default on, in August 2016 we went back retroactively and enabled IPv6 for those millions of domains that joined before IPv6 was the default. Over those next few months, we <a href="https://blog.cloudflare.com/98-percent-ipv6">enabled IPv6 for nearly four million domains</a> –– you can see Cloudflare’s <a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=legacy&amp;pct=y">dent in the IPv6 universe</a> below –– and by the time we were done, 98.1% of all of our domains had IPv6 connectivity.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/plotsite.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yqnG0ahmUyEnfeUjLrqOi/2fbbc20777df6c54a293d00f170259a1/plotsite.png" alt="" class="kg-image" width="1024" height="700" loading="lazy">
+
+	</figure>
 	<p>As an interim step, we added an extra feature –– when you turn off IPv6 in our dashboard, we remind you just how archaic we think that is.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/modal.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oXyg84nb4l00KrDpmbrez/28dbb6f7aeb0c00aa641147e57e08e0d/modal.png" alt="" class="kg-image" width="463" height="283" loading="lazy">
+
+	</figure>
 	<p>With close to 100% IPv6 enablement, it no longer makes sense to offer an IPv6 toggle. Instead, Cloudflare is offering IPv6 always on, with no off-switch. We’re starting with free domains, and over time we’ll change the toggle on the rest of Cloudflare paid-plan domains.</p>
-	<h3 id="thefuturehowcloudflareandopendnsareworkingtogethertomakeipv6evenfasterandmoregloballydeployed">The Future: How Cloudflare and OpenDNS are working together to make IPv6 even faster and more globally deployed</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/logos.png" alt="" loading="lazy"></p>
+	<h3>The Future: How Cloudflare and OpenDNS are working together to make IPv6 even faster and more globally deployed</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NjiPMVo4MsctGZW2P7RvI/ecf55893fa61a977c35460fe859e6f7e/logos.png" alt="" class="kg-image" width="882" height="155" loading="lazy">
+
+	</figure>
 	<p>In November <a href="https://blog.cloudflare.com/98-percent-ipv6">we published stats about the IPv6 usage</a> we see on the Cloudflare network in an attempt to answer who and what is pushing IPv6. The top operating systems by percent IPv6 traffic are iOS, ChromeOS, and MacOS respectively. These operating systems push significantly more IPv6 traffic than their peers because they use a routing choice algorithm called Happy Eyeballs. Happy Eyeballs opportunistically chooses IPv6 when available by doing two <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> lookups –– one for an IPv6 address (this IPv6 address is stored in the DNS AAAA record - pronounced quad-A) and then one for the IPv4 address (stored in the DNS A record). Both DNS queries are flying over the Internet at the same time and the client chooses the address that comes back first. The client even gives IPv6 a few milliseconds head start (iOS and MacOS give IPv6 lookups a 25ms head start for example) so that IPv6 may be chosen more often. This works and has fueled some of IPv6’s growth. But it has fallen short of the goal of a 100% IPv6 world.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/05/A-AAAA.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27vp45uqt2lIMVqjzndv86/d0895469415fd6c66f07e385e60ca9be/A-AAAA.png" alt="" class="kg-image" width="637" height="120" loading="lazy">
+
+	</figure>
 	<p>While there are perfectly good historical reasons why IPv6 and IPv4 addresses are stored in separate DNS types, today clients are IP version agnostic and it no longer makes sense for it to require two separate round trips to learn what addresses are available to fetch a resource from.</p>
 	<p>Alongside OpenDNS, we are testing a new idea - what if you could ask for all the addresses in just one DNS query?</p>
 	<p>With OpenDNS, we are prototyping and testing just that –– a new DNS metatype that returns all available addresses in one DNS answer –– A records and AAAA records in one response. (A metatype is a query type in DNS that end users can’t add into their DNS zone file, it’s assembled dynamically by the authoritative nameserver.)</p>
 	<p>What this means is that in the future if a client like an iPhone wants to access a mobile app that uses Cloudflare DNS or using another DNS provider that supports the spec, the iPhone DNS client would only need to do one DNS lookup to find where the app’s API server is located, cutting the number of necessary round trips in half.</p>
 	<p>This reduces the amount of bandwidth on the DNS system, and pre-populates global DNS caches with IPv6 addresses, making IPv6 lookups faster in the future, with the side benefit that Happy Eyeballs clients prefer IPv6 when they can get the address quickly, which increases the amount of IPv6 traffic that flows through the Internet.</p>
 	<p>We have the metaquery working in code with the reserved TYPE65535 querytype. You can ask a Cloudflare nameserver for TYPE65535 of any domain on Cloudflare and get back all available addresses for that name.</p>
-	<pre><code>$ dig cloudflare.com @ns1.cloudflare.com -t TYPE65535 +short
+	<pre class="language-bash"><code class="language-bash">$ dig cloudflare.com @ns1.cloudflare.com -t TYPE65535 +short
 198.41.215.162
 198.41.214.162
 2400:cb00:2048:1::c629:d6a2
 2400:cb00:2048:1::c629:d7a2
-$
-</code></pre>
+$</code></pre>
 	<p>Did we mention Taylor Swift earlier?</p>
-	<pre><code>$ dig taylorswift.com @ns1.cloudflare.com -t TYPE65535 +short
+	<pre class="language-bash"><code class="language-bash">$ dig taylorswift.com @ns1.cloudflare.com -t TYPE65535 +short
 104.16.193.61
 104.16.194.61
 104.16.191.61
@@ -42,8 +65,6 @@ $
 2400:cb00:2048:1::6810:bf3d
 2400:cb00:2048:1::6810:c23d
 2400:cb00:2048:1::6810:c03d
-$
-</code></pre>
+$</code></pre>
 	<p>We believe in proving concepts in code and through the <a href="https://ietf.org">IETF</a> standards process. We’re currently working on an experiment with OpenDNS and will translate our learnings to an Internet Draft we will submit to the IETF to become an RFC. We’re sure this is just the beginning to faster, better deployed IPv6.</p>
-	<!--kg-card-end: markdown-->
 </div>

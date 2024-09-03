@@ -1,31 +1,26 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DVsVgzLDZz2pPJTt1nLmW/bc7aa57c3d99a696269a481faca66320/a-node-to-workers-story.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Node.js allows developers to build web services with JavaScript. However, you're on your own when it comes to registering a domain, setting up DNS, managing the server processes, and setting up builds. </p>
+	<p>Node.js allows developers to build web services with JavaScript. However, you're on your own when it comes to registering a domain, setting up DNS, managing the server processes, and setting up builds.</p>
 	<p>There's no reason to manage all these layers on separate platforms. For a site on Cloudflare, these layers can be on a single platform. Serverless technology simplifies developers' lives and reframes our current definition of backend.</p>
-	<p>In this article I will breeze through a simple example of how converting a former Node server into a Worker untangled a part of my teams’ code base. The conversion to Workers for this example can be found at this<a href="https://github.com/cloudflare-apps/spotify-oauth-express/pull/1/files"> PR on Github</a>.</p>
-	<h3 id="background">Background</h3>
-	<p>Cloudflare Marketplace hosts a variety of apps, most of which are produced by third party developers, but some are produced by Cloudflare employees. </p>
-	<p>The Spotify app is one of those apps that was written by the Cloudflare apps team. This app requires an OAuth flow with Spotify to retrieve the user’s token and gather the playlist, artists, other Spotify profile specific information. While Cloudflare manages the OAuth authentication portion, the app owner - in this case Cloudflare Apps - manages the small integration service that uses the token to call Spotify and formats an appropriate response. Mysteriously, this Spotify OAuth integration broke. </p>
-	<p>Teams at Cloudflare are keen to remain &nbsp;agile, adaptive, and constantly learning. The current Cloudflare Apps team no longer comprises the original team that developed the Spotify OAuth integration. As such, this current team had no idea why the app broke. Although we had various alerting and logging systems, the Spotify OAuth server was lost in the cloud. </p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/lLeYBsuIZgOs6I1pMXfMi_i46ajG7TxxyZ_YI9bFbbsK38V7cXAXzfoy81uyNUK8f6RYI1dUra6_-9amGcPEFWKdJixj6oxlaQXQX-RF-2-xKI4IoRxwsj182WuQ11ZKCSuUUq4b" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>Our first step to tackling the issue was tracking down, <em>where</em> exactly did the OAuth flow <em>live</em>. After shuffling through several of the potential platforms - GCloud, AWS, Digital Ocean.. - we discovered the service was on Heroku. &nbsp;The more platforms introduced, the more complexity in deploys and access management. </p>
+	<p>In this article I will breeze through a simple example of how converting a former Node server into a Worker untangled a part of my teams’ code base. The conversion to Workers for this example can be found at this <a href="https://github.com/cloudflare-apps/spotify-oauth-express/pull/1/files">PR on Github</a>.</p>
+	<h3>Background</h3>
+	<p>Cloudflare Marketplace hosts a variety of apps, most of which are produced by third party developers, but some are produced by Cloudflare employees.</p>
+	<p>The Spotify app is one of those apps that was written by the Cloudflare apps team. This app requires an OAuth flow with Spotify to retrieve the user’s token and gather the playlist, artists, other Spotify profile specific information. While Cloudflare manages the OAuth authentication portion, the app owner - in this case Cloudflare Apps - manages the small integration service that uses the token to call Spotify and formats an appropriate response. Mysteriously, this Spotify OAuth integration broke.</p>
+	<p>Teams at Cloudflare are keen to remain &nbsp;agile, adaptive, and constantly learning. The current Cloudflare Apps team no longer comprises the original team that developed the Spotify OAuth integration. As such, this current team had no idea why the app broke. Although we had various alerting and logging systems, the Spotify OAuth server was lost in the cloud.</p>
+	<p>Our first step to tackling the issue was tracking down, <i>where</i> exactly did the OAuth flow <i>live</i>. After shuffling through several of the potential platforms - GCloud, AWS, Digital Ocean.. - we discovered the service was on Heroku. &nbsp;The more platforms introduced, the more complexity in deploys and access management.</p>
 	<p>I decided to reduce the number of layers in our service by simply creating a serverless Cloudflare Worker with no maintenance, no new logins, and no unique backend configuration.</p>
 	<p>Here’s how I did it.</p>
-	<h3 id="goodbye-node">Goodbye Node</h3>
-	<p>The old service used the Node.js and Express.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">app.post('/blah', function(request, response) {
-</code></pre>
+	<h3>Goodbye Node</h3>
+	<p>The old service used the Node.js and Express.</p>
+	<pre class="language-javascript"><code class="language-javascript">app.post('/blah', function(request, response) {</code></pre>
 	<p>This states that for every POST to an endpoint <code>/blah</code>, execute the callback function with a request and response object as arguments.</p>
 	<p>Cloudflare Workers are built on top of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Workers</a> spec. Instead of mutating the response and calling methods on the response object like in Express, we need to respond to ‘fetch’ events. The code below adds an event listener for fetch events (incoming requests to the worker), receiving a <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent">FetchEvent</a> as the first parameter. The FetchEvent has a special method called <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith">respondWith</a> that accepts an instance of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a> or a Promise which resolves to a Response.</p>
-	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
          event.respondWith(new Response(‘Hello world!’));
 });
-
 </code></pre>
 	<p>To avoid reimplementation of the routing logic in my worker, I made my own <code>app</code> .</p>
-	<pre><code class="language-javascript">const app = {
+	<pre class="language-javascript"><code class="language-javascript">const app = {
    get: (endpoint, fn) =&gt; {
      url = new URL(request.url);
      if (url.pathname === endpoint &amp;&amp; request.method === "GET")
@@ -38,10 +33,9 @@
        return fn(request);
      return null;
    }
- };
-</code></pre>
+ };</code></pre>
 	<p>Now with app set, I call <code>app.get(..)</code> similar to how I did in Node in my handler. I just need to make sure the handler returns at the correct app.</p>
-	<pre><code class="language-javascript">async function handleRequest(request) {
+	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(request) {
   lastResponse = app.post("/", async function (request) {..}
   if (lastResponse) {
       return lastResponse;
@@ -49,34 +43,24 @@
  lastResponse =  app.get("/", async function (request) {
  if (lastResponse) {
       return lastResponse;
-    }
-</code></pre>
+    }</code></pre>
 	<p><code>lastResponse</code> ensures that we keep listening for all the endpoint methods.</p>
 	<p>The other thing that needs to change is the return of the response. Before that return used <code>response.json()</code>, so the final response would be of JSON type.</p>
-	<pre><code class="language-javascript">response.json({
+	<pre class="language-javascript"><code class="language-javascript">response.json({
          proceed: false,
-         errors: [{type: '400', message: error.toString()}]
-</code></pre>
+         errors: [{type: '400', message: error.toString()}]</code></pre>
 	<p>In workers, I need to return a type <code>Response</code> to the <code>respondWith</code> function. I replaced every instance of <code>response.json</code> or <code>response.sendStatus</code> with a new Response object.</p>
-	<pre><code class="language-javascript">return new Response(
+	<pre class="language-javascript"><code class="language-javascript">return new Response(
          JSON.stringify({
          proceed: false,
          errors: [{ type: "400", message: res.error }]
-         }, { headers: { ‘Content-Type’: ‘application/json’ } })
-</code></pre>
+         }, { headers: { ‘Content-Type’: ‘application/json’ } })</code></pre>
 	<p>Now for the most beautiful part of the transition: delete useless config.</p>
 	<p>Our Express server was set to export app as a module insert credentials so that Heroku or whatever non-serverless server could pick up, run, and build.</p>
-	<p>Though I <em>can</em> import libraries for workers via <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">webpack</a>, for this application, it’s unreasoned. Also, I have access to fetch and other native service worker functions.</p>
-	<pre><code class="language-javascript">const {getJson} = require('simple-fetch')
-module.exports = function setRoutes (app) {
-</code></pre>
-	<p>Getting rid of modules and deployment config, I removed the files:<code> Procfile</code>, <code>credentials.json</code>, <code>package.json</code>, <code>development.js</code>, <code>heroku.js</code>, and <code>create-app.js</code>.<code>Routes.js</code> simply becomes <code>worker.js</code>.</p>
-	<!--kg-card-end: markdown-->
+	<p>Though I <i>can</i> import libraries for workers via <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">webpack</a>, for this application, it’s unreasoned. Also, I have access to fetch and other native service worker functions.</p>
+	<pre class="language-javascript"><code class="language-javascript">const {getJson} = require('simple-fetch')
+module.exports = function setRoutes (app) {</code></pre>
+	<p>Getting rid of modules and deployment config, I removed the files: <code>Procfile</code>, <code>credentials.json</code>, <code>package.json</code>, <code>development.js</code>, <code>heroku.js</code>, and <code>create-app.js</code>.<code>Routes.js</code> simply becomes <code>worker.js</code>.</p>
 	<p>This was a demo of how workers made my life as a programmer easier. Future developers working with my code can read this code without ever looking at any configuration. Even a purely vanilla bean Javascript developer can come in since there is no managing builds and pulling hair out.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/nzNFFN1iITiwYKC5cWrbnIRI3KNyUbKEwJEHQPP4VT3ZrNhIPRnwoenCJdxg4ZAwUDgH9g-VAV5qXGjjVcTG9fQQDT61HdCsgVUozCGnZPORZSr9okcm7yP0YOUHy3hIFUlzvteZ" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>With serverless I can now spend time on doing what I love - development. </p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/FwbGVhyinwaeGjMZfaKA4TEFrfTorV0_cEc5lEBu_VHKTZCBHjH_MUAMn1Jn8seOA1EUBQeyuH22z_s_HdLaxIiardOJiVB4J3Ry5Bn4b9trS9GT-DBrVeTDxxPACA5N964VO_BC" class="kg-image" alt="" loading="lazy"></figure>
+	<p>With serverless I can now spend time on doing what I love - development.</p>
 </div>

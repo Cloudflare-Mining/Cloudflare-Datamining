@@ -1,23 +1,32 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XOriic2kRiaAQqWKDwnxF/0463eabec486e3e71e402c3d6825e479/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>From the very beginning Cloudflare used Intel CPU-based servers (and, also, Intel components for things like NICs and SSDs). But we're always interested in optimizing the cost of running our service so that we can provide products at a low cost and high gross margin.</p>
-	<p>We're also mindful of events like the <a href="https://blog.cloudflare.com/meltdown-spectre-non-technical">Spectre and Meltdown </a>vulnerabilities and have been working with outside parties on research into mitigation and exploitation which we hope to publish later this year.</p>
+	<p>We're also mindful of events like the <a href="https://blog.cloudflare.com/meltdown-spectre-non-technical">Spectre and Meltdown</a> vulnerabilities and have been working with outside parties on research into mitigation and exploitation which we hope to publish later this year.</p>
 	<p>We looked very seriously at <a href="https://blog.cloudflare.com/arm-takes-wing">ARM-based CPUs</a> and continue to keep our software up to date for the ARM architecture so that we can use ARM-based CPUs when the requests per watt is interesting to us.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Friday--twitter@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FIEEXHXXE0TW20DbFc1qG/0df73003efaf703843f204dd924d3eeb/gen-x-color-Friday--twitter_2x.png" alt="" class="kg-image" width="1249" height="703" loading="lazy">
+
+	</figure>
 	<p>In the meantime, we've deployed AMD's EPYC processors as part of Gen X server platform and for the first time are not using any Intel components at all. This week, we announced details of this tenth generation of servers. Below is a recap of why we're excited about the design, specifications, and performance of our newest hardware.</p>
-	<h2 id="servers-for-an-accelerated-future"><a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">Servers for an Accelerated Future</a></h2>
-	<p>Every server can run every service. This architectural decision has helped us achieve higher efficiency across the Cloudflare network. It has also given us more flexibility to build new software or adopt the newest available hardware. </p>
+	<h2><a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">Servers for an Accelerated Future</a></h2>
+	<p>Every server can run every service. This architectural decision has helped us achieve higher efficiency across the Cloudflare network. It has also given us more flexibility to build new software or adopt the newest available hardware.</p>
 	<p>Notably, Intel is not inside. We are not using their hardware for any major server components such as the CPU, board, memory, storage, network interface card (or any type of accelerator).</p>
 	<p>This time, AMD is inside.</p>
 	<p>Compared with our prior server (<a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a>), our Gen X server processes as much as 36% more requests while costing substantially less. Additionally, it enables a ~50% decrease in L3 cache miss rate and up to 50% decrease in NGINX p99 latency, powered by a CPU rated at 25% lower TDP (thermal design power) per core.</p>
-	<h2 id="gen-x-cpu-benchmarks"><a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">Gen X CPU benchmarks</a></h2>
-	<p>To identify the most efficient CPU for our software stack, we ran several benchmarks for key workloads such as cryptography, compression, regular expressions, and LuaJIT. Then, we simulated typical requests we see, before testing servers in live production to measure requests per watt. &nbsp; &nbsp;<br><br>Based on our findings, we selected the single socket 48-core AMD 2nd Gen EPYC 7642.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="impact-of-cache-locality"><a href="https://blog.cloudflare.com/impact-of-cache-locality">Impact of Cache Locality</a></h2>
+	<h2><a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">Gen X CPU benchmarks</a></h2>
+	<p>To identify the most efficient CPU for our software stack, we ran several benchmarks for key workloads such as cryptography, compression, regular expressions, and LuaJIT. Then, we simulated typical requests we see, before testing servers in live production to measure requests per watt. &nbsp; &nbsp;</p>
+	<p>Based on our findings, we selected the single socket 48-core AMD 2nd Gen EPYC 7642.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40QrPSva2FXZVgsZTln51q/2675c66944172e1f69ebd4697167f0f4/pasted-image-0.png" alt="" class="kg-image" width="1600" height="1064" loading="lazy">
+
+	</figure>
+	<h2><a href="https://blog.cloudflare.com/impact-of-cache-locality">Impact of Cache Locality</a></h2>
 	<p>The single AMD EPYC 7642 performed very well during our lab testing, beating our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a> server with dual Intel Xeon Platinum 6162 with the same total number of cores. Key factors we noticed were its large L3 cache, which led to a low L3 cache miss rate, as well as a higher sustained operating frequency.</p>
-	<h2 id="gen-x-performance-tuning"><a href="https://blog.cloudflare.com/gen-x-performance-tuning">Gen X Performance Tuning</a></h2>
+	<h2><a href="https://blog.cloudflare.com/gen-x-performance-tuning">Gen X Performance Tuning</a></h2>
 	<p>Partnering with AMD, we tuned the 2nd Gen EPYC 7642 processor to achieve additional 6% performance. We achieved this by using power determinism and configuring the CPU's Thermal Design Power (TDP).</p>
-	<h2 id="securing-memory-at-epyc-scale"><a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">Securing Memory at EPYC Scale</a></h2>
+	<h2><a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">Securing Memory at EPYC Scale</a></h2>
 	<p>Finally, we described how we use Secure Memory Encryption (SME), an interesting security feature within the System on a Chip architecture of the AMD EPYC line. We were impressed by how we could achieve RAM encryption without significant decrease in performance. This reduces the worry that any data could be exfiltrated from a stolen server.</p>
 	<p>We enjoy designing hardware that improves the security, performance and reliability of our global network, trusted by over 26 million Internet properties.</p>
 	<p>Want to help us evaluate new hardware? <a href="https://www.cloudflare.com/careers">Join us</a>!</p>

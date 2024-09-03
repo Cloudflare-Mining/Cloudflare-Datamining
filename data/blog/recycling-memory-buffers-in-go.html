@@ -1,233 +1,215 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><strong>THIS BLOG POST IS VERY OLD NOW. YOU PROBABLY DON'T WANT TO USE THE TECHNIQUE DESCRIBED HERE. GO'S <a href="https://golang.org/pkg/sync/#Pool">sync.Pool</a> IS A BETTER WAY TO GO.</strong></p>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WLKJEQLzMQnxnGLYc4CDp/f58c09e012cff5b3fc523ac87e1bb36a/recycling-memory-buffers-in-go.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><b>THIS BLOG POST IS VERY OLD NOW. YOU PROBABLY DON'T WANT TO USE THE TECHNIQUE DESCRIBED HERE. GO'S </b><a href="https://golang.org/pkg/sync/#Pool"><b>sync.Pool</b></a><b> IS A BETTER WAY TO GO.</b></p>
 	<p>The other day I wrote about our use of Lua to <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">implement our new Web Application Firewall</a>. The other language that's become very popular at CloudFlare is <a href="https://golang.org">Go</a>. In the past, I've written about <a href="https://blog.cloudflare.com/go-at-cloudflare">how we use Go</a> to write network services including <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun</a>.</p>
 	<p>One of the operational challenges of using a garbage-collected language like Go for long-running network services is memory management.</p>
 	<p>To understand Go's memory management it's necessary to dig a little into the Go run-time code. There are two separate processes that take care of identifying memory that is no longer used by the program (that's garbage collection) and returning memory to the operating system when it doesn't look like it will be used again (that's called scavenging in the Go code).</p>
 	<p>Here's a small program that creates a lot of garbage. Once a second it asks for a byte array of between 5,000,000 and 10,000,000 bytes. It keeps a pool of 20 of these buffers around and discards others. This program is designed to simulate something that happens quite often in programs: memory is allocated by different parts of the program over time, some of it is retained, most of it is no longer needed. In a networked Go program this can easily happen with goroutines that handle network connections or requests. It's common to have goroutines that allocate blocks of memory (such as slices to store received data) and then no longer need them. Over time there will be some number of blocks of memory in use by network connections that are being handled and accumulated garbage from connections that have come and gone.</p>
-	<pre>package main
+	<p>package main</p>
+	<p>import ("fmt""math/rand""runtime""time"
+		)</p>
+	<p>func makeBuffer() []byte {return make([]byte, rand.Intn(5000000)+5000000)}</p>
+	<p>func main() {pool := make([][]byte, 20)</p>
+	<pre class="language-bash"><code class="language-bash">var m runtime.MemStats  
+makes := 0  
+for {  
+    b := makeBuffer()  
+    makes += 1
+    i := rand.Intn(len(pool))
+    pool\[i\] = b
 
-import (  
-    "fmt"  
-    "math/rand"  
-    "runtime"  
-    "time"
-)
+    time.Sleep(time.Second)
 
-func makeBuffer() []byte {  
-    return make([]byte, rand.Intn(5000000)+5000000)  
-}
+    bytes := 0
 
-func main() {  
-    pool := make([][]byte, 20)
-
-    var m runtime.MemStats  
-    makes := 0  
-    for {  
-        b := makeBuffer()  
-        makes += 1
-        i := rand.Intn(len(pool))
-        pool[i] = b
-
-        time.Sleep(time.Second)
-
-        bytes := 0
-
-        for i := 0; i &lt; len(pool); i++ {
-            if pool[i] != nil {
-                bytes += len(pool[i])
-            }
+    for i := 0; i &lt; len(pool); i++ {
+        if pool\[i\] != nil {
+            bytes += len(pool\[i\])
         }
-
-        runtime.ReadMemStats(&amp;m)
-        fmt.Printf("%d,%d,%d,%d,%d,%d\n", m.HeapSys, bytes, m.HeapAlloc,
-            m.HeapIdle, m.HeapReleased, makes)
     }
-}
-</pre>
+
+    runtime.ReadMemStats(&amp;m)
+    fmt.Printf("%d,%d,%d,%d,%d,%d\\n", m.HeapSys, bytes, m.HeapAlloc,
+        m.HeapIdle, m.HeapReleased, makes)
+}</code></pre>
+	<p>}</p>
 	<p>The program uses the <a href="https://golang.org/pkg/runtime/#ReadMemStats">runtime.ReadMemStats</a> function to get information about the size of the heap. It prints out four values: <code>HeapSys</code> (the number of bytes the program has asked the operating system for), <code>HeapAlloc</code> (the number of bytes currently allocated in the heap), <code>HeapIdle</code> (the number of bytes in the heap that are unused) and <code>HeapReleased</code> (the number of bytes returned to the operating system).</p>
 	<p>Garbage collection runs frequently in a Go program (see the <code>GOGC</code> environment variable to understand how to control the garbage collector's operation), so when running the size of the heap will change as memory is spotted as unused: this will causes <code>HeapAlloc</code> and <code>HeapIdle</code> to change over time. The scavenger will only release memory that has been unused for more than 5 minutes so <code>HeapReleased</code> does not change often.</p>
 	<p>Here's a chart of the program above running for ten minutes.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76nenz8v0eyxrZHmIti2zW/d2e042a1bb605ebcb731c5ea6386fe55/garbage.png" alt="" class="kg-image" width="1859" height="1240" loading="lazy">
+
+	</figure>
 	<p>(On this and subsequent charts the left axis in in bytes and the right axis is a count used for Make Count)</p>
 	<p>The red line shows the number of bytes that are actually in byte buffers in the pool. Because it has a fixed size of 20 buffers it quickly plateaus at around 150,000,000 bytes. The top blue line shows the amount of memory request from the operating system; it plateaus at around 375,000,000 bytes. So the program is using about 2.5x the amount of memory it needs.</p>
 	<p>As the program is churning through memory the allocated size of the heap and the amount of idle memory jumps around as garbage collection occurs. The orange line just counts the number of times <code>makeBuffer()</code> has been called to create a new buffer.</p>
 	<p>This sort of over request of memory is common in garbage collected programs (see, for example, the paper <a href="http://cs.canisius.edu/~hertzm/gcmalloc-oopsla-2005.pdf">Quantifying the Performance of Garbage Collection vs. Explicit Memory Management</a>). As the program churns through memory the idle memory gets reused and rarely gets released to the operating system.</p>
 	<p>One way to solve this problem is to perform some memory management manually in the program. For example, using a channel it's possible to keep a separate pool of buffers that are no longer used and use that pool to retrieve a buffer (or make a new one if the channel is empty).</p>
 	<p>The program can then be rewritten as follows:</p>
-	<pre>package main
+	<p>package main</p>
+	<p>import (
+		"fmt"
+		"math/rand"
+		"runtime"
+		"time"
+		)</p>
+	<p>func makeBuffer() []byte {
+		return make([]byte, rand.Intn(5000000)+5000000)
+		}</p>
+	<p>func main() {
+		pool := make([][]byte, 20)</p>
+	<pre class="language-bash"><code class="language-bash">buffer := make(chan \[\]byte, 5)
 
-import (
-    "fmt"
-    "math/rand"
-    "runtime"
-    "time"
-)
-
-func makeBuffer() []byte {
-    return make([]byte, rand.Intn(5000000)+5000000)
-}
-
-func main() {
-    pool := make([][]byte, 20)
-
-    buffer := make(chan []byte, 5)
-
-    var m runtime.MemStats
-    makes := 0
-    for {
-        var b []byte
-        select {
-        case b = &lt;-buffer:
-        default:
-            makes += 1
-            b = makeBuffer()
-        }
-
-        i := rand.Intn(len(pool))
-        if pool[i] != nil {
-            select {
-            case buffer &lt;- pool[i]:
-                pool[i] = nil
-            default:
-            }
-        }
-
-        pool[i] = b
-
-        time.Sleep(time.Second)
-
-        bytes := 0
-        for i := 0; i &lt; len(pool); i++ {
-            if pool[i] != nil {
-                bytes += len(pool[i])
-            }
-        }
-
-        runtime.ReadMemStats(&amp;m)
-        fmt.Printf("%d,%d,%d,%d,%d,%d\n", m.HeapSys, bytes, m.HeapAlloc,
-            m.HeapIdle, m.HeapReleased, makes)
-    }
-}
-</pre>
-	<p>And here's a graph of its operation for 10 minutes:</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage-pool.png"></p>
-	<p>This tells a very different story from above. The memory actually in pool is very close to the memory requested from the operating system and the garbage collector has little to no work to do. The heap only has a very small amount of idle memory that eventually gets released to the operating system.</p>
-	<p>The key to the operation of this memory recycling mechanism is a buffered channel called <code>buffer</code>. In the code above it can store 5 <code>[]byte</code> slices. When the program needs a buffer it first tries to read one from the channel using a <code>select</code> trick:</p>
-	<pre>select {
+var m runtime.MemStats
+makes := 0
+for {
+    var b \[\]byte
+    select {
     case b = &lt;-buffer:
     default:
+        makes += 1
         b = makeBuffer()
-}
-</pre>
+    }
+
+    i := rand.Intn(len(pool))
+    if pool\[i\] != nil {
+        select {
+        case buffer &lt;- pool\[i\]:
+            pool\[i\] = nil
+        default:
+        }
+    }
+
+    pool\[i\] = b
+
+    time.Sleep(time.Second)
+
+    bytes := 0
+    for i := 0; i &lt; len(pool); i++ {
+        if pool\[i\] != nil {
+            bytes += len(pool\[i\])
+        }
+    }
+
+    runtime.ReadMemStats(&amp;m)
+    fmt.Printf("%d,%d,%d,%d,%d,%d\\n", m.HeapSys, bytes, m.HeapAlloc,
+        m.HeapIdle, m.HeapReleased, makes)
+}</code></pre>
+	<p>}</p>
+	<p>And here's a graph of its operation for 10 minutes:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SJYyQrsi4WUg9Vdg8xxvx/b525c8dda985cba7859b1d8b9128d8c9/garbage-pool.png" alt="" class="kg-image" width="1690" height="1378" loading="lazy">
+
+	</figure>
+	<p>This tells a very different story from above. The memory actually in pool is very close to the memory requested from the operating system and the garbage collector has little to no work to do. The heap only has a very small amount of idle memory that eventually gets released to the operating system.</p>
+	<p>The key to the operation of this memory recycling mechanism is a buffered channel called <code>buffer</code>. In the code above it can store 5 <code>[]byte</code> slices. When the program needs a buffer it first tries to read one from the channel using a <code>select</code> trick:</p>
+	<p>select {
+		case b = &lt;-buffer:
+		default:
+		b = makeBuffer()
+		}</p>
 	<p>This will never block because if the channel called <code>buffer</code> has a slice in it then the first case works and the slice is placed in <code>b</code>. If the channel is empty (meaning a receive would block) the <code>default</code> case happens a new buffer is allocated.</p>
 	<p>Putting slices back in the channel uses a similar non-blocking trick:</p>
-	<p></p>
-	<pre>select {
-    case buffer &lt;- pool[i]:
-        pool[i] = nil
-    default:
-}
-</pre>
+	<p>select {
+		case buffer &lt;- pool[i]:
+		pool[i] = nil
+		default:
+		}</p>
 	<p>If the <code>buffer</code> channel is full then a send to it would block. In that case the empty <code>default</code> clause occurs. This simple mechanism can be used to safely make a shared pool. It can even be shared across goroutines since channel communication is perfectly safe from multiple goroutines.</p>
 	<p>We actually use a similar technique to this in our Go programs. The actual recycler (in simplified form) is shown below. It works by having a goroutine that handles the creation of buffers and shares them across goroutines in our software. Two channels <code>get</code> (to get a new buffer) and <code>give</code> (to return a buffer to the pool) are used for all communication.</p>
 	<p>The recycler keeps a linked list of returned buffers and periodically throws away those that are too old and are unlikely to be reused (in the example code that's buffers that are older than one minute). That allows the program to cope with bursts of demand for buffers dynamically.</p>
-	<pre>package main
+	<p>package main</p>
+	<p>import (
+		"container/list"
+		"fmt"
+		"math/rand"
+		"runtime"
+		"time"
+		)</p>
+	<p>var makes int
+		var frees int</p>
+	<p>func makeBuffer() []byte {
+		makes += 1
+		return make([]byte, rand.Intn(5000000)+5000000)
+		}</p>
+	<p>type queued struct {
+		when time.Time
+		slice []byte
+		}</p>
+	<p>func makeRecycler() (get, give chan []byte) {
+		get = make(chan []byte)
+		give = make(chan []byte)</p>
+	<pre class="language-bash"><code class="language-bash">go func() {
+    q := new(list.List)
+    for {
+        if q.Len() == 0 {
+            q.PushFront(queued{when: time.Now(), slice: makeBuffer()})
+        }
 
-import (
-    "container/list"
-    "fmt"
-    "math/rand"
-    "runtime"
-    "time"
-)
+        e := q.Front()
 
-var makes int
-var frees int
+        timeout := time.NewTimer(time.Minute)
+        select {
+        case b := &lt;-give:
+            timeout.Stop()
+            q.PushFront(queued{when: time.Now(), slice: b})
 
-func makeBuffer() []byte {
-    makes += 1
-    return make([]byte, rand.Intn(5000000)+5000000)
-}
+       case get &lt;- e.Value.(queued).slice:
+           timeout.Stop()
+           q.Remove(e)
 
-type queued struct {
-    when time.Time
-    slice []byte
-}
-
-func makeRecycler() (get, give chan []byte) {
-    get = make(chan []byte)
-    give = make(chan []byte)
-
-    go func() {
-        q := new(list.List)
-        for {
-            if q.Len() == 0 {
-                q.PushFront(queued{when: time.Now(), slice: makeBuffer()})
-            }
-
-            e := q.Front()
-
-            timeout := time.NewTimer(time.Minute)
-            select {
-            case b := &lt;-give:
-                timeout.Stop()
-                q.PushFront(queued{when: time.Now(), slice: b})
-
-           case get &lt;- e.Value.(queued).slice:
-               timeout.Stop()
-               q.Remove(e)
-
-           case &lt;-timeout.C:
-               e := q.Front()
-               for e != nil {
-                   n := e.Next()
-                   if time.Since(e.Value.(queued).when) &gt; time.Minute {
-                       q.Remove(e)
-                       e.Value = nil
-                   }
-                   e = n
+       case &lt;-timeout.C:
+           e := q.Front()
+           for e != nil {
+               n := e.Next()
+               if time.Since(e.Value.(queued).when) &gt; time.Minute {
+                   q.Remove(e)
+                   e.Value = nil
                }
+               e = n
            }
        }
+   }
 
-    }()
+}()
 
-    return
-}
+return</code></pre>
+	<p>}</p>
+	<p>func main() {
+		pool := make([][]byte, 20)</p>
+	<pre class="language-bash"><code class="language-bash">get, give := makeRecycler()
 
-func main() {
-    pool := make([][]byte, 20)
-
-    get, give := makeRecycler()
-
-    var m runtime.MemStats
-    for {
-        b := &lt;-get
-        i := rand.Intn(len(pool))
-        if pool[i] != nil {
-            give &lt;- pool[i]
-        }
-
-        pool[i] = b
-
-        time.Sleep(time.Second)
-
-        bytes := 0
-        for i := 0; i &lt; len(pool); i++ {
-            if pool[i] != nil {
-                bytes += len(pool[i])
-            }
-        }
-
-        runtime.ReadMemStats(&amp;m)
-        fmt.Printf("%d,%d,%d,%d,%d,%d,%d\n", m.HeapSys, bytes, m.HeapAlloc
-             m.HeapIdle, m.HeapReleased, makes, frees)
+var m runtime.MemStats
+for {
+    b := &lt;-get
+    i := rand.Intn(len(pool))
+    if pool\[i\] != nil {
+        give &lt;- pool\[i\]
     }
-}
-</pre>
+
+    pool\[i\] = b
+
+    time.Sleep(time.Second)
+
+    bytes := 0
+    for i := 0; i &lt; len(pool); i++ {
+        if pool\[i\] != nil {
+            bytes += len(pool\[i\])
+        }
+    }
+
+    runtime.ReadMemStats(&amp;m)
+    fmt.Printf("%d,%d,%d,%d,%d,%d,%d\\n", m.HeapSys, bytes, m.HeapAlloc
+         m.HeapIdle, m.HeapReleased, makes, frees)
+}</code></pre>
+	<p>}</p>
 	<p>Running that program for ten minutes looks very similar to the second program above:</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage-recyler.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ob2nuz31JU6rVynv82T7z/05069ec28e0024f3681fed2adef5b080/garbage-recyler.png" alt="" class="kg-image" width="1926" height="1271" loading="lazy">
+
+	</figure>
 	<p>These techniques can be used to recycle memory that the programmer knows is likely to be reused without asking the garbage collector to do the work. They can significantly reduce the amount of memory a program needs. And they can be used for more than just byte slices. Any arbitrary Go type (user-defined or not) could be recycled in a similar manner.</p>
-	<!--kg-card-end: markdown-->
 </div>

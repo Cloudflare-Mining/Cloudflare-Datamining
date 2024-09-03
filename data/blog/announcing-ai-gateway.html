@@ -1,23 +1,25 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-ai-gateway-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-ai-gateway-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/announcing-ai-gateway-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/announcing-ai-gateway-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/announcing-ai-gateway-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/announcing-ai-gateway-es-es">Español</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-10.png" class="kg-image" alt="Announcing AI Gateway: making AI applications more observable, reliable, and scalable" loading="lazy" width="1801" height="1014"></figure>
-	<p>Today, we’re excited to announce our beta of <strong>AI Gateway</strong> – the portal to making your AI applications more observable, reliable, and scalable.</p>
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-ai-gateway">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/announcing-ai-gateway">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-ai-gateway">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/announcing-ai-gateway">한국어</a>, <a href="https://blog.cloudflare.com/es-es/announcing-ai-gateway">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/announcing-ai-gateway">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KExrqxBeL4yGLYsMeeZ2j/0433bf243091a74a1f3bf2ddcb98b29a/image4-10.png" alt="Announcing AI Gateway: making AI applications more observable, reliable, and scalable" class="kg-image" width="1801" height="1014" loading="lazy">
+
+	</figure>
+	<p>Today, we’re excited to announce our beta of <b>AI Gateway</b> – the portal to making your AI applications more observable, reliable, and scalable.</p>
 	<p>AI Gateway sits between your application and the AI APIs that your application makes requests to (like OpenAI) – so that we can cache responses, limit and retry requests, and provide analytics to help you monitor and track usage. AI Gateway handles the things that nearly all AI applications need, saving you engineering time, so you can focus on what you're building.</p>
-	<h3 id="connecting-your-app-to-ai-gateway">Connecting your app to AI Gateway</h3>
-	<p>It only takes one line of code for developers to get started with Cloudflare’s AI Gateway. All you need to do is replace the URL in your API calls with your unique AI Gateway endpoint. For example, with OpenAI you would define your baseURL as <code>"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</code> instead of <code>"https://api.openai.com/v1"</code> – and that’s it. You can keep your tokens in your code environment, and we’ll log the request through AI Gateway before letting it pass through to the final API with your token.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">// configuring AI gateway with the dedicated OpenAI endpoint
+	<h3>Connecting your app to AI Gateway</h3>
+	<p>It only takes one line of code for developers to get started with Cloudflare’s AI Gateway. All you need to do is replace the URL in your API calls with your unique AI Gateway endpoint. For example, with OpenAI you would define your baseURL as <code>"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</code> instead of <code>"https://api.openai.com/v1"</code> – and that’s it. You can keep your tokens in your code environment, and we’ll log the request through AI Gateway before letting it pass through to the final API with your token.</p>
+	<pre class="language-javascript"><code class="language-javascript">// configuring AI gateway with the dedicated OpenAI endpoint
 
 const openai = new OpenAI({
 &nbsp; apiKey: env.OPENAI_API_KEY,
 &nbsp; baseURL: "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai",
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
+});</code></pre>
 	<p>We currently support model providers such as OpenAI, Hugging Face, and Replicate with plans to add more in the future. We support all the various endpoints within providers and also response streaming, so everything should work out-of-the-box once you have the gateway configured. The dedicated endpoint for these providers allows you to connect your apps to AI Gateway by changing one line of code, without touching your original payload structure.</p>
-	<p>We also have a universal endpoint that you can use if you’d like more flexibility with your requests. With the universal endpoint, you have the ability to define fallback models and handle request retries. For example, let’s say a request was made to OpenAI GPT-3, but the API was down – with the universal endpoint, you could define Hugging Face GPT-2 as your fallback model and the gateway can automatically resend that request to Hugging Face. This is really helpful in improving resiliency for your app in cases where you are noticing unusual errors, getting rate limited, or if one bill is getting costly, and you want to diversify to other models. With the universal endpoint, you’ll just need to tweak your payload to specify the provider and endpoint, so we can properly route requests for you. Check out the example request below and <a href="https://developers.cloudflare.com/ai-gateway">the docs</a> for more details on the universal endpoint schema.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash"># Using the Universal Endpoint to first try OpenAI, then Hugging Face
+	<p>We also have a universal endpoint that you can use if you’d like more flexibility with your requests. With the universal endpoint, you have the ability to define fallback models and handle request retries. For example, let’s say a request was made to OpenAI GPT-3, but the API was down – with the universal endpoint, you could define Hugging Face GPT-2 as your fallback model and the gateway can automatically resend that request to Hugging Face. This is really helpful in improving resiliency for your app in cases where you are noticing unusual errors, getting rate limited, or if one bill is getting costly, and you want to diversify to other models. With the universal endpoint, you’ll just need to tweak your payload to specify the provider and endpoint, so we can properly route requests for you. Check out the example request below and <a href="https://developers.cloudflare.com/ai-gateway">the docs</a> for more details on the universal endpoint schema.</p>
+	<pre class="language-bash"><code class="language-bash"># Using the Universal Endpoint to first try OpenAI, then Hugging Face
 
 curl https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY &nbsp;-X POST \
 &nbsp; --header 'Content-Type: application/json' \
@@ -51,21 +53,32 @@ curl https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY &nbsp;-X POST \
 &nbsp; &nbsp; &nbsp; "inputs": "What is Cloudflare?"
 &nbsp; &nbsp; }
 &nbsp; },
-]'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="gaining-visibility-into-your-app%E2%80%99s-usage">Gaining visibility into your app’s usage</h3>
+]'</code></pre>
+	<h3>Gaining visibility into your app’s usage</h3>
 	<p>Now that your app is connected to Cloudflare, we can help you gather analytics and give insight and control on the traffic that is passing through your apps. Regardless of what model or infrastructure you use in the backend, we can help you log requests and analyze data like the number of requests, number of users, cost of running the app, duration of requests, etc. Although these seem like basic analytics that model providers should expose, it’s surprisingly difficult to get visibility into these metrics with the typical model providers. AI Gateway takes it one step further and lets you aggregate analytics across multiple providers too.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-24.png" class="kg-image" alt="" loading="lazy" width="1999" height="1418"></figure>
-	<h3 id="controlling-how-your-app-scales">Controlling how your app scales</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yPlnJxKwRTlaUEeU9qvpg/95dfc4c9840a52ffff0a6edf472a5584/image3-24.png" alt="" class="kg-image" width="1999" height="1418" loading="lazy">
+
+	</figure>
+	<h3>Controlling how your app scales</h3>
 	<p>One of the pain points we often hear is how expensive it costs to build and run AI apps. Each API call can be unpredictably expensive and costs can rack up quickly, preventing developers from scaling their apps to their full potential. At the speed that the industry is moving, you don’t want to be limited by your scale and left behind – and that’s where <a href="https://www.cloudflare.com/learning/cdn/what-is-caching">caching</a> and rate limiting can help. We allow developers to cache their API calls so that new requests can be served from our cache rather than the original API – making it cheaper and faster. <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting">Rate limiting</a> can also help control costs by throttling the number of requests and preventing excessive or suspicious activity. Developers have full flexibility to define caching and rate limiting rules, so that apps can scale at a sustainable pace of your choosing.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-20.png" class="kg-image" alt="" loading="lazy" width="1999" height="1308"></figure>
-	<h3 id="the-workers-ai-platform">The Workers AI Platform</h3>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EgZOiCNWYJkkqeEjkV9Ew/100d488a00d61658779074ca150ba583/image1-20.png" alt="" class="kg-image" width="1999" height="1308" loading="lazy">
+
+	</figure>
+	<h3>The Workers AI Platform</h3>
 	<p>AI Gateway pairs perfectly with our new <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> and <a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta">Vectorize</a> products, so you can build full-stack AI applications all within the Workers ecosystem. From deploying applications with Workers, running model inference on the edge with Workers AI, storing <a href="https://www.cloudflare.com/learning/ai/what-are-embeddings">vector embeddings</a> on Vectorize, to gaining visibility into your applications with AI Gateway – the Workers platform is your one-stop shop to bring your AI applications to life. To learn how to use AI Gateway with Workers AI or the different providers, check out <a href="https://developers.cloudflare.com/ai-gateway">the docs</a>.</p>
-	<h3 id="next-up-the-enterprise-use-case">Next up: the enterprise use case</h3>
+	<h3>Next up: the enterprise use case</h3>
 	<p>We are shipping v1 of AI Gateway with a few core features, but we have plans to expand the product to cover more advanced use cases as well – usage alerts, jailbreak protection, dynamic model routing with A/B testing, and advanced cache rules. But what we’re really excited about are the other ways you can apply AI Gateway…</p>
 	<p>In the future, we want to develop AI Gateway into a product that helps organizations monitor and observe how their users or employees are using AI. This way, you can flip a switch and have all requests within your network to providers (like OpenAI) pass through Cloudflare first – so that you can log user requests, apply access policies, enable rate limiting and <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">data loss prevention (DLP)</a> strategies. A powerful example: if an employee accidentally pastes an API key to ChatGPT, AI Gateway can be configured to see the outgoing request and redact the API key or block the request entirely, preventing it from ever reaching OpenAI or any end providers. We can also log and alert on suspicious requests, so that organizations can proactively investigate and control certain types of activity. AI Gateway then becomes a really powerful tool for organizations that might be excited about the efficiency that <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a> unlocks, but hesitant about trusting AI when <a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy">data privacy</a> and user error are really critical threats. We hope that AI Gateway can alleviate these concerns and make adopting AI tools a lot easier for organizations.</p>
 	<p>Whether you’re a developer building applications or a company who’s interested in how employees are using AI, our hope is that AI Gateway can help you demystify what’s going on inside your apps – because once you understand how your users are using AI, you can make decisions on how you actually want them to use it. Some of these features are still in development, but we hope this illustrates the power of AI Gateway and our vision for the future.</p>
-	<p>At Cloudflare, we live and breathe innovation (as you can tell by our Birthday Week announcements!) and the pace of innovation in AI is incredible to witness. We’re thrilled that we can not only help people build and use apps, but actually help <em>accelerate</em> the adoption and development of AI with greater control and visibility. We can’t wait to hear what you build – head to the Cloudflare dashboard to <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fai-gateway%2Fgeneral%2F">try out AI Gateway</a> and let us know what you think!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-17.png" class="kg-image" alt="" loading="lazy" width="1800" height="588"></figure>
+	<p>At Cloudflare, we live and breathe innovation (as you can tell by our Birthday Week announcements!) and the pace of innovation in AI is incredible to witness. We’re thrilled that we can not only help people build and use apps, but actually help <i>accelerate</i> the adoption and development of AI with greater control and visibility. We can’t wait to hear what you build – head to the Cloudflare dashboard to <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fai-gateway%2Fgeneral%2F">try out AI Gateway</a> and let us know what you think!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HQSDDrg5pgwRfiz2kAOXP/e005d68c0b3cf14202b54c297441079e/image2-17.png" alt="" class="kg-image" width="1800" height="588" loading="lazy">
+
+	</figure>
+	<p></p>
 </div>

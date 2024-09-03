@@ -1,58 +1,90 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We use <a href="https://kubernetes.io">Kubernetes</a> to run many of the diverse services that help us control Cloudflare’s edge. We have five geographically diverse clusters, with hundreds of nodes in our largest cluster. These clusters are self-managed on bare-metal machines which gives us a good amount of power and flexibility in the software and integrations with Kubernetes. However, it also means we don’t have a cloud provider to rely on for virtualizing or managing the nodes. This distinction becomes even more prominent when considering all the different reasons that nodes degrade. With self-managed bare-metal machines, the list of reasons that cause a node to become unhealthy include:</p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3olzQeX6mSefAgNG66NjUu/ef92cc4af11a82d97c9c62c9f17cf7d7/image3-4.png" alt="" class="kg-image" width="1461" height="743" loading="lazy">
+
+	</figure>
+	<p>We use <a href="https://kubernetes.io">Kubernetes</a> to run many of the diverse services that help us control Cloudflare’s edge. We have five geographically diverse clusters, with hundreds of nodes in our largest cluster. These clusters are self-managed on bare-metal machines which gives us a good amount of power and flexibility in the software and integrations with Kubernetes. However, it also means we don’t have a cloud provider to rely on for virtualizing or managing the nodes. This distinction becomes even more prominent when considering all the different reasons that nodes degrade. With self-managed bare-metal machines, the list of reasons that cause a node to become unhealthy include:</p>
 	<ul>
-		<li>Hardware failures</li>
-		<li>Kernel-level software failures</li>
-		<li>Kubernetes cluster-level software failures</li>
-		<li>Degraded network communication</li>
-		<li>Software updates are required</li>
-		<li>Resource exhaustion<sup>1</sup></li>
+		<li>
+			<p>Hardware failures</p>
+		</li>
+		<li>
+			<p>Kernel-level software failures</p>
+		</li>
+		<li>
+			<p>Kubernetes cluster-level software failures</p>
+		</li>
+		<li>
+			<p>Degraded network communication</p>
+		</li>
+		<li>
+			<p>Software updates are required</p>
+		</li>
+		<li>
+			<p>Resource exhaustion<sup>1</sup></p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="unhappy-nodes">Unhappy Nodes</h2>
-	<p>We have plenty of examples of failures in the aforementioned categories, but one example has been particularly tedious to deal with. It starts with the following log line from the kernel:</p><!--kg-card-begin: markdown-->
-	<pre><code>unregister_netdevice: waiting for lo to become free. Usage count = 1
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The issue is further observed with the number of network interfaces on the node owned by the Container Network Interface (CNI) plugin getting out of proportion with the number of running pods:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ ip link | grep cali | wc -l
-1088
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59IDEspjCRavbrtH1Rtu4r/f769bba8ac05062eb94ce068dc2d7ede/image2-5.png" alt="" class="kg-image" width="1482" height="879" loading="lazy">
+
+	</figure>
+	<h2>Unhappy Nodes</h2>
+	<p>We have plenty of examples of failures in the aforementioned categories, but one example has been particularly tedious to deal with. It starts with the following log line from the kernel:</p>
+	<pre class="language-bash"><code class="language-bash">unregister_netdevice: waiting for lo to become free. Usage count = 1</code></pre>
+	<p>The issue is further observed with the number of network interfaces on the node owned by the Container Network Interface (CNI) plugin getting out of proportion with the number of running pods:</p>
+	<pre class="language-bash"><code class="language-bash">$ ip link | grep cali | wc -l
+1088</code></pre>
 	<p>This is unexpected as it shouldn't exceed the maximum number of pods allowed on a node (we use the default limit of 110). While this issue is interesting and perhaps worthy of a whole separate blog, the short of it is that the Linux network interfaces owned by the CNI are not getting cleaned up after a pod terminates.</p>
 	<p>Some history on this can be read in a <a href="https://github.com/moby/moby/issues/5618">Docker GitHub issue</a>. We found this seems to plague nodes with a longer uptime, and after rebooting the node it would be fine for about a month. However, with a significant number of nodes, this was happening multiple times per day. Each instance would need rebooting, which means going through our worker reboot procedure which looked like this:</p>
 	<ol>
-		<li>Cordon off the affected node to prevent new workloads from scheduling on it.</li>
-		<li>Collect any diagnostic information for later investigation.</li>
-		<li>Drain the node of current workloads.</li>
-		<li>Reboot and wait for the node to come back.</li>
-		<li>Verify the node is healthy.</li>
-		<li>Re-enable scheduling of new workloads to the node.</li>
+		<li>
+			<p>Cordon off the affected node to prevent new workloads from scheduling on it.</p>
+		</li>
+		<li>
+			<p>Collect any diagnostic information for later investigation.</p>
+		</li>
+		<li>
+			<p>Drain the node of current workloads.</p>
+		</li>
+		<li>
+			<p>Reboot and wait for the node to come back.</p>
+		</li>
+		<li>
+			<p>Verify the node is healthy.</p>
+		</li>
+		<li>
+			<p>Re-enable scheduling of new workloads to the node.</p>
+		</li>
 	</ol>
 	<p>While solving the underlying issue would be ideal, we needed a mitigation to avoid toil in the meantime — an automated node remediation process.</p>
-	<h2 id="existing-detection-and-remediation-solutions">Existing Detection and Remediation Solutions</h2>
+	<h2>Existing Detection and Remediation Solutions</h2>
 	<p>While not complicated, the manual remediation process outlined previously became tedious and distracting, as we had to reboot nodes multiple times a day. Some manual intervention is unavoidable, but for cases matching the following, we wanted automation:</p>
 	<ul>
-		<li>Generic worker nodes</li>
-		<li>Software issues confined to a given node</li>
-		<li>Already researched and diagnosed issues</li>
+		<li>
+			<p>Generic worker nodes</p>
+		</li>
+		<li>
+			<p>Software issues confined to a given node</p>
+		</li>
+		<li>
+			<p>Already researched and diagnosed issues</p>
+		</li>
 	</ul>
 	<p>Limiting automatic remediation to generic worker nodes is important as there are other node types in our clusters where more care is required. For example, for control-plane nodes the process has to be augmented to check <a href="https://etcd.io">etcd</a> cluster health and ensure proper redundancy for components servicing the Kubernetes API. We are also going to limit the problem space to known software issues confined to a node where we expect automatic remediation to be the right answer (as in our ballooning network interface problem). With that in mind, we took a look at existing solutions that we could use.</p>
-	<h3 id="node-problem-detector">Node Problem Detector</h3><!--kg-card-begin: markdown-->
+	<h3>Node Problem Detector</h3>
 	<p><a href="https://github.com/kubernetes/node-problem-detector">Node problem detector</a> is a daemon that runs on each node that detects problems and reports them to the Kubernetes API. It has a pluggable problem daemon system such that one can add their own logic for detecting issues with a node. Node problems are distinguished between temporary and permanent problems, with the latter being persisted as status conditions on the Kubernetes node resources.<sup>2</sup></p>
-	<!--kg-card-end: markdown-->
-	<h3 id="draino-and-cluster-autoscaler">Draino and Cluster-Autoscaler</h3>
+	<h3>Draino and Cluster-Autoscaler</h3>
 	<p><a href="https://github.com/planetlabs/draino">Draino</a> as its name implies, drains nodes but does so based on Kubernetes node conditions. It is meant to be used with <a href="https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler">cluster-autoscaler</a> which then can add or remove nodes via the cluster plugins to scale node groups.</p>
-	<h3 id="kured">Kured</h3>
+	<h3>Kured</h3>
 	<p><a href="https://github.com/weaveworks/kured">Kured</a> is a daemon that looks at the presence of a file on the node to initiate a drain, reboot and uncordon of the given node. It uses a locking mechanism via the Kubernetes API to ensure only a single node is acted upon at a time.</p>
-	<h3 id="cluster-api">Cluster-API</h3>
+	<h3>Cluster-API</h3>
 	<p>The <a href="https://github.com/kubernetes/community/tree/master/sig-cluster-lifecycle">Kubernetes cluster-lifecycle SIG</a> has been working on the <a href="https://github.com/kubernetes-sigs/cluster-api">cluster-api</a> project to enable declaratively defining clusters to simplify provisioning, upgrading, and operating multiple Kubernetes clusters. It has a concept of machine resources which back Kubernetes node resources and furthermore has a concept of <a href="https://cluster-api.sigs.k8s.io/tasks/healthcheck.html">machine health checks</a>. Machine health checks use node conditions to determine unhealthy nodes and then the cluster-api provider is then delegated to replace that machine via create and delete operations.</p>
-	<h2 id="proof-of-concept">Proof of Concept</h2>
-	<p>Interestingly, with all the above except for Kured, there is a theme of pluggable components centered around Kubernetes node conditions. We wanted to see if we could build a proof of concept using the existing theme and solutions. For the existing solutions, draino with cluster-autoscaler didn’t make sense in a non-cloud environment like our bare-metal set up. The cluster-api health checks are interesting, however they require a more complete investment into the cluster-api project to really make sense. That left us with node-problem-detector and kured. Deploying node-problem-detector was simple, and we ended up testing a <a href="https://github.com/kubernetes/node-problem-detector/blob/master/docs/custom_plugin_monitor.md">custom-plugin-monitor</a> like the following:</p><!--kg-card-begin: markdown-->
-	<pre><code>apiVersion: v1
+	<h2>Proof of Concept</h2>
+	<p>Interestingly, with all the above except for Kured, there is a theme of pluggable components centered around Kubernetes node conditions. We wanted to see if we could build a proof of concept using the existing theme and solutions. For the existing solutions, draino with cluster-autoscaler didn’t make sense in a non-cloud environment like our bare-metal set up. The cluster-api health checks are interesting, however they require a more complete investment into the cluster-api project to really make sense. That left us with node-problem-detector and kured. Deploying node-problem-detector was simple, and we ended up testing a <a href="https://github.com/kubernetes/node-problem-detector/blob/master/docs/custom_plugin_monitor.md">custom-plugin-monitor</a> like the following:</p>
+	<pre class="language-bash"><code class="language-bash">apiVersion: v1
 kind: ConfigMap
 metadata:
   name: node-problem-detector-config
@@ -100,11 +132,9 @@ data:
           "timeout": "3s"
         }
       ]
-    }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Testing showed that when the condition became true, a condition would be updated on the associated Kubernetes node like so:</p><!--kg-card-begin: markdown-->
-	<pre><code>kubectl get node -o json worker1a | jq '.status.conditions[] | select(.type | test("^NPD"))'
+    }</code></pre>
+	<p>Testing showed that when the condition became true, a condition would be updated on the associated Kubernetes node like so:</p>
+	<pre class="language-bash"><code class="language-bash">kubectl get node -o json worker1a | jq '.status.conditions[] | select(.type | test("^NPD"))'
 {
   "lastHeartbeatTime": "2020-03-20T17:05:17Z",
   "lastTransitionTime": "2020-03-20T17:05:16Z",
@@ -112,45 +142,44 @@ data:
   "reason": "TooManyCalicoInterfaces",
   "status": "True",
   "type": "NPDCalicoUnhealthy"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>With that in place, the actual remediation needed to happen. Kured seemed to do most everything we needed, except that it was looking at a file instead of Kubernetes node conditions. We hacked together a patch to change that and tested it successfully end to end — we had a working proof of concept!</p>
-	<h2 id="revisiting-problem-detection">Revisiting Problem Detection</h2>
-	<p>While the above worked, we found that node-problem-detector was unwieldy because we were replicating our existing monitoring into shell scripts and node-problem-detector configuration. A <a href="https://www.infoq.com/news/2017/10/monitoring-cloudflare-prometheus">2017 blog post</a> describes Cloudflare’s monitoring stack, although some things have changed since then. What hasn’t changed is our extensive usage of <a href="https://prometheus.io">Prometheus</a> and <a href="https://github.com/prometheus/alertmanager">Alertmanager</a>. </p><!--kg-card-begin: markdown-->
+	<h2>Revisiting Problem Detection</h2>
+	<p>While the above worked, we found that node-problem-detector was unwieldy because we were replicating our existing monitoring into shell scripts and node-problem-detector configuration. A <a href="https://www.infoq.com/news/2017/10/monitoring-cloudflare-prometheus">2017 blog post</a> describes Cloudflare’s monitoring stack, although some things have changed since then. What hasn’t changed is our extensive usage of <a href="https://prometheus.io">Prometheus</a> and <a href="https://github.com/prometheus/alertmanager">Alertmanager</a>.</p>
 	<p>For the network interface issue and other issues we wanted to address, we already had the necessary exported metrics and alerting to go with them. Here is what our already existing alert looked like<sup>3</sup>:</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code>- alert: CalicoTooManyInterfaces
+	<pre class="language-bash"><code class="language-bash">- alert: CalicoTooManyInterfaces
   expr: sum(node_network_info{device=~"cali.*"}) by (node) &gt;= 200
   for: 1h
   labels:
     priority: "5"
-    notify: chat-sre-core chat-k8s
-</code></pre>
-	<!--kg-card-end: markdown-->
+    notify: chat-sre-core chat-k8s</code></pre>
 	<p>Note that we use a “notify” label to drive the routing logic in Alertmanager. However, that got us asking, could we just route this to a Kubernetes node condition instead?</p>
-	<h2 id="introducing-sciuro">Introducing Sciuro</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Introducing Sciuro</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Hx2xX6FXjjTsCdZZFmn7O/e961a674329ab3494de25ab047136249/image1-6.png" alt="" class="kg-image" width="805" height="253" loading="lazy">
+
+	</figure>
 	<p>Sciuro is our open-source replacement of node-problem-detector that has one simple job: synchronize Kubernetes node conditions with currently firing alerts in Alertmanager. Node problems can be defined with a more holistic view and using already existing exporters such as <a href="https://github.com/prometheus/node_exporter">node exporter</a>, <a href="https://github.com/google/cadvisor">cadvisor</a> or <a href="https://github.com/google/mtail">mtail</a>. It also doesn’t run on affected nodes which allows us to rely on out-of-band remediation techniques. Here is a high level diagram of how Sciuro works:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TF20JXIsXxWApKN9yyEcy/e30df7be3cfa43b8a90d6706822659df/image4-3.png" alt="" class="kg-image" width="1554" height="1983" loading="lazy">
+
+	</figure>
 	<p>Starting from the top, nodes are scraped by Prometheus, which collects those metrics and fires relevant alerts to Alertmanager. Sciuro polls Alertmanager for alerts with a matching receiver, matches them with a corresponding node resource in the Kubernetes API and updates that node’s conditions accordingly.</p>
-	<p>In more detail, we can start by defining an alert in Prometheus like the following:</p><!--kg-card-begin: markdown-->
-	<pre><code>- alert: CalicoTooManyInterfacesEarly
+	<p>In more detail, we can start by defining an alert in Prometheus like the following:</p>
+	<pre class="language-bash"><code class="language-bash">- alert: CalicoTooManyInterfacesEarly
   expr: sum(node_network_info{device=~"cali.*"}) by (node) &gt;= 150
   labels:
     priority: "6"
-    notify: node-condition-k8s
-</code></pre>
-	<!--kg-card-end: markdown-->
+    notify: node-condition-k8s</code></pre>
 	<p>Note the two differences from the previous alert. First, we use a new name with a more sensitive trigger. The idea is that we want automatic node remediation to try fixing the node first as soon as possible, but if the problem worsens or automatic remediation is failing, humans will still get notified to act. The second difference is that instead of notifying chat rooms, we route to a target called “node-condition-k8s”.</p>
-	<p>Sciuro then comes into play, polling the Altertmanager API for alerts matching the “node-condition-k8s” receiver. The following shows the equivalent using <a href="https://github.com/prometheus/alertmanager/tree/master/cmd/amtool">amtool</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ amtool alert query -r node-condition-k8s
+	<p>Sciuro then comes into play, polling the Altertmanager API for alerts matching the “node-condition-k8s” receiver. The following shows the equivalent using <a href="https://github.com/prometheus/alertmanager/tree/master/cmd/amtool">amtool</a>:</p>
+	<pre class="language-bash"><code class="language-bash">$ amtool alert query -r node-condition-k8s
 Alertname                 	Starts At            	Summary                                                               	 
-CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a has too many Calico interfaces  
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We can also check the labels for this alert:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ amtool alert query -r node-condition-k8s -o json | jq '.[] | .labels'
+CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a has too many Calico interfaces  </code></pre>
+	<p>We can also check the labels for this alert:</p>
+	<pre class="language-bash"><code class="language-bash">$ amtool alert query -r node-condition-k8s -o json | jq '.[] | .labels'
 {
   "alertname": "CalicoTooManyInterfacesEarly",
   "cluster": "a.k8s",
@@ -159,11 +188,9 @@ CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a 
   "notify": "node-condition-k8s",
   "priority": "6",
   "prometheus": "k8s-a"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Note the node and instance labels which Sciuro will use for matching with the corresponding Kubernetes node. Sciuro uses the excellent <a href="https://github.com/kubernetes-sigs/controller-runtime">controller-runtime</a> to keep track of and update node sources in the Kubernetes API. We can observe the updated node condition on the status field via kubectl:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ kubectl get node worker1a -o json | jq '.status.conditions[] | select(.type | test("^AlertManager"))'
+}</code></pre>
+	<p>Note the node and instance labels which Sciuro will use for matching with the corresponding Kubernetes node. Sciuro uses the excellent <a href="https://github.com/kubernetes-sigs/controller-runtime">controller-runtime</a> to keep track of and update node sources in the Kubernetes API. We can observe the updated node condition on the status field via kubectl:</p>
+	<pre class="language-bash"><code class="language-bash">$ kubectl get node worker1a -o json | jq '.status.conditions[] | select(.type | test("^AlertManager"))'
 {
   "lastHeartbeatTime": "2021-05-11T03:31:20Z",
   "lastTransitionTime": "2021-05-11T03:26:53Z",
@@ -171,14 +198,12 @@ CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a 
   "reason": "AlertIsFiring",
   "status": "True",
   "type": "AlertManager_CalicoTooManyInterfacesEarly"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>One important note is Sciuro added the AlertManager_ prefix to the node condition type to prevent conflicts with other node condition types. For example, DiskPressure, a kubelet managed condition, could also be an alert name. Sciuro will also properly update heartbeat and transition times to reflect when it first saw the alert and its last update. With node conditions synchronized by Sciuro, remediation can take place via one of the existing tools. As mentioned previously we are using a modified version of Kured for now.</p>
 	<p>We’re happy to announce that we’ve open sourced Sciuro, and it can be found on <a href="https://github.com/cloudflare/sciuro">GitHub</a> where you can read the code, find the deployment instructions, or open a Pull Request for changes.</p>
-	<h2 id="managing-node-uptime">Managing Node Uptime</h2>
-	<p>While we began using automatic node remediation for obvious problems, we’ve expanded its purpose to additionally keep node uptime low. Low node uptime is desirable to further reduce drift on nodes, keep the node initialization process well-oiled, and encourage the best deployment practices on the Kubernetes clusters. To expand on the last point, services that are deployed with best practices and in a high availability fashion should see negligible impact when a single node leaves the cluster. However, services that are not deployed with best practices will most likely have problems especially if they rely on singleton pods. By draining nodes more frequently, it introduces regular chaos that encourages best practices. To enable this with automatic node remediation the following alert was defined:</p><!--kg-card-begin: markdown-->
-	<pre><code>- alert: WorkerUptimeTooHigh
+	<h2>Managing Node Uptime</h2>
+	<p>While we began using automatic node remediation for obvious problems, we’ve expanded its purpose to additionally keep node uptime low. Low node uptime is desirable to further reduce drift on nodes, keep the node initialization process well-oiled, and encourage the best deployment practices on the Kubernetes clusters. To expand on the last point, services that are deployed with best practices and in a high availability fashion should see negligible impact when a single node leaves the cluster. However, services that are not deployed with best practices will most likely have problems especially if they rely on singleton pods. By draining nodes more frequently, it introduces regular chaos that encourages best practices. To enable this with automatic node remediation the following alert was defined:</p>
+	<pre class="language-bash"><code class="language-bash">- alert: WorkerUptimeTooHigh
   expr: |
     (
       (
@@ -197,23 +222,26 @@ CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a 
     )
   labels:
     priority: "9"
-    notify: node-condition-k8s
-</code></pre>
-	<!--kg-card-end: markdown-->
+    notify: node-condition-k8s</code></pre>
 	<p>There is a bit of juggling with the kube_node_roles metric in the above to isolate the alert to generic worker nodes, but at a high level it looks at node_boot_time_seconds, a metric from <a href="https://github.com/prometheus/node_exporter">prometheus node_exporter</a>. Again the notify label is configured to send to node conditions which kicks off the automatic node remediation. One further detail is the priority here is set to “9” which is of lower precedence than our other alerts. Note that the message field of the node condition is prefixed with the alert priority in brackets. This allows the remediation process to take priority into account when choosing which node to remediate first, which is important because Kured uses a lock to act on a single node at a time.</p>
-	<h2 id="wrapping-up">Wrapping Up</h2>
+	<h2>Wrapping Up</h2>
 	<p>In the past 30 days, we’ve used the above automatic node remediation process to action 571 nodes. That has saved our humans a considerable amount of time. We’ve also been able to reduce the time to repair for some issues as automatic remediation can act at all times of the day and with a faster response time.</p>
 	<p>As mentioned before, we’re open sourcing Sciuro and its code can be found on <a href="https://github.com/cloudflare/sciuro">GitHub</a>. We’re open to issues, suggestions, and pull requests. We do have some ideas for future improvements. For Sciuro, we may look to reduce latency which is mainly due to polling and potentially add a push model from Altermanager although this isn’t a need we’ve had yet. &nbsp;For the larger node remediation story, we hope to do an overhaul of the remediating component. As mentioned previously, we are currently using a fork of kured, but a future replacement component should include the following:</p>
 	<ul>
-		<li>Use out-of-band management interfaces to be able to shut down and power on nodes without a functional operating system.</li>
-		<li>Move from decentralized architecture to a centralized one that can integrate more complicated logic. This might include being able to act on entire failure domains in parallel.</li>
-		<li>Handle specialized nodes such as masters or storage nodes.</li>
+		<li>
+			<p>Use out-of-band management interfaces to be able to shut down and power on nodes without a functional operating system.</p>
+		</li>
+		<li>
+			<p>Move from decentralized architecture to a centralized one that can integrate more complicated logic. This might include being able to act on entire failure domains in parallel.</p>
+		</li>
+		<li>
+			<p>Handle specialized nodes such as masters or storage nodes.</p>
+		</li>
 	</ul>
-	<p>Finally, we’re looking for more people passionate about Kubernetes to <a href="https://boards.greenhouse.io/cloudflare/jobs/816059?gh_jid=816059">join our team</a>. Come help us push Kubernetes to the next level to serve Cloudflare’s many needs!</p><!--kg-card-begin: markdown-->
+	<p>Finally, we’re looking for more people passionate about Kubernetes to <a href="https://boards.greenhouse.io/cloudflare/jobs/816059?gh_jid=816059">join our team</a>. Come help us push Kubernetes to the next level to serve Cloudflare’s many needs!</p>
 	<hr>
-	<p><sup>1</sup>Exhaustion can be applied to hardware resources, kernel resources, or logical resources like the amount of logging being produced.<br>
-		<sup>2</sup>Nearly all Kubernetes objects have <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects">spec and status fields</a>. The status field is used to describe the current state of an object. For node resources, typically the kubelet manages a conditions field under the status field for reporting things like if the node is ready for servicing pods.<br>
+	<p><sup>1</sup>Exhaustion can be applied to hardware resources, kernel resources, or logical resources like the amount of logging being produced.</p>
+	<p><sup>2</sup>Nearly all Kubernetes objects have <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects">spec and status fields</a>. The status field is used to describe the current state of an object. For node resources, typically the kubelet manages a conditions field under the status field for reporting things like if the node is ready for servicing pods.
 		<sup>3</sup>The format of the following alert is documented on <a href="https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules">Prometheus Alerting Rules</a>.
 	</p>
-	<!--kg-card-end: markdown-->
 </div>

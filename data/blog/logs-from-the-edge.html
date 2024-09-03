@@ -1,11 +1,15 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22EHOfwq4HTxAYc28d7SFV/974b5d12c4b6745f06815f001739b1b1/logs-from-the-edge.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>With <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Cloudflare Workers</a>, our JavaScript environment at the edge, it is possible to send traffic logs to arbitrary locations. In this post we are going to discuss an example Worker implementation on how to achieve this. So if you are building or maintaining your own traffic logging/analytics environment, read on.</p>
 	<p>To build the underlying script we are going to leverage sub requests. Sub requests, which can be spawned from the initial HTTP/S request, can be used to aggregate and compose a response from several back end services, or, like in the example discussed here, to post data to a specific endpoint. Sub requests can be made asynchronously and after the initial request has been fully served to avoid adding unnecessary latency to the main request.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/logs.jpg" alt="logs" loading="lazy"></p>
-	<h3 id="theworkercode">The Worker Code</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ky2AOpjSfW9fZY5cLt9iy/6e71e0b52a3a3e42188f2cc18493dccf/logs.jpg" alt="logs" class="kg-image" width="3072" height="2048" loading="lazy">
+
+	</figure>
+	<h3>The Worker Code</h3>
 	<p>In this example we assume an <a href="https://www.elastic.co/products">Elastic stack</a> has been set up at <code>elk.example.com</code> and has been configured to receive via HTTP/S <code>PUT</code> requests a number of fields for each log line. The full script that we are going to look at can be found below:</p>
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(fetchAndLog(event));
 })
 
@@ -42,10 +46,9 @@ async function logToElk(request, response) {
       'Content-Type': 'application/json',
     })
   })
-}
-</code></pre>
+}</code></pre>
 	<p>Let's look at the script in a little more detail:</p>
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(fetchAndLog(event));
 })
 
@@ -53,11 +56,10 @@ async function fetchAndLog(event) {
   const response = await fetch(event.request);
   event.waitUntil(logToElk(event.request, response));
   return response;
-}
-</code></pre>
+}</code></pre>
 	<p>At the start of the script we are listening to all request events, and on each request, we are calling the <code>fetchAndLog</code> function. This function will proxy the request as is and asynchronously call the <code>logToElk</code> function that will post a log line to our ELK stack. As this function is executed asynchronously, delays while logging to ELK will not affect the original request.</p>
 	<p>Let's take a deeper look at the <code>logToElk</code> function.</p>
-	<pre><code class="language-javascript">var ray  = request.headers.get('cf-ray') || '';
+	<pre class="language-javascript"><code class="language-javascript">var ray  = request.headers.get('cf-ray') || '';
 var id   = ray.slice(0, -4);
 var data = {
   'timestamp':  Date.now(),
@@ -73,29 +75,30 @@ var data = {
   'tlsVersion': request.cf.tlsVersion || '',
   'tlsCipher':  request.cf.tlsCipher || '',
   'status':     response.status,
-};
-</code></pre>
+};</code></pre>
 	<p>The first part is collecting the data we wish to log. Some of these fields are part of the standard fields of any HTTP request (e.g. the URL, the HTTP method etc.), however, we are also adding fields specific to Cloudflare such as the ray ID (a unique identifier of any HTTP request proxying via Cloudflare), the country code as provided by Cloudflare IP to country logic, and the PoP/colo ID that the request is hitting.</p>
-	<pre><code class="language-javascript">var url = "https://elk.example.com/weblogs/logs/" + id + " pipeline=weblogs&amp;pretty"
+	<pre class="language-javascript"><code class="language-javascript">var url = "https://elk.example.com/weblogs/logs/" + id + " pipeline=weblogs&amp;pretty"
 await fetch(url, {
   method: 'PUT',
   body: JSON.stringify(data),
   headers: new Headers({
     'Content-Type': 'application/json',
   })
-})
-</code></pre>
+})</code></pre>
 	<p>Once we have all the fields we wish to log saved in our <code>data</code> variable, we need to perform a sub request to <code>PUT</code> the log line to our backend ELK stack. By calling the <code>fetch</code> function we are initiating a new HTTP request for which we are specifying the request method, the body and additional headers as expected by the ELK stack (in this case we are <code>PUT</code>ing JSON content).</p>
 	<p>And that is it, with a small Worker script you can import Cloudflare traffic logs into your ELK stack in real time. If you found this useful we also talked about <a href="https://blog.cloudflare.com/dogfooding-edge-workers">logging events and alerts to Sentry via workers</a> in the past, and community members have also shared <a href="https://community.cloudflare.com/t/simple-log-collector-worker/40954">similar methods for other logging tools such as logdna</a>.</p>
-	<h4 id="makingitbetterwithargotunnelandaccess">Making it better with Argo Tunnel and Access</h4>
+	<h4>Making it better with Argo Tunnel and Access</h4>
 	<p>As an additional improvement it is worth noting that an Elastic Stack uses <a href="https://www.elastic.co/webinars/getting-started-kibana">Kibana</a> as a front end visualisation interface available over HTTP/S. The Kibana endpoint (let's assume <code>kibana.example.com</code>) can also be proxied via Cloudflare, but it is normally used only internally within an organization. The origin therefore needs to be protected and made accessible only to colleagues.</p>
 	<p>We can use two Cloudflare features to improve the Kibana deployment:</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> allows the Kibana origin to reach out directly to Cloudflare, avoiding the need of a publicly accessible IP address or hostname;</li>
-		<li><a href="https://www.cloudflare.com/products/cloudflare-access">Cloudflare Access</a> allows you to integrate Cloudflare with your Identity and Access Management tool, and define rules that specify which users or groups have access to the Kibana instance;</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> allows the Kibana origin to reach out directly to Cloudflare, avoiding the need of a publicly accessible IP address or hostname;</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/cloudflare-access">Cloudflare Access</a> allows you to integrate Cloudflare with your Identity and Access Management tool, and define rules that specify which users or groups have access to the Kibana instance;</p>
+		</li>
 	</ul>
-	<h3 id="logsforeveryone">Logs for Everyone</h3>
+	<h3>Logs for Everyone</h3>
 	<p>Before we launched Workers, retrieving raw logs from Cloudflare was only available to enterprise customers. With a little technical effort you can now start receiving logs from the edge by leveraging Workers regardless of which plan you are using. Workers are available starting on a pay per usage model and the ELK stack is open source.</p>
 	<p>Enterprise customers can still retrieve raw traffic logs with our Enterprise Log Share (ELS) feature. If ELS is turned on, all requests for the chosen application will be logged and stored on Cloudflare infrastructure. The logs can be downloaded when required via a <a href="https://support.cloudflare.com/hc/en-us/articles/216672448-Enterprise-Log-Share-Logpull-REST-API">RESTful API</a> or pushed directly to Amazon S3 or Google Cloud (soon also Microsoft Azure) for further processing in your favorite log analysis tool. Logs with ELS are available within 10 minutes of the request being processed at the edge regardless of location, and they will have a number of additional fields that are not yet available to the Worker environment. ELS also guarantees log delivery and retention periods and allows you not to worry about load and storage.</p>
-	<!--kg-card-end: markdown-->
 </div>

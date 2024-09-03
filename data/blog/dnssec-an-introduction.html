@@ -1,122 +1,175 @@
-<div class="mb2 gray5">13 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tiVTrx38FP4aC2EkPvGY3/be5005f6c396f4f55a57b48e9e9d0c3a/dnssec-an-introduction.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>At CloudFlare our mission is to help build a better Internet. Part of this effort includes making web sites faster, more reliable, and more trustworthy. The obvious first choice in protocols to help make websites more secure is HTTPS. CloudFlare’s latest product—<a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>—helps web site operators provide a trustworthy browsing experience for their site visitors by giving their site HTTPS support for free. In this blog post we look at another protocol, DNS, and explore one proposal to improve its trustworthiness: <a href="https://www.cloudflare.com/dns/dnssec">DNSSEC</a>.</p>
-	<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> is one of the pillars of authority on the Internet. DNS is used to translate <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain names</a> (like www.cloudflare.com) to numeric Internet addresses (like 198.41.214.163)—it’s often referred to as the “phone book of the Internet”.</p>
+	<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> is one of the pillars of authority on the Internet. DNS is used to translate domain names (like <a href="https://www.cloudflare.com">www.cloudflare.com</a>) to numeric Internet addresses (like 198.41.214.163)—it’s often referred to as the “phone book of the Internet”.</p>
 	<p>DNSSEC is a set of security extensions to DNS that provides the means for authenticating DNS records. CloudFlare is planning to introduce DNSSEC in the next six months, and has brought <a href="https://twitter.com/OGudm">Olafur Gudmundsson</a>, one of the inventors of DNSSEC, on board to help lead the project.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/4607090398_3621af5fdc_z.jpg" alt="" loading="lazy"><br>
-		<small>CC BY 2.0 by <a href="https://www.flickr.com/photos/walkingsf">Eric Fischer</a></small>
-	</p>
-	<h4 id="introduction">Introduction</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zkxemCDLDPoVFeuGIKDZ9/bd72c4b008a2a0ed3d6190b38f081076/4607090398_3621af5fdc_z.jpg" alt="" class="kg-image" width="479" height="640" loading="lazy">
+
+	</figure>
+	<p>CC BY 2.0 by <a href="https://www.flickr.com/photos/walkingsf">Eric Fischer</a></p>
+	<h4>Introduction</h4>
 	<p>The Domain Name System (DNS) is one of the oldest and most fundamental components of the modern Internet. As the mechanism that maps domain names to Internet Protocol (IP) addresses, it provides a human-readable layer to navigate the millions of machines and devices on the Internet. In the early 1980s, when DNS was designed, there was no consideration for strong security mechanisms in the protocol. Computers at that time were underpowered compared with today’s machines, public key cryptography was a relatively new concept and highly regulated, and the network was much smaller, with fewer participants who were relatively well known and trusted. As the network grew and evolved, DNS remained unchanged as an insecure and unauthenticated protocol.</p>
 	<p>In 1993, the IETF started a public discussion around how DNS could be made more trustworthy. Eventually, a set of extensions to DNS, called Domain Name System Security Extensions (DNSSEC), were settled on, and formally published in 2005. These extensions replaced earlier proposals as a definitive way forward for securing DNS. Though it’s been almost a decade since this publication, DNSSEC is still far from mainstream adoption.</p>
 	<p>There are several catalysts pushing DNSSEC adoption, one of which is Dan Kaminsky’s <a href="https://kb.isc.org/article/AA-00924/0/CVE-2008-1447%3A-DNS-Cache-Poisoning-Issue-Kaminsky-bug.html">cache poisoning attack from 2008</a>. This attack highlighted the significant trust issues in traditional DNS, and how DNSSEC is well positioned to solve them. However, even after a significant amount of work, adoption is lagging — there are several factors holding DNSSEC adoption back. Among them are network operators that prefer stability to complexity (for good reason). Another difficulty with DNSSEC adoption is that there is no universal consensus around whether DNSSEC is the right tool to secure the DNS.</p>
 	<p>In this post, we will explore the inherent insecurity of DNS and how DNSSEC can be used to improve trust in this fundamental part of the Internet.</p>
-	<h4 id="dnsadistributedkeyvaluestorebeforeitwascool">DNS: A Distributed Key Value Store Before It Was Cool</h4>
+	<h4>DNS: A Distributed Key Value Store Before It Was Cool</h4>
 	<p>The concept of DNS is simple: it’s a global database of information about domain names. It’s the Internet’s phone book.</p>
-	<p>If a client wants to connect to an address such as ‘www.example.com’ and needs to know which IP address corresponds to this address, they can ask DNS. Typically, all DNS messages are sent over <a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a>.</p>
-	<p>There are several types of Resource Records (RR) that DNS can answer questions about. One of the most important RRs is called an “A record”, which stores the IPv4 address associated with the domain. To find out the value of any record for a given domain, you can ask a DNS resolver. For example, it you wanted the IP address for www.example.com, the question you could ask is:</p>
-	<p><em>“What is the A record for the domain www.example.com?”</em></p>
+	<p>If a client wants to connect to an address such as ‘<a href="http://www.example.xn--com-to0a">www.example.com’</a> and needs to know which IP address corresponds to this address, they can ask DNS. Typically, all DNS messages are sent over <a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a>.</p>
+	<p>There are several types of Resource Records (RR) that DNS can answer questions about. One of the most important RRs is called an “A record”, which stores the IPv4 address associated with the domain. To find out the value of any record for a given domain, you can ask a DNS resolver. For example, it you wanted the IP address for <a href="http://www.example.com">www.example.com</a>, the question you could ask is:</p>
+	<p><i>“What is the A record for the domain </i><a href="http://www.example.com/?%E2%80%9D="><i>www.example.com?”</i></a></p>
 	<p>The raw DNS request is a UDP packet as shown in Listing 1. This request contains an ID (0x27e1), some flags to indicate that it is a request, and the question itself.</p>
 	<p>The response for our raw DNS request is shown in Listing 2. This response comes with the matching ID (0x27e1), a copy of the original request echoed back, some flags (1/0/0), and an answer to the question: 93.184.216.119. It also contains a validity period, called time to live (TTL), to indicate how long the record is valid.</p>
 	<p>Raw DNS request:</p>
-	<pre><code>0x0000: 5ad4 0100 0001 0000 0000 0000 0765 7861 ‘............exa
-0x0010: 6d70 6c65 0363 6f6d 0000 0100 01        mple.com.....
-</code></pre>
-	<p>Wireshark’s interpretation:<br>
-		<img src="https://blog.cloudflare.com/content/images/2014/10/image06.jpg" alt="" loading="lazy">
-	</p>
+	<pre class="language-bash"><code class="language-bash">0x0000: 5ad4 0100 0001 0000 0000 0000 0765 7861 ‘............exa
+0x0010: 6d70 6c65 0363 6f6d 0000 0100 01        mple.com.....</code></pre>
+	<p>Wireshark’s interpretation:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GURnhrRCCEuvIerGPboU6/fcb3fce5611583a6d8c130211345fd35/image06.jpg" alt="" class="kg-image" width="1098" height="710" loading="lazy">
+
+	</figure>
 	<p>Raw DNS Response:</p>
-	<pre><code>0x0000: 51d4 8180 0001 0001 0000 0000 0765 7861 ‘............exa
+	<pre class="language-bash"><code class="language-bash">0x0000: 51d4 8180 0001 0001 0000 0000 0765 7861 ‘............exa
 0x0010: 6d70 6c65 0363 6f6d 0000 0100 01c0 0c00 mple.com........
-0x0020: 0100 0100 0031 f500 045d b8d8 77 .....1...]..w
-</code></pre>
-	<p>Wireshark’s interpretation:<br>
-		<img src="https://blog.cloudflare.com/content/images/2014/10/image04.jpg" alt="" loading="lazy">
-	</p>
-	<h3 id="howdnsworks">How DNS works</h3>
+0x0020: 0100 0100 0031 f500 045d b8d8 77 .....1...]..w</code></pre>
+	<p>Wireshark’s interpretation:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AbDNKjACFw1vhVp8Jd8tR/97c6ea9e39967eb0714c518f3c4d95b8/image04.jpg" alt="" class="kg-image" width="1600" height="984" loading="lazy">
+
+	</figure>
+	<h3>How DNS works</h3>
 	<p>DNS is a distributed key/value database. The values returned can in theory be anything but in practice need to fit into well known types, such as addresses, mail exchanges, sever lists, free format text records etc. The keys consist of a name, type, and class. The name space is hierarchical (see below) and DNS information is “published” by Authoritative Servers. DNS Resolvers will locate the information requested by asking the appropriate authoritative servers by following the naming hierarchy from one Authoritative DNS server to the next one. The ISP typically provides a Recursive Resolver that will perform resolution on behalf of customers. You can also use a public resolver like the ones provided by <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">Google</a> (8.8.8.8, 8.8.4.4) or OpenDNS (208.67.222.222, 208.67.220.220).</p>
 	<p>Web-enabled applications like browsers use something called a Stub Resolver to interact with the DNS. Once the application or browser has obtained the IP address of the website, they can access it using the HTTP or HTTPS protocols.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/image02.jpg" alt="" loading="lazy"></p>
-	<h4 id="thednsnamespace">The DNS Namespace</h4>
-	<p>The hierarchy of DNS namespace is well defined: DNS names consist of labels that are separated by dots. Thus “www.example.com.” consists of 4 labels “www” (leaf) “example” (domain) “com” (TLD) and “.” i.e. the root. Resolvers search by starting at the longest match of the labels, i.e., if it only knows about the root then, it starts the search there. If they know about .com they start there.</p>
-	<p>There are <a href="http://www.iana.org/domains/root/servers">thirteen</a> rootservers maintained by 12 different organizations. The root zone is maintained by IANA, which is a part of ICANN, and is published by Verisign which operates two of the root servers. The contents of the root zone is a list of the authoritative servers for each TLD, but not much else. Thus, if a root DNS server receives a query for “www.example.com” it will answer with what is called a referral to “.com” resolvers. The answer from the root server contains a set of records called NS (Name Server). These records list the nameservers which should have more information about the requested zone, i.e., the “.com” servers.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CG63VKliGOBNhLXn5iXKu/0dc502d69ddddfdb209384b64b898657/image02.jpg" alt="" class="kg-image" width="1600" height="911" loading="lazy">
+
+	</figure>
+	<h4>The DNS Namespace</h4>
+	<p>The hierarchy of DNS namespace is well defined: DNS names consist of labels that are separated by dots. Thus “<a href="http://www.example.com.xn--ivg">www.example.com.”</a> consists of 4 labels “www” (leaf) “example” (domain) “com” (TLD) and “.” i.e. the root. Resolvers search by starting at the longest match of the labels, i.e., if it only knows about the root then, it starts the search there. If they know about .com they start there.</p>
+	<p>There are <a href="http://www.iana.org/domains/root/servers">thirteen</a> rootservers maintained by 12 different organizations. The root zone is maintained by IANA, which is a part of ICANN, and is published by Verisign which operates two of the root servers. The contents of the root zone is a list of the authoritative servers for each TLD, but not much else. Thus, if a root DNS server receives a query for “<a href="http://www.example.xn--com-9o0a">www.example.com”</a> it will answer with what is called a referral to “.com” resolvers. The answer from the root server contains a set of records called NS (Name Server). These records list the nameservers which should have more information about the requested zone, i.e., the “.com” servers.</p>
 	<p>Each one of the TLDs authoritative nameservers knows about the authoritative nameservers for the domains under them (example.com, cloudflare.com, google.com, etc.). Following this downward, you will eventually get to the server that can answer queries about records for the name you are looking for.</p>
 	<p>DNS is the largest distributed delegated database in the world. Delegated means that each name can have a different authority that can maintain the information, and any changes are reflected in the DNS. For this reason, it’s important that resolvers don’t keep what they learn forever. Similarly, it’s important that busy resolvers can reuse the information they have fetched. This reuse of information is accomplished by placing a TTL on every DNS record which tells resolvers how long they can reuse the records to answer questions. When a resolver returns a cached value, it adjusts the TTL downward reflecting how long the data has resided in its cache.</p>
-	<h4 id="onpathattackerattacksondns">On-path attacker attacks on DNS</h4>
+	<h4>On-path attacker attacks on DNS</h4>
 	<p>In March of 2014, the government of Turkey decided to <a href="https://www.theguardian.com/world/2014/mar/21/turkey-blocks-twitter-prime-minister">block Twitter</a> inside the country. They did so at the DNS level by instructing Turkish ISP’s to return specified records for twitter.com and send them to a Turkish government web site. People quickly realized what was happening, and, by using foreign recursive resolvers, they could bypass the restrictions and get continue to get Twitter’s true address. This inspired citizens to spray paint Google’s public DNS server address on buildings and public spaces.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/image05.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hopT72do5czRnY9Z9ofEy/68d44b0d43d845c4fa130ad2afe3f607/image05.jpg" alt="" class="kg-image" width="624" height="351" loading="lazy">
+
+	</figure>
 	<p>This incident in Turkey illustrates the first major security problem with DNS: there is no authentication. Any party with a privileged network position (e.g. they control a router that sits between two sides of a connection) is able to modify DNS records to point to wherever they choose. This is the so-called “on-path attacker attack”, and DNS is vulnerable.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/image01.jpg" alt="" loading="lazy"></p>
-	<h4 id="kaminskysattack">Kaminsky’s Attack</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53udd7AkzbcE2s62nABtIl/95678e7d8d3b6b7cf92d1c8d3a568103/image01.jpg" alt="" class="kg-image" width="1438" height="216" loading="lazy">
+
+	</figure>
+	<h4>Kaminsky’s Attack</h4>
 	<p>In 2008, Dan Kaminsky revealed <a href="http://spectrum.ieee.org/images/oct08/images/phish03.pdf">an attack</a> on the DNS system which can trick a DNS recursive resolvers into storing incorrect DNS records. Once the nameserver has stored the incorrect response, it will happily return it to everyone who asks until the cache entry expires (usually dictated by the TTL). This is so-called “DNS poisoning” attack could allow arbitrary attacker to trick DNS, and redirect web browsers (and other applications) to incorrect servers allowing them to hijack traffic.</p>
 	<p>DNS poisoning attacks are simple to describe, but difficult to pull off. Take the sequence of events:</p>
 	<ul>
-		<li>Client queries recursive resolver</li>
-		<li>Recursive resolver queries authoritative server</li>
-		<li>Authoritative server replies to recursive resolver</li>
-		<li>Recursive resolver replies with an answer to the client</li>
+		<li>
+			<p>Client queries recursive resolver</p>
+		</li>
+		<li>
+			<p>Recursive resolver queries authoritative server</p>
+		</li>
+		<li>
+			<p>Authoritative server replies to recursive resolver</p>
+		</li>
+		<li>
+			<p>Recursive resolver replies with an answer to the client</p>
+		</li>
 	</ul>
 	<p>Kaminsky’s attack relies on the fact that UDP is a stateless protocol and that source IP addresses are blindly trusted. Each of the requests and responses described here is a single UDP request containing to and from IP addresses. Any host can in theory forge the source address on UDP message making look like it came from the expected source. Any attacker sitting on a network that does not filter outbound packets can construct a UDP message that says it’s from the authoritative server and send to the recursive resolver.</p>
 	<p>Of the requests above, message number 3 is a good target to attack. This is because the recursive resolver will accept the first answer to its question that matches its query. So, if you can answer it faster than the authoritative server, the recursive resolver will accept your answer as the truth. This is the core of the attack:</p>
 	<ul>
-		<li>Pick a domain whose DNS entries you want to hijack.</li>
-		<li>Send a request to the recursive resolver for the record you want to poison.</li>
-		<li>Send many fake UDP responses pretending to be the authoritative server with the answer of your choosing (i.e. point the A record to an IP you control).</li>
+		<li>
+			<p>Pick a domain whose DNS entries you want to hijack.</p>
+		</li>
+		<li>
+			<p>Send a request to the recursive resolver for the record you want to poison.</p>
+		</li>
+		<li>
+			<p>Send many fake UDP responses pretending to be the authoritative server with the answer of your choosing (i.e. point the A record to an IP you control).</p>
+		</li>
 	</ul>
 	<p>If one of your malicious—acceptable—responses arrives ahead of the real response, the recursive resolver will believe your record and cache it for as long as the TTL is set. Then any other clients asking for the poisoned record will be directed to your malicious servers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/image03.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QX9I12HqudIEAUiZ6Cs3x/073a21d078b704254c545228bdaf3982/image03.jpg" alt="" class="kg-image" width="1528" height="656" loading="lazy">
+
+	</figure>
 	<p>There are some complications that make this harder than it sounds in practice. For example, you have to guess:</p>
 	<ul>
-		<li>The request ID—a 16-bit number</li>
-		<li>The authoritative server address that the query was sent to</li>
-		<li>The recursive resolver address used to send the query</li>
-		<li>The UDP port used to send the query to the authoritative server</li>
+		<li>
+			<p>The request ID—a 16-bit number</p>
+		</li>
+		<li>
+			<p>The authoritative server address that the query was sent to</p>
+		</li>
+		<li>
+			<p>The recursive resolver address used to send the query</p>
+		</li>
+		<li>
+			<p>The UDP port used to send the query to the authoritative server</p>
+		</li>
 	</ul>
 	<p>When Kaminsky’s attack was originally proposed, many of these values were easily guessable or discoverable, thus making DNS poisoning a real threat. Since then, request ID, port randomization, and source address rotation have made this specific attack more difficult to pull off—but not impossible. DNS cache poisoning is a real issue, and has been reported in the wild as recently as <a href="https://www.virusbtn.com/blog/2014/09_12.xml">September 2014</a>.</p>
 	<p>The fundamental issue that allows this kind of attack to happen is that there is no way for the resolver to validate that the records are what they are supposed to be. Note: if the attacker is in position to see the query traffic from the recursive resolver, it has all the information it needs to forge answers (see <a href="http://www.wired.com/2014/03/quantum">http://www.wired.com/2014/03/quantum/</a>).</p>
-	<h4 id="dnssec">DNSSEC</h4>
-	<p>The security extensions to DNS add protection for DNS records, and allow the resolvers and applications to authenticate the data received. These powerful additions will mean that all answers from DNS can be trusted. Earlier we described how DNS resolution starts at the root nameserver, and works down (e.g. for “www.example.com” it starts at the root server, then “com”, then “example.com”). This is the same way that trust is conferred via DNSSEC. The DNS root is the definitive root of trust, and a chain of trust is built to the root from any DNS entry. This is a lot like the chain of trust used to validate TLS/SSL certificates, except that, rather than many trusted root certificates, there is one trusted root key managed by the DNS root maintainer IANA.</p>
+	<h4>DNSSEC</h4>
+	<p>The security extensions to DNS add protection for DNS records, and allow the resolvers and applications to authenticate the data received. These powerful additions will mean that all answers from DNS can be trusted. Earlier we described how DNS resolution starts at the root nameserver, and works down (e.g. for “<a href="http://www.example.xn--com-9o0a">www.example.com”</a> it starts at the root server, then “com”, then “example.com”). This is the same way that trust is conferred via DNSSEC. The DNS root is the definitive root of trust, and a chain of trust is built to the root from any DNS entry. This is a lot like the chain of trust used to validate TLS/SSL certificates, except that, rather than many trusted root certificates, there is one trusted root key managed by the DNS root maintainer IANA.</p>
 	<p>The point of DNSSEC is to provide a way for DNS records to be trusted by whoever receives them. The key innovation of DNSSEC is the use of public key cryptography to ensure that DNS records are authentic. DNSSEC not only allows a DNS server to prove the authenticity of the records it returns. It also allows the assertion of “non-existence of records”.</p>
 	<p>The DNSSEC trust chain is a sequence of records that identify either a public key or a signature of a set of resource records. The root of this chain of trust is the root key which is maintained and managed by the operators of the DNS root. DNSSEC is defined by the IETF in RFCs <a href="http://tools.ietf.org/html/rfc4033">4033</a>, <a href="http://tools.ietf.org/html/rfc4034">4034</a>, and <a href="http://tools.ietf.org/html/rfc4035">4035</a>.</p>
 	<p>There are several important new record types:</p>
 	<ul>
-		<li>DNSKEY: a public key, used to sign a set of resource records (RRset).</li>
-		<li>DS: delegation signer, a hash of a key.</li>
-		<li>RRSIG: a signature of a RRset that share name/type/class.</li>
+		<li>
+			<p>DNSKEY: a public key, used to sign a set of resource records (RRset).</p>
+		</li>
+		<li>
+			<p>DS: delegation signer, a hash of a key.</p>
+		</li>
+		<li>
+			<p>RRSIG: a signature of a RRset that share name/type/class.</p>
+		</li>
 	</ul>
 	<p>A DNSKEY record is a cryptographic public key, DNSKEYs can be classified into two roles, which can be handled by separate keys or a single key</p>
 	<ul>
-		<li>KSK (key signing key): used to sign DNSKEY records.</li>
-		<li>ZSK (zone signing key): used to sign all other records in the domain is authoritative for.</li>
+		<li>
+			<p>KSK (key signing key): used to sign DNSKEY records.</p>
+		</li>
+		<li>
+			<p>ZSK (zone signing key): used to sign all other records in the domain is authoritative for.</p>
+		</li>
 	</ul>
 	<p>For a given domain name and question, there are a set of answers. For example, if you ask for the A record for cloudflare.com, you get a set of A records as the answer:</p>
-	<pre><code>cloudflare.com.            285    IN    A    198.41.212.157
-cloudflare.com.            285    IN    A    198.41.213.157
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">cloudflare.com.            285    IN    A    198.41.212.157
+cloudflare.com.            285    IN    A    198.41.213.157</code></pre>
 	<p>The set of all records of a given type for a domain is called an RRset. An RRSIG (Resource Record SIGnature) is essentially a digital signature for an RRset. Each RRSIG is associated with a DNSKEY. The RRset of DNSKEYs are signed with the key signing key (KSK). All others are signed with the zone signing key (ZSK). Trust is conferred from the DNSKEY to the record though the RRSIG: if you trust a DNSKEY, then you can trust the records that are correctly signed by that key.</p>
 	<p>However, the domain’s KSK is signed by itself, making it difficult to trust. The way around this is to walk the domain up to the next/parent zone. To verify that the DNSKEY for example.com is valid, you have to ask the .com authoritative server. This is where the DS record comes into play: it acts as a bridge of trust to the parent level of the DNS.</p>
 	<p>The DS record is a hash of a DNSKEY. The .com zone stores this record for each zone that has supplied DNSSEC keying information. The DS record is part of an RRset in the zone for .com and therefore has an associated RRSIG. This time, the RRset is signed by the .com ZSK. The .com DNSKEY RRset is signed by the .com KSK.</p>
 	<p>The ultimate root of trust is the KSK DNSKEY for the DNS root. This key is universally known and published.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/image00.jpg" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/220BuUdKXB1gpWKEHjffBo/08e2792a2bb89c44672ef53df6f4bb01/image00.jpg" alt="" class="kg-image" width="1600" height="699" loading="lazy">
+
+	</figure>
 	<p>Here is the DNSKEY root KSK that was published in August 2010 and will be used until sometime in 2015 or 2016 (encoded in base64):</p>
-	<pre><code>AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcC jFFVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJR kxoXbfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efu cp2gaDX6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA 6G3LQpzW5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQd XfZ57relSQageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhY B4N7knNnulqQxA+Uk1ihz0=
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcC jFFVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJR kxoXbfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efu cp2gaDX6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA 6G3LQpzW5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQd XfZ57relSQageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhY B4N7knNnulqQxA+Uk1ihz0=</code></pre>
 	<p>By following the chain of DNSKEY, DS and RRSIG records to the root, any record can be trusted.</p>
 	<p>These records are enough to prove the integrity of a resource record, but something more is needed in order to prove that a record does not exist. This is where two additional record types, NSEC and NSEC3, come into play.</p>
 	<p>If a DNS authoritative server knows there is no record for a specific request, it has a way to respond to such requests. When the name asked for does not exist, it returns a message that has return code (RCODE) NXDOMAIN. When the name exists, but the requested type does not, it returns a NODATA response, i.e., empty answer.</p>
 	<p>These non-existence answers are unauthenticated and could be forged by a third party just like any other DNS response. However, DNSSEC solves this problem by creating a record type that expresses what names exist, and what types reside at each name. This record is called NSEC. An NSEC can be signed by DNSSEC, and validated up to the root. Typically, NSEC is used to cover gaps between all the domains with records in the zone. In most cases, this effectively doubles the number of records in the zone, but allows an authoritative nameserver to reply with a signed response for any question.</p>
-	<p>The zone ietf.org. uses NSEC records. Asking for ‘trustee.ietf.org’ would give you a positive answer with an IP address and an RRSIG record. Asking for ‘tustee.ietf.org’ would give you a negative answer ‘there are no name between trustee.ietf.org and www.ietf.org’, with a corresponding RRSIG.<br>
-		For example:</p>
+	<p>The zone ietf.org. uses NSEC records. Asking for ‘trustee.ietf.org’ would give you a positive answer with an IP address and an RRSIG record. Asking for ‘tustee.ietf.org’ would give you a negative answer ‘there are no name between trustee.ietf.org and <a href="http://www.ietf.xn--org-to0a">www.ietf.org’</a>, with a corresponding RRSIG.For example:</p>
 	<p>Question:</p>
-	<pre><code>tustee.ietf.org/A
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">tustee.ietf.org/A</code></pre>
 	<p>Answer:</p>
-	<pre><code>trustee.ietf.org.        1683        IN        NSEC        www.ietf.org. A MX AAAA RRSIG NSEC
-</code></pre>
-	<p>This means that there are no names the zone in between trustee.ietf.org and www.ietf.org, when sorted alphabetically, effectively proving that tustee.ietf.org does not exist.</p>
+	<pre class="language-bash"><code class="language-bash">trustee.ietf.org.        1683        IN        NSEC        www.ietf.org. A MX AAAA RRSIG NSEC</code></pre>
+	<p>This means that there are no names the zone in between trustee.ietf.org and <a href="http://www.ietf.org">www.ietf.org</a>, when sorted alphabetically, effectively proving that tustee.ietf.org does not exist.</p>
 	<p><a href="http://www.ietf.org/rfc/rfc5155.txt">RFC5155</a> defines a obufscated way to deny existence via the NSEC3 record. NSEC3 uses similar logic, but for the names are hashed. Asking for examplf.com (e comes before f) would give you ‘there are no records with hashes between A and B’, where A is the next closest hash lexicographically before the hash of examplf.com, and B is the next closest after.</p>
-	<h4 id="conclusion">Conclusion</h4>
+	<h4>Conclusion</h4>
 	<p>This post is the first in a series of posts about how Cloudflare does DNS, and our DNS plans. In future posts, we will go into detail about some of advantages and disadvantages of DNSSEC. We will also discuss useful extensions to DNSSEC, like DANE, and how these can be used to secure websites and provide a much stronger form of trust than the certificate authority system. We will also examine how far the effort has come in the decade since the technology was standardized using adoption statistics and trends.</p>
 	<p>DNSSEC is a valuable tool for improving the trust and integrity of DNS, the backbone of the modern Internet. DNSSEC deployment is still in its infancy, less than five per cent of all zones had been signed as of mid-2014. Though it has its detractors, adoption is increasing and DNSSEC is becoming a core tool in the development of a safer and more trustworthy Internet and CloudFlare is committed to supporting it.</p>
-	<!--kg-card-end: markdown-->
 </div>

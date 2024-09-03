@@ -1,15 +1,21 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FchovWrS8ZXR7GJ9hxy8Q/c2015a1be5dcd6db8e02aafa4ae84423/protecting-everyone-from-wordpress-content-injection.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today a severe vulnerability was announced by the <a href="https://make.wordpress.org/core/2017/02/01/disclosure-of-additional-security-fix-in-wordpress-4-7-2">WordPress Security Team</a> that allows unauthenticated users to change content on a site using unpatched (below version 4.7.2) WordPress.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/02/12977337115_19ea7233c8_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/quatar/12977337115/in/photolist-kLLfcD-m6QQ9K-q9ahzH-i6thGS-q5GUN3-o54g8R-dAqV34-pbwTN4-pdhTPx-pKEjxp-5AmXEB-ptJHXQ-bhTApi-pNfG3r-oYnMVT-nFpyp5-jVuJZ3-nAwiPG-r9uiAE-9CXRjW-9Cb3Nv-nVEfJP-rg6igk-hz2sEa-pd6xEL-HFSEAG-9Gg2t9-5KFn1C-puzSq6-rmxuj7-nziE1W-nMRZQJ-prTHRW-pcs5S3-fFmD5V-oZv9Pv-ejnMdk-p2DDVW-paNBh3-5Y1U3j-dV9aSt-niAXry-zvQxs-mUJVca-a8yq7r-75Qow8-nMS6ui-njbmKZ-9AZ5vw-k46KRT">image</a> by <a href="https://www.flickr.com/photos/quatar">Nicola Sap De Mitri</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/utL0SIRsc0DPLObX0eTgR/abf2f722e2acdff3f1903053382d45c1/12977337115_19ea7233c8_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/quatar/12977337115/in/photolist-kLLfcD-m6QQ9K-q9ahzH-i6thGS-q5GUN3-o54g8R-dAqV34-pbwTN4-pdhTPx-pKEjxp-5AmXEB-ptJHXQ-bhTApi-pNfG3r-oYnMVT-nFpyp5-jVuJZ3-nAwiPG-r9uiAE-9CXRjW-9Cb3Nv-nVEfJP-rg6igk-hz2sEa-pd6xEL-HFSEAG-9Gg2t9-5KFn1C-puzSq6-rmxuj7-nziE1W-nMRZQJ-prTHRW-pcs5S3-fFmD5V-oZv9Pv-ejnMdk-p2DDVW-paNBh3-5Y1U3j-dV9aSt-niAXry-zvQxs-mUJVca-a8yq7r-75Qow8-nMS6ui-njbmKZ-9AZ5vw-k46KRT">image</a> by <a href="https://www.flickr.com/photos/quatar">Nicola Sap De Mitri</a></p>
 	<p>The problem was <a href="https://blog.sucuri.net/2017/02/content-injection-vulnerability-wordpress-rest-api.html">found</a> by the team at Sucuri and reported to WordPress. The WordPress team worked with WAF vendors, including Cloudflare, to roll out protection before the patch became available.</p>
 	<p>Earlier this week we rolled out two rules to protect against exploitation of this issue (both types mentioned in the Sucuri blog post). We have been monitoring the situation and have not observed any attempts to exploit this vulnerability before it was announced publicly.</p>
 	<p>Customers on a paid plan will find two rules in WAF, WP0025A and WP0025B, that protect unpatched WordPress sites from this vulnerability. If the Cloudflare WordPress ruleset is enabled then these rules are automatically turned on and blocking.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/02/2017-02-01-16-15-38.png" alt="" loading="lazy"></p>
-	<h3 id="protectingeveryone">Protecting Everyone</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15B0FJXMnLA2X2AVP4QYwh/d71ba7bb95d4280190107eecaf9cac2f/2017-02-01-16-15-38.png" alt="" class="kg-image" width="893" height="102" loading="lazy">
+
+	</figure>
+	<h3>Protecting Everyone</h3>
 	<p>As we have in the past with other serious and critical vulnerabilities like <a href="https://blog.cloudflare.com/shellshock-protection-enabled-for-all-customers">Shellshock</a> and <a href="https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track">previous issues with JetPack</a>, we have enabled these two rules for our free customers as well.</p>
 	<p>Free customers who want full protection for their WordPress sites can upgrade to a <a href="https://www.cloudflare.com/plans">paid plan</a> and enable the Cloudflare WordPress ruleset in the <a href="https://www.cloudflare.com/waf">WAF</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

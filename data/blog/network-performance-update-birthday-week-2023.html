@@ -1,16 +1,24 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/Network-Performance-Update.png" class="kg-image" alt="Network performance update: Birthday Week 2023" loading="lazy" width="1600" height="900"></figure>
-	<p>We constantly measure our own network’s performance against other networks, look for ways to improve our performance compared to them, and share the results of our efforts. Since <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">June 2021</a>, we’ve been sharing benchmarking results we’ve run against other networks to see how we compare. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EJpTQifyL2qEZqp3vZ7XE/ab04589191fb6e4054da668016c2b35f/Network-Performance-Update.png" alt="Network performance update: Birthday Week 2023" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>We constantly measure our own network’s performance against other networks, look for ways to improve our performance compared to them, and share the results of our efforts. Since <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">June 2021</a>, we’ve been sharing benchmarking results we’ve run against other networks to see how we compare.</p>
 	<p>In this post we are going to share the most recent updates since our <a href="https://blog.cloudflare.com/speed-week-2023-network-performance-update">last post in June</a>, and tell you about our tools and processes that we use to monitor and improve our network performance.</p>
-	<h2 id="how-we-stack-up">How we stack up</h2>
+	<h2>How we stack up</h2>
 	<p>Since June 2021, we’ve been taking a close look at every single network and taking actions for the specific networks where we have some room for improvement. Cloudflare was already the fastest provider for most of the networks around the world (we define a network as country and AS number pair). Taking a closer look at the numbers; in July 2022, Cloudflare was ranked #1 in 33% of the networks and was within 2 ms (95th percentile TCP Connection Time) or 5% of the #1 provider for 8% of the networks that we measured. For reference, our closest competitor on that front was the fastest for 20% of networks.</p>
 	<p>As of August 30, 2023, Cloudflare is the fastest provider for 44% of networks—and was within 2 ms (95th percentile TCP Connection Time) or 5% of the fastest provider for 10% of the networks that we measured—whereas our closest competitor is now the fastest for 19% of networks.</p>
 	<p>Below is the change in percentage of networks in which each provider is the fastest plotted over time.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0-7.png" class="kg-image" alt="" loading="lazy" width="1600" height="988"></figure>
-	<p>Cloudflare is maintaining our steady growth in the percentage of networks where we’re the fastest. Despite the slight tick down the past couple of months, the trendline is still positive and with a higher rate of increase than other networks. </p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X2KyKbEtsy8LOpjF30SlK/26fa053657cab429328dbb3e4d1323de/pasted-image-0-7.png" alt="" class="kg-image" width="1600" height="988" loading="lazy">
+
+	</figure>
+	<p>Cloudflare is maintaining our steady growth in the percentage of networks where we’re the fastest. Despite the slight tick down the past couple of months, the trendline is still positive and with a higher rate of increase than other networks.</p>
 	<p>Now that we’ve reviewed how we stack up compared to other networks, let’s dig a little more into the other metrics we use to make us the fastest.</p>
-	<h2 id="our-tooling">Our tooling</h2>
+	<h2>Our tooling</h2>
 	<p>To provide insight into network performance, we use Real User Measurements (RUM) and fetch a small file from Cloudflare, <a href="https://www.cloudflare.com/cloudflare-vs-akamai">Akamai</a>, <a href="https://www.cloudflare.com/cloudflare-vs-cloudfront">Amazon CloudFront</a>, Fastly and Google Cloud CDN. Browsers around the world report the performance of those providers from the perspective of the end-user network they are on. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
 	<p>Using the RUM data, we are able to measure various performance metrics, such as TCP Connection Time, Time to First Byte (TTFB), Time to Last Byte (TTLB), for ourselves and other networks.</p>
 	<p>Let’s take a look at some of the metrics we monitor and what’s changed since our last blog in June.</p>
@@ -92,12 +100,24 @@
 	</table><!--kg-card-end: html-->
 	<p>Overall, these metrics align with what we saw above: Cloudflare is still the fastest provider in the most last mile networks, and while there has been slight changes in the month-to-month fluctuations, the overall trend shows us as being the fastest.</p>
 	<p>The second metric we monitor is our overall performance in each country. This gives us visibility into the countries or regions that we need to pay closer attention to and take action towards improving our performance. Those actions will be listed later. Orange indicates the countries that Cloudflare is the fastest provider based on the TCP Connection Time. Here’s how we look as of September 2023:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--1--7.png" class="kg-image" alt="" loading="lazy" width="1600" height="820"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59DUJVRDTbxRb9jQ3YA0p4/6903d8b3b6206c4e4d2752be2b6d1844/pasted-image-0--1--7.png" alt="" class="kg-image" width="1600" height="820" loading="lazy">
+
+	</figure>
 	<p>For comparison, this is what that map looks like from June 2023:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--2--5.png" class="kg-image" alt="" loading="lazy" width="1600" height="813"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/aM0Jq0XhJHKna8ScZ3cRn/09cc067e36f0fd4591b89d89932947cf/pasted-image-0--2--5.png" alt="" class="kg-image" width="1600" height="813" loading="lazy">
+
+	</figure>
 	<p>We’ve become faster in Iran and Paraguay, and in the few cases where we are no longer number 1, we are within 2ms of the fastest provider. In Brazil and Norway for example, we trail Fastly by only 1ms. In various countries in Africa, Amazon CloudFront pulled ahead but only by 2ms. We aim to fix that in the coming weeks and months and return to the #1 spot there also.</p>
 	<p>The third set of metrics we use are TCP Connection Time and TTLB. The number of networks where we are #1 in terms of 95th percentile TCP Connection Time is one of our key performance indicators. We actively monitor and work on improving that metric so that we are #1 in the most metrics for 95th percentile TCP Connection Time. For September 2023, we are still #1 in the most networks for TCP Connection Time, more than double the next best provider.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/pasted-image-0--3--7.png" class="kg-image" alt="" loading="lazy" width="1600" height="233"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0gQGWakPkLF2I1aj5SLD3/6fb2721e45a7bf4226872c02d9ed2da4/pasted-image-0--3--7.png" alt="" class="kg-image" width="1600" height="233" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -168,6 +188,6 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>The way we achieve these great results is by having our engineering teams constantly investigate the underlying reasons for degraded performance if there are any, and we track open work items until they are resolved.</p>
-	<h2 id="what%E2%80%99s-next">What’s next</h2>
+	<h2>What’s next</h2>
 	<p>We’re sharing our updates on our journey to become #1 everywhere so that you can see what goes into running the fastest network in the world. From here, our plan is the same as always: identify where we’re slower, fix it, and then tell you how we’ve gotten faster.</p>
 </div>

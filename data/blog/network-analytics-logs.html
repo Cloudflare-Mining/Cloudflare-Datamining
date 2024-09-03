@@ -1,13 +1,23 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-34.png" class="kg-image" alt="Integrating Network Analytics Logs with your SIEM dashboard" loading="lazy"></figure>
-	<p>We’re excited to announce the availability of Network Analytics Logs. <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a>, <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a>, <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a>, and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> customers on the Enterprise plan can feed packet samples directly into storage services, <a href="https://www.cloudflare.com/network-services/solutions/network-monitoring-tools">network monitoring tools</a> such as Kentik, or their <a href="https://www.cloudflare.com/learning/security/what-is-siem">Security Information Event Management (SIEM)</a> systems such as Splunk to gain near real-time visibility into network traffic and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>.</p>
-	<h2 id="what-s-included-in-the-logs">What’s included in the logs</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ugox5H0QYBj1irANBt0qr/14cea256622c35bed2c07e70871c9da5/image3-34.png" alt="Integrating Network Analytics Logs with your SIEM dashboard" class="kg-image" width="1987" height="1020" loading="lazy">
+
+	</figure>
+	<p>We’re excited to announce the availability of Network Analytics Logs. <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a>, <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a>, <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a>, and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> customers on the Enterprise plan can feed packet samples directly into storage services, network monitoring tools such as Kentik, or their <a href="https://www.cloudflare.com/learning/security/what-is-siem">Security Information Event Management (SIEM)</a> systems such as Splunk to gain near real-time visibility into network traffic and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>.</p>
+	<h2>What’s included in the logs</h2>
 	<p>By creating a Network Analytics Logs job, Cloudflare will continuously push logs of packet samples directly to the HTTP endpoint of your choice, including Websockets. The logs arrive in JSON format which makes them easy to parse, transform, and aggregate. The logs include packet samples of traffic dropped and passed by the following systems:</p>
 	<ol>
-		<li>Network-layer DDoS Protection Ruleset</li>
-		<li>Advanced TCP Protection</li>
-		<li>Magic Firewall</li>
+		<li>
+			<p>Network-layer DDoS Protection Ruleset</p>
+		</li>
+		<li>
+			<p>Advanced TCP Protection</p>
+		</li>
+		<li>
+			<p>Magic Firewall</p>
+		</li>
 	</ol>
 	<p>Note that not all mitigation systems are applicable to all Cloudflare services. Below is a table describing which mitigation service is applicable to which Cloudflare service:</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -95,77 +105,113 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Packets are processed by the mitigation systems in the order outlined above. Therefore, a packet that passed all three systems may produce three packet samples, one from each system. This can be very insightful when troubleshooting and wanting to understand where in the stack a packet was dropped. To avoid overcounting the total passed traffic, Magic Transit users should only take into consideration the passed packets from the last mitigation system, Magic Firewall.</p>
-	<p>An example of a packet sample log:</p><!--kg-card-begin: markdown-->
-	<pre><code>{"AttackCampaignID":"","AttackID":"","ColoName":"bkk06","Datetime":1652295571783000000,"DestinationASN":13335,"Direction":"ingress","IPDestinationAddress":"(redacted)","IPDestinationSubnet":"/24","IPProtocol":17,"IPSourceAddress":"(redacted)","IPSourceSubnet":"/24","MitigationReason":"","MitigationScope":"","MitigationSystem":"magic-firewall","Outcome":"pass","ProtocolState":"","RuleID":"(redacted)","RulesetID":"(redacted)","RulesetOverrideID":"","SampleInterval":100,"SourceASN":38794,"Verdict":"drop"}
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>An example of a packet sample log:</p>
+	<pre class="language-bash"><code class="language-bash">{"AttackCampaignID":"","AttackID":"","ColoName":"bkk06","Datetime":1652295571783000000,"DestinationASN":13335,"Direction":"ingress","IPDestinationAddress":"(redacted)","IPDestinationSubnet":"/24","IPProtocol":17,"IPSourceAddress":"(redacted)","IPSourceSubnet":"/24","MitigationReason":"","MitigationScope":"","MitigationSystem":"magic-firewall","Outcome":"pass","ProtocolState":"","RuleID":"(redacted)","RulesetID":"(redacted)","RulesetOverrideID":"","SampleInterval":100,"SourceASN":38794,"Verdict":"drop"}</code></pre>
 	<p>All the available log fields are documented here: <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/network_analytics_logs">https://developers.cloudflare.com/logs/reference/log-fields/account/network_analytics_logs/</a></p>
-	<h2 id="setting-up-the-logs">Setting up the logs</h2>
+	<h2>Setting up the logs</h2>
 	<p>In this walkthrough, we will demonstrate how to feed the Network Analytics Logs into Splunk via <a href="https://www.postman.com">Postman</a>. At this time, it is only possible to set up Network Analytics Logs via API. Setting up the logs requires three main steps:</p>
 	<ol>
-		<li>Create a Cloudflare API token.</li>
-		<li>Create a Splunk Cloud HTTP Event Collector (HEC) token.</li>
-		<li>Create and enable a Cloudflare Logpush job.</li>
+		<li>
+			<p>Create a Cloudflare API token.</p>
+		</li>
+		<li>
+			<p>Create a Splunk Cloud HTTP Event Collector (HEC) token.</p>
+		</li>
+		<li>
+			<p>Create and enable a Cloudflare Logpush job.</p>
+		</li>
 	</ol>
 	<p>Let’s get started!</p>
-	<h3 id="1-create-a-cloudflare-api-token">1) Create a Cloudflare API token</h3>
+	<h3>1) Create a Cloudflare API token</h3>
 	<ol>
-		<li>Log in to your Cloudflare account and navigate to <strong>My Profile.</strong></li>
-		<li>On the left-hand side, in the collapsing navigation menu, click <strong>API Tokens.</strong></li>
-		<li>Click <strong>Create Token</strong> and then, under <strong>Custom token</strong>, click <strong>Get started.</strong></li>
-		<li>Give your custom token a name, and select an Account scoped permission to edit Logs. You can also scope it to a specific/subset/all of your accounts.</li>
-		<li>At the bottom, click <strong>Continue to summary</strong>, and then <strong>Create Token</strong>.</li>
-		<li><strong>Copy</strong> and save your token. You can also test your token with the provided snippet in Terminal.</li>
+		<li>
+			<p>Log in to your Cloudflare account and navigate to <b>My Profile.</b></p>
+		</li>
+		<li>
+			<p>On the left-hand side, in the collapsing navigation menu, click <b>API Tokens.</b></p>
+		</li>
+		<li>
+			<p>Click <b>Create Token</b> and then, under <b>Custom token</b>, click <b>Get started.</b></p>
+		</li>
+		<li>
+			<p>Give your custom token a name, and select an Account scoped permission to edit Logs. You can also scope it to a specific/subset/all of your accounts.</p>
+		</li>
+		<li>
+			<p>At the bottom, click <b>Continue to summary</b>, and then <b>Create Token</b>.</p>
+		</li>
+		<li>
+			<p><b>Copy</b> and save your token. You can also test your token with the provided snippet in Terminal.</p>
+		</li>
 	</ol>
 	<p>When you're using an API token, you don't need to provide your email address as part of the API credentials.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-17.png" class="kg-image" alt="screenshot: create a new Custom API token" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HD1OtGie9s6CbcVPA7KUx/85a4ca3566a029b8268e691bff15a4f7/image5-17.png" alt="screenshot: create a new Custom API token" class="kg-image" width="1999" height="1368" loading="lazy">
+
+	</figure>
 	<p>Read more about creating an API token on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/api/tokens/create">https://developers.cloudflare.com/api/tokens/create/</a></p>
-	<h3 id="2-create-a-splunk-token-for-an-http-event-collector">2) Create a Splunk token for an HTTP Event Collector</h3>
+	<h3>2) Create a Splunk token for an HTTP Event Collector</h3>
 	<p>In this walkthrough, we’re using a Splunk Cloud free trial, but <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations">you can use almost any service that can accept logs over HTTPS</a>. In some cases, if you’re using an on-premise SIEM solution, you may need to allowlist <a href="https://www.cloudflare.com/ips">Cloudflare IP address</a> in your firewall to be able to receive the logs.</p>
 	<ol>
-		<li>Create a Splunk Cloud account. I created a trial account for the purpose of this blog.</li>
-		<li>In the Splunk Cloud dashboard, go to <strong>Settings</strong> &gt; <strong>Data Input.</strong></li>
-		<li>Next to <strong>HTTP Event Collector</strong>, click <strong>Add new.</strong></li>
-		<li>Follow the steps to create a token.</li>
-		<li>Copy your token and your allocated Splunk hostname and save both for later.</li>
+		<li>
+			<p>Create a Splunk Cloud account. I created a trial account for the purpose of this blog.</p>
+		</li>
+		<li>
+			<p>In the Splunk Cloud dashboard, go to <b>Settings</b> &gt; <b>Data Input.</b></p>
+		</li>
+		<li>
+			<p>Next to <b>HTTP Event Collector</b>, click <b>Add new.</b></p>
+		</li>
+		<li>
+			<p>Follow the steps to create a token.</p>
+		</li>
+		<li>
+			<p>Copy your token and your allocated Splunk hostname and save both for later.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-41.png" class="kg-image" alt="screenshot: Screenshot: Adding a new HTTP Event Collector input in Splunk Cloud" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n4C580G6FxELEaOqPO7Wz/29960d7397b60cb2a5fba8c3829b89b6/image2-41.png" alt="screenshot: Screenshot: Adding a new HTTP Event Collector input in Splunk Cloud" class="kg-image" width="1999" height="337" loading="lazy">
+
+	</figure>
 	<p>Read more about using Splunk with Cloudflare Logpush on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/splunk">https://developers.cloudflare.com/logs/get-started/enable-destinations/splunk/</a></p>
 	<p>Read more about creating an HTTP Event Collector token on Splunk’s website: <a href="https://docs.splunk.com/Documentation/Splunk/8.2.6/Data/UsetheHTTPEventCollector">https://docs.splunk.com/Documentation/Splunk/8.2.6/Data/UsetheHTTPEventCollector</a></p>
-	<h3 id="3-create-a-cloudflare-logpush-job">3) Create a Cloudflare Logpush job</h3>
+	<h3>3) Create a Cloudflare Logpush job</h3>
 	<p>Creating and enabling a job is very straightforward. It requires only one API call to Cloudflare to create and enable a job.</p>
 	<p>To send the API calls I used <a href="https://www.postman.com">Postman</a>, which is a user-friendly API client that was recommended to me by a colleague. It allows you to save and customize API calls. You can also use Terminal/CMD or any other API client/script of your choice.</p>
-	<p>One thing to notice is Network Analytics Logs are <strong>account</strong>-scoped. The API endpoint is therefore a tad different from what you would normally use for zone-scoped datasets such as HTTP request logs and DNS logs.</p>
+	<p>One thing to notice is Network Analytics Logs are <b>account</b>-scoped. The API endpoint is therefore a tad different from what you would normally use for zone-scoped datasets such as HTTP request logs and DNS logs.</p>
 	<p>This is the endpoint for creating an account-scoped Logpush job:</p>
-	<p><code>https://api.cloudflare.com/client/v4/accounts/<strong>{account-id}</strong>/logpush/jobs</code></p>
+	<p><code>https://api.cloudflare.com/client/v4/accounts/**{account-id}**/logpush/jobs</code></p>
 	<p>Your account identifier number is a unique identifier of your account. It is a string of 32 numbers and characters. If you’re not sure what your account identifier is, log in to Cloudflare, select the appropriate account, and copy the string at the end of the URL.</p>
-	<p><code>https://dash.cloudflare.com/<strong>{account-id}</strong></code></p>
+	<p><code>https://dash.cloudflare.com/**{account-id}**</code></p>
 	<p>Then, set up a new request in Postman (or any other API client/CLI tool).</p>
 	<p>To successfully create a Logpush job, you’ll need the HTTP method, URL, Authorization token, and request body (data). The request body must include a destination configuration (<code>destination_conf</code>), the specified dataset (<code>network_analytics_logs</code>, in our case), and the token (your Splunk token).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-48.png" class="kg-image" alt="Screenshot: creating a new request in Postman" loading="lazy"></figure>
-	<p><strong><u>Method</u></strong>:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SlAhohD7nH7Ge6ODVPiWT/f6f0cc10d696285d97a0f5a64603ccdd/image1-48.png" alt="Screenshot: creating a new request in Postman" class="kg-image" width="1634" height="644" loading="lazy">
+
+	</figure>
+	<p><b>Method</b>:</p>
 	<p><code>POST</code></p>
-	<p><strong><u>URL</u></strong>:</p>
-	<p><code>https://api.cloudflare.com/client/v4/accounts/<strong>{account-id}</strong>/logpush/jobs</code></p>
-	<p><strong>Authorization</strong>: Define a Bearer authorization in the <strong>Authorization</strong> tab, or add it to the header, and add your Cloudflare API token.</p>
-	<p><strong>Body</strong>: Select a <strong>Raw</strong> &gt; <strong>JSON</strong></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<p><b>URL</b>:</p>
+	<p><code>https://api.cloudflare.com/client/v4/accounts/**{account-id}**/logpush/jobs</code></p>
+	<p><b>Authorization</b>: Define a Bearer authorization in the <b>Authorization</b> tab, or add it to the header, and add your Cloudflare API token.</p>
+	<p><b>Body</b>: Select a <b>Raw</b> &gt; <b>JSON</b></p>
+	<pre class="language-json"><code class="language-json">{
 "destination_conf": "{your-unique-splunk-configuration}",
 "dataset": "network_analytics_logs",
 "token": "{your-splunk-hec-tag}",
 "enabled": "true"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>If you’re using Splunk Cloud, then your unique configuration has the following format:</p>
-	<p><code><strong>{your-unique-splunk-configuration}=</strong>splunk://<strong>{your-splunk-hostname}</strong>.splunkcloud.com:8088/services/collector/raw?channel=<strong>{channel-id}</strong>&amp;header_Authorization=Splunk%20<strong>{your-splunk–hec-token}</strong>&amp;insecure-skip-verify=false</code></p>
+	<p><code>**{your-unique-splunk-configuration}=**splunk://**{your-splunk-hostname}**.splunkcloud.com:8088/services/collector/raw?channel=**{channel-id}**&amp;header_Authorization=Splunk%20**{your-splunk–hec-token}**&amp;insecure-skip-verify=false</code></p>
 	<p>Definition of the variables:</p>
-	<p><strong><code>{your-splunk-hostname}</code></strong>= Your allocated Splunk Cloud hostname.</p>
-	<p><strong><code>{channel-id}</code> </strong>= A unique ID that you choose to assign for.<strong>`{your-splunk–hec-token}` </strong>= The token that you generated for your Splunk HEC.</p>
+	<p><code><b>{your-splunk-hostname}</b></code>= Your allocated Splunk Cloud hostname.</p>
+	<p><code><b>{channel-id}</b></code> = A unique ID that you choose to assign for.<b>`{your-splunk–hec-token}`</b> = The token that you generated for your Splunk HEC.</p>
 	<p>An important note is that customers should have a valid SSL/TLS certificate on their Splunk instance to support an encrypted connection.</p>
 	<p>After you’ve done that, you can create a GET request to the same URL (no request body needed) to verify that the job was created and is enabled.</p>
-	<p>The response should be similar to the following:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">{
+	<p>The response should be similar to the following:</p>
+	<pre class="language-json"><code class="language-json">{
     "errors": [],
     "messages": [],
     "result": {
@@ -182,16 +228,18 @@
         "error_message": null
     },
     "success": true
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Shortly after, you should start receiving logs to your Splunk HEC.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-27.png" class="kg-image" alt="Screenshot: output of Network Analytics Logs in Splunk Cloud" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45iJNwBrNbf0ptNsRdc4N/951d46a7759b14cfdb5305d1268834fb/image4-27.png" alt="Screenshot: output of Network Analytics Logs in Splunk Cloud" class="kg-image" width="1999" height="1016" loading="lazy">
+
+	</figure>
 	<p>Read more about enabling Logpush on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl">https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl/</a></p>
-	<h2 id="reduce-costs-with-r2-storage">Reduce costs with R2 storage</h2>
+	<h2>Reduce costs with R2 storage</h2>
 	<p>Depending on the amount of logs that you read and write, the cost of third party cloud storage can skyrocket — forcing you to decide between managing a tight budget and being able to properly investigate networking and security issues. However, we believe that you shouldn’t have to make those trade-offs. With <a href="https://blog.cloudflare.com/logs-r2">R2’s low costs</a>, we’re making this decision easier for our customers. Instead of feeding logs to a third party, you can reap the cost benefits of <a href="https://blog.cloudflare.com/logs-r2">storing them in R2</a>.</p>
 	<p>To learn more about the <a href="https://www.cloudflare.com/developer-platform/r2">R2 features and pricing</a>, check out the <a href="https://blog.cloudflare.com/r2-open-beta">full blog post</a>. To enable R2, contact your account team.</p>
-	<h2 id="cloudflare-logs-for-maximum-visibility">Cloudflare logs for maximum visibility</h2>
+	<h2>Cloudflare logs for maximum visibility</h2>
 	<p><a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> customers have access to detailed logs of the metadata generated by our products. These logs are helpful for troubleshooting, identifying network and configuration adjustments, and generating reports, especially when combined with logs from other sources, such as your servers, firewalls, routers, and other appliances.</p>
 	<p>Network Analytics Logs joins Cloudflare’s family of products on Logpush: <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/dns_logs">DNS logs</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/firewall_events">Firewall events</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests">HTTP requests</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/nel_reports">NEL reports</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/spectrum_events">Spectrum events</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/audit_logs">Audit logs</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_dns">Gateway DNS</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_http">Gateway HTTP</a>, and <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_network">Gateway Network</a>.</p>
 	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Start now</a> with our Free and <a href="https://www.cloudflare.com/plans/pro">Pro plans</a> to protect your websites against DDoS attacks, or <a href="https://www.cloudflare.com/magic-transit">contact us</a> for comprehensive <a href="https://www.cloudflare.com/ddos">DDoS protection</a> and <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">firewall-as-a-service</a> for your entire network.</p>

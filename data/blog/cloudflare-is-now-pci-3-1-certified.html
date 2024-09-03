@@ -1,33 +1,44 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/11/image_0-1.jpg" alt="PCI Certified badge" loading="lazy"></p>
+<div class="mb2 gray5">4 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BD1MQVe1MH2Em16DgFhiI/f5f5aada2f87e5e32b92c289f146029a/image_0-1.jpg" alt="PCI Certified badge" class="kg-image" width="306" height="164" loading="lazy">
+
+	</figure>
 	<p>The Payment Card Industry Data Security Standard (<a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI DSS</a>) is a global financial information security standard that keeps credit card holders safe. It ensures that any company processing credit card transactions adheres to the highest technical standards.</p>
 	<p>PCI certification has several levels. Level one (the highest level) is reserved for those companies that handle the greatest numbers of credit cards. Companies at level one PCI compliance are subject to the most stringent checks.</p>
 	<p>CloudFlare’s mission leads it to provide security for some of the most important companies in the world. This is why CloudFlare chose to be audited as a level one service provider. By adhering to PCI’s rigorous financial security controls, CloudFlare ensures that security is held to the highest standard and that those controls are validated independently by a recognised body.</p>
-	<p>If you are interested in learning more, see these <a href="https://www.pcisecuritystandards.org/security_standards">details about the </a><a href="https://www.pcisecuritystandards.org/security_standards">Payment Card Industry Data Security Standard</a>.</p>
+	<p>If you are interested in learning more, see these <a href="https://www.pcisecuritystandards.org/security_standards">details about the</a> <a href="https://www.pcisecuritystandards.org/security_standards">Payment Card Industry Data Security Standard</a>.</p>
 	<p>This year’s update <a href="https://blog.cloudflare.com/cloudflare-is-pci-certified">from PCI 2.0</a> to 3.1 was long overdue. PCI DSS 2.0 was issued in October 2010, and the <a href="https://www.cloudflare.com/learning/security/what-is-information-security">information security</a> threat landscape does not stand still—especially when it comes to industries that deal with financial payments or credit cards. New attacks are almost a daily occurrence, which means that an out-of-date security standard is often worse than no standard at all.</p>
-	<h3 id="whatsnewinpci31">What’s new in PCI 3.1?</h3>
-	<p>In PCI 3.1, the PCI council attempted to address this issue by both covering known attacks that have come out since the last version of the standard and beefing up financial security controls in anticipation of <em>future</em> attacks.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/11/image_1-1.jpg" alt="Credit cards" loading="lazy"></p>
+	<h3>What’s new in PCI 3.1?</h3>
+	<p>In PCI 3.1, the PCI council attempted to address this issue by both covering known attacks that have come out since the last version of the standard and beefing up financial security controls in anticipation of <i>future</i> attacks.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hasb9XF08toehB7Lm1mQW/89ac4ebc45d619d8a649a160f0b9f065/image_1-1.jpg" alt="Credit cards" class="kg-image" width="425" height="283" loading="lazy">
+
+	</figure>
 	<p>Here is a summary of the changes between PCI versions 2.0 and 3.1:</p>
-	<h3 id="accessibilityandawareness">Accessibility and awareness</h3>
+	<h3>Accessibility and awareness</h3>
 	<p>The PCI council has realized that the first lines of defense in any organization are the information security practitioners, developers, and engineers. With this in mind, the council has removed much of the "legal-speak" in the PCI DSS documentation, making it readable for the average person. Each section has an explanation, and each requirement has a justification with examples when possible.</p>
-	<h3 id="pcilifecycle">PCI lifecycle</h3>
+	<h3>PCI lifecycle</h3>
 	<p>Version 2.0 of the PCI standard was reliant on the annual audits each organization must go through to demonstrate compliance. This was leading to a culture of "tickbox security" where organizations would do the bare minimum during the year, then rush to make the necessary changes to meet compliance requirements in time for their audit. This is a bad way to do security.</p>
 	<p>Security should be holistic and ongoing. A company should ensure that security is built into every level of the organization. Security features should be incorporated into products from the ground up. Not only is this the least expensive way to do security, but it is also the most secure way.</p>
 	<p>To this end, PCI 3.1 was designed to integrate into the everyday operations of a compliant organization. This integration ranges from installing itself in critical operational processes, to ensuring that PCI compliance is an integral part of the Software Development Lifecycle (SDLC) that the company uses to build its products. PCI is present at every level of the operation.</p>
 	<p>Furthermore, PCI now requires that the processes which support these critical business functions are robust. This means that things like the patch management process or vulnerability testing process have a clearly defined owner, a clearly defined review process, and a clear timetable.</p>
-	<h3 id="furtheraddressingtickboxsecurity">Further addressing "tickbox security"</h3>
+	<h3>Further addressing "tickbox security"</h3>
 	<p>Another aspect of the "tickbox security" culture that developed around PCI 2.0 was the fact that it was possible to use documentation to fool the audit process. This lead companies toward a “smoke and mirrors” strategy for covering up substantial security flaws or implying compensating controls that did not exist.</p>
 	<p>To address this, PCI 3.1 became much more rigorous about evidence. It is no longer sufficient to say, "here is some paperwork about this control." The control itself has to be tested and evaluated by the auditor before the organization can be passed as compliant. Furthermore, PCI 3.1 also insists on vulnerability testing on a regular basis at every stage of the development lifecycle. This requirement is designed to catch weaknesses that might have slipped through the cracks and to detect software vulnerabilities that somehow missed getting patched.</p>
-	<h3 id="sharedresponsibility">Shared responsibility</h3>
+	<h3>Shared responsibility</h3>
 	<p>It has become clear to many information security practitioners that security is a complex, multi-actor deliverable. This means the weak link in the chain can, and often does, undermine other substantially more secure organizations. PCI 3.1 now recognizes this with a definition of responsibilities for all stakeholders in the payment process. Whether you’re a merchant, service provider, or card issuer, it is no longer possible to completely outsource accountability. This forces the whole chain into the light of the day and ensures that good security practices are followed every step of the way.</p>
-	<h3 id="outwiththeoldinwiththenewtls">Out with the old, in with the new (TLS)</h3>
+	<h3>Out with the old, in with the new (TLS)</h3>
 	<p>TLS 1.0 and 1.1 have been around for a long time—SSL 3.0 even longer. The problem is that encryption has a shelf-life. As time passes, flaws are found in these systems, and computing performance reaches a level where it can break widespread encryption algorithms. Eventually, the encryption technology of yesterday no longer offers the same amount of protection as when it was first released.</p>
 	<p>With PCI 3.1, the payment card industry recognises this by setting a "sunset date" for old encryption standards. In order to remain compliant after June 30 2016, companies must switch off SSL 3.0, TLS 1.0, and TLS 1.1. This is a step in the right direction, and it affects CloudFlare as much as it affects our customers.</p>
 	<p>However, a significant amount of the world still uses TLS 1.0 (14% of traffic last time we looked). We recognise that not everyone wants, or needs, to do this. As a result, we will be offering our customers who wish to be PCI compliant a feature that will allow them to ensure their CloudFlare configuration meets PCI DSS guidelines.</p>
-	<h3 id="summary">Summary</h3>
+	<h3>Summary</h3>
 	<p>The changes between PCI 2.0 and 3.1 made re-certification a lengthy, but highly illuminating, process for CloudFlare. We achieved full compliance as a level one service provider while substantially improving our security along the way. We also learned a lot about the compliance needs of our customers through this process, and you can expect a lot more compliance-related features to surface further down the road.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/11/image_2-1.jpg" alt="Credit card with lock" loading="lazy"></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dBBHum02bRtsE5AhOZLJG/cfa6c76bc8a015f38b419a591f2bbc4c/image_2-1.jpg" alt="Credit card with lock" class="kg-image" width="266" height="189" loading="lazy">
+
+	</figure>
 </div>

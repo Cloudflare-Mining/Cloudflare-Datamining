@@ -1,34 +1,48 @@
 <div class="mb2 gray5">3 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-workers-dev">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/announcing-workers-dev">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/announcing-workers-dev">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/announcing-workers-dev">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14Nog8PQJPkrkP5PD7RyxX/790226eef4066fdfcd6fc114b682d4f8/announcing-workers-dev.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We are working really hard to allow you to deploy Workers without having a Cloudflare domain. You will soon be able to deploy your Cloudflare Workers to a subdomain-of-your-choice.workers.dev, which you can go claim now on <a href="https://workers.dev">workers.dev</a>!</p>
-	<h2 id="why-are-we-doing-this">Why are we doing this? </h2>
-	<p>You may have read the announcement blog post for Workers (or one of the many tutorials and guest posts), and thought “let me give this a try!”. If you’re an existing Cloudflare customer, you logged into the dashboard, and found a new icon called “Workers”, paid $5 and were on your way. If you’re not, you clicked “Sign Up”, but instead of getting to create and deploy a Worker, we asked you for your domain (if you didn’t have one, we had you register one), and move your nameservers. </p>
+	<h2>Why are we doing this?</h2>
+	<p>You may have read the announcement blog post for Workers (or one of the many tutorials and guest posts), and thought “let me give this a try!”. If you’re an existing Cloudflare customer, you logged into the dashboard, and found a new icon called “Workers”, paid $5 and were on your way. If you’re not, you clicked “Sign Up”, but instead of getting to create and deploy a Worker, we asked you for your domain (if you didn’t have one, we had you register one), and move your nameservers.</p>
 	<p>Since launch, we have had tons of people who wanted to build a new serverless project from scratch or just try Workers out, but found it difficult to get started. We want to make it easier for anyone to get started building and deploying serverless applications.</p>
-	<h2 id="how-did-we-get-here">How did we get here? </h2>
-	<p>The way you get started on Workers today reflects our journey as a company. Our mission to “help build a better Internet” has remained consistent, but the ways in which we can help do that have evolved. We didn’t start as a serverless company, we started as out as a way for you to secure and accelerate your web properties. </p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/0_FPoyiJBZRQHxug6TsI_pi0X8IV2e_hSU5UVr-dMBhrAH8-0wsd04gPB1aOF1AzTs7T_OsoZjMVyriJMTiR_nILVilzS3SgQqflApUggkjVmbR2x8mp-aAzeS2ED67rcO4JVE3j" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>After the launch of Workers, it immediately became clear that the possibilities for Workers are endless. We truly believe that Workers are a revolutionary technology that will change how developers think about compute. </p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/UuIE60s-ONBOGD6dUGFrALYQIKc-6PZgyEJT6clkZT_HSNZjm9x1I-p63ZVlYCULJFSSUTFaF5RLSXlLA4blHny4Y5S33ekGHSA6SJQgT5Kl194SCjW3XaCbNEZw3wi1KZfShEmV" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<h2 id="our-serverless-mission">Our Serverless Mission</h2>
+	<h2>How did we get here?</h2>
+	<p>The way you get started on Workers today reflects our journey as a company. Our mission to “help build a better Internet” has remained consistent, but the ways in which we can help do that have evolved. We didn’t start as a serverless company, we started as out as a way for you to secure and accelerate your web properties.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TINzEnhMPK2xtuwpFfn02/ddf6789276cb5ae310cf00364f47d9d2/0_FPoyiJBZRQHxug6TsI_pi0X8IV2e_hSU5UVr-dMBhrAH8-0wsd04gPB1aOF1AzTs7T_OsoZjMVyriJMTiR_nILVilzS3SgQqflApUggkjVmbR2x8mp-aAzeS2E.png" alt="" class="kg-image" width="1600" height="1111" loading="lazy">
+
+	</figure>
+	<p>After the launch of Workers, it immediately became clear that the possibilities for Workers are endless. We truly believe that Workers are a revolutionary technology that will change how developers think about compute.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4S1yQih0gt7mBZVP7PlGxH/87ddbc6fd657c20cdbf6d2ef39418917/UuIE60s-ONBOGD6dUGFrALYQIKc-6PZgyEJT6clkZT_HSNZjm9x1I-p63ZVlYCULJFSSUTFaF5RLSXlLA4blHny4Y5S33ekGHSA6SJQgT5Kl194SCjW3XaCbNEZw.png" alt="" class="kg-image" width="1600" height="919" loading="lazy">
+
+	</figure>
+	<h2>Our Serverless Mission</h2>
 	<p>We are still on a mission to help build a better Internet. To us, a world with better Internet means a world where there is no distinction between writing code and deploying global applications.</p>
 	<p>That is, an independent developer can have access to the same scalable infrastructure as a multi-million dollar business to run their code on.</p>
-	<p>To remove any obstacles preventing developers from using Workers today, we’re going to allow developers to run Workers on subdomains of workers.dev. </p>
-	<h2 id="workers-dev">Workers.dev</h2>
-	<p>As a part of Google’s TLD launch program, we were lucky enough to obtain workers.dev, to allow customers to run their Workers on. </p>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/vj--KybN5EaDpPcedIXHc3BIFYL6Pi9ixQhKWpiKHidfr4XsfaNQKDIF0Omz-eLhnyzl50SDzJdLfAJ476LarK2dpKky8XfWgbQe9e1XosvdSOaausvONM5majIYG_hQd8FKFkke" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<p>To remove any obstacles preventing developers from using Workers today, we’re going to allow developers to run Workers on subdomains of workers.dev.</p>
+	<h2>Workers.dev</h2>
+	<p>As a part of Google’s TLD launch program, we were lucky enough to obtain workers.dev, to allow customers to run their Workers on.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yS0msNCcEj9Qzeklb9ZsF/be71152b18098a8a792a5a1818baf986/vj--KybN5EaDpPcedIXHc3BIFYL6Pi9ixQhKWpiKHidfr4XsfaNQKDIF0Omz-eLhnyzl50SDzJdLfAJ476LarK2dpKky8XfWgbQe9e1XosvdSOaausvONM5majIY.png" alt="" class="kg-image" width="395" height="126" loading="lazy">
+
+	</figure>
 	<p>You can now go to <a href="https://workers.dev">workers.dev</a> and read about all the benefits of Workers that we’re really excited about.</p>
-	<p>Additionally, in workers.dev you will be able to claim a subdomain (one per user) for you to run Workers on. After choosing your subdomain, you will be asked to verify your email. If you already have a Cloudflare account, please use the same email you used to sign up. We will also use the same email to notify you once we’re ready to let you deploy your first Worker to the subdomain you selected. </p>
-	<p>Note that workers.dev is fully served using Cloudflare Workers. All of the following is done using Workers: </p>
+	<p>Additionally, in workers.dev you will be able to claim a subdomain (one per user) for you to run Workers on. After choosing your subdomain, you will be asked to verify your email. If you already have a Cloudflare account, please use the same email you used to sign up. We will also use the same email to notify you once we’re ready to let you deploy your first Worker to the subdomain you selected.</p>
+	<p>Note that workers.dev is fully served using Cloudflare Workers. All of the following is done using Workers:</p>
 	<ul>
-		<li>Serving the static site from storage</li>
-		<li>A/B testing our light vs. dark theme</li>
-		<li>The pre-registration API that allows you to claim a subdomain, validates your email, and reserves it for you (more on that soon). </li>
+		<li>
+			<p>Serving the static site from storage</p>
+		</li>
+		<li>
+			<p>A/B testing our light vs. dark theme</p>
+		</li>
+		<li>
+			<p>The pre-registration API that allows you to claim a subdomain, validates your email, and reserves it for you (more on that soon).</p>
+		</li>
 	</ul>
-	<p>Though we fully utilize Workers, no Workers were harmed in the making of this site. </p>
-	<p>We look forward to seeing the great things you build with Workers. <br>Check out <a href="https://workers.dev">workers.dev</a> to claim your subdomain, and read about the Workers platform. </p>
+	<p>Though we fully utilize Workers, no Workers were harmed in the making of this site.</p>
+	<p>We look forward to seeing the great things you build with Workers.Check out <a href="https://workers.dev">workers.dev</a> to claim your subdomain, and read about the Workers platform.</p>
 </div>

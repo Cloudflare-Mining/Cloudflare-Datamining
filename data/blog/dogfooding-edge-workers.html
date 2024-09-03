@@ -1,21 +1,25 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/625Bpi9sa9TW6Y31S7FMbT/43483f09efa26d24c776e764d7e31c50/dogfooding-edge-workers.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>On the WWW team, we’re responsible for Cloudflare’s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
 	<p>A <a href="https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api">recent compliance project</a> had a requirement of detecting certain end user request data at the edge, and reacting to it both in API responses as well as visually in the dashboard. We realized that this was an excellent opportunity to dogfood Cloudflare Workers.</p>
-	<h3 id="deployingworkerstowwwcloudflarecomandapicloudflarecom">Deploying workers to www.cloudflare.com and api.cloudflare.com</h3>
+	<h3>Deploying workers to <a href="https://www.cloudflare.com">www.cloudflare.com</a> and api.cloudflare.com</h3>
 	<p>In this blog post, we’ll break down the problem we solved using a single worker that we shipped to multiple hosts, share the annotated source code of our worker, and share some best practices and tips and tricks we discovered along the way.</p>
-	<p>Since being deployed, <strong>our worker has served over 400 million requests</strong> for both calls to api.cloudflare.com and the www.cloudflare.com dashboard.</p>
-	<h3 id="thetask">The task</h3>
+	<p>Since being deployed, <b>our worker has served over 400 million requests</b> for both calls to api.cloudflare.com and the <a href="https://www.cloudflare.com">www.cloudflare.com</a> dashboard.</p>
+	<h3>The task</h3>
 	<p>First, we needed to detect when a client was connecting to our services using an outdated TLS protocol. Next, we wanted to pass this information deeper into our application stack so that we could act upon it and conditionally decorate our responses with notices providing a heads up about the imminent changes.</p>
 	<p>Our Edge team was quick to create a patch to capture TLS connection information for every incoming request, but how would we propagate it to our application layer where it could be acted upon?</p>
-	<h3 id="thesolution">The solution</h3>
+	<h3>The solution</h3>
 	<p>The Workers team made a modification to the core platform to ingest the TLS protocol version data sent from the edge, making it available in the workers environment as a property of the cf object available to the worker Javascript context (You can now use this property in your own workers).</p>
 	<p>With our workers able to inspect the TLS protocol versions of requests, we needed only to append a custom HTTP header containing this information before forwarding them into our application layer.</p>
 	<p>Our APIs use this data to add deprecation warnings to responses, and our UI uses it to display banners explaining the upcoming changes.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/05/tls-deprecation-banner.png" alt="tls-deprecation-banner" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TlooYc7slpilLJyFkXxD5/a5b4c4259ae19217bdae2692e63ed21a/tls-deprecation-banner.png" alt="tls-deprecation-banner" class="kg-image" width="2464" height="1110" loading="lazy">
+
+	</figure>
 	<p>Let's now take a look at the source code for our worker.</p>
-	<h3 id="anatomyofafailopenworker">Anatomy of a fail open worker</h3>
-	<pre><code class="language-javascript">/**
+	<h3>Anatomy of a fail open worker</h3>
+	<pre class="language-javascript"><code class="language-javascript">/**
  * Cloudflare workers implement the service worker spec
  * See: https://developers.cloudflare.com/workers/about/ for an intro
  *
@@ -48,9 +52,9 @@ addEventListener('fetch', event =&gt; {
  */
 function promisifiedSentryLog(ex) {
     //Change these constants to your own Sentry values if you want to use this script
-    const sentryProjectId = '&lt;Replace-Me-With-Your-Sentry-Project-Id&gt;'
-    const sentryAPIKey = '&lt;Replace-Me-With-Your-Sentry-API-Key&gt;'
-    const sentrySecretKey = '&lt;Replace-Me-With-Your-Sentry-Secret-Key&gt;'
+    const sentryProjectId = '<replace-me-with-your-sentry-project-id>'
+    const sentryAPIKey = '<replace-me-with-your-sentry-api-key>'
+    const sentrySecretKey = '<replace-me-with-your-sentry-secret-key>'
     //Manually configure our call to Sentry
     let b = {
         project: sentryProjectId,
@@ -134,32 +138,33 @@ async function requestWithTLSHeader(event) {
          */
         throw ex
     }
-}
-</code></pre>
-	<p><small>The above Workers script was updated on 5/17/18 to correct how the Sentry's API works.</small></p>
-	<br>
-	<h3 id="asynchronyloggingandalertsviasentry">Asynchrony, logging and alerts via Sentry</h3>
+}</replace-me-with-your-sentry-secret-key></replace-me-with-your-sentry-api-key></replace-me-with-your-sentry-project-id></code></pre>
+	<p>The above Workers script was updated on 5/17/18 to correct how the Sentry's API works.</p>
+	<h3>Asynchrony, logging and alerts via Sentry</h3>
 	<p>We decided to use Sentry to capture events we sent from our worker, but you could follow this same pattern with any similar service.</p>
 	<p>The critical piece to making this work is understanding that you must signal the Cloudflare worker runtime that it needs to wait upon your asynchronous logging subrequest (and not cancel it).</p>
 	<p>You do this by:</p>
 	<ol>
-		<li>Ensuring that your logging function returns a promise (what your promise resolves to does not matter)</li>
-		<li>Wrapping your call to your logging function in event.waitUntil as we have done above</li>
+		<li>
+			<p>Ensuring that your logging function returns a promise (what your promise resolves to does not matter)</p>
+		</li>
+		<li>
+			<p>Wrapping your call to your logging function in event.waitUntil as we have done above</p>
+		</li>
 	</ol>
 	<p>This pattern fixes a common race condition: if you don't leverage event.waitUntil, the runtime will race the passthrough subrequest and your logging subrequest.</p>
 	<p>If the passthrough subrequest completes significantly faster than your logging subrequest, the logging request could be cancelled. In practice, you'll notice this issue manifesting as dropped logging messages - whether or not a given exception will be logged properly becomes a roll of the dice on every request.</p>
 	<p>For additional insight, check out our <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips">official guide to debugging Cloudflare workers</a>.</p>
-	<h3 id="failingopentoensureservicecontinuity">Failing open to ensure service continuity</h3>
+	<h3>Failing open to ensure service continuity</h3>
 	<p>A key consideration when designing your worker is failure behavior. Depending on what your particular worker is accomplishing, you either want it to fail open or failed closed. Failing open means that if something goes horribly wrong, the original request will be passed through as if your worker did not exist, while failing closed means that a request that raises an exception in your worker will not be processed further.</p>
 	<p>If you are editing metadata, collecting metrics, or adding new non-critical HTTP headers, to name a few examples, you probably don't want an unhandled exception in your worker to prevent the request from being serviced.</p>
-	<p>In this case, you can leverage <strong>event.passThroughOnException</strong> as we have above, and it's recommended that you call this method in the first line of your fetch event handler. This sets a flag that the Cloudflare worker request handler can inspect in case of an exception to determine the desired passthrough behavior.</p>
+	<p>In this case, you can leverage <b>event.passThroughOnException</b> as we have above, and it's recommended that you call this method in the first line of your fetch event handler. This sets a flag that the Cloudflare worker request handler can inspect in case of an exception to determine the desired passthrough behavior.</p>
 	<p>On the other hand, if you're employing your worker in a security-centric role, tasking it with blocking malicious requests from nefarious bots, or blocking access to sensitive endpoints when valid security credentials are not supplied, you may want your worker to fail closed. This is the default behavior, and it will prevent requests that raise exceptions in your worker from being processed further.</p>
 	<p>Our services are in the critical path for our customers, yet our use case was to conditionally add a new HTTP header, so we knew we wanted to fail open.</p>
-	<h3 id="havingyourworkergeneratepagerdutyandhipchatalerts">Having your worker generate PagerDuty and Hipchat alerts</h3>
+	<h3>Having your worker generate PagerDuty and Hipchat alerts</h3>
 	<p>Now that you've done the work to get data from your worker logged to Sentry, you can leverage Sentry's PagerDuty integration to configure alerts for exceptions that occur in your workers.</p>
 	<p>This will increase your team's confidence in your worker-based solutions, and alert you immediately to any new issues that occur in production.</p>
-	<h3 id="shareyourworkerrecipes">Share your worker recipes</h3>
+	<h3>Share your worker recipes</h3>
 	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/about">official documentation</a>.</p>
 	<p>Have you written a worker that you'd like to share? <a href="mailto:community@cloudflare.com">Send it to us</a> and you might get featured on our blog or added to our <a href="https://developers.cloudflare.com/workers/recipes/a-b-testing">Cloudflare worker recipe collection</a> with a credit.</p>
-	<!--kg-card-end: markdown-->
 </div>

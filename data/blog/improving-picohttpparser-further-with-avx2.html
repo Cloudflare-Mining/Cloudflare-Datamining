@@ -1,23 +1,24 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>Vlad Krasnov recently joined CloudFlare to work on low level optimization of CloudFlare's servers. This is the first of a number of blog posts that will include code he's optimized and open sourced.</em></p>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2w4DuXUjjArvPqsbGpc9ro/e309104076b6d0fb6e2d624e165e40cc/improving-picohttpparser-further-with-avx2.jpg" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>Vlad Krasnov recently joined CloudFlare to work on low level optimization of CloudFlare's servers. This is the first of a number of blog posts that will include code he's optimized and open sourced.</i></p>
 	<p>In a recent post, <a href="http://blog.kazuhooku.com/2014/12/improving-parser-performance-using-sse.html">Kazuho's Weblog</a> describes an improvement to <a href="https://github.com/h2o/picohttpparser">PicoHTTPParser</a>. This improvement utilizes the SSE4.2 instruction <a href="http://www.felixcloutier.com/x86/PCMPESTRI.html">PCMPESTRI</a> in order to find the delimiters in a HTTP request/response and parse them accordingly. This update, compared to the previous version of the code, is impressive.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/12/11359813146_2b5b7f815e_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/intelfreepress/11359813146">image</a> by <a href="https://www.flickr.com/photos/intelfreepress">Intel Free Press</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hrbNOuPzx7yQUXbH6wgC2/e8b63bc79635af605508978ec7bb1261/11359813146_2b5b7f815e_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/intelfreepress/11359813146">image</a> by <a href="https://www.flickr.com/photos/intelfreepress">Intel Free Press</a></p>
 	<p>PCMPESTRI is a versatile instruction that allows scanning of up to 16 bytes at once for occurrences of up to 16 distinct characters (bytes), or up to 8 ranges of characters (bytes). It can also be used for string and substring comparison. However, there are a few drawbacks: the instruction has a high latency of 11 cycles, and is limited to 16 bytes per instruction. It's also under utilized for range comparison in PicoHTTPParser, because it only tests two or three ranges per invocation (out of eight it is capable of). Furthermore, some simple math (16 bytes / 11 cycles) shows that using this instruction limits the parser to 1.45 bytes/cycle throughput.</p>
-	<h3 id="isthisreallyasfastasthisparsercango">Is this really as fast as this parser can go?</h3>
+	<h3>Is this really as fast as this parser can go?</h3>
 	<p>Today on the latest Haswell processors, we have the potent <a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX2</a> instructions. The AVX2 instructions operate on 32 bytes, and most of the boolean/logic instructions perform at a throughput of 0.5 cycles per instruction. This means that we can execute roughly 22 AVX2 instructions in the same amount of time it takes to execute a single PCMPESTRI. Why not give it a shot?</p>
 	<p>Let's look at the logic first. If, for example, we search for bytes in the ranges 0-8, 10-31, and 127, we see that to convert the PCMPESTRI logic to AVX2 logic we first need to check for each byte X: <code>((-1 &lt; X &lt; 32) AND !(X = 9)) OR (X = 127)</code>. Luckily, we can treat the bytes as signed because the AVX2 instruction set does not provide a single instruction for unsigned 'greater equal' operations. This logic, when implemented with AVX2 instructions, would mark all the qualifying bytes. Second, to get the position of the first qualifying byte, as PCMPESTRI does, we should use the <a href="http://www.felixcloutier.com/x86/PMOVMSKB.html">PMOVMSKB</a> instructions to get the byte mask of the AVX2 register, and then apply the new <a href="http://www.felixcloutier.com/x86/TZCNT.html">TZCNT</a> instruction (to get the position of the first set bit in the register). The latter two instructions have a latency of 3 cycles each, and the logic itself has a latency of around 4-5 cycles.</p>
 	<p>In theory, we traded a single instruction that has latency of 11 cycles for a complex flow with a theoretical latency of 10 cycles. But we would make it up in throughput, right? Apparently not. This is because the fields in the HTTP request are usually short so we don't gain from the increased throughput.</p>
-	<h3 id="sowhatcanwedo">So what can we do?</h3>
+	<h3>So what can we do?</h3>
 	<p>The solution is to change the logical flow of the program from latency bound to throughput oriented. Instead of searching for the next occurrence of a token, we create a bitmap of all the occurrences in a long string. We did this when we used the PMOVMSKB instruction before; however, instead of discarding all but the first bit, we use all the bits! Moreover, to gain more from the high throughput of the AVX2 instructions, we created a bitmask for 128 bytes of the request at a time, and in addition, we create bitmasks for two types of token together—both the name/value delimiter and the new line delimiter.</p>
 	<p>To parse the resulting bit string, we use the TZCNT instruction repeatedly resulting in improved performance. This was done by compiling with gcc 4.9.2, with <code>-mavx2 -mbmi2 -O3</code> for both versions. Here are the results from Haswell i5-4278U, with turbo disabled for consistency:</p>
-	<pre><code>             PCMPESTRI   AVX2       Improvement
+	<pre class="language-bash"><code class="language-bash">             PCMPESTRI   AVX2       Improvement
 bench.c      3,900,156   6,963,788  1.79x
-fukamachi.c  4,807,692   8,064,516  1.68x
-</code></pre>
+fukamachi.c  4,807,692   8,064,516  1.68x</code></pre>
 	<p>While we managed to squeeze significant performance from the parser by using AVX2 instructions, there is still plenty of room to improve the code—feel free to try it yourself!</p>
 	<p>To read the actual code behind this blog post see <a href="https://github.com/h2o/picohttpparser/pull/10">this pull request</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

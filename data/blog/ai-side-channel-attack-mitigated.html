@@ -1,50 +1,61 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ai-side-channel-attack-mitigated-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/ai-side-channel-attack-mitigated-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ko-kr/ai-side-channel-attack-mitigated-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/ja-jp/ai-side-channel-attack-mitigated-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/ai-side-channel-attack-mitigated-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/ai-side-channel-attack-mitigated-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/ai-side-channel-attack-mitigated-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/ai-side-channel-attack-mitigated-pt-br">Português</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/03/Mitigating-a-Token-Length-Side-Channel-attack-in-our-AI-products.png" class="kg-image" alt="Mitigating a token-length side-channel attack in our AI products" loading="lazy" width="1600" height="900"></figure>
-	<p>Since the discovery of <a href="https://en.wikipedia.org/wiki/CRIME">CRIME</a>, <a href="https://breachattack.com">BREACH</a>, <a href="https://media.blackhat.com/eu-13/briefings/Beery/bh-eu-13-a-perfect-crime-beery-wp.pdf">TIME</a>, <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack">LUCKY-13</a> etc., length-based side-channel attacks have been considered practical. Even though packets were encrypted, attackers were able to infer information about the underlying plaintext by analyzing metadata like the packet length or timing information.<br><br>Cloudflare was recently contacted by a group of researchers at <a href="https://cris.bgu.ac.il/en">Ben Gurion University</a> who wrote a paper titled “<a href="https://cdn.arstechnica.net/wp-content/uploads/2024/03/LLM-Side-Channel.pdf">What Was Your Prompt? A Remote Keylogging Attack on AI Assistants</a>” that describes “a novel side-channel that can be used to read encrypted responses from AI Assistants over the web”.</p>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ai-side-channel-attack-mitigated">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ai-side-channel-attack-mitigated">Français</a>, <a href="https://blog.cloudflare.com/de-de/ai-side-channel-attack-mitigated">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ai-side-channel-attack-mitigated">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ai-side-channel-attack-mitigated">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/ai-side-channel-attack-mitigated">Português</a>, <a href="https://blog.cloudflare.com/es-es/ai-side-channel-attack-mitigated">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/ai-side-channel-attack-mitigated">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5do9zHtgVCZfCILMjoXAmV/08e1beffdd2bb6b730103fd4f1a9f18d/Mitigating-a-Token-Length-Side-Channel-attack-in-our-AI-products.png" alt="Mitigating a token-length side-channel attack in our AI products" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Since the discovery of <a href="https://en.wikipedia.org/wiki/CRIME">CRIME</a>, <a href="https://breachattack.com">BREACH</a>, <a href="https://media.blackhat.com/eu-13/briefings/Beery/bh-eu-13-a-perfect-crime-beery-wp.pdf">TIME</a>, <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack">LUCKY-13</a> etc., length-based side-channel attacks have been considered practical. Even though packets were encrypted, attackers were able to infer information about the underlying plaintext by analyzing metadata like the packet length or timing information.</p>
+	<p>Cloudflare was recently contacted by a group of researchers at <a href="https://cris.bgu.ac.il/en">Ben Gurion University</a> who wrote a paper titled “<a href="https://cdn.arstechnica.net/wp-content/uploads/2024/03/LLM-Side-Channel.pdf">What Was Your Prompt? A Remote Keylogging Attack on AI Assistants</a>” that describes “a novel side-channel that can be used to read encrypted responses from AI Assistants over the web”.</p>
 	<p>The Workers AI and AI Gateway team collaborated closely with these security researchers through our <a href="https://blog.cloudflare.com/cloudflare-bug-bounty-program">Public Bug Bounty program</a>, discovering and fully patching a vulnerability that affects LLM providers. You can read the detailed research paper <a href="https://cdn.arstechnica.net/wp-content/uploads/2024/03/LLM-Side-Channel.pdf">here</a>.</p>
 	<p>Since being notified about this vulnerability, we've implemented a mitigation to help secure all Workers AI and AI Gateway customers. As far as we could assess, there was no outstanding risk to Workers AI and AI Gateway customers.</p>
-	<h3 id="how-does-the-side-channel-attack-work">How does the side-channel attack work?</h3>
+	<h3>How does the side-channel attack work?</h3>
 	<p>In the paper, the authors describe a method in which they intercept the stream of a chat session with an LLM provider, use the network packet headers to infer the length of each token, extract and segment their sequence, and then use their own dedicated LLMs to infer the response.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/pasted-image-0--2--3.png" class="kg-image" alt="" loading="lazy" width="1600" height="1045"></figure>
-	<p>The two main requirements for a successful attack are an AI chat client running in <strong>streaming</strong> mode and a malicious actor capable of capturing network traffic between the client and the AI chat service. In streaming mode, the LLM tokens are emitted sequentially, introducing a token-length side-channel. Malicious actors could eavesdrop on packets via public networks or within an ISP.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EeuXpPSqqvqIZKZUFPKEY/b24b41e4779e5866e2b9038883064697/pasted-image-0--2--3.png" alt="" class="kg-image" width="1600" height="1045" loading="lazy">
+
+	</figure>
+	<p>The two main requirements for a successful attack are an AI chat client running in <b>streaming</b> mode and a malicious actor capable of capturing network traffic between the client and the AI chat service. In streaming mode, the LLM tokens are emitted sequentially, introducing a token-length side-channel. Malicious actors could eavesdrop on packets via public networks or within an ISP.</p>
 	<p>An example request vulnerable to the side-channel attack looks like this:</p>
-	<pre><code>curl -X POST \
-https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8 \
-  -H "Authorization: Bearer &lt;Token&gt;" \
-  -d '{"stream":true,"prompt":"tell me something about portugal"}'
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">curl -X POST \
+https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/llama-2-7b-chat-int8 \
+  -H "Authorization: Bearer <token>" \
+  -d '{"stream":true,"prompt":"tell me something about portugal"}'</token></account-id></code></pre>
 	<p>Let’s use <a href="https://www.wireshark.org">Wireshark</a> to inspect the network packets on the LLM chat session while streaming:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/03/media.png" class="kg-image" alt="" loading="lazy" width="1600" height="770"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sII07hkJGaVXBKlWoBoEW/b688daa6d6ec530152da6cd63d87febe/media.png" alt="" class="kg-image" width="1600" height="770" loading="lazy">
+
+	</figure>
 	<p>The first packet has a length of 95 and corresponds to the token "Port" which has a length of four. The second packet has a length of 93 and corresponds to the token "ug" which has a length of two, and so on. By removing the likely token envelope from the network packet length, it is easy to infer how many tokens were transmitted and their sequence and individual length just by sniffing encrypted network data.</p>
 	<p>Since the attacker needs the sequence of individual token length, this vulnerability only affects text generation models using streaming. This means that AI inference providers that use streaming — the most common way of interacting with LLMs — like Workers AI, are potentially vulnerable.</p>
 	<p>This method requires that the attacker is on the same network or in a position to observe the communication traffic and its accuracy depends on knowing the target LLM’s writing style. In ideal conditions, the researchers claim that their system “can reconstruct 29% of an AI assistant’s responses and successfully infer the topic from 55% of them”. It’s also important to note that unlike other side-channel attacks, in this case the attacker has no way of evaluating its prediction against the ground truth. That means that we are as likely to get a sentence with near perfect accuracy as we are to get one where only things that match are conjunctions.</p>
-	<h3 id="mitigating-llm-side-channel-attacks">Mitigating LLM side-channel attacks</h3>
-	<p>Since this type of attack relies on the length of tokens being inferred from the packet, it can be just as easily mitigated by obscuring token size. The researchers suggested a few strategies to mitigate these side-channel attacks, one of which is the simplest: padding the token responses with random length noise to obscure the length of the token so that responses can not be inferred from the packets. While we immediately added the mitigation to our own inference product — Workers AI, we wanted to help customers secure their LLMs regardless of where they are running them by adding it to our AI Gateway. </p>
+	<h3>Mitigating LLM side-channel attacks</h3>
+	<p>Since this type of attack relies on the length of tokens being inferred from the packet, it can be just as easily mitigated by obscuring token size. The researchers suggested a few strategies to mitigate these side-channel attacks, one of which is the simplest: padding the token responses with random length noise to obscure the length of the token so that responses can not be inferred from the packets. While we immediately added the mitigation to our own inference product — Workers AI, we wanted to help customers secure their LLMs regardless of where they are running them by adding it to our AI Gateway.</p>
 	<p>As of today, all users of Workers AI and AI Gateway are now automatically protected from this side-channel attack.</p>
-	<h3 id="what-we-did">What we did</h3>
+	<h3>What we did</h3>
 	<p>Once we got word of this research work and how exploiting the technique could potentially impact our AI products, we did what we always do in situations like this: we assembled a team of systems engineers, security engineers, and product managers and started discussing risk mitigation strategies and next steps. We also had a call with the researchers, who kindly attended, presented their conclusions, and answered questions from our teams.</p>
 	<p>The research team provided a testing notebook that we could use to validate the attack's results. While we were able to reproduce the results for the notebook's examples, we found that the accuracy varied immensely with our tests using different prompt responses and different LLMs. Nonetheless, the paper has merit, and the risks are not negligible.</p>
 	<p>We decided to incorporate the first mitigation suggestion in the paper: including random padding to each message to hide the actual length of tokens in the stream, thereby complicating attempts to infer information based solely on network packet size.</p>
-	<h3 id="workers-ai-our-inference-product-is-now-protected">Workers AI, our inference product, is now protected</h3>
+	<h3>Workers AI, our inference product, is now protected</h3>
 	<p>With our inference-as-a-service product, anyone can use the <a href="https://developers.cloudflare.com/workers-ai">Workers AI</a> platform and make API calls to our supported AI models. This means that we oversee the inference requests being made to and from the models. As such, we have a responsibility to ensure that the service is secure and protected from potential vulnerabilities. We immediately rolled out a fix once we were notified of the research, and all Workers AI customers are now automatically protected from this side-channel attack. We have not seen any malicious attacks exploiting this vulnerability, other than the ethical testing from the researchers.</p>
 	<p>Our solution for Workers AI is a variation of the mitigation strategy suggested in the research document. Since we stream JSON objects rather than the raw tokens, instead of padding the tokens with whitespace characters, we added a new property, "p" (for padding) that has a string value of variable random length.</p>
 	<p>Example streaming response using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">SSE</a> syntax:</p>
-	<pre><code class="language-js">data: {"response":"portugal","p":"abcdefghijklmnopqrstuvwxyz0123456789a"}
+	<pre class="language-js"><code class="language-js">data: {"response":"portugal","p":"abcdefghijklmnopqrstuvwxyz0123456789a"}
 data: {"response":" is","p":"abcdefghij"}
 data: {"response":" a","p":"abcdefghijklmnopqrstuvwxyz012"}
 data: {"response":" southern","p":"ab"}
 data: {"response":" European","p":"abcdefgh"}
 data: {"response":" country","p":"abcdefghijklmno"}
-data: {"response":" located","p":"abcdefghijklmnopqrstuvwxyz012345678"}
-</code></pre>
+data: {"response":" located","p":"abcdefghijklmnopqrstuvwxyz012345678"}</code></pre>
 	<p>This has the advantage that no modifications are required in the SDK or the client code, the changes are invisible to the end-users, and no action is required from our customers. By adding random variable length to the JSON objects, we introduce the same network-level variability, and the attacker essentially loses the required input signal. Customers can continue using Workers AI as usual while benefiting from this protection.</p>
-	<h3 id="one-step-further-ai-gateway-protects-users-of-any-inference-provider">One step further: AI Gateway protects users of any inference provider</h3>
+	<h3>One step further: AI Gateway protects users of any inference provider</h3>
 	<p>We added protection to our AI inference product, but we also have a product that proxies requests to any provider — <a href="https://developers.cloudflare.com/ai-gateway">AI Gateway</a>. AI Gateway acts as a proxy between a user and supported inference providers, helping developers gain control, performance, and observability over their AI applications. In line with our mission to help build a better Internet, we wanted to quickly roll out a fix that can help all our customers using text generation AIs, regardless of which provider they use or if they have mitigations to prevent this attack. To do this, we implemented a similar solution that pads all streaming responses proxied through AI Gateway with random noise of variable length.</p>
 	<p>Our AI Gateway customers are now automatically protected against this side-channel attack, even if the upstream inference providers have not yet mitigated the vulnerability. If you are unsure if your inference provider has patched this vulnerability yet, use AI Gateway to proxy your requests and ensure that you are protected.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>At Cloudflare, our mission is to help build a better Internet – that means that we care about all citizens of the Internet, regardless of what their tech stack looks like. We are proud to be able to improve the security of our AI products in a way that is transparent and requires no action from our customers.</p>
 	<p>We are grateful to the researchers who discovered this vulnerability and have been very collaborative in helping us understand the problem space. If you are a security researcher who is interested in helping us make our products more secure, check out our Bug Bounty program at <a href="https://hackerone.com/cloudflare">hackerone.com/cloudflare</a>.</p>
 </div>

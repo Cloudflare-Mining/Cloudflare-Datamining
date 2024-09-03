@@ -1,46 +1,62 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image3-29.png" class="kg-image" alt="Lost in transit: debugging dropped packets from negative header lengths." loading="lazy" width="1921" height="1080"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tokKH49S2rHSl2HiAEeHl/9f822e144bfca9d2571a4ef2f0b7660f/image3-29.png" alt="Lost in transit: debugging dropped packets from negative header lengths." class="kg-image" width="1921" height="1080" loading="lazy">
+
+	</figure>
 	<p>Previously, I wrote about building <a href="https://blog.cloudflare.com/high-availability-load-balancers-with-maglev">network load balancers with the maglev scheduler</a>, which we use for ingress into our Kubernetes clusters. At the time of that post we were using Foo-over-UDP encapsulation with virtual interfaces, one for each Internet Protocol version for each worker node.</p>
 	<p>To reduce operational toil managing the traffic director nodes, we've recently switched to using IP Virtual Server's (IPVS) native support for encapsulation. Much to our surprise, instead of a smooth change, we instead observed significant drops in bandwidth and failing API requests. In this post I'll discuss the impact observed, the multi-week search for the root cause, and the ultimate fix.</p>
-	<h3 id="recap-and-the-change">Recap and the change</h3>
+	<h3>Recap and the change</h3>
 	<p>To support our requirements we've been creating virtual interfaces on our traffic directors configured to encapsulate traffic with Foo-Over-UDP (FOU). In this encapsulation new UDP and IP headers are added to the original packet. When the worker node receives this packet, the kernel removes the outer headers and injects the inner packet back into the network stack. Each virtual interface would be assigned a private IP, which would be configured to send traffic to these private IPs in "direct" mode.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image4-24.png" class="kg-image" alt="" loading="lazy" width="590" height="512"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/166RG9mgcpaP80xGDieN46/faa8855a23e4ccc115f96613ad4a358d/image4-24.png" alt="" class="kg-image" width="590" height="512" loading="lazy">
+
+	</figure>
 	<p>This configuration presents several problems for our operations teams.</p>
 	<p>For example, each Kubernetes worker node needs a separate virtual interface on the traffic director, and each of the interfaces requires their own private IP. The pairs of virtual interfaces and private IPs were only used by this system, but still needed to be tracked in our configuration management system. To ensure the interfaces were created and configured properly on each director we had to run complex health checks, which added to the lag between provisioning a new worker node and the director being ready to send it traffic. Finally, the header for FOU also lacks a way to signal the "next protocol" of the inner packet, requiring a separate virtual interface for IPv4 and IPv6. Each of these problems individually contributed a small amount of toil, but taken together, gave us impetus to find a better alternative.</p>
 	<p>In the time since we had originally implemented this system, IPVS has added native support for encapsulation. This would allow us to eliminate provisioning virtual interfaces (and their corresponding private IPs), and be able to use newly provisioned workers without delay.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image1-40.png" class="kg-image" alt="" loading="lazy" width="590" height="512"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CLprcnKtcCYzpCCnDkjl2/55c2f94d5c6a4edb01f1d3e288807e7b/image1-40.png" alt="" class="kg-image" width="590" height="512" loading="lazy">
+
+	</figure>
 	<p>IPVS doesn't support Foo-over-UDP as an encapsulation type. As part of this project we switched to a similar option, <a href="https://datatracker.ietf.org/doc/html/draft-ietf-intarea-gue-09">Generic UDP Encapsulation</a> (GUE). This encapsulation option does include the "next protocol", allowing one listener on the worker nodes to support both IPv4 and IPv6.</p>
-	<h3 id="what-went-wrong">What went wrong?</h3>
+	<h3>What went wrong?</h3>
 	<p>When we make changes to our Kubernetes clusters, we go through several layers of testing. This change had been deployed to the traffic directors in front of our staging environments, where it had been running for several weeks. However, due to the nature of this bug, the type of traffic to our staging environment did not trigger the underlying bug.</p>
 	<p>We began a slow rollout of this change to one production cluster, and after a few hours we began observing issues reaching services behind Kubernetes Load Balancers. The behavior observed was very interesting: the vast majority of requests had no issues, but a small percentage of requests corresponding to large HTTP request payloads or gRPC had significant latency. However, large responses had no corresponding latency increase. There was no corresponding increase in latency seen to any requests to our ingress controllers, though we could observe a small drop in overall requests per second.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/image6-9.png" class="kg-image" alt="" loading="lazy" width="1908" height="296"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LhkHSdh6ronJadcny3OGI/1ce6d785ab3783926dec79f62e5debcc/image6-9.png" alt="" class="kg-image" width="1908" height="296" loading="lazy">
+
+	</figure>
 	<p>Through debugging after the incident, we discovered that the traffic directors were dropping packets that exceeded the Internet maximum transmission unit (MTU) of 1500 bytes, despite the packets being smaller than the actual MTU configured in our internal networks. Once dropped, the original host would fragment and resend packets until they were small enough to pass through the traffic directors. Dropping one packet is inconvenient, but unlikely to be noticed. However, when making a request with large payloads it is very likely that all packets would be dropped and need to be individually fragmented and resent.</p>
 	<p>When every packet is dropped and has to be &nbsp;resent, the network latency can add up to several seconds, exceeding the request timeouts configured by applications. This would cause the request to fail. necessitating retries by applications. As more traffic directors were reconfigured, these retries were less likely to succeed, leading to slower processing and causing the backlog of queued work to increase.</p>
 	<p>As you can see this small, but consistent, number of dropped packets could cause a domino effect into much larger problems. Once it became clear there was a problem, we reverted traffic directors to their previous configuration, and this quickly restored traffic to previous levels. From this we knew something about the change caused this problem.</p>
-	<h3 id="finding-the-culprit">Finding the culprit</h3>
+	<h3>Finding the culprit</h3>
 	<p>With the symptoms of the issues identified, we started to try to understand the root cause. Once the root cause was understood, we could come up with a satisfactory solution.</p>
 	<p>Knowing the packets were larger than the Internet MTU, our first thought was that this was a misconfiguration of the machine in our configuration management tool. However, we found the interface MTUs were all set as expected, and there were no overriding MTUs in the routing table. We also found that sending packets from the director that exceeded the Internet MTU worked fine with no drops.</p>
-	<p>Cilium has developed a debugging tool <a href="https://github.com/cilium/pwru">pwru</a>, short for "packet, where are you?", that uses eBPF to aid in debugging the kernel networking state. We used pwru in our staging environment and found the location where the packet had been dropped.</p><!--kg-card-begin: markdown-->
-	<pre><code>sudo pwru --output-skb --output-tuple --per-cpu-buffer 2097152 --output-file pwru.log
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>This captures tracing data for all packets that reach the traffic director, and saves the trace data to "pwru.log". There are filters built into <code>pwru</code> to select matching packets, but unfortunately they could not be used as the packet was being modified by the encapsulation. Instead, we used grep afterwards to find a matching packet, and then filtered farther based on the pointer in the first column.</p><!--kg-card-begin: markdown-->
-	<pre><code>0xffff947712f34400      9        [&lt;empty&gt;]               packet_rcv netns=4026531840 mark=0x0 ifindex=4 proto=8 mtu=1600 len=1512 172.70.2.6:49756-&gt;198.51.100.150:8000(tcp)
-0xffff947712f34400      9        [&lt;empty&gt;]                 skb_push netns=4026531840 mark=0x0 ifindex=4 proto=8 mtu=1600 len=1512 172.70.2.6:49756-&gt;198.51.100.150:8000(tcp)
-0xffff947712f34400      9        [&lt;empty&gt;]              consume_skb netns=4026531840 mark=0x0 ifindex=4 proto=8 mtu=1600 len=1512 172.70.2.6:49756-&gt;198.51.100.150:8000(tcp)
+	<p>Cilium has developed a debugging tool <a href="https://github.com/cilium/pwru">pwru</a>, short for "packet, where are you?", that uses eBPF to aid in debugging the kernel networking state. We used pwru in our staging environment and found the location where the packet had been dropped.</p>
+	<pre class="language-bash"><code class="language-bash">sudo pwru --output-skb --output-tuple --per-cpu-buffer 2097152 --output-file pwru.log</code></pre>
+	<p>This captures tracing data for all packets that reach the traffic director, and saves the trace data to "pwru.log". There are filters built into <code>pwru</code> to select matching packets, but unfortunately they could not be used as the packet was being modified by the encapsulation. Instead, we used grep afterwards to find a matching packet, and then filtered farther based on the pointer in the first column.</p>
+	<pre class="language-bash"><code class="language-bash">0xffff947712f34400      9        [<empty>]               packet_rcv netns=4026531840 mark=0x0 ifindex=4 proto=8 mtu=1600 len=1512 172.70.2.6:49756-&gt;198.51.100.150:8000(tcp)
+0xffff947712f34400      9        [<empty>]                 skb_push netns=4026531840 mark=0x0 ifindex=4 proto=8 mtu=1600 len=1512 172.70.2.6:49756-&gt;198.51.100.150:8000(tcp)
+0xffff947712f34400      9        [<empty>]              consume_skb netns=4026531840 mark=0x0 ifindex=4 proto=8 mtu=1600 len=1512 172.70.2.6:49756-&gt;198.51.100.150:8000(tcp)
 [ ... snip ... ]
-0xffff947712f34400      9        [&lt;empty&gt;]         inet_gso_segment netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1544 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)
-0xffff947712f34400      9        [&lt;empty&gt;]        udp4_ufo_fragment netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1524 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)
-0xffff947712f34400      9        [&lt;empty&gt;]   skb_udp_tunnel_segment netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1524 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)
-0xffff947712f34400      9        [&lt;empty&gt;] kfree_skb_reason(SKB_DROP_REASON_NOT_SPECIFIED) netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1558 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)
-</code></pre>
-	<!--kg-card-end: markdown-->
+0xffff947712f34400      9        [<empty>]         inet_gso_segment netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1544 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)
+0xffff947712f34400      9        [<empty>]        udp4_ufo_fragment netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1524 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)
+0xffff947712f34400      9        [<empty>]   skb_udp_tunnel_segment netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1524 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)
+0xffff947712f34400      9        [<empty>] kfree_skb_reason(SKB_DROP_REASON_NOT_SPECIFIED) netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1558 172.70.4.34:33259-&gt;172.70.64.149:5501(udp)</empty></empty></empty></empty></empty></empty></empty></code></pre>
 	<p>Looking at the lines logged for this packet, we can observe some behavior. We originally received a TCP packet for the load balancer IP. However, when the packet is dropped, it is a UDP packet destined for the worker's IP on the port we use for GUE. We can surmise that the packet was being processed and encapsulated by IPVS, and form a theory it was being dropped on the egress path from the director node. We could also see that when the packet was dropped, the packet was still smaller than the calculated MTU.</p>
 	<p>We can visualize this change by applying this information to our GUE encapsulation diagram shown earlier. The byte totals of the encapsulated packet is 1544, matching the length <code>pwru</code> logged entering <code>inet_gso_segment</code> above.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image2-38.png" class="kg-image" alt="" loading="lazy" width="631" height="845"></figure>
-	<p>The trace above tells us what kernel functions are entered, but does not tell us if or how the program flow left. This means we don't know in which function kfree_skb_reason was called. Fortunately <code>pwru</code> can print a stacktrace when functions are entered.</p><!--kg-card-begin: markdown-->
-	<pre><code>0xffff9868b7232e00 	19       	[pwru] kfree_skb_reason(SKB_DROP_REASON_NOT_SPECIFIED) netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1558 172.70.4.34:63336-&gt;172.70.72.206:5501(udp)
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oBm7taQSl2U4UH3reulvJ/bb92576e1ad92ea2d91e6b80926fbb3f/image2-38.png" alt="" class="kg-image" width="631" height="845" loading="lazy">
+
+	</figure>
+	<p>The trace above tells us what kernel functions are entered, but does not tell us if or how the program flow left. This means we don't know in which function kfree_skb_reason was called. Fortunately <code>pwru</code> can print a stacktrace when functions are entered.</p>
+	<pre class="language-bash"><code class="language-bash">0xffff9868b7232e00 	19       	[pwru] kfree_skb_reason(SKB_DROP_REASON_NOT_SPECIFIED) netns=4026531840 mark=0x0 ifindex=7 proto=8 mtu=1600 len=1558 172.70.4.34:63336-&gt;172.70.72.206:5501(udp)
 kfree_skb_reason
 validate_xmit_skb
 __dev_queue_xmit
@@ -67,27 +83,25 @@ __audit_syscall_exit
 syscall_exit_work
 syscall_exit_to_user_mode
 do_syscall_64
-entry_SYSCALL_64_after_hwframe
-</code></pre>
-	<!--kg-card-end: markdown-->
+entry_SYSCALL_64_after_hwframe</code></pre>
 	<p>This <code>stacktrace</code> shows that <code>kfree_skb_reason</code> was called from within the <code>validate_xmit_skb</code> function and this is called from <code>ip_vs_tunnel_xmit</code>. However, when looking at the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/core/dev.c?h=v6.1.32&amp;id=76ba310227d2490018c271f1ecabb6c0a3212eb0#n3660">implementation of validate_xmit_skb</a>, we find there are three paths to <code>kfree_skb</code>. How can we determine which path is taken?</p>
 	<p>In addition to the eBPF support used by pwru, Linux has support for attaching dynamic tracepoints using <code>perf-probe</code>. After installing the kernel source code and debugging symbols, we can ask the <code>kprobe</code> mechanism what lines of <code>validate_xmit_skb</code> we can create a dynamic tracepoint. It prints the line numbers for the line we can attach a tracepoint onto.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image5-16.png" class="kg-image" alt="" loading="lazy" width="870" height="966"></figure>
-	<p>Unfortunately, we can't create a tracepoint on the goto lines, but we can attach tracepoints around them, using the context to determine how control flowed through this function. In addition to specifying a line number, additional arguments can be specified to include local variables. The skb variable is a pointer to a structure that represents this packet, which can be logged to separate packets in case more than one is being processed at a time.</p><!--kg-card-begin: markdown-->
-	<pre><code>sudo perf probe --add 'validate_xmit_skb:17 skb'
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ddSe06sv8S2w4lAXfZGFi/5e200ead8487644f7aa4572fb9f6ef98/image5-16.png" alt="" class="kg-image" width="870" height="966" loading="lazy">
+
+	</figure>
+	<p>Unfortunately, we can't create a tracepoint on the goto lines, but we can attach tracepoints around them, using the context to determine how control flowed through this function. In addition to specifying a line number, additional arguments can be specified to include local variables. The skb variable is a pointer to a structure that represents this packet, which can be logged to separate packets in case more than one is being processed at a time.</p>
+	<pre class="language-bash"><code class="language-bash">sudo perf probe --add 'validate_xmit_skb:17 skb'
 sudo perf probe --add 'validate_xmit_skb:20 skb'
 sudo perf probe --add 'validate_xmit_skb:24 skb'
-sudo perf probe --add 'validate_xmit_skb:32 skb'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Access to these tracepoints could be recorded by using <code>perf-record</code> and providing the tracepoint names given when they were added.</p><!--kg-card-begin: markdown-->
-	<pre><code>sudo perf record -a -e 'probe:validate_xmit_skb_L17,probe:validate_xmit_skb_L20,probe:validate_xmit_skb_L24,probe:validate_xmit_skb_L32'
-</code></pre>
-	<!--kg-card-end: markdown-->
+sudo perf probe --add 'validate_xmit_skb:32 skb'</code></pre>
+	<p>Access to these tracepoints could be recorded by using <code>perf-record</code> and providing the tracepoint names given when they were added.</p>
+	<pre class="language-bash"><code class="language-bash">sudo perf record -a -e 'probe:validate_xmit_skb_L17,probe:validate_xmit_skb_L20,probe:validate_xmit_skb_L24,probe:validate_xmit_skb_L32'</code></pre>
 	<p>The tests can be rerun so some packets are logged, before using <code>perf-script</code> to read the generated "perf.data" file. When inspecting the output file, we found that all the packets that were dropped were coming from the control flow of <code>netif_needs_gso</code> succeeding (that is, from the goto on line 18). We continued to create and record tracepoints, following the failing control flow, until execution reached <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/net/ipv4/udp_offload.c?h=v6.1.32&amp;id=76ba310227d2490018c271f1ecabb6c0a3212eb0#n15"><code>__skb_udp_tunnel_segment</code></a>.</p>
 	<p>When <code>netif_needs_gso</code> returns false, we do not see packet drops and no problems are reported. It returns true when the packet is larger than the maximum segment size (MSS) advertised by our peer in the connection handshake. For IPv4, the MSS is usually 40 bytes smaller than the MTU (though this can be adjusted by the application or system configuration). For most packets the traffic directors see, the MSS is 40 bytes less than the Internet MTU of 1500, or in this case 1460.</p>
-	<p>The tracepoints in this function showed that control flow was leaving through the error case on line 33: that kernel was unable to allocate memory for the tunnel header. GUE was designed to have a minimal tunnel header, so this seemed suspicious. We updated the probe to also record the calculated <code>tnl_hlen</code>, and reran the tests. To our surprise the value recorded by the probes was "-2". Huh, somehow the encapsulated packet got smaller?</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-c++">static struct sk_buff *__skb_udp_tunnel_segment(struct sk_buff *skb,
+	<p>The tracepoints in this function showed that control flow was leaving through the error case on line 33: that kernel was unable to allocate memory for the tunnel header. GUE was designed to have a minimal tunnel header, so this seemed suspicious. We updated the probe to also record the calculated <code>tnl_hlen</code>, and reran the tests. To our surprise the value recorded by the probes was "-2". Huh, somehow the encapsulated packet got smaller?</p>
+	<pre class="language-c++"><code class="language-c++">static struct sk_buff *__skb_udp_tunnel_segment(struct sk_buff *skb,
     netdev_features_t features,
     struct sk_buff *(*gso_inner_segment)(struct sk_buff *skb,
    				  	netdev_features_t features),
@@ -105,31 +119,31 @@ sudo perf probe --add 'validate_xmit_skb:32 skb'
     bool need_ipsec;
 
     if (unlikely(!pskb_may_pull(skb, tnl_hlen))) // allocation failed due to negative number.
-   	 goto out;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="ultimate-fix">Ultimate fix</h3>
+   	 goto out;</code></pre>
+	<h3>Ultimate fix</h3>
 	<p>At this point the kernel's behavior was a bit baffling: why would the tunnel header be computed to be a negative number? To answer this question, we added two more probes. The first was added to <code>ip_vs_in_hook</code>, a hook function that is called as packets enter and leave IPVS code. The second probe was added to <code>__dev_queue_xmit</code>, which is called when preparing to ask the hardware device to transmit the packet. To both of these probes we also logged some of the fields of the sk_buff struct by using the <code>"pointer-&gt;field"</code> syntax. These fields are offsets into the packet's data for the packet's headers, as well as corresponding offsets for the encapsulated headers.</p>
 	<ul>
-		<li>The <code>mac_header</code> and <code>inner_mac_header</code> are offsets to the packet's layer two header. For Ethernet this includes the MAC addresses for the frame, but also other metadata such as the EtherType field giving the type the next protocol.</li>
-		<li>The <code>network_header</code> and <code>inner_network_header</code> fields are offsets to the packet's layer three header. For our purposes, this would be the header for IPv4 or IPv6.</li>
-		<li>The <code>transport_header</code> and <code>inner_transport_header</code> fields are offset to the packet's layer four header, such as TCP, UDP, or ICMP.</li>
-	</ul><!--kg-card-begin: markdown-->
-	<pre><code>sudo perf probe -m ip_vs --add 'ip_vs_in_hook dev=skb-&gt;dev-&gt;name:string skb skb-&gt;inner_mac_header skb-&gt;inner_network_header skb-&gt;inner_transport_header skb-&gt;mac_header skb-&gt;network_header skb-&gt;transport_header skb-&gt;ipvs_property skb-&gt;len:u skb-&gt;data_len:u'
-sudo perf probe --add '__dev_queue_xmit dev=skb-&gt;dev-&gt;name:string skb skb-&gt;inner_mac_header skb-&gt;inner_network_header skb-&gt;inner_transport_header skb-&gt;mac_header skb-&gt;network_header skb-&gt;transport_header skb-&gt;len:u skb-&gt;data_len:u'
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>When we review the tracepoints using perf-script, we can notice something interesting with these values.</p><!--kg-card-begin: markdown-->
-	<pre><code>swapper     0 [030] 79090.376151:    probe:ip_vs_in_hook: (ffffffffc0feebe0) dev="vlan100" skb=0xffff9ca661e90200 inner_mac_header=0x0 inner_network_header=0x0 inner_transport_header=0x0 mac_header=0x44 network_header=0x52 transport_header=0x66 len=1512 data_len=12
+		<li>
+			<p>The <code>mac_header</code> and <code>inner_mac_header</code> are offsets to the packet's layer two header. For Ethernet this includes the MAC addresses for the frame, but also other metadata such as the EtherType field giving the type the next protocol.</p>
+		</li>
+		<li>
+			<p>The <code>network_header</code> and <code>inner_network_header</code> fields are offsets to the packet's layer three header. For our purposes, this would be the header for IPv4 or IPv6.</p>
+		</li>
+		<li>
+			<p>The <code>transport_header</code> and <code>inner_transport_header</code> fields are offset to the packet's layer four header, such as TCP, UDP, or ICMP.</p>
+		</li>
+	</ul>
+	<pre class="language-bash"><code class="language-bash">sudo perf probe -m ip_vs --add 'ip_vs_in_hook dev=skb-&gt;dev-&gt;name:string skb skb-&gt;inner_mac_header skb-&gt;inner_network_header skb-&gt;inner_transport_header skb-&gt;mac_header skb-&gt;network_header skb-&gt;transport_header skb-&gt;ipvs_property skb-&gt;len:u skb-&gt;data_len:u'
+sudo perf probe --add '__dev_queue_xmit dev=skb-&gt;dev-&gt;name:string skb skb-&gt;inner_mac_header skb-&gt;inner_network_header skb-&gt;inner_transport_header skb-&gt;mac_header skb-&gt;network_header skb-&gt;transport_header skb-&gt;len:u skb-&gt;data_len:u'</code></pre>
+	<p>When we review the tracepoints using perf-script, we can notice something interesting with these values.</p>
+	<pre class="language-bash"><code class="language-bash">swapper     0 [030] 79090.376151:    probe:ip_vs_in_hook: (ffffffffc0feebe0) dev="vlan100" skb=0xffff9ca661e90200 inner_mac_header=0x0 inner_network_header=0x0 inner_transport_header=0x0 mac_header=0x44 network_header=0x52 transport_header=0x66 len=1512 data_len=12
 swapper     0 [030] 79090.376153:    probe:ip_vs_in_hook: (ffffffffc0feebe0) dev="vlan100" skb=0xffff9ca661e90200 inner_mac_header=0x44 inner_network_header=0x52 inner_transport_header=0x66 mac_header=0x44 network_header=0x32 transport_header=0x46 len=1544 data_len=12
-swapper     0 [030] 79090.376155: probe:__dev_queue_xmit: (ffffffff85070e60) dev="vlan100" skb=0xffff9ca661e90200 inner_mac_header=0x44 inner_network_header=0x52 inner_transport_header=0x66 mac_header=0x44 network_header=0x32 transport_header=0x46 len=1558 data_len=12
-</code></pre>
-	<!--kg-card-end: markdown-->
+swapper     0 [030] 79090.376155: probe:__dev_queue_xmit: (ffffffff85070e60) dev="vlan100" skb=0xffff9ca661e90200 inner_mac_header=0x44 inner_network_header=0x52 inner_transport_header=0x66 mac_header=0x44 network_header=0x32 transport_header=0x46 len=1558 data_len=12</code></pre>
 	<p>When the packet reaches <code>ip_vs_in_hook</code> on the way into IPVS, it only has outer packet headers. This makes sense, as the packet hasn't been encapsulated by IPVS yet. When the same hook is called again as the packet leaves IPVS, we see the encapsulation is already completed. We also find that the outer MAC header and the inner MAC header are at the same offset. Knowing how the tunnel header length is calculated in <code>__skb_udp_tunnel_segment</code>, we can also see where "-2" comes from. The <code>inner_mac_header</code> is at offset 0x44, while the <code>transport_header</code> is at offset 0x46.</p>
 	<p>When packets pass through network interfaces, the code for the interface reserves some space for the MAC header. For example, on an Ethernet interface some space is reserved for the Ethernet headers. FOU and GUE do not use link-layer addressing like Ethernet so no space is needed to be reserved. When we were using the virtual interfaces with FOU before it was correctly handling this case by setting the inner MAC header offset to the same as the inner network offset, effectively making it zero bytes long.</p>
 	<p>When using the encapsulation inside IPVS, this was not being accounted for, resulting in the inner MAC header offset being invalid. When packets did not need to be segmented this was a harmless bug. When segmenting, however, the tunnel header size needed to be known to duplicate it to all segmented packets.</p>
-	<p>I created a patch to correct the MAC header offset in IPVS's encapsulation code. The correction to the inner header offsets needed to be duplicated for IPv4 and IPv6.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-diff">diff --git a/net/netfilter/ipvs/ip_vs_xmit.c b/net/netfilter/ipvs/ip_vs_xmit.c
+	<p>I created a patch to correct the MAC header offset in IPVS's encapsulation code. The correction to the inner header offsets needed to be duplicated for IPv4 and IPv6.</p>
+	<pre class="language-diff"><code class="language-diff">diff --git a/net/netfilter/ipvs/ip_vs_xmit.c b/net/netfilter/ipvs/ip_vs_xmit.c
 index c7652da78c88..9193e109e6b3 100644
 --- a/net/netfilter/ipvs/ip_vs_xmit.c
 +++ b/net/netfilter/ipvs/ip_vs_xmit.c
@@ -148,12 +162,14 @@ index c7652da78c88..9193e109e6b3 100644
 +	skb_set_inner_mac_header(skb, skb_inner_network_offset(skb));
  
  	if (tun_type == IP_VS_CONN_F_TUNNEL_TYPE_GUE) {
- 		bool check = false;
-</code></pre>
-	<!--kg-card-end: markdown-->
+ 		bool check = false;</code></pre>
 	<p>When the patch was included in our kernel and deployed the difference in end-to-end request latency was immediately noticeable. We also no longer observed packet drops for requests with large payloads.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image7-8.png" class="kg-image" alt="" loading="lazy" width="775" height="450"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SVrX3EiwZFhiRRkN1BMar/ebde4d7e548dadf33369d92c94cf1efc/image7-8.png" alt="" class="kg-image" width="775" height="450" loading="lazy">
+
+	</figure>
 	<p>I've <a href="https://lore.kernel.org/all/20230609205842.2333727-1-terin@cloudflare.com/T/#u">submitted the Linux kernel patch upstream</a>, which is currently queued for inclusion in future releases of the kernel.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>Through this post, we hoped to have provided some insight into the process of investigating networking issues and how to begin debugging issues in the kernel using <code>pwru</code> and <code>kprobe</code> tracepoints. This investigation also led to a Linux kernel patch upstream. It also allowed us to safely roll out IPVS's native encapsulation.</p>
 </div>

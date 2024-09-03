@@ -1,28 +1,45 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-13.png" class="kg-image" alt="Logpush: now lower cost and with more visibility" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4I8Bibk16KmMapo7kafthi/9609a43a4b1ed5bed7408c63464d5112/image5-13.png" alt="Logpush: now lower cost and with more visibility" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Logs are a critical part of every successful application. Cloudflare products and services around the world generate massive amounts of logs upon which customers of all sizes depend. Structured logging from our products are used by customers for purposes including analytics, debugging performance issues, <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">monitoring application health</a>, maintaining security standards for compliance reasons, and much more.</p>
 	<p>Logpush is Cloudflare’s product for pushing these critical logs to customer systems for consumption and analysis. Whenever our products generate logs as a result of traffic or data passing through our systems from anywhere in the world, we buffer these logs and push them directly to customer-defined destinations like <a href="https://www.cloudflare.com/products/r2">Cloudflare R2</a>, Splunk, AWS S3, and many more.</p>
 	<p>Today we are announcing three new key features related to Cloudflare’s <a href="https://developers.cloudflare.com/logs/about">Logpush</a> product. First, the ability to have only logs matching certain criteria be sent. Second, the ability to get alerted when logs are failing to be pushed due to customer destinations having issues or network issues occurring between Cloudflare and the customer destination. In addition, customers will also be able to query for analytics around the health of Logpush jobs like how many bytes and records were pushed, number of successful pushes, and number of failing pushes.</p>
-	<h3 id="filtering-logs-before-they-are-pushed">Filtering logs before they are pushed</h3>
+	<h3>Filtering logs before they are pushed</h3>
 	<p>Because logs are both critical and generated with high volume, many customers have to maintain complex infrastructure just to ingest and store logs, as well as deal with ever-increasing related costs. On a typical day, a real, example customer receives about 21 billion records, or 2.1 terabytes (about 24.9 TB uncompressed) of gzip compressed logs. Over the course of a month, that could easily be hundreds of billions of events and hundreds of terabytes of data.</p>
-	<p>It is often unnecessary to store and analyze all of this data, and customers could get by with specific subsets of the data matching certain criteria. For example, a customer might want just the set of HTTP data that had status code &gt;= 400, or the set of firewall data where the action taken was to block the user. <br>We can now achieve this in our Logpush jobs by setting specific filters on the fields of the log messages themselves. You can use either our <a href="https://developers.cloudflare.com/logs/reference/filters">API</a> or the Cloudflare dashboard to set up filters. </p>
+	<p>It is often unnecessary to store and analyze all of this data, and customers could get by with specific subsets of the data matching certain criteria. For example, a customer might want just the set of HTTP data that had status code &gt;= 400, or the set of firewall data where the action taken was to block the user.We can now achieve this in our Logpush jobs by setting specific filters on the fields of the log messages themselves. You can use either our <a href="https://developers.cloudflare.com/logs/reference/filters">API</a> or the Cloudflare dashboard to set up filters.</p>
 	<p>To do this in the dashboard, either create a new Logpush job or modify an existing job. You will see the option to set certain filters. For example, an ecommerce customer might want to receive logs only for the checkout page where the bot score was non-zero:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-30.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="logpush-job-alerting">Logpush job alerting</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AA0ciHtY8MWoYGyHOKMnQ/9487dfda38fa4d22ce2e1fccb059d23a/image2-30.png" alt="" class="kg-image" width="1076" height="353" loading="lazy">
+
+	</figure>
+	<h3>Logpush job alerting</h3>
 	<p>When logs are a critical part of your infrastructure, you want peace of mind that logging infrastructure is healthy. With that in mind, we are announcing the ability to get notified when your Logpush jobs have been retrying to push and failing for 24 hours.</p>
 	<p>To set up alerts in the Cloudflare dashboard:</p>
 	<p>1. First, navigate to “Notifications” in the left-panel of the account view</p>
 	<p>2. Next, Click the “add” button</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-22.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JLWRGmLeEDAsWSgD6QNGY/c07344ce4db0685ad7dde6156b373600/image3-22.png" alt="" class="kg-image" width="1999" height="417" loading="lazy">
+
+	</figure>
 	<p>3. Select the alert “Failing Logpush Job Disabled”</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-35.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>4. Configure the alert and click Save.<br><br>That’s it — you will receive an email alert if your Logpush job is disabled.</p>
-	<h3 id="logpush-job-health-api">Logpush Job Health API</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xw94OPKQCGuN9GwOUnanf/a0cbc4086eb5c8831b0324ed2f40a1b9/image1-35.png" alt="" class="kg-image" width="1986" height="166" loading="lazy">
+
+	</figure>
+	<p>4. Configure the alert and click Save.</p>
+	<p>That’s it — you will receive an email alert if your Logpush job is disabled.</p>
+	<h3>Logpush Job Health API</h3>
 	<p>We have also added the ability to query for stats related to the health of your Logpush jobs to our graphql API. Customers can now use our GraphQL API to query for things like the number of bytes pushed, number of compressed bytes pushed, number of records pushed, the status of each push, and much more. Using these stats, customers can have greater visibility into a core part of infrastructure. The GraphQL API is self documenting so full details about the new <code>logpushHealthAdaptiveGroups</code> node can be found using any GraphQL client, but head to <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL docs</a> for more information.</p>
 	<p>Below are a couple example queries of how you can use the GraphQL to find stats related to your Logpush jobs.</p>
-	<p>Query for number of pushes to S3 that resulted in status code != 200</p><!--kg-card-begin: markdown-->
-	<pre><code>query
+	<p>Query for number of pushes to S3 that resulted in status code != 200</p>
+	<pre class="language-bash"><code class="language-bash">query
 {
   viewer
   {
@@ -44,11 +61,9 @@
       }
     }
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Getting the number of bytes, compressed bytes and records that were pushed</p><!--kg-card-begin: markdown-->
-	<pre><code>query
+}</code></pre>
+	<p>Getting the number of bytes, compressed bytes and records that were pushed</p>
+	<pre class="language-bash"><code class="language-bash">query
 {
   viewer
   {
@@ -69,10 +84,8 @@
       }
     }
   }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="summary">Summary</h3>
+}</code></pre>
+	<h3>Summary</h3>
 	<p>Logpush is a robust and flexible platform for customers who need to integrate their own logging and monitoring systems with Cloudflare. Different Logpush jobs can be deployed to support multiple destinations or, with filtering, multiple subsets of logs.</p>
 	<p>Customers who haven't created Logpush jobs are encouraged to do so. Try pushing your logs to R2 for safe-<a href="https://blog.cloudflare.com/store-and-retrieve-logs-on-r2">keeping</a>! For customers who don't currently have access to this powerful tool, consider upgrading your plan.</p>
 </div>

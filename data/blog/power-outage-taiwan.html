@@ -1,22 +1,37 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iL8eNmFMwRDLAKYK3AMiv/325041776d894b25fcb237de2a2c86c4/power-outage-taiwan.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>At approximately 4:50pm local time (8:50am UTC) August 15, a major unexpected power outage hit the island of Taiwan with a significant amount of its power generation facilities going down.</p>
-	<h3 id="blackout">Blackout!</h3>
+	<h3>Blackout!</h3>
 	<p>Most of the island was hit with power outages, shortages and rolling blackouts, with street lights not functioning, nor power in many of Taipei’s shopping malls, and much other infrastructure.</p>
 	<p>Blackouts of this scale are very rare. Usually, during an outage of this scale, it would be expected that Internet traffic would greatly drop, as houses and businesses lose power and are unable to connect to the Internet. I’ve experienced this in the past, working at consumer ISPs. As households and businesses lose power, so do their modems or routers which connect them to the Internet.</p>
 	<p>However, during yesterday's outage, something different happened. I'd like to share some insights from yesterday's outage.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Taipei101.jpg" alt="alt" loading="lazy"><small>Photo: Taipei 101 Dark during the Blackout -<br>
-			Source: <a href="https://www.upi.com/Top_News/World-News/2017/08/15/Taiwans-economic-minister-resigns-amid-nationwide-blackout/9031502816439">David Chang/EPA</a></small></p>
-	<h3 id="evenwhenthepowerisouttheinternetstilloperates">Even when the power is out, the Internet still operates</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/s1UDADeYSD7EjAu5VsriO/2fbc2367c2e04143ce936341e546be13/Taipei101.jpg" alt="alt" class="kg-image" width="600" height="399" loading="lazy">
+
+	</figure>
+	<p>Photo: Taipei 101 Dark during the Blackout -Source: <a href="https://www.upi.com/Top_News/World-News/2017/08/15/Taiwans-economic-minister-resigns-amid-nationwide-blackout/9031502816439">David Chang/EPA</a></p>
+	<h3>Even when the power is out, the Internet still operates</h3>
 	<p>Most Telecom and Data Center facilities are built with redundancy in mind and have backup power generation. Our Data Center partner, <a href="http://www.chief.com.tw">Chief</a>, was able to switch to backup power generation without any service interruption, allowing our service to operate without interruption.</p>
 	<p>The lack of interruption was also reflected by many users still accessing the Internet. From our statistics, the number of requests didn’t drop, as illustrated by the graph following. At the beginning of the power outage, there was actually a spike in requests, as more people likely look on the Internet as to more details of what's happening. The graph below shows a timeline of requests per second, seen in our Taipei data center, with a red line marking the beginning of the power outage.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/tpe-requests-per-second-1.jpg" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FQ8QP7ZGaD4LBnVFvcSuj/715e95183063616cb2ffb4b0ec352824/tpe-requests-per-second-1.jpg" alt="alt" class="kg-image" width="1000" height="204" loading="lazy">
+
+	</figure>
 	<p>Breaking down traffic between Mobile and Desktop clients, approximately 10% of clients shifted from Desktop to Mobile devices at the beginning of the outage. The graph also shows a spike daily around lunch time, as many clients shift to their mobile phones during lunch.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/mobile-v-desktop-rqs.jpg" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QxDRdybNveRbNZJg6vTpg/fe879fec171b678d78e4e60db68e5e17/mobile-v-desktop-rqs.jpg" alt="alt" class="kg-image" width="3262" height="1875" loading="lazy">
+
+	</figure>
 	<p>The shift to to mobile devices did however cause a drop in bandwidth used, by approximately 25%. The following graph showing our bandwidth usage to HiNet, the largest ISP, demonstrates this sharp drop.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/hinet-bps.jpg" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PZFIXkTbguc4OIrSG9mMl/75fb27a38f498df7f1b86f080bef7064/hinet-bps.jpg" alt="alt" class="kg-image" width="620" height="200" loading="lazy">
+
+	</figure>
 	<p>Power was fully restored around 21:40pm, (13:40 UTC), however many users were able to regain access during power-rationing and Internet usage grew to reach its usual night-time peaks.</p>
 	<p>This power outage taught us that Internet usage does not necessarily decrease during a power outage in 2017. Number of requests can actually increase, but bandwidth usage drops, reflecting a shift to usage of mobile devices.</p>
 	<p>Whilst the entire city lived in darkness, the Internet shined bright!</p>
-	<!--kg-card-end: markdown-->
 </div>

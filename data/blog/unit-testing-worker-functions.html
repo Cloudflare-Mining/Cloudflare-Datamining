@@ -1,14 +1,13 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jBZdXAoPqfhomNhDPEG0y/3f067209a46abb53894ece4d6f4f4954/unit-testing-worker-functions.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. We’re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. &nbsp;</p>
 	<p>More specifically, if your Worker includes a number of functions, it’s important to ensure each function does what it’s intended to do in addition to ensuring the output of the entire Worker returns as expected.</p>
-	<p>In this post, we’re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker">Cloudworker</a>, created by the Dollar Shave Club engineering team. </p>
+	<p>In this post, we’re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker">Cloudworker</a>, created by the Dollar Shave Club engineering team.</p>
 	<p>Dollar Shave Club is a Cloudflare customer, and they created Cloudworker, a mock for the Workers runtime, for testing purposes. We’re really grateful to them for this. They were kind enough to <a href="https://blog.cloudflare.com/cloudworker-a-local-cloudflare-worker-runner">post on our blog</a> about it.</p>
-	<p>This post will demonstrate how to abstract away Cloudworker, and test Workers with the same syntax you write them in. </p>
-	<h3 id="example-script">Example Script</h3>
+	<p>This post will demonstrate how to abstract away Cloudworker, and test Workers with the same syntax you write them in.</p>
+	<h3>Example Script</h3>
 	<p>Before we get into configuring Cloudworker, let’s introduce the simple script we are going to test against in our example. As you can see this script contains two functions, both of which contribute to the response to the client.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))
 })
 
@@ -19,49 +18,33 @@ async function addition(a, b) {
 async function handleRequest(request) {
   const added = await addition(1,3)
   return new Response(`The Sum is ${added}!`)
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+}</code></pre>
 	<p>This script will be active for the route <code>worker.example.com</code>.</p>
-	<h3 id="directory-set-up">Directory Set Up</h3>
+	<h3>Directory Set Up</h3>
 	<p>After I’ve created a new npm ( <code>npm init</code> ) project in a new directory, I placed my <code>worker.js</code> file inside, containing the above, and created the folder <code>test</code> which contains <code>worker-test.js</code>. The structure is laid out below.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">.
+	<pre class="language-javascript"><code class="language-javascript">.
 ----- worker.js
 ----- test
       . worker-test.js
 ----- node_modules
 ----- package.json
------ package-lock.json.
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+----- package-lock.json.</code></pre>
 	<p>Next I need to install Cloudworker ( <code>npm install @dollarshaveclub/cloudworker --save-dev</code> ) and the Mocha testing framework ( <code>npm install mocha --save-dev</code> ) if you do not have it installed globally. Make sure that <code>package.json</code> reflects a value of <code>mocha</code> for <code>tests</code>, like:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">"scripts": {
+	<pre class="language-javascript"><code class="language-javascript">"scripts": {
     "test": "mocha"
-  }
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+  }</code></pre>
 	<p>Now we can finally write some tests! Luckily, <code>mocha</code> has <code>async/await</code> support which is going to make this very simple. &nbsp;The idea is straightforward: Cloudworker allows you to place a Worker in development in front of an HTTP request and inspect the response.</p>
-	<h3 id="writing-tests-">Writing Tests!</h3>
+	<h3>Writing Tests!</h3>
 	<p>Before any test logic, we’ll place two lines at the top of the test file ( <code>worker-test.js</code> ). The first line assigns all property values from Cloudworker and our Worker script to the global context before every <code>async function()</code> is run in mocha. The second line requires <code>assert</code>, which is commonly used to compare an expected output to a mocked output.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">before(async function () {
+	<pre class="language-javascript"><code class="language-javascript">before(async function () {
    Object.assign(global, new (require('@dollarshaveclub/cloudworker'))(require('fs').readFileSync('worker.js', ‘utf8’)).context);
 });
 
 // You will replace worker.js with the relative path to your worker
 
-const assert = require('assert')
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+const assert = require('assert')</code></pre>
 	<p>Now, testing looks a lot more like a Worker itself as we access to all the underlying functions used by Cloudworker AND the Worker script.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">describe('Worker Test', function() {
+	<pre class="language-javascript"><code class="language-javascript">describe('Worker Test', function() {
 
     it('returns a body that says The Sum is 4', async function () {
         let url = new URL('https://worker.example.com')
@@ -76,9 +59,6 @@ const assert = require('assert')
         assert.equal(res, 2)
     })
 
-})
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+})</code></pre>
 	<p>We can test individual functions with our Worker this way, as shown above with the <code>addition()</code> function call. This is really powerful and allows for more confidence when deploying complex workers as you can test each component that makes up the script. We hope this was useful and welcome any feedback.</p>
 </div>

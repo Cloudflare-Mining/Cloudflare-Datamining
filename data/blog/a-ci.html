@@ -1,10 +1,13 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/Workers-Illustration--WiP-as-of-2.21.18--copy@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In today’s post we’re going to talk about building a CI/CD pipeline for Cloudflare Worker’s using Travis CI. If you aren’t yet aware, Cloudflare Workers allow you to run Javascript in all 165 of our data centers, and they deploy globally in about 30 seconds. Learn more <a href="https://developers.cloudflare.com/workers/about">here</a>. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3y6n4AKvsaJaYys4qO1Vdp/48b8c7f69be31b3f4fa3f1cef13b155a/Workers-Illustration--WiP-as-of-2.21.18--copy_2x-1.png" alt="" class="kg-image" width="935" height="654" loading="lazy">
+
+	</figure>
+	<p>In today’s post we’re going to talk about building a CI/CD pipeline for Cloudflare Worker’s using Travis CI. If you aren’t yet aware, Cloudflare Workers allow you to run Javascript in all 165 of our data centers, and they deploy globally in about 30 seconds. Learn more <a href="https://developers.cloudflare.com/workers/about">here</a>.</p>
 	<p>There are a few steps before we get started. We need to have a Worker script we want to deploy, some optional unit tests for the script, a <code>serverless.yml</code> &nbsp;file to deploy via the Serverless Framework, a <code>.gitignore</code> file to ignore the <code>node_modules</code> folder, and finally, a <code>.travis.yml</code> configuration file. All of these files will live in the same GitHub repository, which should have a final layout like:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">----- worker.js
+	<pre class="language-javascript"><code class="language-javascript">----- worker.js
 ----- serverless.yml
 ----- test
       . worker-test.js
@@ -12,28 +15,18 @@
 ----- package.json
 ----- package-lock.json
 ----- .travis.yml
------ .gitignore
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<h3 id="the-worker-script">The Worker Script</h3>
-	<p></p>
+----- .gitignore</code></pre>
+	<h3>The Worker Script</h3>
 	<p><a href="https://blog.cloudflare.com/unit-testing-worker-functions">In a recent post</a> we discussed a method for testing Workers. We’ll reuse this method here to test a really simple Worker script below which simply returns <code>Hello World!</code> in the body of the response. We will name our Worker <code>worker.js</code>.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
 async function handleRequest(request) {
   return new Response('Hello World!')
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
-	<h3 id="the-test">The Test</h3>
-	<p></p>
+}</code></pre>
+	<h3>The Test</h3>
 	<p>We will create a single test case following the method discussed <a href="https://blog.cloudflare.com/unit-testing-worker-functions">unit testing blog</a> post.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">before(async function () {
+	<pre class="language-javascript"><code class="language-javascript">before(async function () {
    Object.assign(global, new (require('@dollarshaveclub/cloudworker'))(require('fs').readFileSync('worker.js', ‘utf8’)).context)
 })
 // replace worker.js here with the name of your worker file
@@ -47,26 +40,18 @@ describe('Worker Test', function() {
     var body = await res.text()
     assert.equal(body, 'Hello World!')
     })
-})
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+})</code></pre>
 	<p>Then we’ll update our <code>package.json</code> file to include:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">"scripts": {
+	<pre class="language-js"><code class="language-js">"scripts": {
   "test": "mocha"
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+}</code></pre>
 	<p>And install <code>mocha</code> with <code>npm install mocha --save-dev</code> and <code>cloudworker</code> with <code>npm install @dollarshaveclub/cloudworker --save-dev</code>.</p>
-	<h3 id="serverless-yml">serverless.yml</h3>
+	<h3>serverless.yml</h3>
 	<p>Next, we’ll need a <code>serverless.yml</code> file to deploy the worker. This is a config file which is used by the <a href="https://serverless.com/framework/docs/providers/cloudflare">Serverless Framework</a> to deploy serverless apps to supported providers. We became a provider some <a href="https://blog.cloudflare.com/serverless-cloudflare-workers">time ago</a>, and we will use the framework to deploy our Workers in this example.</p>
 	<p>We will run the <code>sls deploy</code> command in our Travis config and it will pick up our <code>serverless.yml</code> to deploy the Worker for us. <code>serverless.yml</code> will reference <code>ENV</code> variables which we will pass to Travis in the final section of the post.</p>
-	<p><strong>NOTE</strong>: You can deploy with any arbitrary script. We’re using the Serverless Framework in this example because we already <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless">integrate</a> with them and getting started is straightforward.</p>
+	<p><b>NOTE</b>: You can deploy with any arbitrary script. We’re using the Serverless Framework in this example because we already <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless">integrate</a> with them and getting started is straightforward.</p>
 	<p>Our <code>serverless.yml</code> will look like:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">service:
+	<pre class="language-javascript"><code class="language-javascript">service:
   name: travis-example
   
 provider:
@@ -83,13 +68,10 @@ functions:
   deploy-from-travis:
     name: travis-deployed-worker
     script: worker</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
 	<p>Make sure to install both the Serverless Framework, and the Cloudflare Workers plugin with <code>npm install --save serverless</code> and <code>npm install --save serverless-cloudflare-workers</code>.</p>
-	<h3 id="travis-yml">travis.yml</h3>
-	<p></p>
-	<p>Below you’ll see the final <code>.travis.yml</code> and we’ll walk through each piece of it.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">language: node_js
+	<h3>travis.yml</h3>
+	<p>Below you’ll see the final <code>.travis.yml</code> and we’ll walk through each piece of it.</p>
+	<pre class="language-javascript"><code class="language-javascript">language: node_js
 node_js:
   - "node"
   
@@ -98,24 +80,17 @@ deploy:
   script: sls deploy
   skip_cleanup: true
   on:
-    branch: main
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+    branch: main</code></pre>
 	<p>Before diving in, Travis has some great resources on deploying <code>node.js</code> projects <a href="https://docs.travis-ci.com/user/languages/javascript-with-nodejs">here</a>. While this isn’t strictly what we’re doing, it’s a great jumping off point.</p>
 	<p>So what does this <code>.travis.yml</code> mean? First, we’re telling Travis CI to use the most recent <code>node.js</code> image (you have the option to specify). Then we specify the command to run to actually do the deployment, <code>sls deploy</code>, but only when the main branch is involved in the build. Travis will run <code>npm test</code> for us as it’s default for any <code>node.js</code> project, which will execute our unit tests.</p>
-	<p>The <code>skip_cleanup: true</code> prevents any conflicts with <code>git</code> during the test and deploy process. </p>
-	<h3 id="configuring-travis">Configuring Travis</h3>
-	<p></p>
+	<p>The <code>skip_cleanup: true</code> prevents any conflicts with <code>git</code> during the test and deploy process.</p>
+	<h3>Configuring Travis</h3>
 	<p>Finally! We’re almost there. Setting up Travis CI is really simple. Once you’ve got your account created, make sure your authorize Travis to access the repo which contains the worker, your tests, <code>.travis.yml</code>, and your <code>.serverless.yml</code>.</p>
-	<p>Next up is adding environmental variables to the build. In this case it’s going to be our <code>CLOUDFLARE_AUTH_EMAIL</code> and <code>CLOUDFLARE_AUTH_KEY</code> values which Serverless picks up to auth API requests. </p>
+	<p>Next up is adding environmental variables to the build. In this case it’s going to be our <code>CLOUDFLARE_AUTH_EMAIL</code> and <code>CLOUDFLARE_AUTH_KEY</code> values which Serverless picks up to auth API requests.</p>
 	<p>I also add <code>CLOUDFLARE_ACCOUNT_ID</code> and <code>CLOUDFLARE_ZONE_ID</code> as we referenced them in <code>serverless.yml</code>. Finally I set <code>SLS_DEBUG=*</code>, just to catch any issues from Serverless.</p>
 	<p>You can add these <code>ENV</code> variables in a variety of ways outlined <a href="https://docs.travis-ci.com/user/environment-variables">here</a>. In this example we’re going to add them directly in the Travis UI so they don’t show up anywhere in the repo (as some of them are sensitive).</p>
 	<p>Navigate to the repo in the Travis UI, and hit the ‘more options’ dropdown to add ENV variables.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/xtGysscLUJh2mP6DZ59RNkRoT1GsERxEa1LE91vSWJu3o69_iIoF2SxOizxy0hpsxNTWPx8NYUokJOxiZFJ_teVszPaRL3mWzJvwlzgiLivkSCm5mQeGf-31rPT46uDZZz55AZPB" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<h3 id="complete-">Complete!</h3>
-	<p></p>
-	<p>Now PRs will trigger a test build, and a merge to main a test build and a deployment! Go ahead and test it out. </p>
-	<p>And that’s it! Did you find this useful? Please let us know if we can make this tutorial better. Thanks.<br><br></p>
+	<h3>Complete!</h3>
+	<p>Now PRs will trigger a test build, and a merge to main a test build and a deployment! Go ahead and test it out.</p>
+	<p>And that’s it! Did you find this useful? Please let us know if we can make this tutorial better. Thanks.</p>
 </div>

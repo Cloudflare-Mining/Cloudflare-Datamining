@@ -1,29 +1,54 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2015/01/56843445_b156718efa_b-1.jpg" alt="" loading="lazy"><br>
-		<sub><a href="https://creativecommons.org/licenses/by-nd/2.0">CC BY-ND 2.0 image</a> <a href="https://www.flickr.com/photos/cwsteeds/56843445">image</a> by <a href="https://www.flickr.com/photos/cwsteeds">Clinton Steeds</a></sub>
-	</p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eEfQwQIaj3Alxi9WLjunp/bc885c492ced2dde7b86485dd3ca8b0a/56843445_b156718efa_b-1.jpg" alt="" class="kg-image" width="1024" height="681" loading="lazy">
+
+	</figure>
+	<p><sub></sub><a href="https://creativecommons.org/licenses/by-nd/2.0"><sub>CC BY-ND 2.0 image</sub></a><sub> </sub><a href="https://www.flickr.com/photos/cwsteeds/56843445"><sub>image</sub></a><sub> by </sub><a href="https://www.flickr.com/photos/cwsteeds"><sub>Clinton Steeds</sub></a></p>
 	<p>CloudFlare is always trying to improve customer experience by adopting the latest and best web technologies so that our customers (and their visitors) have a fast and a secure web browsing experience.</p>
 	<p>More and more web sites are now using HTTPS by default. This sea change has been spearheaded by many groups including CloudFlare <a href="https://blog.cloudflare.com/introducing-universal-ssl">enabling free SSL for millions of sites with Universal SSL</a>, <a href="http://threatpost.com/google-proposes-marking-http-as-insecure-in-2015/109875">Google</a> moving towards marking plain HTTP as insecure in Chrome, and the <a href="https://www.letsencrypt.org">Let’s Encrypt</a> project’s plans to make certificates free in 2015.</p>
 	<p>Not only is the encrypted web more secure, it can also be faster than the unencrypted web if the latest HTTPS features are implemented. HTTPS sites are blazing fast on CloudFlare because we keep up with the latest performance-enhancing features:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/staying-up-to-date-with-the-latest-protocols-spdy-3-1">SPDY 3.1</a> is on by default for all customers. SPDY enables faster-than-HTTP download speeds by enabling multiplexing</li>
-		<li><a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">OCSP stapling</a>: faster revocation checking.</li>
-		<li>Optimized certificate bundles using <a href="https://blog.cloudflare.com/introducing-cfssl">CFSSL, our open source SSL bundler</a>: an optimized certificate chain provides faster validation of certificates in the browser</li>
-		<li><a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA certificates</a> for all free customers with Universal SSL: smaller certificates with smaller keys result in faster connection establishment times</li>
-		<li><a href="https://blog.cloudflare.com/universal-ssl-how-it-scales">Global session ticket resumption</a> for faster session resumptions on globally load balanced servers: connections to sites you have already visited are jump-started requiring one less round-trip to resume</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/staying-up-to-date-with-the-latest-protocols-spdy-3-1">SPDY 3.1</a> is on by default for all customers. SPDY enables faster-than-HTTP download speeds by enabling multiplexing</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">OCSP stapling</a>: faster revocation checking.</p>
+		</li>
+		<li>
+			<p>Optimized certificate bundles using <a href="https://blog.cloudflare.com/introducing-cfssl">CFSSL, our open source SSL bundler</a>: an optimized certificate chain provides faster validation of certificates in the browser</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA certificates</a> for all free customers with Universal SSL: smaller certificates with smaller keys result in faster connection establishment times</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/universal-ssl-how-it-scales">Global session ticket resumption</a> for faster session resumptions on globally load balanced servers: connections to sites you have already visited are jump-started requiring one less round-trip to resume</p>
+		</li>
 	</ul>
 	<p>Today we are adding a new feature — actually a new form of encryption — that improves mobile performance: ChaCha20-Poly1305 cipher suites. Until today, Google services were the only major sites on the Internet that supported this new algorithm. Now all sites on CloudFlare support it, too. This means mobile browsers get a better experience when visiting sites using CloudFlare.</p>
 	<p>As of the launch today (February 23, 2015), nearly 10% of https connections to CloudFlare use the new ciphersuites. The following graph shows the uptick when we turned ChaCha20/Poly1305 on globally:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/02/illustration-ciphersuite-percentage-ssl-week.png" alt="" loading="lazy"></p>
-	<h3 id="tlstothemax">TLS to the max</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vJ6e8ygOeyca9ChD2cGdb/2c600d70a17639f20b9ccc9234c3fe3f/illustration-ciphersuite-percentage-ssl-week.png" alt="" class="kg-image" width="1360" height="820" loading="lazy">
+
+	</figure>
+	<h3>TLS to the max</h3>
 	<p>The protocol for encrypting HTTPS connections is called Transport Layer Security (TLS). One of the nice features of TLS is that new encryption algorithms or ciphers can be proposed and added to the specification.</p>
 	<p>As we described in our <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">introduction to TLS</a>, there are several components to a TLS cipher suite. There is one algorithm for each of the following:</p>
 	<ul>
-		<li>key establishment (typically a Diffie-Hellman variant or RSA)</li>
-		<li>authentication (the certificate type)</li>
-		<li>confidentiality (a symmetric cipher)</li>
-		<li>integrity (a hash function)</li>
+		<li>
+			<p>key establishment (typically a Diffie-Hellman variant or RSA)</p>
+		</li>
+		<li>
+			<p>authentication (the certificate type)</p>
+		</li>
+		<li>
+			<p>confidentiality (a symmetric cipher)</p>
+		</li>
+		<li>
+			<p>integrity (a hash function)</p>
+		</li>
 	</ul>
 	<p>The new cipher suites we have added include a new symmetric cipher used for the encryption of data (based on the ChaCha20 and Poly1305 algorithms). There are no secure encryption algorithms optimized for mobile browsers and APIs in TLS right now—these new ciphers fill that gap.</p>
 	<p>There are two types of ciphers typically used to encrypt data with TLS: block ciphers and stream ciphers. In a block cipher, the data is broken up into chunks of a fixed size and each block is encrypted. In a stream cipher, the data is encrypted one byte at a time. Both types of ciphers have their advantages, block ciphers are generally fast in hardware and somewhat slow in software, while stream ciphers often have fast software implementations.</p>
@@ -31,32 +56,34 @@
 	<p>AES is a fine cipher to use on most modern computers. Intel processors since Westmere in 2010 come with <a href="https://en.wikipedia.org/wiki/AES_instruction_set">AES hardware support</a> that makes AES operations effectively free. This makes it an ideal cipher choice for both <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">our servers</a> and for web visitors using modern desktop and laptop computers. It’s not ideal for older computers and mobile devices. Phones and tablets don’t typically have cryptographic hardware for AES and are therefore required to use software implementations of ciphers. The AES-GCM cipher can be particularly costly when implemented in software. This is less than optimal on devices where every processor cycle can cost you precious battery life. A low-cost stream cipher would be ideal for these mobile devices, but the only option (RC4) is no longer secure.</p>
 	<p>In order to provide a battery-friendly alternative to AES for mobile devices, <a href="https://googleonlinesecurity.blogspot.com/2014/04/speeding-up-and-strengthening-https.html">several engineers from Google</a> set out to find and implement a fast and secure stream cipher to add to TLS. Their choice — ChaCha20-Poly1305 — was included in Chrome 31 in November 2013, and Chrome for Android and iOS at the end of April 2014.</p>
 	<p>Having the option to choose a secure stream cipher in TLS is a good thing for mobile performance. Adding cipher diversity is also good insurance. If someone finds a flaw in one of the AES-based cipher suites sometime in the future, it gives a safe and fast option to fall back to.</p>
-	<h3 id="security">Security</h3>
+	<h3>Security</h3>
 	<p>We previously spoke about the <a href="https://blog.cloudflare.com/why-are-some-keys-small">relative strength of different types of cryptography</a>. Some keys are stronger than others, and when using new algorithms, the keys have to be chosen with the appropriate cryptographic strength. These new cipher suites are even more secure than the best standard choices.</p>
 	<p>The new cipher suites make use of two algorithms: ChaCha20, a stream cipher; and Poly1305, a code authenticator. Both of these cryptographic primitives were invented by Professor Dan Bernstein (djb) <a href="http://cr.yp.to/chacha.html">back in 2008</a> and <a href="http://cr.yp.to/mac.html">2005</a>. They have been <a href="https://eprint.iacr.org/2007/472">thoroughly vetted</a> by academia and battle tested in Chrome for over a year.</p>
 	<p>From the <a href="http://tools.ietf.org/html/draft-nir-cfrg-chacha20-poly1305">IETF internet draft</a>:</p>
-	<pre><code>The ChaCha20 cipher is designed to provide 256-bit security.
+	<pre class="language-bash"><code class="language-bash">The ChaCha20 cipher is designed to provide 256-bit security.
 
-The Poly1305 authenticator is designed to ensure that forged messages are rejected with a probability of 1-(n/(2^102)) for a 16n-byte message, even after sending 2^64 legitimate messages, so it is SUF-CMA in the terminology of [AE](http://cseweb.ucsd.edu/~mihir/papers/oem.html).
-</code></pre>
+The Poly1305 authenticator is designed to ensure that forged messages are rejected with a probability of 1-(n/(2^102)) for a 16n-byte message, even after sending 2^64 legitimate messages, so it is SUF-CMA in the terminology of [AE](http://cseweb.ucsd.edu/~mihir/papers/oem.html).</code></pre>
 	<p>In sum, the security level is more than sufficient for HTTPS. CloudFlare’s AES-GCM cipher provides around 128 bits of security, which is considered more than enough to future-proof communication. ChaCha20 goes far beyond that, providing 256 bits of security.</p>
 	<p>Poly1305 provides authentication, protecting TLS against attackers inserting fake messages into a secure stream. Poly1305’s key strength is considered strong enough to stop this attack, providing around 100 bits of security. Authentication in TLS is slightly less important than encryption because even if an attacker can add a fake message to the stream, they can’t read the information inside without breaking the encryption key.</p>
 	<p>ChaCha20-Poly1305 also uses the current recommended construction for combining encryption and authentication. It’s built using an Authenticated Encryption with Associated Data (AEAD) construction. AEAD is a way of combining a cipher and an authenticator together to get the combined properties of encryption and authentication. This would be done previously with two different algorithms, typically a block cipher and an HMAC. Authenticated encryption makes it impossible to decrypt a ciphertext out of order which helps rule out a whole class of problems including <a href="https://code.google.com/p/go/source/detail?r=3ac4616250ed">BEAST</a>, <a href="http://www.isg.rhul.ac.uk/tls/Lucky13.html">Lucky 13</a> and <a href="https://blog.cloudflare.com/sslv3-support-disabled-by-default-due-to-vulnerability">POODLE</a>. AEAD also makes the age-old discussion of <a href="http://crypto.stackexchange.com/questions/202/should-we-mac-then-encrypt-or-encrypt-then-mac">MAC-then-encrypt vs encrypt-then-MAC</a> obsolete by combining the two in the same operation. Our other preferred TLS 1.2 encryption algorithm, AES-GCM, is also an AEAD.</p>
-	<h3 id="performance">Performance</h3>
+	<h3>Performance</h3>
 	<p>The new cipher suites are fast. As <a href="https://www.imperialviolet.org/2014/02/27/tlssymmetriccrypto.html">Adam Langley</a> described, ChaCha20-Poly1305 is three times faster than AES-128-GCM on mobile devices. Spending less time on decryption means faster page rendering and better battery life. Although the cipher part of TLS may not be the biggest source of battery consumption (<a href="http://users.tkk.fi/siekkine/pub/siekkinen11tls.pdf">the handshake is more expensive (PDF)</a>), spending fewer CPU cycles on encryption saves battery life, especially on large files.</p>
 	<p>For example: decrypting a 1MB file on the Galaxy Nexus (OMAP 4460 chip):</p>
-	<pre><code>AES-128-GCM: 		41.6ms
-ChaCha20-Poly1305: 	13.2ms
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">AES-128-GCM: 		41.6ms
+ChaCha20-Poly1305: 	13.2ms</code></pre>
 	<p>The difference is more dramatic on less powerful Android phones and old iPhones running Chrome. There is also a comparable difference on pre-Sandy Bridge and low-powered Intel CPUs. With ChaCha/Poly, older computers and mobile devices spend less time and computational power on decryption.</p>
 	<p>On desktop computers with hardware AES support, AES-128-GCM is still the faster choice. CloudFlare is able to intelligently choose whether to choose AES or ChaCha/Poly for different clients based on the client’s advertised cipher preference. For recent Intel processors, we use the standard AES-GCM algorithm. For browsers on machines that do not have a hardware AES chip, we prefer the ChaCha20-Poly1305.</p>
 	<p>In order to support over a million HTTPS sites on our servers, we have to make sure CPU usage is low. To help improve performance we are using <a href="http://openssl.6102.n7.nabble.com/openssl-org-3615-PATCH-ChaCha20-with-Poly1305-TLS-Cipher-Suites-via-the-EVP-interface-td55120.html">an open source assembly code version of ChaCha/Poly</a> by CloudFlare engineer Vlad Krasnov and others that has been optimized for our servers’ Intel CPUs. This keeps the cost of encrypting data with this new cipher to a minimum.</p>
-	<h3 id="browsersupportandfuturedirections">Browser support and future directions</h3>
-	<p>As of the most <a href="https://en.wikipedia.org/wiki/Usage_share_of_web_browsers">recent browser statistics</a>, Chrome has over a third of the web browser market, making this change significant to a large number of users. Although ChaCha20-Poly1305 is a Chrome-only feature for now, it could gain even more widespread adoption soon. Mozilla is <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=917571">planning on adding support</a> for ChaCha20-Poly1305 in Firefox, although this might take a while to complete. Apple also has a <a href="https://openradar.appspot.com/radar?id=5807077909856256">pending ticket </a> tracking the implementation on iOS, although is unlikely to be completed since new 64-bit ARM processors (like the ones in iPhone 5s and later) have support for <a href="http://www.anandtech.com/show/7335/the-iphone-5s-review/4">AES in hardware</a>.</p>
+	<h3>Browser support and future directions</h3>
+	<p>As of the most <a href="https://en.wikipedia.org/wiki/Usage_share_of_web_browsers">recent browser statistics</a>, Chrome has over a third of the web browser market, making this change significant to a large number of users. Although ChaCha20-Poly1305 is a Chrome-only feature for now, it could gain even more widespread adoption soon. Mozilla is <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=917571">planning on adding support</a> for ChaCha20-Poly1305 in Firefox, although this might take a while to complete. Apple also has a <a href="https://openradar.appspot.com/radar?id=5807077909856256">pending ticket</a> tracking the implementation on iOS, although is unlikely to be completed since new 64-bit ARM processors (like the ones in iPhone 5s and later) have support for <a href="http://www.anandtech.com/show/7335/the-iphone-5s-review/4">AES in hardware</a>.</p>
 	<p>One thing to note is that the version of ChaCha/Poly implemented by both CloudFlare and Chrome is not the final version that will be standardized by the IETF. A <a href="https://tools.ietf.org/html/draft-mavrogiannopoulos-chacha-tls-03">more recent draft</a> with slight modifications has been published and is on the road to standardization. We plan on adopting this new version of the cipher once it has been finalized.</p>
-	<h3 id="lookingahead">Looking Ahead</h3>
+	<h3>Looking Ahead</h3>
 	<p>ChaCha20-Poly1305 is a new cipher with a useful purpose: it improves performance for browsers in constrained environments. At the very least, it provides algorithm agility in case someone finds a serious flaw in AES-GCM, which is possible due to <a href="https://eprint.iacr.org/2013/157">its fragility</a>. In the future we plan to keep on adding the latest and best TLS features for our customers. You can track our configuration as it changes on <a href="https://github.com/cloudflare/sslconfig">Github</a>.</p>
 	<p>If you want to enable ChaCha/Poly on your web server, we have included the patch for OpenSSL 1.0.2 <a href="https://github.com/cloudflare/sslconfig/tree/master/patches">here</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/02/cloudflare_ssl-week-2.png" alt="CloudFlare SSL Week" loading="lazy"></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RCqXqEbq34ZD1OuTadSr8/cbc8026f2e2f9176240acd842d4a18be/cloudflare_ssl-week-2.png" alt="CloudFlare SSL Week" class="kg-image" width="1000" height="375" loading="lazy">
+
+	</figure>
+	<p></p>
 </div>

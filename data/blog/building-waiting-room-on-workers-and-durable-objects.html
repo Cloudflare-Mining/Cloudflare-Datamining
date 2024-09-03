@@ -1,35 +1,56 @@
-<div class="mb2 gray5">20 min read</div>
+<div class="mb2 gray5">19 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image9-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vltNFGSyhFtdiqEqGI7aQ/9b168f84c32749d36afc1480e016213e/image9-2.png" alt="" class="kg-image" width="1437" height="864" loading="lazy">
+
+	</figure>
 	<p>In January, we announced the Cloudflare <a href="https://blog.cloudflare.com/cloudflare-waiting-room">Waiting Room</a>, which has been available to select customers through <a href="https://blog.cloudflare.com/project-fair-shot">Project Fair Shot</a> to help COVID-19 vaccination web applications handle demand. Back then, we mentioned that our system was built on top of Cloudflare Workers and the then brand new <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>. In the coming days, we are making Waiting Room available to customers on our Business and Enterprise plans. As we are expanding availability, we are taking this opportunity to share how we came up with this design.</p>
-	<h2 id="what-does-the-waiting-room-do">What does the Waiting Room do?</h2>
+	<h2>What does the Waiting Room do?</h2>
 	<p>You may have seen lines of people queueing in front of stores or other buildings during sales for a new sneaker or phone. That is because stores have restrictions on how many people can be inside at the same time. Every store has its own limit based on the size of the building and other factors. If more people want to get inside than the store can hold, there will be too many people in the store.</p>
 	<p>The same situation applies to web applications. When you build a web application, you have to budget for the infrastructure to run it. You make that decision according to how many users you think the site will have. But sometimes, the site can see surges of users above what was initially planned. This is where the Waiting Room can help: it stands between users and the web application and automatically creates an orderly queue during traffic spikes.</p>
 	<p>The main job of the Waiting Room is to protect a customer’s application while providing a good user experience. To do that, it must make sure that the number of users of the application around the world does not exceed limits set by the customer. Using this product should not degrade performance for end users, so it should not add significant latency and should admit them automatically. In short, this product has three main requirements: respect the customer’s limits for users on the web application, keep latency low, and provide a seamless end user experience.</p>
 	<p>When there are more users trying to access the web application than the limits the customer has configured, new users are given a cookie and greeted with a waiting room page. This page displays their estimated wait time and automatically refreshes until the user is automatically admitted to the web application.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image2-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h2 id="configuring-waiting-rooms">Configuring Waiting Rooms</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hNkOnNnIvELvBuHVYlTWz/4286eec67997c36da9e575dc5ae59d0c/image2-3.png" alt="" class="kg-image" width="362" height="284" loading="lazy">
+
+	</figure>
+	<h2>Configuring Waiting Rooms</h2>
 	<p>The important configurations that define how the waiting room operates are:</p>
 	<ol>
-		<li><em>Total Active Users</em> - the total number of active users that can be using the application at any given time</li>
-		<li><em>New Users Per Minute</em> - how many new users per minute are allowed into the application, and</li>
-		<li><em>Session Duration</em> - how long a user session lasts. Note: the session is renewed as long as the user is active. We terminate it after <em>Session Duration</em> minutes of inactivity.</li>
+		<li>
+			<p><i>Total Active Users</i> - the total number of active users that can be using the application at any given time</p>
+		</li>
+		<li>
+			<p><i>New Users Per Minute</i> - how many new users per minute are allowed into the application, and</p>
+		</li>
+		<li>
+			<p><i>Session Duration</i> - how long a user session lasts. Note: the session is renewed as long as the user is active. We terminate it after <i>Session Duration</i> minutes of inactivity.</p>
+		</li>
 	</ol>
-	<h2 id="how-does-the-waiting-room-work">How does the waiting room work?</h2>
+	<h2>How does the waiting room work?</h2>
 	<p>If a web application is behind Cloudflare, every request from an end user to the web application will go to a Cloudflare data center close to them. If the web application enables the waiting room, Cloudflare issues a ticket to this user in the form of an encrypted cookie.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/image6-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Waiting Room Overview</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CXv57H2vr7pw2HBQtvvJN/fd840275480f882951e89e72dcb38a3f/image6-1.png" alt="" class="kg-image" width="1892" height="1226" loading="lazy">
+
 	</figure>
+	<p>Waiting Room Overview</p>
 	<p>At any given moment, every waiting room has a limit on the number of users that can go to the web application. This limit is based on the customer configuration and the number of users currently on the web application. We refer to the number of users that can go into the web application at any given time as the number of user slots. The total number of users slots is equal to the limit configured by the customer minus the total number of users that have been let through.</p>
 	<p>When a traffic surge happens on the web application the number of user slots available on the web application keeps decreasing. Current user sessions need to end before new users go in. So user slots keep decreasing until there are no more slots. At this point the waiting room starts queueing.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/06/image1-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YupAjYjEvXX15xjhGJQQH/432eea69500ec29bcbea4d4de450f077/image1-2.png" alt="" class="kg-image" width="1999" height="822" loading="lazy">
+
+	</figure>
 	<p>The chart above is a customer's traffic to a web application between 09:40 and 11:30. The configuration for total active users is set to 250 users (yellow line). As time progresses there are more and more users on the application. The number of user slots available (orange line) in the application keeps decreasing as more users get into the application (green line). When there are more users on the application, the number of slots available decreases and eventually users start queueing (blue line). Queueing users ensures that the total number of active users stays around the configured limit.</p>
 	<p>To effectively calculate the user slots available, every service at the edge data centers should let its peers know how many users it lets through to the web application.</p>
 	<p>Coordination within a data center is faster and more reliable than coordination between many different data centers. So we decided to divide the user slots available on the web application to individual limits for each data center. The advantage of doing this is that only the data center limits will get exceeded if there is a delay in traffic information getting propagated. This ensures we don’t overshoot by much even if there is a delay in getting the latest information.</p>
 	<p>The next step was to figure out how to divide this information between data centers. For this we decided to use the historical traffic data on the web application. More specifically, we track how many different users tried to access the application across every data center in the preceding few minutes. The great thing about historical traffic data is that it's historical and cannot change anymore. So even with a delay in propagation, historical traffic data will be accurate even when the current traffic data is not.</p>
 	<p>Let's see an actual example: the current time is <code>Thu, 27 May 2021 16:33:20 GMT</code>. For the minute <code>Thu, 27 May 2021 16:31:00 GMT</code> there were <code>50</code> users in Nairobi and <code>50</code> in Dublin. For the minute <code>Thu, 27 May 2021 16:32:00 GMT</code> there were <code>45</code> users in Nairobi and <code>55</code> in Dublin. This was the only traffic on the application during that time.</p>
-	<p>Every data center looks at what the share of traffic to each data center was two minutes in the past. For <code>Thu, 27 May 2021 16:33:20 GMT</code> that value is <code>Thu, 27 May 2021 16:31:00 GMT</code><em><strong>.</strong></em></p><!--kg-card-begin: markdown-->
-	<pre><code>Thu, 27 May 2021 16:31:00 GMT: 
+	<p>Every data center looks at what the share of traffic to each data center was two minutes in the past. For <code>Thu, 27 May 2021 16:33:20 GMT</code> that value is <code>Thu, 27 May 2021 16:31:00 GMT</code><b><i>.</i></b></p>
+	<pre class="language-bash"><code class="language-bash">Thu, 27 May 2021 16:31:00 GMT: 
 {
   Nairobi: 0.5, //50/100(total) users
   Dublin: 0.5,  //50/100(total) users
@@ -38,34 +59,34 @@ Thu, 27 May 2021 16:32:00 GMT:
 {
   Nairobi: 0.45, //45/100(total) users
   Dublin: 0.55,  //55/100(total) users
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>For the minute <code>Thu, 27 May 2021 16:33:00 GMT</code>, the number of user slots available will be divided equally between Nairobi and Dublin as the traffic ratio for <code>Thu, 27 May 2021 16:31:00 GMT</code> is <code>0.5</code> and <code>0.5</code>. So, if there are 1000 slots available, Nairobi will be able to send 500 and Dublin can send 500.</p>
 	<p>For the minute <code>Thu, 27 May 2021 16:34:00 GMT</code>, the number of user slots available will be divided using the ratio 0.45 (Nairobi) to 0.55 (Dublin). So if there are 1000 slots available, Nairobi will be able to send 450 and Dublin can send 550.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pT9KvjCcU8g9kTWHMU2Qt/a487d8fba0739377c82d86b47d780de0/image8.png" alt="" class="kg-image" width="603" height="375" loading="lazy">
+
+	</figure>
 	<p>The service at the edge data centers counts the number of users it let into the web application. It will start queueing when the data center limit is approached. The presence of limits for the data center that change based on historical traffic helps us to have a system that doesn’t need to communicate often between data centers.</p>
-	<h3 id="clustering">Clustering</h3>
+	<h3>Clustering</h3>
 	<p>In order to let people access the application fairly we need a way to keep track of their position in the queue. A bucket has an identifier (bucketId) calculated based on the time the user tried to visit the waiting room for the first time. &nbsp;All the users who visited the waiting room between 19:51:00 and 19:51:59 are assigned to the bucketId 19:51:00. It's not practical to track every end user in the waiting room individually. When end users visit the application around the same time, they are given the same bucketId. So we cluster users who came around the same time as one time bucket.</p>
-	<h3 id="what-is-in-the-cookie-returned-to-an-end-user">What is in the cookie returned to an end user?</h3>
-	<p>We mentioned an encrypted cookie that is assigned to the user when they first visit the waiting room. Every time the user comes back, they bring this cookie with them. The cookie is a ticket for the user to get into the web application. The content below is the typical information the cookie contains when visiting the web application. This user first visited around <code>Wed, 26 May 2021 19:51:00 GMT</code>, waited for around 10 minutes and got accepted on <code>Wed, 26 May 2021 20:01:13 GMT</code>.</p><!--kg-card-begin: markdown-->
-	<pre><code>{
+	<h3>What is in the cookie returned to an end user?</h3>
+	<p>We mentioned an encrypted cookie that is assigned to the user when they first visit the waiting room. Every time the user comes back, they bring this cookie with them. The cookie is a ticket for the user to get into the web application. The content below is the typical information the cookie contains when visiting the web application. This user first visited around <code>Wed, 26 May 2021 19:51:00 GMT</code>, waited for around 10 minutes and got accepted on <code>Wed, 26 May 2021 20:01:13 GMT</code>.</p>
+	<pre class="language-bash"><code class="language-bash">{
   "bucketId": "Wed, 26 May 2021 19:51:00 GMT",
   "lastCheckInTime": "Wed, 26 May 2021 20:01:13 GMT",
   "acceptedAt": "Wed, 26 May 2021 20:01:13 GMT",
- }
-</code></pre>
-	<!--kg-card-end: markdown-->
+ }</code></pre>
 	<p>Here</p>
-	<p><em>bucketId</em> - the bucketId is the cluster the ticket is assigned to. This tracks the position in the queue.</p>
-	<p><em>acceptedAt</em> - the time when the user got accepted to the web application for the first time.</p>
-	<p><em>lastCheckInTime</em> - the time when the user was last seen in the waiting room or the web application.</p>
-	<p>Once a user has been let through to the web application, we have to check how long they are eligible to spend there. Our customers can customize how long a user spends on the web application using <em>Session Duration</em>. Whenever we see an accepted user we set the cookie to <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie">expire</a> <em>Session Duration</em> minutes from when we last saw them.</p>
-	<h3 id="waiting-room-state">Waiting Room State</h3>
+	<p><i>bucketId</i> - the bucketId is the cluster the ticket is assigned to. This tracks the position in the queue.</p>
+	<p><i>acceptedAt</i> - the time when the user got accepted to the web application for the first time.</p>
+	<p><i>lastCheckInTime</i> - the time when the user was last seen in the waiting room or the web application.</p>
+	<p>Once a user has been let through to the web application, we have to check how long they are eligible to spend there. Our customers can customize how long a user spends on the web application using <i>Session Duration</i>. Whenever we see an accepted user we set the cookie to <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie">expire</a> <i>Session Duration</i> minutes from when we last saw them.</p>
+	<h3>Waiting Room State</h3>
 	<p>Previously we talked about the concept of user slots and how we can function even when there is a delay in communication between data centers. The waiting room state helps to accomplish this. It is formed by historical data of events happening in different data centers. So when a waiting room is first created, there is no waiting room state as there is no recorded traffic. The only information available is the customer’s configured limits. Based on that we start letting users in. In the background the service (introduced later in this post as Data Center Durable Object) running in the data center periodically reports about the tickets it has issued to a co-ordinating service and periodically gets a response back about things happening around the world.</p>
 	<p>As time progresses more and more users with different bucketIds show up in different parts of the globe. Aggregating this information from the different data centers gives the waiting room state.</p>
-	<p>Let's look at an example: there are two data centers, one in Nairobi and the other in Dublin. When there are no user slots available for a data center, users start getting queued. Different users who were assigned different bucketIds get queued. The data center state from Dublin looks like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">activeUsers: 50,
+	<p>Let's look at an example: there are two data centers, one in Nairobi and the other in Dublin. When there are no user slots available for a data center, users start getting queued. Different users who were assigned different bucketIds get queued. The data center state from Dublin looks like this:</p>
+	<pre class="language-js"><code class="language-js">activeUsers: 50,
 buckets: 
 [  
   {
@@ -82,11 +103,9 @@ buckets:
       waiting: 40,
     }
   }
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The same thing is happening in Nairobi and the data from there looks like this:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">activeUsers: 151,
+]</code></pre>
+	<p>The same thing is happening in Nairobi and the data from there looks like this:</p>
+	<pre class="language-js"><code class="language-js">activeUsers: 151,
 buckets: 
 [ 
   {
@@ -110,11 +129,9 @@ buckets:
       waiting: 20,
     }
   }
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>This information from data centers are reported in the background and aggregated to form a data structure similar to the one below:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">activeUsers: 201, // 151(Nairobi) + 50(Dublin)
+]</code></pre>
+	<p>This information from data centers are reported in the background and aggregated to form a data structure similar to the one below:</p>
+	<pre class="language-js"><code class="language-js">activeUsers: 201, // 151(Nairobi) + 50(Dublin)
 buckets: 
 [  
   {
@@ -138,16 +155,14 @@ buckets:
       waiting: 60, // 20 from Nairobi and 40 from Dublin
     }
   }
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
+]</code></pre>
 	<p>The data structure above is a sorted list of all the bucketIds in the waiting room. The <code>waiting</code> field has information about how many people are waiting with a particular bucketId. The <code>activeUsers</code> field has information about the number of users who are active on the web application.</p>
 	<p>Imagine for this customer, the limits they have set in the dashboard are</p>
-	<p><em>Total Active Users</em> - 200<br><em>New Users Per Minute</em> - 200</p>
+	<p><i>Total Active Users</i> - 200<i>New Users Per Minute</i> - 200</p>
 	<p>As per their configuration only 200 customers can be at the web application at any time. So users slots available for the waiting room state above are 200 - 201(activeUsers) = -1. So no one can go in and users get queued.</p>
 	<p>Now imagine that some users have finished their session and activeUsers is now 148.</p>
-	<p>Now userSlotsAvailable = 200 - 148 = 52 users. We should let 52 of the users who have been waiting the longest into the application. We achieve this by giving the eligible slots to the oldest buckets in the queue. In the example below 2 users are waiting from bucket <code>Thu, 27 May 2021 15:54:00 GMT</code> and 50 users are waiting from bucket <code>Thu, 27 May 2021 15:55:00 GMT</code>. These are the oldest buckets in the queue who get the eligible slots.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">activeUsers: 148,
+	<p>Now userSlotsAvailable = 200 - 148 = 52 users. We should let 52 of the users who have been waiting the longest into the application. We achieve this by giving the eligible slots to the oldest buckets in the queue. In the example below 2 users are waiting from bucket <code>Thu, 27 May 2021 15:54:00 GMT</code> and 50 users are waiting from bucket <code>Thu, 27 May 2021 15:55:00 GMT</code>. These are the oldest buckets in the queue who get the eligible slots.</p>
+	<pre class="language-js"><code class="language-js">activeUsers: 148,
 buckets: 
 [  
   {
@@ -174,30 +189,24 @@ buckets:
       eligibleSlots: 0,
     }
   }
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
+]</code></pre>
 	<p>If there are eligible slots available for all the users in their bucket, then they can be sent to the web application from any data center. This ensures the fairness of the waiting room.</p>
-	<p>There is another case that can happen where we do not have enough eligible slots for a whole bucket. When this happens things get a little more complicated as we cannot send everyone from that bucket to the web application. Instead, we allocate a share of eligible slots to each data center.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">key: "Thu, 27 May 2021 15:56:00 GMT",
+	<p>There is another case that can happen where we do not have enough eligible slots for a whole bucket. When this happens things get a little more complicated as we cannot send everyone from that bucket to the web application. Instead, we allocate a share of eligible slots to each data center.</p>
+	<pre class="language-js"><code class="language-js">key: "Thu, 27 May 2021 15:56:00 GMT",
 data: 
 {
   waiting: 60,
   eligibleSlots: 20,
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>As we did before, we use the ratio of past traffic from each data center to decide how many users it can let through. So if the current time is <code>Thu, 27 May 2021 16:34:10 GMT</code> both data centers look at the traffic ratio in the past at <code>Thu, 27 May 2021 16:32:00 GMT</code> and send a subset of users from those data centers to the web application.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">Thu, 27 May 2021 16:32:00 GMT: 
+}</code></pre>
+	<p>As we did before, we use the ratio of past traffic from each data center to decide how many users it can let through. So if the current time is <code>Thu, 27 May 2021 16:34:10 GMT</code> both data centers look at the traffic ratio in the past at <code>Thu, 27 May 2021 16:32:00 GMT</code> and send a subset of users from those data centers to the web application.</p>
+	<pre class="language-js"><code class="language-js">Thu, 27 May 2021 16:32:00 GMT: 
 {
   Nairobi: 0.25, // 0.25 * 20 = 5 eligibleSlots
   Dublin: 0.75,  // 0.75 * 20 = 15 eligibleSlots
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="estimated-wait-time">Estimated wait time</h3>
-	<p>When a request comes from a user we look at their bucketId. Based on the bucketId it is possible to know how many people are in front of the user's bucketId from the sorted list. Similar to how we track the activeUsers we also calculate the average number of users going to the web application per minute. Dividing the number of people who are in front of the user by the average number of users going to the web application gives us the estimated time. This is what is shown to the user who visits the waiting room.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-js">avgUsersToWebApplication:  30,
+}</code></pre>
+	<h3>Estimated wait time</h3>
+	<p>When a request comes from a user we look at their bucketId. Based on the bucketId it is possible to know how many people are in front of the user's bucketId from the sorted list. Similar to how we track the activeUsers we also calculate the average number of users going to the web application per minute. Dividing the number of people who are in front of the user by the average number of users going to the web application gives us the estimated time. This is what is shown to the user who visits the waiting room.</p>
+	<pre class="language-js"><code class="language-js">avgUsersToWebApplication:  30,
 activeUsers: 148,
 buckets: 
 [  
@@ -225,59 +234,76 @@ buckets:
       eligibleSlots: 0,
     }
   }
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
+]</code></pre>
 	<p>In the case above for a user with bucketId <code>Thu, 27 May 2021 15:56:00 GMT</code>, there are <code>60</code> users ahead of them. With <code>30</code> activeUsersToWebApplication per minute, the estimated time to get into the web application is <code>60/30</code> which is <code>2</code> minutes.</p>
-	<h2 id="implementation-with-workers-and-durable-objects">Implementation with Workers and Durable Objects</h2>
-	<p>Now that we have talked about the user experience and the algorithm, let’s focus on the implementation. Our product is specifically built for customers who experience high volumes of traffic, so we needed to run code at the edge in a highly scalable manner. Cloudflare has a great culture of building upon its own products, so we naturally thought of <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Workers</a>. The Workers platform uses <a href="https://blog.cloudflare.com/cloud-computing-without-containers">Isolates</a> to scale up and can scale horizontally as there are more requests. </p>
-	<p>The Workers product has an ecosystem of tools like <a href="https://github.com/cloudflare/wrangler">wrangler</a> which help us to iterate and debug things quickly. </p>
-	<p>Workers also reduce long-term operational work. </p>
+	<h2>Implementation with Workers and Durable Objects</h2>
+	<p>Now that we have talked about the user experience and the algorithm, let’s focus on the implementation. Our product is specifically built for customers who experience high volumes of traffic, so we needed to run code at the edge in a highly scalable manner. Cloudflare has a great culture of building upon its own products, so we naturally thought of <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Workers</a>. The Workers platform uses <a href="https://blog.cloudflare.com/cloud-computing-without-containers">Isolates</a> to scale up and can scale horizontally as there are more requests.</p>
+	<p>The Workers product has an ecosystem of tools like <a href="https://github.com/cloudflare/wrangler">wrangler</a> which help us to iterate and debug things quickly.</p>
+	<p>Workers also reduce long-term operational work.</p>
 	<p>For these reasons, the decision to build on Workers was easy. The more complex choice in our design was for the coordination. As we have discussed before, our workers need a way to share the waiting room state. We need every worker to be aware of changes in traffic patterns quickly in order to respond to sudden traffic spikes. We use the proportion of traffic from two minutes before to allocate user slots among data centers, so we need a solution to aggregate this data and make it globally available within this timeframe. Our design also relies on having fast coordination within a data center to react quickly to changes. We considered a few different solutions before settling on <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache</a> and <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>.</p>
-	<h3 id="idea-1-workers-kv">Idea #1: Workers KV</h3>
+	<h3>Idea #1: Workers KV</h3>
 	<p>We started to work on the project around March 2020. At that point, Workers offered two options for storage: the <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a> and <a href="https://www.cloudflare.com/products/workers-kv">KV</a>. Cache is shared only at the data center level, so for global coordination we had to use KV. Each worker writes its own key to KV that describes the requests it received and how it processed them. Each key is set to expire after a few minutes if the worker stopped writing. To create a workerState, the worker periodically does a list operation on the KV namespace to get the state around the world.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/image7.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Design using KV</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fcnX6Cjf5L7E8lDjOBQGD/0d1b752be7f1d244940b720142b71591/image7.png" alt="" class="kg-image" width="1944" height="1090" loading="lazy">
+
 	</figure>
+	<p>Design using KV</p>
 	<p>This design has some flaws because KV <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">wasn’t built for a use case like this</a>. The state of a waiting room changes all the time to match traffic patterns. Our use case is write intensive and KV is intended for read-intensive workflows. As a consequence, our proof of concept implementation turned out to be more expensive than expected. Moreover, KV is eventually consistent: it takes time for information written to KV to be available in all of our data centers. This is a problem for Waiting Room because we need fine-grained control to be able to react quickly to traffic spikes that may be happening simultaneously in several locations across the globe.</p>
-	<h3 id="idea-2-centralized-database">Idea #2: Centralized Database</h3>
+	<h3>Idea #2: Centralized Database</h3>
 	<p>Another alternative was to run our own databases in our core data centers. The <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a> in Workers lets us use the cache directly within a data center. If there is frequent communication with the core data centers to get the state of the world, the cached data in the data center should let us respond with minimal latency on the request hot path. There would be fine-grained control on when the data propagation happens and this time can be kept low.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/image3-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Design using Core Data centers<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ySnARioXWtR5DkkjSyH9b/360eca89758443e5d1388a2d402991d2/image3-1.png" alt="" class="kg-image" width="1938" height="1088" loading="lazy">
+
 	</figure>
-	<p>As noted before, this application is very write-heavy and the data is rather short-lived. For these reasons, a standard relational database would not be a good fit. This meant we could not leverage the existing database clusters maintained by our in-house specialists. Rather, we would need to use an in-memory data store such as Redis, and we would have to set it up and maintain it ourselves. We would have to install a data store cluster in each of our core locations, fine tune our configuration, and make sure data is replicated between them. We would also have to create a &nbsp;proxy service running in our core data centers to gate access to that database and validate data before writing to it. </p>
+	<p>Design using Core Data centers‌‌</p>
+	<p>As noted before, this application is very write-heavy and the data is rather short-lived. For these reasons, a standard relational database would not be a good fit. This meant we could not leverage the existing database clusters maintained by our in-house specialists. Rather, we would need to use an in-memory data store such as Redis, and we would have to set it up and maintain it ourselves. We would have to install a data store cluster in each of our core locations, fine tune our configuration, and make sure data is replicated between them. We would also have to create a &nbsp;proxy service running in our core data centers to gate access to that database and validate data before writing to it.</p>
 	<p>We could likely have made it work, at the cost of substantial operational overhead. While that is not insurmountable, this design would introduce a strong dependency on the availability of core data centers. If there were issues in the core data centers, it would affect the product globally whereas an edge-based solution would be more resilient. If an edge data center goes offline Anycast takes care of routing the traffic to the nearby data centers. This will ensure a web application will not be affected.</p>
-	<h3 id="the-scalable-solution-durable-objects">The Scalable Solution: Durable Objects</h3>
+	<h3>The Scalable Solution: Durable Objects</h3>
 	<p>Around that time, we learned about <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>. The product was in closed beta back then, but we decided to embrace Cloudflare’s thriving dogfooding culture and did not let that deter us. With Durable Objects, we could create one global Durable Object instance per waiting room instead of maintaining a single database. This object can exist anywhere in the world and handle redundancy and availability. So Durable Objects give us sharding for free. Durable Objects gave us fine-grained control as well as better availability as they run in our edge data centers. Additionally, each waiting room is isolated from the others: adverse events affecting one customer are less likely to spill over to other customers.</p>
-	<p><strong>Implementation with Durable Objects</strong><br>Based on these advantages, we decided to build our product on Durable Objects.</p>
+	<p><b>Implementation with Durable Objects</b>Based on these advantages, we decided to build our product on Durable Objects.</p>
 	<p>As mentioned above, we use a worker to decide whether to send users to the Waiting Room or the web application. That worker periodically sends a request to a Durable Object saying how many users it sent to the Waiting Room and how many it sent to the web application. A Durable Object instance is created on the first request and remains active as long as it is receiving requests. The Durable Object aggregates the counters sent by every worker to create a count of users sent to the Waiting Room and a count of users on the web application.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>A Durable Object instance is only active as long as it is receiving requests and can be restarted during maintenance. When a Durable Object instance is restarted, its in-memory state is cleared. To preserve the in-memory data on Durable Object restarts, we back up the data using the Cache API. This offers weaker guarantees than using the <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects#accessing-persistent-storage-from-a-durable-object">Durable Object persistent storage</a> as data may be evicted from cache, or the Durable Object can be moved to a different data center. If that happens, the Durable Object will have to start without cached data. On the other hand, persistent storage at the edge still has limited capacity. Since we can rebuild state very quickly from worker updates, we decided that cache is enough for our use case.</p>
-	<p><strong>Scaling up</strong><br>When traffic spikes happen around the world, new workers are created. Every worker needs to communicate how many users have been queued and how many have been let through to the web application. However, while workers automatically scale horizontally when traffic increases, Durable Objects do not. By design, there is only one instance of any Durable Object. This instance runs on a single thread so if it receives requests more quickly than it can respond, it can become overloaded. To avoid that, we cannot let every worker send its data directly to the same Durable Object. The way we achieve scalability is by sharding: we create per data center Durable Object instances that report up to one global instance.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/image5.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Durable Objects implementation</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uo0AeQpWFcgVEQJSyf4F2/4204d8dcdb025a8bce262a381e350a7d/image10.png" alt="" class="kg-image" width="819" height="850" loading="lazy">
+
 	</figure>
+	<p>A Durable Object instance is only active as long as it is receiving requests and can be restarted during maintenance. When a Durable Object instance is restarted, its in-memory state is cleared. To preserve the in-memory data on Durable Object restarts, we back up the data using the Cache API. This offers weaker guarantees than using the <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects#accessing-persistent-storage-from-a-durable-object">Durable Object persistent storage</a> as data may be evicted from cache, or the Durable Object can be moved to a different data center. If that happens, the Durable Object will have to start without cached data. On the other hand, persistent storage at the edge still has limited capacity. Since we can rebuild state very quickly from worker updates, we decided that cache is enough for our use case.</p>
+	<p><b>Scaling up</b>When traffic spikes happen around the world, new workers are created. Every worker needs to communicate how many users have been queued and how many have been let through to the web application. However, while workers automatically scale horizontally when traffic increases, Durable Objects do not. By design, there is only one instance of any Durable Object. This instance runs on a single thread so if it receives requests more quickly than it can respond, it can become overloaded. To avoid that, we cannot let every worker send its data directly to the same Durable Object. The way we achieve scalability is by sharding: we create per data center Durable Object instances that report up to one global instance.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/746CExfEYweWJtQf9fxk1z/b0b65f95c7d22ad96d37165e0f44670d/image5.png" alt="" class="kg-image" width="1938" height="1092" loading="lazy">
+
+	</figure>
+	<p>Durable Objects implementation</p>
 	<p>The aggregation is done in two stages: at the data-center level and at the global level.</p>
-	<p><strong>Data Center Durable Object</strong><br>When a request comes to a particular location, we can see the corresponding data center by looking at the cf.colo field on the <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties">request</a>. The Data Center Durable Object keeps track of the number of workers in the data center. It aggregates the state from all those workers. It also responds to workers with important information within a data center like the number of users making requests to a waiting room or number of workers. Frequently, it updates the Global Durable Object and receives information about other data centers as the response.</p>
-	<h4 id="worker-user-slots"><strong>Worker User Slots</strong></h4>
+	<p><b>Data Center Durable Object</b>When a request comes to a particular location, we can see the corresponding data center by looking at the cf.colo field on the <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties">request</a>. The Data Center Durable Object keeps track of the number of workers in the data center. It aggregates the state from all those workers. It also responds to workers with important information within a data center like the number of users making requests to a waiting room or number of workers. Frequently, it updates the Global Durable Object and receives information about other data centers as the response.</p>
+	<h4><b>Worker User Slots</b></h4>
 	<p>Above we talked about how a data center gets user slots allocated to it based on the past traffic patterns. If every worker in the data center talks to the Data Center Durable Object on every request, the Durable Object could get overwhelmed. Worker User Slots help us to overcome this problem.</p>
 	<p>Every worker keeps track of the number of users it has let through to the web application and the number of users that it has queued. The worker user slots are the number of users a worker can send to the web application at any point in time. This is calculated from the user slots available for the data center and the worker count in the data center. We divide the total number of user slots available for the data center by the number of workers in the data center to get the user slots available for each worker. If there are two workers and 10 users that can be sent to the web application from the data center, then we allocate five as the budget for each worker. This division is needed because every worker makes its own decisions on whether to send the user to the web application or the waiting room without talking to anyone else.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/Waiting-room-diagram-4.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Waiting room inside a data center</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GhRGXwUGAzkSXs5e2ytwF/0c10b68afeeaccf27e67db32c17eb6c7/Waiting-room-diagram-4.png" alt="" class="kg-image" width="1337" height="1050" loading="lazy">
+
 	</figure>
+	<p>Waiting room inside a data center</p>
 	<p>When the traffic changes, new workers can spin up or old workers can die. The worker count in a data center is dynamic as the traffic to the data center changes. Here we make a trade off similar to the one for inter data center coordination: there is a risk of overshooting the limit if many more workers are created between calls to the Data Center Durable Object. But too many calls to the Data Center Durable Object would make it hard to scale. In this case though, we can use <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache</a> for faster synchronization within the data center.</p>
-	<h4 id="cache"><strong>Cache</strong></h4>
+	<h4><b>Cache</b></h4>
 	<p>On every interaction to the Data Center Durable Object, the worker saves a copy of the data it receives to the cache. Every worker frequently talks to the cache to update the state it has in memory with the state in cache. We also adaptively adjust the rate of writes from the workers to the Data Center Durable Object based on the number of workers in the data center. This helps to ensure that we do not take down the Data Center Durable Object when traffic changes.</p>
-	<h3 id="global-durable-object">Global Durable Object</h3>
+	<h3>Global Durable Object</h3>
 	<p>The Global Durable Object is designed to be simple and stores the information it receives from any data center in memory. It responds with the information it has about all data centers. It periodically saves its in-memory state to cache using the Workers Cache API so that it can withstand restarts as mentioned above.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/image11.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Components of waiting room</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IciXNUkxrxLFeZ6qo02UP/3192eab75e8b2bb745e40e655f7eb76b/image11.png" alt="" class="kg-image" width="819" height="850" loading="lazy">
+
 	</figure>
-	<h2 id="recap">Recap</h2>
+	<p>Components of waiting room</p>
+	<h2>Recap</h2>
 	<p>This is how the waiting room works right now. Every request with the enabled waiting room goes to a worker at a Cloudflare edge data center. When this happens, the worker looks for the state of the waiting room in the <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache</a> first. We use cache here instead of Data Center Durable Object so that we do not overwhelm the Durable Object instance when there is a spike in traffic. Plus, reading data from cache is faster. The workers periodically make a request to the Data Center Durable Object to get the waiting room state which they then write to the cache. The idea here is that the cache should have a recent copy of the waiting room state.</p>
 	<p>Workers can examine the <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties">request</a> to know which data center they are in. Every worker periodically makes a request to the corresponding Data Center Durable Object. This interaction updates the worker state in the Data Center Durable Object. In return, the workers get the waiting room state from the Data Center Durable Object. The Data Center Durable Object sends the data center state to the Global Durable Object periodically. In the response, the Data Center Durable Object receives all data center states globally. It then calculates the waiting room state and returns that state to a worker in its response.</p>
 	<p>The advantage of this design is that it's possible to adjust the rate of writes from workers to the Data Center Durable Object and from the Data Center Durable Object to the Global Durable Object based on the traffic received in the waiting room. This helps us respond to requests during high traffic without overloading the individual Durable Object instances.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>By using Workers and Durable Objects, Waiting Room was able to scale up to keep web application servers online for many of our early customers during large spikes of traffic. It helped keep vaccination sign-ups online for companies and governments around the world for free through <a href="https://www.cloudflare.com/fair-shot">Project Fair Shot</a>: <a href="https://www.cloudflare.com/case-studies/verto">Verto Health</a> was able to serve over 4 million customers in Canada; <a href="https://www.cloudflare.com/case-studies/tickettailor">Ticket Tailor</a> reduced their peak resource utilization from 70% down to 10%; the <a href="https://www.cloudflare.com/case-studies/county-of-san-luis-obispo">County of San Luis Obispo</a> was able to stay online during traffic surges of up to 23,000 users; and the country of <a href="https://www.cloudflare.com/case-studies/latvia-ministry-of-health">Latvia</a> was able to stay online during surges of thousands of requests per second. These are just a few of the customers we served and will continue to serve until Project Fair Shot ends.</p>
 	<p>In the coming days, we are rolling out the Waiting Room to customers on our business plan. <a href="https://www.cloudflare.com/plans/business">Sign up</a> today to prevent spikes of traffic to your web application. If you are interested in access to Durable Objects, it’s currently available to try out in <a href="https://blog.cloudflare.com/durable-objects-open-beta">Open Beta</a>.</p>
 </div>

@@ -1,101 +1,130 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Whv00W9ZpsZklMR9lIAVz/11bed7742d0c133e59d9c5f46790318d/rfc8482-saying-goodbye-to-any.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Ladies and gentlemen, I would like you to welcome the new shiny <a href="https://tools.ietf.org/html/rfc8482">RFC8482</a>, which effectively deprecates the DNS ANY query type. DNS ANY was a "meta-query" - think of it as a similar thing to the common A, AAAA, MX or SRV query types, but unlike these it wasn't a real query type - it was special. Unlike the standard query types, ANY didn't age well. It was hard to implement on modern DNS servers, the semantics were poorly understood by the community and it unnecessarily exposed the DNS protocol to abuse. RFC8482 allows us to clean it up - it's a good thing.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/03/Screenshot-from-2019-03-15-14-22-51.png" alt="Screenshot-from-2019-03-15-14-22-51" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PCmdGHjKE7wTlBgmp6igp/c7686540a43acc5214d6161fb623361d/Screenshot-from-2019-03-15-14-22-51.png" alt="Screenshot-from-2019-03-15-14-22-51" class="kg-image" width="1246" height="552" loading="lazy">
+
+	</figure>
 	<p>But let's rewind a bit.</p>
-	<h2 id="historicalcontext">Historical context</h2>
+	<h2>Historical context</h2>
 	<p>It all started in 2015, when we were looking at the code of our authoritative DNS server. The code flow was generally fine, but it was all peppered with naughty statements like this:</p>
-	<pre><code>if qtype == "ANY" {
+	<pre class="language-bash"><code class="language-bash">if qtype == "ANY" {
     // special case
-}
-</code></pre>
+}</code></pre>
 	<p>This special code was ugly and error prone. This got us thinking: do we really need it? "ANY" is not a popular query type - no legitimate software uses it (with the notable exception of qmail).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/03/11235945713_5bf22a701d_z.jpg" alt="11235945713_5bf22a701d_z" loading="lazy"></p>
-	<center><small><a href="https://www.flickr.com/photos/cmichel67/11235945713">Image</a> by <a href="https://www.flickr.com/photos/cmichel67">Christopher Michel</a>CC BY 2.0</small></center>
-	<h1 id="anyishardformoderndnsservers">ANY is hard for modern DNS servers</h1>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oOaG7G1WJfwM7TX5qGESz/673a177f6adb95deed714221078306fc/11235945713_5bf22a701d_z.jpg" alt="11235945713_5bf22a701d_z" class="kg-image" width="640" height="426" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.flickr.com/photos/cmichel67/11235945713">Image</a> by <a href="https://www.flickr.com/photos/cmichel67">Christopher Michel</a>CC BY 2.0</p>
+	<h1>ANY is hard for modern DNS servers</h1>
 	<p>"ANY" queries, also called "* queries" in old RFCs, are supposed to return "all records" (citing <a href="https://tools.ietf.org/html/rfc1035">RFC1035</a>). There are two problems with this notion.</p>
 	<p>First, it assumes the server is able to retrieve "all records". In our implementation - we can't. Our DNS server, like many modern implementations, doesn't have a single "zone" file listing all properties of a DNS zone. This design allows us to respond fast and with information always up to date, but it makes it incredibly hard to retrieve "all records". Correct handling of "ANY" adds unreasonable code complexity for an obscure, rarely used query type.</p>
 	<p>Second, many of the DNS responses are generated on-demand. To mention just two use cases:</p>
 	<ul>
-		<li>Some of our DNS responses <a href="https://blog.cloudflare.com/dnssec-done-right">are based on location</a></li>
-		<li><a href="https://blog.cloudflare.com/black-lies">We are using black lies and DNS shotgun for DNSSEC</a></li>
+		<li>
+			<p>Some of our DNS responses <a href="https://blog.cloudflare.com/dnssec-done-right">are based on location</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/black-lies">We are using black lies and DNS shotgun for DNSSEC</a></p>
+		</li>
 	</ul>
 	<p>Storing data in modern databases and dynamically generating responses poses a fundamental problem to ANY.</p>
-	<h1 id="anyishardforclients">ANY is hard for clients</h1>
+	<h1>ANY is hard for clients</h1>
 	<p>Around the same time a catastrophe happened - <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2015-March/012899.html">Firefox started shipping with DNS code issuing "ANY" types</a>. The intention was, as usual, benign. Firefox developers wanted to get the TTL value for A and AAAA queries.</p>
 	<p>To cite a DNS guru <a href="https://icannwiki.org/Andrew_Sullivan">Andrew Sullivan</a>:</p>
 	<blockquote>
-		<p>In general, ANY is useful for troubleshooting but should never be used<br>
-			for regular operation. Its output is unpredictable given the effects<br>
-			of caches. It can return enormous result sets.</p>
+		<p>In general, ANY is useful for troubleshooting but should never be usedfor regular operation. Its output is unpredictable given the effectsof caches. It can return enormous result sets.</p>
 	</blockquote>
 	<p>In user code you can't rely on anything sane to come out of an "ANY" query. While an "ANY" query has somewhat defined semantics on the DNS authoritative side, it's undefined on the DNS resolver side. Such a query can confuse the resolver:</p>
 	<ul>
-		<li>Should it forward the "ANY" query to authoritative?</li>
-		<li>Should it respond with any record that is already in cache?</li>
-		<li>Should it do some a mixture of the above behaviors?</li>
-		<li>Should it cache the result of "ANY" query and re-use the data for other queries?</li>
+		<li>
+			<p>Should it forward the "ANY" query to authoritative?</p>
+		</li>
+		<li>
+			<p>Should it respond with any record that is already in cache?</p>
+		</li>
+		<li>
+			<p>Should it do some a mixture of the above behaviors?</p>
+		</li>
+		<li>
+			<p>Should it cache the result of "ANY" query and re-use the data for other queries?</p>
+		</li>
 	</ul>
 	<p>Different implementations do different things. "ANY" does not mean "ALL", which is the main source of confusion. To our joy, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1093983#c14">Firefox quickly backpedaled</a> on the change and stopped issuing ANY queries.</p>
-	<h1 id="anyishardfornetworkoperators">ANY is hard for network operators</h1>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/03/Screenshot-from-2019-03-15-14-44-58.png" alt="Screenshot-from-2019-03-15-14-44-58" loading="lazy"></p>
-	<center><small>A typical 50Gbps DNS amplification targeting one of our customers. The attack lasted about 4 hours.</small></center>
+	<h1>ANY is hard for network operators</h1>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FBoDQ01mFhkylbffAGioR/1d02cc870c7153a8960efdef5473fb6a/Screenshot-from-2019-03-15-14-44-58.png" alt="Screenshot-from-2019-03-15-14-44-58" class="kg-image" width="1168" height="308" loading="lazy">
+
+	</figure>
+	<p>A typical 50Gbps DNS amplification targeting one of our customers. The attack lasted about 4 hours.</p>
 	<p>Furthermore, since the "ANY" query can generate a large response, they were often used for DNS reflection attacks. Authoritative providers receive a spoofed ANY query and send the large answer to a target, potentially causing DoS damage. We have blogged about that many times:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho">The DDoS that knocked Spamhaus offline</a></li>
-		<li><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep inside a DNS amplification attack</a></li>
-		<li><a href="https://blog.cloudflare.com/reflections-on-reflections">Reflections on reflections</a></li>
-		<li><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the CPSC is inadvertently behind the largest attacks</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho">The DDoS that knocked Spamhaus offline</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep inside a DNS amplification attack</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/reflections-on-reflections">Reflections on reflections</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the CPSC is inadvertently behind the largest attacks</a></p>
+		</li>
 	</ul>
 	<p>The DoS problem with ANY is really old. Here is a discussion about a <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2013-May/010178.html">patch to bind tweaking ANY from 2013</a>.</p>
 	<p>There is also a second angle to the ANY DoS problem. Some reports suggested that performant DNS servers (authoritative or resolvers) <a href="https://fanf.livejournal.com/140566.html">can fill their outbound network capacity</a> with a large number of ANY responses.</p>
 	<p>The recommendation is simple - network operators must use <a href="https://kb.isc.org/docs/aa-00994">"response rate limiting"</a> when answering large DNS queries, otherwise they pose a DoS threat. The "ANY" query type just happens to often give such large responses, while providing little value to legitimate users.</p>
-	<h2 id="terminatingany">Terminating ANY</h2>
+	<h2>Terminating ANY</h2>
 	<p>In 2015 frustrated with the experience we announced we would like to stop giving responses to "ANY" queries and wrote a (controversial at a time) blog post:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type">Deprecating DNS ANY meta-query type</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type">Deprecating DNS ANY meta-query type</a></p>
+		</li>
 	</ul>
 	<p>A year later we followed up explaining possible solutions:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">What happened next - the deprecation of ANY</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">What happened next - the deprecation of ANY</a></p>
+		</li>
 	</ul>
 	<p>And here we come today! With <a href="https://tools.ietf.org/html/rfc8482">RFC8482</a> we have an RFC proposed standard clarifying that controversial query.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/03/Screenshot-from-2019-03-15-13-19-21.png" alt="Screenshot-from-2019-03-15-13-19-21" loading="lazy"></p>
-	<center><small>ANY queries are a background noise. Under normal circumstances, we see a very small volume of ANY queries.</small></center>
-	<h2 id="thefutureforourusers">The future for our users</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VXjlDZD1THaZzfyH53uo0/5e5b825cdec178e99fbf05a2eede123e/Screenshot-from-2019-03-15-13-19-21.png" alt="Screenshot-from-2019-03-15-13-19-21" class="kg-image" width="1370" height="370" loading="lazy">
+
+	</figure>
+	<p>ANY queries are a background noise. Under normal circumstances, we see a very small volume of ANY queries.</p>
+	<h2>The future for our users</h2>
 	<p>What precisely can be done about "ANY" queries? RFC8482 specifies that:</p>
 	<blockquote>
-		<p>A DNS responder that receives an ANY query MAY decline to provide a<br>
-			conventional ANY response or MAY instead send a response with a<br>
-			single RRset (or a larger subset of available RRsets) in the answer<br>
-			section.</p>
+		<p>A DNS responder that receives an ANY query MAY decline to provide aconventional ANY response or MAY instead send a response with asingle RRset (or a larger subset of available RRsets) in the answersection.</p>
 	</blockquote>
 	<p>This clearly defines the corner case - from now on the authoritative server may respond with, well, any query type to an "ANY" query. Sometimes simple stuff like this matters most.</p>
 	<p>This opens a gate for implementers - we can prepare a simple answer to these queries. As an implementer you may stick "A", or "AAAA" or anything else in the response if you wish. Furthermore, the spec recommends returning a special (and rarely used thus far) HINFO type. This is in fact what we do:</p>
-	<pre><code>$ dig ANY cloudflare.com @ns3.cloudflare.com. 
+	<pre class="language-bash"><code class="language-bash">$ dig ANY cloudflare.com @ns3.cloudflare.com. 
 ;; ANSWER SECTION:
-cloudflare.com.		3789	IN	HINFO	"ANY obsoleted" "See draft-ietf-dnsop-refuse-any"
-</code></pre>
+cloudflare.com.		3789	IN	HINFO	"ANY obsoleted" "See draft-ietf-dnsop-refuse-any"</code></pre>
 	<p>Oh, we need to update the message to mention the fresh RFC number! NS1 agrees with our implementation:</p>
-	<pre><code>$ dig ANY nsone.net @dns1.p01.nsone.net.
+	<pre class="language-bash"><code class="language-bash">$ dig ANY nsone.net @dns1.p01.nsone.net.
 ;; ANSWER SECTION:
-nsone.net.		3600	IN	HINFO	"ANY not supported." "See draft-ietf-dnsop-refuse-any"
-</code></pre>
+nsone.net.		3600	IN	HINFO	"ANY not supported." "See draft-ietf-dnsop-refuse-any"</code></pre>
 	<p>Our ultimate hero is <code>wikipedia.org</code>, which does exactly what the RFC recommends:</p>
-	<pre><code>$ dig ANY wikipedia.org @ns0.wikimedia.org.
+	<pre class="language-bash"><code class="language-bash">$ dig ANY wikipedia.org @ns0.wikimedia.org.
 ;; ANSWER SECTION:
-wikipedia.org.		3600	IN	HINFO	"RFC8482" ""
-</code></pre>
+wikipedia.org.		3600	IN	HINFO	"RFC8482" ""</code></pre>
 	<p>On our resolver service we stop ANY queries with NOTIMP code. This makes us more confident the resolver isn't used to perform DNS reflections:</p>
-	<pre><code>$ dig ANY cloudflare.com @1.1.1.1
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOTIMP, id: 14151
-</code></pre>
-	<h2 id="thefuturefordevelopers">The future for developers</h2>
+	<pre class="language-bash"><code class="language-bash">$ dig ANY cloudflare.com @1.1.1.1
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOTIMP, id: 14151</code></pre>
+	<h2>The future for developers</h2>
 	<p>On the client side, just don't use ANY DNS queries. On the DNS server side - you are allowed to rip out all the gory QTYPE::ANY handling code, and replace it with a top level HINFO message or first RRset found. Enjoy cleaning your codebase!</p>
-	<h2 id="summary">Summary</h2>
+	<h2>Summary</h2>
 	<p>It took the DNS community some time to agree on the specifics, but here we are at the end. RFC8482 cleans up the last remaining DNS meta-qtype, and allows for simpler DNS authoritative and DNS resolver implementations. It finally clearly defines the semantics of ANY queries going through resolvers and reduces the DoS risk for the whole Internet.</p>
 	<p>Not all the effort must go to new shiny protocols and developments, sometimes, cleaning the bitrot is as important. Similar cleanups are being done <a href="https://tools.ietf.org/html/draft-davidben-tls-grease-00">in other areas</a>. Keep up the good work!</p>
 	<p>We would like to thank the co-authors of RFC8482, and the community scrutiny and feedback. For us, RFC8482 is definitely a good thing, and allowed us to simplify our codebase and make the Internet safer.</p>
 	<p>Mission accomplished! One step at a time we can help make the Internet a better place.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,10 +1,14 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CD4a2kPJL6OTGqmJHpQ1v/2211c78b81d5db78b97e03ba398fa623/drupal-7-sa-core-2014-005-sql-injection-protection.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Yesterday the Drupal Security Team released a <a href="https://www.drupal.org/SA-CORE-2014-005">critical security patch</a> for Drupal 7 that fixes a very serious <a href="https://www.sektioneins.de/advisories/advisory-012014-drupal-pre-auth-sql-injection-vulnerability.html">SQL injection</a> vulnerability. At the same time we pushed an update to our Drupal WAF rules to mitigate this problem. Any customer using the WAF and with the Drupal ruleset enabled will have received automatic protection.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/Screen-Shot-2014-10-16-at-10-57-27.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3efo085aTM09kdrW2DTfIZ/1809757ac513333d5ad613df3a5f5fc6/Screen-Shot-2014-10-16-at-10-57-27.png" alt="" class="kg-image" width="1942" height="622" loading="lazy">
+
+	</figure>
 	<p>Rule D0002 provides protection against this vulnerability. If you do not have that ruleset enabled and are using Drupal clicking the ON button next to CloudFlare Drupal in the WAF Settings will enable protection immediately.</p>
 	<p>CloudFlare WAF protection can help mitigate vulnerabilities like this, but it is vital that Drupal 7 users <a href="https://www.drupal.org/drupal-7.32-release-notes">upgrade</a> to the safe version of Drupal immediately.</p>
-	<h3 id="importantupdateonoctober292014">Important Update on October 29, 2014</h3>
+	<h3>Important Update on October 29, 2014</h3>
 	<p>The Drupal Security team has posted a <a href="https://www.drupal.org/PSA-2014-003">PSA</a> on this vulnerability that states:</p>
 	<blockquote>
 		<p>You should proceed under the assumption that every Drupal 7 website was compromised unless updated or patched before Oct 15th, 11pm UTC, that is 7 hours after the announcement.</p>
@@ -13,5 +17,4 @@
 	<blockquote>
 		<p>If you have not updated or applied this patch, do so immediately, then continue reading this announcement; updating to version 7.32 or applying the patch fixes the vulnerability but does not fix an already compromised website. If you find that your site is already patched but you didn’t do it, that can be a symptom that the site was compromised - some attacks have applied the patch as a way to guarantee they are the only attacker in control of the site.</p>
 	</blockquote>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,26 +1,45 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="How CloudFlare Rocket Loader Redefines the Modern CDN" src="https://blog.cloudflare.com/content/images/rocket.png.scaled500.png" title="How CloudFlare Rocket Loader Redefines the Modern CDN"></p>
+<div class="mb2 gray5">4 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/unwSE3x740YVfOMvsByBK/dbf2872de2f37589ec8d04d30ae79a60/rocket.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="500" height="500" loading="lazy">
+
+	</figure>
 	<p>At CloudFlare, we built our own CDN from the ground up. We used the latest technologies like solid state drives for screaming I/O and Anycast routing and geo load balancing to make it as fast and efficient as possible. But we didn't want our efforts to make the web faster to stop with the traditional CDN. There were two core problems we wanted to address. The first was that a website can no longer be thought of as served from a single web server in a single location. Websites are collections of multiple apps, widgets, and tags that include everything from the ad network code inserted on a page to include advertising to the Facebook Like button.</p>
 	<p>Anyone surfing the web has noticed the alert in the lower-left of your browser that says: "Waiting for _________ to load." In the past, if any one of these third party apps was slow to load, no matter what you did to improve your own site's performance, they could drag you down. While this lag is annoying on desktops, it's nearly impossible on a mobile device. Think of it this way: each one of those connections to another third party service is another opportunity for your mobile phone provider to screw up.</p>
 	<p>The second problem was that any script on a web page could potentially block it from rendering. The way browsers work, whenever a piece of script is encountered by default the browser needs to stop and wait for it to render before it can finish drawing the page. Again, we've all seen this: a site that the top part of the page loads, then it hangs while it waits for an ad, then the rest of the page fills in.</p>
 	<p>Compare that with how some of the Internet Giant's sites load. Facebook, for example, renders the page extremely quickly with the initial content you can see, then fires the scripts necessary to load in ads and make the pages interactive. The experience is not just a site that loads faster, but one that feels much snappier. And, again, with their more limited memory and CPU, the lag created by processing scripts is only amplified on mobile devices.</p>
 	<p>At CloudFlare, our team has spent the last year figuring out how we could leverage our technology to address both these issues. The first step in this is what we call Rocket Loader™. Rocket Loader does a bunch of things:</p>
 	<ol>
-		<li>It ensures that all the scripts on your page will not block the content of your page from loading;</li>
-		<li>Loads all the scripts on your page, including third party scripts, asynchronously;</li>
-		<li>Bundles all the script requests into a single request over which multiple responses can be streamed;</li>
-		<li>Uses LocalStorage on most browsers and nearly all smart phones to more intelligently store scripts so they aren't refetched unless necessary.</li>
+		<li>
+			<p>It ensures that all the scripts on your page will not block the content of your page from loading;</p>
+		</li>
+		<li>
+			<p>Loads all the scripts on your page, including third party scripts, asynchronously;</p>
+		</li>
+		<li>
+			<p>Bundles all the script requests into a single request over which multiple responses can be streamed;</p>
+		</li>
+		<li>
+			<p>Uses LocalStorage on most browsers and nearly all smart phones to more intelligently store scripts so they aren't refetched unless necessary.</p>
+		</li>
 	</ol>
-	<p>At a high level, here's a diagram that outlines a way to think about it.<img alt="How CloudFlare Rocket Loader Redefines the Modern CDN" src="https://blog.cloudflare.com/content/images/rocket_loader_diagram.png.scaled500.png" title="How CloudFlare Rocket Loader Redefines the Modern CDN"></p>
+	<p>At a high level, here's a diagram that outlines a way to think about it.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CX9nZWG8T9M0yRyZdPfks/1345f37e4cf816542e5e5b02da2b566b/rocket_loader_diagram.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="500" height="216" loading="lazy">
+
+	</figure>
 	<p>CloudFlare adds two layers of cache for third party scripts that don't change often. First, we can store the scripts on our global CDN, so they are close to all your visitors and get the benefits of our extensive network (and an already-open HTTP connection). Second, on most modern browsers and smartphones, we use the browser's LocalStorage cache to intelligently store the resources that the site needs in order to avoid round trips to the server. Here's the Firebug waterfall chart of two pages loading before/after Rocket Loader is applied:</p>
-	<p><img alt="How CloudFlare Rocket Loader Redefines the Modern CDN" src="https://blog.cloudflare.com/content/images/before_after_HAR.png.scaled500.png" title="How CloudFlare Rocket Loader Redefines the Modern CDN"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7J3XtLTx00KNP6Tz4M1m5r/bfa547130a1a25326ae9d26642c094a2/before_after_HAR.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="492" height="476" loading="lazy">
+
+	</figure>
 	<p>Google has done great work in this space, creating a protocol called <a href="https://en.wikipedia.org/wiki/SPDY">SPDY</a>. It is great, does many of the same performance optimizations and some others as well, but unfortunately only works with the Chrome browser. Rocket Loader will bring many of the same performance benefits promised by SPDY, but works on most browsers and all smart phones, whether your visitors are surfing your site from an iPhone, Android, or Windows device.</p>
 	<p>What's also really cool about this is, unlike some other companies that have done limited work in the space, CloudFlare doesn't need to cache your content in order to make these improvements. We modify the HTML on-the fly as it passes through our network, without slowing down page delivery. This means that CloudFlare can improve the performance of even highly dynamic websites without forcing you to flush your cache every time there's an update to your pages.</p>
 	<p>Want to see it in action? Check out the performance of the Financial Times site loaded side-by-side in a Firefox browser.</p>
-	<iframe src="https://player.vimeo.com/video/24900882?title=0&amp;byline=0&amp;portrait=0&amp;color=ff9933" frameborder="0" height="188" width="450"></iframe>
 	<p>Despite the fact that FT is using one of the top-tier CDNs, Rocket Loader is able to double the site's performance. We don't mean to pick on the Financial Times: I personally love their content. While the improvement here is dramatic, we saw similar benefits across most major media sites despite heavy CDN usage.</p>
 	<p>People ask us all the time if CloudFlare is a CDN, and the answer at some level is yes. We run a globally distributed, load-balanced network that caches static content closer to the visitor. But, really, we've built something that's much more. We've taken the lessons learned from the last 15 years of CDNs, improved on those, and then applied many new technologies that take web performance to an entirely new level. You can <a href="https://cdata.github.com/presentations/what-else-is-cloudflare">learn more from a presentation</a> Chris and Jason from our engineering team recently gave on the technology behind Rocket Loader.</p>
 	<p>Rocket Loader doesn't cost us anything more to deploy, and we believe everyone should have access to a fast site, so we include it in all of our plans: even the free one. Give it a try with one click from your CloudFlare settings page. If you find any pages with bugs, let us know through our <a href="https://www.cloudflare.com/wco-bug-report.html">special bug reporting page for the feature</a>. This is a radical new approach to web performance, and we're pushing updates daily to make it better and better.</p>
-	<!--kg-card-end: markdown-->
 </div>

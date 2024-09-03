@@ -1,51 +1,84 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-mitigated-yet-another-okta-compromise-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-mitigated-yet-another-okta-compromise-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/how-cloudflare-mitigated-yet-another-okta-compromise-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/how-cloudflare-mitigated-yet-another-okta-compromise-ko-kr">한국어</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<p>On Wednesday, October 18, 2023, we discovered attacks on our system that we were able to trace back to Okta – threat actors were able to leverage an authentication token compromised at Okta to pivot into Cloudflare’s Okta instance. While this was a troubling security incident, our Security Incident Response Team’s (SIRT) real-time detection and prompt response enabled containment and minimized the impact to Cloudflare systems and data. We have verified that <strong>no Cloudflare customer information or systems were impacted by this event</strong> because of our rapid response. Okta has now released a <a href="https://sec.okta.com/harfiles">public statement</a> about this incident.</p>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-mitigated-yet-another-okta-compromise">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/how-cloudflare-mitigated-yet-another-okta-compromise">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-cloudflare-mitigated-yet-another-okta-compromise">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-mitigated-yet-another-okta-compromise">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uxI0nb27T2YAwE7nghISd/0d7b55c011600c45d204089d655df4a0/how-cloudflare-mitigated-yet-another-okta-compromise.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>On Wednesday, October 18, 2023, we discovered attacks on our system that we were able to trace back to Okta – threat actors were able to leverage an authentication token compromised at Okta to pivot into Cloudflare’s Okta instance. While this was a troubling security incident, our Security Incident Response Team’s (SIRT) real-time detection and prompt response enabled containment and minimized the impact to Cloudflare systems and data. We have verified that <b>no Cloudflare customer information or systems were impacted by this event</b> because of our rapid response. Okta has now released a <a href="https://sec.okta.com/harfiles">public statement</a> about this incident.</p>
 	<p>This is the second time Cloudflare has been impacted by a breach of Okta’s systems. In <a href="https://blog.cloudflare.com/cloudflare-investigation-of-the-january-2022-okta-compromise">March 2022</a>, we blogged about our investigation on how a breach of Okta affected Cloudflare. In that incident, we concluded that there was no access from the threat actor to any of our systems or data – Cloudflare’s use of hard keys for multi-factor authentication stopped this attack. &nbsp;</p>
 	<p>The key to mitigating this week’s incident was our team’s early detection and immediate response. In fact, we contacted Okta about the breach of their systems before they had notified us. The attacker used an open session from Okta, with Administrative privileges, and accessed our Okta instance. We were able to use our Cloudflare Zero Trust Access, Gateway, and Data Loss Prevention and our Cloudforce One threat research to validate the scope of the incident and contain it before the attacker could gain access to customer data, customer systems, or our production network. With this confidence, we were able to quickly mitigate the incident before the threat-actors were able to establish persistence.</p>
 	<p>According to Okta’s statement, the threat-actor accessed Okta’s customer support system and viewed files uploaded by certain Okta customers as part of recent support cases. It appears that in our case, the threat-actor was able to hijack a session token from a support ticket which was created by a Cloudflare employee. Using the token extracted from Okta, the threat-actor accessed Cloudflare systems on October 18. In this sophisticated attack, we observed that threat-actors compromised two separate Cloudflare employee accounts within the Okta platform. We detected this activity internally more than 24 hours before we were notified of the breach by Okta. Upon detection, our SIRT was able to engage quickly to identify the complete scope of compromise and contain the security incident. Cloudflare’s <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust architecture</a> protects our production environment, which helped prevent any impact to our customers.</p>
-	<h2 id="recommendations-for-okta">Recommendations for Okta</h2>
-	<p>We urge Okta to consider implementing the following best practices, including:</p><!--kg-card-begin: markdown-->
+	<h2>Recommendations for Okta</h2>
+	<p>We urge Okta to consider implementing the following best practices, including:</p>
 	<ul>
-		<li>Take any report of compromise seriously and act immediately to limit damage; in this case Okta was first notified on October 2, 2023 by <a href="https://www.beyondtrust.com/blog/entry/okta-support-unit-breach">BeyondTrust</a> but the attacker still had access to their support systems at least until October 18, 2023.</li>
-		<li>Provide timely, responsible disclosures to your customers when you identify that a breach of your systems has affected them.</li>
-		<li>Require hardware keys to protect all systems, including third-party support providers.</li>
+		<li>
+			<p>Take any report of compromise seriously and act immediately to limit damage; in this case Okta was first notified on October 2, 2023 by <a href="https://www.beyondtrust.com/blog/entry/okta-support-unit-breach">BeyondTrust</a> but the attacker still had access to their support systems at least until October 18, 2023.</p>
+		</li>
+		<li>
+			<p>Provide timely, responsible disclosures to your customers when you identify that a breach of your systems has affected them.</p>
+		</li>
+		<li>
+			<p>Require hardware keys to protect all systems, including third-party support providers.</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 	<p>For a critical security service provider like Okta, we believe following these best practices is table stakes.</p>
-	<h2 id="recommendations-for-okta%E2%80%99s-customers">Recommendations for Okta’s Customers</h2>
-	<p>If you are an Okta customer, we recommend that you reach out to them for further information regarding potential impact to your organization. We also advise the following actions:</p><!--kg-card-begin: markdown-->
+	<h2>Recommendations for Okta’s Customers</h2>
+	<p>If you are an Okta customer, we recommend that you reach out to them for further information regarding potential impact to your organization. We also advise the following actions:</p>
 	<ul>
-		<li>Enable Hardware MFA for all user accounts. Passwords alone do not offer the necessary level of protection against attacks. We strongly recommend the usage of hardware keys, as other methods of MFA can be vulnerable to phishing attacks.</li>
-		<li>Investigate and respond to:
+		<li>
+			<p>Enable Hardware MFA for all user accounts. Passwords alone do not offer the necessary level of protection against attacks. We strongly recommend the usage of hardware keys, as other methods of MFA can be vulnerable to phishing attacks.</p>
+		</li>
+		<li>
+			<p>Investigate and respond to:</p>
 			<ul>
-				<li>All unexpected password and MFA changes for your Okta instances.</li>
-				<li>Suspicious support-initiated events.</li>
-				<li>Ensure all password resets are valid and force a password reset for any under suspicion.</li>
-				<li>Any suspicious MFA-related events, ensuring only valid MFA keys are present in the user's account configuration.</li>
+				<li>
+					<p>All unexpected password and MFA changes for your Okta instances.</p>
+				</li>
+				<li>
+					<p>Suspicious support-initiated events.</p>
+				</li>
+				<li>
+					<p>Ensure all password resets are valid and force a password reset for any under suspicion.</p>
+				</li>
+				<li>
+					<p>Any suspicious MFA-related events, ensuring only valid MFA keys are present in the user's account configuration.</p>
+				</li>
 			</ul>
 		</li>
-		<li>Monitor for:
+		<li>
+			<p>Monitor for:</p>
 			<ul>
-				<li>New Okta users created.</li>
-				<li>Reactivation of Okta users.</li>
-				<li>All sessions have proper authentication associated with it.</li>
-				<li>All Okta account and permission changes.</li>
-				<li>MFA policy overrides, MFA changes, and MFA removal.</li>
-				<li>Delegation of sensitive applications.</li>
-				<li>Supply chain providers accessing your tenants.</li>
+				<li>
+					<p>New Okta users created.</p>
+				</li>
+				<li>
+					<p>Reactivation of Okta users.</p>
+				</li>
+				<li>
+					<p>All sessions have proper authentication associated with it.</p>
+				</li>
+				<li>
+					<p>All Okta account and permission changes.</p>
+				</li>
+				<li>
+					<p>MFA policy overrides, MFA changes, and MFA removal.</p>
+				</li>
+				<li>
+					<p>Delegation of sensitive applications.</p>
+				</li>
+				<li>
+					<p>Supply chain providers accessing your tenants.</p>
+				</li>
 			</ul>
 		</li>
-		<li>Review session expiration policies to limit session hijack attacks.</li>
-		<li>Utilize tools to validate devices connected to your critical systems, such as Cloudflare Access Device Posture Check.</li>
-		<li>Practice defense in depth for your detection and monitoring strategies.</li>
+		<li>
+			<p>Review session expiration policies to limit session hijack attacks.</p>
+		</li>
+		<li>
+			<p>Utilize tools to validate devices connected to your critical systems, such as Cloudflare Access Device Posture Check.</p>
+		</li>
+		<li>
+			<p>Practice defense in depth for your detection and monitoring strategies.</p>
+		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<p>Cloudflare’s Security and IT teams continue to remain vigilant after this compromise. If further information is disclosed by Okta or discovered through additional log analysis, we will publish an update to this post.</p><!--kg-card-begin: markdown-->
-	<p><em></em></p>
-	<center><em>Cloudflare's Security Incident Response Team <a href="https://cloudflare.com/careers">is hiring</a>.</em></center>
-	<p></p>
-	<!--kg-card-end: markdown-->
+	<p>Cloudflare’s Security and IT teams continue to remain vigilant after this compromise. If further information is disclosed by Okta or discovered through additional log analysis, we will publish an update to this post.</p>
+	<p><i>Cloudflare's Security Incident Response Team </i><a href="https://cloudflare.com/careers"><i>is hiring</i></a><i>.</i></p>
 </div>

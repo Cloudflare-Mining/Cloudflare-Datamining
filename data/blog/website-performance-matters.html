@@ -1,26 +1,29 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Website Performance
-Matters" src="https://blog.cloudflare.com/content/images/Cheetah_1.jpg.scaled.500.jpg" title="Website Performance Matters"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PgbLAVNcA40UddcW0kI1j/a7a509423c027430cdec491025286188/Cheetah_1.jpg.scaled.500.jpg" alt="Website Performance
+Matters" class="kg-image" width="500" height="333" loading="lazy">
+
+	</figure>
 	<p>It is no secret -- there are many benefits of having a fast website. The faster your website loads, the longer a visitor is likely to stay. The actual stat is that for every 100ms, you lose 1% of your visitors. Google and other search engines have started to punish websites <a href="https://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html">that load slowly</a> by giving a SEO bump to those that load quickly. And with or without research, you can just think about your own habits. If a web page takes a long time to load, you are likely to abandon it and move on to something else.</p>
 	<p>So, if making your website fast is important, what are some practical best practices to do so? The biggest websites online use a variety of resources and tricks to make their websites load as quickly as possible. Some common techniques include using a CDN (content delivery network), upgrading to a dedicated server, upgrading network equipment and running multiple data centers around the world. These techniques are all effective, but difficult for most websites because of costs, expertise, access and time - until recently. CloudFlare is a service that brings the tools previously reserved for the largest websites to every site online.</p>
-	<h3 id="howdoescloudflarework">How does CloudFlare work?</h3>
+	<h3>How does CloudFlare work?</h3>
 	<p>When you <a href="https://www.cloudflare.com/sign-up.html">sign up</a> for CloudFlare (which takes 5 minutes), your traffic is routed through CloudFlare's network. Our network acts like a <a href="https://en.wikipedia.org/wiki/Reverse_proxy">reverse proxy</a> and is distributed all over the world. What that means is that we cache certain resources (like images) at our nodes. Our nodes are scattered all around the world and the idea is that we serve copies of resources from our nodes, rather than having to go to your origin server. So if your visitor is coming from San Francisco, their requests will go through our San Jose node and a visitor's request from Paris, would go through our Amsterdam node. The end result is that requests served from our nodes are closer to the visitor so they are delivered faster. And, the requests that go all the way to your origin server also happen quicker since part of the load is offset by CloudFlare's nodes.</p>
 	<p>Rather than having to decide what does and does not get cached, CloudFlare automatically takes care of it for you. The result is that on average, a website on CloudFlare loads 30% faster than before. The performance benefit ranges site to site and depends on a variety of things including type of site and location, but for most websites, CloudFlare makes a noticeable difference.</p>
-	<h3 id="dynamicwebsites">Dynamic Websites</h3>
+	<h3>Dynamic Websites</h3>
 	<p>A common question is what happens if my site is dynamic? If your website is dynamic, you can still use CloudFlare. Our intelligent caching system will never cache dynamic content so the content is always fresh, but the same idea applies: we will take care of the larger images, CSS and Javascript, which means your server is freed up to serve the dynamic resources quicker.</p>
-	<h3 id="whocanusecloudflare">Who can use CloudFlare</h3>
+	<h3>Who can use CloudFlare</h3>
 	<p>To try CloudFlare, it takes less than 5 minutes to sign up. Any website or blog can join as long as you own the domain name. So a website like CuteNinjaKittens.com works, but CuteNinjaKittens.Wordpress.com does not. The core service is free, which means that CloudFlare is accessible to any website online.</p>
 	<p>CloudFlare was built because having a fast and secure website is essential. Our goal is to build a service to take care of speed and security for you, so you can get back to focusing on why you created a website in the first place.</p>
-	<p><em>Side note: The photo of the cheetah was taken by one of our team<br>
-			members, Damon. Damon has a passion for photography and took this photo<br>
-			on one of his SE Asia trips. And in case you didn't know, the cheetah is the fastest land animal on earth.</em></p>
-	<h3 id="relatedtipsonimprovingwebsitespeed">Related tips on improving website speed:</h3>
+	<p><i>Side note: The photo of the cheetah was taken by one of our team</i><i>members, Damon. Damon has a passion for photography and took this photo</i><i>on one of his SE Asia trips. And in case you didn't know, the cheetah is the fastest land animal on earth.</i></p>
+	<h3>Related tips on improving website speed:</h3>
 	<ul>
-		<li><a href="http://diythemes.com/thesis/improve-website-pagespeed">How to Optimize Websites and WordPress for Speed</a></li>
-		<li><a href="http://www.noupe.com/wordpress/13-great-wordpress-speed-tips-tricks-for-max-performance.html">Tips for speeding up WordPress blogs</a>
-			<p></p>
+		<li>
+			<p><a href="http://diythemes.com/thesis/improve-website-pagespeed">How to Optimize Websites and WordPress for Speed</a></p>
+		</li>
+		<li>
+			<p><a href="http://www.noupe.com/wordpress/13-great-wordpress-speed-tips-tricks-for-max-performance.html">Tips for speeding up WordPress blogs</a></p>
 		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,37 +1,46 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Quh4EHZY3G7rN3VzSqDBd/10cc65e9375bef4f8b9037a83aae2fb1/how-syria-turned-off-the-internet.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Today, 29 November 2012, between 1026 and 1028 (UTC), all traffic from Syria to the rest of the Internet stopped. At CloudFlare, we witnessed the drop off. We've spent the morning studying the situation to understand what happened. The following graph shows the last several days of traffic coming to CloudFlare's network from Syria.</p>
-	<p><img alt="How Syria Turned Off the
-Internet" src="https://blog.cloudflare.com/content/images/cloudflare_syrian_traffic_utc.png.scaled500.png" title="How Syria Turned Off the Internet"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15PG5gGBgjyWNgcGPf3m7h/9d7959a31e13876d4e3bfe980b12b6b7/cloudflare_syrian_traffic_utc.png.scaled500.png" alt="How Syria Turned Off the
+Internet" class="kg-image" width="500" height="239" loading="lazy">
+
+	</figure>
 	<p>Since the beginning of today's outage, we have received no requests from Syrian IP space. That is a more complete blackout than we've seen when other countries have been cut from the Internet (see, for example, Egypt where while <a href="https://blog.cloudflare.com/what-egypt-shutting-down-the-internet-looks-l">most traffic was cut off some requests still trickled out)</a>.</p>
 	<p>The graph above shows two other incidents over the last week. On 25 November 2012 at approximately 0800 UTC we witnessed a 15 minute period during which Syrian traffic was cut to only 13% of normal levels. Again on 27 November 2012 at 0730 UTC, we saw a 15 minute period during which traffic dropped to only 0.2% of normal.</p>
-	<h3 id="whathappened">What Happened?</h3>
-	<p>The Syrian Minister of Information is being <a href="http://www.jpost.com/Headlines/Article.aspx?id=294001">reported as<br>
-			saying</a> that the government did not disable the Internet, but instead the outage was caused by a cable being cut. Specifically: "It is not true that the state cut the Internet. The terrorists targeted the Internet lines, resulting in some regions being cut off." From our investigation, that appears unlikely to be the case.</p>
+	<h3>What Happened?</h3>
+	<p>The Syrian Minister of Information is being <a href="http://www.jpost.com/Headlines/Article.aspx?id=294001">reported assaying</a> that the government did not disable the Internet, but instead the outage was caused by a cable being cut. Specifically: "It is not true that the state cut the Internet. The terrorists targeted the Internet lines, resulting in some regions being cut off." From our investigation, that appears unlikely to be the case.</p>
 	<p>To begin, all connectivity to Syria, not just some regions, has been cut. The exclusive provider of Internet access in Syria is the state-run Syrian Telecommunications Establishment. Their network AS number is AS29386. The following network providers typically provide connectivity from Syria to the rest of the Internet: PCCW and Turk Telekom as the primary providers with Telecom Italia and TATA for additional capacity. When the outage happened, the BGP routes to Syrian IP space were all simultaneously withdrawn from all of Syria's upstream providers. The effect of this is that networks were unable to route traffic to Syrian IP space, effectively cutting the country off the Internet.</p>
 	<p>Syria has 4 physical cables that connect it to the rest of the Internet. Three are undersea cables that land in the city of Tartous, Syria. The fourth is an over-land cable through Turkey. In order for a whole-country outage, all four of these cables would have had to been cut simultaneously. That is unlikely to have happened.</p>
-	<h3 id="watchingtheshutdownhappen">Watching the Shutdown Happen</h3>
+	<h3>Watching the Shutdown Happen</h3>
 	<p>One of our network engineers recorded the following video of network routes being withdrawn. Syrian Telecommunications (AS29386) is represented by the red dot in the middle of the video. The lines represent routes to the Syrian upstream providers.</p>
-	<iframe src="https://player.vimeo.com/video/54630037?badge=0" frameborder="0" height="281" width="500"></iframe>
-	<small>Video created with <a href="http://www.dia.uniroma3.it/~compunet/www/view/tool.php?id=bgplay">BGPlay</a> by Roma Tre University</small>
+	<p>Video created with <a href="http://www.dia.uniroma3.it/~compunet/www/view/tool.php?id=bgplay">BGPlay</a> by Roma Tre University</p>
 	<p>Beginning at 1026 UTC, routes were withdrawn for PCCW. The routing shifted primarily to Turk Telekom. Routes to Telecom Italia and TATA were also withdrawn, but has less of an impact. Then, at 1028 UTC, routes were withdrawn for Turk Telekom. After that, Syria was effectively cut off from the Internet. (Note that the remaining path that appears to be present in the video is an anomaly. We have confirmed that it is not actually active.)</p>
 	<p>While we cannot know for sure, our network team estimates that Syria likely has a small number of edge routers. All the edge routers are controlled by Syrian Telecommunications. The systematic way in which routes were withdrawn suggests that this was done through updates in router configurations, not through a physical failure or cable cut.</p>
-	<h3 id="whatsyriansweresurfingbeforetheinternetwasturnedoffh2">What Syrians Were Surfing Before the Internet Was Turned Off</h3>
-	<p><img alt="How Syria Turned Off the Internet" src="https://blog.cloudflare.com/content/images/last_site_syrians_accessed.jpg.scaled500.jpg" title="How Syria Turned Off the Internet"></p>
-	<p>The last four sites on CloudFlare that received requests from Syria in<br>
-		the seconds before access was cut were:</p>
+	<h3>What Syrians Were Surfing Before the Internet Was Turned Off</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hpWDo3CJCFghm0Mm82iZI/05388920667170d441ab0ce7975825af/last_site_syrians_accessed.jpg.scaled500.jpg" alt="How Syria Turned Off the Internet" class="kg-image" width="500" height="232" loading="lazy">
+
+	</figure>
+	<p>The last four sites on CloudFlare that received requests from Syria inthe seconds before access was cut were:</p>
 	<ul>
-		<li>fotoobook.com - a photo sharing blog</li>
-		<li>aliqtisadi.com - a Syrian news site</li>
-		<li>madinah.com - a Muslim-oriented social network</li>
-		<li>to2.xxx - a porn site (warning: not safe for work)</li>
+		<li>
+			<p>fotoobook.com - a photo sharing blog</p>
+		</li>
+		<li>
+			<p>aliqtisadi.com - a Syrian news site</p>
+		</li>
+		<li>
+			<p>madinah.com - a Muslim-oriented social network</p>
+		</li>
+		<li>
+			<p>to2.xxx - a porn site (warning: not safe for work)</p>
+		</li>
 	</ul>
 	<p>In other words, traffic from Syrians accessing the Internet in the moments before they were cut off from the rest of the world looks remarkably similar to traffic from any part of the world.</p>
 	<p>As we have posted about recently, we <a href="https://blog.cloudflare.com/ceasefires-dont-end-cyberwars">don't believe our role is to take sides in political conflicts</a>. However, we do believe it is our mission to help build a better Internet where everyone can have a voice and access information. It is therefore deeply troubling to the CloudFlare team when we see an entire nation cut off from the ability to access and report information. Our thoughts are with the Syrian people and we hope connectivity, and peace, will be quickly restored.</p>
 	<hr>
-	<p><strong>UPDATE:</strong> Syrian Internet access appears to be at least partially<br>
-		restored as of 1 December 2012 at 1432 UTC. We have confirmed both that<br>
-		the BGP routes are reestablished and traffic from both wired and mobile<br>
-		devices is flowing to CloudFlare's network. We've posted a blog post with more details <a href="https://blog.cloudflare.com/syrian-internet-access-appears-partially-rees">here</a>.</p>
-	<!--kg-card-end: markdown-->
+	<p><b>UPDATE:</b> Syrian Internet access appears to be at least partiallyrestored as of 1 December 2012 at 1432 UTC. We have confirmed both thatthe BGP routes are reestablished and traffic from both wired and mobiledevices is flowing to CloudFlare's network. We've posted a blog post with more details <a href="https://blog.cloudflare.com/syrian-internet-access-appears-partially-rees">here</a>.</p>
 </div>

@@ -1,105 +1,149 @@
 <div class="mb2 gray5">14 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stronger-than-a-promise-proving-oblivious-http-privacy-properties-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/stronger-than-a-promise-proving-oblivious-http-privacy-properties-zh-tw">繁體中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/OHTTPS-1.png" class="kg-image" alt="Stronger than a promise: proving Oblivious HTTP privacy properties" loading="lazy"></figure>
-	<p>We recently announced <a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today">Privacy Gateway</a>, a fully managed, scalable, and performant Oblivious HTTP (OHTTP) relay. Conceptually, OHTTP is a simple protocol: end-to-end encrypted requests and responses are forwarded between client and server through a relay, decoupling <em>who</em> from <em>what</em> was sent. This is a common pattern, as evidenced by deployed technologies like <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DoH</a> and <a href="https://blog.cloudflare.com/icloud-private-relay">Apple Private Relay</a>. Nevertheless, OHTTP is still new, and as a new protocol it’s imperative that we analyze the protocol carefully.</p>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stronger-than-a-promise-proving-oblivious-http-privacy-properties">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/stronger-than-a-promise-proving-oblivious-http-privacy-properties">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dSvaMsKlh9OgEd9qHld5Q/d18980ba316ea5d8328bd5c04be74d53/OHTTPS-1.png" alt="Stronger than a promise: proving Oblivious HTTP privacy properties" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>We recently announced <a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today">Privacy Gateway</a>, a fully managed, scalable, and performant Oblivious HTTP (OHTTP) relay. Conceptually, OHTTP is a simple protocol: end-to-end encrypted requests and responses are forwarded between client and server through a relay, decoupling <i>who</i> from <i>what</i> was sent. This is a common pattern, as evidenced by deployed technologies like <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DoH</a> and <a href="https://blog.cloudflare.com/icloud-private-relay">Apple Private Relay</a>. Nevertheless, OHTTP is still new, and as a new protocol it’s imperative that we analyze the protocol carefully.</p>
 	<p>To that end, we conducted a formal, computer-aided security analysis to complement the ongoing standardization process and deployment of this protocol. In this post, we describe this analysis in more depth, digging deeper into the cryptographic details of the protocol and the model we developed to analyze it. If you’re already familiar with the OHTTP protocol, feel free to skip ahead to the analysis to dive right in. Otherwise, let’s first review what OHTTP sets out to achieve and how the protocol is designed to meet those goals.</p>
-	<h3 id="decoupling-who-from-what-was-sent">Decoupling who from what was sent</h3>
+	<h3>Decoupling who from what was sent</h3>
 	<p>OHTTP is a protocol that combines public key encryption with a proxy to separate the contents of an HTTP request (and response) from the sender of an HTTP request. In OHTTP, clients generate encrypted requests and send them to a relay, the relay forwards them to a gateway server, and then finally the gateway decrypts the message to handle the request. The relay only ever sees ciphertext and the client and gateway identities, and the gateway only ever sees the relay identity and plaintext.</p>
 	<p>In this way, OHTTP is a lightweight application-layer proxy protocol. This means that it proxies application messages rather than network-layer connections. This distinction is important, so let’s make sure we understand the differences. Proxying connections involves a whole other suite of protocols typically built on <a href="https://blog.cloudflare.com/a-primer-on-proxies">HTTP CONNECT</a>. (Technologies like VPNs and WireGuard, including Cloudflare WARP, can also be used, but let’s focus on HTTP CONNECT for comparison.)</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-16.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Connection-oriented proxy depiction</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G2GpukW91K4h4HWG4LwLP/bba5aaede0774202a916a876f76bbe9b/image2-16.png" alt="" class="kg-image" width="1348" height="358" loading="lazy">
+
 	</figure>
+	<p>Connection-oriented proxy depiction</p>
 	<p>Since the entire TCP connection itself is proxied, connection-oriented proxies are compatible with any application that uses TCP. In effect, they are general purpose proxy protocols that support any type of application traffic. In contrast, proxying application messages is compatible with application use cases that require transferring entire objects (messages) between a client and server.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image5-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Message-oriented proxy depiction</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tmYhfoorqr1dlClq57lNr/908ea2e6668b36edc5d41ff3469469a2/image5-3.png" alt="" class="kg-image" width="1348" height="358" loading="lazy">
+
 	</figure>
+	<p>Message-oriented proxy depiction</p>
 	<p>Examples include <a href="https://blog.cloudflare.com/oblivious-dns">DNS requests and responses</a>, or, in the case of OHTTP, HTTP requests and responses. In other words, OHTTP is not a general purpose proxy protocol: it’s fit for purpose, aimed at transactional interactions between clients and servers (such as app-level APIs). As a result, it is much simpler in comparison.</p>
 	<p>Applications use OHTTP to ensure that requests are not linked to either of the following:</p>
 	<ol>
-		<li>Client identifying information, including the IP address, TLS fingerprint, and so on. As a proxy protocol, this is a fundamental requirement.</li>
-		<li>Future requests from the same client. This is necessary for applications that do not carry state across requests.</li>
+		<li>
+			<p>Client identifying information, including the IP address, TLS fingerprint, and so on. As a proxy protocol, this is a fundamental requirement.</p>
+		</li>
+		<li>
+			<p>Future requests from the same client. This is necessary for applications that do not carry state across requests.</p>
+		</li>
 	</ol>
 	<p>These two properties make OHTTP a perfect fit for applications that wish to provide privacy to their users without compromising basic functionality. It’s served as the foundation for a widespread deployment of Oblivious DoH for over a year now, and as of recently, serves as the foundation for <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode">Flo Health Inc.’s Anonymous Mode feature</a>.</p>
 	<p>It’s worth noting that both of these properties could be achieved with a connection-oriented protocol, but at the cost of a new end-to-end TLS connection for each message that clients wish to transmit. This can be prohibitively expensive for all entities that participate in the protocol.</p>
 	<p>So how exactly does OHTTP achieve these goals? Let’s dig deeper into OHTTP to find out.</p>
-	<h3 id="oblivious-http-protocol-design">Oblivious HTTP protocol design</h3>
+	<h3>Oblivious HTTP protocol design</h3>
 	<p>A single transaction in OHTTP involves the following steps:</p>
 	<ol>
-		<li>A client <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1">encapsulates an HTTP request</a> using the public key of the gateway server, and sends it to the relay over a client&lt;&gt;relay HTTPS connection.</li>
-		<li>The relay forwards the request to the server over its own relay&lt;&gt;gateway HTTPS connection.</li>
-		<li>The gateway decapsulates the request, forwarding it to the target server which can produce the resource.</li>
-		<li>The gateway returns an <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2">encapsulated response</a> to the relay, which then forwards the result to the client.</li>
+		<li>
+			<p>A client <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1">encapsulates an HTTP request</a> using the public key of the gateway server, and sends it to the relay over a client&lt;&gt;relay HTTPS connection.</p>
+		</li>
+		<li>
+			<p>The relay forwards the request to the server over its own relay&lt;&gt;gateway HTTPS connection.</p>
+		</li>
+		<li>
+			<p>The gateway decapsulates the request, forwarding it to the target server which can produce the resource.</p>
+		</li>
+		<li>
+			<p>The gateway returns an <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2">encapsulated response</a> to the relay, which then forwards the result to the client.</p>
+		</li>
 	</ol>
-	<p>Observe that in this transaction the relay only ever sees the client and gateway identities (the client IP address and the gateway URL, respectively), but does not see any application data. Conversely, the gateway sees the application data and the relay IP address, but does not see the client IP address. <strong>Neither party has the full picture, and unless the relay and gateway collude, it stays that way.</strong></p>
+	<p>Observe that in this transaction the relay only ever sees the client and gateway identities (the client IP address and the gateway URL, respectively), but does not see any application data. Conversely, the gateway sees the application data and the relay IP address, but does not see the client IP address. <b>Neither party has the full picture, and unless the relay and gateway collude, it stays that way.</b></p>
 	<p>The HTTP details for forwarding requests and responses in the transaction above are not technically interesting – a message is sent from sender to receiver over HTTPS using a POST – so we’ll skip over them. The fascinating bits are in the request and response encapsulation, which build upon <a href="https://www.rfc-editor.org/rfc/rfc9180.html">HPKE</a>, a <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">recently ratified standard for hybrid public key encryption</a>.</p>
 	<p>Let’s begin with request encapsulation, which is <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">hybrid public key encryption</a>. Clients first transform their HTTP request into a binary format, called Binary HTTP, as specified by <a href="https://datatracker.ietf.org/doc/rfc9292">RFC9292</a>. Binary HTTP is, as the name suggests, a binary format for encoding HTTP messages. This representation lets clients encode HTTP requests to binary-encoded values and for the gateway to reverse this process, recovering an HTTP request from a binary-encoded value. Binary encoding is necessary because the public key encryption layer expects binary-encoded inputs.</p>
 	<p>Once the HTTP request is encoded in binary format, it is then fed into HPKE to produce an encrypted message, which clients then send to the relay to be forwarded to the gateway. The gateway decrypts this message, transforms the binary-encoded request back to its equivalent HTTP request, and then forwards it to the target server for processing.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image10-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NYRu14pWAPynS3nqMocnu/c45f6291f98a991be1548b77a4228a36/image10-1.png" alt="" class="kg-image" width="1338" height="518" loading="lazy">
+
+	</figure>
 	<p>Responses from the gateway are encapsulated back to the client in a very similar fashion. The gateway first encodes the response in an equivalent binary HTTP message, encrypts it using a symmetric key known only to the client and gateway, and then returns it to the relay to be forwarded to the client. The client decrypts and transforms this message to recover the result.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image4-10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="simplified-model-and-security-goals">Simplified model and security goals</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JuJ9CoqPX4v8HQuqjjoeh/8420f1d8270c8362de6d2d67181fa7fc/image4-10.png" alt="" class="kg-image" width="1596" height="384" loading="lazy">
+
+	</figure>
+	<h3>Simplified model and security goals</h3>
 	<p>In our formal analysis, we set out to make sure that OHTTP’s use of encryption and proxying achieves the desired privacy goals described above.</p>
 	<p>To motivate the analysis, consider the following simplified model where there exists two clients C1 and C2, one relay R, and one gateway, G. OHTTP assumes an attacker that can observe all network activity and can adaptively compromise either R or G, but not C1 or C2. OHTTP assumes that R and G do not collude, and so we assume only one of R and G is compromised. Once compromised, the attacker has access to all session information and private key material for the compromised party. The attacker is prohibited from sending client-identifying information, such as IP addresses, to the gateway. (This would allow the attacker to trivially link a query to the corresponding client.)</p>
 	<p>In this model, both C1 and C2 send OHTTP requests Q1 and Q2, respectively, through R to G, and G provides answers A1 and A2. The attacker aims to link C1 to (Q1, A1) and C2 to (Q2, A2), respectively. The attacker succeeds if this linkability is possible without any additional interaction. OHTTP prevents such linkability. Informally, this means:</p>
 	<ol>
-		<li>Requests and responses are known only to clients and gateways in possession of the corresponding response key and HPKE keying material.</li>
-		<li>The gateway cannot distinguish between two identical requests generated from the same client, and two identical requests generated from different clients, in the absence of unique per-client keys.</li>
+		<li>
+			<p>Requests and responses are known only to clients and gateways in possession of the corresponding response key and HPKE keying material.</p>
+		</li>
+		<li>
+			<p>The gateway cannot distinguish between two identical requests generated from the same client, and two identical requests generated from different clients, in the absence of unique per-client keys.</p>
+		</li>
 	</ol>
-	<p>And informally it might seem clear that OHTTP achieves these properties. But we want to prove this formally, which means that the design, if implemented perfectly, would have these properties. This type of formal analysis is distinct from formal verification, where you take a protocol design and prove that some code implements it correctly. Whilst both are useful they are different processes, and in this blog post we’ll be talking about the former.<strong> </strong>But first, let’s give some background on formal analysis.</p>
-	<h3 id="formal-analysis-programming-model">Formal analysis programming model</h3>
+	<p>And informally it might seem clear that OHTTP achieves these properties. But we want to prove this formally, which means that the design, if implemented perfectly, would have these properties. This type of formal analysis is distinct from formal verification, where you take a protocol design and prove that some code implements it correctly. Whilst both are useful they are different processes, and in this blog post we’ll be talking about the former. But first, let’s give some background on formal analysis.</p>
+	<h3>Formal analysis programming model</h3>
 	<p>In our setting, a formal analysis involves producing an algebraic description of the protocol and then using math to prove that the algebraic description has the properties we want. The end result is proof that shows that our idealized algebraic version of the protocol is “secure”, i.e. has the desired properties, with respect to an attacker we want to defend against. In our case, we chose to model our idealized algebraic version of OHTTP using a tool called <a href="https://tamarin-prover.github.io">Tamarin</a>, a security-focused theorem prover and model checker. Tamarin is an intimidating tool to use, but makes intuitive sense once you get familiar with it. We’ll break down the various parts of a Tamarin model in the context of our OHTTP model below.</p>
-	<h3 id="modeling-the-protocol-behavior">Modeling the Protocol Behavior</h3>
+	<h3>Modeling the Protocol Behavior</h3>
 	<p>Tamarin uses a technique known as <a href="https://resources.mpi-inf.mpg.de/departments/rg1/conferences/vtsa18/slides/basin-lecture2.pdf">multiset rewriting</a> to describe protocols. A protocol description is formed of a series of “rules” that can “fire” when certain requirements are met. Each rule represents a discrete step in the protocol, and when a rule fires that means the step was taken. For example, we have a rule representing the gateway generating its long-term public encapsulation key, and for different parties in the protocol establishing secure TLS connections. These rules can be triggered pretty much any time as they have no requirements.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image9-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Basic rule for OHTTP gateway key generation</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Dx29NTs610pWriwpovIQS/d5a7ef248f5d516d2d7cf40a67b4df34/image9-2.png" alt="" class="kg-image" width="532" height="138" loading="lazy">
+
 	</figure>
-	<p>Tamarin represents these requirements as “facts”. A rule can be triggered when the right facts are available. Tamarin stores all the available facts in a “bag” or multiset. A multiset is similar to an ordinary set, in that it stores a collection of objects in an unordered fashion, but unlike an ordinary set, duplicate objects are allowed. This is the “multiset” part of “multiset rewriting”.</p><!--kg-card-begin: markdown-->
-	<p>The rewriting part refers to the output of our rules. When a rule triggers it takes some available facts out of the bag and, when finished, inserts some new facts into the bag. These new facts might fulfill the requirements of some other rule, which can then be triggered, producing even more new facts, and so on<sup>1</sup>. In this way we can represent progress through the protocol. Using input and output facts, we can describe our rule for generating long-term public encapsulation keys, which has no requirements and produces a long-term key as output, as follows.</p>
-	<!--kg-card-end: markdown--><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2022/10/image7-3.png" width="50%" alt=""><!--kg-card-end: html-->
-	<p>A rule requirement is satisfied if there exist output facts that match the rule’s input facts. As an example, in OHTTP, one requirement for the client rule for generating a request is that the long-term public encapsulation key exists. This matching is shown below.</p><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2022/10/image8-3.png" width="50%" alt=""><!--kg-card-end: html-->
-	<p>Let’s put some of these pieces together to show a very small but concrete part of OHTTP as an example: the client generating its encapsulated request and sending it to the relay. This step should produce a message for the relay, as well as any corresponding state needed to process the eventual response from the relay. As a precondition, the client requires (1) the gateway public key and (2) a TLS connection to the relay. And as mentioned earlier, generating the public key and TLS connection do not require any inputs, so they can be done at any time.</p><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2022/10/image1-21.png" width="50%" alt="">
+	<p>Basic rule for OHTTP gateway key generation</p>
+	<p>Tamarin represents these requirements as “facts”. A rule can be triggered when the right facts are available. Tamarin stores all the available facts in a “bag” or multiset. A multiset is similar to an ordinary set, in that it stores a collection of objects in an unordered fashion, but unlike an ordinary set, duplicate objects are allowed. This is the “multiset” part of “multiset rewriting”.</p>
+	<p>The rewriting part refers to the output of our rules. When a rule triggers it takes some available facts out of the bag and, when finished, inserts some new facts into the bag. These new facts might fulfill the requirements of some other rule, which can then be triggered, producing even more new facts, and so on<sup>1</sup>. In this way we can represent progress through the protocol. Using input and output facts, we can describe our rule for generating long-term public encapsulation keys, which has no requirements and produces a long-term key as output, as follows.</p><!--kg-card-begin: html--><img src="/content/images/2022/10/image7-3.png" width="50%" alt=""><!--kg-card-end: html-->
+	<p>A rule requirement is satisfied if there exist output facts that match the rule’s input facts. As an example, in OHTTP, one requirement for the client rule for generating a request is that the long-term public encapsulation key exists. This matching is shown below.</p><!--kg-card-begin: html--><img src="/content/images/2022/10/image8-3.png" width="50%" alt=""><!--kg-card-end: html-->
+	<p>Let’s put some of these pieces together to show a very small but concrete part of OHTTP as an example: the client generating its encapsulated request and sending it to the relay. This step should produce a message for the relay, as well as any corresponding state needed to process the eventual response from the relay. As a precondition, the client requires (1) the gateway public key and (2) a TLS connection to the relay. And as mentioned earlier, generating the public key and TLS connection do not require any inputs, so they can be done at any time.</p><!--kg-card-begin: html--><img src="/content/images/2022/10/image1-21.png" width="50%" alt="">
 	<p></p><!--kg-card-end: html-->
-	<h3 id="modeling-events-in-time">Modeling events in time</h3>
+	<h3>Modeling events in time</h3>
 	<p>Beyond consuming and producing new facts, each Tamarin rule can also create side effects, called “action facts.” Tamarin records the action facts each time a rule is triggered. An action fact might be something like “a client message containing the contents m was sent at time t.” Sometimes rules can only be triggered in a strict sequence, and we can therefore put their action facts in a fixed time order. At other times multiple rules might have their prerequisites met at the same time, and therefore we can’t put their action facts into a strict time sequence. We can represent this pattern of partially ordered implications as a directed acyclic graph, or DAG for short.</p>
 	<p>Altogether, multiset rewriting rules describe the steps of a protocol, and the resulting DAG records the actions associated with the protocol description. We refer to the DAG of actions as the action graph. If we’ve done our job well it’s possible to follow these rules and produce every possible combination of messages or actions allowed by the protocol, and their corresponding action graph.</p>
 	<p>As an example of the action graph, let’s consider what happens when the client successfully finishes the protocol. When the requirements for this rule are satisfied, the rule triggers, marking that the client is done and that the response was valid. Since the protocol is done at this point, there are no output facts produced.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-8.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Action graph for terminal client response handler rule</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6k53NoxUnAriRnQpZxTDYM/166e61df4f20c1943783af5399d5e009/image3-8.png" alt="" class="kg-image" width="1230" height="812" loading="lazy">
+
 	</figure>
-	<h3 id="modeling-the-attacker">Modeling the attacker</h3>
+	<p>Action graph for terminal client response handler rule</p>
+	<h3>Modeling the attacker</h3>
 	<p>The action graph is core to reasoning about the protocol’s security properties. We can check a graph for various properties, e.g. “does the first action taken by the relay happen after the first action taken by the client?”. Our rules allow for multiple runs of the protocol to happen at the same time. This is very powerful. We can look at a graph and ask “did something bad happen here that might break the protocol’s security properties?”</p>
 	<p>In particular, we can prove (security and correctness) properties by querying this graph, or by asserting various properties about it. For example, we might say “for all runs of the protocol, if the client finishes the protocol and can decrypt the response from the gateway, then the response must have been generated and encrypted by an entity which has the corresponding shared secret.”</p>
 	<p>This is a useful statement, but it doesn’t say much about security. What happens if the gateway private key is compromised, for example? In order to prove security properties, we need to define our threat model, which includes the adversary and their capabilities. In Tamarin, we encode the threat model as part of the protocol model. For example, when we define messages being passed from the client to the relay, we can add a special rule that allows the attacker to read it as it goes past. This gives us the ability to describe properties such as “for all runs of the protocol in our language the attacker never learns the secret key.”</p>
 	<p>For security protocols, we typically give the attacker the ability to read, modify, drop, and replay any message. This is sometimes described as “the attacker controls the network”, or a <a href="https://www.cs.huji.ac.il/~dolev/pubs/dolev-yao-ieee-01056650.pdf">Dolev-Yao</a> attacker. However, the attacker can also sometimes compromise different entities in a protocol, learning state associated with that entity. This is sometimes called an extended Dolev-Yao attacker, and it is precisely the attacker we consider in our model.</p>
-	<p>Going back to our model, we give the attacker the ability to compromise long-term key pairs and TLS sessions as needed through different rules. These set various action facts that mark the fact that compromise took place. <br></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image11-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Action graph for key compromise rule</figcaption>
+	<p>Going back to our model, we give the attacker the ability to compromise long-term key pairs and TLS sessions as needed through different rules. These set various action facts that mark the fact that compromise took place.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28YufQ6WgtS1RkyeH9O2ZI/aa0e5e9526c650a1007ce24ced749beb/image11-2.png" alt="" class="kg-image" width="958" height="824" loading="lazy">
+
 	</figure>
+	<p>Action graph for key compromise rule</p>
 	<p>Putting everything together, we have a way to model the protocol behavior, attacker capabilities, and security properties. Let’s now dive into how we applied these to prove OHTTP secure.</p>
-	<h3 id="ohttp-tamarin-model">OHTTP Tamarin model</h3>
+	<h3>OHTTP Tamarin model</h3>
 	<p>In our model, we give the attacker the ability to compromise the server’s long-term keys and the key between the client and the relay. Against this attacker, we aim to prove these two informal statements stated above:</p>
 	<ol>
-		<li>Requests and responses are known only to clients and gateways in possession of the corresponding response key and HPKE keying material.</li>
-		<li>The gateway cannot distinguish between two requests generated from the same client, and two requests generated from different clients, in the absence of unique per-client keys.</li>
+		<li>
+			<p>Requests and responses are known only to clients and gateways in possession of the corresponding response key and HPKE keying material.</p>
+		</li>
+		<li>
+			<p>The gateway cannot distinguish between two requests generated from the same client, and two requests generated from different clients, in the absence of unique per-client keys.</p>
+		</li>
 	</ol>
 	<p>To prove these formally, we express them somewhat differently. First, we assert that the protocol actually completes. This is an important step, because if your model has a bug in it where the protocol can’t even run as intended, then Tamarin is likely to say it’s “secure” because nothing bad ever happens.</p>
 	<p>For the core security properties, we translate the desired goals into questions we ask about the model. In this way, formal analysis only provides us proof (or disproof!) of the questions we ask, not the questions we should have asked, and so this translation relies on experience and expertise. We break down this translation for each of the questions we want to ask below, starting with gateway authentication.</p>
-	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L273-L283"><strong>Gateway authentication</strong></a><strong> </strong>Unless the attacker has compromised the gateway’s long term keys, if the client completes the protocol and is able to decrypt the gateway’s response, then it knows that: the responder was the gateway it intended to use, the gateway derived the same keys, the gateway saw the request the client sent, and the response the client received is the one the gateway sent.</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L273-L283"><b>Gateway authentication</b></a> Unless the attacker has compromised the gateway’s long term keys, if the client completes the protocol and is able to decrypt the gateway’s response, then it knows that: the responder was the gateway it intended to use, the gateway derived the same keys, the gateway saw the request the client sent, and the response the client received is the one the gateway sent.</p>
 	<p>This tells us that the protocol actually worked, and that the messages sent and received were as they were supposed to be. One aspect of authentication can be that the participants agree on some data, so although this protocol seems to be a bit of a grab bag of properties they’re all part of one authentication property.</p>
 	<p>Next, we need to prove that the request and response remain secret. There are several ways in which secrecy may be violated, e.g., if encryption or decryption keys are compromised. We do so by proving the following properties.</p>
-	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L232-L248"><strong>Request and response secrecy</strong></a><strong> </strong><br>The request and response are both secret, i.e., the attacker never learns them, unless the attacker has compromised the gateway’s long term keys.</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L232-L248"><b>Request and response secrecy</b></a>The request and response are both secret, i.e., the attacker never learns them, unless the attacker has compromised the gateway’s long term keys.</p>
 	<p>In a sense, request and response secrecy covers the case where the gateway is malicious, because if the gateway is malicious then the “attacker” knows the gateway’s long term keys.</p>
-	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L251-L257"><strong>Relay connection security</strong></a><strong> </strong><br>The contents of the connection between the client and relay are secret unless the attacker has compromised the relay.</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L251-L257"><b>Relay connection security</b></a>The contents of the connection between the client and relay are secret unless the attacker has compromised the relay.</p>
 	<p>We don’t have to worry about the secrecy of the connection if the client is compromised because in that scenario the attacker knows the query before it’s even been sent, and can learn the response by making an honest query itself. If your client is compromised then it’s game over.</p>
-	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L285-L292"><strong>AEAD nonce reuse resistance</strong></a><strong> </strong><br>If the gateway sends a message to the client, and the attacker finds a different message encrypted with the same key and nonce, then either the attacker has already compromised the gateway, or they already knew the query.</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L285-L292"><b>AEAD nonce reuse resistance</b></a>If the gateway sends a message to the client, and the attacker finds a different message encrypted with the same key and nonce, then either the attacker has already compromised the gateway, or they already knew the query.</p>
 	<p>In translation, this property means that the response encryption is correct and not vulnerable to attack, such as through AEAD nonce reuse. This would obviously be a disaster for OHTTP, so we were careful to check that this situation never arises, especially as <a href="https://files.research.cloudflare.com/publication/Singanamalla2021.pdf#subsection.4.5">we’d already detected this issue</a> in <a href="https://blog.cloudflare.com/oblivious-dns">ODoH</a>.</p>
 	<p>Finally, and perhaps most importantly, we want to prove that an attacker can’t link a particular query to a client. We prove a slightly different property which effectively argues that, unless the relay and gateway collude, then the attacker cannot link the encrypted query to its decrypted query together. In particular, we prove the following:</p>
-	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L260-L271"><strong>Client unlinkability</strong></a><strong> </strong><br>If an attacker knows the query and the contents of the connection sent to the relay (i.e. the encrypted query), then it must have compromised both the gateway and the relay.</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L260-L271"><b>Client unlinkability</b></a>If an attacker knows the query and the contents of the connection sent to the relay (i.e. the encrypted query), then it must have compromised both the gateway and the relay.</p>
 	<p>This doesn’t in general prove indistinguishability. There are two techniques an attacker can use to link two queries. Direct inference and statistical analysis. Because of the anonymity trilemma we know that we cannot defend against statistical analysis, so we have to declare it out of scope and move on. To prevent direct inference we need to make sure that the attacker doesn't compromise either the client, or both the relay and the gateway together, which would let it directly link the queries. So is there anything we can protect against? Thankfully there is one thing. We can make sure that a malicious gateway can't identify that a single client sent two messages. We prove that by not keeping any state between connections. If a returning client acts in exactly the same way as a new client, and doesn't carry any state between requests, there's nothing for the malicious gateway to analyze.</p>
-	<p>And that’s it! If you want to have a go at proving some of these properties yourself our models and proofs <a href="https://github.com/cloudflare/ohttp-analysis">are available on our GitHub</a>, as are our <a href="https://github.com/cloudflare/odoh-analysis">ODoH models and proofs</a>. The <a href="https://tamarin-prover.github.io">Tamarin prover is freely available too</a>, so you can double-check all our work. Hopefully this post has given you a flavor of what we mean when we say that we’ve proven a protocol secure, and inspired you to have a go yourself. If you want to work on great projects like this check out our <a href="https://www.cloudflare.com/careers">careers</a> page.</p><!--kg-card-begin: markdown-->
+	<p>And that’s it! If you want to have a go at proving some of these properties yourself our models and proofs <a href="https://github.com/cloudflare/ohttp-analysis">are available on our GitHub</a>, as are our <a href="https://github.com/cloudflare/odoh-analysis">ODoH models and proofs</a>. The <a href="https://tamarin-prover.github.io">Tamarin prover is freely available too</a>, so you can double-check all our work. Hopefully this post has given you a flavor of what we mean when we say that we’ve proven a protocol secure, and inspired you to have a go yourself. If you want to work on great projects like this check out our <a href="https://www.cloudflare.com/careers">careers</a> page.</p>
 	<hr>
-	<p><small><sup>1</sup>Depending on the model, this process can lead to an exponential blow-up in search space, making it impossible to prove anything automatically. Moreover, if the new output facts do not fulfill the requirements of any remaining rule(s) then the process hangs.</small></p>
-	<!--kg-card-end: markdown-->
+	<p><sup>1</sup>Depending on the model, this process can lead to an exponential blow-up in search space, making it impossible to prove anything automatically. Moreover, if the new output facts do not fulfill the requirements of any remaining rule(s) then the process hangs.</p>
 </div>

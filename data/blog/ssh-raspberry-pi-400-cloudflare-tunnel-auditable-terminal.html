@@ -1,90 +1,218 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HZeESitSzlf2IxPSv5Jpo/aa9b11f4fc6e01de324d31c7225cefe5/ssh-raspberry-pi-400-cloudflare-tunnel-auditable-terminal.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A few weeks ago I received a <a href="https://www.raspberrypi.org/products/raspberry-pi-400">Raspberry Pi 400</a> as a gift. I didn’t have time to do anything beyond plug it in and verify that it works. It’s great that the Pi 400 comes with everything you need except for a screen: there’s the computer itself, mouse, HDMI cable and power adapter.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image19-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iLQzp8ygoJwH3SyrGKZMA/1a2fc34cc626e010890ad81e72d21b3b/image19-3.png" alt="" class="kg-image" width="1000" height="612" loading="lazy">
+
+	</figure>
 	<p>The Pi 400 has been sitting gathering dust when Cloudflare launched <a href="https://blog.cloudflare.com/browser-ssh-terminal-with-auditing">Auditable Terminal</a> giving me the perfect excuse to get out the Pi 400 and hook it up.</p>
 	<p>Auditable Terminal gives you a fully featured <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH client</a> in your browser. You authenticate using Cloudflare Access and can log into a computer from anywhere just using the browser and get a terminal. And using Cloudflare Tunnel you can securely connect a computer to Cloudflare without punching holes in a firewall. And you end up with a consistent terminal experience across devices: 256 colours, Unicode support and the same fonts everywhere.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/SSHing-to-Raspberry-Pi-400-from-a-browser-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/o8TpljnuZvMufrwXbp0kF/56418a8c9e8038f527dee43b41567995/SSHing-to-Raspberry-Pi-400-from-a-browser-2.png" alt="" class="kg-image" width="1566" height="672" loading="lazy">
+
+	</figure>
 	<p>This is ideal for my use case: set up the Pi 400 on my home network, use Cloudflare Tunnel to connect it to the Cloudflare network, use Auditable Terminal to connect to the Pi 400 via Cloudflare and the tunnel using nothing more than a browser.</p>
 	<p>Here’s what it looks like:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image9-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/cGwSFbLHpHDT4NHO2S38C/1a05b257567474e574daccc59508d3cf/image9-3.png" alt="" class="kg-image" width="1999" height="559" loading="lazy">
+
+	</figure>
 	<p>Before getting into the details of how I set that up, it’s worth stopping and appreciating how cool this is. I am logging into the Pi 400 via SSH but inside the browser window just by visiting a URL in a browser and authenticating using Cloudflare for Teams. And since it’s a URL that SSH session can just be a browser bookmark!</p>
 	<p>There’s another reason I wanted to do this: I like to use Cloudflare’s own products. I have a number of Cloudflare accounts that I pay for so that I see the true customer experience. I see the emails we send out and what it’s like to navigate our UI for real use. The Pi 400 gave me a chance to experience with Cloudflare Tunnel and Auditable Terminal.</p>
 	<p>Also this is really cool.</p>
 	<p>So… if you want to do this yourself, follow along as I take you through the steps I went through to hook a brand new Pi 400 up to Cloudflare and access it from anywhere.</p>
-	<h3 id="stage-1-prepare-the-pi">Stage 1: Prepare the Pi</h3>
+	<h3>Stage 1: Prepare the Pi</h3>
 	<p>I plugged the Pi 400 into my TV via HDMI, to the Internet via Ethernet and booted it. It comes with the OS pre-installed on an SD card so it only took seconds to be at a welcome screen:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-33.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3F0OtoSGT7wmqWjrKWRcb/0bd501e9b041156ca69be4e635e0e666/image2-33.png" alt="" class="kg-image" width="1024" height="576" loading="lazy">
+
+	</figure>
 	<p>Inevitably with a brand new machine there were a lot of updates to install so I let the machine run through that before logging in for the first time.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image23-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wCAY7rtjgslHDRLgxZq17/82ebb9851241a7ee648e10c81f8c3921/image23-1.png" alt="" class="kg-image" width="1024" height="576" loading="lazy">
+
+	</figure>
 	<p>The Pi 400 doesn’t come with the SSH server enabled, so it’s necessary to run the raspi-config program from the command line (<code>sudo raspi-config</code>). The SSH server is under option “3 Interface Options”:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-36.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jpPxK6ybyxw9hXyZE3oPy/c8c10f700a3566e2a2fd97cd1d5e3180/image1-36.png" alt="" class="kg-image" width="1808" height="506" loading="lazy">
+
+	</figure>
 	<p>It’s option “P2 SSH” and when turned on will allow SSH access to the machine. By default this will be using SSH with password authentication and so it’s pretty important to change the <a href="https://www.raspberrypi.org/documentation/linux/usage/users.md">default pi/raspberry combination</a> (and to go much further and switch to <a href="https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md">using certificates</a>).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image22.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wNoZtu3lkpdMhsOZjbGSf/dc29f10857f54e85db770cb24a662aa5/image22.png" alt="" class="kg-image" width="1808" height="506" loading="lazy">
+
+	</figure>
 	<p>But for the rest of this run through I am going to stick with password authentication in SSH. We’ll see later that Cloudflare has a clever solution to setting up SSH security with certificates.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-17.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hv2ryUuLjXw8PVTiyq4nP/9cd4633e3608daaf5096516086378a6c/image4-17.png" alt="" class="kg-image" width="840" height="301" loading="lazy">
+
+	</figure>
 	<p>With SSH access setup and the Pi 400 fully updated, the second step is to set up Cloudflare Tunnel.</p>
-	<h3 id="stage-2-cloudflare-tunnel">Stage 2: Cloudflare Tunnel</h3>
+	<h3>Stage 2: Cloudflare Tunnel</h3>
 	<p>Even with SSH setup on the Pi 400 it’s only accessible from inside my home network and I want to get access to it from anywhere. I could open a port in my home firewall, but I hate that idea.</p>
-	<p>The answer is<a href="https://blog.cloudflare.com/tunnel-for-everyone"> Cloudflare Tunnel</a>. It’s a (free!) small daemon (called <code>cloudflared</code>) that will connect from the Pi 400 to multiple Cloudflare data centers and maintain connections to them. It’ll be authenticated to my Cloudflare account and once setup I’ll be able to use Cloudflare for Teams to connect to it via the web.</p>
+	<p>The answer is <a href="https://blog.cloudflare.com/tunnel-for-everyone">Cloudflare Tunnel</a>. It’s a (free!) small daemon (called <code>cloudflared</code>) that will connect from the Pi 400 to multiple Cloudflare data centers and maintain connections to them. It’ll be authenticated to my Cloudflare account and once setup I’ll be able to use Cloudflare for Teams to connect to it via the web.</p>
 	<p>Setting it up is a doddle. I already had a domain name setup on Cloudflare, if I hadn’t I could have set one up quickly. The Cloudflare Tunnel documentation takes you through <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation">installing it</a>.</p>
 	<p>The only thing I didn’t know was the architecture of the Pi 400 (32 bit? 64 bit?); so I ran <code>lscpu</code> which tells me that it’s <code>armv7l</code> (which is 32-bit). How did I know that armv7l was 32-bit? I didn’t. I googled it.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image10-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QbeIrW7t5D9NbeFYfrCGN/511769d17924aafb790438eb8771670f/image10-3.png" alt="" class="kg-image" width="1532" height="486" loading="lazy">
+
+	</figure>
 	<p>You can build <code>cloudflared</code> from source if you wish as it’s <a href="https://github.com/cloudflare/cloudflared">an open source project</a>. But I chose to go the speedy route and <code>wget</code> it.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1du0naQQVnv9RfhOUgkoRv/8c20bc64c9a3e4d15af8256bd2aec672/image25.png" alt="" class="kg-image" width="1999" height="521" loading="lazy">
+
+	</figure>
 	<p>With <code>cloudflared</code> installed on the Pi 400 it was time to authenticate it to my account. Authentication is <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/setup">clearly documented</a> and I started by typing <code>cloudflared tunnel login</code>. On a machine with a UI and browser this would have opened the browser ready for me to log into my Cloudflare account and set up <code>cloudflared</code>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image30.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3q4FBWTZAnCzzw4IR3cGl/2e5deb10f28622b4c612822567aaeebe/image30.png" alt="" class="kg-image" width="1999" height="211" loading="lazy">
+
+	</figure>
 	<p>Since I was doing all this while SSH’d into the Pi I had to copy and paste the URL to my browser and then choose which of my domains I would use. (I did this before we changed the name from Argo Tunnel to Cloudflare Tunnel… it’s the same thing).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image18-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74FA914g5Q1OFnYkbmRCuu/9f684ad2016067448a777dd25070a405/image18-1.png" alt="" class="kg-image" width="1999" height="550" loading="lazy">
+
+	</figure>
 	<p>Once authorized, the <code>cloudflared</code> command running on the Pi 400 automatically sets up the tunnel. In the dashboard I received confirmation of this:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image12-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bgfyl88l05KhttMDo8lFu/598a8e43e44ce05f5aa4b52666d57724/image12-2.png" alt="" class="kg-image" width="1999" height="687" loading="lazy">
+
+	</figure>
 	<p>And back on the Pi 400 there was confirmation that <code>cloudflared</code> had been authorized and that a <code>cert.pem</code> file was created.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image6-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4A3ptpx0jh88mbLBthatDs/a272e4e025590102dd2642b4dc60c7a8/image6-9.png" alt="" class="kg-image" width="1999" height="311" loading="lazy">
+
+	</figure>
 	<p>Now that <code>cloudflared</code> was authorized it was time to go ahead and set up an actual tunnel that can be used for the Auditable Terminal. I chose the incredibly original name ‘terminal’ for this.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-15.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gvRCPHw35bac1PsnbNDND/60bb124b95d4f3cda4ed65097ee43357/image5-15.png" alt="" class="kg-image" width="1999" height="171" loading="lazy">
+
+	</figure>
 	<p>At this point the tunnel is set up but not running yet. So the Pi 400 is not yet connected to Cloudflare. I’ll come back to that. But the next step is setting up Cloudflare for Teams so that users can authenticate to the other end of the tunnel and get access.</p>
-	<h3 id="stage-3-cloudflare-for-teams">Stage 3: Cloudflare for Teams</h3>
+	<h3>Stage 3: Cloudflare for Teams</h3>
 	<p>I didn’t have Cloudflare for Teams setup so the first step was to visit <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com/</a> and following the <a href="https://developers.cloudflare.com/cloudflare-one/setup">setup guide</a>. I chose the unoriginal team name <code>jgctesting</code> and entered it:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image14-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JLz1E3haHrn0M0mcCwezJ/2e27c6d459dcb722d5323161535b1585/image14-2.png" alt="" class="kg-image" width="1529" height="943" loading="lazy">
+
+	</figure>
 	<p>And it’s here that things got complicated. I ended up writing this blog post to give anyone a step-by-step guide to getting Auditable Terminal working, but also so that we can learn from my confusion. (The team has put up a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh">complete tutorial on this here</a>.)</p>
 	<p>If you follow the Cloudflare for Teams documentation <a href="https://developers.cloudflare.com/cloudflare-one/setup">you have three choices</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image17-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jB3b2e8pWeieoufwhrXJx/ac7aaa3bafc08f5ca936c348618b4cf2/image17-1.png" alt="" class="kg-image" width="1398" height="536" loading="lazy">
+
+	</figure>
 	<p>It wasn’t 100% obvious to me that what I needed to do was add an application (as opposed to a location). The answer is… add an application. The process for doing so is documented <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps">here</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image8-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kuug4Qk5YIOXjkQz3hxVy/2cb0fda52e638ed64605dd85cb34d672/image8-5.png" alt="" class="kg-image" width="1999" height="720" loading="lazy">
+
+	</figure>
 	<p>In particular, I’m going to add a Self-Hosted Application (rather than SaaS) since I’m self-hosting it; it’s an SSH server on a Raspberry Pi 400 hidden behind the sofa after all.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image29.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ji7oP6TOKlYIt1oebB2db/a16766a7fd9030229fedf2063a82ea64/image29.png" alt="" class="kg-image" width="1180" height="1207" loading="lazy">
+
+	</figure>
 	<p>The next step is to give the application a name and specify the URL it will be accessible via. For me that’s “Raspberry Pi 400” (yeah, I’m great with original names) and I’m making it available via pi400.jgc.org.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image24-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TYQZcmonBnnO1lvtEAyjg/ae785b6c533132a9dd45fdc370548f12/image24-1.png" alt="" class="kg-image" width="1999" height="643" loading="lazy">
+
+	</figure>
 	<p>Cloudflare for Teams provides <a href="https://developers.cloudflare.com/cloudflare-one/identity">a lot of different authentication and identity options</a>, but for this demo I am going to use the simplest. When I want to connect to this application (which will be Auditable Terminal ultimately) I’m going to have Cloudflare email me a one-time PIN.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image27.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wzhc881BCW2t4PY4gbzpL/61833827075e3f2d5d59a3426cc96541/image27.png" alt="" class="kg-image" width="1999" height="603" loading="lazy">
+
+	</figure>
 	<p>Next up is adding a rule which will let Cloudflare for Teams know who should be allowed access to this application. I am allowing anyone with an @jgc.org email address to get a one-time PIN. Rules can be <a href="https://developers.cloudflare.com/cloudflare-one/policies/zero-trust">much more complex than that</a>!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image13-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FpsRASsImb0v2FuZdqbqj/f9ae44de6f64e1269c39af6d1a0c5984/image13-2.png" alt="" class="kg-image" width="1999" height="1054" loading="lazy">
+
+	</figure>
 	<p>And finally I need to enable browser rendering (which will enable the SSH access and Auditable Terminal).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image21-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="stage-4-connecting-it-all-together">Stage 4: Connecting it all together</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ItWrD98OwYbP2vaY3TLPT/509b9c67d338b6d4366606d9bd56f083/image21-1.png" alt="" class="kg-image" width="1999" height="438" loading="lazy">
+
+	</figure>
+	<h3>Stage 4: Connecting it all together</h3>
 	<p>At this stage I had <code>cloudflared</code> setup and authorized on the Pi 400, Cloudflare for Teams setup so that anyone with an @jgc.org email could get a PIN to access Auditable Terminal on pi400.jgc.org (I’ve since reconfigured everything so going to that URL doesn’t do anything today).</p>
 	<p>But all these things need connecting together. That means: editing a config file on the Pi 400 and telling Cloudflare to route to the tunnel for pi400.jgc.org.</p>
 	<p>I started with the config file which was <code>/home/pi/.cloudflared/config.yml</code>. The first step was to get the tunnel ID.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image26.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2f4hfhcaynwnzqjYqMTrPD/92ba1339ec04e24bc3158b83f3a3b7f0/image26.png" alt="" class="kg-image" width="1999" height="114" loading="lazy">
+
+	</figure>
 	<p>And then edit the config file. Three things needed changing from the defaults: the tunnel (which is just the ID from <code>cloudflared tunnel list</code>), the credentials-file (which is a JSON file in the same location as the config file and with the same name as the tunnel ID) and the hostname (in my case pi400.jgc.org)</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image15-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jONY9bTzvUtqtKNhetxNp/1905b8d4e923efaf405987f208ba3d4f/image15-1.png" alt="" class="kg-image" width="1199" height="298" loading="lazy">
+
+	</figure>
 	<p>With the tunnel installed, authorized and configured I was able to finally run it and make sure that it can connect to Cloudflare. It worked! And created four connections to Cloudflare. Two to Lisbon and two to Amsterdam. Cloudflare Tunnel manages these connections to ensure that my Pi 400 is reachable across the Cloudflare network.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image28.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vocEo7nH49JhiVsp2K6Uz/66948ddf12ba2b03e46c59db51bf371f/image28.png" alt="" class="kg-image" width="1999" height="441" loading="lazy">
+
+	</figure>
 	<p>And finally… I just needed to tell <code>cloudflared</code> to route pi400.jgc.org to the tunnel (once again using that tunnel ID).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image16-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="stage-5-try-it-">Stage 5: Try it!</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pIPdKNnP51fZprVhJZ84i/b0f3a7c1ce5f1a723d106c07241ebe1f/image16-1.png" alt="" class="kg-image" width="1999" height="87" loading="lazy">
+
+	</figure>
+	<h3>Stage 5: Try it!</h3>
 	<p>And then it was time to try it. I went back to my browser and browsed to pi400.jgc.org and was greeted with a login screen. Since I’d authorized any @jgc.org address I entered an @jgc.org email.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image7-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FbbUNbLA5eXx5FvmwqOk6/de6dbd2125e959f48893a8614ecd0555/image7-7.png" alt="" class="kg-image" width="1196" height="758" loading="lazy">
+
+	</figure>
 	<p>The next step was to enter the one-time PIN that was emailed to me.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image11-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AQho8PD6kZizNUZWbgO1U/b0a8099930fd9dfdcbca61d8107cea24/image11-2.png" alt="" class="kg-image" width="1195" height="785" loading="lazy">
+
+	</figure>
 	<p>And, since I am using user/password for SSH I was asked for the user name followed by password.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image20-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QqNL3jQEecwuuDBGUrmfM/62fe223e7f9f13dfa6f34296c9f54b96/image20-2.png" alt="" class="kg-image" width="1316" height="793" loading="lazy">
+
+	</figure>
 	<p>And, wow, there I was looking at a command prompt on the Pi 400.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/pi400-login-OG.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WxNCKRqVDcJGSejj2fJS6/330811f9b6b0207e86ae668a4d113edb/pi400-login-OG.png" alt="" class="kg-image" width="2000" height="559" loading="lazy">
+
+	</figure>
 	<p>Of course, just doing on my laptop wasn’t enough, so I went ahead and logged in the same way on my phone.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1niCupYzcPJoOdv3CNBQ2k/023e10306d7997397080112c4858a996/image3.jpg" alt="" class="kg-image" width="462" height="1000" loading="lazy">
+
+	</figure>
 	<p>The absolute last step was to make sure that <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/run-tunnel/run-as-service">runs automatically</a> which was as simple as typing <code>sudo cloudflared --config .cloudflared/config.yml service install</code>.</p>
-	<h3 id="conclusion">Conclusion</h3>
+	<h3>Conclusion</h3>
 	<p>This was pretty fast (especially factoring in my ignorance about all the details of configuring Cloudflare for Teams and Cloudflare Tunnel). Now I can log into that Pi 400 from anywhere in just a browser. So powerful.</p>
 	<p>But it’s still using username/password for SSH and that can be fixed with <a href="https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates">short-lived certificates</a>. And my authentication to access is using one-time PINs; for a real application it would be <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration">better to use SSO</a>.</p>
 </div>

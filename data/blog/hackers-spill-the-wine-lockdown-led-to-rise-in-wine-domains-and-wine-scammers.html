@@ -1,45 +1,94 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small><em>This blog originally appeared in April 2021 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></small></p>
-	<!--kg-card-end: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hxP5VfCfvF3lfuNTSTNRw/c600a806a0dd2fa49933d3601f5ed712/hackers-spill-the-wine-lockdown-led-to-rise-in-wine-domains-and-wine-scammers.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><i>This blog originally appeared in April 2021 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>This report was produced jointly with researchers from Area 1 Security. Area 1 Security preemptively stops Business Email Compromise, malware, ransomware and targeted phishing attacks and as such has a multi-petabyte corpus of real time active phishing campaigns. &nbsp;Recorded Future thanks the team at Area 1 for their support on this research.</p>
 	<p>Staying connected with friends, family, and <a href="https://www.sandiegouniontribune.com/twp/story/2020-11-15/cooking-lessons-care-packages-virtual-happy-hours-how-companies-are-helping-employees-cope">even co-workers</a> during the pandemic and especially during lockdown periods is important. Often, this connection came in the form of <a href="https://www.nytimes.com/2020/03/20/well/virus-virtual-happy-hour.html">virtual happy hours</a> friends and family could get together over Zoom, or another video conferencing platform, to catch up over drinks. Companies were quick to jump on this trend with <a href="https://www.marketwatch.com/story/walmart-to-host-its-latest-tiktok-event-as-more-companies-use-the-platform-to-tap-young-shoppers-11615490294">established companies hosting virtual livestreams</a> and startups helping you plan the best virtual happy hour, whether that means inviting a <a href="https://www.sweetfarm.org/goat-2-meeting">goat to your virtual call</a> or providing you <a href="https://richmondbizsense.com/2020/07/13/pandemic-pivot-richmond-startup-brings-cocktails-to-your-living-room">everything you need to make the perfect drink</a>.</p>
 	<p>As the interest in virtual happy hours and get-togethers increased so did the increase in wine-themed domain registrations. Recorded Future noted a significant increase in the number of new wine-themed domains registered starting in April 2020 and continuing through at least March 2021.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-23.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vtxPpNvps2YNcU1sDcsl/df095009ab6df074ef4100e96c30ceb9/image2-23.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>To conduct this search, we queried new domain registrations containing 1 or more of the following words:</p>
 	<ul>
-		<li>Wine</li>
-		<li>Vino</li>
-		<li>Champagne</li>
-		<li>Bordeaux</li>
-		<li>Burgundy</li>
-		<li>Chardonnay</li>
-		<li>Merlot</li>
-		<li>Cabernet</li>
-		<li>Sauvignon</li>
-		<li>Pinot</li>
+		<li>
+			<p>Wine</p>
+		</li>
+		<li>
+			<p>Vino</p>
+		</li>
+		<li>
+			<p>Champagne</p>
+		</li>
+		<li>
+			<p>Bordeaux</p>
+		</li>
+		<li>
+			<p>Burgundy</p>
+		</li>
+		<li>
+			<p>Chardonnay</p>
+		</li>
+		<li>
+			<p>Merlot</p>
+		</li>
+		<li>
+			<p>Cabernet</p>
+		</li>
+		<li>
+			<p>Sauvignon</p>
+		</li>
+		<li>
+			<p>Pinot</p>
+		</li>
 	</ul>
 	<p>The total number of wine-themed domains registered during this period is higher as there are search terms that were intentionally excluded to avoid too many false positives (for example Rosé or Napa) or were unlikely to be used by scammers (less popular grapes such as Riesling, Carménère, or Tannat did not significantly add to the total number of domain registrations or generate any potentially malicious matches).</p>
 	<p>New wine-themed domain registrations hovered between 3,000 and 4,000 per month until March 2020. In March 2020, Recorded Future noted a small uptick of new domain registrations at almost 5,500. In April 2020, the number jumped to almost 7,200, then in May 2020 the number skyrocketed to 12,400. From June 2020 onward, the number of new wine-themed domain registrations fluctuated between 7,000 and 9,500, in other words 2 to 3 times the number registered pre-COVID-19. The total number of wine-related domains registered between April 2020 and March 2021 containing the above keywords was 96,489.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-29.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XyeLm6k49cUxmfAjDRGtO/844349afcfa4db28721196c2057a7d2b/image1-29.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
 	<p>Malicious (for the purpose of this report, the term malicious encompasses domains that Recorded Future scored as Suspicious, Malicious and Very Malicious) wine-themed domains followed a similar, though slightly delayed, timeline. Recorded Future tracked 278 malicious wine-themed domains registered in April 2020, which jumped from 668 in May 2020 to 473 in June 2020. This pattern has continued to fluctuate between 230 and 430 new malicious wine-themed domains registered each month. The total of malicious wine-themed domains identified from April 2020 through the end of March 2021 was 4,389.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-12.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Wa5S5ZlVGO30wliEPZ8gp/ffb4ff0a311bd4775bed2eac8677df8f/image3-12.png" alt="" class="kg-image" width="1220" height="742" loading="lazy">
+
+	</figure>
 	<p>It appears that it took some time for cyber criminals to catch on to the idea of using wine in malicious activities. Tracking malicious wine-themed domains as a percentage of total wine domains registered shows that the peak as a percentage of total wine-themed domains was in June 2020 at 7%. Since then, the percentage has remained between 3% and 5%, which is relatively low compared to other domain registrations commonly used for malicious activity, such as <a href="https://www.recordedfuture.com/opportunism-behind-cyberattacks-during-pandemic">COVID-19</a>.</p>
-	<h3 id="partnering-with-area-1">Partnering with Area 1</h3>
+	<h3>Partnering with Area 1</h3>
 	<p>Working with Area 1 Security we wanted to understand how these newly registered and newly observed wine related domain names were being weaponized in phishing campaigns. &nbsp;From April 2020 through April 1st 2021 Area 1 caught over 25,000 examples of the above domains being used in email campaigns targeting companies ranging from Fortune 500 companies to small and medium-sized businesses and across all major industries from consumer products, to financial services, to healthcare, aerospace and beyond. &nbsp;74.71% of the email campaigns were classified as SPAM, meaning while they were unsolicited or unwanted at face value, they might be early stage reconnaissance campaigns.</p>
 	<p>More seriously, about 13.5% of the emails associated with the identified domains contained suspicious or malicious content (links or files), 11.74% of the emails were Type 1 Business Email Compromise phishing emails (Basic) that attempt to trick the recipient into believing they were being sent by a recognized sender. Finally, a very small percentage, .03%, of the emails were tied to Type 3 and Type 4 Business Email Compromise phishing (Sophisticated), a type of attack that is increasing in volume and is directly responsible for significant amounts of business losses these days.</p>
 	<p>Overall, these results show that spam and phishing campaigns are aware of the growing interest in wine and are using that interest to push malicious activity.</p>
-	<p>In 1 example, a voicemail phishing campaign detected by Area 1 Security that was missed by Microsoft Office 365 - APT. &nbsp;Malicious link leads to subdomain of <em><code>lueriawinery[dot]com/</code>.</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image4-12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image5-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="actionable-advice">Actionable Advice</h3>
+	<p>In 1 example, a voicemail phishing campaign detected by Area 1 Security that was missed by Microsoft Office 365 - APT. &nbsp;Malicious link leads to subdomain of <code><i>lueriawinery[dot]com/</i></code><i>.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jami2o4uJOeiBTVD49s48/a55ca12e6a359ea233bb02c77506b83c/image4-12.png" alt="" class="kg-image" width="1976" height="1108" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JkD3IzL2WxFBVtsegrtgu/33b2edf005b1b860a0033691888c6585/image5-5.png" alt="" class="kg-image" width="1999" height="1022" loading="lazy">
+
+	</figure>
+	<h3>Actionable Advice</h3>
 	<ul>
-		<li>Protect your organization against the domains listed in the appendix, as these domains represent the biggest threat from our findings.</li>
-		<li>While this report focuses on wine, spam and phishing campaigns increasingly use trends and current events, <a href="https://www.recordedfuture.com/coronavirus-panic-exploit">such as COVID-19</a> or <a href="https://www.recordedfuture.com/pandemic-retail-phishing-campaigns">increased interest in online retail and food delivery apps</a>, as lures. Ensure that any phishing awareness programs run by your organization emphasize the adaptability of attackers and their ability to quickly switch out topics in their email lures.</li>
-		<li>Whenever possible, filter potentially malicious emails at the edge. Employee training is important, but preventing the email from ever reaching an employee is a much better <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">deterrent</a>.</li>
-		<li>Running your own custom email infrastructure requires network administrators to be perfect every single day. We recommend the use of cloud email infrastructure such as Google’s GSuite or Microsoft’s Office 365 in combination with a <a href="https://www.cloudflare.com/zero-trust/products/email-security">cloud email security solution</a>.</li>
-		<li>Augment cloud inbox providers such as GSuite and O365 with intelligence from Recorded Future and Area 1 Security. As with any other aspect of <a href="https://www.cloudflare.com/network-security">network security</a>, a defense in depth strategy for email protection offers the best chance for success.</li>
+		<li>
+			<p>Protect your organization against the domains listed in the appendix, as these domains represent the biggest threat from our findings.</p>
+		</li>
+		<li>
+			<p>While this report focuses on wine, spam and phishing campaigns increasingly use trends and current events, <a href="https://www.recordedfuture.com/coronavirus-panic-exploit">such as COVID-19</a> or <a href="https://www.recordedfuture.com/pandemic-retail-phishing-campaigns">increased interest in online retail and food delivery apps</a>, as lures. Ensure that any phishing awareness programs run by your organization emphasize the adaptability of attackers and their ability to quickly switch out topics in their email lures.</p>
+		</li>
+		<li>
+			<p>Whenever possible, filter potentially malicious emails at the edge. Employee training is important, but preventing the email from ever reaching an employee is a much better <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">deterrent</a>.</p>
+		</li>
+		<li>
+			<p>Running your own custom email infrastructure requires network administrators to be perfect every single day. We recommend the use of cloud email infrastructure such as Google’s GSuite or Microsoft’s Office 365 in combination with a <a href="https://www.cloudflare.com/zero-trust/products/email-security">cloud email security solution</a>.</p>
+		</li>
+		<li>
+			<p>Augment cloud inbox providers such as GSuite and O365 with intelligence from Recorded Future and Area 1 Security. As with any other aspect of <a href="https://www.cloudflare.com/network-security">network security</a>, a defense in depth strategy for email protection offers the best chance for success.</p>
+		</li>
 	</ul>
-	<p><em>Oren J. Falkowitz, Founder and CEO of Area 1 Security, is a serial entrepreneur and cybersecurity industry visionary. He led Area 1 Security as its co-founder and CEO for the first seven years, with the mission to discover and eliminate targeted phishing attacks before they cause damage. Previously, Oren held senior positions at the National Security Agency (NSA) and United States Cyber Command (USCYBERCOM), where he focused on Computer Network Operations &amp; Big Data. That’s where he realized the immense need for preemptive cybersecurity.</em></p>
-	<p><em>Allan Liska is an intelligence analyst at Recorded Future. Allan has more than 15 years’ experience in information security and has worked as both a blue teamer and a red teamer for the intelligence community and the private sector. Allan has helped countless organizations improve their security posture using more effective and integrated intelligence.</em></p>
+	<p><i>Oren J. Falkowitz, Founder and CEO of Area 1 Security, is a serial entrepreneur and cybersecurity industry visionary. He led Area 1 Security as its co-founder and CEO for the first seven years, with the mission to discover and eliminate targeted phishing attacks before they cause damage. Previously, Oren held senior positions at the National Security Agency (NSA) and United States Cyber Command (USCYBERCOM), where he focused on Computer Network Operations &amp; Big Data. That’s where he realized the immense need for preemptive cybersecurity.</i></p>
+	<p><i>Allan Liska is an intelligence analyst at Recorded Future. Allan has more than 15 years’ experience in information security and has worked as both a blue teamer and a red teamer for the intelligence community and the private sector. Allan has helped countless organizations improve their security posture using more effective and integrated intelligence.</i></p>
 </div>

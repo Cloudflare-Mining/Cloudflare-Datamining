@@ -1,24 +1,33 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/Screenshot-2023-05-09-at-2.34.18-PM-1.png" class="kg-image" alt="Magic in Minutes: how to build a ChatGPT Plugin with Cloudflare Workers" loading="lazy" width="2872" height="1612"></figure>
-	<p>Today, we're open-sourcing our <a href="https://github.com/cloudflare/chatgpt-plugin/tree/main/example-plugin">ChatGPT Plugin Quickstart repository for Cloudflare Workers</a>, designed to help you build awesome and versatile plugins for ChatGPT with ease. If you don’t already know, ChatGPT is a conversational AI model from <a href="https://www.openai.com">OpenAI</a> which has an uncanny ability to take chat input and generate human-like text responses. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MASGgNMbFn3BzCmqXOc9r/953e1f8ae94134843928db36ef7e0321/Screenshot-2023-05-09-at-2.34.18-PM-1.png" alt="Magic in Minutes: how to build a ChatGPT Plugin with Cloudflare Workers" class="kg-image" width="2000" height="1123" loading="lazy">
+
+	</figure>
+	<p>Today, we're open-sourcing our <a href="https://github.com/cloudflare/chatgpt-plugin/tree/main/example-plugin">ChatGPT Plugin Quickstart repository for Cloudflare Workers</a>, designed to help you build awesome and versatile plugins for ChatGPT with ease. If you don’t already know, ChatGPT is a conversational AI model from <a href="https://www.openai.com">OpenAI</a> which has an uncanny ability to take chat input and generate human-like text responses.</p>
 	<p>With the recent addition of <a href="https://www.cloudflare.com/learning/ai/chatgpt-plugins">ChatGPT plugins</a>, developers can create custom extensions and integrations to make ChatGPT even more powerful. Developers can now provide custom flows for ChatGPT to integrate into its conversational workflow – for instance, the ability to look up products when asking questions about shopping, or retrieving information from an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> in order to have up-to-date data when working through a problem.</p>
 	<p>That's why we're super excited to contribute to the growth of ChatGPT plugins with our new Quickstart template. Our goal is to make it possible to build and deploy a new ChatGPT plugin to production in minutes, so developers can focus on creating incredible conversational experiences tailored to their specific needs.</p>
-	<h2 id="how-it-works">How it works</h2>
+	<h2>How it works</h2>
 	<p>Our Quickstart is designed to work seamlessly with <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. Under the hood, it uses our command-line tool <a href="https://developers.cloudflare.com/workers/cli-wrangler"><code>wrangler</code></a> to create a new project and deploy it to Workers.</p>
-	<p>When building a ChatGPT plugin, there are three things you need to consider:</p><!--kg-card-begin: markdown-->
+	<p>When building a ChatGPT plugin, there are three things you need to consider:</p>
 	<ol>
-		<li>The plugin's metadata, which includes the plugin's name, description, and other info</li>
-		<li>The plugin's schema, which defines the plugin's input and output</li>
-		<li>The plugin's behavior, which defines how the plugin responds to user input</li>
+		<li>
+			<p>The plugin's metadata, which includes the plugin's name, description, and other info</p>
+		</li>
+		<li>
+			<p>The plugin's schema, which defines the plugin's input and output</p>
+		</li>
+		<li>
+			<p>The plugin's behavior, which defines how the plugin responds to user input</p>
+		</li>
 	</ol>
-	<!--kg-card-end: markdown-->
 	<p>To handle all of these parts in a simple, easy-to-understand API, we've created the <a href="https://www.npmjs.com/package/@cloudflare/itty-router-openapi"><code>@cloudflare/itty-router-openapi</code> package</a>, which makes it easy to manage your plugin's metadata, schema, and behavior. This package is included in the ChatGPT Plugin Quickstart, so you can get started right away.</p>
 	<p>To show how the package works, we'll look at two key files in the ChatGPT Plugin Quickstart: <code>index.js</code> and <code>search.js</code>. The <code>index.js</code> file contains the plugin's metadata and schema, while the <code>search.js</code> file contains the plugin's behavior. Let's take a look at each of these files in more detail.</p>
 	<p>In <code>index.js</code>, we define the plugin's metadata and schema. The metadata includes the plugin's name, description, and version, while the schema defines the plugin's input and output.</p>
 	<p>The configuration matches the definition required by <a href="https://platform.openai.com/docs/plugins/getting-started/plugin-manifest">OpenAI's plugin manifest</a>, and helps ChatGPT understand what your plugin is, and what purpose it serves.</p>
 	<p>Here's what the <code>index.js</code> file looks like:</p>
-	<pre><code class="language-ts">import { OpenAPIRouter } from "@cloudflare/itty-router-openapi";
+	<pre class="language-ts"><code class="language-ts">import { OpenAPIRouter } from "@cloudflare/itty-router-openapi";
 import { GetSearch } from "./search";
 
 export const router = OpenAPIRouter({
@@ -48,12 +57,11 @@ router.all('*', () =&gt; new Response('Not Found.', { status: 404 }))
 
 export default {
   fetch: router.handle
-}
-</code></pre>
+}</code></pre>
 	<p>In the <code>search.js</code> file, we define the plugin's behavior. This is where we define how the plugin responds to user input. It also defines the plugin's schema, which ChatGPT uses to validate the plugin's input and output.</p>
-	<p>Importantly, this doesn't just define the <em>implementation</em> of the code. It also automatically generates an OpenAPI schema that helps ChatGPT understand how your code works -- for instance, that it takes a parameter "q", that it is of "String" type, and that it can be described as "The query to search for". With the schema defined, the <code>handle</code> function makes any relevant parameters available as function arguments, to implement the logic of the endpoint as you see fit.</p>
+	<p>Importantly, this doesn't just define the <i>implementation</i> of the code. It also automatically generates an OpenAPI schema that helps ChatGPT understand how your code works -- for instance, that it takes a parameter "q", that it is of "String" type, and that it can be described as "The query to search for". With the schema defined, the <code>handle</code> function makes any relevant parameters available as function arguments, to implement the logic of the endpoint as you see fit.</p>
 	<p>Here's what the <code>search.js</code> file looks like:</p>
-	<pre><code class="language-ts">import { ApiException, OpenAPIRoute, Query, ValidationError } from "@cloudflare/itty-router-openapi";
+	<pre class="language-ts"><code class="language-ts">import { ApiException, OpenAPIRoute, Query, ValidationError } from "@cloudflare/itty-router-openapi";
 
 export class GetSearch extends OpenAPIRoute {
   static schema = {
@@ -81,7 +89,7 @@ export class GetSearch extends OpenAPIRoute {
     },
   }
 
-  async handle(request: Request, env, ctx, data: Record&lt;string, any&gt;) {
+  async handle(request: Request, env, ctx, data: Record<string, any="">) {
     const url = `https://api.github.com/search/repositories?q=${data.q}`
 
     const resp = await fetch(url, {
@@ -109,17 +117,25 @@ export class GetSearch extends OpenAPIRoute {
       repos: repos
     }
   }
-}</code></pre>
+}</string,></code></pre>
 	<p>The quickstart smooths out the entire development process, so you can focus on crafting custom behaviors, endpoints, and features for your ChatGPT plugins without getting caught up in the nitty-gritty. If you aren't familiar with API schemas, this also means that you can rely on our schema and manifest generation tools to handle the complicated bits, and focus on the implementation to build your plugin.</p>
 	<p>Besides making development a breeze, it's worth noting that you're also deploying to Workers, which takes advantage of Cloudflare's vast global network. This means your ChatGPT plugins enjoy low-latency access and top-notch performance, no matter where your users are located. By combining the strengths of Cloudflare Workers with the versatility of ChatGPT plugins, you can create conversational AI tools that are not only powerful and scalable but also cost-effective and globally accessible.</p>
-	<h2 id="example">Example</h2>
+	<h2>Example</h2>
 	<p>To demonstrate the capabilities of our quickstarts, we've created two example ChatGPT plugins. The first, which we reviewed above, connects ChatGPT with the GitHub Repositories Search API. This plugin enables users to search for repositories by simply entering a search term, returning useful information such as the repository's name, description, star count, and URL.</p>
 	<p>One intriguing aspect of this example is the property where the plugin could go beyond basic querying. For instance, when asked "What are the most popular JavaScript projects?", ChatGPT was able to intuitively understand the user's intent and craft a new query parameter for querying both by the number of stars (measuring popularity), and the specific programming language (JavaScript) without requiring any explicit prompting. This showcases the power and adaptability of ChatGPT plugins when integrated with external APIs, providing more insightful and context-aware responses.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/1847-2.png" class="kg-image" alt="An example of the GitHub ChatGPT plugin running, showing the results for the prompt “What repositories are popular on GitHub?”" loading="lazy" width="702" height="773"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zNnhkg7XeayfWqrmncoGV/24dd65010b72bdddb53e8d4df70551c0/1847-2.png" alt="An example of the GitHub ChatGPT plugin running, showing the results for the prompt “What repositories are popular on GitHub?”" class="kg-image" width="702" height="773" loading="lazy">
+
+	</figure>
 	<p>The second plugin uses the <a href="https://pirate-weather.apiable.io">Pirate Weather API</a> to retrieve up-to-date weather information. Remarkably, OpenAI is able to translate the request for a specific location (for instance, “Seattle, Washington”) into longitude and latitude values – which the Pirate Weather API uses for lookups – and make the correct API request, without the user needing to do any additional work.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/1847-4.png" class="kg-image" alt="An example of the Weather ChatGPT plugin running, showing the results for the prompt “What’s the weather like in Seattle, Washington?”" loading="lazy" width="846" height="420"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12clMhHEuroetJ1P3wqTgP/dec722a78a4dc00e8785168b0323705c/1847-4.png" alt="An example of the Weather ChatGPT plugin running, showing the results for the prompt “What’s the weather like in Seattle, Washington?”" class="kg-image" width="846" height="420" loading="lazy">
+
+	</figure>
 	<p>With our ChatGPT Plugin Quickstarts, you can create custom plugins that connect to any API, database, or other data source, giving you the power to create ChatGPT plugins that are as unique and versatile as your imagination. The possibilities are endless, opening up a whole new world of conversational AI experiences tailored to specific domains and use cases.</p>
-	<h2 id="get-started-today">Get started today</h2>
+	<h2>Get started today</h2>
 	<p><a href="https://github.com/cloudflare/chatgpt-plugin/tree/main/example-plugin">The ChatGPT Plugin Quickstarts</a> don’t just make development a snap—it also offers seamless deployment and scaling thanks to Cloudflare Workers. With the generous free plan provided by Workers, you can deploy your plugin quickly and scale it infinitely as needed.</p>
 	<p>Our ChatGPT Plugin Quickstarts are all about sparking creativity, speeding up development, and empowering developers to create amazing conversational AI experiences. By leveraging Cloudflare Workers' robust infrastructure and our streamlined tooling, you can easily build, deploy, and scale custom ChatGPT plugins, unlocking a world of endless possibilities for conversational AI applications.</p>
 	<p>Whether you're crafting a virtual assistant, a customer support bot, a language translator, or any other conversational AI tool, our ChatGPT Plugin Quickstarts are a great place to start. We're excited to provide this Quickstart, and would love to see what you build with it. <a href="https://discord.com/invite/cloudflaredev">Join us</a> in our Discord community to share what you're working on!</p>

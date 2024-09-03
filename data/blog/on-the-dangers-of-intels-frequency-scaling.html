@@ -1,10 +1,19 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79iaQL2jb34HPkDNgOKlXj/c36bfefb59b5df54bbb0a5b7332386b5/on-the-dangers-of-intels-frequency-scaling.jpg" alt="">
+<div class="post-content lh-copy gray1">
 	<p>While I was writing the post <a href="https://blog.cloudflare.com/arm-takes-wing">comparing the new Qualcomm server chip, Centriq, to our current stock of Intel Skylake-based Xeons</a>, I noticed a disturbing phenomena.</p>
 	<p>When benchmarking OpenSSL 1.1.1dev, I discovered that the performance of the cipher <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305</a> does not scale very well. On a single thread, it performed at the speed of approximately 2.89GB/s, whereas on 24 cores, and 48 threads it performed at just over 35 GB/s.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/3618979283_5d117e956f_o.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/blumblaum/3618979283/in/photolist-6vNdsx-oqxCB4-VPRfyG-93tyBR-F8JBFo-qiRno8-dPuTWR-823ZS4-9hqkuL-9mFdCJ-nho2bN-8SooRN-bEYfa2-VpkZWA-diuHi4-daq1Zg-qiThYa-o9Pnb2-b8G3ND-dPotf8-yEgMt-7GMuJQ-dc3AXG-WqA4iw-fokagU-qTcnqd-csBTnw-efpWJk-e8UN3x-e8UMye-e8UMEe-dgeUKv-54A2Ve-8kh2we-54A2Pa-e91rzh-q7baBG-54A2Kv-umff5-7LUaZQ-ntyDPD-bPcRhV-e8UMKT-e8UMwR-athi9i-8aKsm6-oWFjAF-e4Uvop-69kwK4-e4UvCH">image</a> by <a href="https://www.flickr.com/photos/blumblaum">blumblaum</a></small></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jlnzEn5W40VfjAjikYdYW/3f76cc5a8ea1a03ac0cc588efe4e920b/3618979283_5d117e956f_o.jpg" alt="" class="kg-image" width="3648" height="2736" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/blumblaum/3618979283/in/photolist-6vNdsx-oqxCB4-VPRfyG-93tyBR-F8JBFo-qiRno8-dPuTWR-823ZS4-9hqkuL-9mFdCJ-nho2bN-8SooRN-bEYfa2-VpkZWA-diuHi4-daq1Zg-qiThYa-o9Pnb2-b8G3ND-dPotf8-yEgMt-7GMuJQ-dc3AXG-WqA4iw-fokagU-qTcnqd-csBTnw-efpWJk-e8UN3x-e8UMye-e8UMEe-dgeUKv-54A2Ve-8kh2we-54A2Pa-e91rzh-q7baBG-54A2Kv-umff5-7LUaZQ-ntyDPD-bPcRhV-e8UMKT-e8UMwR-athi9i-8aKsm6-oWFjAF-e4Uvop-69kwK4-e4UvCH">image</a> by <a href="https://www.flickr.com/photos/blumblaum">blumblaum</a></p>
 	<p>Now this is a very high number, but I would like to see something closer to 69GB/s. 35GB/s is just 1.46GB/s/core, or roughly 50% of the single core performance. AES-GCM scales much better, to 80% of single core performance, which is understandable, because the CPU can sustain higher frequency turbo on a single core, but not all cores.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/gcm-chacha-core.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/V6Oda0nbgjQEdLGhXue4A/916f8c92def52f19a1f772b885f6e5e2/gcm-chacha-core.png" alt="alt" class="kg-image" width="1665" height="819" loading="lazy">
+
+	</figure>
 	<p>Why is the scaling of ChaCha20-Poly1305 so poor? Meet AVX-512. AVX-512 is a new Intel instruction set that adds many new 512-bit wide SIMD instructions and promotes most of the existing ones to 512-bit. The problem with such wide instructions is that they consume power. A lot of power. Imagine a single instruction that does the work of 64 regular byte instructions, or 8 full blown 64-bit instructions.</p>
 	<p>To keep power in check Intel introduced something called dynamic frequency scaling. It reduces the base frequency of the processor whenever AVX2 or AVX-512 instructions are used. This is not new, and has existed since Haswell introduced AVX2 three years ago.</p>
 	<p>The scaling gets worse when more cores execute AVX-512 and when multiplication is used.</p>
@@ -15,7 +24,11 @@
 	<p>I compiled two versions of NGINX, one with OpenSSL1.1.1dev and the other with BoringSSL, and installed it on our server with two Xeon Silver 4116 CPUs, for a total of 24 cores.</p>
 	<p>I configured the server to serve a medium sized HTML page, and perform some meaningful work on it. I used LuaJIT to remove line breaks and extra spaces, and brotli to compress the file.</p>
 	<p>I then monitored the number of requests per second served under full load. This is what I got:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/gcm-chacha-1.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/stzkAbRIIvTH3SI7jw8Cv/71a99ad94c5e50475775bc288dd78716/gcm-chacha-1.png" alt="alt" class="kg-image" width="1658" height="864" loading="lazy">
+
+	</figure>
 	<p>By using ChaCha20-Poly1305 over AES-128-GCM, the server that uses OpenSSL serves 10% fewer requests per second. And that is a huge number! It is equivalent to giving up on two cores, for nothing. One might think that this is due to ChaCha20-Poly1305 being inherently slower. But that is not the case.</p>
 	<p>First, BoringSSL performs equivalently well with AES-GCM and ChaCha20-Poly1305.</p>
 	<p>Second, even when only 20% of the requests use ChaCha20-Poly1305, the server throughput drops by more than 7%, and by 5.5% when 10% of the requests are ChaCha20-Poly1305. For reference, 15% of the TLS requests Cloudflare handles are ChaCha20-Poly1305.</p>
@@ -25,5 +38,4 @@
 	<p>OpenSSL 1.1.1dev is still in development, therefore I suspect no one is affected by this issue yet. We switched to BoringSSL months ago, and our server performance is not affected by this issue.</p>
 	<p>What the future holds in unclear. Intel announced very cool new ISA extensions for the future generation of CPUs, that are expected to improve crypto performance even further. Those extensions include AVX512+VAES, AVX512+VPCLMULQDQ and AVX512IFMA. But if the frequency scaling issue is not resolved by then, using those for general purpose cryptography libraries will do (much) more harm than good.</p>
 	<p>The problem is not with cryptography libraries alone. OpenSSL did nothing wrong by trying to get the best possible performance, on the contrary, I wrote a decent amount of AVX-512 code for OpenSSL myself. The observed behavior is a sad side effect. There are many libraries that use AVX and AVX2 instructions out there, they will probably be updated to AVX-512 at some point, and users are not likely to be aware of the implementation details. If you do not require AVX-512 for some specific high performance tasks, I suggest you disable AVX-512 execution on your server or desktop, to avoid accidental AVX-512 throttling.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,62 +1,97 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/03/monsters-in-the-middleware@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26A8k4T3d82CwCl4b3j6k2/d22dd365c5e0f172ada5ef71e17306a2/monsters-in-the-middleware_2x.png" alt="" class="kg-image" width="2000" height="1118" loading="lazy">
+
+	</figure>
 	<p>The practice of HTTPS interception continues to be commonplace on the Internet. HTTPS interception has encountered scrutiny, most notably in the 2017 study “<a href="https://jhalderm.com/pub/papers/interception-ndss17.pdf">The Security Impact of HTTPS Interception</a>” and the United States Computer Emergency Readiness Team (US-CERT) &nbsp;<a href="https://www.us-cert.gov/ncas/alerts/TA17-075A">warning</a> that the technique weakens security. In this blog post, we provide a brief recap of HTTPS interception and introduce two new tools:</p>
 	<ol>
-		<li><a href="https://github.com/cloudflare/mitmengine">MITMEngine</a>, an open-source library for HTTPS interception detection, and</li>
-		<li><a href="https://malcolm.cloudflare.com">MALCOLM</a>, a dashboard displaying metrics about HTTPS interception we observe on Cloudflare’s network.</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/mitmengine">MITMEngine</a>, an open-source library for HTTPS interception detection, and</p>
+		</li>
+		<li>
+			<p><a href="https://malcolm.cloudflare.com">MALCOLM</a>, a dashboard displaying metrics about HTTPS interception we observe on Cloudflare’s network.</p>
+		</li>
 	</ol>
 	<p>In a basic HTTPS connection, a browser (client) establishes a TLS connection directly to an origin server to send requests and download content. However, many connections on the Internet are not directly from a browser to the server serving the website, but instead traverse through some type of proxy or middlebox (a “monster-in-the-middle” or MITM). There are many reasons for this behavior, both malicious and benign.</p>
-	<h3 id="types-of-https-interception-as-demonstrated-by-various-monsters-in-the-middle">Types of HTTPS Interception, as Demonstrated by Various Monsters in the Middle</h3>
+	<h3>Types of HTTPS Interception, as Demonstrated by Various Monsters in the Middle</h3>
 	<p>One common HTTPS interceptor is TLS-terminating forward proxies. (These are a subset of all forward proxies; non-TLS-terminating forward proxies forward TLS connections without any ability to inspect encrypted traffic). A TLS-terminating forward proxy sits in front of a client in a TLS connection, transparently forwarding and possibly modifying traffic from the browser to the destination server. To do this, the proxy must terminate the TLS connection from the client, and then (hopefully) re-encrypt and forward the payload to the destination server over a new TLS connection. To allow the connection to be intercepted without a browser certificate warning appearing at the client, forward proxies often require users to install a root certificate on their machine so that the proxy can generate and present a trusted certificate for the destination to the browser. These root certificates are often installed for corporate managed devices, done by network administrators without user intervention.</p>
-	<h2 id="antivirus-and-corporate-proxies">Antivirus and Corporate Proxies</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/03/my-stapler-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Antivirus and Corporate Proxies</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lQlpoDWmUQ7mvaOQjOCzR/4ff6cc2121821667f1d48564656f3b3c/my-stapler-_2x.png" alt="" class="kg-image" width="2904" height="1536" loading="lazy">
+
+	</figure>
 	<p>Some legitimate reasons for a client to connect through a forward proxy would be to allow antivirus software or a corporate proxy to inspect otherwise encrypted data entering and leaving a local network in order to detect inappropriate content, malware, and data breaches. The Blue Coat data loss prevention tools offered by Symantec are one example. In this case, HTTPS interception occurs to check if an employee is leaking sensitive information before sending the request to the intended destination.</p>
-	<h2 id="malware-proxies">Malware Proxies</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/03/business-sasquatch@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Malware Proxies</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VTM6e5HggvoJsREQ4t2BX/d42992e1c9a487a12e7f6fb0dda494a7/business-sasquatch_2x.png" alt="" class="kg-image" width="2578" height="2149" loading="lazy">
+
+	</figure>
 	<p>Malicious forward proxies, however, might insert advertisements into web pages or exfiltrate private user information. Malware like <a href="https://www.us-cert.gov/ncas/alerts/TA15-051A">Superfish</a> insert targeted ads into encrypted traffic, which requires intercepting HTTPS traffic and modifying the content in the response given to a client.</p>
-	<h2 id="leaky-proxies">Leaky Proxies</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/03/blabbermouth@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Any TLS-terminating forward proxy--whether it’s well-intentioned or not--also risks exposing private information and opens the door to spoofing. When a proxy root certificate is installed, Internet browsers lose the ability to validate the connection end-to-end, and must trust the proxy to maintain the security of the connection to ensure that sensitive data is protected. Some proxies re-encrypt and forward traffic to destinations using less secure TLS parameters. </p>
-	<p>Proxies can also require the installation of vendor root certificates that can be easily abused by other malicious parties. In November 2018, a type of Sennheiser wireless headphones required the user to install a <a href="https://arstechnica.com/information-technology/2018/11/sennheiser-discloses-monumental-blunder-that-cripples-https-on-pcs-and-macs">root certificate which used insecure parameters</a>. This root certificate could allow any adversary to impersonate websites and send spoofed responses to machines with this certificate, as well as observe otherwise encrypted data. </p>
+	<h2>Leaky Proxies</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sW8l4AlgtkLvFVsF0RiYe/e60c22883ebbba3330a5ad970c078fdd/blabbermouth_2x.png" alt="" class="kg-image" width="3516" height="1966" loading="lazy">
+
+	</figure>
+	<p>Any TLS-terminating forward proxy--whether it’s well-intentioned or not--also risks exposing private information and opens the door to spoofing. When a proxy root certificate is installed, Internet browsers lose the ability to validate the connection end-to-end, and must trust the proxy to maintain the security of the connection to ensure that sensitive data is protected. Some proxies re-encrypt and forward traffic to destinations using less secure TLS parameters.</p>
+	<p>Proxies can also require the installation of vendor root certificates that can be easily abused by other malicious parties. In November 2018, a type of Sennheiser wireless headphones required the user to install a <a href="https://arstechnica.com/information-technology/2018/11/sennheiser-discloses-monumental-blunder-that-cripples-https-on-pcs-and-macs">root certificate which used insecure parameters</a>. This root certificate could allow any adversary to impersonate websites and send spoofed responses to machines with this certificate, as well as observe otherwise encrypted data.</p>
 	<p>TLS-terminating forward proxies could even trust root certificates considered insecure, like Symantec’s CA. If poorly implemented, any TLS-terminating forward proxy can become a widespread attack vector, leaking private information or allowing for response spoofing.</p>
-	<h2 id="reverse-proxies">Reverse Proxies</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/03/speedy-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2>Reverse Proxies</h2>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10jWDwqO36EovaMh7yezP0/2eab9a042352b916a4e0f4e27c1ecb74/speedy-_2x.png" alt="" class="kg-image" width="3360" height="1553" loading="lazy">
+
+	</figure>
 	<p>Reverse proxies also sit between users and origin servers. Reverse proxies (such as Cloudflare and <a href="https://www.cloudflare.com/cloudflare-vs-akamai">Akamai</a>) act on behalf of origin servers, caching static data to improve the speed of content delivery and offering security services such as DDoS mitigation. Critically, reverse proxies do not require special root certificates to be installed on user devices, since browsers establish connections directly to the reverse proxy to download content that is hosted at the origin server. Reverse proxies are often used by origin servers to improve the security of client HTTPS connections (for example, by enforcing strict security policies and using the <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">newest security protocols like TLS 1.3</a>). In this case, reverse proxies are intermediaries that provide better performance and security to TLS connections.</p>
-	<h2 id="why-continue-examining-https-interception">Why Continue Examining HTTPS Interception?</h2>
+	<h2>Why Continue Examining HTTPS Interception?</h2>
 	<p><a href="https://blog.cloudflare.com/understanding-the-prevalence-of-web-traffic-interception">In a previous blog post, we argued that HTTPS interception is prevalent on the Internet</a> and that it often degrades the security of Internet connections. A server that refuses to negotiate weak cryptographic parameters should be safe from many of the risks of degraded connection security, but there are plenty of reasons why a server operator may want to know if HTTPS traffic from its clients has been intercepted.</p>
 	<p>First, detecting HTTPS interception can help a server to identify suspicious or potentially vulnerable clients connecting to its network. A server can use this knowledge to notify legitimate users that their connection security might be degraded or compromised. HTTPS interception also increases the attack surface area of the system, and presents an attractive target for attackers to gain access to sensitive connection data.</p>
 	<p>Second, the presence of content inspection systems can not only weaken the security of TLS connections, but it can hinder the <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">adoption of new innovations and improvements to TLS</a>. &nbsp;Users connecting through older middleboxes may have their connections downgraded to older versions of TLS the middleboxes still support, and may not receive the security, privacy, and performance benefits of new TLS versions, even if newer versions are supported by both the browser and the server.</p>
-	<h2 id="introducing-mitmengine-cloudflare-s-https-interception-detector">Introducing MITMEngine: Cloudflare’s HTTPS Interception Detector</h2>
-	<p>Many TLS client implementations can be uniquely identified by features of the Client Hello message such as the supported version, cipher suites, extensions, elliptic curves, point formats, compression, and signature algorithms. The technique introduced by “<a href="https://jhalderm.com/pub/papers/interception-ndss17.pdf">The Security Impact of HTTPS Interception</a>” is to construct TLS Client Hello <em>signatures</em> for common browser and middlebox implementations. Then, to identify HTTPS requests that have been intercepted, a server can look up the signature corresponding to the request’s HTTP User Agent, and check if the request’s Client Hello message matches the signature. A mismatch indicates either a spoofed User Agent or an intercepted HTTPS connection. The server can also compare the request’s Client Hello to those of known HTTPS interception tools to understand which interceptors are responsible for intercepting the traffic.</p>
+	<h2>Introducing MITMEngine: Cloudflare’s HTTPS Interception Detector</h2>
+	<p>Many TLS client implementations can be uniquely identified by features of the Client Hello message such as the supported version, cipher suites, extensions, elliptic curves, point formats, compression, and signature algorithms. The technique introduced by “<a href="https://jhalderm.com/pub/papers/interception-ndss17.pdf">The Security Impact of HTTPS Interception</a>” is to construct TLS Client Hello <i>signatures</i> for common browser and middlebox implementations. Then, to identify HTTPS requests that have been intercepted, a server can look up the signature corresponding to the request’s HTTP User Agent, and check if the request’s Client Hello message matches the signature. A mismatch indicates either a spoofed User Agent or an intercepted HTTPS connection. The server can also compare the request’s Client Hello to those of known HTTPS interception tools to understand which interceptors are responsible for intercepting the traffic.</p>
 	<p>The <a href="https://caddyserver.com/docs/mitm-detection">Caddy Server MITM Detection</a> tool is based on these heuristics and implements support for a limited set of browser versions. However, we wanted a tool that could be easily applied to the broad set of TLS implementations that Cloudflare supports, with the following goals:</p>
 	<ul>
-		<li>Maintainability: It should be easy to add support for new browsers and to update existing browser signatures when browser updates are released.</li>
-		<li>Flexibility: Signatures should be able to capture a wide variety of TLS client behavior without being overly broad. For example, signatures should be able to account for the <a href="https://tools.ietf.org/html/draft-davidben-tls-grease-01">GREASE</a> values sent in modern versions of Chrome.</li>
-		<li>Performance: Per-request MITM detection should be cheap so that the system can be deployed at scale.</li>
+		<li>
+			<p>Maintainability: It should be easy to add support for new browsers and to update existing browser signatures when browser updates are released.</p>
+		</li>
+		<li>
+			<p>Flexibility: Signatures should be able to capture a wide variety of TLS client behavior without being overly broad. For example, signatures should be able to account for the <a href="https://tools.ietf.org/html/draft-davidben-tls-grease-01">GREASE</a> values sent in modern versions of Chrome.</p>
+		</li>
+		<li>
+			<p>Performance: Per-request MITM detection should be cheap so that the system can be deployed at scale.</p>
+		</li>
 	</ul>
 	<p>To accomplish these goals, the Cryptography team at Cloudflare developed <a href="https://github.com/cloudflare/mitmengine">MITMEngine</a>, an open-source HTTPS interception detector. MITMEngine is a Golang library that ingests User Agents and TLS Client Hello fingerprints, then returns the likelihood of HTTPS interception and the factors used to identify interception. To learn how to use MITMEngine, check out the project on GitHub.</p>
 	<p>MITMEngine works by comparing the values in an observed TLS Client Hello to a set of known browser Client Hellos. The fields compared include:</p>
 	<ul>
-		<li>TLS version,</li>
-		<li>Cipher suites,</li>
-		<li>Extensions and their values,</li>
-		<li>Supported elliptic curve groups, and</li>
-		<li>Elliptic curve point formats.</li>
+		<li>
+			<p>TLS version,</p>
+		</li>
+		<li>
+			<p>Cipher suites,</p>
+		</li>
+		<li>
+			<p>Extensions and their values,</p>
+		</li>
+		<li>
+			<p>Supported elliptic curve groups, and</p>
+		</li>
+		<li>
+			<p>Elliptic curve point formats.</p>
+		</li>
 	</ul>
-	<p>When given a pair of User Agent and observed TLS Client Hello, MITMEngine detects differences between the given Client Hello and the one expected for the presented User Agent. For example, consider the following User Agent:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)
-Chrome/47.0.2526.111 Safari/537.36
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>This User Agent corresponds to Chrome 47 running on Windows 7. The paired TLS Client Hello includes the following cipher suites, displayed below as a hex dump:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">0000  c0 2b c0 2f 00 9e c0 0a  c0 14 00 39 c0 09 c0 13   .+./.... ...9....
-0010  00 33 00 9c 00 35 00 2f  00 0a                     .3...5./ ..
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>These cipher suites translate to the following list (and order) of 13 ciphers:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xc02b)
+	<p>When given a pair of User Agent and observed TLS Client Hello, MITMEngine detects differences between the given Client Hello and the one expected for the presented User Agent. For example, consider the following User Agent:</p>
+	<pre class="language-bash"><code class="language-bash">Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)
+Chrome/47.0.2526.111 Safari/537.36</code></pre>
+	<p>This User Agent corresponds to Chrome 47 running on Windows 7. The paired TLS Client Hello includes the following cipher suites, displayed below as a hex dump:</p>
+	<pre class="language-bash"><code class="language-bash">0000  c0 2b c0 2f 00 9e c0 0a  c0 14 00 39 c0 09 c0 13   .+./.... ...9....
+0010  00 33 00 9c 00 35 00 2f  00 0a                     .3...5./ ..</code></pre>
+	<p>These cipher suites translate to the following list (and order) of 13 ciphers:</p>
+	<pre class="language-bash"><code class="language-bash">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xc02b)
 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)
 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (0x009e)
 TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA (0xc00a)
@@ -68,49 +103,73 @@ TLS_DHE_RSA_WITH_AES_128_CBC_SHA (0x0033)
 TLS_RSA_WITH_AES_128_GCM_SHA256 (0x009c)
 TLS_RSA_WITH_AES_256_CBC_SHA (0x0035)
 TLS_RSA_WITH_AES_128_CBC_SHA (0x002f)
-TLS_RSA_WITH_3DES_EDE_CBC_SHA (0x000a)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>The reference TLS Client Hello cipher suites for Chrome 47 are the following:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">0000  c0 2b c0 2f 00 9e cc 14  cc 13 c0 0a c0 14 00 39   .+./.... .......9
-0010  c0 09 c0 13 00 33 00 9c  00 35 00 2f 00 0a         .....3.. .5./..
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Looking closely, we see that the cipher suite list for the observed traffic is shorter than we expect for Chrome 47; two cipher suites have been removed, though the remaining cipher suites remain in the same order. The two missing cipher suites are</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc14)
-TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc13)
-</code></pre>
-	<!--kg-card-end: markdown-->
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (0x000a)</code></pre>
+	<p>The reference TLS Client Hello cipher suites for Chrome 47 are the following:</p>
+	<pre class="language-bash"><code class="language-bash">0000  c0 2b c0 2f 00 9e cc 14  cc 13 c0 0a c0 14 00 39   .+./.... .......9
+0010  c0 09 c0 13 00 33 00 9c  00 35 00 2f 00 0a         .....3.. .5./..</code></pre>
+	<p>Looking closely, we see that the cipher suite list for the observed traffic is shorter than we expect for Chrome 47; two cipher suites have been removed, though the remaining cipher suites remain in the same order. The two missing cipher suites are</p>
+	<pre class="language-bash"><code class="language-bash">TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc14)
+TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc13)</code></pre>
 	<p>Chrome prioritizes these two ChaCha ciphers above AES-CBC ciphers--a good choice, given that <a href="https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites">CBC (cipher block chaining) mode is vulnerable to padding oracle attacks</a>. It looks like the traffic we received underwent HTTPS interception, and the interceptor potentially didn't support ChaCha ciphers.</p>
 	<p>Using contextual clues like the used cipher suites, as well as additional User Agent text, we can also detect which software was used to intercept the HTTPS connection. In this case, MITMEngine recognizes that the fingerprint observed actually matches a fingerprint collected from Sophos antivirus software, and indicates that this software is likely the cause of this interception.</p>
 	<p>We welcome contributions to MITMEngine. We are particularly interested in collecting more fingerprints of MITM software and browser TLS Client Hellos, because MITMEngine depends on these reference fingerprints to detect HTTPS interception. Contributing these fingerprints is as simple as opening <a href="https://www.wireshark.org">Wireshark</a>, capturing a pcap file with a TLS Client Hello, and submitting the pcap file in a PR. More instructions on how to contribute can be found in the <a href="https://github.com/cloudflare/mitmengine">MITMEngine documentation</a>.</p>
-	<h2 id="observing-https-interception-on-cloudflare-s-network-with-malcolm">Observing HTTPS Interception on Cloudflare’s Network with MALCOLM</h2>
+	<h2>Observing HTTPS Interception on Cloudflare’s Network with MALCOLM</h2>
 	<p>To complement MITMEngine, we also built a dashboard, <a href="https://malcolm.cloudflare.com">MALCOLM</a>, to apply MITMEngine to a sample of Cloudflare’s overall traffic and observe HTTPS interception in the requests hitting our network. Recent MALCOLM data incorporates a fresh set of reference TLS Client Hellos, so readers will notice that percentage of "unknown" instances of HTTPS interception has decreased from Feburary 2019 to March 2019.</p>
 	<p>In this section of this blog post, we compare HTTPS interception statistics from MALCOLM to the 2017 study “<a href="https://jhalderm.com/pub/papers/interception-ndss17.pdf">The Security Impact of HTTPS Interception</a>”. With this data, we can see the changes in HTTPS interception patterns observed by Cloudflare over the past two years.</p>
-	<p>Using MALCOLM, let’s see how HTTPS connections have been intercepted as of late. This MALCOLM data was collected between March 12 and March 13, 2019. </p>
+	<p>Using MALCOLM, let’s see how HTTPS connections have been intercepted as of late. This MALCOLM data was collected between March 12 and March 13, 2019.</p>
 	<p>The 2017 study found that 10.9% of Cloudflare-bound TLS Client Hellos had been intercepted. MALCOLM shows that the number of interceptions has increased by a substantial amount, to 18.6%:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/308RiVWeL9fqieIEzt7DsR/3ab48f53723bf3bc2adcc05083cf0fc5/1.png" alt="" class="kg-image" width="1600" height="172" loading="lazy">
+
+	</figure>
 	<p>This result, however, is likely inflated compared to the results of the 2017 study. The 2017 study considered all traffic that went through Cloudflare, regardless of whether it had a recognizable User Agent or not. MALCOLM only considers results with recognizable User Agents that could be identified by <a href="https://github.com/avct/uasurfer">uasurfer</a>, a Golang library for parsing User Agent strings. Indeed, when we don’t screen out TLS Client Hellos with unidentified User Agents, we see that 11.3% of requests are considered intercepted--an increase of 0.4%. Overall, the prevalence of HTTPS interception activity does not seem to have changed much over the past two years.</p>
 	<p>Next, we examine the prevalence of HTTPS interception by browser and operating system. The paper presented the following table. We’re interested in finding the most popular browsers and most frequently intercepted browsers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HJcWioFHJY1gSjUGbM0Fo/3582414da3a4393b6dfe150703e08bd4/2-1.png" alt="" class="kg-image" width="365" height="289" loading="lazy">
+
+	</figure>
 	<p>MALCOLM yields the following statistics for all traffic by browsers. MALCOLM presents mobile and desktop browsers as a single item. This can be broken into separate views for desktop and mobile using the filters on the dashboard.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ueWD4onXq5T1fTh2ZULTt/6b9b78b6c2eb00cf353adc58f5be36f1/3.png" alt="" class="kg-image" width="554" height="378" loading="lazy">
+
+	</figure>
 	<p>Chrome usage has expanded substantially since 2017, while usage of Safari, IE, and Firefox has fallen somewhat (here, IE includes Edge). Examining the most frequently intercepted browsers, we see the following results:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/NC5wbmc-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We see above that Chrome again accounts for a larger percentage of intercepted traffic, likely given growth in Chrome’s general popularity. As a result, HTTPS interception rates for other browsers, like Internet Explorer, have fallen as IE is less frequently used. MALCOLM also highlights the prevalence of other browsers that have their traffic intercepted--namely, UCBrowser, a browser common in China. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DoOG6gtyJKloQ6f7N2YM/a43a69d9fc82df8c22cd7b781f4e87da/NC5wbmc-.png" alt="" class="kg-image" width="558" height="359" loading="lazy">
+
+	</figure>
+	<p>We see above that Chrome again accounts for a larger percentage of intercepted traffic, likely given growth in Chrome’s general popularity. As a result, HTTPS interception rates for other browsers, like Internet Explorer, have fallen as IE is less frequently used. MALCOLM also highlights the prevalence of other browsers that have their traffic intercepted--namely, UCBrowser, a browser common in China.</p>
 	<p>Now, we examine the most common operating systems observed in Cloudflare’s traffic:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33AywIjUylFoFgSgdXG0LX/36dd8a4445eba1f591e9e3ec2d41e2e8/6.png" alt="" class="kg-image" width="555" height="353" loading="lazy">
+
+	</figure>
 	<p>Android use has clearly increased over the past two years as smartphones become peoples’ primary device for accessing the Internet. Windows also remains a common operating system.</p>
 	<p>As Android becomes more popular, the likelihood of HTTPS interception occurring on Android devices also has increased substantially:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/aW1hZ2UucG5n.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7D4pH8O2VNOUfPZLiV6bV9/9b2f5082b3f84dc8005799940e22cf3a/aW1hZ2UucG5n.png" alt="" class="kg-image" width="560" height="350" loading="lazy">
+
+	</figure>
 	<p>Since 2017, Android devices have overtaken those of Windows as the most intercepted.</p>
 	<p>As more of the world’s Internet consumption occurs through mobile devices, it’s important to acknowledge that simply changing platforms and browsers has not impacted the prevalence of HTTPS interception.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>Using MITMEngine and MALCOLM, we’ve been able to continuously track the state of HTTPS interception on over 10% of Internet traffic. It’s imperative that we track the status of HTTPS interception to give us foresight when deploying new security measures and detecting breaking changes in security protocols. Tracking HTTPS interception also helps us contribute to our broader mission of “helping to build a better Internet” by keeping tabs on software that possibly weakens good security practices.</p>
 	<p>Interested in exploring more HTTPS interception data? Here are a couple of next steps:</p>
 	<ol>
-		<li>Check out <a href="https://malcolm.cloudflare.com">MALCOLM</a>, click on a couple of percentage bars to apply filters, and share any interesting HTTPS interception patterns you see!</li>
-		<li>Experiment with <a href="https://github.com/cloudflare/mitmengine">MITMEngine</a> today, and see if TLS connections to your website have been impacted by HTTPS interception.</li>
-		<li>Contribute to MITMEngine!</li>
+		<li>
+			<p>Check out <a href="https://malcolm.cloudflare.com">MALCOLM</a>, click on a couple of percentage bars to apply filters, and share any interesting HTTPS interception patterns you see!</p>
+		</li>
+		<li>
+			<p>Experiment with <a href="https://github.com/cloudflare/mitmengine">MITMEngine</a> today, and see if TLS connections to your website have been impacted by HTTPS interception.</p>
+		</li>
+		<li>
+			<p>Contribute to MITMEngine!</p>
+		</li>
 	</ol>
 </div>

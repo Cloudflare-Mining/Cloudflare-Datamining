@@ -1,92 +1,70 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nINEXnGDtOgpoNNkZ99Ch/18ca879e66cb0b6feb1355a9be1001c7/preventing-request-loops-using-cdn-loop.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>HTTP requests typically originate with a client, and end at a web server that processes the request and returns some response. Such requests may pass through multiple proxies before they arrive at the requested resource. If one of these proxies is configured badly (for instance, back to a proxy that had already processed it) then the request may be caught in a loop.</p>
-	<p>Request loops, accidental or malicious, can consume resources and degrade user's Internet performance. Such loops can even be <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">observed at the CDN-level</a>. Such a wide-scale attack would affect all customers of that CDN. It's been over <a href="https://blog.cloudflare.com/preventing-malicious-request-loops">three years</a> since Cloudflare acknowledged the power of such non-compliant or malicious request loops. The proposed solution in that blog post was quickly found to be flawed and loop protection has since been implemented in an <em>ad-hoc</em> manner that is specific to each individual provider. This lack of cohesion and co-operation has led to a fragmented set of protection mechanisms. </p>
+	<p>Request loops, accidental or malicious, can consume resources and degrade user's Internet performance. Such loops can even be <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">observed at the CDN-level</a>. Such a wide-scale attack would affect all customers of that CDN. It's been over <a href="https://blog.cloudflare.com/preventing-malicious-request-loops">three years</a> since Cloudflare acknowledged the power of such non-compliant or malicious request loops. The proposed solution in that blog post was quickly found to be flawed and loop protection has since been implemented in an <i>ad-hoc</i> manner that is specific to each individual provider. This lack of cohesion and co-operation has led to a fragmented set of protection mechanisms.</p>
 	<p>We are finally happy to report that a recent collaboration between multiple CDN providers (including Cloudflare) has led to a new <a href="https://datatracker.ietf.org/doc/draft-ietf-httpbis-cdn-loop">mechanism for loop protection</a>. This now runs at the Cloudflare edge and is compliant with other CDNs, allowing us to provide protection against loops. The loop protection mechanism is currently a draft item being worked on by the HTTPbis working group. It will be published as an RFC in the standards track in the near future.</p>
-	<h3 id="the-original-problem">The original problem</h3>
+	<h3>The original problem</h3>
 	<p>The original problem was summarised really nicely in the <a href="https://blog.cloudflare.com/preventing-malicious-request-loops">previous blog post</a>, but I will summarise it again here (with some diagrams that are suspiciously similar to the original post, sorry Nick!).</p>
 	<p>As you may well know, Cloudflare is a reverse proxy. When requests are made for Cloudflare websites, the Cloudflare edge returns origin content via a cached response or by making requests to the origin web server. Some Cloudflare customers choose to use different CDN providers for different facets of functionality. This means that requests go through multiple proxy services before origin content is received from the origin.</p>
-	<p>This is where things can sometimes get messy, either through misconfiguration or deliberately. It's possible to configure multiple proxy services for a given origin in a <em>loop</em>. For example, an origin website could configure proxy <strong>A</strong> so that proxy <strong>B</strong> is the origin, and <strong>B</strong> such that <strong>A</strong> is the origin.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/Loop1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>This is where things can sometimes get messy, either through misconfiguration or deliberately. It's possible to configure multiple proxy services for a given origin in a <i>loop</i>. For example, an origin website could configure proxy <b>A</b> so that proxy <b>B</b> is the origin, and <b>B</b> such that <b>A</b> is the origin.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59Hrtvc3DZHWSzpQUqeKvd/2e2d4f8efca687f0189cf132ea40ac0b/Loop1.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
+
+	</figure>
 	<p>Then any request sent to the origin would get caught in a loop between the two Proxies (see above). If such a loop goes undetected, then this can quickly eat the computing resources of the two proxies, especially if the request requires a lot of processing at the edge. In these cases, it is conceivable that such an attack could lead to a DoS on one or both of the proxy services. Indeed, a <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">research paper from NDSS 2016</a> showed that such an attack was practical when leveraging multiple CDN providers (including Cloudflare) in the way method shown above.</p>
-	<h4 id="the-original-solution">The original solution</h4>
+	<h4>The original solution</h4>
 	<p>The previous blog post advocated using the Via header on HTTP requests to log the proxy services that had previously processed any previous request. This header is specified in <a href="https://tools.ietf.org/html/rfc7230#section-5.7.1">RFC7230</a> and is purpose-built for providing request loop detection. The idea was that CDN providers would log each time a request came through their edge architecture in the Via header. Any request that arrived at the edge would be checked to see if it previously passed through the same CDN using the value of the Via header. If the header indicated that it had passed through before, then the request could be dropped before any serious processing had taken place.</p>
 	<p>Nick’s previous <a href="https://blog.cloudflare.com/preventing-malicious-request-loops">post</a> finished with a call-to-arms for all services proxying requests to be compliant with the standard.</p>
-	<h3 id="the-problem-with-via">The problem with Via</h3>
+	<h3>The problem with Via</h3>
 	<p>In theory, the Via header would solve the loop protection problem. In practice, it was quickly discovered there were issues with the implementation of Via that meant that using the header was infeasible. Adding the header to outbound requests from the Cloudflare edge had grave performance consequences for a large number of Cloudflare customers.</p>
-	<p>Such issues arose from legacy usage of the Via header that conflicts with using it for tracking loop detection. For instance, around 8% of Cloudflare enterprise customers experienced issues where gzip failed to compress requests containing the Via header. This meant that transported requests were much larger and led to wide-scale problems for their web servers. Such performance degradation is even <em>expected</em> in some server implementations. For example, NGINX actively chooses not to compress proxied requests:</p>
-	<blockquote>By default, NGINX does not compress responses to proxied requests (requests that come from the proxy server). The fact that a request comes from a proxy server is determined by the presence of the Via header field in the request.</blockquote>
-	<p>While Cloudflare takes security very seriously, such performance issues were unacceptable. The difficult decision was taken to switch off loop protection based on the contents of the Via header shortly after it was implemented. </p>
+	<p>Such issues arose from legacy usage of the Via header that conflicts with using it for tracking loop detection. For instance, around 8% of Cloudflare enterprise customers experienced issues where gzip failed to compress requests containing the Via header. This meant that transported requests were much larger and led to wide-scale problems for their web servers. Such performance degradation is even <i>expected</i> in some server implementations. For example, NGINX actively chooses not to compress proxied requests:</p>
+	<blockquote>
+		<p>By default, NGINX does not compress responses to proxied requests (requests that come from the proxy server). The fact that a request comes from a proxy server is determined by the presence of the Via header field in the request.</p>
+	</blockquote>
+	<p>While Cloudflare takes security very seriously, such performance issues were unacceptable. The difficult decision was taken to switch off loop protection based on the contents of the Via header shortly after it was implemented.</p>
 	<p>Since then, Cloudflare has implemented loop protection based on the CF-Connecting-IP and X-Forwarded-For headers. In essence, when a request is processed by the edge these headers are added to the request before it is sent to the origin. Then, any request that is processed by the edge including either of these headers is dropped. While this is enough to avoid malicious loop attacks, there are some disadvantages with this approach.</p>
 	<p>Firstly, this approach naturally means that there is no unified way of approaching loop protection across the different CDN providers. Without a standardised method, the possibility of mistakes in implementations that could cause problems in the future rises.</p>
 	<p>Secondly, there are some valid reasons that Cloudflare customers may require requests to loop through the edge more than once.While such reasons are usually quite esoteric, customers with such a need had to manually modify such requests so that they did not fall foul of the loop protection mechanism. For example, workflows that include usage of Cloudflare Workers can send requests through the edge more than once via subrequests for returning custom content to clients. The headers that are currently used mean that requests are dropped as soon as a request loops once. This can add noticeable friction to using CDN services and it would be preferable to have a more granular solution to loop detection.</p>
-	<h3 id="a-new-solution">A new solution</h3>
+	<h3>A new solution</h3>
 	<p>Collaborators at Cloudflare, Fastly and Akamai set about defining a unified solution to the loop protection problem for CDNs.</p>
 	<p>The output was the following was <a href="https://tools.ietf.org/html/draft-ietf-httpbis-cdn-loop-02">this draft</a> that has recently been accepted by the HTTPbis working group on the Standards Track. the document has been approved by the IESG, it will join the RFC series.</p>
 	<p>The CDN-Loop header sets out a syntax that allows individual CDNs to mark requests as having been processed by their edge. This header should be added to any request that passes through the CDN architecture towards some separate endpoint. The <a href="https://tools.ietf.org/html/draft-ietf-httpbis-cdn-loop-02">current draft</a> defines the syntax of the header to be the following:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop  = #cdn-info
+	<pre class="language-bash"><code class="language-bash">CDN-Loop  = #cdn-info
 cdn-info  = cdn-id *( OWS ";" OWS parameter )
 cdn-id	= ( uri-host [ ":" port ] ) / pseudonym
-pseudonym = token
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+pseudonym = token</code></pre>
 	<p>This initially seems a lot to unpack. Essentially, <code>cdn-id</code> is a URI host ID for the destination resource, or a <code>pseudonym</code> related to the CDN that has processed the request. In the Cloudflare case, we might choose <code>pseudonym = cloudflare</code>, or use the URI host ID for the origin website that has been requested.</p>
 	<p>Then, <code>cdn-info</code> contains the <code>cdn-id</code> in addition to some optional parameters. This is denoted by <code>*( OWS ";" OWS parameter )</code> where `OWS` represents optional whitespace, and <code>parameter</code> represents any CDN-specific information that may be informative for the specific request. If different CDN-specific <code>cdn-info</code> parameters are included in the same header, then these are comma-separated. For example, we may have <code>cdn-info = cdn1; param1, cdn2; param2</code> for two different CDNs that have interacted with the request.</p>
 	<p>Concretely, we give some examples to describe how the CDN-Loop header may be used by a CDN to mark requests as being processed.</p>
 	<p>If a request arrives at CDN <code>A</code> that has no current CDN-Loop header. Then <code>A</code> processes the request and adds:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop: cdn-info(A)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(A)</code></pre>
 	<p>to the request headers.</p>
 	<p>If a request arrives at <code>A</code> with the following header:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop: cdn-info(B)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(B)</code></pre>
 	<p>for some different CDN <code>B</code>, then <code>A</code> either modifies the header to be:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop: cdn-info(B), cdn-info(A)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(B), cdn-info(A)</code></pre>
 	<p>or adds a separate header:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop: cdn-info(B)
-CDN-Loop: cdn-info(A)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(B)
+CDN-Loop: cdn-info(A)</code></pre>
 	<p>If a request arrives at <code>A</code> with:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop: cdn-info(A)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(A)</code></pre>
 	<p>this indicates that the request has already been processed. At this point <code>A</code> detects a loop and may implement loop protection in accordance with its own policies. This is an implementation decision that is not defined in the specification. Options may include dropping the request or simply re-marking it, for example:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop: cdn-info(A); cdn-info(A)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(A); cdn-info(A)</code></pre>
 	<p>A CDN could also utilise the optional parameters to indicate that a request had been processed:</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>CDN-Loop: cdn-info(A); processed=1
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">CDN-Loop: cdn-info(A); processed=1</code></pre>
 	<p>The ability to use different parameters in the header allows for much more granular loop detection and protection. For example, a CDN could drop requests that had previously looped N&gt;1 times, rather than just once. In addition, the advantage of using the CDN-Loop header is that it does not come with legacy baggage. &nbsp;As we experienced previously, loop detection based on the Via header can conflict with existing usage of the header in web server implementations that eventually lead to compression issues and performance degradation. This makes CDN-Loop a viable and effective solution for detecting loop-protection attacks and applying preventions where needed.</p>
-	<h4 id="implementing-cdn-loop-at-cloudflare">Implementing CDN-Loop at Cloudflare</h4>
+	<h4>Implementing CDN-Loop at Cloudflare</h4>
 	<p>The IETF standardisation process welcomes running code and implementation experience in the real world. Cloudflare recently added support for the CDN-Loop header to requests that pass through the Cloudflare edge. This replaces the <code>CF-Connecting-IP</code> and <code>X-Forwarded-For</code> headers as the primary means for establishing loop protection. The structure that Cloudflare uses is similar to the examples above, where <code>cdn-info = cloudflare</code>. Extra parameters can be added to the header to determine how many times a request has been processed and in what manner.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/loop2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pUAuvQrFWUQ0KIcMZW97p/aa17246ac03385e13f9c92514d434a5f/loop2.png" alt="" class="kg-image" width="905" height="554" loading="lazy">
+
+	</figure>
 	<p>The Cloudflare edge drops any requests that have been processed multiple times to prevent malicious loop attacks. In the diagram above, requests that have looped more times than is allowed by a given CDN (red arrows) are dropped and an error is returned to the client. The edge can decide to allow requests to loop more than once in certain situations, rather than dropping immediately after the first loop.</p>
-	<h3 id="a-second-call-to-arms">A (second) call-to-arms</h3>
+	<h3>A (second) call-to-arms</h3>
 	<p>Cloudflare previously made a call-to-arms to make use of the Via header across the industry for preventing malicious usage of proxies for request looping. This did not turn out as we hoped for the reasons mentioned above. Using CDN-Loop, we believe that there is finally a way of allowing CDNs to block loop attacks in a standardised and generic manner that fits with other existing implementations.</p>
 	<p>CDN-Loop is actively supported by Cloudflare and there have been none of the performance issues that came with the usage of Via. Recently, another CDN, Fastly <a href="https://www.fastly.com/blog/creating-standards-for-cdns">introduced usage of the CDN-Loop header</a> of the CDN-Loop header for their own edge-based loop protection. We believe that this could be the start of a wider movement and that it would be advantageous for all reverse proxies and CDN-like providers to implement compliant usage of the CDN-Loop header.</p>
-	<p>While the original solution three years ago was very different, what Nick said at the time is still salient for all CDNs globally: <strong>Let’s work together to avoid request loops.</strong><br></p>
-	<p><em>Special thanks to Stephen Ludin, Mark Nottingham and Nick Sullivan for their work in drafting and improving the CDN-Loop specification. We would also like to extend thanks to HTTPbis working group for their advice during the standardisation process.</em></p>
+	<p>While the original solution three years ago was very different, what Nick said at the time is still salient for all CDNs globally: <b>Let’s work together to avoid request loops.</b></p>
+	<p><i>Special thanks to Stephen Ludin, Mark Nottingham and Nick Sullivan for their work in drafting and improving the CDN-Loop specification. We would also like to extend thanks to HTTPbis working group for their advice during the standardisation process.</i></p>
 </div>

@@ -1,65 +1,65 @@
-<div class="mb2 gray5">19 min read</div>
+<div class="mb2 gray5">18 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-1.png" class="kg-image" alt="How to execute an object file: part 4, AArch64 edition" loading="lazy" width="1999" height="1125"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ih4pvbZshdUy2ihfodYAU/03718633d659949eab9c85db88daa4be/image1-1.png" alt="How to execute an object file: part 4, AArch64 edition" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Translating source code written in a high-level programming language into an executable binary typically involves a series of steps, namely compiling and assembling the code into object files, and then linking those object files into the final executable. However, there are certain scenarios where it can be useful to apply an alternate approach that involves executing object files directly, bypassing the linker. For example, we might use it for malware analysis or when part of the code requires an incompatible compiler. We’ll be focusing on the latter scenario: when one of our libraries needed to be compiled differently from the rest of the code. Learning how to execute an object file directly will give you a much better sense of how code is compiled and linked together.</p>
 	<p>To demonstrate how this was done, we have previously published a series of posts on executing an object file:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">How to execute an object file: Part 1</a></li>
-		<li><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">How to execute an object file: Part 2</a></li>
-		<li><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">How to execute an object file: Part 3</a></li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">How to execute an object file: Part 1</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">How to execute an object file: Part 2</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">How to execute an object file: Part 3</a></p>
+		</li>
 	</ul>
 	<p>The initial posts are dedicated to the x86 architecture. Since then the fleet of our working machines has expanded to include a large and growing number of ARM CPUs. This time we’ll repeat this exercise for the aarch64 architecture. You can pause here to read the previous blog posts before proceeding with this one, or read through the brief summary below and reference the earlier posts for more detail. We might reiterate some theory as working with ELF files can be daunting, if it’s not your day-to-day routine. Also, please be mindful that for simplicity, these examples omit bounds and integrity checks. Let the journey begin!</p>
-	<h2 id="introduction">Introduction</h2>
+	<h2>Introduction</h2>
 	<p>In order to obtain an object file or an executable binary from a high-level compiled programming language the code needs to be processed by three components: compiler, assembler and linker. The compiler generates an assembly listing. This assembly listing is picked up by the assembler and translated into an object file. All source files, if a program contains multiple, go through these two steps generating an object file for each source file. At the final step the linker unites all object files into one binary, additionally resolving references to the shared libraries (i.e. we don’t implement the <code>printf</code> function each time, rather we take it from a system library). Even though the approach is platform independent, the compiler output varies by platform as the assembly listing is closely tied to the CPU architecture.</p>
 	<p>GCC (GNU Compiler Collection) can run each step: compiler, assembler and linker separately for us:</p>
-	<p>main.c:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
+	<p>main.c:</p>
+	<pre class="language-cpp"><code class="language-cpp">#include <stdio.h>
 
 int main(void)
 {
 	puts("Hello, world!");
 	return 0;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Compiler (output <code>main.s</code> - assembly listing):</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc -S main.c
+}</stdio.h></code></pre>
+	<p>Compiler (output <code>main.s</code> - assembly listing):</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc -S main.c
 $ ls
-main.c  main.s
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Assembler (output <code>main.o</code> - an object file):</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc -c main.s -o main.o
+main.c  main.s</code></pre>
+	<p>Assembler (output <code>main.o</code> - an object file):</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc -c main.s -o main.o
 $ ls
-main.c  main.o  main.s
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Linker (<code>main</code> - an object file):</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc main.o -o main
+main.c  main.o  main.s</code></pre>
+	<p>Linker (<code>main</code> - an object file):</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc main.o -o main
 $ ls
 main  main.c  main.o  main.s
 $ ./main
-Hello, world!
-</code></pre>
-	<!--kg-card-end: markdown-->
+Hello, world!</code></pre>
 	<p>All the examples assume gcc is running on a native aarch64 architecture or include a cross compilation flag for those who want to reproduce and have no aarch64.</p>
-	<p>We have two object files in the output above: <code>main.o</code> and <code>main</code>. Object files are files encoded with the <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF (Executable and Linkable Format)</a> standard. Although, <code>main.o</code> is an ELF file, it doesn’t contain all the information to be fully executable.</p><!--kg-card-begin: markdown-->
-	<pre><code>$ file main.o
+	<p>We have two object files in the output above: <code>main.o</code> and <code>main</code>. Object files are files encoded with the <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF (Executable and Linkable Format)</a> standard. Although, <code>main.o</code> is an ELF file, it doesn’t contain all the information to be fully executable.</p>
+	<pre class="language-bash"><code class="language-bash">$ file main.o
 main.o: ELF 64-bit LSB relocatable, ARM aarch64, version 1 (SYSV), not stripped
 
 $ file main
 main: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically
 linked, interpreter /lib/ld-linux-aarch64.so.1,
-BuildID[sha1]=d3ecd2f8ac3b2dec11ed4cc424f15b3e1f130dd4, for GNU/Linux 3.7.0, not stripped
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="the-elf-file">The ELF File</h2>
+BuildID[sha1]=d3ecd2f8ac3b2dec11ed4cc424f15b3e1f130dd4, for GNU/Linux 3.7.0, not stripped</code></pre>
+	<h2>The ELF File</h2>
 	<p>The central idea of this series of blog posts is to understand how to resolve dependencies from object files without directly involving the linker. For illustrative purposes we generated an object file based on some C-code and used it as a library for our main program. Before switching to the code, we need to understand the basics of the ELF structure.</p>
-	<p>Each ELF file is made up of one <em>ELF header</em>, followed by file data. The data can include: a <em>program header</em> table, a <em>section header</em> table, and the data which is referred to by the program or section header tables.</p>
-	<h3 id="the-elf-header">The ELF Header</h3>
+	<p>Each ELF file is made up of one <i>ELF header</i>, followed by file data. The data can include: a <i>program header</i> table, a <i>section header</i> table, and the data which is referred to by the program or section header tables.</p>
+	<h3>The ELF Header</h3>
 	<p>The ELF header provides some basic information about the file: what architecture the file is compiled for, the program entry point and the references to other tables.</p>
-	<p>The ELF Header:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ readelf -h main
+	<p>The ELF Header:</p>
+	<pre class="language-bash"><code class="language-bash">$ readelf -h main
 ELF Header:
   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
   Class:                             ELF64
@@ -79,13 +79,11 @@ ELF Header:
   Number of program headers:         9
   Size of section headers:           64 (bytes)
   Number of section headers:         29
-  Section header string table index: 28
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="the-elf-program-header">The ELF Program Header</h3>
-	<p>The execution process of almost every program starts from an auxiliary program, called loader, which arranges the memory and calls the program’s entry point. In the following output the loader is marked with a line <code>“Requesting program interpreter: /lib/ld-linux-aarch64.so.1”</code>. The whole program memory is split into different segments with associated size, permissions and type (which instructs the loader on how to interpret this block of memory). Because the execution process should be performed in the shortest possible time, the <em>sections</em> with the same characteristics and located nearby are grouped into bigger blocks — <em>segments</em> — and placed in the <em>program header</em>. We can say that the <em>program header</em> summarizes the types of data that appear in the <em>section header</em>.</p>
-	<p>The ELF Program Header:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ readelf -Wl main
+  Section header string table index: 28</code></pre>
+	<h3>The ELF Program Header</h3>
+	<p>The execution process of almost every program starts from an auxiliary program, called loader, which arranges the memory and calls the program’s entry point. In the following output the loader is marked with a line <code>“Requesting program interpreter: /lib/ld-linux-aarch64.so.1”</code>. The whole program memory is split into different segments with associated size, permissions and type (which instructs the loader on how to interpret this block of memory). Because the execution process should be performed in the shortest possible time, the <i>sections</i> with the same characteristics and located nearby are grouped into bigger blocks — <i>segments</i> — and placed in the <i>program header</i>. We can say that the <i>program header</i> summarizes the types of data that appear in the <i>section header</i>.</p>
+	<p>The ELF Program Header:</p>
+	<pre class="language-bash"><code class="language-bash">$ readelf -Wl main
 
 Elf file type is DYN (Position-Independent Executable file)
 Entry point 0x640
@@ -114,13 +112,11 @@ Program Headers:
    05     .note.gnu.build-id .note.ABI-tag 
    06     .eh_frame_hdr 
    07     
-   08     .init_array .fini_array .dynamic .got 
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="the-elf-section-header">The ELF Section Header</h3>
-	<p>In the source code of high-level languages, variables, functions, and constants are mixed together. However, in assembly you might see that the data and instructions are separated into different blocks. The ELF file content is divided in an even more granular way. For example, variables with initial values are placed into different sections than the uninitialized ones. This approach optimizes for space, otherwise the values for uninitialized variables would be filled with zeros. Along with the space efficiency, there are security reasons for stratification — executable instructions can’t have writable permissions, while memory containing variables can't be executable. The section header describes each of these sections.<br></p>
-	<p>The ELF Section Header:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ readelf -SW main
+   08     .init_array .fini_array .dynamic .got </code></pre>
+	<h3>The ELF Section Header</h3>
+	<p>In the source code of high-level languages, variables, functions, and constants are mixed together. However, in assembly you might see that the data and instructions are separated into different blocks. The ELF file content is divided in an even more granular way. For example, variables with initial values are placed into different sections than the uninitialized ones. This approach optimizes for space, otherwise the values for uninitialized variables would be filled with zeros. Along with the space efficiency, there are security reasons for stratification — executable instructions can’t have writable permissions, while memory containing variables can't be executable. The section header describes each of these sections.</p>
+	<p>The ELF Section Header:</p>
+	<pre class="language-bash"><code class="language-bash">$ readelf -SW main
 There are 29 section headers, starting at offset 0x10be0:
 
 Section Headers:
@@ -158,29 +154,33 @@ Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
   C (compressed), x (unknown), o (OS specific), E (exclude),
-  D (mbind), p (processor specific)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h2 id="executing-example-from-part-1-on-aarch64">Executing example from Part 1 on aarch64</h2>
+  D (mbind), p (processor specific)</code></pre>
+	<h2>Executing example from Part 1 on aarch64</h2>
 	<p>Actually, our <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1">initial code</a> from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">Part 1</a> works on aarch64 as is!</p>
 	<p>Let’s have a quick summary about what was done in the code:</p>
 	<ol>
-		<li>We need to find the code of two functions (<code>add5</code> and <code>add10</code>) in the <code>.text</code> section of our object file (<code>obj.o</code>)</li>
-		<li>Load the functions in the executable memory</li>
-		<li>Return the memory locations of the functions to the main program</li>
+		<li>
+			<p>We need to find the code of two functions (<code>add5</code> and <code>add10</code>) in the <code>.text</code> section of our object file (<code>obj.o</code>)</p>
+		</li>
+		<li>
+			<p>Load the functions in the executable memory</p>
+		</li>
+		<li>
+			<p>Return the memory locations of the functions to the main program</p>
+		</li>
 	</ol>
 	<p>There is one nuance: even though all the sections are in the section header, neither of them have a string name. Without the names we can’t identify them. However, having an additional character field for each section in the ELF structure would be inefficient for the space — it must be limited by some maximum length and those names which are shorter would leave the space unfilled. Instead, ELF provides an additional section, <code>.shstrtab</code>. This string table concatenates all the names where each name ends with a null terminated byte. We can iterate over the names and match with an offset held by other sections to reference their name. But how do we find <code>.shstrtab</code> itself if we don’t have a name? To solve this chicken and egg problem, the ELF program header provides a direct pointer to <code>.shstrtab</code>. The similar approach is applied to two other sections: <code>.symtab</code> and <code>.strtab</code>. Where <code>.symtab</code> contains all information about the symbols and <code>.strtab</code> holds the list of symbol names. In the code we work with these tables to resolve all their dependencies and find our functions.</p>
-	<h2 id="executing-example-from-part-2-on-aarch64">Executing example from Part 2 on aarch64</h2>
-	<p>At the beginning of the second blog post on <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">how to execute an object file</a> we made the function <code>add10</code> depend on <code>add5</code> instead of being self-contained. This is the first time when we faced relocations. <em>Relocations</em> is the process of loading symbols defined outside the current scope. The relocated symbols can present global or thread-local variables, constant, functions, etc. We’ll start from checking assembly instructions which trigger relocations and uncovering how the ELF format handles them in a more general way.</p>
-	<p>After making <code>add10</code> depend on <code>add5</code> our aarch64 version stopped working as well, similarly to the x86. Let’s take a look at assembly listing:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ objdump --disassemble --section=.text obj.o
+	<h2>Executing example from Part 2 on aarch64</h2>
+	<p>At the beginning of the second blog post on <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">how to execute an object file</a> we made the function <code>add10</code> depend on <code>add5</code> instead of being self-contained. This is the first time when we faced relocations. <i>Relocations</i> is the process of loading symbols defined outside the current scope. The relocated symbols can present global or thread-local variables, constant, functions, etc. We’ll start from checking assembly instructions which trigger relocations and uncovering how the ELF format handles them in a more general way.</p>
+	<p>After making <code>add10</code> depend on <code>add5</code> our aarch64 version stopped working as well, similarly to the x86. Let’s take a look at assembly listing:</p>
+	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text obj.o
 
 obj.o:     file format elf64-littleaarch64
 
 
 Disassembly of section .text:
 
-0000000000000000 &lt;add5&gt;:
+0000000000000000 <add5>:
    0:	d10043ff 	sub	sp, sp, #0x10
    4:	b9000fe0 	str	w0, [sp, #12]
    8:	b9400fe0 	ldr	w0, [sp, #12]
@@ -188,23 +188,21 @@ Disassembly of section .text:
   10:	910043ff 	add	sp, sp, #0x10
   14:	d65f03c0 	ret
 
-0000000000000018 &lt;add10&gt;:
+0000000000000018 <add10>:
   18:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
   1c:	910003fd 	mov	x29, sp
   20:	b9001fe0 	str	w0, [sp, #28]
   24:	b9401fe0 	ldr	w0, [sp, #28]
-  28:	94000000 	bl	0 &lt;add5&gt;
+  28:	94000000 	bl	0 <add5>
   2c:	b9001fe0 	str	w0, [sp, #28]
   30:	b9401fe0 	ldr	w0, [sp, #28]
-  34:	94000000 	bl	0 &lt;add5&gt;
+  34:	94000000 	bl	0 <add5>
   38:	a8c27bfd 	ldp	x29, x30, [sp], #32
-  3c:	d65f03c0 	ret
-</code></pre>
-	<!--kg-card-end: markdown-->
+  3c:	d65f03c0 	ret</add5></add5></add10></add5></code></pre>
 	<p>Have you noticed that all the hex values in the second column are exactly the same length, in contrast with the instructions lengths seen for x86 in Part 2 of our series? This is because all Armv8-A instructions are presented in 32 bits. Since it is impossible to encode every immediate value into less than 32 bits, some operations require more than one instruction, as we’ll see later. For now, we’re interested in one instruction <code>- bl</code> (<a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BL--Branch-with-Link-?lang=en">branch with link</a>) on rows <code>28</code> and <code>34</code>. The <code>bl</code> is a “jump” instruction, but before the jump it preserves the next instruction after the current one in the link register (<code>lr</code>). When the callee finishes execution the caller address is recovered from <code>lr</code>. Usually, the aarch64 instructions reserve the last 6 bits [31:26] for opcode and some auxiliary fields such as running architecture (32 or 64 bits), condition flag and others. Remaining bits are shared between arguments like source register, destination register and immediate value. Since the <code>bl</code> instruction does not require a source or destination register, the full 26 bits can be used to encode the immediate offset instead. However, 26 bits can only encode a small range (+/-32 MB), but because the jump can only target a beginning of an instruction, it must always be aligned to 4 bytes, which increases the effective range of the encoded immediate fourfold, to +/-128 MB.</p>
-	<p>Similarly to what we did in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we’re going to resolve our relocations - first by manually calculating the correct addresses and then by using an approach similar to what the linker does. The current value of our <code>bl</code> instruction is <code>94000000</code> or in binary representation <code>100101<strong>00000000000000000000000000</strong></code>. All 26 bits are zeros, so we don't jump anywhere. The address is calculated by an offset from the current <em>program counter</em> (<code>pc</code>), which can be positive or negative. In our case we expect it to be <code>-0x28</code> and <code>-0x34</code>. As described above, it should be divided by 4 and taken as <a href="https://en.wikipedia.org/wiki/Two%27s_complement">two's complements</a>: <code>-0x28 / 4 = -0xA == 0xFFFFFFF6</code> and <code>-0x34 / 4 = -0xD == 0xFFFFFFF3</code>. From these values we need to take the lower 26 bits and concatenate them with the initial 6 bits to get the final instruction. So, the final ones will be: <code>100101<strong>11111111111111111111110110</strong> == 0x97FFFFF6</code> and <code>100101<strong>11111111111111111111110011</strong> == 0x97FFFFF3</code>. Have you noticed that all the distance calculations are done relative to the <code>bl</code> (or current <code>pc</code>), not the next instruction as in x86?</p>
-	<p>Let’s add to the code and execute:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">... 
+	<p>Similarly to what we did in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we’re going to resolve our relocations - first by manually calculating the correct addresses and then by using an approach similar to what the linker does. The current value of our <code>bl</code> instruction is <code>94000000</code> or in binary representation <code>100101**00000000000000000000000000**</code>. All 26 bits are zeros, so we don't jump anywhere. The address is calculated by an offset from the current <i>program counter</i> (<code>pc</code>), which can be positive or negative. In our case we expect it to be <code>-0x28</code> and <code>-0x34</code>. As described above, it should be divided by 4 and taken as <a href="https://en.wikipedia.org/wiki/Two%27s_complement">two's complements</a>: <code>-0x28 / 4 = -0xA == 0xFFFFFFF6</code> and <code>-0x34 / 4 = -0xD == 0xFFFFFFF3</code>. From these values we need to take the lower 26 bits and concatenate them with the initial 6 bits to get the final instruction. So, the final ones will be: <code>100101**11111111111111111111110110** == 0x97FFFFF6</code> and <code>100101**11111111111111111111110011** == 0x97FFFFF3</code>. Have you noticed that all the distance calculations are done relative to the <code>bl</code> (or current <code>pc</code>), not the next instruction as in x86?</p>
+	<p>Let’s add to the code and execute:</p>
+	<pre class="language-cpp"><code class="language-cpp">... 
 
 static void parse_obj(void)
 {
@@ -217,20 +215,16 @@ static void parse_obj(void)
 
 	/* make the `.text` copy readonly and executable */
 	if (mprotect(text_runtime_base, page_align(text_hdr-&gt;sh_size), PROT_READ | PROT_EXEC)) {
-	...
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Compile and run:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc -o loader loader.c
+	...</code></pre>
+	<p>Compile and run:</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c
 $ ./loader
 Executing add5...
 add5(42) = 47
 Executing add10...
-add10(42) = 52
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>It works! But this is not how the linker handles the relocations. The linker resolves relocation based on the type and formula assigned to this type. In our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we investigated it quite well. Here again we need to find the type and check the formula for this type: </p><!--kg-card-begin: markdown-->
-	<pre><code>$ readelf --relocs obj.o
+add10(42) = 52</code></pre>
+	<p>It works! But this is not how the linker handles the relocations. The linker resolves relocation based on the type and formula assigned to this type. In our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we investigated it quite well. Here again we need to find the type and check the formula for this type:</p>
+	<pre class="language-bash"><code class="language-bash">$ readelf --relocs obj.o
 
 Relocation section '.rela.text' at offset 0x228 contains 2 entries:
   Offset          Info           Type           Sym. Value    Sym. Name + Addend
@@ -240,9 +234,7 @@ Relocation section '.rela.text' at offset 0x228 contains 2 entries:
 Relocation section '.rela.eh_frame' at offset 0x258 contains 2 entries:
   Offset          Info           Type           Sym. Value    Sym. Name + Addend
 00000000001c  000200000105 R_AARCH64_PREL32  0000000000000000 .text + 0
-000000000034  000200000105 R_AARCH64_PREL32  0000000000000000 .text + 18
-</code></pre>
-	<!--kg-card-end: markdown-->
+000000000034  000200000105 R_AARCH64_PREL32  0000000000000000 .text + 18</code></pre>
 	<p>Our Type is R_AARCH64_CALL26 and the <a href="https://github.com/ARM-software/abi-aa/blob/main/aaelf64/aaelf64.rst#5733relocation-operations">formula</a> for it is:</p><!--kg-card-begin: html-->
 	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
 		<tbody>
@@ -272,12 +264,18 @@ Relocation section '.rela.eh_frame' at offset 0x258 contains 2 entries:
 	</table><!--kg-card-end: html-->
 	<p>where:</p>
 	<ul>
-		<li><code>S</code> (when used on its own) is the address of the symbol</li>
-		<li><code>A</code> is the addend for the relocation</li>
-		<li><code>P</code> is the address of the place being relocated (derived from <code>r_offset</code>)</li>
+		<li>
+			<p><code>S</code> (when used on its own) is the address of the symbol</p>
+		</li>
+		<li>
+			<p><code>A</code> is the addend for the relocation</p>
+		</li>
+		<li>
+			<p><code>P</code> is the address of the place being relocated (derived from <code>r_offset</code>)</p>
+		</li>
 	</ul>
-	<p>Here are the relevant changes to loader.c:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">/* Replace `#define R_X86_64_PLT32 4` with our Type */
+	<p>Here are the relevant changes to loader.c:</p>
+	<pre class="language-cpp"><code class="language-cpp">/* Replace `#define R_X86_64_PLT32 4` with our Type */
 #define R_AARCH64_CALL26 283
 ...
 
@@ -300,22 +298,18 @@ static void do_text_relocations(void)
 		break;
 	}
 	...
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Compile and run:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc -o loader loader.c 
+}</code></pre>
+	<p>Compile and run:</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c 
 $ ./loader
 Calculated relocation: 0x97fffff6
 Calculated relocation: 0x97fffff3
 Executing add5...
 add5(42) = 47
 Executing add10...
-add10(42) = 52
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>So far so good. The next challenge is to <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/2/obj.c#L16-L31">add constant data and global variables</a> to our object file and check relocations again:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ readelf --relocs --wide obj.o
+add10(42) = 52</code></pre>
+	<p>So far so good. The next challenge is to <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/2/obj.c#L16-L31">add constant data and global variables</a> to our object file and check relocations again:</p>
+	<pre class="language-bash"><code class="language-bash">$ readelf --relocs --wide obj.o
 
 Relocation section '.rela.text' at offset 0x388 contains 8 entries:
     Offset             Info             Type               Symbol's Value  Symbol's Name + Addend
@@ -327,9 +321,7 @@ Relocation section '.rela.text' at offset 0x388 contains 8 entries:
 0000000000000028  0000000300000115 R_AARCH64_ADD_ABS_LO12_NC 0000000000000000 .data + 0
 0000000000000068  000000110000011b R_AARCH64_CALL26       0000000000000040 add5 + 0
 0000000000000074  000000110000011b R_AARCH64_CALL26       0000000000000040 add5 + 0
-...
-</code></pre>
-	<!--kg-card-end: markdown-->
+...</code></pre>
 	<p>We have even two new relocations: <code>R_AARCH64_ADD_ABS_LO12_NC</code> and <code>R_AARCH64_ADR_PREL_PG_HI21</code>. Their formulas are:</p><!--kg-card-begin: html-->
 	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
 		<tbody>
@@ -370,40 +362,38 @@ Relocation section '.rela.text' at offset 0x388 contains 8 entries:
 	</table><!--kg-card-end: html-->
 	<p>where:</p>
 	<p><code>Page(expr)</code> is the page address of the expression expr, defined as <code>(expr &amp; ~0xFFF)</code>. (This applies even if the machine page size supported by the platform has a different value.)</p>
-	<p>It’s a bit unclear why we have two new types, while in x86 we had only one. Let’s investigate the assembly code:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ objdump --disassemble --section=.text obj.o
+	<p>It’s a bit unclear why we have two new types, while in x86 we had only one. Let’s investigate the assembly code:</p>
+	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text obj.o
 
 obj.o:     file format elf64-littleaarch64
 
 
 Disassembly of section .text:
 
-0000000000000000 &lt;get_hello&gt;:
-   0:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
+0000000000000000 <get_hello>:
+   0:	90000000 	adrp	x0, 0 <get_hello>
    4:	91000000 	add	x0, x0, #0x0
    8:	d65f03c0 	ret
 
-000000000000000c &lt;get_var&gt;:
-   c:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
+000000000000000c <get_var>:
+   c:	90000000 	adrp	x0, 0 <get_hello>
   10:	91000000 	add	x0, x0, #0x0
   14:	b9400000 	ldr	w0, [x0]
   18:	d65f03c0 	ret
 
-000000000000001c &lt;set_var&gt;:
+000000000000001c <set_var>:
   1c:	d10043ff 	sub	sp, sp, #0x10
   20:	b9000fe0 	str	w0, [sp, #12]
-  24:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
+  24:	90000000 	adrp	x0, 0 <get_hello>
   28:	91000000 	add	x0, x0, #0x0
   2c:	b9400fe1 	ldr	w1, [sp, #12]
   30:	b9000001 	str	w1, [x0]
   34:	d503201f 	nop
   38:	910043ff 	add	sp, sp, #0x10
-  3c:	d65f03c0 	ret
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>We see that all <code>adrp</code> instructions are followed by <code>add</code> instructions. The <code><a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADD--immediate---Add--immediate--?lang=en">add</a></code> instruction adds an immediate value to the source register and writes the result to the destination register. The source and destination registers can be the same, the immediate value is 12 bits. The <code><a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en">adrp</a></code> instruction generates a <code>pc</code>-relative (program counter) address and writes the result to the destination register. It takes <code>pc</code> of the instruction itself and adds a 21-bit immediate value shifted left by 12 bits. If the immediate value weren’t shifted it would lie in a range of +/-1 MB memory, which isn’t enough. The left shift increases the range up to +/-1 GB. However, because the 12 bits are masked out with the shift, we need to store them somewhere and restore later. That’s why we see add instruction following <code>adrp</code> and two types instead of one. Also, it’s a bit tricky to encode <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en"><code>adrp</code></a>: 2 low bits of immediate value are placed in the position 30:29 and the rest in the position 23:5. Due to size limitations, the aarch64 instructions try to make the most out of 32 bits.</p>
-	<p>In the code we are going to use the formulas to calculate the values and description of <code>adrp</code> and <code>add</code> instructions to obtain the final opcode:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">#define R_AARCH64_CALL26 283
+  3c:	d65f03c0 	ret</get_hello></set_var></get_hello></get_var></get_hello></get_hello></code></pre>
+	<p>We see that all <code>adrp</code> instructions are followed by <code>add</code> instructions. The <code>[add](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADD--immediate---Add--immediate--?lang=en)</code> instruction adds an immediate value to the source register and writes the result to the destination register. The source and destination registers can be the same, the immediate value is 12 bits. The <code>[adrp](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en)</code> instruction generates a <code>pc</code>-relative (program counter) address and writes the result to the destination register. It takes <code>pc</code> of the instruction itself and adds a 21-bit immediate value shifted left by 12 bits. If the immediate value weren’t shifted it would lie in a range of +/-1 MB memory, which isn’t enough. The left shift increases the range up to +/-1 GB. However, because the 12 bits are masked out with the shift, we need to store them somewhere and restore later. That’s why we see add instruction following <code>adrp</code> and two types instead of one. Also, it’s a bit tricky to encode <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en"><code>adrp</code></a>: 2 low bits of immediate value are placed in the position 30:29 and the rest in the position 23:5. Due to size limitations, the aarch64 instructions try to make the most out of 32 bits.</p>
+	<p>In the code we are going to use the formulas to calculate the values and description of <code>adrp</code> and <code>add</code> instructions to obtain the final opcode:</p>
+	<pre class="language-cpp"><code class="language-cpp">#define R_AARCH64_CALL26 283
 #define R_AARCH64_ADD_ABS_LO12_NC 277
 #define R_AARCH64_ADR_PREL_PG_HI21 275
 ...
@@ -444,11 +434,9 @@ case R_AARCH64_ADR_PREL_PG_HI21:
 	*((uint32_t *)patch_offset) |= immlo;
 	*((uint32_t *)patch_offset) |= immhi;
 	break;
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Compile and run:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc -o loader loader.c 
+}</code></pre>
+	<p>Compile and run:</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c 
 $ ./loader
 Executing add5...
 add5(42) = 47
@@ -460,40 +448,40 @@ Executing get_var...
 get_var() = 5
 Executing set_var(42)...
 Executing get_var again...
-get_var() = 42
-</code></pre>
-	<!--kg-card-end: markdown-->
+get_var() = 42</code></pre>
 	<p>It works! The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/2">here</a>.</p>
-	<h2 id="executing-example-from-part-3-on-aarch64">Executing example from Part 3 on aarch64</h2>
+	<h2>Executing example from Part 3 on aarch64</h2>
 	<p>Our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> is about resolving external dependencies. When we write code we don’t think much about how to allocate memory or print debug information to the console. Instead, we involve functions from the system libraries. But the code of system libraries needs to be passed through to our programs somehow. Additionally, for optimization purposes, it would be nice if this code would be stored in one place and shared between all programs. And another wish — we don’t want to resolve all the functions and global variables from the libraries, only those which we need and at those times when we need them. To solve these problems, ELF introduced two sections: PLT (the procedure linkage table) and GOT (the global offset table). The dynamic loader creates a list which contains all external functions and variables from the shared library, but doesn’t resolve them immediately; instead they are placed in the PLT section. Each external symbol is presented by a small function, a stub, e.g. <code>puts@plt</code>. When an external symbol is requested, the stub checks if it was resolved previously. If not, the stub searches for an absolute address of the symbol, returns to the requester and writes it in the GOT table. The next time, the address returns directly from the GOT table.</p>
 	<p>In <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> we implemented a simplified PLT/GOT resolution. Firstly, we added a new function <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/obj.c#L35"><code>say_hello</code></a> in the <code>obj.c</code>, which calls unresolved system library function <code>puts</code>. Further we added an optional wrapper <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L73"><code>my_puts</code></a> in the <code>loader.c</code>. The wrapper isn’t required, we could’ve resolved directly to a standard function, but it's a good example of how the implementation of some functions can be overwritten with custom code. In the next steps we added our PLT/GOT resolution:</p>
 	<ul>
-		<li>PLT section we replaced with a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L340">jumptable</a></li>
-		<li>GOT we replaced with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238-L248">assembly instructions</a></li>
+		<li>
+			<p>PLT section we replaced with a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L340">jumptable</a></p>
+		</li>
+		<li>
+			<p>GOT we replaced with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238-L248">assembly instructions</a></p>
+		</li>
 	</ul>
 	<p>Basically, we created a small stub with assembly code (our <code>jumptable</code>) to resolve the global address of our <code>my_puts</code> wrapper and jump to it.</p>
 	<p>The approach for aarch64 is the same. But the <code>jumptable</code> is very different as it consists of different assembly instructions.</p>
 	<p>The big difference here compared to the other parts is that we need to work with a 64-bit address for the GOT resolution. Our custom PLT or <code>jumptable</code> is placed close to the main code of <code>obj.c</code> and can operate with the relative addresses as before. For the GOT or referencing <code>my_puts</code> wrapper we’ll use different branch instructions — <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BR--Branch-to-Register-"><code>br</code></a> or <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BLR--Branch-with-Link-to-Register-"><code>blr</code></a>. These instructions branch to the register, where the aarch64 registers can hold 64-bit values.</p>
-	<p>We can check how it resolves with the native PLT/GOT in our loader assembly code:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ objdump --disassemble --section=.text loader
+	<p>We can check how it resolves with the native PLT/GOT in our loader assembly code:</p>
+	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text loader
 ...
-1d2c:	97fffb45 	bl	a40 &lt;puts@plt&gt;
+1d2c:	97fffb45 	bl	a40 <puts@plt>
 1d30:	f94017e0 	ldr	x0, [sp, #40]
 1d34:	d63f0000 	blr	x0
-...
-</code></pre>
-	<!--kg-card-end: markdown-->
+...</puts@plt></code></pre>
 	<p>The first instruction is <code>bl</code> jump to <code>puts@plt</code> stub. The next <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/LDR--immediate---Load-Register--immediate--"><code>ldr</code></a> instruction tells us that some value was loaded into the register <code>x0</code> from the stack. Each function has its own <a href="https://en.wikipedia.org/wiki/Call_stack#Stack_and_frame_pointers">stack frame</a> to hold the local variables. The last <code>blr</code> instruction makes a jump to the address stored in <code>x0</code> register. There is an agreement in the register naming: if the stored value is 64-bits then the register is called <code>x0-x30</code>; if only 32-bits are used then it’s called <code>w0-w30</code> (the value will be stored in the lower 32-bits and upper 32-bits will be zeroed).</p>
 	<p>We need to do something similar — place the absolute address of our <code>my_puts</code> wrapper in some register and call <code>br</code> on this register. We don’t need to store the link before branching, the call will be returned to <code>say_hello</code> from <code>obj.c</code>, which is why a plain <code>br</code> will be enough. Let’s check an assembly of simple C-function:</p>
-	<p>hello.c:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">#include &lt;stdint.h&gt;
+	<p>hello.c:</p>
+	<pre class="language-cpp"><code class="language-cpp">#include <stdint.h>
 
 void say_hello(void)
 {
     uint64_t reg = 0x555555550c14;
-}
-</code></pre>
-	<pre><code>$ gcc -c hello.c
+}</stdint.h></code></pre>
+
+	<pre class="language-bash"><code class="language-bash">$ gcc -c hello.c
 $ objdump --disassemble --section=.text hello.o
 
 hello.o:     file format elf64-littleaarch64
@@ -501,7 +489,7 @@ hello.o:     file format elf64-littleaarch64
 
 Disassembly of section .text:
 
-0000000000000000 &lt;say_hello&gt;:
+0000000000000000 <say_hello>:
    0:	d10043ff 	sub	sp, sp, #0x10
    4:	d2818280 	mov	x0, #0xc14                 	// #3092
    8:	f2aaaaa0 	movk	x0, #0x5555, lsl #16
@@ -509,33 +497,29 @@ Disassembly of section .text:
   10:	f90007e0 	str	x0, [sp, #8]
   14:	d503201f 	nop
   18:	910043ff 	add	sp, sp, #0x10
-  1c:	d65f03c0 	ret
-</code></pre>
-	<!--kg-card-end: markdown-->
+  1c:	d65f03c0 	ret</say_hello></code></pre>
 	<p>The number <code>0x555555550c14</code> is the address returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238"><code>lookup_ext_function</code></a>. We’ve printed it out to use as an example, but any <a href="https://www.kernel.org/doc/html/latest/arch/arm64/memory.html">48-bits</a> hex value can be used.</p>
 	<p>In our output we see that the value was split in three sections and written in <code>x0</code> register with three instructions: one <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-"><code>mov</code></a> and two <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en"><code>movk</code></a>. The documentation says that there are only 16 bits for the immediate value, but a shift can be applied (in our case left shift <code>lsl</code>).</p>
 	<p>However, we can’t use <code>x0</code> in our context. By <a href="https://developer.arm.com/documentation/den0024/a/The-ABI-for-ARM-64-bit-Architecture/Register-use-in-the-AArch64-Procedure-Call-Standard/Parameters-in-general-purpose-registers">convention</a> the registers <code>x0-x7</code> are caller-saved and used to pass function parameters between calls to other functions. Let’s use <code>x9</code> then.</p>
 	<p>We need to modify our loader. Firstly let’s change the jumptable structure.</p>
-	<p>loader.c:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">...
+	<p>loader.c:</p>
+	<pre class="language-cpp"><code class="language-cpp">...
 struct ext_jump {
 	uint32_t instr[4];
 };
-...
-</code></pre>
-	<!--kg-card-end: markdown-->
+...</code></pre>
 	<p>As we saw above, we need four instructions: <code>mov</code>, <code>movk</code>, <code>movk</code>, <code>br</code>. We don’t need a stack frame as we aren’t preserving any local variables. We just want to load the address into the register and branch to it. But we can’t write human-readable code</p>
-	<p>e.g. <code>mov &nbsp;x0, #0xc14</code> into instructions, we need machine binary or hex representation, e.g. <code>d2818280</code>. </p>
+	<p>e.g. <code>mov &nbsp;x0, #0xc14</code> into instructions, we need machine binary or hex representation, e.g. <code>d2818280</code>.</p>
 	<p>Let’s write a simple assembly code to get it:</p>
-	<p>hw.s:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">.global _start
+	<p>hw.s:</p>
+	<pre class="language-cpp"><code class="language-cpp">.global _start
 
 _start: mov     x9, #0xc14 
         movk    x9, #0x5555, lsl #16
         movk    x9, #0x5555, lsl #32
-        br      x9
-</code></pre>
-	<pre><code>$ as -o hw.o hw.s
+        br      x9</code></pre>
+
+	<pre class="language-bash"><code class="language-bash">$ as -o hw.o hw.s
 $ objdump --disassemble --section=.text hw.o
 
 hw.o:     file format elf64-littleaarch64
@@ -547,11 +531,9 @@ Disassembly of section .text:
    0:	d2818289 	mov	x9, #0xc14                 	// #3092
    4:	f2aaaaa9 	movk	x9, #0x5555, lsl #16
    8:	f2caaaa9 	movk	x9, #0x5555, lsl #32
-   c:	d61f0120 	br	x9
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Almost done! But there’s one more thing to consider. Even if the value <code>0x555555550c14</code> is a real <code>my_puts</code> wrapper address, it will be different on each run if <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization">ASLR(Address space layout randomization)</a> is enabled. We need to patch these instructions to put the value which will be returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238"><code>lookup_ext_function</code></a> on each run. We’ll split the obtained value in three parts, 16-bits each, and replace them in our <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-"><code>mov</code></a> and <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en"><code>movk</code></a> instructions according to the documentation, similar to what we did before for our second part.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-cpp">if (symbols[symbol_idx].st_shndx == SHN_UNDEF) {
+   c:	d61f0120 	br	x9</code></pre>
+	<p>Almost done! But there’s one more thing to consider. Even if the value <code>0x555555550c14</code> is a real <code>my_puts</code> wrapper address, it will be different on each run if <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization">ASLR(Address space layout randomization)</a> is enabled. We need to patch these instructions to put the value which will be returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238"><code>lookup_ext_function</code></a> on each run. We’ll split the obtained value in three parts, 16-bits each, and replace them in our <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-"><code>mov</code></a> and <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en"><code>movk</code></a> instructions according to the documentation, similar to what we did before for our second part.</p>
+	<pre class="language-cpp"><code class="language-cpp">if (symbols[symbol_idx].st_shndx == SHN_UNDEF) {
 	static int curr_jmp_idx = 0;
 
 	uint64_t addr = lookup_ext_function(strtab +  symbols[symbol_idx].st_name);
@@ -566,7 +548,7 @@ Disassembly of section .text:
 	symbol_address = (uint8_t *)(&amp;jumptable[curr_jmp_idx].instr[0]);
 	curr_jmp_idx++;
 } else {
-	symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+	symbol_address = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
 }
 uint32_t val;
 switch (type)
@@ -581,12 +563,10 @@ case R_AARCH64_CALL26:
 	val &amp;= ~mask_bl;
 	*((uint32_t *)patch_offset) |= val;
 	break;
-...
-</code></pre>
-	<!--kg-card-end: markdown-->
+...</code></pre>
 	<p>In the code we took the address of the first instruction <code>&amp;jumptable[curr_jmp_idx].instr[0]</code> and wrote it in the <code>symbol_address</code>, further because the <code>type</code> is still <code>R_AARCH64_CALL26</code> it will be put into <code>bl</code> - jump to the relative address. Where our relative address is the first <code>mov</code> instruction. The whole <code>jumptable</code> code will be executed and finished with the <code>blr</code> instruction.</p>
-	<p>The final run:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ gcc -o loader loader.c
+	<p>The final run:</p>
+	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c
 $ ./loader
 Executing add5...
 add5(42) = 47
@@ -601,10 +581,8 @@ Executing get_var again...
 get_var() = 42
 Executing say_hello...
 my_puts executed
-Hello, world!
-</code></pre>
-	<!--kg-card-end: markdown-->
+Hello, world!</code></pre>
 	<p>The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/3">here</a>.</p>
-	<h2 id="summary">Summary</h2>
+	<h2>Summary</h2>
 	<p>There are several things we covered in this blog post. We gave a brief introduction on how the binary got executed on Linux and how all components are linked together. We saw a big difference between x86 and aarch64 assembly. We learned how we can hook into the code and change its behavior. But just as it was said in the first blog post of this series, the most important thing is to remember to always think about security first. Processing external inputs should always be done with great care. Bounds and integrity checks have been omitted for the purposes of keeping the examples short, so readers should be aware that the code is not production ready and is designed for educational purposes only.</p>
 </div>

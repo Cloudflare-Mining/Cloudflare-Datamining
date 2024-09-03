@@ -1,33 +1,50 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/es-es/free-magic-network-monitoring-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/free-magic-network-monitoring-pt-br">Português</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-58.png" class="kg-image" alt="Monitor you own network with free network flow analytics from Cloudflare" loading="lazy"></figure>
-	<p>As a network engineer or manager, answering questions about the traffic flowing across your infrastructure is a key part of your job. Cloudflare built Magic Network Monitoring (previously called <a href="https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit">Flow Based Monitoring</a>) to <a href="https://www.cloudflare.com/network-services/solutions/network-monitoring-tools">give you better visibility into your network</a> and to answer questions like, “What is my network’s peak traffic volume? What are the sources of that traffic? When does my network see that traffic?” Today, Cloudflare is excited to announce early access to a free version of Magic Network Monitoring that will be available to everyone. You can request early access by <a href="https://forms.gle/58jPPjcZRA596DCN7">filling out this form</a>.</p>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/pt-br/free-magic-network-monitoring">Português</a> and <a href="https://blog.cloudflare.com/es-es/free-magic-network-monitoring">Español</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IBSRlUj3yiAnnfhKPA6no/3e58966a12630af9ce850e6cbac48904/image2-58.png" alt="Monitor you own network with free network flow analytics from Cloudflare" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>As a network engineer or manager, answering questions about the traffic flowing across your infrastructure is a key part of your job. Cloudflare built Magic Network Monitoring (previously called <a href="https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit">Flow Based Monitoring</a>) to give you better visibility into your network and to answer questions like, “What is my network’s peak traffic volume? What are the sources of that traffic? When does my network see that traffic?” Today, Cloudflare is excited to announce early access to a free version of Magic Network Monitoring that will be available to everyone. You can request early access by <a href="https://forms.gle/58jPPjcZRA596DCN7">filling out this form</a>.</p>
 	<p>Magic Network Monitoring now features a powerful analytics dashboard, self-serve configuration, and a step-by-step onboarding wizard. You’ll have access to a tool that helps you visualize your traffic and filter by packet characteristics including protocols, source IPs, destination IPs, ports, TCP flags, and router IP. Magic Network Monitoring also includes network traffic volume alerts for specific IP addresses or IP prefixes on your network.</p>
-	<h3 id="making-network-monitoring-easy">Making Network Monitoring easy</h3>
+	<h3>Making Network Monitoring easy</h3>
 	<p>Magic Networking Monitoring allows customers to collect network analytics without installing a physical device like a network TAP (Test Access Point) or setting up overly complex remote monitoring systems. Our product works with any hardware that exports network flow data, and customers can quickly configure any router to send flow data to Cloudflare’s network. From there, our network flow analyzer will aggregate your traffic data and display it in Magic Network Monitoring analytics.</p>
-	<h3 id="analytics-dashboard">Analytics dashboard</h3>
+	<h3>Analytics dashboard</h3>
 	<p>In Magic Network Monitoring analytics, customers can take a deep dive into their network traffic data. You can filter traffic data by protocol, source IP, destination IP, TCP flags, and router IP. Customers can combine these filters together to answer questions like, “How much ICMP data was requested from my speed test server over the past 24 hours?” Visibility into traffic analytics is a key part of understanding your network’s operations and proactively improving your security. Let’s walk through some cases where Magic Network Monitoring analytics can answer your <a href="https://www.cloudflare.com/learning/network-layer/network-security">network</a> visibility and security questions.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-40.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="create-network-volume-alert-thresholds-per-ip-address-or-ip-prefix">Create network volume alert thresholds per IP address or IP prefix</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dp6erIjjdaC4MHbVVnH4j/c309e16a4e870be2b7f161f5fcbe6264/image3-40.png" alt="" class="kg-image" width="954" height="984" loading="lazy">
+
+	</figure>
+	<h3>Create network volume alert thresholds per IP address or IP prefix</h3>
 	<p>Magic Network Monitoring is incredibly flexible, and it can be customized to meet the needs of any network hobbyist or business. You can monitor your traffic volume trends over time via the analytics dashboard and build an understanding of your network’s traffic profile. After gathering historical network data, you can set custom volumetric threshold alerts for one IP prefix or a group of IP prefixes. As your network traffic changes over time, or their network expands, they can easily update their Magic Network Monitoring configuration to receive data from new routers or destinations within their network.</p>
-	<h3 id="monitoring-a-speed-test-server-in-a-home-lab">Monitoring a speed test server in a home lab</h3>
+	<h3>Monitoring a speed test server in a home lab</h3>
 	<p>Let’s run through an example where you’re running a network home lab. You decide to use Magic Network Monitoring to track the volume of requests a speed test server you’re hosting receives and check for potential bad actors. Your goal is to identify when your speed test server experiences peak traffic, and the volume of that traffic. You set up Magic Network Monitoring and create a rule that analyzes all traffic destined for your speed test server’s IP address. After collecting data for seven days, the analytics dashboard shows that peak traffic occurs on weekdays in the morning, and that during this time, your traffic volume ranges from 450 - 550 Mbps.</p>
 	<p>As you’re checking over the analytics data, you also notice strange traffic spikes of 300 - 350 Mbps in the middle of the night that occur at the same time. As you investigate further, the analytics dashboard shows the source of this traffic spike is from the same IP prefix. You research some source IPs, and find they’re associated with malicious activity. As a result, you update your firewall to block traffic from this problematic source.</p>
-	<h3 id="identifying-a-network-layer-ddos-attack">Identifying a network layer DDoS attack</h3>
+	<h3>Identifying a network layer DDoS attack</h3>
 	<p>Magic Network Monitoring can also be leveraged to identify a variety of L3, L4, and L7 DDoS attacks. Let’s run through an example of how ACME Corp, a small business using Magic Network Monitoring, can identify a Ping (ICMP) Flood attack on their network. Ping Flood attacks aim to overwhelm the targeted network’s ability to respond to a high number of requests or overload the network connection with bogus traffic.</p>
 	<p>At the start of a Ping Flood attack, your server’s traffic volume will begin to ramp up. Magic Network Monitoring will analyze traffic across your network, and send an email, webhook, or PagerDuty alert once an unusual volume of traffic is identified. Your network and security team can respond to the volumetric alert by checking the data in Magic Network Monitoring analytics and identifying the attack type. In this case, they’ll notice the following traffic characteristics:</p>
 	<ol>
-		<li>Network traffic volume above your historical traffic averages</li>
-		<li>An unusually large amount of ICMP traffic</li>
-		<li>ICMP traffic coming from a specific set of source IPs</li>
+		<li>
+			<p>Network traffic volume above your historical traffic averages</p>
+		</li>
+		<li>
+			<p>An unusually large amount of ICMP traffic</p>
+		</li>
+		<li>
+			<p>ICMP traffic coming from a specific set of source IPs</p>
+		</li>
 	</ol>
 	<p>Now, your network security team has confirmed the traffic is malicious by identifying the attack type, and can begin taking steps to mitigate the attack.</p>
-	<h3 id="magic-network-monitoring-and-magic-transit">Magic Network Monitoring and Magic Transit</h3>
+	<h3>Magic Network Monitoring and Magic Transit</h3>
 	<p>If your business is impacted by DDoS attacks, Magic Network Monitoring will identify attacks, and Magic Transit can be used to mitigate those DDoS attacks. <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> protects customers’ entire network from DDoS attacks by placing our network in front of theirs. You can use Magic Transit Always On to reduce latency and mitigate attacks all the time, or Magic Transit On Demand to protect your network during active attacks. With Magic Transit, you get DDoS protection, traffic acceleration, and other network functions delivered as a service from every Cloudflare data center. Magic Transit works by allowing Cloudflare to <a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip">advertise customers’ IP prefixes</a> to the Internet with BGP to route the customer’s traffic through our network for DDoS protection. If you’re interested in protecting your network with Magic Transit, you can visit the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> product page and request a demo today.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-65.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="sign-up-for-early-access-and-what-s-next">Sign up for early access and what’s next</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4l1c4kr7eVfWgzvoKJuq8o/4cd199d495987ec36626cf6bf0cd19d6/image1-65.png" alt="" class="kg-image" width="1999" height="889" loading="lazy">
+
+	</figure>
+	<h3>Sign up for early access and what’s next</h3>
 	<p>The free version of Magic Network Monitoring (MNM) will be released in the next few weeks. You can request early access by <a href="https://forms.gle/58jPPjcZRA596DCN7">filling out this form</a>.</p>
-	<p>This is just the beginning for Magic Network Monitoring. In the future, you can look forward to features like advanced DDoS attack identification, network incident history and trends, and volumetric alert threshold recommendations. </p>
+	<p>This is just the beginning for Magic Network Monitoring. In the future, you can look forward to features like advanced DDoS attack identification, network incident history and trends, and volumetric alert threshold recommendations.</p>
 </div>

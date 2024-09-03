@@ -1,25 +1,49 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4t5dAUDK2N6Mf2ztfxncQb/b950a5858fabab9fef1fad5d3443a8f7/cyberattacks-since-the-murder-of-george-floyd.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As we’ve often seen in the past, real world protest and violence is usually accompanied by attacks on the Internet. This past week has been no exception. The shocking murder of George Floyd on May 25 was followed, over the weekend of May 30/31, by widespread protests and violence in the US. At the same time, Cloudflare saw a large uptick in cyberattacks, particularly cyberattacks on advocacy organizations fighting racism.</p>
 	<p>This chart shows the number of cyberattack HTTP requests blocked by Cloudflare over the last week (blue line) compared to the corresponding week in April a month before (green line). Cloudflare’s scale means that we are blocking attacks in the many 10s of billions per day, but even with that scale it’s clear that during the last week there have been even more attacks than before. And those attacks grew over the weekend.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HX5u3sVB4SIulddORAryG/ba0f1489b50a014cf6c0843ce9b84fc0/1.png" alt="" class="kg-image" width="1394" height="1012" loading="lazy">
+
+	</figure>
 	<p>Digging in a little deeper we can compare the attacks over this past weekend with a corresponding weekend a month before. Over the weekend of April 25/26, Cloudflare blocked a total of 116,317,347,341 (a little over 116 billion cyberattack HTTP requests performing DDoS or trying to break into websites, apps or APIs were blocked).</p>
 	<p>Since 116,317,347,341 can be a little hard to comprehend, here’s another way of looking at it. 116,317,347,341 cyberattack HTTP requests over a two day period is more than 670,000 blocked requests per second. Google reportedly sees approximately <a href="https://seotribunal.com/blog/google-stats-and-facts/#:~:text=1.,second%20on%20any%20given%20day.&amp;text=That's%20the%20average%20figure%20of,5.6%20billion%20searches%20per%20day.">63,000 search queries per second</a>, so the number of attacks we mitigated during this period was more than 10x Google’s entire search volume.</p>
 	<p>A month later, over the weekend of May 30/31, Cloudflare blocked 135,535,554,303 cyberattack HTTP requests. That represents a month-on-month increase of 17%: an extra 19,218,206,962 (19 billion) cyberattack HTTP requests were blocked (an extra 110,000 blocked requests per second).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZKiy6H18Rr3MNqvo8vgXV/c631e628c388b459b5fb382f35bec812/2.png" alt="" class="kg-image" width="1316" height="972" loading="lazy">
+
+	</figure>
 	<p>Sunday, May 31 had the largest increase with 26% more cyberattacks than the same Sunday a month prior.</p>
-	<p>Digging into the categories of Internet properties that were attacked, we see a striking difference between the two weekends in April and May. The category with the biggest increase in cyberattacks was <strong>Advocacy Groups</strong> with a staggering increase of <strong>1,120x</strong>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In fact, those groups went from having almost no attacks at all in April, to attacks peaking at <strong>20 thousand requests per second</strong> on a single site.</p>
+	<p>Digging into the categories of Internet properties that were attacked, we see a striking difference between the two weekends in April and May. The category with the biggest increase in cyberattacks was <b>Advocacy Groups</b> with a staggering increase of <b>1,120x</b>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cRnmZFYgbaEhwWrvo8v1U/246e42f81b01582721c48978511cb8b3/3.png" alt="" class="kg-image" width="1380" height="1128" loading="lazy">
+
+	</figure>
+	<p>In fact, those groups went from having almost no attacks at all in April, to attacks peaking at <b>20 thousand requests per second</b> on a single site.</p>
 	<p>One particular attacker, likely using a hacked server in France, was especially persistent and kept up an attack continuously hitting an advocacy group continuously for over a day. We blocked those malicious HTTP requests and kept the site online.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We’ve also seen cyberattacks against other categories of Internet property change significantly between April and May. Attacks on <strong>Government</strong> websites (including police and fire departments) are up <strong>1.8x</strong> and attacks on <strong>Military</strong> websites are up <strong>3.8x</strong> month on month.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ACWah3X1X8Oz1sFKhxyU0/69ec8884f7391bff71496865e10ae1ee/4.png" alt="" class="kg-image" width="1600" height="580" loading="lazy">
+
+	</figure>
+	<p>We’ve also seen cyberattacks against other categories of Internet property change significantly between April and May. Attacks on <b>Government</b> websites (including police and fire departments) are up <b>1.8x</b> and attacks on <b>Military</b> websites are up <b>3.8x</b> month on month.</p>
 	<p>Since the murder of George Floyd there’s also been a large increase in attacks on US government web sites.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="project-galileo">Project Galileo</h3>
-	<p>Nearly six years ago, Cloudflare founded Project Galileo because we noticed a disturbing trend of disproportionate attacks against at-risk organizations and individuals that were advocating for marginalized groups. Project Galileo was set up to provide <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protection from cyberattacks</a> for vulnerable targets, like artistic groups, humanitarian organizations, and the voices of political dissent. In our six years of protecting organizations under Project Galileo, we have often seen online attacks used in combination with physical violence and threats. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/elcA8WGDeqww0BCfvTn4m/19129f8d4237b7bb40737c52c7cd7eda/5.png" alt="" class="kg-image" width="1478" height="1132" loading="lazy">
+
+	</figure>
+	<h3>Project Galileo</h3>
+	<p>Nearly six years ago, Cloudflare founded Project Galileo because we noticed a disturbing trend of disproportionate attacks against at-risk organizations and individuals that were advocating for marginalized groups. Project Galileo was set up to provide <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protection from cyberattacks</a> for vulnerable targets, like artistic groups, humanitarian organizations, and the voices of political dissent. In our six years of protecting organizations under Project Galileo, we have often seen online attacks used in combination with physical violence and threats.</p>
 	<p>There are many organizations fighting racism who participate in Project Galileo. Over the last week we’ve seen a dramatic increase in the number of cyberattacks against them.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ve30sTt5Yn0jGCAt2rAGK/67f372bf035427d48c493169ac88af72/6.png" alt="" class="kg-image" width="1364" height="1146" loading="lazy">
+
+	</figure>
 	<p>The whole Cloudflare community is deeply disturbed by the murder of George Floyd, and the shocking images of racial injustice playing out in our cities. We have been listening carefully to those who have taken to the streets in protest to demand justice and an end to structural racism, and believe that their powerful stories can serve as catalysts for real change. But that requires them to be heard. Unfortunately, if recent history is any guide, those who speak out against oppression will continue to face cyberattacks that attempt to silence them.</p>
-	<p>Cloudflare remains committed to making sure that they can continue to function in the face of these attacks, regardless of their resources or the size of the attack. If you know of an organization or group helping to fight racism that needs<a href="https://www.cloudflare.com/galileo"> Project Galileo</a>’s protection, please let them know we’re here and ready to help.</p>
+	<p>Cloudflare remains committed to making sure that they can continue to function in the face of these attacks, regardless of their resources or the size of the attack. If you know of an organization or group helping to fight racism that needs <a href="https://www.cloudflare.com/galileo">Project Galileo</a>’s protection, please let them know we’re here and ready to help.</p>
 </div>

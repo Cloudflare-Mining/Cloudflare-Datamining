@@ -1,41 +1,71 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-18.png" class="kg-image" alt="Introducing Configuration Rules" loading="lazy"></figure>
-	<h3 id="a-powerful-new-set-of-tools">A powerful new set of tools</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kV3fUHE104APTLu7AmFm8/7eab1445aa7a811f1fc244ea56cc955a/image5-18.png" alt="Introducing Configuration Rules" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<h3>A powerful new set of tools</h3>
 	<p>In 2012, we introduced <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Page Rules</a> to the world, announcing:</p>
-	<blockquote><strong><em>“Page Rules is a powerful new set of tools that allows you to control how CloudFlare works on your site on a page-by-page basis.”</em></strong></blockquote>
-	<p>Ten years later, and with all F’s lowercase, we are excited to introduce <strong>Configuration Rules </strong>— a Page Rules successor and a much improved way of controlling Cloudflare features and settings. With Configuration Rules, users can selectively turn on/off features which would typically be applied to every HTTP request going through the zone. They can do this based on URLs - and more, such as cookies or country of origin.</p>
+	<blockquote>
+		<p><i><b>“Page Rules is a powerful new set of tools that allows you to control how CloudFlare works on your site on a page-by-page basis.”</b></i></p>
+	</blockquote>
+	<p>Ten years later, and with all F’s lowercase, we are excited to introduce <b>Configuration Rules</b> — a Page Rules successor and a much improved way of controlling Cloudflare features and settings. With Configuration Rules, users can selectively turn on/off features which would typically be applied to every HTTP request going through the zone. They can do this based on URLs - and more, such as cookies or country of origin.</p>
 	<p>Configuration Rules opens up a wide range of use cases for our users that previously were impossible without writing custom code in a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>. Such use cases as A/B testing configuration or only enabling features for a set of file extensions are now made possible thanks to the rich filtering capabilities of the product.</p>
 	<p>Configuration Rules are available for use immediately across all plan levels.</p>
-	<h3 id="turn-it-on-but-only-when-">Turn it on, but only when…</h3>
+	<h3>Turn it on, but only when…</h3>
 	<p>As each HTTP request enters a Cloudflare zone we apply a configuration. This configuration tells the Cloudflare server handling the HTTP request which features the HTTP request should ‘go’ through, and with what settings/options. This is defined by the user, typically via the dashboard.</p>
-	<p>The issue arises when users want to enable these features, such as Polish or Auto Minify, only on a subset of the traffic to their website. For example, users may want to disable Email Obfuscation but only for a specific page on their website so that contact information is shown correctly to visitors. To do this, they can deploy a <strong>Configuration Rule.</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>The issue arises when users want to enable these features, such as Polish or Auto Minify, only on a subset of the traffic to their website. For example, users may want to disable Email Obfuscation but only for a specific page on their website so that contact information is shown correctly to visitors. To do this, they can deploy a <b>Configuration Rule.</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lCHWaSYhQ6dCCY4l7auNM/f7b065ee08efb92384b151d815320162/image6-9.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
+
+	</figure>
 	<p>Configuration Rules lets users selectively enable or disable features based on one or more ruleset engine <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a>.</p>
-	<p>Currently, there are 16 available <em>actions</em> within Configuration Rules. These actions range from Disable Apps, Disable Railgun and Disable Zaraz to Auto Minify, Polish and Mirage.</p>
+	<p>Currently, there are 16 available <i>actions</i> within Configuration Rules. These actions range from Disable Apps, Disable Railgun and Disable Zaraz to Auto Minify, Polish and Mirage.</p>
 	<p>These actions effectively ‘override’ the corresponding zone-wide setting for matching traffic. For example, Rocket Loader may be enabled for the zone <code>example.com</code>:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-60.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pDnBa8tNufAha85zYcwuV/2bed0f190d8f19f73470c9e8265b7401/image1-60.png" alt="" class="kg-image" width="1058" height="219" loading="lazy">
+
+	</figure>
 	<p>If the user, however, does not want Rocket Loader to be enabled on their checkout page due to an issue it causes with a specific JavaScript element, they could create a Configuration Rule to selectively disable Rocket Loader:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image7-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VekSaqhCwY7LzR1X5fzxl/a9aee5a8a61f61d10826a4f492b8a8b8/image7-6.png" alt="" class="kg-image" width="1107" height="195" loading="lazy">
+
+	</figure>
 	<p>This interplay between zone level settings and Configuration Rules allows users to selectively enable features, allowing them to test Rocket Loader on <code>staging.example.com</code> prior to flipping the zone-level toggle.</p>
 	<p>With Configuration Rules, users also have access to various other non-URL related fields. For example, users could use the <code>ip.geoip.country</code> <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">field</a> to ensure that visitors for specific countries always have the ‘Security Level’ set to ‘I’m under attack’.</p>
 	<p>Historically, these configuration overrides were achieved with the setting of a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-">Page Rule</a>.</p>
 	<p>Page Rules is the ‘If This Then That’ of Cloudflare. Where the ‘If…’ is a URL, and the ‘Then That’ is changing how we handle traffic to specific parts of a ‘zone’. It allows users to selectively change how traffic is handled, and in this case specifically, which settings are and aren’t applied. It is very well adopted, with over one million Page Rules in the past three months alone.</p>
 	<p>Page Rules, however, are limited to performing actions based upon the requested URL. This means if users want to disable Rocket Loader for certain traffic, they need to make that decision based on the URL alone. This can be challenging for users who may want to perform this decision-making on more nuanced aspects, like the user agent of the visitor or on the presence of a specific cookie.</p>
 	<p>For example, users might want to set the ‘Security Level’ to ‘I'm under attack’ when the HTTP request originates in certain countries. This is where Configuration Rules help.</p>
-	<h3 id="use-case-a-b-testing">Use case: A/B testing</h3>
+	<h3>Use case: A/B testing</h3>
 	<p>A/B testing is the term used to describe the comparison of two versions of a single website or application. It allows users to create a copy of their current website (‘A’), change it (‘B’) and compare the difference.</p>
 	<p>In a Cloudflare context, users might want to A/B test the effect of features such as Mirage or Polish prior to enabling them for all traffic to the website. With Page Rules, this was impractical. Users would have to create Page Rules matching on specific URI query strings and A/B test by appending those query strings to every HTTP request.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-51.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sDX4fz5R0yYVwYjGOHqIR/468dc79ccaed0e6046b1fc0bd7639cdd/image2-51.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
+
+	</figure>
 	<p>With Configuration Rules, this task is much simpler. Leveraging one or more <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a>, users can filter on other parameters of a HTTP request to define which features and products to enable.</p>
 	<p>For example, by using the expression <code>any(http.request.cookies["app"][*] == "test")</code> a user can ensure that Auto Minify, Mirage and Polish are enabled only when this cookie is present on the HTTP request. This allows comparison testing to happen before enabling these products either globally, or on a wider set of traffic. All without impacting existing production traffic.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-18.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="use-case-augmenting-urls">Use case: augmenting URLs</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xSw4yjv18WugHyW3FFUBD/ef6dd08c031e8524080b6ced7b170125/image4-18.png" alt="" class="kg-image" width="1999" height="1083" loading="lazy">
+
+	</figure>
+	<h3>Use case: augmenting URLs</h3>
 	<p>Configuration Rules can be used to augment existing requirements, also. One example given in <a href="https://blog.cloudflare.com/future-of-page-rules">‘The Future of Page Rules’</a> blog is increasing the Security Level to ‘High’ for visitors trying to access the contact page of a website, to reduce the number of malicious visitors to that page.</p>
 	<p>In Page Rules, this would be done by simply specifying the contact page URL and specifying the security level, e.g. URL: <code>example.com/contact*</code>. This ensures that any “visitors that exhibit threatening behavior within the last 14 days” are served with a challenge prior to having that page load.</p>
-	<p>Configuration Rules can take this use case and augment it with additional fields, such as whether the source IP address is in a Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists/#managed-ip-lists">Managed IP List</a>. This allows users to be more specific about when the security level is changed to ‘High’, such as only when the request <em>also</em> is marged as coming from an open HTTP and SOCKS proxy endpoints, which are frequently used to launch attacks and hide attackers identity:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-35.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Configuration Rules can take this use case and augment it with additional fields, such as whether the source IP address is in a Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists/#managed-ip-lists">Managed IP List</a>. This allows users to be more specific about when the security level is changed to ‘High’, such as only when the request <i>also</i> is marged as coming from an open HTTP and SOCKS proxy endpoints, which are frequently used to launch attacks and hide attackers identity:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gTfYrqfIMypitpU8oxngo/98399f56267f10f7502fe809a3688fe3/image3-35.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
+
+	</figure>
 	<p>This reduces the chance of a false positive, and a genuine visitor to the contact form being served with a challenge.</p>
-	<h3 id="try-it-now">Try it now</h3>
+	<h3>Try it now</h3>
 	<p>Configuration Rules are available <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F">now</a> via API, UI, and Terraform for <a href="https://www.cloudflare.com/plans">all Cloudflare plans</a>! We are excited to see how you will use them in conjunction with all our new rules releases from this week.</p>
 </div>

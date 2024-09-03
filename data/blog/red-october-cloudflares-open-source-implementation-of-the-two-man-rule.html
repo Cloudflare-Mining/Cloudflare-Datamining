@@ -1,43 +1,59 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="The Hunt for Red October" src="https://blog.cloudflare.com/content/images/The_Hunt_for_Red_October-1.jpg"></p>
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wtQ5zLe3DfKd7KPi460Hg/8d4f2c32e3be6fbe0a837dc68859b43c/The_Hunt_for_Red_October-1.jpg" alt="The Hunt for Red October" class="kg-image" width="480" height="206" loading="lazy">
+
+	</figure>
 	<p>At CloudFlare, we are always looking for better ways to secure the data we’re entrusted with. This means hardening our system against outside threats such as hackers, but it also means protecting against insider threats. According to a <a href="http://www.verizonenterprise.com/DBIR/2013">recent Verizon report</a>, insider threats account for around 14% of data breaches in 2013. While we perform background checks and carefully screen team members, we also implement technical barriers to protect the data with which we are entrusted.</p>
 	<p>One good information security practice is known as the “two-man rule.” It comes from military history, where a nuclear missile couldn’t be launched unless two people agreed and turned their launch keys simultaneously. This requirement was introduced in order to prevent one individual from accidentally (or intentionally) starting World War III.</p>
-	<iframe width="420" height="315" src="//www.youtube.com/embed/ReJ3RltihME" frameborder="0" allowfullscreen=""></iframe>
 	<p>To prevent the risk of rogue employees misusing sensitive data we built a service in Go to enforce the two-person rule. We call the service Red October after the famous scene from “The Hunt for Red October.” In line with <a href="https://blog.cloudflare.com/a-note-about-kerckhoffs-principle">our philosophy on security software</a>, we are open sourcing the technology so you can use it in your own organization (<a href="https://github.com/cloudflare/redoctober">here’s a link</a> to the public Github repo). If you are interested in the nitty-gritty details, read on.</p>
-	<h3 id="whatitis">What it is</h3>
+	<h3>What it is</h3>
 	<p>Red October is a cryptographically-secure implementation of the two-person rule to protect sensitive data. From a technical perspective, Red October is a software-based encryption and decryption server. The server can be used to encrypt a payload in such a way that no one individual can decrypt it. The encryption of the payload is cryptographically tied to the credentials of the authorized users.</p>
 	<p>Authorized persons can delegate their credentials to the server for a period of time. The server can decrypt any previously-encrypted payloads as long as the appropriate number of people have delegated their credentials to the server.</p>
 	<p>This architecture allows Red October to act as a convenient decryption service. Other systems, including CloudFlare’s build system, can use it for decryption and users can delegate their credentials to the server via a simple web interface. All communication with Red October is encrypted with TLS, ensuring that passwords are not sent in the clear.</p>
-	<h3 id="howtouseit">How to use it</h3>
+	<h3>How to use it</h3>
 	<p>Setting up a Red October server is simple; all it requires is a locally-readable path and an SSL key pair. After that, all control is handled remotely through a set of JSON-based APIs.</p>
 	<p>Red October is backed by a database of accounts stored on disk in a portable password vault. The server never stores the account password there, only a <a href="https://blog.cloudflare.com/keeping-passwords-safe-by-staying-up-to-date">salted hash of the password</a> for each account. For each user, the server creates an RSA key pair and encrypts the private key with a key derived from the password and a randomly generated salt using a secure derivation function.</p>
 	<p>Any administrator can encrypt any piece of data with the encrypt API. This request takes a list of users and the minimum number of users needed to decrypt it. The server returns a somewhat larger piece of data that contains an encrypted version of this data. The encrypted data can then be stored elsewhere.</p>
 	<p>This data can later be decrypted with the decrypt API, but only if enough people have delegated their credentials to the server. The delegation API lets a user grant permission to a server to use their credentials for a limited amount of time and a limited number of uses.</p>
-	<h3 id="cryptographicdesign">Cryptographic Design</h3>
+	<h3>Cryptographic Design</h3>
 	<p>Red October was designed from cryptographic first principles, combining trusted and understood algorithms in known ways. CloudFlare is also opening the source of the server to allow others to analyze its design.</p>
 	<p>Red October is based on combinatorial techniques and trusted cryptographic primitives. We investigated using complicated secret primitives like <a href="https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing">Shamir's sharing scheme</a>, but we found that a simpler combinatorial approach based on primitives from Go's standard library was preferable to implementing a mathematical algorithm from scratch. Red October uses <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">128-bit AES</a>, <a href="https://en.wikipedia.org/wiki/RSA_(algorithm)">2048-bit RSA</a> and <a href="https://en.wikipedia.org/wiki/Scrypt">scrypt</a> as its cryptographic primitives.</p>
-	<h4 id="creatinganaccount">Creating an account</h4>
+	<h4>Creating an account</h4>
 	<p>Each user is assigned a unique, randomly-generated RSA key pair when creating an account on a Red October server. The private key is encrypted with a password key derived from the user’s password and salt using scrypt. The public key is stored unencrypted in the vault with the encrypted private key.</p>
-	<h4 id="encryptingdata">Encrypting data</h4>
+	<h4>Encrypting data</h4>
 	<p>When asked to encrypt a piece of data, the server generates a random 128-bit AES key. This key is used to encrypt the data. For each user that is allowed to decrypt the data, a user-specific key encryption key is chosen. For each unique pair of users, the data key is doubly encrypted, once with the key encryption key of each user. The key encryption keys are then encrypted with the public RSA key associated with their account. The encrypted data, the set of doubly-encrypted data keys, and the RSA-encrypted key encryption keys are all bundled together and returned. The encrypted data is never stored on the server.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography1.png"><br>
-		<small>Delegating credentials to the server</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38JLECxsa5YaGcwkkJnhEn/3a34478535581458b928b784de54e93c/cryptography1.png" alt="" class="kg-image" width="1731" height="562" loading="lazy">
+
+	</figure>
+	<p>Delegating credentials to the server</p>
 	<p>When a user delegates their key to the server, they submit their username and password over TLS using the delegate JSON API. For each account, the password is verified against the salted hash. If the password is correct, a password key is derived from the password and used to decrypt the user’s RSA private key. This key is now “Live” for the length of time and number of decryptions chosen by the user.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography3.png"><br>
-		<small>Decrypting data</small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Jefh1rq4DwCnifHejHJNe/28f8b7a1c03f64bba94354b5051a2d54/cryptography3.png" alt="" class="kg-image" width="964" height="774" loading="lazy">
+
+	</figure>
+	<p>Decrypting data</p>
 	<p>To decrypt a file, the server validates that the requesting user is an administrator and has the correct password. If two users of the list of valid users have delegated their keys, then decryption can occur. First the RSA private key is used to decrypt the key encryption key for these two users, then the key encryption keys are used to decrypt the doubly encrypted data key, which is then used to decrypt the data.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography2.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nvlGuGFWguhaebYbrsY9n/9b29d57ac1d0ea4009ff4e9a0a831ec6/cryptography2.png" alt="" class="kg-image" width="1102" height="1212" loading="lazy">
+
+	</figure>
 	<p>Some other key points:</p>
 	<ol>
-		<li>Cryptographic security. The Red October server does not have the ability to decrypt user keys without their password. This prevents someone with access to the vault from decrypting data.</li>
-		<li>Password flexibility. Passwords can be changed without changing the encryption of a given file. Key encryption keys ensure that password changes are decoupled from data encryption keys.</li>
+		<li>
+			<p>Cryptographic security. The Red October server does not have the ability to decrypt user keys without their password. This prevents someone with access to the vault from decrypting data.</p>
+		</li>
+		<li>
+			<p>Password flexibility. Passwords can be changed without changing the encryption of a given file. Key encryption keys ensure that password changes are decoupled from data encryption keys.</p>
+		</li>
 	</ol>
-	<h3 id="lookingahead">Looking ahead</h3>
+	<h3>Looking ahead</h3>
 	<p>The version of Red October we are releasing to GitHub is in beta. It is licensed under the <a href="http://opensource.org/licenses/BSD-3-Clause">3-clause BSD license</a>. We plan to continue to release our improvements to the open source community. Here is the project on GitHub: <a href="https://github.com/cloudflare/redoctober">Red October</a>.</p>
 	<p>Writing the server in Go allowed us to design the different components of this server in a modular way. Our hope is this modularity will make it easy for anyone to build in support for different authentication methods that are not based on passwords (for example, TLS client certificates, time-based one-time-passwords) and new core cryptographic primitives (for example, elliptic curve cryptography).</p>
 	<p>CloudFlare is always looking to improve the state of security on the Internet. It is important to us to share our advances with the world and <a href="https://blog.cloudflare.com/open-source-two-way-street">contribute back to the community</a>. See the <a href="http://cloudflare.github.io">CloudFlare GitHub page</a> for the list of our open source projects and initiatives.</p>
-	<!--kg-card-end: markdown-->
 </div>

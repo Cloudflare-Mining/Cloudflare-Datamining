@@ -1,35 +1,41 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-23.png" class="kg-image" alt="The easiest way to build a modern SaaS application" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IPxrpSSQt5w8WWH7o5z6f/96520a5426d9338f4dbad0fc244930e5/image2-23.png" alt="The easiest way to build a modern SaaS application" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>The Software as a Service (SaaS) model has changed the way we work – <a href="https://99firms.com/blog/saas-statistics/#gref">80% of businesses use at least one SaaS application</a>. Instead of investing in building proprietary software or installing and maintaining on-prem licensed software, SaaS vendors provide businesses with out-of-the-box solutions.</p>
 	<p>SaaS has many benefits over the traditional software model: cost savings, continuous updates and scalability, to name a few. However, any managed solution comes with trade-offs. As a business, one of the biggest challenges in adopting SaaS tooling is loss of customization. Not every business uses software in the same way and as you grow as a SaaS company it’s not long until you get customers saying “if only I could do X”.</p>
 	<p>Enter Workers for Platforms – Cloudflare's serverless functions offering for SaaS businesses. With Workers for Platforms, your customers can build custom logic to meet their requirements right into your application.</p>
 	<p>We’re excited to announce that Workers for Platforms is now in GA for all Enterprise customers! If you’re an existing customer, reach out to your Customer Success Manager (CSM) to get access. For new customers, fill out our <a href="https://www.cloudflare.com/plans/enterprise/discover/contact">contact form</a> to get started.</p>
-	<h3 id="the-conundrum-of-customization">The conundrum of customization</h3>
+	<h3>The conundrum of customization</h3>
 	<p>As a SaaS business invested in capturing the widest market, you want to build a universal solution that can be used by customers of different sizes, in various industries and regions. However, every one of your customers has a unique set of tools and vendors and best practices. A generalized platform doesn’t always meet their needs.</p>
 	<p>For SaaS companies, once you get in the business of creating customizations yourself, it can be hard to keep up with seemingly never ending requests. You want your engineering teams to focus on building out your core business instead of building and maintaining custom solutions for each of your customer’s use cases.</p>
-	<p>With Workers for Platforms, you can give your customers the ability to write code that customizes <em>your</em> software. This gives your customers the flexibility to meet their exact use case while also freeing up internal engineering time &nbsp;– it’s a win-win!</p>
-	<h3 id="how-is-this-different-from-workers">How is this different from Workers?</h3>
+	<p>With Workers for Platforms, you can give your customers the ability to write code that customizes <i>your</i> software. This gives your customers the flexibility to meet their exact use case while also freeing up internal engineering time &nbsp;– it’s a win-win!</p>
+	<h3>How is this different from Workers?</h3>
 	<p><a href="https://workers.cloudflare.com">Workers</a> is Cloudflare’s serverless execution environment that runs your code on Cloudflare’s global network. Workers is lightning fast and scalable; running at data centers in <a href="https://www.cloudflare.com/network">more than 275 cities</a> globally and serving requests from as close as possible to the end user. Workers for Platforms extends the power of Workers to our customer’s developers!</p>
-	<h3 id="so-what-s-new">So, what’s new?</h3>
-	<p><strong>Dispatch Worker: </strong>As a platform customer, you want to have full control over how end developer code fits in with your <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a>. A Dispatch Worker is written by our platform customers to run their own logic before <em>dispatching</em> (aka routing) to Workers written by end developers. In addition to routing, it can be used to run authentication, create boilerplate functions and sanitize responses.</p>
-	<p><strong>User Workers: </strong>User Workers are written by end developers, that is, our customers’ developers. End developers can deploy User Workers to script automated actions, create integrations or modify response payload to return custom content. Unlike self-managed Function-as-a-Service (FaaS) options, with Workers for Platforms, end developers don’t need to worry about setting up and maintaining their code on any 3rd party platform. All they need to do is upload their code and you – or rather Cloudflare – takes care of the rest.</p>
-	<p><strong>Unlimited Scripts: </strong>Yes, you read that correctly! With hundreds-plus end developers, the existing 100 script limit for Workers won’t cut it for Workers for Platforms customers. Some of our Workers for Platforms customers even deploy a new script each time their end developers make a change to their code in order to maintain version control and to easily revert to a previous state if a bug is deployed.</p>
-	<p><strong>Dynamic Dispatch Namespaces: </strong> If you’ve used Workers before, you may be familiar with a feature we released earlier this year, <a href="https://blog.cloudflare.com/service-bindings-ga">Service Bindings</a>. Service Bindings are a way for two Workers to communicate with each other. They allow developers to break up their applications into modules that can be chained together. Service Bindings explicitly link two Workers together, and they’re meant for use cases where you know exactly which Workers need to communicate with each other.</p>
+	<h3>So, what’s new?</h3>
+	<p><b>Dispatch Worker:</b> As a platform customer, you want to have full control over how end developer code fits in with your <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a>. A Dispatch Worker is written by our platform customers to run their own logic before <i>dispatching</i> (aka routing) to Workers written by end developers. In addition to routing, it can be used to run authentication, create boilerplate functions and sanitize responses.</p>
+	<p><b>User Workers:</b> User Workers are written by end developers, that is, our customers’ developers. End developers can deploy User Workers to script automated actions, create integrations or modify response payload to return custom content. Unlike self-managed Function-as-a-Service (FaaS) options, with Workers for Platforms, end developers don’t need to worry about setting up and maintaining their code on any 3rd party platform. All they need to do is upload their code and you – or rather Cloudflare – takes care of the rest.</p>
+	<p><b>Unlimited Scripts:</b> Yes, you read that correctly! With hundreds-plus end developers, the existing 100 script limit for Workers won’t cut it for Workers for Platforms customers. Some of our Workers for Platforms customers even deploy a new script each time their end developers make a change to their code in order to maintain version control and to easily revert to a previous state if a bug is deployed.</p>
+	<p><b>Dynamic Dispatch Namespaces:</b> If you’ve used Workers before, you may be familiar with a feature we released earlier this year, <a href="https://blog.cloudflare.com/service-bindings-ga">Service Bindings</a>. Service Bindings are a way for two Workers to communicate with each other. They allow developers to break up their applications into modules that can be chained together. Service Bindings explicitly link two Workers together, and they’re meant for use cases where you know exactly which Workers need to communicate with each other.</p>
 	<p>Service Bindings don’t work in the Workers for Platforms model because User Workers are uploaded ad hoc. Dynamic Dispatch Namespaces is our solution to this! A Dispatch Namespace is composed of a collection of User Workers. With Dispatch Namespaces, a Dispatch Worker can be used to call any User Worker in a namespace (similar to how Service Bindings work) but without needing to explicitly pre-define the relationship.</p>
 	<p>Read more about how to use these features below!</p>
-	<h3 id="how-to-use-workers-for-platforms">How to use Workers for Platforms</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-27.png" class="kg-image" alt="Workers for Platforms architecture diagram" loading="lazy"></figure>
-	<h3 id="dispatch-workers">Dispatch Workers</h3>
+	<h3>How to use Workers for Platforms</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r7SqdBoNmEKVCECpx9aYC/5ca3b0e489e126c0999144c97b8c09b3/image1-27.png" alt="Workers for Platforms architecture diagram" class="kg-image" width="1458" height="668" loading="lazy">
+
+	</figure>
+	<h3>Dispatch Workers</h3>
 	<p>Dispatch Workers are the entry point for requests to Workers in a Dispatch Namespace. The Dispatch Worker can be used to run any functions ahead of User Workers. They can make a request to any User Workers in the Dispatch Namespace, and they ultimately handle the routing to User Workers.</p>
-	<p>Dispatch Workers are created the same way as a regular Worker, except they need a Dispatch Namespace binding in the project’s <a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration"><code>wrangler.toml</code></a> configuration file.</p><!--kg-card-begin: markdown-->
-	<pre><code>[[dispatch_namespaces]]
+	<p>Dispatch Workers are created the same way as a regular Worker, except they need a Dispatch Namespace binding in the project’s <a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration"><code>wrangler.toml</code></a> configuration file.</p>
+	<pre class="language-bash"><code class="language-bash">[[dispatch_namespaces]]
 binding = "dispatcher"
-namespace = "api-prod"
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>In the example below, this Dispatch Worker reads the subdomain from the path and calls the appropriate User Worker. Alternatively you can use KV, D1 or your data store of choice to map identifying parameters from an incoming request to a User Worker.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">export default {
+namespace = "api-prod"</code></pre>
+	<p>In the example below, this Dispatch Worker reads the subdomain from the path and calls the appropriate User Worker. Alternatively you can use KV, D1 or your data store of choice to map identifying parameters from an incoming request to a User Worker.</p>
+	<pre class="language-typescript"><code class="language-typescript">export default {
  async fetch(request, env) {
    try {
        // parse the URL, read the subdomain
@@ -48,12 +54,10 @@ namespace = "api-prod"
    }
  }
 
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="uploading-user-workers">Uploading User Workers</h3>
-	<p>User Workers must be uploaded to a Dispatch Namespace through the Cloudflare API (wrangler support coming soon!). This code snippet below uses a simple HTML form to take in a script and customer id and then uploads it to the Dispatch Namespace.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">export default {
+}</code></pre>
+	<h3>Uploading User Workers</h3>
+	<p>User Workers must be uploaded to a Dispatch Namespace through the Cloudflare API (wrangler support coming soon!). This code snippet below uses a simple HTML form to take in a script and customer id and then uploads it to the Dispatch Namespace.</p>
+	<pre class="language-typescript"><code class="language-typescript">export default {
  async fetch(request: Request) {
    try {
      // on form submit
@@ -78,7 +82,7 @@ namespace = "api-prod"
 async function upload(customerID:string, script:string){
  const scriptName = customerID;
  const scriptContent = script;
- const accountId = "&lt;ACCOUNT_ID&gt;";
+ const accountId = "<account_id>";
  const dispatchNamespace = "api-prod";
  const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/workers/dispatch/namespaces/${dispatchNamespace}/scripts/${scriptName}`;
  // construct and send request
@@ -87,8 +91,8 @@ async function upload(customerID:string, script:string){
    body: scriptContent,
    headers: {
      "Content-Type": "application/javascript",
-     "X-Auth-Email": "&lt;EMAIL&gt;",
-     "X-Auth-Key": "&lt;API_KEY&gt;"
+     "X-Auth-Email": "<email>",
+     "X-Auth-Key": "<api_key>"
    }
  });
 
@@ -96,22 +100,32 @@ async function upload(customerID:string, script:string){
  if (response.status != 200) {
    throw new Error(`Upload error`);
  }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</api_key></email></account_id></code></pre>
 	<p>It’s that simple. With Dispatch Namespaces and Dispatch Workers, we’re giving you the building blocks to customize your SaaS applications. Along with the Platforms APIs, we’re also releasing a Workers for Platforms UI on the Cloudflare dashboard where you can view your Dispatch Namespaces, search scripts and view analytics for User Workers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-14.png" class="kg-image" alt="Dispatch Namespace wide view on the Cloudflare Dashboard" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IfHMkKVxIinmdqstzqGS9/a4646980424831ae6eb361f9874c1d5b/image3-14.png" alt="Dispatch Namespace wide view on the Cloudflare Dashboard" class="kg-image" width="1999" height="1437" loading="lazy">
+
+	</figure>
 	<p>To view an end to end example, check out our <a href="https://github.com/cloudflare/workers-for-platforms-example">Workers for Platforms example application</a>.</p>
-	<h3 id="get-started-today-">Get started today!</h3>
+	<h3>Get started today!</h3>
 	<p>We’re releasing Workers for Platforms to all <a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> customers. If you’re interested, reach out to your Customer Success Manager (CSM) to get access. To get started, take a look at our <a href="https://github.com/cloudflare/workers-for-platforms-example">Workers for Platforms starter project</a> and <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms">developer documentation</a>.</p>
 	<p>We also have plans to release this down to the Workers Paid plan. Stay tuned on the <a href="https://discord.gg/hWAMUm9MPj">Cloudflare Discord</a> (channel name: workers-for-platforms) for updates.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<h3>What’s next?</h3>
 	<p>We’ve heard lots of great feature requests from our early Workers for Platforms customers. Here’s a preview of what’s coming next on the roadmap:</p>
 	<ul>
-		<li>Fine-grained controls over User Workers: custom script limits, allowlist/blocklist for fetch requests</li>
-		<li>GraphQL and Logs: Metrics for User Workers by tag</li>
-		<li>Plug and play Platform Development Kit</li>
-		<li>Tighter integration with Cloudflare for SaaS custom domains</li>
+		<li>
+			<p>Fine-grained controls over User Workers: custom script limits, allowlist/blocklist for fetch requests</p>
+		</li>
+		<li>
+			<p>GraphQL and Logs: Metrics for User Workers by tag</p>
+		</li>
+		<li>
+			<p>Plug and play Platform Development Kit</p>
+		</li>
+		<li>
+			<p>Tighter integration with Cloudflare for SaaS custom domains</p>
+		</li>
 	</ul>
 	<p>If you have specific feature requests in mind, please reach out to your CSM or get in touch through the <a href="https://discord.gg/hWAMUm9MPj">Discord</a>!</p>
 </div>

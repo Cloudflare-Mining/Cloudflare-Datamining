@@ -1,26 +1,48 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-12.png" class="kg-image" alt="Bring your own license and threat feeds to use with Cloudflare One" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UWp9SHYI1zOwvZLQJO9xJ/4920f66648ac4d9f09fc5dab9ce7d183/image4-12.png" alt="Bring your own license and threat feeds to use with Cloudflare One" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>At Cloudflare, we strive to make our customers’ lives simpler by building products that solve their problems, are extremely easy to use, and integrate well with their existing tech stack. Another element of ensuring that we fit well with existing deployments is integrating seamlessly with additional solutions that customers subscribe to, and making sure those solutions work collaboratively together to solve a pain point.</p>
 	<p>Today, we are announcing new integrations that enable our customers to integrate third-party threat intel data with the rich threat intelligence from <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a> products — all within the Cloudflare dashboard. We are releasing this feature in partnership with Mandiant, Recorded Future, and VirusTotal, and will be adding new partners in the coming months.</p>
 	<p>Customers of these threat intel partners can upload their API keys to the Cloudflare Security Center to enable the use of additional threat data to create rules within Cloudflare One products such as Gateway and Magic Firewall, and infrastructure security products including the Web Application Firewall and API Gateway. Additionally, search results from Security Center’s threat investigations portal will also be automatically enriched with licensed data.</p>
-	<h3 id="entering-your-api-keys">Entering your API keys</h3>
+	<h3>Entering your API keys</h3>
 	<p>Customers will be able to enter their keys by navigating to Security Center → Reference Data, and clicking on the ellipsis next to desired rows and selecting “Edit API key”. Once a valid key has been added, the status listed on the row should change from “No key provided” to “Active key”.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-17.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="mandiant">Mandiant</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7olsgmCCo4KsMyoIsyRY8M/61188a0db7c49e606bc3d0703f8474cb/image3-17.png" alt="" class="kg-image" width="1999" height="1157" loading="lazy">
+
+	</figure>
+	<h3>Mandiant</h3>
 	<p>Mandiant Advantage customers with a Threat Intelligence subscription can enter their API keys and leverage &nbsp;Mandiant’s most popular feeds of FQDN and IP address indicators of security threats and their related context throughout Cloudflare One products.</p>
 	<p>These include lists organized by threat category and aggregations of most active malicious infrastructure. By curating the most recent data and data relevant to your infrastructure on the Cloudflare network, Cloudflare will make it easy to take advantage of active and relevant indicators of malicious activity from Mandiant’s extensive threat intelligence data. Cloudflare takes care of importing the data and refreshing it regularly to help protect you from the latest threats Mandiant sees on the frontlines. Cloudflare products such as Gateway, Magic Firewall, and Web Application Firewall (WAF) will have access to the threat intelligence data and make it easy to operationalize using the same rule builder you use today.</p>
-	<blockquote>“As cyber threats continue to rapidly evolve, organizations require up-to-date and relevant intelligence integrated with their preferred technology solutions to comprehensively protect their environments. Together, Mandiant and Cloudflare are enabling our mutual customers to better protect themselves from malicious actors that are active on the front lines right now”.<br>- Robert Wallace, Senior Director, Strategy, &nbsp;Mandiant</blockquote>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-16.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="recorded-future">Recorded Future</h3>
+	<blockquote>
+		<p>“As cyber threats continue to rapidly evolve, organizations require up-to-date and relevant intelligence integrated with their preferred technology solutions to comprehensively protect their environments. Together, Mandiant and Cloudflare are enabling our mutual customers to better protect themselves from malicious actors that are active on the front lines right now”.- Robert Wallace, Senior Director, Strategy, &nbsp;Mandiant</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sti3ubfVuuTUinM3pEBed/d3495d145505b97e7e06c03ca0383eea/image1-16.png" alt="" class="kg-image" width="1999" height="1459" loading="lazy">
+
+	</figure>
+	<h3>Recorded Future</h3>
 	<p>Recorded Future customers can upload their API key to unlock use of Security Control Feeds. Once you have set up your API key, Recorded Future intelligence will also be available in the rule builder of Cloudflare Gateway and Magic Firewall. Cloudflare will present the intelligence that is relevant to and actionable by the product being configured. Intelligence will be regularly updated for you, freeing you to focus on the security policies and actions that are relevant for your organization.</p>
 	<p>For example, customers will be able to create a rule that blocks connections where the source or destination IP is in the Security Control feed “​​Command and Control - IP Addresses [Prevent]”. This list will be automatically updated daily for each customer who has a valid API key.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-21.png" class="kg-image" alt="" loading="lazy"></figure>
-	<blockquote>As threats accelerate and converge in the world around us, Recorded Future and Cloudflare are working together to empower customers with the right intelligence at the right time, to keep our people and infrastructure safe.<br>- Craig Adams, Chief Product &amp; Engineering officer, Recorded Future</blockquote>
-	<h3 id="virustotal">VirusTotal</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NJzP1xP9jelwjASBg1l33/d224a1c68d526363fe3843576cda9b38/image2-21.png" alt="" class="kg-image" width="1999" height="979" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>As threats accelerate and converge in the world around us, Recorded Future and Cloudflare are working together to empower customers with the right intelligence at the right time, to keep our people and infrastructure safe.- Craig Adams, Chief Product &amp; Engineering officer, Recorded Future</p>
+	</blockquote>
+	<h3>VirusTotal</h3>
 	<p>Virus Total Premium customers can upload their API key to augment and enrich Security Center search results for IPs, domains, and URLs. In the future we plan to add additional object types such as binary files.</p>
 	<p>Results will be automatically populated within a new card in the ‘Investigate’ tab. When searching an IP address, you will see a summary of the IP address information from VirusTotal including the overall results of the last analysis (e.g., harmless, suspicious, malicious, etc.), reputation score, tags, community votes, and the top files (if any) associated with that IP address by communications.</p>
-	<blockquote>“Cybersecurity teams face a challenging environment as attackers become more sophisticated. They need complete visibility and real-time threat intelligence from multiple sources to combat malicious threats. We are partnering with Cloudflare to help our mutual customers outsmart adversaries.”<br>- Emiliano Martinez Contreras, Head of Product for VirusTotal — Google</blockquote>
-	<h3 id="want-to-get-started">Want to get started?</h3>
+	<blockquote>
+		<p>“Cybersecurity teams face a challenging environment as attackers become more sophisticated. They need complete visibility and real-time threat intelligence from multiple sources to combat malicious threats. We are partnering with Cloudflare to help our mutual customers outsmart adversaries.”- Emiliano Martinez Contreras, Head of Product for VirusTotal — Google</p>
+	</blockquote>
+	<h3>Want to get started?</h3>
 	<p>If you are interested in gaining access during our beta testing phase, please complete this <a href="https://forms.gle/fJLNCuYueAzUHgy49">form</a>. And if there are additional data vendors you would like to see us integrate with, including your own sources, click <a href="https://forms.gle/fJLNCuYueAzUHgy49">here</a>.</p>
 </div>

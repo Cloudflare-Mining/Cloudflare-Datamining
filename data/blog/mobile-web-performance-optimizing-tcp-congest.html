@@ -1,19 +1,26 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Mobile Web Performance: Optimizing TCP Congestion Control Algorithms" src="https://blog.cloudflare.com/content/images/traffic_jam.jpg.scaled500.jpg" title="Mobile Web Performance: Optimizing TCP Congestion Control Algorithms"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/t18ltuOQsZZcMjCyufThf/bac4ee2b7405a4ed8e33b0066bad8a5e/traffic_jam.jpg.scaled500.jpg" alt="Mobile Web Performance: Optimizing TCP Congestion Control Algorithms" class="kg-image" width="419" height="265" loading="lazy">
+
+	</figure>
 	<p>Transmission Control Protocol (TCP) is one of the primary protocols of the Internet. When you request a web page, the server responds with the data that makes up that page. The data is subdivided into discrete packets of data as they are sent across the Internet from the server back to your browser.</p>
 	<p>The size of these packets and the number of packets in flight can be dynamic and adjusted based on what is known as the Congestion Control Algorithm. While the late United States Senator Ted Stevens got a lot of flack for saying it, the Internet really is akin to a series of tubes. Sometimes these tubes fill up (i.e., a network port fills to its maximum capacity). When that happens, the network is said to be congested and some packets can be lost. It's a lot like a virtual traffic jam.</p>
-	<h3 id="traditionalcongestioncontrol">Traditional Congestion Control</h3>
+	<h3>Traditional Congestion Control</h3>
 	<p>To minimize the impact of congestion, the TCP Congestion Control Algorithm on servers adjust the size of the packets and also the number of packets that are "in-flight" across the network (known as the Congestion Window) depending on whether loss is detected. Historically, loss was most common because some network link would be over saturated. The default algorithms in most OS kernels rapidly shrinks the size of the congestion window at the first sign of loss and then slowly ramp it back up as the loss on the network diminishes.</p>
-	<h3 id="mobilechangeseverything">Mobile Changes Everything</h3>
+	<h3>Mobile Changes Everything</h3>
 	<p>The problem is that congestion on the web today doesn't always occur in the same way that it did when TCP algorithms were first conceived. Mobile, specifically, is radically changing congestion behavior. We've all experienced it. Walking from one side of a room to the other can cause a change in mobile data performance. While in the past congestion indicated an over-saturated network link, today congestion could be the result of something extremely temporary like someone turning on a microwave.</p>
 	<p>The problem is that the default response to congestion, which assumes a longer-term, latent problem, ends up often being the wrong response in a world where congestion can be random and sporadic. In other words, you need a modern Congestion Control Algorithm that is tuned to take into account the behavior of both traditional wire-line network transactions as well as new wireless connections.</p>
-	<h3 id="bettercongestioncontrolfromrealnetworkdata">Better Congestion Control From Real Network Data</h3>
+	<h3>Better Congestion Control From Real Network Data</h3>
 	<p>CloudFlare sits in a unique position to monitor and understand the behavior of the world's networks. We receive traffic every day from virtually all the world's Internet service providers. For the last year, we have been mapping how networks handle TCP. We know, for example, that an Indian wireless provider experiences higher levels of packet loss at noon in Mumbai, when the sun is directly overhead and data usage is at its peak, than at midnight.</p>
 	<p>We've begun to use this data to tune our own TCP Congestion Control Algorithm to be responsive based on the characteristics of the networks we see. Today we rolled out an update that already appears to have improved performance on mobile networks that experience high loss rates significantly. Going forward, we'll be adjusting our tuning on a per-network basis to optimize performance for our customers' sites based on the actual characteristics of each network.</p>
-	<p><img alt="Mobile Web Performance: Optimizing TCP Congestion Control
-Algorithms" src="https://blog.cloudflare.com/content/images/open_road.jpg.scaled500.jpg" title="Mobile Web Performance: Optimizing TCP Congestion Control Algorithms"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uCqHsZlyuImOHR32WNtu8/abcb3d4f29fc2bcb45d531edba1827f1/open_road.jpg.scaled500.jpg" alt="Mobile Web Performance: Optimizing TCP Congestion Control
+Algorithms" class="kg-image" width="500" height="375" loading="lazy">
+
+	</figure>
 	<p>Core to CloudFlare's value proposition is that our network gets smarter as it grows larger. That is easy to understand with regard to security (i.e., if one site is attacked, information about that attack is used to protect other sites on the network). It turns out that same benefit also applies to performance. By understanding the characteristics of the network for hundreds of thousands of sites, we're able to continually tune our network to provide the best possible performance.</p>
 	<p>CloudFlare's mission is to build a better Internet, and that involves tuning all the way down to the underlying protocols that serve as its foundation. Stay tuned. A lot more along these lines is yet to come.</p>
-	<!--kg-card-end: markdown-->
 </div>

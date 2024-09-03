@@ -1,46 +1,65 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/access-illustration-v2-1.svg" alt="access-illustration-v2-1" loading="lazy"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40DEYTfzWSCXSAIAaz82cU/27c6c2b73d1cb3b600f8d84488fc47b3/access-illustration-v2-1.svg" alt="access-illustration-v2-1" class="kg-image" width="625" height="506" loading="lazy">
+
+	</figure>
 	<p>Using a VPN is painful. Logging-in interrupts your workflow. You have to remember a separate set of credentials, which your administrator has to manage. The VPN slows you down when you're away from the office. Beyond just inconvenience, a VPN can pose a real security risk. A single infected device or malicious user can compromise your network once inside the <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter</a>.</p>
 	<p>In response, large enterprises have deployed expensive zero trust solutions. The name sounds counterintuitive - don’t we want to add trust to our network security? <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero trust</a> refers to the default state of these tools. They trust no one; each request has to prove that itself. This architecture, most notably demonstrated at Google with Beyondcorp, has allowed teams to start to migrate to a more secure method of access control.</p>
 	<p>However, users of zero trust tools still suffer from the same latency problems they endured with old-school VPNs. Even worse, the price tag puts these tools out of reach for most teams.</p>
 	<p>Here at Cloudflare, we shared those same frustrations with VPNs. After evaluating our options, we realized we could build <a href="https://www.cloudflare.com/zero-trust/solutions">a better zero trust solution</a> by leveraging some of the unique capabilities we have here at Cloudflare:</p>
-	<h3 id="ourglobalnetworkofdatacenters">Our <a href="https://www.cloudflare.com/network">global</a> network of data centers</h3>
+	<h3>Our <a href="https://www.cloudflare.com/network">global</a> network of data centers</h3>
 	<p>Cloudflare’s network spans 150+ data centers around the globe. With a data center within 10 ms of 95% of the world’s internet-connected population, we can bring content closer to the end user. We could beat the performance of both VPNs and existing zero trust tools by evaluating permissions and serving pages at the edge of our network.</p>
-	<h3 id="cloudflarealreadyprotectsyoursitesfromthreats">Cloudflare already protects your sites from threats</h3>
+	<h3>Cloudflare already protects your sites from threats</h3>
 	<p>Cloudflare <a href="https://www.cloudflare.com/security">shields your site from attacks</a> by sitting between your server and the rest of the internet. We could build on that experience by shielding your site from unauthorized users before the request ever reaches your origin.</p>
 	<p>With these foundations, we were able to build Cloudflare Access as a fast and secure way to <a href="https://www.cloudflare.com/application-services/solutions">protect applications</a>. We started by using it internally. We migrated applications from our VPN to Access and suddenly our self-hosted tools felt like SaaS products.</p>
 	<p>We launched Access into beta at the <a href="https://blog.cloudflare.com/introducing-cloudflare-access">start</a> of 2018. Today, we are excited to announce the release of Cloudflare Access to all customers at a price that makes it affordable for teams of any size to leave their VPN behind.</p>
-	<h2 id="aquickrecapofcloudflareaccess">A Quick Recap of Cloudflare Access</h2>
+	<h2>A Quick Recap of Cloudflare Access</h2>
 	<p>Cloudflare <a href="https://www.cloudflare.com/products/cloudflare-access">Access</a> controls who can reach your internal resources. You don’t need to change your hosting or add new components to your site to integrate with an identity provider. Access does the work for you.</p>
 	<p>Before any requests reach your origin, Access checks to make sure they are approved based on policies you configure. We integrate with popular identity providers, like GSuite and Okta, so that you don’t have to manage a new set of credentials.</p>
 	<p>When your team members need to get to their tools and documents behind Access, they will login with the identity provider credentials managed by your organization. Once authorized, they’ll be able to access those protected resources for a duration that you define.</p>
 	<p>Your team can use your self-hosted tools as if they were a SaaS deployment. Cloudflare’s global network of 150+ data centers puts those resources closer to your end users, regardless of their location. Your administrators can control groups that should or shouldn’t be able to reach certain materials and review an audit log of account logins.</p>
-	<h2 id="beyondcorpforyourcorp">BeyondCorp for YourCorp</h2>
+	<h2>BeyondCorp for YourCorp</h2>
 	<p>Starting today, you will be able to sign up for an Access plan sized to meet the needs of your team. Access Basic only costs USD $3 per user, per month. The Basic plan can be connected to social identity providers, like Facebook or GitHub. The Access Premium plan starts at USD $5 per user, per month, and integrates with corporate identity providers like Okta, OneLogin, and G Suite. The price per user decreases for larger teams.</p>
 	<p>As in the beta, the first five users are still free.</p>
 	<p>Cloudflare wants to make enterprise-grade security available to every team. With Access, teams can select a plan that fits their size. Whether you have 5 or 5,000 employees, Access can ensure that your entire team has secure and fast access to the tools they need.</p>
-	<h2 id="newpoliciescontrolbyiporbuildadetour">New Policies: Control by IP or Build a Detour</h2>
+	<h2>New Policies: Control by IP or Build a Detour</h2>
 	<p>Access works by requiring that users authenticate with their identity provider credentials to reach your site, or sections of it. However, sometimes you need to open paths for external services or outside groups of users.</p>
 	<p>As part of today’s release, you can create policies based on IP addresses. For example, if you have a secure office network, you can allowlist the office’s IP. Users outside of the office will be required to authenticate with their IdP. Or you can require that a user both authenticate against the IdP and be using a specific IP address.</p>
 	<p>You can also build a detour to allow traffic to a specified path or subdomain to bypass Access. When enabled, Access will not check requests to that destination for authorization tokens. Traffic will still be protected by your standard Cloudflare features, like DDoS mitigation and SSL encryption.</p>
 	<p>This is helpful when third-party services need to reach your site. Say you manage a WordPress site where you want to control who can access protected resources. WordPress can provide additional functionality by creating a connection between the browser and the server using AJAX. To do so, WordPress needs to reach a particular endpoint. With Bypass, you can allow traffic to reach that endpoint while protecting the rest of your site.</p>
-	<h2 id="aquickdemoofnewpolicyrules">A Quick Demo of New Policy Rules</h2>
+	<h2>A Quick Demo of New Policy Rules</h2>
 	<p>When creating an Access policy, you can build with Allow or Deny criteria. In that same dropdown, you’ll find the new Bypass policy type. As described above, Access will ignore traffic set to bypass (whether it’s for the entire site or just a section of it).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/Screen-Shot-2018-07-23-at-9.31.48-AM.png" alt="Screen-Shot-2018-07-23-at-9.31.48-AM" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GA0lBmZqdTjvVZA76SZ77/1ab3d9298069023296cc22081a1d69e1/Screen-Shot-2018-07-23-at-9.31.48-AM.png" alt="Screen-Shot-2018-07-23-at-9.31.48-AM" class="kg-image" width="1438" height="1472" loading="lazy">
+
+	</figure>
 	<p>When defining policy rules, you can now use new criteria: <code>IP Ranges</code> and <code>Everyone</code>. You can configure Access to allow or deny requests that meet these profiles.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/Screen-Shot-2018-07-23-at-9.32.25-AM.png" alt="Screen-Shot-2018-07-23-at-9.32.25-AM" loading="lazy"></p>
-	<h2 id="accessgroups">Access Groups</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vhw1rLLvK7auHZFPUqkDR/51b5fffa4e10fa4a462504ebde259f20/Screen-Shot-2018-07-23-at-9.32.25-AM.png" alt="Screen-Shot-2018-07-23-at-9.32.25-AM" class="kg-image" width="1388" height="616" loading="lazy">
+
+	</figure>
+	<h2>Access Groups</h2>
 	<p>Zero trust solutions let you control who can access tools at a level more specific than “all.” However, defining access policies for the same set of individual users can be tedious. If you have a team of four engineers, and you want to connect them to multiple internal tools, you need to rebuild that “group” each time.</p>
 	<p>Starting today, you can create an Access Group to quickly apply policies to a set of users that meet membership rules you define. You can build groups based on a number of criteria. For example, create a group that only includes team members in a secure office by specifying the IP range. Or build a super group that consists of multiple, smaller groups defined in your identity provider.</p>
 	<p>Once you define Access Groups, you can create policies that apply to groups. Access Groups can be reused across sites in your account so that you can quickly reuse membership rules to create policies for all of your tools. Just select the Access Group from the dropdown. Whether you want to include your engineering team, require admin accounts, or exclude certain departments, you can do it with Access Groups.</p>
-	<h2 id="aquickdemoofaccessgroups">A quick demo of Access Groups</h2>
+	<h2>A quick demo of Access Groups</h2>
 	<p>To create an Access Group, start by giving it a name. Groups use the same rule types as policies; you can configure group membership criteria based on inclusion, exclusion, and requirement.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/Screen-Shot-2018-07-23-at-9.33.16-AM.png" alt="Screen-Shot-2018-07-23-at-9.33.16-AM" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MBja6yUD2yFuKUfznYY3H/1943f36c47a147913aaf9aaf44fa37aa/Screen-Shot-2018-07-23-at-9.33.16-AM.png" alt="Screen-Shot-2018-07-23-at-9.33.16-AM" class="kg-image" width="1438" height="828" loading="lazy">
+
+	</figure>
 	<p>Once you select the type of filter, you can define membership rules based on email addresses, IP ranges, or groups from your identity provider.</p>
 	<p>When you have saved your group, you can return to modify a policy, or create a new one, and select your Access Group from the drop-down list to build policies based on it.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/Screen-Shot-2018-07-23-at-9.33.58-AM.png" alt="Screen-Shot-2018-07-23-at-9.33.58-AM" loading="lazy"></p>
-	<h2 id="whatsnext">What’s next?</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5PDfBDIqGJTs79x8nt5tqb/24467902de7a08ab4da8b7901d76d202/Screen-Shot-2018-07-23-at-9.33.58-AM.png" alt="Screen-Shot-2018-07-23-at-9.33.58-AM" class="kg-image" width="1432" height="1468" loading="lazy">
+
+	</figure>
+	<h2>What’s next?</h2>
 	<p>The new features are available today to all Access customers. You can read the documentation <a href="https://developers.cloudflare.com/access/about">here</a>. To our beta customers - thank you for helping make Access better! You can continue to use Access in your current arrangement for the next 30 days. After August 24th, you will need to sign up for a plan. We’re excited to help your team turn off your VPN and improve the speed and security of your most important tools.</p>
-	<!--kg-card-end: markdown-->
 </div>

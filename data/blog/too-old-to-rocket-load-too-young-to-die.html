@@ -1,103 +1,117 @@
-<div class="mb2 gray5">14 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33Hj8QmbGkhb7aHUlCpEwr/3963e2ee7beaff4b318fa0d0123cd716/too-old-to-rocket-load-too-young-to-die.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>Rocket Loader is in the news again. One of Cloudflare's earliest web performance products has been re-engineered for contemporary browsers and Web standards.</p>
 	<p>No longer a beta product, Rocket Loader controls the load and execution of your page JavaScript, ensuring useful and meaningful page content is unblocked and displayed sooner.</p>
 	<p>For a high-level discussion of Rocket Loader aims, please refer to our sister post, <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">We have lift off - Rocket Loader GA is mobile!</a></p>
 	<p>Below, we offer a lower-level outline of how Rocket Loader actually achieves its goals.</p>
-	<h3 id="prehistory">Prehistory</h3>
+	<h3>Prehistory</h3>
 	<p>Early humans looked upon Netscape 2.0, with its new ability to script HTML using LiveScript, and <code>&lt;BLINK&gt;</code>ed to ensure themselves they weren’t dreaming. They decided to use this technology, soon to be re-christened JavaScript (a story told often and elsewhere), for everything they didn’t know they needed: form input validation, image substitution, frameset manipulation, popup windows, and more. The sole requirement was a few interpreted commands enclosed in a <code>&lt;script&gt;</code> tag. The possibilities were endless.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/prehistory-@4x.png" alt="prehistory-@4x" loading="lazy"></p>
-	<p>Soon, the introduction of the <code>src</code> attribute allowed them to import a file full of JS into their pages. Little need to fiddle with the markup, when all the requisite JS for the page could be included in a single, or a few, external files, specified in the page’s <code>&lt;HEAD&gt;</code>. It didn’t take our ancestors long before they decided that the same JS file(s) should be in <em>all</em> pages, throughout their website, containing JS for the complete site. No worries about bloat; after all, the browser would cache it.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3koyiGY3ofb0n0pf4qzuIn/6878cea45ca2aeb8d57ee5bc159726be/prehistory-_4x.png" alt="prehistory-@4x" class="kg-image" width="2798" height="2521" loading="lazy">
+
+	</figure>
+	<p>Soon, the introduction of the <code>src</code> attribute allowed them to import a file full of JS into their pages. Little need to fiddle with the markup, when all the requisite JS for the page could be included in a single, or a few, external files, specified in the page’s <code>&lt;HEAD&gt;</code>. It didn’t take our ancestors long before they decided that the same JS file(s) should be in <i>all</i> pages, throughout their website, containing JS for the complete site. No worries about bloat; after all, the browser would cache it.</p>
 	<p>A clear, sunny, road to dynamic, interactive sites lay ahead. What could go wrong?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/blockage@4x.png" alt="blockage@4x" loading="lazy"></p>
-	<h3 id="blockage">Blockage</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kYBa0v72xkrGHmbZlVApH/229cf833455d5c3b4a0fd82d7a50e0c8/blockage_4x.png" alt="blockage@4x" class="kg-image" width="3109" height="2485" loading="lazy">
+
+	</figure>
+	<h3>Blockage</h3>
 	<p>Those early JS adopters deduced that when the HTML parser encountered an external script, it suspended visual rendering of the page while it went off to retrieve and execute it. Simple. The more numerous and larger the scripts, the longer the wait for the page to paint. JavaScript, therefore, was very soon, most often unnecessarily, blocking page rendering.</p>
 	<p>The solutions poured in, both from the developer community and browser vendors:</p>
 	<ul>
 		<li>
-			<p><em>Community</em>: Move script location to end of HTML page<br>
-				A classic <em>duh!</em> moment. Amazingly, this simple suggestion helped, unless the script was required to help build the page, eg. using <code>document.write</code> for markup.</p>
+			<p><i>Community</i>: Move script location to end of HTML pageA classic <i>duh!</i> moment. Amazingly, this simple suggestion helped, unless the script was required to help build the page, eg. using <code>document.write</code> for markup.</p>
 		</li>
 		<li>
-			<p><em>Vendor</em>: Use <code>&lt;script defer&gt;</code>.<br>
-				It’s 1997, and IE4 introduces the <code>defer</code> attribute. Scripts that do not contribute to the initial rendering of the page should be marked with <code>defer</code>, and they will load in parallel, without blocking, and be executed in their markup order before <code>window.load</code> is fired (later, before <code>document.DOMContentLoaded</code>). Script tags could remain in the <code>&lt;head&gt;</code>, and execute as if they were at the end of page.<br>
-				The main benefit to page rendering was the saving in script retrieval time.</p>
+			<p><i>Vendor</i>: Use <code>&lt;script defer&gt;</code>.It’s 1997, and IE4 introduces the <code>defer</code> attribute. Scripts that do not contribute to the initial rendering of the page should be marked with <code>defer</code>, and they will load in parallel, without blocking, and be executed in their markup order before <code>window.load</code> is fired (later, before <code>document.DOMContentLoaded</code>). Script tags could remain in the <code>&lt;head&gt;</code>, and execute as if they were at the end of page.The main benefit to page rendering was the saving in script retrieval time.</p>
 		</li>
 		<li>
-			<p><em>Community</em>: Reduce latency by reducing actual script size.<br>
-				What began as script <em>obfuscation</em> for intellectual property and vanity reasons, quickly became script <em><a href="https://en.wikipedia.org/wiki/Minification_(programming)">minification</a></em>, still used widely.</p>
+			<p><i>Community</i>: Reduce latency by reducing actual script size.What began as script <i>obfuscation</i> for intellectual property and vanity reasons, quickly became script <a href="https://en.wikipedia.org/wiki/Minification_(programming)"><i>minification</i></a>, still used widely.</p>
 		</li>
 		<li>
-			<p><em>Community</em>: Reduce latency and http handshake instances through concatenation of all scripts, delivered as one.</p>
+			<p><i>Community</i>: Reduce latency and http handshake instances through concatenation of all scripts, delivered as one.</p>
 		</li>
 		<li>
-			<p><em>Vendor</em>: Use <code>&lt;script async&gt;</code>.<br>
-				In 2010, 13 years (yes, 13, thirteen) after <code>defer</code> was born, HTML5 provided <code>defer</code> with a sibling, <code>async</code>. Scripts can be loaded asynchronously, be non-blocking, and be executed when they load. Markup order is irrelevant to execution order. A clear benefit over <code>defer </code>was that <code>load/DOMContentLoaded</code> events were not delayed.</p>
+			<p><i>Vendor</i>: Use <code>&lt;script async&gt;</code>.In 2010, 13 years (yes, 13, thirteen) after <code>defer</code> was born, HTML5 provided <code>defer</code> with a sibling, <code>async</code>. Scripts can be loaded asynchronously, be non-blocking, and be executed when they load. Markup order is irrelevant to execution order. A clear benefit over <code>defer</code> was that <code>load/DOMContentLoaded</code> events were not delayed.</p>
 		</li>
 		<li>
-			<p><em>Community</em>: Lazy Loading.<br>
-				Use JS to load JS by dynamically creating non-blocking script tags.</p>
+			<p><i>Community</i>: Lazy Loading.Use JS to load JS by dynamically creating non-blocking script tags.</p>
 		</li>
 		<li>
-			<p><span style="color:orange"><em>Cloudflare</em>: Rocket Loader</span><br>
-				It's 2011, and Cloudflare enters the fray, leveraging our network to reduce http requests for 1st party scripts, “bag”ging 3rd party scripts into a single file, and delaying and controlling JS execution.<br>
-				See <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Combining Javascript &amp; CSS, a Better Way</a></p>
+			<p><i>Cloudflare</i>: Rocket LoaderIt's 2011, and Cloudflare enters the fray, leveraging our network to reduce http requests for 1st party scripts, “bag”ging 3rd party scripts into a single file, and delaying and controlling JS execution.See <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Combining Javascript &amp; CSS, a Better Way</a></p>
 		</li>
 		<li>
-			<p><em>Vendor</em>: Use <code>&lt;link rel="preload"&gt;</code> in the <code>&lt;head&gt;</code>.<br>
-				Important resources like scripts, in our case, can be specified for <em>preload</em>. The browser will load scripts in parallel and not block render-parsing.</p>
+			<p><i>Vendor</i>: Use <code>&lt;link rel="preload"&gt;</code> in the <code>&lt;head&gt;</code>.Important resources like scripts, in our case, can be specified for <i>preload</i>. The browser will load scripts in parallel and not block render-parsing.</p>
 		</li>
 	</ul>
-	<h3 id="rocketloadertheearlyyears">Rocket Loader, The Early Years</h3>
+	<h3>Rocket Loader, The Early Years</h3>
 	<p>Much has been written in this blog space about <a href="https://blog.cloudflare.com/tag/rocketloader">Rocket Loader</a>, from its <a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">initial launch</a>, to the <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">current one</a>.</p>
-	<p>If reading outdated blog posts is not your thing, perhaps watching an extremely short video of a high-profile early Rocket Loader success (June 9, 2011) is:<br>
-		<a href="https://vimeo.com/24900882">CloudFlare Rocket Loader makes the Financial Times website (FT.com) faster</a>
-	</p>
+	<p>If reading outdated blog posts is not your thing, perhaps watching an extremely short video of a high-profile early Rocket Loader success (June 9, 2011) is:<a href="https://vimeo.com/24900882">CloudFlare Rocket Loader makes the Financial Times website (FT.com) faster</a></p>
 	<p>Rocket Loader improved page load times by:</p>
 	<ol>
-		<li>Minimising network requests through the bundling of JS files, including third-party, speeding up page rendering</li>
-		<li>Asynchronously loading the bundles, avoiding HTML parsing blockage</li>
-		<li>Caching scripts locally (using LocalStorage), reducing refetch requests.</li>
+		<li>
+			<p>Minimising network requests through the bundling of JS files, including third-party, speeding up page rendering</p>
+		</li>
+		<li>
+			<p>Asynchronously loading the bundles, avoiding HTML parsing blockage</p>
+		</li>
+		<li>
+			<p>Caching scripts locally (using LocalStorage), reducing refetch requests.</p>
+		</li>
 	</ol>
 	<p>As browsers matured, Rocket Loader fell behind, leading to several severe shortcomings:</p>
 	<ul>
 		<li>
-			<p>It did not honour Content-Security-Policy.<br>
-				Rocket Loader was unaware of CSP headers, and loaded scripts indiscriminately.</p>
+			<p>It did not honour Content-Security-Policy.Rocket Loader was unaware of CSP headers, and loaded scripts indiscriminately.</p>
 		</li>
 		<li>
-			<p>It did not honour Subresource Integrity<br>
-				Rocket Loader loaded scripts through XHR, so browsers could not validate the fetched script.</p>
+			<p>It did not honour Subresource IntegrityRocket Loader loaded scripts through XHR, so browsers could not validate the fetched script.</p>
 		</li>
 		<li>
-			<p>It allowed for <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting">XSS</a> Persistence<br>
-				Since Rocket Loader stored scripts in LocalStorage, a site’s compromised script could exist as a trojan in a customer’s storage, loading whenever the customer visited the site.</p>
+			<p>It allowed for <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting">XSS</a> PersistenceSince Rocket Loader stored scripts in LocalStorage, a site’s compromised script could exist as a trojan in a customer’s storage, loading whenever the customer visited the site.</p>
 		</li>
 		<li>
 			<p>It was just out-of-date</p>
 			<ul>
-				<li>Script bundling fell out of favour with the introduction of http2.</li>
-				<li>The use of <code>eval()</code> was finally recognised as <em>evil</em>.</li>
-				<li>Mobile use skyrocketed; mobile browsers became sophisticated; eventually Rocket Loader was unable to support mobile.</li>
+				<li>
+					<p>Script bundling fell out of favour with the introduction of http2.</p>
+				</li>
+				<li>
+					<p>The use of <code>eval()</code> was finally recognised as <i>evil</i>.</p>
+				</li>
+				<li>
+					<p>Mobile use skyrocketed; mobile browsers became sophisticated; eventually Rocket Loader was unable to support mobile.</p>
+				</li>
 			</ul>
 		</li>
 	</ul>
-	<h3 id="newandimprovedrocketloader">New and Improved Rocket Loader</h3>
+	<h3>New and Improved Rocket Loader</h3>
 	<p>We recently rebuilt Rocket Loader from the ground up.</p>
 	<p>Although our aim remains the same, to improve customer page performance, we incorporated lessons learned. Most importantly, we learned not to aim too high. In order to satisfy all permutations of page layout, the old Rocket Loader created a virtual DOM, a decision that ultimately led to fragility. We've gone the simple, elegant route, knowing full well that there will be a minority of websites that will not benefit.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/new-and-improved-@4x.png" alt="new-and-improved-@4x" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/515Gnp9rXBxLS4eicMWX5A/f3027f4b4d141fc6298b77e2253626ce/new-and-improved-_4x.png" alt="new-and-improved-@4x" class="kg-image" width="2977" height="2485" loading="lazy">
+
+	</figure>
 	<p>The main concept behind Rocket Loader is quite straightforward: execute blocking scripts after all other page assets have loaded.</p>
-	<p>The scripts need to be loaded and executed in the originally intended order. Only external blocking scripts curtail page resources, but any script may rely on another one. We must simulate the <em>loading process of scripts</em>, mimicing how the browser would handle them during page load, but do it <em>after the page is actually fully loaded</em>.</p>
-	<h3 id="ontheserver">On the Server</h3>
+	<p>The scripts need to be loaded and executed in the originally intended order. Only external blocking scripts curtail page resources, but any script may rely on another one. We must simulate the <i>loading process of scripts</i>, mimicing how the browser would handle them during page load, but do it <i>after the page is actually fully loaded</i>.</p>
+	<h3>On the Server</h3>
 	<p>Rocket Loader has both a server-side and a client-side component. The goal of the former is to</p>
 	<ol>
-		<li>rewrite <code>&lt;script&gt;</code> tags in the page markup to make them non-executable, and</li>
-		<li>insert the client-side component of Rocket Loader into the page.</li>
+		<li>
+			<p>rewrite <code>&lt;script&gt;</code> tags in the page markup to make them non-executable, and</p>
+		</li>
+		<li>
+			<p>insert the client-side component of Rocket Loader into the page.</p>
+		</li>
 	</ol>
 	<p>The server-side component is built on top of our CF-HTML pipeline. CF-HTML is an nginx module that provides streaming HTML parsing and rewriting functionality with a SAX-style (<a href="https://en.wikipedia.org/wiki/Simple_API_for_XML">Simple API for XML</a>) API on top of it.</p>
 	<p>To make the scripts non-executable, we simply prepend their <code>type</code> attribute value with a randomly generated value (<a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonce</a>), unique for each page request. Having a unique prefix for each page prevents Rocket Loader from being used as an XSS gadget to bypass various XSS filters.</p>
 	<p>Markup that looked like this:</p>
-	<pre><code class="language-HTML">&lt;!DOCTYPE html&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;script src="example.org/1.js"&gt;&lt;/script&gt;
@@ -108,10 +122,9 @@
     &lt;script src="example.org/3.js" type="text/javascript"&gt;&lt;/script&gt;
     ...more body markup... 
   &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<p>becomes:</p>
-	<pre><code class="language-HTML">&lt;!DOCTYPE html&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;script src="example.org/1.js" type="42deadbeef-"&gt;&lt;/script&gt;
@@ -124,24 +137,34 @@
     &lt;script src="https://ajax.cloudflare.com/rocket-loader.js"
             data-cf-nonce="42deadbeef" defer&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<p>So far, no rocket science, but by making most, or all, scripts non-executable, Rocket Loader has unblocked page-parsing. Browsers display content sooner, improving perceived page load metrics, and engaging the user.</p>
-	<h4 id="ontheclient">On The Client</h4>
+	<h4>On The Client</h4>
 	<p>Generally, scripts can be divided into four categories, each having distinct load and execution behaviours when inserted into the DOM:</p>
 	<ol>
-		<li><em>Inline scripts</em> - executed immediately upon insertion.</li>
-		<li><em>External blocking scripts</em> - start loading upon insertion, preventing other scripts from loading and executing.</li>
-		<li><em>External</em> <code>defer</code> <em>scripts</em> - start loading upon insertion, without preventing other scripts from loading and executing. Execution should happen right before <code>DOMContentLoaded</code> event.</li>
-		<li><em>External <code>async</code> scripts</em> - start loading upon insertion, without preventing other scripts from loading and executing. Executed when loaded.</li>
+		<li>
+			<p><i>Inline scripts</i> - executed immediately upon insertion.</p>
+		</li>
+		<li>
+			<p><i>External blocking scripts</i> - start loading upon insertion, preventing other scripts from loading and executing.</p>
+		</li>
+		<li>
+			<p><i>External</i> <code>defer</code> <i>scripts</i> - start loading upon insertion, without preventing other scripts from loading and executing. Execution should happen right before <code>DOMContentLoaded</code> event.</p>
+		</li>
+		<li>
+			<p><i>External </i><code><i>async</i></code><i> scripts</i> - start loading upon insertion, without preventing other scripts from loading and executing. Executed when loaded.</p>
+		</li>
 	</ol>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/loadExecute1.png" alt="loadExecute1" loading="lazy"><br>
-		<small>Modified diagram from <a href="https://html.spec.whatwg.org/#attr-script-defer">HTML Standard</a></small>
-	</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jwj7cYA0lu9sgSsf9boRx/ef8303ded9467c3d3baea6c76ec57296/loadExecute1.png" alt="loadExecute1" class="kg-image" width="1882" height="448" loading="lazy">
+
+	</figure>
+	<p>Modified diagram from <a href="https://html.spec.whatwg.org/#attr-script-defer">HTML Standard</a></p>
 	<p>To handle load and execution of all script types, Rocket Loader needs two passes.</p>
-	<h4 id="passone">Pass One</h4>
+	<h4>Pass One</h4>
 	<p>On the first pass, we collect all scripts with our nonce onto a stack, then re-insert them into the DOM, with nonce removed, and wrapped in a comment node. These serve as our placeholders.</p>
-	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;!--&lt;script src="example.org/1.js"&gt;&lt;/script&gt;--&gt; 
@@ -154,50 +177,61 @@
     &lt;script src="https://ajax.cloudflare.com/rocket-loader.js"
             data-cf-nonce="42deadbeef" defer&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<p>Rocket Loader now iterates through the scripts in our stack and re-inserts them, maintaining their intended position in relevant DOM collections (<code>document.scripts</code>, <code>document.querySelectorAll("script")</code>, <code>document.getElementsByTagName("script")</code>, etc.).</p>
 	<p>This process of script insertion and execution differs for each script category:</p>
-	<p><em>Inline scripts</em> - Placeholder is replaced with the original script element, without nonce, making the script executable. Browsers execute such scripts immediately upon insertion, <em>in the same execution tick</em>.</p>
-	<p><em>External blocking scripts</em> - As above, but Rocket Loader waits for the script’s <code>load</code> event before unwinding the script stack further. This delay simulates the script's blocking behaviour <em><strong>manually</strong></em>. Only parser-inserted external scripts (i.e. scripts present in the original HTML markup) are naturally blocking. External scripts inserted or created via a DOM API are considered async. This behaviour can’t be overridden, so we need our simulation.</p>
-	<p><em>External <code>async</code> scripts</em> - The same insertion procedure as inline scripts. Browsers treat all inserted external scripts as async, so the default behaviour suits us.</p>
-	<p><em>External <code>defer</code> scripts</em> - These are not executed during the first pass, since in the simulated environment we haven’t reached the <code>DOMContentLoaded</code> event yet. If we encounter a <code>defer</code> script on the stack we re-insert it, as is, without removing the nonce prefix. It remains non-executable, but in the correct DOM position.</p>
-	<h4 id="passtwo">Pass Two</h4>
+	<p><i>Inline scripts</i> - Placeholder is replaced with the original script element, without nonce, making the script executable. Browsers execute such scripts immediately upon insertion, <i>in the same execution tick</i>.</p>
+	<p><i>External blocking scripts</i> - As above, but Rocket Loader waits for the script’s <code>load</code> event before unwinding the script stack further. This delay simulates the script's blocking behaviour <b><i>manually</i></b>. Only parser-inserted external scripts (i.e. scripts present in the original HTML markup) are naturally blocking. External scripts inserted or created via a DOM API are considered async. This behaviour can’t be overridden, so we need our simulation.</p>
+	<p><i>External </i><code><i>async</i></code><i> scripts</i> - The same insertion procedure as inline scripts. Browsers treat all inserted external scripts as async, so the default behaviour suits us.</p>
+	<p><i>External </i><code><i>defer</i></code><i> scripts</i> - These are not executed during the first pass, since in the simulated environment we haven’t reached the <code>DOMContentLoaded</code> event yet. If we encounter a <code>defer</code> script on the stack we re-insert it, as is, without removing the nonce prefix. It remains non-executable, but in the correct DOM position.</p>
+	<h4>Pass Two</h4>
 	<p>The second pass loads the <code>defer</code> scripts. Again, Rocket Loader collects all scripts with the nonce prefix (these are now just <code>defer</code> scripts) onto the execution stack, but does not replace them with placeholders. They remain in the DOM, since at this point in our simulated environment the complete document has loaded. We then activate them by replacing the <code>&lt;script&gt;</code> elements with themselves, nonce removed, and let the browser do the rest.</p>
-	<h4 id="quirksitamingthewaterfall">Quirks I: Taming the Waterfall</h4>
+	<h4>Quirks I: Taming the Waterfall</h4>
 	<p>Ostensibly, we have now simulated browser script loading and execution behaviours. However, there are some one-off issues we must deal with, quirks if you will.</p>
 	<p>There is one not-so-obvious difference between our algorithm and the real behaviour of browsers. Modern browsers try to be clever with the way they manage page resources, engaging various heuristics to improve performance during page load. These are, generally, implementation-specific and not set-in-stone by any specification.</p>
-	<div style="clear:both;padding-top:24px;">
-		<img align="right" style="margin:0 0 10px 10px" src="https://blog.cloudflare.com/content/images/2018/06/noRocketCroppedSm.png" alt="">One such optimisation that affects us, is <i>speculative parsing</i>. Despite the official specification requiring a browser to block parsing on script execution, browsers continue parsing received HTML markup speculatively, and prefetch found external resources. For example, even with blocking scripts on a page, Chrome loads them simultaneously, in parallel.
-	</div>
-	<div style="clear:both;padding-top:24px;"><img align="left" style="margin:0 10px 10px 0" src="https://blog.cloudflare.com/content/images/2018/06/prevRocketCroppedSm-1.png" alt="">With Rocket Loader, browsers don’t prefetch scripts, as our nonce makes them non-executable during page load. Later, when we sequentially re-insert activated scripts, we witness a sequential “waterfall” graph.
-	</div>
-	<div style="clear:both;padding:24px 0 24px;"><img align="right" style="margin:0 0 10px 10px" src="https://blog.cloudflare.com/content/images/2018/06/withRocketCroppedSm.png" alt="">In our attempt to improve page load performance, we significantly slowed down some script loading. Ironic. Fortunately, we have a workaround: we can insert <i>preload hints</i>
-		(see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content">Preloading content with rel="preload"</a>) before we begin unwinding our script stack, giving the browser notice that we’ll soon be requiring these scripts. It begins fetching them as it would do during speculative parsing.
-		<p>Our waterfall is replaced with improved parallel loading and better load metrics.</p>
-	</div>
-	<div style="clear:both;height:24px;">&nbsp;</div>
-	<h4 id="quirksiidocumentwriteisnotdeadyet">Quirks II: <code>document.write()</code> is not dead yet</h4>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UoWRV4FFktlhVFLGetJeC/680a023e75803cf3d7b85187f176e27a/noRocketCroppedSm.png" alt="" class="kg-image" width="359" height="353" loading="lazy">
+
+	</figure>
+	<p>One such optimisation that affects us, is <i>speculative parsing</i>. Despite the official specification requiring a browser to block parsing on script execution, browsers continue parsing received HTML markup speculatively, and prefetch found external resources. For example, even with blocking scripts on a page, Chrome loads them simultaneously, in parallel.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1uUQ3PUV8f5FCh9SCY2Y6V/0e52b432499bb57c377cebab344b45c8/prevRocketCroppedSm-1.png" alt="" class="kg-image" width="389" height="355" loading="lazy">
+
+	</figure>
+	<p>With Rocket Loader, browsers don’t prefetch scripts, as our nonce makes them non-executable during page load. Later, when we sequentially re-insert activated scripts, we witness a sequential “waterfall” graph.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tjsG9hdMmd8QDZduzsrXF/dd6acf4afc216c7362f83b24a7b3d446/withRocketCroppedSm.png" alt="" class="kg-image" width="378" height="352" loading="lazy">
+
+	</figure>
+	<p>In our attempt to improve page load performance, we significantly slowed down some script loading. Ironic. Fortunately, we have a workaround: we can insert <i>preload hints</i> (see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content">Preloading content with rel="preload"</a>) before we begin unwinding our script stack, giving the browser notice that we’ll soon be requiring these scripts. It begins fetching them as it would do during speculative parsing.</p>
+	<p>Our waterfall is replaced with improved parallel loading and better load metrics.</p>
+	<h4>Quirks II: <code>document.write()</code> is not dead yet</h4>
 	<p>We've simulated script execution and insertion. We still need to deal with dynamic markup insertion. We can’t use <code>document.write()</code> directly since the document is already parsed and <code>document.close()</code> has been implicitely executed. Calling <code>write()</code> will create a new document, erasing the entire current document. We must manually parse content created by the <code>document.write</code> function and insert it in the intended location.</p>
 	<p>Not so simple, if one considers that <code>document.write</code> can insert partial markup. In the following example, if we parse and insert content on the first <code>document.write</code> call, we’ll completely ignore the completion of the <code>id</code> attribute that should be inserted with the second call:</p>
-	<pre><code class="language-javascript">document.write('&lt;div id="elm');
+	<pre class="language-javascript"><code class="language-javascript">document.write('&lt;div id="elm');
 document.write(Date.now());
-document.write('"&gt;some content&lt;/div&gt;');
-</code></pre>
+document.write('"&gt;some content&lt;/div&gt;');</code></pre>
 	<p>So, we have a hard choice:</p>
 	<ul>
-		<li>We can buffer <em>all</em> content inserted via <code>document.write</code> during script execution and flush it afterwards, in which case already executed code expecting elements to be in the DOM will fail, or</li>
-		<li>We can flush inserted markup immediately, but not handle partial markup writes.</li>
+		<li>
+			<p>We can buffer <i>all</i> content inserted via <code>document.write</code> during script execution and flush it afterwards, in which case already executed code expecting elements to be in the DOM will fail, or</p>
+		</li>
+		<li>
+			<p>We can flush inserted markup immediately, but not handle partial markup writes.</p>
+		</li>
 	</ul>
 	<p>Choosing the lesser of two evils, we decided to go with the first option: our observations showed cases like these are more common.</p>
-	<p><small>(Actually, there is a third option that allows for handling of both cases, but it requires proxying of a significant number of DOM APIs, a rabbit hole that we don’t want to dive into, KISS FTW, you know…).</small></p>
-	<h4 id="quirksiiiiaintgotnobody">Quirks III: I ain't got no<code>&lt;body&gt;</code></h4>
-	<p>As mentioned, it’s not enough to just insert parsed markup. There are various modifications of the DOM performed by the parser during full document parsing that contend with <em>malformed markup</em>. We felt we should simulate at least some of them, because, well… scripts may rely on malformed markup.</p>
-	<p>Our initial implementation even included simulation of relatively exotic mechanisms such as <a href="https://html.spec.whatwg.org/multipage/parsing.html#unexpected-markup-in-tables"><em>foster parenting</em></a>, but eventually we decided to keep things simple and the only thing that Rocket Loader simulates is the squeezing out of unallowed content from the <code>&lt;head&gt;</code> element.</p>
+	<p>(Actually, there is a third option that allows for handling of both cases, but it requires proxying of a significant number of DOM APIs, a rabbit hole that we don’t want to dive into, KISS FTW, you know…).</p>
+	<h4>Quirks III: I ain't got no<code>&lt;body&gt;</code></h4>
+	<p>As mentioned, it’s not enough to just insert parsed markup. There are various modifications of the DOM performed by the parser during full document parsing that contend with <i>malformed markup</i>. We felt we should simulate at least some of them, because, well… scripts may rely on malformed markup.</p>
+	<p>Our initial implementation even included simulation of relatively exotic mechanisms such as <a href="https://html.spec.whatwg.org/multipage/parsing.html#unexpected-markup-in-tables"><i>foster parenting</i></a>, but eventually we decided to keep things simple and the only thing that Rocket Loader simulates is the squeezing out of unallowed content from the <code>&lt;head&gt;</code> element.</p>
 	<p>To perform this simulation we wrap our <code>document.write</code> buffer in a <code>&lt;head&gt;</code> element and feed this markup to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMParser">DOM Parser</a>.</p>
 	<p>Using the resulting document from the parser, we identify all nodes in its <code>&lt;head&gt;</code> and move them into the page, immediately following the script that performed the <code>document.write</code>. If we encounter any nodes in the parsed document's <code>&lt;body&gt;</code> element, we copy all nodes that follow the current script to the <code>&lt;body&gt;</code> element, prepended with the nodes in the parsed document.</p>
 	<p>To illustrate this simulation, consider the following page markup:</p>
-	<pre><code class="language-html">&lt;!DOCTYPE&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE&gt;
 &lt;head&gt;
   &lt;script&gt;
     document.write(‘&lt;link rel=”stylesheet” href=”1.css”&gt;’);
@@ -208,23 +242,20 @@ document.write('"&gt;some content&lt;/div&gt;');
 &lt;/head&gt;
 &lt;body&gt;
   &lt;div&gt;Hey!&lt;/div&gt;
-&lt;/body&gt;
-</code></pre>
+&lt;/body&gt;</code></pre>
 	<p>The buffered, dynamically inserted, markup after script execution will be</p>
-	<pre><code class="language-html">&lt;link rel=”stylesheet” href=”1.css”&gt;
+	<pre class="language-html"><code class="language-html">&lt;link rel=”stylesheet” href=”1.css”&gt;
 &lt;div&gt;&lt;/div&gt;
-&lt;link rel=”stylesheet” href=”2.css”&gt;
-</code></pre>
+&lt;link rel=”stylesheet” href=”2.css”&gt;</code></pre>
 	<p>and the string that we’ll feed to the DOMParser will be</p>
-	<pre><code class="language-html">&lt;!DOCTYPE&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE&gt;
 &lt;head&gt;
   &lt;link rel=”stylesheet” href=”1.css”&gt;
   &lt;div&gt;&lt;/div&gt;
   &lt;link rel=”stylesheet” href=”2.css”&gt;
-&lt;/head&gt;
-</code></pre>
+&lt;/head&gt;</code></pre>
 	<p>The parser will produce the following document structure from the provided markup (note that <code>&lt;div&gt;</code> is not allowed in <code>&lt;head&gt;</code> and was squeezed out to the <code>&lt;body&gt;</code>):</p>
-	<pre><code class="language-html">&lt;!DOCTYPE&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;link rel=”stylesheet” href=”1.css”&gt;
@@ -233,10 +264,9 @@ document.write('"&gt;some content&lt;/div&gt;');
   &lt;div&gt;&lt;/div&gt;
   &lt;link rel=”stylesheet” href=”2.css”&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
 	<p>Now we move all nodes that we found in parsed document's <code>&lt;head&gt;</code> to the original document:</p>
-	<pre><code class="language-html">&lt;!DOCTYPE&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE&gt;
 &lt;head&gt;
   &lt;script&gt;
     document.write(‘&lt;link rel=”stylesheet” href=”1.css”&gt;’);
@@ -248,10 +278,9 @@ document.write('"&gt;some content&lt;/div&gt;');
 &lt;/head&gt;
 &lt;body&gt;
   &lt;div&gt;Hey!&lt;/div&gt;
-&lt;/body&gt;
-</code></pre>
+&lt;/body&gt;</code></pre>
 	<p>We see that parsed document's <code>&lt;body&gt;</code> contains some nodes, so we prepend them to the original document’s <code>&lt;body&gt;</code>:</p>
-	<pre><code class="language-html">&lt;!DOCTYPE&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE&gt;
 &lt;head&gt;
   &lt;script&gt;
     document.write(‘&lt;link rel=”stylesheet” href=”1.css”&gt;’);
@@ -265,10 +294,9 @@ document.write('"&gt;some content&lt;/div&gt;');
   &lt;div&gt;&lt;/div&gt;
   &lt;link rel=”stylesheet” href=”2.css”&gt;
   &lt;div&gt;Hey!&lt;/div&gt;
-&lt;/body&gt;
-</code></pre>
+&lt;/body&gt;</code></pre>
 	<p>And as a final step, we move all nodes in the <code>&lt;head&gt;</code>, that initially followed the current script, to after the nodes that we’ve just inserted in the <code>&lt;body&gt;</code>:</p>
-	<pre><code class="language-html">&lt;!DOCTYPE&gt;
+	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE&gt;
 &lt;head&gt;
   &lt;script&gt;
     document.write(‘&lt;link rel=”stylesheet” href=”1.css”&gt;’);
@@ -282,27 +310,26 @@ document.write('"&gt;some content&lt;/div&gt;');
   &lt;link rel=”stylesheet” href=”2.css”&gt;
   &lt;link rel=”stylesheet” href=”3.css”&gt;
   &lt;div&gt;Hey!&lt;/div&gt;
-&lt;/body&gt;
-</code></pre>
-	<div style="clear:both;height:24px;">&nbsp;</div>
-	<h4 id="quirksivhandlinghandlers">Quirks IV: Handling handlers</h4>
-	<p>There is one edge case which drastically changes the behaviour of our script-loading simulation. If we encounter elements with inline event handlers in the HTML markup, we need to execute <em>all scripts that precede such elements</em> since the handlers may rely on them.</p>
+&lt;/body&gt;</code></pre>
+	<h4>Quirks IV: Handling handlers</h4>
+	<p>There is one edge case which drastically changes the behaviour of our script-loading simulation. If we encounter elements with inline event handlers in the HTML markup, we need to execute <i>all scripts that precede such elements</i> since the handlers may rely on them.</p>
 	<p>We insert the Rocket Loader client side script in special "bailout" mode immediately before such elements. In bailout mode, we activate scripts the same way as in regular mode, except we do it in a blocking manner (remember, we need to prevent element from being parsed while we activate all preceding scripts).</p>
 	<p>As noted, it’s impossible to dynamically create blocking external scripts using DOM APIs such as <code>document.appendChild</code>. However, we have a solution to overcome this limitation.</p>
 	<p>Since the page is still loading, we can <code>document.write</code> the <code>outerHTML</code> of activatable script into the document, forcing the browser to mark it as parser-inserted and, thus, blocking. However, the script will be inserted in a DOM position different from its original, intended, position, which may break traversing of surrounding nodes from within the script (e.g. using <code>document.currentScript</code> as a starting point).</p>
-	<p>There is a trick. We leverage browser behaviour which parses generated content in the same execution tick as the <code>document.write</code> that produced it. We have immediate access to the written element. The <em>execution</em> of the external script is always scheduled for one of the <em>next</em> execution ticks. So, we can just move script to its original position right after we write it and have it in the correct DOM position, awaiting its execution.</p>
-	<h4 id="icanresisteverythingexcepttemptation">"I can resist everything except temptation"<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup></h4>
+	<p>There is a trick. We leverage browser behaviour which parses generated content in the same execution tick as the <code>document.write</code> that produced it. We have immediate access to the written element. The <i>execution</i> of the external script is always scheduled for one of the <i>next</i> execution ticks. So, we can just move script to its original position right after we write it and have it in the correct DOM position, awaiting its execution.</p>
+	<h4>"I can resist everything except temptation"<a href="https://blog.cloudflare.com/#fn1">[1]</a></h4>
 	<p>The need to account for every quirk, every variation in browser parsing, is strong, but implementation would eventually only weaken our product. We've dealt with the best part of browser parser behaviours, enough to benefit the majority of our customers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/rock-house-@4x.png" alt="rock-house-@4x" loading="lazy"></p>
-	<h3 id="whatsnext">What's Next?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vV1rYeaoGyrndNCqb0qyq/52b4d33fe815cc81c0948c7d61e07909/rock-house-_4x.png" alt="rock-house-@4x" class="kg-image" width="2977" height="2485" loading="lazy">
+
+	</figure>
+	<h3>What's Next?</h3>
 	<p>As Rocket Loader matures, and inevitably is affected by changes in Web technologies, it may be expanded and improved. For now, we're monitoring its use, identifying issues, and ensuring that it's worthy of its predecessor, which lasted through so many advances and changes in Web technology.</p>
-	<hr class="footnotes-sep">
-	<section class="footnotes">
-		<ol class="footnotes-list">
-			<li id="fn1" class="footnote-item">
-				<p>Oscar Wilde, Lady Windermere's Fan (1892), and apologies to <a href="http://jethrotull.com/too-old">Jethro Tull</a> for the blog post title. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
-			</li>
-		</ol>
-	</section>
-	<!--kg-card-end: markdown-->
+	<hr>
+	<ol>
+		<li>
+			<p>Oscar Wilde, Lady Windermere's Fan (1892), and apologies to <a href="http://jethrotull.com/too-old">Jethro Tull</a> for the blog post title. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
+		</li>
+	</ol>
 </div>

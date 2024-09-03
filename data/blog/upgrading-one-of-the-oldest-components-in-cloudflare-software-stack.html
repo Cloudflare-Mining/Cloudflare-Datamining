@@ -1,17 +1,21 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-23.png" class="kg-image" alt="Upgrading one of the oldest components in Cloudflare’s software stack" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QjhVnpTUGt3W5Pf5bJm8q/3b6871ea17079abd0b36e0937ab00862/image4-23.png" alt="Upgrading one of the oldest components in Cloudflare’s software stack" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
 	<p>Cloudflare serves a huge amount of traffic: 45 million HTTP requests per second on average (as of 2023; 61 million at peak) from more than 285 cities in over 100 countries. What inevitably happens with that kind of scale is that software will be pushed to its limits. As we grew, one of the problems we faced was related to deploying our code. Sometimes, a release would be delayed because of inadequate hardware resources on our servers. Buying more and more hardware is expensive and there are limits to e.g. how much memory we can realistically have on a server. In this article, we explain how we optimised our software and its release process so that no additional resources are needed.</p>
 	<p>In order to handle traffic, each of our servers runs a set of specialised proxies. Historically, they were based on NGINX, but increasingly they <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">include services created in Rust</a>. Out of our proxy applications, FL (Front Line) is the oldest and still has a broad set of responsibilities.</p>
 	<p>At its core, it’s one of the last uses of NGINX at Cloudflare. It contains a large amount of business logic that runs many Cloudflare products, using a variety of Lua and Rust libraries. As a result, it consumes a large amount of system resources: up to 50-60 GiB of RAM. As FL grew, it became more and more difficult to release it. The upgrade mechanism requires double the memory (which sometimes is not available) than at runtime. This was causing delays in releases. We have now improved the release procedure of FL, and in effect, removed the need for additional memory during the release process, improving its speed and performance.</p>
-	<h2 id="architecture">Architecture</h2>
+	<h2>Architecture</h2>
 	<p>To accomplish all of its work, each FL instance <a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale">runs many workers (individual processes)</a>. By design, individual processes handle requests while the master process controls them and makes sure they stay up. This allows NGINX to handle more traffic by adding more workers. We take advantage of this architecture.</p>
 	<p>The number of workers depends on the numbers of total CPU cores present. It’s typically equal to half of the CPU cores available, e.g. on a 128-core CPU we use 64 FL workers.</p>
-	<h3 id="so-far-so-good-what-s-the-problem-then">So far so good, what's the problem then?</h3>
+	<h3>So far so good, what's the problem then?</h3>
 	<p>We aim to deploy code in a way that’s transparent to our customers. We want to continue serving requests without interruptions. In practice, this means briefly running both versions of FL at the same time during the upgrade, so that we can flawlessly transition from one version to another. As soon as the new instance is up and running, we begin to shut down the old one, giving it some time to finish its work. In the end, only the new version is left running. NGINX implements this <a href="https://nginx.org/en/docs/control.html">procedure</a> and FL makes use of it.</p>
 	<p>After a new version of FL is installed on a server, the upgrade procedure starts. NGINX’s implementation revolves around communicating with the master process using signals. The upgrade process starts by sending the USR2 signal which will start the new master process and its workers.</p>
-	<p>At that point, as can be seen below, both versions will be running and processing requests. The unfortunate side effect of this is the memory footprint has been doubled.</p><!--kg-card-begin: markdown-->
-	<pre><code>  PID  PPID COMMAND
+	<p>At that point, as can be seen below, both versions will be running and processing requests. The unfortunate side effect of this is the memory footprint has been doubled.</p>
+	<pre class="language-bash"><code class="language-bash">  PID  PPID COMMAND
 33126     1 nginx: master process /usr/local/nginx/sbin/nginx
 33134 33126 nginx: worker process (nginx)
 33135 33126 nginx: worker process (nginx)
@@ -19,52 +23,80 @@
 36264 33126 nginx: master process /usr/local/nginx/sbin/nginx
 36265 36264 nginx: worker process (nginx)
 36266 36264 nginx: worker process (nginx)
-36267 36264 nginx: worker process (nginx)
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Then, the WINCH signal will be sent to the master process which will then ask its workers to gracefully shut down. Eventually, they will all quit, leaving just the original master process running (which can be shut down with the QUIT signal). The successful outcome of this will leave just the new instance running, which will look similar to this:</p><!--kg-card-begin: markdown-->
-	<pre><code>  PID  PPID COMMAND
+36267 36264 nginx: worker process (nginx)</code></pre>
+	<p>Then, the WINCH signal will be sent to the master process which will then ask its workers to gracefully shut down. Eventually, they will all quit, leaving just the original master process running (which can be shut down with the QUIT signal). The successful outcome of this will leave just the new instance running, which will look similar to this:</p>
+	<pre class="language-bash"><code class="language-bash">  PID  PPID COMMAND
 36264     1 nginx: master process /usr/local/nginx/sbin/nginx
 36265 36264 nginx: worker process (nginx)
 36266 36264 nginx: worker process (nginx)
-36267 36264 nginx: worker process (nginx)
-</code></pre>
-	<!--kg-card-end: markdown-->
+36267 36264 nginx: worker process (nginx)</code></pre>
 	<p>The standard NGINX upgrade mechanism is visualised in this diagram:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2At10yd2Eea3HVDdL0U3N1/199887e06c60cc57a0215a82993ebd03/image5-6.png" alt="" class="kg-image" width="416" height="234" loading="lazy">
+
+	</figure>
 	<p>It’s also clearly visible in the memory usage graph below (notice the large bump during the upgrade).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-60.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TZd2iwu6ObkICVMNoRVKV/82e4f241f3248e2f313c08ffdb03b7c4/image1-60.png" alt="" class="kg-image" width="862" height="720" loading="lazy">
+
+	</figure>
 	<p>The mechanism outlined above has both versions running at the same time for a while. When both sets of workers are running, they are still sharing the same sockets, so all of them accept requests. As the release progresses, ‘old’ workers stop listening and accepting new requests (at that point only the new workers accept new requests). As we release new code multiple times per week, this process is effectively doubling up our memory requirements. At our scale, it’s easy to see how multiplying this event by the number of servers we operate results in an immense waste of memory resources.</p>
 	<p>In addition, sometimes servers would take hours to upgrade (a concern especially when we need to release something quickly), as we are waiting to have enough memory available to kick off the reload action.</p>
-	<h2 id="new-upgrade-mechanism">New upgrade mechanism</h2>
+	<h2>New upgrade mechanism</h2>
 	<p>We solved this problem by modifying NGINX's method for upgrading executable. Here's how it works.</p>
 	<p>The crux of the problem is that NGINX treats the entire instance (master + workers) as one. When upgrading, we need to start all the workers whilst all the previous ones are still running. Considering the number of workers we use and how heavy they are, this is not sustainable.</p>
 	<p>So, instead, we modified NGINX to be able to control individual workers. Rather than starting and stopping them all at once, we can do so by selecting them individually. To accomplish this, the master process and workers understand additional signals compared to the ones NGINX uses. The actual mechanism to accomplish this in NGINX is nearly the same as when handling workers in bulk. However, there’s a crucial difference.</p>
 	<p>Typically, NGINX's master process ensures that the right number of workers is actually running (per configuration). If any of them crashes, it will be restarted. This is good, but it doesn't work for our new upgrade mechanism because when we need to shut down a single worker, we don't want the NGINX master process to think that a worker has crashed and needs to be restarted. So we introduced a signal to disable that behaviour in NGINX while we're shutting down a single process.</p>
-	<h3 id="step-by-step">Step by step</h3>
+	<h3>Step by step</h3>
 	<p>Our improved mechanism handles each worker individually. Here are the steps:</p>
 	<ol>
-		<li>At the beginning, we have an instance of FL running 64 workers.</li>
-		<li>Disable the feature to automatically restart workers which exit.</li>
-		<li>Shut down a worker from the first (old) instance of FL. We're down to 63 workers.</li>
-		<li>Create a new instance of FL but only with a single worker. We're back to 64 workers but including one from the new version.</li>
-		<li>Re-enable the feature to automatically restart worker processes which exit.</li>
-		<li>We continue this pattern of shutting down a worker from an older instance and creating a new one to replace it. This can be visualised in the diagram below.</li>
+		<li>
+			<p>At the beginning, we have an instance of FL running 64 workers.</p>
+		</li>
+		<li>
+			<p>Disable the feature to automatically restart workers which exit.</p>
+		</li>
+		<li>
+			<p>Shut down a worker from the first (old) instance of FL. We're down to 63 workers.</p>
+		</li>
+		<li>
+			<p>Create a new instance of FL but only with a single worker. We're back to 64 workers but including one from the new version.</p>
+		</li>
+		<li>
+			<p>Re-enable the feature to automatically restart worker processes which exit.</p>
+		</li>
+		<li>
+			<p>We continue this pattern of shutting down a worker from an older instance and creating a new one to replace it. This can be visualised in the diagram below.</p>
+		</li>
 	</ol>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-33.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ja1ydbwqob5R6Gha1siHf/d7b3abe4572bfa6020dd162496f30539/image3-33.png" alt="" class="kg-image" width="1011" height="216" loading="lazy">
+
+	</figure>
 	<p>We can observe our new mechanism in action in the graph below. Thanks to our new procedure, our use of memory remains stable during the release.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-28.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/P5YwoLGgcP5ckjOrBgq4Q/18dd3f7b92aef6a60a1514fdc1b12e28/image2-28.png" alt="" class="kg-image" width="1109" height="667" loading="lazy">
+
+	</figure>
 	<p>But why do we begin by shutting down a worker belonging to an older instance (v1)? This turns out to be important.</p>
-	<h3 id="worker-cpu-pinning">Worker-CPU pinning</h3>
+	<h3>Worker-CPU pinning</h3>
 	<p>During this workflow, we also had to take care of CPU pinning. FL workers on our servers are pinned to CPU cores with one process occupying one CPU core to help us distribute resources more efficiently. If we start a new worker first, it will share the CPU core with another one for a brief amount of time. This will make one CPU overloaded compared to other ones running FL, impacting the latency for requests served. That's why we start by freeing up a CPU core which then can be taken over by a new worker rather than starting by creating a new worker.</p>
 	<p>For the same reason, pinning of worker processes to cores must be maintained throughout the whole operation. At no point, we can have two different workers sharing a CPU core. We make sure this is the case by executing the whole procedure in the same order every time.</p>
 	<p>We start from CPU core 1 (or whichever is the first one used by FL) and do the following:</p>
 	<ol>
-		<li>Shut down a worker that's running there.</li>
-		<li>Create a new worker. NGINX will pin it to the CPU core we have freed up in the previous step.</li>
+		<li>
+			<p>Shut down a worker that's running there.</p>
+		</li>
+		<li>
+			<p>Create a new worker. NGINX will pin it to the CPU core we have freed up in the previous step.</p>
+		</li>
 	</ol>
 	<p>After doing that for all workers, we end up with a new set of workers which are correctly pinned to their CPU cores.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>At Cloudflare, we need to release new software multiple times per day across our fleet. Standard upgrade mechanism used by NGINX is not suitable at our scale. For this reason, we customised the process to avoid increasing the amount of memory needed to release FL. This enabled us to safely ship code whenever it's needed, everywhere. The custom upgrade mechanism enables us to release a large application such as FL reliably regardless of how much memory we have available on an edge server. We showed that it’s possible to extend NGINX and its built-in upgrade mechanism to accommodate the unique requirements of Cloudflare.</p>
 	<p>If you enjoy solving challenging application infrastructure problems and want to help maintain the busiest web server in the world, we’re <a href="https://www.cloudflare.com/careers/jobs">hiring</a>!</p>
 </div>

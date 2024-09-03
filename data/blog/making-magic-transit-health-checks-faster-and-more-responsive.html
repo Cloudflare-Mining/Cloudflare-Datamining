@@ -1,43 +1,63 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/Magic-Transit-Heath-Checks.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4orYvvMFXsOYqJH0tpL4Y7/9583730865ceff62c9baeed2d1ca17f1/Magic-Transit-Heath-Checks.png" alt="" class="kg-image" width="1600" height="801" loading="lazy">
+
+	</figure>
 	<p><a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> advertises our customer’s IP prefixes directly from our edge network, applying DDoS mitigation and firewall policies to all traffic destined for the customer’s network. After the traffic is scrubbed, we deliver clean traffic to the customer over <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">GRE tunnels</a> (over the public Internet or <a href="https://www.cloudflare.com/network-interconnect">Cloudflare Network Interconnect</a>). But sometimes, we experience inclement weather on the Internet: network paths between Cloudflare and the customer can become unreliable or go down. Customers often configure multiple tunnels through different network paths and rely on Cloudflare to pick the best tunnel to use if, for example, some router on the Internet is having a stormy day and starts dropping traffic.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/Magic-Transit-Health-Checks-GRE-Tunnels-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oMkYeGKWm0pGXZ1j7418Q/c4df12da6d1a10fb18af2d6833954c52/Magic-Transit-Health-Checks-GRE-Tunnels-1.png" alt="" class="kg-image" width="1330" height="574" loading="lazy">
+
+	</figure>
 	<p>Because we use Anycast GRE, every server across Cloudflare’s 200+ locations globally can send GRE traffic to customers. Every server needs to know the status of every tunnel, and every location has completely different network routes to customers. Where to start?</p>
 	<p>In this post, I’ll break down my work to improve the Magic Transit GRE tunnel health check system, creating a more stable experience for customers and dramatically reducing CPU and memory usage at Cloudflare’s edge.</p>
-	<h2 id="everybody-has-their-own-weather-station">Everybody has their own weather station</h2>
+	<h2>Everybody has their own weather station</h2>
 	<p>To decide where to send traffic, Cloudflare edge servers need to periodically send <a href="https://developers.cloudflare.com/magic-transit/about/health-checks">health checks</a> to each customer tunnel endpoint.</p>
 	<p>When Magic Transit was first launched, every server sent a health check to every tunnel once per minute. This naive, “shared-nothing” approach was simple to implement and served customers well, but would occasionally deliver less than optimal health check behavior in two specific ways.</p>
-	<h3 id="way-1-inconsistent-weather-reports">Way #1: Inconsistent weather reports</h3>
+	<h3>Way #1: Inconsistent weather reports</h3>
 	<p>Sometimes a server just runs into bad luck, and a check randomly fails. From there, the server would mark the tunnel as degraded and immediately start shifting traffic towards a fallback tunnel. Imagine you and I were standing right next to each other under a clear sky, and I felt a single drop of water and declared, “It’s raining!” whereas you felt no raindrops and declared, “It’s all clear!”</p>
 	<p>With relatively minimal data per server, it means that health determinations can be imprecise. It also means that individual servers could overreact to individual failures. From a customer’s point of view, it’s like Cloudflare detected a problem with the primary tunnel. But, in reality, the server just got a bad weather forecast and made a different judgement call.</p>
-	<h3 id="way-2-slow-to-respond-to-storms">Way #2: Slow to respond to storms</h3>
+	<h3>Way #2: Slow to respond to storms</h3>
 	<p>Even when tunnel states are consistent across servers, they can be slow to respond. In this case, if a server runs a health check which succeeds, but a second later the tunnel goes down, the next health check won't happen for another 59 seconds. Until that next health check fails, the server has no idea anything is wrong, so it keeps sending traffic over unhealthy tunnels, leading to packet loss and latency for the customer.</p>
 	<p>Much like how a live, up-to-the-minute rain forecast helps you decide when to leave to avoid the rain, servers that send tunnel checks more frequently get a finer view of the Internet weather and can respond faster to localized storms. But if every server across Cloudflare’s edge sent health checks too frequently, we would very quickly start to overwhelm our customers’ networks.</p>
-	<h2 id="all-of-the-weather-stations-nearby-start-sharing-observations">All of the weather stations nearby start sharing observations</h2>
+	<h2>All of the weather stations nearby start sharing observations</h2>
 	<p>Clearly, we needed to hammer out some kinks. We wanted servers in the same location to come to the same conclusions about where to send traffic, and we wanted faster detection of issues without increasing the frequency of tunnel checks.</p>
 	<p>Health checks sent from servers in the same data center take the same route across the Internet. Why not share the results among them?</p>
 	<p>Instead of a single raindrop causing me to declare that it’s raining, I’d tell you about the raindrop I felt, and you’d tell me about the clear sky you’re looking at. Together, we come to the same conclusion: there isn’t enough rain to open an umbrella.</p>
-	<p>There is even a special networking protocol that allows us to easily share information between servers in the same private network. From the makers of <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">Unicast and Anycast</a>, now presenting: <em>Multicast</em>!</p>
+	<p>There is even a special networking protocol that allows us to easily share information between servers in the same private network. From the makers of <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">Unicast and Anycast</a>, now presenting: <i>Multicast</i>!</p>
 	<p>A single IP address does not necessarily represent a single machine in a network. The Internet Protocol specifies a way to send one message that gets delivered to a group of machines, like writing to an email list. Every machine has to opt into the group—we can’t just enroll people at random for our email list—but once a machine joins, it receives a copy of any message sent to the group’s address.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/Multicast.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RVyvQRZIEC2vurlUqhpc2/43f222c6da7c3bda1b45092585a842dc/Multicast.png" alt="" class="kg-image" width="879" height="502" loading="lazy">
+
+	</figure>
 	<p>The servers in a Cloudflare edge data center are part of the same private network, so for “version 2” of our health check system, we had each server in a data center join a multicast group and share their health check results with one another. Each server still made an independent assessment for each tunnel, but that assessment was based on data collected by all servers in the same location.</p>
 	<p>This second version of tunnel health checks resulted in more consistent &nbsp;tunnel health determinations by servers in the same data center. It also resulted in faster response times—especially in large data centers where servers receive updates from their peers very rapidly.</p>
 	<p>However, we started seeing scaling problems. As we added more customers, we added more tunnel endpoints where we need to check the weather. In some of our larger data centers, each server was receiving close to half a billion messages per minute.</p>
 	<p>Imagine it's not just you and me telling each other about the weather above us. You’re in a crowd of hundreds of people, and now everyone is shouting the weather updates for thousands of cities around the world!</p>
-	<h2 id="one-weather-station-to-rule-them-all">One weather station to rule them all</h2>
-	<p>As an engineering intern on the Magic Transit team, my project this summer has been developing a third approach. Rather than having every server <em>infrequently</em> check the weather for <em>every</em> tunnel and shouting the <em>observation</em> to everyone else, now every server tunnel can <em>frequently</em> check the weather for <em>a few</em> tunnels. With this new approach, servers would then only tell the others about the overall weather report—not every individual measurement.</p>
+	<h2>One weather station to rule them all</h2>
+	<p>As an engineering intern on the Magic Transit team, my project this summer has been developing a third approach. Rather than having every server <i>infrequently</i> check the weather for <i>every</i> tunnel and shouting the <i>observation</i> to everyone else, now every server tunnel can <i>frequently</i> check the weather for <i>a few</i> tunnels. With this new approach, servers would then only tell the others about the overall weather report—not every individual measurement.</p>
 	<p>That scenario sounds more efficient, but we need to distribute the task of sending tunnel health checks across all the servers in a location so one server doesn’t get an overwhelming amount of work. So how can we assign tunnels to servers in a way that doesn’t require a centralized orchestrator or shared database? Enter <a href="https://www.toptal.com/big-data/consistent-hashing">consistent hashing</a>, the single coolest distributed computing concept I got to apply this summer.</p>
 	<p>Every server sends a multicast “heartbeat” every few seconds. Then, by listening for multicast heartbeats, each server can construct a list of the IP addresses of peers known to be alive, including its own address, sorted by taking the hash of each address. Every server in a data center has the same list of peers in the same order.</p>
 	<p>When a server needs to decide which tunnels it is responsible for sending health checks to, the server simply hashes each tunnel to an integer and searches through the list of peer addresses to find the peer with the smallest hash greater than the tunnel’s hash, wrapping around to the first peer if no peer is found. The server is responsible for sending health checks to the tunnel when the assigned peer’s address equals the server’s address.</p>
 	<p>If a server stops sending messages for a long enough period of time, the server gets removed from the known peers list. As a consequence, the next time another server tries to hash a tunnel the removed peer was previously assigned, the tunnel simply gets reassigned to the next peer in the list.</p>
 	<p>And like magic, we have devised a scheme to consistently assign tunnels to servers in a way that is resilient to server failures and does not require any extra coordination between servers beyond heartbeats. Now, the assigned server can send health checks way more frequently, compose more precise weather forecasts, and share those forecasts without being drowned out by the crowd.</p>
-	<h2 id="results">Results</h2>
+	<h2>Results</h2>
 	<p>Releasing the new health check system globally reduced Magic Transit’s CPU usage by over 70% and memory usage by nearly 85%.</p>
 	<p>Memory usage (measured in terabytes):</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/pasted-image-0-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jIhwrwiVgb5ZVSndRsEFX/0c73465624c327fad0cd95d75ebbce5d/pasted-image-0-4.png" alt="" class="kg-image" width="1414" height="822" loading="lazy">
+
+	</figure>
 	<p>CPU usage (measured in CPU-seconds per two minute interval, averaged over two days):</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/pasted-image-0--1--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nO6YapeDukQjXoesRQKyg/084b9e44b8929f37a24f1849369fab5e/pasted-image-0--1--1.png" alt="" class="kg-image" width="1412" height="828" loading="lazy">
+
+	</figure>
 	<p>Reducing the number of multicast messages means that servers can now keep up with the Internet weather, even in the largest data centers. We’re now poised for the next stage of Magic Transit’s growth, just in time for our <a href="https://blog.cloudflare.com/magic-transit">two-year anniversary</a>.</p>
-	<p>If you want to help build the future of networking, <a href="https://www.cloudflare.com/careers" rel="nofollow noopener">join our team</a>.</p>
+	<p>If you want to help build the future of networking, <a href="https://www.cloudflare.com/careers">join our team</a>.</p>
 </div>

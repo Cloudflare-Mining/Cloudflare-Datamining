@@ -1,58 +1,87 @@
-<div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/friendly-bots-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/friendly-bots-ja-jp">日本語</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-3.png" class="kg-image" alt="Announcing Friendly Bots" loading="lazy"></figure>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/friendly-bots">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/friendly-bots">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22V1pYzPPZEonmZi3YTRlj/77bbba29d45c0042b4acf56f9150c857/image6-3.png" alt="Announcing Friendly Bots" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>When someone mentions bots on the Internet, what’s your first reaction?</p>
 	<p>It’s probably negative. Most of us conjure up memories of CAPTCHAs, stolen passwords, or some other pain caused by bad bots.</p>
-	<p>But the truth is, there are plenty of <a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots">well-behaved bots</a> on the Internet. These include Google’s search crawler and Stripe’s payment bot. At Cloudflare, we manually “verify” good bots, so they don’t get blocked. Our customers can choose to allowlist any bot that is verified. Unfortunately, new bots are popping up faster than we can verify them. So today we’re announcing a solution:<strong> Friendly Bots.</strong></p>
+	<p>But the truth is, there are plenty of <a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots">well-behaved bots</a> on the Internet. These include Google’s search crawler and Stripe’s payment bot. At Cloudflare, we manually “verify” good bots, so they don’t get blocked. Our customers can choose to allowlist any bot that is verified. Unfortunately, new bots are popping up faster than we can verify them. So today we’re announcing a solution: <b>Friendly Bots.</b></p>
 	<p>Let’s begin with some background.</p>
-	<h2 id="how-does-a-bot-get-verified">How does a bot get verified?</h2>
+	<h2>How does a bot get verified?</h2>
 	<p>We often find good bots via our <a href="https://forms.gle/pWVxfCj6cQgWGxDp9">public form</a>. Anyone can submit a bot, but we prefer that bot operators complete the form to provide us with the information we need. We ask for some standard bits of information: your bot’s name, its public documentation, and its user agent (or regex). Then, we ask for information that will help us validate your bot. There are four common methods:</p>
-	<p><strong>IP list</strong><br>Send us a list of IP addresses used by your bot. This doesn’t have to be a static list — you can give us a dynamic page that changes — just provide us with the URL, and we’ll fetch updates every day. These IPs must be publicly documented and exclusive to your bot. If you provide a shared IP address (like one used by a proxy service), our systems will detect risk and refuse to cooperate. We want to avoid accidentally allowing other traffic.</p>
-	<p><strong>rDNS</strong><br>This one is fun. You’ve heard of <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>: the phone book of the Internet, which helps map <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain names</a> to IP addresses. <a href="https://www.blumira.com/glossary/reverse-dns-rdns">rDNS</a> works in the reverse, allowing us to take an IP address and deduce the domain name associated with it.</p>
+	<p><b>IP list</b>Send us a list of IP addresses used by your bot. This doesn’t have to be a static list — you can give us a dynamic page that changes — just provide us with the URL, and we’ll fetch updates every day. These IPs must be publicly documented and exclusive to your bot. If you provide a shared IP address (like one used by a proxy service), our systems will detect risk and refuse to cooperate. We want to avoid accidentally allowing other traffic.</p>
+	<p><b>rDNS</b>This one is fun. You’ve heard of <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>: the phone book of the Internet, which helps map domain names to IP addresses. <a href="https://www.blumira.com/glossary/reverse-dns-rdns">rDNS</a> works in the reverse, allowing us to take an IP address and deduce the domain name associated with it.</p>
 	<p>In other words: give us a hostname suffix, and in many cases we’ll be able to validate your bot’s identity!</p>
-	<p><strong>User agent + ASN validation</strong><br>In some cases, we can verify bots that consistently come from the same network (known as an “ASN”) with the same user agent. Note that we can’t always do this — traffic becomes easier to spoof — but we’re often confident enough to use this as a validation method.</p>
-	<p><strong>Machine learning</strong><br>This is the most flashy method. Cloudflare sees 32+ million requests every second, and we’ve been able to feed those requests into a model that can accurately profile good bots. If the previous validation methods don’t work for you, there’s a good chance we can use <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">ML</a> to spot your bot. But we need enough traffic (thousands of requests) to detect a usable pattern.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-52.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><b>User agent + ASN validation</b>In some cases, we can verify bots that consistently come from the same network (known as an “ASN”) with the same user agent. Note that we can’t always do this — traffic becomes easier to spoof — but we’re often confident enough to use this as a validation method.</p>
+	<p><b>Machine learning</b>This is the most flashy method. Cloudflare sees 32+ million requests every second, and we’ve been able to feed those requests into a model that can accurately profile good bots. If the previous validation methods don’t work for you, there’s a good chance we can use <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">ML</a> to spot your bot. But we need enough traffic (thousands of requests) to detect a usable pattern.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PYeN6Vt00Z2Ck8m70XjNk/fff41970351547b80b324866770b2da5/image1-52.png" alt="" class="kg-image" width="1800" height="750" loading="lazy">
+
+	</figure>
 	<p>We usually approve Verified Bot requests within a few weeks, after taking some time to quality test and ensure everything is safe. But as mentioned before, we often have to reserve this process for trusted partners and larger bots, even though plenty of our users still need their bots allowlisted.</p>
-	<h2 id="what-if-my-bot-isn-t-a-huge-global-service">What if my bot isn’t a huge global service?</h2>
+	<h2>What if my bot isn’t a huge global service?</h2>
 	<p>We keep our ears open (and our eyes on Twitter), so we know that folks want their own “personal” version of Verified Bots.</p>
 	<p>For example: let’s say you built your own monitoring service that crawls a few of your personal websites. It doesn’t make sense for us to verify this bot, because it doesn’t meet any of our criteria:</p>
 	<ol>
-		<li>Serve the broader Internet.</li>
-		<li>Objectively demonstrate good behavior.</li>
-		<li>Comply with Internet standards like <a href="https://moz.com/learn/seo/robotstxt">robots.txt</a>.</li>
+		<li>
+			<p>Serve the broader Internet.</p>
+		</li>
+		<li>
+			<p>Objectively demonstrate good behavior.</p>
+		</li>
+		<li>
+			<p>Comply with Internet standards like <a href="https://moz.com/learn/seo/robotstxt">robots.txt</a>.</p>
+		</li>
 	</ol>
 	<p>It’s your bot (and to you, it might be good!), but our other users might feel differently. Imagine if someone else’s bot could waltz into your infrastructure at any time!</p>
 	<p>Here’s another case. Perhaps Cloudflare has labeled a particular proxy as automated, possibly because a mix of humans and bots use the proxy to access the Internet. You may want to allow this traffic on your site without affecting other Cloudflare customers.</p>
 	<p>Lastly, if you work at a startup, your company may run automated services that haven’t reached the scale we require. But you still need a way to allowlist these services.</p>
-	<h2 id="announcing-friendly-bots">Announcing Friendly Bots</h2>
-	<p>The bots described above, especially common services, are not bad. They deserve to sit in a state between <em>bad</em> and <em>verified</em>. They’re <strong>friendly</strong>.</p>
+	<h2>Announcing Friendly Bots</h2>
+	<p>The bots described above, especially common services, are not bad. They deserve to sit in a state between <i>bad</i> and <i>verified</i>. They’re <b>friendly</b>.</p>
 	<p>And we’ve come up with a really cool way to help you manage them.</p>
 	<p>Our new feature, Friendly Bots, allows you to instantly auto-validate any traffic with the help of IP lists, rDNS, and more.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Here’s how it works: in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fbots">Cloudflare dashboard</a>, tell us about your bot. You can point us toward a public IP list, give us a hostname suffix, or even select other methods like machine learning. Cloudflare’s anycast network allows us to run all of these mechanisms at <em>each</em> one of our data centers. This means you’ll have performant, secure, and scalable bot verification.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zbCA00JgYDez9Gd4XPNJb/d22d5058141ae6856dd965723bd09a4f/image4-5.png" alt="" class="kg-image" width="1800" height="750" loading="lazy">
+
+	</figure>
+	<p>Here’s how it works: in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fbots">Cloudflare dashboard</a>, tell us about your bot. You can point us toward a public IP list, give us a hostname suffix, or even select other methods like machine learning. Cloudflare’s anycast network allows us to run all of these mechanisms at <i>each</i> one of our data centers. This means you’ll have performant, secure, and scalable bot verification.</p>
 	<p>Build a collection of Friendly Bots and share them between your sites, creating custom policies that allow, rate limit, or log this type of traffic. You may just want to keep tabs on a particular bot; that’s fine. The response options are flexible and directly integrate with our <a href="https://workers.cloudflare.com">Workers platform</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54QpeToZFleHLchzTmKCxQ/ef857b6c6e9e4c98d35c4b9bed8cc2d3/image5-6.png" alt="" class="kg-image" width="1800" height="750" loading="lazy">
+
+	</figure>
 	<p>In the past, we’ve struggled to verify bots that did not crawl the web at a large scale. Why? Our system relies on a cache of verified traffic, ensuring that certain IPs or other data have widely shown good behavior on the Internet. This means that bots were sometimes difficult to verify if they did not make thousands of requests to Cloudflare. With Friendly Bots, we’ve eliminated that requirement, introducing a new, dynamic cache that optimizes for fun-sized projects.</p>
-	<h2 id="the-downstream-benefits">The downstream benefits</h2>
+	<h2>The downstream benefits</h2>
 	<p>Friendly Bots will streamline your dashboard experience. But there are a few hidden, downstream benefits we want to highlight:</p>
-	<p><strong>Easier verification</strong><br>Admittedly, it’s challenging to keep up with all the good bots on the Internet. In order to verify a bot, we’ve relied on <a href="https://forms.gle/dT9muX2aYRqFokkc8">manual submissions</a> that may come weeks, or even months after a good bot is created. Friendly Bots will change all of that. If we notice many of our customers allowlisting a particular bot — say, a certain IP address or hostname suffix, our systems will automatically queue that bot for verification. We can intelligently use your Friendly Bots to help the rest of Cloudflare’s customers.</p>
-	<p><strong>Instant feedback</strong><br>In the past, users have been confused by the verification process. <em>Do I need to provide documentation for my IPs? What about my user agent: can it change over time?</em> If any piece of the validation data was broken, it could take us weeks to identify and fix.</p>
+	<p><b>Easier verification</b>Admittedly, it’s challenging to keep up with all the good bots on the Internet. In order to verify a bot, we’ve relied on <a href="https://forms.gle/dT9muX2aYRqFokkc8">manual submissions</a> that may come weeks, or even months after a good bot is created. Friendly Bots will change all of that. If we notice many of our customers allowlisting a particular bot — say, a certain IP address or hostname suffix, our systems will automatically queue that bot for verification. We can intelligently use your Friendly Bots to help the rest of Cloudflare’s customers.</p>
+	<p><b>Instant feedback</b>In the past, users have been confused by the verification process. <i>Do I need to provide documentation for my IPs? What about my user agent: can it change over time?</i> If any piece of the validation data was broken, it could take us weeks to identify and fix.</p>
 	<p>That’s no longer the case. With Friendly Bots, we perform validation almost instantly. So if something isn’t right — perhaps your rDNS validation uses the wrong hostname — you’ll know immediately because the bot won’t be allowlisted. No more waiting to hear from our support team.</p>
-	<p><strong>Better sourcing</strong><br>Previously, we required bot operators (e.g., Google) to submit verification data themselves. If there was a bot you wanted to verify, but did not own, you were out of luck.</p>
+	<p><b>Better sourcing</b>Previously, we required bot operators (e.g., Google) to submit verification data themselves. If there was a bot you wanted to verify, but did not own, you were out of luck.</p>
 	<p>Friendly Bots eliminates this dependency on bot operators. Anyone who can find identifying information can register a bot on their site.</p>
-	<p><strong>No arbitration</strong><br>If a scraper shows up to your site, is that a good thing? To some, yes, because it’s exposure. To others, no, because that scraper may take data. This is a question we’ve carefully considered with every Verified Bots submission to date.</p>
+	<p><b>No arbitration</b>If a scraper shows up to your site, is that a good thing? To some, yes, because it’s exposure. To others, no, because that scraper may take data. This is a question we’ve carefully considered with every Verified Bots submission to date.</p>
 	<p>Now: it’s your choice to make. Friendly Bots puts the control in your hands, allowing you to categorize bots at a domain level. We’ll continue to verify bots at a global level (when behavior is objectively good).</p>
-	<h2 id="cloudflare-radar">Cloudflare Radar</h2>
+	<h2>Cloudflare Radar</h2>
 	<p>Here’s a fun bonus: in addition to today’s Friendly Bots announcement, we’re also making some changes to <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
 	<p>Beginning immediately, you can see a list of many <a href="https://radar.cloudflare.com/verified-bots">Verified Bots in Radar</a>. This is exciting; we’ve never published a detailed list like this before.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-20.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4C2SFqOIE3jCOpPDaP4EQv/776640ac7a6cde9f92536cdf7a0a669e/image3-20.png" alt="" class="kg-image" width="1744" height="1720" loading="lazy">
+
+	</figure>
 	<p>All data is updated in real time. As we verify new bots, they will appear here in the Radar module.</p>
 	<p>We’re also beginning to add specific Verified Bots to our Logs product. You’ll see them as <a href="https://developers.cloudflare.com/bots/concepts/cloudflare-bot-tags">Bot Tags</a>, so a request might include the string “pinterest” if it came from Pinterest’s bot.</p>
-	<h2 id="what-s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>Our team is excited to launch Friendly Bots soon. We anticipate the impact will radiate throughout <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a>, reducing false positives, improving crawl-ability, and generally stabilizing sites.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-42.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qdZSvU4sRH4ImTRfBowzg/d729eaeb23e8a0aab02eab0bbd3c14c9/image2-42.png" alt="" class="kg-image" width="1800" height="750" loading="lazy">
+
+	</figure>
 	<p>If you have Bot Management and want to give this new feature a try, please tell your account team (and we’ll be sure to include you in the early access period). You can also continue to <a href="https://forms.gle/dT9muX2aYRqFokkc8">tell us about bots</a> that should be verified.</p>
 </div>

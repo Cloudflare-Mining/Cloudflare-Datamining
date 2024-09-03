@@ -1,30 +1,45 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/phishing-threat-indicators-in-zero-trust-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/phishing-threat-indicators-in-zero-trust-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/phishing-threat-indicators-in-zero-trust-ko-kr">한국어</a> and <a href="https://blog.cloudflare.com/es-es/phishing-threat-indicators-in-zero-trust-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-19.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/phishing-threat-indicators-in-zero-trust">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/phishing-threat-indicators-in-zero-trust">한국어</a>, <a href="https://blog.cloudflare.com/es-es/phishing-threat-indicators-in-zero-trust">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/phishing-threat-indicators-in-zero-trust">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Mu8JLRZV79uzq8CEnM6Kf/9a2e5938ece736a26cdac2ca8349889e/image2-19.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
 	<p>Over the last several years, both Area 1 and Cloudflare built pipelines for ingesting threat indicator data, for use within our products. During the acquisition process we compared notes, and we discovered that the overlap of indicators between our two respective systems was smaller than we expected. This presented us with an opportunity: as one of our first tasks in bringing the two companies together, we have started bringing Area 1’s threat indicator data into the Cloudflare suite of products. This means that all the products today that use indicator data from Cloudflare’s own pipeline now get the benefit of Area 1’s data, too.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KzkecE9CozKd2k81Az2i3/0329f7bf046dd65ebeab9ee542269a8e/image1-13.png" alt="" class="kg-image" width="1095" height="646" loading="lazy">
+
+	</figure>
 	<p>Area 1 built a data pipeline focused on identifying new and active phishing threats, which now supplements the Phishing category available today in Gateway. If you have a policy that references this category, you’re already benefiting from this additional threat coverage.</p>
-	<h3 id="how-cloudflare-identifies-potential-phishing-threats">How Cloudflare identifies potential phishing threats</h3>
+	<h3>How Cloudflare identifies potential phishing threats</h3>
 	<p>Cloudflare is able to combine the data, procedures and techniques developed independently by both the Cloudflare team and the Area 1 team prior to acquisition. Customers are able to benefit from the work of both teams across the suite of Cloudflare products.</p>
 	<p>Cloudflare curates a set of data feeds both from our own network traffic, OSINT sources, and numerous partnerships, and applies custom false positive control. Customers who rely on Cloudflare are spared the software development effort as well as the operational workload to distribute and update these feeds. Cloudflare handles this automatically, with updates happening as often as every minute.</p>
 	<p>Cloudflare is able to go beyond this and work to proactively identify phishing infrastructure in multiple ways. With the Area 1 acquisition, Cloudflare is now able to apply the adversary-focused threat research approach of Area1 across our network. A team of threat researchers track state-sponsored and financially motivated threat actors, newly disclosed CVEs, and current phishing trends.</p>
 	<p>Cloudflare now operates mail exchange servers for hundreds of organizations around the world, in addition to its DNS resolvers, <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> suite, and network services. Each of these products generates data that is used to enhance the security of all of Cloudflare’s products. For example, as part of mail delivery, the mail engine performs domain lookups, scores potential phishing indicators via <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a>, and fetches URLs. Data which can now be used through Cloudflare’s offerings.</p>
-	<h3 id="how-cloudflare-area-1-identifies-potential-phishing-threats">How Cloudflare Area 1 identifies potential phishing threats</h3>
+	<h3>How Cloudflare Area 1 identifies potential phishing threats</h3>
 	<p>The Cloudflare Area 1 team operates a suite of web crawling tools designed to <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">identify phishing pages</a>, capture phishing kits, and highlight attacker infrastructure. In addition, Cloudflare Area 1 threat models assess campaigns based on signals gathered from threat actor campaigns; and the associated IOCs of these campaign messages are further used to enrich Cloudflare Area 1 threat data for future campaign discovery. Together these techniques give Cloudflare Area 1 a leg up on identifying the indicators of compromise for an attacker prior to their attacks against our customers. As part of this proactive approach, Cloudflare Area 1 also houses a team of threat researchers that track state-sponsored and financially motivated threat actors, newly disclosed CVEs, and current phishing trends. Through this research, analysts regularly insert phishing indicators into an extensive indicator management system that may be used for our email product or any other product that may query it.</p>
 	<p>Cloudflare Area 1 also collects information about phishing threats during our normal operation as the mail exchange server for hundreds of organizations across the world. As part of that role, the mail engine performs domain lookups, scores potential phishing indicators via machine learning, and fetches URLs. For those emails found to be malicious, the indicators associated with the email are inserted into our indicator management system as part of a feedback loop for subsequent message evaluation.</p>
-	<h3 id="how-cloudflare-data-will-be-used-to-improve-phishing-detection">How Cloudflare data will be used to improve phishing detection</h3>
+	<h3>How Cloudflare data will be used to improve phishing detection</h3>
 	<p>In order to support Cloudflare products, including Gateway and Page Shield, Cloudflare has a data pipeline that ingests data from partnerships, OSINT sources, as well as threat intelligence generated in-house at Cloudflare. We are always working to curate a threat intelligence data set that is relevant to our customers and actionable in the products Cloudflare supports. This is our North star: what data can we provide that enhances our customer’s security without requiring our customers to manage the complexity of data, relationships, and configuration. We offer a variety of security threat categories, but some major focus areas include:</p>
 	<ul>
-		<li>Malware distribution</li>
-		<li>Malware and Botnet Command &amp; Control</li>
-		<li>Phishing,</li>
-		<li>New and newly seen domains</li>
+		<li>
+			<p>Malware distribution</p>
+		</li>
+		<li>
+			<p>Malware and Botnet Command &amp; Control</p>
+		</li>
+		<li>
+			<p>Phishing,</p>
+		</li>
+		<li>
+			<p>New and newly seen domains</p>
+		</li>
 	</ul>
 	<p>Phishing is a threat regardless of how the potential phishing link gets entry into an organization, whether via email, SMS, calendar invite or shared document, or other means. As such, detecting and blocking phishing domains has been an area of active development for Cloudflare’s threat data team since almost its inception.</p>
 	<p>Looking forward, we will be able to incorporate that work into Cloudflare Area 1’s phishing email detection process. Cloudflare's list of phishing domains can help identify malicious email when those domains appear in the sender, delivery headers, message body or links of an email.</p>
-	<h3 id="1-1-3-greater-dataset-sharing-between-cloudflare-and-area-1">1+1 = 3: Greater dataset sharing between Cloudflare and Area 1</h3>
+	<h3>1+1 = 3: Greater dataset sharing between Cloudflare and Area 1</h3>
 	<p>Threat actors have long had an unfair advantage — and that advantage is rooted in the knowledge of their target, and the time they have to set up specific campaigns against their targets. That dimension of time allows threat actors to set up the right infrastructure, perform reconnaissance, stage campaigns, perform test probes, observe their results, iterate, improve and then launch their ‘production’ campaigns. This precise element of time gives us the opportunity to discover, assess and proactively filter out campaign infrastructure prior to campaigns reaching critical mass. But to do that effectively, we need visibility and knowledge of threat activity across the public IP space.</p>
 	<p>With Cloudflare’s extensive network and global insight into the origins of DNS, email or web traffic, combined with Cloudflare Area 1’s datasets of campaign tactics, techniques, and procedures (TTPs), seed infrastructure and threat models — we are now better positioned than ever to help organizations secure themselves against sophisticated threat actor activity, and regain the advantage that for so long has been heavily weighted towards the bad guys.</p>
 	<p>If you’d like to extend Zero Trust to your email security to <a href="https://www.cloudflare.com/zero-trust/products/email-security">block advanced threats</a>, contact your Customer Success manager, or request a Phishing Risk Assessment <a href="https://www.cloudflare.com/lp/emailsecurity">here</a>.</p>

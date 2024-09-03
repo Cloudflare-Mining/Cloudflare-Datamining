@@ -1,27 +1,44 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-82.png" class="kg-image" alt="Project A11Y: how we upgraded Cloudflare’s dashboard to adhere to industry accessibility standards" loading="lazy"></figure>
-	<p>At Cloudflare, we believe the Internet should be accessible to <strong>everyone</strong>. And today, we’re happy to announce a more inclusive Cloudflare dashboard experience for our users with disabilities. Recent improvements mean our dashboard now adheres to industry accessibility standards, including <a href="https://www.w3.org/TR/WCAG21">Web Content Accessibility Guidelines (WCAG) 2.1</a> AA and Section 508 of the Rehabilitation Act.</p><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2d7klQPRm8fuSNd4d6nCST/2d8c7270f052d01b4de0933dd1f67350/image1-82.png" alt="Project A11Y: how we upgraded Cloudflare’s dashboard to adhere to industry accessibility standards" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>At Cloudflare, we believe the Internet should be accessible to <b>everyone</b>. And today, we’re happy to announce a more inclusive Cloudflare dashboard experience for our users with disabilities. Recent improvements mean our dashboard now adheres to industry accessibility standards, including <a href="https://www.w3.org/TR/WCAG21">Web Content Accessibility Guidelines (WCAG) 2.1</a> AA and Section 508 of the Rehabilitation Act.</p>
 	<p>Over the past several months, the Cloudflare team and our partners have been hard at work to make the Cloudflare dashboard<sup>1</sup> as accessible as possible for every single one of our current and potential customers. This means incorporating accessibility features that comply with the latest Web Content Accessibility Guidelines (WCAG) and Section 508 of the US’s federal Rehabilitation Act. We are invested in working to meet or exceed these standards; to demonstrate that commitment and share openly about the state of accessibility on the Cloudflare dashboard, we have completed the Voluntary Product Accessibility Template (VPAT), a document used to evaluate our level of conformance today.</p>
-	<!--kg-card-end: markdown-->
 	<p>Conformance with a technical and legal spec is a bit abstract–but for us, accessibility simply means that as many people as possible can be successful users of the Cloudflare dashboard. This is important because each day, more and more individuals and businesses rely upon Cloudflare to administer and protect their websites.</p>
 	<p>For individuals with disabilities who work on technology, we believe that an accessible Cloudflare dashboard could mean improved economic and technical opportunities, safer websites, and equal access to tools that are shaping how we work and build on the Internet.</p>
 	<p>For designers and developers at Cloudflare, our accessibility remediation project has resulted in an overhaul of our component library. Our newly WCAG-compliant components expedite and simplify our work building accessible products. They make it possible for us to deliver on our commitment to an accessible dashboard going forward.</p>
-	<h2 id="our-journey-to-an-accessible-cloudflare-dashboard">Our Journey to an Accessible Cloudflare Dashboard</h2>
+	<h2>Our Journey to an Accessible Cloudflare Dashboard</h2>
 	<p>In 2021, we initiated an audit with third party experts to identify accessibility challenges in the Cloudflare dashboard. This audit came back with a daunting 213-page document—a very, very long list of compliance gaps.</p>
 	<p>We learned from the audit that there were many users we had unintentionally failed to design and build for in Cloudflare dashboard user interfaces. Most especially, we had not done well accommodating keyboard users and screen reader users, who often rely upon these technologies because of a physical impairment. Those impairments include low vision or blindness, motor disabilities (examples include tremors and repetitive strain injury), or cognitive disabilities (examples include dyslexia and dyscalculia).</p>
 	<p>As a product and engineering organization, we had spent more than a decade in cycles of rapid growth and product development. While we're proud of what we have built, the audit made clear to us that there was a great need to address the design and technical debt we had accrued along the way.</p>
 	<p>One year, four hundred Jira tickets, and over 25 new, accessible web components later, we’re ready to celebrate our progress with you. Major categories of work included:</p>
 	<ol>
-		<li><strong>Forms: </strong>We re-wrote our internal form components with accessibility and developer experience top of mind. We improved form validation and error handling, labels, required field annotations, and made use of persistent input descriptions instead of placeholders. Then, we deployed those component upgrades across the dashboard.</li>
-		<li><strong>Data visualizations:</strong> After conducting a rigorous re-evaluation of their design, we re-engineered charts and graphs to be accessible to keyboard and screen reader users. See below for a brief case study.</li>
-		<li><strong>Heading tags:</strong> We corrected page structure throughout the dashboard by replacing all our heading tags (&lt;h1&gt;, &lt;h2&gt;, etc.) with a <a href="https://medium.com/@Heydon/managing-heading-levels-in-design-systems-18be9a746fa3">technique we borrowed from Heydon Pickering</a>. This technique is an approach to heading level management that uses React Context and basic arithmetic.</li>
-		<li><strong>SVGs:</strong> We reworked how we create SVGs (Scalable Vector Graphics), so that they are labeled properly and only exposed to assistive technology when useful.</li>
-		<li><strong>Node modules:</strong> We jumped several major versions of old, inaccessible node modules that our UI components depend upon (and we broke many things along the way).</li>
-		<li><strong>Color:</strong> We overhauled our use of color, and contributed a new volume of accessible sequential colors to our design system.</li>
-		<li><strong>Bugs:</strong> We squashed <em>a lot</em> of bugs that had made their way into the dashboard over the years. The most common type of bug we encountered related to incorrect or unsemantic use of HTML elements—for example, using a &lt;div&gt; where we should have used a &lt;td&gt; (table data) or &lt;tr&gt; (table row) element within a table.</li>
+		<li>
+			<p><b>Forms:</b> We re-wrote our internal form components with accessibility and developer experience top of mind. We improved form validation and error handling, labels, required field annotations, and made use of persistent input descriptions instead of placeholders. Then, we deployed those component upgrades across the dashboard.</p>
+		</li>
+		<li>
+			<p><b>Data visualizations:</b> After conducting a rigorous re-evaluation of their design, we re-engineered charts and graphs to be accessible to keyboard and screen reader users. See below for a brief case study.</p>
+		</li>
+		<li>
+			<p><b>Heading tags:</b> We corrected page structure throughout the dashboard by replacing all our heading tags (, , etc.) with a <a href="https://medium.com/@Heydon/managing-heading-levels-in-design-systems-18be9a746fa3">technique we borrowed from Heydon Pickering</a>. This technique is an approach to heading level management that uses React Context and basic arithmetic.</p>
+		</li>
+		<li>
+			<p><b>SVGs:</b> We reworked how we create SVGs (Scalable Vector Graphics), so that they are labeled properly and only exposed to assistive technology when useful.</p>
+		</li>
+		<li>
+			<p><b>Node modules:</b> We jumped several major versions of old, inaccessible node modules that our UI components depend upon (and we broke many things along the way).</p>
+		</li>
+		<li>
+			<p><b>Color:</b> We overhauled our use of color, and contributed a new volume of accessible sequential colors to our design system.</p>
+		</li>
+		<li>
+			<p><b>Bugs:</b> We squashed <i>a lot</i> of bugs that had made their way into the dashboard over the years. The most common type of bug we encountered related to incorrect or unsemantic use of HTML elements—for example, using a where we should have used a (table data) or (table row) element within a table.</p>
+		</li>
 	</ol>
-	<h3 id="case-study-accessibility-work-on-cloudflare-dashboard-data-analytics">Case Study: Accessibility Work On Cloudflare Dashboard Data &amp; Analytics</h3>
+	<h3>Case Study: Accessibility Work On Cloudflare Dashboard Data &amp; Analytics</h3>
 	<p>The Cloudflare dashboard is replete with analytics and data visualizations designed to offer deep insight into users' websites’ performance, traffic, security, and more. Making those data visualizations accessible proved to be among the most complex and interdisciplinary issues we faced in the remediation work.</p>
 	<p>An example of a problem we needed to solve related to <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">WCAG success criterion 1.4.1</a>, which pertains to the use of color. 1.4.1 specifies that color cannot be the only means by which to convey information, such as the differentiation between two items compared in a chart or graph.</p>
 	<p>Our charts were clearly nonconforming with this standard, using color alone to represent different data being compared. For example, a typical graph might have used the color blue to show the number of requests to a website that were 200 OK, and the color orange to show 403 Forbidden, but failed to offer users another way to discern between the two status codes.</p>
@@ -29,32 +46,39 @@
 	<p>Interestingly, we found that design patterns recommended even by accessibility experts created wholly unusable visualizations when placed into the context of real world data. Examples of such recommended patterns include using different line weights, patterns (dashed, dotted or other line styles), and terminal glyphs (symbols set at the beginning and end of the lines) to differentiate items being compared.</p>
 	<p>We tried, and failed, to apply a number of these patterns; you can see the evolution of this work on our time series graph component in the three different images below.</p>
 	<p>v.1</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-28.png" class="kg-image" alt="Visual of Cloudflare time series graph, version 1" loading="lazy">
-		<figcaption>Here is an early attempt at using both terminal glyphs and patterns to differentiate data in a time series graph. You can see that the terminal glyphs pile up and become indistinguishable; the differences among the line patterns are very hard to discern. This code never made it into production.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RFcd4v1fPOkjzD5YESBx6/2823e39dbfa760950ea190437339952a/image4-28.png" alt="Visual of Cloudflare time series graph, version 1" class="kg-image" width="1999" height="780" loading="lazy">
+
 	</figure>
+	<p>Here is an early attempt at using both terminal glyphs and patterns to differentiate data in a time series graph. You can see that the terminal glyphs pile up and become indistinguishable; the differences among the line patterns are very hard to discern. This code never made it into production.</p>
 	<p>v.2</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-66.png" class="kg-image" alt="Visual of Cloudflare time series graph, version 2" loading="lazy">
-		<figcaption>In this version, we eliminated terminal glyphs but kept line patterns. Additionally, we faded the unfocused items in the graph to help bring highlighted data to the forefront. This latter technique made it into our final solution.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/418yb2nLowvaTahPv6HmyD/925492a0706779cec15c4cbe00b912a1/image2-66.png" alt="Visual of Cloudflare time series graph, version 2" class="kg-image" width="1800" height="674" loading="lazy">
+
 	</figure>
+	<p>In this version, we eliminated terminal glyphs but kept line patterns. Additionally, we faded the unfocused items in the graph to help bring highlighted data to the forefront. This latter technique made it into our final solution.</p>
 	<p>v.3</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-50.png" class="kg-image" alt="Visual of Cloudflare time series graph, version 3" loading="lazy">
-		<figcaption>Here we eliminated patterns altogether, simplified the user interface to only use the fading technique on unfocused items, and put our new, sequentially accessible colors to use. Finally, a visual design solution approved by accessibility and data visualization experts, as well as our design and engineering teams.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wQbZ5YxrrIyY56Ury2811/039cc5709fb2af973aaa7d2ee29093fe/image3-50.png" alt="Visual of Cloudflare time series graph, version 3" class="kg-image" width="867" height="332" loading="lazy">
+
 	</figure>
+	<p>Here we eliminated patterns altogether, simplified the user interface to only use the fading technique on unfocused items, and put our new, sequentially accessible colors to use. Finally, a visual design solution approved by accessibility and data visualization experts, as well as our design and engineering teams.</p>
 	<p>After arriving at our design solution, we had some engineering work to do.</p>
 	<p>In order to meet WCAG success criterion <a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html">2.1.1</a>, we rewrote our time series graphs to be fully keyboard accessible by adding focus handling to every data point, and enabling the traversal of data using arrow keys.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 60.125918153200416%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/0c2811087d3d3331aa5e34e57a2b6abe/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F0c2811087d3d3331aa5e34e57a2b6abe%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D13s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html--><!--kg-card-begin: markdown-->
-	<p><small><em>Navigating time series data points by keyboard on the Cloudflare dashboard.</em></small></p>
-	<!--kg-card-end: markdown-->
+	<div style="position: relative; padding-top: 60.125918153200416%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/0c2811087d3d3331aa5e34e57a2b6abe/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F0c2811087d3d3331aa5e34e57a2b6abe%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D13s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p><i>Navigating time series data points by keyboard on the Cloudflare dashboard.</i></p>
 	<p>We did some fine-tuning, specifically to support screen readers: we eliminated auditory “<a href="https://en.wikipedia.org/wiki/Chartjunk">chartjunk</a>” (unnecessary clutter or information in a chart or graph) and cleaned up decontextualized data (a scenario in which numbers are exposed to and read by a screen reader, but contextualizing information, like x- and y-axis labels, is not).</p>
 	<p>And lastly, to meet WCAG <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/text-equiv-all.html">1.1.1</a>, we engineered new UI component wrappers to make chart and graph data downloadable in CSV format. We deployed this part of the solution across all charts and graphs, not just the time series charts like those shown above. No matter how you browse and interact with the web, we hope you'll notice this functionality around the Cloudflare dashboard and find value in it.</p>
 	<p>Making all of this data available to low vision, keyboard, and assistive technology users was an interesting challenge for us, and a true team effort. It necessitated a separate data visualization report conducted by another, more specialized team of third party experts, deep collaboration between engineering and design, and many weeks of development.</p>
 	<p>Applying this thorough treatment to all data visualizations on the Cloudflare dashboard is our goal, but still work in progress. Please stay tuned for more accessible updates to our chart and graph components.</p>
-	<h2 id="conclusion">Conclusion</h2>
+	<h2>Conclusion</h2>
 	<p>There's a lot of nuance to accessibility work, and we were novices at the beginning: researching and learning as we were doing. We also broke a lot of things in the process, which (as any engineering team knows!) can be stressful.</p>
 	<p>Overall, our team’s biggest challenge was figuring out how to complete a high volume of cross-functional work in the shortest time possible, while also setting a foundation for these improvements to persist over time.</p>
 	<p>As a frontend engineering and design team, we are very grateful for having had the opportunity to focus on this problem space and to learn from truly world-class accessibility experts along the way.</p>
 	<p>Accessibility matters to us, and we know it does to you. We’re proud of our progress, and there’s always more to do to make Cloudflare more usable for all of our customers. This is a critical piece of our foundation at Cloudflare, where we are building the most secure, performant and reliable solutions for the Internet. Stay tuned for what’s next!</p>
-	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Get started today</a> and join us on our mission to build a better Internet.</p><!--kg-card-begin: markdown-->
-	<p><small><sup>1</sup>All references to “dashboard” in this post are specific to the primary user authenticated Cloudflare web platform. This does not include Cloudflare’s product-specific dashboards, marketing, support, educational materials, or third party integrations.</small></p>
-	<!--kg-card-end: markdown-->
+	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Get started today</a> and join us on our mission to build a better Internet.</p>
+	<p><sup>1</sup>All references to “dashboard” in this post are specific to the primary user authenticated Cloudflare web platform. This does not include Cloudflare’s product-specific dashboards, marketing, support, educational materials, or third party integrations.</p>
 </div>

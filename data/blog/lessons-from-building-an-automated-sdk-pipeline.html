@@ -1,19 +1,21 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/04/image3-17.png" class="kg-image" alt="Lessons from building an automated SDK pipeline" loading="lazy" width="1999" height="1125"></figure>
-	<p>In case you missed the <a href="https://blog.cloudflare.com/workers-production-safety">announcement</a> from Developer Week 2024, Cloudflare is now offering software development kits (SDKs) for <a href="https://github.com/cloudflare/cloudflare-typescript">Typescript</a>, <a href="https://github.com/cloudflare/cloudflare-go">Go</a> and <a href="https://github.com/cloudflare/cloudflare-python">Python</a>. As a reminder, you can get started by installing the packages.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-typescript">// Typescript
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tc9X0He7eOawScU0Uqzoh/a888d2dd7a36b799aa2260a98482c758/image3-17.png" alt="Lessons from building an automated SDK pipeline" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>In case you missed the <a href="https://blog.cloudflare.com/workers-production-safety">announcement</a> from Developer Week 2024, Cloudflare is now offering software development kits (SDKs) for <a href="https://github.com/cloudflare/cloudflare-typescript">Typescript</a>, <a href="https://github.com/cloudflare/cloudflare-go">Go</a> and <a href="https://github.com/cloudflare/cloudflare-python">Python</a>. As a reminder, you can get started by installing the packages.</p>
+	<pre class="language-typescript"><code class="language-typescript">// Typescript
 npm install cloudflare
 
 // Go
 go get -u github.com/cloudflare/cloudflare-go/v2
 
 // Python
-pip install cloudflare
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Instead of using a tool like <code>curl</code> or Postman to create a new zone in your account, you can use one of the SDKs in a language that you’re already comfortable with or that integrates directly into your existing codebase.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">import Cloudflare from 'cloudflare';
+pip install cloudflare</code></pre>
+	<p>Instead of using a tool like <code>curl</code> or Postman to create a new zone in your account, you can use one of the SDKs in a language that you’re already comfortable with or that integrates directly into your existing codebase.</p>
+	<pre class="language-javascript"><code class="language-javascript">import Cloudflare from 'cloudflare';
 
 const cloudflare = new Cloudflare({
   apiToken: process.env['CLOUDFLARE_API_TOKEN']
@@ -23,48 +25,43 @@ const newZone = await cloudflare.zones.create({
   account: { id: '023e105f4ecef8ad9ca31a8372d0c353' },
   name: 'example.com',
   type: 'full',
-});
-</code></pre>
-	<!--kg-card-end: markdown-->
+});</code></pre>
 	<p>Since their inception, our SDKs have been manually maintained by one or more dedicated individuals. For every product addition or improvement, we needed to orchestrate a series of manually created pull requests to get those changes into customer hands. This, unfortunately, created an imbalance in the frequency and quality of changes that made it into the SDKs. Even though the product teams would drive some of these changes, not all languages were covered and the SDKs fell to either community-driven contributions or to the maintainers of the libraries to cover the remaining languages. Internally, we too felt this pain when using our own services and, instead of covering all languages, decided to rally our efforts behind the primary SDK (Go) to ensure that at least one of these libraries was in a good state.</p>
 	<p>This plan worked for newer products and additions to the Go SDK, which in turn helped tools like our <a href="https://github.com/cloudflare/terraform-provider-cloudflare">Terraform Provider</a> stay mostly up to date, but even this focused improvement was still very taxing and time-consuming for internal teams to maintain. On top of this, the process didn’t provide any guarantees on coverage, parity, or correctness because the changes were still manually maintained and susceptible to human error. Regardless of the size of contribution, a team member would still need to coordinate a minimum of 4 pull requests (shown in more depth below) before a change was considered shipped and needed deep knowledge of the relationship between the dependencies in order to get it just right.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/04/image1-19.png" class="kg-image" alt="The pull requests previously required to ship an SDK change." loading="lazy" width="1318" height="898">
-		<figcaption><em>The pull requests previously required to ship an SDK change.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wDwD07NI1poZCNaYHnjAq/11cb42dca8b4a955ee53c39b228353ee/image1-19.png" alt="The pull requests previously required to ship an SDK change." class="kg-image" width="1318" height="898" loading="lazy">
+
 	</figure>
+	<p><i>The pull requests previously required to ship an SDK change.</i></p>
 	<p>Following the completion of <a href="https://blog.cloudflare.com/open-api-transition">our transition to OpenAPI from JSON Hyper-Schema</a>, we caught up internally and started discussing what else OpenAPI could help us unlock. It was at that point that we set the lofty goal of using OpenAPI for more than just our documentation. It was time to use OpenAPI to generate our SDKs.</p>
 	<p>Before we dove headfirst into generating SDKs, we established some guiding principles. These would be non-negotiable and determine where we spent our effort.</p>
-	<h3 id="you-should-not-be-able-to-tell-what-underlying-language-generated-the-sdk">You should not be able to tell what underlying language generated the SDK</h3>
+	<h3>You should not be able to tell what underlying language generated the SDK</h3>
 	<p>This was important for us because too often companies build SDKs using automation. Not only do you end up with SDKs that are flavored based on generator language, but the SDKs then lack the language nuances or patterns that are noticeable to users familiar with the language.</p>
-	<p>For example, a Rubyist may use the following <code>if</code> expression:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ruby">do_something if bar?
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>Whereas most generators do not have this context and would instead default to the standard case where <code>if/else</code> expressions are spread over multiple lines.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ruby">if bar?
+	<p>For example, a Rubyist may use the following <code>if</code> expression:</p>
+	<pre class="language-ruby"><code class="language-ruby">do_something if bar?</code></pre>
+	<p>Whereas most generators do not have this context and would instead default to the standard case where <code>if/else</code> expressions are spread over multiple lines.</p>
+	<pre class="language-ruby"><code class="language-ruby">if bar?
   do_something
-end
-</code></pre>
-	<!--kg-card-end: markdown-->
+end</code></pre>
 	<p>Despite being a simple and non-material example, it demonstrates a nuance that a machine cannot decipher on its own. This is terrible for developers because you’re then no longer only thinking about how to solve the original task at hand, but you also end up tailoring your code to match how the generator has built the SDK and potentially lose out on the language features you would normally use. The problem is made significantly worse if you’re using a strongly typed language to generate a language without types, since it will be structuring and building code in a way that types are expected but never used.</p>
-	<h3 id="lowering-the-mean-time-to-uniform-support">Lowering the mean time to uniform support</h3>
+	<h3>Lowering the mean time to uniform support</h3>
 	<p>When a new feature is added to a product, it’s great that we add API support initially. However, if that new feature or product never makes it to whatever language SDK you are using to drive your API calls, it’s as good as non-existent. Similarly, not every use case is for infrastructure-as-code tools like Terraform, so we needed a better way of meeting our customers with uniformity where they choose to integrate with our services.</p>
-	<p>By extension, we want uniformity in the way the namespaces and methods are constructed. Ignoring the language-specific parts, if you’re using one of our SDKs and you are looking for the ability to list all DNS records, you should be able to trust that the method will be in the <code>dns</code> namespace and that to find all records, you can call a <code>list</code> method regardless of which one you are using. Example:</p><!--kg-card-begin: markdown-->
-	<pre><code>// Go
+	<p>By extension, we want uniformity in the way the namespaces and methods are constructed. Ignoring the language-specific parts, if you’re using one of our SDKs and you are looking for the ability to list all DNS records, you should be able to trust that the method will be in the <code>dns</code> namespace and that to find all records, you can call a <code>list</code> method regardless of which one you are using. Example:</p>
+	<pre class="language-bash"><code class="language-bash">// Go
 client.DNS.Records.List(...)
 
 // Typescript
 client.dns.records.list(...)
 
 // Python
-client.dns.records.list(...)
-</code></pre>
-	<!--kg-card-end: markdown-->
+client.dns.records.list(...)</code></pre>
 	<p>This leads to less time digging through documentation to find what invocation you need and more time using the tools you’re already familiar with.</p>
-	<h3 id="fast-feedback-loops-clear-conventions">Fast feedback loops, clear conventions</h3>
-	<p>Cloudflare has <strong>a lot</strong> of APIs; everything is backed by an API <em>somewhere</em>. However, not all Cloudflare APIs are designed with the same conventions in mind. Those APIs that are on the critical path and regularly experience traffic surges or malformed input are naturally more hardened and more resilient than those that are infrequently used. This creates a divergence in quality of the endpoint, which shouldn’t be the case.</p>
+	<h3>Fast feedback loops, clear conventions</h3>
+	<p>Cloudflare has <b>a lot</b> of APIs; everything is backed by an API <i>somewhere</i>. However, not all Cloudflare APIs are designed with the same conventions in mind. Those APIs that are on the critical path and regularly experience traffic surges or malformed input are naturally more hardened and more resilient than those that are infrequently used. This creates a divergence in quality of the endpoint, which shouldn’t be the case.</p>
 	<p>Where we have learned a lesson or improved a system through a best practice, we should make it easy for others to be aware of and opt into that pattern with little friction at the earliest possible time, ideally as they are proposing the change in CI. That is why when we built the OpenAPI pipeline for API schemas, we built in mechanisms to allow applying linting rules, using <a href="https://redocly.com/docs/cli">redocly CLI</a>, that will either warn the engineer or block them entirely, depending on the severity of the violation.</p>
-	<p>For example, we want to encourage usage of fine grain API tokens, so we should present those authentication schemes first and ensure they are supported for new endpoints. To enforce this, we can write a <a href="https://redocly.com/docs/cli/configuration/reference/plugins">redocly plugin</a>:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">module.exports = {
+	<p>For example, we want to encourage usage of fine grain API tokens, so we should present those authentication schemes first and ensure they are supported for new endpoints. To enforce this, we can write a <a href="https://redocly.com/docs/cli/configuration/reference/plugins">redocly plugin</a>:</p>
+	<pre class="language-javascript"><code class="language-javascript">module.exports = {
     id: 'local',
     assertions: {
         apiTokenAuthSupported: (value, options, location) =&gt; {
@@ -84,11 +81,9 @@ client.dns.records.list(...)
             return [];
         },
     },
-};
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p>And the rule configuration:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-yaml">rule/security-options-defined:
+};</code></pre>
+	<p>And the rule configuration:</p>
+	<pre class="language-yaml"><code class="language-yaml">rule/security-options-defined:
   severity: error
   subject:
     type: Operation
@@ -101,12 +96,10 @@ client.dns.records.list(...)
       defined: true
   assertions:
     local/apiTokenAuthSupported: {}
-    local/apiTokenAuthDefinedFirst: {}
-</code></pre>
-	<!--kg-card-end: markdown-->
+    local/apiTokenAuthDefinedFirst: {}</code></pre>
 	<p>In this example, should a team forget to put the API token authentication scheme first, or define it at all, the CI run will fail. Teams are provided a helpful failure message with a link to the conventions to discover more if they need to understand why the change is recommended.</p>
-	<p>These lints can be used for style conventions, too. For our documentation descriptions, we like descriptions to start with a capital letter and end in a period. Again, we can add a lint to enforce this requirement.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-JavaScript">module.exports = {
+	<p>These lints can be used for style conventions, too. For our documentation descriptions, we like descriptions to start with a capital letter and end in a period. Again, we can add a lint to enforce this requirement.</p>
+	<pre class="language-javascript"><code class="language-javascript">module.exports = {
     id: 'local',
     assertions: {
         descriptionIsFormatted: (value, options, location) =&gt; {
@@ -119,46 +112,50 @@ client.dns.records.list(...)
             return [{message: 'Descriptions should start with a capital and end in a period.', location}];
         },
     },
-};
-</code></pre>
-	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-	<pre><code class="language-yaml">rule/security-options-defined:
+};</code></pre>
+
+	<pre class="language-yaml"><code class="language-yaml">rule/security-options-defined:
   severity: error
   subject:
     type: Schema
     property: description
   assertions:
-    local/descriptionIsFormatted: {}
-</code></pre>
-	<!--kg-card-end: markdown-->
+    local/descriptionIsFormatted: {}</code></pre>
 	<p>This makes shipping endpoints of the same quality much easier and prevents teams needing to sort through all the API design or resiliency patterns we may have introduced over the years – possibly even before they joined Cloudflare.</p>
-	<h2 id="building-the-generation-machine">Building the generation machine</h2>
+	<h2>Building the generation machine</h2>
 	<p>Once we had our guiding principles, we started doing some analysis of our situation and saw that if we decided to build the solution entirely in house, we would be at least 6–9 months away from a single high quality SDK with the potential for additional follow-up work each time we had a new language addition. This wasn’t acceptable and prevented us from meeting the requirement of needing a low-cost followup for additional languages, so we explored the OpenAPI generation landscape.</p>
 	<p>Due to the size and complexity of our schemas, we weren’t able to use most off the shelf products. We tried a handful of solutions and workarounds, but we weren’t comfortable with any of the options; that was, until we tried <a href="https://www.stainlessapi.com">Stainless</a>. Founded by one of the engineers that built what many consider to be the best-in-class API experiences at Stripe, Stainless is dedicated to generating SDKs. If you've used the OpenAI <a href="https://github.com/openai/openai-python">Python</a> or <a href="https://github.com/openai/openai-node">Typescript</a> SDKs, you've used an SDK generated by Stainless.</p>
-	<p>The way the platform offering works is that you bring your OpenAPI schemas and map them to methods with the configuration file. Those inputs then get fed into the generation engine to build your SDKs.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-yaml">resources:
+	<p>The way the platform offering works is that you bring your OpenAPI schemas and map them to methods with the configuration file. Those inputs then get fed into the generation engine to build your SDKs.</p>
+	<pre class="language-yaml"><code class="language-yaml">resources:
   zones:
     methods:
-      list: get /zones
-</code></pre>
-	<!--kg-card-end: markdown-->
+      list: get /zones</code></pre>
 	<p>The configuration above would allow you to generate various <code>client.zones.list()</code> operations across your SDKs.</p>
 	<p>This approach means we can do the majority of our changes using the existing API schemas, but if there is an SDK-specific issue, we can modify that behavior on a per-SDK basis using the configuration file.</p>
 	<p>An added benefit of using the Stainless generation engine is that it gives us a clear line of responsibility when discussing where a change should be made.</p>
 	<ul>
-		<li><strong>Service team:</strong> Knows their service best and manages the representation for end users.</li>
-		<li><strong>API team:</strong> Understands and implements best practices for APIs and SDK conventions, builds centralized tooling or components within the platform for all teams, and translates service mappings to align with Stainless.</li>
-		<li><strong>Stainless:</strong> Provides a simple interface to generate SDKs consistently.</li>
+		<li>
+			<p><b>Service team:</b> Knows their service best and manages the representation for end users.</p>
+		</li>
+		<li>
+			<p><b>API team:</b> Understands and implements best practices for APIs and SDK conventions, builds centralized tooling or components within the platform for all teams, and translates service mappings to align with Stainless.</p>
+		</li>
+		<li>
+			<p><b>Stainless:</b> Provides a simple interface to generate SDKs consistently.</p>
+		</li>
 	</ul>
 	<p>The decision to use Stainless has allowed us to move our focus from building the generation engine to instead building high-quality schemas to describe our services. In the span of a few months, we have gone from inconsistent, manually maintained SDKs to automatically shipping three language SDKs with hands-off updates freely flowing from the internal teams. Best of all, it is now a single pull request workflow for the majority of our changes – even if we were to add a new language or integration to the pipeline!</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/04/image2-17.png" class="kg-image" alt="Just a single pull request is now required to ship an SDK change." loading="lazy" width="1338" height="1226">
-		<figcaption><em>Just a single pull request is now required to ship an SDK change.</em></figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pcaHSceyj5ah8LygAlB3Y/c566547a42cce1272ea3dd6cd009fbd2/image2-17.png" alt="Just a single pull request is now required to ship an SDK change." class="kg-image" width="1338" height="1226" loading="lazy">
+
 	</figure>
-	<h2 id="lessons-from-our-journey-for-yours">Lessons from our journey, for yours</h2>
-	<h3 id="mass-updates-made-easy">Mass updates, made easy</h3>
+	<p><i>Just a single pull request is now required to ship an SDK change.</i></p>
+	<h2>Lessons from our journey, for yours</h2>
+	<h3>Mass updates, made easy</h3>
 	<p>Depending on the age of your APIs, you will have a diverging history of how they are represented to customers. That may be as simple as path parameters being inconsistent or perhaps something more complex like different HTTP methods for updates. While you can handle these individually at any sort of scale, that just isn’t feasible. As of this post, Cloudflare offers roughly 1,300 publicly documented endpoints, and we needed a more automatable solution. For us, that was codemods. Codemods are a way of applying transformations to perform large scale refactoring of your codebase. This allows you to programmatically rewrite expressions, syntax or other parts of your code without having to manually go through every file. Think of it like find and replace, but on steroids and with more context of the underlying language constructs.</p>
-	<p>We started with a tool called <a href="https://comby.dev">comby</a>. We wrapped it in a custom CLI tool that knew how to speak to our version control endpoints and wired it in a way that provides a comby configuration TOML file, pull request description, and commit message for each transformation we needed to apply. Here is a sample comby configuration where we updated the URI paths to be consistently suffixed with _id instead of other variations (<code>_identifier</code>, <code>Identifier</code>, etc.) where we had a plural resource followed by an individual identifier.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-toml">[account-id-1-path-consistency]
+	<p>We started with a tool called <a href="https://comby.dev">comby</a>. We wrapped it in a custom CLI tool that knew how to speak to our version control endpoints and wired it in a way that provides a comby configuration TOML file, pull request description, and commit message for each transformation we needed to apply. Here is a sample comby configuration where we updated the URI paths to be consistently suffixed with _id instead of other variations (<code>_identifier</code>, <code>Identifier</code>, etc.) where we had a plural resource followed by an individual identifier.</p>
+	<pre class="language-toml"><code class="language-toml">[account-id-1-path-consistency]
 match = 'paths/~accounts~1{account_identifier1}'
 rewrite = 'paths/~accounts~1{account_id}'
 
@@ -177,22 +174,18 @@ rule = 'where rewrite :[id] { :[x] -&gt; :[topic] }, rewrite :[id] { /:[x]s/ -&g
 
 [property-identifier-to-id]
 match = 'name: :[topic]_identifier'
-rewrite = 'name: :[topic]_id'
-</code></pre>
-	<!--kg-card-end: markdown-->
+rewrite = 'name: :[topic]_id'</code></pre>
 	<p>For an interactive version of this configuration, check out the <a href="https://comby.live/#%7B%22source%22:%22/zones/%7Bfoo%7D/rulesets/phases/%7Bbar%7D/entrypoint/versions/%7Bbaz%7D%22,%22match%22:%22:%5Btopic~/%5C%5Cw%2B/%5D%7B:%5Bid~%5C%5Cw%2B%5D%7D%22,%22rule%22:%22where%20rewrite%20:%5Bid%5D%20%7B%20:%5Bx%5D%20-%3E%20:%5Btopic%5D%20%7D,rewrite%20:%5Bid%5D%20%7B%20/:%5Bx%5Ds/%20-%3E%20:%5Bx%5D_id%20%7D%22,%22rewrite%22:%22:%5Btopic%5D%7B:%5Bid%5D%7D%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D">comby playground</a>.</p>
 	<p>This approach worked for the majority of our internal changes. However, knowing how difficult migrations can be, we also wanted a tool that we could provide to customers to use for their own SDK migrations. In the past we’ve used <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-3-upgrade">comby for upgrades in the Terraform Provider</a> with great feedback. While comby is powerful, once you start using more complex expressions, the syntax can be difficult to understand unless you are familiar with it.</p>
-	<p>After looking around, we eventually found <a href="https://www.grit.io">Grit</a>. It is a tool that does everything we need (including the custom CLI) while being very familiar to anyone that understands basic Javascript through a query language, known as <a href="https://docs.grit.io/tutorials/gritql">GritQL</a>. An added bonus here is that we are able to contribute to the <a href="https://docs.grit.io/patterns">Grit Pattern Library</a>, so our migrations are <a href="https://app.grit.io/studio?preset=cloudflare_go_v2&amp;key=nt_BGTed1mbXzuvxZ9n2q">only ever a single CLI invocation away</a> for anyone to use once they have the CLI installed.</p><!--kg-card-begin: markdown-->
-	<pre><code>// Migrate to the Golang v2 library 
-grit apply cloudflare_go_v2
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<h3 id="consistency-consistency-consistency">Consistency, consistency, consistency</h3>
+	<p>After looking around, we eventually found <a href="https://www.grit.io">Grit</a>. It is a tool that does everything we need (including the custom CLI) while being very familiar to anyone that understands basic Javascript through a query language, known as <a href="https://docs.grit.io/tutorials/gritql">GritQL</a>. An added bonus here is that we are able to contribute to the <a href="https://docs.grit.io/patterns">Grit Pattern Library</a>, so our migrations are <a href="https://app.grit.io/studio?preset=cloudflare_go_v2&amp;key=nt_BGTed1mbXzuvxZ9n2q">only ever a single CLI invocation away</a> for anyone to use once they have the CLI installed.</p>
+	<pre class="language-bash"><code class="language-bash">// Migrate to the Golang v2 library 
+grit apply cloudflare_go_v2</code></pre>
+	<h3>Consistency, consistency, consistency</h3>
 	<p>Did I mention consistency is important? Before attempting to feed your OpenAPI schemas into any system (especially a homegrown one), get them consistent with the practices, structures, and how you intend to represent them. This makes determining what is a bug in your generation pipeline vs a bug in your schema much easier. If it’s broken everywhere, it’s the generation pipeline, otherwise it’s an isolated bug to track down in your schema.</p>
 	<p>Having consistency leads into a better developer experience. From our examples above, if your routes always follow the plural resource name followed by an identifier, the end user doesn’t have to think about what the inputs need to be. The consistency and conventions lead them there – even if your documentation is lacking.</p>
-	<h3 id="use-shared-refs-sparingly">Use shared $refs sparingly</h3>
-	<p>It seems like a great idea for reusability at the time of writing them, but when overused, <code>$ref</code>s make finding correct values problematic and lead to <a href="https://en.wikipedia.org/wiki/Cargo_cult_programming">cargo cult</a> practices. In turn, this leads to lower quality and difficult-to-change schemas despite looking more usable from the outset. Consider the following schema example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-yaml">thing_base:
+	<h3>Use shared $refs sparingly</h3>
+	<p>It seems like a great idea for reusability at the time of writing them, but when overused, <code>$ref</code>s make finding correct values problematic and lead to <a href="https://en.wikipedia.org/wiki/Cargo_cult_programming">cargo cult</a> practices. In turn, this leads to lower quality and difficult-to-change schemas despite looking more usable from the outset. Consider the following schema example:</p>
+	<pre class="language-yaml"><code class="language-yaml">thing_base:
   type: object
   required:
     - id
@@ -219,12 +212,10 @@ thing_created_at:
 thing_id:
   type: string
   description: Unique identifier of the resource.
-  example: "2014-01-01T05:20:00Z"
-</code></pre>
-	<!--kg-card-end: markdown-->
+  example: "2014-01-01T05:20:00Z"</code></pre>
 	<p>Did you spot the bug? Have another look at the <code>created_at</code> value. You likely didn’t catch it at first glance, but this is a common issue when needing to reference reusable values. Here, it is a minor annoyance as the documentation would be incorrect (<code>created_at</code> would have the description of <code>updated_at</code>), but in other cases, it could be a completely incorrect schema representation.</p>
-	<p>For us, the correct usage of <code>$ref</code> values is predominantly where you have potential for multiple component schemas that may be used as part of a <code>oneOf</code>, <code>allOf</code> or <code>anyOf</code> directive.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-yaml">dns_record:
+	<p>For us, the correct usage of <code>$ref</code> values is predominantly where you have potential for multiple component schemas that may be used as part of a <code>oneOf</code>, <code>allOf</code> or <code>anyOf</code> directive.</p>
+	<pre class="language-yaml"><code class="language-yaml">dns_record:
   oneOf:
     - $ref: '#/components/schemas/dns-records_ARecord'
     - $ref: '#/components/schemas/dns-records_AAAARecord'
@@ -254,13 +245,11 @@ thing_id:
     - content
     - proxiable
     - created_on
-    - modified_on
-</code></pre>
-	<!--kg-card-end: markdown-->
+    - modified_on</code></pre>
 	<p>When in doubt, consider the <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">YAGNI principle</a> instead. You can always refactor and extract this later once you have enough uses to determine the correct abstraction.</p>
-	<h3 id="design-your-ideal-usage-and-work-backwards">Design your ideal usage and work backwards</h3>
+	<h3>Design your ideal usage and work backwards</h3>
 	<p>Before we wrote a single line of code to solve the problem of generation, we prepared language design documents for each of our target languages that followed the <a href="https://tom.preston-werner.com/2010/08/23/readme-driven-development.html">README-driven</a> design principles. This meant our focus from the initial design was on the usability of the library and not on the technical challenges that we would eventually encounter. This led us to identify problems and patterns early with how various language nuances would surface to the end user without investing in anything more than a document. Python keyword arguments, Go interfaces, how to enforce required parameters, client instantiation and overrides, types – all considerations made up front that helped minimize the number of unknowns as we built out support.</p>
-	<h2 id="what%E2%80%99s-next">What’s next?</h2>
+	<h2>What’s next?</h2>
 	<p>When we embarked on the OpenAPI journey, we knew it was only the beginning and would eventually open more doors and quality of life improvements for teams and customers alike. Now that we have a few language SDKs available, we’re turning our attention to generating our <a href="https://github.com/cloudflare/terraform-provider-cloudflare">Terraform Provider</a> using the same guiding principles to further minimize the maintenance burden. But that’s still not all. Coming later in 2024 are more improvements and integrations with other parts of the Cloudflare Developer Platform, so stay tuned.</p>
 	<p>If you haven’t already, check out one of the SDKs in <a href="https://github.com/cloudflare/cloudflare-go">Go</a>, <a href="https://github.com/cloudflare/cloudflare-typescript">Typescript</a> and <a href="https://github.com/cloudflare/cloudflare-python">Python</a> today. If you’d like support for a different language, go <a href="https://forms.gle/TPQw3eoiRbyQBfEv5">here</a> to submit your details to help determine the next language. We’d love to hear what languages you would like offered as a Cloudflare SDK.</p>
 </div>

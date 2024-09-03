@@ -1,52 +1,80 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/Video-Stream-2.png" class="kg-image" alt="Introducing scheduled deletion for Cloudflare Stream" loading="lazy" width="2400" height="1351"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10sPPw2xxI2L5kofy7hgOJ/744d84018b715882ba371f8ddf8ec4c4/Video-Stream-2.png" alt="Introducing scheduled deletion for Cloudflare Stream" class="kg-image" width="2400" height="1351" loading="lazy">
+
+	</figure>
 	<p>Designed with developers in mind, Cloudflare Stream provides a seamless, integrated workflow that simplifies video streaming for creators and platforms alike. With features like <a href="https://blog.cloudflare.com/stream-live-ga">Stream Live</a> and <a href="https://blog.cloudflare.com/stream-creator-management">creator management</a>, customers have been looking for ways to streamline storage management.</p>
 	<p>Today, August 11, 2023, Cloudflare Stream is introducing scheduled deletion to easily manage video lifecycles from the Stream dashboard or our API, saving time and reducing storage-related costs. Whether you need to retain recordings from a live stream for only a limited time, or preserve direct creator videos for a set duration, scheduled deletion will simplify storage management and reduce costs.</p>
-	<h2 id="stream-scheduled-deletion">Stream scheduled deletion</h2>
+	<h2>Stream scheduled deletion</h2>
 	<p>Scheduled deletion allows developers to automatically remove on-demand videos and live recordings from their library at a specified time. Live inputs can be set up with a deletion rule, ensuring that all recordings from the input will have a scheduled deletion date upon completion of the stream.</p>
 	<p>Let’s see how it works in those two configurations.</p>
-	<h2 id="getting-started-with-scheduled-deletion-for-on-demand-videos">Getting started with scheduled deletion for on-demand videos</h2>
+	<h2>Getting started with scheduled deletion for on-demand videos</h2>
 	<p>Whether you run a learning platform where students can upload videos for review, a platform that allows gamers to share clips of their gameplay, or anything in between, scheduled deletion can help manage storage and ensure you only keep the videos that you need. Scheduled deletion can be applied to both new and existing on-demand videos, as well as recordings from completed live streams. This feature lets you specify a specific date and time at which the video will be deleted. These dates can be applied in the Cloudflare dashboard or via the Cloudflare API.</p>
-	<h3 id="cloudflare-dashboard">Cloudflare dashboard</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/Screenshot-2023-08-11-at-12.49.57.png" class="kg-image" alt="" loading="lazy" width="1594" height="630"></figure>
+	<h3>Cloudflare dashboard</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3D1lNclKMneZTtlGbY2rO9/dba842691f16d1cf5c3811f2add83d1f/Screenshot-2023-08-11-at-12.49.57.png" alt="" class="kg-image" width="1594" height="630" loading="lazy">
+
+	</figure>
 	<ol>
-		<li>From the Cloudflare dashboard, select <strong>Videos</strong> under <strong>Stream</strong></li>
-		<li>Select a video</li>
-		<li>Select <strong>Automatically Delete Video</strong></li>
-		<li>Specify a desired date and time to delete the video</li>
-		<li>Click <strong>Submit</strong> to save the changes</li>
+		<li>
+			<p>From the Cloudflare dashboard, select <b>Videos</b> under <b>Stream</b></p>
+		</li>
+		<li>
+			<p>Select a video</p>
+		</li>
+		<li>
+			<p>Select <b>Automatically Delete Video</b></p>
+		</li>
+		<li>
+			<p>Specify a desired date and time to delete the video</p>
+		</li>
+		<li>
+			<p>Click <b>Submit</b> to save the changes</p>
+		</li>
 	</ol>
-	<h3 id="cloudflare-api">Cloudflare API</h3>
-	<p>The Stream API can also be used to set the scheduled deletion property on new or existing videos. In this example, we’ll create a direct creator upload that will be deleted on December 31, 2023:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">curl -X POST \
--H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \
+	<h3>Cloudflare API</h3>
+	<p>The Stream API can also be used to set the scheduled deletion property on new or existing videos. In this example, we’ll create a direct creator upload that will be deleted on December 31, 2023:</p>
+	<pre class="language-json"><code class="language-json">curl -X POST \
+-H 'Authorization: Bearer <bearer_token>' \
 -d '{ "maxDurationSeconds": 10, "scheduledDeletion": "2023-12-31T12:34:56Z" }' \
-https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/direct_upload 
-</code></pre>
-	<!--kg-card-end: markdown-->
+https://api.cloudflare.com/client/v4/accounts/<account_id>/stream/direct_upload </account_id></bearer_token></code></pre>
 	<p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api">the documentation</a>.</p>
-	<h2 id="getting-started-with-automated-deletion-for-live-input-recordings">Getting started with automated deletion for Live Input recordings</h2>
+	<h2>Getting started with automated deletion for Live Input recordings</h2>
 	<p>We love how recordings from live streams allow those who may have missed the stream to catch up, but these recordings aren’t always needed forever. Scheduled recording deletion is a policy that can be configured for new or existing live inputs. Once configured, the recordings of all future streams on that input will have a scheduled deletion date calculated when the recording is available. Setting this retention policy can be done from the Cloudflare dashboard or via API operations to create or edit Live Inputs:</p>
-	<h3 id="cloudflare-dashboard-1">Cloudflare Dashboard</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image3-3.png" class="kg-image" alt="" loading="lazy" width="846" height="629"></figure>
+	<h3>Cloudflare Dashboard</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2b60PHplltSmxKQQQ3LERW/bc31d2f0e2aae9c95d36a58a1d6777e4/image3-3.png" alt="" class="kg-image" width="846" height="629" loading="lazy">
+
+	</figure>
 	<ol>
-		<li>From the Cloudflare dashboard, select <strong>Live Inputs</strong> under <strong>Stream</strong></li>
-		<li>Select <strong>Create Live Input</strong> or an existing live input</li>
-		<li>Select <strong>Automatically Delete Recordings</strong></li>
-		<li>Specify a number of days after which new recordings should be deleted</li>
-		<li>Click <strong>Submit</strong> to save the rule or create the new live input</li>
+		<li>
+			<p>From the Cloudflare dashboard, select <b>Live Inputs</b> under <b>Stream</b></p>
+		</li>
+		<li>
+			<p>Select <b>Create Live Input</b> or an existing live input</p>
+		</li>
+		<li>
+			<p>Select <b>Automatically Delete Recordings</b></p>
+		</li>
+		<li>
+			<p>Specify a number of days after which new recordings should be deleted</p>
+		</li>
+		<li>
+			<p>Click <b>Submit</b> to save the rule or create the new live input</p>
+		</li>
 	</ol>
-	<h3 id="cloudflare-api-1">Cloudflare API</h3>
-	<p>The Stream API makes it easy to add a deletion policy to new or existing inputs. Here is an example API request to create a live input with recordings that will expire after 30 days:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">curl -X POST \
--H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \
+	<h3>Cloudflare API</h3>
+	<p>The Stream API makes it easy to add a deletion policy to new or existing inputs. Here is an example API request to create a live input with recordings that will expire after 30 days:</p>
+	<pre class="language-json"><code class="language-json">curl -X POST \
+-H 'Authorization: Bearer <bearer_token>' \
 -H 'Content-Type: application/json' \
 -d '{ "recording": {"mode": "automatic"}, "deleteRecordingAfterDays": 30 }' \
-https://api.staging.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/live_inputs/
-</code></pre>
-	<!--kg-card-end: markdown-->
+https://api.staging.cloudflare.com/client/v4/accounts/<account_id>/stream/live_inputs/</account_id></bearer_token></code></pre>
 	<p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api">the documentation</a>.</p>
-	<h2 id="try-out-scheduled-deletion-today">Try out scheduled deletion today</h2>
+	<h2>Try out scheduled deletion today</h2>
 	<p>Scheduled deletion is now available to all Cloudflare Stream customers. Try it out now and join our <a href="https://discord.gg/cloudflaredev">Discord community</a> to let us know what you think! To learn more, check out our <a href="https://developers.cloudflare.com/stream">developer docs</a>. Stay tuned for more exciting Cloudflare Stream updates in the future.</p>
 </div>

@@ -1,33 +1,48 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sNHpO90eVf0GlbnVrkQZF/de926d6f0d5f17d2aeb3f4769ad9e9c9/ddos-prevention-protecting-the-origin.png" alt="">
+<div class="post-content lh-copy gray1">
 	<p>One of the many great features that CloudFlare provides is protection from Distributed Denial of Service (DDoS) attacks. A malicious party who wants to make your website or web service unavailable could try to overwhelm it with requests from compromised machines (or bots) all around the world. With a large enough volume of requests, your server may become overloaded and not be able to provide its services to legitimate clients. This is the typical scenario in a denial of service attack.</p>
-	<p>The attacking machines use the public domain name service (DNS) to look up the IP address that hosts your domain (www.sample.com) and send their traffic to that machine hoping to shut it down.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/ddos-illustrations-1.png"></p>
+	<p>The attacking machines use the public domain name service (DNS) to look up the IP address that hosts your domain (<a href="http://www.sample.com">www.sample.com</a>) and send their traffic to that machine hoping to shut it down.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fVd553julXuB9kmooRfPG/af55f8278d1048a98b627b7d1d04ba23/ddos-illustrations-1.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
+
+	</figure>
 	<p>Signing up for CloudFlare is like taking your number out of the phone book, and putting in CloudFlare’s number under your name. When someone attempts to look up who hosts your domain, DNS will return an IP address in the CloudFlare network. If an attacker tries to take down your site, their traffic will go to CloudFlare machines around the world instead of directly to your web server. The CloudFlare network acts as a filter to block bad traffic and only send legitimate traffic through to your origin server.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/ddos-illustrations-2.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oj0yH5BAuEHugMapuqEae/3ffa251b641efa8741504eab10ad10a6/ddos-illustrations-2.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
+
+	</figure>
 	<p>Just as removing your phone number from the phone book won't stop telemarketers from calling it, enabling CloudFlare doesn't stop clever attackers who know your IP address from sending traffic to it directly. Just because your origin server's IP address is no longer advertised over DNS, it's still connected to the internet. If your IP address is not kept secret, attackers can bypass the CloudFlare network and attack your servers directly.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/ddos-illustrations-3.png"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HC0BFpxlmKQ3ULa6yYdQH/67f2dcbdfa0930914fe1e601ba89bf36/ddos-illustrations-3.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
+
+	</figure>
 	<p>Here are some helpful tips to help keep your origin IP secure to protect against clever attackers who want to bypass CloudFlare’s <a href="https://www.cloudflare.com/ddos">DDoS protection</a>:</p>
-	<h4 id="keepallsubdomainsoncloudflare">Keep all subdomains on CloudFlare</h4>
+	<h4>Keep all subdomains on CloudFlare</h4>
 	<p>When you sign up for CloudFlare, CloudFlare automatically adds a 'direct' subdomain. The 'direct' subdomain does not get the benefit of the CloudFlare proxy service by default. For maximum security, you should rename the 'direct' subdomain to something that can't be guessed easily or remove it altogether. Otherwise, an attacker can use the subdomain to look up your origin IP address. If you receive email for the domain signed up with CloudFlare use a separate server for mail; if not the MX record would reveal the IP address of your server.</p>
-	<h4 id="wildcardsubdomains">Wildcard subdomains</h4>
+	<h4>Wildcard subdomains</h4>
 	<p>CloudFlare powers DNS for wildcard subdomains, but only offers the performance and security proxy service for wildcard subdomains at the Enterprise level. As a result, if you are a Free, Pro or Business customer, wildcard subdomain records can not be proxied through CloudFlare and should be removed for DDoS protection. Otherwise, an attacker could use the wildcard subdomains to look up your origin IP.</p>
-	<h4 id="reviewdnsrecords">Review DNS records</h4>
+	<h4>Review DNS records</h4>
 	<p>None of the DNS records should contain any mention of the origin IP. Take a close look at any SPF and TXT records to make sure they do not contain any information about the origin.</p>
-	<h4 id="donthostmailorotherservicesonthesameserverasyourwebserver">Don't host mail or other services on the same server as your web server</h4>
+	<h4>Don't host mail or other services on the same server as your web server</h4>
 	<p>If your mail server hosted by the same IP as your http server, an attacker could find the IP address from an outgoing email. For example, an attacker could send an email to a non-existent email address on your server causing a bounce; the bounce might contain the IP address of your server in its headers.</p>
-	<h4 id="neverinitiateanoutboundconnectionbasedonuseraction">Never initiate an outbound connection based on user action</h4>
+	<h4>Never initiate an outbound connection based on user action</h4>
 	<p>If the attacker can get your web server to connect to an arbitrary address, they will reveal your origin IP. Features like "upload from URL" that allow the user to upload a photo from a given URL should be configured so that the server doing the download is not the website origin server. This is important because if an attacker can choose the URL entered, they can set up a web site specifically to monitor who connects to it, or use a public service that monitors the IPs that contact unique URLs.</p>
-	<h4 id="informationdisclosurevulnerabilities">Information disclosure vulnerabilities</h4>
+	<h4>Information disclosure vulnerabilities</h4>
 	<p>Make sure that your web server and web application are patched against all known information disclosure vulnerabilities.</p>
-	<h4 id="changeyouroriginiponceconfiguredformaximumddosprotectiononcloudflare">Change your origin IP once configured for maximum DDoS protection on CloudFlare</h4>
+	<h4>Change your origin IP once configured for maximum DDoS protection on CloudFlare</h4>
 	<p>DNS records are public domain and there are many places where historical records are archived. These historical DNS records will contain your original IP from before signing up with CloudFlare. If you are a target, the attacker probably already has your previous DNS record.</p>
-	<h4 id="additionalsecurityresources">Additional security resources</h4>
+	<h4>Additional security resources</h4>
 	<p>If you are concerned about security, review these two documents that outline advanced security steps for CloudFlare users.</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/learning/security/how-to-secure-a-website">General Website Security Guidelines</a></li>
-		<li><a href="https://support.cloudflare.com/entries/24111221">I'm Under DDoS Attack, What do I do?</a></li>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/security/how-to-secure-a-website">General Website Security Guidelines</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/entries/24111221">I'm Under DDoS Attack, What do I do?</a></p>
+		</li>
 	</ul>
 	<p>Security is tough. Attackers only need to find one flaw or weakness in order to do a lot of damage. Following these steps will help keep your origin IP address private and help CloudFlare <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">prevent DDoS attacks</a> against your site.</p>
-	<!--kg-card-end: markdown-->
 </div>

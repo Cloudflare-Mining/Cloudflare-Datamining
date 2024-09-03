@@ -1,26 +1,35 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-to-connect-your-offices-to-cloudflare-using-sd-wan-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/how-to-connect-your-offices-to-cloudflare-using-sd-wan-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/it-it/how-to-connect-your-offices-to-cloudflare-using-sd-wan-id-id">bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/how-to-connect-your-offices-to-cloudflare-using-sd-wan-th-th">ไทย</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-11.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-to-connect-your-offices-to-cloudflare-using-sd-wan">简体中文</a>, <a href="https://blog.cloudflare.com/id-id/how-to-connect-your-offices-to-cloudflare-using-sd-wan">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/how-to-connect-your-offices-to-cloudflare-using-sd-wan">ไทย</a> and <a href="https://blog.cloudflare.com/ja-jp/how-to-connect-your-offices-to-cloudflare-using-sd-wan">日本語</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x6pmloonTaQPqHWhy7yfG/3be6a66f1571c23750f23115b6adda22/image2-11.png" alt="" class="kg-image" width="1810" height="1022" loading="lazy">
+
+	</figure>
 	<p>Many offices will soon be re-opening and, just as two years ago when the shift to remote work brought a paradigm change for IT and networking teams, the return to office will bring its own challenges. Two years ago, Chief Information Officers faced a surprise fire drill enabling a completely remote workforce nearly overnight. As companies start to experiment with hybrid working models, IT teams are facing new problems. They are not just re-opening existing branches and potentially activating new ones to enable greater distribution of a more flexible workforce, but also ensuring users have a consistent experience regardless of where they’re connecting. All of this occurs while maintaining visibility and security across an increasingly complex and hard to maintain corporate network.</p>
 	<p>Some companies have adopted SD-WAN technology to help solve these problems. SD-WAN, or software-defined wide-area networking, is a flexible way to interconnect branches and corporate headquarters together using software as an overlay to various hardware platforms. Deploying SD-WAN can make IT and network teams’ lives simpler by consolidating management tasks and abstracting away the complexity of router configuration. SD-WAN platforms often include a central “orchestrator” that holds information about connected locations.</p>
-	<h3 id="sd-wan-as-management-overlay-for-your-corporate-network">SD-WAN as Management Overlay for your Corporate Network</h3>
+	<h3>SD-WAN as Management Overlay for your Corporate Network</h3>
 	<p>Traditionally, network teams connected branches to the corporate network through a complex and interconnected architecture, which involved specific hardware and software dependencies and sometimes even dedicated or leased links between locations. This setup is expensive and complex to get off the ground and makes activating new and existing branches a slow process. Cloudflare One is built on our performant and resilient global Anycast network, enabling customers to leverage our global network in 250+ cities as your corporate backbone. This means all you need to do is connect your infrastructure to Cloudflare’s global Anycast network from any location you desire, and you’re instantly connected to all other locations. Simple.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-6.png" class="kg-image" alt="Figure 1. The New Corporate Backbone" loading="lazy">
-		<figcaption>Figure 1. The New Corporate Backbone</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dM55ENR9XXsmCi9ctiFUf/eb6d966c505c68acba79404f0e8b539b/image3-6.png" alt="Figure 1. The New Corporate Backbone" class="kg-image" width="607" height="516" loading="lazy">
+
 	</figure>
-	<h3 id="but-how-exactly-do-you-connect-your-offices-to-cloudflare-s-global-network">But how exactly do you connect your offices to Cloudflare’s global network?</h3>
+	<p>Figure 1. The New Corporate Backbone</p>
+	<h3>But how exactly do you connect your offices to Cloudflare’s global network?</h3>
 	<p>Today, a more modern approach is to use SD-WAN to configure your networks and connect them to Cloudflare’s network, leveraging that as the new corporate backbone. It's quick and easy! We use industry standard tunneling protocols in an innovative way, which you can learn more about from the <a href="https://blog.cloudflare.com/anycast-ipsec">Anycast IPsec</a> blog.</p>
 	<p>For a detailed tutorial, check out developer docs to <a href="https://developers.cloudflare.com/magic-wan/tutorials/secure-web-gateway">Connect to Secure Web Gateway with Magic WAN</a>.</p>
-	<h3 id="keeping-things-performant-secure">Keeping things Performant &amp; Secure</h3>
+	<h3>Keeping things Performant &amp; Secure</h3>
 	<p>In the past, organizations had to leverage leased lines and MPLS to stitch their networks together. These were dedicated paths and links to provide stable and performant connections for corporate traffic.</p>
-	<p>When using Cloudflare’s network as your backbone, you don’t sacrifice performance but instead benefit from a <a href="https://blog.cloudflare.com/argo-v2">global optimized WAN</a> <em>without</em> the exorbitant cost or management overhead of MPLS and leased lines. This means performance and reliability at least on par with, if not better than, your existing connections.</p>
+	<p>When using Cloudflare’s network as your backbone, you don’t sacrifice performance but instead benefit from a <a href="https://blog.cloudflare.com/argo-v2">global optimized WAN</a> <i>without</i> the exorbitant cost or management overhead of MPLS and leased lines. This means performance and reliability at least on par with, if not better than, your existing connections.</p>
 	<p>Although performant connectivity is only part of the story, the underlying network, whatever it may be, still has to be secure. Traffic over Cloudflare’s network is always secure; end to end for your traffic, branches, and users both in the office and remote. Traffic is encrypted and can be filtered across the entire network for a complete <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> and Zero Trust firewall.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-3.png" class="kg-image" alt="Figure 2. Cloudflare Zero Trust Networking" loading="lazy">
-		<figcaption>Figure 2. Cloudflare Zero Trust Networking</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L2on2DxItTGyVOfuaxoUl/a0218fd8eb87c43d3a4d707a65f849dc/unnamed-3.png" alt="Figure 2. Cloudflare Zero Trust Networking" class="kg-image" width="1211" height="753" loading="lazy">
+
 	</figure>
-	<h3 id="easier-management-greater-flexibility">Easier Management &amp; Greater Flexibility</h3>
+	<p>Figure 2. Cloudflare Zero Trust Networking</p>
+	<h3>Easier Management &amp; Greater Flexibility</h3>
 	<p>Using standard tunneling protocols means that not only can you use your SD-WAN products, but you can also use any routers or devices that support tunneling protocols (GRE &amp; IPsec) to get connected. If you are part way through an SD-WAN transformation, or have multiple platforms as a result of mergers and acquisitions, or if you just want to spin up small offices quickly, we’ve got you covered!</p>
 	<p>And with everything connected to Cloudflare, you now have a central control plane for all of your traffic, not just intersite but also traffic to and from the Internet.</p>
 	<p>To make things even easier we're collaborating with SD-WAN partners like Aruba Networks, VMware VeloCloud, Infovista, and others to make it even easier to onramp traffic from their SD-WAN platforms with just a few clicks. Stay tuned for future updates.</p>

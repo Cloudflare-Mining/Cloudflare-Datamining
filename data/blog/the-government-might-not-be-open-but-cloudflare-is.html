@@ -1,30 +1,43 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/obama.gif"></p>
-	<p><em>The following is a guest blog post by&nbsp;</em><a href="https://twitter.com/michaeltomko"><em>Michael Tomko</em></a><em>, Production Director at&nbsp;</em><a href="http://theablefew.com"><em>The Able Few</em></a><em>. Michael has been using CloudFlare for a number of his projects for the last few years.</em></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/184UHrq1nPBICledLBNhbb/c670c44e005ad597ac945f95915ed24f/obama.gif" alt="" class="kg-image" width="400" height="300" loading="lazy">
+
+	</figure>
+	<p><i>The following is a guest blog post by</i>&nbsp;<a href="https://twitter.com/michaeltomko"><i>Michael Tomko</i></a><i>, Production Director at</i>&nbsp;<a href="http://theablefew.com"><i>The Able Few</i></a><i>. Michael has been using CloudFlare for a number of his projects for the last few years.</i></p>
 	<p>A few years ago, amidst the final crunch of a project deadline, a friend and former colleague looked me directly in the eye and said, "It's like I don't even know how to build a website anymore." He was of course referring to the combination of configuration, tuning, testing, and other tedious tasks that are necessary to deploy an otherwise simple website in a world of CMS's, responsive images, and web fonts. That comment has stuck with me ever since because as a developer I often find it very difficult to stand up to the pressure of having to use the latest libraries and techniques, optimized to the hilt, just to do something very rudimentary.</p>
 	<p>Flash-forward to the night of September 30th...Having just finished watching The Voice — the TV was turned up way louder than usual — my wife and I found ourselves under siege by the roar of TV news personalities bickering about the imminent government shutdown. This obviously led to us discussing what the shutdown really meant and many comments about how ridiculous it all seemed.</p>
-	<p>I suddenly remembered the silly, single-serve websites like&nbsp;<a href="https://isitchristmas.com">Is It Christmas</a>&nbsp;or&nbsp;<a href="http://www.ismittromneythepresident.com">Is Mitt Romney The President</a>&nbsp;and the idea popped into my head to see if there were any for the&nbsp; #shutdown. A few minutes later,&nbsp;<a href="https://instagram.com/p/e6D_wuzcvr">I Instagrammed a screenshot</a>&nbsp;of the&nbsp;<a href="https://hover.com/lO64iUFh">Hover.com</a>&nbsp;results for "<a href="http://isthegovernmentopen.com">isthegovernmentopen.com</a>" showing that it was in fact available. This immediately led to a smattering of "<em>Do It!</em>" comments and the normal "<em>You're Insane</em>" glare from my wife, so of course I had to go for it.</p>
-	<h3 id="findingtheperfectgif">Finding the perfect GIF</h3>
+	<p>I suddenly remembered the silly, single-serve websites like&nbsp;<a href="https://isitchristmas.com">Is It Christmas</a>&nbsp;or&nbsp;<a href="http://www.ismittromneythepresident.com">Is Mitt Romney The President</a>&nbsp;and the idea popped into my head to see if there were any for the&nbsp; #shutdown. A few minutes later,&nbsp;<a href="https://instagram.com/p/e6D_wuzcvr">I Instagrammed a screenshot</a>&nbsp;of the&nbsp;<a href="https://hover.com/lO64iUFh">Hover.com</a>&nbsp;results for "<a href="http://isthegovernmentopen.com">isthegovernmentopen.com</a>" showing that it was in fact available. This immediately led to a smattering of "<i>Do It!</i>" comments and the normal "<i>You're Insane</i>" glare from my wife, so of course I had to go for it.</p>
+	<h3>Finding the perfect GIF</h3>
 	<p>There was a big part of me though that wasn't going to do it. I really didn’t think that the typical giant "NO" was going to make it worth the time and if I was going to buy yet ANOTHER domain, it had to be worth it. That's when I re-stumbled upon this amazing, near-perfect loop of President Obama being locked out in the White House rose garden.</p>
 	<p>You see, I have a few other "giant GIF" website—&nbsp;<a href="http://bummersauce.com">Bummersauce.com</a>&nbsp;and&nbsp;<a href="http://howmuchismoney.com">HowMuchIsMoney.com</a>&nbsp;— which were created to be the perfect one-liner response to someone complaining on social media, and this GIF of the President was the absolute best response to people posting comments about the shutdown. Plus, I think that it brought a fairly unique sense of bipartisan levity to the situation.</p>
-	<h3 id="quickandeasy">Quick and easy</h3>
+	<h3>Quick and easy</h3>
 	<p>But, this is where I had to make myself comfortable with hitting the "Easy Button", so-to-speak, and to not waste a bunch of time over-engineering the thing. I didn't need a CMS. I didn't need any special fonts. I just needed a single HTML file, a few lines of CSS, and the GIF.</p>
 	<p>Within something like 30 minutes from the time that my initial Instagram went up, I had acquired the domain, built the site, run 2 simple commands to publish it to <a href="https://github.com">GitHub</a> Pages, and had it on CloudFlare's worldwide CDN. IsTheGovernmentOpen.com was built and out the door in a matter of minutes.</p>
-	<h3 id="goingviral">Going viral</h3>
+	<h3>Going viral</h3>
 	<p>Originally, I thought that it would get a few hundred hits and be passed around by my friends here in St. Louis. But, by time that I went to bed that night, it already had 3,500 page views. I woke up to another 3,000 and something like 7,000 came in just during my morning commute. Immediately I knew that this was bigger than I could have expected and I was basically waiting for GitHub to call and tell me that they were shutting me/it down.</p>
-	<p>Well, about 11:30am UTC&nbsp;<a href="http://nymag.com/daily/intelligencer/2013/10/government-shutdownpocalypse-live-blog.html">New York Magazine included the site in their government shutdown liveblog</a>&nbsp;and traffic soared to something like 1200 concurrent users — and stayed that way for over 6 hours.&nbsp;But GitHub never called and the site stayed up.<br>
-		<img alt="" src="https://blog.cloudflare.com/content/images/current-users.png">
-	</p>
+	<p>Well, about 11:30am UTC&nbsp;<a href="http://nymag.com/daily/intelligencer/2013/10/government-shutdownpocalypse-live-blog.html">New York Magazine included the site in their government shutdown liveblog</a>&nbsp;and traffic soared to something like 1200 concurrent users — and stayed that way for over 6 hours.&nbsp;But GitHub never called and the site stayed up.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RKzNHycE0XCKtO7IhjFqW/67685d8ae0741633c61b9bec9dd79d05/current-users.png" alt="" class="kg-image" width="1112" height="518" loading="lazy">
+
+	</figure>
 	<p>Throughout the first two days, IsTheGovernmentOpen.com survived being simultaneously linked to by NY Magazine,&nbsp;<a href="http://mashable.com/2013/10/01/government-shutdown-social-media">Mashable</a>,&nbsp;<a href="https://thisistheverge.tumblr.com/post/62830979727/is-the-government-open-bookmark-it-via">The Verge</a>,&nbsp;<a href="http://www.pophangover.com/33037/want-to-know-whats-going-on-in-washington">Pophangover</a>, the&nbsp;<a href="http://www.niemanlab.org/2013/10/is-the-government-shut-down-quartz-will-tell-you-and-drive-a-little-traffic-in-the-process">Harvard Nieman Lab</a>, Vice, and nearly every funny GIF site imaginable, two separate posts staying on the front page of Reddit for almost 24 hours, being shared on Facebook 5,177 times, and over 3,969 tweets from many highly influential Twitter users,&nbsp;<a href="https://twitter.com/youranonnews/status/385482395505684480">including Anonymous</a>.</p>
-	<h3 id="howcloudflarehelped">How CloudFlare helped</h3>
+	<h3>How CloudFlare helped</h3>
 	<p>Up until this week, CloudFlare had been the simple DNS provider and no-assembly-required CDN that I would use to keep my&nbsp;<a href="http://undercoverweekend.com">annual event's site</a>&nbsp;up on commodity servers, the go-to recommendation for our clients when setting up DNS for their projects, and the cool suggestion as a starting place for my peers if they were complaining about issues with their site's performance. But, throughout the onslaught that IsTheGovernmentOpen.com threw at my free CloudFlare and GitHub accounts this week, this is where I truly realized the power of CloudFlare.</p>
 	<p>It sort of felt like that scene from X-Men 2 movie when Jean Grey turned into the Phoenix to save the rest of the X-Men from being swallowed by a giant tidal wave. CloudFlare quite literally had my back and they were taking quite a punch on my behalf.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Jean-Grey-Phoenix-X2-Screencaps-x-men-34594515-500-281.jpg"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JYRxuQ1P6LF0g667vsayd/da6a65c00013a18f1face8ea0ebbbf9f/Jean-Grey-Phoenix-X2-Screencaps-x-men-34594515-500-281.jpg" alt="" class="kg-image" width="500" height="281" loading="lazy">
+
+	</figure>
 	<p>All in all, this site never would have happened if CloudFlare —&nbsp;and GitHub —&nbsp;didn't provide such simple-to-use services that were also worth using, even on the free tier. Not only did they provide a very snappy and robust experience for my users but they also kept the site up for the entire duration of giant traffic spikes.</p>
 	<p>At&nbsp;<a href="http://theablefew.com">The Able Few</a>, pretty much none of our projects are just simple single-serve, GIF-based websites. In fact, we don’t really even build websites at all. Working with many early-stage startups — like&nbsp;<a href="http://fizziolo.gy">Fizziology</a>,&nbsp;<a href="http://www.clickwithmenow.com">Click With Me Now</a>, and&nbsp;<a href="https://www.tunespeak.com">Tunespeak</a>&nbsp;— we build a lot of very complicated and seemingly never-been-done-before type of applications. It is NOT our desire to spend time setting up and maintaining the things that CloudFlare provides with just a few clicks. And, if time is money, then CloudFlare basically pays you to use their service. I like that.</p>
 	<p>If you haven't yet signed up for an account, you can be up and running in a matter of minutes and will immediately see a benefit, but if you already have an account, well then you probably know what I'm talking about.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/isthegovernmentopen.png"></p>
-	<p></p>
-	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1T8JJex1tBvg3n5P5zlaU7/c6638d9b99e8c65cbf315564580d3ec6/isthegovernmentopen.png" alt="" class="kg-image" width="1500" height="7813" loading="lazy">
+
+	</figure>
 </div>

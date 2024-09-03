@@ -1,11 +1,14 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="EveryDNS Magic Data Liberation Bookmarklet" src="https://blog.cloudflare.com/content/images/data_liberation_bookmarklet.png.scaled500.png" title="EveryDNS Magic Data Liberation Bookmarklet"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oHhNDCpiYOKAJGo2Zfvvw/249b0f012677d82fc8c45003423612cf/data_liberation_bookmarklet.png.scaled500.png" alt="EveryDNS Magic Data Liberation Bookmarklet" class="kg-image" width="500" height="264" loading="lazy">
+
+	</figure>
 	<p>At CloudFlare, we believe in giving control back to website owners. This includes the idea that our users' data is theirs. One of the first functions we built was the ability for CloudFlare users to export their DNS files as an industry-standard BIND file. If you're not happy with CloudFlare, we want to make it easy for you to "vote with your feet" and go to another service. Artificial lock in is bad not only because it alienates your customers in the long run, but also because it obscures accurate metrics on how good a job you're doing. People should stay because they love your service and, if they don't stay, that is a terrific metric to let you know you need to improve.</p>
 	<p>Unfortunately, not every company shares this view. DynDNS recently announced that they were shutting down EveryDNS, a company that David Ulevitch built that offers a fantastic, free DNS service. As part of the shut down, they were requiring its users to pay to export their data. When we heard about this, one of our engineers took a few hours to hack up a Data Liberation Tool that allowed EveryDNS users to easily export their data.</p>
 	<p>You can see the Data Liberation Tool here: <a href="https://www.cloudflare.com/everydns">https://www.cloudflare.com/everydns</a></p>
 	<p>The folks at DynDNS didn't seem to like this very much and threw up a CAPTCHA on the signup page. So we created the Data Liberation Bookmarklet. First, if you're an EveryDNS user, visit <a href="https://www.cloudflare.com/everydns">this page</a> and follow the instructions. You'll need to create the bookmark and then login to EveryDNS and click it.</p>
 	<p>What happens next is we pull the data from EveryDNS and add it to your CloudFlare account. If you want to use CloudFlare, the last step is to update your name servers to point to us. With CloudFlare, there are no fees to pay and you get globally distributed, Anycast DNS and more.</p>
 	<p>But here's the real point: there's no need to use CloudFlare if you don't want to. With one more click you can select the option to export your BIND file and then use some other DNS provider. If you're an EveryDNS user, we encourage you to give the <a href="https://www.cloudflare.com/everydns">Data Liberation Tool</a> a try if nothing more than to create a backup of your DNS records so you'll never be held hostage again.</p>
-	<!--kg-card-end: markdown-->
 </div>

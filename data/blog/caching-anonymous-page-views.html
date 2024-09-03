@@ -1,16 +1,31 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/17222688041_2f31eb49a5_c.jpg" alt="UK Smart Motorway" loading="lazy"> <em>M42 Smart Motorway in the West Midlands, UK; courtesy of <a href="https://www.flickr.com/photos/highwaysengland/17222688041/in/album-72157658694793213">Highways England</a>.</em></p>
+<div class="mb2 gray5">2 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15qxOyYlGn1jOr3QH2dwx7/9ab3bcbbf797216fa3b5b0cc61f22617/17222688041_2f31eb49a5_c.jpg" alt="UK Smart Motorway" class="kg-image" width="800" height="534" loading="lazy">
+
+	</figure>
+	<p> <i>M42 Smart Motorway in the West Midlands, UK; courtesy of </i><a href="https://www.flickr.com/photos/highwaysengland/17222688041/in/album-72157658694793213"><i>Highways England</i></a><i>.</i></p>
 	<p>The load time of your website not only affects your search engine rankings, but is also correlated to the conversion rate on your site:</p>
 	<ul>
-		<li>Walmart.com <a href="http://www.webperformancetoday.com/2012/02/28/4-awesome-slides-showing-how-page-speed-correlates-to-business-metrics-at-walmart-com">found</a> that for every 1 second of page speed improvement, they experienced a 2% increase in conversion rate.</li>
-		<li>Greg Linden's presentation <a href="http://www.gduchamp.com/media/StanfordDataMining.2006-11-28.pdf">Make Data Useful</a> demonstrated through A/B Testing every 100ms in page load time delays led to a 1% loss of sales for Amazon.</li>
-		<li>Kyle Rush from the 2011 Obama for America campaign site showed a 3 second page load speed improvement <a href="https://moz.com/blog/how-to-improve-your-conversion-rates-with-a-faster-website">increased on-site donations</a> by 14% (resulting in over $34 million in donations).</li>
+		<li>
+			<p>Walmart.com <a href="http://www.webperformancetoday.com/2012/02/28/4-awesome-slides-showing-how-page-speed-correlates-to-business-metrics-at-walmart-com">found</a> that for every 1 second of page speed improvement, they experienced a 2% increase in conversion rate.</p>
+		</li>
+		<li>
+			<p>Greg Linden's presentation <a href="http://www.gduchamp.com/media/StanfordDataMining.2006-11-28.pdf">Make Data Useful</a> demonstrated through A/B Testing every 100ms in page load time delays led to a 1% loss of sales for Amazon.</p>
+		</li>
+		<li>
+			<p>Kyle Rush from the 2011 Obama for America campaign site showed a 3 second page load speed improvement <a href="https://moz.com/blog/how-to-improve-your-conversion-rates-with-a-faster-website">increased on-site donations</a> by 14% (resulting in over $34 million in donations).</p>
+		</li>
 	</ul>
 	<p>Cloudflare is determined to help website administrators boost the performance of their websites. From today, Cloudflare users on our Business plan will gain a previously Enterprise-only Page Rule option, “Bypass Cache on Cookie”. When used in conjunction with a “Cache Everything” Page Rule, this setting allows for websites to cache the HTML of anonymous page visits without affecting dynamic content.</p>
 	<p>By caching anonymous page views, Cloudflare is able to help ensure that your origin webserver doesn't waste time constantly regenerating pages which change rarely. This ultimately allows us to reduce load on your server and reduce load times when users reach your site.</p>
-	<h3 id="cachinghtml">Caching HTML</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/bypass-cache-cookie-wordpress.png" alt="Bypass Cache on Cookie Page Rule Configuration" loading="lazy"></p>
+	<h3>Caching HTML</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61o2qXoqWmX9UNbIploYzf/612aa4a3046d1e3714c0e3a9bd43b702/bypass-cache-cookie-wordpress.png" alt="Bypass Cache on Cookie Page Rule Configuration" class="kg-image" width="1662" height="1164" loading="lazy">
+
+	</figure>
 	<p>Cloudflare <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Which-file-extensions-does-CloudFlare-cache-for-static-content-">automatically caches static resources</a> such as JavaScript, CSS and Images. Additionally, it is possible on all plans to instruct Cloudflare to cache static HTML using a “Cache Everything” Page Rule.</p>
 	<p>With static HTML, it is easy to work out what should and should not be cached - the response is exactly the same from request-to-request. However, this gets more complicated when you put a login form and a shopping cart into the mix. Once the user logs-in or adds a product to their shopping cart, the HTML being rendered is then personalised to them.</p>
 	<p>As HTTP is a stateless protocol; in order for a web application to determine which users need dynamic content, cookies are used. When the “Bypass Cache on Cookie” rule is matched, Cloudflare will bypass the “Cache Everything” rule and fetch HTML from the origin. Where a cookie is not set, Cloudflare abide by the "Cache Everything" rule and will seek to cache the static HTML for a given request.</p>
@@ -18,11 +33,16 @@
 	<p>When your anonymous page views change, you can purge the cache using our web interface, our API or our <a href="https://www.cloudflare.com/integrations">platform integrations</a>.</p>
 	<p>We have a number of tutorials on our Knowledge Base on how you can set this up with a variety of platforms:</p>
 	<ul>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/236166048">Caching Anonymous Page Views with WordPress or WooCommerce</a></li>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/236168808">Caching Anonymous Page Views with Magento 1 and Magento 2</a></li>
-		<li><a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-">How do I cache static HTML?</a></li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/236166048">Caching Anonymous Page Views with WordPress or WooCommerce</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/236168808">Caching Anonymous Page Views with Magento 1 and Magento 2</a></p>
+		</li>
+		<li>
+			<p><a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-">How do I cache static HTML?</a></p>
+		</li>
 	</ul>
 	<p>Want to go further? This setting can be used in conjunction with the <a href="https://www.cloudflare.com/website-optimization/railgun">Railgun web optimizer</a>, which can speed up the delivery of dynamic content that cannot be cached.</p>
 	<p>Above this, Cloudflare’s Enterprise users have the option of taking their caching to the next level by using our Custom Cache Key functionality alongside other Page Rule options such as “Cache by Device Type” or “Cache on Cookie”.</p>
-	<!--kg-card-end: markdown-->
 </div>

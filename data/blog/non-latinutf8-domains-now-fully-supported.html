@@ -1,14 +1,17 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Non-Latin/UTF8 International Domains (IDNs) Now Fully Supported" src="https://blog.cloudflare.com/content/images/utf8_dns_camtasia.png.scaled500.png" title="Non-Latin/UTF8 International Domains (IDNs) Now Fully Supported"></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vSpVk3HB2Mcnugmun7mX2/19fe5c7c967e9733a814127f76aabaff/utf8_dns_camtasia.png.scaled500.png" alt="Non-Latin/UTF8 International Domains (IDNs) Now Fully Supported" class="kg-image" width="500" height="71" loading="lazy">
+
+	</figure>
 	<p>One of the strangest questions I get when talking about CloudFlare is: "How are you ever going to expand your customer base beyond Silicon Valley?" The reality is that while wandering San Francisco in a CloudFlare shirt gets me an occasional high-five, I've run into almost as many users abroad as I have at home.</p>
 	<p>The United States remains CloudFlare's largest source of traffic, but China is a rapidly expanding second, Brazil third, Turkey fourth, and the Great Britain fifth. We run <a href="https://www.cloudflare.com/network-map">14 data centers</a> (Amsterdam is our busiest), in 8 countries, and on 3 continents. We have a Costa Rican subsidiary, in preparation for our expansion into Latin America, and are setting up a Seychelles subsidiary, in preparation for our expansion into Africa. In other words, we are already a very international company.</p>
-	<h3 id="thewebsgreatembarrassment">The Web's Great Embarrassment</h3>
+	<h3>The Web's Great Embarrassment</h3>
 	<p>The web wasn't originally setup to support non-Latin alphabets. If your language used characters not represented in ASCII, up until surprisingly recently you were out of luck registering a domain. People began talking about this problem in the 1990s, but it wasn't until 2000 that .com and .net began supporting International Domain Names (IDNs). While these top level domains (TLDs) supported IDNs, browsers were slow to roll out IDNs with support only becoming wide-spread in the last 6 years. If you wanted a top level domain with a non-Latin character, it wasn't until 2010 that ICANN approved the first set.</p>
-	<p>Today, most DNS interfaces still don't support IDNs. Holders of IDNs need to convert their domains to what is known as <a href="https://en.wikipedia.org/wiki/Punycode">Punycode</a> in order to add them to most DNS. Punycodes are ASCII representations of <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain names</a> (e.g., xn--camtasia-5x3qu96nkem.com to represent camtasia教程网.com). They're a useful but ugly hack to make the Internet work on a system that never envisioned the global diversity and ubiquity it has obtained.</p>
-	<h3 id="idnsupportnowstandard">IDN Support, Now Standard</h3>
+	<p>Today, most DNS interfaces still don't support IDNs. Holders of IDNs need to convert their domains to what is known as <a href="https://en.wikipedia.org/wiki/Punycode">Punycode</a> in order to add them to most DNS. Punycodes are ASCII representations of domain names (e.g., xn--camtasia-5x3qu96nkem.com to represent camtasia教程网.com). They're a useful but ugly hack to make the Internet work on a system that never envisioned the global diversity and ubiquity it has obtained.</p>
+	<h3>IDN Support, Now Standard</h3>
 	<p>CloudFlare has supported Punycodes for our DNS from the beginning, but, as I said, that's an ugly hack. I'm happy to announce that, as of today, we now support IDNs directly in our interface. If you've previously entered your domain using a Punycode, you should now see your domain displayed correctly in its native characters. And if you enter a domain in non-Latin characters, we handle all the backend conversion to make it work gracefully with the global DNS infrastructure.</p>
 	<p>We've also added more support throughout our UI for non-Latin characters. In the past, we were overly restrictive on requiring Latin characters in many of the forms on our site. We've upgraded our UI site wide to add support for the whole UTF8 character set.</p>
 	<p>CloudFlare is already a global company, and I'm proud that we're now more fully supporting the world's languages and character sets. In other words, if you're looking for a DNS provider for an International domain name, <a href="https://www.cloudflare.com/sign-up">you're welcome here</a>.</p>
-	<!--kg-card-end: markdown-->
 </div>

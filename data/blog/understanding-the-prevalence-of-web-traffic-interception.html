@@ -1,59 +1,114 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-3-2.png" alt="" loading="lazy"></p>
-	<p><em>This is a guest post by Elie Bursztein who writes about security and anti-abuse research. It was first published on <a href="https://www.elie.net/blog/security/understanding-the-prevalence-of-web-traffic-interception">his blog</a> and has been lightly edited.</em></p>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ENPfn6X2mzj55FqEXLKMj/beed1c8c44bcfddc6824d8c0bab9e5bd/Artboard-3-2.png" alt="" class="kg-image" width="7681" height="4321" loading="lazy">
+
+	</figure>
+	<p><i>This is a guest post by Elie Bursztein who writes about security and anti-abuse research. It was first published on </i><a href="https://www.elie.net/blog/security/understanding-the-prevalence-of-web-traffic-interception"><i>his blog</i></a><i> and has been lightly edited.</i></p>
 	<p>This post summarizes how prevalent encrypted web traffic interception is and how it negatively affects online security according to a study <a href="https://jhalderm.com/pub/papers/interception-ndss17.pdf">published at NDSS 2017</a> authored by several researchers including the author of this post and <a href="https://blog.cloudflare.com/author/nick-sullivan">Nick Sullivan</a> of Cloudflare. We found that between 4% and 10% of the web’s encrypted traffic (HTTPS) is intercepted. Analyzing these intercepted connections further reveals that, while not always malicious, interception products most often weaken the encryption used to secure communication and puts users at risk.</p>
 	<p>This blog post presents a short summary of our study’s key findings by answering the following questions:</p>
 	<ol>
-		<li><strong>How is encrypted web traffic intercepted?</strong> This section offers a short recap of how proxy interception is performed.</li>
+		<li>
+			<p><b>How is encrypted web traffic intercepted?</b> This section offers a short recap of how proxy interception is performed.</p>
+		</li>
 	</ol>
 	<ul>
-		<li><strong>How prevalent is HTTPS interception?</strong> This section explains how we measured the prevalence of HTTPS interception in the 8 billion connections we analyzed. Next, it summarizes the key trends observed when grouping these interceptions by OS (operating system), browser, and network.</li>
-		<li><strong>Who is intercepting secure web communication and why?</strong> This section provides an overview of who is responsible for the interception we find and their motivation.</li>
-		<li><strong>What are the security implications of intercepting HTTPS traffic?</strong> This part discusses why interception, even when not malicious, most often puts users at risk by weakening the encryption used to secure communications.</li>
+		<li>
+			<p><b>How prevalent is HTTPS interception?</b> This section explains how we measured the prevalence of HTTPS interception in the 8 billion connections we analyzed. Next, it summarizes the key trends observed when grouping these interceptions by OS (operating system), browser, and network.</p>
+		</li>
+		<li>
+			<p><b>Who is intercepting secure web communication and why?</b> This section provides an overview of who is responsible for the interception we find and their motivation.</p>
+		</li>
+		<li>
+			<p><b>What are the security implications of intercepting HTTPS traffic?</b> This part discusses why interception, even when not malicious, most often puts users at risk by weakening the encryption used to secure communications.</p>
+		</li>
 	</ul>
-	<h3 id="howisencryptedwebtrafficintercepted">How is encrypted web traffic intercepted?</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-9.png" alt="" loading="lazy"></p>
+	<h3>How is encrypted web traffic intercepted?</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eUq8UG8YmvyI7upBvIGPD/6bf0ec806ea17547cd75bf65ff358593/Artboard-9.png" alt="" class="kg-image" width="8870" height="1596" loading="lazy">
+
+	</figure>
 	<p>As shown in the diagram above, products intercept traffic by performing an on-path attack (often referred to as a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">man-in-the-middle attack</a>). In essence, the software redirects the encrypted connection to itself and pretends to be the requested website. The interceptor then opens a new encrypted connection to the destination website and proxies the data back and forth between the two connections, making the interception mostly “invisible.” Because the interceptor has access to the unencrypted data in the connection, it can read, change, and block any of the content sent or received by the client.</p>
-	<p>There are two main ways in which connections are intercepted: <em>locally</em> and <em>remotely</em>.</p>
+	<p>There are two main ways in which connections are intercepted: <i>locally</i> and <i>remotely</i>.</p>
 	<ul>
 		<li>
-			<p><strong>Local interception</strong>: When the interceptor is running directly on a user’s computer, the OS network stack is modified to intercept and redirect connections to the interception software. This technique is often used by antivirus software to <a href="https://www.cloudflare.com/network-services/solutions/network-monitoring-tools">monitor network connections</a> in order to identify malicious downloads and by some malware strains to steal credentials or inject advertisements.</p>
+			<p><b>Local interception</b>: When the interceptor is running directly on a user’s computer, the OS network stack is modified to intercept and redirect connections to the interception software. This technique is often used by antivirus software to monitor network connections in order to identify malicious downloads and by some malware strains to steal credentials or inject advertisements.</p>
 		</li>
 		<li>
-			<p><strong>Remote interception</strong>: Remote interception is performed by inserting the monitoring along the network path connecting the user's computer to the site he or she is browsing. For example, this can be achieved by redirecting network traffic to the interceptor using firewall rules. Network interception is commonly performed by “a security box” that attempts to detect attacks or monitor for corporate data exfiltration for all computers on a network. These boxes are often also used to intercept and analyze emails.</p>
+			<p><b>Remote interception</b>: Remote interception is performed by inserting the monitoring along the network path connecting the user's computer to the site he or she is browsing. For example, this can be achieved by redirecting network traffic to the interceptor using firewall rules. Network interception is commonly performed by “a security box” that attempts to detect attacks or monitor for corporate data exfiltration for all computers on a network. These boxes are often also used to intercept and analyze emails.</p>
 		</li>
 	</ul>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-13.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AEM8LwWuBZaXd0MTir2YR/692510f1f0c961b398e49946d0dc4df2/Artboard-13.png" alt="" class="kg-image" width="3533" height="2617" loading="lazy">
+
+	</figure>
 	<p>An important aspect of interception, is how the software is able to impersonate websites without the user’s browser detecting it. Usually, when an HTTPS connection is established, the browser confirms the identity of the website by verifying the authenticity of the certificate presented by the web server. If the certificate fails the verification, the browser will issue a warning, as illustrated above, that warns the user that the connection is potentially insecure. This is why the “unforgeability” of TLS certificates is the cornerstone of online security; it is the technical means that allows you to know you are talking to the right site, not an impostor.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-14.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wRlMbZrs0sa6Ee3L1rm8y/42f1cba0be73ab44fbc4a6b261363c54/Artboard-14.png" alt="" class="kg-image" width="3701" height="2377" loading="lazy">
+
+	</figure>
 	<p>This raises the question of how HTTPS interceptors are able to produce valid certificates for all websites if they are designed to be unforgeable. The answer to this question lies in how browsers determine whether a certificate is valid. At a high level, this determination is made by checking whether the certificate was signed by a CA (certificate authority). When a new connection is established, the browser verifies whether the certificate presented by the server is valid by checking if is signed by one of these CAs. CA certificates are stored locally on the computer in a <a href="https://technet.microsoft.com/en-us/library/cc754841.aspx">trusted store</a>, which means that any CA certificate added to this store can be used to issue a valid certificate for any website.</p>
 	<p>This is why the easiest way for interceptors to forge certificates is not through some elaborate cryptographic attack but by simply adding their own “root” certificate to the computer trust store. That way, the browser will trust any certificate signed by the interceptor. This behavior is not a vulnerability because adding a certificate is of course only possible if the interceptor has access to the computer file system or if the computer administrator has installed it.</p>
-	<h3 id="howprevalentishttpsinterception">How prevalent is HTTPS interception?</h3>
+	<h3>How prevalent is HTTPS interception?</h3>
 	<p>Measuring interception is not an easy task, as interceptors don’t advertise themselves (obviously). This is why, to detect whether a connection was intercepted, we used a refined version of the network fingerprint technique known as TLS fingerprinting, which allows us to determine which software is making the connection (interceptor or browser). This technique works by looking at how the TLS client’s hello packet is constructed (e.g., ciphersuites and TLS options) and comparing it to a database of known fingerprints. These fingerprints proved very reliable in particular when contrasted with the user-agent advertised in the HTTP request.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-8-copy-4.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KklZqm3aPBrJRB3rWJOBi/af8e0ba152b4aca7682cb7a5822ac3c1/Artboard-8-copy-4.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+
+	</figure>
 	<p>Working with a large e-commerce site, Firefox, and Cloudflare, we looked at what fraction of browser traffic to their services is intercepted. Having multiple vantage points is important, as the results greatly vary depending on where you look from. For example, overall, we observe that between 4% and 10% of the HTTPS connections are intercepted, as reported in the chart above. While these numbers are high, it is important to keep in mind that not all these interceptions are malicious.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/interception-by-OS-.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wjLIQrNP1HadZaUCm4izO/dbb39f58e8790b4fc5b4c7b9046f631d/interception-by-OS-.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+
+	</figure>
 	<p>Breaking down the Cloudflare and e-commerce site traffic by OS reveals that Windows is intercepted far more often than MacOS, as reported in the chart above. This breakdown also highlights that the mobile OSes Android and iOS are significantly less often intercepted than desktop OSes. The full breakdown as well as a breakdown by browser is reported in our paper in Figure 13.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Copy-of-firefox-update-carrier-with-the-most-interceptions.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68hscEU9tDmj0xRqiQ7Fs4/fb53dfb7ae939d18a62df9c3171f4c9e/Copy-of-firefox-update-carrier-with-the-most-interceptions.png" alt="" class="kg-image" width="1425" height="734" loading="lazy">
+
+	</figure>
 	<p>The Firefox interception breakdown exhibits a completely different distribution, with most of the interceptions coming from mobile carrier providers, as shown in the chart above. A partial explanation for such a drastic difference is that Firefox on desktop uses a separate store for its SSL root certificates, which makes it less likely to be intercepted than other browsers.</p>
-	<h3 id="whoisinterceptingwebcommunicationandwhy">Who is intercepting web communication and why?</h3>
+	<h3>Who is intercepting web communication and why?</h3>
 	<p>Contrary to popular belief, traffic interception is not necessarily malicious. According to our study and as summarized in the chart above, web traffic is primarily intercepted for two diametrically opposed reasons:</p>
 	<ul>
-		<li><strong>Improving security</strong>: Antivirus solutions and some corporate firewalls/IPS perform interception for security reasons. They want to inspect encrypted traffic to attempt to prevent malware propagation or to monitor traffic for data exfiltration. Some parental control software and ad blockers use a similar approach to block traffic to specific websites.</li>
-		<li><strong>Performing malicious activities</strong>: At the other end of the spectrum, malware intercepts connections to inject ads and steal confidential data. For example, in the superfish case, interception is used to inject unwanted ads into various websites.</li>
+		<li>
+			<p><b>Improving security</b>: Antivirus solutions and some corporate firewalls/IPS perform interception for security reasons. They want to inspect encrypted traffic to attempt to prevent malware propagation or to monitor traffic for data exfiltration. Some parental control software and ad blockers use a similar approach to block traffic to specific websites.</p>
+		</li>
+		<li>
+			<p><b>Performing malicious activities</b>: At the other end of the spectrum, malware intercepts connections to inject ads and steal confidential data. For example, in the superfish case, interception is used to inject unwanted ads into various websites.</p>
+		</li>
 	</ul>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-8-copy-2.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mfo4IFsm8ylXZehLyYoHY/ebad24c5d086549b0ef86f47c6d02a92/Artboard-8-copy-2.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+
+	</figure>
 	<p>By fingerprinting known security products, we were able to attribute quite a few interceptions to them, as reported in the chart above. For example, Avast is responsible for 9.1% of Cloudflare interceptions and 10.8% of e-commerce interceptions. That being said, we have quite a few unknown fingerprints, which are likely a result of malware.</p>
-	<h3 id="whatarethesecurityimplicationsofinterceptinghttpstraffic">What are the security implications of intercepting HTTPS traffic?</h3>
+	<h3>What are the security implications of intercepting HTTPS traffic?</h3>
 	<p>If the interception is not malicious in itself, then one may wonder why intercepting traffic most often weakens online security.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-10.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/47RbWB2OtB6K17Kd4oOwQY/b1c63506dc8d77ca421730e903375031/Artboard-10.png" alt="" class="kg-image" width="5426" height="1536" loading="lazy">
+
+	</figure>
 	<p>The underlying reason is that most interception products use cryptography in an insecure way. Therefore, as shown in the diagram above, when the interception takes place, the connection from the interceptor to the website uses insecure cryptography to encrypt user data instead of the safe cryptography that is offered by modern browsers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-11.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z0hFSnUVtmjHXKF5dt8Cy/eaf6edc987687a67f30334d494e56528/Artboard-11.png" alt="" class="kg-image" width="6503" height="1620" loading="lazy">
+
+	</figure>
 	<p>The net result of using bad crypto, illustrated below, is that it opens up weaker connections to attacks. Hackers could also intercept encrypted connections and steal confidential data such as credentials, instant messages, and emails. In certain cases, like Komodia, <a href="https://www.eff.org/deeplinks/2015/02/dear-software-vendors-please-stop-trying-intercept-your-customers-encrypted">the cryptographic implementation is so broken</a> that an attacker can intercept any encrypted communication with little effort.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/Artboard-8-copy-3.png" alt="" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tk7qeuyuPIA0zAMVtETD5/b87c6d2d54e978b542db6ea27ee0b495/Artboard-8-copy-3.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+
+	</figure>
 	<p>To quantify how HTTPS interception affects connection security, we analyzed the security of the cryptographic stacks used by these interceptors. Overall, we found that 65% of the intercepted connections going to the Firefox update server have reduced security, and a staggering 37% are easily vulnerable to on-path attacks due to blatant cryptographic mistakes (e.g., certificates are not validated). As reported in the chart above, while a little better, the numbers for Cloudflare are still concerning: 45% of the intercepted connections to Cloudflare have decreased security, and 16% are severely broken. Finally, the numbers for the e-commerce website sit in between: 62.3% have reduced security and 18% are severely broken.</p>
 	<p>To end on a “positive” note, let’s mention that, ironically, in rare cases (4.1% for the e-commerce site and 14% for Cloudflare), interception increased the security of the connection. However, this is mostly an artifact of how different weaker ciphers (RC4 and 3DES) are ranked.</p>
 	<p>Overall we found out that HTTPS interceptions are more prevalent than expected (4% - 10%) and pose serious security risks as they downgrade the encryption used to secure web communications. Furthermore, the HTTPS implementations used for interception do not have the same automatic update mechanisms that browsers do, making fixes less likely to be rolled out. Both passive and intercepting middleboxes <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=733223">have also contributed</a> to the delayed release of TLS 1.3 in browsers. It is our hope that raising awareness around this issue will help software vendors that rely on interception to realize the risks of this practice.</p>
-	<!--kg-card-end: markdown-->
 </div>

@@ -1,36 +1,50 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JYMCcbJy3MtIK8gZBvvYX/bfe8006438986a8f2b85031cd6869657/the-quicening.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Six o’clock already, I was just in the middle of a dream, now I’m up, awake, looking at my Twitter stream. As I do that the Twitter app is making multiple API calls over HTTPS to Twitter’s servers somewhere on the Internet.</p>
 	<p>Those HTTPS connections are running over TCP via my home WiFi and broadband connection. All’s well inside the house, the WiFi connection is interference free thanks to my eero system, the broadband connection is stable and so there’s no packet loss, and my broadband provider’s connection to Twitter’s servers is also loss free.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/happy-home-.svg" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TYEDkSskxA3liOv6VxN4K/a216bd81351a2811c104190cd99e7151/happy-home-.svg" alt="" class="kg-image" width="1440" height="795" loading="lazy">
+
+	</figure>
 	<p>Those are the perfect conditions for HTTPS running over TCP. Not a packet dropped, not a bit of jitter, no congestion. It’s even the perfect conditions for HTTP/2 where multiple streams of requests and responses are being sent from my phone to websites and APIs as I boot my morning. Unlike HTTP/1.1, HTTP/2 is able to use a single TCP connection for multiple, simultaneously in flight requests. That has a significant speed advantage over the old way (one request after another per TCP connection) when conditions are good.</p>
 	<p>But I have to catch an early train, got to be to work by nine, so I step out of the front door and my phone silently and smoothly switches from my home WiFi to 4G. All’s not well inside the phone’s apps though. The TCP connections in use between Chrome and apps, and websites and APIs are suddenly silent. Those HTTPS connections are in trouble and about to fail; errors are going to occur deep inside apps. I’m going to see sluggish response from my phone.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/dropped-tcp-.svg" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kBQqHqSUvvn7Ucnc0lxCs/8831943b2aefa8e4719868d0499fd4c9/dropped-tcp-.svg" alt="" class="kg-image" width="2464" height="1081" loading="lazy">
+
+	</figure>
 	<p>The IP address associated with my phone has abruptly changed as I go from home to roam. TCP connections either stall or get dropped resulting in a weird delay while internal timers inform apps that connections have disappeared or as connections are re-established. It’s irritating, because it takes me so long just to figure out what I'm gonna wear, and now I’m waiting for an app that worked fine moments ago.</p>
 	<p>The same thing will happen multiple times on my trip as I jump around the cell towers and service providers along the route. It might be tempting to blame it on the train, but it’s really that the Internet was never meant to work this way. We weren’t meant to be carrying around pocket supercomputers that roam across lossy, noisy networks all the while trying to remain productive while complaining about sub-second delays in app response time.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/full-commute.svg" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
-	<p>One proposed solution to these problems is QUIC: a new way to send packets across the Internet that takes into account what a messy place the Internet really is. A place where people don’t stand still and use the same IP address all the time (the horror!), a place where packets get lost because of radio reflections off concrete buildings (how awful!), a place with no Waze (how terrible!) where congestion comes and goes without a live map. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dsnywDKpe0un0wFXB7T7Y/1e60a143b08e36fdf0fdb5fd9c096050/full-commute.svg" alt="" class="kg-image" width="3089" height="1081" loading="lazy">
+
+	</figure>
+	<p>One proposed solution to these problems is QUIC: a new way to send packets across the Internet that takes into account what a messy place the Internet really is. A place where people don’t stand still and use the same IP address all the time (the horror!), a place where packets get lost because of radio reflections off concrete buildings (how awful!), a place with no Waze (how terrible!) where congestion comes and goes without a live map.</p>
 	<p>QUIC tries to make an HTTPS connection between a computer (phone) and server work reliably despite the poor conditions, it does this with a collection of technologies.</p>
 	<p>The first is UDP to replace TCP. UDP is widely used for fire-and-forget protocols where packets are sent but their arrival or ordering is not guaranteed (TCP provides the opposite: it guarantees arrival order and delivery but at a cost). Because UDP doesn’t have TCP’s guarantees it allows developers to innovate new protocols that do guarantee delivery and ordering (on top of UDP) that can incorporate features that TCP lacks.</p>
 	<p>One such feature is end-to-end encryption. All QUIC connections are fully encrypted. Another proposed feature is forward-error correction or FEC. When NASA’s Deep Space Network talks to the Voyager 2 spacecraft (which recently left our solar system) it transmits messages that become garbled crossing 17.6 billion km of space (that’s about 11 billion miles). Voyager 2 can’t send back the equivalent of “Say again?” when it receives a garbled message so the messages sent to Voyager 2 contain error-correcting codes that allow it to reconstruct the message from the mess.</p>
 	<p>Similarly, QUIC plans to incorporate error-correcting codes that allow missing data to be reconstructed. Although an app or server can send the “Say again?” message, it’s faster if an error-correcting code stops that being needed. The result is snappy apps and websites even in difficult Internet conditions.</p>
 	<p>QUIC also solves the HTTP/2 HoL problem. HoL is head of line blocking: because HTTP/2 sits on top of TCP and TCP guarantees delivery order if a packet gets lost the entire TCP connection has to wait while the missing packet is retransmitted. That’s OK if only one stream of data is passing over the TCP connection, but for efficiency it’s better to have multiple streams per connection. Sadly that means all streams wait when a packet gets lost. QUIC solves that because it doesn’t rely on TCP for delivery and ordering and can make an intelligent decision about which streams need to wait and which can continue when a packet goes astray.</p>
 	<p>Finally, one of the slower parts of a standard HTTP/2 over TCP connection is the very beginning. When the app or browser makes a connection there’s an initial handshake at the TCP level followed by a handshake to establish encryption. Over a high latency connection (say on a mobile phone on 3G) that creates a noticeable delay. Since QUIC controls all aspects of the connect it merges together connection and encryption into a single handshake.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/full-commute-copy.svg" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dL6kbAv4uFdYpp7WcUTDM/5a3cc6d11ddaf193c368e065fe59bec1/full-commute-copy.svg" alt="" class="kg-image" width="3171" height="1219" loading="lazy">
+
+	</figure>
 	<p>Hopefully, this blog post has helped you see the operation of HTTPS on the real, messy, roaming Internet in a different light. Nick’s more <a href="https://blog.cloudflare.com/head-start-with-quic">technical blog</a> will tell you how to test out QUIC for yourself. Visit <a href="https://cloudflare-quic.com">https://cloudflare-quic.com</a> to get started.</p>
 	<p>If you want to join the early access program for QUIC from Cloudflare you’ll find a button on the <a href="https://dash.cloudflare.com/?zone=network">Network</a> tab in the Cloudflare Dashboard.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/image4-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JonvDzU5JUlYCBTI1pYNV/73529ab7b5ab17b5f626ddbfedc0f8b4/image4-1.png" alt="" class="kg-image" width="1982" height="374" loading="lazy">
+
+	</figure>
 	<p>As we did with TLS 1.3 we’ll be working closely with IETF as QUIC develops and be continually rolling out the latest versions of the standard as they are created. We look forward to the day when all your connections are QUIC!</p>
-	<p><em><a href="https://blog.cloudflare.com/subscribe" rel="noopener noreferer">Subscribe to the blog</a> for daily updates on all our Birthday Week announcements.</em></p>
-	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Birthday-Week-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on all our Birthday Week announcements.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qBoeuxUM8tPVqGrVUgV1c/531ede8105c88e96332003e376b91ae0/Cloudflare-Birthday-Week-7.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+
+	</figure>
 </div>

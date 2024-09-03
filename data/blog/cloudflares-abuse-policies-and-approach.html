@@ -1,67 +1,96 @@
 <div class="mb2 gray5">10 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflares-abuse-policies-and-approach-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflares-abuse-policies-and-approach-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflares-abuse-policies-and-approach-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflares-abuse-policies-and-approach-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloudflares-abuse-policies-and-approach-es-es">Español</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/The-Cloudflare-Blog-1.png" class="kg-image" alt="" loading="lazy"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflares-abuse-policies-and-approach">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflares-abuse-policies-and-approach">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflares-abuse-policies-and-approach">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflares-abuse-policies-and-approach">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflares-abuse-policies-and-approach">Français</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KFpKT5IYgDuwxdCYL4S1s/7534ecef01bb18194479d887070a32dc/The-Cloudflare-Blog-1.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
 	<p>Cloudflare launched nearly twelve years ago. We’ve grown to operate a network that spans more than 275 cities in over 100 countries. We have millions of customers: from small businesses and individual developers to approximately 30 percent of the Fortune 500. Today, more than 20 percent of the web relies directly on Cloudflare’s services.</p>
 	<p>Over the time since we launched, our set of services has become much more complicated. With that complexity we have developed policies around how we handle abuse of different Cloudflare features. Just as a broad platform like Google has different abuse policies for search, Gmail, YouTube, and Blogger, Cloudflare has <a href="https://blog.cloudflare.com/out-of-the-clouds-and-into-the-weeds-cloudflares-approach-to-abuse-in-new-products">developed different abuse policies</a> as we have introduced new products.</p>
 	<p>We published our updated approach to abuse last year at:</p>
 	<p><a href="https://www.cloudflare.com/trust-hub/abuse-approach">https://www.cloudflare.com/trust-hub/abuse-approach/</a></p>
 	<p>However, as questions have arisen, we thought it made sense to describe those policies in more detail here. &nbsp;</p>
 	<p>The policies we built reflect ideas and recommendations from human rights experts, activists, academics, and regulators. Our guiding principles require abuse policies to be specific to the service being used. This is to ensure that any actions we take both reflect the ability to address the harm and minimize unintended consequences. We believe that someone with an abuse complaint must have access to an abuse process to reach those who can most effectively and narrowly address their complaint — anonymously if necessary. And, critically, we strive always to be transparent about both our policies and the actions we take.</p>
-	<h3 id="cloudflare-s-products">Cloudflare's products</h3>
+	<h3>Cloudflare's products</h3>
 	<p>Cloudflare provides a broad range of products that fall generally into three buckets: hosting products (e.g., Cloudflare Pages, Cloudflare Stream, Workers KV, Custom Error Pages), security services (e.g., DDoS Mitigation, Web Application Firewall, Cloudflare Access, Rate Limiting), and core Internet technology services (e.g., Authoritative DNS, Recursive DNS/1.1.1.1, WARP). For a complete list of our products and how they map to these categories, you can see our <a href="https://www.cloudflare.com/trust-hub/abuse-approach">Abuse Hub</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0jGLSWqF5X7h8ZGsARPIe/6f3251c82d3275847daf35c7f493f9d1/pasted-image-0--2--1.png" alt="" class="kg-image" width="1124" height="1600" loading="lazy">
+
+	</figure>
 	<p>As described below, our policies take a different approach on a product-by-product basis in each of these categories.</p>
-	<h3 id="hosting-products">Hosting products</h3>
-	<p>Hosting products are those products where Cloudflare is the ultimate host of the content. This is different from products where we are merely providing security or temporary caching services and the content is hosted elsewhere. Although many people confuse our security products with hosting services, we have distinctly different policies for each. Because the vast majority of Cloudflare customers do not yet use our hosting products, abuse complaints and actions involving these products are currently relatively rare. </p>
+	<h3>Hosting products</h3>
+	<p>Hosting products are those products where Cloudflare is the ultimate host of the content. This is different from products where we are merely providing security or temporary caching services and the content is hosted elsewhere. Although many people confuse our security products with hosting services, we have distinctly different policies for each. Because the vast majority of Cloudflare customers do not yet use our hosting products, abuse complaints and actions involving these products are currently relatively rare.</p>
 	<p>Our decision to disable access to content in hosting products fundamentally results in that content being taken offline, at least until it is republished elsewhere. Hosting products are subject to our <a href="https://www.cloudflare.com/trust-hub/abuse-approach">Acceptable Hosting Policy</a>. Under that policy, for these products, we may remove or disable access to content that we believe:</p>
 	<ul>
-		<li>Contains, displays, distributes, or encourages the creation of child sexual abuse material, or otherwise exploits or promotes the exploitation of minors.</li>
-		<li>Infringes on intellectual property rights.</li>
-		<li>Has been determined by appropriate legal process to be defamatory or libelous.</li>
-		<li>Engages in the unlawful distribution of controlled substances.</li>
-		<li>Facilitates human trafficking or prostitution in violation of the law.</li>
-		<li>Contains, installs, or disseminates any active malware, or uses our platform for exploit delivery (such as part of a command and control system).</li>
-		<li>Is otherwise illegal, harmful, or violates the rights of others, including content that discloses sensitive personal information, incites or exploits violence against people or animals, or seeks to defraud the public.</li>
+		<li>
+			<p>Contains, displays, distributes, or encourages the creation of child sexual abuse material, or otherwise exploits or promotes the exploitation of minors.</p>
+		</li>
+		<li>
+			<p>Infringes on intellectual property rights.</p>
+		</li>
+		<li>
+			<p>Has been determined by appropriate legal process to be defamatory or libelous.</p>
+		</li>
+		<li>
+			<p>Engages in the unlawful distribution of controlled substances.</p>
+		</li>
+		<li>
+			<p>Facilitates human trafficking or prostitution in violation of the law.</p>
+		</li>
+		<li>
+			<p>Contains, installs, or disseminates any active malware, or uses our platform for exploit delivery (such as part of a command and control system).</p>
+		</li>
+		<li>
+			<p>Is otherwise illegal, harmful, or violates the rights of others, including content that discloses sensitive personal information, incites or exploits violence against people or animals, or seeks to defraud the public.</p>
+		</li>
 	</ul>
 	<p>We maintain discretion in how our Acceptable Hosting Policy is enforced, and generally seek to apply content restrictions as narrowly as possible. For instance, if a shopping cart platform with millions of customers uses Cloudflare Workers KV and one of their customers violates our Acceptable Hosting Policy, we will not automatically terminate the use of Cloudflare Workers KV for the entire platform.</p>
 	<p>Our guiding principle is that organizations closest to content are best at determining when the content is abusive. It also recognizes that overbroad takedowns can have significant unintended impact on access to content online.</p>
-	<h3 id="security-services">Security services</h3>
+	<h3>Security services</h3>
 	<p>The overwhelming majority of Cloudflare's millions of customers use only our security services. Cloudflare made a decision early in our history that we wanted to make security tools as widely available as possible. This meant that we provided many tools for free, or at minimal cost, to best limit the impact and effectiveness of a wide range of cyberattacks. Most of our customers pay us nothing.</p>
 	<p>Giving everyone the ability to sign up for our services online also reflects our view that cyberattacks not only should not be used for silencing vulnerable groups, but are not the appropriate mechanism for addressing problematic content online. We believe cyberattacks, in any form, should be relegated to the dustbin of history.</p>
 	<p>The decision to provide security tools so widely has meant that we've had to think carefully about when, or if, we ever terminate access to those services. We recognized that we needed to think through what the effect of a termination would be, and whether there was any way to set standards that could be applied in a fair, transparent and non-discriminatory way, consistent with human rights principles.</p>
 	<p>This is true not just for the content where a complaint may be filed &nbsp;but also for the precedent the takedown sets. Our conclusion — informed by all of the many conversations we have had and the thoughtful discussion in the broader community — is that voluntarily terminating access to services that protect against cyberattack is not the correct approach.</p>
-	<h3 id="avoiding-an-abuse-of-power">Avoiding an abuse of power</h3>
+	<h3>Avoiding an abuse of power</h3>
 	<p>Some argue that we should terminate these services to content we find reprehensible so that others can launch attacks to knock it offline. That is the equivalent argument in the physical world that the fire department shouldn't respond to fires in the homes of people who do not possess sufficient moral character. Both in the physical world and online, that is a dangerous precedent, and one that is over the long term most likely to disproportionately harm vulnerable and marginalized communities.</p>
 	<p>Today, more than 20 percent of the web uses Cloudflare's security services. When considering our policies we need to be mindful of the impact we have and precedent we set for the Internet as a whole. Terminating security services for content that our team personally feels is disgusting and immoral would be the popular choice. But, in the long term, such choices make it more difficult to protect content that supports oppressed and marginalized voices against attacks.</p>
-	<h3 id="refining-our-policy-based-on-what-we-ve-learned">Refining our policy based on what we’ve learned</h3>
+	<h3>Refining our policy based on what we’ve learned</h3>
 	<p>This isn't hypothetical. Thousands of times per day we receive calls that we terminate security services based on content that someone reports as offensive. Most of these don’t make news. Most of the time these decisions don’t conflict with our moral views. Yet two times in the past we decided to terminate content from our security services because we found it reprehensible. In 2017, we terminated the neo-Nazi troll site <a href="https://blog.cloudflare.com/why-we-terminated-daily-stormer">The Daily Stormer</a>. And in 2019, we terminated the conspiracy theory forum <a href="https://blog.cloudflare.com/terminating-service-for-8chan">8chan</a>.</p>
 	<p>In a deeply troubling response, after both terminations we saw a dramatic increase in authoritarian regimes attempting to have us terminate security services for human rights organizations — often citing the language from our own justification back to us.</p>
 	<p>Since those decisions, we have had significant discussions with policy makers worldwide. From those discussions we concluded that the power to terminate security services for the sites was not a power Cloudflare should hold. Not because the content of those sites wasn't abhorrent — it was — but because security services most closely resemble Internet utilities.</p>
 	<p>Just as the telephone company doesn't terminate your line if you say awful, racist, bigoted things, we have concluded in consultation with politicians, policy makers, and experts that turning off security services because we think what you publish is despicable is the wrong policy. To be clear, just because we did it in a limited set of cases before doesn’t mean we were right when we did. Or that we will ever do it again.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--4--3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tBErj7SMPOb8RTPTfKVam/818bed7f2abc15b0d95836b8e080ab17/pasted-image-0--4--3.png" alt="" class="kg-image" width="1060" height="640" loading="lazy">
+
+	</figure>
 	<p>But that doesn’t mean that Cloudflare can’t play an important role in protecting those targeted by others on the Internet. We have long supported human rights groups, journalists, and other uniquely vulnerable entities online through <a href="https://www.cloudflare.com/galileo">Project Galileo</a>. Project Galileo offers free cybersecurity services to nonprofits and advocacy groups that help strengthen our communities.</p>
 	<p>Through the <a href="https://www.cloudflare.com/athenian">Athenian Project</a>, we also play a role in protecting election systems throughout the United States and abroad. Elections are one of the areas where the systems that administer them need to be fundamentally trustworthy and neutral. Making choices on what content is deserving or not of security services, especially in any way that could in any way be interpreted as political, would undermine our ability to provide trustworthy protection of election infrastructure.</p>
-	<h3 id="regulatory-realities">Regulatory realities</h3>
+	<h3>Regulatory realities</h3>
 	<p>Our policies also respond to regulatory realities. Internet content regulation laws passed over the last five years around the world have largely drawn a line between services that host content and those that provide security and conduit services. Even when these regulations impose obligations on platforms or hosts to moderate content, they exempt security and conduit services from playing the role of moderator without legal process. This is sensible regulation borne of a thorough regulatory process.</p>
 	<p>Our policies follow this well-considered regulatory guidance. We prevent security services from being used by sanctioned organizations and individuals. We also terminate security services for content which is illegal in the United States — where Cloudflare is headquartered. This includes Child Sexual Abuse Material (CSAM) as well as content subject to Fight Online Sex Trafficking Act (FOSTA). But, otherwise, we believe that cyberattacks are something that everyone should be free of. Even if we fundamentally disagree with the content.</p>
 	<p>In respect of the rule of law and due process, we follow legal process controlling security services. We will restrict content in geographies where we have received legal orders to do so. For instance, if a court in a country prohibits access to certain content, then, following that court's order, we generally will restrict access to that content in that country. That, in many cases, will limit the ability for the content to be accessed in the country. However, we recognize that just because content is illegal in one jurisdiction does not make it illegal in another, so we narrowly tailor these restrictions to align with the jurisdiction of the court or legal authority.</p>
 	<p>While we follow legal process, we also believe that transparency is critically important. To that end, wherever these content restrictions are imposed, we attempt to link to the particular legal order that required the content be restricted. This transparency is necessary for people to participate in the legal and legislative process. We find it deeply troubling when ISPs comply with court orders by invisibly blackholing content — not giving those who try to access it any idea of what legal regime prohibits it. Speech can be curtailed by law, but proper application of the Rule of Law requires whoever curtails it to be transparent about why they have.</p>
-	<h3 id="core-internet-technology-services">Core Internet technology services</h3>
+	<h3>Core Internet technology services</h3>
 	<p>While we will generally follow legal orders to restrict security and conduit services, we have a higher bar for core Internet technology services like Authoritative DNS, Recursive DNS/1.1.1.1, and WARP. The challenge with these services is that restrictions on them are global in nature. You cannot easily restrict them just in one jurisdiction so the most restrictive law ends up applying globally.</p>
 	<p>We have generally challenged or appealed legal orders that attempt to restrict access to these core Internet technology services, even when a ruling only applies to our free customers. In doing so, we attempt to suggest to regulators or courts more tailored ways to restrict the content they may be concerned about.</p>
 	<p>Unfortunately, these cases are becoming more common where largely copyright holders are attempting to get a ruling in one jurisdiction and have it apply worldwide to terminate core Internet technology services and effectively wipe content offline. Again, we believe this is a dangerous precedent to set, placing the control of what content is allowed online in the hands of whatever jurisdiction is willing to be the most restrictive.</p>
 	<p>So far, we’ve largely been successful in making arguments that this is not the right way to regulate the Internet and getting these cases overturned. Holding this line we believe is fundamental for the healthy operation of the global Internet. But each showing of discretion across our security or core Internet technology services weakens our argument in these important cases.</p>
-	<h3 id="paying-versus-free">Paying versus free</h3>
+	<h3>Paying versus free</h3>
 	<p>Cloudflare provides both free and paid services across all the categories above. Again, the majority of our customers use our free services and pay us nothing.</p>
-	<p>Although most of the concerns we see in our abuse process relate to our free customers, we do not have different moderation policies based on whether a customer is free versus paid. We do, however, believe that in cases where our values are diametrically opposed to a paying customer that we should take further steps to not only not profit from the customer, but to use any proceeds to further our companies’ values and oppose theirs. </p>
+	<p>Although most of the concerns we see in our abuse process relate to our free customers, we do not have different moderation policies based on whether a customer is free versus paid. We do, however, believe that in cases where our values are diametrically opposed to a paying customer that we should take further steps to not only not profit from the customer, but to use any proceeds to further our companies’ values and oppose theirs.</p>
 	<p>For instance, when a site that opposed LGBTQ+ rights signed up for a paid version of DDoS mitigation service we worked with our Proudflare employee resource group to identify an organization that supported LGBTQ+ rights and donate 100 percent of the fees for our services to them. We don't and won't talk about these efforts publicly because we don't do them for marketing purposes; we do them because they are aligned with what we believe is morally correct.</p>
-	<h3 id="rule-of-law">Rule of Law</h3>
+	<h3>Rule of Law</h3>
 	<p>While we believe we have an obligation to restrict the content that we host ourselves, we do not believe we have the political legitimacy to determine generally what is and is not online by restricting security or core Internet services. If that content is harmful, the right place to restrict it is legislatively.</p>
 	<p>We also believe that an Internet where cyberattacks are used to silence what's online is a broken Internet, no matter how much we may have empathy for the ends. As such, we will look to legal process, not popular opinion, to guide our decisions about when to terminate our security services or our core Internet technology services.</p>
 	<p>In spite what some may claim, we are not free speech absolutists. We do, however, believe in the Rule of Law. Different countries and jurisdictions around the world will determine what content is and is not allowed based on their own norms and laws. In assessing our obligations, we look to whether those laws are limited to the jurisdiction and consistent with our obligations to respect human rights under the <a href="https://www.ohchr.org/sites/default/files/documents/publications/guidingprinciplesbusinesshr_en.pdf">United Nations Guiding Principles on Business and Human Rights</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--3--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xMuKqx9FMSlG0dQaQB7tY/0e305d4633916b426ed5adc0fa736566/pasted-image-0--3--2.png" alt="" class="kg-image" width="1465" height="764" loading="lazy">
+
+	</figure>
 	<p>There remain many injustices in the world, and unfortunately much content online that we find reprehensible. We can solve some of these injustices, but we cannot solve them all. But, in the process of working to improve the security and functioning of the Internet, we need to make sure we don’t cause it long-term harm.</p>
 	<p>We will continue to have conversations about these challenges, and how best to approach securing the global Internet from cyberattack. We will also continue to cooperate with legitimate law enforcement to help investigate crimes, to <a href="https://www.cloudflare.com/galileo">donate funds and services</a> to support equality, human rights, and other causes we believe in, and to participate in policy making around the world to help preserve the free and open Internet.</p>
 </div>

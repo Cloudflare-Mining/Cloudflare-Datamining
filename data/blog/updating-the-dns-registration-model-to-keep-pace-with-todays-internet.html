@@ -1,37 +1,44 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/w3kWFDpuOojxINXqQ8E1M/ac179490e43e600d0624f803e264835f/updating-the-dns-registration-model-to-keep-pace-with-todays-internet.gif" alt="">
+<div class="post-content lh-copy gray1">
 	<p>CloudFlare is, arguably, the <a href="http://solvedns.com">largest third-party DNS Authoritative operator in the world</a>. We manage well over 1 million domains and have registrations in almost every TLD open for registrations. Our role as a DNS operator is to maintain customer information and publish their records in the global DNS.</p>
 	<p>In this blog, we’ll introduce a significant problem that DNS operators like CloudFlare face when trying to provide the best possible experience to our customers. If you are a CloudFlare customer, you’ll remember during the sign up process you were asked to login to your registrar account in order to change your nameservers (NS). The absence of an automated process for changing NS records not only makes our signup process one step longer than we’d like, it also prevents CloudFlare, and other 3rd party DNS operators, from doing a slew of other things that would benefit customers and the Internet as a whole.</p>
-	<p><em>Note: In this blog we’ll use the term DNS Operator mainly in the context of operators that provide Authoritative DNS service. This is sometimes called Managed DNS service.</em></p>
-	<h3 id="manualupdates">Manual Updates</h3>
+	<p><i>Note: In this blog we’ll use the term DNS Operator mainly in the context of operators that provide Authoritative DNS service. This is sometimes called Managed DNS service.</i></p>
+	<h3>Manual Updates</h3>
 	<p>For those who are not yet CloudFlare customers, let’s run through the sign up process:</p>
 	<p>When CloudFlare customers enable our DNS services for their domain, we allocate and provide them with nameservers. After the customer configures various records within their domain (e.g., A, AAAA, MX, CNAME, etc. records) on the CloudFlare system, customer’s then need to go back to their Domain Registrar and manually update their NS records so they match the NS information provided by CloudFlare. Once the NS records have been changed, CloudFlare becomes the authoritative DNS operator for that zone.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/02/image01.png" alt="alt" loading="lazy"></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xGSdSSJaAmdzPRXGsKMTl/f6c4b40b2be288f1126e7753eb03322f/image01.png" alt="alt" class="kg-image" width="1023" height="508" loading="lazy">
+
+	</figure>
 	<p>This manual process is outdated, and there is only one thing standing in the way of an automated process—the current domain industry registration model.</p>
-	<h3 id="theproblemwiththedomainindustrystandardregistrationmodel">The Problem with the Domain Industry Standard Registration Model</h3>
+	<h3>The Problem with the Domain Industry Standard Registration Model</h3>
 	<p>The <a href="https://www.cloudflare.com/products/registrar">domain registration</a> system includes Registrants (Resellers and Registrars), Registries, and ICANN, and there are strict rules about how information flows through it:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/02/image00.gif" alt="alt" loading="lazy"></p>
-	<p><em>Note: A full glossary of the terms used in this document is available from the ICANN website.</em></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OisQPr4yYjNuGeQvWKoZm/71e2045432e36473d3fb7eae46cdd249/image00.gif" alt="alt" class="kg-image" width="726" height="408" loading="lazy">
+
+	</figure>
+	<p><i>Note: A full glossary of the terms used in this document is available from the ICANN website.</i></p>
 	<p>Notice that DNS Operators are not included in the ICANN diagram above. When this model was created, no one one thought that DNS service might be provided by someone other than Registrant and Registrar. Things have changed, but unfortunately, the system and its rules haven’t.</p>
 	<p>In nearly all cases, CloudFlare customers are using a Registrar where CloudFlare’s relationship with the customer is not explicitly expressed. The relationship can only be inferred by the NS records that point towards CloudFlare, or by the fact that nameserver addresses that are in CloudFlare address spaces. This omission of 3rd party DNS operators in the ICANN model causes operational difficulties.</p>
-	<h3 id="cloudflaresrelationshipwithregistriesandregistrars">CloudFlare’s Relationship With Registries and Registrars</h3>
-	<p>Operational difficulties arise currently because the only way to find the Registrar of a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a> is to query for the “whois” information. Below is an selected output from a successful whois query:</p>
+	<h3>CloudFlare’s Relationship With Registries and Registrars</h3>
+	<p>Operational difficulties arise currently because the only way to find the Registrar of a domain name is to query for the “whois” information. Below is an selected output from a successful whois query:</p>
 	<p><code>Domain Name: CLOUDFLARE.COM ... Registrar WHOIS Server: whois.networksolutions.com Registrar URL: http://networksolutions.com ... Registrar: NETWORK SOLUTIONS, LLC. Registrar IANA ID: 2 ... Registrant Name: CloudFlare, Inc.</code></p>
 	<p>All domain updates (such as postal address or name server changes) go from the customer (or Registrant) to the Registrar before being sent to the Registry. As a DNS Operator, CloudFlare is separate from these R-named entities so we don’t show up in a whois query.</p>
 	<p>The difficulty is that whois information, which may contain postal addresses, telephone numbers, and/or email addresses, is designed for human consumption and human action. Because this information has historically been changed by people, there isn’t a protocol specified regarding how a DNS operator’s system can ask a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> for changes in delegation information in an authenticated automated way.</p>
-	<h3 id="anewmodeldnsoperatorscommunicatingwithregistrarsandregistries">A New Model: DNS Operators Communicating with Registrars and Registries</h3>
+	<h3>A New Model: DNS Operators Communicating with Registrars and Registries</h3>
 	<p>In the current ICANN system there are roughly three classes of DNS operators. These classes are based on the ability of DNS operators to make changes in the delegating parent zone:</p>
-	<p><strong>Registrars/Resellers</strong>—Have direct interface to the registry database, and can change information at will and instantly.</p>
-	<p><strong>Registrant</strong>—Have a User Interface (usually web) to update information</p>
-	<p><strong>Third Party DNS Operator</strong>—Need either the registrant to update information on its behalf, or have access to the registrants account with registrar (which is a bad security practice). In reality, DNS operators can only expect registrants to log into the account on two occasions: a. when service is moved to Operator, or b. when service is taken away from operator.</p>
+	<p><b>Registrars/Resellers</b>—Have direct interface to the registry database, and can change information at will and instantly.</p>
+	<p><b>Registrant</b>—Have a User Interface (usually web) to update information</p>
+	<p><b>Third Party DNS Operator</b>—Need either the registrant to update information on its behalf, or have access to the registrants account with registrar (which is a bad security practice). In reality, DNS operators can only expect registrants to log into the account on two occasions: a. when service is moved to Operator, or b. when service is taken away from operator.</p>
 	<p>CloudFlare is advocating to gain the ability to update NS records for our customers and address records associated with them using automated channels. Our goal is to be able to add and remove nameservers from customer domains without the customer being involved.</p>
 	<p>Creating an automated process for updating NS (and DS) records would help solve the operational difficulties to providing DNS service, and would open up new possibilities for the Internet as a whole. If DNS operators had control of NS and DS records they could re-balance nameservers for stability, quickly change nameservers that go bad, and even better protect customers against DDoS attacks. Most people don’t know that when certain NS records come under heavy DDoS attack, all customers that share that nameserver might also experience a degradation in service. If those NS records could be changed quickly, we could lessen the impact on domains that are not <a href="http://www.circleid.com/posts/20141202_nameserver_operators_need_the_ability_to_disavow_domains">being targeted</a>.</p>
 	<p>Perhaps the most important reason for automating DNS operator’s access customer NS and DS records (Delegated Signer Record) is that this change would pave the way for DNSSEC implementation. DNSSEC requires maintaining DS records because they have to be inserted into the parent domain and potentially updated on a regular basis. If this record is not properly maintained, then DNSSEC validation fails, making the domain inaccessible. Presently, this is done through a web interface at the Registrar by the Registrant.</p>
-	<h3 id="achievingdnssecubiquity">Achieving DNSSEC Ubiquity</h3>
+	<h3>Achieving DNSSEC Ubiquity</h3>
 	<p>In theory, the Registrant could designate the DNS Operator as Technical Contact, but that doesn’t help unless the Technical Contact is given full access to the Registrant’s account since most Registrars don’t provide role-based access to accounts. In any case, asking our customers to update their delegation information in order to reflect the DNSSEC trust chain is problematic. One issue with this approach is that if CloudFlare were to ask hundreds of thousands of customers that own millions of domains to make manual updates to their records, there would be a huge chance of error. If records are updated incorrectly, it would not only cause frustration, it might cause the site to go down due to DNSSEC errors.</p>
 	<p>CloudFlare could try to minimize these errors by publishing <a href="https://tools.ietf.org/html/rfc7344">CDS and or CDNSKEY records</a> in each zone, that the registrar can pick up via DNS query and apply. But the long term solution is full automation with authorized updates to delegation information.</p>
 	<p>Some will say that the current system will work if the DNS operator is designated as Technical Contact (one of the roles defined in the ICANN model) but almost no Registrar offers a role based accounts for customers. All that does is to decrease the probability that phone call or email from Technical contact is dismissed as social engineering attack.</p>
-	<h3 id="joinus">JOIN US</h3>
+	<h3>JOIN US</h3>
 	<p>CloudFlare wants to team up with Registrars, Registries, and other DNS Operators to define and deploy more reliable methods for updating NS and DS records. We think this would be a big win for our customers, and, ultimately, for the internet as a whole. If you’re interested in participating in this process, you can sign up for this mailing list: <a href="mailto:dnssec-auto-ds@elists.isoc.org">dnssec-auto-ds@elists.isoc.org</a></p>
-	<!--kg-card-end: markdown-->
 </div>

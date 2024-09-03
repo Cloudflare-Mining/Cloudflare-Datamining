@@ -1,39 +1,47 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Workers-Rendering-API.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>If you’ve ever created a website that shows any kind of analytics, you’ve probably also thought about adding a “Save Image” or “Save as PDF” button to store and share results. This isn’t as easy as it seems (I can attest to this firsthand) and it’s not long before you go down a rabbit hole of trying 10 different libraries, hoping one will work. </p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CWhH5azsfebtFtAMmbDNN/12d0b93caafc8f6e23cca9a03975ef8c/Workers-Rendering-API.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>If you’ve ever created a website that shows any kind of analytics, you’ve probably also thought about adding a “Save Image” or “Save as PDF” button to store and share results. This isn’t as easy as it seems (I can attest to this firsthand) and it’s not long before you go down a rabbit hole of trying 10 different libraries, hoping one will work.</p>
 	<p>This is why we’re excited to announce a private beta of the Workers Browser Rendering API, improving the browser automation experience for developers. With browser automation, you can programmatically do anything that a user can do when interacting with a browser.</p>
 	<p>The Workers Browser Rendering API, or just Rendering API for short, is our out-of-the-box solution for simplifying developer workflows, including capturing images or screenshots, by running browser automation in Workers.</p>
-	<h3 id="browser-automation-everywhere">Browser automation, everywhere</h3>
+	<h3>Browser automation, everywhere</h3>
 	<p>As with many of the best Cloudflare products, Rendering API was born out of an internal need. Many of our teams were setting up or wanted to set up their own tools to perform what sounds like an incredibly simple task: taking automated screenshots.</p>
 	<p>When gathering use cases, we realized that much of what our internal teams wanted would also be useful for our customers. Some notable ones are:</p>
 	<ul>
-		<li>Taking screenshots for social sharing thumbnails or preview images</li>
-		<li>Emailed daily screenshots of dashboards (requested specifically by our SVP of Engineering)</li>
-		<li>Reporting bugs on websites and sending them directly to frontend teams</li>
+		<li>
+			<p>Taking screenshots for social sharing thumbnails or preview images</p>
+		</li>
+		<li>
+			<p>Emailed daily screenshots of dashboards (requested specifically by our SVP of Engineering)</p>
+		</li>
+		<li>
+			<p>Reporting bugs on websites and sending them directly to frontend teams</p>
+		</li>
 	</ul>
 	<p>Not to mention use cases for other browser automation functions like:</p>
-	<p><strong>Testing UI/UX Flows</strong><br>End-to-end (E2E) testing is used to minimic user behaviour and can identify bugs that unit tests or integration tests have missed. And let’s be honest – no developer wants to manually check the user flow each time they make changes to their application. E2E tests can be especially useful to verify logic on your customer’s critical path like account creation, authentication or checkout. </p>
-	<p><strong>Performance Tests</strong><br>Application performance metrics, such as page load time, directly impact your user’s experience and your SEO rankings. To avoid performance regressions, you want to test impact on latency in conditions that are as close as possible to your production environment before you merge. By automating performance testing you can measure if your proposed changes will result in a degraded experience for your uses and make improvements accordingly. &nbsp;</p>
-	<h3 id="unlocking-a-new-building-block">Unlocking a new building block</h3>
-	<p>One of the most common browser automation frameworks is <a href="https://github.com/puppeteer/puppeteer">Puppeteer</a>. It’s common to run Puppeteer in a containerization tool like Docker or in a serverless environment. Taking automated screenshots should be as easy as writing some code, hitting deploy and having it run when a particular event is triggered or on a regular schedule. </p>
-	<p>It should be, but it's not. </p>
+	<p><b>Testing UI/UX Flows</b>End-to-end (E2E) testing is used to minimic user behaviour and can identify bugs that unit tests or integration tests have missed. And let’s be honest – no developer wants to manually check the user flow each time they make changes to their application. E2E tests can be especially useful to verify logic on your customer’s critical path like account creation, authentication or checkout.</p>
+	<p><b>Performance Tests</b>Application performance metrics, such as page load time, directly impact your user’s experience and your SEO rankings. To avoid performance regressions, you want to test impact on latency in conditions that are as close as possible to your production environment before you merge. By automating performance testing you can measure if your proposed changes will result in a degraded experience for your uses and make improvements accordingly. &nbsp;</p>
+	<h3>Unlocking a new building block</h3>
+	<p>One of the most common browser automation frameworks is <a href="https://github.com/puppeteer/puppeteer">Puppeteer</a>. It’s common to run Puppeteer in a containerization tool like Docker or in a serverless environment. Taking automated screenshots should be as easy as writing some code, hitting deploy and having it run when a particular event is triggered or on a regular schedule.</p>
+	<p>It should be, but it's not.</p>
 	<p>Even on a serverless solution like AWS Lambda, running Puppeteer means packaging it, making sure dependencies are covered, uploading packages to S3 and deploying using Layers. Whether using Docker or something like Lambda, it’s clear that this is not easy to set up.</p>
 	<p>One of the pillars of Cloudflare’s development platform is to provide our developers with tools that are incredibly simple, yet powerful to build on. Rendering API is our out-of-the-box solution for running Puppeteer in Workers.</p>
-	<h3 id="screenshotting-made-simple">Screenshotting made simple</h3>
+	<h3>Screenshotting made simple</h3>
 	<p>To start, the Rendering API will have support for navigating to a webpage and taking a screenshot, with more functions to follow. To use it, all you need to do is add our new browser binding to your project’s <code>wrangler.toml</code> file</p>
-	<p><u>wrangler.toml</u></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-toml">bindings = [
+	<p>wrangler.toml</p>
+	<pre class="language-toml"><code class="language-toml">bindings = [
  { name = "my_browser” type = "browser" }
-]
-</code></pre>
-	<!--kg-card-end: markdown-->
+]</code></pre>
 	<p>From there, taking a screenshot and saving it to R2 is as simple as:</p>
-	<p><u>script.ts</u></p><!--kg-card-begin: markdown-->
-	<pre><code class="language-ts">import puppeteer from '@cloudflare/puppeteer'
+	<p>script.ts</p>
+	<pre class="language-ts"><code class="language-ts">import puppeteer from '@cloudflare/puppeteer'
 
 export default {
-    async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
+    async fetch(request: Request, env: Env): Promise<response> {
         const browser = await puppeteer.launch({
             browserBinding: env.MY_BROWSER
         })
@@ -51,16 +59,18 @@ export default {
             return new Response('', { status: 400 })
         }
     }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</response></code></pre>
 	<p>Down the line, we have plans to add full Puppeteer support, including functions like <code>page.type</code>, <code>page.click</code>, <code>page.evaluate</code>!</p>
-	<h3 id="what-s-happening-under-the-hood">What’s happening under the hood?</h3>
+	<h3>What’s happening under the hood?</h3>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote browser isolation technology</a> is an integral part of our <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust</a> product offering. Remote browser isolation lets users interact with a web browser that instead of running on the client’s device, runs in a remote environment. The Rendering API repurposes this under the hood!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-32.png" class="kg-image" alt="Rendering API architecture diagram" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vVRXYPzKbQekTnLyMRyW6/6e5e65a45976dfae0061100239b062c6/image2-32.png" alt="Rendering API architecture diagram" class="kg-image" width="1402" height="390" loading="lazy">
+
+	</figure>
 	<p>We’ve wrapped the Puppeteer library so that it can be run directly from your own Worker. You can think of your Worker as the client. Each of Cloudflare’s data centers has a pool of warm browsers ready to go and when a Worker requests a browser, the browser is instantly returned and is connected to via a WebSocket. Once the WebSocket connection is established, our internal browser API Worker handles all communication to the browser session via the Chrome Devtools Protocol.</p>
 	<p>To ensure the security of your Worker, individual remote browsers are run as disposable instances – one instance per request, and never shared. They are secured using gVisor to protect against kernel level exploits. On top of that, the browser is running sandboxed processes with the lowest privilege level using a Linux seccomp profile.</p>
 	<p>The Rendering API should be used when you’re building and testing your applications. &nbsp;To prevent abuse, <a href="https://www.cloudflare.com/products/bot-management">Cloudflare Bot Management</a> has baked in signals to indicate that a request is coming from a Worker running Puppeteer. As a Cloudflare Bot Management customer, this will automatically be added to your blocklist, with the option to explicitly opt in and allow it.</p>
-	<h3 id="how-can-you-get-started">How can you get started?</h3>
+	<h3>How can you get started?</h3>
 	<p>We’re introducing the Workers Browser Rendering API in closed beta. If you’re interested, please tell us a bit about your use case and join the <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api">waitlist</a>. We would love to hear what else you want to build using the Workers Browser Rendering API, let us know in the Workers channel on the <a href="https://discord.gg/cloudflaredev">Cloudflare Developers Discord</a>!</p>
 </div>

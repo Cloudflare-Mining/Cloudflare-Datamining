@@ -1,55 +1,66 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/CustomHeaders.png" class="kg-image" alt="Custom Headers for Cloudflare" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OuQ7mjtADYLiJlpWV8tIS/146a52d754c7ec782a995a3724c84f76/CustomHeaders.png" alt="Custom Headers for Cloudflare" class="kg-image" width="1600" height="740" loading="lazy">
+
+	</figure>
 	<p>Until today, Cloudflare Workers has been a great solution to setting headers, but we wanted to create an even smoother developer experience. Today, we're excited to announce that Pages now natively supports custom headers on your projects! Simply create a <code>_headers</code> file in the build directory of your project and within it, define the rules you want to apply.</p>
-	<pre><code class="language-txt">/developer-docs/*
+	<pre class="language-txt"><code class="language-txt">/developer-docs/*
   X-Hiring: Looking for a job? We're hiring engineers
 (https://www.cloudflare.com/careers/jobs)</code></pre>
-	<h2 id="what-can-you-set-with-custom-headers">What can you set with custom headers?</h2>
+	<h2>What can you set with custom headers?</h2>
 	<p>Being able to set custom headers is useful for a variety of reasons — let’s explore some of your most popular use cases.</p>
-	<h3 id="search-engine-optimization-seo-">Search Engine Optimization (SEO)</h3>
+	<h3>Search Engine Optimization (SEO)</h3>
 	<p>When you create a Pages project, a <code>pages.dev</code> deployment is created for your project which enables you to <a href="https://developers.cloudflare.com/pages/get-started">get started immediately</a> and easily <a href="https://developers.cloudflare.com/pages/platform/preview-deployments">preview changes</a> as you iterate. However, we realize this poses an issue — publishing multiple copies of your website can harm your rankings in search engine results. One way to solve this is by disabling indexing on all <code>pages.dev</code> subdomains, but we see many using their <code>pages.dev</code> subdomain as their primary domain. With today’s announcement you can attach headers such as <a href="https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#xrobotstag"><code>X-Robots-Tag</code></a> to hint to Google and other search engines how you'd like your deployment to be indexed.</p>
 	<p>For example, to prevent your <code>pages.dev</code> deployment from being indexed, you can add the following to your <code>_headers</code> file:</p>
-	<pre><code class="language-txt">https://:project.pages.dev/*
+	<pre class="language-txt"><code class="language-txt">https://:project.pages.dev/*
   X-Robots-Tag: noindex</code></pre>
-	<h3 id="security">Security</h3>
-	<p>Customizing headers doesn’t just help with your site’s search result ranking — a number of browser security features can be configured with headers. A few headers that can enhance your site’s security are: </p>
+	<h3>Security</h3>
+	<p>Customizing headers doesn’t just help with your site’s search result ranking — a number of browser security features can be configured with headers. A few headers that can enhance your site’s security are:</p>
 	<ul>
-		<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options"><strong><code>X-Frame-Options</code></strong></a>: You can prevent <a href="https://owasp.org/www-community/attacks/Clickjacking">click-jacking</a> by informing browsers not to embed your application inside another (e.g. with an <code>&lt;iframe&gt;</code>).</li>
-		<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options"><strong><code>X-Content-Type-Option: nosniff</code></strong></a><strong>:</strong> To prevent browsers from interpreting a response as any other content-type than what is defined with the <code>Content-Type</code> header.</li>
-		<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy"><strong><code>Referrer-Policy</code></strong></a>: This allows you to customize how much information visitors give about where they're coming from when they navigate away from your page.</li>
-		<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy"><strong><code>Permissions-Policy</code></strong></a>: Browser features can be disabled to varying degrees with this header (recently renamed from <code>Feature-Policy</code>).</li>
-		<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy"><strong><code>Content-Security-Policy</code></strong></a>: And if you need fine-grained control over the content in your application, this header allows you to configure a number of security settings, including similar controls to the <code>X-Frame-Options</code> header.</li>
+		<li>
+			<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options"><code><b>X-Frame-Options</b></code></a>: You can prevent <a href="https://owasp.org/www-community/attacks/Clickjacking">click-jacking</a> by informing browsers not to embed your application inside another (e.g. with an <code>&lt;iframe&gt;</code>).</p>
+		</li>
+		<li>
+			<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options"><code><b>X-Content-Type-Option: nosniff</b></code></a><b>:</b> To prevent browsers from interpreting a response as any other content-type than what is defined with the <code>Content-Type</code> header.</p>
+		</li>
+		<li>
+			<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy"><code><b>Referrer-Policy</b></code></a>: This allows you to customize how much information visitors give about where they're coming from when they navigate away from your page.</p>
+		</li>
+		<li>
+			<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy"><code><b>Permissions-Policy</b></code></a>: Browser features can be disabled to varying degrees with this header (recently renamed from <code>Feature-Policy</code>).</p>
+		</li>
+		<li>
+			<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy"><code><b>Content-Security-Policy</b></code></a>: And if you need fine-grained control over the content in your application, this header allows you to configure a number of security settings, including similar controls to the <code>X-Frame-Options</code> header.</p>
+		</li>
 	</ul>
 	<p>You can configure these headers to protect an <code>/app/*</code> path, with the following in your <code>_headers</code> file:</p>
-	<pre><code class="language-txt">/app/*
+	<pre class="language-txt"><code class="language-txt">/app/*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
   Content-Security-Policy: script-src 'self'; frame-ancestors 'none';</code></pre>
-	<h3 id="cors">CORS</h3>
-	<p>Modern browsers implement a security protection called <em>CORS </em>or Cross-Origin Resource Sharing. This prevents one domain from being able to force a user's action on another. Without CORS, a malicious site owner might be able to do things like make requests to unsuspecting visitors' banks and initiate a transfer on their behalf. However, with CORS, requests are prevented from one origin to another to stop the malicious activity.</p>
-	<p>There are, however, some cases where it is safe to allow these cross-origin requests. So-called, "<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests">simple requests</a>" (such as linking to an image hosted on a different domain) are permitted by the browser. Fetching these resources dynamically is often where the difficulty arises, and the browser is sometimes overzealous in its protection. Simple static assets on Pages are safe to serve to any domain, since the request takes no action and there is no visitor session. Because of this, a domain owner can attach CORS headers to specify exactly which requests can be allowed in the <code>_headers</code> file for fine-grained and explicit control. </p>
+	<h3>CORS</h3>
+	<p>Modern browsers implement a security protection called <i>CORS</i> or Cross-Origin Resource Sharing. This prevents one domain from being able to force a user's action on another. Without CORS, a malicious site owner might be able to do things like make requests to unsuspecting visitors' banks and initiate a transfer on their behalf. However, with CORS, requests are prevented from one origin to another to stop the malicious activity.</p>
+	<p>There are, however, some cases where it is safe to allow these cross-origin requests. So-called, "<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests">simple requests</a>" (such as linking to an image hosted on a different domain) are permitted by the browser. Fetching these resources dynamically is often where the difficulty arises, and the browser is sometimes overzealous in its protection. Simple static assets on Pages are safe to serve to any domain, since the request takes no action and there is no visitor session. Because of this, a domain owner can attach CORS headers to specify exactly which requests can be allowed in the <code>_headers</code> file for fine-grained and explicit control.</p>
 	<p>For example, the use of the asterisk will enable any origin to request any asset from your Pages deployment:</p>
-	<pre><code class="language-txt">/*
-  Access-Control-Allow-Origin: *
-</code></pre>
+	<pre class="language-txt"><code class="language-txt">/*
+  Access-Control-Allow-Origin: *</code></pre>
 	<p>To be more restrictive and limit requests to only be allowed from a 'staging' subdomain, we can do the following:</p>
-	<pre><code class="language-txt">https://:project.pages.dev/*
-  Access-Control-Allow-Origin: https://staging.:project.pages.dev
-</code></pre>
-	<h2 id="how-we-built-support-for-custom-headers">How we built support for custom headers</h2>
+	<pre class="language-txt"><code class="language-txt">https://:project.pages.dev/*
+  Access-Control-Allow-Origin: https://staging.:project.pages.dev</code></pre>
+	<h2>How we built support for custom headers</h2>
 	<p>To support all these use cases for custom headers, we had to build a new engine to determine which rules to apply for each incoming request. Backed, of course, by Workers, this engine supports splats and placeholders, and allows you to include those matched values in your headers.</p>
 	<p>Although we don't support all of its features, we've modeled this matching engine after the <a href="https://wicg.github.io/urlpattern">URLPattern specification</a> which was recently shipped with Chrome 95. We plan to be able to fully implement this specification for custom headers once URLPattern lands in the Workers runtime, and there should hopefully be no breaking changes to migrate.</p>
-	<h2 id="enhanced-support-for-redirects">Enhanced support for redirects</h2>
-	<p>With this same engine, we’re bringing these features to your <code>_redirects</code> file as well. You can now configure your redirects with splats, placeholders and status codes as shown in the example below: </p>
-	<pre><code class="language-txt">/blog/* https://blog.example.com/:splat 301
+	<h2>Enhanced support for redirects</h2>
+	<p>With this same engine, we’re bringing these features to your <code>_redirects</code> file as well. You can now configure your redirects with splats, placeholders and status codes as shown in the example below:</p>
+	<pre class="language-txt"><code class="language-txt">/blog/* https://blog.example.com/:splat 301
 /products/:code/:name /products?name=:name&amp;code=:code
-/submit-form https://static-form.example.com/submit 307
-</code></pre>
-	<h2 id="get-started">Get started</h2>
+/submit-form https://static-form.example.com/submit 307</code></pre>
+	<h2>Get started</h2>
 	<p>Custom <a href="https://developers.cloudflare.com/pages/platform/headers">headers</a> and <a href="https://developers.cloudflare.com/pages/platform/redirects">redirects</a> for Cloudflare Pages can be configured today. Check out <a href="https://developers.cloudflare.com/pages/platform">our documentation</a> to get started, and let us know how you're using it in <a href="https://discord.gg/cloudflaredev">our Discord server</a>. We'd love to hear about what this unlocks for your projects!</p>
-	<h2 id="coming-up-">Coming up...</h2>
-	<p>And finally, if a <code>_headers</code> file and enhanced support for <code>_redirects</code> just isn't enough for you, we also have something <em>big</em> coming very soon which will give you the power to build even more powerful projects. Stay tuned!</p>
+	<h2>Coming up...</h2>
+	<p>And finally, if a <code>_headers</code> file and enhanced support for <code>_redirects</code> just isn't enough for you, we also have something <i>big</i> coming very soon which will give you the power to build even more powerful projects. Stay tuned!</p>
 </div>

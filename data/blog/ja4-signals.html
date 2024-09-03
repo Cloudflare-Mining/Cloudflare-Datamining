@@ -1,214 +1,171 @@
-<div class="mb2 gray5">13 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image2-17.png" class="kg-image" alt="Advancing Threat Intelligence: JA4 fingerprints and inter-request signals" loading="lazy" width="1999" height="1125"></figure>
-	<p>For many years, Cloudflare has used advanced fingerprinting techniques to help block online threats, in products like our <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">DDoS engine</a>, <a href="https://blog.cloudflare.com/patching-the-internet-fixing-the-wordpress-br">our WAF</a>, and <a href="https://www.cloudflare.com/application-services/products/bot-management">Bot Management</a>. For the purposes of Bot Management, fingerprinting characteristic elements of client software help us quickly identify what kind of software is making an HTTP request. It’s an efficient and accurate way to differentiate a browser from a Python script, while preserving user privacy. These fingerprints are used on their own for simple rules, and they underpin complex machine learning models as well. </p>
-	<p>Making sure our fingerprints keep pace with the pace of change on the Internet is a constant and critical task. Bots will always adapt to try and look more browser-like. Less frequently, browsers will introduce major changes to their behavior and affect the entire Internet landscape. Last year, Google <a href="https://chromestatus.com/feature/5124606246518784">did exactly that</a>, making older TLS fingerprints almost useless for identifying the latest version of Chrome.</p>
-	<h2 id="ja3-fingerprint">JA3 Fingerprint </h2>
-	<p>JA3 fingerprint introduced by <a href="https://github.com/salesforce/ja3">Salesforce researchers</a> in 2017 and later adopted by Cloudflare, involves creating a hash of the TLS ClientHello message. This hash includes the ordered list of TLS cipher suites, extensions, and other parameters, providing a unique identifier for each client. Cloudflare customers can use JA3 to build detection rules and gain insight into their network traffic.</p>
-	<p>In early 2023, Google <a href="https://chromestatus.com/feature/5124606246518784">implemented a change in Chromium-based browsers</a> to shuffle the order of TLS extensions – a strategy aimed at disrupting the detection capabilities of JA3 and enhancing the robustness of the TLS ecosystem. This modification was prompted by concerns that fixed fingerprint patterns could lead to rigid server implementations, potentially causing complications each time Chrome updates were rolled out. Over time, JA3 became less useful due to the following reasons:</p>
-	<p><strong>Randomization of TLS extensions:</strong> Browsers began randomizing the order of TLS extensions in their ClientHello messages. This change meant that the JA3 fingerprints, which relied on the sequential order of these extensions, would vary with each connection, making it unreliable for identifying unique clients​. (Further information can be found at <a href="https://www.stamus-networks.com/blog/ja3-fingerprints-fade-browsers-embrace-tls-extension-randomization">Stamus Networks</a>.)​</p>
-	<p><strong>Inconsistencies across tools</strong>: Different tools and databases that implemented JA3 fingerprinting often produced varying results due to discrepancies in how they handled TLS extensions and other protocol elements. This inconsistency hindered the effectiveness of JA3 fingerprints for reliable cross-organization sharing and threat intelligence.​ (Further information can be found at <a href="https://fingerprint.com/blog/limitations-ja3-fingerprinting-accurate-device-identification">Fingerprint</a>.)​</p>
-	<p><strong>Limited scope and lack of adaptability</strong>: JA3 focused solely on elements within the TLS ClientHello packet, covering only a narrow portion of the OSI model’s layers. This limited scope often missed crucial context about a client's environment. Additionally, as newer transport layer protocols like QUIC became popular, JA3’s methodology – originally designed for older client implementations of TLS and not including modern protocols – proved ineffective.</p>
-	<h2 id="enter-ja4-fingerprint">Enter JA4 fingerprint</h2>
-	<p>In response to these challenges, <a href="https://foxio.io">FoxIO</a> developed JA4, a successor to JA3 that offers a more robust, adaptable, and reliable method for fingerprinting TLS clients across various protocols, including emerging standards like QUIC. Officially launched in September 2023, JA4 is part of the broader <a href="https://blog.foxio.io/ja4%2B-network-fingerprinting">JA4+ suite</a> that includes fingerprints for multiple protocols such as TLS, HTTP, and SSH. This suite is designed to be interpretable by both humans and machines, thereby enhancing threat detection and security analysis capabilities.</p>
-	<p>JA4 fingerprint is resistant to the randomization of TLS extensions and incorporates additional useful dimensions, such as Application Layer Protocol Negotiation (ALPN), which were not part of JA3. The introduction of JA4 has been met with positive reception in the cybersecurity community, with several open-source tools and commercial products beginning to incorporate it into their systems, including <a href="https://developers.cloudflare.com/bots/concepts/ja3-ja4-fingerprint">Cloudflare</a>. The JA4 fingerprint is available under the <a href="https://github.com/FoxIO-LLC/ja4/blob/main/License%20FAQ.md">BSD 3-Clause license</a>, promoting seamless upgrades from JA3. Other fingerprints within the suite, such as JA4S (TLS Server Response) and JA4H (HTTP Client Fingerprinting), are licensed under the proprietary FoxIO License, which is designed for broader use but requires specific arrangements for commercial monetization.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IYFtccvqFLBlZVLf30WOC/e2ee38c38f147decb8abc24759f7bac5/2361-1.png" alt="2361-1" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p>For many years, Cloudflare has used advanced fingerprinting techniques to help block online threats, in products like our <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep"><u>DDoS engine</u></a>, <a href="https://blog.cloudflare.com/patching-the-internet-fixing-the-wordpress-br"><u>our WAF</u></a>, and <a href="https://www.cloudflare.com/application-services/products/bot-management"><u>Bot Management</u></a>. For the purposes of Bot Management, fingerprinting characteristic elements of client software help us quickly identify what kind of software is making an HTTP request. It’s an efficient and accurate way to differentiate a browser from a Python script, while preserving user privacy. These fingerprints are used on their own for simple rules, and they underpin complex machine learning models as well.&nbsp;</p>
+	<p>Making sure our fingerprints keep pace with the pace of change on the Internet is a constant and critical task. Bots will always adapt to try and look more browser-like. Less frequently, browsers will introduce major changes to their behavior and affect the entire Internet landscape. Last year, Google <a href="https://chromestatus.com/feature/5124606246518784"><u>did exactly that</u></a>, making older TLS fingerprints almost useless for identifying the latest version of Chrome.</p>
+	<h1>JA3 Fingerprint&nbsp;</h1>
+	<p>JA3 fingerprint introduced by <a href="https://github.com/salesforce/ja3"><u>Salesforce researchers</u></a> in 2017 and later adopted by Cloudflare, involves creating a hash of the TLS ClientHello message. This hash includes the ordered list of TLS cipher suites, extensions, and other parameters, providing a unique identifier for each client. Cloudflare customers can use JA3 to build detection rules and gain insight into their network traffic.</p>
+	<p>In early 2023, Google <a href="https://chromestatus.com/feature/5124606246518784"><u>implemented a change in Chromium-based browsers</u></a> to shuffle the order of TLS extensions – a strategy aimed at disrupting the detection capabilities of JA3 and enhancing the robustness of the TLS ecosystem. This modification was prompted by concerns that fixed fingerprint patterns could lead to rigid server implementations, potentially causing complications each time Chrome updates were rolled out. Over time, JA3 became less useful due to the following reasons:</p>
+	<ul>
+		<li>
+			<p><b>Randomization of TLS extensions:</b> Browsers began randomizing the order of TLS extensions in their ClientHello messages. This change meant that the JA3 fingerprints, which relied on the sequential order of these extensions, would vary with each connection, making it unreliable for identifying unique clients​. (Further information can be found at <a href="https://www.stamus-networks.com/blog/ja3-fingerprints-fade-browsers-embrace-tls-extension-randomization"><u>Stamus Networks</u></a>.)​</p>
+		</li>
+		<li>
+			<p><b>Inconsistencies across tools</b>: Different tools and databases that implemented JA3 fingerprinting often produced varying results due to discrepancies in how they handled TLS extensions and other protocol elements. This inconsistency hindered the effectiveness of JA3 fingerprints for reliable cross-organization sharing and threat intelligence.​ (Further information can be found at <a href="https://fingerprint.com/blog/limitations-ja3-fingerprinting-accurate-device-identification"><u>Fingerprint</u></a>.)​</p>
+		</li>
+		<li>
+			<p><b>Limited scope and lack of adaptability</b>: JA3 focused solely on elements within the TLS ClientHello packet, covering only a narrow portion of the OSI model’s layers. This limited scope often missed crucial context about a client's environment. Additionally, as newer transport layer protocols like QUIC became popular, JA3’s methodology – originally designed for older client implementations of TLS and not including modern protocols – proved ineffective.</p>
+		</li>
+	</ul>
+	<h1>Enter JA4 fingerprint</h1>
+	<p>In response to these challenges, <a href="https://foxio.io"><u>FoxIO</u></a> developed JA4, a successor to JA3 that offers a more robust, adaptable, and reliable method for fingerprinting TLS clients across various protocols, including emerging standards like QUIC. Officially launched in September 2023, JA4 is part of the broader <a href="https://blog.foxio.io/ja4%2B-network-fingerprinting"><u>JA4+ suite</u></a> that includes fingerprints for multiple protocols such as TLS, HTTP, and SSH. This suite is designed to be interpretable by both humans and machines, thereby enhancing threat detection and security analysis capabilities.</p>
+	<p>JA4 fingerprint is resistant to the randomization of TLS extensions and incorporates additional useful dimensions, such as Application Layer Protocol Negotiation (ALPN), which were not part of JA3. The introduction of JA4 has been met with positive reception in the cybersecurity community, with several open-source tools and commercial products beginning to incorporate it into their systems, including <a href="https://developers.cloudflare.com/bots/concepts/ja3-ja4-fingerprint"><u>Cloudflare</u></a>. The JA4 fingerprint is available under the <a href="https://github.com/FoxIO-LLC/ja4/blob/main/License%20FAQ.md"><u>BSD 3-Clause license</u></a>, promoting seamless upgrades from JA3. Other fingerprints within the suite, such as JA4S (TLS Server Response) and JA4H (HTTP Client Fingerprinting), are licensed under the proprietary FoxIO License, which is designed for broader use but requires specific arrangements for commercial monetization.</p>
 	<p>Let’s take a look at specific JA4 fingerprint example, representing the latest version of Google Chrome on Linux:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/08/unnamed-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="1019"></figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gjWV3tr6fAzSFNq9Z8Xeu/ebf15a5a727e3a3b9cfc4d65b3bd327b/2361-2.png" alt="2361-2" class="kg-image" width="1999" height="1273" loading="lazy">
+	</figure>
 	<ol>
-		<li><strong>Protocol Identifier (t): </strong>Indicates the use of TLS over TCP. This identifier is crucial for determining the underlying protocol, distinguishing it from <em>q</em> for QUIC or <em>d</em> for DTLS.</li>
-		<li><strong>TLS Version (13): </strong>Represents TLS version 1.3, confirming that the client is using one of the latest secure protocols. The version number is derived from analyzing the highest version supported in the ClientHello, excluding any <a href="https://www.rfc-editor.org/rfc/rfc8701.html">GREASE</a> values.</li>
-		<li><strong>SNI Presence (d): </strong>The presence of a domain name in the <a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-sni">Server Name Indication</a>. This indicates that the client specifies a domain (d), rather than an IP address (i would indicate the absence of SNI).</li>
-		<li><strong>Cipher Suites Count (15): </strong>Reflects the total number of cipher suites included in the ClientHello, excluding any GREASE values. It provides insight into the cryptographic options the client is willing to use.</li>
-		<li><strong>Extensions Count (16): </strong>Indicates the count of distinct extensions presented by the client in the ClientHello. This measure helps identify the range of functionalities or customizations the client supports.</li>
-		<li><strong>ALPN Values (h2): </strong>Represents the Application-Layer Protocol Negotiation protocol, in this case, HTTP/2, which indicates the protocol preferences of the client for optimized web performance.</li>
-		<li><strong>Cipher Hash (8daaf6152771): </strong>A truncated SHA256 hash of the list of cipher suites, sorted in hexadecimal order. This unique hash serves as a compact identifier for the client’s cipher suite preferences.</li>
-		<li><strong>Extension Hash (02713d6af862): </strong>A truncated SHA256 hash of the sorted list of extensions combined with the list of signature algorithms. This hash provides a unique identifier that helps differentiate clients based on the extensions and signature algorithms they support.</li>
+		<li>
+			<p><b>Protocol Identifier (t): </b>Indicates the use of TLS over TCP. This identifier is crucial for determining the underlying protocol, distinguishing it from <i>q</i> for QUIC or <i>d</i> for DTLS.</p>
+		</li>
+		<li>
+			<p><b>TLS Version (13): </b>Represents TLS version 1.3, confirming that the client is using one of the latest secure protocols. The version number is derived from analyzing the highest version supported in the ClientHello, excluding any <a href="https://www.rfc-editor.org/rfc/rfc8701.html"><u>GREASE</u></a> values.</p>
+		</li>
+		<li>
+			<p><b>SNI Presence (d): </b>The presence of a domain name in the <a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-sni"><u>Server Name Indication</u></a>. This indicates that the client specifies a domain (d), rather than an IP address (i would indicate the absence of SNI).</p>
+		</li>
+		<li>
+			<p><b>Cipher Suites Count (15): </b>Reflects the total number of cipher suites included in the ClientHello, excluding any GREASE values. It provides insight into the cryptographic options the client is willing to use.</p>
+		</li>
+		<li>
+			<p><b>Extensions Count (16): </b>Indicates the count of distinct extensions presented by the client in the ClientHello. This measure helps identify the range of functionalities or customizations the client supports.</p>
+		</li>
+		<li>
+			<p><b>ALPN Values (h2): </b>Represents the Application-Layer Protocol Negotiation protocol, in this case, HTTP/2, which indicates the protocol preferences of the client for optimized web performance.</p>
+		</li>
+		<li>
+			<p><b>Cipher Hash (8daaf6152771): </b>A truncated SHA256 hash of the list of cipher suites, sorted in hexadecimal order. This unique hash serves as a compact identifier for the client’s cipher suite preferences.</p>
+		</li>
+		<li>
+			<p><b>Extension Hash (02713d6af862): </b>A truncated SHA256 hash of the sorted list of extensions combined with the list of signature algorithms. This hash provides a unique identifier that helps differentiate clients based on the extensions and signature algorithms they support.</p>
+		</li>
 	</ol>
-	<p>Here is a <a href="https://www.wireshark.org">Wireshark</a> example of TLS ClientHello from the latest Chrome on Linux querying <a href="https://www.cloudflare.com">https://www.cloudflare.com</a>:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/08/unnamed--1--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="892"></figure>
-	<p>Integrating JA4 support into Cloudflare required rethinking our approach to parsing TLS ClientHello messages, which were previously handled in separate implementations across C, Lua, and Go. Recognizing the need to boost performance and ensure memory safety, we developed a new Rust-based crate, <code>client-hello-parser</code>. This unified parser not only simplifies modifications by centralizing all related logic but also prepares us for future transitions, such as replacing nginx with an upcoming Rust-based service. Additionally, this streamlined parser facilitates the exposure of JA4 fingerprints across our platform, improving the integration with Cloudflare's firewall rules, Workers, and analytics systems.</p>
-	<h2 id="parsing-clienthello">Parsing ClientHello</h2>
-	<p><code>client-hello-parser</code> is an internal Rust crate designed for parsing TLS ClientHello messages. It aims to simplify the process of analyzing TLS traffic by providing a straightforward way to decode and inspect the initial handshake messages sent by clients when establishing TLS connections. This crate efficiently populates a <code>ClientHelloParsed</code> struct with relevant parsed fields, including version 1 and version 2 fingerprints, and JA3 and JA4 hashes, which are essential for network traffic analysis and fingerprinting.</p>
-	<p>Key benefits of the <code>client-hello-parser</code> library include:</p>
-	<p><strong>Optimized memory usage</strong>: The library achieves amortized zero heap allocations, verified through extensive testing with the <a href="https://crates.io/crates/dhat">dhat</a> crate to track memory allocations. Utilizing the <a href="https://crates.io/crates/tinyvec">tiny_vec</a> crate, it begins with stack allocations for small vectors backed by fixed-size arrays, resorting to heap allocations only when these vectors exceed their initial size. This method ensures efficient reuse of all vectors, maintaining amortized zero heap allocations.</p>
-	<p><strong>Memory safety:</strong> Reinforced by Rust's robust borrow checker and complemented by extensive fuzzing, which has helped identify and resolve potential security vulnerabilities previously undetected in C implementations.</p>
-	<p><strong>Ultra-low latency</strong>: The parser benefits from using <a href="https://crates.io/crates/faster-hex">faster_hex</a> for efficient hex encoding/decoding, which utilizes SIMD instructions to speed up processing. The use of Rust iterators also helps in optimizing performance, often allowing the compiler to generate SIMD-optimized assembly code. This efficiency is further enhanced through the use of BigEndianIterator, which allows for efficient streaming-like processing of TLS ClientHello bytes in a single pass.</p>
+	<p>Here is a <a href="https://www.wireshark.org"><u>Wireshark</u></a> example of TLS ClientHello from the latest Chrome on Linux querying <a href="https://www.cloudflare.com"><u>https://www.cloudflare.com</u></a>:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3a1jNGnnYTNZbyshIvWhtb/f5ee4a39777628801bedf53b07ac527b/2361-3.png" alt="2361-3" class="kg-image" width="1999" height="1115" loading="lazy">
+	</figure>
+	<p>Integrating JA4 support into Cloudflare required rethinking our approach to parsing TLS ClientHello messages, which were previously handled in separate implementations across C, Lua, and Go. Recognizing the need to boost performance and ensure memory safety, we developed a new Rust-based crate, client-hello-parser. This unified parser not only simplifies modifications by centralizing all related logic but also prepares us for future transitions, such as replacing nginx with an upcoming Rust-based service. Additionally, this streamlined parser facilitates the exposure of JA4 fingerprints across our platform, improving the integration with Cloudflare's firewall rules, Workers, and analytics systems.</p>
+	<h2>Parsing ClientHello</h2>
+	<p>client-hello-parser is an internal Rust crate designed for parsing TLS ClientHello messages. It aims to simplify the process of analyzing TLS traffic by providing a straightforward way to decode and inspect the initial handshake messages sent by clients when establishing TLS connections. This crate efficiently populates a ClientHelloParsed struct with relevant parsed fields, including version 1 and version 2 fingerprints, and JA3 and JA4 hashes, which are essential for network traffic analysis and fingerprinting.</p>
+	<p>Key benefits of the client-hello-parser library include:</p>
+	<ul>
+		<li>
+			<p><b>Optimized memory usage</b>: The library achieves amortized zero heap allocations, verified through extensive testing with the <a href="https://crates.io/crates/dhat"><u>dhat</u></a> crate to track memory allocations. Utilizing the <a href="https://crates.io/crates/tinyvec"><u>tiny_vec</u></a> crate, it begins with stack allocations for small vectors backed by fixed-size arrays, resorting to heap allocations only when these vectors exceed their initial size. This method ensures efficient reuse of all vectors, maintaining amortized zero heap allocations.</p>
+		</li>
+		<li>
+			<p><b>Memory safety:</b> Reinforced by Rust's robust borrow checker and complemented by extensive fuzzing, which has helped identify and resolve potential security vulnerabilities previously undetected in C implementations.</p>
+		</li>
+		<li>
+			<p><b>Ultra-low latency</b>: The parser benefits from using <a href="https://crates.io/crates/faster-hex"><u>faster_hex</u></a> for efficient hex encoding/decoding, which utilizes SIMD instructions to speed up processing. The use of Rust iterators also helps in optimizing performance, often allowing the compiler to generate SIMD-optimized assembly code. This efficiency is further enhanced through the use of BigEndianIterator, which allows for efficient streaming-like processing of TLS ClientHello bytes in a single pass.</p>
+		</li>
+	</ul>
 	<p>Parser benchmark results:</p>
-	<pre><code class="language-js">client_hello_benchmark/parse/parse-short-502
+	<pre class="language-ja"><code class="language-ja">client_hello_benchmark/parse/parse-short-502
                         time:   [497.15 ns 497.23 ns 497.33 ns]
                         thrpt:  [2.0107 Melem/s 2.0111 Melem/s 2.0115 Melem/s]
 client_hello_benchmark/parse/parse-long-1434
                         time:   [992.82 ns 993.55 ns 994.99 ns]
                         thrpt:  [1.0050 Melem/s 1.0065 Melem/s 1.0072 Melem/s]</code></pre>
-	<p><br>The benchmark results demonstrate that the parser efficiently handles different sizes of ClientHello messages, with shorter messages being processed at a rate of approximately 2 million elements per second, and longer messages at around 1 million elements per second, showcasing the effectiveness of SIMD optimizations and Rust's iterator performance in real-world applications.</p>
-	<p><strong>Robust testing suite:</strong> Includes dozens of real-life TLS ClientHello message examples, with parsed components verified against Wireshark with <a href="https://github.com/fullylegit/ja3">JA3</a> and <a href="https://github.com/FoxIO-LLC/ja4/tree/main/wireshark">JA4</a> plugins. Additionally, <a href="https://github.com/rust-fuzz/cargo-fuzz">Cargo fuzzer</a> with memory sanitizer ensures no memory leaks or edge cases leading to core dumps. Backward compatibility tests with the legacy C parser, imported as a dependency and called via FFI, confirm that both parsers yield equivalent results.</p>
-	<p><strong>Seamless integration with nginx</strong>: The crate, compiled as a dynamic library, is linked to the nginx binary, ensuring a smooth transition from the legacy parser to the new Rust-based parser through backwards compatibility tests.</p>
+	<p>
+		The benchmark results demonstrate that the parser efficiently handles different sizes of ClientHello messages, with shorter messages being processed at a rate of approximately 2 million elements per second, and longer messages at around 1 million elements per second, showcasing the effectiveness of SIMD optimizations and Rust's iterator performance in real-world applications.</p>
+	<p><b>Robust testing suite:</b> Includes dozens of real-life TLS ClientHello message examples, with parsed components verified against Wireshark with <a href="https://github.com/fullylegit/ja3"><u>JA3</u></a> and <a href="https://github.com/FoxIO-LLC/ja4/tree/main/wireshark"><u>JA4</u></a> plugins. Additionally, <a href="https://github.com/rust-fuzz/cargo-fuzz"><u>Cargo fuzzer</u></a> with memory sanitizer ensures no memory leaks or edge cases leading to core dumps. Backward compatibility tests with the legacy C parser, imported as a dependency and called via FFI, confirm that both parsers yield equivalent results.</p>
+	<p><b>Seamless integration with nginx</b>: The crate, compiled as a dynamic library, is linked to the nginx binary, ensuring a smooth transition from the legacy parser to the new Rust-based parser through backwards compatibility tests.</p>
 	<p>The transition to a new Rust-based parser has enabled the retirement of multiple implementations across different languages (C, Lua, and Go), significantly enhancing performance and parser robustness against edge cases. This shift also facilitates the easier integration of new features and business logic for parsing TLS ClientHello messages, streamlining future expansions and security updates.</p>
-	<p>With Cloudflare JA4 fingerprints implemented on our network, we were left with another problem to solve. When JA3 was released, we saw some scenarios where customers were surprised by traffic from a new JA3 fingerprint and blocked it, only to find the fingerprint was a new browser release, or an OS update had caused a change in the fingerprint used by their mobile device. By giving customers just a hash, customers still lack context. We wanted to give our customers the necessary context to help them make informed decisions about the safety of a fingerprint, so they can act quickly and confidently on it. As more of our customers embrace AI, we’ve heard more demand from our customers to break out the signals that power our bot detection. These customers want to run complex models on proprietary data that has to stay in their control, but they want to have Cloudflare’s unique perspective on Internet traffic when they do it. To us, both use cases sounded like the same problem. </p>
-	<h2 id="enter-ja4-signals">Enter JA4 Signals</h2>
+	<p>With Cloudflare JA4 fingerprints implemented on our network, we were left with another problem to solve. When JA3 was released, we saw some scenarios where customers were surprised by traffic from a new JA3 fingerprint and blocked it, only to find the fingerprint was a new browser release, or an OS update had caused a change in the fingerprint used by their mobile device. By giving customers just a hash, customers still lack context. We wanted to give our customers the necessary context to help them make informed decisions about the safety of a fingerprint, so they can act quickly and confidently on it. As more of our customers embrace AI, we’ve heard more demand from our customers to break out the signals that power our bot detection. These customers want to run complex models on proprietary data that has to stay in their control, but they want to have Cloudflare’s unique perspective on Internet traffic when they do it. To us, both use cases sounded like the same problem.&nbsp;</p>
+	<h1>Enter JA4 Signals&nbsp;</h1>
 	<p>In the ever-evolving landscape of web security, traditional fingerprinting techniques like JA3 and JA4 have proven invaluable for identifying and managing web traffic. However, these methods alone are not sufficient to address the sophisticated tactics employed by malicious agents. Fingerprints can be easily spoofed, they change frequently, and traffic patterns and behaviors are constantly evolving. This is where JA4 Signals come into play, providing a robust and comprehensive approach to traffic analysis.</p>
-	<p>JA4 Signals are inter-request features computed based on the last hour of all traffic that Cloudflare sees globally. On a daily basis, we analyze over <strong>15 million</strong> unique JA4 fingerprints generated from more than 500 million user agents and billions of IP addresses. This breadth of data enables JA4 Signals to provide aggregated statistics that offer deeper insights into global traffic patterns – far beyond what single-request or connection fingerprinting can achieve. These signals are crucial for enhancing security measures, whether through simple firewall rules, Workers scripts, or advanced machine learning models.</p>
+	<p>JA4 Signals are inter-request features computed based on the last hour of all traffic that Cloudflare sees globally. On a daily basis, we analyze over <b>15 million</b> unique JA4 fingerprints generated from more than 500 million user agents and billions of IP addresses. This breadth of data enables JA4 Signals to provide aggregated statistics that offer deeper insights into global traffic patterns – far beyond what single-request or connection fingerprinting can achieve. These signals are crucial for enhancing security measures, whether through simple firewall rules, Workers scripts, or advanced machine learning models.</p>
 	<p>Let's consider a specific example of JA4 Signals from a Firewall events activity log, which involves the latest version of Chrome:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/08/unnamed--2--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="1137"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/08/unnamed--3--1.png" class="kg-image" alt="" loading="lazy" width="1520" height="830"></figure>
-	<p>This example highlights that a particular HTTP request received a Bot Score of 95, suggesting it likely originated from a human user operating a browser rather than an automated program or a bot. Analyzing JA4 Signals in this context provides deeper insight into the behavior of this client (latest Linux Chrome) in comparison to other network clients and their respective JA4 fingerprints. Here are a few examples of the signals our customers can see on any request:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			margin: 0px auto;
-		}
-
-		.tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		.tg .tg-bvb2 {
-			background-color: #EFEFEF;
-			color: #1D1F20;
-			font-weight: bold;
-			text-align: center;
-			text-decoration: underline;
-			vertical-align: middle
-		}
-
-		.tg .tg-5y8f {
-			color: #1D1F20;
-			text-align: center;
-			vertical-align: middle
-		}
-
-		.tg .tg-uzsc {
-			background-color: #FFF;
-			color: #1D1F20;
-			text-align: left;
-			vertical-align: middle
-		}
-
-		.tg .tg-37bx {
-			color: #1D1F20;
-			text-align: left;
-			vertical-align: middle
-		}
-
-		@media screen and (max-width: 767px) {
-			.tg {
-				width: auto !important;
-			}
-
-			.tg col {
-				width: auto !important;
-			}
-
-			.tg-wrap {
-				overflow-x: auto;
-				-webkit-overflow-scrolling: touch;
-				margin: auto 0px;
-			}
-		}
-	</style>
-	<div class="tg-wrap">
-		<table class="tg" style="undefined;table-layout: fixed; width: 100%">
-			<colgroup>
-				<col style="width: 176.444444px">
-				<col style="width: 226.444444px">
-				<col style="width: 126.444444px">
-				<col style="width: 151.444444px">
-			</colgroup>
-			<thead>
-				<tr>
-					<th class="tg-bvb2"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#1D1F20;background-color:transparent">JA4 Signal</span></th>
-					<th class="tg-bvb2"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#1D1F20;background-color:transparent">Description</span></th>
-					<th class="tg-bvb2"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#1D1F20;background-color:transparent">Value example</span></th>
-					<th class="tg-bvb2"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#1D1F20;background-color:transparent">Interpretation</span></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">browser_ratio_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The ratio of requests originating from browser-based user agents for the JA4 fingerprint in the last hour. Higher values suggest a higher proportion of browser-based requests.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">0.942</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">Indicates a 94.2% browser-based request rate for this JA4.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">cache_ratio_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The ratio of cacheable responses for the JA4 fingerprint in the last hour. Higher values suggest a higher proportion of responses that can be cached.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">0.534</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">Shows a 53.4% cacheable response rate for this JA4.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">h2h3_ratio_1h</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">The ratio of HTTP/2 and HTTP/3 requests combined with the total number of requests for the JA4 fingerprint in the last hour. Higher values indicate a higher proportion of HTTP/2 and HTTP/3 requests compared to other protocol versions.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">0.987</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">Reflects a 98.7% rate of HTTP/2 and HTTP/3 requests.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">heuristic_ratio_1h</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">The ratio of requests with a scoreSrc value of “heuristics” for the JA4 fingerprint in the last hour. Higher values suggest a larger proportion of requests being flagged by heuristic-based scoring.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">0.007</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">Suggests a 0.7% rate of heuristic-based scoring for requests.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">ips_quantile_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The quantile position of the JA4 fingerprint based on the number of unique client IP addresses across all fingerprints in the last hour. Higher values indicate a relatively higher number of distinct client IPs compared to other fingerprints.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">1</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">Indicates a high diversity of client IPs for this JA4.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">ips_rank_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The rank of the JA4 fingerprint based on the number of unique client IP addresses across all fingerprints in the last hour. Lower values indicate a higher number of distinct client IPs associated with the fingerprint.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">2</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">High volume of IPs compared to other JA4s.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">paths_rank_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The rank of the JA4 fingerprint based on the number of unique request paths across all fingerprints in the last hour. Lower values indicate a higher diversity of request paths associated with the fingerprint.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">2</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">High diversity of request paths.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">reqs_quantile_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The quantile position of the JA4 fingerprint based on the number of requests across all fingerprints in the last hour. Higher values indicate a relatively higher number of requests compared to other fingerprints.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">1</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">High volume of requests compared to other JA4s.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">reqs_rank_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The rank of the JA4 fingerprint based on the number of requests across all fingerprints in the last hour. Lower values indicate a higher number of requests associated with the fingerprint.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">2</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">High request count for this JA4.</span></td>
-				</tr>
-				<tr>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">uas_rank_1h</span></td>
-					<td class="tg-uzsc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:#FFF">The rank of the JA4 fingerprint based on the number of distinct user agents across all fingerprints in the last hour. Lower values indicate a higher diversity of user agents associated with the fingerprint.</span></td>
-					<td class="tg-5y8f"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">1</span></td>
-					<td class="tg-37bx"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1D1F20;background-color:transparent">Highest diversity of user agents for this JA4.</span></td>
-				</tr>
-			</tbody>
-		</table>
-	</div><!--kg-card-end: html-->
-	<p>The JA4 fingerprint and JA4 Signals are now available in the Firewall Rules UI, Bot Analytics and Workers. Customers can now use these fields to write custom rules, rate-limiting rules, transform rules, or Workers logic using JA4 fingerprint and JA4 Signals.</p>
+	<p>This example highlights that a particular HTTP request received a Bot Score of 95, suggesting it likely originated from a human user operating a browser rather than an automated program or a bot. Analyzing JA4 Signals in this context provides deeper insight into the behavior of this client (latest Linux Chrome) in comparison to other network clients and their respective JA4 fingerprints. Here are a few examples of the signals our customers can see on any request:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b><u>JA4 Signal</u></b></p>
+				</td>
+				<td>
+					<p><b><u>Description</u></b></p>
+				</td>
+				<td>
+					<p><b><u>Value example</u></b></p>
+				</td>
+				<td>
+					<p><b><u>Interpretation</u></b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>browser_ratio_1h</p>
+				</td>
+				<td>
+					<p>The ratio of requests originating from browser-based user agents for the JA4 fingerprint in the last hour. Higher values suggest a higher proportion of browser-based requests.</p>
+				</td>
+				<td>
+					<p>0.942</p>
+				</td>
+				<td>
+					<p>Indicates a 94.2% browser-based request rate for this JA4.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cache_ratio_1h</p>
+				</td>
+				<td>
+					<p>The ratio of cacheable responses for the JA4 fingerprint in the last hour. Higher values suggest a higher proportion of responses that can be cached.</p>
+				</td>
+				<td>
+					<p>0.534</p>
+				</td>
+				<td>
+					<p>Shows a 53.4% cacheable response rate for this JA4.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>h2h3_ratio_1h</p>
+				</td>
+				<td>
+					<p>The ratio of HTTP/2 and HTTP/3 requests combined with the total number of requests for the JA4 fingerprint in the last hour. Higher values indicate a higher proportion of HTTP/2 and HTTP/3 requests compared to other protocol versions.</p>
+				</td>
+				<td>
+					<p>0.987</p>
+				</td>
+				<td>
+					<p>Reflects a 98.7% rate of HTTP/2 and HTTP/3 requests.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>reqs_quantile_1h</p>
+				</td>
+				<td>
+					<p>The quantile position of the JA4 fingerprint based on the number of requests across all fingerprints in the last hour. Higher values indicate a relatively higher number of requests compared to other fingerprints.</p>
+				</td>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>High volume of requests compared to other JA4s.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>The JA4 fingerprint and JA4 Signals are now available in the Firewall Rules UI, Bot Analytics and Workers. Customers can now use these fields to write custom rules, rate-limiting rules, transform rules, or Workers logic using JA4 fingerprint and JA4 Signals.&nbsp;</p>
 	<p>Let's demonstrate how to use JA4 Signals with the following Worker example. This script processes incoming requests by parsing and categorizing JA4 Signals, providing a clear structure for further analysis or rule application within Cloudflare Workers:</p>
-	<pre><code class="language-js">/**
+	<pre class="language-js"><code class="language-js">/**
  * Event listener for 'fetch' events. This triggers on every request to the worker.
  */
 addEventListener('fetch', event =&gt; {
@@ -261,7 +218,7 @@ function parseJA4Signals(ja4Signals) {
 /**
  * Filters the keys in the ja4Signals object that match the list of specified keys and are not undefined.
  * @param {Object} ja4Signals - The JA4 Signals object.
- * @param {Array&lt;string&gt;} keys - An array of keys to filter from the ja4Signals object.
+ * @param {Array<string>} keys - An array of keys to filter from the ja4Signals object.
  * @returns {Object} A filtered object containing only the specified keys that are present in ja4Signals.
  */
 function filterKeys(ja4Signals, keys) {
@@ -274,18 +231,27 @@ function filterKeys(ja4Signals, keys) {
     }
   });
   return filtered;
-}</code></pre>
-	<p></p>
-	<h2 id="benefits-of-ja4-signals">Benefits of JA4 Signals</h2>
+}</string></code></pre>
+	<h2><b>Benefits of JA4 Signals</b></h2>
 	<ul>
-		<li><strong>Comprehensive traffic analysis</strong>: JA4 Signals aggregate data over an hour to provide a holistic view of traffic patterns. This method enhances the ability to identify emerging threats and abnormal behaviors by analyzing changes over time rather than in isolation.</li>
-		<li><strong>Precision in anomaly detection</strong>: Leveraging detailed inter-request features, JA4 Signals enable the precise detection of anomalies that may be overlooked by single-request fingerprinting. This leads to more accurate identification of sophisticated cyber threats.</li>
-		<li><strong>Globally scalable insights</strong>: By synthesizing data at a global scale, JA4 Signals harness the strength of Cloudflare’s network intelligence. This extensive analysis makes the system less susceptible to manipulation and provides a resilient foundation for security protocols.</li>
-		<li><strong>Dynamic security enforcement</strong>: JA4 Signals can dynamically inform security rules, from simple firewall configurations to complex machine learning algorithms. This adaptability ensures that security measures evolve in tandem with changing traffic patterns and emerging threats.</li>
-		<li><strong>Reduction in false positives and negatives</strong>: With the detailed insights provided by JA4 Signals, security systems can distinguish between legitimate and malicious traffic more effectively, reducing the occurrence of false positives and negatives and improving overall system reliability.</li>
+		<li>
+			<p><b>Comprehensive traffic analysis</b>: JA4 Signals aggregate data over an hour to provide a holistic view of traffic patterns. This method enhances the ability to identify emerging threats and abnormal behaviors by analyzing changes over time rather than in isolation.</p>
+		</li>
+		<li>
+			<p><b>Precision in anomaly detection</b>: Leveraging detailed inter-request features, JA4 Signals enable the precise detection of anomalies that may be overlooked by single-request fingerprinting. This leads to more accurate identification of sophisticated cyber threats.</p>
+		</li>
+		<li>
+			<p><b>Globally scalable insights</b>: By synthesizing data at a global scale, JA4 Signals harness the strength of Cloudflare’s network intelligence. This extensive analysis makes the system less susceptible to manipulation and provides a resilient foundation for security protocols.</p>
+		</li>
+		<li>
+			<p><b>Dynamic security enforcement</b>: JA4 Signals can dynamically inform security rules, from simple firewall configurations to complex machine learning algorithms. This adaptability ensures that security measures evolve in tandem with changing traffic patterns and emerging threats.</p>
+		</li>
+		<li>
+			<p><b>Reduction in false positives and negatives</b>: With the detailed insights provided by JA4 Signals, security systems can distinguish between legitimate and malicious traffic more effectively, reducing the occurrence of false positives and negatives and improving overall system reliability.</p>
+		</li>
 	</ul>
-	<h2 id="conclusion">Conclusion</h2>
-	<p>The introduction of JA4 fingerprint and JA4 Signals marks a significant milestone in advancing Cloudflare’s security offerings, including Bot Management and <a href="https://www.cloudflare.com/ddos">DDoS protection</a>. These tools not only enhance the robustness of our traffic analysis but also showcase the continuous evolution of our network fingerprinting techniques. The efficiency of computing JA4 fingerprints enables real-time detection and response to emerging threats. Similarly, by leveraging aggregated statistics and inter-request features, JA4 Signals provide deep insights into traffic patterns at speeds measured in microseconds, ensuring that no detail is too small to be captured and analyzed.</p>
-	<p>These security features are underpinned by the scalable techniques and open-sourced libraries outlined in <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">"Every request, every microsecond: scalable machine learning at Cloudflare"</a>. This discussion highlights how Cloudflare's innovations not only analyze vast amounts of data but also transform this analysis into actionable, reliable, and dynamically adaptable security measures.</p>
-	<p>Any Enterprise business with a bot problem will benefit from Cloudflare’s unique JA4 implementation and our perspective on bot traffic, but customers who run their own internal threat models will also benefit from access to data insights from a network that processes over 50 million requests per second. Please <a href="https://www.cloudflare.com/plans/enterprise/contact">get in touch</a> with us to learn more about our Bot Management offering.</p>
+	<h2>Conclusion</h2>
+	<p>The introduction of JA4 fingerprint and JA4 Signals marks a significant milestone in advancing Cloudflare’s security offerings, including Bot Management and <a href="https://www.cloudflare.com/ddos"><u>DDoS protection</u></a>. These tools not only enhance the robustness of our traffic analysis but also showcase the continuous evolution of our network fingerprinting techniques. The efficiency of computing JA4 fingerprints enables real-time detection and response to emerging threats. Similarly, by leveraging aggregated statistics and inter-request features, JA4 Signals provide deep insights into traffic patterns at speeds measured in microseconds, ensuring that no detail is too small to be captured and analyzed.</p>
+	<p>These security features are underpinned by the scalable techniques and open-sourced libraries outlined in <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare"><u>"Every request, every microsecond: scalable machine learning at Cloudflare"</u></a>. This discussion highlights how Cloudflare's innovations not only analyze vast amounts of data but also transform this analysis into actionable, reliable, and dynamically adaptable security measures.</p>
+	<p>Any Enterprise business with a bot problem will benefit from Cloudflare’s unique JA4 implementation and our perspective on bot traffic, but customers who run their own internal threat models will also benefit from access to data insights from a network that processes over 50 million requests per second. Please <a href="https://www.cloudflare.com/plans/enterprise/contact"><u>get in touch</u></a> with us to learn more about our Bot Management offering.</p>
 </div>

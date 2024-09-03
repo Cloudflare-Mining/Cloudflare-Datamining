@@ -1,30 +1,48 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/WARP-Geoexit.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UjKl9XnDNqhTMCEUDIXX0/67ab607da5fc67f147b13d446e8526dd/WARP-Geoexit.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
 	<p>It’s a Saturday night. You open your browser, looking for nearby pizza spots that are open. If the search goes as intended, your browser will show you results that are within a few miles, often based on the assumed location of your IP address. At Cloudflare, we affectionately call this type of geolocation accuracy the “pizza test”. When you use a Cloudflare product that sits between you and the Internet (for example, <a href="https://blog.cloudflare.com/1111-warp-better-vpn">WARP</a>), it’s one of the ways we work to balance user experience and privacy. Too inaccurate and you’re getting pizza places from a neighboring country; too accurate and you’re reducing the privacy benefits of obscuring your location.</p>
 	<p>With that in mind, we’re excited to announce two major improvements to our 1.1.1.1 + WARP apps: first, an improvement to how we ensure search results and other geographically-aware Internet activity work without compromising your privacy, and second, a larger network with more locations available to WARP+ subscribers, powering even speedier connections to our global network.</p>
-	<h3 id="a-better-internet-browsing-experience-for-every-warp-user">A better Internet browsing experience for every WARP user</h3>
+	<h3>A better Internet browsing experience for every WARP user</h3>
 	<p>When we originally built the 1.1.1.1+ WARP mobile app, we wanted to create a consumer-friendly way to connect to our network and privacy-respecting <a href="https://1.1.1.1">DNS resolver</a>.</p>
 	<p>What we discovered over time is that the topology of the Internet dictates a different type of experience for users in different locations. Why? Sometimes, because traffic congestion or technical issues route your traffic to a less congested part of the network. Other times, Internet Service Providers may not <a href="https://www.cloudflare.com/peering-policy">peer with Cloudflare</a> or engage in traffic engineering to optimize their networks how they see fit, which could result in user traffic connecting to a location that doesn’t quite map to their locale or language.</p>
 	<p>Regardless of the cause, the impact is that your search results become less relevant, if not outright confusing. For example, in somewhere dense with country borders, like Europe, your traffic in Berlin could get routed to Amsterdam because your mobile operator chooses to not peer in-country, giving you results in Dutch instead of German. This can also be disruptive if you’re trying to stream content subject to licensing restrictions, such as a person in the UK trying to watch BBC iPlayer or a person in Brazil trying to watch the World Cup.</p>
 	<p>So we fixed this. We just rolled out a major update to the service that powers WARP that will give you a geographically accurate browsing experience without revealing your IP address to the websites you’re visiting. Instead, websites you visit will see a Cloudflare IP address instead, making it harder for them to track you directly.</p>
-	<h3 id="how-it-works">How it works</h3>
+	<h3>How it works</h3>
 	<p>Traditionally, consumer VPNs deliberately route your traffic through a server in another country, making your connection slow, and often getting blocked because of their ability to flout location-based content restrictions. We took a different approach when we first launched WARP in 2018, giving you the best possible performance by routing your traffic through the Cloudflare data center closest to you. However, because not every Internet Service Provider (ISP) peers with Cloudflare, users sometimes end up exiting the Cloudflare network from a more “random” data center – one that does not accurately represent their locale.</p>
 	<p>Websites and third party services often infer geolocation from your IP address, and now, 1.1.1.1 + WARP replaces your original IP address with one that consistently and accurately represents your approximate location.</p>
 	<p>Here’s how we did it:</p>
 	<ol>
-		<li>We ran an analysis on a subset of our network traffic to find a rough approximation of how many users we have per city.</li>
-		<li>We divided that amongst our egress IPs, using an anycast architecture to be efficient with the number of additional IPs we had to allocate and advertise per metro area.</li>
-		<li>We then submitted geolocation information of those IPs to various geolocation database providers, ensuring third party services associate those Cloudflare egress IPs with an accurate approximate location.</li>
+		<li>
+			<p>We ran an analysis on a subset of our network traffic to find a rough approximation of how many users we have per city.</p>
+		</li>
+		<li>
+			<p>We divided that amongst our egress IPs, using an anycast architecture to be efficient with the number of additional IPs we had to allocate and advertise per metro area.</p>
+		</li>
+		<li>
+			<p>We then submitted geolocation information of those IPs to various geolocation database providers, ensuring third party services associate those Cloudflare egress IPs with an accurate approximate location.</p>
+		</li>
 	</ol>
 	<p>It was important to us to provide the benefits of this location accuracy without compromising user privacy, so the app doesn’t ask for specific location permissions or log your IP address.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-12.png" class="kg-image" alt="1.1.1.1 + WARP: More features, still private" loading="lazy"></figure>
-	<h3 id="an-even-bigger-network-for-warp-users">An even bigger network for WARP+ users</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-22.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RwUR1o5sBsQIUo2rPBeaH/ebe7446fde36054105df05638188056a/image1-12.png" alt="1.1.1.1 + WARP: More features, still private" class="kg-image" width="1730" height="476" loading="lazy">
+
+	</figure>
+	<h3>An even bigger network for WARP+ users</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28r1F3gCyYhp0GFEkCGkkD/d0fe839587b7cc39824a134bc527e8d5/image2-22.png" alt="" class="kg-image" width="1873" height="1083" loading="lazy">
+
+	</figure>
 	<p>We also recently announced that we’ve expanded our network to <a href="https://blog.cloudflare.com/new-cities-april-2022-edition">over 275 cities</a> in over 100 countries. This gave us an opportunity to revisit where we offered WARP, and how we could expand the number of locations users can connect to WARP with (in other words: an opportunity to make things faster).</p>
 	<p>From today, all WARP+ subscribers will benefit from a larger network with 20+ new cities: with no change in subscription pricing. A closer Cloudflare data center means less latency between your device and Cloudflare, which directly improves your download speed, thanks to what’s called the <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product">Bandwidth-Delay Product</a> (put simply: lower latency, higher throughput!).</p>
 	<p>As a result, sites load faster, both for those on the <a href="https://www.cloudflare.com/network">Cloudflare network</a> and those that aren’t. As we continue to expand our network, we'll be revising this on a regular basis to ensure that all WARP and WARP+ subscribers continue to get great performance.</p>
-	<h3 id="speed-privacy-and-relevance">Speed, privacy, and relevance</h3>
+	<h3>Speed, privacy, and relevance</h3>
 	<p>Beyond being able to find pizza on a Saturday night, we believe everyone should be able to browse the Internet freely – and not have to sacrifice the speed, privacy, or relevance of their search results in order to do so.</p>
 	<p>In the near future, we’ll be investing in features to bring even more of the benefits of Cloudflare infrastructure to every 1.1.1.1 + WARP user. Stay tuned!</p>
 </div>

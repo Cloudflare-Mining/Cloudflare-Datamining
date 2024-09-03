@@ -1,6 +1,10 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Turpintine.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MCyBaFe4I6DSl5Lw5rFnH/b0fad62e78ab77dc17e2f3f9126c97ba/Turpintine.png" alt="" class="kg-image" width="1912" height="1024" loading="lazy">
+
+	</figure>
 	<p>When Varnish and the Varnish Configuration Language (VCL) were first introduced 15 years ago, they were an incredibly powerful combination to configure caching on servers (and your networks). It seemed a logical choice for a language to configure <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> — caching in the cloud.</p>
 	<p>A lot has changed on the Internet since then.</p>
 	<p>In particular, caching is just one of many things that “CDNs” are expected to do: load balancing, DDoS protection, rate limiting, transformations, synthetic responses, routing and more. But above all what “CDNs” need to be is programmable, not just configurable.</p>
@@ -8,24 +12,36 @@
 	<p>But it’s not just about who can write VCL — it’s what VCL is increasingly being asked to do. A lot of our customers have told us that they have much greater expectations for what they <a href="https://blog.cloudflare.com/the-network-is-the-computer">expect the network to do</a>: they don’t just want to configure anymore… they want to be able to program it! VCL is being pushed and stretched into things it was never envisaged to do.</p>
 	<p>These are often the frustrations we hear from customers about the use of VCL. And yet, at the same time, migrations are always hard. Taking thousands of lines of code that have been built up over the years for a mission critical service, and rewriting it from scratch? Nobody wants to do that.</p>
 	<p>Today, we are excited to announce a solution to all these problems: Turpentine. Turpentine is a true VCL-to-TypeScript converter: it is the easiest and most effective way for you to migrate your legacy Varnish to a modern, Turing-complete programming language and onto the edge. But don’t think that because you’re moving up in terms of language abstraction that you’re giving up performance — it’s the opposite. Turpentine enables porting your VCL-based configuration to Cloudflare Workers — <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">which is known for its speed</a>. Beyond being able to eliminate the use of VCL, Turpentine enables you to take full advantage of Cloudflare: including proxies, firewall, load balancers, tiered caching/shielding and everything else Cloudflare offers.</p>
-	<p>And you’ll be able to configure it using one of the most widely used languages in the world.<br>Whether you’re using standard configurations, or have a heavily customized VCL file, Turpentine will generate human-readable and well commented TypeScript code and deploy it to our serverless platform that is… <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">fast</a>.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/pasted-image-0-1.png" class="kg-image" alt="Sample VCL on the left and Turpentine’s output TypeScript on the right" loading="lazy"></figure>
-	<h3 id="how-it-works">How It Works</h3>
+	<p>And you’ll be able to configure it using one of the most widely used languages in the world.Whether you’re using standard configurations, or have a heavily customized VCL file, Turpentine will generate human-readable and well commented TypeScript code and deploy it to our serverless platform that is… <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">fast</a>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2d3BpPqSJXoCTFDsYPKKJg/b36bf343840eec3aff0f9cd66918f017/pasted-image-0-1.png" alt="Sample VCL on the left and Turpentine’s output TypeScript on the right" class="kg-image" width="2048" height="648" loading="lazy">
+
+	</figure>
+	<h3>How It Works</h3>
 	<p>To turn a VCL into TypeScript code that is well optimized, human-readable, and commented, Turpentine takes a three-phase approach:</p>
 	<ol>
-		<li>The VCL is parsed, its meaning is understood, and TypeScript code that preserves its intentions is generated. <strong>This is more than transpiling</strong>. All the functionality configured in the VCL is rewritten to the best solution available. For example, rate limiting might be custom code on your VCL — but have native functionality on Cloudflare.</li>
-		<li>The code is cleaned and optimized. During this phase, Turpentine looks for redundancies and inefficiencies, and removes them. Your code will be running on Cloudflare Workers, the fastest serverless platform in the world, and we definitely don’t want to leave behind inefficiencies that would prevent you from enjoying its benefits to the full extent.</li>
-		<li>The final step is pretty printing. The whole point of this exercise is to make the code easy to understand by as many people as possible on your team — so that virtually any engineer on your team, not just infrastructure experts, can program your network moving forward.</li>
+		<li>
+			<p>The VCL is parsed, its meaning is understood, and TypeScript code that preserves its intentions is generated. <b>This is more than transpiling</b>. All the functionality configured in the VCL is rewritten to the best solution available. For example, rate limiting might be custom code on your VCL — but have native functionality on Cloudflare.</p>
+		</li>
+		<li>
+			<p>The code is cleaned and optimized. During this phase, Turpentine looks for redundancies and inefficiencies, and removes them. Your code will be running on Cloudflare Workers, the fastest serverless platform in the world, and we definitely don’t want to leave behind inefficiencies that would prevent you from enjoying its benefits to the full extent.</p>
+		</li>
+		<li>
+			<p>The final step is pretty printing. The whole point of this exercise is to make the code easy to understand by as many people as possible on your team — so that virtually any engineer on your team, not just infrastructure experts, can program your network moving forward.</p>
+		</li>
 	</ol>
-	<h3 id="turpentine-in-action">Turpentine in Action</h3>
+	<h3>Turpentine in Action</h3>
 	<p>We’ve been perfecting Turpentine in a private beta with some very large customers who have some very complicated VCL files.</p>
-	<p>Here’s a demo of a VCL file being converted to a Worker:</p><!--kg-card-begin: markdown-->
-	<div style="position: relative; padding-top: 55.182072829131656%;"><iframe src="https://iframe.videodelivery.net/6c5d94f58bffcd482240a8834537bf8f?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: markdown-->
-	<h3 id="legacy-to-modern">Legacy to Modern</h3>
+	<p>Here’s a demo of a VCL file being converted to a Worker:</p>
+	<h3>Legacy to Modern</h3>
 	<p>Happily, this all occurs without the pains of the usual legacy migration. There’s no project plan. No engineers and IT teams trying to replicate each bit of configuration or investigating whether a specific feature even existed.</p>
 	<p>If you’re interested in finding out more, please register your interest in the <a href="https://www.cloudflare.com/project-turpentine-beta-sign-up">sign-up form here</a> — we’d love to explore with you. For now, we’re staying in private beta, so we can walk every new customer through the process. A Cloudflare engineer will help your team get up to speed and comfortable with the new infrastructure.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Hugh-Mungo-the-Turpintine-Mongoose.png" class="kg-image" alt="" loading="lazy"></figure>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Ap6HwjBSHgPUsu9EkF61v/7b8061e6afcd9fcf737929eb8e13388c/Hugh-Mungo-the-Turpintine-Mongoose.png" alt="" class="kg-image" width="1650" height="954" loading="lazy">
+
+	</figure>
+	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/4a8b2e15b9b0a933a646e7f0faa13ecb?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

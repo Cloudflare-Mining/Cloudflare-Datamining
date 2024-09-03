@@ -1,120 +1,190 @@
 <div class="mb2 gray5">9 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-for-2024-q2-es-es">Español</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-for-2024-q2-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-for-2024-q2-pt-br">Português</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-for-2024-q2-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-for-2024-q2-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-for-2024-q2-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-for-2024-q2-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-for-2024-q2-zh-cn">简体中文</a>.</small></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/07/image13-1.png" class="kg-image" alt="DDoS threat report for 2024 Q2" loading="lazy" width="1999" height="1125"></figure>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-for-2024-q2">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-for-2024-q2">Français</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-for-2024-q2">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-for-2024-q2">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-for-2024-q2">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-for-2024-q2">Português</a>, <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-for-2024-q2">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-for-2024-q2">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6H7tZjcmMtTkqI4vnZh1cU/eb22ea2859a4d2df3760c48676114295/image13-1.png" alt="DDoS threat report for 2024 Q2" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
 	<p>Welcome to the 18th edition of the Cloudflare DDoS Threat Report. Released quarterly, these reports provide an in-depth analysis of the DDoS threat landscape as observed across the <a href="https://www.cloudflare.com/en-gb/network">Cloudflare network</a>. This edition focuses on the second quarter of 2024.</p>
 	<p>With a 280 terabit per second network located across over 320 cities worldwide, <a href="https://w3techs.com/technologies/details/cn-cloudflare">serving 19% of all websites</a>, Cloudflare holds a unique vantage point that enables us to provide valuable insights and trends to the broader Internet community.</p>
-	<h2 id="key-insights-for-2024-q2">Key insights for 2024 Q2</h2>
+	<h2>Key insights for 2024 Q2</h2>
 	<ul>
-		<li>Cloudflare recorded a 20% year-over-year increase in DDoS attacks.</li>
-		<li>1 out of every 25 survey respondents said that DDoS attacks against them were carried out by state-level or state-sponsored threat actors.</li>
-		<li>Threat actor capabilities reached an all-time high as our automated defenses generated 10 times more fingerprints to counter and mitigate the ultrasophisticated DDoS attacks.</li>
+		<li>
+			<p>Cloudflare recorded a 20% year-over-year increase in DDoS attacks.</p>
+		</li>
+		<li>
+			<p>1 out of every 25 survey respondents said that DDoS attacks against them were carried out by state-level or state-sponsored threat actors.</p>
+		</li>
+		<li>
+			<p>Threat actor capabilities reached an all-time high as our automated defenses generated 10 times more fingerprints to counter and mitigate the ultrasophisticated DDoS attacks.</p>
+		</li>
 	</ul>
 	<p>View the interactive version of this report on <a href="https://radar.cloudflare.com/reports/ddos-2024-q2">Cloudflare Radar</a>.</p>
-	<h3 id="quick-recapwhat-is-a-ddos-attack">Quick recap - what is a DDoS attack?</h3>
+	<h3>Quick recap - what is a DDoS attack?</h3>
 	<p>Before diving in deeper, let's recap what a DDoS attack is. Short for <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service</a>, a DDoS attack is a type of cyber attack designed to take down or disrupt Internet services, such as websites or mobile apps, making them unavailable to users. This is typically achieved by overwhelming the victim's server with more traffic than it can handle — usually from multiple sources across the Internet, rendering it unable to handle legitimate user traffic.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed-4.png" class="kg-image" alt="Diagram of a DDoS attack" loading="lazy" width="1600" height="849">
-		<figcaption>Diagram of a DDoS attack</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2S7TgrtK197L1YGvjBgZm2/9f8188c014d2f994477398a86e57daf5/unnamed-4.png" alt="Diagram of a DDoS attack" class="kg-image" width="1600" height="849" loading="lazy">
+
 	</figure>
+	<p>Diagram of a DDoS attack</p>
 	<p>To learn more about DDoS attacks and other types of cyber threats, visit our <a href="https://www.cloudflare.com/learning">Learning Center</a>, access <a href="https://blog.cloudflare.com/tag/ddos-reports">previous DDoS threat reports</a> on the Cloudflare blog or visit our interactive hub, <a href="https://radar.cloudflare.com/reports?q=DDoS">Cloudflare Radar</a>. There's also a <a href="https://developers.cloudflare.com/radar">free API</a> for those interested in investigating these and other Internet trends.</p>
 	<p>To learn about our report preparation, refer to our <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports">Methodologies</a>.</p>
-	<h3 id="threat-actor-sophistication-fuels-the-continued-increase-in-ddos-attacks">Threat actor sophistication fuels the continued increase in DDoS attacks</h3>
+	<h3>Threat actor sophistication fuels the continued increase in DDoS attacks</h3>
 	<p>In the first half of 2024, we mitigated 8.5 million DDoS attacks: 4.5 million in Q1 and 4 million in Q2. Overall, the number of DDoS attacks in Q2 decreased by 11% quarter-over-quarter, but increased 20% year-over-year.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--1--3.png" class="kg-image" alt="Distribution of DDoS attacks by types and vectors" loading="lazy" width="1480" height="819">
-		<figcaption>Distribution of DDoS attacks by types and vectors</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ctaeSKgnNEYe46W7UEKGs/3c31d2b302df69645573fb5264d9a0de/unnamed--1--3.png" alt="Distribution of DDoS attacks by types and vectors" class="kg-image" width="1480" height="819" loading="lazy">
+
 	</figure>
+	<p>Distribution of DDoS attacks by types and vectors</p>
 	<p>For context, in the entire year of 2023, we mitigated 14 million DDoS attacks, and halfway through 2024, we have already mitigated 60% of last year’s figure.</p>
 	<p>Cloudflare successfully mitigated 10.2 trillion HTTP DDoS requests and 57 petabytes of network-layer DDoS attack traffic, preventing it from reaching our customers’ origin servers.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--2--2.png" class="kg-image" alt="DDoS attacks stats for 2024 Q2" loading="lazy" width="1508" height="846">
-		<figcaption>DDoS attacks stats for 2024 Q2</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WyUYhLUD166Po7ah6ZEQp/ffa7b5ccfe0ec00e0e901246a55a61ca/unnamed--2--2.png" alt="DDoS attacks stats for 2024 Q2" class="kg-image" width="1508" height="846" loading="lazy">
+
 	</figure>
+	<p>DDoS attacks stats for 2024 Q2</p>
 	<p>When we break it down further, those 4 million DDoS attacks were composed of 2.2 million network-layer DDoS attacks and 1.8 million HTTP DDoS attacks. This number of 1.8 million HTTP DDoS attacks has been normalized to compensate for the explosion in sophisticated and randomized HTTP DDoS attacks. Our automated mitigation systems generate real-time fingerprints for DDoS attacks, and due to the randomized nature of these sophisticated attacks, we observed many fingerprints being generated for single attacks. The actual number of fingerprints that was generated was closer to 19 million – over ten times larger than the normalized figure of 1.8 million. The millions of fingerprints that were generated to deal with the randomization stemmed from a few single rules. These rules did their job to stop attacks, but they inflated the numbers, so we excluded them from the calculation.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--3--2.png" class="kg-image" alt="HTTP DDoS attacks by quarter, with the excluded fingerprints" loading="lazy" width="1140" height="675">
-		<figcaption>HTTP DDoS attacks by quarter, with the excluded fingerprints</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NbYriDgdvtAormXB1spNP/774642efa1ed7479df1ce806f2e32549/unnamed--3--2.png" alt="HTTP DDoS attacks by quarter, with the excluded fingerprints" class="kg-image" width="1140" height="675" loading="lazy">
+
 	</figure>
+	<p>HTTP DDoS attacks by quarter, with the excluded fingerprints</p>
 	<p>This ten-fold difference underscores the dramatic change in the threat landscape. The tools and capabilities that allowed threat actors to carry out such randomized and sophisticated attacks were previously associated with capabilities reserved for state-level actors or state-sponsored actors. But, coinciding with the rise of generative AI and autopilot systems that can help actors write better code faster, these capabilities have made their way to the common cyber criminal.</p>
-	<h2 id="ransom-ddos-attacks">Ransom DDoS attacks</h2>
+	<h2>Ransom DDoS attacks</h2>
 	<p>In May 2024, the percentage of attacked Cloudflare customers that reported being threatened by a DDoS attack threat actor, or subjected to a <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack">Ransom DDoS attack</a> reached 16% – the highest it’s been in the past 12 months. The quarter started relatively low, at 7% of customers reporting a threat or a ransom attack. That quickly jumped to 16% in May and slightly dipped in June to 14%.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--4--2.png" class="kg-image" alt="Percentage of customers reporting DDoS threats or ransom extortion (by month)" loading="lazy" width="1325" height="778">
-		<figcaption>Percentage of customers reporting DDoS threats or ransom extortion (by month)</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16Ppdz9v4IcH0Xgii7EhdM/5b97a5ef8d4e46c9e36d806bc52bf0e3/unnamed--4--2.png" alt="Percentage of customers reporting DDoS threats or ransom extortion (by month)" class="kg-image" width="1325" height="778" loading="lazy">
+
 	</figure>
+	<p>Percentage of customers reporting DDoS threats or ransom extortion (by month)</p>
 	<p>Overall, ransom DDoS attacks have been increasing quarter over quarter throughout the past year. In Q2 2024, the percentage of customers that reported being threatened or extorted was 12.3%, slightly higher than the previous quarter (10.2%) but similar to the percentage of the year before (also 12.0%).</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--5--2.png" class="kg-image" alt="Percentage of customers reporting DDoS threats or ransom extortion (by quarter)" loading="lazy" width="1128" height="665">
-		<figcaption>Percentage of customers reporting DDoS threats or ransom extortion (by quarter)</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WxCgT7fCSV3btCf6PmAIw/3154e8f630e7a866f4ef8feccdc89c38/unnamed--5--2.png" alt="Percentage of customers reporting DDoS threats or ransom extortion (by quarter)" class="kg-image" width="1128" height="665" loading="lazy">
+
 	</figure>
-	<h2 id="threat-actors">Threat actors</h2>
+	<p>Percentage of customers reporting DDoS threats or ransom extortion (by quarter)</p>
+	<h2>Threat actors</h2>
 	<p>75% of respondents reported that they did not know who attacked them or why. These respondents are Cloudflare customers that were targeted by HTTP DDoS attacks.</p>
 	<p>Of the respondents that claim they did know, 59% said it was a competitor who attacked them. Another 21% said the DDoS attack was carried out by a disgruntled customer or user, and another 17% said that the attacks were carried out by state-level or state-sponsored threat actors. The remaining 3% reported it being a self-inflicted DDoS attack.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--6--2.png" class="kg-image" alt="Percentage of threat actor type reported by Cloudflare customers, excluding unknown attackers and outliers" loading="lazy" width="1208" height="675">
-		<figcaption>Percentage of threat actor type reported by Cloudflare customers, excluding unknown attackers and outliers</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fktInA0cQbth4up5dPB6M/b2c9a1c17957461fc35a4fa3fc7b64ea/unnamed--6--2.png" alt="Percentage of threat actor type reported by Cloudflare customers, excluding unknown attackers and outliers" class="kg-image" width="1208" height="675" loading="lazy">
+
 	</figure>
-	<h2 id="top-attacked-countries-and-regions">Top attacked countries and regions</h2>
+	<p>Percentage of threat actor type reported by Cloudflare customers, excluding unknown attackers and outliers</p>
+	<h2>Top attacked countries and regions</h2>
 	<p>In the second quarter of 2024, China was ranked the <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#countries-as-source-or-target-of-attacks">most attacked country</a> in the world. This ranking takes into consideration HTTP DDoS attacks, network-layer DDoS attacks, the total volume and the percentage of DDoS attack traffic out of the total traffic, and the graphs show this overall DDoS attack activity per country or region. A longer bar in the chart means more attack activity.</p>
 	<p>After China, Turkey came in second place, followed by Singapore, Hong Kong, Russia, Brazil, and Thailand. The remaining countries and regions comprising the top 15 most attacked countries are provided in the chart below.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--7--2.png" class="kg-image" alt="15 most attacked countries and regions in 2024 Q2" loading="lazy" width="1292" height="771">
-		<figcaption>15 most attacked countries and regions in 2024 Q2</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6C3FspFSjHCEwIuauYTQYg/1b0422e76ba597022cee5ede0bcf5f25/unnamed--7--2.png" alt="15 most attacked countries and regions in 2024 Q2" class="kg-image" width="1292" height="771" loading="lazy">
+
 	</figure>
-	<h2 id="most-attacked-industries">Most attacked industries</h2>
+	<p>15 most attacked countries and regions in 2024 Q2</p>
+	<h2>Most attacked industries</h2>
 	<p>The Information Technology &amp; Services was ranked as the <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-industry">most targeted industry</a> in the second quarter of 2024. The ranking methodologies that we’ve used here follow the same principles as previously described to distill the total volume and relative attack traffic for both HTTP and network-layer DDoS attacks into one single DDoS attack activity ranking.</p>
 	<p>The Telecommunications, Services Providers and Carrier sector came in second. Consumer Goods came in third place.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--8--1.png" class="kg-image" alt="15 most attacked industries in 2024 Q2" loading="lazy" width="1377" height="762">
-		<figcaption>15 most attacked industries in 2024 Q2</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/M7x6hcaQ3rq20x0SZ61y9/9acb3bb3d0b9b6ec3cbc11501be01951/unnamed--8--1.png" alt="15 most attacked industries in 2024 Q2" class="kg-image" width="1377" height="762" loading="lazy">
+
 	</figure>
+	<p>15 most attacked industries in 2024 Q2</p>
 	<p>When analyzing only the HTTP DDoS attacks, we see a different picture. Gaming and Gambling saw the most attacks in terms of HTTP DDoS attack request volume. The per-region breakdown is provided below.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--9--1.png" class="kg-image" alt="Top attacked industries by region (HTTP DDoS attacks)" loading="lazy" width="1303" height="1087">
-		<figcaption>Top attacked industries by region (HTTP DDoS attacks)</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ElWJHm7iaazkMY0i3FbAY/d8485d5c3062c3bb254ba3fa0a17b5c4/unnamed--9--1.png" alt="Top attacked industries by region (HTTP DDoS attacks)" class="kg-image" width="1303" height="1087" loading="lazy">
+
 	</figure>
-	<h2 id="largest-sources-of-ddos-attacks">Largest sources of DDoS attacks</h2>
+	<p>Top attacked industries by region (HTTP DDoS attacks)</p>
+	<h2>Largest sources of DDoS attacks</h2>
 	<p>Argentina was ranked as the <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#countries-as-source-or-target-of-attacks">largest source</a> of DDoS attacks in the second quarter of 2024. The ranking methodologies that we’ve used here follow the same principles as previously described to distill the total volume and relative attack traffic for both HTTP and network-layer DDoS attacks into one single DDoS attack activity ranking.</p>
 	<p>Indonesia followed closely in second place, followed by the Netherlands in third.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--10--1.png" class="kg-image" alt="15 largest sources of DDoS attacks in 2024 Q2" loading="lazy" width="1357" height="788">
-		<figcaption>15 largest sources of DDoS attacks in 2024 Q2</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EsagO6GQdPElCwfU735Ed/a771a8a0dc877bff2ee3df44592006ed/unnamed--10--1.png" alt="15 largest sources of DDoS attacks in 2024 Q2" class="kg-image" width="1357" height="788" loading="lazy">
+
 	</figure>
-	<h2 id="ddos-attack-characteristics">DDoS attack characteristics</h2>
-	<h3 id="network-layer-ddos-attack-vectors">Network-layer DDoS attack vectors</h3>
+	<p>15 largest sources of DDoS attacks in 2024 Q2</p>
+	<h2>DDoS attack characteristics</h2>
+	<h3>Network-layer DDoS attack vectors</h3>
 	<p>Despite a 49% decrease quarter-over-quarter, DNS-based DDoS attacks remain the most common attack vector, with a combined share of 37% for <a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack">DNS floods</a> and <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack">DNS amplification</a> attacks. <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack">SYN floods</a> came in second place with a share of 23%, followed by RST floods accounting for a little over 10%. SYN floods and RST floods are both types of TCP-based DDoS attacks. Collectively, all types of TCP-based DDoS attacks accounted for 38% of all network-layer DDoS attacks.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--11--1.png" class="kg-image" alt="Top attack vectors (network-layer)" loading="lazy" width="1600" height="922">
-		<figcaption>Top attack vectors (network-layer)</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2C8gqiEuTXWaZJYOC4l29Z/e2fed5b95ef80bf534c7293c50640b2b/unnamed--11--1.png" alt="Top attack vectors (network-layer)" class="kg-image" width="1600" height="922" loading="lazy">
+
 	</figure>
-	<h3 id="http-ddos-attack-vectors">HTTP DDoS attack vectors</h3>
+	<p>Top attack vectors (network-layer)</p>
+	<h3>HTTP DDoS attack vectors</h3>
 	<p>One of the advantages of operating a large network is that we see a lot of traffic and attacks. This helps us improve our detection and mitigation systems to protect our customers. In the last quarter, half of all <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack">HTTP DDoS attacks</a> were mitigated using proprietary heuristics that targeted botnets known to Cloudflare. These heuristics guide our systems on how to generate a real-time fingerprint to match against the attacks.</p>
 	<p>Another 29% were HTTP DDoS attacks that used fake user agents, impersonated browsers, or were from headless browsers. An additional 13% had suspicious HTTP attributes which triggered our automated system, and 7% were marked as generic floods. One thing to note is that these attack vectors, or attack groups, are not necessarily exclusive. For example, known botnets also impersonate browsers and have suspicious HTTP attributes, but this breakdown is our initial attempt to categorize the HTTP DDoS attacks.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--12-.png" class="kg-image" alt="Top attack vectors (HTTP)" loading="lazy" width="1161" height="663">
-		<figcaption>Top attack vectors (HTTP)</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q30Uxkud0qxOCbzTjgUjc/1a26190d871b42feb56eef9259bc94b0/unnamed--12-.png" alt="Top attack vectors (HTTP)" class="kg-image" width="1161" height="663" loading="lazy">
+
 	</figure>
-	<h3 id="http-versions-used-in-ddos-attacks">HTTP versions used in DDoS attacks</h3>
+	<p>Top attack vectors (HTTP)</p>
+	<h3>HTTP versions used in DDoS attacks</h3>
 	<p>In Q2, around half of all web traffic used HTTP/2, 29% used HTTP/1.1, an additional fifth used HTTP/3, nearly 0.62% used HTTP/1.0, and 0.01% for HTTP/1.2.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--13-.png" class="kg-image" alt="Distribution of web traffic by HTTP version" loading="lazy" width="1116" height="688">
-		<figcaption>Distribution of web traffic by HTTP version</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4iG2zFOZIR91P56H7DiNFw/2f881bde63503de54a03c174cb3dc2e2/unnamed--13-.png" alt="Distribution of web traffic by HTTP version" class="kg-image" width="1116" height="688" loading="lazy">
+
 	</figure>
+	<p>Distribution of web traffic by HTTP version</p>
 	<p>HTTP DDoS attacks follow a similar pattern in terms of version adoption, albeit a larger bias towards HTTP/2. 76% of HTTP DDoS attack traffic was over the HTTP/2 version and nearly 22% over HTTP/1.1. HTTP/3, on the other hand, saw a much smaller usage. Only 0.86% of HTTP DDoS attack traffic were over HTTP/3 — as opposed to its much broader adoption of 20% by all web traffic.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--14-.png" class="kg-image" alt="Distribution of HTTP DDoS attack traffic by HTTP version" loading="lazy" width="1074" height="687">
-		<figcaption>Distribution of HTTP DDoS attack traffic by HTTP version</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qSkeg0USHPZn76shu5lAc/687e42cc234b48a1bedc4f28c612947d/unnamed--14-.png" alt="Distribution of HTTP DDoS attack traffic by HTTP version" class="kg-image" width="1074" height="687" loading="lazy">
+
 	</figure>
-	<h3 id="ddos-attack-duration">DDoS attack duration</h3>
+	<p>Distribution of HTTP DDoS attack traffic by HTTP version</p>
+	<h3>DDoS attack duration</h3>
 	<p>The vast majority of DDoS attacks are short. Over 57% of HTTP DDoS attacks and 88% of network-layer DDoS attacks end within 10 minutes or less. This emphasizes the need for automated, in-line detection and mitigation systems. Ten minutes are hardly enough time for a human to respond to an alert, analyze the traffic, and apply manual mitigations.</p>
 	<p>On the other side of the graphs, we can see that approximately a quarter of HTTP DDoS attacks last over an hour, and almost a fifth last more than a day. On the network layer, longer attacks are significantly less common. Only 1% of network-layer DDoS attacks last more than 3 hours.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--15-.png" class="kg-image" alt="HTTP DDoS attacks: distribution by duration" loading="lazy" width="1600" height="916">
-		<figcaption>HTTP DDoS attacks: distribution by duration</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5THWXBww1SvjFhGz3faxvf/41c72d8b0f132bf426de7a7b98ede8d4/unnamed--15-.png" alt="HTTP DDoS attacks: distribution by duration" class="kg-image" width="1600" height="916" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--16-.png" class="kg-image" alt="Network-layer DDoS attacks: distribution by duration" loading="lazy" width="1600" height="920">
-		<figcaption>Network-layer DDoS attacks: distribution by duration</figcaption>
+	<p>HTTP DDoS attacks: distribution by duration</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jCKPONG0sxuKYTVU1dne5/3d133b079ab90646250024b4f58c66ba/unnamed--16-.png" alt="Network-layer DDoS attacks: distribution by duration" class="kg-image" width="1600" height="920" loading="lazy">
+
 	</figure>
-	<h3 id="ddos-attack-size">DDoS attack size</h3>
+	<p>Network-layer DDoS attacks: distribution by duration</p>
+	<h3>DDoS attack size</h3>
 	<p>Most DDoS attacks are relatively small. Over 95% of network-layer DDoS attacks stay below 500 megabits per second, and 86% stay below 50,000 packets per second.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--17-.png" class="kg-image" alt="Distribution of network-layer DDoS attacks by bit rate" loading="lazy" width="1600" height="919">
-		<figcaption>Distribution of network-layer DDoS attacks by bit rate</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KtVJSY1wf4G0dcalUVRYu/bf8b045beab74991a28837927297d823/unnamed--17-.png" alt="Distribution of network-layer DDoS attacks by bit rate" class="kg-image" width="1600" height="919" loading="lazy">
+
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--18-.png" class="kg-image" alt="Distribution of network-layer DDoS attacks by packet rate" loading="lazy" width="1600" height="914">
-		<figcaption>Distribution of network-layer DDoS attacks by packet rate</figcaption>
+	<p>Distribution of network-layer DDoS attacks by bit rate</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Xdwy1icebxX20wmq3DE2g/bfbff12539325646d417889f290e6d0a/unnamed--18-.png" alt="Distribution of network-layer DDoS attacks by packet rate" class="kg-image" width="1600" height="914" loading="lazy">
+
 	</figure>
+	<p>Distribution of network-layer DDoS attacks by packet rate</p>
 	<p>Similarly, 81% of HTTP DDoS attacks stay below 50,000 requests per second. Although these rates are small on Cloudflare’s scale, they can still be devastating for unprotected websites unaccustomed to such traffic levels.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--19-.png" class="kg-image" alt="Distribution of HTTP DDoS attacks by request rate" loading="lazy" width="1600" height="923">
-		<figcaption>Distribution of HTTP DDoS attacks by request rate</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NMeVYFSRo9RKwnmPsqOBj/74f30ed1035d096ab7a63d7ea0b4997c/unnamed--19-.png" alt="Distribution of HTTP DDoS attacks by request rate" class="kg-image" width="1600" height="923" loading="lazy">
+
 	</figure>
+	<p>Distribution of HTTP DDoS attacks by request rate</p>
 	<p>Despite the majority of attacks being small, the number of larger volumetric attacks has increased. One out of every 100 network-layer DDoS attacks exceed 1 million packets per second (pps), and two out of every 100 exceed 500 gigabits per second. On layer 7, four out of every 1,000 HTTP DDoS attacks exceed 1 million requests per second.</p>
-	<h2 id="key-takeaways">Key takeaways</h2>
-	<p>The majority of DDoS attacks are small and quick. However, even these attacks can disrupt online services that do not follow<a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks"> best practices for DDoS defense</a>.</p>
+	<h2>Key takeaways</h2>
+	<p>The majority of DDoS attacks are small and quick. However, even these attacks can disrupt online services that do not follow <a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks">best practices for DDoS defense</a>.</p>
 	<p>Furthermore, threat actor sophistication is increasing, perhaps due to the availability of Generative AI and developer copilot tools, resulting in attack code that delivers DDoS attacks that are harder to defend against. Even prior to the rise in attack sophistication, many organizations struggled to defend against these threats on their own. But they don’t need to. Cloudflare is here to help. We invest significant resources – so you don’t have to – to ensure our automated defenses, along with the entire portfolio of Cloudflare security products, to protect against existing and emerging threats.</p>
 </div>

@@ -1,25 +1,32 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/page-shield-connection-monitor-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/page-shield-connection-monitor-zh-tw">繁體中文</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-20.png" class="kg-image" alt="Page Shield can now watch for malicious outbound connections made by third-party JavaScript code" loading="lazy"></figure>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/page-shield-connection-monitor">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/page-shield-connection-monitor">繁體中文</a>.</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/286ECHfxixPwip1P6eiePD/ca55cc852abeca70ac969f29f4303e0a/image1-20.png" alt="Page Shield can now watch for malicious outbound connections made by third-party JavaScript code" class="kg-image" width="1960" height="982" loading="lazy">
+
+	</figure>
 	<p>Page Shield can now watch for malicious outbound connections made by third-party JavaScript code</p>
 	<p>Many websites use third party JavaScript libraries to cut development time by using pre-built features. Common examples include checkout services, analytics tools, or live chat integrations. Any one of these JavaScript libraries may be sending site visitors’ data to unknown locations.</p>
 	<p>If you manage a website, and you have ever wondered where end user data might be going and who has access to it, starting today, you can find out using <a href="https://blog.cloudflare.com/page-shield-generally-available">Page Shield</a>’s Connection Monitor.</p>
 	<p>Page Shield is our client side security solution that aims to detect malicious behavior and compromises that affect the browser environment directly, such as those that exploit vulnerabilities in third party JavaScript libraries.</p>
 	<p>Connection Monitor, available from today, is the latest addition to Page Shield and allows you to see outbound connections being made by your users’ browsers initiated by third party JavaScript added to your site. You can then review this information to ensure only appropriate third parties are receiving sensitive data.</p>
 	<p>Customers on our business and enterprise plans receive visibility in outbound connections provided by Connection Monitor. If you are using our Page Shield enterprise add-on, you also get notifications whenever a connection is found to be potentially malicious.</p>
-	<h3 id="covering-more-attack-surface-with-connection-monitor">Covering more attack surface with Connection Monitor</h3>
+	<h3>Covering more attack surface with Connection Monitor</h3>
 	<p>Connection Monitor expands the net of opportunities to catch malicious behavior that might be happening in your users’ browsers by complementing the visibility provided by <a href="https://developers.cloudflare.com/page-shield/use-dashboard/monitor-scripts">Script Monitor</a>, the core feature of Page Shield before today.</p>
 	<p>While Script Monitor is focusing on analyzing JavaScript code to find malicious signals, Connection Monitor is looking at where data is sent to. The two features work perfectly together.</p>
 	<p>Very frequently, in fact, client side compromises within the context of web applications result in data exfiltration. The most well known example of this is <a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield">Magecart-style attacks</a> where a malicious actor would attempt to exfiltrate credit card data directly from the application’s check out flow (normally on e-commerce sites) without changing the application behavior.</p>
 	<p>These attacks are often hard to detect as they exploit JavaScript outside your direct control, for example an embedded widget, and operate without any noticeable effect on the user experience.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-15.png" class="kg-image" alt="Page Shield Connection Monitor" loading="lazy"></figure>
-	<h3 id="complementing-content-security-policies">Complementing Content Security Policies</h3>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34SLDF4HKgC56YMhyD1ncE/568acb778053a37790cbb9fe2557d884/image2-15.png" alt="Page Shield Connection Monitor" class="kg-image" width="1999" height="1605" loading="lazy">
+
+	</figure>
+	<h3>Complementing Content Security Policies</h3>
 	<p>Page Shield uses <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#:~:text=Content%20Security%20Policy%20(CSP)%20is,site%20defacement%2C%20to%20malware%20distribution.">Content Security Policies</a> (CSPs) to receive data from the browser, but complements them by focusing on the core problem: detecting malicious behavior, something that CSPs don’t do out of the box.</p>
 	<p>Content Security Policies are widely adopted and allow you, as a website administrator, to tell browsers what the browser is allowed to load and from where. This is useful in principle, but in practice CSPs are hard to maintain for large applications, and often end up being very broad making them ineffective. More importantly, CSPs provide no built-in mechanism to detect malicious behavior. This is where Page Shield helps.</p>
 	<p>Before today, with Script Monitor, Page Shield would detect malicious behavior by focusing on JavaScript files only, by running, among other things, <a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield">our classifier on JavaScript code</a>. Starting today, with Connection Monitor, we also perform threat intelligence feed lookups against connection URL endpoints allowing us to quickly spot potentially suspicious <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">data leaks</a>.</p>
-	<h3 id="connection-monitor-under-the-hood">Connection Monitor: under the hood</h3>
+	<h3>Connection Monitor: under the hood</h3>
 	<p>Connection Monitor uses the <code>connect-src</code> directive from <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#:~:text=Content%20Security%20Policy%20(CSP)%20is,site%20defacement%2C%20to%20malware%20distribution.">Content Security Policies</a> (CSPs) to receive information about outbound connections from browsers.</p>
 	<p>This information is then stored for easy access and enhanced with additional insights including connection status, connection page source, domain information, and if you have access to our enterprise add-on, threat feed intelligence.</p>
 	<p>To use Connection Monitor you need to proxy your application via Cloudflare. When turned on, it will, on a sampled percentage of HTML page loads only, insert the following HTTP response header that implements the Content Security Policy used to receive data:</p>
@@ -27,15 +34,27 @@
 	<p>This HTTP response header asks the browser to send information regarding scripts (<code>script-src</code>) and connections (<code>connect-src</code>) to the given endpoint. By default, the endpoint hostname is <code>csp-reporting.cloudflare.com</code>, but you can change it to be the same hostname of your website if you are on our enterprise add-on.</p>
 	<p>Using the above CSP, browsers will report any <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src">connections initiated by</a>:</p>
 	<ul>
-		<li><code>&lt;a&gt;</code> ping,</li>
-		<li><code>fetch()</code>,</li>
-		<li><code>XMLHttpRequest</code>,</li>
-		<li><code>WebSocket</code>,</li>
-		<li><code>EventSource</code>, and</li>
-		<li><code>Navigator.sendBeacon()</code><br></li>
+		<li>
+			<p><code>&lt;a&gt;</code> ping,</p>
+		</li>
+		<li>
+			<p><code>fetch()</code>,</p>
+		</li>
+		<li>
+			<p><code>XMLHttpRequest</code>,</p>
+		</li>
+		<li>
+			<p><code>WebSocket</code>,</p>
+		</li>
+		<li>
+			<p><code>EventSource</code>, and</p>
+		</li>
+		<li>
+			<p><code>Navigator.sendBeacon()</code></p>
+		</li>
 	</ul>
-	<p>An example connection report is shown below:</p><!--kg-card-begin: markdown-->
-	<pre><code>"csp-report": {
+	<p>An example connection report is shown below:</p>
+	<pre class="language-bash"><code class="language-bash">"csp-report": {
     "document-uri": "https://cloudflare.com/",
     "referrer": "",
     "violated-directive": "connect-src",
@@ -48,24 +67,29 @@
     "source-file": "",
     "status-code": 200,
     "script-sample": ""
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>Using reports like the one above, we can then create an inventory of outbound connection URLs alongside which pages they were initiated by. This data is then made available via the dashboard enhanced with:</p>
 	<ul>
-		<li><strong>Connection status</strong>: Active if the connection has been seen recently</li>
-		<li><strong>Timestamps:</strong> First seen and last seen</li>
-		<li><strong>Metadata</strong>: WHOIS information, SSL certificate information, if any, domain registration information</li>
-		<li><strong>Malicious signals:</strong> Threat feed domain and URL lookups* </li>
-	</ul><!--kg-card-begin: markdown-->
-	<p><small><sup>*</sup> URL feed lookups are only available if the full connection path is being stored.</small></p>
-	<!--kg-card-end: markdown-->
-	<h3 id="a-note-on-privacy">A note on privacy</h3>
+		<li>
+			<p><b>Connection status</b>: Active if the connection has been seen recently</p>
+		</li>
+		<li>
+			<p><b>Timestamps:</b> First seen and last seen</p>
+		</li>
+		<li>
+			<p><b>Metadata</b>: WHOIS information, SSL certificate information, if any, domain registration information</p>
+		</li>
+		<li>
+			<p><b>Malicious signals:</b> Threat feed domain and URL lookups* </p>
+		</li>
+	</ul>
+	<p>* URL feed lookups are only available if the full connection path is being stored.</p>
+	<h3>A note on privacy</h3>
 	<p>At Cloudflare, we want to ensure both direct customer and end customer privacy. For this reason, Connection Monitor by default will only store and collect the scheme and host portion of the connection URL, so for example, if the endpoint the browser is sending data to is:</p>
 	<p><code>https://connection.example.com/session/abc</code></p>
 	<p>Connection Monitor will only store <code>https://connection.example.com</code> and drop the path <code>/session/abc</code>. This ensures that we are minimizing the risk of storing session IDs, or other sensitive data that may be found in full URLs.</p>
 	<p>Not storing the path, does mean that in some specific circumstances, we are not able to do full URL feed lookups from our threat intelligence. For this reason, if you know you are not inserting sensitive data in connection paths, you can easily turn on path storage from the dashboard. Domain lookups will continue to work as expected. Support for also storing the query string will be added in the future.</p>
-	<h3 id="going-further">Going further</h3>
+	<h3>Going further</h3>
 	<p>Script Monitor and Connection Monitor are only two of many directives provided by CSP that we plan to support in Page Shield. Going further, there are a number of additional features we are already working on, including the ability to suggest and implement both positive and negative policies directly from the dashboard.</p>
 	<p>We are excited to see Connection Monitor providing additional visibility in application behavior and look forward to the next evolutions.</p>
 </div>
