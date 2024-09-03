@@ -527,20 +527,20 @@
 																	"properties": {
 																		"azureAD": {
 																			"properties": {
-																				"connection_id": {
-																					"description": "The ID of your Azure identity provider.",
-																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																					"type": "string"
-																				},
 																				"id": {
 																					"description": "The ID of an Azure group.",
 																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your Azure identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"id",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -556,7 +556,7 @@
 																	"properties": {
 																		"github-organization": {
 																			"properties": {
-																				"connection_id": {
+																				"identity_provider_id": {
 																					"description": "The ID of your Github identity provider.",
 																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
@@ -569,7 +569,7 @@
 																			},
 																			"required": [
 																				"name",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -585,20 +585,20 @@
 																	"properties": {
 																		"gsuite": {
 																			"properties": {
-																				"connection_id": {
-																					"description": "The ID of your Google Workspace identity provider.",
-																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																					"type": "string"
-																				},
 																				"email": {
 																					"description": "The email of the Google Workspace group.",
 																					"example": "devs@cloudflare.com",
+																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your Google Workspace identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"email",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -614,20 +614,20 @@
 																	"properties": {
 																		"okta": {
 																			"properties": {
-																				"connection_id": {
+																				"identity_provider_id": {
 																					"description": "The ID of your Okta identity provider.",
 																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				},
-																				"email": {
-																					"description": "The email of the Okta group.",
-																					"example": "devs@cloudflare.com",
+																				"name": {
+																					"description": "The name of the Okta group.",
+																					"example": "devs",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
-																				"email",
-																				"connection_id"
+																				"name",
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -652,11 +652,17 @@
 																					"description": "The SAML attribute value to look for.",
 																					"example": "devs@cloudflare.com",
 																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your SAML identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"attribute_name",
-																				"attribute_value"
+																				"attribute_value",
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -763,7 +769,7 @@
 																		"auth_method": {
 																			"properties": {
 																				"auth_method": {
-																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																					"example": "mfa",
 																					"type": "string"
 																				}
@@ -994,20 +1000,20 @@
 																	"properties": {
 																		"azureAD": {
 																			"properties": {
-																				"connection_id": {
-																					"description": "The ID of your Azure identity provider.",
-																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																					"type": "string"
-																				},
 																				"id": {
 																					"description": "The ID of an Azure group.",
 																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your Azure identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"id",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1023,7 +1029,7 @@
 																	"properties": {
 																		"github-organization": {
 																			"properties": {
-																				"connection_id": {
+																				"identity_provider_id": {
 																					"description": "The ID of your Github identity provider.",
 																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
@@ -1036,7 +1042,7 @@
 																			},
 																			"required": [
 																				"name",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1052,20 +1058,20 @@
 																	"properties": {
 																		"gsuite": {
 																			"properties": {
-																				"connection_id": {
-																					"description": "The ID of your Google Workspace identity provider.",
-																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																					"type": "string"
-																				},
 																				"email": {
 																					"description": "The email of the Google Workspace group.",
 																					"example": "devs@cloudflare.com",
+																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your Google Workspace identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"email",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1081,20 +1087,20 @@
 																	"properties": {
 																		"okta": {
 																			"properties": {
-																				"connection_id": {
+																				"identity_provider_id": {
 																					"description": "The ID of your Okta identity provider.",
 																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				},
-																				"email": {
-																					"description": "The email of the Okta group.",
-																					"example": "devs@cloudflare.com",
+																				"name": {
+																					"description": "The name of the Okta group.",
+																					"example": "devs",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
-																				"email",
-																				"connection_id"
+																				"name",
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1119,11 +1125,17 @@
 																					"description": "The SAML attribute value to look for.",
 																					"example": "devs@cloudflare.com",
 																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your SAML identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"attribute_name",
-																				"attribute_value"
+																				"attribute_value",
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1230,7 +1242,7 @@
 																		"auth_method": {
 																			"properties": {
 																				"auth_method": {
-																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																					"example": "mfa",
 																					"type": "string"
 																				}
@@ -1460,20 +1472,20 @@
 																	"properties": {
 																		"azureAD": {
 																			"properties": {
-																				"connection_id": {
-																					"description": "The ID of your Azure identity provider.",
-																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																					"type": "string"
-																				},
 																				"id": {
 																					"description": "The ID of an Azure group.",
 																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your Azure identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"id",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1489,7 +1501,7 @@
 																	"properties": {
 																		"github-organization": {
 																			"properties": {
-																				"connection_id": {
+																				"identity_provider_id": {
 																					"description": "The ID of your Github identity provider.",
 																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
@@ -1502,7 +1514,7 @@
 																			},
 																			"required": [
 																				"name",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1518,20 +1530,20 @@
 																	"properties": {
 																		"gsuite": {
 																			"properties": {
-																				"connection_id": {
-																					"description": "The ID of your Google Workspace identity provider.",
-																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																					"type": "string"
-																				},
 																				"email": {
 																					"description": "The email of the Google Workspace group.",
 																					"example": "devs@cloudflare.com",
+																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your Google Workspace identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"email",
-																				"connection_id"
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1547,20 +1559,20 @@
 																	"properties": {
 																		"okta": {
 																			"properties": {
-																				"connection_id": {
+																				"identity_provider_id": {
 																					"description": "The ID of your Okta identity provider.",
 																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																					"type": "string"
 																				},
-																				"email": {
-																					"description": "The email of the Okta group.",
-																					"example": "devs@cloudflare.com",
+																				"name": {
+																					"description": "The name of the Okta group.",
+																					"example": "devs",
 																					"type": "string"
 																				}
 																			},
 																			"required": [
-																				"email",
-																				"connection_id"
+																				"name",
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1585,11 +1597,17 @@
 																					"description": "The SAML attribute value to look for.",
 																					"example": "devs@cloudflare.com",
 																					"type": "string"
+																				},
+																				"identity_provider_id": {
+																					"description": "The ID of your SAML identity provider.",
+																					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																					"type": "string"
 																				}
 																			},
 																			"required": [
 																				"attribute_name",
-																				"attribute_value"
+																				"attribute_value",
+																				"identity_provider_id"
 																			],
 																			"type": "object"
 																		}
@@ -1696,7 +1714,7 @@
 																		"auth_method": {
 																			"properties": {
 																				"auth_method": {
-																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																					"example": "mfa",
 																					"type": "string"
 																				}
@@ -2149,20 +2167,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2178,7 +2196,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -2191,7 +2209,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2207,20 +2225,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2236,20 +2254,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2274,11 +2292,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2385,7 +2409,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -2616,20 +2640,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2645,7 +2669,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -2658,7 +2682,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2674,20 +2698,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2703,20 +2727,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2741,11 +2765,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -2852,7 +2882,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -3082,20 +3112,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -3111,7 +3141,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -3124,7 +3154,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -3140,20 +3170,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -3169,20 +3199,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -3207,11 +3237,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -3318,7 +3354,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -3683,20 +3719,20 @@
 											"properties": {
 												"azureAD": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Azure identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"id": {
 															"description": "The ID of an Azure group.",
 															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Azure identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"id",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -3712,7 +3748,7 @@
 											"properties": {
 												"github-organization": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Github identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
@@ -3725,7 +3761,7 @@
 													},
 													"required": [
 														"name",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -3741,20 +3777,20 @@
 											"properties": {
 												"gsuite": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Google Workspace identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"email": {
 															"description": "The email of the Google Workspace group.",
 															"example": "devs@cloudflare.com",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Google Workspace identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"email",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -3770,20 +3806,20 @@
 											"properties": {
 												"okta": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Okta identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														},
-														"email": {
-															"description": "The email of the Okta group.",
-															"example": "devs@cloudflare.com",
+														"name": {
+															"description": "The name of the Okta group.",
+															"example": "devs",
 															"type": "string"
 														}
 													},
 													"required": [
-														"email",
-														"connection_id"
+														"name",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -3808,11 +3844,17 @@
 															"description": "The SAML attribute value to look for.",
 															"example": "devs@cloudflare.com",
 															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your SAML identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+															"type": "string"
 														}
 													},
 													"required": [
 														"attribute_name",
-														"attribute_value"
+														"attribute_value",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -3919,7 +3961,7 @@
 												"auth_method": {
 													"properties": {
 														"auth_method": {
-															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 															"example": "mfa",
 															"type": "string"
 														}
@@ -4144,20 +4186,20 @@
 											"properties": {
 												"azureAD": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Azure identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"id": {
 															"description": "The ID of an Azure group.",
 															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Azure identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"id",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4173,7 +4215,7 @@
 											"properties": {
 												"github-organization": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Github identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
@@ -4186,7 +4228,7 @@
 													},
 													"required": [
 														"name",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4202,20 +4244,20 @@
 											"properties": {
 												"gsuite": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Google Workspace identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"email": {
 															"description": "The email of the Google Workspace group.",
 															"example": "devs@cloudflare.com",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Google Workspace identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"email",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4231,20 +4273,20 @@
 											"properties": {
 												"okta": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Okta identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														},
-														"email": {
-															"description": "The email of the Okta group.",
-															"example": "devs@cloudflare.com",
+														"name": {
+															"description": "The name of the Okta group.",
+															"example": "devs",
 															"type": "string"
 														}
 													},
 													"required": [
-														"email",
-														"connection_id"
+														"name",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4269,11 +4311,17 @@
 															"description": "The SAML attribute value to look for.",
 															"example": "devs@cloudflare.com",
 															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your SAML identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+															"type": "string"
 														}
 													},
 													"required": [
 														"attribute_name",
-														"attribute_value"
+														"attribute_value",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4380,7 +4428,7 @@
 												"auth_method": {
 													"properties": {
 														"auth_method": {
-															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 															"example": "mfa",
 															"type": "string"
 														}
@@ -4610,20 +4658,20 @@
 											"properties": {
 												"azureAD": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Azure identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"id": {
 															"description": "The ID of an Azure group.",
 															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Azure identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"id",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4639,7 +4687,7 @@
 											"properties": {
 												"github-organization": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Github identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
@@ -4652,7 +4700,7 @@
 													},
 													"required": [
 														"name",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4668,20 +4716,20 @@
 											"properties": {
 												"gsuite": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Google Workspace identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"email": {
 															"description": "The email of the Google Workspace group.",
 															"example": "devs@cloudflare.com",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Google Workspace identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"email",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4697,20 +4745,20 @@
 											"properties": {
 												"okta": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Okta identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														},
-														"email": {
-															"description": "The email of the Okta group.",
-															"example": "devs@cloudflare.com",
+														"name": {
+															"description": "The name of the Okta group.",
+															"example": "devs",
 															"type": "string"
 														}
 													},
 													"required": [
-														"email",
-														"connection_id"
+														"name",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4735,11 +4783,17 @@
 															"description": "The SAML attribute value to look for.",
 															"example": "devs@cloudflare.com",
 															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your SAML identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+															"type": "string"
 														}
 													},
 													"required": [
 														"attribute_name",
-														"attribute_value"
+														"attribute_value",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -4846,7 +4900,7 @@
 												"auth_method": {
 													"properties": {
 														"auth_method": {
-															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 															"example": "mfa",
 															"type": "string"
 														}
@@ -5161,20 +5215,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5190,7 +5244,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -5203,7 +5257,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5219,20 +5273,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5248,20 +5302,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5286,11 +5340,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5397,7 +5457,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -5628,20 +5688,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5657,7 +5717,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -5670,7 +5730,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5686,20 +5746,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5715,20 +5775,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5753,11 +5813,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -5864,7 +5930,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -6094,20 +6160,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -6123,7 +6189,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -6136,7 +6202,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -6152,20 +6218,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -6181,20 +6247,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -6219,11 +6285,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -6330,7 +6402,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -6706,20 +6778,20 @@
 											"properties": {
 												"azureAD": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Azure identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"id": {
 															"description": "The ID of an Azure group.",
 															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Azure identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"id",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -6735,7 +6807,7 @@
 											"properties": {
 												"github-organization": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Github identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
@@ -6748,7 +6820,7 @@
 													},
 													"required": [
 														"name",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -6764,20 +6836,20 @@
 											"properties": {
 												"gsuite": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Google Workspace identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"email": {
 															"description": "The email of the Google Workspace group.",
 															"example": "devs@cloudflare.com",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Google Workspace identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"email",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -6793,20 +6865,20 @@
 											"properties": {
 												"okta": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Okta identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														},
-														"email": {
-															"description": "The email of the Okta group.",
-															"example": "devs@cloudflare.com",
+														"name": {
+															"description": "The name of the Okta group.",
+															"example": "devs",
 															"type": "string"
 														}
 													},
 													"required": [
-														"email",
-														"connection_id"
+														"name",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -6831,11 +6903,17 @@
 															"description": "The SAML attribute value to look for.",
 															"example": "devs@cloudflare.com",
 															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your SAML identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+															"type": "string"
 														}
 													},
 													"required": [
 														"attribute_name",
-														"attribute_value"
+														"attribute_value",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -6942,7 +7020,7 @@
 												"auth_method": {
 													"properties": {
 														"auth_method": {
-															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 															"example": "mfa",
 															"type": "string"
 														}
@@ -7167,20 +7245,20 @@
 											"properties": {
 												"azureAD": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Azure identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"id": {
 															"description": "The ID of an Azure group.",
 															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Azure identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"id",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7196,7 +7274,7 @@
 											"properties": {
 												"github-organization": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Github identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
@@ -7209,7 +7287,7 @@
 													},
 													"required": [
 														"name",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7225,20 +7303,20 @@
 											"properties": {
 												"gsuite": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Google Workspace identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"email": {
 															"description": "The email of the Google Workspace group.",
 															"example": "devs@cloudflare.com",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Google Workspace identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"email",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7254,20 +7332,20 @@
 											"properties": {
 												"okta": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Okta identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														},
-														"email": {
-															"description": "The email of the Okta group.",
-															"example": "devs@cloudflare.com",
+														"name": {
+															"description": "The name of the Okta group.",
+															"example": "devs",
 															"type": "string"
 														}
 													},
 													"required": [
-														"email",
-														"connection_id"
+														"name",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7292,11 +7370,17 @@
 															"description": "The SAML attribute value to look for.",
 															"example": "devs@cloudflare.com",
 															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your SAML identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+															"type": "string"
 														}
 													},
 													"required": [
 														"attribute_name",
-														"attribute_value"
+														"attribute_value",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7403,7 +7487,7 @@
 												"auth_method": {
 													"properties": {
 														"auth_method": {
-															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 															"example": "mfa",
 															"type": "string"
 														}
@@ -7633,20 +7717,20 @@
 											"properties": {
 												"azureAD": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Azure identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"id": {
 															"description": "The ID of an Azure group.",
 															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Azure identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"id",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7662,7 +7746,7 @@
 											"properties": {
 												"github-organization": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Github identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
@@ -7675,7 +7759,7 @@
 													},
 													"required": [
 														"name",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7691,20 +7775,20 @@
 											"properties": {
 												"gsuite": {
 													"properties": {
-														"connection_id": {
-															"description": "The ID of your Google Workspace identity provider.",
-															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-															"type": "string"
-														},
 														"email": {
 															"description": "The email of the Google Workspace group.",
 															"example": "devs@cloudflare.com",
+															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your Google Workspace identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														}
 													},
 													"required": [
 														"email",
-														"connection_id"
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7720,20 +7804,20 @@
 											"properties": {
 												"okta": {
 													"properties": {
-														"connection_id": {
+														"identity_provider_id": {
 															"description": "The ID of your Okta identity provider.",
 															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 															"type": "string"
 														},
-														"email": {
-															"description": "The email of the Okta group.",
-															"example": "devs@cloudflare.com",
+														"name": {
+															"description": "The name of the Okta group.",
+															"example": "devs",
 															"type": "string"
 														}
 													},
 													"required": [
-														"email",
-														"connection_id"
+														"name",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7758,11 +7842,17 @@
 															"description": "The SAML attribute value to look for.",
 															"example": "devs@cloudflare.com",
 															"type": "string"
+														},
+														"identity_provider_id": {
+															"description": "The ID of your SAML identity provider.",
+															"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+															"type": "string"
 														}
 													},
 													"required": [
 														"attribute_name",
-														"attribute_value"
+														"attribute_value",
+														"identity_provider_id"
 													],
 													"type": "object"
 												}
@@ -7869,7 +7959,7 @@
 												"auth_method": {
 													"properties": {
 														"auth_method": {
-															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 															"example": "mfa",
 															"type": "string"
 														}
@@ -8184,20 +8274,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8213,7 +8303,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -8226,7 +8316,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8242,20 +8332,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8271,20 +8361,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8309,11 +8399,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8420,7 +8516,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -8651,20 +8747,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8680,7 +8776,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -8693,7 +8789,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8709,20 +8805,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8738,20 +8834,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8776,11 +8872,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -8887,7 +8989,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
@@ -9117,20 +9219,20 @@
 																"properties": {
 																	"azureAD": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Azure identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"id": {
 																				"description": "The ID of an Azure group.",
 																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Azure identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -9146,7 +9248,7 @@
 																"properties": {
 																	"github-organization": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Github identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
@@ -9159,7 +9261,7 @@
 																		},
 																		"required": [
 																			"name",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -9175,20 +9277,20 @@
 																"properties": {
 																	"gsuite": {
 																		"properties": {
-																			"connection_id": {
-																				"description": "The ID of your Google Workspace identity provider.",
-																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																				"type": "string"
-																			},
 																			"email": {
 																				"description": "The email of the Google Workspace group.",
 																				"example": "devs@cloudflare.com",
+																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your Google Workspace identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"email",
-																			"connection_id"
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -9204,20 +9306,20 @@
 																"properties": {
 																	"okta": {
 																		"properties": {
-																			"connection_id": {
+																			"identity_provider_id": {
 																				"description": "The ID of your Okta identity provider.",
 																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
 																				"type": "string"
 																			},
-																			"email": {
-																				"description": "The email of the Okta group.",
-																				"example": "devs@cloudflare.com",
+																			"name": {
+																				"description": "The name of the Okta group.",
+																				"example": "devs",
 																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"email",
-																			"connection_id"
+																			"name",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -9242,11 +9344,17 @@
 																				"description": "The SAML attribute value to look for.",
 																				"example": "devs@cloudflare.com",
 																				"type": "string"
+																			},
+																			"identity_provider_id": {
+																				"description": "The ID of your SAML identity provider.",
+																				"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
 																			"attribute_name",
-																			"attribute_value"
+																			"attribute_value",
+																			"identity_provider_id"
 																		],
 																		"type": "object"
 																	}
@@ -9353,7 +9461,7 @@
 																	"auth_method": {
 																		"properties": {
 																			"auth_method": {
-																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																				"example": "mfa",
 																				"type": "string"
 																			}
