@@ -1090,12 +1090,22 @@
 		},
 		{
 			"title": "navigation.zone.rules",
-			"url": "/rules/configuration-rules",
+			"url": "/rules/templates",
 			"iconType": "filter",
 			"testId": "zone-navigation-link-page-rules",
 			"navigationType": "version",
 			"hasPermission": null,
 			"pages": [
+				{
+					"title": "navigation.zone.rules.templates",
+					"url": "/rules/templates",
+					"labels": [
+						"new"
+					],
+					"tabs": [],
+					"navigationType": "version",
+					"hasPermission": null
+				},
 				{
 					"title": "navigation.zone.rules.configuration_rules",
 					"url": "/rules/configuration-rules",

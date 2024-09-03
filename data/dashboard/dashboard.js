@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "232dd8c9-94c6-5059-9a38-09398b0f042d")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "05f25e5e-3263-5ad5-bca9-ab4db1cc2721")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -129,10 +129,10 @@
 						n.g.build = V({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "e68dbaf3a1231671df45867b61ffd972e521b0e9",
-							dashVersion: "26782828",
+							commit: "6c6244b1ce40bf71322e4e9411c3511655f000fd",
+							dashVersion: "26836006",
 							env: "production",
-							builtAt: 1725271149334,
+							builtAt: 1725403624892,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -4433,6 +4433,9 @@
 				E_: function() {
 					return e.E_
 				},
+				K$: function() {
+					return e.K$
+				},
 				PLANS: function() {
 					return e.Xf
 				},
@@ -4709,6 +4712,9 @@
 				f8: function() {
 					return I
 				},
+				hI: function() {
+					return Ye
+				},
 				hN: function() {
 					return G
 				},
@@ -4965,9 +4971,9 @@
 				},
 				ze = _ => _.accountSingle,
 				Ke = (0, t.P1)("accountSingle", ze),
-				Je = _ => {
-					const R = [ROLES.SUPER_ADMIN, ROLES.ADMIN];
-					return hasRole(_, R)
+				Ye = _ => {
+					const R = [i.K$.SUPER_ADMIN, i.K$.ADMIN];
+					return (0, y.n)(_, R)
 				}
 		},
 		"../react/common/selectors/entitlementsSelectors.ts": function(x, v, n) {
@@ -5782,7 +5788,7 @@
 			"use strict";
 			n.d(v, {
 				o: function() {
-					return Je
+					return Ye
 				}
 			});
 			var e = n("webpack/sharing/consume/default/react/react"),
@@ -5970,9 +5976,9 @@
 					ge = (0, ve.p4)(se.u1),
 					Ee = !ge.isRequesting && !!ge.data,
 					He = (0, ve.p4)(se.p1),
-					Ye = (0, ve.p4)(me.Xu),
+					Qe = (0, ve.p4)(me.Xu),
 					Ze = (0, ve.p4)(me.uF),
-					Xe = !Ye.isRequesting && !!Ye.data;
+					Xe = !Qe.isRequesting && !!Qe.data;
 				(0, e.useEffect)(() => {
 					J && Xe && Ze && Ee && J === Ze.account.id ? ae({
 						accountId: Ze.account.id,
@@ -5997,7 +6003,7 @@
 			var je = n("../react/app/components/Persistence/index.tsx"),
 				Ne = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Be = n("../react/app/components/LoadingSuspense.tsx");
-			const Fe = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(26677), n.e(5668), n.e(83024), n.e(7484), n.e(39760), n.e(87501), n.e(40758), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Fe = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(26677), n.e(5668), n.e(15043), n.e(7484), n.e(39760), n.e(87501), n.e(40758), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var $e = () => o().createElement(Be.Z, null, o().createElement(Fe, null)),
 				De = n("../libs/init/loading.ts");
 			const re = () => (e.useEffect(() => De.s, []), null);
@@ -6059,8 +6065,8 @@
 						devPanelEnabled: J
 					}
 				},
-				Ie = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(26677), n.e(14696), n.e(82869), n.e(83024), n.e(7484), n.e(39760), n.e(87501), n.e(40758), n.e(18828), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				Ue = o().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(1325), n.e(38860), n.e(14696), n.e(26337), n.e(87501), n.e(69088), n.e(18828), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				Ie = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(26677), n.e(14696), n.e(82869), n.e(15043), n.e(7484), n.e(39760), n.e(87501), n.e(40758), n.e(38950), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Ue = o().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(1325), n.e(38860), n.e(14696), n.e(26337), n.e(87501), n.e(69088), n.e(38950), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var We = ({
 					userIsAuthed: _
 				}) => {
@@ -6125,7 +6131,7 @@
 						userIsAuthed: _
 					}))), o().createElement(O.ZP, null), o().createElement(l.F0, null)))))))))
 				},
-				Je = () => {
+				Ye = () => {
 					(0, g.render)(o().createElement(Ke, null), document.getElementById("react-app"))
 				}
 		},
@@ -7918,7 +7924,7 @@
 					return Tt
 				},
 				oW: function() {
-					return Ye
+					return Qe
 				},
 				oc: function() {
 					return h
@@ -7939,7 +7945,7 @@
 					return be
 				},
 				sg: function() {
-					return Qe
+					return Je
 				},
 				tB: function() {
 					return m
@@ -8323,7 +8329,7 @@
 				}), {});
 				return u.forEach(ie => {
 					let pe = w(ie.registrar);
-					pe in b || (pe = E.ui), Qe(ie.name) && (pe = "uk"), b[pe].push(ie)
+					pe in b || (pe = E.ui), Je(ie.name) && (pe = "uk"), b[pe].push(ie)
 				}), Object.keys(b).sort((ie, pe) => ie.localeCompare(pe)).map(ie => ({
 					registrar: ie,
 					domains: b[ie]
@@ -8336,7 +8342,7 @@
 
 			function I(u) {
 				if (!u || !u.registrar) return "unknown";
-				if (Qe(u.name)) return "uk";
+				if (Je(u.name)) return "uk";
 				const b = w(u.registrar);
 				return b in E.gM ? b : "unknown"
 			}
@@ -8382,7 +8388,7 @@
 
 			function B(u) {
 				var b, ie;
-				return !!u.transferIn && !((b = u.transferConditions) === null || b === void 0 ? void 0 : b.not_started) && !!(Qe(u.name) || ((ie = u.registryStatuses) === null || ie === void 0 ? void 0 : ie.includes(r.rj.PENDING_TRANSFER)))
+				return !!u.transferIn && !((b = u.transferConditions) === null || b === void 0 ? void 0 : b.not_started) && !!(Je(u.name) || ((ie = u.registryStatuses) === null || ie === void 0 ? void 0 : ie.includes(r.rj.PENDING_TRANSFER)))
 			}
 
 			function K(u) {
@@ -8434,7 +8440,7 @@
 				if (u.lastTransferredAt) {
 					const b = g()(u.lastTransferredAt),
 						ie = g().duration(g()().diff(b)).as("days"),
-						pe = Qe(u.name);
+						pe = Je(u.name);
 					if (ie < (pe ? 1 : 60)) return [!1, pe ? r.ok.RecentTransferUK : r.ok.RecentTransfer]
 				}
 				if (u.createdAt) {
@@ -8645,7 +8651,7 @@
 				return u ? [c.wR.LOCKED, c.wR.ONBOARDED, c.wR.ONBOARDING_INITIATED, c.wR.PENDING_REGISTRY_LOCK, c.wR.PENDING_REGISTRY_UNLOCK, c.wR.PENDING_UNLOCK_APPROVAL].includes(u) : !1
 			}
 
-			function Je(u) {
+			function Ye(u) {
 				return u ? c.wR.UNLOCKED === u : !1
 			}
 
@@ -8686,13 +8692,13 @@
 				return !1
 			}
 
-			function Ye(u) {
+			function Qe(u) {
 				return Object.keys(c.wR).find(b => c.wR[b].toLowerCase() === u.toLowerCase())
 			}
 
 			function Ze(u) {
 				var b;
-				const ie = (b = Ye(u)) === null || b === void 0 ? void 0 : b.toLowerCase();
+				const ie = (b = Qe(u)) === null || b === void 0 ? void 0 : b.toLowerCase();
 				return ie ? t.keys.protection_status[ie] : t.keys.protection_status.unknown
 			}
 
@@ -8713,7 +8719,7 @@
 				return b ? 1 : (0, p.pu)(u) === "co" ? 5 : (0, p.pu)(u) === "org" ? 1 : 10
 			}
 
-			function Qe(u) {
+			function Je(u) {
 				return (0, p.pu)(u) === "uk"
 			}
 
@@ -13371,4 +13377,4 @@
 	}
 ]);
 
-//# debugId=232dd8c9-94c6-5059-9a38-09398b0f042d
+//# debugId=05f25e5e-3263-5ad5-bca9-ab4db1cc2721
