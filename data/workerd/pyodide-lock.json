@@ -1,0 +1,833 @@
+{
+	"info": {
+		"arch": "wasm32",
+		"platform": "emscripten_3_1_52",
+		"python": "3.12.3",
+		"version": "0.26.0a3"
+	},
+	"packages": {
+		"aiohttp": {
+			"depends": [
+				"aiosignal",
+				"async-timeout",
+				"attrs",
+				"charset-normalizer",
+				"frozenlist",
+				"multidict",
+				"yarl"
+			],
+			"file_name": "aiohttp-3.9.3-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"aiohttp"
+			],
+			"install_dir": "site",
+			"name": "aiohttp",
+			"package_type": "package",
+			"sha256": "293bdaf97d8e0f4c652702324cdc54bc762a8a8b68ac5098ea95fa1beec3ce2b",
+			"shared_library": false,
+			"unvendored_tests": true,
+			"version": "3.9.3"
+		},
+		"aiohttp-tests": {
+			"depends": [
+				"aiohttp"
+			],
+			"file_name": "aiohttp-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "aiohttp-tests",
+			"package_type": "package",
+			"sha256": "26b0d113b120ac1c9bf5051e51f0d77f19a6501a956ae040d2a130c77965d39b",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "3.9.3"
+		},
+		"aiosignal": {
+			"depends": [
+				"frozenlist"
+			],
+			"file_name": "aiosignal-1.3.1-py3-none-any.tar.gz",
+			"imports": [
+				"aiosignal"
+			],
+			"install_dir": "site",
+			"name": "aiosignal",
+			"package_type": "package",
+			"sha256": "14b321a0f1ead14875193b013c6b7f132b9b49d69324747354a4056d737c2cc1",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.3.1"
+		},
+		"annotated-types": {
+			"depends": [],
+			"file_name": "annotated_types-0.6.0-py3-none-any.tar.gz",
+			"imports": [
+				"annotated_types"
+			],
+			"install_dir": "site",
+			"name": "annotated-types",
+			"package_type": "package",
+			"sha256": "ce8958af5fcfd822e866b0450da35e93a24b8b1810f2476dc73f02fe0ca38ce2",
+			"shared_library": false,
+			"unvendored_tests": true,
+			"version": "0.6.0"
+		},
+		"annotated-types-tests": {
+			"depends": [
+				"annotated-types"
+			],
+			"file_name": "annotated-types-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "annotated-types-tests",
+			"package_type": "package",
+			"sha256": "1e90e598a811e039f2be929b8629229fd8cf7f18d653f578800a49541fd436ba",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.6.0"
+		},
+		"anyio": {
+			"depends": [
+				"sniffio",
+				"ssl"
+			],
+			"file_name": "anyio-4.2.0-py3-none-any.tar.gz",
+			"imports": [
+				"anyio"
+			],
+			"install_dir": "site",
+			"name": "anyio",
+			"package_type": "package",
+			"sha256": "5901e621b0f713e8e06774e1f0e7a44fb9e2af4f4be46ae2079897652f7ca4b3",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "4.2.0"
+		},
+		"async-timeout": {
+			"depends": [],
+			"file_name": "async_timeout-4.0.3-py3-none-any.tar.gz",
+			"imports": [
+				"async_timeout"
+			],
+			"install_dir": "site",
+			"name": "async-timeout",
+			"package_type": "package",
+			"sha256": "f20a4677c3fc2f014ba158dba16a2664c326054f98a411c49d6ad69d25e9412f",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "4.0.3"
+		},
+		"attrs": {
+			"depends": [
+				"six"
+			],
+			"file_name": "attrs-23.2.0-py3-none-any.tar.gz",
+			"imports": [
+				"attr",
+				"attrs"
+			],
+			"install_dir": "site",
+			"name": "attrs",
+			"package_type": "package",
+			"sha256": "8b71eade176de85c6cee462d33b4c347bebaeaa7ee9317e0b4b003e8227ab01e",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "23.2.0"
+		},
+		"certifi": {
+			"depends": [],
+			"file_name": "certifi-2024.2.2-py3-none-any.tar.gz",
+			"imports": [
+				"certifi"
+			],
+			"install_dir": "site",
+			"name": "certifi",
+			"package_type": "package",
+			"sha256": "d26ba6fd91844a8e5284937d64c44bf52d8f3a80af63aac5f2deb378176e23dc",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "2024.2.2"
+		},
+		"charset-normalizer": {
+			"depends": [],
+			"file_name": "charset_normalizer-3.3.2-py3-none-any.tar.gz",
+			"imports": [
+				"charset_normalizer"
+			],
+			"install_dir": "site",
+			"name": "charset-normalizer",
+			"package_type": "package",
+			"sha256": "e9dec7bf87a614b0a06634a1d2cc9b50649bf59c1a8bf3ac7500809d836acd71",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "3.3.2"
+		},
+		"distro": {
+			"depends": [],
+			"file_name": "distro-1.9.0-py3-none-any.tar.gz",
+			"imports": [
+				"distro"
+			],
+			"install_dir": "site",
+			"name": "distro",
+			"package_type": "package",
+			"sha256": "d2f0e5e663d869278d02258833da228f743c419e00ae3c58e6d55db9c2977e07",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.9.0"
+		},
+		"fastapi": {
+			"depends": [
+				"starlette",
+				"pydantic"
+			],
+			"file_name": "fastapi-0.110.0-py3-none-any.tar.gz",
+			"imports": [
+				"fastapi"
+			],
+			"install_dir": "site",
+			"name": "fastapi",
+			"package_type": "package",
+			"sha256": "760e64092be7adff561560cd3dc178695a2e44831e74a047f27828378ca2d15f",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.110.0"
+		},
+		"frozenlist": {
+			"depends": [],
+			"file_name": "frozenlist-1.4.1-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"frozenlist"
+			],
+			"install_dir": "site",
+			"name": "frozenlist",
+			"package_type": "package",
+			"sha256": "81429beedd2e6ab6367acb455f6bdc32cef384ff74798752afea4bcdb04fd5e0",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.4.1"
+		},
+		"h11": {
+			"depends": [],
+			"file_name": "h11-0.14.0-py3-none-any.tar.gz",
+			"imports": [
+				"h11"
+			],
+			"install_dir": "site",
+			"name": "h11",
+			"package_type": "package",
+			"sha256": "041db5dc39af6b57ee6b62543ffee9f7ab59d9e95d93e1a36dd1dff86afda1f0",
+			"shared_library": false,
+			"unvendored_tests": true,
+			"version": "0.14.0"
+		},
+		"h11-tests": {
+			"depends": [
+				"h11"
+			],
+			"file_name": "h11-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "h11-tests",
+			"package_type": "package",
+			"sha256": "a8f1be10009a7e9c35b551c625cb362180585528c76f46ff3e2811f812c81aeb",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.14.0"
+		},
+		"hashlib": {
+			"depends": [
+				"openssl"
+			],
+			"file_name": "hashlib-1.0.0.tar.gz",
+			"imports": [
+				"_hashlib"
+			],
+			"install_dir": "stdlib",
+			"name": "hashlib",
+			"package_type": "cpython_module",
+			"sha256": "d342d7e50f2bb600cbb1dcedf0dad20a7929b5fa6506b35f6b8bd4b8ca9e6701",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.0.0"
+		},
+		"httpcore": {
+			"depends": [
+				"certifi",
+				"h11",
+				"ssl"
+			],
+			"file_name": "httpcore-1.0.4-py3-none-any.tar.gz",
+			"imports": [
+				"httpcore"
+			],
+			"install_dir": "site",
+			"name": "httpcore",
+			"package_type": "package",
+			"sha256": "7193135b98d6846cd37315b483733310ecdf44ab42e0e737fca2f07a20813796",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.0.4"
+		},
+		"httpx": {
+			"depends": [
+				"certifi",
+				"httpcore",
+				"anyio",
+				"idna",
+				"sniffio"
+			],
+			"file_name": "httpx-0.27.0-py3-none-any.tar.gz",
+			"imports": [
+				"httpx"
+			],
+			"install_dir": "site",
+			"name": "httpx",
+			"package_type": "package",
+			"sha256": "828df71f32275e6ea74b3f71e372e11bc34d73c73d0f29878ef84285f467311d",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.27.0"
+		},
+		"idna": {
+			"depends": [],
+			"file_name": "idna-3.6-py3-none-any.tar.gz",
+			"imports": [
+				"idna"
+			],
+			"install_dir": "site",
+			"name": "idna",
+			"package_type": "package",
+			"sha256": "bbb4e3832b794ee6a5925de9b32c794b0f03b1e8692aa44922f089e3af9c1d65",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "3.6"
+		},
+		"jsonpatch": {
+			"depends": [
+				"jsonpointer"
+			],
+			"file_name": "jsonpatch-1.33-py2.py3-none-any.tar.gz",
+			"imports": [
+				"jsonpatch"
+			],
+			"install_dir": "site",
+			"name": "jsonpatch",
+			"package_type": "package",
+			"sha256": "a17819061dd7361bfb0c363ae31b3185f10ebc055ebacb2c05d423f3ea2a6b15",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.33"
+		},
+		"jsonpointer": {
+			"depends": [],
+			"file_name": "jsonpointer-2.4-py2.py3-none-any.tar.gz",
+			"imports": [
+				"jsonpointer"
+			],
+			"install_dir": "site",
+			"name": "jsonpointer",
+			"package_type": "package",
+			"sha256": "bb0e1a2797199f7ecf5616a11a69468bc04564edbb133ab26116b28b57029bf9",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "2.4"
+		},
+		"langchain": {
+			"depends": [
+				"langchain-core"
+			],
+			"file_name": "langchain-0.1.8-py3-none-any.tar.gz",
+			"imports": [
+				"langchain"
+			],
+			"install_dir": "site",
+			"name": "langchain",
+			"package_type": "package",
+			"sha256": "66daa77fdf1b6df915a4746f07469e5584cdc5440f5be8f7708a9fcb548381a7",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.1.8"
+		},
+		"langchain-core": {
+			"depends": [
+				"jsonpatch",
+				"langsmith",
+				"packaging",
+				"pyyaml",
+				"tenacity"
+			],
+			"file_name": "langchain_core-0.1.25-py3-none-any.tar.gz",
+			"imports": [
+				"langchain_core"
+			],
+			"install_dir": "site",
+			"name": "langchain-core",
+			"package_type": "package",
+			"sha256": "f12d79b90c1388dfaa20c7619cf795d89aadc31eb92b7f016ad8dd6950b350d4",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.1.25"
+		},
+		"langchain-openai": {
+			"depends": [
+				"numpy",
+				"openai",
+				"tiktoken",
+				"langchain-core"
+			],
+			"file_name": "langchain_openai-0.0.6-py3-none-any.tar.gz",
+			"imports": [
+				"langchain_openai"
+			],
+			"install_dir": "site",
+			"name": "langchain_openai",
+			"package_type": "package",
+			"sha256": "d020d12486807baf6bb400be94f46d63d020d0a10fb73539f4d7a61359989722",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.0.6"
+		},
+		"langsmith": {
+			"depends": [
+				"requests",
+				"typing-extensions",
+				"pydantic"
+			],
+			"file_name": "langsmith-0.1.5-py3-none-any.tar.gz",
+			"imports": [
+				"langsmith"
+			],
+			"install_dir": "site",
+			"name": "langsmith",
+			"package_type": "package",
+			"sha256": "f7dc7e178701c107288611ed9f1acdf570127c15d6e0b0ca9ffd64ac5d175886",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.1.5"
+		},
+		"lzma": {
+			"depends": [],
+			"file_name": "lzma-1.0.0.tar.gz",
+			"imports": [
+				"lzma",
+				"_lzma"
+			],
+			"install_dir": "stdlib",
+			"name": "lzma",
+			"package_type": "cpython_module",
+			"sha256": "21b16af8c69754537cc40da3842cbd2af43deb4b9b4e816948e0c39100c0821c",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.0.0"
+		},
+		"micropip": {
+			"depends": [
+				"packaging"
+			],
+			"file_name": "micropip-0.6.0-py3-none-any.tar.gz",
+			"imports": [
+				"micropip"
+			],
+			"install_dir": "site",
+			"name": "micropip",
+			"package_type": "package",
+			"sha256": "b1b5eab2317d22a4161a3206980c08651ac27425422d03285af1b95f17cfdea9",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.6.0"
+		},
+		"multidict": {
+			"depends": [],
+			"file_name": "multidict-6.0.5-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"multidict"
+			],
+			"install_dir": "site",
+			"name": "multidict",
+			"package_type": "package",
+			"sha256": "8197e2854f5ae6939ac129f74c3543cbaefaed083e8dc590cbf4861ca4a4d7d0",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "6.0.5"
+		},
+		"numpy": {
+			"depends": [],
+			"file_name": "numpy-1.26.4-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"numpy"
+			],
+			"install_dir": "site",
+			"name": "numpy",
+			"package_type": "package",
+			"sha256": "57609374d136acb7d98ff0935907b747c70394c1f6aa9aca9a9ee1ac539181f9",
+			"shared_library": false,
+			"unvendored_tests": true,
+			"version": "1.26.4"
+		},
+		"numpy-tests": {
+			"depends": [
+				"numpy"
+			],
+			"file_name": "numpy-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "numpy-tests",
+			"package_type": "package",
+			"sha256": "dccc7b3bd975a7cd8eb2f5fc6678fbc5bcd653b47bbb1d276ac481e4424d2d05",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.26.4"
+		},
+		"openai": {
+			"depends": [
+				"httpx",
+				"pydantic",
+				"typing-extensions",
+				"distro"
+			],
+			"file_name": "openai-1.12.0-py3-none-any.tar.gz",
+			"imports": [
+				"openai"
+			],
+			"install_dir": "site",
+			"name": "openai",
+			"package_type": "package",
+			"sha256": "a92eaa84d05523de1dad8da8c52fb62bad0460a78d388bccc0bbd6e41082e6eb",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.12.0"
+		},
+		"openssl": {
+			"depends": [],
+			"file_name": "openssl-1.1.1n.tar.gz",
+			"imports": [],
+			"install_dir": "dynlib",
+			"name": "openssl",
+			"package_type": "shared_library",
+			"sha256": "fff489cb69879942d73722d52b95c72815aaed4af666da7428430f75e38278e5",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.1.1n"
+		},
+		"packaging": {
+			"depends": [],
+			"file_name": "packaging-23.2-py3-none-any.tar.gz",
+			"imports": [
+				"packaging"
+			],
+			"install_dir": "site",
+			"name": "packaging",
+			"package_type": "package",
+			"sha256": "2398ebcdc1f84f2b4e1d46f93b44e086e0132dc2d25858a962721fff66cf6f79",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "23.2"
+		},
+		"pydantic": {
+			"depends": [
+				"typing-extensions",
+				"pydantic_core",
+				"annotated-types"
+			],
+			"file_name": "pydantic-2.6.1-py3-none-any.tar.gz",
+			"imports": [
+				"pydantic"
+			],
+			"install_dir": "site",
+			"name": "pydantic",
+			"package_type": "package",
+			"sha256": "d871fd5038ff4ad8e1e6058e7021202ed9c45fdbdf4505ec245a030684ab5030",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "2.6.1"
+		},
+		"pydantic-core": {
+			"depends": [
+				"typing-extensions"
+			],
+			"file_name": "pydantic_core-2.16.2-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"pydantic_core"
+			],
+			"install_dir": "site",
+			"name": "pydantic_core",
+			"package_type": "package",
+			"sha256": "df3b3dcf3a1c83033cd177349e84cb8c6a9cfbb2528c43a458eb599307423566",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "2.16.2"
+		},
+		"pydecimal": {
+			"depends": [],
+			"file_name": "pydecimal-1.0.0.tar.gz",
+			"imports": [
+				"_pydecimal"
+			],
+			"install_dir": "stdlib",
+			"name": "pydecimal",
+			"package_type": "cpython_module",
+			"sha256": "bc408ea05cc4ad89521301c1bfa12bfe427fc0e90e5561e0e5b579e3b8e55e8a",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.0.0"
+		},
+		"pydoc-data": {
+			"depends": [],
+			"file_name": "pydoc_data-1.0.0.tar.gz",
+			"imports": [
+				"pydoc_data"
+			],
+			"install_dir": "stdlib",
+			"name": "pydoc_data",
+			"package_type": "cpython_module",
+			"sha256": "aea3fefd4ec40bc88893e5314319b4f94d9f3e2c72ee14ca6bf7350abc6aa4a9",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.0.0"
+		},
+		"pyyaml": {
+			"depends": [],
+			"file_name": "PyYAML-6.0.1-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"_yaml",
+				"yaml"
+			],
+			"install_dir": "site",
+			"name": "pyyaml",
+			"package_type": "package",
+			"sha256": "871a4883a90b69915f5040dded1e967a47ab536c9799d2b54727dd5b0a9a1718",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "6.0.1"
+		},
+		"regex": {
+			"depends": [],
+			"file_name": "regex-2023.12.25-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"regex"
+			],
+			"install_dir": "site",
+			"name": "regex",
+			"package_type": "package",
+			"sha256": "4fb12c7779ac7cdd4297622b3935719d638960bc5c1d17b9aeebb22c50dfe0af",
+			"shared_library": false,
+			"unvendored_tests": true,
+			"version": "2023.12.25"
+		},
+		"regex-tests": {
+			"depends": [
+				"regex"
+			],
+			"file_name": "regex-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "regex-tests",
+			"package_type": "package",
+			"sha256": "c278ccc5323c9d6fba4054ed273be88d70d78791005b230ff256dc951b3ce17e",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "2023.12.25"
+		},
+		"requests": {
+			"depends": [
+				"charset-normalizer",
+				"idna",
+				"urllib3",
+				"certifi"
+			],
+			"file_name": "requests-2.31.0-py3-none-any.tar.gz",
+			"imports": [
+				"requests"
+			],
+			"install_dir": "site",
+			"name": "requests",
+			"package_type": "package",
+			"sha256": "b413e17cdd499000f94763e8c1238e67ef04d8a190d23ddf689a2d8e7a87f2e3",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "2.31.0"
+		},
+		"six": {
+			"depends": [],
+			"file_name": "six-1.16.0-py2.py3-none-any.tar.gz",
+			"imports": [
+				"six"
+			],
+			"install_dir": "site",
+			"name": "six",
+			"package_type": "package",
+			"sha256": "d46d09dc01df8c72a161db03ca5dad56f2621338bd9e7f5ab3c9dc94c0b803ff",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.16.0"
+		},
+		"sniffio": {
+			"depends": [],
+			"file_name": "sniffio-1.3.0-py3-none-any.tar.gz",
+			"imports": [
+				"sniffio"
+			],
+			"install_dir": "site",
+			"name": "sniffio",
+			"package_type": "package",
+			"sha256": "544fbc4b6224793bfc19ab9adcd12926653b6a1bb3256b001ebdf11855bbb79d",
+			"shared_library": false,
+			"unvendored_tests": true,
+			"version": "1.3.0"
+		},
+		"sniffio-tests": {
+			"depends": [
+				"sniffio"
+			],
+			"file_name": "sniffio-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "sniffio-tests",
+			"package_type": "package",
+			"sha256": "ff34d3ead25e47a0eec6b0a6fa3a5781932fdc734039f1d9c674a6245f934f75",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.3.0"
+		},
+		"sqlite3": {
+			"depends": [],
+			"file_name": "sqlite3-1.0.0.tar.gz",
+			"imports": [
+				"sqlite3",
+				"_sqlite3"
+			],
+			"install_dir": "stdlib",
+			"name": "sqlite3",
+			"package_type": "cpython_module",
+			"sha256": "781f530aedaf240d719a9ff3d5ea2e9ad99e64c4fbaa0b3a87f0ec1ef0dad98f",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.0.0"
+		},
+		"ssl": {
+			"depends": [
+				"openssl"
+			],
+			"file_name": "ssl-1.0.0.tar.gz",
+			"imports": [
+				"ssl",
+				"_ssl"
+			],
+			"install_dir": "stdlib",
+			"name": "ssl",
+			"package_type": "cpython_module",
+			"sha256": "524b10ed86eb941bf5a1fe6676bdc85c89b29fac0d726e64c3faafb9a5a05b76",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.0.0"
+		},
+		"starlette": {
+			"depends": [
+				"anyio"
+			],
+			"file_name": "starlette-0.36.3-py3-none-any.tar.gz",
+			"imports": [
+				"starlette"
+			],
+			"install_dir": "site",
+			"name": "starlette",
+			"package_type": "package",
+			"sha256": "e72777e61149c40ba7531d8ba1e0dd541a14552062746d72ccc6a31ae1718c30",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.36.3"
+		},
+		"tenacity": {
+			"depends": [],
+			"file_name": "tenacity-8.2.3-py3-none-any.tar.gz",
+			"imports": [
+				"tenacity"
+			],
+			"install_dir": "site",
+			"name": "tenacity",
+			"package_type": "package",
+			"sha256": "f46d30193e16fe598331777a09a4f6f66de65d94ef8c273b904b4cca46396815",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "8.2.3"
+		},
+		"test": {
+			"depends": [],
+			"file_name": "test-1.0.0.tar.gz",
+			"imports": [
+				"test"
+			],
+			"install_dir": "stdlib",
+			"name": "test",
+			"package_type": "cpython_module",
+			"sha256": "babced7d59751e1718cb5f2be1ff7837a1b8352f0ae63fde1378978b5589c943",
+			"shared_library": true,
+			"unvendored_tests": false,
+			"version": "1.0.0"
+		},
+		"tiktoken": {
+			"depends": [
+				"regex",
+				"requests"
+			],
+			"file_name": "tiktoken-0.6.0-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"tiktoken",
+				"tiktoken_ext"
+			],
+			"install_dir": "site",
+			"name": "tiktoken",
+			"package_type": "package",
+			"sha256": "6cf13fa2f208ba4bbae3f152568bd8ca75c3abf6f07d8633eabbb184795fa3e7",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "0.6.0"
+		},
+		"typing-extensions": {
+			"depends": [],
+			"file_name": "typing_extensions-4.9.0-py3-none-any.tar.gz",
+			"imports": [
+				"typing_extensions"
+			],
+			"install_dir": "site",
+			"name": "typing-extensions",
+			"package_type": "package",
+			"sha256": "4979c8f75d7b8b49009550a7060d60e6af914ceddaaa4bec3268b88563dd294a",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "4.9.0"
+		},
+		"urllib3": {
+			"depends": [],
+			"file_name": "urllib3-2.2.1-py3-none-any.tar.gz",
+			"imports": [
+				"urllib3"
+			],
+			"install_dir": "site",
+			"name": "urllib3",
+			"package_type": "package",
+			"sha256": "262fbe4324e94874cba0a090d79d7d22325d12f0ecae8fb0e57179c8c2eee383",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "2.2.1"
+		},
+		"yarl": {
+			"depends": [
+				"multidict",
+				"idna"
+			],
+			"file_name": "yarl-1.9.4-cp312-cp312-emscripten_3_1_52_wasm32.tar.gz",
+			"imports": [
+				"yarl"
+			],
+			"install_dir": "site",
+			"name": "yarl",
+			"package_type": "package",
+			"sha256": "8e3b11346f1053aa23b35c92817709a739f461a965262df61eec59fa69ed7e1e",
+			"shared_library": false,
+			"unvendored_tests": false,
+			"version": "1.9.4"
+		}
+	}
+}
