@@ -10,7 +10,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -92,16 +91,16 @@
 						}
 					}
 				},
-				"description": "Delete a request response"
+				"description": "Delete request response"
 			},
 			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -121,19 +120,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -153,37 +141,41 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Create response failure"
+				"description": "Delete request response failure"
 			}
 		},
 		"security": [
@@ -193,6 +185,207 @@
 			}
 		],
 		"summary": "Delete a Request",
+		"tags": [
+			"Request for Information (RFI)"
+		]
+	},
+	"DELETE /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
+		"operationId": "cloudforce-one-request-asset-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "request_identifier",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "asset_identifer",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete request asset response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete request asset response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Request Asset",
 		"tags": [
 			"Request for Information (RFI)"
 		]
@@ -208,7 +401,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -298,16 +490,16 @@
 						}
 					}
 				},
-				"description": "Delete a request message response"
+				"description": "Delete request message response"
 			},
 			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -327,19 +519,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -359,33 +540,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -414,7 +599,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -602,16 +786,16 @@
 						}
 					}
 				},
-				"description": "Get a request response"
+				"description": "Get request response"
 			},
 			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -631,19 +815,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -663,37 +836,41 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Get a request response failure"
+				"description": "Get request response failure"
 			}
 		},
 		"security": [
@@ -703,6 +880,262 @@
 			}
 		],
 		"summary": "Get a Request",
+		"tags": [
+			"Request for Information (RFI)"
+		]
+	},
+	"GET /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
+		"operationId": "cloudforce-one-request-asset-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "request_identifier",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "asset_identifer",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created": {
+														"allOf": [
+															{
+																"example": "2022-04-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															{
+																"description": "Asset creation time"
+															},
+															{
+																"example": "2022-01-01T00:00:00Z"
+															}
+														]
+													},
+													"description": {
+														"description": "Asset description",
+														"example": "example description",
+														"type": "string"
+													},
+													"file_type": {
+														"description": "Asset file type",
+														"example": "png",
+														"type": "string"
+													},
+													"id": {
+														"description": "Asset ID",
+														"type": "integer"
+													},
+													"name": {
+														"description": "Asset name",
+														"example": "example.png",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name"
+												],
+												"title": "Request Asset Item",
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get request asset response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get request asset response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Request Asset",
 		"tags": [
 			"Request for Information (RFI)"
 		]
@@ -718,7 +1151,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -872,10 +1304,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -895,19 +1327,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -927,33 +1348,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -982,7 +1407,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1113,10 +1537,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1136,19 +1560,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1168,33 +1581,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1223,7 +1640,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1320,10 +1736,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1343,19 +1759,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1375,33 +1780,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1430,7 +1839,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1760,10 +2168,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1783,19 +2191,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1815,33 +2212,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1859,6 +2260,537 @@
 			"Request for Information (RFI)"
 		]
 	},
+	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset": {
+		"operationId": "cloudforce-one-request-asset-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "request_identifier",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"page": {
+								"description": "Page number of results",
+								"type": "integer"
+							},
+							"per_page": {
+								"description": "Number of results per page",
+								"example": 10,
+								"type": "integer"
+							}
+						},
+						"required": [
+							"page",
+							"per_page"
+						],
+						"title": "Request Asset List Parameters",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created": {
+														"allOf": [
+															{
+																"example": "2022-04-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															{
+																"description": "Asset creation time"
+															},
+															{
+																"example": "2022-01-01T00:00:00Z"
+															}
+														]
+													},
+													"description": {
+														"description": "Asset description",
+														"example": "example description",
+														"type": "string"
+													},
+													"file_type": {
+														"description": "Asset file type",
+														"example": "png",
+														"type": "string"
+													},
+													"id": {
+														"description": "Asset ID",
+														"type": "integer"
+													},
+													"name": {
+														"description": "Asset name",
+														"example": "example.png",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name"
+												],
+												"title": "Request Asset Item",
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List request assets response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List request assets response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Request Assets",
+		"tags": [
+			"Request for Information (RFI)"
+		]
+	},
+	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/new": {
+		"operationId": "cloudforce-one-request-asset-new",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "request_identifier",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"properties": {
+							"source": {
+								"description": "Asset file to upload",
+								"example": "@/Users/me/test.doc",
+								"type": "string"
+							}
+						},
+						"title": "Request Asset Editable Attributes",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created": {
+													"allOf": [
+														{
+															"example": "2022-04-01T05:20:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														{
+															"description": "Asset creation time"
+														},
+														{
+															"example": "2022-01-01T00:00:00Z"
+														}
+													]
+												},
+												"description": {
+													"description": "Asset description",
+													"example": "example description",
+													"type": "string"
+												},
+												"file_type": {
+													"description": "Asset file type",
+													"example": "png",
+													"type": "string"
+												},
+												"id": {
+													"description": "Asset ID",
+													"type": "integer"
+												},
+												"name": {
+													"description": "Asset name",
+													"example": "example.png",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name"
+											],
+											"title": "Request Asset Item",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create request asset response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create request asset response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a New Request Asset",
+		"tags": [
+			"Request for Information (RFI)"
+		]
+	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message": {
 		"operationId": "cloudforce-one-request-message-list",
 		"parameters": [
@@ -1870,7 +2802,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2056,7 +2987,7 @@
 														"type": "integer"
 													},
 													"is_follow_on_request": {
-														"description": "Message is a follow-on request",
+														"description": "Whether the message is a follow-on request",
 														"type": "boolean"
 													},
 													"updated": {
@@ -2099,10 +3030,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2122,19 +3053,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2154,37 +3074,41 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "List requests message response failure"
+				"description": "List request messages response failure"
 			}
 		},
 		"security": [
@@ -2199,7 +3123,6 @@
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/new": {
-		"description": "Creating a request adds the request into the Cloudforce One queue for analysis. In addition to the content, a short title, type, priority, and releasability should be provided. If one is not provided a default will be assigned.",
 		"operationId": "cloudforce-one-request-message-new",
 		"parameters": [
 			{
@@ -2210,7 +3133,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2344,7 +3266,7 @@
 													"type": "integer"
 												},
 												"is_follow_on_request": {
-													"description": "Message is a follow-on request",
+													"description": "Whether the message is a follow-on request",
 													"type": "boolean"
 												},
 												"updated": {
@@ -2379,16 +3301,16 @@
 						}
 					}
 				},
-				"description": "Create request response"
+				"description": "Create request message response"
 			},
 			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2408,19 +3330,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2440,37 +3351,41 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Create response failure"
+				"description": "Create request message response failure"
 			}
 		},
 		"security": [
@@ -2485,7 +3400,7 @@
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/new": {
-		"description": "Creating a request adds the request into the Cloudforce One queue for analysis. In addition to the content, a short title, type, priority, and releasability should be provided. If one is not provided a default will be assigned.",
+		"description": "Creating a request adds the request into the Cloudforce One queue for analysis. In addition to the content, a short title, type, priority, and releasability should be provided. If one is not provided, a default will be assigned.",
 		"operationId": "cloudforce-one-request-new",
 		"parameters": [
 			{
@@ -2496,7 +3411,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2724,10 +3638,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2747,19 +3661,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2779,33 +3682,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -2824,7 +3731,7 @@
 		]
 	},
 	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}": {
-		"description": "Updating a request alters the request in the Cloudforce One queue. This API may be used to update any attributes of the request after the initial submission. Only fields that you choose to update need to be add to the request body",
+		"description": "Updating a request alters the request in the Cloudforce One queue. This API may be used to update any attributes of the request after the initial submission. Only fields that you choose to update need to be add to the request body.",
 		"operationId": "cloudforce-one-request-update",
 		"parameters": [
 			{
@@ -2835,7 +3742,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -3068,16 +3974,16 @@
 						}
 					}
 				},
-				"description": "Update a request response"
+				"description": "Update request response"
 			},
 			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3097,19 +4003,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3129,33 +4024,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -3173,6 +4072,277 @@
 			"Request for Information (RFI)"
 		]
 	},
+	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset/{asset_identifer}": {
+		"operationId": "cloudforce-one-request-asset-update",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "request_identifier",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "asset_identifer",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"source": {
+								"description": "Asset file to upload",
+								"example": "@/Users/me/test.doc",
+								"type": "string"
+							}
+						},
+						"title": "Request Asset Editable Attributes",
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created": {
+													"allOf": [
+														{
+															"example": "2022-04-01T05:20:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														{
+															"description": "Asset creation time"
+														},
+														{
+															"example": "2022-01-01T00:00:00Z"
+														}
+													]
+												},
+												"description": {
+													"description": "Asset description",
+													"example": "example description",
+													"type": "string"
+												},
+												"file_type": {
+													"description": "Asset file type",
+													"example": "png",
+													"type": "string"
+												},
+												"id": {
+													"description": "Asset ID",
+													"type": "integer"
+												},
+												"name": {
+													"description": "Asset name",
+													"example": "example.png",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name"
+											],
+											"title": "Request Asset Item",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update request asset response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update request asset response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Request Asset",
+		"tags": [
+			"Request for Information (RFI)"
+		]
+	},
 	"PUT /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/message/{message_identifer}": {
 		"operationId": "cloudforce-one-request-message-update",
 		"parameters": [
@@ -3184,7 +4354,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -3214,39 +4383,12 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"description": "Request content",
-								"example": "What regions were most effected by the recent DoS?",
-								"type": "string"
-							},
-							"priority": {
-								"description": "Priority for analyzing the request",
-								"example": "routine",
-								"type": "string"
-							},
-							"request_type": {
-								"description": "Requested information from request",
-								"example": "Victomology",
-								"type": "string"
-							},
-							"summary": {
-								"description": "Brief description of the request",
-								"example": "DoS attack",
-								"type": "string"
-							},
-							"tlp": {
-								"description": "The CISA defined Traffic Light Protocol (TLP)",
-								"enum": [
-									"clear",
-									"amber",
-									"amber-strict",
-									"green",
-									"red"
-								],
-								"title": "TLP",
+								"description": "Content of message",
+								"example": "Can you elaborate on the type of DoS that occurred?",
 								"type": "string"
 							}
 						},
-						"title": "Request Editable Parameters",
+						"title": "Request Message Editable Attributes",
 						"type": "object"
 					}
 				}
@@ -3353,7 +4495,7 @@
 													"type": "integer"
 												},
 												"is_follow_on_request": {
-													"description": "Message is a follow-on request",
+													"description": "Whether the message is a follow-on request",
 													"type": "boolean"
 												},
 												"updated": {
@@ -3388,16 +4530,16 @@
 						}
 					}
 				},
-				"description": "Update a request message response"
+				"description": "Update request message response"
 			},
 			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3417,19 +4559,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3449,33 +4580,37 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
