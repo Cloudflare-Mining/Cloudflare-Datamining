@@ -7,15 +7,31 @@ import fs from 'fs-extra';
 import { tryAndPush } from './utils.js';
 
 async function run() {
-	console.log('Parsing workerd capnp-parse output');
+	// load pyodide lock
 	const dir = path.resolve('../data/workerd');
-	await fs.ensureDir(dir);
+	try {
+		const lockRes = await fetch('https://github.com/cloudflare/pyodide-build-scripts/releases/latest/download/pyodide-lock.json');
+		const lock = await lockRes.json();
+		await fs.writeJson(path.resolve(dir, 'pyodide-lock.json'), lock, {
+			spaces: '\t',
+		});
+	} catch {
+		console.log('Failed to fetch pyodide lock');
+	}
 
-	const output = await fs.readJson(path.resolve('../temp/workerd-output.json'));
+	// get capnp-parse output
+	try {
+		console.log('Parsing workerd capnp-parse output');
+		await fs.ensureDir(dir);
 
-	await fs.writeJson(path.resolve(dir, 'parsed.json'), output, {
-		spaces: '\t',
-	});
+		const output = await fs.readJson(path.resolve('../temp/workerd-output.json'));
+
+		await fs.writeJson(path.resolve(dir, 'parsed.json'), output, {
+			spaces: '\t',
+		});
+	} catch {
+		console.log('Failed to parse workerd capnp-parse output');
+	}
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');

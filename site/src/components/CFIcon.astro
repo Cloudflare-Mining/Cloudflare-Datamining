@@ -2,7 +2,7 @@
 import CopyIcon from '../../../data/icons/es/reactsvgs/Copy.js';
 
 export interface Props {
-	icon: Function; // eslint-disable-line @typescript-eslint/ban-types
+	icon: Function; // eslint-disable-line @typescript-eslint/no-unsafe-function-type
 	key: string;
 }
 
@@ -10,7 +10,7 @@ const {
 	icon,
 	key,
 }: {
-	icon: Function; // eslint-disable-line @typescript-eslint/ban-types
+	icon: Function; // eslint-disable-line @typescript-eslint/no-unsafe-function-type
 	key: string;
 } = Astro.props;
 
