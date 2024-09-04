@@ -1,5 +1,4 @@
 import Dlp from './Dlp';
-import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -50,6 +49,7 @@ import Discover from './Discover';
 import Documentation from './Documentation';
 import Download from './Download';
 import Drive from './Drive';
+import EdgeLogDelivery from './EdgeLogDelivery';
 import Edgeworker from './Edgeworker';
 import Edit from './Edit';
 import EmailForwarding from './EmailForwarding';
@@ -143,6 +143,7 @@ import ThumbsDownSolid from './ThumbsDownSolid';
 import ThumbsUpOutline from './ThumbsUpOutline';
 import ThumbsUpSolid from './ThumbsUpSolid';
 import Time from './Time';
+import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -175,7 +176,6 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
-  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -226,6 +226,7 @@ export default {
   documentation: Documentation,
   download: Download,
   drive: Drive,
+  'edge-log-delivery': EdgeLogDelivery,
   edgeworker: Edgeworker,
   edit: Edit,
   'email-forwarding': EmailForwarding,
@@ -319,6 +320,7 @@ export default {
   'thumbs-up-outline': ThumbsUpOutline,
   'thumbs-up-solid': ThumbsUpSolid,
   time: Time,
+  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,

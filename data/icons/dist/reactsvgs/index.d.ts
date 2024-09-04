@@ -1,7 +1,6 @@
 /// <reference types="react" />
 declare const _default: {
     dlp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'account-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -52,6 +51,7 @@ declare const _default: {
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     download: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     drive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'edge-log-delivery': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     edgeworker: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     edit: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'email-forwarding': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -145,6 +145,7 @@ declare const _default: {
     'thumbs-up-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'thumbs-up-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
