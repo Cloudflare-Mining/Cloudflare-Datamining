@@ -235,6 +235,7 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   caches: CacheStorage;
   scheduler: Scheduler;
   performance: Performance;
+  Cloudflare: Cloudflare;
   readonly origin: string;
   Event: typeof Event;
   ExtendableEvent: typeof ExtendableEvent;
@@ -386,6 +387,7 @@ declare const scheduler: Scheduler;
  * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
  */
 declare const performance: Performance;
+declare const Cloudflare: Cloudflare;
 declare const origin: string;
 declare const navigator: Navigator;
 interface TestController {}
@@ -475,6 +477,9 @@ interface Performance {
 interface AlarmInvocationInfo {
   readonly isRetry: boolean;
   readonly retryCount: number;
+}
+interface Cloudflare {
+  readonly compatibilityFlags: Record<string, boolean>;
 }
 interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
@@ -2266,15 +2271,15 @@ declare class TransformStream<I = any, O = any> {
 }
 declare class FixedLengthStream extends IdentityTransformStream {
   constructor(
-    expectedLength: number | bigint,
-    queuingStrategy?: IdentityTransformStreamQueuingStrategy,
+    param1: number | bigint,
+    param2?: IdentityTransformStreamQueuingStrategy,
   );
 }
 declare class IdentityTransformStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
+  constructor(param1?: IdentityTransformStreamQueuingStrategy);
 }
 interface IdentityTransformStreamQueuingStrategy {
   highWaterMark?: number | bigint;
@@ -2306,7 +2311,7 @@ declare class TextDecoderStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   string
 > {
-  constructor(label?: string, options?: TextDecoderStreamTextDecoderStreamInit);
+  constructor(param1?: string, param2?: TextDecoderStreamTextDecoderStreamInit);
   get encoding(): string;
   get fatal(): boolean;
   get ignoreBOM(): boolean;
@@ -4936,6 +4941,18 @@ type PagesPluginFunction<
 declare module "assets:*" {
   export const onRequest: PagesFunction;
 }
+// Copyright (c) 2022-2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
+declare abstract class PipelineTransform {
+  /**
+   * transformJson recieves an array of javascript objects which can be
+   * mutated and returned to the pipeline
+   * @param data The data to be mutated
+   * @returns A promise containing the mutated data
+   */
+  public transformJson(data: object[]): Promise<object[]>;
+}
 // PubSubMessage represents an incoming PubSub message.
 // The message includes metadata about the broker, the client, and the payload
 // itself.
@@ -5202,6 +5219,10 @@ declare module "cloudflare:workers" {
     };
     timeout?: string | number;
   };
+  export type WorkflowEvent<T> = {
+    payload: T;
+    timestamp: Date;
+  };
   export type WorkflowStep = {
     do: <T extends Rpc.Serializable>(
       name: string,
@@ -5221,13 +5242,7 @@ declare module "cloudflare:workers" {
     [Rpc.__WORKFLOW_BRAND]: never;
     protected ctx: ExecutionContext;
     protected env: Env;
-    run(
-      events: Array<{
-        payload: T;
-        timestamp: Date;
-      }>,
-      step: WorkflowStep,
-    ): Promise<unknown>;
+    run(events: Array<WorkflowEvent<T>>, step: WorkflowStep): Promise<unknown>;
   }
 }
 declare module "cloudflare:sockets" {

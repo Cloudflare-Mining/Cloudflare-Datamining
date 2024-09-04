@@ -235,6 +235,7 @@ export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   caches: CacheStorage;
   scheduler: Scheduler;
   performance: Performance;
+  Cloudflare: Cloudflare;
   readonly origin: string;
   Event: typeof Event;
   ExtendableEvent: typeof ExtendableEvent;
@@ -393,6 +394,7 @@ export declare const scheduler: Scheduler;
  * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
  */
 export declare const performance: Performance;
+export declare const Cloudflare: Cloudflare;
 export declare const origin: string;
 export declare const navigator: Navigator;
 export interface TestController {}
@@ -486,6 +488,9 @@ export interface Performance {
 export interface AlarmInvocationInfo {
   readonly isRetry: boolean;
   readonly retryCount: number;
+}
+export interface Cloudflare {
+  readonly compatibilityFlags: Record<string, boolean>;
 }
 export interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
@@ -1643,6 +1648,12 @@ export declare class Request<
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
    */
   get keepalive(): boolean;
+  /**
+   * Returns the cache mode associated with request, which is a string indicating how the request will interact with the browser's cache when fetching.
+   *
+   * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/cache)
+   */
+  cache?: "no-store";
 }
 export interface RequestInit<Cf = CfProperties> {
   /* A string to set request's method. */
@@ -1655,6 +1666,8 @@ export interface RequestInit<Cf = CfProperties> {
   redirect?: string;
   fetcher?: Fetcher | null;
   cf?: Cf;
+  /* A string indicating how the request will interact with the browser's cache to set request's cache. */
+  cache?: "no-store";
   /* A cryptographic hash of the resource to be fetched by request. Sets request's integrity. */
   integrity?: string;
   /* An AbortSignal to set request's signal. */
@@ -2330,15 +2343,15 @@ export declare class TransformStream<I = any, O = any> {
 }
 export declare class FixedLengthStream extends IdentityTransformStream {
   constructor(
-    expectedLength: number | bigint,
-    queuingStrategy?: IdentityTransformStreamQueuingStrategy,
+    param1: number | bigint,
+    param2?: IdentityTransformStreamQueuingStrategy,
   );
 }
 export declare class IdentityTransformStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
+  constructor(param1?: IdentityTransformStreamQueuingStrategy);
 }
 export interface IdentityTransformStreamQueuingStrategy {
   highWaterMark?: number | bigint;
@@ -2373,7 +2386,7 @@ export declare class TextDecoderStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   string
 > {
-  constructor(label?: string, options?: TextDecoderStreamTextDecoderStreamInit);
+  constructor(param1?: string, param2?: TextDecoderStreamTextDecoderStreamInit);
   get encoding(): string;
   get fatal(): boolean;
   get ignoreBOM(): boolean;
@@ -2587,13 +2600,13 @@ export declare class URL {
   /*function toString() { [native code] }*/
   toString(): string;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
-  static canParse(url: string, base?: string): boolean;
-  static parse(url: string, base?: string): URL | null;
+  static canParse(param0: string, param1?: string): boolean;
+  static parse(param1: string, param2?: string): URL | null;
 }
 /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
 export declare class URLSearchParams {
   constructor(
-    init?: Iterable<Iterable<string>> | Record<string, string> | string,
+    param0?: Iterable<Iterable<string>> | Record<string, string> | string,
   );
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/size) */
   get size(): number;
@@ -2602,37 +2615,37 @@ export declare class URLSearchParams {
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/append)
    */
-  append(name: string, value: string): void;
+  append(param0: string, param1: string): void;
   /**
    * Deletes the given search parameter, and its associated value, from the list of all search parameters.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/delete)
    */
-  delete(name: string, value?: string): void;
+  delete(param1: string, param2?: string): void;
   /**
    * Returns the first value associated to the given search parameter.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/get)
    */
-  get(name: string): string | null;
+  get(param0: string): string | null;
   /**
    * Returns all the values association with a given search parameter.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll)
    */
-  getAll(name: string): string[];
+  getAll(param0: string): string[];
   /**
    * Returns a Boolean indicating if such a search parameter exists.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/has)
    */
-  has(name: string, value?: string): boolean;
+  has(param1: string, param2?: string): boolean;
   /**
    * Sets the value associated to a given search parameter to the given value. If there were several values, delete the others.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/set)
    */
-  set(name: string, value: string): void;
+  set(param0: string, param1: string): void;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/sort) */
   sort(): void;
   /* Returns an array of key, value pairs for every entry in the search params. */
@@ -5029,6 +5042,18 @@ export type PagesPluginFunction<
 > = (
   context: EventPluginContext<Env, Params, Data, PluginArgs>,
 ) => Response | Promise<Response>;
+// Copyright (c) 2022-2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
+export declare abstract class PipelineTransform {
+  /**
+   * transformJson recieves an array of javascript objects which can be
+   * mutated and returned to the pipeline
+   * @param data The data to be mutated
+   * @returns A promise containing the mutated data
+   */
+  public transformJson(data: object[]): Promise<object[]>;
+}
 // PubSubMessage represents an incoming PubSub message.
 // The message includes metadata about the broker, the client, and the payload
 // itself.
