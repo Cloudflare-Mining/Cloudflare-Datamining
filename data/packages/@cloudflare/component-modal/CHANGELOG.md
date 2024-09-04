@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.25
+
+### Patch Changes
+
+- @cloudflare/component-button@8.5.1
+
 ## 8.0.24
 
 ### Patch Changes

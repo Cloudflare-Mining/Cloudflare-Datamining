@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.14.0
+
+### Minor Changes
+
+- 89deb3127a: add edge-log-delivery icon
+
 ## 12.13.0
 
 ### Minor Changes
