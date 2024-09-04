@@ -261,54 +261,6 @@
 		"length": "number",
 		"name": "string"
 	},
-	"Cloudflare": {
-		"compatibilityFlags": {
-			"allow_custom_ports": "boolean",
-			"blob_standard_mime_type": "boolean",
-			"brotli_content_encoding": "boolean",
-			"capture_async_api_throws": "boolean",
-			"crypto_preserve_public_exponent": "boolean",
-			"dont_substitute_null_on_type_error": "boolean",
-			"durable_object_alarms": "boolean",
-			"durable_object_fetch_requires_full_url": "boolean",
-			"dynamic_dispatch_tunnel_exceptions": "boolean",
-			"export_commonjs_default": "boolean",
-			"fetch_refuses_unknown_protocols": "boolean",
-			"fetch_standard_url": "boolean",
-			"fetcher_no_get_put_delete": "boolean",
-			"formdata_parser_supports_files": "boolean",
-			"global_navigator": "boolean",
-			"html_rewriter_treats_esi_include_as_void_tag": "boolean",
-			"http_headers_getsetcookie": "boolean",
-			"internal_stream_byob_return_view": "boolean",
-			"internal_writable_stream_abort_clears_queue": "boolean",
-			"minimal_subrequests": "boolean",
-			"no_cf_botmanagement_default": "boolean",
-			"no_cots_on_external_fetch": "boolean",
-			"no_global_importscripts": "boolean",
-			"nodejs_als": "boolean",
-			"nodejs_compat": "boolean",
-			"nodejs_compat_v2": "boolean",
-			"python_workers": "boolean",
-			"queues_json_messages": "boolean",
-			"r2_list_honor_include": "boolean",
-			"r2_public_beta_bindings": "boolean",
-			"response_redirect_url_standard": "boolean",
-			"rpc": "boolean",
-			"streams_byob_reader_detaches_buffer": "boolean",
-			"streams_enable_constructors": "boolean",
-			"strict_compression_checks": "boolean",
-			"strict_crypto_checks": "boolean",
-			"tcp_sockets_support": "boolean",
-			"transformstream_enable_standard_constructor": "boolean",
-			"unwrap_custom_thenables": "boolean",
-			"url_standard": "boolean",
-			"urlsearchparams_delete_has_value_arg": "boolean",
-			"vectorize_query_metadata_optional": "boolean",
-			"web_socket_compression": "boolean",
-			"workers_api_getters_setters_on_prototype": "boolean"
-		}
-	},
 	"CompressionStream": {
 		"__proto": "function",
 		"__type": "function",
@@ -2546,7 +2498,6 @@
 		"Cache",
 		"CacheStorage",
 		"CloseEvent",
-		"Cloudflare",
 		"CompressionStream",
 		"CountQueuingStrategy",
 		"Crypto",
@@ -2681,7 +2632,6 @@
 		"BigInt64Array",
 		"BigUint64Array",
 		"Boolean",
-		"Cloudflare",
 		"DataView",
 		"Date",
 		"Error",
@@ -11366,104 +11316,6 @@
 				"_prototype": {}
 			},
 			"createUnzip": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"inflate": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"inflateSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"deflate": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"deflateSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"inflateRaw": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"inflateRawSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"deflateRaw": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"deflateRawSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"gzip": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"gzipSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"gunzip": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"gunzipSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"unzip": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"unzipSync": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
