@@ -2659,6 +2659,13 @@
 						"compatEnableFlag": "replica_routing",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableD1WithSessionsAPI",
+					"annotations": {
+						"compatEnableFlag": "enable_d1_with_sessions_api",
+						"experimental": "true"
+					}
 				}
 			]
 		},
