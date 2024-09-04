@@ -5,6 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Qc7EGaZtlXsYT0s2mE4G/0ee5f00c67d729c9508c9591b1dc9719/Screen-Shot-2021-08-25-at-11.43.24-PM.png" alt="" class="kg-image" width="1209" height="761" loading="lazy">
 
 	</figure>
+	<p></p>
 	<p>Using async Rust libraries is usually easy. It's just like using normal Rust code, with a little <code>async</code> or <code>.await</code> here and there. But writing your own async libraries can be hard. The first time I tried this, I got really confused by arcane, esoteric syntax like <code>T: ?Unpin</code> and <code>Pin&lt;&amp;mut Self&gt;</code>. I had never seen these types before, and I didn't understand what they were doing. Now that I understand them, I've written the explainer I wish I could have read back then. In this post, we're gonna learn</p>
 	<ul>
 		<li>
@@ -36,6 +37,7 @@ let timed_async_fn = TimedWrapper::new(async_fn);
 // Call the async function, which will send a HTTP request and time it.
 let (resp, time) = timed_async_fn.await;
 println!("Got a HTTP {} in {}ms", resp.unwrap().status(), time.as_millis())</code></pre>
+	<p></p>
 	<p>I like this interface, it's simple and should be easy for the other programmers on my team to use. OK, let's implement it! I know that, under the hood, Rust's async functions are just regular functions that return a <a href="https://doc.rust-lang.org/stable/std/future/trait.Future.html"><code>Future</code></a>. The Future trait is pretty simple. It just means a type which:</p>
 	<ul>
 		<li>
@@ -64,18 +66,26 @@ impl Future for RandFuture {
 	type Output = u16;
 
 	// The `Future` trait has only one method, named "poll".
-fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll<self::output {="" poll::ready(rand::random())="" }="" }<="" pre=""></self::output></code>
-            <p>Not too hard! I think we're ready to implement <code>TimedWrapper</code>.</p><h3>Trying and failing to use nested Futures</h3><p>Let's start by defining the type.</p>
-            <pre class="language-bash"><code class="language-bash">pub struct TimedWrapper<fut: future=""> {
+fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll&lt;Self::Output  {
+		Poll::ready(rand::random())
+	}
+}</code></pre>
+	<p></p>
+	<p>Not too hard! I think we're ready to implement <code>TimedWrapper</code>.</p>
+	<h3>Trying and failing to use nested Futures</h3>
+	<p>Let's start by defining the type.</p>
+	<pre class="language-bash"><code class="language-bash">pub struct TimedWrapper<fut: future=""> {
 	start: Option<instant>,
 	future: Fut,
 }</instant></fut:></code></pre>
+	<p></p>
 	<p>OK, so a <code>TimedWrapper</code> is generic over a type <code>Fut</code>, which must be a <code>Future</code>. And it will store a future of that type as a field. It'll also have a <code>start</code> field which will record when it first was first polled. Let's write a constructor:</p>
 	<pre class="language-bash"><code class="language-bash">impl<fut: future=""> TimedWrapper<fut> {
 	pub fn new(future: Fut) -&gt; Self {
 		Self { future, start: None }
 	}
 }</fut></fut:></code></pre>
+	<p></p>
 	<p>Nothing too complicated here. The <code>new</code> function takes a future and wraps it in the <code>TimedWrapper</code>. Of course, we have to set start to None, because it hasn't been polled yet. So, let's implement the <code>poll</code> method, which is the only thing we need to implement <code>Future</code> and make it <code>.await</code>able.</p>
 	<pre class="language-bash"><code class="language-bash">impl<fut: future=""> Future for TimedWrapper<fut> {
 	// This future will output a pair of values:
@@ -97,12 +107,14 @@ fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll<self::
 		}
 	}
 }</self::output></fut></fut:></code></pre>
+	<p></p>
 	<p>OK, that wasn't too hard. There's just one problem: this doesn't work.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vQYwC1N4iXqv6DzpxWJDq/9ebc6414bfee83d2f76c2cbfac7aa660/Screen-Shot-2021-08-25-at-11.15.17-PM.png" alt="" class="kg-image" width="2000" height="509" loading="lazy">
 
 	</figure>
+	<p></p>
 	<p>So, the Rust compiler reports an error on <code>self.future.poll(cx)</code>, which is "no method named <code>poll</code> found for type parameter <code>Fut</code> in the current scope". This is confusing, because we know <code>Fut</code> is a <code>Future</code>, so surely it has a poll method? OK, but Rust continues: <code>Fut</code> doesn't have a poll method, but <code>Pin&lt;&amp;mut Fut&gt;</code> has one. What is this weird type?</p>
 	<p>Well, we know that methods have a "receiver", which is some way it can access <code>self</code>. The receiver might be <code>self, &amp;self or &amp;mut self</code>, which mean "take ownership of self," "borrow self," and "mutably borrow self" respectively. So this is just a new, unfamiliar kind of receiver. Rust is complaining because we have Fut and we really need a <code>Pin&lt;&amp;mut Fut&gt;</code>. At this point I have two questions:</p>
 	<ol>
@@ -122,12 +134,14 @@ fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll<self::
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DejT3ngy1ze7AWuwy37Zq/6c562fb640356c4d7d837f6df88da550/memory_before.png" alt="" class="kg-image" width="256" height="110" loading="lazy">
 
 	</figure>
+	<p></p>
 	<p>So far, everything is OK. The <code>pointer</code> field points to the val field in memory address A, which contains a valid i32. All the pointers are <i>valid</i>, i.e. they point to memory that does indeed encode a value of the right type (in this case, an i32). But the Rust compiler often moves values around in memory. For example, if we pass this struct into another function, it might get moved to a different memory address. Or we might Box it and put it on the heap. Or if this struct was in a <code>Vec&lt;MyStruct&gt;</code>, and we pushed more values in, the Vec might outgrow its capacity and need to move its elements into a new, larger buffer.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WF4QNkOCFQiAIsmpbUaQK/3d80ad7612a49569a5a8987900bb15ed/memory_after.png" alt="" class="kg-image" width="577" height="134" loading="lazy">
 
 	</figure>
+	<p></p>
 	<p>When we move it, the struct's fields change their address, but not their value. So the <code>pointer</code> field is still pointing at address A, but address A now doesn't have a valid i32. The data that was there was moved to address B, and some other value might have been written there instead! So now the pointer is invalid. This is bad -- at best, invalid pointers cause crashes, at worst they cause hackable vulnerabilities. We only want to allow memory-unsafe behaviour in unsafe blocks, and we should be very careful to document this type and tell users to update the pointers after moves.</p>
 	<h3>Unpin and !Unpin</h3>
 	<p>To recap, all Rust types fall into two categories.</p>
@@ -147,6 +161,7 @@ fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll<self::
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19Usw25JStox7edODSK287/65d5cd83004234f75437921d68e825a9/pin_diagram.png" alt="" class="kg-image" width="1172" height="162" loading="lazy">
 
 	</figure>
+	<p></p>
 	<p>Pin wraps a pointer and stops its value from moving. The only exception is if the value impls <code>Unpin</code> -- then we know it's safe to move. Voila! Now we can write self-referential structs safely! This is really important, because as discussed above, many Futures are self-referential, and we need them for async/await.</p>
 	<h3>Using Pin</h3>
 	<p>So now we understand why Pin exists, and why our Future poll method has a pinned <code>&amp;mut self</code> to self instead of a regular <code>&amp;mut self</code>. So let's get back to the problem we had before: I need a pinned reference to the inner future. More generally: given a pinned struct, how do we access its fields?</p>
@@ -159,6 +174,7 @@ pub unsafe fn new_unchecked</p><p>                     (pointer: P) -&gt; Pin</p
 // Getting data from Pin
 pub        fn into_inner          <p: deref<target:="" unpin="">&gt;(pin: Pin</p:></p><p>) -&gt; P;
 pub unsafe fn into_inner_unchecked</p><p>                      (pin: Pin</p><p>) -&gt; P;</p></p:></code></pre>
+	<p></p>
 	<p>I know <code>unsafe</code> can be a bit scary, but it's OK to write unsafe code! I think of unsafe as the compiler saying "hey, I can't tell if this code follows the rules here, so I'm going to rely on you to check for me." The Rust compiler does so much work for us, it's only fair that we do some of the work every now and then. If you want to learn how to write your own projection methods, I can highly recommend <a href="https://fasterthanli.me/articles/pin-and-suffering">this fasterthanli.me blog post</a> on the topic. But we're going to take a little shortcut.</p>
 	<h3>Using pin-project instead</h3>
 	<p>So, OK, look, it's time for a confession: I don't like using <code>unsafe</code>. I know I just explained why it's OK, but still, given the option, I would rather not.</p>
@@ -173,6 +189,7 @@ pub struct TimedWrapper<fut: future=""> {
 	#[pin]
 	future: Fut,
 }</instant></fut:></code></pre>
+	<p></p>
 	<p>For each field, you have to choose whether its projection should be pinned or not. By default, you should use a normal reference, just because they're easier and simpler. But if you know you need a pinned reference -- for example, because you want to call <code>.poll()</code>, whose receiver is <code>Pin&lt;&amp;mut Self&gt;</code> -- then you can do that with <code>#[pin]</code>.</p>
 	<p>Now we can finally poll the inner future!</p>
 	<pre class="language-bash"><code class="language-bash">fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll<self::output> {
@@ -192,6 +209,7 @@ pub struct TimedWrapper<fut: future=""> {
 		Poll::Ready(output) =&gt; Poll::Ready((output, elapsed)),
 	}
 }</self::output></code></pre>
+	<p></p>
 	<p>Finally, our goal is complete -- and we did it all without any unsafe code.</p>
 	<h3>Summary</h3>
 	<p>If a Rust type has self-referential pointers, it can't be moved safely. After all, moving doesn't update the pointers, so they'll still be pointing at the old memory address, so they're now invalid. Rust can automatically tell which types are safe to move (and will auto impl the <code>Unpin</code> trait for them). If you have a <code>Pin</code>-ned pointer to some data, Rust can guarantee that nothing unsafe will happen (if it's safe to move, you can move it, if it's unsafe to move, then you can't). This is important because many Future types are self-referential, so we need <code>Pin</code> to safely poll a Future. You probably won't have to poll a future yourself (just use async/await instead), but if you do, use the <a href="https://docs.rs/pin-project">pin-project</a> crate to simplify things.</p>
@@ -217,5 +235,5 @@ pub struct TimedWrapper<fut: future=""> {
 			<p>Great article explaining when and how Rust <a href="https://hashrust.com/blog/moves-copies-and-clones-in-rust">moves values to different memory addresses</a>, by <a href="https://twitter.com/hashrust">@HashRust</a><i>Thanks to Nick Vollmar for feedback and to</i> <a href="https://stackoverflow.com/users/155423/shepmaster"><i>Shepmaster</i></a> <i>for helping me use pin-project when I first needed to write a nested Future</i></p>
 		</li>
 	</ul>
-	</pre>
+	<p></p>
 </div>

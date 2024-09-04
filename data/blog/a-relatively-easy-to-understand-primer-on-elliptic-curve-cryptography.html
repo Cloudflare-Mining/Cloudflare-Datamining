@@ -1,5 +1,5 @@
 <div class="mb2 gray5">16 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Fb9eVjO9uSaad63NLVLIv/adb06c71c4956a3fae1b90498f08f9fd/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography.jpg" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">日本語</a>.</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Elliptic Curve Cryptography (ECC) is one of the most powerful but least understood types of cryptography in wide use today. At <a href="https://www.cloudflare.com">CloudFlare</a>, we make extensive use of ECC to secure everything from our customers' HTTPS connections to how we pass data between our data centers.</p>
 	<p>Fundamentally, we believe it's important to be able to understand the technology behind any security system in order to trust it. To that end, we looked around to find a good, relatively easy-to-understand primer on ECC in order to share with our users. Finding none, we decided to write one ourselves. That is what follows.</p>
@@ -11,7 +11,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FAT1j6FzdNmWOnEU0UtoY/139db2aea5a6a9433d137d9fd6f1d282/image07.jpg" alt="" class="kg-image" width="462" height="280" loading="lazy">
 
 	</figure>
-	<p>Whitfield Diffie and Martin Hellman</p>
+	<p><i><sub>Whitfield Diffie and Martin Hellman</sub></i></p>
 	<p>Modern cryptography is founded on the idea that the key that you use to encrypt your data can be made public while the key that is used to to decrypt your data can be kept private. As such, these systems are known as public key cryptographic systems. The first, and still most widely used of these systems, is known as RSA — named after the initials of the three men who first publicly described the algorithm: Ron Rivest, Adi Shamir and Leonard Adleman.</p>
 	<p>What you need for a public key cryptographic system to work is a set of algorithms that is easy to process in one direction, but difficult to undo. In the case of RSA, the easy algorithm multiplies two prime numbers. If multiplication is the easy algorithm, its difficult pair algorithm is factoring the product of the multiplication into its two component primes. Algorithms that have this characteristic — easy in one direction, hard the other — are known as <a href="https://en.wikipedia.org/wiki/Trapdoor_function">Trap door Functions</a>. Finding a good Trapdoor Function is critical to making a secure public key cryptographic system. Simplistically: the bigger the spread between the difficulty of going one direction in a Trapdoor Function and going the other, the more secure a cryptographic system based on it will be.</p>
 	<h3>A toy RSA algorithm</h3>
@@ -54,7 +54,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OEzdcj0gvuqtjkVW4rKpB/a7a03b947d33ea65b89836f092708787/image03.jpg" alt="" class="kg-image" width="620" height="388" loading="lazy">
 
 	</figure>
-	<p>"Find factors, get money" - Notorious <a href="http://people.epfl.ch/thorsten.kleinjung">T.K.G.</a> (Reuters)</p>
+	<p><i><sub>"Find factors, get money" - Notorious </sub></i><a href="http://people.epfl.ch/thorsten.kleinjung"><i><sub>T.K.G.</sub></i></a><i><sub> (Reuters)</sub></i></p>
 	<p>That said, factoring is not the hardest problem on a bit for bit basis. Specialized algorithms like the <a href="http://mathworld.wolfram.com/QuadraticSieve.html">Quadratic Sieve</a> and the <a href="https://en.wikipedia.org/wiki/General_number_field_sieve">General Number Field Sieve</a> were created to tackle the problem of prime factorization and have been moderately successful. These algorithms are faster and less computationally intensive than the naive approach of just guessing pairs of known primes.</p>
 	<p>These factoring algorithms get more efficient as the size of the numbers being factored get larger. The gap between the difficulty of factoring large numbers and multiplying large numbers is shrinking as the number (i.e. the key's bit length) gets larger. As the resources available to decrypt numbers increase, the size of the keys need to grow even faster. This is not a sustainable situation for mobile and low-powered devices that have limited computational power. The gap between factoring and multiplying is not sustainable in the long term.</p>
 	<p>All this means is that RSA is not the ideal system for the future of cryptography. In an ideal Trapdoor Function, the easy way and the hard way get harder at the same rate with respect to the size of the numbers in question. We need a public key system based on a better Trapdoor.</p>
@@ -123,16 +123,22 @@
 	<p>If you are accessing the HTTPS version of this blog (<a href="https://blog.cloudflare.com">https://blog.cloudflare.com</a>) from a recent enough version of Chrome or Firefox, your browser is using elliptic curve cryptography. You can check this yourself. In Chrome, you can click on the lock in the address bar and go to the connection tab to see which cryptographic algorithms were used in establishing the secure connection. Clicking on the lock in the Chrome 30 should show the following image.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39u0hRQg30e0HoVq4XGhUm/f2623be40b0dfd1817c0260034696a19/image08.png" alt="" class="kg-image" width="306" height="433" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39u0hRQg30e0HoVq4XGhUm/10cf64a764c935c4e13144a36f1edd78/Screenshot_2024-09-03_at_5.23.03_PM.png" alt="" class="kg-image" width="1306" height="778" loading="lazy">
 
 	</figure>
 	<p>The relevant portions of this text to this discussion is ECDHE_RSA. ECDHE stands for Elliptic Curve Diffie Hellman Ephemeral and is a key exchange mechanism based on elliptic curves. This algorithm is used by CloudFlare to provide <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">perfect forward secrecy</a> in SSL. The RSA component means that RSA is used to prove the identity of the server.</p>
 	<p>We use RSA because CloudFlare's SSL certificate is bound to an RSA key pair. Modern browsers also support certificates based on elliptic curves. If CloudFlare's SSL certificate was an elliptic curve certificate this part of the page would state ECDHE_ECDSA. The proof of the identity of the server would be done using ECDSA, the Elliptic Curve Digital Signature Algorithm.</p>
 	<p>CloudFlare's ECC curve for ECDHE (This is the same curve used by Google.com):</p>
-	<p>max: 115792089210356248762697446949407573530086143415290314195533631308867097853951curve: y² = x³ + ax + ba = 115792089210356248762697446949407573530086143415290314195533631308867097853948b = 41058363725152142129326129780047268409114441015993725554835256314039467401291</p>
+	<pre class="language-undefined"><code class="language-undefined">max: 115792089210356248762697446949407573530086143415290314195533631308867097853951  
+curve: y² = x³ + ax + b  
+a = 115792089210356248762697446949407573530086143415290314195533631308867097853948  
+b = 41058363725152142129326129780047268409114441015993725554835256314039467401291</code></pre>
+	<p></p>
 	<p>The performance improvement of ECDSA over RSA is dramatic. Even with an older version of OpenSSL that does not have assembly-optimized elliptic curve code, an ECDSA signature with a 256-bit key is over 20x faster than an RSA signature with a 2,048-bit key.</p>
 	<p>On a MacBook Pro with OpenSSL 0.9.8, the "speed" benchmark returns:</p>
-	<p>Doing 256 bit sign ecdsa's for 10s: 42874 256 bit ECDSA signs in 9.99sDoing 2048 bit private rsa's for 10s: 1864 2048 bit private RSA's in 9.99s</p>
+	<pre class="language-undefined"><code class="language-undefined">Doing 256 bit sign ecdsa's for 10s: 42874 256 bit ECDSA signs in 9.99s  
+Doing 2048 bit private rsa's for 10s: 1864 2048 bit private RSA's in 9.99s</code></pre>
+	<p></p>
 	<p>That's 23x as many signatures using ECDSA as RSA.</p>
 	<p>CloudFlare is constantly looking to improve SSL performance. Just this week, CloudFlare started using an assembly-optimized version of ECC that more than doubles the speed of ECDHE. Using elliptic curve cryptography saves time, power and computational resources for both the server and the browser helping us make the web both faster and more secure.</p>
 	<h3>The downside</h3>
