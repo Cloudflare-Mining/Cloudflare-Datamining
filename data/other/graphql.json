@@ -1548,6 +1548,7 @@
 		"httpHost": "The destination host for the request",
 		"httpStatusCode": "HTTP status code gateway returned to the user. 0 if nothing was returned(e.g client disconnected)",
 		"isIsolated": "Indicates whether this request was made through an isolated link",
+		"privateAppAUD": "Access private app AUD",
 		"quarantined": "Indicates if the request content was quarantined",
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
 		"untrustedCertificateAction": "Action taken when an untrusted origin certificate error occurs",
@@ -3840,6 +3841,10 @@
 		"turnstileAdaptiveGroups": "",
 		"vectorizeQueriesAdaptiveGroups": "",
 		"vectorizeStorageAdaptiveGroups": "",
+		"vectorizeV2OperationsAdaptiveGroups": "",
+		"vectorizeV2QueriesAdaptiveGroups": "",
+		"vectorizeV2StorageAdaptiveGroups": "",
+		"vectorizeV2WritesAdaptiveGroups": "",
 		"videoBufferEventsAdaptiveGroups": "",
 		"videoPlaybackEventsAdaptiveGroups": "",
 		"videoQualityEventsAdaptiveGroups": "",
@@ -4167,6 +4172,135 @@
 	},
 	"AccountVectorizeStorageAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountVectorizeV2OperationsAdaptiveGroups": {
+		"__description": "Vectorize operations with adaptive sampling",
+		"count": "Total number of Vectorize operations",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountVectorizeV2OperationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Vectorize operation event timestamp, truncated to start of a day",
+		"datetime": "Vectorize operation event timestamp",
+		"datetimeHour": "Vectorize operation event timestamp, truncated to start of hour",
+		"datetimeMinute": "Vectorize operation event timestamp, truncated to start of minute",
+		"indexName": "Name of a Vectorize index",
+		"operation": "The type of Vectorize operation",
+		"requestStatus": "Request status. One of [2xx, 4xx, 5xx, unknown]"
+	},
+	"AccountVectorizeV2OperationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVectorizeV2OperationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountVectorizeV2QueriesAdaptiveGroups": {
+		"__description": "Vectorize queries with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"count": "Total number of Vectorize queries",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountVectorizeV2QueriesAdaptiveGroupsAvg": {
+		"__description": "",
+		"requestDurationMs": "Average latency (in milliseconds) of serving a Vectorize query"
+	},
+	"AccountVectorizeV2QueriesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Vectorize queries event timestamp, truncated to start of a day",
+		"datetime": "Vectorize queries event timestamp",
+		"datetimeHour": "Vectorize queries event timestamp, truncated to start of hour",
+		"datetimeMinute": "Vectorize queries event timestamp, truncated to start of minute",
+		"indexName": "Name of a Vectorize index",
+		"operation": "The type of Vectorize operation",
+		"requestStatus": "Request status. One of [2xx, 4xx, 5xx, unknown]"
+	},
+	"AccountVectorizeV2QueriesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVectorizeV2QueriesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountVectorizeV2QueriesAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"requestDurationMsP25": "25th percentile latency (milliseconds)",
+		"requestDurationMsP50": "50th percentile latency (milliseconds)",
+		"requestDurationMsP75": "75th percentile latency (milliseconds)",
+		"requestDurationMsP95": "95th percentile latency (milliseconds)",
+		"requestDurationMsP99": "99th percentile latency (milliseconds)"
+	},
+	"AccountVectorizeV2QueriesAdaptiveGroupsSum": {
+		"__description": "",
+		"queriedVectorDimensions": "The number of queried vector dimensions in Vectorize over the queried time period.",
+		"requestDurationMs": "Total latency (in milliseconds) of serving Vectorize queries over the queried time period",
+		"servedVectorCount": "The number of vectors served in Vectorize queries over the queried time period."
+	},
+	"AccountVectorizeV2StorageAdaptiveGroups": {
+		"__description": "Vectorize storage with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountVectorizeV2StorageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Vectorize storage event timestamp, truncated to start of a day",
+		"datetime": "Vectorize storage event timestamp",
+		"datetimeHour": "Vectorize storage event timestamp, truncated to start of hour",
+		"datetimeMinute": "Vectorize storage event timestamp, truncated to start of minute",
+		"indexName": "Name of a Vectorize index"
+	},
+	"AccountVectorizeV2StorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVectorizeV2StorageAdaptiveGroupsMax": {
+		"__description": "",
+		"storedVectorDimensions": "The maximum number of stored vector dimensions in Vectorize over the queried time period.",
+		"vectorCount": "The maximum number of stored vectors in Vectorize over the queried time period."
+	},
+	"AccountVectorizeV2StorageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountVectorizeV2WritesAdaptiveGroups": {
+		"__description": "Vectorize writes with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"count": "Total number of Vectorize writes",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountVectorizeV2WritesAdaptiveGroupsAvg": {
+		"__description": "",
+		"requestDurationMs": "Average latency (in milliseconds) of serving a Vectorize write"
+	},
+	"AccountVectorizeV2WritesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Vectorize write event timestamp, truncated to start of a day",
+		"datetime": "Vectorize write event timestamp",
+		"datetimeHour": "Vectorize write event timestamp, truncated to start of hour",
+		"datetimeMinute": "Vectorize write event timestamp, truncated to start of minute",
+		"indexName": "Name of a Vectorize index",
+		"operation": "The type of Vectorize operation",
+		"requestStatus": "Request status. One of [2xx, 4xx, 5xx, unknown]"
+	},
+	"AccountVectorizeV2WritesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVectorizeV2WritesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountVectorizeV2WritesAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"requestDurationMsP25": "25th percentile latency (milliseconds)",
+		"requestDurationMsP50": "50th percentile latency (milliseconds)",
+		"requestDurationMsP75": "75th percentile latency (milliseconds)",
+		"requestDurationMsP95": "95th percentile latency (milliseconds)",
+		"requestDurationMsP99": "99th percentile latency (milliseconds)"
+	},
+	"AccountVectorizeV2WritesAdaptiveGroupsSum": {
+		"__description": "",
+		"addedVectorCount": "The number of vectors added in Vectorize writes over the queried time period.",
+		"deletedVectorCount": "The number of vectors deleted in Vectorize writes over the queried time period.",
+		"requestDurationMs": "Total latency (in milliseconds) of serving Vectorize writes over the queried time period"
 	},
 	"AccountVideoBufferEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
@@ -7042,6 +7176,10 @@
 		"turnstileAdaptiveGroups": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
 		"vectorizeQueriesAdaptiveGroups": "Beta. Vectorize usage with adaptive sampling",
 		"vectorizeStorageAdaptiveGroups": "Beta. Vectorize storage with adaptive sampling",
+		"vectorizeV2OperationsAdaptiveGroups": "Vectorize operations with adaptive sampling",
+		"vectorizeV2QueriesAdaptiveGroups": "Vectorize queries with adaptive sampling",
+		"vectorizeV2StorageAdaptiveGroups": "Vectorize storage with adaptive sampling",
+		"vectorizeV2WritesAdaptiveGroups": "Vectorize writes with adaptive sampling",
 		"videoBufferEventsAdaptiveGroups": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
 		"videoPlaybackEventsAdaptiveGroups": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"videoQualityEventsAdaptiveGroups": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
