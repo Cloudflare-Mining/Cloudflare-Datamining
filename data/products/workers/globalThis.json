@@ -2244,6 +2244,26 @@
 			}
 		},
 		"D1_BINDING": {
+			"alwaysPrimarySession": {
+				"commitTokenOrConstraint": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"fetcher": {
+					"connect": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"fetch": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					}
+				}
+			},
 			"fetcher": {
 				"connect": {
 					"__proto": "function",
@@ -2260,6 +2280,26 @@
 			}
 		},
 		"D1_BINDING_EXPERIMENTAL": {
+			"alwaysPrimarySession": {
+				"commitTokenOrConstraint": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"fetcher": {
+					"connect": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"fetch": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					}
+				}
+			},
 			"fetcher": {
 				"connect": {
 					"__proto": "function",
@@ -11323,6 +11363,20 @@
 				"name": "string",
 				"_prototype": {}
 			},
+			"BrotliCompress": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"BrotliDecompress": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
 			"createGzip": {
 				"__proto": "function",
 				"__type": "function",
@@ -11366,6 +11420,20 @@
 				"_prototype": {}
 			},
 			"createUnzip": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createBrotliCompress": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createBrotliDecompress": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
