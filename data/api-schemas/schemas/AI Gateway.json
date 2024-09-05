@@ -501,14 +501,28 @@
 			},
 			{
 				"in": "query",
-				"name": "min_tokens",
+				"name": "min_tokens_in",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
 				"in": "query",
-				"name": "max_tokens",
+				"name": "max_tokens_in",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "min_tokens_out",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "max_tokens_out",
 				"schema": {
 					"type": "number"
 				}
@@ -525,6 +539,32 @@
 				"name": "max_duration",
 				"schema": {
 					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "feedback",
+				"schema": {
+					"anyOf": [
+						{
+							"enum": [
+								-1
+							],
+							"type": "number"
+						},
+						{
+							"enum": [
+								0
+							],
+							"type": "number"
+						},
+						{
+							"enum": [
+								1
+							],
+							"type": "number"
+						}
+					]
 				}
 			},
 			{
@@ -682,7 +722,10 @@
 										"max_duration": {
 											"type": "number"
 										},
-										"max_tokens": {
+										"max_tokens_in": {
+											"type": "number"
+										},
+										"max_tokens_out": {
 											"type": "number"
 										},
 										"min_cost": {
@@ -691,7 +734,10 @@
 										"min_duration": {
 											"type": "number"
 										},
-										"min_tokens": {
+										"min_tokens_in": {
+											"type": "number"
+										},
+										"min_tokens_out": {
 											"type": "number"
 										},
 										"page": {
@@ -704,18 +750,6 @@
 											"type": "number"
 										}
 									},
-									"required": [
-										"count",
-										"page",
-										"per_page",
-										"total_count",
-										"min_cost",
-										"max_cost",
-										"min_tokens",
-										"max_tokens",
-										"min_duration",
-										"max_duration"
-									],
 									"type": "object"
 								},
 								"success": {

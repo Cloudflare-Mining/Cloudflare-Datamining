@@ -719,6 +719,13 @@
 																},
 																"type": "array"
 															},
+															"pop_name": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"product": {
 																"description": "Used for configuring billing_usage_alert",
 																"items": {
@@ -1296,6 +1303,13 @@
 																		"type": "array"
 																	},
 																	"pool_id": {
+																		"description": "Usage depends on specific alert type",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"pop_name": {
 																		"description": "Usage depends on specific alert type",
 																		"items": {
 																			"type": "string"
@@ -1976,6 +1990,13 @@
 															},
 															"type": "array"
 														},
+														"pop_name": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"product": {
 															"description": "Used for configuring billing_usage_alert",
 															"items": {
@@ -2521,6 +2542,13 @@
 																	"type": "array"
 																},
 																"pool_id": {
+																	"description": "Usage depends on specific alert type",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"pop_name": {
 																	"description": "Usage depends on specific alert type",
 																	"items": {
 																		"type": "string"
@@ -3105,6 +3133,13 @@
 										"type": "array"
 									},
 									"pool_id": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"pop_name": {
 										"description": "Usage depends on specific alert type",
 										"items": {
 											"type": "string"
@@ -3878,6 +3913,13 @@
 										"type": "array"
 									},
 									"pool_id": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"pop_name": {
 										"description": "Usage depends on specific alert type",
 										"items": {
 											"type": "string"
