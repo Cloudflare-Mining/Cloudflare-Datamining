@@ -210,11 +210,11 @@
 				"in": "query",
 				"name": "order_by_direction",
 				"schema": {
-					"default": "ASC",
+					"default": "asc",
 					"description": "Order By Direction",
 					"enum": [
-						"ASC",
-						"DESC"
+						"asc",
+						"desc"
 					],
 					"type": "string"
 				}
