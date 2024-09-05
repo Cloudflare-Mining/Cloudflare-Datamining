@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><span style="font-size: 12pt;"><strong>Available Locations: San Francisco, Washington D.C., or </strong>Austin Texas</span></h3>
+<h3><span style="font-size: 12pt;"><strong>Available Locations: Austin, TX, San Francisco, CA, Washington, DC, Lisbon, Portugal, and London, United Kingdom&nbsp;&nbsp;</strong></span></h3>
 <p><strong>About the role</strong></p>
 <p>As the Sr. Manager of Customer Assurance, you'll have the opportunity to develop, mature and operate a global customer assurance function. Your team will be the center of providing trust to our customers throughout the sales lifecycle. This role will work directly with our customers and internal stakeholders to demonstrate Cloudflare’s security posture and how we align with industry best practices and applicable laws.</p>
 <p><strong>What you'll do</strong></p>

@@ -31,6 +31,8 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
+				"Lisbon, Portugal",
+				"London, UK",
 				"San Francisco, US",
 				"Washington DC, US"
 			],
@@ -38,7 +40,7 @@
 		}
 	],
 	"id": 6193384,
-	"updated_at": "2024-08-26T13:26:03-04:00",
+	"updated_at": "2024-09-05T17:25:06-04:00",
 	"requisition_id": "462",
 	"title": "Sr. Manager, Security Customer Assurance",
 	"departments": [
@@ -58,6 +60,13 @@
 			"parent_id": 48752
 		},
 		{
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
 			"id": 19991,
 			"name": "San Francisco, CA",
 			"location": "San Francisco, CA, United States",
@@ -70,6 +79,13 @@
 			"location": "Washington, DC, United States",
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
 		}
 	]
 }
