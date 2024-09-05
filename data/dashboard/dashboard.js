@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "62d118b9-bbc4-5097-b19b-7bcbf7356002")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "4cfbe84d-ba93-5444-b3b8-824edda6c91c")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -129,10 +129,10 @@
 						n.g.build = V({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "8d72337651518517af38e4f5f495e60469c1fc7c",
-							dashVersion: "26864242",
+							commit: "9bedc6bff6815d6d78e3ec02ede5ae2b501954ff",
+							dashVersion: "26904969",
 							env: "production",
-							builtAt: 1725475079948,
+							builtAt: 1725561709647,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -449,7 +449,7 @@
     </style>
     <div class="preview-banner">
       <p>You are currently on a preview for branch: <span class="preview-banner-branch">${(C=window.build)===null||C===void 0?void 0:C.branch}</span>.</p>
-      <a href="/version?hash=current">Click here to go to the live dashboard deployment</a>
+      <a href="${window.location.href}?deploymentPreview=current">Click here to go to the live dashboard deployment</a>
     </div>` : "";
 					return L + W
 				},
@@ -1024,7 +1024,7 @@
 			async function C(L, W, k, A, Q, Y) {
 				Y.start();
 				const V = m(L),
-					H = await (await Promise.all([n.e(32375), n.e(72019), n.e(78839), n.e(7484), n.e(72775)]).then(n.bind(n, "../react/app/components/DeepLink/resolvers/index.ts"))).default(),
+					H = await (await Promise.all([n.e(32375), n.e(72019), n.e(78839), n.e(60091), n.e(57505), n.e(72775)]).then(n.bind(n, "../react/app/components/DeepLink/resolvers/index.ts"))).default(),
 					F = {};
 				let $ = "";
 				for (const [w, I] of V.entries())
@@ -6003,7 +6003,7 @@
 			var je = n("../react/app/components/Persistence/index.tsx"),
 				Ne = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Be = n("../react/app/components/LoadingSuspense.tsx");
-			const $e = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(26677), n.e(5668), n.e(83024), n.e(7484), n.e(39760), n.e(60734), n.e(40758), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const $e = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(25276), n.e(5668), n.e(60091), n.e(88035), n.e(39760), n.e(60734), n.e(57505), n.e(40758), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Fe = () => o().createElement(Be.Z, null, o().createElement($e, null)),
 				De = n("../libs/init/loading.ts");
 			const re = () => (e.useEffect(() => De.s, []), null);
@@ -6065,8 +6065,8 @@
 						devPanelEnabled: J
 					}
 				},
-				Ie = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(26677), n.e(14696), n.e(82869), n.e(83024), n.e(7484), n.e(39760), n.e(60734), n.e(40758), n.e(38950), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				Ue = o().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(1325), n.e(38860), n.e(14696), n.e(26337), n.e(60734), n.e(69088), n.e(38950), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				Ie = o().lazy(() => Promise.all([n.e(1325), n.e(2480), n.e(10008), n.e(56310), n.e(71860), n.e(38860), n.e(94012), n.e(72019), n.e(25276), n.e(14696), n.e(41386), n.e(60091), n.e(88035), n.e(39760), n.e(60734), n.e(57505), n.e(40758), n.e(38950), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Ue = o().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(1325), n.e(38860), n.e(14696), n.e(26337), n.e(60091), n.e(60734), n.e(69088), n.e(38950), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var We = ({
 					userIsAuthed: _
 				}) => {
@@ -13382,4 +13382,4 @@
 	}
 ]);
 
-//# debugId=62d118b9-bbc4-5097-b19b-7bcbf7356002
+//# debugId=4cfbe84d-ba93-5444-b3b8-824edda6c91c
