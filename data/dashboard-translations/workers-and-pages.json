@@ -225,6 +225,7 @@
 	"workers_and_pages.rotate_secret_description": "This value is an encrypted Secret and is no longer viewable. To update the value you'll need to rotate this secret.",
 	"workers_and_pages.rotating_automatic_encryption": "This value will be automatically encrypted",
 	"workers_and_pages.variables.empty_state": "Configure API tokens and other runtime variables",
+	"workers_and_pages.variables.empty_state.assets_only": "Variables cannot be added to a Worker that only has static assets. <0>Learn more</0>",
 	"workers_and_pages.update_wrangler_toml_tip": "Update your **wrangler.toml** file with these changes to keep your local development environment in sync",
 	"workers_and_pages.project_update_take_effect_on_next_deploy": "This change will take effect on the next deployment.",
 	"workers_and_pages.project_update_take_effect_immediately": "This change will take effect immediately.",
@@ -234,6 +235,7 @@
 	"workers_and_pages.bindings.description": "Define the set of resources available to your Worker",
 	"workers_and_pages.bindings.pages.description": "Define the set of resources available to your <0>Pages Function</0>",
 	"workers_and_pages.bindings.empty_state": "Configure ways to interact with storage, databases, AI and more from your Worker",
+	"workers_and_pages.bindings.empty_state.assets_only": "Bindings cannot be added to a Worker that only has static assets. <0>Learn more</0>",
 	"workers_and_pages.bindings.add_directive": "Add a resource binding",
 	"workers_and_pages.bindings.add_directive.workers_description": "Choose a resource to bind to this Worker",
 	"workers_and_pages.bindings.add_directive.pages_description": "Choose a resource to bind to your Pages Functions",
@@ -335,6 +337,7 @@
 	"workers_and_pages.trigger_events.description": "Define the events that invoke your Worker",
 	"workers_and_pages.trigger_events.empty_state": "Configure ways to invoke your Worker through scheduled cron jobs and messaging events",
 	"workers_and_pages.trigger_events.delete_schedule_trigger": "If you delete this trigger, the Worker will no longer execute <1>%{schedule}</1>.",
+	"workers_and_pages.trigger_events.empty_state.assets_only": "Triggers cannot be added to a Worker that only has static assets. <0>Learn more</0>",
 	"workers_and_pages.trigger_type.service": "Service",
 	"workers_and_pages.trigger_type.cron": "Cron",
 	"workers_and_pages.trigger_type.queue": "Queue",
@@ -462,5 +465,10 @@
 	"workers_and_pages.rename_project.error.name_in_use": "A project with that name already exists. Choose a different name",
 	"workers_and_pages.rename_worker.available_description": "%{workerName}.%{subdomain}.workers.dev subdomain is currently available. It may take a few minutes for your Worker to be available on this new subdomain.",
 	"workers_and_pages.delete_and_deploy": "Delete & Deploy",
-	"workers_and_pages.delete_and_save": "Delete & Save"
+	"workers_and_pages.delete_and_save": "Delete & Save",
+	"workers_and_pages.assets.no_path_routes": "Workers which have static assets cannot be routed on a URL which has a path component. <0>Learn more.</0>",
+	"workers_and_pages.assets.errors.route_has_path": "Update the route to replace \"%{pathname}\" with \"/*\".",
+	"workers_and_pages.assets.errors.route_bare_domain": "Update the route to end with \"/*\".",
+	"workers_and_pages.assets.disabled_warning": "The latest version of this Worker only has static assets. Metrics, Logs, Integrations, and most Settings require a Worker script and are therefore unavailable.",
+	"workers_and_pages.assets.edit_code_disabled": "Editing Workers which have static assets is not currently supported. <0>Learn more.</0>"
 }

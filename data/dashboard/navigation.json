@@ -467,6 +467,14 @@
 					"hasPermission": null
 				},
 				{
+					"title": "navigation.account.workers.workflows",
+					"url": "/workers/workflows",
+					"labels": [
+						"beta"
+					],
+					"hasPermission": null
+				},
+				{
 					"title": "navigation.account.workers.queues",
 					"url": "/workers/queues",
 					"labels": [
@@ -491,6 +499,14 @@
 				{
 					"title": "navigation.account.workers.hyperdrive",
 					"url": "/workers/hyperdrive",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.workers.pipelines",
+					"url": "/workers/pipelines",
+					"labels": [
+						"beta"
+					],
 					"hasPermission": null
 				},
 				{
@@ -528,6 +544,14 @@
 				{
 					"title": "navigation.account.workers.hyperdrive",
 					"url": "/workers/hyperdrive",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.workers.pipelines",
+					"url": "/workers/pipelines",
+					"labels": [
+						"beta"
+					],
 					"hasPermission": null
 				},
 				{
@@ -706,6 +730,15 @@
 					"title": "navigation.account.configurations",
 					"url": "/configurations",
 					"testId": "account-homepage-configurations",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.shared_configurations",
+					"url": "/shared-configurations",
+					"testId": "shared-config-link",
+					"labels": [
+						"alpha"
+					],
 					"hasPermission": null
 				},
 				{
