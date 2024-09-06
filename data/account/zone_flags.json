@@ -22,6 +22,7 @@
 	},
 	"CloudflareImages": {
 		"beta_access": false,
+		"free_transformations": false,
 		"sourcing_kit_enabled": true,
 		"sourcing_kit_waitlist": true,
 		"unified_images_enabled": false
@@ -174,7 +175,8 @@
 		"example_flipper_flag": false
 	},
 	"cloudflare_images": {
-		"early_release_access": true
+		"early_release_access": true,
+		"free_transformations": false
 	},
 	"ddos_protection": {
 		"advanced_tcp_protection": false,
