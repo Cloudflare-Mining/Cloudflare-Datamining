@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="font-size: 10pt;"><strong>Available Location: Lisbon, Portugal; London, UK; Singapore&nbsp;</strong></span></p>
+<p><span style="font-size: 10pt;"><strong>Available Location: Lisbon, Portugal; London, UK; Singapore or Remote US&nbsp;</strong></span></p>
 <p><span style="font-size: 10pt;"><strong>About the Role</strong></span></p>
 <p><span style="font-size: 10pt;">We are seeking a Data Center Design Engineer to design Cloudflare’s pending and future infrastructure deployments for generational improvement in cost, quality, and speed of deployment. We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and has experience implementing and refining data center design best practices in a high growth environment.&nbsp; Getting stuff done is a must!</span></p>
 <p><span style="font-size: 10pt;">The Data Center Strategy team is part of Cloudflare’s global Infrastructure (INF) team. The INF team grows and manages Cloudflare’s global data center/PoP footprint, enabling Cloudflare’s tremendous growth with compute, network, and data center infrastructure, utilizing an extensive range of global partner vendors.&nbsp;&nbsp;</span></p>
