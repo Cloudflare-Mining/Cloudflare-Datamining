@@ -604,6 +604,10 @@
 																		"example": true,
 																		"type": "boolean"
 																	},
+																	"settings": {
+																		"description": "Settings for the DNS record.",
+																		"type": "object"
+																	},
 																	"tags": {
 																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
@@ -773,7 +777,7 @@
 																	{
 																		"properties": {
 																			"content": {
-																				"description": "A valid hostname. Must not match the record's name.",
+																				"description": "A valid domain name. Must not match the record's name.",
 																				"type": "string"
 																			},
 																			"type": {
@@ -1052,17 +1056,27 @@
 																	{
 																		"properties": {
 																			"content": {
-																				"description": "A valid mail server hostname.",
-																				"example": "mx.example.com",
-																				"format": "hostname",
+																				"description": "Formatted MX content. See 'data' to set MX properties.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
-																			"priority": {
-																				"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																				"example": 10,
-																				"maximum": 65535,
-																				"minimum": 0,
-																				"type": "number"
+																			"data": {
+																				"description": "Components of a MX record.",
+																				"properties": {
+																					"priority": {
+																						"description": "The record priority.",
+																						"example": 20,
+																						"maximum": 65535,
+																						"minimum": 0,
+																						"type": "number"
+																					},
+																					"target": {
+																						"description": "A valid mail server domain name.",
+																						"example": "mx.example.com",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
 																			},
 																			"type": {
 																				"description": "Record type.",
@@ -1263,9 +1277,8 @@
 																						"type": "number"
 																					},
 																					"target": {
-																						"description": "A valid hostname.",
+																						"description": "A valid domain name.",
 																						"example": "example.com",
-																						"format": "hostname",
 																						"type": "string"
 																					},
 																					"weight": {
@@ -1454,6 +1467,13 @@
 																			"data": {
 																				"description": "Components of a URI record.",
 																				"properties": {
+																					"priority": {
+																						"description": "The record priority.",
+																						"example": 20,
+																						"maximum": 65535,
+																						"minimum": 0,
+																						"type": "number"
+																					},
 																					"target": {
 																						"description": "The record content.",
 																						"example": "http://example.com/example.html",
@@ -1468,13 +1488,6 @@
 																					}
 																				},
 																				"type": "object"
-																			},
-																			"priority": {
-																				"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																				"example": 10,
-																				"maximum": 65535,
-																				"minimum": 0,
-																				"type": "number"
 																			},
 																			"type": {
 																				"description": "Record type.",
@@ -1518,13 +1531,6 @@
 															},
 															"meta": {
 																"description": "Extra Cloudflare-specific information about the record.",
-																"properties": {
-																	"auto_added": {
-																		"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																		"example": true,
-																		"type": "boolean"
-																	}
-																},
 																"readOnly": true,
 																"type": "object"
 															},
@@ -1565,6 +1571,7 @@
 													"data",
 													"proxied",
 													"ttl",
+													"settings",
 													"comment",
 													"tags"
 												],
@@ -1708,6 +1715,10 @@
 																				"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																				"example": true,
 																				"type": "boolean"
+																			},
+																			"settings": {
+																				"description": "Settings for the DNS record.",
+																				"type": "object"
 																			},
 																			"tags": {
 																				"default": [],
@@ -1878,7 +1889,7 @@
 																			{
 																				"properties": {
 																					"content": {
-																						"description": "A valid hostname. Must not match the record's name.",
+																						"description": "A valid domain name. Must not match the record's name.",
 																						"type": "string"
 																					},
 																					"type": {
@@ -2157,17 +2168,27 @@
 																			{
 																				"properties": {
 																					"content": {
-																						"description": "A valid mail server hostname.",
-																						"example": "mx.example.com",
-																						"format": "hostname",
+																						"description": "Formatted MX content. See 'data' to set MX properties.",
+																						"readOnly": true,
 																						"type": "string"
 																					},
-																					"priority": {
-																						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																						"example": 10,
-																						"maximum": 65535,
-																						"minimum": 0,
-																						"type": "number"
+																					"data": {
+																						"description": "Components of a MX record.",
+																						"properties": {
+																							"priority": {
+																								"description": "The record priority.",
+																								"example": 20,
+																								"maximum": 65535,
+																								"minimum": 0,
+																								"type": "number"
+																							},
+																							"target": {
+																								"description": "A valid mail server domain name.",
+																								"example": "mx.example.com",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
 																					},
 																					"type": {
 																						"description": "Record type.",
@@ -2368,9 +2389,8 @@
 																								"type": "number"
 																							},
 																							"target": {
-																								"description": "A valid hostname.",
+																								"description": "A valid domain name.",
 																								"example": "example.com",
-																								"format": "hostname",
 																								"type": "string"
 																							},
 																							"weight": {
@@ -2559,6 +2579,13 @@
 																					"data": {
 																						"description": "Components of a URI record.",
 																						"properties": {
+																							"priority": {
+																								"description": "The record priority.",
+																								"example": 20,
+																								"maximum": 65535,
+																								"minimum": 0,
+																								"type": "number"
+																							},
 																							"target": {
 																								"description": "The record content.",
 																								"example": "http://example.com/example.html",
@@ -2573,13 +2600,6 @@
 																							}
 																						},
 																						"type": "object"
-																					},
-																					"priority": {
-																						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																						"example": 10,
-																						"maximum": 65535,
-																						"minimum": 0,
-																						"type": "number"
 																					},
 																					"type": {
 																						"description": "Record type.",
@@ -2623,13 +2643,6 @@
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
-																		"properties": {
-																			"auto_added": {
-																				"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																				"example": true,
-																				"type": "boolean"
-																			}
-																		},
 																		"readOnly": true,
 																		"type": "object"
 																	},
@@ -2670,6 +2683,7 @@
 															"data",
 															"proxied",
 															"ttl",
+															"settings",
 															"comment",
 															"tags"
 														],
@@ -2918,6 +2932,10 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"settings": {
+																	"description": "Settings for the DNS record.",
+																	"type": "object"
+																},
 																"tags": {
 																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
@@ -3087,7 +3105,7 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name.",
+																			"description": "A valid domain name. Must not match the record's name.",
 																			"type": "string"
 																		},
 																		"type": {
@@ -3366,17 +3384,27 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid mail server hostname.",
-																			"example": "mx.example.com",
-																			"format": "hostname",
+																			"description": "Formatted MX content. See 'data' to set MX properties.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
+																		"data": {
+																			"description": "Components of a MX record.",
+																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
+																				"target": {
+																					"description": "A valid mail server domain name.",
+																					"example": "mx.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -3577,9 +3605,8 @@
 																					"type": "number"
 																				},
 																				"target": {
-																					"description": "A valid hostname.",
+																					"description": "A valid domain name.",
 																					"example": "example.com",
-																					"format": "hostname",
 																					"type": "string"
 																				},
 																				"weight": {
@@ -3768,6 +3795,13 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -3782,13 +3816,6 @@
 																				}
 																			},
 																			"type": "object"
-																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -3832,13 +3859,6 @@
 														},
 														"meta": {
 															"description": "Extra Cloudflare-specific information about the record.",
-															"properties": {
-																"auto_added": {
-																	"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
 															"readOnly": true,
 															"type": "object"
 														},
@@ -3879,6 +3899,7 @@
 												"data",
 												"proxied",
 												"ttl",
+												"settings",
 												"comment",
 												"tags"
 											],
@@ -3990,6 +4011,10 @@
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"settings": {
+																			"description": "Settings for the DNS record.",
+																			"type": "object"
 																		},
 																		"tags": {
 																			"default": [],
@@ -4160,7 +4185,7 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid hostname. Must not match the record's name.",
+																					"description": "A valid domain name. Must not match the record's name.",
 																					"type": "string"
 																				},
 																				"type": {
@@ -4439,17 +4464,27 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid mail server hostname.",
-																					"example": "mx.example.com",
-																					"format": "hostname",
+																					"description": "Formatted MX content. See 'data' to set MX properties.",
+																					"readOnly": true,
 																					"type": "string"
 																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
+																				"data": {
+																					"description": "Components of a MX record.",
+																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
+																						"target": {
+																							"description": "A valid mail server domain name.",
+																							"example": "mx.example.com",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -4650,9 +4685,8 @@
 																							"type": "number"
 																						},
 																						"target": {
-																							"description": "A valid hostname.",
+																							"description": "A valid domain name.",
 																							"example": "example.com",
-																							"format": "hostname",
 																							"type": "string"
 																						},
 																						"weight": {
@@ -4841,6 +4875,13 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -4855,13 +4896,6 @@
 																						}
 																					},
 																					"type": "object"
-																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -4905,13 +4939,6 @@
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
-																	"properties": {
-																		"auto_added": {
-																			"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																			"example": true,
-																			"type": "boolean"
-																		}
-																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
@@ -4952,6 +4979,7 @@
 														"data",
 														"proxied",
 														"ttl",
+														"settings",
 														"comment",
 														"tags"
 													],
@@ -5272,6 +5300,10 @@
 												"example": true,
 												"type": "boolean"
 											},
+											"settings": {
+												"description": "Settings for the DNS record.",
+												"type": "object"
+											},
 											"tags": {
 												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
@@ -5441,7 +5473,7 @@
 											{
 												"properties": {
 													"content": {
-														"description": "A valid hostname. Must not match the record's name.",
+														"description": "A valid domain name. Must not match the record's name.",
 														"type": "string"
 													},
 													"type": {
@@ -5720,17 +5752,27 @@
 											{
 												"properties": {
 													"content": {
-														"description": "A valid mail server hostname.",
-														"example": "mx.example.com",
-														"format": "hostname",
+														"description": "Formatted MX content. See 'data' to set MX properties.",
+														"readOnly": true,
 														"type": "string"
 													},
-													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-														"example": 10,
-														"maximum": 65535,
-														"minimum": 0,
-														"type": "number"
+													"data": {
+														"description": "Components of a MX record.",
+														"properties": {
+															"priority": {
+																"description": "The record priority.",
+																"example": 20,
+																"maximum": 65535,
+																"minimum": 0,
+																"type": "number"
+															},
+															"target": {
+																"description": "A valid mail server domain name.",
+																"example": "mx.example.com",
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
 													"type": {
 														"description": "Record type.",
@@ -5931,9 +5973,8 @@
 																"type": "number"
 															},
 															"target": {
-																"description": "A valid hostname.",
+																"description": "A valid domain name.",
 																"example": "example.com",
-																"format": "hostname",
 																"type": "string"
 															},
 															"weight": {
@@ -6122,6 +6163,13 @@
 													"data": {
 														"description": "Components of a URI record.",
 														"properties": {
+															"priority": {
+																"description": "The record priority.",
+																"example": 20,
+																"maximum": 65535,
+																"minimum": 0,
+																"type": "number"
+															},
 															"target": {
 																"description": "The record content.",
 																"example": "http://example.com/example.html",
@@ -6136,13 +6184,6 @@
 															}
 														},
 														"type": "object"
-													},
-													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-														"example": 10,
-														"maximum": 65535,
-														"minimum": 0,
-														"type": "number"
 													},
 													"type": {
 														"description": "Record type.",
@@ -6265,6 +6306,10 @@
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": true,
 																	"type": "boolean"
+																},
+																"settings": {
+																	"description": "Settings for the DNS record.",
+																	"type": "object"
 																},
 																"tags": {
 																	"default": [],
@@ -6435,7 +6480,7 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name.",
+																			"description": "A valid domain name. Must not match the record's name.",
 																			"type": "string"
 																		},
 																		"type": {
@@ -6714,17 +6759,27 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid mail server hostname.",
-																			"example": "mx.example.com",
-																			"format": "hostname",
+																			"description": "Formatted MX content. See 'data' to set MX properties.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
+																		"data": {
+																			"description": "Components of a MX record.",
+																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
+																				"target": {
+																					"description": "A valid mail server domain name.",
+																					"example": "mx.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -6925,9 +6980,8 @@
 																					"type": "number"
 																				},
 																				"target": {
-																					"description": "A valid hostname.",
+																					"description": "A valid domain name.",
 																					"example": "example.com",
-																					"format": "hostname",
 																					"type": "string"
 																				},
 																				"weight": {
@@ -7116,6 +7170,13 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -7130,13 +7191,6 @@
 																				}
 																			},
 																			"type": "object"
-																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -7180,13 +7234,6 @@
 														},
 														"meta": {
 															"description": "Extra Cloudflare-specific information about the record.",
-															"properties": {
-																"auto_added": {
-																	"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
 															"readOnly": true,
 															"type": "object"
 														},
@@ -7227,6 +7274,7 @@
 												"data",
 												"proxied",
 												"ttl",
+												"settings",
 												"comment",
 												"tags"
 											],
@@ -7338,6 +7386,10 @@
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"settings": {
+																			"description": "Settings for the DNS record.",
+																			"type": "object"
 																		},
 																		"tags": {
 																			"default": [],
@@ -7508,7 +7560,7 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid hostname. Must not match the record's name.",
+																					"description": "A valid domain name. Must not match the record's name.",
 																					"type": "string"
 																				},
 																				"type": {
@@ -7787,17 +7839,27 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid mail server hostname.",
-																					"example": "mx.example.com",
-																					"format": "hostname",
+																					"description": "Formatted MX content. See 'data' to set MX properties.",
+																					"readOnly": true,
 																					"type": "string"
 																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
+																				"data": {
+																					"description": "Components of a MX record.",
+																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
+																						"target": {
+																							"description": "A valid mail server domain name.",
+																							"example": "mx.example.com",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -7998,9 +8060,8 @@
 																							"type": "number"
 																						},
 																						"target": {
-																							"description": "A valid hostname.",
+																							"description": "A valid domain name.",
 																							"example": "example.com",
-																							"format": "hostname",
 																							"type": "string"
 																						},
 																						"weight": {
@@ -8189,6 +8250,13 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -8203,13 +8271,6 @@
 																						}
 																					},
 																					"type": "object"
-																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -8253,13 +8314,6 @@
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
-																	"properties": {
-																		"auto_added": {
-																			"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																			"example": true,
-																			"type": "boolean"
-																		}
-																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
@@ -8300,6 +8354,7 @@
 														"data",
 														"proxied",
 														"ttl",
+														"settings",
 														"comment",
 														"tags"
 													],
@@ -8466,6 +8521,10 @@
 												"example": true,
 												"type": "boolean"
 											},
+											"settings": {
+												"description": "Settings for the DNS record.",
+												"type": "object"
+											},
 											"tags": {
 												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
@@ -8635,7 +8694,7 @@
 											{
 												"properties": {
 													"content": {
-														"description": "A valid hostname. Must not match the record's name.",
+														"description": "A valid domain name. Must not match the record's name.",
 														"type": "string"
 													},
 													"type": {
@@ -8914,17 +8973,27 @@
 											{
 												"properties": {
 													"content": {
-														"description": "A valid mail server hostname.",
-														"example": "mx.example.com",
-														"format": "hostname",
+														"description": "Formatted MX content. See 'data' to set MX properties.",
+														"readOnly": true,
 														"type": "string"
 													},
-													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-														"example": 10,
-														"maximum": 65535,
-														"minimum": 0,
-														"type": "number"
+													"data": {
+														"description": "Components of a MX record.",
+														"properties": {
+															"priority": {
+																"description": "The record priority.",
+																"example": 20,
+																"maximum": 65535,
+																"minimum": 0,
+																"type": "number"
+															},
+															"target": {
+																"description": "A valid mail server domain name.",
+																"example": "mx.example.com",
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
 													"type": {
 														"description": "Record type.",
@@ -9125,9 +9194,8 @@
 																"type": "number"
 															},
 															"target": {
-																"description": "A valid hostname.",
+																"description": "A valid domain name.",
 																"example": "example.com",
-																"format": "hostname",
 																"type": "string"
 															},
 															"weight": {
@@ -9316,6 +9384,13 @@
 													"data": {
 														"description": "Components of a URI record.",
 														"properties": {
+															"priority": {
+																"description": "The record priority.",
+																"example": 20,
+																"maximum": 65535,
+																"minimum": 0,
+																"type": "number"
+															},
 															"target": {
 																"description": "The record content.",
 																"example": "http://example.com/example.html",
@@ -9330,13 +9405,6 @@
 															}
 														},
 														"type": "object"
-													},
-													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-														"example": 10,
-														"maximum": 65535,
-														"minimum": 0,
-														"type": "number"
 													},
 													"type": {
 														"description": "Record type.",
@@ -9465,6 +9533,10 @@
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": true,
 																	"type": "boolean"
+																},
+																"settings": {
+																	"description": "Settings for the DNS record.",
+																	"type": "object"
 																},
 																"tags": {
 																	"default": [],
@@ -9635,7 +9707,7 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name.",
+																			"description": "A valid domain name. Must not match the record's name.",
 																			"type": "string"
 																		},
 																		"type": {
@@ -9914,17 +9986,27 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid mail server hostname.",
-																			"example": "mx.example.com",
-																			"format": "hostname",
+																			"description": "Formatted MX content. See 'data' to set MX properties.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
+																		"data": {
+																			"description": "Components of a MX record.",
+																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
+																				"target": {
+																					"description": "A valid mail server domain name.",
+																					"example": "mx.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -10125,9 +10207,8 @@
 																					"type": "number"
 																				},
 																				"target": {
-																					"description": "A valid hostname.",
+																					"description": "A valid domain name.",
 																					"example": "example.com",
-																					"format": "hostname",
 																					"type": "string"
 																				},
 																				"weight": {
@@ -10316,6 +10397,13 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -10330,13 +10418,6 @@
 																				}
 																			},
 																			"type": "object"
-																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -10380,13 +10461,6 @@
 														},
 														"meta": {
 															"description": "Extra Cloudflare-specific information about the record.",
-															"properties": {
-																"auto_added": {
-																	"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
 															"readOnly": true,
 															"type": "object"
 														},
@@ -10427,6 +10501,7 @@
 												"data",
 												"proxied",
 												"ttl",
+												"settings",
 												"comment",
 												"tags"
 											],
@@ -10538,6 +10613,10 @@
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"settings": {
+																			"description": "Settings for the DNS record.",
+																			"type": "object"
 																		},
 																		"tags": {
 																			"default": [],
@@ -10708,7 +10787,7 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid hostname. Must not match the record's name.",
+																					"description": "A valid domain name. Must not match the record's name.",
 																					"type": "string"
 																				},
 																				"type": {
@@ -10987,17 +11066,27 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid mail server hostname.",
-																					"example": "mx.example.com",
-																					"format": "hostname",
+																					"description": "Formatted MX content. See 'data' to set MX properties.",
+																					"readOnly": true,
 																					"type": "string"
 																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
+																				"data": {
+																					"description": "Components of a MX record.",
+																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
+																						"target": {
+																							"description": "A valid mail server domain name.",
+																							"example": "mx.example.com",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -11198,9 +11287,8 @@
 																							"type": "number"
 																						},
 																						"target": {
-																							"description": "A valid hostname.",
+																							"description": "A valid domain name.",
 																							"example": "example.com",
-																							"format": "hostname",
 																							"type": "string"
 																						},
 																						"weight": {
@@ -11389,6 +11477,13 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -11403,13 +11498,6 @@
 																						}
 																					},
 																					"type": "object"
-																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -11453,13 +11541,6 @@
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
-																	"properties": {
-																		"auto_added": {
-																			"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																			"example": true,
-																			"type": "boolean"
-																		}
-																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
@@ -11500,6 +11581,7 @@
 														"data",
 														"proxied",
 														"ttl",
+														"settings",
 														"comment",
 														"tags"
 													],
@@ -12437,6 +12519,10 @@
 												"example": true,
 												"type": "boolean"
 											},
+											"settings": {
+												"description": "Settings for the DNS record.",
+												"type": "object"
+											},
 											"tags": {
 												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
@@ -12606,7 +12692,7 @@
 											{
 												"properties": {
 													"content": {
-														"description": "A valid hostname. Must not match the record's name.",
+														"description": "A valid domain name. Must not match the record's name.",
 														"type": "string"
 													},
 													"type": {
@@ -12885,17 +12971,27 @@
 											{
 												"properties": {
 													"content": {
-														"description": "A valid mail server hostname.",
-														"example": "mx.example.com",
-														"format": "hostname",
+														"description": "Formatted MX content. See 'data' to set MX properties.",
+														"readOnly": true,
 														"type": "string"
 													},
-													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-														"example": 10,
-														"maximum": 65535,
-														"minimum": 0,
-														"type": "number"
+													"data": {
+														"description": "Components of a MX record.",
+														"properties": {
+															"priority": {
+																"description": "The record priority.",
+																"example": 20,
+																"maximum": 65535,
+																"minimum": 0,
+																"type": "number"
+															},
+															"target": {
+																"description": "A valid mail server domain name.",
+																"example": "mx.example.com",
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
 													"type": {
 														"description": "Record type.",
@@ -13096,9 +13192,8 @@
 																"type": "number"
 															},
 															"target": {
-																"description": "A valid hostname.",
+																"description": "A valid domain name.",
 																"example": "example.com",
-																"format": "hostname",
 																"type": "string"
 															},
 															"weight": {
@@ -13287,6 +13382,13 @@
 													"data": {
 														"description": "Components of a URI record.",
 														"properties": {
+															"priority": {
+																"description": "The record priority.",
+																"example": 20,
+																"maximum": 65535,
+																"minimum": 0,
+																"type": "number"
+															},
 															"target": {
 																"description": "The record content.",
 																"example": "http://example.com/example.html",
@@ -13301,13 +13403,6 @@
 															}
 														},
 														"type": "object"
-													},
-													"priority": {
-														"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-														"example": 10,
-														"maximum": 65535,
-														"minimum": 0,
-														"type": "number"
 													},
 													"type": {
 														"description": "Record type.",
@@ -13436,6 +13531,10 @@
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": true,
 																	"type": "boolean"
+																},
+																"settings": {
+																	"description": "Settings for the DNS record.",
+																	"type": "object"
 																},
 																"tags": {
 																	"default": [],
@@ -13606,7 +13705,7 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name.",
+																			"description": "A valid domain name. Must not match the record's name.",
 																			"type": "string"
 																		},
 																		"type": {
@@ -13885,17 +13984,27 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid mail server hostname.",
-																			"example": "mx.example.com",
-																			"format": "hostname",
+																			"description": "Formatted MX content. See 'data' to set MX properties.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
+																		"data": {
+																			"description": "Components of a MX record.",
+																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
+																				"target": {
+																					"description": "A valid mail server domain name.",
+																					"example": "mx.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -14096,9 +14205,8 @@
 																					"type": "number"
 																				},
 																				"target": {
-																					"description": "A valid hostname.",
+																					"description": "A valid domain name.",
 																					"example": "example.com",
-																					"format": "hostname",
 																					"type": "string"
 																				},
 																				"weight": {
@@ -14287,6 +14395,13 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
+																				"priority": {
+																					"description": "The record priority.",
+																					"example": 20,
+																					"maximum": 65535,
+																					"minimum": 0,
+																					"type": "number"
+																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -14301,13 +14416,6 @@
 																				}
 																			},
 																			"type": "object"
-																		},
-																		"priority": {
-																			"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																			"example": 10,
-																			"maximum": 65535,
-																			"minimum": 0,
-																			"type": "number"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -14351,13 +14459,6 @@
 														},
 														"meta": {
 															"description": "Extra Cloudflare-specific information about the record.",
-															"properties": {
-																"auto_added": {
-																	"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
 															"readOnly": true,
 															"type": "object"
 														},
@@ -14398,6 +14499,7 @@
 												"data",
 												"proxied",
 												"ttl",
+												"settings",
 												"comment",
 												"tags"
 											],
@@ -14509,6 +14611,10 @@
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"settings": {
+																			"description": "Settings for the DNS record.",
+																			"type": "object"
 																		},
 																		"tags": {
 																			"default": [],
@@ -14679,7 +14785,7 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid hostname. Must not match the record's name.",
+																					"description": "A valid domain name. Must not match the record's name.",
 																					"type": "string"
 																				},
 																				"type": {
@@ -14958,17 +15064,27 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "A valid mail server hostname.",
-																					"example": "mx.example.com",
-																					"format": "hostname",
+																					"description": "Formatted MX content. See 'data' to set MX properties.",
+																					"readOnly": true,
 																					"type": "string"
 																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
+																				"data": {
+																					"description": "Components of a MX record.",
+																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
+																						"target": {
+																							"description": "A valid mail server domain name.",
+																							"example": "mx.example.com",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -15169,9 +15285,8 @@
 																							"type": "number"
 																						},
 																						"target": {
-																							"description": "A valid hostname.",
+																							"description": "A valid domain name.",
 																							"example": "example.com",
-																							"format": "hostname",
 																							"type": "string"
 																						},
 																						"weight": {
@@ -15360,6 +15475,13 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
+																						"priority": {
+																							"description": "The record priority.",
+																							"example": 20,
+																							"maximum": 65535,
+																							"minimum": 0,
+																							"type": "number"
+																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -15374,13 +15496,6 @@
 																						}
 																					},
 																					"type": "object"
-																				},
-																				"priority": {
-																					"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -15424,13 +15539,6 @@
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
-																	"properties": {
-																		"auto_added": {
-																			"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
-																			"example": true,
-																			"type": "boolean"
-																		}
-																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
@@ -15471,6 +15579,7 @@
 														"data",
 														"proxied",
 														"ttl",
+														"settings",
 														"comment",
 														"tags"
 													],
