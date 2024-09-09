@@ -2831,6 +2831,13 @@
 																			},
 																			"type": "array"
 																		},
+																		"new_sqlite_classes": {
+																			"description": "A list of classes to create Durable Object namespaces with SQLite from.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"renamed_classes": {
 																			"description": "A list of classes with Durable Object namespaces that were renamed.",
 																			"items": {
@@ -2902,6 +2909,13 @@
 																					},
 																					"new_classes": {
 																						"description": "A list of classes to create Durable Object namespaces from.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"new_sqlite_classes": {
+																						"description": "A list of classes to create Durable Object namespaces with SQLite from.",
 																						"items": {
 																							"type": "string"
 																						},
@@ -3730,6 +3744,13 @@
 																},
 																"type": "array"
 															},
+															"new_sqlite_classes": {
+																"description": "A list of classes to create Durable Object namespaces with SQLite from.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"renamed_classes": {
 																"description": "A list of classes with Durable Object namespaces that were renamed.",
 																"items": {
@@ -3801,6 +3822,13 @@
 																		},
 																		"new_classes": {
 																			"description": "A list of classes to create Durable Object namespaces from.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"new_sqlite_classes": {
+																			"description": "A list of classes to create Durable Object namespaces with SQLite from.",
 																			"items": {
 																				"type": "string"
 																			},
@@ -4353,6 +4381,13 @@
 																			},
 																			"type": "array"
 																		},
+																		"new_sqlite_classes": {
+																			"description": "A list of classes to create Durable Object namespaces with SQLite from.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"renamed_classes": {
 																			"description": "A list of classes with Durable Object namespaces that were renamed.",
 																			"items": {
@@ -4424,6 +4459,13 @@
 																					},
 																					"new_classes": {
 																						"description": "A list of classes to create Durable Object namespaces from.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"new_sqlite_classes": {
+																						"description": "A list of classes to create Durable Object namespaces with SQLite from.",
 																						"items": {
 																							"type": "string"
 																						},
@@ -5035,6 +5077,13 @@
 																		},
 																		"type": "array"
 																	},
+																	"new_sqlite_classes": {
+																		"description": "A list of classes to create Durable Object namespaces with SQLite from.",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"renamed_classes": {
 																		"description": "A list of classes with Durable Object namespaces that were renamed.",
 																		"items": {
@@ -5106,6 +5155,13 @@
 																				},
 																				"new_classes": {
 																					"description": "A list of classes to create Durable Object namespaces from.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"new_sqlite_classes": {
+																					"description": "A list of classes to create Durable Object namespaces with SQLite from.",
 																					"items": {
 																						"type": "string"
 																					},

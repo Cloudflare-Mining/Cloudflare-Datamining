@@ -132,6 +132,9 @@
 													},
 													"script": {
 														"type": "string"
+													},
+													"use_sqlite": {
+														"type": "boolean"
 													}
 												},
 												"type": "object"
@@ -265,6 +268,9 @@
 															},
 															"script": {
 																"type": "string"
+															},
+															"use_sqlite": {
+																"type": "boolean"
 															}
 														},
 														"type": "object"
