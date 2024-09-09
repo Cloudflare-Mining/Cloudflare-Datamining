@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.2.18
+
+### Patch Changes
+
+- @cloudflare/component-link@8.1.2
+
 ## 9.2.17
 
 ### Patch Changes

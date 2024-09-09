@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.15.0
+
+### Minor Changes
+
+- 51c123e741: Update icons to add analytics data
+
 ## 12.14.0
 
 ### Minor Changes

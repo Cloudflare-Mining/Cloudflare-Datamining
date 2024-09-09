@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.0.30
+
+### Patch Changes
+
+- @cloudflare/component-button@8.5.2
+- @cloudflare/component-modal@8.0.26
+- @cloudflare/component-progress@9.0.30
+
 ## 4.0.29
 
 ### Patch Changes
