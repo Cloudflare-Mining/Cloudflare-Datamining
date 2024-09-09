@@ -519,7 +519,8 @@
 										"type": "number"
 									},
 									"height": {
-										"maximum": 1024,
+										"maximum": 2048,
+										"minimum": 256,
 										"type": "integer"
 									},
 									"image": {
@@ -557,7 +558,8 @@
 										"type": "number"
 									},
 									"width": {
-										"maximum": 1024,
+										"maximum": 2048,
+										"minimum": 256,
 										"type": "integer"
 									}
 								},
@@ -605,6 +607,12 @@
 													"type": "number"
 												},
 												"type": "array"
+											},
+											"source_lang": {
+												"type": "string"
+											},
+											"target_lang": {
+												"type": "string"
 											}
 										},
 										"required": [

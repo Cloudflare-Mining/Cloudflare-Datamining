@@ -45,10 +45,13 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"format": "binary",
+									"type": "string"
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -173,10 +176,13 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"format": "binary",
+									"type": "string"
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -301,10 +307,13 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"format": "binary",
+									"type": "string"
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
