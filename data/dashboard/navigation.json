@@ -647,7 +647,7 @@
 			"pages": [
 				{
 					"title": "navigation.account.images.overview",
-					"url": "/images/images",
+					"url": "/images",
 					"hasPermission": null
 				},
 				{
@@ -673,9 +673,13 @@
 					"title": "navigation.account.images.delivery_zones",
 					"url": "/images/delivery-zones",
 					"testId": "sidenav-delivery-zones-link",
-					"labels": [
-						"new"
-					]
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.images.plans",
+					"url": "/images/plans",
+					"testId": "sidenav-plans-link",
+					"hasPermission": null
 				}
 			]
 		},
