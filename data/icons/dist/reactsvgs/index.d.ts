@@ -4,6 +4,7 @@ declare const _default: {
     'account-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'analytics-data': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'api-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     api: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     applications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

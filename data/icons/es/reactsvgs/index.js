@@ -2,6 +2,7 @@ import Dlp from './Dlp';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
+import AnalyticsData from './AnalyticsData';
 import ApiSecurity from './ApiSecurity';
 import Api from './Api';
 import Applications from './Applications';
@@ -179,6 +180,7 @@ export default {
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
+  'analytics-data': AnalyticsData,
   'api-security': ApiSecurity,
   api: Api,
   applications: Applications,
