@@ -1497,7 +1497,7 @@
 													{
 														"properties": {
 															"comment_modified_on": {
-																"description": "When the record comment was last modified.",
+																"description": "When the record comment was last modified. Omitted if there is no comment.",
 																"example": "2024-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
@@ -1541,7 +1541,7 @@
 																"type": "boolean"
 															},
 															"tags_modified_on": {
-																"description": "When the record tags were last modified.",
+																"description": "When the record tags were last modified. Omitted if there are no tags.",
 																"example": "2025-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
@@ -1553,8 +1553,6 @@
 															"proxiable",
 															"created_on",
 															"modified_on",
-															"comment_modified_on",
-															"tags_modified_on",
 															"meta"
 														],
 														"type": "object"
@@ -2604,7 +2602,7 @@
 															{
 																"properties": {
 																	"comment_modified_on": {
-																		"description": "When the record comment was last modified.",
+																		"description": "When the record comment was last modified. Omitted if there is no comment.",
 																		"example": "2024-01-01T05:20:00.12345Z",
 																		"format": "date-time",
 																		"readOnly": true,
@@ -2648,7 +2646,7 @@
 																		"type": "boolean"
 																	},
 																	"tags_modified_on": {
-																		"description": "When the record tags were last modified.",
+																		"description": "When the record tags were last modified. Omitted if there are no tags.",
 																		"example": "2025-01-01T05:20:00.12345Z",
 																		"format": "date-time",
 																		"readOnly": true,
@@ -2660,8 +2658,6 @@
 																	"proxiable",
 																	"created_on",
 																	"modified_on",
-																	"comment_modified_on",
-																	"tags_modified_on",
 																	"meta"
 																],
 																"type": "object"
@@ -3815,7 +3811,7 @@
 												{
 													"properties": {
 														"comment_modified_on": {
-															"description": "When the record comment was last modified.",
+															"description": "When the record comment was last modified. Omitted if there is no comment.",
 															"example": "2024-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -3859,7 +3855,7 @@
 															"type": "boolean"
 														},
 														"tags_modified_on": {
-															"description": "When the record tags were last modified.",
+															"description": "When the record tags were last modified. Omitted if there are no tags.",
 															"example": "2025-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -3871,8 +3867,6 @@
 														"proxiable",
 														"created_on",
 														"modified_on",
-														"comment_modified_on",
-														"tags_modified_on",
 														"meta"
 													],
 													"type": "object"
@@ -4890,7 +4884,7 @@
 														{
 															"properties": {
 																"comment_modified_on": {
-																	"description": "When the record comment was last modified.",
+																	"description": "When the record comment was last modified. Omitted if there is no comment.",
 																	"example": "2024-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -4934,7 +4928,7 @@
 																	"type": "boolean"
 																},
 																"tags_modified_on": {
-																	"description": "When the record tags were last modified.",
+																	"description": "When the record tags were last modified. Omitted if there are no tags.",
 																	"example": "2025-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -4946,8 +4940,6 @@
 																"proxiable",
 																"created_on",
 																"modified_on",
-																"comment_modified_on",
-																"tags_modified_on",
 																"meta"
 															],
 															"type": "object"
@@ -7167,7 +7159,7 @@
 												{
 													"properties": {
 														"comment_modified_on": {
-															"description": "When the record comment was last modified.",
+															"description": "When the record comment was last modified. Omitted if there is no comment.",
 															"example": "2024-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -7211,7 +7203,7 @@
 															"type": "boolean"
 														},
 														"tags_modified_on": {
-															"description": "When the record tags were last modified.",
+															"description": "When the record tags were last modified. Omitted if there are no tags.",
 															"example": "2025-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -7223,8 +7215,6 @@
 														"proxiable",
 														"created_on",
 														"modified_on",
-														"comment_modified_on",
-														"tags_modified_on",
 														"meta"
 													],
 													"type": "object"
@@ -8242,7 +8232,7 @@
 														{
 															"properties": {
 																"comment_modified_on": {
-																	"description": "When the record comment was last modified.",
+																	"description": "When the record comment was last modified. Omitted if there is no comment.",
 																	"example": "2024-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -8286,7 +8276,7 @@
 																	"type": "boolean"
 																},
 																"tags_modified_on": {
-																	"description": "When the record tags were last modified.",
+																	"description": "When the record tags were last modified. Omitted if there are no tags.",
 																	"example": "2025-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -8298,8 +8288,6 @@
 																"proxiable",
 																"created_on",
 																"modified_on",
-																"comment_modified_on",
-																"tags_modified_on",
 																"meta"
 															],
 															"type": "object"
@@ -10371,7 +10359,7 @@
 												{
 													"properties": {
 														"comment_modified_on": {
-															"description": "When the record comment was last modified.",
+															"description": "When the record comment was last modified. Omitted if there is no comment.",
 															"example": "2024-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -10415,7 +10403,7 @@
 															"type": "boolean"
 														},
 														"tags_modified_on": {
-															"description": "When the record tags were last modified.",
+															"description": "When the record tags were last modified. Omitted if there are no tags.",
 															"example": "2025-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -10427,8 +10415,6 @@
 														"proxiable",
 														"created_on",
 														"modified_on",
-														"comment_modified_on",
-														"tags_modified_on",
 														"meta"
 													],
 													"type": "object"
@@ -11446,7 +11432,7 @@
 														{
 															"properties": {
 																"comment_modified_on": {
-																	"description": "When the record comment was last modified.",
+																	"description": "When the record comment was last modified. Omitted if there is no comment.",
 																	"example": "2024-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -11490,7 +11476,7 @@
 																	"type": "boolean"
 																},
 																"tags_modified_on": {
-																	"description": "When the record tags were last modified.",
+																	"description": "When the record tags were last modified. Omitted if there are no tags.",
 																	"example": "2025-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -11502,8 +11488,6 @@
 																"proxiable",
 																"created_on",
 																"modified_on",
-																"comment_modified_on",
-																"tags_modified_on",
 																"meta"
 															],
 															"type": "object"
@@ -14346,7 +14330,7 @@
 												{
 													"properties": {
 														"comment_modified_on": {
-															"description": "When the record comment was last modified.",
+															"description": "When the record comment was last modified. Omitted if there is no comment.",
 															"example": "2024-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -14390,7 +14374,7 @@
 															"type": "boolean"
 														},
 														"tags_modified_on": {
-															"description": "When the record tags were last modified.",
+															"description": "When the record tags were last modified. Omitted if there are no tags.",
 															"example": "2025-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
@@ -14402,8 +14386,6 @@
 														"proxiable",
 														"created_on",
 														"modified_on",
-														"comment_modified_on",
-														"tags_modified_on",
 														"meta"
 													],
 													"type": "object"
@@ -15421,7 +15403,7 @@
 														{
 															"properties": {
 																"comment_modified_on": {
-																	"description": "When the record comment was last modified.",
+																	"description": "When the record comment was last modified. Omitted if there is no comment.",
 																	"example": "2024-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -15465,7 +15447,7 @@
 																	"type": "boolean"
 																},
 																"tags_modified_on": {
-																	"description": "When the record tags were last modified.",
+																	"description": "When the record tags were last modified. Omitted if there are no tags.",
 																	"example": "2025-01-01T05:20:00.12345Z",
 																	"format": "date-time",
 																	"readOnly": true,
@@ -15477,8 +15459,6 @@
 																"proxiable",
 																"created_on",
 																"modified_on",
-																"comment_modified_on",
-																"tags_modified_on",
 																"meta"
 															],
 															"type": "object"
