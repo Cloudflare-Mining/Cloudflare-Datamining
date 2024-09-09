@@ -1,0 +1,192 @@
+{
+	"alias": "sentry-for-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "tail-worker",
+			"build": "./src/tail-worker"
+		}
+	],
+	"category": "workers-observability",
+	"description": "A developer-first error tracking and performance monitoring platform that helps developers learn continuously about their applications.",
+	"docs_url": "https://developers.cloudflare.com/workers/observability/sentry-integration",
+	"flags": [
+		"paid_only"
+	],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/7a6af83a-ddf8-4a8f-68fa-88f46469d000/public",
+	"install_target": "worker",
+	"name": "Sentry",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for creating the Sentry Tail Worker to attach to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Sentry",
+			"type": "oauth",
+			"provider": "sentry",
+			"client_id": "85dc5a6f88846a9f740128844457b67f16030185d2eabad2a85003547132c0e9",
+			"authorize_url": "https://sentry-auth-proxy-production.integrations-platform.cfdata.org/authorize",
+			"grant_type": "authorization_code",
+			"submit_action": "submit-sentry-oauth"
+		},
+		{
+			"title": "Select a project",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "projectUUID",
+					"label": "Projects",
+					"description": "Projects linked to your Sentry account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-sentry-projects"
+					}
+				}
+			],
+			"submit_action": "submit-sentry-project"
+		},
+		{
+			"title": "Preferences",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "tailWorkerScriptName",
+					"label": "Tail Worker name",
+					"description": "We'll use this name to create a Tail Worker that consumes the events produced by your Worker.",
+					"required": true,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9\\-_]{0,255}$"
+				},
+				{
+					"type": "tags_input",
+					"name": "blockedHeaders",
+					"label": "Blocked headers",
+					"description": "We will attach all incoming HTTP request headers to the Sentry event, except those specified here.",
+					"required": false,
+					"default_value": [
+						"Authorization",
+						"Cookie"
+					]
+				},
+				{
+					"type": "mapping_input",
+					"name": "statusCodesToSamplingRates",
+					"label": "Sampling rate for status codes",
+					"description": "Specify a sampling rate for a given status code. 100% means every instance of that status code will be sent to Sentry. Status codes not present or set to 0% will not be sampled.",
+					"required": false,
+					"default_value": [
+						{
+							"left": {
+								"name": "statusCode",
+								"value": "5xx"
+							},
+							"right": {
+								"name": "samplingRate",
+								"value": 100
+							}
+						},
+						{
+							"left": {
+								"name": "statusCode",
+								"value": "4xx"
+							},
+							"right": {
+								"name": "samplingRate",
+								"value": 100
+							}
+						},
+						{
+							"left": {
+								"name": "statusCode",
+								"value": "400"
+							},
+							"right": {
+								"name": "samplingRate",
+								"value": 0
+							}
+						}
+					],
+					"left_label": "Status code",
+					"right_label": "Sampling rate",
+					"rows": {
+						"type": "dynamic",
+						"content": {
+							"left_component": {
+								"type": "text_input",
+								"name": "statusCode",
+								"required": true,
+								"placeholder": "e.g. 500 or 5xx",
+								"max_length": 3,
+								"pattern": "^(x{3}|[1-5]x{2}|[1-5]\\dx|[1-5]\\d{2})$"
+							},
+							"right_component": {
+								"type": "number_input",
+								"name": "samplingRate",
+								"required": true,
+								"suffix": {
+									"type": "text",
+									"content": "%"
+								},
+								"max": 100,
+								"min": 0,
+								"step": 1
+							}
+						}
+					}
+				},
+				{
+					"type": "number_input",
+					"name": "exceptionSamplingRate",
+					"label": "Sampling rate for exceptions",
+					"description": "What percent of uncaught exceptions will be sent to Sentry.",
+					"required": true,
+					"default_value": 100,
+					"suffix": {
+						"type": "text",
+						"content": "%"
+					},
+					"max": 100,
+					"min": 0,
+					"step": 1
+				}
+			],
+			"submit_action": "submit-preferences"
+		},
+		{
+			"title": "Update Wrangler.toml",
+			"type": "form",
+			"components": [
+				{
+					"type": "markdown",
+					"content": {
+						"type": "static",
+						"static": "When updating a Worker with Wrangler the [Tail Consumer](https://developers.cloudflare.com/workers/observability/logging/tail-workers) config will be removed. Please add the tail_consumer config to the top level of your `wrangler.toml`."
+					}
+				},
+				{
+					"type": "code",
+					"content": {
+						"type": "data_driven",
+						"code_data_name": "tailConsumerConfigMD",
+						"language_data_name": "tailConsumerConfigLang"
+					}
+				}
+			],
+			"submit_action": "acknowledge-update-wranglertoml"
+		}
+	],
+	"templates": [],
+	"uninstall_action": "uninstall",
+	"version": "0.3.11"
+}
