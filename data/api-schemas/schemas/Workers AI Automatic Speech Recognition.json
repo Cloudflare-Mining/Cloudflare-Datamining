@@ -25,13 +25,10 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"format": "binary",
-									"type": "string"
-								},
+								"result": {},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -136,13 +133,10 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"format": "binary",
-									"type": "string"
-								},
+								"result": {},
 								"success": {
 									"default": "true",
 									"type": "boolean"
