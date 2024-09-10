@@ -98,6 +98,7 @@ declare const _default: {
     'network-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'network-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     network: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'no-edit': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     none: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     notifications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'office-branch': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

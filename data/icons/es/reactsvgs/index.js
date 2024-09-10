@@ -96,6 +96,7 @@ import More from './More';
 import NetworkAnalyticsLogo from './NetworkAnalyticsLogo';
 import NetworkSecurity from './NetworkSecurity';
 import Network from './Network';
+import NoEdit from './NoEdit';
 import None from './None';
 import Notifications from './Notifications';
 import OfficeBranch from './OfficeBranch';
@@ -274,6 +275,7 @@ export default {
   'network-analytics-logo': NetworkAnalyticsLogo,
   'network-security': NetworkSecurity,
   network: Network,
+  'no-edit': NoEdit,
   none: None,
   notifications: Notifications,
   'office-branch': OfficeBranch,
