@@ -562,7 +562,7 @@ const navigation = {
 			url: "/shared-configurations",
 			testId: "shared-config-link",
 			labels: ["alpha"],
-			hasPermission: D => (0, le.K)(D, "account")
+			hasPermission: D => (0, se.K)(D, "account")
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn",
