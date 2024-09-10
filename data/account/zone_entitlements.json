@@ -1356,5 +1356,85 @@
 		"created_date": "2024-08-19T05:45:09.000000",
 		"edited_date": "2024-08-19T05:45:09.000000",
 		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.ratelimit_extended_sampling_period_values_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1526,
+			"key": "rulesets.ratelimit_extended_sampling_period_values_allowed",
+			"name": "Rulesets - Extended Sampling Period Values Allowed"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2024-09-10T08:20:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.ratelimit_nat_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1527,
+			"key": "rulesets.ratelimit_nat_allowed",
+			"name": "Rulesets - Ratelimit NAT allowed"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2024-09-10T08:20:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "cloud_connector.rule_max",
+		"feature": {
+			"feature_set": "cloud_connector",
+			"id": 1584,
+			"key": "cloud_connector.rule_max",
+			"name": "Cloud Connector - Rule Allowed Max"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2024-09-10T08:20:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1590,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
+			"name": "Rulesets - Execute Global Bot Management Rules for all plans"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2024-09-10T08:20:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "dns_records_api.max_batch_size",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1596,
+			"key": "dns_records_api.max_batch_size",
+			"name": "DNS API - Max Batch Size"
+		},
+		"allocation": {
+			"value": 200,
+			"type": "max_count"
+		},
+		"created_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2024-09-10T08:20:09.000000",
+		"deleted_date": ""
 	}
 ]
