@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2023-07-31T16:09:21.208Z",
-					"updatedAt": "2024-07-23T15:16:22.058Z"
+					"updatedAt": "2024-09-10T20:22:49.530Z"
 				},
 				"contentfulId": "CtvCmcU7DlCqNVma5SLiw",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Learn More",
-					"linkText": "Read more",
-					"linkUrl": "https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/",
-					"desktopText": "Curious about advanced SSL/TLS deployments? "
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
@@ -2580,17 +2575,17 @@
 						"titleSize": null,
 						"subtitle": "Secure your application with TLS while reducing your team's workload",
 						"subtitleSize": null,
-						"copy": "- Improve security team productivity by letting Cloudflare automatically manage your TLS certificates issuance, management, and renewal. No more manual TLS management. \n- Strengthen your security posture with automatic encryption for all new domains you create, customizable for your organizational and regulatory needs. \n",
+						"copy": "Cloudflare Advanced Certificate Manager automatically manages your certificates issuance, management, and renewal with automatic encryption for all new domains you create, customizable for your organizational and regulatory needs.makes your websites easier to manage, faster, and more secure, from main sites to subdomains.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Compare our plans",
+						"buttonText1": "Sign up",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://www.cloudflare.com/plans/ ",
+						"buttonUrl1": "https://dash.cloudflare.com/75dc25450c0df538a370922812d388a6/ehpacha.com/ssl-tls/acm",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get a demo",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "#ent-demo-form",
+						"buttonUrl2": null,
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -2629,49 +2624,52 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FgmToBQHjtKi8LKhgh4Gz/7529956f1756feafed18dc1d75350815/Advanced_Certificate_Manager.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ibXK4ErVvCKN3HXa9Rl8n/3675fb71bbd8d630f377ab81a4131a1c/Advanced-Certificate-Manager.svg"
 								},
-								"description": ""
+								"description": "Advanced Certificate Manager illustration "
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "7173tIZrXOEDlQgAhXDRZ5",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Enterprise-grade security",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "18qQdx0m2Qj0aoFKhfSjnW",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF ADVANCED CERTIFICATE MANAGER",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7DnHOEdb1VDxY0vUH6UBLI",
-								"title": "Streamline TLS management ",
-								"makeTitleLink": null,
+								"contentfulId": "4rQ15tZg0ucY1I3nzN1tAV",
+								"title": "Easily manage multiple certificates",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Certificate lifecycle management can be an arduous, manual process. Cloudflare automatically issues and renews TLS certificates on your behalf, and serves TLS certificates from each of our global data centers, offering fast loading times for your users. ",
+								"titleSize": null,
+								"description": "TLS certificate lifecycle management for websites can be an arduous, manual process, but Cloudflare automatically issues and renews TLS certificates for you.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jRp0ry33bgkOGNiTs6Ifj/dfc5a00a4ce6c6a349931f5f38064f72/certificate-manager.svg"
+								"icon": null,
+								"iconAssetFile": {
+									"id": "56e4ad29-94fc-5b3f-92ff-e7e657e886cb",
+									"altText": "Certificate blue",
+									"title": "Certificate blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDXdm5wvNxuUxs30EcKZx/daade3315fd04282a6607e8ce40d3fab/analytics-data.svg"
+										},
+										"description": "Data analytics icon"
 									},
-									"description": "Icon of an award ribbon"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -2681,24 +2679,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4ITlhoMnkc22TRKzeEbYEz",
-								"title": "Customize your TLS deployment ",
-								"makeTitleLink": null,
+								"contentfulId": "5FRw40Ze33jU7UiZ8F07OL",
+								"title": "Custom certificates for any needs",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Enterprises have different organizational and regulatory requirements for encryption. Advanced Certificates Manager enables you to customize the hostnames on the certificate, adjust the certificate validity period, select a certificate authority to use (CA), bring your own certificates, and more",
+								"titleSize": null,
+								"description": "Customize the hostnames on the certificate, adjust the certificate validity period, select your own certificate authority (CA) and cipher suites, or bring your own certificates.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JMg4D04kEvWkrEuZdpovM/abbf6c3202730a1f12c30c8ec2107591/performance-wrench.svg"
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ed89e1b6-b883-56ee-9049-129c549b05a4",
+									"altText": "Certificate manager blue",
+									"title": "Certificate manager blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ftQwbhNJDFPvNDk70rnd4/6bb0ad425b7047e1625b7064d3350e57/certificate-manager.png"
+										},
+										"description": ""
 									},
-									"description": ""
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -2708,24 +2715,69 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1RpzTzgctccJbqSUbnuDYs",
-								"title": "Ensure compliance ",
-								"makeTitleLink": null,
+								"contentfulId": "4RdSn7eAZatWvIVPi5nIzH",
+								"title": "Improved website speed performance",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Encryption is a component of most Zero Trust frameworks, and is also mentioned in data privacy regulations across the world. Stay on top of encryption requirements by enabling the most secure cipher suites and TLS 1.3. ",
+								"titleSize": null,
+								"description": "Cloudflare provides TLS certificates from our global data centers, ensuring fast loading times for users. We also support the latest, most advanced TLS versions for optimal performance.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q1OAd0UaLtu7FEDteo4vD/41ad2066c76365bc7fa352113ed6d9e3/documentation-clipboard.svg"
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+										},
+										"description": "Performance acceleration rocket orange"
 									},
-									"description": ""
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6p1wVlYQTz5ZdfTsL0DUlg",
+								"title": "Comply with encryption requirements",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Stay on top of data regulations by enabling the most secure cipher suites and TLS 1.3.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
+									"altText": "Yes check blue",
+									"title": "Yes check blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+										},
+										"description": "Checkmark icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -2733,12 +2785,14 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
-						"contentfulId": "6vg6UIVTRyT1I9yhvM7BB3",
-						"title": "TLS Options for Every Organization  ",
-						"copy": "- Protect your hostnames on one certificate\n- Encrypt more than one level of subdomain\n- Let Cloudflare automatically issue a certificate for every new domain you create \n- Choose your preferred certificate authority (CA) \n- Customize the certificate validity period for stronger security and to reduce the blast radius of a compromise \n- Control cipher suites used for TLS (see our recommendations to stay up to date on cryptographic cipher suites) and block connections from outdated TLS versions",
+						"contentfulId": "1SR7y7i1z6PnGEYq5zpl6V",
+						"title": "Automate your certificate issuance, management, and renewal",
+						"copy": "Cloudflare hosts certificates on our global network, enabling faster connections to website visitors no matter where they are. \n\nCloudflare also makes it easy to adapt TLS certificates for your use case. Add all hostnames to one certificate, encrypt multiple levels of subdomains, choose your own certificate authority (CA), control cipher suites used for TLS, or automatically encrypt all new domains you create.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -2761,88 +2815,699 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "38222f17-3b8c-5759-af2f-29a2079e63a6",
-							"altText": "TLS Options for Every Organization",
-							"title": null,
+							"id": "04ac388a-d80c-50f7-969a-2b0936628406",
+							"altText": "Secure SaaS access: HOW IT WORKS - Illustration",
+							"title": "Secure SaaS access: HOW IT WORKS - Illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n3MiiOzojnrrBkhMAQ324/9c01ee058d550d50875aad20b70f0311/Config_Rules.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26QKWf2xmv6raQaFNtMvby/232c52c46def3cc477d2ec0abb1a116c/Enabling-TLS-inspection-A-how-to-guide.png"
 								},
-								"description": ""
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "TLS Options for Every Organization  ",
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": "center",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "mqxiaeFVAaVuPv06BZ8el",
+						"contentfulId": "4tXzHr1b2Nruuh0pAgnTrU",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Learn how to get the most out of TLS while minimizing your overhead",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
+							"altText": "Generic Lead Generation background",
+							"title": "Generic Lead Generation background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
+								},
+								"description": "Lead generation background generic"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1WvRGNddYpU8bxWk1nw9kT",
+							"elementName": "Secure SaaS access: ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Get whitepaper",
+							"url": "/lp/maximize-tls/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "5wzOWsSMiTNdHN5hMwfRwl",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1yABfJWF2lLXZijmFEp5aZ",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Advanced Certificate Manager has simplified the way we manage certificates across our many domains, while still allowing us to meet our strict security requirements. The ability to manage cipher suites, as well as auto-renewal within our parameters, creates for an available and secure environment.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Head of Information Security",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " — ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "OneTrust",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "e2ec94e1-5198-59de-ba36-d94e64d7299e",
+								"altText": "8x8",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nG9l7TAuZE0aHfxPGh1rd/0f1fa6e6aad0a54d231f753983caf0db/logo_8x8_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "320b153b-94ff-5d2f-8a97-af10d692025f",
+								"altText": "Applied Systems",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ccFypTv38XuGPWyX4t3mJ/152157e5f3544e7e6ff283a1ed408857/logo_applied-sciences_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f598f8df-db52-5bf1-b683-c9b55d79ffea",
+								"altText": "Canva",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xV3mJg17PDJd4s2gOmd0R/24268d39f36e83d00fbfd1d3bf05d74f/logo_canva_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "237cb76e-9942-5889-be23-901eece16b9a",
+								"altText": "DeliveryHero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A7PvpqMbRgf25bIFlMRP8/5103cc54c23d69d716fef69fd02b6c3e/logo_delivery-hero_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ca260af0-8f63-5508-90b2-f8a6ba8b10bd",
+								"altText": "EQT",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2X4bbrSiy4xEnXAEqgf1WY/3f6d57ecd670d5adbfe0d067f61ef398/logo_EQT_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ee5ae45e-790a-5349-9e33-f5842aaf5210",
+								"altText": "Indeed",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vIlSpn8aLMYdbNLf2QAVk/606bbdcf8faabd23ee7e2db7b63c9ba3/logo_indeed_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "cd2d3f62-209f-5dad-a75a-cda7831b4fc5",
+								"altText": "Japan Airlines",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/L3DrbVVMwAkPCbHiTb5fN/3cd12946c2d3b5f8106d6dec92a08ed8/featured_logo_japan_airlines_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "18382700-5ac8-5805-b724-95e94acbd883",
+								"altText": "JetBlue Travel Products",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/27YorMcFFA3hbQ88Fgsv50/7a10904f6bfc1802ef8d203a5c8abdc6/logo_jetblue-travel-products_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1a833c0-bb06-5d58-9fe4-051a30350e74",
+								"altText": "Knauf",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33wforxIaRsKYbxl1fnBpc/9a649de7c9f96154cbb747ddd6ecbf20/logo_knauf_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d15cb740-d67e-5443-b5d1-baac636002ec",
+								"altText": "Mindbody",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dDd4cLdsE3hBx6EZTBimX/a2f71a2356e787c3c0ee3edebd746c25/logo_mindbody_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "91342339-2914-572a-ae7a-3102347b7bdf",
+								"altText": "Werner Enterprises",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AWBiH3Kfe6OT7esKWR9I4/f804cd5bd32d31f7ecc51c47b33cd47d/logo_werner_enterprises_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1fa3eb14-5ca6-5892-8a0d-6397cefdfc5a",
+								"altText": "Ziff Media",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h4ORr4AcL2kOW0Va6Q6dh/c253afc9b0bf1587ca8fa8698e6cdad5/logo_ziff-davis_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "4OzKpnxv790b8hDkH1IE4Z",
+						"title": "Helping organizations worldwide secure their websites",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4lzYBPEF0p4BtBIhGbfaTT",
+							"elementName": "Advanced Certificate Manager - Link to case studies - CTA",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "https://www.cloudflare.com/case-studies/?product=SSL%2FTLS",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "6MWtNTaJsAXY72X03hFeEI",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Advanced Certificate Manager streamlines the process of maintaining TLS across multiple domains, as well as allowing granular customization for niche use cases",
+						"eyebrowHeading": "Top Advanced Certificate Manager use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3yS0ESJ7cxeeuUNhYrHUuu",
+								"title": "Manage hundreds of websites",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Advanced Certificate Manager automates TLS certificate management, even for hundreds of domains and subdomains.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ed89e1b6-b883-56ee-9049-129c549b05a4",
+									"altText": "Certificate manager blue",
+									"title": "Certificate manager blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ftQwbhNJDFPvNDk70rnd4/6bb0ad425b7047e1625b7064d3350e57/certificate-manager.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7HWH9UtWgoBWPzJuww69Iz",
+								"title": "Ensure compliance with encryption requirements",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Use the most up-to-date cipher suites for encryption and authentication, and block connections using less secure cipher suites. [See our recommendations for the most recent and secure cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/). ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
+									"altText": "Yes check blue",
+									"title": "Yes check blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+										},
+										"description": "Checkmark icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6AEE5xvrZlQBo0hOm51qyc",
+								"title": "Limit the impact of attacks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "The default validity period for certificates is 90 days; use shorter ones to reduce the damage from compromise.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
+									"altText": "Time blue",
+									"title": "Time ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tme9kTrisdGyf3VkBsvv/4096a715634cf9a3807e0a59c9d5dab4/time.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "67958rvSKMCeqllHKp2DLF",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/products/ssl/\" class=\"inline-link-style\">Explore use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/products/ssl/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "16QuN446aXpOvbkKNDMQLw",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Pick the right option for you  ",
+						"title": " Resources",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 2 columns",
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4PYoLX70gaBdULKcfjATpc",
-								"title": "Universal SSL certificates are ideal if you:",
-								"makeTitleLink": null,
+								"contentfulId": "7kVWHsENACy0Z8SwHuLErD",
+								"title": "Mastering the four key areas where TLS must protect business",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "- Require a free SSL/TLS solution to reduces certificate lifecycle management overhead\n- Have only one level of subdomain \n- Need a one-size-fits-all solution \n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"titleSize": null,
+								"description": "Can TLS be used to effectively protect IoT? How is it being used in Zero Trust? Watch to learn about emerging TLS use cases for enterprises.",
+								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4120282/ ",
+								"learnMoreText": "Watch webinar",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
-								"imageAssetFile": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Ts4J9pgzRErMsKkddJDQm",
-								"title": " Advanced or customer certificates are ideal if you: ",
-								"makeTitleLink": null,
+								"contentfulId": "699JYXxoN0yy2nAp7Q8Wqt",
+								"title": " Maximize the power of TLS while minimizing your overhead",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "- Want full TLS coverage for all your hostnames \n- Have specific requirements for what hostnames need to be on the SSL/TLS certificates\n- Prefer to use a shorter validity period than the default 90 days \n- Have a preferred certificate authority you'd like to use\n- Want to set custom cipher suites  \n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"titleSize": null,
+								"description": "Learn how to customize your TLS deployment and streamline your certificate lifecycle management with Cloudflare.",
+								"learnMoreUrl": "/lp/maximize-tls/",
+								"learnMoreText": "Get the whitepaper",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": false,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
-								"imageAssetFile": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "73AmEAiri8viZzZOHgXrAm",
+								"title": "How a Cloudflare customer thwarted a phishing attempt",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Watch on demand to learn how ecommerce vendor Otrium manages evolving security threats with Cloudflare Zero Trust and application security — including TLS certificate lifecycle management.",
+								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4110700/how-otrium-reduced-application-risk-and-thwarted-a-phishing-attempt-with-cloudflare ",
+								"learnMoreText": "Watch webinar",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -2850,78 +3515,102 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "yXAj8KHogPwCK5NswW40W",
-						"quote": "\"Advanced Certificate Manager has simplified the way we manage certificates across our many domains, while still allowing us to meet our strict security requirements. The ability to manage cipher suites, as well as auto-renewal within our parameters, creates for an available and secure environment.\"",
-						"quoteAuthor": "Colin Henderson",
-						"quoteTitle": "Head of Information Security, OneTrust",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "5in7Kj0fvmWG9wej9rRxKl",
+						"title": "Get Advanced Certificate Manager for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HlvNepFMCN9Cx7UwfeP60/5895509fd0ffbb25388dbb57c757c2ec/logo_onetrust_color.svg"
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3kR6x6dmk8bZBz7D00i8YI",
+							"elementName": "Get Advanced Certificate Manager for your enterprise - Contact Banner - CTA modal",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": "#",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "7C5zzDPEkqgn3vvQxDQzGp",
+								"modalName": "Advanced Certificate Manager -  Modal form",
+								"modalId": "advanced-certificate-manager-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "14l2rL4T70JSAPTwvsD3OE",
+									"bladeName": "Advanced Certificate Manager -  Marketo modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Request an Advance Certificate Manager discussion",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
 							},
-							"description": "OneTrust logo"
+							"openInNewTab": false,
+							"locale": "en-US"
 						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "5BaxaldTJMv9homRXOgz6c",
-								"quote": " \" We've been using Advanced Certificate Manager for fine-grained control over the cipher suites used in our TLS connections and to reduce the lifetime of certificates issued for our domain. With stronger cipher suites and shorter certificates we're better able to protect connections made to our site and the data within them.\"",
-								"quoteAuthor": "Scott Helme",
-								"quoteTitle": "Founder, Report URI",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GTxcEdgsH6UT2u1e8CfDN/623eb5ad5effd5c57a6e8962c0d27d73/Report_uri_logo.png"
-									},
-									"description": "ReportURI logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "4NHLpupFZ7QC7Lf8LnY1ow",
-								"quote": "\"Using Cloudflare's TLS certificates, which automatically renew, we save about $50,000 a year, both in administrative costs and lost revenue from outages due to expired certificates.\"\n",
-								"quoteAuthor": "John Turner",
-								"quoteTitle": "Application Security Lead, LendingTree ",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5o2HTy3FFRTKKoxuj5yTVR/e043faa0d131d64ab5e032e31c87e9d5/lendingtree_logo.png"
-									},
-									"description": "LendingTree logo"
-								}
-							}
-						]
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
-						"contentTypeId": "bladeEnterpriseForm",
-						"contentfulId": "1g1PhHpd7R4RTtBdNQdP5K",
-						"bladeName": "SSL - Enterprise Demo Form",
-						"bladeBorder": "none",
-						"marketoEmbeddedForm": {
+						"contentfulId": "5XJEYq0jhTpaI3HssP33l7",
+						"contentTypeId": "bladePadding",
+						"height": 10,
+						"backgroundColor": "white"
+					}
+				],
+				"noindex": false,
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "7C5zzDPEkqgn3vvQxDQzGp",
+						"modalName": "Advanced Certificate Manager -  Modal form",
+						"modalId": "advanced-certificate-manager-modal-form",
+						"modalType": "single-form",
+						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "1n2RdvWM99liGAZir9DMQ0",
-							"bladeName": "SSL - Enterprise Demo Us Form (1341)",
-							"backgroundColor": "blue",
+							"contentfulId": "14l2rL4T70JSAPTwvsD3OE",
+							"bladeName": "Advanced Certificate Manager -  Marketo modal form",
+							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Web Form - SSL",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
 							"marketoFormHeaderText": null,
 							"marketoFormDefaultComment": null,
-							"showCommentBox": true,
+							"showCommentBox": null,
 							"marketoFormThankYouText": null,
 							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": null,
@@ -2937,308 +3626,15 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"backgroundColor": "light-blue",
-						"leftTitle": "Request Enterprise Demo",
-						"leftSubtitle": null,
-						"rightTitle": "Interested in SSL/TLS for your Enterprise?",
-						"rightSubtitle": null,
-						"rightImage": null,
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6bFxgUK8uuizRoGkIqO9DW",
-								"title": "Advanced customization options (custom hostname, validity period, certificate authority, and more)",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": null,
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1ZV4amsHjVfY6lfoAhtcCr",
-								"title": "Automatically issued TLS certificates for new hostnames",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": null,
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "67c5UA33hzaurL29YGip9g",
-								"title": "Back-up certificates",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": null,
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2jQ1QkouVHa6VG7mt4dj7f",
-								"title": "Custom certificates from your preferred certificate authority ",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": null,
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2LmFHnqof8FsOnVk5c2SJf",
-								"title": "Private key storage on your own hardware security module",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": null,
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						],
-						"sectionPadding": null,
-						"moreFeatures": [
-							"Bot management",
-							"Access to raw logs",
-							"Advanced Cache controls",
-							"Access to China network",
-							"Under Attack Support Engineer",
-							"Network prioritization",
-							"Firewall analytics",
-							"Image resizing",
-							"Designated Customer Success Team Member(s)"
-						],
-						"moreFeaturesModalTitle": "What you get with the Enterprise Plan",
-						"moreFeaturesLinkText": "Much more",
-						"moreFeaturesModalLearnMoreText": "See all of the Details",
-						"moreFeaturesModalLearnMoreUrl": "/plans/enterprise/",
-						"logos": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3S2dgL5xPAARPu3v0jCh1f/63630b43d2283d541d77d7b321261627/trustedby-marketo-black.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1t3qa6YEnYnT7wnMQuddnh/fa2c1a1805f2876fd07175f7dd4a7bd9/trustedby-digital-ocean-black.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PqENvAR8wJAStp3BNiEL0/e1a6cf73b95e4526e68c84c3d72190ff/trustedby-discord-black.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdLkPlavqnIjAC2IXGtoV/8f905b918b212c08c2616ef91d114c0d/trustedby-ibm-black.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UyLSeSI0ROX79EGdJDOBN/78fea368bdb3d0847cc6a6405625eff7/trustedby-udacity-black.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IP5p0P0yA1sO4E4zLnCgR/fa885c3b32dec89003069b30b432cfd9/trustedby-zendesk-black.svg"
-								},
-								"description": null
-							}
-						],
-						"htmlId": "ent-demo-form"
-					},
-					{
-						"contentfulId": "1HiHOLxtdNqUx7LpD5RFen",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Additional Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7e2RwjMrUIa2JQLj9LEwsQ",
-								"title": "Mastering the four key areas where TLS must protect business",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Watch to learn about emerging TLS use cases for enterprises.",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4120282/",
-								"learnMoreText": "Watch webinar on demand",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "64c34158-3c21-5840-80ec-69a7334ac962",
-									"altText": "Mastering the four key areas where TLS must protect business",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ajN2X8Odi5EiMjQprfNnf/a683bb933277170d9f78604bf8c4e4a4/KEMs-KEMTLS.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6nu5ck3OCWiwitRtQQId4M",
-								"title": "Maximize the power of TLS while minimizing your overhead",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Learn how to customize your TLS deployment and streamline your certificate lifecycle management with Cloudflare. ",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/maximize-tls/ ",
-								"learnMoreText": "Read solution overview ",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2822f3fc-3f04-5078-98f2-245c60c59c21",
-									"altText": "Illustration of Cloudflare's Advanced Certificate Manager",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FgmToBQHjtKi8LKhgh4Gz/7529956f1756feafed18dc1d75350815/Advanced_Certificate_Manager.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1EgBNuwtZFAM6oXCcy2rOn",
-								"title": "How a Cloudflare customer reduced application risk and thwarted a phishing attempt ",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Watch on demand now to learn how ecommerce vendor and Cloudflare customer Otrium manages evolving security threats with Cloudflare Zero Trust and Application Security – including SSL certificate lifecycle management. ",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4110700/how-otrium-reduced-application-risk-and-thwarted-a-phishing-attempt-with-cloudflare  ",
-								"learnMoreText": "Watch webinar on demand",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "7f85c66d-bbeb-544a-a18d-1fb91d93409b",
-									"altText": "Illustration of a magnifying glass looking at a fish hook",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jQBF8dvccw4vFAdN65kbE/08098986f1cb4b1e2d21f144880b2a0f/Opportunistic-Phishing-and-Banking.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
+						"title": "Request an Advance Certificate Manager discussion",
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
 					}
 				],
-				"noindex": false,
-				"formModal": [],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
