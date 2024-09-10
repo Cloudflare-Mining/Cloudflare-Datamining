@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.16.0
+
+### Minor Changes
+
+- 0e26f7e5e4: add no-edit icon
+
 ## 12.15.0
 
 ### Minor Changes

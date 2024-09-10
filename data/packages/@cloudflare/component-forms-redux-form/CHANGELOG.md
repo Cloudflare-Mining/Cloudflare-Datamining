@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.36
+
+### Patch Changes
+
+- @cloudflare/component-button@8.5.3
+- @cloudflare/component-forms@6.1.24
+
 ## 6.0.35
 
 ### Patch Changes
