@@ -1,0 +1,123 @@
+{
+	"alias": "fauna-for-workers",
+	"assets": [],
+	"category": "workers-databases",
+	"description": "The distributed document-relational database delivered as a cloud API.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/fauna",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/0b72af80-c5e5-443f-d18e-71f1a143f000/public",
+	"install_target": "worker",
+	"name": "Fauna",
+	"permissions": null,
+	"setup_steps": [
+		{
+			"title": "Connect to Fauna",
+			"type": "oauth",
+			"provider": "fauna",
+			"client_id": "q96LBs5RB8b569pY7MrFappgWvo=",
+			"authorize_url": "https://account.fauna.com/api/v1/oauth/authorize",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"scope": "list_databases list_roles create_database_keys",
+			"submit_action": "submit-fauna-oauth"
+		},
+		{
+			"title": "Select a database",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "databasePath",
+					"label": "Databases",
+					"description": "Databases linked to your Fauna account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-fauna-databases"
+					}
+				}
+			],
+			"submit_action": "submit-fauna-database"
+		},
+		{
+			"title": "Select a database role",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "databaseRole",
+					"label": "Roles",
+					"description": "Your database's roles are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-fauna-database-roles"
+					}
+				}
+			],
+			"submit_action": "submit-fauna-database-role"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Value",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "faunaDatabaseKeySecretName",
+									"required": true,
+									"default_value": "FAUNA_SECRET"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "faunaDatabaseKeyDisplay"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"resources": [
+				{
+					"name": "fauna-database-key",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"bindings": [
+							{
+								"type": "secret_text",
+								"name": {
+									"$ref": "values://data/secretsMap/0/left/value"
+								},
+								"text": {
+									"$ref": "actions://get-fauna-database-key"
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [],
+	"uninstall_action": "uninstall",
+	"version": "0.0.7"
+}
