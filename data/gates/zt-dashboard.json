@@ -206,23 +206,17 @@
 	"zt-icmp-proxy": {
 		"enabled": true
 	},
-	"zt-lan-allow-minutes": {
-		"enabled": false
-	},
 	"zt-legacy-dev-preview": {
 		"enabled": false
 	},
 	"zt-predefined-code-detection": {
 		"enabled": true
 	},
-	"zt-resolver-policies": {
-		"enabled": false
-	},
 	"zt-saas-integrations": {
 		"enabled": true
 	},
 	"zt-saas-integrations-ces": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-sentinel-one-s2s-posture-integration": {
 		"enabled": true
@@ -243,7 +237,7 @@
 		"enabled": true
 	},
 	"zt-tunnel-vnet": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-tunnel-warp-connector": {
 		"enabled": false
@@ -253,12 +247,6 @@
 	},
 	"zt-user-risk-score": {
 		"enabled": true
-	},
-	"zt-version-extra-linux": {
-		"enabled": false
-	},
-	"zt-virtual-ip": {
-		"enabled": false
 	},
 	"zt-warp-connector-orchestration": {
 		"enabled": true
