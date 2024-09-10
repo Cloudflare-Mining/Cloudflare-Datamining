@@ -30,14 +30,19 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Austin, US",
+				"Champaign, US",
 				"Lisbon, Portugal",
-				"US"
+				"New York, US",
+				"San Francisco, US",
+				"Seattle, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6243541,
-	"updated_at": "2024-09-10T12:48:10-04:00",
+	"updated_at": "2024-09-10T15:14:39-04:00",
 	"requisition_id": null,
 	"title": "Senior Product Manager, FinTech",
 	"departments": [
@@ -50,6 +55,41 @@
 	],
 	"offices": [
 		{
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19986,
+			"name": "Champaign, IL",
+			"location": "Champaign, IL, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
@@ -57,8 +97,8 @@
 			"parent_id": 74843
 		},
 		{
-			"id": 75375,
-			"name": "Remote US",
+			"id": 72960,
+			"name": "Seattle, WA",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
