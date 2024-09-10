@@ -529,6 +529,20 @@
 			},
 			{
 				"in": "query",
+				"name": "min_total_tokens",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "max_total_tokens",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
 				"name": "min_duration",
 				"schema": {
 					"type": "number"
@@ -614,6 +628,13 @@
 				"name": "response_content_type",
 				"schema": {
 					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "meta_info",
+				"schema": {
+					"type": "boolean"
 				}
 			}
 		],
@@ -728,6 +749,9 @@
 										"max_tokens_out": {
 											"type": "number"
 										},
+										"max_total_tokens": {
+											"type": "number"
+										},
 										"min_cost": {
 											"type": "number"
 										},
@@ -738,6 +762,9 @@
 											"type": "number"
 										},
 										"min_tokens_out": {
+											"type": "number"
+										},
+										"min_total_tokens": {
 											"type": "number"
 										},
 										"page": {
