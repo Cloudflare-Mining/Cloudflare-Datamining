@@ -1199,6 +1199,39 @@
 																],
 																"title": "SentinelOne S2S Input",
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"connection_id": {
+																		"description": "Posture Integration ID.",
+																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																		"type": "string"
+																	},
+																	"operator": {
+																		"description": "operator",
+																		"enum": [
+																			"<",
+																			"<=",
+																			">",
+																			">=",
+																			"=="
+																		],
+																		"example": ">",
+																		"type": "string"
+																	},
+																	"score": {
+																		"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																		"example": 100,
+																		"type": "number"
+																	}
+																},
+																"required": [
+																	"connection_id",
+																	"score",
+																	"operator"
+																],
+																"title": "Custom Device Posture Integration Input",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -1255,7 +1288,8 @@
 															"crowdstrike_s2s",
 															"intune",
 															"workspace_one",
-															"sentinelone_s2s"
+															"sentinelone_s2s",
+															"custom_s2s"
 														],
 														"example": "file",
 														"type": "string"
@@ -2086,6 +2120,39 @@
 																		],
 																		"title": "SentinelOne S2S Input",
 																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"connection_id": {
+																				"description": "Posture Integration ID.",
+																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																				"type": "string"
+																			},
+																			"operator": {
+																				"description": "operator",
+																				"enum": [
+																					"<",
+																					"<=",
+																					">",
+																					">=",
+																					"=="
+																				],
+																				"example": ">",
+																				"type": "string"
+																			},
+																			"score": {
+																				"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																				"example": 100,
+																				"type": "number"
+																			}
+																		},
+																		"required": [
+																			"connection_id",
+																			"score",
+																			"operator"
+																		],
+																		"title": "Custom Device Posture Integration Input",
+																		"type": "object"
 																	}
 																],
 																"type": "object"
@@ -2142,7 +2209,8 @@
 																	"crowdstrike_s2s",
 																	"intune",
 																	"workspace_one",
-																	"sentinelone_s2s"
+																	"sentinelone_s2s",
+																	"custom_s2s"
 																],
 																"example": "file",
 																"type": "string"
@@ -3075,6 +3143,39 @@
 															],
 															"title": "SentinelOne S2S Input",
 															"type": "object"
+														},
+														{
+															"properties": {
+																"connection_id": {
+																	"description": "Posture Integration ID.",
+																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "operator",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																},
+																"score": {
+																	"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																	"example": 100,
+																	"type": "number"
+																}
+															},
+															"required": [
+																"connection_id",
+																"score",
+																"operator"
+															],
+															"title": "Custom Device Posture Integration Input",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -3131,7 +3232,8 @@
 														"crowdstrike_s2s",
 														"intune",
 														"workspace_one",
-														"sentinelone_s2s"
+														"sentinelone_s2s",
+														"custom_s2s"
 													],
 													"example": "file",
 													"type": "string"
@@ -3941,6 +4043,39 @@
 																	],
 																	"title": "SentinelOne S2S Input",
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"connection_id": {
+																			"description": "Posture Integration ID.",
+																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "operator",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		},
+																		"score": {
+																			"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																			"example": 100,
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"connection_id",
+																		"score",
+																		"operator"
+																	],
+																	"title": "Custom Device Posture Integration Input",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -3997,7 +4132,8 @@
 																"crowdstrike_s2s",
 																"intune",
 																"workspace_one",
-																"sentinelone_s2s"
+																"sentinelone_s2s",
+																"custom_s2s"
 															],
 															"example": "file",
 															"type": "string"
@@ -4810,6 +4946,39 @@
 										],
 										"title": "SentinelOne S2S Input",
 										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"operator": {
+												"description": "operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"score": {
+												"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+												"example": 100,
+												"type": "number"
+											}
+										},
+										"required": [
+											"connection_id",
+											"score",
+											"operator"
+										],
+										"title": "Custom Device Posture Integration Input",
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -4866,7 +5035,8 @@
 									"crowdstrike_s2s",
 									"intune",
 									"workspace_one",
-									"sentinelone_s2s"
+									"sentinelone_s2s",
+									"custom_s2s"
 								],
 								"example": "file",
 								"type": "string"
@@ -5674,6 +5844,39 @@
 															],
 															"title": "SentinelOne S2S Input",
 															"type": "object"
+														},
+														{
+															"properties": {
+																"connection_id": {
+																	"description": "Posture Integration ID.",
+																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "operator",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																},
+																"score": {
+																	"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																	"example": 100,
+																	"type": "number"
+																}
+															},
+															"required": [
+																"connection_id",
+																"score",
+																"operator"
+															],
+															"title": "Custom Device Posture Integration Input",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -5730,7 +5933,8 @@
 														"crowdstrike_s2s",
 														"intune",
 														"workspace_one",
-														"sentinelone_s2s"
+														"sentinelone_s2s",
+														"custom_s2s"
 													],
 													"example": "file",
 													"type": "string"
@@ -6540,6 +6744,39 @@
 																	],
 																	"title": "SentinelOne S2S Input",
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"connection_id": {
+																			"description": "Posture Integration ID.",
+																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "operator",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		},
+																		"score": {
+																			"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																			"example": 100,
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"connection_id",
+																		"score",
+																		"operator"
+																	],
+																	"title": "Custom Device Posture Integration Input",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -6596,7 +6833,8 @@
 																"crowdstrike_s2s",
 																"intune",
 																"workspace_one",
-																"sentinelone_s2s"
+																"sentinelone_s2s",
+																"custom_s2s"
 															],
 															"example": "file",
 															"type": "string"
@@ -7420,6 +7658,39 @@
 										],
 										"title": "SentinelOne S2S Input",
 										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"operator": {
+												"description": "operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"score": {
+												"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+												"example": 100,
+												"type": "number"
+											}
+										},
+										"required": [
+											"connection_id",
+											"score",
+											"operator"
+										],
+										"title": "Custom Device Posture Integration Input",
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -7476,7 +7747,8 @@
 									"crowdstrike_s2s",
 									"intune",
 									"workspace_one",
-									"sentinelone_s2s"
+									"sentinelone_s2s",
+									"custom_s2s"
 								],
 								"example": "file",
 								"type": "string"
@@ -8284,6 +8556,39 @@
 															],
 															"title": "SentinelOne S2S Input",
 															"type": "object"
+														},
+														{
+															"properties": {
+																"connection_id": {
+																	"description": "Posture Integration ID.",
+																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "operator",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																},
+																"score": {
+																	"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																	"example": 100,
+																	"type": "number"
+																}
+															},
+															"required": [
+																"connection_id",
+																"score",
+																"operator"
+															],
+															"title": "Custom Device Posture Integration Input",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -8340,7 +8645,8 @@
 														"crowdstrike_s2s",
 														"intune",
 														"workspace_one",
-														"sentinelone_s2s"
+														"sentinelone_s2s",
+														"custom_s2s"
 													],
 													"example": "file",
 													"type": "string"
@@ -9150,6 +9456,39 @@
 																	],
 																	"title": "SentinelOne S2S Input",
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"connection_id": {
+																			"description": "Posture Integration ID.",
+																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "operator",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		},
+																		"score": {
+																			"description": "A value between 0-100 assigned to devices set by the 3rd party posture provider.",
+																			"example": 100,
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"connection_id",
+																		"score",
+																		"operator"
+																	],
+																	"title": "Custom Device Posture Integration Input",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -9206,7 +9545,8 @@
 																"crowdstrike_s2s",
 																"intune",
 																"workspace_one",
-																"sentinelone_s2s"
+																"sentinelone_s2s",
+																"custom_s2s"
 															],
 															"example": "file",
 															"type": "string"

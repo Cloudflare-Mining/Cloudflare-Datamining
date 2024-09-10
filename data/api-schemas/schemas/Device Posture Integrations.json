@@ -560,7 +560,8 @@
 															"intune",
 															"kolide",
 															"tanium",
-															"sentinelone_s2s"
+															"sentinelone_s2s",
+															"custom_s2s"
 														],
 														"example": "workspace_one",
 														"type": "string"
@@ -766,7 +767,8 @@
 																	"intune",
 																	"kolide",
 																	"tanium",
-																	"sentinelone_s2s"
+																	"sentinelone_s2s",
+																	"custom_s2s"
 																],
 																"example": "workspace_one",
 																"type": "string"
@@ -1074,7 +1076,8 @@
 														"intune",
 														"kolide",
 														"tanium",
-														"sentinelone_s2s"
+														"sentinelone_s2s",
+														"custom_s2s"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -1259,7 +1262,8 @@
 																"intune",
 																"kolide",
 																"tanium",
-																"sentinelone_s2s"
+																"sentinelone_s2s",
+																"custom_s2s"
 															],
 															"example": "workspace_one",
 															"type": "string"
@@ -1602,6 +1606,32 @@
 										],
 										"title": "SentinelOne S2S Config",
 										"type": "object"
+									},
+									{
+										"properties": {
+											"access_client_id": {
+												"description": "This id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`",
+												"example": "88bf3b6d86161464f6509f7219099e57.access",
+												"type": "string"
+											},
+											"access_client_secret": {
+												"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`",
+												"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+												"type": "string"
+											},
+											"api_url": {
+												"description": "The Custom Device Posture Integration  API URL.",
+												"example": "https://example.custom-s2s.com",
+												"type": "string"
+											}
+										},
+										"required": [
+											"api_url",
+											"access_client_id",
+											"access_client_secret"
+										],
+										"title": "Custom Device Posture Integration Config",
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -1625,7 +1655,8 @@
 									"intune",
 									"kolide",
 									"tanium",
-									"sentinelone_s2s"
+									"sentinelone_s2s",
+									"custom_s2s"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -1804,7 +1835,8 @@
 														"intune",
 														"kolide",
 														"tanium",
-														"sentinelone_s2s"
+														"sentinelone_s2s",
+														"custom_s2s"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -1989,7 +2021,8 @@
 																"intune",
 																"kolide",
 																"tanium",
-																"sentinelone_s2s"
+																"sentinelone_s2s",
+																"custom_s2s"
 															],
 															"example": "workspace_one",
 															"type": "string"
@@ -2321,6 +2354,32 @@
 										],
 										"title": "SentinelOne S2S Config",
 										"type": "object"
+									},
+									{
+										"properties": {
+											"access_client_id": {
+												"description": "This id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`",
+												"example": "88bf3b6d86161464f6509f7219099e57.access",
+												"type": "string"
+											},
+											"access_client_secret": {
+												"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`",
+												"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+												"type": "string"
+											},
+											"api_url": {
+												"description": "The Custom Device Posture Integration  API URL.",
+												"example": "https://example.custom-s2s.com",
+												"type": "string"
+											}
+										},
+										"required": [
+											"api_url",
+											"access_client_id",
+											"access_client_secret"
+										],
+										"title": "Custom Device Posture Integration Config",
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -2344,7 +2403,8 @@
 									"intune",
 									"kolide",
 									"tanium",
-									"sentinelone_s2s"
+									"sentinelone_s2s",
+									"custom_s2s"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -2529,7 +2589,8 @@
 														"intune",
 														"kolide",
 														"tanium",
-														"sentinelone_s2s"
+														"sentinelone_s2s",
+														"custom_s2s"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -2714,7 +2775,8 @@
 																"intune",
 																"kolide",
 																"tanium",
-																"sentinelone_s2s"
+																"sentinelone_s2s",
+																"custom_s2s"
 															],
 															"example": "workspace_one",
 															"type": "string"
