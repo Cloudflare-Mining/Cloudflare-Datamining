@@ -539,6 +539,7 @@ interface DurableObjectState {
   setHibernatableWebSocketEventTimeout(timeoutMs?: number): void;
   getHibernatableWebSocketEventTimeout(): number | null;
   getTags(ws: WebSocket): string[];
+  abort(reason?: string): void;
 }
 interface DurableObjectTransaction {
   get<T = unknown>(
@@ -605,7 +606,11 @@ interface DurableObjectStorage {
   ): Promise<void>;
   deleteAlarm(options?: DurableObjectSetAlarmOptions): Promise<void>;
   sync(): Promise<void>;
+  sql: SqlStorage;
   transactionSync<T>(closure: () => T): T;
+  getCurrentBookmark(): Promise<string>;
+  getBookmarkForTime(timestamp: number | Date): Promise<string>;
+  onNextSessionRestoreBookmark(bookmark: string): Promise<string>;
 }
 interface DurableObjectListOptions {
   start?: string;
@@ -2713,6 +2718,23 @@ declare const WebSocketPair: {
     1: WebSocket;
   };
 };
+interface SqlStorage {
+  exec(query: string, ...bindings: any[]): SqlStorageCursor;
+  prepare(query: string): SqlStorageStatement;
+  get databaseSize(): number;
+  Cursor: typeof SqlStorageCursor;
+  Statement: typeof SqlStorageStatement;
+}
+declare abstract class SqlStorageStatement {}
+declare abstract class SqlStorageCursor {
+  raw(): IterableIterator<((ArrayBuffer | string | number) | null)[]>;
+  get columnNames(): string[];
+  get rowsRead(): number;
+  get rowsWritten(): number;
+  [Symbol.iterator](): IterableIterator<
+    Record<string, (ArrayBuffer | string | number) | null>
+  >;
+}
 interface Socket {
   get readable(): ReadableStream;
   get writable(): WritableStream;
@@ -4902,6 +4924,18 @@ declare abstract class PipelineTransform {
    */
   public transformJson(data: object[]): Promise<object[]>;
 }
+// Copyright (c) 2022-2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
+interface Pipeline {
+  /**
+   * send takes an array of javascript objects which are
+   * then received by the pipeline for processing
+   *
+   * @param data The data to be sent
+   */
+  send(data: object[]): Promise<void>;
+}
 // PubSubMessage represents an incoming PubSub message.
 // The message includes metadata about the broker, the client, and the payload
 // itself.
@@ -5494,4 +5528,14 @@ interface DispatchNamespace {
     },
     options?: DynamicDispatchOptions,
   ): Fetcher;
+}
+/**
+ * NonRetryableError allows for a Workflow to throw a "fatal" error as in,
+ * an error that makes the instance fail immediately without triggering a retry.
+ */
+declare class NonRetryableError extends Error {
+  // __brand has been explicity omitted because it's a internal brand used for
+  // the Workflows' engine and user's shouldn't be able to override it
+  // (at least, in a direct way)
+  public constructor(message: string, name?: string);
 }
