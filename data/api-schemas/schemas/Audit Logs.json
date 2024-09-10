@@ -65,20 +65,40 @@
 				"in": "query",
 				"name": "since",
 				"schema": {
-					"description": "Limits the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
-					"example": "2019-04-30T01:12:20Z",
-					"format": "date-time",
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
 				"in": "query",
 				"name": "before",
 				"schema": {
-					"description": "Limits the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
-					"example": "2019-04-30T01:12:20Z",
-					"format": "date-time",
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -777,20 +797,40 @@
 				"in": "query",
 				"name": "since",
 				"schema": {
-					"description": "Limits the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
-					"example": "2019-04-30T01:12:20Z",
-					"format": "date-time",
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
 				"in": "query",
 				"name": "before",
 				"schema": {
-					"description": "Limits the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
-					"example": "2019-04-30T01:12:20Z",
-					"format": "date-time",
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -1482,20 +1522,40 @@
 				"in": "query",
 				"name": "since",
 				"schema": {
-					"description": "Limits the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
-					"example": "2019-04-30T01:12:20Z",
-					"format": "date-time",
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
 				"in": "query",
 				"name": "before",
 				"schema": {
-					"description": "Limits the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
-					"example": "2019-04-30T01:12:20Z",
-					"format": "date-time",
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
