@@ -186,7 +186,7 @@ static const lhtml_string_t REPLACEMENT = {
 static void token_handler(lhtml_token_t *token, void *extra /* this can be your state */) {
   if (token-&gt;type == LHTML_TOKEN_START_TAG) { // we're interested only in start tags
     const lhtml_token_starttag_t *tag = &amp;token-&gt;start_tag;
-    if (tag-&gt;type == LHTML_TAG_A) { // check whether tag is of type <a>
+    if (tag-&gt;type == LHTML_TAG_A) { // check whether tag is of type &lt;a&gt;
       const size_t n_attrs = tag-&gt;attributes.count;
       const lhtml_attribute_t *attrs = tag-&gt;attributes.items;
       for (size_t i = 0; i &lt; n_attrs; i++) { // iterate over attributes
@@ -198,17 +198,16 @@ static void token_handler(lhtml_token_t *token, void *extra /* this can be your 
     }
   }
   lhtml_emit(token, extra); // pass transformed token(s) to next handler(s)
-}</a></code></pre><a>
-		<h3>So, is it correct and how fast is it?</h3>
-		<p>It is HTML5 compliant as tested against the official test suites. As part of the work several contributions were sent to the specification itself for clarification / simplification of the spec language.</p>
-		<p>Unlike the previous parser(s), it didn't bail out on any of the 2,382,625 documents from HTTP Archive, although 0.2% of documents exceeded expected bufferization limits as they were in fact JavaScript or RSS or other types of content incorrectly served with Content-Type: text/html, and since anything is valid HTML5, the parser tried to parse e.g. a&lt;b; x=3; y=4 as incomplete tag with attributes. This is very rare (and goes to even lower amount of 0.03% when two error-prone advertisement networks are excluded from those results), but still needs to be accounted for and is a valid case for bailing out.</p>
-		<p>As for the benchmarks, In September 2016 using an example which transforms the HTML spec itself (7.9 MB HTML file) by replacing every (only that property only in those tags) to a static value. It was compared against the few existing and popular HTML parsers (only tokenization mode was used for the fair comparison, so that they don't need to build AST and so on), and timings in milliseconds for 100 iterations are the following (lazy mode means that we're using raw strings whenever possible, the other one serializes each token just for comparison):</p>
-		<figure class="kg-card kg-image-card ">
+}</code></pre>
+	<h3>So, is it correct and how fast is it?</h3>
+	<p>It is HTML5 compliant as tested against the official test suites. As part of the work several contributions were sent to the specification itself for clarification / simplification of the spec language.</p>
+	<p>Unlike the previous parser(s), it didn't bail out on any of the 2,382,625 documents from HTTP Archive, although 0.2% of documents exceeded expected bufferization limits as they were in fact JavaScript or RSS or other types of content incorrectly served with Content-Type: text/html, and since anything is valid HTML5, the parser tried to parse e.g. a&lt;b; x=3; y=4 as incomplete tag with attributes. This is very rare (and goes to even lower amount of 0.03% when two error-prone advertisement networks are excluded from those results), but still needs to be accounted for and is a valid case for bailing out.</p>
+	<p>As for the benchmarks, In September 2016 using an example which transforms the HTML spec itself (7.9 MB HTML file) by replacing every (only that property only in those tags) to a static value. It was compared against the few existing and popular HTML parsers (only tokenization mode was used for the fair comparison, so that they don't need to build AST and so on), and timings in milliseconds for 100 iterations are the following (lazy mode means that we're using raw strings whenever possible, the other one serializes each token just for comparison):</p>
+	<figure class="kg-card kg-image-card ">
 
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BUi5lG0xlZjW0jjZuSL6S/b408bcefb30d6b2977056e6d14456611/image5-1.png" alt="" class="kg-image" width="1292" height="798" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BUi5lG0xlZjW0jjZuSL6S/b408bcefb30d6b2977056e6d14456611/image5-1.png" alt="" class="kg-image" width="1292" height="798" loading="lazy">
 
-		</figure>
-		<p>The results show that LazyHTML parser speeds are around an order of magnitude faster.</p>
-		<p>That concludes the first post in our series on HTML rewriters at Cloudflare. The next post describes how we built a new streaming rewriter on top of the ideas of LazyHTML. The major update was to provide an easier to use CSS selector API. It provides the back-end for the Cloudflare workers HTMLRewriter JavaScript API.</p>
-	</a>
+	</figure>
+	<p>The results show that LazyHTML parser speeds are around an order of magnitude faster.</p>
+	<p>That concludes the first post in our series on HTML rewriters at Cloudflare. The next post describes how we built a new streaming rewriter on top of the ideas of LazyHTML. The major update was to provide an easier to use CSS selector API. It provides the back-end for the Cloudflare workers HTMLRewriter JavaScript API.</p>
 </div>

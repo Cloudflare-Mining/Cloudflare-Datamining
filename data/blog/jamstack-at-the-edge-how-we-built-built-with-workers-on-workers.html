@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cIhr4n65BFcEhP5C4Ic8J/467cd810242860cc5da401a8b8a8777b/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers.png" alt="">
+<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cIhr4n65BFcEhP5C4Ic8J/467cd810242860cc5da401a8b8a8777b/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>I'm extremely stoked to announce <a href="https://workers.cloudflare.com/built-with">Built with Workers</a> today – it's an awesome resource for exploring what you can build with <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. As Adam explained in <a href="https://blog.cloudflare.com/built-with-workers">our launch post</a>, showcasing developers building incredible projects with tools like Workers KV or our <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">streaming HTML rewriter</a> is a great way to celebrate users of our platform. It also helps encourage developers to try building their dream app on top of Workers. In this post, I’ll explore some of the architectural and implementation designs we made while building the site.</p>
 	<p>When we first started planning Built with Workers, we wanted to use the site as an opportunity to build a new greenfield application, showcasing the strength of the Workers platform. The Workers Developer Experience team is cross-functional: while we might spend most of our time improving our docs, or developing features for our command-line interface <a href="https://github.com/cloudflare/wrangler">Wrangler,</a> most of us have spent years developing on the web. The prospect of starting a new application is always fun, but in this instance, it was a prime chance to ask (and answer) the question, <i>"If I could build this site on Workers with whatever tools I want, what would I choose?"</i></p>
@@ -134,9 +134,9 @@ class EdgeStateEmbed {
   
   element(element) {
     const edgeStateElement = `
-      <script id="edge_state" type="application/json">
+      &lt;script id='edge_state' type='application/json'&gt;
         ${JSON.stringify(this._state)}
-      </script>
+      &lt;/script&gt;
     `
     element.prepend(edgeStateElement, { html: true })
   }
@@ -172,7 +172,7 @@ export const EdgeStateContext = React.createContext([{}, () =&gt; {}])
 export const EdgeStateProvider = ({ children }) =&gt; {
   const { isBrowser } = useSSR()
   if (!isBrowser) {
-    return &lt;&gt;{children}
+    return &lt;&gt;{children}&lt;/&gt;
   }
   
   const edgeState = parseDocumentState()
@@ -182,9 +182,9 @@ export const EdgeStateProvider = ({ children }) =&gt; {
     : setState(newState)
   
   return (
-    <edgestatecontext.provider value="{[state," updatestate]}="">
+    &lt;EdgeStateContext.Provider value={[state, updateState]}&gt;
       {children}
-    </edgestatecontext.provider>
+    &lt;/EdgeStateContext.Provider&gt;
   )
 }
 
@@ -192,8 +192,8 @@ export const EdgeStateProvider = ({ children }) =&gt; {
 const Bookmark = ({ bookmarked, project, setBookmarked, setLoaded }) =&gt; {
 const [state, setState] = React.useContext(EdgeStateContext)
 // `bookmarked` value is a simplification of actual code
-return <bookmarkbutton bookmarked="{state[project.id]}">
-}</bookmarkbutton></code></pre>
+return &lt;BookmarkButton bookmarked={state[project.id]} /&gt;
+}</code></pre>
 	<p>The combination of a straightforward JAMstack deployment platform with dynamic key-value object storage and a streaming HTML rewriter is really, really cool. This is an initial exploration into what I consider to be <i>a platform-defining feature</i>, and if you're interested in this stuff and want to continue to explore how this will influence how we write web applications, <a href="https://twitter.com/signalnerve">get in touch with me on Twitter</a>!</p>
 	<h2>The CDN is the deployment platform</h2>
 	<p>While it doesn't appear in the acronym, an unsung hero of the JAMstack architecture is <b>deployment</b>. In my local terminal, when I run <code>gatsby build</code> inside of the Built with Workers project, the result is a folder of static HTML, CSS, and JavaScript. <i>It should be easy to deploy!</i></p>

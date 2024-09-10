@@ -20,11 +20,11 @@
 		</li>
 	</ul>
 	<p>From an engineering perspective, separating application code from translations allows for making changes to strings without re-compiling and/or re-deploying code. In our React based application, externalizing most of our strings boiled down to changing blocks of code like this:</p>
-	<pre class="language-javascript"><code class="language-javascript"><button>Cancel</button>
-<button>Next</button></code></pre>
+	<pre class="language-javascript"><code class="language-javascript">&lt;Button&gt;Cancel&lt;/Button&gt;
+&lt;Button&gt;Next&lt;/Button&gt;</code></pre>
 	<p>Into this:</p>
-	<pre class="language-jsx"><code class="language-jsx"><button><trans id="signup.cancel"></trans></button>
-<button><trans id="signup.next"></trans></button>
+	<pre class="language-jsx"><code class="language-jsx">&lt;Button&gt;&lt;Trans id="signup.cancel" /&gt;&lt;/Button&gt;
+&lt;Button&gt;&lt;Trans id="signup.next" /&gt;&lt;/Button&gt;
  
 // And in a separate catalog.json file for en_US:
 {
@@ -35,11 +35,11 @@
 	<p>The <code>&lt;Trans&gt;</code> component shown above is the fundamental i18n building block in our application. In this scheme, translated strings are kept in large dictionaries keyed by a translation id. We call these dictionaries “translation catalogs”, and there are a set of translation catalogs for each language that we support.</p>
 	<p>At runtime, the <code>&lt;Trans&gt;</code> component looks up the translation in the correct catalog for the provided key and then inserts this translation into the page (via the DOM). All of an application's static text can be externalized with simple transformations like these.</p>
 	<p>However, when dynamic data needs to be intermixed with static text, the solution becomes a little more complicated. Consider the following seemingly straightforward example which is riddled with i18n landmines:</p>
-	<pre class="language-jsx"><code class="language-jsx"><span>You've selected { totalSelected } Page Rules.</span></code></pre>
+	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;</code></pre>
 	<p>It may be tempting to externalize this sentence by chopping it up into a few parts, like so:</p>
-	<pre class="language-jsx"><code class="language-jsx"><span>
- <trans id="selected.prefix"> {totalSelected } <trans id="pageRules">
-</trans></trans></span>
+	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;
+ &lt;Trans id="selected.prefix" /&gt; {totalSelected } &lt;Trans id="pageRules" /&gt;
+&lt;/span&gt;
  
 // English catalog.json
 {
@@ -91,9 +91,9 @@
 	<p>Você selecionou %{ totalSelected } Page Rules.</p>
 	<p>As you can see, the translations differ for Japanese and German. We’ve got a localization bug on our hands.</p>
 	<p>So, In order to guarantee that translators will be able to convey the true meaning of your text with fidelity, it's important to keep each sentence intact as a single externalized string. Our <code>&lt;Trans&gt;</code> component allows for easy injection of values into template strings which allows us to do exactly that:</p>
-	<pre class="language-jsx"><code class="language-jsx"><span>
-  <trans id="pageRules.selectedForDeletion" values="{{" count:="" totalselected="" }}="">
-</trans></span>
+	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;
+  &lt;Trans id="pageRules.selectedForDeletion" values={{ count: totalSelected }} /&gt;
+&lt;/span&gt;
 
 // English catalog.json
 {
@@ -120,9 +120,9 @@
 }</code></pre>
 	<p>This allows translators to have the full context of the sentence, ensuring that all words will be translated with the correct inflection.</p>
 	<p>You may have noticed another potential issue. What happens in this example when <code>totalSelected</code> is just 1? With the above code, the user would see “You've selected 1 Page Rules for deletion”. We need to conditionally pluralize the sentence based on the value of our dynamic data. This turns out to be a fairly common use case, and our <code>&lt;Trans&gt;</code> component handles this automatically via the <code>smart_count</code> feature:</p>
-	<pre class="language-jsx"><code class="language-jsx"><span>
-  <trans id="pageRules.selectedForDeletion" values="{{" smart_count:="" totalselected="" }}="">
-</trans></span>
+	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;
+  &lt;Trans id="pageRules.selectedForDeletion" values={{ smart_count: totalSelected }} /&gt;
+&lt;/span&gt;
 
 // English catalog.json
 {
@@ -145,29 +145,29 @@
 }</code></pre>
 	<p>Here, the singular and plural versions are delimited by <code>||||</code>. <code>&lt;Trans&gt;</code> will automatically select the right translation to use depending on the value of the passed in <code>totalSelected</code> variable.</p>
 	<p>Yet another stumbling block occurs when markup is mixed in with a block of text we'd like to externalize as a single string. For example, what if you need some phrase in your sentence to be a link to another page?</p>
-	<pre class="language-jsx"><code class="language-jsx"><verificationreminder>
-  Don't forget to <link>verify your email address.
-</verificationreminder></code></pre>
+	<pre class="language-jsx"><code class="language-jsx">&lt;VerificationReminder&gt;
+  Don't forget to &lt;Link&gt;verify your email address.&lt;/Link&gt;
+&lt;/VerificationReminder&gt;</code></pre>
 	<p>To solve for this use case, the <code>&lt;Trans&gt;</code> component allows for arbitrary elements to be injected into placeholders in a translation string, like so:</p>
-	<pre class="language-jsx"><code class="language-jsx"><verificationreminder>
-  <trans id="notification.email_verification" components="{[Link]}" componentprops="{[{" to:="" '="" profile'="" }]}="">
-</trans></verificationreminder>
+	<pre class="language-jsx"><code class="language-jsx">&lt;VerificationReminder&gt;
+  &lt;Trans id="notification.email_verification" Components={[Link]} componentProps={[{ to: '/profile' }]} /&gt;
+&lt;/VerificationReminder&gt;
 
 // catalog.json
 {
-  "notification.email_verification": "Don't forget to &lt;0&gt;verify your email address.<!--0-->",
+  "notification.email_verification": "Don't forget to &lt;0&gt;verify your email address.&lt;/0&gt;",
   // ...
 }</code></pre>
 	<p>In this example, the <code>&lt;Trans&gt;</code> component will replace placeholder elements (&lt;0&gt;,&lt;1&gt;, etc.) with instances of the component type located at that index in the <code>Components</code> array. It also passes along any data specified in <code>componentProps</code> to that instance. The example above would boil down to the following in React:</p>
 	<pre class="language-jsx"><code class="language-jsx">// en-US
-<verificationreminder>
-  Don't forget to <link to="/profile">verify your email address.
-</verificationreminder>
+&lt;VerificationReminder&gt;
+  Don't forget to &lt;Link to="/profile"&gt;verify your email address.&lt;/Link&gt;
+&lt;/VerificationReminder&gt;
 
 // es-ES
-<verificationreminder>
-  No olvide <link to="/profile">verificar la dirección de correo electrónico.
-</verificationreminder></code></pre>
+&lt;VerificationReminder&gt;
+  No olvide &lt;Link to="/profile"&gt;verificar la dirección de correo electrónico.&lt;/Link&gt;
+&lt;/VerificationReminder&gt;</code></pre>
 	<h3>Safety third!</h3>
 	<p>The functionality outlined above was enough for us to externalize our strings. However, it did at times result in bulky, repetitive code that was easy to mess up. A couple of pitfalls quickly became apparent.</p>
 	<p>The first was that small hardcoded strings were now easier to hide in plain sight, and because they weren't glaringly obvious to a developer until the rest of the page had been translated, the feedback loop in finding these was often days or weeks. A common solution to surfacing these issues is introducing a pseudolocalization mode into your application during development which will transform all properly internationalized strings by replacing each character with a similar looking unicode character.</p>
@@ -213,9 +213,9 @@
 	<p>If you're just getting started with i18n in a new React based web-app, react-intl and i18n-next are 2 popular libraries that supply a component similar to <code>&lt;Trans&gt;</code> described above.</p>
 	<p>The biggest pain point of the <code>&lt;Trans&gt;</code> component as outlined is that strings have to be kept in a separate file from your source code. Switching between multiple files as you author new code or modify existing features is just plain annoying. It's even more annoying if the translation files are kept far away in the directory structure, as they often need to be.</p>
 	<p>There are some new i18n libraries such as <a href="https://github.com/lingui/js-lingui">jslingui</a> that obviate this problem by taking an extraction based approach to handling translation catalogs. In this scheme, you still use a <code>&lt;Trans&gt;</code>component, but you keep your strings in the component itself, not a separate catalog:</p>
-	<pre class="language-jsx"><code class="language-jsx"><span>
-  <trans>Hmm... We couldn't find any matching websites.</trans>
-</span></code></pre>
+	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;
+  &lt;Trans&gt;Hmm... We couldn't find any matching websites.&lt;/Trans&gt;
+&lt;/span&gt;</code></pre>
 	<p>A tool that you run at build time then does the work of finding all of these strings and extracting then into catalogs for you. For example, the above would result in the following generated catalogs:</p>
 	<pre class="language-json"><code class="language-json">// locales/en_US.json
 {
@@ -234,7 +234,7 @@
 	<h3>Numbers, Dates, and Times</h3>
 	<p>Earlier when we talked about injecting data translated strings, we glossed over a major issue: the data we're injecting may also need to be formatted to conform to the user's local customs. This is true for dates, times, numbers, currencies and some other types of data.</p>
 	<p>Let's take our simple example from earlier:</p>
-	<pre class="language-jsx"><code class="language-jsx"><span>You've selected { totalSelected } Page Rules.</span></code></pre>
+	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;</code></pre>
 	<p>Without proper formatting, this will appear correct for small numbers, but as soon as things get into the thousands, localization problems will arise, since the way that digits are grouped and separated with symbols <a href="https://en.wikipedia.org/wiki/Decimal_separator">varies by culture</a>. Here's how three-hundred thousand and three hundredths is formatted in a few different locales:</p>
 	<p>Language (Country)</p>
 	<p>Code</p>

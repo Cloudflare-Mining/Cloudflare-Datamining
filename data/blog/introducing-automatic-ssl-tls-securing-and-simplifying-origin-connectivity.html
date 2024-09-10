@@ -175,11 +175,11 @@
 	<p></p>
 	<p>If you want to opt-out via the API you can make this API call on or before the grace period expiration date.&nbsp;</p>
 	<pre class="language-undefined"><code class="language-undefined">    curl --request PATCH \
-        --url https://api.cloudflare.com/client/v4/zones/<insert_zone_tag_here>/settings/ssl_automatic_mode \
-        --header 'Authorization: Bearer <insert_api_token_here>' \
+        --url https://api.cloudflare.com/client/v4/zones/&lt;insert_zone_tag_here&gt;/settings/ssl_automatic_mode \
+        --header 'Authorization: Bearer &lt;insert_api_token_here&gt;' \
         --header 'Content-Type: application/json' \
         --data '{"value":"custom"}'
-</insert_api_token_here></insert_zone_tag_here></code></pre>
+</code></pre>
 	<p></p>
 	<p>If an opt-out is triggered, there will not be a change to the currently configured SSL/TLS setting. You are also able to change the security level at any time by going to the SSL/TLS section of the dashboard and choosing the Custom setting you want (similar to how this is accomplished today).&nbsp;</p>
 	<p>If at a later point you’d like to opt-in to Automatic SSL/TLS, that option is available by changing your setting from Custom to Automatic.</p>

@@ -32,7 +32,7 @@ export interface IInterceptor {
   postProcess(req: RequestContextBase, res: Response): void;
 }</code></pre>
 	<p>And then run pre and post processing before and after the handler has executed.</p>
-	<pre class="language-typescript"><code class="language-typescript">public async handle(request: Request): Promise<response> {
+	<pre class="language-typescript"><code class="language-typescript">public async handle(request: Request): Promise&lt;Response&gt; {
 	this.preProcess(req);
 	const handler = this.route(req);
 	const res = await handler.handle(req);
@@ -50,7 +50,7 @@ private postProcess(req: RequestContextBase, res: Response) {
 	for (const interceptor of this.interceptors) {
 	  interceptor.postProcess(req, res);
 	}
-}</response></code></pre>
+}</code></pre>
 	<p>OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
 	<h3>LogInterceptor</h3>
 	<p>First we'll need a logger. This logger just redirects to console, but also keeps track of the log lines so the interceptor can retrieve them later.</p>
@@ -135,18 +135,18 @@ DEBUG: Executing log interceptor</code></pre>
 	<pre class="language-bash"><code class="language-bash">$ urldecode `curl -sD - -o /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd -H "X-Debug:true" | grep x-debug`
 x-debug: INFO: Handling: https://cryptoserviceworker.com/api/all/spot/btc-usd
 ERROR: Error: boom
-    at Router.<anonymous> (worker.js:118:35)
+    at Router.&lt;anonymous&gt; (worker.js:118:35)
     at step (worker.js:32:23)
     at Object.next (worker.js:13:53)
     at worker.js:7:71
-    at new Promise (<anonymous>)
+    at new Promise (&lt;anonymous&gt;)
     at __awaiter (worker.js:3:12)
     at Router.handle (worker.js:111:16)
     at worker.js:48:42
     at step (worker.js:32:23)
     at Object.next (worker.js:13:53)
 DEBUG: Evaluating request for logging
-DEBUG: Executing log interceptor</anonymous></anonymous></code></pre>
+DEBUG: Executing log interceptor</code></pre>
 	<h3>Summary</h3>
 	<p>In this post we:</p>
 	<ul>

@@ -71,8 +71,8 @@
 	<p>Last but not least, to implement the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace"><code><u>wildcard_replace() function</u></code></a> we needed not only to be able to match, but also to be able to replace parts of strings with captured segments. This is necessary to dynamically create HTTP redirects based on the source URL. For example, to redirect a request from <code>https://example.com/*/page/*</code> to <code>https://example.com/products/${1}?page=${2}</code>, you should be able to define the target URL using an expression like this:</p>
 	<pre class="language-undefined"><code class="language-undefined">wildcard_replace(
 http.request.full_uri, 
-"https://example.com/*/page/*", 
-"https://example.com/products/${1}?page=${2}"
+&amp;quot;https://example.com/*/page/*&amp;quot;, 
+&amp;quot;https://example.com/products/${1}?page=${2}&amp;quot;
 )</code></pre>
 	<p></p>
 	<p>This means that in order to implement this function in the Ruleset Engine, we also need our wildcard matching implementation to capture the input substrings that match the wildcard’s metacharacters.</p>

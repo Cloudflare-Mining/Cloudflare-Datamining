@@ -83,13 +83,13 @@ Should
 		// Assemble the prompt
 		const prompt = `Task: Check if there is unsafe content in 'User' messages in conversations according to our safety policy with the below categories.
 
-		<begin unsafe="" content="" categories="">
+		&lt;BEGIN UNSAFE CONTENT CATEGORIES&gt;
 		${unsafeCategories}
-		<end unsafe="" content="" categories="">
+		&lt;END UNSAFE CONTENT CATEGORIES&gt;
 
-		<begin conversation="">
+		&lt;BEGIN CONVERSATION&gt;
 		User: ${payload.userContent}
-		<end conversation="">
+		&lt;END CONVERSATION&gt;
 	`;
 		const ai = new Ai(env.AI);
 		const response = await ai.run('@hf/thebloke/llamaguard-7b-awq', {
@@ -97,7 +97,7 @@ Should
 		});
 		return Response.json(response);
 	},
-};</end></begin></end></begin></code></pre>
+};</code></pre>
 	<h3>How do I get started?</h3>
 	<p>Try out our new models within the AI section of the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai">Cloudflare dashboard</a> or take a look at our <a href="https://developers.cloudflare.com/workers-ai/models">Developer Docs</a> to get started. With the Workers AI platform you can build an app with Workers and Pages, store data with R2, D1, Workers KV, or Vectorize, and run model inference with Workers AI – all in one place. Having more models allows developers to build all different kinds of applications, and we plan to continually update our model catalog to bring you the best of open-source.</p>
 	<p>We’re excited to see what you build! If you’re looking for inspiration, take a look at our <a href="https://workers.cloudflare.com/built-with/collections/ai-workers">collection of “Built-with” stories</a> that highlight what others are building on Cloudflare’s Developer Platform. Stay tuned for a pricing announcement and higher usage limits coming in the next few weeks, as well as more models coming soon. <a href="https://discord.cloudflare.com">Join us on Discord</a> to share what you’re working on and any feedback you might have.</p>

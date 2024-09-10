@@ -36,7 +36,7 @@ export interface IRoute {
  * Handles a request.
  */
 export interface IRouteHandler {
-  handle(req: RequestContextBase): Promise<response>;
+  handle(req: RequestContextBase): Promise&lt;Response&gt;;
 }
 
 /**
@@ -51,7 +51,7 @@ export class RequestContextBase {
   constructor(public request: Request) {
     this.url = new URL(request.url);
   }
-}</response></code></pre>
+}</code></pre>
 	<p>So basically all requests will go to <code>IRouter</code>. If it finds an <code>IRoute</code> that returns an <code>IRouterHandler</code>, then it will call that and pass in <code>RequestContextBase</code>, which is just the request with a parsed URL for convenience.</p>
 	<p>I stopped short of dependency injection, so here's the router implementation with 4 routes we've implemented (Ping, Race, All and Direct). Each route corresponds to one of the four operations I defined in the API above and returns the corresponding <code>IRouteHandler</code>.</p>
 	<pre class="language-typescript"><code class="language-typescript">export class Router implements IRouter {
@@ -66,7 +66,7 @@ export class RequestContextBase {
     ];
   }
 
-  public async handle(request: Request): Promise<response> {
+  public async handle(request: Request): Promise&lt;Response&gt; {
     try {
       const req = new RequestContextBase(request);
       const handler = this.route(req);
@@ -97,19 +97,19 @@ export class RequestContextBase {
     }
     return null;
   }
-}</response></code></pre>
+}</code></pre>
 	<p>You can see above I return a NotFoundHandler if we can't find a matching route. Its implementation is below. It's easy to see how 401, 405, 500 and all the common handlers could be implemented.</p>
 	<pre class="language-typescript"><code class="language-typescript">/**
  * 404 Not Found
  */
 export class NotFoundHandler implements IRouteHandler {
-  public async handle(req: RequestContextBase): Promise<response> {
+  public async handle(req: RequestContextBase): Promise&lt;Response&gt; {
     return new Response(undefined, {
       status: 404,
       statusText: 'Unknown route',
     });
   }
-}</response></code></pre>
+}</code></pre>
 	<p>Now let's start with Ping. The framework separates matching a route and handling the request. Firstly the route:</p>
 	<pre class="language-typescript"><code class="language-typescript">export class PingRoute implements IRoute {
   public match(req: RequestContextBase): IRouteHandler | null {
@@ -124,13 +124,13 @@ export class NotFoundHandler implements IRouteHandler {
 }</code></pre>
 	<p>Simple enough, if the URL starts with <code>/api/ping</code>, handle the request with a <code>PingRouteHandler</code></p>
 	<pre class="language-typescript"><code class="language-typescript">export class PingRouteHandler implements IRouteHandler {
-  public async handle(req: RequestContextBase): Promise<response> {
+  public async handle(req: RequestContextBase): Promise&lt;Response&gt; {
     const pong = 'pong;';
     const res = new Response(pong);
     logger.info(`Responding with ${pong} and ${res.status}`);
     return new Response(pong);
   }
-}</response></code></pre>
+}</code></pre>
 	<p>So at this point, if you followed along with Part 1, you can do:</p>
 	<pre class="language-bash"><code class="language-bash">$ npm run upload
 $ curl https://cryptoserviceworker.com/api/ping
@@ -154,14 +154,14 @@ pong</code></pre>
     }
   }
 
-  public async handle(req: RequestContextBase): Promise<response> {
+  public async handle(req: RequestContextBase): Promise&lt;Response&gt; {
     const responses = await Promise.all(
       this.handlers.map(async h =&gt; h.handle(req))
     );
     const jsonArr = await Promise.all(responses.map(async r =&gt; r.json()));
     return new Response(JSON.stringify(jsonArr));
   }
-}</response></code></pre>
+}</code></pre>
 	<p>I'm cheating a bit here because I haven't shown you the code for <code>HandlerFactory</code> or the implementation of <code>handle</code> for each one. You can look up the full source <a href="https://github.com/stevenpack/cryptoserviceworker/blob/master/src/service-worker.ts">here</a>.</p>
 	<p>Take a moment here to appreciate just what's happening. You're writing very expressive async code that in a few lines, is able to multiplex a request to multiple endpoints and aggregate the results. Furthermore, it's running in a sandboxed environment in a data center very close to your end user. <b>Edge-side code is a game changer.</b></p>
 	<p>Let's see it in action.</p>
@@ -196,18 +196,18 @@ pong</code></pre>
     this.handlers = factory.getProviderHandlers();
   }
 
-  public handle(req: RequestContextBase): Promise<response> {
+  public handle(req: RequestContextBase): Promise&lt;Response&gt; {
     return this.race(req, this.handlers);
   }
 
   public async race(
     req: RequestContextBase,
     responders: IRouteHandler[]
-  ): Promise<response> {
+  ): Promise&lt;Response&gt; {
     const arr = responders.map(r =&gt; r.handle(req));
     return Promise.race(arr);
   }
-}</response></response></code></pre>
+}</code></pre>
 	<p>So who's fastest? Tonight it's gdax.</p>
 	<pre class="language-bash"><code class="language-bash">curl https://cryptoserviceworker.com/api/race/spot/btc-usd
 {  

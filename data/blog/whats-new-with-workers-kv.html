@@ -121,15 +121,15 @@ const next_value = await NAMESPACE.list({"cursor": cursor})</code></pre>
 	<pre class="language-console"><code class="language-console">$ wrangler kv:namespace create new_namespace
 Creating namespace with title "website-new_namespace"
 Success: WorkersKvNamespace {
-    id: "<id>",
+    id: "&lt;id&gt;",
     title: "website-new_namespace",
 }
 
 Add the following to your wrangler.toml:
 
 kv-namespaces = [
-    { binding = "new_namespace", id = "<id>" }
-]</id></id></code></pre>
+    { binding = "new_namespace", id = "&lt;id&gt;" }
+]</code></pre>
 	<p>I’ve redacted the namespace IDs here, but Wrangler let me know that the creation was successful, and provided me with the configuration I need to put in my <code>wrangler.toml</code>. Once I’ve done that, I can add new key/value pairs:</p>
 	<pre class="language-console"><code class="language-console">$ wrangler kv:key put "hello" "world" --binding new_namespace
 Success</code></pre>

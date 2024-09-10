@@ -39,7 +39,7 @@
 	<h4>ESI</h4>
 	<p>In 2001 a consortium of companies proposed addressing both latency and common content with <a href="https://en.wikipedia.org/wiki/Edge_Side_Includes">ESI</a> (Edge Side Includes). Edge Side Includes work by having a web page creator identify unchanging parts of the page and then making these available as separate mini-pages using HTTP.</p>
 	<p>For example, if a page contains a common header and navigation, a web page author might place that in a separate nav.html file and then in a page they are authoring enter the following XML in place of the header and navigation HTML:</p>
-	<pre class="language-bash"><code class="language-bash">\&lt;esi:include src="http://example.com/nav.html" "continue"/&gt;</code></pre>
+	<pre class="language-bash"><code class="language-bash">\&amp;lt;esi:include src=&amp;quot;http://example.com/nav.html&amp;quot; &amp;quot;continue&amp;quot;/&amp;gt;</code></pre>
 	<p>ESI is intended for use with HTML content that is delivered via a Content Delivery Network and major CDNs were the sponsor of the original proposal.</p>
 	<p>When a user retrieves a CDN managed page that contains ESI components the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> reconstructs the complete page from the component parts (which the CDN will either have to retrieve, or, more likely, have in cache since they change infrequently).</p>
 	<p>The CDN delivers the complete, normal HTML to the end user, but because the CDN has access nodes all over the world the latency between the end user web browser and the CDN is minimized. ESI tries to minimize the amount of data sent between the origin web server and the CDN (where the latency may be high) while being transparent to the browser.</p>

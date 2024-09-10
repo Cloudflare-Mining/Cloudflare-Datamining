@@ -308,17 +308,17 @@ declare class MyEntrypointType extends WorkerEntrypoint {
 // Define an interface Env specifying the bindings your client-side
 // worker expects.
 interface Env {
-  MY_SERVICE: Service<myentrypointtype>;
+  MY_SERVICE: Service&lt;MyEntrypointType&gt;;
 }
 
 // Define the client worker's fetch handler with typed Env.
-export default <exportedhandler<env>&gt; {
+export default &lt;ExportedHandler&lt;Env&gt;&gt; {
   async fetch(req, env, ctx) {
     // Now env.MY_SERVICE is properly typed!
     const result = await env.MY_SERVICE.sum(1, 2);
     return new Response(result.toString());
   }
-}</exportedhandler<env></myentrypointtype></code></pre>
+}</code></pre>
 	<h2>RPC to Durable Objects</h2>
 	<p><a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a> allow you to create a "named" worker instance somewhere on the network that multiple other workers can then talk to, in order to coordinate between them. Each Durable Object also has its own private on-disk storage where it can store state long-term.</p>
 	<p>Previously, communications with a Durable Object had to take the form of HTTP requests and responses. With RPC, you can now just declare methods on your Durable Object class, and call them on the stub. One catch: to opt into RPC, you must declare your Durable Object class with extends DurableObject, like so:</p>
@@ -338,8 +338,8 @@ export class Counter extends DurableObject {
 let value = await stub.increment();</code></pre>
 	<p><code>TypeScript</code> is supported here too, by defining your binding with type <code>DurableObjectNamespace&lt;ServerType&gt;</code>:</p>
 	<pre class="language-javascript"><code class="language-javascript">interface Env {
-  COUNTER_NAMESPACE: DurableObjectNamespace<counter>;
-}</counter></code></pre>
+  COUNTER_NAMESPACE: DurableObjectNamespace&lt;Counter&gt;;
+}</code></pre>
 	<h3>Eliding awaits with speculative calls</h3>
 	<p>When talking to a Durable Object, the object may be somewhere else in the world from the caller. RPCs must cross the network. This takes time: despite our best efforts, we still haven't figured out how to make information travel faster than the speed of light.</p>
 	<p>When you have a complex RPC interface where one call returns an object on which you wish to make further method calls, it's easy to end up with slow code that makes too many round trips over the network.</p>

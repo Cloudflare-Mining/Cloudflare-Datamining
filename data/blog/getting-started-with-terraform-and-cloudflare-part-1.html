@@ -1,4 +1,4 @@
-<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42AZg6Ra0Id70tzPLTfGpg/9b06ba72eadef025af25c8db6f6f0471/getting-started-with-terraform-and-cloudflare-part-1.png" alt="">
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42AZg6Ra0Id70tzPLTfGpg/9b06ba72eadef025af25c8db6f6f0471/getting-started-with-terraform-and-cloudflare-part-1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>You can read Part 2 of Getting Started with Terraform </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2"><i>here</i></a><i>.</i></p>
 	<p>As a Product Manager at Cloudflare, I spend quite a bit of my time talking to customers. One of the most common topics I'm asked about is configuration management. Developers want to know how they can write code to manage their Cloudflare config, without interacting with our APIs or UI directly.</p>
@@ -134,19 +134,19 @@ Resource actions are indicated with the following symbols:
 Terraform will perform the following actions:
 
   + cloudflare_record.www
-      id:          <computed>
-      created_on:  <computed>
+      id:          &lt;computed&gt;
+      created_on:  &lt;computed&gt;
       domain:      "example.com"
-      hostname:    <computed>
-      metadata.%:  <computed>
-      modified_on: <computed>
+      hostname:    &lt;computed&gt;
+      metadata.%:  &lt;computed&gt;
+      modified_on: &lt;computed&gt;
       name:        "www"
-      proxiable:   <computed>
+      proxiable:   &lt;computed&gt;
       proxied:     "true"
-      ttl:         <computed>
+      ttl:         &lt;computed&gt;
       type:        "A"
       value:       "203.0.113.10"
-      zone_id:     <computed>
+      zone_id:     &lt;computed&gt;
 
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -155,28 +155,28 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 
 Note: You didn't specify an "-out" parameter to save this plan, so Terraform
 can't guarantee that exactly these actions will be performed if
-"terraform apply" is subsequently run.</computed></computed></computed></computed></computed></computed></computed></computed></code></pre>
+"terraform apply" is subsequently run.</code></pre>
 	<p>As you can see in the above "execution plan”, Terraform is going to create a new DNS record, as requested. Values that you've explicitly specified are displayed, e.g., the value of the <code>A</code> record—<code>203.0.113.10</code>—while values that are derived based on other API calls, e.g., looking up the zone_id, or returned after the object is created, are displayed as <code>&lt;computed&gt;</code>.</p>
 	<h4>4. Applying Your Changes</h4>
 	<p>The plan command is important, as it allows you to preview the changes for accuracy before actually making them. Once you're comfortable with the execution plan, it's time to apply it:</p>
 	<pre class="language-bash"><code class="language-bash">$ terraform apply --auto-approve
 cloudflare_record.www: Creating...
-  created_on:  "" =&gt; "<computed>"
+  created_on:  "" =&gt; "&lt;computed&gt;"
   domain:      "" =&gt; "example.com"
-  hostname:    "" =&gt; "<computed>"
-  metadata.%:  "" =&gt; "<computed>"
-  modified_on: "" =&gt; "<computed>"
+  hostname:    "" =&gt; "&lt;computed&gt;"
+  metadata.%:  "" =&gt; "&lt;computed&gt;"
+  modified_on: "" =&gt; "&lt;computed&gt;"
   name:        "" =&gt; "www"
-  proxiable:   "" =&gt; "<computed>"
+  proxiable:   "" =&gt; "&lt;computed&gt;"
   proxied:     "" =&gt; "true"
-  ttl:         "" =&gt; "<computed>"
+  ttl:         "" =&gt; "&lt;computed&gt;"
   type:        "" =&gt; "A"
   value:       "" =&gt; "203.0.113.10"
-  zone_id:     "" =&gt; "<computed>"
+  zone_id:     "" =&gt; "&lt;computed&gt;"
 cloudflare_record.www: Creation complete after 1s (ID: c38d3103767284e7cd14d5dad3ab8668)
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-</computed></computed></computed></computed></computed></computed></computed></code></pre>
+</code></pre>
 	<p>Note that I specified –auto-approve on the command line for briefer output; without this flag, Terraform will show you the output of <code>terraform plan</code> and then ask for confirmation before applying it.</p>
 	<h4>Verify the results</h4>
 	<p>Logging back into the Cloudflare Dashboard and selecting the DNS tab, I can see the record that was created by Terraform:</p>
@@ -315,7 +315,7 @@ resource "cloudflare_zone_settings_override" "example-com-settings" {
 EOF</code></pre>
 	<h4>2. Preview and merge the changes</h4>
 	<p>Let's take a look at what Terraform is proposing before we apply it. We filter the <code>terraform plan</code> output to ignore those values that will be "computed”—in this case, settings that will be left at their default values. For brevity from here on out, we'll omit some extranneous Terraform output; if you'd like to see the output exactly as run, please see the <a href="https://developers.cloudflare.com/terraform/tutorial">full tutorial</a>.</p>
-	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep -v "<computed>"
+	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep -v "&lt;computed&gt;"
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -339,7 +339,7 @@ Terraform will perform the following actions:
       settings.0.waf:                         "on"
 
 
-Plan: 1 to add, 0 to change, 0 to destroy.</computed></code></pre>
+Plan: 1 to add, 0 to change, 0 to destroy.</code></pre>
 	<p>The proposed changes look good, so we'll merge them into primary and then apply them with <code>terraform apply</code>. When working on a team, you may want to require pull requests and use this opportunity to peer review any proposed configuration changes.</p>
 	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 $ git commit -m "Step 3 - Enable TLS 1.3, Always Use HTTPS, and SSL Strict mode."
@@ -373,58 +373,58 @@ curl: (35) error:1000042e:SSL routines:OPENSSL_internal:TLSV1_ALERT_PROTOCOL_VER
 	<pre class="language-bash"><code class="language-bash">$ terraform apply --auto-approve
 cloudflare_record.www: Refreshing state... (ID: c38d3103767284e7cd14d5dad3ab8668)
 cloudflare_zone_settings_override.example-com-settings: Creating...
-  initial_settings.#:                     "" =&gt; "<computed>"
-  initial_settings_read_at:               "" =&gt; "<computed>"
+  initial_settings.#:                     "" =&gt; "&lt;computed&gt;"
+  initial_settings_read_at:               "" =&gt; "&lt;computed&gt;"
   name:                                   "" =&gt; "example.com"
-  readonly_settings.#:                    "" =&gt; "<computed>"
+  readonly_settings.#:                    "" =&gt; "&lt;computed&gt;"
   settings.#:                             "" =&gt; "1"
-  settings.0.advanced_ddos:               "" =&gt; "<computed>"
-  settings.0.always_online:               "" =&gt; "<computed>"
-  settings.0.always_use_https:            "" =&gt; "<computed>"
+  settings.0.advanced_ddos:               "" =&gt; "&lt;computed&gt;"
+  settings.0.always_online:               "" =&gt; "&lt;computed&gt;"
+  settings.0.always_use_https:            "" =&gt; "&lt;computed&gt;"
   settings.0.automatic_https_rewrites:    "" =&gt; "on"
-  settings.0.brotli:                      "" =&gt; "<computed>"
-  settings.0.browser_cache_ttl:           "" =&gt; "<computed>"
-  settings.0.browser_check:               "" =&gt; "<computed>"
-  settings.0.cache_level:                 "" =&gt; "<computed>"
-  settings.0.challenge_ttl:               "" =&gt; "<computed>"
-  settings.0.cname_flattening:            "" =&gt; "<computed>"
-  settings.0.development_mode:            "" =&gt; "<computed>"
-  settings.0.edge_cache_ttl:              "" =&gt; "<computed>"
-  settings.0.email_obfuscation:           "" =&gt; "<computed>"
-  settings.0.hotlink_protection:          "" =&gt; "<computed>"
-  settings.0.http2:                       "" =&gt; "<computed>"
-  settings.0.ip_geolocation:              "" =&gt; "<computed>"
-  settings.0.ipv6:                        "" =&gt; "<computed>"
-  settings.0.max_upload:                  "" =&gt; "<computed>"
-  settings.0.minify.#:                    "" =&gt; "<computed>"
-  settings.0.mirage:                      "" =&gt; "<computed>"
-  settings.0.mobile_redirect.#:           "" =&gt; "<computed>"
-  settings.0.opportunistic_encryption:    "" =&gt; "<computed>"
-  settings.0.origin_error_page_pass_thru: "" =&gt; "<computed>"
-  settings.0.polish:                      "" =&gt; "<computed>"
-  settings.0.prefetch_preload:            "" =&gt; "<computed>"
-  settings.0.privacy_pass:                "" =&gt; "<computed>"
-  settings.0.pseudo_ipv4:                 "" =&gt; "<computed>"
-  settings.0.response_buffering:          "" =&gt; "<computed>"
-  settings.0.rocket_loader:               "" =&gt; "<computed>"
-  settings.0.security_header.#:           "" =&gt; "<computed>"
-  settings.0.security_level:              "" =&gt; "<computed>"
-  settings.0.server_side_exclude:         "" =&gt; "<computed>"
-  settings.0.sha1_support:                "" =&gt; "<computed>"
-  settings.0.sort_query_string_for_cache: "" =&gt; "<computed>"
+  settings.0.brotli:                      "" =&gt; "&lt;computed&gt;"
+  settings.0.browser_cache_ttl:           "" =&gt; "&lt;computed&gt;"
+  settings.0.browser_check:               "" =&gt; "&lt;computed&gt;"
+  settings.0.cache_level:                 "" =&gt; "&lt;computed&gt;"
+  settings.0.challenge_ttl:               "" =&gt; "&lt;computed&gt;"
+  settings.0.cname_flattening:            "" =&gt; "&lt;computed&gt;"
+  settings.0.development_mode:            "" =&gt; "&lt;computed&gt;"
+  settings.0.edge_cache_ttl:              "" =&gt; "&lt;computed&gt;"
+  settings.0.email_obfuscation:           "" =&gt; "&lt;computed&gt;"
+  settings.0.hotlink_protection:          "" =&gt; "&lt;computed&gt;"
+  settings.0.http2:                       "" =&gt; "&lt;computed&gt;"
+  settings.0.ip_geolocation:              "" =&gt; "&lt;computed&gt;"
+  settings.0.ipv6:                        "" =&gt; "&lt;computed&gt;"
+  settings.0.max_upload:                  "" =&gt; "&lt;computed&gt;"
+  settings.0.minify.#:                    "" =&gt; "&lt;computed&gt;"
+  settings.0.mirage:                      "" =&gt; "&lt;computed&gt;"
+  settings.0.mobile_redirect.#:           "" =&gt; "&lt;computed&gt;"
+  settings.0.opportunistic_encryption:    "" =&gt; "&lt;computed&gt;"
+  settings.0.origin_error_page_pass_thru: "" =&gt; "&lt;computed&gt;"
+  settings.0.polish:                      "" =&gt; "&lt;computed&gt;"
+  settings.0.prefetch_preload:            "" =&gt; "&lt;computed&gt;"
+  settings.0.privacy_pass:                "" =&gt; "&lt;computed&gt;"
+  settings.0.pseudo_ipv4:                 "" =&gt; "&lt;computed&gt;"
+  settings.0.response_buffering:          "" =&gt; "&lt;computed&gt;"
+  settings.0.rocket_loader:               "" =&gt; "&lt;computed&gt;"
+  settings.0.security_header.#:           "" =&gt; "&lt;computed&gt;"
+  settings.0.security_level:              "" =&gt; "&lt;computed&gt;"
+  settings.0.server_side_exclude:         "" =&gt; "&lt;computed&gt;"
+  settings.0.sha1_support:                "" =&gt; "&lt;computed&gt;"
+  settings.0.sort_query_string_for_cache: "" =&gt; "&lt;computed&gt;"
   settings.0.ssl:                         "" =&gt; "strict"
-  settings.0.tls_1_2_only:                "" =&gt; "<computed>"
+  settings.0.tls_1_2_only:                "" =&gt; "&lt;computed&gt;"
   settings.0.tls_1_3:                     "" =&gt; "on"
-  settings.0.tls_client_auth:             "" =&gt; "<computed>"
-  settings.0.true_client_ip_header:       "" =&gt; "<computed>"
+  settings.0.tls_client_auth:             "" =&gt; "&lt;computed&gt;"
+  settings.0.true_client_ip_header:       "" =&gt; "&lt;computed&gt;"
   settings.0.waf:                         "" =&gt; "on"
-  settings.0.webp:                        "" =&gt; "<computed>"
-  settings.0.websockets:                  "" =&gt; "<computed>"
-  zone_status:                            "" =&gt; "<computed>"
-  zone_type:                              "" =&gt; "<computed>"
+  settings.0.webp:                        "" =&gt; "&lt;computed&gt;"
+  settings.0.websockets:                  "" =&gt; "&lt;computed&gt;"
+  zone_status:                            "" =&gt; "&lt;computed&gt;"
+  zone_type:                              "" =&gt; "&lt;computed&gt;"
 cloudflare_zone_settings_override.example-com-settings: Creation complete after 2s (ID: e2e6491340be87a3726f91fc4148b125)
 
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></code></pre>
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 	<p>Now we can try the same command as above, and see that it succeeds. Niiice, TLS 1.3!</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -v --tlsv1.3 https://www.example.com 2&gt;&amp;1 | grep "SSL connection\|error"
 * SSL connection using TLSv1.3 / AEAD-AES128-GCM-SHA256</code></pre>
@@ -502,7 +502,7 @@ EOF</code></pre>
 Terraform will perform the following actions:
 
   + cloudflare_rate_limit.login-limit
-      id:                                     <computed>
+      id:                                     &lt;computed&gt;
       action.#:                               "1"
       action.0.mode:                          "simulate"
       action.0.response.#:                    "1"
@@ -527,10 +527,10 @@ Terraform will perform the following actions:
       period:                                 "60"
       threshold:                              "5"
       zone:                                   "example.com"
-      zone_id:                                <computed>
+      zone_id:                                &lt;computed&gt;
 
 
-Plan: 1 to add, 0 to change, 0 to destroy.</computed></computed></code></pre>
+Plan: 1 to add, 0 to change, 0 to destroy.</code></pre>
 	<p>The plan looks good so let's go ahead, merge it in, and apply it.</p>
 	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 $ git commit -m "Step 4 - Add rate limiting rule to protect /login."
@@ -574,10 +574,10 @@ cloudflare_rate_limit.login-limit: Creating...
   period:                                 "" =&gt; "60"
   threshold:                              "" =&gt; "5"
   zone:                                   "" =&gt; "example.com"
-  zone_id:                                "" =&gt; "<computed>"
+  zone_id:                                "" =&gt; "&lt;computed&gt;"
 cloudflare_rate_limit.login-limit: Creation complete after 1s (ID: 8d518c5d6e63406a9466d83cb8675bb6)
 
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</computed></code></pre>
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 	<p>Note that if you haven't purchased rate limiting yet, you will see the following error when attempting to apply the new rule:</p>
 	<pre class="language-bash"><code class="language-bash">Error: Error applying plan:
 

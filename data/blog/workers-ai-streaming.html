@@ -98,8 +98,8 @@
 	<p>To get started using streaming on Workers AI’s text generation models with server-sent events, set the “stream” parameter to true in the input of request. This will change the response format and <code>mime-type</code> to <code>text/event-stream</code>.</p>
 	<p>Here’s an example of using streaming with the <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api">REST API</a>:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
-"https://api.cloudflare.com/client/v4/accounts/<account>/ai/run/@cf/meta/llama-2-7b-chat-int8" \
--H "Authorization: Bearer <token>" \
+"https://api.cloudflare.com/client/v4/accounts/&lt;account&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8" \
+-H "Authorization: Bearer &lt;token&gt;" \
 -H "Content-Type:application/json" \
 -d '{ "prompt": "where is new york?", "stream": true }'
 
@@ -117,7 +117,7 @@ data: {"response":" the"}
 
 ...
 
-data: [DONE]</token></account></code></pre>
+data: [DONE]</code></pre>
 	<p>And here’s an example using a Worker script:</p>
 	<pre class="language-typescript"><code class="language-typescript">import { Ai } from "@cloudflare/ai";
 export default {

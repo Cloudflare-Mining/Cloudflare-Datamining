@@ -233,11 +233,11 @@ async function handleRequest(request) {
 	<h3>Adding todos from the UI</h3>
 	<p>At this point, we’ve built a Cloudflare Worker that takes data from Cloudflare KV and renders a static page based on it. That static page reads the data, and generates a todo list based on that data. Of course, the piece we’re missing is <i>creating</i> todos, from inside the UI. We know that we can add todos using the KV API - we could simply update the cache by saying <code>KRISTIAN_TODOS.put(newData)</code>, but how do we update it from inside the UI?</p>
 	<p>It’s worth noting here that Cloudflare’s Workers documentation suggests that any writes to your KV namespace happen via their API - that is, at its simplest form, a cURL statement:</p>
-	<pre class="language-javascript"><code class="language-javascript">curl "<https: api.cloudflare.com="" client="" v4="" accounts="" $account_id="" storage="" kv="" namespaces="" $namespace_id="" values="" first-key="">" \
+	<pre class="language-javascript"><code class="language-javascript">curl "&lt;https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/first-key&gt;" \
   -X PUT \
   -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
   -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
-  --data 'My first value!'</https:></code></pre>
+  --data 'My first value!'</code></pre>
 	<p>We’ll implement something similar by handling a second route in our worker, designed to watch for <code>PUT</code> requests to <code>/</code>. When a body is received at that URL, the worker will send the new todo data to our KV store.</p>
 	<p>I’ll add this new functionality to my worker, and in <code>handleRequest</code>, if the request method is a <code>PUT</code>, it will take the request body and update the cache:</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {

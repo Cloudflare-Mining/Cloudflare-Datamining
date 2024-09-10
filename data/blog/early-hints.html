@@ -54,16 +54,16 @@
 Host: example.com</code></pre>
 	<p><b>Server responses:</b><i>Early Hint Response</i></p>
 	<pre class="language-bash"><code class="language-bash">HTTP/1.1 103 Early Hints
-     Link: ; rel=preload; as=style
-     Link: ; rel=preload; as=script</code></pre>
+     Link: &lt;/style.css&gt;; rel=preload; as=style
+     Link: &lt;/script.js&gt;; rel=preload; as=script</code></pre>
 	<p>⏱_...Server Think Time…_ ⏱</p>
 	<p><i>Full Response</i></p>
 	<pre class="language-bash"><code class="language-bash">HTTP/1.1 200 OK
      Date: Thurs, 16 Sept 2021 11:30:00 GMT
      Content-Length: 1234
      Content-Type: text/html; charset=utf-8
-     Link: ; rel=preload; as=style
-     Link: ; rel=preload; as=script
+     Link: &lt;/style.css&gt;; rel=preload; as=style
+     Link: &lt;/script.js&gt;; rel=preload; as=script
 
 [Rest of Response]</code></pre>
 	<p>Seems simple enough. We’ve neatly communicated information to the browser on what resources it should consider preloading while the server is computing a full response.</p>

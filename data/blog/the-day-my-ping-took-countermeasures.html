@@ -1,4 +1,4 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
@@ -61,10 +61,10 @@
 	<p>While this technique of rewriting AT_SYSINFO_EHDR is pretty cool, it won't work for us. (I wonder if there is another way of doing that, but without ptrace. Maybe with some BPF? But that is another story.)</p>
 	<p>A second technique is to use <b>LD_PRELOAD</b> and preload a trivial library overloading the functions in question, and forcing them to go to slow real syscalls. This works fine:</p>
 	<pre class="language-c++"><code class="language-c++">$ cat vdso_override.c
-#include <sys syscall.h="">
-#include <sys time.h="">
-#include <time.h>
-#include <unistd.h>
+#include &lt;sys/syscall.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;time.h&gt;
+#include &lt;unistd.h&gt;
 
 int gettimeofday(struct timeval *restrict tv, void *restrict tz) {
 	return syscall(__NR_gettimeofday, (long)tv, (long)tz, 0, 0, 0, 0);
@@ -76,7 +76,7 @@ time_t time(time_t *tloc) {
 
 int clock_gettime(clockid_t clockid, struct timespec *tp) {
     return syscall(__NR_clock_gettime, (long)clockid, (long)tp, 0, 0, 0, 0);
-}</unistd.h></time.h></sys></sys></code></pre>
+}</code></pre>
 	<p>To load it:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -Wall -Wextra -fpic -shared -o vdso_override.so vdso_override.c
 
@@ -235,14 +235,39 @@ def custom_action(echo_req):
     try:
     	payload = bytes(echo_req[scapy.ICMP].payload)
     	if len(payload) &gt;= 8:
-        	ts, tu = struct.unpack_from("<ii", payload)="" payload="struct.pack(&quot;<II&quot;," (ts-0x64000000)&0xffffffff,="" tu)="" \="" +="" payload[8:]="" echo_reply="scapy.IP(" dst="echo_req[scapy.IP].src," src="echo_req[scapy.IP].dst," )="" scapy.icmp(type="0," code="0," id="echo_req[scapy.ICMP].id," seq="echo_req.payload.seq," scapy.send(echo_reply,iface="iface)" except="" exception="" as="" e:="" pass="" scapy.sniff(filter="icmp and icmp[0] = 8" ,="" iface="iface," prn="custom_action)</pre"></ii",></code>
-            <h3>Leap second</h3><p>In practice, how often does time change on a computer? The <b>NTP</b> daemon adjusts the clock all the time to account for any drift. However, these are very small changes. Apart from initial clock synchronization after boot or sleep wakeup, big clock shifts shouldn't really happen.</p><p>There are exceptions as usual. Systems that operate in virtual environments or have unreliable Internet connections often experience their clocks getting out of sync.</p><p>One notable case that affects all computers is a coordinated clock adjustment called a <a href="https://en.wikipedia.org/wiki/Leap_second">leap second</a>. It causes the clock to move backwards, which is particularly troublesome. An issue with handling leap second <a href="https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns">caused our engineers a headache in late 2016</a>.</p>
-            <figure class="kg-card kg-image-card ">
-            
-            <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4iGPlBeYYXm0RYyxhEmOMQ/59202590d520304e71088ec89e143281/Screenshot-2023-07-11-at-13.33.02.png" alt="" class="kg-image" width="1614" height="648" loading="lazy">
-            
-            </figure><p>Leap seconds often cause issues, so the current consensus is to <a href="https://www.nytimes.com/2022/11/19/science/time-leap-second-bipm.html">deprecate them by 2035</a>. However, <a href="https://en.wikipedia.org/wiki/Leap_second#International_proposals_for_elimination_of_leap_seconds">according to Wikipedia</a> the solution seem to be to just kick the can down the road:</p><blockquote><p><i>A suggested possible future measure would be to let the discrepancy increase to a full minute, which would take 50 to 100 years, and then have the last minute of the day taking two minutes in a "kind of smear" with no discontinuity.</i></p></blockquote><p>In any case, there hasn't been a leap second since 2016, there might be some in the future, but there likely won't be any after 2035. Many environments already use a <a href="https://cloudplatform.googleblog.com/2015/05/Got-a-second-A-leap-second-that-is-Be-ready-for-June-30th.html">leap second smear</a> to avoid the problem of clock jumping back.</p><p>In most cases, it might be completely fine to ignore the clock changes. When possible, to count time durations use CLOCK_MONOTONIC, which is bulletproof.</p><p>We haven't mentioned <a href="https://en.wikipedia.org/wiki/Daylight_saving_time">daylight savings</a> clock adjustments here because, from a computer perspective they are not real clock changes! Most often programmers deal with the operating system clock, which is typically set to the <a href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time">UTC timezone</a>. DST timezone is taken into account only when pretty printing the date on screen. The underlying software operates on integer values. Let's consider an example of two timestamps, which in my <a href="https://devblogs.microsoft.com/oldnewthing/20061027-00/?p=29213">Warsaw timezone</a>, appear as two different DST timezones. While it may like the clock rolled back, this is just a user interface illusion. The integer timestamps are sequential:</p>
-            <pre class="language-bash"><code class="language-bash">$ date --date=@$[1698541199+0]
+        	ts, tu = struct.unpack_from("&lt;II", payload)
+        	payload = struct.pack("&lt;II", (ts-0x64000000)&amp;0xffffffff, tu) \
+                     + payload[8:]
+
+    	echo_reply = scapy.IP(
+        	dst=echo_req[scapy.IP].src,
+        	src=echo_req[scapy.IP].dst,
+    	) / scapy.ICMP(type=0, code=0,
+                 	id=echo_req[scapy.ICMP].id,
+                 	seq=echo_req.payload.seq,
+   	  	) / payload
+    	scapy.send(echo_reply,iface=iface)
+    except Exception as e:
+        pass
+
+scapy.sniff(filter="icmp and icmp[0] = 8", iface=iface, prn=custom_action)</code></pre>
+	<h3>Leap second</h3>
+	<p>In practice, how often does time change on a computer? The <b>NTP</b> daemon adjusts the clock all the time to account for any drift. However, these are very small changes. Apart from initial clock synchronization after boot or sleep wakeup, big clock shifts shouldn't really happen.</p>
+	<p>There are exceptions as usual. Systems that operate in virtual environments or have unreliable Internet connections often experience their clocks getting out of sync.</p>
+	<p>One notable case that affects all computers is a coordinated clock adjustment called a <a href="https://en.wikipedia.org/wiki/Leap_second">leap second</a>. It causes the clock to move backwards, which is particularly troublesome. An issue with handling leap second <a href="https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns">caused our engineers a headache in late 2016</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4iGPlBeYYXm0RYyxhEmOMQ/59202590d520304e71088ec89e143281/Screenshot-2023-07-11-at-13.33.02.png" alt="" class="kg-image" width="1614" height="648" loading="lazy">
+
+	</figure>
+	<p>Leap seconds often cause issues, so the current consensus is to <a href="https://www.nytimes.com/2022/11/19/science/time-leap-second-bipm.html">deprecate them by 2035</a>. However, <a href="https://en.wikipedia.org/wiki/Leap_second#International_proposals_for_elimination_of_leap_seconds">according to Wikipedia</a> the solution seem to be to just kick the can down the road:</p>
+	<blockquote>
+		<p><i>A suggested possible future measure would be to let the discrepancy increase to a full minute, which would take 50 to 100 years, and then have the last minute of the day taking two minutes in a "kind of smear" with no discontinuity.</i></p>
+	</blockquote>
+	<p>In any case, there hasn't been a leap second since 2016, there might be some in the future, but there likely won't be any after 2035. Many environments already use a <a href="https://cloudplatform.googleblog.com/2015/05/Got-a-second-A-leap-second-that-is-Be-ready-for-June-30th.html">leap second smear</a> to avoid the problem of clock jumping back.</p>
+	<p>In most cases, it might be completely fine to ignore the clock changes. When possible, to count time durations use CLOCK_MONOTONIC, which is bulletproof.</p>
+	<p>We haven't mentioned <a href="https://en.wikipedia.org/wiki/Daylight_saving_time">daylight savings</a> clock adjustments here because, from a computer perspective they are not real clock changes! Most often programmers deal with the operating system clock, which is typically set to the <a href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time">UTC timezone</a>. DST timezone is taken into account only when pretty printing the date on screen. The underlying software operates on integer values. Let's consider an example of two timestamps, which in my <a href="https://devblogs.microsoft.com/oldnewthing/20061027-00/?p=29213">Warsaw timezone</a>, appear as two different DST timezones. While it may like the clock rolled back, this is just a user interface illusion. The integer timestamps are sequential:</p>
+	<pre class="language-bash"><code class="language-bash">$ date --date=@$[1698541199+0]
 Sun Oct 29 02:59:59 AM CEST 2023
 
 $ date --date=@$[1698541199+1]
@@ -251,5 +276,4 @@ Sun Oct 29 02:00:00 AM CET 2023</code></pre>
 	<p>Arguably, the clock jumping backwards is a rare occurrence. It's very hard to test for such cases, and I was surprised to find that <b>ping</b> made such an attempt. To avoid the problem, to measure the latency ping might use CLOCK_MONOTONIC, its developers already <a href="https://github.com/iputils/iputils/commit/4fd276cd8211c502cb87c5db0ce15cd685177216">use this time source in another place</a>.</p>
 	<p>Unfortunately this won't quite work here. Ping needs to compare send timestamp to receive timestamp from SO_TIMESTAMP CMSG, which uses the non-monotonic system clock. Linux API's are sometimes limited, and dealing with time is hard. For time being, clock adjustments will continue to confuse ping.</p>
 	<p>In any case, now we know what to do when <b>ping</b> is "<b>taking countermeasures</b>"! Pull down your periscope and check the <b>NTP</b> daemon status!</p>
-	</pre>
 </div>

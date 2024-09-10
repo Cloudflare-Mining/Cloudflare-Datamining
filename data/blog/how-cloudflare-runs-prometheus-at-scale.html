@@ -352,33 +352,33 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 # scrape to fail. 0 means no limit. Example: 100MB.
 # This is an experimental feature, this behaviour could
 # change or be removed in the future.
-[ body_size_limit: <size> | default = 0 ]
+[ body_size_limit: &lt;size&gt; | default = 0 ]
 # Per-scrape limit on number of scraped samples that will be accepted.
 # If more than this number of samples are present after metric relabeling
 # the entire scrape will be treated as failed. 0 means no limit.
-[ sample_limit: <int> | default = 0 ]
+[ sample_limit: &lt;int&gt; | default = 0 ]
 
 # Per-scrape limit on number of labels that will be accepted for a sample. If
 # more than this number of labels are present post metric-relabeling, the
 # entire scrape will be treated as failed. 0 means no limit.
-[ label_limit: <int> | default = 0 ]
+[ label_limit: &lt;int&gt; | default = 0 ]
 
 # Per-scrape limit on length of labels name that will be accepted for a sample.
 # If a label name is longer than this number post metric-relabeling, the entire
 # scrape will be treated as failed. 0 means no limit.
-[ label_name_length_limit: <int> | default = 0 ]
+[ label_name_length_limit: &lt;int&gt; | default = 0 ]
 
 # Per-scrape limit on length of labels value that will be accepted for a sample.
 # If a label value is longer than this number post metric-relabeling, the
 # entire scrape will be treated as failed. 0 means no limit.
-[ label_value_length_limit: <int> | default = 0 ]
+[ label_value_length_limit: &lt;int&gt; | default = 0 ]
 
 # Per-scrape config limit on number of unique targets that will be
 # accepted. If more than this number of targets are present after target
 # relabeling, Prometheus will mark the targets as failed without scraping them.
 # 0 means no limit. This is an experimental feature, this behaviour could
 # change in the future.
-[ target_limit: <int> | default = 0 ]</int></int></int></int></int></size></code></pre>
+[ target_limit: &lt;int&gt; | default = 0 ]</code></pre>
 	<p>Setting all the label length related limits allows you to avoid a situation where extremely long label names or values end up taking too much memory.</p>
 	<p>Going back to our metric with error labels we could imagine a scenario where some operation returns a huge error message, or even stack trace with hundreds of lines. If such a stack trace ended up as a label value it would take a lot more memory than other time series, potentially even megabytes. Since labels are copied around when Prometheus is handling queries this could cause significant memory usage increase.</p>
 	<p>Setting label_limit provides some cardinality protection, but even with just one label name and huge number of values we can see high cardinality. Passing sample_limit is the ultimate protection from high cardinality. It enables us to enforce a hard limit on the number of time series we can scrape from each application instance.</p>

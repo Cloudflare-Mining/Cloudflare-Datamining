@@ -149,9 +149,14 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 {
     unsigned int i;
 
-    for( i=0; i<length; i++)="" {="" unsigned="" int="" irolled="i*seed1;" char="" byte="(iRolled+length+seed2)%0xFF;" data[i]="byte;" }="" }<="" pre=""></length;></code>
-            <p>Since we identified above that the difference between two bytes seemed to be 0x49 or 0x4a it's worth looking at the difference between bytes in this algorithm. Simplifying, bytes are generated from:</p>
-            <pre class="language-bash"><code class="language-bash">((i * seed1) + length + seed2)%0xFF</code></pre>
+    for( i=0; i&lt;length; i++) {
+        unsigned int iRolled = i*seed1;
+        unsigned char byte = (iRolled+length+seed2)%0xFF;
+        data[i] = byte;
+    }
+}</code></pre>
+	<p>Since we identified above that the difference between two bytes seemed to be 0x49 or 0x4a it's worth looking at the difference between bytes in this algorithm. Simplifying, bytes are generated from:</p>
+	<pre class="language-bash"><code class="language-bash">((i * seed1) + length + seed2)%0xFF</code></pre>
 	<p>Ignoring the <code>% 0xff</code> for the moment that's <code>(i * seed1) + length + seed</code>. Taking the difference between two adjacent bytes (for <code>i</code> and <code>i+1</code>) gives a difference of just <code>seed1</code>.</p>
 	<p>Thus in our case it's likely that <code>seed1</code> is 0x49. It's fairly easy to end up with the following code to generate the sequence:</p>
 	<pre class="language-bash"><code class="language-bash">seed = 0x49
@@ -167,5 +172,4 @@ done</code></pre>
 			<p>Yes, we're aware that porcupines have spines/quills not spikes. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
 		</li>
 	</ol>
-	</pre>
 </div>

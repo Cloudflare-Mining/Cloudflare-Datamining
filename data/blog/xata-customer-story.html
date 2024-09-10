@@ -38,11 +38,11 @@ export const Home = () =&gt; {
   const { data = [] } = useQuery(['products'], listProducts);
 
   return (
-    <grid>
+    &lt;Grid&gt;
       {data.map((product) =&gt; (
-        <productcard key="{product.id}" product="{product}">
+        &lt;ProductCard key={product.id} product={product} /&gt;
       ))}
-    </productcard></grid>
+    &lt;/Grid&gt;
   );
 };</code></pre>
 	<p>In the code snippet above, you can see a React component that connects to an e-commerce database with products on sale. Inside the UI component, with a popular client-side data fetching library, data is retrieved from the serverless function and for each product it renders another component in a grid.</p>

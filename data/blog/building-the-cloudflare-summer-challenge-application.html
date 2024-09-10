@@ -77,29 +77,28 @@ Cache.listen(API.run);</code></pre>
   // Note: Worktop APIs
   res.setHeader('Content-Type', 'text/html;charset=utf-8');
   res.send(200, `
-    
-    
-      
-        <title>Demo | Insanity</title>
-        <style>
+    &lt;!doctype html&gt;
+    &lt;html lang="en"&gt;
+      &lt;head&gt;
+        &lt;title&gt;Demo | Insanity&lt;/title&gt;
+        &lt;style&gt;
           body {
             background: #fff;
             color: #424242;
           }
           /* more */
-        </style>
-        <script>
+        &lt;/style&gt;
+        &lt;script&gt;
           $('form').onsubmit = function (ev) {
             ev.preventDefault();
             // ...
           });
-        </script>
-      <script nonce="b4d1485a-515d-4bd3-9a64-d8ecd8f9dc59">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
-      
-        <!-- my entire page content -->
-      
-
-    
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;!-- my entire page content --&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
   `);
 });</code></pre>
 	<p>Thankfully, I planned ahead and already have a build system that produces <i>better</i> HTML files anyway. So now I just needed a way to load those built outputs into my Worker code.</p>
@@ -159,7 +158,7 @@ import type { ServerResponse } from 'worktop/response';
 // Defines the `DATA` KV binding
 declare const DATA: KV.Namespace;
 
-export function render(res: ServerResponse, template: string, values: Record<string, string=""> = {}) {
+export function render(res: ServerResponse, template: string, values: Record&lt;string, string&gt; = {}) {
   for (let key in values) {
     template = template.replace('{{ ' + key + ' }}', values[key]);
   }
@@ -167,7 +166,7 @@ export function render(res: ServerResponse, template: string, values: Record<str
   res.send(200, template);
 }
   
-export function toCount(): Promise<string> {
+export function toCount(): Promise&lt;string&gt; {
   return DATA.get('::remain', 'text').then(v =&gt; v || '300+');
 }
   
@@ -183,7 +182,7 @@ API.add('GET', '/', async (req, res) =&gt; {
   
   // Render the HTML, passing in `count` variable
   return utils.render(res, LANDING, { count });
-});</string></string,></code></pre>
+});</code></pre>
 	<p>With these changes, the landing page will always check the KV namespace for the latest <code>::remain</code> value and inject it into the correct location. If you’re interested in checking out the project’s <a href="https://github.com/cloudflare/developer-summer-challenge/blob/master/worker/index.ts">source code</a>, you’ll find that this pattern is used in nearly every HTML response.</p>
 	<h2>Accepting Form Submissions</h2>
 	<p>As expected, this application made heavy use of form submissions. Luckily, the Fetch API offers a variety of <a href="https://fetch.spec.whatwg.org/#body">built-in body parsers</a> to make retrieval of the data trivial. Additionally, <code>worktop</code> offers a convenience function that will automatically invoke the correct parser based on the request’s <code>Content-Type</code> header. It’s aptly named <code>req.body()</code>.</p>
@@ -194,7 +193,7 @@ import * as utils from './utils';
 
 API.add('POST', '/signup', async (req, res) =&gt; {
   try {
-    var input = await req.body<entry>();
+    var input = await req.body&lt;Entry&gt;();
   } catch (err) {
     return toError(res, 400, 'Error parsing input');
   }
@@ -226,7 +225,7 @@ API.add('POST', '/signup', async (req, res) =&gt; {
   // The `input` is valid!
   
   return res.send(200, 'TODO: finish me');
-});</entry></code></pre>
+});</code></pre>
 	<p>Only after the data is considered valid can data be stored into KV for future use. For the initial registration, a number of things need to happen:</p>
 	<ol>
 		<li>
@@ -258,7 +257,7 @@ function toError(res: ServerResponse, status: number, reason: string) {
 
 API.add('POST', '/signup', async (req, res) =&gt; {
   try {
-    var input = await req.body<entry>();
+    var input = await req.body&lt;Entry&gt;();
   } catch (err) {
     return toError(res, 400, 'Error parsing input');
   }
@@ -277,11 +276,11 @@ API.add('POST', '/signup', async (req, res) =&gt; {
   // Generate new `Entry` record
   let entry = Signup.prepare({ email, firstname, lastname });
 
-  // create "user:<unique email="">" document
+  // create "user:&lt;unique email&gt;" document
   let isOK = await Signup.save(entry);
   if (!isOK) return toError(res, 500, 'Error persisting entry');
 
-  // create "code:<unique value="">" document
+  // create "code:&lt;unique value&gt;" document
   isOK = await Code.save(entry);
   if (!isOK) return toError(res, 500, 'Error saving unique code');
 
@@ -291,7 +290,7 @@ API.add('POST', '/signup', async (req, res) =&gt; {
 
   // render "Thank you, check your {{ email }} for next steps" page
   return utils.render(res, CONFIRM, { email: entry.email });
-});</unique></unique></entry></code></pre>
+});</code></pre>
 	<p>A full HTML response is returned, which means that the client-side form handler should be able to see this content and render it directly in the browser window. This can be seen in the following <code>index.js</code> snippet, which was referenced earlier in the <code>submit/index.html</code> as an injected asset:</p>
 	<pre class="language-js"><code class="language-js">// (client) index.js
 
@@ -356,8 +355,8 @@ declare const SPARKPOST_KEY: string;
 async function send(
   templateid: string,
   recipient: Entry,
-  values?: Record<string, string="">
-): Promise<boolean> {
+  values?: Record&lt;string, string&gt;
+): Promise&lt;boolean&gt; {
   const res = await fetch('https://api.sparkpost.com/api/v1/transmissions', {
     method: 'POST',
     headers: {
@@ -393,12 +392,12 @@ async function send(
  * Confirming user's signup
  * Sending unique submission form
  */
-export function confirm(entry: Entry): Promise<boolean> {
+export function confirm(entry: Entry): Promise&lt;boolean&gt; {
   return send('devchallenge-confirm', entry, {
     firstname: entry.firstname,
     code: entry.code,
   });
-}</boolean></boolean></string,></code></pre>
+}</code></pre>
 	<p>The above snippet includes the <i>entire</i> <code>POST</code> request formatter – there’s nearly more type-hinting than there is code! Also shown is an example <code>confirm</code> method, which is responsible for sending the unique submission link to the newly-registered user. You’ll notice that <code>firstname</code> and <code>code</code> are the injected variables, required by the “devchallenge-confirm” template.</p>
 	<h2>Overall Performance</h2>
 	<p>I’d call this a success!</p>

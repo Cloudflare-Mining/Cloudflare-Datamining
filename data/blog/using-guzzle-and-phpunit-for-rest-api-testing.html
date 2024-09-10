@@ -15,14 +15,14 @@ $ composer require guzzlehttp/guzzle
 $ composer update</code></pre>
 	<p>When we ran <code>composer require</code> for each of the two packages, Composer went ahead and actually downloaded the packages we want, these are stored in the <code>vendor</code> directory. Additionally when we ran <code>composer update</code>, Composer updated it’s <a href="http://www.php-fig.org/psr/psr-4">PSR-4</a> autoload script that allows us to pull in all the dependencies we’ve required with one file include, you can find this in <code>vendor/autoload.php</code>.</p>
 	<p>With our dependencies in place, we can now configure PHPUnit to use Guzzle. In order to do this, we need to tell PHPUnit where our Composer autoload file is, but also where our tests are located. We can do this through writing a <code>phpunit.xml</code> in the root directory of our project:</p>
-	<pre class="language-xml"><code class="language-xml"><!--?xml version="1.0" encoding="UTF-8"?-->
-<phpunit bootstrap="vendor/autoload.php">
-    <testsuites>
-        <testsuite name="REST API Test Suite">
-            <directory suffix=".php">./tests/</directory>
-        </testsuite>
-    </testsuites>
-</phpunit></code></pre>
+	<pre class="language-xml"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;phpunit bootstrap="vendor/autoload.php"&gt;
+    &lt;testsuites&gt;
+        &lt;testsuite name="REST API Test Suite"&gt;
+            &lt;directory suffix=".php"&gt;./tests/&lt;/directory&gt;
+        &lt;/testsuite&gt;
+    &lt;/testsuites&gt;
+&lt;/phpunit&gt;</code></pre>
 	<p>In the XML above, the two noteworthy elements are the opening <code>phpunit</code> tag (which defines with a bootstrap property where our Composer autoload script is), additionally we have a <code>testsuite</code> element which defines our test suites (and a child <code>directory</code> property to define where the specific tests live). From here, we can just add an empty directory called <code>tests</code> for our tests to reside in.</p>
 	<p>If we now run PHPUnit (through the command <code>./vendor/bin/phpunit</code>), we should see an output similar to the one I get below:</p>
 	<figure class="kg-card kg-image-card ">
@@ -36,13 +36,13 @@ $ composer update</code></pre>
   }</code></pre>
 	<h2>Writing our Tests</h2>
 	<p>As an example, I’ll be writing tests against an endpoint at httpbin.org. The first test I’ll write will be against the <code>/user-agent</code> endpoint, so I’ll create a file called <code>UserAgentTest.php</code>, be sure to extend the <code>PHPUnit_Framework_TestCase</code> class:</p>
-	<pre class="language-php"><code class="language-php"><!--?php
+	<pre class="language-php"><code class="language-php">&lt;?php
 
 class UserAgentTest extends PHPUnit_Framework_TestCase
 {
-}</pre--></code>
-            <p>Before each test, PHPUnit will run the <code>setUp</code> method and after the test has executed it will run the <code>tearDown</code> method in the class (if they exist). By utilising these methods we can instantiate our Guzzle HTTP client ready for each test and then return to a clean slate afterwards:</p>
-            <pre class="language-php"><code class="language-php"><!--?php
+}</code></pre>
+	<p>Before each test, PHPUnit will run the <code>setUp</code> method and after the test has executed it will run the <code>tearDown</code> method in the class (if they exist). By utilising these methods we can instantiate our Guzzle HTTP client ready for each test and then return to a clean slate afterwards:</p>
+	<pre class="language-php"><code class="language-php">&lt;?php
 
 class UserAgentTest extends PHPUnit_Framework_TestCase
 {
@@ -50,7 +50,7 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this--->http = new GuzzleHttp\Client(['base_uri' =&gt; 'https://httpbin.org/']);
+        $this-&gt;http = new GuzzleHttp\Client(['base_uri' =&gt; 'https://httpbin.org/']);
     }
 
     public function tearDown() {
@@ -88,5 +88,4 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
 	<h2>Conclusion</h2>
 	<p>That’s all there is to this simple approach to API testing. If you want some insight into the overall code, feel free to review the project files in the <a href="https://github.com/IcyApril/Test-the-REST">Github repository</a>.</p>
 	<p>If you find yourself using this testing set-up, be sure to review the <a href="http://docs.guzzlephp.org/en/latest/request-options.html">Guzzle Request Options</a> to learn what kind of HTTP requests you can run with Guzzle and also check out the <a href="https://phpunit.de/manual/current/en/appendixes.assertions.html">types of assertions</a> of you can run with PHPUnit.</p>
-	</pre>
 </div>

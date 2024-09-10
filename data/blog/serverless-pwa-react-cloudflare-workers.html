@@ -20,12 +20,12 @@ import ReactDOMServer from "react-dom/server";
 
 class HelloMessage extends React.Component {
   render() {
-    return <div>Hello, {this.props.name} ?</div>;
+    return &lt;div&gt;Hello, {this.props.name} ?&lt;/div&gt;;
   }
 }
 
 async function handleRequest(event) {
-  return new Response(ReactDOMServer.renderToString(<hellomessage name="World">), {
+  return new Response(ReactDOMServer.renderToString(&lt;HelloMessage name="World" /&gt;), {
     headers: {
       "Content-Type": "text/html"
     }
@@ -35,16 +35,16 @@ async function handleRequest(event) {
 self.addEventListener("fetch", event =&gt; {
   event.respondWith(handleRequest(event));
 });
-</hellomessage></code></pre>
+</code></pre>
 	<p>Other than setting up Webpack to bundle your code, this is pretty much all you need to get started with React and Cloudflare Workers. But <i>Hello, World!</i> is hardly a startup website. Thankfully, since all startup websites look exactly the same it's really not that hard to build one. First, I mapped the paths to pages:</p>
 	<pre class="language-jsx"><code class="language-jsx">let routes = {
-  "/": <home>,
-  "/hype": <hype>,
-  "/careers": <careers>
-};</careers></hype></home></code></pre>
+  "/": &lt;Home /&gt;,
+  "/hype": &lt;Hype /&gt;,
+  "/careers": &lt;Careers /&gt;
+};</code></pre>
 	<p>Instead of rendering any old component, I just used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/URL">URL</a>'s <code>pathname</code>, available both in the browser and the edge, to pick the correct component.</p>
-	<pre class="language-jsx"><code class="language-jsx">const header = ` <!-- ... -->`;
-const footer = ` `;
+	<pre class="language-jsx"><code class="language-jsx">const header = `&lt;!DOCTYPE html&gt; &lt;!-- ... --&gt;`;
+const footer = `&lt;/html&gt; &lt;!-- ... --&gt;`;
 async function handleRequest(event) {
      const u = new URL(event.request.url);
     let body = ReactDOMServer.renderToString(React.cloneElement(routes[u.pathname], {name:"World"} ));

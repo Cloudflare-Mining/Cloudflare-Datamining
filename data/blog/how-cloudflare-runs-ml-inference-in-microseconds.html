@@ -57,47 +57,47 @@ fn zero_allocations() {
 	<p>By removing memory allocations and implementing buffer re-use, we optimize the execution duration of the sample model included in the CatBoost repository by 10%. Our production models see gains up to 15%.</p>
 	<h3>Optimize for single-document evaluation</h3>
 	<p>By optimizing CatBoost to evaluate a single set of features at a time, we reduce memory allocations and reduce latency. The CatBoost API has several functions which are optimized for evaluating multiple documents at a time, but this API does not benefit our application where requests are evaluated in the order they are received, and delaying processing to coalesce batches is undesirable. To support evaluation of a variable number of documents, the CatBoost implementation allocates vectors and iterates over the input documents, writing them into the vectors.</p>
-	<pre class="language-cpp"><code class="language-cpp">TVector<tconstarrayref<float>&gt; floatFeaturesVec(docCount);
-TVector<tconstarrayref<int>&gt; catFeaturesVec(docCount);
+	<pre class="language-cpp"><code class="language-cpp">TVector&lt;TConstArrayRef&lt;float&gt;&gt; floatFeaturesVec(docCount);
+TVector&lt;TConstArrayRef&lt;int&gt;&gt; catFeaturesVec(docCount);
 for (size_t i = 0; i &lt; docCount; ++i) {
     if (floatFeaturesSize &gt; 0) {
-        floatFeaturesVec[i] = TConstArrayRef<float>(floatFeatures[i], floatFeaturesSize);
+        floatFeaturesVec[i] = TConstArrayRef&lt;float&gt;(floatFeatures[i], floatFeaturesSize);
     }
     if (catFeaturesSize &gt; 0) {
-        catFeaturesVec[i] = TConstArrayRef<int>(catFeatures[i], catFeaturesSize);
+        catFeaturesVec[i] = TConstArrayRef&lt;int&gt;(catFeatures[i], catFeaturesSize);
     }
 }
-FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesVec, catFeaturesVec, TArrayRef<double>(result, resultSize));</double></int></float></tconstarrayref<int></tconstarrayref<float></code></pre>
+FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesVec, catFeaturesVec, TArrayRef&lt;double&gt;(result, resultSize));</code></pre>
 	<p>To evaluate a single document, however, CatBoost only needs access to a reference to contiguous memory holding feature values. The above code can be replaced with the following:</p>
-	<pre class="language-cpp"><code class="language-cpp">TConstArrayRef<float> floatFeaturesArray = TConstArrayRef<float>(floatFeatures, floatFeaturesSize);
-TConstArrayRef<int> catFeaturesArray = TConstArrayRef<int>(catFeatures, catFeaturesSize);
-FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesArray, catFeaturesArray, TArrayRef<double>(result, resultSize));</double></int></int></float></float></code></pre>
+	<pre class="language-cpp"><code class="language-cpp">TConstArrayRef&lt;float&gt; floatFeaturesArray = TConstArrayRef&lt;float&gt;(floatFeatures, floatFeaturesSize);
+TConstArrayRef&lt;int&gt; catFeaturesArray = TConstArrayRef&lt;int&gt;(catFeatures, catFeaturesSize);
+FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesArray, catFeaturesArray, TArrayRef&lt;double&gt;(result, resultSize));</code></pre>
 	<p>Similar to the C++ implementation, the CatBoost Rust bindings also allocate vectors to support multi-document evaluation. For example, the bindings iterate over a vector of vectors, mapping it to a newly allocated vector of pointers:</p>
 	<pre class="language-rust"><code class="language-rust">let mut float_features_ptr = float_features
    .iter()
    .map(|x| x.as_ptr())
-   .collect::<vec<_>&gt;();</vec<_></code></pre>
+   .collect::&lt;Vec&lt;_&gt;&gt;();</code></pre>
 	<p>But in the single-document case, we don't need the outer vector at all. We can simply pass the inner pointer value directly:</p>
 	<pre class="language-rust"><code class="language-rust">let float_features_ptr = float_features.as_ptr();</code></pre>
 	<h3>Reusing buffers</h3>
 	<p>The previous API in the Rust bindings accepted owned <code>Vec</code>s as input. By taking ownership of a heap-allocated data structure, the function also takes responsibility for freeing the memory at the conclusion of its execution. This is undesirable as it forecloses the possibility of buffer reuse. Additionally, categorical features are passed as owned <code>String</code>s, which prevents us from passing references to bytes in the original request. Instead, we must allocate a temporary <code>String</code> on the heap and copy bytes into it.</p>
 	<pre class="language-rust"><code class="language-rust">pub fn calc_model_prediction(
 	&amp;self,
-	float_features: Vec<vec<f32>&gt;,
-	cat_features: Vec<vec<string>&gt;,
-) -&gt; CatBoostResult<vec<f64>&gt; { ... }</vec<f64></vec<string></vec<f32></code></pre>
+	float_features: Vec&lt;Vec&lt;f32&gt;&gt;,
+	cat_features: Vec&lt;Vec&lt;String&gt;&gt;,
+) -&gt; CatBoostResult&lt;Vec&lt;f64&gt;&gt; { ... }</code></pre>
 	<p>Let's rewrite this function to take <code>&amp;[f32]</code> and <code>&amp;[&amp;str]</code>:</p>
 	<pre class="language-rust"><code class="language-rust">pub fn calc_model_prediction_single(
 	&amp;self,
 	float_features: &amp;[f32],
 	cat_features: &amp;[&amp;str],
-) -&gt; CatBoostResult<f64> { ... }</f64></code></pre>
+) -&gt; CatBoostResult&lt;f64&gt; { ... }</code></pre>
 	<p>But, we also execute several models per request, and those models may use the same categorical features. Instead of calculating the hash for each separate model we execute, let's compute the hashes first and then pass them to each model that requires them:</p>
 	<pre class="language-rust"><code class="language-rust">pub fn calc_model_prediction_single_with_hashed_cat_features(
 	&amp;self,
 	float_features: &amp;[f32],
 	hashed_cat_features: &amp;[i32],
-) -&gt; CatBoostResult<f64> { ... }</f64></code></pre>
+) -&gt; CatBoostResult&lt;f64&gt; { ... }</code></pre>
 	<h2>Summary</h2>
 	<p>By optimizing away unnecessary memory allocations in the bot management module, we reduced P50 latency from 388us to 309us (20%), and reduced P99 latency from 940us to 813us (14%). And, in many cases, the optimized code is shorter and easier to read than the unoptimized implementation.</p>
 	<p>These optimizations were targeted at model execution in the bot management module. To learn more about how we are porting bot management from Lua to Rust, check out <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">this blog post</a>.</p>

@@ -49,40 +49,40 @@
 		</li>
 	</ul>
 	<p>Before we dive into actual filters, here are partial TypeScript interfaces to illustrate filter APIs:</p>
-	<pre class="language-javascript"><code class="language-javascript">interface FilterExecutor<type, context,="" returntype="" extends="" type="" |="" void=""> {
-    apply(filterChain: { next: (c: Context, obj: Type) =&gt; ReturnType | Promise<returntype> }&gt;, context: Context, obj: Type): ReturnType | Promise<returntype>;
+	<pre class="language-javascript"><code class="language-javascript">interface FilterExecutor&lt;Type, Context, ReturnType extends Type | void&gt; {
+    apply(filterChain: { next: (c: Context, obj: Type) =&gt; ReturnType | Promise&lt;ReturnType&gt; }&gt;, context: Context, obj: Type): ReturnType | Promise&lt;ReturnType&gt;;
 }
 interface RequestFilterContext {
     // Request URL
     url: URL;
     // Short-circuit request filters 
-    respondWith(response: Response | Promise<response>): void;
+    respondWith(response: Response | Promise&lt;Response&gt;): void;
     // Short-circuit all filters
-    respondWithAndStop(response: Response | Promise<response>): void;
+    respondWithAndStop(response: Response | Promise&lt;Response&gt;): void;
     // Add additonal response filter
     appendResponseFilter(filter: ResponseFilter): void;
     // Add body filter
     appendBodyFilter(filter: BodyFilter): void;
 }
-interface RequestFilter extends FilterExecutor<request, requestfiltercontext,="" request=""> { };
+interface RequestFilter extends FilterExecutor&lt;Request, RequestFilterContext, Request&gt; { };
 interface ResponseFilterContext {
     readonly startMs: number;
     readonly endMs: number;
     readonly url: URL;
-    waitUntil(promise: Promise<any>): void;
-    respondWith(response: Response | Promise<response>): void;
-    respondWithAndStop(response: Response | Promise<response>): void;
+    waitUntil(promise: Promise&lt;any&gt;): void;
+    respondWith(response: Response | Promise&lt;Response&gt;): void;
+    respondWithAndStop(response: Response | Promise&lt;Response&gt;): void;
     appendBodyFilter(filter: BodyFilter): void;
 }
-interface ResponseFilter extends FilterExecutor<response, responsefiltercontext,="" response=""> { };
+interface ResponseFilter extends FilterExecutor&lt;Response, ResponseFilterContext, Response&gt; { };
 interface BodyFilterContext {
-    waitUntil(promise: Promise<any>): void;
+    waitUntil(promise: Promise&lt;any&gt;): void;
 }
 interface ChunkChain {
     public next: ChunkChain | null;
     public chunk: Uint8Array;
 }
-interface BodyFilter extends MutableFilterExecutor<chunkchain |="" null,="" bodyfiltercontext,="" chunkchain="" null=""> { };</chunkchain></any></response,></response></response></any></request,></response></response></returntype></returntype></type,></code></pre>
+interface BodyFilter extends MutableFilterExecutor&lt;ChunkChain | null, BodyFilterContext, ChunkChain | null&gt; { };</code></pre>
 	<p>Request filter — Simple Redirects</p>
 	<hr>
 	<p>Firstly, we would like to point out that this is very niche use case, if your platform supports redirects natively, you should absolutely do it through your platform, but there are a number of limited, legacy or bespoke platforms, where redirects are not supported or are limited, or are charged for (per line) by your hosting or platform. For example, Github Pages only support redirects via HTML refresh meta tag.</p>

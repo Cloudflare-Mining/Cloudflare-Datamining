@@ -18,7 +18,7 @@
   
 app = Flask(__name__)
 
-@app.route('/api/v1/token/<key>', methods=['GET'])  
+@app.route('/api/v1/token/&lt;key&gt;', methods=['GET'])  
 def token(key):  
 	test_data = {  
 		"e8990ab9be26": "3OX9+p39QLIvE6+x/w=",  
@@ -27,7 +27,7 @@ def token(key):
 	secret = test_data.get(key)  
 	if secret is None:  
 		abort(404)  
-	return jsonify({"key": key, "token": secret})</key></code></pre>
+	return jsonify({"key": key, "token": secret})</code></pre>
 	<p></p>
 	<p>This tiny service will simply respond to a GET request with some secret data, given a key.</p>
 	<h3>Using Docker</h3>

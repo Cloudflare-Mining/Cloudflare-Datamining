@@ -5,7 +5,7 @@
 	<h3>OGNL, again</h3>
 	<p>Apache Struts RCE payloads often come in the form of Object-Graph Navigation Library (OGNL) expressions. OGNL is a language for interacting with the properties and functions of Java classes and Apache Struts supports it in many contexts.</p>
 	<p>For example, the snippet below uses OGNL to dynamically insert the value "5" into a webpage by calling a function.</p>
-	<pre class="language-bash"><code class="language-bash"><s:property value="%{getSum(2,3)}"></s:property></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;s:property value="%{getSum(2,3)}" /&gt;</code></pre>
 	<p>OGNL expressions can also be used for more general code execution:</p>
 	<pre class="language-bash"><code class="language-bash">${
     #_memberAccess["allowStaticMethodAccess"]=true,
@@ -17,16 +17,16 @@
 	<p>For example <a href="https://cwiki.apache.org/confluence/display/WW/S2-003">S2-003</a>, <a href="https://cwiki.apache.org/confluence/display/WW/S2-005">S2-005</a> and <a href="https://cwiki.apache.org/confluence/display/WW/S2-009">S2-009</a> allowed OGNL expressions to be included in HTTP Parameters. In <a href="https://cwiki.apache.org/confluence/display/WW/S2-045">S2-045</a>, expressions could be supplied via the ‘Content-Type’ header. &nbsp;And <a href="https://cwiki.apache.org/confluence/display/WW/S2-048">S2-048</a> worked by inserting OGNL expressions anywhere they might be used incorrectly with the ActionMessage class (most likely via an HTTP parameter).</p>
 	<p>With <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">S2-057</a>, the payload is supplied via an action’s “namespace”. Semmel do a great job of explaining the exact conditions for this in their disclosure <a href="https://semmle.com/news/apache-struts-CVE-2018-11776">post</a>.</p>
 	<p>An example is to omit the "namespace" parameter from the &nbsp;redirectAction result type.</p>
-	<pre class="language-javascript"><code class="language-javascript"><package name="public" extends="struts-default">
-    <action name="login" class="...">
-        <!-- Redirect to another namespace -->
-        <result type="redirectAction">
-            <param name="actionName">dashboard
-            <!-- namespace is omitted -->
-            <!--<param name="namespace">/secure</param>-->
-        </result>
-    </action>
-</package></code></pre>
+	<pre class="language-javascript"><code class="language-javascript">&lt;package name="public" extends="struts-default"&gt;
+    &lt;action name="login" class="..."&gt;
+        &lt;!-- Redirect to another namespace --&gt;
+        &lt;result type="redirectAction"&gt;
+            &lt;param name="actionName"&gt;dashboard&lt;/param&gt;
+            &lt;!-- namespace is omitted --&gt;
+            &lt;!--&lt;param name="namespace"&gt;/secure&lt;/param&gt;--&gt;
+        &lt;/result&gt;
+    &lt;/action&gt;
+&lt;/package&gt;</code></pre>
 	<p>The documentation describes this parameter as optional. If you don't include an explicit "namespace" then the client can supply it in the URI.</p>
 	<pre class="language-bash"><code class="language-bash">vulnerablesite.com/struts2-blank/my-current-name-space/HelloWorld.action</code></pre>
 	<p>If the client inserts an OGNL expression instead, it will be executed.</p>

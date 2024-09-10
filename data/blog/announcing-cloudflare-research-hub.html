@@ -15,11 +15,11 @@
 	<p>Having this conversation led us to re-examine the necessity of using client-side scripts for the site at all. Why not remove the dependency on JavaScript? Cloudflare's business model is based on making websites faster, not on tracking users, so why would we require JavaScript when we do not need much client-side dynamism? Could we build such an informational site simply, use tools easily inspectable by developers and deploy with <a href="https://pages.cloudflare.com">Cloudflare Pages</a> from Github?</p>
 	<p>We have avoided the use of frameworks, keeping our HTML simple and avoided minification since it is not really necessary here. We appreciate being able to peek under the hood and these choices allow the browser’s “View Page Source” right-click option on site pages to reveal human-readable code!</p>
 	<p>We did not want the HTML and CSS to be difficult to follow. Instead of something like:</p>
-	<pre class="language-bash"><code class="language-bash"><article class="w-100 w-50-l mb4 ph3 bb b--gray8 bn-l">
-  <p class="f3 fw5 gray5 my">September 17, 2021 2:00PM</p>
-  <a href="https://blog.cloudflare.com/tag/another" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2">Another</a>
+	<pre class="language-bash"><code class="language-bash">&lt;article class="w-100 w-50-l mb4 ph3 bb b--gray8 bn-l"&gt;
+  &lt;p class="f3 fw5 gray5 my"&gt;September 17, 2021 2:00PM&lt;/p&gt;
+  &lt;a href="/tag/another/" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2"&gt;Another&lt;/a&gt;
 ...
-</article></code></pre>
+&lt;/article&gt;</code></pre>
 	<p>where CSS classes are repeated, again and again, in source code we decided to lean on the kind of traditional hierarchical style declarations that put the C for “Cascading” in CSS.</p>
 	<p>We questioned whether in our serving of the site we needed to force the browser to re-check for content changes on every page visit. For this kind of website, always returning <code>"**max-age=0, must-revalidate, public"**</code> didn’t seem necessary.</p>
 	<p>The <a href="https://research.cloudflare.com">research.cloudflare.com</a> site is a work in progress and embraces standards-based web development choices. We do not use JavaScript to enable lazy loading of images but instead lean on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-loading">loading</a> attribute of the <code>img</code> tag. Because we do not have many images that lie beneath the fold it is okay for us to use this even as some browsers work to add support for this specification. We use the limited <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">standardized CSS variable support</a> to avoid needing a style pre-processor while still using custom colour variables.</p>

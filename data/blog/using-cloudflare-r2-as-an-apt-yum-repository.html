@@ -54,7 +54,7 @@ Version: 2022.8.0
 License: Apache License Version 2.0
 Vendor: Cloudflare
 Architecture: amd64
-Maintainer: Cloudflare <support@cloudflare.com>
+Maintainer: Cloudflare &lt;support@cloudflare.com&gt;
 Installed-Size: 30736
 Homepage: https://github.com/cloudflare/cloudflared
 Priority: extra
@@ -64,7 +64,7 @@ Size: 15286808
 SHA256: c47ca10a3c60ccbc34aa5750ad49f9207f855032eb1034a4de2d26916258ccc3
 SHA1: 1655dd22fb069b8438b88b24cb2a80d03e31baea
 MD5sum: 3aca53ccf2f9b2f584f066080557c01e
-Description: Cloudflare Tunnel daemon</support@cloudflare.com></code></pre>
+Description: Cloudflare Tunnel daemon</code></pre>
 	<p>Notice the Filename field. This is where apt gets the deb from before running a dpkg command on it. What all of this means is the apt repository (and the yum repositories too) is basically a structured file system of mostly plaintext files and a deb.</p>
 	<p>The deb file is a Debian software package that contains two things: installable data (in our case, the <i>cloudflared</i> binary) and metadata about the installable.</p>
 	<h2>Building our own apt repository</h2>
@@ -72,13 +72,13 @@ Description: Cloudflare Tunnel daemon</support@cloudflare.com></code></pre>
 	<h3>Create a deb file out of the binary</h3>
 	<p><b>Note:</b> It is optional but recommended one signs the packages. See the section about how apt verifies packages <a href="https://blog.cloudflare.com/dont-use-apt-key">here</a><i>.</i></p>
 	<p>Debian files can be built by the <a href="https://man7.org/linux/man-pages/man1/dpkg-buildpackage.1.html">dpkg-buildpackage</a> tool in a linux or Debian environment. We use a handy command line tool called fpm (<a href="https://fpm.readthedocs.io/en/v1.13.1">https://fpm.readthedocs.io/en/v1.13.1/</a>) to do this because it works for both rpm and deb.</p>
-	<pre class="language-bash"><code class="language-bash">$ fpm -s <dir> -t deb -C /path/to/project -name <project_name> –version <version></version></project_name></dir></code></pre>
+	<pre class="language-bash"><code class="language-bash">$ fpm -s &lt;dir&gt; -t deb -C /path/to/project -name &lt;project_name&gt; –version &lt;version&gt;</code></pre>
 	<p>This yields a .deb file.</p>
 	<h3>Create plaintext files needed by apt to lookup downloads</h3>
 	<p>Again, these files can be built by hand, but there are multiple <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#Debian_Repository_Generation_Tools.">tools</a> available to generate this:</p>
 	<p>We use <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#reprepro.">reprepro</a>.</p>
 	<p>Using it is as simple as</p>
-	<pre class="language-bash"><code class="language-bash">$ reprepro buster includedeb <path to="" the="" deb=""></path></code></pre>
+	<pre class="language-bash"><code class="language-bash">$ reprepro buster includedeb &lt;path/to/the/deb&gt;</code></pre>
 	<p>reprepro neatly creates a bunch of folders in the structure we looked into above.</p>
 	<h3>Upload them to Cloudflare R2</h3>
 	<p>We use Cloudflare R2 to now be the host for this structured file system. R2 lets us upload and serve objects in this structured format. This means, we just need to upload the files in the same structure reprepro created them.</p>

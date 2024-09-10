@@ -32,9 +32,9 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 	<p>Looking at this <i>tcpdump</i> helped me understand why I had no connectivity! Not only was this port getting UDP traffic but I was also seeing traffic flow out. But there seemed to be something strange afoot. Incoming packets were being sent to 198.41.200.200:7844 while responses were being sent back from 203.0.113.0:7844 (this is an <a href="https://datatracker.ietf.org/doc/html/rfc5737">example IP</a> used for illustration purposes) &nbsp;instead.</p>
 	<p>Why is this a problem? If a host (in this case, the server) chooses an address from a network unable to communicate with a public Internet host, it is likely that the return half of the communication will never arrive. But wait a minute. Why is some other IP getting prioritized over a source address my packets were already being sent to? Let’s take a deeper look at some IP addresses. (Note that I’ve deliberately oversimplified and scrambled results to minimally illustrate the problem)</p>
 	<pre class="language-bash"><code class="language-bash">$  ip addr list
-eth0: <broadcast,multicast,up,lower_up> mtu 1600 qdisc noqueue state UP group default qlen 1000
+eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1600 qdisc noqueue state UP group default qlen 1000
 inet 203.0.113.0/32 scope global eth0
-inet 198.41.200.200/32 scope global eth0 </broadcast,multicast,up,lower_up></code></pre>
+inet 198.41.200.200/32 scope global eth0 </code></pre>
 
 	<pre class="language-bash"><code class="language-bash">$ ip route show
 default via 203.0.113.0 dev eth0</code></pre>

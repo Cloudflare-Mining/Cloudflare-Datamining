@@ -63,22 +63,22 @@
 	<h3>Verifying your uploaded or CloudFlare-generated certificates</h3>
 	<p>If you’d like to verify that the certificates you’ve uploaded are optimized appropriately for the browser’s cryptographic capabilities, you can run the following commands. Before doing so, verify that you have a version of OpenSSL that supports TLS 1.2 (i.e., at least 1.0.1).</p>
 	<h4>Emulating a modern browser that supports TLS 1.2 with SHA-2 ECDSA certificates</h4>
-	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -servername www.cloudflare.com -tls1_2 /dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
+	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -servername www.cloudflare.com -tls1_2 &lt;/dev/null 2&gt;/dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
     
 Signature Algorithm: ecdsa-with-SHA256
 DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>
 	<h4>Emulating a browser that supports TLS 1.2 and SHA-2 but only RSA (not ECDSA)</h4>
-	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -servername www.cloudflare.com -tls1_2 -sigalgs RSA+SHA256 /dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
+	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -servername www.cloudflare.com -tls1_2 -sigalgs RSA+SHA256 &lt;/dev/null 2&gt;/dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
 
 Signature Algorithm: sha256WithRSAEncryption
 DNS:cloudflare.com, DNS:www.cloudflare.com`</code></pre>
 	<h4>Emulating a legacy browser that supports TLS 1.1, SHA-2, and SNI</h4>
-	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -servername www.cloudflare.com -tls1_1 /dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
+	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -servername www.cloudflare.com -tls1_1 &lt;/dev/null 2&gt;/dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
 
 Signature Algorithm: sha256WithRSAEncryption
 DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>
 	<h4>Emulating a legacy browser that supports only TLS 1.0 and SHA-1 (no SNI)</h4>
-	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -tls1 /dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
+	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -tls1 &lt;/dev/null 2&gt;/dev/null | openssl x509 -noout -text | egrep "DNS:|Signature Algorithm:"|head -n2
 
 Signature Algorithm: sha1WithRSAEncryption
 DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>

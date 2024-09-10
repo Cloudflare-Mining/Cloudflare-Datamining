@@ -20,7 +20,7 @@
 	<pre class="language-bash"><code class="language-bash">$ ls
 helloworld.c
 $ cat helloworld.c
-#include <stdio.h>
+#include &lt;stdio.h&gt;
 
 int main(int argc, char* argv[]) {
   printf("Hello, World!\n");
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 $ make helloworld
 cc     helloworld.c   -o helloworld
 $ ./helloworld
-Hello, World!</stdio.h></code></pre>
+Hello, World!</code></pre>
 	<p>It shouldn’t then be a surprise that the last thing programmers really want to think about when programming is the computer and its complexities. Anyone who’s worked with manual tools will know that the brain incorporates those tools as if they were part of the body. Programmers experience a similar feeling and then an almost visceral sensation when something doesn’t work correctly and a program can’t run.</p>
 	<p>A very common source of trouble is the difference between “it works on my laptop” and “it fails in production”. Programmers configure their laptops to maximize their productivity but subtle differences between the laptop and production server (such as different versions of a system library) mean that beautifully crafted code can suddenly fail to run at all because of some irritating, and irrelevant, mismatch.</p>
 	<p>All programmers know that pure exasperation of seeing their code fail to run because of some mere configuration problem.</p>

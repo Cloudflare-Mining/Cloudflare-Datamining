@@ -1,4 +1,4 @@
-<div class="mb2 gray5">14 min read</div>
+<div class="mb2 gray5">15 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
@@ -130,7 +130,7 @@ RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900
 	</ol>
 	<p>... and not much more.</p>
 	<p>We must go back further in the instruction stream. Where did the value in <code>%rcx</code> come from? What I like to do is try to correlate the machine code leading up to the crash with pseudo source code:</p>
-	<pre class="language-bash"><code class="language-bash"><function entry="">                # %rdi = skb
+	<pre class="language-bash"><code class="language-bash">&lt;function entry&gt;                # %rdi = skb
 …
 movzx  eax,WORD PTR [rdi+0xaa]  # %eax = skb-&gt;inner_transport_header
 movzx  esi,WORD PTR [rdi+0xb2]  # %esi = skb-&gt;transport_header
@@ -139,7 +139,7 @@ sub    rax,rsi                  # %rax = skb-&gt;inner_transport_header - skb-&g
 test   r8d,r8d
 mov    rsi,rax                  # %rsi = skb-&gt;inner_transport_header - skb-&gt;transport_header
 je     0x37
-movzx  eax,BYTE PTR [rcx+0xc]   # %eax = *(skb-&gt;head + skb-&gt;inner_transport_header + offsetof(struct tcphdr, doff))</function></code></pre>
+movzx  eax,BYTE PTR [rcx+0xc]   # %eax = *(skb-&gt;head + skb-&gt;inner_transport_header + offsetof(struct tcphdr, doff))</code></pre>
 	<p>How did I decode that assembly snippet? We know that the <code>skb</code> address was passed to our function in the <code>%rdi</code> register because the <a href="https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI">System V AMD64 ABI calling convention</a> dictates that. If the <code>%rdi</code> register hasn’t been clobbered by any function calls, or reused because the compiler decided so, then maybe, just maybe, it still holds the <code>skb</code> address.</p>
 	<p>If <code>0xaa</code> and <code>0xb2</code> are offsets into an <code>sk_buff</code> structure, then <code>pahole</code> tool can tell us which fields they correspond to:</p>
 	<pre class="language-bash"><code class="language-bash">$ pahole --hex -C sk_buff /usr/lib/debug/vmlinux-5.4.14-cloudflare-2020.1.11 | grep '\(head\|inner_transport_header\|transport_header\);'

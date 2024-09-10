@@ -21,20 +21,20 @@
 	<pre class="language-json"><code class="language-json">{
  "filters": [
    {
-     "pattern": "^(?:2b469e16.example.pages.dev(?:[:][0-9]+)?\\/(?<p1>.*))$",
+     "pattern": "^(?:2b469e16.example.pages.dev(?:[:][0-9]+)?\\/(?&lt;p1&gt;.*))$",
      "script_hash": "..."
    },
    {
-     "pattern": "^(?:example.pages.dev(?:[:][0-9]+)?\\/(?<p1>.*))$",
+     "pattern": "^(?:example.pages.dev(?:[:][0-9]+)?\\/(?&lt;p1&gt;.*))$",
      "script_hash": "..."
    },
    {
-     "pattern": "^(?:test.example.com(?:[:][0-9]+)?\\/(?<p1>.*))$",
+     "pattern": "^(?:test.example.com(?:[:][0-9]+)?\\/(?&lt;p1&gt;.*))$",
      "script_hash": "..."
    }
  ],
  "v": 1
-}</p1></p1></p1></code></pre>
+}</code></pre>
 	<p>So to look up the pipeline in question, we would: download this JSON object from Quicksilver, parse it, and then iterate through this until it finds a regex that matches the current request.</p>
 	<p>Unsurprisingly, this is expensive. Let’s take a look at a quick real world example to see <i>how</i> expensive.</p>
 	<p>In one realistic case, it took us 107ms just to <i>parse</i> the JSON. The larger the JSON object gets, the more compute it takes to parse it — with tens of thousands of deployments (not unusual for very active projects that deploy immutable preview deployments for every git commit), this JSON could be several megabytes in size!</p>

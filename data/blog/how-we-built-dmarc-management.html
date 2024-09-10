@@ -78,19 +78,19 @@
 
 	</figure>
 	<p>When the Email Routing component receives an email that matches a rule to be delivered to a Worker, it will contact our internal version of the recently open-sourced <a href="https://github.com/cloudflare/workerd">workerd</a> runtime, which also runs on all nodes. The RPC schema that governs this interaction is defined in a <a href="https://github.com/capnproto/capnproto">Capnproto</a> schema, and allows the body of the email to be streamed to Edgeworker as it’s read. If the worker script decides to forward this email, Edgeworker will contact Email Routing using a capability sent in the original request.</p>
-	<pre class="language-js"><code class="language-js">jsg::Promise<void> ForwardableEmailMessage::forward(kj::String rcptTo, jsg::Optional<jsg::ref<headers>&gt; maybeHeaders) {
+	<pre class="language-js"><code class="language-js">jsg::Promise&lt;void&gt; ForwardableEmailMessage::forward(kj::String rcptTo, jsg::Optional&lt;jsg::Ref&lt;Headers&gt;&gt; maybeHeaders) {
   auto req = emailFwdr-&gt;forwardEmailRequest();
   req.setRcptTo(rcptTo);
 
   auto sendP = req.send().then(
-      [](capnp::Response<rpc::emailmetadata::emailfwdr::forwardemailresults> res) mutable {
+      [](capnp::Response&lt;rpc::EmailMetadata::EmailFwdr::ForwardEmailResults&gt; res) mutable {
     auto result = res.getResponse().getResult();
     JSG_REQUIRE(result.isOk(), Error, result.getError());
   });
   auto&amp; context = IoContext::current();
   return context.awaitIo(kj::mv(sendP));
 }
-</rpc::emailmetadata::emailfwdr::forwardemailresults></jsg::ref<headers></void></code></pre>
+</code></pre>
 	<p>In the context of DMARC reports this is how we handle the incoming emails:</p>
 	<ol>
 		<li>
@@ -135,51 +135,51 @@ const email = await parser.parse(arrayBuffer)</code></pre>
 			<p>Having obtained the raw XML form of the report, <a href="https://www.npmjs.com/package/fast-xml-parser">fast-xml-parser</a> has worked well for us in parsing them. Here’s how the DMARC report XML looks:</p>
 		</li>
 	</ol>
-	<pre class="language-bash"><code class="language-bash"><feedback>
-  <report_metadata>
-    <org_name>example.com</org_name>
-    <emaildmarc-reports@example.com< email="">
-   <extra_contact_info>http://example.com/dmarc/support</extra_contact_info>
-    <report_id>9391651994964116463</report_id>
-    <date_range>
-      <begin>1335521200</begin>
-      <end>1335652599</end>
-    </date_range>
-  </emaildmarc-reports@example.com<></report_metadata>
-  <policy_published>
-    <domain>business.example</domain>
-    <adkim>r</adkim>
-    <aspf>r</aspf>
-    <p>none</p>
-    <sp>none</sp>
-    <pct>100</pct>
-  </policy_published>
-  <record>
-    <row>
-      <source_ip>192.0.2.1</source_ip>
-      <count>2</count>
-      <policy_evaluated>
-        <disposition>none</disposition>
-        <dkim>fail</dkim>
-        <spf>pass</spf>
-      </policy_evaluated>
-    </row>
-    <identifiers>
-      <header_from>business.example</header_from>
-    </identifiers>
-    <auth_results>
-      <dkim>
-        <domain>business.example</domain>
-        <result>fail</result>
-        <human_result></human_result>
-      </dkim>
-      <spf>
-        <domain>business.example</domain>
-        <result>pass</result>
-      </spf>
-    </auth_results>
-  </record>
-</feedback></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;feedback&gt;
+  &lt;report_metadata&gt;
+    &lt;org_name&gt;example.com&lt;/org_name&gt;
+    &lt;emaildmarc-reports@example.com&lt;/email&gt;
+   &lt;extra_contact_info&gt;http://example.com/dmarc/support&lt;/extra_contact_info&gt;
+    &lt;report_id&gt;9391651994964116463&lt;/report_id&gt;
+    &lt;date_range&gt;
+      &lt;begin&gt;1335521200&lt;/begin&gt;
+      &lt;end&gt;1335652599&lt;/end&gt;
+    &lt;/date_range&gt;
+  &lt;/report_metadata&gt;
+  &lt;policy_published&gt;
+    &lt;domain&gt;business.example&lt;/domain&gt;
+    &lt;adkim&gt;r&lt;/adkim&gt;
+    &lt;aspf&gt;r&lt;/aspf&gt;
+    &lt;p&gt;none&lt;/p&gt;
+    &lt;sp&gt;none&lt;/sp&gt;
+    &lt;pct&gt;100&lt;/pct&gt;
+  &lt;/policy_published&gt;
+  &lt;record&gt;
+    &lt;row&gt;
+      &lt;source_ip&gt;192.0.2.1&lt;/source_ip&gt;
+      &lt;count&gt;2&lt;/count&gt;
+      &lt;policy_evaluated&gt;
+        &lt;disposition&gt;none&lt;/disposition&gt;
+        &lt;dkim&gt;fail&lt;/dkim&gt;
+        &lt;spf&gt;pass&lt;/spf&gt;
+      &lt;/policy_evaluated&gt;
+    &lt;/row&gt;
+    &lt;identifiers&gt;
+      &lt;header_from&gt;business.example&lt;/header_from&gt;
+    &lt;/identifiers&gt;
+    &lt;auth_results&gt;
+      &lt;dkim&gt;
+        &lt;domain&gt;business.example&lt;/domain&gt;
+        &lt;result&gt;fail&lt;/result&gt;
+        &lt;human_result&gt;&lt;/human_result&gt;
+      &lt;/dkim&gt;
+      &lt;spf&gt;
+        &lt;domain&gt;business.example&lt;/domain&gt;
+        &lt;result&gt;pass&lt;/result&gt;
+      &lt;/spf&gt;
+    &lt;/auth_results&gt;
+  &lt;/record&gt;
+&lt;/feedback&gt;</code></pre>
 	<ol>
 		<li>
 			<p>We now have all the data in the report at our fingertips. What we do from here on depends a lot on how we want to present the data. For us, the goal was to display meaningful data extracted from them in our Dashboard. Therefore we needed an Analytics platform where we could push the enriched data. Enter, <a href="https://developers.cloudflare.com/analytics/analytics-engine">Workers Analytics Engine</a>. The Analytics engine is perfect for this task since it allows us to <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#3-write-data-from-your-worker">send</a> data to it from a worker, and exposes a <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL API</a> to interact with the data afterwards. This is how we obtain the data to show in our dashboard.</p>

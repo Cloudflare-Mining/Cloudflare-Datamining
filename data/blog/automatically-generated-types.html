@@ -40,22 +40,22 @@
 	<p>Here is some example code from the Workers runtime codebase.</p>
 	<pre class="language-cpp"><code class="language-cpp">class Blob: public js::Object {
 public:
-  typedef kj::Array<kj::oneof<kj::array<const byte="">, kj::String, js::Ref<blob>&gt;&gt; Bits;
+  typedef kj::Array&lt;kj::OneOf&lt;kj::Array&lt;const byte&gt;, kj::String, js::Ref&lt;Blob&gt;&gt;&gt; Bits;
   struct Options {
-    js::Optional<kj::string> type;
+    js::Optional&lt;kj::String&gt; type;
     JS_STRUCT(type);
   };
 
-  static js::Ref<blob> constructor(js::Optional<bits> bits, js::Optional<options> options);
+  static js::Ref&lt;Blob&gt; constructor(js::Optional&lt;Bits&gt; bits, js::Optional&lt;Options&gt; options);
   
   int getSize();
-  js::Ref<blob> slice(js::Optional<int> start, js::Optional<int> end);
+  js::Ref&lt;Blob&gt; slice(js::Optional&lt;int&gt; start, js::Optional&lt;int&gt; end);
 
   JS_RESOURCE_TYPE(Blob) {
     JS_READONLY_PROPERTY(size, getSize);
     JS_METHOD(slice);
   }
-};</int></int></blob></options></bits></blob></kj::string></blob></kj::oneof<kj::array<const></code></pre>
+};</code></pre>
 	<p>A Python script runs over this code during each build and generates an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> containing information about the function including an identifier, any argument types and any return types.</p>
 	<pre class="language-json"><code class="language-json">{
   "name": "Blob",
@@ -109,19 +109,19 @@ declare class Blob {
 	<h3>Overrides</h3>
 	<p>In some cases, TypeScript supports concepts that our C++ runtime does not. Namely, generics and function overloads. In these cases, we override the generated types with partial declarations. For example, <code>DurableObjectStorage</code> makes heavy use of generics for its getter and setter functions.</p>
 	<pre class="language-bash"><code class="language-bash">declare abstract class DurableObjectStorage {
-	 get<t =="" unknown="">(key: string, options?: DurableObjectStorageOperationsGetOptions): Promise<t |="" undefined="">;
-	 get<t =="" unknown="">(keys: string[], options?: DurableObjectStorageOperationsGetOptions): Promise<map<string, t="">&gt;;
+	 get&lt;T = unknown&gt;(key: string, options?: DurableObjectStorageOperationsGetOptions): Promise&lt;T | undefined&gt;;
+	 get&lt;T = unknown&gt;(keys: string[], options?: DurableObjectStorageOperationsGetOptions): Promise&lt;Map&lt;string, T&gt;&gt;;
 	 
-	 list<t =="" unknown="">(options?: DurableObjectStorageOperationsListOptions): Promise<map<string, t="">&gt;;
+	 list&lt;T = unknown&gt;(options?: DurableObjectStorageOperationsListOptions): Promise&lt;Map&lt;string, T&gt;&gt;;
 	 
-	 put<t>(key: string, value: T, options?: DurableObjectStorageOperationsPutOptions): Promise<void>;
-	 put<t>(entries: Record<string, t="">, options?: DurableObjectStorageOperationsPutOptions): Promise<void>;
+	 put&lt;T&gt;(key: string, value: T, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;void&gt;;
+	 put&lt;T&gt;(entries: Record&lt;string, T&gt;, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;void&gt;;
 	 
-	 delete(key: string, options?: DurableObjectStorageOperationsPutOptions): Promise<boolean>;
-	 delete(keys: string[], options?: DurableObjectStorageOperationsPutOptions): Promise<number>;
+	 delete(key: string, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;boolean&gt;;
+	 delete(keys: string[], options?: DurableObjectStorageOperationsPutOptions): Promise&lt;number&gt;;
 	 
-	 transaction<t>(closure: (txn: DurableObjectTransaction) =&gt; Promise<t>): Promise<t>;
-	}</t></t></t></number></boolean></void></string,></t></void></t></map<string,></t></map<string,></t></t></t></code></pre>
+	 transaction&lt;T&gt;(closure: (txn: DurableObjectTransaction) =&gt; Promise&lt;T&gt;): Promise&lt;T&gt;;
+	}</code></pre>
 	<p>You can also write type overrides using Markdown. <a href="https://github.com/cloudflare/workers-types/blob/master/docs/kv.md">Here</a> is an example of overriding types of <code>KVNamespace</code>.</p>
 	<h2>Creating your own types</h2>
 	<p>The JSON IR (<a href="https://en.wikipedia.org/wiki/Intermediate_representation">intermediate representation</a>) has been open sourced alongside the TypeScript types and can be found <a href="https://github.com/cloudflare/workers-types/blob/master/src/workers.json">in this GitHub repository</a>. We’ve also open sourced the <a href="https://github.com/cloudflare/workers-types/blob/master/src/schema.json">type schema</a> itself, which describes the format of the IR. If you’re interested in generating Workers types for your own language, you can take the IR, which describes the declaration in a "normalized" data structure, and generate types from it.</p>

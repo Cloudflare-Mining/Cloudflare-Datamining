@@ -1,4 +1,4 @@
-<div class="mb2 gray5">18 min read</div>
+<div class="mb2 gray5">19 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
@@ -14,7 +14,7 @@
 	<p>Later on, perhaps when diving into multithreaded programming, we come to terms with the fact that <a href="https://textbook.cs161.org/memory-safety/x86.html#26-stack-pushing-and-popping">the stack space</a> for call frames is finite. And that there is an “okay” way and a “cool” way to calculate the Fibonacci numbers using recursion:</p>
 	<pre class="language-c"><code class="language-c">// fib_okay.c
 
-#include <stdint.h>
+#include &lt;stdint.h&gt;
 
 uint64_t fib(uint64_t n)
 {
@@ -22,11 +22,11 @@ uint64_t fib(uint64_t n)
                 return 1;
 
         return fib(n - 1) + fib(n - 2);
-}</stdint.h></code></pre>
+}</code></pre>
 	<p>Listing 1. An okay Fibonacci number generator implementation</p>
 	<pre class="language-c"><code class="language-c">// fib_cool.c
 
-#include <stdint.h>
+#include &lt;stdint.h&gt;
 
 static uint64_t fib_tail(uint64_t n, uint64_t a, uint64_t b)
 {
@@ -41,7 +41,7 @@ static uint64_t fib_tail(uint64_t n, uint64_t a, uint64_t b)
 uint64_t fib(uint64_t n)
 {
     return fib_tail(n, 1, 1);
-}</stdint.h></code></pre>
+}</code></pre>
 	<p>Listing 2. A better version of the same</p>
 	<p>If we take a look at the machine code the compiler produces, the “cool” variant translates to a nice and tight sequence of instructions:</p>
 	<p>⚠ DISCLAIMER: This blog post is assembly-heavy. We will be looking at assembly code for x86-64, arm64 and BPF architectures. If you need an introduction or a refresher, I can recommend <a href="https://github.com/Apress/low-level-programming">“Low-Level Programming”</a> by Igor Zhirkov for x86-64, and <a href="https://github.com/Apress/programming-with-64-bit-ARM-assembly-language">“Programming with 64-Bit ARM Assembly Language”</a> by Stephen Smith for arm64. For BPF, see the <a href="https://www.kernel.org/doc/html/latest/bpf/standardization/instruction-set.html">Linux kernel documentation</a>.</p>
@@ -55,9 +55,9 @@ uint64_t fib(uint64_t n)
 	<p><a href="https://raw.githubusercontent.com/cloudflare/cloudflare-blog/master/2022-10-bpf-tail-call/fib_okay.dot.png" target="_blank"><img style="border-width: 0px; border-style: none;" src="/content/images/2022/10/image6.png" alt="" width="1000" height="161"></a></p><!--kg-card-end: html-->
 	<p>But more importantly, it is not free of <a href="https://textbook.cs161.org/memory-safety/x86.html#29-x86-function-call-in-assembly">x86 call instructions</a>.</p>
 	<pre class="language-shell"><code class="language-shell">$ objdump -d fib_okay.o | grep call
- 10c:   e8 00 00 00 00          call   111 <fib+0x111>
+ 10c:   e8 00 00 00 00          call   111 &lt;fib+0x111&gt;
 $ objdump -d fib_cool.o | grep call
-$</fib+0x111></code></pre>
+$</code></pre>
 	<p>This has an important consequence - as fib recursively calls itself, the stacks keep growing. We can observe it with a bit of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/trace_rsp.gdb">help from the debugger</a>.</p>
 	<pre class="language-shell"><code class="language-shell">$ gdb --quiet --batch --command=trace_rsp.gdb --args ./fib_okay 6
 Breakpoint 1 at 0x401188: file fib_okay.c, line 3.

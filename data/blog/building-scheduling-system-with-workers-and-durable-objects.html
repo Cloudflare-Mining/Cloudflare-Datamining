@@ -137,7 +137,7 @@ export default {
     async fetch(
         request: Request,
         env: Env
-    ): Promise<response> {
+    ): Promise&lt;Response&gt; {
         if (request.method !== "POST") {
             return new Response("Method Not Allowed", {status: 405})
         }
@@ -155,7 +155,7 @@ export default {
         // pass the request to Durable Object instance
         return stub.fetch(request)
     },
-}</response></code></pre>
+}</code></pre>
 	<p>It's good to mention that the script above does not implement any listing of scheduled or processed webhooks. Depending on how the scheduling system would be integrated, you can save each created Durable Object ID to your existing backend, or write your own registry – using one of the <a href="https://developers.cloudflare.com/workers/get-started/storage-objects">Workers storage options</a>.</p>
 	<h3>Starting a local development server and testing our application</h3>
 	<p>We are almost done! Before we publish our scheduler system to the Cloudflare edge, let's start Wrangler in a completely local mode to run a couple of tests against it and to see it in action – which will work even without an Internet connection!</p>

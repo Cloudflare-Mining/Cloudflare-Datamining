@@ -32,9 +32,9 @@ VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'),(4, 'Around the Horn', 'Thomas
 	<p><b>2. Create and run migrations</b></p>
 	<p>Migrations are a way to version your database changes. With D1, you can <a href="https://developers.cloudflare.com/d1/migrations">create a migration</a> and then apply it to your database.</p>
 	<p>To create the migration, execute:</p>
-	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations create <my-database-name> <short description="" of="" migration=""></short></my-database-name></code></pre>
+	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations create &lt;my-database-name&gt; &lt;short description of migration&gt;</code></pre>
 	<p>This will create an SQL file in a <code>migrations</code> folder where you can then go ahead and add your queries. Then apply the migrations to your database by executing:</p>
-	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations apply <my-database-name></my-database-name></code></pre>
+	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations apply &lt;my-database-name&gt;</code></pre>
 	<h3>Access D1 from within your Worker</h3>
 	<p>You can attach your D1 to a Worker by adding the D1 binding to your <code>wrangler.toml</code> configuration file. Then interact with D1 by executing queries inside your Worker like so:</p>
 	<pre class="language-js"><code class="language-js">export default {
@@ -67,14 +67,14 @@ VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'),(4, 'Around the Horn', 'Thomas
 )
 
 // TS helper for typed queries
-type User = Infer<type of="" users="">;
+type User = Infer&lt;type of users&gt;;
 
 // ORM-style query builder
 const user = await users.First({
     where: {
         id: 1,
     },
-});</type></code></pre>
+});</code></pre>
 	<p>You can check out the <a href="https://docs.interactions.rest/d1-orm">full documentation</a>, and provide feedback by making an issue on the <a href="https://github.com/Interactions-as-a-Service/d1-orm/issues">GitHub repository</a>.</p>
 	<h3>workers-qb</h3>
 	<p>This is a zero-dependency query builder that provides a simple standardized interface while keeping the benefits and speed of using raw queries over a traditional ORM. While not intended to provide ORM-like functionality, <code>workers-qb</code> makes it easier to interact with the database from code for direct SQL access:</p>
@@ -100,7 +100,7 @@ const fetched = await qb.fetchOne({
 	<h3>D1 adapter for <a href="https://github.com/koskimas/kysely">Kysely</a></h3>
 	<p>Kysely is a type-safe and autocompletion-friendly typescript SQL query builder. With this adapter you can interact with D1 with the familiar Kysely interface:</p>
 	<pre class="language-ts"><code class="language-ts">// Create Kysely instance with kysely-d1
-const db = new Kysely<database>({ 
+const db = new Kysely&lt;Database&gt;({ 
   dialect: new D1Dialect({ database: env.DB })
 });
     
@@ -109,7 +109,7 @@ const result = await db
   .selectFrom('kv')
   .selectAll()
   .where('key', '=', key)
-  .executeTakeFirst();</database></code></pre>
+  .executeTakeFirst();</code></pre>
 	<p>Check out the project <a href="https://github.com/aidenwallis/kysely-d1">here</a>.</p>
 	<h2>What’s still in testing?</h2>
 	<p>The biggest pieces that have been disabled for this alpha release are replication and JavaScript transaction support. While we’ll be rolling out these changes gradually, we want to call out some limitations that exist today that we’re actively working on testing:</p>

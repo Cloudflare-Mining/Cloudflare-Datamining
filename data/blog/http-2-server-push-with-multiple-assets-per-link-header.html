@@ -19,24 +19,24 @@ Content-Length: 33640
 Content-Type: text/html; charset=utf-8
 Date: Wed, 29 Jun 2016 16:09:37 GMT
 Expires: Wed, 29 Jun 2016 16:10:07 GMT
-Link: ; rel=preload; as=style,<!--/cdn.bizible.com/scripts/bizible.js-->; rel=preload; as=script,; rel=preload; as=image,; rel=preload; as=image,<!--/platform.linkedin.com/in.js-->; rel=preload; as=script,<https: code.jquery.com="" jquery-1.11.3.min.js="">; rel=preload; as=script,; rel=preload; as=script
+Link: &lt;/assets/css/screen.css?v=5fc240c512&gt;; rel=preload; as=style,&lt;//cdn.bizible.com/scripts/bizible.js&gt;; rel=preload; as=script,&lt;/content/images/2016/06/Timeouts-001.png&gt;; rel=preload; as=image,&lt;/content/images/2016/06/Timeouts-002.png&gt;; rel=preload; as=image,&lt;//platform.linkedin.com/in.js&gt;; rel=preload; as=script,&lt;https://code.jquery.com/jquery-1.11.3.min.js&gt;; rel=preload; as=script,&lt;/assets/js/jquery.fitvids.js?v=5fc240c512&gt;; rel=preload; as=script
 Vary: Accept-Encoding
 X-Ghost-Cache-Status:From Cache
-X-Powered-By: Express </https:></code></pre>
+X-Powered-By: Express </code></pre>
 	<p>CloudFlare decides to HTTP/2 Server Push the assets <code>/assets/css/screen.css?v=5fc240c512</code>, <code>/content/images/2016/06/Timeouts-001.png</code>, <code>/content/images/2016/06/Timeouts-002.png</code> and <code>/assets/js/jquery.fitvids.js?v=5fc240c512</code>. As the response passes through CloudFlare those assets are removed from the <code>Link</code> header, pushed and added to the <code>Cf-H2-Pushed</code> header:</p>
 	<pre class="language-bash"><code class="language-bash">cache-control:public, max-age=30
 cf-cache-status:EXPIRED
-cf-h2-pushed:,,,
+cf-h2-pushed:&lt;/assets/css/screen.css?v=5fc240c512&gt;,&lt;/content/images/2016/06/Timeouts-001.png&gt;,&lt;/content/images/2016/06/Timeouts-002.png&gt;,&lt;/assets/js/jquery.fitvids.js?v=5fc240c512&gt;
 content-encoding:gzip
 content-type:text/html; charset=utf-8
 date:Wed, 29 Jun 2016 16:09:37 GMT
 expires:Wed, 29 Jun 2016 16:10:07 GMT
-link:<!--/cdn.bizible.com/scripts/bizible.js-->; rel=preload; as=script,<!--/platform.linkedin.com/in.js-->; rel=preload; as=script,<https: code.jquery.com="" jquery-1.11.3.min.js="">; rel=preload; as=script
+link:&lt;//cdn.bizible.com/scripts/bizible.js&gt;; rel=preload; as=script,&lt;//platform.linkedin.com/in.js&gt;; rel=preload; as=script,&lt;https://code.jquery.com/jquery-1.11.3.min.js&gt;; rel=preload; as=script
 server:cloudflare-nginx
 status:200 OK
 vary:Accept-Encoding
 x-ghost-cache-status:From Cache
-x-powered-by:Express</https:></code></pre>
+x-powered-by:Express</code></pre>
 	<p>In Google Chrome Canary's Developer view the pushed assets can be clearly seen.</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -10,11 +10,11 @@
 	<p>A tap device is a virtual <b>network interface</b> that looks like an ethernet network card. Instead of having real wires plugged into it, it exposes a nice handy file descriptor to an application willing to send/receive packets. Historically tap devices were mostly used to implement VPN clients. The machine would route traffic towards a <b>tap interface</b>, and a VPN client application would pick them up and process accordingly. For example this is what our Cloudflare WARP Linux client does. Here's how it looks on my laptop:</p>
 	<pre class="language-bash"><code class="language-bash">$ ip link list
 ...
-18: CloudflareWARP: <pointopoint,multicast,noarp,up,lower_up> mtu 1280 qdisc mq state UNKNOWN mode DEFAULT group default qlen 500
+18: CloudflareWARP: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1280 qdisc mq state UNKNOWN mode DEFAULT group default qlen 500
 	link/none
 
 $ ip tuntap list
-CloudflareWARP: tun multi_queue</pointopoint,multicast,noarp,up,lower_up></code></pre>
+CloudflareWARP: tun multi_queue</code></pre>
 	<p>More recently tap devices started to be used by <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine">virtual machines</a> to enable networking. The VMM (like Qemu, Firecracker, or gVisor) would open the application side of a tap and pass all the packets to the guest VM. The tap network interface would be left for the host kernel to deal with. Typically, a host would behave like a router and firewall, forward or NAT all the packets. This design is somewhat surprising - it's almost reversing the original use case for tap. In the VPN days tap was a traffic destination. With a VM behind, tap looks like a traffic source.</p>
 	<p>A Linux tap device is a <b>mean creature</b>. It looks trivial — a virtual network interface, with a file descriptor behind it. However, it's <b>surprisingly hard</b> to get it to perform well. The Linux networking stack is optimized for packets handled by a physical network card, not a userspace application. However, over the years the Linux tap interface grew in features and nowadays, it's possible to get good performance out of it. Later I'll explain how to use the Linux tap API in a modern way.</p>
 	<figure class="kg-card kg-image-card ">
@@ -125,11 +125,11 @@ tap0: tap persist user 1000 group 1000</code></pre>
 	<p>Internally, a tap device is just a pair of packet queues. It's exposed as a network interface towards the host, and a file descriptor, a character device, towards the application. The queue in the direction of application (tap TX queue) is of size <b>txqueuelen</b> packets, controlled by an interface parameter:</p>
 	<pre class="language-bash"><code class="language-bash">$ ip link set dev tap0 txqueuelen 1000
 $ ip -s link show dev tap0
-26: tap0: <broadcast,multicast,up,lower_up> mtu 1500 ... qlen 1000
+26: tap0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 ... qlen 1000
 	RX:  bytes packets errors dropped  missed   mcast      	 
          	0   	0  	0   	0   	0   	0
 	TX:  bytes packets errors dropped carrier collsns      	 
-       	266   	3  	0  	66   	0   	0</broadcast,multicast,up,lower_up></code></pre>
+       	266   	3  	0  	66   	0   	0</code></pre>
 	<p>In "ip link" statistics the column "<b>TX dropped</b>" indicates the tap application was too slow and the queue space exhausted.</p>
 	<p>In the other direction - interface RX queue - &nbsp;from application towards the host, the queue size limit is measured in bytes and controlled by the TUNSETSNDBUF ioctl. The <a href="https://elixir.bootlin.com/qemu/v8.1.1/source/net/tap-linux.c#L120">qemu comment discusses</a> this setting, however it's not easy to cause this queue to overflow. See this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=508861">discussion for details</a>.</p>
 	<h2>vnethdr size</h2>

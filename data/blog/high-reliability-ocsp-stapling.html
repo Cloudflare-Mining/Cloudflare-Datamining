@@ -99,14 +99,14 @@
 	<p>We noticed CA #1 certificates frequently missing their refresh-deadline, and during debugging we were lucky enough to see this:</p>
 	<pre class="language-bash"><code class="language-bash">$ date -u
 Sat Mar  4 02:45:35 UTC 2017
-$ ocspfetch <redacted, customer="" id="">
+$ ocspfetch &lt;redacted, customer ID&gt;
 This Update: 2017-03-04 01:45:49 +0000 UTC
 Next Update: 2017-03-04 02:45:49 +0000 UTC
 $ date -u
 Sat Mar  4 02:45:48 UTC 2017
-$ ocspfetch <redacted, customer="" id="">
+$ ocspfetch &lt;redacted, customer ID&gt;
 This Update: 2017-03-04 02:45:49 +0000 UTC
-Next Update: 2017-03-04 03:45:49 +0000 UTC</redacted,></redacted,></code></pre>
+Next Update: 2017-03-04 03:45:49 +0000 UTC</code></pre>
 	<p>It shows that CA #1 had configured their OCSP responders to use an incredibly short validity period with almost no overlap between validity periods, which makes it functionally impossible to always have a fresh OCSP response for their certificates. We contacted them, and they reconfigured the responder to produce new responses every half-interval.</p>
 	<h4>CA #2: Wrong signature algorithm</h4>
 	<p>Several certificates from CA #2 started failing with this error:</p>

@@ -144,8 +144,8 @@ let input = expect(input, ")")?;</code></pre>
 	<p>How can we do it? We already know the number of items (thanks to the predefined scheme) so we can use that for the size of the backing storage, and, in order to simulate <code>HashMap</code> “holes” for unset values, we can wrap each item an <code>Option&lt;...&gt;</code>:</p>
 	<pre class="language-rust"><code class="language-rust">pub struct ExecutionContext&lt;'e&gt; {
     scheme: &amp;'e Scheme,
-    values: Box&lt;[Option<lhsvalue<'e>&gt;]&gt;,
-}</lhsvalue<'e></code></pre>
+    values: Box&lt;[Option&lt;LhsValue&lt;'e&gt;&gt;]&gt;,
+}</code></pre>
 	<p>The only missing piece is an index that could map both structures to each other. As you might remember, <code>Scheme</code> still uses a <code>HashMap</code> for field registration, and a <code>HashMap</code> is normally expected to be randomised and indexed only by the predefined key.</p>
 	<p>While we could wrap a value and an auto-incrementing index together into a custom struct, there is already a better solution: <code>[IndexMap](https://github.com/bluss/indexmap)</code>. <code>IndexMap</code> is a drop-in replacement for a <code>HashMap</code> that preserves ordering and provides a way to get an index of any element and vice versa - exactly what we needed.</p>
 	<p>After replacing a <code>HashMap</code> in the Scheme with <code>IndexMap</code>, we can change parsing to resolve all the parsed field names to their indices in-place and store that in the AST:</p>
@@ -227,7 +227,7 @@ test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
     fn compile(self) -&gt; CompiledExpr&lt;'s&gt;;
 }
 
-pub(crate) struct CompiledExpr&lt;'s&gt;(Box<dyn 's="" +="" fn(&executioncontext<'s="">) -&gt; bool&gt;);
+pub(crate) struct CompiledExpr&lt;'s&gt;(Box&lt;dyn 's + Fn(&amp;ExecutionContext&lt;'s&gt;) -&gt; bool&gt;);
 
 impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
    /// Creates a compiled expression IR from a generic closure.
@@ -239,7 +239,7 @@ impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
    pub fn execute(&amp;self, ctx: &amp;ExecutionContext&lt;'s&gt;) -&gt; bool {
        self.0(ctx)
    }
-}</dyn></code></pre>
+}</code></pre>
 	<p>The closure (an <code>Fn</code> box) will also automatically include the environment data it needs for the execution.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -270,7 +270,7 @@ impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
 	<pre class="language-rust"><code class="language-rust">let items = items
    .into_iter()
    .map(|item| item.compile())
-   .collect::<vec<_>&gt;()
+   .collect::&lt;Vec&lt;_&gt;&gt;()
    .into_boxed_slice();
 
 match op {
@@ -285,7 +285,7 @@ match op {
            .iter()
            .fold(false, |acc, item| acc ^ item.execute(ctx))
    }),
-}</vec<_></code></pre>
+}</code></pre>
 	<p>What’s nice about this approach is:</p>
 	<ul>
 		<li>
@@ -323,15 +323,15 @@ fn into_js_error(err: impl std::error::Error) -&gt; JsValue {
 #[wasm_bindgen]
 impl Scheme {
    #[wasm_bindgen(constructor)]
-   pub fn try_from(fields: &amp;JsValue) -&gt; Result<scheme, jsvalue=""> {
+   pub fn try_from(fields: &amp;JsValue) -&gt; Result&lt;Scheme, JsValue&gt; {
        fields.into_serde().map(Scheme).map_err(into_js_error)
    }
 
-   pub fn parse(&amp;self, s: &amp;str) -&gt; Result<jsvalue, jsvalue=""> {
+   pub fn parse(&amp;self, s: &amp;str) -&gt; Result&lt;JsValue, JsValue&gt; {
        let filter = self.0.parse(s).map_err(into_js_error)?;
        JsValue::from_serde(&amp;filter).map_err(into_js_error)
    }
-}</jsvalue,></scheme,></code></pre>
+}</code></pre>
 	<p>And by using a higher-level tool called <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>, we also got automated npm package generation and publishing, for free.</p>
 	<p>This is not used in the production UI yet because we still need to figure out some details for unsupported browsers, but it’s great to have all the tooling and packages ready with minimal efforts. Extending and reusing the same package, it should be even possible to run filters in Cloudflare Workers too (which <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">also support WebAssembly</a>).</p>
 	<h3>The future</h3>

@@ -64,15 +64,15 @@ async function handleRequest(event) {
 	<p>One of the most requested features for Images and Image Resizing was adding support for blur. We recently added the support for blur both via <a href="https://developers.cloudflare.com/images/image-resizing/url-format">URL format</a> and <a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers">with Cloudflare Workers</a>.</p>
 	<p>Cloudflare Images uses variants. When you create a variant, you can define properties including variant name, width, height, and whether the variant should be publicly accessible. Blur will be available as a new option for variants via <a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant">variant API</a>:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants" \
-     -H "Authorization: Bearer <api_token>" \
+     -H "Authorization: Bearer &lt;api_token&gt;" \
      -H "Content-Type: application/json" \
-     --data '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</api_token></code></pre>
+     --data '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</code></pre>
 	<p>One of the use cases for using blur with Cloudflare Images is to control access to the premium content.</p>
 	<p>The customer will upload the image that requires an access token:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1" \
-     -H "Authorization: Bearer <api_token>"
-     --form 'file=@./<file_name>' \
-     --form 'requireSignedURLs=true'</file_name></api_token></code></pre>
+     -H "Authorization: Bearer &lt;api_token&gt;"
+     --form 'file=@./&lt;file_name&gt;' \
+     --form 'requireSignedURLs=true'</code></pre>
 	<p>Using the variant we defined via API we can fetch the image without providing a signature:</p><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps"><!--kg-card-end: html-->
 	<p>To access the protected image a <a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens">valid signed URL</a> will be required:</p><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/public?sig=d67d49055d652b8fb2575b3ec11f0e1a8fae3932d3e516d381e49e498dd4a96e" alt="Unblurred example picture of lava lamps">
 	Lava lamps in the Cloudflare lobby. Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a>
@@ -95,7 +95,7 @@ async function handleRequest(request) {
   return fetch(new Request(destinationURL));
 }</code></pre>
 	<p>For simplicity, the Workers script makes the redirect from the domain where it’s deployed to the imagedelivery.net. We assume the same format as for Cloudflare Images URLs:</p>
-	<pre class="language-bash"><code class="language-bash">https://<customdomain.net>/<encoded account="" id="">/<img id="" alt="">/<variant name=""></variant></encoded></customdomain.net></code></pre>
+	<pre class="language-bash"><code class="language-bash">https://&lt;customdomain.net&gt;/&lt;encoded account id&gt;/&lt;image id&gt;/&lt;variant name&gt;</code></pre>
 	<p>The Worker could be adjusted to fit customer needs like:</p>
 	<ul>
 		<li>
@@ -109,7 +109,7 @@ async function handleRequest(request) {
 		</li>
 	</ul>
 	<p>For customers who just want the simplicity of serving Cloudflare Images from their domains on Cloudflare we will be adding the ability to serve Cloudflare Images using the following format:</p>
-	<pre class="language-bash"><code class="language-bash">https://<customdomain.net>/cdn-cgi/imagedelivery/<encrypted_account_id>/&lt;_image_id&gt;/<variant_name></variant_name></encrypted_account_id></customdomain.net></code></pre>
+	<pre class="language-bash"><code class="language-bash">https://&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</code></pre>
 	<p>Image delivery will be supported from all customer domains under the same Cloudflare account where Cloudflare Images subscription is activated. This will be available to all Cloudflare Images customers before the holidays.</p>
 	<h3>Images and Stream Bundle</h3>
 	<p>Creator platforms, eCommerce, and many other products have one thing in common: having an easy and accessible way to upload, store and deliver your images and videos in the best and most affordable way is vital.</p>

@@ -53,7 +53,7 @@
 	<pre class="language-bash"><code class="language-bash">{
   "1a4ddc9e-a1234-4acc-a623-7e775e579c87": {
     "client_id": "6b12308372690a99277e970a3039343c.access",
-    "client_secret": "<hashed-value>", &lt;-- what you would expect
+    "client_secret": "&lt;hashed-value&gt;", &lt;-- what you would expect
     "expires_at": 1698331351
   },
   "23ade6c6-a123-4747-818a-cd7c20c83d15": {
@@ -61,7 +61,7 @@
     "client_secret": "", &lt;--- this is the problem
     "expires_at": 1670621577
   }
-}</hashed-value></code></pre>
+}</code></pre>
 	<p>The service token “client secret” database did have a “not null” check however in this situation an empty text string did not trigger as a null value.</p>
 	<p>As a result of the bug, any Cloudflare account that used a service token to authenticate during the 10 minutes “last seen at” release was out would have its “client secret” value set to an empty string. The service token then needed to be modified in order for the empty “client secret” to be used for authentication. There were a total of 4 accounts in this state, all of which are internal to Cloudflare.</p>
 	<h3>How did we fix the issue?</h3>

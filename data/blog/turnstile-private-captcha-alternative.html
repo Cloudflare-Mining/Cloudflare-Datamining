@@ -65,7 +65,7 @@
     // ...
 }</code></pre>
 	<p>For more complex use cases, the challenge can be invoked explicitly via JavaScript:</p>
-	<pre class="language-javascript"><code class="language-javascript"><script>
+	<pre class="language-javascript"><code class="language-javascript">&lt;script&gt;
     window.turnstileCallbackFunction = function () {
         const turnstileOptions = {
             sitekey: 'yourSitekey',
@@ -75,8 +75,8 @@
         };
         turnstile.render('#container', turnstileOptions);
     };
-</script>
-<div id="container"></div></code></pre>
+&lt;/script&gt;
+&lt;div id="container"&gt;&lt;/div&gt;</code></pre>
 	<p>You can also create what we call 'Actions'. Custom labels that allow you to distinguish between different pages where you're using Turnstile, like a login, checkout, or account creation page.</p>
 	<p>Once you’ve deployed Turnstile, you can go back to the dashboard and see analytics on where you have widgets deployed, how users are solving them, and view any defined actions.</p>
 	<figure class="kg-card kg-image-card ">

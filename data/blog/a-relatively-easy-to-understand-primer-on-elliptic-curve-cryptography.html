@@ -129,14 +129,14 @@
 	<p>The relevant portions of this text to this discussion is ECDHE_RSA. ECDHE stands for Elliptic Curve Diffie Hellman Ephemeral and is a key exchange mechanism based on elliptic curves. This algorithm is used by CloudFlare to provide <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">perfect forward secrecy</a> in SSL. The RSA component means that RSA is used to prove the identity of the server.</p>
 	<p>We use RSA because CloudFlare's SSL certificate is bound to an RSA key pair. Modern browsers also support certificates based on elliptic curves. If CloudFlare's SSL certificate was an elliptic curve certificate this part of the page would state ECDHE_ECDSA. The proof of the identity of the server would be done using ECDSA, the Elliptic Curve Digital Signature Algorithm.</p>
 	<p>CloudFlare's ECC curve for ECDHE (This is the same curve used by Google.com):</p>
-	<pre class="language-undefined"><code class="language-undefined">max: 115792089210356248762697446949407573530086143415290314195533631308867097853951  
+	<pre class="language-Python"><code class="language-Python">max: 115792089210356248762697446949407573530086143415290314195533631308867097853951  
 curve: y² = x³ + ax + b  
 a = 115792089210356248762697446949407573530086143415290314195533631308867097853948  
 b = 41058363725152142129326129780047268409114441015993725554835256314039467401291</code></pre>
 	<p></p>
 	<p>The performance improvement of ECDSA over RSA is dramatic. Even with an older version of OpenSSL that does not have assembly-optimized elliptic curve code, an ECDSA signature with a 256-bit key is over 20x faster than an RSA signature with a 2,048-bit key.</p>
-	<p>On a MacBook Pro with OpenSSL 0.9.8, the "speed" benchmark returns:</p>
-	<pre class="language-undefined"><code class="language-undefined">Doing 256 bit sign ecdsa's for 10s: 42874 256 bit ECDSA signs in 9.99s  
+	<p>On a MacBook Pro with OpenSSL 0.9.8, the "speed" benchmark returns: </p>
+	<pre class="language-Python"><code class="language-Python">Doing 256 bit sign ecdsa's for 10s: 42874 256 bit ECDSA signs in 9.99s  
 Doing 2048 bit private rsa's for 10s: 1864 2048 bit private RSA's in 9.99s</code></pre>
 	<p></p>
 	<p>That's 23x as many signatures using ECDSA as RSA.</p>

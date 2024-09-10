@@ -118,7 +118,7 @@ async function handleRequest(request: Request, session: D1DatabaseSession) {
 
     return Response.json(results)
   } else if (pathname === '/api/orders/add') {
-    const order = await request.json<order>()
+    const order = await request.json&lt;Order&gt;()
 
 
     // This statement is a write query, so D1 will send the query to
@@ -145,7 +145,7 @@ async function handleRequest(request: Request, session: D1DatabaseSession) {
 
 
   return new Response('Not found', { status: 404 })
-}</order></code></pre>
+}</code></pre>
 	<p>D1’s implementation of Sessions makes use of commit tokens. &nbsp;Commit tokens identify a particular committed query to the database. &nbsp;Within a session, D1 will use commit tokens to ensure that queries are sequentially ordered. &nbsp;In the example above, the D1 session ensures that the “SELECT COUNT(*)” query happens <i>after</i> the “INSERT” of the new order, <i>even if</i> we switch replicas between the awaits. &nbsp;</p>
 	<p>There are several options on how you want to start a session in a Workers fetch handler. &nbsp;<code>db.withSession(&lt;condition&gt;)</code> accepts these arguments:</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
@@ -233,10 +233,10 @@ npx wrangler d1 export northwind-traders --remote --output=./database.sql
 npx wrangler d1 export northwind-traders --remote --table='Employee' --output=./table.sql
 
 # database schema only
-npx wrangler d1 export <database_name> --remote --output=./database-schema.sql --no-data=true</database_name></code></pre>
+npx wrangler d1 export &lt;database_name&gt; --remote --output=./database-schema.sql --no-data=true</code></pre>
 	<p><b>Debug query performance</b>Understanding SQL query performance and debugging slow queries is a crucial step for production workloads. We’ve added the experimental <a href="https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights"><code>wrangler d1 insights</code></a> to help developers analyze query performance metrics also available via <a href="https://developers.cloudflare.com/d1/observability/metrics-analytics">GraphQL API</a>.</p>
 	<pre class="language-bash"><code class="language-bash"># To find top 10 queries by average execution time:
-npx wrangler d1 insights <database_name> --sort-type=avg --sort-by=time --count=10</database_name></code></pre>
+npx wrangler d1 insights &lt;database_name&gt; --sort-type=avg --sort-by=time --count=10</code></pre>
 	<p><b>Developer tooling</b>Various <a href="https://developers.cloudflare.com/d1/reference/community-projects">community developer projects</a> support D1. New additions include <a href="https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm">Prisma ORM</a>, in version 5.12.0, which now supports Workers and D1.</p>
 	<h3>Next steps</h3>
 	<p>The features available now with GA and our global read replication design are just the start of delivering the SQL database needs for developer applications. If you haven’t yet used D1, you can <a href="https://developers.cloudflare.com/d1/get-started">get started</a> right now, visit D1’s <a href="https://developers.cloudflare.com/d1">developer documentation</a> to spark some ideas, or <a href="https://discord.cloudflare.com">join the #d1 channel</a> on our Developer Discord to talk to other D1 developers and our product engineering team.</p>

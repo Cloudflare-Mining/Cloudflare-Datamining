@@ -19,11 +19,11 @@ export const onRequestGet = () =&gt; {
   return new Response("Hello, world!")
 }
 
-// POST requests to /filename with a JSON-encoded body would return "Hello, <name>!"
+// POST requests to /filename with a JSON-encoded body would return "Hello, &lt;name&gt;!"
 export const onRequestPost = async ({ request }) =&gt; {
   const { name } = await request.json()
   return new Response(`Hello, ${name}!`)
-}</name></code></pre>
+}</code></pre>
 	<p>If you perform a <code>git commit</code>, it will trigger a new Pages build to deploy your dynamic site! During the build pipeline, Pages traverses your directory, mapping the filenames to URLs relative to your repo structure.</p>
 	<p>Under the hood, Pages generates Workers which include all your routing and functionality from the source. &nbsp;Functions supports deeply-nested routes, wildcard matching, middleware for things like authentication and error-handling, and more! To demonstrate all of its bells and whistles, we’ve created a blog post to walk through an <a href="https://blog.cloudflare.com/building-full-stack-with-pages">example full stack application</a>.</p>
 	<h2>Letting you do what you do best</h2>

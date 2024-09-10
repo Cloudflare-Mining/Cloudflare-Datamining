@@ -190,15 +190,14 @@ ETag: "3f80f-1b6-3e1cb03b"
 Accept-Ranges: bytes
 Connection: close
 
-
-    
-        <title>An Example Page</title>
-    <script nonce="e63e00de-55d1-4806-acd4-3fcdce0aed1f">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
-    
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;An Example Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
         Hello World, this is a very simple HTML document.
-    
-
-</code></pre>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 	<p>To put this in context, you can think of the networking system the Internet uses as starting with IP, the Internet Protocol. IP is responsible for getting a small packet of data (around 1500 bytes) from one computer to another. On top of that we have TCP, which is responsible for taking larger blocks of data like entire documents and files and sending them via many IP packets reliably. On top of that, we then implement a protocol like HTTP or FTP, which specifies what format should be used to make the data we send via TCP (or UDP, etc.) understandable and meaningful.</p>
 	<p>In other words, TCP/IP sends a whole bunch of bytes to another computer, the protocol says what those bytes should be and what they mean.</p>
 	<p>You can make your own protocol if you like, assemblying the bytes in your TCP messages however you like. The only requirement is that whoever you are talking to speaks the same language. For this reason, it’s common to standardize these protocols.</p>
@@ -267,9 +266,9 @@ PR:aftp/xx.yy.edu/pub/doc/README
 	<p>In 1996 Keith Shafer and several others proposed a solution to the problem of broken URLs. <a href="http://purl.oclc.org/OCLC/PURL/INET96">The link</a> to this solution is now broken. Roy Fielding posted an implementation suggestion in July of 1995. <a href="http://ftp.ics.uci.edu/pub/ietf/uri/draft-ietf-uri-roy-urn-urc-00.txt">That link</a> is now broken.</p>
 	<p>I was able to find these pages through Google, which has functionally made page titles the URN of today. The URN format was ultimately finalized in 1997, and has essentially never been used since. The implementation is itself interesting. Each URN is composed of two components, an <code>authority</code> who can resolve a given type of URN, and the specific ID of this document in whichever format the <code>authority</code> understands. For example, <code>urn:isbn:0131103628</code> will identify a book, forming a permanent link which can (hopefully) be turned into a set of URLs by your local <code>isbn</code> resolver.</p>
 	<p>Given the power of search engines, it’s possible the best URN format today would be a simple way for files to point to their former URLs. We could allow the search engines to index this information, and link us as appropriate:</p>
-	<pre class="language-undefined"><code class="language-undefined"><!-- On http://zack.is/history -->
-<link rel="past-url" href="https://zackbloom.com/history.html">
-<link rel="past-url" href="https://zack.is/history.html"></code></pre>
+	<pre class="language-undefined"><code class="language-undefined">&lt;!-- On http://zack.is/history --&gt;
+&lt;link rel="past-url" href="http://zackbloom.com/history.html"&gt;
+&lt;link rel="past-url" href="http://zack.is/history.html"&gt;</code></pre>
 	<h3>Query Params</h3>
 	<blockquote>
 		<p>The "application/x-www-form-urlencoded" format is in many ways an aberrant monstrosity, the result of many years of implementation accidents and compromises leading to a set of requirements necessary for interoperability, but in no way representing good design practices.</p>
@@ -285,23 +284,23 @@ PR:aftp/xx.yy.edu/pub/doc/README
 	<p>That particular proposal actually uses plus signs to separate the components of what otherwise looks like a modern GET query:</p>
 	<pre class="language-undefined"><code class="language-undefined">http://somehost.somewhere/some/path?x=xxxx+y=yyyy+z=zzzz</code></pre>
 	<p>This was far from universally acclaimed. <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0032.html">Some believed</a> we needed a way of saying that the content on the other side of links should be searchable:</p>
-	<pre class="language-undefined"><code class="language-undefined"><a href="wais://quake.think.com/INFO" index="1">search</a></code></pre>
+	<pre class="language-undefined"><code class="language-undefined">&lt;a HREF="wais://quake.think.com/INFO" INDEX=1&gt;search&lt;/a&gt;</code></pre>
 	<p>Tim Berners-Lee <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0044.html">thought</a> we should have a way of defining strongly-typed queries:</p>
-	<pre class="language-undefined"><code class="language-undefined"><isindex type="iana:/www/classes/query/personalinfo"></isindex></code></pre>
+	<pre class="language-undefined"><code class="language-undefined">&lt;ISINDEX TYPE="iana:/www/classes/query/personalinfo"&gt;</code></pre>
 	<p>I can be somewhat confident in saying, in retrospect, I am glad the more generic solution won out.</p>
 	<p>The real work on <code>&lt;INPUT&gt;</code> <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0079.html">began</a> in January of 1993 based on an older SGML type. It was (perhaps unfortunately), <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0085.html">decided</a> that <code>&lt;SELECT&gt;</code> inputs needed a separate, richer, structure:</p>
-	<pre class="language-undefined"><code class="language-undefined"><select name="FIELDNAME" type="CHOICETYPE" [value="VALUE]" [help="HELPUDI]"> 
-    item 1
-    item 2
-    item 3
-</select></code></pre>
+	<pre class="language-undefined"><code class="language-undefined">&lt;select name=FIELDNAME type=CHOICETYPE [value=VALUE] [help=HELPUDI]&gt; 
+    &lt;choice&gt;item 1
+    &lt;choice&gt;item 2
+    &lt;choice&gt;item 3
+&lt;/select&gt;</code></pre>
 	<p>If you’re curious, reusing <code>&lt;li&gt;</code>, rather than introducing the <code>&lt;option&gt;</code> element was <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0188.html">absolutely</a> considered. There were, of course, alternative form proposals. <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0168.html">One</a> included some variable substituion evocative of what Angular might do today:</p>
-	<pre class="language-undefined"><code class="language-undefined"><entryblank type="int" length="length" default="default" var="lval">Prompt</entryblank>
-<question type="float" default="default" var="lval">Prompt</question>
-<choice default="default" var="lval">
-    <alternative val="value1">Prompt1 ...
-    <alternative val="valuen">Promptn
-</alternative></alternative></choice></code></pre>
+	<pre class="language-undefined"><code class="language-undefined">&lt;ENTRYBLANK TYPE=int LENGTH=length DEFAULT=default VAR=lval&gt;Prompt&lt;/ENTRYBLANK&gt;
+&lt;QUESTION TYPE=float DEFAULT=default VAR=lval&gt;Prompt&lt;/QUESTION&gt;
+&lt;CHOICE DEFAULT=default VAR=lval&gt;
+    &lt;ALTERNATIVE VAL=value1&gt;Prompt1 ...
+    &lt;ALTERNATIVE VAL=valuen&gt;Promptn
+&lt;/CHOICE&gt;</code></pre>
 	<p>In this example the inputs are checked against the type specified in <code>type</code>, and the <code>VAR</code> values are available on the page for use in <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0150.html">string substitution</a> in URLs, à la:</p>
 	<pre class="language-undefined"><code class="language-undefined">http://cloudflare.com/apps/$appId</code></pre>
 	<p>Additional <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0188.html">proposals</a> actually used <code>@</code>, rather than <code>=</code>, to separate query components:</p>
@@ -312,11 +311,11 @@ PR:aftp/xx.yy.edu/pub/doc/README
 	<p>Of course, it was also Marc Andreessen’s company <a href="https://web.archive.org/web/19990421025406/http://home.mcom.com/newsref/std/cookie_spec.html">Netscape</a> who would create the cookie format (using a different separator). Their proposal was itself painfully shortsighted, led to the attempt to introduce a <a href="https://www.ietf.org/rfc/rfc2965.txt"><code>Set-Cookie2</code></a> header, and introduced fundamental structural issues we still deal with at Cloudflare to this day.</p>
 	<h3>Fragments</h3>
 	<p>The portion of the URL following the ‘#’ is known as the fragment. Fragments were a part of URLs since their <a href="https://www.w3.org/History/19921103-hypertext/hypertext/WWW/Addressing/Addressing.html">initial specification</a>, used to link to a specific location on the page being loaded. For example, if I have an anchor on my site:</p>
-	<pre class="language-undefined"><code class="language-undefined"><a name="bio"></a></code></pre>
+	<pre class="language-undefined"><code class="language-undefined">&lt;a name="bio"&gt;&lt;/a&gt;</code></pre>
 	<p>I can link to it:</p>
 	<pre class="language-undefined"><code class="language-undefined">http://zack.is/#bio</code></pre>
 	<p>This concept was gradually extended to any element (rather than just anchors), and moved to the <code>id</code> attribute rather than <code>name</code>:</p>
-	<pre class="language-undefined"><code class="language-undefined"><h1 id="bio">Bio</h1></code></pre>
+	<pre class="language-undefined"><code class="language-undefined">&lt;h1 id="bio"&gt;Bio&lt;/h1&gt;</code></pre>
 	<p>Tim Berners-Lee decided to use this character based on its connection to addresses in the United States (despite the fact that he’s British by birth). In <a href="https://www.w3.org/People/Berners-Lee/FAQ.html#etc">his words</a>:</p>
 	<blockquote>
 		<p>In a snail mail address in the US at least, it is common to use the number sign for an apartment number or suite number within a building. So 12 Acacia Av #12 means “The building at 12 Acacia Av, and then within that the unit known numbered 12”. It seemed to be a natural character for the task. Now, http://www.example.com/foo#bar means “Within resource http://www.example.com/foo, the particular view of it known as bar”.</p>

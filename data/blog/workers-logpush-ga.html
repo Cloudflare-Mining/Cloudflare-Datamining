@@ -51,17 +51,17 @@
 	<h3>Configuration</h3>
 	<p>Logpush is incredibly simple to set up.</p>
 	<p>1. Create a Logpush job. The following example sends Workers logs to R2.</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<account_id>/logpush/jobs' \
--H 'X-Auth-Key: <api_key>' \
--H 'X-Auth-Email: <email>' \
+	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/logpush/jobs' \
+-H 'X-Auth-Key: &lt;API_KEY&gt;' \
+-H 'X-Auth-Email: &lt;EMAIL&gt;' \
 -H 'Content-Type: application/json' \
 -d '{
 "name": "workers-logpush",
 "logpull_options": "fields=Event,EventTimestampMs,Outcome,Exceptions,Logs,ScriptName",
-"destination_conf": "r2://<bucket_path>/{DATE}?account-id=<account_id>&amp;access-key-id=<r2_access_key_id>&amp;secret-access-key=<r2_secret_access_key>",
+"destination_conf": "r2://&lt;BUCKET_PATH&gt;/{DATE}?account-id=&lt;ACCOUNT_ID&gt;&amp;access-key-id=&lt;R2_ACCESS_KEY_ID&gt;&amp;secret-access-key=&lt;R2_SECRET_ACCESS_KEY&gt;",
 "dataset": "workers_trace_events",
 "enabled": true
-}'| jq .</r2_secret_access_key></r2_access_key_id></account_id></bucket_path></email></api_key></account_id></code></pre>
+}'| jq .</code></pre>
 	<p>In Logpush, you can also configure <a href="https://developers.cloudflare.com/logs/reference/filters">filters</a> and a <a href="https://developers.cloudflare.com/logs/get-started/api-configuration/#sampling-rate">sampling rate</a> to have more control of the volume of data that is sent to your configured destination. For example if you only want to receive logs for resulted in an exception, you could add the following under <code>logpull_options</code>:</p>
 	<pre class="language-bash"><code class="language-bash">"filter":"{\"where\": {\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"exception\"}}"</code></pre>
 	<p>2. Enable logging on your Workers script</p>

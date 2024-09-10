@@ -24,7 +24,7 @@
 	<h3>Returning a response to the client</h3>
 	<h4>Static block</h4>
 	<p>In the example, we create a static response:</p>
-	<pre class="language-javascript"><code class="language-javascript">response = new Response('<h1>Blocked.</h1>', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})</code></pre>
+	<pre class="language-javascript"><code class="language-javascript">response = new Response('&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})</code></pre>
 	<p>To make sure that the browser can parse and display it properly, we also add the Content-Type header with the value “text/html”. Assuming the origin responded with something it should not have responded with, we will replace the response headers so as not to reflect back any additional information.</p>
 	<h4>Rate limiting the response</h4>
 	<p>In the example above, we are looking for a string that clearly should never be leaked. However, in some cases, it may be possible that you are looking to detect data that is valid for your application to respond with, but you still want to rate limit the number of times it is being accessed.</p>
@@ -89,7 +89,7 @@ async function handleRequest(event) {
    if(response.headers.get('Content-Type').includes('text')){
      let body = await response.text()
      if(body.includes('SHHHTHISISASECRET')) {
-       response = new Response('<h1>Blocked.</h1>', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})
+       response = new Response('&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})
        createPagerDutyIncident(event)
        return response
      }

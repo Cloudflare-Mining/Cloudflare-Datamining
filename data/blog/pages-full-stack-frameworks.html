@@ -45,8 +45,8 @@ npx wrangler pages dev ./dist</code></pre>
 	<p>Create a new project by running the following command in your terminal:</p>
 	<pre class="language-bash"><code class="language-bash">npm create astro@latest</code></pre>
 	<p>You will be prompted to select a path to the project, a starter template, and additional setup configuration - accept the defaults. Now add the Cloudflare Pages adaptor by running the following in your terminal:</p>
-	<pre class="language-bash"><code class="language-bash">cd <path to="" project="">
-npx astro add cloudflare</path></code></pre>
+	<pre class="language-bash"><code class="language-bash">cd &lt;path/to/project&gt;
+npx astro add cloudflare</code></pre>
 	<p>You will be prompted whether you wish to install - select continue when asked. This will update the astro.build/config file with the plugin. Update the configuration to set the cloudflare plugin to <code>directory</code> mode:</p>
 	<pre class="language-bash"><code class="language-bash">export default defineConfig({
   adapter: cloudflare({ mode: "directory" }),

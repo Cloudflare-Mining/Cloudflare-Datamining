@@ -52,8 +52,8 @@ const UnauthenticatedAppLoadable = React.lazy(
 // Render AuthenticatedApp or UnauthenticatedApp based on user
 const Root: React.FC = () =&gt; {
   const { user } = useAuth();
-  return user ? <authenticatedapploadable> : <unauthenticatedapploadable>;
-};</unauthenticatedapploadable></authenticatedapploadable></code></pre>
+  return user ? &lt;AuthenticatedAppLoadable /&gt; : &lt;UnauthenticatedAppLoadable /&gt;;
+};</code></pre>
 	<p>That’s it! If a user is not logged in, we ship them a small bundle that only contains code necessary to render parts of the application related to login and signup, as well as a few global components. Code related to billing, account-level and zone-level products, sidebar navigation, and user profile settings are all bundled into a separate sub-application that only gets loaded once a user logs in.</p>
 	<p>Again, we saw significant improvements, especially to Largest Contentful Paint, pushing our performance scores to about 80. However, we ran a Chrome performance profile, and on closer inspection of the longest blocking task we noticed that there was still unnecessary code being parsed and evaluated, even though we never used it. For example, code for sidebar navigation was still loaded for unauthenticated users who never actually saw that component.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">

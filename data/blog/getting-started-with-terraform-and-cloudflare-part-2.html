@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RjSXgMC8ct7LBS5x2dK3n/d1d3709e5ecb537be502b8a63bc823f4/getting-started-with-terraform-and-cloudflare-part-2.png" alt="">
+<div class="mb2 gray5">17 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RjSXgMC8ct7LBS5x2dK3n/d1d3709e5ecb537be502b8a63bc823f4/getting-started-with-terraform-and-cloudflare-part-2.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>In </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1"><i>Part 1 of Getting Started with Terraform</i></a><i>, we explained how Terraform lets developers store Cloudflare configuration in their own source code repository, institute change management processes that include code review, track their configuration versions and history over time, and easily roll back changes as needed.</i></p>
 	<p><i>We covered </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#installingterraform"><i>installing Terraform</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#helloworld"><i>provider initialization</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#trackingchangehistory"><i>storing configuration in git</i></a><i>, </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#applyingzonesettings"><i>applying zone settings</i></a><i>, and </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits"><i>managing rate limits</i></a><i>. This post continues the Cloudflare Terraform provider walkthrough with examples of </i><a href="https://blog.cloudflare.com/#addingloadbalancing"><i>load balancing</i></a><i>, </i><a href="https://blog.cloudflare.com/#usingpagerules"><i>page rules</i></a><i>, </i><a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges"><i>reviewing and rolling back configuration</i></a><i>, and </i><a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration"><i>importing state</i></a><i>.</i></p>
@@ -114,7 +114,7 @@ EOF</code></pre>
 	<p>Note that while the name of the resource is different as Terraform resources of the same type must be uniquely named, the DNS name, i.e., what your customers will type in their browser, is the same: "www".</p>
 	<h4>2. Preview and merge the changes</h4>
 	<p>Below we'll check the <code>terraform plan</code>, merge and apply the changes.</p>
-	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep -v "<computed>"
+	<pre class="language-bash"><code class="language-bash">$ terraform plan | grep -v "&lt;computed&gt;"
 ...
 Terraform will perform the following actions:
 
@@ -126,7 +126,7 @@ Terraform will perform the following actions:
       value:       "198.51.100.15"
 
 
-Plan: 1 to add, 0 to change, 0 to destroy.</computed></code></pre>
+Plan: 1 to add, 0 to change, 0 to destroy.</code></pre>
 
 	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 $ git commit -m "Step 5 - Add additional 'www' DNS record for Asia data center."
@@ -146,21 +146,21 @@ Fast-forward
 	<pre class="language-bash"><code class="language-bash">$ terraform apply --auto-approve
 ...
 cloudflare_record.www-asia: Creating...
-  created_on:  "" =&gt; "<computed>"
+  created_on:  "" =&gt; "&lt;computed&gt;"
   domain:      "" =&gt; "example.com"
-  hostname:    "" =&gt; "<computed>"
-  metadata.%:  "" =&gt; "<computed>"
-  modified_on: "" =&gt; "<computed>"
+  hostname:    "" =&gt; "&lt;computed&gt;"
+  metadata.%:  "" =&gt; "&lt;computed&gt;"
+  modified_on: "" =&gt; "&lt;computed&gt;"
   name:        "" =&gt; "www"
-  proxiable:   "" =&gt; "<computed>"
+  proxiable:   "" =&gt; "&lt;computed&gt;"
   proxied:     "" =&gt; "true"
-  ttl:         "" =&gt; "<computed>"
+  ttl:         "" =&gt; "&lt;computed&gt;"
   type:        "" =&gt; "A"
   value:       "" =&gt; "198.51.100.15"
-  zone_id:     "" =&gt; "<computed>"
+  zone_id:     "" =&gt; "&lt;computed&gt;"
 cloudflare_record.www-asia: Creation complete after 1s (ID: fda39d8c9bf909132e82a36bab992864)
 
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</computed></computed></computed></computed></computed></computed></computed></code></pre>
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 	<p>With the second DNS record in place, let's try making some requests to see where the traffic is served from:</p>
 	<pre class="language-bash"><code class="language-bash">$ curl https://www.example.com
 Hello, this is 203.0.113.10!
@@ -236,36 +236,36 @@ EOF</code></pre>
 Terraform will perform the following actions:
 
   + cloudflare_load_balancer.www-lb
-      id:                         <computed>
-      created_on:                 <computed>
-      default_pool_ids.#:         <computed>
+      id:                         &lt;computed&gt;
+      created_on:                 &lt;computed&gt;
+      default_pool_ids.#:         &lt;computed&gt;
       description:                "example load balancer"
       fallback_pool_id:           "${cloudflare_load_balancer_pool.www-servers.id}"
-      modified_on:                <computed>
+      modified_on:                &lt;computed&gt;
       name:                       "www-lb"
-      pop_pools.#:                <computed>
+      pop_pools.#:                &lt;computed&gt;
       proxied:                    "true"
-      region_pools.#:             <computed>
-      ttl:                        <computed>
+      region_pools.#:             &lt;computed&gt;
+      ttl:                        &lt;computed&gt;
       zone:                       "example.com"
-      zone_id:                    <computed>
+      zone_id:                    &lt;computed&gt;
 
   + cloudflare_load_balancer_monitor.get-root-https
-      id:                         <computed>
-      created_on:                 <computed>
+      id:                         &lt;computed&gt;
+      created_on:                 &lt;computed&gt;
       description:                "GET / over HTTPS - expect 200"
       expected_body:              "alive"
       expected_codes:             "200"
       interval:                   "60"
       method:                     "GET"
-      modified_on:                <computed>
+      modified_on:                &lt;computed&gt;
       path:                       "/"
       retries:                    "2"
       timeout:                    "5"
       type:                       "http"
 
   + cloudflare_load_balancer_pool.www-servers
-      id:                         <computed>
+      id:                         &lt;computed&gt;
       check_regions.#:            "6"
       check_regions.1151265357:   "SEAS"
       check_regions.1997072153:   "WEU"
@@ -273,11 +273,11 @@ Terraform will perform the following actions:
       check_regions.2826842289:   "ENAM"
       check_regions.2992567379:   "WNAM"
       check_regions.3706632574:   "NEAS"
-      created_on:                 <computed>
+      created_on:                 &lt;computed&gt;
       description:                "www origins"
       enabled:                    "true"
       minimum_origins:            "1"
-      modified_on:                <computed>
+      modified_on:                &lt;computed&gt;
       monitor:                    "${cloudflare_load_balancer_monitor.get-root-https.id}"
       name:                       "www-servers"
       notification_email:         "you@example.com"
@@ -290,7 +290,7 @@ Terraform will perform the following actions:
       origins.4241861547.name:    "www-us"
 
 
-Plan: 3 to add, 0 to change, 0 to destroy.</computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></code></pre>
+Plan: 3 to add, 0 to change, 0 to destroy.</code></pre>
 	<p>The plan looks good so let's go ahead, merge it in, and apply it.</p>
 	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 $ git commit -m "Step 5 - Create load balancer (LB) monitor, LB pool, and LB."
@@ -300,13 +300,13 @@ $ git commit -m "Step 5 - Create load balancer (LB) monitor, LB pool, and LB."
 $ terraform apply --auto-approve
 ...
 cloudflare_load_balancer_monitor.get-root-https: Creating...
-  created_on:     "" =&gt; "<computed>"
+  created_on:     "" =&gt; "&lt;computed&gt;"
   description:    "" =&gt; "GET / over HTTPS - expect 200"
   expected_body:  "" =&gt; "alive"
   expected_codes: "" =&gt; "200"
   interval:       "" =&gt; "60"
   method:         "" =&gt; "GET"
-  modified_on:    "" =&gt; "<computed>"
+  modified_on:    "" =&gt; "&lt;computed&gt;"
   path:           "" =&gt; "/"
   retries:        "" =&gt; "2"
   timeout:        "" =&gt; "5"
@@ -320,11 +320,11 @@ cloudflare_load_balancer_pool.www-servers: Creating...
   check_regions.2826842289:   "" =&gt; "ENAM"
   check_regions.2992567379:   "" =&gt; "WNAM"
   check_regions.3706632574:   "" =&gt; "NEAS"
-  created_on:                 "" =&gt; "<computed>"
+  created_on:                 "" =&gt; "&lt;computed&gt;"
   description:                "" =&gt; "www origins"
   enabled:                    "" =&gt; "true"
   minimum_origins:            "" =&gt; "1"
-  modified_on:                "" =&gt; "<computed>"
+  modified_on:                "" =&gt; "&lt;computed&gt;"
   monitor:                    "" =&gt; "4238142473fcd48e89ef1964be72e3e0"
   name:                       "" =&gt; "www-servers"
   notification_email:         "" =&gt; "you@example.com"
@@ -337,22 +337,22 @@ cloudflare_load_balancer_pool.www-servers: Creating...
   origins.4241861547.name:    "" =&gt; "www-us"
 cloudflare_load_balancer_pool.www-servers: Creation complete after 0s (ID: 906d2a7521634783f4a96c062eeecc6d)
 cloudflare_load_balancer.www-lb: Creating...
-  created_on:         "" =&gt; "<computed>"
+  created_on:         "" =&gt; "&lt;computed&gt;"
   default_pool_ids.#: "" =&gt; "1"
   default_pool_ids.0: "" =&gt; "906d2a7521634783f4a96c062eeecc6d"
   description:        "" =&gt; "example load balancer"
   fallback_pool_id:   "" =&gt; "906d2a7521634783f4a96c062eeecc6d"
-  modified_on:        "" =&gt; "<computed>"
+  modified_on:        "" =&gt; "&lt;computed&gt;"
   name:               "" =&gt; "www-lb"
-  pop_pools.#:        "" =&gt; "<computed>"
+  pop_pools.#:        "" =&gt; "&lt;computed&gt;"
   proxied:            "" =&gt; "true"
-  region_pools.#:     "" =&gt; "<computed>"
-  ttl:                "" =&gt; "<computed>"
+  region_pools.#:     "" =&gt; "&lt;computed&gt;"
+  ttl:                "" =&gt; "&lt;computed&gt;"
   zone:               "" =&gt; "example.com"
-  zone_id:            "" =&gt; "<computed>"
+  zone_id:            "" =&gt; "&lt;computed&gt;"
 cloudflare_load_balancer.www-lb: Creation complete after 1s (ID: cb94f53f150e5c1a65a07e43c5d4cac4)
 
-Apply complete! Resources: 3 added, 0 changed, 0 destroyed.</computed></computed></computed></computed></computed></computed></computed></computed></computed></computed></code></pre>
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.</code></pre>
 	<h5>iv. Test the changes</h5>
 	<p>With load balancing in place, let's run those curl requests again to see where the traffic is served from:</p>
 	<pre class="language-bash"><code class="language-bash">$ for i in {1..4}; do curl https://www.example.com &amp;&amp; sleep 5; done
@@ -403,7 +403,7 @@ EOF</code></pre>
 Terraform will perform the following actions:
 
   + cloudflare_page_rule.increase-security-on-expensive-page
-      id:                                     <computed>
+      id:                                     &lt;computed&gt;
       actions.#:                              "1"
       actions.0.always_use_https:             "false"
       actions.0.disable_apps:                 "false"
@@ -414,10 +414,10 @@ Terraform will perform the following actions:
       status:                                 "active"
       target:                                 "www.example.com/expensive-db-call"
       zone:                                   "example.com"
-      zone_id:                                <computed>
+      zone_id:                                &lt;computed&gt;
 
   + cloudflare_page_rule.redirect-to-new-db-page
-      id:                                     <computed>
+      id:                                     &lt;computed&gt;
       actions.#:                              "1"
       actions.0.always_use_https:             "false"
       actions.0.disable_apps:                 "false"
@@ -430,10 +430,10 @@ Terraform will perform the following actions:
       status:                                 "active"
       target:                                 "www.example.com/old-location.php"
       zone:                                   "example.com"
-      zone_id:                                <computed>
+      zone_id:                                &lt;computed&gt;
 
 
-Plan: 2 to add, 0 to change, 0 to destroy.</computed></computed></computed></computed></code></pre>
+Plan: 2 to add, 0 to change, 0 to destroy.</code></pre>
 
 	<pre class="language-bash"><code class="language-bash">$ git add cloudflare.tf
 
@@ -470,7 +470,7 @@ cloudflare_page_rule.redirect-to-new-db-page: Creating...
   status:                                 "" =&gt; "active"
   target:                                 "" =&gt; "www.example.com/old-location.php"
   zone:                                   "" =&gt; "example.com"
-  zone_id:                                "" =&gt; "<computed>"
+  zone_id:                                "" =&gt; "&lt;computed&gt;"
 cloudflare_page_rule.increase-security-on-expensive-page: Creating...
   actions.#:                     "0" =&gt; "1"
   actions.0.always_use_https:    "" =&gt; "false"
@@ -482,11 +482,11 @@ cloudflare_page_rule.increase-security-on-expensive-page: Creating...
   status:                        "" =&gt; "active"
   target:                        "" =&gt; "www.example.com/expensive-db-call"
   zone:                          "" =&gt; "example.com"
-  zone_id:                       "" =&gt; "<computed>"
+  zone_id:                       "" =&gt; "&lt;computed&gt;"
 cloudflare_page_rule.redirect-to-new-db-page: Creation complete after 3s (ID: c5c40ff2dc12416b5fe4d0541980c591)
 cloudflare_page_rule.increase-security-on-expensive-page: Creation complete after 6s (ID: 1c13fdb84710c4cc8b11daf7ffcca449)
 
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</computed></computed></code></pre>
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</code></pre>
 	<p>With the Page Rules in place, let's try that call again, along with the <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode">I'm Under Attack Mode</a> test:</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -vso /dev/null https://www.example.com/old-location.php 2&gt;&amp;1 | grep "&lt; HTTP\|Location"
 &lt; HTTP/1.1 301 Moved Permanently

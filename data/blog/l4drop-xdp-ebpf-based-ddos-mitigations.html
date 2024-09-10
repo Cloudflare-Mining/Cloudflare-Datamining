@@ -126,11 +126,11 @@ Disassembly of section prog:
 xdp_test:
        0:       18 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00         r1 = 0 ll
        2:       b7 00 00 00 02 00 00 00         r0 = 2
-       3:       15 01 01 00 00 00 00 00         if r1 == 0 goto +1 <lbb0_2>
+       3:       15 01 01 00 00 00 00 00         if r1 == 0 goto +1 &lt;LBB0_2&gt;
        4:       b7 00 00 00 01 00 00 00         r0 = 1
 
 LBB0_2:
-       5:       95 00 00 00 00 00 00 00         exit</lbb0_2></code></pre>
+       5:       95 00 00 00 00 00 00 00         exit</code></pre>
 	<p>Modifying the ELF to change the load instruction to load <code>0</code> or <code>1</code> will change the value of <code>enabled</code>, enabling or disabling the rule. The kernel even <a href="https://elixir.bootlin.com/linux/v4.19.3/source/kernel/bpf/verifier.c#L3868">trims conditionals against constants like these</a>.</p>
 	<p>Modifying the instructions requires the ability to differentiate these special loads against ones normally emitted by Clang. Changing the asm to load a symbol (<code>asm("%0 = RULE_0_ENABLED ll" : "=r"(enabled))</code>) ensures it shows up in the ELF relocation info with that symbol name:</p>
 	<pre class="language-bash"><code class="language-bash">$ llvm-readelf-6.0 -r test.o

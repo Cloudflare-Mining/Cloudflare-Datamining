@@ -13,8 +13,8 @@
 	<h3>Memory access violations</h3>
 	<p>According to the <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues">NSA</a>, around 70% of vulnerabilities in both Microsoft's and Google's code were related to memory safety issues. One of the consequences of incorrect memory accesses is leaking security data (including cryptographic keys). Cryptographic keys are just some (mostly random) data stored in memory, so they may be subject to memory leaks like any other in-memory data. The below example shows how a cryptographic key may accidentally leak via stack memory reuse:</p>
 	<p>broken.c</p>
-	<pre class="language-cpp"><code class="language-cpp">#include <stdio.h>
-#include <stdint.h>
+	<pre class="language-cpp"><code class="language-cpp">#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
 
 static void encrypt(void)
 {
@@ -35,7 +35,7 @@ int main(void)
     /* notify that we're done */
     log_completion();
     return 0;
-}</stdint.h></stdio.h></code></pre>
+}</code></pre>
 	<p>Compile and run our program:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o broken broken.c
 $ ./broken 
@@ -61,8 +61,8 @@ not important, just fyi: hunter2</code></pre>
 	<p>The Python compiler will definitely check boundaries in many cases for you and notify with an error:</p>
 	<pre class="language-python"><code class="language-python">&gt;&gt;&gt; print("x: {}, y: {}, {}".format(1, 2))
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-IndexError: Replacement index 2 out of range for positional args tuple</module></stdin></code></pre>
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+IndexError: Replacement index 2 out of range for positional args tuple</code></pre>
 	<p>However, this is a quote from one of 36 (for now) <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html">vulnerabilities</a>:</p>
 	<blockquote>
 		<p><i>Python 2.7.14 is vulnerable to a Heap-Buffer-Overflow as well as a Heap-Use-After-Free.</i></p>
@@ -163,9 +163,9 @@ index 6516ddc1..797739bb 100644
 +++ b/ssh-rsa.c
 @@ -26,6 +26,7 @@
  
- #include <stdarg.h>
- #include <string.h>
-+#include <stdbool.h>
+ #include &lt;stdarg.h&gt;
+ #include &lt;string.h&gt;
++#include &lt;stdbool.h&gt;
  
  #include "sshbuf.h"
  #include "compat.h"
@@ -342,12 +342,12 @@ index 771c4bce..a7ae45f6 100644
 --- a/sshkey.h
 +++ b/sshkey.h
 @@ -29,6 +29,7 @@
- #include <sys types.h="">
+ #include &lt;sys/types.h&gt;
  
  #ifdef WITH_OPENSSL
-+#include <keyutils.h>
- #include <openssl rsa.h="">
- #include <openssl dsa.h="">
++#include &lt;keyutils.h&gt;
+ #include &lt;openssl/rsa.h&gt;
+ #include &lt;openssl/dsa.h&gt;
  # ifdef OPENSSL_HAS_ECC
 @@ -153,6 +154,7 @@ struct sshkey {
  	size_t	shielded_len;
@@ -356,7 +356,7 @@ index 771c4bce..a7ae45f6 100644
 +	key_serial_t serial;
  };
  
- #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES</openssl></openssl></keyutils.h></sys></stdbool.h></string.h></stdarg.h></code></pre>
+ #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES</code></pre>
 	<p>We need to download and patch OpenSSH from the latest git as the above patch won’t work on the latest release (<code>V_9_1_P1</code> at the time of this writing):</p>
 	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/openssh/openssh-portable.git
 …

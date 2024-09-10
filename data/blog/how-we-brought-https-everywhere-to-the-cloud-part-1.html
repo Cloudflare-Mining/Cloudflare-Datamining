@@ -36,22 +36,22 @@
 	<h2>How does HTTPS Everywhere know what to rewrite?</h2>
 	<p>HTTPS Everywhere rulesets can be found in <a href="https://github.com/EFForg/https-everywhere/tree/master/src/chrome/content/rules"><code>src/chrome/content/rules</code></a> folder of the <a href="https://github.com/EFForg/https-everywhere">official repository</a>. They are organized as XML files, each for their own set of hosts (with few exclusions). This allows users with basic technical skills to write and contribute missing rules to the database on their own.</p>
 	<p>Each ruleset is an XML file of the following structure:</p>
-	<pre class="language-xml"><code class="language-xml"><ruleset name="example.org">
-  <!-- Target domains -->
-  <target host="*.example.org">
+	<pre class="language-xml"><code class="language-xml">&lt;ruleset name="example.org"&gt;
+  &lt;!-- Target domains --&gt;
+  &lt;target host="*.example.org" /&gt;
  
-  <!-- Exclusions -->
-  <exclusion pattern="^http://example\.org/i-am-http-only">
+  &lt;!-- Exclusions --&gt;
+  &lt;exclusion pattern="^http://example\.org/i-am-http-only" /&gt;
  
-  <!-- Rewrite rules -->
-  <rule from="^http://(www\.)?example\.org/" to="https://$1example.org/">
-</rule></exclusion></target></ruleset></code></pre>
+  &lt;!-- Rewrite rules --&gt;
+  &lt;rule from="^http://(www\.)?example\.org/" to="https://$1example.org/" /&gt;
+&lt;/ruleset&gt;</code></pre>
 	<p>At the moment of writing, the HTTPS Everywhere database consists of ~22K such rulesets covering ~113K domain wildcards with ~32K rewrite rules and exclusions.</p>
 	<p>For performance reasons, we can't keep all those ruleset XMLs in memory, go through nodes, check each wildcard, perform replacements based on specific string format and so on. All that work would introduce significant delays in page processing and increase memory consumption on our servers. That's why we had to perform some compile-time tricks for each type of node to ensure that rewriting is smooth and fast for any user from the very first request.</p>
 	<p>Let's walk through those nodes and see what can be done in each specific case.</p>
 	<h3>Target domains</h3>
 	<p>First of all, we get target elements which describe domain wildcards that current ruleset potentially covers.</p>
-	<pre class="language-xml"><code class="language-xml"><target host="*.example.org"></target></code></pre>
+	<pre class="language-xml"><code class="language-xml">&lt;target host="*.example.org" /&gt;</code></pre>
 	<p>If a wildcard is used, it can be <a href="https://www.eff.org/https-everywhere/rulesets#wildcard-targets">either left-side or right-side</a>.</p>
 	<p>Left-side wildcard like <code>*.example.org</code> covers any hostname which has example.org as a suffix - no matter how many subdomain levels you have.</p>
 	<p>Right-side wildcard like <code>example.*</code> covers only one level instead so that subdomains with the same beginning but one unexpected domain level are not accidentally caught. For example, the Google ruleset, among others, uses the <code>google.*</code> wildcard and it should match <code>google.com</code>, <code>google.ru</code>, <code>google.es</code> etc. but not <code>google.mywebsite.com</code>.</p>
@@ -67,11 +67,11 @@
 	<p>This leads us to another interesting problem. At the moment of writing among 113K domain wildcards we have 4.7K that have a left wildcard and less than 200 which have a right wildcard. Left wildcards are expensive in state machines (including regular expressions) as they cause <a href="https://en.wikipedia.org/wiki/Combinatorial_explosion">DFA space explosion</a> during compilation so Ragel got stuck for more than 10 minutes without giving any result - trying to analyze all the <code>*.</code> prefixes and merge all the possible states where they can go, resulting in a complex tree.</p>
 	<p>Instead, if we choose to look from the end of the host, we can significantly simplify the state tree (as only 200 wildcards need to be checked separately now instead of 4.7K), thus reducing compile time to less than 20 seconds.</p>
 	<p>Let's take an oversimplified example to understand the difference. Say, we have following target wildcards (3 left-wildcards against 1 right-wildcard and 1 simple host):</p>
-	<pre class="language-xml"><code class="language-xml"><target host="*.google.com">
-<target host="*.google.co.uk">
-<target host="*.google.es">
-<target host="google.*">
-<target host="google.com"></target></target></target></target></target></code></pre>
+	<pre class="language-xml"><code class="language-xml">&lt;target host="*.google.com" /&gt;
+&lt;target host="*.google.co.uk" /&gt;
+&lt;target host="*.google.es" /&gt;
+&lt;target host="google.*" /&gt;
+&lt;target host="google.com" /&gt;</code></pre>
 	<p>If we build Ragel state machine directly from those:</p>
 	<pre class="language-bash"><code class="language-bash">%%{
     machine hosts;
@@ -123,8 +123,8 @@
 	<p>After we've matched the host name and found potentially applicable rulesets, we need to ensure that we're not rewriting URLs which are not available via HTTPS.</p>
 	<h3>Exclusions</h3>
 	<p>Exclusion elements serve exactly this goal.</p>
-	<pre class="language-xml"><code class="language-xml"><exclusion pattern="^http://(www\.)?google\.com/analytics/">
-<exclusion pattern="^http://(www\.)?google\.com/imgres/"></exclusion></exclusion></code></pre>
+	<pre class="language-xml"><code class="language-xml">&lt;exclusion pattern="^http://(www\.)?google\.com/analytics/" /&gt;
+&lt;exclusion pattern="^http://(www\.)?google\.com/imgres/" /&gt;</code></pre>
 	<p>The rewriter needs to test against all the exclusion patterns before applying any actual rules. Otherwise, paths that have issues or can't be served over HTTPS will be incorrectly rewritten and will potentially break the website.</p>
 	<p>We don't care about matched groups nor do we care even which particular regular expression was matched, so as an extra optimization, instead of going through them one-by-one, we merge all the exclusion patterns in the ruleset into one regular expression that can be internally optimized by a regexp engine.</p>
 	<p>For example, for the exclusions above we can create the following regular expression, common parts of which can be merged internally by a regexp engine:</p>
@@ -133,7 +133,7 @@
 	<p>Finally, after we both matched the host name and ensured that our URL is not covered by any exclusion patterns, we can go to the actual rewrite rules.</p>
 	<h3>Rewrite rules</h3>
 	<p>These rules are presented as JavaScript regular expressions and replacement patterns. The rewriter matches the URL against each of those regular expressions as soon as a host matches and a URL is not an exclusion.</p>
-	<pre class="language-xml"><code class="language-xml"><rule from="^http://(\w{2})\.wikipedia\.org/wiki/" to="https://secure.wikimedia.org/wikipedia/$1/wiki/"></rule></code></pre>
+	<pre class="language-xml"><code class="language-xml">&lt;rule from="^http://(\w{2})\.wikipedia\.org/wiki/" to="https://secure.wikimedia.org/wikipedia/$1/wiki/" /&gt;</code></pre>
 	<p>As soon as a match is found, the replacement is performed and the search can be stopped. Note: while exclusions cover dangerous replacements, it's totally possible and valid for the URL to not match any of actual rules - in that case it should be just left intact.</p>
 	<p>After the previous steps we are usually reduced only to couple of rules, so unlike in the case with exclusions, we don't apply any clever merging techniques for them. It turned out to be easier to go through them one-by-one rather than create a regexp engine specifically optimized for the case of multi-regexp replacements.</p>
 	<p>However, we don't want to waste time on regexp analysis and compilation on our edge server. This requires extra time during initialization and memory for carrying unnecessary text sources of regular expressions around. PCRE allows regular expressions to be precompiled into its own format using pcre_compile. Then, we gather all these compiled regular expressions into one binary file and link it using <code>ld --format=binary</code> - a neat option that tells linker to attach any given binary file as a named data resource available to the application.</p>
@@ -149,7 +149,7 @@
 	<h3>Wait, but what about testing?</h3>
 	<p>Glad you asked.</p>
 	<p>The HTTPS Everywhere extension uses an automated checker that checks the validity of rewritten URLs on any change in ruleset. In order to do that, rulesets are required to contain special test elements that cover all the rewrite rules.</p>
-	<pre class="language-xml"><code class="language-xml"><test url="http://maps.google.com/"></test></code></pre>
+	<pre class="language-xml"><code class="language-xml">&lt;test url="http://maps.google.com/" /&gt;</code></pre>
 	<p>What we need to do on our side is to collect those test URLs, combined with our own auto-generated tests from wildcards, and to invoke both the HTTPS Everywhere built-in JavaScript rewriter and our own side-by-side to ensure that we're getting same results — URLs that should be left intact, are left intact with our implementation and URLs that are rewritten, are rewritten identically.</p>
 	<h2>Can we fix even more mixed content?</h2>
 	<p>After all this was done and tested, we decided to look around for other potential sources of guaranteed rewrites to extend our database.</p>

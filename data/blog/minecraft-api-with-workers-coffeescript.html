@@ -26,9 +26,9 @@
     "name": "ElectroidFilms",
     "properties": [{
       "name": "textures",
-      "value": "eyJ0aW1lc3RhbXAiOjE1MzI1MDI..." // <base64>
+      "value": "eyJ0aW1lc3RhbXAiOjE1MzI1MDI..." // &lt;base64&gt;
     }]
-}</base64></code></pre>
+}</code></pre>
 	<ol>
 		<li>
 			<p>Decode the textures string which is encoded as base64.</p>
@@ -100,31 +100,31 @@ async function renderPlayerBitmap(request) {
 	<p>After realizing the potential of Workers, I started to wonder if I could use it for more than just a single script. What if I could design and deploy a production-ready API for <i>Minecraft</i> that runs exclusively on Workers?</p>
 	<h3>Designing an API</h3>
 	<p>I wanted to address an essential problem for <i>Minecraft</i> developers: too many APIs with too many restrictions. The hassle of parsing multiple requests and handling errors prevents developers from focusing on creating great experiences for players. There needs to be a solution that requires only <b>1 HTTP request with no rate limiting and no client-side caching.</b> After looking at the various use-cases for the existing APIs, I created a JSON schema that encompassed all the essential data into a single response:</p>
-	<pre class="language-bash"><code class="language-bash">GET: api.ashcon.app/mojang/v1/user/<username|uuid></username|uuid></code></pre>
+	<pre class="language-bash"><code class="language-bash">GET: api.ashcon.app/mojang/v1/user/&lt;username|uuid&gt;</code></pre>
 
 	<pre class="language-json"><code class="language-json">{
-  "uuid": "<uuid>",
-  "username": "<username>",
+  "uuid": "&lt;uuid&gt;",
+  "username": "&lt;username&gt;",
   "username_history": [
     {
-      "username": "<username>",
-      "changed_at": "<date|null>"
+      "username": "&lt;username&gt;",
+      "changed_at": "&lt;date|null&gt;"
     }
   ],
   "textures": {
-    "slim": "<boolean>",
-    "custom": "<boolean>",
+    "slim": "&lt;boolean&gt;",
+    "custom": "&lt;boolean&gt;",
     "skin": {
-      "url": "<url>",
-      "data": "<base64>"
+      "url": "&lt;url&gt;",
+      "data": "&lt;base64&gt;"
     },
     "cape": {
-      "url": "<url|null>",
-      "data": "<base64|null>"
+      "url": "&lt;url|null&gt;",
+      "data": "&lt;base64|null&gt;"
     }
   },
-  "cached_at": "<date>"
-}</date></base64|null></url|null></base64></url></boolean></boolean></date|null></username></username></uuid></code></pre>
+  "cached_at": "&lt;date&gt;"
+}</code></pre>
 	<p>One of the primary goals I had in mind was to minimize sub-requests by clients. For example, instead of giving developers a URL to a <code>image/png</code> static asset, why not fetch it for them and embed it as a base64 string? Now that's simplicity!</p>
 	<h3>Getting Started</h3>
 	<p>For this project, I decided to use <a href="https://coffeescript.org">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>

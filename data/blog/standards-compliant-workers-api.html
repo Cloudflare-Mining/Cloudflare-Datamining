@@ -91,7 +91,7 @@ interface Event {
   readonly attribute EventTarget? target;
   readonly attribute EventTarget? srcElement; // legacy
   readonly attribute EventTarget? currentTarget;
-  sequence<eventtarget> composedPath();
+  sequence&lt;EventTarget&gt; composedPath();
  
   const unsigned short NONE = 0;
   const unsigned short CAPTURING_PHASE = 1;
@@ -120,7 +120,7 @@ dictionary EventInit {
   boolean bubbles = false;
   boolean cancelable = false;
   boolean composed = false;
-};</eventtarget></code></pre>
+};</code></pre>
 	<p>Web Platform API specifications are always written in terms of a definition language called Web IDL. Every attribute defined in the interface is a property that is exposed on the object. Event objects, then, are supposed to have properties like <code>type</code>, <code>target</code>, <code>srcElement</code>, <code>currentTarget</code>, <code>bubbles</code>, <code>cancelable</code>, <code>returnValue</code>, <code>defaultPrevented</code>, <code>composed</code>, <code>isTrusted</code>, and <code>timeStamp</code>. They are also expected to have methods such as <code>composedPath()</code>, <code>stopPropagation()</code>, and <code>stopImmediatePropagation()</code>. Because most of these were not immediately needed by Workers, most were not provided originally.</p>
 	<p>Today, all standard, non-legacy properties and methods defined by the specification are available for use:</p>
 	<pre class="language-bash"><code class="language-bash"> const event = new Event('foo', {

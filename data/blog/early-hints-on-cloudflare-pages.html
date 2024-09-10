@@ -17,15 +17,15 @@
 Host: example.com</code></pre>
 	<p><b>Early Hints Response</b></p>
 	<pre class="language-txt"><code class="language-txt">103 Early Hints
-Link: ; rel=preload; as=style</code></pre>
+Link: &lt;/styles.css&gt;; rel=preload; as=style</code></pre>
 	<p><b>Response</b></p>
 	<pre class="language-txt"><code class="language-txt">200 OK
 Content-Type: text/html; charset=utf-8
-Link: ; rel=preload; as=style
+Link: &lt;/styles.css&gt;; rel=preload; as=style
 
-
-<!-- ... -->
-</code></pre>
+&lt;html&gt;
+&lt;!-- ... --&gt;
+&lt;/html&gt;</code></pre>
 	<h2>Early Hints on Cloudflare Pages</h2>
 	<p>Websites hosted on Cloudflare Pages can particularly benefit from Early Hints. If you're using <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Pages Functions</a> to generate dynamic server-side rendered (SSR) pages, there's a good chance that Early Hints will make a significant improvement on your website.</p>
 	<h3>Performance Testing</h3>
@@ -84,12 +84,12 @@ Link: ; rel=preload; as=style
 &lt;/html&gt;</code></pre>
 	<p><b>Early Hints Response</b></p>
 	<pre class="language-txt"><code class="language-txt">103 Early Hints
-Link: ; rel=preload; as=style</code></pre>
+Link: &lt;/styles.css&gt;; rel=preload; as=style</code></pre>
 	<p>As previously mentioned, <code>Link</code> headers can also be set with a <a href="https://blog.cloudflare.com/custom-headers-for-pages"><code>_headers</code> file</a> if you prefer:</p>
 	<pre class="language-txt"><code class="language-txt"># _headers
 
 /
-  Link: ; rel=preload; as=style</code></pre>
+  Link: &lt;/styles.css&gt;; rel=preload; as=style</code></pre>
 	<p>Early Hints (and the automatic HTML <code>&lt;link&gt;</code> parsing) has already been enabled automatically for all <code>pages.dev</code> domains. If you have any custom domains configured on your Pages project, make sure to enable Early Hints on that domain in the Cloudflare dashboard under the "Speed" tab. More information can be found in our <a href="https://developers.cloudflare.com/pages/platform/early-hints">documentation</a>.</p>
 	<p>Additionally, in the future, we hope to support the Smart Early Hints features. Smart Early Hints will enable Cloudflare to automatically generate Early Hints, even when no <code>Link</code> header or <code>&lt;link&gt;</code> elements exist, by analyzing website traffic and inferring which resources are important for a given page. We'll be sharing more about Smart Early Hints soon.</p>
 	<p>In the meantime, try out <a href="https://developers.cloudflare.com/pages/platform/early-hints">Early Hints on Pages</a> today! Let us know how much of a loading improvement you see in <a href="https://discord.com/invite/cloudflaredev">our Discord server</a>.</p>

@@ -49,12 +49,12 @@
  "schedules": [
    {
      "cron": "* * * * *",
-      "created_on": <time>,
-      "modified_on": <time>
+      "created_on": &lt;time&gt;,
+      "modified_on": &lt;time&gt;
    },
    ...
  ]
-}</time></time></code></pre>
+}</code></pre>
 	<p>The Scheduler service is responsible for reading the schedules from Postgres and generating per-node schedules to place into Quicksilver. For now, the service simply avoids trying to execute your Worker on an edge node that may be disabled for some reason, but such an approach also gives us a lot of flexibility in deciding where your Worker executes.</p>
 	<p>In addition to edge node availability, we could optimize for compute cost, bandwidth, or even latency in the future!</p>
 	<h3>What’s actually executing these schedules?</h3>

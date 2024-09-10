@@ -41,11 +41,13 @@
 	<h3>How to embed posts using Cloudflare Zaraz</h3>
 	<p>Loading an embed with Cloudflare Zaraz is simple: instead of loading the Embed JavaScript provided by X or Instagram, you simply add a placeholder element to your HTML.</p>
 	<p>For X:</p>
-	<pre class="language-bash"><code class="language-bash"><twitter-post tweet-id="1754336034228171055"></twitter-post></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;twitter-post tweet-id="1754336034228171055"&gt;&lt;/twitter-post&gt;</code></pre>
 	<p>* Make sure to replace the tweet-id with the number shown in the embedded tweet’s URL.</p>
 	<p>For Instagram:</p>
-	<pre class="language-bash"><code class="language-bash"><instagram-post post-url="https://www.instagram.com/p/Ct_qa1ZtmiW/" captions="true">
-</instagram-post></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;instagram-post
+  post-url="https://www.instagram.com/p/Ct_qa1ZtmiW/"
+  captions="true"&gt;
+&lt;/instagram-post&gt;</code></pre>
 	<p>* Make sure to replace the post-url with the URL of the desired post. When `captions` is set to true, the embed will include the post’s captions.</p>
 	<p>Once you've added the HTML to your page, activate the corresponding tools in your Cloudflare Zaraz dashboard. Click “Add new tools” to add X and Instagram. This is how your screen should look when you finish setting up your tools:</p>
 	<figure class="kg-card kg-image-card ">

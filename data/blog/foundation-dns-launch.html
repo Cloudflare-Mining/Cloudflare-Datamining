@@ -276,13 +276,13 @@ $ dig @172.64.40.1 ch txt hostname.bind +short
     }
   }",
   "variables": {
-    "zoneTag": "<zone-tag>",
+    "zoneTag": "&lt;zone-tag&gt;",
     "filter": {
       "datetime_geq": "2024-05-01T00:00:00Z",
       "datetime_leq": "2024-06-01T00:00:00Z"
     }
   }
-}</zone-tag></code></pre>
+}</code></pre>
 	<p>Previously, a query like this wouldn’t have been possible for several reasons. The first is that we have added new fields like <b>sourceIP</b>, which allows us to filter data based on which client IP addresses (usually resolvers) are making DNS queries. The second is that the GraphQL API query is able to process and return data from much larger time ranges. A DNS zone with sufficiently large amounts of queries was previously only able to query across a few days of traffic, while the new GraphQL API can provide data for a period of up to 31 days. We are planning further enhancements to that range, as well as how far back historical data can be stored and queried.</p>
 	<p>The GraphQL API also allows us to add a new DNS analytics section to the Cloudflare dashboard. Customers will be able to track the most queried records, see which data centers are answering those queries, see how many queries are being made, and much more.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">

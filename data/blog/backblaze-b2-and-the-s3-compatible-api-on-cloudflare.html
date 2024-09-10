@@ -28,7 +28,7 @@
 	<h3>Creating a S3 Compatible Worker script</h3>
 	<p>Here’s how it is done using Cloudflare Worker’s CLI tool <a href="https://developers.cloudflare.com/workers/quickstart#installing-the-cli">Wrangler</a>:</p>
 	<p>Generate a new project in Wrangler using a template intended for use with Amazon S3:</p>
-	<pre class="language-javascript"><code class="language-javascript">wrangler generate <projectname> https://github.com/obezuk/worker-signed-s3-template</projectname></code></pre>
+	<pre class="language-javascript"><code class="language-javascript">wrangler generate &lt;projectname&gt; https://github.com/obezuk/worker-signed-s3-template</code></pre>
 	<p>This template uses <a href="https://github.com/mhart/aws4fetch">aws4fetch</a>. A fast, lightweight implementation of an S3 Compatible signing library that is commonly used in Service Worker environments like Cloudflare Workers.</p>
 	<p>The template creates an index.js file with a standard request signing implementation:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { AwsClient } from 'aws4fetch'
@@ -52,10 +52,10 @@ async function handleRequest(request) {
 	<h3>Environment Variables</h3>
 	<p>Modify your wrangler.toml file to use your Backblaze B2 API Key ID and Secret:</p>
 	<pre class="language-javascript"><code class="language-javascript">[env.dev]
-vars = { AWS_ACCESS_KEY_ID = "<backblaze b2="" keyid="">", 
-AWS_SECRET_ACCESS_KEY = "<backblaze b2="" secret="">", 
+vars = { AWS_ACCESS_KEY_ID = "&lt;BACKBLAZE B2 keyId&gt;", 
+AWS_SECRET_ACCESS_KEY = "&lt;BACKBLAZE B2 secret&gt;", 
 AWS_DEFAULT_REGION = "", 
-AWS_S3_BUCKET = "<backblaze b2="" bucketname="">.<backblaze b2="" s3="" endpoint="">"}</backblaze></backblaze></backblaze></backblaze></code></pre>
+AWS_S3_BUCKET = "&lt;BACKBLAZE B2 bucketName&gt;.&lt;BACKBLAZE B2 S3 Endpoint&gt;"}</code></pre>
 	<p><code>AWS_S3_BUCKET</code> environment variable will be the combination of your bucket name, period and S3 Endpoint. For a Backblaze B2 Bucket named <code>example-bucket</code> and S3 Endpoint <code>s3.us-west-002.backblazeb2.com</code> use <code>example-bucket.s3.us-west-002.backblazeb2.com</code></p>
 	<p><code>AWS_DEFAULT_REGION</code> environment variable is interpreted from your S3 Endpoint. I use <code>us-west-002</code>.</p>
 	<p>We recommend using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/secrets">Secret Environment</a> variables to store your <code>AWS_SECRET_ACCESS_KEY</code> content when using this script in production.</p>

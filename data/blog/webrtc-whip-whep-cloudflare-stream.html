@@ -54,9 +54,9 @@
 
 	<pre class="language-javascript"><code class="language-javascript">import WHIPClient from "./WHIPClient.js";
 
-const url = "<webrtc_url_from_your_live_input>";
+const url = "&lt;WEBRTC_URL_FROM_YOUR_LIVE_INPUT&gt;";
 const videoElement = document.getElementById("input-video");
-const client = new WHIPClient(url, videoElement);</webrtc_url_from_your_live_input></code></pre>
+const client = new WHIPClient(url, videoElement);</code></pre>
 	<p>This example uses an example WHIP client, written in just 100 lines of Javascript, using APIs that are native to web browsers, with zero dependencies. But because WHIP is an open standard, you can use any WHIP client you choose. Support for WHIP is growing across the video streaming industry — it has recently been added to <a href="https://gstreamer.freedesktop.org">Gstreamer</a>, and one of the authors of the WHIP specification has written a <a href="https://github.com/medooze/whip-js">Javascript client implementation</a>. We intend to support the full <a href="https://www.ietf.org/archive/id/draft-ietf-wish-whip-03.html">WHIP specification</a>, including supporting <a href="https://www.rfc-editor.org/rfc/rfc8838">Trickle ICE</a> for fast NAT traversal.</p>
 	<h3>Play a live stream in a browser, with sub-second latency, no SDK required</h3>
 	<p>Once you’ve started streaming, copy the playback URL from the live input you just created, and paste it into the example linked below.</p>
@@ -64,9 +64,9 @@ const client = new WHIPClient(url, videoElement);</webrtc_url_from_your_live_inp
 	<pre class="language-html"><code class="language-html">&lt;video id="playback" controls autoplay muted&gt;&lt;/video&gt;</code></pre>
 
 	<pre class="language-javascript"><code class="language-javascript">import WHEPClient from './WHEPClient.js';
-const url = "<webrtc_playback_url_from_your_live_input>";
+const url = "&lt;WEBRTC_PLAYBACK_URL_FROM_YOUR_LIVE_INPUT&gt;";
 const videoElement = document.getElementById("playback");
-const client = new WHEPClient(url, videoElement);</webrtc_playback_url_from_your_live_input></code></pre>
+const client = new WHEPClient(url, videoElement);</code></pre>
 	<p>Just like the WHIP example before, this one uses an example WHEP client we’ve written that has zero dependencies. WHEP is an earlier IETF draft than WHIP, <a href="https://www.ietf.org/id/draft-murillo-whep-00.html">published in July of this year</a>, but adoption is moving quickly. People in the community have already written open-source client implementations in both <a href="https://github.com/medooze/whip-js/blob/main/whep.js">Javascript</a>, <a href="https://github.com/meetecho/simple-whep-client">C</a>, with more to come.</p>
 	<h3>Start experimenting with real-time live video, in open beta today</h3>
 	<p>WebRTC streaming is in open beta today, ready for you to use as an integrated feature of <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a>. Once Generally Available, WebRTC streaming will be priced like the rest of Cloudflare Stream, based on minutes of video delivered and minutes stored.</p>

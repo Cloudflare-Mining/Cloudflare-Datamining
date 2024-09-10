@@ -129,14 +129,14 @@
 	<h3>PiercingGateway</h3>
 	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/piercing-gateway.ts#L82"><code>PiercingGateway</code></a> class can be used to instantiate a Gateway Worker that handles all requests for our application’s HTML, JavaScript and other assets. The `PiercingGateway` routes requests through to the appropriate Fragment Workers or to the host of the Legacy Application. It also combines the HTML response streams from these fragments with the response from the legacy application into a single HTML stream that is returned to the browser.</p>
 	<p>Implementing a Gateway Worker is straightforward using the Piercing Library. Create a new <code>gateway</code> instance of <code>PiercingGateway</code>, passing it the URL to the legacy application host and a function to determine whether piercing is enabled for the given request. Export the <code>gateway</code> as the default export from the Worker script so that the Workers runtime can wire up its <code>fetch()</code> handler.</p>
-	<pre class="language-ts"><code class="language-ts">const gateway = new PiercingGateway<env>({
+	<pre class="language-ts"><code class="language-ts">const gateway = new PiercingGateway&lt;Env&gt;({
   // Configure the origin URL for the legacy application.
   getLegacyAppBaseUrl: (env) =&gt; env.APP_BASE_URL,
   shouldPiercingBeEnabled: (request) =&gt; ...,
 });
 ...
 
-export default gateway;</env></code></pre>
+export default gateway;</code></pre>
 	<p>Fragments can be registered by calling the <code>registerFragment()</code> method so that the <code>gateway</code> can automatically route requests for a fragment’s HTML and assets to its Fragment Worker. For example, registering the login fragment would look like:</p>
 	<pre class="language-ts"><code class="language-ts">gateway.registerFragment({
   fragmentId: "login",
@@ -173,14 +173,14 @@ export default gateway;</env></code></pre>
 });</code></pre>
 	<p>The legacy application can then <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/app/legacy-app/src/auth.tsx#L24-L34">listen for these messages</a> like this:</p>
 	<pre class="language-js"><code class="language-js">useEffect(() =&gt; {
-  return getBus().listen<loginmessage>("login", async (user) =&gt; {
+  return getBus().listen&lt;LoginMessage&gt;("login", async (user) =&gt; {
     setUser(user);
     await addUserDataIfMissing(user.username);
     await saveCurrentUser(user.username);
     getBus().dispatch("authentication", user);
     navigate("/", { replace: true, });
   });
-}, []);</loginmessage></code></pre>
+}, []);</code></pre>
 	<p>We settled on this message bus implementation because we needed a solution that was framework-agnostic, and worked well on both the server as well as client.</p>
 	<h2>Give it a go!</h2>
 	<p>With fragments, fragment piercing, and Cloudflare Workers, you can improve performance as well as the development cycle of legacy client-side rendered applications. These changes can be adopted incrementally, and you can even do so while implementing fragments with a Web framework for your choice.</p>

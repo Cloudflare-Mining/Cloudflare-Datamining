@@ -25,7 +25,7 @@
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "prod-prisma-d1-app"
-database_id = "<unique-id-for-your-database>"</unique-id-for-your-database></code></pre>
+database_id = "&lt;unique-ID-for-your-database&gt;"</code></pre>
 	<p>The section starting with <code>[[d1_databases]]</code> is the binding configuration needed in your <code>wrangler.toml</code> for your Worker to communicate with D1. Add that now:</p>
 	<pre class="language-bash"><code class="language-bash">// wrangler.toml
 name="my-d1-prisma-app"
@@ -36,7 +36,7 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "prod-prisma-d1-app"
-database_id = "<unique-id-for-your-database>"</unique-id-for-your-database></code></pre>
+database_id = "&lt;unique-ID-for-your-database&gt;"</code></pre>
 	<p>Your application now has D1 available! Next, add Prisma ORM to manage your queries, schema and migrations! To add Prisma ORM, first make sure the latest version is installed. Prisma ORM versions 5.12.0 and up support Cloudflare Workers and D1.</p>
 	<p><code>npm install prisma@latest @prisma/client@latest @prisma/adapter-d1</code></p>
 	<p>Now run <code>npx prisma init</code> in order to create the necessary files to start with. Since D1 uses SQLite’s SQL dialect, we set the provider to be <code>sqlite</code>.</p>
@@ -121,7 +121,7 @@ export interface Env {
 }
 
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
     const adapter = new PrismaD1(env.DB);
     const prisma = new PrismaClient({ adapter });
     const { pathname } = new URL(request.url);
@@ -135,7 +135,7 @@ export default {
 
     return new Response('');
   },
-};</response></code></pre>
+};</code></pre>
 	<p>You may notice that there’s always 0 visitors. Add another route to create a new visitor whenever someone visits the <code>/visit</code> route</p>
 	<pre class="language-js"><code class="language-js">// src/index.ts
 import { PrismaClient } from "@prisma/client";
@@ -146,7 +146,7 @@ export interface Env {
 }
 
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
     const adapter = new PrismaD1(env.DB);
     const prisma = new PrismaClient({ adapter });
     const { pathname } = new URL(request.url);
@@ -165,7 +165,7 @@ export default {
 
     return new Response('');
   },
-};</response></code></pre>
+};</code></pre>
 	<p>Your app is now set up to record visits and report how many visitors you have had!</p>
 	<h2>Summary and further reading</h2>
 	<p>We were able to build a simple app easily with Cloudflare Workers, D1 and Prisma ORM, but the benefits don’t stop there! Check the <a href="https://www.prisma.io/docs">official documentation</a> for information on using Prisma ORM with <a href="https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare#d1">D1</a> along with workflows for <a href="https://www.prisma.io/docs/orm/prisma-migrate/getting-started">migrating your data</a>, and even <a href="https://www.prisma.io/docs/orm/prisma-client/client-extensions">extending the Prisma Client</a> for your specific needs.</p>

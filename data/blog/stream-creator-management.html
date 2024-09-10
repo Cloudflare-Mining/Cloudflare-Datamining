@@ -25,7 +25,7 @@
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
-     --data '{"maxDurationSeconds":300,"expiry":"2021-01-02T02:20:00Z","creator": "<creator_id>", "thumbnailTimestampPct":0.529241,"allowedOrigins":["example.com"],"requireSignedURLs":true,"watermark":{"uid":"ea95132c15732412d22c1476fa83f27a"}}'</creator_id></code></pre>
+     --data '{"maxDurationSeconds":300,"expiry":"2021-01-02T02:20:00Z","creator": "&lt;CREATOR_ID&gt;", "thumbnailTimestampPct":0.529241,"allowedOrigins":["example.com"],"requireSignedURLs":true,"watermark":{"uid":"ea95132c15732412d22c1476fa83f27a"}}'</code></pre>
 	<p>When the user uploads the video, the creator property would be automatically set to your internal user ID and can be leveraged for operations such as pulling analytics data for your creators.</p>
 	<h3>Query By Creator Property</h3>
 	<p>Setting the creator property on your video uploads is just the beginning. You can now filter Stream Analytics via the Dashboard or the GraphQL API using the creator property.</p>
@@ -50,7 +50,7 @@
 	<p>The creator property eliminates this three step manual process. You can make a single API call to the GraphQL API to request a list of creators and the consumption of their videos for a given time period. Here is an example GraphQL API query that returns minutes delivered by creator:</p>
 	<pre class="language-json"><code class="language-json">query {
   viewer {
-    accounts(filter: { accountTag: "<account_id>" }) {
+    accounts(filter: { accountTag: "&lt;ACCOUNT_ID&gt;" }) {
       streamMinutesViewedAdaptiveGroups(
         limit: 10
         orderBy: [sum_minutesViewed_DESC]
@@ -65,7 +65,7 @@
       }
     }
   }
-}</account_id></code></pre>
+}</code></pre>
 	<p>Stream is focused on helping creator platforms innovate and scale. Matt Ober, CTO of NFT media management platform <a href="https://www.pinata.cloud">Piñata</a>, says "By allowing us to upload and then query using creator IDs, large-scale analytics of Cloudflare Stream is about to get a lot easier."</p>
 	<h3>Getting Started</h3>
 	<p><a href="https://developers.cloudflare.com/stream/uploading-videos/creator-id">Read the docs</a> to learn more about setting the creator property on new and previously uploaded videos. You can also set the creator property on live inputs, so the recorded videos generated from the live event will already have the creator field populated.</p>

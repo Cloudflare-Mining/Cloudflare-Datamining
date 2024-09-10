@@ -81,7 +81,7 @@ struct selinux_state {
 ffffffffbc3bcae0 B selinux_state</code></pre>
 	<p>With all the information, we can write an almost textbook simple kernel module to manipulate the SELinux state:</p>
 	<p>Mymod.c:</p>
-	<pre class="language-c"><code class="language-c">#include <linux module.h="">
+	<pre class="language-c"><code class="language-c">#include &lt;linux/module.h&gt;
 
 static int __init mod_init(void)
 {
@@ -98,8 +98,8 @@ module_init(mod_init);
 module_exit(mod_fini);
 
 MODULE_DESCRIPTION("A somewhat malicious module");
-MODULE_AUTHOR("Ignat Korchagin <ignat@cloudflare.com>");
-MODULE_LICENSE("GPL");</ignat@cloudflare.com></linux></code></pre>
+MODULE_AUTHOR("Ignat Korchagin &lt;ignat@cloudflare.com&gt;");
+MODULE_LICENSE("GPL");</code></pre>
 	<p>And the respective <code>Kbuild</code> file:</p>
 	<pre class="language-bash"><code class="language-bash">obj-m := mymod.o</code></pre>
 	<p>With these two files we can build a full fledged kernel module according to <a href="https://docs.kernel.org/kbuild/modules.html">the official kernel docs</a>:</p>

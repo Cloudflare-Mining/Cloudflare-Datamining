@@ -41,7 +41,7 @@
 	<pre class="language-ts"><code class="language-ts">import puppeteer from '@cloudflare/puppeteer'
 
 export default {
-    async fetch(request: Request, env: Env): Promise<response> {
+    async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
         const browser = await puppeteer.launch({
             browserBinding: env.MY_BROWSER
         })
@@ -59,7 +59,7 @@ export default {
             return new Response('', { status: 400 })
         }
     }
-}</response></code></pre>
+}</code></pre>
 	<p>Down the line, we have plans to add full Puppeteer support, including functions like <code>page.type</code>, <code>page.click</code>, <code>page.evaluate</code>!</p>
 	<h3>What’s happening under the hood?</h3>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote browser isolation technology</a> is an integral part of our <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust</a> product offering. Remote browser isolation lets users interact with a web browser that instead of running on the client’s device, runs in a remote environment. The Rendering API repurposes this under the hood!</p>

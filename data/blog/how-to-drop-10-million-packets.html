@@ -189,9 +189,9 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 }</code></pre>
 	<p>XDP program needs to be compiled with modern <code>clang</code> that can emit BPF bytecode. After this we can load and verify the running XDP program:</p>
 	<pre class="language-bash"><code class="language-bash">$ ip link show dev ext0
-4: ext0: <broadcast,multicast,up,lower_up> mtu 1500 xdp qdisc fq state UP mode DEFAULT group default qlen 1000
+4: ext0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 xdp qdisc fq state UP mode DEFAULT group default qlen 1000
     link/ether 24:8a:07:8a:59:8e brd ff:ff:ff:ff:ff:ff
-    prog/xdp id 5 tag aedc195cc0471f51 jited</broadcast,multicast,up,lower_up></code></pre>
+    prog/xdp id 5 tag aedc195cc0471f51 jited</code></pre>
 	<p>And see the numbers in <code>ethtool -S</code> network card statistics:</p>
 	<pre class="language-bash"><code class="language-bash">$ mmwatch 'ethtool -S ext0|egrep "rx"|egrep -v ": 0"|egrep -v "cache|csum"'
      rx_out_of_buffer:     4.4m/s

@@ -323,13 +323,18 @@ const filters = [
 
 const ColorBlindFilter = ({itemPadding, itemWidth, ...props }) =&gt; {
   return (
-      <div {...props}="">
+      &lt;div  {...props}&gt;
         {filters.map((filter, i) =&gt; (
-          <div style="{{filter:" 'url(="" filters.svg#'+filter+')'}}="" width="{itemWidth}" px="{itemPadding}" key="{i+filter}">
+          &lt;div
+            style={{filter: 'url(/filters.svg#'+filter+')'}}
+            width={itemWidth}
+            px={itemPadding}
+            key={i+filter}
+          &gt;
             {props.children}
-          </div>
+          &lt;/div&gt;
         ))}
-      </div>
+      &lt;/div&gt;
   )
 }
 

@@ -32,14 +32,14 @@
 	<pre class="language-javascript"><code class="language-javascript">import { Segment } from "@segment/edge-sdk-cloudflare";
 
 export default {
-   async fetch(request: Request, env: Env): Promise<response> {
+   async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
        const segment = new Segment(env.SEGMENT_WRITE_KEY); 
 
        const resp = await segment.handleEvent(request, env);
 
        return resp;
    }
-};</response></code></pre>
+};</code></pre>
 	<h2>How the Edge SDK works under the hood to enable first-party data collection</h2>
 	<p>The Edge SDK's internal router checks the inbound request URL against predefined patterns. If the URL matches a route, the router runs the route's chain of handlers to process the request, fetch the origin, or modify the response.</p>
 	<pre class="language-javascript"><code class="language-javascript">export interface HandlerFunction {
@@ -82,7 +82,7 @@ class ElementHandler {
          host: `${this.host}/seg`,
          apiKey: this.writeKey,
        })
-     element.append(`<script>${snip}</script>`, { html: true });
+     element.append(`&lt;script&gt;${snip}&lt;/script&gt;`, { html: true });
    }
  }
   
@@ -105,7 +105,7 @@ export const enrichWithAJS: HandlerFunction = async (
  };</code></pre>
 	<h3>Proxy SDK bundles and Segment API</h3>
 	<p>The Edge SDK proxies the Segment CDN and API under the first-party domain. For example, when the browser loads a page with the injected analytics.js snippet, the snippet loads the full analytics.js bundle from <code>https://example.com/seg/assets/sdk.js</code>, and the Edge SDK will proxy that request to the Segment CDN:</p>
-	<pre class="language-bash"><code class="language-bash">https://cdn.segment.com/analytics.js/v1/<writekey>/analytics.min.js</writekey></code></pre>
+	<pre class="language-bash"><code class="language-bash">https://cdn.segment.com/analytics.js/v1/&lt;WRITEKEY&gt;/analytics.min.js</code></pre>
 
 	<pre class="language-javascript"><code class="language-javascript">export const proxyAnalyticsJS: HandlerFunction = async (request, response, ctx) =&gt; {
  const url = `https://cdn.segment.com/analytics.js/v1/${ctx.params.writeKey}/analytics.min.js`;

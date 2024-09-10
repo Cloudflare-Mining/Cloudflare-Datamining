@@ -33,9 +33,9 @@
 import boto3
 
 s3 = boto3.resource('s3',
-  endpoint_url = 'https://<accountid>.r2.cloudflarestorage.com',
-  aws_access_key_id = '<access_key_id>',
-  aws_secret_access_key = '<access_key_secret>'
+  endpoint_url = 'https://&lt;accountid&gt;.r2.cloudflarestorage.com',
+  aws_access_key_id = '&lt;access_key_id&gt;',
+  aws_secret_access_key = '&lt;access_key_secret&gt;'
 )
 
 print('Buckets:')
@@ -47,7 +47,7 @@ bucket = s3.Bucket('my-bucket-name')
 print('Objects:')
 for item in bucket.objects.all():
   print(' - ', item.key)
-</access_key_secret></access_key_id></accountid></code></pre>
+</code></pre>
 	<h3>Features</h3>
 	<p>R2 comes with support for all basic create/read/update/delete S3 features through both of its APIs.</p>
 	<p>During the open beta period, we’re targeting R2 to sustain 1,000 GET operations per second and 100 PUT operations per second, per bucket. R2 supports objects up to approximately 5 TB in size, with individual parts limited to 5 GB of data.</p>

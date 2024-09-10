@@ -39,7 +39,7 @@
 		</li>
 	</ul>
 	<p><b>Migrate existing projects</b>If you have an existing Pages project, we’ve added a new Wrangler CLI command that downloads your existing configuration and provides you with a valid <code>wrangler.toml</code> file.</p>
-	<pre class="language-javascript"><code class="language-javascript">$ npx wrangler@latest pages download config <project_name></project_name></code></pre>
+	<pre class="language-javascript"><code class="language-javascript">$ npx wrangler@latest pages download config &lt;PROJECT_NAME&gt;</code></pre>
 	<p>Run this command, add the wrangler.toml file that it generates to your project’s root directory, and then when you deploy, your project will be configured based on this configuration file.</p>
 	<p>If you are already using wrangler.toml to define your local development configuration, you can continue doing so. By default, your existing wrangler.toml file will continue to only apply to local development. When you run <code>wrangler pages deploy</code>, Wrangler will show you the additional fields that you must add in order for your configuration to apply to production and preview environments. Add these fields to your wrangler.toml, and then when you deploy your changes, the configuration you’ve defined in wrangler.toml will be used by your Pages project.</p>
 	<p>Refer to the <a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration">documentation</a> for more information on exactly what’s supported and how to leverage wrangler.toml in your development workflows.</p>

@@ -52,14 +52,14 @@ export default {
 	request: Request,
 	env: Env,
 	ctx: ExecutionContext
-  ): Promise<response> {
+  ): Promise&lt;Response&gt; {
 	return h.fetch(request, env, ctx)
   },
 
   async queue(
-	batch: MessageBatch<error>,
+	batch: MessageBatch&lt;Error&gt;,
 	env: Env
-  ): Promise<void> {
+  ): Promise&lt;void&gt; {
 	for (const message of batch.messages) {
   	const url: DBUrl = JSON.parse(message.body)
   	await handleQueuedUrl(url, env.DB)
@@ -68,7 +68,7 @@ export default {
 
   async scheduled(
 	env: Env,
-  ): Promise<void> {
+  ): Promise&lt;void&gt; {
 	await scheduled({
   	authToken: env.AUTH_TOKEN,
   	db: env.DB,
@@ -76,7 +76,7 @@ export default {
   	sitemapUrl: env.SITEMAP_URL,
 	})
   }
-};</void></void></error></response></code></pre>
+};</code></pre>
 	<p>With this syntax, we can see where the various events incoming to the application - the <code>fetch</code> event, the <code>queue</code> event, and the <code>scheduled</code> event - are handled. The <code>fetch</code> event is the main entrypoint for the application, and is where we handle all of the API routes. The <code>queue</code> event is where we handle the work that's been added to the queue, and the <code>scheduled</code> event is where we handle the scheduled scraping process.</p>
 	<p>Central to the application, of course, is Workers - acting as the API gateway and coordinator. We've elected to use the popular open-source framework <a href="https://honojs.dev">Hono</a>, an Express-style API for Workers, in Prospector. With Hono, we can quickly map out a REST API in just a few lines of code. Here's an example of a few API routes and how they're defined with Hono:</p>
 	<pre class="language-tsx"><code class="language-tsx">const app = new Hono()
@@ -102,9 +102,9 @@ app.get('/sitemaps', async (context) =&gt; {
   const query = await context.env.DB.prepare(
 	"select * from sitemaps"
   ).all();
-  const sitemaps: Array<dbsitemap> = query.results
+  const sitemaps: Array&lt;DBSitemap&gt; = query.results
   return context.json(sitemaps)
-})</dbsitemap></code></pre>
+})</code></pre>
 	<p>Crucial to the development of Prospector are the improved TypeScript bindings for Workers. <a href="https://blog.cloudflare.com/improving-workers-types">As announced in November of last year</a>, TypeScript bindings for Workers are now automatically generated based on <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">our open source runtime, <code>workerd</code></a>. This means that whenever we use the types provided from the <a href="https://github.com/cloudflare/workers-types"><code>@cloudflare/workers-types</code> package</a> in our application, we can be sure that the types are always up-to-date.</p>
 	<p>With these bindings, we can define the types for our environment variables, and use them in our application. Here's an example of the <code>Env</code> type, which defines the environment variables that we use in the application:</p>
 	<pre class="language-tsx"><code class="language-tsx">export interface Env {

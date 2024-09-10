@@ -42,8 +42,8 @@
 	</ul>
 	<p>We tested it on kernel 4.9. It sets the following CBPF (classical BPF) load balancing program on the REUSEPORT socket group. Sockets received on Nth CPU will be passed to Nth member of the REUSEPORT group:</p>
 	<pre class="language-.text"><code class="language-.text">A = #cpu
-A = A % <reuseport group="" size="">
-return A</reuseport></code></pre>
+A = A % &lt;reuseport group size&gt;
+return A</code></pre>
 	<p>The SystemTap script takes three parameters: pid, file descriptor and REUSEPORT group size. To figure out the pid of a process and a file descriptor number use the "ss" tool:</p>
 	<pre class="language-.text"><code class="language-.text">$ ss -4nlp -t 'sport = :8181' | sort
 LISTEN  0   511    *:8181  *:*   users:(("nginx",pid=29333,fd=3),...

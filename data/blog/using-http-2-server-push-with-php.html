@@ -14,14 +14,15 @@ Date: Fri, 13 May 2016 10:52:13 GMT
 Content-Type: text/html
 Transfer-Encoding: chunked
 Connection: keep-alive
-Link: ; rel=preload; as=image
-Link: ; rel=preload; as=image</code></pre>
+Link: &lt;/images/drucken.jpg&gt;; rel=preload; as=image
+Link: &lt;/images/empire.jpg&gt;; rel=preload; as=image</code></pre>
 	<p>At the bottom are the two <code>Link</code> headers corresponding to the two images on the page with the <code>rel=preload</code> directive as specified in W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2">preload draft</a>.</p>
 	<p>The complete code can be found in this <a href="https://gist.github.com/jgrahamc/df91229381366105c7ff0f88c8c38485">gist</a> but the core of the code looks like this:</p>
-	<pre class="language-php"><code class="language-php">    <!--?php
+	<pre class="language-php"><code class="language-php">    &lt;?php
     function pushImage($uri) {
-        header("Link: <{$uri}-->; rel=preload; as=image", false);
-        return &lt;&lt;
+        header("Link: &lt;{$uri}&gt;; rel=preload; as=image", false);
+        return &lt;&lt;&lt;HTML
+    &lt;img src="{$uri}"&gt;
     HTML;
     }
 
@@ -29,24 +30,23 @@ Link: ; rel=preload; as=image</code></pre>
     $image2 = pushImage("/images/empire.jpg");
     ?&gt;
 
-    
+    &lt;html&gt;
 
-    <title>PHP Server Push</title><script nonce="b9fdc380-d96b-47ba-9603-ac77af9615aa">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
-    
+    &lt;head&gt;&lt;title&gt;PHP Server Push&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
 
-    <h1>PHP Server Push</h1>
+    &lt;h1&gt;PHP Server Push&lt;/h1&gt;
 
-    <!--?php
+    &lt;?php
     echo ccbysa($image1, "https://bit.ly/1Wu5bYx",
        "https://www.flickr.com/photos/hiperactivo/", "Javier Candeira");
 
     echo ccbynd($image2, "https://bit.ly/24PHue3",
         "https://www.flickr.com/photos/bobsfever/", "Robert McGoldrick");
-    ?-->
+    ?&gt;
 
-    
-
-    </code></pre>
+    &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
 	<p>Since you have to call the PHP <code>header</code> function before any output (such as HTML) has occurred the code makes two calls to a helper function called <code>pushImage</code> first. <code>pushImage</code> adds the appropriate <code>Link</code> header and returns the HTML needed to insert the actual image in the page.</p>
 	<p>Later the variables <code>$image1</code> and <code>$image2</code> (which contain the HTML needed to display the images) is inserted use two other helper functions (<code>ccbysa</code> and <code>ccbynd</code>) that add captions. Those two helper functions don't play any part in the Server Push, they just ensure that the HTML is placed correctly on the page with a caption.</p>
 	<p>Notice that the <code>Link</code> header is added as follows:</p>

@@ -85,7 +85,7 @@ create index idx_comments_post_id on comments (post_slug);
 	<p>So far, we've built read-only access to our data. But "inserting" values to SQL is, of course, possible as well. So let's define another function that allows POST-ing to an endpoint to create a new comment:</p>
 	<pre class="language-js"><code class="language-js">app.post('/API/posts/:slug/comments', async c =&gt; {
   const { slug } = c.req.param()
-  const { author, body } = await c.req.json<comment>()
+  const { author, body } = await c.req.json&lt;Comment&gt;()
 
   if (!author) return c.text("Missing author value for new comment")
   if (!body) return c.text("Missing body value for new comment")
@@ -101,7 +101,7 @@ create index idx_comments_post_id on comments (post_slug);
     c.status(500)
     return c.text("Something went wrong")
   }
-})</comment></code></pre>
+})</code></pre>
 	<p>In this example, we built a comments API for powering a blog. To see the source for this D1-powered comments API, you can visit <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api">cloudflare/templates/worker-d1-api</a>.</p>
 	<figure class="kg-card kg-image-card ">
 

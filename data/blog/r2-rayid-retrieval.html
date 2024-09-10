@@ -26,7 +26,7 @@
   const obj = await getObject(r2, bucket, key);
 
   const rawStream = obj.Body as ReadableStream;
-  const index: Record<string, string[]=""> = {};
+  const index: Record&lt;string, string[]&gt; = {};
 
   const rayIdIndexingStream = new TransformStream({
     transform(chunk: string) {
@@ -43,7 +43,7 @@
 
   await collectStream(rawStream.pipeThrough(new DecompressionStream('gzip')).pipeThrough(textDecoderStream()).pipeThrough(readlineStream()).pipeThrough(rayIdIndexingStream));
   storage.put(index);
-}</string,></code></pre>
+}</code></pre>
 	<h3>Searching for a RayID</h3>
 	<p>Once a batch has been indexed, and the index is persisted to our Durable Object, we can then query it using a combination of the RayID and a batch name to check the presence of a RayID in that given batch. Assuming that a zone is producing a batch of logs at the rate of one batch per second this means that over 86,400 batches would be produced in a day! Over the course of a week, there would be far too many keys in our index for us to be able to iterate through them all in a timely manner. This is where the encoding of a RayID and the naming of each batch comes into play.</p>
 	<p>A RayID is currently, and I emphasize currently because this can change and has over time, a 16-byte hex encoded value where the first 36-bits encode a timestamp, and it looks something like: <code>764660d8ec5c2ab1</code>. Note that the format of the RayID is likely to evolve in the near future, but for now we can use it to optimize retrieval.</p>

@@ -362,7 +362,7 @@ export const pageQuery = graphql`
 {{ end }}</code></pre>
 	<p>This is just the first layer of children. No grandbabies, sorry. And I won’t even get into all that is going on there exactly. When I started porting this over, I realized a lot of that logic was not even being used.</p>
 	<p>In React, we grab all the markdown pages and see which have parents that match the current page:</p>
-	<pre class="language-js"><code class="language-js"> const topLevelMarkdown: markdownRemarkEdge[] = useStaticQuery(
+	<pre class="language-js"><code class="language-js">  const topLevelMarkdown: markdownRemarkEdge[] = useStaticQuery(
    GraphQL`
      {
        allMdx(limit: 1000) {

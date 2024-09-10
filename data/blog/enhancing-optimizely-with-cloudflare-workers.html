@@ -46,8 +46,8 @@
 	<p>From your application, simply hit the Worker and the response will tell you whether a feature is enabled for that particular user. &nbsp;In the example below, we supply via query parameters a <code>userId</code>, <code>feature</code>, and account-specific SDK <code>key</code> and the Worker responds with its decision in <code>result</code>. &nbsp;Below is a sample Cloudflare Worker:</p>
 	<pre class="language-js"><code class="language-js">import { createManager } from '../index'
 
-/// <reference lib="es2015">
-/// <reference lib="webworker">
+/// &lt;reference lib="es2015" /&gt;
+/// &lt;reference lib="webworker" /&gt;
 
 addEventListener('fetch', (event: any) =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -57,7 +57,7 @@ addEventListener('fetch', (event: any) =&gt; {
  * Fetch and log a request
  * @param {Request} request
  */
-async function handleRequest(request: Request): Promise<response> {
+async function handleRequest(request: Request): Promise&lt;Response&gt; {
   const url = new URL(request.url)
   const key = url.searchParams.get('key')
   const userId = url.searchParams.get('userId')
@@ -85,7 +85,7 @@ async function handleRequest(request: Request): Promise<response> {
   } catch (e) {
     return new Response(JSON.stringify({ status: 'error' }))
   }
-}</response></reference></reference></code></pre>
+}</code></pre>
 	<p>This kind of setup is common for React applications, which may update store values based on decisions returned by the Worker. No need to force a request all the way back to origin.</p>
 	<p>All in all, using Workers as a centralized decision service can reduce the complexity of your Full Stack implementation and support applications that rely on heavy caching.</p>
 	<h3>How to Improve Your Experimentation Setup</h3>

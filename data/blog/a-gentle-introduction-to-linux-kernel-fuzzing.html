@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gqfk9kUSf4AoHlsgRFeji/da35fe187cfdd805b9b80a78881efeda/a-gentle-introduction-to-linux-kernel-fuzzing.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gqfk9kUSf4AoHlsgRFeji/da35fe187cfdd805b9b80a78881efeda/a-gentle-introduction-to-linux-kernel-fuzzing.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>For some time I’ve wanted to play with coverage-guided <a href="https://en.wikipedia.org/wiki/Fuzzing">fuzzing</a>. Fuzzing is a powerful testing technique where an automated program feeds semi-random inputs to a tested program. The intention is to find such inputs that trigger bugs. Fuzzing is especially useful in finding memory corruption bugs in C or C++ programs.</p>
 	<figure class="kg-card kg-image-card ">
@@ -113,9 +113,9 @@ for (i = 0; i &lt; n; i++) {
 	<p>The next step in our journey is to learn how to trick AFL. Remember, AFL needs a specially-crafted executable, but we want to feed in the kernel code coverage. First we need to understand how AFL works.</p>
 	<p>AFL sets up an array of 64K 8-bit numbers. This memory region is called "shared_mem" or "trace_bits" and is shared with the traced program. Every byte in the array can be thought of as a hit counter for a particular (branch_src, branch_dst) pair in the instrumented code.</p>
 	<p>It's important to notice that AFL prefers random branch labels, rather than reusing the %rip value to identify the basic blocks. This is to increase entropy - we want our hit counters in the array to be uniformly distributed. The algorithm AFL uses is:</p>
-	<pre class="language-c"><code class="language-c">cur_location = <compile_time_random>;
+	<pre class="language-c"><code class="language-c">cur_location = &lt;COMPILE_TIME_RANDOM&gt;;
 shared_mem[cur_location ^ prev_location]++; 
-prev_location = cur_location &gt;&gt; 1;</compile_time_random></code></pre>
+prev_location = cur_location &gt;&gt; 1;</code></pre>
 	<p>In our case with KCOV we don't have compile-time-random values for each branch. Instead we'll use a hash function to generate a uniform 16 bit number from %rip recorded by KCOV. This is how to feed a KCOV report into the AFL "shared_mem" array:</p>
 	<pre class="language-c"><code class="language-c">n = __atomic_load_n(&amp;kcov_ring[0], __ATOMIC_RELAXED);
 uint16_t prev_location = 0;
@@ -175,7 +175,7 @@ while(1) {
 	<pre class="language-sh"><code class="language-sh">virtme-run \
     --kimg bzImage \
     --rw --pwd --memory 512M \
-    --script-sh "<what to="" run="" inside="" kvm="">" </what></code></pre>
+    --script-sh "&lt;what to run inside kvm&gt;" </code></pre>
 	<p>But hold on. We forgot about preparing input corpus data for our fuzzer!</p>
 	<h2>Building the input corpus</h2>
 	<p>Every fuzzer takes a carefully crafted test cases as input, to bootstrap the first mutations. The test cases should be short, and cover as large part of code as possible. Sadly - I know nothing about netlink. How about we don't prepare the input corpus...</p>

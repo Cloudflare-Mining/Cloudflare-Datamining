@@ -56,13 +56,13 @@
 	<p>The Cloudflare edge validates the token and allow access or not based on the result. The generated HMAC can also be configured to expire after a certain time (e.g. 10 minutes), or so that the expiry is controlled directly from the origin server. In the latter case, the generated URLs would simply include an absolute future Unix timestamp.</p>
 	<h3>Protecting Private Content with Token Authentication</h3>
 	<p>In the simplest implementations, tokens can be used to protect static private content. The code required in the back end application would be as follows (in PHP):</p>
-	<pre class="language-bash"><code class="language-bash"><!--?php
+	<pre class="language-bash"><code class="language-bash">&lt;?php
 // Generate valid URL token
 $secret = "thisisasharedsecret";
 $time   = time();
 $token  = $time . "-" . urlencode(base64_encode(hash_hmac("sha256", "/download/private.jpg$time", $secret, true)));
 $url    = "http://www.domain.com/download/private.jpg?verify=" . $token;
-?--></code></pre>
+?&gt;</code></pre>
 	<p>The code above, given a shared secret:</p>
 	<ul>
 		<li>

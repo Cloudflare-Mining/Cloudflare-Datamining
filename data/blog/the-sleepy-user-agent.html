@@ -29,7 +29,7 @@ Accept-Language: en-US,en;q=0.8,fr;q=0.6</code></pre>
 	<p>In this example, I’ve ignored all good security practices because I want to illustrate a working SQL injection.</p>
 	<p><b>BAD CODE: DO NOT COPY/PASTE MY CODE!</b></p>
 	<p>Here’s the PHP code:</p>
-	<pre class="language-bash"><code class="language-bash"><!--?php
+	<pre class="language-bash"><code class="language-bash">&lt;?php
 
 $link = new mysqli('localhost', 'insecure', '1ns3cur3p4ssw0rd', 'analytics');
 
@@ -37,12 +37,11 @@ $query = sprintf("INSERT INTO visits (ua, dt) VALUES ('%s', '%s')",
        $_SERVER["HTTP_USER_AGENT"],
        date("Y-m-d h:i:s"));
 
-$link--->query($query);
+$link-&gt;query($query);
 
 ?&gt;
 
-<script nonce="8892eac4-cf2d-4ae9-a5ee-22bd7bbbfc30">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script><b>Thanks for visiting</b>
-</code></pre>
+&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;b&gt;Thanks for visiting&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
 	<p>It connects to a local MySQL database and selects the <code>analytics</code> database and then inserts the user agent of the visitor (which comes from the <code>User-Agent</code> HTTP header and is stored in <code>$_SERVER["HTTP_USER_AGENT"]</code>) into the database (along with the current date and time) without any sanitization at all!</p>
 	<p>This is ripe for a SQL injection, but because my code doesn’t report any errors the attacker won’t know they managed an injection without something like the sleep trick.</p>
 	<figure class="kg-card kg-image-card ">
@@ -77,7 +76,7 @@ $link--->query($query);
 &lt; Connection: keep-alive
 &lt; Server: nginx
 
-<script nonce="8892eac4-cf2d-4ae9-a5ee-22bd7bbbfc30">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script><b>Thanks for visiting</b>
+&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;b&gt;Thanks for visiting&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;
 * Connection #0 to host example.com left intact
 
 real   0m20.614s
@@ -102,19 +101,19 @@ sys    0m0.012s</code></pre>
 	<p>If my web app was a little more sophisticated, say, for example, it was part of a blogging platform that allowed comments, it would be possible to use this vulnerability to dump the contents of an entire database table into a comment. The attacker could return and display the appropriate comment to read the table's contents. That way large amounts of data can be exfiltrated.</p>
 	<h3>Securing my code</h3>
 	<p>The better way to write the PHP code above is as follows:</p>
-	<pre class="language-bash"><code class="language-bash"><!--?php
+	<pre class="language-bash"><code class="language-bash">&lt;?php
 
 $link = new mysqli('localhost', 'analytics_user', 'aSecurePassword', 'analytics_db');
 
-$stmt = $link--->prepare("INSERT INTO visits (ua, dt) VALUES (?, ?)");
+$stmt = $link-&gt;prepare("INSERT INTO visits (ua, dt) VALUES (?, ?)");
 $stmt-&gt;bind_param("ss", $_SERVER["HTTP_USER_AGENT"], date("Y-m-d h:i:s"));
 $stmt-&gt;execute();
 
 ?&gt;
 
-
-<script nonce="8892eac4-cf2d-4ae9-a5ee-22bd7bbbfc30">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
-<b>Thanks for visiting</b></code></pre>
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;&lt;b&gt;Thanks for visiting&lt;/b&gt;&lt;/body&gt;</code></pre>
 	<p>This prepares the SQL query to perform the insertion using <a href="https://secure.php.net/manual/en/mysqli.prepare.php"><code>prepare</code></a> and then binds the two parameters (the user agent and the date/time) using <a href="https://secure.php.net/manual/en/mysqli-stmt.bind-param.php"><code>bind_param</code></a> and then runs the query with <a href="https://secure.php.net/manual/en/mysqli-stmt.execute.php"><code>execute</code></a>.</p>
 	<p><code>bind_param</code> ensures that the special SQL characters like quotes are escaped correctly for insertion in the database. Trying to repeat the injection above results in the following database entry:</p>
 	<pre class="language-bash"><code class="language-bash">+---------------------+----------------------------------------------------+

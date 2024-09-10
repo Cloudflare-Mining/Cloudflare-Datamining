@@ -13,7 +13,7 @@
 	<pre class="language-rust"><code class="language-rust">use worker::*;
 
 #[event(fetch)]
-pub async fn main(req: Request, env: Env) -&gt; Result<response> {
+pub async fn main(req: Request, env: Env) -&gt; Result&lt;Response&gt; {
     console_log!(
         "{} {}, located at: {:?}, within: {}",
         req.method().to_string(),
@@ -36,7 +36,7 @@ pub async fn main(req: Request, env: Env) -&gt; Result<response> {
     }
 
     Response::error("Bad Request", 400)
-}</response></code></pre>
+}</code></pre>
 	<p>Get your own Worker in Rust started with a single command:</p>
 	<pre class="language-bash"><code class="language-bash"># see installation instructions for our `wrangler` CLI at https://github.com/cloudflare/wrangler
 # (requires v1.19.2 or higher)

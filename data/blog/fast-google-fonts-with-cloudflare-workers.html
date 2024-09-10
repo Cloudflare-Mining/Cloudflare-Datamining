@@ -1,4 +1,4 @@
-<div class="mb2 gray5">17 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zhd3A5qtNhaEWrx0iWSay/35fb948205de00c273e3e2384ad73d8c/fast-google-fonts-with-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">18 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zhd3A5qtNhaEWrx0iWSay/35fb948205de00c273e3e2384ad73d8c/fast-google-fonts-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Google Fonts is one of the most common third-party resources on the web, but carries with it significant user-facing performance issues. Cloudflare Workers running at the edge is a great solution for fixing these performance issues, without having to modify the publishing system for every site using Google Fonts.</p>
 	<p>This post walks through the implementation details for how to fix the performance of Google Fonts with Cloudflare Workers. More importantly, it also provides code for doing high-performance content modification at the edge using Cloudflare Workers.</p>
@@ -299,7 +299,8 @@ h1 {
  
      // See if there is an unclosed link tag at the end (and if so,
      // carve it out to complete when the remainder comes in).
-     const linkPos = content.lastIndexOf('<link'); if="" (linkpos="">= 0) {
+     const linkPos = content.lastIndexOf('&lt;link');
+     if (linkPos &gt;= 0) {
        const linkClose = content.indexOf('/&gt;', linkPos);
        if (linkClose === -1) {
          partial = content.slice(linkPos);
@@ -323,7 +324,7 @@ h1 {
  }
  
  await writer.close()
-}</link');></code></pre>
+}</code></pre>
 	<p>One thing I was initially worried about was having to modify the “content-length” response header from the original response since we are modifying the content. Luckily, the worker takes care of that automatically and it isn’t something you have to implement.</p>
 	<p>There is a try/catch handler around the processing in case something goes horribly wrong with the decode.</p>
 	<p>The actual HTML rewriting is handled in “modifyHtmlChunk”. This is just the logic for processing the incoming data as incremental chunks.</p>
@@ -419,7 +420,8 @@ h1 {
  
        // See if there is an unclosed link tag at the end (and if so,
        // carve it out to complete when the remainder comes in).
-       const linkPos = content.lastIndexOf('<link'); if="" (linkpos="">= 0) {
+       const linkPos = content.lastIndexOf('&lt;link');
+       if (linkPos &gt;= 0) {
          const linkClose = content.indexOf('/&gt;', linkPos);
          if (linkClose === -1) {
            partial = content.slice(linkPos);
@@ -447,7 +449,7 @@ h1 {
  } catch(e) {
    // Ignore the exception
  }
-}</link');></code></pre>
+}</code></pre>
 	<p>There is a helper that scans for the charset in both meta tags that support setting the charset:</p>
 	<pre class="language-javascript"><code class="language-javascript">function chunkContainsInvalidCharset(chunk) {
  let invalid = false;
@@ -497,7 +499,7 @@ h1 {
 		</li>
 	</ul>
 	<pre class="language-javascript"><code class="language-javascript">async function modifyHtmlChunk(content, request, event) {
- const fontCSSRegex = /<link\s+[^>]*href\s*=\s*['"]((https?:)?\/\/fonts.googleapis.com\/css[^'"]+)[^&gt;]*&gt;/mgi;
+ const fontCSSRegex = /&lt;link\s+[^&gt;]*href\s*=\s*['"]((https?:)?\/\/fonts.googleapis.com\/css[^'"]+)[^&gt;]*&gt;/mgi;
  let match = fontCSSRegex.exec(content);
  while (match !== null) {
    const matchString = match[0];
@@ -511,9 +513,9 @@ h1 {
          mediaStr = ' ' + mediaMatch[0];
        }
        // Replace the actual css
-       let cssString = "<style" +="" mediastr="" "="">\n";
+       let cssString = "&lt;style" + mediaStr + "&gt;\n";
        cssString += fontCSS;
-       cssString += "\n\n";
+       cssString += "\n&lt;/style&gt;\n";
        content = content.split(matchString).join(cssString);
      }
      match = fontCSSRegex.exec(content);
@@ -521,7 +523,7 @@ h1 {
  }
  
  return content;
-}</style"></link\s+[^></code></pre>
+}</code></pre>
 	<p>The fetching (and modifying) of the CSS is a little more complicated than a straight passthrough because we want to cache the result when possible. We cache the responses locally using the worker’s <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API</a>. Since the response is browser-specific, and we don’t want to fragment the cache too crazily, we create a custom cache key based on the browser user agent string that is basically browser+version+mobile.</p>
 	<p>Some plans have access to named cache storage, but to work with all plans it is easiest if we just modify the font URL that gets stored in cache and append the cache key to the end of the URL as a query parameter. The cache URL never gets sent to a server but is useful for local caching of different content that shares the same URL. For example:</p>
 	<pre class="language-bash"><code class="language-bash">https://fonts.googleapis.com/css?family=Roboto&amp;chrome71</code></pre>

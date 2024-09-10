@@ -71,7 +71,7 @@ const handleRequest = createPagesFunctionHandler({
   }),
 });
 
-const handler: ExportedHandler<env> = {
+const handler: ExportedHandler&lt;Env&gt; = {
   fetch: async (req, env, ctx) =&gt; {
     const r = new Request(req);
     return handleRequest({
@@ -86,7 +86,7 @@ const handler: ExportedHandler<env> = {
       data: undefined,
     });
   },
-};</env></code></pre>
+};</code></pre>
 	<p>In Remix, <a href="https://remix.run/docs/en/v1/guides/api-routes">routes</a> handle changes when a user interacts with the app and changes it (clicking on a menu option, for example). A Remix route can have a <a href="https://remix.run/docs/en/v1/guides/data-loading"><i>loader</i></a>, an <a href="https://remix.run/docs/en/v1/guides/data-writes"><i>action</i></a> and a <a href="https://remix.run/docs/en/v1/api/conventions#root-layout-route"><i>default</i></a> export. The <i>loader</i> handles API calls for fetching data (GET method). The <i>action</i> handles submissions to the server (POST, PUT, PATCH, DELETE methods) and returns the response. The <i>default</i> export handles the UI code in React that’s returned for that route. A route without a <i>default</i> export returns only data.</p>
 	<p>Because Remix runs both on the server and the client, it can get smart and know what can be pre-fetched and computed server-side and what must go through the network connection, optimizing everything for performance and responsiveness.</p>
 	<p>Here’s an example of a Radar route, simplified for readability, for the <a href="https://radar.cloudflare.com/outage-center">Outage Center</a> page.</p>
@@ -100,29 +100,32 @@ export async function loader(args: LoaderArgs) {
 }
 
 export default function Outages() {
-  const { ssr } = useLoaderData<typeof loader="">();
+  const { ssr } = useLoaderData&lt;typeof loader&gt;();
 
   return (
-    <page filters="{[&quot;timerange&quot;]}" title="{" <="">
-          <svg use="icon-outages"></svg>
+    &lt;Page
+      filters={["timerange"]}
+      title={
+        &lt;&gt;
+          &lt;Svg use="icon-outages" /&gt;
           {t("nav.main.outage-center")}
-        
+        &lt;/&gt;
       }
     &gt;
-      <grid columns="{[1," 1,="" 1]}="">
-        <card.article colspan="{[1," 1,="" 1]}="" rowspan="{[1,">
-          <card.section>
-            <components.internetoutageschoropleth ssr="{ssr}">
-          </components.internetoutageschoropleth></card.section>
-          <divider>
-          <card.section>
-            <components.internetoutagestable ssr="{ssr}">
-          </components.internetoutagestable></card.section>
-        </divider></card.article>
-      </grid>
-    </page>
+      &lt;Grid columns={[1, 1, 1, 1]}&gt;
+        &lt;Card.Article colspan={[1, 1, 1, 1]} rowspan={[1, 1, 1, 1]}&gt;
+          &lt;Card.Section&gt;
+            &lt;Components.InternetOutagesChoropleth ssr={ssr} /&gt;
+          &lt;/Card.Section&gt;
+          &lt;Divider /&gt;
+          &lt;Card.Section&gt;
+            &lt;Components.InternetOutagesTable ssr={ssr} /&gt;
+          &lt;/Card.Section&gt;
+        &lt;/Card.Article&gt;
+      &lt;/Grid&gt;
+    &lt;/Page&gt;
   );
-}</typeof></code></pre>
+}</code></pre>
 	<p>And here’s what it produces:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -142,7 +145,7 @@ export default function Outages() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fe4weO7U21a7ZNGW969su/27f140e2dd8c60a7b7075c228bbcc67c/image14.png" alt="" class="kg-image" width="782" height="264" loading="lazy">
 
 	</figure>
-	<p>Another Cloudflare product that we use extensively on Radar 2.0 is <a href="https://www.cloudflare.com/en-gb/website-optimization">Speed</a>. In particular, we want to mention the <a href="https://blog.cloudflare.com/early-hints">Early Hints</a> feature. Early Hints is a new web <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103">standard</a> that defines a new HTTP 103 header the server can use to inform the browser which assets will likely be needed to render the web page while it's still being requested, resulting in dramatic load times improvements.</p>
+	<p>Another Cloudflare product that we use extensively on Radar 2.0 is <a href="https://www.cloudflare.com/website-optimization">Speed</a>. In particular, we want to mention the <a href="https://blog.cloudflare.com/early-hints">Early Hints</a> feature. Early Hints is a new web <a href="https://developer.mozilla.org/docs/Web/HTTP/Status/103">standard</a> that defines a new HTTP 103 header the server can use to inform the browser which assets will likely be needed to render the web page while it's still being requested, resulting in dramatic load times improvements.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OSrsfjFevZ4qx1TT4jYWb/d359725c62bd117296e75f0c1045cf9a/image2-42.png" alt="" class="kg-image" width="1999" height="545" loading="lazy">
@@ -202,14 +205,29 @@ export default function Outages() {
 
 	</figure>
 	<p>And here’s the Remix React code for it, whenever we need to use it in a page:</p>
-	<pre class="language-javascript"><code class="language-javascript"><card.section title="{t(&quot;card.attacks.title&quot;)}" description="{t(&quot;card.attacks.description&quot;)}">
-    <flex gap="{spacing.medium}" align="center" justify="flex-end">
-      <segmentedcontrol label="Sort order:" name="attacksDirection" value="{attacksDirection}" options="{[" {="" label:="" t("common.source"),="" value:="" "origin"="" },="" t("common.target"),="" "target"="" ]}="" onchange="{({" target="" }:="" any)=""> setAttacksDirection(target.value)}
+	<pre class="language-javascript"><code class="language-javascript">&lt;Card.Section
+    title={t("card.attacks.title")}
+    description={t("card.attacks.description")}
+  &gt;
+    &lt;Flex gap={spacing.medium} align="center" justify="flex-end"&gt;
+      &lt;SegmentedControl
+        label="Sort order:"
+        name="attacksDirection"
+        value={attacksDirection}
+        options={[
+          { label: t("common.source"), value: "ORIGIN" },
+          { label: t("common.target"), value: "TARGET" },
+        ]}
+      onChange={({ target }: any) =&gt; setAttacksDirection(target.value)}
       /&gt;
-    </segmentedcontrol></flex>
+    &lt;/Flex&gt;
 
-    <components.attackscombinedchart ssr="{ssr}" height="{400}" direction="{attacksDirection}">
-  </components.attackscombinedchart></card.section></code></pre>
+    &lt;Components.AttacksCombinedChart
+      ssr={ssr}
+      height={400}
+      direction={attacksDirection}
+    /&gt;
+  &lt;/Card.Section&gt;</code></pre>
 	<h3>SVGs</h3>
 	<p>Another change we made to Radar was switching our images and graphical assets to <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphics</a>. SVGs are great because they're essentially a declarative graphics language. They're XML text files with vectorial information. And so, they can be easily manipulated, transformed, stored, or indexed, and of course, they can be rendered at any size, producing beautiful, crisp results on any device and resolution.</p>
 	<p>SVGs are also extremely small and efficient in size compared to bitmap formats and support <a href="https://www.w3.org/TR/SVGTiny12/i18n.html">internationalization</a>, making them easier to translate to other languages (localization), thus providing better <a href="https://www.a11yproject.com">accessibility</a>.</p>
@@ -313,7 +331,7 @@ export default function Outages() {
 	<p>We will eventually open-source this tool so that anyone can use it.</p>
 	<h2>More Cloudflare, less to worry about</h2>
 	<p>We gave examples of using Cloudflare's products and features to build your next-gen app without worrying too much about things that aren't core to your business or logic. A few are missing, though.</p>
-	<p>Once the app is up and running, you must protect it from bad traffic and malicious actors. Cloudflare offers you <a href="https://www.cloudflare.com/en-gb/ddos">DDoS</a>, <a href="https://www.cloudflare.com/en-gb/waf">WAF</a>, and <a href="https://www.cloudflare.com/en-gb/products/bot-management">Bot Management</a> protection out of the box at a click's distance.</p>
+	<p>Once the app is up and running, you must protect it from bad traffic and malicious actors. Cloudflare offers you <a href="https://www.cloudflare.com/ddos">DDoS</a>, <a href="https://www.cloudflare.com/waf">WAF</a>, and <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> protection out of the box at a click's distance.</p>
 	<p>For example, here are some of our security rules. This is traffic we don't have to worry about in our app because Cloudflare detects it and acts on it according to our rules.</p>
 	<figure class="kg-card kg-image-card ">
 

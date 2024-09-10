@@ -206,11 +206,11 @@ in
 	<p>KEMTLS, like TLS, is a cryptographic handshake protocol. These protocols have the general goal to generate session keys that we can use to encrypt user’s traffic, preferably as quickly as possible. One thing we might want to prove is that these session keys are secret:</p>
 	<pre class="language-bash"><code class="language-bash">lemma secret_session_keys [/*snip*/]:
   "All tid actor peer kw kr aas #i.
-      SessionKey(tid, actor, peer, <aas, 'auth'="">, <kw, kr="">)@#i &amp;
+      SessionKey(tid, actor, peer, &lt;aas, 'auth'&gt;, &lt;kw, kr&gt;)@#i &amp;
       not (Ex #r. RevLtk(peer)@#r &amp; #r &lt; #i) &amp;
       not (Ex tid3 esk #r. RevEKemSk(tid3, peer, esk)@#r &amp; #r &lt; #i) &amp;
       not (Ex tid4 esk #r. RevEKemSk(tid4, actor, esk)@#r &amp; #r &lt; #i)
-    ==&gt; not Ex #j. K(kr)@#j"</kw,></aas,></code></pre>
+    ==&gt; not Ex #j. K(kr)@#j"</code></pre>
 	<p>This lemma states that if the actor has completed the protocol and the attacker hasn’t used one of their special actions, then the attacker doesn’t know the actor’s read key, <code>kr</code>. We’ll go through the details of the lemma in a moment, but first let’s address some questions you might have about this proof statement.</p>
 	<p>The first question that might arise is: “If we are only secure in the case the attacker doesn’t use their special abilities then why bother modeling those abilities?” The answer has two parts:</p>
 	<ol>

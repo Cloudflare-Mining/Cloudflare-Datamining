@@ -93,8 +93,8 @@ DNSSEC: unsigned</code></pre>
  is 64.44.141.5) smtp.mailfrom=disastercustomerservice@sba.gov
  smtp.helo=sba.gov
 Received-SPF: pass (990w8b.myvserver.online: connection is authenticated)
-Reply-To: "U.S. Small Business Administration (SBA)" <disastercustomerservice@gov-sba.us>
-From: "U.S. Small Business Administration (SBA)" <disastercustomerservice@sba.gov></disastercustomerservice@sba.gov></disastercustomerservice@gov-sba.us></code></pre>
+Reply-To: "U.S. Small Business Administration (SBA)" &lt;disastercustomerservice@gov-sba.us&gt;
+From: "U.S. Small Business Administration (SBA)" &lt;disastercustomerservice@sba.gov&gt;</code></pre>
 	<p>The HELO command told the receiving email server to treat the message as if it originated from SBA’s domain, when in fact the sender actually had a completely different domain and IP address, namely 990w8b[.]myvserver[.]online and 64[.]44[.]141[.]5. This resulted in various legacy email security solutions accepting the message for delivery.</p>
 	<h3>Reply with Bank Details</h3>
 	<p>A target’s reply to this phish is the lynchpin of the whole scam, given the attached EIDL application requests private financial information. Further, the likelihood of a reply is dramatically increased by the seemingly benign and unassuming nature of this purported government form. In the body of the message, the attacker provides instructions to simply reply to the email with a completed EIDL application, of course making sure to note that all personal and banking details must be correct.</p>

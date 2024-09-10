@@ -54,7 +54,7 @@
 	<p>Ever wanted to see the <code>console.log()</code> output or uncaught exceptions from a deployed Worker?</p>
 	<p>In case you missed it, <code>wrangler tail</code> allows you to see a live stream of your Worker’s logs and exceptions. Today, we’re improving <code>wrangler tail</code> by making it easier to use and more accessible to developers.</p>
 	<p>First, we wanted to improve the terminal output. Previously, <code>wrangler tail</code> would only output log entries as JSON. While this was useful when piping through to tools like <code>jq</code>, it was generally hard to digest. That’s why we created a new “pretty” format that is much easier to read and takes full advantage of your terminal’s color codes.</p>
-	<pre class="language-sh"><code class="language-sh">$ wrangler tail --format=<json|pretty></json|pretty></code></pre>
+	<pre class="language-sh"><code class="language-sh">$ wrangler tail --format=&lt;json|pretty&gt;</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 

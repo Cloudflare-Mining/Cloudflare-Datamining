@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div>
+<div class="mb2 gray5">16 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
@@ -488,13 +488,13 @@ const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {
 	<p>Switching to match gave us another 7-18% drop in latency, depending on the case.</p>
 	<h3>Optimization attempt #3: Regex → WindowedReplacer</h3>
 	<p>So, what exactly is the purpose of <i>Regex::replace_all</i> in pre-processing? Regex is defined and used like this:</p>
-	<pre class="language-regex"><code class="language-regex">pub static SIG_REGEX: Lazy<regex> =
+	<pre class="language-regex"><code class="language-regex">pub static SIG_REGEX: Lazy&lt;Regex&gt; =
     Lazy::new(|| RegexBuilder::new("[a-z]+").unicode(false).build().unwrap());
     ... 
     let res = SIG_REGEX.replace_all(&amp;input, b"#");
     for s in res.windows(3) {
         tensor[sig_vocab_lookup(s.try_into().unwrap())] += 1.0;
-    }</regex></code></pre>
+    }</code></pre>
 	<p>Essentially, all we need is to:</p>
 	<ol>
 		<li>
@@ -509,7 +509,7 @@ const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {
 	</ol>
 	<p>This logic seems simple enough that we could implement it more efficiently with a single pass over the input and without any allocations:</p>
 	<pre class="language-python"><code class="language-python">type Window = [u8; 3];
-type Iter&lt;'a&gt; = Peekable<std::slice::iter<'a, u8="">&gt;;
+type Iter&lt;'a&gt; = Peekable&lt;std::slice::Iter&lt;'a, u8&gt;&gt;;
 
 pub struct WindowedReplacer&lt;'a&gt; {
     window: Window,
@@ -522,7 +522,7 @@ fn is_replaceable(byte: u8) -&gt; bool {
 }
 
 #[inline]
-fn next_byte(iter: &amp;mut Iter) -&gt; Option<u8> {
+fn next_byte(iter: &amp;mut Iter) -&gt; Option&lt;u8&gt; {
     let byte = iter.next().copied()?;
     if is_replaceable(byte) {
         while iter.next_if(|b| is_replaceable(**b)).is_some() {}
@@ -533,7 +533,7 @@ fn next_byte(iter: &amp;mut Iter) -&gt; Option<u8> {
 }
 
 impl&lt;'a&gt; WindowedReplacer&lt;'a&gt; {
-    pub fn new(input: &amp;'a [u8]) -&gt; Option<self> {
+    pub fn new(input: &amp;'a [u8]) -&gt; Option&lt;Self&gt; {
         let mut window: Window = Default::default();
         let mut iter = input.iter().peekable();
         for byte in window.iter_mut().skip(1) {
@@ -550,7 +550,7 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
     type Item = Window;
 
     #[inline]
-    fn next(&amp;mut self) -&gt; Option<self::item> {
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
         for i in 0..2 {
             self.window[i] = self.window[i + 1];
         }
@@ -558,7 +558,7 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
         self.window[2] = byte;
         Some(self.window)
     }
-}</self::item></self></u8></std::slice::iter<'a,></code></pre>
+}</code></pre>
 	<p>By utilizing the <i>WindowedReplacer</i>, we simplify the replacement logic:</p>
 	<pre class="language-python"><code class="language-python">if let Some(replacer) = WindowedReplacer::new(&amp;input) {                
     for ngram in replacer.windows(3) {

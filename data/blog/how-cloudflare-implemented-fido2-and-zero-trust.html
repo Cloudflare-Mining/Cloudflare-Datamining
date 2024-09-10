@@ -62,9 +62,9 @@
 credentials-file: /root/.cloudflared/37b50fe2-a52a-5611-a9b1-ear382bd12a6.json
 
 ingress:
-  - hostname: <identifier>.ssh.cloudflare.com
+  - hostname: &lt;identifier&gt;.ssh.cloudflare.com
     service: ssh://localhost:22
-  - service: http_status:404</identifier></code></pre>
+  - service: http_status:404</code></pre>
 	<p>When an operator needs to SSH into our infrastructure they use the ProxyCommand SSH directive to invoke cloudflared, authenticate using Cloudflare Access, and then forward the SSH connection through Cloudflare. Our employees’ SSH configurations have an entry that looks kind of like this, and can be generated with a helper command in cloudflared:</p>
 	<pre class="language-bash"><code class="language-bash">Host *.ssh.cloudflare.com
     ProxyCommand /usr/local/bin/cloudflared access ssh –hostname %h.ssh.cloudflare.com</code></pre>

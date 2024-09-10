@@ -29,13 +29,13 @@
 	<p><a href="https://datatracker.ietf.org/doc/html/rfc8446">TLS</a> (we will be focusing on its current version, which is 1.3) is a protocol that aims to achieve three primary security properties:</p>
 	<ul>
 		<li>
-			<p><a href="https://www.cloudflare.com/en-gb/learning/ssl/what-happens-in-a-tls-handshake"><b>Confidentiality:</b> communication can be read only by the intended recipient,</a></p>
+			<p><a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><b>Confidentiality: communication can be read only by the intended recipient,</b></a></p>
 		</li>
 		<li>
-			<p><a href="https://www.cloudflare.com/en-gb/learning/ssl/what-happens-in-a-tls-handshake"><b>Integrity</b>: communication cannot be changed in transit, and</a></p>
+			<p><a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><b>Integrity: communication cannot be changed in transit, and</b></a></p>
 		</li>
 		<li>
-			<p><a href="https://www.cloudflare.com/en-gb/learning/ssl/what-happens-in-a-tls-handshake"><b>Authentication:</b> we are assured communication comes from the peer we are talking to</a>.</p>
+			<p><a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><b>Authentication: we are assured communication comes from the peer we are talking to</b></a>.</p>
 		</li>
 	</ul>
 	<p>The first two properties are easy to maintain in a quantum-computer world: confidentiality is maintained by swapping the existing non-quantum-safe algorithm for a post-quantum one; integrity is maintained because the algorithms are intractable on a quantum computer. What about the last property, authentication? There are three ways to achieve authentication in a TLS handshake, depending on whether server-only or mutual authentication is required:</p>

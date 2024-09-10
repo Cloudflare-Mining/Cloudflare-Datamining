@@ -82,7 +82,7 @@ namespace = "api-prod"</code></pre>
 async function upload(customerID:string, script:string){
  const scriptName = customerID;
  const scriptContent = script;
- const accountId = "<account_id>";
+ const accountId = "&lt;ACCOUNT_ID&gt;";
  const dispatchNamespace = "api-prod";
  const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/workers/dispatch/namespaces/${dispatchNamespace}/scripts/${scriptName}`;
  // construct and send request
@@ -91,8 +91,8 @@ async function upload(customerID:string, script:string){
    body: scriptContent,
    headers: {
      "Content-Type": "application/javascript",
-     "X-Auth-Email": "<email>",
-     "X-Auth-Key": "<api_key>"
+     "X-Auth-Email": "&lt;EMAIL&gt;",
+     "X-Auth-Key": "&lt;API_KEY&gt;"
    }
  });
 
@@ -100,7 +100,7 @@ async function upload(customerID:string, script:string){
  if (response.status != 200) {
    throw new Error(`Upload error`);
  }
-}</api_key></email></account_id></code></pre>
+}</code></pre>
 	<p>It’s that simple. With Dispatch Namespaces and Dispatch Workers, we’re giving you the building blocks to customize your SaaS applications. Along with the Platforms APIs, we’re also releasing a Workers for Platforms UI on the Cloudflare dashboard where you can view your Dispatch Namespaces, search scripts and view analytics for User Workers.</p>
 	<figure class="kg-card kg-image-card ">
 

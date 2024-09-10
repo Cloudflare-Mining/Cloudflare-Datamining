@@ -40,7 +40,7 @@ async function handleBillionsOfRedirects(request) {
   let prefix = "/redirect"
   let url = new URL(request.url)
   // Check if the URL is a special redirect.
-  // (eg. example.com/redirect/<random-hash>)
+  // (eg. example.com/redirect/&lt;random-hash&gt;)
   if (url.pathname.startsWith(prefix)) {
     // REDIRECTS is a custom variable that you define,
     // it binds to a Workers KV "namespace." (aka. a storage bucket)
@@ -52,7 +52,7 @@ async function handleBillionsOfRedirects(request) {
   }
   // Otherwise, send request to the original path.
   return await fetch(request)
-}</random-hash></code></pre>
+}</code></pre>
 	<p>With only a few changes from our previous example, we scaled from one redirect to billions − that's just a taste of what you can build with Workers KV.</p>
 	<h3>How does it work?</h3>
 	<p>Distributed data stores are often modeled using the <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP Theorem</a>, which states that distributed systems can only pick between <b><b>2 out of the 3</b></b> following guarantees:</p>
@@ -261,11 +261,11 @@ async function handleRequest(request) {
   var url = event.request.url
   var arg = request.url.split("/").pop()
   // User sends a URI encoded link to the GIF they wish to upload.
-  // (eg. example.com/api/upload_gif/<encoded-uri>)
+  // (eg. example.com/api/upload_gif/&lt;encoded-uri&gt;)
   if (url.pathname.startsWith("/api/upload_gif")) {
     event.respondWith(uploadGif(arg))
     // Profile contains link to view the GIF.
-    // (eg. example.com/api/view_gif/<username>)
+    // (eg. example.com/api/view_gif/&lt;username&gt;)
   } else if (url.pathname.startsWith("/api/view_gif")) {
     event.respondWith(getGif(arg))
   }
@@ -288,7 +288,7 @@ async function getGif(username) {
   } else {
     return new Response({status: 404, statusText: "User has no GIF!"})
   }
-}</username></encoded-uri></code></pre>
+}</code></pre>
 	<p>Lastly, we want to thank all of our beta customers. It was your valuable feedback that led us to develop these changes to Workers KV. Make sure to stay in touch with us, we're always looking ahead for what's next and we love hearing from you!</p>
 	<h3>Pricing</h3>
 	<p>We’re also ready to announce our GA pricing. If you're one of our Enterprise customers, your pricing obviously remains unchanged.</p>

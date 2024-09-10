@@ -178,21 +178,21 @@ wasmgdb&gt;</code></pre>
 #17     000129 as rust_panic () at library/std/src/panicking.rs
 #16     000128 as rust_panic_with_hook () at library/std/src/panicking.rs
 #15     000117 as {closure#0} () at library/std/src/panicking.rs
-#14     000116 as __rust_end_short_backtrace<std::panicking::begin_panic_handler::{closure_env#0}, !=""> () at library/std/src/sys_common/backtrace.rs
+#14     000116 as __rust_end_short_backtrace&lt;std::panicking::begin_panic_handler::{closure_env#0}, !&gt; () at library/std/src/sys_common/backtrace.rs
 #13     000123 as begin_panic_handler () at library/std/src/panicking.rs
 #12     000194 as panic_fmt () at library/core/src/panicking.rs
 #11     000198 as panic () at library/core/src/panicking.rs
 #10     000012 as calculate (value=0x03000000) at src/main.rs
 #9      000011 as process_thing (thing=0x2cff0f00) at src/main.rs
 #8      000010 as main () at src/main.rs
-#7      000008 as call_once<fn(), ()=""> (???=0x01000000, ???=0x00000000) at /rustc/b833ad56f46a0bbe0e8729512812a161e7dae28a/library/core/src/ops/function.rs
-#6      000020 as __rust_begin_short_backtrace<fn(), ()=""> (f=0x01000000) at /rustc/b833ad56f46a0bbe0e8729512812a161e7dae28a/library/std/src/sys_common/backtrace.rs
+#7      000008 as call_once&lt;fn(), ()&gt; (???=0x01000000, ???=0x00000000) at /rustc/b833ad56f46a0bbe0e8729512812a161e7dae28a/library/core/src/ops/function.rs
+#6      000020 as __rust_begin_short_backtrace&lt;fn(), ()&gt; (f=0x01000000) at /rustc/b833ad56f46a0bbe0e8729512812a161e7dae28a/library/std/src/sys_common/backtrace.rs
 #5      000016 as {closure#0}&lt;()&gt; () at /rustc/b833ad56f46a0bbe0e8729512812a161e7dae28a/library/std/src/rt.rs
 #4      000077 as lang_start_internal () at library/std/src/rt.rs
 #3      000015 as lang_start&lt;()&gt; (main=0x01000000, argc=0x00000000, argv=0x00000000, sigpipe=0x00620000) at /rustc/b833ad56f46a0bbe0e8729512812a161e7dae28a/library/std/src/rt.rs
-#2      000013 as __original_main () at <directory not="" found="">/<file not="" found="">
-#1      000005 as _start () at <directory not="" found="">/<file not="" found="">
-#0      000264 as _start.command_export at <no location=""></no></file></directory></file></directory></fn(),></fn(),></std::panicking::begin_panic_handler::{closure_env#0},></code></pre>
+#2      000013 as __original_main () at &lt;directory not found&gt;/&lt;file not found&gt;
+#1      000005 as _start () at &lt;directory not found&gt;/&lt;file not found&gt;
+#0      000264 as _start.command_export at &lt;no location&gt;</code></pre>
 	<p>Each line represents a frame from the program's call <a href="https://webassembly.github.io/spec/core/exec/runtime.html#stack">stack</a>; see frame #3:</p>
 	<pre class="language-bash"><code class="language-bash">#3      000015 as lang_start&lt;()&gt; (main=0x01000000, argc=0x00000000, argv=0x00000000, sigpipe=0x00620000) at /rustc/b833ad56f46a0bbe0e8729512812a161e7dae28a/library/std/src/rt.rs</code></pre>
 	<p>You can read the funcidx, function name, arguments names and values and source location are all present. Let's select frame #9 now and inspect the locals, which include the function arguments:</p>

@@ -89,7 +89,7 @@ export class GetSearch extends OpenAPIRoute {
     },
   }
 
-  async handle(request: Request, env, ctx, data: Record<string, any="">) {
+  async handle(request: Request, env, ctx, data: Record&lt;string, any&gt;) {
     const url = `https://api.github.com/search/repositories?q=${data.q}`
 
     const resp = await fetch(url, {
@@ -117,7 +117,7 @@ export class GetSearch extends OpenAPIRoute {
       repos: repos
     }
   }
-}</string,></code></pre>
+}</code></pre>
 	<p>The quickstart smooths out the entire development process, so you can focus on crafting custom behaviors, endpoints, and features for your ChatGPT plugins without getting caught up in the nitty-gritty. If you aren't familiar with API schemas, this also means that you can rely on our schema and manifest generation tools to handle the complicated bits, and focus on the implementation to build your plugin.</p>
 	<p>Besides making development a breeze, it's worth noting that you're also deploying to Workers, which takes advantage of Cloudflare's vast global network. This means your ChatGPT plugins enjoy low-latency access and top-notch performance, no matter where your users are located. By combining the strengths of Cloudflare Workers with the versatility of ChatGPT plugins, you can create conversational AI tools that are not only powerful and scalable but also cost-effective and globally accessible.</p>
 	<h2>Example</h2>

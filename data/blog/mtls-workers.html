@@ -32,8 +32,8 @@
 	<pre class="language-bash"><code class="language-bash">wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-client-cert</code></pre>
 	<p>2. Add a mtls_certificates binding in your project’s wrangler.toml file. The CERTIFICATE_ID is returned after your certificate is uploaded in step 1</p>
 	<pre class="language-bash"><code class="language-bash">mtls_certificates = [
- { binding = "MY_CERT", certificate_id = "<certificate_id>" }
-]</certificate_id></code></pre>
+ { binding = "MY_CERT", certificate_id = "&lt;CERTIFICATE_ID&gt;" }
+]</code></pre>
 	<p>3. Add the mTLS binding to any fetch() requests. This will present the client certificate when establishing the TLS connection.</p>
 	<pre class="language-bash"><code class="language-bash">index.js
 

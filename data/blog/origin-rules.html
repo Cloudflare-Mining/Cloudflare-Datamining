@@ -75,12 +75,12 @@
 	<p>But what if a user wanted to change that mapping? For example, when the backend origin server is listening on port 8001. In this scenario, an intermediate service is required to listen for requests on port 443 and create a sub-request with the destination port set to 8001.</p>
 	<p>Historically this was done on the origin server itself - with a reverse proxy server listening for requests on 443 and other ports and proxying those requests to another port.</p>
 	<pre class="language-bash"><code class="language-bash">Apache
- <virtualhost *:*="">
+ &lt;VirtualHost *:*&gt;
         ProxyPreserveHost On
         ProxyPass / http://0.0.0.0:8001/
         ProxyPassReverse / http://0.0.0.0:8001/
         ServerName example.com
-    </virtualhost>
+    &lt;/VirtualHost&gt;
 
 NGINX
 server {

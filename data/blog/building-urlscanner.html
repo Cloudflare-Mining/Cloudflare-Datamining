@@ -20,12 +20,12 @@
 	<h3>Submitting a scan request</h3>
 	<p>Using the API, here’s the simplest way to <a href="https://developers.cloudflare.com/api/operations/urlscanner-create-scan">submit</a> a scan request:</p>
 	<pre class="language-curl"><code class="language-curl">curl --request POST \
-	--url https://api.cloudflare.com/client/v4/accounts/<accountid>/urlscanner/scan \
+	--url https://api.cloudflare.com/client/v4/accounts/&lt;accountId&gt;/urlscanner/scan \
 	--header 'Content-Type: application/json' \
---header "Authorization: Bearer <api_token>" \
+--header "Authorization: Bearer &lt;API_TOKEN&gt;" \
 	--data '{
 		"url": "https://www.cloudflare.com",
-	}'</api_token></accountid></code></pre>
+	}'</code></pre>
 	<p>New features include the option to set custom HTTP headers, like <a href="https://developer.mozilla.org/en-US/docs/Glossary/User_agent">User-Agent</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization</a>, request multiple target device screenshots, like mobile and desktop, as well as set the visibility level to “unlisted”. This essentially marks the scan as private and was often requested by developers who wanted to keep their investigations confidential. Public scans, on the other hand, can be found by anyone through search and are useful to share results with the wider community. You can find more details in our <a href="https://developers.cloudflare.com/radar/investigate/url-scanner">developer documentation</a>.</p>
 	<h3>Exploring the scan results</h3>
 	<figure class="kg-card kg-image-card kg-width-wide">

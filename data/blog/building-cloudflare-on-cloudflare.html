@@ -49,7 +49,7 @@
 	<p>However, it also had a number of limitations. Internal workers could only run in one place in the lifetime of a request. This meant they couldn’t affect services running before them, such as the Cloudflare WAF.</p>
 	<p>Also, for security reasons, internal workers were published with an internal API using special credentials, rather than the public workers API. In 2019, this was no big deal, but since then there has been a ton of work to improve tooling such as <a href="https://developers.cloudflare.com/workers/wrangler">wrangler</a>, and build the developer platform. All of this tooling was unavailable for internal workers.</p>
 	<p>We had very limited observability of internal workers, lacking metrics and detailed logs, making them hard to debug.</p>
-	<p>Despite these limitations, the benefits of being able to use the workers ecosystem were big enough that ten products used these internal workers to implement parts of their logic. These included <a href="https://www.cloudflare.com/en-gb/products/zaraz">Zaraz</a>, our <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges">Cloudflare challenges system</a>, <a href="https://www.cloudflare.com/en-gb/waiting-room">Waiting Room</a> and several of our performance optimization products: <a href="https://developers.cloudflare.com/images/image-resizing">Image Resizing</a>, <a href="https://www.cloudflare.com/en-gb/lp/pg-images">Images</a>, <a href="https://blog.cloudflare.com/tag/mirage">Mirage</a> and <a href="https://blog.cloudflare.com/tag/rocketloader">Rocket Loader</a>. Such workers are also a core part of <a href="https://developers.cloudflare.com/automatic-platform-optimization">Automatic Platform Optimization for WordPress</a>, and our <a href="https://developers.cloudflare.com/fundamentals/speed/signed-exchanges">Signed exchanges (SXGs)</a> and <a href="https://developers.cloudflare.com/fundamentals/speed/amp-real-ulr">AMP Real URL</a> products.</p>
+	<p>Despite these limitations, the benefits of being able to use the workers ecosystem were big enough that ten products used these internal workers to implement parts of their logic. These included <a href="https://www.cloudflare.com/products/zaraz">Zaraz</a>, our <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges">Cloudflare challenges system</a>, <a href="https://www.cloudflare.com/waiting-room">Waiting Room</a> and several of our performance optimization products: <a href="https://developers.cloudflare.com/images/image-resizing">Image Resizing</a>, <a href="https://www.cloudflare.com/lp/pg-images">Images</a>, <a href="https://blog.cloudflare.com/tag/mirage">Mirage</a> and <a href="https://blog.cloudflare.com/tag/rocketloader">Rocket Loader</a>. Such workers are also a core part of <a href="https://developers.cloudflare.com/automatic-platform-optimization">Automatic Platform Optimization for WordPress</a>, and our <a href="https://developers.cloudflare.com/fundamentals/speed/signed-exchanges">Signed exchanges (SXGs)</a> and <a href="https://developers.cloudflare.com/fundamentals/speed/amp-real-ulr">AMP Real URL</a> products.</p>
 	<h3>Can we replace internal services with workers?</h3>
 	<p>We realized that we could do a lot more with the platform to improve our development processes. We also wondered how far it would be possible to go with the platform. Would it be possible to migrate all the logic implemented in the NGINX-based FL service to the developer platform? And if not, why not?</p>
 	<p>So we started, in late 2021, with a prototype. This routed traffic directly from our TLS ingress service to our workers runtime, skipping the FL service. We named this prototype Flame.</p>
@@ -98,7 +98,7 @@ export default {
         request: Request,
         env: Env,
         ctx: ExecutionContext
-    ): Promise<response> {
+    ): Promise&lt;Response&gt; {
  
         const obs = new ObservabilityContext(request, env, ctx);
 
@@ -113,7 +113,7 @@ export default {
         obs.startSpan("my code");
         obs.addAttribute("key", 42);
     },
-};</response></code></pre>
+};</code></pre>
 	<p>An awkward part of this API was the need to pass the “ObservabilityContext” around to be able to emit events. Resolving this was one of the reasons that we <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage">recently added support for AsyncLocalStorage</a> to the Workers runtime.</p>
 	<p>While our current observability system works, the internal implementation isn’t as efficient as we would like. So, we’re also working on adding native support for emitting events, metrics and traces from the Workers runtime. As we did with the Workers Analytics Engine, we want to find a way to do this which can be hooked up to our internal systems, but which can also be used by customers to add better observability to their workers.</p>
 	<h3>Accessing internal resources</h3>
@@ -140,7 +140,7 @@ let response = await ownershipInterface.lookupOwnership(query);</code></pre>
 
 	</figure>
 	<p>To use the cache, we simply need to wrap a block of code in a call to the cache:</p>
-	<pre class="language-typescript"><code class="language-typescript">const owner = await env.OWNERSHIPCACHE.read<ownershipdata>(
+	<pre class="language-typescript"><code class="language-typescript">const owner = await env.OWNERSHIPCACHE.read&lt;OwnershipData&gt;(
   key,
   async (key) =&gt; {
     let ownershipInterface = env.RRDNS.getCapability();
@@ -157,7 +157,7 @@ let response = await ownershipInterface.lookupOwnership(query);</code></pre>
     const expiration = new Date(Date.now() + 30_000);
     return { value, expiration };
   }
-);</ownershipdata></code></pre>
+);</code></pre>
 	<p>This cache drastically reduces the number of calls needed to fetch external resources. We are likely to improve it further, by adding support for refreshing in the background to reduce P99 latency, and improving observability of its usage and hit rates.</p>
 	<h3>Direct egress from workers</h3>
 	<p>If you looked at the architecture diagrams above closely, you might have noticed that the next step after the Workers runtime is always FL. Historically, the runtime only communicated with the FL service - allowing some product logic which was implemented in FL to be performed after workers had processed the requests.</p>
@@ -216,4 +216,5 @@ Date:   Thu Sep 19 19:31:15 2013 -0700
 	</figure>
 	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/550f605b9d626ca3efef2f4884217f53/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F550f605b9d626ca3efef2f4884217f53%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

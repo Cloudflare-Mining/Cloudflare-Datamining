@@ -75,10 +75,10 @@
 	<p>As Rust uses bound checks on memory access, construction of a token might be a relatively expensive operation. We need to be capable of constructing thousands of them in a fraction of second, so every CPU instruction counts.</p>
 	<p>Following the principle of doing as little as possible to improve performance we use a “token outline” representation of tokens: instead of having memory slices for token parts we use numeric ranges which are lazily transformed into a byte slice when required.</p>
 	<pre class="language-rust"><code class="language-rust">struct StartTagTokenOutline {
-   name: Range<usize>,
-   attributes: Vec&lt;(Range<usize>, Range<usize>)&gt;,
+   name: Range&lt;usize&gt;,
+   attributes: Vec&lt;(Range&lt;usize&gt;, Range&lt;usize&gt;)&gt;,
    self_closing: bool
-}</usize></usize></usize></code></pre>
+}</code></pre>
 	<p>As you might have noticed, with this approach we are no longer bound to the lifetime of the input chunk which turns out to be very useful. If a start tag is spread across multiple input chunks we can easily update the token that is currently in construction, as new chunks of input arrive by just adjusting integer indices. This allows us to avoid constructing a new token with slices from the new input memory region (it could be the input chunk itself or the internal parser’s buffer).</p>
 	<p>This time we can’t get away with avoiding the conversion of input character encoding; we expose a user-facing API that operates on JavaScript strings and input HTML can be of any encoding. Luckily, as we can still parse without decoding and only encode and decode within token bounds by a request (though we still can’t do that for UTF-16 encoding).</p>
 	<p>So, when a user requests an element’s tag name in the API, internally it is still represented as a byte slice in the character encoding of the input, but when provided to the user it gets dynamically decoded. The opposite process happens when a user sets a new tag name.</p>
@@ -188,12 +188,11 @@ L2: expect d
 	<p>You might think at this point that our abstraction doesn’t work and we should try something else. What we have as an input for our machine is a stack of open elements and we needed a stack-like structure to store our hereditrary_jmp instruction labels that VM had seen so far. So, why not store it on the open element stack? If we store the next instruction pointer on each of stack items on which the <code>expect</code> instruction was successfully executed, we’ll have a full snapshot of the VM state, so we can easily roll back to it if our stack shrinks.</p>
 	<p>With this implementation we don’t need to store anything except a tag name on the stack, and, considering that we can use the tag name hashing algorithm, it is just a 64-bit integer per open element. As an additional small optimization, to avoid traversing of the whole stack in search of active hereditary jumps on each new input we store an index of the first ancestor with a hereditary jump on each stack item.</p>
 	<p>For example, having the following selector “<i>body</i> &gt; <i>div span”</i> we’ll have the following VM program (let’s get rid of labels and just use instruction indices instead):</p>
-	<pre class="language-assembler"><code class="language-assembler">0| expect 
-1| expect <div>
+	<pre class="language-assembler"><code class="language-assembler">0| expect &lt;body&gt;
+1| expect &lt;div&gt;
 2| hereditary_jmp 3
-3| expect <span>
-4| match
-</span></div></code></pre>
+3| expect &lt;span&gt;
+4| match</code></pre>
 	<p>Having an input “” we’ll have the following stack:</p>
 	<figure class="kg-card kg-image-card ">
 

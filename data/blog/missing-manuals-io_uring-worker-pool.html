@@ -41,14 +41,14 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-    -c, --cpu <cpu>...                     CPU to run on when invoking io_uring_enter for Nth ring (specify multiple
+    -c, --cpu &lt;cpu&gt;...                     CPU to run on when invoking io_uring_enter for Nth ring (specify multiple
                                            times) [default: 0]
-    -w, --workers <max-unbound-workers>    Maximum number of unbound workers per NUMA node (0 - default, that is
+    -w, --workers &lt;max-unbound-workers&gt;    Maximum number of unbound workers per NUMA node (0 - default, that is
                                            RLIMIT_NPROC) [default: 0]
-    -r, --rings <num-rings>                Number io_ring instances to create per thread [default: 1]
-    -t, --threads <num-threads>            Number of threads creating io_uring instances [default: 1]
-    -s, --sqes <sqes>                      Number of read requests to submit per io_uring (0 - fill the whole queue)
-                                           [default: 0]</sqes></num-threads></num-rings></max-unbound-workers></cpu></code></pre>
+    -r, --rings &lt;num-rings&gt;                Number io_ring instances to create per thread [default: 1]
+    -t, --threads &lt;num-threads&gt;            Number of threads creating io_uring instances [default: 1]
+    -s, --sqes &lt;sqes&gt;                      Number of read requests to submit per io_uring (0 - fill the whole queue)
+                                           [default: 0]</code></pre>
 	<p>While it is parametrized for easy experimentation, at its core it doesn’t do much. We fill the submission queue with read requests from a UDP socket and then wait for them to complete. But because data doesn’t arrive on the socket out of nowhere, and there are no timeouts set up, nothing happens. As a bonus, we have complete control over when requests complete, which will come in handy later.</p>
 	<p>Let’s run the test workload to convince ourselves that things are working as expected. <code>strace</code> won’t be very helpful when using <code>io_uring</code>. We won’t be able to tie I/O requests to system calls. Instead, we will have to turn to in-kernel tracing.</p>
 	<p>Thankfully, <code>io_uring</code> comes with a set of ready to use static tracepoints, which save us the trouble of digging through the source code to decide where to hook up dynamic tracepoints, known as <a href="https://docs.kernel.org/trace/kprobes.html">kprobes</a>.</p>

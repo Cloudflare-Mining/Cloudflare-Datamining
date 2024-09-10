@@ -86,7 +86,7 @@
 })
 
 function postLog(data) {
- return fetch("http://logs-01.loggly.com/inputs/<my id="">/tag/http/", {
+ return fetch("http://logs-01.loggly.com/inputs/&lt;my id&gt;/tag/http/", {
    method: "POST",
    body: data
  })
@@ -144,7 +144,7 @@ async function handleRequest(event) {
    event.waitUntil(postLog(error))
    throw error
  }
-}</my></code></pre>
+}</code></pre>
 	<h3>Why use Workers KV?</h3>
 	<p>We could have written everything as a hard coded script, which was updated each time to enable/disable redirection of traffic. This would require the team to make code changes and deploy the worker every time we wanted to make a change.</p>
 	<p>Using Workers KV, I enabled any member of the team to enable/disable endpoints using the Cloudflare API. To make things easier I created a Postman collection and shared it.</p>

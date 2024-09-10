@@ -75,12 +75,12 @@
 	<p>This link opens a page in the user’s mobile browser containing a QR code that the movie theater will scan in place of a physical ticket. They want to ensure that the waiting room does not apply to customers trying to open their mobile tickets.</p>
 	<p>To do this, they would create the following bypass rule via the Waiting Room API as follows:</p>
 	<p>With a <a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/#create-a-waiting-room-via-the-api">waiting room already configured</a> at ticketing.example.com/, use the following API call to create a bypass rule:</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST \"https://api.cloudflare.com/client/v4/zones/<zone_id>/waiting_rooms/<room_id>/rules" \-H "Authorization: Bearer <api_token>" \
+	<pre class="language-bash"><code class="language-bash">curl -X POST \"https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/waiting_rooms/&lt;ROOM_ID&gt;/rules" \-H "Authorization: Bearer &lt;API_TOKEN&gt;" \
 -d '{    
 "description": "ticket holders bypass waiting room",    
 "expression": "ends_with(http.request.uri.path, \"/userverified\")  
  "action": "bypass_waiting_room"
-}'</api_token></room_id></zone_id></code></pre>
+}'</code></pre>
 	<p>Let’s break down this call. First, there is the URL, which needs to be populated with the zone id and the waiting room id. Then we pass our API token in the Authorization header. This call will create a new Waiting Room rule that will be added after any existing rules for this waiting room.</p>
 	<p>Within the body of the call, first define an optional description parameter. Give the rule an optional <code>description</code> to indicate the purpose of the rule for easy reference later.</p>
 	<p><code>"description": "ticket holders bypass waiting room"</code></p>

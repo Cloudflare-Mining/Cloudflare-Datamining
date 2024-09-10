@@ -266,7 +266,7 @@ export {findAsn, fetchAdditionalDetails}</code></pre>
 		this.asn = asn
 	}
 	element(element) {
-		element.append(`<h4>ASN ${this.asn} Not Found on PeeringDB</h4>`, {html: true})
+		element.append(`&lt;h4&gt;ASN ${this.asn} Not Found on PeeringDB&lt;/h4&gt;`, {html: true})
 	}
 }</code></pre>
 
@@ -370,14 +370,14 @@ webpack_config = "webpack.config.js"</code></pre>
 	<pre class="language-javascript"><code class="language-javascript">name = "peering"
 type = "webpack"
 webpack_config = "webpack.config.js"
-account_id = "<redacted>"
+account_id = "&lt;REDACTED&gt;"
 workers_dev = true
-route = "<redacted>"
-zone_id = "<redacted>"
+route = "&lt;REDACTED&gt;"
+zone_id = "&lt;REDACTED&gt;"
 
 [site]
 bucket="./public"
-entry-point="./"</redacted></redacted></redacted></code></pre>
+entry-point="./"</code></pre>
 	<p>Finally, publish your code using wrangler.</p>
 	<pre class="language-javascript"><code class="language-javascript">&gt; wrangler publish</code></pre>
 	<h3>Cache At The Edge</h3>

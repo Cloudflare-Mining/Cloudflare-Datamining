@@ -77,10 +77,10 @@
 
 export async function handleRequest(
     …
-): Promise<response> {
+): Promise&lt;Response&gt; {
     …
 }
-</response></code></pre>
+</code></pre>
 	<p>Unit testing these endpoints becomes easier too, since we only have to call the handleRequest() function from the testing framework. Check one of our <a href="https://jestjs.io">Jest</a> tests, <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/test/mastodon.spec.ts">mastodon.spec.ts</a>:</p>
 	<pre class="language-js"><code class="language-js">import * as v1_instance from 'wildebeest/functions/api/v1/instance'
 
@@ -91,13 +91,13 @@ describe('Mastodon APIs', () =&gt; {
 			assert.equal(res.status, 200)
 			assertCORS(res)
 
-			const data = await res.json<data>()
+			const data = await res.json&lt;Data&gt;()
 			assert.equal(data.rules.length, 0)
 			assert(data.version.includes('Wildebeest'))
 		})
        })
 })
-</data></code></pre>
+</code></pre>
 	<p>As with any other regular Worker, Functions also lets you set up <a href="https://developers.cloudflare.com/pages/platform/functions/bindings">bindings</a> to interact with other Cloudflare products and features like <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">KV</a>, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-reference">R2</a>, <a href="https://developers.cloudflare.com/d1">D1</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>, and more. The list keeps growing.</p>
 	<p>We use Functions to implement a large portion of the official <a href="https://docs.joinmastodon.org/api">Mastodon API</a> specification, making Wildebeest compatible with the existing ecosystem of other servers and client applications, and also to run our own read-only web frontend under the same project codebase.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -124,7 +124,7 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 </code></pre>
 	<p>D1 exposes a powerful <a href="https://developers.cloudflare.com/d1/platform/client-api">client API</a> that developers can use to manipulate and query data from Worker scripts, or in our case, Pages Functions.</p>
 	<p>Here’s a simplified example of how we interact with D1 when you start following someone on the Fediverse:</p>
-	<pre class="language-js"><code class="language-js">export async function addFollowing(db, actor, target, targetAcct): Promise<uuid> {
+	<pre class="language-js"><code class="language-js">export async function addFollowing(db, actor, target, targetAcct): Promise&lt;UUID&gt; {
 	const query = `INSERT OR IGNORE INTO actor_following (id, actor_id, target_actor_id, state, target_actor_acct) VALUES (?, ?, ?, ?, ?)`
 	const out = await db
 		.prepare(query)
@@ -132,7 +132,7 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 		.run()
 	return id
 }
-</uuid></code></pre>
+</code></pre>
 	<p>Cloudflare’s culture of dogfooding and building on top of our own products means that we sometimes experience their shortcomings before our users. We did face a few challenges using D1, which is built on SQLite, to store our data. Here are two examples.</p>
 	<p><a href="https://www.w3.org/TR/activitypub">ActivityPub</a> uses <a href="https://www.rfc-editor.org/rfc/rfc4122.txt">UUIDs</a> to identify objects and reference them in URIs extensively. These objects need to be stored in the database. Other databases like PostgreSQL provide built-in functions to <a href="https://www.postgresql.org/docs/current/functions-uuid.html">generate unique identifiers</a>. SQLite and D1 don't have that, yet, it’s in our roadmap.</p>
 	<p>Worry not though, the Workers runtime supports <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto">Web Crypto</a>, so we use crypto.randomUUID() to get our unique identifiers. Check the <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/activitypub/actors/inbox.ts">/backend/src/activitypub/actors/inbox.ts</a>:</p>
@@ -157,7 +157,7 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 	<h3>Images</h3>
 	<p>Mastodon content has a lot of rich media. We don't need to reinvent the wheel and build an image pipeline; Cloudflare Images <a href="https://developers.cloudflare.com/images">provides APIs</a> to upload, transform, and serve optimized images from our global CDN, so it's the perfect fit for Wildebeest's requirements.</p>
 	<p>Things like posting content images, the profile avatar, or headers, all use the Images APIs. See <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/media/image.ts">/backend/src/media/image.ts</a> to understand how we interface with Images.</p>
-	<pre class="language-js"><code class="language-js">async function upload(file: File, config: Config): Promise<uploadresult> {
+	<pre class="language-js"><code class="language-js">async function upload(file: File, config: Config): Promise&lt;UploadResult&gt; {
 	const formData = new FormData()
 	const url = `https://api.cloudflare.com/client/v4/accounts/${config.accountId}/images/v1`
 
@@ -173,7 +173,7 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 
       const data = await res.json()
 	return data.result
-}</uploadresult></code></pre>
+}</code></pre>
 	<p>If you're curious about Images for your next project, here's a tutorial on <a href="https://developers.cloudflare.com/images/cloudflare-images/tutorials/integrate-cloudflare-images">how to integrate Cloudflare Images</a> on your website.</p>
 	<p>Cloudflare Images is also available from the dashboard. You can use it to browse or manage your catalog quickly.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -219,7 +219,7 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 	id: string,
 	activity: Activity,
 	queue: Queue,
-): Promise<response> {
+): Promise&lt;Response&gt; {
 	const handle = parseHandle(id)
 
 	const actorId = actorURL(domain, handle.localPart)
@@ -234,7 +234,7 @@ const actor = await actors.getPersonById(db, actorId)
 
 	// frees the API
 	return new Response('', { status: 200 })
-}</response></code></pre>
+}</code></pre>
 	<p>And the final piece of the puzzle, our <a href="https://github.com/cloudflare/wildebeest/tree/main/consumer">queue consumer</a> runs in a separate Worker, independently from the Pages project. The consumer listens for new messages and processes them sequentially, at its rhythm, freeing everyone else from blocking. When things get busy, the queue grows its buffer. Still, things keep running, and the jobs will eventually get dispatched, freeing the main APIs for the critical stuff: responding to remote servers and clients as quickly as possible.</p>
 	<pre class="language-js"><code class="language-js">export default {
 	async queue(batch, env, ctx) {
@@ -418,7 +418,7 @@ export async function addObjectInInbox(db, actor, obj) {
 </code></pre>
 	<p>Now we know how to interact with <code>@user@example.com</code>, using the <code>https://example.com/ap/users/user endpoint</code>.</p>
 	<p>Here’s our WebFinger <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/.well-known/webfinger.ts">response</a>:</p>
-	<pre class="language-js"><code class="language-js">export async function handleRequest(request, db): Promise<response> {
+	<pre class="language-js"><code class="language-js">export async function handleRequest(request, db): Promise&lt;Response&gt; {
 	…
 	const jsonLink = /* … link to actor */
 
@@ -434,7 +434,7 @@ export async function addObjectInInbox(db, actor, obj) {
 		],
 	}
 	return new Response(JSON.stringify(res), { headers })
-}</response></code></pre>
+}</code></pre>
 	<h4>Mastodon API</h4>
 	<p>Finally, things like setting your server information, profile information, generating timelines, notifications, and searches, are all Mastodon-specific APIs. The Mastodon open-source project defines a catalog of REST APIs, and you can find all the documentation for them on <a href="https://docs.joinmastodon.org/api">their website</a>.</p>
 	<p>Our Mastodon API implementation can be found <a href="https://github.com/cloudflare/wildebeest/tree/main/functions/api">here</a> (REST endpoints) and <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/mastodon">here</a> (backend primitives). Here’s an example of Mastodon’s server information <a href="https://docs.joinmastodon.org/methods/instance/#v2">/api/v2/instance</a> implemented by <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v2/instance.ts">Wildebeest</a>:</p>

@@ -94,7 +94,7 @@ Value = block</code></pre>
 		</li>
 	</ul>
 	<p>These are converted into:</p>
-	<pre class="language-bash"><code class="language-bash">^(?<block__1>(?:.*/wp-admin/index.php))|(?<block__2>(?:.*/xmlrpc.php))$</block__2></block__1></code></pre>
+	<pre class="language-bash"><code class="language-bash">^(?&lt;block__1&gt;(?:.*/wp-admin/index.php))|(?&lt;block__2&gt;(?:.*/xmlrpc.php))$</code></pre>
 	<p>Yes, you read that correctly. Each Page Rule was appended to a single regular expression in the order of execution, and the naming group is used as an overload for the desired action.</p>
 	<p>This works surprisingly well as <a href="https://swtch.com/~rsc/regexp/regexp1.html">regular expression matching can be simple and fast</a> especially when the regular expression matches against a single value like the URI, but as soon as you want to match the URI plus an IP range it becomes less obvious how to extend this.</p>
 	<p>This is what we had, a set of features that worked really well providing you want to match a single property of a request. The implementation also meant that none of these features could be trivially extended to embrace multiple properties at a time. We needed something else, a fast way to compute if a request matches a rule that could contain multiple properties as well as pattern matching.</p>

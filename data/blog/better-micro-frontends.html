@@ -81,10 +81,10 @@
 	<p>A screenshot of the self-hosted “header” fragment</p>
 	<p>The header fragment is defined as a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx"><code>Header</code></a> component using Qwik. This component is rendered in a Cloudflare Worker via a <code>fetch()</code> handler:</p>
 	<pre class="language-tsx"><code class="language-tsx">export default {
-  fetch(request: Request, env: Record<string, unknown="">): Promise<response> {
-    return renderResponse(request, env, <header>, manifest, "header");
+  fetch(request: Request, env: Record&lt;string, unknown&gt;): Promise&lt;Response&gt; {
+    return renderResponse(request, env, &lt;Header /&gt;, manifest, "header");
   },
-};</header></response></string,></code></pre>
+};</code></pre>
 	<!--kg-card-begin: html-->
 	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/entry.ssr.tsx"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center><!--kg-card-end: html-->
 	<p>The <code>[renderResponse](https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts)()</code> function is a helper we wrote that server-side renders the fragment and streams it into the body of a <code>Response</code> that we return from the <code>fetch()</code> handler.</p>
@@ -101,10 +101,10 @@
 	</ul>
 	<h3>Injecting child fragments</h3>
 	<p>The position of a child fragment inside its parent can be specified by a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx"><code>FragmentPlaceholder</code></a> helper component that we have developed. For example, the “body” fragment has the “filter” and “gallery” fragments.</p>
-	<pre class="language-tsx"><code class="language-tsx"><div class="content">
-  <fragmentplaceholder name="filter">
-  <fragmentplaceholder name="gallery">
-</fragmentplaceholder></fragmentplaceholder></div></code></pre>
+	<pre class="language-tsx"><code class="language-tsx">&lt;div class="content"&gt;
+  &lt;FragmentPlaceholder name="filter" /&gt;
+  &lt;FragmentPlaceholder name="gallery" /&gt;
+&lt;/div&gt;</code></pre>
 	<!--kg-card-begin: html-->
 	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/root.tsx"><b>cloud-gallery/body/src/root.tsx</b></a></small></center><!--kg-card-end: html-->
 	<p>The <code>FragmentPlaceholder</code> component is responsible for making a request for the fragment and piping the fragment stream into the output stream.</p>
@@ -114,17 +114,17 @@
 	<pre class="language-tsx"><code class="language-tsx">export default {
   async fetch(
     request: Request,
-    env: Record<string, unknown="">
-  ): Promise<response> {
+    env: Record&lt;string, unknown&gt;
+  ): Promise&lt;Response&gt; {
     // Proxy requests for assets hosted by a fragment.
     const asset = await tryGetFragmentAsset(env, request);
     if (asset !== null) {
       return asset;
     }
     // Otherwise server-side render the template injecting child fragments.
-    return renderResponse(request, env, <root>, manifest, "div");
+    return renderResponse(request, env, &lt;Root /&gt;, manifest, "div");
   },
-};</root></response></string,></code></pre>
+};</code></pre>
 	<!--kg-card-begin: html-->
 	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small></center><!--kg-card-end: html-->
 	<h3>Fragment asset paths</h3>
@@ -140,10 +140,10 @@
 	<!--kg-card-begin: html-->
 	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx"><strong>cloud-gallery/header/src/root.tsx</strong></a></small></center><!--kg-card-end: html-->
 	<p>The <code>FragmentContext</code> value can then be accessed in components that need to apply the prefix. For example, the <code>Image</code> component:</p>
-	<pre class="language-tsx"><code class="language-tsx">export const Image = component$((props: Record<string, string="" |="" number="">) =&gt; {
+	<pre class="language-tsx"><code class="language-tsx">export const Image = component$((props: Record&lt;string, string | number&gt;) =&gt; {
   const { base } = useContext(FragmentContext);
-  return <img {...props}="" src="{base" +="" props.src}="" alt="">;
-});</string,></code></pre>
+  return &lt;img {...props} src={base + props.src} /&gt;;
+});</code></pre>
 	<!--kg-card-begin: html-->
 	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/image/image.tsx"><strong>cloud-gallery/helpers/src/image/image.tsx</strong></a></small></center><!--kg-card-end: html-->
 	<h3>Service-binding fragments</h3>

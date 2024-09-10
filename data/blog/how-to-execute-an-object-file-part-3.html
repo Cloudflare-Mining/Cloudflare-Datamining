@@ -3,14 +3,14 @@
 	<h2>Dealing with external libraries</h2>
 	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies — that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">the code from part 2</a>. Let's add another function to our toy object file:</p>
 	<p><i>obj.c</i>:</p>
-	<pre class="language-c"><code class="language-c">#include <stdio.h>
+	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
  
 ...
  
 void say_hello(void)
 {
     puts("Hello, world!");
-}</stdio.h></code></pre>
+}</code></pre>
 	<p>In the above scenario our <code>say_hello</code> function now depends on the <code>puts</code> <a href="https://man7.org/linux/man-pages/man3/puts.3.html">function from the C standard library</a>. To try it out we also need to modify our <code>loader</code> to import the new function and execute it:</p>
 	<p><i>loader.c</i>:</p>
 	<pre class="language-c"><code class="language-c">...
@@ -218,7 +218,7 @@ static void do_text_relocations(void)
     for (int i = 0; i &lt; num_relocations; i++) {
 ...
         /* symbol, with respect to which the relocation is performed */
-        uint8_t *symbol_address = = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+        uint8_t *symbol_address = = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
 ...
 }
 ...</code></pre>
@@ -255,7 +255,7 @@ static void do_text_relocations(void)
  
             curr_jmp_idx++;
         } else {
-            symbol_address = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+            symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
         }
 ...
 }

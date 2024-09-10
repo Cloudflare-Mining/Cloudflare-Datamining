@@ -50,49 +50,49 @@ chmod 0442 ~/messages</code></pre>
 
 &lt; MAIL zack
 
-&gt; 354 Type mail, ended by <crlf>.<crlf>
+&gt; 354 Type mail, ended by &lt;CRLF&gt;.&lt;CRLF&gt;
 
 &lt; Sup?
 &lt; .
 
-&gt; 250 Mail stored</crlf></crlf></code></pre>
+&gt; 250 Mail stored</code></pre>
 	<p>These commands were ultimately <a href="https://tools.ietf.org/html/rfc772">borrowed from</a> FTP and formed the basis for the SMTP (Simple Mail Transfer Protocol) protocol in <a href="https://tools.ietf.org/html/rfc821">1982</a>.</p>
 	<h3>Mailboxes</h3>
 	<p>The format for defining how a message should be transmitted (and often how it would be stored on disk) was first <a href="https://tools.ietf.org/html/rfc733">standardized</a> in 1977:</p>
 	<pre class="language-bash"><code class="language-bash">Date     :  27 Aug 1976 0932-PDT
-From     :  Ken Davis <kdavis at="" other-host="">
+From     :  Ken Davis &lt;KDavis at Other-Host&gt;
 Subject  :  Re: The Syntax in the RFC
-To       :  George Jones <group at="" host="">,
+To       :  George Jones &lt;Group at Host&gt;,
               Al Neuman at Mad-Host
 
-There’s no way this is ever going anywhere...</group></kdavis></code></pre>
+There’s no way this is ever going anywhere...</code></pre>
 	<p>Note that at this time the ‘at’ word could be used rather than the ‘@’ symbol. Also note that this use of headers before the message predates HTTP by almost fifteen years. This format remains nearly identical today.</p>
 	<p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
 	<pre class="language-bash"><code class="language-bash">From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author <author@example.com>
-To: Recipient <recipient@example.com>
+From: Author &lt;author@example.com&gt;
+To: Recipient &lt;recipient@example.com&gt;
 Subject: Save $100 on floppy disks
 
 They’re never gonna go out of style!
 
 From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author <author@example.com>
-To: Recipient <recipient@example.com>
+From: Author &lt;author@example.com&gt;
+To: Recipient &lt;recipient@example.com&gt;
 Subject: Seriously, buy AAPL
 
 You’ve never heard of it, you’ve never heard of me, but when you see
 that stock symbol appear.  Buy it.
 
-- The Future</recipient@example.com></author@example.com></recipient@example.com></author@example.com></code></pre>
+- The Future</code></pre>
 	<p>Each message began with the word ‘From’, meaning if a message happened to contain From at the beginning of a line it needed to be escaped lest the system think that’s the start of a new message:</p>
 	<pre class="language-bash"><code class="language-bash">From MAILER-DAEMON Fri Jul  8 12:08:34 2011
-From: Author <author@example.com>
-To: Recipient <recipient@example.com>
+From: Author &lt;author@example.com&gt;
+To: Recipient &lt;recipient@example.com&gt;
 Subject: Sample message 1
 
 This is the body.
 &gt;From (should be escaped).
-There are 3 lines.</recipient@example.com></author@example.com></code></pre>
+There are 3 lines.</code></pre>
 	<p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="http://www.rfc-editor.org/rfc/rfc808.txt">diversity</a> of clients available, but a few are of historical note.</p>
 	<p>RD was an editor which was created by <a href="http://www.livinginternet.com/i/ii_roberts.htm">Lawrence Roberts</a> who was actually the program manager for the ARPANET itself at the time. It was a set of macros on top of the Tenex text editor (TECO), which itself would later become Emacs.</p>
 	<p>RD was the first client to give us the ability to sort messages, save messages, and delete them. There was one key thing missing though: any integration between receiving a message and sending one. RD was strictly for consuming emails you had received, to reply to a message it was necessary to compose an entirely new message in SNDMSG or another tool.</p>
@@ -117,24 +117,24 @@ Message-Id: &lt;9501092156.AA08581@mysun.xyz.edu&gt;
 To: angelac
 Subject: Here’s the first message you asked for
 Date: Mon, 09 Jan 1995 16:56:37 -0600
-From: "Joe Doe" <joed>
+From: "Joe Doe" &lt;joed&gt;
 
 Hi, Angela!  You asked me to send you a message.  Here it is.
 I hope this is okay and that you can figure out how to use
 that mail system.
 
-Joe</joed></code></pre>
+Joe</code></pre>
 	<p>You could reply to the message easily:</p>
 	<pre class="language-bash"><code class="language-bash">% repl
 
-To: "Joe Doe" <joed>
+To: "Joe Doe" &lt;joed&gt;
 cc: angelac
 Subject: Re: Here’s the first message you asked for
 In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
         &lt;9501092156.AA08581@mysun.xyz.edu&gt;
 -------
 
-% edit vi</joed></code></pre>
+% edit vi</code></pre>
 	<p>You could then edit your reply in vim which is actually pretty cool.</p>
 	<p>Interestingly enough, in June of 1996 the guide “<a href="http://rand-mh.sourceforge.net/book">MH &amp; xmh: Email for Users &amp; Programmers</a>” was actually the first book in history to be published on the Internet.</p>
 	<h3>Pine, Elm &amp; Mutt</h3>

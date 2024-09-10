@@ -42,9 +42,47 @@ bob-ross-lipsum           | Phrases from Bob…    | =forresto       | 2016-01-1
 function getPhrases (length) {
   if (!length) length = 1
   var happyPhrases = []
-  for (var i=0; i<length; 2016="" i++)="" {="" happyphrases.push(getphrase())="" }="" return="" happyphrases.join('="" ')="" compiled="" by="" http:="" www.bobrosslipsum.com="" january="" var="" phrases="[...elided" for="" clarity...]<="" pre=""></length;></code>
-            <p>Assuming we've registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-Cloudflare-account-and-add-a-website">put it on Cloudflare</a>, let's see how quickly can we get a globally distributed, highly available API running in 150+ data centers, to generate some Bob Ross Lorem Ipsum.</p><p>I'm going to:</p><ol><li><p>Launch workers</p></li><li><p>Confirm I get console output</p></li><li><p>Put a test response</p></li><li><p>Paste in my code to generate Bob Ross Lorem Ipsum</p></li><li><p>Test it out</p></li><li><p>Add a route</p></li><li><p>Save*</p></li><li><p>Request it in the browser</p></li></ol><p>* This pushes it to 150+ data centers... no biggie.</p><p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda"><i>fast</i></a><i>.</i></p><p>The more I use it, the more it reminds of Heroku, and how ease-of-deployment and the developer experience really drove adoption of that platform.</p><p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum">Github</a>.</p>
-            <pre class="language-javascript"><code class="language-javascript">const ui = '...basic html page...';
+  for (var i=0; i&lt;length; i++) {
+    happyPhrases.push(getPhrase())
+  }
+  return happyPhrases.join(' ')
+}
+
+// Compiled by http://www.bobrosslipsum.com/ 2016 January
+var phrases = [...elided for clarity...]</code></pre>
+	<p>Assuming we've registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-Cloudflare-account-and-add-a-website">put it on Cloudflare</a>, let's see how quickly can we get a globally distributed, highly available API running in 150+ data centers, to generate some Bob Ross Lorem Ipsum.</p>
+	<p>I'm going to:</p>
+	<ol>
+		<li>
+			<p>Launch workers</p>
+		</li>
+		<li>
+			<p>Confirm I get console output</p>
+		</li>
+		<li>
+			<p>Put a test response</p>
+		</li>
+		<li>
+			<p>Paste in my code to generate Bob Ross Lorem Ipsum</p>
+		</li>
+		<li>
+			<p>Test it out</p>
+		</li>
+		<li>
+			<p>Add a route</p>
+		</li>
+		<li>
+			<p>Save*</p>
+		</li>
+		<li>
+			<p>Request it in the browser</p>
+		</li>
+	</ol>
+	<p>* This pushes it to 150+ data centers... no biggie.</p>
+	<p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda"><i>fast</i></a><i>.</i></p>
+	<p>The more I use it, the more it reminds of Heroku, and how ease-of-deployment and the developer experience really drove adoption of that platform.</p>
+	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum">Github</a>.</p>
+	<pre class="language-javascript"><code class="language-javascript">const ui = '...basic html page...';
 
 async function handleRequest(request) {
 
@@ -71,5 +109,4 @@ async function handleRequest(request) {
 
 	</figure>
 	<p>Want to join a rocketship? <a href="https://boards.greenhouse.io/cloudflare/jobs/589482?gh_jid=589482">I’m hiring in Austin and San Francisco</a></p>
-	</pre>
 </div>

@@ -78,8 +78,8 @@
 	<p>Finally, we settled upon doing something smart: upgrade a URI from http:// to https:// if we know that the resource can be served using HTTPS. To figure out which links are upgradable we turned to the EFF’s excellent <a href="https://www.eff.org/https-Everywhere">HTTPS Everywhere</a> extension and Google Chrome <a href="https://github.com/chromium/hstspreload.appspot.com">HSTS preload</a> list to augment our knowledge of CloudFlare sites that have SSL enabled.</p>
 	<p>We are very grateful that the EFF graciously accepted to help us with this project.</p>
 	<p>The HTTPS Everywhere ruleset goes far beyond just switching http:// to https://: it contains rules (and exclusions) that allow it (and us) to target very specific URIs. For example, here’s an actual HTTP Everywhere rule for gstatic.com:</p>
-	<pre class="language-bash"><code class="language-bash"><rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
-gstatic\.com/" to="https://$1.gstatic.com/"></rule></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
+gstatic\.com/" to="https://$1.gstatic.com/"/&gt;</code></pre>
 	<p>It uses a regular expression to identify specific subdomains of gstatic.com that can safely be upgraded to use HTTPS. The complete set of rules can be browsed <a href="https://www.eff.org/https-everywhere/atlas">here</a>.</p>
 	<p>Because we need to upgrade a huge number of URIs embedded in web pages (we estimate around 5 million per second) we benchmarked existing HTML parsers (including our own) and decided to write a new one for this type of rewriting task. We’ll write more about its design, testing and performance in a future post.</p>
 	<h3>Automatic HTTPS Rewrites</h3>

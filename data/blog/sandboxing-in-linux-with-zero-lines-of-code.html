@@ -1,4 +1,4 @@
-<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BY8vBsP1u8DH1efVGVvlQ/6cecf5936487d6de4b82996447c97453/sandboxing-in-linux-with-zero-lines-of-code.jpeg" alt="">
+<div class="mb2 gray5">16 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Modern Linux operating systems provide many tools to run code more securely. There are <a href="https://www.man7.org/linux/man-pages/man7/namespaces.7.html">namespaces</a> (the basic building blocks for containers), <a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html">Linux Security Modules</a>, <a href="https://wiki.gentoo.org/wiki/Integrity_Measurement_Architecture">Integrity Measurement Architecture</a> etc.</p>
 	<p>In this post we will review <a href="https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html">Linux seccomp</a> and learn how to sandbox any (even a proprietary) application without writing a single line of code.</p>
@@ -47,8 +47,8 @@
 	<h2>Integrating seccomp into the application</h2>
 	<p>To see how seccomp can be used in practice, let’s consider a toy example program</p>
 	<p><i>myos.c:</i></p>
-	<pre class="language-c"><code class="language-c">#include <stdio.h>
-#include <sys utsname.h="">
+	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;sys/utsname.h&gt;
 
 int main(void)
 {
@@ -61,27 +61,29 @@ int main(void)
 
     printf("My OS is %s!\n", name.sysname);
     return 0;
-}</sys></stdio.h></code></pre>
+}</code></pre>
+	<p></p>
 	<p>This is a simplified version of the <a href="https://www.man7.org/linux/man-pages/man1/uname.1.html">uname command line tool</a>, which just prints your operating system name. Like its full-featured counterpart, it uses the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">uname system call</a> to actually get the name of the current operating system from the kernel. Let’s see it action:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos.c
 $ ./myos
 My OS is Linux!</code></pre>
+	<p></p>
 	<p>Great! We’re on Linux, so can further experiment with <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">seccomp</a> (it is a Linux-only feature). Notice that we’re properly handling the error code after invoking the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">uname system call</a>. However, according to the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">man page</a> it can only fail, when the passed in buffer pointer is invalid. And in this case the set error number will be “EINVAL”, which translates to invalid parameter. In our case, the “struct utsname” structure is being allocated on the stack, so our pointer will always be valid. In other words, in normal circumstances the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">uname system call</a> should never fail in this particular program.</p>
 	<p>To illustrate seccomp capabilities we will add a “sandbox” function to our program before the main logic</p>
 	<p><i>myos_raw_seccomp.c:</i></p>
-	<pre class="language-c"><code class="language-c">#include <linux seccomp.h="">
-#include <linux filter.h="">
-#include <linux audit.h="">
-#include <sys ptrace.h="">
-#include <sys prctl.h="">
+	<pre class="language-c"><code class="language-c">#include &lt;linux/seccomp.h&gt;
+#include &lt;linux/filter.h&gt;
+#include &lt;linux/audit.h&gt;
+#include &lt;sys/ptrace.h&gt;
+#include &lt;sys/prctl.h&gt;
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <sys utsname.h="">
-#include <errno.h>
-#include <unistd.h>
-#include <sys syscall.h="">
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stddef.h&gt;
+#include &lt;sys/utsname.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/syscall.h&gt;
 
 static void sandbox(void)
 {
@@ -134,27 +136,30 @@ int main(void)
 
     printf("My OS is %s!\n", name.sysname);
     return 0;
-}</sys></unistd.h></errno.h></sys></stddef.h></stdio.h></stdlib.h></sys></sys></linux></linux></linux></code></pre>
+}</code></pre>
+	<p></p>
 	<p>To sandbox itself the application defines a <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">BPF program</a>, which implements the desired sandboxing policy. Then the application passes this program to the kernel via the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">seccomp</a> system call. The kernel does some validation checks to ensure the BPF program is OK and then runs this program on every system call the application makes. The results of the execution of the program is used by the kernel to determine if the current call complies with the desired policy. In other words the BPF program is the “contract” between the application and the kernel.</p>
 	<p>In our toy example above, the BPF program simply checks which system call is about to be invoked. If the application is trying to use the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">uname system call</a> we tell the kernel to just return a EPERM (which stands for “operation not permitted”) error code. We also tell the kernel to allow any other system call. Let’s see if it works now:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos_raw_seccomp.c
 $ ./myos
 uname failed: Operation not permitted</code></pre>
+	<p><code></code></p>
 	<p><code>uname</code> failed now with the EPERM error code and EPERM is not even described as a potential failure code in the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">uname manpage</a>! So we know now that this happened because we “told” the kernel to prohibit us using the uname syscall and to return EPERM instead. We can double check this by replacing EPERM with some other error code, which is totally inappropriate for this context, for example ENETDOWN (“network is down”). Why would we need the network to be up to just get the currently executing OS? Yet, recompiling and rerunning the program we get:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos_raw_seccomp.c
 $ ./myos
 uname failed: Network is down</code></pre>
+	<p></p>
 	<p>We can also verify the other part of our “contract” works as expected. We told the kernel to allow any other system call, remember? In our program, when uname fails, we convert the error code to a human readable message and print it on the screen with the <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html">perror</a> function. To print on the screen <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html">perror</a> uses the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write system call</a> under the hood and since we can actually see the printed error message, we know that the kernel allowed our program to make the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write system call</a> in the first place.</p>
 	<h3>seccomp with libseccomp</h3>
 	<p>While it is possible to use seccomp directly, as in the examples above, BPF programs are cumbersome to write by hand and hard to debug, review and update later. That’s why it is usually a good idea to use a more high-level library, which abstracts away most of the low-level details. Luckily <a href="https://github.com/seccomp/libseccomp">such a library exists</a>: it is called libseccomp and is even recommended by the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">seccomp man page</a>.</p>
 	<p>Let’s rewrite our program’s <code>sandbox()</code> function to use this library instead:</p>
 	<p><i>myos_libseccomp.c:</i></p>
 	<pre class="language-c"><code class="language-c">#define _GNU_SOURCE
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys utsname.h="">
-#include <seccomp.h>
-#include <err.h>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/utsname.h&gt;
+#include &lt;seccomp.h&gt;
+#include &lt;err.h&gt;
 
 static void sandbox(void)
 {
@@ -192,7 +197,8 @@ int main(void)
 
     printf("My OS is %s!\n", name.sysname);
     return 0;
-}</err.h></seccomp.h></sys></stdlib.h></stdio.h></code></pre>
+}</code></pre>
+	<p></p>
 	<p>Our <code>sandbox()</code> function not only became shorter and much more readable, but also provided the ability to reference syscalls in our rules by names and not internal numbers as well as not having to deal with other quirks, like setting <code>PR_SET_NO_NEW_PRIVS</code> bit and dealing with system architectures.</p>
 	<p>It is worth noting we have modified our seccomp policy a bit. In the raw seccomp example above we instructed the kernel to return an error code when the application tries to execute a prohibited syscall. This is good for demonstration purposes, but in most cases a stricter action is required. Just returning an error code and allowing the application to continue gives the potentially malicious code a chance to bypass the policy. There are many syscalls in Linux and some of them do the same or similar things. For example, we might want to prohibit the application to read data from disk, so we deny the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html">read</a> syscall in our policy and tell the kernel to return an error code instead. However, if the application does get exploited, the exploit code/logic might look like below:</p>
 	<pre class="language-c"><code class="language-c">…
@@ -204,11 +210,13 @@ if (-1 == read(fd, buf, count)) {
     /* bypassed the prohibited read(2) syscall */
 }
 …</code></pre>
+	<p></p>
 	<p>Wait what?! There is more than one read system call? Yes, there are <a href="https://www.man7.org/linux/man-pages/man2/read.2.html">read</a>, <a href="https://man7.org/linux/man-pages/man2/pread.2.html">pread</a>, <a href="https://man7.org/linux/man-pages/man2/readv.2.html">readv</a> as well as more obscure ones, like <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">io_submit</a> and <code>io_uring_enter</code>. Of course, it is our fault for providing incomplete seccomp policy, which does not block all possible read syscalls. But if at least we had instructed the kernel to terminate the process immediately upon violation of the first plain <code>read</code>, the malicious code above would not have the chance to be clever and try other options.</p>
 	<p>Given the above in the libseccomp example we have a stricter policy now, which tells the kernel to terminate the process upon the policy violation. Let’s see if it works:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos_libseccomp.c -lseccomp
 $ ./myos
 Bad system call</code></pre>
+	<p></p>
 	<p>Notice that we need to link against <a href="https://github.com/seccomp/libseccomp">libseccomp</a> when compiling the application. Also, when we run the application, we don’t see the <code>uname failed: Operation not permitted</code> error output anymore, because we don’t give the application the ability to even print a failure message. Instead, we see a <code>Bad system call</code> message from the shell, which tells us that the application was terminated with a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html">signal</a>. Great!</p>
 	<h2>zero code seccomp</h2>
 	<p>The previous examples worked fine, but both of them have one disadvantage: we actually needed to modify the source code to embed our desired seccomp policy into the application. This is because <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">seccomp syscall</a> affects the calling process and its children, but there is no interface to inject the policy from “outside”. It is expected that developers will sandbox their code themselves as part of the application logic, but in practice this rarely happens. When developers are starting a new project, most of the time the focus is on primary functionality and security features are usually either postponed or omitted altogether. Also, most real-world software is usually written using some high-level programming language and/or a framework, where the developers do not deal with the system calls directly and probably are even unaware which system calls are being used by their code.</p>
@@ -217,6 +225,7 @@ Bad system call</code></pre>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos.c
 $ ./myos
 My OS is Linux!</code></pre>
+	<p></p>
 	<p>Now we can run the same code with systemd, but prohibit the application for using <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">uname</a> without changing or recompiling any code (we’re using <a href="https://www.freedesktop.org/software/systemd/man/systemd-run.html">systemd-run</a> to create an ephemeral systemd service unit for us):</p>
 	<pre class="language-bash"><code class="language-bash">$ systemd-run --user --pty --same-dir --wait --collect --service-type=exec --property="SystemCallFilter=~uname" ./myos
 Running as unit: run-u0.service
@@ -224,6 +233,7 @@ Press ^] three times within 1s to disconnect TTY.
 Finished with result: signal
 Main processes terminated with: code=killed/status=SYS
 Service runtime: 6ms</code></pre>
+	<p></p>
 	<p>We don’t see the normal <code>My OS is Linux!</code> output anymore and systemd conveniently tells us that the managed process was terminated with a <code>SIGSYS</code> signal. We can even go further and use another directive <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallErrorNumber="><code>SystemCallErrorNumber=</code></a> to configure our seccomp policy not to terminate the application, but return an error code instead as in our first seccomp raw example:</p>
 	<pre class="language-bash"><code class="language-bash">$ systemd-run --user --pty --same-dir --wait --collect --service-type=exec --property="SystemCallFilter=~uname" --property="SystemCallErrorNumber=ENETDOWN" ./myos
 Running as unit: run-u2.service
@@ -232,6 +242,7 @@ uname failed: Network is down
 Finished with result: exit-code
 Main processes terminated with: code=exited/status=1
 Service runtime: 6ms</code></pre>
+	<p></p>
 	<h3>systemd small print</h3>
 	<p>Great! We can now inject almost any seccomp policy into any process without the need to write any code or recompile the application. However, there is an interesting statement in the <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=">systemd documentation</a>:</p>
 	<blockquote>
@@ -262,10 +273,12 @@ Service runtime: 6ms</code></pre>
 	linux-vdso.so.1 (0x00007ffd8e1e3000)
 	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f339ddfb000)
 	/lib64/ld-linux-x86-64.so.2 (0x00007f339dfcf000)</code></pre>
+	<p></p>
 	<p>Yes, it is . Now, let’s prohibit it from using the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html">uname</a> system call with our toolkit:</p>
 	<pre class="language-bash"><code class="language-bash">$ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so SECCOMP_SYSCALL_DENY=uname ./myos
 adding uname to the process seccomp filter
 Bad system call</code></pre>
+	<p></p>
 	<p>Yet again, we’ve managed to inject our desired seccomp policy into the <code>myos</code> application without modifying or recompiling it. The advantage of this approach is that it doesn’t have the shortcomings of the systemd’s <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter="><code>SystemCallFilter=</code></a> and we can block any system call (luckily <a href="https://www.gnu.org/software/bash">Bash</a> is a dynamically linked application as well):</p>
 	<pre class="language-bash"><code class="language-bash">$ /bin/bash -c 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'
 I will try to execve something...
@@ -274,6 +287,7 @@ $ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so SECCOMP_SYSCALL_DENY=execve
 adding execve to the process seccomp filter
 I will try to execve something...
 Bad system call</code></pre>
+	<p></p>
 	<p>The only problem here is that we may accidentally forget to <code>LD_PRELOAD</code> our <code>libsandbox.so</code> library and potentially run unprotected. Also, as described in the <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html">man page</a>, <code>LD_PRELOAD</code> has some limitations. We can overcome all these problems by making <code>libsandbox.so</code> a permanent part of our target application:</p>
 	<pre class="language-bash"><code class="language-bash">$ patchelf --add-needed /usr/lib/x86_64-linux-gnu/libsandbox.so ./myos
 $ ldd ./myos
@@ -281,12 +295,14 @@ $ ldd ./myos
 	/usr/lib/x86_64-linux-gnu/libsandbox.so (0x00007fc4f55f2000)
 	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc4f5425000)
 	/lib64/ld-linux-x86-64.so.2 (0x00007fc4f5647000)</code></pre>
+	<p></p>
 	<p>Again, we didn’t need access to the source code here, but patched the compiled binary instead. Now we can just configure our seccomp policy as before without the need of <code>LD_PRELOAD</code>:</p>
 	<pre class="language-bash"><code class="language-bash">$ ./myos
 My OS is Linux!
 $ SECCOMP_SYSCALL_DENY=uname ./myos
 adding uname to the process seccomp filter
 Bad system call</code></pre>
+	<p></p>
 	<h3>sandboxing statically linked executables</h3>
 	<p>The above method is quite convenient and easy, but it doesn’t work for statically linked executables:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -static -o myos myos.c
@@ -294,11 +310,13 @@ $ ldd ./myos
 	not a dynamic executable
 $ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so SECCOMP_SYSCALL_DENY=uname ./myos
 My OS is Linux!</code></pre>
+	<p></p>
 	<p>This is because there is no <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html">dynamic loader</a> involved in starting a statically linked executable, so <code>LD_PRELOAD</code> has no effect. For this case our toolkit contains a special application launcher, which will inject the seccomp rules similarly to the way systemd does it:</p>
 	<pre class="language-bash"><code class="language-bash">$ sandboxify ./myos
 My OS is Linux!
 $ SECCOMP_SYSCALL_DENY=uname sandboxify ./myos
 adding uname to the process seccomp filter</code></pre>
+	<p></p>
 	<p>Note that we don’t see the <code>Bad system call</code> shell message anymore, because our target executable is being started by the launcher instead of the shell directly. Unlike systemd however, we can use this launcher to block dangerous system calls, like <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a>, as well:</p>
 	<pre class="language-bash"><code class="language-bash">$ sandboxify /bin/bash -c 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'
 I will try to execve something...
@@ -306,6 +324,7 @@ Doing arbitrary code execution!!!
 SECCOMP_SYSCALL_DENY=execve sandboxify /bin/bash -c 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'
 adding execve to the process seccomp filter
 I will try to execve something...</code></pre>
+	<p></p>
 	<h3>sandboxify vs libsandbox.so</h3>
 	<p>From the examples above you may notice that it is possible to use <code>sandboxify</code> with dynamically linked executables as well, so why even bother with <code>libsandbox.so</code>? The difference becomes visible, when we start using not the “denylist” policy as in most examples in this post, but rather the preferred “allowlist” policy, where we explicitly allow only the system calls we need, but prohibit everything else.</p>
 	<p>Let’s convert our toy application back into the dynamically-linked one and try to come up with the minimal list of allowed system calls it needs to function properly:</p>
@@ -320,6 +339,7 @@ adding fstat to the process seccomp filter
 adding uname to the process seccomp filter
 adding write to the process seccomp filter
 My OS is Linux</code></pre>
+	<p></p>
 	<p>So we need to allow 4 system calls: <code>exit_group:fstat:uname:write</code>. This is the tightest “sandbox”, which still doesn’t break the application. If we remove any system call from this list, the application will terminate with the <code>Bad system call</code> message (try it yourself!).</p>
 	<p>If we use the same allowlist, but with the <code>sandboxify</code> launcher, things do not work anymore:</p>
 	<pre class="language-bash"><code class="language-bash">$ SECCOMP_SYSCALL_ALLOW=exit_group:fstat:uname:write sandboxify ./myos
@@ -327,13 +347,15 @@ adding exit_group to the process seccomp filter
 adding fstat to the process seccomp filter
 adding uname to the process seccomp filter
 adding write to the process seccomp filter</code></pre>
+	<p></p>
 	<p>The reason is <code>sandboxify</code> and <code>libsandbox.so</code> inject seccomp rules at different stages of the process lifecycle. Consider the following very high level diagram of a process startup:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gnqXj5b3tLBdG5pG9b9yH/282855c2bce863e295f96429e21c736a/image3-2.png" alt="image3-2" class="kg-image" width="1646" height="774" loading="lazy">
 
 	</figure>
-	<p>In a nutshell, every process has two runtime stages: “runtime init” and the “main logic”. The main logic is basically the code, which is located in the program <code>main()</code> function and other code put there by the application developers. But the process usually needs to do some work before the code from the <code>main()</code> function is able to execute - we call this work the “runtime init” on the diagram above. Developers do not write this code directly, but most of the time this code is automatically generated by the compiler toolchain, which is used to compile the source code.</p>
+	<p>
+		In a nutshell, every process has two runtime stages: “runtime init” and the “main logic”. The main logic is basically the code, which is located in the program <code>main()</code> function and other code put there by the application developers. But the process usually needs to do some work before the code from the <code>main()</code> function is able to execute - we call this work the “runtime init” on the diagram above. Developers do not write this code directly, but most of the time this code is automatically generated by the compiler toolchain, which is used to compile the source code.</p>
 	<p>To do its job, the “runtime init” stage uses a lot of different system calls, but most of them are not needed later at the “main logic” stage. If we’re using the “allowlist” approach for our sandboxing, it does not make sense to allow these system calls for the whole duration of the program, if they are only used once on program init. This is where the difference between <code>libsandbox.so</code> and <code>sandboxify</code> comes from: <code>libsandbox.so</code> enforces the seccomp rules usually after the “runtime init” stage has already executed, so we don’t have to allow most system calls from that stage. <code>sandboxify</code> on the other hand enforces the policy before the “runtime init” stage, so we have to allow all the system calls from both stages, which usually results in a bigger allowlist, thus wider attack surface.</p>
 	<p>Going back to our toy <code>myos</code> example, here is the minimal list of all the system calls we need to allow to make the application work under our sandbox:</p>
 	<pre class="language-bash"><code class="language-bash">$ SECCOMP_SYSCALL_ALLOW=access:arch_prctl:brk:close:exit_group:fstat:mmap:mprotect:munmap:openat:read:uname:write sandboxify ./myos
@@ -351,6 +373,7 @@ adding read to the process seccomp filter
 adding uname to the process seccomp filter
 adding write to the process seccomp filter
 My OS is Linux!</code></pre>
+	<p></p>
 	<p>It is 13 syscalls vs 4 syscalls, if we’re using the <code>libsandbox.so</code> approach!</p>
 	<h2>Conclusions</h2>
 	<p>In this post we discussed how to easily sandbox applications on Linux without the need to write any additional code. We introduced the <a href="https://github.com/cloudflare/sandbox">Cloudflare sandbox toolkit</a> and discussed the different approaches we take at sandboxing dynamically linked applications vs statically linked applications.</p>

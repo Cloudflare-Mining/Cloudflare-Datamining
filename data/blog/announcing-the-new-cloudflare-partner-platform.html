@@ -95,11 +95,11 @@
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
     https://api.cloudflare.com/client/v4/accounts \
     -H 'Content-Type: application/json' \
-    -H 'x-auth-email: <x-auth-email>' \
-    -H 'x-auth-key: <x-auth-key>' \
+    -H 'x-auth-email: &lt;x-auth-email&gt;' \
+    -H 'x-auth-key: &lt;x-auth-key&gt;' \
     -d '{ "name": "Customer Account", 
           "type": "standard" 
-        }'</x-auth-key></x-auth-email></code></pre>
+        }'</code></pre>
 	<p>Response:</p>
 	<pre class="language-bash"><code class="language-bash">{
     "result": {
@@ -121,12 +121,12 @@
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
     'https://api.cloudflare.com/client/v4/accounts/2bab6ace8c72ed3f09b9eca6db1396bb/members' \
     -H 'Content-Type: application/json' \
-    -H 'x-auth-email: <x-auth-email>' \
-    -H 'x-auth-key: <x-auth-key>' \
+    -H 'x-auth-email: &lt;x-auth-email&gt;' \
+    -H 'x-auth-key: &lt;x-auth-key&gt;' \
     -d '{ "email": "mycustomer@theircompany.com",
           "roles": ["05784afa30c1afe1440e79d9351c7430"],
           "status": "accepted" 
-        }'</x-auth-key></x-auth-email></code></pre>
+        }'</code></pre>
 	<p>Response:</p>
 	<pre class="language-bash"><code class="language-bash">{
     "result": {
@@ -170,11 +170,11 @@
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
     https://api.cloudflare.com/client/v4/zones \
     -H 'Content-Type: application/json' \
-    -H 'x-auth-email: <x-auth-email>' \
-    -H 'x-auth-key: <x-auth-key>' \
+    -H 'x-auth-email: &lt;x-auth-email&gt;' \
+    -H 'x-auth-key: &lt;x-auth-key&gt;' \
     -d '{ "name": "theircompany.com",
             "account": { "id": "2bab6ace8c72ed3f09b9eca6db1396bb" }
-        }'</x-auth-key></x-auth-email></code></pre>
+        }'</code></pre>
 	<p>Response:</p>
 	<pre class="language-bash"><code class="language-bash">{
     "result": {
@@ -238,11 +238,11 @@
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
     https://api.cloudflare.com/client/v4/zones/cae181e41197e2eb875d9bcb9396abe7/subscription \
   -H 'Content-Type: application/json' \
-  -H 'X-Auth-Email: <x-auth-email>' \
-  -H 'X-Auth-Key: <x-auth-key>' \
+  -H 'X-Auth-Email: &lt;x-auth-email&gt;' \
+  -H 'X-Auth-Key: &lt;x-auth-key&gt;' \
   -d '{"rate_plan": {
           "id": "PARTNERS_PRO"}
-      }'</x-auth-key></x-auth-email></code></pre>
+      }'</code></pre>
 	<p>Response:</p>
 	<pre class="language-bash"><code class="language-bash">{
     "success": true,

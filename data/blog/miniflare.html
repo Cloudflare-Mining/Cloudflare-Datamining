@@ -238,27 +238,27 @@ kvNamespaces?: string[];</code></pre>
 	</blockquote>
 	<p>...we can see input gates need to have two methods, one for closing the gate while a storage operation is running and one for waiting until the input gate is open:</p>
 	<pre class="language-ts"><code class="language-ts">class InputGate {
-  async runWithClosed<t>(closure: () =&gt; Promise<t>): Promise<t> {
+  async runWithClosed&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
     // 1. Close the input gate
     // 2. Run the closure and store the result
     // 3. Open the input gate
     // 4. Return the result
   }
 
-  async waitForOpen(): Promise<void> {
+  async waitForOpen(): Promise&lt;void&gt; {
     // 1. Check if the input gate is open
     // 2. If it is, return
     // 3. Otherwise, wait until it is
   }
-}</void></t></t></t></code></pre>
+}</code></pre>
 	<p>Each Durable Object has its own <code>InputGate</code>. In the storage implementation, we call <code>runWithClosed</code> to defer other events until the storage operation completes:</p>
 	<pre class="language-ts"><code class="language-ts">class DurableObjectStorage {
-  async get<value>(key: string): Promise<value |="" undefined=""> {
+  async get&lt;Value&gt;(key: string): Promise&lt;Value | undefined&gt; {
     return this.inputGate.runWithClosed(() =&gt; {
       // Get key from storage
     });
   }
-}</value></value></code></pre>
+}</code></pre>
 	<p>...and whenever we're ready to deliver another event, we call <code>waitForOpen</code>:</p>
 	<pre class="language-js"><code class="language-js">import { fetch as baseFetch } from "undici";
 
@@ -270,7 +270,7 @@ async function fetch(input, init) {
 	<p>You may have noticed a problem here. Where does <code>inputGate</code> come from in <code>fetch</code>? We only have one global scope for the entire Worker and all its Durable Objects, so we can't have a <code>fetch</code> per Durable Object <code>InputGate</code>. We also can't ask the user to pass it around as another parameter to all functions that need it. We need some way of storing it in a <i>context</i> that's passed around automatically between potentially <code><i>async</i></code> functions. For this, we can use another lesser-known Node module, <a href="https://nodejs.org/api/async_context.html"><code>async_hooks</code></a>, which includes the <a href="https://nodejs.org/api/async_context.html#class-asynclocalstorage"><code>AsyncLocalStorage</code> class</a>:</p>
 	<pre class="language-ts"><code class="language-ts">import { AsyncLocalStorage } from "async_hooks";
 
-const inputGateStorage = new AsyncLocalStorage<inputgate>();
+const inputGateStorage = new AsyncLocalStorage&lt;InputGate&gt;();
 
 const inputGate = new InputGate();
 await inputGateStorage.run(inputGate, async () =&gt; {
@@ -278,21 +278,21 @@ await inputGateStorage.run(inputGate, async () =&gt; {
   await fetch("https://example.com");
 });
 
-async function fetch(input: RequestInfo, init: RequestInit): Promise<response> {
+async function fetch(input: RequestInfo, init: RequestInit): Promise&lt;Response&gt; {
   const response = await baseFetch(input, init);
   // Get the input gate in the current async context
   const inputGate = inputGateStorage.getStore();
   await inputGate.waitForOpen();
   return response;
-}</response></inputgate></code></pre>
+}</code></pre>
 	<p>Durable Objects also include a <code>blockConcurrencyWhile(closure)</code> method that defers events until the <code>closure</code> completes. This is exactly the <code>runWithClosed()</code> method:</p>
 	<pre class="language-ts"><code class="language-ts">class DurableObjectState {
   // ...
 
-  blockConcurrencyWhile<t>(closure: () =&gt; Promise<t>): Promise<t> {
+  blockConcurrencyWhile&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
     return this.inputGate.runWithClosed(closure);
   }
-}</t></t></t></code></pre>
+}</code></pre>
 	<p>However, there's a problem with what we've got at the moment. Consider the following code:</p>
 	<pre class="language-js"><code class="language-js">export class CounterObject {
   constructor(state: DurableObjectState) {
@@ -306,7 +306,7 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise<response> {
 	<pre class="language-ts"><code class="language-ts">class InputGate {
   constructor(private parent?: InputGate) {}
 
-  async runWithClosed<t>(closure: () =&gt; Promise<t>): Promise<t> {
+  async runWithClosed&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
     // 1. Close the input gate, *and any parents*
     // 2. *Create a new child input gate with this as its parent*
     const childInputGate = new InputGate(this);
@@ -314,7 +314,7 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise<response> {
     // 4. Open the input gate, *and any parents*
     // 5. Return the result
   }
-}</t></t></t></code></pre>
+}</code></pre>
 	<p>Now the input gate outside of <code>blockConcurrencyWhile</code> will be closed, so fetches to the Durable Object will be deferred, but the input gate inside the closure will be open, so the <code>fetch</code> can return.</p>
 	<p>This glosses over some details, but you can check out the <a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts">gates implementation</a> for additional context and comments. ?</p>
 	<h3><b>HTMLRewriter</b></h3>
@@ -336,7 +336,7 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise<response> {
       match $handler.call1(&amp;$this, &amp;js_arg) {
         Ok(res) =&gt; {
           // Check if this is an async handler
-          if let Some(promise) = res.dyn_ref::<jspromise>() {
+          if let Some(promise) = res.dyn_ref::&lt;JsPromise&gt;() {
             await_promise(promise);
           }
           Ok(())
@@ -345,7 +345,7 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise<response> {
       }
     }
   };
-}</jspromise></code></pre>
+}</code></pre>
 	<p>The key thing to note here is that the Rust <code>move |...| { ... }</code> closure is synchronous, but handlers can be asynchronous. This is like trying to <code>await</code> a <code>Promise</code> in a non-<code>async</code> function.</p>
 	<p>To solve this, we use the <a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp">Asyncify</a> feature of <a href="https://github.com/WebAssembly/binaryen">Binaryen</a>, a set of tools for working with WebAssembly modules. Whenever we call <code>await_promise</code>, Asyncify unwinds the current WebAssembly stack into some temporary storage. Then in JavaScript, we <code>await</code> the <code>Promise</code>. Finally, we rewind the stack from the temporary storage to the previous state and continue rewriting where we left off.</p>
 	<p>You can find the full implementation in the <a href="https://github.com/mrbbot/html-rewriter-wasm"><code>html-rewriter-wasm</code> package</a>.</p>

@@ -14,8 +14,7 @@
 
 	</figure>
 	<p>ESI block example:</p>
-	<pre class="language-html"><code class="language-html">&lt;esi:include src="http://example.com/1.html" alt="http://bak.example.com/2.html" onerror="continue"/&gt;
-</code></pre>
+	<pre class="language-html"><code class="language-html">&lt;esi:include src="http://example.com/1.html" alt="http://bak.example.com/2.html" onerror="continue"/&gt;</code></pre>
 	<h3>Implementing it in a Worker</h3>
 	<p>We released months ago <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>, our serverless framework which helps to implement custom logics directly within the Edge. The Workers are triggering in the path of the requests and the responses and can manipulate almost everything and spin subrequests on-the-fly.This could dramatically improve the time to action for the implementation of new logics on your applications since you won’t have to modify them anymore as this can directly be done in the Edge, even if your applications are hosted on a bunch of different locations (Cloud and on-premise).</p>
 	<p>This scenario sounds then quite compatible with what we can achieve with Cloudflare Workers. For memories, here are the actions the EDGE needs to do for implementing the ESIs:</p>

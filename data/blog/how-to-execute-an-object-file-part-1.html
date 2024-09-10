@@ -37,10 +37,10 @@ obj.c  obj.o</code></pre>
 	<h3>Loading an object file into the process memory</h3>
 	<p>Now we will try to import the <code>add5</code> and <code>add10</code> functions from the object file and execute them. When we talk about executing an object file, we mean using an object file as some sort of a library. As we learned above, when we have an executable that utilises external shared libraries, the <i>dynamic loader</i> loads these libraries into the process address space for us. With object files, however, we have to do this manually, because ultimately we can't execute machine code that doesn't reside in the operating system's RAM. So, to execute object files we still need some kind of a wrapper program:</p>
 	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">#include <stdio.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
+	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
 
 static void load_obj(void)
 {
@@ -64,27 +64,27 @@ int main(void)
     execute_funcs();
 
     return 0;
-}</string.h></stdlib.h></stdint.h></stdio.h></code></pre>
+}</code></pre>
 	<p>Above is a self-contained object loader program with some functions as placeholders. We will be implementing these functions (and adding more) in the course of this post.</p>
 	<p>First, as we established already, we need to load our object file into the process address space. We could just read the whole file into a buffer, but that would not be very efficient. Real-world object files might be big, but as we will see later, we don't need all of the object's file contents. So it is better to <a href="https://man7.org/linux/man-pages/man2/mmap.2.html"><code>mmap</code></a> the file instead: this way the operating system will lazily read the parts from the file we need at the time we need them. Let's implement the <code>load_obj</code> function:</p>
 	<p><i>loader.c</i>:</p>
 	<pre class="language-c"><code class="language-c">...
 /* for open(2), fstat(2) */
-#include <sys types.h="">
-#include <sys stat.h="">
-#include <fcntl.h>
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
 
 /* for close(2), fstat(2) */
-#include <unistd.h>
+#include &lt;unistd.h&gt;
 
 /* for mmap(2) */
-#include <sys mman.h="">
+#include &lt;sys/mman.h&gt;
 
 /* parsing ELF files */
-#include <elf.h>
+#include &lt;elf.h&gt;
 
 /* for errno */
-#include <errno.h>
+#include &lt;errno.h&gt;
 
 typedef union {
     const Elf64_Ehdr *hdr;
@@ -118,7 +118,7 @@ static void load_obj(void)
     }
     close(fd);
 }
-...</errno.h></elf.h></sys></unistd.h></fcntl.h></sys></sys></code></pre>
+...</code></pre>
 	<p>If we don't encounter any errors, after <code>load_obj</code> executes we should get the memory address, which points to the beginning of our <code>obj.o</code> in the <code>obj</code> global variable. It is worth noting we have created a special union type for the <code>obj</code> variable: we will be parsing <code>obj.o</code> later (and peeking ahead - object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF files</a>), so will be referring to the address both as <code>Elf64_Ehdr</code> (ELF header structure in C) and a byte pointer (parsing ELF files involves calculations of byte offsets from the beginning of the file).</p>
 	<h3>A peek inside an object file</h3>
 	<p>To use some code from an object file, we need to find it first. As I've leaked above, object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF files</a> (the same format as Linux executables and shared libraries) and luckily they’re easy to parse on Linux with the help of the standard <code>elf.h</code> header, which includes many useful definitions related to the ELF file structure. But we actually need to know what we’re looking for, so a high-level understanding of an ELF file is needed.</p>

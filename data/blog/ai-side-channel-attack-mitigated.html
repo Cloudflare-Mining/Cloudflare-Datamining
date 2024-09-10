@@ -21,9 +21,9 @@
 	<p>The two main requirements for a successful attack are an AI chat client running in <b>streaming</b> mode and a malicious actor capable of capturing network traffic between the client and the AI chat service. In streaming mode, the LLM tokens are emitted sequentially, introducing a token-length side-channel. Malicious actors could eavesdrop on packets via public networks or within an ISP.</p>
 	<p>An example request vulnerable to the side-channel attack looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
-https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/llama-2-7b-chat-int8 \
-  -H "Authorization: Bearer <token>" \
-  -d '{"stream":true,"prompt":"tell me something about portugal"}'</token></account-id></code></pre>
+https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8 \
+  -H "Authorization: Bearer &lt;Token&gt;" \
+  -d '{"stream":true,"prompt":"tell me something about portugal"}'</code></pre>
 	<p>Let’s use <a href="https://www.wireshark.org">Wireshark</a> to inspect the network packets on the LLM chat session while streaming:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

@@ -132,7 +132,7 @@ use rand::FromEntropy;
 
 static PHRASES: [&amp;str; 370] = [...elided for clarity];
 
-fn get_random_indexes(cnt: usize) -&gt; Vec<usize> {
+fn get_random_indexes(cnt: usize) -&gt; Vec&lt;usize&gt; {
     let mut rng = get_rng();
     let range = Range::new(0, PHRASES.len());    
     (0..cnt)
@@ -148,7 +148,7 @@ fn get_rng() -&gt; SmallRng {
     SmallRng::from_entropy()
 }
 
-fn get_phrases(idxs: &amp;Vec<usize>) -&gt; Vec&lt;&amp;'static str&gt; {    
+fn get_phrases(idxs: &amp;Vec&lt;usize&gt;) -&gt; Vec&lt;&amp;'static str&gt; {    
     idxs.iter()
         .map(|idx| get_phrase(*idx))
         .collect()
@@ -163,7 +163,7 @@ fn need_space(newline: usize, idx: usize) -&gt; bool {
     !need_newline(newline, idx)
 }
 
-fn build_phrase_text(idxs: Vec<usize>, newline: usize) -&gt; String {
+fn build_phrase_text(idxs: Vec&lt;usize&gt;, newline: usize) -&gt; String {
     let phrases_vec = get_phrases(&amp;idxs);
     let mut string = String::new();
     for i in 0..phrases_vec.len() {
@@ -190,7 +190,7 @@ pub fn get_phrase_text(phrase_cnt: usize, newline: usize) -&gt; String {
 mod tests {
     use super::*;
 
-    fn get_test_indexes() -&gt; Vec<usize> {
+    fn get_test_indexes() -&gt; Vec&lt;usize&gt; {
         vec![34, 2, 99, 43, 128, 300, 45, 56, 303, 42, 11]
     }
     
@@ -200,7 +200,7 @@ mod tests {
         let phrases = super::get_phrases(&amp;randoms);
         println!("{:?}", phrases);
     }
-}</usize></usize></usize></usize></code></pre>
+}</code></pre>
 	<p>Running the tests shows everything looks good:</p>
 	<pre class="language-bash"><code class="language-bash">$ cargo test -- --nocapture
     Finished dev [unoptimized + debuginfo] target(s) in 0.40s                                                                                       

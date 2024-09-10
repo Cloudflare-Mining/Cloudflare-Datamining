@@ -24,9 +24,9 @@
 	<pre class="language-bash"><code class="language-bash">$ go get -u github.com/cloudflare/cf-terraforming/...</code></pre>
 	<p>Cf-terraforming is a command line tool that you invoke with your Cloudflare credentials, some zone information and the resource type that you want to export. The output is a valid Terraform configuration file describing your resources.</p>
 	<p>To use cf-terraforming, first <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-">get your API key</a> and Account ID from the Cloudflare dashboard. You can find your account id at the bottom right of the overview page for any zone in your account. It also has a quick link to get your API key as well. You can store your key and account ID in environment variables to make it easier to work with the tool:</p>
-	<pre class="language-bash"><code class="language-bash">export CLOUDFLARE_TOKEN=”<your-key>” 
-export CLOUDFLARE_EMAIL=”<your-email>”
-export CLOUDFLARE_ACCT_ID=”<your-id>” </your-id></your-email></your-key></code></pre>
+	<pre class="language-bash"><code class="language-bash">export CLOUDFLARE_TOKEN=”&lt;your-key&gt;” 
+export CLOUDFLARE_EMAIL=”&lt;your-email&gt;”
+export CLOUDFLARE_ACCT_ID=”&lt;your-id&gt;” </code></pre>
 	<p>Cf-terraforming can create configuration files for any of the resources currently available in <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">the official Cloudflare Terraform provider</a>, but sometimes it’s also handy to export individual resources as needed.</p>
 	<p>Let’s say you’re migrating your Cloudflare configuration to Terraform and you want to describe your Spectrum applications. You simply call cf-terraforming with your credentials, zone, and the spectrum_application command, like so:</p>
 	<pre class="language-bash"><code class="language-bash">go run cmd/cf-terraforming/main.go --email $CLOUDFLARE_EMAIL --key $CLOUDFLARE_TOKEN --account $CLOUDFLARE_ACCT_ID spectrum_application</code></pre>

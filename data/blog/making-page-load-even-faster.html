@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uaGzDxOHpdfDJSiuCIZGj/8b485ff709b0ee46807544ad2c9e2706/making-page-load-even-faster.jpg" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uaGzDxOHpdfDJSiuCIZGj/8b485ff709b0ee46807544ad2c9e2706/making-page-load-even-faster.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In 2017 we made two of our web optimisation products - <a href="https://www.cloudflare.com/website-optimization/mirage">Mirage</a> and <a href="https://vimeo.com/24900882">Rocket Loader</a> - even faster! Combined, these products speed up around 1.2 billion web-pages a week. The products are both around 5 years old, so there was a big opportunity to update them for the brave new world of highly-tuned browsers, HTTP2 and modern Javascript tooling. We measured a performance boost that, <a href="https://blog.cloudflare.com/#savings">very roughly</a>, will save visitors to sites on our network between 50-700ms. Visitors that see content faster have much higher engagement and lower bounce rates, as shown by studies like <a href="https://www.doubleclickbygoogle.com/articles/mobile-speed-matters">Google’s</a>. This really adds up, representing a further saving of 380 years of loading time each year and a staggering 1.03 petabytes of data transfer!</p>
 	<figure class="kg-card kg-image-card ">
@@ -33,11 +33,11 @@
 	</figure>
 	<h3>How they work</h3>
 	<p>Both of these products involve a two step process: first our optimizing proxy-server will rewrite customers’ HTML as it’s delivered, and then our on-page Javascript will attempt to optimise aspects of the page load. For instance, Mirage's server-side rewrites image tags as follows:</p>
-	<pre class="language-bash"><code class="language-bash"><!-- before -->
-<img src="/some-image.png" alt="">
+	<pre class="language-bash"><code class="language-bash">&lt;!-- before --&gt;
+&lt;img src="/some-image.png"&gt;
 
-<!-- after -->
-<img data-cfsrc="/some-image.png" style="display:none;visibility:hidden;" alt=""></code></pre>
+&lt;!-- after --&gt;
+&lt;img data-cfsrc="/some-image.png" style="display:none;visibility:hidden;"&gt;</code></pre>
 	<p>Since browsers don't recognise <code>data-cfsrc</code>, the Mirage Javascript can control the whole process of loading these images. It uses this opportunity to intelligently load placeholder images on slow connections.</p>
 	<p>Rocket Loader uses a similar approach to de-prioritise Javascript during page load, allowing the browser to show visitors the content of the page sooner.</p>
 	<h3>The problems</h3>
@@ -118,10 +118,10 @@ export { Mirage }</code></pre>
 	<h4>New insertion flow</h4>
 	<p>Before, our original insertion flow looked something like this:</p>
 	<pre class="language-bash"><code class="language-bash">// on page embed, injected into customers' pages
-<script>
+&lt;script&gt;
   var cloudflare = { rocket: true, mirage: true };
-</script>
-<script src="/cloudflare.min.js"></script></code></pre>
+&lt;/script&gt;
+&lt;script src="/cloudflare.min.js"&gt;&lt;/script&gt;</code></pre>
 	<p>Inside cloudflare.min.js we found the dynamic code that, once run, would kick off the requests for Mirage and Rocket Loader:</p>
 	<pre class="language-bash"><code class="language-bash">// cloudflare.min.js
 if(cloudflare.rocket) {
@@ -129,11 +129,11 @@ if(cloudflare.rocket) {
 }</code></pre>
 	<p>Our approach is now far more browser friendly, roughly:</p>
 	<pre class="language-bash"><code class="language-bash">// on page embed
-<script>
+&lt;script&gt;
   var cloudflare = { /* some config */ }
-</script>
-<script src="/mirage.min.js"></script>
-<script src="/rocket.min.js"></script></code></pre>
+&lt;/script&gt;
+&lt;script src="/mirage.min.js"&gt;&lt;/script&gt;
+&lt;script src="/rocket.min.js"&gt;&lt;/script&gt;</code></pre>
 	<p>If you compare the new insertion sequence diagram, you can see why this is so much better:</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -59,7 +59,7 @@ browser = { binding = "MYBROWSER", type = "browser" }</code></pre>
 	<pre class="language-javascript"><code class="language-javascript">import puppeteer from "@cloudflare/puppeteer";
 
 export default {
-    async fetch(request: Request, env: Env): Promise<response> {
+    async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
         const { searchParams } = new URL(request.url);
         let url = searchParams.get("url");
         let img: Buffer;
@@ -80,7 +80,7 @@ export default {
             );
         }
     },
-};</response></code></pre>
+};</code></pre>
 	<p>That's it, no more steps. This Worker instantiates a browser using Puppeteer, opens a new page, navigates to whatever you put in the "url" parameter, takes a screenshot of the page, closes the browser, and responds with the JPEG image of the screenshot. It can't get any easier to get started with the Browser Rendering API.</p>
 	<p>Run <code>npx wrangler dev –remote</code> to test it and <code>npx wrangler publish</code> when you’re done.</p>
 	<figure class="kg-card kg-image-card ">

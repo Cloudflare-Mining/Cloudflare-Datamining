@@ -95,7 +95,7 @@
 	<h3>Custom header for experimentation</h3>
 	<p>We also support a custom HTTP header that allows you to experiment with, and optimize streaming of other resources on your site. For example, you could make our servers send the first frame of animated GIFs with high priority and deprioritize the rest. Or you could prioritize loading of resources mentioned in <code>&lt;head&gt;</code> of HTML documents before <code>&lt;body&gt;</code> is loaded.</p>
 	<p>The custom header can be set only from a Worker. The syntax is a comma-separated list of file positions with priority and concurrency. The priority and concurrency is the same as in the whole-file cf-priority header described in the previous blog post.</p>
-	<pre class="language-http"><code class="language-http">cf-priority-change: <offset in="" bytes="">:<priority>/<concurrency>, ...</concurrency></priority></offset></code></pre>
+	<pre class="language-http"><code class="language-http">cf-priority-change: &lt;offset in bytes&gt;:&lt;priority&gt;/&lt;concurrency&gt;, ...</code></pre>
 	<p>For example, for a progressive JPEG we use something like (this is a fragment of JS to use in a Worker):</p>
 	<pre class="language-javascript"><code class="language-javascript">let headers = new Headers(response.headers);
 headers.set("cf-priority", "30/0");

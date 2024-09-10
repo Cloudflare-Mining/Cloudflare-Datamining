@@ -11,20 +11,20 @@
 	<p>When deploying new security services, organizations may prefer to use their own custom certificates for a few common reasons. Some value the privacy of controlling which certificates are deployed. Others have already deployed custom certificates to their device fleet because they may bind user attributes to these certificates or use them for internal-only domains.</p>
 	<p>So, it can be easier and faster to apply additional security controls around what administrators have deployed already–versus installing additional certificates.</p>
 	<p>To get started using your own certificate first upload your root certificates via API to Cloudflare.</p>
-	<pre class="language-curl"><code class="language-curl">curl -X POST "https://api.cloudflare.com/client/v4/accounts/<account_id>/mtls_certificates"\
-    -H "X-Auth-Email: <email>" \
-    -H "X-Auth-Key: <api_key>" \
+	<pre class="language-curl"><code class="language-curl">curl -X POST "https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/mtls_certificates"\
+    -H "X-Auth-Email: &lt;EMAIL&gt;" \
+    -H "X-Auth-Key: &lt;API_KEY&gt;" \
     -H "Content-Type: application/json" \
     --data '{
         "name":"example_ca_cert",
-        "certificates":"<root_certificate>",
-        "private_key":"<private_key>",
+        "certificates":"&lt;ROOT_CERTIFICATE&gt;",
+        "private_key":"&lt;PRIVATE_KEY&gt;",
         "ca":true
-        }'</private_key></root_certificate></api_key></email></account_id></code></pre>
+        }'</code></pre>
 	<p>The root certificate will be stored across all of Cloudflare’s secure servers, designed to protect against unauthorized access. Once uploaded each certificate will receive an identifier in the form of a UUID (e.g. <code>2458ce5a-0c35-4c7f-82c7-8e9487d3ff60</code>) . This UUID can then be used with your Zero Trust account ID to associate and enable it for your account.</p>
-	<pre class="language-curl"><code class="language-curl">curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<account_id>/gateway/configuration"\
-    -H "X-Auth-Email: <email>" \
-    -H "X-Auth-Key: <api_key>" \
+	<pre class="language-curl"><code class="language-curl">curl -X PUT "https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/gateway/configuration"\
+    -H "X-Auth-Email: &lt;EMAIL&gt;" \
+    -H "X-Auth-Key: &lt;API_KEY&gt;" \
     -H "Content-Type: application/json" \
     --data '{
         "settings":
@@ -41,7 +41,7 @@
             "browser_isolation": {...},
             "fips": {...},
         }
-    }'</api_key></email></account_id></code></pre>
+    }'</code></pre>
 	<p>From there it takes approximately one minute and all new HTTPS connections for your organization's users will be secured using your custom certificate. For even more details check out our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/custom-certificate">developer documentation</a>.</p>
 	<p>An additional benefit of this fast propagation time is zero maintenance downtimes. If you’re transitioning from the Cloudflare provided certificate or a custom certificate, all new HTTPS connections will use the new certificate without impacting any current connections.</p>
 	<h2>Or, install Cloudflare’s own certificates</h2>

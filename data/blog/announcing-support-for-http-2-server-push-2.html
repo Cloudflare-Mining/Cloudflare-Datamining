@@ -25,12 +25,12 @@
 	<p>All of our customers using HTTP/2 now have Server Push enabled, but unfortunately, Server Push isn’t one of those features that just works—you’ll need to do a little bit of work to truly leverage the benefits of Server Push.</p>
 	<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2"><code>preload</code></a> keyword in <code>Link</code> headers<a href="https://blog.cloudflare.com/#fn1">[1]</a>, and we will continue to track that standard as it evolves.</p>
 	<p>So, if you want to push assets for a given request, you simply add a specially formatted <code>Link</code> header to the response:</p>
-	<pre class="language-bash"><code class="language-bash">Link: ; rel=preload; as=script</code></pre>
+	<pre class="language-bash"><code class="language-bash">Link: &lt;/asset/to/push.js&gt;; rel=preload; as=script</code></pre>
 	<p>Those links can be manually added, but they’re already created automatically by many publishing tools or via plugins for popular content management systems (CMS) such as WordPress.</p>
 	<p>Only relative links will be pushed by our edge servers, which means Server Push won’t work with third-party resources.</p>
 	<h4>Disabling Server Push</h4>
 	<p>The <code>Link</code> header was originally designed to let browsers know that they should preload an asset. If you still need this behavior for legacy reasons, you can append the <code>nopush</code> directive to the header, like so:</p>
-	<pre class="language-bash"><code class="language-bash">Link: ; rel=preload; as=style; nopush</code></pre>
+	<pre class="language-bash"><code class="language-bash">Link: &lt;/dont/want/to/push/this.css&gt;; rel=preload; as=style; nopush</code></pre>
 	<h3>Is Server Push For Me?</h3>
 	<p>Server Push has the potential for tremendous performance gains. However, it’s not able to speed up every website, and it can even degrade the performance somewhat if you get overzealous. Generally, the downside of pushing assets that will end up unused is only the wasted bandwidth, while the upside is a speedup equivalent to one round trip from the client to our edge network.</p>
 	<p>Both the downside and the upside are mostly evident on slow, lossy connections, such as mobile networks. We suggest you profile the behavior of your individual website/API with and without Server Push to estimate the benefits. In our testing, we saw around a 45% performance gain when using Server Push on a mobile network.</p>

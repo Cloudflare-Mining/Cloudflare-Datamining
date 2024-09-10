@@ -137,12 +137,12 @@
 	<p>The response is a JSON blob of the form:</p>
 	<pre class="language-json"><code class="language-json">{
     "round": 7,
-    "previous": <hex-encoded-previous-signature>,
+    "previous": &lt;hex-encoded-previous-signature&gt;,
     "randomness": {
         "gid": 21,
-        "point": <hex-encoded-new-signature>
+        "point": &lt;hex-encoded-new-signature&gt;
     }
-}</hex-encoded-new-signature></hex-encoded-previous-signature></code></pre>
+}</code></pre>
 	<p>where, <code>randomness.point</code> is the signature <code>u</code> aggregated among the entire set of beacons.</p>
 	<p>The signature is computed as an evaluation of the message, and is comprised of the signature of the previous round, <code>previous</code>, the current round number, <code>round</code>, and the aggregated secret key of the system. This signature can be verified using the entire public key <code>vk</code> of the Cloudflare beacon, learned using another HTTP request:</p>
 	<pre class="language-bash"><code class="language-bash">curl https://drand.cloudflare.com/api/public</code></pre>

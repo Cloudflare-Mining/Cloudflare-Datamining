@@ -95,17 +95,17 @@ compatibility_date = "2022-11-03"
 }
  
 export default {
- async fetch(request: Request, env: Environment): Promise<response> {
+ async fetch(request: Request, env: Environment): Promise&lt;Response&gt; {
    let log = await request.json();
    await env.BUFFER.send(log);
    return new Response("Success!");
  },
- async queue(batch: MessageBatch<error>, env: Environment): Promise<void> {
+ async queue(batch: MessageBatch&lt;Error&gt;, env: Environment): Promise&lt;void&gt; {
    const logBatch = JSON.stringify(batch.messages);
    await env.LOG_BUCKET.put(`logs/${Date.now()}.log.json`, logBatch);
  },
 };
-</void></error></response></code></pre>
+</code></pre>
 	<p>The <code>export interface Env</code> section exposes the two bindings you defined in <i>wrangler.toml</i>: a queue named <i>BUFFER</i> and an R2 bucket named <i>LOG_BUCKET</i>.</p>
 	<p>The <code>fetch()</code> handler transforms the request body into JSON, adds the body to the <i>BUFFER</i> queue, then returns an HTTP 200 response with the message <i>Success!</i></p>
 	<p>The `queue()` handler receives a batch of messages that each contain log entries, iterates through concatenating each log into a string buffer, then writes that buffer to the <i>LOG_BUCKET</i> R2 bucket using the current timestamp as the filename.</p>

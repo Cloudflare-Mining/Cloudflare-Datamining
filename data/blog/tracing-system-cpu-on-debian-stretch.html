@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g2xrmIfJIGHgqqL9PyoFb/bd50550e42b158286f26d5ba9b9d4142/tracing-system-cpu-on-debian-stretch.png" alt="">
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g2xrmIfJIGHgqqL9PyoFb/bd50550e42b158286f26d5ba9b9d4142/tracing-system-cpu-on-debian-stretch.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is a heavily truncated version of an internal blog post from August 2017. For more recent updates on Kafka, check out </i><a href="https://blog.cloudflare.com/squeezing-the-firehose"><i>another blog post on compression</i></a><i>, where we optimized throughput 4.5x for both disks and network.</i></p>
 	<figure class="kg-card kg-image-card ">
@@ -44,37 +44,37 @@ Aug 15 21:51:35 myhost kernel:  ffffc9000d1f7898 ffffffff814ee977 ffff88103f4104
 Aug 15 21:51:35 myhost kernel:  0000000000000041 ffffffff82203142 ffffc9000d1f78c0 ffffffff814eea10
 Aug 15 21:51:35 myhost kernel:  0000000000000041 ffffffff82203142 ffff88103f410400 ffffc9000d1f7920
 Aug 15 21:51:35 myhost kernel: Call Trace:
-Aug 15 21:51:35 myhost kernel:  [<ffffffff814ee977>] ? scrup+0x147/0x160
-Aug 15 21:51:35 myhost kernel:  [<ffffffff814eea10>] ? lf+0x80/0x90
-Aug 15 21:51:35 myhost kernel:  [<ffffffff814eecb5>] ? vt_console_print+0x295/0x3c0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff810b1193>] ? call_console_drivers.isra.22.constprop.30+0xf3/0x100
-Aug 15 21:51:35 myhost kernel:  [<ffffffff810b1f51>] ? console_unlock+0x281/0x550
-Aug 15 21:51:35 myhost kernel:  [<ffffffff810b2498>] ? vprintk_emit+0x278/0x430
-Aug 15 21:51:35 myhost kernel:  [<ffffffff810b27ef>] ? vprintk_default+0x1f/0x30
-Aug 15 21:51:35 myhost kernel:  [<ffffffff811588df>] ? printk+0x48/0x50
-Aug 15 21:51:35 myhost kernel:  [<ffffffff810b30ee>] ? dump_stack_print_info+0x7e/0xc0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff8142d41f>] ? dump_stack+0x44/0x65
-Aug 15 21:51:35 myhost kernel:  [<ffffffff81162e64>] ? warn_alloc+0x124/0x150
-Aug 15 21:51:35 myhost kernel:  [<ffffffff81163842>] ? __alloc_pages_slowpath+0x932/0xb80
-Aug 15 21:51:35 myhost kernel:  [<ffffffff81163c92>] ? __alloc_pages_nodemask+0x202/0x250
-Aug 15 21:51:35 myhost kernel:  [<ffffffff811ae9c2>] ? alloc_pages_current+0x92/0x120
-Aug 15 21:51:35 myhost kernel:  [<ffffffff81159d2f>] ? __page_cache_alloc+0xbf/0xd0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff8115cdfa>] ? filemap_fault+0x2ea/0x4d0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff8136dc95>] ? xfs_filemap_fault+0x45/0xa0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff8118b3eb>] ? __do_fault+0x6b/0xd0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff81190028>] ? handle_mm_fault+0xe98/0x12b0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff8110756b>] ? __seccomp_filter+0x1db/0x290
-Aug 15 21:51:35 myhost kernel:  [<ffffffff8104fa5c>] ? __do_page_fault+0x22c/0x4c0
-Aug 15 21:51:35 myhost kernel:  [<ffffffff8104fd10>] ? do_page_fault+0x20/0x70
-Aug 15 21:51:35 myhost kernel:  [<ffffffff819bea02>] ? page_fault+0x22/0x30</ffffffff819bea02></ffffffff8104fd10></ffffffff8104fa5c></ffffffff8110756b></ffffffff81190028></ffffffff8118b3eb></ffffffff8136dc95></ffffffff8115cdfa></ffffffff81159d2f></ffffffff811ae9c2></ffffffff81163c92></ffffffff81163842></ffffffff81162e64></ffffffff8142d41f></ffffffff810b30ee></ffffffff811588df></ffffffff810b27ef></ffffffff810b2498></ffffffff810b1f51></ffffffff810b1193></ffffffff814eecb5></ffffffff814eea10></ffffffff814ee977></code></pre>
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff814ee977&gt;] ? scrup+0x147/0x160
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff814eea10&gt;] ? lf+0x80/0x90
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff814eecb5&gt;] ? vt_console_print+0x295/0x3c0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b1193&gt;] ? call_console_drivers.isra.22.constprop.30+0xf3/0x100
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b1f51&gt;] ? console_unlock+0x281/0x550
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b2498&gt;] ? vprintk_emit+0x278/0x430
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b27ef&gt;] ? vprintk_default+0x1f/0x30
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff811588df&gt;] ? printk+0x48/0x50
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b30ee&gt;] ? dump_stack_print_info+0x7e/0xc0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8142d41f&gt;] ? dump_stack+0x44/0x65
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81162e64&gt;] ? warn_alloc+0x124/0x150
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81163842&gt;] ? __alloc_pages_slowpath+0x932/0xb80
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81163c92&gt;] ? __alloc_pages_nodemask+0x202/0x250
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff811ae9c2&gt;] ? alloc_pages_current+0x92/0x120
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81159d2f&gt;] ? __page_cache_alloc+0xbf/0xd0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8115cdfa&gt;] ? filemap_fault+0x2ea/0x4d0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8136dc95&gt;] ? xfs_filemap_fault+0x45/0xa0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8118b3eb&gt;] ? __do_fault+0x6b/0xd0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81190028&gt;] ? handle_mm_fault+0xe98/0x12b0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8110756b&gt;] ? __seccomp_filter+0x1db/0x290
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8104fa5c&gt;] ? __do_page_fault+0x22c/0x4c0
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8104fd10&gt;] ? do_page_fault+0x20/0x70
+Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff819bea02&gt;] ? page_fault+0x22/0x30</code></pre>
 	<p>This suggested that we were logging too many errors, and the actual failure may be earlier in the process. Armed with this hypothesis, we looked at the very beginning of the error chain:</p>
 	<pre class="language-bash"><code class="language-bash">Aug 16 01:14:51 myhost systemd-journald[13812]: Missed 17171 kernel messages
-Aug 16 01:14:51 myhost kernel:  [<ffffffff81171754>] shrink_inactive_list+0x1f4/0x4f0
-Aug 16 01:14:51 myhost kernel:  [<ffffffff8117234b>] shrink_node_memcg+0x5bb/0x780
-Aug 16 01:14:51 myhost kernel:  [<ffffffff811725e2>] shrink_node+0xd2/0x2f0
-Aug 16 01:14:51 myhost kernel:  [<ffffffff811728ef>] do_try_to_free_pages+0xef/0x310
-Aug 16 01:14:51 myhost kernel:  [<ffffffff81172be5>] try_to_free_pages+0xd5/0x180
-Aug 16 01:14:51 myhost kernel:  [<ffffffff811632db>] __alloc_pages_slowpath+0x31b/0xb80</ffffffff811632db></ffffffff81172be5></ffffffff811728ef></ffffffff811725e2></ffffffff8117234b></ffffffff81171754></code></pre>
+Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff81171754&gt;] shrink_inactive_list+0x1f4/0x4f0
+Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff8117234b&gt;] shrink_node_memcg+0x5bb/0x780
+Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811725e2&gt;] shrink_node+0xd2/0x2f0
+Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811728ef&gt;] do_try_to_free_pages+0xef/0x310
+Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff81172be5&gt;] try_to_free_pages+0xd5/0x180
+Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpath+0x31b/0xb80</code></pre>
 	<p>As much as <code>shrink_node</code> may scream "NUMA issues", you're looking primarily at:</p>
 	<pre class="language-bash"><code class="language-bash">Aug 16 01:14:51 myhost systemd-journald[13812]: Missed 17171 kernel messages</code></pre>
 	<p>In addition, we also found memory allocation issues:</p>
@@ -107,16 +107,16 @@ Aug 16 01:14:51 myhost kernel:  [<ffffffff811632db>] __alloc_pages_slowpath+0x31
 [78972.620138]  ffffc90022f9b778 ffffffff81162f14 024000c022f9b740 ffffffff81ca31b8
 [78972.620140]  ffffc90022f9b720 0000000000000010 ffffc90022f9b788 ffffc90022f9b738
 [78972.620140] Call Trace:
-[78972.620148]  [<ffffffff8142d668>] dump_stack+0x4d/0x65
-[78972.620152]  [<ffffffff81162f14>] warn_alloc+0x124/0x150
-[78972.620154]  [<ffffffff811638f2>] __alloc_pages_slowpath+0x932/0xb80
-[78972.620157]  [<ffffffff81163d42>] __alloc_pages_nodemask+0x202/0x250
-[78972.620160]  [<ffffffff811aeae2>] alloc_pages_current+0x92/0x120
-[78972.620162]  [<ffffffff8115f6ee>] __get_free_pages+0xe/0x40
-[78972.620165]  [<ffffffff811e747a>] __pollwait+0x9a/0xe0
-[78972.620168]  [<ffffffff817c9ec9>] datagram_poll+0x29/0x100
-[78972.620170]  [<ffffffff817b9d48>] sock_poll+0x48/0xa0
-[78972.620172]  [<ffffffff811e7c35>] do_select+0x335/0x7b0</ffffffff811e7c35></ffffffff817b9d48></ffffffff817c9ec9></ffffffff811e747a></ffffffff8115f6ee></ffffffff811aeae2></ffffffff81163d42></ffffffff811638f2></ffffffff81162f14></ffffffff8142d668></code></pre>
+[78972.620148]  [&lt;ffffffff8142d668&gt;] dump_stack+0x4d/0x65
+[78972.620152]  [&lt;ffffffff81162f14&gt;] warn_alloc+0x124/0x150
+[78972.620154]  [&lt;ffffffff811638f2&gt;] __alloc_pages_slowpath+0x932/0xb80
+[78972.620157]  [&lt;ffffffff81163d42&gt;] __alloc_pages_nodemask+0x202/0x250
+[78972.620160]  [&lt;ffffffff811aeae2&gt;] alloc_pages_current+0x92/0x120
+[78972.620162]  [&lt;ffffffff8115f6ee&gt;] __get_free_pages+0xe/0x40
+[78972.620165]  [&lt;ffffffff811e747a&gt;] __pollwait+0x9a/0xe0
+[78972.620168]  [&lt;ffffffff817c9ec9&gt;] datagram_poll+0x29/0x100
+[78972.620170]  [&lt;ffffffff817b9d48&gt;] sock_poll+0x48/0xa0
+[78972.620172]  [&lt;ffffffff811e7c35&gt;] do_select+0x335/0x7b0</code></pre>
 	<p>This specific error message did seem fun:</p>
 	<pre class="language-bash"><code class="language-bash">[78991.546088] systemd-network: page allocation stalls for 287000ms, order:0, mode:0x24200ca(GFP_HIGHUSER_MOVABLE)</code></pre>
 	<p>You don't want your page allocations to stall for 5 minutes, especially when it's order zero allocation (smallest allocation of one 4 KiB page).</p>

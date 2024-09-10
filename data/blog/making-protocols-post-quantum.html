@@ -113,18 +113,18 @@
  ClientHello         --------&gt;
                      &lt;--------         ServerHello
                                              &lt;...&gt;
-                     &lt;--------       <certificate>  ^
- <kemencapsulation>                                 | Auth
+                     &lt;--------       &lt;Certificate&gt;  ^
+ &lt;KEMEncapsulation&gt;                                 | Auth
  {Finished}          --------&gt;                      |
  [Application Data]  --------&gt;                      |
                      &lt;--------          {Finished}  v
  [Application Data]  &lt;-------&gt;  [Application Data]
 
-<msg>: encrypted w/ keys derived from ephemeral KEX (HS)
+&lt;msg&gt;: encrypted w/ keys derived from ephemeral KEX (HS)
 {msg}: encrypted w/ keys derived from HS+KEM (AHS)
 [msg]: encrypted w/ traffic keys derived from AHS (MS)
 
-Authentication via KEM in TLS from the AuthKEM proposal</msg></kemencapsulation></certificate></code></pre>
+Authentication via KEM in TLS from the AuthKEM proposal</code></pre>
 	<p>Authentication via KEM in TLS from the AuthKEM proposal</p><!--kg-card-begin: html-->
 	<p></p><!--kg-card-end: html-->
 	<p>If we put the necessary arrows to authenticate via KEM into TLS it looks something like Figure 2. This is actually a fully-fledged proposal for an alternative to the usual TLS handshake. The academic proposal KEMTLS was published at the ACM CCS conference in 2020; a proposal to integrate this into TLS 1.3 is described in the <code>draft-celi-wiggers-tls-authkem</code> draft RFC.</p>

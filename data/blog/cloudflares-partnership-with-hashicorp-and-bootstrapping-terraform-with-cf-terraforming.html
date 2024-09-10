@@ -70,7 +70,7 @@
 	</figure>
 	<p>API Token summary from the Cloudflare Dashboard</p>
 	<p>Now we set the API Token we created as an environment variable so that both Terraform and cf-terraforming can access it for any commands (and so I don’t have to remove it from code examples).</p>
-	<pre class="language-bash"><code class="language-bash">$export CLOUDFLARE_API_TOKEN=<token_secret></token_secret></code></pre>
+	<pre class="language-bash"><code class="language-bash">$export CLOUDFLARE_API_TOKEN=&lt;token_secret&gt;</code></pre>
 	<p>Terraform requires us to have a folder to hold our Terraform configuration and state. For that we create a folder for our use case and create a <code>cloudflare.tf</code> config file with a provider definition for Cloudflare so Terraform knows we will be using the Cloudflare provider.</p>
 	<pre class="language-bash"><code class="language-bash">mkdir terraforming_test
 cd terraforming_test
@@ -110,7 +110,7 @@ Terraform v0.14.10
 $ brew install --cask cloudflare/cloudflare/cf-terraforming</code></pre>
 	<h4>Using cf-terraforming to generate Terraform configuration</h4>
 	<p>We are now ready to start generating a Terraform config. To begin, we run cf-terraforming to generate the first blocks of config for the DNS record resources and append it to the <code>cloudflare.tf</code> file we previously created.</p>
-	<pre class="language-bash"><code class="language-bash">cf-terraforming generate --resource-type cloudflare_record --zone <zone_id> &gt;&gt; cloudflare.tf</zone_id></code></pre>
+	<pre class="language-bash"><code class="language-bash">cf-terraforming generate --resource-type cloudflare_record --zone &lt;zone_id&gt; &gt;&gt; cloudflare.tf</code></pre>
 	<p>Breaking this command down:</p>
 	<p><code>generate</code> is the command that will produce a valid HCL config of resources</p>
 	<p><code>--resource-type</code> specifies the Terraform resource name that we want to generate an HCL config for. You can only generate configuration for one resource at a time. In this example we are using <code>cloudflare_record</code></p>
@@ -133,8 +133,8 @@ resource "cloudflare_record" "terraform_managed_resource_e908d014ebef5011d5981b3
 ...</code></pre>
 	<p>The output resources are given standardized names of “terraform_managed_resource_&lt;resource_id&gt;”. Because the resource id is included in the name, the object names between the config we just exported and the state we will import will always be consistent. This is necessary to ensure Terraform knows which config belongs to which state.</p>
 	<p>After generating the DNS record resources, we now do the same for both firewall rules and filters.</p>
-	<pre class="language-bash"><code class="language-bash">cf-terraforming generate --resource-type cloudflare_firewall_rule --zone <zone_id> &gt;&gt; cloudflare.tf
-cf-terraforming generate --resource-type cloudflare_filter --zone <zone_id> &gt;&gt; cloudflare.tf</zone_id></zone_id></code></pre>
+	<pre class="language-bash"><code class="language-bash">cf-terraforming generate --resource-type cloudflare_firewall_rule --zone &lt;zone_id&gt; &gt;&gt; cloudflare.tf
+cf-terraforming generate --resource-type cloudflare_filter --zone &lt;zone_id&gt; &gt;&gt; cloudflare.tf</code></pre>
 	<p>Example:</p>
 	<pre class="language-bash"><code class="language-bash">$ cf-terraforming generate --resource-type cloudflare_firewall_rule --zone 9c2f972575d986b99fa03c7bbfaab414 &gt;&gt; cloudflare.tf
 $ cf-terraforming generate --resource-type cloudflare_filter --zone 9c2f972575d986b99fa03c7bbfaab414 &gt;&gt; cloudflare.tf
@@ -142,7 +142,7 @@ $</code></pre>
 	<h4>Using cf-terraforming to import Terraform state</h4>
 	<p>Before we can ask Terraform to verify the config, we need to import the state so that Terraform does not attempt to create new objects but instead reuses the existing objects we already have in Cloudflare.</p>
 	<p>Similar to what we did with the generate command, we use the import command to generate <code>terraform import</code> commands.</p>
-	<pre class="language-bash"><code class="language-bash">cf-terraforming import --resource-type cloudflare_record --zone <zone_id></zone_id></code></pre>
+	<pre class="language-bash"><code class="language-bash">cf-terraforming import --resource-type cloudflare_record --zone &lt;zone_id&gt;</code></pre>
 	<p>Breaking this command down:</p>
 	<p><code>import</code> is the command that will produce a valid <code>terraform import</code> command that we can then run<code>--resource-type</code> (same as the generate command) specifies the Terraform resource name that we want to create import commands for. You can only use one resource at a time. In this example we are using <code>cloudflare_record</code><code>--zone</code> (same as the generate command) specifies the Cloudflare zone ID we wish to fetch all the DNS records for so cf-terraforming can populate the commands with the appropriate API calls</p>
 	<p>And an example with output:</p>
@@ -163,8 +163,8 @@ Import successful!
 The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.</code></pre>
 	<p>With <code>cloudflare_record</code> imported, now we do the same for the firewall_rules and filters.</p>
-	<pre class="language-bash"><code class="language-bash">cf-terraforming import --resource-type cloudflare_firewall_rule --zone <zone_id>
-cf-terraforming import --resource-type cloudflare_filter --zone <zone_id></zone_id></zone_id></code></pre>
+	<pre class="language-bash"><code class="language-bash">cf-terraforming import --resource-type cloudflare_firewall_rule --zone &lt;zone_id&gt;
+cf-terraforming import --resource-type cloudflare_filter --zone &lt;zone_id&gt;</code></pre>
 	<p>Shown with output:</p>
 	<pre class="language-bash"><code class="language-bash">$ cf-terraforming import --resource-type cloudflare_firewall_rule --zone 9c2f972575d986b99fa03c7bbfaab414
 terraform import cloudflare_firewall_rule.terraform_managed_resource_0de909f3229341a2b8214737903f2caf 9c2f972575d986b99fa03c7bbfaab414/0de909f3229341a2b8214737903f2caf

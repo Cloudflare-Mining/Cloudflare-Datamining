@@ -104,7 +104,7 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 	<p>Found this article interesting? <a href="https://www.cloudflare.com/join-our-team">Join our team</a>, including to our <a href="https://blog.cloudflare.com/cloudflare-london-were-hiring">elite office in London</a>. We're constantly looking for talented developers and network engineers!</p>
 	<h4>Appendix</h4>
 	<p>To simulate a black hole we used this iptables rule:</p>
-	<pre class="language-bash"><code class="language-bash">iptables -I INPUT -s <src_ip> -m length --length 1400:1500 -j DROP</src_ip></code></pre>
+	<pre class="language-bash"><code class="language-bash">iptables -I INPUT -s &lt;src_ip&gt; -m length --length 1400:1500 -j DROP</code></pre>
 	<p>And this <a href="http://www.secdev.org/projects/scapy">Scapy</a> snippet to simulate MTU ICMP messages:</p>
 	<pre class="language-python"><code class="language-python">#!/usr/bin/python
 from scapy.all import *
@@ -119,5 +119,5 @@ def callback(pkt):
 if __name__ == '__main__':
     sniff(prn=callback,
           store=0,
-          filter="ip and src <src_ip> and greater 1400")</src_ip></code></pre>
+          filter="ip and src &lt;src_ip&gt; and greater 1400")</code></pre>
 </div>

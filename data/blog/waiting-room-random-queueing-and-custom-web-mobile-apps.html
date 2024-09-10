@@ -275,19 +275,18 @@ with open(filename) as file:
 	<p>At the moment, this is only configurable through the <a href="https://developers.cloudflare.com/waiting-room/reference/waiting-room-api">Cloudflare API</a>. By default, the configuration for SameSite and Secure will be set to "auto", automatically selecting the most flexible option. In this case, SameSite will be set to None if <a href="https://blog.cloudflare.com/how-to-make-your-site-https-only">Always Use HTTPS</a> is enabled, otherwise it will be set to Lax. Similarly, Secure will only be set if Always Use HTTPS is enabled. In other words, Waiting Room IFrames will work properly by default as long as Always Use HTTPS is toggled. If you are wondering why Always Use HTTPS is used here, remember that SameSite=None requires that Secure is also set, or else the browser will block the Waiting Room cookie.</p>
 	<p>If you decide to manually configure the behavior of SameSite and Secure through the API, be careful! We do guard against setting SameSite=None without Secure, but if you decide to set Secure on every request (secure="always") and don’t have Always Use HTTPS enabled, this means that a user who sends an insecure (HTTP) request to the Waiting Room will have its cookie blocked by its browser!</p>
 	<p>If you want to explore using IFrames with Waiting Room yourself, here is a simple example of a Cloudflare Worker that renders the Waiting Room on "<a href="https://example.com/waitingroom">https://example.com/waitingroom</a>" in an IFrame:</p>
-	<pre class="language-js"><code class="language-js">const html = `
-
- 
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width,initial-scale=1">
-   <title>Waiting Room IFrame Example</title>
- <script nonce="ee3f804b-1771-413e-b3ef-d1decb3dff18">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
- 
-   <h1>Waiting Room IFrame!</h1>
-   <iframe src="https://example.com/waitingroom" width="1200" height="700"></iframe>
- 
-
-
+	<pre class="language-js"><code class="language-js">const html = `&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+   &lt;meta charset="UTF-8" /&gt;
+   &lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;
+   &lt;title&gt;Waiting Room IFrame Example&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+   &lt;h1&gt;Waiting Room IFrame!&lt;/h1&gt;
+   &lt;iframe src="https://example.com/waitingroom" width="1200" height="700"&gt;&lt;/iframe&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
 `
  
 addEventListener('fetch', event =&gt; {

@@ -28,9 +28,9 @@ Segmentation fault (core dumped)</code></pre>
 	<p>Here you go. Originally the signal was called SIGSEG. It was subsequently renamed SIGSEGV in the userspace and a bit later - around 1980 - to SIGSEGV on the kernel side. Apparently there are still no Segmentation Vaults found on UNIX systems.</p>
 	<p>As for my original crash, I fixed it - of course - by catching the signal and jumping over the offending instruction. On Linux it is totally possible to catch and handle SIGSEGV. With that fix, my code will never again crash. For sure.</p>
 	<pre class="language-.c"><code class="language-.c">#define _GNU_SOURCE
-#include <signal.h>
-#include <stdio.h>
-#include <ucontext.h>
+#include &lt;signal.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;ucontext.h&gt;
 
 static void sighandler(int signo, siginfo_t *si, void* v_context)
 {
@@ -51,5 +51,5 @@ int main() {
     printf("After NULL pointer. Still here!\n");
 
     return 0;
-}</ucontext.h></stdio.h></signal.h></code></pre>
+}</code></pre>
 </div>

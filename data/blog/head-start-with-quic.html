@@ -123,7 +123,7 @@ Ordered STREAM data stream_id=0x0
 11 I00001755 0x07ff706cb107568ef7116f5f58a9ed9010 pkt rx pkt 5 dcid=0x07ff706cb107568ef7116f5f58a9ed9010 scid=0x type=Short(0x00) len=0
 12 I00001755 0x07ff706cb107568ef7116f5f58a9ed9010 frm rx 5 Short(0x00) STREAM(0x16) id=0x0 fin=0 offset=680 len=462 uni=0
 Ordered STREAM data stream_id=0x0
-13 00000000  3c 21 44 4f 43 54 59 50  45 20 68 74 6d 6c 3e 0a  |.|
+13 00000000  3c 21 44 4f 43 54 59 50  45 20 68 74 6d 6c 3e 0a  |&lt;!DOCTYPE html&gt;.|
 …</code></pre>
 	<p>As can be seen on line <code>04</code>, the response arrives on the same QUIC <code>STREAM</code> on which it was sent: (<code>0x0</code>).</p>
 	<p>Many other familiar faces can be seen: line <code>05</code>: the start of the response headers, line <code>09</code>: the chunked encoding header and line <code>13</code>: the start of the response body. It looks almost… normal!</p>

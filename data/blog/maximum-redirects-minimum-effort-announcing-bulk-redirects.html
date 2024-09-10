@@ -107,15 +107,15 @@
 		</li>
 	</ol>
 	<p>For step 1, first create a mass redirect list via the API call:</p>
-	<pre class="language-bash"><code class="language-bash">curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rules/lists' \
---header 'X-Auth-Email: <email_address>' \
+	<pre class="language-bash"><code class="language-bash">curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rules/lists' \
+--header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: <api_key>' \
+--header 'X-Auth-Key: &lt;API_KEY&gt;' \
 --data-raw '{
  "name": "my_redirect_list_2",
  "description": "My redirect list 2",
  "kind": "redirect"
-}'</api_key></email_address></account_id></code></pre>
+}'</code></pre>
 	<p>The output will look similar to:</p>
 	<pre class="language-bash"><code class="language-bash">{
   "result": {
@@ -134,10 +134,10 @@
 }</code></pre>
 	<p>Capture the value of “id”, as this is the list id we will then add URL redirects to.</p>
 	<p>Next, in step 2 we will add URL redirects to our newly created list by executing a POST call to the id we captured previously - with our URL redirects in the body:</p>
-	<pre class="language-bash"><code class="language-bash">curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rules/lists/<list_id>/items' \
---header 'X-Auth-Email: <email_address>' \
+	<pre class="language-bash"><code class="language-bash">curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rules/lists/&lt;LIST_ID&gt;/items' \
+--header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: <api_key>' \
+--header 'X-Auth-Key: &lt;API_KEY&gt;' \
 --data-raw '[
  {
    "redirect": {
@@ -161,7 +161,7 @@
      "include_subdomains": true
    }   
  }
-]'</api_key></email_address></list_id></account_id></code></pre>
+]'</code></pre>
 	<p>The output will look similar to:</p>
 	<pre class="language-bash"><code class="language-bash">{
   "result": {
@@ -174,10 +174,10 @@
 	<p>In step 3 we enable this list by creating a new mass redirect rule within the mass redirect account-level ruleset.</p>
 	<p><b>Note</b>, if this is the first time you are creating a redirect rule you will need to use a different API call to create the ruleset. See the documentation <a href="https://developers.cloudflare.com/rules/bulk-redirects/create-api">here</a> for more details. All subsequent updates to the rulesets are made by calls similar to below.</p>
 	<p>Firstly, we need to find our account-level rulesets id. To do this we need to get a list of all account-level rulesets and look for the ruleset with the phase <code>http_request_redirect</code>:</p>
-	<pre class="language-bash"><code class="language-bash">curl --location --request GET 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rulesets \
---header 'X-Auth-Email: <email_address>' \
+	<pre class="language-bash"><code class="language-bash">curl --location --request GET 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rulesets \
+--header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: <api_key>'</api_key></email_address></account_id></code></pre>
+--header 'X-Auth-Key: &lt;API_KEY&gt;'</code></pre>
 	<p>The output will look similar to:</p>
 	<pre class="language-bash"><code class="language-bash">{
    "result": [
@@ -216,10 +216,10 @@
    "messages": []
 }</code></pre>
 	<p>Our redirect ruleset is at the bottom of the output. Next we will add our new bulk redirect rule to this ruleset:</p>
-	<pre class="language-bash"><code class="language-bash">curl --location --request PUT 'https://api.cloudflare.com/client/v4/accounts/<account_id>/rulesets/<ruleset_id> \
---header 'X-Auth-Email: <email_address>' \
+	<pre class="language-bash"><code class="language-bash">curl --location --request PUT 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rulesets/&lt;RULESET_ID&gt; \
+--header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
---header 'X-Auth-Key: <api_key> \
+--header 'X-Auth-Key: &lt;API_KEY&gt; \
 --data-raw '{
      "rules": [
    {
@@ -234,7 +234,7 @@
      }
    }
  ]
-}'</api_key></email_address></ruleset_id></account_id></code></pre>
+}'</code></pre>
 	<p>The output will look similar to:</p>
 	<pre class="language-bash"><code class="language-bash">{
   "result": {

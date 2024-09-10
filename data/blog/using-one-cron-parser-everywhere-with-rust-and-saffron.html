@@ -122,7 +122,7 @@
 	<pre class="language-rust"><code class="language-rust">#[wasm_bindgen]
 #[derive(Clone, Debug)]
 pub struct ValidationResult {
-   errors: Option<vec<string>&gt;,
+   errors: Option&lt;Vec&lt;String&gt;&gt;,
 }
  
 #[wasm_bindgen]
@@ -164,7 +164,7 @@ pub fn validate(crons: JsArray) -&gt; ValidationResult {
    }
  
    ValidationResult { errors: None }
-}</vec<string></code></pre>
+}</code></pre>
 	<p>and our code to handle processing the request and response is written in JavaScript:</p>
 	<pre class="language-javascript"><code class="language-javascript">  const path = new URL(request.url).pathname;
  switch (path) {

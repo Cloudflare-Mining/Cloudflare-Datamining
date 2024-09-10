@@ -44,8 +44,8 @@
 	<h3>Enable Sippy on your R2 bucket</h3>
 	<p>Next, you’ll enable Sippy for the R2 bucket you created. During the beta, you can do this by using the API. Here’s an example of how to enable Sippy for an R2 bucket with cURL:</p>
 	<pre class="language-curl"><code class="language-curl">curl -X PUT https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets/{bucket_name}/sippy \
---header "Authorization: Bearer <api_token>" \
---data '{"provider": "AWS", "bucket": "<aws_bucket_name>", "zone": "<aws_region>","key_id": "<aws_access_key_id>", "access_key":"<aws_secret_access_key>", "r2_key_id": "<r2_access_key_id>", "r2_access_key": "<r2_secret_access_key>"}'</r2_secret_access_key></r2_access_key_id></aws_secret_access_key></aws_access_key_id></aws_region></aws_bucket_name></api_token></code></pre>
+--header "Authorization: Bearer &lt;API_TOKEN&gt;" \
+--data '{"provider": "AWS", "bucket": "&lt;AWS_BUCKET_NAME&gt;", "zone": "&lt;AWS_REGION&gt;","key_id": "&lt;AWS_ACCESS_KEY_ID&gt;", "access_key":"&lt;AWS_SECRET_ACCESS_KEY&gt;", "r2_key_id": "&lt;R2_ACCESS_KEY_ID&gt;", "r2_access_key": "&lt;R2_SECRET_ACCESS_KEY&gt;"}'</code></pre>
 	<p>For more information on getting started, please refer to the <a href="https://developers.cloudflare.com/r2/data-migration/sippy">documentation</a>. Once enabled, requests to your bucket will now start copying data over from S3 if it’s not already present in your R2 bucket.</p>
 	<h3>Finish your migration with Super Slurper</h3>
 	<p>You can run your incremental migration for as long as you want, but eventually you may want to complete the migration to R2. To do this, you can pair Sippy with <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper">Super Slurper</a> to easily migrate your remaining data that hasn’t been accessed to R2.</p>

@@ -174,10 +174,10 @@
 	<p>We also provide programmable access to the BGP hijack detection results via the Cloudflare Radar API, which is freely available under <a href="https://radar.cloudflare.com/about">CC BY-NC 4.0 license</a>. The API documentation is available at the <a href="https://developers.cloudflare.com/api/operations/radar-get-bgp-hijacks-events">Cloudflare API portal</a>.</p>
 	<p>The following <code>curl</code> command fetches the most recent 10 BGP hijack events relevant to AS64512.</p>
 	<pre class="language-curl"><code class="language-curl">curl -X GET "https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?invlovedAsn=64512&amp;format=json&amp;per_page=10" \
-    -H "Authorization: Bearer <api_token>"</api_token></code></pre>
+    -H "Authorization: Bearer &lt;API_TOKEN&gt;"</code></pre>
 	<p>Users can further filter events with high confidence by specifying the <code>minConfidence</code> parameter with a 0-10 value, where a higher value indicates higher confidence of the events being a hijack. The following example expands on the previous example by adding the minimum confidence score of 8 to the query:</p>
 	<pre class="language-curl"><code class="language-curl">curl -X GET "https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?invlovedAsn=64512&amp;format=json&amp;per_page=10&amp;minConfidence=8" \
-    -H "Authorization: Bearer <api_token>"</api_token></code></pre>
+    -H "Authorization: Bearer &lt;API_TOKEN&gt;"</code></pre>
 	<p>Additionally, users can also quickly build custom hijack alerters using a Cloudflare <a href="https://developers.cloudflare.com/workers/wrangler/workers-kv/#workers-kv">Workers + KV combination</a>. We have a full tutorial on building alerters that send out webhook-based messages or emails (with <a href="https://developers.cloudflare.com/email-routing">Email Routing</a>) available on the <a href="https://developers.cloudflare.com/radar/investigate/bgp-anomalies">Cloudflare Radar documentation site</a>.</p>
 	<h2>More routing security on Cloudflare Radar</h2>
 	<p>As we continue improving Cloudflare Radar, we are planning to introduce additional Internet routing and security data. For example, Radar will soon get a dedicated routing section to provide digestible BGP information for given networks or regions, such as distinct routable prefixes, RPKI valid/invalid/unknown routes, distribution of IPv4/IPv6 prefixes, etc. Our goal is to provide the best data and tools for routing security to the community, so that we can build a better and more secure Internet together.</p>

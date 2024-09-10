@@ -171,7 +171,7 @@ Transmission Control Protocol, Src Port: 55244, Dst Port: 80, Seq: 0, Len: 0
     Destination Port: 80
     Flags: 0x002 (SYN)</code></pre>
 	<p>We don’t need to do DNS queries to make WARP connections, we know the IP addresses of our data centers already, but we do want to know which of the IPv4 and IPv6 addresses will lead to a faster route over the Internet. To accomplish that we perform the same technique but at the network level: we send a packet over each protocol and use the protocol which returns first for subsequent messages. With some error handling and logging removed for brevity, it appears as:</p>
-	<pre class="language-swift"><code class="language-swift">let raceFinished = Atomic<bool>(false)
+	<pre class="language-swift"><code class="language-swift">let raceFinished = Atomic&lt;Bool&gt;(false)
 
 let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
     (session, otherSession, name) in
@@ -201,7 +201,7 @@ let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
         // Send a handshake message
         session.writeDatagram(onViable())
     }
-}</bool></code></pre>
+}</code></pre>
 	<p>This technique successfully allows us to support IPv6 addressing. In fact, every device which uses WARP instantly supports IPv6 addressing even on networks which don’t have support. Using WARP takes the 34% of Comcast’s network which doesn’t support IPv6 or the 69% of Charter’s network which doesn’t (as of 2018), and allows those users to communicate to IPv6 servers successfully.</p>
 	<p>This test shows my phone’s IPv6 support before and after enabling WARP:</p>
 	<figure class="kg-card kg-image-card ">
@@ -278,7 +278,7 @@ Transport Layer Security
 Exit-Tcp-Keepalive-Duration: 15\r\n
 Application: warp\r\n
 \r\n
-<data to="" send="" origin=""></data></code></pre>
+&lt;data to send to origin&gt;</code></pre>
 	<p>Once the message arrives at the destination data center it is either forwarded to another data center (if that is best for performance), or directed directly to the origin which is awaiting the traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

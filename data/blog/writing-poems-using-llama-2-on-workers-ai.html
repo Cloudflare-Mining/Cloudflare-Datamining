@@ -10,7 +10,7 @@
 	<pre class="language-javascript"><code class="language-javascript">import { Ai } from "@cloudflare/ai";
 
 export default {
-    async fetch(request: Request, env: Env): Promise<response> {
+    async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
         const body = await request.json();
         const ai = new Ai(env.AI);
         const response = await ai.run("@cf/meta/llama-2-7b-chat-int8", body);
@@ -20,7 +20,7 @@ export default {
 
 export interface Env {
     AI: any;
-}</response></code></pre>
+}</code></pre>
 	<p>That was deployed on Workers AI and all I had to do was ask for poems. Here’s my terminal output (with just the domain name changed).</p>
 	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
 that talks about the connectivity cloud"}' | jq -r .response</code></pre>

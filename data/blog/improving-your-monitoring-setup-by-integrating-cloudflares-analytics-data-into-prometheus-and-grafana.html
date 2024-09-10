@@ -37,20 +37,20 @@ metadata:
 	<p>The configuration is quite easy, you just provide your API email and key. Optionally you can limit the scraping to selected zones only. Refer to our docs in the <a href="https://github.com/lablabs/cloudflare-exporter">GitHub repo</a> or see the example below.</p>
 	<pre class="language-yaml"><code class="language-yaml"> env:
    - name: CF_API_EMAIL
-     value: <your_api_email>
+     value: &lt;YOUR_API_EMAIL&gt;
    - name: CF_API_KEY
-     value: <your_api_key>
+     value: &lt;YOUR_API_KEY&gt;
 
   # Optionally, you can filter zones by adding IDs following the example below.
   # - name: ZONE_XYZ
-  #   value: <zone_id></zone_id></your_api_key></your_api_email></code></pre>
+  #   value: &lt;zone_id&gt;</code></pre>
 	<p>To deploy the exporter with Helm you simply need to run:</p>
 	<pre class="language-yaml"><code class="language-yaml">helm repo add lablabs-cloudflare-exporter https://lablabs.github.io/cloudflare-exporter
 helm repo update
 
 helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter \
---set env[0].CF_API_EMAIL=<api_email> \
---set env[1].CF_API_KEY=<api_key></api_key></api_email></code></pre>
+--set env[0].CF_API_EMAIL=&lt;API_EMAIL&gt; \
+--set env[1].CF_API_KEY=&lt;API_KEY&gt;</code></pre>
 	<p>We also provide a <a href="https://github.com/lablabs/cloudflare-exporter/blob/master/examples/helmfile/cloudflare-exporter.yaml">Helmfile</a> in our repo to make deployments easier, you just need to add your credentials to make it work.</p>
 	<h3>Visualizing the data</h3>
 	<p>I’ve already explained how the exporter works and how you can get it running. As I mentioned before, we use Grafana to visualize our metrics from Prometheus. We’ve created a <a href="https://grafana.com/grafana/dashboards/13133">dashboard</a> that takes the data from Prometheus and puts it into use.</p>

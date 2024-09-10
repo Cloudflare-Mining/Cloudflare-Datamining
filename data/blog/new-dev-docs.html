@@ -44,10 +44,10 @@ export async function modify(file) {
 
   astray.walk(AST, {
     /**
-     * Read the page's <h1> to determine page's title.
+     * Read the page's &lt;h1&gt; to determine page's title.
      */
     heading(node) {
-      // ignore if not </h1><h1> header
+      // ignore if not &lt;h1&gt; header
       if (node.depth !== 1) return;
 
       astray.walk(node, {
@@ -61,7 +61,7 @@ export async function modify(file) {
     },
     
     /**
-     * Update all anchor links (<a>) for consistent internal linking.
+     * Update all anchor links (&lt;a&gt;) for consistent internal linking.
      */
     link(node) {
       let value = node.url;
@@ -93,9 +93,8 @@ export async function modify(file) {
   
   // Write the updated markdown file
   await fs.promises.writeFile(file, updated);
-}</a></h1></code></pre><a>
-	</a>
-	<p><a></a><a href="https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js">https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js</a></p>
+}</code></pre>
+	<p><a href="https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js">https://gist.github.com/lukeed/d63a4561ce9859765d8f0e518b941642#file-cfblog-devdocs-0-js</a></p>
 	<p>The above is an abbreviated snippet of the modifications we needed to make during our migration. You may find all the AST traversals and manipulations we created as part of our migration <a href="https://github.com/cloudflare/cloudflare-docs/blob/2b16cd220f79c7cfd64d80f4a4592b73abcf0753/migrate/normalize.ts">on GitHub</a>.</p>
 	<p>We also took this opportunity to analyze the thousands and thousands of code snippets we have throughout the codebase. These serve an important role as they are crucial aides in reference documentation or are presented alongside tutorials as recipes or examples. So we added a <a href="https://github.com/cloudflare/cloudflare-docs/blob/ce64f4d28a6bff7de914d54623046384545e0048/bin/format.ts">code formatter script</a> that utilizes <a href="https://prettier.io">Prettier</a> to apply a consistent code style across all code snippets. As a bonus side effect, Prettier would throw errors if any snippets had invalid syntax for their given language. Any of these were fixed manually and the `format` script has been added as part of our own CI process to ensure that all JavaScript, TypeScript, Rust, JSON, and/or C++ code we publish is syntactically valid!</p>
 	<p>Finally, we <a href="https://github.com/cloudflare/cloudflare-docs/blob/2b16cd220f79c7cfd64d80f4a4592b73abcf0753/migrate/Makefile#L7">created a Makefile</a> that coordinated the series of Node scripts and <code>git</code> commands we needed to make. This orchestrated the entire migration, boiling down all our work into a single <code>make run</code> command.</p>

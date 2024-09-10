@@ -165,14 +165,18 @@ h2i&gt; headers
    expires = "Fri, 04 Dec 2015 14:36:15 GMT"
    cache-control = "public, max-age=14400"
  [FrameHeader DATA stream=1 len=7261]
-   "\n\n\n<!--</pre--><script nonce="bb216905-2663-4a80-af12-ab77518fed07">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script></code>
-            <h3>Load Testing</h3><p>The <a href="https://nghttp2.org">nghttp2</a> library also includes a load testing tool called <a href="https://nghttp2.org/documentation/h2load.1.html">h2load</a> which can be used a little like <a href="https://httpd.apache.org/docs/2.2/programs/ab.html">ab</a>. There's a useful <a href="https://nghttp2.org/documentation/h2load-howto.html">HOWTO</a> on using the tool.</p><p>I ran it against the CloudFlare test server like this:</p>
-            <figure class="kg-card kg-image-card ">
-            
-            <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hWDbuK231mcZwO1JOKtvo/d3b3a2c9eb24d5ef91fb5b67ad8383b4/Screen-Shot-2015-12-03-at-16-02-50.png" alt="" class="kg-image" width="1778" height="940" loading="lazy">
-            
-            </figure><h3>Conformance</h3><p>If you are testing an HTTP/2 implementation there's a useful tool called h2spec which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl">Go 1.5.1</a> and then do</p>
-            <pre class="language-bash"><code class="language-bash">$ go get github.com/summerwind/h2spec/cmd/h2spec</code></pre>
+   "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;!</code></pre>
+	<h3>Load Testing</h3>
+	<p>The <a href="https://nghttp2.org">nghttp2</a> library also includes a load testing tool called <a href="https://nghttp2.org/documentation/h2load.1.html">h2load</a> which can be used a little like <a href="https://httpd.apache.org/docs/2.2/programs/ab.html">ab</a>. There's a useful <a href="https://nghttp2.org/documentation/h2load-howto.html">HOWTO</a> on using the tool.</p>
+	<p>I ran it against the CloudFlare test server like this:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hWDbuK231mcZwO1JOKtvo/d3b3a2c9eb24d5ef91fb5b67ad8383b4/Screen-Shot-2015-12-03-at-16-02-50.png" alt="" class="kg-image" width="1778" height="940" loading="lazy">
+
+	</figure>
+	<h3>Conformance</h3>
+	<p>If you are testing an HTTP/2 implementation there's a useful tool called h2spec which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl">Go 1.5.1</a> and then do</p>
+	<pre class="language-bash"><code class="language-bash">$ go get github.com/summerwind/h2spec/cmd/h2spec</code></pre>
 	<p>I only recommend it for testing locally running HTTP/2 servers. If you built <code>nghttp2</code> above while building <code>curl</code> you will also have the <code>nghttpd</code> HTTP/2 server available. You can run <code>h2spec</code> against it like this:</p>
 	<pre class="language-bash"><code class="language-bash">$ nghttpd --no-tls -D -d /tmp 8888
 $ h2spec -p 8888</code></pre>
@@ -246,5 +250,4 @@ www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0</code></pre>
 			<p>The <a href="http://http2.github.io">home page</a> of the HTTP/2 working group with lots of information plus a list of useful <a href="https://github.com/http2/http2-spec/wiki/Tools">tools</a>.</p>
 		</li>
 	</ol>
-	</pre>
 </div>

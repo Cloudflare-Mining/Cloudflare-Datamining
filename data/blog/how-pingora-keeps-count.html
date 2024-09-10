@@ -340,7 +340,7 @@
  
 impl Estimator {
     /// Increment `key` by the value given. Return the new estimated value as a result.
-    pub fn incr<t: hash="">(&amp;self, key: T, value: isize) -&gt; isize {
+    pub fn incr&lt;T: Hash&gt;(&amp;self, key: T, value: isize) -&gt; isize {
         let mut min = isize::MAX;
         for (slot, hasher) in self.estimator.iter() {
             let hash = hash(&amp;key, hasher) as usize;
@@ -350,7 +350,7 @@ impl Estimator {
         }
         min
     }
-}</t:></code></pre>
+}</code></pre>
 	<h3>Performance</h3>
 	<p>We compare the design above with the two hash table based approaches.</p>
 	<ol>

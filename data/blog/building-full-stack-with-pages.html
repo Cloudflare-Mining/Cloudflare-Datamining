@@ -66,7 +66,7 @@ export const onRequestGet: PagesFunction&lt;{
 }&gt; = async ({ env }) =&gt; {
   const { imagesKey } = (await env.IMAGES.get("setup", "json")) as Setup;
 
-  const kvImagesList = await env.IMAGES.list<imagemetadata>({
+  const kvImagesList = await env.IMAGES.list&lt;ImageMetadata&gt;({
     prefix: `image:uploaded:`,
   });
 
@@ -97,7 +97,7 @@ export const onRequestGet: PagesFunction&lt;{
     .filter((image) =&gt; image !== undefined);
 
   return jsonResponse({ images });
-};</imagemetadata></code></pre>
+};</code></pre>
 	<p>Eagle-eyed readers will notice we're exporting <code>onRequestGet</code> which lets us only respond to <code>GET</code> requests.</p>
 	<p>We're also using a KV namespace (accessed with <code>env.IMAGES</code>) to store information about images that have been uploaded. To create a binding in your Pages project, navigate to the "Settings" tab.</p>
 	<p>![](<a href="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png_REGULAR">/content/images/2021/11/unnamed-15.png_REGULAR</a> "Screenshot of the "Functions" page on the Pages project "Settings" tab in the Cloudflare dashboard")</p>
@@ -241,16 +241,16 @@ export const ImageGrid = () =&gt; {
   const { data, error } = useSWR&lt;{ images: Image[] }&gt;("/api/images");
 
   if (error || data === undefined) {
-    return <div>An unexpected error has occurred when fetching the list of images. Please try again.</div>;
+    return &lt;div&gt;An unexpected error has occurred when fetching the list of images. Please try again.&lt;/div&gt;;
   }
 
 
   return (
-    <div>
+    &lt;div&gt;
       {data.images.map((image) =&gt; (
-        <imagecard image="{image}" key="{image.id}">
+        &lt;ImageCard image={image} key={image.id} /&gt;
       ))}
-    </imagecard></div>
+    &lt;/div&gt;
   );
 
 }</code></pre>

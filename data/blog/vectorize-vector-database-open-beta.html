@@ -72,7 +72,7 @@
 //
 // Vectors from a machine-learning model are typically ~100 to 1536 dimensions
 // wide (or wider still).
-const sampleVectors: Array<vectorizevector> = [
+const sampleVectors: Array&lt;VectorizeVector&gt; = [
 	{ id: '1', values: [32.4, 74.1, 3.2], metadata: { url: '/products/sku/13913913' } },
 	{ id: '2', values: [15.1, 19.2, 15.8], metadata: { url: '/products/sku/10148191' } },
 	{ id: '3', values: [0.16, 1.2, 3.8], metadata: { url: '/products/sku/97913813' } },
@@ -81,7 +81,7 @@ const sampleVectors: Array<vectorizevector> = [
 ];
 
 export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<response> {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
 		if (new URL(request.url).pathname !== '/') {
 			return new Response('', { status: 404 });
 		}
@@ -98,7 +98,7 @@ export default {
 		//
 		// In our example, we're going to construct a simple vector that should
 		// match vector id #5
-		let queryVector: Array<number> = [54.8, 5.5, 3.1];
+		let queryVector: Array&lt;number&gt; = [54.8, 5.5, 3.1];
 
 		// Query our index and return the three (topK = 3) most similar vector
 		// IDs with their similarity score.
@@ -131,7 +131,7 @@ export default {
 			matches: matches,
 		});
 	},
-};</number></response></vectorizevector></code></pre>
+};</code></pre>
 	<p>The code above is intentionally simple, but illustrates vector search at its core: we insert vectors into our database, and query it for vectors with the smallest distance to our query vector.</p>
 	<p>Here are the results, with the values included, so we visually observe that our query vector <code>[54.8, 5.5, 3.1]</code> is similar to our highest scoring match: <code>[58.799, 6.699, 3.400]</code> returned from our search. This index uses <a href="https://en.wikipedia.org/wiki/Cosine_similarity">cosine</a> similarity to calculate the distance between vectors, which means that the closer the score to 1, the more similar a match is to our query vector.</p>
 	<pre class="language-javascript"><code class="language-javascript">{
@@ -201,7 +201,7 @@ interface EmbeddingResponse {
 }
 
 export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<response> {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
 		const ai = new Ai(env.AI);
 		let path = new URL(request.url).pathname;
 		if (path.startsWith('/favicon')) {
@@ -247,7 +247,7 @@ export default {
 			matches: matches,
 		});
 	},
-};</response></code></pre>
+};</code></pre>
 	<p>The code above does four things:</p>
 	<ol>
 		<li>

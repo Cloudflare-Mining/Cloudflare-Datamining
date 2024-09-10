@@ -23,8 +23,8 @@
 	<pre class="language-sh"><code class="language-sh">wrangler kv:namespace create "BUCKET"</code></pre>
 	<p>Then, in my wrangler.toml, I add my new namespace id to associate it with my Worker.</p>
 	<pre class="language-bash"><code class="language-bash">kv_namespaces = [
- {binding = “BUCKET", id = <insert-id-here>}
-]</insert-id-here></code></pre>
+ {binding = “BUCKET", id = &lt;insert-id-here&gt;}
+]</code></pre>
 	<p>I can upload a new text file from the command line using Wrangler:</p>
 	<pre class="language-sh"><code class="language-sh">$ wrangler kv:key put --binding=BUCKET "my-file" value.txt --path</code></pre>
 	<p>And then serve that file from my Workers script with low latency from any of Cloudflare’s points of presence around the globe!</p>

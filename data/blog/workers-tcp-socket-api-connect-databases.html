@@ -50,8 +50,8 @@ export default {
 declare interface Socket {
   get readable(): ReadableStream;
   get writable(): WritableStream;
-  get closed(): Promise<void>;
-  close(): Promise<void>;
+  get closed(): Promise&lt;void&gt;;
+  close(): Promise&lt;void&gt;;
   startTls(): Socket;
 }
 
@@ -63,7 +63,7 @@ declare interface SocketOptions {
 declare interface SocketAddress {
   hostname: string;
   port: number;
-}</void></void></code></pre>
+}</code></pre>
 	<h3>Opportunistic TLS (StartTLS), without separate APIs</h3>
 	<p>Opportunistic TLS, a pattern of creating an initial insecure connection, and then upgrading it to a secure one that uses TLS, remains common, particularly with database drivers. In Node.js, you must use the <a href="https://nodejs.org/api/net.html#class-netsocket">net</a> API to create the initial connection, and then use the <a href="https://nodejs.org/api/tls.html">tls</a> API to create a new, upgraded connection. In Deno, you pass the original socket to <a href="https://deno.land/api@v1.33.1?s=Deno.startTls">Deno.startTls()</a>, which creates a new, upgraded connection.</p>
 	<p>Drawing on a <a href="https://www.w3.org/TR/tcp-udp-sockets/#idl-def-TCPOptions">previous W3C proposal</a> for a TCP Socket API, we’ve simplified this by providing one API, that allows TLS to be enabled, allowed, or used when creating a socket, and exposes a simple method, startTls(), for upgrading a socket to use TLS.</p>
@@ -109,7 +109,7 @@ export default {
     request: Request,
     env: Env,
     ctx: ExecutionContext
-  ): Promise<response> {
+  ): Promise&lt;Response&gt; {
     const client = new Client(env.DB);
     await client.connect();
     const result = await client.query({
@@ -121,7 +121,7 @@ export default {
     ctx.waitUntil(client.end());
     return resp;
   },
-};</response></code></pre>
+};</code></pre>
 	<p>To test this in local development, use the <code>--experimental-local</code> flag (instead of <code>–local</code>), which <a href="https://blog.cloudflare.com/miniflare-and-workerd">uses the open-source Workers runtime</a>, ensuring that what you see locally mirrors behavior in production:</p>
 	<pre class="language-bash"><code class="language-bash">wrangler dev --experimental-local</code></pre>
 	<h2>What’s next for connecting to databases from Workers?</h2>

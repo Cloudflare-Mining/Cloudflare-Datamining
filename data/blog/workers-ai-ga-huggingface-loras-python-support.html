@@ -95,7 +95,7 @@ compatibility_flags = ["python_workers"]</code></pre>
 	<p>Vectorize is another component of our toolkit for AI applications. In open beta since September 2023, Vectorize allows developers to persist embeddings (vectors), like those generated from Workers AI <a href="https://developers.cloudflare.com/workers-ai/models/#text-embeddings">text embedding</a> models, and query for the closest match to support use cases like similarity search or recommendations. Without a vector database, model output is forgotten and can’t be recalled without extra costs to re-run a model.</p>
 	<p>Since Vectorize’s open beta, we’ve added <a href="https://developers.cloudflare.com/vectorize/reference/metadata-filtering">metadata filtering</a>. Metadata filtering lets developers combine vector search with filtering for arbitrary metadata, supporting the query complexity in AI applications. We’re laser-focused on getting Vectorize ready for general availability, with an target launch date of June 2024, which will include support for multi-million vector indexes.</p>
 	<pre class="language-js"><code class="language-js">// Insert vectors with metadata
-const vectors: Array<vectorizevector> = [
+const vectors: Array&lt;VectorizeVector&gt; = [
   {
     id: "1",
     values: [32.4, 74.1, 3.2],
@@ -111,7 +111,7 @@ const vectors: Array<vectorizevector> = [
 let upserted = await env.YOUR_INDEX.upsert(vectors);
 
 // Query with metadata filtering
-let metadataMatches = await env.YOUR_INDEX.query(<queryvector>, { filter: { streaming_platform: "netflix" }} )</queryvector></vectorizevector></code></pre>
+let metadataMatches = await env.YOUR_INDEX.query(&lt;queryVector&gt;, { filter: { streaming_platform: "netflix" }} )</code></pre>
 	<h3>The most comprehensive Developer Platform to build AI applications</h3>
 	<p>On Cloudflare’s Developer Platform, we believe that all developers should be able to quickly build and ship full-stack applications &nbsp;– and that includes AI experiences as well. With our GA of Workers AI, announcements for Python support in Workers, AI Gateway, and Vectorize, and our partnership with Hugging Face, we’ve expanded the world of possibilities for what you can build with AI on our platform. We hope you are as excited as we are – take a look at all our <a href="https://developers.cloudflare.com">Developer Docs</a> to get started, and <a href="https://discord.cloudflare.com">let us know</a> what you build.</p>
 </div>

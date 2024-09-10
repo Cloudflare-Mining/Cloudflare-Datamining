@@ -290,7 +290,7 @@ public class Connection : MonoBehaviour
     websocket.OnMessage += (bytes) =&gt;
     {
       var payload = System.Text.Encoding.UTF8.GetString(bytes);
-      GameState gameState = JsonUtility.FromJson<gamestate>(payload);
+      GameState gameState = JsonUtility.FromJson&lt;GameState&gt;(payload);
 
       foreach (var user in gameState.users)
       {
@@ -327,7 +327,7 @@ public class Connection : MonoBehaviour
         }
       }
 
-      TMPro.TextMeshProUGUI text = onlineText.GetComponent<tmpro.textmeshprougui>();
+      TMPro.TextMeshProUGUI text = onlineText.GetComponent&lt;TMPro.TextMeshProUGUI&gt;();
       text.text = $"Online: {gameState.users.Length + 1}\\nPlaying as {gameState.name}";
     };
 
@@ -345,17 +345,17 @@ public class Connection : MonoBehaviour
     var otherPlayer = Instantiate(otherPlayerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     otherPlayer.name = user.id;
 
-    TMPro.TextMeshPro text = otherPlayer.GetComponentInChildren<tmpro.textmeshpro>();
+    TMPro.TextMeshPro text = otherPlayer.GetComponentInChildren&lt;TMPro.TextMeshPro&gt;();
     text.text = user.name;
 
     newClient.playerObject = otherPlayer;
-    newClient.interpolateMovement = otherPlayer.GetComponent<interpolatemovement>();
+    newClient.interpolateMovement = otherPlayer.GetComponent&lt;InterpolateMovement&gt;();
     Clients.Add(user.id, newClient);
     return newClient;
   }
 
   // Truncated code
-}</interpolatemovement></tmpro.textmeshpro></tmpro.textmeshprougui></gamestate></code></pre>
+}</code></pre>
 	<p>With all of this code set up, we've established a simple system for sending our local player position to Workers. When my player position updates, everyone else in the game receives the position as part of the larger game state payload, and updates the local copy of each player accordingly.</p>
 	<p>I mentioned that these updates happen <i>every 0.2 seconds</i>. Games are expected to update <i>at least</i> thirty times a second, if not more: modern games are generally expected to run at 60 frames per second, and update extremely quickly.</p>
 	<p>It's because of that expectation that we need to <i>interpolate</i> movement for our players. Instead of sending player updates sixty times a second, which would be a huge load on our Durable Object, we can look at the incoming new position or rotation for an object, and use some math to smooth the movement from where a player <i>is</i> to where they are <i>going</i>. Unity (and many other game engines) provide this behavior via APIs like SmoothDamp — a function for smoothing rapid, jarring movement over time — as seen below in the InterpolateMovement script, which is used to manage player position and rotation:</p>

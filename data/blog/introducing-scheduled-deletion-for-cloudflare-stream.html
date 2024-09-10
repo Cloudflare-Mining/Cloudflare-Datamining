@@ -38,9 +38,9 @@
 	<h3>Cloudflare API</h3>
 	<p>The Stream API can also be used to set the scheduled deletion property on new or existing videos. In this example, we’ll create a direct creator upload that will be deleted on December 31, 2023:</p>
 	<pre class="language-json"><code class="language-json">curl -X POST \
--H 'Authorization: Bearer <bearer_token>' \
+-H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \
 -d '{ "maxDurationSeconds": 10, "scheduledDeletion": "2023-12-31T12:34:56Z" }' \
-https://api.cloudflare.com/client/v4/accounts/<account_id>/stream/direct_upload </account_id></bearer_token></code></pre>
+https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/direct_upload </code></pre>
 	<p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api">the documentation</a>.</p>
 	<h2>Getting started with automated deletion for Live Input recordings</h2>
 	<p>We love how recordings from live streams allow those who may have missed the stream to catch up, but these recordings aren’t always needed forever. Scheduled recording deletion is a policy that can be configured for new or existing live inputs. Once configured, the recordings of all future streams on that input will have a scheduled deletion date calculated when the recording is available. Setting this retention policy can be done from the Cloudflare dashboard or via API operations to create or edit Live Inputs:</p>
@@ -70,10 +70,10 @@ https://api.cloudflare.com/client/v4/accounts/<account_id>/stream/direct_upload 
 	<h3>Cloudflare API</h3>
 	<p>The Stream API makes it easy to add a deletion policy to new or existing inputs. Here is an example API request to create a live input with recordings that will expire after 30 days:</p>
 	<pre class="language-json"><code class="language-json">curl -X POST \
--H 'Authorization: Bearer <bearer_token>' \
+-H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \
 -H 'Content-Type: application/json' \
 -d '{ "recording": {"mode": "automatic"}, "deleteRecordingAfterDays": 30 }' \
-https://api.staging.cloudflare.com/client/v4/accounts/<account_id>/stream/live_inputs/</account_id></bearer_token></code></pre>
+https://api.staging.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/live_inputs/</code></pre>
 	<p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api">the documentation</a>.</p>
 	<h2>Try out scheduled deletion today</h2>
 	<p>Scheduled deletion is now available to all Cloudflare Stream customers. Try it out now and join our <a href="https://discord.gg/cloudflaredev">Discord community</a> to let us know what you think! To learn more, check out our <a href="https://developers.cloudflare.com/stream">developer docs</a>. Stay tuned for more exciting Cloudflare Stream updates in the future.</p>

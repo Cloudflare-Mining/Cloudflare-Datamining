@@ -298,12 +298,12 @@
 	<p>At the core of the <code><b>mmap-sync</b></code> package is a structure named <code><b>Synchronizer</b></code>. It offers an avenue to read and write any data expressible as a Rust struct. Users simply have to implement or derive a specific Rust trait surrounding struct definition - a task requiring just a single line of code. The <code><b>Synchronizer</b></code> presents an elegantly simple interface, equipped with "write" and "read" methods.</p>
 	<pre class="language-rust"><code class="language-rust">impl Synchronizer {
     /// Write a given `entity` into the next available memory mapped file.
-    pub fn write<t>(&amp;mut self, entity: &amp;T, grace_duration: Duration) -&gt; Result&lt;(usize, bool), SynchronizerError&gt; {
+    pub fn write&lt;T&gt;(&amp;mut self, entity: &amp;T, grace_duration: Duration) -&gt; Result&lt;(usize, bool), SynchronizerError&gt; {
         …
     }
 
     /// Reads and returns `entity` struct from mapped memory wrapped in `ReadResult`
-    pub fn read<t>(&amp;mut self) -&gt; Result<readresult<t>, SynchronizerError&gt; {
+    pub fn read&lt;T&gt;(&amp;mut self) -&gt; Result&lt;ReadResult&lt;T&gt;, SynchronizerError&gt; {
         …
     }
 }
@@ -317,8 +317,8 @@ pub struct FeaturesMetadata {
     /// Features creation Unix timestamp
     pub created_at: u32,
     /// Features represented by vector of hash maps
-    pub features: Vec<hashmap<u64, vec<f32="">&gt;&gt;,
-}</hashmap<u64,></readresult<t></t></t></code></pre>
+    pub features: Vec&lt;HashMap&lt;u64, Vec&lt;f32&gt;&gt;&gt;,
+}</code></pre>
 	<p>A read operation through the <code><b>Synchronizer</b></code> performs zero-copy deserialization and returns a "guarded" <code><b>Result</b></code> encapsulating a reference to the Rust struct using <a href="https://rust-unofficial.github.io/patterns/patterns/behavioural/RAII.html">RAII design pattern</a>. This operation also increments the atomic counter of active readers using the struct. Once the <code><b>Result</b></code> is out of scope, the <code><b>Synchronizer</b></code> decrements the number of readers.</p>
 	<p>The synchronization mechanism used in <code><b>mmap-sync</b></code> is not only "lock-free" but also "wait-free". This ensures an upper bound on the number of steps an operation will take before it completes, thus providing a performance guarantee.</p>
 	<p>The data is stored in shared mapped memory, which allows the <code><b>Synchronizer</b></code> to “write” to it and “read” from it concurrently. This design makes <code><b>mmap-sync</b></code> a highly efficient and flexible tool for managing shared, concurrent data access.</p>

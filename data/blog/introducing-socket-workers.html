@@ -60,20 +60,20 @@ await writer.close();</code></pre>
 	<pre class="language-bash"><code class="language-bash">interface Socket : EventTarget {
   constructor(object SocketInit);
 
-  Promise<undefined> update(object SocketInit);
+  Promise&lt;undefined&gt; update(object SocketInit);
 
   readonly attribute ReadableStream readable;
   readonly attribute WritableStream writable;
   
-  readonly attribute Promise<undefined> ready;
-  readonly attribute Promise<undefined> closed;
+  readonly attribute Promise&lt;undefined&gt; ready;
+  readonly attribute Promise&lt;undefined&gt; closed;
 
-  Promise<undefined> abort(optional any reason);
+  Promise&lt;undefined&gt; abort(optional any reason);
   readonly attribute AbortSignal signal;
  
   readonly attribute SocketStats stats;
   readonly attribute SocketInfo info;
-}</undefined></undefined></undefined></undefined></code></pre>
+}</code></pre>
 	<p>This is just a proposal at this point and the details will very likely change from the examples above by the time the capability is delivered in Workers. It is our hope that other platforms will join us in the effort of developing and supporting this new API so that developers have a consistent foundation upon which to build regardless of where they run their code.</p>
 	<h3>Introducing Socket Workers</h3>
 	<p>The ability to open socket <i>client</i> connections is only half of the story.</p>

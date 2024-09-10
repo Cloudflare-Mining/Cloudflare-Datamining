@@ -166,8 +166,8 @@ bpfProgram, err := ebpf.NewProgram(ebpf.SocketFilter, &amp;ebpfInss, "GPL", 0)</
 	<h3>Accessing the BPF payload</h3>
 	<p>Next, there are special instructions for packet payload loading. Most BPF programs (but not all!) run in the context of packet filtering, so it makes sense to accelerate data lookups by having magic opcodes for accessing packet data.</p>
 	<p>Instead of dereferencing context, like <code>ctx-&gt;data[x]</code> to load a byte, BPF supports the <code>BPF_LD</code> instruction that can do it in one operation. There are caveats though, the documentation says:</p>
-	<pre class="language-bash"><code class="language-bash">eBPF has two non-generic instructions: (BPF_ABS | <size> | BPF_LD) and
-(BPF_IND | <size> | BPF_LD) which are used to access packet data.
+	<pre class="language-bash"><code class="language-bash">eBPF has two non-generic instructions: (BPF_ABS | &lt;size&gt; | BPF_LD) and
+(BPF_IND | &lt;size&gt; | BPF_LD) which are used to access packet data.
 
 They had to be carried over from classic BPF to have strong performance of
 socket filters running in eBPF interpreter. These instructions can only
@@ -176,7 +176,7 @@ have seven implicit operands. Register R6 is an implicit input that must
 contain pointer to sk_buff. Register R0 is an implicit output which contains
 the data fetched from the packet. Registers R1-R5 are scratch registers
 and must not be used to store the data across BPF_ABS | BPF_LD or
-BPF_IND | BPF_LD instructions.</size></size></code></pre>
+BPF_IND | BPF_LD instructions.</code></pre>
 	<p>In other words: before calling <code>BPF_LD</code> we must move <code>ctx</code> to R6, like this:</p>
 	<pre class="language-bash"><code class="language-bash">ebpf.BPFIDstSrc(ebpf.MovSrc, ebpf.Reg6, ebpf.Reg1),</code></pre>
 	<p>Then we can call the load:</p>

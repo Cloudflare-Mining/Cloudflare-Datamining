@@ -32,33 +32,32 @@
 	<p>Instead of concatenating files, web developers should focus more on optimizing caching policy. By isolating files that change frequently from ones that rarely change, it’s possible to serve as much content as possible from your <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> or the user’s browser cache.</p>
 	<h4>Stop Inlining Assets</h4>
 	<p>Inlining assets is a special case of file concatenation. It’s the practice of embedding CSS stylesheets, external JavaScript files, and images directly into an HTML page. For example, if you have web page that looks like this:</p>
-	<pre class="language-bash"><code class="language-bash">
-  
-	<link rel="stylesheet" href="/style.css">
-  <script nonce="dfb531ac-6cca-4843-8eb4-70f1e3dfeaef">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
-  
-	<img src="logo.png" alt="">
-	<script src="scripts.min.js"></script>
-  
-
-</code></pre>
+	<pre class="language-bash"><code class="language-bash">&lt;html&gt;
+  &lt;head&gt;
+	&lt;link rel="stylesheet" href="/style.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+	&lt;img src="logo.png"&gt;
+	&lt;script src="scripts.min.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 	<p>You could run it through an inlining tool to get something like this:</p>
-	<pre class="language-bash"><code class="language-bash">
-  
-	<style>
+	<pre class="language-bash"><code class="language-bash">&lt;html&gt;
+  &lt;head&gt;
+	&lt;style&gt;
 
 	  body {
 		font-size: 18px;
 
 		color: #999;
 	  }
-	</style>
-  <script nonce="dfb531ac-6cca-4843-8eb4-70f1e3dfeaef">try{(function(w,d){!function(l,m,n,o){if(l.zaraz)console.error("zaraz is loaded twice");else{l[n]=l[n]||{};l[n].executed=[];l.zaraz={deferred:[],listeners:[]};l.zaraz._v="5795";l.zaraz.q=[];l.zaraz._f=function(p){return async function(){var q=Array.prototype.slice.call(arguments);l.zaraz.q.push({m:p,a:q})}};for(const r of["track","set","debug"])l.zaraz[r]=l.zaraz._f(r);l.zaraz.init=()=>{var s=m.getElementsByTagName(o)[0],t=m.createElement(o),u=m.getElementsByTagName("title")[0];u&&(l[n].t=m.getElementsByTagName("title")[0].text);l[n].x=Math.random();l[n].w=l.screen.width;l[n].h=l.screen.height;l[n].j=l.innerHeight;l[n].e=l.innerWidth;l[n].l=l.location.href;l[n].r=m.referrer;l[n].k=l.screen.colorDepth;l[n].n=m.characterSet;l[n].o=(new Date).getTimezoneOffset();if(l.dataLayer)for(const y of Object.entries(Object.entries(dataLayer).reduce(((z,A)=>({...z[1],...A[1]})),{})))zaraz.set(y[0],y[1],{scope:"page"});l[n].q=[];for(;l.zaraz.q.length;){const B=l.zaraz.q.shift();l[n].q.push(B)}t.defer=!0;for(const C of[localStorage,sessionStorage])Object.keys(C||{}).filter((E=>E.startsWith("_zaraz_"))).forEach((D=>{try{l[n]["z_"+D.slice(7)]=JSON.parse(C.getItem(D))}catch{l[n]["z_"+D.slice(7)]=C.getItem(D)}}));t.referrerPolicy="origin";t.src="/static/z/s.js?z="+btoa(encodeURIComponent(JSON.stringify(l[n])));s.parentNode.insertBefore(t,s)};["complete","interactive"].includes(m.readyState)?zaraz.init():l.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async lu=>new Promise((lv=>{if(lu){lu.e&&lu.e.forEach((lw=>{try{const lx=d.querySelector("script[nonce]"),ly=lx?.nonce||lx?.getAttribute("nonce"),lz=d.createElement("script");ly&&(lz.nonce=ly);lz.innerHTML=lw;lz.onload=()=>{d.head.removeChild(lz)};d.head.appendChild(lz)}catch(lA){console.error(`Error executing script: ${lw}\n`,lA)}}));Promise.allSettled((lu.f||[]).map((lB=>fetch(lB[0],lB[1]))))}lv()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/static/z/t"),e;};</script>
-  
-	<img src="data:image/png;base64,Rw0KGgoAAAANSUhEUgAAAEAABA..." alt="">
-	<script>console.log('Hello, World!');</script>
-  
-</code></pre>
+	&lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+	&lt;img src="data:image/png;base64,Rw0KGgoAAAANSUhEUgAAAEAABA..."&gt;
+	&lt;script&gt;console.log('Hello, World!');&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 	<p>In extreme cases, this can actually reduce the number of HTTP requests for a given web page to one. But, like file concatenation, you shouldn’t inline files you’re trying to optimize for HTTP/2.</p>
 	<p>Inlining means that browsers can’t cache individual assets. If you have CSS declarations that apply to your entire website embedded into every single HTML file, those declarations get sent back from the server every time. This results in redundant bytes being sent over the wire for every page that a user visits.</p>
 	<p>Inlining also has the unfortunate side effect of breaking stream prioritization. Because your CSS, JavaScript, and images are now embedded in your HTML, you’re effectively raising their priority to the same level as HTML content. This means that browsers can’t request assets in their preferred order, potentially increasing time-to-first-paint.</p>

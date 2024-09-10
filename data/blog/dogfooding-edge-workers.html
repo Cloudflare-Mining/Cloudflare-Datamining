@@ -52,9 +52,9 @@ addEventListener('fetch', event =&gt; {
  */
 function promisifiedSentryLog(ex) {
     //Change these constants to your own Sentry values if you want to use this script
-    const sentryProjectId = '<replace-me-with-your-sentry-project-id>'
-    const sentryAPIKey = '<replace-me-with-your-sentry-api-key>'
-    const sentrySecretKey = '<replace-me-with-your-sentry-secret-key>'
+    const sentryProjectId = '&lt;Replace-Me-With-Your-Sentry-Project-Id&gt;'
+    const sentryAPIKey = '&lt;Replace-Me-With-Your-Sentry-API-Key&gt;'
+    const sentrySecretKey = '&lt;Replace-Me-With-Your-Sentry-Secret-Key&gt;'
     //Manually configure our call to Sentry
     let b = {
         project: sentryProjectId,
@@ -138,7 +138,7 @@ async function requestWithTLSHeader(event) {
          */
         throw ex
     }
-}</replace-me-with-your-sentry-secret-key></replace-me-with-your-sentry-api-key></replace-me-with-your-sentry-project-id></code></pre>
+}</code></pre>
 	<p>The above Workers script was updated on 5/17/18 to correct how the Sentry's API works.</p>
 	<h3>Asynchrony, logging and alerts via Sentry</h3>
 	<p>We decided to use Sentry to capture events we sent from our worker, but you could follow this same pattern with any similar service.</p>

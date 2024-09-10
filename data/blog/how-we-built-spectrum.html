@@ -29,12 +29,12 @@
 	<p>Sadly, you can't just bind to these attached v6 IP addresses like in the v4 example. To get this working you must use the <code>IP_FREEBIND</code> socket option, which requires elevated privileges. For completeness, there is also a sysctl <code>net.ipv6.ip_nonlocal_bind</code>, but we don't recommend touching it.</p>
 	<p>This AnyIP trick allows us to have millions of IP addresses assigned locally to each server:</p>
 	<pre class="language-bash"><code class="language-bash">$ ip addr show
-1: lo: <loopback,up,lower_up> mtu 65536
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
     inet 1.1.1.0/24 scope global lo
        valid_lft forever preferred_lft forever
     inet 104.16.0.0/16 scope global lo
        valid_lft forever preferred_lft forever
-...</loopback,up,lower_up></code></pre>
+...</code></pre>
 	<h3>Binding to ALL ports</h3>
 	<p>The second major issue is the ability to open TCP sockets for any port number. In Linux, and generally in any system supporting the BSD sockets API, you can only bind to a specific TCP port number with a single <code>bind</code> system call. It’s not possible to bind to multiple ports in a single operation.</p>
 	<p>A naive solution would be to <code>bind</code> 65535 times, once for each of the 65535 possible ports. Indeed, this could have been an option, but with terrible consequences:</p>

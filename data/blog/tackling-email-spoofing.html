@@ -22,9 +22,9 @@
 	</figure>
 	<p>Then, there is <b>email spoofing</b>. In order to understand how this works, let’s take a look at a Cloudflare product update email I received on my personal email address. With most email providers you can look at the full source of an email which contains a number of headers and of course the body of the email.</p>
 	<pre class="language-bash"><code class="language-bash">Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
-From: Cloudflare <product-updates@cloudflare.com>
+From: Cloudflare &lt;product-updates@cloudflare.com&gt;
 Reply-To: product-updates@cloudflare.com
-To: <my_personal_email_address></my_personal_email_address></product-updates@cloudflare.com></code></pre>
+To: &lt;my_personal_email_address&gt;</code></pre>
 	<p>Above you can see four headers of the email, when it was received, who it came from, who I should reply to, and my personal email address. The value of the <code>From</code> header is used to display the sender in my email program.</p>
 	<figure class="kg-card kg-image-card ">
 

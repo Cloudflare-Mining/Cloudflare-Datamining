@@ -38,7 +38,7 @@
 	<p>Instead, what we can do is create a new Durable Object with a random ID for every new game session and keep a mapping from the four character room code to this random ID. We are introducing some state in our system: we will need a central source of truth which is where Durable Objects can come to the rescue again.</p>
 	<p>We will solve this by creating a single "Room Hub" Durable Object that keeps track of this mapping from room code to Durable Object ID. This Durable Object will have two endpoints, one to request a new room and another to look up a room's information.</p>
 	<p>Here's our request handler for the Room Request endpoint (the argument is a <a href="https://sunderjs.com/docs/context">Sunder Context</a>, Sunder is the web framework I used for this project):</p>
-	<pre class="language-typescript"><code class="language-typescript">export async function handleRoomRequest(ctx: Context<env>) {
+	<pre class="language-typescript"><code class="language-typescript">export async function handleRoomRequest(ctx: Context&lt;Env&gt;) {
     const now = Date.now();    
     const reqBody = await ctx.request.json();
 
@@ -51,7 +51,7 @@
     for (let i = 0; i &lt; attempts; i++) {
         roomCode = generateRoomCode();
         roomStorageKey = ROOM_STATE_PREFIX + roomCode;
-        const room = await ctx.state.storage.get<roomdata>(roomStorageKey);
+        const room = await ctx.state.storage.get&lt;RoomData&gt;(roomStorageKey);
         if (room === undefined) {
             break;
         } else if (now - room.createdAt &gt; MAX_ROOM_AGE) {
@@ -69,21 +69,21 @@
         createdAt: now,
     }
 
-    await ctx.state.storage.put<roomdata>(roomStorageKey, roomData);
+    await ctx.state.storage.put&lt;RoomData&gt;(roomStorageKey, roomData);
 
     ctx.response.body = {
         room: roomData
     };
     ctx.response.status = HttpStatus.Created;
-}</roomdata></roomdata></env></code></pre>
+}</code></pre>
 	<p>In a nutshell, we generate a few room codes until we find one that has never been used or hasn't been used in a long enough time.</p>
 	<p>There is a subtle but important nuance in this code: the Durable Object gets created in the Cloudflare Worker that talks to our Room Hub, not in the Room Hub itself. Our Room Hub will run in a single data center somewhere on Cloudflare's network. If we create the game room from there it may still be far away from our end user!</p>
 	<p>Looking up a room's information is simpler, we return either the room data or status 404.</p>
-	<pre class="language-typescript"><code class="language-typescript">export async function handleRoomLookup(ctx: Context<env, {roomcode:="" string}="">) {
+	<pre class="language-typescript"><code class="language-typescript">export async function handleRoomLookup(ctx: Context&lt;Env, {roomCode: string}&gt;) {
     const now = Date.now();
 
     let roomStorageKey = ROOM_STATE_PREFIX + ctx.params.roomCode;
-    const roomData = await ctx.state.storage.get<roomdata>(roomStorageKey);
+    const roomData = await ctx.state.storage.get&lt;RoomData&gt;(roomStorageKey);
 
     if (roomData === undefined) {
         ctx.throw(404, "Room not found");
@@ -100,7 +100,7 @@
     ctx.response.body = {
         room: roomData
     };
-}</roomdata></env,></code></pre>
+}</code></pre>
 	<p>The smartphone browser needs to connect to that same room. To make things easy for the user we generate a four character room code which points at that specific "Game Room" Durable Object. This way the user can take their smartphone, navigate to the website address <code>https://ld49.pages.dev</code>, and enter the code "ABCD" (or more commonly, they scan a QR code with the link <code>https://ld49.pages.dev?room=ABCD</code>).</p>
 	<h3>Game Room Durable Object</h3>
 	<p>Our game room Durable Object can be pretty simple since it is only responsible for passing along messages from the smartphone to the laptop with the latest sensor readings. I was able to modify the <a href="https://github.com/cloudflare/workers-chat-demo">Durable Objects chat room example</a> to do exactly this — a good time saver for a game jam!</p>

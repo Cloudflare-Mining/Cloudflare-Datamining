@@ -149,20 +149,20 @@
 	<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream%2Finputs%2Fcreate">Create a new live input from the Stream Dashboard</a> or use use the Stream API:</p>
 	<p><b>Request</b></p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST \
--H "Authorization: Bearer <your_api_token>" \
+-H "Authorization: Bearer &lt;YOUR_API_TOKEN&gt;" \
 -d "{"recording": { "mode": "automatic" } }" \
-https://api.cloudflare.com/client/v4/accounts/<your_cloudflare_account_id>/stream/live_inputs</your_cloudflare_account_id></your_api_token></code></pre>
+https://api.cloudflare.com/client/v4/accounts/&lt;YOUR_CLOUDFLARE_ACCOUNT_ID&gt;/stream/live_inputs</code></pre>
 	<p><b>Response</b></p>
 	<pre class="language-bash"><code class="language-bash">{
 "result": {
-"uid": "<uid_of_your_live_input>",
+"uid": "&lt;UID_OF_YOUR_LIVE_INPUT&gt;",
 "rtmps": {
 "url": "rtmps://live.cloudflare.com:443/live/",
-"streamKey": "<private_rtmps_stream_key>"
+"streamKey": "&lt;PRIVATE_RTMPS_STREAM_KEY&gt;"
 },
 ...
 }
-}</private_rtmps_stream_key></uid_of_your_live_input></code></pre>
+}</code></pre>
 	<h3>Step 2: Use the RTMPS key with any live broadcasting software, or in your own native app</h3>
 	<p>Copy the RTMPS URL and key, and use them with your live streaming application. We recommend using <a href="https://obsproject.com">Open Broadcaster Software (OBS)</a> to get started, but any RTMPS or SRT compatible software should be able to interoperate with Stream Live.</p>
 	<p>Enter the Stream RTMPS URL and the Stream Key from Step 1:</p>

@@ -60,10 +60,10 @@ fn main() {
         .expect("Unable to write bindings.");
 }</code></pre>
 	<p>Hopefully this is all fairly self-explanatory. Bindgen traverses the NGINX source and generates equivalent constructs in Rust in a file called <code>bindings.rs</code>, which we can import into our project. There’s just one more thing to add- Bindgen has trouble with a couple of symbols in NGINX, which we’ll need to fix in a file called <code>wrapper.h</code>. It should have the following contents:</p>
-	<pre class="language-unset"><code class="language-unset">#include <ngx_http.h>
+	<pre class="language-unset"><code class="language-unset">#include &lt;ngx_http.h&gt;
 
 const char* NGX_RS_MODULE_SIGNATURE = NGX_MODULE_SIGNATURE;
-const size_t NGX_RS_HTTP_LOC_CONF_OFFSET = NGX_HTTP_LOC_CONF_OFFSET;</ngx_http.h></code></pre>
+const size_t NGX_RS_HTTP_LOC_CONF_OFFSET = NGX_HTTP_LOC_CONF_OFFSET;</code></pre>
 	<p>With this in place and <a href="https://crates.io/crates/bindgen">Bindgen</a> set in the <code>[build-dependencies]</code> section of the Cargo.toml file, we should be ready to build.</p>
 	<pre class="language-unset"><code class="language-unset">$ cargo build
    Compiling rust-nginx-module v0.1.0 (/Users/sam/cf-repos/rust-nginx-module)
@@ -167,22 +167,22 @@ pub extern "C" fn rofl_module_email_obfuscation_new(
 
 impl&lt;'a&gt; Pool&lt;'a&gt; {    
     /// Register a cleanup handler that will get called at the end of the request.
-    fn add_cleanup<t>(&amp;mut self, value: *mut T) -&gt; Result&lt;(), ()&gt; {
+    fn add_cleanup&lt;T&gt;(&amp;mut self, value: *mut T) -&gt; Result&lt;(), ()&gt; {
         unsafe {
             let cln = ngx_pool_cleanup_add(self.0, 0);
             if cln.is_null() {
                 return Err(());
             }
-            (*cln).handler = Some(cleanup_handler::<t>);
+            (*cln).handler = Some(cleanup_handler::&lt;T&gt;);
             (*cln).data = value as *mut c_void;
             Ok(())
         }
     }
 
     /// Allocate memory for a given value.
-    pub fn alloc<t>(&amp;mut self, value: T) -&gt; Option&lt;&amp;'a mut T&gt; {
+    pub fn alloc&lt;T&gt;(&amp;mut self, value: T) -&gt; Option&lt;&amp;'a mut T&gt; {
         unsafe {
-            let p = ngx_palloc(self.0, mem::size_of::<t>()) as *mut _ as *mut T;
+            let p = ngx_palloc(self.0, mem::size_of::&lt;T&gt;()) as *mut _ as *mut T;
             ptr::write(p, value);
             if let Err(_) = self.add_cleanup(p) {
                 ptr::drop_in_place(p);
@@ -193,9 +193,9 @@ impl&lt;'a&gt; Pool&lt;'a&gt; {
     }
 }
 
-unsafe extern "C" fn cleanup_handler<t>(data: *mut c_void) {
+unsafe extern "C" fn cleanup_handler&lt;T&gt;(data: *mut c_void) {
     ptr::drop_in_place(data as *mut T);
-}</t></t></t></t></t></code></pre>
+}</code></pre>
 	<p>This should allow us to allocate memory for whatever we want, safe in the knowledge that NGINX will handle it for us.</p>
 	<p>It is regrettable that we have to write a lot of <code>unsafe</code> blocks when dealing with NGINX’s interface in Rust. Although we’ve done a lot of work to minimise them where possible, unfortunately this is often the case with writing Rust code which has to manipulate C constructs through FFI. We have plans to do more work on this in the future, and remove as many lines as possible from <code>unsafe</code>.</p>
 	<h3>Challenges encountered</h3>
@@ -226,12 +226,12 @@ unsafe extern "C" fn cleanup_handler<t>(data: *mut c_void) {
 pub struct Chains {
     /// This saves buffers from the `in` chain that were not processed for any reason (most likely
     /// backpressure for the next nginx module).
-    saved_in: RefCell<chain>,
-    pub free: RefCell<chain>,
-    pub busy: RefCell<chain>,
-    pub out: RefCell<chain>,
+    saved_in: RefCell&lt;Chain&gt;,
+    pub free: RefCell&lt;Chain&gt;,
+    pub busy: RefCell&lt;Chain&gt;,
+    pub out: RefCell&lt;Chain&gt;,
     [...]
-}</chain></chain></chain></chain></code></pre>
+}</code></pre>
 	<p>Effectively we’re ‘queueing’ the data for a short period of time so that we don’t overwhelm the other modules by feeding them data faster than they can handle it. The <a href="https://nginx.org/en/docs/dev/development_guide.html">NGINX Developer Guide</a> has a lot of great information, but many of its examples are trivial to the point where issues like this don’t come up. Things such as this are the result of working in a complex NGINX-based environment, and need to be discovered independently.</p>
 	<h3>A future without NGINX</h3>
 	<p>The obvious question a lot of people might ask is: why are we still using NGINX? As already mentioned, Cloudflare is well on its way to replacing components that either used to run NGINX/OpenResty proxies, or would have done without heavy investment in home-grown platforms. That said, some components are easier to replace than others and FL, being where most of the logic for Cloudflare’s <a href="https://www.cloudflare.com/application-services">application services</a> runs, is definitely on the more challenging end of the spectrum.</p>

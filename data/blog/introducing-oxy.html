@@ -74,11 +74,11 @@
 #[oxy_app_settings]
 pub struct MyAppKVSettings {
     /// Key prefix.
-    pub prefix: Option<string>,
+    pub prefix: Option&lt;String&gt;,
     /// Path to the UNIX domain socket for the appropriate KV 
     /// server instance.
-    pub socket: Option<string>,
-}</string></string></code></pre>
+    pub socket: Option&lt;String&gt;,
+}</code></pre>
 	<p>Oxy can then generate a default YAML configuration file listing available options and their default values, including those extended by the application. The configuration options are automatically documented in the generated file from the Rust doc comments, following best Rust practices.</p>
 	<p>Moreover, Oxy supports multi-tenancy, allowing a single application instance to expose multiple on-ramp endpoints, each with a unique configuration. But, sometimes even a YAML configuration file is not enough to build a desired application, this is where Oxy's comprehensive set of hooks comes in handy. These hooks can be used to extend the application with Rust code and cover almost all aspects of the traffic processing.</p>
 	<p>To give you an idea of how easy it is to write an Oxy application, here is an example of basic Oxy code:</p>
@@ -116,8 +116,8 @@ impl OxyApp for MyApp {
     }
 
     async fn start(
-        settings: ServerSettings<myappsettings, ()="">
-    ) -&gt; anyhow::Result<hooks<self>&gt; {
+        settings: ServerSettings&lt;MyAppSettings, ()&gt;
+    ) -&gt; anyhow::Result&lt;Hooks&lt;Self&gt;&gt; {
         // Here the application initializes various hooks, with each
         // hook being a trait implementation containing multiple
         // optional callbacks invoked during the lifecycle of the
@@ -141,8 +141,8 @@ impl OxyApp for MyApp {
 
 // The entry point of the application
 fn main() -&gt; OxyResult&lt;()&gt; {
-    oxy::bootstrap::<myapp>()
-}</myapp></hooks<self></myappsettings,></code></pre>
+    oxy::bootstrap::&lt;MyApp&gt;()
+}</code></pre>
 	<h2>Technology choice</h2>
 	<p>Oxy leverages the safety and performance benefits of Rust as its implementation language. At Cloudflare, Rust has emerged as a popular choice for new product development, and there are ongoing efforts to migrate some of the existing products to the language as well.</p>
 	<p>Rust offers memory and concurrency safety through its ownership and borrowing system, preventing issues like null pointers and data races. This safety is achieved without sacrificing performance, as Rust provides low-level control and the ability to write code with minimal runtime overhead. Rust's balance of safety and performance has made it popular for building safe performance-critical applications, like proxies.</p>

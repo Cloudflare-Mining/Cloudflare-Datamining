@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UD9KzpQP3jP9fi1LLSD5T/4695b50874c94cda4552b424091de263/cloudflare-workers-now-support-cobol.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UD9KzpQP3jP9fi1LLSD5T/4695b50874c94cda4552b424091de263/cloudflare-workers-now-support-cobol.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently, COBOL has been in the news as the State of New Jersey has <a href="https://slate.com/technology/2020/04/new-jersey-unemployment-cobol-coronavirus.html">asked for help with</a> a COBOL-based system for unemployment claims. The system has come under heavy load because of the societal effects of the SARS-CoV-2 virus. This appears to have prompted IBM to offer <a href="https://newsroom.ibm.com/2020-04-09-IBM-and-Open-Mainframe-Project-Mobilize-to-Connect-States-with-COBOL-Skills">free online COBOL training</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -162,36 +162,39 @@ $</code></pre>
 		   IF CELL = "1" THEN
 		      COMPUTE NEIGHBORS = NEIGHBORS + 1.
        PRINT-FORM.
-           CALL "append_http_body" USING "<form name="frm1" method="POST"><input type="hidden" name="state" value=".
-	   CALL " append_http_body"="" using="" drew.="" call="" "append_http_body"="" "="">".
+           CALL "append_http_body" USING "&lt;form name=frm1 method=POST&gt;&lt;input type=hidden name=state value=".
+	   CALL "append_http_body" USING DREW.
+	   CALL "append_http_body" USING "&gt;".
 	   PERFORM VARYING PARAM-COUNTER FROM 1 BY 1 UNTIL PARAM-COUNTER &gt; 30
-    	       CALL "append_http_body" USING "<input type="hidden" name="state&quot;" call="" "append_http_body"="" using="" param-counter="" "="" value="
+    	       CALL "append_http_body" USING "&lt;input type=hidden name=state"
+	       CALL "append_http_body" USING PARAM-COUNTER
+    	       CALL "append_http_body" USING " value="
 	       COMPUTE POS = (PARAM-COUNTER - 1) * 10 + 1
 	       MOVE NEW-WORLD(POS:10) TO PARAM-OUTPUT
-	       CALL " append_http_body"="" param-output="">"
+	       CALL "append_http_body" USING PARAM-OUTPUT
+    	       CALL "append_http_body" USING "&gt;"
 	   END-PERFORM
-           CALL "append_http_body" USING "</form>".
+           CALL "append_http_body" USING "&lt;/form&gt;".
        PRINT-WORLD.
            MOVE 0 TO DREW.
            CALL "set_http_status" USING "200".
-	   CALL "append_http_body" USING ""
-	   CALL "append_http_body" USING "<style>table { background:-color: white; } td { width: 10px; height: 10px}</style>".
-           CALL "append_http_body" USING "".
+	   CALL "append_http_body" USING "&lt;html&gt;&lt;body onload='setTimeout(function() { document.frm1.submit() }, 1000)'&gt;"
+	   CALL "append_http_body" USING "&lt;style&gt;table { background:-color: white; } td { width: 10px; height: 10px}&lt;/style&gt;".
+           CALL "append_http_body" USING "&lt;table&gt;".
            PERFORM PRINT-ROW VARYING ROW-COUNTER FROM 3 BY 1 UNTIL ROW-COUNTER &gt;= TOTAL-ROWS - 1.
-           CALL "append_http_body" USING "<table></table>
-".
+           CALL "append_http_body" USING "&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;".
        PRINT-ROW.
-           CALL "append_http_body" USING "".
+           CALL "append_http_body" USING "&lt;tr&gt;".
            PERFORM PRINT-CELL VARYING COLUMN-COUNTER FROM 3 BY 1 UNTIL COLUMN-COUNTER &gt;= TOTAL-COLUMNS - 1.
-           CALL "append_http_body" USING "".
+           CALL "append_http_body" USING "&lt;/tr&gt;".
        PRINT-CELL.
 	   COMPUTE POS = (ROW-COUNTER - 1) * TOTAL-COLUMNS + COLUMN-COUNTER.
 	   MOVE NEW-WORLD(POS:1) TO CELL.
            IF CELL = "1" THEN
 	       MOVE 1 TO DREW
-               CALL "append_http_body" USING "".
+               CALL "append_http_body" USING "&lt;td bgcolor=blue&gt;&lt;/td&gt;".
            IF CELL = "0" THEN
-               CALL "append_http_body" USING "".</code></pre>
+               CALL "append_http_body" USING "&lt;td&gt;&lt;/td&gt;".</code></pre>
 	<p>If you want to run your own simulation you can do an HTTP POST with 30 parameters that when concatenated form the layout of the 15x20 world simulated in COBOL.</p>
 	<p>If you want to install this yourself, take the following steps:</p>
 	<ol>

@@ -12,22 +12,22 @@
 	<p>Based on Area 1 Security’s analysis, this campaign is predominantly launched at public-facing emails of the targeted companies, e.g. @.com. However, to a lesser extent, there are instances when individuals are targeted, typically executives and upper management. These individuals often work in the sales department, demonstrating the attacker is purposefully choosing targets who are likely to have access to client data and need to comply with GDPR regulations.</p>
 	<p>In the initial wave of the campaign, the attacker sent phishing messages from a Virtual Private Server (VPS) IP address belonging to ReadyIDC, 103[.]22[.]183[.]95. Using a VPS allows the attacker a greater degree of anonymity when conducting phishing campaigns since it is extremely difficult to pinpoint their physical location. They are able to leverage all the benefits of using a cloud-based service, as well as the ability to easily spin up new servers in the event that their IP address gets blocked or otherwise identified as phishing infrastructure.</p>
 	<p>A careful inspection of the headers in one of the first instances of this phish reveals a misstep by the threat actor when launching their campaign. As detailed below, despite successfully spoofing the visible FROM header, the envelope MAIL FROM address divulges that the attacker sent their malicious messages via a Gmail account.</p>
-	<pre class="language-bash"><code class="language-bash">MAIL FROM:<redacted>@gmail.com&gt;
-From: noreplysecurityservices@<targeted company’s="" domain="">
-To: <public-facing targeted="" company’s="" email="" account="">
+	<pre class="language-bash"><code class="language-bash">MAIL FROM:&lt;redacted&gt;@gmail.com&gt;
+From: noreplysecurityservices@&lt;targeted company’s domain&gt;
+To: &lt;public-facing targeted company’s email account&gt;
 Subject: User account security alert
-Date: 31 Aug 2020 22:17:43 +0700</public-facing></targeted></redacted></code></pre>
+Date: 31 Aug 2020 22:17:43 +0700</code></pre>
 	<p>This mistake is quickly rectified in subsequent phishing messages, where the attacker successfully spoofs not only the visible From address but also the envelope MAIL FROM domain of the targeted companies. However, these “stealthier” messages expose yet another blunder, as evidenced by the presence of a “Disposition-Notification-To” header. &nbsp;This header indicates that read-receipts are enabled, meaning the attacker will be notified when a target opens the malicious email. &nbsp;This once again discloses the sender account, which happens to be the same Gmail address as identified in the first wave of the campaign.</p>
 	<p>On the second day of the campaign (September 1st) the attacker began inserting SMTP HELO commands to tell receiving email servers that the phishing message originated from the target company’s domain, when in fact it came from an entirely different origin. This is a common tactic used by malicious actors to spoof legitimate domains and easily bypass legacy email security solutions. Shown in the following headers, the true origin of the email is the IP address 196[.]53[.]250[.]243:</p>
-	<pre class="language-bash"><code class="language-bash">smtp.pra=noreplysecurityservices@<targeted company’s="" domain="">; spf=None
-smtp.mailfrom=noreplysecurityservices@<targeted company’s="" domain="">; spf=None
-smtp.helo=postmaster@<targeted company’s="" domain="">
-Received: from unknown (HELO <targeted company’s="" domain="">) ([196[.]53[.]250[.]243])
-  by <redacted>.com with ESMTP; 01 Sep 2020 05:19:33 -0400
-From: noreplysecurityservices@<targeted company’s="" domain="">
-To: <email of="" employee="" at="" targeted="" company="">
+	<pre class="language-bash"><code class="language-bash">smtp.pra=noreplysecurityservices@&lt;targeted company’s domain&gt;; spf=None
+smtp.mailfrom=noreplysecurityservices@&lt;targeted company’s domain&gt;; spf=None
+smtp.helo=postmaster@&lt;targeted company’s domain&gt;
+Received: from unknown (HELO &lt;targeted company’s domain&gt;) ([196[.]53[.]250[.]243])
+  by &lt;redacted&gt;.com with ESMTP; 01 Sep 2020 05:19:33 -0400
+From: noreplysecurityservices@&lt;targeted company’s domain&gt;
+To: &lt;email of employee at targeted company&gt;
 Subject: Email User security alert
-Date: 1 Sep 2020 16:19:07 +0700</email></targeted></redacted></targeted></targeted></targeted></targeted></code></pre>
+Date: 1 Sep 2020 16:19:07 +0700</code></pre>
 	<p>The attacker switched to this IP address to launch the second wave of the campaign. Depicted below is a screenshot of a vulnerable and shoddy gaming site, Ran Smok, which is directly accessible via this IP (i.e., hxxp://196[.]53[.]250[.]243). The site links to various web pages that result in “Access denied,” and the IP address has been associated with numerous suspicious websites over the years. An analysis of available services running on the IP address reveals that port 25 (used by the Simple Mail Transfer Protocol, or SMTP) is running in a filtered state, and is most likely how the attacker is sending the phishing messages. A closer look at the list of open ports on the IP address reveals a number of additional services that should never be open to the internet, thus leaving the host at this IP exceedingly vulnerable, and all-the-more enticing to an attacker.</p>
 	<figure class="kg-card kg-image-card ">
 

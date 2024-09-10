@@ -44,8 +44,8 @@
 	<p>It’s also important to have context in the Outbound Worker to answer questions like “which user Worker is this request coming from?”. You can declare variables to pass through to the Outbound Worker in the dispatch namespaces binding:</p>
 	<pre class="language-bash"><code class="language-bash">[[dispatch_namespaces]]
 binding = "dispatcher"
-namespace = "<namespace_name>"
-outbound = {service = "<service_name>", parameters = [customer_name,url]}</service_name></namespace_name></code></pre>
+namespace = "&lt;NAMESPACE_NAME&gt;"
+outbound = {service = "&lt;SERVICE_NAME&gt;", parameters = [customer_name,url]}</code></pre>
 	<p>From there, the variables declared in the binding can be accessed in the Outbound Worker through env. <code>&lt;VAR_NAME&gt;</code>.</p>
 	<h3>Custom Limits</h3>
 	<p>Workers are really powerful, but, as a platform, you may want guardrails around their capabilities to shape your pricing and packaging model. For example, if you run a freemium model on your platform, you may want to set a lower CPU time limit for customers on your free tier.</p>
@@ -80,7 +80,7 @@ async fetch(request, env) {
 	<p>Live logging is an essential piece of the developer experience. It allows developers to monitor for errors and troubleshoot in real time. On Workers, giving users real time logs though <code>wrangler tail</code> is a feature that developers love! Now with Tail Workers, platform customers can give their users the same level of visibility to provide a faster debugging experience.</p>
 	<p>Tail Worker logs contain metadata about the original trigger event (like the incoming URL and status code for fetches), console.log() messages and capture any unhandled exceptions. Tail Workers can be added to the Dynamic Dispatch Worker in order to capture logs from both the Dynamic Dispatch Worker and any User Workers that are called.</p>
 	<p>A Tail Worker can be configured by adding the following to the <code>wrangler.toml</code> file of the producing script</p>
-	<pre class="language-yaml"><code class="language-yaml">tail_consumers = [{service = "<tail_worker_name>", environment = "<environment_name>"}]</environment_name></tail_worker_name></code></pre>
+	<pre class="language-yaml"><code class="language-yaml">tail_consumers = [{service = "&lt;TAIL_WORKER_NAME&gt;", environment = "&lt;ENVIRONMENT_NAME&gt;"}]</code></pre>
 	<p>From there, events are captured in the Tail Worker using a new tail handler:</p>
 	<pre class="language-javascript"><code class="language-javascript">export default {
   async tail(events) =&gt; {

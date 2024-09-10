@@ -15,7 +15,7 @@
     clickhouse:
       cluster: dns
     comment: |-
-      Updated by <user></user></code></pre>
+      Updated by &lt;user&gt;</code></pre>
 	<p>As time went on, this became extremely cumbersome for engineers to manage and assign workloads for servers. Engineers would often have to update multiple files, updating every entry to assign and change workload data by hand. While this may seem like a slight inconvenience at first, when provisioning new hardware or changing workload configuration data, engineers would have to update hundreds of lines of YAML. Additionally, this data was not readily accessible to other systems and automation to read and modify. It became clear that this pattern could not scale, and a stronger framework would need to be created to manage this information.</p>
 	<p>First, we aimed to tackle this problem by making nodes and their workloads — which we call roles — first class data structures. Workload and node information were collected and stored in this new system called Zinc, and our configuration management system <a href="https://saltproject.io/index.html">Salt</a> began to read this information not from the YAML files, but a new RESTful API. We also added several features to Zinc to administer and manage node data:</p>
 	<ul>

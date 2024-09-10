@@ -48,10 +48,10 @@
 	<p>This saves us having to stand up and maintain an external metrics service, configure another cloud service, or think about how it will scale: we can do it all directly on Cloudflare.</p>
 	<pre class="language-typescript"><code class="language-typescript">
 async function pubsub(
-  messages: Array<pubsubmessage>,
+  messages: Array&lt;PubSubMessage&gt;,
   env: any,
   ctx: ExecutionContext
-): Promise<array<pubsubmessage>&gt; {
+): Promise&lt;Array&lt;PubSubMessage&gt;&gt; {
   
   for (let msg of messages) {
     // Extract a value from the payload and write it to Analytics Engine
@@ -80,7 +80,7 @@ const worker = {
     if (await isValidBrokerRequest(req)) {
 
       // Parse the incoming PubSub messages
-      let incomingMessages: Array<pubsubmessage> = await req.json();
+      let incomingMessages: Array&lt;PubSubMessage&gt; = await req.json();
       
       // Pass the message to our pubsub handler, and capture the returned
       // messages
@@ -95,7 +95,7 @@ const worker = {
   },
 };
 
-export default worker;</pubsubmessage></array<pubsubmessage></pubsubmessage></code></pre>
+export default worker;</code></pre>
 	<p>We can then query these metrics directly using a familiar language: SQL. Our query takes the metrics we’ve written and gives us a breakdown of transactions processed by our payment devices, grouped by merchant (and again, all on Cloudflare):</p>
 	<pre class="language-bash"><code class="language-bash">SELECT
   label_2 as region,

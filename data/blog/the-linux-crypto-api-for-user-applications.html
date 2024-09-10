@@ -92,16 +92,16 @@ AES(AESNI) CTR(G) 128   |e|	1024 bytes|          	172.94 MB/s|177054 ops/s</code
 	<p>kernel.c</p>
 	<pre class="language-cpp"><code class="language-cpp">#define _GNU_SOURCE
 
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
+#include &lt;stdint.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <time.h>
-#include <sys random.h="">
-#include <sys socket.h="">
-#include <linux if_alg.h="">
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;time.h&gt;
+#include &lt;sys/random.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;linux/if_alg.h&gt;
 
 #define PT_LEN (63 * 1024)
 #define CT_LEN PT_LEN
@@ -200,7 +200,7 @@ int main(void)
     printf("Kernel: %.02f Mb/s\n", tput_krn / (1024 * 1024));
     
     return 0;
-}</linux></sys></sys></time.h></fcntl.h></unistd.h></stdio.h></string.h></stdint.h></code></pre>
+}</code></pre>
 	<p>Compile and run:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o kernel kernel.c
 $ ./kernel
@@ -208,9 +208,9 @@ Kernel: 2112.49 Mb/s</code></pre>
 	<h3>Implementing AES-CTR-128 with OpenSSL</h3>
 	<p>With OpenSSL everything is straight forward, we just repeated an example from the <a href="https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption#Encrypting_the_message">official documentation</a>.</p>
 	<p>openssl.c</p>
-	<pre class="language-cpp"><code class="language-cpp">#include <time.h>
-#include <sys random.h="">
-#include <openssl evp.h="">
+	<pre class="language-cpp"><code class="language-cpp">#include &lt;time.h&gt;
+#include &lt;sys/random.h&gt;
+#include &lt;openssl/evp.h&gt;
 
 #define PT_LEN (63 * 1024)
 #define CT_LEN PT_LEN
@@ -266,7 +266,7 @@ int main(void)
     printf("OpenSSL: %.02f Mb/s\n", tput_ossl / (1024 * 1024));
 
     return 0;
-}</openssl></sys></time.h></code></pre>
+}</code></pre>
 	<p>Compile and run:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o openssl openssl.c -lcrypto
 $ ./openssl

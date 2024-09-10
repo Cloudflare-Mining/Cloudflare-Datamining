@@ -46,7 +46,7 @@ var server = http.createServer(function (req, res) {
   preload(req, res, function () {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/html');
-      res.end('<h1>Hello World</h1>');
+      res.end('&lt;!doctype html&gt;&lt;h1&gt;Hello World&lt;/h1&gt;');
   });
 });
 

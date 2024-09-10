@@ -44,7 +44,7 @@ total 84K
 import {load} from "../output/index.mjs"
 
 export default {
-    async fetch(request: Request): Promise<response> {
+    async fetch(request: Request): Promise&lt;Response&gt; {
         // Load the Fortran program
         const program = await load();
 
@@ -70,7 +70,7 @@ export default {
 
         return Response.json({ res });
     },
-};</response></code></pre>
+};</code></pre>
 	<p>Interestingly, the values we pass to Fortran are all pointers, therefore we have to allocate space for each argument and result (the Fortran integer type is four bytes wide), and pass the pointers to the <code>add</code> subroutine.</p>
 	<p>Running the Worker gives us the right answer:</p>
 	<pre class="language-bash"><code class="language-bash">$ curl https://fortran-add.cfdemos.workers.dev

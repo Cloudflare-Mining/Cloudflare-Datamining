@@ -46,11 +46,11 @@ interface Socket {
   readonly attribute ReadableStream readable;
   readonly attribute WritableStream writable;
 
-  readonly attribute Promise<undefined> closed;
-  Promise<undefined> close();
+  readonly attribute Promise&lt;undefined&gt; closed;
+  Promise&lt;undefined&gt; close();
 
   Socket startTls();
-};</undefined></undefined></code></pre>
+};</code></pre>
 	<p>The proposed API is Promise-based and reuses existing standards whenever possible. For example, <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream">ReadableStream</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream">WritableStream</a> are used for the read and write ends of the socket. This makes it easy to pipe data from a TCP socket to any other library or existing code that accepts a ReadableStream as input, or to write to a TCP socket via a WritableStream.</p>
 	<p>The entrypoint of the API is the connect() function, which takes a string containing both the hostname and port separated by a colon, or an object with discrete hostname and port fields. It returns a Socket object which represents a socket connection. An instance of this object exposes attributes and methods for working with the connection.</p>
 	<p>A connection can be established in plain-text or TLS mode, as well as a special “starttls” mode which allows the socket to be easily upgraded to TLS after some period of plain-text data transfer, by calling the startTls() method on the Socket object. No need to create a new socket or switch to using a separate set of APIs once the socket is upgraded to use TLS.</p>

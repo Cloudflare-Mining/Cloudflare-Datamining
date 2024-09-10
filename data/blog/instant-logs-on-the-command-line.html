@@ -31,15 +31,15 @@
 		</li>
 	</ul>
 	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
--H 'X-Auth-Key: <key>' \
--H 'X-Auth-Email: <email>' \
+-H 'X-Auth-Key: &lt;KEY&gt;' \
+-H 'X-Auth-Email: &lt;EMAIL&gt;' \
 -H 'Content-Type: application/json' \
 --data-raw '{
     "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
     "sample": 1,
     "filter": "",
     "kind": "instant-logs"
-}'</email></key></code></pre>
+}'</code></pre>
 	<h3>Response</h3>
 	<p>The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p>
 	<pre class="language-json"><code class="language-json">{
@@ -78,15 +78,15 @@
 	<h2>Creating an Instant Logs Session: Canadians Only</h2>
 	<p>Using the information above, we can now craft the request for our custom Instant Logs session.</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
--H 'X-Auth-Key: <key>' \
--H 'X-Auth-Email: <email>' \
+-H 'X-Auth-Key: &lt;KEY&gt;' \
+-H 'X-Auth-Email: &lt;EMAIL&gt;' \
 -H 'Content-Type: application/json' \
 --data-raw '{
   "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,ClientCountry,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID,FirewallMatchesActions,FirewallMatchesRuleIDs",
   "sample": 1,
   "kind": "instant-logs",
   "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"
-}'</email></key></code></pre>
+}'</code></pre>
 	<h3>Angle Grinder</h3>
 	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
 	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 | agrind '* | json | sum(sampleInterval) by ClientCountry'

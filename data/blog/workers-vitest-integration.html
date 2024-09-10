@@ -161,7 +161,7 @@ interface Env {
   NAMESPACE: KVNamespace;
 }
 // Get the current list stored in a KV namespace
-export async function get(env: Env, key: string): Promise<string[]> {
+export async function get(env: Env, key: string): Promise&lt;string[]&gt; {
   return await env.NAMESPACE.get(key, "json") ?? [];
 }
 // Add an item to the end of the list
@@ -169,7 +169,7 @@ export async function append(env: Env, key: string, item: string) {
   const value = await get(env, key);
   value.push(item);
   await env.NAMESPACE.put(key, JSON.stringify(value));
-}</string[]></code></pre>
+}</code></pre>
 	<p>If we wanted to test these functions, we might write something like below. Note we have to keep track of all the keys we might write to, and restore their values at the end of tests, even if those tests fail.</p>
 	<pre class="language-ts"><code class="language-ts">// helpers.spec.ts
 import { env } from "cloudflare:test";

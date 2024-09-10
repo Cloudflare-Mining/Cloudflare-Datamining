@@ -103,16 +103,28 @@ int saddr_in_list(struct __sk_buff *skb) {
        nft_rule_add_expr(ctx, nle, &amp;expr-&gt;location);
 }</code></pre>
 	<p>With the patch finally built, it became possible for us to write configuration like this where we can provide a path to any pinned eBPF program.</p>
-	<pre class="language-bash"><code class="language-bash"># nft -f - &lt;<eof table="" ip="" mfw="" {="" chain="" input="" bpf="" pinned="" "="" sys="" fs="" filter"="" drop="" }="" eof<="" pre=""></eof></code>
-            <p>And now we can mix native nftables matches with eBPF programs without giving up the atomic nature of nft commands. This unlocks the opportunity for us to build even more advanced packet inspection and protocol detection in eBPF.</p><h3>Results</h3><p>This plot shows kernel memory during the time of the deployment - the change was rolled out to each namespace over a few hours.</p>
-            <figure class="kg-card kg-image-card kg-width-wide">
-            
-            <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4R2XBHvddjD1yV4wXwUSi4/bbaa10f9ef2fefe52768b3bb3755a2ba/image2-97.png" alt="Kmalloc64 slab memory during release" class="kg-image" width="901" height="288" loading="lazy">
-            
-            </figure><p>Though at this point, we’ve merely moved memory out of this slab. Fortunately, the eBPF map memory now appears in the cgroup for our Golang process, so it’s relatively easy to report. Here’s the point at which we first started populating the maps:</p>
-            <figure class="kg-card kg-image-card kg-width-wide">
-            
-            <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dSr4Z9sfd7CqmhDQf9Ux2/efc871a986f83e64efbc511516028058/image4-29.png" alt="Cgroup memory during release" class="kg-image" width="897" height="328" loading="lazy">
-            
-            </figure><p>This change was pushed a couple of weeks before the maps were actually used in the firewall (i.e. the graph just above). And it has remained constant ever since—unlike our original design, the number of customers is no longer a predominant factor in this feature’s resource usage. &nbsp;The new model makes us more confident about how the service will behave as our product continues to grow.</p><p>Other than being better positioned to use eBPF more in the future, we made a significant improvement on the efficiency of the product today. In any project that grows rapidly for a while, an engineer can often see a few pesky pitfalls looming on the horizon. It is very satisfying to dive deep into these technologies and come out with a creative, novel solution before experiencing too much pain. We love solving hard problems and improving our systems to handle rapid growth in addition to pushing lots of new features.</p><p>Does that sound like an environment you want to work in? Consider <a href="https://www.cloudflare.com/careers">applying</a>!</p></pre>
+	<pre class="language-bash"><code class="language-bash"># nft -f - &lt;&lt;EOF
+table ip mfw {
+  chain input {
+    bpf pinned "/sys/fs/bpf/filter" drop
+  }
+}
+EOF</code></pre>
+	<p>And now we can mix native nftables matches with eBPF programs without giving up the atomic nature of nft commands. This unlocks the opportunity for us to build even more advanced packet inspection and protocol detection in eBPF.</p>
+	<h3>Results</h3>
+	<p>This plot shows kernel memory during the time of the deployment - the change was rolled out to each namespace over a few hours.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4R2XBHvddjD1yV4wXwUSi4/bbaa10f9ef2fefe52768b3bb3755a2ba/image2-97.png" alt="Kmalloc64 slab memory during release" class="kg-image" width="901" height="288" loading="lazy">
+
+	</figure>
+	<p>Though at this point, we’ve merely moved memory out of this slab. Fortunately, the eBPF map memory now appears in the cgroup for our Golang process, so it’s relatively easy to report. Here’s the point at which we first started populating the maps:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dSr4Z9sfd7CqmhDQf9Ux2/efc871a986f83e64efbc511516028058/image4-29.png" alt="Cgroup memory during release" class="kg-image" width="897" height="328" loading="lazy">
+
+	</figure>
+	<p>This change was pushed a couple of weeks before the maps were actually used in the firewall (i.e. the graph just above). And it has remained constant ever since—unlike our original design, the number of customers is no longer a predominant factor in this feature’s resource usage. &nbsp;The new model makes us more confident about how the service will behave as our product continues to grow.</p>
+	<p>Other than being better positioned to use eBPF more in the future, we made a significant improvement on the efficiency of the product today. In any project that grows rapidly for a while, an engineer can often see a few pesky pitfalls looming on the horizon. It is very satisfying to dive deep into these technologies and come out with a creative, novel solution before experiencing too much pain. We love solving hard problems and improving our systems to handle rapid growth in addition to pushing lots of new features.</p>
+	<p>Does that sound like an environment you want to work in? Consider <a href="https://www.cloudflare.com/careers">applying</a>!</p>
 </div>

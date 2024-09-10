@@ -68,10 +68,10 @@ declare module "*.txt" {
 	<pre class="language-cpp"><code class="language-cpp">// Encode the KV namespace type without any compatibility flags enabled
 CompatibilityFlags::Reader flags = {};
 auto builder = rtti::Builder(flags);
-auto type = builder.structure<kvnamespace>();
+auto type = builder.structure&lt;KvNamespace&gt;();
 capnp::TextCodec codec;
 auto encoded = codec.encode(type);
-KJ_DBG(encoded); // (name = "KvNamespace", members = [ ... ], ...)</kvnamespace></code></pre>
+KJ_DBG(encoded); // (name = "KvNamespace", members = [ ... ], ...)</code></pre>
 	<p>We then pass this RTTI to a TypeScript program that uses the <a href="https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API">TypeScript Compiler API</a> to generate declarations and perform AST transformations to tidy them up. This is built into <code>workerd</code>’s Bazel build system, meaning generating types is now a single <code>bazel build //types:types</code> command. We leverage Bazel’s cache to rebuild as little as possible during generation.</p>
 	<pre class="language-ts"><code class="language-ts">import ts, { factory as f } from "typescript";
 
@@ -109,7 +109,7 @@ const kvNamespace = f.createInterfaceDeclaration(
 const file = ts.createSourceFile("file.ts", "", ts.ScriptTarget.ESNext);
 const printer = ts.createPrinter();
 const output = printer.printNode(ts.EmitHint.Unspecified, kvNamespace, file);
-console.log(output); // interface KVNamespace { get(key: string): Promise<string |="" null="">; }</string></code></pre>
+console.log(output); // interface KVNamespace { get(key: string): Promise&lt;string | null&gt;; }</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 

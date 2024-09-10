@@ -1,4 +1,4 @@
-<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oTbNBbKeXEuW6SrSE4SUz/a81677c8b215301fa4ebeb5ea422ba2f/how-to-execute-an-object-file-part-2.png" alt="">
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oTbNBbKeXEuW6SrSE4SUz/a81677c8b215301fa4ebeb5ea422ba2f/how-to-execute-an-object-file-part-2.png" alt="">
 <div class="post-content lh-copy gray1">
 	<h2>Handling relocations</h2>
 	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">previous post</a>, we learned how to parse an object file and import and execute some functions from it. However, the functions in our toy object file were simple and self-contained: they computed their output solely based on their inputs and didn't have any external code or data dependencies. In this post we will build upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1">the code from part 1</a>, exploring additional steps needed to handle code with some dependencies.</p>
@@ -29,7 +29,7 @@ obj.o:     file format elf64-x86-64
  
 Disassembly of section .text:
  
-0000000000000000 <add5>:
+0000000000000000 &lt;add5&gt;:
    0:	55                   	push   %rbp
    1:	48 89 e5             	mov    %rsp,%rbp
    4:	89 7d fc             	mov    %edi,-0x4(%rbp)
@@ -38,20 +38,20 @@ Disassembly of section .text:
    d:	5d                   	pop    %rbp
    e:	c3                   	retq
  
-000000000000000f <add10>:
+000000000000000f &lt;add10&gt;:
    f:	55                   	push   %rbp
   10:	48 89 e5             	mov    %rsp,%rbp
   13:	48 83 ec 08          	sub    $0x8,%rsp
   17:	89 7d fc             	mov    %edi,-0x4(%rbp)
   1a:	8b 45 fc             	mov    -0x4(%rbp),%eax
   1d:	89 c7                	mov    %eax,%edi
-  1f:	e8 00 00 00 00       	callq  24 <add10+0x15>
+  1f:	e8 00 00 00 00       	callq  24 &lt;add10+0x15&gt;
   24:	89 45 fc             	mov    %eax,-0x4(%rbp)
   27:	8b 45 fc             	mov    -0x4(%rbp),%eax
   2a:	89 c7                	mov    %eax,%edi
-  2c:	e8 00 00 00 00       	callq  31 <add10+0x22>
+  2c:	e8 00 00 00 00       	callq  31 &lt;add10+0x22&gt;
   31:	c9                   	leaveq
-  32:	c3                   	retq</add10+0x22></add10+0x15></add10></add5></code></pre>
+  32:	c3                   	retq</code></pre>
 	<p>You don't have to understand the full output above. There are only two relevant lines here: <code>1f: e8 00 00 00 00</code> and <code>2c: e8 00 00 00 00</code>. These correspond to the two <code>add5</code> function invocations we have in the source code and <a href="https://man7.org/linux/man-pages/man1/objdump.1.html">objdump</a> even conveniently decodes the instruction for us as <code>callq</code>. By looking at descriptions of the <code>callq</code> instruction online (like <a href="https://www.felixcloutier.com/x86/call">this one</a>), we can further see we're dealing with a "near, relative call", because of the <code>0xe8</code> prefix:</p>
 	<blockquote>
 		<p>Call near, relative, displacement relative to next instruction.</p>
@@ -118,7 +118,7 @@ obj.o:     file format elf64-x86-64
  
 Disassembly of section .text:
  
-0000000000000000 <add5>:
+0000000000000000 &lt;add5&gt;:
    0:	55                   	push   %rbp
    1:	48 89 e5             	mov    %rsp,%rbp
    4:	89 7d fc             	mov    %edi,-0x4(%rbp)
@@ -127,20 +127,20 @@ Disassembly of section .text:
    d:	5d                   	pop    %rbp
    e:	c3                   	retq
  
-000000000000000f <add10>:
+000000000000000f &lt;add10&gt;:
    f:	55                   	push   %rbp
   10:	48 89 e5             	mov    %rsp,%rbp
   13:	48 83 ec 08          	sub    $0x8,%rsp
   17:	89 7d fc             	mov    %edi,-0x4(%rbp)
   1a:	8b 45 fc             	mov    -0x4(%rbp),%eax
   1d:	89 c7                	mov    %eax,%edi
-  1f:	e8 dc ff ff ff       	callq  0 <add5>
+  1f:	e8 dc ff ff ff       	callq  0 &lt;add5&gt;
   24:	89 45 fc             	mov    %eax,-0x4(%rbp)
   27:	8b 45 fc             	mov    -0x4(%rbp),%eax
   2a:	89 c7                	mov    %eax,%edi
-  2c:	e8 cf ff ff ff       	callq  0 <add5>
+  2c:	e8 cf ff ff ff       	callq  0 &lt;add5&gt;
   31:	c9                   	leaveq
-  32:	c3                   	retq</add5></add5></add10></add5></code></pre>
+  32:	c3                   	retq</code></pre>
 	<p>Because we re-declared the <code>add5</code> function with internal linkage, the compiler is more confident now and calculates <code>callq</code> arguments correctly (note that x86 systems are <a href="https://en.wikipedia.org/wiki/Endianness">little-endian</a>, so multibyte numbers like <code>0xffffffdc</code> will be represented with least significant byte first). We can double check this by recompiling and running our <code>loader</code> test tool:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c
 $ ./loader
@@ -282,7 +282,7 @@ static void do_text_relocations(void)
         /* where to patch .text */
         uint8_t *patch_offset = text_runtime_base + relocations[i].r_offset;
         /* symbol, with respect to which the relocation is performed */
-        uint8_t *symbol_address = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+        uint8_t *symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
  
         switch (type)
         {
@@ -619,7 +619,7 @@ static void do_text_relocations(void)
         /* where to patch .text */
         uint8_t *patch_offset = text_runtime_base + relocations[i].r_offset;
         /* symbol, with respect to which the relocation is performed */
-        uint8_t *symbol_address = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+        uint8_t *symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
  
         switch (type)
         {

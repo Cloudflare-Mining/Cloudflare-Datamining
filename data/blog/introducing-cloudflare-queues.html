@@ -26,14 +26,14 @@
 	<p>Second, you’ll want to process messages in the Queue. You can do this by defining a Worker, referred to as the "consumer," which will receive messages from the Queue. To facilitate this, there is a new type of event handler, named "queue," which receives the messages sent to the consumer.</p>
 	<p>This Worker is configured to receive messages from the previous example. It appends the stack trace of each Error to a log file, then saves it to an R2 bucket.</p>
 	<pre class="language-typescript"><code class="language-typescript">export default {
-  async queue(batch: MessageBatch<error>, env: Environment) {
+  async queue(batch: MessageBatch&lt;Error&gt;, env: Environment) {
      let logs = "";
      for (const message of batch.messages) {
         logs += message.body.stack;
      }
      await env.ERROR_BUCKET.put(`errors/${Date.now()}.log`, logs);
   }
-}</error></code></pre>
+}</code></pre>
 	<p>Configuration is also easy. You can change the message batch size, message retries, delivery wait time, and dead-letter queue. Here’s a snippet of the <code>wrangler.toml</code> configuration when deploying with <a href="https://github.com/cloudflare/wrangler2">wrangler</a>, our command-line interface</p>
 	<pre class="language-toml"><code class="language-toml">name = "my-producer"
 [queues]

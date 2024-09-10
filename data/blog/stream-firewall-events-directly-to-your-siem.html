@@ -86,12 +86,12 @@ $ make install</code></pre>
 	<p>Click "Continue to summary" and then "Create token" on the next screen. Save the token somewhere secure, e.g., your password manager, as it'll be needed in just a minute.</p>
 	<h3>Set environment variables</h3>
 	<p>Rather than add sensitive credentials to source files (that may get submitted to your source code repository), we'll set environment variables and have the Terraform modules read from them.</p>
-	<pre class="language-bash"><code class="language-bash">$ export CLOUDFLARE_API_TOKEN="<your scoped="" cloudflare="" api="" token="">"
-$ export CF_ZONE_ID="<tag of="" zone="" you="" wish="" to="" send="" logs="" for="">"</tag></your></code></pre>
+	<pre class="language-bash"><code class="language-bash">$ export CLOUDFLARE_API_TOKEN="&lt;your scoped cloudflare API token&gt;"
+$ export CF_ZONE_ID="&lt;tag of zone you wish to send logs for&gt;"</code></pre>
 	<p>We'll also need your Sumo Logic environment, Access ID, and Access Key:</p>
 	<pre class="language-bash"><code class="language-bash">$ export SUMOLOGIC_ENVIRONMENT="eu"
-$ export SUMOLOGIC_ACCESSID="<access id="" from="" previous="" step="">"
-$ export SUMOLOGIC_ACCESSKEY="<access key="" from="" previous="" step="">"</access></access></code></pre>
+$ export SUMOLOGIC_ACCESSID="&lt;access id from previous step&gt;"
+$ export SUMOLOGIC_ACCESSKEY="&lt;access key from previous step&gt;"</code></pre>
 	<h3>Create the Sumo Logic Collector and HTTP Source</h3>
 	<p>We'll create a directory to store our Terraform project in and build it up as we go:</p>
 	<pre class="language-bash"><code class="language-bash">$ mkdir -p ~/src/fwevents &amp;&amp; cd $_</code></pre>
@@ -117,9 +117,20 @@ resource "sumologic_http_source" "http_source" {
 }
 EOF</code></pre>
 	<p>Then we'll create a variables file so Terraform has credentials to communicate with Sumo Logic:</p>
-	<pre class="language-bash"><code class="language-bash">$ cat &lt;<eof |="" tee="" variables.tf="" ##################="" ###="" sumo="" logic="" variable="" "sumo_environment"="" {="" default="$SUMOLOGIC_ENVIRONMENT" }="" "sumo_access_id"="" eof<="" pre=""></eof></code>
-            <p>With our Sumo Logic configuration set, we’ll initialize Terraform with <code>terraform init</code> and then preview what changes Terraform is going to make by running <code>terraform plan</code>:</p>
-            <pre class="language-bash"><code class="language-bash">$ terraform init
+	<pre class="language-bash"><code class="language-bash">$ cat &lt;&lt;EOF | tee variables.tf
+##################
+### SUMO LOGIC ###
+##################
+variable "sumo_environment" {
+    default = "$SUMOLOGIC_ENVIRONMENT"
+}
+
+variable "sumo_access_id" {
+    default = "$SUMOLOGIC_ACCESSID"
+}
+EOF</code></pre>
+	<p>With our Sumo Logic configuration set, we’ll initialize Terraform with <code>terraform init</code> and then preview what changes Terraform is going to make by running <code>terraform plan</code>:</p>
+	<pre class="language-bash"><code class="language-bash">$ terraform init
 
 Initializing the backend...
 
@@ -209,16 +220,16 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</code></pre>
 Please select Sumo Logic environment: 
 See http://help.sumologic.com/Send_Data/Collector_Management_API/Sumo_Logic_Endpoints to choose the correct environment. 3
 ### Authenticating ###
-Please enter your Access ID: <access id="">
-Please enter your Access Key <access key="">
-### Starting Live Tail session ###</access></access></code></pre>
+Please enter your Access ID: &lt;access id&gt;
+Please enter your Access Key &lt;access key&gt;
+### Starting Live Tail session ###</code></pre>
 	<h3>Request and receive challenge token</h3>
 	<p>Before requesting a challenge token, we need to figure out where Cloudflare should send logs.</p>
 	<p>We do this by asking Terraform for the receiver URL of the recently created HTTP source. Note that we modify the URL returned slightly as Cloudflare Logs expects <code>sumo://</code> rather than <code>https://</code>.</p>
 	<pre class="language-bash"><code class="language-bash">$ export SUMO_RECEIVER_URL=$(terraform state show sumologic_http_source.http_source | grep url | awk '{print $3}' | sed -e 's/https:/sumo:/; s/"//g')
 
 $ echo $SUMO_RECEIVER_URL
-sumo://endpoint1.collection.eu.sumologic.com/receiver/v1/http/<redacted></redacted></code></pre>
+sumo://endpoint1.collection.eu.sumologic.com/receiver/v1/http/&lt;redacted&gt;</code></pre>
 	<p>With URL in hand, we can now request the token.</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -sXPOST -H "Content-Type: application/json" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -d '{"destination_conf":"'''$SUMO_RECEIVER_URL'''"}' https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/logpush/ownership
 
@@ -226,7 +237,7 @@ sumo://endpoint1.collection.eu.sumologic.com/receiver/v1/http/<redacted></redact
 	<p>Back in the other window where your livetail is running you should see something like this:</p>
 	<pre class="language-bash"><code class="language-bash">{"content":"eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4R0NNIiwidHlwIjoiSldUIn0..WQhkW_EfxVy8p0BQ.oO6YEvfYFMHCTEd6D8MbmyjJqcrASDLRvHFTbZ5yUTMqBf1oniPNzo9Mn3ZzgTdayKg_jk0Gg-mBpdeqNI8LJFtUzzgTGU-aN1-haQlzmHVksEQdqawX7EZu2yiePT5QVk8RUsMRgloa76WANQbKghx1yivTZ3TGj8WquZELgnsiiQSvHqdFjAsiUJ0g73L962rDMJPG91cHuDqgfXWwSUqPsjVk88pmvGEEH4AMdKIol0EOc-7JIAWFBhcqmnv0uAXVOH5uXHHe_YNZ8PNLfYZXkw1xQlVDwH52wRC93ohIxg.pHAeaOGC8ALwLOXqxpXJgQ","filename":"ownership-challenge-bb2912e0.txt"}</code></pre>
 	<p>Copy the content value from above into an environment variable, as you'll need it in a minute to create the job:</p>
-	<pre class="language-bash"><code class="language-bash">$ export LOGPUSH_CHALLENGE_TOKEN="<content value="">"</content></code></pre>
+	<pre class="language-bash"><code class="language-bash">$ export LOGPUSH_CHALLENGE_TOKEN="&lt;content value&gt;"</code></pre>
 	<h3>Create the Logpush job using the challenge token</h3>
 	<p>With challenge token in hand, we'll use Terraform to create the job.</p>
 	<p>First you’ll want to choose the log fields that should be sent to Sumo Logic. You can enumerate the list by querying the dataset:</p>
@@ -267,11 +278,36 @@ sumo://endpoint1.collection.eu.sumologic.com/receiver/v1/http/<redacted></redact
   "success": true
 }</code></pre>
 	<p>Then you’ll append your Cloudflare configuration to the <code>main.tf</code> file:</p>
-	<pre class="language-bash"><code class="language-bash">$ cat &lt;<eof |="" tee="" -a="" main.tf="" ##################="" ###="" cloudflare="" provider="" "cloudflare"="" {="" version="~> 2.0" }="" resource="" "cloudflare_logpush_job"="" "firewall_events_job"="" name="fwevents-logpush-job" zone_id="var.cf_zone_id" enabled="true" dataset="firewall_events" logpull_options="fields=RayName,Source,RuleId,Action,EdgeResponseStatusDatetime,EdgeColoName,ClientIP,ClientCountryName,ClientASNDescription,UserAgent,ClientRequestHTTPMethodName,ClientRequestHTTPHost,ClientRequestHTTPPath&amp;timestamps=rfc3339" destination_conf="replace(sumologic_http_source.http_source.url,&quot;https:&quot;,&quot;sumo:&quot;)" ownership_challenge="$LOGPUSH_CHALLENGE_TOKEN" eof<="" pre=""></eof></code>
-            <p>And add to the <code>variables.tf</code> file:</p>
-            <pre class="language-bash"><code class="language-bash">$ cat &lt;<eof |="" tee="" -a="" variables.tf="" ##################="" ###="" cloudflare="" variable="" "cf_zone_id"="" {="" default="$CF_ZONE_ID" }<="" pre=""></eof></code>
-            <p>Next we re-run <code>terraform init</code> to install the latest Cloudflare Terraform Provider Module. You’ll need to make sure you have at least version 2.6.0 as this is the version in which we added Logpush job support:</p>
-            <pre class="language-bash"><code class="language-bash">$ terraform init
+	<pre class="language-bash"><code class="language-bash">$ cat &lt;&lt;EOF | tee -a main.tf
+
+##################
+### CLOUDFLARE ###
+##################
+provider "cloudflare" {
+  version = "~&gt; 2.0"
+}
+
+resource "cloudflare_logpush_job" "firewall_events_job" {
+  name = "fwevents-logpush-job"
+  zone_id = var.cf_zone_id
+  enabled = true
+  dataset = "firewall_events"
+  logpull_options = "fields=RayName,Source,RuleId,Action,EdgeResponseStatusDatetime,EdgeColoName,ClientIP,ClientCountryName,ClientASNDescription,UserAgent,ClientRequestHTTPMethodName,ClientRequestHTTPHost,ClientRequestHTTPPath&amp;timestamps=rfc3339"
+  destination_conf = replace(sumologic_http_source.http_source.url,"https:","sumo:")
+  ownership_challenge = "$LOGPUSH_CHALLENGE_TOKEN"
+}
+EOF</code></pre>
+	<p>And add to the <code>variables.tf</code> file:</p>
+	<pre class="language-bash"><code class="language-bash">$ cat &lt;&lt;EOF | tee -a variables.tf
+
+##################
+### CLOUDFLARE ###
+##################
+variable "cf_zone_id" {
+  default = "$CF_ZONE_ID"
+}</code></pre>
+	<p>Next we re-run <code>terraform init</code> to install the latest Cloudflare Terraform Provider Module. You’ll need to make sure you have at least version 2.6.0 as this is the version in which we added Logpush job support:</p>
+	<pre class="language-bash"><code class="language-bash">$ terraform init
 
 Initializing the backend...
 
@@ -311,7 +347,7 @@ Terraform will perform the following actions:
       + destination_conf    = "sumo://endpoint1.collection.eu.sumologic.com/receiver/v1/http/(redacted)"
       + enabled             = true
       + id                  = (known after apply)
-      + logpull_options     = "fields=RayName,Source,RuleId,Action,EdgeResponseStatusDatetime,EdgeColoName,ClientIP,ClientCountryName,ClientASNDescription,UserAgent,ClientRequestHTTPMethodName,ClientRequestHTTPHost,ClientRequestHTTPPath×tamps=rfc3339"
+      + logpull_options     = "fields=RayName,Source,RuleId,Action,EdgeResponseStatusDatetime,EdgeColoName,ClientIP,ClientCountryName,ClientASNDescription,UserAgent,ClientRequestHTTPMethodName,ClientRequestHTTPHost,ClientRequestHTTPPath&amp;timestamps=rfc3339"
       + name                = "fwevents-logpush-job"
       + ownership_challenge = "(redacted)"
       + zone_id             = "(redacted)"
@@ -360,7 +396,4 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KtWEvKCr6QrbGKWZGzQ3a/53d3241d2299b0ef81fc98f9f94c0867/fwevents-sumo-demo.gif" alt="" class="kg-image" width="1277" height="1416" loading="lazy">
 
 	</figure>
-	</pre>
-	</pre>
-	</pre>
 </div>

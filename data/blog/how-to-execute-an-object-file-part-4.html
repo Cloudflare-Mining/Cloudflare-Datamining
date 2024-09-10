@@ -23,13 +23,13 @@
 	<p>In order to obtain an object file or an executable binary from a high-level compiled programming language the code needs to be processed by three components: compiler, assembler and linker. The compiler generates an assembly listing. This assembly listing is picked up by the assembler and translated into an object file. All source files, if a program contains multiple, go through these two steps generating an object file for each source file. At the final step the linker unites all object files into one binary, additionally resolving references to the shared libraries (i.e. we don’t implement the <code>printf</code> function each time, rather we take it from a system library). Even though the approach is platform independent, the compiler output varies by platform as the assembly listing is closely tied to the CPU architecture.</p>
 	<p>GCC (GNU Compiler Collection) can run each step: compiler, assembler and linker separately for us:</p>
 	<p>main.c:</p>
-	<pre class="language-cpp"><code class="language-cpp">#include <stdio.h>
+	<pre class="language-cpp"><code class="language-cpp">#include &lt;stdio.h&gt;
 
 int main(void)
 {
 	puts("Hello, world!");
 	return 0;
-}</stdio.h></code></pre>
+}</code></pre>
 	<p>Compiler (output <code>main.s</code> - assembly listing):</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -S main.c
 $ ls
@@ -180,7 +180,7 @@ obj.o:     file format elf64-littleaarch64
 
 Disassembly of section .text:
 
-0000000000000000 <add5>:
+0000000000000000 &lt;add5&gt;:
    0:	d10043ff 	sub	sp, sp, #0x10
    4:	b9000fe0 	str	w0, [sp, #12]
    8:	b9400fe0 	ldr	w0, [sp, #12]
@@ -188,17 +188,17 @@ Disassembly of section .text:
   10:	910043ff 	add	sp, sp, #0x10
   14:	d65f03c0 	ret
 
-0000000000000018 <add10>:
+0000000000000018 &lt;add10&gt;:
   18:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
   1c:	910003fd 	mov	x29, sp
   20:	b9001fe0 	str	w0, [sp, #28]
   24:	b9401fe0 	ldr	w0, [sp, #28]
-  28:	94000000 	bl	0 <add5>
+  28:	94000000 	bl	0 &lt;add5&gt;
   2c:	b9001fe0 	str	w0, [sp, #28]
   30:	b9401fe0 	ldr	w0, [sp, #28]
-  34:	94000000 	bl	0 <add5>
+  34:	94000000 	bl	0 &lt;add5&gt;
   38:	a8c27bfd 	ldp	x29, x30, [sp], #32
-  3c:	d65f03c0 	ret</add5></add5></add10></add5></code></pre>
+  3c:	d65f03c0 	ret</code></pre>
 	<p>Have you noticed that all the hex values in the second column are exactly the same length, in contrast with the instructions lengths seen for x86 in Part 2 of our series? This is because all Armv8-A instructions are presented in 32 bits. Since it is impossible to encode every immediate value into less than 32 bits, some operations require more than one instruction, as we’ll see later. For now, we’re interested in one instruction <code>- bl</code> (<a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BL--Branch-with-Link-?lang=en">branch with link</a>) on rows <code>28</code> and <code>34</code>. The <code>bl</code> is a “jump” instruction, but before the jump it preserves the next instruction after the current one in the link register (<code>lr</code>). When the callee finishes execution the caller address is recovered from <code>lr</code>. Usually, the aarch64 instructions reserve the last 6 bits [31:26] for opcode and some auxiliary fields such as running architecture (32 or 64 bits), condition flag and others. Remaining bits are shared between arguments like source register, destination register and immediate value. Since the <code>bl</code> instruction does not require a source or destination register, the full 26 bits can be used to encode the immediate offset instead. However, 26 bits can only encode a small range (+/-32 MB), but because the jump can only target a beginning of an instruction, it must always be aligned to 4 bytes, which increases the effective range of the encoded immediate fourfold, to +/-128 MB.</p>
 	<p>Similarly to what we did in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we’re going to resolve our relocations - first by manually calculating the correct addresses and then by using an approach similar to what the linker does. The current value of our <code>bl</code> instruction is <code>94000000</code> or in binary representation <code>100101**00000000000000000000000000**</code>. All 26 bits are zeros, so we don't jump anywhere. The address is calculated by an offset from the current <i>program counter</i> (<code>pc</code>), which can be positive or negative. In our case we expect it to be <code>-0x28</code> and <code>-0x34</code>. As described above, it should be divided by 4 and taken as <a href="https://en.wikipedia.org/wiki/Two%27s_complement">two's complements</a>: <code>-0x28 / 4 = -0xA == 0xFFFFFFF6</code> and <code>-0x34 / 4 = -0xD == 0xFFFFFFF3</code>. From these values we need to take the lower 26 bits and concatenate them with the initial 6 bits to get the final instruction. So, the final ones will be: <code>100101**11111111111111111111110110** == 0x97FFFFF6</code> and <code>100101**11111111111111111111110011** == 0x97FFFFF3</code>. Have you noticed that all the distance calculations are done relative to the <code>bl</code> (or current <code>pc</code>), not the next instruction as in x86?</p>
 	<p>Let’s add to the code and execute:</p>
@@ -370,27 +370,27 @@ obj.o:     file format elf64-littleaarch64
 
 Disassembly of section .text:
 
-0000000000000000 <get_hello>:
-   0:	90000000 	adrp	x0, 0 <get_hello>
+0000000000000000 &lt;get_hello&gt;:
+   0:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
    4:	91000000 	add	x0, x0, #0x0
    8:	d65f03c0 	ret
 
-000000000000000c <get_var>:
-   c:	90000000 	adrp	x0, 0 <get_hello>
+000000000000000c &lt;get_var&gt;:
+   c:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
   10:	91000000 	add	x0, x0, #0x0
   14:	b9400000 	ldr	w0, [x0]
   18:	d65f03c0 	ret
 
-000000000000001c <set_var>:
+000000000000001c &lt;set_var&gt;:
   1c:	d10043ff 	sub	sp, sp, #0x10
   20:	b9000fe0 	str	w0, [sp, #12]
-  24:	90000000 	adrp	x0, 0 <get_hello>
+  24:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
   28:	91000000 	add	x0, x0, #0x0
   2c:	b9400fe1 	ldr	w1, [sp, #12]
   30:	b9000001 	str	w1, [x0]
   34:	d503201f 	nop
   38:	910043ff 	add	sp, sp, #0x10
-  3c:	d65f03c0 	ret</get_hello></set_var></get_hello></get_var></get_hello></get_hello></code></pre>
+  3c:	d65f03c0 	ret</code></pre>
 	<p>We see that all <code>adrp</code> instructions are followed by <code>add</code> instructions. The <code>[add](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADD--immediate---Add--immediate--?lang=en)</code> instruction adds an immediate value to the source register and writes the result to the destination register. The source and destination registers can be the same, the immediate value is 12 bits. The <code>[adrp](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en)</code> instruction generates a <code>pc</code>-relative (program counter) address and writes the result to the destination register. It takes <code>pc</code> of the instruction itself and adds a 21-bit immediate value shifted left by 12 bits. If the immediate value weren’t shifted it would lie in a range of +/-1 MB memory, which isn’t enough. The left shift increases the range up to +/-1 GB. However, because the 12 bits are masked out with the shift, we need to store them somewhere and restore later. That’s why we see add instruction following <code>adrp</code> and two types instead of one. Also, it’s a bit tricky to encode <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en"><code>adrp</code></a>: 2 low bits of immediate value are placed in the position 30:29 and the rest in the position 23:5. Due to size limitations, the aarch64 instructions try to make the most out of 32 bits.</p>
 	<p>In the code we are going to use the formulas to calculate the values and description of <code>adrp</code> and <code>add</code> instructions to obtain the final opcode:</p>
 	<pre class="language-cpp"><code class="language-cpp">#define R_AARCH64_CALL26 283
@@ -467,19 +467,19 @@ get_var() = 42</code></pre>
 	<p>We can check how it resolves with the native PLT/GOT in our loader assembly code:</p>
 	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text loader
 ...
-1d2c:	97fffb45 	bl	a40 <puts@plt>
+1d2c:	97fffb45 	bl	a40 &lt;puts@plt&gt;
 1d30:	f94017e0 	ldr	x0, [sp, #40]
 1d34:	d63f0000 	blr	x0
-...</puts@plt></code></pre>
+...</code></pre>
 	<p>The first instruction is <code>bl</code> jump to <code>puts@plt</code> stub. The next <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/LDR--immediate---Load-Register--immediate--"><code>ldr</code></a> instruction tells us that some value was loaded into the register <code>x0</code> from the stack. Each function has its own <a href="https://en.wikipedia.org/wiki/Call_stack#Stack_and_frame_pointers">stack frame</a> to hold the local variables. The last <code>blr</code> instruction makes a jump to the address stored in <code>x0</code> register. There is an agreement in the register naming: if the stored value is 64-bits then the register is called <code>x0-x30</code>; if only 32-bits are used then it’s called <code>w0-w30</code> (the value will be stored in the lower 32-bits and upper 32-bits will be zeroed).</p>
 	<p>We need to do something similar — place the absolute address of our <code>my_puts</code> wrapper in some register and call <code>br</code> on this register. We don’t need to store the link before branching, the call will be returned to <code>say_hello</code> from <code>obj.c</code>, which is why a plain <code>br</code> will be enough. Let’s check an assembly of simple C-function:</p>
 	<p>hello.c:</p>
-	<pre class="language-cpp"><code class="language-cpp">#include <stdint.h>
+	<pre class="language-cpp"><code class="language-cpp">#include &lt;stdint.h&gt;
 
 void say_hello(void)
 {
     uint64_t reg = 0x555555550c14;
-}</stdint.h></code></pre>
+}</code></pre>
 
 	<pre class="language-bash"><code class="language-bash">$ gcc -c hello.c
 $ objdump --disassemble --section=.text hello.o
@@ -489,7 +489,7 @@ hello.o:     file format elf64-littleaarch64
 
 Disassembly of section .text:
 
-0000000000000000 <say_hello>:
+0000000000000000 &lt;say_hello&gt;:
    0:	d10043ff 	sub	sp, sp, #0x10
    4:	d2818280 	mov	x0, #0xc14                 	// #3092
    8:	f2aaaaa0 	movk	x0, #0x5555, lsl #16
@@ -497,7 +497,7 @@ Disassembly of section .text:
   10:	f90007e0 	str	x0, [sp, #8]
   14:	d503201f 	nop
   18:	910043ff 	add	sp, sp, #0x10
-  1c:	d65f03c0 	ret</say_hello></code></pre>
+  1c:	d65f03c0 	ret</code></pre>
 	<p>The number <code>0x555555550c14</code> is the address returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238"><code>lookup_ext_function</code></a>. We’ve printed it out to use as an example, but any <a href="https://www.kernel.org/doc/html/latest/arch/arm64/memory.html">48-bits</a> hex value can be used.</p>
 	<p>In our output we see that the value was split in three sections and written in <code>x0</code> register with three instructions: one <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-"><code>mov</code></a> and two <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en"><code>movk</code></a>. The documentation says that there are only 16 bits for the immediate value, but a shift can be applied (in our case left shift <code>lsl</code>).</p>
 	<p>However, we can’t use <code>x0</code> in our context. By <a href="https://developer.arm.com/documentation/den0024/a/The-ABI-for-ARM-64-bit-Architecture/Register-use-in-the-AArch64-Procedure-Call-Standard/Parameters-in-general-purpose-registers">convention</a> the registers <code>x0-x7</code> are caller-saved and used to pass function parameters between calls to other functions. Let’s use <code>x9</code> then.</p>
@@ -548,7 +548,7 @@ Disassembly of section .text:
 	symbol_address = (uint8_t *)(&amp;jumptable[curr_jmp_idx].instr[0]);
 	curr_jmp_idx++;
 } else {
-	symbol_address = section_runtime_base(§ions[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
+	symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
 }
 uint32_t val;
 switch (type)

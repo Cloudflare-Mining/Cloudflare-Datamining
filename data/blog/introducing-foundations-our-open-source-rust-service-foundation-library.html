@@ -53,13 +53,12 @@
 	<p>Foundations’ tracing API shares similarities with <a href="https://github.com/tokio-rs/tracing">tokio/tracing</a>, employing a comparable approach with implicit context propagation, instrumentation macros, and futures wrapping:</p>
 	<pre class="language-rust"><code class="language-rust">#[tracing::span_fn("respond to request")]
 async fn respond(
-    endpoint_name: Arc<string>,
-    req: Request,
-    routes: Arc<map<string, responsesettings="">&gt;,
-) -&gt; Result<response<body>, Infallible&gt; {
+    endpoint_name: Arc&lt;String&gt;,
+    req: Request&lt;Body&gt;,
+    routes: Arc&lt;Map&lt;String, ResponseSettings&gt;&gt;,
+) -&gt; Result&lt;Response&lt;Body&gt;, Infallible&gt; {
     …
-}
-</response<body></map<string,></string></code></pre>
+}</code></pre>
 	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L154">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/tracing/index.html">documentation</a> for more comprehensive examples.</p>
 	<p>However, Foundations distinguishes itself in a few key ways:</p>
 	<ul>
@@ -110,17 +109,17 @@ use std::sync::Arc;
 #[metrics]
 pub(crate) mod http_server {
     /// Number of active client connections.
-    pub fn active_connections(endpoint_name: &amp;Arc<string>) -&gt; Gauge;
+    pub fn active_connections(endpoint_name: &amp;Arc&lt;String&gt;) -&gt; Gauge;
 
     /// Number of failed client connections.
-    pub fn failed_connections_total(endpoint_name: &amp;Arc<string>) -&gt; Counter;
+    pub fn failed_connections_total(endpoint_name: &amp;Arc&lt;String&gt;) -&gt; Counter;
 
     /// Number of HTTP requests.
-    pub fn requests_total(endpoint_name: &amp;Arc<string>) -&gt; Counter;
+    pub fn requests_total(endpoint_name: &amp;Arc&lt;String&gt;) -&gt; Counter;
 
     /// Number of failed requests.
-    pub fn requests_failed_total(endpoint_name: &amp;Arc<string>, status_code: u16) -&gt; Counter;
-}</string></string></string></string></code></pre>
+    pub fn requests_failed_total(endpoint_name: &amp;Arc&lt;String&gt;, status_code: u16) -&gt; Counter;
+}</code></pre>
 	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/metrics.rs">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/metrics/index.html">documentation</a> for more information of how metrics can be defined and used.</p>
 	<p>In addition to this, we have refined the approach to metrics collection and structuring. Foundations offers a streamlined, user-friendly API for both these tasks, focusing on simplicity and minimalism.</p>
 	<h3>Memory profiling</h3>
@@ -158,11 +157,11 @@ pub(crate) struct HttpServerSettings {
     pub(crate) telemetry: TelemetrySettings,
     /// HTTP endpoints configuration.
     #[serde(default = "HttpServerSettings::default_endpoints")]
-    pub(crate) endpoints: Map<string, endpointsettings="">,
+    pub(crate) endpoints: Map&lt;String, EndpointSettings&gt;,
 }
 
 impl HttpServerSettings {
-    fn default_endpoints() -&gt; Map<string, endpointsettings=""> {
+    fn default_endpoints() -&gt; Map&lt;String, EndpointSettings&gt; {
         let mut endpoint = EndpointSettings::default();
 
         endpoint.routes.insert(
@@ -192,7 +191,7 @@ pub(crate) struct EndpointSettings {
     /// Address of the endpoint.
     pub(crate) addr: SocketAddr,
     /// Endoint's URL path routes.
-    pub(crate) routes: Map<string, responsesettings="">,
+    pub(crate) routes: Map&lt;String, ResponseSettings&gt;,
 }
 
 #[settings]
@@ -201,7 +200,7 @@ pub(crate) struct ResponseSettings {
     pub(crate) status_code: u16,
     /// Content of the route's response.
     pub(crate) response: String,
-}</string,></string,></string,></code></pre>
+}</code></pre>
 	<p>The settings definition above automatically generates the following default configuration YAML file:</p>
 	<pre class="language-yaml"><code class="language-yaml">---
 # Telemetry settings.

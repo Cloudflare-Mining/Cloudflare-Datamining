@@ -54,13 +54,13 @@
 	</figure>
 	<p>This attack topped out at 360Gbps per second of inbound HTTP traffic. It's pretty unusual for an HTTP attack to generate a substantial amount of network traffic. This attack was special, and was composed of HTTP requests like this:</p>
 	<pre class="language-bash"><code class="language-bash">GET /en HTTP/1.1
-User-Agent: <some string="">
-Cookie: <some cookie="">
+User-Agent: &lt;some string&gt;
+Cookie: &lt;some cookie&gt;
 Host: example.com
 Connection: close
 Content-Length: 800000
 
-a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=...</some></some></code></pre>
+a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=...</code></pre>
 	<p>It's the long payload sent after the request headers that allowed the attackers to generate substantial traffic. Since this attack we've seen similar events with varying parameters in the request body. Sometimes these attacks came as GET requests, sometimes as POST.</p>
 	<p>Additionally, this particular attack lasted roughly one hour, with 128,833 unique IP addresses. The datacenter distribution was different, with most of the attack concentrated on Frankfurt:</p>
 	<figure class="kg-card kg-image-card ">

@@ -63,22 +63,22 @@ import {
 export default class MyTableComponent extends React.Component {
   render() {
     return (
-      <tablehead>
-          <tablerow>
-            <tableheadcell>Name</tableheadcell>
-            <tableheadcell>Value</tableheadcell>
-          </tablerow>
-        </tablehead><tablebody>
+      &lt;Table&gt;
+        &lt;TableHead&gt;
+          &lt;TableRow&gt;
+            &lt;TableHeadCell&gt;Name&lt;/TableHeadCell&gt;
+            &lt;TableHeadCell&gt;Value&lt;/TableHeadCell&gt;
+          &lt;/TableRow&gt;
+        &lt;/TableHead&gt;
+        &lt;TableBody&gt;
           {this.props.data.map(row =&gt;
-            <tablerow key="{row.id}">
-              <tablecell>{row.name}</tablecell>
-              <tablecell>{row.value}</tablecell>
-            </tablerow>
+            &lt;TableRow key={row.id}&gt;
+              &lt;TableCell&gt;{row.name}&lt;/TableCell&gt;
+              &lt;TableCell&gt;{row.value}&lt;/TableCell&gt;
+            &lt;/TableRow&gt;
           }
-        </tablebody><table>
-        
-        
-      </table>
+        &lt;/TableBody&gt;
+      &lt;/Table&gt;
     );
   }
 }</code></pre>
@@ -88,20 +88,21 @@ export default class MyTableComponent extends React.Component {
   { id: 2, name: 'Bar', value: 'bar' }
 ];
 
-<tablebuilder rows="{data.map(item" ==""> {
+&lt;TableBuilder
+  rows={data.map(item =&gt; {
     return { id: item.id, data: item }
   }}
   columns={[{
     label: 'Name',
     cell: (data) =&gt; {
-      return <tablecell>{data.name}</tablecell>
+      return &lt;TableCell&gt;{data.name}&lt;/TableCell&gt;
     }
   }, {
     label: 'Value',
     cell: (data) =&gt; {
-      return <tablecell>{data.value}</tablecell>
+      return &lt;TableCell&gt;{data.value}&lt;/TableCell&gt;
     }
-  }]}/&gt;</tablebuilder></code></pre>
+  }]}/&gt;</code></pre>
 	<p>In addition to that, one of the frustrating things with base components in Redux is hooking them into the state tree all the time. Setting up handlers for every event that dispatches actions and get reduced into state is a tiresome process.</p>
 	<p>Instead we have defined that these “builder” components can be tied directly to Redux and have their own reducers and actions.</p>
 	<p>All you have to do is set up the reducer before using the builder component.</p>
@@ -115,7 +116,7 @@ const reducer = combineReducers({
 
 const store = createStore(reducer, {}, applyMiddleware(thunk));</code></pre>
 	<p>Then you can use builder components like they were any other component. They each just need a unique ID, which you can store in a <code>ComponentNames.js</code> constants file.</p>
-	<pre class="language-js"><code class="language-js"><tablebuilder tablename="{ComponentNames.EXAMPLE_TABLE}" ...=""></tablebuilder></code></pre>
+	<pre class="language-js"><code class="language-js">&lt;TableBuilder tableName={ComponentNames.EXAMPLE_TABLE} .../&gt;</code></pre>
 	<p>You can also dispatch actions that do various things to the builders.</p>
 	<pre class="language-js"><code class="language-js">import {tableActions} from 'cf-builder-table';
 

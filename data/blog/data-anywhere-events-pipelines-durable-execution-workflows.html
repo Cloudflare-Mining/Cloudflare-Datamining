@@ -47,16 +47,16 @@
 	<p>The code below is just an initial exploration for how we’re thinking about an API for running transforms over streaming data. If you’re aware of projects like <a href="https://beam.apache.org/documentation/programming-guide">Apache Beam</a> or <a href="https://flink.apache.org">Flink</a>, this programming model might even look familiar:</p>
 	<pre class="language-js"><code class="language-js">export default {    
    // Pipeline handler is invoked when batch criteria are met
-   async pipeline(stream: StreamPipeline, env: Env, ctx: ExecutionContext): Promise<streamingpipeline> {
+   async pipeline(stream: StreamPipeline, env: Env, ctx: ExecutionContext): Promise&lt;StreamingPipeline&gt; {
       // ...
       return stream
-         // Type: transform(label: string, transformFunc: TransformFunction): Promise<streampipeline>
+         // Type: transform(label: string, transformFunc: TransformFunction): Promise&lt;StreamPipeline&gt;
          // Each transform has a label that is used in metrics to provide
     // per-transform observability and debugging
-         .transform("human readable label", (events: Array<streamevent>) =&gt; {
+         .transform("human readable label", (events: Array&lt;StreamEvent&gt;) =&gt; {
             return events.map((e) =&gt; ...)
          })
-         .transform("another transform", (events: Array<streamevent>) =&gt; {
+         .transform("another transform", (events: Array&lt;StreamEvent&gt;) =&gt; {
             return events.map((e) =&gt; ...)
          })
          .writeToR2({
@@ -66,7 +66,7 @@
             batchSize: "10MB"
          })
    }
-}</streamevent></streamevent></streampipeline></streamingpipeline></code></pre>
+}</code></pre>
 	<p>Specifically:</p>
 	<ul>
 		<li>

@@ -117,7 +117,7 @@ addEventListener('fetch', (event: FetchEvent) =&gt; {
 async function handleRequest(request: Request) {
   const weather = await fetchWeather('austin')
   const body = `
-    ${weather.location.city}, ${weather.location.region}<br>
+    ${weather.location.city}, ${weather.location.region}&lt;br&gt;
     ${weather.item.condition.temp} ${weather.item.condition.text}
   `.trim()
 
@@ -205,7 +205,7 @@ addEventListener('fetch', (event: FetchEvent) =&gt; {
 async function handleWeatherRequest(params: TWeatherRequestParams) {
   const weather = await fetchWeather(params.city)
   const body = `
-    ${weather.location.city}, ${weather.location.region}<br>
+    ${weather.location.city}, ${weather.location.region}&lt;br&gt;
     ${weather.item.condition.temp} ${weather.item.condition.text}
   `.trim()
 

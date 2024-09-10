@@ -77,7 +77,7 @@
 	<p>From an application standpoint, Dawn handles the interactions with the underlying native graphics APIs that communicate directly with the GPU drivers. Dawn essentially acts as a middle layer that translates the WebGPU API calls into calls for the platform's native graphics API.</p>
 	<p>Cloudflare <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">workerd</a> is the underlying open-source runtime engine that executes Workers code. It shares most of its code with the same runtime that powers Cloudflare Workers' production environment but with some changes designed to make it more portable to other environments. We then have release cycles that aim to synchronize both codebases; more on that later. Workerd is also used with <a href="https://github.com/cloudflare/workers-sdk">wrangler</a>, our command-line tool for building and interacting with Cloudflare Workers, to support local development.</p>
 	<p>The WebGPU code that interfaces with the Dawn library can be found <a href="https://github.com/cloudflare/workerd/tree/main/src/workerd/api/gpu">here</a>, and can easily be enabled with a flag, checked <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/global-scope.c%2B%2B#L728">here</a>.</p>
-	<pre class="language-c++"><code class="language-c++">jsg::Ref<api::gpu::gpu> Navigator::getGPU(CompatibilityFlags::Reader flags) {
+	<pre class="language-c++"><code class="language-c++">jsg::Ref&lt;api::gpu::GPU&gt; Navigator::getGPU(CompatibilityFlags::Reader flags) {
   // is this a durable object?
   KJ_IF_MAYBE (actor, IoContext::current().getActor()) {
     JSG_REQUIRE(actor-&gt;getPersistent() != nullptr, TypeError,
@@ -88,8 +88,8 @@
 
   JSG_REQUIRE(flags.getWebgpu(), TypeError, "webgpu needs the webgpu compatibility flag set");
 
-  return jsg::alloc<api::gpu::gpu>();
-}</api::gpu::gpu></api::gpu::gpu></code></pre>
+  return jsg::alloc&lt;api::gpu::GPU&gt;();
+}</code></pre>
 	<p>The WebGPU API can only be accessed using <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>, which are essentially global singleton instances of Cloudflare Workers. There are two important reasons for this:</p>
 	<ul>
 		<li>
@@ -140,10 +140,10 @@ const mappedBuffer = device.createBuffer({
 // Create shader that writes incrementing numbers to storage buffer
 const computeShaderCode = `
     @group(0) @binding(0)
-    var<storage, read_write=""> result : array<f32>;
+    var&lt;storage, read_write&gt; result : array&lt;f32&gt;;
 
     @compute @workgroup_size(1)
-    fn main(@builtin(global_invocation_id) gid : vec3<u32>) {
+    fn main(@builtin(global_invocation_id) gid : vec3&lt;u32&gt;) {
       result[gid.x] = f32(gid.x);
     }
 `;
@@ -185,7 +185,7 @@ device.queue.submit([gpuBuffer]);
 
 await mappedBuffer.mapAsync(GPUMapMode.READ);
 console.log(new Float32Array(mappedBuffer.getMappedRange()));
-// [0, 1, 2, 3]</u32></f32></storage,></code></pre>
+// [0, 1, 2, 3]</code></pre>
 	<p>Now that we covered the basics of WebGPU and compute shaders, let's move to something more demanding. What if we could perform machine learning inference using Workers and GPUs?</p>
 	<h3>ONNX WebGPU demo</h3>
 	<p>The <a href="https://github.com/microsoft/onnxruntime">ONNX runtime</a> is a popular open-source cross-platform, high performance machine learning inferencing accelerator. <a href="https://github.com/webonnx/wonnx">Wonnx</a> is a GPU-accelerated version of the same engine, written in Rust, that can be compiled to WebAssembly and take advantage of WebGPU in the browser. We are going to run it in Workers using a combination of <a href="https://github.com/cloudflare/workers-rs">workers-rs</a>, our Rust bindings for Cloudflare Workers, and the workerd WebGPU APIs.</p>
@@ -195,7 +195,7 @@ console.log(new Float32Array(mappedBuffer.getMappedRange()));
 	<pre class="language-bash"><code class="language-bash">#[durable_object]
 pub struct Classifier {
     env: Env,
-    session: Option<wonnx::session>,
+    session: Option&lt;wonnx::Session&gt;,
 }
 
 impl Classifier {
@@ -216,9 +216,9 @@ impl Classifier {
         };
         Ok(())
     }
-}</wonnx::session></code></pre>
+}</code></pre>
 	<p>This is only required once, when the Durable Object is instantiated. For subsequent requests, we retrieve the model input tensor, call the existing session for the inference, and return to the calling worker the result tensor converted to JSON:</p>
-	<pre class="language-json"><code class="language-json">        let request_data: ArrayBase<ownedrepr<f32>, Dim&lt;[usize; 4]&gt;&gt; =
+	<pre class="language-json"><code class="language-json">        let request_data: ArrayBase&lt;OwnedRepr&lt;f32&gt;, Dim&lt;[usize; 4]&gt;&gt; =
             serde_json::from_str(&amp;req.text().await?)?;
         let mut input_data = HashMap::new();
         input_data.insert("data".to_string(), request_data.as_slice().unwrap().into());
@@ -231,7 +231,7 @@ impl Classifier {
             .await
             .map_err(|err| err.to_string())?;
 ...
-        let probabilities: Vec<f32> = result
+        let probabilities: Vec&lt;f32&gt; = result
             .into_iter()
             .next()
             .ok_or("did not obtain a result tensor from session")?
@@ -240,7 +240,7 @@ impl Classifier {
             .map_err(|err: TensorConversionError| err.to_string())?;
 
         let do_response = serde_json::to_string(&amp;probabilities)?;
-        Response::ok(do_response)</f32></ownedrepr<f32></code></pre>
+        Response::ok(do_response)</code></pre>
 	<p>On the Worker script itself, we load the uploaded image and pre-process it into a model input tensor:</p>
 	<pre class="language-bash"><code class="language-bash">    let image_file: worker::File = match req.form_data().await?.get("file") {
         Some(FormEntry::File(buf)) =&gt; buf,
@@ -251,9 +251,9 @@ impl Classifier {
     let image = load_image(&amp;image_content)?;</code></pre>
 	<p>Finally, we call the GPU Durable Object, which runs the model and returns the most likely classes of our image:</p>
 	<pre class="language-bash"><code class="language-bash">    let probabilities = execute_gpu_do(image, stub).await?;
-    let mut probabilities = probabilities.iter().enumerate().collect::<vec<_>&gt;();
+    let mut probabilities = probabilities.iter().enumerate().collect::&lt;Vec&lt;_&gt;&gt;();
     probabilities.sort_unstable_by(|a, b| b.1.partial_cmp(a.1).unwrap());
-    Response::ok(LABELS[probabilities[0].0])</vec<_></code></pre>
+    Response::ok(LABELS[probabilities[0].0])</code></pre>
 	<p>We packaged this demo in a public repository, so you can also run it. Make sure that you have a <a href="https://www.rust-lang.org">Rust</a> compiler, <a href="https://nodejs.org/en">Node.js</a>, <a href="https://git-scm.com">Git</a> and <a href="https://curl.se">curl</a> installed, then clone the repository:</p>
 	<pre class="language-bash"><code class="language-bash">git clone https://github.com/cloudflare/workers-wonnx.git
 cd workers-wonnx</code></pre>

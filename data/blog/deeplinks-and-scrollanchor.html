@@ -16,9 +16,9 @@
 	<p>One of the interesting challenges with deep linking in the Dashboard is that most interesting resources are “locked” behind the context of an account and a zone/domain/website. To illustrate this, look at a tree of possible URL paths into Cloudflare’s Dashboard:</p>
 	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/ -&gt; root-level resources: login, sign-up, forgot-password, two-factor
 
-dash.cloudflare.com/<accountid>/ -&gt; account-level resources: analytics, workers, domains, stream, billing, audit-log
+dash.cloudflare.com/&lt;accountId&gt;/ -&gt; account-level resources: analytics, workers, domains, stream, billing, audit-log
 
-dash.cloudflare.com/<accountid>/<zoneid> -&gt; zone-level resources: dns, ssl-tls, firewall, speed, caching, page-rules, traffic, etc.</zoneid></accountid></accountid></code></pre>
+dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources: dns, ssl-tls, firewall, speed, caching, page-rules, traffic, etc.</code></pre>
 	<p>You might notice that in order to deep link to anything more interesting than logging in, a deep linker will need to know a user’s account or zone beforehand. A troubleshooting doc might want to send a user to the Page Rules tab in Dashboard to help a user fix their zone, but <i>the linker doesn’t know what that zone is</i>.</p>
 	<p>Another highly desired feature was the ability for a deep link to scroll to a particular piece of content on a Dashboard page, making it even easier for users to navigate. Instead of a troubleshooting doc asking a user to fumble around to find a setting, we could helpfully scroll that setting right into view. Now that would be slick!</p>
 	<h3>What do DeepLinks look like in Dashboard?</h3>
@@ -45,7 +45,7 @@ dash.cloudflare.com/<accountid>/<zoneid> -&gt; zone-level resources: dns, ssl-tl
 	<p>If you were paying attention to the URL bar in the GIF above, you already know what’s coming. In order to deal with dynamic account/zone resolution, a deep link can use a to query parameter to specify a path into Dashboard. I think it reads quite nicely:</p>
 	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates</code></pre>
 	<p>This example is saying that we’d like to link to the “Edge Certificates” section of the “SSL-TLS” product for <i>some</i> account and <i>some</i> zone that a user needs to manually resolve, as you saw above. It’s easy to imagine removing “?to=/” to transform the link URL into the resolved one:</p>
-	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/<resolvedaccount>/<resolvedzone>/ssl-tls/edge-certificates</resolvedzone></resolvedaccount></code></pre>
+	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/&lt;resolvedAccount&gt;/&lt;resolvedZone&gt;/ssl-tls/edge-certificates</code></pre>
 	<p>The URL-like schema of the to parameter makes it very natural to support different variations such as account-level resources</p>
 	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/?to=/:account/billing</code></pre>
 	<p>Or allowing the linker to supply known information</p>
@@ -54,12 +54,12 @@ dash.cloudflare.com/<accountid>/<zoneid> -&gt; zone-level resources: dns, ssl-tl
 	<h3>DeepLink routing</h3>
 	<p>These links are parsed and resolved in our top-level routing component, DeepLink. At a high level, this component contains a series of “resolvers” for unknown symbols that need automatic or user-interactive resolution (i.e. :account and :zone). But before we dive in, let’s take a step back and gain appreciation for how cool this component is.</p>
 	<p>Cloudflare’s Dashboard is a single page React app, which means we use React Router to create routing components that handle what’s rendered on different URLs:</p>
-	<pre class="language-typescript"><code class="language-typescript"><switch>
-  <route path="/login"><login></login></route>
-  <route path="/sign-up"><signup></signup></route>
+	<pre class="language-typescript"><code class="language-typescript">&lt;Switch&gt;
+  &lt;Route path="/login"&gt;&lt;Login /&gt;&lt;/Route&gt;
+  &lt;Route path="/sign-up"&gt;&lt;Signup /&gt;&lt;/Route&gt;
   ...
-  <accountroutes>
-</accountroutes></switch></code></pre>
+  &lt;AccountRoutes /&gt;
+&lt;/Switch&gt;</code></pre>
 	<p>When a page is loaded, a lot of things need to happen: API calls need to be made to fetch all the data needed to render a page, like account/user/zone info not cached in the browser. Many components need to be rendered. It turns out that we can improve the UX of many users by <i>blocking React Router</i> to make specific queries to our API instead of rendering an entire page that anecdotally fetches the information we need. For example, there’s no need to render a zone selection page if a user only has one zone, like in our GIF above ☝️.</p>
 	<h3>Resolvers</h3>
 	<p>When a deep link gets parsed and split into parts, the framework iterates over those parts and tries to build a URL string that is later used to redirect users to a specific location in the dashboard.</p>
@@ -164,7 +164,7 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
 };</code></pre>
 	<h3>How does waitForPageAction work?</h3>
 	<p>As mentioned above, we use Redux to manage our state. The <code>actionType</code> parameter is nothing else than a type of Redux action. Whenever a zone is selected, React dispatches a Redux action in an onClick handler.</p>
-	<pre class="language-typescript"><code class="language-typescript"><zonecard onclick="{zoneName" ==""> { dispatch({type: ‘ZONE_SELECTED’, zoneName}) }} /&gt;</zonecard></code></pre>
+	<pre class="language-typescript"><code class="language-typescript">&lt;ZoneCard onClick={zoneName =&gt; { dispatch({type: ‘ZONE_SELECTED’, zoneName}) }} /&gt;</code></pre>
 	<p>Now, how does <code>waitForPageAction</code> know that <code>ZONE_SELECTED’</code> has been dispatched? Aren’t we supposed to write a reducer?!</p>
 	<p>Not really. <code>waitForPageAction</code> is not changing any state, it’s just an observer that resolves whenever some action, that is dispatched, satisfies a predicate. And Redux has an API to subscribe to any store changes - <code>store.subscribe(listener)</code>.</p>
 	<p>The listener will be called any time an action is dispatched, and some part of the state tree may have changed. Unfortunately, the listener does not have access to the currently dispatched action. We can only read the current state.</p>
@@ -178,11 +178,11 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
   return nextState;
 }</code></pre>
 	<p>Anytime an action is dispatched, we can read that action’s metadata in <code>store.getState().lastAction</code>. Now, we have everything we need to finally implement <code>waitForPageAction</code>.</p>
-	<pre class="language-typescript"><code class="language-typescript">export function waitForPageAction = (store: Store<dashstate>) =&gt;(
+	<pre class="language-typescript"><code class="language-typescript">export function waitForPageAction = (store: Store&lt;DashState&gt;) =&gt;(
   pageToAwaitActionOn: string,
   actionType: string
 ) =&gt;
-  new Promise<anyaction>((resolve, reject) =&gt; {
+  new Promise&lt;AnyAction&gt;((resolve, reject) =&gt; {
     // Subscribe to redux store
     const unsubscribe = store.subscribe(() =&gt; {
       const state = store.getState();
@@ -198,21 +198,21 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
         resolve(lastAction);
       }
     });
-  });</anyaction></dashstate></code></pre>
+  });</code></pre>
 	<p>The listener reads the current state and grabs the <code>currentPage</code> and <code>lastAction</code> data. If <code>currentPage</code> doesn’t match <code>pageToAwaitActionOn</code>, it means the user navigated away, and there’s no need to continue resolving the deep link - we unsubscribe, and reject the promise. Deep link resolvers are stopped, and React Router unblocked.</p>
 	<p>Else, if <code>lastAction.type</code> matches the <code>actionType</code> parameter, it means the action we are waiting on just happened! Unsubscribe, and resolve the promise with action metadata. The deep link keeps resolving.</p>
 	<p>That’s it! We also added a similar function - <code>waitForAction</code> - which does exactly the same thing, but is not restricted to a specific page.</p>
 	<h3>ScrollAnchor component</h3>
 	<p>We implemented a wrapper component ScrollAnchor that will scroll to its wrapped content, making our deep links even more targeted. A client would wrap some content like this:</p>
-	<pre class="language-typescript"><code class="language-typescript"><scrollanchor id="”super-important-setting-card”">
-  <superimportantsettingcard>
-</superimportantsettingcard></scrollanchor></code></pre>
+	<pre class="language-typescript"><code class="language-typescript">&lt;ScrollAnchor id=”super-important-setting-card”&gt;
+  &lt;SuperImportantSettingCard /&gt;
+&lt;/ScrollAnchor&gt;</code></pre>
 	<p>And then reference it via a typical URL anchor:</p>
 	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/path/to/content#super-important-setting-card</code></pre>
 	<p>Now I can hear you saying, “what’s the point? Can’t we get the same behavior with any old ID?”</p>
-	<pre class="language-typescript"><code class="language-typescript"><div id="”super-important-setting-card”">
-  <superimportantsettingcard>
-</superimportantsettingcard></div></code></pre>
+	<pre class="language-typescript"><code class="language-typescript">&lt;div id=”super-important-setting-card”&gt;
+  &lt;SuperImportantSettingCard /&gt;
+&lt;/div&gt;</code></pre>
 	<p>We thought so too! But it turns out that there are a few problems that prevent this super simple approach:</p>
 	<ul>
 		<li>
@@ -223,9 +223,9 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
 		</li>
 	</ul>
 	<p>Since the Dashboard contains a fixed header at the top of the page, we can’t simply anchor to any ID, since the content will be scrolled to the top of the browser window <i>behind</i> the header. Fortunately, there’s a simple CSS solution using negative margins:</p>
-	<pre class="language-typescript"><code class="language-typescript"><div id="”super-important-setting-card”" padding-top="{headerOffset}" margin-top="{headerOffset}">
-  <superimportantsettingcard>
-</superimportantsettingcard></div></code></pre>
+	<pre class="language-typescript"><code class="language-typescript">&lt;div id=”super-important-setting-card” padding-top={headerOffset} margin-top={headerOffset}&gt;
+  &lt;SuperImportantSettingCard /&gt;
+&lt;/div&gt;</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 

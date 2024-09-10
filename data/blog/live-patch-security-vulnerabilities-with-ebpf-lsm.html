@@ -51,18 +51,18 @@ HAVE_DYNAMIC_FTRACE</code></pre>
 	<p>A boot option <code>lsm=bpf</code> may be necessary if <code>CONFIG_LSM</code> does not contain “bpf” in the list.</p>
 	<p>Let’s start with our preamble:</p>
 	<p><i>deny_unshare.bpf.c</i>:</p>
-	<pre class="language-c"><code class="language-c">#include <linux bpf.h="">
-#include <linux capability.h="">
-#include <linux errno.h="">
-#include <linux sched.h="">
-#include <linux types.h="">
+	<pre class="language-c"><code class="language-c">#include &lt;linux/bpf.h&gt;
+#include &lt;linux/capability.h&gt;
+#include &lt;linux/errno.h&gt;
+#include &lt;linux/sched.h&gt;
+#include &lt;linux/types.h&gt;
 
-#include <bpf bpf_tracing.h="">
-#include <bpf bpf_helpers.h="">
-#include <bpf bpf_core_read.h="">
+#include &lt;bpf/bpf_tracing.h&gt;
+#include &lt;bpf/bpf_helpers.h&gt;
+#include &lt;bpf/bpf_core_read.h&gt;
 
 #define X86_64_UNSHARE_SYSCALL 272
-#define UNSHARE_SYSCALL X86_64_UNSHARE_SYSCALL</bpf></bpf></bpf></linux></linux></linux></linux></linux></code></pre>
+#define UNSHARE_SYSCALL X86_64_UNSHARE_SYSCALL</code></pre>
 	<p>Next we set up our necessary structures for CO-RE relocation in the following way:</p>
 	<p><i>deny_unshare.bpf.c</i>:</p>
 	<pre class="language-c"><code class="language-c">…
@@ -135,8 +135,8 @@ int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
 }</code></pre>
 	<p>Creating the program is the first step, the second is loading and attaching the program to our desired hook. There are several ways to do this: <a href="https://github.com/cilium/ebpf">Cilium ebpf</a> project, <a href="https://github.com/libbpf/libbpf-rs">Rust bindings</a>, and several others on the <a href="https://ebpf.io/projects">ebpf.io</a> project landscape page. We’re going to use native libbpf.</p>
 	<p><i>deny_unshare.c</i>:</p>
-	<pre class="language-c"><code class="language-c">#include <bpf libbpf.h="">
-#include <unistd.h>
+	<pre class="language-c"><code class="language-c">#include &lt;bpf/libbpf.h&gt;
+#include &lt;unistd.h&gt;
 #include "deny_unshare.skel.h"
 
 static int libbpf_print_fn(enum libbpf_print_level level, const char *format, va_list args)
@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
 cleanup:
     deny_unshare_bpf__destroy(skel);
     return err;
-}</unistd.h></bpf></code></pre>
+}</code></pre>
 	<p>Lastly, to compile, we use the following Makefile:</p>
 	<p><i>Makefile</i>:</p>
 	<pre class="language-makefile"><code class="language-makefile">CLANG ?= clang-13

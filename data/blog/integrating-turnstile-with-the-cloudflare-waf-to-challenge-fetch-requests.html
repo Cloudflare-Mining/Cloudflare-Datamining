@@ -102,7 +102,7 @@
 
 	</figure>
 	<p>In our application, we override the <code>fetch()</code> function to invoke Turnstile once a Cf-Mitigated response has been received.</p>
-	<pre class="language-javascript"><code class="language-javascript"><script>
+	<pre class="language-javascript"><code class="language-javascript">&lt;script&gt;
 turnstileLoad = function () {
   // Save a reference to the original fetch function
   const originalFetch = window.fetch;
@@ -118,7 +118,7 @@ turnstileLoad = function () {
   overlay.style.border = '1px solid grey';
   overlay.style.zIndex = '10000';
   overlay.style.display = 'none';
-  overlay.innerHTML =       '<p style="color: white; text-align: center; margin-top: 50vh;">One more step before you proceed...</p><div style=”display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;” id="turnstile_widget"></div>';
+  overlay.innerHTML =       '&lt;p style="color: white; text-align: center; margin-top: 50vh;"&gt;One more step before you proceed...&lt;/p&gt;&lt;div style=”display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;” id="turnstile_widget"&gt;&lt;/div&gt;';
   document.body.appendChild(overlay);
 
   // Override the native fetch function
@@ -126,11 +126,11 @@ turnstileLoad = function () {
       let response = await originalFetch(...args);
 
       // If the original request was challenged...
-      if (response.headers.has('cf-mitigated') && response.headers.get('cf-mitigated') === 'challenge') {
+      if (response.headers.has('cf-mitigated') &amp;&amp; response.headers.get('cf-mitigated') === 'challenge') {
           // The request has been challenged...
           overlay.style.display = 'block';
 
-          await new Promise((resolve, reject) => {
+          await new Promise((resolve, reject) =&gt; {
               turnstile.render('#turnstile_widget', {
                   'sitekey': ‘YOUR_TURNSTILE_SITEKEY',
                   'error-callback': function (e) {
@@ -155,8 +155,8 @@ turnstileLoad = function () {
       return response;
   };
 };
-</script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoad" async="" defer=""></script></code></pre>
+&lt;/script&gt;
+&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoad" async defer&gt;&lt;/script&gt;</code></pre>
 	<p>There is a lot going on in the snippet above: First, we create a hidden overlay element and override the browser’s <code>fetch()</code> function. The <code>fetch()</code> function is changed to introspect the Cf-Mitigated header for ‘challenge’. If a challenge is issued, the initial result will be unsuccessful; instead, a Turnstile overlay (with Pre-Clearance enabled) will appear in our web application. Once the Turnstile challenge has been completed we will retry the previous request after Turnstile has obtained the cf_clearance cookie to get through the Cloudflare WAF.</p>
 	<figure class="kg-card kg-image-card ">
 

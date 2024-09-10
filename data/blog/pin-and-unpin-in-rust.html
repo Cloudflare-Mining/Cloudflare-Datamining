@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
@@ -65,8 +65,8 @@ impl Future for RandFuture {
 	// This particular future will return a u16.
 	type Output = u16;
 
-	// The `Future` trait has only one method, named "poll".
-fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll&lt;Self::Output  {
+	// The `Future` trait has only one method, named &amp;quot;poll&amp;quot;.
+fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, _cx: &amp;amp;mut Context) -&amp;gt; Poll&amp;lt;Self::Output  {
 		Poll::ready(rand::random())
 	}
 }</code></pre>
@@ -74,26 +74,26 @@ fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll&lt;Sel
 	<p>Not too hard! I think we're ready to implement <code>TimedWrapper</code>.</p>
 	<h3>Trying and failing to use nested Futures</h3>
 	<p>Let's start by defining the type.</p>
-	<pre class="language-bash"><code class="language-bash">pub struct TimedWrapper<fut: future=""> {
-	start: Option<instant>,
+	<pre class="language-bash"><code class="language-bash">pub struct TimedWrapper&lt;Fut: Future&gt; {
+	start: Option&lt;Instant&gt;,
 	future: Fut,
-}</instant></fut:></code></pre>
+}</code></pre>
 	<p></p>
 	<p>OK, so a <code>TimedWrapper</code> is generic over a type <code>Fut</code>, which must be a <code>Future</code>. And it will store a future of that type as a field. It'll also have a <code>start</code> field which will record when it first was first polled. Let's write a constructor:</p>
-	<pre class="language-bash"><code class="language-bash">impl<fut: future=""> TimedWrapper<fut> {
+	<pre class="language-bash"><code class="language-bash">impl&lt;Fut: Future&gt; TimedWrapper&lt;Fut&gt; {
 	pub fn new(future: Fut) -&gt; Self {
 		Self { future, start: None }
 	}
-}</fut></fut:></code></pre>
+}</code></pre>
 	<p></p>
 	<p>Nothing too complicated here. The <code>new</code> function takes a future and wraps it in the <code>TimedWrapper</code>. Of course, we have to set start to None, because it hasn't been polled yet. So, let's implement the <code>poll</code> method, which is the only thing we need to implement <code>Future</code> and make it <code>.await</code>able.</p>
-	<pre class="language-bash"><code class="language-bash">impl<fut: future=""> Future for TimedWrapper<fut> {
+	<pre class="language-bash"><code class="language-bash">impl&lt;Fut: Future&gt; Future for TimedWrapper&lt;Fut&gt; {
 	// This future will output a pair of values:
 	// 1. The value from the inner future
 	// 2. How long it took for the inner future to resolve
 	type Output = (Fut::Output, Duration);
 
-	fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll<self::output> {
+	fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt; {
 		// Call the inner poll, measuring how long it took.
 		let start = self.start.get_or_insert_with(Instant::now);
 		let inner_poll = self.future.poll(cx);
@@ -106,7 +106,7 @@ fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll&lt;Sel
 			Poll::Ready(output) =&gt; Poll::Ready((output, elapsed)),
 		}
 	}
-}</self::output></fut></fut:></code></pre>
+}</code></pre>
 	<p></p>
 	<p>OK, that wasn't too hard. There's just one problem: this doesn't work.</p>
 	<figure class="kg-card kg-image-card ">
@@ -168,31 +168,31 @@ fn poll(self: Pin&lt;&amp;mut Self&gt;, _cx: &amp;mut Context) -&gt; Poll&lt;Sel
 	<p>The solution is to write helper functions which give you references to the fields. These references might be normal Rust references like &amp;mut, or they might <i>also</i> be pinned. You can choose whichever one you need. This is called <i>projection</i>: if you have a pinned struct, you can write a projection method that gives you access to all its fields.</p>
 	<p>Projecting is really just getting data into and out of Pins. For example, we get the <code>start: Option&lt;Duration&gt;</code> field from the <code>Pin&lt;&amp;mut self&gt;</code>, and we need to put the <code>future: Fut</code> into a Pin so we can call its <code>poll</code> method). If you read the <a href="https://doc.rust-lang.org/stable/std/pin/struct.Pin.html"><code>Pin</code> methods</a> you'll see this is always safe if it points to an <code>Unpin</code> value, but requires unsafe otherwise.</p>
 	<pre class="language-bash"><code class="language-bash">// Putting data into Pin
-pub        fn new          <p: deref<target:unpin="">&gt;(pointer: P) -&gt; Pin<p>;
-pub unsafe fn new_unchecked</p><p>                     (pointer: P) -&gt; Pin</p><p>;
+pub        fn new          &lt;P: Deref&lt;Target:Unpin&gt;&gt;(pointer: P) -&gt; Pin&lt;P&gt;;
+pub unsafe fn new_unchecked&lt;P&gt;                     (pointer: P) -&gt; Pin&lt;P&gt;;
 
 // Getting data from Pin
-pub        fn into_inner          <p: deref<target:="" unpin="">&gt;(pin: Pin</p:></p><p>) -&gt; P;
-pub unsafe fn into_inner_unchecked</p><p>                      (pin: Pin</p><p>) -&gt; P;</p></p:></code></pre>
+pub        fn into_inner          &lt;P: Deref&lt;Target: Unpin&gt;&gt;(pin: Pin&lt;P&gt;) -&gt; P;
+pub unsafe fn into_inner_unchecked&lt;P&gt;                      (pin: Pin&lt;P&gt;) -&gt; P;</code></pre>
 	<p></p>
 	<p>I know <code>unsafe</code> can be a bit scary, but it's OK to write unsafe code! I think of unsafe as the compiler saying "hey, I can't tell if this code follows the rules here, so I'm going to rely on you to check for me." The Rust compiler does so much work for us, it's only fair that we do some of the work every now and then. If you want to learn how to write your own projection methods, I can highly recommend <a href="https://fasterthanli.me/articles/pin-and-suffering">this fasterthanli.me blog post</a> on the topic. But we're going to take a little shortcut.</p>
 	<h3>Using pin-project instead</h3>
 	<p>So, OK, look, it's time for a confession: I don't like using <code>unsafe</code>. I know I just explained why it's OK, but still, given the option, I would rather not.</p>
 	<p>I didn't start writing Rust because I wanted to carefully think about the consequences of my actions, damnit, I just want to go fast and not break things. Luckily, someone sympathized with me and made a crate which generates totally safe projections! It's called <a href="https://docs.rs/pin-project">pin-project</a> and it's <i>awesome</i>. All we need to do is change our definition:</p>
 	<pre class="language-rust"><code class="language-rust">#[pin_project::pin_project] // This generates a `project` method
-pub struct TimedWrapper<fut: future=""> {
+pub struct TimedWrapper&lt;Fut: Future&gt; {
 	// For each field, we need to choose whether `project` returns an
 	// unpinned (&amp;mut T) or pinned (Pin&lt;&amp;mut T&gt;) reference to the field.
 	// By default, it assumes unpinned:
-	start: Option<instant>,
+	start: Option&lt;Instant&gt;,
 	// Opt into pinned references with this attribute:
 	#[pin]
 	future: Fut,
-}</instant></fut:></code></pre>
+}</code></pre>
 	<p></p>
 	<p>For each field, you have to choose whether its projection should be pinned or not. By default, you should use a normal reference, just because they're easier and simpler. But if you know you need a pinned reference -- for example, because you want to call <code>.poll()</code>, whose receiver is <code>Pin&lt;&amp;mut Self&gt;</code> -- then you can do that with <code>#[pin]</code>.</p>
 	<p>Now we can finally poll the inner future!</p>
-	<pre class="language-bash"><code class="language-bash">fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll<self::output> {
+	<pre class="language-bash"><code class="language-bash">fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt; {
 	// This returns a type with all the same fields, with all the same types,
 	// except that the fields defined with #[pin] will be pinned.
 	let mut this = self.project();
@@ -208,7 +208,7 @@ pub struct TimedWrapper<fut: future=""> {
 		// Success!
 		Poll::Ready(output) =&gt; Poll::Ready((output, elapsed)),
 	}
-}</self::output></code></pre>
+}</code></pre>
 	<p></p>
 	<p>Finally, our goal is complete -- and we did it all without any unsafe code.</p>
 	<h3>Summary</h3>

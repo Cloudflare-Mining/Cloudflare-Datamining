@@ -61,7 +61,7 @@ eeprog 0.7.5, a 24Cxx EEPROM reader/writer
 Copyright (c) 2003 by Stefano Barbato - All rights reserved.
   Bus: /dev/i2c-23, Address: 0x50, Mode: 16bit
   Reading 200 bytes from 0x0
-<redacted> Ver 0.02</redacted></code></pre>
+&lt;redacted&gt; Ver 0.02</code></pre>
 	<p>This tool will produce block read requests over SMBus and dump the returned information. For temperature, the TMP75 temperature sensor is commonly used for many temperature sensors in server commodity components. We can manually bind the temperature sensor in sysfs like this:</p>
 	<p><code>~$echo "tmp75 0x4F &gt; /sys/bus/i2c/devices/i2c-23/new_device"</code></p>
 	<p>This will bind the tmp75 driver to address 0x4F on I2C bus 23, and we can verify the successful binding and sysfs information as seen below:</p>
@@ -105,12 +105,12 @@ Copyright (c) 2003 by Stefano Barbato - All rights reserved.
 	<pre class="language-bash"><code class="language-bash">$~ ipmi 517m206 sdr |grep GPU_TEMP
 GPU_TEMP         | 39 degrees C      | ok
 $~ ipmi 517m206 fru print 151
-FRU Device Description : <redacted> (ID 151)
+FRU Device Description : &lt;redacted&gt; (ID 151)
  Board Mfg Date        : Mon Mar 27 18:13:00 2023 UTC
- Board Mfg             : <redacted>
- Board Product         : <redacted>
- Board Serial          : <redacted>
- Board Part Number     : <redacted></redacted></redacted></redacted></redacted></redacted></code></pre>
+ Board Mfg             : &lt;redacted&gt;
+ Board Product         : &lt;redacted&gt;
+ Board Serial          : &lt;redacted&gt;
+ Board Part Number     : &lt;redacted&gt;</code></pre>
 	<h2>Open-Source firmware moving forward</h2>
 	<p>Cloudflare has been able to leverage OpenBMC to gain more control and flexibility with our server configurations, without sacrificing the efficiency at the core of our network. While we continue to work closely with our ODM partners, our ongoing GPU deployment has underscored the importance of being able to modify server firmware without being locked to traditional device update cycles.For those who are interested in considering making the jump to open-source firmware, check out OpenBMC <a href="https://github.com/openbmc/openbmc">here</a>!</p>
 </div>

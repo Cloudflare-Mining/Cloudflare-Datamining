@@ -58,32 +58,32 @@
 
 {
   "result": {
-    "id":    "<redacted namespace="" id="">", 
+    "id":    "&lt;REDACTED NAMESPACE ID&gt;", 
     "title": "logcard"
   },
   "success":  true,
   "errors":   [],
   "messages": []
-}</redacted></code></pre>
+}</code></pre>
 	<p><b>Step 2: Upload Code and Bind a Variable to the Namespace</b></p>
 	<p>This curl uploads the script <code>babbage.js</code> containing the Worker and names it <code>logcard</code>. It binds the namespace created above to the variable <code>LOGCARD</code>. That variable can be used within the Worker to access the Workers KV namespace created above.</p>
 	<pre class="language-bash"><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/$CF_ACCT/workers/scripts/logcard" \
 -X PUT \
 -H "X-Auth-Email: $CF_EMAIL" \
 -H "X-Auth-Key: $CF_KEY" \
--F 'script=@-;type=application/javascript' -F 'metadata={"body_part": "script", "bindings": [{"name": "LOGCARD", "type": "kv_namespace", "namespace_id": "<redacted namespace="" id="">"}]};type=application/json' &lt; babbage.js
+-F 'script=@-;type=application/javascript' -F 'metadata={"body_part": "script", "bindings": [{"name": "LOGCARD", "type": "kv_namespace", "namespace_id": "&lt;REDACTED NAMESPACE ID&gt;"}]};type=application/json' &lt; babbage.js
 
 {
   "result": {
     "id":          "logcard",
-    "etag":        "<redacted etag="">",
+    "etag":        "&lt;REDACTED ETAG&gt;",
     "size":        2254,
     "modified_on": "2018-09-28T07:33:01.109336Z"
   },
   "success":  true,
   "errors":   [],
   "messages": []
-}</redacted></redacted></code></pre>
+}</code></pre>
 	<p>The code accesses the namespace and retrieves values with <code>const retrieved = await LOGCARD.get(paddedInt)</code>. &nbsp;The full code for the Worker can be found <a href="https://gist.github.com/jgrahamc/585fde79c56b1ffe6ae9633cf318ebdf">here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 

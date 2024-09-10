@@ -14,22 +14,22 @@
 	<pre class="language-rust"><code class="language-rust">async fn start(
     _settings: ServerSettings&lt;(), ()&gt;,
     _parent_state: Metadata,
-) -&gt; anyhow::Result<hooks<self>&gt; {
+) -&gt; anyhow::Result&lt;Hooks&lt;Self&gt;&gt; {
     Ok(Hooks {
         ..Default::default()
     })
-}</hooks<self></code></pre>
+}</code></pre>
 	<p>We can define a simple callback, <code>EgressHook::handle_connection</code>, that will forward all connections to the upstream requested by the client. Oxy calls this function before attempting to make an upstream connection.</p>
 	<pre class="language-rust"><code class="language-rust">#[async_trait]
-impl<ext> EgressHook<ext> for MyEgressHook
+impl&lt;Ext&gt; EgressHook&lt;Ext&gt; for MyEgressHook
 where
     Ext: OxyExt,
 {
     async fn handle_connection(
         &amp;self,
         upstream_addr: SocketAddr,
-        _egress_ctx: EgressConnectionContext<ext>,
-    ) -&gt; ProxyResult<egressdecision> {
+        _egress_ctx: EgressConnectionContext&lt;Ext&gt;,
+    ) -&gt; ProxyResult&lt;EgressDecision&gt; {
         Ok(EgressDecision::ExternalDirect(upstream_addr))
     }
 }
@@ -37,30 +37,30 @@ where
 async fn start(
     _settings: ServerSettings&lt;(), ()&gt;,
     _parent_state: Metadata,
-) -&gt; anyhow::Result<hooks<self>&gt; {
+) -&gt; anyhow::Result&lt;Hooks&lt;Self&gt;&gt; {
     Ok(Hooks {
         egress: Some(Arc::new(MyEgressHook)),
         ..Default::default()
     })
-}</hooks<self></egressdecision></ext></ext></ext></code></pre>
+}</code></pre>
 	<p>Oxy simply proxies the connection, but we might want to consider restricting which upstream IPs our clients are allowed to connect to. The implementation above allows everything, but maybe we have internal services that we wish to prevent proxy users from accessing.</p>
 	<pre class="language-rust"><code class="language-rust">#[async_trait]
-impl<ext> EgressHook<ext> for MyEgressHook
+impl&lt;Ext&gt; EgressHook&lt;Ext&gt; for MyEgressHook
 where
     Ext: OxyExt,
 {
     async fn handle_connection(
         &amp;self,
         upstream_addr: SocketAddr,
-        _egress_ctx: EgressConnectionContext<ext>,
-    ) -&gt; ProxyResult<egressdecision> {
+        _egress_ctx: EgressConnectionContext&lt;Ext&gt;,
+    ) -&gt; ProxyResult&lt;EgressDecision&gt; {
         if self.private_cidrs.find(upstream_addr).is_some() {
             return Ok(EgressDecision::Block);
         }
 
         Ok(EgressDecision::ExternalDirect(upstream_addr))
     }
-}</egressdecision></ext></ext></ext></code></pre>
+}</code></pre>
 	<p>This blocking strategy is crude. Sometimes it’s useful to allow certain clients to connect to internal services – a <a href="https://prometheus.io/docs/introduction/overview">Prometheus</a> scraper is a good example. To authorize these connections, we’ll implement a simple Pre-Shared Key (PSK) authorization scheme – if the client sends the header <code>Proxy-Authorization: Preshared oxy-is-a-proxy</code>, then we’ll let them connect to private addresses via the proxy.</p>
 	<p>To do this, we need to attach some state to the connection as it passes through Oxy. Client headers only exist in the HTTP CONNECT phase, but we need access to the PSK during the egress phase. With Oxy, this can be done by leveraging its Opaque Extensions to attach arbitrary (yet fully typed) context data to a connection. Oxy initializes the data and passes it to each hook. We can mutate this data when we read headers from the client, and read it later during egress.</p>
 	<figure class="kg-card kg-image-card ">
@@ -70,18 +70,18 @@ where
 	</figure>
 	<pre class="language-rust"><code class="language-rust">#[derive(Default)]
 struct AuthorizationResult {
-    can_access_private_cidrs: Arc<atomicbool>,
+    can_access_private_cidrs: Arc&lt;AtomicBool&gt;,
 }
 
 #[async_trait]
-impl<ext> HttpRequestHook<ext> for MyHttpHook
+impl&lt;Ext&gt; HttpRequestHook&lt;Ext&gt; for MyHttpHook
 where
-    Ext: OxyExt<ingressconnectioncontext =="" authorizationresult="">,
+    Ext: OxyExt&lt;IngressConnectionContext = AuthorizationResult&gt;,
 {
     async fn handle_proxy_connect_request(
-        self: Arc<self>,
+        self: Arc&lt;Self&gt;,
         connect_req_head: &amp;Parts,
-        req_ctx: RequestContext<ext>,
+        req_ctx: RequestContext&lt;Ext&gt;,
     ) -&gt; ConnectDirective {
         const PSK_HEADER: &amp;str = "Preshared oxy-is-a-proxy";
 
@@ -100,18 +100,18 @@ where
 
         ConnectDirective::Allow
     }
-}</ext></self></ingressconnectioncontext></ext></ext></atomicbool></code></pre>
+}</code></pre>
 	<p>From here, any hook in the pipeline can access this data. For our purposes, we can just update our existing <code>handle_connection</code> callback:</p>
 	<pre class="language-rust"><code class="language-rust">#[async_trait]
-impl<ext> EgressHook<ext> for MyEgressHook
+impl&lt;Ext&gt; EgressHook&lt;Ext&gt; for MyEgressHook
 where
-    Ext: OxyExt<ingressconnectioncontext =="" authorizationresult="">,
+    Ext: OxyExt&lt;IngressConnectionContext = AuthorizationResult&gt;,
 {
     async fn handle_connection(
         &amp;self,
         upstream_addr: SocketAddr,
-        egress_ctx: EgressConnectionContext<ext>,
-    ) -&gt; ProxyResult<egressdecision> {
+        egress_ctx: EgressConnectionContext&lt;Ext&gt;,
+    ) -&gt; ProxyResult&lt;EgressDecision&gt; {
         if self.private_cidrs.find(upstream_addr).is_some() {
             if !egress_ctx
                 .ingress_ctx()
@@ -125,7 +125,7 @@ where
 
         Ok(EgressDecision::ExternalDirect(upstream_addr))
     }
-}</egressdecision></ext></ingressconnectioncontext></ext></ext></code></pre>
+}</code></pre>
 	<p>This is a somewhat contrived example, but in practice hooks and their extension types allow Oxy apps to fully customize all aspects of proxied traffic.</p>
 	<p>A real world example would be implementing the RFC 9209 <a href="https://www.rfc-editor.org/rfc/rfc9209.html#name-next-hop">next-hop</a> Proxy-Status header. This involves setting a header containing the IP address we connected to on behalf of the client. We can do this with two pre-existing callbacks and a little bit of state: first we save the upstream passed to <code>EgressHook::handle_connection_established</code> and then read the value in the <code>HttpRequestHook:handle_proxy_connect_response</code> in order to set the header on the CONNECT response.</p>
 	<figure class="kg-card kg-image-card ">
@@ -135,18 +135,18 @@ where
 	</figure>
 	<pre class="language-rust"><code class="language-rust">#[derive(Default)]
 struct ConnectProxyConnectionContext {
-    upstream_addr: OnceCell<socketaddr>,
+    upstream_addr: OnceCell&lt;SocketAddr&gt;,
 }
 
 #[async_trait]
-impl<ext> EgressHook<ext> for MyEgressHook
+impl&lt;Ext&gt; EgressHook&lt;Ext&gt; for MyEgressHook
 where
-    Ext: OxyExt<ingressconnectioncontext =="" connectproxyconnectioncontext="">,
+    Ext: OxyExt&lt;IngressConnectionContext = ConnectProxyConnectionContext&gt;,
 {
     fn handle_connection_established(
         &amp;self,
         upstream_addr: SocketAddr,
-        egress_ctx: EgressConnectionContext<ext>,
+        egress_ctx: EgressConnectionContext&lt;Ext&gt;,
     ) {
         egress_ctx
             .ingress_ctx()
@@ -157,14 +157,14 @@ where
 }
 
 #[async_trait]
-impl<ext> HttpRequestHook<ext> for MyHttpRequestHook
+impl&lt;Ext&gt; HttpRequestHook&lt;Ext&gt; for MyHttpRequestHook
 where
-    Ext: OxyExt<ingressconnectioncontext =="" connectproxyconnectioncontext="">,
+    Ext: OxyExt&lt;IngressConnectionContext = ConnectProxyConnectionContext&gt;,
 {
     async fn handle_proxy_connect_response(
-        self: Arc<self>,
-        mut res: Response<oxybody>,
-        req_ctx: RequestContext<ext>,
+        self: Arc&lt;Self&gt;,
+        mut res: Response&lt;OxyBody&gt;,
+        req_ctx: RequestContext&lt;Ext&gt;,
     ) -&gt; ProxyConnectResponseHandlingOutcome {
         let ingress = req_ctx.ingress_ctx();
         let ingress_ext = ingress.ext();
@@ -178,7 +178,7 @@ where
 
         res.into()
     }
-}</ext></oxybody></self></ingressconnectioncontext></ext></ext></ext></ingressconnectioncontext></ext></ext></socketaddr></code></pre>
+}</code></pre>
 	<p>These examples only consider a few of the hooks along the HTTP CONNECT pipeline, but many real Oxy applications don’t even have L7 ingress! We will talk about the abundance of hooks later, but for now let’s look at their implementation.</p>
 	<h2>Hook implementation</h2>
 	<p>Oxy exists to be used by multiple teams, all with different needs and requirements. It needs a pragmatic solution to extensibility that allows one team to be productive without incurring too much of a cost on others. Hooks and their Opaque Extensions provide effectively limitless customization to applications via a clean, strongly typed interface.</p>

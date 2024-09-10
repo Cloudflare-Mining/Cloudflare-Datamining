@@ -55,11 +55,11 @@
 	</ul>
 	<p>Notice how we removed the customer identifiers. Our systems can detect the changing parts of an API, allowing us to recognize both paths as the same one. We do this by recording the cardinality of each endpoint. For example, we might have originally found that there were 700 different strings observed in place of the asterisk. “237” and “415” were just two of those possibilities. We then used unsupervised learning to choose a threshold (in this case, let’s say 30). Since we’ve noticed far more than 30 variants of this path, we recognize the customer identifier as a <i>variable</i> and collapse the path. This process is called “path normalization.”</p>
 	<p>API Discovery is a building block for many security products to come. But at its core, the technology is about producing a simple, trustworthy map of APIs. Here is a small sample of what you might find:</p>
-	<pre class="language-bash"><code class="language-bash">login/<customer_identifier>
+	<pre class="language-bash"><code class="language-bash">login/&lt;customer_identifier&gt;
 auth
-account/<customer_identifier>
+account/&lt;customer_identifier&gt;
 password_reset
-logout</customer_identifier></customer_identifier></code></pre>
+logout</code></pre>
 	<p>Imagine this list scaled to hundreds, if not thousands of endpoints. Some will be obvious (hopefully login endpoints are expected!), but others could be a surprise. The final map will help identify variables or tokens referenced by each endpoint.</p>
 	<h3>Detecting Abuse by Volume</h3>
 	<p>Now that we have discovered APIs, we can begin to look for abuse. Our first approach handles volumetric anomalies. In other words, we make an educated guess about <i>how often</i> each path is reached and set some threshold to manage abuse. This is a form of adaptive rate limiting.</p>
