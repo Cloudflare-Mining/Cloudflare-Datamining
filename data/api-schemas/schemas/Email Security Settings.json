@@ -5772,6 +5772,8 @@
 							},
 							"lookback_hops": {
 								"format": "int32",
+								"maximum": 20,
+								"minimum": 1,
 								"nullable": true,
 								"type": "integer"
 							}
