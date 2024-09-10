@@ -5,37 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin highly preferred and or surrounding areas.&nbsp;</p>
-<hr>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Business Intelligence Engineer to join our team. You will work closely with business stakeholders across different organizations (Finance, Marketing, Sales, etc.) to analyze data and build reports for a business use case. You will also help with ingesting data and building aggregated data pipelines to help with making data available for everyone to use.</p>
-<p>Success in this role comes from marrying a strong technical background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics.</p>
-<p><strong>What you'll do</strong></p>
+<h2>About the department</h2>
+<p>As a Senior Director of Product at Cloudflare, you are responsible for building teams and products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<h2>About the role</h2>
+<p>Threat Intelligence is vital to all of our security offerings. Securing our customers' applications and networks is core to what we do. As part of this, our security products need to be able to rely on high quality threat intelligence that can guarantee we are detecting threats early and with low false positives. As the Senior Director of Product for Threat Intelligence, you will be working with a wide range of cross functional teams supporting our largest customers to ensure we have both the tooling and the processes to detect and react to attacks. You will ultimately help define the strategy of our Threat Intelligence approach, managing a capable team of product managers and delivering great solutions to help Cloudflare move into the much broader security space.</p>
+<h2>What you'll do</h2>
+<p>In this role you will shape the Threat Intelligence solutions offered by Cloudflare, working closely with the development team, support teams and other functions across Cloudflare, to listen to customer problems and deliver solutions that satisfy customers needs. You will solve problems that have wide impact and significance, shaping the future of security on the Internet.</p>
+<p>We operate with very small teams of highly motivated and experienced engineers and product professionals. This candidate will need to be able to understand the technology behind our products to help guide engineering decisions and prioritizations. A suitable candidate will have an exceptional understanding of engineering, customer management, or product, and a deep desire to learn. As this role is a management role, you will also be expected to hire and build a great team, and be able to report progress towards senior leadership and engage at an executive level across the company.&nbsp;</p>
+<p>Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong understanding of business and product data needs</li>
-	<li>Design, build and support scalable and reliable data solutions that can enable self-service reporting and advanced analytics using open source technologies</li>
-	<li>Create dashboards and KPIs to help answer business questions</li>
-	<li>Prioritize and execute on high impact tasks, triage external requests, and ensure to deliver tasks in time</li>
-	<li>Gain insight into data operations by contributing to mapping documents and technical requirements</li>
-	<li>Contribute in improving an evolving data platform for scalability, observability, and reliability</li>
-	<li>Understand data landscape i.e., tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</li>
-	<li>Debugging and fixing issues with the production data pipelines</li>
-	<li>Mentor junior team members</li>
+	<li>7+ years of experience in a management position (product) or substantial management experience in cross functional roles/entrepreneurship</li>
+	<li>Customer facing experience, with large customer engagement with executive leadership</li>
+	<li>The ability to work in a fast-moving and ever-changing environment</li>
+	<li>Experience working alongside engineering, design, marketing teams etc. - engaging with senior cross functional leaders</li>
+	<li>Exceptional people skills and empathy</li>
+	<li>A high degree of attention to detail</li>
+	<li>A deep understanding of technical subjects and the internet</li>
+	<li>A deep understanding of cyber security topics</li>
+	<li>A kind and generous attitude towards customers and co-workers alike</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<h3>Responsibilities</h3>
+<p>You will:&nbsp;</p>
 <ul>
-	<li>5+ years of industry experience in data engineering, data analysis or related field</li>
-	<li>Fluent in writing advanced SQL queries</li>
-	<li>Strong programming skills with Python or any programming language</li>
-	<li>Excellent communication skills</li>
-	<li>Proven ability to work closely with business and product teams to ensure data solutions are aligned with business initiatives and are of high quality</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Comfortable with version control (Git or similar version control tools)</li>
-	<li>Understanding of big data technologies</li>
-	<li>Experience with Google Cloud Platform or other cloud platforms</li>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>Take leadership. You will manage a team of product managers ensuring coverage and accountability for the myriad projects across the organization.&nbsp;</li>
+	<li>Work horizontally. Disparate groups like Engineering, Program Management, Finance, Revenue Operations, Business Intelligence and external vendors</li>
+	<li>Span timescales. Short term deliverables like supporting product launches, medium term ones like migrating customers to new and better systems and longer term ones like implementations of net new solutions not available today</li>
+	<li>Span domains. You need to simultaneously let other teams rely on the roadmaps you publish while being responsive to the interrupt-driven nature of the business. When shifts do occur, you need to proactively communicate with other teams to maintain trust.&nbsp;</li>
+	<li>Communicate and collaborate. Essential to the success of this program is the ability to listen, learn, synthesize and communicate outwards as well as influence through persuasion.</li>
+	<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
+	<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
+	<li>This is a self-directed role where you will be expected to own a product suite vision, direction</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

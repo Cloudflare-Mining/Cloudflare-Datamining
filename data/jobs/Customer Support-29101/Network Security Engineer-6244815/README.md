@@ -5,37 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin highly preferred and or surrounding areas.&nbsp;</p>
-<hr>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Business Intelligence Engineer to join our team. You will work closely with business stakeholders across different organizations (Finance, Marketing, Sales, etc.) to analyze data and build reports for a business use case. You will also help with ingesting data and building aggregated data pipelines to help with making data available for everyone to use.</p>
-<p>Success in this role comes from marrying a strong technical background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics.</p>
-<p><strong>What you'll do</strong></p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>What You’ll do</strong></h4>
+<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<p><strong>Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong understanding of business and product data needs</li>
-	<li>Design, build and support scalable and reliable data solutions that can enable self-service reporting and advanced analytics using open source technologies</li>
-	<li>Create dashboards and KPIs to help answer business questions</li>
-	<li>Prioritize and execute on high impact tasks, triage external requests, and ensure to deliver tasks in time</li>
-	<li>Gain insight into data operations by contributing to mapping documents and technical requirements</li>
-	<li>Contribute in improving an evolving data platform for scalability, observability, and reliability</li>
-	<li>Understand data landscape i.e., tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</li>
-	<li>Debugging and fixing issues with the production data pipelines</li>
-	<li>Mentor junior team members</li>
+	<li>Fluent English speaker is a requirement</li>
+	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
+	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Fundamental understanding how the Internet works (OSI Model)</li>
+	<li>Advanced understanding of internet protocols like TCP and UDP</li>
+	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Packet capture analysis</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Experience in working as part of a team in a customer-facing role</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>5+ years of industry experience in data engineering, data analysis or related field</li>
-	<li>Fluent in writing advanced SQL queries</li>
-	<li>Strong programming skills with Python or any programming language</li>
-	<li>Excellent communication skills</li>
-	<li>Proven ability to work closely with business and product teams to ensure data solutions are aligned with business initiatives and are of high quality</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Comfortable with version control (Git or similar version control tools)</li>
-	<li>Understanding of big data technologies</li>
-	<li>Experience with Google Cloud Platform or other cloud platforms</li>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
+</ul>
+<p><strong>Availability and Schedule Requirements</strong></p>
+<ul>
+	<li>Flexibility to work varying work schedules including; Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

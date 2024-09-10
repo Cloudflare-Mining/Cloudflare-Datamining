@@ -5,38 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin highly preferred and or surrounding areas.&nbsp;</p>
-<hr>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Business Intelligence Engineer to join our team. You will work closely with business stakeholders across different organizations (Finance, Marketing, Sales, etc.) to analyze data and build reports for a business use case. You will also help with ingesting data and building aggregated data pipelines to help with making data available for everyone to use.</p>
-<p>Success in this role comes from marrying a strong technical background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
+<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
+<p><strong>Responsibilities</strong><strong>:</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong understanding of business and product data needs</li>
-	<li>Design, build and support scalable and reliable data solutions that can enable self-service reporting and advanced analytics using open source technologies</li>
-	<li>Create dashboards and KPIs to help answer business questions</li>
-	<li>Prioritize and execute on high impact tasks, triage external requests, and ensure to deliver tasks in time</li>
-	<li>Gain insight into data operations by contributing to mapping documents and technical requirements</li>
-	<li>Contribute in improving an evolving data platform for scalability, observability, and reliability</li>
-	<li>Understand data landscape i.e., tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</li>
-	<li>Debugging and fixing issues with the production data pipelines</li>
-	<li>Mentor junior team members</li>
+	<li>Be part of a world class globally-distributed team.</li>
+	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information (subpoenas, court orders, etc) from law enforcement and government officials and in response to third-party civil matters.</li>
+	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
+	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
+	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
+	<li>Participate in a rotating weekend coverage duty.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>Requirements</strong><strong>:</strong></p>
 <ul>
-	<li>5+ years of industry experience in data engineering, data analysis or related field</li>
-	<li>Fluent in writing advanced SQL queries</li>
-	<li>Strong programming skills with Python or any programming language</li>
-	<li>Excellent communication skills</li>
-	<li>Proven ability to work closely with business and product teams to ensure data solutions are aligned with business initiatives and are of high quality</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Comfortable with version control (Git or similar version control tools)</li>
-	<li>Understanding of big data technologies</li>
-	<li>Experience with Google Cloud Platform or other cloud platforms</li>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>5+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Legal or Trust &amp; Safety.</li>
+	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
+	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
+	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
+	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
+	<li>A great attitude and team player.&nbsp;</li>
 </ul>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
+	<li>You’ve interacted with law enforcement officials and agencies.</li>
+	<li>Hands-on experience with Cloudflare’s products and services.&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
