@@ -645,6 +645,9 @@
 		"summary": "Get indicator feeds owned by this account",
 		"tags": [
 			"Custom Indicator Feeds"
+		],
+		"x-api-token-group": [
+			"Intel Read"
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {

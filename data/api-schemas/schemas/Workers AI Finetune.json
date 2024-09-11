@@ -117,6 +117,10 @@
 		"tags": [
 			"Workers AI Finetune"
 		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai"
@@ -425,6 +429,9 @@
 		"summary": "Create a new Finetune",
 		"tags": [
 			"Workers AI Finetune"
+		],
+		"x-api-token-group": [
+			"Workers AI Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

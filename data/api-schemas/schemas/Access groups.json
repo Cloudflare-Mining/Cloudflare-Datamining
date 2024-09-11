@@ -2345,6 +2345,10 @@
 		"summary": "List Access groups",
 		"tags": [
 			"Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/groups/{group_id}": {
@@ -7969,6 +7973,9 @@
 		"summary": "Create an Access group",
 		"tags": [
 			"Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/groups/{group_id}": {

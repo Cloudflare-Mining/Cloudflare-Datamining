@@ -341,6 +341,12 @@
 		"tags": [
 			"Page Shield"
 		],
+		"x-api-token-group": [
+			"Domain Page Shield Read",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -783,6 +789,12 @@
 		"summary": "List Page Shield connections",
 		"tags": [
 			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Domain Page Shield Read",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1559,6 +1571,12 @@
 		"tags": [
 			"Page Shield"
 		],
+		"x-api-token-group": [
+			"Domain Page Shield Read",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2161,6 +2179,12 @@
 		"summary": "List Page Shield policies",
 		"tags": [
 			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Domain Page Shield Read",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2928,6 +2952,12 @@
 		"tags": [
 			"Page Shield"
 		],
+		"x-api-token-group": [
+			"Domain Page Shield Read",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3633,6 +3663,9 @@
 		"tags": [
 			"Page Shield"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3904,6 +3937,9 @@
 		"summary": "Update Page Shield settings",
 		"tags": [
 			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

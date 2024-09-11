@@ -691,6 +691,10 @@
 		"summary": "List short-lived certificate CAs",
 		"tags": [
 			"Access short-lived certificate CAs"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/apps/{app_id}/ca": {

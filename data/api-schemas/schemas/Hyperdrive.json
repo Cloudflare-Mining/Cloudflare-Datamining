@@ -786,6 +786,10 @@
 		"tags": [
 			"Hyperdrive"
 		],
+		"x-api-token-group": [
+			"Hyperdrive Write",
+			"Hyperdrive Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.list"
@@ -2449,6 +2453,9 @@
 		"summary": "Create Hyperdrive",
 		"tags": [
 			"Hyperdrive"
+		],
+		"x-api-token-group": [
+			"Hyperdrive Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

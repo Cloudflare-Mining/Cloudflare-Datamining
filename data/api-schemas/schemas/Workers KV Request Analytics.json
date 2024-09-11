@@ -759,6 +759,10 @@
 		"summary": "Query Request Analytics",
 		"tags": [
 			"Workers KV Request Analytics"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	}
 }

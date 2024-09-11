@@ -5056,6 +5056,10 @@
 		"tags": [
 			"Account Rulesets"
 		],
+		"x-api-token-group": [
+			"Account WAF Read",
+			"Account Rulesets Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -43292,6 +43296,13 @@
 		"summary": "Create an account ruleset",
 		"tags": [
 			"Account Rulesets"
+		],
+		"x-api-token-group": [
+			"Mass URL Redirects Write",
+			"Magic Firewall Write",
+			"L4 DDoS Managed Ruleset Write",
+			"Transform Rules Write",
+			"Select Configuration Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

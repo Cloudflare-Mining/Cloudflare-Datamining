@@ -347,6 +347,10 @@
 		"tags": [
 			"Smart Tiered Cache"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -699,6 +703,12 @@
 		"summary": "Get Smart Tiered Cache setting",
 		"tags": [
 			"Smart Tiered Cache"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"Zone Read",
+			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1078,6 +1088,10 @@
 		"summary": "Patch Smart Tiered Cache setting",
 		"tags": [
 			"Smart Tiered Cache"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

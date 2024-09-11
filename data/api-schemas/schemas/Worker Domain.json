@@ -454,6 +454,10 @@
 		"tags": [
 			"Worker Domain"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.domain.list"
@@ -1193,6 +1197,9 @@
 		"summary": "Attach to Domain",
 		"tags": [
 			"Worker Domain"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

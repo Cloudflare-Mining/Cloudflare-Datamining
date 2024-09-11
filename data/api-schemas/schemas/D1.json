@@ -504,6 +504,10 @@
 		"summary": "List D1 Databases",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
 		]
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}": {
@@ -1025,6 +1029,9 @@
 		"summary": "Create D1 Database",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Write"
 		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/export": {

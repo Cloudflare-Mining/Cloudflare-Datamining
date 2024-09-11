@@ -589,6 +589,10 @@
 		"summary": "List Turnstile Widgets",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Read",
+			"Account Settings Read"
 		]
 	},
 	"GET /accounts/{account_id}/challenges/widgets/{sitekey}": {

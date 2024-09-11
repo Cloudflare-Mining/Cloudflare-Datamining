@@ -49,6 +49,9 @@
 		"tags": [
 			"Magic PCAP collection"
 		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -837,6 +840,10 @@
 		"tags": [
 			"Magic PCAP collection"
 		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API",
+			"Magic Firewall Packet Captures - Read PCAPs API"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1595,6 +1602,10 @@
 		"tags": [
 			"Magic PCAP collection"
 		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API",
+			"Magic Firewall Packet Captures - Read PCAPs API"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1654,6 +1665,10 @@
 		"summary": "Download Simple PCAP",
 		"tags": [
 			"Magic PCAP collection"
+		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API",
+			"Magic Firewall Packet Captures - Read PCAPs API"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -2142,6 +2157,10 @@
 		"summary": "List PCAPs Bucket Ownership",
 		"tags": [
 			"Magic PCAP collection"
+		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API",
+			"Magic Firewall Packet Captures - Read PCAPs API"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -3064,6 +3083,9 @@
 		"tags": [
 			"Magic PCAP collection"
 		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3485,6 +3507,9 @@
 		"summary": "Add buckets for full packet captures",
 		"tags": [
 			"Magic PCAP collection"
+		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -3913,6 +3938,9 @@
 		"summary": "Validate buckets for full packet captures",
 		"tags": [
 			"Magic PCAP collection"
+		],
+		"x-api-token-group": [
+			"Magic Firewall Packet Captures - Write PCAPs API"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,

@@ -487,6 +487,10 @@
 		"summary": "List custom pages",
 		"tags": [
 			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Page Write",
+			"Access: Custom Page Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
@@ -1039,6 +1043,9 @@
 		"summary": "Create a custom page",
 		"tags": [
 			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Page Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/custom_pages/{custom_page_id}": {

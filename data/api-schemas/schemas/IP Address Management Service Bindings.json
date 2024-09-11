@@ -929,6 +929,10 @@
 		"summary": "List Services",
 		"tags": [
 			"IP Address Management Service Bindings"
+		],
+		"x-api-token-group": [
+			"IP Prefixes: Write",
+			"IP Prefixes: Read"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings": {

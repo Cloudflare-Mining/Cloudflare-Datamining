@@ -816,6 +816,10 @@
 		"summary": "List variants",
 		"tags": [
 			"Cloudflare Images Variants"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
@@ -2428,6 +2432,9 @@
 		"summary": "Create a variant",
 		"tags": [
 			"Cloudflare Images Variants"
+		],
+		"x-api-token-group": [
+			"Images Write"
 		]
 	}
 }

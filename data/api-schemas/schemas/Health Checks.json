@@ -1610,6 +1610,10 @@
 		"tags": [
 			"Health Checks"
 		],
+		"x-api-token-group": [
+			"Health Checks Write",
+			"Health Checks Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -5134,6 +5138,9 @@
 		"tags": [
 			"Health Checks"
 		],
+		"x-api-token-group": [
+			"Health Checks Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -6100,6 +6107,9 @@
 		"summary": "Create Preview Health Check",
 		"tags": [
 			"Health Checks"
+		],
+		"x-api-token-group": [
+			"Health Checks Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

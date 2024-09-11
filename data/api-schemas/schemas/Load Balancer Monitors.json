@@ -936,6 +936,10 @@
 		"summary": "List Monitors",
 		"tags": [
 			"Load Balancer Monitors"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /user/load_balancers/monitors/{monitor_id}": {
@@ -3764,6 +3768,9 @@
 		"summary": "Create Monitor",
 		"tags": [
 			"Load Balancer Monitors"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"POST /user/load_balancers/monitors/{monitor_id}/preview": {

@@ -312,6 +312,9 @@
 		"tags": [
 			"DNS Firewall"
 		],
+		"x-api-token-group": [
+			"DNS Firewall Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -1021,6 +1024,10 @@
 		"tags": [
 			"DNS Firewall"
 		],
+		"x-api-token-group": [
+			"DNS Firewall Write",
+			"DNS Firewall Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:read"
@@ -1655,6 +1662,10 @@
 		"summary": "DNS Firewall Cluster Details",
 		"tags": [
 			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write",
+			"DNS Firewall Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2408,6 +2419,9 @@
 		"tags": [
 			"DNS Firewall"
 		],
+		"x-api-token-group": [
+			"DNS Firewall Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:edit"
@@ -3152,6 +3166,9 @@
 		"summary": "Create DNS Firewall Cluster",
 		"tags": [
 			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -1958,6 +1958,10 @@
 		"summary": "List Load Balancers",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write",
+			"Load Balancers Read"
 		]
 	},
 	"GET /zones/{zone_id}/load_balancers/{load_balancer_id}": {
@@ -7978,6 +7982,9 @@
 		"summary": "Create Load Balancer",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write"
 		]
 	},
 	"PUT /zones/{zone_id}/load_balancers/{load_balancer_id}": {

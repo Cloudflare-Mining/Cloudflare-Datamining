@@ -454,6 +454,9 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.key.delete"
@@ -1001,6 +1004,10 @@
 		"summary": "List Namespaces",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2172,6 +2179,9 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.namespace.create"
@@ -2406,6 +2416,9 @@
 		"summary": "Delete multiple key-value pairs",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2918,6 +2931,9 @@
 		"summary": "Write multiple key-value pairs",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

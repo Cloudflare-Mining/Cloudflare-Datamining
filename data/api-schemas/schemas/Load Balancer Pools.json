@@ -1206,6 +1206,10 @@
 		"summary": "List Pools",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /user/load_balancers/pools/{pool_id}": {
@@ -3806,6 +3810,9 @@
 		"summary": "Patch Pools",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"PATCH /user/load_balancers/pools/{pool_id}": {
@@ -5984,6 +5991,9 @@
 		"summary": "Create Pool",
 		"tags": [
 			"Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"POST /user/load_balancers/pools/{pool_id}/preview": {

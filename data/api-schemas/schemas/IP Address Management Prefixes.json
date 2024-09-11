@@ -980,6 +980,14 @@
 		"summary": "List Prefixes",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write",
+			"IP Prefixes: Write",
+			"IP Prefixes: Read",
+			"IP Prefixes: BGP On Demand Write",
+			"IP Prefixes: BGP On Demand Read"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
@@ -2209,6 +2217,9 @@
 		"summary": "Upload LOA Document",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Prefix Write"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes": {

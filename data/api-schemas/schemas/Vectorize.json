@@ -749,6 +749,10 @@
 		"tags": [
 			"Vectorize"
 		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.list"
@@ -2452,6 +2456,9 @@
 		"summary": "Create Vectorize Index",
 		"tags": [
 			"Vectorize"
+		],
+		"x-api-token-group": [
+			"Vectorize Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

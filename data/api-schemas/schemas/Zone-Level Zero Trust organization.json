@@ -263,6 +263,11 @@
 		"summary": "Get your Zero Trust organization",
 		"tags": [
 			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Revoke",
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/organizations": {
@@ -598,6 +603,9 @@
 		"summary": "Create your Zero Trust organization",
 		"tags": [
 			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"POST /zones/{zone_id}/access/organizations/revoke_user": {
@@ -1096,6 +1104,9 @@
 		"summary": "Update your Zero Trust organization",
 		"tags": [
 			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	}
 }

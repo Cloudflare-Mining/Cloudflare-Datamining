@@ -488,6 +488,10 @@
 		"summary": "List mTLS certificates",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write",
+			"Access: Certificates Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/certificates/{certificate_id}": {
@@ -1000,6 +1004,10 @@
 		"summary": "List all mTLS hostname settings",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write",
+			"Access: Certificates Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/certificates": {
@@ -1276,6 +1284,9 @@
 		"summary": "Add an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/certificates/{certificate_id}": {
@@ -1861,6 +1872,9 @@
 		"summary": "Update an mTLS certificate's hostname settings",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write"
 		]
 	}
 }

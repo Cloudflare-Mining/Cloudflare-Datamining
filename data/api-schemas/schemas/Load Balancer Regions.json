@@ -343,6 +343,9 @@
 		"summary": "List Regions",
 		"tags": [
 			"Load Balancer Regions"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/regions/{region_id}": {

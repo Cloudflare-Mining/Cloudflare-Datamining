@@ -949,6 +949,11 @@
 		"summary": "List rules",
 		"tags": [
 			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write",
+			"Magic Network Monitoring Config Read"
 		]
 	},
 	"GET /accounts/{account_id}/mnm/rules/{rule_id}": {
@@ -2707,6 +2712,10 @@
 		"summary": "Create rules",
 		"tags": [
 			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write"
 		]
 	},
 	"PUT /accounts/{account_id}/mnm/rules": {
@@ -3160,6 +3169,10 @@
 		"summary": "Update rules",
 		"tags": [
 			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write"
 		]
 	}
 }

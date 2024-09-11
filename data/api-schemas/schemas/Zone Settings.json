@@ -7406,6 +7406,10 @@
 		"tags": [
 			"Zone Settings"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -7648,6 +7652,10 @@
 		"summary": "Get Cloudflare Speculation setting",
 		"tags": [
 			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -21855,6 +21863,9 @@
 		"tags": [
 			"Zone Settings"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:edit"
@@ -22119,6 +22130,9 @@
 		"summary": "Change Cloudflare Speculation setting",
 		"tags": [
 			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -614,6 +614,10 @@
 		"tags": [
 			"Worker Routes"
 		],
+		"x-api-token-group": [
+			"Workers Routes Write",
+			"Workers Routes Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.route.list"
@@ -1257,6 +1261,9 @@
 		"summary": "Create Route",
 		"tags": [
 			"Worker Routes"
+		],
+		"x-api-token-group": [
+			"Workers Routes Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

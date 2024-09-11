@@ -2258,6 +2258,9 @@
 		"summary": "List Requests",
 		"tags": [
 			"Request for Information (RFI)"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_identifier}/cloudforce-one/requests/{request_identifier}/asset": {

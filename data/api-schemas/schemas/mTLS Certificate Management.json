@@ -930,6 +930,10 @@
 		"tags": [
 			"mTLS Certificate Management"
 		],
+		"x-api-token-group": [
+			"Account: SSL and Certificates Read",
+			"Account: SSL and Certificates Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -2199,6 +2203,9 @@
 		"summary": "Upload mTLS certificate",
 		"tags": [
 			"mTLS Certificate Management"
+		],
+		"x-api-token-group": [
+			"Account: SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

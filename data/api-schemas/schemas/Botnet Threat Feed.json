@@ -876,6 +876,10 @@
 		"summary": "Get list of ASNs",
 		"tags": [
 			"Botnet Threat Feed"
+		],
+		"x-api-token-group": [
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read"
 		]
 	}
 }

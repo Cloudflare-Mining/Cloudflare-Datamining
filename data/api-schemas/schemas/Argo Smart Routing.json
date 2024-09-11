@@ -348,6 +348,10 @@
 		"tags": [
 			"Argo Smart Routing"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -734,6 +738,9 @@
 		"summary": "Patch Argo Smart Routing setting",
 		"tags": [
 			"Argo Smart Routing"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

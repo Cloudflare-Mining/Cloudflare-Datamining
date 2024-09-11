@@ -1984,6 +1984,10 @@
 		"summary": "List Access reusable policies",
 		"tags": [
 			"Access reusable policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/policies/{policy_id}": {
@@ -6971,6 +6975,9 @@
 		"summary": "Create an Access reusable policy",
 		"tags": [
 			"Access reusable policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/policies/{policy_id}": {

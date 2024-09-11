@@ -233,6 +233,12 @@
 		"tags": [
 			"Origin Post-Quantum"
 		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"Zone Read",
+			"Zone Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#zone_settings:read"
@@ -502,6 +508,10 @@
 		"summary": "Change Origin Post-Quantum Encryption setting",
 		"tags": [
 			"Origin Post-Quantum"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

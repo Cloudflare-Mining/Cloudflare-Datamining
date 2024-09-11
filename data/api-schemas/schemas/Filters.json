@@ -498,6 +498,9 @@
 		"tags": [
 			"Filters"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1524,6 +1527,10 @@
 		"tags": [
 			"Filters"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2475,6 +2482,9 @@
 		"tags": [
 			"Filters"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2983,6 +2993,9 @@
 		"summary": "Update filters",
 		"tags": [
 			"Filters"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

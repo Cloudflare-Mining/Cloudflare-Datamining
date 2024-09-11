@@ -386,6 +386,10 @@
 		"tags": [
 			"Durable Objects Namespace"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.durable-object.class.list"
@@ -828,6 +832,10 @@
 		"summary": "List Objects",
 		"tags": [
 			"Durable Objects Namespace"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

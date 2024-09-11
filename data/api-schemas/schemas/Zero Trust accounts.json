@@ -393,6 +393,10 @@
 		"summary": "Get device settings for a Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway": {
@@ -714,6 +718,10 @@
 		"summary": "Get Zero Trust account information",
 		"tags": [
 			"Zero Trust accounts"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/configuration": {
@@ -2441,6 +2449,9 @@
 		"summary": "Patch device settings for a Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
@@ -3768,6 +3779,9 @@
 		"summary": "Create Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/settings": {
@@ -4200,6 +4214,9 @@
 		"summary": "Update device settings for a Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/configuration": {

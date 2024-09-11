@@ -756,6 +756,10 @@
 		"tags": [
 			"Vectorize Beta (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the GET `/accounts/{account_id}/vectorize/v2/indexes` endpoint.",
 			"display": true,
@@ -1671,6 +1675,9 @@
 		"summary": "Create Vectorize Index (Deprecated)",
 		"tags": [
 			"Vectorize Beta (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes` endpoint.",

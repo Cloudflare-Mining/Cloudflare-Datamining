@@ -2019,6 +2019,10 @@
 		"summary": "List Access identity providers",
 		"tags": [
 			"Zone-Level Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
@@ -6865,6 +6869,9 @@
 		"summary": "Add an Access identity provider",
 		"tags": [
 			"Zone-Level Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {

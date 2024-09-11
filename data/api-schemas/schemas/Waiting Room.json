@@ -1763,6 +1763,10 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -4771,6 +4775,10 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -6941,6 +6949,9 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -7788,6 +7799,9 @@
 		"summary": "Create waiting room",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -9037,6 +9051,9 @@
 		"summary": "Create a custom waiting room page preview",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -11165,6 +11182,9 @@
 		"summary": "Update zone-level Waiting Room settings",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

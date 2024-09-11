@@ -882,6 +882,10 @@
 		"summary": "List your device posture integrations",
 		"tags": [
 			"Device Posture Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/integration/{integration_id}": {
@@ -2888,6 +2892,9 @@
 		"summary": "Create a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	}
 }

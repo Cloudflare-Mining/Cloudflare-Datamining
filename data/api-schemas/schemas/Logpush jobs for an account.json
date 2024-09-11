@@ -1402,6 +1402,10 @@
 		"tags": [
 			"Logpush jobs for an account"
 		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -2569,6 +2573,9 @@
 		"tags": [
 			"Logpush jobs for an account"
 		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -2818,6 +2825,9 @@
 		"summary": "Get ownership challenge",
 		"tags": [
 			"Logpush jobs for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3069,6 +3079,9 @@
 		"tags": [
 			"Logpush jobs for an account"
 		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -3310,6 +3323,9 @@
 		"summary": "Check destination exists",
 		"tags": [
 			"Logpush jobs for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3558,6 +3574,9 @@
 		"summary": "Validate origin",
 		"tags": [
 			"Logpush jobs for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

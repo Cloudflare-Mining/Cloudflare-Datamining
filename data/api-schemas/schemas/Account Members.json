@@ -811,6 +811,10 @@
 		"tags": [
 			"Account Members"
 		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:read"
@@ -1929,6 +1933,9 @@
 		"summary": "Add Member",
 		"tags": [
 			"Account Members"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

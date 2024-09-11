@@ -448,6 +448,10 @@
 		"summary": "Retrieve zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway Read",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas": {
@@ -775,6 +779,10 @@
 		"summary": "Retrieve information about all schemas on a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
+		],
+		"x-api-token-group": [
+			"Account API Gateway Read",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {

@@ -665,6 +665,9 @@
 		"tags": [
 			"DNS Analytics"
 		],
+		"x-api-token-group": [
+			"Analytics Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#analytics:read"
@@ -1453,6 +1456,9 @@
 		"summary": "By Time",
 		"tags": [
 			"DNS Analytics"
+		],
+		"x-api-token-group": [
+			"Analytics Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

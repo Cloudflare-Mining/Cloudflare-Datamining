@@ -970,6 +970,10 @@
 		"tags": [
 			"Zone Lockdown"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2319,6 +2323,9 @@
 		"summary": "Create a Zone Lockdown rule",
 		"tags": [
 			"Zone Lockdown"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

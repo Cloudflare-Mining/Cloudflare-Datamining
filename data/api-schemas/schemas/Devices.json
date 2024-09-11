@@ -1490,6 +1490,10 @@
 		"summary": "List devices",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
@@ -3116,6 +3120,10 @@
 		"summary": "List device settings profiles",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy": {
@@ -3794,6 +3802,10 @@
 		"summary": "Get the default device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -7534,6 +7546,10 @@
 		"summary": "Get device certificate provisioning status",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/policy": {
@@ -8288,6 +8304,9 @@
 		"summary": "Update the default device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -9539,6 +9558,9 @@
 		"summary": "Update device certificate provisioning status",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/policy": {
@@ -10446,6 +10468,9 @@
 		"summary": "Create a device settings profile",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
@@ -10784,6 +10809,9 @@
 		"summary": "Revoke devices",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
@@ -11122,6 +11150,9 @@
 		"summary": "Unrevoke devices",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {

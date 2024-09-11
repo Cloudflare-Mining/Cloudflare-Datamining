@@ -1904,6 +1904,10 @@
 		"tags": [
 			"Custom Hostname for a Zone"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -7044,6 +7048,9 @@
 		"summary": "Create Custom Hostname",
 		"tags": [
 			"Custom Hostname for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

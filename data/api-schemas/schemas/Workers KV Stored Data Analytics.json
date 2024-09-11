@@ -755,6 +755,10 @@
 		"summary": "Query Stored Data Analytics",
 		"tags": [
 			"Workers KV Stored Data Analytics"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		]
 	}
 }

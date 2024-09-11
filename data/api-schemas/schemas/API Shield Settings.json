@@ -270,6 +270,10 @@
 		"summary": "Retrieve information about specific configuration properties",
 		"tags": [
 			"API Shield Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway Read",
+			"Domain API Gateway Read"
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/configuration": {

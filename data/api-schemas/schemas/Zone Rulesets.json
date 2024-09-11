@@ -5056,6 +5056,11 @@
 		"tags": [
 			"Zone Rulesets"
 		],
+		"x-api-token-group": [
+			"Zone WAF Read",
+			"Account WAF Read",
+			"Account Rulesets Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -39052,6 +39057,24 @@
 		"summary": "Create a zone ruleset",
 		"tags": [
 			"Zone Rulesets"
+		],
+		"x-api-token-group": [
+			"Response Compression Write",
+			"Config Settings Write",
+			"Dynamic URL Redirects Write",
+			"Cache Settings Write",
+			"Custom Errors Write",
+			"Origin Write",
+			"Managed headers Write",
+			"Zone Transform Rules Write",
+			"HTTP DDoS Managed Ruleset Write",
+			"Sanitize Write",
+			"Transform Rules Write",
+			"Bot Management Write",
+			"Mass URL Redirects Write",
+			"Magic Firewall Write",
+			"L4 DDoS Managed Ruleset Write",
+			"Select Configuration Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

@@ -908,6 +908,10 @@
 		"summary": "List Spectrum applications",
 		"tags": [
 			"Spectrum Applications"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
 		]
 	},
 	"GET /zones/{zone_id}/spectrum/apps/{app_id}": {
@@ -2442,6 +2446,9 @@
 		"summary": "Create Spectrum application using a name for the origin",
 		"tags": [
 			"Spectrum Applications"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
 		]
 	},
 	"PUT /zones/{zone_id}/spectrum/apps/{app_id}": {

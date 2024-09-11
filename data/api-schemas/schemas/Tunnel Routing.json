@@ -1514,6 +1514,12 @@
 		"summary": "List tunnel routes",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Cloudflare One Networks Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/routes/{route_id}": {
@@ -3701,6 +3707,10 @@
 		"summary": "Create a tunnel route",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {

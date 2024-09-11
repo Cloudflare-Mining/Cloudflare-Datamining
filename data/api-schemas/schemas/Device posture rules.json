@@ -2324,6 +2324,10 @@
 		"summary": "List device posture rules",
 		"tags": [
 			"Device posture rules"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/{rule_id}": {
@@ -6946,6 +6950,9 @@
 		"summary": "Create a device posture rule",
 		"tags": [
 			"Device posture rules"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/posture/{rule_id}": {

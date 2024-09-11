@@ -3219,6 +3219,11 @@
 		"summary": "List Access Applications",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}": {
@@ -15013,6 +15018,9 @@
 		"summary": "Add an Access application",
 		"tags": [
 			"Zone-Level Access applications"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/revoke_tokens": {

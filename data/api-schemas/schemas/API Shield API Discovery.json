@@ -376,6 +376,10 @@
 		"summary": "Retrieve discovered operations on a zone rendered as OpenAPI schemas",
 		"tags": [
 			"API Shield API Discovery"
+		],
+		"x-api-token-group": [
+			"Account API Gateway Read",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations": {

@@ -466,6 +466,9 @@
 		"summary": "List Regions",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Read"
 		]
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames": {
@@ -747,6 +750,9 @@
 		"summary": "List Regional Hostnames",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Read"
 		]
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {

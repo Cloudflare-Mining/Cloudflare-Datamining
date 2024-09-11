@@ -480,6 +480,11 @@
 		"summary": "List tags",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/tags/{tag_name}": {
@@ -961,6 +966,9 @@
 		"summary": "Create a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/tags/{tag_name}": {

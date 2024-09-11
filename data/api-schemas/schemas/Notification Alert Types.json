@@ -500,6 +500,13 @@
 		"summary": "Get Alert Types",
 		"tags": [
 			"Notification Alert Types"
+		],
+		"x-api-token-group": [
+			"Cloudflare Zero Trust PII Read",
+			"Notifications Write",
+			"Notifications Read",
+			"Account Settings Write",
+			"Account Settings Read"
 		]
 	}
 }

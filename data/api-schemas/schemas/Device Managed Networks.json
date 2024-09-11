@@ -982,6 +982,10 @@
 		"summary": "List your device managed networks",
 		"tags": [
 			"Device Managed Networks"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/networks/{network_id}": {
@@ -1934,6 +1938,9 @@
 		"summary": "Create a device managed network",
 		"tags": [
 			"Device Managed Networks"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/networks/{network_id}": {

@@ -992,6 +992,10 @@
 		"tags": [
 			"API Shield Client Certificates for a Zone"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -2237,6 +2241,9 @@
 		"summary": "Create Client Certificate",
 		"tags": [
 			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

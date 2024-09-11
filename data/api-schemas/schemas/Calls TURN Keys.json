@@ -334,6 +334,10 @@
 		"summary": "List TURN Keys",
 		"tags": [
 			"Calls TURN Keys"
+		],
+		"x-api-token-group": [
+			"Calls Write",
+			"Calls Read"
 		]
 	},
 	"GET /accounts/{account_id}/calls/turn_keys/{key_id}": {
@@ -642,6 +646,9 @@
 		"summary": "Create a new TURN key",
 		"tags": [
 			"Calls TURN Keys"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	},
 	"PUT /accounts/{account_id}/calls/turn_keys/{key_id}": {

@@ -2103,6 +2103,10 @@
 		"summary": "List Access identity providers",
 		"tags": [
 			"Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
@@ -7741,6 +7745,9 @@
 		"summary": "Add an Access identity provider",
 		"tags": [
 			"Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {

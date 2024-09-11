@@ -1459,6 +1459,10 @@
 		"summary": "List Memberships",
 		"tags": [
 			"User's Account Memberships"
+		],
+		"x-api-token-group": [
+			"Memberships Write",
+			"Memberships Read"
 		]
 	},
 	"GET /memberships/{membership_id}": {

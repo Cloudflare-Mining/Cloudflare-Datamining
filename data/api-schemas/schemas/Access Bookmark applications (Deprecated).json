@@ -501,6 +501,11 @@
 		"tags": [
 			"Access Bookmark applications (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
 			"display": true,
