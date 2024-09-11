@@ -5,32 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Partner Program Specialist - APAC</strong></p>
-<p><strong>About The Role</strong></p>
-<p>The Cloudflare Global Partner team is focused on accelerating the adoption of Cloudflare solutions by attracting and growing partners who can acquire new customers and make them successful.&nbsp; Our goal is to recognise our partners’ successes as they harness the collective strengths of our organisations to deliver an exceptional experience for our customers.</p>
-<p>Based out of Sydney or Singapore, this role will report to the Vice President of Partner Sales, Asia Pacific (APAC). In your role as the APAC Partner Program Specialist you will be the voice for APAC and collaborate closely with the Global Partner Program team to ensure alignment of overall business goals. You will own the PowerUp program, program initiatives, localisation, and with an objective to accelerate engagement of our PowerUp partners.</p>
-<p>The ideal candidate will have some experience working with partners in the technology sector and can work independently. Some travel may be required within Asia Pacific to support partner meetings, development and enablement.&nbsp;</p>
-<p><br><strong>Responsibilities:</strong></p>
+<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
+<p><strong>Responsibilities</strong><strong>:</strong></p>
 <ul>
-	<li>Be the voice of APAC to the Global Partner Program teams</li>
-	<li>Collaborate with APAC and Global Partner teams to gather requirements for current and future partner programs and initiatives which may include competitive funded programs</li>
-	<li>APAC owner of partner SPIFF and Incentive programs</li>
-	<li>APAC owner of partner portal providing guidance on local requirements up to global</li>
-	<li>APAC owner of PowerUp program and related partner benefits including tracking and measuring Elite, Select, Registered and Distribution partner auditing and reporting</li>
-	<li>Work and collaborating closely with partner operations and partner enablement to recommend, track and measure PowerUp requirements such as certification,&nbsp; assessments and enablement to be communicated to partners to maintain their tier status</li>
-	<li>Assist in efforts to manage and evolve partner agreements and contracting processes, working in close coordination with legal, contract, and partner operations</li>
-	<li>Contribute to localisation that impacts PowerUp program policies, processes and Rules of Engagement</li>
-	<li>Conduct regular enablement activities for Cloudflare employees on how to work with Channel</li>
+	<li>Be part of a world class globally-distributed team.</li>
+	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information in response to third-party civil matters as well as in legal process served from law enforcement and government officials.</li>
+	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
+	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
+	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
+	<li>Participate in a rotating weekend coverage duty.</li>
 </ul>
-<p><strong>Experience </strong>&nbsp;</p>
+<p><strong>Requirements</strong><strong>:</strong></p>
 <ul>
-	<li>Ability to work independently, adapt quick, problem solve and maintain a positive attitude</li>
-	<li>Highly coordinated and self driven person</li>
-	<li>High attention to detail and operational in their work style with ability to influence</li>
-	<li>Minimum 5 years of experience working in the technology sector&nbsp;</li>
-	<li>Minimum 5 years of experience building or operating in multi-type and multi-tier partner programs that include Global System Integrators, Infrastructure providers, Service Providers, ISVs, Technology partners and/or the broader partner types</li>
+	<li style="font-weight: bold;"><strong>Japanese fluency (JLPT N2 and above, or native-level fluency).</strong></li>
+	<li>5+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Legal or Trust &amp; Safety.</li>
+	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
+	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
+	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
+	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
+	<li>A great attitude and team player.&nbsp;</li>
 </ul>
-<p><br><br></p>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
+	<li>You’ve interacted with law enforcement officials and agencies.</li>
+	<li>Hands-on experience with Cloudflare’s products and services.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
