@@ -32,9 +32,9 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $176,000 - $216,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $184,000 - $216,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $194,000 - $237,000.</span></li>
+	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $165,000 - $201,000.</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $171,000 - $209,000.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $180,000 - $220,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
